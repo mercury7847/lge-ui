@@ -574,6 +574,7 @@ CS.MD.commonModel = function() {
             self.$modelFilter = self.$modelBox.find('.form-wrap');
             self.$modelInput = self.$modelBox.find('input[type=text]');
             self.$modelButton = self.$modelBox.find('.btn-search');
+            self.$modelError = self.$modelBox.find('.search-error');
             self.$modelSlider = self.$modelBox.find('.model-slider');
             self.$modelNoData = self.$modelBox.find('.no-data');
 
@@ -589,7 +590,7 @@ CS.MD.commonModel = function() {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val()
             };
-            self.isModel = self.selected.modelCode || self.selected.subCategory ? true : false;
+            self.isModel = (self.selected.modelCode || self.selected.subCategory) ? true : false;
             self.isPrivacy = (self.$stepTerms.length && self.$stepTerms.hasClass('active')) ? true : false
 
             self.$modelFilter.find('.ui_select_target').vcSelectTarget();
@@ -713,6 +714,13 @@ CS.MD.commonModel = function() {
                 }
             });
 
+            self.$keywordInput.on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    self.$keywordButton.trigger('click');
+                }
+            });
+
             self.$keywordButton.on('click', function() {
                 var opt = self.options;
                 var value = self.$keywordInput.val().toUpperCase();
@@ -753,18 +761,33 @@ CS.MD.commonModel = function() {
                         page: 1
                     });
 
+                    self.$modelError.hide();
                     self._requestData();
+                } else {
+                    self.$modelError.show();
+                }
+            });
+
+            self.$modelInput.on('keyup', function(e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    self.$modelButton.trigger('click');
                 }
             });
 
             self.$modelButton.on('click', function() {
-                if (result.success) {
+                var value = self.$modelInput.val().toUpperCase();
+
+                if (value.length > 1 || !value) {
                     self.param = $.extend(self.param, {
-                        keyword: self.$modelInput.val().toUpperCase(),
+                        keyword: value,
                         page: 1
                     });
 
                     self._requestData();
+                    self.$modelError.hide();
+                } else {
+                    self.$modelError.show();
                 }
             });
 

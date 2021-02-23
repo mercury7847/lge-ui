@@ -1,18 +1,18 @@
-<svg id="img_dishwasher_MO_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="img_dishwasher_MO_80-2" data-name="img_dishwasher_MO_80">
-    <g id="ic_dishwasher_MO_80">
-      <g id="ic_dishwasher_40">
-        <path id="ic_dishwasher_40-2" data-name="ic_dishwasher_40" d="M0,80H80V0H0Z" fill="none"/>
-        <g id="icon" transform="translate(10 11)">
-          <g id="Group_3" data-name="Group 3">
-            <path id="Rectangle" d="M0,8.153V1.282A1.282,1.282,0,0,1,1.282,0H51.218A1.282,1.282,0,0,1,52.5,1.282V17.718A1.282,1.282,0,0,1,51.218,19H1.282A1.282,1.282,0,0,1,0,17.718V8.153Z" transform="translate(3.75)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-            <path id="Rectangle-2" data-name="Rectangle" d="M3.623-1.14A1.282,1.282,0,0,0,4.9,0H55.1a1.282,1.282,0,0,0,1.274-1.14L60-33.75H0Z" transform="translate(0 58.375)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-            <path id="Line" d="M.975.938h46.8" transform="translate(5.625 9.375)" fill="none" stroke="#fff" stroke-linecap="square" stroke-miterlimit="10" stroke-width="3"/>
-            <rect id="Rectangle-3" data-name="Rectangle" width="60" height="5.625" transform="translate(0 19)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-            <rect id="Rectangle-4" data-name="Rectangle" width="7.5" height="2.813" rx="1.406" transform="translate(45 3.75)" fill="#fff"/>
-          </g>
-        </g>
-      </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="cate_icon_cooking-dishwasher_w">
+    <rect id="icon_area" class="cls-1" width="80" height="80"/>
+    <path class="cls-2" d="M420.5,127h-57a4.505,4.505,0,0,0-4.5,4.5v37a4.505,4.505,0,0,0,4.5,4.5h57a4.505,4.505,0,0,0,4.5-4.5v-37A4.505,4.505,0,0,0,420.5,127Zm1.5,41.5a1.5,1.5,0,0,1-1.5,1.5h-57a1.5,1.5,0,0,1-1.5-1.5v-37a1.5,1.5,0,0,1,1.5-1.5h57a1.5,1.5,0,0,1,1.5,1.5v37Zm-19-31A12.5,12.5,0,1,0,415.5,150,12.514,12.514,0,0,0,403,137.5Zm0,22a9.5,9.5,0,1,1,9.446-10.5H403.5a1.5,1.5,0,0,0,0,3h8.784A9.514,9.514,0,0,1,403,159.5Zm-27-26a7.5,7.5,0,1,0,7.5,7.5A7.508,7.508,0,0,0,376,133.5Zm0,12a4.5,4.5,0,1,1,4.5-4.5A4.505,4.505,0,0,1,376,145.5Zm0,6a7.5,7.5,0,1,0,7.5,7.5A7.508,7.508,0,0,0,376,151.5Zm0,12a4.5,4.5,0,1,1,4.5-4.5A4.505,4.505,0,0,1,376,163.5Z" transform="translate(-352 -110)"/>
   </g>
 </svg>
