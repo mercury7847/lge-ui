@@ -483,7 +483,6 @@
                     $list.addClass('on');
                 }
             });
-            
         }
     }
 

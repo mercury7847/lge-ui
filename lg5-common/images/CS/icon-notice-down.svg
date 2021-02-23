@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g>
+        <g fill-rule="evenodd">
+            <path fill="#aaa" d="M194 1302a16 16 0 1 1 16 16 16 16 0 0 1-16-16z" transform="translate(-194 -1286)"/>
+            <path fill="#fff" d="M204.074 1297.02a2.082 2.082 0 0 1 1.45.59l4.493 4.46 4.5-4.46a2.058 2.058 0 0 1 2.9 2.92l-5.945 5.9a2.052 2.052 0 0 1-2.9 0l-5.943-5.9a2.05 2.05 0 0 1 1.445-3.51z" transform="translate(-194 -1286)"/>
+        </g>
+    </g>
+</svg>
