@@ -762,6 +762,9 @@
 
                     if( $popup.filter('.active').length ) {
                         $popup.filter('.active').wrapAll(self.el.modal);
+                        if( $popup.filter('.active').length == 1) {
+                            $('.ui_modal_wrap.init-type').addClass('center-only');
+                        }
                         $popup.filter('.active').stop().fadeIn();
 
                         if( !vcui.detect.isMobileDevice) {
@@ -783,7 +786,7 @@
                         lgkorUI.cookie.setCookie(_id, "done", 1);
                     }
                     
-                    if( $modalWrap.find('.popup-init:visible').length == 1) {
+                    if( $modalWrap.find('.popup-init.active').length == 1) {
                         $modalWrap.stop().fadeOut(function(){
                             $popup.unwrap();
                             $curModal.hide().removeClass('active');
@@ -792,6 +795,10 @@
                     } else {
                         $curModal.stop().fadeOut(function(){
                             $(this).removeClass('active');
+
+                            if( $modalWrap.find('.popup-init.active').length == 1) {
+                                $modalWrap.addClass('center-only');
+                            }
                         })
                     }
                     e.preventDefault();
