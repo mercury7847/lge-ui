@@ -567,6 +567,7 @@
                 self.autoFlag = false;
 
                 self.$cont.commonModel('next', self.$stepModel);
+                self.$cont.commonModel('focus', self.$selectedModelBar);
             });
 
             // 모델 선택 후 이벤트

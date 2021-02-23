@@ -283,7 +283,7 @@
         },
         setOsOption: function(data) {
             var self = this;
-            var $select = self.$dirverSec.find('#os');
+            var $select = self.$driverSec.find('#os');
             var listArr = data instanceof Array ? data : [],
                 html = "";
 
@@ -305,7 +305,7 @@
             var subCategory = self.param.subCategory;
 
             if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
-                self.setOsOptions(os);
+                self.setOsOption(os);
                 $formWrap.show();
             } else {
                 $formWrap.hide();
