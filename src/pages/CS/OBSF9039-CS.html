@@ -2,9 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: [
-            "MYC/MYC", "UTC/UTC"
-        ],
-        pageJS: ["mypage/orderAndDelivery"]
+            "MYC/MYC", "UTC/UTC", "support/supplies-store"
+        ]
     })
 <body>
     <div class="wrap">
@@ -15,7 +14,7 @@
                 "pageTitle": "비회원 주문/배송 조회"
             })
             <!-- 비회원 주문/배송 조회 -->
-            <div class="contents mypage non-members"
+            <div class="contents mypage non-members support"
                 data-order-inquiry-list="/lg5-common/data-ajax/mypage/nonememOrderProductList.json"
                 data-cancel-pop="/lg5-common/data-ajax/mypage/orderCancelPop.json"
                 data-order-cancel="/lg5-common/data-ajax/mypage/orderCancel.json"
@@ -34,7 +33,7 @@
                     <div class="welcome-joinus">
                         <p class="cell text">LG전자 멤버십 회원으로 가입하시면 더 많은 혜택이 적용됩니다.</p>
                         <div class="cell btns">
-                            <a href="#n" class="btn mix size"><span>회원가입</span></a>
+                            <a href="#n" class="btn mix size-m"><span>회원가입</span></a>
                         </div>
                     </div>
                     <!-- // 회원가입 안내 -->
@@ -44,6 +43,70 @@
                         <div class="sects">
                             <!-- 주문정보 -->
                             <div class="info-tbl-wrap inquiry-list-wrap">
+                                <div class="box" data-id="{{dataID}}">
+                                    <div class="info-wrap">
+                                        <ul class="infos">
+                                            <li>주문일<em>2021.02.23</em></li>
+                                            <li>주문번호<em>20203987102999</em></li>
+                                        </ul>
+                                        <p class="totals">총 3건</p>
+                                    </div>
+                                    <div class="tbl-layout ">
+                                        <div class="thead" aria-hidden="true">
+                                            <span class="th col1">제품정보(주문/배송 상세보기)</span>
+                                            <span class="th col2">진행상태</span>
+                                        </div>
+                                        <div class="tbody">
+                                            <div class="row ">
+                                                <div class="col-table" data-prod-id="0">
+                                                    <div class="col col1"><span class="blind">제품정보</span>
+                                                        <div class="product-info">
+                                                            <div class="infos">
+                                                                <p class="name"><a href="#none"><span class="blind">제품명</span>랜젠터 cable, Assembly</a></p>
+                                                                <p class="e-name"><span class="blind">영문제품번호</span>EAD62628503</p>
+                                                                <div class="more"><span class="blind">제품스펙</span>
+                                                                    <ul>
+                                                                        <li>수량 : 1</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <p class="price"><span class="blind">구매가격</span>7,000원</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col2">
+                                                        <div class="state-box">
+                                                            <p class="tit "><span class="blind">진행상태</span>결제완료</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-table" data-prod-id="1">
+                                                    <div class="col col1"><span class="blind">제품정보</span>
+                                                        <div class="product-info">
+                                                            <div class="infos">
+                                                                <p class="name"><a href="http://www.lge.com"><span class="blind">제품명</span>아답타 Adapters</a></p>
+                                                                <p class="e-name"><span class="blind">영문제품번호</span>EAY6378920</p>
+                                                                <p class="count">수량 : 1</p>
+                                                            </div>
+                                                            <p class="price"><span class="blind">구매가격</span>11,200원</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col2">
+                                                        <div class="state-box">
+                                                            <p class="tit "><span class="blind">진행상태</span>배송중</p>
+                                                            <p class="desc"><a href="" class="">운송장 번호 XXXXXXXXXX</a></p>
+                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#n" class="btn-link orderCancel-btn">취소신청</a>
+                                    <div class="btns">
+                                        <a href="#n" class="btn-link">주문/배송 상세보기</a>
+                                    </div>
+                                    </div>
                             </div>
                             <!-- // 주문정보 -->
 
@@ -55,7 +118,9 @@
                                         "list" : [
                                             { "dt" : "결제 수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
                                             { "dt" : "주문 금액", "dd" : "2,834,060원" },
-                                            { "dt" : "총 결제 금액", "dd" : "<em>2,834,060원</em>" },
+                                            { "dt" : "할인 금액", "dd" : "-283,406원" },
+                                            { "dt" : "배송비", "dd" : "2,500원" },
+                                            { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
                                         ]
                                     })
                                 </div>
@@ -79,13 +144,11 @@
                                     <p class="inner-tit">배송 정보</p>
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "성명", "dd" : "이*지" },
+                                            { "dt" : "이름", "dd" : "이*지" },
                                             { "dt" : "배송주소", "dd" : "21655 서울특별시 엘지구 엘지로 **, ****" },
                                             { "dt" : "휴대폰", "dd" : "010-****-1234" },
                                             { "dt" : "연락처", "dd" : "010-****-1234" },
-                                            { "dt" : "배송시 요청사항", "dd" : "배송시 요청사항 노출" },
-                                            { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
-                                            { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" },
+                                            { "dt" : "배송시 요청사항", "dd" : "배송시 요청사항 노출" }
                                         ]
                                     })
                                 </div>
@@ -96,8 +159,7 @@
                                     "bulletTxt" : [
                                         "카드결제 시 현금영수증/세금계산서 발급이 불가능하며 카드전표로 대체하실 수 있습니다.",
                                         "현금영수증은 발급 완료된 주문건에 한해 조회가 합니다.",
-                                        "주문 진행 상태에 따라 취소 /반품 신청이 가능합니다. 취소/반품 신청 버튼이 없을 경우 고객 센터(000-0000) 에 문의 하세요.",
-                                        "배송지 변경은 고객센터(0000-0000)로 연락 부탁드립니다."
+                                        "주문 진행 상태에 따라 취소 /반품 신청이 가능합니다. 취소/반품 신청 버튼이 없을 경우 고객 센터(000-0000) 에 문의 하세요."
                                     ]
                                 })
                             </div>
@@ -118,10 +180,8 @@
                                 <p class="gy-tit">[교환/취소 신청 안내]</p>
                                 @@include('./common/modules/bullet-list.html', {
                                     "bulletTxt" : [
-                                        "주문 접수, 결제 완료 , 배송 준비중 상태에서만 취소 신청이 가능하며 배송 중 이후 상태에서는 취소가 불가능합니다.",
-                                        "취소 신청을 하시면 소모품 서비스센터(1644-7101) 관리자가 해당 주문 내역 확인 후 처리해 드립니다.",
-                                        "다른 상품으로 교환을 원하실 경우 주문 취소가 가능한 상태에서 주문취소 후 재 주문하여 주시기 바랍니다.",
-                                        "배송완료후 교환은 동일한 상품만 가능합니다. 교환을 원하시는 경우 LG 소모품 고객센터(1644-7101)로 연락 주시기 바랍니다."
+                                        "주문건에 대한 배송지 변경/취소 /반품/교환 신청은 LG 소모품 고객 센터(1644-7101) 에 문의 하세요.",
+                                        "배송완료 후 교환은 동일한 상품만 가능합니다."
                                     ]
                                 })
                             </div>
@@ -129,22 +189,22 @@
                                 <p class="hello">제품 사용 시 불편하거나 문의사항이 있을경우 고객센터로 문의해주세요.</p>
                                 <div class="call-info">
                                     <ul>
-                                        <li>LG전자<br> 고객센터 번호 <em>1544-7777</em></li>
-                                        <li>LG소모품<br> 고객센터 번호 <em>1644-7101</em></li>
+                                        <li>LG전자<br> 고객센터 번호 <em class="color-3">1544-7777</em></li>
+                                        <li>LG소모품<br> 고객센터 번호 <em class="color-3">1644-7101</em></li>
                                     </ul>
                                 </div>
                             </div>
                             <ul class="membership-benefit">
                                 <li class="box membership">
                                     <dl>
-                                        <dt>멤버십 회원 전용 케어솔루션 혜택</dt>
-                                        <dd>멤버십 포인트 월 최대 5,000포인트 차감 가능</dd>
+                                        <dt>LG전자 케어솔루션 LG전자 멤버십 회원 전용 혜택</dt>
+                                        <dd>모든 제품 3% / 멤버십표인트 3% 적립</dd>
                                     </dl>
                                 </li>
                                 <li class="box card-benefit">
                                     <dl>
-                                        <dt>케어솔루션 제휴카드 할인 혜택</dt>
-                                        <dd>제휴카드 결제시 월 최대 23,000원 할인</dd>
+                                        <dt>LG전자 케어솔루션 제휴카드 할인 특별 혜택</dt>
+                                        <dd>제휴카드 결제시 최대 500,000원 캐시백 / 멤버십포인트 3% 적립</dd>
                                     </dl>
                                 </li>
                             </ul>
