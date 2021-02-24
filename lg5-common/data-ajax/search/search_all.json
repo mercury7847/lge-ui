@@ -157,6 +157,50 @@
                     {"filterValueId":"sfmm0004","filterValueName":"2TB"},
                     {"filterValueId":"sfmm0006","filterValueName":"5TB"}
                 ]
+            },
+            {
+                "filterId":"sfid00005",
+                "filterGroupName":"메모리2",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00006",
+                "filterGroupName":"메모리3",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00007",
+                "filterGroupName":"메모리4",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00008",
+                "filterGroupName":"메모리5",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
             }
         ],
         "product":{
