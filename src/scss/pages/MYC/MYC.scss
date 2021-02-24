@@ -191,6 +191,11 @@
                         margin-left:0;
                     }
                 }
+                &.driver-section {
+                    .form-wrap .forms .tit {
+                        width:100%;
+                    }
+                }
             }
             &.user.modify {
                 .bullet-list {

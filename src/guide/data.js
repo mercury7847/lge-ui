@@ -98,7 +98,7 @@ var res = {
 				"KRP0016_Social Share[KRP0019]" : ["/html/components/KRP0016.html","","검수완료"],
 				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수완료"],
 				"KRP0018_Story tag[KRP0023]" : ["/html/components/KRP0018.html","","검수완료"],
-				"KRP0019_Best review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
+				"KRP0019_PLP review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
 				"KRP0020_Event list for category[KRP0025]" : ["/html/components/KRP0020.html","","검수완료"],
 				"KRP0021_PDP_Please note[KRP0027]" : ["/html/components/KRP0021.html","","검수완료"],
 				"KRP0022_Event list[KRP0028]" : ["/html/components/KRP0022.html","","검수완료"],
