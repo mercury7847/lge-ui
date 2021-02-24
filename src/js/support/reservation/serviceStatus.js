@@ -804,10 +804,12 @@
 
     });
     $(window).on('load', function(){
-        vcui.require(['ui/modal'], function ($, core) {
-            setTimeout(function(){
-                initModal(getParam('popupType'))
-            }, 200)
-        });
+        if ($('.service-status-detail').length) {
+            vcui.require(['ui/modal'], function ($, core) {
+                setTimeout(function(){
+                    initModal(getParam('popupType'))
+                }, 200)
+            });
+        }
     })
 })();
