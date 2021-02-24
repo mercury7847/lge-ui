@@ -87,16 +87,55 @@
                         </div>
                     </div>
                     <!-- 검색 -->
-                    <div class="keyword-search">
-                        <form action="" id="searchKeyword">
-                            <div class="search-box">
-                                <div class="search-input">
-                                    <input type="text" id="keyword01" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="제품명, 모델명 직접 검색" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
-                                    <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
-                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                </div>
+                    <div class="keyword-search ui_search" data-search-url="/search/result/support?category=customer&force=false&search=" data-autocomplete-url="/lg5-common/data-ajax/support/main/searchAutoComplete.json">
+                        <div class="search-box">
+                            <div class="search-input">
+                                <input type="text" id="search" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="검색어를 입력해주세요.(예:모델명, 증상 등)" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                                <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
                             </div>
-                        </form>
+                            <div class="search-layer">
+                                <div class="autocomplete-box">
+                                    <div class="keyword-list">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="model"></span>
+                                                    <span class="category"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p class="no-keyword">입력하신 키워드와 일치하는<br>모델명이 없습니다.</p>
+                                    </div>
+                                </div>
+                                <div class="keyword-box">
+                                    <div class="recently-keyword">
+                                        <strong class="tit">최근 검색어</strong>
+                                        <div class="keyword-list">
+                                            <ul>
+                                                <!-- <li>
+                                                    <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                                                    <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
+                                                </li> -->
+                                            </ul>
+                                            <p class="no-keyword">최근 검색어가 없습니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="popular-keyword">
+                                        <strong class="tit">인기 검색어</strong>
+                                        <div class="keyword-list">
+                                            <ul>
+                                                <!-- <li>
+                                                    <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                                                </li> -->
+                                            </ul>
+                                            <p class="no-keyword">인기 검색어가 없습니다.</p>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
                     </div>
                     <!-- //검색 -->
     
