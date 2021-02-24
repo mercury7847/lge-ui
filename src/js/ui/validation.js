@@ -440,7 +440,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     // if(val=='on') val = '';
                     if(val=='on' || val == undefined) val = '';
                 }else{
-                    val = e.currentTarget.value;
+                    val = e.currentTarget.value.trim();
                 }
                 
                 self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);                
@@ -619,7 +619,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                                 val = $target.is(':radio')? nArr[0] : nArr;
                                 if(val=='on' || val == undefined) val = '';
                             }else{
-                                val = $target.val();
+                                val = $target.val().trim();
                             }
                             rObj = self._checkValidate(key, obj, val, rObj, flag);
                         }
@@ -687,7 +687,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                             }
                         }
                     } else {
-                        result[name] = item.val();
+                        result[name] = item.val().trim();
                     }
                 }
             });
