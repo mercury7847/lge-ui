@@ -38,11 +38,9 @@
                             "modelID":modelID,
                             "sku":sku
                         }
-                        console.log("### KRP0006 requestAjaxData(); ###", ajaxUrl, param)
+                        //console.log("### KRP0006 requestAjaxData(); ###", ajaxUrl, param)
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-
-                            console.log("### KRP0006 requestAjaxData result###", result.data)
-
+                            //console.log("### KRP0006 requestAjaxData result###", result.data)
                             var data = result.data ? result.data : {};
                             self.reloadData(data);
                         });

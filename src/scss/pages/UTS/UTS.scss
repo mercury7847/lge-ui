@@ -66,8 +66,6 @@
             }
             .scroll-controls {
                 @include pc {
-                    //opacity: 0;
-                    //transition: opacity 0.2s;
                     .btn-arrow {
                         position: absolute;
                         top: 0;
@@ -138,10 +136,19 @@
                 &:first-child {
                     margin-left: 0;
                 }
+                &.on {
+                    .curation {
+                        border-color: $color-primary;
+                        background-color: $color-white;
+                        font-weight: 700;
+                        color: $color-primary;
+                    }
+                }
             }
             .curation {
                 display: block;
-                padding: 12px 24px;
+                padding: 10px 24px;
+                border: 2px solid $color-bg;
                 border-radius: 24px;
                 background-color: $color-bg;
                 @include font(16px,24px);
@@ -202,9 +209,13 @@
                 }
             }
             .chk-group {
-                margin-top: -12px;
+                //margin-top: -12px;
+                @include pc {
+                    width: auto !important;
+                }
                 @include mobile {
                     margin-top: 0;
+                    padding-right: 40px;
                     white-space: nowrap;
                 }
             }
@@ -232,7 +243,8 @@
             .fold-box {
                 @include pc {
                     overflow: hidden;
-                    max-height: 60px;
+                    max-height: 72px;
+                    margin-top: -12px;
                     &.unfold {
                         max-height: none;
                         .btn-fold {
@@ -290,6 +302,9 @@
             border-radius: 8px;
             background-color: $color-bg;
             font-size: 0;
+            @include mobile {
+                border-radius: 0;
+            }
             .btn-reset {
                 position: absolute;
                 top: 24px;
@@ -316,7 +331,7 @@
                     left: auto;
                     right: 0;
                     margin-right: 0;
-                    padding: 7px 16px;
+                    padding: 7px 16px 6px;
                     border: 0;
                     border-radius: 0;
                     &:before {
@@ -339,6 +354,7 @@
                 display: inline-block;
                 margin-bottom: -8px;
                 @include pc {
+                    width: auto !important;
                     li {
                         &:first-child {
                             padding-left: 131px;
@@ -350,7 +366,12 @@
                     padding: 7px 40px 7px 16px;
                 }
                 @include mobile {
+                    margin-bottom: 0;
+                    padding-right: 32px;
                     white-space: nowrap;
+                    li {
+                        margin-bottom: 0;
+                    }
                 }
             }
             .text {

@@ -628,6 +628,9 @@
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
                             $list_ul.empty();
                             data.noDataList.forEach(function(item, index) {
+                                if(!item.hash) {
+                                    item.hash = [];
+                                }
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;

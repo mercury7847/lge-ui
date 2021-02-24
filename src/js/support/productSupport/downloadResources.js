@@ -186,6 +186,9 @@
             self.$driverKeyword = self.$driverSec.find('#driverKeyword');
             self.$driverBtn = self.$driverSec.find('.btn-search');
             
+            self.$surveyWrap = self.$cont.find('.survey-banner-wrap');
+
+            self.$surveyPopup = $('#surveyPopup');
             self.$fileDetailPopup = $('#fileDetailPopup');
 
             self.setting();
@@ -311,6 +314,17 @@
                 $formWrap.hide();
             }
         },
+        setSurvey: function(data) {
+            var self = this;
+            var model = self.param.modelCode;
+            
+            self.$surveyWrap.find('.point').html(model);
+            self.$surveyPopup.find('.model').html(model);
+        
+            for (var key in data) {
+                self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+            }
+        },
         searchAllList: function() {
             var self = this;
             var param = $.extend({}, self.param);
@@ -340,7 +354,7 @@
                 relatedInfo.initialize(data);
 
                 //만족도 평가 박스 모델코드 삽입
-                $('.survey-banner-wrap .model').html(param.modelCode);
+                self.setSurvey(data.satisfy);
 
                 self.$cont.commonModel('next', self.$stepInput);
                 self.$cont.commonModel('focus', self.$selectedModelBar, function() {
@@ -483,7 +497,6 @@
                     $list.addClass('on');
                 }
             });
-            
         }
     }
 

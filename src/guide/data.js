@@ -234,7 +234,13 @@ var res = {
                     "시스템 점검" : ["/html/UTS/COMF0001.html","","검수요청"],
                     "505Error/404Error" : ["/html/UTS/COMF0002.html","","검수요청"],
                     "공통 에러페이지" : ["/html/UTS/COMF0003.html","","검수요청"]
-                }
+                },
+				"이메일" : {
+					"주문완료(가상계좌)" : ["/html/UTC/OBSF9021_1.html","","검수요청"],
+					"주문완료(신용카드)" : ["/html/UTC/OBSF9021_2.html","","검수요청"],
+					"청약완료" : ["/html/UTC/OBSF9021_3.html","","검수요청"],
+					"계약서발급" : ["/html/UTC/OBSF9021_4.html","","검수요청"],
+				}
 			},
 			"B2C메인(MA)" : {
 				"B2C메인" : ["/html/MA/MKTF1000.html","",""]

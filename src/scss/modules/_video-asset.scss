@@ -197,8 +197,9 @@
 		left: 0;
 		right: 0;
 		transform: translateY(-50%);
-		overflow-y: overlay;
-		height:100vh;
+		overflow-y: auto;
+		max-width:none;
+		height: 100vh;
 		padding:8% 0 5%;
 		@include mobile {
 			padding-top:18%;

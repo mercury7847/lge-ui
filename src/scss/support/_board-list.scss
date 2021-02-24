@@ -624,6 +624,8 @@
             .info-box {
                 margin-bottom:8px;
                 font-size:0;
+                display:flex;
+                
                 .topic, .category {
                     display:inline-block;
                     position:relative;
@@ -631,9 +633,11 @@
                     vertical-align:middle;
                 }
                 .topic {
+                    flex:1;
                     margin-left:8px;
                     padding-left:9px;
                     color:#767676;
+                    @include textEllipsis;
                     &::before {
                         content: '';
                         display: block;

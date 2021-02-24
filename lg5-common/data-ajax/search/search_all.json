@@ -70,6 +70,138 @@
                 "url":"#s3"
             }
         ],
+        "curation":[
+            {
+                "curationId":"cur0001",
+                "text":"학생에게 추천 노트북 1"
+            },
+            {
+                "curationId":"cur0002",
+                "text":"학생에게 추천 노트북 2"
+            },
+            {
+                "curationId":"cur0003",
+                "text":"학생에게 추천 노트북 3"
+            },
+            {
+                "curationId":"cur0004",
+                "text":"학생에게 추천 노트북 4"
+            },
+            {
+                "curationId":"cur0005",
+                "text":"학생에게 추천 노트북 5"
+            },
+            {
+                "curationId":"cur0006",
+                "text":"학생에게 추천 노트북 6"
+            },
+            {
+                "curationId":"cur0007",
+                "text":"학생에게 추천 노트북 7"
+            }
+        ],
+        "smartFilterList": [
+            {
+                "filterId":"sfid00001",
+                "filterGroupName":"사이즈",
+                "filterValues":[
+                    {"filterValueId":"sfsc0001","filterValueName":"27인치"},
+                    {"filterValueId":"sfsc0002","filterValueName":"32인치"},
+                    {"filterValueId":"sfsc0003","filterValueName":"40인치"},
+                    {"filterValueId":"sfsc0004","filterValueName":"47인치"},
+                    {"filterValueId":"sfsc0006","filterValueName":"49인치"},
+                    {"filterValueId":"sfsc0007","filterValueName":"52인치"},
+                    {"filterValueId":"sfsc0008","filterValueName":"58인치"},
+                    {"filterValueId":"sfsc0009","filterValueName":"70인치"},
+                    {"filterValueId":"sfsc0010","filterValueName":"80인치"},
+                    {"filterValueId":"sfsc0011","filterValueName":"100인치"},
+                    {"filterValueId":"sfsc0012","filterValueName":"120인치"}
+                ]
+            },
+            {
+                "filterId":"sfid00002",
+                "filterGroupName":"저장장치",
+                "filterValues":[
+                    {"filterValueId":"sfcp0001","filterValueName":"인텔 타이거레이크 i5"},
+                    {"filterValueId":"sfcp0002","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0003","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0004","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0006","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0007","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0008","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0009","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0010","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0011","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0012","filterValueName":"인텔 타이거레이크 i7"}
+                ]
+            },
+            {
+                "filterId":"sfid00003",
+                "filterGroupName":"저장장치",
+                "filterValues":[
+                    {"filterValueId":"sfhd0001","filterValueName":"HDD 512"},
+                    {"filterValueId":"sfhd0002","filterValueName":"SSD 256"},
+                    {"filterValueId":"sfhd0003","filterValueName":"SSD 1TB"},
+                    {"filterValueId":"sfhd0004","filterValueName":"SSD 2TB"},
+                    {"filterValueId":"sfhd0006","filterValueName":"SSD 5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00004",
+                "filterGroupName":"메모리",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00005",
+                "filterGroupName":"메모리2",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00006",
+                "filterGroupName":"메모리3",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00007",
+                "filterGroupName":"메모리4",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00008",
+                "filterGroupName":"메모리5",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            }
+        ],
         "product":{
             "count":"123",
             "data":[
