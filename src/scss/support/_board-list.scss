@@ -664,13 +664,16 @@
                     }
                 }
                 .category {
-                    color:#ec455a;
+                    color:#da0f47;
                 }
             }
             .tit {
                 font-weight:$font-weight-medium;
                 @include font-large;
                 @include textEllipsisClamp(2);
+                .keyword {
+                    color:#da0f47;
+                }
             }
         } 
     }
