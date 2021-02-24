@@ -567,11 +567,13 @@
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
                     self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
-                    console.log(arr);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            if(!item.hash) {
+                                item.hash = [];
+                            }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             item.isVideo = lgkorUI.stringToBool(item.isVideo);
@@ -627,6 +629,9 @@
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
                             $list_ul.empty();
                             data.noDataList.forEach(function(item, index) {
+                                if(!item.hash) {
+                                    item.hash = [];
+                                }
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
