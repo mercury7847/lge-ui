@@ -129,7 +129,7 @@
             param.reason =  self.registValidation.getValues('inputReason');
 
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                var url = self.$contWrap.data('returnUrl');
+                var url = self.$contWrap.data('okUrl');
                 if(url) {
                     location.href = url;
                 }
