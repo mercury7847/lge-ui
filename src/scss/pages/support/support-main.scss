@@ -32,9 +32,13 @@
                 &.mCustomScrollbar {
                     overflow:hidden;
                     padding:0;
-
-                    > .mCustomScrollBox > .mCSB_container {
-                        padding:48px 40px 0
+                    > .mCustomScrollBox {
+                        > .mCSB_container {
+                           padding:48px 40px 0
+                        }
+                        > .mCSB_scrollTools {
+                           right:10px;
+                        }
                     }
                 }
             }
@@ -187,8 +191,13 @@
                     &.mCustomScrollbar {
                         padding:0;
     
-                        > .mCustomScrollBox > .mCSB_container {
-                            padding:40px 16px 10px
+                        > .mCustomScrollBox {
+                            > .mCSB_container {
+                                padding:40px 16px 10px
+                            }
+                            > .mCSB_scrollTools {
+                               right:2px;
+                            }
                         }
                     }
                 }
@@ -476,8 +485,8 @@
         @include tablet {
             .support-list-slider { 
                 .indi-wrap {
-                    display: block;
-                    bottom:30px;
+                    display: block !important;
+                    bottom:40px;
                 }
             }
         }
@@ -2274,14 +2283,19 @@
                         margin-left:20px;
                     }
                     .form-head {
-                        margin-bottom:20px;
+                        margin-bottom:40px;
                     }
     
                     .forms {
-                        margin-top:0;
+                        margin-top:40px;
     
                         .tit {
                             margin-bottom:0;
+                        }
+                    }
+                    .form-row {
+                        .forms {
+                            margin-top:0;
                         }
                     }
                 }
