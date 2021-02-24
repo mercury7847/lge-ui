@@ -92,6 +92,10 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
 
                 self.selectedIndex($(this).index() + 1);
+                self.triggerHandler('starRatingChange', {
+                    value: self.el.value,
+                    index: self.el.selectedIndex
+                });
             });
         },
         _update: function _update() {
@@ -115,6 +119,7 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             } else {
                 if (self.el.options.length - 1 >= index) {
                     self.el.selectedIndex = index;
+                    self.$el.trigger('change');
                     self._update();
                 }
             }

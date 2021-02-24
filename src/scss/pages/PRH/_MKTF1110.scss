@@ -179,6 +179,11 @@
             margin-top: 24px;
             border-color: $color-white;
             color: $color-white;
+            &:hover,
+            &:focus {
+                border-color: $color-white;
+                color: $color-white;
+            }
         }
     }
 }
