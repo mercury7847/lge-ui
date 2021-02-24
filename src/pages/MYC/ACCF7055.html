@@ -17,12 +17,14 @@
             <!-- mypage -->
             <!-- data-time-url : 선택된 날짜에 따른 가능시간 데이타 가져오기api, 인자 date:20210204 -->
             <!-- data-request-url : 해지 신청api, 인자 data:20210204,time:1030 -->
-            <!-- data-return-url : 취소/ 신청 시 돌아가는 페이지 주소 -->
+            <!-- data-return-url : 취소시 돌아가는 페이지 주소 -->
+            <!-- data-ok-url : 신청시 이동할 페이지 주소 -->
             <div class="contents mypage">
                 <div class="cont-wrap"
                     data-time-url="/lg5-common/data-ajax/mypage/care/selectCancelCounselDate.json"
                     data-request-url="/lg5-common/data-ajax/mypage/care/selectCancelCounselDate.json"
                     data-return-url="/html/MYC/ACCF7025.html"
+                    data-ok-url="/html/MYC/ACCF7025.html"
                 >
                     <!-- 넘겨받을 데이타 contLineSeq,reModelSeq,dateList 3개-->
                     <div class="hidden-input-group">
