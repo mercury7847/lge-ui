@@ -46,7 +46,11 @@
         bindEvents: function() {
             var self = this;
             self.$cancelButton.on('click',function(e){
-                history.back();
+                //history.back();
+                var url = self.$contWrap.data('returnUrl');
+                if(url) {
+                    location.href = url;
+                }
             });
 
             self.$okButton.on('click',function(e){
@@ -125,8 +129,10 @@
             param.reason =  self.registValidation.getValues('inputReason');
 
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                //var data = result.data;
-                history.back();
+                var url = self.$contWrap.data('returnUrl');
+                if(url) {
+                    location.href = url;
+                }
             });
         }
     }
