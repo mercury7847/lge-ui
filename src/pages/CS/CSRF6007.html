@@ -20,11 +20,11 @@
                                 <h1 class="head-title">LG TROMM 플러스 사용방법이 궁금하세요?</h1>
                                 <ul class="head-infos">
                                     <li class="point">TV/프로젝터>올레드</li>
-                                    <li>기능관련 > 제품 사용 방법</li>
+                                    <li>기능관련 > TV 사용시간 확인</li>
                                 </ul>
                                 <ul class="head-infos">
-                                    <li>2020.07.20</li>
-                                    <li>조회 4,129</li>
+                                    <li>2020.06.21</li>
+                                    <li>조회 3,021</li>
                                 </ul>
                             </div>
                             <div class="board-view-sub">
@@ -63,8 +63,7 @@
                                             </div>
                                             <div class="column">
                                                 <p class="subtitles-tit">영상자막</p>
-                                                <div class="subtitles-cont">
-                                                    <strong>(자막)LG TROMM 플러스의 사용법이 궁금하세요?</strong>
+                                                <div class="subtitles-cont"><strong>(자막)LG TROMM 플러스의 사용법이 궁금하세요?</strong>
                                                     <br><br>
                                                     [드럼세탁기]<br>
                                                     (NA) LG TROMM 플러스의 사용법이 궁금하세요? LG TROMM 플러스 이렇게 사용해 주세요. 세탁물 투입을 위해 문은 오른쪽의 손잡이를 잡고 당기면서 열어주세요. 옷감을 필요에 따라 흰 옷과 색깔 옷/ 겉 옷과 속옷
@@ -86,9 +85,11 @@
                                         <p>3.세탁통에 약 60% 정도의 세탁물을 넣고 세탁해주시면, 세탁 중 세탁물의 유동이 좋아져서 세탁의 효율을 높일 수 있습니다.</p>
                                         <p>세탁물을 세탁통 고무 패킹 안 쪽으로 완전히 밀어 넣었는지 확인 후, 세탁문의 오른쪽 중앙 부분을 끝까지 밀어 딸깍 소리가 나도록 닫아주세요.</p>
                                         <div class="survey-banner-wrap">
-                                            <div class="banner">    
-                                                <p class="tit">[<strong class="point">LG TROMM 플러스 사용방법이 궁금해요</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</p>
-                                                <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                            <div class="banner">
+                                                <!-- 2021.02.24. 마크업 수정 -->
+                                                <p class="tit">[<strong class="point">LG TROMM 플러스 사용방법이 궁금해요</strong>] 콘텐츠에 대한 <br class="pc-only">만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                                <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                                <!-- //2021.02.24. 마크업 수정 -->
                                             </div>
                                         </div>
                                     </div>
@@ -111,14 +112,14 @@
                         <a href="/html/support/CSTF2100.html" class="btn"><span>목록</span></a>
                     </div>
 
-                    <div class="section">
+                    <div class="section related-info-list"><!-- 2021.02.24. class 추가 : related-info-list -->
                         <div class="list-title">
                             <h2 class="tit">관련된 간편해결 정보를 확인하세요.</h2>
                             <a href="#" class="btn-link">더보기</a>
                         </div>
                         <div class="list-wrap icon-type">
                             <ul class="list">
-                                @@for (var i = 0; i < 10; i++) {
+                                @@for (var i = 0; i < 5; i++) {
                                 <li class="menu-resolution"><!-- 2021.02.15 class 수정 : menu-resolution -->
                                     <a href="#" class="item">
                                         <div class="flag-wrap bar-type">
@@ -127,7 +128,7 @@
                                         </div>
                                         <strong class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</strong>
                                         <ul class="options">
-                                            <li>접수일 2020.07.27</li>
+                                            <li><span class="blind">접수일</span> 2020.07.27</li><!-- 2021.02.24. span 태그 추가 : blind -->
                                         </ul>
                                     </a>
                                 </li>
@@ -135,6 +136,66 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!-- 2021.02.24. 엘리먼트 추가 : common-banner -->
+                    <div class="common-banner" id="serviceMenu">
+                        <div class="banner">
+                            <h3 class="banner-tit">원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.</h3>
+                            <div class="service-list-wrap">
+                                <ul class="service-list">
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_chat.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">채팅상담</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_request-reservation.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">전화상담 예약</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_engineer-reservation.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">출장 서비스 예약</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_installation-reservation.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">설치/철거 예약</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_center-reservation.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">센터방문 예약</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_store-reservation.svg" alt=""> 
+                                            </div>
+                                            <p class="tit">매장방문 예약</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //2021.02.24. 엘리먼트 추가 : common-banner -->
 
                 </div>
             </div>
