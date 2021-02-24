@@ -21,7 +21,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             self.$el.find('.menu-opener').on('click', function(e){
                 self.$pcLinkes.toggleClass('open');
 
-                var openerName = self.$pcLinkes.hasClass('open') ? "메뉴 닫기" : "메뉴 전체보기";
+                var openerName = self.$pcLinkes.hasClass('open') ? "메뉴 접기" : "메뉴 전체보기";
                 $(this).find('span').text(openerName);
             });
             
