@@ -12,7 +12,9 @@
 			.align-right : right
 			.align-center : center
 		-->
-		<section class="component KRP0026">
+		<section class="component KRP0026"
+			data-list-url="/lg5-common/data-ajax/KRP0026/KRP0026.json"
+		>
 			<div class="component-inner">
 
 				<!-- tab -->
@@ -94,9 +96,10 @@
 							}
 						])
 						</ul>
-						@@include('./common/support/pagination.html', {
+						<!-- @@include('./common/support/pagination.html', {
 							count: 5
-						})
+						}) -->
+						<div class="pagination" data-page="2" data-visible-count="5" data-total-count="3"></div>
 					</div>
 					
 				</div>
