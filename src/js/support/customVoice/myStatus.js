@@ -14,6 +14,8 @@
                         maxLength: 30
                     },
                     number: {
+                        patternMsg: '접수번호를 입력해 주세요.',
+                        errorMsg: '접수번호를 입력해 주세요.',
                         msgTarget: '.err-block',
                         pattern: /^[a-z|A-Z|0-9]+$/,
                         maxLength: 20
