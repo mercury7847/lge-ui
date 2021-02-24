@@ -1,103 +1,188 @@
 {
-    "status":"success",
-    "message":null,
+    "message": null,
+    "status": "success",
+    "dataCount": 1,
     "data": [
         {
-            "categoryID":"all",
-            "categoryName":"전체",
-            "top":[
+            "sortTypeList": [
                 {
-                    "imageUrl":"/lg5-common/images/KRP0026/img-story-02.jpg",
-                    "imageAlt":"LG 페이",
-                    "title":"LG 페이",
-                    "imageDescPC":"LG 페이",
-                    "imageDescMobile":"LG 페이",
-                    "desc":"LG페이로 더 쉽게 결제하세요."
+                    "commonCodeName": "최신순",
+                    "sortNo": 1,
+                    "commonCodeId": "sort_new"
                 },
                 {
-                    "imageUrl":"/lg5-common/images/KRP0026/img-story-03.jpg",
-                    "imageAlt":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
-                    "title":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
-                    "imageDescPC":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
-                    "imageDescMobile":"타이틀 텍스트는 최대 24자까지 작성권장합니다 작성권장합니다",
-                    "desc":"나의 소중한 데이터,<br>LG 모바일 스위치로 이어가세요. 나의 소중한 데이터"
-                },
-                {
-                    "imageUrl":"/lg5-common/images/KRP0026/img-story-01.jpg",
-                    "imageAlt":"LG 듀얼스크린",
-                    "title":"LG 듀얼스크린",
-                    "imageDescPC":"LG 듀얼스크린",
-                    "imageDescMobile":"LG 듀얼스크린",
-                    "desc":"놀라운 5G로 제대로 즐기자!"
+                    "commonCodeName": "인기순",
+                    "sortNo": 2,
+                    "commonCodeId": "sort_popular"
                 }
             ],
-            "listCount":"63",
-            "listData":[
+            "sortParam": "sort_new",
+            "superCategoryList": [
                 {
-                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
-                    "imageAlt":"LG 디오스 식기세척기",
-                    "title":"LG 디오스 식기세척기",
-                    "imageDescPC":"LG 디오스 식기세척기",
-                    "imageDescMobile":"LG 디오스 식기세척기",
-                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
-                    "flag":[
-                        "뉴스구분"
-                    ],
-                    "hash":[
-                        "건강",
-                        "봄"
-                    ],
-                    "date":"20210110"
+                    "categoryName": "TV/AV",
+                    "categoryId": "CT50000024"
                 },
                 {
-                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
-                    "imageAlt":"LG 디오스 식기세척기",
-                    "title":"LG 디오스 식기세척기",
-                    "imageDescPC":"LG 디오스 식기세척기",
-                    "imageDescMobile":"LG 디오스 식기세척기",
-                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
-                    "flag":[
-                        "뉴스구분"
-                    ],
-                    "hash":[
-                        "건강",
-                        "여름"
-                    ],
-                    "date":"20210111"
-                },
-                {
-                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
-                    "imageAlt":"LG 디오스 식기세척기",
-                    "title":"LG 디오스 식기세척기",
-                    "imageDescPC":"LG 디오스 식기세척기",
-                    "imageDescMobile":"LG 디오스 식기세척기",
-                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
-                    "flag":[
-                        "뉴스구분"
-                    ],
-                    "hash":[
-                        "건강",
-                        "가을"
-                    ],
-                    "date":"20210112"
-                },
-                {
-                    "imageUrl":"/lg5-common/images/KRP0026/@img-list.jpg",
-                    "imageAlt":"LG 디오스 식기세척기",
-                    "title":"LG 디오스 식기세척기",
-                    "imageDescPC":"LG 디오스 식기세척기",
-                    "imageDescMobile":"LG 디오스 식기세척기",
-                    "desc":"공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과",
-                    "flag":[
-                        "뉴스구분"
-                    ],
-                    "hash":[
-                        "건강",
-                        "겨울"
-                    ],
-                    "date":"20210113"
+                    "categoryName": "주방가전",
+                    "categoryId": "CT50000174"
                 }
-            ]
+            ],
+            "storyListTotalCount": 4,
+            "storyList": [
+                {
+                    "storyId": "ST00001003",
+                    "storyListThumbnailServerName": "@img-list.jpg",
+                    "storyListThumbnailAltText": "222",
+                    "storyTypeName": "광고/캠페인 영상",
+                    "storyListThumbnailPath": "/lg5-common/images/KRP0026/",
+                    "storyTitle": "광고/캠페인 영상 제목",
+                    "storyUrl": "https://www.lg.com/kr",
+                    "storyType": "cf",
+                    "storyDesc": "Description",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "일반 LED TV",
+                            "superCategoryId": "CT50000024",
+                            "superCategory": "TV/AV",
+                            "subCategoryId": "CT50000026",
+                            "category": "TV",
+                            "categoryId": "CT50000025"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00006001",
+                            "tagName": "주거공간_20201104"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00007001",
+                            "tagName": "Care Solution Tag"
+                        }
+                    ]
+                },
+                {
+                    "storyId": "ST00003001",
+                    "storyListThumbnailServerName": "@img-list.jpg",
+                    "storyListThumbnailAltText": "2호",
+                    "storyTypeName": "광고/캠페인 영상",
+                    "storyListThumbnailPath": "/lg5-common/images/KRP0026/",
+                    "storyTitle": "광고/캠페인 영상 222",
+                    "storyUrl": "",
+                    "storyType": "cf",
+                    "storyDesc": "11\n&#60;br&#62;\n테스트입니다.\n개행&#46;&#46;\n",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000174",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "전기레인지",
+                            "categoryId": "CT50000180"
+                        },
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000174",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "정수기",
+                            "categoryId": "CT50000175"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00000005",
+                            "tagName": "5"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00001001",
+                            "tagName": "태그 테스트_TEST2"
+                        }
+                    ]
+                },
+                {
+                    "storyId": "ST00003002",
+                    "storyListThumbnailServerName": "@img-list.jpg",
+                    "storyListThumbnailAltText": "뽀야미",
+                    "storyTypeName": "광고/캠페인 영상",
+                    "storyListThumbnailPath": "/lg5-common/images/KRP0026/",
+                    "storyTitle": "광고/캠페인 영상333",
+                    "storyUrl": "",
+                    "storyType": "cf",
+                    "storyDesc": "test",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000174",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "정수기",
+                            "categoryId": "CT50000175"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00000001",
+                            "tagName": "태그 테스트"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00000002",
+                            "tagName": "태그 테스트22"
+                        }
+                    ]
+                },
+                {
+                    "storyId": "ST00004001",
+                    "storyListThumbnailServerName": "@img-list.jpg",
+                    "storyListThumbnailAltText": "이미지",
+                    "storyTypeName": "광고/캠페인 영상",
+                    "storyListThumbnailPath": "/lg5-common/images/KRP0026/",
+                    "storyTitle": "연말 광고",
+                    "storyUrl": "",
+                    "storyType": "cf",
+                    "storyDesc": "연말 광고",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000024",
+                            "superCategory": "TV/AV",
+                            "subCategoryId": "",
+                            "category": "TV",
+                            "categoryId": "CT50000025"
+                        },
+                        {
+                            "subCategory": "나노셀 TV",
+                            "superCategoryId": "CT50000024",
+                            "superCategory": "TV/AV",
+                            "subCategoryId": "CT50000029",
+                            "category": "TV",
+                            "categoryId": "CT50000025"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00000002",
+                            "tagName": "태그 테스트22"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00000004",
+                            "tagName": "태그 테스트4"
+                        }
+                    ]
+                }
+            ],
+            "pagination": {
+                "page": "1",
+                "visibleCount":"5",
+                "totalCount": 1
+            }
         }
     ]
 }

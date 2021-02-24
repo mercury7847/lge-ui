@@ -64,8 +64,8 @@
 				<div class="story-list-wrap">
 					@@include('./common/modules/list-sorting.html', {
 						"select" : [
-							{"option" : "인기순"},
-							{"option" : "최신순"}
+							{"option" : "최신순", "default":'value="sort_new"'},
+		                    {"option" : "인기순", "default":'value="sort_popular"'}
 						]
 					})
 					<div class="story-list">

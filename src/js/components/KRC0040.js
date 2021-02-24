@@ -71,25 +71,27 @@ $(window).ready(function(){
                 var contID = $(item).find('a').attr('href');
                 var bar = $(item).find('a .bar');
 				var cont = $(contID);
-				var conty = cont.offset().top;
-				var contheight = cont.outerHeight(true);
-				
-				var endanchor = $(item).find('a').data('endTarget');
-				if(endanchor && $(endanchor).length){
-					var endy = $(endanchor).offset().top;
-					var endheight = $(endanchor).outerHeight(true);
-					contheight = endy - conty + endheight;
+				if(cont.length) {
+					var conty = cont.offset().top;
+					var contheight = cont.outerHeight(true);
+					
+					var endanchor = $(item).find('a').data('endTarget');
+					if(endanchor && $(endanchor).length){
+						var endy = $(endanchor).offset().top;
+						var endheight = $(endanchor).outerHeight(true);
+						contheight = endy - conty + endheight;
+					}
+
+					var contop = -scrolltop + conty;
+					if(contop < marginTop){
+						var scrolldist = marginTop - contop;
+						percent = scrolldist / contheight * 100;
+
+						if(percent > 100) percent = 0;
+					}
+					display = percent <= 0 ? 'none' : 'block';
+					bar.css({width: percent+"%", display: display});
 				}
-
-                var contop = -scrolltop + conty;
-                if(contop < marginTop){
-                    var scrolldist = marginTop - contop;
-                    percent = scrolldist / contheight * 100;
-
-                    if(percent > 100) percent = 0;
-                }
-                display = percent <= 0 ? 'none' : 'block';
-                bar.css({width: percent+"%", display: display});
             });            
 		 });
 		 
