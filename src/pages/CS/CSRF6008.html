@@ -236,8 +236,8 @@
                             
                             <div class="survey-banner-wrap">
                                 <div class="banner">    
-                                    <p class="tit">고객님이 선택하신 [<strong class="model">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
-                                    <button type="button" class="btn border size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                    <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</p>
+                                    <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +255,9 @@
     </div>  
 
     <!-- 컨텐츠 만족도 조사 팝업 -->
-    @@include('./CS/modal/survey-popup.html')
+    @@include('./CS/CSRF6065.html', {
+        "service": true
+    })
 
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
     @@include('./CS/modal/file-detail-popup.html')

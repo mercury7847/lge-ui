@@ -227,14 +227,7 @@
 
         // 콘텐츠 만족도 평가
         &.survey-pop {
-            .agree-wrap {
-                margin-top:64px;
-            }
-            @include mobile {
-                .agree-wrap {
-                    margin-top:32px;
-                }
-            }
+            padding-top:12px;
         }
 
         // 엔지니어 선택 
