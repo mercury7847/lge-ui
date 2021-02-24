@@ -12,6 +12,14 @@
             }
         }
     }
+    .page-header.border.wide {
+        .tabs-wrap.border-type {
+            padding:20px 0 24px;
+            @include mobile {
+                padding-bottom:12px;
+            }
+        }
+    }
     .cont-wrap {
     max-width:1460px;
     margin:0 auto;
