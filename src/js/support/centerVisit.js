@@ -413,6 +413,7 @@
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
                 self.$engineerSlider.vcCarousel('resize');
+                self.$engineerSlider.vcCarousel('reinit');
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
