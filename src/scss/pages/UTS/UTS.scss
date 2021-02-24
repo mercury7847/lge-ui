@@ -66,8 +66,6 @@
             }
             .scroll-controls {
                 @include pc {
-                    //opacity: 0;
-                    //transition: opacity 0.2s;
                     .btn-arrow {
                         position: absolute;
                         top: 0;
@@ -138,10 +136,19 @@
                 &:first-child {
                     margin-left: 0;
                 }
+                &.on {
+                    .curation {
+                        border-color: $color-primary;
+                        background-color: $color-white;
+                        font-weight: 700;
+                        color: $color-primary;
+                    }
+                }
             }
             .curation {
                 display: block;
-                padding: 12px 24px;
+                padding: 10px 24px;
+                border: 2px solid $color-bg;
                 border-radius: 24px;
                 background-color: $color-bg;
                 @include font(16px,24px);
