@@ -32,9 +32,13 @@
                 &.mCustomScrollbar {
                     overflow:hidden;
                     padding:0;
-
-                    > .mCustomScrollBox > .mCSB_container {
-                        padding:48px 40px 0
+                    > .mCustomScrollBox {
+                        > .mCSB_container {
+                           padding:48px 40px 0
+                        }
+                        > .mCSB_scrollTools {
+                           right:10px;
+                        }
                     }
                 }
             }
@@ -187,8 +191,13 @@
                     &.mCustomScrollbar {
                         padding:0;
     
-                        > .mCustomScrollBox > .mCSB_container {
-                            padding:40px 16px 10px
+                        > .mCustomScrollBox {
+                            > .mCSB_container {
+                                padding:40px 16px 10px
+                            }
+                            > .mCSB_scrollTools {
+                               right:2px;
+                            }
                         }
                     }
                 }
