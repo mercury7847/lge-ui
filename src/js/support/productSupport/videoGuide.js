@@ -10,7 +10,7 @@
                         '<span class="category">{{category}}</span>' +
                         '<span class="topic">{{topic}}</span>' +
                     '</div>' +
-                    '<h4 class="tit">{{title}}</h4>' +
+                    '<h4 class="tit">{{#raw title}}</h4>' +
                 '</div>' +
             '</a>' +
         '</li>';

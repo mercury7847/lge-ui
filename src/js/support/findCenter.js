@@ -782,7 +782,7 @@ function moveDetail(el, detailUrl, windowHeight) {
         _setLocalSearch: function(){
             var self = this;
 
-            var keyword = self.$boroughSelect.val() || self.$citySelect.val();
+            var keyword = self.$citySelect.val() + ' ' + self.$boroughSelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
                 var callback = function() {
