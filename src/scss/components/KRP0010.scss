@@ -23,15 +23,15 @@
     }
     .title {
         margin-bottom:24px;
-        font-size:28px;
-        line-height:1.5;
+        font-size:40px;
+        line-height:56px;
         font-weight:bold;
         text-align:center;
         @include mobile {
             margin-bottom:16px;
             padding:0 20px;
-            font-size:24px;
-            line-height:33px;
+            font-size:27px;
+            line-height:38px;
         }
     }
     .bundle-type {
