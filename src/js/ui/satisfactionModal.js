@@ -6,7 +6,8 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
         var $popup = $('#surveyPopup'),
             $popupCont = $popup.find('.survey-pop');
 
-        var surveyUrl = $popup.data('surveyUrl');  
+        var surveyUrl = $popup.data('surveyUrl');
+        var param = {};
         var register = {
             serviceName: {
                 msgTarget: '.service-err-block'
@@ -29,7 +30,7 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
         
             $popup.find('.btn-confirm').on('click', function() {
                 var result = validation.validate(),
-                    data = $.extend({}, validation.getAllValues());
+                    data = $.extend({}, param, validation.getAllValues());
         
                 if (result.success) {
                     lgkorUI.showLoading();
@@ -44,10 +45,17 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                             title: data.resultMessage
                         });
                         lgkorUI.hideLoading();
-                    })
+                    });
                 }
             });
-        
+            $popup.on('modalshow', function(e) {
+                var $input = $popup.find('input[type=hidden]');
+                var valArr = $input.serializeArray();
+
+                valArr.forEach(function(item) {
+                    param[item.name] = item.value;
+                });
+            });
             $popup.on('modalhidden', function(e) {
                 $popupCont.find('input[type=radio]').prop('checked', false);
                 $popupCont.find('input,textarea').val('');
