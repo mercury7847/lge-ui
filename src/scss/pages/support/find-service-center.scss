@@ -1363,8 +1363,10 @@
                     position:relative;
                     padding-bottom:115px;
                     .scroll-wrap {
-                        height:calc(100vh - 80px - 115px);
-                        max-height:calc(100vh - 80px - 115px);
+                        // height:calc(100vh - 80px - 115px);
+                        // max-height:calc(100vh - 80px - 115px);
+                        height:calc(100vh - 80px - 195px);
+                        max-height:calc(100vh - 80px - 195px);
                         margin-right:0;
                         .list-item {
                             padding-bottom:48px;
@@ -1566,7 +1568,7 @@
                     &.open {
                         top:-6px;
                         .opt-layer {
-                            height:calc(100% - 56px - 64px);
+                            height:calc(100% - 56px - 83px);
                             box-sizing:border-box;
                             padding-bottom:0;
 
