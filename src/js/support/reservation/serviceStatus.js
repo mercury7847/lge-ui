@@ -764,9 +764,50 @@
         }
     };
 
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+    }
+
+    function initModal(param){
+        var curPopupName = '';
+        switch(param) {
+            default : 
+                break;
+            case "change" : 
+                curPopupName = '#reservationTimePopup';
+                break;
+            case "cancel" : 
+                curPopupName = '#cancelServicePopup';
+                break;
+            case "solutions" : 
+                curPopupName = '#solutionsPopup';
+                break;
+        }
+        $('[data-href="' + curPopupName + '"]').click();
+    }
+    
+    
+
     $(window).ready(function() {
         if ($('.service-status').length) searchPage.init();
         if ($('.service-status-list').length) listPage.init();
         if ($('.service-status-detail').length) detailPage.init();
+
+    
+
     });
+    $(window).on('load', function(){
+        vcui.require(['ui/modal'], function ($, core) {
+            setTimeout(function(){
+                initModal(getParam('popupType'))
+            }, 200)
+        });
+    })
 })();
