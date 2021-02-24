@@ -361,7 +361,9 @@ CS.MD.search = function() {
                 self.$el.trigger('autocompleteClick', [this]);
             });
 
-            self.$el.on('click', '.search-layer .keyword-box a', function() {
+            self.$el.on('click', '.search-layer .keyword-box a', function(e) {
+                e.preventDefault();
+
                 var val = $(this).text().trim();
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
