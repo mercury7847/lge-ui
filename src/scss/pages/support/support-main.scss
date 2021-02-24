@@ -2283,14 +2283,19 @@
                         margin-left:20px;
                     }
                     .form-head {
-                        margin-bottom:20px;
+                        margin-bottom:40px;
                     }
     
                     .forms {
-                        margin-top:0;
+                        margin-top:40px;
     
                         .tit {
                             margin-bottom:0;
+                        }
+                    }
+                    .form-row {
+                        .forms {
+                            margin-top:0;
                         }
                     }
                 }
