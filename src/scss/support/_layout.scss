@@ -24,6 +24,50 @@
                     font-weight:$font-weight-bold;
                 }
             }
+
+            &.related-info-list {
+                margin-top: 120px;
+                .list-wrap {
+                    &.icon-type {
+                        .list {
+                            >li {
+                                a {
+                                    .options {
+                                        position: absolute;
+                                        right: 0;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                @include mobile {
+                    margin-top: 60px;
+                    padding-top: 60px;
+                    border-top: 12px solid #f4f4f4;
+                    .list-title {
+                        .tit {
+                            font-size: 16px;
+                        }
+                    }
+                    .list-wrap {
+                        &.icon-type {
+                            .list {
+                                >li {
+                                    a {
+                                        .options {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     .step-box {
