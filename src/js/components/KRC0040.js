@@ -7,7 +7,7 @@ $(window).ready(function(){
         var $mainSticky;
 
         var selectIdx;
-        var comptop;
+		var comptop;
 
         function init(){
             setting();
@@ -22,12 +22,12 @@ $(window).ready(function(){
 
             selectIdx = 0;
 
-            comptop = $component.offset().top;
+			$component.parent().height($component.innerHeight());
         }
 
         function bindEvents(){
     
-            $component.on('click', '.tab-menu-belt li a', function(e){
+            $component.on('click', '.info-tab a', function(e){
                 e.preventDefault();
         
                 var id = $(this).attr('href');
@@ -35,13 +35,19 @@ $(window).ready(function(){
             })
         
             $(window).on('scroll.KRC0040', function(e){
-                var scrolltop = $(window).scrollTop();                
-                var compheight = $component.height();
+				var scrolltop = $(window).scrollTop();
+				
+				var topDistance = 0;
+				if($mainSticky.length) topDistance += $mainSticky.height();
+
+				var comptop = $component.parent().offset().top;
+				var dist = -scrolltop + comptop;	
                 
-                if(-scrolltop + comptop < $mainSticky.height()){
+                if(dist <= topDistance){
+					var top = $mainSticky.length ? $mainSticky.height()-2 : 0;
                     $component.addClass('fixed').css({
                         position:"fixed",
-						top:$mainSticky.height()-2,
+						top:top,
 						width:'100%',
                         zIndex:91
                     })
@@ -54,40 +60,42 @@ $(window).ready(function(){
 					var contID = $(item).find('a').attr('href');
 					var bar = $(item).find('a .bar');
 					var cont = $(contID);
-					var conty = cont.offset().top;
-					var contheight = cont.outerHeight(true);
-					
-					var endanchor = $(item).find('a').data('endTarget');
-					if(endanchor && $(endanchor).length){
-						var endy = $(endanchor).offset().top;
-						var endheight = $(endanchor).outerHeight(true);
-						contheight = endy - conty + endheight;
+					if(cont.length){
+						var conty = cont.offset().top;
+						var contheight = cont.outerHeight(true);
+
+						if(!idx) conty -= $component.height();
+						
+						var endanchor = $(item).find('a').data('endTarget');
+						if(endanchor && $(endanchor).length){
+							var endy = $(endanchor).offset().top;
+							var endheight = $(endanchor).outerHeight(true);
+							contheight = endy - conty + endheight;
+						}
+		
+						var contop = -scrolltop + conty;
+						if(contop < topDistance){
+							var scrolldist = topDistance - contop;
+							percent = scrolldist / contheight * 100;
+		
+							if(percent > 100) percent = 0;
+						}
+						display = percent <= 0 ? 'none' : 'block';
+						bar.css({width: percent+"%", display: display});
 					}
-	
-					var contop = -scrolltop + conty;
-					if(contop < marginTop){
-						var scrolldist = marginTop - contop;
-						percent = scrolldist / contheight * 100;
-	
-						if(percent > 100) percent = 0;
-					}
-					display = percent <= 0 ? 'none' : 'block';
-					bar.css({width: percent+"%", display: display});
 				});    
             });
         }
 
-        function selectIndex(idx){            
-            $items.removeClass('active');
-
-            selectIdx = idx;
-
-            if(selectIdx > -1) $items.eq(selectIdx).addClass('active');
-        }
-
         function scrollMoved(id){
             if($(id).length){
-                var movtop = $(id).offset().top - $component.height();
+				var topDistance = 0;
+				if($mainSticky.length) topDistance += $mainSticky.height();
+
+				var movtop = $(id).offset().top - topDistance+2;
+
+				var firstId = $component.find('.info-tab').eq(0).find('a').attr('href');
+				if(id == firstId) movtop -= $component.height();
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }
@@ -95,48 +103,6 @@ $(window).ready(function(){
     
         init();
     })();
-    
-    // vcui.require(['ui/sticky'], function () {
-    //      $('.KRC0040').vcSticky({marginTop:marginTop, usedAnchor:true});
-
-    //      marginTop += $('.KRC0040').outerHeight(true);
-
-    //      $(window).on('scroll', function(e){
-    //         var scrolltop = $(window).scrollTop();
-            
-    //         $('.KRC0040').find('.info-tab').each(function(idx, item){
-    //             var percent = 0, display;
-    //             var contID = $(item).find('a').attr('href');
-    //             var bar = $(item).find('a .bar');
-	// 			var cont = $(contID);
-	// 			var conty = cont.offset().top;
-	// 			var contheight = cont.outerHeight(true);
-				
-	// 			var endanchor = $(item).find('a').data('endTarget');
-	// 			if(endanchor && $(endanchor).length){
-	// 				var endy = $(endanchor).offset().top;
-	// 				var endheight = $(endanchor).outerHeight(true);
-	// 				contheight = endy - conty + endheight;
-	// 			}
-
-    //             var contop = -scrolltop + conty;
-    //             if(contop < marginTop){
-    //                 var scrolldist = marginTop - contop;
-    //                 percent = scrolldist / contheight * 100;
-
-    //                 if(percent > 100) percent = 0;
-    //             }
-    //             display = percent <= 0 ? 'none' : 'block';
-    //             bar.css({width: percent+"%", display: display});
-    //         });            
-	// 	 });
-		 
-	// 	 $(window).on('resize', function(){
-	// 		 if($('.KRP0009').length){
-	// 			$('.KRC0040').vcSticky("setMarginTop", [$('.KRC0040').outerHeight(true)]);
-	// 		 }
-	// 	 })
-    // });
     
 	// Make it easier to find ID values ​​in the teamsite edit screen
 	window.Clipboard = (function (window, document, navigator) {

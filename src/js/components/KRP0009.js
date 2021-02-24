@@ -19,7 +19,6 @@ $(window).ready(function(){
         var $subSticky;
 
         var selectIdx;
-        var comptop;
 
         function init(){
             setting();
@@ -29,12 +28,14 @@ $(window).ready(function(){
         function setting(){
             $component = $('.KRP0009');
             $items = $component.find('.tab-menu-belt li');
+            $items.removeClass('active');
 
             $subSticky = $('.KRC0040');
+            setSubStickyStatus();
+
+            $component.parent().height($component.height());
 
             selectIdx = 0;
-
-            comptop = $component.offset().top;
         }
 
         function bindEvents(){
@@ -47,15 +48,31 @@ $(window).ready(function(){
             })
         
             $(window).on('scroll.KRP0009', function(e){
-                var scrolltop = $(window).scrollTop();                
-                var compheight = $component.height();
-                
-                if(-scrolltop + comptop < 0){
+                var scrolltop = $(window).scrollTop(); 
+
+                var comptop = $component.parent().offset().top;        
+                var dist = -scrolltop + comptop;
+                if(dist <= 0){
                     $component.addClass('fixed').css({
                         position:"fixed",
                         top:0,
                         zIndex:90
-                    })
+                    });
+
+                    var leng = $items.children().length;
+                    var lastId = $items.eq(leng-1).find('a').attr('href');
+                    var bottom = $(lastId).offset().top + $(lastId).outerHeight(true);
+                    if(-scrolltop + bottom < 0){
+                        if(!$component.data("isShow")){
+                            $component.data('isShow', true);
+                            $component.transition({y:-$component.height()}, 300, "easeInOutCubic");
+                        } 
+                    } else{
+                        if($component.data("isShow")){
+                            $component.data('isShow', false);
+                            $component.transition({y:0}, 300, "easeInOutCubic");
+                        } 
+                    }
                 } else{
                     $component.removeClass('fixed').removeAttr('style');
                 }
@@ -65,7 +82,7 @@ $(window).ready(function(){
                     var id = $(item).find('a').attr('href');
                     if($(id).length){
                         var contop = $(id).offset().top;
-                        if(-scrolltop + contop < compheight){
+                        if(-scrolltop + contop < $component.height()){
                             currentIdx = idx;
                         }
                     }
@@ -81,11 +98,31 @@ $(window).ready(function(){
             selectIdx = idx;
 
             if(selectIdx > -1) $items.eq(selectIdx).addClass('active');
+
+            setSubStickyStatus();
+        }
+
+        function setSubStickyStatus(){
+            var isShow = $subSticky.data('isShow')
+            if(selectIdx == 0){
+                if(!isShow){
+                    $subSticky.data('isShow', true);
+                    $subSticky.slideDown(150);
+                }
+            } else{
+                if(isShow){
+                    $subSticky.data('isShow', false);
+                    $subSticky.slideUp(150);
+                }
+            }
         }
 
         function scrollMoved(id){
             if($(id).length){
                 var movtop = $(id).offset().top - $component.height();
+
+                var firstId = $items.eq(0).find('a').attr('href');
+                if(id == firstId) movtop += 2;
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }

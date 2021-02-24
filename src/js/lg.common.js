@@ -401,6 +401,10 @@ var isApp = function(){
                             // 모달이 뜨면 내부 컨텐츠 영역이 포커싱되도록 tabindex를 설정
                             //this.$('.pop_contents').attr('tabindex', 0);
                             //console.log(this);
+
+                            $('html, body').css({
+                                overflow:"hidden"
+                            });
     
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
@@ -415,6 +419,11 @@ var isApp = function(){
                             if(this.$('.ui_pop_sticky').length > 0){
                                 this.$('.ui_pop_sticky').vcSticky();
                             }
+                        },
+                        modalhidden: function(e){
+                            $('html, body').css({
+                                overflow:"visible"
+                            });
                         }
                     }
                 });
