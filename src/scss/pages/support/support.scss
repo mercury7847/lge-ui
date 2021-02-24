@@ -1154,6 +1154,10 @@
                     padding:0 16px 40px;
                     .btn {
                         display:block;
+                        margin-top: 12px;
+                        &:first-child {
+                            margin-top: 0;
+                        }
                     }
                 }
             }
