@@ -271,7 +271,7 @@
                     }
                     .mypage-layer {
                         .mypage-layer-inner {
-                            width: 176px;
+                            min-width: 157px;
                         }
                     }
                 }
@@ -280,11 +280,11 @@
                     position: absolute;
                     top: 24px;
                     left: 50%;
-                    z-index: 100;
+                    z-index: 103;
                     transform: translateX(-50%);
                     padding-top: 14px;
                     .mypage-layer-inner {
-                        min-width: 150px;
+                        min-width: 138px;
                         padding: 4px 0;
                         border-radius: 8px;
                         background-color: #fff;
@@ -292,9 +292,8 @@
                         text-align: center;
                         a {
                             display: block;
-                            padding: 12px 0;
-                            font-weight: 500;
-                            @include font-medium;
+                            padding: 8px 0;
+                            @include font-small;
                             &:hover,
                             &:focus {
                                 border-radius: 4px;
@@ -798,18 +797,18 @@
                 line-height: 26px;
             }
             a.category-item {
-                background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right center;
+                background: url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') no-repeat right center;
             }
             .sub-category {
-                margin-top: 12px;
+                margin-top: 16px;
                 li {
-                    margin-bottom: 4px;
+                    margin-bottom: 8px;
                     &:last-child {
                         margin-bottom: 0;
                     }
                     a {
                         padding-right: 18px;
-                        @include font-medium;
+                        @include font-small;
                         color: #111;
                         &[target='_blank'] {
                             background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
@@ -825,15 +824,14 @@
     }
 
     .category-related {
-        margin-bottom: 28px;
+        margin-bottom: 32px;
         .link-item {
             display: inline-block;
             padding-right: 20px;
             margin-bottom: 4px;
-            background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right center;
-            font-weight: 500;
+            background: url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') no-repeat right center;
             @include font-small;
-            color: $color-gray-1;
+            text-decoration: underline;
         }
     }
     .category-hashtag {
@@ -870,25 +868,26 @@
                 .btn-play {
                     position: relative;
                     display: inline-block;
-                    width: 16px;
-                    height: 16px;
+                    width: 18px;
+                    height: 18px;
                     margin-left: 12px;
                     background: #fff no-repeat 0 0;
                     font-size: 0;
                 }
                 &.play {
                     .btn-play {
-                        background-image: url('/lg5-common/images/icons/btn-play-16-gray.svg');
+                        background-image: url('/lg5-common/images/icons/btn-play-18.svg');
                     }
                 }
                 &.stop {
                     .btn-play {
-                        background-image: url('/lg5-common/images/icons/btn-pause-16-gray.svg');
+                        background-image: url('/lg5-common/images/icons/btn-pause-18.svg');
                     }
                 }
             }
         }
         .slide-controls {
+            display: none;
             .btn-arrow {
                 position: absolute;
                 top: 6.563vw;
@@ -1247,6 +1246,7 @@
     }
 
     &.active {
+        position: fixed;
         top: 11px;
         right: 11px;
         z-index: 100;
@@ -1312,6 +1312,19 @@
             }
             span {
                 color: $color-primary;
+            }
+        }
+        .app-settings-button {
+            display: none;
+            position: absolute;
+            right: 11px;
+            top : -4px;
+            width: 34px;
+            height: 34px;
+            background: url('/lg5-common/images/icons/icon-app-settings.svg') no-repeat center center;
+            background-size: 20px;
+            &.active {
+                display: block;
             }
         }
     }

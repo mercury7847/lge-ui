@@ -16,7 +16,11 @@
         '</li>';
     var topicTmpl = 
         '{{#each (item, index) in list}}' +
+        '{{# if (item.code) { #}}' +
         '<option value="{{item.code}}">{{item.name}}</option>' +
+        '{{# } else { #}}' +
+        '<option value="{{item.value}}">{{item.name}}</option>' +
+        '{{# } #}}' +
         '{{/each}}';
 
     var videoGuide = {
@@ -76,9 +80,12 @@
             self.$cont.commonModel({
                 selected: self.param
             });
-            self.$cont.commonModel('complete');
             self.$resultPagination.pagination();
             self.$productBar.vcSticky();
+        
+            if (!self.param.subCategory) {
+                self.$cont.commonModel('complete');
+            }
         },
         drawTopicList: function(data) {
             var self = this;
@@ -121,12 +128,18 @@
                 popular = data.popular;
 
             self.drawSummary(param);
+            // self.$searchKeyword.vcInputClearButton('changeVal', self.param.keyword);
+            self.$searchKeyword.val(self.param.keyword);
+            self.$searchKeyword.trigger('update');
 
             if (popular.listData.length) {
-                for (var key in data) {
+            for (var key in data) {
                     if (key == 'popular' || key == 'newest') {
                         $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
                         data[key].listData.forEach(function(item) {
+                            item.title = item.title.replace(/¶HS¶/g, '<span class="keyword">');
+                            item.title = item.title.replace(/¶HE¶/g, '</span>');
+                            
                             html += vcui.template(listDataTmpl, item);
                         });
 
@@ -157,7 +170,9 @@
                 $keyword.empty();
             }
 
+            // self.$searchKeyword.vcInputClearButton('changeVal', keyword);
             self.$searchKeyword.val(keyword);
+            self.$searchKeyword.trigger('update');
         },
         setPopularKeyword: function(data) {
             var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
@@ -168,11 +183,11 @@
 
             var param = {
                 topic: self.param.topic,
-                topicNm: self.param.topicName,
+                topicNm: self.param.topicNm,
                 category: self.param.category,
-                categoryNm: self.param.categoryName,
+                categoryNm: self.param.categoryNm,
                 subCategory: self.param.subCategory,
-                subCategoryNm: self.param.subCategoryName,
+                subCategoryNm: self.param.subCategoryNm,
                 productCode: self.param.productCode
             }
 
@@ -236,12 +251,13 @@
                     var resultData = result.data;
                     
                     self.drawList(result);
-                    self.drawTopicList(resultData);
                     self.setPopularKeyword(resultData);
-                    
+
                     self.$myProductWarp.hide();
 
                     if (param.subCategory) {
+                        self.drawTopicList(resultData);
+
                         self.$cont.commonModel('updateSummary', {
                             product: [param.categoryNm, param.subCategoryNm, param.modelCode],
                             reset: 'product'
@@ -264,19 +280,48 @@
             });
 
             self.$searchTopic.on('change', function() {
-                var param = { topic: self.$searchTopic.val(), topicNm: self.$searchTopic.find('option:selected').text() };
-                self.param = $.extend(self.param, param);
-                self.requestSubTopic();
+                var val = self.$searchTopic.val();
+
+                if (val) {
+                    var param = { 
+                        topic: val,
+                        topicNm: val ? self.$searchTopic.find('option:selected').text() : '',
+                        subTopic: '',
+                        subTopicNm: '',
+                        page:1
+                    };
+                    self.param = $.extend(self.param, param);
+                    self.requestSubTopic();
+                } else {
+                    var param = { 
+                        topic: '',
+                        topicNm: '',
+                        subTopic: '',
+                        subTopicNm: '',
+                        keyword: '',
+                        page:1
+                    };
+                    self.param = $.extend(self.param, param);
+
+                    self.$stepInput.find('#keyword').val('');
+                    self.drawSummary();
+                    self.drawSubTopicList();
+                    self.requestData();
+                }
             });
 
             self.$searchSubTopic.on('change', function() {
-                var param = { 
-                    page:1, 
-                    subTopic: self.$searchSubTopic.val(),
-                    subTopicNm: self.$searchSubTopic.find('option:selected').text()
-                };
-                self.param = $.extend(self.param, param);
-                self.requestData();
+                var val = self.$searchSubTopic.val();
+
+                if (val) {
+                    var param = { 
+                        page:1, 
+                        subTopic: self.$searchSubTopic.val(),
+                        subTopicNm: self.$searchSubTopic.find('option:selected').text()
+                    };
+                    self.param = $.extend(self.param, param);
+                    self.requestData();
+                } 
             });
 
             self.$searchKeyword.on('keydown', function(e) {

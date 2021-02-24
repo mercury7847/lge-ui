@@ -3,6 +3,10 @@
         <h1 class="tit"><span>콘텐츠 만족도 평가</span></h1>
     </header>
     <section class="pop-conts survey-pop">
+        <input type="hidden" name="hiddenInput1" value="hiddenInput1_value">
+        <input type="hidden" name="hiddenInput2" value="hiddenInput2_value">
+        <input type="hidden" name="hiddenInput3" value="hiddenInput3_value">
+
         <div class="form-infos">
             <p class="req" aria-disabled="true">필수 입력 사항</p>
         </div>
@@ -10,7 +14,7 @@
             @@if (context.service) {
             <div class="forms type3">
                 <div class="tit">
-                    <p class="label req">고객님의 제품 ”[OLED55B7K]”으로 어떤 서비스를 이용하셨나요 ?<span class="blind">필수입력</span></p>
+                    <p class="label req">고객님의 제품 ”[<em class="model">OLED55B7K</em>]”으로 어떤 서비스를 이용하셨나요 ?<span class="blind">필수입력</span></p>
                 </div>
                 <div class="conts">
                     <div class="rdo-list-wrap">
@@ -91,7 +95,8 @@
             </div>
             <div class="forms type3">
                 <div class="tit">
-                    <label for="content" class="req">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.<span class="blind">필수입력</span></label>
+                    <!-- <label for="content" class="req">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.<span class="blind">필수입력</span></label> -->
+                    <label for="content">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.</label>
                 </div>
                 <div class="conts">
                     <div class="text-form">   

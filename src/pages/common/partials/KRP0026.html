@@ -12,12 +12,16 @@
 			.align-right : right
 			.align-center : center
 		-->
-		<section class="component KRP0026">
+		<section class="component KRP0026"
+			data-list-url="/lg5-common/data-ajax/KRP0026/KRP0026.json"
+		>
 			<div class="component-inner">
 
 				<!-- tab -->
 				<div class="page-header wide border">
-					<div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
+					<!-- 210224 클래스명 수정 -->
+					<div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
+					<!-- //210224 클래스명 수정 -->
 						<ul class="tabs">
 							<li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
 							<li><a href="#av">TV/AV</a></li>
@@ -64,8 +68,8 @@
 				<div class="story-list-wrap">
 					@@include('./common/modules/list-sorting.html', {
 						"select" : [
-							{"option" : "인기순"},
-							{"option" : "최신순"}
+							{"option" : "최신순", "default":'value="sort_new"'},
+		                    {"option" : "인기순", "default":'value="sort_popular"'}
 						]
 					})
 					<div class="story-list">
@@ -94,9 +98,10 @@
 							}
 						])
 						</ul>
-						@@include('./common/support/pagination.html', {
+						<!-- @@include('./common/support/pagination.html', {
 							count: 5
-						})
+						}) -->
+						<div class="pagination" data-page="2" data-visible-count="5" data-total-count="3"></div>
 					</div>
 					
 				</div>

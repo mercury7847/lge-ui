@@ -98,7 +98,7 @@ var res = {
 				"KRP0016_Social Share[KRP0019]" : ["/html/components/KRP0016.html","","검수완료"],
 				"KRP0017_Sitemap[KRP0020]" : ["/html/components/KRP0017.html","","검수완료"],
 				"KRP0018_Story tag[KRP0023]" : ["/html/components/KRP0018.html","","검수완료"],
-				"KRP0019_Best review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
+				"KRP0019_PLP review[KRP0024]" : ["/html/components/KRP0019.html","","검수완료"],
 				"KRP0020_Event list for category[KRP0025]" : ["/html/components/KRP0020.html","","검수완료"],
 				"KRP0021_PDP_Please note[KRP0027]" : ["/html/components/KRP0021.html","","검수완료"],
 				"KRP0022_Event list[KRP0028]" : ["/html/components/KRP0022.html","","검수완료"],
@@ -234,7 +234,13 @@ var res = {
                     "시스템 점검" : ["/html/UTS/COMF0001.html","","검수요청"],
                     "505Error/404Error" : ["/html/UTS/COMF0002.html","","검수요청"],
                     "공통 에러페이지" : ["/html/UTS/COMF0003.html","","검수요청"]
-                }
+                },
+				"이메일" : {
+					"주문완료(가상계좌)" : ["/html/UTC/OBSF9021_1.html","","검수요청"],
+					"주문완료(신용카드)" : ["/html/UTC/OBSF9021_2.html","","검수요청"],
+					"청약완료" : ["/html/UTC/OBSF9021_3.html","","검수요청"],
+					"계약서발급" : ["/html/UTC/OBSF9021_4.html","","검수요청"],
+				}
 			},
 			"B2C메인(MA)" : {
 				"B2C메인" : ["/html/MA/MKTF1000.html","",""]
@@ -413,10 +419,6 @@ var res = {
 					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수완료"],
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수완료"],
 					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-				},
-				"메일폼" : {
-					"주문완료(가상계좌)" : ["/html/UTC/OBSF9021_1.html","","검수완료"],
-					"주문완료(신용카드)" : ["/html/UTC/OBSF9021_2.html","","검수완료"],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

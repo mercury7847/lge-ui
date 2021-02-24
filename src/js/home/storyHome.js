@@ -90,6 +90,8 @@
             });
 
             bindEvent();
+
+            //var isLogin = 
     
             loadStoryList('user_story', 1, 'UserStory');
             loadStoryList('new_story', 1, 'NewStory');

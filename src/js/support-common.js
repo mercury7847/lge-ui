@@ -858,6 +858,7 @@ CS.MD.commonModel = function() {
 
                 self.$categoryBox.removeClass(opt.stepActiveClass);
                 self.$modelBox.addClass(opt.stepActiveClass);
+                self.focus(self.$selectedModelBar);
             });
 
             // 모델명 선택

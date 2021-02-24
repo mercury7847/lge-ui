@@ -8,7 +8,33 @@
         }
     },
     "data":{
-        "selectTags": null,
+        "selectTags": {
+            "isSubscription": true,
+            "tagName": "가을",
+            "tagCode": "tagCode"
+        },
+        "recommendTags": [
+            {
+                "tagCode": "가전은역시LG",
+                "tagName": "가전은역시LG"
+            },
+            {
+                "tagCode": "웰빙",
+                "tagName": "웰빙"
+            },
+            {
+                "tagCode": "코로나싱글라이프싱글",
+                "tagName": "코로나싱글라이프싱글"
+            },
+            {
+                "tagCode": "미세먼지",
+                "tagName": "미세먼지"
+            },
+            {
+                "tagCode": "",
+                "tagName": "반려동물"
+            }
+        ],
         "storyList": [
             {
                 "contentsType": "image",

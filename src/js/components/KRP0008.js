@@ -716,9 +716,9 @@
                     $dropDown.vcDropdown("close");
 
                     var cardData = {};
-                    var cardId = $this.attr('href').replace("#","");
-                    if(cardId) {
-                        cardData.cardId = cardId;
+                    var cardNameCode = $this.attr('href').replace("#","");
+                    if(cardNameCode) {
+                        cardData.cardNameCode = cardNameCode;
                     }
                     var cardSale = $this.data('cardSale');
                     if(cardSale) {
@@ -791,7 +791,7 @@
                     "groupTitle":null,
                     "listItem":[
                         {
-                            "cardId":null,
+                            "cardNameCode":null,
                             "title":"이용시 최대 " + vcui.number.addComma(max) + "원 할인",
                             "maxSalePrice":0
                         }
@@ -823,7 +823,7 @@
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
                     var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                    var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
                     cardData.forEach(function(obj, idx) {
                         if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
@@ -831,7 +831,7 @@
                         if(obj.listItem) {
                             obj.listItem.forEach(function(item, index) {
                                 item.label = item.title;
-                                if(!item.cardId) {
+                                if(!item.cardNameCode) {
                                     item.label = "선택취소"
                                 }
                                 selectList.append(vcui.template(cardItemTemplate, item));
@@ -1063,8 +1063,8 @@
                         param.caresolutionSalesCodeSuffix = careData.caresolutionSalesCodeSuffix;
                     }
                     var cardData = $paymentAmount.data('cardData');
-                    if(cardData && cardData.cardId) {
-                        param.cardId = cardData.cardId;
+                    if(cardData && cardData.cardNameCode) {
+                        param.cardNameCode = cardData.cardNameCode;
                     }
 
                     var ajaxUrl = $dm.data('ajaxUrl');

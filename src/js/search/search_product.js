@@ -655,6 +655,9 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            if(!item.hash) {
+                                item.hash = [];
+                            }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
