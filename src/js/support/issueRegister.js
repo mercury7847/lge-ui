@@ -9,10 +9,10 @@
             'ui/imageFileInput'
         ], function() {    
             $('.ui_imageinput').vcImageFileInput({
-                totalSize: '4000000',
+            totalSize: 40 * 1024 * 1024,
                 format: 'jpg|jpeg|png|gif',
                 message: {
-                    size: '첨부파일 크기는 4MB 이하로 등록 해주세요.'
+                    size: '첨부파일 사이즈는 4MB 이내로 등록 가능합니다.'
                 }
             });
         });
@@ -46,7 +46,7 @@
                 if (data.resultFlag == 'Y') {
                     if (files.length == 1) {
                         if (data.successCount == 1) {
-                            obj = {title: '사진이 등록 되었습니다.'};
+                            obj = {title: '1개 사진이 등록 되었습니다.'};
                         }
                     } else {
                         if (data.successCount == 1) {
@@ -66,7 +66,7 @@
                     });
                 } else if (data.resultFlag == 'N') {
                     obj = {title: '사진 업로드에 실패했습니다.'};
-                    desc = data.resultMessage
+                    desc = '실패 사유 : ' + data.resultMessage
                 }
 
                 lgkorUI.alert(desc, obj);

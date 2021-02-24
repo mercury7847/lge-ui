@@ -3,65 +3,58 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
     var satisfaction = (function(){
         if ($('#surveyPopup').length < 1) return false;
         
+        var $popup = $('#surveyPopup'),
+            $popupCont = $popup.find('.survey-pop');
+
+        var surveyUrl = $popup.data('surveyUrl');  
+        var register = {
+            serviceName: {
+                msgTarget: '.service-err-block'
+            },
+            csaFlag: {
+                msgTarget: '.csa-err-block'
+            },
+            rating: {
+                msgTarget: '.err-block'
+            },
+            content: {
+                minLength: 20,
+                maxLength: 120,
+                msgTarget: '.err-block'
+            }
+        };
+
         vcui.require(['ui/validation'], function () {
-            var $cont = $('.survey-pop');
-            var register = {
-                privcyCheck: {
-                    msgTarget: '.err-block'
-                },
-                userName: {
-                    msgTarget: '.err-block'
-                },
-                phoneNo: {
-                    msgTarget: '.err-block'
-                },
-                gender: {
-                    msgTarget: '.gender-err-block'
-                },
-                age: {
-                    msgTarget: '.err-block'
-                },
-                serviceName: {
-                    msgTarget: '.service-err-block'
-                },
-                csaFlag: {
-                    msgTarget: '.csa-err-block'
-                },
-                rating: {
-                    msgTarget: '.err-block'
-                },
-                content: {
-                    msgTarget: '.err-msg'
-                }
-            };
             var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
         
-            $('#surveyPopup').find('.btn-confirm').on('click', function() {
-        
+            $popup.find('.btn-confirm').on('click', function() {
                 var result = validation.validate(),
                     data = $.extend({}, validation.getAllValues());
         
                 if (result.success) {
-                    lgkorUI.requestAjaxDataPost($cont.data('ajax'), data, function(result) {
-                        if (result.data.resultFlag == 'Y') {
-                            $('#surveyPopup').vcModal('hide');
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxDataPost(surveyUrl, data, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag == 'Y') {
+                            $popup.vcModal('hide');
                         }
         
                         lgkorUI.alert("", {
-                            title: result.data.resultMessage
+                            title: data.resultMessage
                         });
+                        lgkorUI.hideLoading();
                     })
                 }
             });
         
-            $('#surveyPopup').on('modalhidden', function(e) {
-                //console.log(2)
-                //$('.ui_modal_dim').stop().fadeOut();
-                $cont.find('input,textarea').not(':readonly').val('');
+            $popup.on('modalhidden', function(e) {
+                $popupCont.find('input[type=radio]').prop('checked', false);
+                $popupCont.find('input,textarea').val('');
+                $popupCont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
+                $popupCont.find('#rating').vcStarRating('selectedIndex', 0);
+                validation.reset();
             });
         });
     })();
-});  
-
-// (function(){
-// })();
+});
