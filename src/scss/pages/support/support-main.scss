@@ -485,8 +485,8 @@
         @include tablet {
             .support-list-slider { 
                 .indi-wrap {
-                    display: block;
-                    bottom:30px;
+                    display: block !important;
+                    bottom:40px;
                 }
             }
         }
