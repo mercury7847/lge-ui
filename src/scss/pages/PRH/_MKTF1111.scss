@@ -266,6 +266,7 @@
             }
             .video-area {
                 position: relative;
+                border-radius: 8px;
                 .btn-video {
                     display: none;
                     position: absolute;
@@ -325,6 +326,12 @@
                 }
             }
             @include pc {
+                .video-area {
+                    overflow: hidden;
+                    img {
+                        transition: all 300ms ease;
+                    }
+                }
                 &:hover,
                 &:focus {
                     &:after {
@@ -342,6 +349,11 @@
                     .video-area .btn-video,
                     .text-area {
                         display: block;
+                    }
+                    .video-area {
+                        img {
+                            transform: scale(1.1);
+                        }
                     }
                 }
             }
@@ -364,6 +376,12 @@
             width: 33.33%;
             padding: 0 12px;
             a {
+                .image {
+                    overflow: hidden;
+                    img {
+                        transition: all 300ms ease;
+                    }
+                }
                 &:hover,
                 &:focus {
                     &:after {
@@ -378,6 +396,11 @@
                     }
                     .btn {
                         display: inline-block;
+                    }
+                    .image {
+                        img {
+                            transform: scale(1.1);
+                        }
                     }
                 }
             }
