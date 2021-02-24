@@ -8,9 +8,6 @@
     }
     .board-view {
         position:relative;
-        @include mobile {
-            padding:0 16px;
-        }
         &-head {
             padding-bottom:16px;
             border-bottom:2px solid #222;
@@ -27,7 +24,7 @@
                     @include clearfix;
                     > li {
                         float:left;
-                        color:#767676;
+                        color:#000;
                         @include font-small;
                         font-weight:500;
                         & + li {
@@ -41,7 +38,7 @@
                                 top:6px;
                                 width:1px;
                                 height:14px;
-                                background:#979797;
+                                background:#ddd;
                             }
                         }
                         .point {
@@ -57,10 +54,34 @@
                 .head {
                     &-infos {
                         margin-top:10px;
+                        display: flex;
+                        flex-wrap: wrap;
                         > li {
                             & + li {
                                 &:before {
                                     height:10px;
+                                }
+                            }
+                            &:nth-child(2) {
+                                width: 200px;
+                            }
+                            &:nth-child(3) {
+                                padding-left: 0;
+                                margin-left: 0;
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                        &.category-type {
+                            > li {
+                                float: none;
+                                & + li {
+                                    margin-left: 0;
+                                    padding-left: 0;
+                                    &:before {
+                                        display: none;
+                                    }
                                 }
                             }
                         }
@@ -72,7 +93,7 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
-            padding:16px 0;
+            padding:12px 0;
             border-bottom: 1px solid #ddd;
             .tooltip-wrap:only-child {
                 margin-left:auto;
@@ -86,12 +107,12 @@
                 }
                 /* video detail */
                 .video-content {
-                    padding:64px 40px;
+                    padding:48px 116px;
                     border-radius: 8px;
                     background-color: #f4f4f4;
-                    margin-bottom: 40px;
+                    margin-bottom: 64px;
                     @include mobile {
-                        padding: 32px 16px 60px;
+                        padding: 32px 16px;
                         margin: 0 -16px 40px;
                     }
                 }
@@ -109,20 +130,31 @@
                     color:#000;
                     @include font-medium;
                 }
+                .point {
+                    color: #da0f47;
+                }
                 img {
                     max-width:100%;
                 }
             }
             @include mobile {
-                padding:32px 0 40px;
+                padding:40px 0 60px;
+                .survey-banner-wrap {
+                    padding: 0;
+                }
                 #viewContent {
                     padding:0;
                 }
             }
         }
+        + .common-banner {
+            margin-top: 40px;
+        }
+        @include mobile {
+            padding:0 16px;
+        }
     }
     .board-navi {
-        border-bottom: 1px solid #ddd;
         .navi {
             display:flex;
             padding:24px;
@@ -151,6 +183,9 @@
             &-views {
                 color: #767676;
                 margin-left: 64px;
+            }
+            &:last-child {
+                border-bottom: 1px solid #ddd;
             }
         }
         @include mobile {
@@ -233,6 +268,12 @@
                     width:100%;
                 }
             }
+        }
+    }
+    + .btn-group {
+        margin-top: 64px;
+        @include mobile {
+            margin-top: 40px;
         }
     }
 }

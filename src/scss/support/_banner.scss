@@ -53,23 +53,28 @@
         max-width: 1380px + 80px;
         margin:0 auto;
         padding:0 40px;
+        .banner-inner {
+            padding:48px 0;
+        }
         .banner-tit {
             margin-bottom:48px;
             font-size:32px;
-            line-height:48px;
             text-align:center;
             word-break:keep-all;
         }
         .btn-wrap {
             text-align:center;
         }
-
-        .banner-inner {
-            padding:40px 0;
-        }
     }
     &.gray {
         background:#f4f4f4;
+        .banner-tit {
+            margin-bottom:24px;
+            font-size:24px;
+        }
+    }
+    + .board-navi {
+        margin-top: 120px;
     }
     @include tablet {
         padding:0;
@@ -95,7 +100,18 @@
             }
         }
         &.gray {
-            background:#fff;
+            padding: 40px 16px;
+            margin-left: 16px;
+            margin-right: 16px;
+            border-top: none;
+            .btn-wrap {
+                .btn {
+                    width:auto;
+                }
+            }
+        }
+        + .board-navi {
+            margin-top: 60px;
         }
     }
     
