@@ -124,13 +124,6 @@ var toastMessage = {
         $id.css("z-index", appCnt).stop().animate({'bottom':'-60px'}, 200, function(){
             $("html").css("overflow-y","scroll");
             $(beforeFocusEleToast).focus();
-            //if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                if(timesetIdx != null && timesetIdx != "" && timesetIdx != undefined){
-                    if(events){
-                        $(".time-setting .inner div").eq(timesetIdx).find("label:not([class*=rst-time])").attr("tabindex", 0).focus().trigger("click");
-                    }
-                }
-            //}
             $(this).remove();
         });
     }
@@ -225,7 +218,6 @@ $(document).ready(function(){
             }
         }
     });
-
     //마케팅 푸시 알림 받기
     $("#mktPushAlarmChk").off("click").on({
         click : function(){
@@ -240,7 +232,6 @@ $(document).ready(function(){
             }
         }
     });
-
     //옵션창 열기
     $("#btn-opt-open").off("click").on({
         click : function(){
@@ -299,14 +290,14 @@ $(document).ready(function(){
             $(data).stop().animate({"left":"100%"}, 250);
         }
     });
-
+    //쇼핑정보
     $("#btn-mkt").off("click").on({
         click : function(){
             beforeFocusEle = "#btn-mkt";
             optModal.open("modalShopInfo", "alertdialog", "<em>쇼핑정보가 필요하신가요?</em><p>마케팅 수신동의하고 <br>다양한 이벤트 및 혜택을 받아보세요!</p>", "동의", "동의안함");
         }
     });
-
+    //바코드
     $("#btn-barcode").off("click").on({
         click : function(){
             beforeFocusEle = "#btn-barcode";
