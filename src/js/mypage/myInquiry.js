@@ -24,7 +24,7 @@
         '</ul>' +
     '</dd></dl>';
 
-    var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>';
+    //var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>';
 
     $(window).ready(function() {
         var myWrite = {
@@ -84,6 +84,8 @@
                     self.requestData(param);
                 });
 
+                // 2021-02-24 수정
+                /*
                 //서비스 상세 팝업
                 var $detailPopup = self.$contWrap.find('#event-modal');
 
@@ -140,6 +142,7 @@
                     var url = $(this).attr('href');
                     location.href = url;
                 });
+                */
             },
 
             requestData: function(param) {
@@ -208,6 +211,25 @@
             },
 
             openModalFromHtml: function(html) {
+                $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
+                    var title = $(this).data('title');
+                    var url = $(this).data('src');
+                    if(url) {
+                        var obj = {title:title +'<br>화면으로 이동합니다.', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                            var form = $('<form action="' + url + '" method="post"></form>');
+                            $('body').append(form);
+                            form.submit();
+                        }};
+                        //var desc = title +'<br>화면으로 이동합니다.';
+                        lgkorUI.confirm(null, obj);
+                    }
+                }).on('click.modal-link-event','a.modal-link',function(e){
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    if(url) {
+                        window.open(url, '_blank', 'width=800, height=800');
+                    }
+                });
                 $('#event-modal').html(html).vcModal();
             },
 
@@ -392,7 +414,6 @@
                     $popup.vcModal();
                 });
             },
-            */
 
             selectPopupConfirmType: function($popup, type) {
                 $popup.attr('data-type', type);
@@ -492,6 +513,7 @@
                     $detailPopup.vcModal();
                 });
             }
+            */
         };
 
         myWrite.init();                

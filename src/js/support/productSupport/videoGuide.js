@@ -10,7 +10,7 @@
                         '<span class="category">{{category}}</span>' +
                         '<span class="topic">{{topic}}</span>' +
                     '</div>' +
-                    '<h4 class="tit">{{title}}</h4>' +
+                    '<h4 class="tit">{{#raw title}}</h4>' +
                 '</div>' +
             '</a>' +
         '</li>';
@@ -331,9 +331,8 @@
                 }
             });
 
-            $('.search-layer').on('click', '.keyword-box a', function(e) {
-                e.preventDefault();
-                self.$searchBtn.trigger('click', [$(this).text().trim()]);      
+            self.$keywordWrap.on('keywordClick', function() {
+                self.$searchBtn.trigger('click', [self.$searchKeyword.val().trim()]);
             });
 
             self.$searchBtn.on('click', function(e, keyword) {

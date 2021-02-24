@@ -492,8 +492,8 @@
 
 .select-wrap .ui-selectbox-wrap .ui-selectbox-list .ui-select-scrollarea {
     max-height:220px;
-    overflow:hidden;
-    // overflow-y:auto;
+    // overflow:hidden;
+    overflow-y:auto;
 }
 .select-wrap .ui-selectbox-wrap .ui-selectbox-list {
     .ui-select-scroll {

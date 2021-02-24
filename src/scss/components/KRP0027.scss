@@ -5,11 +5,25 @@
 
 .KRP0027 {
     .page-header.border.wide {
+        .tabs-wrap {
+            text-align:left;
+        }
         .tabs-wrap.btn-type {
             padding:20px 0 24px;
             @include mobile {
                 padding-bottom:12px;
             }
+        }
+    }
+    .page-header.border.wide {
+        .tabs-wrap.border-type {
+            padding:0 40px;
+            @include mobile {
+                padding-bottom:12px;
+            }
+        }
+        .title + .tabs-wrap {
+            padding-top:80px;
         }
     }
     .cont-wrap {

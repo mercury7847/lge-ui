@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "searchList": [
+            {
+                "url": "/html/CS/CSRF6075.html",
+                "factoryID": "factoryID",
+                "category": "TV/프로젝터"
+            },
+            {
+                "url": "/html/CS/CSRF6075.html",
+                "factoryID": "factoryID",
+                "category": "TV/프로젝터"
+            },
+            {
+                "url": "/html/CS/CSRF6075.html",
+                "factoryID": "factoryID",
+                "category": "TV/프로젝터"
+            },
+            {
+                "url": "/html/CS/CSRF6075.html",
+                "factoryID": "factoryID",
+                "category": "TV/프로젝터"
+            },
+            {
+                "url": "/html/CS/CSRF6075.html",
+                "factoryID": "factoryID",
+                "category": "TV/프로젝터"
+            }
+        ]
+    },
+    "param": {
+        "search": "검색어"
+    }
+}

@@ -1536,6 +1536,7 @@
         }
         .notice-list-controls {
             position: absolute;
+            z-index:0;
             top:50%;
             left:auto;
             right:-6px;
@@ -1630,10 +1631,10 @@
     //검색영역
     .keyword-search {
         margin-top:-33px;
+        padding:0 40px;
         .search-box {
             max-width:930px;
             width:100%;
-            padding:0 40px;
 
             .btn-search {
                 right:10px;
@@ -1652,12 +1653,26 @@
                 border-radius:30px;
             }
         }
+        .autocomplete-box {
+            .keyword-list {
+                a {
+                    display:block;
+                    max-width:none;
+                    @include clearfix;
+                    .model {
+                        float:left;
+                    }
+                    .category {
+                        float:right;
+                    }  
+                }
+            }
+        }
 
         @include mobile {
             margin-top:-31px;
-
+            padding:0 16px;
             .search-box {
-                padding:0 16px;
     
                 .btn-search {
                     right:0;

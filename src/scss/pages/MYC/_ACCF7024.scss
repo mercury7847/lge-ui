@@ -644,6 +644,10 @@
                 .btn {
                     margin:8px 4px 0;
                 }
+                a:not(.btn) {
+                    @include font-medium;
+                    text-decoration:underline;
+                }
                 @include mobile {
                     margin-top:6px;
                     margin-left:-3px;

@@ -881,7 +881,6 @@
 
     .video-box {
         height:360px;
-        max-width:1146px;
         margin:0 auto;
         display: flex;
         .column {
@@ -903,13 +902,14 @@
                 line-height:34px;
                 @include mobile {
                     margin-bottom: 12px;
-                    font-size: 14px;
-                    line-height:22px;
+                    font-size: 20px;
+                    line-height:1.4;
                 }
             }
             .subtitles-cont {
                 overflow-y:auto;
                 height: calc(100% - 58px);
+                padding-right: 36px;
                 color:#000;
                 font-size:16px;
                 line-height:26px;
@@ -934,6 +934,9 @@
                     height: 165px;
                     font-size:13px;
                     line-height:21px;
+                }
+                .subtitles-cont {
+                    height: 58.3336vw;
                 }
             }
         }
@@ -1061,13 +1064,6 @@
         br.m-br {
             display:none;
         }
-        @include mobile {
-            padding:0 16px;
-            padding-top:((260px * 100%) / 720px);
-            br.m-br {
-                display:block;
-            }
-        }
         .error-inner {
             display:inline-block;
             vertical-align:top;
@@ -1160,6 +1156,13 @@
                         }
                     }
                 }
+            }
+        }
+        @include mobile {
+            padding:0 16px;
+            padding-top:((260px * 100%) / 720px);
+            br.m-br {
+                display:block;
             }
         }
     }
