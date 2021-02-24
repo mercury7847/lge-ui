@@ -671,6 +671,9 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            if(!item.hash) {
+                                item.hash = [];
+                            }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
@@ -712,6 +715,9 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            if(!item.hash) {
+                                item.hash = [];
+                            }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             $list_ul.append(vcui.template(storyItemTemplate, item));
@@ -770,6 +776,9 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            if(!item.hash) {
+                                item.hash = [];
+                            }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             if(item.type=="product") {
                                 $list_ul.append(vcui.template(customerProductItemTemplate, item));

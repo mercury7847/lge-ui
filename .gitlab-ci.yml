@@ -81,7 +81,6 @@ prod:
   stage: build-n-deploy
   only:
     - master
-  when: manual
   script:
     ## build
     - rm -rf ./dist/*
@@ -100,12 +99,12 @@ prod:
     - cp -rf ./dist/${CI_COMMIT_SHA}/html/ ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/
     - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
 
-    - cd akamai-purge-script
+    #- cd akamai-purge-script
     - rsync -v -r -c ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${PROD_WEB_NAS}/htdocs/ > rsync-result.txt
-    - export PURGE_ROOT_URL=https://www.lge.co.kr
+    #- export PURGE_ROOT_URL=https://www.lge.co.kr
 
-    - npm install
-    - node akamai.js
+    #- npm install
+    #- node akamai.js
     - rm -rf ${PROD_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
     # Need to delete build files in dist directory
     - rm -rf ../dist/${CI_COMMIT_SHA}
