@@ -137,6 +137,9 @@
                     if (key == 'popular' || key == 'newest') {
                         $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
                         data[key].listData.forEach(function(item) {
+                            item.title = item.title.replace(/¶HS¶/g, '<span class="keyword">');
+                            item.title = item.title.replace(/¶HE¶/g, '</span>');
+                            
                             html += vcui.template(listDataTmpl, item);
                         });
 
