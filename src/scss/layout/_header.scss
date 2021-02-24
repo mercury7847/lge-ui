@@ -1314,6 +1314,19 @@
                 color: $color-primary;
             }
         }
+        .app-settings-button {
+            display: none;
+            position: absolute;
+            right: 11px;
+            top : -4px;
+            width: 34px;
+            height: 34px;
+            background: url('/lg5-common/images/icons/icon-app-settings.svg') no-repeat center center;
+            background-size: 20px;
+            &.active {
+                display: block;
+            }
+        }
     }
 }
 
