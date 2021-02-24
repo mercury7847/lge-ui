@@ -751,8 +751,8 @@
             }
             .btn-play {
                 display:inline-block;
-                width:20px;
-                height:20px;
+                width:16px;
+                height:16px;
                 background-size:100%;
                 background-repeat:no-repeat;
                 @include mobile {
@@ -817,6 +817,7 @@
         color:#000;
         @include font-small;
         font-weight:500;
+        text-decoration: underline;
         &::after {
             content:' ';
             position:absolute;
