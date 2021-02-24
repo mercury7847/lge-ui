@@ -204,6 +204,8 @@
                     phoneNumber: phoneNo,
                     clothFlag: clothFlag
                 };
+
+                self.$form.find('#page').val(e.page);
                 self.requestData(param);
             });
 
