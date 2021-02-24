@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/curation","search/search_all"]
     })
 <!--        pageJS: ["search/search_all"]-->
 <body>
@@ -67,7 +68,7 @@
                         <div class="filter-list">
                             <!-- Default - li 3줄만 보여짐 -->
                             <!-- 필터 항목 선택 시 .selected 추가  -->
-                            <ul class="default">
+                            <ul class="default selected">
                                 <li class="row">
                                     <div class="label">사이즈</div>
                                     <div class="content">

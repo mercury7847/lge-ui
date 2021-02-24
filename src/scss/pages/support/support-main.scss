@@ -13,18 +13,106 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
+        background: rgba(0,0,0,0.7);
 
         .popup-wrap {
             position: relative;
-            min-height:50%;
-            max-height:70%;
+            height:586px;
+            max-height:none;
+            border-radius:8px;
 
             &.active + .active {
-                margin-left:40px;
+                margin-left:24px;
+            }
+
+            .pop-conts {
+                overflow:auto;
+                height:392px;
+
+                &.mCustomScrollbar {
+                    overflow:hidden;
+                    padding:0;
+
+                    > .mCustomScrollBox > .mCSB_container {
+                        padding:48px 40px 0
+                    }
+                }
             }
             
+            
+            .headline {
+                margin-bottom:24px;
+                line-height:1.63;
+            }
+            .text-cont {
+                margin-top:32px;
+                font-size:16px;
+                line-height:1.63;
+            }
+                
+            .video-container {
+                .video-box {
+                    position: relative;
+                    height:0;
+                    padding-top:56.25%;
+                    margin-bottom:32px;
+                    iframe, video {
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width:100%;
+                        height:100%;
+                    }
+                }
+                .video-tit {
+                    font-size:24px;
+                    font-weight:bold;
+                    color:#000;
+                    line-height:1.42;
+                }
+    
+                .video-figure {
+                    overflow:auto;
+                    height:160px;
+                    margin-top:15px;
+                    padding:3px 0;
+                    border:1px solid #ddd;
+                    border-radius:10px;
+                    box-sizing:border-box;
+
+                    &.mCustomScrollBox {
+                        overflow:hidden;
+                    }
+    
+                    .figure-inner {
+                        padding:24px;
+                        font-size:14px;
+                        line-height:1.71;
+                        word-break: break-all;
+                        white-space: pre-line;
+                    }
+                }
+
+            }
+            .btn-wrap {
+                font-size:0;
+                margin-top:24px;
+                text-align: center;
+
+                .btn {
+                    margin:0 4px;
+                }
+            }
+
+            .btn {
+                &.full {
+                    width:100%;
+                    max-width:none;
+                }
+            }
         }
         .pop-footer {
+            padding:26px 40px 40px;
             &.align-between {
                 display: flex;
                 flex-direction: row;
@@ -36,15 +124,97 @@
     }
     @include tablet {
         &.init-type {
+            display: block;
+            overflow:auto;
+            padding:40px;
 
-            flex-direction: column;
+            &.center-only {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
     
             .popup-wrap {
-                flex:1;
+                height:506px;
+                margin:0 auto;
 
                 &.active + .active {
-                    margin-left:0;
-                    margin-top:40px;
+                    margin-left:auto;
+                    margin-top:24px;
+                }
+
+                .pop-conts {
+                    height:318px;
+                    &.mCustomScrollbar {
+                        padding:0;
+    
+                        > .mCustomScrollBox > .mCSB_container {
+                            padding:40px 40px 10px
+                        }
+                    }
+                }
+
+                .video-container {
+                    .video-figure {
+                        height:160px;
+                        margin-top:12px;
+                    }
+    
+                }
+             
+                .pop-footer {
+                    padding:26px 40px 40px;
+                    .btn-close {
+                        min-width: 115px;
+                        padding: 15px 0;
+                        font-size: 16px;
+                        line-height: 24px;
+                        border-radius: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        &.init-type {
+            padding:40px 16px;
+    
+            .popup-wrap {
+
+                .pop-conts {
+                    padding:40px 16px 10px;
+                    &.mCustomScrollbar {
+                        padding:0;
+    
+                        > .mCustomScrollBox > .mCSB_container {
+                            padding:40px 16px 10px
+                        }
+                    }
+                }
+
+                .video-container {
+                    .video-tit {
+                        font-size:20px;
+                    }
+        
+                    .video-figure {
+                        height:160px;
+                        margin-top:12px;
+        
+                        .figure-inner {
+                            padding:16px;
+                            font-size:12px;
+                        }
+                    }
+    
+                }
+             
+                .pop-footer {
+                    padding:26px 16px 40px;
+                    input + label {
+                        font-size:14px;
+                    }
                 }
             }
         }
@@ -255,6 +425,7 @@
             color:#fff;
             line-height:1.56;
             font-weight:bold;
+            text-align: left;
         }
         .btn-fast-support {
             margin-left:24px;
@@ -604,10 +775,10 @@
             .slide-controls {
                 display: none;
                 .prev {
-                    left:-95px;
+                    left:-90px;
                 }
                 .next {
-                    right:-95px;
+                    right:-90px;
                 }
             }
 
@@ -1372,20 +1543,26 @@
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: 100% 100%;
-                
 
+                &.ui_carousel_arrow {
+                    & + .ui_carousel_arrow {
+                        margin-left:8px;
+                    }
+                }
+                
                 &.prev {
-                    background-image: url('/lg5-common/images/CS/btn-arr-left-16-black.svg');
+                    background-image: url('/lg5-common/images/CS/icon-notice-up.svg');
                 }
                 &.next {
-                    background-image: url('/lg5-common/images/CS/btn-arr-right-16-black.svg');
+                    background-image: url('/lg5-common/images/CS/icon-notice-down.svg');
                 }
                 &.btn-play {
-                    background-image: url('/lg5-common/images/CS/btn-pause-14-black.svg');
-                }
-
-                & + button {
                     margin-left:12px;
+                    background-image: url('/lg5-common/images/icons/btn-pause-16-gray.svg');
+
+                    &.pause {
+                        background-image: url('/lg5-common/images/icons/btn-play-16-gray.svg');
+                    }
                 }
             }
         }
@@ -1872,6 +2049,7 @@
 
             .user-guide-txt {
                 font-size:16px;
+                line-height:1.63;
 
                 strong {
                     font-weight:bold;
@@ -2132,10 +2310,16 @@
                         margin-top:50px;
                     }
                     .forms {
+                        margin-top:50px;
                         .rdo-wrap {
                             & ~ .rdo-wrap {
                                 margin-left:24px;
                             }
+                        }
+                    }
+                    .form-row {
+                        .forms {
+                            margin-top:0;
                         }
                     }
                 }

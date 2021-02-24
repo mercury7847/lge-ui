@@ -181,21 +181,16 @@
                         break;
                         case "modalPushAlarm" :
                             $("#pushAlarm").prop("checked", false).trigger("change");
-                            $(".ctrl-area").removeClass("active");
                             if($("#badgeAlarm").prop("checked")){
                                 $("#badgeAlarm").trigger("click");
                             }
                             $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parent().addClass("disabled");
-                            if($("#timeSet").prop("checked")){
-                                $("#timeSet").trigger("click");
-                            }
 
                             //접근성
                             $("#pushAlarm").attr("aria-expanded", false);
                         break;
                         case "modalAlarmAgree" :
                             $("#pushAlarm").prop("checked", true).trigger("change");
-                            $(".ctrl-area").addClass("active");
                             $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parent().removeClass("disabled");
                         break;
                         case "modalTimeset" :
@@ -210,33 +205,6 @@
                     optModal.close();
                 }
             });
-        }
-
-        var changeTimeSet = function(idx){
-            var startDate = $(".t-start");
-            var endDate = $(".t-end");
-            var startDateVal = startDate.val();
-            var endDateVal = endDate.val();
-
-            if(events){
-                if(Date.parse(appToday + startDateVal) == Date.parse(appToday + endDateVal)){
-                    optModal.open("modalTimeset", "alert", "<p>시작 시간과 종료 시간을 <br>같은 시간으로 설정할 수 없습니다.</p>", "확인");
-                    $("#modalTimeset .btn-modal-confirm").off("click").on({
-                        click : function(){
-                            $(".time-setting .inner div").eq(idx).find("[class*=rst-time]").text(idx == 0 ? oldStartValue : oldEndValue);
-                            $(".time-setting .inner div").eq(idx).find("input").val(idx == 0 ? oldStartValue : oldEndValue);
-                            beforeFocusEle = $(".time-setting .inner div").eq(idx).find("input");
-                            optModal.close();
-                        }
-                    });
-                    events = false;
-                    return false;
-                }else{
-                    beforeFocusEleToast = $(".time-setting .inner div").eq(idx).find("label:not([class*=rst-time])");
-                    toastMessage.init("에티켓 시간이 설정되었습니다.", "", idx);
-                    events = false;
-                }
-            }
         }
 
         $(document).ready(function(){
@@ -272,65 +240,6 @@
                     }else{
                         optModal.open("modalPushAlarm", "alertdialog", "<p>푸시 알림을 해제하시는 경우 <br><strong>서비스 이벤트 혜택 알림을</strong> <br>받을 수 없게 됩니다.<br>알림을 해제 하시겠습니까?</p>", "확인", "취소");
                         return false;
-                    }
-                }
-            });
- 
-            //시간 설정
-            $("#timeSet").off("click").on({
-                click : function(){
-                    var checked = $(this).prop("checked");
-                    if(checked){
-                        $(".details input").attr("disabled",false);
-                        $(".time-setting").addClass("on");
-                        $(this).closest(".opt-switch").siblings("p").addClass("on");
-                    }else{
-                        $(".details input").attr("disabled", true);
-                        $(".time-setting").removeClass("on");
-                        $(this).closest(".opt-switch").siblings("p").removeClass("on");
-                    }
-                }
-            });
-
-            $(".time-setting input").off("click").on({
-                click : function(e){
-                    var value = $(this).val();
-                    $(this).closest("div").find("[class*=rst-time]").text(value);
-                    oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
-                    oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
-
-                    events = true;
-                },
-                focusin : function(){
-                    $(this).closest("div").find("[class*=rst-time]").addClass("focus");
-                },
-                focusout: function(){
-                    $(this).closest("div").find("[class*=rst-time]").removeClass("focus");
-                },
-                change : function(){
-                    var value = $(this).val();
-                    $(this).closest("div").find("[class*=rst-time]").text(value);
-
-                    //oldStartValue = $(this).closest(".inner").find("div").eq(0).find("input").val();
-                    //oldEndValue = $(this).closest(".inner").find("div").eq(1).find("input").val();
-
-                    events = true;
-                    var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        //console.log("iphone");
-                    }else{
-                        changeTimeSet(idx);
-                        /*
-                        setTimeout(function(){
-                            changeTimeSet(idx);
-                        }, 500);
-                        */
-                    }
-                },
-                blur: function(e){
-                    var idx = $(this).closest("div").index();
-                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        changeTimeSet(idx);
                     }
                 }
             });
@@ -541,35 +450,7 @@
                         </div>
                     </div>
 
-                    <div class="ctrl-area" id="ctrlArea" aria-labelledby="pushAlarm">
-                        <div>
-                            <p>에티켓 시간 설정</p>
-                            <div class="opt-switch">
-                                <label for="timeSet">
-                                    <input type="checkbox" id="timeSet">
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="details">
-                            <div class="time-setting" id="timeSettingCon">
-                                <p class="txt-guide">지정된 시간 동안 푸시 알림 거부</p>
-                                <div class="inner">
-                                    <div>
-                                        <label for="t-start">시작</label>
-                                        <label for="t-start" class="rst-time-start" aria-hidden="true">21:00</label>
-                                        <input type="time" id="t-start" class="t-start" value="21:00" disabled>
-                                    </div>
-                                    <div>
-                                        <label for="t-end">종료</label>
-                                        <label for="t-end" class="rst-time-end" aria-hidden="true">08:00</label>
-                                        <input type="time" id="t-end" class="t-end" value="08:00" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- 안드로이드 인 경우에만 사용 -->
                     <div class="disabled">
                         <p>배지 알림 받기</p>
                         <div class="opt-switch">
@@ -579,6 +460,7 @@
                             </label>
                         </div>
                     </div>
+                    <!-- //안드로이드 인 경우에만 사용 -->
                 </div>
 
                 <div class="opt-controls">
