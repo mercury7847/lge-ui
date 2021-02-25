@@ -9,6 +9,7 @@ var isApp = function(){
     if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
     if(vcui.detect.isMac) $('html').addClass('mac');
+    if(isApp()) $('html').addClass('app');
 
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
