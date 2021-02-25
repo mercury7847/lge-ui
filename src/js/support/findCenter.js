@@ -275,6 +275,11 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.$searchAddressButton = $('.search-address');
 			});
         },
+        _openWindowPop : function(target){
+            var self = this;
+            var id = $(target).attr("href").replace("#", "");
+            window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+        },
 
         _bindEvents: function(){
             var self = this;
@@ -327,29 +332,28 @@ function moveDetail(el, detailUrl, windowHeight) {
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
-
-                var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                self._openWindowPop(this)
             });
 
             self.$mapContainer.on('click', '.detail-view', function(e) {
                 e.preventDefault();
-
-                var id = $(this).attr("href").replace("#", "");
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                self._openWindowPop(this)
             });
 
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
-                $('.store-list-box').stop().animate({
-                    // top: $('.map-container').offset().top
-                }, function(){
+                self.$leftContainer.removeClass('active');
+                $('.store-list-box').hide().stop().fadeIn(function(){
                     self.$leftContainer.removeClass('active');
-                    // $(this).removeClass('fixed');
                     $(this).attr('style', '');
-                    $('.store-map-con').css('top', '');
+                    $('.store-map-con').css('top', '').removeClass('active');
                 })
                 $('.map-container').removeClass('result-map');
+
+                if( window.innerWidth < 768) {
+                    $('.page-header').show();
+                    $('.waiting-state').show()
+                }
             });
 
             self.$leftContainer.on('click', '.btn-view', function(e){
@@ -359,26 +363,11 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
-                // mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
-                // self.$mapContainer.css({
-                //     height: mapheight,
-                // });
-                $('.store-map-con').css({
-                    // position: 'absolute',
-                    // height: self.$mapContainer.height()
-                });
+               
             });
 
             self.$searchResultContainer.on('click', '.btn-view', function(e){
-                // $('.map-container').toggleClass('result-map');
-                $('.store-map-con').css({
-                    // position: 'fixed',
-                    // height: 'calc(100vh - 181px)'
-                    // top: resultheight
-                })
-                self.$mapContainer.css({
-                    // height: '100%'
-                });
+              
             });
 
             self.$leftContainer.on('click', '.btn-fold', function(e){
@@ -405,16 +394,23 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             // 지역 검색
+            function resultOpen(){
+                self.$leftContainer.addClass('active');
+                $('.store-map-con').addClass('active');
+                self.$leftContainer.find('.store-list-box').hide().stop().fadeIn();
+                $('.map-container').addClass('result-map');
+                if( window.innerWidth < 768) {
+                    $('.page-header').hide();
+                    $('.waiting-state').hide()
+                    $('html,body').scrollTop(self.$leftContainer.offset().top)
+                }
+            }
             self.$citySelect.on('change', function(e){
                 self._loadLocalAreaList(e.target.value);
             });
             self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
-                self.$leftContainer.addClass('active');
-                $('.map-container').addClass('result-map');
-                $('html').scrollTop(0);
-
-                self._calculationTop();
+                resultOpen();
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -444,10 +440,9 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchSubwayButton.on('click', function(e){
                 //  지하철역 검색
                 self._setSubwaySearch();
+                resultOpen();
                 $('.map-container').addClass('result-map');
-                $('html').scrollTop(0);
 
-                self._calculationTop();
             });
 
             // 센터명 검색
@@ -485,9 +480,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 // 센터명 검색
                 self._setSearch();
                 $('.map-container').addClass('result-map');
-                $('html').scrollTop(0);
-
-                self._calculationTop();
+                resultOpen();
             });
 
             // 주소 검색
@@ -504,9 +497,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 // 주소 검색
                 self._setKakaoSearch();
                 $('.map-container').addClass('result-map');
-                $('html').scrollTop(0);
-
-                self._calculationTop();
             });
 
             self._resize();
@@ -668,6 +658,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                     self.$optionContainer.addClass('open');
                     // self.$leftContainer.prepend('<div class="dim"></div>');
                     self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+                    if(window.innerWidth < 768) {
+                        $('html,body').scrollTop($('.store-list-wrap').offset().top)
+                    }
+                    
                 }
             }
         },
@@ -923,6 +917,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.searchResultMode = true;
 
                 self._loadStoreData();
+                console.log(2222)
                 self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
@@ -1114,17 +1109,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             var resultheight = $('.result-list-box').height();
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
             
-
-            console.log(top, titheight, scheight, optheight, resultheight, paddingtop)
-
             var listheight;
             if(self.searchResultMode){
                 listheight = self.windowHeight - resultheight - optheight - paddingtop;
             } else{
                 listheight = self.windowHeight - titheight - scheight - paddingtop;
             }
-            
-            // self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
 
         _showResultLayer : function(){
@@ -1132,47 +1122,13 @@ function moveDetail(el, detailUrl, windowHeight) {
             var $mapContainer = $('.map-container');
 
             self.$leftContainer.addClass('active');
-            if( window.innerWidth < 1025) {
-                self.$leftContainer.find('.store-list-box').stop().animate({
-                    // marginTop : -$mapContainer.offset().top
-                }, function(){
-                    // $(this).addClass('fixed');
-                    // $(this).attr('style', '');
-                })
-                $(window).resize(function() { 
-                    self._calculationTop();
-                });
-            }
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산
 
         //검색 시 .store-list-box, .store-map-con 위치 계산
         _calculationTop : function() {
-            waiting_state_h = $('.waiting-state').outerHeight();
-            page_header_h = $('.page-header').outerHeight();
-            mobile_nav_wrap_h = $('.mobile-nav-wrap').outerHeight();
-            mobile_nav_wrap_mtop = $('html').find('.mobile-nav-wrap .nav').css('margin-top');
-            header_h = $('.header').outerHeight();
-            breadcrumb = $('.breadcrumb').outerHeight();
             
-            if($(window).width() < 767) {
-                $('.store-list-box').css({
-                    top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h
-                });
-
-                // $('.result-map .store-map-con').css({
-                //     top: - waiting_state_h - page_header_h - mobile_nav_wrap_h - header_h + 127
-                // });
-            }  else if (767 <= $(window).width() < 1025) {
-                $('.store-list-box').css({
-                    top:  - header_h - breadcrumb - waiting_state_h + 212
-                });
-
-                // $('.result-map .store-map-con').css({
-                //     top: - waiting_state_h - page_header_h - header_h + 241
-                // });
-            }
         },
 
         //모바일 지도보기 클릭 시 맵 높이 설정
@@ -1190,14 +1146,18 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;
+
+
             if(window.breakpoint.isMobile){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
 
                 mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
-                // $('.store-list-wrap.active').find('.store-list-box').not('.fixed:animated').addClass('fixed');
+                if( self.$leftContainer.hasClass('active') ) {
+                    $('.page-header:visible').hide();
+                    $('.waiting-state:visible').hide();
+                }
             } else{
-                // $('.store-list-wrap.active').find('.store-list-box').filter('.fixed').not(':animated').removeClass('fixed');
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
                 } else{
@@ -1205,6 +1165,9 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }                
                 mapwidth = self.windowWidth - mapmargin;            
                 mapheight = $('.map-container').height();
+                if( self.$leftContainer.hasClass('active') ) {
+                    $('.waiting-state:hidden').show();
+                }
             }
 
             self.$mapContainer.css({

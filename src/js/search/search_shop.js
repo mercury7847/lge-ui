@@ -58,7 +58,7 @@
                         '<a href="{{url}}" class="desc add">{{address}}</a>' +
                         '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
-                    '<div class="shop-state"><span class="{{shopStateColor}}">{{shopState}}</span></div>' +
+                    '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="보통"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
