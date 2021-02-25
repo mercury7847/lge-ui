@@ -20,9 +20,7 @@
     }
 
     .map-container {
-        position:relative;
-        height:calc(100vh - 126px);
-        overflow:hidden;
+        
 
         @include csmobile {
             height:auto;
@@ -134,8 +132,10 @@
             }
 
             .store-list-box {
-                // position:relative;
-                // overflow:hidden;
+                display: flex;
+                flex-direction: column;
+                height:calc(100vh - 96px);
+                padding-bottom:80px;
                 &:after {
                     content:' ';
                     display:block;
@@ -320,6 +320,8 @@
             }
 
             .sch-list {
+                position: relative;
+                height:100%;
                 padding-top: 24px;
                 .list-item {
                     position: relative;
@@ -562,6 +564,7 @@
             }
 
             .list-wrap {
+                flex:1;
                 position:relative;
                 top:0;
                 left:0;
@@ -569,15 +572,13 @@
                 padding:0 8px 0 40px;
                 overflow:hidden;
                 background: #fff;
-                // -webkit-transition:0.26s cubic-bezier(0.25,0.1,0.25,1); 
-                // transition:0.26s cubic-bezier(0.25,0.1,0.25,1);
 
                 @include csmobile {
                     padding:0 8px 0 20px;
                 }
                 .scroll-wrap {
                     position:relative;
-                    height:calc(100vh - 471px);
+                    height:100%;
                     overflow-y:scroll;
                 }
                 .no-data {
@@ -838,10 +839,8 @@
                 }
                 @include csmobile {
                     left:0;
-                    .store-list-box,
-                        .opt-cont {
-                            display:block;
-                    }
+                    .store-list-box {display: flex;}
+                    .opt-cont {display:block;}
                 }
             }
         }
@@ -899,15 +898,23 @@
                 overflow:hidden;
             }
             @include tablet {
-                top: 280px;
-                height: calc(100vh - 347px);
-            }
-            @media screen and (max-width: 766px) {
-                height:calc(100vh - 56px - 60px - 324px);
-                top: 334px;
-                &.local-map {
-                    top: 385px;
+                top: 279px;
+                height: calc(100vh - 356px);
+                z-index:10 !important;
+
+                &.active {
+                    top:133px;
+                    height:calc(100vh - 210px);
                 }
+            }
+            @include mobile {
+                top:333px;
+                height:calc(100vh - 388px);
+                &.local-map {
+                    top:385px;
+                    height:calc(100vh - 388px);
+                }
+
             }
         }
 
@@ -1140,7 +1147,9 @@
 
 .find-store-wrap {
     .map-container {
-        // height:100vh;
+        position:relative;
+        overflow:hidden;
+        height:100vh;
 
         .store-list-wrap {
             width: 520px;
@@ -1363,10 +1372,8 @@
                     position:relative;
                     padding-bottom:115px;
                     .scroll-wrap {
-                        // height:calc(100vh - 80px - 115px);
-                        // max-height:calc(100vh - 80px - 115px);
-                        height:calc(100vh - 80px - 195px);
-                        max-height:calc(100vh - 80px - 195px);
+                        height:calc(100vh - 80px - 115px);
+                        max-height:calc(100vh - 80px - 115px);
                         margin-right:0;
                         .list-item {
                             padding-bottom:48px;
@@ -1416,8 +1423,7 @@
                     }
                 }
                 &.open {
-                    top:-96px;
-                    transform:translate(0px, calc(100% - 80px));
+                    top:0;
                     max-height:none;
                     .opt-btn-wrap {
                         height:auto;
@@ -1441,6 +1447,15 @@
             }
 
             &.active {
+                h2.tit {
+                    display: none;
+                }
+                .store-list-box {
+                    height:100vh;
+                }
+                .sch-box {
+                    display: none;
+                }
                 .result-list-box {
                     display:block;
                     position: relative;
@@ -1471,11 +1486,6 @@
                         padding-left: 32px;
                     }
                 }
-                h2.tit,
-                .store-list-box {
-                    transform: translateY(0);
-                    transition: transform ease 0.5s;
-                }
                 .sch-box {
                     margin: 0 32px;
                 }
@@ -1499,30 +1509,21 @@
                         }
                     }
                 }
-                .opt-cont {
-                    bottom: -80px;
-                }
                 &.active {
-                    h2.tit,
-                    .store-list-box {
-                        transform: translateY(-284px);
-                    }
                     .tabs-contents {
                         .desc {
                             opacity: 0;
-                        }
-                    }
-                    .list-wrap {
-                        .scroll-wrap {
-                            height: calc(100vh - 244px);
                         }
                     }
                 }
             }
             @include tablet {
                 width: 100%; 
+                &.close {
+                    left:0;
+                }
                 .store-list-box {
-                    height:calc(100vh - 2px);
+                    height:calc(100vh - 68px);
                     transform: none;
                 }
                 .sch-box {
@@ -1538,7 +1539,7 @@
                     }
                 }
                 .view-info-btn {
-                    top:12px;
+                    top:-47px;
                     left:auto;
                     bottom:auto;
                     right:0;
@@ -1585,14 +1586,6 @@
                     }
                 }
                 &.active {
-                    h2.tit,
-                    .store-list-box {
-                        transform: translateY(-270px);
-                    }
-                    .store-list-box {
-                        height:calc(100vh + 268px);
-                    }
-                    
                     .tabs-contents {
                         .desc {
                             opacity: 0;
@@ -1622,9 +1615,10 @@
                     transform: none;
                 }
                 .store-list-box {
+                    height:100vh;
                     transform: none;
                     transition: none;
-                    padding-bottom:76px;
+                    padding-bottom:56px;
                     box-sizing:border-box;
                 }
                 .sch-box {
@@ -1689,6 +1683,11 @@
                     }
                 }
                 .opt-cont {
+                    &.open {
+                        .opt-layer {
+                            height:calc(100% - 56px - 62px);
+                        }
+                    }
                     .btn-sel {
                         height:56px;
                     }
@@ -1795,37 +1794,6 @@
             }
         }
     }
-
-    @include tablet {
-        position:relative;
-        z-index:1;
-
-        .map-container {
-            overflow-x:hidden;
-            overflow-y:visible;
-            .btn-list-fold {
-                display:none;
-            }
-            &.result-map {
-                overflow-x: visible;
-                .store-map-con {
-                    height: calc(100vh - 181px);
-                }
-                .store-list-wrap {
-                    &.active {
-                        .store-list-box {
-                            top: -476px;
-                            position: absolute;
-                        }
-                        .opt-cont {
-                            bottom: 0;
-                            position: fixed;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 // 레이아웃 관련
@@ -1834,8 +1802,8 @@
         .map-container {
             &.result-map {
                 .store-map-con {
-                    position: fixed;
                     top: 125px;
+                    height:calc(100vh - 181px);
                 }
             }
         }
@@ -1843,47 +1811,6 @@
     .mobile-nav-wrap {
         .nav {
             display: none;
-        }
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .find-store-wrap {
-        .map-container {
-            &.result-map {
-                .store-map-con {
-                    position: fixed;
-                    top: 134px;
-                    height: calc(100vh - 210px);
-                }
-                .store-list-wrap {
-                    .store-list-box {
-                        height: calc(100vh + 213px);
-                        .opt-cont{
-                            &.open {
-                                // top: 213px;
-                            }
-                        }
-                    }
-
-                    &.active {
-                        .store-list-box {
-                            // width: 100%;
-                            // height: auto;
-                            // bottom: 0;
-                            transform: none;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 1025px) {
-    .find-store-wrap {
-        .map-container {
-            height: calc(100vh - 80px);
         }
     }
 }
