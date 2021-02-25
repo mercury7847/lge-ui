@@ -1,7 +1,12 @@
 (function() {
+    //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
+    //최근검색어
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
+    //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    //인기검색어
+    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
@@ -75,7 +80,7 @@
         var search = {
             init: function() {
                 var self = this;
-                vcui.require(['ui/tab', 'ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
@@ -96,6 +101,8 @@
                         var filterQueryData = self.getListSortingData();
                         self.requestSearchData(value, force, filterQueryData, true);
                     }
+
+                    self.updateBasicData();
                 });
             },
 
@@ -567,7 +574,9 @@
                     arr = self.checkArrayData(data.event);
                     count = self.checkCountData(data.event);
                     self.setTabCount(2, count);
-                    self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
+                    if(data.subcount) {
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
+                    }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -723,6 +732,27 @@
                     //self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
+            },
+
+            //기초 데이타 갱신
+            updateBasicData:function() {
+                var self = this;
+                var ajaxUrl = self.$contentsSearch.data('basicUrl');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                    var data = result.data;
+                    //인기검색어
+                    var arr = (data.popular && data.popular instanceof Array) ? data.popular : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                        });
+                        self.$popularKeywordList.show();
+                    } else {
+                        self.$popularKeywordList.hide();
+                    }
+                });
             },
         }
 
