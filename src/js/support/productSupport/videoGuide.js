@@ -80,7 +80,9 @@
             self.$cont.commonModel({
                 selected: self.param
             });
-            self.$resultPagination.pagination();
+            self.$resultPagination.pagination({
+                pageCount: 5
+            });
             self.$productBar.vcSticky();
         
             if (!self.param.subCategory) {
@@ -125,18 +127,26 @@
             var $result, html='';
                 data = result.data,
                 param = result.param,    
-                popular = data.popular;
+                popular = data.popular,
+                newest = data.newest;
+            var isNotEmpty = false;
 
             self.drawSummary(param);
             // self.$searchKeyword.vcInputClearButton('changeVal', self.param.keyword);
             self.$searchKeyword.val(self.param.keyword);
-            self.$searchKeyword.trigger('update');
+            self.$searchKeyword.trigger('update'); 
 
-            if (popular.listData.length) {
             for (var key in data) {
-                    if (key == 'popular' || key == 'newest') {
-                        $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
-                        data[key].listData.forEach(function(item) {
+                if (key == 'popular' || key == 'newest') {
+                    var arr = data[key].listData instanceof Array ? data[key].listData : [];
+                    
+                    $result = data[key].type == 'popular' ? self.$resultPopular : self.$resultNewest;
+                    $result.find('.video-list').empty();
+                    $result.find('.count').html(data[key].listPage.totalCount);
+                    $result.find('.pagination').pagination('update', data[key].listPage);   
+
+                    if (arr.length) {
+                        arr.forEach(function(item) {
                             item.title = item.title.replace(/¶HS¶/g, '<span class="keyword">');
                             item.title = item.title.replace(/¶HE¶/g, '</span>');
                             
@@ -144,11 +154,16 @@
                         });
 
                         $result.find('.video-list').html(html);
-                        $result.find('.pagination').pagination('update', data[key].listPage);
-                        $result.find('.count').html(data[key].listPage.totalCount);   
                         html = '';
+
+                        isNotEmpty = true;
+                    } else {
+                        isNotEmpty = false;
                     }
                 }
+            }
+
+            if (isNotEmpty) {
                 self.$resultCont.show();
                 self.$noData.hide();
             } else {
