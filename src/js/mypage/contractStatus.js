@@ -287,15 +287,15 @@
                 sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
                 lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
                     if(lgkorUI.stringToBool(result.data.success)){
-                        lgkorUI.showLoading();
 
                         window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                         document.form_chk.action = result.data.niceAntionUrl;
+                        document.form_chk.m.value = result.data.m;
                         document.form_chk.EncodeData.value = result.data.sEncData;
+                        document.form_chk.auth_type.value = result.data.auth_type;
                         document.form_chk.param_r1.value = result.data.param_r1;
                         document.form_chk.param_r2.value = result.data.param_r2;
                         document.form_chk.param_r3.value = result.data.param_r3;
-                        document.form_chk.m.value = "safekeyService";
                         document.form_chk.target = "popupChk";
                         document.form_chk.submit();
                     } else{
@@ -310,8 +310,6 @@
     function editBasicInfomation(){
         userInfoBlock.hide();
         userModifyBlock.show();
-
-        lgkorUI.hideLoading();
     }
     //나이스 콜백 -납부정보변경
     function editPaymentInfomation(){
@@ -321,12 +319,9 @@
 
         setHiddenData('paymentMethodConfirm', "N");
         setHiddenData('arsAgree', "N");
-
-        lgkorUI.hideLoading();
     }
     //나이스 콜백 -인증실패
     function fnNiceFail(){
-        lgkorUI.hideLoading();
     }
     window.editBasicInfomation = editBasicInfomation;
     window.editPaymentInfomation = editPaymentInfomation;

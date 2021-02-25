@@ -949,9 +949,12 @@
     &.popup-wrap {
         .pop-conts {
             .section {
-                margin-top: 20px;
+                margin-top: 40px;
                 &:first-of-type {
                     margin-top: 0;
+                }
+                .form-infos {
+                    margin-bottom: 20px;
                 }
                 .tit-wrap {
                     margin-bottom: 10px;
@@ -966,6 +969,7 @@
         }
     }
     .calendar-area {
+        margin-bottom: 40px;
         .calendar-info {
             width: 178px;
         }
