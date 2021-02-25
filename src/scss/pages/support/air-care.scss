@@ -5,6 +5,9 @@
 @import "../../utilities/mixins";
 
 .air-care {
+    [data-format=alnum] {
+        text-transform:uppercase;
+    }
     .gray-box {
         background-color: #f4f4f4;
         padding: 48px;
