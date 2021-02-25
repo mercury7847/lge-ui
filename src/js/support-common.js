@@ -613,8 +613,7 @@ CS.MD.commonModel = function() {
                 var salesModelCode = self.selected.salesModelCode;
                 var href = $(this).attr('href');
 
-                window.open(href + '?modelCode=' + salesModelCode);
-
+                location.href = href + '?modelCode=' + salesModelCode;
             });
 
             // 제품 재선택
