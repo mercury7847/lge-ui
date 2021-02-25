@@ -394,23 +394,11 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             // 지역 검색
-            function resultOpen(){
-                self.$leftContainer.addClass('active');
-                $('.store-map-con').addClass('active');
-                self.$leftContainer.find('.store-list-box').hide().stop().fadeIn();
-                $('.map-container').addClass('result-map');
-                if( window.innerWidth < 768) {
-                    $('.page-header').hide();
-                    $('.waiting-state').hide()
-                    $('html,body').scrollTop(self.$leftContainer.offset().top)
-                }
-            }
             self.$citySelect.on('change', function(e){
                 self._loadLocalAreaList(e.target.value);
             });
             self.$localSearchButton.on('click', function(e){
                 self._setLocalSearch();
-                resultOpen();
             });
             self.$searchUserAdressButton.on('click', function(e){
                 self.searchType = 'user';
@@ -440,7 +428,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchSubwayButton.on('click', function(e){
                 //  지하철역 검색
                 self._setSubwaySearch();
-                resultOpen();
                 $('.map-container').addClass('result-map');
 
             });
@@ -480,7 +467,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 // 센터명 검색
                 self._setSearch();
                 $('.map-container').addClass('result-map');
-                resultOpen();
             });
 
             // 주소 검색
@@ -1122,6 +1108,14 @@ function moveDetail(el, detailUrl, windowHeight) {
             var $mapContainer = $('.map-container');
 
             self.$leftContainer.addClass('active');
+            $('.store-map-con').addClass('active');
+            self.$leftContainer.find('.store-list-box').hide().stop().fadeIn();
+            $('.map-container').addClass('result-map');
+            if( window.innerWidth < 768) {
+                $('.page-header').hide();
+                $('.waiting-state').hide()
+                $('html,body').scrollTop(self.$leftContainer.offset().top)
+            }
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산
