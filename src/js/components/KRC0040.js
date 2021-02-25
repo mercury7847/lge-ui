@@ -3,11 +3,12 @@ $(window).ready(function(){
 	
     ;(function(){
         var $component;
-        var $items;
-        var $mainSticky;
+		var $mainSticky;
+		
+		var $onText;
+		var $moreInfos;
 
         var selectIdx;
-		var comptop;
 
         function init(){
             setting();
@@ -16,7 +17,8 @@ $(window).ready(function(){
 
         function setting(){
             $component = $('.KRC0040');
-            $items = $component.find('.tab-menu-belt li');
+			$onText = $component.find('.on-txt');
+			$moreInfos = $component.find('.more-infos');
 
             $mainSticky = $('.KRP0009');
 
@@ -32,7 +34,13 @@ $(window).ready(function(){
         
                 var id = $(this).attr('href');
                 scrollMoved(id);
-            })
+			});
+			
+			$onText.on('click', function(e){
+				e.preventDefault();
+
+				toggleTabList();
+			})
         
             $(window).on('scroll.KRC0040', function(e){
 				var scrolltop = $(window).scrollTop();
@@ -50,11 +58,12 @@ $(window).ready(function(){
 						top:top,
 						width:'100%',
                         zIndex:91
-                    })
+                    });
                 } else{
                     $component.removeClass('fixed').removeAttr('style');
                 }
 				
+				var currentIdx = -1;
 				$component.find('.info-tab').each(function(idx, item){
 					var percent = 0, display;
 					var contID = $(item).find('a').attr('href');
@@ -82,10 +91,31 @@ $(window).ready(function(){
 						}
 						display = percent <= 0 ? 'none' : 'block';
 						bar.css({width: percent+"%", display: display});
+
+						if(display == "block") currentIdx = idx;
 					}
-				});    
+				}); 
+				
+				if(selectIdx != currentIdx){
+					selectIdx = currentIdx;
+					$moreInfos.children().removeClass('active');
+					$moreInfos.children().eq(selectIdx).addClass('active');
+					$onText.text($moreInfos.children().eq(selectIdx).text());
+				}
             });
-        }
+		}
+		
+		function toggleTabList(){
+			if(!$moreInfos.data('isOpen')){
+				$moreInfos.data('isOpen', true);
+				var leng = $moreInfos.children().length;
+				var itemheight = $moreInfos.children().height();
+				$moreInfos.height(itemheight*leng);
+			} else{
+				$moreInfos.data('isOpen', false);
+				$moreInfos.height(0);
+			}
+		}
 
         function scrollMoved(id){
             if($(id).length){

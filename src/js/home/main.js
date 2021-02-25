@@ -8,6 +8,15 @@ $(function () {
         }
     });
 
+    // 하단메뉴 스크롤 기능 사용 여부 설정
+    // android.setEnableScrollBottomMenu(blooean);
+
+    // 하단메뉴 노출 여부 설정
+    // android.showBottomMenu(blooean);
+
+    // 하단 메뉴 높이
+    // android.getBottomMenuHeight();
+
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
         // 플로우배너
