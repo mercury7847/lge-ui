@@ -24,7 +24,11 @@
         '</li>';
     var driverListTemplate = 
         '<li>' +
+            '{{# if (typeof detailUrl != "undefined" && detailUrl) { #}}' +
             '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</button></p>' +
+            '{{# } else { #}}' +
+            '<p class="tit">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</p>' +
+            '{{# } #}}' +
             '<div class="info-wrap">' +
                 '{{# if (typeof category != "undefined" || typeof date != "undefined") { #}}' +
                 '<ul class="options">' +
@@ -194,10 +198,12 @@
             self.setting();
             self.bindEvent();
 
-            self.$cont.commonModel({
-                register: {},
-                selected: self.param
-            });
+            if (!self.isPSP) {
+                self.$cont.commonModel({
+                    register: {},
+                    selected: self.param
+                });
+            }
 
             self.$manualPagination.data('page', 1);
             self.$driverPagination.pagination();
@@ -211,6 +217,7 @@
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.manualUrl = self.$manualSec.data('manualUrl');
             self.driverUrl = self.$driverSec.data('driverUrl');
+            self.isPSP = self.$cont.hasClass('psp');
             
             if (url.indexOf("?") > -1) {
                 var search = url.substring(1);
@@ -227,9 +234,18 @@
                 data.subCategoryNm = $('#subCategoryNm').val();
             }
 
+            if (self.isPSP) {
+                data.category = $('#category').val();
+                data.categoryNm = $('#categoryNm').val();
+                data.subCategory = $('#subCategory').val();
+                data.subCategoryNm = $('#subCategoryNm').val();
+                data.modelCode = $('#modelCode').val();
+                data.productCode = $('#productCode').val();
+            }
+
             self.isLogin = lgkorUI.isLogin;
-            self.param = data;
-            self.manualParam = data;
+            self.param = $.extend({}, data);
+            self.manualParam = $.extend({}, data);
             self.driverParam = $.extend(data, {
                 keyword: ''
             });

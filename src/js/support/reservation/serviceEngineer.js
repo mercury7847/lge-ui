@@ -90,11 +90,13 @@
 
             self.$authPopup = $('#certificationPopup');
 
-            self.autoFlag = false;
+            self.autoFlag = false; 
             self.isLogin = lgkorUI.isLogin;
+            self.isOneView = 'N';
 
             if ($('#appCall').length) {
-                self.isLogin = true
+                self.isLogin = true;
+                self.isOneView = $('#appCall').val(); 
             }
 
             var register = {
@@ -502,19 +504,31 @@
 
             formData = $.extend(formData, self.dateParam);
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    $('#acptNo').val(data.acptNo);
-
-                    self.$submitForm.submit();
+                    if (self.isOneView == 'Y') {
+                        lgkorUI.hideLoading();
+                        lgkorUI.alert('', {
+                            title:'예약이 완료 되었습니다.',
+                            okBtnName: '확인',
+                            ok: function() {
+                                window.close();
+                            }
+                        });   
+                    } else {
+                        $('#acptNo').val(data.acptNo);
+                        self.$submitForm.submit();
+                    }
                 } else {
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
+                    lgkorUI.hideLoading();
                 }
             }, 'POST');
         },
