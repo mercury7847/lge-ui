@@ -3,6 +3,13 @@
     "status": "success",
     "message": null,
     "data": {
-        "success": "Y"
+        "success": "Y",
+        "niceAntionUrl": "https://check.namecheck.co.kr/mobile2/checkplus.cb",
+        "m": "checkplusSerivce", 
+        "sEncData": "AgAFRzMwMDMuSy6VsclQH+aGN1u5oJlz44JeKJa/LCnv67JumwDJq0k6WgsTEKTCyresiWjj3z3g5AKFiYcM/XXq6ppiUKmFESSFACiG34H6J9Y57cnX0Hg5GWpG9t9+p+V159dG+iR4SLNXcTvVCrq2THY0kVAyQV7y6etJYZd2DSmCNes6rWIgjk6Kx7hny2kvLMnB1+6FEORHyhmj21/gGXcPisXoC+fq6MiNgiFJNWt7Q46crWRHKwOo3ww3g4Rk4uwA+r16v4543LbH24vqs9+1NLpx+i2Rw22HcqKGNhsg5m4OIQjSFyHdWDupWi3+IkU6/a5LOnWPobUbOhfu3+x/moaZ0OnERFKlVDf5J65Rk9OfLK9dN1SB61w21sshz5LiLoPCaswMOR+8YClpVMomQt6yv4jnec1o1eqofPj7lo+UPb1ONONeX+My8L993YbO/NP9AfPpCfb8JMj3gSUEtQA5S+C9LFIcPihnhlVnzC0wmiiTME8JYWxxtOBiBwDxt732Voqt54Y1xFyo4dMKnH5t",
+        "auth_type": "M",
+        "param_r1": "",
+        "param_r2": "MOBILE",
+        "param_r3": "BASIC"
     }
 }

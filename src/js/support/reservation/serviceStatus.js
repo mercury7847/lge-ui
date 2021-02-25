@@ -444,10 +444,13 @@
                             }
                         }
                     });
+                    $('#reservationTimePopup .pop-conts').scrollTop(640);
+
                 });
 
                 self.el.closeBtn.on('click', function(e){
                     self.layerhide();
+                    self.engineerFocus();
                 })
             },
             slideConfig : {
@@ -544,6 +547,19 @@
                     }
                 });
             },
+
+            engineerFocus: function() {
+                // 예약 일시 변경 팝업 내에서 엔지니어 선택 영역으로 포커싱, 스크롤 이동
+                var self = this;
+                    $engineerPosition = $('#reservationTimePopup #stepEngineer').position();
+                if ( $('windows').width() < 768) {
+                    $('#reservationTimePopup .pop-conts').scrollTop($engineerPosition.top+400);
+                } else {
+                    $('#reservationTimePopup .pop-conts').scrollTop($engineerPosition.top);
+                }
+                $('#reservationTimePopup #stepEngineer').focus();
+            },
+
             update: function(data) {
                 var self = this,
                     $stepEngineer = $('#stepEngineer'),
@@ -591,7 +607,7 @@
                                 // $formSection.find('button:visible').first().focus();
 
                                 // 날짜 선택 시 엔지니어 영역으로 포커싱
-                                $('#reservationTimePopup #stepEngineer').focus();
+                                self.engineerFocus();
                             } else {
                                 $stepEngineer.closest('.pop-conts').scrollTop($formSection.offset().top);
                             }
