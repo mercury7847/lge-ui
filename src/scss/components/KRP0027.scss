@@ -16,10 +16,19 @@
         }
         
     }
-    .page-header.border.wide {
+    .page-header.wide {
+        padding:10px 0 8px;
+        margin-bottom:48px;
+        @include mobile {
+            margin-bottom:32px;
+        }
+        .tabs-wrap {
+            text-align:left;
+        }
         .tabs-wrap.border-type {
-            max-width:calc(1380px + 80px);
-            padding:0 40px;
+            max-width:1380px;
+            margin: 0 auto;
+            // padding:0 40px;
             @include mobile {
                 padding:0;
             }
