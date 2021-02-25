@@ -96,7 +96,7 @@
 
             if ($('#appCall').length) {
                 self.isLogin = true;
-                self.isOneView = $('#appCall').val(); 
+                self.isOneView = $('#appCall').val();
             }
 
             var register = {
@@ -525,7 +525,15 @@
                 } else {
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
-                            title: data.resultMessage
+                            title: data.resultMessage,
+                            ok: function() {
+                                if (self.isOneView == 'Y') {
+                                    if (data.resultMessage.indexOf('휴대전화번호') != -1) {
+                                        $('#phoneNo').prop('readonly', false);
+                                        $('#phoneNo').focus();
+                                    }
+                                }
+                            }
                         });
                     }
                     lgkorUI.hideLoading();

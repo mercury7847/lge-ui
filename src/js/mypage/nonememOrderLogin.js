@@ -95,20 +95,10 @@
         }
 
         var firstSpeling = sendata.sendOrderNumber.substr(0,1).toUpperCase(); 
-        if(firstSpeling == "N"){
-            lgkorUI.setHiddenInputData(sendata);
-
-            $('#noneMemberForm').attr('action', SUPPLY_CONFIRM_URL);
-
-            setTimeout(function(){
-                $('#noneMemberForm').submit();  
-            }, 100);
-
-            return;
-        }
+        var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : LOGIN_CONFIRM_URL;
 
         console.log("sendata:",sendata)
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(LOGIN_CONFIRM_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
             if(result.data.success == "Y"){
                 lgkorUI.setHiddenInputData(sendata);
                 console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
