@@ -2306,6 +2306,7 @@ $.fn.serializeObject = function() {
     function commonInit(){
         vcui.require(['ui/selectbox', 'ui/formatter'], function () {    
             $('[data-format=koreng]').vcFormatter({format:'koreng'});
+            $('[data-format=alnum]').vcFormatter({format:'alnum'});
             
             // 퀵 메뉴 (미정)
             $('#quickMenu').quickMenu();

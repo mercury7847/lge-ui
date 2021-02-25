@@ -8,6 +8,7 @@
         }
     },
     "data":{
+        "loginUrl":"",
         "selectTags": {
             "isSubscription": true,
             "tagName": "가을",
