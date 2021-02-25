@@ -8,14 +8,7 @@ $(function () {
         }
     });
 
-    // 하단메뉴 스크롤 기능 사용 여부 설정
-    // android.setEnableScrollBottomMenu(blooean);
 
-    // 하단메뉴 노출 여부 설정
-    // android.showBottomMenu(blooean);
-
-    // 하단 메뉴 높이
-    // android.getBottomMenuHeight();
 
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
@@ -126,10 +119,10 @@ $(function () {
         });
 
             
-
+        var isApplication = isApp();
         var $window  = $(window);
         var $contentWrap = $('.section-cover');
-        var aniSpeed = 800;
+        var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -271,12 +264,39 @@ $(function () {
         });
         
         // 터치 이벤트 처리
+
+        // 하단메뉴 스크롤 기능 사용 여부 설정
+        // android.setEnableScrollBottomMenu(blooean);
+
+        // 하단메뉴 노출 여부 설정
+        // android.showBottomMenu(blooean);
+
+        // 하단 메뉴 높이
+        // android.getBottomMenuHeight();
+
+        var isAndroid = vcui.detect.isAndroid;
+        var isIOS = vcui.detect.isIOS;
+        
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 touchSy = data.y;
             } else {
+
+                if (touchSy - data.y > 80) {
+                    console.log('down');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        //if(isIOS && android) android.showBottomMenu(true);
+                    }
+                } else if (touchSy - data.y < -80) {
+                    console.log('up');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        //if(isIOS && android) android.showBottomMenu(false);
+                    }
+                }
 
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
@@ -492,7 +512,7 @@ $(function () {
             render(0);
         });          
 
-        if(isApp()){
+        if(isApplication){
             render();
     
             var leng = $scenes.length;

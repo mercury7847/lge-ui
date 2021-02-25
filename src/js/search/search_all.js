@@ -799,6 +799,7 @@
                             }
                         });
                         $resultListWrap.show();
+                        console.log('nodata false',arr,arr.length);
                         noData = false;
                     } else {
                         $resultListWrap.hide();
@@ -808,10 +809,27 @@
                     self.curationLayer.setCurationData(data);
 
                     //noData 체크
+                    console.log('resuklt',noData);
                     if(noData) {
-                        //self.$tab.hide();
-                        //self.$contWrap.hide();
+                        if(data.noDataList && (data.noDataList instanceof Array)) {
+                            var $list_ul = self.$resultListNoData.find('ul.result-list');
+                            $list_ul.empty();
+                            data.noDataList.forEach(function(item, index) {
+                                item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                                item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                $list_ul.append(vcui.template(productItemTemplate, item));
+                            });
+                            if(data.noDataList.length > 0) {
+                                self.$resultListNoData.show();
+                            } else {
+                                self.$resultListNoData.hide();
+                            }
+                        } else {
+                            self.$resultListNoData.hide();
+                        }
                         self.$resultListNoData.show();
+                        console.log(self.$searchNotResult);
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
