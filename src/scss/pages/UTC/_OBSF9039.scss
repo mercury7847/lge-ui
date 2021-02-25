@@ -321,4 +321,12 @@
             padding:24px 12px 0;
         }
     }
+
+    &[data-consumables=true] {
+        @include mobile {
+            .info-tbl-wrap .box .tbl-layout .tbody .row {
+                padding-left:0;
+            }
+        }
+    }
 }

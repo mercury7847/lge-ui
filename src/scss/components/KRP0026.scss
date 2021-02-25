@@ -7,9 +7,11 @@
     .page-header {
         text-align:left;
         .tabs-wrap {
+            text-align:left;
+        }
+        .tabs-wrap.border-type {
             max-width:calc(1380px + 80px);
             padding:0 40px;
-            text-align:left;
             @include mobile {
                 padding:0;
             }

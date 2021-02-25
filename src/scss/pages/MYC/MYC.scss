@@ -119,6 +119,10 @@
                                 }
                                 dd {
                                     width:79.6%;
+                                    > p {
+                                        font-family:'Noto Sans', sans-serif !important;
+                                        font-size:16px !important;
+                                    }
                                     @include mobile {
                                         width:69%;
                                     }

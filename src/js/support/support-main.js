@@ -810,6 +810,49 @@
                 })
             }
         },
+        keyword: {
+            el: {
+                searchWrap: '.ui_search',
+                searchInput: '#search'
+            },
+            init: function() {
+                if (!$('.ui_search').length) return;
+
+                var self = this;
+                var $searchWrap = $(self.el.searchWrap);
+                var $searchInput = $(self.el.searchInput);
+                var url = $searchWrap.data('searchUrl');
+
+                $searchInput.on('keyup', function(e) {
+                    if (e.keyCode == 13) {
+                        e.preventDefault();
+                        location.href = url + $searchInput.val();
+                    }
+                });
+
+                $searchWrap.find('.btn-search', function() {
+                    location.href = url + $searchInput.val();
+                });
+
+                $searchWrap.on('keywordClick', function() {
+                    location.href = url + $searchInput.val();
+                });
+
+                $searchWrap.search({
+                    template: {
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="{{item.url}}"><span class="model">{{item.factoryID}}</span><span class="category">{{item.category}}</span></a></li>{{/each}}</ul>',
+                        recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
+                        keywordList: '<li><a href="#">{{keyword}}</a></li>'
+                    }
+                });
+
+                $searchWrap.on('autocomplete', function(e, param, url, callback) {
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        callback(result.data);
+                    });
+                });
+            }
+        },
         initialize: function(){
             this.loginTooltip();
             this.moreShow.init();
@@ -818,6 +861,7 @@
             this.reservation.init();
             this.getRegisterdProduct.init();
             this.modal.init();
+            this.keyword.init();
         }
     }
     

@@ -167,6 +167,12 @@
         right:0;
         bottom:0;
     }
+    @include mobile {
+        .btn-link {
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+    }
 }
 .list-wrap {
     .tit {
@@ -343,6 +349,13 @@
                                 }
                             }
                         }
+                    }
+                    &.menu-resolution a:before {
+                        width: 40px;
+                        height: 40px;
+                        left: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
                     }
                 }
             }
@@ -651,13 +664,16 @@
                     }
                 }
                 .category {
-                    color:#ec455a;
+                    color:#da0f47;
                 }
             }
             .tit {
                 font-weight:$font-weight-medium;
                 @include font-large;
                 @include textEllipsisClamp(2);
+                .keyword {
+                    color:#da0f47;
+                }
             }
         } 
     }

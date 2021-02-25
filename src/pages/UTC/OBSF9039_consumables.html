@@ -2,8 +2,9 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: [
-            "MYC/MYC", "UTC/UTC", "support/supplies-store"
-        ]
+            "MYC/MYC", "UTC/UTC"
+        ],
+        pageJS: ["mypage/orderAndDelivery"]
     })
 <body>
     <div class="wrap">
@@ -14,20 +15,9 @@
                 "pageTitle": "비회원 주문/배송 조회"
             })
             <!-- 비회원 주문/배송 조회 -->
-            <div class="contents mypage non-members support"
-                data-order-inquiry-list="/lg5-common/data-ajax/mypage/nonememOrderProductList.json"
-                data-cancel-pop="/lg5-common/data-ajax/mypage/orderCancelPop.json"
-                data-order-cancel="/lg5-common/data-ajax/mypage/orderCancel.json"
-                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
-                data-order-detail="https://wwwdev50.lge.co.kr/tvs"
+            <div class="contents mypage non-members"
+                data-consumables="true"
             >
-                <div class="hidden-input-group">
-                    <input type="hidden" name="sendInquiryType" value="">
-                    <input type="hidden" name="sendOrderNumber" value="">
-                    <input type="hidden" name="sendUserName" value="">
-                    <input type="hidden" name="sendUserEmail" value="">
-                    <input type="hidden" name="sendPhoneNumber" value="">
-                </div>
                 <div class="cont-wrap">
                     <!-- 회원가입 안내 -->
                     <div class="welcome-joinus">
@@ -43,7 +33,7 @@
                         <div class="sects">
                             <!-- 주문정보 -->
                             <div class="info-tbl-wrap inquiry-list-wrap">
-                                <div class="box" data-id="{{dataID}}">
+                                <div class="box" data-id="0">
                                     <div class="info-wrap">
                                         <ul class="infos">
                                             <li>주문일<em>2021.02.23</em></li>
@@ -51,7 +41,7 @@
                                         </ul>
                                         <p class="totals">총 3건</p>
                                     </div>
-                                    <div class="tbl-layout ">
+                                    <div class="tbl-layout">
                                         <div class="thead" aria-hidden="true">
                                             <span class="th col1">제품정보(주문/배송 상세보기)</span>
                                             <span class="th col2">진행상태</span>
@@ -95,18 +85,20 @@
                                                     <div class="col col2">
                                                         <div class="state-box">
                                                             <p class="tit "><span class="blind">진행상태</span>배송중</p>
-                                                            <p class="desc"><a href="" class="">운송장 번호 XXXXXXXXXX</a></p>
+                                                            <div class="state-btns">
+                                                                <!-- 
+                                                                    13 자리일 경우 우체국
+                                                                    13 자리가 아닌 경우 CJ
+                                                                -->
+                                                                <a href="#" class="tracking-btn" data-tracking-number="1234567891">운송장 번호 XXXXXXXXXX</a>
+                                                            </div>
                                                          </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#n" class="btn-link orderCancel-btn">취소신청</a>
-                                    <div class="btns">
-                                        <a href="#n" class="btn-link">주문/배송 상세보기</a>
-                                    </div>
-                                    </div>
+                                </div>
                             </div>
                             <!-- // 주문정보 -->
 
@@ -114,9 +106,13 @@
                                 <!-- 결제 정보 : 신용카드 -->
                                 <div class="inner-box payment">
                                     <p class="inner-tit">결제 정보</p>
+                                    <!-- 결제 거래 영수증 -->
+                                    <!-- <a href="javascript:showReceiptByTID('LGD_MID', 'LGD_TID', 'authdata')" class="btn-link">영수증 발급 내역</a> -->
+                                    <!-- 현금 영수증 -->
+                                    <!-- <a href="javascript:showCashReceipts('LGD_MID', 'LGD_OID', 'seqno', '거래종류', 'service_type')" class="btn-link">영수증 발급 내역</a> -->
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "결제 수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                            { "dt" : "결제 수단", "dd" : '<span>신용카드 할부 05개월</span><a href="javascript:showReceiptByTID(\'LGD_MID\', \'LGD_TID\', \'authdata\')" class="btn-link">영수증 발급 내역</a>' },
                                             { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                             { "dt" : "할인 금액", "dd" : "-283,406원" },
                                             { "dt" : "배송비", "dd" : "2,500원" },
@@ -219,16 +215,10 @@
         @@include('./common/footer.html')
     </div>
     
-    <!-- 취소신청-->
-    @@include('./common/popup/ACCF7002_pop1.html', {
-        popupID: 'popup-cancel'
-    })
-    <!-- // 취소신청 -->
-
-    <!-- 반품신청-->
-    @@include('./common/popup/ACCF7002_pop2.html', {
-        popupID: 'popup-takeback'
-    })
-    <!-- // 반품신청 -->
+    <!-- 서비스일 경우  -->
+    <!-- <script language="JavaScript" src="http://pgweb.tosspayments.com/WEB_SERVER/js/receipt_link.js"></script>  -->
+    
+    <!-- 테스트일 경우 -->
+    <script language="JavaScript" src="http://pgweb.tosspayments.com:7085/WEB_SERVER/js/receipt_link.js"></script>
 </body>
 </html>

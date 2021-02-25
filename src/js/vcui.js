@@ -3563,6 +3563,7 @@ if (!window.JSON) {
              * vcui.string.replaceAll("a,b,c,d", ',', ''); // "abcd"
              */
             replaceAll: function (value, find, rep, isCaseIgnore) {
+                if(!value) return "";
                 if (find.constructor === RegExp) {
                     return value.replace(new RegExp(find.toString().replace(/^\/|\/$/gi, ""), "g" + (isCaseIgnore ? "i" : "")), rep);
                 }

@@ -4,7 +4,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'pagination',
         defaults: {
             page: 1,
-            visibleCount: 1,
+            visibleCount: 5,
             totalCount: 1
         },
 

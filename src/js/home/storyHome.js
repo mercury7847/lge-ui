@@ -28,11 +28,11 @@
                             '<div class="visual-area">'+
                                 '{{#if contentsType == "image"}}'+
                                 '<span class="image">'+
-                                    '<img src="{{largeImage}}" alt="{{title}}">'+
+                                    '<img onload="onImgLoadEvent(this)" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '{{#elsif contentsType == "video"}}'+
                                 '<span class="image">'+
-                                    '<img src="{{smallImage}}" alt="{{title}}">'+
+                                    '<img onload="onImgLoadEvent(this)" onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
                                 '{{/if}}'+
@@ -73,11 +73,17 @@
         '</div>';
 
     var STORY_LIST_URL;
+    var IS_LOGIN;
 
     var listMaxLength = 12;
+    var imgLoadId = 0;
+    var imgLoadTotal = 0;
+
+    var tagMngChkList;
 
     function init(){      
         STORY_LIST_URL = $('.contents.story-main').data("storyList");
+        IS_LOGIN = $('.contents.story-main').data("loginflag");
 
         vcui.require(['ui/toggleCarousel', "ui/sticky"], function () {
             $('.story-review').vcToggleCarousel({
@@ -91,10 +97,10 @@
 
             bindEvent();
 
-            //var isLogin = 
-    
             loadStoryList('user_story', 1, 'UserStory');
-            loadStoryList('new_story', 1, 'NewStory');
+    
+            $('.new_story').hide();
+            if(IS_LOGIN == "Y") loadStoryList('new_story', 1, 'NewStory');
         });
     }
 
@@ -127,6 +133,85 @@
 
             sendTagList(this);
         });
+
+        $('.floating-wrap .easy-path a').on('click', function(e){
+            e.preventDefault();
+            
+            requestTagMngPop(this);
+        });
+
+        $('#popup-tagMnger').on('click', '.btn-group button:nth-child(1)', function(e){
+            e.preventDefault();
+
+            setTagMngINIT();
+        }).on('click', '.btn-group button:nth-child(2)', function(e){
+            e.preventDefault();
+
+            var ajaxurl = $(this).data("submitUrl");
+            setTagMngOK(ajaxurl);
+        }).on('change', 'input[type=checkbox]', function(){
+            setTagMngChecked();
+        });
+    }
+
+    function setTagMngChecked(){
+        $('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
+
+        setTagMngCount();
+    }
+
+    function setTagMngCount(count){
+        var leng = count ? count : $('#popup-tagMnger').find('input[type=checkbox]:checked').length;
+        var total = leng ? ' (' + leng + ')' : "";
+        $('#popup-tagMnger .btn-group button:nth-child(2)').empty().html('<span>완료' + total + '</span>');
+    }
+
+    function setTagMngINIT(){
+        // for(var idx in tagMngChkList){
+        //     $('#popup-tagMnger').find('input[id=' + tagMngChkList[idx].id + ']').prop("checked", tagMngChkList[idx].chk);
+        // }
+
+        $('#popup-tagMnger').find('input[type=checkbox]').prop('checked', false);
+
+        $('#popup-tagMnger').find('.btn-group button').prop('disabled', true);
+        setTagMngCount(0);
+    }
+
+    function setTagMngOK(ajaxurl){
+        lgkorUI.showLoading();
+
+        var sendata = {}
+        $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
+            var id = $(item).attr('id');
+        });
+
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
+            lgkorUI.hideLoading();
+
+            $('#popup-tagMnger').vcModal('close');
+
+            loadStoryList('user_story', 1, "UserStory");
+        });
+    }
+
+    function addTagMngInitData(){
+        tagMngChkList = [];
+        $('#popup-tagMnger').find('input[type=checkbox]').each(function(idx, item){
+            var id = $(item).attr('id');
+            var chk = $(item).prop('checked');
+            tagMngChkList.push({id: id, chk: chk});
+        });
+
+        setTagMngCount();
+    }
+
+    function requestTagMngPop(dm){
+        var ajaxUrl = $(dm).attr('href');
+        lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+            $('#popup-tagMnger').empty().html(result).vcModal();
+
+            //addTagMngInitData();
+        }, null, "html");
     }
 
     function sendTagList(item){
@@ -152,10 +237,12 @@
             type: type,
             selectTags: selectTag ? selectTag : ""
         }
+        console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
+            console.log("### requestAjaxData ###", result)
             var sectionItem = $('.' + sectioname)
-            var page = result.param.pagination.page;
-            var totalcnt = result.param.pagination.totalCount;
+            var page = parseInt(result.param.pagination.page);
+            var totalcnt = parseInt(result.param.pagination.totalCount);
             sectionItem.data("page", page);
 
             if(page == 1){
@@ -176,59 +263,57 @@
             } else{
                 sectionItem.find('.inner h2.title').show();
             }
-
+            
             if(result.data.storyList && result.data.storyList.length > 0){
                 sectionItem.show();
 
-                var imgLength = 0;
+                imgLoadId = 0;
+                imgLoadTotal = result.data.storyList.length;
                 for(var str in result.data.storyList){
-                    var template = result.data.storyList[str].contentsType == "tag" ? tagBoxTemplate : storyListTemplate;
-                    var list = vcui.template(template, result.data.storyList[str]);
+                    var list = vcui.template(storyListTemplate, result.data.storyList[str]);
                     sectionItem.find('.flexbox-wrap').append(list);
-
-                    if(result.data.storyList[str].contentsType != "tag") imgLength++;
                 }
 
-                var leng = result.data.storyList.length;
-                var first = (page-1)*listMaxLength;
-                var end = first + leng;
-                var loadID = 0;
-                var flexbox;
-                for(var i=first;i<end;i++){
-                    flexbox = sectionItem.find('.flexbox-wrap .flexbox').eq(i);
-                    flexbox.find('.box-wrap').css({opacity:0});
-                    flexbox.find('img').on('load.storyhome', function(){
-                        $(this).off('load.storyhome');
-
-                        loadID++;
-                        if(loadID == imgLength){
-                            setRepositionTagBox(sectionItem);
-                            
-                            var scrolltop = 999999999999999;
-                            sectionItem.find('.flexbox-wrap .flexbox').each(function(cdx, child){
-                                if(!$(child).data('appearAnim')){
-                                    scrolltop = Math.min(scrolltop, $(child).offset().top);
-
-                                    var delay = parseInt(Math.random()*10)*15;
-                                    $(child).data('appearAnim', true);
-                                    $(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
-                                }
-                            });
-
-                            if(page > 1){
-                                var status = getAlignStatusValues(sectionItem);
-                                $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
-                            }
-                        }
-                    });
+                if(page == 1 && result.data.recommendTags){
+                    list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
+                    sectionItem.find('.flexbox-wrap').append(list);
                 }
             } else{
                 sectionItem.hide();
+                lgkorUI.hideLoading();
+            }
+        });
+    }
+
+    function imgLoadEvent(img){
+        imgLoadId++;
+        if(imgLoadId == imgLoadTotal){
+            console.log("### img load complete ###");
+
+            var sectionItem = $(img).closest('.story-section');
+            setRepositionTagBox(sectionItem);
+            
+            var scrolltop = 999999999999999;
+            sectionItem.find('.flexbox-wrap .flexbox').each(function(cdx, child){
+                if(!$(child).data('appearAnim')){
+                    scrolltop = Math.min(scrolltop, $(child).offset().top);
+
+                    var delay = parseInt(Math.random()*10)*15;
+                    $(child).data('appearAnim', true);
+                    $(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
+                }
+            });
+
+            var page = sectionItem.data("page");
+            if(page > 1){
+                var status = getAlignStatusValues(sectionItem);
+                $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
             }
 
             lgkorUI.hideLoading();
-        });
+        }
     }
+    window.onImgLoadEvent = imgLoadEvent;
 
     function setRepositionTagBox(item){
         var maxBottom = 0;

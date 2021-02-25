@@ -7,7 +7,7 @@
     /* common */
     .survey-banner-wrap {
         margin:0 auto;
-        margin-top:80px;
+        margin-top:64px;
         .banner {
             display:flex;
             align-items:center;
@@ -17,7 +17,7 @@
             background:#f4f4f4;
             p {
                 position:relative;
-                padding:0 20px 0 64px;
+                padding:0 20px 0 96px;
                 @include font-medium;
                 font-weight:700;
                 &:before {
@@ -25,11 +25,11 @@
                     position:absolute;
                     left:0;
                     top:50%;
-                    width:48px;
-                    height:48px;
+                    width:64px;
+                    height:64px;
                     transform:translate(0, -50%);
                     background:url("/lg5-common/images/icons/icon-12-80.svg") no-repeat;
-                    background-size:48px 48px;
+                    background-size:100%;
                 }
                 .point {
                     color:#ec455a;
@@ -44,10 +44,10 @@
             padding:0 16px;
             .banner {
                 display:block;
-                padding:16px 24px;
+                padding:24px;
                 text-align:center;
                 p {
-                    padding:56px 0 16px;
+                    padding:76px 0 16px;
                     &:before {
                         top:0;
                         left:50%;

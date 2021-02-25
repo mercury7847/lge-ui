@@ -169,13 +169,18 @@
     var cancelAllChecker;
 
     function init(){
-        vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'helper/textMasking'], function () {             
-            setting();
-            bindEvents();
+        if(!$('.contents.mypage').data('consumables')) {
+            vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'helper/textMasking'], function () {             
+                setting();
+                bindEvents();
 
-            var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
-            requestOrderInquiry(dateData.startDate, dateData.endDate);
-        });
+                var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+
+                requestOrderInquiry(dateData.startDate, dateData.endDate);
+            });
+        } else {
+            bindEventsConsumables();
+        }
     }
 
     function setting(){
@@ -273,6 +278,28 @@
             e.preventDefault();
 
             cancelConfirm();
+        });
+    }
+
+    function bindEventsConsumables() {
+        $('.contents.mypage').on('click', '.tracking-btn', function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+            var trackingNo = $this.data('trackingNumber').toString();
+            var url = '';
+
+            trackingNo = trackingNo.replace(/[_-]/gi, '');
+
+            if (trackingNo.length == 13) {
+                //우체국
+                url = "https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm?displayHeader=N&sid1="+trackingNo;
+                window.open( url,'tracking','scrollbars=yes,toolbar=0,location=0,directories=0,status=0,menubar=0,resizable=0,top=20,left=20,width=750,height=800');
+            } else {
+                //CJ
+                url = "https://www.cjlogistics.com/ko/tool/parcel/newTracking?gnbInvcNo="+trackingNo;
+                window.open( url,'tracking','scrollbars=yes,toolbar=0,location=0,directories=0,status=0,menubar=0,resizable=0,top=20,left=20,width=1300,height=800');
+            }
         });
     }
 
