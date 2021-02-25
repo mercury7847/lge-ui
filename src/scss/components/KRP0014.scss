@@ -99,7 +99,11 @@
                 }
             }
             .title {
+                margin-bottom:0;
                 font-weight:500;
+                @include mobile {
+                    padding:0;
+                }
             }
         }
         &.faq-type > ul > .lists .accord-cont {
