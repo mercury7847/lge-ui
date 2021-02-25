@@ -613,6 +613,10 @@ CS.MD.commonModel = function() {
                 var salesModelCode = self.selected.salesModelCode;
                 var href = $(this).attr('href');
 
+                if (!salesModelCode && $('#salesModelCode').length) {
+                    salesModelCode = $('#salesModelCode').val();
+                }
+
                 location.href = href + '?modelCode=' + salesModelCode;
             });
 
