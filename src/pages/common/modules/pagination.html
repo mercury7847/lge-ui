@@ -1,0 +1,16 @@
+<div class="pagination">
+    <a href="#" class="prev disabled" aria-disabled="false"><span class="blind">이전 페이지 보기</span></a><!-- 비활성시 disabled 클래스 추가 -->
+    <span class="page_num">
+        <strong><span class="blind">현재 페이지</span>1</strong>
+        @@if(context.count) {
+            @@for( var i = 2; i <= count; i++) {
+                <a href="#" value="`+i+`"  title="`+i+`페이지 보기">`+i+`</a>
+            }
+        }
+        @@if (context.last) {
+            <span class="dot">...</span>
+            <button type="button" value="30" title="30페이지 보기">30</button>
+        }
+    </span>
+    <a href="#" class="next" aria-disabled="false"><span class="blind">다음 페이지 보기</span></a><!-- 비활성시 disabled 클래스 추가 -->
+</div>

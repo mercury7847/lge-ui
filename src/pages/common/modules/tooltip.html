@@ -1,0 +1,23 @@
+@@if(!context.share){
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon ui_tooltip-target" @@if(context.fixed){data-fixed="@@fixed"}>자세히 보기</span>
+}
+@@if(context.share){
+<div class="tooltip-wrap share"><!-- 활성화시 active -->
+    <a href="#n" class="tooltip-icon ui_tooltip-target" @@if(context.fixed){data-fixed="@@fixed"}><span class="blind">제품 공유하기</span></a>
+}
+    <div class="tooltip-box">
+        @@if ( type == "text" ) {
+        <p>@@text</p>
+        }
+        @@if ( type == "include" ) {
+            @@include('./common/modules/@@page.html')
+        }
+        @@if ( type == "includeType" ) {
+            @@include('./common/modules/@@page.html', {
+                "@@pageType" : true
+            })
+        }
+        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+    </div>
+</div>

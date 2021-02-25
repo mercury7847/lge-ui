@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- membership -->
+            <div class="contents membership">
+                <!-- visual slider -->
+                <div class="visual-wrap">
+                    @@include('./common/modules/main_carousel.html', {
+                        "slides" : [
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
+                                "btn" : "자세히 보기"
+                            },
+                            {
+                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                                "eyebrow" : "LG전자 멤버십 앱",
+                                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
+                                "btn" : "자세히 보기"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // visual slider -->
+
+                <!-- 210215 수정 -->
+                <div class="ui_sticky">
+                    <div class="page-tabs">
+                        <div class="tabs-wrap border-type left">
+                            <ul class="tabs">
+                                <li><a href="#n">멤버십 소개</a></li>
+                                <li><a href="#n">VIP 멤버십 혜택</a></li>
+                                <li class="on"><a href="#n"><em class="blind">현재 화면</em>가입 안내</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- //210215 수정 -->
+
+                <!-- 210215 수정 -->
+                <div class="cont-wrap">
+                    <div class="section-wrap">
+                        <div class="sects">
+                            <div class="tit-wrap type2">
+                                <h2 class="tit">가입안내</h2>
+                            </div>
+                            <div class="section-inner">
+                <!-- //210215 수정 -->
+                                <div class="sign-up-guide">
+                                    <span class="blind">인터넷, 스마트폰 앱, 매장 방문을 통한 가입방법 안내</span>
+                                    <div class="icon-tabs ui_tab">
+                                        <ul class="tabs">
+                                            <li class="on"><a href="#tab1" class="tab1">인터넷<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#tab2" class="tab2">스마트폰 앱</a></li>
+                                            <li><a href="#tab3" class="tab3">매장 방문</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div id="tab1" class="tab-content">
+                                        <ul class="sign-up-steps">
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP1</small>온라인 회원가입
+                                                    </dt>
+                                                    <dd>LG전자 홈페이지에서 멤버십 가입하기 버튼을 클릭하세요.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP2</small>신청서 작성
+                                                    </dt>
+                                                    <dd>본인인증을 완료한 후 가입에 필요한 정보를 입력합니다.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP3</small>가입 완료
+                                                    </dt>
+                                                    <dd>온라인으로 가입이<br>완료됩니다.</dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tab2" class="tab-content">
+                                        <ul class="sign-up-steps">
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP1</small>스마트폰 앱 다운
+                                                    </dt>
+                                                    <dd>구글플레이 / 앱스토어에서 'LG전자 멤버십'앱을 다운로드받으세요.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP2</small>회원가입 / 로그인
+                                                    </dt>
+                                                    <dd>멤버십이 처음이면 회원가입, 회원이라면 로그인을 진행하세요.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP3</small>가입 완료
+                                                    </dt>
+                                                    <dd>스마트폰 앱으로 가입이<br>완료됩니다.</dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                        <div class="sign-up-bottom">
+                                            <ul class="qr-lists" aria-hidden="true">
+                                                <!-- 210215 수정 -->
+                                                <li>
+                                                    
+                                                    <span class="img"><img src="/lg5-common/images/BMC/img-qr1.jpg" alt=""></span>
+                                                    <p>안드로이드</p>
+                                                </li>
+                                                <li>
+                                                    <span class="img"><img src="/lg5-common/images/BMC/img-qr1.jpg" alt=""></span>
+                                                    <p>아이폰</p>
+                                                </li>
+                                                <!-- //210215 수정 -->
+                                            </ul>
+                                            <!-- 210106 링크추가 -->
+                                            <div class="down-link-lists">
+                                                <p><span class="blind">LG전자 멤버십 앱 다운로드</span>링크 이동</p>
+                                                <a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" class="btn1"><span>Google Play 가기</span></a>
+                                                <a href="https://apps.apple.com/kr/app/id1406622899" class="btn2"><span>App Store 가기</span></a>
+                                            </div>
+                                            <!-- //210106 링크추가 -->
+                                        </div>
+                                    </div>
+                                    <div id="tab3" class="tab-content">
+                                        <ul class="sign-up-steps">
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP1</small>매장 방문
+                                                    </dt>
+                                                    <dd>가까운 베스트샵 매장을 방문하세요.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP2</small>신청서 작성
+                                                    </dt>
+                                                    <dd>LG전자 멤버십 가입 신청서를 작성하세요.</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <small>STEP3</small>가입 완료
+                                                    </dt>
+                                                    <dd>베스트샵 매장방문으로<br>가입이 완료됩니다.</dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTit" : "유의사항 안내",
+                                "bulletTxt" : [
+                                    "제품 구매처가 달라도 전국 BEST SHOP 매장에서 적립/사용이 가능합니다.",
+                                    "1포인트 이상 적립 시 현금처럼 사용 하실 수 있습니다. (1포인트 = 현금 1원과 동일)",
+                                    "LG전자 서비스 센터에서 수리 또는 렌탈 구매시 현금처럼 사용하실 수 있습니다.",
+                                    "멤버십 포인트의 유효기간은 BEST SHOP 홈페이지에 로그인 후, BEST SHOP > 멤버십 > 멤버십 포인트 조회에서 확인하실 수 있습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+                    <div class="btn-group center">
+                        <a href="#n" class="btn gray"><span>가까운 매장찾기</span></a>
+                        <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- // membership -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

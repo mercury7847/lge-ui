@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0014 {
+    .component-inner {
+        @include mobile {
+            padding:0;
+        }
+    }
+    img {
+        width:auto;
+        max-width:100%;
+        height:auto;
+        vertical-align:top;
+    }
+
+    .title * {
+        @include title-h5;
+    }
+
+    .hidden-xs {
+        display:block !important;
+    }
+    .visible-xs {
+        display:none !important;
+    }
+    @include mobile {
+        .hidden-xs {
+            display:none !important;
+        }
+        .visible-xs {
+            display:block !important;
+        }
+    }
+
+    // common
+    .text-area, .text-m-area {
+        // .title * {
+        //     @include title-h3;
+        // }
+        .desc-text {
+            @include bodycopy(h3, h3);
+        }
+    }
+    .button-box-default,
+    .button-text-default,
+    .btn-type-box,
+    .btn-type-text,
+    .btn-mtype-box,
+    .btn-mtype-text {
+        @include cta-btn;
+    }
+
+    // PC
+    .visual-set {
+        &.large-align-left {
+            .hidden-xs {
+                .visual-area {
+                    float:left;
+                }
+                .text-thumb-area {
+                    float:right;
+                }
+            }
+        }
+        &.large-align-right {
+            .hidden-xs {
+                .visual-area {
+                    float:right;
+                }
+                .text-thumb-area {
+                    float:left;
+                }
+            }
+        }
+    }
+    .hidden-xs {
+        @include clearfix;
+        .visual-area {
+            width:calc(50% - 12px);
+            text-align:center;
+            a {
+                position:relative;
+                display:inline-block;
+                max-width:100%;
+                vertical-align:top;
+            }
+        }
+        .text-thumb-area {
+            width:calc(50% + 12px);
+            padding:0 48px;
+        }
+
+        .thumbnail-area-box {
+            .text-area-default,
+            .button-box-default,
+            .button-text-default {
+                display:none !important;
+            }
+
+            margin-top:4px;
+            .thumbnail-area {
+                margin:0 -10px;
+                font-size:0;
+                .obj-thumb {
+                    display:inline-block;
+                    width:80px;
+                    height:80px;
+                    margin:20px 10px 0;
+                    a {
+                        display:block;
+                        position:relative;
+                        height:0;
+                        padding-bottom:100%;
+                        overflow:hidden;
+                        img{
+                            width:auto;
+                            max-width:100%;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
+                    &.on {
+                        a::before {
+                            content:' ';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            background:rgba(#000, .5);
+                        }
+                        a::after {
+                            content:' ';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            border:2px solid #EC455A;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Mobile {
+    .visual-m-area {
+        position:relative;
+        width:100%;
+        .indi-wrap {
+            position:absolute;
+            top:0;
+            bottom:auto;
+            left:0;
+            right:0;
+            z-index:10;
+        }
+        .ui_carousel_list {
+            overflow:hidden;
+        }
+        .btn-arrow {
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            &.prev {
+                left:4px;
+            }
+            &.next {
+                right:4px;
+            }
+        }
+        .items {
+            @include clearfix;
+        }
+        .visual-m-box {
+            position:relative;
+            height:0;
+            padding-bottom:66.6%;
+            overflow:hidden;
+            a {
+                display:block;
+            }
+        }
+        .text-m-area {
+            margin-top:56px;
+            padding:0 16px;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="39px" height="23px" viewBox="0 0 39 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Slice</title>
+    <defs>
+        <path d="M19.0213392,1.45661261e-13 C21.4619057,8.88232253 25.6843542,16.5493561 31.6886849,23.0011006 L410,23 C427.673112,23 442,37.326888 442,55 L442,238 C442,255.673112 427.673112,270 410,270 L-166,270 C-183.673112,270 -198,255.673112 -198,238 L-198,55 C-198,37.326888 -183.673112,23 -166,23 L7.0249906,23.0004294 C12.9357193,16.5488243 16.9345022,8.88201451 19.0213392,1.45661261e-13 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#FFFFFF" xlink:href="#path-1"></use>
+    </g>
+</svg>

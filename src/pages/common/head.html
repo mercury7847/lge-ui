@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-TextLayoutMetrics" content="gdi" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="@@pageDesc">
+    <title>@@pageTitle</title>
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"> -->
+    <!-- 210224 파비콘 추가 -->
+    <link rel="shortcut icon" href="/lg5-common/images/favicon.ico">
+    <!-- //210224 파비콘 추가 -->
+    <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+    <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+    @@if (context.componentID) {
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/@@componentID.min.css" />
+    }
+    @@if (context.pageCSS) {
+        @@for (var i=0; i<context.pageCSS.length; i++) {
+            <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/`+pageCSS[i]+`.min.css" />
+        }
+    }
+    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+    <!-- CS에서 사용 -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <!-- // CS에서 사용 -->
+    @@if (context.libJS) {
+        @@for (var i=0; i<context.libJS.length; i++) {
+            <script src="/lg5-common/js/libs/`+libJS[i]+`.min.js"></script>
+        }
+    }
+    <script src="/lg5-common/js/vcui.min.js"></script>
+    <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
+    <script src="/lg5-common/js/lg.common.min.js"></script>
+    @@if (context.isJScompile && context.componentID) {
+        <script src="/lg5-common/js/components/@@componentID.min.js"></script>
+    }
+    @@if (context.pageJS) {
+        @@for (var i=0; i<context.pageJS.length; i++) {
+            <script src="/lg5-common/js/`+pageJS[i]+`.min.js"></script>
+        }
+    }
+    <!-- <script src="/lg5-common/js/search/integratedSearch.min.js" async></script> -->
+</head>

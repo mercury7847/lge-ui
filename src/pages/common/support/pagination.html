@@ -1,0 +1,31 @@
+@@if (context.last) {
+<!-- 
+data-totla-count : 전체 리스트 건수
+data-last-view   : 비디오 가이드 전용 변수
+-->
+<div class="pagination" data-last-view="true" data-total-count="152" data-page="1">
+}
+@@if (!context.last) {
+<!-- data-totla-count : 전체 리스트 건수  -->
+@@if (context.noShow) {
+<div class="pagination" data-total-count="152" data-page="1" style="display:none">
+}
+@@if (!context.noShow) {
+<div class="pagination" data-total-count="152" data-page="1">
+}
+}
+    <a href="#" class="prev disabled" data-page="" aria-disabled="false"><span class="blind">이전 페이지 보기</span></a>
+    <span class="page_num">
+        <strong><span class="blind">현재 페이지</span>1</strong>
+        @@ if(context.count) {
+            @@for (var i = 2; i <= count; i++) {
+                <a href="#" data-page="`+i+`"  title="`+i+`페이지 보기">`+i+`</a>
+            }
+        }
+        @@ if (context.last) {
+            <span class="dot">...</span>
+            <a href="#" data-page="31" title="7페이지 보기">31</a>
+        }
+    </span>
+    <a href="#" class="next" data-page="6" aria-disabled="false"><span class="blind">다음 페이지 보기</span></a>
+</div>

@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.support {
+    
+    // 칭찬합니다.
+    &.feedback {
+        .bullet-list {
+            .btn-link {
+                margin-left:24px;
+            }
+            @include mobile {
+                .btn-link {
+                    margin:12px 0 0 0;
+                }
+            }
+        }
+        .search-wrap {
+            max-width:848px;
+            margin:0 auto;
+            padding-bottom:64px;
+            &.search-layer {
+                max-width:444px;
+                padding-bottom: 48px;
+            }
+            .keyword-search {
+                width: 100%;
+            }
+            @include mobile {
+                padding:0 20px 32px;
+                background:#fff;
+            }
+        }
+        .result-wrap {
+            @include mobile {
+                padding:0 16px;
+            }
+        }
+        .tb_row {
+            &.board-type {
+                tbody {
+                    td {
+                        &:not(.board-tit) {
+                            color: #666;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                td {
+                    &:not(.board-tit) {
+                        display: flex;
+                        .mo-only {
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 경영진에게 제안
+    &.suggestions {
+        .result-progress {
+            padding-bottom:0;
+        }
+        .mymem-lists {
+            font-size:0;
+            display: flex;
+            li {
+                padding: 24px;
+                border-radius: 8px;
+                border: solid 1px #dddddd;
+                margin-left: 24px;
+                flex: 1;
+                font-size: 18px;
+                font-weight: bold;
+                &:first-child {
+                    margin-left: 0;
+                }
+                @include mobile {
+                    width:100%;
+                    height:auto; 
+                    padding:0;
+                    margin-top:16px;
+                    border-left:none;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+            }
+            @include mobile {
+                padding:20px;
+                background:#f4f4f4;
+                border-radius:4px;
+            }
+        }
+        .cont-wrap {
+            // max-width:1146px + 80px;
+        }
+    }
+
+    // 나의 글 보기
+    &.my-status {
+        .result-progress {
+            padding-bottom:0;
+        }
+        .my-status-info {
+            margin:0 -6px 64px;
+            & > ul {
+                @include clearfix;
+                li {
+                    float:left;
+                    width:25%;
+                    padding:0 6px;
+                    a {
+                        display:block;
+                        padding:27px 12px;
+                        @include font-medium;
+                        font-weight:$font-weight-medium;
+                        text-align:center;
+                        border-radius:8px;
+                        box-shadow:2px 3.5px 16px 0 rgba(0, 0, 0, 0.14);
+                    }
+
+                    &.on {
+                        a {
+                            padding:25px 12px;
+                            color:#ec455a;
+                            border: solid 2px #ec455a;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                margin:-8px -4px 32px;
+                & > ul {
+                    li {
+                        width:50%;
+                        margin-top:8px;
+                        padding:0 4px;
+                    }
+                }
+            }
+        }
+        .my-status-list {
+            table {
+                table-layout:fixed;
+                a {
+                    display:block;
+                    @include textEllipsis;
+                }
+            }
+            @include mobile {
+                display:none;
+            }
+            &-m {
+                border-top:2px solid #222;
+                border-bottom:1px solid #ddd;
+                & > ul {
+                    & > li {
+                        padding:16px 0;
+                        border-bottom:1px solid #ddd;
+                        &:last-child {
+                            border-bottom:0;
+                        }
+                    }
+                }
+                .flag-wrap {
+                    margin-bottom:4px;
+                }
+                .tit {
+                    margin-bottom:12px;
+                    a {
+                        display:block;
+                        @include font-medium;
+                        @include textEllipsis;
+                    }
+                }
+                .options {
+                    li {
+                        font-size:0
+                    }
+                    .option-tit, .option-desc {
+                        display:inline-block;
+                        color:#767676;
+                        @include font-small;
+                        vertical-align:middle;
+                    }
+                    .option-desc {
+                        position:relative;
+                        margin-left:8px;
+                        padding-left:9px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:6px;
+                            width:1px;
+                            height:10px;
+                            background:#ddd;
+                        }
+                    }
+                }
+                @include pc {
+                    display:none;
+                }
+            }
+        }
+        .search-info {
+            margin-bottom:15px;
+        }
+
+        @include mobile {
+            .search-info {
+                margin-bottom:15px;
+            }
+        }
+    }
+}

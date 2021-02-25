@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myWishList"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "찜한 제품",
+                "pageDesc" : "찜한 제품은 1년간 보관되며, 판매 종료 된 제품은 종료된 지 3개월 후 자동 삭제됩니다."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "on", "page": "찜한 제품" },
+                                { "on": "", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "", "page": "단골매장" },
+                                { "on": "", "page": "재입고 알림" },
+                            ]
+                        })
+                        <div class="lnb-contents" data-list-url="/lg5-common/data-ajax/mypage/wish/myWishList.json" data-cart-url="/lg5-common/data-ajax/mypage/wish/myWishCart.json" data-remove-url="/lg5-common/data-ajax/mypage/wish/myWishCart.json">
+                            <div class="info-tbl-wrap type2">
+                                <ul>
+                                    @@loop('./common/modules/bdcard-list.html', [
+                                        {
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            more : true,
+                                            price : "5,141,000원",
+                                            oriPrice : "5,300,000원"
+                                        },
+                                        {
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            more : true,
+                                            price : "5,141,000원",
+                                            oriPrice : "5,300,000원"
+                                        },
+                                        {
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            more : true,
+                                            price : "월 15,000원",
+                                        },
+                                        {
+                                            disabled : true,
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            soldout : "품절되었습니다.",
+                                            price : "15,000원",
+                                        },
+                                        {
+                                            disabled : true,
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            soldout : "단종되었습니다.",
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+
+                            <div class="no-data">
+                                <p>검색결과가 없습니다.</p>
+                            </div>
+
+                            <!-- <div class="pagination" data-page="16" data-visible-count="7" data-total-count="33"></div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "선택하신 제품을 장바구니에 담았습니다."}
+                    ]
+                })
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

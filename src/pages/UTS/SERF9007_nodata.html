@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+<!--        include('./common/header.html')-->
+
+        <div class="container">
+            <!-- 통합검색 -->
+            <div class="contents search">
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search.html', {
+                    "value" : "xlql",
+                    "related" : true,
+                    "layer" : true
+                })
+                <!-- // 검색 영역 -->
+                <!-- 검색 결과 영역 -->
+                <div class="search-tabs-wrap">
+                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                        <ul class="tabs">
+                            <li><a href="#n">전체(210)</a></li>
+                            <li><a href="#n">제품/케어솔루션(59)</a></li>
+                            <li><a href="#n">이벤트/기획전(5)</a></li>
+                            <li><a href="#n">스토리(18)</a></li>
+                            <li class="on"><a href="#n">케어용품/소모품(32)<em class="blind">선택됨</em></a></li>
+                            <li><a href="#n">센터/매장(2)</a></li>
+                            <li><a href="#n">고객지원(28)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 검색 결과 영역 -->
+                <!-- 20210118 검색 결과 없음 추가 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>검색결과가 없습니다</em></span>
+                            찾으시는 상품이 없는 경우 LG전자 고객센터 1544-7777로 문의하시기 바랍니다.<br>
+                            사용하고 계신 모델명을 미리 확인하시면 정확하고 빠른 상담이 가능합니다.
+                        </p>
+                    </div>
+                </div>
+                <!-- // 검색 결과 없음 -->
+                <div class="cont-wrap">
+                    <div class="search-result-wrap suggested-list-wrap">
+                        <div class="result-list-wrap">
+                            <div class="list-head">
+                                <h2 class="title">이런 제품 어떠세요?</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list product-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
+                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku" : "5203FI3754D",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>

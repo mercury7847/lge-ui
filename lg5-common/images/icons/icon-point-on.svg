@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="88px" viewBox="0 0 62 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon">
+            <g id="icon_point_on">
+                <path d="M31,0 C48.1208272,0 62,13.953792 62,31.1666667 C62,42.6419165 51.6666667,61.5863609 31,88 C10.3333333,61.5863609 0,42.6419165 0,31.1666667 C0,13.953792 13.8791728,0 31,0 Z" id="Rectangle" fill="#EC455A"></path>
+                <rect id="Rectangle" fill="#FFFFFF" x="11" y="11" width="40" height="40" rx="19.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

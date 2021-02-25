@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html')
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>위치 정보 제공 동의 팝업 열기</span></button><br><br>
+    </div>
+
+    <article id="popup1" class="popup-wrap small">
+        <section class="pop-conts common-pop">
+            <div class="text-area">
+                <h1 class="tit">위치 정보 제공 동의</h1>
+                <div class="text">
+                    고객님께서 제공하시는 위치 정보는 현재 계신 
+                    위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.
+                    <br><br>
+                    또한 상기 서비스 제공  후 즉시 폐기되며, 별도 
+                    저장되지 않습니다.
+                    <br><br>
+                    고객님의 현재 계신 위치 정보 제공에 
+                    동의하시겠습니까?  
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray"><span>동의 안함</span></button>
+                <button type="button" class="btn pink"><span>동의</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+
+</body>
+</html>

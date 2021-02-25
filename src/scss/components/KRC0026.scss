@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0026 {
+	.inner {
+		max-width:1380px + 80px;
+		margin:0 auto;
+		padding:0 40px;
+	}
+	.box {
+		position:relative;
+		.btn-area {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			@include mobile {
+				position:static;
+				margin-top:24px;
+				transform:translateY(0);
+			}
+		}
+
+		&.align-left {
+			padding-right:17%;
+			.btn-area {
+				right: 0;
+			}
+		}
+		&.align-right {
+			padding-left:17%;
+			.btn-area {
+				left: 0;
+			}
+		}
+	}
+
+	.eyebrow {
+		@include eyebrow;
+	}
+
+	.title * {
+		@include title-h4;
+	}
+
+	.headline {
+		@include title-h2;
+		margin-top:32px;
+		&:first-child {
+			margin-top:0;
+		}
+	}
+
+	.text {
+		@include bodycopy(h2, h2);
+	}
+}

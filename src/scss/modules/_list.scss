@@ -1,0 +1,371 @@
+// 제품리스트(gray-box list, script)
+.product-list-wrap {
+    .product-lists {
+        margin:-24px -12px 0;
+        font-size:0;
+        @include mobile {
+            margin:-8px -4px 0;
+        }
+        li.lists {
+            display:inline-block;
+            width:calc(100% / 3);
+            margin-top:24px;
+            vertical-align:top;
+            @include mobile {
+                margin-top:8px;
+                width:50%;
+            }
+            div {
+                margin:0 12px;
+                border-radius:8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                @include mobile {
+                    margin:0 4px;
+                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                }
+            }
+            dl {
+                position:relative;
+                padding:32px 38px;
+                text-align:center;
+                @include mobile {
+                    padding:12px 15px 24px;
+                }
+                dt {
+                    position:relative;
+                    color:#000;
+                    .img {
+                        display:block;
+                        margin-bottom:16px;
+                        text-align:center;
+                        @include mobile {
+                            margin-bottom:10px;
+                        }
+                        img {
+                            width:100%;
+                            max-width:180px;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
+                    p {
+                        &.name {
+                            max-height:56px;
+                            @include textEllipsisClamp(2);
+                            @include font-large;
+                            font-weight:700;
+                            @include mobile {
+                                max-height:46px;
+                            }
+                        }
+                        &.num {
+                            height:20px;
+                            font-size:14px;
+                            line-height:20px;
+                            font-weight:400;
+                            overflow:hidden;
+                            text-overflow:ellipsis;
+                            white-space:nowrap;
+                            @include mobile {
+                                margin-top:2px;
+                                font-size:12px;
+                                line-height:16px;
+                            }
+                        }
+                    }
+                }
+                dd {
+                    margin-top:4px;
+                    @include mobile {
+                        margin-top:7px;
+                    }
+                    .infos {
+                        li {
+                            color:#767676;
+                            @include font-medium;
+                            word-break:keep-all;
+                            @include mobile {
+                                font-weight:500;
+                            }
+                            small {
+                                display:inline-block;
+                                font-size:inherit;
+                                line-height:inherit;
+                                vertical-align:top;
+                            }
+                        }
+                    }
+                }
+                .btn-del {
+                    position:absolute;
+                    top:16px;
+                    right:16px;
+                    width:24px;
+                    height:24px;
+                    &::before, &::after {
+                        content:' ';
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        width:1.3px;
+                        height:24px;
+                        margin-top:-12px;
+                        margin-left:-1px;
+                        border-radius:1px;
+                        background:#222;
+                    }
+                    &::before {
+                        transform:rotate(45deg);
+                    }
+                    &::after {
+                        transform:rotate(-45deg);
+                    }
+                }
+            }
+        }
+        &.center {
+            li.lists {
+                dl {
+                    text-align:center;
+                }
+            }
+        }
+    }
+    &.type2 {
+        @include pc {
+            .product-lists {
+                margin:-12px -6px 0;
+                li.lists {
+                    margin-top:12px;
+                    div {
+                        margin:0 6px;
+                    }
+                    dl {
+                        padding:40px;
+                        dt {
+                            .img {
+                                margin-bottom:24px;
+                                img {
+                                    max-width:268px;
+                                }
+                            }
+                            p.name {
+                                max-height:60px;
+                                @include font-large-1;
+                            }
+                        }
+                        dd {
+                            margin-top:14px;
+                            .infos li {
+                                color:#000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// link button list
+.link-btn-lists {
+    margin-top:24px;
+    font-size:0;
+    text-align:center;
+    @include mobile {
+        margin-top:32px;
+    }
+    li {
+        display:inline-block;
+        margin:8px 4px 0;
+        vertical-align:top;
+        @include mobile {
+            display:block;
+            margin:8px 0 0;
+        }
+        a {
+            display:block;
+            position:relative;
+            padding:7px 53px 7px 15px;
+            border:1px solid #616161;
+            border-radius:8px;
+            color:#616161;
+            font-size:14px;
+            line-height:20px;
+            font-weight:500;
+            text-align:left;
+            @include mobile {
+                padding:15px 43px 15px 19px;
+                font-size:16px;
+                line-height:24px;
+            }
+            &::after {
+                content:' ';
+                position:absolute;
+                top:50%;
+                right:13px;
+                width:6px;
+                height:6px;
+                margin-top:-3px;
+                border:1px solid #616161;
+                border-left:none;
+                border-bottom:none;
+                transform:rotate(45deg);
+                @include mobile {
+                    width:9px;
+                    height:9px;
+                    right:32px;
+                    border-width:2px;
+                    margin-top:-4px;
+                }
+            }
+        }
+    }
+}
+
+// dl List 
+.dl-infolist-wrap {
+    .lists {
+        li {
+            margin-top:20px;
+            @include mobile {
+                margin-top:18px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            dl {
+                font-size:0;
+                dt {
+                    display:inline-block;
+                    width:234px;
+                    padding-right:24px;
+                    color:#000;
+                    @include font-medium;
+                    font-weight:700;
+                    vertical-align:top;
+                    word-break:keep-all;
+                    @include mobile {
+                        width:34%;
+                    }
+                }
+                dd {
+                    display:inline-block;
+                    width:100%;
+                    max-width:calc(100% - 234px);
+                    color:#000;
+                    @include font-medium;
+                    vertical-align:top;
+                    em {
+                        font-weight:700;
+                    }
+                    > span {
+                        display:block;
+                    }
+                    .btn-link {
+                        position:relative;
+                        margin-top:8px;
+                        // margin-left:24px;
+                        &:after {
+                            content:' ';
+                            display:inline-block;
+                            width:14px;
+                            height:14px;
+                            background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+                            background-size:14px;
+                            vertical-align:middle;
+                        }
+                    }
+                    @include mobile {
+                        width:66%;
+                        max-width:initial;
+                        span {
+                            display:block;
+                        }
+                        .btn-link {
+                            margin-top:6px;
+                            margin-left:0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 태그 구독 태그리스트
+.tag-subscribe-wrap {
+    // 마이페이지 내 버튼 대응. 스토리에서 <div class="top"> 삭제.
+    .top {
+        margin-bottom:12px;
+        text-align:right;
+    }
+    // 공통 시작
+    .tag-lists {
+        .sect {
+            margin-top:80px;
+            @include mobile {
+                margin-top:60px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .tag-title {
+                margin-bottom:16px;
+                color:#000;
+                @include font-large-2;
+                font-weight:700;
+                @include mobile {
+                    font-size:20px;
+                    line-height:28px;
+                }
+            }
+            .tag-group {
+                > ul {
+                    margin:-12px 0 0 -8px;
+                    font-size:0;
+                    .tags {
+                        display:inline-block;
+                        margin:12px 0 0 8px;
+                        vertical-align:top;
+                        .chk-btn {
+                            position:relative;
+                            input {
+                                position:absolute;
+                                overflow:hidden;
+                                width:1px;
+                                height:1px;
+                                margin:-1px;
+                                padding:0;
+                                border:none;
+                                clip:rect(0, 0, 0, 0);
+                                & + label {
+                                    position:relative;
+                                    display:inline-block;
+                                    width:auto;
+                                    min-width:64px;
+                                    padding:7px 15px;
+                                    border:1px solid #ddd;
+                                    border-radius:16px;
+                                    color:#959595;
+                                    @include font-medium;
+                                    font-weight:500;
+                                    text-align:center;
+                                    white-space:nowrap;
+                                    cursor:pointer;
+                                    @include mobile {
+                                        min-width:74px;
+                                    }
+                                }
+                                &:checked + label {
+                                    border-color:#da0f47;
+                                    color:#da0f47;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

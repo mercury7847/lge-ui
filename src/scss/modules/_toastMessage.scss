@@ -1,0 +1,52 @@
+// toast meassage
+.toast-message {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 24px;
+    width: auto;
+    z-index: 1002;
+    .toast-message-box {
+        .inner {
+            position:relative;
+            display: inline-block;
+            min-width:444px;
+            min-height: 58px;
+            background: rgba(34, 34, 34, .6);
+            border-radius: 28px;
+            padding: 16px 48px;
+            color: #fff;
+            @include font-medium;
+            font-weight:700;
+            text-align:center;
+            .toast-text {
+                display: inline-block;
+            }
+            .btn-area {
+                position:absolute;
+                top:17px;
+                right:24px;
+                width:24px;
+                height:24px;
+                &:after {
+                    content:'';
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/btn-close-24-white.svg') no-repeat;
+                }
+            }
+            @include mobile {
+                min-width:100%;
+                padding: 17px 24px;
+                .btn-area {
+                    right:16px;
+                }
+            }
+        }
+    }
+    @include mobile {
+        left:16px;
+        right:16px;
+    }
+}

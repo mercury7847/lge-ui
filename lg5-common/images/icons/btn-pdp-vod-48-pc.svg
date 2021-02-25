@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="68" viewBox="0 0 68 68">
+    <defs>
+        <filter id="punglheu4a" width="188.6%" height="188.6%" x="-39.8%" y="-37.5%" filterUnits="objectBoundingBox">
+            <feOffset dx="2" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+        </filter>
+        <rect id="pmyqwz9c5b" width="44" height="44" x="0" y="0" rx="22"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H48V48H0z" transform="translate(-664 -1375) translate(576 1306) translate(96 76)"/>
+                    <g>
+                        <g transform="translate(-664 -1375) translate(576 1306) translate(96 76) translate(2 2)">
+                            <use fill="#000" filter="url(#punglheu4a)" xlink:href="#pmyqwz9c5b"/>
+                            <use fill="#FFF" xlink:href="#pmyqwz9c5b"/>
+                        </g>
+                        <path fill="#767676" d="M18.982 12.3l12.387 8.13c.591.388.756 1.181.368 1.772-.096.147-.221.272-.368.368L18.982 30.7c-.59.387-1.384.222-1.772-.369-.137-.208-.21-.452-.21-.702V13.371c0-.707.573-1.28 1.28-1.28.25 0 .494.073.702.21z" transform="translate(-664 -1375) translate(576 1306) translate(96 76) translate(2 2)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

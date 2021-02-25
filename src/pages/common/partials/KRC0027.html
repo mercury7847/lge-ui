@@ -1,0 +1,457 @@
+<div class="component-wrap @@bg-color">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+		
+		[.component 옵션]
+		1. 정렬 (Text Area Align)
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+        .align-center : 가운데 정렬
+        
+        [component 영역 옵션]
+        1. 배경 색상 :
+        .bg-white : #FFFFFF 색상 배경
+        .bg-lightgray : #F4F4F4 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
+		2. 상하 위치 (Text Placement)
+		기본 : 텍스트가 상단, 이미지가 하단에 위치
+		.align-bottom : 이미지가 상단, 텍스트가 하단에 위치 할때는 해당 클래스를 넣어 주고 마크업 순서도 변경됩니다.
+
+		3. 블록 갯수
+		.block1 : 1단인 경우
+		.block2 : 2단인 경우
+		.block3 : 3단인 경우
+
+		[.visual-box 옵션]
+		1. CTA #2 버튼의 정렬
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 가운데 정렬
+
+		2. CTA #2에서 link-text 의 색상
+		.text-white : 흰색
+		.text-black : 검정색
+
+		[.text 영역 옵션]
+		2. 폰트 종류 : 
+		.font-regular : 레귤러
+		.font-bold : 볼드
+		.font-regular-italic : 레귤러 이탤릭
+		.font-bold-italic : 볼드 이탤릭
+
+		3. 폰트 스타일: 
+		기본은 언더라인 없음 
+		.font-underline : 언더라인
+    -->
+    <!-- [KR수정] div -> section DOM 수정 -->
+	<section class="component KRC0027 @@align-class1 @@alignClass3 @@blockClass @@bg-color">
+        <div class="component-inner">
+            @@if ( blockClass === "block1" ) {
+            <div class="unit-list">
+                <div class="unit-box">
+                    @@if ( alignClass3 === "align-top" ) {
+                    <!-- 1. headline -->
+                    <div id="@@titleNum" class="title">@@headline</div>
+                    <!-- // 1. headline -->
+                    <!-- 2. body copy -->
+                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다
+                        .공백포함 300자까지 제한합니다.공백포함 300자까지</div>
+                    <!-- // 2. body copy -->
+                    <!-- 3. cta #1 -->
+                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                    <div class="cta-box">
+                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                    </div>
+                    <div class="cta-box">
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                    </div>
+                    <!-- // 3. cta #1 -->
+                    <!-- 5. cta #2 -->
+                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                    <!-- <div class="cta-box visible-xs">
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                    </div> -->
+                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                    <!-- // 5. cta #2 -->
+                    }
+                    @@if ( contType === "animation" ) {
+                    <!-- animation 타입인 경우 animation-box 클래스 추가 -->
+                    <!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(이미지 삭제, AD버튼 삭제, 캡션 삭제) -->
+                    <div class="visual-box @@align-class2 text-white animation-box">
+                        <div class="animation-area">
+                            <video autoplay muted loop>
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <div class="controller-wrap wa-btn">                                          													
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="">Pause Video</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(이미지 삭제, AD버튼 삭제, 캡션 삭제) -->
+                    }
+                    @@if ( contType === "image" ) {
+                    <div class="visual-box @@align-class2 text-white">
+                        <!-- [KR수정_201229] 이미지 등록 단일 케이스로 수정 -->
+                        <!-- 4. image -->
+                        <img src="/lg5-common/images/KRC0027/@thumb01.jpg" alt="">
+                        <!-- // 4. image -->
+                        <p class="hidden">graphic description : </p>
+                        <!-- // [KR수정_201229] 이미지 등록 단일 케이스로 수정 -->
+                        <!-- 5. cta #2 -->
+                        <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                        <div class="cta-box"><!-- [KR수정_201229] hidden-xs class 삭제 -->
+                            <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                            <!-- <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>자세히 보기</span></a> -->
+                        </div>
+                        <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                        <!-- // 5. cta #2 -->
+                    </div>
+                    }
+                    @@if ( alignClass3 === "align-bottom" ) {
+                    <!-- 1. headline -->
+                    <div id="@@titleNum" class="title">@@headline</div>
+                    <!-- // 1. headline -->
+                    <!-- 2. body copy -->
+                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                    <!-- // 2. body copy -->
+                    <!-- 3. cta #1 -->
+                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                    <div class="cta-box">
+                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>자세히 보기</span></a>
+                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>자세히 보기</span></a>
+                    </div>
+                    <div class="cta-box">
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>
+                    </div>
+                    <!-- // 3. cta #1 -->
+                    <!-- 5. cta #2 -->
+                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                    <!-- <div class="cta-box visible-xs">
+                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>문의하기</span></a>                        
+                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum"><span>자세히 보기</span></a>
+                    </div> -->
+                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                    <!-- // 5. cta #2 -->
+                    }
+                    <!-- [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                    <ul class="bullet-list">
+                        <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                    </ul>
+                    <!-- // [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                </div>
+            </div>	
+            }
+            @@if ( blockClass === "block2" ) {
+                <div class="carousel-box">
+                    <div class="ui_carousel_slider2">
+                        <div class="indi-wrap">
+							<ul class="indi-conts ui_carousel_dots">
+								<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                            </ul>
+                        </div>
+                        <div class="ui_carousel_list">
+                            <ul class="unit-list slide-track ui_carousel_track">
+                                <li class="unit-box ui_carousel_slide">
+                                    @@if ( alignClass3 === "align-top" ) {
+                                    <!-- 1. headline -->
+                                    <div id="@@titleNum1" class="title">@@headline</div>
+                                    <!-- // 1. headline -->
+                                    <!-- 2. body copy -->
+                                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                    <!-- // 2. body copy -->
+                                    <!-- 3. cta #1 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box">
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                    </div>
+                                    <div class="cta-box">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>
+                                    </div>
+                                    <!-- // 3. cta #1 -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- <div class="cta-box visible-xs">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>                                        
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                    </div> -->
+                                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <!-- // 5. cta #2 -->
+                                    }
+                                    <div class="visual-box @@align-class2 text-white">
+                                        <!-- 4. image -->
+                                        <!-- [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+                                        <div class="visual-area video youtube-box"><!-- [KR수정] class 추가 -->
+                                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-title="video title" data-link-area="image_1to3_cta_overlay-video_play" data-link-name="{video id}">
+                                                <img data-src="/lg5-common/images/KRC0027/@thumb01.jpg" class="lazyload" alt="" />
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <!-- // [KR수정_201229] 비디오 DOM 공통화 수정(AD버튼, 캡션 삭제) -->
+                                        <!-- // 4. image -->
+                                    </div>
+                                   
+                                    @@if ( alignClass3 === "align-bottom" ) {
+                                    <!-- 1. headline -->
+                                    <div id="@@titleNum1" class="title">@@headline</div>
+                                    <!-- // 1. headline -->
+                                    <!-- 2. body copy -->
+                                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                    <!-- // 2. body copy -->
+                                    <!-- 3. cta #1 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box">
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                    </div>
+                                    <div class="cta-box">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>
+                                    </div>
+                                    <!-- // 3. cta #1 -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- <div class="cta-box visible-xs">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>문의하기</span></a>                                        
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1"><span>자세히 보기</span></a>
+                                    </div> -->
+                                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- // 5. cta #2 -->  
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    }
+                                    <!-- [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                    <ul class="bullet-list">
+                                        <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                    </ul>
+                                    <!-- // [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                </li>
+                                <li class="unit-box ui_carousel_slide">
+                                    @@if ( alignClass3 === "align-top" ) {
+                                    <!-- 1. headline -->
+                                    <div id="@@titleNum2" class="title">@@headline</div>
+                                    <!-- // 1. headline -->
+                                    <!-- 2. body copy -->
+                                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                    <!-- // 2. body copy -->
+                                    <!-- 3. cta #1 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box">
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                    </div>
+                                    <div class="cta-box">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                    </div>
+                                    <!-- // 3. cta #1 -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- <div class="cta-box visible-xs">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                    </div> -->
+                                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- // 5. cta #2 -->
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    }
+                                    <div class="visual-box @@align-class2 text-black">
+                                        <!-- 4. image -->
+                                        <img src="/lg5-common/images/KRC0027/@thumb01.jpg" alt="">
+                                        <p class="hidden">graphic description : </p>
+                                        <!-- // 4. image -->
+                                        <!-- 5. cta #2 -->
+                                        <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                        <div class="cta-box"><!-- [KR수정_201229] hidden-xs class 삭제 -->
+                                            <!-- <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a> -->
+                                            <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                        </div>
+                                        <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                        <!-- // 5. cta #2 -->
+                                    </div>
+                                    @@if ( alignClass3 === "align-bottom" ) {
+                                    <!-- 1. headline -->
+                                    <div id="@@titleNum2" class="title">@@headline</div>
+                                    <!-- // 1. headline -->
+                                    <!-- 2. body copy -->
+                                    <div class="text @@font-class @@font-style">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                    <!-- // 2. body copy -->
+                                    <!-- 3. cta #1 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box">
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                    </div>
+                                    <div class="cta-box">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                    </div>
+                                    <!-- // 3. cta #1 -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- <div class="cta-box visible-xs">
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>문의하기</span></a>
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2"><span>자세히 보기</span></a>
+                                    </div> -->
+                                    <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <!-- // 5. cta #2 -->
+                                    
+                                    }
+                                    <!-- [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                    <ul class="bullet-list">
+                                        <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                    </ul>
+                                    <!-- // [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+							<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+						</div>
+                    </div>
+                </div>
+            
+            }	
+            @@if ( blockClass === "block3" ) {
+            <div class="carousel-box">
+                <div class="ui_carousel_slider2">
+                    <div class="indi-wrap">
+                        <ul class="indi-conts ui_carousel_dots">
+                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                        </ul>
+                    </div>
+                    <div class="ui_carousel_list">
+                        <ul class="unit-list slide-track ui_carousel_track">
+                            @@if ( alignClass3 === "align-top" ) {
+                            @@for ( var i=0; i < context.blockArr.length; i++ ) {
+                            <li class="unit-box ui_carousel_slide">
+                                <!-- 1. headline -->
+                                <div id="`+blockArr[i].titleNum+`" class="title">`+blockArr[i].headline+`</div>
+                                <!-- // 1. headline -->
+                                <!-- 2. body copy -->
+                                <div class="text `+blockArr[i].fontClass+` `+blockArr[i].fontStyle+`">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                <!-- // 2. body copy -->
+                                <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                <!-- 3. cta #1 -->
+                                <div class="cta-box">
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                </div>
+                                <div class="cta-box">
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                </div>
+                                <!-- // 3. cta #1 -->
+                                <!-- 5. cta #2 -->
+                                <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                <!-- <div class="cta-box visible-xs">
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                </div> -->
+                                <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                <!-- // 5. cta #2 -->
+                                <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                <div class="visual-box `+blockArr[i].alignClass2+` `+blockArr[i].ctaColor+`">
+                                    <!-- 4. image -->
+                                    <img src="/lg5-common/images/KRC0027/@thumb01.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <!-- // 4. image -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box"><!-- [KR수정_201229] hidden-xs class 삭제 -->
+                                        <!-- <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a> -->
+                                        <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                    </div>
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <!-- // 5. cta #2 -->
+                                </div>
+                                <!-- [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                <ul class="bullet-list">
+                                    <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                </ul>
+                                <!-- // [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                            </li>
+                            }
+                            }
+                            @@if ( alignClass3 === "align-bottom" ) {
+                            @@for ( var i=0; i < context.blockArr.length; i++ ) {
+                            <li class="unit-box ui_carousel_slide">
+                                <div class="visual-box `+blockArr[i].alignClass2+` `+blockArr[i].ctaColor+`">
+                                    <!-- 4. image -->
+                                    <img src="/lg5-common/images/KRC0027/@thumb01.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                    <!-- // 4. image -->
+                                    <!-- 5. cta #2 -->
+                                    <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <div class="cta-box"><!-- [KR수정_201229] hidden-xs class 삭제 -->
+                                        <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                        <!-- <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a> -->
+                                    </div>
+                                    <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                    <!-- // 5. cta #2 -->
+                                </div>
+                                <!-- 1. headline -->
+                                <div id="`+blockArr[i].titleNum+`" class="title">`+blockArr[i].headline+`</div>
+                                <!-- // 1. headline -->
+                                <!-- 2. body copy -->
+                                <div class="text `+blockArr[i].fontClass+` `+blockArr[i].fontStyle+`">공백포함 300자까지 제한합니다. 공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.공백포함 300자까지 제한합니다.</div>
+                                <!-- // 2. body copy -->
+                                <!-- [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                <!-- 3. cta #1 -->
+                                <div class="cta-box">
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                </div>
+                                <div class="cta-box">
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                </div>
+                                <!-- // 3. cta #1 -->
+                                <!-- 5. cta #2 -->
+                                <!-- [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                <!-- <div class="cta-box visible-xs">
+                                    <a href="#none" class="btn border size-m" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>문의하기</span></a>
+                                    <a href="#none" class="text-link" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`"><span>자세히 보기</span></a>
+                                </div> -->
+                                <!-- // [KR수정_201229] 버튼 피씨/모바일 구분 없이 사용하기로 함. 삭제 -->
+                                <!-- // 5. cta #2 -->
+                                <!-- // [KR수정_201229] 버튼 DOM 공통화 수정 -->
+                                <!-- [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                                <ul class="bullet-list">
+                                    <li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다, 단 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+                                </ul>
+                                <!-- // [KR수정_201229] disclaimer DOM 공통화 수정 -->
+                            </li>
+                            }
+                            }
+                        </ul> 
+                    </div>
+                    <div class="slide-controls">
+                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                    </div>
+                </div>
+            </div>    
+            
+            }
+        </div>
+    </section>
+    <!-- // [KR수정] div -> section DOM 수정 -->
+</div>

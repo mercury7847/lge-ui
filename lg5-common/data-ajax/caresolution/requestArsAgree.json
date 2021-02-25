@@ -1,0 +1,12 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "alert":{
+            "title": "ARS 출금동의가 정상적으로<br>이루어지지 않았습니다.<br>다시 시도해주세요.",
+            "desc": ""
+        }
+    }
+}

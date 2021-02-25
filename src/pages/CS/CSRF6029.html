@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '출장 서비스 예약이 완료되었습니다.',
+                'progressArr': [
+                    { 'progress' : '제품 선택'},
+                    { 'progress' : '예약 내용 입력'},
+                    { 'progress' : '예약 완료'}
+                ]
+            })
+            
+            <div class="contents support service-status-detail">
+                <div class="complete-summary">
+                    <div class="box">
+                        <div class="summary-img">
+                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="전문 엔지니어 사진">
+                        </div>
+                        <div class="summary-info">
+                            <p class="info"><span>접수번호 HA230948WW</span><span>홍길동 엔지니어</span></p>
+                            <p class="status"><span>2020.07.01 13:30</span>에 <br>전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-progress">
+                    <p class="desc"><em class="color-3">접수 &gt; 방문 예정 &gt; 완료</em> 순으로 진행됩니다.</p><!-- 2021.02.09 포인트 컬러 추가 : color-3 -->
+                    <div class="progress-box">
+                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
+                        <ol class="progressbar">
+                            <li class="on"><span class="text">접수</span></li>
+                            <li class="on current"><span class="text">상담 예정</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">완료</span></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">예약 정보</h3>
+                        </div>
+                        
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>접수 번호</strong></div>
+                                <div class="description">HA230948WW</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수 일시</strong></div>
+                                <div class="description">2020.07.01 17:30</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수 경로</strong></div>
+                                <div class="description">온라인</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>진행 상태</strong></div>
+                                <div class="description">접수</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>예약 일시</strong></div>
+                                <div class="description"><span class="point">2020.08.17 11:20</span></div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>선택 제품</strong></div>
+                                <div class="description">
+                                    <span class="line"> 에어컨 &gt; 가정용 스탠드형 (모델명 : FQ20PADRQN)</span>
+                                    <a href="#" class="btn border size"><span>보유제품 추가</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>구입 시기</strong></div>
+                                <div class="description">1개월 이내</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>렌탈 유무</strong></div>
+                                <div class="description">렌탈 이용중</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>증상</strong></div>
+                                <div class="description">
+                                    <span class="line">스마트기능/스마트진단</span>
+                                    <span class="line">LG ThinQ 등록 실패</span>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>추가정보</strong></div>
+                                <div class="description">베란다 난간</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>전달사항</strong></div>
+                                <div class="description">
+                                    <span class="line">안녕하세요.
+벨벳 스마트폰의 컬러에 대해서 문의드립니다. 
+리미티드 컬러 에디션이 따로 출시 될까요?</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                    
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">신청자 정보</h3>
+                        </div>
+
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>이름</strong></div>
+                                <div class="description">홍*동</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>휴대폰번호</strong></div>
+                                <div class="description">010-****-1234</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>주소</strong></div>
+                                <div class="description">(06049) 서울 강남구 논현로 ***  (논현동,세화빌딩) 세회빌딩 4층</div>
+                            </li>
+                        </ul>
+                        <!-- 2021.02.08 안내문구 변경 -->
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "홈페이지를 통한 출장서비스 예약 완료 건이라도 서비스 출장 기사 방문 전 상담사에 의한 통화 시도가 있을 수 있습니다.",
+                                "접수번호는 “예약 확인 및 취소” 또는 ＂서비스 결과” 이용 시 꼭 필요한 번호입니다. 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.",
+                                "예약정보는 ‘예약결과 조회/변경’ 메뉴에서 조회 가능합니다."
+                            ]
+                        })
+                    </div>
+                    
+                    <div class="btn-group center">
+                        <a href="#" class="btn">고객지원 메인</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
+</body>
+</html> 

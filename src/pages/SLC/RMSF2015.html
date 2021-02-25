@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            mobileCase: "noneDepth"
+        })
+
+        <main class="container">
+            <div class="contents caresolution benefit">
+                <!-- visual title -->
+                <div class="visual-tit-wrap">
+                    <div class="txt-wrap">
+                        <h3 class="tit">케어솔루션 고객혜택</h3>
+                    </div>
+                </div>
+                <!-- // visual title -->
+
+                <!-- contents -->
+                <div class="tabs-wrap ui_tab csn-tabs">
+                    <ul class="tabs">
+                        <li class="on"><a href="#benefit1">다양한 고객 혜택<em class="blind">선택됨</em></a></li>
+                        <li><a href="#benefit2">계약 연차별 혜택</a></li>
+                    </ul>
+                </div>
+                <!-- 다양한 고객 혜택 -->
+                <div id="benefit1" class="csn-tab-contents">
+                    <div class="cont-wrap">
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h3 class="tit">차원이 다른 전문가의 관리<br>LG전자 케어솔루션이 특별한 이유</h3>
+                            </div>
+                            <div class="gray-block-wrap">
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">01. 늘 새 것처럼 걱정 없이!</p>
+                                        </dt>
+										<dd>LG전자에서 직접 교육하고 검증한<br>가전전문가의 관리로<br>늘 새 것처럼!</dd>
+                                    </dl>
+                                </div>
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">02. 5년 무상 A/S 서비스</p>
+                                        </dt>
+										<dd>계약기간 5년동안 제품의 하자에 의해 발생하는 A/S 서비스 무상제공</dd>
+									</dl>
+									@@include('./common/modules/bullet-list.html', {
+										"size2" : true,
+										"topBorder" : false,
+										"bulletTxt" : [
+											"단, 고객 과실로 인한 제품 고장 및 훼손은 제외"
+										]
+									})
+								</div>
+								<div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">03. LG베스트샵 가전 구매 할인</p>
+                                        </dt>
+										<dd>전국 베스트샵에서 가전 구매 시 3%<br>멤버십 포인트 적립</dd>
+									</dl>
+									@@include('./common/modules/bullet-list.html', {
+										"size2" : true,
+										"topBorder" : false,
+										"bulletTxt" : [
+											"자세한 사항은 담당 케어솔루션 매니저 또는 가까운 LG 베스트샵에 문의하세요!"
+										]
+									})
+								</div>
+							</div>
+							<div class="gray-block-wrap big">
+								<div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">04. 추가 제품군 케어솔루션시, 월요금 결합 할인</p>
+                                        </dt>
+										<dd>기존 케어솔루션/케어십 고객이 다른 제품군의 케어솔루션을 추가로 계약 시, 월 요금 최대 5,000원씩 할인해드립니다.</dd>
+									</dl>
+									<ul class="info">
+										<li>
+											<div class="img"><img src="/lg5-common/images/SLC/img_care-benefit01.jpg" alt="기존 케어솔루션/케어십, 신규 케어솔루션/케어십, 최대 5,000원 할인"></div>
+											<dl>
+												<dt>신규제품 월 요금 평균 5,000원 할인</dt>
+												<dd>기존의 케어솔루션/케어십 제품을 사용중인 고객이 다른 케어솔루션 제품군을 추가로 신규 계약 시 적용</dd>
+											</dl>
+											<ul class="bullet-list">
+												<li>1. 추가 신규 케어솔루션 제품군 대상(제품군당 1대 한정) 월요금할인</li>
+												<li>2. 월요금 할인금액은 제품별로 상이
+													<ul class="bullet-list">
+														<li>- 정수기 월요금 3,000원 할인 (정수전용 WD102AW은 할인대상 제외)</li>
+														<li>- 기존 정수기 고객이 신규 홈브루 케어솔루션 시 월요금 10,000원 할인</li>
+														<li>- 나머지 제품군 월요금 5,000원 할인</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<div class="img"><img src="/lg5-common/images/SLC/img_care-benefit02.jpg" alt="신규 케어솔루션, 최대 5,000원 할인, 신규 케어솔루션, 최대 5,000원 할인"></div>
+											<dl>
+												<dt>신규제품 월 요금 평균 5,000원 할인</dt>
+												<dd>케어솔루션 제품을 처음 사용하는 고객이 신규로 2개 이상의 제품을 동시에 계약 시 적용</dd>
+											</dl>
+											<ul class="bullet-list">
+												<li>1. 추가 신규 케어솔루션 제품군 대상(제품군당 1대 한정) 월요금 할인</li>
+												<li>2. 월요금 할인금액은 제품별로 상이
+													<ul class="bullet-list">
+														<li>- 정수기 월요금 3,000원 할인 (정수전용 WD102AW은 할인대상 제외)</li>
+														<li>-  정수기 월요금 3,000원 할인 (정수전용 WD102AW은 할인대상 제외)</li>
+														<li>-  정수기, 홈브루 동시 케어솔루션 시 월요금 13,000원 할인</li>
+														<li>-  나머지 제품군 월요금 5,000원 할인</li>
+														<li>예) 신규 공기청정기 + 신규 식기세척기 케어솔루션 = 각 제품당 5,000원씩 총 10,000원 할인</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="gray-block-wrap big">
+								<div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">05. 멤버십 앱 특별 쿠폰</p>
+                                        </dt>
+										<dd>케어솔루션/케어십 고객만을 위한 특별한 쿠폰 매월 증정! 프라엘 5종 구매 시 21만P 적립 쿠폰 증정!</dd>
+                                    </dl>
+                                    <ul class="info solo">
+										<li>
+											<div class="img"><img src="/lg5-common/images/SLC/img_care-benefit03.jpg" alt="LG전자 케어솔루션레터, 특별쿠폰 확인 방법, 멤버십 앱 로그인 - 케어솔루션 - 나의 케어솔루션 - 케어솔루션 레터, google play 혹은 app store에서 lg전자 멤버십 앱 다운"></div>
+                                        </li>
+                                    </ul>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //다양한 고객 혜택 -->
+                <!-- 계약 연차별 혜택 -->
+                <div id="benefit2" class="csn-tab-contents">
+                    <div class="cont-wrap">
+                        <div class="section">
+                            <div class="tit-wrap">
+                                <h3 class="tit">LG전자 케어솔루션과 함께할 수록<br>더 풍부해지는 혜택</h3>
+                            </div>
+                            <div class="gray-block-wrap">
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">1년 (만 12개월)</p>
+                                        </dt>
+                                        <dd>케어솔루션 추가 결합 시 2만 모바일상품권 증정<br>(케어십 고객은 만 12개월 이내 결합 시 증정)</dd>
+                                    </dl>
+                                </div>
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">2년 (만 24개월)</p>
+                                        </dt>
+                                        <dd>베스트샵 가전 구매 시 3만 멤버십 포인트 적립<br>(100만원 이상 구매 시)</dd>
+                                    </dl>
+                                </div>
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">3년 (만 36개월)</p>
+                                        </dt>
+                                        <dd>2만 멤버십 포인트 적립<br>(멤버십 앱에서 신청 필수)</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="gray-block-wrap twin">
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">4년 (만 48개월)</p>
+                                        </dt>
+                                        <dd>베스트샵 가전 구매 시 5만 멤버십 포인트 적립<br>(100만원 이상 구매 시)</dd>
+                                    </dl>
+                                </div>
+                                <div class="blocks">
+                                    <dl>
+                                        <dt>
+                                            <p class="tit">5년 (만 57개월)</p>
+                                        </dt>
+                                        <dd>재계약시 월 요금 할인권 증정<br>(정수기, 공기청정기 케어솔루션 고객에 한함)</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "size2" : true,
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "나의 혜택 확인 방법: LG전자 멤버십 앱 로그인 &gt; 케어솔루션 &gt; 나의 케어솔루션 &gt; 케어솔루션 연차별 혜택",
+                                    "사용개월수가 만 12/24/36/48/56개월이 되는 시점에 멤버십 앱에서 혜택이 제공되며, 혜택은 해당 월부터 3개월간 유효함 (장기 요금미납 등으로 인한 계정정지기간은 사용개월에서 제외)",
+                                    "베스트샵 구매 혜택은 ‘베스트샵, 백화점, 이마트, 홈플러스, 온라인, 하이엠솔루텍’ 계약자에 한해 적용 가능",
+                                    "위 혜택은 2020년 2월부터 운영하며 기준과 혜택은 당사 사정으로 변경될 수 있습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+                    <div class="csn-ars-bottom">
+                        <div class="inner">
+                            <div class="txt-cell">
+                                <p class="tit">자세한 사항은 담당 케어솔루션 매니저 또는<br>가까운 LG 베스트샵에 문의하세요!</p>
+                                <p class="desc">
+                                    담당 케어솔루션 매니저 연락처 확인 방법
+                                    <small>
+                                        LG전자 멤버십 앱 로그인 &gt; 케어솔루션 &gt; 나의 케어솔루션 &gt; 나의 계약 현황
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="img-cell" aria-hidden="true">
+                                <img src="/lg5-common/images/SLC/icon-main-bestshop-128x128.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //계약 연차별 혜택 -->
+                <!-- // contents -->
+            </div>
+        </main>
+        
+        @@include('./common/footer.html')
+    </div> 
+
+    <!-- youtube popup -->
+    <!-- 정수기 케어 -->
+    <article id="youtube1" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jVWS-4S822g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 정수기 케어 -->
+    <!-- 얼음정수기 냉장고 케어 -->
+    <article id="youtube2" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/18PFeUJbfy0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 얼음정수기 냉장고 케어 -->
+    <!-- 공기청정기 케어 -->
+    <article id="youtube3" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/J5IH7ugvcxo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 공기청정기 케어 -->
+    <!-- 건조기 케어 -->
+    <article id="youtube4" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QfCC9grMrxk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 건조기 케어 -->
+    <!-- 스타일러 케어 -->
+    <article id="youtube5" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fGd5XT-jIfA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 스타일러 케어 -->
+    <!-- 전기레인지 케어 -->
+    <article id="youtube6" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/m4ZjJlZghbI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 전기레인지 케어 -->
+    <!-- 식기세척기 케어 -->
+    <article id="youtube7" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qph4ry7dnNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 식기세척기 케어 -->
+</body>
+</html>

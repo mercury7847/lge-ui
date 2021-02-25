@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0008 {
+    .unit-list {
+        @include grid-row;
+        .unit-box {
+            @include grid-col(left,6,12);
+        }
+    }
+    .large-align-left {
+        @include grid-row;
+        .unit-box,
+        .unit-small-wrap {
+            @include grid-col(left,6,12);
+        }
+        .unit-small-wrap {
+            padding:0;
+        }
+    }
+    .large-align-right {
+        @include grid-row;
+        .unit-box,
+        .unit-small-wrap {
+            @include grid-col(right,6,12);
+        }
+        .unit-small-wrap {
+            padding:0;
+        }
+    }
+
+    @include mobile {
+        .unit-box {
+            margin-top:40px;
+        }
+        .unit-list > .unit-box:first-child {
+            margin-top:0;
+        }
+    }
+
+    .visual-area {
+        text-align:center;
+        a {
+            position:relative;
+            display:inline-block;
+            max-width:100%;
+            vertical-align:top;
+        }
+        img {
+            width:auto;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
+        }
+        @include mobile {
+            margin:0 -16px;
+        }
+    }
+    .body-copy {
+        @include bodycopy(h2, h2);
+    }
+    .bottom-btn {
+        @include cta-btn;
+    }
+}

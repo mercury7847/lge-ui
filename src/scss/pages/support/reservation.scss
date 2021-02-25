@@ -1,0 +1,975 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.support {
+    .complete-summary {
+        background-image: linear-gradient(90deg, #8d71ec, #f75584);
+        .box {
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:24px 40px;
+            font-size:0;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .summary-img {
+            display:inline-block;
+            width:120px;
+            vertical-align:middle;
+            margin-right:48px;
+            img {
+                max-width:100%;
+            }
+            &.type-icon {
+                img {
+                    max-width: 80px;
+                }
+            }
+        }
+        .summary-info {
+            display:inline-block;
+            vertical-align:middle;
+            .info {
+                color:#fff;
+                font-weight:700;
+                @include font-large;
+                span + span {
+                    position:relative;
+                    margin-left:12px;
+                    padding-left:13px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:0;
+                        top:7px;
+                        width:1px;
+                        height:14px;
+                        background:#fff;    
+                    }
+                }
+            }
+            .status {
+                margin-top:12px;
+                color:#fff;
+                @include font-medium;
+                > span {
+                    color:#fffd7c;
+                }
+            }
+        }
+        .btn-center-link {
+            border-color: #fff;
+            color: #fff;
+            margin-left: auto;
+        }
+        @include pc {
+            .btn-center-link {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        @include mobile {
+            .box {
+                padding:20px 16px;
+            }
+            .btn-center-link {
+                margin-top: 16px;
+            }
+            .summary-img {
+                width:80px;
+                margin-right: 0;
+                img {
+                    width:100%;
+                }
+            }
+            .summary-info {
+                flex: 1;
+                padding-left:16px;
+                .info {
+                    span {
+                        display:block;
+                        & + span {
+                            margin:2px 0 0 0;
+                            padding:0;
+                            &:before {
+                                content:none;
+                            }
+                        }
+                    }
+                }
+                .status {
+                    margin-top:8px;
+                }
+            }
+        }
+    }
+
+    .engineer-to-visit {
+        @include clearfix;
+        .engineer-profile {
+            float:left;
+            width: 194px;
+            .engineer-img {
+                width: 160px;
+                height: 0;
+                padding-top: 100%;
+                position: relative;
+                overflow: hidden;
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .engineer-info {
+                margin-top:8px;
+                .name {
+                    @include font-small;
+                    font-weight:700;
+                }
+                .center {
+                    @include font-small;
+                }
+            }
+        }
+        .engineer-desc {
+            float:left;
+            .txt {
+                @include font-medium;
+                .topic {
+                    color:#ff2e55;
+                    font-weight:400;
+                }
+            }
+            .btn-wrap {
+                margin-top:24px;
+            }
+        }
+        @include mobile {
+            .engineer-profile {
+                width:104px;
+                .engineer-img {
+                    width:104px;
+                    height:104px;
+                }
+            }
+            .engineer-desc {
+                float:left;
+                width:calc(100% - 104px);
+                padding-left:24px;
+                .txt {
+                    br {
+                        display:none
+                    }
+                }
+                .btn-wrap {
+                    margin-top:16px;
+                }
+            }
+        }
+    }
+
+    
+
+    /* page */
+    /* 출장 예약 */
+    &.service-engineer {
+        .btm-more.both {
+            margin-top:0;
+            & > * {
+                margin-top:8px;
+            }
+        }
+        .section-box {
+            padding-right:16.9%;
+        }
+        @media screen and (max-width: 808px) {
+            .section-box {
+                padding-right: 0; 
+            }
+        }
+    }
+
+    /* 이메일 문의 */
+    &.email-inquiry {
+        .inquiry-sections{
+            display:flex;
+            justify-content:space-between;
+            .section{
+                width:calc((100% - 48px) / 3);
+                @include pc {
+                    margin:0;
+                }
+                .tit-wrap{
+                    margin-bottom:16px;
+                }
+                .desc-wrap{
+                    .desc-txt{
+                        margin-bottom:8px;
+                    }
+                    .desc-btn{
+                        display:flex;
+                        flex-flow:wrap;
+                        margin:-12px 0 0 -8px;
+                        & + .desc-txt {
+                            margin-top:32px;
+                        }
+                        .btn{
+                            margin:12px 0 0 8px;
+                            min-width:auto;
+                            padding:8px 14px;
+                            &.white{
+                                background:#fff;
+                                border:1px solid #ddd;
+                                border-radius:16px;
+                                padding: 8px 16px;
+                                color:#000;
+                                font-weight:normal;
+                            }
+                            &.out-link{
+                                &::after{
+                                    content:'';
+                                    display:inline-block;
+                                    margin-left:3px;
+                                    width:20px;
+                                    height:20px;
+                                    background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .inquiry-sections{
+                display:block;
+                margin:0;
+                .section{
+                    width:100%;
+                    .tit-wrap{
+                        margin-bottom:16px;
+                    }
+                    .desc-wrap{
+                        .desc-btn {
+                            margin:-8px 0 0 -8px;
+                            & + .desc-txt {
+                                margin-top:32px;
+                            }
+                            .btn {
+                                margin:8px 0 0 8px;
+                            }
+                        }
+                    }
+                    &:first-child {
+                        padding-top: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* 전화상담 예약 */
+    &.request-call {
+
+    }
+    
+    /* 영상상담 예약 */ 
+    &.video-consulting {
+
+    }
+
+    /* 센터방문 예약 */
+    &.visit-center {
+        .center-info-wrap {
+            margin-bottom:40px;
+            padding:32px 40px;
+            border-radius:8px;
+            border:1px solid #ddd;
+            .tit {
+                display:block;
+                margin-bottom:16px;
+                @include font-medium;
+            }
+            .info-list {
+                @include clearfix;
+                li {
+                    float:left;
+                    font-size:0;
+                    & + li {
+                        position:relative;
+                        margin-left:23px;
+                        padding-left:24px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:5px;
+                            width:1px;
+                            height:16px;
+                            background-color:#ddd;
+                        }
+                    }
+                }
+                .key, .value {
+                    display:inline-block;
+                    @include font-medium;
+                    vertical-align:middle;
+                }
+                .key {
+                    margin-right:4px;
+                    color:#767676;
+                }
+            }
+            .bullet-list {
+                &.top-border {
+                    margin-top:16px;
+                    padding-top:12px;
+                }
+                .b-txt {
+                    color:#767676;
+                    font-weight:500;
+                }
+            }
+            @include mobile {
+                margin-bottom:40px;
+                padding:20px 16px;
+                .tit {
+                    margin-bottom:20px;
+                }
+                .info-list {
+                    li {
+                        float:none;
+                        & + li {
+                            margin:12px 0 0 0;
+                            padding-left:0;
+                            &:before {
+                                content:none;
+                            }
+                        }
+                    }
+                }
+                .bullet-list {
+                    &.top-border {
+                        margin-top:12px;
+                    }
+                }
+            }
+        }
+        .center-result-wrap {
+            margin-top:48px;
+            .tb_row {
+                .info {
+                    text-align:left;
+                    label {
+                        cursor:pointer;
+                    }
+                    .name {
+                        margin-bottom:4px;
+                        font-weight:500;
+                        @include font-medium;
+                    }
+                    .address {
+                        color: #767676;
+                        @include font-small;
+                    }
+                }
+                .btn-detail {
+                    display:inline-block;
+                    width:32px;
+                    height:32px;
+                    background:url(/lg5-common/images/icons/icon_popup-window.svg) no-repeat;
+                    background-size:32px 32px;
+                }
+            }
+            .no-data {
+                padding-bottom:32px;
+                border-bottom:none;
+            }
+            @include mobile {
+                margin-top:40px;
+            }
+        }
+        .tabs-wrap {
+            margin-bottom:48px;
+        }
+        // 주소 선택
+        .adress-input-box {
+            display: flex;
+            .cell {
+                margin-left: 8px;
+                margin-top: 0;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            .display-flex {
+                display: flex;
+                .ui-selectbox-wrap {
+                    flex: 1;
+                }
+                .btn {
+                    margin-left: 8px;
+                }
+            }
+            .keyword-search {
+                margin-left:8px;
+            }
+            @include pc {
+                .search-current {
+                    display:none;
+                }
+            }
+            @include mobile {
+                display: block;
+                .cell {
+                    margin-left: 0;
+                    margin-top: 6px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                .btn-cell {
+                    .btn {
+                        width:calc(50% - 3px);
+                        & + .btn {
+                            margin-left:6px;
+                        }
+                        &:only-child {
+                            width:100%;
+                        }
+                    }
+                }
+                .keyword-search {
+                    margin:8px 0 0;
+                }
+            }
+        }
+    }
+    
+    /* 예약 다건 결과 */
+    &.service-status-list {
+        .service-history {
+            margin-bottom:80px;
+            mark {
+                background-color: transparent;
+            }
+            .item {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            &-title {
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 1.56;
+                color: #000;
+                display: block;
+                margin-bottom: 24px;
+            }
+            &-list {
+                margin-top: 16px;
+                display: flex;
+                &:first-child {
+                    margin-top: 0;
+                }
+                dt {
+                    color: #767676;
+                    max-width: 112px;
+                    width: 100%;
+                }
+                dd {
+                    flex: 1;
+                    ul {
+                        text-align: right;
+                        li {
+                            display: inline-block;
+                            position: relative;
+                            margin-left: 8px;
+                            padding-left: 9px;
+                            &::before {
+                                content: '';
+                                display: block;
+                                width: 1px;
+                                height: 10px;
+                                background-color: #ddd;
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                            &:first-child {
+                                margin-left: 0;
+                                padding-left: 0;
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include pc {
+                font-size: 16px;
+                display: flex;
+                .item {
+                    padding: 24px;
+                    margin-left: 24px;
+                    flex: 1;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+                &-list {
+                    dd {
+                        margin-left: 30px;
+                    }
+                }
+            }
+            @include mobile {
+                font-size: 14px;
+                display: block;
+                margin-bottom:60px;
+                .item {
+                    padding: 20px;
+                    margin-top: 12px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                &-title {
+                    font-size: 15px;
+                    margin-bottom: 12px;
+                }
+                &-list {
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+
+    /* 예약 완료 */
+    &.service-status-detail {
+        .result-header {
+            max-width:1460px;
+            margin:0 auto 16px;
+            padding:0 40px;
+            .tit{
+                @include font-large-2;
+            }
+        }
+
+        .result-btn-group {
+            border-bottom:1px solid #ddd;
+            background-color:#fff;
+            &.fixed {
+                box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.1);
+            }
+            .group-box {
+                max-width:1460px;
+                margin:0 auto;
+                padding:24px 40px;
+                font-size:0;
+                text-align:center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                .btn-link {
+                    font-size: 20px;
+                    padding-right: 0;
+                    text-decoration: none;
+                    &::after {
+                        width: 20px;
+                        height: 20px;
+                        display: inline-block;
+                        position: relative;
+                        top: 3px;
+                        right: auto;
+                        margin-left: 12px;
+                        background-size: 18px;
+                    }
+                    &:hover,
+                    &:focus {
+                        color: #da0f47;
+                        &::after {
+                            background-image: url(/lg5-common/images/icons/btn-arr-16-red.svg);
+                        }
+                    }
+                }
+            }
+        }
+
+        .survey-banner-wrap {
+            display:none;
+            margin:0 auto 16px;
+            .banner {
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                padding:28px 48px;
+                border-radius:8px;
+                background:#f4f4f4;
+                p {
+                    position:relative;
+                    padding:0 20px 0 64px;
+                    @include font-medium;
+                    font-weight:700;
+                    &:before {
+                        content:'';   
+                        position:absolute;
+                        left:0;
+                        top:50%;
+                        width:48px;
+                        height:48px;
+                        transform:translate(0, -50%);
+                        background:url("/lg5-common/images/icons/icon-12-80.svg") no-repeat center;
+                        background-size:48px 48px;
+                    }
+                    .model {
+                        color:#ec455a;
+                    }
+                }
+                button {
+                    min-width:84px;
+                }
+            }
+            @include mobile {
+                display:block;
+                padding:0 16px;
+                margin-bottom:37px;
+                .banner {
+                    display:block;
+                    padding:24px;
+                    text-align:center;
+                    p {
+                        padding:76px 0 24px;
+                        &:before {
+                            width: 64px;
+                            height: 64px;
+                            background-size: 100%;
+                            top:0;
+                            left:50%;
+                            transform:translate(-50%, 0);
+                        }
+                    }
+                }
+            }
+        }
+
+        .patch-note {
+            .btn-link {
+                font-size: 14px;
+            }
+            @include pc {
+                margin-top: 48px;
+                .btn-link {
+                    margin-left: 16px;
+                }
+            }
+            @include mobile {
+                margin-top: 40px;
+                .bullet-text {
+                    margin-top: 12px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+                .btn-link {
+                    margin-top: 12px;
+                }
+            }
+        }
+
+        @include pc {
+            .result-btn-group {
+                .group-box {
+                    li {
+                        flex: 1;
+                        position: relative;
+                        max-width: 320px;
+                        width: 100%;
+                        margin-left: 32px;
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile{
+            .result-header {
+                padding:0 16px;
+            }
+            .result-btn-group {
+                .group-box {
+                    padding:0;
+                    justify-content: center;
+                    li {
+                        min-width: 50%;
+                        flex: 1;
+                        height: 90px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        padding: 20px;
+                        .btn-link {
+                            font-size: 16px;
+                            &::after {
+                                background-size: 14px;
+                                margin-left: 6px;
+                                top: 4px;
+                            }
+                        }
+                        &:nth-child(2n+1) {
+                            border-right: 1px solid #ddd;
+                        }
+                        &:nth-child(4n+1),
+                        &:nth-child(4n+2) {
+                            border-bottom: 1px solid #ddd;
+                        }
+                        &:last-child {
+                            border-right: 0;
+                        }
+                    }
+                    .btn {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                        height: 56px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .service-status-agree {
+        margin-bottom: 40px;
+        .input-info {
+            margin-top: 0;
+        }
+    }
+}
+
+#reservationTimePopup, 
+#choiceEngineerPopup {
+    .step-engineer {
+        display:none;
+        margin-top:20px;
+
+        &.active {
+            display:block;
+        }
+    }
+
+    .toggle-layer {
+        display:none;
+        margin-top:24px;
+        padding:24px 32px 64px;
+        border:1px solid #ddd;
+        border-radius:8px;
+        box-sizing:border-box;
+
+        .layer-tit {
+            margin-bottom:48px;
+            position: relative;
+
+            .tit {
+                font-size:20px;
+                font-weight:bold;
+                padding-bottom:12px;
+                color:#000;
+                border-bottom:1px solid #ddd;
+            }
+            .sub-tit {
+                margin-top:8px;
+                font-size:16px;
+                color:#000;
+            }
+            .btn-layer-close {
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 16px;
+                color: #000000;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .engineer-slider {
+        .slide-controls {
+            button {
+                &.prev {
+                    left:-24px;
+                }
+                &.next {
+                    right:-24px;
+                }
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide-content {
+            margin:-12px -12px 0;
+            padding:0 0 12px;
+        }
+        .slide-track {
+            @include clearfix;
+        }
+        .slide-conts {
+            float:left;
+            width:25%;
+            padding:12px 12px 32px;
+            
+        }
+        .engineer-box {
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            label {
+                display:block;
+                position:relative;
+                padding:32px 24px;
+                box-sizing:border-box;
+                text-align:center;
+                cursor:pointer;
+                .img {
+                    width: 100%;
+                    height: 0;
+                    margin-bottom: 24px;
+                    padding-top: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    img {
+                        max-width:100%;
+                        max-height: 100%;
+                        width: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+                .tit {
+                    @include font-large;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:4px;
+                    @include font-small;
+                }
+            }
+            input {
+                @include blind;
+                &:checked + label:before {
+                    content:'';
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    width:100%;
+                    height:100%;
+                    border-radius:8px;
+                    border:2px solid #EC455A;
+                }
+            }
+        }
+    }
+
+    @include pc {
+        #authNo {
+            max-width: 45.5%;
+        }
+    }
+
+    @include mobile {
+        .toggle-layer {
+            padding:20px 16px 60px;
+        }
+
+        .engineer-slider {
+            .slide-conts {
+                width:calc((100vw - 16px) / 3 * 2);
+                padding:0 8px 24px;
+            }
+            .engineer-box {
+                .label {
+                    padding:24px;
+
+                    .img {
+                        margin-bottom:24px;
+                    }
+                    .tit {
+                        font-size:14px;
+                    }
+                    .desc {
+                        margin-top:4px;
+                        font-size:14px;
+                    }
+                }
+            }
+        }
+    }
+}
+    
+#solutionsPopup {
+    .video-box {
+        height: 240px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    @include mobile {
+        .video-box {
+            height: auto;
+            margin-top: 0;
+            margin-bottom: 12px;
+            .column {
+                + .column {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+
+// 예약 결과 조회/변경 > 예약 일시 변경 (다른 엔지니어 선택)
+#reservationTimePopup {
+    &.popup-wrap {
+        .pop-conts {
+            .section {
+                margin-top: 20px;
+                &:first-of-type {
+                    margin-top: 0;
+                }
+                .tit-wrap {
+                    margin-bottom: 10px;
+                }
+                .bullet-list {
+                    &.top-border {
+                        margin-top: 10px;
+                        padding-top: 10px
+                    }
+                }
+            }
+        }
+    }
+    .calendar-area {
+        .calendar-info {
+            width: 178px;
+        }
+    }
+}
+
+@import "../../support/pages/payNwarranty";

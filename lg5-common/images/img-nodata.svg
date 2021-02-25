@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="582" height="200" viewBox="0 0 582 200">
+    <defs>
+        <path id="pjq4322t6a" d="M8 0h566c4.418 0 8 3.582 8 8v184c0 4.418-3.582 8-8 8H8c-4.418 0-8-3.582-8-8V8c0-4.418 3.582-8 8-8z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-669 -646) translate(621 186) translate(48 418) translate(0 42)">
+                        <mask id="astri7aoxb" fill="#fff">
+                            <use xlink:href="#pjq4322t6a"/>
+                        </mask>
+                        <path stroke="#DDD" d="M574 .5H8c-2.071 0-3.946.84-5.303 2.197C1.339 4.054.5 5.929.5 8v184c0 2.071.84 3.946 2.197 5.303C4.054 198.661 5.929 199.5 8 199.5h566c2.071 0 3.946-.84 5.303-2.197 1.358-1.357 2.197-3.232 2.197-5.303V8c0-2.071-.84-3.946-2.197-5.303C577.946 1.339 576.071.5 574 .5z"/>
+                        <g mask="url(#astri7aoxb)">
+                            <g>
+                                <path d="M0 0H44V44H0z" transform="translate(269 78)"/>
+                                <g transform="translate(269 78) translate(6 8)">
+                                    <rect width="31.5" height="22.5" x=".75" y="5.556" stroke="#AAA" stroke-width="1.5" rx="6"/>
+                                    <circle cx="16.5" cy="16.806" r="6.25" stroke="#AAA" stroke-width="1.5"/>
+                                    <circle cx="24.661" cy="10.967" r="1.161" fill="#AAA"/>
+                                    <path stroke="#AAA" stroke-width="1.5" d="M21 .75h-9c-.345 0-.658.14-.884.366-.226.226-.366.539-.366.884v3.543h11.5V2c0-.345-.14-.658-.366-.884C21.658.89 21.345.75 21 .75z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

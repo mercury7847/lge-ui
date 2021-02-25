@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn-AD-on</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_audio_on_24">
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="24" height="24" rx="12"></rect>
+            <g id="Group-2" transform="translate(5.000000, 6.000000)">
+                <path d="M0.6,3.69230769 L2.86222113,3.69230769 C2.99173977,3.69230769 3.11778132,3.65039735 3.22151103,3.57283945 L7.0407101,0.717253678 C7.30610046,0.518823346 7.68210143,0.573105175 7.88053176,0.838495536 C7.95808966,0.942225241 8,1.06826679 8,1.19778543 L8,10.8022146 C8,11.1335854 7.73137085,11.4022146 7.4,11.4022146 C7.27048135,11.4022146 7.14443981,11.3603042 7.0407101,11.2827463 L3.22151103,8.42716055 C3.11778132,8.34960265 2.99173977,8.30769231 2.86222113,8.30769231 L0.6,8.30769231 C0.26862915,8.30769231 4.05812251e-17,8.03906316 0,7.70769231 L0,4.29230769 C-4.05812251e-17,3.96093684 0.26862915,3.69230769 0.6,3.69230769 Z" id="Rectangle" fill="#222222"></path>
+                <path d="M12,2 C14.6666667,4.66666667 14.6666667,7.33333333 12,10" id="Path-4" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10,4 C11.3333333,5.33333333 11.3333333,6.66666667 10,8" id="Path-4" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

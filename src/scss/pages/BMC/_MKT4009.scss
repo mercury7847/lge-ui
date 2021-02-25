@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.tb_row {
+    @include mobile {
+        //margin-top:-20px;
+    }
+    &.tb-bor {
+        tr {
+            th,
+            td {
+                border-left:1px solid #ddd;
+                &:first-child {
+                    border-left:none;
+                }
+            }
+        }
+    }
+}

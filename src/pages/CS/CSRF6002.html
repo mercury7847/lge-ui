@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="Y">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '제품 문제해결',
+                'pageDesc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
+            })
+
+            <div class="contents support solutions">
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html', {
+                    "show": true
+                })
+
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true,
+                    "show": true
+                })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html', {
+                    "show": true
+                })
+
+                <div class="cont-wrap">
+
+                    <div class="step-area">
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="categoryNm" id="category" value="">
+                        <input type="hidden" name="subCategory" id="subCategory" value="">
+                        <input type="hidden" name="subCategoryNm" id="subCategory" value="">
+
+                        <div class="step-box active" id="stepModel">
+                            @@include('./common/support/select-model.html', {
+                                "url": "/lg5-common/data-ajax/support/solutions/selectModel.json",
+                                "category": [
+                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                                ]
+                            })
+                        </div>
+
+                        <div class="step-box " id="stepInput">
+                            <div class="section">
+                                <div class="solutions-wrap" data-solutions-url="/lg5-common/data-ajax/support/solutions/solutionsList.json" data-filter-solutions-url="/lg5-common/data-ajax/support/solutions/filterSolutionsList.json" data-filter-url="/lg5-common/data-ajax/support/solutions/filterList.json">
+                                    <div class="search-wrap">
+                                        @@include('./common/support/search-keyword.html', {
+                                            'url': '/lg5-common/data-ajax/support/solutions/searchAutoComplete.json',
+                                            'layer': {
+                                                'keyword': true,
+                                                'auto': true,
+                                                'notKeyword': true
+                                            },
+                                            'inputId': 'keyword',
+                                            'inputTitle': '키워드 검색',
+                                            'inputError': '키워드를 두 글자 이상 입력해 주세요.',
+                                            'inputType': '',
+                                            'inputDisabled': '',
+                                            'desc': '제품 부착된 라벨의 모델명 중 마침표 \(.\)가 있는 모델명을 확인해 마침표 앞까지만 입력/검색',
+                                            'checkbox': true
+                                        })
+                                    </div>
+                                    <div class="filter-box">
+                                        <div class="title">
+                                            <h2 class="tit">증상 선택</h2>
+                                        </div>
+                                        <!-- <div class="tit-wrap">
+                                            <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
+                                            <h2 class="tit">기능</h2>  
+                                        </div> -->
+                                        <ul class="filter-list">
+                                            <!-- <li class="on">
+                                                <button type="button" class="filter-link" data-code="" data-name="All">All <span class="blind">선택됨</span></button>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="mobile-filter-box">
+                                        <div class="form-wrap">
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="topic">증상</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" name="topic" id="topic" title="증상 선택">
+                                                            <option value="" class="placeholder">증상 선택</option>
+                                                            <option value="">All</option>
+                                                            <option value="10000002">기능</option>
+                                                            <option value="10000003">설치/연결</option>
+                                                            <option value="10000004">소음/냄새/열발생</option>
+                                                            <option value="10000005">스마트 앱</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" name="subTopic" id="subTopic" title="세부증상 선택" disabled>
+                                                            <option  value="" class="placeholder">세부증상 선택</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="result-box">
+                                        <div class="title">
+                                            <h3 class="tit">“<span class="point">All</span>” 검색 결과</h3>
+                                        </div>
+                                        <div class="sorting-wrap">
+                                            <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
+                                            <div class="sort-box">
+                                                <div class="sort-select-wrap">
+                                                    <select class="ui_selectbox" name="sort" id="sort" title="정렬 기준 선택">
+                                                        <option value="new" selected>최신순</option>
+                                                        <option value="popular">조회순</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-wrap">
+                                            <ul class="list">
+                                                <li class="video-type">
+                                                    <a href="#" class="item">
+                                                        <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                        <p class="desc">증상 > 세부 증상</p>
+                                                        <ul class="options">
+                                                            <li>2020.07.20</li>
+                                                            <li>조회 5,692</li>
+                                                        </ul>
+                                                        <span class="icon-movie"><span class="blind">동영상 컨텐츠</span></span>
+                                                    </a>
+                                                </li>
+                                                @@for (var i = 0; i < 9; i++) {
+                                                <li>
+                                                    <a href="#" class="item">
+                                                        <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                        <p class="desc">증상 > 세부 증상</p>
+                                                        <ul class="options">
+                                                            <li>2020.07.20</li>
+                                                            <li>조회 5,692</li>
+                                                        </ul>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        @@include('./common/support/pagination.html', {
+                                            count: 5
+                                        })
+                                        <div class="no-data" style="display:none">
+                                            <p>검색결과가 없습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2021-01-29 위치 변경 -->
+                        @@include('./common/support/recommand-product.html')
+                        @@include('./common/support/service-menu.html')
+                        @@include('./common/support/center-find.html')
+                        <!-- // 2021-01-29 위치 변경 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/solutions.min.js"></script>
+</body>
+</html> 

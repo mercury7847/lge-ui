@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-facebook</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KRP0019_Social_Share_PC" transform="translate(-1197.000000, -228.000000)">
+            <g id="Share_Hover" transform="translate(0.000000, 140.000000)">
+                <g id="share" transform="translate(1163.000000, 24.000000)">
+                    <g id="share_box" transform="translate(0.000000, 40.000000)">
+                        <g id="facebook" transform="translate(24.000000, 24.000000)">
+                            <g id="btn_sns_facebook_32" transform="translate(10.000000, 0.000000)">
+                                <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+                                <g id="ic" stroke-width="1" fill-rule="evenodd">
+                                    <circle id="Oval" fill="#F4F4F4" cx="16" cy="16" r="16"></circle>
+                                    <path d="M14.3613327,23 L16.978977,23 L16.978977,15.9402642 L18.8051619,15.9402642 L19,13.5769114 L16.978977,13.5769114 L16.978977,12.2305826 C16.978977,11.673251 17.0831534,11.4528049 17.5832004,11.4528049 L19,11.4528049 L19,9 L17.1873299,9 C15.239512,9 14.3613327,9.92363006 14.3613327,11.6923543 L14.3613327,13.5769114 L13,13.5769114 L13,15.9699805 L14.3613327,15.9699805 L14.3613327,23 Z" id="Fill-1" fill="#616161"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,284 @@
+.sign-up-guide {
+    .icon-tabs {
+        .tabs {
+            margin:0 -12px;
+            font-size:0;
+            @include mobile {
+                margin:0 -4px;
+            }
+            li {
+                display:inline-block;
+                position:relative;
+                width:calc(100% / 3);
+                padding:0 12px;
+                vertical-align:top;
+                @include mobile {
+                    padding:0 4px;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    right:12px;
+                    bottom:0;
+                    left:12px;
+                    border-radius:8px;
+                    border:1px solid #ddd;
+                    @include mobile {
+                        right:4px;
+                        left:4px;
+                    }
+                }
+                &.on::before {
+                    border:2px solid #da0f47;
+                }
+                a {
+                    display:block;
+                    position:relative;
+                    margin:2px;
+                    padding:114px 8px 30px;
+                    text-align:center;
+                    color:#000;
+                    @include font-large;
+                    font-weight:700;
+                    @include mobile {
+                        padding:104px 8px 14px;
+                    }
+                    &::before {
+                        content:' ';
+                        position:absolute;
+                        top:30px;
+                        left:50%;
+                        width:64px;
+                        height:64px;
+                        margin-left:-32px;
+                    }
+                    @for $i from 1 through 4 {
+                        &.tab#{$i}::before {
+                            background:url("/lg5-common/images/BMC/icon-join0#{$i}.svg") center no-repeat;
+                            background-size:100%;
+                        }
+                    }
+                    &::after {
+                        content:' ';
+                        position:absolute;
+                        top:14px;
+                        right:14px;
+                        width:24px;
+                        height:24px;
+                        background:url("/lg5-common/images/BMC/check-pc.svg") 0 0 no-repeat;
+                        @include mobile {
+                            right:5px;
+                            top:5px;
+                        }
+                    }
+                }
+                &.on a::after {
+                    background-position-y:bottom;
+                }
+            }
+        }
+    }
+    .tab-content {
+        padding-top:64px;
+        @include mobile {
+            padding-top:40px;
+        }
+    }
+    .sign-up-steps {
+        padding:48px 32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        font-size:0;
+        white-space:nowrap;
+        &.type2 {
+            border-radius:8px 8px 0 0;
+        }
+        &.size4 {
+            li {
+                width:calc((100% - 144px) / 4);
+                @include mobile {
+                    width:280px;
+                }
+            }
+        }
+        @include mobile {
+            margin:0 -16px;
+            padding:32px 16px;
+            border-radius:0;
+            overflow-x:auto;
+        }
+        li {
+            display:inline-block;
+            position:relative;
+            width:calc((100% - 104px) / 3);
+            margin-right:52px;
+            vertical-align:top;
+            @include mobile {
+                width:280px;
+                margin-right:48px;
+            }
+            &::after {
+                content:' ';
+                position:absolute;
+                top:36px;
+                right:-52px;
+                width:32px;
+                height:32px;
+                background:url('/lg5-common/images/icons/icon-arrow-left-b-56.svg') center no-repeat;
+                background-size:100%;
+                @include mobile {
+                    right:-40px;
+                    width:32px;
+                    height:32px;
+                }
+            }
+            &:last-child {
+                margin-right:0;
+                &::after {
+                    display:none;
+                }
+            }
+            dl {
+                padding:0 24px;
+                text-align:center;
+                @include mobile {
+                    padding:0;
+                }
+                dt {
+                    color:#000;
+                    @include font-medium;
+                    font-weight:700;
+                    small {
+                        display:block;
+                        color:#da0f47;
+                        @include font-small;
+                        font-weight:500;
+                    }
+                }
+                dd {
+                    margin-top:8px;
+                    color:#000;
+                    @include font-medium;
+                    white-space:initial;
+                    word-break:keep-all;
+                }
+            }
+        }
+    }
+    .sign-up-bottom {
+        padding:0 48px 48px;
+        border-radius:0 0 8px 8px;
+        background:#f4f4f4;
+        font-size:0;
+        text-align:center;
+        @include mobile {
+            margin:0 -16px;
+            padding:0 16px 32px;
+            text-align:left;
+        }
+        .qr-lists {
+            display:inline-block;
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                text-align:center;
+            }
+            li {
+                display:inline-block;
+                vertical-align:top;
+                margin-left:24px;
+                text-align:center;
+                @include mobile {
+                    margin-left:24px;
+                }
+                &:first-child {
+                    margin-left:0;
+                }
+                p {
+                    margin-top:8px;
+                    padding:4px 0;
+                    border-radius:8px;
+                    background-color:#666;
+                    color:#fff;
+                    @include font-medium;
+                    font-weight:500;
+                }
+                .img {
+                    display:block;
+                    width:128px;
+                    border-radius:8px;
+                    border:1px solid #ddd;
+                    overflow:hidden;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                }
+            }
+        }
+        .down-link-lists {
+            display:inline-block;
+            margin-left:120px;
+            vertical-align:top;
+            text-align:left;
+            @include mobile {
+                display:block;
+                margin-top:32px;
+                margin-left:0;
+            }
+            p {
+                margin-bottom:12px;
+                color:#000;
+                @include font-medium;
+                font-weight:500;
+                text-align:center;
+                @include mobile {
+                    margin-bottom:8px;
+                }
+            }
+            a {
+                display:block;
+                width:190px;
+                margin:0 auto;
+                padding:12px 0;
+                padding-left:15px;
+                border:1px solid #ddd;
+                border-radius:26px;
+                background:#fff;
+                color:#000;
+                font-weight:700;
+                font-size:16px;
+                line-height:28px;
+                @include mobile {
+                    font-size:14px;
+                }
+                span {
+                    display:inline-block;
+                    vertical-align:top;
+                }
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:24px;
+                    height:28px;
+                    margin-right:8px;
+                    vertical-align:top;
+                    background-size:100%;
+                    background-repeat:no-repeat;
+                    background-position:center;
+                }
+                &.btn1::before {
+                    background-image:url("/lg5-common/images/BMC/img-app-icon1.png");
+                }
+                &.btn2::before {
+                    background-image:url("/lg5-common/images/BMC/img-app-icon2.png");
+                }
+                & + a {
+                    margin-top:16px;
+                }
+            }
+        }
+    }
+}

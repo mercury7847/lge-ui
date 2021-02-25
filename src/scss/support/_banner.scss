@@ -1,0 +1,458 @@
+@charset "UTF-8";
+
+.banner-wrap {
+    margin:64px 0;
+    .banner {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:24px 48px;
+        border-radius:8px;
+        background:#f4f4f4;
+        .cont {
+            padding-right:89px;
+            p {
+                @include font-medium;
+            }
+            .tit {
+                font-weight:700;
+            }
+        }
+        .btn-link {
+            white-space:nowrap;
+        }
+    }
+
+    &.toggle-banner {
+        display:none;
+
+        &.is-active {
+            display: block;
+        }
+    }
+
+    @include mobile {
+        margin:40px 0;
+        .banner {
+            display:block;
+            padding:16px 24px;
+            .cont {
+                padding-right:0;
+            }
+            .btn-link {
+                margin-top:12px;
+            }
+        }
+    }
+}
+
+.common-banner {
+    margin-top:120px;
+    padding:0;
+    .banner {
+        max-width: 1380px + 80px;
+        margin:0 auto;
+        padding:0 40px;
+        .banner-inner {
+            padding:48px 0;
+        }
+        .banner-tit {
+            margin-bottom:48px;
+            font-size:32px;
+            text-align:center;
+            word-break:keep-all;
+        }
+        .btn-wrap {
+            text-align:center;
+        }
+    }
+    &.gray {
+        background:#f4f4f4;
+        .banner-tit {
+            margin-bottom:24px;
+            font-size:24px;
+        }
+    }
+    + .board-navi {
+        margin-top: 120px;
+    }
+    @include tablet {
+        padding:0;
+    }
+    @include mobile {
+        margin-top:60px;
+        padding-top:60px;
+        border-top:12px solid #f4f4f4;
+        .banner { 
+            padding:0 16px;
+            .banner-tit {
+                margin-bottom:24px;
+                font-size:24px;
+                line-height:33px;
+            }
+            .btn-wrap {
+                .btn {
+                    width:100%;
+                }
+            }
+            .banner-inner {
+                padding:0;
+            }
+        }
+        &.gray {
+            padding: 40px 16px;
+            margin-left: 16px;
+            margin-right: 16px;
+            border-top: none;
+            .btn-wrap {
+                .btn {
+                    width:auto;
+                }
+            }
+        }
+        + .board-navi {
+            margin-top: 60px;
+        }
+    }
+    
+    // 다른 서비스 리스트
+
+    &.service-menu {
+        display:none;
+
+        &.active {
+            display: block;
+        }
+    }
+    
+
+    // 관련 소모품 리스트
+    .product-slider {
+        position:relative;
+        .slide-controls {
+            .prev {
+                position:absolute;
+                top:calc(50% - 30px);
+                left:-24px;
+                transform:translateY(-50%);
+            }
+            .next {
+                position:absolute;
+                top:calc(50% - 30px);
+                right:-24px;
+                transform:translateY(-50%);
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide {
+            &-content {
+                margin:0 -12px;
+            }
+            &-track {
+                padding:2px 0 60px;
+                @include clearfix;
+            }
+            &-conts {
+                float:left;
+                width:25%;
+            }
+        }
+        .item {
+            padding:0 12px;
+            &-inner {
+                padding:12px 40px 32px;
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            }
+            .product {
+                &-image {
+                    margin:0 auto 16px;
+                    text-align:center;
+                    img {
+                        width:100%;
+                        max-width:240px;
+                    }
+                }
+                &-name {
+                    margin-bottom:20px;
+                    .name {
+                        margin-bottom:2px;
+                        font-weight:$font-weight-bold;
+                        @include font-large;
+                        @include textEllipsisClamp(2);
+                    }
+                    .model {
+                        color:#767676;
+                        @include font-small;
+                        font-weight:$font-weight-medium;
+                    }
+                }
+                &-price {
+                    font-size:0;
+                    .discount {
+                        display:inline-block;
+                        vertical-align:bottom;
+                        .price {
+                            @include font-large-1;
+                            font-weight:$font-weight-bold;
+                        }
+                    }
+                    .original {
+                        display:inline-block;
+                        margin-left:4px;
+                        vertical-align:bottom;
+                        .price {
+                            color:#767676;
+                            @include font-medium;
+                            text-decoration-line:line-through;
+                        }
+                    }
+                }
+                &-button {
+                    margin-top:16px;
+                    .btn {
+                        width:100%;
+                    }
+                }
+            }
+
+        }
+        @include mobile {
+            .slide-controls {
+                .prev, .next {
+                    display:none;
+                } 
+            }
+            .slide {
+                &-track {
+                    padding:1px 0 32px;
+                }
+                &-conts {
+                    width:calc((100vw - 16px) / 3 * 2);
+                }
+            }
+            .item {
+                &-inner {
+                    padding:12px 24px 24px;
+                    box-shadow:1px 3px 8px 0 rgba(0, 0, 0, 0.07);
+                }
+                .product {
+                    &-image {
+                        margin:0 auto 4px;
+                        img {
+                            max-width:302px;
+                        }
+                    }
+                    &-name {
+                        margin-bottom:8px;
+                        .name {
+                            margin-bottom:1px;
+                        }
+                        .model {
+                            color:#767676;
+                        }
+                    }
+                    &-price {
+                        .original {
+                            margin-left:6px;
+                        }
+                    }
+                    &-button {
+                        margin-top:12px;
+                    }
+                }
+    
+            }
+        }
+    }
+
+    // 관련된 정보 리스트
+    &.related-info {
+        display:none;
+    }
+    .info-slider {
+        position:relative;
+        .slide-controls {
+            .prev {
+                position:absolute;
+                top:calc(50% - 30px);
+                left:-24px;
+                transform:translateY(-50%);
+            }
+            .next {
+                position:absolute;
+                top:calc(50% - 30px);
+                right:-24px;
+                transform:translateY(-50%);
+            }
+        }
+        .indi-wrap {
+            position:absolute;
+            bottom:0;
+            width:100%;
+        }
+        .slide {
+            &-content {
+                margin:0 -12px;
+            }
+            &-track {
+                padding-bottom:60px;
+                @include clearfix;
+            }
+            &-conts {
+                float:left;
+                width:calc(100% / 3);
+            }
+        }
+        .item {
+            padding:0 12px;
+            
+            &-inner {
+                display:block;
+                overflow:hidden;
+                border-radius:8px;
+                box-shadow:2px 3px 14px 0 rgba(0, 0, 0, 0.14);
+
+                .img {
+                    // margin-bottom:16px;
+                    border-radius:8px;
+                    img {
+                        width:100%;
+                    }
+                }
+                .txt {
+                    padding:16px 32px 40px;
+                    @include font-large-1;
+                    font-weight:$font-weight-bold;
+                    @include textEllipsis;
+                    border-radius:0 0 8px 8px;
+                }
+            }
+        }
+        @include tablet { 
+            .item {
+                padding:0 12px;
+                
+                &-inner {
+                    .txt {
+                        padding:12px 15px 20px;
+                        @include font-small;
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            .slide-controls {
+                .prev, .next {
+                    display:none;
+                }
+            }
+            .slide {
+                &-track {
+                    padding-bottom:32px;
+                }
+                &-conts {
+                    width:calc((100vw - 16px) / 3 * 2);
+                }
+            }
+            .item {
+                padding:0 8px;
+                &-inner {
+                    // width:calc( 88.888vw);
+                    border-radius:8px;
+                    box-shadow:1px 4px 7px 2px rgba(0,0,0,0.2);
+                    .img {
+                        border-radius:0;
+                    }
+                    .txt {
+                        padding:16px 20px 24px;
+                        font-size:16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.service-list-wrap {
+    .service-list {
+        margin:0 -12px;
+        font-size:0;
+        text-align: center;
+
+        & > li {
+            display:inline-block;
+            width:calc(100% / 6);
+            padding:0 12px;
+            a {
+                display:block;
+                // &:before {
+                //     content:'';
+                //     display:block;
+                //     width:80px;
+                //     height:80px;
+                //     margin:0 auto 16px;
+                //     background-repeat : no-repeat;
+                //     background-position:0 0;
+                //     background-size:100% 100%;
+                // }
+
+                .icon {
+                    display:block;
+                    width:80px;
+                    height:80px;
+                    margin:0 auto 16px;
+
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+            .tit {
+                display:block;
+                @include font-medium;
+                font-weight:$font-weight-medium;
+                text-align:center;
+            }
+
+            &.service_type {
+                &-chat a:before {background-image: url("/lg5-common/images/icons/icon_chat.svg");} 
+                &-email a:before {background-image: url("/lg5-common/images/icons/icon_email-inquiry.svg");}
+                &-tel a:before {background-image: url("/lg5-common/images/icons/icon_request-reservation.svg");}
+                &-business a:before {background-image: url("/lg5-common/images/icons/icon_engineer-reservation.svg");}
+                &-center a:before {background-image: url("/lg5-common/images/icons/icon_center-reservation.svg");}
+                &-store a:before {background-image: url("/lg5-common/images/icons/icon_store-reservation.svg");}
+                &-remote a:before {background-image: url("/lg5-common/images/icons/icon-remote-reservation.svg");}
+                &-consult a:before {background-image: url("/lg5-common/images/icons/icon-consulting-inquiry.svg");}
+                &-service a:before {background-image: url("/lg5-common/images/icons/icon-service-inquiry.svg");}
+                &-install a:before {background-image: url("/lg5-common/images/icons/icon_installation-reservation.svg");}
+            }
+            
+            
+        }
+    }
+    @include tablet {
+        .service-list {
+            margin-top:-24px;
+            @include clearfix;
+            & > li {
+                padding-top:24px;
+                width:calc(100% / 3);
+            }
+        }
+    }
+    @include mobile {
+        .service-list {
+            margin:-40px -8px 0;
+            & > li {
+                width:50%;
+                padding:40px 8px 0;
+            }
+        }
+    }
+}

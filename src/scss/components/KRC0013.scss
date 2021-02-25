@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0013 {
+
+
+	.visual-set {
+		@include clearfix;
+		@include mobile {
+			margin:0 -16px;
+		}
+		.visual-area {
+			float:left;
+			position:relative;
+            width:((1040px*100%)/1380px);
+            text-align:center;
+            a {
+                position:relative;
+				display:inline-block;
+				max-width:100%;
+                vertical-align:top;
+            }
+			img {
+				width:auto;
+				max-width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			@include mobile {
+				width:100%;
+			}
+		}
+		.visual-thumbnail-set {
+			float:right;
+			width:((304px*100%)/1380px);
+			@include clearfix;
+			@include mobile {
+				width:100%;
+			}
+			.thumb-obj {
+				margin-top:((74px*100%)/635px);
+				&:first-child {margin-top:0;}
+				@include mobile {
+					float:left;
+					//width:calc(33.34% - 6.8px);
+					width: 33.333333%;
+					margin:0;
+				}
+				a {
+					width:100%;
+					position:relative;
+                    display:block;
+                    text-align:center;
+					&:before{
+						content:"";
+						display:block;
+						position:absolute;
+						top:0;
+						left:0;
+						width:100%;
+						height:100%;
+						border:2px solid transparent;
+						z-index:1;
+					}
+					&:after {
+						content:"";
+						display:block;
+						position:absolute;
+						top:0;
+						left:0;
+						width:100%;
+						height:100%;
+					}
+					&.active {
+						&:before{
+							border:2px solid #ec455a;
+						}	
+						&::after {
+							background:rgba(#000, .5);
+						}					
+					}
+					//LGEGMO-5525 add
+					&:focus {
+						box-shadow:0 0 0 0.1rem #7fbdff !important;
+						-webkit-box-shadow:0 0 0 0.1rem #7fbdff !important;
+					}
+					//LGEGMO-5525 add
+					img {
+						width:auto;
+						max-width:100%;
+						height:auto;
+						vertical-align:top;
+					}
+				}
+			}
+			
+		}
+		&.large-align-right {
+			.visual-area {float:right;}
+			.visual-thumbnail-set {float:left;}
+		}
+	}
+
+	.text-set-default {				
+		.sub-title {
+			position:absolute;
+			width:0;
+			height:0;
+			line-height:1px;
+			left:-9999px;
+			top:-9999px;
+		}
+		.sub-text {
+			display:none;
+		}
+	}
+
+	.text-set {
+		margin-top:56px;
+		@include mobile {
+			margin-top:28px;
+		}
+		.sub-title {
+			h3 {
+				@include title-h3;	
+			}
+			&.title-h1 * {
+				@include title-h1;
+			}
+			&.title-h2 * {
+				@include title-h2;
+			}
+			&.title-h3 * {
+				@include title-h3;
+			}
+			&.title-h4 * {
+				@include title-h4;
+			}
+			&.title-h5 * {
+				@include title-h5;
+			}
+			&.title-h6 * {
+				@include title-h6;
+			}
+		}
+		.sub-text {
+			@include bodycopy(h2, h2);
+		}
+	}
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-refresh-48</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_popup_retry_48">
+            <g id="ic_nodata_56">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Rectangle"></g>
+                <g id="Group-129" mask="url(#mask-2)" stroke="#AAAAAA" stroke-linecap="round" stroke-width="2">
+                    <g transform="translate(24.000000, 24.000000) rotate(16.000000) translate(-24.000000, -24.000000) translate(2.500000, 5.000000)">
+                        <path d="M40.1370961,15.7873662 C38.5983247,6.89415878 30.8300739,0.129380312 21.4784869,0.129380312 C11.6618402,0.129380312 3.58992592,7.58372144 2.63709611,17.1293803" id="Path"></path>
+                        <polyline id="Path-24" stroke-linejoin="round" transform="translate(39.174614, 13.256607) rotate(9.000000) translate(-39.174614, -13.256607) " points="42.5203107 10.6430984 41.1022621 15.870116 35.8289174 14.47462"></polyline>
+                        <path d="M40.3629039,36.5286056 C38.8241325,27.6353982 31.0558817,20.8706197 21.7042947,20.8706197 C11.887648,20.8706197 3.81573371,28.3249608 2.86290389,37.8706197" id="Path" transform="translate(21.612904, 29.370620) scale(-1, -1) translate(-21.612904, -29.370620) "></path>
+                        <polyline id="Path-24" stroke-linejoin="round" transform="translate(3.825386, 24.464741) scale(-1, -1) rotate(9.000000) translate(-3.825386, -24.464741) " points="7.17108262 21.8512326 5.75303409 27.0782501 0.479689328 25.6827541"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

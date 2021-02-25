@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0012 {
+    .title * {
+        @include title-h3;
+    }
+    .component-box {
+        max-width:1380px + 80px;
+        margin:0 auto;
+        padding:0 40px;
+        @include mobile {
+            padding:0;
+        }
+        .items-group {
+            position:relative;
+            padding-bottom:36px;
+            @include mobile {
+                padding:0 16px 32px;
+            }
+            &.solo {
+                padding-bottom:0;
+            }
+            .ui_carousel_list {
+                overflow:hidden;
+            }
+            .items {
+                @include clearfix;
+                .item-box {
+                    display:flex;
+                    align-items:center;
+                    @include mobile {
+                        display:block;
+                    }
+                    .visual-wrap {
+                        width:((444px*100%) / 1380px);
+                        order:-1;
+                        .visual-area {
+                            text-align:center;
+                            a {
+                                position:relative;
+                                display:inline-block;
+                                max-width:100%;
+                                vertical-align:top;
+                                img {
+                                    width:auto;
+                                    max-width:100%;
+                                    height:auto;
+                                    vertical-align:top;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            width:100%;
+                            margin-top:28px;
+                        }
+                    }
+                    .text-wrap {
+                        width:((936px*100%) / 1380px);
+                        padding-left:24px;
+                        .text {
+                            @include bodycopy(h2, h2);
+                        }
+                        .btn-type-box,
+                        .btn-type-text {
+                            @include cta-btn;
+                        }
+                        @include mobile {
+                            float:none;
+                            width:100%;
+                            padding-left:0;
+                        }
+                    }
+                }
+            }
+            .btn-arrow {
+                position:absolute;
+                top:calc((100% - 36px) / 2);
+                transform:translateY(-50%);
+                &.prev {
+                    left:-24px;
+                    @include mobile {
+                        left:4px;
+                    }
+                }
+                &.next {
+                    right:-24px;
+                    @include mobile {
+                        right:4px;
+                    }
+                }
+            }
+        }
+    }
+}

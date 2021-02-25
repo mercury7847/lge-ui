@@ -1,0 +1,174 @@
+<div class="component-wrap @@bg-color">
+    <!--
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component 영역 옵션]
+        1. 텍스트 가로 정렬 (W/F상 B. Text Area Align)
+        .align-left : 왼쪽 정렬
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        2. 배경 색상 :
+        .bg-white : #FFFFFF 색상 배경
+        .bg-lightgray : #F4F4F4 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
+        [.visual-wrap 영역 옵션]
+        1. 이미지/텍스트 위치 (Image Placement)
+        .image-align-left : 이미지가 왼쪽, 텍스트가 오른쪽.
+        .image-align-right : 이미지가 오른쪽, 텍스트가 왼쪽.
+
+        [.text 옵션]
+        1. 폰트 종류 : 
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일: 
+        기본은 언더라인 없음 
+        .font-underline : 언더라인
+
+        ** W/F 옵션 중, 이미지가 standard/large 인 옵션은 
+        3번 컴포넌트에서는 등록 이미지의 세로 길이만 달라지는 내용이므로, 
+        코딩에는 따로 반영하지 않았습니다. **
+    -->
+
+    <div class="component KRC0006 @@align-class1 @@bg-color">
+        <div class="component-inner">
+            <div class="inner">
+                <div class="visual-wrap @@image-align-class1">
+                    <!--
+                        visual-wrap 영역은 이미지 또는 비디오가 2개 출력되는 영역으로,
+                        각각 video(youtube, animation)/image 타입 선택에 따라서 코드가 출력되어야 합니다.
+                        비디오/이미지 타입별 코드는 아래 case를 참고해 주세요.
+                    -->
+
+                    <!-- 1.1 image #1 -->
+                    @@if (context.imgType === "youtube") {
+                    <!-- 1.1 visual-area - video 예제 -->
+                    <!-- [KR수정_201222] 유투브 DOM 내 AD버튼 삭제, caption 삭제 -->
+                    <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가(youtube modal call) -->
+                        <!-- 1-3 video play button -->                
+                        <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image2_text-video_play" data-link-name="{video title / video id}">
+                            <img data-src="@@img" alt="">
+                            <p class="hidden">graphic description : </p>
+                        </a>
+                        <!-- // 1-3 video play button -->
+
+                        <!-- 2021.2.21 자막추가 -->                        
+                        <article class="cap-section" style="display:none;">
+                            <h2>(동영상 타이틀 영역) 인공지능 스스로 에어컨 LG 휘센 씽큐</h2>
+                            <!--자막 영역 -->
+                            <textarea class="rectangle" readonly>
+                                [자막]
+                                때때로 인간의 욕심은 끝이 없다
+                                에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고
+                                그럼, 어떻게?
+                                [FF]에러 혹은 [OE]에러 표시가 나타나는 경우는 배수펌프 내부가 얼어있는 경우입니다.
+                                따뜻한 물을 통해 얼어있는 배수펌프 내부를 녹여주세요.
+                                물을 붓고 문을 닫은 후 한두시간 가량 기다려 주세요.
+                                한두시간 경과 후 서비스 커버를 열고 잔수제거용 호스마개를 열어 물을 완전히 제거해 주세요.
+                                물이 나오지 않으면 얼음이 다 녹지 않은 것입니다.
+                                남은 얼음이 모두 녹을 때까지 조금 더 기다렸다가 물을 빼주십시오.
+                                물을 뺀 후 잔수제거용 호스 마개와 서비스커버를 닫아 줍니다.
+                                전원을 켠 후 [헹굼1회]를 선택해 동작시켜 세탁기가 정상적으로 작동되는지 확인해주세요.
+                            </textarea>
+                            <!--//자막 영역 -->
+                        </article> 
+                         <!-- //2021.2.21 자막추가 -->
+
+                    </div>
+                    <!-- // [KR수정_201222] 유투브 DOM 내 AD버튼 삭제, caption 삭제 -->
+                    <!-- // 1.1 image #1 -->
+                    }
+                    @@if (context.imgType === "animation") {
+                    <!-- 2020.09.21 animation type 추가 -->
+                    <!-- 1.2 animation 타입인 경우 animation-box 클래스 추가 -->
+                    <!-- [KR수정_210104] 애니메이션 내부 이미지, hidden태그 삭제, animation-box 내 .size-type class 삭제 -->
+                    <div class="visual-area animation-box">
+                        <div class="animation-area">
+                            <video autoplay muted loop>
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
+                            <!-- 2021.02.08 자막버튼 추가 -->
+                            <div class="caption-wrap">
+                                <button type="button" class="btn size on"><span>자막</span></button>ㅋㅋ
+                            </div>
+                            <!-- //2021.02.08 자막버튼 추가 -->
+                        </div>
+
+                        <!-- 2021.2.21 자막추가 -->                        
+                        <article class="cap-section" style="display:none;">
+                            <h2>(동영상 타이틀 영역) 인공지능 스스로 에어컨 LG 휘센 씽큐</h2>
+                            <!--자막 영역 -->
+                            <textarea class="rectangle" readonly>
+                                [자막]
+                                때때로 인간의 욕심은 끝이 없다
+                                에어컨은 거실에 두면서 먼 주방까지 시원했으면 좋겠고
+                                그럼, 어떻게?
+                                [FF]에러 혹은 [OE]에러 표시가 나타나는 경우는 배수펌프 내부가 얼어있는 경우입니다.
+                                따뜻한 물을 통해 얼어있는 배수펌프 내부를 녹여주세요.
+                                물을 붓고 문을 닫은 후 한두시간 가량 기다려 주세요.
+                                한두시간 경과 후 서비스 커버를 열고 잔수제거용 호스마개를 열어 물을 완전히 제거해 주세요.
+                                물이 나오지 않으면 얼음이 다 녹지 않은 것입니다.
+                                남은 얼음이 모두 녹을 때까지 조금 더 기다렸다가 물을 빼주십시오.
+                                물을 뺀 후 잔수제거용 호스 마개와 서비스커버를 닫아 줍니다.
+                                전원을 켠 후 [헹굼1회]를 선택해 동작시켜 세탁기가 정상적으로 작동되는지 확인해주세요.
+                            </textarea>
+                            <!--//자막 영역 -->
+                        </article> 
+                         <!-- //2021.2.21 자막추가 -->
+
+                    </div>
+                    <!-- // [KR수정_210104] 애니메이션 내부 이미지, hidden태그 삭제, animation-box 내 .size-type class 삭제 -->
+                    <!-- // 1.2 image #1 -->
+                    }
+                    <!-- 1.3 image #1 -->
+                    <!-- visual-area - image 예제 -->
+                    <div class="visual-area image">
+                        <a href="#none" data-link-area="side_image2_text-image" data-link-name="{Alt Text}">
+                            <img src="@@img" alt="">
+                            <!-- [KR수정_201222] p 태그 위치 변경 -->
+                            <p class="hidden">graphic description : </p>
+                            <!-- // [KR수정_201222] p 태그 위치 변경 -->
+                        </a>
+                        <!-- [KR수정_201222] caption삭제 -->
+                    </div>
+                    <!-- // 1.3 image #1 -->
+                </div>
+                <div class="side-right-text">
+                    <!-- 3. headline -->
+                    <div class="title" id="title"><h2>타이틀 영역입니다.</h2></div>
+                    <!-- // 3. headline -->
+                    <!-- 4. body copy -->
+                    <div class="text @@font-class2">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.</div>
+                    <!-- // 4. body copy -->
+                    <!-- 5. cta -->
+                    <!-- [KR수정_201222] 버튼 태그 DOM 동일화 수정 -->
+                    <div class="btn-type-box">
+                        <a href="#none" class="btn border size-m" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>문의하기</span></a>
+                    </div>
+                    <div class="btn-type-text">
+                        <a href="#none" class="text-link" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>자세히 보기</span></a>
+                        <a href="#none" class="text-link" data-link-area="side_image2_text-cta" data-link-name="{Link Text}" aria-describedby="title"><span>자세히 보기</span></a>
+                    </div>
+                    <!-- // [KR수정_201222] 버튼 태그 DOM 동일화 수정 -->
+                    <!-- // 5. cta -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

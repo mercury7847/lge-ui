@@ -1,0 +1,84 @@
+.bookmark-store-list {
+    margin-top: 64px;
+    border-top: 2px solid $color-default;
+    > li {
+        border-bottom: 1px solid $color-border;
+    }
+    .item {
+        position: relative;
+        padding: 24px 300px 24px 0;
+        .branch {
+            font-weight: 700;
+            @include font-large;
+            color: #000;
+        }
+        .title {
+            display: block;
+            margin: 8px 0 4px;
+            @include font-medium;
+            @include textEllipsis;
+            strong {
+                font-weight:normal;
+            }
+        }
+        .phone {
+            @include font-medium;
+            color: $color-gray-1;
+        }
+        .detail {
+            padding-left:20px;
+            @include mobile {
+                display:block;
+                margin-top:12px;
+                padding:0;
+            }
+        }
+        .bookmark,
+        .share-area,
+        .btn-area {
+            position: absolute;
+            top: 24px;
+        }
+        .bookmark {
+            right: 188px;
+            padding: 4px;
+        }
+        .share-area {
+            right: 132px;
+        }
+        .btn-area {
+            right: 0;
+        }
+    }
+
+    @include mobile {
+        margin-top: 40px;
+        .item {
+            padding: 24px 150px 24px 0;
+            .bookmark,
+            .share-area {
+                top: 16px;
+                .tooltip-wrap.share {
+                    .tooltip-box {
+                        right:0;
+                        left:auto;
+                    }
+                }
+            }
+            .bookmark {
+                right: 46px;
+            }
+            .share-area {
+                right: 0;
+            }
+            .btn-area {
+                position:static;
+                top: auto;
+                bottom: 16px;
+                right: 0;
+                margin:24px -150px 0 0;
+                text-align:right;
+            }
+        }
+    }
+}

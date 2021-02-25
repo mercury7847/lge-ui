@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/point"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "멤버십 포인트 조회"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <!-- 상세 -->
+                            <!-- 조회기간 -->
+                            <div class="filters rdo-type2 type2" data-list-url="/lg5-common/data-ajax/mypage/membership/my_point_history.json">
+                                <!-- filter -->
+                                @@include('./common/modules/mem-filter.html', {
+                                    "tabType" : true,
+                                    "wrapTit" : "조회기간",
+                                    "datepicker" : true,
+                                    "rdoCheck" : true,
+                                    "list" : [
+                                        { "id" : "rdk-cehck1-1", "name" : "pointUseType",  "label" : "전체", "value": "all", "checked": "checked"},
+                                        { "id" : "rdk-cehck1-2", "name" : "pointUseType",  "label" : "적립", "value": "save"},
+                                        { "id" : "rdk-cehck1-3", "name" : "pointUseType",  "label" : "사용", "value": "use"}
+                                    ]
+                                })
+                                <!-- // filter -->
+                            </div>
+                            <!-- // 조회기간 -->
+                            <div class="section-wrap">
+                                <!-- 포인트 조회 내역 -->
+                                <div class="sects point-inquiry-area">
+                                    <!-- 210201 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h2 class="tit">포인트 조회 내역</h2>
+                                    </div>
+                                    <!-- //210201 수정 -->
+                                    <div class="point-use-list">
+                                        <ul class="lists">
+                                            <li>
+                                                <p class="date">2017. 11. 01</p>
+                                                <p class="desc">LG BEST SHOP 서초점</p>
+                                                <p class="point">
+                                                    <span class="mo_txt">포인트적립</span>
+                                                    <span class="num">+2,000P<em class="pc_txt"> 적립</em></span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="date">2019. 12. 29</p>
+                                                <p class="desc">LG BEST SHOP 서초점</p>
+                                                <p class="point">
+                                                    <span class="mo_txt">포인트사용</span>
+                                                    <span class="num">-2,000P<em class="pc_txt"> 사용</em></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <dl class="total">
+                                            <dt>총 보유 포인트</dt>
+                                            <dd>1,000P</dd>
+                                        </dl>
+                                    </div>
+                                    <!-- 201221 수정(페이징추가) -->
+                                    <!-- @@include('./common/modules/pagination.html', {
+                                        count: 5
+                                    }) -->
+                                    <div class="pagination" data-page="3" data-visible-count="7" data-total-count="13"></div>
+                                    <!-- //201221 수정(페이징추가) -->
+                                    <div class="no-data">
+                                        <p>조회 결과가 없습니다.</p>
+                                    </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "size2" : true,
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "적립된 포인트 사용기간은 적립일로부터 3년이며, 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
+                                        ]
+                                    })
+                                </div>
+                                <!-- //포인트 조회 내역 -->
+                            </div>
+                            <!-- // 상세 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

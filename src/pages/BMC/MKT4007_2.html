@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <!-- width: 912px -->
+    <article id="popup" class="win-popup-wrap event-popup">
+        <header class="pop-header">
+            <h1 class="tit"><span>당첨자 발표</span></h1>
+        </header>
+        <section class="pop-conts">
+            <div class="tit-area">
+                <div class="content-block">
+                    <div class="text-block">
+                        <div class="flag-wrap">
+                            <span class="flag">당첨자 발표</span>
+                        </div>
+                        <h2 class="sub-tit">LG전자 로그온 페스티벌</h2>
+                        <p class="date">2020.09.04 ~2020.09.30</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 당첨자 확인 -->
+            <div class="form-wrap search-box" data-url="">
+                <dl class="forms">
+                    <dt class="tit"><label for="inp01">당첨자 확인</label></dt>
+                    <dd class="conts">
+                        <div class="input-box btn-type">
+                            <span class="input-wrap">
+                                <input type="text" id="inp01" value="" placeholder="이름을 입력해 주세요.">
+                            </span>
+                            <button type="button" id="button-search" class="btn pink"><span>조회</span></button>
+                        </div>
+                        
+                    </dd>
+                </dl>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTit" : "당첨 및 경품 발송 관련 사항", 
+                "bulletTxt" : [
+                    "해당 당첨자 발표 페이지에서는 LG전자 대표 사이트를 통해 이벤트에 응모하신 고객님에 한하여 당첨자 확인이 가능합니다.",
+                    "부적격 참여가 확인되면 당첨이 취소 될 수 있습니다."
+                ]
+            })
+            
+        </section>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+    </article>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+
+.KRC0042 {
+    margin:0 auto;
+    &.stage-full {
+        max-width:1920px;
+        .inner {
+            padding-bottom:112px; // 디자인 시안 안나와서 임의 반영함.
+            @include mobile {
+                padding-bottom:0;
+            }
+            .text-box-area {
+                .text-wrap {
+                    @include mobile {
+                        padding:0 16px;
+                    }
+                    .text-inner {
+                        width:((739px * 100%) / 1380px);
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.stage-wide {
+        max-width:1600px;
+        .inner {
+            padding-bottom:112px; // 디자인 시안 안나와서 임의 반영함.
+            @include mobile {
+                padding-bottom:0;
+            }
+            .text-box-area {
+                .text-wrap {
+                    @include mobile {
+                        padding:0 16px;
+                    }
+                    .text-inner {
+                        width:((630px * 100%) / 1380px);
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.stage-standard {
+        max-width:1380px;
+        .inner {
+            padding-bottom:94px; // 디자인 시안 안나와서 임의 반영함.
+            @include mobile {
+                padding-bottom:0;
+            }
+            .visual-wrap {
+                width:((1066px * 100%) / 1380px);
+                @include mobile {
+                    width:calc(100% - 16px);
+                }
+            }
+            .text-box-area {
+                .text-wrap {
+                    .text-inner {
+                        width:((630px * 100%) / 1380px);
+                        @include mobile {
+                            width:calc(100% - 32px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.stage-narrow {
+        max-width:1162px;
+        .inner {
+            .visual-wrap {
+                width:((630px * 100%) / 1162px);
+                @include mobile {
+                    width:calc(100% - 48px);
+                }
+            }
+            .text-box-area { 
+                .text-wrap {
+                    @include mobile {
+                        margin-top:-80px;
+                    }
+                    .text-inner {
+                        width:((630px * 100%) / 1162px);
+                        bottom:80px;
+                        @include mobile {
+                            width:calc(100% - 40px);
+                            bottom:auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .inner {
+        position:relative;
+        z-index:1;
+
+        // visual
+        .visual-wrap {
+            position:relative;
+            z-index:10;
+            .visual-area {
+                text-align:center;
+                a {
+                    position:relative;
+                    display:inline-block;
+                    max-width:100%;
+                    vertical-align:top;
+                    z-index:20;
+                }
+                img {
+                    width:100%;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+        }
+
+        // text area
+        .text-box-area {
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:10;
+            @include mobile {
+                position:relative;
+                left:auto;
+                right:auto;
+                bottom:auto;
+            }
+            .text-wrap {
+                position:relative;
+                max-width:1380px;
+                margin:0 auto;
+                @include mobile {
+                    margin-top:-40px;
+                }
+                .text-inner {
+                    position:absolute;
+                    bottom:0;
+                    padding:40px 32px;
+                    background:#fff;
+                    z-index:20;
+                    @include mobile {
+                        position:relative;
+                        bottom:auto;
+                        padding:32px 16px;
+                    }
+                    .title {
+                        h2 {
+                            @include title-h4;
+                        }
+                        &.title-h1 * {
+                            @include title-h1;
+                        }
+                        &.title-h2 * {
+                            @include title-h2;
+                        }
+                        &.title-h3 * {
+                            @include title-h3;
+                        }
+                        &.title-h4 * {
+                            @include title-h4;
+                        }
+                        &.title-h5 * {
+                            @include title-h5;
+                        }
+                        &.title-h6 * {
+                            @include title-h6;
+                        }
+                    }
+                    .text {
+                        @include bodycopy(h3, h3);
+                    }
+                    .btn-type-box,
+                    .btn-type-text {
+                        @include cta-btn;
+                    }
+                }
+            }
+        }
+
+        &.box-align-left {
+            .visual-wrap {
+                margin-left:auto;
+                .controller-wrap {
+                    @include mobile {
+                        bottom:auto;
+                        right:auto;
+                        top:16px;
+                        left:16px;
+                    }
+                }
+            }
+            .text-box-area {
+                .text-inner {
+                    left:0;
+                    @include mobile {
+                        margin-right:auto;
+                    }
+                }
+            }
+        }
+        &.box-align-right {
+            .visual-wrap {
+                margin-right:auto;
+                .controller-wrap {
+                    right:auto;
+                    left:16px;
+                    @include mobile {
+                        bottom:auto;
+                        top:16px;
+                    }
+                }
+            }
+            .text-box-area {
+                .text-inner {
+                    right:0;
+                    @include mobile {
+                        margin-left:auto;
+                    }
+                }
+            }
+        }
+    }
+}

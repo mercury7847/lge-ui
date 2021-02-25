@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
+    @@include('./common/head.html', {
+        componentID: "KRP0008",
+        isJScompile: true
+    });
+    <script src="/lg5-common/js/components/KRP0015.min.js"></script>
+<body>
+    <script>
+        //아래 값은 필수로 넣어주세요.
+
+        // 로그인 유무
+        var loginFlag = true;
+
+        // 제품 가격
+        var productPrice = 1853090;
+
+        //사전예약 제품
+        var preOrderFlag = false;
+
+        //케어십 필수 제품 체크
+        var careRequire = false;
+
+        //수질관리 제품 케어십 필수 체크
+        var waterCareRequire = false;
+
+        //카트, 찜하기,비교하기 에 필요한 데이타
+        var sendData = {
+            "id": "제품ID",
+            "productName": "LG 올레드 갤러리 TV",
+            "productID": "제품ID",
+            "productImg": "/lg5-common/images/KRP0008/@sample-img.jpg",
+            "productAlt": "LG 올레드 갤러리 TV"
+        };
+    </script>
+
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+
+            <div class="component-wrap full">
+                <!-- component KRP0008 -->
+                <section class="component KRP0008" aria-label="{category명} product detail" data-consumables="true">
+
+                    <div class="pdp-wrap">
+                        <!-- component -->
+                       @@include('./common/partials/KRP0008-image.html')
+                        <!-- // component -->
+
+                        <!-- component -->
+                       @@include('./CS/KRP0008-info-CS.html')
+                        <!-- // component -->
+                    </div>
+
+                    <!-- 대체모델 정보 -->
+                    <div class="model-infomation alternative-model">
+                        <h3 class="title">본 상품은 배송시점 재고상태에 따라 아래 대체 가능한 모델로 배송될 수 있습니다.</h3>
+                        <p class="text">본 상품과 대체가능한 상품의 판매금액은 동일 합니다.</p>
+                        <div class="model-infomation-wrap">
+                            <ul class="model-infomation-list">
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                                <li>LA-P181DW.BKOR</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // 대체모델 정보 -->
+
+                    <!-- 해당 소모품 사용 가능한 일반제품 정보 -->
+                    <div class="model-infomation shared-model">
+                        <div class="tit-wrap">
+                            <div>
+                                <h3 class="title">소모품을 사용할 수 있는 제품 모델명 입니다.</h3>
+                                <p class="text">구매 전 적용가능 제품 모델명을 확인하세요.</p>
+                            </div>
+                            <div class="input-wrap search">
+                                <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="모델명을 입력해주세요." title="모델명을 입력해주세요." data-clear-button="button.btn-delete" value="">
+                                <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                            </div>
+                        </div>
+                        <div class="model-infomation-wrap">
+                            <ul class="model-infomation-list">
+                                <li>LA-P181DW.BKOR</li>
+                                <li>AS211PAW</li>
+                                <li>AS211PRWT</li>
+                                <li>LA-P180DR</li>
+                                <li>LA-P180DW</li>
+                                <li>LA-P181DR</li>
+                                <li>LA-P181DRR</li>
+                                <li>LA-P181DW</li>
+                                <li>LA-P181DWR</li>
+                                <li>LA-P182DG</li>
+                            </ul>
+                            <div class="no-data">입력하신 모델과 일치하는 적용 모델을 찾지 못했습니다.</div>
+                        </div>
+                    </div>
+                    <!-- // 해당 소모품 사용 가능한 일반제품 정보 -->
+
+
+                    <!-- toast-meassage -->
+                    @@include('./common/modules/toast-message.html', {
+                        "messageArr": [
+                            {"message" : "이미 추가된 제품입니다."},
+                            {"message" : "비교함에 등록되었습니다."},
+                            {"message" : "케어솔루션/케어십 장바구니에 추가되었습니다."}
+                        ]
+                    })
+
+                </section>
+                <!-- //component KRP0008 -->
+
+                <!-- 구매혜택 자세히보기 -->
+                <article id="benefitInfoPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>구매혜택</span></h1>
+                    </header>
+                    <section class="pop-conts">
+                        <div class="layer-benefit">
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info total">
+                                        <dt class="text">판매가</dt>
+                                        <dd class="content">
+                                            <strong class="price">1,990,000원</strong>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="additional">
+                                <h2 class="title"><span>추가할인</span></h2>
+                                <div class="membership">
+                                    <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                        <ul>
+                                            <li class="lists cash-back">
+                                                <div class="head" role="heading">
+                                                    <span class="text">캐시백</span>
+                                                    <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false"><span class="blind">내용 더보기</span></a>
+                                                    <span class="content"><span class="price">-136,900원</span></span>
+                                                </div>
+                                                <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
+                                                    <div class="info-box">
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">행사기간 : 11월 3일~11월 30일 결제 완료</li>
+                                                            <li class="b-txt">대상 카드 : 신한카드, 우리카드 (캐시백)<br>*씨티카드(캐시백 또는 청구할인)</li>
+                                                            <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.<br>*단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- 로그인 전 -->
+                                    <dl class="price-info point">
+                                        <dt class="text">멤버십 포인트</dt>
+                                        <dd class="content">
+                                            <div class="point-confirm">
+                                                <div class="btn-box">
+                                                    <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
+                                                    <span class="won">원</span>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- 로그인 후 -->
+                                    <dl class="price-info point member">
+                                        <dt class="text">멤버십 포인트</dt>
+                                        <dd class="content">
+                                            <div class="point-confirm">
+                                                <div class="btn-box">
+                                                    <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
+                                                    <span class="won">원</span>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                        <ul>
+                                            <li class="lists">
+                                                <div class="head" role="heading">
+                                                    <span class="text">카드 혜택</span>
+                                                    <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_c1rrlg2pl0" aria-controls="accord_content_c1rrlg2pl0" aria-expanded="false"><span class="blind">내용 더보기</span></a>
+                                                </div>
+                                                <div class="ui_accord_content" id="accord_content_c1rrlg2pl0" role="region" aria-labelledby="accord_toggle_c1rrlg2pl0" style="display: none;">
+                                                    <div class="info-box">
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">국민카드 : 무이자 6개월 / 7% 청구할인</li>
+                                                            <li class="b-txt">신한카드 : 7% 청구할인</li>
+                                                            <li class="b-txt">현대카드 : 무이자 6개월</li>
+                                                            <li class="b-txt">삼성카드 : 5% 청구할인</li>
+                                                            <li class="b-txt">하나카드 : 무이자3개월 / 5% 청구할인</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <dl class="price-info">
+                                    <dt class="text">최대 할인 금액</dt>
+                                    <dd class="content">
+                                        <small class="discount-rate">38%</small>
+                                        <span class="price">656,900원</span>
+                                    </dd>
+                                </dl>
+                                <dl class="price-info total-payment">
+                                    <dt class="text">최대 혜택 적용 시</dt>
+                                    <dd class="content">
+                                        <span class="price">1,233,000원</span>
+                                    </dd>
+                                </dl>
+                                <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.<br>
+                                    또한, 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.</p>
+                            </div>
+                            <div class="total-point">
+                                <dl class="price-info">
+                                    <dt class="text">멤버십포인트적립</dt>
+                                    <dd class="content">
+                                        <span class="price">64,000P</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#"><span>더 많은 혜택 보기</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 알림신청 - 비회원/로그인 전 -->
+                <article id="pushApplyLoginPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>재입고 알림 신청 – 로그인 안내</span></h1>
+                    </header>
+                    <section class="pop-conts">
+                        <div class="push-apply-content">
+                            <p>재 입고 알림은 회원분들께 제공되는 서비스 입니다. 알림을 신청을 위해 로그인이 필요합니다.</p>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center">
+                        <div class="btn-group">
+                            <button type="button" class="btn" data-link-url="#로그인주소"><span>로그인 하기</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 알림신청 - 에러 -->
+                <article id="pushApplyErrorPopup" class="popup-wrap small">
+                    <section class="pop-conts">
+                        <div class="push-apply-content">
+                            <p class="push-apply-title"><strong>재입고 알림 신청이 처리되지 않았습니다.
+                                해당 요청 사항 처리 중 일시적 점검 등의
+                                이유로 페이지가 정상적으로 서비스되지 
+                                않았습니다. 
+                                잠시 후 다시 시도해 주시기 바랍니다.
+                                감사합니다.
+                                </strong></p>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url=""><span>확인</span></button>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- 알림신청 입력 -->
+                <article id="pushApplyPopup" class="popup-wrap small" data-push-apply-url="/lg5-common/data-ajax/pdp/pdp_alarm.json">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>재입고 알림 신청</span></h1>
+                    </header>
+                    <section class="pop-conts">
+                        <div class="push-apply-content">
+                            <p>해당 제품이 판매가능 상태로 변경되면 고객님의 카카오 알림톡 또는 등록된 휴대폰 번호의 SMS로 알려 드립니다. 알림을 받으신 후 구매시점에 따라 품절이 발생할 수 있습니다.</p>
+                            <ul class="push-apply-info">
+                                <li>
+                                    <dl>
+                                        <dt class="text">알림신청상품</dt>
+                                        <dd class="content">필터(초미세먼지)</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt class="text">구매희망수량</dt>
+                                        <dd class="content">
+                                            <div class="quantity-wrap">
+                                                <div class="select-quantity">
+                                                    <div class="inner">
+                                                        <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
+                                                        <input type="number" class="quantity" title="수량 입력" value="1" readonly>
+                                                        <button type="button" class="plus"><span class="blind">더하기</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p>※ 9개 까지 구매할 수 있습니다.</p>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </ul>
+
+                            <ul class="push-apply-info">
+                                <li>
+                                    <dl>
+                                        <dt class="text">신청자 이름</dt>
+                                        <dd class="content">홍*동</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt class="text">휴대전화번호</dt>
+                                        <dd class="content">010-****-1234</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn"><span>신청</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 알림신청 완료 -->
+                <article id="pushApplyCompletePopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>재입고 알림 신청</span></h1>
+                    </header>
+                    <section class="pop-conts">
+                        <div class="push-apply-content">
+                            <p class="push-apply-title"><strong>재입고 알림 신청이 완료되었습니다.</strong></p>
+                            <ul class="push-apply-info">
+                                <li>
+                                    <dl>
+                                        <dt class="text">알림신청번호</dt>
+                                        <dd class="content number"></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt class="text">알림신청상품</dt>
+                                        <dd class="content product"></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt class="text">구매희망수량</dt>
+                                        <dd class="content quantity"></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            지금 신청하신 수량은 재고확보를 위한 참고 수량이니 입고완료 문자를 받으시고 바로 주문하지 않으실 경우 품절될 수 있습니다.
+                        </div>
+                    </section>
+                    <footer class="pop-footer center">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-role="ok"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- pdp-data -->
+                <div id="pdp-data">
+                    <div>
+                        <input type="hidden" name="type" value="360"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value="https://www.youtube.com/embed/6BnPTCtzHlo"/>
+                        <input type="hidden" name="videoUrl" value="https://www.youtube.com/embed/LDocqNKcW0c"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="animation"/>
+                        <input type="hidden" name="imagePdp" value=""/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value="mp4"/>
+                        <input type="hidden" name="adUrl" value="/lg5-common/videos/Highlight_backround.mp4"/>
+                        <input type="hidden" name="videoUrl" value="/lg5-common/videos/signature_rain_view.mp4"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="video"/>
+                        <input type="hidden" name="imagePdp" value=""/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value="https://www.youtube.com/embed/6BnPTCtzHlo"/>
+                        <input type="hidden" name="videoUrl" value="https://www.youtube.com/embed/LDocqNKcW0c"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                </div>
+
+            </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0015.html')
+            <!-- // component -->
+        </div>
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

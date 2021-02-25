@@ -1,0 +1,12 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "isLogin": true,
+        "loginToken": {
+            "name": "LG전자"
+        }
+    }
+}

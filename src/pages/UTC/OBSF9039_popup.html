@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC", "UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup0" data-control="modal" class="btn"><span>비회원 주문조회 팝업</span></button><br><br>
+        <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>비회원 주문조회 실패 팝업</span></button><br><br>
+        <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>취소신청 팝업</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>반품신청 팝업</span></button><br><br>
+    </div>
+
+    <!-- 비회원 주문조회 -->
+    @@include('./common/popup/OBSF9038_pop1.html', {
+        popupID: 'popup0'
+    })
+    <!-- // 비회원 주문조회 -->
+
+    <!-- 비회원 주문조회 실패 -->
+    @@include('./common/popup/OBSF9038_pop2.html', {
+        popupID: 'popup3'
+    })
+    <!-- // 비회원 주문조회 실패 -->
+
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup1',
+        nonMembers : true
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup2',
+        nonMembers : true
+    })
+    <!-- // 반품신청 -->
+</body>
+</html>

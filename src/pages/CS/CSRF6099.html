@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html')
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>현재 위치 정보 팝업 열기</span></button><br><br>
+    </div>
+
+    <article id="popup1" class="popup-wrap small">
+        <section class="pop-conts common-pop">
+            <div class="text-area">
+                <h1 class="tit">현재 위치 정보</h1>
+                <div class="text">
+                    현재 위치를 찾을 수 없습니다.
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_delet_24</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="[MO]모바일-스위치1_v0.92_1019" transform="translate(-336.000000, -3311.000000)">
+            <g id="@CONTENTS" transform="translate(0.000000, 97.000000)">
+                <g id="05" transform="translate(0.000000, 3162.000000)">
+                    <g id="Group-3" transform="translate(40.000000, 48.000000)">
+                        <g id="Group-2" transform="translate(237.000000, 0.000000)">
+                            <g id="btn_delet_24" transform="translate(55.000000, 0.000000)">
+                                <rect id="Rectangle" x="0" y="0" width="56" height="56"></rect>
+                                <g id="ic" stroke-width="1" fill-rule="evenodd" transform="translate(4.666667, 4.666667)" fill="#616161">
+                                    <path d="M23.3333333,2.25129856e-13 C10.43,2.25129856e-13 1.57067342e-14,10.43 1.57067342e-14,23.3333333 C1.57067342e-14,36.2366667 10.43,46.6666667 23.3333333,46.6666667 C36.2366667,46.6666667 46.6666667,36.2366667 46.6666667,23.3333333 C46.6666667,10.43 36.2366667,2.25129856e-13 23.3333333,2.25129856e-13 Z" id="Path" fill-rule="nonzero"></path>
+                                </g>
+                                <path d="M29.568,33.5705263 L30.2282105,17.0652632 L30.3932632,12.1962105 L25.6067368,12.1962105 L25.7305263,17.0652632 L26.3907368,33.5705263 L29.568,33.5705263 Z M27.9587368,43.8037895 C29.7743158,43.8037895 31.1772632,42.4421053 31.1772632,40.5027368 C31.1772632,38.5633684 29.7743158,37.1191579 27.9587368,37.1191579 C26.1844211,37.1191579 24.8227368,38.5633684 24.8227368,40.5027368 C24.8227368,42.4421053 26.1844211,43.8037895 27.9587368,43.8037895 Z" id="!" fill="#FFFFFF" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

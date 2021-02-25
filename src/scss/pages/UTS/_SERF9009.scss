@@ -1,0 +1,65 @@
+.search-not-result {
+    clear: both;
+    .no-data {
+        padding: 34px 0 12px;
+        p {
+            padding-top: 0;
+            font-weight: 500;
+            @include font-small;
+            &:before {
+                display: none;
+            }
+            span {
+                display: block;
+                margin-bottom: 16px;
+                font-size: $font-large-2;
+                line-height: 26px;
+                color: $color-default;
+                em {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        @include mobile {
+            padding: 0 16px 56px;
+            p {
+                padding-top: 45px;
+                font-size: 14px;
+                line-height: 22px;
+                /*&:before {
+                    width: 34px;
+                    height: 34px;
+                    margin-left: -17px;
+                    background-size: 34px;
+                }*/
+                span {
+                    margin-bottom: 14px;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}
+.search-result-wrap {
+    &.suggested-list-wrap {
+        .product-items {
+            .item {
+                .product-contents {
+                    height: 170px;
+                }
+                .product-info {
+                    & + .badge-benefit {
+                        margin-top: 56px;
+                    }
+                }
+                @include mobile {
+                    .product-contents {
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}

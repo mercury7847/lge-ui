@@ -1,0 +1,171 @@
+
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.air-care {
+    .gray-box {
+        background-color: #f4f4f4;
+        padding: 48px;
+        color:#000;
+        border-radius:8px;
+        font-size: 16px;
+        margin-bottom:16px;
+        .bullet-list {
+            margin-top: 0;
+            .b-txt{
+                font-weight:normal;
+            }
+            &.top-border{
+                .b-txt{
+                    position:relative;
+                    justify-content:space-between;
+                    .strong{
+                        color:#000;
+                    }
+                    .btn-link{
+                        float:right;
+                        color:#767676;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            padding: 44px 20px;
+        }
+
+    }
+    .white-box {
+        background-color: #fff;
+        padding: 24px;
+        border-radius:8px;
+        margin-bottom:24px;
+        .bullet-list {
+            font-size: 16px;
+            color: #000;
+            font-weight: normal;
+        }
+        .btn-wrap {
+            margin-top:24px;
+            text-align:center;
+        }
+    }
+    .text-box {
+        line-height: 1.5;
+        margin-bottom: 42px;
+    }
+    .btn-group {
+        text-align: center;
+        margin-top: 24px;
+    }
+    .sub-infomation {
+        margin-bottom: 15px;
+        text-align: right;
+        font-size: 16px;
+        font-weight: 500;
+        word-break: keep-all;
+    }
+    .top-section {
+        margin-bottom: 48px;
+        @include mobile {
+            margin-bottom: 34px;
+        }
+    }
+    .form-infos {
+        margin-top:0;
+        .text {
+            margin-bottom: 8px;
+        }
+        @include mobile {
+            text-align: left;
+            .text {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+            .req {
+                text-align: left;
+            }
+        }
+    }
+    .tb_row {
+        overflow-x:auto;
+    }
+
+    .model-name{
+        text-transform: uppercase;
+    }
+
+    .modal-gray-box {
+        padding: 32px 32px 32px 31px;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+        .text-box {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.71;
+            color: #767676;
+        }
+        &-title {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+            color: #000;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+    .paragraph-1 {
+        margin-top: 16px;
+    }
+    .search-info.type-A{
+        margin-top:40px;
+    }
+
+    @include mobile {
+        .search-info.type-A{
+            margin-top:20px;
+        }
+    }
+}
+
+.popup-wrap {
+    .pop-conts{
+        &.air-care{
+            .section-title{
+                .tit{
+                    font-size:14px;
+                }
+            }
+            .gray-box{
+                font-size:14px;
+                line-height:24px;
+                padding:32px;
+            }
+            .text-box{
+                margin-bottom:12px;
+                font-size:14px;
+                color:#767676;
+            }
+            .tbl-list{
+                th,td{
+                    text-align:left;
+                }
+                thead th{
+                    font-weight:normal;
+                    @include mobile{
+                        min-width:120px;
+                    }
+                }
+                .line{
+                    width:560px;
+                }
+            }
+            .bullet-list{
+                margin-bottom:15px;
+            }
+        }
+    }
+}

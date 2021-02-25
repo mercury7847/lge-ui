@@ -1,0 +1,361 @@
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// 엔지니어 사진 등록
+.profile-upload {
+    .cont-wrap {
+        max-width:678px;
+        min-height:100vh;
+        margin:0 auto;
+        padding-top:40px;
+        padding-bottom:39px;
+    }
+    .tit-wrap {
+        margin-bottom:48px;
+        .tit {
+            padding-bottom:24px;
+            @include font-large-3;
+            font-weight:700;
+            border-bottom:2px solid #222;
+        }
+    }
+    .bullet-list {
+        color:#747474;
+    }
+    .btn-download {
+        display: inline-block;
+        margin-top:4px;
+        @include font-small;
+        &:after {
+            content:'';
+            display: inline-block;
+            width:21px;
+            height:15px;
+            margin-left:4px;
+            background:url(/lg5-common/images/icons/icon-download2.svg) no-repeat center;
+        }
+    }
+
+    @include mobile {
+        .cont-wrap {
+            max-width:none;
+            padding:40px 16px 0;
+        }
+    }
+}
+
+// 엔지니어 정보 확인
+.engineer-info {
+    .engineer-info-box {
+        overflow:hidden;
+        padding:12px 12px 24px;
+        text-align:center;
+        border-radius:8px;
+        box-shadow:0px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        .image {
+            position:relative;
+            width:150px;
+            height:150px;
+            margin:0 auto 16px;
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:url(/lg5-common/images/CS/default-engineer.jpg) no-repeat;
+                background-size:100%;
+            }
+            img {
+                position:relative;
+                width:100%;
+            }
+        }
+        .name {
+            @include font-medium;
+            font-weight:$font-weight-bold;
+        }
+        .center {
+            margin-top:4px;
+            @include font-small;
+        }
+    }
+}
+
+// App Gate
+.appgate {
+    .cont-wrap {
+        .section {       
+            .form-wrap .forms .conts {
+                .keyword-search {
+                    margin-top:6px;
+                }
+                .err-msg {
+                    margin-top:4px;
+                }
+            }
+        }
+        @include pc {
+            .section {
+                .tit-wrap {
+                    margin-bottom:12px;
+                }
+                .form-wrap .forms .conts {
+                    width:100%;
+                    .keyword-search {
+                        margin-top:8px;
+                    }
+                }
+            }
+        }
+    }
+    &-title {
+        margin-bottom:12px;
+        .tit {
+            @include font-large-2;
+            font-weight:$font-weight-bold;
+        }
+    }
+    &-box {
+        padding:20px 0 32px;
+        border-radius:8px;
+        box-shadow:0.1px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        .product {
+            padding-right:20px;
+            font-size:0;
+            &-img {
+                display:inline-block;
+                width:120px;
+                height:120px;
+                text-align:center;
+                vertical-align:middle;
+                img {
+                    max-width:100%;
+                    max-height: 100%;
+                }
+            }
+            &-info {
+                display:inline-block;
+                width:calc(100% - 120px);
+                vertical-align:middle;
+                .img {
+                    margin-bottom:16px;
+                    img {
+                        max-width:100%;    
+                    }
+                }
+                .category {
+                    margin-bottom:4px;
+                    font-size:12px;
+                    line-height:20px;
+                }
+                .name {
+                    @include font-large-1;
+                    em {
+                        color:#ec455a;
+                        font-weight:$font-weight-bold;
+                    }
+                }
+            }
+        }
+        .appgate-img {
+            width:263.5px;
+            margin:0 auto;
+            img {
+                width:100%;
+            }
+        }
+        .btn-wrap {
+            margin-top:20px;
+            padding:0 20px;
+            .btn {
+                width:100%;
+            }
+        }
+    }
+
+    
+
+    .service-list-box {
+        display:flex;
+        overflow-x: auto;
+        margin-top:16px;
+        margin-right:-16px;
+        ul {
+            display:flex;
+            padding-right: 16px;
+            li {
+                width:77px;
+                height:77px;
+                border:1px solid #ddd;
+                border-radius: 4px;
+                a {
+                    display:block;
+                    height:100%;
+                    padding:0 10px;
+                    font-size:0;
+                    line-height:77px;
+                    text-align:center;
+                    span {
+                        display:inline-block;
+                        @include font-small;
+                        vertical-align:middle;
+                        word-break:break-all;
+                    }
+                }
+                & + li {
+                    margin-left:4px;
+                }
+            }
+        }
+    }
+
+    .cs-service-menu {
+        text-align: center;
+        color: #000;
+        .service-list {
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            .icon {
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+        @include pc {
+            .banner-tit {
+                margin-bottom: 32px;
+            }
+        }
+        @include mobile {
+            padding: 20px  0;
+            .banner-tit {
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 1.38;
+                margin-bottom: 32px;
+                &.type-narrow {
+                    width: 196px;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+            }
+            .service-list {
+                li {
+                    width: 50%;
+                    margin-bottom: 40px;
+                    &:nth-child(n+3) {
+                        margin-bottom: 0;
+                    }
+                }
+                .icon {
+                    width: 80px;
+                    height: 80px;
+                    margin: 0 auto 16px;
+                }
+                .tit {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    &-banner {
+        margin-top:60px;
+        border-top:12px solid #f4f4f4;
+        @include pc {
+            margin-top:80px;
+            border-top:0;
+        }
+        img {
+            width:100%;
+        }
+    }
+}
+
+// 접수 제품 및 설치 환경 사진 등록
+.issue-register {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+            .btn-group {
+                padding:0;
+                .btn {
+                    border-radius:0;
+                }
+            }
+        }
+    }
+}
+.logo span {
+    display:block;
+    width:90px;
+    height:24px;
+    background-image:url(/lg5-common/images/header/logo.svg);
+    background-size:100% 100%;
+    @include mobile {
+        span {
+            width:84px;
+            height:22px;
+        }
+    }
+}
+.example-desc {
+    margin-bottom:6px;
+    @include font-small;
+    font-weight:$font-weight-bold;
+}
+.example-box {
+    @include clearfix;
+    .item {
+        float:left;
+        width:calc((100% - 16px) / 3);
+        & + .item {
+            margin-left:8px;
+        }
+        .img {
+            overflow:hidden;
+            border-radius:8px;
+            img {
+                width:100%;
+            }
+        }
+        .tit {
+            margin-top:6px;
+            @include font-small;
+            font-weight:$font-weight-medium;
+            text-align:center;
+        }
+    }
+}
+.upload-box {
+    @include clearfix;
+    .item {
+        width:calc(50% - 4px);
+        float:left;
+        & + .item {
+            margin-left:8px;
+        }
+    }
+    .upload-tit {
+        margin-bottom:8px;
+        @include font-small;
+        font-weight:$font-weight-bold;
+    }
+}
+
+.survey {
+    .cont-wrap {
+        @include mobile {
+            padding-bottom:0;
+        }
+    }
+    .survey-banner {
+        text-align:center;
+        img {
+            max-width: 100%;
+        }
+    }
+}

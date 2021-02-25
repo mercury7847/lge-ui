@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["CPR/CPR"],
+        pageJS: ["store/compareResult"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "선택한 제품 비교하기",
+                "pageLink": {
+                    "arrowPos": "arrow-left",
+                    "text": "돌아가기"
+                }
+            })
+
+            <!-- 비교하기 결과 -->
+            <div class="contents compare">
+                <div class="compare-result ui_sticky" data-used-anchor="true" data-anchor-class=".tabs-scroll-wrap .tabs a" data-act-class="on"><!-- 20210105 돔 위치 변경, .ui_sticky 추가 -->
+                    <div class="inner">
+                        <div class="list-wrap">
+                            <ul class="product-items">
+                                @@loop('./common/modules/product-list-item-loop.html', [
+                                    {
+                                        "itemClass": "compare-item",
+                                        "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                        "doubleButton": {
+                                            "price": true,
+                                            "originalPrice": true,
+                                            "button": ["구매 장바구니","렌탈 장바구니"]
+                                        }
+                                    },{
+                                        "itemClass": "compare-item",
+                                        "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                        "spec3": true,
+                                        "doubleButton": {
+                                            "price": true,
+                                            "button": ["구매 장바구니"]
+                                        }
+                                    },{
+                                        "itemClass": "compare-item",
+                                        "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                        "spec3": true,
+                                        "doubleButton": {
+                                            "price": true,
+                                            "originalPrice": true,
+                                            "button": ["렌탈 장바구니"]
+                                        }
+                                    }
+                                ])
+                            </ul>
+                        </div>
+                        <div class="result-tabs">
+                            <!-- 20210105 .ui_smooth_scrolltab / .ui_smooth_tab 추가 -->
+                            <div class="tabs-scroll-wrap ui_smooth_scrolltab" data-used-tab-link="false">
+                                <div class="ui_smooth_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#spec">주요스펙<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#capacity">용량</a></li>
+                                        <li><a href="#size">크기</a></li>
+                                        <li><a href="#design">디자인</a></li>
+                                        <li><a href="#skill">상세기능</a></li>
+                                    </ul>
+                                </div>
+                                <div class="scroll-controls ui_smooth_controls">
+                                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                                </div>
+                            </div>
+                            <div class="check-different">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="differentCompare" name="differentCompare"><!-- 20210105 id/name 수정 -->
+                                    <!-- 210208 수정 -->
+                                    <label for="differentCompare">차이점</label><!-- 20210105 for 수정 -->
+                                    <!-- //210208 수정 -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="compare-result-contents"><!-- 20210105 .compare-result-contents 수정 -->
+                    <div id="spec" class="section">
+                        <!-- 210208 수정 -->
+                        <div class="title-wrap">
+                            <h2 class="title"><span>주요 스펙</span></h2>
+                        </div>
+                        <!-- //210208 수정 -->
+                        <div class="lists main">
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>821L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>296L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>525L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>노크온 매직스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>패턴(색상)</dt>
+                                        <dd>맨해튼 미드나잇</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>821L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>200L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>407L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>노크온 매직스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>패턴(색상)</dt>
+                                        <dd>샤이니 퓨어</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>821L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>335L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>505L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>노크온 매직스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>패턴(색상)</dt>
+                                        <dd>샤이니 유니버스</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="capacity" class="section">
+                        <!-- 210208 수정 -->
+                        <div class="title-wrap">
+                            <h2 class="title"><span>용량</span></h2>
+                        </div>
+                        <!-- //210208 수정 -->
+                        <div class="lists">
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>821L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>296L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>525L</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>607L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>200L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>407L</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체용량</dt>
+                                        <dd>840L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉동</dt>
+                                        <dd>335L</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>냉장</dt>
+                                        <dd>505L</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="size" class="section">
+                        <!-- 210208 수정 -->
+                        <div class="title-wrap">
+                            <h2 class="title"><span>크기</span></h2>
+                        </div>
+                        <!-- //210208 수정 -->
+                        <div class="lists">
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체크기(WxHxD)</dt>
+                                        <dd>912 X 1,790 X 927mm</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>무게</dt>
+                                        <dd>134kg</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체크기(WxHxD)</dt>
+                                        <dd>912 X 1,790 X 927mm</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>무게</dt>
+                                        <dd>134kg</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>전체크기(WxHxD)</dt>
+                                        <dd>912 X 1,790 X 927mm</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>무게</dt>
+                                        <dd>134kg</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="design" class="section">
+                        <!-- 210208 수정 -->
+                        <div class="title-wrap">
+                            <h2 class="title"><span>디자인</span></h2>
+                        </div>
+                        <!-- //210208 수정 -->
+                        <div class="lists">
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>노크온 매직스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>핸들</dt>
+                                        <dd>이지핸들</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>디스플레이</dt>
+                                        <dd>Big 매직 디스플레이</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>매직 스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>핸들</dt>
+                                        <dd>이지핸들</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>디스플레이</dt>
+                                        <dd>Big 매직 디스플레이</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>형태</dt>
+                                        <dd>노크온 매직스페이스</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>핸들</dt>
+                                        <dd>플랫핸들</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>디스플레이</dt>
+                                        <dd>서클 디스플레이(LCD)</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="skill" class="section">
+                        <!-- 210208 수정 -->
+                        <div class="title-wrap">
+                            <h2 class="title"><span>상세기능</span></h2>
+                        </div>
+                        <!-- //210208 수정 -->
+                        <div class="lists">
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>대용량 바스켓</dt>
+                                        <dd>O</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>대용량 바스켓</dt>
+                                        <dd>X</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <dl>
+                                        <dt>대용량 바스켓</dt>
+                                        <dd>X</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 비교하기 결과 -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

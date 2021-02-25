@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="213" height="100" viewBox="0 0 213 100">
+    <defs>
+        <path id="qhwiioe5za" d="M0.837 0.923L19.417 0.923 19.417 25.3 0.837 25.3z"/>
+        <path id="nzgdqukydc" d="M0 0.927L19.123 0.927 19.123 24.824 0 24.824z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H213V100H0z" transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52)"/>
+                                <g>
+                                    <path fill="#1D1D1B" d="M152.053 26.1L153.072 27.893 153.072 49.997 157.328 49.997 157.328 26.1z" transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24)"/>
+                                    <g>
+                                        <path fill="#1D1D1B" d="M95.76 49.024V25.127h-4.375c.18.287.995 1.763.995 2.029v14.779L80.515 25.127h-5.238l1.428 2.106v21.791h3.378v-16.84l11.887 16.84h3.79z" transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24) translate(0 .973)"/>
+                                        <g transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24) translate(0 .973) translate(49.5 24.2)">
+                                            <mask id="454tsff1jb" fill="#fff">
+                                                <use xlink:href="#qhwiioe5za"/>
+                                            </mask>
+                                            <path fill="#1D1D1B" d="M19.417 21.108V.923h-5.3l1.05 1.797v18.125c-1.275.722-2.233 1.12-3.706 1.12-2.993 0-5.345-2.602-5.345-5.67V.924H.837L1.842 2.72v14.84c0 4.465 3.504 7.74 7.727 7.74 3.162 0 5.022-1.071 7.655-2.677.75-.46 1.498-.94 2.193-1.515" mask="url(#454tsff1jb)"/>
+                                        </g>
+                                        <path fill="#1D1D1B" d="M45.602 25.125L40.053 25.125 40.681 26.922 35.697 35.578 29.73 25.125 24.65 25.125 33.042 39.5 33.042 49.023 37.309 49.023 37.309 39.368z" transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24) translate(0 .973)"/>
+                                        <g transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24) translate(0 .973) translate(0 24.2)">
+                                            <mask id="02u93fbaed" fill="#fff">
+                                                <use xlink:href="#nzgdqukydc"/>
+                                            </mask>
+                                            <path fill="#1D1D1B" d="M19.123 24.824L19.123 0.927 13.855 0.927 14.859 2.72 14.859 10.767 5.27 10.767 5.27 0.927 0 0.927 1.005 2.72 1.005 24.824 5.27 24.824 5.27 14.091 14.859 14.091 14.859 24.824z" mask="url(#02u93fbaed)"/>
+                                        </g>
+                                        <path fill="#1D1D1B" d="M115.204 45.018c-1.077.68-2.277.756-3.507.756h-4.29V28.38h2.396c4.99 0 8.944 4.095 8.944 9.294 0 2.78-1.172 5.823-3.543 7.344m-3.254-19.894h-9.81l.999 1.798v22.102h6.892c2.007 0 3.971-.504 5.706-1.557.63-.342 1.253-.742 1.898-1.125 3.373-2.11 5.46-5.724 5.46-9.86 0-6.4-5.05-11.358-11.145-11.358M132.66 39.243l3.441-8.068 3.44 8.068h-6.881zm5.498-14.118h-4.614l.762 1.797-9.414 22.101h5.023l-.663-1.803 2.023-4.778h9.588l2.805 6.581h4.643l-10.153-23.898zM62.371.127L61.791 1.646 64.782 1.646 64.782 11.34 66.797 11.34 66.797 1.646 69.217 1.646 69.786.127zM78.893.127L79.371.955 79.371 4.737 74.863 4.737 74.863.127 72.407.127 72.859.955 72.859 11.34 74.863 11.34 74.863 6.293 79.371 6.293 79.371 11.34 81.367 11.34 81.367.127zM84.297.127L84.762.955 84.762 11.34 90.933 11.34 91.502 9.805 86.782 9.805 86.782 6.293 90.933 6.293 91.502 4.768 86.782 4.768 86.782 1.64 90.933 1.64 91.502.127z" transform="translate(-678 -2128) translate(270 879) translate(0 1097) translate(0 100) translate(351) translate(57 52) translate(28 24) translate(0 .973)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

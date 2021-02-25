@@ -1,0 +1,35 @@
+
+            <li class="items" data-id="aw000001" data-award-list="MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW,MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW">
+                <div class="inner">
+                    <div class="thumb">
+                        <img src="@@img" alt="">
+                        <p class="hidden pc">graphic description : </p>
+                        <p class="hidden mobile">graphic description : </p>
+                    </div>
+                    <div class="award-info">
+                        @@if (context.flags) {
+                        <div class="flag-wrap bar-type">
+                            @@for ( var i=0; i < flags.length; i++ ) {
+                            <span class="flag">`+flags[i]+`</span>
+                            }
+                        </div>
+                        }
+                        <p class="tit">@@tit</p>
+                        <div class="desc-wrap">
+                            <span class="desc">
+                                @@desc
+                            </span>
+                        </div>
+                    </div>    
+                    <div class="btn-area">
+                        <div class="btn-wrap">
+                            <a href="#n" class="btn-text">@@btn1</a>
+                            @@if (context.btnMore) {
+                            <button type="button" class="btn-more"><span class="hidden">수상내역 더보기</span></button>
+                            }
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </li>

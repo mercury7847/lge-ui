@@ -1,0 +1,627 @@
+/*  footer */
+footer {
+    padding:0 40px 48px;
+    background:#f4f4f4;
+    @media screen and (max-width:1200px) {
+        padding-bottom:66px;
+    }
+    @include mobile {
+        padding:0;
+        padding-bottom:60px;
+    }
+    // 고객센터 번호
+    .call-to {
+        max-width:1284px;
+        margin:0 auto;
+        padding:24px 0;
+        border-bottom:2px solid #222;
+        text-align:center;
+        color:#000;
+        dt {
+            @include font-x-small;
+            font-weight:500;
+        }
+        dd {
+            @include font-large-1;
+            font-weight:700;
+        }
+    }
+    // footer cont
+    .foot-cont {
+        .cont-area {
+            max-width:1284px;
+            margin:0 auto;
+        }
+
+        // link-wrap - Mobile
+        @media screen and (max-width:767px) {
+            .link-wrap {
+                .link-section {
+                    border-bottom:1px solid #ddd;
+                    .dep1 {
+                        position:relative;
+                        padding:0 52px 0 16px;
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            right:16px;
+                            top:50%;
+                            width:20px;
+                            height:20px;
+                            margin-top:-10px;
+                            background:url('/lg5-common/images/icons/icon-arr-40-bk.svg') center no-repeat;
+                            background-size:100%;
+                            transition:all .3s;
+                        }
+                        a, span {
+                            display:block;
+                            padding:18px 0;
+                            color:#000;
+                            font-size:15px;
+                            line-height:16px;
+                            font-weight:700;
+                        }
+                        a[target="_blank"] {
+                            white-space:nowrap;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:16px;
+                                height:16px;
+                                margin-left:4px;
+                                background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                background-size:100%;
+                                vertical-align:top;
+                            }
+                        }
+                        &.hidden {
+                            display:none !important;
+                        }
+                        &.dep1-only {
+                            &::after {
+                                display:none;
+                            }
+                        }
+                    }
+                    &.on {
+                        .dep1::after {
+                            transform:rotate(180deg);
+                        }
+                        .dep1 
+                            a {
+                                text-decoration:underline;
+                            }
+                    }
+                    &:first-child {
+                        .dep1 {
+                            border-top:none;
+                        }
+                    }
+
+                    .dep2-wrap {
+                        padding:0 16px;
+                        border-top:1px solid #ddd;
+                        .dep2-list {
+                            border-top:1px solid #ddd;
+                            &:first-child {
+                                border-top:none;
+                            }
+                            .dep2 {
+                                display:block;
+                                position:relative;
+                                padding-right:20px;
+                                &::after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:50%;
+                                    right:2px;
+                                    width:16px;
+                                    height:16px;
+                                    margin-top:-8px;
+                                    background:url('/lg5-common/images/icons/icon-plus-16.svg') center no-repeat;
+                                    background-size:100%;
+                                    transition:all 0.3s;
+                                }
+                                &:only-child {
+                                    &::after {
+                                        display:none;
+                                    }
+                                }
+                                a, span {
+                                    display:block;
+                                    padding:12px 0;
+                                    color:#000;
+                                    font-size:12px;
+                                    line-height:16px;
+                                    font-weight:500;
+                                }
+                                a {
+                                    &[target="_blank"] {
+                                        white-space:nowrap;
+                                        &::after {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:16px;
+                                            height:16px;
+                                            margin-left:4px;
+                                            background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
+                                            background-size:100%;
+                                            vertical-align:top;
+                                        }
+                                    }
+                                }
+                            }
+                            &.on {
+                                .dep2 {
+                                    &::after {
+                                        transform:rotate(135deg);
+                                    }
+                                    a {
+                                        text-decoration:underline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .hidden + .dep2-wrap {
+                        margin-top:-16px;
+                        border-top:none;
+                    }
+
+                    .dep3-wrap {
+                        padding:14px 0 24px;
+                        border-top:1px solid #ddd;
+                        > li {
+                            margin-top:12px;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                        }
+                        .dep3 {
+                            display:block;
+                            padding:0 12px;
+                            color:#767676;
+                            font-size:12px;
+                            line-height:16px;
+                            font-weight:500;
+                            &[target="_blank"] {
+                                white-space:nowrap;
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:16px;
+                                    height:16px;
+                                    margin-left:4px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // link-wrap - PC
+        @media screen and (min-width:768px) {
+            .pc-dropdown-wrap {
+                position:relative;
+                padding-bottom:80px;
+                .btns {
+                    position:absolute;
+                    bottom:0;
+                    right:0;
+                    left:0;
+                    padding:16px 0 24px;
+                    text-align:center;
+                    .btn.border {
+                        &::after {
+                            content:' ';
+                            display:inline-block;
+                            width:16px;
+                            height:16px;
+                            margin-left:4px;
+                            margin-top:4px;
+                            background:url('/lg5-common/images/icons/icon-arr-footer-16.svg') center no-repeat;
+                            vertical-align:top;
+                            transition:all 0.3s;
+                        }
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            border-color:#222;
+                            background-image: none;
+                            color:#000;
+                        }
+                    }
+                }
+                &.open {
+                    .btns {
+                        .btn.border::after {
+                            transform:rotate(180deg);
+                        }
+                    }
+                }
+                .link-wrap {
+                    display:none;
+                }
+                &.open {
+                    .link-wrap {
+                        display:block;
+                    }
+                }
+            }
+            .link-wrap {
+                margin:-12px -6px 0;
+                padding-bottom:24px;
+                font-size:0;
+                .link-section {
+                    display:inline-block;
+                    width:12.5%;
+                    margin-top:44px;
+                    padding:0 6px;
+                    vertical-align:top;
+                    @media screen and (max-width:1200px) {
+                        width:25%;
+                    }
+                    div.dep1 {
+                        height:36px;
+                        margin-top:28px;
+                        padding-bottom:20px;
+                        a, span {
+                            display:inline-block;
+                            color:#000;
+                            font-size:14px;
+                            line-height:16px;
+                            font-weight:700;
+                            vertical-align:top;
+                        }
+                        a[target="_blank"] {
+                            white-space:nowrap;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:16px;
+                                height:16px;
+                                margin-left:4px;
+                                background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                background-size:100%;
+                                vertical-align:top;
+                            }
+                        }
+                        &.hidden {
+                            a, span {
+                                width:0;
+                                height:0;
+                                font-size:0 !important;
+                                overflow:hidden;
+                            }
+                        }
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                    .dep2-wrap {
+                        .dep2-list {
+                            margin-top:6px;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                            .dep2 {
+                                a, span {
+                                    display:inline-block;
+                                    color:#000;
+                                    font-size:12px;
+                                    line-height:16px;
+                                    font-weight:500;
+                                    vertical-align:top;
+                                }
+                                a {
+                                    &[target="_blank"] {
+                                        white-space:nowrap;
+                                        &::after {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:16px;
+                                            height:16px;
+                                            margin-left:4px;
+                                            background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
+                                            background-size:100%;
+                                            vertical-align:top;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .dep3-wrap {
+                        margin:6px 0 20px;
+                        > li {
+                            margin-top:4px;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                        }
+                        .dep3 {
+                            display:inline-block;
+                            color:#616161;
+                            font-size:12px;
+                            line-height:16px;
+                            font-weight:500;
+                            vertical-align:top;
+                            &[target="_blank"] {
+                                white-space:nowrap;
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:16px;
+                                    height:16px;
+                                    margin-left:4px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+
+        .foot-bottom {
+            border-top:1px solid #ddd;
+            @include mobile {
+                padding:0 16px;
+                border-top:none;
+            }
+            .bottom-head {
+                position:relative;
+                padding:12px 0;
+                @include clearfix;
+                @include mobile {
+                    padding:32px 0 40px;
+                }
+                .dropdown-wrap {
+                    float:left;
+                    @include mobile {
+                        float:none;
+                        font-size:0;
+                    }
+                    .dropdowns {
+                        display:inline-block;
+                        position:relative;
+                        margin-right:24px;
+                        vertical-align:top;
+                        @include mobile {
+                            margin-right:0;
+                            margin-left:12px;
+                            width:calc((100% - 12px) / 2);
+                            &:first-child {
+                                margin-left:0;
+                            }
+                        }
+                        .slt-btn {
+                            display:inline-block;
+                            color:#000;
+                            font-size:12px;
+                            line-height:24px;
+                            font-weight:500;
+                            vertical-align:top;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:16px;
+                                height:16px;
+                                margin:4px 0 0 2px;
+                                background:url("/lg5-common/images/icons/icon-arr-16-gray.svg") center no-repeat;
+                                vertical-align:top;
+                            }
+                            @include mobile {
+                                position:relative;
+                                display:block;
+                                padding:11px 28px 11px 12px;
+                                border:1px solid #aaa;
+                                border-radius:8px;
+                                font-size:14px;
+                                line-height:16px;
+                                &::after {
+                                    position:absolute;
+                                    top:50%;
+                                    right:12px;
+                                    margin:-8px 0 0 0;
+                                    background:url('/lg5-common/images/icons/icon-arr-40-bk.svg') center no-repeat;                                    
+                                    background-size:100%;
+                                }
+                            }
+                        }
+                        .lists {
+                            display:none;
+                            position:absolute;
+                            top:25px;
+                            left:50%;
+                            transform:translateX(-50%);
+                            z-index:10;
+                            padding:4px 0;
+                            border-radius:4px;
+                            background:#fff;
+                            box-shadow:2px 4px 12px 0 rgba(#000, .16);
+                            @include mobile {
+                                top:46px;
+                                left:0;
+                                right:0;
+                                transform:translateX(0);
+                            }
+                            li {
+                                a {
+                                    display:block;
+                                    padding:0 20px;
+                                    color:#000;
+                                    font-size:12px;
+                                    line-height:40px;
+                                    text-align:center;
+                                    font-weight:500;
+                                    white-space:nowrap;
+                                    &.selected, &:hover {
+                                        background:#f4f4f4;
+                                    }
+                                }
+                            }
+                        }
+                        &.open {
+                            .lists {
+                                display:block;
+                            }
+                        }
+                    }
+                }
+                .sns-link {
+                    float:right;
+                    font-size:0;
+                    @include mobile {
+                        float:none;
+                        display:flex;
+                        padding:0 12px;
+                        margin-top:32px;
+                        justify-content:space-between;
+                    }
+                    li {
+                        display:inline-block;
+                        margin-left:8px;
+                        vertical-align:top;
+                        @include mobile {
+                            margin-left:0;
+                        }
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        a {
+                            display:block;
+                            width:24px;
+                            height:24px;
+                            font-size:0;
+                            @for $i from 1 through 6 {
+                                &.sns#{$i} {
+                                    background:url('/lg5-common/images/icons/icon-sns#{$i}.svg') center no-repeat;
+                                    background-size:100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .bottom-body {
+                position:relative;
+                padding-top:12px;
+                border-top:1px solid #ddd;
+                @include mobile {
+                    padding-top:8px;
+                }
+                .bottom-link {
+                    font-size:0;
+                    li {
+                        display:inline-block;
+                        margin-left:12px;
+                        vertical-align:top;
+                        @include mobile {
+                            width:50%;
+                            margin-top:16px;
+                            margin-left:0;
+                        }
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        a {
+                            display:inline-block;
+                            color:#000;
+                            @include font-x-small;
+                            font-weight:500;
+                            &:hover {
+                                text-decoration:underline;
+                            }
+                        }
+                    }
+                }
+                .comp-info {
+                    margin-top:20px;
+                    padding-right:220px;
+                    @media screen and (max-width:1200px) {
+                        padding-right:0;
+                    }
+                    @include mobile {
+                        margin-top:32px;
+                    }
+                    p {
+                        color:#767676;
+                        @include font-x-small;
+                        font-weight:500;
+                        &.info {
+                            margin-bottom:4px;
+                        }
+                        span {
+                            display:inline-block;
+                            margin-right:16px;
+                            vertical-align:top;
+                            &:last-child {
+                                margin-right:0;
+                            }
+                        }
+                        &:first-child {
+                            margin-bottom:8px;
+                            @include mobile {
+                                margin-bottom:10px;
+                            }
+                        }
+                    }
+                }
+                .foot-last {
+                    position:absolute;
+                    right:0;
+                    bottom:0;
+                    @media screen and (max-width:1200px) {
+                        position:relative;
+                        right:auto;
+                        bottom:auto;
+                        margin-top:24px;
+                    }
+                    @include mobile {
+                        margin-top:32px;
+                    }
+                    .ismsp {
+                        position:relative;
+                        display:inline-block;
+                        padding:8px 0 8px 72px;
+                        color:#000;
+                        @include font-small;
+                        font-weight:700;
+                        @include mobile {
+                            padding:0 0 0 40px;
+                        }
+                        &::before {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            left:0;
+                            width:64px;
+                            height:64px;
+                            margin-top:-32px;
+                            background:url('/lg5-common/images/img-ismsp.png') center no-repeat;
+                            background-size:100%;
+                            @include mobile {
+                                width:32px;
+                                height:32px;
+                                margin-top:-16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.no-footer {
+    padding:24px 40px;
+    text-align:center;
+    @include mobile {
+        padding:24px 20px;
+    }
+}

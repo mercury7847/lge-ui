@@ -1,0 +1,64 @@
+<!-- components/partials/KRC0034.html -->
+<div class="component-wrap">
+	<section class="component KRC0034 @@stageSize">
+		<!-- background visual -->
+		@@if ( context.type == "bg-image" ) {
+		<!-- image visual -->
+		<div class="visual-area">
+			<!-- [KR수정_201229] 백그라운드 피씨/모바일 이미지로 변경 -->
+			<img src="@@bgPC" data-pc-src="@@bgPC" data-m-src="@@bgMob" alt="">
+			<!-- // [KR수정_201229] 백그라운드 피씨/모바일 이미지로 변경 -->
+			<p class="hidden">graphic description : </p>
+		</div>
+		<!-- // image visual -->
+		}
+		@@if ( context.type == "animation" ) {
+		<!-- animation visual -->
+		<!-- [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제) -->
+		<div class="visual-area animation-box">
+			<div class="animation-area">
+				<video autoplay muted loop>
+					<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+					<!-- WEBM 동영상을 제공하는 경우
+					<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+					-->
+				</video>
+				<div class="controller-wrap wa-btn">
+					<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+				</div>
+			</div>
+		</div>
+		<!-- // [KR수정_201229] 애니메이션 DOM 공통화 수정(AD버튼 삭제) -->
+		<!-- // animation visual -->
+		}
+		<!-- // background visual -->
+		<!-- text layout area -->
+		<div class="text-overlay">
+			@@for ( var i=0; i < items.length; i++ ) {
+			<div class="row">
+				<div class="inner `+items[i].align+` `+items[i].textAlign+`"><!-- [KR수정_210111] 레이어드 이미지 사용 안할경우 .no-imgbg class 추가 -->
+					<div class="img-bg">
+						<img src="/lg5-common/images/KRC0034/@bg-thumb01.jpg" data-pc-src="/lg5-common/images/KRC0034/@bg-thumb01.jpg" data-m-src="/lg5-common/images/KRC0034/@bg-thumb01-mo.jpg" alt="">
+						<p class="hidden">graphic description : </p>
+					</div>
+					<div class="text-wrap">
+						<div id="title`+i+`" class="title">
+							<h2>타이틀 공백포함 최대 40자까지 입력가능합니다. 최대 40자까지 입력가능</h2>
+						</div>
+						<p class="sub-title">서브타이틀 공백포함 최대 30자까지 입력가능합니다. 끝</p>
+						<p class="body-copy">바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 여기까지</p>
+						<div class="cta-box">
+							<a href="#n" class="btn size border" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>자세히 보기</span></a>
+							<!-- 텍스트 링크 버튼 사용할 경우
+							<a href="#n" class="text-link" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>텍스트 링크 버튼</span></a>
+							<a href="#n" class="text-link" target="" data-link-area="" data-link-name="{Link Text}" aria-describedby="title`+i+`"><span>텍스트 링크 버튼</span></a>
+							-->
+						</div>
+					</div>
+				</div>
+			</div>
+			}
+		</div>
+		<!-- // text layout area -->
+	</section>
+</div>

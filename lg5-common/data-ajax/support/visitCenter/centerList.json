@@ -1,0 +1,61 @@
+{
+   "status":"success",
+   "message":null,
+   "param":{},
+   "data": {
+      "listData": [
+         {
+            "shopID": 893,
+            "shopSeq": 456,
+            "shopName":"논현역점",
+            "shopAdress":"서울특별시 강남구 논현동 50-3 스카이저축은행"
+         }, 
+         {
+            "shopID": 4125,
+            "shopSeq": 456,
+            "shopName":"강남본점",
+            "shopAdress":"서울특별시 강남구 청담동 86-1 LG 청담빌딩"
+         }, 
+         {
+            "shopID": 5647,
+            "shopSeq": 456,
+            "shopName":"신세계 강남점",
+            "shopAdress":"서울특별시 강남구 압구정동 429"
+         }, 
+         {
+            "shopID": 5637,
+            "shopSeq": 456,
+            "shopName":"현대 본점",
+            "shopAdress":"서울특별시 강남구 압구정동 494"
+         }, 
+         {
+            "shopID": 5622,
+            "shopSeq": 456,
+            "shopName":"서초점",
+            "shopAdress":"서울특별시 서초구 반포동 19-3 센트럴시티"
+         }, 
+         {
+            "shopID": 3065,
+            "shopSeq": 456,
+            "shopName":"반포점",
+            "shopAdress":"서울특별시 서초구 잠원동 75-13 반포쇼핑타운"
+         }, 
+         {
+            "shopID": 3470,
+            "shopSeq": 456,
+            "shopName":"서초점",
+            "shopAdress":"서울특별시 서초구 서초동 1342-4 LG전자대리점"
+         }, 
+         {
+            "shopID": 3470,
+            "shopSeq": 456,
+            "shopName":"롯데 강남점",
+            "shopAdress":"서울특별시 강남구 대치동 937"
+         }
+      ],
+      "listPage": {
+         "page": 5,
+         "totalCount": 123
+      }
+   }
+}

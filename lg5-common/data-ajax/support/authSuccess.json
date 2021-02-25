@@ -1,0 +1,8 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "Y",
+        "resultMessage": "휴대전화 인증이 완료되었습니다"
+    }
+}

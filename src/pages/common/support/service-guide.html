@@ -1,0 +1,11 @@
+<div class="service-guide-wrap">
+    <div class="box">
+        @@if (context.txt) {
+            <ul class="bullet-list">
+                @@for (var i=0; i < context.txt.length; i++) {
+                    <dd class="b-txt">`+txt[i]+`</dd>
+                }
+            </ul>
+        }
+    </div>
+</div>

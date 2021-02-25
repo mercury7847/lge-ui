@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["membership/eventExhibitions"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            "mobileCase": "noneDepth"
+        })
+
+        <main class="container">
+            <!-- event -->
+            <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <div class="contents event exhibition"
+                data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+            ><!-- 210126 수정 - .exhibition 추가 -->
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+                        <!-- 210105 케이스 추가 -->
+                        <!-- 210118 bg영역 수정 -->
+                        <div class="ev-detail-top" style="background:url('/lg5-common/images/dummy/@img-event-bg-top.jpg') no-repeat 0 0; background-size:cover;">
+                            <div class="tit-wrap">
+                                <p class="tit" style="color:#fff;"><span class="blind">제목</span>웨딩(혼수가전) 페스티벌</p>
+                                <span class="sub-tit" style="color:#fff;"><span class="blind">서브 제목</span>예비 신혼부부를 위한 LG전자 웨딩 페스티벌!</span>
+                            </div>
+                            @@include('./common/partials/KRP0016.html')
+                            <div class="info-wrap">
+                                <div class="info-list">
+                                    <dl>
+                                        <dt style="color:#fff;">행사기간</dt>
+                                        <dd style="color:#fff;">2020.09.04 ~2020.09.30</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt style="color:#fff;">행사채널</dt>
+                                        <dd style="color:#fff;">전채널</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt style="color:#fff;">행사경품</dt>
+                                        <dd style="color:#fff;">청첩장 또는 웨딩홀 계약서 등 확인 후 제품 구매 시 할인혜택 제공</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //210118 bg영역 수정 -->
+                        <!-- //210105 케이스 추가 -->
+
+                        <div class="ev-detail-top">
+                            <div class="tit-wrap">
+                                <p class="tit"><span class="blind">제목</span>웨딩(혼수가전) 페스티벌</p>
+                                <span class="sub-tit"><span class="blind">서브 제목</span>예비 신혼부부를 위한 LG전자 웨딩 페스티벌!</span>
+                            </div>
+                            <!-- 210105 소셜수정 -->
+                            @@include('./common/partials/KRP0016.html')
+                            <!-- //210105 소셜수정 -->
+                            <div class="info-wrap">
+                                <div class="info-list">
+                                    <div class="group">
+                                        <dl>
+                                            <dt>행사기간</dt>
+                                            <dd>2020.09.04 ~2020.09.30</dd>
+                                        </dl>
+                                    </div>
+                                    <dl>
+                                        <dt>행사채널</dt>
+                                        <dd>전채널</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>행사경품</dt>
+                                        <dd>청첩장 또는 웨딩홀 계약서 등 확인 후 제품 구매 시 할인혜택 제공</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-con">
+                            <div class="ev-cont">
+                                <div class="conts">
+                                    <!-- 이벤트 상세내용 자리 -->
+                                    <img src="/lg5-common/images/dummy/@img-event-view3.jpg" alt="이벤트 내용">
+                                    <!-- //이벤트 상세내용 자리 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-bottom">
+                            <div class="ev-prd-wrap">
+                                <ul class="product-items col4"> <!-- [210105_수정] .col4로 변경, 내부 리스트 항목 수정 확인 필요 -->
+                                    @@loop('./common/modules/product-list-item-loop.html', [
+                                        {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product1-color1",
+                                                    "name": "product1",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product1-color2",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product1-color3",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product2-color1",
+                                                    "name": "product2",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product2-color2",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product2-color3",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product3-color1",
+                                                    "name": "product3",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product3-color2",
+                                                    "name": "product3",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product3-color3",
+                                                    "name": "product3",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product4-color1",
+                                                    "name": "product4",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product4-color2",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product4-color3",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product5-color1",
+                                                    "name": "product5",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product5-color2",
+                                                    "name": "product5",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product5-color3",
+                                                    "name": "product5",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product6-color1",
+                                                    "name": "product6",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product6-color2",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product6-color3",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product7-color1",
+                                                    "name": "product7",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product7-color2",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product7-color3",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }, {
+                                            "itemClass" : "evt-item",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product8-color1",
+                                                    "name": "product8",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product8-color2",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product8-color3",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flags" : ["베스트","신제품","온라인전용"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "eventItem" : {
+                                                "benefit" : ["캐시백", "사은품"],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "button" : "자세히 보기",
+                                                "discount" : true
+                                            }
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+
+                            <!-- 210105 수정 -->
+                            <div class="notice-wrap">
+                                <!-- 210203 수정 -->
+                                <span class="b-tit">유의사항</span>
+                                <p class="bullet-text">본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.</p>
+                                <p class="bullet-text">LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.</p>
+                                <a href="#n" class="btn-link">텍스트 링크 버튼</a>
+                                <p class="bullet-text">상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 양도가 불가능합니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.</p>
+                                <p class="bullet-text">이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다.</p>
+                                <a href="#n" class="btn-link">개인정보처리방침</a>
+                            </div>
+                            <!-- //210105 수정 -->
+
+                            <!-- 210105 수정 -->
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                                <a href="#n" class="btn"><span>이메일 문의</span></a>
+                            </div>
+                            <!-- //210105 수정 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

@@ -1,0 +1,162 @@
+.section-inner {
+	&.type0 {
+		padding-top:0 !important;
+	}
+}
+.my-sort {
+	margin-top:48px;
+	ul {
+		font-size:0;
+		li {
+			display:inline-block;
+			width:calc((100% - 72px) / 4);
+			margin-left:24px;
+			&:first-child {
+				margin-left:0;
+			}
+			a {
+				display:block;
+				height:74px;
+				border-radius:8px;
+				box-shadow:2px 4px 16px rgba(0,0,0,0.14);
+				color:#000;
+				font-size:16px;
+				font-weight:500;
+				line-height:74px;
+				text-align:center;
+				@media screen and (min-width: 768px) and (max-width: 810px) {
+					font-size:15px;
+				}
+			}
+			&.on {
+				a {
+					border:2px solid #da0f47;
+					color:#da0f47;
+					line-height:70px;
+				}
+			}
+		}
+	}
+	@include mobile {
+		ul {
+			margin:-6px;
+			&:after {
+				content:' ';
+				display:block;
+				clear:both;
+			}
+			li {
+				width:calc((100% - 24px) / 2);
+				margin:6px;
+				&:first-child {
+					margin-left:6px;
+				}
+				a {
+					height:46px;
+					font-size:14px;
+					line-height:46px;
+				}
+				&.on a {
+					line-height:42px;
+				}
+			}
+		}
+	}
+}
+
+.sort-area {
+	.list-count {
+		font-size:16px;
+		font-weight:700;
+		line-height:26px;
+		em {
+			color:#ec455a;
+		}
+	}
+	@include mobile {
+		.list-count {
+			font-size:16px;
+			line-height:24px;
+		}
+	}
+	& + .my-lists {
+		margin-top:12px;
+	}
+}
+
+.my-lists {
+	border-top:1px solid #666;
+	> ul {
+		> li {
+			padding:24px 0;
+			border-bottom:1px solid #ddd;
+			.title {
+				a {
+					display:block;
+					color:#000;
+					font-size:16px;
+					font-weight:700;
+					line-height:26px;
+					overflow:hidden;
+					text-overflow:ellipsis;
+					white-space:nowrap;
+				}
+			}
+			.info {
+				margin-top:8px;
+				ul {
+					font-size:0;
+					li {
+						display:inline-block;
+						font-size:14px;
+						line-height:24px;
+						& + li:before {
+							content:' ';
+							display:inline-block;
+							width:1px;
+							height:10px;
+							margin:0 8px;
+							background-color:#ddd;
+							line-height:24px;
+							vertical-align:middle;
+							@include mobile {
+								margin:0 6px;
+							}
+						}
+					}
+					&.model {
+						li {
+							color:#000;
+						}
+					}
+					&.receipt {
+						li {
+							color:#666;
+						}
+					}
+				}
+			}
+		}
+	}
+	@include mobile {
+		> ul {
+			> li {
+				padding:16px 0;
+				.title {
+					a {
+						font-size:14px;
+						line-height:22px;
+					}
+				}
+				.info {
+					ul {
+						li {
+							font-size:13px;
+							line-height:21px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

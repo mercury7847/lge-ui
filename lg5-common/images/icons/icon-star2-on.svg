@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-star2-on</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_star_24_on">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="ic" fill="#ff6767">
+                <polygon id="Star" points="12 18 4.94657697 21.7082039 6.2936609 13.854102 0.587321804 8.29179607 8.47328849 7.14589803 12 0 15.5267115 7.14589803 23.4126782 8.29179607 17.7063391 13.854102 19.053423 21.7082039"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

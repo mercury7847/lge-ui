@@ -1,0 +1,24 @@
+<div class="contract-steps">
+    <ol>
+        @@if ( !context.delivery ) {
+        @@for ( var i=0; i < steps.length; i++ ) {
+        <li class="steps cs`+[i+1]+`">
+            <dl>
+                <dt>`+steps[i].dt+`</dt>
+                <dd>`+steps[i].dd+`</dd>
+            </dl>
+        </li>
+        }
+        }
+        @@if ( context.delivery ) {
+        @@for ( var i=0; i < steps.length; i++ ) {
+        <li class="steps cs`+[i+2]+`">
+            <dl>
+                <dt>`+steps[i].dt+`</dt>
+                <dd>`+steps[i].dd+`</dd>
+            </dl>
+        </li>
+        }
+        }
+    </ol>
+</div>

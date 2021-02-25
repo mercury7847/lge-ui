@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <circle id="5l3rsh6ysa" cx="14.5" cy="14.5" r="14.5"/>
+        <circle id="5nky92o79c" cx="14.5" cy="14.5" r="14.5"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M0 0H48V48H0z" opacity=".3" transform="translate(-1496 -404) translate(509 172) translate(0 114) translate(1 86) translate(876) translate(32 32) translate(78)"/>
+                                    <g>
+                                        <path fill="#F4F4F4" stroke="#222" stroke-width="1.5" d="M26.385 0l.914 4.343c.665.244 1.312.525 1.939.841l3.565-2.08 6.854 6.854-2.25 3.449c.372.749.694 1.527.962 2.33l3.631.955v9.693l-3.563.75c-.317.988-.716 1.94-1.188 2.846l1.646 2.822-6.853 6.854-2.749-1.793c-.731.373-1.491.697-2.275.97L26.385 42h-9.693l-.713-2.85c-1.152-.329-2.259-.767-3.306-1.303l-2.715 1.81-6.853-6.854 1.668-2.78c-.488-.932-.899-1.91-1.222-2.928L0 26.385v-9.693l3.613-.902c.277-.837.612-1.648 1.001-2.426l-2.27-3.406 6.853-6.853 3.512 2.107c.93-.474 1.908-.87 2.923-1.182L16.692 0h9.693z" transform="translate(-1496 -404) translate(509 172) translate(0 114) translate(1 86) translate(876) translate(32 32) translate(78) translate(3 3)"/>
+                                        <g transform="translate(-1496 -404) translate(509 172) translate(0 114) translate(1 86) translate(876) translate(32 32) translate(78) translate(3 3) translate(7 7)">
+                                            <g>
+                                                <mask id="c1vpdiq1pb" fill="#fff">
+                                                    <use xlink:href="#5l3rsh6ysa"/>
+                                                </mask>
+                                                <circle cx="14.5" cy="14.5" r="13.75" stroke="#222" stroke-width="1.5"/>
+                                                <g fill="#F4F4F4" stroke="#222" stroke-width="1.5" mask="url(#c1vpdiq1pb)">
+                                                    <g transform="translate(4 6)">
+                                                        <circle cx="10.5" cy="18.5" r="9.75"/>
+                                                        <circle cx="10.5" cy="6.5" r="5.75"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <circle cx="14.5" cy="14.5" r="13.75" stroke="#222" stroke-width="1.5"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

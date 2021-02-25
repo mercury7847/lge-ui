@@ -1,0 +1,97 @@
+
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "param": {},
+    "data": [
+        {
+            "categoryID": "DDD",
+            "categoryName": "공기청정기"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "AAA",
+            "categoryName": "정수기"
+        },
+        {
+            "categoryID": "FFF",
+            "categoryName": "스타일러"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "HHH",
+            "categoryName": "식기세척기"
+        },
+        {
+            "categoryID": "III",
+            "categoryName": "안마의자"
+        },
+        {
+            "categoryID": "DDD",
+            "categoryName": "공기청정기"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "AAA",
+            "categoryName": "정수기"
+        },
+        {
+            "categoryID": "FFF",
+            "categoryName": "스타일러"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "HHH",
+            "categoryName": "식기세척기"
+        },
+        {
+            "categoryID": "III",
+            "categoryName": "안마의자"
+        },
+        {
+            "categoryID": "DDD",
+            "categoryName": "공기청정기"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "AAA",
+            "categoryName": "정수기"
+        },
+        {
+            "categoryID": "FFF",
+            "categoryName": "스타일러"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "HHH",
+            "categoryName": "식기세척기"
+        },
+        {
+            "categoryID": "III",
+            "categoryName": "안마의자"
+        },
+        {
+            "categoryID": "DDD",
+            "categoryName": "공기청정기"
+        }
+    ]
+}

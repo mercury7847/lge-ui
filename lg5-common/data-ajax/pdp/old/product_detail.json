@@ -1,0 +1,502 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "produt_id":"EPRD.348027",
+        "product_title":"LG 올레드 갤러리 TV!",
+        "product_name":"OLED88ZXKNA",
+        "product_master_price":"1990001",
+        "product_review_count":"1294",
+        "product_notice_description":"온라인에서 구매할 수 없는 제품입니다.",
+        "product_badge":[
+            {
+                "image_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "image_alt":"뱃지1"
+            },
+            {
+                "image_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "image_alt":"뱃지2"
+            }
+        ],
+        "product_flag":[
+            {
+                "text":"CASH BACK",
+                "class":"badge full"
+            },
+            {
+                "text":"NEW",
+                "class":"badge"
+            },
+            {
+                "text":"BEST",
+                "class":"badge"
+            }
+        ],
+        "pdp_visual_list":[
+            {
+                "link_name":"65UK6300PUE1",
+                "type":"video",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "ad_url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                "video_url":"https://www.youtube.com/embed/LDocqNKcW0c",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 0",
+                "image_desc":"video description"
+            },
+            {
+                "link_name":"65UK6300PUE1",
+                "type":"mp4",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "video_url":"/lg5-common/videos/signature_rain_view.mp4",
+                "ad_url":"/lg5-common/videos/Highlight_backround.mp4",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 1",
+                "image_desc":"animation description"
+            },
+            {
+                "link_name":"65UK6300PUE1",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 2",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE2",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum02.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 3",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE3",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 4",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PU4E",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi01.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 5",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE5",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi02.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 6",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE6",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 7",
+                "image_desc":"graphic description"
+            }
+
+        ],
+        "pdp_more_info":{
+            "visible":true,
+            "image_url":"/lg5-common/images/KRP0010/img-ncsi.jpg",
+            "image_alt":"ncsi획득",
+            "text":"고객만족도(NCSI) TV 부문 1위",
+            "modal_text":"수상내역 더보기",
+            "modal_url":"./modal/KRP0010-pdp-modal-award.html"
+        },
+        "additional_purchase":[
+            {
+                "product_id":"pid0001",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"인공지능 리모컨",
+                "title":"인공지능 리모컨",
+                "price":"50000"
+            },
+            {
+                "product_id":"pid0002",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"스탠드",
+                "title":"스탠드",
+                "price":"100000"
+            },
+            {
+                "product_id":"pid0003",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"블루투스 스피커",
+                "title":"블루투스 스피커",
+                "price":"70000"
+            }
+        ],
+        "payment_amount_info":{
+            "visible":true,
+            "product_price":"1853092"
+        },
+        "careship_total_payment":"9900",
+        "rental_only_info":true,
+
+        "purchase_button": {
+            "visible":true,
+            "cart_url":"#",
+            "buy_url":"#",
+            "modal_url":"./modal/KRP0010-careship-info.html"
+        },
+        "preorder_button": {
+            "visible":true,
+            "cart_url":null,
+            "buy_url":"#",
+            "modal_url":"./modal/KRP0010-pre-order-info.html"
+        },
+        "rental_button": {
+            "visible":true,
+            "cart_url":"#",
+            "buy_url":"#",
+            "modal_url":null
+        },
+        "display_product": {
+            "visible":true,
+            "exhibition_url":"#",
+            "visit_url":"#"
+        },
+        "product_tab":["benefits", "rental"],
+        "product_info":{
+            "benefits":{
+                "text":"구매혜택",
+                "class":null,
+                "content_data": {
+                    "price-info":[
+                        {
+                            "type":"price-area",
+                            "type_text":null,
+                            "type_popup_text":null,
+                            "type_popup_url":null,
+                            "type_option":{
+                                "purchase_price":"19900002",
+                                "reduced_price":"1853092",
+                                "discount_rate":"7.2"
+                            }
+                        },
+                        {
+                            "type":"product-benefit-none",
+                            "type_text":"할인혜택",
+                            "type_popup_text":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"회원 할인 <em>3%</em> -59,700원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"즉시 할인 <em>4%</em> -77,210원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
+                            ]
+                        },
+                        {
+                            "type":"product-benefit-popup",
+                            "type_text":"추가혜택",
+                            "type_popup_text":"추가혜택 팝업 열림",
+                            "type_popup_url":"./modal/KRP0010-benefit-info.html",
+                            "type_option":[
+                                {
+                                    "text":"포인트 64,000p",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"캐시백 500,000원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
+                            ]
+                        }
+                    ],
+                    "sibling-info":[
+                        {
+                            "type":"sibling-color",
+                            "type_text":"색상",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"그레이",
+                                    "class":"gray",
+                                    "value":"GR",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"블랙",
+                                    "class":"black",
+                                    "value":"BK",
+                                    "checked":false
+                                }
+                            ]
+                        },
+                        {
+                            "type":"sibling-size",
+                            "type_text":"화면크기",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"1931cm",
+                                    "class":null,
+                                    "value":"193",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"1631cm",
+                                    "class":null,
+                                    "value":"163",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1381cm",
+                                    "class":null,
+                                    "value":"138",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1001cm",
+                                    "class":null,
+                                    "value":"100",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-service",
+                            "type_text":"케어십 서비스",
+                            "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
+                            "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul class=\"bullet-list\"><li class=\"b-txt\">계약기간 : 12 개월</li><li class=\"b-txt\">케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl class=\"bullet-list\"><dt class=\"b-tit\">케어십 서비스 내용</dt><dd class=\"b-txt\">필터무상교체</dd><dd class=\"b-txt\">살균서비스</dd><dd class=\"b-txt\">클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a><button type=\"button\" class=\"btn-close\"><span class=\"blind\">닫기</span></button>",
+                            "type_popup_url":"",
+                            "type_option":[
+                                {
+                                    "text":"신청",
+                                    "class":null,
+                                    "value":"true",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"미신청",
+                                    "class":null,
+                                    "value":"false",
+                                    "checked":false
+                                }
+                            ]
+                        },
+                        {
+                            "type":"is-kit",
+                            "type_text":"구성품",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"SQ07LAJWAJ(조합 벽걸이)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                },
+                                {
+                                    "text":"FQ23LADRBN(스탠드 실외기)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                },
+                                {
+                                    "text":"FQ30ADAU(실외기)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                }
+                            ]         
+                        }
+                    ]
+                }
+            },
+            "rental":{
+                "text":"렌탈 (케어 솔루션)",
+                "class":"rental",
+                "content_data": {
+                    "monthly-payment":[
+                        {
+                            "type":"monthly-payment",
+                            "type_text":"무상할인(2개월)",
+                            "type_popup_text":"월 납부금액",
+                            "type_popup_html":null,
+                            "type_popup_url":"./modal/KRP0010-monthly-payment-info.html",
+                            "type_price":"15900",
+                            "type_link_text":"결합하여 더 많은 할인 받기",
+                            "type_link_url":"#test",
+                            "type_option":[
+                                {
+                                    "text":"1-3년 36,900원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"4-5년 13,900원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
+                            ]
+                        }
+                    ],
+                    "sibling-info":[
+                        {
+                            "type":"sibling-color",
+                            "type_text":"색상",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"그레이",
+                                    "class":"gray",
+                                    "value":"GR",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"블랙",
+                                    "class":"black",
+                                    "value":"BK",
+                                    "checked":true
+                                }
+                            ]
+                        },
+                        {
+                            "type":"sibling-size",
+                            "type_text":"화면크기",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"1932cm",
+                                    "class":null,
+                                    "value":"193",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"1632cm",
+                                    "class":null,
+                                    "value":"163",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1382cm",
+                                    "class":null,
+                                    "value":"138",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1002cm",
+                                    "class":null,
+                                    "value":"100",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-text",
+                            "type_text":"할인등록비",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_price":"210000",
+                            "type_option":null
+                        },
+                        {
+                            "type":"sibling-membership",
+                            "type_text":"가입비(선납)",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_link_text":"가입비 선택",
+                            "type_option":[
+                                {
+                                    "text":"100,000원",
+                                    "class":null,
+                                    "value":"100000",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"200,000원",
+                                    "class":null,
+                                    "value":"200000",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-period",
+                            "type_text":"의무사용기간",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"5년",
+                                    "class":null,
+                                    "value":"5",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"4년",
+                                    "class":null,
+                                    "value":"4",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"2~3년",
+                                    "class":null,
+                                    "value":"23",
+                                    "checked":true
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-card",
+                            "type_text":"제휴카드",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_link_text":"제휴카드 선택",
+                            "type_option":[
+                                {
+                                    "text":"최대 23,000원 할인",
+                                    "class":null,
+                                    "value":"23000",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"최대 25,000원 할인",
+                                    "class":null,
+                                    "value":"25000",
+                                    "checked":false
+                                }
+                            ]         
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

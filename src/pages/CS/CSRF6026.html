@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/reservation"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '문의/예약 결과 조회',
+                'pageDesc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.'
+            })
+
+            <div class="contents support service-status-list" data-list-url="/lg5-common/data-ajax/support/registList.json">
+                <div class="cont-wrap">
+                    <form action="https://wwwdev50.lge.co.kr/support/service-inquiry-reservation-status/single" method="POST">
+                        <input type="hidden" name="userName" id="userName" value="홍길동">
+                        <input type="hidden" name="phoneNo" id="phoneNo" value="01043432121">
+                        <input type="hidden" name="number" id="number" value="">
+                        <input type="hidden" name="clothFlag" id="clothFlag" value="clothFlag">
+                    </form>
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">서비스 이용 내역 <em class="point">8</em>건</h2>
+                        </div>
+                        <div class="service-history">
+                            <div class="item">
+                                <strong class="service-history-title">상담문의 <mark class="color-3">4</mark>건</strong>
+                                <dl class="service-history-list">
+                                    <dt>이메일 문의</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>진행중 <mark class="color-3">1</mark></li>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl class="service-history-list">
+                                    <dt>전화 상담</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>진행중 <mark class="color-3">1</mark></li>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl class="service-history-list">
+                                    <dt>원격 상담</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>진행중 <mark class="color-3">1</mark></li>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl class="service-history-list">
+                                    <dt>영상 상담</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>진행중 <mark class="color-3">1</mark></li>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="item">
+                                <strong class="service-history-title">출장 예약 <mark class="color-3">3</mark>건</strong>
+                                <dl class="service-history-list">
+                                    <dt>출장 서비스</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>진행중 <mark class="color-3">1</mark></li>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl class="service-history-list">
+                                    <dt>제품 설치/철거</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="item">
+                                <strong class="service-history-title">방문 예약 <mark class="color-3">4</mark>건</strong>
+                                <dl class="service-history-list">
+                                    <dt>서비스 센터 방문</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>완료 <mark class="color-3">1</mark></li>
+                                            <li>전체 <mark class="color-3">1</mark></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="list-wrap icon-type">
+                            <ul class="list">
+                                <li class="menu-email">
+                                    <a href="#" class="item" data-number="S2101460111">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">이메일 문의</span>
+                                            <span class="flag">접수</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-request">
+                                    <a href="#" class="item" data-number="S2101460112">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">전화 상담</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-remote">
+                                    <a href="#" class="item" data-number="S2101460113">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">원격 상담</span>
+                                            <span class="flag">접수</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-video">
+                                    <a href="#" class="item" data-number="S2101460114">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">영상 상담</span>
+                                            <span class="flag">접수</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-engineer">
+                                    <a href="#" class="item" data-number="S2101460115">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">출장 서비스</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-installation">
+                                    <a href="#" class="item" data-number="S2101460116">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">제품 설치/철거</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="menu-center">
+                                    <a href="#" class="item" data-number="S2101460117">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">센터 방문</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <p class="tit">고장증상1 &gt; 세부증상2</p>
+                                        <ul class="options">
+                                            <li>대표 카테고리1 &gt; 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW</li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+
+                        <div class="no-data" style="display:none">
+                            <p>조회 결과가 없습니다.</p>
+                        </div>
+                    </div>
+                    <div class="btn-group center">
+                        <a href="#" class="btn gray"><span>이전</span></a>
+                        <a href="#" class="btn"><span>고객지원 메인</span></a>
+                    </div>
+
+                    @@include('./common/modules/bullet-list.html', {
+                        "topBorder" : true,
+                        "bulletTxt" : [
+                            "이메일 문의는 접수번호로만 조회 가능합니다. ",
+                            "서비스 이용 내역의 조회 가능 기간은 최대 5년이며 비회원인 경우 1년간 조회 가능합니다. (단, 이메일 문의 조회는 답변메일 발송일로부터 1개월간 확인 가능합니다.)",
+                            "휴대전화 인증번호가 수신되지 않는 경우 휴대폰에 1544-7777 번호가 스팸 등록되었는지 여부를 확인해주세요.",
+                            "회원가입 전, 접수한 문의사항은 접수번호나 휴대전화 인증으로만 조회가능 합니다."
+                        ]
+                    })
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0023 {
+    .component-inner {
+        @include mobile {
+            padding: 0 !important;
+        }
+    }
+    .carousel-box {
+        .indi-wrap,
+        .slide-controls,
+        .slide-controls .btn-arrow {
+            @include pc {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            position: relative;
+            padding-bottom: 32px;
+            .slide-controls {
+                .btn-arrow {
+                    position: absolute;
+                    top:calc((100% - 32px) / 2);
+                    transform:translateY(-50%);
+                    &.prev {
+                        left: 4px;
+                    }
+                    &.next {
+                        right: 4px;
+                    }
+                }
+            }
+        }
+    }
+}  
+
+$size: (img2, img3, img4);
+@each $col in $size {
+    .KRC0023.#{$col} {
+        .visual-area {
+            margin-bottom:24px;
+            text-align:center;
+            a {
+                display:inline-block;
+                max-width:100%;
+                vertical-align:top;
+            }
+            @include mobile {
+                margin-left:-16px;
+                margin-right:-16px;
+            }
+        }
+        img {
+            width:auto;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
+        }
+        font-size:0;
+        @include pc {
+            .slide-track {
+                margin:-80px -12px 0;
+                .unit-box {
+                    margin-top:80px;
+                }
+            }
+        }
+        .unit-box {
+            display:inline-block;
+            padding:0 12px;
+            vertical-align:top;
+            @if ( $col == img2 ) {
+                width:50%
+            } @else if ( $col == img3 ) {
+                width:calc(100% / 3);
+            } @else if ( $col == img4 ) {
+                width:25%;
+            }
+            .title {
+                p {
+                    @include title-h5;
+                }
+                &.title-h1 * {
+                    @include title-h1;
+                }
+                &.title-h2 * {
+                    @include title-h2;
+                }
+                &.title-h3 * {
+                    @include title-h3;
+                }
+                &.title-h4 * {
+                    @include title-h4;
+                }
+                &.title-h5 * {
+                    @include title-h5;
+                }
+                &.title-h6 * {
+                    @include title-h6;
+                }
+            }
+            .body-copy {
+                @include bodycopy(h3, h3);
+            }
+            .bottom-btn {
+                @include cta-btn;
+            }
+
+            @media screen and (max-width:991px) {
+                @if ( $col == img4 ) {
+                    width:50%;
+                }
+            }
+
+            @include mobile {
+                width:100%;
+                padding:0 16px;
+            }
+        }
+    }
+}

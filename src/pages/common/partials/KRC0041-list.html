@@ -1,0 +1,34 @@
+
+<li class="items @@itemAlign @@textAlign @@imgAlign ui_carousel_slide">
+	<div class="item-inner">
+		@@if (context.imgTop) {
+			<div class="img-area">
+				<img src="/lg5-common/images/KRC0041/@img-444x250.png" alt="">
+				<p class="hidden pc">graphic description : </p>
+			</div>
+		}
+		<!-- [KR수정_201231] title DOM 공통화 수정 -->
+		<div class="title">
+			<h2>@@title</h2>
+		</div>
+		<!-- // [KR수정_201231] title DOM 공통화 수정 -->
+		@@if (context.subTitle) {
+		<p class="sub-title">@@subTitle</p>
+		}
+		@@if (context.bodyCopy) {
+		<p class="body-copy">@@bodyCopy</p>
+		}
+		@@if (context.imgBtm) {
+			<div class="img-area">
+				<img src="/lg5-common/images/KRC0041/@img-444x250.png" alt="">
+			</div>
+		}
+		@@if (context.disclaimer) {
+		<!-- [KR수정_201231] disclaimer DOM 공통화 수정 -->
+		<ul class="bullet-list">
+			<li class="b-txt">@@disclaimer</li>
+		</ul>
+		<!-- // [KR수정_201231] disclaimer DOM 공통화 수정 -->
+		}
+	</div>
+</li>

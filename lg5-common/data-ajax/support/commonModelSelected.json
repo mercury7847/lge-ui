@@ -1,0 +1,129 @@
+{   
+    "status": "success",
+    "message": null,
+    "data": {
+        "resultFlag": "Y",
+        "registerFlag" : "N",
+        "topicList": [
+            {
+                "name": "부품/소모품",
+                "value": "WRA10005000"
+            },{
+                "name": "구입/사양",
+                "value": "WRAST000732"
+            },
+            {
+                "name": "구조/외관",
+                "value": "WRAST000733"
+            },
+            {
+                "name": "기능관련",
+                "value": "WRAST000734"
+            },
+            {
+                "name": "냄새관련",
+                "value": "WRAST000735"
+            },
+            {
+                "name": "냉방관련",
+                "value": "WRAST000736"
+            },
+            {
+                "name": "누수관련",
+                "value": "WRAST000737"
+            },
+            {
+                "name": "리모컨/버튼",
+                "value": "WRAST000738"
+            },
+            {
+                "name": "서비스관련",
+                "value": "WRAST000741"
+            },
+            {
+                "name": "소음/진동",
+                "value": "WRAST000743"
+            }
+        ],
+        "dateList": [
+            "20210108", "20210109", "20210110",
+            "20210115", "20210119", "20210125"
+        ],
+        "inquiryList": [
+            {
+                "name": "제품정보",
+                "value": "D000282"
+            },
+            {
+                "name": "제품사용법",
+                "value": "D000283"
+            },
+            {
+                "name": "제품구입",
+                "value": "D000284"
+            },
+            {
+                "name": "A/S",
+                "value": "D000285"
+            },
+            {
+                "name": "소모품구입",
+                "value": "D000286"
+            },
+            {
+                "name": "파일 및 자료 요청",
+                "value": "D000287"
+            }
+        ],
+        "recommProduct": [
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품", "베스트"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품2", "베스트2"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품3", "베스트3"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품4", "베스트4"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품5", "베스트5"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            },
+            {
+                "imgUrl" : "/lg5-common/images/dummy/@img-product3.jpg",
+                "flags" : ["신제품6", "베스트6"],
+                "name" : "소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄",
+                "modelName" : "OLED65CXCNA",
+                "price" : "19,000",
+                "discountPrice" : "17,000"
+            }
+        ]
+    }
+}

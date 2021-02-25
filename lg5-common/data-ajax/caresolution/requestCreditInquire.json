@@ -1,0 +1,16 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "sEncData": "AgAHOTUxMDM3N0UgME395DUubU8NFSrqZD3veWcJeNQQRos7MSdMIG7USqrA7YNyD/u3vjfKIWsKmNie2nedlhGD/Z2czuxZyXQU6882zBpXxUMUqvz6dT91Iuk/y3IspbDsmzhh4v0YYuxOgjH+5EC95Z+1OVVSTr8xn3xHgAXYN07WyyE7sgwNnHMStASo1roKF281QOueJeW5CcapH9b/AlhAYZEDMxUFwTDO8PpIXZJw2LpL5CMDzAlI77Et6ckRvQU3aL2gE57qXGNzykQYq70T+kE7MDShbdaTgSk9BN487BcyXND187ii5U0XRBTQ8Uleo9kxdh4cacjOuv2WTPq2sw3DKfdIIMRso9u1ORPeMRzg+40JqpSB7qcBJhWlacgmcCOQ7PdF1Zgw0J4uhumNl01fjePfZEc1yRdvjPLetjtMrNe9ulWSei0OW1lDpF+wF02lN3eRLvpiTuw4NIjjeegGYNXGGpeEjrlEbf5ObL5oVcb3xgt4NjW1KtKSsougtNQr57Q/2ZgJ+ZE/dmDRpiQgZo8atTjbiG7O1eE3SCcTrX3fjF7P2c1hhQuKDpgL+MqINAgUyI/6u3WeiOPvFzt0yb7I2uWjh+6QsFSYqHhVJckoQq3HKDtPXi6nWkLBg1p4o/wTpWOhvdx0hN2qzv3jECfbS26DIbnt72uNPp3iGwSGIXPmsUvXQP4lV+vwopGHDXeC6R2WdbtGsSqikocCajg=",
+        "niceAntionUrl": "https://nice.checkplus.co.kr/CheckPlusSafekeyModel/checkplus.cb",
+        "safekey": "asddffgghsdfrtgt",
+        "nicePersonLogSeq": "89898989898989",
+        "alert":{
+            "title": "Safekey발급이 성공했습니다",
+            "desc": ""
+        }
+    }
+}

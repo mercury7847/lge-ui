@@ -1,0 +1,32 @@
+<div class="common-banner related-info">
+    <div class="banner">
+        <h3 class="banner-tit">LG제품에 관련된 정보를 확인하세요!</h3>
+        <div class="slide-wrap info-slider ui_carousel_slider">
+            <div class="indi-wrap">
+                <ul class="indi-conts ui_carousel_dots">
+                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                </ul>
+            </div>
+            <div class="slide-content ui_carousel_list">
+                <div class="slide-track ui_carousel_track">
+                    @@for (var i = 0; i < 5; i++) {
+                    <div class="slide-conts ui_carousel_slide">
+                        <div class="item">
+                            <a href="#" class="item-inner">
+                                <div class="img">
+                                    <img src="/lg5-common/images/dummy/@img-plan-list01.jpg" alt="{{이미지 정보}}">
+                                </div>
+                                <p class="txt">TV 일부 모델 파워보드 자발적 무상 교체 서비스 TV 일부 모델 파워보드 자발적 무상 교체 서비스</p>
+                            </a>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="slide-controls">
+                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+            </div>
+        </div>
+    </div>
+</div>

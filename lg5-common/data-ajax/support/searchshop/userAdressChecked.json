@@ -1,0 +1,14 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "userAdress": "서울 마포구 연남동 358-1",
+        "location":"",
+        "alert":{
+            "title": "등록된 주소 정보가 없습니다.",
+            "desc": ""
+        }
+    }
+}

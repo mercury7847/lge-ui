@@ -1,0 +1,350 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0034 {
+	position:relative;
+	&.stage-full {
+		max-width:1920px;
+		margin:0 auto;
+	}
+	&.stage-wide {
+		max-width:1600px;
+		margin:0 auto;
+	}
+
+	.visual-area {
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		z-index:1;
+		text-align:center;
+		overflow:hidden;
+		img {
+			width:auto;
+			max-width:100%;
+			height:auto;
+			vertical-align:top;
+		}
+		.animation-area {
+			top:0;
+			@include mobile {
+				position:relative;
+				top:auto;
+				transform:translateY(0);
+			}
+		}
+		@include mobile {
+			position:relative;
+			top:auto;
+			right:auto;
+			bottom:auto;
+			left:auto;
+		}
+	}
+	.text-overlay {
+		position:relative;
+		width:auto;
+		max-width:1460px;
+		margin:0 auto;
+		padding:80px 40px;
+		z-index:10;
+		@include mobile {
+			margin-top:12px;
+			padding:0;
+		}
+		.row {
+			margin-top:24px;
+			@include mobile {
+				margin-top:12px;
+			}
+			&:first-child {
+				margin-top:0;
+			}
+			.inner {
+				position:relative;
+				width:calc(50% - 12px);
+				max-width:678px;
+				&.col-left {
+					margin-right:auto;
+				}
+				&.col-right {
+					margin-left:auto;
+				}
+				&.text-left {
+					text-align:left;
+				}
+				&.text-center {
+					text-align:center;
+				}
+				&.text-right {
+					text-align:right;
+				}
+				@include mobile {
+					display:block;
+					width:100%;
+					max-width:100%;
+				}
+				.img-bg {
+					position:relative;
+					width:100%;
+					height:0;
+					padding-top:58.4%;
+					z-index:20;
+					@include mobile {
+						padding-top:97.2%;
+					}
+					img {
+						position:absolute;
+						top:0;
+						left:0;
+						width:100%;
+						height:auto;
+						vertical-align:top;
+					}
+				}
+				.text-wrap {
+					position:absolute;
+					top:0;
+					right:0;
+					bottom:0;
+					left:0;
+					padding:40px;
+					z-index:30;
+					@include mobile {
+						padding:30px 16px;
+					}
+					p {
+						margin-top:8px;
+					}
+					.title {
+                        h2 {
+                            @include title-h4;
+                        }
+						&.title-h1 * {
+                            @include title-h1;
+                        }
+                        &.title-h2 * {
+                            @include title-h2;
+                        }
+                        &.title-h3 * {
+                            @include title-h3;
+                        }
+                        &.title-h4 * {
+                            @include title-h4;
+                        }
+                        &.title-h5 * {
+                            @include title-h5;
+                        }
+                        &.title-h6 * {
+                            @include title-h6;
+                        }
+					}
+					.sub-title {
+						@include bodycopy(h3, h3);
+						margin-top:8px;
+						font-weight:700;
+						@include mobile {
+							margin-top:6px;
+						}
+					}
+					.body-copy {
+						@include bodycopy(h3, h3);
+					}
+					.cta-box {
+						@include cta-btn;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .component.KRC0034 {
+                .inner.no-imgbg {
+                    @include mobile {
+                        @if $bg == lightgray {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#000 !important;
+                                * {
+                                    color:#000 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#000 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#000 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == dark {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#fff !important;
+                                * {
+                                    color:#fff !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#fff !important;
+                                    color:#fff !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#fff !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == black {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#fff !important;
+                                * {
+                                    color:#fff !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#fff !important;
+                                    color:#fff !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#fff !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == white {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#000 !important;
+                                * {
+                                    color:#000 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#000 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#000 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        } @else if $bg == gray {
+                            .fc-black,
+                            .fc-dark-gray,
+                            .fc-gray,
+                            .fc-lightgray,
+                            .fc-white {
+                                color:#000 !important;
+                                * {
+                                    color:#000 !important;
+                                }
+                            }
+                            .btn.border {
+                                &.bc-black,
+                                &.bc-white {
+                                    border-color:#222 !important;
+                                    color:#000 !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        color:#fff !important;
+                                    }
+                                }
+                            }
+                            .text-link {
+                                &.bc-black,
+                                &.bc-white {
+                                    color:#000 !important;
+                                    &::after {
+                                        background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

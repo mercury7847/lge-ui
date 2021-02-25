@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>모델명 확인 방법</span></button>
+    </div>
+
+
+    <!-- 모델명 확인 방법 popup (마이페이지에서도 공통으로 호출. include file로 수정 20.11.27 vinylc YMR) -->
+    @@include('./common/popup/CSRF6005_pop.html', {
+        popupID: 'popup'
+    })
+    <!-- // 모델명 확인 방법 popup (마이페이지에서도 공통으로 호출. include file로 수정 20.11.27 vinylc YMR) -->
+</body>
+</html> 

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: [
+            "CS/CS",
+            "support/support",
+            "support/center-info"
+        ]
+    })
+<body>
+    <div class="wrap">
+        <div class="container">
+            <!-- 센터찾기 -->
+            <div class="contents support store-info-wrap" data-shop-name="휴대폰서비스 강남본점 분점" data-latitude="37.5211127" data-longitude="127.0314202" data-sms-url="/lg5-common/data-ajax/support/searchShop/sms.json">
+                <div class="cont-wrap store-info-inner">
+                    <div class="headline">
+                        <h1 class="h1-tit">센터 정보</h1>
+                    </div>
+                    <div class="tit-wrap">
+                        <div class="tit-info">
+                            <h2 class="name"><span class="blind">매장명</span>휴대폰서비스 강남본점 분점</h2>
+                        </div>
+                        <div class="tit-info-r">
+                            @@include('./common/modules/tooltip.html', {
+                                "share" : true,
+                                "type" : "include",
+                                "fixed" : "fixed-right",
+                                "page" : "tooltip-share"
+                            })
+
+                            <!-- 2021-01-27 수정 -->
+                            <div class="link-btn-wrap">
+                                <a href="#n" class="link-btn btn-toggle-sms"><span>센터위치 문자받기</span></a>
+                                <a href="#n" class="link-btn btn-store-consult"><span>방문 예약</span></a> <!-- 2021.02.04 문구 수정 -->
+                            </div>
+                            <!-- 2021-01-27 수정 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 2021-01-27 추가 : 문자 전송 레이어 -->
+                    <div class="toggle-layer sms-clause-layer">
+                        <input type="hidden" id="seq" name="seq" value="">
+                        <div class="layer-inner">
+                            <div class="layer-tit">
+                                <h3 class="tit">문자 전송</h3>
+                            </div>
+                            <div class="layer-content">
+                                <div class="form-infos">
+                                    <p class="req">필수 입력 항목</p>
+                                </div>
+    
+                                <!-- 비회원일 경우 노출 : 개인정보 수집 동의 영역 -->
+                                <div class="agree-wrap active">
+                                    <div class="input-info">
+                                        <div class="agree-tit">
+                                            <p class="tit req">개인정보 수집 및 이용에 대한 동의</p>
+                                        </div>
+                                        <div class="agree-cont-wrap">
+                                            <div class="agree-cont-box">
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                            </div>
+                                            <div class="agree-input">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" name="smsAgreeCheck" id="smsAgreeCheck" value="N" data-required="true" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." required>
+                                                    <label for="smsAgreeCheck">동의합니다.</label>
+                                                </span>
+                                            </div>
+                                            <div class="err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- //비회원일 경우 노출 : 개인정보 수집 동의 영역 -->
+    
+    
+                                <div class="form-wrap">
+                                    <div class="form-row">
+                                        <div class="form-col">
+                                            <dl class="forms align-type-col">
+                                                <dt class="tit">
+                                                    <label for="smsCenterInfoValue">서비스 센터 정보</label>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-wrap"><input type="text" id="smsCenterInfoValue" readonly value="홍대역 서비스 센터"></div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="form-col">
+                                            <dl class="forms align-type-col">
+                                                <dt class="tit">
+                                                    <label for="smsPhoneNo" class="req">휴대폰 정보</label>
+                                                </dt>
+                                                <dd class="conts">
+													<!-- 2021.02.10 type number로 수정 -->
+                                                    <div class="input-wrap"><input type="number" id="smsPhoneNo" name="smsPhoneNo" placeholder="휴대폰 번호 입력" data-required="true" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" required disabled></div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "서비스센터 정보를 문자로 발송해 드립니다. ",
+                                        "통신사 사정으로 문자 전송이 지연될 수 있습니다."
+                                    ]
+                                })
+                                <div class="btn-wrap">
+                                    <button type="button" class="btn gray btn-cancel"><span>취소</span></button>
+                                    <button type="button" class="btn btn-apply"><span>전송</span></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
+                    </div>
+                    <!-- 2021-01-27 추가 : 문자 전송 레이어 -->
+                    
+                    <div class="detail-info-wrap">
+                        <div class="left-box">
+                            <div class="manager-info">
+                                <div class="img-wrap">
+                                    <div class="img"><img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="지점장 사진"></div>
+                                </div>
+                                <div class="txt-wrap">
+                                    <span class="name"><span class="blind">이름</span>홍길동</span>
+                                    <span class="area">강남본점 지점장</span>
+                                    <p class="txt"><span class="blind">인사말</span>“강남본점 휴대폰서비스센터를 찾아주셔서 감사합니다. 친철하고 편안하게 모시겠습니다.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-box">
+                            <!-- 센터 안내 -->
+                            <div class="info-list">
+                                <div class="info-tit-wrap"> 
+                                    <h3 class="h3-tit">센터 안내</h3>
+                                </div>
+                                <dl>
+                                    <dt>운영시간</dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>
+                                                <span class="key">평<span class="sp">일</span> :</span>
+                                                <span class="value">10:30~20:30</span>
+                                            </li>
+                                            <li>
+                                                <span class="key">토요일 :</span>
+                                                <span class="value">10:30~20:30</span>
+                                                <p class="bullet-text">토요일은 12시30분에 접수가 마감 되오니 양해해 주시기 바랍니다.</p><!-- 2021.02.17 bullet-text 추가 -->
+                                            </li>
+                                            <!-- 2021.02.17 일요일/공휴일 항목 합침 -->
+                                            <li>
+                                                <span class="key">일요일/공휴일 :</span>
+                                                <span class="value">휴무</span>
+                                            </li>
+                                            <!-- //2021.02.17 일요일/공휴일 항목 합침 -->
+                                        </ul>
+                                        <!-- 2021.02.17 불릿 리스트 삭제 -->
+                                        <!-- @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "토요일은 12시30분에 접수가 마감 되오니 양해해 주시기 바랍니다."
+                                            ]
+                                        }) -->
+                                        <!-- //2021.02.17 불릿 리스트 삭제 -->
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>
+                                        <div class="addr-info">
+                                            <span class="key">[지번]</span>
+                                            <span class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 LG BEST SHOP</span>
+                                        </div>
+                                        <div class="addr-info">
+                                            <span class="key">[도로명]</span>
+                                            <span class="addr">서울특별시 강남구 도산대로 403 (청담동) LG BEST SHOP</span>
+                                        </div> 
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>고객<br>대기 상태</dt>
+                                    <dd>
+                                        <!-- 2021.01.18 status 마크업 수정 -->
+                                        <div class="status-icon skyblue">
+                                            <strong class="status">원활</strong>
+                                        </div>
+                                        
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!-- //센터 안내 -->
+
+                            <!-- 센터 정보 -->
+                            <div class="info-list">
+                                <h3 class="h3-tit">센터 정보</h3>
+
+                                <!-- 2021-01-27 삭제 -->
+                                <!-- link-btn-wrap mo -->
+                                <!-- 2021-01-27 삭제 -->
+                                <dl>
+                                    <dt>서비스<br>가능 제품</dt>
+                                    <dd>
+                                        <!-- 2021.02.04 status 마크업 위치 변경 -->
+                                        <ul class="opt-list">
+                                            <li class="opt-mobile">
+                                                <span class="name">모바일</span>
+                                            </li>
+                                            <li class="opt-it-monitor">
+                                                <span class="name">IT/모니터</span>
+                                            </li>
+                                            <li class="opt-small-appliances">
+                                                <span class="name">소형가전</span>
+                                            </li>
+                                            <li class="opt-expendables">
+                                                <span class="name">소모품</span>
+                                            </li>
+                                        </ul>
+
+                                        <!-- 2021.02.04 마크업 수정 -->
+                                        <ul class="item">
+                                            <li>
+                                                가전전제품.휴대폰.에어컨.PC [단,ODD관련제품은 당일수리불가]
+                                            </li>
+                                        </ul>
+
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>센터 소식</dt>
+                                    <dd>
+
+                                        <ul class="item dir-v"> <!-- 2021.02.04 dir-v 클래스 추가 -->
+                                            <li>11:00~12:00 / 15:00~16:00</li>
+                                            <li>이 시간을 피해 방문하시면 보다 빠른 서비스를 받으실 수 있습니다.</li>
+                                        </ul>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "제품 서비스를 위해 센터를 방문하실 경우, 서비스 홈페이지의 [센터방문예약] 메뉴를 통해 사전 예약하시면 더욱 편리하고, 신속하게 서비스를 받으실수 있습니다."
+                                            ]
+                                        })
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>공동 입점 LG BEST SHOP </dt>
+                                    <dd>
+                                        <ul class="item">
+                                            <li>
+                                                LG BEST SHOP 동교점
+                                                <a href="/html/CS/CSRF6037.html" class="btn-link">매장 위치 및 정보</a> <!-- 2021.02.04 문구 수정-->
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!-- //센터 정보 -->
+
+                            <!-- 오시는 길 -->
+                            <div class="info-list">
+                                <div class="info-tit-wrap">
+                                    <h3 class="h3-tit">오시는 길</h3>
+                                    <a href="#" target="_balnk" class="btn size dark-gray searchRoad-btn"><span>길찾기</span></a> <!-- 2021.02.04 class 수정-->
+                                </div>
+                                <div class="map">
+                                </div>
+                                <dl>
+                                    <dt>위치 안내</dt>
+                                    <dd>수원 종합 버스터미널 맞은 편 LG BEST SHOP 3층</dd>
+                                </dl>
+                                <div class="tabs-wrap border-type ui_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1">버스<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2">자가용</a></li>
+                                        <li><a href="#tab3">지하철</a></li>
+                                        <li><a href="#tab4">주차장</a></li>
+                                    </ul>
+                                    <div id="tab1" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
+                                                "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
+                                                "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
+                                                "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab2" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab3" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
+                                            ]
+                                        })
+                                    </div>
+                                    <div id="tab4" class="tabs-contents">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "강남본점 건물 22대 주차 가능합니다"
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //오시는 길 -->
+
+                            <!-- 매장사진 -->
+                            <div class="info-list photo">
+                                <h3 class="h3-tit">센터 전경</h3>
+                                <div class="slide-wrap ui_carousel_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <!-- 2021-01-27 cont_wrap class > slide_inner로 변경 -->
+                                                <div class="slide_inner">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <!-- 2021-01-27 cont_wrap class > slide_inner로 변경 -->
+                                                <div class="slide_inner">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <!-- 2021-01-27 cont_wrap class > slide_inner로 변경 -->
+                                                <div class="slide_inner">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <!-- 2021-01-27 cont_wrap class > slide_inner로 변경 -->
+                                                <div class="slide_inner">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //slide -->
+                                        </div>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //매장사진 -->
+
+                            <div class="notice-info">
+                                <div class="txt">“<span class="point">강남본점</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
+                                <a href="#n" class="btn dark-gray size-m"><span>평가하기</span></a>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                    <!-- 2021-01-27 수정 -->
+                    <div class="btn-group bottom-btn-wrap">
+                        <!-- 2021.02.23 data-goto-url 추가 -->
+                        <button type="button" class="btn" data-goto-url="/support"><span>고객지원 메인</span></button>
+                    </div>
+                    
+                    <!-- <footer class="footer">
+                        
+                    </footer> -->
+                    <!-- 2021-01-27 수정 -->
+
+                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                </div>
+            </div>
+            <!-- // 센터찾기 -->
+        </div>
+
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/findCenterDetail.min.js"></script>
+</body>
+</html>

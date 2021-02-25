@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support video-guide">
+                <div class="cont-wrap">
+
+                    <div class="board-view-wrap">
+                        <div class="board-view">
+                            <div class="board-view-head">
+                                <h1 class="head-title">자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요[19년]</h1>
+                                <!-- 2021.02.24. 중복된 엘리먼트를 하나로 합치기 : head-infos -->
+                                <ul class="head-infos">
+                                    <li class="point">TV/프로젝터>올레드</li>
+                                    <li>기능관련 > TV 사용시간 확인</li>
+                                    <li>2020.06.21</li>
+                                    <li>조회 3,021</li>
+                                </ul>
+                                <!-- //2021.02.24. 중복된 엘리먼트를 하나로 합치기 : head-infos -->
+                            </div>
+                            <div class="board-view-sub">
+                                <div class="tooltip-wrap share"><!-- 활성화시 active -->
+                                    <a href="#n" class="tooltip-icon ui_tooltip-target"><span class="blind">제품 공유하기</span></a>
+                                    <div class="tooltip-box fixed-right">
+                                        <span class="title">공유하기</span>
+                                        <div class="sns-wrap">
+                                            <!-- 
+                                                data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                                data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                                data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                                data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                        
+                                                각 sns 버튼에 적용.
+                                            -->
+                                            <ul class="sns-list">
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-view-body">
+                                <div class="view-content">
+                                    <img src="/lg5-common/images/dummy/@img-detail-1.jpg" alt="">
+                                </div>
+
+                                <div class="survey-banner-wrap">
+                                    <div class="banner">
+                                        <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</p>
+                                        <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="common-banner" id="serviceMenu">
+                            <div class="banner">
+                                <h3 class="banner-tit">원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.</h3><!-- 2021.02.24. 텍스트 수정 -->
+                                <div class="service-list-wrap">
+                                    <ul class="service-list">
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_chat.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">채팅상담</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_request-reservation.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">전화상담 예약</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_engineer-reservation.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">출장 서비스 예약</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_installation-reservation.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">설치/철거 예약</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_center-reservation.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">센터방문 예약</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon">
+                                                    <img src="/lg5-common/images/icons/icon_store-reservation.svg" alt=""> 
+                                                </div>
+                                                <p class="tit">매장방문 예약</p>
+                                            </a>
+                                        </li>
+                                        <!-- 2021.02.24. 이메일 문의 삭제 -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="common-banner gray">
+                            <div class="banner">
+                                <div class="banner-inner">
+                                    <h3 class="banner-tit">직접 방문해서 A/S를 받으시겠습니까?</h3>
+                                    <div class="btn-wrap">
+                                        <a href="#" class="btn border size-m"><span>서비스 센터 찾기</span></a><!-- 2021.02.24. 버튼에 class 추가 : size-m -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="board-navi">
+                            <a href="#" class="navi">
+                                <span class="navi-label">이전글</span>
+                                <span class="navi-desc">냉장고 Wi Fi 제품등록 방법이 궁금해요</span>
+                            </a>
+                            <a href="#" class="navi">
+                                <span class="navi-label">다음글</span>
+                                <span class="navi-desc">LG전자 노트북 15U780 하드디스크 설치하기</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="btn-group center">
+                        <a href="/html/support/CSTF2100.html" class="btn"><span>목록</span></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>     
+
+    <!-- 컨텐츠 만족도 조사 팝업 -->
+    @@include('./CS/CSRF6065.html')
+     
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 

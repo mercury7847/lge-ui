@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M0 64L64 64 64 0 0 0z" transform="translate(-1484 -5128) translate(269 286) translate(235 4700) translate(0 110) translate(912) translate(24 32) translate(44)"/>
+                                    <g stroke-width="2">
+                                        <path stroke="#DA0F47" d="M13.2 25.406V3.2c0-1.767 1.433-3.2 3.2-3.2H44c1.767 0 3.2 1.433 3.2 3.2V28h0" transform="translate(-1484 -5128) translate(269 286) translate(235 4700) translate(0 110) translate(912) translate(24 32) translate(44) translate(3.8 9)"/>
+                                        <path stroke="#DA0F47" d="M26.2 0h8v11.2c0 .442-.358.8-.8.8H27c-.442 0-.8-.358-.8-.8V0h0z" transform="translate(-1484 -5128) translate(269 286) translate(235 4700) translate(0 110) translate(912) translate(24 32) translate(44) translate(3.8 9)"/>
+                                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M39.803 31.918l11.812-4.513c1.437-.549 3.047.17 3.596 1.608l.008.021c.563 1.51-.068 3.205-1.482 3.979L33.408 44.136c-1.004.55-2.196.642-3.274.254l-12.98-4.67c-.868-.313-1.785-.473-2.708-.473H11.2h0V25.175l5.733-.84c1.5-.219 3.03-.008 4.414.609l6.417 2.858h9.27c1.53 0 2.77 1.24 2.77 2.769 0 1.528-1.24 2.768-2.77 2.768H26.636h0c-1.715.193-2.572 1.118-2.572 2.778" transform="translate(-1484 -5128) translate(269 286) translate(235 4700) translate(0 110) translate(912) translate(24 32) translate(44) translate(3.8 9)"/>
+                                        <path stroke="#000" d="M9.533 22H2.867c-.46 0-.877.187-1.179.488-.301.302-.488.718-.488 1.179v18.666c0 .46.187.877.488 1.179.302.301.718.488 1.179.488h6.666c.46 0 .877-.187 1.179-.488.301-.302.488-.718.488-1.179V23.667c0-.46-.187-.877-.488-1.179-.302-.301-.718-.488-1.179-.488z" transform="translate(-1484 -5128) translate(269 286) translate(235 4700) translate(0 110) translate(912) translate(24 32) translate(44) translate(3.8 9)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

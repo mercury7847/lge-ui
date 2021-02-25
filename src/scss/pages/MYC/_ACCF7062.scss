@@ -1,0 +1,404 @@
+.notice-contents {
+    position:relative;
+    max-width:1066px;
+    margin:0 auto;
+    // padding:32px 0 0;
+    @include mobile {
+        // padding:20px 20px 60px;
+    }
+    .setting-btns {
+        position:absolute;
+        top:12px;
+        left:144px;
+        z-index:1;
+        font-size:0;
+        @include mobile {
+            top:9px;
+            right:0;
+            left:auto;
+            text-align:right;
+        }
+        li {
+            display:inline-block;
+            position:relative;
+            vertical-align:top;
+            & + li:before {
+                content:' ';
+                display:inline-block;
+                width:1px;
+                height:10px;
+                margin:0 8px;
+                background-color:#ddd;
+                line-height:24px;
+                vertical-align:middle;
+                @include mobile {
+                    margin:0 6px;
+                }
+            }
+            .btn-text {
+                font-size:14px;
+                line-height:24px;
+                vertical-align:middle;
+                &:disabled {
+                    color:#000;
+                }
+                @include mobile {
+                    text-decoration:none;
+                }
+            }
+            &:first-child {
+                margin-left:0;
+            }
+        }
+    }
+    .notice-list-wrap {
+        position:relative;
+        .notice-lists {
+            position:relative;
+            padding-top:56px;
+            @include mobile {
+                padding-top:65px;
+            }
+            &::before {
+                content:' ';
+                position:absolute;
+                top:0px;
+                bottom:0;
+                left:22px;
+                width:4px;
+                border-radius:1px;
+                background:#f4f4f4;
+                @include mobile {
+                    left:19px;
+                }
+            }
+            &:after {
+                content:' ';
+                display:inline-block;
+                width:48px;
+                height:48px;
+                position:absolute;
+                top:0;
+                left:0;
+                background:url('/lg5-common/images/icons/icon-bell-48.svg') no-repeat 0 0;
+                @include mobile {
+                    width:40px;
+                    height:40px;
+                    background-size:40px 40px;
+                }
+            }
+            .list {
+                position:relative;
+                margin-top:40px;
+                &:first-child {
+                    margin-top:0;
+                }
+                &.read * {
+                    color:#aaa !important;
+                    .bottom-btn .btn {
+                        color:#000 !important;
+                    }
+                }
+                .notice-box {
+                    position:relative;
+                    padding-left:143px;
+                    @include mobile {
+                        padding:32px 0 0 48px;
+                    }
+                    .icons {
+                        position:absolute;
+                        top:0;
+                        left:18px;
+                        // width:12px;
+                        // height:12px;
+                        // border-radius:50%;
+                        // background:#fff url('/lg5-common/images/icons/icon-notice.svg') center no-repeat;
+                        font-size:0;
+                        em {
+                            position:absolute;
+                            top:7px;
+                            left:0;
+                            width:12px;
+                            height:12px;
+                            border-radius:50%;
+                            &.on {
+                                background:#F04E3E;
+                            }
+                            &.off {
+                                background:#ccc;
+                            }
+                        }
+                        .date {
+                            display:inline-block;
+                            padding-left:28px;
+                            color:#767676;
+                            font-size:14px;
+                            line-height:24px;
+                        }
+                        @include mobile {
+                            // width:40px;
+                            // height:40px;
+                            // background-size:20px;
+                            left:16px;
+                            em {
+                                width:10px;
+                                height:10px;
+                            }
+                            .date {
+                                padding-left:32px;
+                            }
+                        }
+                    }
+                    .date {
+                        margin-bottom:8px;
+                        color:$color-default;
+                        font-size:16px;
+                        line-height:24px;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .box {
+                        display:inline-block;
+                        position:relative;
+                        width:auto;
+                        max-width:100%;
+                        padding:32px 72px 32px 32px;
+                        border-radius:8px;
+                        background:#fff;
+                        box-shadow:2px 4px 16px rgba(0,0,0,0.14);
+                        @include mobile {
+                            display:block;
+                            padding:20px;
+                        }
+                        .flag-wrap {
+                            margin-bottom:4px;
+                        }
+                        .tit {
+                            padding-right:16px;
+                            color:$color-default;
+                            font-size:16px;
+                            line-height:26px;
+                            font-weight:700;
+                            @include mobile {
+                                padding-right:40px;
+                            }
+                        }
+                        .desc {
+                            margin-top:8px;
+                            color:$color-default;
+                            font-size:16px;
+                            line-height:26px;
+                            em {
+                                color:#ec455a;
+                                font-weight:bold;
+                            }
+                            @include mobile {
+                                margin-top:12px;
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                        .img {
+                            margin-top:12px;
+                            margin-bottom:40px;
+                            img {
+                                max-width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                            &.coupon {
+                                max-width:180px;
+                            }
+                            @include mobile {
+                                margin-bottom:20px;
+                            }
+                        }
+                        .more-view {
+                            margin-top:32px;
+                            padding:24px;
+                            border-radius:8px;
+                            background:#f4f4f4;
+                            @include mobile {
+                                margin-top:20px;
+                                padding:20px 12px;
+                                border-radius:4px;
+                            }
+                            .name {
+                                color:$color-default;
+                                font-size:14px;
+                                line-height:20px;
+                                font-weight:700;
+                                @include mobile {
+                                    line-height:18px;
+                                }
+                            }
+                            .info {
+                                margin-top:4px;
+                                font-size:0;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
+                                li {
+                                    display:inline-block;
+                                    position:relative;
+                                    margin-right:12px;
+                                    padding-right:13px;
+                                    vertical-align:top;
+                                    &::after {
+                                        content:' ';
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        width:1px;
+                                        height:12px;
+                                        margin-top:-6px;
+                                        background:#ddd;
+                                    }
+                                    &:last-child {
+                                        margin-right:0;
+                                        padding-right:0;
+                                        &::after {
+                                            display:none;
+                                        }
+                                    }
+                                    @include mobile {
+                                        display:block;
+                                        margin-right:0;
+                                        padding-right:0;
+                                        &::after {
+                                            display:none;
+                                        }
+                                    }
+                                    dl {
+                                        font-size:0;
+                                        dt, dd {
+                                            display:inline-block;
+                                            vertical-align:top;
+                                            color:$color-default;
+                                            font-size:14px;
+                                            line-height:20px;
+                                            @include mobile {
+                                                line-height:18px;
+                                            }
+                                        }
+                                        dt {
+                                            margin-right:2px;
+                                            &::after {
+                                                content:' :';
+                                            }
+                                        }
+                                        i {
+                                            margin:0 4px;
+                                        }
+                                    }
+                                }
+                            }
+                            .btns {
+                                margin-top:20px;
+                                .btn {
+                                    min-width:auto;
+                                    padding:7px 15px;
+                                    border-color:#EC455A;
+                                    color:#EC455A;
+                                    font-size:14px;
+                                    line-height:20px;
+                                }
+                                @include mobile {
+                                    margin-top:12px;
+                                    .btn {
+                                        min-width:100%;
+                                        padding:10px 26px;
+                                    }
+                                }
+                            }
+                        }
+                        .bottom-btn {
+                            margin-top:24px;
+                            @include mobile {
+                                margin-top:20px;
+                            }
+                        }
+                        .btn-del {
+                            position:absolute;
+                            top:24px;
+                            right:24px;
+                            width:24px;
+                            height:24px;
+                            font-size:0;
+                            &::before, &::after {
+                                content:' ';
+                                position:absolute;
+                                top:50%;
+                                left:50%;
+                                width:2px;
+                                height:20px;
+                                margin-top:-10px;
+                                margin-left:-1px;
+                                border-radius:2px;
+                                background:#222;
+                            }
+                            &::before {
+                                transform:rotate(45deg);
+                            }
+                            &::after {
+                                transform:rotate(-45deg);
+                            }
+                            @include mobile {
+                                top:20px;
+                                right:20px;
+                                width:24px;
+                                height:24px;
+                                &::before, &::after {
+                                    height:18px;
+                                    margin-top:-9px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .notice-txt {
+            margin-top:40px;
+            padding-left:60px;
+            color:$color-default;
+            font-size:16px;
+            line-height:24px;
+            em {
+                font-weight:700;
+            }
+            @include mobile {
+                margin-top:20px;
+                padding-left:48px;
+            }
+        }
+        .btn-moreview {
+            margin-top:32px;
+            @include mobile {
+                margin-top:24px;
+            }
+        }
+        .nodata {
+            padding:140px 0;
+            color:#767676;
+            font-size:16px;
+            text-align:center;
+            line-height:26px;
+            &::before {
+                content:' ';
+                display:block;
+                height:60px;
+                margin-bottom:16px;
+                background:url('/lg5-common/images/icons/icon-nodata-60.svg') center no-repeat;
+                background:auto 100%;
+            }
+            @include mobile {
+                padding:40px 0;
+                font-size:14px;
+                line-height:22px;
+            }
+        }
+    }
+}

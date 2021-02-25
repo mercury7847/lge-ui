@@ -1,0 +1,79 @@
+@@if(context.checkOption) {
+<li class="order-item @@itemClass is-check" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+}
+@@if(!context.checkOption) {
+<li class="order-item @@itemClass" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+}
+    @@if(context.number) {
+    <div class="order-number">
+        <span class="text">청약번호</span>
+        <span class="number">OR2022330343</span>
+    </div>
+    }
+    <div class="item-image"><a href="#n"><img src="@@visual" alt=""></a></div>
+    <div class="product-info">
+        <!-- 210201 수정 - .bg-type -> bar-type 클래스 변경 -->
+        <div class="flag-wrap bar-type">
+            @@flags
+        </div>
+        <div class="item-name"><a href="#n">@@modelName</a></div>
+        <!-- 20201221 수정 (주요스펙 옵션 추가됨) -->
+        <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
+        <div class="sibling-option">
+            <p>주요스펙1</p>
+            <p>주요스펙2</p>
+        </div>
+        <!-- // 20201221 수정 -->
+        @@if(context.amountInfo) {
+        <div class="item-amount-info">청약 후 결제예정금액 1,222,000원</div>
+        }
+        <div class="item-options2">
+            @@options
+        </div>
+    </div>
+    @@if(context.price) {
+    <div class="product-payment">
+        <div class="amount">
+            <div class="price">
+                @@if(context.originalPrice) {
+                <p class="original">@@originalPrice</p>
+                }
+                <p class="total">@@price</p>
+            </div>
+            @@if(context.tooltip) {
+                <a href="#" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
+            }
+        </div>
+        @@if(context.btn) {
+        <div class="btn-area">
+            <!-- 210222 수정 [버튼명 변경] -->
+            <button type="button" class="btn border size-m" data-url="#n" @@btn.disabled><span>@@btnValue</span></button><!-- 20201221 수정 (버튼 클래스 수정) -->
+        </div>
+        }
+    </div>
+    }
+    @@if(context.orderMessage) {
+    <div class="state-message">
+        <div class="text-box">
+            @@orderMessage
+        </div>
+    </div>
+    }
+    @@if(context.message) {
+    <!-- 210222 수정 [텍스트 수정] -->
+    <div class="disabled-message">
+        <p class="err-msg">@@message</p>
+    </div>
+    }
+    @@if(context.checkOption) {
+    @@for ( var i=0; i < check.length; i++ ) {
+    <span class="`+check[i].class+`">
+        <input type="checkbox" id="`+check[i].id+`" name="`+check[i].id+`" `+check[i].checked+`>
+        <label for="`+check[i].id+`"><span class="blind">`+check[i].text+`</span></label>
+    </span>
+    }
+    <div class="item-delete">
+        <button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button>
+    </div>
+    }
+</li>

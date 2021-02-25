@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>LGE</title>
+    <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+    <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+    <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css" />
+    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+    <script src="/lg5-common/js/app.common.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WL297VL');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <button type="button" class="btn-opt-login" id="btn-opt-open"><span>옵션 열기</span></button>
+    <br>
+    <br>
+    <button type="button" class="btn-opt-login" id="btn-mkt"><span>마케팅 수신동의 모달 열기</span></button>
+    <br>
+    <br>
+    <button type="button" class="btn-opt-login" id="btn-barcode"><span>바코드로 제품등록</span></button>
+
+    <div class="lyr-opt-panel">
+        <div class="main-panel" aria-hidden="true" aria-labelledby="main-panel-title" tabindex="0">
+            <!-- <div class="gap"></div> -->
+            <div class="opt-header">
+                <h1 id="main-panel-title">설정</h1>
+                <button type="button" class="btn-opt-close"><span>설정 닫기</span></button>
+            </div>
+
+            <div class="opt-container">
+                <div class="opt-controls">
+                    <h2>로그인 설정</h2>
+                    <!-- 로그인 전 -->
+                    <!--
+                    <div>
+                        <p class="txt-login-guide">로그인을 해주세요</p>
+                        <button type="button" class="btn-opt-login" id="btn-opt-login"><span>로그인</span></button>
+                    </div>
+                    -->
+                    <!-- //로그인 전 -->
+
+                    <!-- 로그인 후 -->
+                    <div>
+                        <p>김엘지</p>
+                        <button type="button" class="btn-opt-login" id="btn-opt-logout"><span>로그아웃</span></button>
+                    </div>
+                    <!-- //로그인 후 -->
+                    <div>
+                        <p>자동 로그인</p>
+                        <div class="opt-switch">
+                            <label for="autoLogin">
+                                <input type="checkbox" id="autoLogin" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opt-controls">
+                    <h2>알림</h2>
+                    <div>
+                        <a href="javascript:void(0);" class="btn-link btn-ctrl-panel" data-panel=".alarm-setting" role="button">알림설정</a>
+                    </div>
+                </div>
+
+                <div class="opt-controls">
+                    <h2>앱 권한</h2>
+                    <div>
+                        <p>위치정보 이용동의</p>
+                        <div class="opt-switch">
+                            <label for="locInfo">
+                                <input type="checkbox" id="locInfo">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opt-controls">
+                    <div>
+                        <a href="javascript:void(0);" class="btn-link btn-ctrl-panel" data-panel=".source-license" role="button">오픈소스 라이선스</a>
+                    </div>
+                </div>
+
+                <div class="opt-controls">
+                    <h2>버전정보</h2>
+                    <div class="v-align">
+                        <p>
+                            <span>설치 버전 v_00.00</span>
+                            <span>최신버전 <em>v_00.00</em></span>
+                        </p>
+                        <!-- 비활성화 -->
+                        <button type="button" class="btn-opt-update" disabled><span>업데이트</span></button>
+                        <!-- //비활성화 -->
+
+                        <!-- 활성화 -->
+                        <!--
+                        <button type="button" class="btn-opt-update on"><span>업데이트</span></button>
+                        -->
+                        <!-- //활성화 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //설정 메인 -->
+
+        <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
+            <div class="opt-header type-sub">
+                <h1 id="sub-panel-title01">알림설정</h1>
+                <button type="button" data-panel=".alarm-setting" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+            </div>
+
+            <div class="opt-container">
+                <div class="opt-controls">
+                    <div>
+                        <p>푸시 알림 받기</p>
+                        <div class="opt-switch">
+                            <label for="pushAlarm">
+                                <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 안드로이드 인 경우에만 사용 -->
+                    <div class="disabled">
+                        <p>배지 알림 받기</p>
+                        <div class="opt-switch">
+                            <label for="badgeAlarm">
+                                <input type="checkbox" id="badgeAlarm" disabled>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- //안드로이드 인 경우에만 사용 -->
+                </div>
+
+                <div class="opt-controls">
+                    <div>
+                        <p>마케팅 푸시 알림 받기</p>
+                        <div class="opt-switch">
+                            <label for="mktPushAlarmChk">
+                                <input type="checkbox" id="mktPushAlarmChk">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="txt-guide">광고성 알림은 에티켓 시간설정과 상관없이 <br><span aria-current="time" aria-label="오후9시부터 오전8시">21:00~08:00</span>에는 발송되지 않습니다.</p>
+                </div>
+            </div>
+        </div>
+        <!-- //알림성정 -->
+
+        <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
+            <div class="opt-header type-sub">
+                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
+                <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+            </div>
+            <div class="opt-container">
+                <div class="opt-controls">
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur numquam, aliquid facilis dignissimos sed obcaecati at corrupti nihil quod atque facere voluptates iusto exercitationem ex nisi? Ea architecto consectetur nulla.<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iste excepturi nobis laudantium quidem asperiores suscipit unde, atque ipsum officiis at debitis architecto labore molestiae dolorem cumque voluptas, praesentium id.<br>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sapiente dicta rerum ipsa voluptate, minima odit nulla, facere optio, neque at? Consectetur animi commodi placeat nesciunt distinctio harum magnam dolores!<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut beatae mollitia praesentium iure esse provident dolor explicabo possimus ex aperiam. Tempore, sed ratione tempora perspiciatis sint soluta molestias porro ipsa!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //오픈소스 라이선스 -->
+    </div>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+</html>

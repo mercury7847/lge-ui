@@ -1,0 +1,158 @@
+.tooltip-wrap {
+    display:inline-block;
+    position:relative;
+    height:24px;
+    margin-top:4px;
+    line-height:24px;
+    vertical-align:top;
+    @include mobile {
+        position:static;
+        padding-top:0;
+    }
+    .tooltip-icon {
+        display:block;
+        position:relative;
+        width:24px;
+        height:24px;
+        background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
+        background-size:100%;
+        font-size:0;
+        line-height:16px;
+        cursor:pointer;
+    }
+    &.active {
+        .tooltip-icon::before {
+            display:block;
+        }
+    }
+    .tooltip-box {
+        display:none;
+        position:absolute;
+        left:-8px;
+        top:28px;
+        min-width:460px;
+        padding:32px;
+        border-radius:8px;
+        background:#fff;
+        text-align:left;
+        box-shadow:1px 2px 10px 0 rgba(0, 0, 0, 0.22);
+        z-index:90;
+        p {
+            @include font-small;
+            font-weight:500;
+        }
+        .bullet-list {
+            color:#000;
+            font-weight:500;
+            &.only {
+                margin-top:0;
+            }
+        }
+        @include mobile {
+            position:absolute;
+            left:16px;
+            right:16px;
+            top:initial;
+            bottom:initial;
+            min-width:initial;
+            margin-top:8px;
+            padding:24px;
+            box-shadow:2px 4px 20px 0 rgba(0, 0, 0, 0.22);
+        }
+        &.fixed-right {
+            left:auto;
+            right:0;
+        }
+    }
+    &.active {
+        .tooltip-box {
+            display:block;
+        }
+    }
+    .btn-close {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        width: 32px;
+        height: 32px;
+        &:after {
+            content: '';
+            display:block;
+            width:32px;
+            height:32px;
+            background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
+            background-size: 100%;
+        }
+        @include mobile {
+            top: 24px;
+            right: 24px;
+            width: 24px;
+            height: 24px;
+            &:after {
+                width:24px;
+                height:24px;
+            }
+        }
+    }
+
+    &.share {
+        height:32px;
+        margin-top: 0;
+        padding:4px;
+        .tooltip-icon {
+            width: 24px;
+            height: 24px;
+            background: url('/lg5-common/images/icons/icon-share-24.svg') no-repeat 0 0;
+            line-height: 32px;
+        }
+        .tooltip-box {
+            top: 34px;
+            min-width: 348px;
+            //padding: 32px;
+            border-radius: 8px;
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+            line-height: 0;
+            @include mobile {
+                min-width: 320px;
+            }
+        }
+
+        .title {
+            display: block;
+            font-weight: 700;
+            @include font-large-1;
+        }
+        .sns-wrap {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px solid $color-default;
+            .sns-list {
+                > li {
+                    display: inline-block;
+                    &:not(:first-child) {
+                        margin-left: 20px;
+                        @include mobile {
+                            margin-left: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [data-fixed="fixed-right"] {
+        & + .tooltip-box {
+            left: auto;
+            right: 0;
+            padding-right:70px;
+        }
+    }
+}
+
+// 요소 + tooltip-wrap 일 때 감싸주는 DOM.
+.on-tooltip {
+    position:relative;
+    .tooltip-wrap {
+        margin-left:4px;
+    }
+}

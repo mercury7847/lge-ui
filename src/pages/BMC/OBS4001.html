@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>lge</title>
+        <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+        <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0003.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0037.min.css" />
+        <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+        <script src="/lg5-common/js/vcui.min.js"></script>
+        <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
+        <script src="/lg5-common/js/lg.common.min.js"></script>
+        <script src="/lg5-common/js/components/KRC0015.min.js"></script>
+    </head>
+    <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- 210126 수정 - 페이지 타이틀 추가 -->
+            <div class="page-header type2">
+                <h2 class="title">기획전</h2>
+            </div>
+
+            <!-- component -->
+            <!-- 210126 수정 - 컴포넌트 변경 KRC0015-hero -> KRC0003 -->
+            @@include('./common/partials/KRC0003.html', {
+                "common" : {
+                    "zero" : "zero-top zero-btm"
+                },
+                "slides" : [
+                    {
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-left type-wide",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
+                    },{
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-center type-narrow",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
+                    },{
+                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                        "boxAlign" : "box-align-right type-narrow",
+                        "eyebrow" : "LG전자 멤버십 앱",
+                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                        "btn" : "자세히 보기"
+                    }
+                ]
+            })
+            <!-- // component -->
+            <!-- component -->
+            <!-- 210126 수정 - 컴포넌트 변경 KRP0022 -> KRP0037 -->
+            @@include('./common/partials/KRP0037.html', {
+                "zero" : "zero-top zero-btm",
+                eventModalID:"event-modal-pop"
+            })
+            <!-- // component -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

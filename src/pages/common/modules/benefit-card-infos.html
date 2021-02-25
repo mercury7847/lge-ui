@@ -1,0 +1,128 @@
+<div class="inner">
+    @@if ( context.buyType ) {
+    <div class="card-image-wrap">
+        <span class="images"><img src="/lg5-common/images/BMC/@@cardImg.jpg" alt="" aria-hidden="true"></span>
+        <a href="#n" class="btn-link">카드 정보 자세히 보기</a>
+    </div>
+    }
+    @@if ( context.caresolutionType ) {
+    <div class="card-image-wrap type2">
+        <span class="images @@if(context.imgV){type2}"><img src="/lg5-common/images/BMC/@@cardImg.jpg" alt="" aria-hidden="true"></span>
+        <div class="application-btn">
+            <a href="#n" class="btn size-m border"><span>간편 신청하기</span></a>
+        </div>
+        @@include('./common/modules/bullet-list.html', {
+            "topBorder" : true,
+            "bulletTxt" : [
+                "카드 신청에서 납부정보 변경까지 자동으로 연결되는 간편 신청은 카드 발급을 위해서 제휴카드사에서 고객님에게 전화를 드릴 예정이니 전화를 꼭 받아주세요.<br>(☎1800-1264)",
+            ]
+        })
+        <a href="#n" class="btn-link">카드 정보 자세히 보기</a>
+    </div>
+    }
+    <div class="card-info-wrap">
+        @@if ( context.basic ) {
+        <div class="info-sect">
+            <h4 class="tit">@@basic.title</h4>
+            <ul class="benefit-lists">
+                @@for ( var i=0; i < basic.benefits.length; i++ ) {
+                <li>`+basic.benefits[i]+`</li>
+                }
+            </ul>
+        </div>
+        }
+        @@if ( context.cardFee ) {
+        <div class="info-sect">
+            <h4 class="tit">@@cardFee.title</h4>
+            <div class="tb-scroll">
+                <div class="tb_row tb-row-bl">
+                    @@if ( !context.cardFee.lotteType ) {
+                    <table>
+                        <caption>카드 종류에 따른 연회비 안내</caption>
+                        <colgroup>
+                            <col style="width:33.3%">
+                            <col style="width:33.3%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">@@cardFee.th1</th>
+                                <th scope="col">@@cardFee.th2</th>
+                                <th scope="col">@@cardFee.th3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @@for ( var k=0; k < cardFee.tr.length; k++ ) {
+                            <tr>
+                                <td>`+cardFee.tr[k].td1+`</td>
+                                <td>`+cardFee.tr[k].td2+`</td>
+                                <td>`+cardFee.tr[k].td3+`</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    }
+                    @@if ( context.cardFee.lotteType ) {
+                    <table>
+                        <caption>카드 종류에 따른 연회비 안내</caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">국내전용</th>
+                                <th scope="col">Master</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7,000원</td>
+                                <td>10,000원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+        @@if ( context.col2Tbl ) {
+        <div class="info-sect">
+            <h4 class="tit">@@col2Tbl.title</h4>
+            <div class="tb-scroll">
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>@@col2Tbl.caption</caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">@@col2Tbl.th1</th>
+                                <th scope="col">@@col2Tbl.th2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @@for ( var j=0; j < col2Tbl.tr.length; j++ ) {
+                            <tr>
+                                <td>`+col2Tbl.tr[j].td1+`</td>
+                                <td>`+col2Tbl.tr[j].td2+`</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @@if ( context.col2Tbl.bullet ) {
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "@@col2Tbl.bullet"
+                ]
+            })
+            }
+        </div>
+        }
+    </div>
+</div>

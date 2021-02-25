@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0021 {
+    @include mobile {
+        .component-inner {
+            padding: 0;
+        }
+    }
+
+    .unit-list {
+        margin: 0 -12px;
+        .ui_carousel_slide {
+            float: left;
+            width:calc(100% / 3);
+            padding: 0 12px;
+        }
+        &.half-type {
+            .ui_carousel_slide {
+                width: 50%;
+            }
+        }
+
+        @include mobile {
+            position: relative;
+            margin: 0;
+            padding-bottom:32px;
+            .ui_carousel_slide {
+                width: 100%;
+                padding: 0;
+            }
+            &.half-type {
+                .ui_carousel_slide {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .visual-area {
+        text-align:center;
+        &.image {
+            a {
+                display:inline-block;
+                max-width:100%;
+                overflow:hidden;
+                vertical-align:top;
+                img {
+                    width:auto;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+        }
+        &.youtube-box {
+            a {
+                position:relative;
+                display:inline-block;
+                max-width:100%;
+                vertical-align:top;
+                img {
+                    width:auto;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+        }
+    }
+
+    .unit-box {
+        @include mobile {
+            padding:0 16px;
+        }
+        .visual-area {
+            margin: 0 0 24px;
+            @include mobile {
+                margin:0 -16px 24px;
+            }
+        }
+        .head-copy {
+            @include eyebrow-h3;
+        }
+        .title {
+            h2 {
+                @include title-h4;
+            }
+            &.title-h1 * {
+                @include title-h1;
+            }
+            &.title-h2 * {
+                @include title-h2;
+            }
+            &.title-h3 * {
+                @include title-h3;
+            }
+            &.title-h4 * {
+                @include title-h4;
+            }
+            &.title-h5 * {
+                @include title-h5;
+            }
+            &.title-h6 * {
+                @include title-h6;
+            }
+        }
+        .body-copy {
+            @include bodycopy(h3, h3);
+        }
+    }
+
+    .bottom-btn {
+        @include cta-btn;
+    }
+
+    .btn-box {
+        margin-top: 48px;
+        text-align: center;
+        @include mobile {
+            margin-top: 24px;
+        }
+    }
+    .slide-controls {
+        @include pc {
+            display: none;
+        }
+        @include mobile {
+            .btn-arrow {
+                position: absolute;
+                top:calc((100% - 32px) / 2);
+                transform:translateY(-50%);
+                &.prev {
+                    left: 4px;
+                }
+                &.next {
+                    right: 4px;
+                }
+            }
+        }
+    }
+}

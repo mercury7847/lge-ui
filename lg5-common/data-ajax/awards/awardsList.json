@@ -1,0 +1,72 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "pagination":{
+            "page":"1",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
+    },
+    "data": {
+        "totalCnt":"63",
+        "pagination":{
+            "page":"2",
+            "visibleCount":"7",
+            "totalCount":"23"
+        },
+        "categoryList": [
+            {
+                "categoryName": "정수기",
+                "categoryId": "CT50000175"
+            },
+            {
+                "categoryName": "스마트폰",
+                "categoryId": "CT50000182"
+            }
+        ],
+        "awardList":[
+            {
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기1|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW",
+                    "MD08587608|슬림 스윙 정수기2|https://wwwdev50.lge.co.kr/water-purifiers/WD502AS"
+                ],
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
+            },
+            {
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW"
+                ],
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
+            },
+            {
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": null,
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전"
+            }
+        ]
+    }
+}

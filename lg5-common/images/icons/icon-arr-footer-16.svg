@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-arr-footer-16</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="09_Icon-/-16-/-열림-S-/-Black-/-icon-16-uppers-black" transform="translate(8.000000, 8.000000) rotate(-180.000000) translate(-8.000000, -8.000000) " stroke="#000000">
+            <g id="icon-16-uppers-black">
+                <g transform="translate(2.857143, 5.000000)">
+                    <polyline id="09_Icon-/-8-/-닫힘-/-Black-/-Ico-Down-8-Black" transform="translate(5.142857, 3.000000) scale(1, -1) rotate(-270.000000) translate(-5.142857, -3.000000) " points="3 -2 7.28571429 3 3 8"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

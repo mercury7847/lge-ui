@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0018 {
+
+
+	.square {
+		display: inline-block;
+		border-radius:8px;
+		vertical-align: top;
+		overflow:hidden;
+		@include mobile {
+			width: 100%;
+			border-radius:0;
+		}
+
+		.common-area {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+
+			&:hover {
+				color:inherit !important;
+			}
+
+			&.case-of-video:before {
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: 24px;
+				left: 50%;
+				z-index: 1;
+				width: 48px;
+				height: 48px;
+				margin-left:-24px;
+				border-radius: 50% 50%;
+				background: url('/lg5-common/images/btn-video-play.svg') 50% 50% no-repeat;
+				background-size:100%;
+			}
+		}
+
+		.visual-area {
+			img {
+				width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			&.animation-box {
+				> img {
+
+				}
+				.copy-boxing-area {
+					z-index:10;
+				}
+				.controller-wrap {
+					z-index:15;
+				}
+			}
+		}
+
+		.copy-boxing-area {
+			position: absolute;
+			z-index: 1;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin: auto;
+			padding:64px 32px;
+			background-color: transparent;
+			@media screen and (max-width: 1200px) {
+				padding:32px 16px;
+			}
+			@media screen and (max-width: 990px) {
+				padding:16px;
+			}
+			@include mobile {
+				padding:32px 16px;
+			}
+
+			.category {
+				@include eyebrow-h3;
+			}
+
+			.head {
+				h2 {
+					@include title-h5;
+				}
+				&.title-h1 * {
+					@include title-h1;
+				}
+				&.title-h2 {
+					@include title-h2;
+				}
+				&.title-h3 {
+					@include title-h3;
+				}
+				&.title-h4 {
+					@include title-h4;
+				}
+				&.title-h5 {
+					@include title-h5;
+				}
+				&.title-h6 {
+					@include title-h6;
+				}
+			}
+
+			.desc {
+				@include bodycopy(h3, h3);
+			}
+		}
+	}
+
+	// mixin
+	@mixin square($calc-type, $part-size, $container-size){
+		@if($calc-type == "w"){
+			width:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "h"){
+			height:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "mr"){
+			margin-right:($part-size * 100%) / $container-size;
+		};
+		@if($calc-type == "ml"){
+			margin-left:($part-size * 100%) / $container-size;
+		};
+	}
+	&.flow-right {
+		text-align: right;
+		.square-partition {
+			&.top, &.bottom {
+				left: 0;
+			}
+		}
+	}
+
+	&.flow-left {
+		.square-partition {
+			&.top, &.bottom {
+				right: 0;
+			}
+		}
+	}
+
+	&.flow-mix {
+		text-align: right;
+		.square-partition {
+			&.top, &.bottom {
+				left:0;
+			}
+		}
+	}
+
+	.inner {
+		position: relative;
+		font-size: 0;
+	}
+	@include mobile {
+		.component-inner {
+			padding:0;
+		}
+	}
+	.square-partition {
+		display:inline-block;
+		vertical-align:top;
+		text-align: left;
+		&.tall {
+			@include square(w, 561px, 1380px);
+			@include mobile {
+				width:100%;
+			}
+		}
+		&.top, &.bottom {
+			width:100%;
+			@include square(w, 795px, 1380px);
+			@include pc {
+				position: absolute;
+			}
+			@include mobile {
+				width:100%;
+			}
+		}
+		&.top {
+			top: 0;
+		}
+		&.bottom {
+			bottom:0;
+		}
+	}
+	&:not(.type-triple) .square-partition{
+		&.top, &.bottom {
+			.square:first-child{
+				@include square(mr, 24px, 795px);
+			}
+		}
+	}
+	// square level
+	.square {
+		position:relative;
+		width:100%;
+		@include pc {
+			&.length-md {
+				@include square(w, 444px, 795px);
+			}
+			&.length-sm {
+				@include square(w, 327px, 795px);
+			}
+		}
+		@include mobile {
+			margin-top: 24px;
+		}
+
+		.animation-area {
+			position:absolute;
+			top:0;
+			right:0;
+			bottom:0;
+			left:0;
+		}
+	}
+}

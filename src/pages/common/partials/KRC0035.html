@@ -1,0 +1,157 @@
+<!-- components/partials/KRC0035-type1.html -->
+<div class="component-wrap @@bg-color">
+    <!--
+        ** 이미지가 왼쪽, 텍스트가 오른쪽인 경우의 마크업입니다.
+
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component 영역 옵션]
+        1. 이미지 넓이
+        .standard : 이미지 넓이가 630px
+        .large : 이미지가 넓이가 848px
+
+        2. 가로 정렬
+        .align-left : 왼쪽 정렬
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        3. 배경 색상 :
+        .bg-white : #FFFFFF 색상 배경
+        .bg-lightgray : #F4F4F4 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
+        [.desc 옵션]
+        1. 가로 정렬 :
+        .align-left : 왼쪽 정렬
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        2. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        3. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+
+        [.text 옵션]
+        1. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+    -->
+    <section class="component KRC0035 @@align-class1 @@imgSizeType @@bg-color">
+        <div class="component-inner">
+            <div class="inner">
+                @@if ( context.type2 ) {
+                <div class="text-wrap side-left-text">
+                    <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                    <div class="title" id="title02">@@headline</div>
+                    <div class="text @@font-class3">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. </div>
+                    <div class="thumbs">
+                        <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        @@if ( context.imgSizeType == "standard" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered01.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered01.jpg" data-m-src="/lg5-common/images/KRC0035/@layered01.jpg" alt="">
+                        }
+                        @@if ( context.imgSizeType == "large" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered02.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered02.jpg" data-m-src="/lg5-common/images/KRC0035/@layered02.jpg" alt="">
+                        }
+                        <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        <p class="hidden">graphic description : </p>
+                    </div>
+                    <div class="btn-type-box">
+                        <a href="#none" class="btn border size-m" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                    </div>
+                    <div class="btn-type-text">
+                        <a href="#none" class="text-link" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>텍스트 링크 버튼</span></a>
+                        <a href="#none" class="text-link" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>텍스트 링크 버튼</span></a>
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="b-txt">디스클레이머 영역입니다.</li>
+                    </ul>
+                </div>
+                }
+                @@if ( context.type1 ) {
+                <div class="visual-wrap image-align-left">
+                }
+                @@if ( context.type2 ) {
+                <div class="visual-wrap image-align-right">
+                }
+                    <!-- carousel slide -->
+                    <div class="slide-wrap ui_carousel_slider">
+                        <div class="indi-wrap">
+                            <ul class="indi-conts ui_carousel_dots">
+                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                            </ul>
+                            <span class="ui_carousel_play play">
+                                <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                            </span>
+                        </div>
+                        <div class="slide-content ui_carousel_list">
+                            <ul class="slide-track ui_carousel_track">
+                                <!-- slide item : 링크가 있는 이미지 타입 -->
+                                <li class="slide-conts ui_carousel_slide">
+                                    <div class="visual-area image">
+                                        <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}">
+                                            <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                                            <img src="/lg5-common/images/KRC0035/@thumb.jpg" data-pc-src="/lg5-common/images/KRC0035/@thumb.jpg" data-m-src="/lg5-common/images/KRC0035/@thumb-m.jpg" alt="">
+                                            <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                                        </a>
+                                        <p class="hidden">graphic description : </p>
+                                        <!-- [KR수정_201229] 캡션 삭제 -->
+                                    </div>
+                                </li> 
+                            </ul>
+                        </div>
+                        <div class="slide-controls">
+                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                        </div>
+                    </div>
+                    <!-- // carousel slide -->
+                </div>
+                @@if ( context.type1 ) {
+                <div class="text-wrap side-right-text">
+                    <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                    <div class="title" id="title02">@@headline</div>
+                    <div class="text @@font-class3">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. </div>
+                    <div class="thumbs">
+                        <!-- [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        @@if ( context.imgSizeType == "standard" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered01.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered01.jpg" data-m-src="/lg5-common/images/KRC0035/@layered01.jpg" alt="">
+                        }
+                        @@if ( context.imgSizeType == "large" ) {
+                        <img src="/lg5-common/images/KRC0035/@layered02.jpg" data-pc-src="/lg5-common/images/KRC0035/@layered02.jpg" data-m-src="/lg5-common/images/KRC0035/@layered02.jpg" alt="">
+                        }
+                        <!-- // [KR수정_201229] 이미지 피씨/모바일 별도 등록 대응 -->
+                        <p class="hidden">graphic description : </p>
+                    </div>
+                    <div class="btn-type-box">
+                        <a href="#none" class="btn border size-m" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                        <a href="#none" class="btn border size-m" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>문의하기</span></a>
+                    </div>
+                    <div class="btn-type-text">
+                        <a href="#none" class="text-link" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>텍스트 링크 버튼</span></a>
+                        <a href="#none" class="text-link" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>텍스트 링크 버튼</span></a>
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="b-txt">디스클레이머 영역입니다.</li>
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>

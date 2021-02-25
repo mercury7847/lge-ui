@@ -1,0 +1,69 @@
+<!-- components/partials/KRP0011.html -->
+
+<div class="component-wrap">
+	<!--
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+	-->
+	<section class="component KRP0011">
+		<div class="component-inner">
+			<div class="title">
+				@@compTitle
+            </div>
+            <!-- [KR수정_210118] 전체적으로 수정.. -->
+            <div class="recommend-wrap">
+                <!-- 지금 보고있는 제품 -->
+                <div class="prod-box now">
+                    <p class="tit">지금 보고있는 제품</p>
+                    <ul class="product-items">
+                        @@loop('./common/modules/product-list-item-loop.html', [
+                            {
+                                "itemClass" : "rec-items",
+                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                "review" : true,
+                                "isReview" : true,
+                                "price" : true,
+                                "originalPrice" : true
+                            }
+                        ])
+                    </ul>
+                </div>
+                <!-- // 지금 보고있는 제품 -->
+
+                <!-- 추천 제품 -->
+                <div class="prod-box recommend">
+                    <p class="tit">추천 제품</p>
+                    <ul class="product-items">
+                        @@loop('./common/modules/product-list-item-loop.html', [
+                            {
+                                "itemClass" : "rec-items",
+                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                "review" : true,
+                                "isReview" : true,
+                                "price" : true,
+                                "originalPrice" : true
+                            }, {
+                                "itemClass" : "rec-items",
+                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                "review" : true,
+                                "isReview" : true,
+                                "price" : true,
+                                "originalPrice" : true
+                            }
+                        ])
+                    </ul>
+                </div>
+                <!-- // 추천 제품 -->
+
+                <!-- 스펙 비교하기 버튼 -->
+                <div class="bottom-area">
+                    <button class="btn border size-m"><span>스펙 비교하기</span></button><!-- [KR수정_210118] class명 수정 -->
+                </div>
+                <!-- // 스펙 비교하기 버튼 -->
+                <!-- // [KR수정_210118] DOM 닫기, 버튼 DOM 위치 이동 -->
+            </div>
+            <!-- // [KR수정_210118] 전체적으로 수정.. -->
+		</div>
+	</section>
+</div>

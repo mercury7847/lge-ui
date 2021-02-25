@@ -1,0 +1,328 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.contents.membership {
+    .visual-wrap {
+        @import "ACC4002";
+    }
+    .page-tabs {
+        max-width:1460px;
+        margin:0 auto;
+        padding:40px 40px 0;
+        background-color:#fff;
+        @include mobile {
+            margin-bottom:32px;
+            padding:32px 0 0;
+            .tabs-wrap {
+                text-align:center;
+            }
+        }
+        &.type2 {
+            margin-bottom:0;
+            border-bottom:none;
+        }
+        &.type3 {
+            padding-top:0;
+            margin-bottom:0;
+            @include mobile {
+                padding:10px 0;
+            }
+        }
+    }
+
+    // MAIN
+    @import "ACC4001";
+
+    // SUB PAGES
+    .cont-wrap {
+        padding-top:80px;
+        @include mobile {
+            padding:60px 0;
+        }
+        .section-wrap {
+            .sects {
+                .tit-wrap {
+                    &.align-center {
+                        border-bottom:none;
+                        text-align:center;
+                        .tit {
+                            float:none;
+                            padding-bottom:0
+                        }
+                        .desc {
+                            margin-top:12px;
+                            font-size:18px;
+                            line-height:28px;
+                            word-break:keep-all;
+                            @include mobile {
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                    }
+                }
+                .section-inner {
+                    .oper-store-list {
+                        > ul {
+                            margin:-24px 0 0 -24px;
+                            font-size:0;
+                            &:after {
+                                content:' ';
+                                display:block;
+                                clear:both;
+                            }
+                            @include mobile {
+                                margin:-12px 0 0 -8px;
+                                font-size:0;
+                            }
+                            > li {
+                                display:table;
+                                float:left;
+                                width:calc((100% / 4) - 24px);
+                                height:196px;
+                                margin:24px 0 0 24px;
+                                border-radius:8px;
+                                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                                text-align:center;
+                                vertical-align:top;
+                                @include mobile {
+                                    display:block;
+                                    width:calc((100%/2) - 8px);
+                                    height:100%;
+                                    margin:12px 0 0 8px;
+                                    border-radius:4px;
+                                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                                }
+                                .inner {
+                                    display:table-cell;
+                                    vertical-align:middle;
+                                    @include mobile {
+                                        display:block;
+                                        padding:32px 0;
+                                    }
+                                    .img {
+                                        float:none;
+                                        padding:0;
+                                        max-width:213px;
+                                        margin:0 auto;
+                                        @include mobile {
+                                            max-width:136px;
+                                        }
+                                        img {
+                                            width:100%;
+                                        }
+                                    }
+                                    .info-flag {
+                                        font-size:0;
+                                        @include mobile {
+                                            min-height:56px;
+                                        }
+                                        .flag-inner {
+                                            display:inline-block;
+                                            @include tablet {
+                                                display:block;
+                                                & + .flag-inner {
+                                                    margin-top:8px;
+                                                }
+                                            }
+                                            .flag {
+                                                display:block;
+                                                height:24px;
+                                                margin:0 3px;
+                                                padding:5px 12px 7px;
+                                                border-radius:4px;
+                                                border:1px solid rgba(#000, .4);
+                                                font-size:12px;
+                                                font-weight:500;
+                                                @include tablet {
+                                                    display:inline-block;
+                                                }
+                                            }
+                                        }
+                                        @include mobile {
+                                            margin-top:24px;
+                                            .flag-inner {
+                                                display:block;
+                                                & + .flag-inner {
+                                                    margin-top:8px;
+                                                }
+                                                .flag {
+                                                    display:inline-block;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.size3 {
+                            > ul {
+                                > li {
+                                    width:444px;
+                                    height:188px;
+                                    text-align:left;
+                                    @media screen and (min-width:768px) and (max-width:1460px) {
+                                        width:calc((100% / 2) - 24px);
+                                    }
+                                    .inner {
+                                        position:relative;
+                                        padding:0 24px;
+                                        .img {
+                                            position:absolute;
+                                            top:24px;
+                                            left:24px;
+                                            width:140px;
+                                        }
+                                        .info-cont {
+                                            padding-left:164px;
+                                            dl {
+                                                dt {
+                                                    font-size:16px;
+                                                    font-weight:700;
+                                                    line-height:26px;
+                                                }
+                                                dd {
+                                                    margin-top:4px;
+                                                    font-size:16px;
+                                                    line-height:26px;
+                                                }
+                                            }
+                                            .bullet-list {
+                                                margin-top:12px;
+                                            }
+                                        }
+                                    }
+                                }
+                                @include mobile {
+                                    margin-left:0;
+                                    > li {
+                                        width:100%;
+                                        margin-left:0;
+                                        .inner {
+                                            padding:16px 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // partials
+        // 멤버십 소개
+        @import "ACC4002";
+
+        // 등급별 혜택
+        @import "ACC4003";
+
+        // 가입안내
+        @import "ACC4004";
+
+        // 카드혜택
+        @import "ACC4005";
+    }
+}
+
+.contents.event {
+    .mob-only {
+        display: none;
+        @include mobile {
+            display: block;
+        }
+    }
+    // VIEW
+    @import "MKT4002";
+
+    &.exhibition {
+        .ev-detail-wrap .ev-detail-top {
+            position: relative;
+            .component-wrap {
+                top:24px;
+                right:24px;
+                @include mobile {
+                    top:30px;
+                    right:16px;
+                }
+            }
+        }
+    }
+}
+
+
+.pop-conts.academy-pop {
+    text-align:left;
+
+    .tb-tit {
+        margin-bottom: 16px;
+        @include font-medium;
+        font-weight: $font-weight-bold;
+        @include mobile {
+            margin-bottom: 12px;
+        }
+    }
+
+    // PC 아카데미 이벤트 참여하기
+    @import "MKT4009";
+
+    //PC 아카데미 참여내역 조회
+    @import "MKT4010";
+
+    // 미리미리페스티벌 참여하기
+    @import "MKT4012";
+}
+
+
+.popup-wrap.event-popup {
+    // 당첨자 발표
+    @import "MKT4007";    
+}
+.win-popup-wrap {
+    .tb-tit {
+        margin-bottom: 24px;
+        font-weight: 700;
+        @include font-large-2;
+        @include mobile {
+            margin-bottom: 12px;
+        }
+    }
+    .input-info-wrap {
+        .tb-tit {
+            margin-bottom: 16px;
+            @include font-medium;
+            @include mobile {
+                margin-bottom: 12px;
+            }
+            &.req {
+                &::after {
+                    content:'*';
+                    display:inline-block;
+                    margin-left:1px;
+                    color:#EC455A;
+                    font-size:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                }
+            }
+        }
+    }
+
+    // 당첨자 발표
+    @import "MKT4007";
+
+    //.pop-conts.academy-pop {
+    //    padding-top: 126px;
+    //    @include mobile {
+    //        padding-top: 100px;
+    //    }
+    //}
+    // 미리미리페스티벌 참여하기
+    @import "MKT4012";
+
+   
+}
+
+// 팝업
+@import "ACC-popup";

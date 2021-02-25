@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0034 {
+	.title {
+		font-size:24px;
+		font-weight:700;
+		line-height:32px;
+		&.title-h1 {
+			@include title-h1;
+		}
+		&.title-h2 {
+			@include title-h2;
+		}
+		&.title-h3 {
+			@include title-h3;
+		}
+		&.title-h4 {
+			@include title-h4;
+		}
+		&.title-h5 {
+			@include title-h5;
+		}
+		&.title-h6 {
+			@include title-h6;
+		}
+	}
+	ul {
+		margin-top:24px;
+		color:#767676;
+		@include font-small;
+		@include mobile {
+			color:#808080;
+		}
+		li {
+			position:relative;
+			margin-top:2px;
+			padding-left:10px;
+			font-weight:500;
+			@include mobile {
+				margin-top:0;
+			}
+			&::before {
+				content:' ';
+				position:absolute;
+				top:11px;
+				left:0;
+				width:3px;
+				height:3px;
+				border-radius:50%;
+				background:#767676;
+			}
+			&:first-child {
+				margin-top:0;
+			}
+		}
+	}
+	@include mobile {
+		.title {
+			line-height:30px;
+		}
+		ul {
+			margin-top:20px;
+		}
+	}
+}

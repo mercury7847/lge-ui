@@ -1,0 +1,48 @@
+{
+  "data": {
+    "allOwnedProductYn": "N",
+    "alert": {
+      "rightBtnName": "장바구니로 이동",
+      "leftBtnName": "확인",
+      "rightUrl": "/add-to-cart/rental-care-solution",
+      "leftUrl": "",
+      "title": "설치 불가능 안내",
+      "desc": "중복청약으로 확인되어, 청약 신청이 불가능합니다. 자세한 사항은 1577-4090으로 문의부탁드립니다."
+    },
+    "cardDiscountPrice": "0",
+    "success": "N",
+    "productStatus": [
+      {
+        "availableMessage": "",
+        "modelID": "161505",
+        "installAbled": "Y"
+      }
+    ],
+    "productPriceInfo": {
+      "total": {
+        "price": 29900,
+        "count": 1
+      },
+      "list": [
+        {
+          "price": "1개",
+          "text": "제품 수",
+          "appendClass": ""
+        },
+        {
+          "price": "월 29,900원",
+          "text": "이용요금",
+          "appendClass": ""
+        },
+        {
+          "price": "월 -0원",
+          "text": "결합할인 금액",
+          "appendClass": "sale"
+        }
+      ]
+    }
+  },
+  "message": null,
+  "ssoCheckUrl": null,
+  "status": "success"
+}

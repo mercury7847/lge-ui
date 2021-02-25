@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"],
+        pageJS: ["caresolution/carePlaner"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <main class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "렌탈 케어플래너",
+                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요.",
+                toolTip: true,
+                "type" : "include",
+                "page" : "tooltip-RMSF2003-01"
+            })
+            <div class="contents care-plan">
+                <div class="cont-wrap">
+
+                    @@include('./SLC/RMSF2003_top.html')
+
+                    <!-- 케어솔루션 -->
+                    <div class="care-solution-wrap"
+                        data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json"
+                        data-cate-list="/lg5-common/data-ajax/caresolution/carePlanerCategory.json"
+                        data-color-model="/lg5-common/data-ajax/caresolution/carePlanerColorChange.json"
+                        data-price-status="/lg5-common/data-ajax/caresolution/carePlanerPriceStatus.json"
+                        data-put-item="/lg5-common/data-ajax/caresolution/carePlanerPutItem.json"
+                        data-estimate-confirm="/lg5-common/data-ajax/caresolution/carePlanerEstimateConfirm.json"
+                        data-max-count="7"
+                    >
+                        <div class="fixed-tab-wrap"><!-- 스크롤 시 tab-fix 클래스 추가 -->
+                            <div class="inner">
+                                <div class="tabs-wrap new-type service_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#n" data-tab-id="tab01" data-service-name="렌탈(케어솔루션)">렌탈 케어솔루션<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#n" data-tab-id="tab02" data-service-name="케어십">케어십</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inner">
+                                <div class="cate-scroll-wrap ui_smoothScroll_tab">
+                                    <div class="ui_smooth_tab">
+                                        <ul class="tabs">
+                                            <!-- <li class="on"><a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
+                                            <li><a href="#n" data-cate-id="맥주제조기">맥주제조기</a></li>-->
+                                        </ul>
+                                    </div>
+                                    <div class="scroll-controls ui_smooth_controls">
+                                        <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="care-top-wrap">
+                            <div class="service-tooltop">
+                                <div class="txt-wrap">
+                                    <p>렌탈 케어솔루션이란</p>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "include",
+                                        "page" : "tooltip-RMSF2003-02"
+                                    })
+                                </div>
+                                <div class="txt-wrap">
+                                    <p>케어십이란</p>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "include",
+                                        "page" : "tooltip-RMSF2003-03"
+                                    })
+                                </div>
+                            </div>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
+                                    <option value="popular">인기순</option>
+                                    <option value="latest">최신순</option>
+                                    <option value="highlyprice">가격 높은순</option>
+                                    <option value="lowprice">가격 낮은순</option>
+                                    <option value="review">리뷰 많은순</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="prd-list-wrap">
+                            <ul class="inner">
+                                <!-- loop -->
+                                <!-- include('./common/modules/prd-care-vertical-list.html') -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- //케어솔루션 -->
+
+                    @@include('./SLC/RMSF2003_bottom.html')
+                </div>
+
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "제품 담기가 완료되었습니다."}
+                    ]
+                })
+            </div>
+        </main>
+
+        
+        @@include('./common/modules/alert-modal.html', {
+            "popId" : "alert-overclick",
+            "msgOnly" : true,
+            "msg" : "케어솔루션/케어십은<br>총 7개까지 이용가능합니다."
+        })
+
+        <!-- 상세견적확인 팝업-->
+        @@include('./common/popup/RMSF2020_popup.html', {
+            popupID: 'pop-estimate'
+        })
+        <!-- //상세견적확인 팝업-->
+        
+        @@include('./common/footer.html')
+    </div> 
+</body>
+</html>

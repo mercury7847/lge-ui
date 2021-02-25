@@ -1,0 +1,433 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0036 {
+    &.stage-full {
+        max-width:1920px;
+        margin:0 auto;
+	}
+	&.stage-wide {
+		max-width:1600px;
+		margin:0 auto;
+	}
+
+    > .inner {
+        position:relative;
+        @include pc {
+            padding:80px 40px;
+            .background-area {
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                text-align:center;
+                img {
+                    width:auto;
+                    max-width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+            > .animation-box {
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+            }
+        }
+
+        // title area
+        .title-wrap {
+            position:relative;
+            max-width:1380px;
+            margin:0 auto;
+            z-index:10;
+            @include mobile {
+                position:absolute;
+                top:40px;
+                left:0;
+                right:0;
+                padding:0 16px;
+            }
+            &.type-wide {
+                .inner {
+                    @include boxs(w);
+                }
+            }
+            &.type-narrow {
+                .inner {
+                    @include boxs(n);
+                }
+            }
+            &.box-align-left {
+                .inner {
+                    margin-right:auto;
+                }
+            }
+            &.box-align-center {
+                .inner {
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+            &.box-align-right {
+                .inner {
+                    margin-left:auto;
+                }
+            }
+            .title {
+                h2 {
+                    @include title-h2;
+                }
+                &.title-h1 * {
+                    @include title-h1;
+                }
+                &.title-h2 * {
+                    @include title-h2;
+                }
+                &.title-h3 * {
+                    @include title-h3;
+                }
+                &.title-h4 * {
+                    @include title-h4;
+                }
+                &.title-h5 * {
+                    @include title-h5;
+                }
+                &.title-h6 * {
+                    @include title-h6;
+                }
+            }
+            .desc {
+                @include bodycopy(h1, h1);
+            }
+            & + .text-wrap {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:0;
+                }
+            }    
+        }
+
+        // text wrap
+        .text-wrap {
+            position:relative;
+            max-width:1380px;
+            margin:0 auto;
+            z-index:10;
+            @include mobile {
+                margin-top:0;
+                padding:40px 16px;
+            }
+            &.box-align-left {
+                .text-inner {
+                    margin-right:auto;
+                }
+            }
+            &.box-align-center {
+                .text-inner {
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+            &.box-align-right {
+                .text-inner {
+                    margin-left:auto;
+                }
+            }
+            .text-inner {
+                margin-top:56px;
+                max-width:444px;
+                @include mobile {
+                    max-width:100%;
+                    width:100%;
+                    margin-top:40px;
+                    text-align:left;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+                .visual-area.video {
+                    > a {
+                        position:relative;
+                        display:inline-block;
+                        max-width:100%;
+                        width:auto;
+                    }
+                    img {
+                        width:auto;
+                        max-width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                }
+                .thumb-area {
+                    margin-bottom:24px;
+                    img {
+                        width:auto;
+                        max-width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                }
+                .title {
+                    @include title-h5;
+                    &.title-h1 {
+                        @include title-h1;
+                    }
+                    &.title-h2 {
+                        @include title-h2;
+                    }
+                    &.title-h3 {
+                        @include title-h3;
+                    }
+                    &.title-h4 {
+                        @include title-h4;
+                    }
+                    &.title-h5 {
+                        @include title-h5;
+                    }
+                    &.title-h6 {
+                        @include title-h6;
+                    }
+                }
+                .sub-title {
+                    @include bodycopy(h3, h3);
+                    margin-top:8px;
+                    font-weight:700;
+                    @include mobile {
+                        margin-top:6px;
+                    }
+                }
+                .body-copy {
+                    @include bodycopy(h3, h3);
+                }
+                .cta-box {
+                    @include cta-btn;
+                }
+            }
+        }
+    }
+    .fc-white,
+    .fc-lightgray {
+        & {
+            @include mobile {
+                color:#000 !important;
+            }
+        }
+        .logo {
+            filter:brightness(0) invert(1);
+            @include mobile {
+                filter:brightness(1) invert(0);
+            }
+        }
+    }
+    // .fc-black,
+    // .fc-dark {
+    //     & {
+    //         @include mobile {
+    //             color:#fff !important;
+    //         }
+    //     }
+    //     .logo {
+    //         filter:brightness(1) invert(0);
+    //         @include mobile {
+    //             filter:brightness(0) invert(1);
+    //         }
+    //     }
+    // }
+}
+
+
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .component.KRC0036 {
+                .inner {
+                    .text-wrap {
+                        .text-inner {
+                            @include mobile {
+                                @if $bg == lightgray {
+                                    .fc-black,
+                                    .fc-dark-gray,
+                                    .fc-gray,
+                                    .fc-lightgray,
+                                    .fc-white {
+                                        color:#000 !important;
+                                        * {
+                                            color:#000 !important;
+                                        }
+                                    }
+                                    .btn.border {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            border-color:#222 !important;
+                                            color:#000 !important;
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                border-color:#fa263e !important;
+                                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                                color:#fff !important;
+                                            }
+                                        }
+                                    }
+                                    .text-link {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            color:#000 !important;
+                                            &::after {
+                                                background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                            }
+                                        }
+                                    }
+                                } @else if $bg == dark {
+                                    .fc-black,
+                                    .fc-dark-gray,
+                                    .fc-gray,
+                                    .fc-lightgray,
+                                    .fc-white {
+                                        color:#fff !important;
+                                        * {
+                                            color:#fff !important;
+                                        }
+                                    }
+                                    .btn.border {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            border-color:#fff !important;
+                                            color:#fff !important;
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                border-color:#fa263e !important;
+                                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                                color:#fff !important;
+                                            }
+                                        }
+                                    }
+                                    .text-link {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            color:#fff !important;
+                                            &::after {
+                                                background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                            }
+                                        }
+                                    }
+                                } @else if $bg == black {
+                                    .fc-black,
+                                    .fc-dark-gray,
+                                    .fc-gray,
+                                    .fc-lightgray,
+                                    .fc-white {
+                                        color:#fff !important;
+                                        * {
+                                            color:#fff !important;
+                                        }
+                                    }
+                                    .btn.border {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            border-color:#fff !important;
+                                            color:#fff !important;
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                border-color:#fa263e !important;
+                                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                                color:#fff !important;
+                                            }
+                                        }
+                                    }
+                                    .text-link {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            color:#fff !important;
+                                            &::after {
+                                                background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+                                            }
+                                        }
+                                    }
+                                } @else if $bg == white {
+                                    .fc-black,
+                                    .fc-dark-gray,
+                                    .fc-gray,
+                                    .fc-lightgray,
+                                    .fc-white {
+                                        color:#000 !important;
+                                        * {
+                                            color:#000 !important;
+                                        }
+                                    }
+                                    .btn.border {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            border-color:#222 !important;
+                                            color:#000 !important;
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                border-color:#fa263e !important;
+                                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                                color:#fff !important;
+                                            }
+                                        }
+                                    }
+                                    .text-link {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            color:#000 !important;
+                                            &::after {
+                                                background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                            }
+                                        }
+                                    }
+                                } @else if $bg == gray {
+                                    .fc-black,
+                                    .fc-dark-gray,
+                                    .fc-gray,
+                                    .fc-lightgray,
+                                    .fc-white {
+                                        color:#000 !important;
+                                        * {
+                                            color:#000 !important;
+                                        }
+                                    }
+                                    .btn.border {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            border-color:#222 !important;
+                                            color:#000 !important;
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                border-color:#fa263e !important;
+                                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                                color:#fff !important;
+                                            }
+                                        }
+                                    }
+                                    .text-link {
+                                        &.bc-black,
+                                        &.bc-white {
+                                            color:#000 !important;
+                                            &::after {
+                                                background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

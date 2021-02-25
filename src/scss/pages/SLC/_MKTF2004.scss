@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.cont-wrap {
+}
+.beer-manufacture {
+    position: relative;
+    text-align: center;
+    @at-root .care-plan .cont-wrap {
+        &.beer-manufacture {
+            padding:0;
+            background-color: #0d0d0f;
+        }
+    }
+    img {
+        width: 100%;
+    }
+    .confirm-contents {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width:100%;
+        transform: translate(-50%,-50%);
+        .title {
+            display: inline-block;
+            width: 480px;
+            height: 68px;
+        }
+        .copy {
+            margin: 25px 0 48px;
+            @include font-large-5;
+            color: #fff;
+        }
+        .btn-area {
+            font-size:0;
+            .btn {
+                margin:0 4px;
+                border-color: #fff;
+                background-color: transparent;
+                background-image: none;
+                color: #fff;
+                @include mobile {
+                    min-width:156px;
+                }
+            }
+        }
+    }
+    .cation {
+        position: absolute;
+        bottom: 48px;
+        left: 0;
+        width: 100%;
+        @include font-medium;
+        color: #fff;
+    }
+
+    @include mobile {
+        .confirm-contents {
+            .title {
+                width: 262px;
+                height: 36px;
+            }
+            .copy {
+                margin: 12px 0 40px;
+                font-size:20px;
+                line-height:28px;
+            }
+        }
+        .cation {
+            bottom: 32px;
+        }
+    }
+}

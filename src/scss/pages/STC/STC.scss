@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// 모바일 스위치
+.contents.switch-wrap {
+    @import "MKT5006";
+}
+
+// 엘지페이
+.contents.lgpay-wrap {
+    @import "MKT5003";
+}
+
+// 듀얼 스크린
+.contents.dual-wrap {
+    @import "MKT5001";
+}
+
+.card-wrap {
+    .info-txt {
+        margin-bottom: 24px;
+        @include font-medium;
+    }
+    .card-lists {
+        @include clearfix;
+    }
+
+    .card-list {
+        float: left;
+        @include calc(width,50%,13px);
+        @include font-medium;
+        &:nth-child(even) {
+            margin-left: 26px;
+        }
+
+        [class*="-card"] {
+            display: table;
+            margin-top: 37px;
+            &:first-child {
+                margin-top: 0;
+            }
+            [class*="-box"] {
+                display: table-cell;
+                vertical-align: middle;
+                &[class*="image"] {
+                    img {
+                        border-radius: 8px;
+                    }
+                }
+                &[class*="text"] {
+                    padding-left: 24px;
+                }
+            }
+        }
+        dt {
+            font-weight: 700;
+        }
+
+        @include mobile {
+            float: none;
+            width: 100%;
+            &:nth-child(even) {
+                margin-top: 16px;
+                margin-left: 0;
+            }
+            [class*="-card"] {
+                margin-top: 16px;
+                [class*="-box"] {
+                    &[class*="image"] {
+                        img {
+                            width: 70px;
+                        }
+                    }
+                    &[class*="text"] {
+                        padding-left: 20px;
+                    }
+                }
+            }
+            dt {
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    @include mobile {
+        .bullet-list.top-border {
+            margin-top: 24px;
+        }
+    }
+}
+
+.device-wrap {
+    .product-list-wrap .product-lists li.lists dl {
+        padding: 32px;
+    }
+    @include mobile {
+        .product-list-wrap .product-lists li.lists dl {
+            padding: 12px 16px 24px;
+            dd .infos li {
+                font-size: $font-small - 1;
+                line-height: 21px;
+            }
+        }
+        .bullet-list.top-border {
+            margin-top: 24px;
+        }
+    }
+}

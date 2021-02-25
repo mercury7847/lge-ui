@@ -1,0 +1,14 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "CERTI_ID": "CERTI_ID",
+        "BATCH_KEY": "BATCH_KEY",
+        "alert":{
+            "title": "납부 카드 정보가 정상적으로 확인되었습니다.",
+            "desc": ""
+        }
+    }
+}

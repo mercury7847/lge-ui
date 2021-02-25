@@ -1,0 +1,409 @@
+.cont-wrap {
+    max-width:100%;
+    padding: 0;
+    background-color: #fff;
+    @include mobile {
+        border:none;
+    }
+}
+
+.pc-only {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+
+.mo-only {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.visual-wrap {
+    position:relative;
+    img {
+        width:100%;
+    }
+    @include mobile {
+        // padding:0 20px;
+    }
+    .bg {
+        display:block;
+        width:100%;
+        height:100%;
+        background-position:center center;
+        background-size:auto 100%;
+        background-repeat:no-repeat;
+    }
+    .tit-wrap {
+        position:absolute;
+        top:50%;
+        left:19.4792vw;
+        transform:translateY(-50%);
+        @include mobile {
+            top:44px;
+            left:40px;
+            right:40px;
+            transform:translateY(0);
+        }
+        .tit {
+            font-size:48px;
+            line-height:64px;
+            font-weight:700;
+            color: #000;
+            @include mobile {
+                font-size:26px;
+                line-height:35px;
+            }
+        }
+        .txt {
+            display:block;
+            padding-top:8px;
+            font-size:24px;
+            line-height:34px;
+            font-weight:700;
+            color: #000;
+            @include mobile {
+                padding-top:6px;
+                font-size:16px;
+                line-height:24px;
+            }
+        }
+        .btn-area {
+            margin-top: 24px;
+            .btn {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.page-header {
+    &.fixed {
+        margin-bottom: 0;
+        padding-top: 0;
+        background-color: $color-bg-wt;
+    }
+}
+@include mobile {
+    .page-header {
+        padding:0;
+        &.border {
+            border-bottom:12px solid #f4f4f4;
+        }
+        .title {
+            display:none;
+        }
+    }
+    .tabs-wrap.btn-type {
+        padding-top:40px;
+        text-align:center;
+    }
+}
+
+.lgpay-content {
+    width: 100%;
+    max-width: calc(1146px + 80px);
+    margin: 64px auto;
+    padding: 0 40px;
+    @include mobile {
+        max-width: 100%;
+        margin:60px auto;
+        padding: 0 16px;
+    }
+    .lgpay-introdution {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 80px;
+        @include mobile {
+            display: block;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .lgpay-text {
+            width: 436px;
+            padding-top: 56px;
+            padding-right: 40px;
+            @include mobile {
+                width: 100%;
+                padding: 0 20px 32px;
+            }
+            .num {
+                display: block;
+                margin-bottom: 12px;
+                font-weight: 700;
+                @include font-large-2;
+                color: $color-gray-1;
+            }
+            .tit {
+                @include font-large-2;
+            }
+            .desc {
+                margin-top: 12px;
+                @include font-medium;
+                .txt {
+                    display: block;
+                    margin-top: 16px;
+                    @include font-small;
+                    color: $color-gray-1;
+                }
+            }
+            .btn-area {
+                margin-top: 24px;
+                @include mobile {
+                    margin-top: 24px;
+                    .btn {
+                        width: 100%;
+                    }
+                }
+            }
+            
+        }
+        .lgpay-visual {
+            max-width: 678px;
+            //flex: 1;
+            img {
+                max-width: 100%;
+                height: auto;
+                vertical-align: top;
+            }
+        }
+        &.center {
+            align-items: center;
+            .lgpay-text {
+                padding-top: 0;
+                @include mobile {
+                    width: 100%;
+                    padding: 0 20px 32px;
+                }
+            }
+        }
+        &.right {
+            .lgpay-text {
+                order: 2;
+                padding-right: 0;
+                padding-left: 40px;
+                @include mobile {
+                    width: 100%;
+                    padding: 0 20px 32px;
+                }
+            }
+            .lgpay-visual {
+                order: 1;
+            }
+        }
+        @include mobile {
+            .bullet-list {
+                margin-top: 16px;
+                .b-txt {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+.lgpay-service {
+    margin-bottom: 100px;
+    @include mobile {
+        margin: 60px 0;
+    }
+    ul {
+        @include clearfix;
+        margin: 0 -12px;
+        @include mobile {
+            margin: 0;
+        }
+        li {
+            position: relative;
+            float: left;
+            width: 50%;
+            //height: 247px;
+            margin-bottom: 64px;
+            padding: 0 12px;
+            //padding: 30px 28px 16px;
+            text-align: center;
+            @include mobile {
+                float: none;
+                width: 100%;
+                margin-bottom: 16px;
+                padding: 0;
+            }
+            .img-area {
+                margin-bottom: 16px;
+                img {
+                    width: 100%;
+                }
+            }
+            .tit {
+                margin-bottom: 12px;
+                font-weight: 700;
+                @include font-large;
+            }
+            .desc {
+                @include font-medium;
+            }
+        }
+    }
+}
+.btm-link {
+    padding: 120px 0;
+    text-align: center;
+    @include mobile {
+        padding: 60px 0;
+    }
+    .tit {
+        font-weight: 700;
+        @include font-large;
+    }
+    .btn-area {
+       margin-top: 24px;
+    }
+}
+.slide-cont {
+    background: #f4f4fb;
+}
+.slide-wrap.carousel-type {
+    &.carousel-1 {
+        &.lg-pay {
+            max-width: (1146px + 80px);
+            margin: 0 auto;
+            
+            .indi-wrap {
+                position: absolute;
+                bottom: 48px;
+                margin-top: 0;
+                li {
+                    padding: 0 4px;
+                }
+            }
+            @include mobile {
+                max-width: 100%;
+                padding: 32px 0 56px;
+                .indi-wrap {
+                    bottom: 32px;
+                }
+            }
+            .slide-controls {
+                right: 0;
+                left: 0;
+                transform: translateX(0px);
+                .btn-arrow {
+                    &.prev,
+                    &.next {
+                        transform: translateX(0);
+                    }
+                    &.prev {
+                        left: -18px;
+                    }
+                    &.next {
+                        right: -18px;
+                    }
+                }
+                @media screen and (max-width: 1380px) {
+                    .btn-arrow {
+                        &.prev {
+                            left: 20px;
+                        }
+                        &.next {
+                            right: 20px;
+                        }
+                    }
+                }
+            }
+            .slide-content {
+                .slide-track {
+                    height: 455px;
+                    @include mobile {
+                        height: auto;
+                    }
+                }
+                .slide-conts {
+                    height: 455px;
+                    .inner {
+                        display: table;
+                        width: 100%;
+                        max-width: (1146px + 80px);
+                        margin: 0 auto;
+                        padding: 0 70px;
+                        font-size: 0;
+                    }
+                    .slide-info-area {
+                        display: table-cell;
+                        width: 396px;
+                        padding-top: 95px;
+                        //margin-right: 93px;
+                        .boxs {
+                            .step {
+                                font-weight: 700;
+                                @include font-large;
+                                color: $color-gray-1;
+                            }
+                            .title {
+                                margin: 8px 0 12px;
+                                font-weight: 700;
+                                @include font-large-2;
+                            }
+                            .desc {
+                                @include font-medium;
+                                small {
+                                    display: block;
+                                    margin-top: 16px;
+                                    color: $color-gray-1;
+                                }
+                            }
+                            .btn-area {
+                                margin-top: 24px;
+                            }
+                        }
+                    }
+                    .visual-area {
+                        display: table-cell;
+                        width: 560px;
+                        padding-top: 48px;
+                        text-align: right;
+                        vertical-align: top;
+                        img {
+                            width: 100%;
+                            max-width: 560px;
+                        }
+                    }
+
+                    @include mobile {
+                        height: auto;
+                        .inner {
+                            display: block;
+                            max-width: 100%;
+                            padding: 0 20px;
+                        }
+                        .slide-info-area {
+                            display: block;
+                            width: 100%;
+                            padding-top: 0;
+                            text-align: center;
+                            .boxs {
+                                padding: 0 20px;
+                                .btn-area {
+                                    .btn {
+                                        min-width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                        .visual-area {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            padding-top: 32px;
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

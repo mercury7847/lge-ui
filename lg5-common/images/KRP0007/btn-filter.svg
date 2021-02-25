@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>filter</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="07_M_PLP_Refrigerator" transform="translate(-40.000000, -929.000000)" fill="#222222">
+            <g id="Group-6" transform="translate(0.000000, 95.000000)">
+                <g id="01" transform="translate(0.000000, 816.000000)">
+                    <g id="Group-3" transform="translate(40.000000, 8.000000)">
+                        <g id="filter" transform="translate(0.000000, 10.000000)">
+                            <g id="Group-10">
+                                <rect id="Rectangle" x="2.5" y="2.23684211" width="37.5" height="3.94736842"></rect>
+                                <rect id="Rectangle" x="0" y="18.0263158" width="37.5" height="3.94736842"></rect>
+                                <rect id="Rectangle" x="0" y="0.263157895" width="7.5" height="7.89473684"></rect>
+                                <rect id="Rectangle" x="32.5" y="16.0526316" width="7.5" height="7.89473684"></rect>
+                                <rect id="Rectangle" x="15" y="31.8421053" width="7.5" height="7.89473684"></rect>
+                                <rect id="Rectangle" x="0" y="33.8157895" width="40" height="3.94736842"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

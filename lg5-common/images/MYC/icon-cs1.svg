@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-252.000000, -155.000000)">
+            <g id="img_Reception-completed_64" transform="translate(252.000000, 155.000000)">
+                <g>
+                    <polygon id="guidebox" points="0 64 64 64 64 0 0 0"></polygon>
+                    <g id="ic" transform="translate(4.800000, 5.000000)" stroke-width="2">
+                        <path d="M42.6,0 C43.4836556,5.97197047e-17 44.2,0.7163444 44.2,1.6 L44.2,16.666 L27.2,16.6666667 C26.1456382,16.6666667 25.2818349,17.4825445 25.2054857,18.5174043 L25.2,18.6666667 L25.2,42.1481481 C25.2,43.2527176 26.0954305,44.1481481 27.2,44.1481481 L27.2,44.1481481 L44.2,44.148 L44.2,49.4 C44.2,50.2836556 43.4836556,51 42.6,51 L1.8,51 C0.9163444,51 0.2,50.2836556 0.2,49.4 L0.2,1.6 C0.2,0.7163444 0.9163444,1.49459253e-15 1.8,0 L42.6,0 Z" id="Combined-Shape" stroke="#000000"></path>
+                        <path d="M10.2,0 L34.2,0 L34.2,2.74366054 C34.2,4.54208716 32.7420872,6 30.9436605,6 L13.4563395,6 C11.6579128,6 10.2,4.54208716 10.2,2.74366054 L10.2,0 L10.2,0 Z" id="Rectangle-2" stroke="#000000"></path>
+                        <rect id="Rectangle" stroke="#DA0F47" x="25.2" y="16.6666667" width="30" height="27.4814815" rx="2"></rect>
+                        <path d="M36.2,17 L44.2,17 L44.2,29.2 C44.2,29.6418278 43.8418278,30 43.4,30 L37,30 C36.5581722,30 36.2,29.6418278 36.2,29.2 L36.2,17 L36.2,17 Z" id="Rectangle" stroke="#DA0F47"></path>
+                        <polyline id="Path-17" stroke="#000000" stroke-linecap="round" points="8.2 15.8741998 10.7252076 18 15.2 14"></polyline>
+                        <polyline id="Path-17-Copy" stroke="#000000" stroke-linecap="round" points="8.2 25.8741998 10.7252076 28 15.2 24"></polyline>
+                        <rect id="Rectangle" stroke="#000000" x="8.2" y="35" width="8" height="8" rx="1"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

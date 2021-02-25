@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="Y">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+    
+<body>
+    
+    <!-- 2021.02.04 추가 -->
+    <!-- This script is for AceCounter START -->
+    <script language='javascript'>
+        var _ag   = 0 ;         // 로그인사용자 나이
+        var _id   = '';    		// 로그인사용자 아이디
+        var _mr   = '';        	// 로그인사용자 결혼여부 ('single' , 'married' )
+        var _gd   = '';         // 로그인사용자 성별 ('man' , 'woman')
+        var _skey = '' ;        // 내부검색어
+        
+        var _jn = '' ;          //  가입탈퇴 ( 'join','withdraw' ) 
+        var _jid = '' ;			// 가입시입력한 ID
+        
+        var _ud1 = '' ;			// 사용자 정의변수 1 ( 1 ~ 10 정수값)
+        var _ud2 = '' ;			// 사용자 정의변수 2 ( 1 ~ 10 정수값)
+        var _ud3 = '' ;			// 사용자 정의변수 3 ( 1 ~ 10 정수값)
+    </script>
+    <!-- AceCounter END --> 
+    <!-- //2021.02.04 추가 -->
+                                        
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '드라이버/SW',
+                'pageDesc': '제품에 필요한 사용설명서, 소프트웨어, 드라이버를 지원해드립니다.'
+            })
+
+            <div class="contents support download">
+
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html', {
+                    "show": true
+                })
+
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true,
+                    "show": true
+                })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html', {
+                    "show": true
+                })
+
+                <div class="cont-wrap">
+                    <div class="step-area">
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="categoryNm" id="category" value="">
+                        <input type="hidden" name="subCategory" id="subCategory" value="">
+                        <input type="hidden" name="subCategoryNm" id="subCategory" value="">
+
+                        <!-- 제품 선택 -->
+                        <div class="step-box active" id="stepModel">
+                            @@include('./common/support/select-model.html', {
+                                "url": "/lg5-common/data-ajax/support/downloadResources/selectModel.json",
+                                "category": [
+                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                                ]
+                            })
+                        </div>
+                        <!-- // 제품 선택 -->
+
+                        <div class="step-box" id="stepInput">
+                            <div class="section manual-section" data-manual-url="/lg5-common/data-ajax/support/downloadList.json">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건
+                                        @@include('./common/modules/tooltip.html', {
+                                            "type" : "include",
+                                            "text" : "제품사용 설명서 유의사항",
+                                            "page" : "tooltip-CSRF6075"
+                                        })
+                                    </h2>
+                                </div>
+                                <div class="download-list-wrap">
+                                    <ul class="download-list">
+                                        <li>
+                                            <p class="tit">제품 사용설명서</p>
+                                            <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                            <div class="info-wrap">
+                                                <ul class="options">
+                                                    <li>2020.11.03</li>
+                                                    <li>한국어</li>
+                                                    <!-- 모바일 기기 선택 노출 -->
+                                                    <!-- <li>펫네임</li>
+                                                    <li>OS</li> -->
+                                                    <!-- // 모바일 기기 선택 노출 -->
+                                                </ul>
+                                                <div class="btn-wrap">
+                                                    <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download"><span>PDF</span></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="tit">제품 사용설명서</p>
+                                            <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                            <div class="info-wrap">
+                                                <ul class="options">
+                                                    <li>2020.11.03</li>
+                                                    <li>English</li>
+                                                </ul>
+                                                <div class="btn-wrap">
+                                                    <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testZIP.zip&fileRealName=testZIP.zip" class="btn border size btn-download"><span>ZIP</span></a>
+                                                    <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size" target="_blank"><span>HTML</span></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+        
+                                <button type="button" class="btn-moreview block" data-page="1"><span>더보기</span></button>
+        
+                                <!-- data 없을 때 -->
+                                <div class="no-data" style="display:none">
+                                    <p>제품사용 설명서 자료가 없습니다.</p>
+                                </div>
+                                <!-- // data 없을 때 -->
+                            </div>
+        
+                            <div class="section driver-section" data-driver-url="/lg5-common/data-ajax/support/downloadList.json">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">드라이버/SW <em id="driverCount" class="point">130</em>건</h2>
+                                </div>
+        
+                                <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+                                <div class="banner-wrap toggle-banner">
+                                    <div class="banner">    
+                                        <div class="cont">
+                                            <p class="tit">드라이버/소프트웨어는 LG Update Center[통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                                        </div>
+                                        <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-link"><span class="underline">LG UPdata Center 가기</span></a>
+                                    </div>
+                                </div>
+                                <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+
+                                <!-- 드라이버/SW 결과 내 검색 기능 -->
+                                <div class="keyword-box driver-inner-search">
+                                    @@include('./common/support/search-keyword.html', {
+                                        'inputId': 'driverKeyword',
+                                        'inputTitle': '검색어 입력',
+                                        'inputError': '검색어를 입력하고 조회해주세요.',
+                                        'inputType': '',
+                                        'inputDisabled': '',
+                                        'desc': '예시 : 통합 드라이버 설치 프로그램, 무선랜'
+                                    })
+                                </div>
+                                <!-- 드라이버/SW 결과 내 검색 기능 -->
+
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="tit">
+                                            <label for="os">운영체제(OS) 선택</label>
+                                        </div>
+                                        <div class="conts">
+                                            <div class="select-wrap">
+                                                <select name="os" id="os" class="ui_selectbox">
+                                                    <option value="">전체</option>
+                                                    <option value="">전체</option>
+                                                    <option value="">전체</option>
+                                                </select>
+                                                <!-- 선택 가능한 운영체제가 없을 경우 노출 -->
+                                                <!-- <select name="os" id="os" class="ui_selectbox" disabled>
+                                                    <option value="">없음</option>
+                                                </select> -->
+                                                <!-- // 선택 가능한 운영체제가 없을 경우 노출 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="forms">
+                                        <div class="tit">
+                                            <label for="driver">드라이버 분류</label>
+                                        </div>
+                                        <div class="conts">
+                                            <div class="select-wrap">
+                                                <select name="driver" id="driver" class="ui_selectbox">
+                                                    <option value="">전체</option>
+                                                    <option value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램</option>
+                                                    <option value="칩셋/패치">칩셋/패치</option>
+                                                    <option value="비디오">비디오</option>
+                                                    <option value="사운드">사운드</option>
+                                                    <option value="랜">랜</option>
+                                                    <option value="기타">기타</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="tabs-wrap border-type left ui_tab ui_smooth_scroll">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#" data-value="">전체(200) <em class="blind">선택됨</em></a></li>
+                                        <li><a href="#" data-value="통합 드라이버 설치프로그램">통합 드라이버 설치프로그램(110)</a></li>
+                                        <li><a href="#" data-value="칩셋/패치">칩셋/패치(6)</a></li>
+                                        <li><a href="#" data-value="비디오">비디오(6)</a></li>
+                                        <li><a href="#" data-value="사운드">사운드(3)</a></li>
+                                        <li><a href="#" data-value="랜">랜(4)</a></li>
+                                        <li><a href="#" data-value="기타">기타(0)</a></li>
+                                    </ul>
+                                </div> -->
+                                <div class="desc-wrap">
+                                    <p class="desc">제목을 선택하면 상세내용을 확인할 수 있습니다.</p>
+                                </div>
+                                <div class="download-list-wrap">
+                                    <ul class="download-list">
+                                    </ul>
+                                </div>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                                <div class="no-data" style="display:none;">
+                                    <p>다운로드/소프트웨어 자료가 없습니다.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="survey-banner-wrap">
+                                <div class="banner">    
+                                    <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</p>
+                                    <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2021-01-29 위치 변경 -->
+                    @@include('./common/support/service-menu.html')
+                    @@include('./common/support/related-info.html')
+                    <!-- //2021-01-29 위치 변경 -->
+                </div>
+
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+
+    <!-- 컨텐츠 만족도 조사 팝업 -->
+    @@include('./CS/CSRF6065.html', {
+        "service": true
+    })
+
+    <!-- 설치 전 주의사항 및 사용법 팝업 -->
+    @@include('./CS/modal/file-detail-popup.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/downloadResources.min.js"></script>
+
+    <!-- 2021.02.04 추가 -->
+    <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
+    <script language='javascript'>
+        var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+        var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+
+
+        // test code
+        (function(){
+
+            $(window).on('load', function(){
+
+                $('[data-trk-count]').on('click', function(){
+                    var $this = $(this);
+                    var countUrl = $this.data('trkCount');
+
+                    try{_PL(location.hostname + countUrl)}catch(e){}
+                })
+            });
+        })();
+    </script>
+    <!-- AceCounter Log Gathering Script End -->
+    <!-- //2021.02.04 추가 -->
+</body>
+</html> 

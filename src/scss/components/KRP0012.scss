@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0012 {
+	.title {
+        margin-bottom:64px;
+        font-weight:700;
+        font-size:40px;
+        line-height:56px;
+		text-align:center;
+		@include mobile {
+            margin-bottom:32px;
+            font-size:27px;
+            line-height:38px;
+        }
+	}
+	.visual-area img {
+		position:relative;
+		width:100%;
+		height:auto;
+	}
+}

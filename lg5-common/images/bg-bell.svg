@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bg-bell</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="img_icon_bell_64">
+            <rect id="Rectangle" fill="#FFFFFF" opacity="0" x="0" y="0" width="64" height="64"></rect>
+            <g id="Group-11" transform="translate(9.000000, 3.000000)" stroke="#979797" stroke-width="4">
+                <rect id="Rectangle" fill="#FFFFFF" x="15" y="42" width="16" height="16" rx="8"></rect>
+                <path d="M22.5,6 C17.9436508,6 13.8186508,7.84682541 10.8327381,10.8327381 C7.84682541,13.8186508 6,17.9436508 6,22.5 L5.94034183,35.5031766 L1.69598212,46.1357986 C1.63195742,46.2961881 1.59906604,46.4673039 1.59906604,46.64 C1.59906604,47.0155536 1.75128922,47.3555536 1.99740081,47.6016652 C2.24351241,47.8477768 2.58351241,48 2.95906604,48 L42.5683718,48 C42.7791295,48 42.9870032,47.9510174 43.1755876,47.8569178 C43.5116302,47.6892398 43.7478947,47.4012277 43.8582291,47.0711244 C43.9685634,46.7410212 43.9529676,46.3688268 43.7852896,46.0327842 L39,36.4422573 L39,22.5 C39,17.9436508 37.1531746,13.8186508 34.1672619,10.8327381 C31.1813492,7.84682541 27.0563492,6 22.5,6 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <path d="M12,0 L10.8244716,0.50042244 C5.76811921,2.6529116 1.84301484,6.82281881 0,12 L0,12 L0,12" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M44,0 L42.8244716,0.50042244 C37.7681192,2.6529116 33.8430148,6.82281881 32,12 L32,12 L32,12" id="Path-3" stroke-linecap="round" stroke-linejoin="round" transform="translate(38.000000, 6.000000) scale(-1, 1) translate(-38.000000, -6.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

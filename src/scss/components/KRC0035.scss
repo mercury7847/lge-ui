@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0035 {
+	//v-align
+	.valign-top {
+		vertical-align:top !important;
+	}
+	.valign-middle {
+		vertical-align:middle !important;
+	}
+	.valign-bottom {
+		vertical-align:bottom !important;
+	}
+	
+	&.standard {
+		.visual-wrap {
+			width:((678px * 100%) / 1380px);
+			@include mobile {
+				&.image-align-left,
+				&.image-align-right {
+					width:auto;
+					margin:0 -16px;
+					padding:0;
+				}
+				&.image-align-left,
+				&.image-align-right {
+					margin-top:28px;
+				}
+			}
+		}
+		.text-wrap {
+			padding:0 48px;
+			@include mobile {
+				&.side-left-text,
+				&.side-right-text {
+					width:100%;
+					padding:0;
+				}
+				&.side-left-text,
+				&.side-right-text {
+					margin-top:28px;
+				}
+			}
+		}
+	}
+	&.large {
+		.visual-wrap {
+			width:((912px * 100%) / 1380px);
+			@include mobile {
+				&.image-align-left,
+				&.image-align-right {
+					width:auto;
+					margin:0 -16px;
+					padding:0;
+				}
+				&.image-align-left,
+				&.image-align-right {
+					margin-top:28px;
+				}
+			}
+		}
+		.text-wrap {
+			padding:0 48px;
+			@include mobile {
+				&.side-left-text,
+				&.side-right-text {
+					width:100%;
+					padding:0;
+				}
+				&.side-left-text,
+				&.side-right-text {
+					margin-top:28px;
+				}
+			}
+		}
+	}
+
+	.inner {
+        display:table;
+        table-layout:fixed;
+        width:100%;
+		@include mobile {
+			display:flex;
+			flex-wrap:wrap;
+			.visual-wrap {
+				order:1;
+				width:100% !important;
+				margin:0 !important;
+				.slide-wrap {
+					margin:0 -16px;
+				}
+			}
+			.text-wrap {
+				order:2;
+				margin-top:16px;
+			}
+		}
+	}
+
+	.visual-wrap {
+		display:table-cell;
+		vertical-align:middle;
+		@include mobile {
+			display:block;
+		}
+		.visual-area {
+			position: relative;
+			max-width: 100%;
+			text-align:center;
+		}
+		img {
+			width: auto;
+			max-width: 100%;
+			height:auto;
+			vertical-align:top;
+		}
+        
+
+        .slide-wrap {
+			padding-bottom:44px;
+			@include mobile {
+				padding-bottom:40px;
+			}
+            .indi-wrap {
+                bottom:0;
+			}
+			.slide-conts {
+				float:left;
+			}
+			
+			.slide-controls {
+				position:absolute;
+				top:calc((100% - 36px) / 2);
+				transform:translateY(-50%);
+				@include mobile {
+					top:calc((100% - 32px) / 2);
+				}
+				.btn-arrow.prev {
+					left:-24px;
+					@include mobile {
+						left:4px;
+					}
+				}
+				.btn-arrow.next {
+					right:-24px;
+					@include mobile {
+						right:4px;
+					}
+				}
+			}
+        }
+	}
+	
+	.text-wrap {
+		display:table-cell;
+		vertical-align:middle;
+		@include mobile {
+			display:block;
+		}
+		.title {
+			h2 {
+				@include title-h2;
+			}
+			&.title-h1 * {
+				@include title-h1;
+			}
+			&.title-h2 * {
+				@include title-h2;
+			}
+			&.title-h3 * {
+				@include title-h3;
+			}
+			&.title-h4 * {
+				@include title-h4;
+			}
+			&.title-h5 * {
+				@include title-h5;
+			}
+			&.title-h6 * {
+				@include title-h6;
+			}
+		}
+		.small-title {
+			display: block;
+			@include eyebrow;
+		}
+		.text {
+			@include bodycopy(h2, h2);
+		}
+		.thumbs {
+			margin-top:56px;
+			@include mobile {
+				margin-top:28px;
+			}
+			img {
+				width:auto;
+				max-width:100%;
+				height:auto;
+				vertical-align:top;
+				// @include mobile {
+				// 	width:100%;
+				// }
+			}
+		}
+	}
+
+	.btn-type-box,
+	.btn-type-text {
+		@include cta-btn;
+	}
+	.btn-type-text + .small-title {
+		margin-top:72px;
+		@include mobile {
+			margin-top:56px;
+		}
+	}
+}

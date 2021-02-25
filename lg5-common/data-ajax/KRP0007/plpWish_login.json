@@ -1,0 +1,15 @@
+{
+    "status": "success",
+    "message": null,
+    "data": {
+	    "success":"N",
+       	"alert":{
+            "isConfirm":true,
+            "title":"선택하신 제품을 찜하기 위해서는<br>LG전자 통합 사이트의 로그인이 필요합니다.",
+            "cancelBtnName":"취소",
+            "cancelUrl":null,
+            "okBtnName":"로그인",
+            "okUrl":"/sso/api/Login?state="
+        }
+    }
+}

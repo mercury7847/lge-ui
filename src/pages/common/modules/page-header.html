@@ -1,0 +1,63 @@
+<!-- page header -->
+<div class="page-header">
+    @@if ( context.pageTitle ) {
+    <h2 class="title">@@pageTitle</h2>
+    }
+    @@if ( context.pageDesc ) {
+        <div class="desc">
+            <p class="txt">@@pageDesc</p>
+
+            @@if (context.toolTip) {
+                @@include('./common/modules/tooltip.html', {
+                    "type" : "@@type",
+                    @@if (context.text) {
+                        "page" : "@@text"
+                    }
+                    @@if (context.page) {
+                        "page" : "@@page"
+                    }
+                })
+            }
+        </div>
+    }
+    @@if ( context.pageBtn ) {
+        <div class="btn-desc">
+        @@for (var i=0; i < context.pageBtn.length; i++) {
+            <button class="btn border size" `+pageBtn[i].attr+`><span>`+pageBtn[i].btn+`</span></button> 
+        }
+        </div>
+    }
+    @@if ( context.pageLink ) {
+        <div class="link-desc @@pageLink.arrowPos">
+            <a href="#n" class="btn-link"><span>@@pageLink.text</span></a>
+        </div>
+    }
+    @@if ( context.pageArr ) {
+    <div class="tabs-wrap btn-type">
+        <ul class="tabs">
+            @@for (var i=0; i < context.pageArr.length; i++) {
+                <li class="`+pageArr[i].on+`"><a href="#n">`+pageArr[i].page+`</a></li>
+            }
+        </ul>
+    </div>
+    }
+    @@if ( context.stepArr ) {
+    <div class="step-wrap">
+        <ul class="steps">
+            @@for (var i=0; i < context.stepArr.length; i++) {
+                <li class="`+stepArr[i].class+`">`+stepArr[i].text+``+stepArr[i].step+`</li>
+            }
+        </ul>
+    </div>
+    }
+    @@if ( context.progressArr ) {
+    <div class="progress-wrap">
+        <ol>
+            @@for (var i=0; i < context.progressArr.length; i++) {
+                <li><span class="txt">`+progressArr[i].progress+`</span></li>
+            }
+        </ol>
+    </div>
+    }
+</div>
+<!-- // page header -->

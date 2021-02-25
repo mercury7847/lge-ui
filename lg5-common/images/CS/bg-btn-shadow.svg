@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="86px" height="152px" viewBox="0 0 86 152" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <defs>
+        <filter x="-104.9%" y="-71.7%" width="309.8%" height="243.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="@Side-sheet_map" filter="url(#filter-1)" transform="translate(0.000000, 46.000000)" fill="#FFFFFF">
+            <g id="Group-85">
+                <g id="Group-6" transform="translate(0.080000, 0.000000)">
+                    <path d="M0,0 L31.92,0 C36.338278,-8.11624501e-16 39.92,3.581722 39.92,8 L39.92,52 C39.92,56.418278 36.338278,60 31.92,60 L0,60 L0,60 L0,0 Z" id="Rectangle"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

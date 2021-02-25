@@ -1,0 +1,95 @@
+<!-- components/partials/KRC0033.html -->
+<div class="component-wrap">
+	<!--
+		[component-wrap option]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[component option]
+		.stage-full : visual width 1920px;
+		.stage-wide : visual width 1600px;
+
+		[text-set-wrap option]
+		1. 텍스트영역 전체 vertical align
+		.vertical-top : Top
+		.vertical-middle : Middle
+		.vertical-bottom : Bottom
+
+		2. 텍스트박스 좌/우 배치
+		.box-align-left : Left
+		.box-align-right : Right
+
+		[text-set option]
+		1. 내부 텍스트 정렬
+		.align-left : text-align Left
+		.align-center : text-align Center
+		.align-right : text-align Right
+
+		2. text color
+		.type-black : #222 + #767676
+		.type-white : #fff
+	-->
+	<section class="component KRC0033 @@pageSize">
+		@@if ( context.bgType == "image" ) {
+		<!-- 이미지/애니메이션 -->
+		<div class="visual-area">
+			<img src="/lg5-common/images/KRC0033/@KRC0033-BG.jpg" data-pc-src="/lg5-common/images/KRC0033/@KRC0033-BG.jpg" data-m-src="/lg5-common/images/KRC0033/KRC0033-BG-m.jpg">
+			<p class="hidden pc">graphic description : </p>
+		</div>
+		<!-- // 이미지/애니메이션 -->
+		}
+		@@if ( context.bgType == "animation" ) {
+		<!-- visual : animation -->
+		<!-- [KR수정_201229] 애니메이션 영역 DOM 공통화 수정 -->
+		<div class="visual-area animation-box">
+			<div class="animation-area">
+				<video autoplay muted loop>
+					<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+					<!-- WEBM 동영상을 제공하는 경우
+					<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+					-->
+				</video>
+				<!-- 애니메이션 재생/정지 버튼 -->
+				<div class="controller-wrap wa-btn">
+					<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+				</div>
+			</div>
+		</div>
+		<!-- // [KR수정_201229] 애니메이션 영역 DOM 공통화 수정 -->
+		<!-- // visual : animation -->
+		}
+
+		<!-- 텍스트 -->
+		<div class="text-position">
+			<div class="text-set-wrap @@verticalClass @@alignClass1">
+				@@for ( var i=0; i < context.row; i++ ) {
+				<!-- line -->
+				<div class="text-set-row">
+					<!-- text set -->
+					<div class="text-set @@alignClass2 @@colorType">
+						<div id="title01" class="title">
+							<h2>타이틀 텍스트 최대 30자까지 사용가능</h2>
+						</div>
+						<p class="sub-tit">서브타이틀 공백포함 최대 40자 이내에서 사용가능합니다.</p>
+						<p class="body-copy">바디카피 공백포함 최대 120자 이내에서 사용가능합니다.</p>
+						<div class="cta-box">
+							<a href="#n" target="_blank" class="btn border size" aria-describedby="title01">자세히 보기</a>
+						</div>
+						<div class="thumbnail-box">
+							<img src="/lg5-common/images/KRC0033/@img-444.jpg" alt="">
+							<p class="hidden pc">graphic description : </p>
+						</div>
+						<ul class="bullet-list">
+							<li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다. 단, 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+						</ul>
+					</div>
+					<!-- // text set -->
+				</div>
+				<!-- // line -->
+				}
+			</div>
+		</div>
+		<!-- // 텍스트 -->
+	</section>
+</div>

@@ -1,0 +1,154 @@
+[
+    {
+        "cateId": "1160",
+        "typeText": "올레드 TV",
+        "typeName": "opt-type",
+        "typeValue": "",
+        "searchOption": [
+            {
+                "searchGroupText": "사이즈 ",
+                "searchGroupClass": "opt-size",
+                "searchBy": "RANGE",
+                "searchNode": "PRODUCT_SIZE",
+                "searchOpt": [
+                    {
+                        "text": "177 ~ 222 <em class=\"spec_unit\">cm</em>",
+                        "value": "177-222"
+                    },
+                    {
+                        "text": "152 ~ 176 <em class=\"spec_unit\">cm</em>",
+                        "value": "152-176"
+                    },
+                    {
+                        "text": "125 ~ 151 <em class=\"spec_unit\">cm</em>",
+                        "value": "125-151"
+                    },
+                    {
+                        "text": "100 ~ 124 <em class=\"spec_unit\">cm</em>",
+                        "value": "100-124"
+                    },
+                    {
+                        "text": "99 <em class=\"spec_unit\">cm 이하</em>",
+                        "value": "-99"
+                    }
+                ]
+            }
+        ],
+        "subImage": "",
+        "subImageAlt": ""
+    },
+    {
+        "cateId": "1170",
+        "typeText": "나노셀 TV",
+        "typeName": "opt-type",
+        "typeValue": "",
+        "searchOption": [
+            {
+                "searchGroupText": "사이즈 ",
+                "searchGroupClass": "opt-size",
+                "searchBy": "RANGE",
+                "searchNode": "PRODUCT_SIZE",
+                "searchOpt": [
+                    {
+                        "text": "177 ~ 222 <em class=\"spec_unit\">cm</em>",
+                        "value": "177-222"
+                    },
+                    {
+                        "text": "152 ~ 176 <em class=\"spec_unit\">cm</em>",
+                        "value": "152-176"
+                    },
+                    {
+                        "text": "125 ~ 151 <em class=\"spec_unit\">cm</em>",
+                        "value": "125-151"
+                    },
+                    {
+                        "text": "100 ~ 124 <em class=\"spec_unit\">cm</em>",
+                        "value": "100-124"
+                    },
+                    {
+                        "text": "99 <em class=\"spec_unit\">cm 이하</em>",
+                        "value": "-99"
+                    }
+                ]
+            }
+        ],
+        "subImage": "",
+        "subImageAlt": ""
+    },
+    {
+        "cateId": "1180",
+        "typeText": "울트라 HD TV",
+        "typeName": "opt-type",
+        "typeValue": "",
+        "searchOption": [
+            {
+                "searchGroupText": "사이즈 ",
+                "searchGroupClass": "opt-size",
+                "searchBy": "RANGE",
+                "searchNode": "PRODUCT_SIZE",
+                "searchOpt": [
+                    {
+                        "text": "177 ~ 222 <em class=\"spec_unit\">cm</em>",
+                        "value": "177-222"
+                    },
+                    {
+                        "text": "152 ~ 176 <em class=\"spec_unit\">cm</em>",
+                        "value": "152-176"
+                    },
+                    {
+                        "text": "125 ~ 151 <em class=\"spec_unit\">cm</em>",
+                        "value": "125-151"
+                    },
+                    {
+                        "text": "100 ~ 124 <em class=\"spec_unit\">cm</em>",
+                        "value": "100-124"
+                    },
+                    {
+                        "text": "99 <em class=\"spec_unit\">cm 이하</em>",
+                        "value": "-99"
+                    }
+                ]
+            }
+        ],
+        "subImage": "",
+        "subImageAlt": ""
+    },
+    {
+        "cateId": "1120",
+        "typeText": "일반 LED TV",
+        "typeName": "opt-type",
+        "typeValue": "",
+        "searchOption": [
+            {
+                "searchGroupText": "사이즈 ",
+                "searchGroupClass": "opt-size",
+                "searchBy": "RANGE",
+                "searchNode": "PRODUCT_SIZE",
+                "searchOpt": [
+                    {
+                        "text": "177 ~ 222 <em class=\"spec_unit\">cm</em>",
+                        "value": "177-222"
+                    },
+                    {
+                        "text": "152 ~ 176 <em class=\"spec_unit\">cm</em>",
+                        "value": "152-176"
+                    },
+                    {
+                        "text": "125 ~ 151 <em class=\"spec_unit\">cm</em>",
+                        "value": "125-151"
+                    },
+                    {
+                        "text": "100 ~ 124 <em class=\"spec_unit\">cm</em>",
+                        "value": "100-124"
+                    },
+                    {
+                        "text": "99 <em class=\"spec_unit\">cm 이하</em>",
+                        "value": "-99"
+                    }
+                ]
+            }
+        ],
+        "subImage": "",
+        "subImageAlt": ""
+    }
+]

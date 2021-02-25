@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/visitAlarm"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "방문 알리미",
+                "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "on", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents"
+                            data-list-url="/lg5-common/data-ajax/mypage/care/visitAlarmList.json"
+                            data-day-url="/lg5-common/data-ajax/mypage/care/enableVisitDay.json"
+                            data-change-url="/lg5-common/data-ajax/mypage/care/changeVisitDay.json"
+                        >
+                            <!-- 계약정보가 있을 때 -->
+                            <!-- 계약정보 -->
+                            <div class="my-contract-info">
+                                <p class="tit">이케어 고객님 안녕하세요!</p>
+                                <p class="desc">"고객님, LG전자 케어솔루션과 함께한 시간이 <em>3개월 24일</em> 되었습니다."</p>
+                                <div class="form-wrap">
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="slt1">
+                                                    <option value="all">모아보기</option>
+                                                    <option value="p1">정수기1</option>
+                                                    <option value="p2">세탁기2</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!-- // 계약정보 -->
+
+                            <!-- 서비스 내역 알림 -->
+                            <div class="service-info-txt">
+                                <div class="tit">
+                                    <p>최근 <em>5월 11일에 매니저가 방문</em>하여 <em class="red">정수기(WD502AP) 외 2건</em> 서비스를 받으셨습니다.</p>
+                                </div>
+                                <p class="desc">고객님과 케어솔루션 매니저가 만나는 다음 일정은 아래와 같습니다.</p>
+                            </div>
+                            <!-- // 서비스 내역 알림 -->
+
+                            <!-- 상세 -->
+                            <div class="section-wrap">
+                                <!-- 방문 알리미 일정 -->
+                                <div class="sects">
+                                    <!-- 210204 수정 -->
+                                    <div class="tit-wrap type2">
+                                        <h2 class="tit">방문 알리미 일정</h2>
+                                    </div>
+                                    <!-- //210204 수정 -->
+                                    <div class="section-inner">
+                                        <div class="my-visit-schedule">
+                                            <ul class="schedule-list">
+                                                <li class="off">
+                                                    <div class="inner">
+                                                        <div class="svc-info">
+                                                            <p class="date">
+                                                                <small>이전 방문 서비스</small>
+                                                                2020.05.11
+                                                            </p>
+                                                            <div class="infos">
+                                                                <p class="blind">방문 서비스 해당 제품</p>
+                                                                <ul>
+                                                                    <li>정수기</li>
+                                                                    <li>공기청정기</li>
+                                                                    <li>건조기</li>
+                                                                    <li>건조기2</li>
+                                                                    <li>건조기3</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="svc-lists">
+                                                            <p>이전 방문 서비스 상세 내역</p>
+                                                            <div class="svc-wrap">
+                                                                <ul class="svc-details">
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>공기청정기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                    <li>공기청정기(12341234)</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="more-view-wrap" aria-hidden="true">
+                                                                <span class="more-view-btn">더보기</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="on after">
+                                                    <div class="inner">
+                                                        <div class="svc-info">
+                                                            <p class="date">
+                                                                <small>다음 방문 서비스</small>
+                                                                2020.05.11
+                                                            </p>
+                                                            <div class="visit-icons">
+                                                                <p>6개월 2주 후에 만나요!</p>
+                                                            </div>
+                                                            <div class="infos">
+                                                                <p class="blind">방문 서비스 해당 제품</p>
+                                                                <ul>
+                                                                    <li>정수기</li>
+                                                                    <li>공기청정기</li>
+                                                                    <li>건조기</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="svc-lists">
+                                                            <p>다음 방문 서비스 상세 내역</p>
+                                                            <div class="svc-wrap">
+                                                                <ul class="svc-details">
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>공기청정기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>공기청정기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                    <li>건조기(12341234)</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="more-view-wrap" aria-hidden="true">
+                                                                <span class="more-view-btn">더보기</span>
+                                                            </div>
+                                                            <button type="button" class="btn size border" data-date="20200511" data-time="15:40"><span>방문일정 변경요청</span></button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="off after">
+                                                    <div class="inner">
+                                                        <div class="svc-info">
+                                                            <p class="date">
+                                                                <small>이후 방문 서비스</small>
+                                                                2020.05.11
+                                                            </p>
+                                                            <div class="visit-icons">
+                                                                <p>12개월 2주 후에 만나요!</p>
+                                                            </div>
+                                                            <div class="infos">
+                                                                <p class="blind">방문 서비스 해당 제품</p>
+                                                                <ul>
+                                                                    <li>공기청정기</li>
+                                                                    <li>건조기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <p class="end-alert">계약 만료 예정입니다.</p>
+                                                        </div>
+                                                        <div class="svc-lists">
+                                                            <p>이후 방문 서비스 상세 내역</p>
+                                                            <div class="svc-wrap">
+                                                                <ul class="svc-details">
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>정수기(12341234)</li>
+                                                                    <li>공기청정기(12341234)</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="more-view-wrap" aria-hidden="true">
+                                                                <span class="more-view-btn">더보기</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="my-visit-qna">
+                                            <ul>
+                                                <li>
+                                                    <div class="tit">방문 일정 변경 요청 답변</div>
+                                                    <div class="cont">
+                                                        죄송합니다. 요청하신 일자에는 방문이 어렵습니다.
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tit">비정기 점검</div>
+                                                    <div class="cont">
+                                                        방문일자/교체내역 입력란 입니다.
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // 방문 알리미 일정 -->
+                            </div>
+                            <!-- // 상세 -->
+                            <!-- // 계약정보가 있을 때 -->
+
+                            <!-- 계약정보가 없을 때 no data -->
+                            <div class="my-contract-info nodata">
+                                <h4 class="tit">이케어 고객님 안녕하세요!</h4>
+                                <p class="desc">"고객님, LG전자 케어솔루션과 함께 제품을 관리해보세요!"</p>
+                                <div class="form-wrap">
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="slt2">계약정보 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="slt2" disabled>
+                                                    <option value="" class="placeholder">선택</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="section-wrap nodata">
+                                <div class="no-data">
+                                    <p>보유하신 케어솔루션 계약 정보가 없습니다.</p>
+                                </div>
+                            </div>
+                            <!-- // 계약정보가 없을 때 no data -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "변경이 완료되었습니다."}
+        ]
+    })
+    
+    <!-- 방문일정 변경요청 popup -->
+    <article id="popupChangeVisitDate" class="popup-wrap full"
+        data-time-url="/lg5-common/data-ajax/mypage/care/impossibleVisitTimeList.json"
+    >
+        <header class="pop-header">
+            <h1 class="tit"><span>방문일정 변경요청</span></h1>
+        </header>
+        <section class="pop-conts mypage mycalendar">
+            <div class="my-visit calendar-box">
+                <div class="box-inner visit-calendar">
+                    <div class="tit-area">
+                        <h2 class="h2-tit">01. 변경할 방문일을 선택해주세요. <span>(필수)</span></h2>
+                    </div>
+                    <div class="box-wrap calendar-wrap">
+                        <div class="month-wrap">
+                            <span class="month">2021.01</span>
+                        </div>
+                        <!--
+                            날짜 선택 불가 = td class : disabled, button disabled
+                            방문 예정일 = td class : expected,
+                            변경 요청일 = td class : choice
+                        -->
+                        <table class="box-table tb-calendar">
+                            <caption>방문일정 변경요청 달력</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sun"><span>일</span></th>
+                                    <th scope="col"><span>월</span></th>
+                                    <th scope="col"><span>화</span></th>
+                                    <th scope="col"><span>수</span></th>
+                                    <th scope="col"><span>목</span></th>
+                                    <th scope="col"><span>금</span></th>
+                                    <th scope="col"><span>토</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="disabled" data-value="20210101"><button type="button" title="2021년 1월 1일" disabled><span>1</span><span class="blind">선택불가</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled" data-value="20210102"><button type="button" title="2021년 1월 2일" disabled><span>2</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210103"><button type="button" title="2021년 1월 3일" disabled><span>3</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210104"><button type="button" title="2021년 1월 4일" disabled><span>4</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210105"><button type="button" title="2021년 1월 5일" disabled><span>5</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210106"><button type="button" title="2021년 1월 6일" disabled><span>6</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210107"><button type="button" title="2021년 1월 7일" disabled><span>7</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210108"><button type="button" title="2021년 1월 8일" disabled><span>8</span><span class="blind">선택불가</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled" data-value="20210109"><button type="button" title="2021년 1월 9일" disabled><span>9</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210110"><button type="button" title="2021년 1월 10일" disabled><span>10</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210111"><button type="button" title="2021년 1월 11일" disabled><span>11</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210112"><button type="button" title="2021년 1월 12일" disabled><span>12</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210113"><button type="button" title="2021년 1월 13일" disabled><span>13</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="20210114"><button type="button" title="2021년 1월 14일" disabled><span>14</span><span class="blind">선택불가</span></button></td>
+                                    <td class="expected" data-value="20210115">
+                                        <button type="button" title="2021년 1월 15일" disabled><span>15</span><span class="blind">방문 예정일</span></button>
+                                    </td>    
+                                </tr>
+                                <tr>
+                                    <td data-value="20210116"><button type="button" title="2021년 1월 16일"><span>16</span></button></td>
+                                    <td data-value="20210117"><button type="button" title="2021년 1월 17일"><span>17</span></button></td>
+                                    <td data-value="20210118"><button type="button" title="2021년 1월 18일"><span>18</span></button></td>
+                                    <td data-value="20210119"><button type="button" title="2021년 1월 19일"><span>19</span></button></td>
+                                    <td data-value="20210120"><button type="button" title="2021년 1월 20일"><span>20</span></button></td>
+                                    <td data-value="20210121"><button type="button" title="2021년 1월 21일"><span>21</span></button></td>
+                                    <td data-value="20210122"><button type="button" title="2021년 1월 22일"><span>22</span></button></td>
+                                    <!-- <td class="choice" data-value="20210122">
+                                        <span class="blind">변경 요청일</span><button type="button" title="2021년 1월 22일"><span>22</span></button>
+                                    </td> -->
+                                </tr>
+                                <tr>
+                                    <td data-value="20210123"><button type="button" title="2021년 1월 23일"><span>23</span></button></td>
+                                    <td data-value="20210124"><button type="button" title="2021년 1월 24일"><span>24</span></button></td>
+                                    <td data-value="20210125"><button type="button" title="2021년 1월 25일"><span>25</span></button></td>
+                                    <td data-value="20210126"><button type="button" title="2021년 1월 26일"><span>26</span></button></td>
+                                    <td data-value="20210127"><button type="button" title="2021년 1월 27일"><span>27</span></button></td>
+                                    <td data-value="20210128"><button type="button" title="2021년 1월 28일"><span>28</span></button></td>
+                                    <td data-value="20210129"><button type="button" title="2021년 1월 29일"><span>29</span></button></td>
+                                </tr>
+                                <tr>
+                                    <td data-value="20210130"><button type="button" title="2021년 1월 30일"><span>30</span></button></td>
+                                    <td data-value="20210131"><button type="button" title="2021년 1월 31일"><span>31</span></button></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-info calendar-info">
+                        <ul>
+                            <li class="gray"><span class="blind">숫자 회색</span> 선택불가</li>
+                            <li class="green"><span class="blind">초록색 표기</span> 방문 예정일</li>
+                            <li class="red"><span class="blind">분홍색 표기</span> 변경 요청일</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-inner visit-timetable">
+                    <div class="tit-area">
+                        <h2 class="h2-tit">02. 방문시간을 선택해주세요. <span>(필수)</span></h2>
+                    </div>
+                    <div class="box-wrap timetable-wrap" style="display:none;">
+                        <!-- 
+                            시간 선택 시:
+                                해당라인 th = class : choice,
+                                해당버튼 tr = class : choice
+                        -->
+                        <table class="box-table tb-timetable">
+                            <caption>방문일정 변경 타임테이블</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">09시</th>
+                                    <td class="disabled" data-value="09:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="09:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="09:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="09:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="09:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="09:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10시</th>
+                                    <td class="disabled" data-value="10:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="10:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="10:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="10:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="10:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="10:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="choice">11시</th>
+                                    <td class="disabled" data-value="11:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="11:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="11:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="choice" data-value="11:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="11:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="11:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12시</th>
+                                    <td class="disabled" data-value="12:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="12:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="12:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="12:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="12:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="12:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13시</th>
+                                    <td class="disabled" data-value="13:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="13:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="13:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="13:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="13:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="13:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14시</th>
+                                    <td class="disabled" data-value="14:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="14:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="14:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="14:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="14:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="14:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15시</th>
+                                    <td class="disabled" data-value="15:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="15:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="15:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="15:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="15:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="15:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">16시</th>
+                                    <td class="disabled" data-value="16:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="16:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="16:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="16:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="16:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="16:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">17시</th>
+                                    <td class="disabled" data-value="17:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="17:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="17:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="17:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="17:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="17:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">18시</th>
+                                    <td class="disabled" data-value="18:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="18:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="18:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="18:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="18:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="18:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">19시</th>
+                                    <td class="disabled" data-value="19:00"><button type="button" title="" disabled><span>00분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="19:10"><button type="button" title="" disabled><span>10분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="disabled" data-value="19:20"><button type="button" title="" disabled><span>20분</span><span class="blind">선택불가</span></button></td>
+                                    <td class="" data-value="19:30"><button type="button" title=""><span>30분</span></button></td>
+                                    <td class="" data-value="19:40"><button type="button" title=""><span>40분</span></button></td>
+                                    <td class="" data-value="19:50"><button type="button" title=""><span>50분</span></button></td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                    <!-- 210129 추가(케이스) -->
+                    <!-- 변경 요청일 미선택 케이스 -->
+                    <div class="box-wrap timetable-wrap">
+                        <p class="info-txt">변경할 방문일을 선택해주세요.</p>
+                    </div>
+                    <!-- 변경 요청일 선택불가 케이스 -->
+                    <div class="box-wrap timetable-wrap" style="display:none;">
+                        <p class="info-txt">선택가능한 방문일이 없습니다.<br>신청이 불가능한 경우 콜센터(1544-7777)로<br>문의주시기 바랍니다.</p>
+                    </div>
+                    <!-- //210129 추가(케이스) -->
+                    <div class="box-info timetable-info">
+                        <ul>
+                            <li class="black"><span class="blind">검정색 표기</span> 예약가능</li>
+                            <li class="red"><span class="blind">빨간색 표기</span> 선택</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-visit-date">
+                    <p class="visit-date">선택하신 방문일시<span class="date">2020.09.22 11:30</span></p>
+                </div>
+            </div> 
+
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group center">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 방문일정 변경요청 popup -->
+
+</body>
+</html>

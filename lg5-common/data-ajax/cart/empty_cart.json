@@ -1,0 +1,19 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "isMember":false,
+        "buyCount": "0",
+        "rentalCount": "0",
+        "address1":"서울시 영등포구 여의대로 128",
+        "address2":"LG 트윈타워 17층",
+        "amount":{
+            "order":"0",
+            "sale":[
+            ],
+            "shipping":"0",
+            "total":"0"
+        },
+        "cart":[]
+    }
+}

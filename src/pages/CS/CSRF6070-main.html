@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '고객지원',
+                'pageDesc': '제품에 대한 문제를 빠르게 진단하고<br>해결할 수 있도록 도와드리겠습니다.'
+            })
+            <div class="contents support appgate">
+                @@include('./common/support/login-guide.html', {
+                    'text': '로그인을 하시면 더욱 편리하게 이용하실 수 있습니다.'
+                })
+                <div class="cont-wrap narrow">
+
+                    <form action="/html/CS/CSRF6002.html" method="GET" id="submitForm">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="스마트폰">
+                        <input type="hidden" name="category" id="category" value="1018">
+                        <input type="hidden" name="subCategory" id="subCategory" value="C000136">
+                        <input type="hidden" name="modelCode" id="modelCode" value="LMG710N">
+                        <input type="hidden" name="productCode" id="productCode" value="product">
+                    </form>
+                    <div class="section">
+                        <div class="appgate-title">
+                            <h2 class="tit">고객님의 사용 제품 입니다.</h2>
+                        </div>
+                        <div class="appgate-box">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지">
+                                </div>
+                                <div class="product-info">
+                                    <div class="img">
+                                        <img src="/lg5-common/images/dummy/@img-product8-title.png" alt="LG G7 ThinQ / G7+ ThinQ">
+                                    </div>
+                                    <p class="name">모델명 <em>LM-G710N</em></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-list-box">
+                            <!-- 2021.02.08 br 태그 추가 -->
+                            <ul>
+                                <li>
+                                    <a href="#"><span>사용<br>설명서</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>드라이버<br>/SW</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>소모품<br>구매</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>S/W<br>업데이트<br>소식</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><span>사용 제품<br>등록</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h2>
+                        </div>
+                        <div class="form-wrap">
+                            <div class="forms">
+                                <div class="conts">
+                                    <div class="select-wrap"> 
+                                        <select name="topic" id="topic" class="ui_selectbox" title="증상 선택" data-target="#subTopic" data-ajax="/lg5-common/data-ajax/support/subTopicOption.json">
+                                            <option value="" class="placeholder">증상 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrap"> 
+                                        <select name="subTopic" id="subTopic" class="ui_selectbox" title="상세 증상을 선택" data-placeholder="상세 증상을 선택" disabled>
+                                            <option value="" class="placeholder">상세 증상을 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-wrap search">
+                                        <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete" data-required="true" data-error-msg="검색어를 입력하고 조회해주세요.">
+                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                    </div>
+                                    <p class="err-msg"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2021/01/29 추가 -->
+                    <div class="common-banner">
+                        <div class="banner">
+                            <h3 class="banner-tit">원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.</h3>
+                            <div class="service-list-wrap">
+                                <ul class="service-list">
+                                    <!-- 
+                                        아이콘 실제 경로
+                                        /kr/support/images/icon/파일명
+                                     -->
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_email-inquiry.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">이메일문의</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_request-reservation.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">전화상담예약</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_remote-reservation.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">원격상담예약</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_center-reservation.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">센터방문예약</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="common-banner">
+                        <div class="banner">
+                            <h3 class="banner-tit">고객 서비스에 대한 조회 및 변경사항을 확인하실 수 있어요.</h3>
+                            <div class="service-list-wrap">
+                                <ul class="service-list">
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_consulting-inquiry.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">상담결과 조회/변경</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon_service-inquiry.svg" alt="" aria-hidden="true">
+                                            </div>
+                                            <strong class="tit">예약결과 조회/변경</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //2021/01/29 추가 -->
+
+                    <!-- 2021/01/29 삭제 -->
+                    <!-- <div class="section">
+                        <div class="cs-service-menu">
+                            <h3 class="banner-tit">원하는 결과를 찾지 못하셨다면 다른 서비스를 이용해보세요.</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-email-inquiry.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">이메일문의</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-request-reservation.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">전화상담예약</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-remote-reservation.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">원격상담예약</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-center-reservation.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">센터방문예약</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="cs-service-menu">
+                            <h3 class="banner-tit type-narrow">고객 서비스에 대한 조회 및 변경사항을 확인하실 수 있어요.</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-consulting-inquiry.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">상담결과 조회/변경</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-service-inquiry.svg" alt=""> 
+                                        </div>
+                                        <p class="tit">예약결과 조회/변경</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    <!-- //2021/01/29 삭제 -->
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/appgate.min.js"></script>
+</body>
+</html> 

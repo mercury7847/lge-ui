@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0031",
+		isJScompile: true
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<div class="component-wrap zero-top zero-btm">
+				<!--
+                    [component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+				-->
+				<section class="component KRP0031">
+					<div class="search-wrap">
+						<form action="/html/UTS/SERF9007.html" method="GET" id="searchForm" target="_blank" novalidate>
+							<input type="hidden" name="force" value="false">
+							<div class="search-box">
+								<div class="search-input">
+									<input type="text" name="search" id="searchKeyword" class="ui_input_clearbutton" placeholder="두 글자 이상 검색 키워드를 입력" minlength="2" autocomplete="off" data-clear-button="button.btn-delete" data-required="true" data-error-msg="두 글자 이상 검색 키워드를 입력하시기 바랍니다.">
+									<button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+									<button type="button" class="btn-search"><span class="blind">검색</span></button>
+								</div>
+								<p class="search-error"></p>
+								<div class="search-more">
+									<button type="button" class="btn question" data-href="#modelNamePopup"><span>모델명 확인방법</span></button>
+								</div>
+							</div>	
+						</form>
+					</div>
+
+					<!-- 모델명 확인방법 -->
+					<article id="modelNamePopup" class="popup-wrap"
+						data-model-url="/lg5-common/data-ajax/KRP0031/searchModelName.json"
+					>
+						<header class="pop-header">
+							<h1 class="tit"><span>모델명 확인 방법</span></h1>
+						</header>
+						<section class="pop-conts academy-pop common-pop no-footer">
+							<p class="noti-txt">사용하시는 제품의 <em>모델명</em>과 <em>제조번호</em>를 확인해주세요.</p>
+							<div class="example-list">
+								<dl>
+									<dt>모델명</dt>
+									<dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
+								</dl>
+								<dl>
+									<dt>제조번호</dt>
+									<dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
+								</dl>
+							</div>
+							<div class="form-wrap category-select">
+								<dl class="forms">
+									<dt class="tit"><label for="select1" class="req">카테고리 선택</label></dt>
+									<dd class="conts">
+										<div class="box">
+											<div class="select-wrap">
+												<select class="ui_selectbox" name="cateSelect" id="select1" title="전체 카테고리 선택">
+													<option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+													<option value="세탁기/스타일러">세탁기/스타일러</option>
+													<option value="모바일">모바일</option>
+												</select>
+											</div>
+										</div>
+										<div class="box">
+											<div class="select-wrap">
+												<select class="ui_selectbox" name="subCateSelect" id="select2" title="전체 카테고리 선택" disabled>
+													<option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+												</select>
+											</div>
+										</div>
+									</dd>
+								</dl>
+							</div>
+							<div class="example-result">
+								<p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+								<div class="img" aria-hidden="true">
+									<img src="/lg5-common/images/CS/img-model-name-example.jpg" alt="모델명 및 제조번호 확인 예시 이미지">
+								</div>
+							</div>
+						</section>
+						<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+					</article>
+					<!-- // 모델명 확인방법 -->
+				</section>
+			</div> <!-- //.component-wrap-->
+
+		</div>
+	</div>
+</body>
+</html>

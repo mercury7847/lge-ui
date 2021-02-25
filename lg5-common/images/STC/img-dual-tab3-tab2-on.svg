@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="81" height="80" viewBox="0 0 81 80">
+    <defs>
+        <circle id="zl92dvh6ua" cx="40" cy="40" r="40"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-920 -2747) translate(0 158) translate(620.5 1658) translate(156 931) translate(144)">
+                                <mask id="4477xtfuub" fill="#fff">
+                                    <use xlink:href="#zl92dvh6ua"/>
+                                </mask>
+                                <use fill="#EC455A" xlink:href="#zl92dvh6ua"/>
+                                <g mask="url(#4477xtfuub)">
+                                    <g>
+                                        <g transform="translate(16 16)">
+                                            <circle cx="23.959" cy="23.959" r="22.959" fill="#EC455A" stroke="#FFF" stroke-width="2"/>
+                                            <ellipse cx="23.959" cy="23.959" fill="#EC455A" stroke="#FFF" stroke-width="2" rx="22.959" ry="12.632" transform="rotate(90 23.959 23.959)"/>
+                                            <ellipse cx="23.959" cy="23.959" stroke="#FFF" stroke-width="2" rx="22.959" ry="12.632"/>
+                                            <path fill="#FFF" d="M22.925 0H24.994V47.918H22.925z"/>
+                                        </g>
+                                        <path fill="#EC455A" stroke="#FFF" stroke-width="2" d="M30.852 23.799c-.551.042-1.032.304-1.365.693-.334.388-.518.904-.476 1.455l1.6 20.773c.034.451.221.878.53 1.21.377.404.882.617 1.393.635.512.018 1.03-.16 1.434-.536l4.148-3.852 2.726 4.361c.292.468.747.774 1.246.889.499.115 1.041.04 1.51-.253l2.544-1.59c.468-.292.774-.747.889-1.246.113-.488.043-1.02-.235-1.481l-2.497-4.559 5.404-2.093c.42-.163.774-.463 1.003-.852.28-.477.34-1.021.21-1.517-.129-.495-.447-.941-.923-1.22L32.017 24.067c-.352-.206-.758-.3-1.165-.269z" transform="translate(16 16)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

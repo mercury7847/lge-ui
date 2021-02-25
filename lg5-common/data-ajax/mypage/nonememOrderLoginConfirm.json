@@ -1,0 +1,14 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "sendUrl": "http://lge.com",
+        "alert":{
+            "isCustom": false,
+            "title": "조회 오류 내용",
+            "desc": ""
+        }
+    }
+}

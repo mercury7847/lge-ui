@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageJS: ["components/KRP0032"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            <div style="padding:100px;text-align:center;">
+                스크롤시 오른쪽 하단에서 나타납니다.
+            </div>
+
+            <!-- 210114 수정 -->
+            <!-- 210128 수정 -->
+            <!-- component / Recently Viewed -->
+            @@include('./common/partials/KRP0032.html')
+            <!-- // component / Recently Viewed -->
+
+            <!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+            <!-- //210128 수정 -->
+            <!-- //210114 수정 -->
+
+
+            <div style="height:2000px;">
+		
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //쿠키 추가
+    lgkorUI.addCookieArrayValue('myRecentProduct','pid000001');
+</script>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderAndDelivery"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "청약 상세보기"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "", "page": "쿠폰" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section-wrap">
+                                <div class="sects">
+                                    <!-- 계약정보 -->
+                                    <div class="info-tbl-wrap">
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                            "infos" : [
+                                                { "dt" : "주문일", "dd" : "2020.08.29" },
+                                                { "dt" : "주문번호", "dd" : "20200912497207" },
+                                            ],
+                                            "total" : "총 1건", 
+                                            "th" : [
+                                                "제품정보(주문/배송 상세보기)", "진행상태"
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "flag" : "케어솔루션",
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 디오스 상냉장하냉동",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "more" : [
+                                                            "Silver"
+                                                        ]
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "진행상태",
+                                                    "stateType" : {
+                                                        "tit" : "청약신청 완료",
+                                                    }
+                                                }
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "cancel" : true
+                                        })
+                                        <!-- // loop -->
+                                    </div>
+                                    <!-- // 계약정보 -->
+
+                                    <div class="section-inner type3">
+                                        <!-- 신청 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">신청 정보 (계약자)</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "성명", "dd" : "이*어" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
+                                                    { "dt" : "이메일", "dd" : "lg****@naver.com" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 신청 정보 -->
+
+                                        <!-- 배송 설치 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">배송 설치 정보 (실사용자)</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "인수자 성명", "dd" : "이*수" },
+                                                    { "dt" : "인수자 휴대폰", "dd" : "010****1234" },
+                                                    { "dt" : "일반전화번호", "dd" : "02-****-1234" },
+                                                    { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지로 ****" },
+                                                    { "dt" : "배송 요청사항", "dd" : "배송 요청사항 노출" },
+                                                    { "dt" : "설치장소", "dd" : "설치장소 노출" },
+                                                    { "dt" : "설치희망 일시", "dd" : "2020.09.23 10:00 ~ 12:00" },
+                                                    { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
+                                                    { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 배송 설치 정보 -->
+
+                                        <!-- 결제 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제수단", "dd" : "<span>신용카드</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 결제 정보 -->
+
+                                        <!-- 월 납부 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">월 납부 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "제휴카드 신청", "dd" : "신청 / 하나카드 LG전자 렌탈 PLUS" },
+                                                    { "dt" : "월 납부 수단", "dd" : "신용카드" },
+                                                    { "dt" : "월 납부 금액", "dd" : "<span>선납 / 포인트 사용 / 1년차 월 88,888원</span><a href='#n' class='btn-link monthlyPrice-btn'>매월 납부금 할인 내역 알아보기</a>" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 월 납부 정보 -->
+
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "주문 진행 상태에 따라 취소 신청이 가능합니다. 취소 신청 버튼이 없을 경우 고객 센터(000-0000) 에 문의 하세요.",
+                                                "배송지 변경은 고객센터(0000-0000)로 연락 부탁드립니다."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn"><span>주문/배송 목록가기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
+
+    <!-- 영수증 발급 내역 -->
+    @@include('./common/popup/ACCF7002_pop3.html', {
+        popupID: 'popup-receipt-list'
+    })
+    <!-- // 영수증 발급 내역 -->
+
+    <!-- 매월 납부금 할인 내역 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup-monthly-price',
+        title : "매월 납부금 할인 내역",
+        h2Tit : "의무 사용기간 3년/계약기간 5년",
+        fee1 : "36,900원",
+        fee2 : "-23,000원",
+        fee3 : "13,900원",
+        tableArr : [
+            { "td1" : "1년차 (1~12회차)", "td2" : "36,900원", "td3" : "3, 6, 9, 12 무상할인"},
+            { "td1" : "2년차 (13~24회차)", "td2" : "36,900원", "td3" : "15, 18 무상할인"},
+            { "td1" : "3년차 (25~36회차)", "td2" : "36,900원", "td3" : ""},
+            { "td1" : "4년차 (37~48회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "5년차 (49~60회차)", "td2" : "13,900원", "td3" : ""},
+        ],
+        feeDt : "무상할인 적용회차 (6회)",
+        freeMonth : "3, 6, 9, 12, 15, 18",
+        bTit : "케어솔루션 안내",
+        bTxt : [
+            "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
+            "5년 동안 무상 A/S(계약 기간 내)",
+            "초기구입비용 0원 (60개월 분할 납부)"
+        ]
+    })
+    <!-- // 매월 납부금 할인 내역 -->
+</body>
+</html>

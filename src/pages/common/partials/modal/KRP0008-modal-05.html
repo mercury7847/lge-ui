@@ -1,0 +1,31 @@
+<!-- 사전 예약 제품 안내 -->
+<article id="@@popupID" class="popup-wrap small">
+    <header class="pop-header">
+        <h1 class="tit"><span>사전 예약 제품 안내</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="layer-pre-order">
+            <div class="process-info">
+                <div class="info-box">
+                    <p>선택하신 제품은 사전 예약 제품입니다.</p>
+                    <ul class="process-list">
+                        <li><span>사전예약 선결제</span></li>
+                        <li><span>입고 및 배송 시작 안내</span></li>
+                    </ul>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "사전예약 제품은 선결제 후 제품이 입고되는 시점에 배송일정이 결정됩니다."
+                    ]
+                })
+            </div>
+        </div>
+    </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- // 사전 예약 제품 안내 -->

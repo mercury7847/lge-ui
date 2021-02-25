@@ -1,0 +1,329 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0015 {
+    display: none;
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
+    background:#fff;
+
+    @include mobile {
+        max-width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .sticy-compare {
+        max-width: (1284px + 60px);
+        margin: 0 auto;
+       .compare-title {
+           position: relative;
+           height: 88px;
+           padding: 32px 0;
+           font-size:0;
+           @include clearfix;
+           @include mobile {
+            height: 56px;
+            padding:17px 0;
+           }
+           .title-text {
+                display:inline-block;
+                color: #000;
+                font-size: 14px;
+                line-height: 22px;
+                @include mobile {
+                    // padding: 26px 0;
+                }
+                /*
+                .desc {
+                    margin-left: 12px;
+                    color: #808080;
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 400;
+                }*/
+           }
+           .count {
+               display:inline-block;
+               padding-left:8px;
+               font-size:16px;
+               font-weight:700;
+               line-height:26px;
+               strong {
+                   color:#da0f47;
+               }
+               @include mobile {
+                   font-size:14px;
+                   line-height:22px;
+               }
+           }
+           .right-cont {
+                display: flex;
+                position: absolute;
+                top: 24px;
+                right: 0;
+                color: #000;
+                font-size: 16px;
+                line-height: 24px;
+                @include mobile {
+                    top: 6px;
+                }
+                .count {
+                    display: inline-block;
+                    line-height: 40px;
+                }
+                
+                .more-arrow {
+                    display: inline-block;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    margin-left: 16px;
+                    &:before {
+                        display: inline-block;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 24px;
+                        height: 24px;
+                        margin: -7px 0 0 -6px;
+                        background: url('/lg5-common/images/icons/icon-arrow-down-24x24.svg') no-repeat 0 0;
+                        // border-right: 1px solid #111;
+                        // border-bottom: 1px solid #111;
+                        // transform: rotate(45deg);
+                        @include mobile {
+                            margin:-10px 0 0 0;
+                        }
+                    }
+                    &.close {
+                        &:before {
+                            transform: rotate(-180deg);
+                            margin: -7px 0 0 -6px;
+                        }
+                    }
+                }
+           }
+       }
+       .compare-content {
+           display: none;
+          .compare-list {
+              margin:0 -8px;
+             .list-inner {
+                display: flex;
+                position: relative;
+                width: 100%;
+                @include mobile {
+                    flex-direction: row;
+                }
+                 .item {
+                    position: relative;
+                    width: 33.333%;
+                    height: 148px;
+                    margin-left: 12px;
+                    border-radius:8px;
+                    border: 1px solid #ddd;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    @include mobile {
+                        display:inline-block;
+                        width: 50%;
+                        height: 183px;
+                        margin:0 8px;
+                        &:first-child {
+                            margin-left:8px;
+                        }
+                        &:last-child {
+                            display: none;
+                        }
+                    }
+                    .item-inner {
+                        display: table;
+                        table-layout: fixed;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        padding:0 32px;
+                        @include mobile {
+                            padding:16px 12px;
+                        }
+                        .img-area {
+                            display: table-cell;
+                            width: 120px;
+                            height: 120px;
+                            vertical-align:middle;
+                            img {
+                                max-width: 100%;
+                                //max-height: 100%;
+                            }
+                            @include mobile {
+                                display:block;
+                                width: 70px;
+                                height: 70px;
+                                margin:0 auto;
+                            }
+                        }
+                        .item-text {
+                            display: table-cell;
+                            padding-left: 24px;
+                            vertical-align: middle;
+                            @include mobile {
+                                display:block;
+                                margin-top:16px;
+                                text-align:center;
+                            }
+                            .product-name {
+                                display: -webkit-box;
+                                -webkit-line-clamp:2;
+                                -webkit-box-orient: vertical;
+                                width: 100%;
+                                max-height:52px;
+                                font-size: 16px;
+                                line-height: 26px;
+                                color: #000;
+                                font-weight: 700;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                @include mobile {
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                }
+                            }
+                            .modal-name {
+                                width: 100%;
+                                font-size: 16px;
+                                line-height: 24px;
+                                color: #000;
+                                font-weight: 500;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: normal;
+                                overflow: hidden;
+                                @include mobile {
+                                    font-size: 13px;
+                                    line-height: 21px;
+                                }
+                            }
+                        }
+                    }
+                 }
+                 .btn-close {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    width: 24px;
+                    height: 24px;
+                    @include mobile {
+                        top: 12px;
+                        right: 12px;
+                    }
+                    &:before,
+                    &:after {
+                        display: inline-block;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 1px;
+                        height: 20px;
+                        margin-top: -10px;
+                        //margin-left: 1px;
+                        border-radius: 1px;
+                        background: #000;
+                    }
+                    &:before {
+                        transform: rotate(45deg); 
+                    }
+                    &:after {
+                        transform: rotate(-45deg); 
+                    }
+                 }
+             } 
+          }
+          .bullet-list {
+              display:inline-block;
+              margin-top:36px;
+              @include mobile {
+                  display:block;
+                  margin-top:12px;
+              }
+          }
+          .btn-group {
+              margin-top:-38px;
+              margin-bottom: 32px;
+              text-align: right;
+              @include mobile {
+                display: flex;
+                justify-content: space-between;
+                margin-top:24px;
+                }
+              .btn {
+                  @include mobile {
+                    // border-radius: 8px;
+                    &.btn-compare {
+                        width:100%;
+                    }
+                  }
+                  &.text {
+                      position: relative;
+                      min-width: auto;
+                      padding: 13px 5px;
+                      background: none;
+                      border: none;
+                      color: #da0f47;
+                      font-weight:normal;
+                      text-decoration:underline;
+                      &:before {
+                        display: inline-block;  
+                        content: '';
+                        width: 24px;
+                        height: 24px;
+                        background: url('/lg5-common/images/icon-reset.svg') no-repeat 50% 50%;
+                        vertical-align: top;
+                      }
+                      span {
+                          vertical-align: top;
+                      }
+                      &:hover,
+                      &:active {
+                          color: #da0f47;
+                      }
+                      &:disabled,
+                      &.disabled {
+                        color: #ddd;
+                        &:before {
+                            background: url('/lg5-common/images/icon-reset-disabled.svg') no-repeat 50% 50%;
+                        }
+                      }
+                  }
+                  
+              }
+              .btn + .btn {
+                margin-left: 16px;
+                @include mobile {
+                    margin-left:0;
+                }
+              }
+              .btn.text {
+                  @include mobile {
+                    position:absolute;
+                    top:2px;
+                    right:59px;
+                    width:auto;
+                  }
+              }
+          } 
+       }
+    }
+    
+}

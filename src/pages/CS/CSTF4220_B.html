@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '예약 결과 조회/변경',
+                'pageDesc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.'
+            })
+            
+            <div class="contents support service-status-detail">
+                <div class="survey-banner-wrap">
+                    <div class="banner">    
+                        <p class="tit">더 나은 서비스를 제공하기 위해 고객님의<br>소중한 의견을 받습니다.</p>
+                        <a href="#" class="btn border size-m"><span>설문 참여하기</span></a><!-- 2021.02.24 버튼 class 변경 -->
+                    </div>
+                </div>
+
+                <div class="result-header">
+                    <h2 class="tit">출장 서비스 예약</h2>
+                </div>
+                <div class="complete-summary">
+                    <div class="box">
+                        <div class="summary-img">
+                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="전문 엔지니어 사진">
+                        </div>
+                        <div class="summary-info">
+                            <p class="info"><span>접수번호 HA230948WW</span><span>홍길동 엔지니어</span></p>
+                            <p class="status"><span>조금만 기다려주세요.</span><br>회수된 의류 건조기는 공장으로 보내져 수리 후 댁에 안전히 설치될 예정입니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-btn-group ui_sticky">
+                    <!-- 2021.02.01 클래스 변경 -->
+                    <ul class="group-box">
+                        <li><a href="/html/CS/CSRF6072.html" target="_blank" class="btn-link"><span>제품/설치환경 사진등록</span></a></li>
+                        <!-- <li><button class="btn-link"><span>예상 비용 확인</span></button></li> -->
+                        <li><button type="button" data-href="#reservationTimePopup" class="btn-link"><span>예약 일시 변경</span></button></li>
+                        <li><button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn-link"><span>예약 취소</span></button></li>
+                    </ul>
+                    <!-- 2021.02.01 클래스 변경 -->
+                </div>
+                <div class="result-progress">
+                    <!-- 2021.01.26 마크업 변경 -->
+                    <p class="desc"><em class="color-3">접수 &gt; 방문 예정 &gt; 회수 예정 &gt; 회수 중 &gt; 공장 입고 &gt; 수리 중 &gt; 배송 중 &gt; 완료</em> 순으로 진행됩니다.</p>
+                    <!-- 2021.01.26 마크업 변경 -->
+
+                    <div class="progress-box">
+                        <span class="progressing" style="width:calc(100% / 7 * 4)"></span>
+                        <ol class="progressbar">
+                            <li class="on"><span class="text">접수</span></li>
+                            <li class="on"><span class="text">방문 예정</span></li>
+                            <li class="on"><span class="text">회수 예정</span></li>
+                            <li class="on"><span class="text">회수 중</span></li>
+                            <li class="on current"><span class="text">공장 입고</span><span class="blind">현재 단계</span></li>
+                            <li><span class="text">수리 중</span></li>
+                            <li><span class="text">배송 중</span></li>
+                            <li><span class="text">완료</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">예약/결과 정보</h3>
+                        </div>
+                        
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>접수 번호</strong></div>
+                                <div class="description">HA230948WW</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수 일시</strong></div>
+                                <div class="description">2020.10.01 10:01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>접수 경로</strong></div>
+                                <div class="description">온라인</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>진행 상태</strong></div>
+                                <div class="description">처리 완료</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>취소 일시</strong></div>
+                                <div class="description">2020.10.01 10:01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>취소 사유</strong></div>
+                                <div class="description">
+                                    <span class="line">직접 해결하여서</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>서비스 예정 일시</strong></div>
+                                <div class="description">2020.10.01 10:01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>제품</strong></div>
+                                <div class="description">세탁기/스타일러 &gt; 데스크톱.일체형 (모델명 : ABCD=123456)</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>증상</strong></div>
+                                <div class="description">
+                                    <span class="line">버튼/리모컨 &gt; 버튼 잠금 설정</span>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>구입 시기</strong></div>
+                                <div class="description">1년~2년 이내</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>유형</strong></div>
+                                <div class="description">설치</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>엔지니어</strong></div>
+                                <div class="description">홍길동 / 동대문서비스센터</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>엔지니어</strong></div>
+                                <div class="description">
+                                    <div class="engineer-box">
+                                        <div class="image">
+                                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="엔지니어 사진">
+                                        </div>
+                                        <p class="txt">홍길동 / 동대문서비스센터</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>전달 사항</strong></div>
+                                <div class="description">
+                                    <span class="line">전달 사항전달 사항전달 사항전달 사항전달 사항</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>회수 예정 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>회수 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>공장 입고 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>수리 완료 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>공장 출고 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>배송/설치 희망 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>배송/설치 완료 일자</strong></div>
+                                <div class="description">2020.10.01</div>
+                            </li>
+                        </ul>
+                    </div>                    
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">서비스 받으실 분</h3>
+                        </div>
+
+                        <ul class="inquiry-list">
+                            <li>
+                                <div class="title"><strong>이름</strong></div>
+                                <div class="description">홍*동</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>휴대 전화</strong></div>
+                                <div class="description">010-****-1234</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>주소</strong></div>
+                                <div class="description">(12345) 서울 강남구 도산대로 104*****************</div>
+                            </li>
+                        </ul>
+                        @@include('./common/modules/bullet-list.html', {
+                            "topBorder" : true,
+                            "bulletTxt" : [
+                                "온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다.",
+                                "[예약 일시 변경]버튼을 클릭하면 서비스 받으실 날짜, 시간 변경이 가능합니다.예약 일시 변경은 예약 시간 1시간 전까지 가능하며, 기존 접수건 취소 후 신규로 접수됩니다."
+                            ]
+                        })
+                    </div>
+                    
+                    <div class="btn-group center">
+                        <!-- 단건 조회 시 -->
+                        <a href="#" class="btn">고객지원 메인</a>
+                        <!-- 복수건 조회 시 -->
+                        <!-- <button type="button" class="btn">목록</button> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- 예약결과 조회변경_예약취소 팝업 -->
+    @@include('./CS/modal/cancel-service-popup.html')
+
+    <!-- 예약일시변경 팝업 -->
+    @@include('./CS/modal/reservation-time-popup.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
+</body>
+</html> 

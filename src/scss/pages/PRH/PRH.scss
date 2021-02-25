@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../layout/grid";
+@import "../../utilities/mixins";
+
+.pc-only {
+    display: block;
+    @include mobile {
+        display: none;
+    }
+}
+.mo-only {
+    display: none;
+    @include mobile {
+        display: block;
+    }
+}
+
+.brand-hero {
+    .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        &.blur {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    [class*="scene"] {
+        position: relative;
+        //position: fixed;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        .dimmed {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background-color: rgba($color-default,.6);
+        }
+        .count {
+            position: absolute;
+            right: 120px;
+            bottom: 24px;
+            z-index: 2;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 40px;
+            color: $color-white;
+            opacity: .7;
+            @include mobile {
+                right: 24px;
+                bottom: 13px;
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        .next-arr {
+            display: block;
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            z-index: 2;
+            transform: translateX(-50%);
+            .arr {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background: url('/lg5-common/images/MA/icon-arr-40x40.svg') no-repeat 0 0;
+                animation: arr 1s infinite;
+            }
+            @include mobile {
+                width: 100%;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 5px 0;
+                //background-color: rgba(#000, .4);
+                transform: none;
+                .arr {
+                    width: 100%;
+                    background-size: 24px;
+                    background-position-x: center;
+                }
+            }
+        }
+        @keyframes arr {
+            0% {
+                transform:translateY(0);
+            }
+            50% {
+                transform:translateY(10px);
+            }
+            100% {
+                transform:translateY(0);
+            }
+        }
+    }
+}
+
+.brand-wrap {
+    .signature-tabs,
+    .thinq-tabs {
+        background-color: $color-bg-wt;
+    }
+    &.on {
+        &.active {
+            .signature-tabs,
+            .thinq-tabs {
+                position: fixed;
+                top: 0;
+                right: 17px;
+                left: 0;
+                z-index: 15;
+                @at-root .mac & {
+                    right: 0;
+                }
+                & ~ .tab-contents {
+                    padding-top: 88px;
+                    @include mobile {
+                        padding-top: 83px;
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        //.signature-tabs,
+        //.thinq-tabs {
+        //    position: static;
+        //}
+        //.tab-contents {
+        //    padding-top: 0;
+        //}
+    }
+    .tab-contents {
+        padding-top: 0;
+    }
+    .tabs-wrap {
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 40px 0 0;
+        text-align: left;
+        &:before {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: $color-border;
+            content: '';
+        }
+        .tabs > li {
+            margin-left: 40px;
+            &:first-child {
+                margin-left: 0;
+            }
+            > a {
+                padding: 0 8px 20px;
+                @include font-large;
+            }
+            &.on {
+                > a:after {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 5px;
+                    border-radius: 5px 5px 0 0;
+                    background-color: $color-default;
+                    content: '';
+                }
+            }
+            @include mobile {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .tab-contents {
+        .inner {
+            max-width: (1380px + 80px);
+            margin: 0 auto;
+            padding: 0 40px;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
+                .gray-box {
+                    margin: 0 -16px;
+                    padding: 40px 16px;
+                }
+            }
+
+        }
+        .gray-box {
+            padding: 48px 64px;
+            background-color: $color-bg;
+        }
+    }
+
+    .image {
+        img {
+            max-width: 100%;
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+
+    .animate-target {
+        opacity: .3;
+        // transform: translateY(100px);
+        transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+        &.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .content-title {
+        margin: 80px 0 48px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 52px;
+        text-align: center;
+        @include mobile {
+            margin: 60px 0 40px;
+            font-size: 24px;
+            line-height: 33px;
+        }
+        & + .signature-section {
+            margin-top: 0;
+        }
+    }
+
+    .btn.border {
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: inherit;
+            background-image: none;
+            color: inherit;
+        }
+    }
+}
+
+// LG ThinQ
+@import "MKTF1110";
+
+// LG SIGNATURE
+@import "MKTF1111";

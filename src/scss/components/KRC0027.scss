@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0027 {
+    .component-inner {
+        @include mobile {
+            padding: 0;
+        }
+    }
+    .carousel-box {
+        .indi-wrap,
+        .slide-controls,
+        .slide-controls .btn-arrow {
+            @include pc {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            position: relative;
+            padding-bottom: 32px;
+            .slide-controls {
+                .btn-arrow {
+                    position: absolute;
+                    top:calc((100% - 32px) / 2);
+                    transform:translateY(-50%);
+                    &.prev {
+                        left: 4px;
+                    }
+                    &.next {
+                        right: 4px;
+                    }
+                }
+            }
+        }
+    }
+    .visual-box {
+        overflow:hidden;
+        text-align:center;
+        img {
+            width:auto;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
+        }
+    }
+}
+
+$block: (block1, block2, block3);
+@each $i in $block {
+    img {
+        width:auto;
+        max-width:100%;
+        height:auto;
+        vertical-align:top;
+    }
+    .KRC0027.#{$i} {
+        .unit-list {
+            margin:0 -12px;
+            font-size:0;
+            @include mobile {
+                margin:0;
+            }
+            .unit-box {
+                display:inline-block;
+                padding:0 12px;
+                vertical-align:top;
+                @if ( $i == block1 ) {
+                    width:100%;
+                } @else if ( $i == block2 ) {
+                    width:50%;
+                } @else if ( $i == block3 ) {
+                    width:calc(100% / 3);
+                }
+                @include mobile {
+                    padding:0 16px;
+                    @if ( $i == block2 ) {
+                        width:100%;
+                    } @else if ( $i == block3 ) {
+                        width:100%;
+                    }
+                }
+            }
+
+            .title {
+                h2 {
+                    @include title-h4;
+                }
+                &.title-h1 * {
+                    @include title-h1;
+                }
+                &.title-h2 * {
+                    @include title-h2;
+                }
+                &.title-h3 * {
+                    @include title-h3;
+                }
+                &.title-h4 * {
+                    @include title-h4;
+                }
+                &.title-h5 * {
+                    @include title-h5;
+                }
+                &.title-h6 * {
+                    @include title-h6;
+                }
+            }
+            .text {
+                @include bodycopy(h3, h3);
+            }
+            .cta-box {
+                @include cta-btn;
+                text-align:left;
+            }
+            .visual-box {
+                position:relative;
+                @include mobile {
+                    margin-left:-16px;
+                    margin-right:-16px;
+                }
+                &.align-left {
+                    .cta-box {
+                        text-align:left;
+                    }
+                }
+                &.align-center {
+                    .cta-box {
+                        text-align:center;
+                    }
+                }
+                &.align-right {
+                    .cta-box {
+                        text-align:right;
+                    }
+                }
+                .cta-box {
+                    position:absolute;
+                    left:24px;
+                    right:24px;
+                    bottom:24px;
+                    z-index:10;
+                }
+            }
+        }
+
+        &.align-top {
+            .visual-box {
+                margin-top:28px;
+            }
+        }
+        &.align-bottom {
+            .visual-box {
+                margin-bottom:28px;
+            }
+        }
+        &.align-left,
+        &.align-right,
+        &.align-center {
+            @include mobile {
+                text-align: center;
+            }
+        }
+        &.align-center {
+            .cta-box {
+                text-align:center;
+            }
+        }
+        &.align-right {
+            .cta-box {
+                text-align:right;
+            }
+        }
+        
+    }
+}

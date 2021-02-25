@@ -1,0 +1,347 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0004 {
+	.component-inner {
+		max-width:1920px !important;
+		padding:0;
+	}
+	.cont-head {
+		max-width:1380px + 80px;
+		margin:0 auto;
+		padding:0 40px;
+		@include mobile {
+			padding:0 16px;
+		}
+	}
+	.cpt-wrap {
+		> .visual-area,
+		.list-btn-area,
+		.more-content {
+			margin-left:auto;
+			margin-right:auto;
+		}
+	}
+	.title * {
+		@include title-h2;
+	}
+	// size
+	&.stage-full {
+		.component-inner {
+			max-width:1920px !important;
+			padding:0 !important;
+		}
+    }
+    &.stage-wide {
+		.component-inner {
+			max-width:1600px !important;
+			padding:0 !important;
+		}
+    }
+    &.stage-medium {
+		.component-inner {
+			max-width:1380px !important;
+			padding:0 !important;
+		}
+	}
+
+	&.stage-full {
+		.cpt-wrap {
+			> .visual-area,
+			.list-btn-area {
+				max-width:1920px;
+			}
+
+			.more-content {
+				.list-container {
+					max-width:1600px;
+				}
+			}
+		}
+	}
+	&.stage-wide {
+		.cpt-wrap {
+			> .visual-area,
+			.list-btn-area {
+				max-width:1600px;
+			}
+
+			.more-content {
+				.list-container {
+					max-width:1380px;
+				}
+			}
+		}
+	}
+	&.stage-medium {
+		.cpt-wrap {
+			> .visual-area,
+			.list-btn-area {
+				max-width:1380px;
+			}
+
+			.more-content {
+				.list-container {
+					max-width:1000px;
+				}
+			}
+		}
+	}
+
+	// text align
+	.align-left {
+		text-align:left;
+	}
+	.align-center {
+		text-align:center;
+	}
+	.align-right {
+		text-align:right;
+	}
+
+	// video, animation assets custom 
+	.animation-box {
+		.animation-area {
+			position:relative;
+			z-index:auto;
+		}
+		
+	}
+
+	// base 
+	.cpt-wrap {
+		position: relative;
+		.cont-head {
+			margin-top:56px;
+			@include mobile {
+				margin-top:28px;
+			}
+			.text-area {
+				.eyebrow {
+					@include eyebrow;
+				}				
+				.interviewee-name {
+					@include title-h4;
+					margin-top:24px;
+					@include mobile {
+						margin-top:12px;
+					}
+				}
+				.interviewee-info {
+					@include bodycopy(h2, h3);
+					font-weight:500;
+				}
+				.text {
+					@include bodycopy(h2, h3);
+				}
+				.btn-area-wrap {
+					@include cta-btn;
+				}
+			}
+		}
+		.visual-area {
+			margin-top:56px;
+            position:relative;
+            text-align:center;
+			@include mobile {
+				margin-top:28px;
+			}
+			a {
+				display: inline-block;
+				max-width:100%;
+				vertical-align:top;
+			}
+			img {
+				width:auto;
+				max-width:100%;
+				height:auto;
+				vertical-align:top;
+			}
+			.bullet-list {
+				max-width:1380px;
+				margin-left:auto;
+				margin-right:auto;
+				padding:0 40px;
+				@include mobile {
+					padding:0 16px;
+				}
+			}
+		}
+
+		> .visual-area, 
+		> .cont-head {
+			&:first-child {
+				margin-top:0;
+			}
+		}
+	}
+
+	// more content open button
+	.list-btn-area {
+		margin-top:24px;
+		text-align:center;
+		.btn.border.more {
+			position:relative;
+			padding-left:35px !important;
+			&::before {
+				content:' ';
+				position:absolute;
+				top:50%;
+				left:16px;
+				width:10px;
+				height:2px;
+				margin-top:-1px;
+				border-radius:2px;
+				background:#222;
+			}
+			&::after {
+				content:' ';
+				position:absolute;
+				top:50%;
+				left:20px;
+				width:2px;
+				height:10px;
+				margin-top:-5px;
+				border-radius:2px;
+				background:#222;
+			}
+            &.in-close,
+            &.onOpen {
+				&::before,
+				&::after {
+					transform:rotate(45deg);
+				}
+			}
+			&:hover,
+			&:active,
+			&:focus {
+				&::before,
+				&::after {
+					background:#fff;
+				}
+			}
+		}
+		&.open {
+			padding-bottom:80px;
+			@include mobile {
+				padding-bottom:40px;
+			}
+		}
+    }
+
+	// more content
+	.more-content {
+		position: relative;
+		overflow: hidden;
+        display:none;
+		padding:80px 40px;
+		background:#f4f4f4;
+		@include mobile {
+			padding:40px 16px;
+		}
+		.list-container{
+			margin:0 auto;
+			.list {
+				margin-top:160px;
+				@include mobile {
+					margin-top:80px;
+				}
+				&:first-child {
+					margin-top:0;
+				}
+			}
+			.text-area {
+				max-width:1380px;
+				margin:0 auto;
+				.title {
+					@include title-h2;
+				}
+				.text {
+					@include bodycopy(h2, h2);
+				}
+			}
+			.btn-area {
+				@include cta-btn;
+			}
+			.visual-area {
+                text-align:center;
+                > a {
+                    display:inline-block;
+                    vertical-align:top;
+                }
+				img {
+					width:auto;
+					max-width:100%;
+					height:auto;
+					vertical-align:top;
+				}
+			}
+		}
+		// more content close button
+		.list-btn-area {
+			padding:0;
+			&.top {
+				margin-top:0;
+				margin-bottom:24px;
+			}
+		}
+	}
+}
+
+.component-wrap {
+    $color: (lightgray, dark, black, white, gray);
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            .component.KRC0004 {
+                .list-btn-area {
+                    .btn.border.more {
+                        &::before, &::after {
+                            @if $bg == lightgray {
+                                background:#222;
+                            } @else if $bg == dark {
+                                background:#fff;
+                            } @else if $bg == black {
+                                background:#fff;
+                            } @else if $bg == white {
+                                background:#222;
+                            } @else if $bg == gray {
+                                background:#222;
+                            }
+                        }
+                    }
+                }
+                .more-content {
+                    * {
+                        color:#000;
+                    }
+                    .btn.border {
+                        border-color:#222 !important;
+                        &.more {
+                            &::before,
+                            &::after {
+                                background:#222;
+                            }
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                border-color:#fa263e !important;
+                                background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                color:#fff !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+html[hcx="3"], html[hcx="4"] {
+	.KRC0004 {
+		.visual-area img{
+			visibility: hidden;
+		}
+	}
+}
+

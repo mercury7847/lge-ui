@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "Select 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">Select Form 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>selectbox 사이즈 PC기준 max-width:364px로 작업됨.</li>
+            <li>사이즈 제어 필요한 경우 .select-wrap에 설정</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. 체크박스</h2>
+<div class="guide_wrap">
+    <span class="chk-wrap">
+        <input type="checkbox" id="chk1-1" name="chk1" checked>
+        <label for="chk1-1">선택1</label>
+    </span>
+    <span class="chk-wrap">
+        <input type="checkbox" id="chk1-2" name="chk1">
+        <label for="chk1-2">선택2</label>
+    </span>
+    <span class="chk-wrap">
+        <input type="checkbox" id="chk1-3" name="chk1" disabled>
+        <label for="chk1-3">선택3</label>
+    </span>
+</div>
+<div class="guide_wrap">
+    <span class="chk-wrap chk-sm">
+        <input type="checkbox" id="chk1-4" name="chk1" checked>
+        <label for="chk1-4">선택1</label>
+    </span>
+    <span class="chk-wrap chk-sm">
+        <input type="checkbox" id="chk1-5" name="chk1">
+        <label for="chk1-5">선택2</label>
+    </span>
+    <span class="chk-wrap chk-sm">
+        <input type="checkbox" id="chk1-6" name="chk1" disabled>
+        <label for="chk1-6">선택3</label>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- checkbox default -->
+<span class="chk-wrap">
+    <input type="checkbox" id="chk1-1" name="chk1" checked>
+    <label for="chk1-1">선택1</label>
+</span>
+<span class="chk-wrap">
+    <input type="checkbox" id="chk1-2" name="chk1">
+    <label for="chk1-2">선택2</label>
+</span>
+<span class="chk-wrap">
+    <input type="checkbox" id="chk1-3" name="chk1" disabled>
+    <label for="chk1-3">선택3</label>
+</span>
+<!-- // checkbox default -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 라디오버튼</h2>
+<div class="guide_wrap">
+    <span class="rdo-wrap">
+        <input type="radio" id="rdo1-1" name="rdo1" checked>
+        <label for="rdo1-1">선택1</label>
+    </span>
+    <span class="rdo-wrap">
+        <input type="radio" id="rdo1-2" name="rdo1">
+        <label for="rdo1-2">선택2</label>
+    </span>
+    <span class="rdo-wrap">
+        <input type="radio" id="rdo1-3" name="rdo1" disabled>
+        <label for="rdo1-3">선택3</label>
+    </span>
+    <br>
+    <span class="rdo-wrap btn-type">
+        <input type="radio" id="rdo2-1" name="rdo2" checked>
+        <label for="rdo2-1">1주일</label>
+    </span>
+    <span class="rdo-wrap btn-type">
+        <input type="radio" id="rdo2-2" name="rdo2">
+        <label for="rdo2-2">1개월</label>
+    </span>
+    <span class="rdo-wrap btn-type">
+        <input type="radio" id="rdo2-3" name="rdo2" disabled>
+        <label for="rdo2-3">2개월</label>
+    </span>
+    <br>
+    <span class="rdo-wrap btn-type2">
+        <input type="radio" id="rdo3-1" name="rdo3" checked>
+        <label for="rdo3-1">5년</label>
+    </span>
+    <span class="rdo-wrap btn-type2">
+        <input type="radio" id="rdo3-2" name="rdo3">
+        <label for="rdo3-2">4년</label>
+    </span>
+    <span class="rdo-wrap btn-type2">
+        <input type="radio" id="rdo3-3" name="rdo3" disabled>
+        <label for="rdo3-3">1~3년</label>
+    </span>
+    <br>
+    <span class="rdo-wrap box-type">
+        <input type="radio" id="rdo4-1" name="rdo4" checked>
+        <label for="rdo4-1">신청</label>
+    </span>
+    <span class="rdo-wrap box-type">
+        <input type="radio" id="rdo4-2" name="rdo4">
+        <label for="rdo4-2">미신청</label>
+    </span>
+    <span class="rdo-wrap box-type">
+        <input type="radio" id="rdo4-3" name="rdo4" disabled>
+        <label for="rdo4-3">미신청</label>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- radio default -->
+<span class="rdo-wrap">
+    <input type="radio" id="rdo1-1" name="rdo1" checked>
+    <label for="rdo1-1">선택1</label>
+</span>
+<span class="rdo-wrap">
+    <input type="radio" id="rdo1-2" name="rdo1">
+    <label for="rdo1-2">선택2</label>
+</span>
+<span class="rdo-wrap">
+    <input type="radio" id="rdo1-3" name="rdo1" disabled>
+    <label for="rdo1-3">선택3</label>
+</span>
+<!-- // radio default -->
+<!-- radio button type -->
+<span class="rdo-wrap btn-type">
+    <input type="radio" id="rdo2-1" name="rdo2" checked>
+    <label for="rdo2-1">1주일</label>
+</span>
+<span class="rdo-wrap btn-type">
+    <input type="radio" id="rdo2-2" name="rdo2">
+    <label for="rdo2-2">1개월</label>
+</span>
+<span class="rdo-wrap btn-type">
+    <input type="radio" id="rdo2-3" name="rdo2" disabled>
+    <label for="rdo2-3">2개월</label>
+</span>
+<!-- // radio button type -->
+<!-- radio button type 2 -->
+<span class="rdo-wrap btn-type2">
+    <input type="radio" id="rdo3-1" name="rdo3" checked>
+    <label for="rdo3-1">5년</label>
+</span>
+<span class="rdo-wrap btn-type2">
+    <input type="radio" id="rdo3-2" name="rdo3">
+    <label for="rdo3-2">4년</label>
+</span>
+<span class="rdo-wrap btn-type2">
+    <input type="radio" id="rdo3-3" name="rdo3" disabled>
+    <label for="rdo3-3">1~3년</label>
+</span>
+<!-- // radio button type 2 -->
+<!-- radio box type -->
+<span class="rdo-wrap box-type">
+    <input type="radio" id="rdo4-1" name="rdo4" checked>
+    <label for="rdo4-1">신청</label>
+</span>
+<span class="rdo-wrap box-type">
+    <input type="radio" id="rdo4-2" name="rdo4">
+    <label for="rdo4-2">미신청</label>
+</span>
+<span class="rdo-wrap box-type">
+    <input type="radio" id="rdo4-3" name="rdo4" disabled>
+    <label for="rdo4-3">미신청</label>
+</span>
+<!-- // radio box type -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2-1. 체크박스, 라디오박스 리스트</h2>
+<div class="guide_wrap">
+    <div class="select-list-wrap">
+        <ul>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo11-1" name="rdo11" checked>
+                    <label for="rdo11-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo11-2" name="rdo11">
+                    <label for="rdo11-2">선택2</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo11-3" name="rdo11">
+                    <label for="rdo11-3">선택3</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <div class="select-list-wrap w-auto">
+        <ul>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo12-1" name="rdo11" checked>
+                    <label for="rdo12-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo12-2" name="rdo11">
+                    <label for="rdo12-2">선택2</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo12-3" name="rdo11">
+                    <label for="rdo12-3">선택3</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <div class="select-list-wrap">
+        <ul>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk11-1" name="chk11" checked>
+                    <label for="chk11-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk11-2" name="chk11">
+                    <label for="chk11-2">선택2</label>
+                </span>
+            </li>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk11-3" name="chk11">
+                    <label for="chk11-3">선택3</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <div class="select-list-wrap w-auto">
+        <ul>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk12-1" name="chk12" checked>
+                    <label for="chk12-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk12-2" name="chk12">
+                    <label for="chk12-2">선택2</label>
+                </span>
+            </li>
+            <li>
+                <span class="chk-wrap">
+                    <input type="checkbox" id="chk12-3" name="chk12">
+                    <label for="chk12-3">선택3</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="select-list-wrap"><!-- width 25% 기본 -->
+    <ul>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-1" name="rdo11" checked>
+                <label for="rdo11-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-2" name="rdo11">
+                <label for="rdo11-2">선택2</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-3" name="rdo11">
+                <label for="rdo11-3">선택3</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="select-list-wrap w-auto"><!-- width가 auto일 때 .w-auto-->
+    <ul>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-1" name="rdo11" checked>
+                <label for="rdo11-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-2" name="rdo11">
+                <label for="rdo11-2">선택2</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo11-3" name="rdo11">
+                <label for="rdo11-3">선택3</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="select-list-wrap"><!-- width 25% 기본 -->
+    <ul>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk11-1" name="chk11" checked>
+                <label for="chk11-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk11-2" name="chk11">
+                <label for="chk11-2">선택2</label>
+            </span>
+        </li>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk11-3" name="chk11">
+                <label for="chk11-3">선택3</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="select-list-wrap w-auto"><!-- width가 auto일 때 .w-auto-->
+    <ul>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk12-1" name="chk12" checked>
+                <label for="chk12-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk12-2" name="chk12">
+                <label for="chk12-2">선택2</label>
+            </span>
+        </li>
+        <li>
+            <span class="chk-wrap">
+                <input type="checkbox" id="chk12-3" name="chk12">
+                <label for="chk12-3">선택3</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<!-- // DOM -->
+
+<!-- include -->
+(@@)include('./common/modules/rdochk-list.html', {
+    "wAuto" : true, <!-- width auto일 때 true, 아니면 삭제 -->
+    "rdo" : true, <!-- 라디오박스일 때 "rdo" true, 체크박스일 때 "chk" true -->
+    "name" : "rdo1", <!-- input name. 입력 시 id도 같이 반영(ex : name="rdo1", id="rdo-1" 1, 2, 3... 매칭) -->
+    "slt" : [
+        { "value" : "구매", "checked" : "checked" },
+        { "value" : "케어솔루션", "checked" : "" }
+    ]
+})
+<!-- // include -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2-2. 라디오박스 tab</h2>
+<div class="guide_wrap">
+    <div class="select-list-wrap w-auto">
+        <ul class="ui_radio_visible">
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo22-1" name="rdo22" data-visible-target=".target1" checked>
+                    <label for="rdo22-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo22-2" data-visible-target=".target2" name="rdo22">
+                    <label for="rdo22-2">선택2</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="target1">
+        선택1 checked시 display
+    </div>
+    <div class="target2">
+        선택2 checked시 display
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<!-- include시 .select-list-wrap 까지만 생성 -->
+<div class="select-list-wrap w-auto">
+    <ul class="ui_radio_visible">
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo22-1" name="rdo22" data-visible-target=".target1" checked>
+                <label for="rdo22-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo22-2" data-visible-target=".target2" name="rdo22">
+                <label for="rdo22-2">선택2</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<!-- // include시 .select-list-wrap 까지만 생성 -->
+<!-- target DOM은 자유롭게. data-visible-target에 class 명이나 id 명 맞추면 됨 -->
+<div class="target1">
+    선택1 checked시 display
+</div>
+<div class="target2">
+    선택2 checked시 display
+</div>
+<!-- // target DOM은 자유롭게. data-visible-target에 class 명이나 id 명 맞추면 됨 -->
+<!-- // DOM -->
+
+<!-- include -->
+(@@)include('./common/modules/rdochk-list.html', {
+    "radioVisible" : true, <!-- radio tab일 때 true, 아니면 삭제 -->
+    "wAuto" : true, <!-- width auto일 때 true, 아니면 삭제 -->
+    "rdo" : true, <!-- 라디오박스일 때 "rdo" true, 체크박스일 때 "chk" true -->
+    "name" : "rdo1", <!-- input name. 입력 시 id도 같이 반영(ex : name="rdo1", id="rdo-1" 1, 2, 3... 매칭) -->
+    "slt" : [
+        { "value" : "구매", "checked" : "checked", "target" : ".target1" },
+        { "value" : "케어솔루션", "checked" : "", "target" : ".target2" }
+    ]
+})
+<!-- // include -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. 셀렉트박스(Basic)</h2>
+<div class="guide_wrap">
+    <div class="select-wrap"> 
+        <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+            <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option>
+            <option value="">고객상담</option>
+            <option value="">기타</option>
+        </select>
+    </div>
+    <div class="select-wrap"> 
+        <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" disabled>
+            <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option>
+            <option value="">고객상담</option>
+            <option value="">기타</option>
+        </select>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- selectbox default -->
+<div class="select-wrap">
+    <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+        <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+        <option value="">전체 카테고리를 선택해주세요.</option>
+        <option value="">전체 카테고리를 선택해주세요.</option>
+    </select>
+</div>
+<div class="select-wrap">
+    <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" disabled>
+        <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+        <option value="">전체 카테고리를 선택해주세요.</option>
+        <option value="">전체 카테고리를 선택해주세요.</option>
+    </select>
+</div>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3-2. 셀렉트박스(sorting selectbox type)</h2>
+<div class="guide_wrap">
+    <div class="sort-select-wrap"> 
+        <select class="ui_selectbox" id="select2" title="전체 카테고리 선택">
+            <option value="">전체</option>
+            <option value="">고객상담</option>
+            <option value="">기타</option>
+        </select>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- selectbox default -->
+<div class="sort-select-wrap">
+    <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+        <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+        <option value="">전체 카테고리를 선택해주세요.</option>
+        <option value="">전체 카테고리를 선택해주세요.</option>
+    </select>
+</div>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">4. COLORCHIP</h2>
+<div class="guide_wrap">
+    <div class="chk-wrap-colorchip stainless-steel">
+        <input type="checkbox" id="color01" checked>
+        <label for="color01">샤이니 유니버스</label>
+    </div>
+    <div class="chk-wrap-colorchip Black-Stainless-Steel">
+        <input type="checkbox" id="color02">
+        <label for="color02">샤이니 퓨어</label>
+    </div>
+    <div class="chk-wrap-colorchip MC_K62_SkyBlue">
+        <input type="checkbox" id="color03" disabled>
+        <label for="color03">맨하튼 미드나잇</label>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- colorchip -->
+    <div class="chk-wrap-colorchip stainless-steel">
+        <input type="checkbox" id="color01" checked>
+        <label for="color01">샤이니 유니버스</label>
+    </div>
+    <div class="chk-wrap-colorchip Black-Stainless-Steel">
+        <input type="checkbox" id="color02">
+        <label for="color02">샤이니 퓨어</label>
+    </div>
+    <div class="chk-wrap-colorchip MC_K62_SkyBlue">
+        <input type="checkbox" id="color03" disabled>
+        <label for="color03">맨하튼 미드나잇</label>
+    </div>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">4. wishlist</h2>
+<div class="guide_wrap">
+    <span class="chk-wish-wrap">
+        <input type="checkbox" id="wish-chk1" name="wish-chk1" checked>
+        <label for="wish-chk1"><span class="blind">찜하기</span></label>
+    </span>
+
+    <span class="chk-wish-wrap large">
+        <input type="checkbox" id="wish-chk2" name="wish-chk2">
+        <label for="wish-chk2"><span class="blind">찜하기</span></label>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript">
+    <span class="chk-wish-wrap">
+        <input type="checkbox" id="wish-chk1" name="wish-chk1" checked>
+        <label for="wish-chk1"><span class="blind">찜하기</span></label>
+    </span>
+    <span class="chk-wish-wrap">
+        <input type="checkbox" id="wish-chk2" name="wish-chk2">
+        <label for="wish-chk2"><span class="blind">찜하기</span></label>
+    </span>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">5. star rating</h2>
+<div class="guide_wrap">
+    <div class="star-rating-wrap">
+        <select class="ui_star_rating" name="rating" title="콘텐츠 별점 선택">
+            <option value=""></option> 
+            <option value="1">1점 (매우 불만족)</option>
+            <option value="2">2점 (불만족)</option>
+            <option value="3">3점 (보통)</option>
+            <option value="4">4점 (만족)</option>
+            <option value="5">5점 (매우 만족)</option>
+          </select>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript">
+    <div class="star-rating-wrap">
+        <select class="ui_star_rating" name="rating" title="콘텐츠 별점 선택">
+            <option value="">0점</option> 
+            <option value="1">1점 (매우 불만족)</option>
+            <option value="2">2점 (불만족)</option>
+            <option value="3">3점 (보통)</option>
+            <option value="4">4점 (만족)</option>
+            <option value="5">5점 (매우 만족)</option>
+          </select>
+    </div>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">6. bookmark</h2>
+<div class="guide_wrap">
+    <span class="chk-bookmark-wrap">
+        <input type="checkbox" id="mark-shop" name="mark-shop">
+        <label for="mark-shop"></label>
+    </span>
+
+    <span class="chk-bookmark-wrap">
+        <input type="checkbox" id="mark-shop" name="mark-shop" checked>
+        <label for="mark-shop"></label>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript">
+    <span class="chk-bookmark-wrap">
+        <input type="checkbox" id="mark-shop" name="mark-shop">
+        <label for="mark-shop"></label>
+    </span>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+
+</div> 
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

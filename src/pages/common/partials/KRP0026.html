@@ -1,0 +1,114 @@
+
+	<div class="component-wrap @@zero">
+		<!--
+			[component-wrap 옵션]
+			1. 여백
+			.zero-top : 상단여백 없음
+			.zero-btm : 하단여백 없음
+
+			[item-info 옵션]
+			1. align
+			.align-left : left
+			.align-right : right
+			.align-center : center
+		-->
+		<section class="component KRP0026"
+			data-list-url="/lg5-common/data-ajax/KRP0026/KRP0026.json"
+		>
+			<div class="component-inner">
+
+				<!-- tab -->
+				<div class="page-header wide border">
+					<!-- 210224 클래스명 수정 -->
+					<div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
+					<!-- //210224 클래스명 수정 -->
+						<ul class="tabs">
+							<li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+							<li><a href="#av">TV/AV</a></li>
+							<li><a href="#it">IT</a></li>
+							<li><a href="#kitchen">주방가전</a></li>
+							<li><a href="#life">생활가전</a></li>
+							<li><a href="#air">에어컨/에어케어</a></li>
+							<li><a href="#mobile">모바일</a></li>
+							<li><a href="#care">케어솔루션</a></li>
+						</ul>
+					</div>
+					@@if (context.tabBarType) {
+					<div class="tabs-bg @@type">
+						<div class="tabs-wrap bar-type ui_tab ui_smooth_scroll">
+							<ul class="tabs">
+								<li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
+								<li><a href="#tab2">스마트폰</a></li>
+								<li><a href="#tab2">피처폰</a></li>
+								<li><a href="#tab2">스마트 디바이스</a></li>
+								<li><a href="#tab2">스마트</a></li>
+							</ul>
+							<!-- 210224 삭제 -->
+							<!-- @@if (context.tabInBtn) {
+							<div class="btn-area">
+								<a href="#" class="btn border size-m arrow"><span>새로운 기능안내</span></a>
+							</div>
+							} -->
+							<!-- //210224 삭제 -->
+						</div>
+					</div>
+				}
+				</div> 
+				
+				<!-- // tab -->
+
+				<!-- 210224 삭제 -->
+				<!-- @@if (context.lgVisual) { -->
+					<!-- component KRP0026-carousel -->
+					<!-- @@include('./common/partials/KRP0026-carousel.html') -->
+					<!-- //component KRP0026-carousel -->
+				<!-- } -->
+				<!-- //210224 삭제 -->
+
+				<div class="story-list-wrap">
+					@@include('./common/modules/list-sorting.html', {
+						"select" : [
+							{"option" : "최신순", "default":'value="sort_new"'},
+		                    {"option" : "인기순", "default":'value="sort_popular"'}
+						]
+					})
+					<div class="story-list">
+		
+						<ul class="story-box">
+						@@loop('./common/partials/KRP0026-list-module.html', [
+							{
+							"flags" : ["뉴스구분값"],
+							"hashtag" : ["건강관리", "가을"],
+							"date" : true
+							}, 
+							{
+							"flags" : ["뉴스구분값"],
+							"hashtag" : ["건강관리", "가을"],
+							"date" : true
+							},
+							{
+							"flags" : ["뉴스구분값"],
+							"hashtag" : ["건강관리", "가을"],
+							"date" : true
+							}, 
+							{
+							"flags" : ["뉴스구분값"],
+							"hashtag" : ["건강관리", "가을"],
+							"date" : true
+							}
+						])
+						</ul>
+						<!-- @@include('./common/support/pagination.html', {
+							count: 5
+						}) -->
+						<div class="pagination" data-page="2" data-visible-count="5" data-total-count="3"></div>
+					</div>
+					
+				</div>
+			</div>	
+		</section>
+	</div>		
+	
+		
+
+		 

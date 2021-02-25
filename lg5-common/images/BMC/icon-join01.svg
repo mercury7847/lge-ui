@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <rect id="rodb3wym9a" width="51" height="38.886" x=".5" y="0" rx="1.823"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <path d="M0 0H64V64H0z"/>
+            <g>
+                <g transform="translate(6.5 7.129)">
+                    <g>
+                        <mask id="kqs0fcfdcb" fill="#fff">
+                            <use xlink:href="#rodb3wym9a"/>
+                        </mask>
+                        <use stroke="#000" stroke-width="2" xlink:href="#rodb3wym9a"/>
+                        <path stroke="#000" stroke-width="2" d="M0 29.165H52V40.826H0z" mask="url(#kqs0fcfdcb)"/>
+                        <g mask="url(#kqs0fcfdcb)">
+                            <g fill="#DA0F47" transform="translate(19.5 21.458)">
+                                <circle cx="1.28" cy="1.28" r="1.28"/>
+                                <circle cx="6.06" cy="1.28" r="1.28"/>
+                                <circle cx="10.84" cy="1.28" r="1.28"/>
+                            </g>
+                        </g>
+                    </g>
+                    <path stroke="#000" stroke-width="2" d="M19.405 38.886L33.203 38.886 34.203 48 18.405 48z"/>
+                    <rect width="31.508" height="2" x="10.55" y="47" fill="#000" rx="1"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0013 {
+	background-color: #fff;
+
+	@include mobile {
+		background-color: #fff;
+	}
+
+    .support-box {
+		max-width: 1380px + 80px;
+		margin: 0 auto;
+		padding:0 40px;
+
+		@include mobile {
+			max-width: 100%;
+			padding: 0 16px;
+		}
+	}
+
+	.title {
+		margin-bottom: 64px;
+		font-weight: bold;
+		@include font(40px,56px);
+		color: #000;
+		text-align:center;
+
+		@include mobile {
+			margin-bottom: 32px;
+			@include font(27px,38px);
+		}
+	}
+
+	.list-box {
+		font-size: 0;
+		li {
+			display: inline-block;
+			width: 33.33%;
+
+			vertical-align: top;
+			&:nth-child(n+4) {
+				margin-top: 24px;
+			}
+
+			span,
+			strong {
+				display: block;
+			}
+			strong {
+				margin-bottom: 16px;
+				font-weight: bold;
+				@include font(24px,34px);
+			}
+			span {
+				position:relative;
+				@include font-small;
+				text-decoration: underline;
+				&:after {
+					content:' ';
+					display:inline-block;
+					width:16px;
+					height:16px;
+					margin-left:4px;
+					background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+					vertical-align:middle;
+				}
+			}
+
+			a {
+				position: relative;
+				display: block;
+				padding: 52px 0;
+				text-align:center;
+
+				&:before {
+					display:block;
+					margin:0 auto 16px;
+					width: 64px;
+					height: 64px;
+					background: no-repeat 0 0;
+					content: '';
+				}
+				&.item-telephone {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-phone-64.svg");
+					}
+				}
+				&.item-live-chat {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-chat-64.svg");
+					}
+				}
+				&.item-email {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-email-64.svg");
+					}
+				}
+				&.item-manual {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-manual-64.svg");
+					}
+				}
+				&.item-download {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-archive-64.svg");
+					}
+				}
+				&.item-location {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-location-64.svg");
+					}
+				}
+			}
+
+			@include mobile {
+				width: 50%;
+				&:nth-child(n+3) {
+					margin-top: 12px;
+				}
+				strong {
+					margin-bottom: 8px;
+					@include font(16px,24px);
+				}
+				a {
+					padding: 24px 0;
+				}
+			}
+		}
+	}
+	.support-link {
+		position:relative;
+		margin-top:48px;
+		padding:24px 48px;
+		border-radius:8px;
+		background-image: linear-gradient(93deg, #8d71ec, #f75584 99%);
+		> p {
+			padding-right:100px;
+			font-weight:700;
+			@include font-medium;
+			color: $color-white;
+		}
+		.link-text {
+			position:absolute;
+			top:50%;
+			right:48px;
+			transform:translateY(-50%);
+			padding-right:22px;
+			font-weight:500;
+			@include font-small;
+			color: $color-white;
+			&:after {
+				content:' ';
+				position:absolute;
+				top:3px;
+				right:0;
+				width:16px;
+				height:16px;
+				background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+			}
+		}
+		@include mobile {
+			margin-top:40px;
+			padding:24px;
+			> p {
+				padding-right:0;
+			}
+			.link-text {
+				display:inline-block;
+				position:static;
+				margin-top:24px;
+				transform:translateY(0);
+				text-decoration: underline;
+			}
+		}
+	}
+}

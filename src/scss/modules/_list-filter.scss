@@ -1,0 +1,42 @@
+.list-sorting {
+    @include clearfix;
+    padding-bottom:12px;
+
+    .check-soldout {
+        float: right;
+        margin-right: 40px;
+        @include mobile {
+            position: absolute;
+            top: 76px;
+            left: 0;
+            .chk-wrap input + label {
+                font-size: 14px;
+            }
+        }
+    }
+    .sort-area {
+        float: right;
+        &.left {
+            float:left;
+        }
+        .sort-list {
+            font-size:0;
+            .sort-select-wrap {
+                margin-left:32px;
+                &:first-child {
+                    margin-left:0;
+                }
+            }
+        }
+    }
+    .list-count {
+        float: left;
+        font-weight: 700;
+        @include font-small;
+    }
+    .sort-tit {
+        @include font-small;
+        color:#000;
+        font-weight:700;
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html')
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>주소 입력</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>주소지 수정</span></button><br><br>
+    </div>
+
+    <!-- 주소입력 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup1',
+        title : '주소 등록',
+        btn : '등록'
+    })
+    <!-- // 주소입력 popup -->
+
+    <!-- 주소입력 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup2',
+        title : '주소지 수정',
+        btn : '주소 저장'
+    })
+    <!-- // 주소입력 popup -->
+</body>
+</html>

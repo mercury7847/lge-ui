@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-213.000000, -117.000000)">
+            <g id="ic-usp-mailcounsel-80" transform="translate(213.000000, 117.000000)">
+                <polygon id="Path" points="0 0 60 0 60 60 0 60"></polygon>
+                <g id="Group" transform="translate(9.750000, 11.250000)">
+                    <g id="Path" stroke="#FFFFFF" stroke-width="1.5">
+                        <polyline points="0 13.5 21 4.26675 40.5 13.5"></polyline>
+                        <polygon fill="#FFFFFF" fill-rule="nonzero" points="33 0.375 33.375 18.963 20.625 26.44575 7.875 18.963 7.875 0.75"></polygon>
+                        <path d="M0,13.5 L21,25.875 L40.5,13.5 L40.5,36.75 C40.5,37.57875 39.82875,38.25 39,38.25 L1.5,38.25 C0.67125,38.25 0,37.57875 0,36.75 L0,13.5 L0,13.5 Z" fill="#222222" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                    <rect id="Rectangle" fill="#EC455A" fill-rule="nonzero" x="12" y="6" width="17.25" height="1.5" rx="0.75"></rect>
+                    <rect id="Rectangle" fill="#EC455A" fill-rule="nonzero" x="12" y="10.5" width="17.25" height="1.5" rx="0.75"></rect>
+                    <rect id="Rectangle" fill="#EC455A" fill-rule="nonzero" x="12" y="15" width="11.25" height="1.5" rx="0.75"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

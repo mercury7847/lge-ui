@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-error-48</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_popup_error_48">
+            <g id="ic_nodata_56">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Rectangle"></g>
+                <circle id="Oval" stroke="#AAAAAA" stroke-width="2" mask="url(#mask-2)" cx="24.5" cy="24.5" r="21"></circle>
+                <line x1="16" y1="17" x2="33.0947423" y2="33.8454678" id="Path-25" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+                <line x1="16" y1="17" x2="33.0947423" y2="33.8454678" id="Path-25" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(24.547371, 25.422734) scale(-1, 1) translate(-24.547371, -25.422734) "></line>
+            </g>
+        </g>
+    </g>
+</svg>

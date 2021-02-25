@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn-video-link</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="vod-Play-/-Pause-">
+            <g id="Play">
+                <rect id="Rectangle" fill="#000000" opacity="0.5" x="0" y="0" width="32" height="32" rx="16"></rect>
+                <path d="M12,21.1013704 L12,10.9427898 C12,10.3905051 12.4477153,9.94278981 13,9.94278981 C13.2083658,9.94278981 13.4115275,10.0078773 13.581102,10.1289591 L20.837231,15.310075 C21.2866973,15.6310088 21.3908935,16.2555415 21.0699597,16.7050077 C21.0020947,16.8000524 20.9181052,16.8824746 20.8217991,16.9485374 L13.5656701,21.9260021 C13.1102386,22.238413 12.4877793,22.122472 12.1753683,21.6670405 C12.0611379,21.5005157 12,21.3033087 12,21.1013704 Z" id="Path-3" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

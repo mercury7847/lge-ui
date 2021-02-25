@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["STS/STS"],
+        pageJS: ["home/storyHome"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html') 
+
+        <div class="container">
+            <!-- 스토리홈 -->
+            <div class="contents story-main" data-story-list="/lg5-common/data-ajax/home/storyList.json">
+                <div class="cont-wrap">
+                    <div class="story-section user_story">
+                        <div class="inner">
+                            <h2 class="title">스토리와 함께 삶을 채워보세요.</h2>
+                            <!--  [D] height 체크해주세요 -->
+                            <div class="flexbox-wrap">
+                            </div>
+                            <button type="button" class="btn-moreview block"><span>스토리 더보기</span></button>
+                        </div>
+                    </div>
+                    <div class="story-section new_story">
+                        <div class="inner">
+                            <h2 class="title">새로운 스토리를 확인해보세요.</h2>
+                            <div class="flexbox-wrap">
+                            </div>
+                            <button type="button" class="btn-moreview block"><span>스토리 더보기</span></button>
+                        </div>
+                    </div>
+                    <div class="story-section">
+                        <div class="inner">
+                            <h2 class="title">실제 사용 리뷰를 확인해보세요.</h2>
+                            <div class="story-review slide-wrap">
+                                <div class="indi-wrap">
+                                    <ul class="indi-conts ui_carousel_dots">
+                                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                    </ul>
+                                </div>
+                                <div class="slide-content ui_carousel_list">
+                                    <div class="flexbox-wrap slide-track ui_carousel_track">
+                                        @@loop('./common/modules/story-list.html', [
+                                            {
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-01.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "워시타워 하나면 뽀송뽀송한 빨래<br>워시타워 하나면 뽀송뽀송한 빨래",
+                                                "link" : "생활가전",
+                                                "sns" : [
+                                                    {"class" : "blog", "text" : "네이버 블로그"},
+                                                    {"class" : "post", "text" : "네이버 포스트"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-02.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "메리디안의 기술로 만든 원음의 공간메리디안의 기술로 만든 원음",
+                                                "link" : "TV/AV",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"},
+                                                    {"class" : "blog", "text" : "네이버 블로그"},
+                                                    {"class" : "post", "text" : "네이버 포스트"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-03.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "피부 속부터 밝혀주는 프리미엄 피부 속부터 밝혀주는 프리미엄",
+                                                "link" : "뷰티/의료기기",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-04.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "보안과 편리함을 동시에! 보안과 편리함을 동시에!",
+                                                "link" : "모바일",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"}
+                                                ]
+                                            }
+                                        ])
+                                    </div>
+                                </div>
+                                <div class="slide-controls">
+                                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                </div>
+                            </div>
+                            <div class="btn-more">
+                                <a href="#n" class="btn-link"><span>더 보기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 스토리홈 -->
+        </div>
+
+        @@include('./common/footer.html')
+        <div class="floating-wrap">
+            <div class="floating-menu">
+                <div class="easy-path">
+                    <div class="inner">
+                        <a href="/lg5-common/data-ajax/home/tag_mnger.html">
+                            <p>라이프 스타일에 맞는 가전을 찾아볼까요?</p>
+                        </a>
+                    </div>
+                    <article id="popup-tagMnger" class="popup-wrap"></article>
+                </div>
+            </div>
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H64V64H0z" opacity=".3" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32)"/>
+                                <g stroke-width="2">
+                                    <path stroke="#000" d="M54.31 0c1.658 0 3 1.343 3 3v20.517c0 1.657-1.342 3-3 3l-22.607-.002c.33-.184.661-.362.991-.533.22-.114.429-.225.629-.335 1.975-1.09 2.707-3.563 1.643-5.552l-.035-.063c-.804-1.418-2.605-1.916-4.023-1.112h0l-8.652 4.907c-.01-.102-.016-.205-.016-.31V3c0-1.657 1.343-3 3-3h29.07z" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32) translate(3 12)"/>
+                                    <path stroke="#000" stroke-linecap="round" d="M20.873 24.654l9.811-5.597c1.517-.866 3.45-.338 4.315 1.18.02.035.04.07.058.106.929 1.784.3 3.983-1.43 5.007-.737.436-1.581.9-2.534 1.394-4.032 2.09-7.067 5.27-8.765 8.554-1.131 2.19-3.534 3.222-7.207 3.095L8.229 27.301c3.939-9.666 8.153-14.5 12.644-14.5" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32) translate(3 12)"/>
+                                    <path stroke="#000" d="M30.174 28.195l1.646 2.624c.74 1.18 2.269 1.582 3.492.918 1.136-.616 1.557-2.035.941-3.17-.021-.04-.043-.079-.067-.116l-1.197-1.934h0M25.603 31.089l.636 1.273c.61 1.22 2.093 1.714 3.312 1.104.057-.028.112-.059.166-.091 1.263-.758 1.672-2.395.915-3.658l-1.372-2.286h0" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32) translate(3 12)"/>
+                                    <path stroke="#DA0F47" d="M23.23 11.887L56.334 11.887M23.23 5.486L56.334 5.486" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32) translate(3 12)"/>
+                                    <path stroke="#000" d="M11.707 27.68l-5.943 1.147c-.243.047-.45.18-.595.362-.144.183-.225.416-.215.663l.44 10.205c.011.268.127.507.307.68.18.171.424.277.692.277h5.314V27.68z" transform="translate(-1012 -767) translate(270 322) translate(0 413) translate(702) translate(40 32) translate(3 12) rotate(-30 8.294 34.242)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

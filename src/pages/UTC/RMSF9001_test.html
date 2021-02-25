@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageJS: ["caresolution/addressManagement"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" class="btn pink" id="btn-popup2"><span>배송지 관리 팝업 열기</span></button><br><br>
+    </div>
+
+    <!-- 배송지 입력/수정 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup1'
+    })
+    <!-- // 배송지 입력/수정 popup -->
+
+    <!-- 배송지 관리(리스트 있음) popup -->
+    @@include('./common/popup/RMSF9001_pop2.html', {
+        popupID: 'popup2'
+    })
+    <!-- // 배송지 관리(리스트 있음) popup -->
+    
+</body>
+<script>
+    function selectCallback(data) {
+        console.log('select!',data);
+    };
+
+    var addTest = new AddressManagement("#popup2", "#popup1", selectCallback);
+
+    $('#btn-popup2').on('click',function(e){
+        addTest.open();
+    });
+</script>
+</html>

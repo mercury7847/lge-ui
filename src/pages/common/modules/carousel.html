@@ -1,0 +1,170 @@
+@@if ( context.carousel ) {
+<div class="slide-wrap carousel-type @@carouselClass @@carouselScriptClass">
+    <div class="indi-wrap">
+        <ul class="indi-conts ui_carousel_dots">
+            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+        </ul>
+    </div>
+}
+@@if ( !context.carousel ) {
+<div class="slide-wrap hero-banner ui_wide_slider">
+    <div class="custom-indi-wrap">
+        <div class="custom-indis">
+            <ul class="indis ui_wideslider_dots">
+                @@for ( var i=0; i < context.indiArr.length; i++ ) {
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>`+indiArr[i]+`</p>
+                        <div class="bar"></div>
+                    </button>
+                </li>
+                }
+            </ul>
+        </div>
+        <button type="button" class="indi-control ui_carousel_play play">
+            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+        </button>
+    </div>
+}
+    <div class="slide-content ui_carousel_list ui_flexible_height">
+        <div class="slide-track ui_carousel_track">
+            @@if ( context.mainSlideType ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!-- slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <span class="bg ui_bg_switch" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`" aria-hidden="hidden"></span>
+                <div class="slide-info-area">
+                    <div class="boxs">
+                        <p class="desc" id="`+slideArr[i].titNum+`"> 
+                            `+slideArr[i].tit+`
+                        </p>
+                        <p class="date">`+slideArr[i].date+`</p>
+                        <a href="#n" class="btn bd-black" aria-labelledby="`+slideArr[i].titNum+`">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+            <!-- // slide -->
+            }
+            }
+            @@if ( context.carouselClass === "carousel-4" ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <a href="#n" class="slide-box">
+                    <div class="flag-wrap bg-type">
+                        <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    </div>
+                    <span class="thumb" aria-hidden="true">
+                        <img src="`+slideArr[i].img+`" alt="">
+                    </span>
+                    <div class="info-area">
+                        <p class="hashtag">
+                            <span class="blind">해시태그</span>
+                            `+slideArr[i].hashtag+`
+                        </p>
+                        <div class="text-box">
+                            <p class="tit">`+slideArr[i].tit+`</p>
+                            `+slideArr[i].desc+`
+                        </div>
+                        <ul class="count">
+                            <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                            <li class="view"><span class="blind">조회수</span>1,234</li>
+                        </ul>
+                    </div>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish+`" name="wish-chk">
+                        <label for="`+slideArr[i].wish+`"><span class="blind">찜하기</span></label>
+                    </span>
+                </a>
+            </div>
+            <!-- // slide -->
+            }
+            }
+            @@if ( context.recommendSlideType === true ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="slide-box">
+                    <div class="product-image" aria-hidden="true">
+                        <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            <a href="#">`+slideArr[i].name+`</a>
+                        </div>
+                        <div class="price-area">
+                            <div class="total">
+                                <em class="blind">월 요금</em>
+                                <span class="price">월 <em>58,900</em>원</span>
+                            </div>
+                            <div class="discount">
+                                <em class="blind">할인 금액</em>
+                                <span class="price"><em>5,000</em>원 결합 할인</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // slide -->
+            }
+            }
+
+            @@if ( context.memberSlideType === true ) {
+                @@for ( var i=0; i < context.slideArr.length; i++ ) {
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide ui_flexible_box">
+                    <div class="slide-box ui_flexible_cont">
+                        <div class="product-image" aria-hidden="true">
+                            <span class="img"><img src="`+slideArr[i].img+`" alt=""></span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">
+                                <strong>`+slideArr[i].name+`</strong>
+                                <span class="model-num">WU900AS</span>
+                            </div>
+                            <div class="info-area">
+                                <ul>
+                                    <li>구매수량 : 1</li>
+                                    <li>LG BEST SHOP 서초점</li>
+                                    <li>2019.07.29 구매</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // slide -->
+                }
+            }
+
+            @@if ( context.carouselScriptClass === "ui_carousel_1_slider" ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="inner">
+                    <div class="slide-info-area">
+                        <div class="boxs">
+                            @@if(context.step) {
+                            <span class="step">`+slideArr[i].step+`</span>
+                            }
+                            <p class="title">`+slideArr[i].tit+`</p>
+                            <p class="desc">`+slideArr[i].desc+`</p>
+                            `+slideArr[i].btn+`
+                        </div>
+                    </div>
+                    <div class="visual-area">
+                        <img src="`+slideArr[i].visual+`" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- // slide -->
+            }
+            }
+        </div>
+    </div>
+    @@if ( context.carousel ) {
+    <div class="slide-controls">
+        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+    </div>
+    }
+</div>

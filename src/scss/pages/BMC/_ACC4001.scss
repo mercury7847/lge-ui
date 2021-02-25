@@ -1,0 +1,322 @@
+.membership-welcome {
+    max-width:1460px;
+    margin:0 auto;
+    padding:80px 40px 0;
+    text-align:center;
+    @include mobile {
+        padding:28px 16px 0;
+    }
+    .mob-only {
+        display:none;
+        @include mobile {
+            display:block;
+        }
+    }
+    .welcome {
+        .tit {
+            color:#000;
+            @include font-large-5;
+            font-weight:700;
+            line-height:56px;
+            @include mobile {
+                @include font-large-3;
+            }
+        }
+        .desc {
+            margin-top:24px;
+            color:#000;
+            @include font-large;
+            @include mobile {
+                margin-top:12px;
+            }
+        }
+        .img {
+            display:block;
+            margin-top:64px;
+            @include mobile {
+                margin-top:40px;
+            }
+            img {
+                width:100%;
+                max-width:480px;
+                height:auto;
+                border-radius:18px;
+                vertical-align:top;
+                // box-shadow:inset -12px -12px 16px 0 rgba(#fff, .5), 12px 12px 32px 0 rgba(#000, .18);
+                @include mobile {
+                    max-width:328px;
+                }
+            }
+        }
+    }
+    .benefits {
+        margin-top:-170px;
+        padding:190px 32px 64px;
+        background-color:#f4f4f4;
+        font-size:0;
+        @include mobile {
+            margin:-120px -16px 0;
+            padding:116px 16px 60px;
+        }
+        .dls {
+            display:inline-block;
+            width:calc((100% - 72px) / 2);
+            max-width:396px;
+            margin-left:72px;
+            @include mobile {
+                display:block;
+                width:auto;
+                max-width:100%;
+                margin-top:40px;
+                margin-left:0;
+            }
+            &:first-child {
+                margin-top:0;
+                margin-left:0;
+            }
+            dt {
+                color:#000;
+                @include font-large-1;
+                font-weight:700;
+                &::before {
+                    content:' ';
+                    display:block;
+                    width:64px;
+                    height:64px;
+                    margin:0 auto 16px;
+                    background-size:100%;
+                    background-repeat:no-repeat;
+                }
+            }
+            &.dls1 {
+                dt::before {
+                    background-image:url("/lg5-common/images/icons/icon-point-64-01.svg");
+                }
+            }
+            &.dls2 {
+                dt::before {
+                    background-image:url("/lg5-common/images/icons/icon-point-64-02.svg");
+                }
+            }
+            dd {
+                margin-top:8px;
+                @include font-medium;
+                word-break:keep-all;
+            }
+        }
+    }
+    .btn-group {
+        margin-top:48px;
+        // .btn {
+        //     background:transparent;
+        // }
+        @include mobile {
+            margin-top:32px;
+            .btn {
+                width:auto;
+            }
+        }
+    }
+}
+
+.membership-benefit {
+    display:table;
+    width:100%;
+    height:440px;
+    margin-top:120px;
+    background:url('/lg5-common/images/BMC/img-mem-bene-vip.jpg') no-repeat 0 0;
+    background-size:cover;
+    text-align:center;
+    @include mobile {
+        height:464px;
+        margin-top:0;
+        padding:0 16px;
+        background-image:url('/lg5-common/images/BMC/img-mem-bene-vip-m.jpg');
+    }
+    .cont {
+        display:table-cell;
+        vertical-align:middle;
+        dl {
+            dt {
+                @include font-large-2;
+                font-weight:700;
+            }
+            dd {
+                margin-top:12px;
+                @include font-medium;
+            }
+        }
+        .btn-group {
+            margin-top:24px;
+            @include mobile {
+                .btn {
+                    width:auto;
+                }
+            }
+        }
+    }
+}
+
+.membership-info {
+    max-width:1460px;
+    margin:120px auto 0;
+    padding:0 40px;
+    text-align:center;
+    @include mobile {
+        margin:60px 0;
+        padding:0 16px;
+    }
+    .infos {
+        font-size:0;
+        @include mobile {
+            margin:0;
+        }
+        li {
+            display:inline-block;
+            position:relative;
+            width:calc((100% /3) - 24px);
+            height:333px;
+            margin-left:24px;
+            padding:0 40px;
+            border-radius:8px;
+            color:#fff;
+            vertical-align:top;
+            &:first-child {
+                margin-left:0;
+            }
+            @include mobile {
+                display:block;
+                width:100%;
+                max-width:100%;
+                margin-top:12px;
+                margin-left:0;
+                padding:0 16px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            &.bg1 {
+                background:url('/lg5-common/images/BMC/img-mem-info-01.jpg') no-repeat center center;
+                background-size:cover;
+            }
+            &.bg2 {
+                background:url('/lg5-common/images/BMC/img-mem-info-02.jpg') no-repeat center center;
+                background-size:cover;
+            }
+            &.bg3 {
+                background:url('/lg5-common/images/BMC/img-mem-info-03.jpg') no-repeat center center;
+                background-size:cover;
+            }
+            .inner {
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+                @include mobile {
+                    width:100%;
+                    padding:0 16px;
+                }
+                .tit {
+                    @include font-large-2;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:12px;
+                    @include font-medium;
+                }
+                .btn {
+                    margin-top:24px;
+                    &.border {
+                        border-color:#fff;
+                        color:#fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.membership-cont {
+    margin-top:80px;
+    text-align:center;
+    @include mobile {
+        margin-top:32px;
+        padding:0 16px;
+    }
+    .img {
+        display:block;
+        width:100%;
+        max-width:912px;
+        margin:0 auto 32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        overflow:hidden;
+        img {
+            width:100%;
+            height:auto;
+            vertical-align:top;
+        }
+    }
+    &.type2 {
+        margin-top:72px;
+        .img {
+            margin-bottom:48px;
+            padding-top:77px;
+            text-align:center;
+            @include mobile {
+                margin-bottom:32px;
+                padding-top:24px;
+            }
+            img {
+                width:338px;
+                box-shadow:0 4px 20px 0 rgba(#000, .16);
+                @include mobile {
+                    width:185px;
+                }
+            }
+        }
+    }
+    .tit {
+        color:#000;
+        @include font-large-2;
+        font-weight:700;
+    }
+    .desc {
+        margin-top:12px;
+        color:#000;
+        @include font-medium;
+        word-break:keep-all;
+    }
+    .btn-group {
+        margin-top:24px;
+    }
+    .infos {
+        margin:0 -40px;
+        font-size:0;
+        @include mobile {
+            margin:0;
+        }
+        li {
+            display:inline-block;
+            width:33.3%;
+            max-width:280px + 80px;
+            padding:0 40px;
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                max-width:100%;
+                margin-top:24px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            .tit {
+                @include font-large-1;
+            }
+            .btn {
+                margin-top:16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "message":null,
+    "data": {
+        "searchList": [
+            {
+                "shopID": 893,
+                "shopName":"논현역점"
+            },
+            {
+                "shopID": 4125,
+                "shopName":"강남본점"
+            },
+            {
+                "shopID": 5647,
+                "shopName":"신세계 강남점"
+            },
+            {
+                "shopID": 5637,
+                "shopName":"현대 본점"
+            },
+            {
+                "shopID": 5622,
+                "shopName":"서초점"
+            }
+        ]
+    },
+    "param": {
+        "search": "검색어"
+    }
+}

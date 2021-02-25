@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <main class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "렌탈 케어플래너",
+                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요.",
+                toolTip: true,
+                "type" : "include",
+                "page" : "tooltip-RMSF2003-01"
+            })
+            <div class="contents care-plan">
+                <div class="cont-wrap">
+
+                    @@include('./SLC/RMSF2003_top.html')
+
+                    <!-- 케어솔루션 -->
+                    <div class="care-solution-wrap"
+                        data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json"
+                        data-cate-list="/lg5-common/data-ajax/caresolution/carePlanerCategory.json"
+                    >
+                        <div class="fixed-tab-wrap"><!-- 스크롤 시 tab-fix 클래스 추가 -->
+                            <div class="inner">
+                                <div class="tabs-wrap new-type">
+                                    <ul class="tabs">
+                                        <li><a href="#n" data-tab-id="tab01">렌탈 케어솔루션</a></li>
+                                        <li class="on"><a href="#n" data-tab-id="tab02">케어십<em class="blind">선택됨</em></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inner">
+                                <div class="cate-scroll-wrap">
+                                    <div class="ui_smooth_scroll">
+                                        <ul class="tabs">
+                                            <li class="on"><a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
+                                            <li><a href="#n" data-cate-id="맥주제조기">맥주제조기</a></li>
+                                            <li><a href="#n" data-cate-id="공기청정기">공기청정기</a></li>
+                                            <li><a href="#n" data-cate-id="건조기">건조기</a></li>
+                                            <li><a href="#n" data-cate-id="스타일러">스타일러</a></li>
+                                            <li><a href="#n" data-cate-id="전기레인지">전기레인지</a></li>
+                                            <li><a href="#n" data-cate-id="식기세척기">식기세척기</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                            <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="scroll-controls">
+                                        <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="care-top-wrap">
+                            <div class="txt-wrap">
+                                <p>케어십이란</p>
+                                @@include('./common/modules/tooltip.html', {
+                                    "type" : "include",
+                                    "page" : "tooltip-RMSF2003-03"
+                                })
+                            </div>
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
+                                    <option value="popular">인기순</option>
+                                    <option value="latest">최신순</option>
+                                    <option value="highlyprice">가격 높은순</option>
+                                    <option value="lowprice">가격 낮은순</option>
+                                    <option value="review">리뷰 많은순</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="prd-list-wrap">
+                            <ul class="inner">
+                                <!-- 케어십_유상제품 모듈 -->
+                                @@include('./common/modules/prd-care-vertical.html', {
+                                    "moduleType" : "module-type2",
+                                    "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                                    "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음",
+                                    "code" : "WU900AS 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리",
+                                    "colorId" : "product1-color",
+                                    "colorDisabled" : "disabled",
+                                    "colorSet" : [
+                                        {"title": "실버"},
+                                        {"title": "블루"},
+                                        {"title": "레드"},
+                                        {"title": "블랙"}
+                                    ],
+                                    "visitDayId" : "product1-visit",
+                                    "visitDay" : [
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"}
+
+                                    ],
+                                    "sellPrice" : {
+                                        "name" : "제품 판매가",
+                                        "price" : "1,232,500",
+                                    },
+                                    "benefitPrice" : {
+                                        "name" : "최대 혜택가",
+                                        "price" : "1,334,500",
+                                    },
+                                    "totalPrice" : "월 105,200원"
+                                })
+                                <!-- //케어십_유상제품 모듈 -->
+
+                                <!-- 케어십_보유제품 모듈 -->
+                                @@include('./common/modules/prd-care-vertical.html', {
+                                    "moduleType" : "module-type3",
+                                    "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                                    "flag" : "보유제품",
+                                    "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                                    "code" : "WU900AS",
+                                    "infoDate" : [
+                                        {
+                                            "name" : "구매일자",
+                                            "date" : "2020.01.31"
+                                        },
+                                        {
+                                            "name" : "보증기간",
+                                            "date" : "~ 2022.01.31"
+                                        },
+                                    ],
+                                    "visitDayId" : "product2-visit",
+                                    "visitDay" : [
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"},
+                                        {"title" : "6개월"},
+                                        {"title" : "1년"},
+                                        {"title" : "2년"},
+                                        {"title" : "3년"}
+                                    ],
+                                    "totalPrice" : "월 15,200원"
+                                })
+                                <!-- //케어십_보유제품 모듈 -->
+
+                                <!-- 케어십_용역제품 모듈 -->
+                                @@include('./common/modules/prd-care-vertical.html', {
+                                    "moduleType" : "module-type4",
+                                    "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                                    "title" : "LG 퓨리케어 듀얼 냉온정수기 듀얼 냉온정수기",
+                                    "codeTxt" : "모델명이 ‘AS30***’ 또는 ‘AS28***’로 시작하는 공기청정기 전 제품 (색상 무관)",
+                                    "visitDayId" : "product3-visit",
+                                    "visitDay" : [
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"}
+                                    ],
+                                    "totalPrice" : "월 15,200원"
+                                })
+                                <!-- //케어십_용역제품 모듈 -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- //케어솔루션 -->
+
+                    @@include('./SLC/RMSF2003_bottom.html')
+                </div>
+
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "제품 담기가 완료되었습니다."}
+                    ]
+                })
+            </div>
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>
+
+    <script type='text/javascript'>
+		$(function () {
+			vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
+				$('.ui_smooth_scroll').vcSmoothScroll({ center:true});
+
+				$('.ui_smooth_next').on('click', function(e){
+					$('.ui_smooth_scroll').vcSmoothScroll('nextPage');
+				})
+
+				$('.ui_smooth_prev').on('click', function(e){
+					$('.ui_smooth_scroll').vcSmoothScroll('prevPage');
+                });
+                
+                $('.ui_carousel_slider').vcCarousel({
+                    settings: "unbuild",
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1090,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2, 
+                                slidesToScroll: 2
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: "unbuild"
+                        }
+                    ]
+                });
+
+
+                $('.ui_carousel_slider3').vcCarousel({
+                    settings: "unbuild",
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: "unbuild"
+                        }
+                    ]
+                });
+                
+			});
+
+		});
+	</script>
+</body>
+</html>

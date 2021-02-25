@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0030 {
+    width: 100%;
+    // max-width: (1284px + 60px);
+    // margin: 0 auto;
+    // padding-right: 30px;
+    // padding-left: 30px;
+
+    @include mobile {
+        max-width: 100%;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    img {
+        width: 100%;
+    }
+    .imgScale {
+        width:100%;
+        display: inline-block;
+        //float:left;
+        text-decoration:none;
+
+        img{
+            transform:scale(1);
+            -o-transform:scale(1);
+            -moz-transform:scale(1);
+            -webkit-transform:scale(1);
+            transition: transform .35s;
+            -o-transition: transform .35s;
+            -moz-transition: transform .35s;
+            -webkit-transition: transform .35s;
+        }
+        &:hover {
+            img {
+                cursor:pointer;
+                transform:scale(1.1);
+                -o-transform:scale(1.1);
+                -moz-transform:scale(1.1);
+                -webkit-transform:scale(1.1);
+                transition: transform .35s;
+                -o-transition: transform .35s;
+                -moz-transition: transform .35s;
+                -webkit-transition: transform .35s;
+            }
+        }
+    }
+
+    .img-wrap {
+        overflow:hidden;
+        //float:left;
+        width:100%;
+        img {
+            position:relative;
+            width:100%;
+            height:auto;
+
+            &.pc {
+                display: inline;
+            }
+            &.mobile {
+                display: none;
+            }
+            @include mobile {
+                &.pc {
+                    display: none;
+                }
+                &.mobile {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    ul {
+       @include grid-row;
+    }
+    // image box area
+    .visual-box {
+        @include grid-col(left,12,12);
+        position: relative;
+        width: 100%;
+        max-width: 1284px;
+        margin-bottom: 146px;
+
+        .title {
+            &.caption {
+                padding: 48px;
+                background-color: #fff;
+
+                h2 {
+                    height: 60px;
+                    @include font-family($font-weight-bold);
+                    font-size: 20px;
+                    line-height: 30px;
+                    color: #111;
+                    @include textClipClamp(2);
+                }
+            }
+        }
+        .text-area {
+            position: absolute;
+            right: 12px;
+            bottom: -66px;
+            left: 218px;
+            //width: 100%;
+        }
+
+        @include mobile {
+            max-width: 100%;
+            margin-bottom: 80px - 16px;
+            .title {
+                &.caption {
+                    padding: 16px 0;
+                }
+            }
+            .text-area {
+                position: static;
+            }
+        }
+    }
+    .unit-box {
+        @include grid-col(left,3,6);
+        margin-bottom: 64px;
+        .img-wrap {
+            margin-bottom: 16px;
+        }
+        .title {
+            h2 {
+                height: 72px;
+                @include font-family($font-weight-bold);
+                font-size: 16px;
+                line-height: 24px;
+                color: #111;
+                @include textClipClamp(3);
+            }
+        }
+    }
+
+    .btn-wrap {
+        margin-top: 16px;
+        text-align: center;
+        .btn_LoadMore {
+            min-width: 412px;
+            padding:15px 0;
+            border: 1px solid #111;
+            border-radius: 4px;
+            background-color: #111;
+            line-height: 24px;
+            @include font-family($font-weight-bold);
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            vertical-align: top;
+            @include mobile {
+                min-width: 100%;
+            }
+        }
+    }
+
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+			} @else if $bg == dark {
+				background-color: #333;
+				.unit-box .title h2 {
+                    color:#fff;
+                }
+                .btn-wrap .btn_LoadMore {
+                    border-color:#fff;
+                    background-color:#fff;
+                    color:#111;
+                }
+			} @else if $bg == black {
+				background-color: #000;
+				.unit-box .title h2 {
+                    color:#fff;
+                }
+                .btn-wrap .btn_LoadMore {
+                    border-color:#fff;
+                    background-color:#fff;
+                    color:#111;
+                }
+			} @else if $bg == white {
+				background-color: #fff;
+			}
+		}
+	}
+}

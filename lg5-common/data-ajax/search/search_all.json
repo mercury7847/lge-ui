@@ -1,0 +1,620 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "inputValue": "aowlrtmvpdl스",
+        "search": "매직스페이스",
+        "force": false
+    },
+    "data":{
+        "allCount": "242",
+        "related":[
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프",
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프",
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프"
+        ],
+        "searchBanner":{
+            "pcImage": "/lg5-common/images/UTS/@sample-banner.jpg",
+            "mobileImage": "/lg5-common/images/UTS/@sample-banner-m.jpg",
+            "title": "새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩",
+            "desc": "2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원<br>상당 혜택!",
+            "url": "#n"
+        },
+        "category":[
+            {
+                "text":"제품>에어컨/에어케어",
+                "url":"#s1"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어컨",
+                "url":"#s2"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어케어",
+                "url":"#s3"
+            },
+            {
+                "text":"제품>에어컨/에어케어",
+                "url":"#s1"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어컨",
+                "url":"#s2"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어케어",
+                "url":"#s3"
+            },
+            {
+                "text":"제품>에어컨/에어케어",
+                "url":"#s1"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어컨",
+                "url":"#s2"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어케어",
+                "url":"#s3"
+            }
+        ],
+        "curation":[
+            {
+                "curationId":"cur0001",
+                "text":"학생에게 추천 노트북 1"
+            },
+            {
+                "curationId":"cur0002",
+                "text":"학생에게 추천 노트북 2"
+            },
+            {
+                "curationId":"cur0003",
+                "text":"학생에게 추천 노트북 3"
+            },
+            {
+                "curationId":"cur0004",
+                "text":"학생에게 추천 노트북 4"
+            },
+            {
+                "curationId":"cur0005",
+                "text":"학생에게 추천 노트북 5"
+            },
+            {
+                "curationId":"cur0006",
+                "text":"학생에게 추천 노트북 6"
+            },
+            {
+                "curationId":"cur0007",
+                "text":"학생에게 추천 노트북 7"
+            }
+        ],
+        "smartFilterList": [
+            {
+                "filterId":"sfid00001",
+                "filterGroupName":"사이즈",
+                "filterValues":[
+                    {"filterValueId":"sfsc0001","filterValueName":"27인치"},
+                    {"filterValueId":"sfsc0002","filterValueName":"32인치"},
+                    {"filterValueId":"sfsc0003","filterValueName":"40인치"},
+                    {"filterValueId":"sfsc0004","filterValueName":"47인치"},
+                    {"filterValueId":"sfsc0006","filterValueName":"49인치"},
+                    {"filterValueId":"sfsc0007","filterValueName":"52인치"},
+                    {"filterValueId":"sfsc0008","filterValueName":"58인치"},
+                    {"filterValueId":"sfsc0009","filterValueName":"70인치"},
+                    {"filterValueId":"sfsc0010","filterValueName":"80인치"},
+                    {"filterValueId":"sfsc0011","filterValueName":"100인치"},
+                    {"filterValueId":"sfsc0012","filterValueName":"120인치"}
+                ]
+            },
+            {
+                "filterId":"sfid00002",
+                "filterGroupName":"저장장치",
+                "filterValues":[
+                    {"filterValueId":"sfcp0001","filterValueName":"인텔 타이거레이크 i5"},
+                    {"filterValueId":"sfcp0002","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0003","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0004","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0006","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0007","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0008","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0009","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0010","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0011","filterValueName":"인텔 타이거레이크 i7"},
+                    {"filterValueId":"sfcp0012","filterValueName":"인텔 타이거레이크 i7"}
+                ]
+            },
+            {
+                "filterId":"sfid00003",
+                "filterGroupName":"저장장치",
+                "filterValues":[
+                    {"filterValueId":"sfhd0001","filterValueName":"HDD 512"},
+                    {"filterValueId":"sfhd0002","filterValueName":"SSD 256"},
+                    {"filterValueId":"sfhd0003","filterValueName":"SSD 1TB"},
+                    {"filterValueId":"sfhd0004","filterValueName":"SSD 2TB"},
+                    {"filterValueId":"sfhd0006","filterValueName":"SSD 5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00004",
+                "filterGroupName":"메모리",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00005",
+                "filterGroupName":"메모리2",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00006",
+                "filterGroupName":"메모리3",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00007",
+                "filterGroupName":"메모리4",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            },
+            {
+                "filterId":"sfid00008",
+                "filterGroupName":"메모리5",
+                "filterValues":[
+                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
+                    {"filterValueId":"sfmm0002","filterValueName":"256"},
+                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
+                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
+                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                ]
+            }
+        ],
+        "product":{
+            "count":"123",
+            "data":[
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4421000",
+                    "originalPrice":"4422000",
+                    "carePrice":"42000",
+                    "flag":[
+                        "미리 페스타",
+                        "으뜸 효율 15%",
+                        "신제품",
+                        "베스트"
+                    ],
+                    "hash":[
+                        "가전",
+                        "겨울가전"
+                    ],
+                    "hasCare":true,
+                    "hasReview":true,
+                    "rating":"40",
+                    "review":"34"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "originalPrice":"4421000",
+                    "carePrice":"41000",
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "originalPrice":"4433000",
+                    "carePrice":null,
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku":"S833MC85Q1",
+                    "price":null,
+                    "originalPrice":null,
+                    "carePrice":"78000",
+                    "flag":[
+                        "미리 페스타",
+                        "베스트",
+                        "신제품"
+                    ],
+                    "hash":[
+                        "가전",
+                        "가을가전"
+                    ],
+                    "hasCare":false,
+                    "hasReview":false,
+                    "rating":"39",
+                    "review":"33"
+                }
+            ]
+        },
+        "event":{
+            "count":"6",
+            "data":[
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
+                    "imageAlt":"2020 NEW 매직스페이스 올레드와 함께하는 홈라이프 홈라이프",
+                    "title":"2020 NEW 매직스페이스 올레드와 함께하는 홈라이프 홈라이프",
+                    "flag":[
+                        "매장",
+                        "구매혜택",
+                        "TV"
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928",
+                    "isEnd":false
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
+                    "imageAlt":"2020 NEW 올레드와 함께하는 홈라이프 매직스페이스 홈라이프",
+                    "title":"2020 NEW 올레드와 함께하는 홈라이프 매직스페이스 홈라이프",
+                    "flag":[
+                        "매장",
+                        "프로젝터"
+                    ],
+                    "startDate":"20200803",
+                    "endDate":"20200929",
+                    "isEnd":true
+                }
+            ]
+        },
+        "story":{
+            "count":"16",
+            "data":[
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
+                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "isVideo":false,
+                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
+                    "flag":[
+                        "비하인드"
+                    ],
+                    "hash":[
+                        "가전",
+                        "겨울가전"
+                    ],
+                    "date":"20200813"
+                },
+                {
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-search.jpg",
+                    "imageAlt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
+                    "isVideo":true,
+                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG",
+                    "desc":"코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다.",
+                    "flag":[
+                        "비하인드 스토리"
+                    ],
+                    "hash":[
+                        "가전",
+                        "겨울가전"
+                    ],
+                    "date":"20200814"
+                }
+            ]
+        },
+        "additional":{
+            "count":"31",
+            "data":[
+                {   "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"브러쉬 Brush Assembly",
+                    "title":"브러쉬 Brush Filter",
+                    "sku":"S833MC85Q1",
+                    "desc":"적용모델 : H-62HSGAKOR1 외",
+                    "price":"138000",
+                    "originalPrice":"150000",
+                    "carePrice":null
+                },
+                {   "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt":"브러쉬 Brush Assembly",
+                    "title":"브러쉬 Brush Assembly",
+                    "sku":"S833MC85Q2",
+                    "desc":"적용모델 : H-62HSGAKOR2 외",
+                    "price":null,
+                    "originalPrice":null,
+                    "carePrice":"69800"
+                }
+            ]
+        },
+        "shop":{
+            "count":"2",
+            "data":[
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"이벤트"
+                        }
+                    ],
+                    "title":"홍대입구역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시1 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~화 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"혼잡",
+                    "shopStateColor":"red",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"원할",
+                    "shopStateColor":"green",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"방문 예약 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"보통",
+                    "shopStateColor":"orange",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
+                }
+            ]
+        },
+        "customer":{
+            "count":"32",
+            "data":[
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "드라이버/소프트웨어"
+                    ]
+                },
+                {   
+                    "type":"product",
+                    "url":"#",
+                    "imageUrl":"/lg5-common/images/dummy/@img-cs.jpg",
+                    "imageAlt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "category":[
+                        "제품설명서",
+                        "제품문제해결"
+                    ]
+                },
+                {
+                    "type":"manual",
+                    "url":"#",
+                    "title":"사용설명서 HTML",
+                    "flag":[
+                        "제품사용설명서"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 설치 프로그램",
+                    "hash":[
+                        "한글",
+                        "Ver 7.8"
+                    ],
+                    "date":"20201101",
+                    "linkItem":[
+                        {
+                            "title":"ZIP",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        },
+                        {
+                            "title":"PDF",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                },
+                {
+                    "type":"driver",
+                    "url":"#",
+                    "title":"[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램",
+                    "flag":[
+                        "드라이버/소프트웨어"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "Ver 7.9",
+                        "통합 설치 프로그램"
+                    ],
+                    "date":"20201102",
+                    "linkItem":[
+                        {
+                            "title":"다운로드 112.4MB",
+                            "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true"
+                        }
+                    ]
+                },
+                {
+                    "type":"trouble",
+                    "url":"#",
+                    "title":"MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                    "flag":[
+                        "제품문제해결"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "데스크톱/일체형"
+                        ]
+                    ],
+                    "desc":"통합 드라이버 프로그램",
+                    "hash":[
+                        "조회수 5,692"
+                    ],
+                    "date":"20201102",
+                    "isVideo":true
+                }
+            ]           
+        }
+    }
+}
