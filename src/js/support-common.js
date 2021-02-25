@@ -794,7 +794,9 @@ CS.MD.commonModel = function() {
             });
 
             // 카테고리 선택
-            self.$categoryBox.find('.btn-open').on('click', function() {
+            self.$categoryBox.find('a').on('click', function(e) {
+                e.preventDefault();
+
                 $(this).closest('.box').addClass('on');
                 $(this).closest('li').siblings().each(function(index, item) {
                     var $item = $(item);
