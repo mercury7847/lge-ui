@@ -811,27 +811,34 @@
             }
         },
         keyword: {
+            el: {
+                searchWrap: '.ui_search',
+                searchInput: '#search'
+            },
             init: function() {
                 if (!$('.ui_search').length) return;
 
-                var url = $('.ui_search').data('searchUrl');
+                var self = this;
+                var $searchWrap = $(self.el.searchWrap);
+                var $searchInput = $(self.el.searchInput);
+                var url = $searchWrap.data('searchUrl');
 
-                $('#search').on('keyup', function(e) {
+                $searchInput.on('keyup', function(e) {
                     if (e.keyCode == 13) {
                         e.preventDefault();
-                        location.href = url + $('#search').val();
+                        location.href = url + $searchInput.val();
                     }
                 });
 
-                $('.ui_search').find('.btn-search', function() {
-                    location.href = url + $('#search').val();
+                $searchWrap.find('.btn-search', function() {
+                    location.href = url + $searchInput.val();
                 });
 
-                $('.ui_search').on('keywordClick', function() {
-                    location.href = url + $('#search').val();
+                $searchWrap.on('keywordClick', function() {
+                    location.href = url + $searchInput.val();
                 });
 
-                $('.ui_search').search({
+                $searchWrap.search({
                     template: {
                         autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="{{item.url}}"><span class="model">{{item.factoryID}}</span><span class="category">{{item.category}}</span></a></li>{{/each}}</ul>',
                         recentlyList: '<li><a href="#">{{keyword}}</a><button type="button" class="btn-delete"><span class="blind">삭제</span></button></li>',
@@ -839,7 +846,7 @@
                     }
                 });
 
-                $('.ui_search').on('autocomplete', function(e, param, url, callback) {
+                $searchWrap.on('autocomplete', function(e, param, url, callback) {
                     lgkorUI.requestAjaxData(url, param, function(result) {
                         callback(result.data);
                     });
