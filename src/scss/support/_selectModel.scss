@@ -432,7 +432,7 @@
                         transition-delay: .7s;
                     }
                     .category {
-                        .category-box {
+                        > a {
                             display:block;
                             position:relative;
                             padding:40px 16px 64px;
@@ -525,7 +525,7 @@
                     }
 
                     &.off {                        
-                        .category-box {
+                        .category > a {
                             &:after {
                                 animation-name:btnReduce;
                             }
@@ -535,7 +535,7 @@
                         &:after {
                             opacity:0;
                         }
-                        .category-box {
+                        .category > a {
                             &:after {
                                 background-image: none;
                                 animation-name:btnExpand;
