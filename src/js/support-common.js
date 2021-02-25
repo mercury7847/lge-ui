@@ -2304,6 +2304,8 @@ $.fn.serializeObject = function() {
 
 (function($){
     function commonInit(){
+        //input type number 숫자키패드
+        $('input[type="number"]').attr('inputmode', 'numeric');
         vcui.require(['ui/selectbox', 'ui/formatter'], function () {    
             $('[data-format=koreng]').vcFormatter({format:'koreng'});
             $('[data-format=alnum]').vcFormatter({format:'alnum'});
