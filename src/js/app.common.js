@@ -314,3 +314,4 @@ $(document).ready(function(){
         $('.KRP0005,.KRP0032,.quick-menu-list').remove();
     }
 });
+if(isApp()) $('html').addClass('app');
