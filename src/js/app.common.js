@@ -1,15 +1,11 @@
 //var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
-var oldStartValue = "";
-var oldEndValue = "";
 var appDate = new Date();
 var appFullYear = appDate.getFullYear();
 var appMonth = (appDate.getMonth() + 1) < 10 ? "0" + (appDate.getMonth() + 1) : (appDate.getMonth() + 1);
 var appDay = appDate.getDate() < 10 ? "0" + appDate.getDate() : appDate.getDate();
-var appToday = appMonth + "/" + appDay + "/" + appFullYear + " ";
-var events = false;
-
 var beforeFocusEle = "";
 var beforeFocusEleToast = "";
+
 var optModal = {
     open: function(id, role, txt, confirm, cancel){
         var valId = id;
@@ -302,6 +298,17 @@ $(document).ready(function(){
         click : function(){
             beforeFocusEle = "#btn-barcode";
             optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "확인", "취소");
+        }
+    });
+
+    //헤더 앱 설정 버튼
+    $(".app-settings-button").on({
+        click : function(){
+            if (isApp()) {
+                $('.mapExclusive').addClass('active');
+                $('.mapExclusiveDss').hide();
+                document.location.href="/mobile-app/option";
+            }
         }
     });
 });
