@@ -131,6 +131,18 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
+                var buyplace = lgkorUI.getHiddenInputData().buyplace;
+                var placeArr = buyplace.split(',');
+                if(placeArr.length > 0) {
+                    var $select = self.$registMyProductPopup.find('#slt02');
+                    $select.empty();
+                    $select.append('<option value="" class="placeholder">구매 장소 유형 선택</option>');
+                    placeArr.forEach(function(item,index){
+                        $select.append('<option value="'+item+'">'+item+'</option>');
+                    });
+                    $select.vcSelectbox('update');
+                }
+
                 self.requestMoreData(1);
                 self.requestOwnData();
 
@@ -443,7 +455,6 @@
 
             //다운로드 파일 상세 보기
             self.$downloadPopup.on('click','button.btn-info', function(e){
-                console.log('상세보기 클릭');
                 var url = $(this).data('href');
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
