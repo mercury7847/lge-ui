@@ -12,7 +12,7 @@
         "osOption": [
             {
                 "codeName": "전체",
-                "code": "전체"
+                "code": "all"
             },
             {
                 "codeName": "Window XP",
@@ -27,6 +27,7 @@
                 "code": "Window 7"
             }
         ],
+        "totalCount":5,
         "listData": [
             {
                 "os": "[프로그램/Win7_32bit] XPION용",

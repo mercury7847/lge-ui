@@ -18,7 +18,7 @@
          },
          "bizStatus": {
             "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusText": "원활"
          },
          "serviceProduct": [
             {
@@ -270,7 +270,7 @@
          },
          "bizStatus": {
             "bizStatusClass": "skyblue",
-            "bizStatusText": "원할"
+            "bizStatusText": "원활"
          },
          "serviceProduct": [
             {
