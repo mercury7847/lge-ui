@@ -12,6 +12,7 @@
     var ARS_AGREE_URL;
     var REQUEST_CONTRACT_URL;
     var MEMPOINT_DEDUCT_URL;
+    var REQUSET_CARD_URL;
 
     var mypage;
     var userInfoBlock, userModifyBlock;
@@ -24,13 +25,13 @@
 
     var paymentInfo = {};
 
-    var receiveContractInfo;
-
     var userInfoValidation;
 
     var cardValidation, bankValidation;
 
     var txtMasking;
+
+    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
     function init(){
         console.log("contractStatus start!!");
@@ -43,6 +44,7 @@
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
         REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
         MEMPOINT_DEDUCT_URL = $('.contents.mypage').data('mempointDeductUrl');
+        REQUSET_CARD_URL = $('.contents.mypage').data('requestCardUrl');
     
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
@@ -181,7 +183,8 @@
             $('#popup-contractIssue').vcModal();
         }).on('click', '.requestCard-btn', function(e){
             e.preventDefault();
-            $('#popup-cardIssue').vcModal();
+
+            setRequestCard();
         })
         // .on('click', '.paymenyList-btn', function(e){
         //     e.preventDefault();
@@ -237,9 +240,9 @@
     //계약서 발급 신청
     function sendRequestContract(){
         var sendata = {
-            userEmail:userInfo.userEmail
+            userEmail:userInfo.userEmail,
+            contractID: $('select[name=contractInfo]').find('option:selected').val()
         }
-        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(REQUEST_CONTRACT_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 $('#popup-contractIssue').vcModal('close');
@@ -279,7 +282,7 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
-                for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
+                sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
                 lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
                     if(lgkorUI.stringToBool(result.data.success)){
                         if(sendata.confirmType == MODE_USER){
@@ -288,6 +291,7 @@
                         } else{
                             paymentInfoBlock.hide();
                             paymentModifyBlock.show();
+                            paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
 
                             setHiddenData('paymentMethodConfirm', "N");
                             setHiddenData('arsAgree', "N");
@@ -313,12 +317,86 @@
 
         var sendata = userInfoValidation.getAllValues();
         sendata.confirmType = MODE_USER;
-        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
+        sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
             }
+
+            lgkorUI.hideLoading();
+        });
+    }
+
+    //제휴카드 신청
+    function setRequestCard(){
+        if(associCardType){
+            $(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
+        } else{
+
+            setIssueCardList([
+                {cardValue:"111", cardName:"카드111"},
+                {cardValue:"111", cardName:"카드222"},
+                {cardValue:"111", cardName:"카드333"},
+                {cardValue:"111", cardName:"카드444"},
+                {cardValue:"111", cardName:"카드555"}
+            ])
+
+            var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+            $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+            $('#popup-cardIssue').vcModal();
+        }
+    }
+
+    //제휴카드 
+    function setIssueCardList(data){
+        var select = $('#popup-cardIssue').find('select[name=concertedCard]');
+        select.empty();
+        select.append('<option value="" class="placeholder">선택</option>');
+        for(var idx in data){
+            var opt = "<option value='" + data[idx].cardValue + "'>" + data[idx].cardName + "</option>";
+            select.append(opt);
+        }
+        select.vcSelectbox('update');
+    }
+
+    //제휴사드 발급신청
+    function requestCardIssue(){
+        var val = $('#popup-cardIssue').find('input[name=cardIssueAllchker_1]').prop('checked');
+        if(!val){
+            lgkorUI.alert("", {
+                title: "개인정보 수집/이용 동의해주세요."
+            });
+            return;
+        }
+
+        val = $('#popup-cardIssue').find('input[name=cardIssueAllchker_2]').prop('checked');
+        if(!val){
+            lgkorUI.alert("", {
+                title: "개인정보 제3자 제공 동의 해주세요."
+            });
+            return;
+        }
+
+        val = $('#popup-cardIssue').find('select[name=concertedCard]').find('option:selected').val();
+        if(!val){
+            lgkorUI.alert("", {
+                title: "제휴카드를 선택하세요."
+            });
+            return;
+        }
+
+        lgkorUI.showLoading();
+
+        var sendata = {
+            contractID: $('select[name=contractInfo]').find('option:selected').val(),
+            selectCardValue: val
+        }
+        console.log("requestCardIssue(); [sendata] :", sendata);
+        lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
+            console.log("### requestCardIssue() [complete] ###", result);
+
+            $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
         });
@@ -333,6 +411,8 @@
 
         paymentInfo = {};
 
+        CERTI_ID = BATCH_KEY = "";
+
         if($(item).hasClass('paymentCardConfirm')){
             sendata = cardValidation.getValues();
             sendata.confirmType = METHOD_CARD;
@@ -340,12 +420,16 @@
             sendata = bankValidation.getValues();
             sendata.confirmType = METHOD_BANK;
         }
-        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
+        sendata.contractID = $('select[name=contractInfo]').find('option:selected').val()
         console.log("paymentMethodAbled(); sendata :", sendata);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
+            console.log("### requestAjaxData ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
+
+            if(result.data.CERTI_ID) CERTI_ID = result.data.CERTI_ID;
+            if(result.data.BATCH_KEY) BATCH_KEY = result.data.BATCH_KEY;
 
             if(lgkorUI.stringToBool(result.data.success)){
                 paymentInfo = sendata.confirmType == METHOD_CARD ? cardValidation.getAllValues() : bankValidation.getAllValues();
@@ -358,10 +442,14 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, receiveContractInfo, function(result){
+        CTI_REQUEST_KEY = "";
+        lgkorUI.requestAjaxData(ARS_AGREE_URL, {contractID: $('select[name=contractInfo]').find('option:selected').val()}, function(result){
+            console.log("### setArsAgreeConfirm [complete] ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
+
+            CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
 
             setHiddenData('arsAgree', result.data.success);
         });
@@ -394,11 +482,15 @@
         if(payments.result){
             lgkorUI.showLoading();
 
-            var sendata = {}
-            for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
-            for(key in paymentInfo) sendata[key] = paymentInfo[key];
+            var sendata = {
+                contractID: $('select[name=contractInfo]').find('option:selected').val(),
+                CERTI_ID: CERTI_ID,
+                BATCH_KEY: BATCH_KEY,
+                CTI_REQUEST_KEY: CTI_REQUEST_KEY
+            }
+            for(var key in paymentInfo) sendata[key] = paymentInfo[key];
 
-            console.log("savePaymentInfo : [sendata] ", paymentInfo);
+            console.log("savePaymentInfo : [sendata] ", sendata);
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     changeContractInfo();
@@ -456,17 +548,6 @@
         }
     }
 
-    function requestCardIssue(){
-        
-        if(!result.success){
-            lgkorUI.alert("", {
-                title: result.validArray[0].errmsg
-            });
-
-            return;
-        }
-    }
-
     function showMempointModify(){
         $('.mempoint-info .viewer').hide();
 
@@ -487,7 +568,8 @@
             isAgree: $('.mempoint-info').data('isAgree'),
             deductType: $('.mempoint-info').data('deductType'),
             userPoint: $('.mempoint-info').data('userPoint'),
-            deductPoint: $('.mempoint-info').data('deductPoint')
+            deductPoint: $('.mempoint-info').data('deductPoint'),
+            contractID: $('select[name=contractInfo]').find('option:selected').val()
         }
         if(sendata.isAgree){
             var chk = $('.mempoint-info').find('input[name=point-cancel]').prop('checked');
@@ -502,7 +584,6 @@
         }
         console.log("### okMempointModify ###", sendata);
 
-        for(var key in receiveContractInfo) sendata[key] = receiveContractInfo[key];
         lgkorUI.requestAjaxData(MEMPOINT_DEDUCT_URL, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
@@ -530,9 +611,6 @@
     
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
-    
-            receiveContractInfo = {};
-            for(var key in data.contractInfo) receiveContractInfo[key] = data.contractInfo[key];
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
             changeFieldValue('contract-info', data.contractInfo);
@@ -551,7 +629,7 @@
                 paymentMode = "bank";
     
                 info.paymentMethod = "계좌이체"
-                info.methodName =  data.paymentInfo.bankInfo.bankName;
+                info.methodName =  "<span>" + data.paymentInfo.bankInfo.bankName + "</span><a href='" + data.paymentInfo.requestCardUrl  + "' class='btn-link requestCard-btn'>제휴카드 신청</a>";
                 info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
             }
             changeFieldValue('payment-info', info);
@@ -560,6 +638,7 @@
             } else{
                 $('.payment-info .requestCard-btn, .changePayment-btn').show();
             }
+            associCardType = data.paymentInfo.associCardType;
 
             var isAgreeText = "";
             var isAgree = data.memberPointInfo.isAgree;
