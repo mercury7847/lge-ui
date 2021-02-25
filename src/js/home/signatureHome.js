@@ -45,10 +45,12 @@ $(function() {
         var currentPage = 0;
         var touchSy = 0;
         var $scenes = $('.signature-hero').children().add('.signature-wrap');
+        var totalPage = $scenes.length;
         var stepLens = 0;
         var posArr = [];
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
+
 
         $('.signature-hero').children().css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});
@@ -73,6 +75,7 @@ $(function() {
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
+                console.log(currentStep);
                 canScroll = true;
                 return; 
             }
@@ -476,9 +479,13 @@ $(function() {
             if(href == '#' || href == '#n'){
                 e.preventDefault();
             }else{
-                if (href && /^(#|\.)\w+/.test(href)) {                    
+                if (href && /^(#|\.)\w+/.test(href)) {    
+                    e.preventDefault();
                     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
                     if($compareTarget[0] != e.currentTarget) {
+                        if(currentPage !== totalPage-1){
+                            moveScene(totalPage-1,stepLens,0);
+                        }                        
                         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
                     }
                 }                
