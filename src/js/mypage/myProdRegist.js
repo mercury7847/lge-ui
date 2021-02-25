@@ -73,7 +73,22 @@
         '</div>' +
     '</div></div></li>'
 
-    var downloadListItemTemplate = '<li class="lists ui_dropdown">' +
+    var downloadListItemTemplate = '<li>' +
+        '<p class="tit">' +
+            '<button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{title}}</button>' +
+        '</p>' +
+        '<div class="info-wrap">' +
+            '<ul class="options">' +
+                '<li>{{category}}</li><li>{{date}}</li>' +
+            '</ul>' +
+            '<div class="btn-wrap">' +
+                '{{#set os = file.os}}{{#set size = file.size}}' +
+                '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드{{#if os}} {{os}}{{/if}}{{#if size}} {{size}}{{/if}}</span></a>' +
+            '</div>' +
+        '</div>' +
+    '</li>';
+
+    var downloadListItemTemplate2 = '<li class="lists ui_dropdown">' +
         '<div class="inner titles">' +
             '<a href="#"><div class="info-cell">' +
                 '<p class="file-name">{{title}}</p>' +
@@ -115,6 +130,18 @@
                 self.setting();
                 self.bindEvents();
                 self.bindPopupEvents();
+
+                var buyplace = lgkorUI.getHiddenInputData().buyplace;
+                var placeArr = buyplace.split(',');
+                if(placeArr.length > 0) {
+                    var $select = self.$registMyProductPopup.find('#slt02');
+                    $select.empty();
+                    $select.append('<option value="" class="placeholder">구매 장소 유형 선택</option>');
+                    placeArr.forEach(function(item,index){
+                        $select.append('<option value="'+item+'">'+item+'</option>');
+                    });
+                    $select.vcSelectbox('update');
+                }
 
                 self.requestMoreData(1);
                 self.requestOwnData();
@@ -417,16 +444,23 @@
             });
 
             //다운로드 파일
+            /*
             self.$downloadPopup.on('click','li button.btn', function(e){
                 var url = $(this).attr('data-file-url');
                 if(!(!url)) {
                     window.location = url;
                 }
             });
+            */
 
             //다운로드 파일 상세 보기
-            self.$downloadPopup.on('click','a', function(e){
-                console.log('상세보기 클릭');
+            self.$downloadPopup.on('click','button.btn-info', function(e){
+                var url = $(this).data('href');
+                if(url) {
+                    lgkorUI.requestAjaxData(url, null, function(result){
+                        $('#detail-file-modal').html(result).vcModal();
+                    }, null, "html");
+                }
             });
 
             //다운로드 상세 검색
@@ -660,15 +694,15 @@
 
                 if(selectOSUpdate) {
                     self.$selectOS.empty();
-                    var arr = data.osList instanceof Array ? data.osList : [];
-                    if(arr.length < 1) {
+                    var arr = data.osOption instanceof Array ? data.osOption : [];
+                    if(arr.length < 2) {
                         self.$selectOS.prop('disabled', true);
-                        self.$selectOS.append('<option value="">없음</option>');
+                        //self.$selectOS.append('<option value="">없음</option>');
                     } else {
                         self.$selectOS.prop('disabled', false);
-                        self.$selectOS.append('<option value="">전체</option>');
+                        //self.$selectOS.append('<option value="">전체</option>');
                         arr.forEach(function(item, index){
-                            self.$selectOS.append('<option value="' + item.osId +'">' + item.osName + '</option>');
+                            self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
                         });
                     }
                     self.$selectOS.vcSelectbox('update');
@@ -680,12 +714,14 @@
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        /*
                         var list = item.list;
                         if(list) {
                             list.forEach(function(item, index) {
                                 list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
                             });
                         }
+                        */
                         $list.append(vcui.template(downloadListItemTemplate, item));
                     });
                     self.$downloadPopup.find('.no-data').hide();

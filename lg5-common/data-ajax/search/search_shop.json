@@ -62,7 +62,6 @@
                     "address":"서울특별시1 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
                     "time":"월~화 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"혼잡",
-                    "shopStateColor":"red",
                     "linkItem":[
                         {
                             "title":"길찾기",
@@ -89,8 +88,7 @@
                     "url":"#",
                     "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
-                    "shopState":"원할",
-                    "shopStateColor":"green",
+                    "shopState":"원활",
                     "linkItem":[
                         {
                             "title":"길찾기",
@@ -118,7 +116,6 @@
                     "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
                     "shopState":"보통",
-                    "shopStateColor":"orange",
                     "linkItem":[
                         {
                             "title":"길찾기",
@@ -145,8 +142,34 @@
                     "url":"#",
                     "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
                     "time":"월~금 09:00~18:00 토요일 09:00~13:00",
-                    "shopState":"보통",
-                    "shopStateColor":"orange",
+                    "shopState":"휴무",
+                    "linkItem":[
+                        {
+                            "title":"길찾기",
+                            "url":"#"
+                        },
+                        {
+                            "title":"매장 상담 신청",
+                            "url":"#"
+                        }
+                    ]
+                },
+                {
+                    "flag":[
+                        {
+                            "clase":"green",
+                            "title":"센터"
+                        },
+                        {
+                            "clase":null,
+                            "title":"NEW"
+                        }
+                    ],
+                    "title":"서울역 서비스 센터",
+                    "url":"#",
+                    "address":"서울특별시2 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP",
+                    "time":"월~금 09:00~18:00 토요일 09:00~13:00",
+                    "shopState":"근무중",
                     "linkItem":[
                         {
                             "title":"길찾기",
