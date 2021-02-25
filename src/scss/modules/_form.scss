@@ -1401,8 +1401,8 @@
         .minus,
         .plus {
             position: relative;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: #fff no-repeat center center;
             &.minus {
                 border-radius: 6px 0 0 6px;
@@ -1424,8 +1424,8 @@
             }
         }
         .quantity {
-            width: 44px;
-            height: 36px;
+            width: 40px;
+            height: 32px;
             border-right: 1px solid $color-border;
             border-left: 1px solid $color-border;
             background-color: $color-bg-wt;
