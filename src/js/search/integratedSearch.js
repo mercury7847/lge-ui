@@ -22,10 +22,7 @@
     var intergratedSearch = {
         init: function() {
             var self = this;
-
             self.setting();
-            self.updateBasicData();
-            self.updateRecentSearchList();
             self.bindEvents();
         },
 
@@ -94,9 +91,13 @@
                 self.$searchLayer.vcModal();
             });
             */
+            $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
+                self.updateBasicData();
+                self.updateRecentSearchList();
+            });
 
             //통합검색 닫음
-            self.$searchLayer.find('button.btn-close').on("click", function(e) {
+            self.$searchLayer.find('button.btn-close').off('.intergrated').on("click.intergrated", function(e) {
                 clearTimeout(self.searchTimer);
                 //self.hideAnimation(self.$searchLayer);
                 //console.log('close modal');
@@ -104,7 +105,7 @@
             });
 
             //검색버튼
-            self.$buttonSearch.on('click', function(e){
+            self.$buttonSearch.off('.intergrated').on('click.intergrated', function(e){
                 clearTimeout(self.searchTimer);
 
                 var searchVal = self.$inputSearch.val();
@@ -112,7 +113,7 @@
             });
 
             //검색 타이머
-            self.$inputSearch.on("input", function(e) {
+            self.$inputSearch.off('.intergrated').on("input.intergrated", function(e) {
                 clearTimeout(self.searchTimer);
                 
                 var searchVal = this.value;
@@ -129,13 +130,12 @@
             });
 
             //자동완성 리스트 클릭
-            self.$autoComplete.on('click', 'div.keyword-list ul li a', function(e){
+            self.$autoComplete.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
                 self.searchItem($(this), true);
-            });
-
-            //자동완성 리스트 오버
-            self.$autoComplete.on('mouseover', 'div.keyword-list ul li a', function(e){
+            }).on('mouseover.intergrated', 'div.keyword-list ul li a', function(e){
+                //자동완성 리스트 오버
+            
                 e.preventDefault();
                 //console.log('mouse in');
                 self.searchItem($(this),false);
@@ -145,31 +145,29 @@
             });*/
 
             //연관검색어 클릭
-            self.$searchSimilar.on('click', 'a', function(e){
+            self.$searchSimilar.off('.intergrated').on('click.intergrated', 'a', function(e){
                 e.preventDefault();
                 self.searchItem($(this),true);
             });
 
             //인기검색어 클릭
-            self.$popularKeywordList.on('click', 'div.keyword-list ul li a', function(e){
+            self.$popularKeywordList.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
                 self.searchItem($(this),true);
             });
 
             //추천태그 클릭
-            self.$suggestedTagsList.on('click', 'div.keyword-list ul li a', function(e){
+            self.$suggestedTagsList.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
                 self.searchItem($(this),true);
             });
 
             //최근검색어 클릭
-            self.$recentKeywordList.on('click', 'div.keyword-list ul li span a', function(e){
+            self.$recentKeywordList.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li span a', function(e){
                 e.preventDefault();
                 self.searchItem($(this),true);
-            });
-
-            //최근검색어 삭제 클릭
-            self.$recentKeywordList.on('click', 'div.keyword-list ul li span button', function(e){
+            }).on('click.intergrated', 'div.keyword-list ul li span button', function(e){
+                //최근검색어 삭제 클릭
                 var text = $(this).siblings('a').first().attr('href').replace("#", "");
                 self.removeRecentSearcheText(text);
             });
