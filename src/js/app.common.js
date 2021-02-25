@@ -310,5 +310,7 @@ $(document).ready(function(){
                 document.location.href="/mobile-app/option";
             }
         });
+        //Quick메뉴 삭제
+        $('.KRP0005,.KRP0032,.quick-menu-list').remove();
     }
 });

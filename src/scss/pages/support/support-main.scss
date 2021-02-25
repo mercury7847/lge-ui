@@ -1412,7 +1412,7 @@
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
-            background: rgba(34, 23, 23, 0.6);
+            background: rgba(0, 0, 0, 0.6);
 
             &:before {
                 content:"";
@@ -2621,15 +2621,19 @@
             height:480px
         }
 
-        @include mobile {
+        @include tablet {
             .support-nav-container {
-                padding:60px 16px;
-
                 .support-list-slider {
                     .indi-wrap {
                         bottom:0;
                     }
                 }
+            }
+        }
+
+        @include mobile {
+            .support-nav-container {
+                padding:60px 16px;
             }
             .home-cont-top {
                 top:60px;
