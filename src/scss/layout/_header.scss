@@ -1694,3 +1694,13 @@
         }
     }
 }
+//앱 인 경우 퀵메뉴 리스트 안보이게
+html {
+    &.app {
+        .KRP0005,
+        .KRP0032,
+        .quick-menu-list {
+            display: none;
+        }
+    }
+}
