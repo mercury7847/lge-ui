@@ -17,6 +17,11 @@
         
     }
     .page-header.wide {
+        padding:10px 0 8px;
+        margin-bottom:48px;
+        @include mobile {
+            margin-bottom:32px;
+        }
         .tabs-wrap {
             text-align:left;
         }
