@@ -49,7 +49,9 @@
         vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
-            changeContractInfo();
+
+            var firstData = $('select[name=contractInfo]').find('option:nth-child(1)').val();
+            if(firstData) changeContractInfo();
         });
     }
 
@@ -285,17 +287,17 @@
                 sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
                 lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
                     if(lgkorUI.stringToBool(result.data.success)){
-                        if(sendata.confirmType == MODE_USER){
-                            userInfoBlock.hide();
-                            userModifyBlock.show();
-                        } else{
-                            paymentInfoBlock.hide();
-                            paymentModifyBlock.show();
-                            paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
+                        lgkorUI.showLoading();
 
-                            setHiddenData('paymentMethodConfirm', "N");
-                            setHiddenData('arsAgree', "N");
-                        }
+                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                        document.form_chk.action = result.data.niceAntionUrl;
+                        document.form_chk.EncodeData.value = result.data.sEncData;
+                        document.form_chk.param_r1.value = result.data.param_r1;
+                        document.form_chk.param_r2.value = result.data.param_r2;
+                        document.form_chk.param_r3.value = result.data.param_r3;
+                        document.form_chk.m.value = "safekeyService";
+                        document.form_chk.target = "popupChk";
+                        document.form_chk.submit();
                     } else{
                         console.log("Fail !!!");
                     }
@@ -303,6 +305,32 @@
             }
         });
     }
+
+    //나이스 콜백 -정보변경
+    function editBasicInfomation(){
+        userInfoBlock.hide();
+        userModifyBlock.show();
+
+        lgkorUI.hideLoading();
+    }
+    //나이스 콜백 -납부정보변경
+    function editPaymentInfomation(){
+        paymentInfoBlock.hide();
+        paymentModifyBlock.show();
+        paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', false);
+
+        setHiddenData('paymentMethodConfirm', "N");
+        setHiddenData('arsAgree', "N");
+
+        lgkorUI.hideLoading();
+    }
+    //나이스 콜백 -인증실패
+    function fnNiceFail(){
+        lgkorUI.hideLoading();
+    }
+    window.editBasicInfomation = editBasicInfomation;
+    window.editPaymentInfomation = editPaymentInfomation;
+    window.fnNiceFail = fnNiceFail;
 
     //사용자 정보변경 취소...
     function saveUserInfoCancel(){
@@ -333,15 +361,6 @@
         if(associCardType){
             $(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
         } else{
-
-            setIssueCardList([
-                {cardValue:"111", cardName:"카드111"},
-                {cardValue:"111", cardName:"카드222"},
-                {cardValue:"111", cardName:"카드333"},
-                {cardValue:"111", cardName:"카드444"},
-                {cardValue:"111", cardName:"카드555"}
-            ])
-
             var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal();
