@@ -274,7 +274,8 @@ $(function () {
         // 하단 메뉴 높이
         // android.getBottomMenuHeight();
 
-        
+        var isAndroid = vcui.detect.isAndroid;
+        var isIOS = vcui.detect.isIOS;
         
         $(document).on('touchstart touchend touchcancel', function(e) {
 
@@ -285,10 +286,16 @@ $(function () {
 
                 if (touchSy - data.y > 80) {
                     console.log('down');
-                    if(isApplication && android) android.showBottomMenu(true);
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        //if(isIOS && android) android.showBottomMenu(true);
+                    }
                 } else if (touchSy - data.y < -80) {
                     console.log('up');
-                    if(isApplication && android) android.showBottomMenu(false);
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        //if(isIOS && android) android.showBottomMenu(false);
+                    }
                 }
 
                 if(currentPage == maxLens){
