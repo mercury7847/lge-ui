@@ -239,7 +239,14 @@
         }
         console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-            console.log("### requestAjaxData ###", result)
+            console.log("### requestAjaxData ###", result);
+
+            if(result.data.loginUrl){
+                location.href = result.data.loginUrl;
+
+                return;
+            }
+
             var sectionItem = $('.' + sectioname)
             var page = parseInt(result.param.pagination.page);
             var totalcnt = parseInt(result.param.pagination.totalCount);
