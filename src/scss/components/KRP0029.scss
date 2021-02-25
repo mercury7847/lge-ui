@@ -25,7 +25,7 @@
 		}
 	}
 	.category {
-		margin-top:12px;
+		margin-top:16px;
 		font-size:18px;
 		line-height:28px;
 		text-align:center;
@@ -39,7 +39,10 @@
 		}
 	}
 	.recommend-story-list-wrap {
-		margin-top:24px;
+		margin-top:48px;
+		@include mobile {
+			margin-top:32px;
+		}
 		&:first-child {
 			margin-top:0;
 		}
@@ -76,24 +79,26 @@
 						left:24px;
 						right:24px;
 						bottom:40px;
-						padding:0 12px;
+						padding:0 8px;
 						@include mobile {
-							padding: {
-								left:24px;
-								right:24px;
-							};
+							left:20px;
+							right:20px;
+							bottom:28px;
+							padding:0;
 						}
 						color:$typeDefault;
 						.flag {
-							height:20px;
+							height:24px;
 							padding:0 8px;
-							line-height:16px;
-							color:inherit;
-							border-radius:4px;
 							border:1px solid;
+							border-radius:4px;
 							border-color:$typeDefault;
+							color:inherit;
+							font-weight:500;
+							line-height:22px;
 							@include mobile {
-								font-size:12px;
+								font-size:11px;
+								line-height:23px;
 							}
 						}
 						&.typeWhite {
@@ -104,30 +109,32 @@
 						}
 						.info-tit {
 							display:block;
-							margin-top:16px;
+							margin-top:6px;
 							font-weight:700;
-							font-size:24px;
-							line-height:32px;
+							font-size:32px;
+							line-height:52px;
 							@include mobile {
-								font-size:20px;
-								line-height:24px;
+								margin-top:8px;
+								font-size:27px;
+								line-height:38px;
 							}
 						}
 						.info-tag {
 							display:block;
 							width:50%;
-							margin-top:8px;
-							font-size:16px;
-							line-height:24px;
+							margin-top:16px;
+							margin-left:-8px;
+							font-size:0;
+							font-weight:700;
 							@include mobile {
-								margin-top:8px;
-								font-size:14px;
-								line-height:18px;
+								margin-top:12px;
 							}
 							& > span {
 								display:inline-block;
-								font-size:inherit;
-								line-height:inherit;
+								padding-left:8px;
+								font-size:14px;
+								line-height:24px;
+								text-decoration:underline;
 							}
 						}
 					}

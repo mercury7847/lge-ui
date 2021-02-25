@@ -129,8 +129,8 @@
                 .thumbnail-list {
                     li {
                         display: inline-block;
-                        width: 80px;
-                        height: 80px;
+                        width: 64px;
+                        height: 64px;
                         margin: 0 5px 5px;
                         vertical-align: top;
                         a {
@@ -139,13 +139,13 @@
                             width: 100%;
                             height: 100%;
                             border:1px solid #e4e4e4;
-                            border-radius: 8px;
+                            border-radius: 6px;
                             img {
                                 width: 100%;
                                 max-width: 100%;
                                 height: auto;
                                 vertical-align: top;
-                                border-radius: 8px;
+                                border-radius: 6px;
                             }
                         }
                         &:hover,
@@ -172,13 +172,13 @@
                         &.youtube {
                             a {
                                 background: url('/lg5-common/images/icons/icon-youtube-62.svg') no-repeat 0 0;
-                                background-size: 78px 78px;
+                                background-size: 62px 62px;
                             }
                         }
                         &.view {
                             a {
-                                background: url('/lg5-common/images/icons/icon-360-62.svg') no-repeat 0 0;
-                                background-size: 78px 78px;
+                                background: url('/lg5-common/images/icons/icon-360-60.svg') no-repeat 0 0;
+                                background-size: 62px 62px;
                             }
                         }
                         &.more {
@@ -188,10 +188,10 @@
                                 top: 0;
                                 width: 100%;
                                 height: 100%;
-                                border-radius: 8px;
+                                border-radius: 6px;
                                 background-color: rgba(34,34,34,.8);
                                 font-size: 16px;
-                                line-height: 80px;
+                                line-height: 64px;
                                 color: #fff;
                                 text-align: center;
                             }
@@ -401,7 +401,7 @@
                 float: left;
                 padding-left: 44px;
                 font-weight: 500;
-                @include font-medium;
+                @include font-small;
                 .img-area {
                     position: absolute;
                     top: 50%;
@@ -415,7 +415,6 @@
                 float: right;
                 font-weight: 500;
                 @include font-small;
-                text-decoration: none;
             }
         }
 
@@ -495,16 +494,16 @@
 
             .product-name {
                 position: relative;
-                margin: 4px 0;
+                margin: 8px 0 4px;
                 .name {
                     padding-right: 32px;
                     font-weight: 700;
-                    @include font($font-large-4,52px);
+                    @include font($font-large-3,38px);
                 }
             }
             .sku {
                 display: inline-block;
-                @include font-medium;
+                @include font-small;
                 vertical-align: middle;
                 &:after {
                     display: inline-block;
@@ -517,30 +516,31 @@
             }
             .review-info {
                 display: inline-block;
-                @include font-medium;
                 font-size: 0;
                 vertical-align: top;
                 .star,
                 .average-rating,
                 .review-count {
                     display: inline-block;
-                    font-size: 16px;
-                    line-height: 26px;
+                    @include font-small;
                     vertical-align: middle;
                 }
                 .star {
-                    width: 91px;
-                    height: 26px;
-                    margin-right: 5px;
+                    width: 80px;
+                    height: 24px;
+                    margin-right: 4px;
                     background: url("/lg5-common/images/KRP0008/icon-review.svg") no-repeat 0 center;
                     vertical-align: bottom;
                 }
             }
             @include mobile {
                 position: relative;
+                .flag-wrap.bar-type .flag {
+                    font-size: 11px;
+                }
                 .product-name {
                     position: static;
-                    margin-top: 8px;
+                    margin-bottom: 6px;
                     .name {
                         font-size: 24px;
                         line-height: 33px;
@@ -551,23 +551,12 @@
                     font-size: 14px;
                     line-height: 18px;
                 }
-                //.review-info {
-                //    &:before {
-                //        margin: 0 10px;
-                //    }
-                //    .star,
-                //    .average-rating,
-                //    .review-count {
-                //        font-size: 14px;
-                //        line-height: 18px;
-                //    }
-                //}
             }
         }
         .product-detail-option {
             .sibling-option {
                 margin-bottom: 24px;
-                padding: 32px 24px 24px;
+                padding: 32px 0 24px;
                 border-bottom: 1px solid $color-border;
                 > [class*="sibling-"] {
                     display: flex;
@@ -590,8 +579,9 @@
                     .text {
                         flex: none;
                         display: block;
-                        width: 116px;
+                        width: 104px;
                         padding-top: 8px;
+                        padding-right: 24px;
                         @include font-small;
                     }
                     &:first-child {
@@ -599,11 +589,14 @@
                     }
                 }
                 @include mobile {
-                    padding: 32px 16px 24px;
+                    padding-bottom: 40px;
                     > [class*="sibling-"] {
+                        flex-direction: column;
                         justify-content: left;
                         .text {
-                            width: 74px;
+                            width: auto;
+                            margin-bottom: 12px;
+                            padding-right: 0;
                         }
                     }
                 }
@@ -651,7 +644,7 @@
                         }
                         .color-text {
                             margin-top: 8px;
-                            @include font-small;
+                            @include font-x-small;
                         }
                     }
                     &.select {
@@ -664,9 +657,14 @@
                             margin-bottom: 4px;
                             input {
                                 & + label {
-                                    width: 67px;
-                                    padding: 5px 0;
+                                    width: auto;
+                                    min-width: 60px;
+                                    padding: 3px 8px;
+                                    @include font($font-small,26px);
                                     color: $color-gray-1;
+                                    @include mobile {
+                                        min-width: 55px;
+                                    }
                                 }
                                 &:checked {
                                     & + label {
@@ -781,6 +779,9 @@
                     .head {
                         position: relative;
                         padding-top: 24px;
+                        .price-info {
+                            padding-right: 28px;
+                        }
                         .accord-text {
                             @include font-small;
                         }
@@ -890,9 +891,6 @@
                             top: 12px;
                         }
                     }
-                    .price-info {
-                        padding-right: 28px;
-                    }
                 }
                 &.care-solution-payment-info {
                     margin-top: 24px;
@@ -915,7 +913,7 @@
                 .desc {
                     margin-top: 12px;
                     padding-right: 28px;
-                    @include font-small;
+                    @include font-x-small;
                     word-break: keep-all;
                 }
                 .btn-area {
@@ -1768,7 +1766,7 @@
         }
         &.discount {
             .price {
-                font-weight: 400;
+                font-weight: 500;
                 color: $color-primary;
             }
         }

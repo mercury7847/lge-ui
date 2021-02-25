@@ -507,7 +507,8 @@
             sendOrderNumber: orderNumber,
             sendUserName: memInfos.sendUserName,
             sendUserEmail: memInfos.sendUserEmail,
-            sendPhoneNumber: memInfos.sendPhoneNumber
+            sendPhoneNumber: memInfos.sendPhoneNumber,
+            purPathCode: vcui.detect.isMobile ? 3 : 2
         }
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 
