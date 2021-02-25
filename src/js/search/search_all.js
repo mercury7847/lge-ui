@@ -799,7 +799,6 @@
                             }
                         });
                         $resultListWrap.show();
-                        console.log('nodata false',arr,arr.length);
                         noData = false;
                     } else {
                         $resultListWrap.hide();
@@ -809,7 +808,6 @@
                     self.curationLayer.setCurationData(data);
 
                     //noData 체크
-                    console.log('resuklt',noData);
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
@@ -829,7 +827,6 @@
                             self.$resultListNoData.hide();
                         }
                         self.$resultListNoData.show();
-                        console.log(self.$searchNotResult);
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
