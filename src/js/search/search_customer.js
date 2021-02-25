@@ -612,8 +612,9 @@
                     arr = self.checkArrayData(data.customer);
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
-                    if(data.subcount) {
-                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
+                    var subcount = data.customer.subcount;
+                    if(subcount) {
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
                     }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');

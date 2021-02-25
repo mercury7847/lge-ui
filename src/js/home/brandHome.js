@@ -89,8 +89,8 @@
         
         
         var $window   = $(window);
-        var $contentWrap = $('.thinq-wrap');        
-        var aniSpeed = 800;
+        var $contentWrap = $('.thinq-wrap');   
+        var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -250,14 +250,17 @@
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && touchSy - data.y < -80){
-                            wheelScene(-1, true);
+                            wheelScene(-1);
+                            console.log('up');
                         }
                     }, 100);
                 }else{
                     if (touchSy - data.y > 80) {
                         wheelScene(1);
+                        console.log('down');
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
+                        console.log('up');
                     }
                 }    
                 

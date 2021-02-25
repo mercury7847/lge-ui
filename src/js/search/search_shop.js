@@ -577,8 +577,9 @@
                     arr = self.checkArrayData(data.shop);
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
-                    if(data.subcount) {
-                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
+                    var subcount = data.shop.subcount;
+                    if(subcount) {
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
                     }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');

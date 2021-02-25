@@ -5,6 +5,29 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     var YoutubeBox = core.ui('youtubeBox', {
         bindjQuery: true,
         defaults: {
+            videoTitle : null, //'Simplicity &amp; LG SIGNATURE',
+            videoInfo : null, //'단순함이 궁극의 세련미를 만듭니다.<br>가전, 작품이 되다',
+            linkClass:'.see-video',
+            modalTitleTemplate:                 
+                '<div id="{{videoId}}" class="video-modal video-box-closeset animation">'+
+                '   <div class="modal-video-asset">'+
+                '       <div class="video-asset animation-box">'+
+                '           <div class="video-box">'+
+                '               <video controls {{params}}>'+
+                '                   <source src="{{video_url}}" type="video/mp4">'+
+                '               </video>'+
+                // '               <div class="video-controller">'+
+                // '                   <button type="button" class="btn-video"><span class="blind">영상 재생</span></button>'+
+                // '               </div>'+
+                '           </div>'+
+                '           <div class="video-info">'+
+                '                <span class="title">{{#raw video_title}}</span>'+
+                '                <p class="body-copy">{{#raw video_info}}</p>'+
+                '            </div>'+
+                '       </div>'+
+                '   </div>'+
+                '   <button class="close-video">동영상 닫기</button>'+
+                '</div>',
             modalTemplate:                 
                 '<div class="video-modal video-box-closeset youtube">'+
                 '   <div class="modal-video-asset">'+
@@ -46,9 +69,10 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _bindEvent: function(){
             var self = this;
 
-            self.$el.find(".see-video").on('click', function(e){
-                e.preventDefault();
+            var linkClass = self.options.linkClass;
 
+            self.$el.find(linkClass).on('click', function(e){
+                e.preventDefault();
                 self._addVideo($(this));
             });
         },
@@ -64,25 +88,27 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             var params = "";
             var urlsplit = video_url.split("?");
             var isMp4 = urlsplit[0].indexOf(".mp4");
-            console.log("isMp4:", isMp4)
+            // console.log("isMp4:", isMp4)
             if(isMp4 < 0){
                 videoType = "youtube";
             } else{
                 videoType = "mp4";
                 params = urlsplit.length > 1 ? urlsplit[1].split("&").join(" ") : "";
             }
-            console.log("videoType:",videoType);
-            console.log("video_url:",urlsplit[0]);                
-            console.log("params:",params);
+            // console.log("videoType:",videoType);
+            // console.log("video_url:",urlsplit[0]);                
+            // console.log("params:",params);
 
+            var videoTitle = self.options.videoTitle;
+            var videoInfo = self.options.videoInfo;
+            var videoId = vcui.getUniqId(8);
 
-            videoTemplate = isModal ? self.options.modalTemplate : self.options.layerTemplate;
-            videoLayer = vcui.template(videoTemplate, {videoType: videoType, video_url:urlsplit[0], params:params});
+            videoTemplate = isModal ? (videoTitle? self.options.modalTitleTemplate:self.options.modalTemplate) : self.options.layerTemplate;
+            videoLayer = vcui.template(videoTemplate, {videoId:videoId, videoType: videoType, video_title:videoTitle, video_info:videoInfo, video_url:urlsplit[0], params:params});
 
             self.$videoLayer = $(videoLayer).get(0);
             $(self.$videoLayer).find(".close-video").on('click', function(e){
                 e.preventDefault();
-
                 self._removeVideoLayer(e);
             });
 
@@ -97,6 +123,25 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 self.$baseVideo = $(baseVideos[0]).detach();
                 self.baseIsModal = isModal;
             }
+
+            /*
+            // play
+            $(document).on('click', '#'+videoId+' .video-controller .btn-video', function(e){                
+                var $video = $('#'+videoId).find('video');
+                if($video[0]) {
+                    $video[0].play();
+                }
+            });
+
+            // pause 
+            $(document).on('click', '#'+videoId+' .video-controller .btn-pause', function(e){                
+                var $video = $('#'+videoId).find('video');
+                if($video[0]) {
+                    $video[0].pause();
+                }
+            });
+            */
+
         },
 
         _removeVideoLayer: function(e){
