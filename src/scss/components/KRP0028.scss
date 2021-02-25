@@ -36,12 +36,14 @@
         }
     }
 
-    .page-header.border.wide {
+    .page-header.wide {
+        margin-bottom:48px;
         .tabs-wrap {
             text-align:left;
             &.border-type {
-                max-width:calc(1380px + 80px);
-                padding:0 40px;
+                max-width:1380px;
+                margin:0 auto;
+                // padding:0 40px;
                 @include mobile {
                     padding:0;
                 }
@@ -57,7 +59,7 @@
             .tabs-wrap.bar-type {
                 max-width:calc(1380px + 80px);
                 .tabs {
-                    padding:16px 0 8px;
+                    padding:16px 0;
                     @include mobile {
                         padding:16px;
                     }
@@ -88,7 +90,7 @@
     }
 
     .award-breakdown-wrap {
-        max-width: calc(1146px + 80px);
+        max-width:1380px + 80px;
         margin: 0 auto;
         padding: 0 40px;
         @include mobile {

@@ -9,8 +9,7 @@
         .tabs-wrap {
             text-align:left;
             &.border-type {
-                max-width:calc(1380px + 80px);
-                padding:0 40px;
+                max-width:1380px;
                 @include mobile {
                     padding:0;
                 }
@@ -20,7 +19,7 @@
             .tabs-wrap.bar-type {
                 max-width:calc(1380px + 80px);
                 .tabs {
-                    padding:16px 0 8px;
+                    padding:16px 0;
                     @include mobile {
                         padding:16px;
                     }

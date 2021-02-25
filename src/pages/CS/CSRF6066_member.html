@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="conts">
                                                 <div class="input-wrap search">
-                                                    <input type="text" name="modelCode" id="modelCode" placeholder="모델명 전부 입력" data-error-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." data-pattern-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." maxlength="20" data-required="true" required >
+                                                    <input type="text" name="modelCode" id="modelCode" placeholder="모델명 전부 입력" data-format="alnum"  data-error-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." data-pattern-msg="3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다." maxlength="20" data-required="true" required >
                                                     <button type="button" class="btn-search"><span class="blind">검색</span></button>
                                                 </div>
                                                 <div class="btm-more err-block">
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="conts">
                                                 <div class="input-wrap search">
-                                                    <input type="text" name="serialNumber" id="serialNumber" placeholder="제조번호 입력" data-error-msg="올바른 제조번호를 입력해 주세요." data-pattern-msg="올바른 제조번호를 입력해 주세요." data-required="true" maxlength="12" disabled required>
+                                                    <input type="text" name="serialNumber" id="serialNumber" placeholder="제조번호 입력" data-format="alnum"  data-error-msg="올바른 제조번호를 입력해 주세요." data-pattern-msg="올바른 제조번호를 입력해 주세요." data-required="true" maxlength="12" readonly required>
                                                     <button type="button" class="btn-search" disabled><span class="blind">검색</span></button>
                                                 </div>
                                                 @@include('./common/modules/bullet-list.html', {

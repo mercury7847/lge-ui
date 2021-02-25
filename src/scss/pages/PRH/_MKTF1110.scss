@@ -60,6 +60,11 @@
             }
         }
         &[class*="02"] {
+            .image {
+                &.blur {
+                    transition: opacity 0.3s ease-in-out;
+                }
+            }
             .content {
                 position: absolute;
                 bottom: 140px;
@@ -71,13 +76,16 @@
                     right: 160px;
                     margin-right: 0;
                 }
+                
                 .cont1 {
+                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     font-weight: 700;
                     font-size: 56px;
                     line-height: 72px;
                     color: #000;
                 }
                 .cont2 {
+                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     margin-top: 24px;
                     font-weight: 700;
                     font-size: $font-large-1;
@@ -108,8 +116,46 @@
                     }
                 }
             }
+            &.active{
+                .image {
+                    &.blur {
+                        opacity: 0;
+                    }
+                }
+                .cont1{
+                    opacity: 0;
+                    transform:translateY(100px);
+
+                }
+                .cont2{
+                    opacity: 0;
+                    transform:translateY(150px);                    
+                }
+            }
+            &.on{
+                .image {
+                    &.blur {
+                        opacity: 1;
+                    }
+                }
+                .cont1{
+                    opacity: 1;
+                    transform:translateY(0px);
+
+                }
+                .cont2{
+                    opacity: 1;
+                    transform:translateY(0px);
+
+                }
+            }
         }
         &[class*="03"] {
+            .image {
+                &.blur {
+                    transition: opacity 0.3s ease-in-out;
+                }
+            }
             .content {
                 position: absolute;
                 top: 140px;
@@ -122,11 +168,13 @@
                     margin-left: 0;
                 }
                 .cont1 {
+                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     font-weight: 700;
                     font-size: 56px;
                     line-height: 72px;
                 }
                 .cont2 {
+                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     margin-top: 24px;
                     font-weight: 700;
                     @include font(20px,30px);
@@ -153,6 +201,39 @@
                             }
                         }
                     }
+                }                
+            }
+            &.active{
+                .image {
+                    &.blur {
+                        opacity: 0;
+                    }
+                }
+                .cont1{
+                    opacity: 0;
+                    transform:translateY(100px);
+
+                }
+                .cont2{
+                    opacity: 0;
+                    transform:translateY(150px);                    
+                }
+            }
+            &.on{
+                .image {
+                    &.blur {
+                        opacity: 1;
+                    }
+                }
+                .cont1{
+                    opacity: 1;
+                    transform:translateY(0px);
+
+                }
+                .cont2{
+                    opacity: 1;
+                    transform:translateY(0px);
+
                 }
             }
         }
@@ -720,10 +801,10 @@
                 width: 100%;
                 padding: 0 22.083vw;
                 .screen {
-                    width: 43.067vw;
-                    height: 84.672vw;
-                    top: 5.161vw;
-                    left: 1.994vw;
+                    width: 45.767vw;
+                    height: 90.372vw;
+                    top: 5.361vw;
+                    left: 2.094vw;
                 }
             }
             .text-area {

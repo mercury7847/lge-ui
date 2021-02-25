@@ -68,11 +68,18 @@
                 modelCode: {
                     required: true,
                     pattern : /^[A-Za-z0-9+]*$/,
-                    msgTarget: '.err-block'
+                    maxLength: 20,
+                    msgTarget: '.err-block',
+                    errorMsg: '모델명 입력 후 검색 버튼을 선택하여 주세요.',
+                    patternMsg: '3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다.'
                 },
                 serialNumber: {
                     required: true,
-                    msgTarget: '.err-block'
+                    pattern : /^[A-Za-z0-9+]*$/,
+                    maxLength:12,
+                    msgTarget: '.err-block',
+                    errorMsg: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
+                    patternMsg: '올바른 제조번호를 입력해 주세요.'
                 },
                 userName: {
                     required: true,
@@ -197,13 +204,18 @@
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
-                            $('#serialNumber').prop('disabled', false);
+                            $('#serialNumber').prop('readonly', false);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', false);
                         } else {
-                            $('#serialNumber').prop('disabled', true);
+                            $('#serialNumber').prop('readonly', true);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', true);
                             $('#modelCode').val('');
-                            validation.validate(['modelCode']);
+                            
+                            if (data.resultMessage) {
+                                lgkorUI.alert('', {
+                                    title: data.resultMessage
+                                });
+                            }
                         }
                         lgkorUI.hideLoading();
                     });
