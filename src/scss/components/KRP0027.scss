@@ -17,13 +17,28 @@
     }
     .page-header.border.wide {
         .tabs-wrap.border-type {
+            max-width:calc(1380px + 80px);
             padding:0 40px;
             @include mobile {
-                padding-bottom:12px;
+                padding:0;
             }
         }
         .title + .tabs-wrap {
             padding-top:80px;
+            @include mobile {
+                padding-top:60px;
+            }
+        }
+        .tabs-bg {
+            .tabs-wrap.bar-type {
+                max-width:calc(1380px + 80px);
+                .tabs {
+                    padding:16px 0 8px;
+                    @include mobile {
+                        padding:16px;
+                    }
+                }
+            }
         }
     }
     .cont-wrap {
@@ -184,8 +199,10 @@
                 }
                 .thumb {
                     display: inline-block;
-                    width: 119px;
+                    width: 120px;
                     height: 68px;
+                    border-radius:4px;
+                    overflow:hidden;
                     @include mobile {
                         width: 100%;
                         height: auto;
@@ -211,7 +228,8 @@
                         @include mobile {
                             max-height: 52px;
                             padding-left: 0;
-                            @include font-large;
+                            @include font-medium;
+                            font-weight:700;
                         }
 
                     }
