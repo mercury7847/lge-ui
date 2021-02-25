@@ -150,6 +150,17 @@
                 img {
                     max-width:100%;
                 }
+                // .hiddenN {
+                //     @include blind;
+                // }
+                // > div {
+                //     width: auto !important;
+                //     text-align: center;
+                //     img {
+                //         width: auto !important;
+                //         max-width: 100%;
+                //     }
+                // }
             }
             @include mobile {
                 padding:40px 0 60px;
