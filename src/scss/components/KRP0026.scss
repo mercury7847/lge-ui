@@ -4,12 +4,18 @@
 
 
 .KRP0026 {
-    .page-header {
+    .page-header.wide {
+        padding:10px 0 8px;
+        margin-bottom:48px;
         text-align:left;
+        @include mobile {
+            margin-bottom:32px;
+        }
         .tabs-wrap {
             text-align:left;
             &.border-type {
                 max-width:1380px;
+                margin:0 auto;
                 @include mobile {
                     padding:0;
                 }
@@ -18,6 +24,7 @@
         .tabs-bg {
             .tabs-wrap.bar-type {
                 max-width:calc(1380px + 80px);
+                margin:0 auto;
                 .tabs {
                     padding:16px 0;
                     @include mobile {
