@@ -365,11 +365,13 @@
     .my-management {
         > ul {
             @include clearfix;
+            display: flex;
+            flex-wrap: wrap;
             margin: -12px;
             > li {
-                float: left;
                 width: 50%;
                 padding: 12px;
+                //min-height: 335px;
             }
             @include tablet {
                 margin: 0;
@@ -390,8 +392,15 @@
                 }
             }
         }
+        .no-data {
+            padding: 48px 0 16px;
+            font-weight: 700;
+            @include font-medium;
+            color: $color-gray-5;
+        }
     }
     .shadow-box {
+        height: 100%;
         padding: 32px 48px 48px;
         border-radius: 8px;
         background-color: $color-bg-wt;
@@ -430,14 +439,14 @@
                 text-align: right;
             }
         }
-        &.care-info,
-        &.like-info,
-        &.recent-info {
-            .box-title {
-                padding-bottom: 0;
-                border-bottom: 0;
-            }
-        }
+        //&.care-info,
+        //&.like-info,
+        //&.recent-info {
+        //    .box-title {
+        //        padding-bottom: 0;
+        //        border-bottom: 0;
+        //    }
+        //}
     }
     .board-list {
         > li {
@@ -519,13 +528,23 @@
     }
     .care-info {
         .service-date {
-            margin-top: 32px;
+            position: relative;
+            margin-top: 20px;
             padding: 19px 0;
             border-top: 1px solid $color-border;
             background-color: $color-bg;
             font-weight: 700;
             @include font-large;
             text-align: center;
+            &:before {
+                position: absolute;
+                top: -22px;
+                right: 0;
+                left: 0;
+                height: 12px;
+                background-color: #fff;
+                content: '';
+            }
             em {
                 color: $color-gray-1;
             }
@@ -657,8 +676,23 @@
     }
 
     .my-management.shopping {
+        .like-info,
+        .recent-info {
+            .list-wrap {
+                position: relative;
+                &:before {
+                    position: absolute;
+                    top: -22px;
+                    right: 0;
+                    left: 0;
+                    height: 12px;
+                    background-color: #fff;
+                    content: '';
+                }
+            }
+        }
         .product-items {
-            margin-top: 32px;
+            margin-top: 20px;
             > li {
                 width: 100%;
                 padding-bottom: 8px;
