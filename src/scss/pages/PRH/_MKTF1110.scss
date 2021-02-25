@@ -587,10 +587,10 @@
             &.fixed {
                 position: fixed;
                 top: 0;
-                right: -17px;
+                left: calc(50% - 8px);
                 z-index: 11;
                 @at-root .mac & {
-                    right: 0;
+                    left: 50%;
                 }
             }
             @include mobile {
@@ -1162,13 +1162,13 @@
             }
             .text-area {
                 position: absolute;
-                top: 5.797vw;
-                left: 5.797vw;
+                top: 4.167vw;
+                left: 4.167vw;
                 .tit {
                     display: block;
                     font-weight: 700;
-                    font-size: 3.478vw;
-                    line-height: 4.638vw;
+                    font-size: 2.500vw;
+                    line-height: 3.333vw;
                 }
                 .btn {
                     margin-top: 24px;

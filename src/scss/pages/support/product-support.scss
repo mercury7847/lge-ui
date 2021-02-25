@@ -241,6 +241,23 @@
     // 제품사용설명서 리스트
     .download-list-wrap {
         margin-top:32px;
+        .desc {
+            position:relative;
+            margin-bottom:8px;
+            padding-left:11px;
+            @include font-small;
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:50%;
+                transform:translateY(-50%);
+                width:3px;
+                height:3px;
+                border-radius:50%;
+                background:#000;
+            }
+        }
         .download-list {
             margin:-16px -8px 0;
             @include clearfix;
@@ -314,6 +331,9 @@
                     & + .btn {
                         margin-left:8px;
                     }
+                }
+                &:only-child {
+                    margin-left:auto;
                 }
             }
         }
@@ -693,6 +713,9 @@
 
     /* 다운로드 자료실 */
     &.download {
+        .common-banner {
+            display:none;
+        }
     }
     /* 제품해결 */
     &.solutions {
@@ -704,22 +727,22 @@
     &.psp {
         // PSP Header
         .product-header {
-            & + div:not(.guide-wrap) {
-                border-top: 1px solid #ddd;
+            & + .login-guide {
+                margin-top:40px;
             }
             &-inner {
                 display:table;
                 position:relative;
                 width:100%;
-                max-width:1146px + 80px;
+                max-width:1380px + 80px;
                 margin:0 auto;
-                padding:40px 40px 24px;
+                padding:0 40px;
                 font-size:0;
             }
             .visual {
                 display:table-cell;
-                width:210px;
-                height:210px;
+                width:240px;
+                height:240px;
                 vertical-align:middle;
                 .img {
                     width:100%;
@@ -734,7 +757,7 @@
                     font-weight:700;
                 }
                 .desc {
-                    margin-top:2px;
+                    margin-top:8px;
                     @include font-medium;
                 }
                 .link-wrap {
@@ -746,7 +769,7 @@
                         font-size:0;
                         li {
                             display:inline-block;
-                            margin-right:32px;
+                            margin-right:24px;
                             vertical-align:middle;
                             &:last-child {
                                 margin-right:0;
@@ -760,21 +783,21 @@
                 width:1%;
                 text-align:right;
                 vertical-align:middle;
-                .btn {
-                    width:112px;
-                    padding:11px 22px;
-                }
+                white-space:nowrap;
             }
             @include mobile {
+                & + .login-guide {
+                    margin-top:0;
+                }
                 &-inner {
                     display:flex;
                     flex-direction:column;
-                    padding:24px 16px 60px;
+                    padding:32px 16px 40px;
                 }
                 .visual {
                     display:block;
                     width:100%;
-                    margin-top:12px;
+                    margin-top:16px;
                     text-align:center;
                     .img {
                         width:216px;
@@ -793,6 +816,9 @@
                     .tit {
                         padding-right:40px;
                     }
+                    .desc {
+                        margin-bottom:16px;
+                    }
                     .link-wrap {
                         text-align:center;
                         margin:0;
@@ -809,7 +835,10 @@
                             display:none;
                             li {
                                 display:block;
-                                margin:20px 0 0;
+                                margin:16px 0 0;
+                                &:first-child {
+                                    margin-top:0;
+                                }
                             }
                         }
                         &.open {
@@ -822,7 +851,7 @@
                 .btn-wrap {
                     display:block;
                     width:100%;
-                    margin-top:24px;
+                    margin-top:12px;
                     .btn {
                         width:100%;
                     }
@@ -831,53 +860,23 @@
         }
         // PSP floating tab
         .anchors-tabs-wrap {
-            height:86px;
+            margin-top:80px;
+            padding:0 40px;
             background:#fff;
-            .tabs-wrap {
-                display:block;
-                max-width:1146px + 80px;
-                margin:0 auto;
-                padding:24px 40px;
-            }
             &.fixed {
                 border-bottom:1px solid #ddd;
-                height:70px;
-                .tabs-wrap{
-                    &.btn-type{
-                        .tabs{
-                            .active > a{
-                                border-bottom:0;
-                                color:#aaa;
-                            }
-                            .on > a{
-                                border-bottom:4px solid #222;
-                                color:#000;
-                            }
-                        }
-                    }
-                }
+            }
+            .tabs-wrap {
+                max-width:1380px;
+                margin:0 auto;
             }
             @include mobile {
-                height:56px;
-                .tabs-wrap {
-                    padding:10px 0;
-                }
+                margin-top:32px;
+                padding:0;
             }
         }
-        .login-guide {
-            margin-bottom:0;
-        }
-        .cont-wrap {
-            padding:48px 40px 80px;
-            //border-top:8px solid #f4f4f4;
-        }
-        
         @include mobile {
-            border-top:12px solid #f4f4f4;
-            .cont-wrap {
-                padding:0 0 60px;
-                border-top-width:12px;
-            }
+            
         }
     }
 }

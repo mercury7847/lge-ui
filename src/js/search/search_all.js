@@ -1,7 +1,13 @@
 (function() {
+    //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
+    //최근검색어
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
+    //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    //인기검색어
+    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item">' +
@@ -122,7 +128,7 @@
                         '<a href="{{url}}" class="desc add">{{address}}</a>' +
                         '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
-                    '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="보통"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
+                    '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="혼잡"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
@@ -199,7 +205,11 @@
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
+                    } else {
+                        self.requestSearchData("",false);
                     }
+
+                    self.updateBasicData();
                 //});
             },
 
@@ -789,6 +799,7 @@
                             }
                         });
                         $resultListWrap.show();
+                        console.log('nodata false',arr,arr.length);
                         noData = false;
                     } else {
                         $resultListWrap.hide();
@@ -798,10 +809,27 @@
                     self.curationLayer.setCurationData(data);
 
                     //noData 체크
+                    console.log('resuklt',noData);
                     if(noData) {
-                        //self.$tab.hide();
-                        //self.$contWrap.hide();
+                        if(data.noDataList && (data.noDataList instanceof Array)) {
+                            var $list_ul = self.$resultListNoData.find('ul.result-list');
+                            $list_ul.empty();
+                            data.noDataList.forEach(function(item, index) {
+                                item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                                item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                $list_ul.append(vcui.template(productItemTemplate, item));
+                            });
+                            if(data.noDataList.length > 0) {
+                                self.$resultListNoData.show();
+                            } else {
+                                self.$resultListNoData.hide();
+                            }
+                        } else {
+                            self.$resultListNoData.hide();
+                        }
                         self.$resultListNoData.show();
+                        console.log(self.$searchNotResult);
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
@@ -875,6 +903,27 @@
                     //self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
+            },
+            
+            //기초 데이타 갱신
+            updateBasicData:function() {
+                var self = this;
+                var ajaxUrl = self.$contentsSearch.data('basicUrl');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                    var data = result.data;
+                    //인기검색어
+                    var arr = (data.popular && data.popular instanceof Array) ? data.popular : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                        });
+                        self.$popularKeywordList.show();
+                    } else {
+                        self.$popularKeywordList.hide();
+                    }
+                });
             },
         }
 
