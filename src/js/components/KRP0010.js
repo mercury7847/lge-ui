@@ -15,6 +15,6 @@ $(window).ready(function(){
         } else{
             spec.slideUp();
         }
-        $(this).parent().children().hide().eq(idx).show();
+        $(this).parent().children().css('display', 'none').eq(idx).css('display', 'block');
     })
 })
