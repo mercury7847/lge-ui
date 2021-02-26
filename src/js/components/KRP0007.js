@@ -621,7 +621,7 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    if(!vcui.isEmpty(storageCompare[categoryId]))
+                    //if(!vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
                         var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
