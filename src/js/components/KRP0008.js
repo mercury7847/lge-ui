@@ -363,8 +363,14 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                   var checked = $(this).is(':checked');
-                   self.requestCompareItem(sendData, checked, $(this));
+                    var checked = !$(this).hasClass('compare-select');
+                    if(checked) {
+                        $(this).addClass('compare-select');
+                    } else {
+                        $(this).removeClass('compare-select');
+                    }
+                    //$(this).prop('checked',!checked);
+                    self.requestCompareItem(sendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -1350,10 +1356,14 @@
 
             //아이템 비교하기
             requestCompareItem: function(compareData, compare, $dm) {
+                console.log(compareData, compare, $dm);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
-                    if(!isAdd) $dm.prop('checked', false);
+                    if(!isAdd) {
+                        $dm.prop('checked', false);
+                        $dm.removeClass('compare-select');
+                    }
                 } else{
                     lgkorUI.removeCompareProd(categoryId, compareData.id);
                 }
@@ -1373,7 +1383,7 @@
                     }
                 }
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
-            }
+            },
         };
 
     $(window).ready(function(){
