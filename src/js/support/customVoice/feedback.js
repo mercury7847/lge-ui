@@ -146,6 +146,13 @@
                                 if (result.data.resultFlag == 'Y') {
                                     result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                                     self.$form.submit();
+                                } else {
+                                    if (result.data.resultMessage) {
+                                        lgkorUI.alert('', {
+                                            title: result.data.resultMessage,
+                                            okBtnName: '확인'
+                                        });
+                                    }
                                 }
                             })
                         }

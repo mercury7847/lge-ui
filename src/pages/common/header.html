@@ -1772,6 +1772,7 @@
 <!-- // PC / Mobile Default Header -->
 
 <!-- 20210104 모바일 메뉴 돔 이동 -->
+@@if (context.mobileCase === "all" || context.mobileCase === "main") {
 <!-- Mobile 메인 메뉴 -->
 <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
 <div class="mobile-nav-wrap">
@@ -1783,13 +1784,16 @@
         <li><a href="#n" class="nav-item">케어솔루션</a></li>
     </ul>
 </div>
+}
 
+@@if (context.mobileCase === "all" || context.mobileCase === undefined) {
 <!-- Mobile Sub Menu Header -->
 <!-- 210222 수정 [뒤로가기 버튼만 남기고 모두 삭제] -->
 <div class="mobile-nav-wrap">
     <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
 </div>
 <!-- // 20210104 모바일 메뉴 돔 이동 -->
+}
 
 <!-- Breadcrumb -->
 @@include('./common/modules/breadcrumb.html', {
