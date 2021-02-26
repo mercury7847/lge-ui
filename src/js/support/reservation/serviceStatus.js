@@ -89,18 +89,20 @@
                         }
                     }
                 });
+                
+                if( $('#phoneForm').length ) { 
+                    self.authManager = new AuthManager({
+                        elem: {
+                            form: '#phoneForm',
+                            name: '#userName2',
+                            phone: '#phoneNo',
+                            number: '#authNo'
+                        },
+                        register: authRegister
+                    });
     
-                self.authManager = new AuthManager({
-                    elem: {
-                        form: '#phoneForm',
-                        name: '#userName2',
-                        phone: '#phoneNo',
-                        number: '#authNo'
-                    },
-                    register: authRegister
-                });
-
-                self.bindEvent();
+                    self.bindEvent();
+                }
             });
         },
         bindEvent: function() {
@@ -133,11 +135,13 @@
                 }
             });
 
-            $('#phoneForm').find('.btn-confirm').on('click', function() {
-                self.authManager.confirm(this, function(success, result) {
-                    //success && self.complete();
+            if( $('#phoneForm').length ) {
+                $('#phoneForm').find('.btn-confirm').on('click', function() {
+                    self.authManager.confirm(this, function(success, result) {
+                        //success && self.complete();
+                    });
                 });
-            });
+            }
 
             $('.btn-send').on('click', function() {
                 self.authManager.send(this);
