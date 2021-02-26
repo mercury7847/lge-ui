@@ -1009,7 +1009,7 @@
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
 
                 var $paymentAmount = $dm.parents('.payment-amount');
-                var $purchaseButton = $dm.parents('.purchase-button');
+                //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
                     var careData = $paymentAmount.data('careData');
@@ -1035,7 +1035,15 @@
                 } else {*/
                     //구매타입
                     var isRental = false;
-                    var param = {"order_type":"CR"};
+                    var param = {};
+                    if(typeof modelGubun !== 'undefined') {
+                        if(modelGubun == "1") {
+                            param.order_type = "NB";
+                        } else if(modelGubun == "3") {
+                            param.order_type = "SM";
+                        }
+                    }
+                    if(modelGubun)
 
                     //소모품이 있는가
                     var cart = [];
@@ -1046,6 +1054,9 @@
                                 "sku":$(item).data('id'),
                                 "quantity":$(item).data('quantity')
                             });
+                            if(param.order_type == "NB") {
+                                param.order_type = "NS";
+                            }
                         });
                     }
 
