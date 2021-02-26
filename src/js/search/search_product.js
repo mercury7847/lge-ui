@@ -621,7 +621,7 @@
                     }
 
                     //검색한 검색어
-                    self.$searchResultText.html(replaceText + ' 검색 결과');
+                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과');
 
                     //원래입력된 기존 검색어 이동
                     var inputValue = param.inputValue;
