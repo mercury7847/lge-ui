@@ -585,7 +585,7 @@
                     arr = self.checkArrayData(data.story);
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
-                    var subcount = data.story.subcount;
+                    var subcount = data.story.subcount ? data.story.subcount : 0;
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
                     }
