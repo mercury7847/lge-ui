@@ -186,6 +186,13 @@ var FilterLayer = (function() {
                     var searchIn = $input.val();
                     $input.attr('data-searchvalue', searchIn);
                     self.triggerFilterChangeEvent();
+                    self.$layFilter.removeClass('open');
+                });
+
+                listSortingSearchin.siblings('input').keydown(function(key) {
+                    if (key.keyCode == 13) {
+                        listSortingSearchin.trigger('click');
+                    }
                 });
             }
 
@@ -201,6 +208,13 @@ var FilterLayer = (function() {
                         $listInput.attr('data-searchvalue', searchIn);
                     }
                     self.triggerFilterChangeEvent();
+                    self.$layFilter.removeClass('open');
+                });
+
+                filterSearchin.siblings('input').keydown(function(key) {
+                    if (key.keyCode == 13) {
+                        filterSearchin.trigger('click');
+                    }
                 });
             }
 

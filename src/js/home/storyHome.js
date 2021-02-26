@@ -167,11 +167,9 @@
     }
 
     function setTagMngINIT(){
-        // for(var idx in tagMngChkList){
-        //     $('#popup-tagMnger').find('input[id=' + tagMngChkList[idx].id + ']').prop("checked", tagMngChkList[idx].chk);
-        // }
-
-        $('#popup-tagMnger').find('input[type=checkbox]').prop('checked', false);
+        for(var idx in tagMngChkList){
+            $('#popup-tagMnger').find('input[id=' + tagMngChkList[idx].id + ']').prop("checked", tagMngChkList[idx].chk);
+        }
 
         $('#popup-tagMnger').find('.btn-group button').prop('disabled', true);
         setTagMngCount(0);
@@ -180,9 +178,10 @@
     function setTagMngOK(ajaxurl){
         lgkorUI.showLoading();
 
-        var sendata = {}
+        var sendata = {tag:[]}
         $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
             var id = $(item).attr('id');
+            sendata.tag.push(id);
         });
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
@@ -206,12 +205,17 @@
     }
 
     function requestTagMngPop(dm){
-        var ajaxUrl = $(dm).attr('href');
-        lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-            $('#popup-tagMnger').empty().html(result).vcModal();
-
-            //addTagMngInitData();
-        }, null, "html");
+        var href = $(dm).attr('href');
+        var isLogin = $(dm).data('isLogin');
+        if(isLogin == "Y"){
+            lgkorUI.requestAjaxData(href, null, function(result){
+                $('#popup-tagMnger').empty().html(result).vcModal();
+    
+                addTagMngInitData();
+            }, null, "html");
+        } else{
+            location.href = href;
+        }
     }
 
     function sendTagList(item){
