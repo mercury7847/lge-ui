@@ -89,6 +89,18 @@
 
     &.btn-type {
         text-align:center; /*2021-01-04 edit*/
+        &:before {
+            position: absolute;
+            bottom: 1px !important;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: $color-border;
+            content: '';
+            @include mobile {
+                bottom:-1px !important;
+            }
+        }
         .tabs {
             display:inline-block;
             font-size:0;
