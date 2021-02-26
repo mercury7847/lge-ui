@@ -669,9 +669,11 @@
                     arr = self.checkArrayData(data.product);
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
-                    var subcount = data.product.subcount;
+                    var subcount = data.product.subcount ? data.product.subcount : 0;
                     if(subcount) {
-                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
+                    } else {
+                        self.$searchResult.find('p.list-count').hide();
                     }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
