@@ -410,6 +410,10 @@
                 return item ? (item.count ? item.count : 0) : 0;
             },
 
+            checkSubCountData:function(item) {
+                return item ? (item.subcount ? item.subcount : 0) : 0;
+            },
+
             checkArrayData:function(item) {
                 return item ? (item.data instanceof Array ? item.data : []) : [];
             },
@@ -588,9 +592,11 @@
                     arr = self.checkArrayData(data.additional);
                     count = self.checkCountData(data.additional);
                     self.setTabCount(4, count);
-                    var subcount = data.additional.subcount;
+                    var subcount = self.checkSubCountData(data.additional);
                     if(subcount) {
-                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
+                    } else {
+                        self.$searchResult.find('p.list-count').hide();
                     }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');

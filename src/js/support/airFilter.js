@@ -53,6 +53,8 @@
             
             self.$authPopup = $('#certificationPopup');
             self.isLogin = lgkorUI.isLogin;
+            self.isModelCheck = false;
+            self.isSerialCheck = false;
 
             self.modelCheckUrl = self.$stepModel.data('modelCheckUrl');
             self.serialCheckUrl = self.$stepModel.data('serialCheckUrl');
@@ -191,6 +193,14 @@
         bindEvent: function() {
             var self = this;
 
+            $('#modelCode').on('input', function() {
+                self.isModelCheck = false;
+                self.isSerialCheck = false;
+            });
+            $('#serialNumber').on('input', function() {
+                self.isSerialCheck = false;
+            });
+
             $('#modelCode').siblings('.btn-search').on('click', function() {
                 var param = {
                     productFamily: $('#productFamily').val(),
@@ -206,11 +216,15 @@
                         if (data.resultFlag == 'Y') {
                             $('#serialNumber').prop('readonly', false);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', false);
+                            self.isModelCheck = true;
                         } else {
                             $('#serialNumber').prop('readonly', true);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', true);
                             $('#modelCode').val('');
                             
+                            self.isModelCheck = false;
+                            self.isSerialCheck = false;
+
                             if (data.resultMessage) {
                                 lgkorUI.alert('', {
                                     title: data.resultMessage
@@ -256,6 +270,9 @@
                                     });
                                 }
                             }
+                            self.isSerialCheck = false;
+                        } else {
+                            self.isSerialCheck = true;
                         }
                         lgkorUI.hideLoading();
                     });
@@ -280,6 +297,24 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
+                    if (!self.isModelCheck) {
+                        lgkorUI.alert('', {
+                            title: '모델명 후 검색 버튼을 선택하여 주세요.',
+                            ok: function() {
+                                $('#modelCode').focus();
+                            }
+                        });
+                        return false;
+                    } else if (!self.isSerialCheck) {
+                        lgkorUI.alert('', {
+                            title: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
+                            ok: function() {
+                                $('#serialNumber').focus();
+                            }
+                        });
+                        return false;
+                    }
+
                     lgkorUI.confirm('', {
                         title:'공기청정 필터 신청을 접수하시겠습니까?',
                         okBtnName: '확인',

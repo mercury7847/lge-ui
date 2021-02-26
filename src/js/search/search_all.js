@@ -503,6 +503,10 @@
                 return item ? (item.count ? item.count : 0) : 0;
             },
 
+            checkSubCountData:function(item) {
+                return item ? (item.subcount ? item.subcount : 0) : 0;
+            },
+
             checkArrayData:function(item) {
                 return item ? (item.data instanceof Array ? item.data : []) : [];
             },
