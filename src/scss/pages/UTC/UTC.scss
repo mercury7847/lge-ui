@@ -143,14 +143,14 @@
                 .total {
                     display: inline-block;
                     font-weight: 700;
-                    @include font-large-1;
+                    @include font-medium;
                 }
             }
             .btn-info {
                 display: inline-block;
                 width:24px;
                 height:24px;
-                margin:0 0 3px 4px;
+                margin-left:4px;
                 background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
                 vertical-align:bottom;
             }

@@ -191,11 +191,10 @@
         position: absolute;
         top: 6px;
         right: 0;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         margin-left: 4px;
-        background: url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
-        background-size: 14px 14px;
+        background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat 0 0;
     }
 
     @include mobile {

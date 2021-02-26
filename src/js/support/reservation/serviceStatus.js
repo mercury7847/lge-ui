@@ -101,8 +101,8 @@
                         register: authRegister
                     });
     
-                    self.bindEvent();
                 }
+                self.bindEvent();
             });
         },
         bindEvent: function() {
@@ -135,13 +135,11 @@
                 }
             });
 
-            if( $('#phoneForm').length ) {
-                $('#phoneForm').find('.btn-confirm').on('click', function() {
-                    self.authManager.confirm(this, function(success, result) {
-                        //success && self.complete();
-                    });
+            $('#phoneForm').find('.btn-confirm').on('click', function() {
+                self.authManager.confirm(this, function(success, result) {
+                    //success && self.complete();
                 });
-            }
+            });
 
             $('.btn-send').on('click', function() {
                 self.authManager.send(this);
