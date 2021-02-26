@@ -384,7 +384,7 @@
     }
     
     @include mobile {
-        padding:40px 16px 0;
+        padding:0 16px;
     }
     // 키워드 검색
     .keyword-box {
@@ -568,8 +568,13 @@
                             bottom:12px;
                         }
                         .category {
-                            position:relative;
-                            padding:20px 16px 40px;
+                            > a {
+                                padding:20px 16px 40px;
+                                &:after {
+                                    right:12px;
+                                    bottom:12px;
+                                }
+                            }
                             p {
                                 margin-bottom:24px;
                                 font-size:16px;
@@ -577,10 +582,6 @@
                             }
                             .category-thumb {
                                 max-width:120px;
-                            }
-                            .btn-open {
-                                right:12px;
-                                bottom:12px;
                             }
                         }
                         .sub-category {
@@ -761,7 +762,8 @@
                     .tit {
                         padding-bottom:6px;
                     }
-                    .cont {
+                    .conts {
+                        margin:0;
                         .select-wrap {
                             width:calc(50% - 6px);
                         }
