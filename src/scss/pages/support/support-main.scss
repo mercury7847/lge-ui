@@ -558,6 +558,13 @@
                         text-align: center;
                         border:1px solid #fff;
                         border-radius:30px;
+                        transition:.6s color, .6s background-color;
+
+                        &:hover {
+                            color:#000;
+                            background: #fff;
+                        }
+                        
                     }
                 }
             }
@@ -2616,6 +2623,12 @@
         box-sizing: border-box;
         background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
 
+
+        .support-toggle-list-wrap {
+            .support-list ul > li a:hover {
+                color:#8d71ec;
+            } 
+        }
 
         @include pc-size-m {
             height:480px
