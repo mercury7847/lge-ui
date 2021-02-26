@@ -45,10 +45,10 @@
         '           <div class="opt-info">'+
         '           {{#if siblingColors.length > 0}}'+
         '               <dl {{#if siblingColors.length == 1}}class="disabled"{{/if}}>'+
-        '                   <dt>색상</dt>'+
+        '                   <dt>{{siblingTypeName}}</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="{{siblingTypeName}} 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingColors}}'+
         '                               <option data-model-id="{{item.modelId}}"'+
                                                     ' data-group-id="{{item.siblingGroupCode}}"'+
@@ -586,7 +586,7 @@
 
         var sendata = {
             tabID: getTabID(),
-            modelID: optdata.siblingColors.modelId,
+            modelID: _currentItemList[idx]['modelId'],
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
             feeCd: optdata['siblingFee'].value,
             usePeriodCd: optdata['siblingUsePeriod'].value,
@@ -700,7 +700,7 @@
         var itemList = _putItemList.concat();
         itemList.unshift({
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
-            modelId: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.modelId : _currentItemList[idx]['modelId'],
+            modelId: _currentItemList[idx]['modelId'],
             siblingCd: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.value : "",
             siblingGroupCd: optionData.optdata.siblingColors ? optionData.optdata.siblingColors.groupId : ""
         });
