@@ -259,12 +259,24 @@
                     self.requestSearchInput(searchVal);
                 });
 
+                self.$inputSearch.keydown(function(key) {
+                    if (key.keyCode == 13) {
+                        self.$buttonSearch.trigger('click');
+                    }
+                });
+
                 self.$buttonSearchFixed.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
                     self.requestSearchInput(searchVal);
                 });
 
+                self.$inputSearchFixed.keydown(function(key) {
+                    if (key.keyCode == 13) {
+                        self.$buttonSearchFixed.trigger('click');
+                    }
+                });
+                
                 //검색 타이머
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(self.searchTimer);
