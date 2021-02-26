@@ -724,6 +724,14 @@
                     if(cardSale) {
                         cardData.cardSale = cardSale;
                     }
+                    var cardSubName = $this.data('cardSubName');
+                    if(cardSubName) {
+                        cardData.cardSubName = cardSubName;
+                    }
+                    var simpleReqFlag = $this.data('simpleReqFlag');
+                    if(simpleReqFlag) {
+                        cardData.simpleReqFlag = simpleReqFlag;
+                    }
 
                     var isRental = false;
                     var $careshipService = $this.parents('.careship-service');
@@ -792,6 +800,8 @@
                     "listItem":[
                         {
                             "cardNameCode":null,
+                            "simpleReqFlag":null,
+                            "cardSubName":null,
                             "title":"이용시 최대 " + vcui.number.addComma(max) + "원 할인",
                             "maxSalePrice":0
                         }
@@ -823,7 +833,7 @@
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
                     var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
                     cardData.forEach(function(obj, idx) {
                         if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
@@ -996,10 +1006,11 @@
             //구매진행
             productBuy: function($dm) {
                 var self = this;
-                var param = JSON.parse(JSON.stringify(sendData));
+                var tempSendData = JSON.parse(JSON.stringify(sendData));
+
                 var $paymentAmount = $dm.parents('.payment-amount');
                 var $purchaseButton = $dm.parents('.purchase-button');
-                if($purchaseButton.hasClass('rental')) {
+                /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
                     var careData = $paymentAmount.data('careData');
                     if(careData) {
@@ -1015,32 +1026,35 @@
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                    console.log("rental",ajaxUrl,param);
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                             //console.log(result);
                         });
                     }
-                } else {
+                } else {*/
                     //구매타입
+                    var isRental = false;
+                    var param = {"order_type":"CR"};
 
                     //소모품이 있는가
+                    var cart = [];
                     var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
                     if($additionalPurchase.length > 0) {
-                        var additional = [];
                         $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
-                            additional.push({
-                                "id":$(item).data('id'),
+                            cart.push({
+                                "sku":$(item).data('id'),
                                 "quantity":$(item).data('quantity')
-                            })
-                        })
-                        param.additional = additional;
+                            });
+                        });
                     }
 
                     //케어십 선택
+                    //오더타입 교체할것
                     var $careshipService = $paymentAmount.siblings('.careship-service');
                     var checkinput = $careshipService.find('input[type=radio]:checked');
                     if(checkinput.length > 0) {
-                        param.careship = checkinput.val();
+                        isRental = lgkorUI.stringToBool(checkinput.val());
                     } else {
                         var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
                         //케어쉽필수 제품인지 체크해서 알림창 뛰움
@@ -1054,26 +1068,74 @@
                     //선택 수량
                     var quantity = $paymentAmount.find('div.select-quantity input.quantity');
                     if(quantity.length > 0) {
-                        param.quantity = quantity.val();
+                        cart.push({
+                            "sku":tempSendData.sku,
+                            "quantity":quantity.val()
+                        });
                     }
 
+                    //렌탈타입
+                    var careData = $paymentAmount.data('careData');
+                    if(careData) {
+                        param.rtModelSeq = careData.rtModelSeq;
+                    }
+
+                    var cardData = $paymentAmount.data('cardData');
+                    if(cardData) {
+                        if(lgkorUI.stringToBool(cardData.simpleReqFlag)) {
+                            //간편신청카드
+                            param.easyRequestCard = cardData.cardNameCode + "|" + cardData.cardSubName;
+                        }
+                    }
+
+                    /*
+                    //선택된 케어쉽
                     var careData = $paymentAmount.data('careData');
                     if(careData) {
                         param.rtModelSeq = careData.rtModelSeq;
                         param.caresolutionSalesCodeSuffix = careData.caresolutionSalesCodeSuffix;
                     }
+                    //선택된 카드
                     var cardData = $paymentAmount.data('cardData');
                     if(cardData && cardData.cardNameCode) {
+                        console.log(cardData);
                         param.cardNameCode = cardData.cardNameCode;
                     }
+                    */
+                    if(cart.length > 0) {
+                        var cart_items = [];
+                        cart.forEach(function(obj,idx){
+                            cart_items.push({"data":obj});
+                        });
+                        param.cart_items = cart_items;
+                    }
 
-                    var ajaxUrl = $dm.data('ajaxUrl');
+                    var ajaxUrl;
+                    if(isRental) {
+                        ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                        var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                        console.log("!!!!!rental",url,param);
+                        if(ajaxUrl) {
+                            location.href = url;
+                        }
+                    } else {
+                        ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        console.log("!!!!!buy",ajaxUrl,param);
+                        if(ajaxUrl) {
+                            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                                console.log(result);
+                            });
+                        }
+                    }
+
+                    /*
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                             //console.log(result);
                         });
                     }
-                }
+                    */
+               // }
             },
 
             //PDP 이미지 관련
@@ -1309,3 +1371,26 @@
         KRP0008.init();
     });
 })();
+
+//크레마
+window.cremaAsyncInit = function () {
+    crema.init(null,null);
+};
+
+(function(i,s,o,g,r,a,m){
+    if(s.getElementById(g)){
+        return
+    };
+    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+    a.id=g;
+    a.async=1;
+    a.src=r;
+    m.parentNode.insertBefore(a,m);
+    console.log('i',i);
+    console.log('s',s);
+    console.log('o',o);
+    console.log('g',g);
+    console.log('r',r);
+    console.log('a',a);
+    console.log('m',m);
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');

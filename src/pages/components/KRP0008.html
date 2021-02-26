@@ -33,14 +33,23 @@
         //전시 매장 찾기 가능 여부
         var outletStockFlag = "N";
 
-        //카트, 찜하기,비교하기 에 필요한 데이타
+        //카트, 찜하기,비교하기, 구매하기등 에 필요한 데이타
         var sendData = {
-            "id": "제품ID",
-            "productName": "LG 올레드 갤러리 TV",
-            "productID": "제품ID",
-            "productImg": "/lg5-common/images/KRP0008/@sample-img.jpg",
-            "productAlt": "LG 올레드 갤러리 TV"
+            "modelId":"MD08045024",
+            "sku": "OLED65CXGNA.AKR",
+            "typeFlag" : "",
+            "rtSeq" : "",
+            "requireCare" : "N",
+            "wishListId" : "",
+            "wishItemId" : "",
+            "categoryId" : "CT50000025",
+            "id": "MD08045024",
+            "productName": "LG 올레드 AI <sup>ThinQ</sup>",
+            "productID": "MD08045024",
+            "productImg": "/kr/images/tvs/md08045024/md08045024-350x350.jpg",
+            "productAlt": "LG 올레드 AI <sup>ThinQ</sup>"
         };
+
 
         // 수상내역 팝업데이타
         var awards = [
@@ -227,7 +236,7 @@
         //렌탈 케어솔루션 제휴카드 리스트 정보
         var rentalAssociatedCardList = [
             {
-                "cardId":"cid00001",
+                "cardNameCode":"cid00001",
                 "cardSubName":"LG전자 베스트렌탈",
                 "defaultPrice":"default",
                 "cardName":"우리카드",
@@ -235,7 +244,7 @@
                 "maxSalePrice":110000
             },
             {
-                "cardId":"cid00002",
+                "cardNameCode":"cid00002",
                 "cardSubName":"LG전자 렌탈애",
                 "defaultPrice":"",
                 "cardName":"신한카드",
@@ -243,7 +252,7 @@
                 "maxSalePrice":19000
             },
             {
-                "cardId":"cid00003",
+                "cardNameCode":"cid00003",
                 "cardSubName":"테스트카드",
                 "defaultPrice":"Y",
                 "cardName":"신한카드",
@@ -255,7 +264,7 @@
         //케어십 제휴카드 리스트 정보
         var careshipAssociatedCardList = [
         {
-                "cardId":"cid00004",
+                "cardNameCode":"cid00004",
                 "cardSubName":"LG전자 베스트렌탈",
                 "defaultPrice":"default",
                 "cardName":"우리카드",
@@ -263,7 +272,7 @@
                 "maxSalePrice":110000
             },
             {
-                "cardId":"cid00005",
+                "cardNameCode":"cid00005",
                 "cardSubName":"LG전자 렌탈애",
                 "defaultPrice":"",
                 "cardName":"신한카드",
@@ -271,7 +280,7 @@
                 "maxSalePrice":19000
             },
             {
-                "cardId":"cid00006",
+                "cardNameCode":"cid00006",
                 "cardSubName":"테스트카드",
                 "defaultPrice":"Y",
                 "cardName":"신한카드",
