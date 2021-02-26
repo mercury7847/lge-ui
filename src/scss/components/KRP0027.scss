@@ -42,8 +42,9 @@
         .tabs-bg {
             .tabs-wrap.bar-type {
                 max-width:calc(1380px + 80px);
+                margin:0 auto;
                 .tabs {
-                    padding:16px 0 8px;
+                    padding:16px 0;
                     @include mobile {
                         padding:16px;
                     }
