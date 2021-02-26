@@ -1704,19 +1704,25 @@ html {
         }
 
         .btn-app-ar{
-            display:block;
-            width:56px;
-            height:56px;
-            padding:0;
-            background-image: linear-gradient(135deg, #9c72e7 28%, #f85784 89%);
-            border-radius:28px;
-            box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+            display:block !important;
+            width:56px !important;
+            height:56px !important;
+            padding:0 !important;
+            background-image: linear-gradient(135deg, #9c72e7 28%, #f85784 89%) !important;
+            border-radius:28px !important;
+            box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15) !important;
+            background: transparent !important;
+            overflow: hidden !important;
             span {
-                display: block;
+                display: flex;
                 width: 100%;
                 height: 100%;
-                
+                font-weight: bold;
+                font-size: 25px;
+                color: #fff;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
             }
         }
 
