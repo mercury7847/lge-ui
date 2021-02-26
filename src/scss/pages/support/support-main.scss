@@ -2414,8 +2414,10 @@
             .item {
                 float:left;
                 position: relative;
+                overflow:hidden;
                 width:25%;
                 padding:0 12px;
+                border-radius:10px;
 
                 img {
                     width:100%;
@@ -2515,18 +2517,19 @@
 
             .item-list {
                 .item {
-                    width:70vw;
+                    width:88.88vw;
 
                     .item-cont {
-                        padding:40px 32px;
+                        padding:20px 24px;
                     }
 
                     .item-tit {
                         font-size:27px;
                     }
                     .item-link {
-                        padding:11px 20px;
+                        padding:5px 20px;
                         font-size:13px;
+                        border-radius:50px;
                     }
                 }
             }
@@ -2577,6 +2580,8 @@
             > a {
                 display:block;
                 position: relative;
+                overflow:hidden;
+                border-radius:8px;
                 // width:444px;
 
                 img {

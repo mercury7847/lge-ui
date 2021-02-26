@@ -328,6 +328,11 @@
                 padding: 24px 16px;
                 border-radius: 0;
             }
+            @include pc {
+                .ui_smooth_scrolltab {
+                    margin-bottom: -8px;
+                }
+            }
             .btn-reset {
                 position: absolute;
                 top: 24px;
@@ -375,7 +380,7 @@
             }
             .rounded-list {
                 display: inline-block;
-                margin-bottom: -8px;
+                //margin-bottom: -8px;
                 @include pc {
                     width: auto !important;
                     li {
@@ -1419,7 +1424,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 104px;
+        height: 120px;
         padding-bottom: 0;
         background: #fff;
         z-index: 102;
