@@ -112,6 +112,12 @@
                 self.requestSearchInput(searchVal);
             });
 
+            self.$inputSearch.keydown(function(key) {
+                if (key.keyCode == 13) {
+                    self.$buttonSearch.trigger('click');
+                }
+            });
+
             //검색 타이머
             self.$inputSearch.off('.intergrated').on("input.intergrated", function(e) {
                 clearTimeout(self.searchTimer);
@@ -159,7 +165,7 @@
             //추천태그 클릭
             self.$suggestedTagsList.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
-                self.searchItem($(this),true);
+                self.searchTagItem($(this),true);
             });
 
             //최근검색어 클릭
@@ -183,7 +189,24 @@
             } else {
                 self.requestSearch(searchVal, true);
             }
+
+            self.$searchLayer.vcModal('close');
         },
+
+        //추천 태그 검색
+        searchTagItem:function($item, sendSearchPage) {
+            var self = this;
+            var searchVal = $item.attr('href');
+            if(sendSearchPage) {
+                self.$inputSearch.val(searchVal);
+                self.$buttonSearch.trigger('click');
+            } else {
+                self.requestSearch(searchVal, true);
+            }
+
+            self.$searchLayer.vcModal('close');
+        },
+
 
         showAnimation:function($item) {
             $item.show();

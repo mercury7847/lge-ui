@@ -213,8 +213,10 @@
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
+                var isTab = false;
                 self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
                 if(self.$rentalCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
                 }
 
@@ -226,9 +228,21 @@
 
                 self.$careshipCardList = self.$pdpInfoCareshipService.find('.select-box:eq(1)');
                 if(self.$careshipCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$careshipCardList, self.careCardList);
                 }
 
+                if(!isTab) {
+                    var $paymentAmount = self.$pdpInfoProductDetailInfo.find('.payment-amount');
+                    var $cardList = self.$pdpInfoProductDetailInfo.find('div.care-sibling-option > .select-box');
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        self.updateAssociatedCardList($cardList, self.careCardList);
+                    } else {
+                        self.updateAssociatedCardList($cardList, self.rentalCardList);
+                    }
+                }
 
                 //
                 self.$pdpMobileSlider.vcCarousel({
@@ -363,8 +377,14 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                   var checked = $(this).is(':checked');
-                   self.requestCompareItem(sendData, checked, $(this));
+                    var checked = !$(this).hasClass('compare-select');
+                    if(checked) {
+                        $(this).addClass('compare-select');
+                    } else {
+                        $(this).removeClass('compare-select');
+                    }
+                    //$(this).prop('checked',!checked);
+                    self.requestCompareItem(sendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -1009,7 +1029,7 @@
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
 
                 var $paymentAmount = $dm.parents('.payment-amount');
-                var $purchaseButton = $dm.parents('.purchase-button');
+                //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
                     var careData = $paymentAmount.data('careData');
@@ -1035,7 +1055,15 @@
                 } else {*/
                     //구매타입
                     var isRental = false;
-                    var param = {"order_type":"CR"};
+                    var param = {};
+                    if(typeof modelGubun !== 'undefined') {
+                        if(modelGubun == "1") {
+                            param.order_type = "NB";
+                        } else if(modelGubun == "3") {
+                            param.order_type = "SM";
+                        }
+                    }
+                    if(modelGubun)
 
                     //소모품이 있는가
                     var cart = [];
@@ -1046,6 +1074,9 @@
                                 "sku":$(item).data('id'),
                                 "quantity":$(item).data('quantity')
                             });
+                            if(param.order_type == "NB") {
+                                param.order_type = "NS";
+                            }
                         });
                     }
 
@@ -1342,7 +1373,10 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
-                    if(!isAdd) $dm.prop('checked', false);
+                    if(!isAdd) {
+                        $dm.prop('checked', false);
+                        $dm.removeClass('compare-select');
+                    }
                 } else{
                     lgkorUI.removeCompareProd(categoryId, compareData.id);
                 }
@@ -1355,14 +1389,23 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+
                 if(!isCompare){
-                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    //if(vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
+                        console.log(sendData['id'], i);
                         if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
-                self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
-            }
+                
+                var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
+                $dm.prop('checked', chk)
+                if(chk) {
+                    $dm.addClass('compare-select');
+                } else {
+                    $dm.removeClass('compare-select');
+                }
+            },
         };
 
     $(window).ready(function(){
