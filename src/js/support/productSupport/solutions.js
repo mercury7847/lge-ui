@@ -578,7 +578,6 @@
 
                     self.resetSubFilter();
                     self.requestData();
-                    self.selectFilter(code);
                 });
 
                 // mobile sub filter
