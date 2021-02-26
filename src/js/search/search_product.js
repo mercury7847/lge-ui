@@ -491,6 +491,10 @@
                 return item ? (item.count ? item.count : 0) : 0;
             },
 
+            checkSubCountData:function(item) {
+                return item ? (item.subcount ? item.subcount : 0) : 0;
+            },
+
             checkArrayData:function(item) {
                 return item ? (item.data instanceof Array ? item.data : []) : [];
             },
@@ -669,7 +673,7 @@
                     arr = self.checkArrayData(data.product);
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
-                    var subcount = data.product.subcount ? data.product.subcount : 0;
+                    var subcount = self.checkSubCountData(data.product);
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
                     } else {
