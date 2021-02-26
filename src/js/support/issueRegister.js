@@ -38,6 +38,7 @@
                 formData.append('registerNo', $('#registerNo').val() || '');
             }
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxFileData(url, formData, function(result) {
                 var data = result.data,
                     obj = {},
@@ -70,6 +71,7 @@
                 }
 
                 lgkorUI.alert(desc, obj);
+                lgkorUI.hideLoading();
             }, 'POST');
         });
     });
