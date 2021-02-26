@@ -36,21 +36,36 @@
 
     .inner {
         max-width: (1146px + 80px);
-        margin: 160px auto 100px;
+        margin: 180px auto;
         padding: 0 40px;
     }
 
     .input-keyword-wrap {
         position: relative;
         padding: 0;
+        @include pc {
+            .input-keyword {
+                max-width: 100%;
+            }
+        }
         .search-similar {
+            margin-top: 64px;
+            @include mobile {
+                margin-top: 20px;
+            }
             .similar-text {
-                color: $color-default;
-                @include font-large-2;
-                @include text-underline(1px,$color-default);
+                @include font($font-large-1,30px);
+                @include text-underline(0,$color-default);
+                text-decoration: none;
+                @include mobile {
+                    @include font(15px,23px);
+                }
                 .search-word {
                     font-weight: 700;
-                    color: $color-primary;
+                    color: $color-default;
+                    .word {
+                        color: $color-primary;
+                    }
                 }
                 &:after {
                     width: auto;
@@ -61,14 +76,14 @@
     }
 
     @include mobile {
-        margin-top: 75px + 72px;
+        margin-top: 72px + 88px;
         &:before {
             position: fixed;
             top: 0;
             right: 0;
             left: 0;
             z-index: 3;
-            height: 75px;
+            height: 72px;
             background-color: #fff;
             content: '';
         }
@@ -88,11 +103,11 @@
         .input-keyword-wrap {
             .input-keyword {
                 position: fixed;
-                top: 75px;
+                top: 72px;
                 left: 0;
                 right: 0;
                 z-index: 3;
-                padding: 8px 16px;
+                padding: 16px 16px 20px;
                 background-color: $color-bg-wt;
             }
         }
@@ -101,10 +116,10 @@
     .title-line {
         display: block;
         margin-bottom: 24px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid $color-default;
+        //padding-bottom: 20px;
+        //border-bottom: 2px solid $color-default;
         font-weight: 700;
-        @include font-large-2;
+        @include font-large-1;
         /*
         @include pc {
             .count {
@@ -112,39 +127,40 @@
             }
         }
         */
+        @include mobile {
+            margin-bottom: 16px;
+        }
     }
 
     .search-keyword-area {
         display: flex;
         //width: 100%;
-        padding-top: 48px;
-        .recent-keyword,
-        .popular-keyword {
-            //display: table-cell;
-            flex: 1;
-            //width: ((100% / 10) * 3);
-            padding-right: 64px;
-        }
-        .suggested-tags {
-            flex: 1.6;
-            //display: table-cell;
-            //width: ((100% / 10) * 4);
-        }
-        .recent-keyword + .suggested-tags {
-            flex: 1;
+        padding-top: 80px;
+        @include pc {
+            > div {
+                flex: 1;
+                margin-right: 32px;
+                padding-right: 32px;
+                border-right: 1px solid $color-border;
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
+                    border-right: none;
+                }
+            }
         }
         @include mobile {
-            display: block;
-            padding-top: 24px;
-            .recent-keyword,
-            .popular-keyword,
-            .suggested-tags {
-                width: 100%;
-                padding-right: 0;
-            }
-            .popular-keyword,
-            .suggested-tags {
-                margin-top: 40px;
+            flex-direction: column;
+            padding-top: 20px;
+            > div {
+                margin-bottom: 32px;
+                padding-bottom: 32px;
+                border-bottom: 1px solid $color-border;
+                &:last-child {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
             }
         }
     }
@@ -180,7 +196,7 @@
         }
         .rounded-list {
             li {
-                margin: 0 8px 12px 0;
+                margin: 0 8px 8px 0;
                 &:last-child {
                     margin-right: 0;
                 }
@@ -191,11 +207,10 @@
         position: absolute;
         top: 6px;
         right: 0;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         margin-left: 4px;
-        background: url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
-        background-size: 14px 14px;
+        background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat 0 0;
     }
 
     @include mobile {

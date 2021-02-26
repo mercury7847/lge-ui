@@ -89,17 +89,19 @@
                         }
                     }
                 });
+                
+                if( $('#phoneForm').length ) { 
+                    self.authManager = new AuthManager({
+                        elem: {
+                            form: '#phoneForm',
+                            name: '#userName2',
+                            phone: '#phoneNo',
+                            number: '#authNo'
+                        },
+                        register: authRegister
+                    });
     
-                self.authManager = new AuthManager({
-                    elem: {
-                        form: '#phoneForm',
-                        name: '#userName2',
-                        phone: '#phoneNo',
-                        number: '#authNo'
-                    },
-                    register: authRegister
-                });
-
+                }
                 self.bindEvent();
             });
         },

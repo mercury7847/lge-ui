@@ -407,6 +407,10 @@
                 return item ? (item.count ? item.count : 0) : 0;
             },
 
+            checkSubCountData:function(item) {
+                return item ? (item.subcount ? item.subcount : 0) : 0;
+            },
+
             checkArrayData:function(item) {
                 return item ? (item.data instanceof Array ? item.data : []) : [];
             },
@@ -533,7 +537,7 @@
                     }
 
                     //검색한 검색어
-                    self.$searchResultText.html(replaceText + ' 검색 결과');
+                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과');
 
                     //원래입력된 기존 검색어 이동
                     var inputValue = param.inputValue;
@@ -585,9 +589,11 @@
                     arr = self.checkArrayData(data.story);
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
-                    var subcount = data.story.subcount;
+                    var subcount = self.checkSubCountData(data.story);
                     if(subcount) {
-                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개');
+                        self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
+                    } else {
+                        self.$searchResult.find('p.list-count').hide();
                     }
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');

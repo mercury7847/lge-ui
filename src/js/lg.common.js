@@ -563,22 +563,22 @@ var isApp = function(){
         },
 
         showLoading:function(msg){
-            var str = msg? msg : '데이터를 불러오는 중입니다.';
-            $('html').addClass('dim');
-            $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
-            $('body').vcSpinner({msg:str});
-            $('body').vcSpinner('spin', str);    
+            vcui.require(['ui/spinner'],function(){
+                var str = msg? msg : '데이터를 불러오는 중입니다.';
+                $('html').addClass('dim');
+                $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
+                $('body').vcSpinner({msg:str});
+                $('body').vcSpinner('spin', str); 
+            })   
         },
     
         hideLoading:function(){
-            $('.loading_dim').remove();
-            $('html').removeClass('dim');
-            $('body').vcSpinner('stop');
+            vcui.require(['ui/spinner'],function(){
+                $('.loading_dim').remove();
+                $('html').removeClass('dim');
+                $('body').vcSpinner('stop');
+            });
         },
-
-
-
-
 
         confirm:function () {
             /**
@@ -604,6 +604,7 @@ var isApp = function(){
                 var callbackOk, callbackCancel;
     
                 if(options && options.ok && typeof options.ok =='function'){
+                    console.log("option.ok");
                     callbackOk = options.ok;
                     delete options['ok'];
                 } 
@@ -629,6 +630,7 @@ var isApp = function(){
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
                     if(e.type =='modalok'){
+                        console.log(callbackOk)
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
