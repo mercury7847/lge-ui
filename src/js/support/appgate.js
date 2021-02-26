@@ -10,14 +10,15 @@
         vcui.require([
             'ui/validation', 'ui/selectTarget'
         ], function() {
-            var $submitForm = $('#submitForm'),
+            var $cont = $('.appgate'),
+                $submitForm = $cont.find('#submitForm'),
                 url = $submitForm.attr('action');
                 param = $submitForm.serialize();
 
-            var $topic = $('#topic'),
-                $subTopic = $('#subTopic'),
-                $keyword = $('#keyword'),
-                $btnSearch = $('.btn-search');
+            var $topic = $cont.find('#topic'),
+                $subTopic = $cont.find('#subTopic'),
+                $keyword = $cont.find('#keyword'),
+                $btnSearch = $cont.find('.btn-search');
 
             var validation = new vcui.ui.CsValidation('.input-wrap.search', {
                 register: {
@@ -27,7 +28,7 @@
                 }
             });
 
-            $('#topic').vcSelectTarget({
+            $topic.vcSelectTarget({
                 addParam: '#productCode'
             });
            
@@ -41,7 +42,7 @@
                 parameter += '&topicNm=' + topicVal + '&subTopicNm=' + subTopicVal;
                 location.href = url + '?' + parameter;
             });
-            $keyword.on('keydown', function(e) {
+            $keyword.on('keyup', function(e) {
                 if(e.keyCode == 13) {
                     e.preventDefault();
                     $btnSearch.trigger('click');        
@@ -54,7 +55,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {
-                    parameter += '&keyword=' + keywordVal;
+                    parameter += '&searchKeyword=' + keywordVal;
                     window.open(url + '?' + parameter);
                 }
             });
