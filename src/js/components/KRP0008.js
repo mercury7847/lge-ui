@@ -370,7 +370,6 @@
                         $(this).removeClass('compare-select');
                     }
                     //$(this).prop('checked',!checked);
-                    //self.setCompareState(e.currentTarget);
                     self.requestCompareItem(sendData, checked, $(this));
                 });
 
@@ -1384,37 +1383,6 @@
                     }
                 }
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
-            },
-
-            //비교하기 담기
-            setCompareState:function(atag){
-                var $this = $(atag);
-                //var _id = $this.data('id');
-                //var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                //console.log("### setCompareState ###", categoryId)
-                if(!$this.hasClass('on')){
-                    
-                    var compare = $this.closest('.product-compare');
-                    var contents = compare.siblings('.product-contents');
-                    var productName = contents.find('.product-info .product-name a').text();
-                    var productID = contents.find('.product-info .sku').text();
-                    var image = compare.siblings('.product-image');
-                    var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
-                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
-
-                    var compareObj = {
-                        "id": _id,
-                        "productName": productName,
-                        "productID": productID,
-                        "productImg": productImg,
-                        "productAlt": productAlt
-                    }
-                    
-                    var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
-                    if(isAdd) $this.addClass("on");
-                } else{
-                    lgkorUI.removeCompareProd(categoryId, _id);
-                }
             },
         };
 

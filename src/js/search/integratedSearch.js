@@ -112,6 +112,12 @@
                 self.requestSearchInput(searchVal);
             });
 
+            self.$inputSearch.keydown(function(key) {
+                if (key.keyCode == 13) {
+                    self.$buttonSearch.trigger('click');
+                }
+            });
+
             //검색 타이머
             self.$inputSearch.off('.intergrated').on("input.intergrated", function(e) {
                 clearTimeout(self.searchTimer);
