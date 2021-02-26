@@ -245,9 +245,12 @@
 
             self.isLogin = lgkorUI.isLogin;
             self.param = $.extend({}, data);
-            self.manualParam = $.extend({}, data);
-            self.driverParam = $.extend(data, {
-                keyword: ''
+            self.manualParam = $.extend({}, data, {
+                type: 'manual'
+            });
+            self.driverParam = $.extend({}, data, {
+                keyword: '',
+                type: 'driver'
             });
         },
         setManualList: function(data) {
@@ -404,7 +407,14 @@
             self.$cont.on('reset', function(e) {
                 var data = $.extend({}, self.options);
 
-                self.param = data;
+                self.param = $.extend({}, data);
+                self.manualParam = $.extend({}, data, {
+                    type: 'manual'
+                });
+                self.driverParam = $.extend({}, data, {
+                    keyword: '',
+                    type: 'driver'
+                });
 
                 self.isLogin && self.$myModelWrap.show();
                 self.$cont.commonModel('next', self.$stepModel);
