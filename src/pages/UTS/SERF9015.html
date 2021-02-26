@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/filterLayer","search/search_shop"]
     })
+<!--        pageJS: ["search/filterLayer","search/search_shop"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -26,7 +26,7 @@
 
                 <!-- tabs -->
                 <div class="search-tabs-wrap">
-                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                    <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 210218 수정 [.border-type 클래스 추가] -->
                         <ul class="tabs">
                             <li data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span></span></a></li>
                             <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span></span></a></li>
@@ -105,25 +105,25 @@
                                         @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
                                             "state" : "원활",
-                                            "stateClass" : "green",
+                                            "stateClass" : "skyblue",
                                             "btnA" : ["길찾기","방문 예약 신청"]
                                         },{
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag green'>매장</span><span class='flag'>NEW</span><span class='flag'>이벤트</span>",
+                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>매장</span><span class='flag'>NEW</span><span class='flag'>이벤트</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
                                             "state" : "보통",
-                                            "stateClass" : "orange",
+                                            "stateClass" : "olive",
                                             "btnA" : ["길찾기","방문 예약 신청"]
                                         },{
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
@@ -132,7 +132,7 @@
                                             "btnA" : ["길찾기","방문 예약 신청"]
                                         },{
                                             "itemClass" : "",
-                                            "flagsTy2" : "<span class='flag green'>센터</span>",
+                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
                                             "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
                                             "shopInfo" : true,
                                             "shopTime" : true,
