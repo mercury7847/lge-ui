@@ -123,7 +123,7 @@
     var checkModelSuccess = false;
     var checkSerialSuccess = false;
 
-    var myProductRegistration = {         
+    var myProductRegistration = {
         init: function() {
             var self = this;
             vcui.require(['ui/validation', 'ui/pagination'], function () {             
