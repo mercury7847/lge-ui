@@ -2282,7 +2282,6 @@ var AuthManager = function() {
     return AuthManager;
 }();
 
-
 $.fn.serializeObject = function() {
     var result = {}
     var extend = function(i, element) {
@@ -2306,13 +2305,32 @@ $.fn.serializeObject = function() {
     function commonInit(){
         //input type number 숫자키패드
         $('input[type="number"]').attr('inputmode', 'numeric');
-        vcui.require(['ui/selectbox', 'ui/formatter'], function () {    
-            $('[data-format=koreng]').vcFormatter({format:'koreng'});
-            $('[data-format=alnum]').vcFormatter({format:'alnum'});
+        
+        $('[data-format=koreng]').on('input', function() {
+            var $this = $(this),
+                value = $this.val();
             
-            // 퀵 메뉴 (미정)
-            $('#quickMenu').quickMenu();
+            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z\s]/g;
+            
+            if (regex.test(value)) {
+                $this.val(value.replace(regex, ''));
+                return;
+            }
         });
+
+        $('[data-format=alnum]').on('input', function() {
+            var $this = $(this),
+                value = $this.val();
+            
+            var regex = /[^a-zA-Z0-9]/g;
+            
+            if (regex.test(value)) {
+                $this.val(value.replace(regex, ''));
+                return;
+            }
+        });
+
+        $('#quickMenu').quickMenu();
 
         if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);

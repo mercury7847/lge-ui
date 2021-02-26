@@ -361,7 +361,7 @@
     @include clearfix;
 
     @include mobile {
-        padding: 40px 0; // 60px : component top bottom margin for mobile
+        padding: 60px 0; // 60px : component top bottom margin for mobile
     }
 
     $color: (lightgray, dark, black, white, gray);
