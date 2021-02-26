@@ -127,6 +127,10 @@
                 background: $color-border;
                 content: '';
             }
+            .tabs {
+                margin:0 -2px 0 0;
+                padding:2px;
+            }
             .tabs > li {
                 margin-left: 40px;
                 &:first-child {
