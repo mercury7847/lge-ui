@@ -273,6 +273,12 @@
                     self.requestSearchInput(searchVal);
                 });
 
+                self.$inputSearchFixed.keydown(function(key) {
+                    if (key.keyCode == 13) {
+                        self.$buttonSearchFixed.trigger('click');
+                    }
+                });
+                
                 //검색 타이머
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(self.searchTimer);
