@@ -1403,6 +1403,38 @@ var isApp = function(){
                     results = regex.exec(location.search);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
+
+        //현재 페이지의 찜하기 객체를 찾아서 갱신한다
+        checkWishItem: function(ajaxUrl,checkAttr) {
+            if(!checkAttr) {
+                checkAttr = "data-wish-model-name";
+            }
+
+            var $wishItem = $('input['+checkAttr+']');
+
+            lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
+                var listData = result.data.listData;
+                if(listData) {
+                    listData.forEach(function(item,index){
+                        var $wish = $wishItem.find('[checkAttr='+item.sku+']');
+                        if($wish.length > 0) {
+                            $wish.data(item);
+                            $wish.prop("checked",true);
+                        }
+                    });
+                }
+            },"GET", null, true);
+        
+            //var checkModel = [];
+            /*
+            $wishItem.each(function(idx,obj){
+                var model = obj.attr(checkAttr);
+                if(model){
+                    checkModel.push(model);
+                }
+            });
+            */
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {

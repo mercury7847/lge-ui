@@ -171,14 +171,13 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             var self = this;
             var $el = $(element);
+            $el.find('.' + _V.NEXT + ', .' + _V.PREV + ', .' + _V.DOTS + ', .' + _V.PLAY).hide();
 
             
             // if ($el.find('.' + _V.TRACK + '>*').length <= 1) {
             //     $el.find('.' + _V.NEXT + ', .' + _V.PREV + ', .' + _V.DOTS + ', .' + _V.PLAY).hide();
             //     return;
             // }
-
-            //return;
 
             if (self.supr(element, options) === false) {
                 return;
@@ -241,10 +240,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             self.registerBreakpoints();
             self.init(true);
-
-
             
         },
+
         activateADA: function activateADA() {
             var self = this;
             var opt = self.options;
