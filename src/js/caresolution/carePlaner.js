@@ -638,7 +638,7 @@
             
             setSiblingCodeNumbering(result.data);
             for(var key in result.data){                
-                _currentItemList[blockID][key] = result.data[key];
+                _currentItemList[blockID][key] = result.data[key]; 
             }
 
             var deleteItem = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
