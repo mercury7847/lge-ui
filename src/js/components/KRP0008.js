@@ -363,8 +363,15 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                   var checked = $(this).is(':checked');
-                   self.requestCompareItem(sendData, checked, $(this));
+                    var checked = !$(this).hasClass('compare-select');
+                    if(checked) {
+                        $(this).addClass('compare-select');
+                    } else {
+                        $(this).removeClass('compare-select');
+                    }
+                    //$(this).prop('checked',!checked);
+                    //self.setCompareState(e.currentTarget);
+                    self.requestCompareItem(sendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -1009,7 +1016,7 @@
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
 
                 var $paymentAmount = $dm.parents('.payment-amount');
-                var $purchaseButton = $dm.parents('.purchase-button');
+                //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
                     var careData = $paymentAmount.data('careData');
@@ -1035,7 +1042,15 @@
                 } else {*/
                     //구매타입
                     var isRental = false;
-                    var param = {"order_type":"CR"};
+                    var param = {};
+                    if(typeof modelGubun !== 'undefined') {
+                        if(modelGubun == "1") {
+                            param.order_type = "NB";
+                        } else if(modelGubun == "3") {
+                            param.order_type = "SM";
+                        }
+                    }
+                    if(modelGubun)
 
                     //소모품이 있는가
                     var cart = [];
@@ -1046,6 +1061,9 @@
                                 "sku":$(item).data('id'),
                                 "quantity":$(item).data('quantity')
                             });
+                            if(param.order_type == "NB") {
+                                param.order_type = "NS";
+                            }
                         });
                     }
 
@@ -1339,10 +1357,14 @@
 
             //아이템 비교하기
             requestCompareItem: function(compareData, compare, $dm) {
+                console.log(compareData, compare, $dm);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
-                    if(!isAdd) $dm.prop('checked', false);
+                    if(!isAdd) {
+                        $dm.prop('checked', false);
+                        $dm.removeClass('compare-select');
+                    }
                 } else{
                     lgkorUI.removeCompareProd(categoryId, compareData.id);
                 }
@@ -1362,7 +1384,38 @@
                     }
                 }
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
-            }
+            },
+
+            //비교하기 담기
+            setCompareState:function(atag){
+                var $this = $(atag);
+                //var _id = $this.data('id');
+                //var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                //console.log("### setCompareState ###", categoryId)
+                if(!$this.hasClass('on')){
+                    
+                    var compare = $this.closest('.product-compare');
+                    var contents = compare.siblings('.product-contents');
+                    var productName = contents.find('.product-info .product-name a').text();
+                    var productID = contents.find('.product-info .sku').text();
+                    var image = compare.siblings('.product-image');
+                    var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
+                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+
+                    var compareObj = {
+                        "id": _id,
+                        "productName": productName,
+                        "productID": productID,
+                        "productImg": productImg,
+                        "productAlt": productAlt
+                    }
+                    
+                    var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
+                    if(isAdd) $this.addClass("on");
+                } else{
+                    lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
         };
 
     $(window).ready(function(){
