@@ -1024,7 +1024,7 @@
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
         var payment = getPaymentMethod() == "bank";
-        console.log("### rentalRequest ###", payment)
+        console.log("### rentalRequest ###", payment);
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1050,7 +1050,9 @@
             INST_REQ_DATE: step2Value.inatallDate,
             NOTES: step2Block.find('input[name=installRequriement]').val(),
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
-            MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N"
+            MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
+            preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
+            collectRequest: step2Block.find('input[name=collectRequest]:checked').val()
         };
         console.log(sendata);
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
