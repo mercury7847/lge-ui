@@ -241,7 +241,7 @@
     // 제품사용설명서 리스트
     .download-list-wrap {
         margin-top:32px;
-        .desc {
+        & > .desc {
             position:relative;
             margin-bottom:8px;
             padding-left:11px;
@@ -861,18 +861,36 @@
         // PSP floating tab
         .anchors-tabs-wrap {
             margin-top:80px;
-            padding:0 40px;
-            background:#fff;
+            height:48px;
+            
             &.fixed {
-                border-bottom:1px solid #ddd;
+                .anchor-sticky {
+                    position:fixed;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    border-bottom:1px solid #ddd;
+                    z-index:1;
+                }    
             }
+
+            .anchor-sticky {
+                padding:0 40px;
+                background:#fff;
+            }
+            
             .tabs-wrap {
                 max-width:1380px;
                 margin:0 auto;
             }
             @include mobile {
+                height:62px;
                 margin-top:32px;
                 padding:0;
+
+                .anchor-sticky {
+                    padding:0;
+                }
             }
         }
         @include mobile {

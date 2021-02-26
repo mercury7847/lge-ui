@@ -2310,7 +2310,7 @@ $.fn.serializeObject = function() {
             var $this = $(this),
                 value = $this.val();
             
-            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z\s]/g;
+            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
             
             if (regex.test(value)) {
                 $this.val(value.replace(regex, ''));

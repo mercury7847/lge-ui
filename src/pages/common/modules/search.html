@@ -8,12 +8,12 @@
 
         @@if(context.layer) {
         <!-- 검색어 입력창에 포커스시 나오는 레이어 -->
-            @@if(!context.confirm) {
+        @@if(!context.confirm) {
         <div class="search-input-layer">
-            }
-            @@if(context.confirm) {
-        <div class="search-input-layer" style="display:block">
-            }
+        }
+        @@if(context.confirm) {
+        <div class="search-input-layer" style="display:none">
+        }
             <div class="auto-complete">
                 <div class="keyword-list">
                     <ul>
@@ -70,9 +70,10 @@
                     <span class="title">인기 검색어</span>
                     <div class="keyword-list">
                         <ul>
-                            <li><a href="#LG 그램 17">LG 그램 17</a></li>
-                            <li><a href="#스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형">스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형</a></li>
-                            <li><a href="#LG 스타일러">LG 스타일러</a></li>
+                            <!-- 210218 수정 [넘버 추가] -->
+                            <li><a href="#LG 그램 17">1. LG 그램 17</a></li>
+                            <li><a href="#스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형">2. 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형</a></li>
+                            <li><a href="#LG 스타일러">3. LG 스타일러</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +109,8 @@
     }
     @@if(context.similar) {
     <div class="search-similar">
-        <div class="search-result-text"><span class="search-word">&ldquo;티비&rdquo;</span> 검색 결과</div>
+        <!-- 210226 수정 [em.word 태그 추가] -->
+        <div class="search-result-text"><span class="search-word">&ldquo;<em class="word">티비</em>&rdquo;</span> 검색 결과</div>
         <a href="#xlql" class="similar-text">&ldquo;xlql&rdquo; 검색 결과로 이동</a>
     </div>
     }

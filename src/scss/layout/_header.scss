@@ -1358,342 +1358,8 @@
 }
 
 /* 통합검색 레이어팝업 */
-.search-layer {
-    //display: none;
-    overflow-y: auto;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    background-color: #fff;
+@import "../pages/UTS/SERF9001";
 
-    //&:after {
-    //    content: '';
-    //    position: fixed;
-    //    top: 0;
-    //    bottom: 0;
-    //    left: 50%;
-    //    transform: translateX(-50%);
-    //    width: 1380px;
-    //    background-color: red;
-    //    opacity: .2;
-    //}
-
-    .btn-close {
-        position: absolute;
-        top: 48px;
-        @include calc(right,50%,690px + 48px);
-        width: 48px;
-        height: 48px;
-        background: url('/lg5-common/images/icons/btn-close-48.svg') no-repeat 0 0;
-
-        @media screen and (max-width: 1606px) {
-            right: 48px;
-        }
-    }
-
-    .inner {
-        max-width: (1146px + 80px);
-        margin: 160px auto 100px;
-        padding: 0 40px;
-    }
-
-    .input-keyword-wrap {
-        position: relative;
-        padding: 0;
-        .search-similar {
-            .similar-text {
-                color: $color-default;
-                @include font-large-2;
-                @include text-underline(1px,$color-default);
-                .search-word {
-                    font-weight: 700;
-                    color: $color-primary;
-                }
-                &:after {
-                    width: auto;
-                    background-image: none;
-                }
-            }
-        }
-    }
-
-    @include mobile {
-        margin-top: 75px + 72px;
-        &:before {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 3;
-            height: 75px;
-            background-color: #fff;
-            content: '';
-        }
-        .btn-close {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            z-index: 3;
-        }
-
-        .inner {
-            max-width: 100%;
-            margin: 0 auto 60px;
-            padding: 0 16px;
-        }
-
-        .input-keyword-wrap {
-            .input-keyword {
-                position: fixed;
-                top: 75px;
-                left: 0;
-                right: 0;
-                z-index: 3;
-                padding: 8px 16px;
-                background-color: $color-bg-wt;
-            }
-        }
-    }
-
-    .title-line {
-        display: block;
-        margin-bottom: 24px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid $color-default;
-        font-weight: 700;
-        @include font-large-2;
-        /*
-        @include pc {
-            .count {
-                display: none;
-            }
-        }
-        */
-    }
-
-    .search-keyword-area {
-        display: flex;
-        //width: 100%;
-        padding-top: 48px;
-        .recent-keyword,
-        .popular-keyword {
-            //display: table-cell;
-            flex: 1;
-            //width: ((100% / 10) * 3);
-            padding-right: 64px;
-        }
-        .suggested-tags {
-            flex: 1.6;
-            //display: table-cell;
-            //width: ((100% / 10) * 4);
-        }
-        .recent-keyword + .suggested-tags {
-            flex: 1;
-        }
-        @include mobile {
-            display: block;
-            padding-top: 24px;
-            .recent-keyword,
-            .popular-keyword,
-            .suggested-tags {
-                width: 100%;
-                padding-right: 0;
-            }
-            .popular-keyword,
-            .suggested-tags {
-                margin-top: 40px;
-            }
-        }
-    }
-}
-
-.search-keyword-area {
-    .keyword-list {
-        .no-data {
-            padding: 0;
-            @include font-medium;
-            color: $color-gray-1;
-            text-align: left;
-        }
-        li {
-            margin-top: 12px;
-            &:first-child {
-                margin-top: 0;
-            }
-            a {
-                display: block;
-                height: 26px;
-                @include textEllipsisClamp(1);
-                @include font-medium;
-                &.rounded {
-                    height: auto;
-                }
-            }
-            .box {
-                position: relative;
-                display: inline-block;
-                padding-right: 22px;
-            }
-        }
-        .rounded-list {
-            li {
-                margin: 0 8px 12px 0;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-    .btn-delete {
-        position: absolute;
-        top: 6px;
-        right: 0;
-        width: 14px;
-        height: 14px;
-        margin-left: 4px;
-        background: url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
-        background-size: 14px 14px;
-    }
-
-    @include mobile {
-        .keyword-list {
-            li {
-                .box {
-                    a {
-                        height: 22px;
-                    }
-                }
-            }
-        }
-        .btn-delete {
-            position: absolute;
-            top: 4px;
-        }
-    }
-}
-
-.search-result-area {
-    display: flex;
-    padding-top: 48px;
-
-    .auto-complete {
-        position: relative;
-        //display: table-cell;
-        width: ((100% / 10) * 3);
-        padding-right: 32px;
-        @include mobile {
-            display: none !important;
-        }
-    }
-
-
-    .result-preview {
-        //display: table-cell;
-        width: ((100% / 10) * 7);
-        padding-left: 32px;
-        .result-category {
-            padding-bottom: 12px;
-        }
-    }
-
-    @include mobile {
-        display: block;
-        padding-top: 24px;
-        .result-preview {
-            display: block;
-            width: 100%;
-            padding-left: 0;
-            .result-category {
-                padding-bottom: 12px;
-            }
-        }
-    }
-}
-
-.result-preview-list {
-    ul {
-        @include clearfix;
-        > li {
-            float: left;
-            @include calc(width,50%,12px);
-            &:nth-child(odd) {
-                clear: left;
-                margin-right: 24px;
-            }
-            &:nth-child(2) ~ li {
-                margin-top: 24px;
-            }
-        }
-    }
-    .item {
-        position: relative;
-        display: block;
-        padding: 12px 17px;
-        border-radius: 8px;
-        background-color: #fff;
-        box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-        font-size: 0;
-        .image {
-            position: absolute;
-            top: 12px;
-            left: 17px;
-            max-width: 118px;
-            img {
-                width: 118px;
-            }
-        }
-        .info {
-            padding: 12px 0 12px 130px;
-            @include font-medium;
-            .name {
-                display: block;
-                font-weight: 700;
-                @include textEllipsis;
-            }
-            .sku {
-                color: $color-gray-1;
-            }
-            .price {
-                display: block;
-                margin-top: 16px;
-                font-weight: 700;
-            }
-        }
-    }
-
-    @include mobile {
-        ul {
-            > li {
-                @include calc(width,50%,4px);
-                &:nth-child(odd) {
-                    margin-right: 8px;
-                }
-                &:nth-child(2) ~ li {
-                    margin-top: 8px;
-                }
-            }
-        }
-        .item {
-            padding: 16px;
-            .image {
-                position: static;
-                max-width: 100%;
-                margin-bottom: 8px;
-                text-align: center;
-                img {
-                    width: auto;
-                    max-width: 128px;
-                }
-            }
-            .info {
-                padding: 0;
-            }
-        }
-    }
-}
 //앱 인 경우 퀵메뉴 리스트 안보이게
 html {
     &.app {
@@ -1701,6 +1367,40 @@ html {
         .KRP0032,
         .quick-menu-list {
             display: none;
+        }
+
+        .btn-app-ar {
+            a {
+                display:block !important;
+                width:56px !important;
+                height:56px !important;
+                padding:0 !important;
+                background: transparent !important;
+                background-image: linear-gradient(135deg, #9c72e7 28%, #f85784 89%) !important;
+                border-radius:28px !important;
+                box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15) !important;
+                overflow: hidden !important;
+                span {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    font-weight: bold;
+                    font-size: 25px;
+                    line-height: 1.3;
+                    color: #fff;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                }
+            }
+        }
+
+        #quickMenu {
+            .floating-menu {
+                position: relative;
+                right: auto;
+                bottom: auto;
+            }
         }
     }
 }

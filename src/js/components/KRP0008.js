@@ -213,8 +213,10 @@
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
+                var isTab = false;
                 self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
                 if(self.$rentalCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
                 }
 
@@ -226,9 +228,21 @@
 
                 self.$careshipCardList = self.$pdpInfoCareshipService.find('.select-box:eq(1)');
                 if(self.$careshipCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$careshipCardList, self.careCardList);
                 }
 
+                if(!isTab) {
+                    var $paymentAmount = self.$pdpInfoProductDetailInfo.find('.payment-amount');
+                    var $cardList = self.$pdpInfoProductDetailInfo.find('div.care-sibling-option > .select-box');
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        self.updateAssociatedCardList($cardList, self.careCardList);
+                    } else {
+                        self.updateAssociatedCardList($cardList, self.rentalCardList);
+                    }
+                }
 
                 //
                 self.$pdpMobileSlider.vcCarousel({
@@ -1356,7 +1370,6 @@
 
             //아이템 비교하기
             requestCompareItem: function(compareData, compare, $dm) {
-                console.log(compareData, compare, $dm);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
@@ -1376,13 +1389,22 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+
                 if(!isCompare){
-                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    //if(vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
+                        console.log(sendData['id'], i);
                         if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
-                self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
+                
+                var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
+                $dm.prop('checked', chk)
+                if(chk) {
+                    $dm.addClass('compare-select');
+                } else {
+                    $dm.removeClass('compare-select');
+                }
             },
         };
 
