@@ -2414,13 +2414,18 @@
             .item {
                 float:left;
                 position: relative;
-                overflow:hidden;
+                
                 width:25%;
                 padding:0 12px;
-                border-radius:10px;
+                
 
                 img {
                     width:100%;
+                }
+
+                .item-thumb {
+                    overflow:hidden;
+                    border-radius:10px;
                 }
 
                 .item-cont {
