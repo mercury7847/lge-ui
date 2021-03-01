@@ -16,7 +16,7 @@ $(document).ready(function(){
         //제조번호 카메라 버튼 노출
         //$('#appType').addClass("app-type");
 
-        $(".btn-app-ar a").on({
+        $(".btn-app-ar a").off("click").on({
             click : function(){
                 if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                     var obj = new Object();
