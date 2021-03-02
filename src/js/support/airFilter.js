@@ -299,7 +299,7 @@
                 if (result.success == true) {    
                     if (!self.isModelCheck) {
                         lgkorUI.alert('', {
-                            title: '모델명 후 검색 버튼을 선택하여 주세요.',
+                            title: '모델명 입력 후 검색 버튼을 선택하여 주세요.',
                             ok: function() {
                                 $('#modelCode').focus();
                             }

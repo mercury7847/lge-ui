@@ -57,6 +57,8 @@
             }
         }
     }
+
+    
     .driver-section {
         .banner-wrap {
             margin:0 0 40px;
@@ -988,4 +990,21 @@
 
         }
     }
+
+    .mobile-support-guide {
+        display: none;
+        margin:40px 16px 0;
+        padding-top:24px;
+
+        border-top:1px solid #ddd;
+
+        .bullet-list {
+            margin-top:0;
+        }
+        .btn-wrap {
+           margin-top:12px; 
+        }
+    }
+    
 }
+.mobile .support .mobile-support-guide {display: block;}

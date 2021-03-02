@@ -203,6 +203,20 @@
                                     <p>다운로드/소프트웨어 자료가 없습니다.</p>
                                 </div>
                             </div>
+
+                            <!-- 2021.03.02 추가 -->
+                            <div class="mobile-support-guide">
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "파일유형 종류 : PDF PDF, CHM CHM, HTML",
+                                        "안드로이드 운영체제(OS) 휴대전화에서 PDF파일을 확인하시려면 PDF 뷰어를 설치하셔야 합니다.",
+                                    ]
+                                })
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-link">PDF뷰어 다운로드</a>
+                                </div>
+                            </div>
+                            <!-- //2021.03.02 추가 -->
                             
                             <div class="survey-banner-wrap">
                                 <div class="banner">    
@@ -231,6 +245,9 @@
 
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
     @@include('./CS/modal/file-detail-popup.html')
+
+    <!-- 파일 이메일 전송 팝업 -->
+    @@include('./CS/modal/file-send-to-email.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
