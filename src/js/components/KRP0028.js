@@ -1,6 +1,6 @@
 (function() {
     var subTabItemTemplate = '<li><a href="#{{categoryId}}">{{categoryName}}</a></li>';
-    var awardsListItemTemplate = '<li class="items" data-id="{{storyId}}" data-award-list="{{awardList}}"><div class="inner">' +
+    var awardsListItemTemplate = '<li class="items" data-id="{{storyId}}" data-award-list="{{awardList}}" data-category-url="{{sitemapLinkPath}}"><div class="inner">' +
         '<div class="thumb">' +
             '<img src="{{storyListThumbnailPath}}" alt="{{storyListThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);">' +
             '<p class="hidden pc">{{storyListThumbnailAltText}}</p>' +
@@ -91,7 +91,8 @@
                 var $li = $(this).parents('li');
                 var awardList = $li.data('awardList');
                 var categoryName = $li.find('div.flag-wrap span.flag').text();
-                self.openAwardsPopup(categoryName,awardList);
+                var categoryUrl = $li.data('categoryUrl');
+                self.openAwardsPopup(categoryName,categoryUrl,awardList);
             });
 
             self.$pagination.on('page_click', function(e, data) {
@@ -183,11 +184,15 @@
         },
         */
 
-        openAwardsPopup: function(categoryName, awardList) {
+        openAwardsPopup: function(categoryName, categotyUrl, awardList) {
             var $popup = $('#awardsPopup');
             //$popup.find('h1.tit span').text(data.title);
             $popup.find('p.com-pop-tit').text(categoryName);
-            
+            if(categotyUrl) {
+                $popup.find('a.category').attr('href',categotyUrl);
+            } else {
+                $popup.find('a.category').attr('href','#');
+            }
             var array = [];
             var modelInfo = awardList.split(',');
             if(modelInfo) {
