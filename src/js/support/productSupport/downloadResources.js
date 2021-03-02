@@ -363,8 +363,6 @@
                 var _url = $popup.data('ajax');
                 var _fileUrl = $popup.data('fileUrl');
 
-                console.log(_url)
-
                 if( self.emailValidate.validate().success ) {
                     var param = {
                         email : $this.find('#userEmail').val(),
@@ -374,6 +372,13 @@
                     lgkorUI.requestAjaxDataPost(_url, param, function(result){
                         var data = result.data;
                         
+                        lgkorUI.alert("", {
+                            title: result.data.resultMessage,
+                            ok: function(el) {
+                                $(el).vcModal('hide');
+                                $('#fileSendToEmail').vcModal('hide');
+                            }
+                        });
                     })
                 }
             });
