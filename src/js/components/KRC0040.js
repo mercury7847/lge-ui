@@ -111,9 +111,13 @@ $(window).ready(function(){
 				var leng = $moreInfos.children().length;
 				var itemheight = $moreInfos.children().height();
 				$moreInfos.height(itemheight*leng);
+
+				$moreInfos.closest('.product-info-more').addClass('open');
 			} else{
 				$moreInfos.data('isOpen', false);
 				$moreInfos.height(0);
+
+				$moreInfos.closest('.product-info-more').removeClass('open');
 			}
 		}
 

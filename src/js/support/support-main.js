@@ -55,7 +55,7 @@
                     var $this = $(this);
                     var $item = $this.find('.item, .item-list');
 
-                    $item.filter(':gt(3)').addClass('hidden').attr('data-more=hidden');
+                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden');
                 })
 
                 $moreBtn.on('click', function(e){
