@@ -902,17 +902,15 @@ CS.MD.commonModel = function() {
                 var $this = $(this),
                     $subCategory = self.$modelBox.find('#subCategorySelect');
                 
-                if (!$this.val()) {
-                    self.param = $.extend(self.param, {
-                        category: $this.val(),
-                        categoryNm: $this.find('option:selected').text(),
-                        subCategory: $subCategory.val(),
-                        subCategoryNm: $subCategory.find('option:selected').text(),
-                        page: 1
-                    });
-    
-                    self._requestData();
-                }
+                self.param = $.extend(self.param, {
+                    category: $this.val(),
+                    categoryNm: $this.find('option:selected').text(),
+                    subCategory: $subCategory.val(),
+                    subCategoryNm: $subCategory.find('option:selected').text(),
+                    page: 1
+                });
+
+                self._requestData();
             });
 
             // 모델명 선택 - 서브 카테고리 선택
