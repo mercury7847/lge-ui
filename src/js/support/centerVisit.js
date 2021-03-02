@@ -634,8 +634,7 @@
                     break;
                 case 'center':
                     keywords = {
-                        latitude:self.latitude,
-                        longitude:self.longitude,
+                        searchCity: self.$citySelect2.val(),
                         searchKeyword: self.$address1.val()
                     };
                     break;

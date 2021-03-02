@@ -236,6 +236,15 @@
                 data.categoryNm = $('#categoryNm').val();
                 data.subCategory = $('#subCategory').val();
                 data.subCategoryNm = $('#subCategoryNm').val();
+            } else {
+                if (!self.isPSP) {
+                    data.category = $('#category').val();
+                    data.categoryNm = $('#categoryNm').val();
+                    data.subCategory = $('#subCategory').val();
+                    data.subCategoryNm = $('#subCategoryNm').val();
+                    data.modelCode = $('#modelCode').val();
+                    data.productCode = $('#productCode').val();
+                }
             }
 
             if (self.isPSP) {
