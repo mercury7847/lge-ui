@@ -439,8 +439,10 @@
     
                         self.setPageData(data.pagination);
 
+                        /*
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         lgkorUI.checkWishItem(ajaxUrl);
+                        */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }

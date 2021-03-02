@@ -5,6 +5,7 @@
 
 .KRP0027 {
     .page-header.border.wide {
+        border: 0 !important; // 부트스트랩 충돌 추가
         .tabs-wrap {
             text-align:left;
             &.btn-type {
