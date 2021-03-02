@@ -102,6 +102,7 @@
                 '</div>' +
             '</div>' +
             '<div class="info-price">' +
+                '{{#if obsFlag=="Y"}}' +
                 '<div class="price-info rental">' +
                     '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                 '</div>' +
@@ -113,6 +114,7 @@
                         '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
+                '{{/if}}' +
             '</div>' +
         '</div>' +
     '</a></li>';
