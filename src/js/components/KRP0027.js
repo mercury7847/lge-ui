@@ -184,7 +184,7 @@ $(window).ready(function(){
             }
             console.log("### setViewContents ###", sendata)
             lgkorUI.requestAjaxDataPost(VIEWER_DATA_URL, sendata, function(result){    
-                changeViewContents(result.data[0].storyinfo);
+                changeViewContents(result.data[0]);
 
                 lgkorUI.hideLoading();
             });
@@ -218,7 +218,7 @@ $(window).ready(function(){
 
         function setContListScrolled(){
             if(scrollAbled){
-                var page = contList.data('page');
+                var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
                 if(page < totalpage){
                     var scrolltop = contList.scrollTop();
@@ -243,8 +243,8 @@ $(window).ready(function(){
             var sendata = {
                 page: page,
                 superCategoryId: idxs.superCategoryId,
-                categoryId: idxs.categoryId,
-                year: idxs.year
+                categoryId: mode != REQUEST_MODE_SUPERCATEGORY ? idxs.categoryId : "",
+                year: mode == REQUEST_MODE_YEAR ? idxs.year : ""
             }
             console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
@@ -262,13 +262,15 @@ $(window).ready(function(){
                     contList.find('.video-list').append(contlistemplate);
                 }
 
+                var total = data.storyListByYear[0].yearCnt;
+                $('#totalCount').text("총 " + total + "개");
+
                 var tabTemplate;
-                var tabIdxs = getTabCateIDs();
                 switch(contLoadMode){
                     case REQUEST_MODE_SUPERCATEGORY:
                         categoryTab.find('.tabs').empty();
 
-                        if(tabIdxs.superCategoryId != ""){
+                        if(sendata.superCategoryId != ""){
                             tabTemplate = vcui.template(categoryTabTemplate, {categoryList: data.categoryList});
                             categoryTab.find('.tabs').append(tabTemplate);
                             categoryTab.show().find('.ui_tab').vcTab('update').vcSmoothScroll('refresh');
