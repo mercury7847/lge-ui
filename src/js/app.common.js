@@ -35,14 +35,18 @@ $(document).ready(function(){
         //제조번호 카메라 버튼 이벤트
         $(".app-exec").off("click").on({
             click : function(){
-                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    var obj = new Object();
-                    obj.command = "scanBarcode";
-                    obj.callback ="returnBarcode";
-                    var jsonString= JSON.stringify(obj);
-                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                if (isApp()) {
+                    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        var obj = new Object();
+                        obj.command = "scanBarcode";
+                        obj.callback ="returnBarcode";
+                        var jsonString= JSON.stringify(obj);
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }else{
+                        void android.openBarcodeScanner("returnBarcode");
+                    }
                 }else{
-                    void android.openBarcodeScanner("returnBarcode");
+                    console.log("mobile web!");
                 }
             }
         });
