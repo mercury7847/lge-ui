@@ -29,6 +29,16 @@ $(document).ready(function(){
         });
     }
 
+    setBarcode();
+    $(window).on({
+        resize : function(){
+            setBarcode();
+        }
+    })
+    
+});
+
+var setBarcode = function(){
     if(window.breakpoint.isMobile) {
         //제조번호 카메라 버튼 노출
         $('#appType').addClass("app-type");
@@ -55,15 +65,16 @@ $(document).ready(function(){
                 }
             }
         });
-        var returnBarcode = function(barcode){
-            if(barcode != null && barcode != "" && barcode != undefined){
-                $("#inp02").val(barcode);
-            }
-        }
     } else {
         //제조번호 카메라 버튼 노출
         $('#appType').removeClass("app-type");
         //제조번호 카메라 버튼 이벤트
         $(".app-exec").off("click");
     }
-});
+}
+
+var returnBarcode = function(barcode) {
+    if(barcode != null && barcode != "" && barcode != undefined){
+        $("#inp02").val(barcode);
+    }
+}
