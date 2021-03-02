@@ -390,7 +390,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
             self.$mobileNaviWrapper.find('img').remove();
-            self.$mobileNaviItems.find('> a').addClass("ui_accord_toggle");
+            self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
             self.$mobileNaviItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
             self.$mobileNaviItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
             self.$mobileNaviItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
@@ -402,7 +402,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).find('.column > .category').attr("data-accord-group", "group_"+gid);
 
                 $(item).find('.column > .category > li').each(function(cdx, child){
-                    var toggle = $(child).find('> a');
+                    var toggle = $(child).find('> a, > span');
                     var subcategory = $(child).find('> .sub-category');
                     var categorycontent = $(child).find('> .category-content');
                     if(!subcategory.length && !categorycontent.length){
