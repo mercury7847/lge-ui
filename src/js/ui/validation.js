@@ -186,19 +186,24 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         delete rObj[key];
                     }
                 }else{
-                    if(obj.minLength || obj.maxLength){
-                        if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
-                            rObj[key] = isFalse? val : obj.errorMsg;
+                    var trimstr = val.replace(/[_-]/gi, '');
+                    if(trimstr.length){
+                        if(obj.minLength || obj.maxLength){
+                            if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
+                                rObj[key] = isFalse? val : obj.errorMsg;
+                            }else{
+                                delete rObj[key];
+                            }
                         }else{
-                            delete rObj[key];
+    
+                            if(self._defaultCheckFunc(val) == isFalse){
+                                rObj[key] = isFalse? val : obj.errorMsg;
+                            }else{
+                                delete rObj[key];
+                            }
                         }
-                    }else{
-
-                        if(self._defaultCheckFunc(val) == isFalse){
-                            rObj[key] = isFalse? val : obj.errorMsg;
-                        }else{
-                            delete rObj[key];
-                        }
+                    } else{
+                        rObj[key] = isFalse? val : obj.errorMsg;
                     }
                 }
             } 
@@ -338,6 +343,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         validate : function validate(){
             var self = this;
             var rObj = self._setCheckValidate();
+            console.log("validate:", rObj)
 
             var firstName = vcui.object.keys(rObj)[0];
             if(firstName){

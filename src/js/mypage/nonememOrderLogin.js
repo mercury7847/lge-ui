@@ -46,6 +46,7 @@
             },
             userPhone:{
                 required: true,
+                minLength:10,
                 errorMsg: "휴대폰 번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
@@ -68,7 +69,7 @@
                 type = "EMAIL";
                 result = emailInquiryValidation.validate();
             } else{
-                type = "PHONE"
+                type = "PHONE";
                 result = phoneInquiryValidation.validate();
             }
             if(result.success) sendConfirm(type)
