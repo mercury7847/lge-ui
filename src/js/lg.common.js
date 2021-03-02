@@ -1202,7 +1202,11 @@ var isApp = function(){
                     } else{
                         $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
                     }
-                    callbackSuccess(data);
+                    if(data.data && data.data.listData && data.data.listData.length > 0) {
+                        callbackSuccess(data.data.listData[0]);
+                    } else {
+                        callbackSuccess({wishItemId:null});
+                    }
                 } else {
                     callbackFail(data);
                     if(data.alert && !vcui.isEmpty(data.alert)) {
@@ -1415,10 +1419,19 @@ var isApp = function(){
             var $wishItem = $('input['+checkAttr+']');
 
             lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var listData = result.data.listData;
+                var data = result.data.data;
+                var listData = data.listData;
+                var wishListId = data.wishListId;
+                $wishItem.each(function(idx, item){
+                    var $item = $(item);
+                    if(!$item.data('wishListId')) {
+                        console.log('null',$item);
+                        $item.data('wishListId', wishListId);
+                    };
+                });                
                 if(listData) {
                     listData.forEach(function(item,index){
-                        var $wish = $wishItem.find('[checkAttr='+item.sku+']');
+                        var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
                         if($wish.length > 0) {
                             $wish.data(item);
                             $wish.prop("checked",true);

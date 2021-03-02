@@ -77,6 +77,7 @@
             if(searchUrl) {
                 var fi = searchUrl.indexOf('?');
                 var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURI(search)+"&force="+force;
+                console.log(url);
                 location.href = url;
             }
         },

@@ -115,8 +115,8 @@
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
-                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
+                            '<input type="checkbox" id="wish-{{modelId}}-{{index}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<label for="wish-{{modelId}}-{{index}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
@@ -273,12 +273,11 @@
                             param.type = "remove";
                         }
 
-                        console.log("requestWish:", param)
-                        
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         
                         var success = function(data) {
-                            $this.data("wishListId",data.wishItemId);
+                            $this.data("wishItemId",data.wishItemId);
+                            $this.prop("checked",wish);
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
@@ -426,6 +425,7 @@
 
                     if(arr.length){
                         arr.forEach(function(item, index) {
+                            item.index = index;
                             var listItem = self.makeListItem(item);
                             self.$productList.append(listItem);
                         });

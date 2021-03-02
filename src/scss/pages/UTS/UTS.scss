@@ -599,9 +599,8 @@
         position: relative;
         margin-top: 80px;
         padding: 0 40px 120px;
-        @media screen and (min-width: 1024px){
+        @media screen and (min-width: 1025px){
             &.w-filter {
-                //margin-top: 68px;
                 padding: 0 40px 120px 280px;
             }
         }
