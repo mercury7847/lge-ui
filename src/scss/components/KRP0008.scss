@@ -938,9 +938,8 @@
         .option-tabs {
             margin-top: 48px;
             .tabs-wrap.new-type .tabs {
-                width: 100%;
-                margin: 0;
-                padding: 0;
+                display: block;
+                max-width: none;
                 li {
                     width: 50%;
                     &.on {
