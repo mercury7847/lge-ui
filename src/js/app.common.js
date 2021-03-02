@@ -29,15 +29,17 @@ $(document).ready(function(){
         });
     }
 
+    /*
     setBarcode();
     $(window).on({
         resize : function(){
             setBarcode();
         }
-    })
-    
+    });
+    */
 });
 
+/*
 var setBarcode = function(){
     if(window.breakpoint.isMobile) {
         //제조번호 카메라 버튼 노출
@@ -78,3 +80,4 @@ var returnBarcode = function(barcode) {
         $("#inp02").val(barcode);
     }
 }
+*/
