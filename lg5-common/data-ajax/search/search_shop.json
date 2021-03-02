@@ -295,7 +295,8 @@
                 "hasCare":true,
                 "hasReview":true,
                 "rating":"40",
-                "review":"34"
+                "review":"34",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -318,7 +319,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -341,7 +343,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -364,7 +367,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             }
         ]
     }
