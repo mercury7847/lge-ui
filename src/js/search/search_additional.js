@@ -33,6 +33,7 @@
                 '</div>' +
             '</div>' +
             '<div class="info-price">' +
+                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
@@ -46,6 +47,7 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
+                '{{/if}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -62,6 +64,7 @@
                 '</div>' +
             '</div>' +
             '<div class="info-price">' +
+                '{{#if obsFlag=="Y"}}' +
                 '<div class="price-info rental">' +
                     '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                 '</div>' +
@@ -73,6 +76,7 @@
                         '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
+                '{{/if}}' +
             '</div>' +
         '</div>' +
     '</a></li>';
@@ -362,12 +366,32 @@
                     self.requestSearch(postData);
                 });
 
+                //검색 이동 로그 쌓기
+                $('ul.result-list').on('click', 'a', function(e){
+                    self.sendLog(this);
+                });
+                
                 //스크롤 이벤트
                 $(window).on('scroll', function(e){
                     self._setScrollMoved();
                 });
                 self._setScrollMoved();
                 
+            },
+
+            sendLog: function(dm) {
+                var self = this;
+                var search = self.$contentsSearch.attr('data-search-value');
+                var index = self.getTabItembySelected().parent().index();
+                var param = {
+                    "index":index,
+                    "linkUrl":dm.href,
+                    "search":search
+                };
+                var ajaxUrl = self.$contentsSearch.data('logUrl');
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, null, true);
+                }
             },
 
             _setScrollMoved: function() {

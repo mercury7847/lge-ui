@@ -51,7 +51,8 @@
                     "desc":"적용모델 : H-62HSGAKOR1 외",
                     "price":"138000",
                     "originalPrice":"150000",
-                    "carePrice":null
+                    "carePrice":null,
+                    "obsFlag":"Y"
                 },
                 {   "url":"#",
                     "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
@@ -61,7 +62,8 @@
                     "desc":"적용모델 : H-62HSGAKOR2 외",
                     "price":null,
                     "originalPrice":null,
-                    "carePrice":"69800"
+                    "carePrice":"69800",
+                    "obsFlag":"Y"
                 }
             ]
         },
@@ -180,7 +182,8 @@
                 "hasCare":true,
                 "hasReview":true,
                 "rating":"40",
-                "review":"34"
+                "review":"34",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -203,7 +206,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -226,7 +230,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             },
             {
                 "url":"#",
@@ -249,7 +254,8 @@
                 "hasCare":false,
                 "hasReview":false,
                 "rating":"39",
-                "review":"33"
+                "review":"33",
+                "obsFlag":"Y"
             }
         ]
     }
