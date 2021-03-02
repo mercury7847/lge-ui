@@ -16,12 +16,23 @@
                 }
             }
         },
+        swiper: null,
+        config : {
+            loop : false,
+            slidesPerView : 'auto',
+            allowTouchMove : true,
+            breakpoints : {
+                1024 : {
+                    allowTouchMove : false,
+                }
+            }
+        },        
         setNavleft : function(){
             var self = this;
             var $container = self.el.nav;
             var $nav = $container.find('.tabs-wrap');
             var $navUl = $nav.find('.tabs');
-            var $list = $nav.find('li');
+            var $list = $nav.find('.swiper-slide');
             var $curList = $list.filter('.on');
             var curVal;
 
@@ -35,14 +46,16 @@
 
             self.activeSticky(winTop);
 
-            self.el.nav.find('li>a').each(function(){
+            self.el.nav.find('.swiper-slide a').each(function(){
                 var $this = $(this);
-                var $list = $this.closest('li');
+                var $list = $this.closest('.swiper-slide');
+                var curIndex = $list.index();
                 var $currentSection = $($this.attr('href'));
 
                 if( $currentSection.length && self.scrollFlag == true) {
                     if( winTop >= $currentSection.offset().top && winTop <= $currentSection.offset().top + $currentSection.outerHeight()) {
                         $list.addClass(self.activeClass).siblings().removeClass(self.activeClass);
+                        self.swiper.slideTo(curIndex);
                         self.setNavleft();
                         return
                     }
@@ -53,11 +66,12 @@
             var self = this;
             var winTop = $(window).scrollTop();
 
+            self.swiper = new Swiper('.anchor-sticky .swiper-container', self.config);
             self.activeSticky(winTop);
             self.setNavleft();
-            self.el.nav.find('li>a').on('click', function(e){
+            self.el.nav.find('.swiper-slide a').on('click', function(e){
                 var $this = $(this);
-                var $list = $this.closest('li');
+                var $list = $this.closest('.swiper-slide');
                 var $currentSection = $($this.attr('href'));
                 var curIndex = $list.index();
                 var navHeight = self.el.nav.find('.anchor-sticky').outerHeight();
@@ -71,6 +85,7 @@
                     _scrollTop = self.el.nav.offset().top
                 }
                 $list.addClass(self.activeClass).siblings().removeClass(self.activeClass);
+                self.swiper.slideTo(curIndex);
                 $('html,body').stop().animate({
                     scrollTop : _scrollTop
                 }, function(){
@@ -124,6 +139,8 @@
         
         psp.init();
         sticky.init();
+
+        
     });
 
     $(window).on('scroll', function(){

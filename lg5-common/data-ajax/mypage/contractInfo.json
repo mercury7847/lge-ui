@@ -30,7 +30,7 @@
         },
         "paymentInfo": {
             "isGrouping": false,
-            "associCardType": "",
+            "associCardType": "A01",
             "monthlyPrice": "38,800원",
             "withdrawDate": "매월 22일",
             "paymentMethod": "BANK",

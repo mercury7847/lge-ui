@@ -123,7 +123,7 @@
     var checkModelSuccess = false;
     var checkSerialSuccess = false;
 
-    var myProductRegistration = {         
+    var myProductRegistration = {
         init: function() {
             var self = this;
             vcui.require(['ui/validation', 'ui/pagination'], function () {             
@@ -401,6 +401,7 @@
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
                                 self.requestOwnData();
+                                $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                             });
                         }
                     } else {

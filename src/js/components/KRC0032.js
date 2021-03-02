@@ -4,8 +4,17 @@ $(window).ready(function(){
 	$('.KRC0032').buildCommonUI();
 
 	vcui.require(['ui/carousel'], function () {
+
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
-			$(slide).vcCarousel({
+			$(slide).on('carouselinit', function(e,data){
+
+				vcui.require(['ui/videoBox','ui/youtubeBox'], function(){
+
+					$('.KRC0032').find(".ui_carousel_slider .youtube-box").vcYoutubeBox();
+					$('.KRC0032').find(".ui_carousel_slider .animation-box").vcVideoBox();
+				});
+
+			}).vcCarousel({
 				infinite: false,
 				autoplay: true,
 				prevArrow:'.btn-arrow.prev',
@@ -14,11 +23,14 @@ $(window).ready(function(){
 				slidesToScroll: 1,
 				playSelector: '.btn-play.play',
 				adaptiveHeight:true,
+
 			}).on('carouselbeforechange', function(e, slide, prev, next){
+
 				if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
 					$(slide.$slides.get(prev)).find("video").get(0).pause();
 				}
 			}).on('carouselafterchange', function(e, slide, prev, next){
+
 				if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
 					$(slide.$slides.get(prev)).find("video").get(0).play();
 				}
