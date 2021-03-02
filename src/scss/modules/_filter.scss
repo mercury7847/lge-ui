@@ -76,7 +76,7 @@
         @include tablet {
             position: fixed;
             z-index:20;
-            height:75px;
+            height:48px;
             padding: 0 16px;
             &::after {
                 display: inline-block;
@@ -89,7 +89,7 @@
                 background-color: #222;
             }
             .tit {
-                padding-top:24px;
+                padding-top:12px;
                 font-size: 16px;
             }
         }
@@ -101,7 +101,7 @@
     .plp-filter-wrap {
         @media screen and (max-width: 1024px) {
             //padding:40px 20px 115px;
-            padding:75px 16px 115px;
+            padding:48px 16px 115px;
         }
 
         .btn-reset {
@@ -128,8 +128,8 @@
             @media screen and (max-width: 1024px) {
                 //display:none;
                 position: fixed;
-                top: 24px;
-                right: 56px;
+                top: 8px;
+                right: 52px;
                 width: 32px;
                 height: 32px;
                 margin: 0 !important;
@@ -223,7 +223,7 @@
                                 word-break:break-all;
                             }
                             @media screen and (max-width: 1024px) {
-                                padding:32px 0 16px;
+                                padding:32px 0 24px;
                             }
                         }
                     }
@@ -235,9 +235,9 @@
                         padding:0 1px 32px 1px;
                         outline-color: #fff;
                         @media screen and (max-width: 1024px) {
-                            padding:20px 0 32px 0;
+                            padding:0 0 32px 0;
                             //padding:20px 8px 32px;
-                            border-top:1px solid #ededed;
+                            //border-top:1px solid #ededed;
                         }
                     }
                     .cont {
@@ -459,8 +459,8 @@
 
         .filter-close {
             position:fixed;
-            top:24px;
-            right:16px;
+            top:8px;
+            right:12px;
             width:32px;
             height:32px;
             z-index:20;
@@ -589,7 +589,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        padding: 32px 0 23px;
+        padding: 40px 0;
         border-bottom: 1px solid #ddd;
 
         .filter-search-area {
