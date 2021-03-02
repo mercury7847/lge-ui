@@ -2,6 +2,10 @@
 
 /* layer popup */
 .popup-wrap {
+    .pop-dscl {
+        font-size:14px;
+        margin-bottom:40px;
+    }
     &.align-between {
         display: flex;
         flex-direction: column;
@@ -120,7 +124,7 @@
 
 
 
-    .pop-conts {
+    .pop-conts {        
         .section {
             margin-top:80px;
             &:first-child {
