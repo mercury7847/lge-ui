@@ -754,6 +754,8 @@
                 $('#popup-cancel').find('#cancelReason option').eq(0).prop('selected', true);
                 $('#popup-cancel').find('#cancelReason').vcSelectbox('update');
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
+
+                $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', true);
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
@@ -775,13 +777,13 @@
                 productPrices = takebackProd[0].productPrice ? parseInt(takebackProd[0].productPrice) : 0;
                 discountPrices = takebackProd[0].discountPrice ? parseInt(takebackProd[0].discountPrice) : 0;
                 mempointPrices = takebackProd[0].memberShipPoint ? parseInt(takebackProd[0].memberShipPoint) : 0;
-                console.log("productPrices:", productPrices);
-                console.log("discountPrices:", discountPrices);
-                console.log("mempointPrices:", mempointPrices);
+                
                 $('#popup-takeback').find('#slt01 option').prop('selected', false);
                 $('#popup-takeback').find('#slt01 option').eq(0).prop('selected', true);
                 $('#popup-takeback').find('#slt01').vcSelectbox('update');
                 $('#popup-takeback').find('textarea').attr('disabled', "disabled").val('');
+
+                $('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
 
             //취소/반품 정보...
@@ -817,8 +819,6 @@
             } else{
                 bankInfoBlock.hide();
             }
-
-            popup.find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', true);
 
             popBankInfo = {};
             popBankConfirm = false;
