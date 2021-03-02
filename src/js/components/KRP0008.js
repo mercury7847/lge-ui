@@ -411,7 +411,7 @@
                         sendData['wishItemId'] = data.wishItemId;
                     };
                     var fail = function(data) {
-                        $dm.find('span.chk-wish-wrap input').prop("checked",!checked);
+                        $(this).prop("checked",!checked);
                     };
 
                     var param = JSON.parse(JSON.stringify(sendData));
