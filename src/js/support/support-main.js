@@ -50,7 +50,14 @@
             hiddenVisible : function(){
                 var self = this;
                 var $moreBtn = $(self.el.btn);
-            
+
+                $(self.el.container).each(function(){
+                    var $this = $(this);
+                    var $item = $this.find('.item, .item-list');
+
+                    $item.filter(':gt(3)').addClass('hidden').attr('data-more=hidden');
+                })
+
                 $moreBtn.on('click', function(e){
                     var $this = $(this);
                     var $wrap = $this.closest(self.el.container);
