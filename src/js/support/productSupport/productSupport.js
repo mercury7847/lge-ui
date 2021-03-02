@@ -92,58 +92,55 @@
                     self.scrollFlag = true
                 })
             });
+            $(window).on('scroll', function(){
+                sticky.scroll();
+            });
         }
     }
     
+    var psp = {
+        init: function() {
+            var self = this;
+
+            lgkorUI.recentlySearch.addCookie($('#modelCode').val());
+
+            lgkorUI.initProductSlider();
+            $('.related-info .info-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+        }
+    }
     
     $(window).ready(function() {
-        var psp = {
-            init: function() {
-                var self = this;
-
-                lgkorUI.initProductSlider();
-                $('.related-info .info-slider').vcCarousel({
-                    infinite: false,
-                    autoplay: false,
-                    slidesToScroll: 3,
-                    slidesToShow: 3,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth: true
-                            }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                slidesToScroll: 3,
-                                slidesToShow: 3
-                            }
-                        }
-                    ]
-                });
-            }
-        }
-        
-        
         psp.init();
         sticky.init();
-
-        
-    });
-
-    $(window).on('scroll', function(){
-        sticky.scroll();
     });
 })();
