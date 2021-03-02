@@ -54,10 +54,10 @@
                     var $this = $(this);
                     var $item = $this.find(self.el.hidden);
 
-                    if( $item.length <= 3) {
-                        $this.find(self.el.btn).hide();
-                    } else {
+                    if( $item.length ) {
                         $this.find(self.el.btn).show();
+                    } else {
+                        $this.find(self.el.btn).hide();
                     }
                 })
             },
@@ -70,8 +70,17 @@
                     var $item = $this.find('.item');
                     var $itemList = $this.find('.item-list');
 
-                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
-                    $itemList.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                    $item.each(function(i){
+                        if( i >= 3) {
+                            $(this).addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                        }
+                    })
+
+                    $itemList.each(function(i){
+                        if( i >= 3) {
+                            $(this).addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                        }
+                    })
                 })
 
                 $moreBtn.on('click', function(e){
@@ -89,10 +98,11 @@
                     
                     e.preventDefault();
                 })
+
+                self.btnShow();
             },
             init : function(){
                 this.hiddenVisible();
-                this.btnShow();
             }
         },
         slide : {
