@@ -328,6 +328,8 @@
         setOsActive: function(os) {
             var self = this;
             var $formWrap = self.$driverSec.find('.form-wrap');
+            var $listDesc = self.$driverSec.find('.download-list-wrap > .desc');
+            var category = self.param.category;
             var subCategory = self.param.subCategory;
 
             if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
@@ -335,6 +337,12 @@
                 $formWrap.show();
             } else {
                 $formWrap.hide();
+            }
+
+            if (category == "CT50019096") {
+                $listDesc.hide();
+            } else {
+                $listDesc.show();
             }
         },
         setSurvey: function(data) {
