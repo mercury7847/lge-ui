@@ -733,8 +733,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     break;
                 case 'center':
                     keywords = {
-                        latitude:self.latitude,
-                        longitude:self.longitude,
+                        searchCity: self.$citySelect2.val(),
                         searchKeyword: self.$address1.val()
                     };
                     break;
@@ -919,17 +918,10 @@ function moveDetail(el, detailUrl, windowHeight) {
             var keyword = self.$address1.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
-                var callback = function() {
-                    self._loadStoreData()
-                };
-
                 self.schReaultTmplID = "search";
                 self.searchResultMode = true;
-
-                // $(window).off('keyup.searchShop');
-
-                self.searchAddressToCoordinate(self.$citySelect2.val(), callback);
-
+                
+                self._loadStoreData();
                 self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
