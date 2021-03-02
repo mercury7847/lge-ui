@@ -378,7 +378,7 @@
             sendLog: function(dm) {
                 var self = this;
                 var search = self.$contentsSearch.attr('data-search-value');
-                var index = self.getTabItembySelected().parent().index();
+                var index = $(dm).parents('.result-list-wrap').data('logIndex');
                 var param = {
                     "index":index,
                     "linkUrl":dm.href,
