@@ -17,7 +17,7 @@
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
-            '{{#if !disabled}}' +
+            '{{#if !disabled && obsBtnFlag=="enable"}}' +
                 '<div class="col btn-col">' +
                     '{{#if typeFlag=="A"||typeFlag=="P"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
                     '{{#if typeFlag=="A"||typeFlag=="C"}}<button type="button" class="btn size border rentalcart"><span>렌탈 장바구니</span></button>{{/if}}' +

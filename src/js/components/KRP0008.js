@@ -145,6 +145,7 @@
                 
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
+                //var defaultRentalInfo = n
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
@@ -195,9 +196,16 @@
                 }
 
                 //케어십 가격 정보 정리
+                var careSelectIndex = 0;
                 self.careshipInfoData = null;
                 if(typeof careshipInfo !== 'undefined' && careshipInfo.length > 0) {
                     self.careshipInfoData = careshipInfo;
+                    for (var i = 0, len = careshipInfo.length; i < len; i++) {
+                        if(careshipInfo[i].representChargeFlag == "Y") {
+                            careSelectIndex = index;
+                            break;
+                        }
+                    }
                 }
 
                 //케어십 계약기간
@@ -208,12 +216,13 @@
                 }
 
                 //렌탈 케어솔루션 제휴카드 리스트 정리
+                var isTab = false;
+
                 self.rentalCardList = [];
                 if(typeof rentalAssociatedCardList !== 'undefined' && rentalAssociatedCardList.length > 0) {
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
-                var isTab = false;
                 self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
                 if(self.$rentalCardList.length > 0) {
                     isTab = true;
@@ -238,8 +247,10 @@
                     var $careshipService = $paymentAmount.siblings('.careship-service');
                     var checkinput = $careshipService.find('input[type=radio]:checked');
                     if(checkinput.length > 0) {
+                        //케어쉽 선택 버튼이 있으므로 케어타입
                         self.updateAssociatedCardList($cardList, self.careCardList);
                     } else {
+                        //렌탈타입
                         self.updateAssociatedCardList($cardList, self.rentalCardList);
                     }
                 }
