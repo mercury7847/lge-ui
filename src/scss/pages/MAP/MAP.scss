@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
-$main-hd-height: 115px; // 설정 화면 Header 높이값
-$sub-hd-height: 106px;  // 서브 화면(알림, 오픈소스) Header 높이값
+$main-hd-height: 68px; // 설정 화면 Header 높이값, 초기 115px
+$sub-hd-height: 68px;  // 서브 화면(알림, 오픈소스) Header 높이값, 초기 106px
 $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
 
 @mixin font($size, $line) {
