@@ -408,14 +408,24 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
                     var success = function(data) {
-                        sendData['wishItemId'] = data.wishItemId;
+                        sendData.wishItemId = data.wishItemId;
+                        if(!sendData.wishListId) {
+                            sendData.wishListId = data.wishListId;
+                        }
+                        $(this).prop("checked",checked);
                     };
                     var fail = function(data) {
                         $(this).prop("checked",!checked);
                     };
 
                     var param = JSON.parse(JSON.stringify(sendData));
-                    param.wish = checked;
+                    if(checked){
+                        param.type = "add";
+                    } else{
+                        param.type = "remove";
+                    }
+                    //param.wish = checked;
+                    console.log(param);
 
                     lgkorUI.requestWish(
                         param,
