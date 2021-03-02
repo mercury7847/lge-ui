@@ -325,6 +325,12 @@ var AddressManagement = (function() {
                 itemList.forEach(function(item, index) {
                     item.index = index;
                     item.phoneString = item.mobilePhone ? vcui.number.phoneNumber(item.mobilePhone) : (item.phone ? vcui.number.phoneNumber(item.phone) : '');
+
+                    item.addressNickName = item.addressName;
+                    item.receiverUser = item.name;
+                    item.phoneNumber = item.mobilePhone;
+                    item.telephoneNumber = item.phone;
+
                     item.jsonData = self._encodeAddressData(item);
                     self.$addressLists.append(vcui.template(addressItemTemplate, item));
                 });
@@ -371,6 +377,7 @@ var AddressManagement = (function() {
                     var ajaxUrl = self.$content.attr('data-remove-url');
                     var param = {addressID:addressID, page:self.$pagination.attr("data-page")};
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                        console.log("### remove ###")
                         self._updateList(result);
                     });
 

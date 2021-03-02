@@ -266,7 +266,7 @@
         &:before {
             content:' ';
             position:absolute;
-            bottom:0;
+            bottom:2px;
             left:0;
             z-index:1;
             width:100%;
@@ -275,8 +275,9 @@
         }
         .tabs {
             @include mobile {
-                width:100%;
-                padding:0;
+                display: block;
+                max-width: none;
+                padding: 2px;
             }
             li {
                 width:206px;
