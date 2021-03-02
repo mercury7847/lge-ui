@@ -53,9 +53,11 @@
 
                 $(self.el.container).each(function(){
                     var $this = $(this);
-                    var $item = $this.find('.item, .item-list');
+                    var $item = $this.find('.item');
+                    var $itemList = $this.find('.item-list');
 
-                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden');
+                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                    $itemList.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');;
                 })
 
                 $moreBtn.on('click', function(e){
