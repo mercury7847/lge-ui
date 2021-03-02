@@ -193,6 +193,138 @@
               ]
           }
       ],
+      "bankList": [
+        {
+          "commonCodeName": "산업은행",
+          "sortNo": 1,
+          "commonCodeId": "02"
+        },
+        {
+          "commonCodeName": "기업은행",
+          "sortNo": 2,
+          "commonCodeId": "03"
+        },
+        {
+          "commonCodeName": "국민은행",
+          "sortNo": 3,
+          "commonCodeId": "04"
+        },
+        {
+          "commonCodeName": "외환은행",
+          "sortNo": 4,
+          "commonCodeId": "05"
+        },
+        {
+          "commonCodeName": "수협중앙",
+          "sortNo": 5,
+          "commonCodeId": "07"
+        },
+        {
+          "commonCodeName": "농협중앙회",
+          "sortNo": 6,
+          "commonCodeId": "11"
+        },
+        {
+          "commonCodeName": "단위농협",
+          "sortNo": 7,
+          "commonCodeId": "12"
+        },
+        {
+          "commonCodeName": "우리은행",
+          "sortNo": 8,
+          "commonCodeId": "20"
+        },
+        {
+          "commonCodeName": "신한은행",
+          "sortNo": 9,
+          "commonCodeId": "21"
+        },
+        {
+          "commonCodeName": "SC제일",
+          "sortNo": 10,
+          "commonCodeId": "23"
+        },
+        {
+          "commonCodeName": "KEB하나은행(구하나,구외환)",
+          "sortNo": 11,
+          "commonCodeId": "25"
+        },
+        {
+          "commonCodeName": "씨티은행",
+          "sortNo": 12,
+          "commonCodeId": "27"
+        },
+        {
+          "commonCodeName": "대구은행",
+          "sortNo": 13,
+          "commonCodeId": "31"
+        },
+        {
+          "commonCodeName": "부산은행",
+          "sortNo": 14,
+          "commonCodeId": "32"
+        },
+        {
+          "commonCodeName": "광주은행",
+          "sortNo": 15,
+          "commonCodeId": "34"
+        },
+        {
+          "commonCodeName": "제주은행",
+          "sortNo": 16,
+          "commonCodeId": "35"
+        },
+        {
+          "commonCodeName": "전북은행",
+          "sortNo": 17,
+          "commonCodeId": "37"
+        },
+        {
+          "commonCodeName": "경남은행",
+          "sortNo": 18,
+          "commonCodeId": "39"
+        },
+        {
+          "commonCodeName": "마을금고",
+          "sortNo": 19,
+          "commonCodeId": "45"
+        },
+        {
+          "commonCodeName": "신용협동",
+          "sortNo": 20,
+          "commonCodeId": "48"
+        },
+        {
+          "commonCodeName": "상호저축",
+          "sortNo": 21,
+          "commonCodeId": "50"
+        },
+        {
+          "commonCodeName": "HSBC은행",
+          "sortNo": 22,
+          "commonCodeId": "54"
+        },
+        {
+          "commonCodeName": "도이치",
+          "sortNo": 23,
+          "commonCodeId": "55"
+        },
+        {
+          "commonCodeName": "우체국",
+          "sortNo": 24,
+          "commonCodeId": "71"
+        },
+        {
+          "commonCodeName": "K뱅크",
+          "sortNo": 25,
+          "commonCodeId": "89"
+        },
+        {
+          "commonCodeName": "카카오뱅크",
+          "sortNo": 26,
+          "commonCodeId": "90"
+        }
+      ],
       "payment":{
           "paymentMethodName":"신용카드(분할결제) 결제수단",
           "receiptUrl": "/html/MYC/ACCF7105.html",

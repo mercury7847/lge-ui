@@ -1,0 +1,11 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "alert":{
+            "title": "정상적으로 확인되었습니다."
+        }
+    }
+}
