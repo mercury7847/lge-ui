@@ -23,6 +23,7 @@
                 ],
                 "originalPrice":"5000000",
                 "price":"1500000",
+                "pdpUrl": "#a",
                 "obsBtnFlag":"enable"
             },
             {
@@ -45,6 +46,7 @@
                 ],
                 "originalPrice":"5000000",
                 "price":"1500000",
+                "pdpUrl": "#a",
                 "obsBtnFlag":"enable"
             },
             {
@@ -67,6 +69,7 @@
                 ],
                 "originalPrice":"5000000",
                 "price":"1500000",
+                "pdpUrl": "#a",
                 "obsBtnFlag":"disable"
             },
             {
@@ -89,6 +92,7 @@
                 ],
                 "originalPrice":null,
                 "price":"1200000",
+                "pdpUrl": "#a",
                 "obsBtnFlag":"disable"
             },
             {
@@ -111,6 +115,7 @@
                 ],
                 "originalPrice":null,
                 "price":null,
+                "pdpUrl": "#A",
                 "obsBtnFlag":"disable"
             }
         ]
