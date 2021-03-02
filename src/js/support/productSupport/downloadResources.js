@@ -25,9 +25,13 @@
     var driverListTemplate = 
         '<li>' +
             '{{# if (typeof detailUrl != "undefined" && detailUrl) { #}}' +
-            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</button></p>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{title}}</button></p>' +
             '{{# } else { #}}' +
-            '<p class="tit">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</p>' +
+                '{{# if (typeof os == "string" && os) { #}}' +
+                '<p class="tit">{{os}} {{title}}</p>' +
+                '{{# } else { #}}' +
+                '<p class="tit">{{title}}</p>' +
+                '{{# } #}}' +
             '{{# } #}}' +
             '<div class="info-wrap">' +
                 '{{# if (typeof category != "undefined" || typeof date != "undefined") { #}}' +
@@ -324,6 +328,8 @@
         setOsActive: function(os) {
             var self = this;
             var $formWrap = self.$driverSec.find('.form-wrap');
+            var $listDesc = self.$driverSec.find('.download-list-wrap > .desc');
+            var category = self.param.category;
             var subCategory = self.param.subCategory;
 
             if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
@@ -331,6 +337,12 @@
                 $formWrap.show();
             } else {
                 $formWrap.hide();
+            }
+
+            if (category == "CT50019096") {
+                $listDesc.hide();
+            } else {
+                $listDesc.show();
             }
         },
         setSurvey: function(data) {
