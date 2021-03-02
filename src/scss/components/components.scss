@@ -983,6 +983,20 @@
 
 }
 
+@include mobile { // 부트스트랩 충돌로 추가 [.col- 클래스 패딩값 때문에 생기는 여백 조정]
+    .container {
+        padding: 0 15px;
+    }
+    .component-wrap {
+        width: auto;
+        max-width: none;
+        margin: 0 -15px;
+        &.full {
+            max-width: none;
+        }
+    }
+}
+
 .component-wrap {
     .component[class*=KRC] * {
         word-break:keep-all;
