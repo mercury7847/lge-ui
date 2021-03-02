@@ -202,7 +202,7 @@
                     self.careshipInfoData = careshipInfo;
                     for (var i = 0, len = careshipInfo.length; i < len; i++) {
                         if(careshipInfo[i].representChargeFlag == "Y") {
-                            careSelectIndex = index;
+                            careSelectIndex = i;
                             break;
                         }
                     }
@@ -408,14 +408,26 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
                     var success = function(data) {
-                        sendData['wishItemId'] = data.wishItemId;
+                        console.log('reciv',data);
+                        sendData.wishItemId = data.wishItemId;
+                        if(data.wishListId) {
+                            sendData.wishListId = data.wishListId;
+                        }
+                        $(this).prop("checked",checked);
+                        console.log('res',data,sendData);
                     };
                     var fail = function(data) {
                         $(this).prop("checked",!checked);
                     };
 
                     var param = JSON.parse(JSON.stringify(sendData));
-                    param.wish = checked;
+                    if(checked){
+                        param.type = "add";
+                    } else{
+                        param.type = "remove";
+                    }
+                    //param.wish = checked;
+                    console.log(param);
 
                     lgkorUI.requestWish(
                         param,
@@ -431,13 +443,32 @@
                     e.preventDefault();
 
                     var param = JSON.parse(JSON.stringify(sendData));
-
                     var $paymentAmount = $(this).parents('.payment-amount');
-                    var $purchaseButton = $(this).parents('.purchase-button');
-                    if($purchaseButton.hasClass('rental')) {
-                        //렌탈타입
-                        param.typeFlag = "C";
+
+                    //소모품이 있는가
+                    var cart = [];
+                    var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
+                    if($additionalPurchase.length > 0) {
+                        $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
+                            cart.push($(item).data('id')+"|"+$(item).data('quantity'));
+                        });
+                    }
+
+                    //선택 수량
+                    var quantity = $paymentAmount.find('div.select-quantity input.quantity');
+                    if(quantity.length > 0) {
+                        cart.push(sendData.sku+"|"+quantity.val());
                     } else {
+                        cart.push(sendData.sku+"|1");
+                    }
+
+                    param.sku = cart.join(',');
+
+                    //var $purchaseButton = $(this).parents('.purchase-button');
+                    //if($purchaseButton.hasClass('rental')) {
+                        //렌탈타입
+                     //   param.typeFlag = "C";
+                    //} else {
                         //제품타입
                         param.typeFlag = "P";
                         //케어십 선택
@@ -449,8 +480,18 @@
                                 //케어쉽 선택
                                 param.typeFlag = "C";
                             }
+                        } else {
+                            var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
+                            //케어쉽필수 제품인지 체크해서 알림창 뛰움
+                            if($careSiblingOption.length < 1) {
+                                if(careRequire) {
+                                    param.typeFlag = "C";
+                                }
+                            } else {
+                                param.typeFlag = "C";
+                            }
                         }
-                    }
+                    //}
 
                     if(param.typeFlag == "C") {
                         if(typeof careshipOnlyFlag !== 'undefined') {
@@ -767,8 +808,10 @@
                     var isRental = false;
                     var $careshipService = $this.parents('.careship-service');
                     if($careshipService.length < 1) {
-                        isRental = true;
                         $careshipService = $this.parents('.care-sibling-option');
+                        if($careshipService.length > 0) {
+                            isRental = true;
+                        }
                     }
                     var $paymentAmount = $careshipService.siblings('.payment-amount');
 
@@ -1103,7 +1146,10 @@
                         if($careSiblingOption.length < 1) {
                             if(careRequire) {
                                 $('#careRequireBuyPopup').vcModal();
+                                isRental = true;
                             }
+                        } else {
+                            isRental = true;
                         }
                     }
 
