@@ -29,6 +29,16 @@ $(document).ready(function(){
         });
     }
 
+    setBarcode();
+    $(window).on({
+        resize : function(){
+            setBarcode();
+        }
+    })
+    
+});
+
+var setBarcode = function(){
     if(window.breakpoint.isMobile) {
         //제조번호 카메라 버튼 노출
         $('#appType').addClass("app-type");
@@ -46,19 +56,25 @@ $(document).ready(function(){
                         void android.openBarcodeScanner("returnBarcode");
                     }
                 }else{
-                    console.log("mobile web!");
+                    var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+
+                    obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치'});
+                    var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+
+                    lgkorUI.confirm(desc, obj);
                 }
             }
         });
-        var returnBarcode = function(barcode){
-            if(barcode != null && barcode != "" && barcode != undefined){
-                $("#inp02").val(barcode);
-            }
-        }
     } else {
         //제조번호 카메라 버튼 노출
         $('#appType').removeClass("app-type");
         //제조번호 카메라 버튼 이벤트
         $(".app-exec").off("click");
     }
-});
+}
+
+var returnBarcode = function(barcode) {
+    if(barcode != null && barcode != "" && barcode != undefined){
+        $("#inp02").val(barcode);
+    }
+}

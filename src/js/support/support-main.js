@@ -47,15 +47,31 @@
                 hidden : '[data-more="hidden"]',
                 btn : '[data-more="btn"]'
             },
+            btnShow : function(){
+                var self = this;
+
+                $(self.el.container).each(function(){
+                    var $this = $(this);
+                    var $item = $this.find(self.el.hidden);
+
+                    if( $item.length <= 3) {
+                        $this.find(self.el.btn).hide();
+                    } else {
+                        $this.find(self.el.btn).show();
+                    }
+                })
+            },
             hiddenVisible : function(){
                 var self = this;
                 var $moreBtn = $(self.el.btn);
 
                 $(self.el.container).each(function(){
                     var $this = $(this);
-                    var $item = $this.find('.item, .item-list');
+                    var $item = $this.find('.item');
+                    var $itemList = $this.find('.item-list');
 
-                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden');
+                    $item.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                    $itemList.filter(':gt(3)').addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
                 })
 
                 $moreBtn.on('click', function(e){
@@ -76,6 +92,7 @@
             },
             init : function(){
                 this.hiddenVisible();
+                this.btnShow();
             }
         },
         slide : {
@@ -696,6 +713,7 @@
                             $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
                             $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
                             $(self.el.toggleBtn).addClass('active');
+                            supportHome.moreShow.btnShow();
                             lgkorUI.hideLoading();
                         } else {
                             lgkorUI.hideLoading();
