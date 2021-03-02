@@ -32,7 +32,6 @@ $(window).ready(function(){
 				'</div>'+
 				'{{#else}}'+
 				'<div class="visual-area animation-box">'+
-					'<img src="{{storyMainThumbnailPath}}{{storyMainThumbnailServerName}}" alt="{{storyMainThumbnailAltText}}">'+
 					'<p class="hidden pc">{{storyTitle}}</p>'+
 					'<p class="hidden mobile">{{storyTitle}}</p>'+
 					'<div class="animation-area">'+
@@ -144,7 +143,7 @@ $(window).ready(function(){
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.video-list-wrap .ui_tab');
-            contList = $('.cont_list');
+            contList = $('.tabs-cont.sub_cate_list');
         }
 
         function bindEvents(){
@@ -247,13 +246,15 @@ $(window).ready(function(){
                 categoryId: idxs.categoryId,
                 year: idxs.year
             }
-            
+            console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
                 var page = data.pagination.page;
                 var totalpage = data.pagination.totalCount;
                 contList.data('page', page);
                 contList.data('totalpage', totalpage);
+
+                console.log("### setContentsList complete ###", data);
 
                 if(page == 1) contList.find('.video-list').empty();
                 for(var key in data.storyList){
@@ -312,7 +313,9 @@ $(window).ready(function(){
             var superCategoryID = superCategoryTab.find('li[data-cate-id]').eq(superCategoryTabIndex).data('cateId');
             var categoryID = categoryTab.find('li[data-cate-id]').eq(categoryTabIndex).data('cateId');
             var yearID = yearTab.find('li[data-cate-id]').eq(yearTabIndex).data('cateId');
-
+            
+            if(superCategoryID == "ALL") superCategoryID = "";
+            
             return{
                 superCategoryId: superCategoryID,
                 categoryId: categoryID,
