@@ -455,12 +455,12 @@
                 },
                 inputVisible : function(){
                     var self = this;
-                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', false).val('');
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', false).val('');
                     self.el.container.find('.btn-reservation').removeClass('disabled');
                 },
                 inputDisable : function(){
                     var self = this;
-                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', true).val('');
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', true).val('');
                     self.el.container.find('.btn-reservation').addClass('disabled');
                 },
                 init : function(){
@@ -468,7 +468,7 @@
 
                     self.validateInit();
 
-                    self.el.agreeChk.on('input', function(e){
+                    self.el.agreeChk.on('change', function(e){
                         var $this = $(this);
                         var _checked = $this.prop('checked');
 
