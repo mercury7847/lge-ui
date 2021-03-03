@@ -23,6 +23,8 @@
     var bankInfo = {};
     var paymentMode;
 
+    var sendPaymentMethod;
+
     var paymentInfo = {};
 
     var userInfoValidation;
@@ -302,6 +304,8 @@
                         console.log("Fail !!!");
                     }
                 });
+
+                //editPaymentInfomation();
             }
         });
     }
@@ -450,6 +454,8 @@
                 paymentInfo.confirmType = sendata.confirmType;
             }
 
+            sendPaymentMethod = sendata.confirmType;
+
             setHiddenData('paymentMethodConfirm', result.data.success);
         });
     }
@@ -457,7 +463,12 @@
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
         CTI_REQUEST_KEY = "";
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, {contractID: $('select[name=contractInfo]').find('option:selected').val()}, function(result){
+
+        var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
+        sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
+
+        console.log("### setArsAgreeConfirm ###", sendata);
+        lgkorUI.requestAjaxData(ARS_AGREE_URL, sendata, function(result){
             console.log("### setArsAgreeConfirm [complete] ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title

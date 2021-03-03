@@ -70,7 +70,7 @@ var Curation = (function() {
                 });
                 self.$curation.find('ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                 
-                self.$curation.show();
+                //self.$curation.show();
             } else {
                 self.$curation.hide();
             }
@@ -97,7 +97,7 @@ var Curation = (function() {
                     }
                 });
 
-                self.$smartFilterList.show();
+                //self.$smartFilterList.show();
                 self.$smartFilterResult.hide();
             } else {
 
@@ -117,7 +117,7 @@ var Curation = (function() {
                 var $item = $(item);
                 var height = $item.find('div.chk-group').outerHeight();
                 if(height > 72) {
-                    $item.find('button.btn-fold').show();
+                    //$item.find('button.btn-fold').show();
                 } else {
                     $item.find('button.btn-fold').hide();
                 }

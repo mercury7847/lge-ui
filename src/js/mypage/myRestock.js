@@ -8,7 +8,7 @@
                         '<a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
                     '</div>' +
                     '<div class="infos">' +
-                        '<p class="name"><a href="{{url}}"><span class="blind">제품명</span>{{title}}</a></p>' +
+                        '<p class="name"><a href="{{url}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
                         '<p class="e-name"><span class="blind">영문제품번호</span>{{sku}}</p>' +
                         '<p class="count">구매 희망 수량 : {{quantity}}</p>' +
                     '</div>' +
