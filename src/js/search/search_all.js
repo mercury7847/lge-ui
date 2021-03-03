@@ -183,7 +183,7 @@
 
     var searchBnrTemplate = 
         '<a href="{{url}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}">'+
+            '<img src="{{pcImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+
                 '<span class="sub-copy">{{#raw desc}}</span>'+
