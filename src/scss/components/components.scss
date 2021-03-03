@@ -12,6 +12,12 @@
 //@import './components/no-content';
 //@import './components/colorchip';
 
+/* 부트스트랩 충돌 추가 */
+.col-lg-12 {
+    padding: 0;
+}
+/* //부트스트랩 충돌 추가 */
+
 @mixin font-family($font, $sytle:normal) {
     @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
         @if $sytle == italic {
@@ -981,19 +987,6 @@
         max-width:100%;
     }
 
-}
-
-// 부트스트랩 충돌로 추가 [.col- 클래스 패딩값 때문에 생기는 여백 조정]
-.container {
-    padding: 0 15px;
-}
-.component-wrap {
-    width: auto;
-    max-width: none;
-    margin: 0 -15px;
-    &.full {
-        max-width: none;
-    }
 }
 
 .component-wrap {
