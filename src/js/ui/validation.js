@@ -186,8 +186,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         delete rObj[key];
                     }
                 }else{
-                    var trimstr = val.replace(/[_-]/gi, '');
-                    if(trimstr.length){
+                    if(self._defaultCheckFunc(val)){
                         if(obj.minLength || obj.maxLength){
                             if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
                                 rObj[key] = isFalse? val : obj.errorMsg;
