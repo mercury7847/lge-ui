@@ -42,17 +42,17 @@
             init : function(){
                 this.toggle();
 
-                $(this.el.list).each(function(){
-                    var $this = $(this);
-                    var $anchor = $this.find('a');
+                // $(this.el.list).each(function(){
+                //     var $this = $(this);
+                //     var $anchor = $this.find('a');
 
-                    $anchor.filter(function(){
-                        var $this = $(this);
-                        if( $this.text() == "") {
-                            return true
-                        }
-                    }).remove();
-                })
+                //     $anchor.filter(function(){
+                //         var $this = $(this);
+                //         if( $this.text() == "") {
+                //             return true
+                //         }
+                //     }).remove();
+                // })
             }
         },
         moreShow : {
