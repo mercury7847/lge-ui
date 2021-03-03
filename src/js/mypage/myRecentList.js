@@ -12,8 +12,10 @@
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
+                    '{{#if obsBtnFlag=="enable"}}' +
                     '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
                     '{{#if price}}<span class="blind">구매가격</span>{{price}}원{{/if}}' +
+                    '{{/if}}' +
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
