@@ -58,7 +58,7 @@
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="desc"><span>{{desc}}</span></div>' +
+                    '<div class="desc"><span>{{#raw desc}}</span></div>' +
                     '<div class="info-btm">' +
                         '<span class="text date"><span>{{date}}</span>' +
                         '<div class="text hashtag-wrap">' +
@@ -704,6 +704,7 @@
                         self.$btnFilter.hide();
                     } else {
                         self.$tab.parents('.search-tabs-wrap').show();
+                        self.$tab.vcSmoothScroll('refresh');
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
 

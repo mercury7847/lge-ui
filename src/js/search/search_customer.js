@@ -744,6 +744,7 @@
                         self.$btnFilter.hide();
                     } else {
                         self.$tab.parents('.search-tabs-wrap').show();
+                        self.$tab.vcSmoothScroll('refresh');
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
 
