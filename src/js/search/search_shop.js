@@ -229,7 +229,7 @@
             sendSearchPage: function(searchUrl, search, force) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
-                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURI(search)+"&force="+force;
+                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
                     location.href = url;
                 }
             },
