@@ -871,6 +871,7 @@
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
+                        self.$tab.parents('.search-tabs-wrap').show();
                         //self.$tab.show();
                         //self.$contWrap.show();
                         self.$resultListNoData.hide();

@@ -702,6 +702,7 @@
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
                     } else {
+                        self.$tab.parents('.search-tabs-wrap').show();
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
 
