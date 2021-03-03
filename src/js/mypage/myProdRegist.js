@@ -20,7 +20,7 @@
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '</div>' +
             '<div class="info-wrap">' +
-                '<p class="name"><span class="blind">모델명</span>{{modelName}}</p>' +
+                '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +
                     '{{#if saleDate}}<li><dl><dt>구매일자</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +

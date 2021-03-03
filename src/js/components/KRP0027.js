@@ -262,7 +262,7 @@ $(window).ready(function(){
         }
 
         function setContentsList(mode, page){
-            lgkorUI.showLoading();
+            if(mode != REQUEST_MODE_SCROLL) lgkorUI.showLoading();
 
             contLoadMode = mode;
 
