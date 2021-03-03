@@ -8,7 +8,7 @@
     @include clearfix;
     .cate-wrap {      
         //height:102px;
-        padding:48px 0 24px;
+        padding:45px 0 21px;
         background:#fff;
         //border-bottom: 8px solid #f4f4f4;
         @include mobile {
@@ -58,7 +58,7 @@
                 }
             }
             .fixed-tab-wrap {
-                padding: 0 70px;
+                padding: 0 67px;
                 @media screen and (max-width: 1024px) {
                     padding: 0;
                     overflow: hidden;
@@ -66,7 +66,7 @@
                 .cate-scroll-wrap {
                     position: relative;
                     .tabs {
-                        //padding:3px 0;
+                        padding:3px;
                         white-space: nowrap;
                         font-size: 0;
                         @media screen and (max-width: 1024px) {
