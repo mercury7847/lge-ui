@@ -41,6 +41,7 @@
             }
 
             var $section = $('.KRP0019');
+			//갤러리형 위젯(SNS 리뷰)
             var widgetId = $section.data('widgetId');
             if(widgetId) {
                 $section.find('.cont-wrap').html('<div class="crema-reviews" data-widget-id="'  + widgetId + '"></div>');
