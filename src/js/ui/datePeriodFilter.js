@@ -74,6 +74,11 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                 var date = new Date();
                 self.$dateFilterEndDate.vcCalendar('setDate', date);
                 self.setBeforePeriod(checkedInput.val());
+            } else {
+                //없을 경우 오늘날짜를 기준으로 기본 옵션이나 전달받은 옵션으로 날짜를 세팅한다
+                var date = new Date();
+                self.$dateFilterEndDate.vcCalendar('setDate', date);
+                self.setBeforePeriod(self.options.dateBetweenCheckValue);
             }
         },
 
