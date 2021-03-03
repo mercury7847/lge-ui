@@ -616,15 +616,20 @@
 
                 if( self.emailValidate.validate().success ) {
                     var param = {
-                        email : $this.find('#userEmail').val(),
-                        fileUrl : _fileUrl
-                    }
+                        email : $popup.find('#userEmail').val(),
+                        fileUrl : _fileUrl,
+                        category: self.param.category,
+                        categoryNm: self.param.categoryNm,
+                        subCategory: self.param.subCategory,
+                        subCategoryNm: self.param.subCategoryNm,
+                        modelCode: self.param.modelCode
+                    };
 
                     lgkorUI.requestAjaxDataPost(_url, param, function(result){
                         var data = result.data;
                         
                         lgkorUI.alert("", {
-                            title: result.data.resultMessage,
+                            title: data.resultMessage,
                             ok: function(el) {
                                 $(el).vcModal('hide');
                                 $('#fileSendToEmail').vcModal('hide');

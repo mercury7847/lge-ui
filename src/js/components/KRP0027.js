@@ -160,13 +160,24 @@ $(window).ready(function(){
             });
 
             contList.scroll(function(e){
-                setContListScrolled();
+                if(window.breakpoint.name == "pc"){
+                    setContListScrolled()
+                }
+            });
+            $(window).scroll(function(){
+                if(window.breakpoint.name == "mobile"){
+                    setContListScrolled()
+                }
             })
 
             $('.video-wrap').on('click', '.btn-modelName, .btn-moreModel', function(e){
                 e.preventDefault();
 
                 $('#match-models').vcModal();
+            }).on('click', 'button.more-btn', function(e){
+                e.preventDefault();
+
+                toggleVideoInfo();
             });
             $('.video-list-wrap').on('click', '.video-list li a', function(e){
                 e.preventDefault();
@@ -174,6 +185,14 @@ $(window).ready(function(){
                 var storyID = $(this).data('storyId');
                 setViewContents(storyID);
             });
+        }
+
+        function toggleVideoInfo(){
+            var desc = $('.video-wrap .video-info .desc');
+            desc.toggleClass('open');
+
+            if(desc.hasClass('open')) desc.find('button.more-btn span').text('닫기');
+            else desc.find('button.more-btn span').text('열기');
         }
 
         function setViewContents(sid){
@@ -221,13 +240,23 @@ $(window).ready(function(){
                 var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
                 if(page < totalpage){
-                    var scrolltop = contList.scrollTop();
-                    var wrapheight = contList.height();
-                    var listheight = contList.find('.video-list').outerHeight(true);
-                    var scrolldist = listheight - wrapheight - 10;
-                    if(scrolltop >= scrolldist){
-                        setContentsList(REQUEST_MODE_SCROLL, page+1);
+                    var getList = false;
+                    var scrolltop, wrapheight, listheight, scrolldist, contop;
+                    if(window.breakpoint.name == "pc"){
+                        scrolltop = contList.scrollTop();
+                        wrapheight = contList.height();
+                        listheight = contList.find('.video-list').outerHeight(true);
+                        scrolldist = listheight - wrapheight - 10;
+
+                        if(scrolltop >= scrolldist) getList = true;
+                    } else{
+                        scrolltop = $(window).scrollTop();
+                        contop = contList.offset().top;
+                        wrapheight = contList.height();
+                        if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
                     }
+
+                    if(getList) setContentsList(REQUEST_MODE_SCROLL, page+1);
                 }
             }
         }
@@ -253,8 +282,6 @@ $(window).ready(function(){
                 var totalpage = data.pagination.totalCount;
                 contList.data('page', page);
                 contList.data('totalpage', totalpage);
-
-                console.log("### setContentsList complete ###", data);
 
                 if(page == 1) contList.find('.video-list').empty();
                 for(var key in data.storyList){

@@ -25,6 +25,7 @@
     &:active {
         background-color:#fa263e;
         background-image: none;
+        color: $color-white;
     }
     &.gray {
         border-color: #ededed;
@@ -32,14 +33,16 @@
         color: $color-gray-1;
         &:hover {
             background: #ededed;
+            color: $color-gray-1;
         }
     }
     &.dark-gray {
         border-color: #767676;
         background: #767676;
-        color: #fff;
+        color: $color-white;
         &:hover {
             background: #767676;
+            color: $color-white;
         }
     }
     &.mix { // 그라데이션 타입
@@ -57,7 +60,7 @@
         &:active {
             border-color:#fa263e;
             background-image: linear-gradient(280deg, #fb5a72, #fa263e);
-            color:#fff;
+            color: $color-white;
         }
     }
 
@@ -72,7 +75,7 @@
         &:active {
             background:#ededed;
             border-color:#ddd;
-            color:#aaa;
+            color: $color-gray-4;
         }
     }
     // 작은사이즈 버튼
@@ -184,7 +187,9 @@
         color: #ec455a;
         border-bottom-color: #ec455a;
     }
-    &:hover {
+    &:hover,
+    &:focus {
+        color: $color-default;
         text-decoration:underline;
     }
     &:disabled, &.disabled, &[aria-disabled=true] {
@@ -222,8 +227,9 @@
             top:4px;
         }
     }
-    &:hover {
-        text-decoration:underline;
+    &:hover,
+    &:focus {
+        color: $color-default;
     }
 
     &.white{
@@ -389,6 +395,7 @@
 }
 
 .btn-group {
+    display: block;
     font-size:0;
     &.right {
         text-align:right;
@@ -427,6 +434,14 @@
                 border-radius: 0;
             }
         }
+    }
+
+    /* 부트스트랩 충돌 추가 */
+    & > .btn-group:not(:last-child)>.btn,
+    & > .btn:not(:last-child):not(.dropdown-toggle),
+    & > .btn-group:not(:first-child)>.btn,
+    & > .btn:not(:first-child) {
+        border-radius: 26px;
     }
 }
 
