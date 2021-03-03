@@ -1814,6 +1814,7 @@
 
     //자주 찾는 컨텐츠
     .popular-find {
+        margin-top:70px;
         .headline {
             position: relative;
             .title {
@@ -1991,6 +1992,7 @@
         }
 
         @include tablet {
+            margin-top:50px;
             .popular-list-wrap {
                 margin-left:0;
                 margin-right:0;
