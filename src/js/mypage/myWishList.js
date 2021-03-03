@@ -4,7 +4,7 @@
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
                 '<div class="infos">' +
-                    '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{title}}</a></p>' +
+                    '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
                     '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
                     '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                     '<div class="more"><span class="blind">제품스펙</span><ul>' +
