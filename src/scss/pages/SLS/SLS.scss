@@ -930,11 +930,12 @@ br.pc {
 }
 // 케어솔루션 혜택
 .care-benefit {
+    margin-top: 120px;
     padding-bottom: 120px;
     background-color: #f4f4f4;
     @include mobile {
-        padding-bottom: 0;
-        background-color: #fff;
+        margin-top: 60px;
+        padding-bottom: 60px;
     }
     .benefit-cont {
         max-width: calc(1380px + 24px);
@@ -962,7 +963,7 @@ br.pc {
                 .thumb {
                     img {
                         width: 100%;
-                        height:333px;
+                        //height:333px;
                         border-radius: 8px;
                     }
                 }
@@ -1002,9 +1003,9 @@ br.pc {
                 li {
                     .inner {
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: flex-end;
                         height: 100%;
-                        padding: 48px 0 0 48px;
+                        padding: 133px 0 0 40px;
                         border-radius: 8px;
                         background: #fff;
                         @media screen and (max-width: 1024px){
@@ -1016,7 +1017,7 @@ br.pc {
                     }
                     .thumb {
                         //flex: 1;
-                        max-width: 300px;
+                        max-width: 200px;
                         align-self: flex-end;
                         @media screen and (max-width: 1024px){
                         //@include mobile {
@@ -1032,12 +1033,15 @@ br.pc {
                         }
                     }
                     .text-area {
+                        position: absolute;
+                        top: 52px;
+                        left: 52px;
                         @media screen and (max-width: 1024px){
                         //@include mobile {
                             padding: 0 32px;
                         }
                         .tit {
-                            line-height: 52px;
+                            @include font-large-2;
                             @media screen and (max-width: 1024px){
                             //@include mobile {
                                 font-size: 24px;
@@ -1072,7 +1076,10 @@ br.pc {
                         }
                     }
                     &:nth-child(5) {
-                        width: 100%;
+                        width: 66.66%;
+                        .inner {
+                            padding-top: 0;
+                        }
                         .thumb {
                             max-width: 742px;
                             @media screen and (max-width: 1024px){
