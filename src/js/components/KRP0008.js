@@ -71,7 +71,7 @@
                 self.$pdpData = $('#pdp-data');
 
                 //콤포넌트
-                self.$component = $('section.component');
+                self.$component = $('section.component.KRP0008');
 
                 //데스크탑용 갤러리
                 self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
