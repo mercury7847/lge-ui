@@ -111,7 +111,7 @@
             font-size: 20px;
             font-weight: bold;
             line-height: 1.42;
-            // margin-bottom: 12px;
+            margin-bottom: 16px;
             @include mobile {
                 margin-bottom: 12px;
             }
@@ -124,7 +124,6 @@
         }
         &[class*="-subtitle"] {
             font-size: 16px;
-            margin-top: 16px;
             margin-bottom: 30px;
             line-height:1.63;
             @include mobile {
