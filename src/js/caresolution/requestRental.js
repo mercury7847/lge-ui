@@ -1055,6 +1055,9 @@
             collectRequest: step2Block.find('input[name=collectRequest]:checked').val()
         };
         console.log(sendata);
+
+        lgkorUI.showLoading();
+
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 location.href= result.data.sendUrl;
@@ -1063,6 +1066,8 @@
                     title: result.data.alert.title
                 });
             }
+
+            lgkorUI.hideLoading();
         });
     }
 
