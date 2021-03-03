@@ -1196,6 +1196,7 @@
                             cart_items.push({"data":obj});
                         });
                         param.cart_items = cart_items;
+                        param.order_item_qty = cart_items.length;
                     }
 
                     var ajaxUrl;
