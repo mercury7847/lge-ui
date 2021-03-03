@@ -36,8 +36,8 @@
             var $tabs = $pageHeader.find('div.ui_tab');
             self.$mainTab = $tabs.eq(0);
             self.$subTab = $tabs.eq(1);
-            var $sortList = self.$section.find('div.sort-list');
-            self.$selectOrder = $sortList.find('.ui_selectbox');
+            //var $sortList = self.$section.find('div.sort-list');
+            //self.$selectOrder = $sortList.find('.ui_selectbox');
             self.$totalCounter = self.$section.find('#totalCount');
             self.$list = self.$section.find('ul.story-box');
             self.$pagination = self.$section.find('.pagination').vcPagination();
@@ -67,25 +67,27 @@
 
             self.$mainTab.on('click','li a',function(e){
                 var category1 = $(this).attr('href').replace("#","");
-                self.requestData({"superCategoryId":category1,"categoryId":"","sort":self.$selectOrder.vcSelectbox('value')}, true);
+                self.requestData({"superCategoryId":category1,"categoryId":""/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": 1}, true);
             });
 
             self.$subTab.on('click','li a',function(e){
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = $(this).attr('href').replace("#","");
-                self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value')}, false);
+                self.requestData({"superCategoryId":category1,"categoryId":category2/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": 1}, false);
             });
 
+            /*
             self.$selectOrder.on('change', function(e){
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = self.selectedTabHref(self.$subTab);
                 self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value')}, false);
             });
+            */
 
             self.$pagination.on('page_click', function(e, data) {
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = self.selectedTabHref(self.$subTab);
-                self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value'),"page": data}, false);
+                self.requestData({"superCategoryId":category1,"categoryId":category2/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": data}, false);
             });
 
         },
