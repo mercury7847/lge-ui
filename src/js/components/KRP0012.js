@@ -40,9 +40,18 @@
             }
 
             var $section = $('.KRP0012');
+            var $contWrap = $section.find('.cont-wrap');
+            $contWrap.empty();
+            //상품 리뷰 위젯
             var productcode = $section.data('productcode');
             if(productcode) {
-                $section.find('.cont-wrap').html('<div class="crema-product-reviews" data-productcode="' + productcode + '"></div>');
+                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '"></div>');
+            }
+
+            //상품 소셜 위젯
+            var widgetId = $section.data('widgetId');
+            if(productcode && widgetId) {
+                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
         }
     }
