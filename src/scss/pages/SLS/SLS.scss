@@ -1038,6 +1038,8 @@ br.pc {
                         left: 52px;
                         @media screen and (max-width: 1024px){
                         //@include mobile {
+                            top: 32px;
+                            left: 0;
                             padding: 0 32px;
                         }
                         .tit {
