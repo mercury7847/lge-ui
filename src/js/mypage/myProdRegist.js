@@ -162,7 +162,7 @@
             //등록가능제품
             self.$registProductList = self.$contents.find('div.my-product-lists:eq(0)');
             self.$registProductMoreBtn = self.$registProductList.find('button.btn-moreview');
-            self.$registProductNoData = self.$registProductList.find('div.no-data');
+            //self.$registProductNoData = self.$registProductList.find('div.no-data');
             self.$productRegistSelf = self.$registProductList.find('div.btm-box button');
 
             //보유제품목록
@@ -217,6 +217,21 @@
 
             //모델병 확인방법 팝업
             //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
+
+            //nodata
+            var hiddenData = lgkorUI.getHiddenInputData();
+            var membership = lgkorUI.stringToBool(hiddenData.membership);
+            var marketing = lgkorUI.stringToBool(hiddenData.marketing);
+            if(membership) {
+                if(marketing) {
+                    self.$registProductNoData = self.$contents.find('div.no-data');
+                } else {
+                    self.$registProductNoData = self.$contents.find('div.no-data-case:eq(1)');
+                }
+            } else {
+                self.$registProductNoData = self.$contents.find('div.no-data-case:eq(0)');
+            }
+
         },
 
         bindEvents: function() {
@@ -378,9 +393,11 @@
 
             //제조번호 확인
             self.$snCheckButton.on('click', function(e){
-                var serialRegex = /^\d{3}[A-Z]{4}[\d\A-Z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
+                var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());
-                if(!checkSerialSuccess) {
+                if(checkSerialSuccess) {
+                    lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
             });
@@ -608,6 +625,7 @@
                 self.setPageData(param.pagination);
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$registProductList.find('>ul');
+                $list.empty();
                 arr.forEach(function(item, index) {
                     item.date = vcui.date.format(item.date,'yyyy.MM');
                     $list.append(vcui.template(productListItemTemplate, item));
@@ -733,7 +751,10 @@
                 self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
                 self.$downloadMainPage.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
-                if(selectOSUpdate) {
+                //if(selectOSUpdate) {
+                    var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
+                    var selectedIndex = 0;
+
                     self.$selectOS.empty();
                     var arr = data.osOption instanceof Array ? data.osOption : [];
                     if(arr.length < 2) {
@@ -741,13 +762,22 @@
                         //self.$selectOS.append('<option value="">없음</option>');
                     } else {
                         self.$selectOS.prop('disabled', false);
+                    }
                         //self.$selectOS.append('<option value="">전체</option>');
                         arr.forEach(function(item, index){
+                            if(selectedOSValue == item.code) {
+                                selectedIndex = index;
+                            }
                             self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
                         });
-                    }
+//                    }
                     self.$selectOS.vcSelectbox('update');
-                }
+                    if(selectOSUpdate) {
+                        self.$selectOS.vcSelectbox('selectedIndex',0,false);
+                    } else {
+                        self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
+                    }
+                //}
 
                 arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$downloadMainPage.find('div.download-list-wrap>ul');
