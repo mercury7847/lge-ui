@@ -18,6 +18,8 @@
             },
             toggle : function(){
                 var self = this;
+
+                
     
                 $(document).on('click', self.el.btn, function(e){
                     var $this = $(this);
@@ -39,6 +41,18 @@
             },
             init : function(){
                 this.toggle();
+
+                $(this.el.list).each(function(){
+                    var $this = $(this);
+                    var $anchor = $this.find('a');
+
+                    $anchor.filter(function(){
+                        var $this = $(this);
+                        if( $this.text() == "") {
+                            return true
+                        }
+                    }).remove();
+                })
             }
         },
         moreShow : {
