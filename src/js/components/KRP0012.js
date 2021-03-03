@@ -24,7 +24,6 @@
         init: function() {
             var self = this;
             if(typeof digitalData !== 'undefined') {
-                console.log('digitalData',digitalData);
                 if(digitalData && !vcui.isEmpty(digitalData)) {
                     window.cremaAsyncInit = function () {
                         crema.init("이름",digitalData.unifyId);
@@ -50,7 +49,7 @@
 
     $(window).ready(function(){
         if(!document.querySelector('.KRP0012')) return false;
-        $('.KRP0012').buildCommonUI();
+        //$('.KRP0012').buildCommonUI();
         KRP0012.init();
     });
 })();

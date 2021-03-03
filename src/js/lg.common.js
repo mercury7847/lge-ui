@@ -266,10 +266,7 @@ var isApp = function(){
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
-                $(this).css({
-                    width:'100%',
-                    height:"100%"
-                });
+                $(this).addClass('no-img');
             });
         },
 
@@ -277,10 +274,7 @@ var isApp = function(){
             var self = this;
             img.onerror = null;
             $(img).attr('src', self.NO_IMAGE);
-            $(img).css({
-                width:'100%',
-                height:"100%"
-            });
+            $(img).addClass('no-img');
         },
 
         _createMainWrapper: function(){
@@ -1420,23 +1414,25 @@ var isApp = function(){
 
             lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
                 var data = result.data.data;
-                var listData = data.listData;
-                var wishListId = data.wishListId;
-                $wishItem.each(function(idx, item){
-                    var $item = $(item);
-                    if(!$item.data('wishListId')) {
-                        console.log('null',$item);
-                        $item.data('wishListId', wishListId);
-                    };
-                });                
-                if(listData) {
-                    listData.forEach(function(item,index){
-                        var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
-                        if($wish.length > 0) {
-                            $wish.data(item);
-                            $wish.prop("checked",true);
-                        }
-                    });
+                if(data){
+                    var listData = data.listData != undefined ? data.listData : null;
+                    var wishListId = data.wishListId;
+                    $wishItem.each(function(idx, item){
+                        var $item = $(item);
+                        if(!$item.data('wishListId')) {
+                            console.log('null',$item);
+                            $item.data('wishListId', wishListId);
+                        };
+                    });                
+                    if(listData) {
+                        listData.forEach(function(item,index){
+                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                            if($wish.length > 0) {
+                                $wish.data(item);
+                                $wish.prop("checked",true);
+                            }
+                        });
+                    }
                 }
             },"GET", null, true);
         

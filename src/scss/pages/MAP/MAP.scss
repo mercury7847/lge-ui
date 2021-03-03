@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
-$main-hd-height: 68px; // 설정 화면 Header 높이값, 초기 115px
-$sub-hd-height: 68px;  // 서브 화면(알림, 오픈소스) Header 높이값, 초기 106px
+$main-hd-height: 68px;  // 설정 화면 Header 높이값, 디자인 상 초기 115px
+$sub-hd-height: 68px;   // 서브 화면(알림, 오픈소스) Header 높이값, 디자인 상 초기 106px
 $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
 
 @mixin font($size, $line) {
@@ -133,9 +133,9 @@ body {
         z-index: 5;
         h1 {
             display: inline-block;
-            position:absolute;
-            left:18px;
-            bottom:15px;
+            position: absolute;
+            left: 18px;
+            bottom: 15px;
             /*padding: 6px 0 15px;*/
             font-weight: 700;
             @include font(26px, 38px);
@@ -152,8 +152,8 @@ body {
             //margin-bottom: 19px;
             //padding:60px 50px 20px;
             h1 {
-                left:50px;
-                bottom:20px;
+                left: 50px;
+                bottom: 20px;
                 /*
                 padding: 6px 32px 20px;
                 padding: 60px 32px 20px;
@@ -161,7 +161,6 @@ body {
                 @include font(17px, 25px);
                 color: #000;
             }
-
             & + .opt-container {
                 height: 100%;
                 //padding-top: 125px;
@@ -322,7 +321,7 @@ body {
         label {
             display: block;
             position: relative;
-            height:30px;
+            height: 30px;
             input {
                 position: absolute;
                 left: 0;
@@ -357,7 +356,6 @@ body {
                 &:checked {
                     & + span {
                         background-color: #ec455a;
-
                         &:after {
                             left: calc(100% - 28px);
                         }

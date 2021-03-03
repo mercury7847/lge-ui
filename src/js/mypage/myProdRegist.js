@@ -370,6 +370,9 @@
             self.$modelInput.on('input', function(e){
                 checkModelSuccess = false;
                 self.$modelCheckOk.hide();
+                if(e.target.value.length > 20){
+                    e.target.value = e.target.value.slice(0, 20);
+                }
             })
 
             self.$modelCheckButton.on('click', function(e){
@@ -389,6 +392,9 @@
 
             self.$snInput.on('input', function(e){
                 checkSerialSuccess = false;
+                if(e.target.value.length > 14){
+                    e.target.value = e.target.value.slice(0, 14);
+                }
             })
 
             //제조번호 확인
