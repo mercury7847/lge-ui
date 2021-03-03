@@ -47,6 +47,20 @@
                 a {
                     display: block;
                 }
+
+                .pc-img {
+                    display: block;
+                    @include mobile {
+                        display: none;
+                    }
+                }
+                .mo-img {
+                    display: none;
+
+                    @include mobile {
+                        display: block;
+                    }
+                }
                 img {
                     width:100%;
                 }
