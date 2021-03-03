@@ -103,7 +103,11 @@
 
         requestData: function(param, isMainTabClick) {
             var self = this;
-            var ajaxUrl = self.$section.attr('data-list-url');
+            var ajaxUrl = self.$section.data('listUrl');
+            var storyType = self.$section.data('storyType');
+            if(storyType) {
+                param.storyType = storyType;
+            }
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 var tempData = result.data;
                 var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};

@@ -47,6 +47,20 @@
                 a {
                     display: block;
                 }
+
+                .pc-img {
+                    display: block;
+                    @include mobile {
+                        display: none;
+                    }
+                }
+                .mo-img {
+                    display: none;
+
+                    @include mobile {
+                        display: block;
+                    }
+                }
                 img {
                     width:100%;
                 }
@@ -156,7 +170,7 @@
                 }
 
                 .pop-conts {
-                    height:318px;
+                    height:332px;
                     &.mCustomScrollbar {
                         padding:0;
     
@@ -175,7 +189,7 @@
                 }
              
                 .pop-footer {
-                    padding:26px 40px 40px;
+                    padding:20px 16px;
                     .btn-close {
                         min-width:100px;
                         padding: 15px 0;
@@ -195,6 +209,7 @@
             .popup-wrap {
 
                 .pop-conts {
+                    height:348px;
                     padding:40px 16px 10px;
                     &.mCustomScrollbar {
                         padding:0;
@@ -228,7 +243,7 @@
                 }
              
                 .pop-footer {
-                    padding:26px 16px 40px;
+                    
                     input + label {
                         font-size:14px;
                     }

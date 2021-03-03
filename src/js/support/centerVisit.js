@@ -91,7 +91,7 @@
             self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             // 센터찾기
-            self.$centerPagination = self.$stepCenter.find('.pagination');
+            //self.$centerPagination = self.$stepCenter.find('.pagination');
 
             self.$citySelect = $('#localSi');
             self.$boroughSelect = $('#localGu');
@@ -402,13 +402,13 @@
                 self._setSearch();
             });
 
-            self.$centerPagination.on('pageClick', function(e) {
-                var param = {
-                    page: e.page
-                };
+            // self.$centerPagination.on('pageClick', function(e) {
+            //     var param = {
+            //         page: e.page
+            //     };
 
-                self.requestCenterData(param)
-            });
+            //     self.requestCenterData(param)
+            // });
 
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
@@ -882,15 +882,15 @@
                 if (dataArr.length) {
                     html = vcui.template(centerTmpl, data);
                     $listTable.find('tbody').html(html);
-                    self.$centerPagination.pagination('update', data.listPage);
+                    //self.$centerPagination.pagination('update', data.listPage);
 
                     $noData.hide();
                     $listTable.show();
-                    self.$centerPagination.show();
+                    //self.$centerPagination.show();
                 } else {
                     $noData.show();
                     $listTable.hide();
-                    self.$centerPagination.hide();
+                    //self.$centerPagination.hide();
                 }
 
                 self.setWarranty(data);
