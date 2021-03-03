@@ -765,6 +765,7 @@
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
+                        var $div = $("<div/>");
                         arr.forEach(function(item, index) {
                             if(!item.hash) {
                                 item.hash = [];
