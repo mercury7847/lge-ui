@@ -239,7 +239,7 @@
         max-width: 640px !important;
         .hiddenN {overflow: hidden;position: absolute;border: 0;width: 1px;height: 1px;clip: rect(1px, 1px, 1px, 1px)}
         .links {position:absolute;top:0;left:0;width:100%;height:100%;}
-        .links a {position:absolute;display:block;background-color: rgba(0,0,0,0.5);}
+        .links a {position:absolute;display:block;}
         // 사용설명서
         .links a.link01 {display: block;top: 18.98%;z-index: 1;width: 14.375%;height: 0.956%;left: 77.8%;}
         .links a.link02 {display: block;top: 20.3%;z-index: 1;width: 14.375%;height: 0.956%;left: 77.8%;}

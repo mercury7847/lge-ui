@@ -18,6 +18,13 @@
 }
 
 .brand-hero {
+    /* 2021.03.03 추가 */
+    .content{
+        > div{
+            opacity:0;
+        }
+    }
+    /* // 2021.03.03 추가 */
     .image {
         display: block;
         width: 100%;

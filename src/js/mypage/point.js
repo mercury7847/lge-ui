@@ -15,16 +15,18 @@
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
                 self.$dateFilter = self.$contWrap.find('div.filters');
-                self.$dateFilterStartDate = self.$dateFilter.find('#date-input1');
-                self.$dateFilterEndDate = self.$dateFilter.find('#date-input2');
+
+                //self.$dateFilterStartDate = self.$dateFilter.find('#date-input1');
+                //self.$dateFilterEndDate = self.$dateFilter.find('#date-input2');
                 self.$inquiryButton = self.$dateFilter.find('button.calendarInquiry-btn');
                 self.$pointList = self.$contWrap.find('.point-use-list ul');
                 self.$pointTotal = self.$contWrap.find('.point-use-list .total dd');
                 self.$noData = self.$contWrap.find('div.no-data');
 
-                self.searchStartDate = null;
-                self.searchEndDate = null;
+                //self.searchStartDate = null;
+                //self.searchEndDate = null;
 
+                /*
                 var register = {
                     startDate:{
                         required: true,
@@ -37,41 +39,51 @@
                         msgTarget: '.err-block'
                     },
                 };
+*/
 
-                vcui.require(['ui/validation','ui/pagination'], function () {
-                    self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
+                vcui.require([/*'ui/validation',*/'ui/pagination','ui/datePeriodFilter'], function () {
+                    //self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
                     self.$pagination =  self.$contWrap.find('div.pagination').vcPagination();
+                    self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3m"});
                     self.bindEvents();
                     self.checkNoData();
+                    self.requestData(1);
                 });
             },
 
             bindEvents: function() {
                 var self = this;
 
+                /*
                 self.$dateFilterStartDate.on('calendarinsertdate', function (e, data) {
                     //시작일을 선택시 종료일의 시작날짜를 변경한다.
                     self.$dateFilterEndDate.vcCalendar('setMinDate', data.date);
                 });
+                */
 
                 self.$inquiryButton.on('click',function (e) {
-                    self.requestData(1, true);
+                    self.requestData(1);
                 });
 
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
-                    self.requestData(data, false);
+                    self.requestData(data);
                 });
             },
 
-            requestData: function(page, changeDate) {
+            requestData: function(page) {
                 var self = this;
+                /*
                 var result = self.validation.validate();
                 if(!result.success){
                     return;
                 }
+                */
 
-                var param = {};
+                //var param = {};
+                var param = self.$dateFilter.vcDatePeriodFilter('getSelectOption');
+                param.page = page;
+                /*
                 var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
                 var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
                 if(changeDate) {
@@ -90,7 +102,8 @@
                     startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
                     endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
                 }
-                
+                */
+               /*
                 if(startDate && endDate) {
                     param = {
                         "startDate":startDate,
@@ -101,6 +114,7 @@
                 } else {
                     return;
                 }
+                */
 
                 var ajaxUrl = self.$dateFilter.attr('data-list-url');
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
@@ -139,6 +153,6 @@
             },
         };
 
-        myPoint.init();                
+        myPoint.init();
     });
 })();
