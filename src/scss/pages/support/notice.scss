@@ -234,7 +234,8 @@
     
     .current-state .state-table.txtCenter td{text-align:center;}
 
-    // 게시물별 css : 시스템 점검에 따른 서비스 이용안내 공지사항
+    // 게시물별 css
+    // 시스템 점검에 따른 서비스 이용안내 공지사항
     .notice20200612-1 {
         max-width: 640px !important;
         .hiddenN {overflow: hidden;position: absolute;border: 0;width: 1px;height: 1px;clip: rect(1px, 1px, 1px, 1px)}
@@ -261,6 +262,171 @@
         .links a.link17 {display: block;top: 79.5%;z-index: 1;width: 27.34%;height: 1.338%;left: 69.5%;}
         .links a.link18 {display: block;top: 86.4%;z-index: 1;width: 27.34%;height: 1.338%;left: 69.5%;}
         .links a.link19 {display: block;top: 92.8%;z-index: 1;width: 27.34%;height: 1.338%;left: 69.5%;}
+    }
+    // 에어컨 문제해결 자주묻는 질문 및 해결 방법
+    .notice20200612-2 {
+        max-width: 640px;
+        .links {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .links a {
+            position: absolute;
+            display: block;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            z-index: 1;
+        }
+        
+        .links a.link01 {
+            top: 21.1%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link02 {
+            top: 23.3%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link03 {
+            top: 25.6%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link04 {
+            top: 27.9%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link05 {
+            top: 36.5%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link06 {
+            top: 38.7%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link07 {
+            top: 41.1%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link08 {
+            top: 43.4%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link09 {
+            top: 45.7%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link10 {
+            top: 48%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link11 {
+            top: 56.6%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link12 {
+            top: 58.8%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link13 {
+            top: 61.25%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link14 {
+            top: 63.55%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link15 {
+            top: 65.8%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link16 {
+            top: 74.4%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link17 {
+            top: 76.7%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link18 {
+            top: 79%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link19 {
+            top: 81.35%;
+            width: 22%;
+            height: 1.6%;
+            left: 70.4%;
+        }
+        
+        .links a.link20 {
+            top: 96.6%;
+            width: 42.3%;
+            height: 1.8%;
+            left: 6.4%;
+        }
+        
+        .links a.link21 {
+            top: 96.6%;
+            width: 42.3%;
+            height: 1.8%;
+            left: 50.7%;
+        }
     }
     
 }
