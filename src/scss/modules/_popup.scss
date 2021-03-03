@@ -1167,12 +1167,19 @@
                     dt,dd {
                         display: inline-block;
                         @include font-medium;
+                        vertical-align:top;
                     }
                     dt {
                         width: 83px;
                         font-weight: 700;
                         @include mobile {
                             width: 108px;
+                        }
+                    }
+                    dd {
+                        width:calc(100% - 83px);
+                        @include mobile {
+                            width:calc(100% - 108px);
                         }
                     }
                     &.sel-category {

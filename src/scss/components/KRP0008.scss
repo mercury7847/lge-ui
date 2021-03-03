@@ -402,6 +402,7 @@
                 padding-left: 44px;
                 font-weight: 500;
                 @include font-small;
+                color: $color-default !important;
                 .img-area {
                     position: absolute;
                     top: 50%;
@@ -687,10 +688,6 @@
                     @include font-small;
                     .btn-link {
                         @include font-small;
-                        &:hover,
-                        &:focus { //부트스트랩 충돌로 추가
-                            color: $color-default;
-                        }
                     }
                 }
                 .content {
@@ -790,13 +787,9 @@
                             @include font-small;
                         }
                     }
-                    //.ui_accord_content {
-                    //    &.border {
-                    //        margin-top: 24px;
-                    //        padding-top: 16px;
-                    //        border-top: 1px solid $color-border;
-                    //    }
-                    //}
+                    .ui_accord_content {
+                        border: 0 !important; //부트스트랩 충돌로 추가
+                    }
                     .btn-toggle {
                         position: absolute;
                         @include calc(top,50%,-12px);
@@ -844,7 +837,6 @@
                         }
                         .ui_accord_content {
                             margin-top: 16px;
-                            border: 0 !important; //부트스트랩 충돌로 추가
                             border-top: 1px solid $color-gray-6 !important;
                         }
                         .btn-toggle {
@@ -926,10 +918,6 @@
                     text-align: right;
                     .btn-link {
                         @include font-small;
-                        &:hover,
-                        &:focus { //부트스트랩 충돌로 추가
-                            color: $color-default;
-                        }
                     }
                 }
             }
@@ -1222,10 +1210,6 @@
                         &.find-store {
                             margin-left: 16px;
                             background: url('/lg5-common/images/icons/icon-store-24.svg') no-repeat 0 center;
-                        }
-                        a:hover,
-                        a:focus { //부트스트랩 충돌로 추가
-                            color: $color-default;
                         }
                     }
                 }
@@ -1594,13 +1578,6 @@
                     margin-left: 0;
                     width: 100%;
                     vertical-align: middle;
-                    &:hover,
-                    &:focus { //부트스트랩 충돌로 추가
-                        color: $color-white;
-                    }
-                }
-                > .btn:not(:first-child) { //부트스트랩 충돌로 추가
-                    border-radius: 26px;
                 }
             }
             .btn {
