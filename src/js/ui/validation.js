@@ -342,7 +342,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         validate : function validate(){
             var self = this;
             var rObj = self._setCheckValidate();
-            console.log("validate:", rObj)
+            //console.log("validate:", rObj)
 
             var firstName = vcui.object.keys(rObj)[0];
             if(firstName){
