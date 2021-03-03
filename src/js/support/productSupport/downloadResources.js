@@ -356,6 +356,13 @@
                     html += vcui.template(driverListTemplate, item);
                 });
                 $list.html(html).show();
+                $list.find('>li').each(function(i) {
+                    var $this = $(this);
+                    for (var key in listArr[i]) {
+                        if (key == 'file') continue;
+                        $this.data(key.toString(), listArr[i][key]);
+                    }
+                });
                 $noData.hide();
                 self.$driverPagination.show();
                 self.$driverPagination.pagination('update', page);
@@ -600,9 +607,14 @@
             self.$driverSec.on('click', '.btn-download', function(e){
                 var $this = $(this);
                 var fileUrl = $this.attr('href');
+                var $item = $this.closest('li');
+                var data = $item.data();
 
                 if( vcui.detect.isMobileDevice) {
                     e.preventDefault();
+                    for(var key in data) {
+                        $('#fileSendToEmail').data(key, data[key]);
+                    }
                     $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
                 }
             })
@@ -613,7 +625,7 @@
                 var $popup = $this.closest('#fileSendToEmail');
                 var _url = $popup.data('ajax');
                 var _fileUrl = $popup.data('fileUrl');
-
+                
                 if( self.emailValidate.validate().success ) {
                     var param = {
                         email : $popup.find('#userEmail').val(),
@@ -622,7 +634,10 @@
                         categoryNm: self.param.categoryNm,
                         subCategory: self.param.subCategory,
                         subCategoryNm: self.param.subCategoryNm,
-                        modelCode: self.param.modelCode
+                        modelCode: self.param.modelCode,
+                        title: $popup.data('title'),
+                        os: $popup.data('os') || '',
+                        date: $popup.data('date') || ''
                     };
 
                     lgkorUI.requestAjaxDataPost(_url, param, function(result){
