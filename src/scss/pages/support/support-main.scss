@@ -239,7 +239,7 @@
 }
 
 .support-home {
-    padding-bottom:120px;
+    padding-bottom:100px;
     .btn {
         &.light-gray {
             background: #aaa;
@@ -287,6 +287,10 @@
                 background-image: url("/lg5-common/images/icons/btn-minus.svg");
             }
         }
+    }   
+
+    .common-banner {
+        margin-top:100px;
     }
 
 
@@ -371,7 +375,7 @@
     .home-section {
         max-width:1920px;
         margin:0 auto;
-        margin-top:120px;
+        margin-top:100px;
 
         img {
             width:100%;
@@ -1415,7 +1419,7 @@
 
         .hero-container {
             position: relative;
-            height:640px;
+            height:540px;
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
@@ -1430,25 +1434,14 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top/auto 100%;
+                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top;
+                background-size: cover;
             }
         }
 
         &.member-type {
             .hero-container {
                 height:700px;
-                // padding:48px 80px;
-            }
-        }
-
-        @include pc-size-l {
-            .hero-container {
-                height:535px;
-            }
-            &.member-type {
-                .hero-container {
-                    height:700px;
-                }
             }
         }
 
@@ -1812,11 +1805,13 @@
                 display: inline-block;
                 font-size:32px;
                 line-height:1.63;
+                vertical-align: middle;
                 color:#000;
             }
             .list-filter {
                 display: inline-block;
                 margin-left:16px;
+                vertical-align: middle;
 
                 span {
                     display: inline-block;
