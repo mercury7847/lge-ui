@@ -45,7 +45,11 @@
                 ' </ul>' +
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
+                    '{{# if(!vcui.detect.isMobileDevice) { #}}' +
                     '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{#if file.size}}{{file.size}}{{/if}}{{#if file.os}}{{file.os}}{{/if}}</span></a>' +
+                    '{{# } else { #}}' +
+                    '<a href="{{file.src}}" class="btn border size btn-download"><span>이메일 보내기</span></a>' +
+                    '{{# } #}}' +
                 '</div>' +
             '</div>' +
         '</li>';
@@ -200,18 +204,64 @@
             self.$surveyPopup = $('#surveyPopup');
             self.$fileDetailPopup = $('#fileDetailPopup');
 
-            self.setting();
-            self.bindEvent();
+            if (vcui.detect.isMobileDevice) {
+                vcui.require(['ui/validation'], function () {
+                    var emailRegister = {
+                        userEmail : {
+                            required: true,
+                            pattern : /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
+                            minLength: 1,
+                            maxLength: 50,
+                            msgTarget: '.err-block',
+                            errorMsg: '이메일 주소를 입력해주세요.',
+                            patternMsg: '올바른 이메일 형식이 아닙니다.',
+                            validate : function(value){
+                                var _pattern = new RegExp(this.pattern);
+        
+                                if( _pattern.test(value) == true) {
+                                    if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+    
+                    self.emailValidate = new vcui.ui.CsValidation('#fileSendToEmail', {register:emailRegister});
 
-            if (!self.isPSP) {
-                self.$cont.commonModel({
-                    register: {},
-                    selected: self.param
+                    self.setting();
+                    self.bindEvent();
+
+                    if (!self.isPSP) {
+                        self.$cont.commonModel({
+                            register: {},
+                            selected: self.param
+                        });
+                    }
+
+                    self.$manualPagination.data('page', 1);
+                    self.$driverPagination.pagination();
                 });
+            } else {
+                self.setting();
+                self.bindEvent();
+
+                if (!self.isPSP) {
+                    self.$cont.commonModel({
+                        register: {},
+                        selected: self.param
+                    });
+                }
+
+                self.$manualPagination.data('page', 1);
+                self.$driverPagination.pagination();
             }
 
-            self.$manualPagination.data('page', 1);
-            self.$driverPagination.pagination();
+            
         },
         setting: function() {
             var self = this;
@@ -299,33 +349,6 @@
                 page = data.listPage,
                 html = "";
 
-            var emailRegister = {
-                userEmail : {
-                    required: true,
-                    pattern : /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
-                    minLength: 1,
-                    maxLength: 50,
-                    msgTarget: '.err-block',
-                    errorMsg: '이메일 주소를 입력해주세요.',
-                    patternMsg: '올바른 이메일 형식이 아닙니다.',
-                    validate : function(value){
-                        var _pattern = new RegExp(this.pattern);
-
-                        if( _pattern.test(value) == true) {
-                            if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        } else {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            self.emailValidate = new vcui.ui.CsValidation('#fileSendToEmail', {register:emailRegister});
-
             self.$driverCount.html(page.totalCount);
         
             if (listArr.length) {
@@ -343,53 +366,6 @@
             }
 
             self.$driverKeyword.val(self.driverParam.keyword);
-
-
-            // 다운로드 버튼 클릭
-            self.$driverSec.on('click', '.btn-download', function(e){
-                var $this = $(this);
-                var fileUrl = $this.attr('href');
-
-                if( vcui.detect.isMobileDevice) {
-                    e.preventDefault();
-                    $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
-                }
-            })
-
-            //이메일 주소 입력팝업 보내기 버튼 클릭시 
-            $('#fileSendToEmail').on('click', '.btn-send', function(e){
-                var $this = $(this);
-                var $popup = $this.closest('#fileSendToEmail');
-                var _url = $popup.data('ajax');
-                var _fileUrl = $popup.data('fileUrl');
-
-                if( self.emailValidate.validate().success ) {
-                    var param = {
-                        email : $this.find('#userEmail').val(),
-                        fileUrl : _fileUrl
-                    }
-
-                    lgkorUI.requestAjaxDataPost(_url, param, function(result){
-                        var data = result.data;
-                        
-                        lgkorUI.alert("", {
-                            title: result.data.resultMessage,
-                            ok: function(el) {
-                                $(el).vcModal('hide');
-                                $('#fileSendToEmail').vcModal('hide');
-                            }
-                        });
-                    })
-                }
-            });
-
-            //이메일 주소 입력팝업 닫기버튼 클릭시 이메일주소값 초기화
-            $('#fileSendToEmail').on('modalhide', function(){
-                var $this = $(this);
-
-                $this.data('fileUrl', '');
-                $this.find('#userEmail').val('');
-            });
         },
         setOsOption: function(data) {
             var self = this;
@@ -618,6 +594,53 @@
                 } else {
                     $list.addClass('on');
                 }
+            });
+
+            // 다운로드 버튼 클릭
+            self.$driverSec.on('click', '.btn-download', function(e){
+                var $this = $(this);
+                var fileUrl = $this.attr('href');
+
+                if( vcui.detect.isMobileDevice) {
+                    e.preventDefault();
+                    $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
+                }
+            })
+
+            //이메일 주소 입력팝업 보내기 버튼 클릭시 
+            $('#fileSendToEmail').on('click', '.btn-send', function(e){
+                var $this = $(this);
+                var $popup = $this.closest('#fileSendToEmail');
+                var _url = $popup.data('ajax');
+                var _fileUrl = $popup.data('fileUrl');
+
+                if( self.emailValidate.validate().success ) {
+                    var param = {
+                        email : $this.find('#userEmail').val(),
+                        fileUrl : _fileUrl
+                    }
+
+                    lgkorUI.requestAjaxDataPost(_url, param, function(result){
+                        var data = result.data;
+                        
+                        lgkorUI.alert("", {
+                            title: result.data.resultMessage,
+                            ok: function(el) {
+                                $(el).vcModal('hide');
+                                $('#fileSendToEmail').vcModal('hide');
+                            }
+                        });
+                    })
+                }
+            });
+
+            //이메일 주소 입력팝업 닫기버튼 클릭시 이메일주소값 초기화
+            $('#fileSendToEmail').on('modalhide', function(){
+                var $this = $(this);
+
+                self.emailValidate.reset();
+                $this.data('fileUrl', '');
+                $this.find('#userEmail').val('');
             });
         }
     }
