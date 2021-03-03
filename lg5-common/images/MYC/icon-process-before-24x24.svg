@@ -6,9 +6,9 @@
                     <g>
                         <g>
                             <g>
-                                <path d="M0 0H24V24H0z" transform="translate(-1466 -740) translate(387 180) translate(40 130) translate(0 338) translate(0 92) translate(1039)"/>
-                                <g fill="#AAA" transform="translate(-1466 -740) translate(387 180) translate(40 130) translate(0 338) translate(0 92) translate(1039)">
-                                    <circle cx="12" cy="12" r="12"/>
+                                <path d="M0 0H24V24H0z" transform="translate(-1352 -712) translate(504 154) translate(40 128) translate(0 338) translate(0 92) translate(808)"/>
+                                <g fill="#AAA" transform="translate(-1352 -712) translate(504 154) translate(40 128) translate(0 338) translate(0 92) translate(808)">
+                                    <rect width="24" height="24" rx="12"/>
                                 </g>
                             </g>
                         </g>

@@ -435,6 +435,7 @@
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
+                    self.$listSorting.show();
                 }
             },
 
