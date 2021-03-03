@@ -621,6 +621,7 @@
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
+                        var $div = $("<div/>");
                         arr.forEach(function(item, index) {
                             if(!item.hash) {
                                 item.hash = [];
@@ -628,6 +629,7 @@
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             item.isVideo = lgkorUI.stringToBool(item.isVideo);
+                            item.desc = $div.html(item.desc).text(); //html strip
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();
