@@ -77,7 +77,6 @@
             if(searchUrl) {
                 var fi = searchUrl.indexOf('?');
                 var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
-                console.log(url);
                 location.href = url;
             }
         },
@@ -187,11 +186,10 @@
             if(sendSearchPage) {
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
+                self.$searchLayer.vcModal('close');
             } else {
-                self.requestSearch(searchVal, true);
+                self.requestSearch(searchVal, false);
             }
-
-            self.$searchLayer.vcModal('close');
         },
 
         //추천 태그 검색
@@ -201,11 +199,10 @@
             if(sendSearchPage) {
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
+                self.$searchLayer.vcModal('close');
             } else {
-                self.requestSearch(searchVal, true);
+                self.requestSearch(searchVal, false);
             }
-
-            self.$searchLayer.vcModal('close');
         },
 
 
@@ -262,6 +259,12 @@
                     self.$autoComplete.show();
                     self.hideAnimation(self.$searchKeywordArea);
                     self.$searchSimilar.hide();
+
+                    //모바일
+                    if(window.breakpoint.name == "mobile"){
+                        var searchItem = arr[0];
+                        self.requestSearch(searchItem, false);
+                    }
                 } else {
                     self.hideSearchResultArea();
                     //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
