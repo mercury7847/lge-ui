@@ -34,6 +34,10 @@ br.m {
             margin-top:24px;
             border-color: $color-white;
             color: $color-white;
+            &:hover,
+            &:focus {
+                background-image: none;
+            }
         }
     }
     @include mobile {
@@ -228,8 +232,11 @@ br.m {
             .tabs-wrap {
                 margin-top: 26px;
                 &.btn-type {
+                    &:before {
+                        display: none;
+                    }
                     .tabs {
-                        padding: 0;
+                        //padding: 0;
                         > li {
                             &:not(:first-child) {
                                 margin-left: 24px;
@@ -994,6 +1001,10 @@ br.m {
             margin-top:24px;
             border-color:#fff;
             color:#fff;
+            &:hover,
+            &:focus {
+                background-image: none;
+            }
         }
     }
     
