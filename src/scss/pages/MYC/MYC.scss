@@ -107,6 +107,30 @@
             }
             // contents
             .section-inner {
+                .inner-box {
+                    position: relative;
+                    .changePayment-btn {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        @include mobile {
+                            top: -3px;
+                        }
+                    }
+                    &.payment {
+                        .payment-info {
+                            .btn-group {
+                                margin: 40px 0 80px;
+                                @include mobile {
+                                    margin: 40px 0 60px;
+                                    .btn {
+                                        width: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 .dl-infolist-wrap {
                     .lists {
                         li {

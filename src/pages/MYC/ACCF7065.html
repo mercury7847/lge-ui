@@ -122,8 +122,186 @@
                                                     { "dt" : "월 납부 금액", "dd" : "<span>선납 / 포인트 사용 / 1년차 월 88,888원</span><a href='#n' class='btn-link monthlyPrice-btn'>매월 납부금 할인 내역 알아보기</a>" },
                                                 ]
                                             })
+                                            <!-- 210304 수정 [버튼 추가] -->
+                                            <div class="changePayment-btn">
+                                                <a href="#" class="btn border size"><span>납부 정보변경</span></a>
+                                            </div>
+                                            <!-- // 210304 수정 [버튼 추가] -->
                                         </div>
                                         <!-- // 월 납부 정보 -->
+
+                                        <!-- 210304 수정 [월 납부 정보 : 정보변경 활성화] -->
+                                        <div class="inner-box payment modify" style="display:block !important">
+                                            <p class="inner-tit">월 납부 정보</p>
+                                            <div class="payment-info">
+                                                <div class="form-wrap size2">
+                                                    <dl class="forms type2">
+                                                        <dt class="tit">
+                                                            <p class="label req">결제 수단<span class="blind">필수입력</span></p>
+                                                        </dt>
+                                                        <dd class="conts">
+                                                            <div class="select-list-wrap w-auto">
+                                                                <ul class="ui_radio_visible">
+                                                                    <li>
+                                                                        <span class="rdo-wrap">
+                                                                            <input type="radio" id="method-pay01" name="method-pay" data-visible-target=".by-card" checked>
+                                                                            <label for="method-pay01">신용카드</label>
+                                                                        </span>
+                                                                        <!-- 신용카드 -->
+                                                                        <div class="tab-panel by-card">
+                                                                            <div class="form-wrap">
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="slt-card1" class="req">카드사<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="select-wrap">
+                                                                                            <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard" data-required="true">
+                                                                                                <option value="" class="placeholder">카드사 선택</option>
+                                                                                                <option value="11">카드사1</option>
+                                                                                                <option value="22" selected>카드사2</option>
+                                                                                                <option value="33">카드사3</option>
+                                                                                            </select>
+                                                                                            <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                                        </div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="input-wrap">
+                                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
+                                                                                        </div>
+                                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="ipt-card2" class="req">유효기간<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="box">
+                                                                                            <div class="input-wrap">
+                                                                                                <input type="number" id="ipt-card2" value="0322" placeholder="유효기간을 입력해주세요" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true">
+                                                                                            </div>
+                                                                                            <div class="cell">
+                                                                                                <button type="button" class="btn paymentCardConfirm"><span>납부 카드 확인</span></button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                            </div>
+                                                                            @@include('./common/modules/bullet-list.html', {
+                                                                                "bulletTxt" : [
+                                                                                    "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
+                                                                                    "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
+                                                                                    "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
+                                                                                ]
+                                                                            })
+                                                                        </div>
+                                                                        <!-- // 신용카드 -->
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="rdo-wrap">
+                                                                            <input type="radio" id="method-pay02" name="method-pay" data-visible-target=".by-bank">
+                                                                            <label for="method-pay02">계좌이체</label>
+                                                                        </span>
+                                                                        <!-- 실시간 계좌이체 -->
+                                                                        <div class="tab-panel by-bank">
+                                                                            <div class="form-wrap">
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="ipt-bank1" class="req">예금주명<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="input-wrap">
+                                                                                            <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요" value="이엘지" name="paymentUserName" disabled>
+                                                                                        </div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="slt-bank1" class="req">은행명<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="select-wrap">
+                                                                                            <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true">
+                                                                                                <option value="" class="placeholder">선택해주세요.</option>
+                                                                                                <option value="111">은행1</option>
+                                                                                                <option value="222">은행2</option>
+                                                                                                <option value="333" selected>은행3</option>
+                                                                                            </select>
+                                                                                            <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                                        </div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                                <dl class="forms inner-type">
+                                                                                    <dt class="tit"><label for="ipt-bank2" class="req">계좌번호<span class="blind">필수입력</span></label></dt>
+                                                                                    <dd class="conts">
+                                                                                        <div class="box">
+                                                                                            <div class="input-wrap">
+                                                                                                <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
+                                                                                            </div>
+                                                                                            <div class="cell">
+                                                                                                <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                                    </dd>
+                                                                                </dl>
+                                                                            </div>
+                                                                            @@include('./common/modules/bullet-list.html', {
+                                                                                "bulletTxt" : [
+                                                                                    "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
+                                                                                    "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
+                                                                                    "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
+                                                                                ]
+                                                                            })
+                                                                        </div>
+                                                                        <!-- // 실시간 계좌이체 -->
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="forms wide">
+                                                        <dt class="tit">
+                                                            <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
+                                                        </dt>
+                                                        <dd class="conts">
+                                                            <div class="btn-wrap">
+                                                                <button class="btn bg-type icon-ars arsAgreeRequest"><span>ARS 출금 동의 신청</span></button>
+                                                            </div>
+                                                            @@include('./common/modules/bullet-list.html', {
+                                                                "bulletTxt" : [
+                                                                    "입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.",
+                                                                    "ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다."
+                                                                ]
+                                                            })
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="forms wide">
+                                                        <dt class="tit">
+                                                            <p class="label req">자동결제 이용 약관 동의<span class="blind">필수입력</span></p>
+                                                        </dt>
+                                                        <dd class="conts">
+                                                            <div class="input-mix-wrap">
+                                                                <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-1" name="selfClearingAgree">
+                                                                <label for="chk03-1">위 결제 수단으로 정기결제신청을 동의합니다.</label>
+                                                            </span>
+                                                                    <div class="cell">
+                                                                        <a href="#n" class="btn-link selfClearingAgree">동의약관 보기</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="btn-group center">
+                                                    <button type="button" class="btn border size-m cancel-btn"><span>취소</span></button>
+                                                    <button type="button" class="btn border pink size-m ok-btn"><span>저장</span></button>
+                                                </div>
+                                            </div>
+                                            <div class="changePayment-btn">
+                                                <a href="#" class="btn border size disabled"><span>납부 정보변경</span></a>
+                                            </div>
+                                        </div>
+                                        <!-- // 210304 수정 [월 납부 정보 : 정보변경 활성화] -->
 
                                         @@include('./common/modules/bullet-list.html', {
                                             "topBorder" : true,
