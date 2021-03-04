@@ -10,6 +10,6 @@
 		"LGD_HASHDATA" : "LGD_HASHDATA",
 		"payMethodCd" : "payMethodCd",
 		"LGD_CUSTOM_USABLEPAY" : "",
-		"resultMsg" : "resultMsg"
+		"resultMsg" : ""
     }
 }
