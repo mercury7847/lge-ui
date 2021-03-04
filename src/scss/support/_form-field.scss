@@ -337,6 +337,11 @@
                 }
             }
         }
+        @include mobile {
+            &:before {
+                content:none;
+            }   
+        }
     }
     .search-more {
         position:absolute;
