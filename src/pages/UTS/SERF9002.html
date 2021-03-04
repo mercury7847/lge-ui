@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/curation","search/search_all"]
     })
+<!--        pageJS: ["search/curation","search/search_all"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -333,7 +333,7 @@
                 <!-- 210218 수정 [이미지 변경, br 태그 위치 수정] -->
                 <div class="search-banner">
                     <a href="#n">
-                        <img data-pc-src="/lg5-common/images/UTS/@sample-banner.jpg" data-m-src="/lg5-common/images/UTS/@sample-banner-m.jpg" alt="">
+                        <img src="/lg5-common/images/UTS/@sample-banner.jpg" alt="">
                         <div class="text-area">
                             <strong class="title">새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타</strong>
                             <span class="sub-copy">2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원 상당 혜택!</span>
@@ -393,7 +393,7 @@
                                             "priceSales" : true,
                                             "priceRental" : true
                                         }, {
-                                            "itemClass" : "",
+                                            "itemClass" : "discontinued",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
                                             "flags" : ["베스트", "신제품"],
                                             "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
@@ -509,7 +509,7 @@
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemLink" : true,
-                                            "itemClass" : "",
+                                            "itemClass" : "discontinued",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
                                             "tit" : "브러쉬 Brush Assembly, Filter",
                                             "sku" : "5203FI3754D",
@@ -665,7 +665,7 @@
                                             "priceSales" : true,
                                             "priceRental" : true
                                         }, {
-                                            "itemClass" : "",
+                                            "itemClass" : "discontinued",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
                                             "flags" : ["베스트", "신제품"],
                                             "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
