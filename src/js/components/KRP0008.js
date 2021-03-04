@@ -1300,6 +1300,11 @@
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                                 console.log(result);
+                                var data = result.data;
+                                var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                if(obsDirectPurchaseUrl){
+                                    location.href = obsDirectPurchaseUrl;
+                                }
                             });
                         }
                     }
