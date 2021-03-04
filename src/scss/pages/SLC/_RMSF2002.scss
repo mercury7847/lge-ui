@@ -1001,6 +1001,10 @@ br.m {
             margin-top:24px;
             border-color:#fff;
             color:#fff;
+            &:hover,
+            &:focus {
+                background-image: none;
+            }
         }
     }
     
