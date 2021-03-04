@@ -15,7 +15,9 @@
                 "pageTitle": "비회원 주문/배송 조회"
             })
             <!-- 비회원 주문/배송 조회 -->
+            <!-- 21.03.04 수정 : data-receipt-url 추가 -->
             <div class="contents mypage non-members"
+                data-receipt-url="/lg5-common/data-ajax/mypage/orderReceipt.json"
                 data-consumables="true"
             >
                 <div class="cont-wrap">
@@ -106,13 +108,14 @@
                                 <!-- 결제 정보 : 신용카드 -->
                                 <div class="inner-box payment">
                                     <p class="inner-tit">결제 정보</p>
+                                    <!-- 21.03.04 수정 : a 태그 수정 -->
                                     <!-- 결제 거래 영수증 -->
-                                    <!-- <a href="javascript:showReceiptByTID('LGD_MID', 'LGD_TID', 'authdata')" class="btn-link">영수증 발급 내역</a> -->
+                                    <!-- <a href="#" class="btn-link receipt-btn" data-order-no="">영수증 발급 내역</a> -->
                                     <!-- 현금 영수증 -->
-                                    <!-- <a href="javascript:showCashReceipts('LGD_MID', 'LGD_OID', 'seqno', '거래종류', 'service_type')" class="btn-link">영수증 발급 내역</a> -->
+                                    <!-- <a href="#" class="btn-link receipt-btn" data-order-no="" data-service-type="service or test">영수증 발급 내역</a> -->
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "결제 수단", "dd" : '<span>신용카드 할부 05개월</span><a href="javascript:showReceiptByTID(\'LGD_MID\', \'LGD_TID\', \'authdata\')" class="btn-link">영수증 발급 내역</a>' },
+                                            { "dt" : "결제 수단", "dd" : '<span>신용카드 할부 05개월</span><a href="#" class="btn-link receipt-btn" data-order-no="">영수증 발급 내역</a>' },
                                             { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                             { "dt" : "할인 금액", "dd" : "-283,406원" },
                                             { "dt" : "배송비", "dd" : "2,500원" },
