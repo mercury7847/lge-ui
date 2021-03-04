@@ -21,13 +21,13 @@
 
     .box-list-inner {
         font-size: 0;
-        margin: -12px -6px 0;
+        margin: -12px -12px 0;
         .lists {
             display: inline-block;
             position: relative;
             width: calc(100% / 2);
             margin-top: 12px;
-            padding: 0 6px;
+            padding: 0 12px;
             vertical-align: top;
             @include mobile {
                 width: 100%;
@@ -44,21 +44,28 @@
                 border-radius: 8px;
             }
             .thumb {
+                position: relative;
                 display: table-cell;
                 vertical-align: middle;
-                height: 225px;
-                //border-radius: 4px 0 0 4px;
-                img {
-                    max-width: 100%;
-                    height: 100%;
+                @include pc {
+                    overflow: hidden;
+                    width: 18.225vw;
+                    height: 228px;
                     border-radius: 8px 0 0 8px;
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        //max-width: 100%;
+                        height: 100%;
+                        //border-radius: 8px 0 0 8px;
+                    }
                 }
                 @include mobile {
                     display: block;
-                    height: auto;
                     img {
                         width: 100%;
-                        height: auto;
                         border-radius: 8px 8px 0 0;
                     }
                 }
@@ -80,15 +87,15 @@
                 left: 24px;
                 @include mobile {
                     position: static;
-                    margin-top: 32px;
+                    margin-top: 12px;
                 }
             }
             .tit {
                 width: 100%;
-                height: 56px;
+                max-height: 56px;
                 font-size: 16px;
                 line-height: 28px;
-                margin-bottom: 5px;
+                margin-bottom: 4px;
                 overflow: hidden;
                 text-overflow: clip;
                 display: -webkit-box;
@@ -97,18 +104,18 @@
                 color: #000;
                 font-weight: 700;
                 @include mobile {
-                    height: 48px;
-                    margin-bottom: 8px;
+                    max-height: 48px;
+                    margin-bottom: 10px;
                     line-height: 24px;
                 }
             }
             .copy {
-                margin-top: 16px;
+                margin-top: 4px;
                 font-size: 14px;
                 line-height: 20px;
                 color: #000;
                 @include mobile {
-                    margin-top: 8px;
+                    margin-top: 10px;
                     line-height: 24px;
                 }
             }

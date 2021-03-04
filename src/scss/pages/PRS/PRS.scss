@@ -602,10 +602,12 @@
 				text-align:center;
 				transform:translateY(-50%);
 				&.type-l {
-					left:310px;
+					//left:310px;
+					left:5%;
 				}
 				&.type-r {
-					right:310px;
+					//right:310px;
+					right:5%;
 				}
 				> a {
 					display:block;
@@ -1178,9 +1180,10 @@
 					width:100%;
 				}
 				.product-info-link {
-					top:auto;
+					//top:auto;
+					top:112px;
 					right:0;
-					bottom:0;
+					//bottom:0;
 					left:0;
 					text-align:center;
 					&.type-l {
@@ -1195,7 +1198,8 @@
 					}
 				}
 				.link-area {
-					margin-top:24px;
+					//margin-top:24px;
+					margin-top:20px;
 					.txt-link {
 						display:block;
 						font-size:14px;
