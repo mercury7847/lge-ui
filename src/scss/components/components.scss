@@ -1060,6 +1060,11 @@
         // 하단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
         .component {}
     }
+    &.zero-top-mob {
+        @include mobile {
+            padding-top:0;
+        }
+    }
 
     .component {
         position: relative;
