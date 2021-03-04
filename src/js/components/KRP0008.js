@@ -785,14 +785,11 @@
 
                 //케어쉽 서비스 선택 관련
                 self.$pdpInfoAllCareshipService.on('change','input[type=radio]', function(e){
-                    console.log("jsw");
-                    waterCareRequire = true;
                     //케어쉽필수 제품인지 체크해서 알림창 뛰움
                     var val = $(this).val();
                     var $careshipService = $(this).parents('.careship-service');
                     if(!lgkorUI.stringToBool(val)) {
                         if(waterCareRequire) {
-                            console.log($(this).parents('ul').find('input[type=radio][value="Y"]'));
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
                             $('#waterCareRequirePopup').vcModal();
                         } else if(careRequire) {
@@ -807,6 +804,15 @@
                                     $careshipPriceInfo.hide();
                                 }
                                 self.updatePaymentAmountPrice($paymentAmount);
+
+                                //수량체크버튼 활성
+                                var $input = $paymentAmount.find('input.quantity');
+                                if(parseInt($input.val()) == 1) {
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                } else {
+                                    $paymentAmount.find('button.minus').attr('disabled',false);
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                }
                             }
                         }
                     } else {
@@ -818,6 +824,10 @@
                                 $careshipPriceInfo.show();
                             }
                             self.updatePaymentAmountPrice($paymentAmount);
+
+                            //케어십 신청됬으므로 수량체크버튼 비활성
+                            $paymentAmount.find('button.minus').attr('disabled',true);
+                            $paymentAmount.find('button.plus').attr('disabled',true);
                         }
                     }
                 });
@@ -1296,9 +1306,11 @@
                         }
                     } else {
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                         console.log("!!!!!buy",ajaxUrl,param);
+                        console.log('post');
                         if(ajaxUrl) {
-                            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                                 console.log(result);
                                 var data = result.data;
                                 var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
@@ -1334,7 +1346,6 @@
 
             //썸네일 리스트 클릭
             clickThumbnailSlide: function(index) {
-                console.log(index);
                 var self = this;
                 var item = self.findPdpData(index);
                 switch(item.type) {
@@ -1372,7 +1383,6 @@
             },
 
             clickModalThumbnail: function(index) {
-                console.log('modal',index);
                 var self = this;
                 index = parseInt(index);
                 var item = self.findPdpData(index);
