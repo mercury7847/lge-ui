@@ -18,7 +18,8 @@
             padding-bottom:32px;
         }
     }
-    &.stage-standard .component-inner {
+    &.stage-standard .component-inner,
+    &.stage-medium .component-inner {
         max-width:1380px;
         padding:0;
         @include mobile {
@@ -119,7 +120,34 @@
                             max-height:103px;
                         }
                     }
-                }	
+                }
+                &.icon-only {
+                    .icon-wrap {
+                        a {
+                            padding-top:122px;
+                            @include mobile {
+                                padding-top:103px;
+                            }
+                        }
+                    }
+                    img {
+                        position: absolute;
+                        z-index:1;
+                        top:0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width:100%;
+                        max-width: 122px;
+                        max-height: 122px;
+                        @include mobile {
+                            max-width:103px;
+                            max-height:103px;
+                        }
+                    }
+                    .icon-text {
+                        display:none;
+                    }
+                }
             }
 		}
 		.indi-wrap {
