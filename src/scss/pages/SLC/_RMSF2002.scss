@@ -32,11 +32,11 @@ br.m {
         }
         .btn.border {
             margin-top:24px;
-            border-color: $color-white;
+            border-color: $color-white !important;
             color: $color-white;
             &:hover,
             &:focus {
-                background-image: none;
+                background-color: transparent;
             }
         }
     }
@@ -999,7 +999,7 @@ br.m {
         }
         .btn.border {
             margin-top:24px;
-            border-color:#fff;
+            border-color:#fff !important;
             color:#fff;
             &:hover,
             &:focus {
