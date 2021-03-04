@@ -879,7 +879,7 @@
                     }
                 });
 
-                $searchWrap.find('.btn-search', function() {
+                $searchWrap.find('.btn-search').on('click', function() {
                     location.href = url + $searchInput.val();
                 });
 
