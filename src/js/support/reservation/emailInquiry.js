@@ -214,6 +214,7 @@
             self.$inquiryList.empty();
             self.$completeBtns.hide();
             self.$selectedModelBar.hide();
+            self.$myModelWrap.hide();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);
