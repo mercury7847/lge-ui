@@ -2345,9 +2345,11 @@ $.fn.serializeObject = function() {
                 this.value = this.value.slice(0, this.maxLength);
             }  
         });
-        $(document).on('mousewheel', 'input[type="number"]', function(e){
-            e.preventDefault();
-            e.stopPropagation();
+
+        $(document).on('focus', 'input[type="number"]', function(e){
+            $(this).on('mousewheel',function(e){
+                e.preventDefault();
+            });
         });
 
         $(document).on('change', '.agree-wrap input:checkbox', function(){
