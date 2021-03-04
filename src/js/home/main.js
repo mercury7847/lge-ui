@@ -158,7 +158,7 @@ $(function () {
 
                 if(!isRecom){
                     $('.recom-list-slide').vcCarousel({                        
-                        infinite: false,
+                        infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1
                     });
@@ -166,7 +166,7 @@ $(function () {
 
                 if(!isBenefit){
                     $('.benefit-list-slide').vcCarousel({                        
-                        infinite: false,
+                        infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1                                
                     });
