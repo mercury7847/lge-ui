@@ -788,9 +788,8 @@
                     //케어쉽필수 제품인지 체크해서 알림창 뛰움
                     var val = $(this).val();
                     var $careshipService = $(this).parents('.careship-service');
-                    if(!lgkorUI.stringToBool(val) {
+                    if(!lgkorUI.stringToBool(val)) {
                         if(waterCareRequire) {
-                            console.log($(this).parents('ul').find('input[type=radio][value="Y"]'));
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
                             $('#waterCareRequirePopup').vcModal();
                         } else if(careRequire) {
