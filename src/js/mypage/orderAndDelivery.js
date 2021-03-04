@@ -168,10 +168,17 @@
             '</dl>'+
         '</li>';
 
-    var CURRENT_PAGE, TOTAL_PAGE;
+    var TOTAL_PAGE;
+
+    var START_INDEX;
 
     var ORDER_LIST;
     var CARE_LIST;
+
+    var SHIPPING_DATA;
+    var PAYMENT_DATA;
+    var ORDER_USER_DATA;
+    var MONTHLY_PAYMENT_DATA;
 
     var LIST_VIEW_TOTAL = 10;
 
@@ -352,6 +359,10 @@
         tab.addClass('on');
         
         TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
+
+        START_INDEX = 0;
+        setOrderListContents();
+        setStepInfoStatus();
     }
 
     function getBankBnumberValidation(popname){
@@ -568,28 +579,57 @@
     }
 
     function setMoreOrderList(){
-        //requestOrderInquiry(CURRENT_PAGE+1);
+        START_INDEX += LIST_VIEW_TOTAL;
+        setOrderListContents();
     }
 
     function setOrderListContents(){
         var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var leng = list.length;
-        var start = CURRENT_PAGE;
-        var end = start + LIST_VIEW_TOTAL;
-        if(end > leng) end = leng;
+
+        if(leng){
+            $('.inquiry-list-notify').show();
+
+            var start = START_INDEX;
+            var end = start + LIST_VIEW_TOTAL;
+            if(end > leng) end = leng;
+
+            if(start == 0) $('.inquiry-list-wrap').empty();
+
+            for(var idx=start;idx<end;idx++){
+                var templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
+                $('.inquiry-list-wrap').append(templateList);
+
+                for(var cdx in list[idx].productList){
+                    var prodlist = list[idx].productList[cdx];
+                    $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false}));
+                }
+            }
+
+            if(end < leng) $('.btn-moreview').show();
+            else $('.btn-moreview').hide();
+        } else{
+            setNoData();
+        }
     }
 
-    function setTotalCount(){
-        var total = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST.length : CARE_LIST.length;
-        var div = parseInt(total/LIST_VIEW_TOTAL);
-        var rest = total % LIST_VIEW_TOTAL;
-
-        TOTAL_PAGE = div;
-        if(rest) TOTAL_PAGE++;
+    function setStepInfoStatus(){
+        if(TAB_FLAG == TAB_FLAG_ORDER){
+            $('.buy-step-info').show();
+            $('.care-step-info').hide();
+        } else{
+            $('.buy-step-info').hide();
+            $('.care-step-info').show();
+        }
     }
 
 
     //### REQUEST ###
+
+    //취소/반품 확인 리스트 리로드...
+    function reloadOrderInquiry(){
+        requestOrderInquiry();
+    }
 
     //페이지 목록 로드...
     function requestOrderInquiry(page){
@@ -617,34 +657,25 @@
 
             if(PAGE_TYPE == PAGE_TYPE_NONMEM) data.listData = [data.listData];
 
-            CURRENT_PAGE = 1;
+            START_INDEX = 0;
             ORDER_LIST = [];
             CARE_LIST = [];
+            SHIPPING_DATA = {};
+            PAYMENT_DATA = {};
+            ORDER_USER_DATA = {};
+            MONTHLY_PAYMENT_DATA = {};
+
 
             if(data.listData && data.listData.length){
-
-                $('.inquiry-list-notify').show();
-                $('.inquiry-list-wrap').empty();
-
-                var leng, cdx, idx, templateList;
+                var leng, cdx, idx;
                 var list = data.listData;
                 for(idx in list){
                     leng = ORDER_LIST.length;
                     list[idx]['dataID'] = leng.toString();
 
-                    if(idx < LIST_VIEW_TOTAL){
-                        templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
-                        $('.inquiry-list-wrap').append(templateList);
-                    }
-
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
-
-                        if(idx < LIST_VIEW_TOTAL){
-                            var prodlist = list[idx].productList[cdx];
-                            $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false}));
-                        }
                     }
 
                     ORDER_LIST.push(list[idx]);
@@ -691,11 +722,8 @@
                     $listBox.html(vcui.template(orderUserTemplate, orderusers));
                 }
 
-            } else{
-                setNoData();
             }
 
-            CARE_LIST = [];
             if(data.careListData && data.careListData.length){
                 list = data.careListData;
                 for(idx in list){
@@ -711,20 +739,88 @@
                 }
             }
 
-            var leng = ORDER_LIST.length;
-            var cnt = leng ? "(" + leng + ")" : "";
-            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text(cnt);
+            //배송정보
+            if(data.shipping) {
+                var shipping = data.shipping;
+                shipping.maskingName = txtMasking.name(shipping.name);
+                shipping.maskingAddress = txtMasking.substr(shipping.city + " " + shipping.street,14);
+                shipping.maskingTelephone = txtMasking.phone(shipping.telephone);
+                shipping.maskingTelephonenumber = txtMasking.phone(shipping.telephonenumber);
+                shipping.instpectionVisit = lgkorUI.stringToBool(shipping.instpectionVisit);
+                shipping.recyclingPickup = lgkorUI.stringToBool(shipping.recyclingPickup);
 
-            leng = CARE_LIST.length;
-            cnt = leng ? "(" + leng + ")" : "";
-            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+                SHIPPING_DATA = vcui.clone(shipping);
+            }
+            
+            //결제정보
+            if(data.payment) {
+                var payment = data.payment;
+                payment.orderPrice = vcui.number.addComma(payment.orderPrice);
+                payment.discountPrice = vcui.number.addComma(payment.discountPrice);
+                payment.memberShipPoint = vcui.number.addComma(payment.memberShipPoint);
+                payment.totalPrice = vcui.number.addComma(payment.totalPrice);
 
-            setTotalCount();
-            if(CURRENT_PAGE < TOTAL_PAGE) $('.btn-moreview').show();
-            else $('.btn-moreview').hide();
+                if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
+                if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+                
+                PAYMENT_DATA = vcui.clone(payment);
+            }
+
+            //주문자 정보
+            if(data.orderUser) {
+                var orderusers = data.orderUser;
+                orderusers.userName = txtMasking.name(orderusers.userName);
+                orderusers.phoneNumber = txtMasking.phone(orderusers.phoneNumber);
+                orderusers.email = txtMasking.email(orderusers.email);
+
+                ORDER_USER_DATA = vcui.clone(orderusers);
+            }
+
+            //월 납부 정보...
+            if(data.monthlyPayment){
+                var monthpayment = data.monthlyPayment;
+
+                MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
+            }
+
+            renderPage();
 
             lgkorUI.hideLoading();
         });
+    }
+
+    function renderPage(){
+
+        setOrderListContents();
+
+        setStepInfoStatus();
+
+        //배송정보
+        var $listBox = $('.inner-box.shipping ul');
+        if($listBox.length > 0) {
+            $listBox.html(vcui.template(shippingListTemplate, SHIPPING_DATA));
+        }
+
+        //결제정보
+        $listBox = $('.inner-box.payment ul');
+        if($listBox.length > 0) {
+            var template = PAGE_TYPE == PAGE_TYPE_NONMEM ? noneMemPaymentTemplate : paymentListTemplate;
+            $listBox.html(vcui.template(template, PAYMENT_DATA));
+        }
+
+        //주문자 정보
+        $listBox = $('.inner-box.orderuser ul');
+        if($listBox.length > 0) {
+            $listBox.html(vcui.template(orderUserTemplate, ORDER_USER_DATA));
+        }
+
+        var leng = ORDER_LIST.length;
+        var cnt = leng ? "(" + leng + ")" : "";
+        $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text(cnt);
+
+        leng = CARE_LIST.length;
+        cnt = leng ? "(" + leng + ")" : "";
+        $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
     }
 
     //환불계좌 확인...
@@ -755,7 +851,6 @@
             }
         });    
     }
-
     //취소/반품 신청을 위한 데이터 요정...
     function getPopOrderData(dataId, calltype){
         lgkorUI.showLoading();
@@ -791,32 +886,8 @@
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
 
-                var prodListWrap = $('#popup-cancel').find('.info-tbl-wrap .tbl-layout .tbody').empty();                
-                for(var idx in productList){
-                    var listdata = productList[idx];
-                    listdata["prodID"] = idx;
-                    listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productPrice"]);
-    
-                    var productPrice = listdata.productPrice ? parseInt(listdata.productPrice) : 0;
-                    var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
-                    var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
-    
-                    if(listdata.itemCancelAbleYn == "N") listdata.orderStatus.disabled = "disabled";
+                addPopProdductList(popup, productList, true);
                 
-                    PRICE_INFO_DATA.push({
-                        productPrice: productPrice,
-                        discountPrice: discountPrice,
-                        mempointPrice: mempointPrice
-                    });
-    
-                    POP_PROD_DATA.push({
-                        productNameKR: listdata.productNameKR,
-                        productNameEN: listdata.productNameEN,
-                        quantityOrdered: listdata.quantityOrdered
-                    })
-    
-                    prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:true}));
-                }
                 $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
                 $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
 
@@ -830,24 +901,23 @@
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
 
+                isCheck = false;
+
                 var prodId = popup.data('prodId');
 
-                var takebackProd = vcui.array.filter(productList, function(item, idx){
+                productList = vcui.array.filter(productList, function(item, idx){
                     return item.modelID == ORDER_LIST[dataId].productList[prodId].modelID;
                 });
-    
-                POP_PROD_DATA.push({
-                    productNameKR: takebackProd.productNameKR,
-                    productNameEN: takebackProd.productNameEN,
-                    quantityOrdered: takebackProd.quantityOrdered
-                })
+                console.log("### takeback productList ###", productList);
 
-                console.log("### takebackProd ###", takebackProd);
+                addPopProdductList(popup, productList, false);
     
-                productPrices = takebackProd[0].productPrice ? parseInt(takebackProd[0].productPrice) : 0;
-                discountPrices = takebackProd[0].discountPrice ? parseInt(takebackProd[0].discountPrice) : 0;
-                mempointPrices = takebackProd[0].memberShipPoint ? parseInt(takebackProd[0].memberShipPoint) : 0;
-                
+                productPrices = productList[0].productPrice ? parseInt(productList[0].productPrice) : 0;
+                discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
+                mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
+
+                $('#popup-takeback').find('.info-tbl-wrap .info-wrap .infos').empty().append("<li>주문일<em>" + ORDER_LIST[dataId].orderDate + "</em></li>");
+               
                 $('#popup-takeback').find('#slt01 option').prop('selected', false);
                 $('#popup-takeback').find('#slt01 option').eq(0).prop('selected', true);
                 $('#popup-takeback').find('#slt01').vcSelectbox('update');
@@ -896,7 +966,35 @@
             popup.vcModal();
         });     
     }
+    //취소/반품 팝업 리스트 추가
+    function addPopProdductList(popup, productList, isCheck){
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();                
+        for(var idx in productList){
+            var listdata = productList[idx];
+            listdata["prodID"] = idx;
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productPrice"]);
 
+            var productPrice = listdata.productPrice ? parseInt(listdata.productPrice) : 0;
+            var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
+            var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
+
+            if(listdata.itemCancelAbleYn == "N") listdata.orderStatus.disabled = "disabled";
+        
+            PRICE_INFO_DATA.push({
+                productPrice: productPrice,
+                discountPrice: discountPrice,
+                mempointPrice: mempointPrice
+            });
+
+            POP_PROD_DATA.push({
+                productNameKR: listdata.productNameKR,
+                productNameEN: listdata.productNameEN,
+                quantityOrdered: listdata.quantityOrdered
+            })
+
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck}));
+        }
+    }
     //반품 정보 요청...후 팝업 열기.
     function openTakebackPop(dataId, prodId){
         $('#popup-takeback').data('dataId', dataId);
@@ -904,7 +1002,6 @@
 
         getPopOrderData(dataId, "orderreturn");
     }
-
     //취소 정보 요청...후 팝업열기.
     function openCancelPop(dataId){
         $('#popup-cancel').data('dataId', dataId);
@@ -961,11 +1058,10 @@
             } else{
                 $('#popup-takeback').vcModal('close');
 
-                requestOrderInquiry();
+                reloadOrderInquiry();
             }
         });
     }
-
     //취소신청...
     function cancelOk(){
         lgkorUI.showLoading();
@@ -1020,7 +1116,7 @@
             } else{
                 $('#popup-cancel').vcModal('close');
 
-                requestOrderInquiry();
+                reloadOrderInquiry();
             }
         });
     }
