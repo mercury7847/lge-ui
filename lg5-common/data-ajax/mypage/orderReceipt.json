@@ -1,0 +1,15 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "LGD_MID": "LGD_MID",
+		"LGD_OID" : "LGD_OID",
+		"LGD_TID" : "LGD_TID",
+		"LGD_HASHDATA" : "LGD_HASHDATA",
+		"payMethodCd" : "payMethodCd",
+		"LGD_CUSTOM_USABLEPAY" : "",
+		"resultMsg" : "resultMsg"
+    }
+}
