@@ -407,6 +407,47 @@
                 window.open( url,'tracking','scrollbars=yes,toolbar=0,location=0,directories=0,status=0,menubar=0,resizable=0,top=20,left=20,width=1300,height=800');
             }
         });
+
+        $('.contents.mypage').on('click', '.receipt-btn', function(e) {
+            var url = $('.contents.mypage').data('receiptUrl');
+            var orderNo = $(this).data('orderNo');
+            var serviceType = $(this).data('serviceType');
+
+            var sendata = {
+                orderNo: orderNo
+            }
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxData(url, sendata, function(result){
+                lgkorUI.hideLoading();
+                
+                var data = result.data;
+
+                var LGD_MID = data.LGD_MID;
+                var LGD_OID = data.LGD_OID;
+                var LGD_TID = data.LGD_TID;
+                var LGD_HASHDATA = data.LGD_HASHDATA;
+                var payMethodCd = data.payMethodCd;
+                var LGD_CUSTOM_USABLEPAY = "";
+                var resultMsg = data.resultMsg;
+
+                if (resultMsg != "") {
+                    lgkorUI.alert('', {
+                        title: resultMsg
+                    });
+                } else {
+                    if(payMethodCd == "01"){
+                        LGD_CUSTOM_USABLEPAY= "BANK";
+                        showCashReceipts(LGD_MID,LGD_OID,1,LGD_CUSTOM_USABLEPAY, serviceType);   // test -> service
+                    } else if(payMethodCd == "03"){		// 무통장
+                        LGD_CUSTOM_USABLEPAY= "CAS";
+                        showCashReceipts(LGD_MID,LGD_OID,'',LGD_CUSTOM_USABLEPAY, serviceType);   // test -> service
+                    }else{
+                        showReceiptByTID(LGD_MID, LGD_TID, LGD_HASHDATA); // 운영 , test 동일 
+                    } 
+                }
+            });
+        });
     }
 
     //반품신청 확인...

@@ -27,10 +27,10 @@
 	.usp-banner-wrap {
 		position:relative;
 		@include mobile {
-            margin-bottom:40px;
-            padding-bottom:40px;
+            // margin-bottom:40px;
+            padding-bottom:80px;
             &.usp-btm {
-                margin-bottom:0;
+                // margin-bottom:0;
                 padding-bottom:0;
             }
 		}
@@ -43,7 +43,7 @@
             z-index:10;
             transform:translateX(-50%);
             @include mobile {
-                bottom:0;
+                bottom:40px;
             }
 		}
 
@@ -229,6 +229,7 @@
                 }
                 .row {
                     position:relative;
+                    margin:0 !important;
                     .btn-arrow {
                         position:absolute;
                         top:0;
@@ -264,7 +265,7 @@
         .logo {
             filter:brightness(0) invert(1);
             @include mobile {
-                filter:brightness(1) invert(0);
+                filter:brightness(1) invert(0) !important;
             }
         }
     }

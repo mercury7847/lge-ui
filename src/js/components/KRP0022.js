@@ -1,18 +1,18 @@
 (function() {
     var eventItemList = '<li class="lists"><div class="list-inner">' +
-        '<a href="{{url}}">' +
+        '<a href="{{eventUrl}}" target="{{#if eventTarget == "self"}}_self{{#else}}_blank{{/if}}">' +
             '<span class="thumb">' +
-                '<img src="{{imageUrl}}" alt="{{imageAlt}}" aria-hidden="true">' +
-                '{{#if endEvent}}<span class="event-end"><em>종료된 이벤트</em></span>{{/if}}' +
-                '<span class="flag-wrap bg-type">{{#each item in categoryFlag}}<span class="flag"><span class="blind">제품 카테고리</span>{{item}}</span>{{/each}}</span>' +
+                '<img src="{{eventListThumbnailPath}}" alt="{{eventListThumbnailAltText}}" aria-hidden="true">' +
+                '{{#if eventEndFlag != "N"}}<span class="event-end"><em>종료된 이벤트</em></span>{{/if}}' +
+                '<span class="flag-wrap bg-type"><span class="flag"><span class="blind">제품 카테고리</span>{{categoryName}}</span></span>' +
             '</span>' +
             '<div class="info">' +
-                '<div class="flag-wrap bar-type">{{#each item in eventFlag}}<span class="flag"><span class="blind">이벤트 구분</span>{{item}}</span>{{/each}}</div>' +
-                '<p class="tit"><span class="blind">이벤트 제목</span>{{title}}</p>' +
-                '<p class="date"><span class="blind">이벤트 기간</span>{{startDate}}~{{endDate}}</p>' +
+                '<div class="flag-wrap bar-type"><span class="flag"><span class="blind">이벤트 구분</span>{{eventGubun}}</span><span class="flag"><span class="blind">이벤트 유형</span>{{eventType}}</span></div>' +
+                '<p class="tit"><span class="blind">이벤트 제목</span>{{eventTitle}}</p>' +
+                '<p class="date"><span class="blind">이벤트 기간</span>{{eventFromDate}}~{{eventToDate}}</p>' +
             '</div>' +
         '</a>' +
-        '{{#if endEventUrl}}<a href="{{endEventUrl}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
+        '{{#if winAnnouncementFlag != "N"}}<a href="{{eventUrl}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
     '</div></li>'
 
     $(window).ready(function() {
@@ -80,8 +80,8 @@
                 var arr =  data ? (data instanceof Array ? data : []) : [];
                 var eventList = (arr.length > 0) ? arr[0].eventList : [];
                 eventList.forEach(function(item, index) {
-                    item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
-                    item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                    //item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                    //item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                     self.$list.append(vcui.template(eventItemList, item));
                 });
                 _self.checkNoData();

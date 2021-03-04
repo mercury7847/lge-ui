@@ -796,7 +796,7 @@
                         self.$recommendListBox.show();
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
-                            self.$layFilter.show();
+                            self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
                     }
@@ -840,9 +840,11 @@
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
