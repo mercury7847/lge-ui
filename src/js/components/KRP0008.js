@@ -140,13 +140,22 @@
                 self.$pdpInfoAdditionalPurchase = self.$pdpInfo.find('.additional-purchase');
                 //
                 self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
-                self.$pdpInfoCareshipService = self.$pdpInfo.find('div.option-contents .careship-service');
-                self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.option-contents .care-sibling-option');
+                self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
+                self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
                 
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
-                //var defaultRentalInfo = n
+                var selectRtModelSeq = null;
+                var selectRtRgstFeePre = null
+                var selectDutyTerm = null;
+
+                var rentalSelectBoxIndex1 = 0;
+                var rentalSelectBoxIndex2 = 0;
+                var rentalSelectBoxIndex3 = 0;
+
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
+                    //test data
+                    //rentalInfo = [{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543180","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543181","dutyTerm":"4","representChargeFlag":"Y","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543182","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3}];
                     var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
                         //가입비
@@ -169,34 +178,72 @@
 
                         dataByFee[dutyTerm] = dataByDuty;
                         rentalPriceData[rtRgstFeePre] = dataByFee;
+
+                        if(item.representChargeFlag == "Y") {
+                            selectRtModelSeq = item.rtModelSeq;
+                            selectRtRgstFeePre = rtRgstFeePre;
+                            selectDutyTerm = dutyTerm;
+                        }
                     });
                     self.rentalInfoData = rentalPriceData;
                 }
+
+                //최초 기본값 찾기
+                if(selectRtModelSeq) {
+                    var array = Object.keys(self.rentalInfoData);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectRtRgstFeePre) {
+                            rentalSelectBoxIndex1 = i;
+                            break;
+                        }
+                    }
+
+                    var dataByFee = self.rentalInfoData[selectRtRgstFeePre];
+                    var array = Object.keys(dataByFee);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectDutyTerm) {
+                            rentalSelectBoxIndex2 = i;
+                            break;
+                        }
+                    }
+
+                    var array = dataByFee[selectDutyTerm];
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i].representChargeFlag == "Y") {
+                            rentalSelectBoxIndex3 = i;
+                            break;
+                        }
+                    }
+                }
+
 
                 //렌탈 케어솔루션 계약기간
                 self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
                 if(self.rentalInfoData && self.$caresolutionRentalInfoSelectBox.length > 0) {
                     //가입비 세팅
-                    self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,0,false);
+                    self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,rentalSelectBoxIndex1,false);
 
                     //의무사용기간 세팅
-                    var firstKey = Object.keys(rentalPriceData)[0];
-                    var dutyTermData = rentalPriceData[firstKey];
+                    var firstKey = Object.keys(self.rentalInfoData)[rentalSelectBoxIndex1];
+                    var dutyTermData = self.rentalInfoData[firstKey];
                     if(dutyTermData) {
-                        self.rentalInfoSelectBoxUpdate(1,dutyTermData,0,false);
+                        self.rentalInfoSelectBoxUpdate(1,dutyTermData,rentalSelectBoxIndex2,false);
 
                         //방문주기
-                        firstKey = Object.keys(dutyTermData)[0];
+                        firstKey = Object.keys(dutyTermData)[rentalSelectBoxIndex2];
                         var visitPerData = dutyTermData[firstKey]
                         if(visitPerData) {
-                            self.updateRentalInfoPrice(visitPerData[0]);
-                            self.rentalInfoSelectBoxUpdate(2,visitPerData,0,true);
+                            self.updateRentalInfoPrice(visitPerData[rentalSelectBoxIndex3]);
+                            self.rentalInfoSelectBoxUpdate(2,visitPerData,rentalSelectBoxIndex3,true);
                         }
                     }
                 }
 
+                //console.log('result',rentalSelectBoxIndex1,rentalSelectBoxIndex2,rentalSelectBoxIndex3);
+
                 //케어십 가격 정보 정리
                 var careSelectIndex = 0;
+
                 self.careshipInfoData = null;
                 if(typeof careshipInfo !== 'undefined' && careshipInfo.length > 0) {
                     self.careshipInfoData = careshipInfo;
@@ -211,8 +258,8 @@
                 //케어십 계약기간
                 self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
                 if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
-                    self.updateCareshipInfoPrice(self.careshipInfoData[0]);
-                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,0,true);
+                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
+                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
                 }
 
                 //렌탈 케어솔루션 제휴카드 리스트 정리
@@ -408,13 +455,11 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
                     var success = function(data) {
-                        console.log('reciv',data);
                         sendData.wishItemId = data.wishItemId;
                         if(data.wishListId) {
                             sendData.wishListId = data.wishListId;
                         }
                         $(this).prop("checked",checked);
-                        console.log('res',data,sendData);
                     };
                     var fail = function(data) {
                         $(this).prop("checked",!checked);
@@ -427,8 +472,7 @@
                         param.type = "remove";
                     }
                     //param.wish = checked;
-                    console.log(param);
-
+                    
                     lgkorUI.requestWish(
                         param,
                         checked,
@@ -1196,6 +1240,7 @@
                             cart_items.push({"data":obj});
                         });
                         param.cart_items = cart_items;
+                        param.order_item_qty = cart_items.length;
                     }
 
                     var ajaxUrl;
@@ -1450,7 +1495,7 @@
                 if(!isCompare){
                     //if(vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
-                        console.log(sendData['id'], i);
+                        //console.log(sendData['id'], i);
                         if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
@@ -1486,6 +1531,7 @@ window.cremaAsyncInit = function () {
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
+    /*
     console.log('i',i);
     console.log('s',s);
     console.log('o',o);
@@ -1493,4 +1539,5 @@ window.cremaAsyncInit = function () {
     console.log('r',r);
     console.log('a',a);
     console.log('m',m);
+    */
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');

@@ -25,9 +25,9 @@
         init: function() {
             var self = this;
             if(typeof digitalData !== 'undefined') {
-                if(digitalData && !vcui.isEmpty(digitalData)) {
+                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
                     window.cremaAsyncInit = function () {
-                        crema.init("이름",digitalData.unifyId);
+                        crema.init("이름",digitalData.userInfo.unifyId);
                     };
                 } else {
                     window.cremaAsyncInit = function () {
