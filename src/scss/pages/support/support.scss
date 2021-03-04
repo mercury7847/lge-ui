@@ -33,6 +33,11 @@
 
 .support {
     .tooltip-wrap {
+        &.share {
+            .tooltip-box {
+                padding-right:32px;
+            }
+        }
         .btn-close {
             top:10px;
             right:10px;
@@ -44,6 +49,9 @@
         }
 
         @include mobile {
+            &.share {
+                padding-right:24px;
+            }
             .btn-close {
                 top:8px;
                 right:10px;
