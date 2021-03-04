@@ -1059,6 +1059,8 @@ CS.MD.commonModel = function() {
                     self.$el.find('#productCode').val(data.productCode);
                     self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
+
+                    if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
                 }
             });
 

@@ -1712,6 +1712,15 @@
                     padding:18px 97px 20px 20px;
                 }
             }
+            .autocomplete-box {
+                .keyword-list {
+                    a {
+                        .category {
+                            display:none;
+                        }
+                    }
+                }
+            }
         }
     }
 
