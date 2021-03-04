@@ -524,7 +524,11 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             if(self.options.removeModalCss) {
                 self.$el.stop();
             } else {
-                self.$el.stop().css(css);
+                if( $('.contents.support').length ) {
+                    self.$el.css(css);
+                } else {
+                    self.$el.stop().css(css);
+                }
             }
         },
 
