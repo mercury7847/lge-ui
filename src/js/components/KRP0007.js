@@ -471,6 +471,7 @@
 
                     if(arr.length){
                         var item = arr[0];
+                        item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
