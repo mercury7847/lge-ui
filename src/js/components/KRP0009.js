@@ -61,17 +61,19 @@ $(window).ready(function(){
 
                     var leng = $items.children().length;
                     var lastId = $items.eq(leng-1).find('a').attr('href');
-                    var bottom = $(lastId).offset().top + $(lastId).outerHeight(true);
-                    if(-scrolltop + bottom < 0){
-                        if(!$component.data("isShow")){
-                            $component.data('isShow', true);
-                            $component.transition({y:-$component.height()}, 300, "easeInOutCubic");
-                        } 
-                    } else{
-                        if($component.data("isShow")){
-                            $component.data('isShow', false);
-                            $component.transition({y:0}, 300, "easeInOutCubic");
-                        } 
+                    if($(lastId).length){
+                        var bottom = $(lastId).offset().top + $(lastId).outerHeight(true);
+                        if(-scrolltop + bottom < 0){
+                            if(!$component.data("isShow")){
+                                $component.data('isShow', true);
+                                $component.transition({y:-$component.height()}, 300, "easeInOutCubic");
+                            } 
+                        } else{
+                            if($component.data("isShow")){
+                                $component.data('isShow', false);
+                                $component.transition({y:0}, 300, "easeInOutCubic");
+                            } 
+                        }
                     }
                 } else{
                     $component.removeClass('fixed').removeAttr('style');

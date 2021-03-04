@@ -25,6 +25,61 @@
                 }
             });
 
+            //$('.ui_carousel_4_slider').vcCarousel('setOption', 'infinite', true, true);
+            
+            $('.ui_lifestyle_list').vcCarousel({
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+    
+                responsive: [{
+                    breakpoint: 100000,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                    }
+                },{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+                    
+            });
+
+
+        $('.ui_carousel_slider').vcCarousel({
+            settings: "unslick",
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                        
+                    }
+                },
+                {
+                    breakpoint: 1090,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 2, 
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: "unslick"
+                }
+            ]
+        });
+
             $('.product-recom-slide').vcToggleCarousel({
                 pcOption: {
                     responsive: [
@@ -53,11 +108,41 @@
                 },
                 mobileOption: "unbuild"
             });
+        $('.ui_carousel_slider').vcCarousel({
+            settings: "unslick",
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                        
+                    }
+                },
+                {
+                    breakpoint: 1090,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 2, 
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: "unslick"
+                }
+            ]
+        });
 
             $('.new-product-list').vcToggleCarousel({
                 pcOption: "unbuild",
                 mobileOption: {
-                    infinite: false,
+                    infinite: true,
                     variableWidth : false,
                     dots: true,
                     slidesToShow: 1,

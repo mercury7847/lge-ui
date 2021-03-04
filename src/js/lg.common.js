@@ -266,10 +266,7 @@ var isApp = function(){
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
-                $(this).css({
-                    width:'100%',
-                    height:"100%"
-                });
+                $(this).addClass('no-img');
             });
         },
 
@@ -277,10 +274,7 @@ var isApp = function(){
             var self = this;
             img.onerror = null;
             $(img).attr('src', self.NO_IMAGE);
-            $(img).css({
-                width:'100%',
-                height:"100%"
-            });
+            $(img).addClass('no-img');
         },
 
         _createMainWrapper: function(){
@@ -563,22 +557,22 @@ var isApp = function(){
         },
 
         showLoading:function(msg){
-            var str = msg? msg : '데이터를 불러오는 중입니다.';
-            $('html').addClass('dim');
-            $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
-            $('body').vcSpinner({msg:str});
-            $('body').vcSpinner('spin', str);    
+            vcui.require(['ui/spinner'],function(){
+                var str = msg? msg : '데이터를 불러오는 중입니다.';
+                $('html').addClass('dim');
+                $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
+                $('body').vcSpinner({msg:str});
+                $('body').vcSpinner('spin', str); 
+            })   
         },
     
         hideLoading:function(){
-            $('.loading_dim').remove();
-            $('html').removeClass('dim');
-            $('body').vcSpinner('stop');
+            vcui.require(['ui/spinner'],function(){
+                $('.loading_dim').remove();
+                $('html').removeClass('dim');
+                $('body').vcSpinner('stop');
+            });
         },
-
-
-
-
 
         confirm:function () {
             /**
@@ -604,6 +598,7 @@ var isApp = function(){
                 var callbackOk, callbackCancel;
     
                 if(options && options.ok && typeof options.ok =='function'){
+                    console.log("option.ok");
                     callbackOk = options.ok;
                     delete options['ok'];
                 } 
@@ -629,6 +624,7 @@ var isApp = function(){
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
                     if(e.type =='modalok'){
+                        console.log(callbackOk)
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
@@ -1200,7 +1196,11 @@ var isApp = function(){
                     } else{
                         $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
                     }
-                    callbackSuccess(data);
+                    if(data.data && data.data.listData && data.data.listData.length > 0) {
+                        callbackSuccess(data.data.listData[0]);
+                    } else {
+                        callbackSuccess({wishItemId:null});
+                    }
                 } else {
                     callbackFail(data);
                     if(data.alert && !vcui.isEmpty(data.alert)) {
@@ -1413,15 +1413,26 @@ var isApp = function(){
             var $wishItem = $('input['+checkAttr+']');
 
             lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var listData = result.data.listData;
-                if(listData) {
-                    listData.forEach(function(item,index){
-                        var $wish = $wishItem.find('[checkAttr='+item.sku+']');
-                        if($wish.length > 0) {
-                            $wish.data(item);
-                            $wish.prop("checked",true);
-                        }
-                    });
+                var data = result.data.data;
+                if(data){
+                    var listData = data.listData != undefined ? data.listData : null;
+                    var wishListId = data.wishListId;
+                    $wishItem.each(function(idx, item){
+                        var $item = $(item);
+                        if(!$item.data('wishListId')) {
+                            console.log('null',$item);
+                            $item.data('wishListId', wishListId);
+                        };
+                    });                
+                    if(listData) {
+                        listData.forEach(function(item,index){
+                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                            if($wish.length > 0) {
+                                $wish.data(item);
+                                $wish.prop("checked",true);
+                            }
+                        });
+                    }
                 }
             },"GET", null, true);
         

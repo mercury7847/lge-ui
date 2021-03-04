@@ -33,6 +33,7 @@
                 '</div>' +
             '</div>' +
             '<div class="info-price">' +
+                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
@@ -46,6 +47,7 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
+                '{{/if}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -246,7 +248,7 @@
             sendSearchPage: function(searchUrl, search, force) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
-                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+search+"&force="+force;
+                    var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
                     location.href = url;
                 }
             },
@@ -398,12 +400,32 @@
                     }
                 });
 
+                //검색 이동 로그 쌓기
+                $('ul.result-list').on('click', 'a', function(e){
+                    self.sendLog(this);
+                });
+                
                 //스크롤 이벤트
                 $(window).on('scroll', function(e){
                     self._setScrollMoved();
                 });
                 self._setScrollMoved();
                 
+            },
+
+            sendLog: function(dm) {
+                var self = this;
+                var search = self.$contentsSearch.attr('data-search-value');
+                var index = $(dm).parents('.result-list-wrap').data('logIndex');
+                var param = {
+                    "index":index,
+                    "linkUrl":dm.href,
+                    "search":search
+                };
+                var ajaxUrl = self.$contentsSearch.data('logUrl');
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, null, true);
+                }
             },
 
             _setScrollMoved: function() {
@@ -413,6 +435,7 @@
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
+                    self.$listSorting.show();
                 }
             },
 
@@ -576,15 +599,15 @@
                     }
 
                     //검색한 검색어
-                    self.$searchResultText.html(replaceText + ' 검색 결과');
+                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과');
 
                     //원래입력된 기존 검색어 이동
                     var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
-                        self.$similarText.show();
+                        self.$searchSimilar.show();
                     } else {
-                        self.$similarText.hide();
+                        self.$searchSimilar.hide();
                     }
 
                     //연관 검색어 리스트 갱신
@@ -610,12 +633,16 @@
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.allCount);
+                    /*
                     if(count > 0) {
                         noData = false;
                     }
+                    */
 
                     //필터세팅
+                    var filterShow = false;
                     if(data.filterList && data.filterList.length > 0) {
+                        filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
                         if(self.savedFilterData && self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
@@ -651,11 +678,11 @@
                             }
                         });
                         $resultListWrap.show();
-                        self.$listSorting.show();
+                        //self.$listSorting.show();
                         noData = false;
                     } else {
                         $resultListWrap.hide();
-                        self.$listSorting.hide();
+                        //self.$listSorting.hide();
                     }
 
                     //제품
@@ -695,7 +722,6 @@
 
                     //noData 체크
                     if(noData) {
-                        self.$contWrap.removeClass('w-filter');
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
                             $list_ul.empty();
@@ -717,14 +743,21 @@
 
                         self.$pagination.hide();
                         self.$recommendListBox.hide();
+                        self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
                     } else {
+                        self.$tab.parents('.search-tabs-wrap').show();
+                        self.$tab.vcSmoothScroll('refresh');
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
 
                         self.$pagination.show();
                         self.$recommendListBox.show();
+                        if(filterShow) {
+                            self.$contWrap.addClass('w-filter');
+                            self.$layFilter.css('display', '');
+                        }
                         self.$btnFilter.show();
                     }
 

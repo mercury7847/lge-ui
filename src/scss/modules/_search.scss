@@ -71,6 +71,19 @@
                 &:-ms-input-placeholder {
                     color: $color-gray-1;
                 }
+
+                &::-ms-clear,
+                &::-ms-reveal {
+                    display: none;
+                    width: 0;
+                    height: 0;
+                }
+                &::-webkit-search-decoration,
+                &::-webkit-search-cancel-button,
+                &::-webkit-search-results-button,
+                &::-webkit-search-results-decoration {
+                    display: none;
+                }
             }
 
             .btn-delete {
@@ -108,12 +121,9 @@
             .input-sch {
                 input.txt {
                     height: 52px;
+                    padding-right: 52px;
                     //padding: 0 97px 0 0;
                     @include font(20px,28px);
-                }
-
-                .btn-delete {
-                    right: 57px;
                 }
             }
         }

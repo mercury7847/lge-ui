@@ -39,6 +39,8 @@
     var cardInputData = {};
     var bankInputData = {};
 
+    var allOwnedProductYn;
+
     function init(){
         console.log("requestRental Start!!!");
     
@@ -529,6 +531,11 @@
             completed = chk;
         } else{
             console.log("step2Validation.validate(); Fail!!!", result.validItem, step2Validation.getValues());
+            if(allOwnedProductYn == "Y"){
+                var leng = Object.keys(result.validItem).length;
+                var exist = "inatallDate" in result.validItem;
+                if(leng == 1 && exist) completed = true;
+            }
         }
 
         return completed;
@@ -646,6 +653,8 @@
 
         installAdress = {};
 
+        allOwnedProductYn = "N";
+
         var code = [];
         $('.order-list li').each(function(idx, item){
             code.push($(item).data('itemId'));
@@ -717,6 +726,8 @@
             if(abled == "Y"){
                 setInstallAdress();
 
+                allOwnedProductYn = result.data.allOwnedProductYn;
+
                 if(result.data.allOwnedProductYn == "Y"){
                     step2Block.find('.forAOP').hide();
                 } else{
@@ -724,6 +735,9 @@
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
                     step2Block.find('.datepicker').removeClass('disabled');
                 }
+
+                step2Block.find('select[name=inatallPlace]').prop('disabled', false);
+                step2Block.find('select[name=inatallPlace]').vcSelectbox('update');
             }
             
             setInputData('installAbled', abled);
@@ -1024,7 +1038,7 @@
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
         var payment = getPaymentMethod() == "bank";
-        console.log("### rentalRequest ###", payment)
+        console.log("### rentalRequest ###", payment);
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1050,9 +1064,14 @@
             INST_REQ_DATE: step2Value.inatallDate,
             NOTES: step2Block.find('input[name=installRequriement]').val(),
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
-            MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N"
+            MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
+            preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
+            collectRequest: step2Block.find('input[name=collectRequest]:checked').val()
         };
         console.log(sendata);
+
+        lgkorUI.showLoading();
+
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
                 location.href= result.data.sendUrl;
@@ -1061,6 +1080,8 @@
                     title: result.data.alert.title
                 });
             }
+
+            lgkorUI.hideLoading();
         });
     }
 

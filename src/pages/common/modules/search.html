@@ -12,7 +12,7 @@
         <div class="search-input-layer">
         }
         @@if(context.confirm) {
-        <div class="search-input-layer" style="display:block">
+        <div class="search-input-layer" style="display:none">
         }
             <div class="auto-complete">
                 <div class="keyword-list">
@@ -90,7 +90,7 @@
 
     @@if(context.related) {
     <!-- .btn-more click 시 .open 추가 (mobile만 해당) -->
-    <div class="related-keyword open">
+    <div class="related-keyword open" style="display: none;">
         <div class="inner">
             <span class="title">연관검색어</span>
             <ul class="keyword-list">
@@ -108,7 +108,7 @@
     </div>
     }
     @@if(context.similar) {
-    <div class="search-similar">
+    <div class="search-similar" style="display: none;">
         <!-- 210226 수정 [em.word 태그 추가] -->
         <div class="search-result-text"><span class="search-word">&ldquo;<em class="word">티비</em>&rdquo;</span> 검색 결과</div>
         <a href="#xlql" class="similar-text">&ldquo;xlql&rdquo; 검색 결과로 이동</a>

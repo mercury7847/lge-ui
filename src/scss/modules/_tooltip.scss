@@ -95,6 +95,14 @@
         }
     }
 
+    [data-fixed="fixed-right"] {
+        & + .tooltip-box {
+            left: auto;
+            right: 0;
+            padding-right:70px;
+        }
+    }
+
     &.share {
         height:32px;
         margin-top: 0;
@@ -138,13 +146,11 @@
                 }
             }
         }
-    }
 
-    [data-fixed="fixed-right"] {
-        & + .tooltip-box {
-            left: auto;
-            right: 0;
-            padding-right:70px;
+        [data-fixed="fixed-right"] {
+            & + .tooltip-box {
+                padding-right: 32px;
+            }
         }
     }
 }

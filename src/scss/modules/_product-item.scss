@@ -163,11 +163,12 @@
         .product-option {
             position: relative;
             //width: 100%;
-            margin: 8px -48px 16px;
+            margin: 5px -48px 13px;
             font-size: 0;
             text-align: center;
             .option-list {
                 display: inline-block;
+                padding: 3px;
                 font-size: 0;
                 text-align:center;
                 white-space: nowrap;

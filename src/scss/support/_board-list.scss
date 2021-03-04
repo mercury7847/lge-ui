@@ -362,49 +362,62 @@
         }
     }
     &.thumb-type {
-        .item {
-            display:table;
-            width:100%;
-            padding:0;
-            &-image {
-                display:table-cell;
-                width:120px;
-                vertical-align:middle;
-                border-radius:4px;
-                overflow:hidden;
-                img {
+        .list {
+            > li {
+                .item {
                     width:100%;
-                }
-            }
-            &-conts {
-                display:table-cell;
-                padding-left:18px;
-                vertical-align:middle;
-                .flag-wrap {
-                    margin-bottom:4px;
-                }
-                .tit {
-                    @include font-large;
-                    font-weight:700;
-                }
-                .options {
-                    margin-top:8px;
-                }
-            }
-        }
-        @include mobile {
-            .item {
-                padding:0;
-                &-conts {
-                    padding-left:12px;
-                    .flag-wrap {
-                        margin-bottom:2px;
+                    display:flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    &-image {
+                        width:120px;
+                        max-height: 80px;
+                        vertical-align:middle;
+                        border-radius:4px;
+                        overflow:hidden;
+                        img {
+                            width:100%;
+                            height: 100%;
+                        }
                     }
-                    .tit {
-                        font-weight:500;
+                    &-conts {
+                        padding-left:18px;
+                        vertical-align:middle;
+                        width: calc(100% - 120px);
+                        .flag-wrap {
+                            margin-bottom:4px;
+                        }
+                        .tit {
+                            @include font-large;
+                            font-weight:700;
+                        }
+                        .options {
+                            margin-top:8px;
+                        }
                     }
-                    .options {
-                        margin-top:3px;
+                }
+                @include mobile {
+                    .item {
+                        padding:16px 0;
+                        &-image {
+                            width: 105px;
+                            max-height: 70px;
+                        }
+                        &-conts {
+                            padding-left:12px;
+                            width: calc(100% - 105px);
+                            .flag-wrap {
+                                margin-bottom:2px;
+                            }
+                            .tit {
+                                font-weight:500;
+                                @include textEllipsisClamp(2);
+                                white-space: normal;
+                            }
+                            .options {
+                                margin-top:3px;
+                            }
+                        }
                     }
                 }
             }

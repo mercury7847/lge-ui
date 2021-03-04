@@ -32,7 +32,6 @@ $(window).ready(function(){
 				'</div>'+
 				'{{#else}}'+
 				'<div class="visual-area animation-box">'+
-					'<img src="{{storyMainThumbnailPath}}{{storyMainThumbnailServerName}}" alt="{{storyMainThumbnailAltText}}">'+
 					'<p class="hidden pc">{{storyTitle}}</p>'+
 					'<p class="hidden mobile">{{storyTitle}}</p>'+
 					'<div class="animation-area">'+
@@ -144,7 +143,7 @@ $(window).ready(function(){
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.video-list-wrap .ui_tab');
-            contList = $('.cont_list');
+            contList = $('.tabs-cont.sub_cate_list');
         }
 
         function bindEvents(){
@@ -161,13 +160,24 @@ $(window).ready(function(){
             });
 
             contList.scroll(function(e){
-                setContListScrolled();
+                if(window.breakpoint.name == "pc"){
+                    setContListScrolled()
+                }
+            });
+            $(window).scroll(function(){
+                if(window.breakpoint.name == "mobile"){
+                    setContListScrolled()
+                }
             })
 
             $('.video-wrap').on('click', '.btn-modelName, .btn-moreModel', function(e){
                 e.preventDefault();
 
                 $('#match-models').vcModal();
+            }).on('click', 'button.more-btn', function(e){
+                e.preventDefault();
+
+                toggleVideoInfo();
             });
             $('.video-list-wrap').on('click', '.video-list li a', function(e){
                 e.preventDefault();
@@ -175,6 +185,14 @@ $(window).ready(function(){
                 var storyID = $(this).data('storyId');
                 setViewContents(storyID);
             });
+        }
+
+        function toggleVideoInfo(){
+            var desc = $('.video-wrap .video-info .desc');
+            desc.toggleClass('open');
+
+            if(desc.hasClass('open')) desc.find('button.more-btn span').text('닫기');
+            else desc.find('button.more-btn span').text('열기');
         }
 
         function setViewContents(sid){
@@ -185,7 +203,7 @@ $(window).ready(function(){
             }
             console.log("### setViewContents ###", sendata)
             lgkorUI.requestAjaxDataPost(VIEWER_DATA_URL, sendata, function(result){    
-                changeViewContents(result.data[0].storyinfo);
+                changeViewContents(result.data[0]);
 
                 lgkorUI.hideLoading();
             });
@@ -219,22 +237,32 @@ $(window).ready(function(){
 
         function setContListScrolled(){
             if(scrollAbled){
-                var page = contList.data('page');
+                var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
                 if(page < totalpage){
-                    var scrolltop = contList.scrollTop();
-                    var wrapheight = contList.height();
-                    var listheight = contList.find('.video-list').outerHeight(true);
-                    var scrolldist = listheight - wrapheight - 10;
-                    if(scrolltop >= scrolldist){
-                        setContentsList(REQUEST_MODE_SCROLL, page+1);
+                    var getList = false;
+                    var scrolltop, wrapheight, listheight, scrolldist, contop;
+                    if(window.breakpoint.name == "pc"){
+                        scrolltop = contList.scrollTop();
+                        wrapheight = contList.height();
+                        listheight = contList.find('.video-list').outerHeight(true);
+                        scrolldist = listheight - wrapheight - 10;
+
+                        if(scrolltop >= scrolldist) getList = true;
+                    } else{
+                        scrolltop = $(window).scrollTop();
+                        contop = contList.offset().top;
+                        wrapheight = contList.height();
+                        if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
                     }
+
+                    if(getList) setContentsList(REQUEST_MODE_SCROLL, page+1);
                 }
             }
         }
 
         function setContentsList(mode, page){
-            lgkorUI.showLoading();
+            if(mode != REQUEST_MODE_SCROLL) lgkorUI.showLoading();
 
             contLoadMode = mode;
 
@@ -244,10 +272,10 @@ $(window).ready(function(){
             var sendata = {
                 page: page,
                 superCategoryId: idxs.superCategoryId,
-                categoryId: idxs.categoryId,
-                year: idxs.year
+                categoryId: mode != REQUEST_MODE_SUPERCATEGORY ? idxs.categoryId : "",
+                year: mode == REQUEST_MODE_YEAR ? idxs.year : ""
             }
-            
+            console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
                 var page = data.pagination.page;
@@ -261,13 +289,15 @@ $(window).ready(function(){
                     contList.find('.video-list').append(contlistemplate);
                 }
 
+                var total = data.storyListByYear[0].yearCnt;
+                $('#totalCount').text("총 " + total + "개");
+
                 var tabTemplate;
-                var tabIdxs = getTabCateIDs();
                 switch(contLoadMode){
                     case REQUEST_MODE_SUPERCATEGORY:
                         categoryTab.find('.tabs').empty();
 
-                        if(tabIdxs.superCategoryId != ""){
+                        if(sendata.superCategoryId != ""){
                             tabTemplate = vcui.template(categoryTabTemplate, {categoryList: data.categoryList});
                             categoryTab.find('.tabs').append(tabTemplate);
                             categoryTab.show().find('.ui_tab').vcTab('update').vcSmoothScroll('refresh');
@@ -312,7 +342,9 @@ $(window).ready(function(){
             var superCategoryID = superCategoryTab.find('li[data-cate-id]').eq(superCategoryTabIndex).data('cateId');
             var categoryID = categoryTab.find('li[data-cate-id]').eq(categoryTabIndex).data('cateId');
             var yearID = yearTab.find('li[data-cate-id]').eq(yearTabIndex).data('cateId');
-
+            
+            if(superCategoryID == "ALL") superCategoryID = "";
+            
             return{
                 superCategoryId: superCategoryID,
                 categoryId: categoryID,

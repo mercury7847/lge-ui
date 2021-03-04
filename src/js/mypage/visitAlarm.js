@@ -31,6 +31,10 @@
                 '<td data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span></button></td>' +
             '{{#elsif item.type=="expected"}}' +
                 '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
+            /*
+                '{{#elsif item.type=="expectedDisabled"}}' +
+                '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">방문 예정일 선택불가</span></button></td>' +
+                */
             '{{#else}}' +
                 '<td></td>' +
             '{{/if}}' +
@@ -288,6 +292,13 @@
                             item.day = vcui.date.format(item.value,'d');
                             if(!(!item.value) && item.value == date) {
                                 item.type = "expected";
+                                /*
+                                if(item.type == "disabled") {
+                                    item.type = "expectedDisabled";
+                                } else {
+                                    item.type = "expected";
+                                }
+                                */
                             }
                         });
                         $list.append(vcui.template(popUpVisitDayItemTemplate, obj));
@@ -298,10 +309,13 @@
                     $td.removeClass('choice');
                     self.$timeTable.find('tr th.choice').removeClass('choice');
 
-                    $td = self.$timeTable.find('tr td[data-value="'+ time +'"]');
-                    $td.addClass('choice');
-                    $td.siblings('th').addClass('choice');
+                    //$td = self.$timeTable.find('tr td[data-value="'+ time +'"]');
+                    //$td.addClass('choice');
+                    //$td.siblings('th').addClass('choice');
                     
+                    var $td = self.$timeTable.find('tr td');
+                    $td.removeClass('choice');
+
                     //선택 시간 정보 텍스트 수정
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
