@@ -78,7 +78,7 @@
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="desc"><span>{{desc}}</span></div>' +
+                    '<div class="desc"><span>{{#raw desc}}</span></div>' +
                     '<div class="info-btm">' +
                         '<span class="text date"><span>{{date}}</span>' +
                         '<div class="text hashtag-wrap">' +
@@ -765,12 +765,15 @@
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
+                        var $div = $("<div/>");
                         arr.forEach(function(item, index) {
                             if(!item.hash) {
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            item.isVideo = lgkorUI.stringToBool(item.isVideo);
+                            item.desc = $div.html(item.desc).text(); //html strip
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -871,6 +874,8 @@
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
+                        self.$tab.parents('.search-tabs-wrap').show();
+                        self.$tab.vcSmoothScroll('refresh');
                         //self.$tab.show();
                         //self.$contWrap.show();
                         self.$resultListNoData.hide();
