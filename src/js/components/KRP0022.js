@@ -78,7 +78,8 @@
                 var _self = this;
                 self.$list.empty();
                 var arr =  data ? (data instanceof Array ? data : []) : [];
-                arr.forEach(function(item, index) {
+                var eventList = (arr.length > 0) ? arr[0].eventList : [];
+                eventList.forEach(function(item, index) {
                     item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                     item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                     self.$list.append(vcui.template(eventItemList, item));
