@@ -1,13 +1,17 @@
 (function() {
     var ORDER_INQUIRY_LIST_URL;
-    var PRODUCT_STATUS_URL;
     var ORDER_DETAIL_URL;
-    var BANK_CONFIRM_URL;
+    var PRODUCT_STATUS_URL;
+    var ORDER_CANCEL_POP_URL;
     var ORDER_SAILS_URL;
+    var BANK_CONFIRM_URL;
 
     var PAGE_TYPE_LIST = "orderListPage";
     var PAGE_TYPE_DETAIL = "orderDetailPage";
     var PAGE_TYPE_NONMEM = "orderNoneMemberPage";
+
+    var TAB_FLAG_ORDER = "ORDER";
+    var TAB_FLAG_CARE = "CARE";
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -45,7 +49,7 @@
                         '</div>'+
                         '<div class="infos">'+
                             '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                            '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{listData.productNameKR}}</a></p>'+
+                            '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
                             '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
                             '{{#if listData.specList && listData.specList.length > 0}}'+
                             '<div class="more">'+
@@ -167,8 +171,13 @@
     var CURRENT_PAGE, TOTAL_PAGE;
 
     var ORDER_LIST;
+    var CARE_LIST;
+
+    var LIST_VIEW_TOTAL = 10;
 
     var PAGE_TYPE;
+
+    var TAB_FLAG;
 
     var txtMasking;
 
@@ -178,6 +187,10 @@
 
     var popBankInfo = {};
     var popBankConfirm = false;
+
+    var START_DATE, END_DATE;
+
+    var tabMenu;
 
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
@@ -195,11 +208,15 @@
     function setting(){
         //연동 유알엘 정의...
         ORDER_INQUIRY_LIST_URL = $('.contents.mypage').data('orderInquiryList');
-        PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
-        BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
+        PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
+        ORDER_CANCEL_POP_URL = $('.contents.mypage').data('orderCancelPopup');
         ORDER_SAILS_URL = $('.contents.mypage').data('orderSails');
+        BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
+
         txtMasking = new vcui.helper.TextMasking();
+
+        tabMenu = $('.lnb-contents .tabs-wrap .tabs');
 
         //클래스로 접속 페이지 타입 정의...
         var isOrderlist = $('.contents.mypage').hasClass('orderAndDelivery'); 
@@ -210,11 +227,25 @@
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM;
 
         $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckEnable:false});
+        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+        START_DATE = dateData.startDate;
+        END_DATE = dateData.endDate;
+
+        TAB_FLAG = TAB_FLAG_ORDER;
     }
 
     function bindEvents(){
         $('.inquiryPeriodFilter').on('dateFilter_submit', function(e, data){
+            START_DATE = data.startDate;
+            END_DATE = data.endDate;
+
             requestOrderInquiry();
+        });
+
+        tabMenu.find('li a').on('click', function(e){
+            e.preventDefault();
+
+            changeTabFlag($(this).parent());
         })
 
         $('.contents.mypage').on('click', '.orderCancel-btn', function(e){
@@ -283,7 +314,7 @@
             if(wrapper.hasClass("orderAndDelivery-detail")){                
                 setProductStatus(dataID, prodID, pdpUrl);
             } else{
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber;
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG;
             }
         });
 
@@ -314,6 +345,13 @@
 
             sendBankConfirm('popup-takeback');
         });
+    }
+
+    function changeTabFlag(tab){
+        tabMenu.children().removeClass('on');
+        tab.addClass('on');
+        
+        TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
     }
 
     function getBankBnumberValidation(popname){
@@ -530,7 +568,24 @@
     }
 
     function setMoreOrderList(){
-        requestOrderInquiry(CURRENT_PAGE+1);
+        //requestOrderInquiry(CURRENT_PAGE+1);
+    }
+
+    function setOrderListContents(){
+        var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var leng = list.length;
+        var start = CURRENT_PAGE;
+        var end = start + LIST_VIEW_TOTAL;
+        if(end > leng) end = leng;
+    }
+
+    function setTotalCount(){
+        var total = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST.length : CARE_LIST.length;
+        var div = parseInt(total/LIST_VIEW_TOTAL);
+        var rest = total % LIST_VIEW_TOTAL;
+
+        TOTAL_PAGE = div;
+        if(rest) TOTAL_PAGE++;
     }
 
 
@@ -539,15 +594,13 @@
     //페이지 목록 로드...
     function requestOrderInquiry(page){
         lgkorUI.showLoading();
-
-        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
     
         var memInfos = lgkorUI.getHiddenInputData();
         var orderNumber = $('.contents.mypage').data('orderNumber');
 
         var sendata = {
-            startDate: dateData.startDate,
-            endDate: dateData.endDate,
+            startDate: START_DATE,
+            endDate: END_DATE,
             page: page || 1,
             orderNumber: orderNumber,
 
@@ -562,31 +615,16 @@
 
             var data = result.data;
 
-            var prodcnt = data.productOrderCount ? data.productOrderCount : 0;
-            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text('('+prodcnt+')');
-
-            var carecnt = data.caresolutionOrdercount ? data.caresolutionOrdercount : 0;
-            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text('('+carecnt+')');
-
             if(PAGE_TYPE == PAGE_TYPE_NONMEM) data.listData = [data.listData];
 
+            CURRENT_PAGE = 1;
+            ORDER_LIST = [];
+            CARE_LIST = [];
+
             if(data.listData && data.listData.length){
-                if(result.param){
-                    CURRENT_PAGE = result.param.pagination.page;
-                    TOTAL_PAGE = result.param.pagination.totalCount;
-                } else{
-                    CURRENT_PAGE = TOTAL_PAGE = 1;
-                }
 
                 $('.inquiry-list-notify').show();
-
-                if(CURRENT_PAGE >= TOTAL_PAGE) $('.btn-moreview').hide();
-                else $('.btn-moreview').show();
-
-                if(CURRENT_PAGE == 1){
-                    ORDER_LIST = [];
-                    $('.inquiry-list-wrap').empty();
-                }
+                $('.inquiry-list-wrap').empty();
 
                 var leng, cdx, idx, templateList;
                 var list = data.listData;
@@ -594,15 +632,19 @@
                     leng = ORDER_LIST.length;
                     list[idx]['dataID'] = leng.toString();
 
-                    templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
-                    $('.inquiry-list-wrap').append(templateList);
+                    if(idx < LIST_VIEW_TOTAL){
+                        templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
+                        $('.inquiry-list-wrap').append(templateList);
+                    }
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
 
-                        var prodlist = list[idx].productList[cdx];
-                        $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false}));
+                        if(idx < LIST_VIEW_TOTAL){
+                            var prodlist = list[idx].productList[cdx];
+                            $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false}));
+                        }
                     }
 
                     ORDER_LIST.push(list[idx]);
@@ -652,6 +694,34 @@
             } else{
                 setNoData();
             }
+
+            CARE_LIST = [];
+            if(data.careListData && data.careListData.length){
+                list = data.careListData;
+                for(idx in list){
+                    leng = CARE_LIST.length;
+                    list[idx]['dataID'] = leng.toString();
+
+                    for(cdx in list[idx].productList){
+                        list[idx].productList[cdx]["prodID"] = cdx;
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+                    }
+
+                    CARE_LIST.push(list[idx]);
+                }
+            }
+
+            var leng = ORDER_LIST.length;
+            var cnt = leng ? "(" + leng + ")" : "";
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text(cnt);
+
+            leng = CARE_LIST.length;
+            cnt = leng ? "(" + leng + ")" : "";
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+
+            setTotalCount();
+            if(CURRENT_PAGE < TOTAL_PAGE) $('.btn-moreview').show();
+            else $('.btn-moreview').hide();
 
             lgkorUI.hideLoading();
         });
@@ -704,7 +774,7 @@
             sendPhoneNumber: memInfos.sendPhoneNumber
         }
         console.log("### getPopOrderData ###", sendata)
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP_URL, sendata, function(result){
             console.log("### getPopOrderData complete", result)
             lgkorUI.hideLoading();
 

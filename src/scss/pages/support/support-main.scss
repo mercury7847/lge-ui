@@ -1434,7 +1434,7 @@
 
         .hero-container {
             position: relative;
-            height:540px;
+            height:620px;
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
@@ -1710,6 +1710,15 @@
     
                 input[type="text"]  {
                     padding:18px 97px 20px 20px;
+                }
+            }
+            .autocomplete-box {
+                .keyword-list {
+                    a {
+                        .category {
+                            display:none;
+                        }
+                    }
                 }
             }
         }
