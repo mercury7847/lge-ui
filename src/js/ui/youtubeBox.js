@@ -11,9 +11,9 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             modalTitleTemplate:                 
                 '<div id="{{videoId}}" class="video-modal video-box-closeset animation">'+
                 '   <div class="modal-video-asset">'+
-                '       <div class="video-asset animation-box">'+
+                '       <div class="video-asset">'+
                 '           <div class="video-box">'+
-                '               <video controls {{params}}>'+
+                '               <video controls autoplay {{params}}>'+
                 '                   <source src="{{video_url}}" type="video/mp4">'+
                 '               </video>'+
                 // '               <div class="video-controller">'+

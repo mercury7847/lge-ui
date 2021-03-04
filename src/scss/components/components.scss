@@ -12,6 +12,12 @@
 //@import './components/no-content';
 //@import './components/colorchip';
 
+/* 부트스트랩 충돌 추가 */
+.col-lg-12 {
+    padding: 0;
+}
+/* //부트스트랩 충돌 추가 */
+
 @mixin font-family($font, $sytle:normal) {
     @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
         @if $sytle == italic {
@@ -361,7 +367,7 @@
     @include clearfix;
 
     @include mobile {
-        padding: 40px 0; // 60px : component top bottom margin for mobile
+        padding: 60px 0; // 60px : component top bottom margin for mobile
     }
 
     $color: (lightgray, dark, black, white, gray);

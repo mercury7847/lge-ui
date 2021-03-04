@@ -32,6 +32,42 @@
 /* //삭제 예정 */
 
 .support {
+    .tooltip-wrap {
+        &.share {
+            .tooltip-box {
+                padding-right:32px;
+            }
+            .btn-close {
+                top:32px;
+                right:32px;
+            }
+        }
+        .btn-close {
+            top:10px;
+            right:10px;
+            
+        }
+
+        .tooltip-box {
+            padding-right:40px;
+        }
+
+        @include mobile {
+            &.share {
+                padding-right:24px;
+
+                .btn-close {
+                    top:24px;
+                    right:24px;
+                }
+            }
+            .btn-close {
+                top:8px;
+                right:10px;
+            }
+        }
+    }
+
     .tb_row {
         &.tb-row-bl {
             table {

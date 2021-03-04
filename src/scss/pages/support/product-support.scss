@@ -57,6 +57,8 @@
             }
         }
     }
+
+    
     .driver-section {
         .banner-wrap {
             margin:0 0 40px;
@@ -89,6 +91,8 @@
         }
         .tabs-wrap {
             margin-bottom:12px;
+
+            
         }
 
         .driver-inner-search {
@@ -241,7 +245,7 @@
     // 제품사용설명서 리스트
     .download-list-wrap {
         margin-top:32px;
-        .desc {
+        & > .desc {
             position:relative;
             margin-bottom:8px;
             padding-left:11px;
@@ -860,23 +864,147 @@
         }
         // PSP floating tab
         .anchors-tabs-wrap {
-            margin-top:80px;
-            padding:0 40px;
-            background:#fff;
+            margin-top:70px;
+            height:58px;
+            
             &.fixed {
-                border-bottom:1px solid #ddd;
+                .anchor-sticky {
+                    position:fixed;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    border-bottom:1px solid #ddd;
+                    z-index:1;
+                }    
             }
+
+            .anchor-sticky {
+                padding:10px 40px 0;
+                background:#fff;
+
+                .swiper-container {
+                    overflow:hidden;
+                    padding-right:16px;
+                }
+            }
+            
             .tabs-wrap {
                 max-width:1380px;
                 margin:0 auto;
+
+                .tabs {
+                    overflow:visible;
+                }
             }
             @include mobile {
+                height:52px;
                 margin-top:32px;
                 padding:0;
+
+                .anchor-sticky {
+                    padding:0;
+                    padding-top:10px;
+                }
             }
         }
         @include mobile {
             
         }
     }
+
+    .tabs-wrap {
+        .tabs {
+            .swiper-slide {
+                display:inline-block;
+                margin-left:40px;
+                vertical-align:top;
+                @include mobile {
+                    margin-left:24px;
+                }
+                &:first-child {
+                    margin-left:0;
+                }
+                > a {
+                    display:block;
+                    position:relative;
+                    color:#767676;
+                    font-size:28px;
+                    line-height:40px;
+                    font-weight:700;
+                    em.count {
+                        display:inline-block;
+                        margin-left:4px;
+                        vertical-align:top;
+                    }
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
+                    }
+                }
+                &.on > a {
+                    color:#000;
+                }
+            }
+        }
+
+        &.border-type {
+            .tabs {
+                .swiper-slide {
+                    margin-left:40px;
+                    @include mobile {
+                        margin-left:20px;
+                    }
+                    &:first-child {
+                        margin-left:0;
+                    }
+                    > a {
+                        padding: 0 8px 20px;
+                        font-weight:700;
+                        font-size: $font-large;
+                        line-height: 28px;
+                        @include mobile {
+                            padding-bottom:16px;
+                            border-width:3px;
+                            font-size:($font-large - 1);
+                            line-height:25px;
+                        }
+                    }
+                    &.on {
+                        > a:after {
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 5px;
+                            border-radius: 5px 5px 0 0;
+                            background-color: $color-default;
+                            content: '';
+                            @include mobile {
+                                height: 4px;
+                                //border-radius: 4px 4px 0 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .mobile-support-guide {
+        display: none;
+        margin:40px 16px 0;
+        padding-top:24px;
+
+        border-top:1px solid #ddd;
+
+        .bullet-list {
+            margin-top:0;
+        }
+        .btn-wrap {
+           margin-top:12px; 
+        }
+    }
+    
 }
+.mobile .support .mobile-support-guide {display: block;}

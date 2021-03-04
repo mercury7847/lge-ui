@@ -1,18 +1,16 @@
 .search-word {
-    color: #ec455a;
+    color: $color-primary;
 }
 
 .input-keyword-wrap {
     max-width: (1146px + 80px);
     margin: 0 auto;
-    padding: 48px 40px 46px;
+    padding: 48px 40px 120px;
     @include mobile {
         max-width: 100%;
         //padding: 102px 16px 50px;
-        padding: 0 16px 50px;
-    }
+        padding: 40px 16px 60px;
 
-    @include mobile {
         &.fixed-top {
             .input-keyword {
                 position: relative;
@@ -22,7 +20,7 @@
                     right: 0;
                     left: 0;
                     z-index: 3;
-                    padding: 30px 16px 16px;
+                    padding: 40px 16px 16px;
                     //background-color: $color-bg-wt;
                 }
             }
@@ -32,6 +30,10 @@
 
 .input-keyword {
     position: relative;
+    @include pc {
+        max-width: 678px;
+        margin: 0 auto;
+    }
     //border-radius: 28px;
     //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     @include mobile {
@@ -40,7 +42,10 @@
         //right: 0;
         //left: 0;
         //z-index: 3;
-        padding: 30px 0 16px;
+
+
+
+        //padding: 30px 0 16px;
         background-color: $color-bg-wt;
     }
 
@@ -52,48 +57,61 @@
 
             input.txt {
                 width: 100%;
-                height: 56px;
-                padding: 0 104px 0 24px;
-                border-radius: 28px;
+                height: 62px;
+                padding: 0 72px 0 0;
+                border-bottom: 2px solid $color-default;
+                //border-radius: 28px;
                 background-color: #fff;
-                box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-                font-size: 16px;
-                line-height: normal;
+                //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                font-weight: 700;
+                @include font(24px,34px);
 
                 &::-webkit-input-placeholder,
                 &::-moz-placeholder,
                 &:-ms-input-placeholder {
                     color: $color-gray-1;
                 }
+
+                &::-ms-clear,
+                &::-ms-reveal {
+                    display: none;
+                    width: 0;
+                    height: 0;
+                }
+                &::-webkit-search-decoration,
+                &::-webkit-search-cancel-button,
+                &::-webkit-search-results-button,
+                &::-webkit-search-results-decoration {
+                    display: none;
+                }
             }
 
             .btn-delete {
                 position: absolute;
                 top: 50%;
-                right: 60px;
-                width: 20px;
-                height: 20px;
-                margin-top: -10px;
-                background: url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+                right: 36px;
+                width: 16px;
+                height: 16px;
+                margin-top: -8px;
+                background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat 0 0;
             }
 
             .btn-search {
                 position: absolute;
                 top: 50%;
                 right: 0;
-                width: 56px;
-                height: 56px;
-                margin-top: -28px;
+                width: 30px;
+                height: 50px;
+                margin-top: -25px;
                 background:none;
 
                 &::after {
                     content: '';
                     display: block;
-                    margin-left: 12px;
-                    width: 20px;
-                    height: 20px;
-                    background: url('/lg5-common/images/icons/icon-search-20.svg') no-repeat;
-                    background-size: 20px 20px;
+                    margin-left: 6px;
+                    width: 24px;
+                    height: 24px;
+                    background: url('/lg5-common/images/icons/icon-search.svg') no-repeat;
                 }
             }
         }
@@ -102,11 +120,10 @@
             border-radius: 4px;
             .input-sch {
                 input.txt {
-                    padding: 0 97px 0 21px;
-                }
-
-                .btn-delete {
-                    right: 57px;
+                    height: 52px;
+                    padding-right: 52px;
+                    //padding: 0 97px 0 0;
+                    @include font(20px,28px);
                 }
             }
         }
@@ -118,7 +135,10 @@
                 z-index: 3;
 
                 input.txt {
-                    box-shadow: none;
+                    border-bottom: 0;
+                }
+                .btn-search:after {
+
                 }
             }
         }
@@ -129,7 +149,10 @@
     overflow: hidden;
     margin-top: 17px;
     text-align: center;
-
+    @include pc {
+        max-width: 678px;
+        margin: 16px auto 0;
+    }
     .inner {
         position: relative;
         display: inline-block;
@@ -143,24 +166,23 @@
         left: 0;
         font-weight: 700;
         @include font-small;
-        color: $color-gray-1;
     }
 
     .keyword-list {
         display: inline-block;
+        margin-bottom: -4px;
         font-size: 0;
         text-align: left;
 
         li {
             display: inline-block;
-            margin-right: 16px;
+            margin: 0 12px 4px 0;
 
             &:nth-last-child(1) {
                 margin-right: 0;
             }
 
             a {
-                font-weight: 500;
                 @include font-small;
             }
         }
@@ -173,25 +195,29 @@
     @include mobile {
         position: relative;
         height: 24px;
-        margin-top: 0;
+        margin-top: 16px;
         padding-right: 32px;
-        .keyword-list {
-            li {
-                margin-right: 16px;
-                padding-bottom: 8px;
-            }
+        .inner {
+            position: relative;
+            display: inline-block;
+            padding-left: 88px;
+
+        }
+        .title {
+            left: 8px;
         }
         .mobile-more-btn {
             display: block;
             position: absolute;
-            top: -1px;
-            right: 0;
+            top: 2px;
+            right: 8px;
 
             .btn-more {
                 display: block;
-                width: 24px;
-                height: 24px;
-                background: url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat 0 0;
+                width: 16px;
+                height: 16px;
+                background: url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') no-repeat 0 0;
+                transform: rotate(90deg);
                 transition: transform .3s .1s ease-out;
             }
         }
@@ -201,7 +227,7 @@
 
             .mobile-more-btn {
                 .btn-more {
-                    transform: rotate(180deg);
+                    transform: rotate(270deg);
                 }
             }
         }
@@ -211,33 +237,35 @@
 .search-input-layer {
     display: none;
     position: absolute;
-    top: 0;
+    top: 62px;
     right: 0;
     left: 0;
     z-index: 2;
-    padding: 64px 24px 56px;
-    border-radius: 28px;
-    background-color: #fff;
-    box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+    padding: 32px 32px 56px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
+    box-shadow: 2px 8px 12px 0 rgba(202, 111, 183, 0.13);
 
     .btn-close {
         position: absolute;
         right: 24px;
-        bottom: 16px;
+        bottom: 24px;
         width: 24px;
         height: 24px;
-        background: url('/lg5-common/images/icons/btn-close-24-gray.svg') no-repeat 0 0;
-
+        background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat 0 0;
+        @include mobile {
+            right: 18px;
+            bottom: 18px;
+        }
         span {
             @include blind;
         }
     }
 
     .not-result {
-        padding: 10px 0 64px;
-        font-weight: 500;
+        padding: 32px 0 64px;
         @include font-medium;
-        color: $color-gray-1;
         text-align: center;
     }
 
@@ -249,16 +277,19 @@
         .recent-keyword,
         .popular-keyword {
             display: table-cell;
-            @include calc(width, 50%, 12px);
+            width: 50%;
         }
 
+        .recent-keyword {
+            padding-right: 32px;
+        }
         .popular-keyword {
-            padding-left: 24px;
+            padding-left: 32px;
         }
 
         .title {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-weight: 700;
             font-size: $font-medium;
             line-height: 30px;
@@ -266,9 +297,10 @@
     }
 
     @include mobile {
-        padding: 64px 24px 56px;
+        top: 52px;
+        padding: 24px 24px 42px;
         .auto-complete {
-            margin: 12px -12px 0;
+            margin: 0 -12px;
         }
         .search-keyword-area {
             display: block;
@@ -290,14 +322,15 @@
             }
         }
         .not-result {
-            padding: 10px 0 16px;
+            padding: 16px 0 40px;
         }
     }
 }
 
 .auto-complete {
+    //padding-top: 24px;
     .keyword-list {
-        margin-top: -4px;
+        //margin-top: -4px;
 
         li {
             margin-top: 4px;
@@ -337,25 +370,25 @@
 }
 
 .search-similar {
-    margin: 80px 0 74px;
+    margin-top: 80px;
     text-align: center;
 
     .search-result-text {
-        margin-bottom: 16px;
-        font-weight: 500;
-        font-size: $font-large-2;
-        line-height: 26px;
+        margin-bottom: 8px;
+        @include font($font-large-4,52px);
 
         .search-word {
             font-weight: 700;
             color: $color-default;
+            .word {
+                color: $color-primary;
+            }
         }
     }
 
     .similar-text {
-        font-weight: 500;
-        @include font-small;
-        color: $color-gray-1;
+        @include font($font-small,24px);
+        text-decoration: underline;
 
         &:after {
             display: inline-block;
@@ -368,11 +401,13 @@
     }
 
     @include mobile {
-        margin: 32px 0 10px;
+        margin-top: 60px;
         .search-result-text {
-            margin-bottom: 14px;
-            font-size: 16px;
-            line-height: 19px;
+            margin-bottom: 12px;
+            @include font($font-large-2,33px);
+        }
+        .similar-text {
+            line-height: 22px;
         }
     }
 }

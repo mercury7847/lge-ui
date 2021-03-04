@@ -53,6 +53,8 @@
             
             self.$authPopup = $('#certificationPopup');
             self.isLogin = lgkorUI.isLogin;
+            self.isModelCheck = false;
+            self.isSerialCheck = false;
 
             self.modelCheckUrl = self.$stepModel.data('modelCheckUrl');
             self.serialCheckUrl = self.$stepModel.data('serialCheckUrl');
@@ -68,11 +70,18 @@
                 modelCode: {
                     required: true,
                     pattern : /^[A-Za-z0-9+]*$/,
-                    msgTarget: '.err-block'
+                    maxLength: 20,
+                    msgTarget: '.err-block',
+                    errorMsg: '모델명 입력 후 검색 버튼을 선택하여 주세요.',
+                    patternMsg: '3M필터 적용모델이 아닙니다. 모델명을 다시 입력해주시기 바랍니다.'
                 },
                 serialNumber: {
                     required: true,
-                    msgTarget: '.err-block'
+                    pattern : /^[A-Za-z0-9+]*$/,
+                    maxLength:12,
+                    msgTarget: '.err-block',
+                    errorMsg: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
+                    patternMsg: '올바른 제조번호를 입력해 주세요.'
                 },
                 userName: {
                     required: true,
@@ -184,6 +193,14 @@
         bindEvent: function() {
             var self = this;
 
+            $('#modelCode').on('input', function() {
+                self.isModelCheck = false;
+                self.isSerialCheck = false;
+            });
+            $('#serialNumber').on('input', function() {
+                self.isSerialCheck = false;
+            });
+
             $('#modelCode').siblings('.btn-search').on('click', function() {
                 var param = {
                     productFamily: $('#productFamily').val(),
@@ -197,13 +214,22 @@
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
-                            $('#serialNumber').prop('disabled', false);
+                            $('#serialNumber').prop('readonly', false);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', false);
+                            self.isModelCheck = true;
                         } else {
-                            $('#serialNumber').prop('disabled', true);
+                            $('#serialNumber').prop('readonly', true);
                             $('#serialNumber').siblings('.btn-search').prop('disabled', true);
                             $('#modelCode').val('');
-                            validation.validate(['modelCode']);
+                            
+                            self.isModelCheck = false;
+                            self.isSerialCheck = false;
+
+                            if (data.resultMessage) {
+                                lgkorUI.alert('', {
+                                    title: data.resultMessage
+                                });
+                            }
                         }
                         lgkorUI.hideLoading();
                     });
@@ -244,6 +270,9 @@
                                     });
                                 }
                             }
+                            self.isSerialCheck = false;
+                        } else {
+                            self.isSerialCheck = true;
                         }
                         lgkorUI.hideLoading();
                     });
@@ -268,6 +297,24 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
+                    if (!self.isModelCheck) {
+                        lgkorUI.alert('', {
+                            title: '모델명 입력 후 검색 버튼을 선택하여 주세요.',
+                            ok: function() {
+                                $('#modelCode').focus();
+                            }
+                        });
+                        return false;
+                    } else if (!self.isSerialCheck) {
+                        lgkorUI.alert('', {
+                            title: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
+                            ok: function() {
+                                $('#serialNumber').focus();
+                            }
+                        });
+                        return false;
+                    }
+
                     lgkorUI.confirm('', {
                         title:'공기청정 필터 신청을 접수하시겠습니까?',
                         okBtnName: '확인',

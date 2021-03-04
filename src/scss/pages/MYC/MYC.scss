@@ -107,6 +107,30 @@
             }
             // contents
             .section-inner {
+                .inner-box {
+                    position: relative;
+                    .changePayment-btn {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        @include mobile {
+                            top: -3px;
+                        }
+                    }
+                    &.payment {
+                        .payment-info {
+                            .btn-group {
+                                margin: 40px 0 80px;
+                                @include mobile {
+                                    margin: 40px 0 60px;
+                                    .btn {
+                                        width: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 .dl-infolist-wrap {
                     .lists {
                         li {
@@ -894,3 +918,33 @@
     }
 }
 
+.page-change {
+    .btn-close {
+        position:absolute;
+        top:28px;
+        right:40px;
+        width:24px;
+        height:24px;
+        @include mobile {
+            top:24px;
+            right:16px;
+            width:24px;
+            height:24px;
+        }
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:0;
+            width:24px;
+            height:24px;
+            background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
+            background-size:24px;
+            // @include mobile {
+            //     width:24px;
+            //     height:24px;
+            //     background-size:24px;
+            // }
+        }
+    }
+}

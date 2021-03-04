@@ -32,87 +32,15 @@
     }
 
     .pdp-info-area {
-        .product-detail-option {
-            .info-accordion-wrap {
-                .lists {
-                    .btn-toggle {
-                        transform: none;
-                        top: 4px;
-                        background-image: url(/lg5-common/images/icons/ic-arrow-up-16.svg);
-                        background-position: center;
-                        width: 16px;
-                        height: 16px;
-                    }
-                    &.on {
-                        .head {
-                            border-bottom: 1px solid #ddd;
-                            padding-bottom: 16px;
-                        }
-                    }
-                    &.member {
-                        .ui_accord_content {
-                            padding-top: 16px;
-                        }
-                    }
-                    &.benefit {
-                        .ui_accord_content ul {
-                            >li {
-                                &:not(:first-child) {
-                                    .price-info {
-                                        margin-top: 8px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .price-info {
-                &.total-discount {
-                    margin-top: 8px;
-                }
-                &.card-benefit {
-                    .price {
-                        .block {
-                            color: inherit;
-                        }
-                    }
-                }
-            }
-        }
         .purchase-button {
             .btn-group {
                 display: flex;
                 align-items: center;
-                margin-top: 0;
                 .btn {
                     display:inline-block;
                     margin-left: 8px;
                     &:first-child {
                         margin-left: 0;
-                    }
-                    &.like {
-                        .chk-wish-wrap {
-                            input {
-                                +label {
-                                    width: 32px;
-                                    height: 32px;
-                                    &:before {
-                                        background-image: url(/lg5-common/images/icons/ic-like-off-32.svg);
-                                        width: 100%;
-                                        height: 100%;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    &.cart {
-                        &:before {
-                            background-image: url(/lg5-common/images/icons/icon-cart.svg);
-                            background-size: 100%;
-                            width: 32px;
-                            height: 32px;
-                        }
                     }
                 }
             }

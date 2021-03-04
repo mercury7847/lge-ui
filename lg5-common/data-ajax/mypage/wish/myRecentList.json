@@ -26,7 +26,8 @@
                 "price":"1500000",
                 "isWish":true,
                 "enableWish":true,
-                "pdpUrl": "#"
+                "pdpUrl": "#",
+                "obsBtnFlag":"enable"
             },
             {
                 "id":"pid00002",
@@ -51,7 +52,8 @@
                 "price":"1500000",
                 "isWish":false,
                 "enableWish":true,
-                "pdpUrl": "#"
+                "pdpUrl": "#",
+                "obsBtnFlag":"enable"
             },
             {
                 "id":"pid00002",
@@ -76,7 +78,8 @@
                 "price":"1500000",
                 "isWish":false,
                 "enableWish":true,
-                "pdpUrl": "#"
+                "pdpUrl": "#",
+                "obsBtnFlag":"enable"
             },
             {
                 "id":"pid00003",
@@ -101,7 +104,8 @@
                 "price":"1200000",
                 "isWish":false,
                 "enableWish":true,
-                "pdpUrl": "#"
+                "pdpUrl": "#",
+                "obsBtnFlag":"disable"
             },
             {
                 "id":"pid00004",
@@ -126,7 +130,8 @@
                 "price":null,
                 "isWish":false,
                 "enableWish":false,
-                "pdpUrl": "#"
+                "pdpUrl": "#",
+                "obsBtnFlag":"disable"
             }
         ]
     }

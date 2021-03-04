@@ -57,9 +57,46 @@
                     }
                 };
 
+                //핀치줌
+                vcui.require(['ui/pinchZoom'], function (PinchZoom) {
+                    self.pinchZoom = new PinchZoom('.zoom-area');
+    
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
+                        var zoom =self. pinchZoom.getZoomFactor();
+                        if(Math.round(zoom) >= 4) zoom = 0;
+                        self.pinchZoom.runZoom(zoom+1, true); 
+                    });
+    
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
+                        var zoom =self.pinchZoom.getZoomFactor();
+                        self.pinchZoom.runZoom(zoom-1, true); 
+                    });
+    
+                    self.$popPdpVisualImage.mousedown(function() {
+                        self.isDragging = false;
+                    })
+                    .mousemove(function() {
+                        self.isDragging = true;
+                     })
+                    .mouseup(function() {
+                        var wasDragging = self.isDragging;
+                        self.isDragging = false;
+                        if (!wasDragging) {
+                            self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').trigger('click');
+                        }
+                    });
+                    
+                    //pinchZoom.update(true);
+
+                    self.bindProductEvents();
+                    self.bindPopupEvents();
+                    self.bindSideEvents();
+                });
+                /*
                 self.bindProductEvents();
                 self.bindPopupEvents();
                 self.bindSideEvents();
+                */
 
                 //비교하기 체크
                 self.setCompares();
@@ -71,7 +108,7 @@
                 self.$pdpData = $('#pdp-data');
 
                 //콤포넌트
-                self.$component = $('section.component');
+                self.$component = $('section.component.KRP0008');
 
                 //데스크탑용 갤러리
                 self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
@@ -140,12 +177,22 @@
                 self.$pdpInfoAdditionalPurchase = self.$pdpInfo.find('.additional-purchase');
                 //
                 self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
-                self.$pdpInfoCareshipService = self.$pdpInfo.find('div.option-contents .careship-service');
-                self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.option-contents .care-sibling-option');
+                self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
+                self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
                 
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
+                var selectRtModelSeq = null;
+                var selectRtRgstFeePre = null
+                var selectDutyTerm = null;
+
+                var rentalSelectBoxIndex1 = 0;
+                var rentalSelectBoxIndex2 = 0;
+                var rentalSelectBoxIndex3 = 0;
+
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
+                    //test data
+                    //rentalInfo = [{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543180","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543181","dutyTerm":"4","representChargeFlag":"Y","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543182","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3}];
                     var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
                         //가입비
@@ -168,46 +215,93 @@
 
                         dataByFee[dutyTerm] = dataByDuty;
                         rentalPriceData[rtRgstFeePre] = dataByFee;
+
+                        if(item.representChargeFlag == "Y") {
+                            selectRtModelSeq = item.rtModelSeq;
+                            selectRtRgstFeePre = rtRgstFeePre;
+                            selectDutyTerm = dutyTerm;
+                        }
                     });
                     self.rentalInfoData = rentalPriceData;
                 }
+
+                //최초 기본값 찾기
+                if(selectRtModelSeq) {
+                    var array = Object.keys(self.rentalInfoData);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectRtRgstFeePre) {
+                            rentalSelectBoxIndex1 = i;
+                            break;
+                        }
+                    }
+
+                    var dataByFee = self.rentalInfoData[selectRtRgstFeePre];
+                    var array = Object.keys(dataByFee);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectDutyTerm) {
+                            rentalSelectBoxIndex2 = i;
+                            break;
+                        }
+                    }
+
+                    var array = dataByFee[selectDutyTerm];
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i].representChargeFlag == "Y") {
+                            rentalSelectBoxIndex3 = i;
+                            break;
+                        }
+                    }
+                }
+
 
                 //렌탈 케어솔루션 계약기간
                 self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
                 if(self.rentalInfoData && self.$caresolutionRentalInfoSelectBox.length > 0) {
                     //가입비 세팅
-                    self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,0,false);
+                    self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,rentalSelectBoxIndex1,false);
 
                     //의무사용기간 세팅
-                    var firstKey = Object.keys(rentalPriceData)[0];
-                    var dutyTermData = rentalPriceData[firstKey];
+                    var firstKey = Object.keys(self.rentalInfoData)[rentalSelectBoxIndex1];
+                    var dutyTermData = self.rentalInfoData[firstKey];
                     if(dutyTermData) {
-                        self.rentalInfoSelectBoxUpdate(1,dutyTermData,0,false);
+                        self.rentalInfoSelectBoxUpdate(1,dutyTermData,rentalSelectBoxIndex2,false);
 
                         //방문주기
-                        firstKey = Object.keys(dutyTermData)[0];
+                        firstKey = Object.keys(dutyTermData)[rentalSelectBoxIndex2];
                         var visitPerData = dutyTermData[firstKey]
                         if(visitPerData) {
-                            self.updateRentalInfoPrice(visitPerData[0]);
-                            self.rentalInfoSelectBoxUpdate(2,visitPerData,0,true);
+                            self.updateRentalInfoPrice(visitPerData[rentalSelectBoxIndex3]);
+                            self.rentalInfoSelectBoxUpdate(2,visitPerData,rentalSelectBoxIndex3,true);
                         }
                     }
                 }
 
+                //console.log('result',rentalSelectBoxIndex1,rentalSelectBoxIndex2,rentalSelectBoxIndex3);
+
                 //케어십 가격 정보 정리
+                var careSelectIndex = 0;
+
                 self.careshipInfoData = null;
                 if(typeof careshipInfo !== 'undefined' && careshipInfo.length > 0) {
                     self.careshipInfoData = careshipInfo;
+                    for (var i = 0, len = careshipInfo.length; i < len; i++) {
+                        if(careshipInfo[i].representChargeFlag == "Y") {
+                            careSelectIndex = i;
+                            break;
+                        }
+                    }
                 }
 
                 //케어십 계약기간
                 self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
                 if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
-                    self.updateCareshipInfoPrice(self.careshipInfoData[0]);
-                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,0,true);
+                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
+                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
                 }
 
                 //렌탈 케어솔루션 제휴카드 리스트 정리
+                var isTab = false;
+
                 self.rentalCardList = [];
                 if(typeof rentalAssociatedCardList !== 'undefined' && rentalAssociatedCardList.length > 0) {
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
@@ -215,6 +309,7 @@
 
                 self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
                 if(self.$rentalCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
                 }
 
@@ -226,9 +321,23 @@
 
                 self.$careshipCardList = self.$pdpInfoCareshipService.find('.select-box:eq(1)');
                 if(self.$careshipCardList.length > 0) {
+                    isTab = true;
                     self.updateAssociatedCardList(self.$careshipCardList, self.careCardList);
                 }
 
+                if(!isTab) {
+                    var $paymentAmount = self.$pdpInfoProductDetailInfo.find('.payment-amount');
+                    var $cardList = self.$pdpInfoProductDetailInfo.find('div.care-sibling-option > .select-box');
+                    var $careshipService = $paymentAmount.siblings('.careship-service');
+                    var checkinput = $careshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        //케어쉽 선택 버튼이 있으므로 케어타입
+                        self.updateAssociatedCardList($cardList, self.careCardList);
+                    } else {
+                        //렌탈타입
+                        self.updateAssociatedCardList($cardList, self.rentalCardList);
+                    }
+                }
 
                 //
                 self.$pdpMobileSlider.vcCarousel({
@@ -266,6 +375,8 @@
                 var self = this;
 
                 //핀치줌
+                //위치이동
+                /*
                 vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                     self.pinchZoom = new PinchZoom('.zoom-area');
     
@@ -296,6 +407,7 @@
                     
                     //pinchZoom.update(true);
                 });
+                */
                                 
                 //팝업 모달뷰 버튼
                 /*
@@ -363,8 +475,14 @@
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
-                   var checked = $(this).is(':checked');
-                   self.requestCompareItem(sendData, checked, $(this));
+                    var checked = !$(this).hasClass('compare-select');
+                    if(checked) {
+                        $(this).addClass('compare-select');
+                    } else {
+                        $(this).removeClass('compare-select');
+                    }
+                    //$(this).prop('checked',!checked);
+                    self.requestCompareItem(sendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -377,15 +495,24 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                     var checked = $(this).is(':checked');
                     var success = function(data) {
-                        sendData['wishItemId'] = data.wishItemId;
+                        sendData.wishItemId = data.wishItemId;
+                        if(data.wishListId) {
+                            sendData.wishListId = data.wishListId;
+                        }
+                        $(this).prop("checked",checked);
                     };
                     var fail = function(data) {
-                        $dm.find('span.chk-wish-wrap input').prop("checked",!checked);
+                        $(this).prop("checked",!checked);
                     };
 
                     var param = JSON.parse(JSON.stringify(sendData));
-                    param.wish = checked;
-
+                    if(checked){
+                        param.type = "add";
+                    } else{
+                        param.type = "remove";
+                    }
+                    //param.wish = checked;
+                    
                     lgkorUI.requestWish(
                         param,
                         checked,
@@ -400,13 +527,32 @@
                     e.preventDefault();
 
                     var param = JSON.parse(JSON.stringify(sendData));
-
                     var $paymentAmount = $(this).parents('.payment-amount');
-                    var $purchaseButton = $(this).parents('.purchase-button');
-                    if($purchaseButton.hasClass('rental')) {
-                        //렌탈타입
-                        param.typeFlag = "C";
+
+                    //소모품이 있는가
+                    var cart = [];
+                    var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
+                    if($additionalPurchase.length > 0) {
+                        $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
+                            cart.push($(item).data('id')+"|"+$(item).data('quantity'));
+                        });
+                    }
+
+                    //선택 수량
+                    var quantity = $paymentAmount.find('div.select-quantity input.quantity');
+                    if(quantity.length > 0) {
+                        cart.push(sendData.sku+"|"+quantity.val());
                     } else {
+                        cart.push(sendData.sku+"|1");
+                    }
+
+                    param.sku = cart.join(',');
+
+                    //var $purchaseButton = $(this).parents('.purchase-button');
+                    //if($purchaseButton.hasClass('rental')) {
+                        //렌탈타입
+                     //   param.typeFlag = "C";
+                    //} else {
                         //제품타입
                         param.typeFlag = "P";
                         //케어십 선택
@@ -418,8 +564,18 @@
                                 //케어쉽 선택
                                 param.typeFlag = "C";
                             }
+                        } else {
+                            var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
+                            //케어쉽필수 제품인지 체크해서 알림창 뛰움
+                            if($careSiblingOption.length < 1) {
+                                if(careRequire) {
+                                    param.typeFlag = "C";
+                                }
+                            } else {
+                                param.typeFlag = "C";
+                            }
                         }
-                    }
+                    //}
 
                     if(param.typeFlag == "C") {
                         if(typeof careshipOnlyFlag !== 'undefined') {
@@ -648,6 +804,15 @@
                                     $careshipPriceInfo.hide();
                                 }
                                 self.updatePaymentAmountPrice($paymentAmount);
+
+                                //수량체크버튼 활성
+                                var $input = $paymentAmount.find('input.quantity');
+                                if(parseInt($input.val()) == 1) {
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                } else {
+                                    $paymentAmount.find('button.minus').attr('disabled',false);
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                }
                             }
                         }
                     } else {
@@ -659,6 +824,10 @@
                                 $careshipPriceInfo.show();
                             }
                             self.updatePaymentAmountPrice($paymentAmount);
+
+                            //케어십 신청됬으므로 수량체크버튼 비활성
+                            $paymentAmount.find('button.minus').attr('disabled',true);
+                            $paymentAmount.find('button.plus').attr('disabled',true);
                         }
                     }
                 });
@@ -724,12 +893,22 @@
                     if(cardSale) {
                         cardData.cardSale = cardSale;
                     }
+                    var cardSubName = $this.data('cardSubName');
+                    if(cardSubName) {
+                        cardData.cardSubName = cardSubName;
+                    }
+                    var simpleReqFlag = $this.data('simpleReqFlag');
+                    if(simpleReqFlag) {
+                        cardData.simpleReqFlag = simpleReqFlag;
+                    }
 
                     var isRental = false;
                     var $careshipService = $this.parents('.careship-service');
                     if($careshipService.length < 1) {
-                        isRental = true;
                         $careshipService = $this.parents('.care-sibling-option');
+                        if($careshipService.length > 0) {
+                            isRental = true;
+                        }
                     }
                     var $paymentAmount = $careshipService.siblings('.payment-amount');
 
@@ -792,6 +971,8 @@
                     "listItem":[
                         {
                             "cardNameCode":null,
+                            "simpleReqFlag":null,
+                            "cardSubName":null,
                             "title":"이용시 최대 " + vcui.number.addComma(max) + "원 할인",
                             "maxSalePrice":0
                         }
@@ -823,7 +1004,7 @@
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
                     var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
                     cardData.forEach(function(obj, idx) {
                         if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
@@ -996,10 +1177,11 @@
             //구매진행
             productBuy: function($dm) {
                 var self = this;
-                var param = JSON.parse(JSON.stringify(sendData));
+                var tempSendData = JSON.parse(JSON.stringify(sendData));
+
                 var $paymentAmount = $dm.parents('.payment-amount');
-                var $purchaseButton = $dm.parents('.purchase-button');
-                if($purchaseButton.hasClass('rental')) {
+                //var $purchaseButton = $dm.parents('.purchase-button');
+                /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
                     var careData = $paymentAmount.data('careData');
                     if(careData) {
@@ -1015,65 +1197,138 @@
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                    console.log("rental",ajaxUrl,param);
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                             //console.log(result);
                         });
                     }
-                } else {
+                } else {*/
                     //구매타입
+                    var isRental = false;
+                    var param = {};
+                    if(typeof modelGubun !== 'undefined') {
+                        if(modelGubun == "1") {
+                            param.order_type = "NB";
+                        } else if(modelGubun == "3") {
+                            param.order_type = "SM";
+                        }
+                    }
+                    if(modelGubun)
 
                     //소모품이 있는가
+                    var cart = [];
                     var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
                     if($additionalPurchase.length > 0) {
-                        var additional = [];
                         $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
-                            additional.push({
-                                "id":$(item).data('id'),
+                            cart.push({
+                                "sku":$(item).data('id'),
                                 "quantity":$(item).data('quantity')
-                            })
-                        })
-                        param.additional = additional;
+                            });
+                            if(param.order_type == "NB") {
+                                param.order_type = "NS";
+                            }
+                        });
                     }
 
                     //케어십 선택
+                    //오더타입 교체할것
                     var $careshipService = $paymentAmount.siblings('.careship-service');
                     var checkinput = $careshipService.find('input[type=radio]:checked');
                     if(checkinput.length > 0) {
-                        param.careship = checkinput.val();
+                        isRental = lgkorUI.stringToBool(checkinput.val());
                     } else {
                         var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
                         //케어쉽필수 제품인지 체크해서 알림창 뛰움
                         if($careSiblingOption.length < 1) {
                             if(careRequire) {
                                 $('#careRequireBuyPopup').vcModal();
+                                isRental = true;
                             }
+                        } else {
+                            isRental = true;
                         }
                     }
 
                     //선택 수량
                     var quantity = $paymentAmount.find('div.select-quantity input.quantity');
                     if(quantity.length > 0) {
-                        param.quantity = quantity.val();
+                        cart.push({
+                            "sku":tempSendData.sku,
+                            "quantity":quantity.val()
+                        });
                     }
 
+                    //렌탈타입
+                    var careData = $paymentAmount.data('careData');
+                    if(careData) {
+                        param.rtModelSeq = careData.rtModelSeq;
+                    }
+
+                    var cardData = $paymentAmount.data('cardData');
+                    if(cardData) {
+                        if(lgkorUI.stringToBool(cardData.simpleReqFlag)) {
+                            //간편신청카드
+                            param.easyRequestCard = cardData.cardNameCode + "|" + cardData.cardSubName;
+                        }
+                    }
+
+                    /*
+                    //선택된 케어쉽
                     var careData = $paymentAmount.data('careData');
                     if(careData) {
                         param.rtModelSeq = careData.rtModelSeq;
                         param.caresolutionSalesCodeSuffix = careData.caresolutionSalesCodeSuffix;
                     }
+                    //선택된 카드
                     var cardData = $paymentAmount.data('cardData');
                     if(cardData && cardData.cardNameCode) {
+                        console.log(cardData);
                         param.cardNameCode = cardData.cardNameCode;
                     }
+                    */
+                    if(cart.length > 0) {
+                        var cart_items = [];
+                        cart.forEach(function(obj,idx){
+                            cart_items.push({"data":obj});
+                        });
+                        param.cart_items = cart_items;
+                        param.order_item_qty = cart_items.length;
+                    }
 
-                    var ajaxUrl = $dm.data('ajaxUrl');
+                    var ajaxUrl;
+                    if(isRental) {
+                        ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                        var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                        console.log("!!!!!rental",url,param);
+                        if(ajaxUrl) {
+                            location.href = url;
+                        }
+                    } else {
+                        ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
+                        console.log("!!!!!buy",ajaxUrl,param);
+                        console.log('post');
+                        if(ajaxUrl) {
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                                console.log(result);
+                                var data = result.data;
+                                var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                if(obsDirectPurchaseUrl){
+                                    location.href = obsDirectPurchaseUrl;
+                                }
+                            });
+                        }
+                    }
+
+                    /*
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                             //console.log(result);
                         });
                     }
-                }
+                    */
+               // }
             },
 
             //PDP 이미지 관련
@@ -1280,7 +1535,10 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(compare){
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
-                    if(!isAdd) $dm.prop('checked', false);
+                    if(!isAdd) {
+                        $dm.prop('checked', false);
+                        $dm.removeClass('compare-select');
+                    }
                 } else{
                     lgkorUI.removeCompareProd(categoryId, compareData.id);
                 }
@@ -1293,14 +1551,23 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+
                 if(!isCompare){
-                    if(vcui.isEmpty(storageCompare[categoryId]))
+                    //if(vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
+                        //console.log(sendData['id'], i);
                         if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
-                self.$pdpInfo.find('.product-compare input[type=checkbox]').prop('checked', chk)
-            }
+                
+                var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
+                $dm.prop('checked', chk)
+                if(chk) {
+                    $dm.addClass('compare-select');
+                } else {
+                    $dm.removeClass('compare-select');
+                }
+            },
         };
 
     $(window).ready(function(){
@@ -1309,3 +1576,28 @@
         KRP0008.init();
     });
 })();
+
+//크레마
+window.cremaAsyncInit = function () {
+    crema.init(null,null);
+};
+
+(function(i,s,o,g,r,a,m){
+    if(s.getElementById(g)){
+        return
+    };
+    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+    a.id=g;
+    a.async=1;
+    a.src=r;
+    m.parentNode.insertBefore(a,m);
+    /*
+    console.log('i',i);
+    console.log('s',s);
+    console.log('o',o);
+    console.log('g',g);
+    console.log('r',r);
+    console.log('a',a);
+    console.log('m',m);
+    */
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');

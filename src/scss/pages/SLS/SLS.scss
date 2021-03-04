@@ -257,12 +257,10 @@ br.pc {
                 position: relative;
                 padding: 88px 24px 0;
                 @include font-large-5;
-                color: $color-gray-4;
                 font-weight: 700;
                 line-height:56px;
                 text-align: left;
                 &:hover {
-                    color:#000;
                     &:after {
                         content:' ';
                         position:absolute;
@@ -322,48 +320,48 @@ br.pc {
             }
             &.link-benefit {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-3-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
             }
             &.link-planner {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-2-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
             }
             &.link-my {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-1-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
 
             }
             &.next-schedule {
                 span:before {
-                    background: url(/lg5-common/images/icons/ic-main-careship-cal-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on span:before,
-                &:hover span:before {
                     background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on span:before,
+                //&:hover span:before {
+                //    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
                 .day {
                     display: block;
                 }
@@ -930,11 +928,12 @@ br.pc {
 }
 // 케어솔루션 혜택
 .care-benefit {
+    margin-top: 120px;
     padding-bottom: 120px;
     background-color: #f4f4f4;
     @include mobile {
-        padding-bottom: 0;
-        background-color: #fff;
+        margin-top: 60px;
+        padding-bottom: 60px;
     }
     .benefit-cont {
         max-width: calc(1380px + 24px);
@@ -956,13 +955,13 @@ br.pc {
                 width: 33.33%;
                 padding: 12px;
                 @include mobile {
-                    width: auto;
+                    width: 100%;
                     padding: 0 4px;
                 }
                 .thumb {
                     img {
                         width: 100%;
-                        height:333px;
+                        //height:333px;
                         border-radius: 8px;
                     }
                 }
@@ -1002,9 +1001,9 @@ br.pc {
                 li {
                     .inner {
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: flex-end;
                         height: 100%;
-                        padding: 48px 0 0 48px;
+                        padding: 133px 0 0 40px;
                         border-radius: 8px;
                         background: #fff;
                         @media screen and (max-width: 1024px){
@@ -1016,7 +1015,7 @@ br.pc {
                     }
                     .thumb {
                         //flex: 1;
-                        max-width: 300px;
+                        max-width: 200px;
                         align-self: flex-end;
                         @media screen and (max-width: 1024px){
                         //@include mobile {
@@ -1032,12 +1031,17 @@ br.pc {
                         }
                     }
                     .text-area {
+                        position: absolute;
+                        top: 52px;
+                        left: 52px;
                         @media screen and (max-width: 1024px){
                         //@include mobile {
+                            top: 32px;
+                            left: 0;
                             padding: 0 32px;
                         }
                         .tit {
-                            line-height: 52px;
+                            @include font-large-2;
                             @media screen and (max-width: 1024px){
                             //@include mobile {
                                 font-size: 24px;
@@ -1072,7 +1076,10 @@ br.pc {
                         }
                     }
                     &:nth-child(5) {
-                        width: 100%;
+                        width: 66.66%;
+                        .inner {
+                            padding-top: 0;
+                        }
                         .thumb {
                             max-width: 742px;
                             @media screen and (max-width: 1024px){

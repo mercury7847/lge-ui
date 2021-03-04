@@ -14,12 +14,19 @@
             })
             <!-- mypage -->
             <!-- 2021.1.29 class "orderAndDelivery" 추가-->
+            <!-- data-order-inquiry-list : 리스트(구메 + 케어솔루션) -->
+            <!-- data-order-detail : 상세이동 -->
+            <!-- data-product-status : PDP 이동 전 체크 -->
+            <!-- data-order-cancel-popup : 취소/반품 신청 팝업 -->
+            <!-- data-order-sails : 취소/반품 확인 -->
+            <!-- data-account-check : 환불계좌확인 -->
             <div class="contents mypage orderAndDelivery"
                 data-order-inquiry-list="/lg5-common/data-ajax/mypage/orderProductList.json"
-                data-cancel-pop="/lg5-common/data-ajax/mypage/orderCancelPop.json"
-                data-order-cancel="/lg5-common/data-ajax/mypage/orderCancel.json"
-                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
                 data-order-detail="https://wwwdev50.lge.co.kr/tvs"
+                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
+                data-order-cancel-popup="/lg5-common/data-ajax/mypage/orderCancelPop.json"
+                data-order-sails="/lg5-common/data-ajax/mypage/orderCancel.json"
+                data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
             >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">

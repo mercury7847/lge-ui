@@ -25,9 +25,13 @@
     var driverListTemplate = 
         '<li>' +
             '{{# if (typeof detailUrl != "undefined" && detailUrl) { #}}' +
-            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</button></p>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{title}}</button></p>' +
             '{{# } else { #}}' +
-            '<p class="tit">{{#if os}}{{os}} {{/if}}{{#if title}}{{title}}{{/if}}</p>' +
+                '{{# if (typeof os == "string" && os) { #}}' +
+                '<p class="tit">{{os}} {{title}}</p>' +
+                '{{# } else { #}}' +
+                '<p class="tit">{{title}}</p>' +
+                '{{# } #}}' +
             '{{# } #}}' +
             '<div class="info-wrap">' +
                 '{{# if (typeof category != "undefined" || typeof date != "undefined") { #}}' +
@@ -41,7 +45,11 @@
                 ' </ul>' +
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
+                    '{{# if(!vcui.detect.isMobileDevice) { #}}' +
                     '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{#if file.size}}{{file.size}}{{/if}}{{#if file.os}}{{file.os}}{{/if}}</span></a>' +
+                    '{{# } else { #}}' +
+                    '<a href="{{file.src}}" class="btn border size btn-download"><span>이메일 보내기</span></a>' +
+                    '{{# } #}}' +
                 '</div>' +
             '</div>' +
         '</li>';
@@ -169,6 +177,7 @@
             productCode: '',
             page:1
         },
+        emailValidate : null,
         initialize: function() {
             var self = this;
 
@@ -195,18 +204,64 @@
             self.$surveyPopup = $('#surveyPopup');
             self.$fileDetailPopup = $('#fileDetailPopup');
 
-            self.setting();
-            self.bindEvent();
+            if (vcui.detect.isMobileDevice) {
+                vcui.require(['ui/validation'], function () {
+                    var emailRegister = {
+                        userEmail : {
+                            required: true,
+                            pattern : /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
+                            minLength: 1,
+                            maxLength: 50,
+                            msgTarget: '.err-block',
+                            errorMsg: '이메일 주소를 입력해주세요.',
+                            patternMsg: '올바른 이메일 형식이 아닙니다.',
+                            validate : function(value){
+                                var _pattern = new RegExp(this.pattern);
+        
+                                if( _pattern.test(value) == true) {
+                                    if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+    
+                    self.emailValidate = new vcui.ui.CsValidation('#fileSendToEmail', {register:emailRegister});
 
-            if (!self.isPSP) {
-                self.$cont.commonModel({
-                    register: {},
-                    selected: self.param
+                    self.setting();
+                    self.bindEvent();
+
+                    if (!self.isPSP) {
+                        self.$cont.commonModel({
+                            register: {},
+                            selected: self.param
+                        });
+                    }
+
+                    self.$manualPagination.data('page', 1);
+                    self.$driverPagination.pagination();
                 });
+            } else {
+                self.setting();
+                self.bindEvent();
+
+                if (!self.isPSP) {
+                    self.$cont.commonModel({
+                        register: {},
+                        selected: self.param
+                    });
+                }
+
+                self.$manualPagination.data('page', 1);
+                self.$driverPagination.pagination();
             }
 
-            self.$manualPagination.data('page', 1);
-            self.$driverPagination.pagination();
+            
         },
         setting: function() {
             var self = this;
@@ -232,6 +287,15 @@
                 data.categoryNm = $('#categoryNm').val();
                 data.subCategory = $('#subCategory').val();
                 data.subCategoryNm = $('#subCategoryNm').val();
+            } else {
+                if (!self.isPSP) {
+                    data.category = $('#category').val();
+                    data.categoryNm = $('#categoryNm').val();
+                    data.subCategory = $('#subCategory').val();
+                    data.subCategoryNm = $('#subCategoryNm').val();
+                    data.modelCode = $('#modelCode').val();
+                    data.productCode = $('#productCode').val();
+                }
             }
 
             if (self.isPSP) {
@@ -245,9 +309,12 @@
 
             self.isLogin = lgkorUI.isLogin;
             self.param = $.extend({}, data);
-            self.manualParam = $.extend({}, data);
-            self.driverParam = $.extend(data, {
-                keyword: ''
+            self.manualParam = $.extend({}, data, {
+                type: 'manual'
+            });
+            self.driverParam = $.extend({}, data, {
+                keyword: '',
+                type: 'driver'
             });
         },
         setManualList: function(data) {
@@ -289,6 +356,13 @@
                     html += vcui.template(driverListTemplate, item);
                 });
                 $list.html(html).show();
+                $list.find('>li').each(function(i) {
+                    var $this = $(this);
+                    for (var key in listArr[i]) {
+                        if (key == 'file') continue;
+                        $this.data(key.toString(), listArr[i][key]);
+                    }
+                });
                 $noData.hide();
                 self.$driverPagination.show();
                 self.$driverPagination.pagination('update', page);
@@ -321,6 +395,8 @@
         setOsActive: function(os) {
             var self = this;
             var $formWrap = self.$driverSec.find('.form-wrap');
+            var $listDesc = self.$driverSec.find('.download-list-wrap > .desc');
+            var category = self.param.category;
             var subCategory = self.param.subCategory;
 
             if (subCategory == "CT50019564" || subCategory == "CT50019585" ) {
@@ -328,6 +404,12 @@
                 $formWrap.show();
             } else {
                 $formWrap.hide();
+            }
+
+            if (category == "CT50019096") {
+                $listDesc.hide();
+            } else {
+                $listDesc.show();
             }
         },
         setSurvey: function(data) {
@@ -404,7 +486,14 @@
             self.$cont.on('reset', function(e) {
                 var data = $.extend({}, self.options);
 
-                self.param = data;
+                self.param = $.extend({}, data);
+                self.manualParam = $.extend({}, data, {
+                    type: 'manual'
+                });
+                self.driverParam = $.extend({}, data, {
+                    keyword: '',
+                    type: 'driver'
+                });
 
                 self.isLogin && self.$myModelWrap.show();
                 self.$cont.commonModel('next', self.$stepModel);
@@ -512,6 +601,66 @@
                 } else {
                     $list.addClass('on');
                 }
+            });
+
+            // 다운로드 버튼 클릭
+            self.$driverSec.on('click', '.btn-download', function(e){
+                var $this = $(this);
+                var fileUrl = $this.attr('href');
+                var $item = $this.closest('li');
+                var data = $item.data();
+
+                if( vcui.detect.isMobileDevice) {
+                    e.preventDefault();
+                    for(var key in data) {
+                        $('#fileSendToEmail').data(key, data[key]);
+                    }
+                    $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
+                }
+            })
+
+            //이메일 주소 입력팝업 보내기 버튼 클릭시 
+            $('#fileSendToEmail').on('click', '.btn-send', function(e){
+                var $this = $(this);
+                var $popup = $this.closest('#fileSendToEmail');
+                var _url = $popup.data('ajax');
+                var _fileUrl = $popup.data('fileUrl');
+                
+                if( self.emailValidate.validate().success ) {
+                    var param = {
+                        email : $popup.find('#userEmail').val(),
+                        fileUrl : _fileUrl,
+                        category: self.param.category,
+                        categoryNm: self.param.categoryNm,
+                        subCategory: self.param.subCategory,
+                        subCategoryNm: self.param.subCategoryNm,
+                        modelCode: self.param.modelCode,
+                        title: $popup.data('title'),
+                        os: $popup.data('os') || '',
+                        date: $popup.data('date') || ''
+                    };
+
+                    lgkorUI.requestAjaxDataPost(_url, param, function(result){
+                        var data = result.data;
+                        
+                        lgkorUI.alert("", {
+                            title: data.resultMessage,
+                            ok: function(el) {
+                                $(el).vcModal('hide');
+                                $('#fileSendToEmail').vcModal('hide');
+                            }
+                        });
+                    })
+                }
+            });
+
+            //이메일 주소 입력팝업 닫기버튼 클릭시 이메일주소값 초기화
+            $('#fileSendToEmail').on('modalhide', function(){
+                var $this = $(this);
+
+                self.emailValidate.reset();
+                $this.data('fileUrl', '');
+                $this.find('#userEmail').val('');
             });
         }
     }

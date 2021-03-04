@@ -110,8 +110,13 @@
         }
         .btn {
             margin-top: 32px;
-            border-color: $color-white;
+            border-color: $color-white !important;
             color: $color-white;
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $color-primary !important;
+            }
         }
         @include mobile {
             .tit {
@@ -423,8 +428,13 @@
         .btn.border {
             float: right;
             display: none;
-            border-color: $color-white;
+            border-color: $color-white !important;
             color: $color-white;
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $color-primary !important;
+            }
         }
     }
 
@@ -939,7 +949,7 @@
             }
         }
         .btn.border {
-            border-color: $color-white;
+            border-color: $color-white !important;
             color: $color-white;
         }
     }

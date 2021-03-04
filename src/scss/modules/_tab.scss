@@ -11,6 +11,8 @@
         display:inline-block;
         max-width:100%;
         position:relative;
+        margin:0 -2px;
+        padding:2px;
         font-size:0;
         vertical-align:top;
         white-space:nowrap;
@@ -87,6 +89,18 @@
 
     &.btn-type {
         text-align:center; /*2021-01-04 edit*/
+        &:before {
+            position: absolute;
+            bottom: 1px !important;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: $color-border;
+            content: '';
+            @include mobile {
+                bottom:-1px !important;
+            }
+        }
         .tabs {
             display:inline-block;
             font-size:0;
@@ -136,12 +150,15 @@
         position:relative;
         &:before {
             position: absolute;
-            bottom: 0;
+            bottom: 1px;
             right: 0;
             left: 0;
             height: 1px;
             background: $color-border;
             content: '';
+            @include mobile {
+                bottom:0;
+            }
         }
         //@include pc {
         //    &:not(.left) {
@@ -249,7 +266,7 @@
         &:before {
             content:' ';
             position:absolute;
-            bottom:0;
+            bottom:2px;
             left:0;
             z-index:1;
             width:100%;
@@ -258,8 +275,9 @@
         }
         .tabs {
             @include mobile {
-                width:100%;
-                padding:0;
+                display: block;
+                max-width: none;
+                padding: 2px;
             }
             li {
                 width:206px;

@@ -19,26 +19,49 @@
     //    opacity: .2;
     //}
     .search-tabs-wrap {
-        margin-bottom: 46px;
+        margin-bottom: 32px;
         //border-bottom: 8px solid $color-bg;
         .tabs-wrap {
             max-width: (1380px + 80px);
             margin: 0 auto;
             padding: 0 40px;
             text-align: left;
-            .tabs > li > a {
-                @include font-large-1;
+            @media screen and (min-width:(1380px + 80px)) {
+                &:before {
+                    right: 40px;
+                    left: 40px;
+                }
+            }
+            .tabs {
+                > li {
+                    margin-left: 14px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
             }
         }
         @include mobile {
+            margin-bottom: 24px;
             .tabs-wrap {
                 max-width: 100%;
                 padding:0;
             }
         }
+
+        & + .search-result-category {
+            padding: 0 40px 48px;
+            @include mobile {
+                margin-top: -8px;
+                padding: 0 0 32px;
+            }
+        }
     }
 
     .recommended-curation {
+        @include mobile {
+            margin-top: 40px;
+        }
         .inner {
             max-width: 1380 + 80px;
             margin: 0 auto;
@@ -303,7 +326,13 @@
             background-color: $color-bg;
             font-size: 0;
             @include mobile {
+                padding: 24px 16px;
                 border-radius: 0;
+            }
+            @include pc {
+                .ui_smooth_scrolltab {
+                    margin-bottom: -8px;
+                }
             }
             .btn-reset {
                 position: absolute;
@@ -352,7 +381,7 @@
             }
             .rounded-list {
                 display: inline-block;
-                margin-bottom: -8px;
+                //margin-bottom: -8px;
                 @include pc {
                     width: auto !important;
                     li {
@@ -367,7 +396,7 @@
                 }
                 @include mobile {
                     margin-bottom: 0;
-                    padding-right: 32px;
+                    padding-right: 40px;
                     white-space: nowrap;
                     li {
                         margin-bottom: 0;
@@ -382,11 +411,11 @@
 
     .search-result-category {
         max-width: (1380px + 80px);
-        margin: 0 auto;
-        padding: 80px 40px;
+        margin: 80px auto 0;
+        padding: 0 40px;
         .inner {
             position: relative;
-            padding-left: 84px;
+            //padding-left: 84px; title 있을 경우 필요함
         }
         .ui_smooth_scrolltab {
             position: relative;
@@ -457,6 +486,7 @@
             }
         }
         .title {
+            display: none;
             position: absolute;
             top: 50%;
             left: 0;
@@ -470,36 +500,36 @@
                 margin-bottom: 0;
             }
             .rounded {
-                .text {
-                    @include font-x-small;
-                }
+                padding: 5px 16px;
                 &:hover,
                 &:focus {
                     border-color: $color-primary;
+                    font-weight: 500;
                     color: $color-primary;
                 }
             }
         }
         @include mobile {
             max-width: 100%;
-            padding: 40px 0 40px 16px;
-            .inner {
-                padding-left: 76px;
-            }
+            margin-top: 40px;
+            padding: 0;
+            //.inner { title 있을 경우 필요함
+            //    padding-left: 76px;
+            //}
             .ui_smooth_scrolltab {
                 .ui_smooth_tab {
                     margin-right: 0;
                 }
             }
             .rounded-list {
-                padding-right: 16px;
+                padding: 0 16px;
             }
         }
     }
     .search-banner {
         max-width: (1380px + 80px);
         height: 120px;
-        margin: 0 auto -34px;
+        margin: 80px auto 0;
         padding: 0 40px;
         a {
             overflow: hidden;
@@ -524,8 +554,8 @@
             padding-left: 64px;
             .title {
                 display: block;
-                margin-bottom: 8px;
-                @include font($font-large,28px);
+                margin-bottom: 2px;
+                @include font-medium;
             }
             .sub-copy {
                 @include font-small;
@@ -537,7 +567,7 @@
         @include mobile {
             max-width: 100%;
             height: auto;
-            margin: 0;
+            margin: 40px 0 0;
             padding: 0 16px;
             a {
                 overflow: hidden;
@@ -554,11 +584,9 @@
                 border-radius: 0;
             }
             .text-area {
-                top: 25px;
-                left: 20px;
-                transform: translateY(0);
-                padding-left: 0;
+                padding-left: 24px;
                 .title {
+                    margin-bottom: 4px;
                     @include font($font-small,22px);
                 }
             }
@@ -569,16 +597,15 @@
     }
     .cont-wrap {
         position: relative;
-        margin-top: 68px;
+        margin-top: 80px;
         padding: 0 40px 120px;
-        @media screen and (min-width: 1024px){
+        @media screen and (min-width: 1025px){
             &.w-filter {
-                margin-top: 68px;
                 padding: 0 40px 120px 280px;
             }
         }
         @include mobile {
-            margin-top: 25px;
+            margin-top: 60px;
             padding: 0 20px 60px;
             border-top: 0;
         }
@@ -685,10 +712,7 @@
 
     .list-head {
         @include clearfix;
-        padding: 40px 0 16px;
-        @include mobile {
-            padding: 21px 0 15px;
-        }
+        padding: 0 0 16px;
         .title {
             float: left;
         }
@@ -741,7 +765,7 @@
     }
     .rounded {
         display: inline-block;
-        padding: 7px 16px;
+        padding: 6px 12px;
         border-radius: 8px;
         border: 1px solid #ddd;
         background-color: #fff;
@@ -1333,6 +1357,7 @@
 }
 
 .list-sorting {
+    display: none;
     .input-keyword-wrap {
         display: none;
     }
@@ -1393,11 +1418,12 @@
 
     }
     &.fixed {
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        height: 104px;
+        height: 120px;
         padding-bottom: 0;
         background: #fff;
         z-index: 102;
@@ -1519,3 +1545,46 @@
     }
 }
 
+.search-not-result {
+    clear: both;
+    .no-data {
+        margin-top: 80px;
+        padding: 0;
+        p {
+            padding-top: 0;
+            @include font-medium;
+            &:before {
+                display: none;
+            }
+            span {
+                display: block;
+                margin-bottom: 8px;
+                @include font($font-large-4,52px);
+                color: $color-default;
+                em {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        @include mobile {
+            padding: 0 16px 56px;
+            p {
+                padding-top: 45px;
+                font-size: 14px;
+                line-height: 22px;
+                /*&:before {
+                    width: 34px;
+                    height: 34px;
+                    margin-left: -17px;
+                    background-size: 34px;
+                }*/
+                span {
+                    margin-bottom: 14px;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}

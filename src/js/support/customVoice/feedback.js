@@ -55,7 +55,20 @@
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
-                        patternMsg: '올바른 이메일 형식이 아닙니다.'
+                        patternMsg: '올바른 이메일 형식이 아닙니다.',
+                        validate : function(value){
+                            var _pattern = new RegExp(this.pattern);
+
+                            if( _pattern.test(value) == true) {
+                                if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        }
                     },
                     title: {
                         required: true,
@@ -133,6 +146,13 @@
                                 if (result.data.resultFlag == 'Y') {
                                     result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                                     self.$form.submit();
+                                } else {
+                                    if (result.data.resultMessage) {
+                                        lgkorUI.alert('', {
+                                            title: result.data.resultMessage,
+                                            okBtnName: '확인'
+                                        });
+                                    }
                                 }
                             })
                         }

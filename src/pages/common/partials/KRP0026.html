@@ -14,16 +14,17 @@
 		-->
 		<section class="component KRP0026"
 			data-list-url="/lg5-common/data-ajax/KRP0026/KRP0026.json"
+			data-story-type="storytypetest"
 		>
 			<div class="component-inner">
 
 				<!-- tab -->
-				<div class="page-header wide border">
-					<!-- 210224 클래스명 수정 -->
+				<!-- 210224 클래스명 수정 -->
+				<div class="page-header wide">
 					<div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
-					<!-- //210224 클래스명 수정 -->
+				<!-- //210224 클래스명 수정 -->
 						<ul class="tabs">
-							<li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+							<li class="on"><a href="#">전체<em class="blind">선택됨</em></a></li>
 							<li><a href="#av">TV/AV</a></li>
 							<li><a href="#it">IT</a></li>
 							<li><a href="#kitchen">주방가전</a></li>
@@ -66,33 +67,36 @@
 				<!-- //210224 삭제 -->
 
 				<div class="story-list-wrap">
-					@@include('./common/modules/list-sorting.html', {
+					<!-- @@include('./common/modules/list-sorting.html', {
 						"select" : [
 							{"option" : "최신순", "default":'value="sort_new"'},
 		                    {"option" : "인기순", "default":'value="sort_popular"'}
 						]
-					})
+					}) -->
+					<div class="list-sorting">
+						<div class="list-count" id="totalCount">59개</div>
+					</div>
 					<div class="story-list">
 		
 						<ul class="story-box">
 						@@loop('./common/partials/KRP0026-list-module.html', [
 							{
-							"flags" : ["뉴스구분값"],
+							"flags" : ["시즌성"],
 							"hashtag" : ["건강관리", "가을"],
 							"date" : true
 							}, 
 							{
-							"flags" : ["뉴스구분값"],
+							"flags" : ["기획코너"],
 							"hashtag" : ["건강관리", "가을"],
 							"date" : true
 							},
 							{
-							"flags" : ["뉴스구분값"],
+							"flags" : ["라이프 스타일"],
 							"hashtag" : ["건강관리", "가을"],
 							"date" : true
 							}, 
 							{
-							"flags" : ["뉴스구분값"],
+							"flags" : ["트렌드"],
 							"hashtag" : ["건강관리", "가을"],
 							"date" : true
 							}

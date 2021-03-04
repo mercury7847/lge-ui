@@ -115,12 +115,14 @@
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
+                            //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if checkBtnFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
                     '<div class="cart">' +
-                        '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        //'<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if obsBtnRule != "enable"}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
+                        '<a href="#n" class="btn-cart{{#if obsBtnRule != "enable"}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" {{#if checkBtnFlag}}disable{{/if}}><span class="blind">장바구니 담기</span></a>' +
                     '</div>' +
                     '<div class="btn-area">' +
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}">자세히 보기</a>' +
@@ -202,6 +204,9 @@
                     console.log("change:",change)
                     self.filterLayer.resetFilter(filterData, change);
                 });
+
+                var ajaxUrl = self.$section.attr('data-wish-url');
+                lgkorUI.checkWishItem(ajaxUrl);
             },
 
             setting: function() {
@@ -270,12 +275,11 @@
                             param.type = "remove";
                         }
 
-                        console.log("requestWish:", param)
-                        
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         
                         var success = function(data) {
-                            $this.data("wishListId",data.wishItemId);
+                            $this.data("wishItemId",data.wishItemId);
+                            $this.prop("checked",wish);
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
@@ -423,6 +427,7 @@
 
                     if(arr.length){
                         arr.forEach(function(item, index) {
+                            item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
                             var listItem = self.makeListItem(item);
                             self.$productList.append(listItem);
                         });
@@ -435,6 +440,11 @@
                         self.setCompares();
     
                         self.setPageData(data.pagination);
+
+                        /*
+                        var ajaxUrl = self.$section.attr('data-wish-url');
+                        lgkorUI.checkWishItem(ajaxUrl);
+                        */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }
@@ -615,7 +625,7 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    if(!vcui.isEmpty(storageCompare[categoryId]))
+                    //if(!vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
                         var modelID = storageCompare[categoryId][i]['id'];
                         self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');

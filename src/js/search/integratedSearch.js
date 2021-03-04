@@ -76,7 +76,7 @@
         sendSearchPage: function(searchUrl, search, force) {
             if(searchUrl) {
                 var fi = searchUrl.indexOf('?');
-                var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+search+"&force="+force;
+                var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
                 location.href = url;
             }
         },
@@ -110,6 +110,12 @@
 
                 var searchVal = self.$inputSearch.val();
                 self.requestSearchInput(searchVal);
+            });
+
+            self.$inputSearch.keydown(function(key) {
+                if (key.keyCode == 13) {
+                    self.$buttonSearch.trigger('click');
+                }
             });
 
             //검색 타이머
@@ -159,7 +165,7 @@
             //추천태그 클릭
             self.$suggestedTagsList.off('.intergrated').on('click.intergrated', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
-                self.searchItem($(this),true);
+                self.searchTagItem($(this),true);
             });
 
             //최근검색어 클릭
@@ -180,10 +186,25 @@
             if(sendSearchPage) {
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
+                self.$searchLayer.vcModal('close');
             } else {
-                self.requestSearch(searchVal, true);
+                self.requestSearch(searchVal, false);
             }
         },
+
+        //추천 태그 검색
+        searchTagItem:function($item, sendSearchPage) {
+            var self = this;
+            var searchVal = $item.attr('href');
+            if(sendSearchPage) {
+                self.$inputSearch.val(searchVal);
+                self.$buttonSearch.trigger('click');
+                self.$searchLayer.vcModal('close');
+            } else {
+                self.requestSearch(searchVal, false);
+            }
+        },
+
 
         showAnimation:function($item) {
             $item.show();
@@ -238,6 +259,12 @@
                     self.$autoComplete.show();
                     self.hideAnimation(self.$searchKeywordArea);
                     self.$searchSimilar.hide();
+
+                    //모바일
+                    if(window.breakpoint.name == "mobile"){
+                        var searchItem = arr[0];
+                        self.requestSearch(searchItem, false);
+                    }
                 } else {
                     self.hideSearchResultArea();
                     //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기

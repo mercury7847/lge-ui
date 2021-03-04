@@ -662,8 +662,26 @@
             .forms {
                 .tit {
                     width:29.2%;
+                    .app-exec {
+                        display: none;
+                    }
                     @include mobile {
                         width:100%;
+                        .app-exec {
+                            display: none;
+                        }
+                        &.app-type {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            .app-exec {
+                                display: block;
+                                min-width: 114px;
+                                height: 34px;
+                                border-radius: 40px;
+                                padding: 0 11px;
+                            }
+                        }
                     }
                 }
                 .conts {
@@ -1149,12 +1167,19 @@
                     dt,dd {
                         display: inline-block;
                         @include font-medium;
+                        vertical-align:top;
                     }
                     dt {
                         width: 83px;
                         font-weight: 700;
                         @include mobile {
                             width: 108px;
+                        }
+                    }
+                    dd {
+                        width:calc(100% - 83px);
+                        @include mobile {
+                            width:calc(100% - 108px);
                         }
                     }
                     &.sel-category {

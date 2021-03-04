@@ -18,6 +18,8 @@
             },
             toggle : function(){
                 var self = this;
+
+                
     
                 $(document).on('click', self.el.btn, function(e){
                     var $this = $(this);
@@ -39,6 +41,18 @@
             },
             init : function(){
                 this.toggle();
+
+                // $(this.el.list).each(function(){
+                //     var $this = $(this);
+                //     var $anchor = $this.find('a');
+
+                //     $anchor.filter(function(){
+                //         var $this = $(this);
+                //         if( $this.text() == "") {
+                //             return true
+                //         }
+                //     }).remove();
+                // })
             }
         },
         moreShow : {
@@ -47,10 +61,42 @@
                 hidden : '[data-more="hidden"]',
                 btn : '[data-more="btn"]'
             },
+            btnShow : function(){
+                var self = this;
+
+                $(self.el.container).each(function(){
+                    var $this = $(this);
+                    var $item = $this.find(self.el.hidden);
+
+                    if( $item.length ) {
+                        $this.find(self.el.btn).show();
+                    } else {
+                        $this.find(self.el.btn).hide();
+                    }
+                })
+            },
             hiddenVisible : function(){
                 var self = this;
                 var $moreBtn = $(self.el.btn);
-            
+
+                $(self.el.container).each(function(){
+                    var $this = $(this);
+                    var $item = $this.find('.item');
+                    var $itemList = $this.find('.item-list');
+
+                    $item.each(function(i){
+                        if( i >= 3) {
+                            $(this).addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                        }
+                    })
+
+                    $itemList.each(function(i){
+                        if( i >= 3) {
+                            $(this).addClass('hidden').data('more', 'hidden').attr('data-more', 'hidden');
+                        }
+                    })
+                })
+
                 $moreBtn.on('click', function(e){
                     var $this = $(this);
                     var $wrap = $this.closest(self.el.container);
@@ -66,6 +112,8 @@
                     
                     e.preventDefault();
                 })
+
+                self.btnShow();
             },
             init : function(){
                 this.hiddenVisible();
@@ -448,12 +496,12 @@
                 },
                 inputVisible : function(){
                     var self = this;
-                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', false).val('');
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', false).val('');
                     self.el.container.find('.btn-reservation').removeClass('disabled');
                 },
                 inputDisable : function(){
                     var self = this;
-                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').attr('disabled', true).val('');
+                    self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', true).val('');
                     self.el.container.find('.btn-reservation').addClass('disabled');
                 },
                 init : function(){
@@ -461,7 +509,7 @@
 
                     self.validateInit();
 
-                    self.el.agreeChk.on('input', function(e){
+                    self.el.agreeChk.on('change', function(e){
                         var $this = $(this);
                         var _checked = $this.prop('checked');
 
@@ -622,7 +670,7 @@
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
                     var $toggleCont = self.el.changeCont;
     
-                    $rdo.on('input', function(e){
+                    $rdo.on('change', function(e){
                         var curValue = parseInt(this.value);
 
                         $toggleCont.removeClass('active').eq(curValue).addClass('active');
@@ -689,6 +737,7 @@
                             $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
                             $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
                             $(self.el.toggleBtn).addClass('active');
+                            supportHome.moreShow.btnShow();
                             lgkorUI.hideLoading();
                         } else {
                             lgkorUI.hideLoading();
@@ -830,7 +879,7 @@
                     }
                 });
 
-                $searchWrap.find('.btn-search', function() {
+                $searchWrap.find('.btn-search').on('click', function() {
                     location.href = url + $searchInput.val();
                 });
 

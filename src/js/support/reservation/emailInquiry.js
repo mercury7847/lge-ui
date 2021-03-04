@@ -16,102 +16,116 @@
     var validation;
 
     var reservation = {
+        options: {
+            category: '',
+            categoryNm: '',
+            subCategory: '',
+            subCategoryNm: '',
+            modelCode: '',
+            productCode: ''
+        },
         init: function() {
             var self = this;
+            var options = self.options;
+
+            options.category = $('#category').val();
+            options.categoryNm = $('#categoryNm').val();
+            options.subCategory = $('#subCategory').val();
+            options.subCategoryNm = $('#subCategoryNm').val();
+            options.modelCode = $('#modelCode').val();
+            options.productCode = $('#productCode').val();
 
             self.$cont = $('.contents');
+            self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
             self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
-            self.$myModelArea = self.$cont.find('.my-product-wrap');
+            self.$myModelWrap = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
             self.$stepTerms = self.$cont.find('#stepTerms');
             self.$stepInquiry = self.$cont.find('#stepInquiryType');
-
             self.$stepInput = self.$cont.find('#stepInput');
+            
             self.$inquiryBox = self.$cont.find('#inquiryBox');
             self.$inquiryListWrap = self.$cont.find('#inquiryList');
             self.$inquiryList = self.$inquiryListWrap.find('.rdo-list');
             self.$recordBox = self.$stepInput.find('#recordBox');
             self.$rcptNoBox = self.$stepInput.find('#rcptNoBox');
 
-            self.isDefault = self.$cont.find('#category').val() ? true : false;
+            self.isLogin = lgkorUI.isLogin;
+            self.resultUrl = self.$searchModelWrap.data('resultUrl');
+            self.param = $.extend(true, {}, options);
+            
+            var register = {
+                privcyCheck: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
+                },
+                subsection: {
+                    required: true,
+                    msgTarget: '.type-msg',
+                    errorMsg: '정확한 제품증상을 선택해주세요.'
+                },
+                cRcptNo: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '접수 번호를 입력해주세요.'
+                },
+                inquiryTitle: {
+                    required: true,
+                    maxLength: 40,
+                    msgTarget: '.err-block',
+                    errorMsg: '제목을 입력해주세요.'
+                },
+                inquiryContent: {
+                    required: true,
+                    maxLength: 1000,
+                    msgTarget: '.err-block',
+                    errorMsg: '내용을 입력해주세요.'
+                },
+                userName: {
+                    required: true,
+                    maxLength: 30,
+                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                    msgTarget: '.err-block',
+                    errorMsg: '이름을 입력해주세요.',
+                    patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
+                },
+                userEmail: {
+                    required: true,
+                    pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    minLength: 1,
+                    maxLength: 50,
+                    msgTarget: '.err-block',
+                    errorMsg: '이메일 주소를 입력해주세요.',
+                    patternMsg: '올바른 이메일 형식이 아닙니다.',
+                    validate : function(value){
+                        var _pattern = new RegExp(this.pattern);
 
-            vcui.require(['ui/validation', 'ui/formatter', 'ui/imageFileInput'], function () {
-                var register = {
-                    privcyCheck: {
-                        required: true,
-                        msgTarget: '.err-block',
-                        errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
-                    },
-                    subsection: {
-                        required: true,
-                        msgTarget: '.type-msg',
-                        errorMsg: '정확한 제품증상을 선택해주세요.'
-                    },
-                    cRcptNo: {
-                        required: true,
-                        msgTArget: '.err-block',
-                        errorMsg: '접수 번호를 입력해주세요.'
-                    },
-                    inquiryTitle: {
-                        required: true,
-                        maxLength: 40,
-                        msgTarget: '.err-block',
-                        errorMsg: '제목을 입력해주세요.'
-                    },
-                    inquiryContent: {
-                        required: true,
-                        maxLength: 1000,
-                        msgTarget: '.err-block',
-                        errorMsg: '내용을 입력해주세요.'
-                    },
-                    userName: {
-                        required: true,
-                        maxLength: 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
-                    },
-                    userEmail: {
-                        required: true,
-                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        minLength: 1,
-                        maxLength: 50,
-                        msgTarget: '.err-block',
-                        errorMsg: '이메일 주소를 입력해주세요.',
-                        patternMsg: '올바른 이메일 형식이 아닙니다.'
-                    },
+                        if( _pattern.test(value) == true) {
+                            if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    }
                 }
+            }
 
+            vcui.require(['ui/validation', 'ui/imageFileInput'], function () {
                 self.bindEvent();
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
+                self.$cont.find('.ui_imageinput').vcImageFileInput();
                 self.$cont.commonModel({
                     register: register,
-                    selected: {
-                        category: self.$cont.find('#category').val(),
-                        categoryName: self.$cont.find('#categoryNm').val(),
-                        subCategory: self.$cont.find('#subCategory').val(),
-                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                        modelCode: self.$cont.find('#modelCode').val(),
-                        productCode: self.$cont.find('#productCode').val()
-                    }
+                    selected: options
                 });
-
-                self.$cont.find('.ui_imageinput').vcImageFileInput();
             });
-        },
-        selectModel: function(data, url) {
-            var self = this;
-
-            if (url) {
-                self.loadInquiry(data, url);
-            } else {
-                self.$inquiryBox.hide();
-                self.nextStepInput(data);
-            }
         },
         loadInquiry: function(data, url) {
             var self = this;
@@ -145,11 +159,11 @@
         nextStepInput: function(data) {
             var self = this;
             var summaryOpt = {
-                product: [data.categoryName, data.subCategoryName, data.modelCode],
+                product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                 reset: 'type'
             };
 
-            self.$myModelArea.hide();
+            self.$myModelWrap.hide();
             self.$selectedModelBar.show();
             self.$completeBtns.show();
 
@@ -171,9 +185,17 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxFileData(url, formData, function(result) {
-                var data = result.data;
+                var data = result.data,
+                    param = result.param;
 
                 if (data.resultFlag == 'Y') {
+                    for (var key in param) {
+                        var $hidden = document.createElement("input");
+                        $hidden.type = "hidden";
+                        $hidden.name = key;
+                        $hidden.value = param[key];
+                        self.$submitForm.append($hidden);
+                    }
                     self.$submitForm.submit();
                 } else {
                     if (data.resultMessage) {
@@ -191,24 +213,42 @@
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
             self.$completeBtns.hide();
+            self.$selectedModelBar.hide();
+            self.$myModelWrap.hide();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);
             self.$stepInput.find('#cRcptNo').val('');
             self.$stepInput.find('#inquiryTitle').val('');
             self.$stepInput.find('#inquiryContent').val('');
-            self.$stepInput.find('#userName').val('');
-            self.$stepInput.find('#userEmail').val('');
 
+            if (!self.isLogin) {
+                self.$stepInput.find('#userName').val('');
+                self.$stepInput.find('#userEmail').val('');
+            }
+
+            validation.reset();
+
+            self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
             self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
             self.$cont.commonModel('next', self.$stepInquiry);
+            self.$cont.commonModel('focus', self.$cont);
         },
         bindEvent: function() {
             var self = this;
 
             // 모델 선택 & 문의 재선택
             self.$cont.on('complete', function(e, data, url) {
-                self.selectModel(data, url);
+                if (!data.categoryNm) {
+                    data.categoryNm = data.categoryName;
+                    data.subCategoryNm = data.subCategoryName;
+                }
+                if (url) {
+                    self.loadInquiry(data, url);
+                } else {
+                    self.$inquiryBox.hide();
+                    self.nextStepInput(data);
+                }
             }).on('reset', function() {
                 self.reset();
             });

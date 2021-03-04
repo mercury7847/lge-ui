@@ -20,7 +20,7 @@
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '</div>' +
             '<div class="info-wrap">' +
-                '<p class="name"><span class="blind">모델명</span>{{modelName}}</p>' +
+                '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +
                     '{{#if saleDate}}<li><dl><dt>구매일자</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
@@ -123,7 +123,7 @@
     var checkModelSuccess = false;
     var checkSerialSuccess = false;
 
-    var myProductRegistration = {         
+    var myProductRegistration = {
         init: function() {
             var self = this;
             vcui.require(['ui/validation', 'ui/pagination'], function () {             
@@ -134,7 +134,7 @@
                 var buyplace = lgkorUI.getHiddenInputData().buyplace;
                 var placeArr = buyplace.split(',');
                 if(placeArr.length > 0) {
-                    var $select = self.$registMyProductPopup.find('#slt02');
+                    var $select = self.$registMyProductMainPage.find('#slt02');
                     $select.empty();
                     $select.append('<option value="" class="placeholder">구매 장소 유형 선택</option>');
                     placeArr.forEach(function(item,index){
@@ -148,7 +148,9 @@
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
                 if(self.modelCode) {
-                    self.registMyProductPopupClear();                    
+                    self.registMyProductPopupClear();
+                    self.$registMyProductMainPage.show();
+                    self.$modelCheckHelpPage.hide();               
                     self.$registMyProductPopup.vcModal();
                 }
             });
@@ -160,7 +162,7 @@
             //등록가능제품
             self.$registProductList = self.$contents.find('div.my-product-lists:eq(0)');
             self.$registProductMoreBtn = self.$registProductList.find('button.btn-moreview');
-            self.$registProductNoData = self.$registProductList.find('div.no-data');
+            //self.$registProductNoData = self.$registProductList.find('div.no-data');
             self.$productRegistSelf = self.$registProductList.find('div.btm-box button');
 
             //보유제품목록
@@ -169,8 +171,12 @@
 
             //보유제품 등록 팝업
             self.$registMyProductPopup = $('#registMyProductPopup');
-            var $inputs = self.$registMyProductPopup.find('dl.forms div.box div.input-wrap input');
-            var $buttons = self.$registMyProductPopup.find('dl.forms div.box div.cell button');
+            //보유제품 등록 페이지
+            self.$registMyProductMainPage = self.$registMyProductPopup.find('div.page-change:eq(0)');
+            self.$modelCheckHelpPage = self.$registMyProductPopup.find('div.page-change:eq(1)');
+
+            var $inputs = self.$registMyProductMainPage.find('dl.forms div.box div.input-wrap input');
+            var $buttons = self.$registMyProductMainPage.find('dl.forms div.box div.cell button');
             //모델번호
             self.$modelInput = $inputs.eq(0);
             self.$modelCheckOk = self.$modelInput.siblings('p.comp');
@@ -202,13 +208,30 @@
 
             //다운로드 팝업
             self.$downloadPopup = $('#downloadPopup');
-            self.$downloadSearch = self.$downloadPopup.find('#driverKeyword');
-            self.$selectOS = self.$downloadPopup.find('.ui_selectbox');
-            self.$downloadPopupPagination = self.$downloadPopup.find('.pagination').vcPagination();
+            //다운로드 페이지
+            self.$downloadMainPage = self.$downloadPopup.find('div.page-change:eq(0)');
+            self.$downloadDetailPage = self.$downloadPopup.find('div.page-change:eq(1)');
+            self.$downloadSearch = self.$downloadMainPage.find('#driverKeyword');
+            self.$selectOS = self.$downloadMainPage.find('.ui_selectbox');
+            self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination();
 
             //모델병 확인방법 팝업
-            self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
-            self.modelCheckHelpPopupClone = self.$modelCheckHelpPopup.html();
+            //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
+
+            //nodata
+            var hiddenData = lgkorUI.getHiddenInputData();
+            var membership = lgkorUI.stringToBool(hiddenData.membership);
+            var marketing = lgkorUI.stringToBool(hiddenData.marketing);
+            if(membership) {
+                if(marketing) {
+                    self.$registProductNoData = self.$contents.find('div.no-data');
+                } else {
+                    self.$registProductNoData = self.$contents.find('div.no-data-case:eq(1)');
+                }
+            } else {
+                self.$registProductNoData = self.$contents.find('div.no-data-case:eq(0)');
+            }
+
         },
 
         bindEvents: function() {
@@ -253,7 +276,9 @@
             
             //보유제품 직접 등록
             self.$registProductList.on('click','div.btm-box button' ,function(e) {
-                self.registMyProductPopupClear();                    
+                self.registMyProductPopupClear();    
+                self.$registMyProductMainPage.show();
+                self.$modelCheckHelpPage.hide();                
                 self.$registMyProductPopup.vcModal();
             });
 
@@ -292,13 +317,13 @@
             });
 
             //모델명 확인 방법 팝업 열기
-            self.$registMyProductPopup.on('click','p.link a', function(e) {
+            self.$registMyProductMainPage.on('click','p.link a', function(e) {
                 e.preventDefault();
                 if(!self.modelData) {
-                    var ajaxUrl = self.$modelCheckHelpPopup.attr('data-list-url');
+                    var ajaxUrl = self.$registMyProductPopup.attr('data-list-url');
                     lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                         var optionTemplate = '<option value="{{value}}">{{value}}</option>';
-                        var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(0)');
+                        var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)');
                         var data = result.data;
                         self.modelData = data;
                         selectbox.find('option:not(:eq(0))').remove();
@@ -308,12 +333,16 @@
                             selectbox.append(vcui.template(optionTemplate, {"value":item.categoryName}));
                         });
                         selectbox.vcSelectbox('update');
-                        self.$modelCheckHelpPopup.vcModal();
+
+                        self.$registMyProductMainPage.hide();
+                        self.$modelCheckHelpPage.show();
                     });
                 } else {
-                    var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(0)');
+                    var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)');
                     selectbox.vcSelectbox('selectedIndex', 0, true);
-                    self.$modelCheckHelpPopup.vcModal();
+
+                    self.$registMyProductMainPage.hide();
+                    self.$modelCheckHelpPage.show();
                 }
             });
 
@@ -341,6 +370,9 @@
             self.$modelInput.on('input', function(e){
                 checkModelSuccess = false;
                 self.$modelCheckOk.hide();
+                if(e.target.value.length > 20){
+                    e.target.value = e.target.value.slice(0, 20);
+                }
             })
 
             self.$modelCheckButton.on('click', function(e){
@@ -360,19 +392,24 @@
 
             self.$snInput.on('input', function(e){
                 checkSerialSuccess = false;
+                if(e.target.value.length > 14){
+                    e.target.value = e.target.value.slice(0, 14);
+                }
             })
 
             //제조번호 확인
             self.$snCheckButton.on('click', function(e){
-                var serialRegex = /^\d{3}[A-Z]{4}[\d\A-Z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
+                var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());
-                if(!checkSerialSuccess) {
+                if(checkSerialSuccess) {
+                    lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
             });
 
             //보유제품 등록
-            self.$registMyProductPopup.on('click','footer div.btn-group button' ,function(e){
+            self.$registMyProductMainPage.on('click','footer div.btn-group button' ,function(e){
                 var $button = $(this);
                 if($button.index() == 0) {
                     //취소
@@ -387,6 +424,7 @@
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
                                 self.requestOwnData();
+                                $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                             });
                         }
                     } else {
@@ -452,14 +490,29 @@
                 }
             });
             */
-
+           
             //다운로드 파일 상세 보기
             self.$downloadPopup.on('click','button.btn-info', function(e){
+                var $li = $(this).parents('li');
+                var downloadUrl = $li.find('a.btn-download').attr('href');
+                self.$downloadPopup.data('downloadUrl',downloadUrl);
                 var url = $(this).data('href');
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
-                        $('#detail-file-modal').html(result).vcModal();
+                        $('#detail-file-modal').html(result);
+                        var $result = $('#detail-file-modal').find('section:eq(0)');
+                        self.$downloadDetailPage.find('section:eq(0)').html($result.html());
+                        self.$downloadMainPage.hide();
+                        self.$downloadDetailPage.show();
                     }, null, "html");
+                }
+            });
+
+            //다운로드 상세 파일 다운로드 버튼
+            self.$downloadPopup.on('click','div.page-change:eq(1) div.file-wrap button', function(e){
+                var downloadUrl = self.$downloadPopup.data('downloadUrl');
+                if(downloadUrl) {
+                    window.location = downloadUrl;
                 }
             });
 
@@ -503,11 +556,16 @@
             });
             */
 
+            self.$downloadDetailPage.on('click','footer button', function(e){
+                self.$downloadDetailPage.hide();
+                self.$downloadMainPage.show();
+            });
+
             //메뉴얼 확인 방법 팝업
             //카테고리 선택
-            self.$modelCheckHelpPopup.on('change', '.ui_selectbox:eq(0)', function(e,data){
+            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(0)', function(e,data){
                 var index = data.selectedIndex;
-                var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(1)');
+                var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(1)');
                 if(index == 0) {
                     selectbox.prop('disabled', true);
                 } else {
@@ -531,12 +589,18 @@
             });
 
             //모델 선택
-            self.$modelCheckHelpPopup.on('change', '.ui_selectbox:eq(1)', function(e,data){
+            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(1)', function(e,data){
                 var index = data.selectedIndex;
-                var selectbox = self.$modelCheckHelpPopup.find('.ui_selectbox:eq(1)');
+                var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(1)');
                 var option = selectbox.find('option').eq(index);
-                self.$modelCheckHelpPopup.find('div.example-result p.txt').text(option.attr('data-text'));
-                self.$modelCheckHelpPopup.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')});
+                self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
+                self.$modelCheckHelpPage.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')});
+            });
+
+            //보유제품 직접 등록 팝업 뒤로가기
+            self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
+                self.$registMyProductMainPage.show();
+                self.$modelCheckHelpPage.hide();
             });
         },
 
@@ -567,6 +631,7 @@
                 self.setPageData(param.pagination);
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$registProductList.find('>ul');
+                $list.empty();
                 arr.forEach(function(item, index) {
                     item.date = vcui.date.format(item.date,'yyyy.MM');
                     $list.append(vcui.template(productListItemTemplate, item));
@@ -627,12 +692,12 @@
 
             self.$modelCheckOk.hide();
             
-            self.$registMyProductPopup.find('input').val("");
+            self.$registMyProductMainPage.find('input').val("");
             if(self.modelCode) {
-                self.$registMyProductPopup.find('input[name=sku]').val(self.modelCode);
+                self.$registMyProductMainPage.find('input[name=sku]').val(self.modelCode);
             }
-            self.$registMyProductPopup.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
-            self.$registMyProductPopup.find('.err-block').hide();
+            self.$registMyProductMainPage.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
+            self.$registMyProductMainPage.find('.err-block').hide();
         },
 
         requestManualData: function(_id, page, isMore) {
@@ -690,9 +755,12 @@
                 var param = result.param;
 
                 self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
-                self.$downloadPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
+                self.$downloadMainPage.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
-                if(selectOSUpdate) {
+                //if(selectOSUpdate) {
+                    var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
+                    var selectedIndex = 0;
+
                     self.$selectOS.empty();
                     var arr = data.osOption instanceof Array ? data.osOption : [];
                     if(arr.length < 2) {
@@ -700,16 +768,25 @@
                         //self.$selectOS.append('<option value="">없음</option>');
                     } else {
                         self.$selectOS.prop('disabled', false);
+                    }
                         //self.$selectOS.append('<option value="">전체</option>');
                         arr.forEach(function(item, index){
+                            if(selectedOSValue == item.code) {
+                                selectedIndex = index;
+                            }
                             self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
                         });
-                    }
+//                    }
                     self.$selectOS.vcSelectbox('update');
-                }
+                    if(selectOSUpdate) {
+                        self.$selectOS.vcSelectbox('selectedIndex',0,false);
+                    } else {
+                        self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
+                    }
+                //}
 
                 arr = data.listData instanceof Array ? data.listData : [];
-                var $list = self.$downloadPopup.find('div.download-list-wrap>ul');
+                var $list = self.$downloadMainPage.find('div.download-list-wrap>ul');
                 $list.empty();
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
@@ -724,18 +801,20 @@
                         */
                         $list.append(vcui.template(downloadListItemTemplate, item));
                     });
-                    self.$downloadPopup.find('.no-data').hide();
-                    self.$downloadPopup.find('div.desc-wrap p.desc').show();
+                    self.$downloadMainPage.find('.no-data').hide();
+                    self.$downloadMainPage.find('div.desc-wrap p.desc').show();
                     self.$downloadPopupPagination.show();
 
                     $list.find('.ui_dropdown').vcDropdown();
                 } else {
-                    self.$downloadPopup.find('.no-data').show();
-                    self.$downloadPopup.find('div.desc-wrap p.desc').hide();
+                    self.$downloadMainPage.find('.no-data').show();
+                    self.$downloadMainPage.find('div.desc-wrap p.desc').hide();
                     self.$downloadPopupPagination.hide();
                 }
 
                 if(openDownloadPopup) {
+                    self.$downloadDetailPage.hide();
+                    self.$downloadMainPage.show();
                     self.$downloadPopup.vcModal();
                 }
             });
