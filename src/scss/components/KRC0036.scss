@@ -38,6 +38,13 @@
                 bottom:0;
             }
         }
+        @include mobile {
+            .background-area {
+                img {
+                    width: 100%;
+                }
+            }
+        }
 
         // title area
         .title-wrap {

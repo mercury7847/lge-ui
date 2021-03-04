@@ -15,3 +15,14 @@
 
 // 나중에 삭제
 // @import "faq";
+
+
+/* 부트스트랩 충돌 추가 */
+label {
+  margin-bottom: 0;
+}
+.container {
+  max-width: 100%;
+  padding: 0;
+}
+/* //부트스트랩 충돌 추가 */

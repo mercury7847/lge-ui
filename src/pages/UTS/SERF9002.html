@@ -14,6 +14,7 @@
                 data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
                 data-search-url="/lg5-common/data-ajax/search/searchInput.json"
                 data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
+                data-log-url="/search/searchrecord.lgajax"
             >
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
@@ -39,7 +40,7 @@
                 </div>
                 <!-- 210218 수정 [추천 큐레이션, 스마트 필터 추가, 바로가기 영역 수정] -->
                 <!-- 추천 큐레이션 -->
-                <div class="recommended-curation">
+                <div class="recommended-curation" style="display: none;">
                     <div class="inner">
                         <h2 class="title">추천 큐레이션</h2>
                         <div class="ui_smooth_scrolltab">
@@ -61,7 +62,7 @@
                 </div>
                 <!-- 추천 큐레이션 -->
                 <!-- 스마트 필터 -->
-                <div class="smart-filter">
+                <div class="smart-filter" style="display: none;" >
                     <div class="inner">
                         <h2 class="title">스마트 필터</h2>
                         <div class="filter-list">

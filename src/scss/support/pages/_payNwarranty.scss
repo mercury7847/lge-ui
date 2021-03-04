@@ -43,42 +43,22 @@
     .section-area {
         position: relative;
         .section {
-            padding:0 16px;
+            padding:0;
             @include mobile {
+                padding:0 16px;
                 border-radius:0;
             }
             & + .section {
                 margin-top:80px;
                 @include mobile {
+                    border-top:0;
                     margin-top:12px;
-                }
-            }
-        }
-        @include mobile {
-            .section {
-                &:last-of-type {
-                    padding-bottom: 108px;
                 }
             }
         }
     }
     .dl-list {
-        line-height: 1.38;
-        > dd {
-            // > p {
-            //     margin-top: 14px;
-            //     &:first-child {
-            //         margin-top: 0;
-            //     }
-            // }
-        }
-        @include mobile {
-            > dd {
-                > p {
-                    // margin-top: 16px;
-                }
-            }   
-        }
+        
     }
     .paragraph {
         &-1 {
@@ -131,7 +111,7 @@
             font-size: 20px;
             font-weight: bold;
             line-height: 1.42;
-            // margin-bottom: 12px;
+            margin-bottom: 16px;
             @include mobile {
                 margin-bottom: 12px;
             }
@@ -144,8 +124,8 @@
         }
         &[class*="-subtitle"] {
             font-size: 16px;
-            margin-top: 16px;
             margin-bottom: 30px;
+            line-height:1.63;
             @include mobile {
                 margin-top: 12px;
                 margin-bottom: 24px;
@@ -155,15 +135,24 @@
 
     .dl-list {
         margin-top: 30px;
+        line-height: 1.38;
+        
+        .dscl {
+            padding:28px 0;
+            font-size:14px;
+            color:#666;
+        }
+      
         dt {
             font-size: 18px;
             font-weight: bold;
             line-height: 1.44;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
         dd {
             font-size: 16px;
             margin-bottom: 24px;
+            line-height:1.63;
             &:last-child {
                 margin-bottom: 0;
             }
@@ -207,9 +196,9 @@
                 }
             }
             > ul {
-                margin-top: 10px;
+                margin-top: 5px;
                  li {
-                    margin-top: 12px;
+                    margin-top: 5px;
                 }
             }
             > .bullet-list {
@@ -299,6 +288,12 @@
         }
     }
 
+    .tb-col {
+        th {
+            vertical-align: middle;
+        }
+    }
+
     .note-box {
         background-color: #f4f4f4;
         padding: 24px 40px;
@@ -313,5 +308,19 @@
     }
     sup {
         font-size: 0.625em;
+    }
+}
+
+#ratesWarrantyGuidePopup {
+    .img_box {
+        &.pc-only {
+            display: none;
+        }
+        &.mo-only {
+            display: block;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }

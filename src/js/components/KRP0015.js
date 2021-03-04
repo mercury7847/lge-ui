@@ -10,7 +10,7 @@ $(window).ready(function(){
             '       <p class="blind">{{productAlt}}</p>'+
             '   </span>'+
             '   <div class="item-text">'+
-            '       <p class="product-name">{{productName}}</p>'+
+            '       <p class="product-name">{{#raw productName}}</p>'+
             '       <p class="modal-name">{{productID}}</p>'+
             '   </div>'+
             '</div>'+

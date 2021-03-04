@@ -47,6 +47,20 @@
                 a {
                     display: block;
                 }
+
+                .pc-img {
+                    display: block;
+                    @include mobile {
+                        display: none;
+                    }
+                }
+                .mo-img {
+                    display: none;
+
+                    @include mobile {
+                        display: block;
+                    }
+                }
                 img {
                     width:100%;
                 }
@@ -156,7 +170,7 @@
                 }
 
                 .pop-conts {
-                    height:318px;
+                    height:332px;
                     &.mCustomScrollbar {
                         padding:0;
     
@@ -175,9 +189,9 @@
                 }
              
                 .pop-footer {
-                    padding:26px 40px 40px;
+                    padding:20px 16px;
                     .btn-close {
-                        min-width: 115px;
+                        min-width:100px;
                         padding: 15px 0;
                         font-size: 16px;
                         line-height: 24px;
@@ -195,6 +209,7 @@
             .popup-wrap {
 
                 .pop-conts {
+                    height:348px;
                     padding:40px 16px 10px;
                     &.mCustomScrollbar {
                         padding:0;
@@ -228,7 +243,7 @@
                 }
              
                 .pop-footer {
-                    padding:26px 16px 40px;
+                    
                     input + label {
                         font-size:14px;
                     }
@@ -239,7 +254,7 @@
 }
 
 .support-home {
-    padding-bottom:120px;
+    padding-bottom:100px;
     .btn {
         &.light-gray {
             background: #aaa;
@@ -287,6 +302,10 @@
                 background-image: url("/lg5-common/images/icons/btn-minus.svg");
             }
         }
+    }   
+
+    .common-banner {
+        margin-top:100px;
     }
 
 
@@ -371,7 +390,7 @@
     .home-section {
         max-width:1920px;
         margin:0 auto;
-        margin-top:120px;
+        margin-top:100px;
 
         img {
             width:100%;
@@ -1415,7 +1434,7 @@
 
         .hero-container {
             position: relative;
-            height:640px;
+            height:620px;
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
@@ -1430,25 +1449,14 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top/auto 100%;
+                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top;
+                background-size: cover;
             }
         }
 
         &.member-type {
             .hero-container {
                 height:700px;
-                // padding:48px 80px;
-            }
-        }
-
-        @include pc-size-l {
-            .hero-container {
-                height:535px;
-            }
-            &.member-type {
-                .hero-container {
-                    height:700px;
-                }
             }
         }
 
@@ -1704,6 +1712,15 @@
                     padding:18px 97px 20px 20px;
                 }
             }
+            .autocomplete-box {
+                .keyword-list {
+                    a {
+                        .category {
+                            display:none;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -1806,17 +1823,20 @@
 
     //자주 찾는 컨텐츠
     .popular-find {
+        margin-top:70px;
         .headline {
             position: relative;
             .title {
                 display: inline-block;
                 font-size:32px;
                 line-height:1.63;
+                vertical-align: middle;
                 color:#000;
             }
             .list-filter {
                 display: inline-block;
                 margin-left:16px;
+                vertical-align: middle;
 
                 span {
                     display: inline-block;
@@ -1981,6 +2001,7 @@
         }
 
         @include tablet {
+            margin-top:50px;
             .popular-list-wrap {
                 margin-left:0;
                 margin-right:0;
@@ -2573,7 +2594,7 @@
                 top:0;
                 left:0;
                 width:100%;
-                padding:28px 32px;
+                padding:35px 32px;
                 box-sizing:border-box;
 
                 font-size:24px;
@@ -2597,7 +2618,7 @@
         @include pc-size-m {
             .item {
                 &-cont {
-                    padding:24px 20px;
+                    padding:30px 20px;
                     font-size:20px;
                 }
             }

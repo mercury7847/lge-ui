@@ -61,9 +61,18 @@
                 <div class="anchors-tabs-wrap ui_anchor_sticky">   
                     <!-- 2021.02.26 anchor-sticky 추가 -->
                     <div class="anchor-sticky">
-                        <div class="tabs-wrap border-type left ui_smooth_scroll">
+                        <div class="tabs-wrap border-type left swiper-container">
+                            <div class="tabs swiper-wrapper">
+                                <div class="swiper-slide on"><a href="#manualSection">제품사용설명서 (6)<em class="blind">선택됨</em></a></div>
+                                <div class="swiper-slide"><a href="#driverSection">드라이버/SW (91)</a></div>
+                                <div class="swiper-slide"><a href="#solutionsSection">제품 문제 해결 (5)</a></div>
+                                <div class="swiper-slide"><a href="#recommProduct">소모품 (6)</a></div>
+                                <div class="swiper-slide"><a href="#serviceMenu">제품 서비스 (1)</a></div>
+                            </div>
+                        </div>
+                        <!-- 건수 0일 경우 탭 비노출 -->
+                        <!-- <div class="tabs-wrap border-type left">
                             <ul class="tabs">
-                                <!-- 건수 0일 경우 탭 비노출 -->
                                 <li class="on">
                                     <a href="#manualSection">제품사용설명서 (6)<em class="blind">선택됨</em></a>
                                 </li>
@@ -80,7 +89,7 @@
                                     <a href="#serviceMenu">제품 서비스 (1)</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- //2021.02.26 anchor-sticky 추가 -->
                 </div>
@@ -492,6 +501,7 @@
     })
     
     <!-- support script -->
+    <script src="/lg5-common/js/support/common/swiper.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/productSupport/downloadResources.min.js"></script>
     <script src="/lg5-common/js/support/productSupport/solutions.min.js"></script>

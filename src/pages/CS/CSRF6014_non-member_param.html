@@ -26,8 +26,8 @@
                 @@include('./common/support/selected-model-bar.html', {
                     "model": {
                         "category": "모바일",
-                        "subCategory": "일반폰",
-                        "model": "LGP810SPEAKERSTATION"
+                        "subCategory": "스마트폰",
+                        "model": "LMQ520N"
                     }
                 })
                 <!-- 비회원 -->
@@ -38,15 +38,15 @@
                 <div class="cont-wrap">
                     <form action="/html/CS/CSRF6015.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/emailinquiry-complete.json" novalidate>
                         <div class="step-area">
+                            <input type="hidden" name="category" id="category" value="CT50019096">
                             <input type="hidden" name="categoryNm" id="categoryNm" value="모바일">
-                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="일반폰">
-                            <input type="hidden" name="category" id="category" value="1018">
-                            <input type="hidden" name="subCategory" id="subCategory" value="C000135">
-                            <input type="hidden" name="modelCode" id="modelCode" value="LGP810SPEAKERSTATION">
-                            <input type="hidden" name="productCode" id="productCode" value="CRA">
+                            <input type="hidden" name="subCategory" id="subCategory" value="CT50019117">
+                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="스마트폰">
+                            <input type="hidden" name="modelCode" id="modelCode" value="LMQ520N">
+                            <input type="hidden" name="productCode" id="productCode" value="HSD">
                             <input type="hidden" name="serviceType" id="serviceType" value="C">
-                            <input type="hidden" name="acptNo" id="acptNo" value="">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
+                            <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
@@ -156,7 +156,7 @@
 
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput">
-                                <div class="form-infos  first-type">
+                                <div class="form-infos first-type">
                                     <p class="req" aria-disabled="true">필수 입력 항목</p>
                                 </div>
                                 <div class="section" id="inquiryBox">
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="section-box">
                                         <div class="form-wrap">
-                                            <div class="forms" id="recordBox" style="display: none">
+                                            <div class="forms type4" id="recordBox" style="display: none">
                                                 <div class="tit">
                                                     <label for="record01">상담/서비스 이력</label>
                                                 </div>

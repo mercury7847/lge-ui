@@ -273,12 +273,11 @@
                             param.type = "remove";
                         }
 
-                        console.log("requestWish:", param)
-                        
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         
                         var success = function(data) {
-                            $this.data("wishListId",data.wishItemId);
+                            $this.data("wishItemId",data.wishItemId);
+                            $this.prop("checked",wish);
                         };
                         var fail = function(data) {
                             $this.prop("checked",!wish);
@@ -439,8 +438,10 @@
     
                         self.setPageData(data.pagination);
 
+                        /*
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         lgkorUI.checkWishItem(ajaxUrl);
+                        */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }

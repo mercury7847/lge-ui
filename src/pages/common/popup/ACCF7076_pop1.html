@@ -20,28 +20,27 @@
 							<div class="state-step-wrap">
 								<ul class="state-step">
 									<li>접수</li>
-									<li>처리중</li>
+									<!-- <li>처리중</li> 210303 수정 [삭제] -->
 									<li>답변중</li>
 									<li>답변완료</li>
 								</ul>
 								<span class="txt">순으로 진행됩니다.</span>
 							</div>
-							<div class="step-box step4">
+							<div class="step-box step3"><!-- 210303 수정 [step4 -> step3 클래스 변경] -->
 								<div class="step-inner">
-									<div class="bar bar3"></div>
+									<div class="bar bar1"></div>
 									<!--
 										현재 단계에 따라 클래스 변경
 										접수 : bar
-										처리중 : bar bar1
-										답변중 : bar bar2
-										답변완료 : bar3
+										답변중 : bar bar1
+										답변완료 : bar bar2
 									-->
 								</div>
 								<ul class="step-txt">
 									<li class="comp"><span class="txt">접수</span></li>
-									<li class="comp"><span class="txt">처리중</span></li>
-									<li class="comp"><span class="txt">답변중</span></li> <!-- 처리된 이전 상태에 comp 클래스 추가 -->
-									<li class="comp on"><span class="blind">현재 단계</span><span class="txt">답변완료</span></li> <!-- 해당 영역 위치 시 on 클래스 추가 -->
+									<!-- <li class="comp"><span class="txt">처리중</span></li> 210303 수정 [삭제] -->
+									<li class="comp on"><span class="txt">답변중</span></li> <!-- 처리된 이전 상태에 comp 클래스 추가 -->
+									<li class=""><span class="blind">현재 단계</span><span class="txt">답변완료</span></li> <!-- 해당 영역 위치 시 on 클래스 추가 -->
 								</ul>
 							</div>
 						</div>

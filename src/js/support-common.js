@@ -902,17 +902,15 @@ CS.MD.commonModel = function() {
                 var $this = $(this),
                     $subCategory = self.$modelBox.find('#subCategorySelect');
                 
-                if (!$this.val()) {
-                    self.param = $.extend(self.param, {
-                        category: $this.val(),
-                        categoryNm: $this.find('option:selected').text(),
-                        subCategory: $subCategory.val(),
-                        subCategoryNm: $subCategory.find('option:selected').text(),
-                        page: 1
-                    });
-    
-                    self._requestData();
-                }
+                self.param = $.extend(self.param, {
+                    category: $this.val(),
+                    categoryNm: $this.find('option:selected').text(),
+                    subCategory: $subCategory.val(),
+                    subCategoryNm: $subCategory.find('option:selected').text(),
+                    page: 1
+                });
+
+                self._requestData();
             });
 
             // 모델명 선택 - 서브 카테고리 선택
@@ -1061,6 +1059,8 @@ CS.MD.commonModel = function() {
                     self.$el.find('#productCode').val(data.productCode);
                     self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
+
+                    if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
                 }
             });
 
@@ -2330,6 +2330,10 @@ $.fn.serializeObject = function() {
             }
         });
 
+        ///퀵메뉴 쿠키 생성
+        if( lgkorUI.cookie.getCookie('accessPageFirst') != "done") {
+            lgkorUI.cookie.setCookie("accessPageFirst", "done");
+        }
         $('#quickMenu').quickMenu();
 
         if( $('#surveyPopup').length) {
@@ -2343,9 +2347,11 @@ $.fn.serializeObject = function() {
                 this.value = this.value.slice(0, this.maxLength);
             }  
         });
-        $(document).on('mousewheel', 'input[type="number"]', function(e){
-            e.preventDefault();
-            e.stopPropagation();
+
+        $(document).on('focus', 'input[type="number"]', function(e){
+            $(this).on('mousewheel',function(e){
+                e.preventDefault();
+            });
         });
 
         $(document).on('change', '.agree-wrap input:checkbox', function(){
@@ -2377,7 +2383,11 @@ $.fn.serializeObject = function() {
             }
         })
         
-        
+        $(document).on('ajaxComplete', function() {
+            $('img').not('[data-pc-src]').on('error', function() {
+                lgkorUI.addImgErrorEvent(this);
+            });
+        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

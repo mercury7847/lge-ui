@@ -22,7 +22,9 @@
                     "스펙2"
                 ],
                 "originalPrice":"5000000",
-                "price":"1500000"
+                "price":"1500000",
+                "pdpUrl": "#a",
+                "obsBtnFlag":"enable"
             },
             {
                 "id":"pid00002",
@@ -43,7 +45,9 @@
                     "스펙2"
                 ],
                 "originalPrice":"5000000",
-                "price":"1500000"
+                "price":"1500000",
+                "pdpUrl": "#a",
+                "obsBtnFlag":"enable"
             },
             {
                 "id":"pid00002",
@@ -64,7 +68,9 @@
                     "스펙2"
                 ],
                 "originalPrice":"5000000",
-                "price":"1500000"
+                "price":"1500000",
+                "pdpUrl": "#a",
+                "obsBtnFlag":"disable"
             },
             {
                 "id":"pid00003",
@@ -85,7 +91,9 @@
                     "스펙2"
                 ],
                 "originalPrice":null,
-                "price":"1200000"
+                "price":"1200000",
+                "pdpUrl": "#a",
+                "obsBtnFlag":"disable"
             },
             {
                 "id":"pid00004",
@@ -106,7 +114,9 @@
                     "스펙2"
                 ],
                 "originalPrice":null,
-                "price":null
+                "price":null,
+                "pdpUrl": "#A",
+                "obsBtnFlag":"disable"
             }
         ]
     }

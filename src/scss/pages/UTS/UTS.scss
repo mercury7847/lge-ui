@@ -42,6 +42,7 @@
             }
         }
         @include mobile {
+            margin-bottom: 24px;
             .tabs-wrap {
                 max-width: 100%;
                 padding:0;
@@ -410,8 +411,8 @@
 
     .search-result-category {
         max-width: (1380px + 80px);
-        margin: 0 auto;
-        padding: 80px 40px;
+        margin: 80px auto 0;
+        padding: 0 40px;
         .inner {
             position: relative;
             //padding-left: 84px; title 있을 경우 필요함
@@ -510,8 +511,8 @@
         }
         @include mobile {
             max-width: 100%;
-            margin-top: 0;
-            padding: 40px 0;
+            margin-top: 40px;
+            padding: 0;
             //.inner { title 있을 경우 필요함
             //    padding-left: 76px;
             //}
@@ -528,7 +529,7 @@
     .search-banner {
         max-width: (1380px + 80px);
         height: 120px;
-        margin: 0 auto -34px;
+        margin: 80px auto 0;
         padding: 0 40px;
         a {
             overflow: hidden;
@@ -566,7 +567,7 @@
         @include mobile {
             max-width: 100%;
             height: auto;
-            margin: 0;
+            margin: 40px 0 0;
             padding: 0 16px;
             a {
                 overflow: hidden;
@@ -596,16 +597,15 @@
     }
     .cont-wrap {
         position: relative;
-        margin-top: 68px;
+        margin-top: 80px;
         padding: 0 40px 120px;
-        @media screen and (min-width: 1024px){
+        @media screen and (min-width: 1025px){
             &.w-filter {
-                margin-top: 68px;
                 padding: 0 40px 120px 280px;
             }
         }
         @include mobile {
-            margin-top: 25px;
+            margin-top: 60px;
             padding: 0 20px 60px;
             border-top: 0;
         }
@@ -712,10 +712,7 @@
 
     .list-head {
         @include clearfix;
-        padding: 40px 0 16px;
-        @include mobile {
-            padding: 21px 0 15px;
-        }
+        padding: 0 0 16px;
         .title {
             float: left;
         }
@@ -768,7 +765,7 @@
     }
     .rounded {
         display: inline-block;
-        padding: 7px 16px;
+        padding: 6px 12px;
         border-radius: 8px;
         border: 1px solid #ddd;
         background-color: #fff;
@@ -1360,6 +1357,7 @@
 }
 
 .list-sorting {
+    display: none;
     .input-keyword-wrap {
         display: none;
     }
@@ -1420,6 +1418,7 @@
 
     }
     &.fixed {
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
@@ -1549,8 +1548,8 @@
 .search-not-result {
     clear: both;
     .no-data {
-        margin-bottom: -28px;
-        padding: 46px 0 0;
+        margin-top: 80px;
+        padding: 0;
         p {
             padding-top: 0;
             @include font-medium;

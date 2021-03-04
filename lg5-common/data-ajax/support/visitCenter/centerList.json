@@ -52,10 +52,6 @@
             "shopName":"롯데 강남점",
             "shopAdress":"서울특별시 강남구 대치동 937"
          }
-      ],
-      "listPage": {
-         "page": 5,
-         "totalCount": 123
-      }
+      ]
    }
 }

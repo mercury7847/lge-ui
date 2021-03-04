@@ -266,10 +266,7 @@ var isApp = function(){
             $('img').not('[data-pc-src]').on('error', function(e){
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
-                $(this).css({
-                    width:'100%',
-                    height:"100%"
-                });
+                $(this).addClass('no-img');
             });
         },
 
@@ -277,10 +274,7 @@ var isApp = function(){
             var self = this;
             img.onerror = null;
             $(img).attr('src', self.NO_IMAGE);
-            $(img).css({
-                width:'100%',
-                height:"100%"
-            });
+            $(img).addClass('no-img');
         },
 
         _createMainWrapper: function(){
@@ -1202,7 +1196,11 @@ var isApp = function(){
                     } else{
                         $(window).trigger("toastshow","찜한 제품 설정이 해제되었습니다.");
                     }
-                    callbackSuccess(data);
+                    if(data.data && data.data.listData && data.data.listData.length > 0) {
+                        callbackSuccess(data.data.listData[0]);
+                    } else {
+                        callbackSuccess({wishItemId:null});
+                    }
                 } else {
                     callbackFail(data);
                     if(data.alert && !vcui.isEmpty(data.alert)) {
@@ -1415,15 +1413,26 @@ var isApp = function(){
             var $wishItem = $('input['+checkAttr+']');
 
             lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var listData = result.data.listData;
-                if(listData) {
-                    listData.forEach(function(item,index){
-                        var $wish = $wishItem.find('[checkAttr='+item.sku+']');
-                        if($wish.length > 0) {
-                            $wish.data(item);
-                            $wish.prop("checked",true);
-                        }
-                    });
+                var data = result.data.data;
+                if(data){
+                    var listData = data.listData != undefined ? data.listData : null;
+                    var wishListId = data.wishListId;
+                    $wishItem.each(function(idx, item){
+                        var $item = $(item);
+                        if(!$item.data('wishListId')) {
+                            console.log('null',$item);
+                            $item.data('wishListId', wishListId);
+                        };
+                    });                
+                    if(listData) {
+                        listData.forEach(function(item,index){
+                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                            if($wish.length > 0) {
+                                $wish.data(item);
+                                $wish.prop("checked",true);
+                            }
+                        });
+                    }
                 }
             },"GET", null, true);
         

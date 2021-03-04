@@ -2,9 +2,9 @@
     var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{modelName}}" data-wishListId="{{wishListId}}" data-wishItemId="{{wishItemId}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}">' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
-                '<div class="thumb"><a href="#n"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+                '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
                 '<div class="infos">' +
-                    '<p class="name"><a href="#n"><span class="blind">제품명</span>{{title}}</a></p>' +
+                    '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
                     '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
                     '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                     '<div class="more"><span class="blind">제품스펙</span><ul>' +
@@ -12,12 +12,14 @@
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
+                    '{{#if obsBtnFlag=="enable"}}' +
                     '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
                     '{{#if price}}<span class="blind">구매가격</span>{{price}}원{{/if}}' +
+                    '{{/if}}' +
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
-            '{{#if !disabled}}' +
+            '{{#if !disabled && obsBtnFlag=="enable"}}' +
                 '<div class="col btn-col">' +
                     '{{#if typeFlag=="A"||typeFlag=="P"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
                     '{{#if typeFlag=="A"||typeFlag=="C"}}<button type="button" class="btn size border rentalcart"><span>렌탈 장바구니</span></button>{{/if}}' +

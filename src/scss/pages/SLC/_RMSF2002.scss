@@ -32,8 +32,12 @@ br.m {
         }
         .btn.border {
             margin-top:24px;
-            border-color: $color-white;
+            border-color: $color-white !important;
             color: $color-white;
+            &:hover,
+            &:focus {
+                background-color: transparent;
+            }
         }
     }
     @include mobile {
@@ -228,8 +232,11 @@ br.m {
             .tabs-wrap {
                 margin-top: 26px;
                 &.btn-type {
+                    &:before {
+                        display: none;
+                    }
                     .tabs {
-                        padding: 0;
+                        //padding: 0;
                         > li {
                             &:not(:first-child) {
                                 margin-left: 24px;
@@ -992,8 +999,12 @@ br.m {
         }
         .btn.border {
             margin-top:24px;
-            border-color:#fff;
+            border-color:#fff !important;
             color:#fff;
+            &:hover,
+            &:focus {
+                background-image: none;
+            }
         }
     }
     
