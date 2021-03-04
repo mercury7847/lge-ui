@@ -52,15 +52,19 @@
         color:#fff;
     }
     &.border {
-        border-color:#000;
+        border-color:#000 !important;
         background:transparent;
         color:#000;
-        &:hover,
-        &:focus,
-        &:active {
-            border-color:#fa263e;
-            background-image: linear-gradient(280deg, #fb5a72, #fa263e);
-            color: $color-white;
+        &.pink {
+            border-color: $color-primary !important;
+            background:transparent;
+            color: $color-primary;
+            &:hover,
+            &:focus,
+            &:active {
+                background: $color-primary;
+                color: $color-white;
+            }
         }
     }
 

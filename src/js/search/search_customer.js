@@ -605,9 +605,9 @@
                     var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
-                        self.$similarText.show();
+                        self.$searchSimilar.show();
                     } else {
-                        self.$similarText.hide();
+                        self.$searchSimilar.hide();
                     }
 
                     //연관 검색어 리스트 갱신
