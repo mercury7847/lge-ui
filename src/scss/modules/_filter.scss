@@ -671,20 +671,21 @@
             @media screen and (max-width: $desktop-s-width) {
                 display:block;
                 .cell {
-                    display:block;
+                    // display:block;
                     margin-top:8px;
                     &:first-child {
                         margin-top:0;
                     }
                 }
                 .rdo-cell {
-                    width:auto;
+                    // width:auto;
                     padding-right:0;
                 }
             }
             @include mobile {
                 width:100%;
                 .cell {
+                    display:block;
                     width:auto;
                     margin-top:12px;
                 }
