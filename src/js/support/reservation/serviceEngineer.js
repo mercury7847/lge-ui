@@ -743,7 +743,9 @@
             });
 
             // 희망 일자 선택하기 버튼
-            self.$stepInput.find('.step-btn-wrap .btn').on('click', function() {
+            self.$stepInput.find('.step-btn-wrap .btn').on('mousedown', function(e) {
+                e.preventDefault();
+            }).on('click', function() {
                 self.autoFlag = true;
                 self.requestDate();
             });

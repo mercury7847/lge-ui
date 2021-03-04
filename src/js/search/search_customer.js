@@ -633,12 +633,16 @@
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.allCount);
+                    /*
                     if(count > 0) {
                         noData = false;
                     }
+                    */
 
                     //필터세팅
+                    var filterShow = false;
                     if(data.filterList && data.filterList.length > 0) {
+                        filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
                         if(self.savedFilterData && self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
@@ -674,11 +678,11 @@
                             }
                         });
                         $resultListWrap.show();
-                        self.$listSorting.show();
+                        //self.$listSorting.show();
                         noData = false;
                     } else {
                         $resultListWrap.hide();
-                        self.$listSorting.hide();
+                        //self.$listSorting.hide();
                     }
 
                     //제품
@@ -718,7 +722,6 @@
 
                     //noData 체크
                     if(noData) {
-                        self.$contWrap.removeClass('w-filter');
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
                             $list_ul.empty();
@@ -740,6 +743,7 @@
 
                         self.$pagination.hide();
                         self.$recommendListBox.hide();
+                        self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
                     } else {
@@ -750,6 +754,10 @@
 
                         self.$pagination.show();
                         self.$recommendListBox.show();
+                        if(filterShow) {
+                            self.$contWrap.addClass('w-filter');
+                            self.$layFilter.show();
+                        }
                         self.$btnFilter.show();
                     }
 
