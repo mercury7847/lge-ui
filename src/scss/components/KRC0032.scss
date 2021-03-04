@@ -264,7 +264,7 @@
         .logo {
             filter:brightness(0) invert(1);
             @include mobile {
-                filter:brightness(1) invert(0);
+                filter:brightness(1) invert(0) !important;
             }
         }
     }
