@@ -76,10 +76,6 @@
                     font-weight: 700;
                     @include font-large-1;
                     color: #fff;
-                    @include mobile {
-                        width: 35px;
-                        height: 35px;
-                    }
                 }
             }
             .video-play-btn {
@@ -104,6 +100,10 @@
                     transform: translate(-50%, -50%);
                     background: url('/lg5-common/images/icons/btn-play-80.svg') no-repeat 50% 50%;
                     background-size: 100% 100%;
+                    @include mobile {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
             }
         }
@@ -295,18 +295,18 @@
             .text {
                 display: inline-block;
                 position: relative;
-                margin-left: 6px;
-                padding-left: 6px;
+                margin-right: 6px;
+                padding-right: 6px;
                 @include font-small;
-                &:first-child {
-                    margin-left: 0;
-                    padding-left: 0;  
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
                 }
-                &:not(:first-child):before {
+                &:not(:last-child):before {
                     display: inline-block;
                     position: absolute;
                     top: 50%;
-                    left: 0;
+                    right: 0;
                     content: '';
                     width: 1px;
                     height: 12px;
@@ -318,7 +318,7 @@
                     margin-left: 0;
                     padding-left: 0; 
                     &:before,
-                    &:not(:first-child):before {
+                    &:not(:last-child):before {
                         display: none;
                     }
                     &.date {
@@ -560,9 +560,9 @@
                 margin-top: 12px;
                 .text {
                     display: inline-block;
-                    margin-left: 6px;
-                    padding-left: 6px;
-                    &:not(:first-child):before {
+                    margin-right: 6px;
+                    padding-right: 6px;
+                    &:not(:last-child):before {
                         display: inline-block;
                     }
                 }
