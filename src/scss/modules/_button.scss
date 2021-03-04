@@ -59,27 +59,27 @@
             border-color: $color-primary !important;
             background:transparent;
             color: $color-primary;
-            &:hover,
-            &:focus,
-            &:active {
-                background: $color-primary;
-                color: $color-white;
-            }
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $color-primary !important;
+            background: $color-primary;
+            color: $color-white;
         }
     }
 
     &:disabled,
     &.disabled {
-        color:#aaa;
-        border-color:#ddd;
-        background:#ededed;
+        border-color:#f3b7c7 !important;
+        background:#f3b7c7;
+        color:$color-white;
         cursor:default;
         &:hover,
         &:focus,
         &:active {
-            background:#ededed;
-            border-color:#ddd;
-            color: $color-gray-4;
+            background:#f3b7c7;
+            color: $color-white;
         }
     }
     // 작은사이즈 버튼
@@ -411,6 +411,9 @@
         margin-left:8px;
         &:first-child {
             margin-left:0;
+        }
+        & + .btn {
+            margin-left: 8px;
         }
     }
     @include mobile {
