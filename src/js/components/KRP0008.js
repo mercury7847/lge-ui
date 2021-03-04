@@ -57,9 +57,46 @@
                     }
                 };
 
+                //핀치줌
+                vcui.require(['ui/pinchZoom'], function (PinchZoom) {
+                    self.pinchZoom = new PinchZoom('.zoom-area');
+    
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
+                        var zoom =self. pinchZoom.getZoomFactor();
+                        if(Math.round(zoom) >= 4) zoom = 0;
+                        self.pinchZoom.runZoom(zoom+1, true); 
+                    });
+    
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
+                        var zoom =self.pinchZoom.getZoomFactor();
+                        self.pinchZoom.runZoom(zoom-1, true); 
+                    });
+    
+                    self.$popPdpVisualImage.mousedown(function() {
+                        self.isDragging = false;
+                    })
+                    .mousemove(function() {
+                        self.isDragging = true;
+                     })
+                    .mouseup(function() {
+                        var wasDragging = self.isDragging;
+                        self.isDragging = false;
+                        if (!wasDragging) {
+                            self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').trigger('click');
+                        }
+                    });
+                    
+                    //pinchZoom.update(true);
+
+                    self.bindProductEvents();
+                    self.bindPopupEvents();
+                    self.bindSideEvents();
+                });
+                /*
                 self.bindProductEvents();
                 self.bindPopupEvents();
                 self.bindSideEvents();
+                */
 
                 //비교하기 체크
                 self.setCompares();
@@ -338,6 +375,8 @@
                 var self = this;
 
                 //핀치줌
+                //위치이동
+                /*
                 vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                     self.pinchZoom = new PinchZoom('.zoom-area');
     
@@ -368,6 +407,7 @@
                     
                     //pinchZoom.update(true);
                 });
+                */
                                 
                 //팝업 모달뷰 버튼
                 /*
@@ -745,11 +785,14 @@
 
                 //케어쉽 서비스 선택 관련
                 self.$pdpInfoAllCareshipService.on('change','input[type=radio]', function(e){
+                    console.log("jsw");
+                    waterCareRequire = true;
                     //케어쉽필수 제품인지 체크해서 알림창 뛰움
                     var val = $(this).val();
                     var $careshipService = $(this).parents('.careship-service');
                     if(!lgkorUI.stringToBool(val)) {
                         if(waterCareRequire) {
+                            console.log($(this).parents('ul').find('input[type=radio][value="Y"]'));
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
                             $('#waterCareRequirePopup').vcModal();
                         } else if(careRequire) {
@@ -1257,6 +1300,11 @@
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                                 console.log(result);
+                                var data = result.data;
+                                var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                if(obsDirectPurchaseUrl){
+                                    location.href = obsDirectPurchaseUrl;
+                                }
                             });
                         }
                     }
@@ -1286,6 +1334,7 @@
 
             //썸네일 리스트 클릭
             clickThumbnailSlide: function(index) {
+                console.log(index);
                 var self = this;
                 var item = self.findPdpData(index);
                 switch(item.type) {
@@ -1323,6 +1372,7 @@
             },
 
             clickModalThumbnail: function(index) {
+                console.log('modal',index);
                 var self = this;
                 index = parseInt(index);
                 var item = self.findPdpData(index);

@@ -1059,6 +1059,8 @@ CS.MD.commonModel = function() {
                     self.$el.find('#productCode').val(data.productCode);
                     self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
+
+                    if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
                 }
             });
 
@@ -2345,9 +2347,11 @@ $.fn.serializeObject = function() {
                 this.value = this.value.slice(0, this.maxLength);
             }  
         });
-        $(document).on('mousewheel', 'input[type="number"]', function(e){
-            e.preventDefault();
-            e.stopPropagation();
+
+        $(document).on('focus', 'input[type="number"]', function(e){
+            $(this).on('mousewheel',function(e){
+                e.preventDefault();
+            });
         });
 
         $(document).on('change', '.agree-wrap input:checkbox', function(){

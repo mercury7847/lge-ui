@@ -372,6 +372,8 @@ var FilterLayer = (function() {
                         obj.filterValueName = obj.topFilterDisplayName ? obj.topFilterDisplayName : obj.filterValueName;
                     });
 
+                    console.log("### defalutUnfoldFlag ###", item.defalutUnfoldFlag)
+
                     switch(item.filterType) {
                         case "range":
                             hasSlider = true;
@@ -588,7 +590,7 @@ var FilterLayer = (function() {
                 if(length > 0) {
                     $selNum.text(' ('+length+')');
                 } else {
-                    $selNum.text(' (0)');
+                    $selNum.text('');
                 }
             }
         }

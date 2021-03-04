@@ -642,9 +642,9 @@
                     var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
-                        self.$similarText.show();
+                        self.$searchSimilar.show();
                     } else {
-                        self.$similarText.hide();
+                        self.$searchSimilar.hide();
                     }
 
                     //연관 검색어 리스트 갱신
@@ -680,9 +680,11 @@
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.allCount);
+                    /*
                     if(count > 0) {
                         noData = false;
                     }
+                    */
 
                     self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap');
@@ -695,8 +697,8 @@
                         arr.forEach(function(item, index) {
                             $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
                         });
-                        self.$searchResultCategory.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                         self.$searchResultCategory.show();
+                        self.$searchResultCategory.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                         noData = false;
                     } else {
                         self.$searchResultCategory.hide();

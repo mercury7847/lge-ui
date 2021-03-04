@@ -214,6 +214,7 @@
             self.$inquiryList.empty();
             self.$completeBtns.hide();
             self.$selectedModelBar.hide();
+            self.$myModelWrap.hide();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);
@@ -238,8 +239,10 @@
 
             // 모델 선택 & 문의 재선택
             self.$cont.on('complete', function(e, data, url) {
-                data.categoryNm = data.categoryName;
-                data.subCategoryNm = data.subCategoryName;
+                if (!data.categoryNm) {
+                    data.categoryNm = data.categoryName;
+                    data.subCategoryNm = data.subCategoryName;
+                }
                 if (url) {
                     self.loadInquiry(data, url);
                 } else {
