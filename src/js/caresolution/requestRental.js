@@ -39,6 +39,8 @@
     var cardInputData = {};
     var bankInputData = {};
 
+    var allOwnedProductYn;
+
     function init(){
         console.log("requestRental Start!!!");
     
@@ -529,6 +531,11 @@
             completed = chk;
         } else{
             console.log("step2Validation.validate(); Fail!!!", result.validItem, step2Validation.getValues());
+            if(allOwnedProductYn == "Y"){
+                var leng = Object.keys(result.validItem).length;
+                var exist = "inatallDate" in result.validItem;
+                if(leng == 1 && exist) completed = true;
+            }
         }
 
         return completed;
@@ -646,6 +653,8 @@
 
         installAdress = {};
 
+        allOwnedProductYn = "N";
+
         var code = [];
         $('.order-list li').each(function(idx, item){
             code.push($(item).data('itemId'));
@@ -717,6 +726,8 @@
             if(abled == "Y"){
                 setInstallAdress();
 
+                allOwnedProductYn = result.data.allOwnedProductYn;
+
                 if(result.data.allOwnedProductYn == "Y"){
                     step2Block.find('.forAOP').hide();
                 } else{
@@ -724,6 +735,9 @@
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
                     step2Block.find('.datepicker').removeClass('disabled');
                 }
+
+                step2Block.find('select[name=inatallPlace]').prop('disabled', false);
+                step2Block.find('select[name=inatallPlace]').vcSelectbox('update');
             }
             
             setInputData('installAbled', abled);

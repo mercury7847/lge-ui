@@ -2383,7 +2383,11 @@ $.fn.serializeObject = function() {
             }
         })
         
-        
+        $(document).on('ajaxComplete', function() {
+            $('img').not('[data-pc-src]').on('error', function() {
+                lgkorUI.addImgErrorEvent(this);
+            });
+        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
