@@ -34,6 +34,10 @@ br.m {
             margin-top:24px;
             border-color: $color-white;
             color: $color-white;
+            &:hover,
+            &:focus {
+                background-image: none;
+            }
         }
     }
     @include mobile {
