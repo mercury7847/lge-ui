@@ -239,8 +239,10 @@
 
             // 모델 선택 & 문의 재선택
             self.$cont.on('complete', function(e, data, url) {
-                data.categoryNm = data.categoryName;
-                data.subCategoryNm = data.subCategoryName;
+                if (!data.categoryNm) {
+                    data.categoryNm = data.categoryName;
+                    data.subCategoryNm = data.subCategoryName;
+                }
                 if (url) {
                     self.loadInquiry(data, url);
                 } else {
