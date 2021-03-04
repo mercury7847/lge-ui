@@ -794,7 +794,6 @@
 
                         self.$pagination.show();
                         self.$recommendListBox.show();
-                        console.log(filterShow,self.$layFilter);
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.show();

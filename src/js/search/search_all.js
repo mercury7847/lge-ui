@@ -680,9 +680,11 @@
                     var noData = true;
                     var count = self.checkCountData(data);
                     self.setTabCount(0, data.allCount);
+                    /*
                     if(count > 0) {
                         noData = false;
                     }
+                    */
 
                     self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap');
