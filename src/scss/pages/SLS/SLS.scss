@@ -257,12 +257,10 @@ br.pc {
                 position: relative;
                 padding: 88px 24px 0;
                 @include font-large-5;
-                color: $color-gray-4;
                 font-weight: 700;
                 line-height:56px;
                 text-align: left;
                 &:hover {
-                    color:#000;
                     &:after {
                         content:' ';
                         position:absolute;
@@ -322,48 +320,48 @@ br.pc {
             }
             &.link-benefit {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-3-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
             }
             &.link-planner {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-2-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
             }
             &.link-my {
                 a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-1-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on a:before,
-                &:hover a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on a:before,
+                //&:hover a:before {
+                //    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
 
             }
             &.next-schedule {
                 span:before {
-                    background: url(/lg5-common/images/icons/ic-main-careship-cal-off.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
-                }
-                &.on span:before,
-                &:hover span:before {
                     background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
                 }
+                //&.on span:before,
+                //&:hover span:before {
+                //    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
+				//	background-size: 100% 100%;
+                //}
                 .day {
                     display: block;
                 }
@@ -957,7 +955,7 @@ br.pc {
                 width: 33.33%;
                 padding: 12px;
                 @include mobile {
-                    width: auto;
+                    width: 100%;
                     padding: 0 4px;
                 }
                 .thumb {
