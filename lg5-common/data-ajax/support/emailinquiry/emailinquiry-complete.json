@@ -3,7 +3,15 @@
     "message": null,
     "data": {
         "resultFlag": "Y",
-        "resultMessage": "",
-        "acptNo": "12312"
+        "resultMessage": ""
+    },
+    "param": {
+        "b2cId": "b2cIdValue",
+        "custNm": "custNmValue",
+        "menuId": "menuIdValue",
+        "maskName": "maskNameValue",
+        "maskEmail": "maskEmailValue",
+        "catePath": "catePathValue",
+        "cateId": "cateIdValue"
     }
 }
