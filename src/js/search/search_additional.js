@@ -719,7 +719,7 @@
                         self.$recommendListBox.show();
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
-                            self.$layFilter.show();
+                            self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
                     }
