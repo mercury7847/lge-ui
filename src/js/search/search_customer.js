@@ -674,6 +674,7 @@
                             } else {
                                 item.isVideo = !item.isVideo?false:true;
                                 item.linkItem = !item.linkItem ? [] : item.linkItem;
+                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
                         });
