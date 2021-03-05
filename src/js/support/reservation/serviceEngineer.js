@@ -573,8 +573,8 @@
                             $(this).val($(this).data('defaultValue')).prop('readonly', true);
                         });
                     }
-                    $('.address-err-msg + .chk-wrap').hide();
-                    $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
+                    // $('.address-err-msg + .chk-wrap').hide();
+                    // $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
                 }
 
                 $('input[type=text], textarea').not(notInput).val('');
@@ -736,7 +736,7 @@
                     self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
 
-                    self.$cont.find('.btm-more.both .chk-wrap').show();
+                    // self.$cont.find('.btm-more.both .chk-wrap').show();
 
                     if (self.autoFlag) self.requestDate();
                 }); 
