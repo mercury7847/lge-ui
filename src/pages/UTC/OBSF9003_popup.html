@@ -17,6 +17,7 @@
         <button type="button" data-href="#laypop6" data-control="modal" class="btn"><span>로그인 필요</span></button><br><br>
         <button type="button" data-href="#laypop7" data-control="modal" class="btn"><span>선택상품 초과 확인</span></button><br><br>
         <button type="button" data-href="#laypop8" data-control="modal" class="btn"><span>동일상품군 초과 신청</span></button><br><br>
+        <button type="button" data-href="#laypop9" data-control="modal" class="btn"><span>동일 제품 청약 제한 안내</span></button><br><br>
     </div>
 
     <!-- 케어솔루션 월 요금 혜택 popup -->
@@ -71,11 +72,23 @@
     <!-- // 신청하기 - 선택상품 포함 총 7개 초과인 상태 popup -->
 
     <!-- 신청하기 - 동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우 popup -->
+    <!-- 210305 수정 [문구 수정] -->
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop8",
-        "alertTit" : "총 7개를 초과하여 <br>선택하실 수 없습니다.",
+        "alertTit" : "케어솔루션/케어십 서비스는 정수기의 경우 최대 3대, 그 외 제품의 경우<br>최대 2대로 제한되며, 총 7개를 초과하여<br>선택하실 수 없습니다.",
         "alertCont" : [
-            { "txt" : "케어솔루션은 정수기 제품의 경우 최대 3대 <br>그 외 제품의 경우 최대 2대로 제한됩니다." }
+            { "txt" : "제품을 다시 선택해주세요." }
+        ]
+    })
+    <!-- // 신청하기 popup -->
+
+    <!-- 신청하기 - 동일한 제품 2개이상 선택한 상태에서 [청약신청하기] 선택시 popup -->
+    <!-- 210305 수정 [추가] -->
+    @@include('./common/modules/alert-modal.html', {
+    "popId" : "laypop8",
+        "alertTit" : "한 번에 동일한 제품을 2개 이상<br>청약이 불가능합니다.",
+        "alertCont" : [
+            { "txt" : "제품당 1개만 선택해주세요." }
         ]
     })
     <!-- // 신청하기 popup -->
