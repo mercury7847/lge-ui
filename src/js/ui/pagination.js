@@ -45,9 +45,13 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if(!!data.page) {
                     self.options.page = data.page;
                 }
+                //2021-03-05 visibleCount 5 고정
+                self.options.visibleCount = 5;
+                /*
                 if(!!data.visibleCount) {
                     self.options.visibleCount = data.visibleCount;
                 }
+                */
                 if(!!data.totalCount) {
                     self.options.totalCount = data.totalCount;
                 }
