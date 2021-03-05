@@ -2,13 +2,13 @@
 
 @import "../components-app";
 
-.component-wrap {
-    &.zero-btm {
-        @include mobile {
-            padding-bottom:40px !important;
-        }
-    }
-}
+// .component-wrap {
+//     &.zero-btm {
+//         @include mobile {
+//             padding-bottom:40px !important;
+//         }
+//     }
+// }
 
 .KRC0032 {
 	&.stage-full {
@@ -22,6 +22,12 @@
     &.stage-medium {
         max-width:1380px + 80px;
         margin:0 auto;
+    }
+    
+    .component-box {
+        @include mobile {
+            padding-bottom:40px;
+        }
     }
 
 	.usp-banner-wrap {
