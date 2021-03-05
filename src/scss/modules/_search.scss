@@ -4,12 +4,13 @@
 
 .input-keyword-wrap {
     max-width: (1146px + 80px);
-    margin: 0 auto;
-    padding: 48px 40px 120px;
+    margin: 0 auto 120px;
+    padding: 48px 40px 0;
     @include mobile {
         max-width: 100%;
         //padding: 102px 16px 50px;
-        padding: 40px 16px 60px;
+        margin-bottom: 60px;
+        padding: 40px 16px 0;
 
         &.fixed-top {
             .input-keyword {
@@ -123,6 +124,7 @@
                     height: 52px;
                     padding-right: 52px;
                     //padding: 0 97px 0 0;
+                    font-weight: 500;
                     @include font(20px,28px);
                 }
             }
