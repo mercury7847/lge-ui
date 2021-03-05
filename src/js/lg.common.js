@@ -974,6 +974,7 @@ var isApp = function(){
                 };
                 script.onerror = function(e){ 
                     //alert('kakao api를 로드할수 없습니다.');
+                    console.log('kakao api를 로드할수 없습니다.');
                 }
                 script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
                 document.head.appendChild(script); 

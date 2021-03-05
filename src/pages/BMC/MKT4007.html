@@ -28,7 +28,7 @@
                     <dd class="conts">
                         <div class="input-box btn-type">
                             <span class="input-wrap">
-                                <input type="text" id="inp01" value="" title="휴대폰 번호 뒤 4자리" placeholder="휴대폰번호 뒤 4자리를 입력해 주세요.">
+                                <input type="number" name="phone" data-required="true" id="inp01" value=""  title="휴대폰 번호 뒤 4자리" placeholder="휴대폰번호 뒤 4자리를 입력해 주세요.">
                             </span>
                             <button type="button" id="button-search" class="btn pink"><span>조회</span></button>
                         </div>
@@ -60,8 +60,8 @@
                                 <tr>
                                     <td class="winner">홍*동</td>
                                     <td class="phone">010-****-1234</td>
-                                    <td class="winner on">김*신</td>
-                                    <td class="phone on">010-****-1234</td>
+                                    <td class="winner">김*신</td>
+                                    <td class="phone">010-****-2345</td>
                                 </tr>
                             </tbody>    
                         </table>
@@ -89,19 +89,19 @@
                             <tbody>
                                 <tr>
                                     <td class="winner">홍*동</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="phone">010-****-1111</td>
                                     <td class="winner">김*신</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="phone">010-****-5432</td>
                                 </tr>
                                 <tr>
                                     <td class="winner">홍*동</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="phone">010-****-8907</td>
                                     <td class="winner">김*신</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="phone">010-****-3454</td>
                                 </tr>
                                 <tr>
                                     <td class="winner">홍*동</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="phone">010-****-6654</td>
                                     <!-- td 내용 없을 때 class empty 추가 -->
                                     <td class="winner empty"></td>
                                     <td class="phone empty"></td>
@@ -125,6 +125,42 @@
         </section>
         <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
+
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation'], function (Validation) {
+               
+				var validation = new Validation('.form-wrap');
+
+                $('#inp01').on('keydown', function(e){
+                    if(e.keyCode==13){
+                        $('#button-search').trigger('click');
+                    }
+                })
+
+                $('#button-search').on('click', function(){
+                    validation.validate(); 	
+                    var value = $('#inp01').val();
+
+                    $('td.on').removeClass('on');
+
+                    $('td.phone').each(function(){
+                        var str = $(this).text();
+                        str = str.slice(-4);
+
+                        if(value == str){
+                            $(this).addClass('on');
+                            $(this).prev('.winner').addClass('on');
+                        }
+
+                    });
+                                    
+                });
+            })
+        });
+        
+    </script>
 
 </body>
 </html>

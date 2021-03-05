@@ -5,7 +5,7 @@
     })
 <body>
     <!-- width: 912px -->
-    <article id="popup" class="win-popup-wrap">
+    <article id="popup" class="win-popup-wrap uiForm">
         <header class="pop-header">
             <h1 class="tit"><span>참여 내역 조회</span></h1>
         </header>
@@ -16,7 +16,7 @@
                     <dt class="tit"><label for="name" class="req">구매자 이름<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <span class="input-wrap block">
-                            <input type="text" id="name" placeholder="이름을 입력해 주세요.">
+                            <input type="text" id="name" name="name" data-required="true" placeholder="이름을 입력해 주세요.">
                         </span>
                     </dd>
                 </dl>
@@ -24,7 +24,7 @@
                     <dt class="tit"><label for="phone" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <span class="input-wrap block">
-                            <input type="number" id="phone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                            <input type="number" id="phone" name="phone" data-required="true" placeholder="‘-’없이 번호만 입력해 주세요.">
                         </span>
                     </dd>
                 </dl>
@@ -32,10 +32,36 @@
         </section>
         <footer class="pop-footer center no-padding">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>확인</span></button>
+                <button type="button" class="btn pink" id="uiSubmit"><span>확인</span></button>
             </div>
         </footer>
         <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
+
+    
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation'], function (Validation) {
+                               
+				var validation = new Validation('.uiForm');
+                
+                validation.on('errors', function(e,data){
+                    console.log('errors', data); 
+
+                }).on('success', function(data){
+                    console.log(validation.getValues());
+
+                });
+
+                $('#uiSubmit').on('click', function(){  
+                    validation.validate(); 	
+                });
+            })
+
+
+        });
+        
+    </script>
 </body>
 </html>
