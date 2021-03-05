@@ -90,39 +90,68 @@
             '{{/if}}'+
         '</div>';
 
-    var priceInfoTemplate = 
-        '<div class="tit-wrap">'+
-            '<h2 class="h2-tit">{{typeName}} 정보</h2>'+
-        '</div>'+
-        '<div class="tb-scroll">'+
-            '<div class="tb_row tb-row-bl">'+
-                '<table>'+
-                    '<caption>{{typeName}} 정보를 제품금액, 할인 금액 합계, 취소 신청 멤버십 포인트, 취소 신청 금액 순으로 안내</caption>'+
-                    '<colgroup>'+
-                        '<col style="width:25%">'+
-                        '<col style="width:25%">'+
-                        '<col style="width:25%">'+
-                        '<col>'+
-                    '</colgroup>'+
-                    '<thead>'+
-                        '<tr>'+
-                            '<th scope="col">제품 금액</th>'+
-                            '<th scope="col">할인 금액 합계</th>'+
-                            '{{#if mempointPrices != "0"}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
-                            '<th scope="col">{{typeName}} 신청 금액</th>'+
-                        '</tr>'+
-                    '</thead>'+
-                    '<tbody>'+
-                        '<tr>'+
-                            '<td class="productPrices">{{productPrices}}원</td>'+
-                            '<td class="discountPrices">{{discountPrices}}원</td>'+
-                            '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
-                            '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
-                        '</tr>'+
-                    '</tbody>'+
-                '</table>'+
+        var priceInfoTemplate = 
+            '<div class="tit-wrap">'+
+                '<h2 class="h2-tit">{{typeName}} 정보</h2>'+
             '</div>'+
-        '</div>';
+            '<div class="tb-scroll">'+
+                '<div class="tb_row tb-row-bl">'+
+                    '<table>'+
+                        '<caption>{{typeName}} 정보를 제품금액, 할인 금액 합계, 취소 신청 멤버십 포인트, 취소 신청 금액 순으로 안내</caption>'+
+                        '<colgroup>'+
+                            '<col style="width:25%">'+
+                            '<col style="width:25%">'+
+                            '<col style="width:25%">'+
+                            '<col>'+
+                        '</colgroup>'+
+                        '<thead>'+
+                            '<tr>'+
+                                '<th scope="col">제품 금액</th>'+
+                                '<th scope="col">할인 금액 합계</th>'+
+                                '{{#if mempointPrices != "0"}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
+                                '<th scope="col">{{typeName}} 신청 금액</th>'+
+                            '</tr>'+
+                        '</thead>'+
+                        '<tbody>'+
+                            '<tr>'+
+                                '<td class="productPrices">{{productPrices}}원</td>'+
+                                '<td class="discountPrices">{{discountPrices}}원</td>'+
+                                '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
+                                '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                            '</tr>'+
+                        '</tbody>'+
+                    '</table>'+
+                '</div>'+
+            '</div>';
+
+
+    var nonememPriceInfoTemplate = 
+    '<div class="tit-wrap">'+
+        '<h2 class="h2-tit">{{typeName}} 정보</h2>'+
+    '</div>'+
+    '<div class="tb-scroll">'+
+        '<div class="tb_row tb-row-bl">'+
+            '<table>'+
+                '<caption>{{typeName}} 정보를 제품금액, 할인 금액 합계, 취소 신청 멤버십 포인트, 취소 신청 금액 순으로 안내</caption>'+
+                '<colgroup>'+
+                    '<col style="width:50%">'+
+                    '<col>'+
+                '</colgroup>'+
+                '<thead>'+
+                    '<tr>'+
+                        '<th scope="col">제품 금액</th>'+
+                        '<th scope="col">{{typeName}} 신청 금액</th>'+
+                    '</tr>'+
+                '</thead>'+
+                '<tbody>'+
+                    '<tr>'+
+                        '<td class="productPrices">{{productPrices}}원</td>'+
+                        '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                    '</tr>'+
+                '</tbody>'+
+            '</table>'+
+        '</div>'+
+    '</div>';
     
     var shippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
         '<li><dl><dt>배송주소</dt><dd>{{postcode}} {{maskingAddress}}</dd></dl></li>' +
@@ -971,7 +1000,8 @@
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
             var totalPrice = productPrices - discountPrices - mempointPrices;
             var discountComma = vcui.number.addComma(mempointPrices);
-            popup.find('.sect-wrap.cnt01').append(vcui.template(priceInfoTemplate, {
+            var template = PAGE_TYPE == PAGE_TYPE_NONMEM ? nonememPriceInfoTemplate : priceInfoTemplate;
+            popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
                 typeName: infoTypeName,
                 productPrices: vcui.number.addComma(productPrices),
                 discountPrices: vcui.number.addComma(discountPrices),
