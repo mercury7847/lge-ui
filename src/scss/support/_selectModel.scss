@@ -178,7 +178,13 @@
             }
         }
     }
-
+    @include pc {
+        .box .title .tit {
+            br {
+                display:none;
+            }
+        }
+    }
     @include mobile {
         .box {
             padding:40px 16px;

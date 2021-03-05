@@ -346,11 +346,12 @@
         "email": "lg@lge.com"
       },
       "monthlyPayment":{
+        "paymentMethod": "bank",
         "requestCard": "신청",
         "requestCardName": "하나카드 LG전자 렌탈PLUS",
         "paymentPriceInfo":["선납", "포인트 사용", "1년차 월 88,999원"],
-        "paymentMethod": "신용카드",
-        "paymentType": "하나카드",
+        "paymentMethodName": "신용카드",
+        "paymentTypeName": "하나카드",
         "paymentNumber": "1234567891234",
         "monthlyPriceUrl": "monthlyPriceUrl",
         "cardInfo": {
