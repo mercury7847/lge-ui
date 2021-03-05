@@ -493,8 +493,13 @@
 					.btn {
 						margin-top:48px;
 						&.border {
-							border-color:#fff;
+							border-color:#fff !important;
 							color:#fff;
+							&:hover,
+							&:focus,
+							&:active {
+								border-color:$color-primary !important;
+							}
 						}
 					}
 				}
