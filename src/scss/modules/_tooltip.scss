@@ -150,6 +150,9 @@
         [data-fixed="fixed-right"] {
             & + .tooltip-box {
                 padding-right: 32px;
+                @include mobile {
+                    padding-right: 24px;
+                }
             }
         }
     }
