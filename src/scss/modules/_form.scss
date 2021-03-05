@@ -301,6 +301,9 @@
             .tooltip-wrap {
                 margin-top:3px;
                 margin-left:4px;
+                @include mobile {
+                    margin-top:0;
+                }
             }
             .right-btn {
                 float: right;
