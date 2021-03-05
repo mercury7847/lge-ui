@@ -8,31 +8,55 @@
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
     <script>
-        //아래 값은 필수로 넣어주세요.
-
-        // 로그인 유무
+        
         var loginFlag = true;
+            loginFlag = false;
+        
+        var modelName = "ADQ74834312";
+        
+        var modelGubun = "3";
+        
+        var outletStockFlag = "N";
+        
+        var productPrice = "62800";
 
-        // 제품 가격
-        var productPrice = 1853090;
-
-        //사전예약 제품
         var preOrderFlag = false;
-
-        //케어십 필수 제품 체크
+        
         var careRequire = false;
+        
+        var careshipOnlyFlag = "N";
 
-        //수질관리 제품 케어십 필수 체크
         var waterCareRequire = false;
-
-        //카트, 찜하기,비교하기 에 필요한 데이타
+        
+        
         var sendData = {
-            "id": "제품ID",
-            "productName": "LG 올레드 갤러리 TV",
-            "productID": "제품ID",
-            "productImg": "/lg5-common/images/KRP0008/@sample-img.jpg",
-            "productAlt": "LG 올레드 갤러리 TV"
+            "modelId":"MD08918843",
+            "sku" : "ADQ74834312",
+            "typeFlag" : "",
+            "rtSeq" : "",
+            "requireCare" : "N",
+            "wishListId" : "",
+            "wishItemId" : "",
+            "categoryId" : "CT50020059",
+            "id": "MD08918843",
+            "productName": "토탈케어플러스 H13 필터",
+            "productID": "MD08918843",
+            "productImg": "/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
+            "productAlt": "토탈케어플러스 H13 필터"
         };
+
+        var awards = "";
+        awards = [];
+        
+        var rentalInfo = "";
+            rentalInfo = [];
+        
+        var rentalAssociatedCardList = "";
+            rentalAssociatedCardList = [];
+        
+        var careshipAssociatedCardList = "";
+	
+		careshipAssociatedCardList = [];
     </script>
 
     <div class="wrap">
@@ -271,7 +295,7 @@
                     </header>
                     <section class="pop-conts">
                         <div class="push-apply-content">
-                            <p>재 입고 알림은 회원분들께 제공되는 서비스 입니다. 알림을 신청을 위해 로그인이 필요합니다.</p>
+                            <p>재 입고 알림은 회원분들께 제공되는 서비스 입니다.알림을 신청을 위해 로그인이 필요합니다.</p>
                         </div>
                     </section>
                     <footer class="pop-footer center">
@@ -326,7 +350,7 @@
                                                     <div class="inner">
                                                         <button type="button" class="minus" disabled><span class="blind">빼기</span></button>
                                                         <input type="number" class="quantity" title="수량 입력" value="1" readonly>
-                                                        <button type="button" class="plus"><span class="blind">더하기</span></button>
+                                                        <button type="button" class="plus" data-max="9"><span class="blind">더하기</span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -388,7 +412,7 @@
                                     </dl>
                                 </li>
                             </ul>
-                            지금 신청하신 수량은 재고확보를 위한 참고 수량이니 입고완료 문자를 받으시고 바로 주문하지 않으실 경우 품절될 수 있습니다.
+                            <p class="push-apply-text">지금 신청하신 수량은 재고확보를 위한 참고 수량이니 입고완료 문자를 받으시고 바로 주문하지 않으실 경우 품절될 수 있습니다.</p>
                         </div>
                     </section>
                     <footer class="pop-footer center">

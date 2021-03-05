@@ -605,7 +605,7 @@
             }
         }
         @include mobile {
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 0 20px 60px;
             border-top: 0;
         }
@@ -1559,31 +1559,30 @@
             span {
                 display: block;
                 margin-bottom: 8px;
+                font-weight: 700;
                 @include font($font-large-4,52px);
                 color: $color-default;
-                em {
-                    font-weight: 700;
-                }
             }
         }
 
         @include mobile {
-            padding: 0 16px 56px;
+            padding: 0 16px 60px;
             p {
-                padding-top: 45px;
-                font-size: 14px;
-                line-height: 22px;
-                /*&:before {
-                    width: 34px;
-                    height: 34px;
-                    margin-left: -17px;
-                    background-size: 34px;
-                }*/
                 span {
-                    margin-bottom: 14px;
-                    font-size: 16px;
-                    line-height: 19px;
+                    margin-bottom: 12px;
+                    @include font($font-large-2,33px);
                 }
+            }
+        }
+    }
+    @at-root .contents.search .cont-wrap & {
+        .no-data {
+            margin-top: 0;
+            @include pc {
+                margin-bottom: 80px;
+            }
+            @include mobile {
+                padding-bottom: 60px;
             }
         }
     }
