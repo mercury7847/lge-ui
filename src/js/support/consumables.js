@@ -96,11 +96,14 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self.$pdpInfo.find('div.purchase-button.pre-order button').on('click', function() {
-                if (self.loginFlag) {
-                    self.$pushApplyPopup.vcModal();
-                } else {
-                    self.$pushApplyLoginPopup.vcModal();
-                }
+                self.loginFlag ? self.$pushApplyPopup.vcModal() : self.$pushApplyLoginPopup.vcModal();
+            });
+
+            self.$pushApplyPopup.on('modalhide', function() {
+                self.$pushApplyPopup.find('.quantity').val(1);
+                self.$pushApplyPopup.find('button.minus').attr('disabled',true);
+                self.$pushApplyPopup.find('button.plus').removeAttr('disabled');
+                self.$pushApplyPopup.data('quantity', 1);
             });
 
             self.$pushApplyCompletePopup.on('modalhide', function() {
@@ -146,37 +149,36 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
 
             //검색어 초기화
             $(".search-input .btn-delete").click(function() {
-                var temp_ul = $(this).parents('.model-infomation').find('.model-infomation-list');
-                var temp_li = $(temp_ul).find('li');
+                var $list = $(this).parents('.model-infomation').find('.model-infomation-list');
+                var $listItem = $list.find('li');
                 var $nodata = $('.no-data');
 
-                $(this).siblings("#keyword").val("");
-                temp_ul.show();
-                temp_li.show();
+                $(this).siblings("#keyword").val('');
+                $list.show();
+                $listItem.show();
                 $nodata.hide();
             });
 
             //소모품 대체, 공유 모델명 검색
             $("#keyword").on("input", function() {
-                var k = $(this).val();
+                var keyword = $(this).val().toUpperCase().trim();
 
-                var temp_ul = $(this).parents('.model-infomation').find('.model-infomation-list');
-                var temp_li = $(temp_ul).find('li');
-                // var temp_visible = $(temp_ul).find('li:visible');
+                var $list = $(this).parents('.model-infomation').find('.model-infomation-list');
+                var $listItem = $list.find('li');
                 var $nodata = $('.no-data');
 
-                $(temp_li).hide();
-                $(temp_ul).find("li:contains('" + k + "')").show();
+                $listItem.hide();
+                $list.find("li:contains('" + keyword + "')").show();
 
-                if( k == "") {
-                    temp_ul.show();
+                if (keyword == '') {
+                    $list.show();
                     $nodata.hide();
                 } else {
-                    if( !$(temp_ul).find("li:contains('" + k + "')").length) {
-                        temp_ul.hide();
+                    if (!$list.find("li:contains('" + keyword + "')").length) {
+                        $list.hide();
                         $nodata.show();
                     } else { 
-                        temp_ul.show()
+                        $list.show()
                         $nodata.hide();
                     }
                 }
