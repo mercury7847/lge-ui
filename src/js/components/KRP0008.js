@@ -98,6 +98,8 @@
                 self.bindSideEvents();
                 */
 
+                //로그인,찜하기 관련 데이타 가져오기
+                self.getRewardInfo();
                 //비교하기 체크
                 self.setCompares();
             },
@@ -282,10 +284,10 @@
                 var careSelectIndex = 0;
 
                 self.careshipInfoData = null;
-                if(typeof careshipInfo !== 'undefined' && careshipInfo.length > 0) {
-                    self.careshipInfoData = careshipInfo;
-                    for (var i = 0, len = careshipInfo.length; i < len; i++) {
-                        if(careshipInfo[i].representChargeFlag == "Y") {
+                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
+                    self.careshipInfoData = careShipInfo;
+                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
+                        if(careShipInfo[i].representChargeFlag == "Y") {
                             careSelectIndex = i;
                             break;
                         }
@@ -1330,6 +1332,34 @@
                     */
                // }
             },
+
+            //로그인 데이타 정보 가져오기
+            getRewardInfo: function() {
+                var self = this;
+                var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
+                if(!ajaxUrl) {
+                    //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
+                    ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
+                }
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
+                        console.log(result);
+                        var data = result.data;
+                        //로그인
+                        loginFlag = data.loginFlag;
+                        //보유멤버쉽 포인트
+                        //var myMembershipPoint = data.myMembershipPoint;
+                        //찜하기 관련
+                        sendData.wishListId  = data.wishListId;
+                        sendData.wishItemId = data.wishItemId;
+                        var wishListFlag = lgkorUI.stringToBool(data.wishListFlag);
+                        self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').prop("checked",wishListFlag);
+                    }, true);
+                }
+            },
+
+            //찜하기 데이타 가져오기
+            
 
             //PDP 이미지 관련
 
