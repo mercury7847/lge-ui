@@ -393,6 +393,14 @@
         .tabs-wrap {
             margin-bottom:48px;
         }
+        .tabs-contents {
+            &#tab3 {
+                .select-wrap ,
+                .keyword-search {
+                    flex:1;
+                }
+            }
+        }
         // 주소 선택
         .adress-input-box {
             display: flex;
