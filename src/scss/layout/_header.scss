@@ -1294,11 +1294,12 @@
     }
 
     .login-info {
-        padding-bottom: 20px;
+        padding: 3px 0 17px;
         font-weight: 700;
         font-size: $font-large;
         line-height: 26px;
         .text {
+            margin-top: -3px;
             &:after {
                 display: inline-block;
                 width: 16px;
