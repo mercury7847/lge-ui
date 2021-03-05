@@ -13,7 +13,14 @@
                 "pageTitle": "청약 상세보기"
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage orderAndDelivery-careDetail"        
+                data-order-inquiry-list="/lg5-common/data-ajax/mypage/careOrderDetailList.json"
+                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
+                data-order-cancel-popup="/lg5-common/data-ajax/mypage/orderCancelPop.json"
+                data-order-sails="/lg5-common/data-ajax/mypage/orderCancel.json"
+                data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
+                data-order-number="AD9876898765"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -70,7 +77,7 @@
 
                                     <div class="section-inner type3">
                                         <!-- 신청 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box orderuser">
                                             <p class="inner-tit">신청 정보 (계약자)</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -83,7 +90,7 @@
                                         <!-- // 신청 정보 -->
 
                                         <!-- 배송 설치 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box shipping">
                                             <p class="inner-tit">배송 설치 정보 (실사용자)</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -102,7 +109,7 @@
                                         <!-- // 배송 설치 정보 -->
 
                                         <!-- 결제 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box payment">
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -114,7 +121,7 @@
 
                                         <!-- 210304 수정 [납부 정보변경 버튼, 정보변경 활성화 영역 추가] -->
                                         <!-- 납부 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box monthly-payment">
                                             <p class="inner-tit">납부 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -132,7 +139,7 @@
                                         <!-- // 납부 정보 -->
 
                                         <!-- 납부 정보 : 정보변경 활성화 -->
-                                        <div class="inner-box payment modify" style="display:block !important">
+                                        <div class="inner-box monthly-payment-modify">
                                             <p class="inner-tit">납부 정보</p>
                                             <div class="payment-info">
                                                 <div class="form-wrap size2">
@@ -141,7 +148,7 @@
                                                             <p class="label req">결제 수단<span class="blind">필수입력</span></p>
                                                         </dt>
                                                         <dd class="conts">
-                                                            <div class="select-list-wrap w-auto">
+                                                            <div class="select-list-wrap w-auto payment-method">
                                                                 <ul class="ui_radio_visible">
                                                                     <li>
                                                                         <span class="rdo-wrap">
@@ -169,7 +176,7 @@
                                                                                     <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
                                                                                     <dd class="conts">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
+                                                                                            <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
                                                                                         </div>
                                                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                                     </dd>
@@ -234,7 +241,7 @@
                                                                                     <dd class="conts">
                                                                                         <div class="box">
                                                                                             <div class="input-wrap">
-                                                                                                <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
+                                                                                                <input type="number" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
                                                                                             </div>
                                                                                             <div class="cell">
                                                                                                 <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
@@ -293,7 +300,7 @@
                                                         </dd>
                                                     </dl>
                                                 </div>
-                                                <div class="btn-group center">
+                                                <div class="btn-group btn-payment center">
                                                     <button type="button" class="btn border size-m cancel-btn"><span>취소</span></button>
                                                     <button type="button" class="btn border pink size-m ok-btn"><span>저장</span></button>
                                                 </div>
@@ -328,6 +335,7 @@
         @@include('./common/footer.html')
     </div>
     
+   
     <!-- 취소신청-->
     @@include('./common/popup/ACCF7002_pop1.html', {
         popupID: 'popup-cancel'
