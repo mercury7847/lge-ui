@@ -71,7 +71,7 @@
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size"><span>{{item.title}}</span></a>{{/each}}' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
