@@ -4,7 +4,7 @@
         pageCSS: ["BMC/BMC"]
     })
 <body>
-    <article id="popup" class="win-popup-wrap">
+    <article id="popup" class="win-popup-wrap uiForm">
         <header class="pop-header">
             <h1 class="tit"><span>이벤트 참여하기</span></h1>
         </header>
@@ -19,7 +19,7 @@
                         <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" id="buyerName" value="홍길동" placeholder="이름을 입력해 주세요." disabled>
+                                <input type="text" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -37,7 +37,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="buyerPhone" placeholder="‘-’없이 번호만 입력해 주세요." disabled>
+                                <input type="number" name="buyerPhone" data-required="true" id="buyerPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -52,7 +52,7 @@
                         <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                                <input type="text" name="modelName" data-required="true" id="modelName" placeholder="모델명을 입력해 주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -61,11 +61,11 @@
                         <dd class="conts">
                             <div class="box">
                                 <div class="input-wrap">
-                                    <input type="text" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                                    <input type="text" name="serialNum" data-required="true" id="serialNum" placeholder="S/N을 입력해 주세요.">
                                     <p class="link"><a href="#n" class="btn-link">제품 제조번호 확인방법</a></p>
                                 </div>
                                 <div class="cell">
-                                    <button type="button" class="btn"><span>제조번호 확인</span></button>
+                                    <button type="button" class="btn" id="serialCheckBtn"><span>제조번호 확인</span></button>
                                 </div>
                             </div>
                         </dd>
@@ -76,18 +76,18 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" id="buyerAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" name="buyerAddr" data-required="true" id="buyerAddr" value="05723" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                        <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                                <input type="text" name="buyerAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -111,7 +111,7 @@
                         <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="recipientName" placeholder="이름을 입력해 주세요." value="">
+                                <input type="text" name="recipientName" data-required="true" id="recipientName" placeholder="이름을 입력해 주세요." value="">
                             </div>
                         </dd>
                     </dl>
@@ -121,7 +121,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                                <input type="text" name="recipientPhone" data-required="true" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -143,18 +143,18 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" id="recipientAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" name="recipientAddr" data-required="true" id="recipientAddr" value="05723" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                        <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                                <input type="text" name="recipientAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -218,7 +218,7 @@
                     })
                     <div class="agree-input">
                             <span class="chk-wrap">
-                                <input type="checkbox" id="chk1-1" name="agreechk-1" >
+                                <input type="checkbox" id="chk1-1" name="agreechk-1" data-required="true" >
                                 <label for="chk1-1">동의합니다</label>
                             </span>
                     </div>
@@ -254,7 +254,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="chk2-1" name="agreechk-2" >
+                            <input type="checkbox" id="chk2-1" name="agreechk-2" data-required="true" >
                             <label for="chk2-1">동의합니다</label>
                         </span>
                     </div>
@@ -293,7 +293,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="chk3-1" name="agreechk-3" >
+                            <input type="checkbox" id="chk3-1" name="agreechk-3" data-required="true">
                             <label for="chk3-1">동의합니다</label>
                         </span>
                     </div>
@@ -303,10 +303,152 @@
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>신청하기</span></button>
+                <button type="button" class="btn pink" id="uiSubmit"><span>신청하기</span></button>
             </div>
         </footer>
         <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
+    
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation'], function (Validation) {
+
+                // 구매자 정보와 같음
+                var addAddressObj = {
+                    recipientName:'박종민',
+                    recipientPhone:'01023457890',
+                    recipientAddr:'02345',
+                    recipientAddrInfo:'서울시',
+                    recipientAddrDetail:'엘지 송파빌딩 1702호'
+                }
+                // 구매자 정보를 비움
+                var emptyAddAddressObj = {
+                    recipientName:'',
+                    recipientPhone:'',
+                    recipientAddr:'05723',
+                    recipientAddrInfo:'',
+                    recipientAddrDetail:''
+                }
+                
+
+                
+				var register = {
+                    buyerName:{
+						value:'',
+						required:true
+					},
+                    buyerPhone:{
+						value:'',
+						required:true
+					},
+                    modelName:{
+						value:'',
+						required:true
+					},                    
+					// serialNum:{
+					// 	required: true,
+					// 	value:'',
+					// 	validate : function(val){
+					// 		var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
+					// 		return reg.test(val);
+					// 	}
+					// },
+                    // buyerAddr:{
+					// 	value:'0555',
+					// 	required:true
+					// },
+                    // buyerAddrInfo:{
+					// 	value:'서울시',
+					// 	required:true
+					// },
+                    // buyerAddrDetail:{
+					// 	value:'엘지 송파빌딩 1702호',
+					// 	required:true
+					// },
+				}
+
+
+                $('#serialNum').css('text-transform', 'uppercase');
+               
+
+
+				var validation = new Validation('.uiForm',{register:register});
+                
+                validation.on('update', function(e){ 
+
+                }).on('errors', function(e,data){
+                    console.log('errors', data); 
+                    if(data['serialNum'] == undefined && !checkSerialSuccess){
+                        lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});                        
+                    }
+
+                }).on('success', function(data){
+
+                    console.log(validation.getValues());
+
+                }).on('nextfocus', function(e,target){
+
+                    if(target.attr('name') == 'buyerAddrInfo'){
+                        setTimeout(function () {
+                            $('#buyerAddrBtn').focus();
+                        }, 10);                        
+                    }
+
+                    if(target.attr('name') == 'recipientAddrInfo'){
+                        setTimeout(function () {
+                            $('#recipientAddrBtn').focus();
+                        }, 10);
+                    }
+
+                });
+
+                var checkSerialSuccess = false;
+
+                // 제조번호 확인
+                $('#serialCheckBtn').on('click', function(e){
+
+                    var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
+                    checkSerialSuccess = serialRegex.test($('#serialNum').val());
+
+                    if(checkSerialSuccess) {
+                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                    } else {
+                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                    }
+                });
+
+                // 구매자 정보와 같음
+                $('#info').on('click',function(e){
+                    if(e.currentTarget.checked){
+                        validation.setValues(addAddressObj);
+                    }else{
+                        validation.setValues(emptyAddAddressObj);
+                    }
+                });
+
+                // 구매정보 주소 찾기
+                $('#buyerAddrBtn').on('click', function(e){
+
+                });
+
+                // 사은품 주소 찾기
+                $('#recipientAddrBtn').on('click', function(e){
+
+                });
+
+                // 
+                $('#uiSubmit').on('click', function(){  
+
+                    validation.validate(); 	
+
+                });
+            })
+
+
+        });
+        
+    </script>
+
 </body>
 </html>

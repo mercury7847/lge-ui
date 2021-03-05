@@ -390,6 +390,7 @@
                 });
             });
 
+
             self.$snInput.on('input', function(e){
                 checkSerialSuccess = false;
                 if(e.target.value.length > 14){
@@ -398,6 +399,9 @@
             })
 
             //제조번호 확인
+
+            self.$snInput.css('text-transform', 'uppercase'); // 대문자로 입력받기
+
             self.$snCheckButton.on('click', function(e){
                 var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());

@@ -165,7 +165,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 // list 값이 있으면 select를 갱신시킨다.
                 self.el.options.length = 0;
                 core.each(list, function (item, i) {
-
                     
                     if ('text' in item) {
                         self.el.options.add(new Option(item.text || item.value, item.value));
@@ -448,6 +447,13 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             self.$selectbox.append(self.$label);
         },
+
+
+        focus: function() {
+            var self = this;
+            self.$selectbox.find('.ui-select-button').focus();
+        },
+
 
         /**
          * 리스트 생성
@@ -1062,7 +1068,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             // puiblic 메소드를 외부에서 호출할 수 있도록 현재인스턴스에 추가
             self.$selectbox = self.sel.$selectbox;
-            core.each(['selectedIndex', 'value', 'text', 'selectedOption', 'update', 'hide', 'show', 'toggle', 'readonly', 'disabled'], function (name) {
+            core.each(['selectedIndex', 'value', 'text', 'selectedOption', 'update', 'hide', 'show', 'toggle', 'readonly', 'disabled', 'focus'], function (name) {
                 self[name] = function () {
                     return this.sel[name].apply(this.sel, [].slice.call(arguments, 0));
                 };
