@@ -1051,6 +1051,13 @@ CS.MD.commonModel = function() {
                         }
                     },
                     {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 2,
+                        }
+                    },
+                    {
                         breakpoint: 768,
                         settings: {
                             arrows: false,
@@ -1062,7 +1069,7 @@ CS.MD.commonModel = function() {
                 ]
             });
 
-            self.$myModelSlider.find('a').on('click', function(e) {
+            self.$myModelSlider.on('click', 'a.slide-box', function(e) {
                 e.preventDefault();
 
                 var $this = $(this),
@@ -1298,6 +1305,7 @@ CS.MD.commonModel = function() {
             }
 
             self.$myModelArea.show();
+            self.$myModelSlider.vcCarousel('resize');
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
             self.$categoryBox.addClass(opts.stepActiveClass);
