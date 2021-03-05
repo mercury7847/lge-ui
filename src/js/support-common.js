@@ -1051,6 +1051,13 @@ CS.MD.commonModel = function() {
                         }
                     },
                     {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 2,
+                        }
+                    },
+                    {
                         breakpoint: 768,
                         settings: {
                             arrows: false,
