@@ -35,9 +35,11 @@
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="#">' +
+                    '{{#if carePrice}}' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
                             '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
@@ -88,6 +90,18 @@
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -105,6 +119,13 @@
 
                     self.updateBasicData();
                 });
+            },
+
+            getCategoryFromFilter: function(filterData) {
+                if(!filterData) return null;
+                var filterData = JSON.parse(filterData);
+                var category = filterData["category"];
+                return category ? category : [];
             },
 
             makeFilterData: function(data) {
