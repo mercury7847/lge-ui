@@ -557,7 +557,6 @@
                 $('#centerCode').val('');
                 $('#date').val('');
                 $('#time').val('');
-                $('#phoneNo').val('');
                 self.$stepInput.find('input[type=radio]').prop('checked', false);
                 
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();

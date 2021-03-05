@@ -3,9 +3,20 @@
     @@include('./common/head.html', {
         pageCSS: ["BMC/BMC"]
     })
+
+
+<style>
+/*     
+    :focus { 
+        background-color: transparent;
+	    text-decoration: none;
+	    color: inherit;
+        outline:1px solid black;
+    } */
+</style>
 <body>
     <!-- width: 912px -->
-    <article id="popup" class="win-popup-wrap">
+    <article id="popup" class="win-popup-wrap uiForm">
         <header class="pop-header">
             <h1 class="tit"><span>이벤트 참여하기</span></h1>
         </header>
@@ -27,7 +38,7 @@
                         <dt class="tit"><label for="name" class="req">이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="text" id="name" placeholder="이름을 입력해 주세요.">
+                                <input type="text" id="name" name="buyerName" data-required="true" placeholder="이름을 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -35,7 +46,7 @@
                         <dt class="tit"><label for="phone" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="number" id="phone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                                <input type="number" id="phone" name="buyerPhone" data-required="true" placeholder="‘-’없이 번호만 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -44,10 +55,10 @@
                         <dt class="tit"><label for="modelName">모델명</label></dt>
                         <dd class="conts">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" id="modelName" title="모델명 선택">
+                                <select class="ui_selectbox" name="modelName" id="modelName" title="모델명 선택">
                                     <option value="" class="placeholder">선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                    <option value="">모델명</option>
-                                    <option value="">모델명</option>
+                                    <option value="1">모델-1</option>
+                                    <option value="2">모델-2</option>
                                 </select>
                             </div>
                         </dd>
@@ -59,10 +70,10 @@
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" id="purDateY" title="년 선택">
+                                            <select class="ui_selectbox" name="purDateY" id="purDateY" title="년 선택">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="">2020</option>
-                                                <option value="">2019</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>년</span></div>
@@ -71,10 +82,10 @@
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" id="purDateM" title="월 선택">
+                                            <select class="ui_selectbox" name="purDateM" id="purDateM" title="월 선택">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="">10</option>
-                                                <option value="">11</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>월</span></div>
@@ -83,10 +94,10 @@
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" id="purDateD" title="일 선택">
+                                            <select class="ui_selectbox" name="purDateD" id="purDateD" title="일 선택">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="">17</option>
-                                                <option value="">18</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>일</span></div>
@@ -99,10 +110,10 @@
                         <dt class="tit"><label for="purShop">구매장소</label></dt>
                         <dd class="conts">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" id="purShop" title="구매장소 선택">
+                                <select class="ui_selectbox" name="purShop" id="purShop" title="구매장소 선택">
                                     <option value="" class="placeholder">선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                    <option value="">구매장소</option>
-                                    <option value="">구매장소</option>
+                                    <option value="1">구매장소-1</option>
+                                    <option value="2">구매장소-2</option>
                                 </select>
                             </div>
                         </dd>
@@ -111,7 +122,7 @@
                         <dt class="tit"><label for="branchName">지점명</label></dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="text" id="branchName" placeholder="지점명을 입력해 주세요.">
+                                <input type="text" name="branchName" id="branchName" placeholder="지점명을 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -120,11 +131,11 @@
                         <dd class="conts">
                             <div class="box">
                                 <div class="input-wrap">
-                                    <input type="text" id="serialNum" placeholder="제조번호를 입력해 주세요.">
+                                    <input type="text" name="serialNum" id="serialNum" placeholder="제조번호를 입력해 주세요.">
                                     <p class="link"><a href="#n" class="btn-link">제품 제조번호 확인방법</a></p>
                                 </div>
                                 <div class="cell">
-                                    <button type="button" class="btn"><span>제조번호 확인</span></button>
+                                    <button type="button" class="btn" id="serialCheckBtn"><span>제조번호 확인</span></button>
                                 </div>
                             </div>
                         </dd>
@@ -186,7 +197,7 @@
                         <dt class="tit"><label for="name2" class="req">이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="text" id="name2" placeholder="이름을 입력해 주세요.">
+                                <input type="text" name="userName" id="name2" data-required="true" placeholder="이름을 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -194,7 +205,7 @@
                         <dt class="tit"><label for="phone2" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="number" id="phone2" placeholder="‘-’없이 번호만 입력해 주세요.">
+                                <input type="number" name="userPhone" data-required="true" id="phone2" placeholder="‘-’없이 번호만 입력해 주세요.">
                             </span>
                         </dd>
                     </dl>
@@ -206,18 +217,18 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" id="inp03-2" value="" placeholder="우편번호" disabled>
+                                        <input type="text" name="zipCode" data-required="true" id="inp03-2" value="" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                        <button type="button" class="btn" id="addressSearchBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" name="addressInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" value="" placeholder="상세주소를 입력해주세요.">
+                                <input type="text" name="addressDetail" data-required="true" value="" placeholder="상세주소를 입력해주세요." >
                             </div>
                         </dd>
                     </dl>
@@ -243,10 +254,10 @@
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" id="serviceYear" title="년 선택">
+                                            <select class="ui_selectbox" name="serviceYear" id="serviceYear" title="년 선택" data-required="true">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="">2020</option>
-                                                <option value="">2019</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>년</span></div>
@@ -255,10 +266,10 @@
                                 <div class="cell">
                                     <div class="box">
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" id="serviceMonth" title="월 선택">
+                                            <select class="ui_selectbox" name="serviceMonth" id="serviceMonth" title="월 선택" data-required="true">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="">10</option>
-                                                <option value="">11</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>월</span></div>
@@ -329,7 +340,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="agreechk-1" name="agreechk-1" >
+                            <input type="checkbox" id="agreechk-1" name="agreechk-1" data-required="true">
                             <label for="agreechk-1">동의합니다</label>
                         </span>
                     </div>
@@ -372,7 +383,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="agreechk-2" name="agreechk-2" >
+                            <input type="checkbox" id="agreechk-2" name="agreechk-2" data-required="true">
                             <label for="agreechk-2">동의합니다</label>
                         </span>
                     </div>
@@ -383,10 +394,154 @@
 
         <footer class="pop-footer center">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>이벤트 응모하기</span></button>
+                <button type="button" class="btn pink" id="uiSubmit"><span>이벤트 응모하기</span></button>
             </div>
         </footer>
         <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
+
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation'], function (Validation) {
+
+                // 구매내역 입력
+                var buyerInfoObj = {
+                        buyerName:'박종민',
+                        buyerPhone:'01023457890',
+                        modelName:'2',
+                        purDateY:'2021',
+                        purDateM:'3',
+                        purDateD:'1',
+                        purShop:'2',
+                        branchName:'강남본점',
+                        serialNum:'12212',
+                }
+                // 구매내역 비움
+                var emptyBuyerInfoObj = {
+                        buyerName:'',
+                        buyerPhone:'',
+                        modelName:'',
+                        purDateY:'2021',
+                        purDateM:'3',
+                        purDateD:'1',
+                        purShop:'',
+                        branchName:'',
+                        serialNum:'',
+                }
+                
+				var register = {                      
+					serialNum:{
+						value:'',
+						validate : function(val){
+							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
+							return reg.test(val);
+						}
+					},
+                    zipCode:{
+						value:'0555',
+						required:true
+					},
+                    addressInfo:{
+						value:'서울시',
+						required:true
+					},
+                    addressDetail:{
+						value:'엘지 송파빌딩 1702호',
+						required:true
+					}                   
+				}
+
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = today.getMonth() + 1;
+                var days = today.getDate();
+
+                //console.log(year, month,days);
+
+                //var lastDay = new Date(year, month, 0).getDate();
+                var lastDay = new Date(year, month, 0).getDate();
+                console.log(lastDay);
+
+
+                var newYear = []; //{text:'', value:''}
+
+                
+
+
+                $('#serialNum').css('text-transform', 'uppercase');
+
+
+                var checkSerialSuccess = false;                
+				var validation = new Validation('.uiForm',{register:register});
+                
+                validation.on('update', function(e){ 
+
+                    $('.uiForm').find('.ui_selectbox').vcSelectbox('update');
+
+                }).on('errors', function(e,data){
+                    console.log('errors', data); 
+                    // if(data['serialNum']){
+                    // }
+
+                }).on('success', function(data){
+
+                    console.log(validation.getValues());
+
+                }).on('nextfocus', function(e,target){
+
+                    if(target.hasClass('ui_selectbox')) {
+						target.vcSelectbox('focus');
+					}
+
+                    if(target.attr('name') == 'addressInfo'){
+                        setTimeout(function () {
+                            $('#addressSearchBtn').focus();
+                        }, 10);                        
+                    }
+                });
+
+                // 제조번호 확인
+                $('#serialCheckBtn').on('click', function(e){
+
+                    var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
+                    checkSerialSuccess = serialRegex.test($('#serialNum').val());
+
+                    if(checkSerialSuccess) {
+                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                    } else {
+                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                    }
+                });
+
+                // 구매정보 직접입력
+                $('#chk-input-1').on('click',function(e){
+                    if(e.currentTarget.checked){
+                        validation.setValues(emptyBuyerInfoObj);
+                    }else{
+                        validation.setValues(buyerInfoObj);
+                    }
+                });
+
+                // 서비스 요청 정보 주소찾기
+                $('#addressSearchBtn').on('click', function(e){
+
+                });
+
+                // 
+                $('#uiSubmit').on('click', function(){  
+                    if(checkSerialSuccess){
+                        validation.validate(); 	
+                    }else{
+                        lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
+                    }
+                });
+
+                checkSerialSuccess = true;
+                validation.setValues(buyerInfoObj);
+
+            })
+        });
+    </script>
 </body>
 </html>

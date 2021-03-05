@@ -4,6 +4,30 @@
  * @description Validation
  * @copyright VinylC UID Group
  * 
+ * 
+ * 
+var validation = new vcui.ui.Validation('#wrap',{register:register});
+
+validation.on('update', function(e){ 
+    $('.ui_selectbox').vcSelectbox('update');
+
+}).on('errors', function(e,data){
+    console.log('errors', data); // 이걸 어떤식으로 쓸까?
+
+}).on('success', function(data){
+    console.log(validation.getValues());
+
+}).on('nextfocus', function(e,target){
+    // 커스텀 selectbox 포커스 이동
+    if($(target).hasClass('ui_selectbox')) {
+        $(target).vcSelectbox('focus');
+    }
+});
+
+$('#submit').on('click', function(){
+    validation.validate(); // 체크					
+});
+
  * validation.setValues({name:'박종민', years:2018}); 필드값을 입력
  * validation.getValues('name'); 이름이 같은 필드값만 반환
  * validation.getValues(); 모든 값을 반환
@@ -44,13 +68,17 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             self.$el.find('[name]').each(function(index,item){
 
                 var required = $(item).data('required'); 
+                if(register[item.name]){
+                    required = register[item.name]['required'];
+                }
+                
                 var msgTarget = $(item).data('msgTarget'); 
                 var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg;
                 var patternMsg = $(item).data('patternMsg') || '';
                 
                 if(required && /true/i.test(required)){
                     
-                    var value = $(item).data('value');
+                    var value = $(item).data('value') || $(item).attr('value');
                     var pattern = $(item).data('pattern');
                     var minLength = $(item).data('minLength');
                     var maxLength = $(item).data('maxLength');
@@ -67,7 +95,13 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         errorMsg : errorMsg
                     }
 
-                    if(value) newObj[item.name]['value'] = value;
+                    if(value!=undefined){ 
+                        newObj[item.name]['value'] = value;
+                    }else{
+                        if($(item).is(':checkbox')) newObj[item.name]['value'] = false;
+                    }
+
+
                     if(pattern) newObj[item.name]['pattern'] = new RegExp(pattern);
                     if(minLength) newObj[item.name]['minLength'] = minLength;
                     if(maxLength) newObj[item.name]['maxLength'] = maxLength;
@@ -93,7 +127,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             });
 
             self.register = newObj;
-
             self.nameArr = vcui.array.unique(self.nameArr);
 
             self._build();
@@ -119,6 +152,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     var errblock = self._getMsgBlock($target, msg);
                     errblock.hide();
                 };
+
 
                 if($target.is('[type=number]') && $target.prop('maxlength') > 0){
                     $target.on('input', function(){
@@ -186,7 +220,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         delete rObj[key];
                     }
                 }else{
-                    if(self._defaultCheckFunc(val)){
+                    // if(self._defaultCheckFunc(val)){
                         if(obj.minLength || obj.maxLength){
                             if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
                                 rObj[key] = isFalse? val : obj.errorMsg;
@@ -201,9 +235,9 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                                 delete rObj[key];
                             }
                         }
-                    } else{
-                        rObj[key] = isFalse? val : obj.errorMsg;
-                    }
+                    // } else{
+                    //     rObj[key] = isFalse? val : obj.errorMsg;
+                    // }
                 }
             } 
 
@@ -267,8 +301,13 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                                     $target.filter(':checked').each(function(idx, item){
                                         nArr.push($(item).val())
                                     });
-                                    val = $target.is(':radio')? nArr[0] : nArr;
 
+                                    if($target.is(':radio')){
+                                        val = nArr[0];                                        
+                                    }else{
+                                        if(nArr.length==1) val = nArr[0];
+                                        else val = nArr;
+                                    }            
                                 }else{
                                     val = $target.val();
                                 }
@@ -291,12 +330,26 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 $target = self.$el.find('[name='+ key +']');
                 if($target.is(':radio')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
-                } else if($target.is(':checkbox')){
+                } else if($target.is(':checkbox')){                    
                     $target.filter('[name='+ key +']').prop('checked', obj[key]);
                 }else{
                     if($target.is('select')){
-                        $target.find('option[value=' + obj[key] + ']').prop("selected", true);
+
+                        var value = obj[key];
+
+                        if(value==undefined || value==''){
+                            value = 0;
+                        }
+
+
+                        if($target.find('option[value=' + value + ']')[0]){
+                            $target.find('option[value=' + value + ']').prop("selected", true);
+                        }else{
+                            $target.find('option').eq(0).prop("selected", true);
+                        }
+                        
                         $($target).vcSelectbox('update');
+                        
                     } else{
                         $target.val(obj[key]);
                     }
@@ -322,11 +375,12 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     $target = self.$el.find('[name='+ key +']');
                     if($target.is(':checkbox') || $target.is(':radio')){
                         var nArr = [];
-                        $target.filter(':checked').each(function(idx, item){
+                        $target.filter(':checked').each(function(idx, item){   
                             nArr.push($(item).val())
                         });
+                        
                         val = $target.is(':radio')? nArr[0] : nArr;
-                        if(val=='on') val = '';
+                        if(val==='on') val = '';
 
                     }else{
                         val = $target.val();
@@ -342,7 +396,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         validate : function validate(){
             var self = this;
             var rObj = self._setCheckValidate();
-            //console.log("validate:", rObj)
 
             var firstName = vcui.object.keys(rObj)[0];
             if(firstName){
@@ -439,11 +492,10 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if($this.is(':radio') || $this.is(':checkbox')){
                     var nArr = [];
                     $this.filter(':checked').each(function(idx, item){
-                        nArr.push($(item).val())
+                        nArr.push($(item).val());
                     });
                     val = $this.is(':radio')? nArr[0] : nArr;
-                    // if(val=='on') val = '';
-                    if(val=='on' || val == undefined) val = '';
+                    if(val==='on' || val == undefined) val = '';
                 }else{
                     val = e.currentTarget.value.trim();
                 }
@@ -618,11 +670,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         if (($target.is('[type=hidden]') || $target.is(':visible')) && !$target.prop('disabled')) {
                             if($target.is(':checkbox') || $target.is(':radio')){
                                 var nArr = [];
-                                $target.filter(':checked').each(function(idx, item){
+                                $target.filter(':checked').each(function(idx, item){                                    
                                     nArr.push($(item).val())
                                 });
                                 val = $target.is(':radio')? nArr[0] : nArr;
-                                if(val=='on' || val == undefined) val = '';
+                                if(val==='on' || val == undefined) val = '';
                             }else{
                                 val = $target.val().trim();
                             }

@@ -28,7 +28,7 @@
                     <dd class="conts">
                         <div class="input-box btn-type">
                             <span class="input-wrap">
-                                <input type="text" id="inp01" value="" placeholder="이름을 입력해 주세요.">
+                                <input type="text" name="name" data-required="true" id="inp01" value="" placeholder="이름을 입력해 주세요.">
                             </span>
                             <button type="button" id="button-search" class="btn pink"><span>조회</span></button>
                         </div>
@@ -47,6 +47,31 @@
         </section>
         <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
+
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation'], function (Validation) {
+               
+				var validation = new Validation('.form-wrap');
+
+                $('#inp01').on('keydown', function(e){
+                    if(e.keyCode==13){
+                        $('#button-search').trigger('click');
+                    }
+                })
+
+                $('#button-search').on('click', function(){
+                    validation.validate(); 	
+                    var value = $('#inp01').val();
+                    console.log(value)                                    
+                });
+
+            })
+
+        });
+        
+    </script>
 
 </body>
 </html>

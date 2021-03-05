@@ -36,28 +36,38 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             
             self.mode = mode;
-            
+            //self.mode = "m";
             self.$el.find('.ui_bg_switch').each(function(idx, item){
+                /*
                 var imgsrc = $(item).attr("data-" + self.mode + "-src");
                 $(item).css({
                     'background-image': 'url(' + imgsrc + ')'
                 });
+                */
+                var imgsrc = item.dataset[(self.mode + "Src")];
+                if(imgsrc && item.dataset.backgroundImage != imgsrc) {
+                    item.style.backgroundImage = 'url(' + imgsrc + ')';
+                    item.dataset.backgroundImage = imgsrc;
+                }
             });
 
-            self.$el.find('img').each(function(idx, item){
+            self.$el.find('img[data-pc-src],img[data-m-src]').each(function(idx, item){
+                /*
                 var imgsrc = $(item).attr("data-" + self.mode + "-src");
                 if(!imgsrc) {
                     imgsrc = $(item).attr('data-pc-src');
                 }
                 $(item).attr('src', imgsrc);
-
-                /*
-                var pcsrc = $(item).attr('data-pc-src');
-                if(pcsrc !== undefined){
-                    var imgsrc = $(item).attr("data-" + self.mode + "-src");
-                    $(item).attr('src', imgsrc);
-                }
                 */
+                var imgsrc = item.dataset[(self.mode + "Src")];
+                //imgsrc += '?test=test2';
+                //var test = imgsrc.substring(imgsrc.lastIndexOf('/') + 1);
+                //console.log(test);
+                //console.log(self.mode + "Src",imgsrc,item.src);
+                if(imgsrc && imgsrc != item.dataset.currentImage) {
+                    item.src = imgsrc;
+                    item.dataset.currentImage = imgsrc;
+                }
             })
         },
 
