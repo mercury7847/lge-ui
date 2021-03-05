@@ -737,6 +737,13 @@
             .btn-group {
                 margin-top: 16px;
                 text-align: right;
+                .btn {
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: $color-white;
+                    }
+                }
                 @include pc {
                     .btn {
                         margin-bottom: 4px;
