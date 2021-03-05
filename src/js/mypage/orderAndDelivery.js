@@ -436,7 +436,7 @@
             if(wrapper.hasClass("orderAndDelivery-detail")){                
                 setProductStatus(dataID, prodID, pdpUrl);
             } else{
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG;
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG + "&requestNo=" + ORDER_LIST[dataID].requestNo;
             }
         });
 
