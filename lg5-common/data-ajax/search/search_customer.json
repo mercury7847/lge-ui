@@ -261,7 +261,8 @@
                 "hasReview":true,
                 "rating":"40",
                 "review":"34",
-                "obsFlag":"Y"
+                "obsFlag":"Y",
+                "modelStatusCode":"ACTIVE"
             },
             {
                 "url":"#",
@@ -285,7 +286,8 @@
                 "hasReview":false,
                 "rating":"39",
                 "review":"33",
-                "obsFlag":"Y"
+                "obsFlag":"Y",
+                "modelStatusCode":"ACTIVE"
             },
             {
                 "url":"#",
@@ -309,7 +311,8 @@
                 "hasReview":false,
                 "rating":"39",
                 "review":"33",
-                "obsFlag":"Y"
+                "obsFlag":"Y",
+                "modelStatusCode":"ACTIVE"
             },
             {
                 "url":"#",
@@ -333,7 +336,8 @@
                 "hasReview":false,
                 "rating":"39",
                 "review":"33",
-                "obsFlag":"Y"
+                "obsFlag":"Y",
+                "modelStatusCode":"ACTIVE"
             }
         ]
     }
