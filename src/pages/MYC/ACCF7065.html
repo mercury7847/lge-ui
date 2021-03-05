@@ -13,6 +13,7 @@
                 "pageTitle": "청약 상세보기"
             })
             <!-- mypage -->
+            <!-- 2021.03.05 -->
             <div class="contents mypage orderAndDelivery-careDetail"        
                 data-order-inquiry-list="/lg5-common/data-ajax/mypage/careOrderDetailList.json"
                 data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
@@ -20,6 +21,11 @@
                 data-order-sails="/lg5-common/data-ajax/mypage/orderCancel.json"
                 data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
                 data-order-number="AD9876898765"
+                
+                data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
+                data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
+                data-ars-agree-url="/lg5-common/data-ajax/mypage/requestArsAgree.json"
+                data-payment-save-url = "/lg5-common/data-ajax/mypage/infoModifySave.json"
             >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
@@ -139,7 +145,7 @@
                                         <!-- // 납부 정보 -->
 
                                         <!-- 납부 정보 : 정보변경 활성화 -->
-                                        <div class="inner-box monthly-payment-modify">
+                                        <div class="inner-box monthly-payment-modify" style="display:none;">
                                             <p class="inner-tit">납부 정보</p>
                                             <div class="payment-info">
                                                 <div class="form-wrap size2">
@@ -353,6 +359,12 @@
         popupID: 'popup-receipt-list'
     })
     <!-- // 영수증 발급 내역 -->
+
+    <!-- 자동결제 이용 약관 동의 -->
+    @@include('./common/popup/RMSF9001_pop8.html', {
+        popupID: 'popup-selfClearing'
+    })
+    <!-- 자동결제 이용 약관 동의 -->
 
     <!-- 매월 납부금 할인 내역 -->
     @@include('./common/popup/ACCF7002_pop4.html', {
