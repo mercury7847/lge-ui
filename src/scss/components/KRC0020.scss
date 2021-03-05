@@ -90,13 +90,13 @@
                         opacity:1 !important;
                     }
                     .icon-text {
-                        color:#000;
+                        color:#000 !important;
                     }
                 }
                 .icon-text {
                     display:block;
                     background: none;
-                    color:#aaa;
+                    color:#aaa !important;
                     @include font-medium;
                     font-weight:700;
                 }	
