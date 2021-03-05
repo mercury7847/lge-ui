@@ -42,14 +42,14 @@
         .tabs {
             padding:16px 0;
             overflow-y:hidden;
-            display:flex;
-            justify-content:space-between;
+            // display:flex;
+            // justify-content:space-between;
             @include mobile {
                 display:block;
                 padding:16px 10px;
             }
             > li {
-                width:100%;
+                width:327px;
                 margin:0 7px;
                 @include mobile {
                     width:276px;
