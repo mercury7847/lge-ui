@@ -35,8 +35,9 @@
                 self.popUpDataSetting();
 
                 if(self.$component.data('consumables')) {
-                    vcui.require(['support/consumables.min'], function () {
+                    vcui.require(['support/consumables.min'], function (consumables) {
                         self.prepare();
+                        self.consumables = consumables;
                     });
                 } else {
                     self.prepare();
@@ -771,8 +772,15 @@
                         } else {
                             $(this).removeAttr('disabled');
                         }
+
+                        $(this).siblings('button.plus').removeAttr('disabled');
                     } else if($(this).hasClass('plus')) {
+                        var max = $(this).data('max');  
                         ++quantity;
+                        if (max && quantity >= max) {
+                            quantity = max;
+                            $(this).attr('disabled',true);
+                        }
 
                         if(quantity > 1) {
                             $(this).siblings('button.minus').removeAttr('disabled');
@@ -1337,14 +1345,16 @@
             getRewardInfo: function() {
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
+                var param = {
+                    modelId: sendData.modelId
+                }
                 if(!ajaxUrl) {
                     //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
                     ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
                 }
                 if(ajaxUrl) {
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
-                        console.log(result);
-                        var data = result.data;
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                        var data = result.data[0];
                         //로그인
                         loginFlag = data.loginFlag;
                         //보유멤버쉽 포인트
@@ -1354,6 +1364,10 @@
                         sendData.wishItemId = data.wishItemId;
                         var wishListFlag = lgkorUI.stringToBool(data.wishListFlag);
                         self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').prop("checked",wishListFlag);
+
+                        if(self.$component.data('consumables')) {
+                            self.consumables.init(data);
+                        }
                     }, true);
                 }
             },

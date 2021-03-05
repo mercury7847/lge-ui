@@ -26,12 +26,14 @@ $(window).ready(function(){
 								'<div class="average-rating"><span class="blind">평점</span>{{item.reviewsScore}}</div>' +
 								'<div class="review-count"><span class="blind">리뷰 수</span>({{item.reviewsCount}})</div>' +
 							'</div>' +
+							'{{#if item.checkBtnFlag}}'+
 							'<div class="product-price">' +
 								'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
 								'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
 							'</div>' +
+							'{{/if}}'+	
 						'</div>' +
-						'{{#if item.obsInventoryFlg == "Y" && item.obsSellFlag == "Y" && obsBtnRulle == "enable"}}'+
+						'{{#if item.checkBtnFlag}}'+
 						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +
@@ -91,6 +93,7 @@ $(window).ready(function(){
 						var data = result.data[0];
 						for(var key in data.productList){
 							var item = data.productList[key];
+							item.checkBtnFlag = self.checkBtnFlag(item);
 							item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
@@ -104,6 +107,14 @@ $(window).ready(function(){
 			});
 
 			self.setCarousel(self.$section.find('div.products-list-wrap .ui_carousel_slider'));
+		},
+
+		checkBtnFlag: function(item) {
+			if(lgkorUI.stringToBool(item.buyBtnFlag)) {
+				return (item.obsBtnRule=="enable") ? true : false;
+			} else {
+				return false;
+			}
 		},
 
 		setCarousel: function(slider){
@@ -146,11 +157,11 @@ $(window).ready(function(){
 
 			self.$section.find('div.products-list-wrap .ui_carousel_slider').on('click', 'li div.product-button a', function(e){
 				e.preventDefault();
-				var $li = $(this).parents('li');
-				self.requestCart($li);
+				self.requestCart($(this));
 			})
 		},
 
+		/*
 		requestData: function(_id) {
 			var self = this;
 			var ajaxUrl = self.$section.attr('data-list-url');
@@ -159,6 +170,7 @@ $(window).ready(function(){
 				var arr = data instanceof Array ? data : [];
 				var $list_ul = self.$slider.find('ul');
 				$list_ul.empty();
+				console.log(arr);
 				arr.forEach(function(item, index) {
 					item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                     item.price = item.price ? vcui.number.addComma(item.price) : null;
@@ -168,20 +180,24 @@ $(window).ready(function(){
 				self.$slider.vcCarousel('reinit');
 			});
 		},
+		*/
 
-		requestCart: function($dm) {
+		requestCart: function($this) {
 			var self = this;
+
+			var typeflag = $this.data('typeFlag');
+			var sendflag = (typeflag == "PRODUCT" || typeflag == "DISPOSABLE") ? "P" : "C";
+
 			var ajaxUrl = self.$section.attr('data-cart-url');
 			
 			var param = {
-				"id":$dm.attr('data-id'),
-				"sku":$dm.attr('data-sku'),
-				"wishListId":$dm.attr('data-wishListId'),
-				"wishItemId":$dm.attr('data-wishItemId'),
-				// "categoryId":$dm.attr('data-categoryId'),
-				// "rtSeq":$dm.attr('data-rtSeq'),
-				// "typeFlag":cartType
+				"id":$this.data('id'),
+				"sku":$this.data('modelName'),
+				"rtSeq":$this.data('rtSeq'),
+				"typeFlag": sendflag,
+				// 		"pageType": "plp"
 			}
+
 			lgkorUI.requestCart(ajaxUrl, param);
 		},
 	};

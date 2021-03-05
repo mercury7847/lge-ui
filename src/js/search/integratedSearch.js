@@ -42,6 +42,7 @@
             self.$searchLayer = $('#layerSearch');
             //검색어 입력input
             self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
+            self.$inputSearch.attr('data-autofocus',true);
             //검색버튼
             self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
             

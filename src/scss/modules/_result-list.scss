@@ -132,6 +132,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 .info-text {
+                    min-height: 100px;
                     padding-left: 124px;
                 }
             }
@@ -359,7 +360,6 @@
             display: inline-block;
             font-weight: 500;
             @include font-small;
-            color: $color-primary;
             vertical-align: top;
         }
         
@@ -534,7 +534,13 @@
                 //padding-left: 0;
                 @include mobile {
                     .info-text {
+                        min-height: auto;
                         padding-left: 0;
+                    }
+                }
+                @include pc {
+                    .result-detail {
+                        height: 52px;
                     }
                 }
             }

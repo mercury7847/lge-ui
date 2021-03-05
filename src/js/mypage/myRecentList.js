@@ -136,10 +136,10 @@
                 var param = {
                     "id":$dm.attr('data-id'),
                     "sku":$dm.attr('data-sku'),
-                    "typeFlag":cartType,
-                    "categoryId":$dm.attr('data-categoryId'),
                     "rtSeq":$dm.attr('data-rtSeq'),
-                    "requireCare":$dm.attr('data-requireCare')
+                    "typeFlag":cartType,
+                    //"categoryId":$dm.attr('data-categoryId'),
+                    //"requireCare":$dm.attr('data-requireCare')
                 }
 
                 /*
