@@ -34,13 +34,16 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             if(self.options.alway) {
                 self.$clearButton.show();
+                self.$el.parent().addClass('clear');
             } else {
                 var value = self.$el.val();
                 if(value && value.length > 0) {
                     self.$clearButton.show();
+                    self.$el.parent().addClass('clear');
                 } else {
                     if(!self.options.alway) {
                         self.$clearButton.hide();
+                        self.$el.parent().removeClass('clear');
                     }
                 }
             }
