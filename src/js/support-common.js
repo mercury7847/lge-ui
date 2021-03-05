@@ -2389,8 +2389,11 @@ $.fn.serializeObject = function() {
         })
         
         $(document).on('ajaxComplete', function() {
-            $('img').not('[data-pc-src]').on('error', function() {
+            $('img').not('[data-pc-src], #modelNamePopup img').on('error', function() {
                 lgkorUI.addImgErrorEvent(this);
+            });
+            $('#modelNamePopup img').on('error', function() {
+                lgkorUI.addModelNameImgErrorEvent(this);
             });
         });
     }
