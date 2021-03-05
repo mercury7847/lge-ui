@@ -10,7 +10,7 @@
     //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -33,8 +33,8 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
@@ -48,8 +48,8 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
     var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
@@ -101,8 +101,8 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<div class="price-info rental">' +
                     '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                 '</div>' +
@@ -114,8 +114,8 @@
                         '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</a></li>';
     var shopItemTemplate = '<li><div class="item">' +
