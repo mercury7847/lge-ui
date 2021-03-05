@@ -109,8 +109,10 @@
 		}
 		.counter {
 			position:absolute;
-			right:120px;
-			bottom:44px;
+			//right:120px;
+			right:50%;
+			transform: translateX(50%);
+			bottom:68px;
 			z-index:1;
 			color:rgba(#fff, .5);
 			@include mobile {
@@ -257,7 +259,7 @@
 			}
 		}
 		.tit-wrap {
-			margin-bottom:48px;
+			margin-bottom:44px;
 			text-align:center;
 			.tit {
 				font-size:32px;

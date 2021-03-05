@@ -1,0 +1,371 @@
+{
+  "ssoCheckUrl": null,
+  "status": "success",
+  "message": null,
+  "param":{
+      "pagination": {
+          "page": 1,
+          "totalCount": 1
+      }
+  },
+  "data": {
+      "productOrderCount": 5,
+      "caresolutionOrdercount": 3,
+      "listData": [
+          {
+              "orderDate": "2020.09.05",
+              "orderNumber": "20203987102999",
+              "orderTotal": "3",
+              "orderCancelAbleYn": "Y",
+              "productList": [
+                  {
+                      "modelID": "ADC495769328",
+                      "productFlag": "케어십",
+                      "productNameKR": "LG 디오스 상냉장하냉동",
+                      "productNameEN": "OLED55BXPUA",
+                      "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
+                      "productPDPurl": "#none",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": ["Silver"],
+                      "productTotal": "",
+                      "productPrice": "1760000",
+                      "discountPrice": "50000",
+                      "memberShipPoint":"0",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [],
+                      "itemCancelAbleYn": "Y"
+                  },
+                  {
+                      "modelID": "ADC49576932834",
+                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                      "productNameEN": "OLED552445UA",
+                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": [],
+                      "productTotal": "1",
+                      "productPrice": "50000",
+                      "discountPrice": "5000",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [
+                          {
+                              "className": "deliveryInquiry",
+                              "buttonName": "배송조회"
+                          },
+                          {
+                              "className": "deliveryRequest",
+                              "buttonName": "배송문의"
+                          },
+                          {
+                              "className": "takeBackInner",
+                              "buttonName": "반품신청"
+                          }
+                      ]
+                  },
+                  {
+                      "modelID": "ADC4957639428",
+                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                      "productNameEN": "OLED552445UA",
+                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": [],
+                      "productTotal": "1",
+                      "productPrice": "50000",
+                      "discountPrice": "5000",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "배송희망일 2020.09.18"
+                      },
+                      "statusButtonList": [
+                          {
+                              "className": "deliveryInquiry",
+                              "buttonName": "배송조회"
+                          },
+                          {
+                              "className": "deliveryRequest",
+                              "buttonName": "배송문의"
+                          },
+                          {
+                              "className": "productReview",
+                              "buttonName": "제품리뷰"
+                          }
+                      ]
+                  }
+              ],
+              "repaymentInfo": {
+                  "bankUserName": "이엘지",
+                  "bankList": [
+                      {
+                          "bankValue": "국민은행_코드",
+                          "bankName": "국민은행"
+                      },
+                      {
+                          "bankValue": "하나은행_코드",
+                          "bankName": "하나은행"
+                      },
+                      {
+                          "bankValue": "기업은행_코드",
+                          "bankName": "기업은행"
+                      },
+                      {
+                          "bankValue": "우리은행_코드",
+                          "bankName": "우리은행"
+                      },
+                      {
+                          "bankValue": "신한은행_코드",
+                          "bankName": "신한은행"
+                      }
+                  ]
+              }
+          },
+          {
+              "orderDate": "2020.09.05",
+              "orderNumber": "20203987102999",
+              "orderTotal": "3",
+              "orderCancelAbleYn": "N",
+              "productList": [
+                  {
+                      "modelID": "ADC495769328",
+                      "productNameKR": "LG 디오스 상냉장하냉동",
+                      "productNameEN": "OLED55BXPUA",
+                      "productImage": "/lg5-common/images/dummy/@img-product.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": ["주요스펙1", "주요스펙2"],
+                      "productTotal": "1",
+                      "productPrice": "1990000",
+                      "discountPrice": "80000",
+                      "orderStatus": {
+                          "disabled": "disabled",
+                          "statusText": "취소완료",
+                          "statusClass": "cancel",
+                          "statusDate": ""
+                      },
+                      "statusButtonList": [],
+                      "cancelAbled": "Y",
+                      "takebackAbled": "N"
+                  },
+                  {
+                      "modelID": "ADC4957639428",
+                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
+                      "productNameEN": "OLED552445UA",
+                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
+                      "productPDPurl": "http://www.lge.com",
+                      "productDetailUrl": "http://www.lge.com",
+                      "specList": [],
+                      "productTotal": "1",
+                      "productPrice": "57000",
+                      "discountPrice": "5000",
+                      "orderStatus": {
+                          "disabled": "",
+                          "statusText": "결제완료",
+                          "statusClass": "",
+                          "statusDate": "설치희망일 2020.09.18"
+                      },
+                      "statusButtonList": [
+                          {
+                              "className": "deliveryInquiry",
+                              "buttonName": "배송조회"
+                          },
+                          {
+                              "className": "deliveryRequest",
+                              "buttonName": "배송문의"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ],
+      "bankList": [
+        {
+          "commonCodeName": "산업은행",
+          "sortNo": 1,
+          "commonCodeId": "02"
+        },
+        {
+          "commonCodeName": "기업은행",
+          "sortNo": 2,
+          "commonCodeId": "03"
+        },
+        {
+          "commonCodeName": "국민은행",
+          "sortNo": 3,
+          "commonCodeId": "04"
+        },
+        {
+          "commonCodeName": "외환은행",
+          "sortNo": 4,
+          "commonCodeId": "05"
+        },
+        {
+          "commonCodeName": "수협중앙",
+          "sortNo": 5,
+          "commonCodeId": "07"
+        },
+        {
+          "commonCodeName": "농협중앙회",
+          "sortNo": 6,
+          "commonCodeId": "11"
+        },
+        {
+          "commonCodeName": "단위농협",
+          "sortNo": 7,
+          "commonCodeId": "12"
+        },
+        {
+          "commonCodeName": "우리은행",
+          "sortNo": 8,
+          "commonCodeId": "20"
+        },
+        {
+          "commonCodeName": "신한은행",
+          "sortNo": 9,
+          "commonCodeId": "21"
+        },
+        {
+          "commonCodeName": "SC제일",
+          "sortNo": 10,
+          "commonCodeId": "23"
+        },
+        {
+          "commonCodeName": "KEB하나은행(구하나,구외환)",
+          "sortNo": 11,
+          "commonCodeId": "25"
+        },
+        {
+          "commonCodeName": "씨티은행",
+          "sortNo": 12,
+          "commonCodeId": "27"
+        },
+        {
+          "commonCodeName": "대구은행",
+          "sortNo": 13,
+          "commonCodeId": "31"
+        },
+        {
+          "commonCodeName": "부산은행",
+          "sortNo": 14,
+          "commonCodeId": "32"
+        },
+        {
+          "commonCodeName": "광주은행",
+          "sortNo": 15,
+          "commonCodeId": "34"
+        },
+        {
+          "commonCodeName": "제주은행",
+          "sortNo": 16,
+          "commonCodeId": "35"
+        },
+        {
+          "commonCodeName": "전북은행",
+          "sortNo": 17,
+          "commonCodeId": "37"
+        },
+        {
+          "commonCodeName": "경남은행",
+          "sortNo": 18,
+          "commonCodeId": "39"
+        },
+        {
+          "commonCodeName": "마을금고",
+          "sortNo": 19,
+          "commonCodeId": "45"
+        },
+        {
+          "commonCodeName": "신용협동",
+          "sortNo": 20,
+          "commonCodeId": "48"
+        },
+        {
+          "commonCodeName": "상호저축",
+          "sortNo": 21,
+          "commonCodeId": "50"
+        },
+        {
+          "commonCodeName": "HSBC은행",
+          "sortNo": 22,
+          "commonCodeId": "54"
+        },
+        {
+          "commonCodeName": "도이치",
+          "sortNo": 23,
+          "commonCodeId": "55"
+        },
+        {
+          "commonCodeName": "우체국",
+          "sortNo": 24,
+          "commonCodeId": "71"
+        },
+        {
+          "commonCodeName": "K뱅크",
+          "sortNo": 25,
+          "commonCodeId": "89"
+        },
+        {
+          "commonCodeName": "카카오뱅크",
+          "sortNo": 26,
+          "commonCodeId": "90"
+        }
+      ],
+      "payment":{
+          "paymentMethodName":"신용카드(분할결제) 결제수단",
+          "receiptUrl": "/html/MYC/ACCF7105.html",
+          "orderPrice": 2834060,
+          "discountPrice": 834060,
+          "memberShipPoint": 0,
+          "totalPrice": 2000000
+      },
+      "shipping":{
+          "name":"이연철",
+          "street":"디지털로10길 22 (가산동, LG전자가산 B) 123",
+          "city":"서울",
+          "postcode":"08513",
+          "telephone":"01093696245",
+          "telephonenumber":"01093696245",
+          "recyclingPickup":"Y",
+          "shippingNoteTxt":"배송요청사항",
+          "instpectionVisit":"Y"
+      },
+      "orderUser":{
+        "userName": "박엘지",
+        "phoneNumber": "01098738946",
+        "email": "lg@lge.com"
+      },
+      "monthlyPayment":{
+        "paymentMethod": "bank",
+        "requestCard": "신청",
+        "requestCardName": "하나카드 LG전자 렌탈PLUS",
+        "paymentPriceInfo":["선납", "포인트 사용", "1년차 월 88,999원"],
+        "paymentMethodName": "신용카드",
+        "paymentTypeName": "하나카드",
+        "paymentNumber": "1234567891234",
+        "monthlyPriceUrl": "monthlyPriceUrl",
+        "cardInfo": {
+            "cardComName": "엘지카드",
+            "cardComValue": "11",
+            "cardNumber": "1234567891234567",
+            "cardPeriod": "0922"
+        },
+        "bankInfo":{
+            "bankUser": "이엘지",
+            "bankName": "엘지은행",
+            "bankValue": "222",
+            "bankNumber": "99999005431259988"
+        }
+      }
+  }
+}

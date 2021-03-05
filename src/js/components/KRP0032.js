@@ -4,14 +4,14 @@ $(window).ready(function(){
 	$('.KRP0032').buildCommonUI();
 
 	var popuplistItemTemplate = '<li>' +
-        '<div class="img"><a href="{{modelUrlPath}}"><img src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
+        '<div class="img"><a href="{{modelUrlPath}}"><img data-src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
         '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
 	var KRP0032 = {
 		init: function(){
             var self = this;
-            
+            self.listData = null;
             self.setting();
 		},
 
@@ -26,10 +26,15 @@ $(window).ready(function(){
             
             self.$a.on('click', function(e){
                 e.preventDefault();
-                self.requestData(true);
+                if(!self.listData) {
+                    self.requestData(true);
+                } else {
+                    self.openPopup();
+                }
             });
 
             self.$popup.on('click','.ui_modal_close',function(e){
+                self.$popup.addClass('close');
                 self.$popup.hide();
             });
             
@@ -42,6 +47,23 @@ $(window).ready(function(){
             }
         },
         
+        resetImage: function() {
+            var self = this;
+            var $img = self.$popup.find('img[data-src]');
+            $img.each(function(idx,obj){
+                if(!obj.src.length || obj.src.length == "") {
+                    obj.src = obj.dataset.src;
+                }
+            });
+        },
+
+        openPopup: function() {
+            var self = this;
+            self.resetImage();
+            self.$popup.show();
+            self.$popup.removeClass('close');
+        },
+
 		requestData: function(openPopup) {
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
@@ -50,6 +72,7 @@ $(window).ready(function(){
             lgkorUI.requestAjaxDataPost(ajaxUrl, null/*{"id":cookieValue}*/, function(result) {
 				var data = result.data;
 				var arr = data instanceof Array ? data : [];
+                self.listData = arr;
 				self.$list.empty();
 				arr.forEach(function(item, index) {
                     if(index == 0) {
@@ -62,7 +85,7 @@ $(window).ready(function(){
                 self.checkNoData();
                 
                 if(openPopup) {
-                    self.$popup.show();
+                    self.openPopup();
                 }
 			});
         },

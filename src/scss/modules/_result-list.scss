@@ -13,15 +13,15 @@
             box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
             background-color: #ffffff;
             @include mobile {
-                min-height: auto;
+                min-height: 164px;
                 align-items: flex-start;
-                padding: 24px 16px 27px 8px;
+                padding: 32px 24px;
             }
             &.item-type2 {
                 min-height: 200px;
                 @include mobile {
-                    min-height: auto;
-                    padding: 24px 16px;
+                    min-height: 139px;
+                    padding: 32px 24px;
                 }
             }
         }
@@ -40,41 +40,54 @@
             height: 120px;
             margin-right: 40px;
             @include mobile {
-                margin-right: 16px;
+                position: absolute;
+                top: 32px;
+                left: 24px;
+                width: 100px;
+                height: 100px;
+                margin-right: 24px;
             }
             img {
                 max-width: 100%;
                 vertical-align: top;
+                @at-root .result-list > li {
+                    .discontinued {
+                        .result-thumb {
+                            img {
+                                opacity: .3;
+                            }
+                        }
+                    }
+                }
             }
             .flag-end-wrap {
                 position: absolute;
-                bottom: 4px;
-                right: 4px;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-color: rgba($color-default,.5);
                 .flag {
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: #aaa;
-                    width: 40px;
-                    height: 40px;
-                    font-size: 12px;
-                    line-height: 20px;
+                    width: 100%;
+                    height: 100%;
                     font-weight: 700;
+                    @include font-large-1;
                     color: #fff;
-                    border-radius: 50%;
-                    @include mobile {
-                        width: 35px;
-                        height: 35px;
-                    }
                 }
             }
             .video-play-btn {
                 display: inline-block;
                 position: absolute;
                 top: 0;
+                bottom: 0;
+                right: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
+                background-color: rgba($color-default,.2);
                 text-indent: -99999em;
                 &:after {
                     display: inline-block;
@@ -84,8 +97,13 @@
                     left: 50%;
                     width: 48px;
                     height: 48px;
-                    background: url('/lg5-common/images/icons/btn-pdp-vod-48-pc.svg') no-repeat 50% 50%;
                     transform: translate(-50%, -50%);
+                    background: url('/lg5-common/images/icons/btn-play-80.svg') no-repeat 50% 50%;
+                    background-size: 100% 100%;
+                    @include mobile {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
             }
         }
@@ -93,8 +111,8 @@
         .item-story {
             .result-thumb {
                 overflow: hidden;
-                width: 160px;
-                height: 120px;
+                width: 120px;
+                height: 90px;
                 @include mobile {
                     width: 100px;
                     height: 75px;
@@ -113,10 +131,11 @@
             @include mobile {
                 flex-direction: column;
                 align-items: flex-start;
+                .info-text {
+                    min-height: 100px;
+                    padding-left: 124px;
+                }
             }
-            //.info-text {
-            //    flex: 1;
-            //}
             .info-price {
                 display: flex;
                 flex-direction: column;
@@ -135,7 +154,11 @@
                     }
                 }
                 @include mobile {
-                    margin-top: 16px;
+                    display: block;
+                    width: 100%;
+                    margin-top: 24px;
+                    padding-top: 12px;
+                    border-top: 1px solid $color-border;
                     text-align: left;
                 }
                 &.type2 {
@@ -146,45 +169,57 @@
                         align-items: flex-start;
                     }
                 }
-                .price-info:only-child {
-                    .tit {
-                        display: none;
-                    }
-                }
-                .price-info.sales {
-                    display: flex;
-                    align-items: flex-end;
-                    @include pc {
-                        flex-direction: row-reverse;
-                        .original {
-                            margin: 0 0 0 8px;
+                .price-info {
+                    &:only-child {
+                        .tit {
+                            display: none;
                         }
-                    }
-                    @include mobile {
-                        position: relative;
-                        .original + .price-in {
-                            .price {
-                                padding-top: 20px;
+                        @include mobile {
+                            &.rental {
+                                justify-content: flex-end;
+                            }
+                            &.sales {
+                                .original + .price-in {
+                                    justify-content: flex-end;
+                                }
                             }
                         }
-                        .original {
-                            position: absolute;
-                            bottom: 22px;
+                    }
+                    &.rental {
+                        @include mobile {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                    &.sales {
+                        display: flex;
+                        @include pc {
+                            flex-direction: row-reverse;
+                            align-items: flex-end;
+                            .original {
+                                margin: 0 0 0 8px;
+                            }
+                        }
+                        @include mobile {
+                            flex-direction: column-reverse;
+                            .original + .price-in {
+                                display: flex;
+                                justify-content: space-between;
+                                width: 100%;
+                            }
+                            .original {
+                                margin: 0;
+                                text-align: right;
+                            }
                         }
                     }
                 }
-                @include mobile {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    .price-info.sales {
-                      .original {
-
-                        }
-                    }
-                }  
             }
             .price-info + .price-info {
                 margin-top: 16px;
+                @include mobile {
+                    margin-top: 8px;
+                }
             }
             .btn-area {
                 .btn + .btn {
@@ -257,21 +292,22 @@
         }
         .info-btm {
             margin-top: 20px;
+            font-size: 0;
             .text {
                 display: inline-block;
                 position: relative;
-                margin-left: 6px;
-                padding-left: 6px;
+                margin-right: 6px;
+                padding-right: 6px;
                 @include font-small;
-                &:first-child {
-                    margin-left: 0;
-                    padding-left: 0;  
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
                 }
-                &:not(:first-child):before {
+                &:not(:last-child):before {
                     display: inline-block;
                     position: absolute;
                     top: 50%;
-                    left: 0;
+                    right: 0;
                     content: '';
                     width: 1px;
                     height: 12px;
@@ -282,7 +318,8 @@
                     display: block; 
                     margin-left: 0;
                     padding-left: 0; 
-                    &:before {
+                    &:before,
+                    &:not(:last-child):before {
                         display: none;
                     }
                     &.date {
@@ -307,7 +344,6 @@
             .hashtag {
                 display: inline-block;
                 @include font-small;
-                color: $color-gray-1;
                 @include mobile {
                     position: static;
                     height: auto;
@@ -324,7 +360,6 @@
             display: inline-block;
             font-weight: 500;
             @include font-small;
-            color: $color-primary;
             vertical-align: top;
         }
         
@@ -451,39 +486,9 @@
                     font-weight: $font-weight-medium;
                 }
             }
-
-            @include mobile {
-                &.sales {
-                    order: 2;
-                }
-                &.rental {
-                    order: 1;
-                    margin-bottom: 8px;
-                }
-            }
-            
         }
     }
-    
-    
-    /*
-    .item-story {
-        .result-detail {
-            flex-direction: column;
-            flex: 1;
-            .desc {
-                order: 1;
-            }
-            .date {
-                order: 2;
-                display: inline-block;
-            }
-            .hashtag-wrap {
-                order: 3;
-                display: inline-block;
-            }
-        } 
-    }*/
+
     &.product-list {
         .info-text {
             .result-tit {
@@ -526,13 +531,23 @@
                 display: block;
                 //flex-direction: column;
                 //align-items: flex-start;
-                padding-left: 0;
-                
+                //padding-left: 0;
+                @include mobile {
+                    .info-text {
+                        min-height: auto;
+                        padding-left: 0;
+                    }
+                }
+                @include pc {
+                    .result-detail {
+                        height: 52px;
+                    }
+                }
             }
         }
         .btn-area {
             width: 100%;
-            margin-top: 12px;
+            margin-top: 24px;
             text-align: right;
             .btn + .btn {
                 margin-left: 4px;
@@ -543,18 +558,33 @@
     &.support-list {
         .item {
             @include mobile {
-                padding: 24px 20px; 
+                padding: 32px 24px;
             }    
         }
         .info-btm {
-            margin-top: 24px;
+            @include mobile {
+                margin-top: 12px;
+                .text {
+                    display: inline-block;
+                    margin-right: 6px;
+                    padding-right: 6px;
+                    &:not(:last-child):before {
+                        display: inline-block;
+                    }
+                }
+            }
         }
         .result-info {
             @include clearfix;
-            align-items: flex-end;
+            //align-items: flex-end;
             @include mobile {
-                flex-direction: column;
-           }
+                //flex-direction: row;
+                &:only-child {
+                    .info-text {
+                        padding-left: 0;
+                    }
+                }
+            }
             .info-text {
                 flex: 1;
                 //width: 100%;
@@ -563,6 +593,7 @@
         .btn-area {
             //float: right;
             //margin-top: -32px;
+            align-self: center;
             @include mobile {
                 width: 100%;
                 margin-top: 12px;
@@ -570,19 +601,19 @@
             }
         }
         .video-info {
+            align-self: center;
             display: inline-block;
-            width: 64px;
-            height: 64px;
-            background: url("/lg5-common/images/icons/btn-pdp-vod-64-pc.svg") no-repeat 50% 50%;
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: url("/lg5-common/images/icons/btn-play-80.svg") no-repeat 50% 50%;
+            background-size: 100% 100%;
 
             @include mobile {
-                float: right;
-                width: 44px;
-                height: 44px;
-                margin-top: 12px;
-                background-size: 100px 100px;
+                flex: auto;
+                align-self: flex-end;
+                width: 32px;
+                height: 32px;
+                margin-top: 24px;
             }
            span {
                 display: inline-block;
@@ -592,11 +623,5 @@
                }
            } 
         }
-        
     }
-
-    
-
-    
-}    
-
+}

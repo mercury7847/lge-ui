@@ -9,7 +9,7 @@
     var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -32,12 +32,14 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
+                    '{{#if carePrice}}' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
                             '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
@@ -47,8 +49,8 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
     var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
@@ -89,6 +91,18 @@
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -106,6 +120,13 @@
 
                     self.updateBasicData();
                 });
+            },
+
+            getCategoryFromFilter: function(filterData) {
+                if(!filterData) return null;
+                var filterData = JSON.parse(filterData);
+                var category = filterData["category"];
+                return category ? category : [];
             },
 
             makeFilterData: function(data) {
@@ -714,7 +735,7 @@
                         self.$recommendListBox.show();
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
-                            self.$layFilter.show();
+                            self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
                     }
@@ -758,9 +779,11 @@
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }

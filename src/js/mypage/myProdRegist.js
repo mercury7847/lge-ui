@@ -131,7 +131,8 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
-                var buyplace = lgkorUI.getHiddenInputData().buyplace;
+                var hiddenInput = lgkorUI.getHiddenInputData();
+                var buyplace = hiddenInput.buyplace;
                 var placeArr = buyplace.split(',');
                 if(placeArr.length > 0) {
                     var $select = self.$registMyProductMainPage.find('#slt02');
@@ -142,6 +143,22 @@
                     });
                     $select.vcSelectbox('update');
                 }
+
+                var year = hiddenInput.year;
+                year = year.split(',');
+                if(year.length > 0) {
+                    self.$yearSelect.empty();
+                    self.$yearSelect.append('<option value="" class="placeholder">선택</option>');
+                    year.forEach(function(item,index){
+                        self.$yearSelect.append('<option value="'+item+'">'+item+'</option>');
+                    });
+                    self.$yearSelect.vcSelectbox('update');
+                    self.thisYear = year[year.length-1];
+                } else {
+                    self.thisYear = "";
+                }
+
+                self.thisMonth = parseInt(hiddenInput.month);
 
                 self.requestMoreData(1);
                 self.requestOwnData();
@@ -174,9 +191,14 @@
             //보유제품 등록 페이지
             self.$registMyProductMainPage = self.$registMyProductPopup.find('div.page-change:eq(0)');
             self.$modelCheckHelpPage = self.$registMyProductPopup.find('div.page-change:eq(1)');
+            //년도 선택 셀렉트
+            self.$yearSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="year"]');
+            //월 선택 셀렉트
+            self.$monthSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="month"]');
 
             var $inputs = self.$registMyProductMainPage.find('dl.forms div.box div.input-wrap input');
             var $buttons = self.$registMyProductMainPage.find('dl.forms div.box div.cell button');
+
             //모델번호
             self.$modelInput = $inputs.eq(0);
             self.$modelCheckOk = self.$modelInput.siblings('p.comp');
@@ -410,6 +432,23 @@
                 } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
+            });
+
+            //구매년도 선택
+            self.$yearSelect.on('change', function(e){
+                var value = self.$yearSelect.vcSelectbox('selectedOption').value;
+                var month = 12;
+                if(value == self.thisYear) {
+                    //현재 년도
+                    month = self.thisMonth;
+                }
+
+                self.$monthSelect.empty();
+                self.$monthSelect.append('<option value="" class="placeholder">선택</option>');
+                for(var i=0;i<month;i++) {
+                    self.$monthSelect.append('<option value="'+(i+1)+'">'+(i+1)+'</option>');
+                }
+                self.$monthSelect.vcSelectbox('update');
             });
 
             //보유제품 등록

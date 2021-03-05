@@ -1270,7 +1270,7 @@
                 right: 0;
                 bottom: 0;
                 left: 0;
-                z-index: 99;
+                z-index: 111;
                 overflow-y: auto;
                 background-color: #fff;
             }
@@ -1294,11 +1294,12 @@
     }
 
     .login-info {
-        padding-bottom: 20px;
+        padding: 3px 0 17px;
         font-weight: 700;
         font-size: $font-large;
         line-height: 26px;
         .text {
+            margin-top: -3px;
             &:after {
                 display: inline-block;
                 width: 16px;
@@ -1326,6 +1327,17 @@
             &.active {
                 display: block;
             }
+        }
+    }
+    .btn-logout {
+        position: fixed;
+        top: 17px;
+        right: 55px;
+        z-index: 10;
+        a {
+            display: block;
+            font-weight: 500;
+            @include font(13px,21px);
         }
     }
 }
@@ -1367,7 +1379,7 @@ html {
         .KRP0032,
         .quick-menu-list,
         .easy-path {
-            display: none;
+            display: none !important;
         }
 
         .btn-app-ar {

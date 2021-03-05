@@ -72,12 +72,13 @@
     &:disabled,
     &.disabled {
         border-color:#f3b7c7 !important;
-        background:#f3b7c7 !important;
-        color:$color-white !important;
+        background:#f3b7c7;
+        color:$color-white;
         cursor:default;
         &:hover,
         &:focus,
         &:active {
+            border-color:#f3b7c7 !important;
             background:#f3b7c7;
             color: $color-white;
         }
@@ -419,7 +420,7 @@
     @include mobile {
         .btn {
             width:100%;
-            margin-left:6px;
+            margin-left:8px;
             border-radius: 60px;
             &:first-child,
             &:only-child {
@@ -427,7 +428,7 @@
             }
             &:first-child:nth-last-child(2), 
             &:first-child:nth-last-child(2) ~ .btn {
-                width:calc((100% - 6px) / 2);
+                width:calc((100% - 8px) / 2);
             }
             &:first-child:nth-last-child(3), 
             &:first-child:nth-last-child(3) ~ .btn {

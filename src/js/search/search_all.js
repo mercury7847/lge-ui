@@ -10,7 +10,7 @@
     //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -33,12 +33,14 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
+                    '{{#if carePrice}}' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
                             '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
@@ -48,8 +50,8 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
     var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
@@ -101,8 +103,8 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<div class="price-info rental">' +
                     '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                 '</div>' +
@@ -114,8 +116,8 @@
                         '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</a></li>';
     var shopItemTemplate = '<li><div class="item">' +
@@ -136,7 +138,7 @@
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size"><span>{{item.title}}</span></a>{{/each}}' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -841,6 +843,7 @@
                             } else {
                                 item.isVideo = !item.isVideo?false:true;
                                 item.linkItem = !item.linkItem ? [] : item.linkItem;
+                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
                         });
@@ -922,9 +925,11 @@
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }

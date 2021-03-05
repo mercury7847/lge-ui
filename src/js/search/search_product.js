@@ -9,7 +9,7 @@
     var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -32,12 +32,14 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
+                    '{{#if carePrice}}' +
                     '<div class="price-info rental">' +
                         '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
                             '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
@@ -47,76 +49,10 @@
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
-
-    //필터 템플릿
-    /*
-    var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont"><div class="range-wrap">' +
-                '<div name="{{filterId}}" class="ui_filter_slider ui_price_slider" data-range="0,{{length}}" data-values="{{filterValues}}" data-min="{{minFilterValue}}" data-max="{{maxFilterValue}}"></div>' +
-                '<p class="min range-num">{{minTitle}}</p><p class="max range-num">{{maxTitle}}</p>' +
-            '</div></div>' +
-        '</div>' +
-    '</li>';
-    var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-        '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    */
 
     var recommendProdTemplate = 
         '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
@@ -157,6 +93,18 @@
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -176,21 +124,13 @@
                 });
             },
 
-            /*
-            makeFilterData: function(data) {
-                var filterdata = JSON.parse(data.filterData);
-                var filterlist = [];
-                for(key in filterdata) {
-                    if(key == "categoryId") {
-                        data[key] = filterdata[key];
-                    } else {
-                        filterlist = filterlist.concat(filterdata[key]);
-                    }
-                }
-                data.filterData = filterlist;
-                return data;
+            getCategoryFromFilter: function(filterData) {
+                if(!filterData) return null;
+                var filterData = JSON.parse(filterData);
+                var category = filterData["category"];
+                return category ? category : [];
             },
-            */
+
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
@@ -796,7 +736,7 @@
                         self.$recommendListBox.show();
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
-                            self.$layFilter.show();
+                            self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
                     }
@@ -840,9 +780,11 @@
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }

@@ -188,14 +188,6 @@
                 margin-top:8px;
             }
         }
-        .section-box {
-            padding-right:16.9%;
-        }
-        @media screen and (max-width: 808px) {
-            .section-box {
-                padding-right: 0; 
-            }
-        }
     }
 
     /* 이메일 문의 */
@@ -400,6 +392,14 @@
         }
         .tabs-wrap {
             margin-bottom:48px;
+        }
+        .tabs-contents {
+            &#tab3 {
+                .select-wrap ,
+                .keyword-search {
+                    flex:1;
+                }
+            }
         }
         // 주소 선택
         .adress-input-box {

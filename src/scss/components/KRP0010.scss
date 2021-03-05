@@ -2,6 +2,19 @@
 
 @import "../components-app";
 
+@media print {
+    .component-wrap,
+    .component {
+        padding:0;
+    }
+    .title,
+    .tabs-wrap,
+    .prod-print,
+    .btn_collapse_more {
+        display:none;
+    }
+}
+
 .KRP0010 {
     .component-inner {
         max-width:1380px + 80px;
@@ -42,14 +55,14 @@
         .tabs {
             padding:16px 0;
             overflow-y:hidden;
-            display:flex;
-            justify-content:space-between;
+            // display:flex;
+            // justify-content:space-between;
             @include mobile {
                 display:block;
                 padding:16px 10px;
             }
             > li {
-                width:100%;
+                width:327px;
                 margin:0 7px;
                 @include mobile {
                     width:276px;
@@ -317,7 +330,7 @@
                     border-radius:20px;
                     border:1px solid #000;
                     font-size:14px;
-                    line-height:36px;
+                    line-height:34px;
                     > span {
                         display:inline-block;
                         vertical-align:middle;
@@ -327,12 +340,13 @@
                         display:inline-block;
                         width:16px;
                         height:16px;
+                        margin-top:1px;
                         margin-right:4px;
                         background:url('/lg5-common/images/icons/btn-plus-16.svg') no-repeat 0 0;
                         vertical-align:middle;
                     }
                     &.open {
-                        width:134px;
+                        //width:134px;
                         &:before {
                             transform:rotate(45deg);
                         }

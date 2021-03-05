@@ -247,6 +247,7 @@ var isApp = function(){
         MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         NO_IMAGE: "/lg5-common/images/icons/noimage.svg",
+        NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
@@ -276,6 +277,14 @@ var isApp = function(){
             $(img).attr('src', self.NO_IMAGE);
             $(img).addClass('no-img');
         },
+
+        addModelNameImgErrorEvent: function(img){
+            var self = this;
+            img.onerror = null;
+            $(img).attr('src', self.NO_IMAGE_MODEL_NAME);
+            $(img).addClass('no-img');
+        },
+
 
         _createMainWrapper: function(){
             if ( $('.container-fluid:has(.header)').length && !$('main').length ) {

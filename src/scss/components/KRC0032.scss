@@ -10,6 +10,28 @@
 //     }
 // }
 
+.component-wrap {
+    .component.KRC0032 {
+        .component-box {
+            @include mobile {
+                padding-bottom:0;
+            }
+        }
+    }
+}
+
+.component-wrap {
+    &.zero-btm {
+        .component.KRC0032 {
+            .component-box {
+                @include mobile {
+                    padding-bottom:60px;
+                }
+            }
+        }
+    }
+}
+
 .KRC0032 {
 	&.stage-full {
         max-width:1920px;
@@ -23,14 +45,20 @@
         max-width:1380px + 80px;
         margin:0 auto;
     }
+    
+    // .component-box {
+    //     @include mobile {
+    //         padding-bottom:60px;
+    //     }
+    // }
 
 	.usp-banner-wrap {
 		position:relative;
 		@include mobile {
-            margin-bottom:40px;
+            // margin-bottom:40px;
             padding-bottom:40px;
             &.usp-btm {
-                margin-bottom:0;
+                // margin-bottom:0;
                 padding-bottom:0;
             }
 		}
@@ -229,6 +257,7 @@
                 }
                 .row {
                     position:relative;
+                    margin:0 !important;
                     .btn-arrow {
                         position:absolute;
                         top:0;
@@ -264,7 +293,7 @@
         .logo {
             filter:brightness(0) invert(1);
             @include mobile {
-                filter:brightness(1) invert(0);
+                filter:brightness(1) invert(0) !important;
             }
         }
     }

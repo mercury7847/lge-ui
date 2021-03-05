@@ -528,22 +528,22 @@
     }
     .search-banner {
         max-width: (1380px + 80px);
-        height: 120px;
         margin: 80px auto 0;
         padding: 0 40px;
         a {
-            overflow: hidden;
+            //overflow: hidden;
             display: block;
             position: relative;
-            height: 100%;
+            //height: 100%;
             border-radius: 8px;
         }
         img {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 120px;
+            //position: absolute;
+            //top: 0;
+            //left: 50%;
+            //transform: translateX(-50%);
+            //height: 120px;
+            width: 100%;
             border-radius: 8px;
         }
         .text-area {
@@ -551,14 +551,17 @@
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            padding-left: 64px;
+            width: 100%;
+            padding: 0 80px;
+            @include font($font-large-1,30px);
             .title {
                 display: block;
-                margin-bottom: 2px;
-                @include font-medium;
+                margin-bottom: 8px;
+                @include textEllipsis;
             }
             .sub-copy {
-                @include font-small;
+                display: block;
+                @include textEllipsis;
             }
         }
         br {
@@ -584,14 +587,11 @@
                 border-radius: 0;
             }
             .text-area {
-                padding-left: 24px;
+                padding: 0 24px;
+                @include font($font-x-small,20px);
                 .title {
-                    margin-bottom: 4px;
-                    @include font($font-small,22px);
+                    margin-bottom: 0;
                 }
-            }
-            br {
-                display: block;
             }
         }
     }
@@ -605,7 +605,7 @@
             }
         }
         @include mobile {
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 0 20px 60px;
             border-top: 0;
         }
@@ -1559,31 +1559,30 @@
             span {
                 display: block;
                 margin-bottom: 8px;
+                font-weight: 700;
                 @include font($font-large-4,52px);
                 color: $color-default;
-                em {
-                    font-weight: 700;
-                }
             }
         }
 
         @include mobile {
-            padding: 0 16px 56px;
+            padding: 0 16px 60px;
             p {
-                padding-top: 45px;
-                font-size: 14px;
-                line-height: 22px;
-                /*&:before {
-                    width: 34px;
-                    height: 34px;
-                    margin-left: -17px;
-                    background-size: 34px;
-                }*/
                 span {
-                    margin-bottom: 14px;
-                    font-size: 16px;
-                    line-height: 19px;
+                    margin-bottom: 12px;
+                    @include font($font-large-2,33px);
                 }
+            }
+        }
+    }
+    @at-root .contents.search .cont-wrap & {
+        .no-data {
+            margin-top: 0;
+            @include pc {
+                margin-bottom: 80px;
+            }
+            @include mobile {
+                padding-bottom: 60px;
             }
         }
     }

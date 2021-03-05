@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTC/UTC"],
+        pageJS: ["caresolution/caresolutionInfo","caresolution/caresolutionCart"]
     })
-<!--        pageJS: ["caresolution/caresolutionInfo","caresolution/caresolutionCart"]-->
 <body>
     <div class="wrap">
        @@include('./common/header.html')
@@ -45,6 +45,7 @@
                                         </div>
                                         <div class="list-wrap">
                                             <ul class="order-list">
+                                                <!-- 210305 수정 [개별 신청하기 버튼 모두 삭제] -->
                                                 @@loop('./common/modules/order-list.html', [
                                                     {
                                                         "itemID" : "id000001",
@@ -65,9 +66,7 @@
                                                         "options" : "<p>가입비 100,000원 선납</p><p>계약기간 60개월(무상할인 2개월 포함)</p><p>의무 사용기간 36개월</p><p>방문 주기 1회/6개월</p>",
                                                         "originalPrice" : "월 36,100원",
                                                         "price" : "월 56,900원",
-                                                        "tooltip" : true,
-                                                        "btn" : true,
-                                                        "btnValue" : "개별신청하기"
+                                                        "tooltip" : true
                                                     },{
                                                         "itemID" : "id000002",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
@@ -91,9 +90,7 @@
                                                         "modelName" : "LG TROMM 스타일러 블랙에디션",
                                                         "options" : "<p>가입비 100,000원 선납</p><p>계약기간 60개월(무상할인 2개월 포함)</p><p>의무 사용기간 36개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 56,900원",
-                                                        "tooltip" : true,
-                                                        "btn" : true,
-                                                        "btnValue" : "개별신청하기"
+                                                        "tooltip" : true
                                                     },{
                                                         "itemID" : "id000003",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
@@ -113,8 +110,6 @@
                                                         "options" : "<p>가입비 100,000원 선납</p><p>계약기간 60개월(무상할인 2개월 포함)</p><p>의무 사용기간 36개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 56,900원",
                                                         "tooltip" : true,
-                                                        "btn" : {"disabled":"disabled"},
-                                                        "btnValue" : "개별신청불가",
                                                         "message" : "청약신청이 불가능한 제품입니다."
                                                     },{
                                                         "itemID" : "id000004",
@@ -135,8 +130,6 @@
                                                         "options" : "<p>가입비 100,000원 선납</p><p>계약기간 60개월(무상할인 2개월 포함)</p><p>의무 사용기간 36개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 56,900원",
                                                         "tooltip" : true,
-                                                        "btn" : {"disabled":"disabled"},
-                                                        "btnValue" : "개별신청불가",
                                                         "message" : "해당 제품을 포함해 2개이상 선택한 경우, 청약이 불가능합니다."
                                                     },{
                                                         "itemID" : "id000005",
@@ -158,9 +151,7 @@
                                                         "amountInfo" : true,
                                                         "originalPrice" : "월 36,100원",
                                                         "price" : "월 31,100원",
-                                                        "tooltip" : true,
-                                                        "btn" : true,
-                                                        "btnValue" : "개별신청하기"
+                                                        "tooltip" : true
                                                     },{
                                                         "itemID" : "id000006",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
@@ -184,9 +175,7 @@
                                                         "modelName" : "LG TROMM 스타일러 블랙에디션",
                                                         "options" : "<p>신규 결합할인 월 -5,000원</p><p>계약기간 12개월(무상할인 2개월 포함)</p><p>의무 사용기간 12개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 36,100원",
-                                                        "tooltip" : true,
-                                                        "btn" : true,
-                                                        "btnValue" : "개별신청하기"
+                                                        "tooltip" : true
                                                     },{
                                                         "itemID" : "id000007",
                                                         "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
@@ -206,8 +195,6 @@
                                                         "options" : "<p>신규 결합할인 월 -5,000원</p><p>계약기간 12개월(무상할인 2개월 포함)</p><p>의무 사용기간 12개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 36,100원",
                                                         "tooltip" : true,
-                                                        "btn" : {"disabled":"disabled"},
-                                                        "btnValue" : "개별신청불가",
                                                         "message" : "청약신청이 불가능한 제품입니다."
                                                     },{
                                                         "itemID" : "id000008",
@@ -228,8 +215,6 @@
                                                         "options" : "<p>신규 결합할인 월 -5,000원</p><p>계약기간 12개월(무상할인 2개월 포함)</p><p>의무 사용기간 12개월</p><p>방문 주기 1회/6개월</p>",
                                                         "price" : "월 36,100원",
                                                         "tooltip" : true,
-                                                        "btn" : {"disabled":"disabled"},
-                                                        "btnValue" : "개별신청불가",
                                                         "message" : "기존 계약이 있을 경우 해당제품은 개별 청약이 불가능합니다."
                                                     }
                                                 ])

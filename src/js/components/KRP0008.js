@@ -35,8 +35,9 @@
                 self.popUpDataSetting();
 
                 if(self.$component.data('consumables')) {
-                    vcui.require(['support/consumables.min'], function () {
+                    vcui.require(['support/consumables.min'], function (consumables) {
                         self.prepare();
+                        self.consumables = consumables;
                     });
                 } else {
                     self.prepare();
@@ -98,6 +99,8 @@
                 self.bindSideEvents();
                 */
 
+                //로그인,찜하기 관련 데이타 가져오기
+                self.getRewardInfo();
                 //비교하기 체크
                 self.setCompares();
             },
@@ -282,10 +285,10 @@
                 var careSelectIndex = 0;
 
                 self.careshipInfoData = null;
-                if(typeof careshipInfo !== 'undefined' && careshipInfo.length > 0) {
-                    self.careshipInfoData = careshipInfo;
-                    for (var i = 0, len = careshipInfo.length; i < len; i++) {
-                        if(careshipInfo[i].representChargeFlag == "Y") {
+                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
+                    self.careshipInfoData = careShipInfo;
+                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
+                        if(careShipInfo[i].representChargeFlag == "Y") {
                             careSelectIndex = i;
                             break;
                         }
@@ -769,8 +772,15 @@
                         } else {
                             $(this).removeAttr('disabled');
                         }
+
+                        $(this).siblings('button.plus').removeAttr('disabled');
                     } else if($(this).hasClass('plus')) {
+                        var max = $(this).data('max');  
                         ++quantity;
+                        if (max && quantity >= max) {
+                            quantity = max;
+                            $(this).attr('disabled',true);
+                        }
 
                         if(quantity > 1) {
                             $(this).siblings('button.minus').removeAttr('disabled');
@@ -785,14 +795,11 @@
 
                 //케어쉽 서비스 선택 관련
                 self.$pdpInfoAllCareshipService.on('change','input[type=radio]', function(e){
-                    console.log("jsw");
-                    waterCareRequire = true;
                     //케어쉽필수 제품인지 체크해서 알림창 뛰움
                     var val = $(this).val();
                     var $careshipService = $(this).parents('.careship-service');
                     if(!lgkorUI.stringToBool(val)) {
                         if(waterCareRequire) {
-                            console.log($(this).parents('ul').find('input[type=radio][value="Y"]'));
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
                             $('#waterCareRequirePopup').vcModal();
                         } else if(careRequire) {
@@ -807,6 +814,15 @@
                                     $careshipPriceInfo.hide();
                                 }
                                 self.updatePaymentAmountPrice($paymentAmount);
+
+                                //수량체크버튼 활성
+                                var $input = $paymentAmount.find('input.quantity');
+                                if(parseInt($input.val()) == 1) {
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                } else {
+                                    $paymentAmount.find('button.minus').attr('disabled',false);
+                                    $paymentAmount.find('button.plus').attr('disabled',false);
+                                }
                             }
                         }
                     } else {
@@ -818,6 +834,10 @@
                                 $careshipPriceInfo.show();
                             }
                             self.updatePaymentAmountPrice($paymentAmount);
+
+                            //케어십 신청됬으므로 수량체크버튼 비활성
+                            $paymentAmount.find('button.minus').attr('disabled',true);
+                            $paymentAmount.find('button.plus').attr('disabled',true);
                         }
                     }
                 });
@@ -1296,9 +1316,11 @@
                         }
                     } else {
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                         console.log("!!!!!buy",ajaxUrl,param);
+                        console.log('post');
                         if(ajaxUrl) {
-                            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                                 console.log(result);
                                 var data = result.data;
                                 var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
@@ -1319,6 +1341,40 @@
                // }
             },
 
+            //로그인 데이타 정보 가져오기
+            getRewardInfo: function() {
+                var self = this;
+                var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
+                var param = {
+                    modelId: sendData.modelId
+                }
+                if(!ajaxUrl) {
+                    //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
+                    ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
+                }
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                        var data = result.data[0];
+                        //로그인
+                        loginFlag = data.loginFlag;
+                        //보유멤버쉽 포인트
+                        //var myMembershipPoint = data.myMembershipPoint;
+                        //찜하기 관련
+                        sendData.wishListId  = data.wishListId;
+                        sendData.wishItemId = data.wishItemId;
+                        var wishListFlag = lgkorUI.stringToBool(data.wishListFlag);
+                        self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').prop("checked",wishListFlag);
+
+                        if(self.$component.data('consumables')) {
+                            self.consumables.init(data);
+                        }
+                    }, true);
+                }
+            },
+
+            //찜하기 데이타 가져오기
+            
+
             //PDP 이미지 관련
 
             //페이지에 저장된 pdp 데이타 가져오기
@@ -1334,7 +1390,6 @@
 
             //썸네일 리스트 클릭
             clickThumbnailSlide: function(index) {
-                console.log(index);
                 var self = this;
                 var item = self.findPdpData(index);
                 switch(item.type) {
@@ -1372,7 +1427,6 @@
             },
 
             clickModalThumbnail: function(index) {
-                console.log('modal',index);
                 var self = this;
                 index = parseInt(index);
                 var item = self.findPdpData(index);
