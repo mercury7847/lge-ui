@@ -105,6 +105,9 @@
 
             self.isUserAddressClick = false;
 
+            self.isSalesCode = false;
+            self.isReloadSalesCode = false;
+
             self.applyOptions;
             self.defaultOptions = self._getOptions();
 
@@ -126,6 +129,7 @@
                 self.currentLongitude = $('.map-container').data("longitude");
                 self.loginUrl = $('.map-container').data("loginUrl");
                 self.shopID = $('.map-container').data("shopId");
+                self.salesCode = $('.map-container').data("salesCode");
 
                 self.$mapContainer.vcStoreMap({
                     keyID: $('.map-container').data("mapId"),
@@ -137,7 +141,7 @@
                     
                     self._resize();
                     
-                    self._loadStoreData(false, data);                  
+                    self._loadStoreData(false, data, self.salesCode);                  
 
                     self._bindEvents();
                 }).on('mapchanged', function(e, data){	
@@ -288,7 +292,7 @@
             self.$subwayStationSelect.val();
         },
 
-        _loadStoreData: function(userAddressAbled, userLocation){
+        _loadStoreData: function(userAddressAbled, userLocation, salescode){
             var self = this;
 
             var keywords = self._getKeyword(userAddressAbled);
@@ -298,17 +302,60 @@
                 keywords.longitude = userLocation.long;
             }
 
+            if(salescode){
+                self.isSalesCode = true;
+
+                keywords.salesCode = salescode;
+                keywords.userAddress = self.userAddress;
+            }
+
             self.applyOptions = self._getOptions();
 
+            self._sendKeywordData(keywords, userLocation);
+        },
+        
+        _sendKeywordData: function(keywords, userLocation){
+            var self = this;
+
+            console.log("### _loadStoreData ###", keywords)
             lgkorUI.requestAjaxData(self.bestShopUrl, keywords, function(result){
-                self.storeData = vcui.array.map(result.data, function(item, index){
-                    item['id'] = item['shopID']; //info.shopID || agCode    
-                    item['info'] = false;
-                    item["selected"] = false;
-                    item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
-                    return item;
-                });
-                self.$map.applyMapData(self.storeData, self.searchType, {lat: self.currentLatitude, long:self.currentLongitude});
+                if(result.data.length){
+                    self.storeData = vcui.array.map(result.data, function(item, index){
+                        item['id'] = item['shopID']; //info.shopID || agCode    
+                        item['info'] = false;
+                        item["selected"] = false;
+                        item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
+                        return item;
+                    });
+                    self.$map.applyMapData(self.storeData, self.searchType, {lat: self.currentLatitude, long:self.currentLongitude});
+
+                    self.isSalesCode = false;
+                    self.isReloadSalesCode = false;
+                } else{
+                    if(self.isSalesCode){
+                        if(self.isReloadSalesCode){
+                            self.isSalesCode = false;
+                            self.isReloadSalesCode = false;
+
+                            self._loadStoreData(false, userLocation);
+                        } else{
+                            lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                                title: "",
+                                cancelBtnName: "아니오",
+                                okBtnName: "네",
+                                ok: function(){
+                                    self.isReloadSalesCode = true;
+    
+                                    keywords.dist = 20;
+                                    self._sendKeywordData(keywords);
+                                },
+                                cancel: function(){
+                                    self._loadStoreData(false, userLocation); 
+                                }
+                            });
+                        }
+                    }
+                }
             });
         },
 
@@ -536,8 +583,6 @@
 
                 shopId: self.shopID
             }
-            console.log("keywords :", keywords);
-
             self.shopID = "";
 
             return keywords;

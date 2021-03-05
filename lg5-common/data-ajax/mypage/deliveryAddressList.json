@@ -7,7 +7,7 @@
         "addressList": [
             {
                 "addressID": "AD001",
-                "addressNickName": "회사",
+                "addressNickName": "",
                 "defaultAddress": true,
                 "receiverUser": "이엘지",
                 "zipCode": "123456",

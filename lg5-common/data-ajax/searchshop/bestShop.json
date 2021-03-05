@@ -1,4 +1,8 @@
 {
+  "param": null,
+  "message": null,
+  "ssoCheckUrl": null,
+  "status": "success",
    "data": [
      {
        "shopID": "ST00005604",
@@ -7314,9 +7318,5 @@
        "dist": null,
        "consultFlag": "Y"
      }
-   ],
-   "param": null,
-   "message": null,
-   "ssoCheckUrl": null,
-   "status": "success"
+   ]
  }
