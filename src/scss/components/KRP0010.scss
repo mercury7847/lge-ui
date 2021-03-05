@@ -3,6 +3,14 @@
 @import "../components-app";
 
 .KRP0010 {
+    @media print {
+        .title,
+        .tabs-wrap,
+        .prod-print {
+            display:none;
+        }
+    }
+
     .component-inner {
         max-width:1380px + 80px;
     }
