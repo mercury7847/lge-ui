@@ -1328,6 +1328,16 @@
             }
         }
     }
+    .btn-logout {
+        position: fixed;
+        top: 17px;
+        right: 55px;
+        z-index: 10;
+        a {
+            display: block;
+            @include font(13px,21px);
+        }
+    }
 }
 
 .mobile-nav-banner {
