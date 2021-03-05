@@ -56,15 +56,16 @@
         var param = {
             "id":$dm.attr('data-id'),
             "sku":$dm.attr('data-sku'),
+            "rtSeq":$dm.attr('data-rtSeq'),
             "typeFlag":cartType,
         }
 
-        var categoryId = $dm.attr('data-categoryId');
-        param.categoryId = categoryId ? categoryId : null;
-        var rtSeq = $dm.attr('data-rtSeq');
-        param.rtSeq = rtSeq ? rtSeq : null;
-        var requireCare = $dm.attr('data-requireCare');
-        param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+        //var categoryId = $dm.attr('data-categoryId');
+        //param.categoryId = categoryId ? categoryId : null;
+        //var rtSeq = $dm.attr('data-rtSeq');
+        //param.rtSeq = rtSeq ? rtSeq : null;
+        //var requireCare = $dm.attr('data-requireCare');
+        //param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
 
         lgkorUI.requestCart(ajaxUrl, param, true);
     }

@@ -772,8 +772,15 @@
                         } else {
                             $(this).removeAttr('disabled');
                         }
+
+                        $(this).siblings('button.plus').removeAttr('disabled');
                     } else if($(this).hasClass('plus')) {
+                        var max = $(this).data('max');  
                         ++quantity;
+                        if (max && quantity >= max) {
+                            quantity = max;
+                            $(this).attr('disabled',true);
+                        }
 
                         if(quantity > 1) {
                             $(this).siblings('button.minus').removeAttr('disabled');
