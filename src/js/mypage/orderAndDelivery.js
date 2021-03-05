@@ -6,6 +6,12 @@
     var ORDER_SAILS_URL;
     var BANK_CONFIRM_URL;
 
+
+    var PAYMENT_METHOD_CONFIRM;
+    var INFO_MODIFY_CONFIRM;
+    var ARS_AGREE_URL;
+    var PAYMENT_SAVE_URL;
+
     var PAGE_TYPE_LIST = "orderListPage";
     var PAGE_TYPE_DETAIL = "orderDetailPage";
     var PAGE_TYPE_NONMEM = "orderNoneMemberPage";
@@ -14,12 +20,15 @@
     var TAB_FLAG_ORDER = "ORDER";
     var TAB_FLAG_CARE = "CARE";
 
+    var METHOD_CARD = "CARD";
+    var METHOD_BANK = "BANK";
+
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
-                    '<li>주문일<em>{{orderDate}}</em></li>'+
-                    '<li>주문번호<em>{{orderNumber}}</em></li>'+
+                    '<li>{{dateTitle}}<em>{{orderDate}}</em></li>'+
+                    '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
             '</div>'+
@@ -219,8 +228,8 @@
             '<dt>월 납부 금액</dt>'+
             '<dd><span>{{monthlyPriceInfo}}</span><a href="{{monthlyPriceUrl}}" class="btn-link monthlyPrice-btn">매월 납부금 할인 내역알아보기<a></dd>'+
         '</dl></li>'+        
-        '<li><dl><dt>월 납부 수단</dt><dd>{{paymentMethod}}</dd></dl></li>'+        
-        '<li><dl><dt>은행(카드)명</dt><dd>{{paymentType}}</dd></dl></li>'+        
+        '<li><dl><dt>월 납부 수단</dt><dd>{{paymentMethodName}}</dd></dl></li>'+        
+        '<li><dl><dt>은행(카드)명</dt><dd>{{paymentTypeName}}</dd></dl></li>'+        
         '<li><dl><dt>계좌(카드)번호</dt><dd>{{paymentNumber}}</dd></dl></li>';
 
     var START_INDEX;
@@ -252,10 +261,18 @@
 
     var START_DATE, END_DATE;
 
+    var CERTI_ID, BATCH_KEY;
+
+    var CTI_REQUEST_KEY;
+
+    var paymentInfo;
+    var paymentMethod;
+
     var tabMenu;
 
     var cardValidation, bankValidation;
-    var isPaymentConfirm = "N";
+
+    var sendPaymentMethod;
 
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
@@ -278,6 +295,11 @@
         ORDER_CANCEL_POP_URL = $('.contents.mypage').data('orderCancelPopup');
         ORDER_SAILS_URL = $('.contents.mypage').data('orderSails');
         BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
+
+        PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
+        INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
+        ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
 
         txtMasking = new vcui.helper.TextMasking();
 
@@ -414,7 +436,7 @@
             if(wrapper.hasClass("orderAndDelivery-detail")){                
                 setProductStatus(dataID, prodID, pdpUrl);
             } else{
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG;
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG + "&requestNo=" + ORDER_LIST[dataID].requestNo;
             }
         });
 
@@ -477,6 +499,15 @@
             e.preventDefault();
 
             savePaymentInfoOk();
+        });
+
+        $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
+            e.preventDefault();
+
+            var chk = $(this).index() ? true : false;
+            $('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked', chk);
+
+            if(chk) $('#popup-selfClearing').vcModal('close');
         });
     }
 
@@ -840,6 +871,11 @@
                     leng = ORDER_LIST.length;
                     list[idx]['dataID'] = leng.toString();
 
+                    list[idx].dateTitle = "주문일";
+                    list[idx].orderNumberTitle = "주문번호";
+                    list[idx].groupNumber = list[idx].orderNumber;
+
+
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
@@ -854,6 +890,10 @@
                 for(idx in list){
                     leng = CARE_LIST.length;
                     list[idx]['dataID'] = leng.toString();
+
+                    list[idx].dateTitle = "신청일";
+                    list[idx].orderNumberTitle = "계약 요청 번호";
+                    list[idx].groupNumber = list[idx].requestNo ? list[idx].requestNo : list[idx].orderNumber;
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
@@ -923,6 +963,10 @@
                 bankValidation.setValues(bankInfo);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
+
+                paymentMethod = MONTHLY_PAYMENT_DATA.paymentMethod;
+
+                savePaymentInfoCancel();
             }
 
             renderPage();
@@ -941,7 +985,6 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
-                // sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
                 // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
                 //     if(lgkorUI.stringToBool(result.data.success)){
 
@@ -981,8 +1024,9 @@
 
     //납부 정보 유효성 체크
     function paymentInfoValidation(){
-        var paymentMethodIndex = $('.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        if(isPaymentConfirm  == "N"){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        console.log("paymentMethodConfirm:", paymentMethodConfirm)
+        if(paymentMethodConfirm  == "N"){
             return{
                 result: false,
                 title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
@@ -1040,7 +1084,7 @@
             sendata = bankValidation.getValues();
             sendata.confirmType = METHOD_BANK;
         }
-        sendata.contractID = $('select[name=contractInfo]').find('option:selected').val()
+        
         console.log("paymentMethodAbled(); sendata :", sendata);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### requestAjaxData ###", result)
@@ -1067,7 +1111,6 @@
         CTI_REQUEST_KEY = "";
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
-        sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
 
         console.log("### setArsAgreeConfirm ###", sendata);
         lgkorUI.requestAjaxData(ARS_AGREE_URL, sendata, function(result){
@@ -1084,25 +1127,29 @@
 
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        try{
-            cardValidation.setValues(cardInfo);
-            $('.ui_card_number').vcFormatter('update');
-    
-            bankValidation.setValues(bankInfo);
-            
-            paymentMethodConfirm = "N";
-            arsAgree = "N";
-            
-            $('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked', false);
-            $('.monthly-payment-modify').find('input[name=pointUseAgree]').prop('checked', false);
-    
-            setPaymentModeCont();
-    
-            $('.monthly-payment').show();
-            $('.monthly-payment-modify').hide();
-        } catch(err){
-            console.log(err);
-        }
+        cardValidation.setValues(cardInfo);
+        $('.ui_card_number').vcFormatter('update');
+
+        bankValidation.setValues(bankInfo);
+        
+        paymentMethodConfirm = "N";
+        arsAgree = "N";
+        
+        $('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked', false);
+        $('.monthly-payment-modify').find('input[name=pointUseAgree]').prop('checked', false);
+
+        setPaymentModeCont();
+
+        $('.monthly-payment').show();
+        $('.monthly-payment-modify').hide();
+    }
+
+    function setPaymentModeCont(){
+        $('.monthly-payment-modify input[data-visible-target]').prop("checked", false);
+        $('.monthly-payment-modify input[data-visible-target=".by-' + paymentMethod + '"]').prop("checked", true);
+
+        $('.monthly-payment-modify').find('.tab-panel').hide();
+        $('.monthly-payment-modify').find('.tab-panel.by-' + paymentMethod).show();
     }
 
     //납부 정보변경 저장...
@@ -1112,7 +1159,6 @@
             lgkorUI.showLoading();
 
             var sendata = {
-                contractID: $('select[name=contractInfo]').find('option:selected').val(),
                 CERTI_ID: CERTI_ID,
                 BATCH_KEY: BATCH_KEY,
                 CTI_REQUEST_KEY: CTI_REQUEST_KEY
@@ -1122,7 +1168,7 @@
             console.log("savePaymentInfo : [sendata] ", sendata);
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
-                    changeContractInfo();
+                    requestOrderInquiry();
                 }
 
                 lgkorUI.hideLoading();
@@ -1484,13 +1530,15 @@
         var sendata = {
             "sku": ORDER_LIST[dataId].productList[prodId].productNameEN
         }
+
+        console.log("### setProductStatus ###", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
             } else{
-                location.href = pdpUrl;
+                //location.href = pdpUrl;
             }
 
             lgkorUI.hideLoading();
