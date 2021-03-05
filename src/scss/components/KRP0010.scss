@@ -2,6 +2,19 @@
 
 @import "../components-app";
 
+@media print {
+    .component-wrap,
+    .component {
+        padding:0;
+    }
+    .title,
+    .tabs-wrap,
+    .prod-print,
+    .btn_collapse_more {
+        display:none;
+    }
+}
+
 .KRP0010 {
     .component-inner {
         max-width:1380px + 80px;
