@@ -311,8 +311,13 @@
 							line-height:24px;
 							transform:translateX(-50%);
 							&.border {
-								border-color:#fff;
+								border-color:#fff !important;
 								color:#fff;
+								&:hover,
+								&:focus,
+								&:active {
+									border-color:$color-primary !important;
+								}
 							}
 						}
 					}
