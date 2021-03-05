@@ -203,7 +203,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-4" placeholder="이메일 주소를 입력해주세요." value="" name="userEmail" data-required="true">
+                                                            <input type="email" id="inp01-4" placeholder="이메일 주소를 입력해주세요." value="" name="userEmail" data-required="true"><!-- 210305 수정 [input type 수정] -->
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -213,7 +213,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp01-5" value="" name="zipCode" data-required="true" placeholder="우편번호" disabled>
+                                                                <input type="number" id="inp01-5" value="" name="zipCode" data-required="true" placeholder="우편번호" disabled><!-- 210305 수정 [input type 수정] -->
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn search-postcode"><span>주소 찾기</span></button>
@@ -324,7 +324,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp02-4" value="" name="zipCode" placeholder="우편번호" data-required="true" disabled>
+                                                                <input type="number" id="inp02-4" value="" name="zipCode" placeholder="우편번호" data-required="true" disabled><!-- 210305 수정 [input type 수정] -->
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn search-postcode"><span>주소 찾기</span></button>
@@ -592,7 +592,7 @@
                                                                                 <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
                                                                                 <dd class="conts">
                                                                                     <div class="input-wrap">
-                                                                                        <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
+                                                                                        <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true"><!-- 210305 수정 [input type 수정] -->
                                                                                     </div>
                                                                                     <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                                 </dd>
@@ -613,11 +613,11 @@
                                                                             </dl>
                                                                         </div>
                                                                         @@include('./common/modules/bullet-list.html', {
-                                                                        "bulletTxt" : [
-                                                                        "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
-                                                                        "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
-                                                                        "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
-                                                                        ]
+                                                                            "bulletTxt" : [
+                                                                                "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
+                                                                                "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
+                                                                                "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
+                                                                            ]
                                                                         })
                                                                     </div>
                                                                     <!-- // 신용카드 -->
@@ -657,7 +657,7 @@
                                                                                 <dd class="conts">
                                                                                     <div class="box">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
+                                                                                            <input type="number" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"><!-- 210305 수정 [input type 수정] -->
                                                                                         </div>
                                                                                         <div class="cell">
                                                                                             <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
@@ -668,11 +668,11 @@
                                                                             </dl>
                                                                         </div>
                                                                         @@include('./common/modules/bullet-list.html', {
-                                                                        "bulletTxt" : [
-                                                                        "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
-                                                                        "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
-                                                                        "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
-                                                                        ]
+                                                                            "bulletTxt" : [
+                                                                                "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
+                                                                                "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
+                                                                                "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
+                                                                            ]
                                                                         })
                                                                     </div>
                                                                     <!-- // 실시간 계좌이체 -->
