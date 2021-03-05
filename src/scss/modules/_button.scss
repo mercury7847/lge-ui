@@ -72,12 +72,13 @@
     &:disabled,
     &.disabled {
         border-color:#f3b7c7 !important;
-        background:#f3b7c7 !important;
-        color:$color-white !important;
+        background:#f3b7c7;
+        color:$color-white;
         cursor:default;
         &:hover,
         &:focus,
         &:active {
+            border-color:#f3b7c7 !important;
             background:#f3b7c7;
             color: $color-white;
         }
