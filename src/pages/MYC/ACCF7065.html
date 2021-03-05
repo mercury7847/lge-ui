@@ -13,7 +13,14 @@
                 "pageTitle": "청약 상세보기"
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage orderAndDelivery-careDetail"        
+                data-order-inquiry-list="/lg5-common/data-ajax/mypage/careOrderDetailList.json"
+                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
+                data-order-cancel-popup="/lg5-common/data-ajax/mypage/orderCancelPop.json"
+                data-order-sails="/lg5-common/data-ajax/mypage/orderCancel.json"
+                data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
+                data-order-number="AD9876898765"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -70,7 +77,7 @@
 
                                     <div class="section-inner type3">
                                         <!-- 신청 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box orderuser">
                                             <p class="inner-tit">신청 정보 (계약자)</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -83,7 +90,7 @@
                                         <!-- // 신청 정보 -->
 
                                         <!-- 배송 설치 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box shipping">
                                             <p class="inner-tit">배송 설치 정보 (실사용자)</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -102,7 +109,7 @@
                                         <!-- // 배송 설치 정보 -->
 
                                         <!-- 결제 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box payment">
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -114,7 +121,7 @@
 
                                         <!-- 210304 수정 [납부 정보변경 버튼, 정보변경 활성화 영역 추가] -->
                                         <!-- 납부 정보 -->
-                                        <div class="inner-box">
+                                        <div class="inner-box monthly-payment">
                                             <p class="inner-tit">납부 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -132,7 +139,7 @@
                                         <!-- // 납부 정보 -->
 
                                         <!-- 납부 정보 : 정보변경 활성화 -->
-                                        <div class="inner-box" style="display:block !important">
+                                        <div class="inner-box monthly-payment-modify">
                                             <p class="inner-tit">납부 정보</p>
                                             <div class="payment-info">
                                                 <div class="form-wrap size2">
@@ -328,6 +335,7 @@
         @@include('./common/footer.html')
     </div>
     
+   
     <!-- 취소신청-->
     @@include('./common/popup/ACCF7002_pop1.html', {
         popupID: 'popup-cancel'
