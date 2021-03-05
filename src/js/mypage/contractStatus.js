@@ -305,7 +305,7 @@
                     }
                 });
 
-                //editPaymentInfomation();
+                //editPaymentInfomation()
             }
         });
     }
