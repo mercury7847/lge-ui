@@ -7,6 +7,38 @@
         .section {
             margin-top:0;
 
+            .tit-wrap {
+                &.type-row {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom:16px;
+                    border-bottom:2px solid #000;
+                    .tit {
+                        padding-bottom:0;
+                        border-bottom:0;
+                    }
+                    .btn-link {
+                        font-size:14px;
+                        &:after {
+                            display: inline-block;
+                            position: static;
+                            vertical-align: middle;
+                            margin-left:8px;
+                        }
+                    }
+
+                    @include tablet {
+                        display: block;
+
+                        .btn-link {
+                            margin-top:17px;
+                        }
+                    }
+                }
+            }
+
             & ~ .section {
                 margin:120px 0 0;
             }

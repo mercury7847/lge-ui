@@ -58,8 +58,11 @@
         }
         .count {
             position: absolute;
-            right: 120px;
-            bottom: 24px;
+            // right: 120px;
+            // bottom: 24px;
+            right:50%;
+			transform: translateX(50%);
+			bottom:68px;
             z-index: 2;
             font-weight: 700;
             font-size: 22px;
