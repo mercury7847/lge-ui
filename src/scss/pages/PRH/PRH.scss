@@ -58,8 +58,11 @@
         }
         .count {
             position: absolute;
-            right: 120px;
-            bottom: 24px;
+            // right: 120px;
+            // bottom: 24px;
+            right:50%;
+			transform: translateX(50%);
+			bottom:68px;
             z-index: 2;
             font-weight: 700;
             font-size: 22px;
@@ -123,7 +126,7 @@
         .tabs-wrap {
             max-width: 1380px + 80px;
             margin: 0 auto;
-            padding: 40px 40px 0;
+            padding-top: 38px;
             text-align: left;
             &:before {
                 position: absolute;
@@ -133,6 +136,10 @@
                 height: 1px;
                 background: $color-border;
                 content: '';
+            }
+            @include pc {
+                padding-right: 40px;
+                padding-left: 40px;
             }
             @media screen and (min-width:(1380px + 80px)) {
                 &:before {

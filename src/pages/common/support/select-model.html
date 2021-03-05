@@ -3,10 +3,10 @@
     data-result-url : 모델 선택 시
  -->
  @@if (context.url) {
-    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="@@url">
+    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="@@url" data-sub-category-url="/lg5-common/data-ajax/support/subCategoryOption.json?menuCode=A00030">
  }
  @@if (!context.url) {
-    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json">   
+    <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json" data-sub-category-url="/lg5-common/data-ajax/support/subCategoryOption.json?menuCode=A00030">   
  }
     <!-- 활성화 시 active 추가 -->
     
@@ -313,7 +313,7 @@
                 </div>
                 <div class="conts">
                     <div class="select-wrap">
-                        <select id="categorySelect" class="ui_selectbox ui_select_target" data-target="#subCategorySelect" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json">
+                        <select id="categorySelect" class="ui_selectbox">
                             <option value="" class="default">전체</option>
                             <option value="1018">모바일</option>
                             <option value="1005">TV/프로젝터</option>

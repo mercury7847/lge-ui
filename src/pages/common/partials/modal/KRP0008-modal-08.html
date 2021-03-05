@@ -3,25 +3,23 @@
     <header class="pop-header">
         <h1 class="tit"><span>제품 구매 안내</span></h1>
     </header>
-    <section class="pop-conts">
-        <div class="layer-careship">
-            <div class="process-info">
-                <div class="info-box">
-                    <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
-                    <ul class="process-list">
-                        <li><span>케어십 신청</span></li>
-                        <li><span>제품주문</span></li>
-                        <li><span>완료</span></li>
-                    </ul>
-                </div>
-                @@include('./common/modules/bullet-list.html', {
-                    "bulletTxt" : [
-                        "케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다."
-                    ]
-                })
-            </div>
+    <!-- 210305 수정 [내용 변경] -->
+    <section class="pop-conts common-pop">
+        <p class="top-txt">케어십 서비스를 신청하시는 경우 1개의 제품만 구매 가능하며 청약신청 후 구매를 진행 합니다.</p>
+        <div class="gray-txt-box">
+            <ul class="process-list">
+                <li><span class="num">STEP 01</span>케어십 신청 </li>
+                <li><span class="num">STEP 02</span>제품주문</li>
+                <li><span class="num">STEP 03</span>완료</li>
+            </ul>
         </div>
+        @@include('./common/modules/bullet-list.html', {
+            "bulletTxt" : [
+                "케어십은 친절한 케어매니저가 주기적으 로 방문하여 관리해 드립니다."
+            ]
+        })
     </section>
+    <!-- // 210305 수정 [내용 변경] -->
     <footer class="pop-footer center">
         <div class="btn-group">
             <button type="button" class="btn ui_modal_close"><span>확인</span></button>

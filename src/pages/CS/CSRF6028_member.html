@@ -35,9 +35,9 @@
                 @@include('./common/support/selected-model-bar.html')
 
                 <!-- 회원 - 제품 없을 시 -->
-                @@include('./common/support/select-my-model.html', {
+                <!-- (@@)include('./common/support/select-my-model.html', {
                     "noItem": true
-                })
+                }) -->
 
                 <!-- 회원 - 보유제품 펼침 -->
                 @@include('./common/support/select-my-model.html')
@@ -69,7 +69,7 @@
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
@@ -107,7 +107,7 @@
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     <div class="tit-wrap">

@@ -147,8 +147,10 @@
                             $list.append(vcui.template(listItemTemplate, item));
                         });
                         self.$memberlist.show();
+                        console.log('show',self.$memberlist);
                     } else {
                         self.$memberlist.hide();
+                        console.log('hide',self.$memberlist);
                     }
                     self.checkNoData();
                 });

@@ -427,8 +427,7 @@
 
                     if(arr.length){
                         arr.forEach(function(item, index) {
-                            item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
-                            console.log(item.checkBtnFlag,item.obsInventoryFlag,item.obsSellFlag,item.obsBtnRule);
+                            item.checkBtnFlag = self.checkBtnFlag(item);
                             var listItem = self.makeListItem(item);
                             self.$productList.append(listItem);
                         });
@@ -472,7 +471,7 @@
 
                     if(arr.length){
                         var item = arr[0];
-                        item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
+                        item.checkBtnFlag = self.checkBtnFlag(item);
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
@@ -484,6 +483,14 @@
                         self.fnBreakPoint();
                     };
                 }, true);
+            },
+
+            checkBtnFlag: function(item) {
+                if(lgkorUI.stringToBool(item.obsCartFlag)) {
+                    return (item.obsBtnRule=="enable") ? true : false;
+                } else {
+                    return false;
+                }
             },
 
             makeListItem: function(item){

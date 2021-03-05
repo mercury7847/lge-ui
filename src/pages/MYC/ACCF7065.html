@@ -148,7 +148,7 @@
                                                             <p class="label req">결제 수단<span class="blind">필수입력</span></p>
                                                         </dt>
                                                         <dd class="conts">
-                                                            <div class="select-list-wrap w-auto">
+                                                            <div class="select-list-wrap w-auto payment-method">
                                                                 <ul class="ui_radio_visible">
                                                                     <li>
                                                                         <span class="rdo-wrap">
@@ -176,7 +176,7 @@
                                                                                     <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
                                                                                     <dd class="conts">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
+                                                                                            <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
                                                                                         </div>
                                                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                                     </dd>
@@ -241,7 +241,7 @@
                                                                                     <dd class="conts">
                                                                                         <div class="box">
                                                                                             <div class="input-wrap">
-                                                                                                <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
+                                                                                                <input type="number" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true">
                                                                                             </div>
                                                                                             <div class="cell">
                                                                                                 <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
@@ -300,7 +300,7 @@
                                                         </dd>
                                                     </dl>
                                                 </div>
-                                                <div class="btn-group center">
+                                                <div class="btn-group btn-payment center">
                                                     <button type="button" class="btn border size-m cancel-btn"><span>취소</span></button>
                                                     <button type="button" class="btn border pink size-m ok-btn"><span>저장</span></button>
                                                 </div>
