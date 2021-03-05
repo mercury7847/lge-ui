@@ -2,13 +2,13 @@
 
 @import "../components-app";
 
-// .component-wrap {
-//     &.zero-btm {
-//         @include mobile {
-//             padding-bottom:40px !important;
-//         }
-//     }
-// }
+.component-wrap {
+    &.zero-btm {
+        @include mobile {
+            padding-bottom:40px !important;
+        }
+    }
+}
 
 .KRC0032 {
 	&.stage-full {
