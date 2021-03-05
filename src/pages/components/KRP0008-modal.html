@@ -16,7 +16,15 @@
         <button type="button" data-href="#modal-07" data-control="modal" class="btn pink"><span>케어십 할인 혜택</span></button><br><br>
         <button type="button" data-href="#modal-08" data-control="modal" class="btn pink"><span>제품 구매 안내 - 케어십 바로구매 선택 시</span></button><br><br>
 <!--        <button type="button" data-href="#modal-09" data-control="modal" class="btn pink"><span>케어십 안내 - 케어십 바로구매 선택 시</span></button><br><br>-->
-        <button type="button" data-href="#modal-10" data-control="modal" class="btn pink"><span>구매 안내</span></button>
+        <button type="button" data-href="#modal-10" data-control="modal" class="btn pink"><span>구매 안내</span></button><br><br><br><br>
+
+        <div><strong>alert</strong></div><br>
+        <button type="button" data-href="#laypop1" data-control="modal" class="btn"><span>케어솔루션 수량 초과시
+</span></button><br><br>
+        <button type="button" data-href="#laypop2" data-control="modal" class="btn"><span>케어솔루션 장바구니 안내</span></button><br><br>
+        <button type="button" data-href="#laypop3" data-control="modal" class="btn"><span>전시매장 없음</span></button><br><br>
+        <button type="button" data-href="#laypop4" data-control="modal" class="btn"><span>케어십 신청 안내</span></button><br><br>
+        <button type="button" data-href="#laypop5" data-control="modal" class="btn"><span>케어십 장바구니 안내</span></button><br><br>
     </div>
 
     <!-- 이미지 View Layer -->
@@ -69,6 +77,47 @@
         popupID: 'modal-10'
     })
 
+
+    <!-- 210305 수정 [alert 케이스 추가] -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "alertTit" : "케어솔루션/케어십 서비스는 최대 7개까지 서비스 이용이 가능합니다.",
+        "alertCont" : [
+            { "txt" : "(기존 7개의 제품 이용 중이며, <br>현재 신청 가능 제품 <strong class='point'>0</strong>개입니다.)" }
+        ]
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "케어솔루션은 정수기 제품의 경우 최대 3대, 그 외 제품의 경우 최대 2대로 제한되며 총 7개를 초과하여 선택하실 수 없습니다."
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop3",
+        "msgOnly" : true,
+        "msg" : "해당 제품을 전시하는 매장이 없습니다.<br>가까운 매장에서 비슷한 제품을<br>전시하는지 확인해보시겠어요?",
+        "twobtn" : true,
+        "btnTxt1" : "아니오",
+        "btnTxt2" : "네"
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop4",
+        "msgOnly" : true,
+        "msg" : "해당 제품은 케어십 서비스 신청이<br>필수인 제품입니다.",
+        "btnTxt" : "확인"
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop5",
+        "msgOnly" : true,
+        "msg" : "케어십 서비스를 신청하시는 경우<br>1개의 제품만 장바구니에 담을 수 있습니다.<br>해당 제품을 장바구니에 담으시겠어요?",
+        "twobtn" : true,
+        "btnTxt1" : "아니오",
+        "btnTxt2" : "네"
+    })
+    <!-- // 210305 수정 [alert 케이스 추가] -->
 
 </body>
 </html>
