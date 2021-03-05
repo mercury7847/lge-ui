@@ -447,7 +447,7 @@ CS.MD.commonModel = function() {
                 '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
-                '<div class="product-box">' +
+                // '<div class="product-box">' +
                     '<ul class="product">' +
                         '{{# for (var i = 0; i < product.length; i++) { #}}' +
                             '{{# if (product[i].name) { #}}' +
@@ -468,19 +468,19 @@ CS.MD.commonModel = function() {
                     '{{# if (product.length == 3 && product[2].name && lgkorUI.isLogin && !product[2].isMyProduct) { #}}' +
                     '<a href="/my-page/manage-products" class="btn-add-product"><span>보유제품 추가</span></a>' +
                     '{{# } #}}' +
-                '</div>' +
+                // '</div>' +
                 '{{# } #}}' +
             '</div>' +
             '{{# if (typeof reset != "undefined") { #}}' +
             '<div class="prod-btn">' +
                 '{{# if (reset == "type") { #}}' +
-                '<button type="button" class="btn border size reset btn-reset">문의유형 재선택</button>' +
+                '<button type="button" class="btn size reset btn-reset">문의유형 재선택</button>' +
                 '{{# } #}}' +
                 '{{# if (reset == "product") { #}}' +
-                '<button type="button" class="btn border size reset btn-reset">제품 재선택</button>' +
+                '<button type="button" class="btn size reset btn-reset">제품 재선택</button>' +
                 '{{# } #}}' +
                 '{{# if (reset == "noProduct") { #}}' +
-                '<button type="button" class="btn border size reset btn-reset">제품 선택</button>' +
+                '<button type="button" class="btn size reset btn-reset">제품 선택</button>' +
                 '{{# } #}}' +
             '</div>' +
             '{{# } #}}' +
