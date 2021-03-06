@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["caresolution/addressManagement"]
     })
 <body>
     <article id="popup" class="win-popup-wrap uiForm">
@@ -19,7 +20,7 @@
                         <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요.">
+                                <input type="text" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." disabled>
                             </span>
                         </dd>
                     </dl>
@@ -37,7 +38,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="number" name="buyerPhone" data-required="true" id="buyerPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                                <input type="number" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." disabled>
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -76,7 +77,7 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" name="buyerAddr" data-required="true" id="buyerAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
                                         <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
@@ -143,7 +144,7 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" name="recipientAddr" data-required="true" id="recipientAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
                                         <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
@@ -314,77 +315,61 @@
             
             vcui.require(['ui/validation'], function (Validation) {
 
-                // 구매자 정보와 같음
+                // 구매자 정보 셋팅값 입력
+                var buyerInfo = {
+                    buyerName : { value:'홍길동' },
+                    buyerPhone: { value:'01023457890'},
+                    buyerZipCode: { value:'02345' },
+                    buyerAddrInfo: { value:'서울시' },
+                    buyerAddrDetail: { value:'엘지 송파빌딩 1702호' }
+                }
+
+                // 구매자 정보와 같음 buyerInfo 로 addAddressObj 변환
+                /* 구매자 정보와 같음 수동으로 입력시
                 var addAddressObj = {
                     recipientName:'박종민',
                     recipientPhone:'01023457890',
-                    recipientAddr:'02345',
+                    recipientZipCode:'02345',
                     recipientAddrInfo:'서울시',
                     recipientAddrDetail:'엘지 송파빌딩 1702호'
                 }
+                */
+
+                var addAddressObj = {}
+                $.each(buyerInfo, function(key, value){
+                    var newKey = key.replace('buyer','recipient');
+                    addAddressObj[newKey] = value;
+                })
+
+                
                 // 구매자 정보를 비움
                 var emptyAddAddressObj = {
                     recipientName:'',
                     recipientPhone:'',
-                    recipientAddr:'05723',
+                    recipientZipCode:'',
                     recipientAddrInfo:'',
                     recipientAddrDetail:''
                 }
+                var vaildObj = {
+                    serialNum:{
+						validate : function(val){
+							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
+							return reg.test(val);
+						}
+					}
+                }
+
+                var errorObj = {}; // 에러 담는곳
+                $('#serialNum').css('text-transform', 'uppercase'); // 시리얼넘버 대문자만
+
+				var validation = new Validation('.uiForm',{register:$.extend(buyerInfo, vaildObj)});
                 
-
-                
-				var register = {
-                    buyerName:{
-						value:'',
-						required:true
-					},
-                    buyerPhone:{
-						value:'',
-						required:true
-					},
-                    modelName:{
-						value:'',
-						required:true
-					},                    
-					// serialNum:{
-					// 	required: true,
-					// 	value:'',
-					// 	validate : function(val){
-					// 		var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
-					// 		return reg.test(val);
-					// 	}
-					// },
-                    // buyerAddr:{
-					// 	value:'0555',
-					// 	required:true
-					// },
-                    // buyerAddrInfo:{
-					// 	value:'서울시',
-					// 	required:true
-					// },
-                    // buyerAddrDetail:{
-					// 	value:'엘지 송파빌딩 1702호',
-					// 	required:true
-					// },
-				}
-
-
-                $('#serialNum').css('text-transform', 'uppercase');
-               
-
-
-				var validation = new Validation('.uiForm',{register:register});
-                
-                validation.on('update', function(e){ 
-
-                }).on('errors', function(e,data){
-                    console.log('errors', data); 
-                    if(data['serialNum'] == undefined && !checkSerialSuccess){
-                        lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});                        
-                    }
+                validation.on('errors', function(e,data){
+                    errorObj = data;
 
                 }).on('success', function(data){
-
+                    // 성공시 처리
+                    errorObj = {};
                     console.log(validation.getValues());
 
                 }).on('nextfocus', function(e,target){
@@ -415,6 +400,7 @@
                         lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                     } else {
                         lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        $('#serialNum').focus();
                     }
                 });
 
@@ -428,23 +414,42 @@
                 });
 
                 // 구매정보 주소 찾기
-                $('#buyerAddrBtn').on('click', function(e){
+                var addressFinder = new AddressFind();
 
+                $('#buyerAddrBtn').on('click', function(e){
+                    addressFinder.open(function(data){
+                        $('input[name=buyerZipCode]').val(data.zonecode);
+                        $('input[name=buyerAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=buyerAddrDetail]').focus();
+                    });
                 });
 
                 // 사은품 주소 찾기
                 $('#recipientAddrBtn').on('click', function(e){
-
+                    addressFinder.open(function(data){
+                        $('input[name=recipientZipCode]').val(data.zonecode);
+                        $('input[name=recipientAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=recipientAddrDetail]').focus();
+                    });
                 });
 
-                // 
+
+                // 신청하기
                 $('#uiSubmit').on('click', function(){  
-
-                    validation.validate(); 	
-
+                    if(checkSerialSuccess){
+                        validation.validate(); 	
+                    }else if(errorObj['serialNum']){
+                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인해 주세요."});
+                        $('#serialCheckBtn').focus(); // 제조번호 확인버튼으로 포커스 이동
+                    }else{
+                        validation.validate();
+                    }
                 });
             })
-
 
         });
         
