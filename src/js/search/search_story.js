@@ -438,6 +438,7 @@
             openSearchInputLayer: function(open) {
                 var self = this;
                 if(open) {
+                    self.updateRecentSearchList();
                     self.$searchInputLayer.show();
                     self.$inputKeyword.addClass('focus-on');
 
@@ -813,7 +814,7 @@
                 //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
                 var searchedList = cookieValue ? cookieValue.split('|') : [];
-                searchedList = vcui.array.reverse(searchedList);
+                //searchedList = vcui.array.reverse(searchedList);
 
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');

@@ -125,7 +125,7 @@
                 
                 var searchVal = this.value;
                 if (searchVal.length < self.minLength) {
-                    self.showAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(true);
                     //self.hideAnimation(self.$searchResultArea);
                     self.hideSearchResultArea();
                     return;
@@ -207,23 +207,15 @@
         },
 
 
-        showAnimation:function($item) {
-            $item.show();
-            /*
-            $item.css({'opacity':0});
-            $item.show();
-            $item.animate({opacity:1},100);
-            */
-        },
+        openSearchInputLayer: function(open) {
+            var self = this;
+            if(open) {
+                self.updateRecentSearchList();
+                self.$searchKeywordArea.show();
 
-        hideAnimation:function($item) {
-            $item.hide();
-            /*
-            $item.animate({opacity:0},100,function() {
-                $item.hide();
-                $item.css({'opacity':1});
-            });
-            */
+            } else {
+                self.$searchKeywordArea.hide();
+            }
         },
 
         hideSearchResultArea:function() {
@@ -258,7 +250,7 @@
                         $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
                     });
                     self.$autoComplete.show();
-                    self.hideAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(false);
                     self.$searchSimilar.hide();
 
                     //모바일
@@ -272,10 +264,10 @@
                     if(data.similarText) {
                         self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
                         self.$searchSimilar.show();
-                        self.hideAnimation(self.$searchKeywordArea);
+                        self.openSearchInputLayer(false);
                     } else {
                         self.$searchSimilar.hide();
-                        self.showAnimation(self.$searchKeywordArea);
+                        self.openSearchInputLayer(true);
                     }
                 }
             });
@@ -337,7 +329,7 @@
 
                 if(showSearchResultArea) {
                     //검색결과가 있는 경우.
-                    self.hideAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(false);
                     self.$resultPreview.show();
                     self.$searchSimilar.hide();
                     if(isSaveRecentKeyword) self.addRecentSearcheText(searchedValue);
@@ -397,7 +389,7 @@
 
             var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
             var searchedList = cookieValue ? cookieValue.split('|') : [];
-            searchedList = vcui.array.reverse(searchedList);
+            //searchedList = vcui.array.reverse(searchedList);
             
             var arr = searchedList instanceof Array ? searchedList : [];
             var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');

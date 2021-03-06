@@ -8,6 +8,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             validation:'div.filters',
             startDate:'.startDate',
             endDate:'.endDate',
+            startDateInput:'startDate',
+            endDateInput:'endDate',
             inquiryButton:'button.calendarInquiry-btn',
             errorCheck:true,
             errorMsg:'조회기간을 설정해주세요.',
@@ -46,6 +48,10 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             
             self.$dateFilterStartDate =  self.$el.find(self.options.startDate);
             self.$dateFilterEndDate =  self.$el.find(self.options.endDate);
+
+            self.$startDateInput = self.$el.find('input[name="' + self.options.startDateInput + '"]');
+            self.$endDateInput = self.$el.find('input[name="' + self.options.endDateInput + '"]');
+
             self.$inquiryButton = self.$el.find(self.options.inquiryButton);
 
             self.$dateFilterStartDate.vcCalendar();
@@ -84,7 +90,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
 
         _bindEvents: function() {
             var self = this;
-            self.$dateFilterStartDate.on('calendarinsertdate', function (e, data) {
+            self.$startDateInput.on('calendarinsertdate', '',function (e, data) {
                 //시작일을 선택시 종료일의 시작날짜를 변경한다.
                 self.$dateFilterEndDate.vcCalendar('setMinDate', data.date);
             });
@@ -135,7 +141,6 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             var date = new Date(vcui.date.format(yyyyMMdd,'yyyy-MM-dd')); 
             self.$el.find(self.options.startDate).vcCalendar('setDate', date);
             self.$el.find(self.options.endDate).vcCalendar('setMinDate', date);
-            console.log(self.$el.find(self.options.endDate),date);
         },
 
         //종료일 넣기
