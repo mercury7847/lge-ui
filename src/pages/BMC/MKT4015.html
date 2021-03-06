@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["caresolution/addressManagement"]
     })
 
-
-<style>
-/*     
-    :focus { 
-        background-color: transparent;
-	    text-decoration: none;
-	    color: inherit;
-        outline:1px solid black;
-    } */
-</style>
 <body>
+
     <!-- width: 912px -->
     <article id="popup" class="win-popup-wrap uiForm">
         <header class="pop-header">
@@ -72,8 +64,13 @@
                                         <div class="select-wrap">
                                             <select class="ui_selectbox" name="purDateY" id="purDateY" title="년 선택">
                                                 <option value="" class="placeholder">선택</option>
+                                                <option value="2021">2021</option>
                                                 <option value="2020">2020</option>
                                                 <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>년</span></div>
@@ -84,8 +81,18 @@
                                         <div class="select-wrap">
                                             <select class="ui_selectbox" name="purDateM" id="purDateM" title="월 선택">
                                                 <option value="" class="placeholder">선택</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
                                                 <option value="10">10</option>
                                                 <option value="11">11</option>
+                                                <option value="12">12</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>월</span></div>
@@ -96,8 +103,6 @@
                                         <div class="select-wrap">
                                             <select class="ui_selectbox" name="purDateD" id="purDateD" title="일 선택">
                                                 <option value="" class="placeholder">선택</option>
-                                                <option value="17">17</option>
-                                                <option value="18">18</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>일</span></div>
@@ -217,7 +222,7 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" name="zipCode" data-required="true" id="inp03-2" value="" placeholder="우편번호" disabled>
+                                        <input type="text" name="zipCode" data-required="true" id="inp03-2" placeholder="우편번호" disabled>
                                     </div>
                                     <div class="cell">
                                         <button type="button" class="btn" id="addressSearchBtn"><span>주소 찾기</span></button>
@@ -256,8 +261,13 @@
                                         <div class="select-wrap">
                                             <select class="ui_selectbox" name="serviceYear" id="serviceYear" title="년 선택" data-required="true">
                                                 <option value="" class="placeholder">선택</option>
+                                                <option value="2021">2021</option>
                                                 <option value="2020">2020</option>
                                                 <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>년</span></div>
@@ -268,8 +278,18 @@
                                         <div class="select-wrap">
                                             <select class="ui_selectbox" name="serviceMonth" id="serviceMonth" title="월 선택" data-required="true">
                                                 <option value="" class="placeholder">선택</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
                                                 <option value="10">10</option>
                                                 <option value="11">11</option>
+                                                <option value="12">12</option>
                                             </select>
                                         </div>
                                         <div class="text"><span>월</span></div>
@@ -403,7 +423,7 @@
     <script>
         $(function () {
             
-            vcui.require(['ui/validation'], function (Validation) {
+            vcui.require(['ui/validation','ui/selectbox'], function (Validation) {
 
                 // 구매내역 입력
                 var buyerInfoObj = {
@@ -412,7 +432,7 @@
                         modelName:'2',
                         purDateY:'2021',
                         purDateM:'3',
-                        purDateD:'1',
+                        purDateD:'15',
                         purShop:'2',
                         branchName:'강남본점',
                         serialNum:'12212',
@@ -422,86 +442,37 @@
                         buyerName:'',
                         buyerPhone:'',
                         modelName:'',
-                        purDateY:'2021',
-                        purDateM:'3',
-                        purDateD:'1',
+                        purDateY:'',
+                        purDateM:'',
+                        purDateD:'',
                         purShop:'',
                         branchName:'',
                         serialNum:'',
                 }
-                
-				var register = {                      
-					serialNum:{
-						value:'',
-						validate : function(val){
-							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
-							return reg.test(val);
-						}
-					},
-                    zipCode:{
-						value:'0555',
-						required:true
-					},
-                    addressInfo:{
-						value:'서울시',
-						required:true
-					},
-                    addressDetail:{
-						value:'엘지 송파빌딩 1702호',
-						required:true
-					}                   
-				}
-
-                var today = new Date();
-                var year = today.getFullYear();
-                var month = today.getMonth() + 1;
-                var days = today.getDate();
-
-                //console.log(year, month,days);
-
-                //var lastDay = new Date(year, month, 0).getDate();
-                var lastDay = new Date(year, month, 0).getDate();
-                console.log(lastDay);
-
-
-                var newYear = []; //{text:'', value:''}
-
-                
-
+				
 
                 $('#serialNum').css('text-transform', 'uppercase');
+                var checkSerialSuccess = false;    
 
 
-                var checkSerialSuccess = false;                
-				var validation = new Validation('.uiForm',{register:register});
+				var validation = new Validation('.uiForm');
                 
-                validation.on('update', function(e){ 
-
-                    $('.uiForm').find('.ui_selectbox').vcSelectbox('update');
-
-                }).on('errors', function(e,data){
-                    console.log('errors', data); 
-                    // if(data['serialNum']){
-                    // }
+                validation.on('errors', function(e,data){
 
                 }).on('success', function(data){
-
+                    // 성공이 이벤트
                     console.log(validation.getValues());
 
-                }).on('nextfocus', function(e,target){
+                }).on('nextfocus', function(e,$target){
 
-                    if(target.hasClass('ui_selectbox')) {
-						target.vcSelectbox('focus');
-					}
-
-                    if(target.attr('name') == 'addressInfo'){
+                    if($target.attr('name') == 'addressInfo'){
                         setTimeout(function () {
                             $('#addressSearchBtn').focus();
                         }, 10);                        
                     }
                 });
 
-                // 제조번호 확인
+                // 제조번호 확인버튼 이벤트
                 $('#serialCheckBtn').on('click', function(e){
 
                     var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
@@ -511,10 +482,11 @@
                         lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                     } else {
                         lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        $('#serialNum').focus();
                     }
                 });
 
-                // 구매정보 직접입력
+                // 구매정보 직접입력 버튼 이벤트
                 $('#chk-input-1').on('click',function(e){
                     if(e.currentTarget.checked){
                         validation.setValues(emptyBuyerInfoObj);
@@ -524,21 +496,79 @@
                 });
 
                 // 서비스 요청 정보 주소찾기
+                var addressFinder = new AddressFind();
+
                 $('#addressSearchBtn').on('click', function(e){
-
+                    addressFinder.open(function(data){
+                        $('input[name=zipCode]').val(data.zonecode);
+                        $('input[name=addressInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=addressDetail]').focus();
+                    });
                 });
 
-                // 
+                
+                // 년,월 변경시 seletcbox 업데이트
+                $('#purDateY, #purDateM').on('change', function(e,data){
+                    var year = $('#purDateY').val();
+                    var month = $('#purDateM').val();
+                    var newDaysArr = _getDaysList(year, month);
+                    $('#purDateD').vcSelectbox('update', newDaysArr);
+                });
+
+                // 신청하기 버튼 이벤트
                 $('#uiSubmit').on('click', function(){  
-                    if(checkSerialSuccess){
-                        validation.validate(); 	
-                    }else{
-                        lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
-                    }
+                    validation.validate(); 	                    
                 });
 
-                checkSerialSuccess = true;
-                validation.setValues(buyerInfoObj);
+
+                // selectbox 에 입력될 day list 생성
+                function _getDaysList(year, month){
+
+                    var dateStr = "";
+                    if(year) dateStr = vcui.number.zeroPad(year.toString(), 4);
+                    if(month) dateStr += '-'+vcui.number.zeroPad(month.toString(), 2);
+
+                    var today = new Date();
+                    if(dateStr !=='') today = new Date(dateStr+'-01');
+
+                    var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+                    var resultArr = [{'text':'선택', 'value':''}];
+
+                    for(var i=1; i<=lastDay; i++){
+                        resultArr.push({'text':i, 'value':i})
+                    }
+
+                    return resultArr;
+                }
+
+
+                function setBuyerInfo(obj){
+
+                    // 날짜피커에 구매일자 입력
+                    var year = obj['purDateY'];
+                    var month = obj['purDateM'];
+                    var day = obj['purDateD'];
+
+                    if(year && year!=='' && month && month!=='' && day && day!==''){
+                        $('#purDateY').vcSelectbox('value', year);
+                        $('#purDateM').vcSelectbox('value', month);
+                        $('#purDateD').vcSelectbox('update', _getDaysList(), day);
+                    }
+                    
+                    // valid 에 구매정보 입력-> input 에 정보가 반영됨
+                    validation.setValues(obj);
+                }
+
+                function init(){
+                    $('.uiForm').find('.ui_selectbox').vcSelectbox();
+                    setBuyerInfo(buyerInfoObj);
+                }
+
+                init();
+                
+                
 
             })
         });
