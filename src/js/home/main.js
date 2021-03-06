@@ -319,6 +319,7 @@ $(function () {
             }
         });
 
+        
 
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
@@ -532,6 +533,49 @@ $(function () {
         
         $window.trigger('breakpointchange');
         window.resizeScene = render;
-        
+
+        /*
+        android.showBottomMenuOver(boolean isOver)
+
+        //iOS 
+        var obj = new Object();
+        obj.command = "showBottomMenuOver";
+        obj.value ="Y"; //Y - 메뉴 보이기 ,N - 메뉴 안보이기 
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */        
     });
 });
+
+/*
+    function _getEventPoint(ev, type) {
+        var e = ev.originalEvent || ev;
+        if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
+        else e = e.touches && e.touches[0] || e;
+
+        return {
+            x : e.pageX || e.clientX,
+            y : e.pageY || e.clientY
+        };
+    }
+    
+    var wheelInterval = null;
+    var $contentWrap = $('.section-cover');
+
+    $(document).on('touchstart touchend touchcancel', function(e) {
+
+        var data = _getEventPoint(e);
+        if (e.type == 'touchstart') {
+            touchSy = data.y;
+        } else {
+
+            if(wheelInterval) clearTimeout(wheelInterval);
+            wheelInterval = setTimeout(function(){
+                var st = $contentWrap.scrollTop();
+                if(st==0 && touchSy - data.y < -80){
+                    console.log('up');
+                }
+            }, 100);
+        }
+    });
+*/
