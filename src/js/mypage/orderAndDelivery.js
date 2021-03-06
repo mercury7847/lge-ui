@@ -1273,6 +1273,7 @@
             orderNumber: orderNumber,
             requestNo: requestNo,
             apiType: apiType,
+            tabFlag: TAB_FLAG,
             
             sendOrderNumber: memInfos.sendOrderNumber,
             sendInquiryType: memInfos.sendInquiryType,
