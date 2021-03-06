@@ -51,6 +51,7 @@ $size: (img2, img3, img4);
             @include mobile {
                 margin-left:-16px;
                 margin-right:-16px;
+                margin-bottom:20px;
             }
         }
         img {

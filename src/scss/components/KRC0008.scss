@@ -60,6 +60,9 @@
     }
     .body-copy {
         @include bodycopy(h2, h2);
+        @include mobile {
+            margin-top:20px;
+        }
     }
     .bottom-btn {
         @include cta-btn;
