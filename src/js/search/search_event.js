@@ -6,7 +6,7 @@
     //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
@@ -839,7 +839,7 @@
                         var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                         });
                         self.$popularKeywordList.show();
                     } else {
