@@ -1273,6 +1273,7 @@
             orderNumber: orderNumber,
             requestNo: requestNo,
             apiType: apiType,
+            tabFlag: TAB_FLAG,
             
             sendOrderNumber: memInfos.sendOrderNumber,
             sendInquiryType: memInfos.sendInquiryType,
@@ -1432,7 +1433,7 @@
         
         var orderNumber = listData[dataId].orderNumber;
         var requestNo = listData[dataId].requestNo;
-        var apiType = listData[dataId].apyType;
+        var apiType = listData[dataId].apiType;
 
         var memInfos = lgkorUI.getHiddenInputData();
 
