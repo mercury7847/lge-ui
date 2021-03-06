@@ -753,6 +753,7 @@
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                             item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            item.isEnd = lgkorUI.stringToBool(item.isEnd);
                             $list_ul.append(vcui.template(eventItemTemplate, item));
                         });
                         $resultListWrap.show();

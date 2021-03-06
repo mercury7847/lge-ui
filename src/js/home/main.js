@@ -532,6 +532,16 @@ $(function () {
         
         $window.trigger('breakpointchange');
         window.resizeScene = render;
-        
+
+        /*
+        android.showBottomMenuOver(boolean isOver)
+
+        //iOS 
+        var obj = new Object();
+        obj.command = "showBottomMenuOver";
+        obj.value ="Y"; //Y - 메뉴 보이기 ,N - 메뉴 안보이기 
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */        
     });
 });
