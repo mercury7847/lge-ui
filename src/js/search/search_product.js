@@ -441,6 +441,7 @@
             openSearchInputLayer: function(open) {
                 var self = this;
                 if(open) {
+                    self.updateRecentSearchList();
                     self.$searchInputLayer.show();
                     self.$inputKeyword.addClass('focus-on');
 
