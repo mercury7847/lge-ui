@@ -913,7 +913,7 @@ br.pc-only {
                         transform:translateX(-50%);
                         z-index:10;
                         @include mobile {
-                            display:none;
+                            display:none !important;
                         }
                         .btn-arrow {
                             position: absolute;
@@ -927,6 +927,9 @@ br.pc-only {
                             }
                             &.prev {
                                 left:-48px;
+                                &:before {
+                                    transform:rotate(180deg);
+                                }
                             }
                             &.next {
                                 right:-48px;
