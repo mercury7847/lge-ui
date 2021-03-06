@@ -2,12 +2,14 @@
     var cartItemTemplate = '<li class="order-item is-check btm-message {{#if !(available)}}disabled{{/if}}" data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
-            '<div class="flag-wrap bg-type">' +
+            '<div class="flag-wrap bar-type">' +
                 '<span class="flag"><span class="blind">제품타입</span>{{type}}</span>' +
             '</div>' +
             '<div class="item-name"><a href="{{itemUrl}}">{{#raw title}}</a></div>' +
-            '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div><div class="sibling-option"><span class="blind">제품옵션</span>{{colorOption}}</div></div>' +
-            '<div class="item-options2">{{#each (item, index) in option}}<p>{{#if index == 0}}옵션 : {{/if}}{{item}}</P>{{/each}}</div>' +
+            '<div class="sku"><span class="blind">제품번호</span>{{sku}}</div>' +
+            '<div class="sibling-option"><p>{{colorOption}}</p></div>' +
+            '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div></div>' +
+            '<div class="item-options2">{{#each item in option}}<p>{{item}}</P>{{/each}}</div>' +
         '</div>' +
         '<div class="product-payment">' +
             '<div class="amount">' +

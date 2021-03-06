@@ -1642,4 +1642,4 @@ window.cremaAsyncInit = function () {
     console.log('r',r);
     console.log('a',a);
     console.log('m',m);
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
