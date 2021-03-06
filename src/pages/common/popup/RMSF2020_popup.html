@@ -66,9 +66,17 @@
             <button type="button" class="btn block"><span>청약 신청하기</span></button>
         </div>
         <!-- 210306 내용추가 -->
+        <!-- 간편신청 유의사항 -->
         @@include('./common/modules/bullet-list.html', {
             "bulletTxt" : [
                 "선택하신 제휴카드는 청약신청의 납부정보 단계에서 신청해주세요.",
+                "제휴카드 할인은 청구할인 형태로 제공되며, 전 월실적에 따라 달라질 수 있습니다."
+            ]
+        })
+        <!-- 개별신청 유의사항 -->
+        @@include('./common/modules/bullet-list.html', {
+            "bulletTxt" : [
+                "선택하신 제휴카드는 해당 카드사 홈페이지에서 신청하신 후, 케어솔루션 고객센터 1577-4090로 요청해주세요.",
                 "제휴카드 할인은 청구할인 형태로 제공되며, 전 월실적에 따라 달라질 수 있습니다."
             ]
         })
