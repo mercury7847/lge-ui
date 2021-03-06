@@ -386,20 +386,7 @@
         addRecentSearcheText:function(text) {
             if(!text || text.length < 1) return;
             var self = this;
-            /*
-            var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
-            if(!searchedList) {
-                searchedList = [];
-            }
-            var findIndex = $.inArray(text, searchedList);
-            if(findIndex < 0) {
-                searchedList.push(text);
-                if(searchedList.length > self.maxSaveRecentKeyword) {
-                    searchedList.shift();
-                }
-                localStorage.searchedList = JSON.stringify(searchedList);
-            }
-            */
+
             lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
             self.updateRecentSearchList();
         },
@@ -408,10 +395,10 @@
         updateRecentSearchList:function() {
             var self = this;
 
-            //lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
             var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
             var searchedList = cookieValue ? cookieValue.split('|') : [];
-            //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+            searchedList = vcui.array.reverse(searchedList);
+            
             var arr = searchedList instanceof Array ? searchedList : [];
             var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
             $list_ul.empty();
