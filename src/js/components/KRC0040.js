@@ -8,7 +8,8 @@ $(window).ready(function(){
 		var $onText;
 		var $moreInfos;
 
-        var selectIdx;
+		var selectIdx;
+		var prevIdx;
 
         function init(){
             setting();
@@ -22,7 +23,7 @@ $(window).ready(function(){
 
             $mainSticky = $('.KRP0009');
 
-            selectIdx = 0;
+            selectIdx = prevIdx = 0;
 
 			$component.parent().height($component.innerHeight());
         }
@@ -97,10 +98,17 @@ $(window).ready(function(){
 				}); 
 				
 				if(selectIdx != currentIdx){
+					prevIdx = selectIdx;
 					selectIdx = currentIdx;
+
+					var no = selectIdx;
+					if(selectIdx < 0){
+						no = prevIdx;
+					}
+
 					$moreInfos.children().removeClass('active');
-					$moreInfos.children().eq(selectIdx).addClass('active');
-					$onText.text($moreInfos.children().eq(selectIdx).text());
+					$moreInfos.children().eq(no).addClass('active');
+					$onText.text($moreInfos.children().eq(no).text());
 				}
             });
 		}
@@ -127,9 +135,6 @@ $(window).ready(function(){
 				if($mainSticky.length) topDistance += $mainSticky.height();
 
 				var movtop = $(id).offset().top - topDistance+2;
-
-				var firstId = $component.find('.info-tab').eq(0).find('a').attr('href');
-				if(id == firstId) movtop -= $component.height();
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }

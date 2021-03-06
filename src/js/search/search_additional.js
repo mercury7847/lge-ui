@@ -781,6 +781,7 @@
             addRecentSearcheText:function(text) {
                 if(!text || text.length < 1) return;
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -796,12 +797,19 @@
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
                 self.updateRecentSearchList();
+                */
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
             updateRecentSearchList:function() {
                 var self = this;
-                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
+                var searchedList = cookieValue ? cookieValue.split('|') : [];
+                searchedList = vcui.array.reverse(searchedList);
+                
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
