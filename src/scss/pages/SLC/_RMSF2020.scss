@@ -176,7 +176,7 @@
     dl {
         display:table;
         width:100%;
-        margin-top:16px;
+        margin-top:8px;
         table-layout:fixed;
         @include mobile {
             margin-top:8px;
@@ -195,12 +195,43 @@
             }
         }
         dt {
-            color:#767676;
+            color:#000;
+            font-weight:normal;
         }
         dd {
             text-align:right;
             &.sale {
-                color:#EC455A;
+                color:#da0f47;
+                .alliance-card {
+                    height:74px;
+                    padding:14px 0 12px;
+                    color:#000;
+                    text-align:left;
+                    @include mobile {
+                        height:68px;
+                        padding-top:9px;
+                    }
+                }
+            }
+        }
+        &.sel {
+            dt {
+                position:relative;
+                top:-12px;
+            }
+            dd {
+                width:65%;
+            }
+            @include mobile {
+                dt,dd {
+                    display:block;
+                }
+                dt {
+                    top:0;
+                }
+                dd {
+                    width:100%;
+                }
             }
         }
         &.total {
@@ -225,6 +256,19 @@
     }
     .btn {
         margin-top:32px;
+    }
+    .tooltip-wrap {
+        .title {
+            font-weight:700;
+        }
+        .bullet-list {
+            margin-top:12px;
+        }
+        .btn-link {
+            margin-top:24px;
+            font-size:14px;
+            line-height:24px;
+        }
     }
 }
 

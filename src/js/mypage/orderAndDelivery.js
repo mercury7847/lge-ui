@@ -293,7 +293,7 @@
         ORDER_DETAIL_URL = $('.contents.mypage').data('orderDetail');
         PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         ORDER_CANCEL_POP_URL = $('.contents.mypage').data('orderCancelPopup');
-        ORDER_SAILS_URL = $('.contents.mypage').data('orderSails');
+        ORDER_SAILS_URL = $('.contents.mypage').data('orderSales');
         BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
 
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
@@ -436,7 +436,8 @@
             if(wrapper.hasClass("orderAndDelivery-detail")){                
                 setProductStatus(dataID, prodID, pdpUrl);
             } else{
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG + "&requestNo=" + ORDER_LIST[dataID].requestNo;
+                var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+                location.href = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
             }
         });
 
@@ -835,12 +836,16 @@
     
         var memInfos = lgkorUI.getHiddenInputData();
         var orderNumber = $('.contents.mypage').data('orderNumber');
+        var requestNo = $('.contents.mypage').data('requestNo');
+        var tabFlag = $('.contents.mypage').data('tabFlag');
 
         var sendata = {
             startDate: START_DATE,
             endDate: END_DATE,
             page: page || 1,
             orderNumber: orderNumber,
+            requestNo: requestNo,
+            tabFlag: tabFlag,
 
             sendInquiryType: memInfos.sendInquiryType,
             sendOrderNumber: memInfos.sendOrderNumber,
