@@ -754,6 +754,9 @@
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
+
+                    var $selectTab = self.getTabItembySelected();
+                    self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
                 });
             },
 
