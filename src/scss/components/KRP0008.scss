@@ -534,6 +534,9 @@
                     background: url("/lg5-common/images/KRP0008/icon-review.svg") no-repeat 0 center;
                     vertical-align: bottom;
                 }
+                .crema-product-reviews-score {
+                    font-size:16px;
+                }
             }
             @include mobile {
                 position: relative;
