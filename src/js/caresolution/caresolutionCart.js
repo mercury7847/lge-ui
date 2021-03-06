@@ -8,18 +8,21 @@
             '<div class="item-name"><a href="{{itemUrl}}">{{#raw title}}</a></div>' +
             '<div class="sku"><span class="blind">제품번호</span>{{sku}}</div>' +
             '<div class="sibling-option"><p>{{colorOption}}</p></div>' +
-            '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div></div>' +
             '<div class="item-options2">{{#each item in option}}<p>{{item}}</P>{{/each}}</div>' +
         '</div>' +
         '<div class="product-payment">' +
             '<div class="amount">' +
-            '<div class="price">{{#if originalPrice}}<p class="original">월 {{originalPrice}}원</p>{{/if}}<p class="total">월 {{salePrice}}원</p></div>' +            
-            //'{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>' +
-            //'<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
-            '<a href="{{tipUrl}}" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
-        '</div><div class="btn-area">' +
-            '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url="{{subscriptionUrl}}"><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
-        '</div></div>' +
+                '<div class="price">{{#if originalPrice}}<p class="original">월 {{originalPrice}}원</p>{{/if}}<p class="total">월 {{salePrice}}원</p></div>' +            
+                //'{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>' +
+                //'<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
+                '<a href="{{tipUrl}}" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
+            '</div>' +
+        /*
+            '<div class="btn-area">' +
+                '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url="{{subscriptionUrl}}"><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
+            '</div>' +
+        */
+        '</div>' +
         '{{#if availableMessage}}<div class="disabled-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
         '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select" {{#if (available && check)}}checked{{/if}} {{#if !(available)}}disabled{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +

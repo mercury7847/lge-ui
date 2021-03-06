@@ -8,7 +8,6 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-    /*
     console.log('i',i);
     console.log('s',s);
     console.log('o',o);
@@ -16,12 +15,12 @@
     console.log('r',r);
     console.log('a',a);
     console.log('m',m);
-    */
-})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function() {
     var KRP0012 = {
         init: function() {
+            console.log('jsw test');
             var self = this;
             if(typeof digitalData !== 'undefined') {
                 if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
