@@ -135,6 +135,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             var date = new Date(vcui.date.format(yyyyMMdd,'yyyy-MM-dd')); 
             self.$el.find(self.options.startDate).vcCalendar('setDate', date);
             self.$el.find(self.options.endDate).vcCalendar('setMinDate', date);
+            console.log(self.$el.find(self.options.endDate),date);
         },
 
         //종료일 넣기
@@ -142,6 +143,13 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             var self = this;
             var date = new Date(vcui.date.format(yyyyMMdd,'yyyy-MM-dd')); 
             self.$el.find(self.options.endDate).vcCalendar('setDate', date);
+        },
+
+        setNewYearDayToStartDate: function() {
+            var self = this;
+            var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
+            var sYear = endDate.substring(0,4);
+            self.setStartDate(sYear+"-01-01");
         },
 
         //종료일 기준으로 기간 선택. 숫자만 있는경우 일, m으로 끝나는 경우 달
