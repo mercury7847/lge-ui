@@ -637,6 +637,16 @@
 						color:#000;
 					}
 				}
+				&.fc-white{
+					color:#fff;
+					.txt-link {
+						> span{
+							&:after{
+								background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+							}
+						}
+					}
+				}
 				@media screen and (min-width:768px) and (max-width:1200px) {
 					.tit {
 						display:inline-block;
@@ -672,6 +682,7 @@
 					}
 				}
 			}
+			
 		}
 		.new-product-list {
 			padding-bottom:0;
@@ -1190,10 +1201,10 @@
 					width:100%;
 				}
 				.product-info-link {
-					//top:auto;
-					top:112px;
+					top:auto;
+					//top:112px;
 					right:0;
-					//bottom:0;
+					bottom:0;
 					left:0;
 					text-align:center;
 					&.type-l {
@@ -1208,8 +1219,8 @@
 					}
 				}
 				.link-area {
-					//margin-top:24px;
-					margin-top:20px;
+					margin-top:24px;
+					//margin-top:20px;
 					.txt-link {
 						display:block;
 						font-size:14px;
