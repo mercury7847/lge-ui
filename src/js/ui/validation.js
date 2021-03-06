@@ -527,7 +527,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             } else {
                 self.nameArr = vcui.array.remove(self.nameArr, name);
             }
-            console.log(self.nameArr);
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////
