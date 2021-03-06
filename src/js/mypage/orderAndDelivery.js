@@ -436,7 +436,8 @@
             if(wrapper.hasClass("orderAndDelivery-detail")){                
                 setProductStatus(dataID, prodID, pdpUrl);
             } else{
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + ORDER_LIST[dataID].orderNumber + "&tabFlag=" + TAB_FLAG + "&requestNo=" + ORDER_LIST[dataID].requestNo;
+                var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+                location.href = ORDER_DETAIL_URL + + "?tabFlag=" + TAB_FLAG  + "&orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo;
             }
         });
 
