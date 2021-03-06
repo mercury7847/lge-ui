@@ -896,7 +896,8 @@
                         self.addRecentSearcheText(searchedValue);
                     }
 
-                    //self.getTabItembyIndex(tabIndexAll).trigger('click');
+                    var $selectTab = self.getTabItembySelected();
+                    self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
                 });
             },
 
