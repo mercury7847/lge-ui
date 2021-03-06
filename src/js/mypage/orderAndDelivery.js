@@ -1070,7 +1070,6 @@
             result: true
         }
     }
-
     //납부카드/계좌 확인...
     function paymentMethodAbled(item){
         var sendata;
@@ -1110,7 +1109,6 @@
             paymentMethodConfirm = result.data.success;
         });
     }
-
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
         CTI_REQUEST_KEY = "";
@@ -1129,7 +1127,6 @@
             arsAgree = result.data.success;
         });
     }
-
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
         cardValidation.setValues(cardInfo);
@@ -1148,7 +1145,6 @@
         $('.monthly-payment').show();
         $('.monthly-payment-modify').hide();
     }
-
     function setPaymentModeCont(){
         $('.monthly-payment-modify input[data-visible-target]').prop("checked", false);
         $('.monthly-payment-modify input[data-visible-target=".by-' + paymentMethod + '"]').prop("checked", true);
@@ -1156,7 +1152,6 @@
         $('.monthly-payment-modify').find('.tab-panel').hide();
         $('.monthly-payment-modify').find('.tab-panel.by-' + paymentMethod).show();
     }
-
     //납부 정보변경 저장...
     function savePaymentInfoOk(){
         var payments = paymentInfoValidation();
@@ -1268,12 +1263,17 @@
     function getPopOrderData(dataId, calltype){
         lgkorUI.showLoading();
     
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var memInfos = lgkorUI.getHiddenInputData();
-        var orderNumber = ORDER_LIST[dataId].orderNumber;
+        var orderNumber = listData[dataId].orderNumber;
+        var requestNo = listData[dataId].requestNo;
+        var apiType = listData[dataId].apiType;
 
         var sendata = {
             callType: calltype,
             orderNumber: orderNumber,
+            requestNo: requestNo,
+            apiType: apiType,
             
             sendOrderNumber: memInfos.sendOrderNumber,
             sendInquiryType: memInfos.sendInquiryType,
@@ -1318,8 +1318,9 @@
 
                 var prodId = popup.data('prodId');
 
+                var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
                 productList = vcui.array.filter(productList, function(item, idx){
-                    return item.modelID == ORDER_LIST[dataId].productList[prodId].modelID;
+                    return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
                 console.log("### takeback productList ###", productList);
 
@@ -1329,7 +1330,7 @@
                 discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
                 mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
 
-                $('#popup-takeback').find('.info-tbl-wrap .info-wrap .infos').empty().append("<li>주문일<em>" + ORDER_LIST[dataId].orderDate + "</em></li>");
+                $('#popup-takeback').find('.info-tbl-wrap .info-wrap .infos').empty().append("<li>주문일<em>" + listData[dataId].orderDate + "</em></li>");
                
                 $('#popup-takeback').find('#slt01 option').prop('selected', false);
                 $('#popup-takeback').find('#slt01 option').eq(0).prop('selected', true);
@@ -1427,9 +1428,12 @@
     function takebackOk(){
         lgkorUI.showLoading();
 
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var dataId = $('#popup-takeback').data('dataId');    
         var memInfos = lgkorUI.getHiddenInputData();
-        var orderNumber = ORDER_LIST[dataId].orderNumber;
+        var orderNumber = listData[dataId].orderNumber;
+        var requestNo = listData[dataId].requestNo;
+        var apiType = listData[dataId].apyType;
 
         var selectReason = $('#popup-takeback').find('#slt01 option:selected').val();
         var writeReason = $('#popup-takeback').find('textarea').val();
@@ -1447,6 +1451,8 @@
         var sendata = {
             callType: "orderreturn",
             orderNumber: orderNumber,
+            requestNo: requestNo,
+            apiType: apiType,
 
             bankName: bankName,
             bankAccountNo: bankAccountNo,
@@ -1480,9 +1486,12 @@
     function cancelOk(){
         lgkorUI.showLoading();
 
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var dataId = $('#popup-cancel').data('dataId');    
         var memInfos = lgkorUI.getHiddenInputData();
-        var orderNumber = ORDER_LIST[dataId].orderNumber;
+        var orderNumber = listData[dataId].orderNumber;
+        var requestNo = listData[dataId].requestNo;
+        var apiType = listData[dataId].apyType;
 
         var selectReason = $('#popup-cancel').find('#cancelReason option:selected').val();
         var writeReason = $('#popup-cancel').find('textarea').val();
@@ -1505,6 +1514,8 @@
         var sendata = {
             callType: "ordercancel",
             orderNumber: orderNumber,
+            requestNo: requestNo,
+            apiType: apiType,
 
             bankName: bankName,
             bankAccountNo: bankAccountNo,
@@ -1538,8 +1549,10 @@
     //상품 클릭...
     function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
+        
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
-            "sku": ORDER_LIST[dataId].productList[prodId].productNameEN
+            "sku": listData[dataId].productList[prodId].productNameEN
         }
 
         console.log("### setProductStatus ###", sendata);
