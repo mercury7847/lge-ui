@@ -1203,10 +1203,16 @@
         //결제정보
         $listBox = $('.inner-box.payment ul');
         if($listBox.length > 0) {
-            if(PAGE_TYPE == PAGE_TYPE_NONMEM) template = noneMemPaymentTemplate;
-            else if(PAGE_TYPE == PAGE_TYPE_NONMEM) template = carePaymentListTemplate;
-            else template = paymentListTemplate;
-            $listBox.html(vcui.template(template, PAYMENT_DATA));
+            if(PAYMENT_DATA.length){
+                $listBox.show();
+
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM) template = noneMemPaymentTemplate;
+                else if(PAGE_TYPE == PAGE_TYPE_NONMEM) template = carePaymentListTemplate;
+                else template = paymentListTemplate;
+                $listBox.html(vcui.template(template, PAYMENT_DATA));
+            } else{
+                $listBox.hide();
+            }
         }
 
         //주문자 정보
