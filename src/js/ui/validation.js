@@ -44,6 +44,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
      * @extends vcui.ui.View
      */
 
+
     var Validation = core.ui('Validation', /** @lends vcui.ui.Validation# */{
         bindjQuery: 'validation',
         defaults: {
@@ -64,12 +65,12 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             var register = self.options.register || {};
             var newObj = {};
-
+    
             self.$el.find('[name]').each(function(index,item){
 
                 var required = $(item).data('required'); 
                 if(register[item.name]){
-                    required = register[item.name]['required'];
+                    required = register[item.name]['required'] || required;
                 }
                 
                 var msgTarget = $(item).data('msgTarget'); 
@@ -109,7 +110,22 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
                     if(patternMsg) newObj[item.name]['patternMsg'] = patternMsg;
                     newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {}); 
-                }else{
+                }else{           
+                    
+                    var rName = item.name;
+                    if(rName){
+                        var valObj = register[rName];
+                        var rValue = '';
+                        if(valObj){
+                            if(core.isObject(valObj)){
+                                rValue = valObj['value'];
+                            }else if(core.isString(valObj)){
+                                rValue = valObj;
+                            }
+
+                            $(item).val(rValue);
+                        }
+                    }
 
                     if(msgTarget) {
                         if(newObj[item.name]){                   
@@ -341,17 +357,24 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                             value = 0;
                         }
 
-
                         if($target.find('option[value=' + value + ']')[0]){
                             $target.find('option[value=' + value + ']').prop("selected", true);
                         }else{
                             $target.find('option').eq(0).prop("selected", true);
                         }
                         
-                        $($target).vcSelectbox('update');
+                        if($target.hasClass('ui_selectbox')) {
+                            $target.vcSelectbox('update');
+                        }
                         
                     } else{
-                        $target.val(obj[key]);
+
+                        if(vcui.isObject(obj[key])){
+                            $target.val(obj[key]['value']? obj[key]['value'] : '');
+                        }else{
+                            $target.val(obj[key]);
+                        }
+                        
                     }
                 }
                 
@@ -411,7 +434,12 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     
                 }else{
                     $first.focus();
-                }                
+                }         
+                
+                if($first.hasClass('ui_selectbox')) {
+                    $first.vcSelectbox('focus');
+                }
+
                 self.triggerHandler('nextfocus', [$first]);
             }
 
@@ -806,7 +834,10 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     } else {
                         $first.focus();
                     }
-                }                
+                }    
+                if($first.hasClass('ui_selectbox')) {
+                    $first.vcSelectbox('focus');
+                }            
                 self.triggerHandler('nextfocus', [$first]);
             }
 
@@ -838,9 +869,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         }
     });
 
+    
     if ($('.contents.support').length) {
         return CsValidation;
     } else {
+
         return Validation;
     }
 });

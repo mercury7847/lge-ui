@@ -461,7 +461,9 @@
                     self.$registMyProductPopup.vcModal('close');
                 } else {
                     //등록
-                    if(checkModelSuccess && checkSerialSuccess) {
+                    //2021-03-06 제조번호(sn) 필수 제외
+                    //if(checkModelSuccess && checkSerialSuccess) {
+                    if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
                             var param = self.registMyProductValidation.getAllValues();
@@ -473,11 +475,14 @@
                             });
                         }
                     } else {
+                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        /*
                         if(!checkModelSuccess) {
                             lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                         } else if(!checkSerialSuccess) {
                             lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
                         }
+                        */
                     }
                 }
             });
