@@ -2105,6 +2105,13 @@ $input: (chk, rdo);
             border-radius:0 0 8px 8px;
             background:#fff;
             z-index: 3;
+            .ui-select-scrollarea {
+                max-height:220px;
+                overflow-y:auto;
+            }
+            .ui-select-scroll {
+                display:none !important;
+            }
             ul {
                 li {
                     a {

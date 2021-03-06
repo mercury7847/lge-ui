@@ -24,20 +24,20 @@
                 self.$inquiryButton = self.$formWrap.find('#inquiryButton');
 
                 var register = {
-                    category:{
+                    accountFlag:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
                         msgTarget: '.err-block'
                     },
-                    area:{
+                    localName:{
                         required: false,
                     },
-                    branch:{
+                    spotName:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
                         msgTarget: '.err-block'
                     },
-                    receipt:{
+                    barcodeNo:{
                         required: true,
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
@@ -52,7 +52,7 @@
             bindEvents: function() {
                 var self = this;
                 self.$inputReceipt.on("input",function(){
-                    this.value = this.value.replace(/[^0-9]/g, '');
+                    this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
                 });
                 
                 self.$categorySelect.on('change', function(e){
@@ -63,20 +63,29 @@
                         self.$areaSelect.vcSelectbox('update');
                         self.$branchSelect.find('option:not(:eq(0))').remove();
                         self.$branchSelect.vcSelectbox('update');
+                        self.validation.setRequireItem("spotName",true);
                     } else {
                         var data = areaData[selectValue];
                         if(data) {
+                            var hasBrachDataCheck = false;
                             var arr = data instanceof Array ? data : [];
                             self.$areaSelect.find('option:not(:eq(0))').remove();
                             if(arr.length > 0) {
                                 arr.forEach(function(item, index) {
                                     self.$areaSelect.append(vcui.template(localOptTemplate, item));
+                                    var data = branchData[item.value];
+                                    var arr = data instanceof Array ? data : [];
+                                    if(arr.length > 0) {
+                                        hasBrachDataCheck = true;
+                                    }
                                 });
                             }
                             self.$areaSelect.vcSelectbox('update');
                             self.$branchSelect.find('option:not(:eq(0))').remove();
                             self.$branchSelect.vcSelectbox('update');
                             self.$areaSelect.parents('div.select-wrap').show();
+
+                            self.validation.setRequireItem("spotName",hasBrachDataCheck);
                         } else {
                             self.$areaSelect.parents('div.select-wrap').hide();
                             data = branchData[selectValue];
@@ -90,11 +99,16 @@
                                 }
                                 self.$branchSelect.vcSelectbox('update');
                                 self.$branchSelect.parents('div.select-wrap').show();
+                                self.validation.setRequireItem("spotName",true);
                             } else {
                                 self.$branchSelect.parents('div.select-wrap').hide();
+                                self.validation.setRequireItem("spotName",false);
                             }
                         }
                     }
+
+                    self.$areaSelect.vcSelectbox('selectedIndex',0,false);
+                    self.$branchSelect.vcSelectbox('selectedIndex',0,false);
                 });
 
                 self.$areaSelect.on('change', function(e){
@@ -115,10 +129,13 @@
                             }
                             self.$branchSelect.vcSelectbox('update');
                             self.$branchSelect.parents('div.select-wrap').show();
+                            self.validation.setRequireItem("spotName",true);
                         } else {
                             self.$branchSelect.parents('div.select-wrap').hide();
+                            self.validation.setRequireItem("spotName",false);
                         }
                     }
+                    self.$branchSelect.vcSelectbox('selectedIndex',0,false);
                 });
 
                 self.$inquiryButton.on('click', function(e) {
@@ -155,15 +172,20 @@
             requestData: function(param) {
                 var self = this;
                 var ajaxUrl = self.$formWrap.attr('data-receipt-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    /*                    
                     var data = result.data;
+                    console.log(data);
                     var alert = data.alert;
                     if(alert) {
                         self.openAlert(alert);
                     }
+                    */
                 });
             },
 
+            /*
             openAlert: function(alert) {
                 //알림
                 var obj ={title: alert.title,
@@ -178,6 +200,7 @@
                 }
                 lgkorUI.alert(desc, obj);
             },
+            */
         };
 
         receiptRegist.init();                

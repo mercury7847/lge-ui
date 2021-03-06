@@ -19,6 +19,7 @@ $(window).ready(function(){
         var $subSticky;
 
         var selectIdx;
+        var prevIdx;
 
         function init(){
             setting();
@@ -26,6 +27,8 @@ $(window).ready(function(){
         }
 
         function setting(){
+            selectIdx = prevIdx = -1;
+
             $component = $('.KRP0009');
             $items = $component.find('.tab-menu-belt li');
             $items.removeClass('active');
@@ -34,8 +37,6 @@ $(window).ready(function(){
             setSubStickyStatus();
 
             $component.parent().height($component.height());
-
-            selectIdx = 0;
         }
 
         function bindEvents(){
@@ -45,12 +46,14 @@ $(window).ready(function(){
         
                 var id = $(this).attr('href');
                 scrollMoved(id);
-            })
+            });
         
             $(window).on('scroll.KRP0009', function(e){
                 var scrolltop = $(window).scrollTop(); 
 
-                var comptop = $component.parent().offset().top;        
+                var paddingtop = parseInt($component.parent().css('padding-top'));
+                var comptop = $component.parent().offset().top + paddingtop;
+
                 var dist = -scrolltop + comptop;
                 if(dist <= 0){
                     $component.addClass('fixed').css({
@@ -58,6 +61,8 @@ $(window).ready(function(){
                         top:0,
                         zIndex:90
                     });
+
+                    $subSticky.show();
 
                     var leng = $items.children().length;
                     var lastId = $items.eq(leng-1).find('a').attr('href');
@@ -76,6 +81,7 @@ $(window).ready(function(){
                         }
                     }
                 } else{
+                    $subSticky.hide();
                     $component.removeClass('fixed').removeAttr('style');
                 }
 
@@ -97,6 +103,7 @@ $(window).ready(function(){
         function selectIndex(idx){            
             $items.removeClass('active');
 
+            prevIdx = selectIdx;
             selectIdx = idx;
 
             if(selectIdx > -1) $items.eq(selectIdx).addClass('active');
@@ -105,26 +112,27 @@ $(window).ready(function(){
         }
 
         function setSubStickyStatus(){
-            var isShow = $subSticky.data('isShow')
-            if(selectIdx == 0){
-                if(!isShow){
-                    $subSticky.data('isShow', true);
-                    $subSticky.slideDown(150);
-                }
-            } else{
-                if(isShow){
-                    $subSticky.data('isShow', false);
-                    $subSticky.slideUp(150);
-                }
-            }
+            console.log("setSubStickyStatus:", selectIdx);
+            var chk = false;
+            // if(selectIdx < 0){
+            //     if(prevIdx < 1) chk = true;
+            // } else if(selectIdx == 0) chk = true;
+
+            if(selectIdx < 1) chk = true;
+
+            if(chk) $subSticky.show().find('.inner').slideDown(150);
+            else $subSticky.find('.inner').slideUp(150, function(){$subSticky.hide()});;
         }
 
         function scrollMoved(id){
             if($(id).length){
-                var movtop = $(id).offset().top - $component.height();
+                var compheight = $component.height();
+                console.log("compheight:", compheight)
 
                 var firstId = $items.eq(0).find('a').attr('href');
-                if(id == firstId) movtop += 2;
+                if(id == firstId) compheight = 72;
+
+                var movtop = $(id).offset().top - compheight + 2;
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }

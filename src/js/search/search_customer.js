@@ -6,7 +6,7 @@
     //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
@@ -641,6 +641,12 @@
                             $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
                         });
                         self.$relatedKeywordList.show();
+
+                        if(self.$relatedKeywordList.height() > 24) {
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -793,6 +799,9 @@
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
+
+                    var $selectTab = self.getTabItembySelected();
+                    self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
                 });
             },
 
@@ -816,6 +825,7 @@
             addRecentSearcheText:function(text) {
                 if(!text || text.length < 1) return;
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -831,12 +841,19 @@
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
                 self.updateRecentSearchList();
+                */
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
             updateRecentSearchList:function() {
                 var self = this;
-                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
+                var searchedList = cookieValue ? cookieValue.split('|') : [];
+                searchedList = vcui.array.reverse(searchedList);
+                
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
@@ -864,7 +881,7 @@
                         var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                         });
                         self.$popularKeywordList.show();
                     } else {

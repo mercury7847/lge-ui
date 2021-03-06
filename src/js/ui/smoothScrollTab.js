@@ -175,7 +175,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self.smoothScroll.moveFirst();
             self.smoothScroll.toggleEnabled(chk);
         }
-
+        
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 

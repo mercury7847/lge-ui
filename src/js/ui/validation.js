@@ -546,6 +546,16 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 }
             }
         },
+
+        setRequireItem : function(name,require) {
+            var self = this;
+            if(require) {
+                self.nameArr.push(name);
+                self.nameArr = vcui.array.unique(self.nameArr);
+            } else {
+                self.nameArr = vcui.array.remove(self.nameArr, name);
+            }
+        }
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 

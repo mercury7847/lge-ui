@@ -2,9 +2,9 @@
     //최근검색어
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>'
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //추천태그
-    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>'
+    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
 
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -386,20 +386,7 @@
         addRecentSearcheText:function(text) {
             if(!text || text.length < 1) return;
             var self = this;
-            /*
-            var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
-            if(!searchedList) {
-                searchedList = [];
-            }
-            var findIndex = $.inArray(text, searchedList);
-            if(findIndex < 0) {
-                searchedList.push(text);
-                if(searchedList.length > self.maxSaveRecentKeyword) {
-                    searchedList.shift();
-                }
-                localStorage.searchedList = JSON.stringify(searchedList);
-            }
-            */
+
             lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
             self.updateRecentSearchList();
         },
@@ -408,10 +395,10 @@
         updateRecentSearchList:function() {
             var self = this;
 
-            //lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
             var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
             var searchedList = cookieValue ? cookieValue.split('|') : [];
-            //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+            searchedList = vcui.array.reverse(searchedList);
+            
             var arr = searchedList instanceof Array ? searchedList : [];
             var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
             $list_ul.empty();
@@ -440,7 +427,7 @@
                     var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                     $list_ul.empty();
                     arr.forEach(function(item, index) {
-                        $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                        $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                     });
                     self.$popularKeywordList.show();
                 } else {

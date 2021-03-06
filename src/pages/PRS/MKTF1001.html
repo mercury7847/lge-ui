@@ -2,12 +2,16 @@
 <html lang="ko">
     @@include('./common/head.html', {
 		pageCSS: ["PRS/PRS"],
-		pageJS: ["home/storeHome"]
+		pageJS: ["home/storeHome"],
+		pageTitle : '전체 제품 | LG전자',
+		pageDesc : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.'
+		
     })
 <body>
 	<div class="wrap">
 		@@include('./common/header.html', {
-			"mobileCase": "main"
+			"mobileCase": "main",
+			hiddenTitle : 'LG전자의 다양한 제품을 만나보세요.'
 		})
 
 		<div class="container">
@@ -787,7 +791,7 @@
 					<div class="module-box wide">
 						<div class="product-banner">
 							<img src="/lg5-common/images/PRS/img-banner-product-category-01.jpg" alt="LG DIOS 얼음정수기냉장고" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-01.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-01-m.jpg">
-							<div class="product-info-link type-l">
+							<div class="product-info-link fc-white type-l"> <!-- 210306_클래스추가 -->
 								<a href="#">
 									<p class="tit">1등답게,<br>디오스가 새로움을 오픈</p>
 								</a>
@@ -799,7 +803,7 @@
 						</div>
 						<div class="product-banner">
 							<img src="/lg5-common/images/PRS/img-banner-product-category-02.jpg" alt="LG TROMM 건조기" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-02.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-02-m.jpg">
-							<div class="product-info-link type-r">
+							<div class="product-info-link fc-white type-r"> <!-- 210306_클래스추가 -->
 								<a href="#">
 									<p class="tit">백라이트 없이 스스로<br>빛나는 건 올레드 TV뿐</p>
 								</a>
