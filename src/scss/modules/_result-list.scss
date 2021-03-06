@@ -39,6 +39,9 @@
             width: 120px;
             height: 120px;
             margin-right: 40px;
+            a {
+                display:block;
+            }
             @include mobile {
                 position: absolute;
                 top: 32px;
@@ -394,6 +397,10 @@
             margin-right: 12px;
             font-size: 0;
             vertical-align: top;
+            a {
+                display:block;
+                padding-bottom:10px;
+            }
             @include mobile {
                 margin-right: 0;
                 margin-left: 6px;
