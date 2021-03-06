@@ -1433,7 +1433,7 @@
         
         var orderNumber = listData[dataId].orderNumber;
         var requestNo = listData[dataId].requestNo;
-        var apiType = listData[dataId].apyType;
+        var apiType = listData[dataId].apiType;
 
         var memInfos = lgkorUI.getHiddenInputData();
 
