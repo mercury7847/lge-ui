@@ -543,7 +543,25 @@ $(function () {
         obj.value ="Y"; //Y - 메뉴 보이기 ,N - 메뉴 안보이기 
         var jsonString= JSON.stringify(obj);
         webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-        */        
+        
+        ios 통합 앱에서 하단 메뉴 관련 스크립트 공유 드립니다.
+
+        1. 하단 메뉴 스크롤 기능 사용 여부 설정
+
+        var obj = new Object();
+        obj.command = "setEnableScrollBottomMenu";
+        obj.value ="Y"; //Y 사용, N 미사용
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+        2. 하단 메뉴 노출 여부 설정
+        var obj = new Object();
+        obj.command = "showBottomMenu";
+        obj.value ="Y"; //Y 노출, N 미노출
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */
+
     });
 });
 
