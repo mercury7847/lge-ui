@@ -602,6 +602,12 @@
                             $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
                         });
                         self.$relatedKeywordList.show();
+
+                        if(self.$relatedKeywordList.height() > 24) {
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
                     } else {
                         self.$relatedKeywordList.hide();
                     }

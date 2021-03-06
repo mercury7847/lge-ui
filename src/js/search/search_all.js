@@ -659,6 +659,12 @@
                             $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
                         });
                         self.$relatedKeywordList.show();
+
+                        if(self.$relatedKeywordList.height() > 24) {
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -949,7 +955,7 @@
                 var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
                 var searchedList = cookieValue ? cookieValue.split('|') : [];
                 searchedList = vcui.array.reverse(searchedList);
-                
+
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
