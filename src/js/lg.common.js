@@ -607,7 +607,6 @@ var isApp = function(){
                 var callbackOk, callbackCancel;
     
                 if(options && options.ok && typeof options.ok =='function'){
-                    console.log("option.ok");
                     callbackOk = options.ok;
                     delete options['ok'];
                 } 
@@ -633,7 +632,6 @@ var isApp = function(){
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
                     if(e.type =='modalok'){
-                        console.log(callbackOk)
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
@@ -1422,39 +1420,69 @@ var isApp = function(){
 
             var $wishItem = $('input['+checkAttr+']');
 
-            lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var data = result.data.data;
-                if(data){
-                    var listData = data.listData != undefined ? data.listData : null;
-                    var wishListId = data.wishListId;
-                    $wishItem.each(function(idx, item){
-                        var $item = $(item);
-                        if(!$item.data('wishListId')) {
-                            console.log('null',$item);
-                            $item.data('wishListId', wishListId);
-                        };
-                    });                
-                    if(listData) {
-                        listData.forEach(function(item,index){
-                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
-                            if($wish.length > 0) {
-                                $wish.data(item);
-                                $wish.prop("checked",true);
-                            }
-                        });
+            if($wishItem.length > 0) {
+                lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
+                    var data = result.data.data;
+                    if(data){
+                        var listData = data.listData != undefined ? data.listData : [];
+                        var wishListId = data.wishListId;
+                        /*
+                        $wishItem.each(function(idx, item){
+                            var $item = $(item);
+                            if(!$item.data('wishListId')) {
+                                $item.data('wishListId', wishListId);
+                            };
+                        }); 
+                        */
+                        if(wishListId) {
+                            $wishItem.each(function(idx, item){
+                                var $item = $(item);
+                                if(!$item.data('wishListId')) {
+                                    $item.data('wishListId', wishListId);
+                                };
+                                var itemId = $item.attr(checkAttr);
+                                for (var i = 0, len = listData.length; i < len; i++) {
+                                    var listItem = listData[i];
+                                    if (listItem.sku == itemId) {
+                                        $item.data(listItem);
+                                        $item.prop("checked",true);
+                                        break;
+                                    }
+                                }
+                            });
+                            /*
+                            listData.forEach(function(item,index){
+                                var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                                console.log($wish);
+                                if($wish.length > 0) {
+                                    $wish.data(item);
+                                    $wish.prop("checked",true);
+                                }
+                            });
+                            */
+                        }
                     }
+                },"GET", null, true);
+            }
+        },
+
+        //크레마로그인
+        cremaLogin:function() {
+            if(typeof digitalData !== 'undefined') {
+                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
+                    window.cremaAsyncInit = function () {
+                        crema.init("이름",digitalData.userInfo.unifyId);
+                    };
+                } else {
+                    window.cremaAsyncInit = function () {
+                        crema.init(null,null);
+                    };
                 }
-            },"GET", null, true);
-        
-            //var checkModel = [];
-            /*
-            $wishItem.each(function(idx,obj){
-                var model = obj.attr(checkAttr);
-                if(model){
-                    checkModel.push(model);
-                }
-            });
-            */
+            } else {
+                window.cremaAsyncInit = function () {
+                    crema.init(null,null);
+                };
+            }
         }
     }
 

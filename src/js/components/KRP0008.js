@@ -1,3 +1,23 @@
+(function(i,s,o,g,r,a,m){
+    if(s.getElementById(g)){
+        return
+    };
+    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+    a.id=g;
+    a.async=1;
+    a.src=r;
+    m.parentNode.insertBefore(a,m);
+    /*
+    console.log('i',i);
+    console.log('s',s);
+    console.log('o',o);
+    console.log('g',g);
+    console.log('r',r);
+    console.log('a',a);
+    console.log('m',m);
+    */
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+
 (function() {
 
     var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
@@ -103,6 +123,13 @@
                 self.getRewardInfo();
                 //비교하기 체크
                 self.setCompares();
+
+                //찜하기 체크
+                var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
+                lgkorUI.checkWishItem(ajaxUrl);
+
+                //크레마
+                lgkorUI.cremaLogin();
             },
 
             setting: function() {
@@ -495,30 +522,38 @@
 
                 //찜하기
                 self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').on('click', function(e) {
-                    var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
-                    var checked = $(this).is(':checked');
-                    var success = function(data) {
-                        sendData.wishItemId = data.wishItemId;
-                        if(data.wishListId) {
-                            sendData.wishListId = data.wishListId;
-                        }
-                        $(this).prop("checked",checked);
-                    };
-                    var fail = function(data) {
-                        $(this).prop("checked",!checked);
-                    };
-
-                    var param = JSON.parse(JSON.stringify(sendData));
-                    if(checked){
+                    var $this = $(this);
+                    var _id = sendData.modelId;
+                    var sku = sendData.sku;
+                    var wishListId = $this.data("wishListId");
+                    var wishItemId = $this.data("wishItemId");
+                    var wish = $this.is(':checked');
+                    var param = {
+                        "id":_id,
+                        "sku":sku,
+                        "wishListId": wishListId,
+                        "wishItemId": wishItemId
+                    }
+                    if(wish){
                         param.type = "add";
                     } else{
                         param.type = "remove";
                     }
-                    //param.wish = checked;
+
+                    var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
+
+                    var success = function(data) {
+                        console.log(data);
+                        $this.data("wishItemId",data.wishItemId);
+                        $this.prop("checked",wish);
+                    };
+                    var fail = function(data) {
+                        $this.prop("checked",!wish);
+                    };
                     
                     lgkorUI.requestWish(
                         param,
-                        checked,
+                        wish,
                         success,
                         fail,
                         ajaxUrl
@@ -1359,21 +1394,13 @@
                         loginFlag = data.loginFlag;
                         //보유멤버쉽 포인트
                         //var myMembershipPoint = data.myMembershipPoint;
-                        //찜하기 관련
-                        sendData.wishListId  = data.wishListId;
-                        sendData.wishItemId = data.wishItemId;
-                        var wishListFlag = lgkorUI.stringToBool(data.wishListFlag);
-                        self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').prop("checked",wishListFlag);
-
+                        
                         if(self.$component.data('consumables')) {
                             self.consumables.init(data);
                         }
                     }, true);
                 }
             },
-
-            //찜하기 데이타 가져오기
-            
 
             //PDP 이미지 관련
 
@@ -1614,32 +1641,9 @@
             },
         };
 
-    $(window).ready(function(){
+    $(document).ready(function(){
         if(!document.querySelector('.KRP0008')) return false;
         $('.KRP0008').buildCommonUI();
         KRP0008.init();
     });
 })();
-
-//크레마
-window.cremaAsyncInit = function () {
-    crema.init(null,null);
-};
-
-(function(i,s,o,g,r,a,m){
-    if(s.getElementById(g)){
-        return
-    };
-    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
-    a.id=g;
-    a.async=1;
-    a.src=r;
-    m.parentNode.insertBefore(a,m);
-    console.log('i',i);
-    console.log('s',s);
-    console.log('o',o);
-    console.log('g',g);
-    console.log('r',r);
-    console.log('a',a);
-    console.log('m',m);
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');

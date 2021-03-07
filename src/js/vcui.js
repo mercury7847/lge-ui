@@ -9,11 +9,11 @@
  * vcui.date.equalsYMD each => core.each 오류수정 * 
  */
 
-
+/*
 var vinylcMessageStyle="font-size:18px; font-weight:200; letter-spacing:0.2em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,25,0.5);";
 var vcuiVersion = '1.1.1';
 console.log("%cVINYLC UI Library "+vcuiVersion, vinylcMessageStyle);
-
+*/
 
 if (!window.console) {
     // 콘솔을 지원하지 않는 브라우저를 위해 출력요소를 생성
@@ -2641,7 +2641,7 @@ if (!window.JSON) {
 
     extend(core, {
         name: LIB_NAME,             // 프렘웍 이름
-        version: vcuiVersion,       // 버전
+        version: '1.1.1',//vcuiVersion,       // 버전
         debug: false,               // 디버깅 여부
         noop: function () {
         },
