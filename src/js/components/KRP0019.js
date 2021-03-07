@@ -24,21 +24,8 @@
     var KRP0012 = {
         init: function() {
             var self = this;
-            if(typeof digitalData !== 'undefined') {
-                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
-                    window.cremaAsyncInit = function () {
-                        crema.init("이름",digitalData.userInfo.unifyId);
-                    };
-                } else {
-                    window.cremaAsyncInit = function () {
-                        crema.init(null,null);
-                    };
-                }
-            } else {
-                window.cremaAsyncInit = function () {
-                    crema.init(null,null);
-                };
-            }
+            //크레마
+            lgkorUI.cremaLogin();
 
             var $section = $('.KRP0019');
 			//갤러리형 위젯(SNS 리뷰)
@@ -49,7 +36,7 @@
         }
     }
 
-    $(window).ready(function(){
+    $(document).ready(function(){
         if(!document.querySelector('.KRP0019')) return false;
         //$('.KRP0019').buildCommonUI();
         KRP0012.init();
