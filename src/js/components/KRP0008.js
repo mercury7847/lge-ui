@@ -543,7 +543,6 @@
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
 
                     var success = function(data) {
-                        console.log(data);
                         $this.data("wishItemId",data.wishItemId);
                         $this.prop("checked",wish);
                     };
