@@ -385,6 +385,10 @@
             var btntype = $(this).data('type');
 
             switch(btntype){
+                case "requestOrder":
+                    setRequestOrder(dataID, prodID);
+                    break;
+
                 case "deliveryInquiry":
                     setDeliveryInquiry(dataID, prodID);
                     break;
@@ -763,6 +767,10 @@
 
     function setContractStatus(dataID, prodID){
         console.log("[setContractStatus]", dataID, prodID);
+    }
+
+    function setRequestOrder(dataID, prodID){
+
     }
 
     function setReceiptListPop(){
@@ -1190,37 +1198,47 @@
         var template;
 
         //배송정보
-        var $listBox = $('.inner-box.shipping ul');
+        var $listBox = $('.inner-box.shipping');
         if($listBox.length > 0) {
-            template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
-            $listBox.html(vcui.template(template, SHIPPING_DATA));
+            if(SHIPPING_DATA.length){
+                template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
+                $listBox.show().find('ul').html(vcui.template(template, SHIPPING_DATA));
+            } else{
+                $listBox.hide();
+            }
         }
 
         //결제정보
-        $listBox = $('.inner-box.payment ul');
+        $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
             if(PAYMENT_DATA.length){
-                $listBox.show();
-
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
-                $listBox.html(vcui.template(template, PAYMENT_DATA));
+                $listBox.show().find('ul').html(vcui.template(template, PAYMENT_DATA));
             } else{
                 $listBox.hide();
             }
         }
 
         //주문자 정보
-        $listBox = $('.inner-box.orderuser ul');
+        $listBox = $('.inner-box.orderuser');
         if($listBox.length > 0) {
-            $listBox.html(vcui.template(orderUserTemplate, ORDER_USER_DATA));
+            if(ORDER_USER_DATA.length){
+                $listBox.show().find('ul').html(vcui.template(orderUserTemplate, ORDER_USER_DATA));
+            } else{
+                $listBox.hide();
+            }
         }
 
         //납부정보
-        $listBox = $('.inner-box.monthly-payment ul');
+        $listBox = $('.inner-box.monthly-payment');
         if($listBox.length > 0) {
-            $listBox.html(vcui.template(monthlyPaymentTemplate, MONTHLY_PAYMENT_DATA));
+            if(MONTHLY_PAYMENT_DATA.length){
+                $listBox.show().find('ul').html(vcui.template(monthlyPaymentTemplate, MONTHLY_PAYMENT_DATA));
+            } else{
+                $listBox.hide();
+            }            
         }
 
         var leng = ORDER_LIST.length;
