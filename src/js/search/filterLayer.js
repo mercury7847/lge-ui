@@ -191,6 +191,7 @@ var FilterLayer = (function() {
 
                 listSortingSearchin.siblings('input').keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         listSortingSearchin.trigger('click');
                     }
                 });
@@ -213,6 +214,7 @@ var FilterLayer = (function() {
 
                 filterSearchin.siblings('input').keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         filterSearchin.trigger('click');
                     }
                 });
