@@ -81,7 +81,7 @@ $(window).ready(function(){
 
             var leng = !storageCompare ? "0" : storageCompare.length;
             var $count = $('div.compare-title div.count');
-            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT);
+            $count.text(leng + "/" + lgkorUI.getCompareLimit());
         }
 
         function setCompareStatus(){
@@ -140,7 +140,7 @@ $(window).ready(function(){
         function addToastAlert(mode){
             var msg;
             if(mode == "excessive"){
-                msg = lgkorUI.COMPARE_LIMIT + "개까지 비교가능합니다.";
+                msg = lgkorUI.getCompareLimit() + "개까지 비교가능합니다.";
             } else{
                 msg = "비교하기 기능이 초기화되었습니다.";
             }
