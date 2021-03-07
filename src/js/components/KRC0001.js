@@ -78,6 +78,7 @@ $(window).ready(function(){
 						listgroup = vcui.template(listWrapTemplate, {id:listID});
 
 						var tabIndex = tab.parent().index();
+						console.log("tabIndex:", tabIndex)
 						if(tabIndex == 0) listwrap.prepend(listgroup);
 						else{
 							var nextId = $(item).find('.tabs li').eq(tabIndex-1).find('>a').attr('href');
@@ -102,6 +103,7 @@ $(window).ready(function(){
 						var lists = vcui.template(listItemTemplate, data);
 						$("#"+listID).append(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
+						if($("#"+listID).index()) $("#"+listID).hide();
 					});
 				}
 			});
