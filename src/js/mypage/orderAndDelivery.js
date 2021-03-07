@@ -320,7 +320,9 @@
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
 
-        TAB_FLAG = PAGE_TYPE == PAGE_TYPE_LIST ? TAB_FLAG_ORDER : $('.contents.mypage').data('tabFlag');
+        var getDataTypeFlag = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : "";
+        TAB_FLAG = PAGE_TYPE == PAGE_TYPE_LIST ? TAB_FLAG_ORDER : getDataTypeFlag;
+        console.log("TAB_FLAG:", TAB_FLAG);
 
         var register = {
             paymentCard:{
@@ -1261,6 +1263,8 @@
     //취소/반품 신청을 위한 데이터 요정...
     function getPopOrderData(dataId, calltype){
         lgkorUI.showLoading();
+
+        console.log("### getPopOrderData [TAB_FLAG]###", TAB_FLAG)
     
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var memInfos = lgkorUI.getHiddenInputData();
@@ -1288,13 +1292,12 @@
 
             PRICE_INFO_DATA = [];
             POP_PROD_DATA = [];
-
             var popup;
             var infoTypeName;
             var productPrices = 0;
             var discountPrices = 0;
             var mempointPrices = 0;
-            var productList = result.data.listData[0].productList;
+            var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
