@@ -571,6 +571,7 @@
             //다운로드 상세 검색
             self.$downloadSearch.keydown(function(key) {
                 if (key.keyCode == 13) {
+                    key.preventDefault();
                     self.$downloadPopup.find('button.btn-search').trigger('click');
                 }
             });

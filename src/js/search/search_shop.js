@@ -287,6 +287,7 @@
 
                 self.$inputSearch.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearch.trigger('click');
                     }
                 });
@@ -299,6 +300,7 @@
 
                 self.$inputSearchFixed.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearchFixed.trigger('click');
                     }
                 });
