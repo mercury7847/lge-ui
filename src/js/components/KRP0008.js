@@ -1603,14 +1603,28 @@
             //아이템 비교하기
             requestCompareItem: function(compareData, compare, $dm) {
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+
+                var compareId = compareData.sku.split(".");
+                if(typeof modelName !== 'undefined') {
+                    compareId = modelName;
+                }
+                
                 if(compare){
-                    var isAdd = lgkorUI.addCompareProd(categoryId, compareData);
+                    var compareObj = {
+                        "id": compareId,
+                        "productName": compareData.productName,
+                        "productID": compareData.productID,
+                        "productImg": compareData.productImg,
+                        "productAlt": compareData.productAlt
+                    }
+
+                    var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
                         $dm.prop('checked', false);
                         $dm.removeClass('compare-select');
                     }
                 } else{
-                    lgkorUI.removeCompareProd(categoryId, compareData.id);
+                    lgkorUI.removeCompareProd(categoryId, compareId);
                 }
             },
 
