@@ -1261,7 +1261,7 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
         var productList = vcui.array.map(listData.productList, function(item, idx){
             return{
-                quantityOrdered: item.quantityOrdered,
+                orderedQuantity: item.orderedQuantity,
                 reqLineSeq: item.reqLineSeq,
                 productNameEN: item.productNameEN
             }
@@ -1471,7 +1471,7 @@
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                quantityOrdered: listdata.quantityOrdered
+                orderedQuantity: listdata.orderedQuantity
             })
 
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck}));
