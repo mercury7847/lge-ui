@@ -42,7 +42,7 @@
             var $contWrap = $section.find('.cont-wrap');
             $contWrap.empty();
             //상품 리뷰 위젯
-            var productcode = $section.data('productcode');
+            var productcode = $section.data('productCode');
             if(productcode) {
                 $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '"></div>');
             }

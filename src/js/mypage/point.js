@@ -44,7 +44,7 @@
                 vcui.require([/*'ui/validation',*/'ui/pagination','ui/datePeriodFilter'], function () {
                     //self.validation = new vcui.ui.Validation('div.cont-wrap div.filters',{register:register});
                     self.$pagination =  self.$contWrap.find('div.pagination').vcPagination();
-                    self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3m"});
+                    self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckEnable":false}).vcDatePeriodFilter('setNewYearDayToStartDate');
                     self.bindEvents();
                     self.checkNoData();
                     self.requestData(1);
