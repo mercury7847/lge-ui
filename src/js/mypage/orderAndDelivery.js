@@ -1277,13 +1277,20 @@
         console.log("### setOrderRequest ###", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
             console.log("### setOrderRequest complete", result);
+            
+            lgkorUI.hideLoading();
+
+            if(result.data.obsDirectPurchaseUrl){
+                location.href = result.data.obsDirectPurchaseUrl;
+
+                return;
+            }
+
             if(result.data.success == "Y"){
                 console.log("SUCCESS~");
             } else{
                 console.log("FAIL~");
-            }
-
-            lgkorUI.hideLoading();
+            }            
         });   
     }
 
