@@ -5,6 +5,7 @@
     var ORDER_CANCEL_POP_URL;
     var ORDER_SAILS_URL;
     var BANK_CONFIRM_URL;
+    var ORDER_REQUEST_URL;
 
 
     var PAYMENT_METHOD_CONFIRM;
@@ -42,6 +43,9 @@
             '</div>'+
             '{{#if orderCancelAbleYn == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+            '{{/if}}'+
+            '{{#if requestOrderAbleYn == "Y"}}'+
+            '<a href="#n" class="btn-link requestOrder-btn" style="right:90px;">주문접수</a>'+
             '{{/if}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
@@ -295,6 +299,8 @@
         ORDER_CANCEL_POP_URL = $('.contents.mypage').data('orderCancelPopup');
         ORDER_SAILS_URL = $('.contents.mypage').data('orderSales');
         BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
+        
+        ORDER_REQUEST_URL = $('.contents.mypage').data('orderRequest');
 
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
@@ -377,6 +383,11 @@
 
             var dataID = $(this).closest('.box').data("id");
             openCancelPop(dataID);
+        }).on('click', '.requestOrder-btn', function(e){
+            e.preventDefault();
+
+            var dataID = $(this).closest('.box').data("id");
+            setOrderRequest(dataID);
         }).on('click', '.stateInner-btn', function(e){
             e.preventDefault();
 
@@ -385,10 +396,6 @@
             var btntype = $(this).data('type');
 
             switch(btntype){
-                case "requestOrder":
-                    setRequestOrder(dataID, prodID);
-                    break;
-
                 case "deliveryInquiry":
                     setDeliveryInquiry(dataID, prodID);
                     break;
@@ -769,10 +776,6 @@
         console.log("[setContractStatus]", dataID, prodID);
     }
 
-    function setRequestOrder(dataID, prodID){
-
-    }
-
     function setReceiptListPop(){
         $('#popup-receipt-list').vcModal();
     }
@@ -806,6 +809,7 @@
             if(start == 0) $('.inquiry-list-wrap').empty();
 
             for(var idx=start;idx<end;idx++){
+                if(list[idx].requestOrderAbleYn === undefined) list[idx].requestOrderAbleYn = "N";
                 var templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
 
@@ -1248,6 +1252,39 @@
         leng = CARE_LIST.length;
         cnt = leng ? "(" + leng + ")" : "";
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+    }
+
+    //주문접수...
+    function setOrderRequest(dataId){
+        lgkorUI.showLoading();
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
+        var productList = vcui.array.map(listData, function(item, idx){
+            return{
+                quantityOrdered: item.quantityOrdered,
+                reqLineSeq: item.reqLineSeq,
+                productNameEN: item.productNameEN
+            }
+        });
+
+        var sendata = {
+            contDtlType: listData.contDtlType,
+            requestNo: listData.requestNo,
+            email: listData.email,
+
+            productList: JSON.stringify(productList)
+        }
+        console.log("### setOrderRequest ###", sendata);
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
+            console.log("### setOrderRequest complete", result);
+            if(result.data.success == "Y"){
+                console.log("SUCCESS~");
+            } else{
+                console.log("FAIL~");
+            }
+
+            lgkorUI.hideLoading();
+        });   
     }
 
     //환불계좌 확인...
