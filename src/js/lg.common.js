@@ -240,7 +240,6 @@ var isApp = function(){
     
     global['lgkorUI'] = {
         COMPARE_KEY: "prod_compare",
-        COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
         CAREPLANER_PRICE: "putitem_price",
@@ -699,19 +698,23 @@ var isApp = function(){
             
         }(),
 
+        getCompareLimit: function(){
+            return window.breakpoint.isMobile ? 2 : 3;
+        },
+
         addCompareProd: function(categoryId, data){
             var self = this;
 
             console.log("### addCompareProd ###", categoryId)
 
-            self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
+            var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
                 compareStorage[categoryId] = [data];
             } else{
                 var leng = compareStorage[categoryId].length;
-                if(leng < self.COMPARE_LIMIT){
+                if(leng < compareLimit){
                     compareStorage[categoryId].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
