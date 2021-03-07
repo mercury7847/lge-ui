@@ -57,7 +57,7 @@
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">' +
-                    '{{#each item in flag}}<span class="flag blue{{item.class}}">{{item.title}}</span>{{/each}}' +
+                    '{{#each item in flag}}<span class="flag{{#if item.class}} blue{{/if}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
                     '<a href="{{url}}">{{#raw title}}</a>' +

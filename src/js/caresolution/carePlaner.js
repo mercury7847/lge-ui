@@ -142,7 +142,7 @@
         '                               </div>'+
         '                               <div class="tit-info">'+
         '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
-        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
+        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelCd}}</p>'+
         '                               </div>'+
         '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{item.combineText}}</span></p>'+
         '                           </div>'+  
