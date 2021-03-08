@@ -87,7 +87,7 @@
     var updateBannerTemplate = 
         '<div class="info-banner">' +
             '{{#each (item, index) in updateBanner}}' +
-            '<a href="{{item.url}}" class="btn dark-gray size"><span>{{item.name}}</span></a>' +
+            '<a href="{{item.url}}" class="btn dark-gray size" target="_blank"><span>{{item.name}}</span></a>' +
             '{{/each}}' +
         '</div>';
         
