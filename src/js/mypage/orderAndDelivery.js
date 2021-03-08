@@ -276,7 +276,8 @@
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
     var paymentListTemplate = 
-        '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+        '{{#set method = paymentMethodName}}' +
+        '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
@@ -285,12 +286,14 @@
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
-        '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+        '{{#set method = paymentMethodName}}' +
+        '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
-    '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+    '{{#set method = paymentMethodName}}' +
+    '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
     '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
