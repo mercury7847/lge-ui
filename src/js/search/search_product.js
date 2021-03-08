@@ -37,7 +37,7 @@
                 '<a href="#">' +
                     '{{#if carePrice}}' +
                     '<div class="price-info rental">' +
-                        '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                        '{{#if carePrice}}<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
@@ -45,7 +45,7 @@
                             '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
-                            '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                     '</div>' +
                 '</a>' +
@@ -61,7 +61,7 @@
             '<li class="lists">'+
                 '<div class="list-inner">'+
                     '<span class="thumb">'+
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">'+
+                        '<img src="{{item.image}}" alt="" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this);">'+
                     '</span>'+
                     '<div class="info">'+
                         '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
