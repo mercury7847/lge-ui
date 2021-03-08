@@ -250,6 +250,8 @@ var isApp = function(){
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
+        MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
+        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
             this._bindErrBackEvent();
             this._addImgOnloadEvent();
@@ -896,7 +898,7 @@ var isApp = function(){
             }
         },
 
-        addCookieArrayValue: function(cookieName, addData) {
+        addCookieArrayValue: function(cookieName, addData, maxLength) {
             var self = this;
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
@@ -928,6 +930,7 @@ var isApp = function(){
 
             addData += ("&&&" + expireDateString);
             itemArray.unshift(addData);
+            itemArray.slice(0,maxLength);
             items = itemArray.join('|');
             self.setCookie(cookieName, items);
         },
