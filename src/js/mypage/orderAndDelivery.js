@@ -1263,7 +1263,7 @@
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
         cardValidation.setValues(cardInfo);
-        $('.ui_card_number').vcFormatter('update');
+        //$('.ui_card_number').vcFormatter('update');
 
         bankValidation.setValues(bankInfo);
         

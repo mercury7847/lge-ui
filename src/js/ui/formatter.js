@@ -425,7 +425,8 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
 
             self.invalid = [];
             if ($.inArray(keyCode, self.byPassKeys) === -1 || keyCode === 46 || keyCode === 8) {
-                var caretPos = core.dom.getCaretPos(self.el).begin,
+                console.log(self.el, self.$el)
+                var caretPos = core.dom.getCaretPos(self.$el).begin,
                     currVal = self.$el.val(),
                     currValL = currVal.length,
                     changeCaret = caretPos < currValL,
