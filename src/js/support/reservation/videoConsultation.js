@@ -360,6 +360,9 @@
 
             self.$calendarDate.calendar('reset');
             self.$calendarTime.timeCalendar('reset');
+            self.$cont.commonModel('focus', self.$productBar, function() {
+                self.$productBar.vcSticky();
+            });
         },
         bindEvent: function() {
             var self = this;
