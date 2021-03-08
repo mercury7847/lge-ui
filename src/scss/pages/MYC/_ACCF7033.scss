@@ -630,3 +630,138 @@
         }
     }
 }
+
+// 제품사용설명서 리스트
+.download-list-wrap {
+    margin-top:32px;
+    & > .desc {
+        position:relative;
+        margin-bottom:8px;
+        padding-left:11px;
+        @include font-small;
+        &:before {
+            content:'';
+            position:absolute;
+            left:0;
+            top:50%;
+            transform:translateY(-50%);
+            width:3px;
+            height:3px;
+            border-radius:50%;
+            background:#000;
+        }
+    }
+    .download-list {
+        margin:-16px -8px 0;
+        @include clearfix;
+        & > li {
+            float:left;
+            width:calc(50% - 16px);
+            margin:16px 8px 0;
+            padding:24px 32px;
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            .desc {
+                @include textEllipsisClamp(2);
+            }
+            @include pc {
+                .desc {
+                    height:48px;
+                }
+            }
+        }
+        .tit {
+            display:block;
+            @include font-medium;
+            font-weight:700;
+            a, button {
+                font-size:inherit;
+                font-weight:inherit;
+                line-height:inherit;
+                vertical-align:top;
+                text-align:left;
+            }
+        }
+        .desc {
+            height:48px;
+            @include font-small;
+            @include textEllipsisClamp(2);
+        }
+        .options {
+            color:#767676;
+            @include font-small;
+            @include clearfix;
+            & > li {
+                position:relative;
+                display:inline;
+                &:after {
+                    content:'';
+                    display:inline-block;
+                    width:1px;
+                    height:10px;
+                    margin:7px 8px 0;
+                    background:#ddd;
+                }
+                &:last-child {
+                    margin:0;
+                    padding:0;
+                    &:after {
+                        content:none;
+                    }
+                }
+            }
+        }
+        .info-wrap {
+            display:flex;
+            margin-top:12px;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .btn-wrap {
+            @include clearfix;
+            .btn {
+                float:left;
+                & + .btn {
+                    margin-left:8px;
+                }
+            }
+            &:only-child {
+                margin-left:auto;
+            }
+        }
+    }
+    @include mobile {
+        .download-list {
+            margin:0;
+            & > li {
+                float:none;
+                width:100%;
+                margin:12px 0 0;
+                padding:20px;
+                border-radius:4px;
+                box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+            }
+            .desc {
+                height:auto;
+            }
+            .options {
+                & > li {
+                    &:after {
+                        margin:6px 6px 0;
+                    }
+                }
+            }
+            .info-wrap {
+                display:block;
+                margin-top:8px;
+                .btn-wrap {
+                    margin-top:8px;
+                    text-align:center;
+                    .btn {
+                        float:none;
+                    }
+                }
+            }
+        }
+    }
+}
