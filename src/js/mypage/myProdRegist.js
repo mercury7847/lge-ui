@@ -1,5 +1,6 @@
 (function(){
-    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    '<li class="lists" data-model="{{jsonModel}}">' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
@@ -161,7 +162,7 @@
                 self.thisMonth = parseInt(hiddenInput.month);
 
                 self.requestMoreData(1);
-                self.requestOwnData();
+                self.requestOwnData(false);
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
                 if(self.modelCode) {
@@ -267,6 +268,7 @@
             self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
+                /*
                 var _id = $li.attr('data-model-id');
                 var sku = $li.attr('data-sku');
                 var ordNo = $li.attr('data-ord-no');
@@ -277,8 +279,13 @@
                     "ordNo":ordNo,
                     "modelCode":modelCode
                 };
+                */
+                var param = $li.data('model');
                 var ajaxUrl = self.$contents.attr('data-add-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    $li.remove();
+                    self.requestOwnData(true);
+                    /*
                     var item = result.data;
                     if(item) {
                         var $list = self.$myProductList.find('>ul');
@@ -290,6 +297,7 @@
                         $li.remove();
                         $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                     }
+                    */
                 });
             });
 
@@ -470,8 +478,7 @@
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
-                                self.requestOwnData();
-                                $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
+                                self.requestOwnData(true);
                             });
                         }
                     } else {
@@ -657,7 +664,7 @@
             });
         },
 
-        requestOwnData: function() {
+        requestOwnData: function(addNewItem) {
             var self = this;
             var ajaxUrl = self.$contents.attr('data-own-list-url');
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
@@ -672,6 +679,9 @@
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
                 self.checkNoData();
+                if(addNewItem) {
+                    $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
+                }
             });
         },
 
@@ -686,6 +696,7 @@
                 var $list = self.$registProductList.find('>ul');
                 $list.empty();
                 arr.forEach(function(item, index) {
+                    item.jsonModel = JSON.stringify(item);
                     item.date = vcui.date.format(item.date,'yyyy.MM');
                     $list.append(vcui.template(productListItemTemplate, item));
                 });

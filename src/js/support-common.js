@@ -2404,16 +2404,6 @@ $.fn.serializeObject = function() {
                 lgkorUI.addModelNameImgErrorEvent(this);
             });
         });
-
-        //센터방문예약 완료 화면 - 센터 위치 및 정보 버튼
-        $(document).on('click', '.service-status-detail .btn-center-link', function(e){
-            var $this = $(this);
-            var _url = $this.data('href');
-
-            $this.removeAttr('target'); 
-            window.open(_url);
-            e.preventDefault();
-        })
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
