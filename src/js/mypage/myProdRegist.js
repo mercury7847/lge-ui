@@ -240,7 +240,7 @@
             self.$downloadDetailPage = self.$downloadPopup.find('div.page-change:eq(1)');
             self.$downloadSearch = self.$downloadMainPage.find('#driverKeyword');
             self.$selectOS = self.$downloadMainPage.find('.ui_selectbox');
-            self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination();
+            self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination({"scrollTarget":self.$downloadMainPage.find('section'),"scrollTop":100});
 
             //모델병 확인방법 팝업
             //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');

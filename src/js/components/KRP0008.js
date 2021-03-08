@@ -1611,13 +1611,13 @@
                 
                 if(compare){
                     var compareObj = {
-                        "id": compareId,
+                        "id": compareData.id,
                         "productName": compareData.productName,
-                        "productID": compareData.productID,
+                        "productID": compareId,
                         "productImg": compareData.productImg,
                         "productAlt": compareData.productAlt
                     }
-
+                    console.log(compareData,compareId);
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
                         $dm.prop('checked', false);

@@ -82,9 +82,11 @@
 	.products-list-wrap {
 		position: relative;
 		max-width:1380px + 80px;
-		margin:12px auto 0;
+		margin:20px auto 0;
 		padding:0 40px;
 		@include mobile {
+			max-width: none;
+			margin: 0;
 			padding:0;
 		}
 		.products-list-group {
@@ -108,7 +110,7 @@
 					flex-direction:column;
 					float:left;
 					width:25%;
-					height:470px;
+					//height:470px;
 					padding:12px;
 					@include mobile {
 						height:auto;
@@ -117,13 +119,13 @@
 				}
 				.item {
 					height:100%;
-					padding: 16px 32px 32px;
+					padding: 40px 32px;
 					border-radius: 8px;
 					background-color: $color-bg-wt;
 					box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
 
 					@include mobile {
-						padding: 12px 24px 24px;
+						padding: 24px 18px 32px;
 						box-shadow:1px 3px 8px 0 rgba(0, 0, 0, .14);
 					}
 					.product-image {
@@ -150,7 +152,7 @@
 						.product-name {
 							display: block;
 							height: 60px;
-							@include font-large-1;
+							@include font-large;
 							font-weight: 700;
 							@include textClipClamp(2);
 							@include mobile {
@@ -197,11 +199,14 @@
 						margin-top: 8px;
 						white-space: nowrap;
 						font-size: 0;
+						@include mobile {
+							margin-top: 12px;
+						}
 						.total {
 							float: left;
 							margin-right: 8px;
 							font-weight: 700;
-							@include font-large-2;
+							@include font-large-1;
 							@include mobile {
 								margin-right:6px;
 								font-size:15px;
@@ -214,8 +219,7 @@
 							display: inline-block;
 							margin-top: 8px;
 							color:#767676;
-							@include font-medium;
-							font-weight:500;
+							@include font-small;
 							@include mobile {
 								margin-top:2px;
 								font-size:13px;
@@ -236,7 +240,7 @@
 					.product-button {
 						margin-top: 16px;
 						@include mobile {
-							margin-top:12px;
+							margin-top:14px;
 						}
 						.btn {
 							display:block;

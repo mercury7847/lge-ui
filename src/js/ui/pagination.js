@@ -6,7 +6,8 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
             page: 1,
             visibleCount: 5,
             totalCount: 1,
-            scrollTop : 0
+            scrollTop : 0,
+            scrollTarget : null
         },
 
         initialize: function initialize(el, options) {
@@ -120,7 +121,11 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if($(e.currentTarget).hasClass('disabled')) return;
                 let value = $(e.currentTarget).attr('href').replace("#", "");
                 self.triggerHandler("page_click", value);
-                $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
+                if(self.options.scrollTarget) {
+                    self.options.scrollTarget.animate({"scrollTop": self.options.scrollTop }, 0);
+                } else {
+                    $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
+                }
                 /*
                 if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
                     self.triggerHandler("page_click", {
