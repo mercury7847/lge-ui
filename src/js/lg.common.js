@@ -929,8 +929,11 @@ var isApp = function(){
             var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
 
             addData += ("&&&" + expireDateString);
+
             itemArray.unshift(addData);
-            itemArray.slice(0,maxLength);
+            itemArray = itemArray.slice(0,maxLength);
+            console.log(itemArray);
+
             items = itemArray.join('|');
             self.setCookie(cookieName, items);
         },
