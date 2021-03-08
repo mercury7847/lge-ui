@@ -309,18 +309,21 @@
     sup {
         font-size: 0.625em;
     }
+
+    .pop-only {
+        display: none;
+    }
 }
 
 #ratesWarrantyGuidePopup {
+    max-width: 912px;
     .img_box {
-        &.pc-only {
+        &.pc-only,
+        .mo-only {
             display: none;
         }
-        &.mo-only {
+        &.pop-only {
             display: block;
-            max-width: 320px;
-            margin-left: auto;
-            margin-right: auto;
         }
     }
 }
