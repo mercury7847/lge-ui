@@ -277,7 +277,7 @@
 
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
-        '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
+        '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
@@ -287,13 +287,13 @@
 
     var carePaymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
-        '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
+        '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
     '{{#set method = paymentMethodName}}' +
-    '<li><dl><dt>결제 수단</dt><dd><span>{{method}}</span>'+
+    '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
     '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
@@ -1044,7 +1044,8 @@
             }
             
             //결제정보
-            if(data.payment) {
+            if(Object.keys(data.payment).length) {
+                console.log("### data.payment ###", data.payment)
                 var payment = data.payment;
                 payment.orderPrice = vcui.number.addComma(payment.orderPrice);
                 payment.discountPrice = vcui.number.addComma(payment.discountPrice);
@@ -1341,6 +1342,7 @@
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
             leng = Object.keys(PAYMENT_DATA).length;
+            console.log("PAYMENT_DATA:",PAYMENT_DATA)
             if(leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
