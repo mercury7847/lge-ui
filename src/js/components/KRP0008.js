@@ -703,10 +703,10 @@
                 });
 
                 //인포 옵션 변경 (링크로 바뀜)
-                self.$pdpInfoSiblingOption.on('click','input', function(e){
-                    var val = $(this).val();
-                    if(val) {
-                        location.href = val;
+                self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                    var url = e.target.value;
+                    if(url) {
+                        location.href = url;
                     }
                     /*
                     var $optionList = $(this).parents('.option-list').siblings('div').find('span');
