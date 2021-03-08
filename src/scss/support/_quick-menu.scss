@@ -337,7 +337,7 @@
 
 .mobile {
     .quick-menu {
-        .service-menu {
+        .service-menu, .history {
             &:before {
                 content:"";
                 display: block;
