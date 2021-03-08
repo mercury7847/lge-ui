@@ -87,7 +87,7 @@
             ]
         }); 
         
-        
+        var isApplication = isApp();
         var $window   = $(window);
         var $contentWrap = $('.thinq-wrap');   
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
@@ -110,8 +110,11 @@
         $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        $('.next-arr').on('a', function(e){
+        $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
+            var step = $(e.currentTarget).data('currentStep');
+            if(step) currentStep = step;
+            wheelScene(1);
         });
         
         
@@ -165,7 +168,6 @@
             }
             
         }
-
         
 
         function moveScene(idx, step, speed){
@@ -236,8 +238,62 @@
         });
 
 
+        // 터치 이벤트 처리
+
+        /*
+        // 안드로이드 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        android.showBottomMenuOver(boolean isOver)
+        
+        하단메뉴 스크롤 기능 사용 여부 설정
+        android.setEnableScrollBottomMenu(blooean);
+
+        하단메뉴 노출 여부 설정
+        android.showBottomMenu(blooean);
 
 
+        //iOS 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+
+        var obj = new Object();
+        obj.command = "showBottomMenuOver";
+        obj.value ="Y"; //Y - 덮는 형태 ,N - 덮지 않는 형태 
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 스크롤 기능 사용 여부 설정
+        var obj = new Object();
+        obj.command = "setEnableScrollBottomMenu";
+        obj.value ="Y"; //Y 사용, N 미사용
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 노출 여부 설정
+        var obj = new Object();
+        obj.command = "showBottomMenu";
+        obj.value ="Y"; //Y 노출, N 미노출
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */
+
+
+        var isAndroid = vcui.detect.isAndroid;
+        var isIOS = vcui.detect.isIOS;
+
+        if(isApplication) {
+            if(isAndroid && android) android.showBottomMenuOver(true);
+            if(isIOS){
+                var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            }
+        }
+
+        var showBottomMenuY= JSON.stringify({command:'showBottomMenu', value:'Y'});
+        var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
+
+        
         $(document).on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
@@ -245,27 +301,41 @@
                 touchSy = data.y;
             } else {
 
-                if(currentStep == stepLens){
+                if (touchSy - data.y > 80) {
+                    // console.log('down');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
+                    }
+                } else if (touchSy - data.y < -80) {
+                    // console.log('up');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
+                    }
+                }
+
+                if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
                         if(st==0 && touchSy - data.y < -80){
                             wheelScene(-1);
-                            console.log('up');
                         }
                     }, 100);
+
                 }else{
+
                     if (touchSy - data.y > 80) {
                         wheelScene(1);
-                        console.log('down');
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
-                        console.log('up');
                     }
                 }    
                 
             }
         });
+
 
 
         function _getEventPoint(ev, type) {
@@ -699,15 +769,28 @@
             render(0);
         });     
 
-        // 앱 대응시 주석처리
-        $window.on('resizeend', function(e){
+        if(isApplication){
             render();
-        });
-        $window.trigger('resizeend');
-        // 앱 대응시 주석처리 end
+    
+            var leng = $scenes.length;
+            var lastScene = $scenes.eq(leng-1);
+            var height = lastScene.height();
+            var padding = parseInt($('footer').css('padding-bottom'));
+            lastScene.height(height+160);
+            $('footer').css({paddingBottom:padding + 160});
+        } else{
+            // 앱 대응시 주석처리
+            $window.on('resizeend', function(e){
+                render();
+            });
+            $window.trigger('resizeend');
+            // 앱 대응시 주석처리 end
+        }
         
         $window.trigger('breakpointchange');
-        window.resizeScene = render;        
+        window.resizeScene = render;
+
+         
 
     });
 });
