@@ -659,6 +659,9 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.linkItem.forEach(function(obj, idx){
+                                obj.url = encodeURI(obj.url);
+                            });
                             $list_ul.append(vcui.template(shopItemTemplate, item));
                         });
                         $resultListWrap.show();
