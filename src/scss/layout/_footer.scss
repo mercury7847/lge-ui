@@ -229,9 +229,9 @@ footer {
                         &:hover,
                         &:focus,
                         &:active {
-                            border-color:#222;
-                            background-image: none;
-                            color:#000;
+                            border-color:#000 !important;
+                            background-color: transparent;
+                            color: #000;
                         }
                     }
                 }
