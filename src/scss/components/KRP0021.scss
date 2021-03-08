@@ -70,6 +70,17 @@
 			background-color:transparent;
 		}
 		.num-list {
+			> p {
+				list-style: decimal;
+				position:relative;
+				margin-top:2px;
+				color:#000;
+				font-size:16px;
+				line-height:26px;
+				&:first-child {
+					margin-top:0;
+				}
+			}
 			ol {
 				padding:0 16px;
 				li {
