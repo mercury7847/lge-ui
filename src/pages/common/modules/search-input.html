@@ -1,8 +1,9 @@
 <div class="sch-input-wrap">
     <div class="input-sch">
         <!-- 210305 수정 [placeholder 띄어쓰기 삭제] --><!-- 210303 수정 [placeholder 텍스트 수정] -->
-        <form>
-        <input type="search" class="txt ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:제품명)" value="@@value" title="검색어 입력" data-clear-button="button.btn-delete">
+        <!-- 210308 수정 [role, action 추가] -->
+        <form role="search" action="">
+            <input type="search" class="txt ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:제품명)" value="@@value" title="검색어 입력" data-clear-button="button.btn-delete">
         </form>
         <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
         <button type="button" class="btn-search"><span class="blind">검색</span></button>
