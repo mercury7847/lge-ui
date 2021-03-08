@@ -14,7 +14,8 @@
     var previewItemTemplate = '<li><a href="{{url}}" class="item">' +
         '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
         '<div class="info">' +
-            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span><span class="price">{{price}}원</span>' +
+            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span>' +
+            '<span class="price"{{#if !obsFlag}} style="visibility: hidden;"{{/if}}>{{price}}원</span>' +
         '</div></a></li>';
     //연관검색어
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
@@ -115,6 +116,7 @@
 
             self.$inputSearch.keydown(function(key) {
                 if (key.keyCode == 13) {
+                    key.preventDefault();
                     self.$buttonSearch.trigger('click');
                 }
             });
@@ -319,6 +321,8 @@
                     arr.forEach(function(item, index) {
                         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                         item.price = vcui.number.addComma(item.price);
+                        item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
+                        console.log(item.obsFlag);
                         $list_ul.append(vcui.template(previewItemTemplate, item));
                     });
                     self.$resultPreviewList.show();
@@ -457,7 +461,7 @@
         },
     }
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         intergratedSearch.init();
     });
 })();
