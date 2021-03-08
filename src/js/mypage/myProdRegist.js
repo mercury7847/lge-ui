@@ -216,12 +216,12 @@
             var register = {
                 year:{
                     required: true,
-                    errorMsg: "날짜를 선책해주세요.",
+                    errorMsg: "날짜를 선택해주세요.",
                     msgTarget: '.err-block'
                 },
                 month:{
                     required: true,
-                    errorMsg: "날짜를 선책해주세요.",
+                    errorMsg: "날짜를 선택해주세요.",
                     msgTarget: '.err-block'
                 },
             };

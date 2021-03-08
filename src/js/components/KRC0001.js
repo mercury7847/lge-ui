@@ -112,8 +112,8 @@ $(window).ready(function(){
 		},
 
 		checkBtnFlag: function(item) {
-			if(lgkorUI.stringToBool(item.buyBtnFlag)) {
-				return (item.obsBtnRule=="enable") ? true : false;
+			if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
+				return true;
 			} else {
 				return false;
 			}
