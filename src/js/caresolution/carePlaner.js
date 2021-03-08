@@ -306,7 +306,6 @@
         _estimateConfirmUrl = $caresolutionContainer.data("estimateConfirm");
 
         _careCateId = $caresolutionContainer.data("careCateId");
-        _careCateId = "DDD"
 
         $fixedTab.find('.service_tab').vcTab()
         .on('tabchange', function(e, data){
