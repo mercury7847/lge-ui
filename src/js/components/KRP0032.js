@@ -35,6 +35,7 @@ $(window).ready(function(){
 
             self.$popup.on('click','.ui_modal_close',function(e){
                 self.$popup.addClass('close');
+                self.$popup.removeClass('open');
                 self.$popup.hide();
             });
             
@@ -62,6 +63,7 @@ $(window).ready(function(){
             self.resetImage();
             self.$popup.show();
             self.$popup.removeClass('close');
+            self.$popup.addClass('open');
         },
 
 		requestData: function(openPopup) {
