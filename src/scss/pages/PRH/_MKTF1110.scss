@@ -1253,6 +1253,11 @@
                 }
                 .btn {
                     margin-top: 24px;
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: $color-white;
+                    }
                 }
                 @media screen and (min-width:768px) and (max-width:1200px) {
                     .tit {
