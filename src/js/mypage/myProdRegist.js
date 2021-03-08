@@ -161,7 +161,7 @@
                 self.thisMonth = parseInt(hiddenInput.month);
 
                 self.requestMoreData(1);
-                self.requestOwnData();
+                self.requestOwnData(false);
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
                 if(self.modelCode) {
@@ -279,6 +279,8 @@
                 };
                 var ajaxUrl = self.$contents.attr('data-add-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    self.requestOwnData(true);
+                    /*
                     var item = result.data;
                     if(item) {
                         var $list = self.$myProductList.find('>ul');
@@ -290,6 +292,7 @@
                         $li.remove();
                         $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                     }
+                    */
                 });
             });
 
@@ -470,8 +473,7 @@
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
-                                self.requestOwnData();
-                                $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
+                                self.requestOwnData(true);
                             });
                         }
                     } else {
@@ -657,7 +659,7 @@
             });
         },
 
-        requestOwnData: function() {
+        requestOwnData: function(addNewItem) {
             var self = this;
             var ajaxUrl = self.$contents.attr('data-own-list-url');
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
@@ -672,6 +674,9 @@
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
                 self.checkNoData();
+                if(addNewItem) {
+                    $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
+                }
             });
         },
 
