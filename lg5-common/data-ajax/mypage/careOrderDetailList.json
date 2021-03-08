@@ -322,12 +322,6 @@
         }
       ],
       "payment":{
-          "paymentMethodName":"신용카드(분할결제) 결제수단",
-          "receiptUrl": "/html/MYC/ACCF7105.html",
-          "orderPrice": 2834060,
-          "discountPrice": 834060,
-          "memberShipPoint": 0,
-          "totalPrice": 2000000
       },
       "shipping":{
           "name":"이연철",
