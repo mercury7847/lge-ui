@@ -1044,18 +1044,19 @@
             }
             
             //결제정보
-            if(Object.keys(data.payment).length) {
-                console.log("### data.payment ###", data.payment)
-                var payment = data.payment;
-                payment.orderPrice = vcui.number.addComma(payment.orderPrice);
-                payment.discountPrice = vcui.number.addComma(payment.discountPrice);
-                payment.memberShipPoint = vcui.number.addComma(payment.memberShipPoint);
-                payment.totalPrice = vcui.number.addComma(payment.totalPrice);
-
-                if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
-                if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
-                
-                PAYMENT_DATA = vcui.clone(payment);
+            if(data.payment) {
+                if(Object.keys(data.payment).length){
+                    var payment = data.payment;
+                    payment.orderPrice = vcui.number.addComma(payment.orderPrice);
+                    payment.discountPrice = vcui.number.addComma(payment.discountPrice);
+                    payment.memberShipPoint = vcui.number.addComma(payment.memberShipPoint);
+                    payment.totalPrice = vcui.number.addComma(payment.totalPrice);
+    
+                    if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
+                    if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+                    
+                    PAYMENT_DATA = vcui.clone(payment);
+                }
             }
 
             //주문자 정보
