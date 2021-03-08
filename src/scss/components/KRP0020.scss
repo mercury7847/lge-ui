@@ -126,6 +126,27 @@
                                     height:auto;
                                     vertical-align:top;
                                 }
+                                .event-end {
+                                    position:absolute;
+                                    top:0;
+                                    right:0;
+                                    bottom:0;
+                                    left:0;
+                                    z-index:10;
+                                    background:rgba(0, 0, 0, 0.5);
+                                    em {
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                        color:#fff;
+                                        font-size:32px;
+                                        font-weight:700;
+                                        line-height:52px;
+                                        text-align:center;
+                                    }
+                                }
                                 > .flag-wrap {
                                     position:absolute;
                                     top:24px;
