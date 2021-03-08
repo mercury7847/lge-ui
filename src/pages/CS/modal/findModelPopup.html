@@ -1,0 +1,49 @@
+<article id="findModelPopup" class="popup-wrap full">
+    <header class="pop-header">
+        <h1 class="tit"><span>빠른 제품지원</span></h1>
+    </header>
+    <section class="pop-conts find-model no-footer">
+
+        <!-- 카테고리 선택 -->
+        <div class="category-select find-container">
+            <div class="category-slider slide-wrap ui_carousel_slider">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots">
+                        <li><button class="btn-indi" type="button"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+                <div class="slide-content ui_carousel_list">
+                    <div class="slide-track ui_carousel_track">
+                        @@for(var i = 0; i < 4; i++) {
+                        <div class="ui_carousel_slide slide-conts">
+                            <div class="slide-inner">
+                                <div class="slide-category" data-category="1018" data-category-name="모바일">
+                                    <div class="thumb">
+                                        <img src="" alt="">
+                                    </div>
+                                    <strong class="category-name">카테고리명</strong>
+                                </div>
+                                <div class="slide-sub-category">
+                                    <ul class="sub-category-list">
+                                        <li><button type="button" data-sub-category="C000136" data-sub-category-name="스마트폰">스마트폰</button></li>
+                                        <li><button type="button" data-sub-category="C000136" data-sub-category-name="스마트폰">스마트폰</button></li>
+                                        <li><button type="button" data-sub-category="C000136" data-sub-category-name="스마트폰">스마트폰</button></li>
+                                        <li><button type="button" data-sub-category="C000136" data-sub-category-name="스마트폰">스마트폰</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //카테고리 선택 -->
+
+        <div class="model-select find-container">
+            
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
