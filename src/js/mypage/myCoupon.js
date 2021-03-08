@@ -80,6 +80,9 @@
                 self.$couponEndMore.data("page", 0);
                 self.$couponEndMore.data("tabIndex", 1);
 
+                self.$couponOnMore.hide();
+                self.$couponEndMore.hide();
+
                 self.$couponOnNoData = self.$tabCouponOn.find('div.no-data');
 
                 self.$couponEndNoData = self.$tabCouponEnd.find('div.no-data');
@@ -122,7 +125,6 @@
 
                 var ajaxUrl = self.$contents.attr('data-coupon-list-url');
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
-                    
                     self.listData.push(result.data.onListData);
                     self.listData.push(result.data.endListData);
 
@@ -149,16 +151,17 @@
                 }
 
                 targetList.empty();
-                if(self.listData[idx].length){
+                var count = self.listData[idx].length;
+                if(count > 0){
                     noData.hide();
                     targetList.show();
-                    
                     self.$tab.find('ul li').eq(idx).find('.count').text("(" + self.listData[idx].length + ")");
 
                     self.addCouponList(idx, 0);
                 } else{
                     noData.show();
                     targetList.hide();
+                    self.$tab.find('ul li').eq(idx).find('.count').text("");
 
                     if(idx) self.$tabCouponEnd.find('.coupon-end-txt').hide();
                 }
