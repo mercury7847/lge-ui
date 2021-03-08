@@ -321,13 +321,13 @@
         &.pc-only {
             display: none;
         }
-        &.pop-only {
+        &.pc-pop-only {
             display: block;
         }
     }
     @include mobile {
         .img_box {
-            &.pop-only {
+            &.pc-pop-only {
                 display: none;
             }
         }
