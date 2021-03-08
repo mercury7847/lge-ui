@@ -180,6 +180,7 @@
                             @include mobile {
                                 display:block;
                                 margin-top:16px;
+                                padding-left:0;
                                 text-align:center;
                             }
                             .product-name {
@@ -188,7 +189,6 @@
                                 -webkit-box-orient: vertical;
                                 width: 100%;
                                 max-height:52px;
-                                padding-left:0;
                                 font-size: 16px;
                                 line-height: 26px;
                                 color: #000;
