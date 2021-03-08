@@ -11,7 +11,7 @@
   "data": {
       "productOrderCount": 5,
       "caresolutionOrdercount": 3,
-      "listData": [
+      "careListData": [
           {
               "orderDate": "2020.09.05",
               "orderNumber": "20203987102999",
@@ -346,26 +346,18 @@
         "email": "lg@lge.com"
       },
       "monthlyPayment":{
-        "paymentMethod": "bank",
-        "requestCard": "신청",
-        "requestCardName": "하나카드 LG전자 렌탈PLUS",
-        "paymentPriceInfo":["선납", "포인트 사용", "1년차 월 88,999원"],
-        "paymentMethodName": "신용카드",
-        "paymentTypeName": "하나카드",
-        "paymentNumber": "1234567891234",
-        "monthlyPriceUrl": "monthlyPriceUrl",
-        "cardInfo": {
-            "cardComName": "엘지카드",
-            "cardComValue": "11",
-            "cardNumber": "1234567891234567",
-            "cardPeriod": "0922"
-        },
-        "bankInfo":{
-            "bankUser": "이엘지",
-            "bankName": "엘지은행",
-            "bankValue": "222",
-            "bankNumber": "99999005431259988"
-        }
+        "transType": "C",
+        "transTypeNm": "계좌이체",
+        "cardReqYnName": "신청",
+        "cardCorpName": "하나카드",
+        "cardTypeName": "LG전자 렌탈PLUS",
+        "prepayFlagNm": "선납",
+        "pointUseYnName": "포인트 미사용",
+        "transCorpName": "하나은행",
+        "transCorpCode": "22",
+        "transAccountNum": "1234567812341234",
+        "transCardExpiry": "0308",
+        "transMemName": "박엘지"
       }
   }
 }
