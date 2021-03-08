@@ -1,5 +1,5 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{modelName}}" data-wishListId="{{wishListId}}" data-wishItemId="{{wishItemId}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}">' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-wishListId="{{wishListId}}" data-wishItemId="{{wishItemId}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}">' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
@@ -61,7 +61,7 @@
                     var $li = $(this).parents('li');
                     if($(this).hasClass("buycart")) {
                         //구매
-                        if($li.attr('data-requireCare')) {
+                        if(lgkorUI.stringToBool($li.attr('data-requireCare'))) {
                             var obj = {
                                 title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
                                 ok: function (){
