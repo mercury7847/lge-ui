@@ -1457,3 +1457,33 @@
     // 네비게이션 버튼이 센터 찾기 검색 결과 창 위로 겹치는 현상 때문에 추가
     z-index: auto;
 }
+
+.update-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:28px 49px 29px;
+    background: #f4f4f4;
+    border-radius:10px;
+
+    p {
+        font-size:16px;
+        line-height:1.63;
+    }
+
+    .btn-link {
+        font-size:14px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        padding:22px 20px;
+
+        .btn-link {
+            margin-top:30px;
+            font-size:13px;
+        }
+    }
+}
