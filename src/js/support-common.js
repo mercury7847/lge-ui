@@ -2345,7 +2345,7 @@ $.fn.serializeObject = function() {
 
         ///퀵메뉴 쿠키 생성
         if( lgkorUI.cookie.getCookie('accessPageFirst') != "done") {
-            lgkorUI.cookie.setCookie("accessPageFirst", "done");
+            lgkorUI.cookie.setCookie("accessPageFirst", "done", 365);
         }
         $('#quickMenu').quickMenu();
 
