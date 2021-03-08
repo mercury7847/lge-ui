@@ -306,7 +306,6 @@
         _estimateConfirmUrl = $caresolutionContainer.data("estimateConfirm");
 
         _careCateId = $caresolutionContainer.data("careCateId");
-        _careCateId = "ddd";
 
         $fixedTab.find('.service_tab').vcTab()
         .on('tabchange', function(e, data){
@@ -482,10 +481,10 @@
     //카테고리 로드...
     function loadCategoryList(){
         lgkorUI.showLoading();
-
+        
         if(!_isDirectCare && _careCateId){
             var uitab = $fixedTab.find('.service_tab').vcTab('instance');
-            uitab.select(1);
+            uitab.select(1, true);
         }
 
         var tabID = getTabID();
