@@ -36,8 +36,8 @@
         }
         .result-thumb {
             position: relative;
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            //height: 140px;
             margin-right: 40px;
             a {
                 display:block;
@@ -46,9 +46,9 @@
                 position: absolute;
                 top: 32px;
                 left: 24px;
-                width: 100px;
-                height: 100px;
-                margin-right: 24px;
+                width: 110px;
+                //height: 110px;
+                margin-right: 20px;
             }
             img {
                 max-width: 100%;
@@ -114,15 +114,15 @@
         .item-story {
             .result-thumb {
                 overflow: hidden;
-                width: 120px;
-                height: 90px;
+                width: 140px;
+                //height: 105px;
                 @include mobile {
-                    width: 100px;
-                    height: 75px;
+                    width: 110px;
+                    //height: 82.5px;
                 }
                 img.no-img {
                     width: 100%;
-                    transform: translateY(-20px);
+                    //transform: translateY(-20px);
                 }
             }
         }
@@ -135,8 +135,8 @@
                 flex-direction: column;
                 align-items: flex-start;
                 .info-text {
-                    min-height: 100px;
-                    padding-left: 124px;
+                    min-height: 110px;
+                    padding-left: 130px;
                 }
             }
             .info-price {
