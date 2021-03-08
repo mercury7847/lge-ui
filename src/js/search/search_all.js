@@ -911,6 +911,7 @@
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -921,6 +922,8 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text)
                 self.updateRecentSearchList();
             },
 
