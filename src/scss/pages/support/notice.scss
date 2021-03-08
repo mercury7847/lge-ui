@@ -21,6 +21,10 @@
     &.notice {
         .search-wrap {
             margin-bottom:80px;
+
+            @include mobile {
+                margin:0 16px 80px;
+            }
         }
     }
     /* S/W 업데이트 소식 */
