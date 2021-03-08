@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/orderAndDelivery"]
     })
+<!--        pageJS: ["mypage/orderAndDelivery"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -42,14 +42,16 @@
                                     <!-- 계약정보 -->
                                     <div class="info-tbl-wrap">
                                         <!-- loop -->
+                                        <!-- 210308 수정 [.sizeType3 클래스 추가] -->
                                         @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                            "sizeType3" : true,
                                             "infos" : [
                                                 { "dt" : "주문일", "dd" : "2020.08.29" },
                                                 { "dt" : "주문번호", "dd" : "20200912497207" },
                                             ],
                                             "total" : "총 1건", 
                                             "th" : [
-                                                "제품정보(주문/배송 상세보기)", "진행상태"
+                                                "제품정보", "<!-- 210308 수정 [추가] -->요금 정보", "진행상태"
                                             ]
                                         })
                                         @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -66,10 +68,48 @@
                                                         ]
                                                     }
                                                 },
+                                                "monthlyPrice" : {
+                                                    "blind" : "월 요금",
+                                                    "price" : "월 18,800원",
+                                                    "details" : "할인 내역 알아보기"
+                                                },
                                                 "col2" : {
                                                     "blind" : "진행상태",
                                                     "stateType" : {
-                                                        "tit" : "청약신청 완료",
+                                                        "tit" : "배송준비중",
+                                                        "desc" : "설치희망일 2020.09.18",
+                                                        "btn" : "배송문의",
+                                                        "btnType": "deliveryInquiry"
+                                                    }
+                                                }
+                                            },{
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "flag" : "케어솔루션",
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 디오스 상냉장하냉동",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "more" : [
+                                                            "Silver"
+                                                        ],
+                                                        "totalPrice" : "1,760,000원 결제완료"
+                                                    }
+                                                },
+                                                "monthlyPrice" : {
+                                                    "blind" : "월 요금",
+                                                    "price" : "월 18,800원",
+                                                    "details" : "할인 내역 알아보기"
+                                                },
+                                                "col2" : {
+                                                    "blind" : "진행상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송완료",
+                                                        "desc" : "설치희망일 2020.09.18",
+                                                        "btn" : "사용후기",
+                                                        "btn2" : "계약현황",
+                                                        "btnType": "useReview",
+                                                        "btn2Type" : "contractStatus"
                                                     }
                                                 }
                                             }
@@ -132,7 +172,7 @@
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
                                                     { "dt" : "제휴카드 신청", "dd" : "신청 - 하나카드 LG전자 렌탈PLUS" },
-                                                    { "dt" : "월 납부 금액", "dd" : "<span>선납 / 포인트 사용 / 1년차 월 88,888원</span><a href='#n' class='btn-link monthlyPrice-btn'>매월 납부금 할인 내역 알아보기</a>" },
+                                                    { "dt" : "월 납부 금액", "dd" : "<span>선납 / 포인트 사용 / 1년차 월 88,888원</span><!-- <a href='#n' class='btn-link monthlyPrice-btn'>매월 납부금 할인 내역 알아보기</a> 210308 수정 [삭제] -->" },
                                                     { "dt" : "월 납부 수단", "dd" : "신용카드" },
                                                     { "dt" : "은행(카드)명", "dd" : "하나카드" },
                                                     { "dt" : "계좌(카드)번호", "dd" : "1234-5678-****-****" },
@@ -316,14 +356,15 @@
                                             </div>
                                         </div>
 
+                                        <!-- 210308 수정 [안내문구 변경] -->
                                         @@include('./common/modules/bullet-list.html', {
                                             "topBorder" : true,
                                             "bulletTxt" : [
                                                 "주문 진행 상태에 따라 취소 신청이 가능합니다. 취소신청 버튼이 없을 경우 고객 센터(1544-7777) 에 문의 하세요.",
-                                                "청구그룹(묶음 결제)일 경우 납부 정보 변경 및 제휴카드 신청은 고객센터(1544-7777)으로 문의 부탁드립니다.",
                                                 "배송지 변경은 고객센터(1544-7777)로 연락 부탁드립니다."
                                             ]
                                         })
+                                        <!-- // 210308 수정 [안내문구 변경] -->
                                         <!-- 210304 수정 [납부 정보변경 버튼 추가, 정보변경 활성화 영역 추가, 안내문구 변경] -->
                                     </div>
                                 </div>

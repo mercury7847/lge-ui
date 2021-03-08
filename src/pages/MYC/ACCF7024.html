@@ -2,8 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/orderAndDelivery"]
     })
+<!--        pageJS: ["mypage/orderAndDelivery"]-->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -59,13 +59,14 @@
                                 <div class="info-tbl-wrap inquiry-list-wrap">
                                     <!-- loop -->
                                     @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "sizeType3" : true,
                                         "infos" : [
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
                                         "total" : "총 1건", 
                                         "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                            "제품정보(청약 상세보기)", "<!-- 210308 수정 [추가] -->요금 정보", "진행상태"
                                         ]
                                     })
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -81,8 +82,12 @@
                                                     "more" : [
                                                         "Silver"
                                                     ],
-                                                    "price" : "1,760,000원"
+                                                    "totalPrice" : "1,760,000원 결제완료"
                                                 }
+                                            },
+                                            "monthlyPrice" : {
+                                                "blind" : "월 요금",
+                                                "price" : "월 18,800원"
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
@@ -100,13 +105,14 @@
 
                                     <!-- loop -->
                                     @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "sizeType3" : true,
                                         "infos" : [
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
                                         "total" : "총 3건", 
                                         "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                            "제품정보(청약 상세보기)", "<!-- 210308 수정 [추가] -->요금 정보", "진행상태"
                                         ]
                                     })
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -122,7 +128,12 @@
                                                     "more" : [
                                                         "Silver"
                                                     ],
+                                                    "totalPrice" : "1,760,000원 결제완료"
                                                 }
+                                            },
+                                            "monthlyPrice" : {
+                                                "blind" : "월 요금",
+                                                "price" : "월 18,800원"
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
@@ -145,8 +156,12 @@
                                                     "more" : [
                                                         "Black"
                                                     ],
-                                                    "price" : "1,767,030원"
+                                                    "totalPrice" : "1,760,000원 결제완료"
                                                 }
+                                            },
+                                            "monthlyPrice" : {
+                                                "blind" : "월 요금",
+                                                "price" : "월 18,800원"
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
@@ -171,8 +186,12 @@
                                                     "more" : [
                                                         "Black"
                                                     ],
-                                                    "price" : "1,000,000원"
+                                                    "totalPrice" : "1,760,000원 결제완료"
                                                 }
+                                            },
+                                            "monthlyPrice" : {
+                                                "blind" : "월 요금",
+                                                "price" : "월 18,800원"
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
@@ -193,13 +212,14 @@
 
                                     <!-- loop -->
                                     @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "sizeType3" : true,
                                         "infos" : [
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
                                         "total" : "총 1건", 
                                         "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                            "제품정보(청약 상세보기)", "<!-- 210308 수정 [추가] -->요금 정보", "진행상태"
                                         ]
                                     })
                                     @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -215,7 +235,12 @@
                                                     "more" : [
                                                         "Silver"
                                                     ],
+                                                    "totalPrice" : "1,760,000원 결제완료"
                                                 }
+                                            },
+                                            "monthlyPrice" : {
+                                                "blind" : "월 요금",
+                                                "price" : "월 18,800원"
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
