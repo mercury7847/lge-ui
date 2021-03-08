@@ -6,6 +6,7 @@
     var ORDER_SAILS_URL;
     var BANK_CONFIRM_URL;
     var ORDER_REQUEST_URL;
+    var ORDER_BENEFIT_URL;
 
 
     var PAYMENT_METHOD_CONFIRM;
@@ -21,8 +22,8 @@
     var TAB_FLAG_ORDER = "ORDER";
     var TAB_FLAG_CARE = "CARE";
 
-    var METHOD_CARD = "CARD";
-    var METHOD_BANK = "BANK";
+    var METHOD_CARD = "C";
+    var METHOD_BANK = "B";
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -52,57 +53,146 @@
             '</div>'+
         '</div>';
 
-    var prodListTemplate = 
-        '<div class="row {{listData.orderStatus.disabled}}">'+
-            '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
-                '<div class="col col1">'+
-                    '<span class="blind">제품정보</span>'+
-                    '<div class="product-info">'+
-                        '<div class="thumb">'+
-                            '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
-                        '</div>'+
-                        '<div class="infos">'+
-                            '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                            '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
-                            '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
-                            '{{#if listData.specList && listData.specList.length > 0}}'+
-                            '<div class="more">'+
-                                '<span class="blind">제품스펙</span>'+
-                                '<ul>'+
-                                    '{{#each spec in listData.specList}}'+
-                                    '<li>{{spec}}</li>'+
-                                    '{{/each}}'+                     
-                                '</ul>'+
-                            '</div>'+
-                            '{{/if}}'+
-                            '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
-                        '</div>'+
-                        '<p class="price">'+
-                            '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
-                        '</p>'+
-                    '</div>'+
+    var careInquiryListTemplate = 
+        '<div class="box" data-id="{{dataID}}">'+
+            '<div class="info-wrap">'+
+                '<ul class="infos">'+
+                    '<li>{{dateTitle}}<em>{{orderDate}}</em></li>'+
+                    '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
+                '</ul>'+
+                '<p class="totals">총 {{orderTotal}}건</p>'+
+            '</div>'+
+            '<div class="tbl-layout sizeType3">'+
+                '<div class="thead" aria-hidden="true">'+
+                    '<span class="th col1">제품정보(청약 상세보기)</span>'+
+                    '<span class="th col2">요금 정보</span>'+
+                    '<span class="th col3">진행상태</span>'+
                 '</div>'+
-                '<div class="col col2">'+
-                    '<div class="state-box">'+
-                        '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
-                        '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
-                        '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
-                        '<div class="state-btns">'+
-                            '{{#each status in listData.statusButtonList}}'+
-                            '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
-                            '{{/each}}'+
-                        '</div>'+
-                        '{{/if}}'+
-                    '</div>'+
+                '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if isCheck}}'+
-            '<span class="chk-wrap cancel-select">'+
-                '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{listData.orderStatus.disabled}}>'+
-                '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
-            '</span>'+
+            '{{#if orderCancelAbleYn == "Y"}}'+
+            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
+            '{{#if requestOrderAbleYn == "Y"}}'+
+            '<a href="#n" class="btn-link requestOrder-btn" style="right:90px;">주문접수</a>'+
+            '{{/if}}'+
+            '<div class="btns">'+
+                '<a href="#n" class="btn-link">청약 상세보기</a>'+
+            '</div>'+
         '</div>';
+        
+
+        var prodListTemplate = 
+            '<div class="row {{listData.orderStatus.disabled}}">'+
+                '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
+                    '<div class="col col1">'+
+                        '<span class="blind">제품정보</span>'+
+                        '<div class="product-info">'+
+                            '<div class="thumb">'+
+                                '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                            '</div>'+
+                            '<div class="infos">'+
+                                '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
+                                '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
+                                '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
+                                '{{#if listData.specList && listData.specList.length > 0}}'+
+                                '<div class="more">'+
+                                    '<span class="blind">제품스펙</span>'+
+                                    '<ul>'+
+                                        '{{#each spec in listData.specList}}'+
+                                        '<li>{{spec}}</li>'+
+                                        '{{/each}}'+                     
+                                    '</ul>'+
+                                '</div>'+
+                                '{{/if}}'+
+                                '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                            '</div>'+
+                            '<p class="price">'+
+                                '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
+                            '</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col col2">'+
+                        '<div class="state-box">'+
+                            '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                            '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
+                            '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
+                            '<div class="state-btns">'+
+                                '{{#each status in listData.statusButtonList}}'+
+                                '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                                '{{/each}}'+
+                            '</div>'+
+                            '{{/if}}'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '{{#if isCheck}}'+
+                '<span class="chk-wrap cancel-select">'+
+                    '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{listData.orderStatus.disabled}}>'+
+                    '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
+                '</span>'+
+                '{{/if}}'+
+            '</div>';
+        
+
+            var careProdListTemplate = 
+                '<div class="row {{listData.orderStatus.disabled}}">'+
+                    '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
+                        '<div class="col col1">'+
+                            '<span class="blind">제품정보</span>'+
+                            '<div class="product-info">'+
+                                '<div class="thumb">'+
+                                    '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                                '</div>'+
+                                '<div class="infos">'+
+                                    '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
+                                    '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
+                                    '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
+                                    '{{#if listData.specList && listData.specList.length > 0}}'+
+                                    '<div class="more">'+
+                                        '<span class="blind">제품스펙</span>'+
+                                        '<ul>'+
+                                            '{{#each spec in listData.specList}}'+
+                                            '<li>{{spec}}</li>'+
+                                            '{{/each}}'+                     
+                                        '</ul>'+
+                                    '</div>'+
+                                    '{{/if}}'+
+                                    '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                    '<p class="price">'+
+                                        '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원 결제완료'+
+                                    '</p>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col col1-2">'+
+                            '<div class="monthly-price">'+                            
+                                '<p class="price"><span class="blind">월 요금</span>월 {{listData.addCommaMonthlyPrice}}원</p>'+
+                                '{{#if isMonthlyPrice}}<a href="#" class="btn-link monthlyPrice-btn">할인 내역알아보기<a>{{/if}}'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col col2">'+
+                            '<div class="state-box">'+
+                                '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                                '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
+                                '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
+                                '<div class="state-btns">'+
+                                    '{{#each status in listData.statusButtonList}}'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                                    '{{/each}}'+
+                                '</div>'+
+                                '{{/if}}'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '{{#if isCheck}}'+
+                    '<span class="chk-wrap cancel-select">'+
+                        '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{listData.orderStatus.disabled}}>'+
+                        '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
+                    '</span>'+
+                    '{{/if}}'+
+                '</div>';
 
         var priceInfoTemplate = 
             '<div class="tit-wrap">'+
@@ -186,7 +276,8 @@
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
     var paymentListTemplate = 
-        '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+        '{{#set method = paymentMethodName}}' +
+        '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
@@ -195,12 +286,14 @@
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
-        '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+        '{{#set method = paymentMethodName}}' +
+        '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
-    '<li><dl><dt>결제 수단</dt><dd><span>{{paymentMethodName}}</span>'+
+    '{{#set method = paymentMethodName}}' +
+    '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
     '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
@@ -230,11 +323,11 @@
         '<li><dl><dt>제휴카드 신청</dt><dd>{{requsetCardInfo}}</dd></dl></li>'+        
         '<li><dl>'+
             '<dt>월 납부 금액</dt>'+
-            '<dd><span>{{monthlyPriceInfo}}</span><a href="{{monthlyPriceUrl}}" class="btn-link monthlyPrice-btn">매월 납부금 할인 내역알아보기<a></dd>'+
+            '<dd><span>{{monthlyPriceInfo}}</span></dd>'+
         '</dl></li>'+        
-        '<li><dl><dt>월 납부 수단</dt><dd>{{paymentMethodName}}</dd></dl></li>'+        
-        '<li><dl><dt>은행(카드)명</dt><dd>{{paymentTypeName}}</dd></dl></li>'+        
-        '<li><dl><dt>계좌(카드)번호</dt><dd>{{paymentNumber}}</dd></dl></li>';
+        '<li><dl><dt>월 납부 수단</dt><dd>{{transTypeNm}}</dd></dl></li>'+        
+        '<li><dl><dt>은행(카드)명</dt><dd>{{transCorpName}}</dd></dl></li>'+        
+        '<li><dl><dt>계좌(카드)번호</dt><dd>{{transAccountNum}}</dd></dl></li>';
 
     var START_INDEX;
 
@@ -280,7 +373,7 @@
 
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
-            vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'helper/textMasking'], function () {             
+            vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
                 setting();
                 bindEvents();
 
@@ -301,6 +394,8 @@
         BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
         
         ORDER_REQUEST_URL = $('.contents.mypage').data('orderRequest');
+
+        ORDER_BENEFIT_URL = $('.contents.mypage').data('orderBenefit');
 
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
@@ -431,7 +526,9 @@
         }).on('click', '.monthlyPrice-btn', function(e){
             e.preventDefault();
 
-            setMonthlyPricePop();
+            var dataID = $(this).closest('.box').data("id");
+            var prodID = $(this).closest('.col-table').data('prodId');
+            setMonthlyPricePop(dataID, prodID);
         }).on('click', '.thumb a', function(e){
             e.preventDefault();
 
@@ -780,8 +877,13 @@
         $('#popup-receipt-list').vcModal();
     }
 
-    function setMonthlyPricePop(){
-        $('#popup-monthly-price').vcModal();
+    function setMonthlyPricePop(dataId, prodId){
+        var sendata = {
+            rtModelSeq: CARE_LIST[dataId].productList[prodId].rtModelSeq
+        }
+        lgkorUI.requestAjaxData(ORDER_BENEFIT_URL, sendata, function(result){
+            $('#popup-monthly-price').empty().html(result).vcModal();
+        }, null, "html");
     }
 
     function setNoData(){
@@ -802,20 +904,26 @@
         if(leng){
             $('.inquiry-list-notify').show();
 
+            var isMonthlyPrice = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? true : false;
+
             var start = START_INDEX;
             var end = start + LIST_VIEW_TOTAL;
             if(end > leng) end = leng;
 
-            if(start == 0) $('.inquiry-list-wrap').empty();
+            if(start == 0) $('.inquiry-list-wrap').empty();            
 
             for(var idx=start;idx<end;idx++){
                 if(list[idx].requestOrderAbleYn === undefined) list[idx].requestOrderAbleYn = "N";
-                var templateList = $(vcui.template(inquiryListTemplate, list[idx])).get(0);
+                var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
+                var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
 
                 for(var cdx in list[idx].productList){
                     var prodlist = list[idx].productList[cdx];
-                    $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false}));
+                    var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
+                    prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
+                    template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
+                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice}));
                 }
             }
 
@@ -936,7 +1044,8 @@
             }
             
             //결제정보
-            if(data.payment) {
+            if(Object.keys(data.payment).length) {
+                console.log("### data.payment ###", data.payment)
                 var payment = data.payment;
                 payment.orderPrice = vcui.number.addComma(payment.orderPrice);
                 payment.discountPrice = vcui.number.addComma(payment.discountPrice);
@@ -963,26 +1072,41 @@
             //월 납부 정보...
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
-                monthpayment.requsetCardInfo = monthpayment.requestCard + " - " + monthpayment.requestCardName;
-                monthpayment.monthlyPriceInfo = monthpayment.paymentPriceInfo.join(" / ");
+                monthpayment.requsetCardInfo = monthpayment.cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
 
-                cardInfo = {
-                    paymentCard: monthpayment.cardInfo.cardComValue,
-                    paymentCardNumber: monthpayment.cardInfo.cardNumber,
-                    paymentCardPeriod: monthpayment.cardInfo.cardPeriod
+                monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
+                if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
+
+
+                if(monthpayment.transType == "B"){
+                    paymentMethod = "bank";
+                    bankInfo = {
+                        paymentBank: monthpayment.transCorpCode,
+                        paymentBankNumber: monthpayment.transAccountNum,
+                        paymentUserName: monthpayment.transMemName
+                    }
+                    cardInfo = {
+                        paymentCard: "",
+                        paymentCardNumber: "",
+                        paymentCardPeriod: "",
+                    }
+                } else{
+                    paymentMethod = "card";
+                    cardInfo = {
+                        paymentCard: monthpayment.transCorpCode,
+                        paymentCardNumber: monthpayment.transAccountNum,
+                        paymentCardPeriod: monthpayment.transCardExpiry
+                    }
+                    bankInfo = {
+                        paymentBank: "",
+                        paymentBankNumber: "",
+                        paymentUserName: monthpayment.transMemName,
+                    }
                 }
                 cardValidation.setValues(cardInfo);
-        
-                bankInfo = {
-                    paymentBank: monthpayment.bankInfo.bankValue,
-                    paymentBankNumber: monthpayment.bankInfo.bankNumber,
-                    paymentUserName: monthpayment.bankInfo.bankUser
-                }
                 bankValidation.setValues(bankInfo);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
-
-                paymentMethod = MONTHLY_PAYMENT_DATA.paymentMethod;
 
                 savePaymentInfoCancel();
             }
@@ -1003,25 +1127,25 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
-                // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
-                //     if(lgkorUI.stringToBool(result.data.success)){
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
+                    if(lgkorUI.stringToBool(result.data.success)){
 
-                //         window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                //         document.form_chk.action = result.data.niceAntionUrl;
-                //         document.form_chk.m.value = result.data.m;
-                //         document.form_chk.EncodeData.value = result.data.sEncData;
-                //         document.form_chk.auth_type.value = result.data.auth_type;
-                //         document.form_chk.param_r1.value = result.data.param_r1;
-                //         document.form_chk.param_r2.value = result.data.param_r2;
-                //         document.form_chk.param_r3.value = result.data.param_r3;
-                //         document.form_chk.target = "popupChk";
-                //         document.form_chk.submit();
-                //     } else{
-                //         console.log("Fail !!!");
-                //     }
-                // });
+                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                        document.form_chk.action = result.data.niceAntionUrl;
+                        document.form_chk.m.value = result.data.m;
+                        document.form_chk.EncodeData.value = result.data.sEncData;
+                        document.form_chk.auth_type.value = result.data.auth_type;
+                        document.form_chk.param_r1.value = result.data.param_r1;
+                        document.form_chk.param_r2.value = result.data.param_r2;
+                        document.form_chk.param_r3.value = result.data.param_r3;
+                        document.form_chk.target = "popupChk";
+                        document.form_chk.submit();
+                    } else{
+                        console.log("Fail !!!");
+                    }
+                });
 
-                editPaymentInfomation();
+                //editPaymentInfomation();
             }
         });
     }
@@ -1143,7 +1267,7 @@
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
         cardValidation.setValues(cardInfo);
-        $('.ui_card_number').vcFormatter('update');
+        //$('.ui_card_number').vcFormatter('update');
 
         bankValidation.setValues(bankInfo);
         
@@ -1172,6 +1296,7 @@
             lgkorUI.showLoading();
 
             var sendata = {
+                confirmType: sendPaymentMethod,
                 CERTI_ID: CERTI_ID,
                 BATCH_KEY: BATCH_KEY,
                 CTI_REQUEST_KEY: CTI_REQUEST_KEY
@@ -1217,6 +1342,7 @@
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
             leng = Object.keys(PAYMENT_DATA).length;
+            console.log("PAYMENT_DATA:",PAYMENT_DATA)
             if(leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;

@@ -87,7 +87,7 @@ var isApp = function(){
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
-            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
+            //this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
 
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
@@ -1476,7 +1476,6 @@ var isApp = function(){
 
         //크레마로그인
         cremaLogin:function() {
-            /*
             if(typeof digitalData !== 'undefined') {
                 if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
                     window.cremaAsyncInit = function () {
@@ -1492,7 +1491,6 @@ var isApp = function(){
                     crema.init(null,null);
                 };
             }
-            */
         }
     }
 

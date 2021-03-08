@@ -76,7 +76,7 @@ $(window).ready(function(){
             //$component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
-                $(window).trigger("sendExtraAction.KRP0009");
+                if(!$(this).hasClass("disabled")) $(window).trigger("sendExtraAction.KRP0009");
             })
         
             $(window).on('scroll.KRP0009', function(e){

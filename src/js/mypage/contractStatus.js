@@ -484,7 +484,7 @@
     function savePaymentInfoCancel(){
         try{
             cardValidation.setValues(cardInfo);
-            $('.ui_card_number').vcFormatter('update');
+            //$('.ui_card_number').vcFormatter('update');
     
             bankValidation.setValues(bankInfo);
             setHiddenData('paymentMethodConfirm', "N");
