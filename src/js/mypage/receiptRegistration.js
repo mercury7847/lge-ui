@@ -21,6 +21,7 @@
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
                 self.$inputReceipt = self.$formWrap.find('#inputReceipt');
+                self.$inputReceipt.attr("autocomplete","off");
                 self.$inquiryButton = self.$formWrap.find('#inquiryButton');
 
                 var register = {
