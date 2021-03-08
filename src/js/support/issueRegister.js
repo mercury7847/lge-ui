@@ -9,7 +9,7 @@
             'ui/imageFileInput'
         ], function() {    
             $('.ui_imageinput').vcImageFileInput({
-            totalSize: 40 * 1024 * 1024,
+            totalSize: 4 * 1024 * 1024,
                 format: 'jpg|jpeg|png|gif',
                 message: {
                     size: '첨부파일 사이즈는 4MB 이내로 등록 가능합니다.'
