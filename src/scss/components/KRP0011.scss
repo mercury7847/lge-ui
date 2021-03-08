@@ -2,6 +2,17 @@
 
 @import "../components-app";
 
+.component-wrap {
+    .KRP0011 {
+        .component-inner {
+            padding:120px 0;
+            @include mobile {
+                padding:60px 0;
+            }
+        }
+    }
+}
+
 .KRP0011 {
     .component-inner {
         // max-width:1146px + 80px;
