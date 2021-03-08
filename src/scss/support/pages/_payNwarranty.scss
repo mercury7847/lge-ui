@@ -318,12 +318,18 @@
 #ratesWarrantyGuidePopup {
     max-width: 912px;
     .img_box {
-        &.pc-only,
-        .mo-only {
+        &.pc-only {
             display: none;
         }
         &.pop-only {
             display: block;
+        }
+    }
+    @include mobile {
+        .img_box {
+            &.pop-only {
+                display: none;
+            }
         }
     }
 }
