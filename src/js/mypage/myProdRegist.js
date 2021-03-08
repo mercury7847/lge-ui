@@ -1,5 +1,6 @@
 (function(){
-    var productListItemTemplate = '<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    '<li class="lists" data-model="{{jsonModel}}">' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
@@ -267,6 +268,7 @@
             self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
+                /*
                 var _id = $li.attr('data-model-id');
                 var sku = $li.attr('data-sku');
                 var ordNo = $li.attr('data-ord-no');
@@ -277,8 +279,11 @@
                     "ordNo":ordNo,
                     "modelCode":modelCode
                 };
+                */
+                var param = $li.data('model');
                 var ajaxUrl = self.$contents.attr('data-add-url');
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    $li.remove();
                     self.requestOwnData(true);
                     /*
                     var item = result.data;
@@ -691,6 +696,7 @@
                 var $list = self.$registProductList.find('>ul');
                 $list.empty();
                 arr.forEach(function(item, index) {
+                    item.jsonModel = JSON.stringify(item);
                     item.date = vcui.date.format(item.date,'yyyy.MM');
                     $list.append(vcui.template(productListItemTemplate, item));
                 });

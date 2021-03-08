@@ -16,6 +16,7 @@
                 "modelDescription": "",
                 "purchaseInfo": "",
                 "selectColorID": "MC_K8_MoroccanBlue_code",
+                "siblingTypeName": "색상",
                 "siblingColors": [
                     {
                         "siblingCode": "MC_K8_MoroccanBlue_code",
@@ -71,6 +72,7 @@
                     }
                 ],
                 "selectColorID": "citrus_code",
+                "siblingTypeName": "색상",
                 "siblingColors": [
                 ],
                 "selectFeeID": "납부_code",
@@ -104,6 +106,7 @@
                 "combineText": "",
                 "purchaseInfo": "",
                 "selectColorID": "riviera-blue_code",
+                "siblingTypeName": "색상",
                 "siblingColors": [
                 ],
                 "selectFeeID": "납부_code",

@@ -326,7 +326,7 @@
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
 
-        var getDataTypeFlag = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : "";
+        var getDataTypeFlag = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         TAB_FLAG = PAGE_TYPE == PAGE_TYPE_LIST ? TAB_FLAG_ORDER : getDataTypeFlag;
         console.log("TAB_FLAG:", TAB_FLAG);
 
@@ -1204,7 +1204,8 @@
         //배송정보
         var $listBox = $('.inner-box.shipping');
         if($listBox.length > 0) {
-            if(SHIPPING_DATA.length){
+            var leng = Object.keys(SHIPPING_DATA).length;
+            if(leng){
                 template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
                 $listBox.show().find('ul').html(vcui.template(template, SHIPPING_DATA));
             } else{
@@ -1215,7 +1216,8 @@
         //결제정보
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
-            if(PAYMENT_DATA.length){
+            leng = Object.keys(PAYMENT_DATA).length;
+            if(leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
@@ -1228,7 +1230,8 @@
         //주문자 정보
         $listBox = $('.inner-box.orderuser');
         if($listBox.length > 0) {
-            if(ORDER_USER_DATA.length){
+            leng = Object.keys(ORDER_USER_DATA).length;
+            if(leng){
                 $listBox.show().find('ul').html(vcui.template(orderUserTemplate, ORDER_USER_DATA));
             } else{
                 $listBox.hide();
@@ -1238,7 +1241,8 @@
         //납부정보
         $listBox = $('.inner-box.monthly-payment');
         if($listBox.length > 0) {
-            if(MONTHLY_PAYMENT_DATA.length){
+            leng = Object.keys(MONTHLY_PAYMENT_DATA).length;
+            if(leng){
                 $listBox.show().find('ul').html(vcui.template(monthlyPaymentTemplate, MONTHLY_PAYMENT_DATA));
             } else{
                 $listBox.hide();
