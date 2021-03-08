@@ -41,18 +41,6 @@
             },
             init : function(){
                 this.toggle();
-
-                // $(this.el.list).each(function(){
-                //     var $this = $(this);
-                //     var $anchor = $this.find('a');
-
-                //     $anchor.filter(function(){
-                //         var $this = $(this);
-                //         if( $this.text() == "") {
-                //             return true
-                //         }
-                //     }).remove();
-                // })
             }
         },
         moreShow : {
@@ -475,10 +463,7 @@
                         $('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
-                            agreePrivacyCheck : {
-                                required : true,
-                                msgTarget : ".err-block"
-                            },
+                            
                             serviceUserName : {
                                 required : true,
                                 msgTarget : ".err-block"
