@@ -139,6 +139,31 @@
                         }
                     }
                 }
+                .notice-info {
+                    padding: 30px 32px 30px 48px;
+                    .txt {
+                        padding-left: 96px;
+                        &:before {
+                            width:64px;
+                            height:64px;
+                            background:url('/lg5-common/images/icons/img-membership-03-64.svg') no-repeat;
+                            background-size:100%;
+                        }
+                    }
+                    @include mobile {
+                        padding: 24px;
+                        .txt {
+                            padding-left: 0;
+                            padding-top: 76px;
+                            &::before {
+                                top:0;
+                                left: 50%;
+                                -webkit-transform:translate(-50%, 0%);
+                                transform:translate(-50%, 0%);
+                            }
+                        }
+                    }
+                }
             }
 
         }
