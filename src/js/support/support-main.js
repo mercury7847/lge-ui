@@ -463,7 +463,11 @@
                         $('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
-                            
+                            agreePrivacyCheck : {
+                                required : true,
+                                msgTarget : ".err-block"
+                            },
+
                             serviceUserName : {
                                 required : true,
                                 msgTarget : ".err-block"

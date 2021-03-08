@@ -9,8 +9,8 @@
     var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
-    
-    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
+    /*
+    var productItemTemplate2 = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -47,6 +47,51 @@
                         '</div>' +
                         '<div class="price-in">' +
                             '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                        '</div>' +
+                    '</div>' +
+                '</a>' +
+            '</div>' +
+            '{{/if}}' +
+        '</div>' +
+    '</div></li>';
+    */
+    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
+        '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
+                '<div class="result-detail">' +
+                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="review-info">' +
+                        '<a href="{{url}}">' +
+                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                            '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                        '</a>' +
+                    '</div>' +
+                    '<div class="info-btm">' +
+                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '<div class="text hashtag-wrap">' +
+                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '{{#if obsFlag=="Y"}}' +
+            '<div class="info-price">' +
+                '<a href="#">' +
+                    '{{#if carePrice}}' +
+                    '<div class="price-info rental">' +
+                        '{{#if carePrice}}<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                    '{{/if}}' +
+                    '<div class="price-info sales">' +
+                        '<div class="original">' +
+                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                        '</div>' +
+                        '<div class="price-in">' +
+                            '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                     '</div>' +
                 '</a>' +
@@ -825,6 +870,9 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.linkItem.forEach(function(obj, idx){
+                                obj.url = encodeURI(obj.url);
+                            });
                             $list_ul.append(vcui.template(shopItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -911,6 +959,7 @@
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -921,6 +970,8 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text)
                 self.updateRecentSearchList();
             },
 

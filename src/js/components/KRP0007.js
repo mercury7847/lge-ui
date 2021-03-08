@@ -73,6 +73,9 @@
                 '</div>' +
                 '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                     '<div class="review-info">' +
+                        // '{{#if salesModelCode}}' +
+                        // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
+                        // '{{/if}}' +
                         '<a href="#">' +
                             '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
                             '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
@@ -116,7 +119,8 @@
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
+                            //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
@@ -201,7 +205,6 @@
                         }
                         filterData = storageFilterData;
                     }
-                    console.log("change:",change)
                     self.filterLayer.resetFilter(filterData, change);
                 });
 
@@ -486,10 +489,18 @@
             },
 
             checkBtnFlag: function(item) {
-                if(lgkorUI.stringToBool(item.obsCartFlag)) {
-                    return (item.obsBtnRule=="enable") ? true : false;
+                if(item.bizType == "CARESOLUTION") {
+                    if (!item.years1TotAmt && item.years1TotAmt != "") {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 } else {
-                    return false;
+                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                        return true
+                    } else {
+                        return false;
+                    }
                 }
             },
 
