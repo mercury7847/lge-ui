@@ -24,12 +24,21 @@ $(function () {
 
         $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
+            var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
+            if($slider.length <= carousel.slidesToShow){
+                $slider.addClass('on');  
+                $(this).find('.flow-bar-wrap').hide();
+            }else{
+                $(this).find('.flow-bar-wrap').show();
+            }
+
             var wd = $(this).find('.flow-bar-wrap').width();
             var dotWd = Math.ceil(wd/carousel.slideCount);
             $(this).find('.flow-bar').css({
                 'width':dotWd,
                 'left':dotWd*index
             });
+
 
         }).vcCarousel({
             infinite: true,
@@ -72,12 +81,24 @@ $(function () {
 
         $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
+
+            var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
+            if($slider.length <= carousel.slidesToShow){
+                $slider.addClass('on');  
+                $(this).find('.flow-bar-wrap').hide();
+            }else{
+                $(this).find('.flow-bar-wrap').show();
+            }
+
+
             var wd = $(this).find('.flow-bar-wrap').width();
             var dotWd = Math.ceil(wd/carousel.slideCount);
             $(this).find('.flow-bar').css({
                 'width':dotWd,
                 'left':dotWd*index
             });
+
+
 
         }).vcCarousel({
             infinite: true,
@@ -137,8 +158,9 @@ $(function () {
         $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        $('.next-arr').on('a', function(e){
+        $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
+            wheelScene(1);
         });
 
         $(document).on('click', 'a', function(e){
@@ -184,8 +206,7 @@ $(function () {
                 }
             }
 
-        })
-
+        });
                
 
         function wheelScene(delta) {
@@ -265,17 +286,59 @@ $(function () {
         
         // 터치 이벤트 처리
 
-        // 하단메뉴 스크롤 기능 사용 여부 설정
-        // android.setEnableScrollBottomMenu(blooean);
+        /*
+        // 안드로이드 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        android.showBottomMenuOver(boolean isOver)
+        
+        하단메뉴 스크롤 기능 사용 여부 설정
+        android.setEnableScrollBottomMenu(blooean);
 
-        // 하단메뉴 노출 여부 설정
-        // android.showBottomMenu(blooean);
+        하단메뉴 노출 여부 설정
+        android.showBottomMenu(blooean);
 
-        // 하단 메뉴 높이
-        // android.getBottomMenuHeight();
+
+        //iOS 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+
+        var obj = new Object();
+        obj.command = "showBottomMenuOver";
+        obj.value ="Y"; //Y - 덮는 형태 ,N - 덮지 않는 형태 
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 스크롤 기능 사용 여부 설정
+        var obj = new Object();
+        obj.command = "setEnableScrollBottomMenu";
+        obj.value ="Y"; //Y 사용, N 미사용
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 노출 여부 설정
+        var obj = new Object();
+        obj.command = "showBottomMenu";
+        obj.value ="Y"; //Y 노출, N 미노출
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */
+
 
         var isAndroid = vcui.detect.isAndroid;
         var isIOS = vcui.detect.isIOS;
+
+        if(isApplication) {
+            if(isAndroid && android) android.showBottomMenuOver(true);
+            if(isIOS){
+                var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            }
+        }
+
+        var showBottomMenuY= JSON.stringify({command:'showBottomMenu', value:'Y'});
+        var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
+
         
         $(document).on('touchstart touchend touchcancel', function(e) {
 
@@ -285,16 +348,16 @@ $(function () {
             } else {
 
                 if (touchSy - data.y > 80) {
-                    console.log('down');
+                    // console.log('down');
                     if(isApplication) {
                         if(isAndroid && android) android.showBottomMenu(true);
-                        //if(isIOS && android) android.showBottomMenu(true);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
                     }
                 } else if (touchSy - data.y < -80) {
-                    console.log('up');
+                    // console.log('up');
                     if(isApplication) {
                         if(isAndroid && android) android.showBottomMenu(false);
-                        //if(isIOS && android) android.showBottomMenu(false);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
                     }
                 }
 
@@ -302,7 +365,7 @@ $(function () {
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && touchSy - data.y < -80){
+                        if(st<=0 && touchSy - data.y < -80){
                             wheelScene(-1);
                         }
                     }, 100);
@@ -532,35 +595,7 @@ $(function () {
         }
         
         $window.trigger('breakpointchange');
-        window.resizeScene = render;
-
-        /*
-        android.showBottomMenuOver(boolean isOver)
-
-        //iOS 
-        var obj = new Object();
-        obj.command = "showBottomMenuOver";
-        obj.value ="Y"; //Y - 메뉴 보이기 ,N - 메뉴 안보이기 
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-        
-        ios 통합 앱에서 하단 메뉴 관련 스크립트 공유 드립니다.
-
-        1. 하단 메뉴 스크롤 기능 사용 여부 설정
-
-        var obj = new Object();
-        obj.command = "setEnableScrollBottomMenu";
-        obj.value ="Y"; //Y 사용, N 미사용
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-
-        2. 하단 메뉴 노출 여부 설정
-        var obj = new Object();
-        obj.command = "showBottomMenu";
-        obj.value ="Y"; //Y 노출, N 미노출
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-        */
+        window.resizeScene = render;        
 
     });
 });

@@ -141,8 +141,6 @@
             setting: function() {
                 var self = this;
 
-                //최근 검색어 저장 최대수
-                self.maxSaveRecentKeyword = 5;
                 //최소 검색어 글자수
                 self.minLength = 2;
                 //타이머
@@ -806,7 +804,7 @@
                 }
                 self.updateRecentSearchList();
                 */
-                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text, lgkorUI.MAX_SAVE_RECENT_KEYWORD);
                 self.updateRecentSearchList();
             },
 
