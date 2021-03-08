@@ -275,6 +275,9 @@
 
     var _serviceID = 0;
 
+    var _careCateId = "";
+    var _isDirectCare = false;
+
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
             setting();
@@ -301,6 +304,9 @@
         _priceStatusUrl = $caresolutionContainer.data("priceStatus");
         _putItemUrl = $caresolutionContainer.data("putItem");
         _estimateConfirmUrl = $caresolutionContainer.data("estimateConfirm");
+
+        _careCateId = $caresolutionContainer.data("careCateId");
+        _careCateId = "ddd";
 
         $fixedTab.find('.service_tab').vcTab()
         .on('tabchange', function(e, data){
@@ -477,16 +483,26 @@
     function loadCategoryList(){
         lgkorUI.showLoading();
 
+        if(!_isDirectCare && _careCateId){
+            var uitab = $fixedTab.find('.service_tab').vcTab('instance');
+            uitab.select(1);
+        }
+
         var tabID = getTabID();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_categoryListUrl, {tabID: tabID}, function(result){
 
             $categoryTab.find('.tabs').empty();
 
+            var selectId = 0;
             for(var id in result.data){
+                if(!_isDirectCare && _careCateId === result.data[id].categoryID){
+                    _isDirectCare = true;
+                    selectId = id;
+                }
                 var category = vcui.template(_categoryItemTemplate, result.data[id]);
                 $categoryTab.find('.tabs').append($(category).get(0));
             }
-            $categoryTabCtrler.resetStatus(0);
+            $categoryTabCtrler.resetStatus(selectId);
 
             $('.service-tooltop .txt-wrap').hide();
             $('.service-tooltop .txt-wrap').eq(_serviceID).show();
