@@ -687,6 +687,21 @@
                     }
                 });
 
+                //상단 스티키 구매버튼
+                $(window).on('sendExtraAction.KRP0009', function(e){
+                    var $buyButton =  self.$pdpInfo.find('div.purchase-button a:not(.cart)');
+                    console.log($buyButton);
+                    if($buyButton.length > 1) {
+                        $buyButton.each(function(idx,item){
+                            var $item = $(item);
+                            var optionParent = $item.parents('');
+                        });
+                    } else {
+                        //한개
+                        $buyButton.trigger('click');
+                    } 
+                });
+
                 //링크
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();

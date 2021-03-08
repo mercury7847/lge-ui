@@ -48,7 +48,9 @@ $(window).ready(function(){
                 scrollMoved(id);
             });
 
-            $component.find("#extraBtn").on('click', function(e){
+            //jsw
+            $component.find("a.extra-menu").on('click', function(e){
+            //$component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
                 $(window).trigger("sendExtraAction.KRP0009");
