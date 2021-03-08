@@ -1476,7 +1476,6 @@ var isApp = function(){
 
         //크레마로그인
         cremaLogin:function() {
-            /*
             if(typeof digitalData !== 'undefined') {
                 if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
                     window.cremaAsyncInit = function () {
@@ -1492,7 +1491,6 @@ var isApp = function(){
                     crema.init(null,null);
                 };
             }
-            */
         }
     }
 
