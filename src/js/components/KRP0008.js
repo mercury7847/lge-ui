@@ -184,6 +184,7 @@
                 //PDP 인포
                 self.$pdpInfo = $('div.pdp-info-area');
                 self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
+                self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
                 self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
                 
                 //가격정보
@@ -690,16 +691,26 @@
                 //상단 스티키 구매버튼
                 $(window).on('sendExtraAction.KRP0009', function(e){
                     var $buyButton =  self.$pdpInfo.find('div.purchase-button a:not(.cart)');
-                    console.log($buyButton);
                     if($buyButton.length > 1) {
                         $buyButton.each(function(idx,item){
                             var $item = $(item);
-                            var optionParent = $item.parents('');
+                            var optionParent = $item.parents('div.option-contents');
+                            if(optionParent.css('display') == "block") {
+                                $item.trigger('click');
+                                return false;
+                            }
                         });
                     } else {
                         //한개
                         $buyButton.trigger('click');
                     } 
+                });
+
+                self.$productBuyOptionTab.on("tabbeforechange", function(e, data){
+                    var index = data.selectedIndex;
+                    var optionParent = self.$pdpInfoProductDetailInfo.find('div.option-contents:eq('+index+')');
+                    var btnTitle = optionParent.find('.payment-amount div.purchase-button a:not(.cart) span').text();
+                    $(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
                 });
 
                 //링크
@@ -1367,7 +1378,6 @@
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                         //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                         console.log("!!!!!buy",ajaxUrl,param);
-                        console.log('post');
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                                 console.log(result);
