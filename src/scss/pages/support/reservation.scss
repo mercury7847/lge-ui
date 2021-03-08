@@ -231,10 +231,16 @@
                                     content:'';
                                     display:inline-block;
                                     margin-left:3px;
-                                    width:20px;
-                                    height:20px;
-                                    background:url("/lg5-common/images/icons/ic-outlink-20.svg") center no-repeat;
+                                    margin-top:3px;
+                                    width:16px;
+                                    height:16px;
+                                    background:url("/lg5-common/images/icons/icon-outlink-16-1.svg") center no-repeat;
+                                    vertical-align: top;
                                 }
+                            }
+
+                            span {
+                                vertical-align: top;
                             }
                         }
                     }
