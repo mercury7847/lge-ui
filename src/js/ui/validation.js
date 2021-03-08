@@ -306,30 +306,30 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         result = self._setCheckValidate(true);
                         
                     }else{
+                        for(var key in self.register){
+                            var obj = self.register[key];
+                            if(obj.required){
+                                var $target = self.$el.find('[name='+ key +']');
+                                var val;
 
-                        var $target, val, key;
+                                if($target.is(':checkbox') || $target.is(':radio')){    
+                                    var nArr = [];
+                                    $target.filter(':checked').each(function(idx, item){
+                                        nArr.push($(item).val())
+                                    });
 
-                        for(var i=0;i<self.nameArr.length; i++){
-                            key = self.nameArr[i];
-
-                            $target = self.$el.find('[name='+ key +']');
-                            if($target.is(':checkbox') || $target.is(':radio')){
-                                var nArr = [];
-                                $target.filter(':checked').each(function(idx, item){   
-                                    nArr.push($(item).val())
-                                });
-                                
-                                val = $target.is(':radio')? nArr[0] : nArr;
-                                if(val==='on') val = '';
-
-                            }else{
-                                val = $target.val();
+                                    if($target.is(':radio')){
+                                        val = nArr[0];                                        
+                                    }else{
+                                        if(nArr.length==1) val = nArr[0];
+                                        else val = nArr;
+                                    }            
+                                }else{
+                                    val = $target.val();
+                                }
+                                result[key] = val;                                
                             }
-
-                            result[key] = val;
-                            
                         }
-                        
                     }
                     
                     return result;
@@ -347,7 +347,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if($target.is(':radio')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
                 } else if($target.is(':checkbox')){                    
-                    $target.filter('[name='+ key +']').prop('checked', obj[key]);
+
+                    //CS 제외
+                    if( !$('.contents.support').length ) {
+                        $target.filter('[name='+ key +']').prop('checked', obj[key]);
+                    }
                 }else{
                     if($target.is('select')){
 
