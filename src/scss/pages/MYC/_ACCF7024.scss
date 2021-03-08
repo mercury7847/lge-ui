@@ -400,6 +400,43 @@
                     }
                 }
             }
+
+            &.sizeType3 {
+                .thead {
+                    .col2 {
+                        width: 20.5%;
+                        max-width: 234px;
+                    }
+                    .col3 {
+                        width: 30.6%;
+                        max-width: 350px;
+                    }
+                    @include mobile {
+                        .col2,
+                        .col3 {
+                            width:100%;
+                            max-width:100%;
+                        }
+                    }
+                }
+                .tbody {
+                    .col1-2 {
+                        width: 20.5%;
+                        max-width: 234px;
+                    }
+                    .col2 {
+                        width: 30.6%;
+                        max-width: 350px;
+                    }
+                    @include mobile {
+                        .col1-2,
+                        .col2 {
+                            width:100%;
+                            max-width:100%;
+                        }
+                    }
+                }
+            }
         }
 
         // 취소신청 버튼
@@ -553,6 +590,17 @@
                         margin-top:6px;
                     }
                 }
+                .price {
+                    display: block;
+                    margin-top: 12px;
+                    padding-left: 0;
+                    font-weight: 400;
+                    @include font-small;
+                    text-align: left;
+                    @include mobile {
+                        margin-top: 6px;
+                    }
+                }
             }
             .price {
                 display:table-cell;
@@ -660,6 +708,25 @@
                 text-align:left;
             }
         }
+
+        .monthly-price {
+            text-align: center;
+            .price {
+                font-weight: 700;
+                @include font-large;
+            }
+            @include mobile {
+                margin-top: 10px;
+                text-align: left;
+            }
+            .btn-link {
+                margin-top: 8px;
+                @include mobile {
+                    margin-top: 6px;
+                }
+            }
+        }
+
         .row.disabled {
             .state-box {
                 .tit {
