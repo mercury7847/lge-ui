@@ -14,7 +14,8 @@
     var previewItemTemplate = '<li><a href="{{url}}" class="item">' +
         '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
         '<div class="info">' +
-            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span><span class="price">{{price}}원</span>' +
+            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span>' +
+            '<span class="price"{{#if !obsFlag}} style="visibility: hidden;"{{/if}}>{{price}}원</span>' +
         '</div></a></li>';
     //연관검색어
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
@@ -29,8 +30,6 @@
         setting: function() {
             var self = this;
 
-            //최근 검색어 저장 최대수
-            self.maxSaveRecentKeyword = 5;
             //최소 검색어 글자수
             self.minLength = 2;
             //타이머
@@ -115,6 +114,7 @@
 
             self.$inputSearch.keydown(function(key) {
                 if (key.keyCode == 13) {
+                    key.preventDefault();
                     self.$buttonSearch.trigger('click');
                 }
             });
@@ -319,6 +319,8 @@
                     arr.forEach(function(item, index) {
                         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                         item.price = vcui.number.addComma(item.price);
+                        item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
+                        console.log(item.obsFlag);
                         $list_ul.append(vcui.template(previewItemTemplate, item));
                     });
                     self.$resultPreviewList.show();
@@ -379,7 +381,7 @@
             if(!text || text.length < 1) return;
             var self = this;
 
-            lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
+            lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text, lgkorUI.MAX_SAVE_RECENT_KEYWORD);
             self.updateRecentSearchList();
         },
 
@@ -457,7 +459,7 @@
         },
     }
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         intergratedSearch.init();
     });
 })();

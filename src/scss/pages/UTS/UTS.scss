@@ -411,7 +411,7 @@
 
     .search-result-category {
         max-width: (1380px + 80px);
-        margin: 80px auto 0;
+        margin: 48px auto 0;
         padding: 0 40px;
         .inner {
             position: relative;
@@ -748,43 +748,6 @@
         }
         @include pc {
             display: none;
-        }
-    }
-}
-
-
-.rounded-list {
-    font-size: 0;
-    li {
-        display: inline-block;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-    .rounded {
-        display: inline-block;
-        padding: 6px 12px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-        .text {
-            display: block;
-            @include font-small;
-        }
-    }
-    @include mobile {
-        //li {
-        //    display: block;
-        //    margin-right: 0;
-        //    margin-bottom: 6px;
-        //}
-        .rounded {
-            .text {
-                font-size: $font-small;
-                line-height: 22px;
-            }
         }
     }
 }
@@ -1451,6 +1414,7 @@
                         display: block;
                         flex: 1;
                         margin-left: 24px;
+                        margin-bottom: 0;
                         padding: 0;
                     }
                 }

@@ -240,7 +240,6 @@ var isApp = function(){
     
     global['lgkorUI'] = {
         COMPARE_KEY: "prod_compare",
-        COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
         CAREPLANER_PRICE: "putitem_price",
@@ -251,6 +250,8 @@ var isApp = function(){
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
+        MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
+        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
             this._bindErrBackEvent();
             this._addImgOnloadEvent();
@@ -607,7 +608,6 @@ var isApp = function(){
                 var callbackOk, callbackCancel;
     
                 if(options && options.ok && typeof options.ok =='function'){
-                    console.log("option.ok");
                     callbackOk = options.ok;
                     delete options['ok'];
                 } 
@@ -633,7 +633,6 @@ var isApp = function(){
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
                     if(e.type =='modalok'){
-                        console.log(callbackOk)
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
@@ -701,19 +700,23 @@ var isApp = function(){
             
         }(),
 
+        getCompareLimit: function(){
+            return window.breakpoint.isMobile ? 2 : 3;
+        },
+
         addCompareProd: function(categoryId, data){
             var self = this;
 
             console.log("### addCompareProd ###", categoryId)
 
-            self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
+            var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
                 compareStorage[categoryId] = [data];
             } else{
                 var leng = compareStorage[categoryId].length;
-                if(leng < self.COMPARE_LIMIT){
+                if(leng < compareLimit){
                     compareStorage[categoryId].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
@@ -895,7 +898,7 @@ var isApp = function(){
             }
         },
 
-        addCookieArrayValue: function(cookieName, addData) {
+        addCookieArrayValue: function(cookieName, addData, maxLength) {
             var self = this;
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
@@ -926,7 +929,11 @@ var isApp = function(){
             var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
 
             addData += ("&&&" + expireDateString);
+
             itemArray.unshift(addData);
+            itemArray = itemArray.slice(0,maxLength);
+            console.log(itemArray);
+
             items = itemArray.join('|');
             self.setCookie(cookieName, items);
         },
@@ -1422,39 +1429,69 @@ var isApp = function(){
 
             var $wishItem = $('input['+checkAttr+']');
 
-            lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var data = result.data.data;
-                if(data){
-                    var listData = data.listData != undefined ? data.listData : null;
-                    var wishListId = data.wishListId;
-                    $wishItem.each(function(idx, item){
-                        var $item = $(item);
-                        if(!$item.data('wishListId')) {
-                            console.log('null',$item);
-                            $item.data('wishListId', wishListId);
-                        };
-                    });                
-                    if(listData) {
-                        listData.forEach(function(item,index){
-                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
-                            if($wish.length > 0) {
-                                $wish.data(item);
-                                $wish.prop("checked",true);
-                            }
-                        });
+            if($wishItem.length > 0) {
+                lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
+                    var data = result.data.data;
+                    if(data){
+                        var listData = data.listData != undefined ? data.listData : [];
+                        var wishListId = data.wishListId;
+                        /*
+                        $wishItem.each(function(idx, item){
+                            var $item = $(item);
+                            if(!$item.data('wishListId')) {
+                                $item.data('wishListId', wishListId);
+                            };
+                        }); 
+                        */
+                        if(wishListId) {
+                            $wishItem.each(function(idx, item){
+                                var $item = $(item);
+                                if(!$item.data('wishListId')) {
+                                    $item.data('wishListId', wishListId);
+                                };
+                                var itemId = $item.attr(checkAttr);
+                                for (var i = 0, len = listData.length; i < len; i++) {
+                                    var listItem = listData[i];
+                                    if (listItem.sku == itemId) {
+                                        $item.data(listItem);
+                                        $item.prop("checked",true);
+                                        break;
+                                    }
+                                }
+                            });
+                            /*
+                            listData.forEach(function(item,index){
+                                var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                                console.log($wish);
+                                if($wish.length > 0) {
+                                    $wish.data(item);
+                                    $wish.prop("checked",true);
+                                }
+                            });
+                            */
+                        }
                     }
+                },"GET", null, true);
+            }
+        },
+
+        //크레마로그인
+        cremaLogin:function() {
+            if(typeof digitalData !== 'undefined') {
+                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
+                    window.cremaAsyncInit = function () {
+                        crema.init("이름",digitalData.userInfo.unifyId);
+                    };
+                } else {
+                    window.cremaAsyncInit = function () {
+                        crema.init(null,null);
+                    };
                 }
-            },"GET", null, true);
-        
-            //var checkModel = [];
-            /*
-            $wishItem.each(function(idx,obj){
-                var model = obj.attr(checkAttr);
-                if(model){
-                    checkModel.push(model);
-                }
-            });
-            */
+            } else {
+                window.cremaAsyncInit = function () {
+                    crema.init(null,null);
+                };
+            }
         }
     }
 

@@ -49,11 +49,11 @@
                 {
                     "flag":[
                         {
-                            "clase":"green",
+                            "class":"green",
                             "title":"센터"
                         },
                         {
-                            "clase":null,
+                            "class":null,
                             "title":"이벤트"
                         }
                     ],
@@ -76,11 +76,11 @@
                 {
                     "flag":[
                         {
-                            "clase":"green",
+                            "class":"green",
                             "title":"센터"
                         },
                         {
-                            "clase":null,
+                            "class":null,
                             "title":"NEW"
                         }
                     ],
@@ -103,11 +103,11 @@
                 {
                     "flag":[
                         {
-                            "clase":"green",
+                            "class":"green",
                             "title":"센터"
                         },
                         {
-                            "clase":null,
+                            "class":null,
                             "title":"NEW"
                         }
                     ],
@@ -130,11 +130,11 @@
                 {
                     "flag":[
                         {
-                            "clase":"green",
+                            "class":"green",
                             "title":"센터"
                         },
                         {
-                            "clase":null,
+                            "class":null,
                             "title":"NEW"
                         }
                     ],
@@ -157,11 +157,11 @@
                 {
                     "flag":[
                         {
-                            "clase":"green",
+                            "class":"green",
                             "title":"센터"
                         },
                         {
-                            "clase":null,
+                            "class":null,
                             "title":"NEW"
                         }
                     ],

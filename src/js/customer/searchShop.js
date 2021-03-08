@@ -207,7 +207,10 @@
 
             self.$searchField.on('focus', function(e){
                 $(window).on('keyup.searchShop', function(e){
-                    if(e.keyCode == 13) self._setSearch();
+                    if(e.keyCode == 13) {
+                        e.preventDefault();
+                        self._setSearch();
+                    }
                 });
             });
 

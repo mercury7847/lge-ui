@@ -550,6 +550,8 @@
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
                         $('#detail-file-modal').html(result);
+                        var driverDatilContent = $('#detail-file-modal').find('#driverDatilContent p').text();
+                        $('#detail-file-modal').find('#driverDatilContent p').html(vcui.string.replaceAll(driverDatilContent, '\n', '<br>'));                        
                         var $result = $('#detail-file-modal').find('section:eq(0)');
                         self.$downloadDetailPage.find('section:eq(0)').html($result.html());
                         self.$downloadMainPage.hide();
@@ -569,6 +571,7 @@
             //다운로드 상세 검색
             self.$downloadSearch.keydown(function(key) {
                 if (key.keyCode == 13) {
+                    key.preventDefault();
                     self.$downloadPopup.find('button.btn-search').trigger('click');
                 }
             });
