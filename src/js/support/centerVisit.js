@@ -617,6 +617,9 @@
             self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                self.$selectedModelBar.vcSticky();
+            });
         },
         _getKeyword: function(){
             var self = this;
