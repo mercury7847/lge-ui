@@ -11,46 +11,153 @@
         </header>
         <form id="myForm">
             <section class="pop-conts academy-pop">
+                <!-- 210308 카테고리 분할 수정 -->
                 <div class="input-info">
                     <div class="tit-wrap">
                         <!-- 210126 수정 - 타이틀 번호 삭제  -->
                         <h2 class="h2-tit">구입 희망 제품 선택</h2>
                     </div>
-                    @@include('./common/modules/rdochk-list.html', {
-                        "chk" : true,
-                        "name" : "chk01",
-                        "slt" : [
-                            { "checked" : "checked", "value": "시그니처 TV" },
-                            { "checked" : "", "value": "시그니처 냉장고" },
-                            { "checked" : "", "value": "시그니처 와인셀러" },
-                            { "checked" : "", "value": "시그니처 세탁기" },
-                            { "checked" : "", "value": "시그니처 에어컨" },
-                            { "checked" : "", "value": "시그니처 가습공기청정기" },
-                            { "checked" : "", "value": "TV" },
-                            { "checked" : "", "value": "냉장고" },
-                            { "checked" : "", "value": "김치냉장고" },
-                            { "checked" : "", "value": "워시타워" },
-                            { "checked" : "", "value": "세탁기" },
-                            { "checked" : "", "value": "건조기" },
-                            { "checked" : "", "value": "스타일러" },
-                            { "checked" : "", "value": "식기세척기" },
-                            { "checked" : "", "value": "전기레인지" },
-                            { "checked" : "", "value": "공기청정기" },
-                            { "checked" : "", "value": "정수기" },
-                            { "checked" : "", "value": "안마의자" },
-                            { "checked" : "", "value": "프라엘" },
-                            { "checked" : "", "value": "PC" },
-                            { "checked" : "", "value": "청소기" },
-                            { "checked" : "", "value": "에어컨" },
-                            { "checked" : "", "value": "맥주제조기" },
-                            { "checked" : "", "value": "두피관리기" },
-                            { "checked" : "", "value": "휴대폰(자급제)" },
-                            { "checked" : "", "value": "소형가전" },
-                            { "checked" : "", "value": "디오스빌트인" },
-                            { "checked" : "", "value": "SKS빌트인" }
-                        ]
-                    })
+                    <div class="input-info-sel">
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">시그니처</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk01",
+                            "slt" : [
+                                { "checked" : "checked", "value": "TV" },
+                                { "checked" : "", "value": "냉장고" },
+                                { "checked" : "", "value": "와인셀러" },
+                                { "checked" : "", "value": "세탁기" },
+                                { "checked" : "", "value": "에어컨" },
+                                { "checked" : "", "value": "가습공기청정기" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">오브제컬렉션</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk02",
+                            "slt" : [
+                                { "checked" : "", "value": "디오스" },
+                                { "checked" : "", "value": "김치냉장고" },
+                                { "checked" : "", "value": "컨버터블" },
+                                { "checked" : "", "value": "워시타워" },
+                                { "checked" : "", "value": "스타일러" },
+                                { "checked" : "", "value": "식기세척기" },
+                                { "checked" : "", "value": "광파오븐" },
+                                { "checked" : "", "value": "에어컨" },
+                                { "checked" : "", "value": "청소기" },
+                                { "checked" : "", "value": "정수기" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">TV/오디오</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk03",
+                            "slt" : [
+                                { "checked" : "", "value": "TV" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">PC</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk04",
+                            "slt" : [
+                                { "checked" : "", "value": "PC" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">주방가전</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk05",
+                            "slt" : [
+                                { "checked" : "", "value": "냉장고" },
+                                { "checked" : "", "value": "김치냉장고" },
+                                { "checked" : "", "value": "식기세척기" },
+                                { "checked" : "", "value": "전기레인지" },
+                                { "checked" : "", "value": "정수기" },
+                                { "checked" : "", "value": "맥주제조기" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">생활가전</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk06",
+                            "slt" : [
+                                { "checked" : "", "value": "워시타워" },
+                                { "checked" : "", "value": "세탁기" },
+                                { "checked" : "", "value": "건조기" },
+                                { "checked" : "", "value": "스타일러" },
+                                { "checked" : "", "value": "청소기" },
+                                { "checked" : "", "value": "안마의자" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">에어컨/에어케어</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk07",
+                            "slt" : [
+                                { "checked" : "", "value": "에어컨" },
+                                { "checked" : "", "value": "공기청정기" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">모바일</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk08",
+                            "slt" : [
+                                { "checked" : "", "value": "휴대폰(자급제)" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">뷰티/의료기기</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk09",
+                            "slt" : [
+                                { "checked" : "", "value": "프라엘" },
+                                { "checked" : "", "value": "두피관리기" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">빌트인</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk10",
+                            "slt" : [
+                                { "checked" : "", "value": "디오스" },
+                                { "checked" : "", "value": "SKS" }
+                            ]
+                        })
+                        <div class="tit-wrap">
+                            <h3 class="h3-tit">기타</h3>
+                        </div>
+                        @@include('./common/modules/rdochk-list.html', {
+                            "chk" : true,
+                            "name" : "chk11",
+                            "slt" : [
+                                { "checked" : "", "value": "소형가전" }
+                            ]
+                        })
+                    </div>
                 </div>
+                <!-- //210308 카테고리 분할 수정 -->
 
                 <div class="input-info">
                     <div class="tit-wrap">
