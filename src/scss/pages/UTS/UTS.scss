@@ -752,43 +752,6 @@
     }
 }
 
-
-.rounded-list {
-    font-size: 0;
-    li {
-        display: inline-block;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-    .rounded {
-        display: inline-block;
-        padding: 6px 12px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-        .text {
-            display: block;
-            @include font-small;
-        }
-    }
-    @include mobile {
-        //li {
-        //    display: block;
-        //    margin-right: 0;
-        //    margin-bottom: 6px;
-        //}
-        .rounded {
-            .text {
-                font-size: $font-small;
-                line-height: 22px;
-            }
-        }
-    }
-}
-
 @import "SERF9001";
 @import "SERF9003";
 @import "SERF9009";

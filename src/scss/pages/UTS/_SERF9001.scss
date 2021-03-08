@@ -1,3 +1,39 @@
+.rounded-list {
+    font-size: 0;
+    li {
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .rounded {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        .text {
+            display: block;
+            @include font-small;
+        }
+    }
+    @include mobile {
+        //li {
+        //    display: block;
+        //    margin-right: 0;
+        //    margin-bottom: 6px;
+        //}
+        .rounded {
+            .text {
+                font-size: $font-small;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
 .search-layer {
     //display: none;
     overflow-y: auto;
@@ -148,29 +184,29 @@
         //width: 100%;
         padding-top: 80px;
         @include pc {
+            margin: 0 -32px;
             > div {
                 flex: 1;
-                margin-right: 32px;
-                padding-right: 32px;
-                border-right: 1px solid $color-border;
-                &:last-child {
-                    margin-right: 0;
-                    padding-right: 0;
-                    border-right: none;
-                }
+                //margin-right: 32px;
+                padding: 0 32px;
+                //&:last-child {
+                    //margin-right: 0;
+                    //padding-right: 0;
+                    //border-right: none;
+                //}
             }
         }
         @include mobile {
             flex-direction: column;
             padding-top: 20px;
             > div {
-                margin-bottom: 32px;
-                padding-bottom: 32px;
-                border-bottom: 1px solid $color-border;
+                //margin-bottom: 32px;
+                padding-bottom: 60px;
+                //border-bottom: 1px solid $color-border;
                 &:last-child {
-                    margin-bottom: 0;
+                    //margin-bottom: 0;
                     padding-bottom: 0;
-                    border-bottom: none;
+                    //border-bottom: none;
                 }
             }
         }
@@ -320,6 +356,8 @@
                 @include textEllipsis;
             }
             .sku {
+                display: block;
+                @include textEllipsis;
                 color: $color-gray-1;
             }
             .price {
