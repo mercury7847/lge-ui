@@ -81,6 +81,8 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             //console.log("self.options.usedTabLink:", self.options.usedTabLink)
             if(self.options.usedTabLink){
                 self.$el.on('click', self.options.tabItem, function(e){
+                    e.preventDefault();
+                    
                     var idx = $(this).index();
                     if(idx != self.tabIndex){
                         self.tabIndex = idx;
