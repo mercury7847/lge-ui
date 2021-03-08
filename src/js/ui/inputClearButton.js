@@ -17,6 +17,9 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
             var target = self.$el.next().find(query).first();
             if(target.length < 1) {
                 target = self.$el.parent().find(query).first();
+                if(target.length < 1) {
+                    target = self.$el.parent().parent().find(query).first();
+                }
             }
             self.$clearButton = target;
 
