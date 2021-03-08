@@ -376,10 +376,10 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         }
                         
                     } else{
-
                         if(vcui.isObject(obj[key])){
                             $target.val(obj[key]['value']? obj[key]['value'] : '');
                         }else{
+                            console.log(key)
                             $target.val(obj[key]);
                         }
                         

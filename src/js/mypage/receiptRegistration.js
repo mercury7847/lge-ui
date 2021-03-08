@@ -142,6 +142,13 @@
                     var result = self.validation.validate();
                     if(result.success){
                         self.requestData(self.validation.getAllValues());
+                    } else {
+                        if(result.validArray && result.validArray.length > 0) {
+                            var item = result.validArray[0];
+                            if(item.errmsg) {
+                                lgkorUI.alert("", {title: item.errmsg});
+                            }
+                        }
                     }
                 })
             },

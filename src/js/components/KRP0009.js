@@ -48,6 +48,15 @@ $(window).ready(function(){
                 scrollMoved(id);
             });
 
+            $(window).on('changeCategory.KRP0009', function(e,data){
+                if(data){
+                    var $li = $items.filter('[data-link-name="'+data.linkName+'"]' );
+                    if($li.length > 0) {
+                        $li.find('a').text(data.title);
+                    }
+                }
+            });
+
             //jsw
             //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
             $(window).on('changeButton.KRP0009', function(e,data){
@@ -67,7 +76,7 @@ $(window).ready(function(){
             //$component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
-                $(window).trigger("sendExtraAction.KRP0009");
+                if(!$(this).hasClass("disabled")) $(window).trigger("sendExtraAction.KRP0009");
             })
         
             $(window).on('scroll.KRP0009', function(e){
