@@ -2410,7 +2410,7 @@ $.fn.serializeObject = function() {
             var $this = $(this);
             var _url = $this.data('href');
 
-            $this.removeAttr('target');
+            $this.removeAttr('target'); 
             window.open(_url);
             e.preventDefault();
         })
