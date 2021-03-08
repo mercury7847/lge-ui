@@ -183,7 +183,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
@@ -204,6 +203,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.shouldClick = true;
             self.$slider = $(element);
             self.$slidesCache = null;
+            self.slidesToShow = self.options.slidesToShow;
             self.transformType = null;
             self.transitionType = null;
             self.hidden = 'hidden';
@@ -236,7 +236,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             // Strict HTML recognition (must start with <)
             // Extracted from jQuery v1.11 source
             self.htmlExpr = REGEX_HTML;
-
 
             self.registerBreakpoints();
             self.init(true);
@@ -1402,6 +1401,13 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 self.triggerHandler(_N + 'init', [self, self.currentSlide]);
             }
 
+            /*
+            if(self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').length <= opt.slidesToShow){
+                self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').addClass(opt.activeClass);               
+            }
+            */
+
+
             if (opt.accessibility === true) {
                 self.initADA();
             }
@@ -2239,7 +2245,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (!self.unbuilded) {
                         self.setPosition();
                     }
-
 
                     self.triggerHandler(_N + 'resize', [self, self.currentSlide]);
 

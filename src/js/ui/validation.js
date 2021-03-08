@@ -347,7 +347,11 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if($target.is(':radio')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
                 } else if($target.is(':checkbox')){                    
-                    $target.filter('[name='+ key +']').prop('checked', obj[key]);
+
+                    //CS 제외
+                    if( !$('.contents.support').length ) {
+                        $target.filter('[name='+ key +']').prop('checked', obj[key]);
+                    }
                 }else{
                     if($target.is('select')){
 
