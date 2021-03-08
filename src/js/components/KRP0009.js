@@ -47,6 +47,12 @@ $(window).ready(function(){
                 var id = $(this).attr('href');
                 scrollMoved(id);
             });
+
+            $component.find("#extraBtn").on('click', function(e){
+                e.preventDefault();
+
+                $(window).trigger("sendExtraAction.KRP0009");
+            })
         
             $(window).on('scroll.KRP0009', function(e){
                 var scrolltop = $(window).scrollTop(); 

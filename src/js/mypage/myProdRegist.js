@@ -240,8 +240,7 @@
             self.$downloadDetailPage = self.$downloadPopup.find('div.page-change:eq(1)');
             self.$downloadSearch = self.$downloadMainPage.find('#driverKeyword');
             self.$selectOS = self.$downloadMainPage.find('.ui_selectbox');
-            console.log('asdasd');
-            self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination({"scrollTarget":self.$downloadMainPage.find('section'),"scrollTop":50});
+            self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination({"scrollTarget":self.$downloadMainPage.find('section'),"scrollTop":100});
 
             //모델병 확인방법 팝업
             //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
@@ -498,7 +497,7 @@
             //메뉴얼 더보기
             self.$manualMoreButton.on('click', function(e){
                 var _id = self.$manualPopup.attr('data-model-id');
-                var page = parseInt(self.$manualPopup.attr('data-count')) + 1;
+                var page = parseInt(self.$manualPopup.data('page')) + 1;
                 self.requestManualData(_id,page,true);
             });
 
