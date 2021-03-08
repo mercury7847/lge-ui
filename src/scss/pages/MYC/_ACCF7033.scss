@@ -500,3 +500,133 @@
         display:none !important;
     }
 }
+
+
+// ./support/product-support.scss 가져옴
+// 다운로드/SW 팝업
+.driver-section {
+    .keyword-search {
+        text-align:center;
+        .search-box {
+            display:inline-block;
+            position:relative;
+            width:443px;
+            text-align:left;
+            @include mobile {
+                display:block;
+                width:100%;
+            }
+        }
+        .search-input {
+            position:relative;
+            width:443px;
+            margin:0 auto;
+            text-align:left;
+            input[type=text] {
+                width:100%;
+                padding:11px 54px 11px 24px;
+                @include font-medium;
+                border-radius:24px;
+                border:0 none;
+                background:#fff;
+                box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                // text-transform:uppercase;
+            }
+            &.clear {
+                input[type=text] {
+                    padding-right:80px;
+                }
+            }
+
+            @include mobile {
+                width:100%;
+            }
+        }
+        .search-error {
+            display:none;
+            margin-top:6px;
+            color:#f00;
+            @include font-small;
+            vertical-align:top;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:20px;
+                height:20px;
+                margin:2px 4px 0 0;
+                background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
+                vertical-align:top;
+                @include mobile {
+                    margin-top:1px;
+                }
+            }
+        }
+        .search-desc {
+            margin-top:12px;
+            @include font-medium
+        }
+    }
+
+
+    .form-wrap {
+        margin-bottom:32px;
+        @include clearfix;
+        .forms {
+            float:left;
+            width:calc(50% - 12px);
+            & + .forms {
+                float:right;
+                margin:0;
+            }
+            .tit {
+                display:block;
+                width:100%;
+                margin-bottom:8px;
+                padding:0;
+                label {
+                    @include font-small;
+                    font-weight:500;
+                }
+            }
+            .conts {
+                display:block;
+                width:100%;
+            }
+        }
+    }
+    .tabs-wrap {
+        margin-bottom:12px;
+    }
+    .driver-inner-search {
+        margin-bottom:80px;
+        padding:32px;
+        background: #f4f4f4;
+        border-radius:8px;
+    }
+    @include mobile {
+        .form-wrap {
+            margin-bottom:52px;
+            .forms {
+                float:none;
+                width:100%;
+                & + .forms {
+                    float:none;
+                    margin-top:24px;
+                }
+                .tit {
+                    display:block;
+                    width:100%;
+                    margin-bottom:6px;
+                    padding:0;
+                }
+                .conts {
+                    display:block;
+                    width:100%;
+                }
+            }
+        }
+        .tabs-wrap {
+            margin-bottom:20px;
+        }
+    }
+}

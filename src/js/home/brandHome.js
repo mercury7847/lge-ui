@@ -319,7 +319,7 @@
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && touchSy - data.y < -80){
+                        if(st<=0 && touchSy - data.y < -80){
                             wheelScene(-1);
                         }
                     }, 100);
