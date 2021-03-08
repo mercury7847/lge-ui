@@ -28,7 +28,7 @@
                     var _type = $item.attr('data-type');
                     if(_type == "r-top" && !(!modelID)) {
                         //console.log("### KRP0006 setting(); ###", _typem, modelID )
-                        lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,modelID);
+                        lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,modelID,lgkorUI.MAX_SAVE_RECENT_PRODUCT);
                     }
             
                     if(self.firstLoad && !(!ajaxUrl)){

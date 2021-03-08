@@ -451,5 +451,8 @@
     & > .btn:not(:first-child) {
         border-radius: 26px;
     }
+    & {
+        position:initial;
+    }
 }
 
