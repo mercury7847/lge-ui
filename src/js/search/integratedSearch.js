@@ -12,7 +12,7 @@
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     //제품미리보기
     var previewItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
+        '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></div>' +
         '<div class="info">' +
             '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span>' +
             '<span class="price"{{#if !obsFlag}} style="visibility: hidden;"{{/if}}>{{price}}원</span>' +

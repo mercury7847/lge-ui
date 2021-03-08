@@ -818,6 +818,13 @@
                 }
                 .btn-area {
                     margin-top: 24px;
+                    .btn {
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            color: $color-white;
+                        }
+                    }
                 }
                 @include mobile {
                     position: absolute;

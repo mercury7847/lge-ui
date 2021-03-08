@@ -261,8 +261,9 @@
             border-color: $color-white !important;
             color: $color-white;
             &:hover,
-            &:focus {
-                border-color: $color-white;
+            &:focus,
+            &:active {
+                border-color: $color-primary !important;
                 color: $color-white;
             }
         }
