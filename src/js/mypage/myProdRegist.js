@@ -497,7 +497,7 @@
             //메뉴얼 더보기
             self.$manualMoreButton.on('click', function(e){
                 var _id = self.$manualPopup.attr('data-model-id');
-                var page = parseInt(self.$manualPopup.attr('data-count')) + 1;
+                var page = parseInt(self.$manualPopup.data('page')) + 1;
                 self.requestManualData(_id,page,true);
             });
 
