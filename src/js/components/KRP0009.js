@@ -48,7 +48,32 @@ $(window).ready(function(){
                 scrollMoved(id);
             });
 
-            $component.find("#extraBtn").on('click', function(e){
+            $(window).on('changeCategory.KRP0009', function(e,data){
+                if(data){
+                    var $li = $items.filter('[data-link-name="'+data.linkName+'"]' );
+                    if($li.length > 0) {
+                        $li.find('a').text(data.title);
+                    }
+                }
+            });
+
+            //jsw
+            //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
+            $(window).on('changeButton.KRP0009', function(e,data){
+                var btn = $component.find("a.extra-menu");
+                //var btn = $component.find("#extraBtn");
+                if(data) {
+                    btn.find('span').text(data.title);
+                    if(data.disabled) {
+                        btn.addClass('disabled');
+                    } else {
+                        btn.removeClass('disabled')
+                    }
+                }
+            });
+
+            $component.find("a.extra-menu").on('click', function(e){
+            //$component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
                 if(!$(this).hasClass("disabled")) $(window).trigger("sendExtraAction.KRP0009");
@@ -118,7 +143,7 @@ $(window).ready(function(){
         }
 
         function setSubStickyStatus(){
-            console.log("setSubStickyStatus:", selectIdx);
+            //console.log("setSubStickyStatus:", selectIdx);
             var chk = false;
             // if(selectIdx < 0){
             //     if(prevIdx < 1) chk = true;
@@ -133,7 +158,7 @@ $(window).ready(function(){
         function scrollMoved(id){
             if($(id).length){
                 var compheight = $component.height();
-                console.log("compheight:", compheight)
+                //console.log("compheight:", compheight)
 
                 var firstId = $items.eq(0).find('a').attr('href');
                 if(id == firstId) compheight = 72;
