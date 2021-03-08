@@ -1617,7 +1617,7 @@
                         "productImg": compareData.productImg,
                         "productAlt": compareData.productAlt
                     }
-
+                    console.log(compareData,compareId);
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
                         $dm.prop('checked', false);
