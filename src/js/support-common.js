@@ -2116,7 +2116,7 @@ CS.MD.quickMenu = function() {
                 if (data.isMobile) {
                     $('.history-btn:first-child').off('click').on('click', function(e) {
                         if (!$('.history-list').hasClass('on')) {
-                            e.preventDefault();
+                            // e.preventDefault();
                             $('.history-list').addClass('on');
                             self.$menuBtn.parent().removeClass('on');
                         }
