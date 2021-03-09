@@ -22,9 +22,11 @@
             font-size: 34px;
             line-height: 44px;
             .btn-group {
-                margin-top: 32px;
+                display: flex;
+                flex-direction: column;
+                margin-top: 24px;
                 .btn.border {
-                    display: block;
+                    width: auto;
                     margin: 8px auto 0;
                 }
             }
