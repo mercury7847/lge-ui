@@ -802,6 +802,67 @@ var isApp = function(){
             return returnValue;
         },
 
+        //만료기간을 가진 스토리지 저장
+        setExipreStorage: function(key, value, expireTime){
+            var storage = sessionStorage.getItem(key);
+            var storageData = storage? JSON.parse(storage) : {};        
+            //Internet Explorer 불가
+            //storageData = Object.assign(storageData, value);
+
+            var cookieExpire = new Date();
+            cookieExpire.setDate(cookieExpire.getDate() + days);
+            var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
+
+            value += ("&&&" + expireDateString);
+
+            $.extend(storageData, value);
+            sessionStorage.setItem(key, JSON.stringify(storageData));
+
+            console.log("### setStorage ###", storageData)
+            //$(window).trigger("changeStorageData");
+
+            return storageData;
+        },
+
+        getExipreStorage: function(key){							
+            var storage = sessionStorage.getItem(key); 
+            if(storage){
+                var i = JSON.parse(storage);
+                
+                var index = !i ? -1 : i.indexOf("&&&");
+                if(index != -1) {
+                    var checkExpire = new Date();
+
+                    var arr = i.split('&&&');
+                    if(arr.length > 1) {
+                        var value = arr[0];
+                        var date = arr[1];
+
+                        var year = date.substring(0, 4);
+                        var month = date.substring(4, 6);
+                        var day = date.substring(6, 8);
+                        var hour = date.substring(8, 10);
+                        var minute = date.substring(10, 12);
+                        var second = date.substring(12, 14);
+                        var expire = new Date(year, month-1, day, hour, minute, second);
+                        var res = vcui.date.compare(checkExpire,expire);
+                        if(res != 1) {
+                            //날짜 지남
+                            self.removeStorage(key,null);
+                            return null;
+                        } else {
+                            return value;
+                        }
+                     } else {
+                         return i;
+                     }
+                }
+            } else {
+                return null;
+            }
+        },
+
+        //쿠키
         setCookie: function(cookieName, cookieValue, deleteCookie) {
             var cookieExpire = new Date();
             if(deleteCookie) {
