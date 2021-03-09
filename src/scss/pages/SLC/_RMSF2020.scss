@@ -290,10 +290,13 @@
         .select-button {
             display: block;
             position: relative;
-            padding: 10px 48px 10px 15px;
             border: 1px solid $color-border;
             border-radius: 8px;
             background: $color-bg-wt;
+            a {
+                display:block;
+                padding: 10px 48px 10px 15px;
+            }
             @include font-medium;
             .ui_dropdown_toggle {
                 &:after {

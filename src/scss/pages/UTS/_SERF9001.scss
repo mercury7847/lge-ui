@@ -72,8 +72,8 @@
 
     .inner {
         max-width: (1146px + 80px);
-        margin: 180px auto;
-        padding: 0 40px;
+        margin: 0 auto;
+        padding: 180px 40px;
     }
 
     .input-keyword-wrap {
@@ -123,7 +123,7 @@
     }
 
     @include mobile {
-        margin-top: 72px + 88px;
+        min-height: auto !important;
         &:before {
             position: fixed;
             top: 0;
@@ -143,8 +143,8 @@
 
         .inner {
             max-width: 100%;
-            margin: 0 auto 60px;
-            padding: 0 16px;
+            margin: 0;
+            padding: (72px + 88px) 16px 60px;
         }
 
         .input-keyword-wrap {

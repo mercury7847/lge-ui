@@ -164,6 +164,9 @@
     
     .img_box {
         margin-top: 24px;
+        &.pc-pop-only {
+            display: none;
+        }
         img {
             max-width: 100%;
         }

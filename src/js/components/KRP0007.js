@@ -71,7 +71,7 @@
                 '<div class="product-name">' +
                     '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
+                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
                     '<div class="review-info">' +
                         // '{{#if salesModelCode}}' +
                         // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
