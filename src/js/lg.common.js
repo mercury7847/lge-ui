@@ -54,7 +54,8 @@ var isApp = function(){
                             'ui/lazyLoader',
                             "ui/videoBox",
                             "ui/youtubeBox",
-                            "ui/imageSwitch",
+                            //"ui/imageSwitch",
+                            'ui/lazyLoaderSwitch',
                             "ui/dropdown",
                             "ui/textControl",
                             "ui/fileInput",
@@ -71,8 +72,10 @@ var isApp = function(){
         ], function () {    
             console.log("buildCommonUI!!!!");
             
-            this.vcImageSwitch();
+            this.vcLazyLoaderSwitch();
+            //this.vcImageSwitch();
             this.vcLazyLoader();
+
     
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
@@ -312,7 +315,8 @@ var isApp = function(){
                 'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch", 
+                "ui/imageSwitch",
+                'ui/lazyLoaderSwitch',
                 "ui/textControl",
                 "ui/fileInput",
                 "ui/radioShowHide",
