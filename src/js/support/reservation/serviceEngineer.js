@@ -783,7 +783,50 @@
 
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
-                self.$engineerSlider.vcCarousel('resize');
+                var url = self.$engineerPopup.data('engineerListUrl'),
+                    param;
+
+                var productCode = $('#productCode').val();
+
+                if ($('[name=bdType]:checked').val() == 4) {
+                    productCode = 'CRB';
+                }
+
+                param = {
+                    serviceType: $('#serviceType').val(),
+                    category: $('#category').val(),
+                    subCategory: $('#subCategory').val(),
+                    lockUserId: $('#lockUserId').val(),
+                    zipCode: $('#zipCode').val(),
+                    userAddress: $('#userAddress').val(),
+                    detailAddress: $('#detailAddress').val(),
+                    productCode: productCode,
+                    date: $('#date').val(),
+                    time: $('#time').val()
+                }
+
+                param = $.extend(param, self.dateParam);
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        arr = data.engineerList instanceof Array ? data.engineerList : []; 
+
+                    if (data.resultFlag == 'Y') {  
+                        if (arr.length) {
+                            var html = vcui.template(engineerTmpl, data);
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            self.$engineerSlider.vcCarousel('reinit');
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+
+                    lgkorUI.hideLoading();
+                });
             });
 
             // 엔지니어 선택

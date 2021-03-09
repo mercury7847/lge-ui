@@ -995,8 +995,14 @@ var isApp = function(){
             itemArray = itemArray.slice(0,maxLength);
 
             items = itemArray.join('|');
-            console.log('saved',items.length);
             self.setCookie(cookieName, items);
+
+            /*
+            console.log('saved',itemArray.length);
+            var test = self.getCookie(cookieName);
+            var searchedList = test.split('|');
+            console.log(searchedList);
+            */
         },
 
         removeCookieArrayValue: function(cookieName, removeData) {

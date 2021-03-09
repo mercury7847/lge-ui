@@ -18,11 +18,13 @@
                 '<div class="result-detail">' +
                     '<div class="sku">{{sku}}</div>' +
                     '<div class="review-info">' +
+                        '{{#if review > 0}}' +
                         '<a href="{{url}}">' +
-                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                         '</a>' +
+                        '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
                         '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +

@@ -16,12 +16,6 @@
         float: left;
         input + label {
             @include font-small;
-            &:before {
-                top:3px;
-            }
-            &:after {
-                top:9px;
-            }
         }
     }
     .btn-area {
@@ -30,6 +24,12 @@
 
     @include mobile {
         padding-top: 40px;
+    }
+}
+
+.order-item .product-payment {
+    .amount {
+        padding-right: 0;
     }
 }
 

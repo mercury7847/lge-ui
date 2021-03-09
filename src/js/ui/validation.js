@@ -379,7 +379,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         if(vcui.isObject(obj[key])){
                             $target.val(obj[key]['value']? obj[key]['value'] : '');
                         }else{
-                            console.log(key)
                             $target.val(obj[key]);
                         }
                         
@@ -392,6 +391,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             },0);
         },
 
+        /*
         _setCheckValidate : function _setCheckValidate(flag){
 
             var self = this;
@@ -423,59 +423,144 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             return rObj;
 
         },
+        */
 
-        validate : function validate(){
+        _setCheckValidate : function _setCheckValidate(flag, targetArr){
             var self = this;
-            var rObj = self._setCheckValidate();
+            var rObj = {};
+            var $target, val, key, obj;
+            var nameArr = targetArr ? targetArr : self.nameArr;
+            
+            for(var i=0;i<nameArr.length; i++){
+                key = nameArr[i];
+                obj = self.register[key];
 
-            var firstName = vcui.object.keys(rObj)[0];
-            if(firstName){
-                var $first = self.$el.find('[name='+ firstName +']');
+                if(obj && obj.required){
+                    $target = self.$el.find('[name='+ key +']');
+                    if($target.is(':checkbox') || $target.is(':radio')){
+                        var nArr = [];
+                        $target.filter(':checked').each(function(idx, item){   
+                            nArr.push($(item).val())
+                        });
+                        
+                        val = $target.is(':radio')? nArr[0] : nArr;
+                        if(val==='on') val = '';
 
-                if($first.is(':radio') || $first.is(':checkbox')){
-                    var $checked =self.$el.find('[name='+ firstName +']:checked');
-                    if($checked.length>0){
-                        $checked.focus();
                     }else{
-                        $first.eq(0).focus();
+                        val = $target.val();
                     }
-                    
-                }else{
-                    $first.focus();
-                }         
-                
-                if($first.hasClass('ui_selectbox')) {
-                    $first.vcSelectbox('focus');
+                    rObj = self._checkValidate(key, obj, val, rObj, flag);
+                }
+            }
+
+            return rObj;
+        },
+
+        validate : function validate(targetArr){
+            var self = this;
+            var rObj = (targetArr && targetArr.length > 0) ? self._setCheckValidate(false, targetArr) : self._setCheckValidate();;
+
+            if(targetArr && targetArr.length > 0) {
+                var firstName = vcui.object.keys(rObj)[0];
+                if(firstName){
+                    var $first = self.$el.find('[name='+ firstName +']');
+
+                    if($first.is(':radio') || $first.is(':checkbox')){
+                        var $checked =self.$el.find('[name='+ firstName +']:checked');
+                        if($checked.length>0){
+                            $checked.focus();
+                        }else{
+                            $first.eq(0).focus();
+                        }
+                        
+                    }else{
+                        if ($first.is(':hidden')) {
+                            $first.parent().attr('tabindex', 0).focus().removeAttr('tabindex');
+                        } else {
+                            $first.focus();
+                        }
+                    }    
+                    if($first.hasClass('ui_selectbox')) {
+                        $first.vcSelectbox('focus');
+                    }            
+                    self.triggerHandler('nextfocus', [$first]);
                 }
 
-                self.triggerHandler('nextfocus', [$first]);
+                self.validItemObj = rObj;
+
+                var isSuccess = false;
+                if(vcui.isEmpty(rObj)){
+                    isSuccess = true;
+                    self.triggerHandler('success');
+                }else{
+                    self.triggerHandler('validerror', [self.validItemObj]);
+                }
+                self._swicthErrorMsg(self.validItemObj, targetArr);
+
+                var arr = [];
+                for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
+                arr.sort(function(a, b){
+                    var ipta = self.$el.find('[name='+a.key+']').parent().offset().top;
+                    var iptb = self.$el.find('[name='+b.key+']').parent().offset().top;
+
+                    return ipta - iptb;
+                });
+                
+                return {
+                    success: isSuccess,
+                    validItem: self.validItemObj,
+                    validArray: arr
+                };
+            } else {
+                var firstName = vcui.object.keys(rObj)[0];
+                if(firstName){
+                    var $first = self.$el.find('[name='+ firstName +']');
+
+                    if($first.is(':radio') || $first.is(':checkbox')){
+                        var $checked =self.$el.find('[name='+ firstName +']:checked');
+                        if($checked.length>0){
+                            $checked.focus();
+                        }else{
+                            $first.eq(0).focus();
+                        }
+                        
+                    }else{
+                        $first.focus();
+                    }         
+                    
+                    if($first.hasClass('ui_selectbox')) {
+                        $first.vcSelectbox('focus');
+                    }
+
+                    self.triggerHandler('nextfocus', [$first]);
+                }
+
+                self.validItemObj = rObj;
+
+                var isSuccess = false;
+                if(vcui.isEmpty(rObj)){
+                    isSuccess = true;
+                    self.triggerHandler('success');
+                }else{
+                    self.triggerHandler('validerror', [self.validItemObj]);
+                }
+                self._swicthErrorMsg(self.validItemObj);
+
+                var arr = [];
+                for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
+                arr.sort(function(a, b){
+                    var ipta = self.$el.find('[name='+a.key+']').parent().offset().top;
+                    var iptb = self.$el.find('[name='+b.key+']').parent().offset().top;
+
+                    return ipta - iptb;
+                });
+                
+                return {
+                    success: isSuccess,
+                    validItem: self.validItemObj,
+                    validArray: arr
+                };
             }
-
-            self.validItemObj = rObj;
-
-            var isSuccess = false;
-            if(vcui.isEmpty(rObj)){
-                isSuccess = true;
-                self.triggerHandler('success');
-            }else{
-                self.triggerHandler('validerror', [self.validItemObj]);
-            }
-            self._swicthErrorMsg(self.validItemObj);
-
-            var arr = [];
-            for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
-            arr.sort(function(a, b){
-                var ipta = self.$el.find('[name='+a.key+']').parent().offset().top;
-                var iptb = self.$el.find('[name='+b.key+']').parent().offset().top;
-
-                return ipta - iptb;
-            });
-            
-            return {
-                success: isSuccess,
-                validItem: self.validItemObj,
-                validArray: arr
-            };
         },
 
         _swicthErrorMsg : function _swicthErrorMsg(obj){
@@ -729,7 +814,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     }
                 }
             }
-
             return rObj;
 
         },
