@@ -14,10 +14,10 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             selector: "",
             mode: 'vertical',
             container: 'window',
-            dataAttribute: 'data-src',
+            //dataAttribute: 'data-src',
             pc_prefix: "pc",
             mobile_prefix: "m",
-            useFade: true
+            useFade: false
         },
 
         initialize: function initialize(el, options) {
@@ -30,12 +30,12 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector +" img[data-pc-src],img[data-m-src]");
+            self.$items = $(self.options.selector +"img[data-pc-src],img[data-m-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
-
             self._bindEvents();
-            $(window).trigger('addResizeCallback', self._action());
+            //self._action();
+            //$(window).trigger('addResizeCallback', self._action());
         },
 
         _bindEvents: function _bindEvents() {
@@ -44,6 +44,10 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
+
+            $(window).on('resize' + self.eventNS, function(e){
+                self._resize();
+            });
         },
 
         _getContainerSize: function _getContainerSize() {
@@ -66,7 +70,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
                     if (scrollValue + self.options.range + self._getContainerSize() >= pos) {
                         if (self.options.useFade) {
-                            //$el.css('opacity', 0);
+                            $el.css('opacity', 0);
                         }
                         self._loadImage($el, function () {
                             if (self.options.useFade) {
@@ -86,18 +90,9 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 self.$con.off(self.eventNS);
             }
         },
+        /*
         _loadImage: function _loadImage($img, cb) {
-            var self = this,
-                mode, winwidth;
-
-            winwidth = $(window).outerWidth(true);
-            if(winwidth > 767) mode = self.options.pc_prefix;
-            else mode = self.options.mobile_prefix;
-            if(self.mode != mode) self._changeImage(mode);
-
-
-
-            var src = $img.attr('data-src');
+            var src = $img.attr('data-pc-src');
             $img.attr("src", src);
             if ($img[0].complete) {
                 cb.call($img);
@@ -105,46 +100,82 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 $img.one('load', cb);
             }
         },
+        */
 
-        _changeImage: function(mode){
+        _resize: function(){
+            var self = this,
+                mode, winwidth;
+
+            winwidth = $(window).outerWidth(true);
+            if(winwidth > 767) mode = self.options.pc_prefix;
+            else mode = self.options.mobile_prefix;
+            if(self.mode != mode) {
+                self.mode = mode;
+                var $items = $(self.options.selector +"img[data-current-image][data-pc-src][data-m-src]");
+                console.log($items.length);
+                $items.each(function(idx,item){
+                    var $img = $(item);
+                    var src = $img.attr('data-' + mode + '-src');
+                    var currentImage = $img.attr('data-current-image');
+                    if(src && src != currentImage) {
+                        $img.attr("src", src);
+                        $img.attr('data-current-image',src);
+                    }
+                });
+            }
+        },
+
+        _loadImage: function _loadImage($img, cb) {
             var self = this;
-            
-            self.mode = mode;
-            //self.mode = "m";
-            /*
-            self.$el.find('.ui_bg_switch').each(function(idx, item){
-                var imgsrc = item.dataset[(self.mode + "Src")];
-                if(imgsrc && item.dataset.backgroundImage != imgsrc) {
-                    item.style.backgroundImage = 'url(' + imgsrc + ')';
-                    item.dataset.backgroundImage = imgsrc;
-                }
-            });
-            */
+            var mode, winwidth;
 
-            self.$items.each(function(idx, item){
-                /*
-                var imgsrc = $(item).attr("data-" + self.mode + "-src");
-                if(!imgsrc) {
-                    imgsrc = $(item).attr('data-pc-src');
+            winwidth = $(window).outerWidth(true);
+            (winwidth > 767) ? mode = self.options.pc_prefix : mode = self.options.mobile_prefix;
+
+            //if(self.mode != mode) {
+                //self.mode = mode;
+                var src = $img.attr('data-' + mode + '-src');
+                var currentImage = $img.attr('data-current-image');
+                if(src && src != currentImage) {
+                    $img.attr("src", src);
+                    $img.attr('data-current-image',src);
+                    if ($img[0].complete) {
+                        cb.call($img);
+                    } else {
+                    $img.one('load', cb);
+                    }
                 }
-                $(item).attr('src', imgsrc);
-                */
+                // $img.attr("src", src);
+                // if ($img[0].complete) {
+                //     cb.call($img);
+                // } else {
+                //     $img.one('load', cb);
+                // }
+                /*
                 var imgsrc = item.dataset[(self.mode + "Src")];
-                //imgsrc += '?test=test2';
-                //var test = imgsrc.substring(imgsrc.lastIndexOf('/') + 1);
-                //console.log(test);
-                //console.log(self.mode + "Src",imgsrc,item.src);
                 if(imgsrc && imgsrc != item.dataset.currentImage) {
                     item.dataset.currentImage = imgsrc;
+                    item.src = imgsrc;
                     var $img = $(item);
+                    console.log(self.$items);
                     if ($img[0].complete) {
                         cb.call($img);
                     } else {
                         $img.one('load', cb);
                     }
                 }
-            })
-        },
+                */
+            //}
+            /*
+            var src = $img.attr('data-src');
+            $img.attr("src", src);
+            if ($img[0].complete) {
+                cb.call($img);
+            } else {
+                $img.one('load', cb);
+            }
+            */
+        }
     });
 
     return LazyLoader;
