@@ -228,7 +228,7 @@
             @include font-small;
             &:disabled {
                 background:#f4f4f4;
-                border-color:#ddd;
+                border-color:#ddd !important;
                 color:#aaa;
             }
             &.size {
