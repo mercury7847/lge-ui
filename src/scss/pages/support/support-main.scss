@@ -2673,7 +2673,7 @@
         }
 
         @include pc-size-m {
-            height:480px
+            height:420px
         }
 
         @include tablet {
@@ -2682,6 +2682,12 @@
                     .indi-wrap {
                         bottom:0;
                     }
+                }
+            }
+
+            .support-toggle-list-wrap {
+                .support-list {
+                    padding:60px 0;
                 }
             }
         }
