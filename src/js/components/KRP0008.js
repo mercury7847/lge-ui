@@ -1411,15 +1411,19 @@
                 var param = {
                     modelId: sendData.modelId
                 }
+                /*
                 if(!ajaxUrl) {
                     //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
                     ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
                 }
+                */
                 if(ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                         var data = result.data[0];
                         //로그인
                         loginFlag = data.loginFlag;
+                        //리뷰수
+                        
                         //보유멤버쉽 포인트
                         //var myMembershipPoint = data.myMembershipPoint;
                         
