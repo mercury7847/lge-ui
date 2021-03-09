@@ -63,6 +63,7 @@ $(window).ready(function(){
                 setCompareStatus();
             }).on("excessiveCompareStorage", function(){
                 addToastAlert('excessive');
+                updateCompareButton();
             });
         }
         function setCompares(){         
@@ -70,7 +71,7 @@ $(window).ready(function(){
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var isCompare = vcui.isEmpty(storageCompare);
             if(!isCompare){
-                console.log("### storageCompare ###", storageCompare)
+                //console.log("### storageCompare ###", storageCompare)
                 if(!vcui.isEmpty(storageCompare)){
                     var ids = vcui.array.map(storageCompare, function(item){
                         return item.id;
@@ -78,10 +79,10 @@ $(window).ready(function(){
                     
                     if(compareIds != ids){
                         compareIds = ids;
-                        console.log("### setCompares render ###", compareIds)
+                        //console.log("### setCompares render ###", compareIds)
                         $('.sticy-compare .list-inner li').empty();
                         for(i in storageCompare){
-                            console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
+                            //console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
                             list = $('.sticy-compare .list-inner li').eq(i);                    
                             listItem = vcui.template(itemTemplate, storageCompare[i]);
                             list.html(listItem);
@@ -93,10 +94,10 @@ $(window).ready(function(){
             var leng = !storageCompare ? "0" : storageCompare.length;
             var $count = $('div.compare-title div.count');
             $count.text(leng + "/" + lgkorUI.getCompareLimit());
+            updateCompareButton();
         }
 
         function setCompareStatus(){
-            console.log("setCompareStatus~~");
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var leng = !storageCompare ? 0 : storageCompare.length;
@@ -170,6 +171,15 @@ $(window).ready(function(){
         function setClearCompare(){
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
             lgkorUI.initCompareProd(categoryId);
+        }
+
+        function updateCompareButton() {
+            var count = $('.compare-list .list-inner li>.item-inner').length;
+            if(count > 1) {
+                $('.btn-compare').prop('disabled',false);
+            } else {
+                $('.btn-compare').prop('disabled',true);
+            }
         }
 
         init();
