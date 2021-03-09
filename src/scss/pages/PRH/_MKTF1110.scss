@@ -82,11 +82,12 @@
                     font-weight: 700;
                     font-size: 56px;
                     line-height: 72px;
-                    color: #000;
+                    color: #fff;
                 }
                 .cont2 {
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     margin-top: 24px;
+                    color:#fff;
                     font-weight: 700;
                     font-size: $font-large-1;
                     line-height: 30px;
@@ -169,6 +170,7 @@
                 }
                 .cont1 {
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    color:#fff;
                     font-weight: 700;
                     font-size: 56px;
                     line-height: 72px;
@@ -176,6 +178,7 @@
                 .cont2 {
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     margin-top: 24px;
+                    color:#fff;
                     font-weight: 700;
                     @include font(20px,30px);
                 }
