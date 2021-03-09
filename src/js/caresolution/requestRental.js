@@ -874,7 +874,7 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, {}, function(result){
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });

@@ -40,10 +40,24 @@
     &.stage-wide {
         max-width:1600px;
         margin:0 auto;
+        .usp-banner-wrap {
+            .carousel-box {
+                .text-area {
+                    padding:0 110px;
+                }
+            }
+        }
     }
     &.stage-medium {
         max-width:1380px + 80px;
         margin:0 auto;
+        .usp-banner-wrap {
+            .carousel-box {
+                .text-area {
+                    padding:0 80px;
+                }
+            }
+        }
     }
     
     // .component-box {
@@ -91,7 +105,7 @@
 				transform:translateX(-50%);
 				z-index:1;
 				width:100%;
-				max-width:1380px + 160px;
+				max-width:1380px + 220px;
                 margin:0 auto;
                 padding:0 80px;
 

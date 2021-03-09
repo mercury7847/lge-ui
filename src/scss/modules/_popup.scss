@@ -207,6 +207,9 @@
             overflow:hidden;
             text-overflow:ellipsis;
             word-break:keep-all;
+            br {
+                display: none;
+            }
         }
         @include mobile {
             margin:0 16px;

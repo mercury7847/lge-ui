@@ -33,7 +33,7 @@ $(window).ready(function(){
 							'</div>' +
 							'{{/if}}'+	
 						'</div>' +
-						'{{#if item.checkBtnFlag}}'+
+						'{{#if item.buyBtnFlag == "Y" && item.obsBtnRule != "disable"}}'+
 						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +

@@ -20,6 +20,7 @@
             &.item-type2 {
                 min-height: 200px;
                 @include mobile {
+                    display: block;
                     min-height: 139px;
                     //padding: 28px 24px;
                 }
@@ -132,8 +133,7 @@
             justify-content: space-between;
             align-items: center;
             @include mobile {
-                flex-direction: column;
-                align-items: flex-start;
+                display: block;
                 .info-text {
                     min-height: 110px;
                     padding-left: 130px;
@@ -616,8 +616,7 @@
             background-size: 100% 100%;
 
             @include mobile {
-                flex: auto;
-                align-self: flex-end;
+                float: right;
                 width: 32px;
                 height: 32px;
                 margin-top: 24px;

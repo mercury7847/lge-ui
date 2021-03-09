@@ -64,8 +64,8 @@
                 '{{/each}}'+
             '{{/if}}'+
             '<div class="flag-wrap bar-type">' +
-                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
+                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +

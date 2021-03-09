@@ -447,6 +447,7 @@
 
     //히어로 or 제품 지원 영역 상단
     .home-cont-top {
+        display: none;
         position: absolute;
         top:48px; 
         left:0;
@@ -2662,10 +2663,6 @@
         box-sizing: border-box;
         background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
 
-        .home-cont-top {
-            display: none;
-        }
-
         .support-toggle-list-wrap {
             .support-list ul > li a:hover {
                 color:#8d71ec;
@@ -2673,7 +2670,7 @@
         }
 
         @include pc-size-m {
-            height:480px
+            height:420px
         }
 
         @include tablet {
@@ -2682,6 +2679,12 @@
                     .indi-wrap {
                         bottom:0;
                     }
+                }
+            }
+
+            .support-toggle-list-wrap {
+                .support-list {
+                    padding:60px 0;
                 }
             }
         }
