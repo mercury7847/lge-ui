@@ -85,15 +85,15 @@
             }
         }
 
-        .input-sch {
-            input.txt {
-                &:focus {
-                    outline: none;
-                    border-bottom: 2px solid transparent;
-                    background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
-                }
-            }
-        }
+        //.input-sch {
+        //    input.txt {
+        //        &:focus {
+        //            outline: none;
+        //            border-bottom: 2px solid transparent;
+        //            background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
+        //        }
+        //    }
+        //}
 
         .search-similar {
             margin-top: 64px;
