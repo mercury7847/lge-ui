@@ -107,8 +107,9 @@
             requestRemove: function($dm) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-remove-url');
+                var _id = $dm.attr('data-id');
                 var param = {
-                    "id":$dm.attr('data-id'),
+                    "id":_id,
                     "sku":$dm.attr('data-sku'),
                     //"wishListId":$dm.attr('data-wishListId'),
                     //"wishItemId":$dm.attr('data-wishItemId'),
@@ -121,11 +122,11 @@
                         var data = result.data;
                         var success = lgkorUI.stringToBool(data.success);
                         if (success) {
+                            lgkorUI.removeCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME, _id);
                             self.requestData();
                         }
                     });
                 }};
-                //var desc = '삭제시 최근 본 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>최근 본 제품에서 삭제하시겠어요?';
                 lgkorUI.confirm(null, obj);
             },
 
