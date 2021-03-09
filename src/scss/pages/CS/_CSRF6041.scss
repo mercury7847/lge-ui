@@ -444,7 +444,7 @@
                         font-weight: $font-weight-bold;
                         @include mobile {
                             display:block;
-                            padding:56px 0 0 0;
+                            padding:72px 0 0 0;
                             text-align: left;
                         }
                         
@@ -454,12 +454,12 @@
                             position:absolute;
                             top:50%;
                             left:0;
-                            width:48px;
-                            height:48px;
+                            width:64px;
+                            height:64px;
                             -webkit-transform:translateY(-50%);
                             transform:translateY(-50%);
-                            background:url('/lg5-common/images/icons/icon-12-80.svg') no-repeat;
-                            background-size:48px 48px;
+                            background:url('/lg5-common/images/icons/img-evaluation-64.svg') no-repeat;
+                            background-size:64px 64px;
                             @include mobile {
                                 top:0;
                                 left: 50%;
