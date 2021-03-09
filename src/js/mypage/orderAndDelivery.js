@@ -1484,6 +1484,8 @@
             console.log("### getPopOrderData complete", result)
             lgkorUI.hideLoading();
 
+            if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) result.data.listData = [result.data.listData];
+
             PRICE_INFO_DATA = [];
             POP_PROD_DATA = [];
             var popup;

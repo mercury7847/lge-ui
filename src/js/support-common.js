@@ -604,7 +604,12 @@ CS.MD.commonModel = function() {
             self._initMyProduct();
             self._initStepTerms();
             
-            if (self.isModel && !self.isPrivacy) self.$el.trigger('complete', [self.selected, self.resultUrl, true]);
+            if (self.isModel && !self.isPrivacy) {
+                if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
+                    self.$el.find('#isMyProduct').val('Y');
+                }
+                self.$el.trigger('complete', [self.selected, self.resultUrl, true]);
+            }
         },
         _bindEvent: function() {
             var self = this;
@@ -642,6 +647,9 @@ CS.MD.commonModel = function() {
 
                 self.$selectedModelBar.show();
                 if (self.isDefault) {
+                    if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
+                        self.$el.find('#isMyProduct').val('Y');
+                    }
                     self.$el.trigger('complete', [self.selected, self.resultUrl]);
                 } else {
                     self.$myModelArea.show();
@@ -883,7 +891,10 @@ CS.MD.commonModel = function() {
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
                 self.$el.find('#modelCode').val(data.modelCode);
                 self.$el.find('#productCode').val(data.productCode);
-                self.$el.find('#isMyProduct').val('N');
+                
+                if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
+                    self.$el.find('#isMyProduct').val('Y');
+                }
 
                 if (data.salesModelCode && self.$el.find('#salesModelCode').length) {
                     self.$el.find('#salesModelCode').val(data.salesModelCode);
@@ -1126,6 +1137,9 @@ CS.MD.commonModel = function() {
                 
                 if (result.success) {
                     if (self.isModel) {
+                        if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
+                            self.$el.find('#isMyProduct').val('Y');
+                        }
                         self.$el.trigger('complete', [self.selected, self.resultUrl]);
                     } else {
                         self.$myModelArea.show();

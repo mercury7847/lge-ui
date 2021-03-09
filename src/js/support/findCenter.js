@@ -670,6 +670,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                 if($(window).width() < 1025) {
                     if(toggle.hasClass('map')){
                         var maptop = self.$defaultListContainer.position().top;
+                        self.$mapContainer.css({
+                            marginLeft : 0
+                        })
+                        self.$map.resize(window.innerWidth, $('.store-map-con').outerHeight());
                         $('.store-map-con').css({
                             visibility: 'visible',
                             // top: maptop,
@@ -680,8 +684,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
             
                         toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
-            
-                        self.$map.resize();
+                        
                     } else{
                         toggle.removeClass("list").addClass('map').find('span').text('지도보기');
         
@@ -1145,10 +1148,11 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             } else{
                 if(self.$leftContainer.hasClass('close')){
-                    mapmargin = 24;
+                    mapmargin = 0;
                 } else{
                     mapmargin = listwidth;
                 }                
+                
                 mapwidth = self.windowWidth - mapmargin;            
                 mapheight = $('.map-container').height();
                 if( self.$leftContainer.hasClass('active') ) {
@@ -1157,12 +1161,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             }
 
             self.$mapContainer.css({
-                // width: mapwidth,
-                // height: mapheight,
-                // 'margin-left': mapmargin
+                width: mapwidth,
+                height: mapheight,
+                'margin-left': mapmargin
             });
 
-            if(self.$map) self.$map.resize();
+            if(self.$map) self.$map.resize(mapwidth, mapheight);
         }
     }
 
