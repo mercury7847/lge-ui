@@ -175,47 +175,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 $img.one('load', cb);
             }
             */
-        },
-
-        _changeImage: function(mode){
-            var self = this;
-            
-            self.mode = mode;
-            //self.mode = "m";
-            /*
-            self.$el.find('.ui_bg_switch').each(function(idx, item){
-                var imgsrc = item.dataset[(self.mode + "Src")];
-                if(imgsrc && item.dataset.backgroundImage != imgsrc) {
-                    item.style.backgroundImage = 'url(' + imgsrc + ')';
-                    item.dataset.backgroundImage = imgsrc;
-                }
-            });
-            */
-
-            self.$items.each(function(idx, item){
-                /*
-                var imgsrc = $(item).attr("data-" + self.mode + "-src");
-                if(!imgsrc) {
-                    imgsrc = $(item).attr('data-pc-src');
-                }
-                $(item).attr('src', imgsrc);
-                */
-                var imgsrc = item.dataset[(self.mode + "Src")];
-                //imgsrc += '?test=test2';
-                //var test = imgsrc.substring(imgsrc.lastIndexOf('/') + 1);
-                //console.log(test);
-                //console.log(self.mode + "Src",imgsrc,item.src);
-                if(imgsrc && imgsrc != item.dataset.currentImage) {
-                    item.dataset.currentImage = imgsrc;
-                    var $img = $(item);
-                    if ($img[0].complete) {
-                        cb.call($img);
-                    } else {
-                        $img.one('load', cb);
-                    }
-                }
-            })
-        },
+        }
     });
 
     return LazyLoader;
