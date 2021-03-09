@@ -1061,14 +1061,16 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
             var self = this;
             var dtype = dataType? dataType : "json";
+            var timeout = timeout ? timeout : 10000;
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
-                data : data
+                data : data,
+                timeout : timeout
             }).done(function (result) {
 
                 if(dtype != "json") {
@@ -1155,6 +1157,11 @@ var isApp = function(){
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
+        },
+
+        requestAjaxDataAddTimeout: function(url, timeout, data, callback, type, dataType, ignoreCommonSuccessCheck){
+            var self = this;
+            self.requestAjaxData(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout);
         },
 
         requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {

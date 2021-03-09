@@ -1253,7 +1253,7 @@
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
 
         console.log("### setArsAgreeConfirm ###", sendata);
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             console.log("### setArsAgreeConfirm [complete] ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
