@@ -20,6 +20,7 @@
             &.item-type2 {
                 min-height: 200px;
                 @include mobile {
+                    display: block;
                     min-height: 139px;
                     //padding: 28px 24px;
                 }
