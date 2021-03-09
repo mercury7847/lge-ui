@@ -995,8 +995,14 @@ var isApp = function(){
             itemArray = itemArray.slice(0,maxLength);
 
             items = itemArray.join('|');
-            console.log('saved',items.length);
             self.setCookie(cookieName, items);
+
+            /*
+            console.log('saved',itemArray.length);
+            var test = self.getCookie(cookieName);
+            var searchedList = test.split('|');
+            console.log(searchedList);
+            */
         },
 
         removeCookieArrayValue: function(cookieName, removeData) {
@@ -1061,14 +1067,16 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
             var self = this;
             var dtype = dataType? dataType : "json";
+            var timeout = timeout ? timeout : 10000;
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
-                data : data
+                data : data,
+                timeout : timeout
             }).done(function (result) {
 
                 if(dtype != "json") {
@@ -1155,6 +1163,11 @@ var isApp = function(){
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
+        },
+
+        requestAjaxDataAddTimeout: function(url, timeout, data, callback, type, dataType, ignoreCommonSuccessCheck){
+            var self = this;
+            self.requestAjaxData(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout);
         },
 
         requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {

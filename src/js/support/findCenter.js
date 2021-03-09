@@ -288,12 +288,13 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             function setStoreClass(index){
                 var $storeListWrap = $('.store-list-wrap');
+                var $storeMap = $('.store-map-con');
                 if( index == 0) {
                     $storeListWrap.addClass('local');
-                    $('.store-map-con').addClass('local-map');
+                    $storeMap.addClass('local-map');
                 } else {
                     $storeListWrap.removeClass('local')
-                    $('.store-map-con').removeClass('local-map');
+                    $storeMap.removeClass('local-map');
                 }
             }
             setStoreClass(activeTabIndex);
@@ -691,15 +692,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         $('.store-map-con').stop().transition({x:'100vw'}, 350, "easeInOutCubic", function(){self.isTransion = false;})
                     }
                 }
-                // PC버전으로 돌아가면 지도 영역 스타일 초기화
-                $(window).resize(function() {
-                    if($(window).width() > 1024) {
-                        $('.store-map-con').removeAttr('style');
-                        if(toggle.hasClass('list')){
-                            toggle.removeClass("list").addClass('map').find('span').text('지도보기');
-                        }
-                    }
-                });
+               
             }
         },
 
@@ -897,7 +890,6 @@ function moveDetail(el, detailUrl, windowHeight) {
         // 지하철역 검색...
         _setSubwaySearch: function(){
             var self = this;
-            console.log("_setSubwaySearch")
             var keyword = self.$subwayStationSelect.val();
             var trim = keyword.replace(/\s/gi, '');
             if(trim.length){
@@ -905,7 +897,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.searchResultMode = true;
 
                 self._loadStoreData();
-                console.log(2222)
                 self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
@@ -1133,44 +1124,81 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self._setListArea();
 
-            var listwidth = self.$leftContainer.width();
+            
             var mapwidth, mapheight, mapmargin;
-
+            var tid = 0;
+            var tidSpeed = 0;
+            var moreSet = false;
 
             if(window.breakpoint.isMobile){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
-
                 mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
+
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
             } else{
-                if(self.$leftContainer.hasClass('close')){
-                    mapmargin = 0;
-                } else{
-                    mapmargin = listwidth;
-                }                
-                
-                mapwidth = self.windowWidth - mapmargin;            
-                mapheight = $('.map-container').height();
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }
+
+                if(self.$leftContainer.hasClass('close')){
+                    mapmargin = 0;
+                } else{
+                    mapmargin = self.$leftContainer.width();
+                }
+                
+                mapwidth = self.windowWidth - mapmargin;
+                mapheight = $('.map-container').height();
+
+                if( mapmargin > self.windowWidth/2) {
+                    tidSpeed = 300;
+                    moreSet = true;
+                }
+                
             }
 
-            self.$mapContainer.css({
-                width: mapwidth,
-                height: mapheight,
-                'margin-left': mapmargin
-            });
+            
 
-            if(self.$map) self.$map.resize(mapwidth, mapheight);
+            clearTimeout(tid);
+
+            tid = setTimeout(function(){
+                if( moreSet ) {
+                    if(self.$leftContainer.hasClass('close')){
+                        mapmargin = 0;
+                    } else{
+                        mapmargin = self.$leftContainer.width();
+                    }
+                    mapwidth = self.windowWidth - mapmargin;
+                }
+                self.$mapContainer.css({
+                    width: mapwidth,
+                    height: mapheight,
+                    'margin-left': mapmargin
+                });
+                
+                if(self.$map) {
+                    self.$map.resize(mapwidth, mapheight);
+                }
+            } ,tidSpeed);
         }
     }
 
     $(window).ready(function(){
         searchShop.init();
+
+         // PC버전으로 돌아가면 지도 영역 스타일 초기화
+         $(window).resize(function() {
+            if($(window).width() > 1024) {
+                $('.store-map-con').removeAttr('style');
+                var toggle = searchShop.$leftContainer.find('.btn-view');
+                if(toggle.hasClass('list')){
+                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                }
+            }
+            searchShop._resize()
+        });
     });
 })();

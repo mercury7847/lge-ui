@@ -1,8 +1,7 @@
 .subscribe {
     .cont-wrap .section .sec-tit {
-        margin-bottom: 12px;
-        font-size: 22px;
-        line-height: 32px;
+        margin-bottom: 16px;
+        @include font-large-3;
     }
     .form-wrap {
         .forms {
