@@ -74,11 +74,13 @@
         font-weight: 700;
         font-size: $font-medium;
         line-height: 26px;
-        @include textClipClamp(2);
         @include mobile {
             max-height: 46px;
             font-size: $font-medium - 1;
             line-height: 23px;
+        }
+        a {
+            @include textClipClamp(2);
         }
     }
     .sku {
@@ -315,6 +317,11 @@
         position:absolute;
         top:24px;
         left:0;
+        width: 24px;
+        height: 28px;
+        input + label {
+            padding-left: 0;
+        }
     }
 
     .order-number {
@@ -598,6 +605,16 @@
         .btn-link {
             margin-top: 24px;
             @include font-small;
+        }
+    }
+    @media (min-width: $tablet-s-width + 1) and (max-width: 1024px) {
+        .payment-card {
+            .tooltip-wrap {
+                [data-fixed="fixed-right"] + .tooltip-box {
+                    left: 0;
+                    right: auto;
+                }
+            }
         }
     }
     .select-wrap {
