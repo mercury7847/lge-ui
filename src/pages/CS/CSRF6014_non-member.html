@@ -218,21 +218,26 @@
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <!-- 2021.02.10 maxlength 추가 -->
                                                             <input type="text" name="cRcptNo" id="cRcptNo" placeholder="접수 번호 입력" data-error-msg="접수 번호를 입력해주세요." data-required="true" required maxlength="20">
                                                         </div>
-                                                        <div class="cell">
+                                                        <!-- 2021.03.09 삭제 -->
+                                                        <!-- <div class="cell">
                                                             <a href="#" class="btn"><span>예약 및 결과확인</span></a>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>
                                                     </div>
-                                                    @@include('./common/modules/bullet-list.html', {
-                                                        "bulletTxt" : [
-                                                            '접수번호를 모르시는 경우, \'예약 및 결과확인\' 메뉴를 통해 접수번호를 확인하실 수 있습니다.'
-                                                        ]
-                                                    })
+                                                    <!-- 2021.03.09 추가 -->
+                                                    <div class="btm-form-toolbox">
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                '접수번호를 모르시는 경우, \'예약 및 결과확인\' 메뉴를 통해 접수번호를 확인하실 수 있습니다.'
+                                                            ]
+                                                        })
+                                                        <a href="#" class="btn-link">예약 및 결과확인</a>
+                                                    </div>
+                                                    <!-- //2021.03.09 추가 -->
                                                 </div>
                                             </div>
                                             <div class="forms">
@@ -377,7 +382,7 @@
                                     "답변은 서비스 홈페이지 예약결과 조회/변경 메뉴를 통해 확인 가능합니다. (단, 답변일로부터 1개월간, 접수번호 필요)"
                                 ]
                             })
-                            <!-- 2021.03.08 문구 변경 :  문의/예약 결과조회 > 예약결과 조회/변경 -->
+                            <!-- 2021.03.09 문구 변경 :  문의/예약 결과조회 > 예약결과 조회/변경 -->
                         
                             <div class="btn-group center">
                                 <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
