@@ -1584,6 +1584,7 @@
     }
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
+        console.log("isCheck:", isCheck)
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();                
         for(var idx in productList){
             var listdata = productList[idx];
@@ -1675,7 +1676,6 @@
         lgkorUI.showLoading();
 
         console.log("### " + sendata.callType + " ###", sendata);
-        console.log("### ORDER_SAILS_URL ###", ORDER_SAILS_URL)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendata, function(result){
             lgkorUI.hideLoading();
             
@@ -1686,7 +1686,9 @@
             } else{
                 popup.vcModal('close');
 
-                reloadOrderInquiry();
+                if(PAGE_TYPE == PAGE_TYPE_LIST){
+                    $('.box[data-id=' + dataId + ']').css('opacity', .2)
+                } else reloadOrderInquiry();
             }
         });
     }
