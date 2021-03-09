@@ -20,9 +20,6 @@
                     var modelID = $item.attr('data-model-id');
                     var sku = $item.attr('data-sku');
                     var ajaxUrl = $item.attr('data-response-url');
-                    //test
-                    //ajaxUrl = "/lg5-common/data-ajax/KRP0006/responseData.json";
-                    //ajaxUrl = "http://mktsvc.lgekrdev.lge.co.kr/kr/mkt" + "/api/responsible/retrieveResponseUI";
 
                     //모델아이디가 있으면 쿠키저장
                     var _type = $item.attr('data-type');

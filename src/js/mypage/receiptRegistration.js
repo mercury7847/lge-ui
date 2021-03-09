@@ -47,6 +47,16 @@
                 };
                 vcui.require(['ui/validation'], function () {
                     self.validation = new vcui.ui.Validation('div.cont-wrap .form-wrap',{register:register});
+                    self.validation.on('change', function(e,target){
+                        var parent = $(this).parent().parent();
+                        var errBlock = parent.find('.err-block:eq(0)');
+                        if(errBlock.length > 0) {
+                            errBlock.hide();
+                        } else {
+                            errBlock = parent.parent().find('.err-block:eq(0)');
+                            errBlock.hide();
+                        }
+                    });
                 });
             },
 
@@ -54,6 +64,7 @@
                 var self = this;
                 self.$inputReceipt.on("input",function(){
                     this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
+                    $(this).parent().find('.err-block:eq(0)').hide();
                 });
                 
                 self.$categorySelect.on('change', function(e){
@@ -144,6 +155,8 @@
                     if(result.success){
                         self.requestData(self.validation.getAllValues());
                     } else {
+
+                        console.log(result);
                         if(result.validArray && result.validArray.length > 0) {
                             var item = result.validArray[0];
                             if(item.errmsg) {

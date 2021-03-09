@@ -73,7 +73,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     required = register[item.name]['required'] || required;
                 }
                 
-                var msgTarget = $(item).data('msgTarget'); 
+                var msgTarget = $(item).data('msgTarget');
                 var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg;
                 var patternMsg = $(item).data('patternMsg') || '';
                 
