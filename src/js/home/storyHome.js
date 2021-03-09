@@ -286,8 +286,9 @@
                 }
 
                 if(page == 1 && result.data.recommendTags){
+                    var putIdx = imgLoadTotal < 9 ? imgLoadTotal : 9; 
                     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
-                    sectionItem.find('.flexbox-wrap').append(list);
+                    sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
                 }
             } else{
                 sectionItem.hide();
