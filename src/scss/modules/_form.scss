@@ -228,7 +228,7 @@
             @include font-small;
             &:disabled {
                 background:#f4f4f4;
-                border-color:#ddd;
+                border-color:#ddd !important;
                 color:#aaa;
             }
             &.size {
@@ -1479,62 +1479,37 @@ $input: (chk, rdo);
                         display:block;
                     }
                 }
-                &::before {
+                &::after {
                     content:' ';
                     position:absolute;
-                    top:4px;
-                    left:2px;
-                    width:20px;
-                    height:20px;
-                    background:url("/lg5-common/images/bg-input-default.svg") center no-repeat;
+                    top:1px;
+                    left:0;
+                    width:24px;
+                    height:24px;
+                    background: no-repeat center center;
+                    background-size: 100%;
                     @include mobile {
-                        top:2px;
+                        top: -1px;
                     }
                 }
                 @if ( $type == chk ) {
                     &::after {
-                        content:' ';
-                        position:absolute;
-                        top:9px;
-                        left:7px;
-                        width:11px;
-                        height:9px;
-                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
-                        @include mobile {
-                            top:8px;
-                        }
+                        background-image: url("/lg5-common/images/icons/btn-checkbox-off-48.svg");
                     }
                 } @else if ( $type == rdo ) {
                     &::after {
-                        content:' ';
-                        position:absolute;
-                        top:7px;
-                        left:5px;
-                        width:14px;
-                        height:14px;
-                        border-radius:50%;
-                        background:transparent;
-                        @include mobile {
-                            top:5px;
-                        }
+                        background-image: url("/lg5-common/images/icons/btn-radio-off-48.svg");
                     }
                 }
             }
             &:checked+label {
                 @if ( $type == chk ) {
-                    &::before {
-                        background:#EC455A;
-                        border-radius:50%;
-                    }
                     &::after {
-                        background:url("/lg5-common/images/bg-chk-on.svg") center no-repeat;
+                        background-image: url("/lg5-common/images/icons/btn-checkbox-on-48.svg");
                     }
                 } @else if ( $type == rdo ) {
-                    &::before {
-                        background:url("/lg5-common/images/bg-input-checked.svg") center no-repeat;
-                    }
                     &::after {
-                        background:#ec455a;
+                        background-image: url("/lg5-common/images/icons/btn-radio-on-48.svg");
                     }
                 }
             }
@@ -1542,18 +1517,12 @@ $input: (chk, rdo);
                 color:#aaa;
                 cursor: default;
                 @if ( $type == chk ) {
-                    &::before {
-                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
-                    }
                     &::after {
-                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
+                        background-image: url("/lg5-common/images/icons/btn-checkbox-disabled-48.svg");
                     }
                 } @else if ( $type == rdo ) {
-                    &::before {
-                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
-                    }
                     &::after {
-                        background:transparent;
+                        background-image: url("/lg5-common/images/icons/btn-radio-disabled-48.svg");
                     }
                 }
             }
@@ -1565,19 +1534,13 @@ $input: (chk, rdo);
                     &+label {
                         padding-left: 24px;
                         @include font-small;
-                        &::before {
-                            top: 4px;
-                            left: 1px;
+                        &::after {
+                            top:4px;
                             width:16px;
                             height:16px;
-                            background-size: cover;
-                        }
-                        &::after {
-                            top: 9px;
-                            left: 5px;
-                            width: 8px;
-                            height: 6px;
-                            background-size: cover;
+                            @include mobile {
+                                top:3px;
+                            }
                         }
                     }
                 }
@@ -1609,7 +1572,7 @@ $input: (chk, rdo);
                         @include font-small;
                         text-align:center;
                         font-weight:500;
-                        &::before, &::after {
+                        &::after {
                             display:none;
                         }                        
                         // @include mobile {
@@ -1640,19 +1603,8 @@ $input: (chk, rdo);
                         border-radius: 8px;
                         border: solid 1px #ddd;
                         text-align: center;
-                        &:before {
-                            display: none;
-                        }
                         &:after {
-                            position: absolute;
-                            top: -1px;
-                            right: -1px;
-                            bottom: -1px;
-                            left: -1px;
-                            width: auto;
-                            height: auto;
-                            border: solid 1px #ddd;
-                            border-radius: 8px;
+                            display: none;
                         }
                         @include mobile {
                             border-radius: 4px;
@@ -1663,10 +1615,8 @@ $input: (chk, rdo);
                     &:checked {
                         & + label {
                             color: #ec455a;
-                            &:after {
-                                border: 2px solid #ec455a;
-                                background-color: transparent;
-                            }
+                            border: 2px solid #ec455a;
+                            background-color: transparent;
                         }
                     }
                 }
@@ -1731,28 +1681,20 @@ $input: (chk, rdo);
                 input {
                     & + label {
                         display: block;
-                        padding: 16px 16px 16px 48px;
+                        padding: 16px 16px 16px 46px;
                         border: 1px solid #ddd;
                         border-radius: 8px;
-                        &:before {
-                            top: 20px;
-                            left: 18px;
-                        }
                         &::after {
-                            top:23px;
-                            left:21px;
+                            top:17px;
+                            left:15px;
                         }
                         @include mobile {
                             border-radius: 4px;
                             font-size: 14px;
                             line-height: 18px;
-                            &:before {
-                                top: 16px;
-                                left: 16px;
-                            }
                             &:after {
-                                top: 19px;
-                                left: 19px;
+                                top: 13px;
+                                left: 16px;
                             }
                         }
                     }

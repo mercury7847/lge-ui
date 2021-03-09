@@ -74,11 +74,13 @@
         font-weight: 700;
         font-size: $font-medium;
         line-height: 26px;
-        @include textClipClamp(2);
         @include mobile {
             max-height: 46px;
             font-size: $font-medium - 1;
             line-height: 23px;
+        }
+        a {
+            @include textClipClamp(2);
         }
     }
     .sku {
@@ -194,8 +196,9 @@
             span {
                 display: inline-block;
                 font-weight: 700;
+                @include font-small;
                 &.complete {
-                    color: $color-neutral;
+                    //color: $color-neutral;
                     em {
                         display: block;
                         font-weight: 400;
@@ -203,7 +206,7 @@
                     }
                 }
                 &.error {
-                    color: $color-negative;
+                    //color: $color-negative;
                 }
             }
         }
@@ -315,6 +318,11 @@
         position:absolute;
         top:24px;
         left:0;
+        width: 24px;
+        height: 28px;
+        input + label {
+            padding-left: 0;
+        }
     }
 
     .order-number {
@@ -564,7 +572,7 @@
         }
         .price {
             .total {
-                @include font($font-large-2,34px);
+                @include font($font-large-1,30px);
                 @include mobile {
                     @include font($font-large,26px);
                 }
@@ -598,6 +606,16 @@
         .btn-link {
             margin-top: 24px;
             @include font-small;
+        }
+    }
+    @media (min-width: $tablet-s-width + 1) and (max-width: 1024px) {
+        .payment-card {
+            .tooltip-wrap {
+                [data-fixed="fixed-right"] + .tooltip-box {
+                    left: 0;
+                    right: auto;
+                }
+            }
         }
     }
     .select-wrap {
