@@ -288,12 +288,13 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             function setStoreClass(index){
                 var $storeListWrap = $('.store-list-wrap');
+                var $storeMap = $('.store-map-con');
                 if( index == 0) {
                     $storeListWrap.addClass('local');
-                    $('.store-map-con').addClass('local-map');
+                    $storeMap.addClass('local-map');
                 } else {
                     $storeListWrap.removeClass('local')
-                    $('.store-map-con').removeClass('local-map');
+                    $storeMap.removeClass('local-map');
                 }
             }
             setStoreClass(activeTabIndex);
