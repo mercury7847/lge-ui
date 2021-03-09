@@ -1721,7 +1721,7 @@
                     title: result.data.alert.title
                 });
             } else{
-                //location.href = pdpUrl;
+                location.href = pdpUrl;
             }
 
             lgkorUI.hideLoading();
