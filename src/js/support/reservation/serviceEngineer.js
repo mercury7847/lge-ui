@@ -783,7 +783,7 @@
 
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
-                var url = self.$stepDate.data('ajax'),
+                var url = self.$engineerPopup.data('engineerListUrl'),
                     param;
 
                 var productCode = $('#productCode').val();

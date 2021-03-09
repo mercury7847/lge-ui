@@ -404,6 +404,7 @@
 
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
+                var url = self.$engineerPopup.data('engineerListUrl');
                 var data = self.data,
                     param = {
                         category: data.category,
@@ -416,7 +417,7 @@
                         time: data.time      
                     };
                 
-                lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data,
                         arr = data.engineerList instanceof Array ? data.engineerList : []; 
                     var slideConfig = {
