@@ -26,8 +26,19 @@
     var videoGuide = {
         init: function() {
             var self = this;
+            var param = {};
 
             self.options = {
+                category: '',
+                categoryNm: '',
+                subCategory: '',
+                subCategoryNm: '',
+                modelCode: '',
+                productCode: '',
+                page: 1
+            };
+
+            param = {
                 category: $('#category').val(),
                 categoryNm: $('#categoryNm').val(),
                 subCategory: $('#subCategory').val(),
@@ -36,8 +47,6 @@
                 productCode: $('#productCode').val(),
                 page: 1
             };
-
-            self.param = $.extend({}, self.options);
 
             self.$cont = $('.contents');
             self.$productBar = self.$cont.find('.prod-selected-wrap');
@@ -62,7 +71,7 @@
             self.$resultPagination = self.$resultWrap.find('.pagination');
             self.$noData = self.$resultWrap.find('.no-data');
 
-
+            self.param = param;
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.subTopicUrl = self.$stepInput.data('subTopicUrl');
             self.listUrl = self.$stepInput.data('listUrl');
@@ -185,7 +194,6 @@
                 $keyword.empty();
             }
 
-            // self.$searchKeyword.vcInputClearButton('changeVal', keyword);
             self.$searchKeyword.val(keyword);
             self.$searchKeyword.trigger('update');
         },
@@ -230,7 +238,7 @@
             var self = this;
 
             self.$cont.on('reset', function(e) {
-                self.param = $.extend({}, self.options);
+                self.param = $.extend(true, {}, self.options);
 
                 self.$cont.commonModel('next', self.$stepModel);
 
@@ -307,6 +315,7 @@
                     };
                     self.param = $.extend(self.param, param);
                     self.requestSubTopic();
+                    self.requestData();
                 } else {
                     var param = { 
                         topic: '',
@@ -327,16 +336,13 @@
 
             self.$searchSubTopic.on('change', function() {
                 var val = self.$searchSubTopic.val();
-
-                if (val) {
-                    var param = { 
-                        page:1, 
-                        subTopic: self.$searchSubTopic.val(),
-                        subTopicNm: self.$searchSubTopic.find('option:selected').text()
-                    };
-                    self.param = $.extend(self.param, param);
-                    self.requestData();
-                } 
+                var param = { 
+                    page:1, 
+                    subTopic: val,
+                    subTopicNm: val ? self.$searchSubTopic.find('option:selected').text() : ''
+                };
+                self.param = $.extend(self.param, param);
+                self.requestData(); 
             });
 
             self.$searchKeyword.on('keydown', function(e) {
