@@ -101,6 +101,10 @@
     &.service-news {
         .search-wrap {
             margin-bottom:80px;
+
+            @include mobile {
+                margin:0 16px 80px;
+            }
         }
         .video-content {
             .bullet-list {
@@ -112,9 +116,10 @@
             width:24px;
             height:24px;
             vertical-align:middle;
-            background:url(/lg5-common/images/icons/icon-fixing.svg) no-repeat;
+            background:url('/lg5-common/images/CS/icon-mark-2-48.svg') no-repeat;
+            background-size:100% 100%;
             & + .flag {
-                margin-left:12px;
+                margin-left:6px;
             }
         }
     }
