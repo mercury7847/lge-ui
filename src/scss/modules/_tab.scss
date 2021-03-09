@@ -53,6 +53,7 @@
     }
     &.ui_smooth_scroll {
         .tabs {
+            width: auto !important;
             max-width:initial;
             overflow-x:initial;
         }
