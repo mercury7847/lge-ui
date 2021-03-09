@@ -576,7 +576,7 @@
                     // $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
                 }
 
-                $('input[type=text], textarea').not(notInput).val('');
+                $('input[type=text], input[type=number], textarea').not(notInput).val('');
 
                 $('#fanEtc').prop('disabled', true);
 
