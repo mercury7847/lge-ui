@@ -446,10 +446,12 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             self._changeMarkersState(); 
         },
 
-        resize: function resize(){
+        resize: function resize(width, height){
             var self = this;
 
-            self._changeMarkersState();
+            self.map.setSize({width: width, height: height})
+
+            //self._changeMarkersState();
         },
 
         selectedMarker: function selectedMarker(id){
