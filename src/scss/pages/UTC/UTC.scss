@@ -196,8 +196,9 @@
             span {
                 display: inline-block;
                 font-weight: 700;
+                @include font-small;
                 &.complete {
-                    color: $color-neutral;
+                    //color: $color-neutral;
                     em {
                         display: block;
                         font-weight: 400;
@@ -205,7 +206,7 @@
                     }
                 }
                 &.error {
-                    color: $color-negative;
+                    //color: $color-negative;
                 }
             }
         }

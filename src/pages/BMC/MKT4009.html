@@ -6,6 +6,7 @@
     })
 <body>
     <article id="popup" class="win-popup-wrap uiForm"
+        data-event-id = "eventID_TEST"
         data-sku-url = "/lg5-common/data-ajax/mypage/product/checkSku.json"
     >
         <header class="pop-header">
@@ -378,17 +379,6 @@
                     buyerAddrDetail: { value:'엘지 송파빌딩 1702호' }
                 }
 
-                // 구매자 정보와 같음 buyerInfo 로 addAddressObj 변환
-                /* 구매자 정보와 같음 수동으로 입력시
-                var addAddressObj = {
-                    recipientName:'박종민',
-                    recipientPhone:'01023457890',
-                    recipientZipCode:'02345',
-                    recipientAddrInfo:'서울시',
-                    recipientAddrDetail:'엘지 송파빌딩 1702호'
-                }
-                */
-
                 var addAddressObj = {}
                 $.each(buyerInfo, function(key, value){
                     var newKey = key.replace('buyer','recipient');
@@ -405,11 +395,17 @@
                     recipientAddrDetail:''
                 }
                 var vaildObj = {
+                    modelName:{
+                        required: true,
+                        errorMsg: "모델명을 입력해 주세요.",
+                    },
                     serialNum:{
+                        required: true,
 						validate : function(val){
 							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
 							return reg.test(val);
-						}
+						},
+                        errorMsg: "제조번호를 입력해 주세요.",
 					}
                 }
 
@@ -424,7 +420,7 @@
                 }).on('success', function(data){
                     // 성공시 처리
                     errorObj = {};
-                    console.log(validation.getValues());
+                    //console.log(validation.getValues());
 
                 }).on('nextfocus', function(e,target){
 
@@ -445,14 +441,47 @@
                 var checkSerialSuccess = false;
 
                 // 제조번호 확인
+                $('#serialCheckBtn').on('input', function(e){
+                    checkSerialSuccess = false;
+                    if(e.target.value.length > 14){
+                        e.target.value = e.target.value.slice(0, 14);
+                    }
+                })
+
                 $('#serialCheckBtn').on('click', function(e){
 
                     var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
-                    checkSerialSuccess = serialRegex.test($('#serialNum').val());
+                    var checkSerial = serialRegex.test($('#serialNum').val());
 
-                    if(checkSerialSuccess) {
-                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                    if(checkSerial) {
+                        var test = validation.validate(['modelName','serialNum']);
+                        if(test.validItem['modelName']) {
+                            lgkorUI.alert("", {title: test.validItem['modelName']});
+                        } else {
+                            var ajaxUrl = $('#popup').data('skuUrl');
+                            var eventId = $('#popup').data('eventId');
+                            var values = validation.getValues();
+                            if(ajaxUrl, eventId) {
+                                var param = {
+                                    'modelName':values.modelName,
+                                    'serialNum':values.serialNum,
+                                    'eventId':eventId
+                                }
+                                lgkorUI.showLoading();
+                                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                                    lgkorUI.hideLoading();
+                                    var data = result.data;
+                                    if(lgkorUI.stringToBool(data.success)){
+                                        checkSerialSucces = true;
+                                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                                    } else {
+                                        checkSerialSucces = false;
+                                    }
+                                });
+                            }
+                        }
                     } else {
+                        checkSerialSucces = false;
                         lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                         $('#serialNum').focus();
                     }
