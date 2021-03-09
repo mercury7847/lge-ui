@@ -571,7 +571,7 @@
         }
         .price {
             .total {
-                @include font($font-large-2,34px);
+                @include font($font-large-1,30px);
                 @include mobile {
                     @include font($font-large,26px);
                 }
