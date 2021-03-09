@@ -1675,6 +1675,7 @@
         lgkorUI.showLoading();
 
         console.log("### " + sendata.callType + " ###", sendata);
+        console.log("### ORDER_SAILS_URL ###", ORDER_SAILS_URL)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendata, function(result){
             lgkorUI.hideLoading();
             
