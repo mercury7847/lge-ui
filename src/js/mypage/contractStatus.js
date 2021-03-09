@@ -466,6 +466,7 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
+        sendata.confirmType = sendPaymentMethod;
 
         console.log("### setArsAgreeConfirm ###", sendata);
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
