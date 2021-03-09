@@ -676,6 +676,8 @@
         });
 
         $('.contents.mypage').on('click', '.receipt-btn', function(e) {
+            e.preventDefault();
+
             var url = $('.contents.mypage').data('receiptUrl');
             var orderNo = $(this).data('orderNo');
             var serviceType = $(this).data('serviceType');

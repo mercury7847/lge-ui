@@ -402,18 +402,70 @@
                 self._setSearch();
             });
 
-            // self.$centerPagination.on('pageClick', function(e) {
-            //     var param = {
-            //         page: e.page
-            //     };
-
-            //     self.requestCenterData(param)
-            // });
-
             // 엔지니어 선택 팝업 오픈
             self.$engineerPopup.on('modalshown', function() {
-                self.$engineerSlider.vcCarousel('resize');
-                self.$engineerSlider.vcCarousel('reinit');
+                var data = self.data,
+                    param = {
+                        category: data.category,
+                        subCategory: data.subCategory,
+                        productCode: data.productCode,
+                        serviceType: data.serviceType,
+                        deptCode: self.data.deptCode,
+                        lockUserId: data.lockUserId,
+                        date: data.date,
+                        time: data.time      
+                    };
+                
+                lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
+                    var data = result.data,
+                        arr = data.engineerList instanceof Array ? data.engineerList : []; 
+                    var slideConfig = {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        responsive: [
+                            {
+                                breakpoint: 10000,
+                                settings: {
+                                    slidesToShow: 4,
+                                    slidesToScroll: 4,
+                                }
+                            },
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3,
+                                }
+                            },
+                            {
+                                breakpoint:767,
+                                settings: {
+                                    variableWidth : true,
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            }
+                        ]
+                    };
+
+                    if (data.resultFlag == 'Y') {  
+                        if (arr.length) {
+                            var html = vcui.template(engineerTmpl, data);
+                            
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            if (!self.$engineerSlider.hasClass('ui_carousel_initialized')) {
+                                self.$engineerSlider.vcCarousel(slideConfig);
+                            }
+                            self.$engineerSlider.vcCarousel('reinit');
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                });
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
