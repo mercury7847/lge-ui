@@ -995,6 +995,7 @@ var isApp = function(){
             itemArray = itemArray.slice(0,maxLength);
 
             items = itemArray.join('|');
+            console.log('saved',items.length);
             self.setCookie(cookieName, items);
         },
 
