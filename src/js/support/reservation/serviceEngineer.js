@@ -869,6 +869,15 @@
                     $('#fanEtc').val('');
                 }
             });
+
+            $('[name=tvPosition]').on('change', function() {
+                if ($(this).attr('id') == 'tvPosition04') {
+                    $('#tvPositionEtc').prop('disabled', false);
+                } else {
+                    $('#tvPositionEtc').prop('disabled', true);
+                    $('#tvPositionEtc').val('');
+                }
+            });
         }
     }
 
