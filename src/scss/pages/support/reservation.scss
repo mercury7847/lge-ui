@@ -177,7 +177,30 @@
         }
     }
 
-    
+    .btm-form-toolbox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:12px;
+
+        .bullet-list {
+            margin-top:0;
+        }
+
+        .btn-link {
+            font-size:14px;
+        }
+
+        @include tablet {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .btn-link {
+                margin-top:10px;
+            }
+        }
+    }
 
     /* page */
     /* 출장 예약 */
