@@ -421,8 +421,7 @@
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
 
-        var getDataTypeFlag = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
-        TAB_FLAG = PAGE_TYPE == PAGE_TYPE_LIST ? TAB_FLAG_ORDER : getDataTypeFlag;
+        TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         console.log("TAB_FLAG:", TAB_FLAG);
 
         var register = {
@@ -543,11 +542,11 @@
             var dataID = $(this).closest('.box').data("id");
             var prodID = $(this).closest('.col-table').data('prodId');
             var pdpUrl = $(this).attr("href");
-            if(wrapper.hasClass("orderAndDelivery-detail")){                
-                setProductStatus(dataID, prodID, pdpUrl);
-            } else{
+            if(PAGE_TYPE == PAGE_TYPE_LIST){                
                 var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
                 location.href = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
+            } else{
+                setProductStatus(dataID, prodID, pdpUrl);
             }
         });
 
@@ -677,6 +676,8 @@
         });
 
         $('.contents.mypage').on('click', '.receipt-btn', function(e) {
+            e.preventDefault();
+
             var url = $('.contents.mypage').data('receiptUrl');
             var orderNo = $(this).data('orderNo');
             var serviceType = $(this).data('serviceType');
@@ -1484,6 +1485,8 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP_URL, sendata, function(result){
             console.log("### getPopOrderData complete", result)
             lgkorUI.hideLoading();
+
+            if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) result.data.listData = [result.data.listData];
 
             PRICE_INFO_DATA = [];
             POP_PROD_DATA = [];

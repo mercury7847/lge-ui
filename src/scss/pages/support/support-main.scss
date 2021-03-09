@@ -2662,6 +2662,9 @@
         box-sizing: border-box;
         background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
 
+        .home-cont-top {
+            display: none;
+        }
 
         .support-toggle-list-wrap {
             .support-list ul > li a:hover {
@@ -2670,7 +2673,7 @@
         }
 
         @include pc-size-m {
-            height:480px
+            height:420px
         }
 
         @include tablet {
@@ -2679,6 +2682,12 @@
                     .indi-wrap {
                         bottom:0;
                     }
+                }
+            }
+
+            .support-toggle-list-wrap {
+                .support-list {
+                    padding:60px 0;
                 }
             }
         }
