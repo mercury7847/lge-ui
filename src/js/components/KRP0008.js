@@ -37,7 +37,7 @@
     '</li>';
 
     var awardPopupItemTemplate = '<li>' +
-        '<span class="image"><img data-src="{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}"></span>' +
+        '<span class="image"><img data-src="123123{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
         '<span class="text">{{storyTitle}}</span>' +
     '</li>';
 
@@ -388,15 +388,6 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
-                if(typeof awards !== 'undefined' && awards.length > 0) {
-                    var arr = awards instanceof Array ? awards : [];
-                    var $list_ul = self.$awardPopup.find('ul.awards-list');
-                    $list_ul.empty();
-                    arr.forEach(function(item, index) {
-                        $list_ul.append(vcui.template(awardPopupItemTemplate, item));
-                    });
-                }
-
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -497,6 +488,19 @@
                 //PDP 갤러리 더보기(수상내역등)
                 self.$pdpMoreInfo.on('click','a.btn-link.popup', function(e) {
                     e.preventDefault();
+                    var loaded = self.$awardPopup.data('loaded');
+                    if(!loaded) {
+                        self.$awardPopup.data('loaded', true);
+                        if(typeof awards !== 'undefined' && awards.length > 0) {
+                            var arr = awards instanceof Array ? awards : [];
+                            var $list_ul = self.$awardPopup.find('ul.awards-list');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(awardPopupItemTemplate, item));
+                            });
+                        }
+                    }
+
                     self.$awardPopup.vcModal();
                 });
             },
@@ -1407,15 +1411,19 @@
                 var param = {
                     modelId: sendData.modelId
                 }
+                /*
                 if(!ajaxUrl) {
                     //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
                     ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
                 }
+                */
                 if(ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                         var data = result.data[0];
                         //로그인
                         loginFlag = data.loginFlag;
+                        //리뷰수
+                        
                         //보유멤버쉽 포인트
                         //var myMembershipPoint = data.myMembershipPoint;
                         

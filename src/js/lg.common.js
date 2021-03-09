@@ -54,7 +54,8 @@ var isApp = function(){
                             'ui/lazyLoader',
                             "ui/videoBox",
                             "ui/youtubeBox",
-                            "ui/imageSwitch",
+                            //"ui/imageSwitch",
+                            'ui/lazyLoaderSwitch',
                             "ui/dropdown",
                             "ui/textControl",
                             "ui/fileInput",
@@ -71,8 +72,10 @@ var isApp = function(){
         ], function () {    
             console.log("buildCommonUI!!!!");
             
-            this.vcImageSwitch();
+            this.vcLazyLoaderSwitch();
+            //this.vcImageSwitch();
             this.vcLazyLoader();
+
     
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
@@ -312,7 +315,8 @@ var isApp = function(){
                 'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch", 
+                "ui/imageSwitch",
+                'ui/lazyLoaderSwitch',
                 "ui/textControl",
                 "ui/fileInput",
                 "ui/radioShowHide",
@@ -1116,7 +1120,6 @@ var isApp = function(){
                             });
                         }
                     }
-                    lgkorUI.hideLoading();
                     return;
                 }
 
@@ -1148,8 +1151,6 @@ var isApp = function(){
 
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
-
-                        lgkorUI.hideLoading();
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 
@@ -1157,6 +1158,9 @@ var isApp = function(){
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+            }).always(function() {
+                lgkorUI.hideLoading();
+                //console.log( "complete" );
             });
         },
 
@@ -1242,6 +1246,7 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
@@ -1277,6 +1282,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
