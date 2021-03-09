@@ -4,6 +4,24 @@
         font-size: 22px;
         line-height: 32px;
     }
+    .form-wrap {
+        .forms {
+            .box {
+                &.type2 {
+                    @include mobile {
+                        .input-wrap {
+                            display:table-cell;
+                        }
+                        .cell {
+                            display:table-cell;
+                            width:1%;
+                            padding-left:6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     @media screen and (min-width: 1284px) {
         .accord-cont {
             padding-right: 157px;
