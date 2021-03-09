@@ -19,8 +19,8 @@
     border-collapse:separate;
     border-spacing:24px 0;
     @include mobile {
-        width:auto;
-        margin:-4px;
+        width:100%;
+        margin:-6px 0;
         border-spacing:0;
     }
     li {
@@ -31,11 +31,11 @@
         background-color:#f4f4f4;
         text-align:center;
         @include mobile {
-            display:inline-block;
-            width:calc((100% - 20px) / 2 );
-            height:166px;
-            margin:4px;
-            padding:20px 16px;
+            display:flex;
+            width:100%;
+            height:auto;
+            margin:6px 0;
+            padding:24px;
             vertical-align:top;
         }
         .ico {
@@ -62,6 +62,10 @@
             font-weight:500;
             line-height:26px;
             @include mobile {
+                flex: 1;
+                align-self: center;
+                margin-top: 0;
+                margin-left: 24px;
                 font-size:14px;
                 line-height:22px;
             }
