@@ -1057,6 +1057,15 @@
                 }
             }
         }
+        .input-info:not(.type2) {
+            .bk-infos {
+                dd:last-child {
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+        }
         .btn-link {
             margin-top: 24px;
         }
