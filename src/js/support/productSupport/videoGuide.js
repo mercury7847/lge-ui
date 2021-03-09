@@ -307,6 +307,7 @@
                     };
                     self.param = $.extend(self.param, param);
                     self.requestSubTopic();
+                    self.requestData();
                 } else {
                     var param = { 
                         topic: '',
