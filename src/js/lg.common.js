@@ -378,27 +378,31 @@ var isApp = function(){
                 }
                 
                 new ResponsiveImage('body', breakpoint);
-
-
+                
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                $(window).on('resize', function(e){
+                    self.resetFlexibleBox();
+                });  
+                self.resetFlexibleBox();
+                
+                /*
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    //self.resizeCallbacks.push(callback);
+                    self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
-                    /*
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
-                    */
 
                     //self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  
-                self.resetFlexibleBox();              
-    
+                self.resetFlexibleBox();
+                */
+
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
                 vcui.ui.setDefaults('Modal', {

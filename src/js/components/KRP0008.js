@@ -49,6 +49,10 @@
         var KRP0008 = {
             init: function() {
                 var self = this;
+                //처음 로그인 체크를 하는 ajax 호출 여부
+                self.processProductBuy = null;
+                self.loginCheckEnd = false;
+
                 self.isDragging = false;
 
                 self.setting();
@@ -1251,9 +1255,11 @@
             //구매진행
             productBuy: function($dm) {
                 var self = this;
-                var tempSendData = JSON.parse(JSON.stringify(sendData));
+                self.processProductBuy = null;
 
+                var tempSendData = JSON.parse(JSON.stringify(sendData));
                 var $paymentAmount = $dm.parents('.payment-amount');
+                
                 //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
@@ -1372,11 +1378,21 @@
 
                     var ajaxUrl;
                     if(isRental) {
-                        ajaxUrl = self.$pdpInfo.attr('data-rental-url');
-                        var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
-                        console.log("!!!!!rental",url,param);
-                        if(ajaxUrl) {
-                            location.href = url;
+                        if(self.loginCheckEnd) {
+                            if(loginFlag) {
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                            } else {
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
+                                //스테이지 세팅후 제거 코드
+                                ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
+                            }
+                            var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                            console.log((loginFlag)?"!!!!!rental":"!!!!!notlogin rental",url,param);
+                            if(ajaxUrl) {
+                                location.href = url;
+                            }
+                        } else {
+                            self.processProductBuy = $dm;
                         }
                     } else {
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
@@ -1422,13 +1438,17 @@
                         var data = result.data[0];
                         //로그인
                         loginFlag = data.loginFlag;
-                        //리뷰수
                         
                         //보유멤버쉽 포인트
                         //var myMembershipPoint = data.myMembershipPoint;
                         
                         if(self.$component.data('consumables')) {
                             self.consumables.init(data);
+                        }
+
+                        self.loginCheckEnd = true;
+                        if(self.processProductBuy) {
+                            self.productBuy(self.processProductBuy);
                         }
                     }, true);
                 }
