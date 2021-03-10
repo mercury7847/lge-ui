@@ -2411,7 +2411,11 @@ $.fn.serializeObject = function() {
         });
 
         $(document).on('blur', 'input[type="number"]', function(e){
-            this.value = this.value.replace(/^[0-9]/g, "");
+            var reg = /^[0-9]/g;
+        
+            if(!reg.test(this.value) ) {
+                this.value = this.value.replace(/^[0-9]/g, "");
+            }
         });
 
         $(document).on('change', '.agree-wrap input:checkbox', function(){
