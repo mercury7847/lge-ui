@@ -690,7 +690,7 @@
                     var $this = $(this);
                     if(preOrderFlag) {
                          //사전예약 일경우
-                        if(loginFlag) {
+                        if(lgkorUI.stringToBool(loginFlag)) {
                             //사전예약 안내창 뛰우고 구매진행
                             $('#preOrderPopup').find('div.btn-group button').off('click');
                             $('#preOrderPopup').find('div.btn-group button').on('click',function(e){
@@ -1390,7 +1390,7 @@
                     var ajaxUrl;
                     if(isRental) {
                         if(self.loginCheckEnd) {
-                            if(loginFlag) {
+                            if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
@@ -1417,7 +1417,7 @@
                                     */
                                 });
                             }
-                            console.log((loginFlag)?"!!!!!rental":"!!!!!notlogin rental",url,param);
+                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",url,param);
                         } else {
                             self.processProductBuy = $dm;
                         }
