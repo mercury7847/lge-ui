@@ -1514,7 +1514,8 @@
                     case "image":
                         self.pinchZoom.runZoom(1, false);
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
-                        self.$popPdpVisualImage.vcImageSwitch('reload');
+                        //self.$popPdpVisualImage.vcImageSwitch('reload');
+                        $('body').vcLazyLoaderSwitch('reload',self.$popPdpVisualImage);
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
@@ -1536,7 +1537,6 @@
                             'aria-describedby':item.alt
                         });
                         self.$popPdpVisualVideo.find('iframe').attr('src',item.videoUrl);
-                        //self.$popPdpVisualVideo.vcImageSwitch('reload');
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
