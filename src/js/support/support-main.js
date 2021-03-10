@@ -460,7 +460,7 @@
                    
                     vcui.require(['ui/validation', 'ui/formatter'], function () {
                         self.addressFinder = new AddressFind();
-                        $('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
+                        //$('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
                             agreePrivacyCheck : {
