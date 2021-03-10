@@ -659,6 +659,9 @@ br.pc-only {
                     transform:translateY(-50%);
                     border-color:inherit;
                     background-image:linear-gradient(117deg, #8d71ec, #f75584 99%);
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                        border:none;
+                     }
                     @include tablet {
                         position:static;
                         margin:16px 0 0 120px;
