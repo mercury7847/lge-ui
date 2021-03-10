@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-1062 -1223) translate(128 414) translate(0 809) translate(934.195)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <g transform="translate(-1062 -1223) translate(128 414) translate(0 809) translate(934.195) translate(12 12) translate(2 7.5) translate(.5)">
+                                    <rect width="32.5" height="22.5" x="1.25" y="1.25" stroke="#000" stroke-width="1.5" rx="1.5"/>
+                                    <g transform="translate(18.5 7)">
+                                        <circle cx="5.5" cy="5.5" r="5.5" stroke="#000" stroke-width="1.5"/>
+                                        <rect width="6" height="1.5" x="5" y="4.5" fill="#000" rx=".75"/>
+                                    </g>
+                                    <circle cx="9.5" cy="8" r="3" stroke="#000" stroke-width="1.5"/>
+                                    <circle cx="9.5" cy="17" r="3" stroke="#000" stroke-width="1.5"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
