@@ -580,6 +580,8 @@ CS.MD.commonModel = function() {
             self.$modelSlider = self.$modelBox.find('.model-slider');
             self.$modelNoData = self.$modelBox.find('.no-data');
 
+            self.$modelPopup = $('#modelNamePopup');
+
             // 옵션
             self.isDefault = $('#category').val() ? true : false;
             self.subCategoryUrl = self.$searchArea.data('subCategoryUrl') || self.$modelBox.find('#categorySelect').data('ajax');
@@ -866,6 +868,8 @@ CS.MD.commonModel = function() {
                 self.$modelBox.find('.keyword-search').show();
                 self.$modelBox.find('#categorySelect').val(data.category);
                 self.$modelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
+                self.$modelPopup.data('category', data.category);
+                self.$modelPopup.data('subCategory', data.subCategory);
 
                 self.$categoryBox.removeClass(opt.stepActiveClass);
                 self.$modelBox.addClass(opt.stepActiveClass);
@@ -934,6 +938,9 @@ CS.MD.commonModel = function() {
                             .prop('disabled', false)
                             .vcSelectbox('update');
                     }
+
+                    self.$modelPopup.data('category', $this.val());
+                    self.$modelPopup.data('subCategory', '');
                     
                     self.param = $.extend(self.param, {
                         category: $this.val(),
@@ -975,6 +982,9 @@ CS.MD.commonModel = function() {
 
                     return;
                 }
+
+                self.$modelPopup.data('category', $category.val());
+                self.$modelPopup.data('subCategory', $this.val());
 
                 self.param = $.extend(self.param, {
                     category: $category.val(),

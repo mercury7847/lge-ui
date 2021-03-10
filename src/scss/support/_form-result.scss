@@ -29,6 +29,7 @@
             .line {
                 display:block;
                 white-space:pre-line;
+                word-break: break-all;
                 p {
                     font-family:'Noto Sans', sans-serif !important;
                     @include pc {
