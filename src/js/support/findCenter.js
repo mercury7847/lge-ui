@@ -9,7 +9,7 @@ function moveDetail(el, detailUrl, windowHeight) {
     var searchResultText = {
         search: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         localSearch: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
-        roadSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        roadSearch: '선택한 주소의 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         subwaySearch: '\"{{keyword}}역\" 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         userAddressSearch: '내 주소 기준으로 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         currentSearch: '내 위치 기준으로 <strong>{{total}}개</strong>의 센터를 찾았습니다.'
