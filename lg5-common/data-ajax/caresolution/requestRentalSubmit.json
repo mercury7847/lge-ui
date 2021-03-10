@@ -4,6 +4,7 @@
     "message": null,
     "data": {
         "success": "Y",
+        "endTypeFlag": "C",
         "sendUrl": "http://lge.com",
         "alert":{
             "title": "등록을 하지 못했습니다.",

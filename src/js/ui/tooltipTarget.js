@@ -74,7 +74,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                 self._close();
             });
 
-            $(window).off().on('resize', function(){
+            $(window).on('resize', function(){
                 self._positionCheck();
             });
         },
