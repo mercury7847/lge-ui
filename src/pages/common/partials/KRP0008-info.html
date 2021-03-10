@@ -37,11 +37,6 @@
 			>
 			</div> 
             <!-- //2021-02-25 크레마 리뷰 -->
-            <!-- <a href="#">
-                <div class="star"><span class="blind">리뷰있음</span></div>
-                <div class="average-rating"><span class="blind">평점</span>4.0</div>
-                <div class="review-count"><span class="blind">리뷰 수</span>(452개)</div>
-            </a> -->
         </div>
         <!-- // 리뷰 별점 영역 -->
         <div class="product-detail-option">
@@ -413,27 +408,84 @@
                 <div class="text">
                     <span>케어십 서비스</span>
                     @@include('./common/modules/tooltip.html', {
-                    "type" : "include",
-                    "page" : "tooltip-KRP0008-01"
+                        "type" : "include",
+                        "page" : "tooltip-KRP0008-01"
                     })
                 </div>
                 <div class="select-option radio service">
+                    <!-- 210310 수정 [케어십 서비스 신청/미신청 옵션 수정] -->
                     <div class="select-list-wrap w-auto">
-                        <ul role="radiogroup">
+                        <ul class="ui_radio_visible">
                             <li>
-                                <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-1" name="rdo5" value="Y" checked>
+                                <span class="rdo-wrap">
+                                    <input type="radio" id="rdo5-1" name="rdo5" value="Y" data-visible-target=".general-careship">
                                     <label for="rdo5-1">신청</label>
+                                </span>
+                                <div class="careship-option general-careship">
+                                    <dl class="select-info select-box">
+                                        <dt class="select-text">방문주기</dt>
+                                        <dd>
+                                            <div class="select-wrap">
+                                                <input type="hidden" name="mmType" value=""/>
+                                                <select class="ui_selectbox" id="select5-1" title="방문주기 선택">
+                                                    <option value="1">1회 / 1개월</option>
+                                                    <option value="2">1회 / 2개월</option>
+                                                    <option value="3">1회 / 3개월</option>
+                                                    <option value="6">1회 / 6개월</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <div class="select-info select-box dropdown-box careship-card-list">
+                                        <div class="select-wrap ui_dropdown">
+                                            <input type="hidden" name="cardType" value=""/>
+                                            <div class="select-button">
+                                                <div class="select-text">
+                                                    <span>제휴카드</span>
+                                                    @@include('./common/modules/tooltip.html', {
+                                                    "type" : "include",
+                                                    "page" : "tooltip-KRP0008-02"
+                                                    })
+                                                </div>
+                                                <a href="#" class="ui_dropdown_toggle">이용시 최대 23,000원 할인</a>
+                                            </div>
+                                            <div class="selectbox-list ui_dropdown_list">
+                                                <ul class="select-list">
+                                                    <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
+                                                    <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
+                                                    <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
+                                                    <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
+                                                    <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
+                                                    <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
+                                                    <li><a href="#card5">[광주] 베스트케어</a></li>
+                                                    <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
+                                                    <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
+                                                    <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
+                                                    <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <dl class="select-info price-info total">
+                                        <dt class="text">
+                                            <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
+                                        </dt>
+                                        <dd class="content">
+                                            <span class="price">월 19,900원<em class="desc">무상할인(2개월)</em></span>
+                                        </dd>
+                                    </dl>
                                 </div>
                             </li>
                             <li>
-                                <div role="radio" class="rdo-wrap">
-                                    <input type="radio" id="rdo5-2" name="rdo5" value="N">
+                                <span class="rdo-wrap">
+                                    <input type="radio" id="rdo5-2" name="rdo5" value="N" data-visible-target="" checked>
                                     <label for="rdo5-2">미신청</label>
-                                </div>
+                                </span>
                             </li>
                         </ul>
                     </div>
+                    <!-- 210310 수정 [케어십 서비스 신청/미신청 옵션 수정] -->
                 </div>
             </div>
             <!-- // 케어십 서비스 -->
@@ -647,93 +699,90 @@
                     </ul>
                 </div>
                 <!-- 케어십 서비스 -->
+                <!-- 210310 수정 [케어십 서비스 신청/미신청 옵션 수정] -->
                 <div class="careship-service">
-                    <div class="box">
-                        <dl class="select-info radio-box first">
-                            <dt class="text">
-                                <span>케어십 서비스</span>
-                                @@include('./common/modules/tooltip.html', {
-                                    "type" : "include",
-                                    "page" : "tooltip-KRP0008-01"
-                                })
-                            </dt>
-                            <dd class="content">
-                                <div class="select-option radio service">
-                                    <div class="select-list-wrap w-auto">
-                                        <ul role="radiogroup">
-                                            <li>
-                                                <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-1" name="careSelect" value="Y" checked>
-                                                    <label for="rdo7-1">신청</label>
+                    <div class="text">
+                        <span>케어십 서비스</span>
+                        @@include('./common/modules/tooltip.html', {
+                        "type" : "include",
+                        "page" : "tooltip-KRP0008-01"
+                        })
+                    </div>
+                    <div class="select-option radio service">
+                        <div class="select-list-wrap w-auto">
+                            <ul class="ui_radio_visible">
+                                <li>
+                                    <span class="rdo-wrap">
+                                        <input type="radio" id="rdo7-1" name="rdo7" value="Y" data-visible-target=".caresolution-careship" checked>
+                                        <label for="rdo7-1">신청</label>
+                                    </span>
+                                    <div class="careship-option caresolution-careship">
+                                        <dl class="select-info select-box">
+                                            <dt class="select-text">방문주기</dt>
+                                            <dd>
+                                                <div class="select-wrap">
+                                                    <input type="hidden" name="mmType" value=""/>
+                                                    <select class="ui_selectbox" id="select7-1" title="방문주기 선택">
+                                                        <option value="1">1회 / 1개월</option>
+                                                        <option value="2">1회 / 2개월</option>
+                                                        <option value="3">1회 / 3개월</option>
+                                                        <option value="6">1회 / 6개월</option>
+                                                    </select>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div role="radio" class="rdo-wrap">
-                                                    <input type="radio" id="rdo7-2" name="careSelect" value="N">
-                                                    <label for="rdo7-2">미신청</label>
+                                            </dd>
+                                        </dl>
+                                        <div class="select-info select-box dropdown-box careship-card-list">
+                                            <div class="select-wrap ui_dropdown">
+                                                <input type="hidden" name="cardType" value=""/>
+                                                <div class="select-button">
+                                                    <div class="select-text">
+                                                        <span>제휴카드</span>
+                                                        @@include('./common/modules/tooltip.html', {
+                                                        "type" : "include",
+                                                        "page" : "tooltip-KRP0008-02"
+                                                        })
+                                                    </div>
+                                                    <a href="#" class="ui_dropdown_toggle">이용시 최대 23,000원 할인</a>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="select-info select-box">
-                            <dt class="select-text">방문주기</dt>
-                            <dd>
-                                <div class="select-wrap">
-                                    <input type="hidden" name="mmType" value=""/>
-                                    <select class="ui_selectbox" id="select1" title="방문주기 선택">
-                                        <option value="1">1회 / 1개월</option>
-                                        <option value="2">1회 / 2개월</option>
-                                        <option value="3">1회 / 3개월</option>
-                                        <option value="6">1회 / 6개월</option>
-                                    </select>
-                                </div>
-                            </dd>
-                        </dl>
-                        <!-- 2021-02-05 클래스 추가 -->
-                        <div class="select-info select-box dropdown-box careship-card-list">
-                            <div class="select-wrap ui_dropdown">
-                                <input type="hidden" name="cardType" value=""/>
-                                <div class="select-button">
-                                    <div class="select-text">
-                                        <span>제휴카드</span>
-                                        @@include('./common/modules/tooltip.html', {
-                                            "type" : "include",
-                                            "page" : "tooltip-KRP0008-02"
-                                        })
-                                    </div>
-                                    <a href="#" class="ui_dropdown_toggle">이용시 최대 23,000원 할인</a>
-                                </div>
-                                <div class="selectbox-list ui_dropdown_list">
-                                    <ul class="select-list">
-                                        <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
-                                        <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
-                                        <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
-                                        <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
-                                        <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
-                                        <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
-                                        <li><a href="#card5">[광주] 베스트케어</a></li>
-                                        <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
-                                        <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
-                                        <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
-                                        <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
+                                                <div class="selectbox-list ui_dropdown_list">
+                                                    <ul class="select-list">
+                                                        <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
+                                                        <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
+                                                        <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
+                                                        <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
+                                                        <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
+                                                        <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
+                                                        <li><a href="#card5">[광주] 베스트케어</a></li>
+                                                        <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
+                                                        <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
+                                                        <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
+                                                        <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
 
-                                    </ul>
-                                </div>
-                            </div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <dl class="select-info price-info total">
+                                            <dt class="text">
+                                                <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
+                                            </dt>
+                                            <dd class="content">
+                                                <span class="price">월 19,900원<em class="desc">무상할인(2개월)</em></span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                <span class="rdo-wrap">
+                                    <input type="radio" id="rdo7-2" name="rdo7" value="N" data-visible-target="">
+                                    <label for="rdo7-2">미신청</label>
+                                </span>
+                                </li>
+                            </ul>
                         </div>
-                        <dl class="select-info price-info total">
-                            <dt class="text">
-                                <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
-                            </dt>
-                            <dd class="content">
-                                <span class="price">월 19,900원<em class="desc">무상할인(2개월)</em></span>
-                            </dd>
-                        </dl>
                     </div>
                 </div>
+                <!-- 210310 수정 [케어십 서비스 신청/미신청 옵션 수정] -->
                 <!-- // 케어십 서비스 -->
 
                 <div class="box payment-amount">
@@ -772,6 +821,8 @@
                                     <div class="payment">
                                         <span class="price">1,853,090원</span>
                                     </div>
+
+
                                 </dd>
                             </dl>
                         </li>
