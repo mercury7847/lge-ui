@@ -163,9 +163,36 @@
         .product-option {
             position: relative;
             //width: 100%;
-            margin: 5px -48px 13px;
+            margin: 5px -5px 13px;
             font-size: 0;
             text-align: center;
+            &:before,
+            &:after {
+                content:' ';
+                display:inline-block;
+                position:absolute;
+                top:0;
+                z-index:1;
+                width:24px;
+                height:36px;
+                
+            }
+            &:before {
+                left:0;
+                background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+            }
+            &:after {
+                right:0;
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+            }
+            @include mobile {
+                &:before,
+                &:after {
+                    width:32px;
+                    height:36px;
+                    
+                }
+            }
             .option-list {
                 display: inline-block;
                 padding: 3px;
