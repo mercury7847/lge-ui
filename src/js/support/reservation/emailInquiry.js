@@ -16,24 +16,27 @@
     var validation;
 
     var reservation = {
-        options: {
-            category: '',
-            categoryNm: '',
-            subCategory: '',
-            subCategoryNm: '',
-            modelCode: '',
-            productCode: ''
-        },
         init: function() {
             var self = this;
-            var options = self.options;
+            var param = {};
 
-            options.category = $('#category').val();
-            options.categoryNm = $('#categoryNm').val();
-            options.subCategory = $('#subCategory').val();
-            options.subCategoryNm = $('#subCategoryNm').val();
-            options.modelCode = $('#modelCode').val();
-            options.productCode = $('#productCode').val();
+            self.options = {
+                category: '',
+                categoryNm: '',
+                subCategory: '',
+                subCategoryNm: '',
+                modelCode: '',
+                productCode: ''
+            };
+
+            param = {
+                category: $('#category').val(),
+                categoryNm: $('#categoryNm').val(),
+                subCategory: $('#subCategory').val(),
+                subCategoryNm: $('#subCategoryNm').val(),
+                modelCode: $('#modelCode').val(),
+                productCode: $('#productCode').val()
+            };
 
             self.$cont = $('.contents');
             self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
@@ -52,10 +55,10 @@
             self.$recordBox = self.$stepInput.find('#recordBox');
             self.$rcptNoBox = self.$stepInput.find('#rcptNoBox');
 
+            self.param = param;
             self.isLogin = lgkorUI.isLogin;
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
-            self.param = $.extend(true, {}, options);
-            
+
             var register = {
                 privcyCheck: {
                     required: true,
@@ -123,8 +126,24 @@
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
                 self.$cont.commonModel({
                     register: register,
-                    selected: options
+                    selected: self.param
                 });
+
+                var url = location.search;
+
+                if (url.indexOf("?") > -1) {
+                    var flag = $('#stepTerms').length && $('#stepTerms').hasClass('active') ? true : false;
+                    var search = url.substring(1);
+                    var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+
+                    if (!flag) {
+                        if (searchObj.parts) {
+                            $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
+                        } else if (searchObj.simple) {
+                            $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
+                        }
+                    }
+                }
             });
         },
         loadInquiry: function(data, url) {

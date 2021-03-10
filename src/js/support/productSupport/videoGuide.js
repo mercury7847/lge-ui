@@ -95,6 +95,10 @@
                 self.$cont.commonModel('complete');
             }
         },
+        setPopularKeyword: function(data) {
+            var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
+            this.$keywordWrap.search('setPopularKeyword', arr);
+        },
         drawTopicList: function(data) {
             var self = this;
             var listArr = data.topicList instanceof Array ? data.topicList : [],
@@ -190,10 +194,6 @@
 
             self.$searchKeyword.val(keyword);
             self.$searchKeyword.trigger('update');
-        },
-        setPopularKeyword: function(data) {
-            var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
-            this.$keywordWrap.search('setPopularKeyword', arr);
         },
         requestComplete: function() {
             var self = this;
