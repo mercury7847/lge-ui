@@ -327,7 +327,8 @@
           "orderPrice": 2834060,
           "discountPrice": 834060,
           "memberShipPoint": 0,
-          "totalPrice": 2000000
+          "totalPrice": 2000000,
+          "transType": "B"
       },
       "shipping":{
           "name":"이연철",
