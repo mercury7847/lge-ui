@@ -294,7 +294,7 @@
 
                 if (result.success == true) {    
                     lgkorUI.confirm('', {
-                        title:'예약 하시겠습니까?',
+                        title:'문의 하시겠습니까?',
                         okBtnName: '확인',
                         cancelBtnName: '취소',
                         ok: function() {
