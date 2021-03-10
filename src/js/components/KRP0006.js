@@ -1,7 +1,4 @@
 (function() {
-    $(window).ready(function(){
-        if(!document.querySelector('.KRP0006')) return false;
-
         var KRP0006 = {
             init: function() {
                 var self = this;
@@ -105,6 +102,8 @@
             }
         };
 
+    $(document).ready(function(){
+        if(!document.querySelector('.KRP0006')) return false;
         KRP0006.init();
     });
 })();

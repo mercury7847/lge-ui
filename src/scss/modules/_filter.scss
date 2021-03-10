@@ -294,14 +294,14 @@
                                 @include font-small;
                             }
                         }
-                        .rdo-wrap input:checked + label {
-                            &:before {
-                                background-image: url("/lg5-common/images/bg-input-checked-gray.svg");
-                            }
-                            &:after {
-                                background: $color-gray-1;
-                            }
-                        }
+                        //.rdo-wrap input:checked + label {
+                        //    &:before {
+                        //        background-image: url("/lg5-common/images/bg-input-checked-gray.svg");
+                        //    }
+                        //    &:after {
+                        //        background: $color-gray-1;
+                        //    }
+                        //}
 
                         .chk-wrap-colorchip {
                             & input:disabled + label {
