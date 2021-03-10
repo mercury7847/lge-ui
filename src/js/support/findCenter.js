@@ -7,12 +7,12 @@ function moveDetail(el, detailUrl, windowHeight) {
 
 
     var searchResultText = {
-        search: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
-        localSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
+        search: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
+        localSearch: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         roadSearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
-        subwaySearch: '검색결과 <strong>{{total}}개</strong>의 센터가 있습니다.',
-        userAddressSearch: '내 주소 기준으로 <strong>{{total}}개</strong>의 센터가 있습니다.',
-        currentSearch: '내 위치 기준으로 <strong>{{total}}개</strong>의 센터가 있습니다.'
+        subwaySearch: '\"{{keyword}}역\" 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
+        userAddressSearch: '내 주소 기준으로 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
+        currentSearch: '내 위치 기준으로 <strong>{{total}}개</strong>의 센터를 찾았습니다.'
     };
 
     var localOptTemplate = '<option value="{{code}}">{{codeName}}</option>';
@@ -1062,8 +1062,17 @@ function moveDetail(el, detailUrl, windowHeight) {
         _setResultText: function(){
             var self = this;
 
+            var searchResultVal = {
+                search: $('#address1').val(),
+                localSearch: $('#select1').val() + ' ' + $('#select2').val(),
+                roadSearch: '',
+                subwaySearch: $('#select5').val(),
+                userAddressSearch:'',
+                currentSearch: ''
+            };
+
             var resultxt = vcui.template(searchResultText[self.schReaultTmplID], {
-                keyword: self.searchKeyword,
+                keyword: searchResultVal[self.schReaultTmplID],
                 total: self.$defaultListLayer.find('> li').length.toString()
             });
             
