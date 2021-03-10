@@ -2410,11 +2410,22 @@ $.fn.serializeObject = function() {
             });
         });
 
+        $(document).on('keyup', 'input[type="number"]', function(e){
+            var $this = $(this);
+            var v = $this.val();
+
+            if( v != null && v != "") {
+                $this.data('oldValue', v);
+            }
+        });
+
         $(document).on('blur', 'input[type="number"]', function(e){
-            var reg = /^[0-9]/g;
-        
-            if(!reg.test(this.value) ) {
-                this.value = this.value.replace(/^[0-9]/g, "");
+            var $this = $(this);
+            var v = $this.val();
+            var oldVal = $this.data('oldValue');
+
+            if( v == null || v == "") {
+                $this.val(oldVal);
             }
         });
 
