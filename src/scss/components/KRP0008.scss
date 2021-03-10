@@ -507,14 +507,6 @@
                 display: inline-block;
                 @include font-small;
                 vertical-align: middle;
-                &:after {
-                    display: inline-block;
-                    width: 1px;
-                    height: 12px;
-                    margin: 0 8px;
-                    background-color: $color-border;
-                    content: '';
-                }
             }
             .review-info {
                 display: inline-block;
@@ -535,7 +527,16 @@
                     vertical-align: bottom;
                 }
                 .crema-product-reviews-score {
+                    display:inline-block;
                     font-size:16px;
+                    &:before {
+                        display: inline-block;
+                        width: 1px;
+                        height: 12px;
+                        margin: 0 8px;
+                        background-color: $color-border;
+                        content: '';
+                    }
                 }
             }
             @include mobile {
