@@ -1067,7 +1067,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var searchResultVal = {
                 search: $('#address1').val(),
-                localSearch: $('#select1').val() + ' ' + $('#select2').val(),
+                localSearch: $('#select1 option:selected').text() + ' ' + $('#select2 option:selected').text(),
                 roadSearch: '',
                 subwaySearch: $('#select5').val(),
                 userAddressSearch:'',
