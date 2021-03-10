@@ -53,7 +53,7 @@ $(window).ready(function(){
 				var dist = -scrolltop + comptop;	
                 
                 if(dist <= topDistance){
-					var top = $mainSticky.length ? $mainSticky.height()-2 : 0;
+					var top = $mainSticky.length ? $mainSticky.height() : 0;
                     $component.addClass('fixed').css({
                         position:"fixed",
 						top:top,
@@ -132,10 +132,10 @@ $(window).ready(function(){
         function scrollMoved(id){
             if($(id).length){
 				var topDistance = 0;
-				if($mainSticky.length) topDistance += $mainSticky.height();
+				if($mainSticky.length) topDistance += $mainSticky.height()-2;
 
-				var movtop = $(id).offset().top - topDistance+2;
-    
+				var movtop = $(id).offset().top - topDistance;
+				
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }
         }
