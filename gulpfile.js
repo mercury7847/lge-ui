@@ -113,7 +113,7 @@ const concatNames = [
     src + "/js/ui/smoothScroll.js",
     src + "/js/ui/tab.js",
     src + "/js/ui/lazyLoader.js",
-    src + "/js/ui/lazyLoaderSwitch",
+    src + "/js/ui/imageSwitch.js",
     src + "/js/ui/calendar.js",
     src + "/js/ui/videoBox.js",
     src + "/js/ui/youtubeBox.js",
