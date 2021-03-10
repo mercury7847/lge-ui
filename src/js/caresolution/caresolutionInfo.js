@@ -342,7 +342,7 @@ var CareCartInfo = (function() {
                     self._setScrollMoved();
                 });
                 self._setScrollMoved();
-            }
+            };
         },
 
         _bindPopupEvents: function() {

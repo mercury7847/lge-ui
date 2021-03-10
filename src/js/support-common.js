@@ -692,12 +692,14 @@ CS.MD.commonModel = function() {
                     value = $this.val().toUpperCase(),
                     opt = self.options;
 
-                var regex = /[^a-zA-Z0-9.\-]/;
+                var regex = /[^a-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
                     return;
                 }
+
+                console.log(e);
 
                 value = $this.val().toUpperCase();
 
@@ -765,7 +767,7 @@ CS.MD.commonModel = function() {
                 var $this = $(this),
                     value = $this.val().toUpperCase();
 
-                var regex = /[^a-zA-Z0-9.\-]/;
+                var regex = /[^a-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
@@ -852,7 +854,7 @@ CS.MD.commonModel = function() {
                 }
 
                 if (self.$el.hasClass('service-engineer') && (data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
-                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownStartTime').val(),{
+                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
                         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
                     });
 
@@ -940,7 +942,7 @@ CS.MD.commonModel = function() {
                     }
 
                     self.$modelPopup.data('category', $this.val());
-                    self.$modelPopup.data('subCategory', '');
+                    self.$modelPopup.data('subCategory', value);
                     
                     self.param = $.extend(self.param, {
                         category: $this.val(),
@@ -976,7 +978,7 @@ CS.MD.commonModel = function() {
                 }
 
                 if (self.$el.hasClass('service-engineer') && ($this.val() == 'CT50019259' || $this.val() == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
-                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownStartTime').val(),{
+                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
                         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
                     });
 
@@ -2406,6 +2408,10 @@ $.fn.serializeObject = function() {
             $(this).on('mousewheel',function(e){
                 e.preventDefault();
             });
+        });
+
+        $(document).on('blur', 'input[type="number"]', function(e){
+            this.value = this.value.replace(/^[0-9]/g, "");
         });
 
         $(document).on('change', '.agree-wrap input:checkbox', function(){

@@ -41,7 +41,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function _bindEvents() {
             var self = this;
 
-            self.$con.off(self.eventNS).on('scroll' + self.eventNS, function () {
+            self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
 
@@ -87,7 +87,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             self.triggerHandler('lazyLoaderscroll');
             if (!self.$items.length) {
                 self.triggerHandler('lazyLoadercomplete');
-                self.$con.off(self.eventNS);
+                //self.$con.off(self.eventNS);
             }
         },
         /*
