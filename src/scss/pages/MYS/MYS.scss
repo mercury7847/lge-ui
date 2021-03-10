@@ -221,13 +221,30 @@
             }
         }
         .number {
+            padding-top: 4px;
             font-weight: 700;
             font-size: $font-large-5;
             line-height: 52px;
             color: $color-white;
             @include tablet {
+                padding-top: 8px;
                 font-size: $font-large-3;
                 line-height: 37px;
+            }
+        }
+        .btn-area {
+            padding-top: 16px;
+            .btn {
+                border-color: $color-white !important;
+                color: $color-white;
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary !important;
+                }
+            }
+            @include tablet {
+                padding-top: 6px;
             }
         }
         .coupon {

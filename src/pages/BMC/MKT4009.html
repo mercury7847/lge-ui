@@ -23,7 +23,7 @@
                         <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." disabled>
+                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly>
                             </span>
                         </dd>
                     </dl>
@@ -41,7 +41,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="number" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." disabled>
+                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly>
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -80,14 +80,14 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" disabled>
+                                        <input type="text" class="disabled" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" readonly>
                                     </div>
                                     <div class="cell">
                                         <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" class="disabled" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
                                 </div>
                             </div>
                             <div class="input-wrap">
@@ -147,14 +147,14 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" disabled>
+                                        <input type="text" class="disabled" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" readonly>
                                     </div>
                                     <div class="cell">
                                         <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" class="disabled" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
                                 </div>
                             </div>
                             <div class="input-wrap">
