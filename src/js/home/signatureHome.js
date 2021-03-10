@@ -583,6 +583,16 @@ $(function() {
             // 앱 대응시 주석처리 end
         }
 
+        //전시기록 더보기...
+        var $artGuide = $('.signature-section.art-guide');
+        var $artMoreBtn = $artGuide.find('button.btn-moreview');
+        console.log($artMoreBtn)
+        $artMoreBtn.on('click', function(e){
+            e.preventDefault();
+
+            toggleMoreClick();
+        });
+
 
 
         window.resizeScene = render;
