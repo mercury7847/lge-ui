@@ -1136,6 +1136,23 @@ CS.MD.commonModel = function() {
                 var result = termsValidation.validate();
                 
                 if (result.success) {
+                    if ($('.contents.email-inquiry').length) {
+                        var url = location.search;
+
+                        if (url.indexOf("?") > -1) {
+                            var search = url.substring(1);
+                            var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+
+                            if (searchObj.parts) {
+                                $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
+                                return;
+                            } else if (searchObj.simple) {
+                                $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
+                                return;
+                            }
+                        }
+                    }
+
                     if (self.isModel) {
                         if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
                             self.$el.find('#isMyProduct').val('Y');

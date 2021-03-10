@@ -85,8 +85,8 @@ button:active { -webkit-box-shadow: none; box-shadow: none; }
 .c-function.certify-time button { background-image: url('/lg5-common/pcsvc/images/bt-prolong.png'); background-size:109px 23px;}
 .c-function.certify-time button:active { background-image: url('/lg5-common/pcsvc/images/bt-prolong_sel.png'); }
 
+.cab-fieldset .fc-note-message .error {top:calc(100% - 2px);}
 .ch-suggestions .cab-fieldset .fc-note-message .fc-note { height: 70px; }
-.ch-suggestions .cab-fieldset .fc-note-message .error {top:calc(100% - 2px);}
 
 .web-delivery { position: relative; width: 334px; margin: 0 auto; padding: 0 15px 10px; }
 .web-delivery.has-form { width: 350px; padding: 0 7px 5px; }
