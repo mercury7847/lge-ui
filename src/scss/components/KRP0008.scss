@@ -1466,26 +1466,56 @@
         }
 
         .careship-service {
-            @include clearfix;
+            //@include clearfix;
             margin-top: 40px;
             padding: 0 24px;
             .box {
                 margin: 7px -24px 0;
             }
-            .text {
-                float: left;
+            > .text {
+                position: relative;
+                z-index: 4;
+                //float: left;
                 @include font-small;
                 .tooltip-wrap {
                     margin-top: 0;
                 }
             }
             .select-option {
-                float: right;
+                //float: right;
                 .select-list-wrap > ul {
-                    margin-left: -26px;
+                    position: relative;
+                    margin-top: 0;
+                    //margin-left: -26px;
                     li {
-                        padding-left: 26px;
+                        width: 100%;
+                        margin-top: 0;
+                        //padding-left: 26px;
+                        padding-left: 0;
+                        .rdo-wrap {
+                            position: absolute;
+                            top: -24px;
+                            right: 0;
+                            z-index: 5;
+                            input + label {
+                                @include font-small;
+                                &:after {
+                                    top: 0;
+                                }
+                            }
+                        }
+                        &:first-child {
+                            .rdo-wrap {
+                                right: 90px;
+                            }
+                        }
                     }
+                }
+                .careship-option {
+                    margin: -48px -24px 0;
+                    padding: 73px 24px 24px;
+                    border-radius: 8px;
+                    background-color: $color-bg;
                 }
             }
         }
