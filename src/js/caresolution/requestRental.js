@@ -718,6 +718,20 @@
                 });
             } 
 
+            if(result.data.newProductInfo && result.data.newProductInfo.length){
+                console.log("### result.data.newProductInfo ###", result.data.newProductInfo)
+                $('.order-list li').each(function(idx, item){
+                    var info = result.data.newProductInfo[idx];
+
+                    $(item).find('.item-options2').empty();
+                    for(var i in info.options) $(item).find('.item-options2').append("<p>" + info.options[i] + "</p>");                    
+
+                    $(item).find('.amount .price').empty();
+                    if(info.originalPrice) $(item).find('.amount .price').append('<p class="original">' + info.originalPrice + '</p>');
+                    if(info.totalPrice) $(item).find('.amount .price').append('<p class="total">' + info.totalPrice + '</p>');
+                });
+            }
+
             cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
 

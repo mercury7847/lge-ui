@@ -2,7 +2,6 @@
 ;(function(){
 
     function init(){
-        console.log("shopDetail start")
             
         vcui.require(['ui/storeMap', 'ui/carousel'], function () {
             var mapId = $('.contents.store-info-wrap').data("mapId");
@@ -18,6 +17,7 @@
                 searchRoadUrl = "https://map.naver.com/index.nhn?elng=" + longitude + "&elat=" + latitude + "&etext=" + shopname + "&menu=route&pathType=1";
             }
             $('.searchRoad-btn').attr("href", encodeURI(searchRoadUrl));
+
             $('.map').vcStoreMap({
                 keyID: mapId,
                 appKey: appkey,
