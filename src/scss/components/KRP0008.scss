@@ -977,6 +977,12 @@
                         .tooltip-icon {
                             background-image: url('/lg5-common/images/icons/icon-tooltip-white.svg');
                         }
+                        @include mobile {
+                            .tooltip-box {
+                                min-width: calc(100vw - 48px);
+                                left: -16px;
+                            }
+                        }
                     }
                 }
                 .select-wrap {
@@ -1469,6 +1475,9 @@
             //@include clearfix;
             margin-top: 40px;
             padding: 0 24px;
+            @include mobile {
+                padding: 0 12px;
+            }
             .box {
                 margin: 7px -24px 0;
             }
@@ -1516,6 +1525,10 @@
                     padding: 73px 24px 24px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                    @include mobile {
+                        margin: -48px -12px 0 0;
+                        padding: 68px 16px 24px;
+                    }
                 }
             }
         }
