@@ -21,10 +21,10 @@
         -webkit-overflow-scrolling: touch;
         > li {
             display:inline-block;
-            margin-left:40px;
+            margin-left:36px;
             vertical-align:top;
             @include mobile {
-                margin-left:24px;
+                margin-left:20px;
             }
             &:first-child {
                 margin-left:0;
