@@ -875,7 +875,9 @@
             border-color:#EC455A;
         }
 
-        &:disabled, &:read-only {
+        &:disabled,
+        &.disabled,
+        &:read-only {
             background:#ededed;
             border-color:#ededed;
             &::placeholder {

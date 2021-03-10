@@ -2,7 +2,9 @@
     <header class="pop-header">
         <h1 class="tit"><span>제품 문제 해결</span></h1>
     </header>
-    <section class="pop-conts support no-footer">
+
+    <!-- 2021.03.10 class no-footer 삭제 -->
+    <section class="pop-conts support">
         @@if (context.static) {
             <div class="sorting-wrap">
                 <div class="total">전체 <em id="count" class="count">154</em>건</div>
@@ -197,10 +199,21 @@
             </div>
         }
     </section>
-    <!-- 예약 및 결과 조회 메뉴에서 접근 시에만 보임 -->
+
+    <!-- 2021.03.10 추가 -->
+    <div class="pop-footer center" ui-modules="Footer">
+        <div class="btn-group">
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+        </div>
+    </div>
+    <!-- //2021.03.10 추가 -->
+
+
+    <!-- 2021.03.10 수정 : 예약 및 결과 조회 메뉴에서 접근 시에만 보임 -->
     <!-- 
     <div class="pop-footer">
         <div class="btn-group center">
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
             <button type="button" class="btn pink btn-confirm"><span>예약취소</span></button>
         </div>
     </div>

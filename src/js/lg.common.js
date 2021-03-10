@@ -378,27 +378,31 @@ var isApp = function(){
                 }
                 
                 new ResponsiveImage('body', breakpoint);
-
-
+                
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                $(window).on('resize', function(e){
+                    self.resetFlexibleBox();
+                });  
+                self.resetFlexibleBox();
+                
+                /*
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    //self.resizeCallbacks.push(callback);
+                    self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
-                    /*
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
-                    */
 
                     //self._switchLinker();
 
                     self.resetFlexibleBox();
                 });  
-                self.resetFlexibleBox();              
-    
+                self.resetFlexibleBox();
+                */
+
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
                 vcui.ui.setDefaults('Modal', {
@@ -1458,38 +1462,125 @@ var isApp = function(){
         },
 
         searchModelName: function(){
-            vcui.require([
-                'ui/selectTarget'
-            ], function () {
-                $('.ul_select_target').vcSelectTarget({
-                    callback: function(data, target) {
-                        var $this = this.$el;
-                        var $target = $(target);
+            var optionsTmpl =  '<option value="{{code}}">{{name}}</options>';
 
-                        $target.off('change.modeName').on('change.modeName', function() {
-                            var url = $('.category-select').data('ajax'),
-                                categoryVal = $this.val(),
-                                subcategoryVal = $(this).val(),
-                                param;
+            var modelName = {
+                options: {
+                    text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
+                    imgPath: '/lg5-common/images/CS/img-model-name-example.jpg',
+                    imageAlt: '모델명 및 제조번호 확인 예시 이미지',
+                    categoryPlaceholder: '카테고리 선택',
+                    subCategoryPlaceholder: '세부 카테고리 선택'
+                },
+                init: function() {
+                    var self = this;
 
-                            if (subcategoryVal) {
-                                param = {
-                                    category: categoryVal,
-                                    subCategory: subcategoryVal
-                                };
+                    self.$modelButton = $('[data-href="#modelNamePopup"]');
+                    self.$modelPopup = $('#modelNamePopup');
+                    self.$category = self.$modelPopup.find('#select1');
+                    self.$subCategory = self.$modelPopup.find('#select2');
+                    self.$result = self.$modelPopup.find('.example-result');
 
-                                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                                    var data = result.data;
+                    self.searchModelNameUrl = self.$modelPopup.data('modelUrl');
+                    self.searchSubCategoryUrl = self.$modelPopup.data('subCategoryUrl');
 
-                                    $('.example-result .txt').html(data.text);
-                                    $('.example-result .img img').attr('src', data.imgPath);
-                                    $('.example-result .img img').attr('alt', data.imgAlt);
-                                });
-                            }
-                        });
+                    self.bindEvent();
+                },
+                setting: function() {
+                    var self = this;
+                    
+                    self.category = self.$modelPopup.data('category');
+                    self.subCategory = self.$modelPopup.data('subCategory');
+                    
+                    if (self.category) {
+                        self.$category.find('option[value="'+self.category+'"]').prop('selected', true);
+                        self.$category.vcSelectbox('update');
+                        self.searchSubCategory(self.category, self.subCategory);
+                        if (self.subCategory) {
+                            self.searchModelName(self.category, self.subCategory);
+                        }
                     }
-                });
-            });
+                },
+                searchSubCategory: function(category, subCategory) {
+                    var self = this;
+                    var subCategory = subCategory || '';
+                    var param = {
+                        cateSelect: category || self.$category.val()
+                    };
+                    
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(self.searchSubCategoryUrl, param, function(result) {
+                        var data = result.data;
+                        var html = '';
+
+                        data.forEach(function(item) {
+                            html += vcui.template(optionsTmpl, item);
+                        });
+
+                        self.$subCategory.find('option:not(.placeholder)').remove();
+                        self.$subCategory.append(html).prop('disabled', false);
+                        self.$subCategory.find('option[value="'+subCategory+'"]').prop('selected', true);
+                        self.$subCategory.vcSelectbox('update');
+
+                        lgkorUI.hideLoading();
+                    }, 'POST');
+                },
+                searchModelName: function(category, subCategory) {
+                    var self = this;
+                    var param = {
+                        category: category || self.$category.val(),
+                        subCategory: subCategory || self.$subCategory.val()
+                    };
+                    
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
+                        var $resultTxt = self.$result.find('.txt'),
+                            $resultImg = self.$result.find('.img img');
+                        var data = result.data;
+                        
+                        $resultTxt.html(data.text);
+                        $resultImg.attr('src', data.imgPath);
+                        $resultImg.attr('alt', data.imageAlt);
+
+                        lgkorUI.hideLoading();
+                    }, 'POST');
+                },
+                bindEvent: function() {
+                    var self = this;
+
+                    self.$modelButton.on('click', function() {
+                        self.setting();
+                        self.$modelPopup.vcModal();
+                    });
+
+                    self.$category.on('change', function() {
+                        self.searchSubCategory();
+                    });
+
+                    self.$subCategory.on('change', function() {
+                        self.searchModelName();
+                    });
+
+                    self.$modelPopup.on('modalhidden', function() {
+                        var $resultTxt = self.$result.find('.txt'),
+                            $resultImg = self.$result.find('.img img');
+                        var options = self.options;
+
+                        $resultTxt.html(options.text);
+                        $resultImg.attr('src', options.imgPath);
+                        $resultImg.attr('alt', options.imageAlt);
+
+                        self.$category.find('option.placeholder').prop('selected', true);
+                        self.$subCategory.prop('disabled', true);
+                        self.$subCategory.find('option:not(.placeholder)').remove();
+
+                        self.$category.vcSelectbox('update');
+                        self.$subCategory.vcSelectbox('update');
+                    });
+                }
+            }
+
+            modelName.init();
         },
 
         addLimitedInputEvent: function(ipt){
