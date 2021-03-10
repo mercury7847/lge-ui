@@ -713,7 +713,7 @@
         @include tablet {
             .support-list {
                 width:100%;
-                padding:110px 0 60px;
+                padding:60px 0;
                 text-align: center;
 
                 .list-header {
@@ -756,6 +756,7 @@
     
                 ul {
                     max-width:336px;
+                    width:100%;
                     > li {
                         a {
                             font-size:13px;
