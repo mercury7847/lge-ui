@@ -764,6 +764,9 @@
 // 개인정보취급방침, 이벤트개인정보처리방침, 이용약관
 .contents.term-wrap {
     border-top:8px solid #f4f4f4;
+    &.bt-none {
+        border-top:none;
+    }
     .cont-wrap {
         border:none;
     }
