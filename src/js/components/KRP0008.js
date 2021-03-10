@@ -1411,15 +1411,19 @@
                 var param = {
                     modelId: sendData.modelId
                 }
+                /*
                 if(!ajaxUrl) {
                     //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
                     ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
                 }
+                */
                 if(ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                         var data = result.data[0];
                         //로그인
                         loginFlag = data.loginFlag;
+                        //리뷰수
+                        
                         //보유멤버쉽 포인트
                         //var myMembershipPoint = data.myMembershipPoint;
                         
@@ -1510,7 +1514,8 @@
                     case "image":
                         self.pinchZoom.runZoom(1, false);
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
-                        self.$popPdpVisualImage.vcImageSwitch('reload');
+                        //self.$popPdpVisualImage.vcImageSwitch('reload');
+                        $('body').vcLazyLoaderSwitch('reload',self.$popPdpVisualImage);
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
@@ -1532,7 +1537,6 @@
                             'aria-describedby':item.alt
                         });
                         self.$popPdpVisualVideo.find('iframe').attr('src',item.videoUrl);
-                        //self.$popPdpVisualVideo.vcImageSwitch('reload');
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
