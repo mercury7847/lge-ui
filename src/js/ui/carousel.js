@@ -1845,8 +1845,19 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             self.initUI();
 
-
             if (opt.lazyLoad === 'progressive') {
+                
+                // 임시 response 이미지 체크 루틴
+                //2021-03-10 정승우
+                var $imgsToLoad = $('img[data-pc-src][data-m-src]', self.$slider);
+                $imgsToLoad.each(function () {
+                    var image = $(this);
+                    image.on('load', function (e) {
+                        self.setPosition();
+                        self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
+                    });
+                });
+                ////임시 response 이미지 체크 루틴
                 self.progressiveLazyLoad();
             }
         },
@@ -2034,7 +2045,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 imageSizes = image.attr('data-sizes') || self.$slider.attr('data-sizes');
                 
                 image.onerror = function () {
-                    if (tryCount < 3) {
+                    if (tryCount < 2) {
 
                         setTimeout(function () {
                             self.progressiveLazyLoad(tryCount + 1);

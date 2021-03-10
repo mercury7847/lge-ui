@@ -7,7 +7,7 @@
 vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
-    var LazyLoader = core.ui('LazyLoaderSwitch', {
+    var LazyLoaderSwitch = core.ui('LazyLoaderSwitch', {
         bindjQuery: 'lazyLoaderSwitch',
         defaults: {
             range: 200,
@@ -72,11 +72,11 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                         if (self.options.useFade) {
                             $el.css('opacity', 0);
                         }
-                        self._loadImage($el, function () {
+                        self._loadImage($el, /*function () {
                             if (self.options.useFade) {
                                 $el.stop().animate({ opacity: 1 });
                             }
-                        });
+                        }*/null);
                         return false;
                     }
                     return true;
@@ -127,6 +127,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                     var currentImage = $img.attr('data-current-image');
                     if(src && src != currentImage) {
                         $img.attr("src", src);
+                        //$img.attr("data-lazy", src);
                         $img.attr('data-current-image',src);
                     }
                 });
@@ -145,13 +146,17 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 var src = $img.attr('data-' + mode + '-src');
                 var currentImage = $img.attr('data-current-image');
                 if(src && src != currentImage) {
+                    
                     $img.attr("src", src);
+                    //$img.attr("data-lazy", src);
                     $img.attr('data-current-image',src);
+                    /*
                     if ($img[0].complete) {
                         cb.call($img);
                     } else {
                         $img.one('load', cb);
                     }
+                    */
                 }
                 // $img.attr("src", src);
                 // if ($img[0].complete) {
@@ -174,17 +179,8 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 }
                 */
             //}
-            /*
-            var src = $img.attr('data-src');
-            $img.attr("src", src);
-            if ($img[0].complete) {
-                cb.call($img);
-            } else {
-                $img.one('load', cb);
-            }
-            */
         }
     });
 
-    return LazyLoader;
+    return LazyLoaderSwitch;
 });
