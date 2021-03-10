@@ -82,7 +82,7 @@ var isApp = function(){
         ], function () {    
             console.log("buildCommonUI!!!!");
 
-            this.vcImageSwitch();
+            //this.vcImageSwitch();
             
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
@@ -97,8 +97,9 @@ var isApp = function(){
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
+            
             //this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
-
+            
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
 
@@ -387,12 +388,12 @@ var isApp = function(){
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                /*
                 $(window).on('resize', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
-                
-                /*
+                */
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
                     self.resizeCallbacks.push(callback);
@@ -406,7 +407,6 @@ var isApp = function(){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
-                */
 
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
