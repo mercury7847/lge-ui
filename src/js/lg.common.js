@@ -11,7 +11,6 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
-    /*
     window.onload = function(){
         vcui.require([
             'ui/lazyLoaderSwitch',
@@ -22,7 +21,6 @@ var isApp = function(){
             $b.vcLazyLoader();
         });
     };
-    */
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -78,11 +76,11 @@ var isApp = function(){
             "ui/smoothScroll",
             "ui/smoothScrollTab",
             "ui/checkboxAllChecker",
-            "ui/imageSwitch"
+            //"ui/imageSwitch"
         ], function () {    
             console.log("buildCommonUI!!!!");
 
-            this.vcImageSwitch();
+            //this.vcImageSwitch();
             
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
@@ -388,12 +386,12 @@ var isApp = function(){
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                /*
                 $(window).on('resize', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
-                */
+
+                /*
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
                     self.resizeCallbacks.push(callback);
@@ -407,6 +405,7 @@ var isApp = function(){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
+                */
 
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
