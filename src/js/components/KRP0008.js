@@ -48,7 +48,7 @@
     '</li>';
 
     var awardPopupItemTemplate = '<li>' +
-        '<span class="image"><img data-src="123123{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
+        '<span class="image"><img src="{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
         '<span class="text">{{storyTitle}}</span>' +
     '</li>';
 
@@ -510,9 +510,12 @@
                             var arr = awards instanceof Array ? awards : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
-                            arr.forEach(function(item, index) {
-                                $list_ul.append(vcui.template(awardPopupItemTemplate, item));
+
+                            var $frag = $(document.createDocumentFragment());
+                            arr.forEach(function(item) {
+                                $frag.append(vcui.template(awardPopupItemTemplate, item));
                             });
+                            $list_ul.append($frag);
                         }
                     }
 
