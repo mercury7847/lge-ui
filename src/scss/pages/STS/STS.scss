@@ -205,6 +205,19 @@
                         transform: translate(-50%,-50%);
                     }
                 }
+                .text-area {
+                    padding: 24px 32px 32px;
+                    .tag-wrap {
+                        padding-right: 85px;
+                    }
+                }
+                .date {
+                    position: absolute;
+                    top: auto;
+                    bottom: 32px;
+                    right: 32px;
+                    color: $color-default;
+                }
             }
             &.image,
             &.review {
@@ -226,18 +239,34 @@
                     border-color: rgba(255,255,255,.4);
                     color: $color-white;
                 }
+                .visual-area {
+                    overflow: hidden;
+                    height: 486px;
+                    border-radius: 8px;
+                    .image {
+                        display: block;
+                        position: relative;
+                        height: 100%;
+                        img {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 100%;
+                        }
+                    }
+                }
                 .text-area {
                     position: absolute;
                     bottom: 0;
                     right: 0;
                     left: 0;
                     z-index: 1;
-                    padding-bottom: 32px;
                     color: $color-white;
                     .card-title {
                         max-height: 93px;
                         font-size: $font-large-4;
-                        line-height: 46px;
+                        line-height: 52px;
                     }
                     .tag-wrap {
                         margin-top: 24px;
@@ -286,12 +315,12 @@
             }
         }
         .text-area {
-            padding: 16px 24px 24px;
+            padding: 24px 24px 32px;
             @include mobile {
                 padding: 14px 16px 24px;
             }
             .flag-wrap {
-                margin-bottom: 4px;
+                margin-bottom: 8px;
             }
             .card-title {
                 max-height: 60px;
@@ -300,7 +329,7 @@
                 @include textEllipsisClamp(2);
             }
             .tag-wrap {
-                margin-top: 16px;
+                margin-top: 12px;
                 font-size: 0;
                 .tag {
                     display: inline-block;
