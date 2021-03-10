@@ -82,7 +82,7 @@ var isApp = function(){
         ], function () {    
             console.log("buildCommonUI!!!!");
 
-            this.imageSwitch();
+            this.vcImageSwitch();
             
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
