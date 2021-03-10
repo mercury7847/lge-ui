@@ -7,14 +7,10 @@ $(document).ready(function() {
 			var component = $('.KRC0017');
 
 			vcui.require([ 
-				'ui/lazyLoader',
 				'ui/carousel',
 				'ui/modal',
 				"ui/youtubeBox",
-				"ui/imageSwitch"
 			], function () {
-				component.vcLazyLoader();
-				component.vcImageSwitch();
 				component.find('.youtube-box').vcYoutubeBox();
 		
 				component.find('a[data-control=custom_modal]').each(function(idx, item){		

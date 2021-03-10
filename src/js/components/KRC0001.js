@@ -52,7 +52,7 @@ $(window).ready(function(){
 	var KRC0001 = {
 		init: function(){
 			var self = this;
-            vcui.require(['ui/carousel',"ui/imageSwitch"], function () {
+            vcui.require(['ui/carousel'], function () {
 				self.setting();
 				self.bindEvents();
 			});

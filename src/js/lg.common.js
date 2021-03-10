@@ -11,6 +11,16 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+    window.onload = function(){
+        vcui.require([
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
+        ], function () {
+            var $b = $('body');
+            $b.vcLazyLoaderSwitch();
+            $b.vcLazyLoader();
+        });
+    };
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -45,38 +55,30 @@ var isApp = function(){
 
     $.fn.buildCommonUI = function () {
         vcui.require([
-                            'ui/selectbox',
-                            'ui/calendar',
-                            'ui/accordion',
-                            'ui/carousel',
-                            'ui/modal',
-                            'ui/tab',       
-                            'ui/lazyLoader',
-                            "ui/videoBox",
-                            "ui/youtubeBox",
-                            //"ui/imageSwitch",
-                            'ui/lazyLoaderSwitch',
-                            "ui/dropdown",
-                            "ui/textControl",
-                            "ui/fileInput",
-                            "ui/radioShowHide",
-                            'ui/inputClearButton',
-                            "ui/starRating",
-                            "ui/tooltipTarget",
-                            "ui/sticky",
-                            "ui/formatter",
-                            "ui/scrollNavi",
-                            "ui/smoothScroll",
-                            "ui/smoothScrollTab",
-                            "ui/checkboxAllChecker"
+            'ui/selectbox',
+            'ui/calendar',
+            'ui/accordion',
+            'ui/carousel',
+            'ui/modal',
+            'ui/tab',       
+            "ui/videoBox",
+            "ui/youtubeBox",
+            "ui/dropdown",
+            "ui/textControl",
+            "ui/fileInput",
+            "ui/radioShowHide",
+            'ui/inputClearButton',
+            "ui/starRating",
+            "ui/tooltipTarget",
+            "ui/sticky",
+            "ui/formatter",
+            "ui/scrollNavi",
+            "ui/smoothScroll",
+            "ui/smoothScrollTab",
+            "ui/checkboxAllChecker"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
-            this.vcLazyLoaderSwitch();
-            //this.vcImageSwitch();
-            this.vcLazyLoader();
-
-    
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
             this.find('.ui_dropdown').vcDropdown();
@@ -312,11 +314,8 @@ var isApp = function(){
                 'ui/carousel',
                 'ui/modal',
                 'ui/tab',       
-                'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch",
-                'ui/lazyLoaderSwitch',
                 "ui/textControl",
                 "ui/fileInput",
                 "ui/radioShowHide",
@@ -386,11 +385,13 @@ var isApp = function(){
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    self.resizeCallbacks.push(callback);
+                    //self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
+                    /*
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
+                    */
 
                     //self._switchLinker();
 
