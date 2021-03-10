@@ -35,6 +35,7 @@ $(window).ready(function(){
 
             $subSticky = $('.KRC0040');
             setSubStickyStatus();
+            
 
             $component.parent().height($component.height());
         }
@@ -121,7 +122,7 @@ $(window).ready(function(){
                     var id = $(item).find('a').attr('href');
                     if($(id).length){
                         var contop = $(id).offset().top;
-                        if(-scrolltop + contop < $component.height()){
+                        if(-scrolltop + contop <= $component.height()){
                             currentIdx = idx;
                         }
                     }
@@ -158,12 +159,11 @@ $(window).ready(function(){
         function scrollMoved(id){
             if($(id).length){
                 var compheight = $component.height();
-                //console.log("compheight:", compheight)
 
                 var firstId = $items.eq(0).find('a').attr('href');
                 if(id == firstId) compheight = 72;
 
-                var movtop = $(id).offset().top - compheight + 2;
+                var movtop = $(id).offset().top - compheight+2;
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }

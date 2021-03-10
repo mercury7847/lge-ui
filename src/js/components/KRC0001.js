@@ -34,7 +34,7 @@ $(window).ready(function(){
 							'{{/if}}'+	
 						'</div>' +
 						'{{#if item.buyBtnFlag == "Y" && item.obsBtnRule != "disable"}}'+
-						'<div class="product-button"><a href="#" class="btn border" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+						'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
@@ -157,8 +157,9 @@ $(window).ready(function(){
 		bindEvents: function() {
 			var self = this;
 
-			self.$section.find('div.products-list-wrap .ui_carousel_slider').on('click', 'li div.product-button a', function(e){
+			self.$section.on('click', '.requestCart-btn', function(e){
 				e.preventDefault();
+				
 				self.requestCart($(this));
 			})
 		},
@@ -199,6 +200,8 @@ $(window).ready(function(){
 				"typeFlag": sendflag,
 				// 		"pageType": "plp"
 			}
+
+			console.log("### requestCart ###", param)
 
 			lgkorUI.requestCart(ajaxUrl, param);
 		},
