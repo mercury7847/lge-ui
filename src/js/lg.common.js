@@ -385,11 +385,13 @@ var isApp = function(){
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    self.resizeCallbacks.push(callback);
+                    //self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
+                    /*
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
+                    */
 
                     //self._switchLinker();
 
@@ -1112,12 +1114,14 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
+                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
+                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1131,6 +1135,7 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
+                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1148,15 +1153,19 @@ var isApp = function(){
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
 
+                        lgkorUI.hideLoading();
+
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
+                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+                lgkorUI.hideLoading();
             }).always(function() {
                 lgkorUI.hideLoading();
                 //console.log( "complete" );

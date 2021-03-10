@@ -41,11 +41,11 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function _bindEvents() {
             var self = this;
 
-            self.$con.on('scroll' + self.eventNS, function () {
+            self.$con.off(self.eventNS).on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
 
-            $(window).on('resize' + self.eventNS, function(e){
+            $(window).on('resize', function(e){
                 self._resize();
             });
         },

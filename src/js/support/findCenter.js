@@ -486,8 +486,11 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.map-container').addClass('result-map');
             });
 
+            $(window).on('resize', function(e){
+                self._resize();
+            });
             self._resize();
-            $(window).trigger('addResizeCallback', self._resize.bind(self));
+            //$(window).trigger('addResizeCallback', self._resize.bind(self));
         },
         searchAddressToCoordinate: function(address, callback) { 
             var self = this;
