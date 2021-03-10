@@ -307,7 +307,7 @@ var isApp = function(){
             var self = this;
 
             vcui.require([  
-                'helper/responsiveImage',
+                //'helper/responsiveImage',
                 'helper/breakpointDispatcher',
                 'common/header', 
                 'common/footer',  
@@ -332,9 +332,8 @@ var isApp = function(){
                 "ui/scrollNavi",
                 "ui/smoothScroll",
                 "ui/smoothScrollTab",
-                "ui/selectTarget",
                 'ui/imageFileInput'
-            ], function (ResponsiveImage, BreakpointDispatcher) {
+            ], function (/*ResponsiveImage,*/ BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
                     matches: {
@@ -376,12 +375,14 @@ var isApp = function(){
                     }
                 }).start();     
                 
+                /*
                 var breakpoint = {
                     mobile: 768,
                     pc: 100000
                 }
                 
                 new ResponsiveImage('body', breakpoint);
+                */
                 
                 var $doc = $(document);                       
 
