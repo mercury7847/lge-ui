@@ -1259,7 +1259,7 @@
 
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
                 var $paymentAmount = $dm.parents('.payment-amount');
-                
+
                 //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
@@ -1381,16 +1381,32 @@
                         if(self.loginCheckEnd) {
                             if(loginFlag) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                                var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                                if(ajaxUrl) {
+                                    location.href = url;
+                                }
                             } else {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
                                 //스테이지 세팅후 제거 코드
                                 ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
+                                var sendParam = {
+                                    "rtModelSeq":param.rtModelSeq
+                                };
+                                if(sendParam.easyRequestCard) {
+                                    sendParam.easyRequestCard = param.easyRequestCard
+                                }
+                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                    console.log(result);
+                                    /*
+                                    var data = result.data;
+                                    var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                    if(obsDirectPurchaseUrl){
+                                        location.href = obsDirectPurchaseUrl;
+                                    }
+                                    */
+                                });
                             }
-                            var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                             console.log((loginFlag)?"!!!!!rental":"!!!!!notlogin rental",url,param);
-                            if(ajaxUrl) {
-                                location.href = url;
-                            }
                         } else {
                             self.processProductBuy = $dm;
                         }
