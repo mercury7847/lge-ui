@@ -2410,6 +2410,25 @@ $.fn.serializeObject = function() {
             });
         });
 
+        $(document).on('keyup', 'input[type="number"]', function(e){
+            var $this = $(this);
+            var v = $this.val();
+
+            if( v != null && v != "") {
+                $this.data('oldValue', v);
+            }
+        });
+
+        $(document).on('blur', 'input[type="number"]', function(e){
+            var $this = $(this);
+            var v = $this.val();
+            var oldVal = $this.data('oldValue');
+
+            if( v == null || v == "") {
+                $this.val(oldVal);
+            }
+        });
+
         $(document).on('change', '.agree-wrap input:checkbox', function(){
             var $this = $(this);
             var $wrap = $this.closest('.agree-wrap');
