@@ -37,11 +37,9 @@ vcui.define('ui/radioShowHide', ['jquery', 'vcui'], function ($, core) {
         _build: function _build() {
             var self = this;
             var opts = self.options;
-            console.log(self.$radios)
             var radioName = self.$radios[0].name;
             self.$target = self.$radios.filter('input[name='+ radioName +']');
             self.change();          
-            console.log(self.$target);       
         },
 
         _bindEvent: function _bindEvent() {

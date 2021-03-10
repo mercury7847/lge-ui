@@ -474,6 +474,9 @@ var isApp = function(){
                             if(data && data.content.find('.ui_smooth_scroll').length>0){
                                 data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
                             }
+                            if(data && data.content.find(".ui_carousel_slider").length > 0){
+                                data.content.find('.ui_carousel').vcCarousel('update');
+                            }
                         }
                     }
                 });
