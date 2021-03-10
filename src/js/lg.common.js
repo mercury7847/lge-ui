@@ -385,11 +385,13 @@ var isApp = function(){
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    self.resizeCallbacks.push(callback);
+                    //self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
+                    /*
                     for(var idx in self.resizeCallbacks){
                         self.resizeCallbacks[idx].call();
                     }
+                    */
 
                     //self._switchLinker();
 
