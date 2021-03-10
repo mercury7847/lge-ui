@@ -1074,7 +1074,30 @@
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
-                location.href= result.data.sendUrl;
+                var endtitle = "";
+                var endesc = "";
+                var endbntname = "";
+                if(result.data.endTypeFlag == "C"){
+                    endtitle = "케어십 청약 안내";
+                    endesc = "케어십 청약이 완료되었습니다.해당 케어십 제품은 추가로 제품 주문이 필요합니다.<br><br>주문 실패시, 7일이내 마이페이지 > 쇼핑관리에서 주문가능합니다.";
+                    endbntname = "제품 주문하러 가기";
+                } else if(result.data.endTypeFlag == "M"){
+                    endtitle = "케어솔루션/케어십 청약 안내";
+                    endesc = "케어솔루션/케어십 청약이 완료되었습니다. 해당 케어십 제품은 추가로 제품 주문이 필요합니다.<br><br></br>주문 실패시, 7일이내 마이페이지 > 쇼핑관리에서 주문가능합니다.";
+                    endbntname = "케어십 제품 주문하러 가기";
+                }
+
+                if(endtitle != ""){
+                    lgkorUI.alert(endesc, {
+                        title: endtitle,
+                        okBtnName: endbntname,
+                        ok: function(){
+                            location.href= result.data.sendUrl;
+                        }
+                    });
+                } else{
+                    location.href= result.data.sendUrl;
+                }
             } else{
                 lgkorUI.alert("", {
                     title: result.data.alert.title
