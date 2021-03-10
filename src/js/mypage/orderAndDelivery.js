@@ -347,7 +347,7 @@
                             '<p>영수증 내역</p>'+
                         '</div>'+
                         '<div class="btn-area">'+
-                            '<a href="#n" class="btn size border methodReceipt-btn"><span>카드영수증</span></a>'+
+                            '<a href="{{receiptUrl}}" target="_blank" class="btn size border methodReceipt-btn"><span>{{method}}</span></a>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -658,11 +658,12 @@
             e.preventDefault();
 
             setSalesReceiotPop();
-        }).on('click', ".methodReceipt-btn", function(e){
-            e.preventDefault();
+        })
+        // .on('click', ".methodReceipt-btn", function(e){
+        //     e.preventDefault();
 
-            setMethodReceiptPop();
-        });
+        //     setMethodReceiptPop();
+        // });
     }
 
     function changeTabFlag(tab){
@@ -1772,10 +1773,11 @@
 
     //영수증 발급내역...
     function setReceiptListPop(){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
-        var header = $(vcui.template(receiptHeaderTemplate, listData[0])).get(0);
+        var method = PAYMENT_DATA.transType == "C" ? "카드영수증" : "현금영수증";
+        var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
         $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
 
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         for(var cdx in listData[0].productList){
             var prodlist = vcui.clone(listData[0].productList[cdx]);
             prodlist.statusButtonList = [];
