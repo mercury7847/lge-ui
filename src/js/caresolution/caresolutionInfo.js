@@ -339,10 +339,16 @@ var CareCartInfo = (function() {
             //스크롤 이벤트
             if(!vcui.detect.isMobile){
                 $(window).on('scroll', function(e){
+                    console.log('asdasd???');
                     self._setScrollMoved();
                 });
                 self._setScrollMoved();
-            }
+            };
+
+            console.log('???');
+            $(window).on('scroll', function(){
+                console.log('asdasd???22222');
+            });
         },
 
         _bindPopupEvents: function() {
