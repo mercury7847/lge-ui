@@ -48,7 +48,7 @@
     '</li>';
 
     var awardPopupItemTemplate = '<li>' +
-        '<span class="image"><img data-src="123123{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
+        '<span class="image"><img src="{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
         '<span class="text">{{storyTitle}}</span>' +
     '</li>';
 
@@ -510,9 +510,12 @@
                             var arr = awards instanceof Array ? awards : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
-                            arr.forEach(function(item, index) {
-                                $list_ul.append(vcui.template(awardPopupItemTemplate, item));
+
+                            var $frag = $(document.createDocumentFragment());
+                            arr.forEach(function(item) {
+                                $frag.append(vcui.template(awardPopupItemTemplate, item));
                             });
+                            $list_ul.append($frag);
                         }
                     }
 
@@ -690,7 +693,7 @@
                     var $this = $(this);
                     if(preOrderFlag) {
                          //사전예약 일경우
-                        if(loginFlag) {
+                        if(lgkorUI.stringToBool(loginFlag)) {
                             //사전예약 안내창 뛰우고 구매진행
                             $('#preOrderPopup').find('div.btn-group button').off('click');
                             $('#preOrderPopup').find('div.btn-group button').on('click',function(e){
@@ -1390,7 +1393,7 @@
                     var ajaxUrl;
                     if(isRental) {
                         if(self.loginCheckEnd) {
-                            if(loginFlag) {
+                            if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
@@ -1417,7 +1420,7 @@
                                     */
                                 });
                             }
-                            console.log((loginFlag)?"!!!!!rental":"!!!!!notlogin rental",url,param);
+                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",url,param);
                         } else {
                             self.processProductBuy = $dm;
                         }
