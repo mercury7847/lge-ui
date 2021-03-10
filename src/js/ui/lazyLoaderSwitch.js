@@ -87,7 +87,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             self.triggerHandler('lazyLoaderscroll');
             if (!self.$items.length) {
                 self.triggerHandler('lazyLoadercomplete');
-                //self.$con.off(self.eventNS);
+                self.$con.off(self.eventNS);
             }
         },
         /*
