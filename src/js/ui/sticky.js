@@ -30,8 +30,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             var self = this;
             if (self.supr(el, options) === false) {
                 return;
-            }   
-
+            }
+            
             self.isFirstRender = false;
 
             self.$container = self.$el.closest(self.options.stickyContainer);
