@@ -2438,7 +2438,7 @@
         }
         .item-list {
             position:relative;
-            margin:0 auto;
+            margin:0 -12px;
 
             @include clearfix;
 
@@ -2544,7 +2544,6 @@
             .main-list-wrap {
                 position: relative;
                 overflow:visible !important;
-                padding:0 6px;
             }
 
             .slide-track {
