@@ -17,6 +17,8 @@
               "orderNumber": "20203987102999",
               "orderTotal": "3",
               "orderCancelAbleYn": "Y",
+              "requestOrderAbleYn": "Y",
+              "contDtlType": "R00",
               "productList": [
                   {
                       "modelID": "ADC495769328",

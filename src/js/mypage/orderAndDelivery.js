@@ -1461,9 +1461,18 @@
             }
 
             if(result.data.success == "Y"){
-                console.log("SUCCESS~");
+                if(sendata.contDtlType == "R00"){
+                    var box = $('.box[data-id=' + dataId + ']');
+                    box.find('.requestOrder-btn').remove();
+
+                    box.find('.tbody .row').each(function(idx, item){
+                        $(item).find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>청약완료</p><p class="desc">제품 주문은 자동으로 진행됩니다.</p>');
+                    });
+                }
             } else{
-                console.log("FAIL~");
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
             }            
         });   
     }
