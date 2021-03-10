@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-386 -414) translate(128 414) translate(258)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g transform="translate(-386 -414) translate(128 414) translate(258) translate(13 20)">
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 15h22.5c.828 0 1.5.672 1.5 1.5v5c0 .828-.672 1.5-1.5 1.5H14h0v-8z"/>
+                                <g fill="#000" fill-rule="nonzero">
+                                    <path d="M5.584 4.21c2.217 0 4.291.857 5.843 2.414 1.552 1.557 2.406 3.632 2.406 5.846l.047.122c.134.35.528.526.879.391.222-.085.383-.28.425-.513 0-5.303-4.257-9.6-9.6-9.6-.368.08-.602.444-.521.812.05.23.214.417.435.497l.086.03z" transform="translate(17 .5) rotate(-45 9.225 8.864)"/>
+                                    <path d="M7.14 8.267c2.838 0 5.06 2.23 5.06 5.078l.04.101c.136.35.53.524.88.388.213-.082.37-.266.42-.489 0-3.534-2.822-6.4-6.4-6.4-.356.034-.616.349-.583.703.022.233.168.435.38.53l.202.089z" transform="translate(17 .5) rotate(-45 9.112 11.248)"/>
+                                </g>
+                                <rect width="8" height="1.5" x="22" y="18.25" fill="#000" rx=".75"/>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 2h11c.828 0 1.5.672 1.5 1.5V23h0H1.5C.672 23 0 22.328 0 21.5v-18C0 2.672.672 2 1.5 2z"/>
+                                <g stroke="#000" stroke-width="1.5" transform="translate(4 6)">
+                                    <circle cx="3" cy="2" r="2"/>
+                                    <path d="M3 13.5c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

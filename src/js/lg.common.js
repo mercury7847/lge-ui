@@ -11,6 +11,16 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+    window.onload = function(){
+        vcui.require([
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
+        ], function () {
+            var $b = $('body');
+            $b.vcLazyLoaderSwitch();
+            $b.vcLazyLoader();
+        });
+    };
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -45,38 +55,30 @@ var isApp = function(){
 
     $.fn.buildCommonUI = function () {
         vcui.require([
-                            'ui/selectbox',
-                            'ui/calendar',
-                            'ui/accordion',
-                            'ui/carousel',
-                            'ui/modal',
-                            'ui/tab',       
-                            'ui/lazyLoader',
-                            "ui/videoBox",
-                            "ui/youtubeBox",
-                            //"ui/imageSwitch",
-                            'ui/lazyLoaderSwitch',
-                            "ui/dropdown",
-                            "ui/textControl",
-                            "ui/fileInput",
-                            "ui/radioShowHide",
-                            'ui/inputClearButton',
-                            "ui/starRating",
-                            "ui/tooltipTarget",
-                            "ui/sticky",
-                            "ui/formatter",
-                            "ui/scrollNavi",
-                            "ui/smoothScroll",
-                            "ui/smoothScrollTab",
-                            "ui/checkboxAllChecker"
+            'ui/selectbox',
+            'ui/calendar',
+            'ui/accordion',
+            'ui/carousel',
+            'ui/modal',
+            'ui/tab',       
+            "ui/videoBox",
+            "ui/youtubeBox",
+            "ui/dropdown",
+            "ui/textControl",
+            "ui/fileInput",
+            "ui/radioShowHide",
+            'ui/inputClearButton',
+            "ui/starRating",
+            "ui/tooltipTarget",
+            "ui/sticky",
+            "ui/formatter",
+            "ui/scrollNavi",
+            "ui/smoothScroll",
+            "ui/smoothScrollTab",
+            "ui/checkboxAllChecker"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
-            this.vcLazyLoaderSwitch();
-            //this.vcImageSwitch();
-            this.vcLazyLoader();
-
-    
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
             this.find('.ui_dropdown').vcDropdown();
@@ -312,11 +314,8 @@ var isApp = function(){
                 'ui/carousel',
                 'ui/modal',
                 'ui/tab',       
-                'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch",
-                'ui/lazyLoaderSwitch',
                 "ui/textControl",
                 "ui/fileInput",
                 "ui/radioShowHide",
@@ -379,11 +378,16 @@ var isApp = function(){
                 }
                 
                 new ResponsiveImage('body', breakpoint);
-
-
+                
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                $(window).on('resize', function(e){
+                    self.resetFlexibleBox();
+                });  
+                self.resetFlexibleBox();
+                
+                /*
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
                     self.resizeCallbacks.push(callback);
@@ -396,8 +400,9 @@ var isApp = function(){
 
                     self.resetFlexibleBox();
                 });  
-                self.resetFlexibleBox();              
-    
+                self.resetFlexibleBox();
+                */
+
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
                 vcui.ui.setDefaults('Modal', {
@@ -1113,12 +1118,14 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
+                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
+                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1132,6 +1139,7 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
+                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1149,15 +1157,19 @@ var isApp = function(){
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
 
+                        lgkorUI.hideLoading();
+
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
+                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+                lgkorUI.hideLoading();
             }).always(function() {
                 lgkorUI.hideLoading();
                 //console.log( "complete" );

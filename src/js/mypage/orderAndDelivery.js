@@ -278,7 +278,7 @@
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
@@ -288,13 +288,13 @@
     var carePaymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
     '{{#set method = paymentMethodName}}' +
     '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-    '{{#if receiptUrl}}<a href="{{receiptUrl}}" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+    '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
     '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
@@ -328,6 +328,40 @@
         '<li><dl><dt>월 납부 수단</dt><dd>{{transTypeNm}}</dd></dl></li>'+        
         '<li><dl><dt>은행(카드)명</dt><dd>{{transCorpName}}</dd></dl></li>'+        
         '<li><dl><dt>계좌(카드)번호</dt><dd>{{transAccountNum}}</dd></dl></li>';
+
+    var receiptHeaderTemplate = 
+        '<div class="info-tbl-wrap">'+
+            '<div class="box title-type">'+
+                '<div class="box-title">'+
+                    '<p>주문 영수증 확인</p>'+
+                '</div>'+
+                '<div class="tbl-layout size3">'+
+                    '<div class="thead" aria-hidden="true">'+    
+                        '<span class="th col1">제품정보</span>'+    
+                        '<span class="th col2">진행상태</span>'+    
+                    '</div>'+
+                    '<div class="tbody">'+
+                    '</div>'+
+                    '<div class="bill-btns">'+
+                        '<div class="title">'+
+                            '<p>영수증 내역</p>'+
+                        '</div>'+
+                        '<div class="btn-area">'+
+                            '<a href="#n" class="btn size border methodReceipt-btn"><span>카드영수증</span></a>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<a href="#n" class="btn-link salesReceipt-btn">거래영수증</a>'+
+            '</div>'+
+        '</div>';
+
+    var receiptPopInfoTemplate =     
+        '<tr><th scope="row">주문번호</th><td>{{orderNumber}}</td>'+
+        '<tr><th scope="row">거래일시</th><td>{{orderDate}}</td>'+
+        '<tr><th scope="row">상품명</th><td>{{productName}}</td>'+
+        '<tr><th scope="row">총 거래금액</th><td>{{totalPrice}}</td>'+
+        '<tr><th scope="row">결제수단</th><td>{{paymentMethod}}</td>'+
+        '<tr><th scope="row">서명</th><td>{{orderUser}}</td>';
 
     var START_INDEX;
 
@@ -619,6 +653,16 @@
 
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
+
+        $('#popup-receipt-list').on('click', ".salesReceipt-btn", function(e){
+            e.preventDefault();
+
+            setSalesReceiotPop();
+        }).on('click', ".methodReceipt-btn", function(e){
+            e.preventDefault();
+
+            setMethodReceiptPop();
+        });
     }
 
     function changeTabFlag(tab){
@@ -872,10 +916,6 @@
 
     function setContractStatus(dataID, prodID){
         console.log("[setContractStatus]", dataID, prodID);
-    }
-
-    function setReceiptListPop(){
-        $('#popup-receipt-list').vcModal();
     }
 
     function setMonthlyPricePop(dataId, prodId){
@@ -1627,7 +1667,7 @@
     }
 
     //취소/반품 공통 데이터 생성
-    function setCancelTakebackData(popname, prodlist){
+    function setCancelTakebackData(popname, prodlist, matchIds){
         var popup = $('#'+popname);
 
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
@@ -1687,7 +1727,13 @@
                 popup.vcModal('close');
 
                 if(PAGE_TYPE == PAGE_TYPE_LIST){
-                    $('.box[data-id=' + dataId + ']').css('opacity', .2)
+                    var box = $('.box[data-id=' + dataId + ']');
+                    box.find('.orderCancel-btn, .requestOrder-btn').remove();
+
+                    for(var idx in matchIds){
+                        var block = box.find('.tbody .row').eq(matchIds[idx]);
+                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>취소접수</p>');
+                    }
                 } else reloadOrderInquiry();
             }
         });
@@ -1696,19 +1742,60 @@
     //반품신청...
     function takebackOk(){
         var productList = [POP_PROD_DATA[0]];
+        var matchIds = [0];
         
-        setCancelTakebackData('popup-takeback', productList);
+        setCancelTakebackData('popup-takeback', productList, matchIds);
     }
     //취소신청...
     function cancelOk(){
         var productList = [];
+        var matchIds = [];
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
-            var idx = $(item).val();
-            productList.push(POP_PROD_DATA[idx]);
+            var id = $(item).val();
+            productList.push(POP_PROD_DATA[id]);
+
+            matchIds.push(id);
         });
         
-        setCancelTakebackData('popup-cancel', productList);
+        setCancelTakebackData('popup-cancel', productList, matchIds);
+    }
+
+    //영수증 발급내역...
+    function setReceiptListPop(){
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var header = $(vcui.template(receiptHeaderTemplate, listData[0])).get(0);
+        $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
+
+        for(var cdx in listData[0].productList){
+            var prodlist = vcui.clone(listData[0].productList[cdx]);
+            prodlist.statusButtonList = [];
+            var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
+            prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
+            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false}));
+        }
+        
+        $('#popup-receipt-list').vcModal();
+    }
+    //거래 영수증 팝업...
+    function setSalesReceiotPop(){
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+
+        receiptdata = {};
+        receiptdata.orderNumber = listData.groupNumber;
+        receiptdata.orderDate = listData.orderDate;
+        receiptdata.productName = listData.productList[0].productNameKR;
+        if(listData.productList.length > 1) receiptdata.productName += " 외 " + (listData.productList.length-1) + "건";
+        receiptdata.totalPrice = PAYMENT_DATA.totalPrice + "원";
+        receiptdata.paymentMethod = PAYMENT_DATA.paymentMethodName;
+        receiptdata.orderUser = SHIPPING_DATA.maskingName;
+
+        $('#popup-salesReceipt').find('.tb-col table tbody').append(vcui.template(receiptPopInfoTemplate, receiptdata));
+        $('#popup-salesReceipt').vcModal();
+    }
+    //카드/현금 영수증 팝업...
+    function setMethodReceiptPop(){
+
     }
 
     //상품 클릭...

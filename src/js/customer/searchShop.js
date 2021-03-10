@@ -279,8 +279,11 @@
                 self._setSearch();
             });
 
+            $(window).on('resize', function(e){
+                self._resize();
+            });
             self._resize();
-            $(window).trigger('addResizeCallback', self._resize.bind(self));
+            //$(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
         _setTabInit: function(){

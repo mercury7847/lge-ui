@@ -30,7 +30,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector +"img[data-pc-src],img[data-m-src]");
+            self.$items = $(self.options.selector +"img[data-pc-src][data-m-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
@@ -41,11 +41,11 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function _bindEvents() {
             var self = this;
 
-            self.$con.on('scroll' + self.eventNS, function () {
+            self.$con.off(self.eventNS).on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
 
-            $(window).on('resize' + self.eventNS, function(e){
+            $(window).on('resize', function(e){
                 self._resize();
             });
         },
@@ -102,6 +102,14 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
         },
         */
 
+        reload: function($dm){
+            var self = this;
+            var $items = $dm.find("img[data-pc-src][data-m-src]");
+            $items.each(function(idx, item){
+                self._loadImage($(item),null);
+            });
+        },
+
         _resize: function(){
             var self = this,
                 mode, winwidth;
@@ -110,9 +118,9 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             if(winwidth > 767) mode = self.options.pc_prefix;
             else mode = self.options.mobile_prefix;
             if(self.mode != mode) {
+                //console.log('resize!!!!!',$items.length);
                 self.mode = mode;
-                var $items = $(self.options.selector +"img[data-current-image][data-pc-src][data-m-src]");
-                console.log($items.length);
+                var $items = $(self.options.selector +"img[data-pc-src][data-m-src][data-current-image]");
                 $items.each(function(idx,item){
                     var $img = $(item);
                     var src = $img.attr('data-' + mode + '-src');
@@ -142,7 +150,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                     if ($img[0].complete) {
                         cb.call($img);
                     } else {
-                    $img.one('load', cb);
+                        $img.one('load', cb);
                     }
                 }
                 // $img.attr("src", src);
