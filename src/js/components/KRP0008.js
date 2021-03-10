@@ -3,7 +3,7 @@
     if(vcui.detect.isMobile){
         isMobile = true;
     }
-    console.log(location.hostname);
+    
     if(location.hostname == "www.lge.co.kr") {
         r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     } else {
