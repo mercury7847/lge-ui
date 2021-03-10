@@ -17,6 +17,7 @@
     }
     .title {
         margin-bottom:34px;
+        text-align: center;
         @include mobile {
             margin-bottom:32px;
         }
