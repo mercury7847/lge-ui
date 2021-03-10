@@ -1,5 +1,10 @@
 //크레마
 (function(i,s,o,g,r,a,m){
+
+    if(vcui.detect.isMobile){
+        r = "//widgets.cre.ma/lge.co.kr/mobile/init.js";
+    }
+
     if(s.getElementById(g)){
         return
     };
