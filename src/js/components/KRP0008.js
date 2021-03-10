@@ -1,4 +1,15 @@
 (function(i,s,o,g,r,a,m){
+    var isMobile = false;
+    if(vcui.detect.isMobile){
+        isMobile = true;
+    }
+    console.log(location.hostname);
+    if(location.hostname == "www.lge.co.kr") {
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+    } else {
+        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+    }
+
     if(s.getElementById(g)){
         return
     };
