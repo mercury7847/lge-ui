@@ -692,12 +692,14 @@ CS.MD.commonModel = function() {
                     value = $this.val().toUpperCase(),
                     opt = self.options;
 
-                var regex = /[^a-zA-Z0-9.\-]/;
+                var regex = /[^a-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
                     return;
                 }
+
+                console.log(e);
 
                 value = $this.val().toUpperCase();
 
@@ -765,7 +767,7 @@ CS.MD.commonModel = function() {
                 var $this = $(this),
                     value = $this.val().toUpperCase();
 
-                var regex = /[^a-zA-Z0-9.\-]/;
+                var regex = /[^a-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
