@@ -11,12 +11,15 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
         var isContent = false;
         var register = {
             serviceName: {
+                required: true,
                 msgTarget: '.service-err-block'
             },
             csaFlag: {
+                required: true,
                 msgTarget: '.csa-err-block'
             },
             rating: {
+                required: true,
                 msgTarget: '.err-block'
             },
             content: {
