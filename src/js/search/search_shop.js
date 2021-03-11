@@ -661,6 +661,7 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.address = vcui.string.replaceAll(item.address, searchedValue, replaceText);
                             item.linkItem.forEach(function(obj, idx){
                                 obj.url = encodeURI(obj.url);
                             });

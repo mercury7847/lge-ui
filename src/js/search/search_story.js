@@ -663,7 +663,7 @@
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             item.isVideo = lgkorUI.stringToBool(item.isVideo);
-                            item.desc = $div.html(item.desc).text(); //html strip
+                            item.desc = vcui.string.replaceAll($div.html(item.desc).text(), searchedValue, replaceText); //html strip
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();
