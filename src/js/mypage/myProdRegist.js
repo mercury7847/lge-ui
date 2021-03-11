@@ -24,8 +24,8 @@
                 '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +
-                    '{{#if saleDate}}<li><dl><dt>구매일자</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
-                    '{{#if creationDate}}<li><dl><dt>등록일자</dt><dd>{{creationDate}}</dd></dl></li>{{/if}}' +
+                    '{{#if saleDate}}<li><dl><dt>{{#if userType=="USER"}}구매월{{#else}}구매일자{{/if}}</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
+                    //'{{#if creationDate}}<li><dl><dt>등록일자</dt><dd>{{creationDate}}</dd></dl></li>{{/if}}' +
                     '{{#if useDate}}<li><dl><dt>사용기간</dt><dd>{{useDate}}개월</dd></dl></li>{{/if}}' +
                     '{{#if careState}}<li><dl><dt>케어십 서비스</dt><dd><em{{#if careService}} class="can"{{/if}}>{{careState}}</em></dd></dl></li>{{/if}}' +
                     '{{#if nextCareServiceDate}}<li><dl><dt>다음 케어서비스 일자</dt><dd>{{nextCareServiceDate}}</dd></dl></li>{{/if}}' +
@@ -673,7 +673,11 @@
                 var $list = self.$myProductList.find('>ul');
                 $list.empty();
                 arr.forEach(function(item, index) {
-                    item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                    if(item.userType == "USER") {
+                        item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
+                    } else {
+                        item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM.dd');
+                    }
                     item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
                     item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
                     $list.append(vcui.template(ownListItemTemplate, item));
@@ -697,7 +701,7 @@
                 $list.empty();
                 arr.forEach(function(item, index) {
                     item.jsonModel = JSON.stringify(item);
-                    item.date = vcui.date.format(item.date,'yyyy.MM');
+                    item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                     $list.append(vcui.template(productListItemTemplate, item));
                 });
                 self.checkNoData();
