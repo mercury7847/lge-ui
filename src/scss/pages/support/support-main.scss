@@ -27,7 +27,7 @@
 
             .pop-conts {
                 overflow:auto;
-                height:392px;
+                height:calc(100% - 78px - 116px);
 
                 &.mCustomScrollbar {
                     overflow:hidden;
@@ -139,12 +139,7 @@
         }
         .pop-footer {
             padding:26px 40px 40px;
-            &.align-between {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
+            
         }
 
     }
@@ -170,7 +165,7 @@
                 }
 
                 .pop-conts {
-                    height:332px;
+                    height:calc(100% - 78px - 76px);
                     &.mCustomScrollbar {
                         padding:0;
     
@@ -189,7 +184,7 @@
                 }
              
                 .pop-footer {
-                    padding:20px 16px;
+                    padding:10px 16px;
                     .btn-close {
                         min-width:100px;
                         padding: 15px 0;
@@ -209,7 +204,7 @@
             .popup-wrap {
 
                 .pop-conts {
-                    height:348px;
+                    height:calc(100% - 138px);
                     padding:40px 16px 10px;
                     &.mCustomScrollbar {
                         padding:0;
