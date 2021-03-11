@@ -68,6 +68,7 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
                 lgkorUI.hideLoading();
 
                 var data = result.data;
+                data.quantity = self.$pushApplyPopup.data('quantity');
                 
                 self.$pushApplyPopup.vcModal('hide');
                 if (data.success == 'Y') {
@@ -85,7 +86,7 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
 
             $number.html(data.unifyId);
             $product.html(pageData.modelDisplayName);
-            $quantity.html(self.$pushApplyPopup.data('quantity'));
+            $quantity.html(data.quantity);
 
             self.$pdpInfo.find('.purchase-button.pre-order .btn:first-child').remove();
             self.$pdpInfo.find('.purchase-button.pre-order .btn').prop('disabled', true).attr('class', 'btn disabled').find('span').text('알림신청 완료');
