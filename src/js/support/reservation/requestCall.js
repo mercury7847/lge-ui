@@ -101,34 +101,7 @@
                                 }
                             }
                         break;
-                        case "016":
-                            if( _length == 10) {
-                                return validateNum10();
-                            }
-                            if( _length == 11) {
-                                console.log(num4)
-                                if( (9000 <= num4 && num4 <= 9999)) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            }
-                        break;
-                        case "017":
-                            if( _length == 10) {
-                                return validateNum10();
-                            } else {
-                                return false;
-                            }
-                        break;
-                        case "018":
-                            if( _length == 10) {
-                                return validateNum10();
-                            } else {
-                                return false;
-                            }
-                        break;
-                        case "019":
+                        case "016":case "019":
                             if( _length == 10) {
                                 return validateNum10();
                             }
@@ -140,7 +113,13 @@
                                 }
                             }
                         break;
-                        
+                        case "017": case "018":
+                            if( _length == 10) {
+                                return validateNum10();
+                            } else {
+                                return false;
+                            }
+                        break;
                     }
                 } else {
                     return false;
