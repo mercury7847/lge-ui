@@ -1,7 +1,7 @@
 {
     "status":"success",
     "message":null,
-    "data":{
+    "data":[{
         "productList": [
             {
               "affiliateCode": null,
@@ -1287,5 +1287,5 @@
               ]
             }
         ]
-    }
+    }]
 }
