@@ -74,16 +74,14 @@
 
     var STORY_LIST_URL;
     var IS_LOGIN;
-
-    var listMaxLength = 12;
-    var imgLoadId = 0;
-    var imgLoadTotal = 0;
+    var STORY_URL;
 
     var tagMngChkList;
 
     function init(){      
         STORY_LIST_URL = $('.contents.story-main').data("storyList");
         IS_LOGIN = $('.contents.story-main').data("loginflag");
+        STORY_URL = $('.contents.story-main').data("storyUrl");
 
         vcui.require(['ui/toggleCarousel', "ui/sticky"], function () {
             $('.story-review').vcToggleCarousel({
@@ -225,12 +223,14 @@
             tagName: $(item).data('name')
         }
         var section = $(item).closest('.story-section');
+
+        console.log(section.attr('class'), " [selectTags:", selectTags, ']');
+
         if(section.hasClass('user_story')){
             loadStoryList('user_story', 1, "UserStory", selectTags);
         } else{
             loadStoryList('new_story', 1, 'NewStory', selectTags);
         }
-        console.log(section.attr('class'), " [selectTags:", selectTags, ']');
     }
 
     function loadStoryList(sectioname, page, type, selectTag){
@@ -278,15 +278,20 @@
             if(result.data.storyList && result.data.storyList.length > 0){
                 sectionItem.show();
 
-                imgLoadId = 0;
-                imgLoadTotal = result.data.storyList.length;
+                sectionItem.data("imgLoadId", 0);
+                sectionItem.data("imgLoadTotal", result.data.storyList.length);
                 for(var str in result.data.storyList){
+                    var contentsType = result.data.storyList[str].contentsType;
+                    if(contentsType == "video"){
+                        var storyId = result.data.storyList[str].storyId;
+                        result.data.storyList[str].storyUrl = STORY_URL + "?storyId="+storyId;                 
+                    }
                     var list = vcui.template(storyListTemplate, result.data.storyList[str]);
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
                 if(page == 1 && result.data.recommendTags){
-                    var putIdx = imgLoadTotal < 9 ? imgLoadTotal : 9; 
+                    var putIdx = result.data.storyList.length < 9 ? result.data.storyList.length : 9; 
                     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
                 }
@@ -298,11 +303,17 @@
     }
 
     function imgLoadEvent(img){
+        var sectionItem = $(img).closest('.story-section');
+        var imgLoadId = sectionItem.data("imgLoadId");
+        var imgLoadTotal = sectionItem.data("imgLoadTotal");
+
         imgLoadId++;
+
+        sectionItem.data("imgLoadId", imgLoadId);
+
         if(imgLoadId == imgLoadTotal){
             console.log("### img load complete ###");
 
-            var sectionItem = $(img).closest('.story-section');
             setRepositionTagBox(sectionItem);
             
             var scrolltop = 999999999999999;
@@ -352,7 +363,7 @@
                 }
             }
             var boxleft = raw * (status.boxwidth + status.distance);
-
+console.log("status.boxwidth:", status.boxwidth)
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
@@ -374,7 +385,7 @@
         var distances = distance * (rawnum-1);
         var wrapwidth = item.find('.inner').width();
         var boxwidth = parseInt((wrapwidth-distances)/rawnum);
-        
+
         while(boxwidth < 310){
             rawnum--;
             distances = distance * (rawnum-1);
@@ -385,6 +396,8 @@
             rawnum = 1;
             boxwidth = wrapwidth;
         }
+        
+        console.log(wrapwidth, boxwidth)
 
         return {
             rawnum: rawnum,
