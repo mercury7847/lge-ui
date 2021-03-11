@@ -467,7 +467,9 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
+                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
+                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -477,7 +479,7 @@ var isApp = function(){
                                 data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
                             }
                             if(data && data.content.find(".ui_carousel_slider").length > 0){
-                                data.content.find('.ui_carousel').vcCarousel('update');
+                                data.content.find('.ui_carousel_slider').vcCarousel('update');
                             }
                         }
                     }
