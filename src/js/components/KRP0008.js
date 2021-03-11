@@ -48,8 +48,10 @@
     '</li>';
 
     var awardPopupItemTemplate = '<li>' +
+        '<a href="#" class="award-item">' + 
         '<span class="image"><img src="{{storyPdpThumbnailPath}}{{storyPdpThumbnailServerName}}" alt="{{storyPdpThumbnailAltText}}" onError="lgkorUI.addImgErrorEvent(this);"></span>' +
         '<span class="text">{{storyTitle}}</span>' +
+        '</a>' +
     '</li>';
 
     //$(window).ready(function(){
@@ -520,6 +522,11 @@
                     }
 
                     self.$awardPopup.vcModal();
+                });
+
+                //수상내역 아이템 클릭
+                self.$awardPopup.on('click','li a.award-item', function(e) {
+                    self.$awardPopup.find('.btn-group button[data-link-url]').trigger('click');
                 });
             },
 
