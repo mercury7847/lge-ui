@@ -2,8 +2,16 @@
     <header class="pop-header">
         <h1 class="tit"><span>요금/보증 안내</span></h1>
     </header>
-    <section class="pop-conts no-footer pay-warranty"><!-- 2021.02.15 클래스 수정 : pay-warranty (payNwarranty는 삭제) -->
+    <!-- 2021.03.11 class="no-footer" 삭제 -->
+    <section class="pop-conts pay-warranty"><!-- 2021.02.15 클래스 수정 : pay-warranty (payNwarranty는 삭제) -->
         @@include('./common/support/rates-warranty-guide.html')
     </section>
+    <!-- 2021.03.11 pop-footer 추가 -->
+    <div  class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+        </div>
+    </div>
+    <!-- //2021.03.11 pop-footer 추가 -->
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
