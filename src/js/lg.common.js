@@ -1105,7 +1105,7 @@ var isApp = function(){
                 url : url,
                 dataType : dtype,
                 data : data,
-                timeout : timeout
+                timeout : 180000
             }).done(function (result) {
 
                 if(dtype != "json") {
