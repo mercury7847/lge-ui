@@ -1,7 +1,7 @@
 (function() {
     var validation;
-    var authValidation;
     var authManager;
+    var authFlag = lgkorUI.isLogin;
 
     var custom = {
         init: function() {
@@ -15,23 +15,23 @@
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
-                    userName: {
-                        required: true,
-                        maxLength: 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
-                    },
-                    phoneNo: {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
-                    },
+                    // userName: {
+                    //     required: true,
+                    //     maxLength: 30,
+                    //     pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                    //     msgTarget: '.err-block',
+                    //     errorMsg: '이름을 입력해주세요.',
+                    //     patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                    // },
+                    // phoneNo: {
+                    //     required: true,
+                    //     minLength: 10,
+                    //     maxLength: 11,
+                    //     pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                    //     msgTarget: '.err-block',
+                    //     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    //     patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    // },
                     contactPhoneNo1 : {
                         pattern: /^(010|011|017|018|019)$/,
                         msgTarget: '.contact-box-err-blocK',
@@ -134,7 +134,7 @@
             self.$form.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
-                if (result.success == true) {   
+                if (authFlag && result.success == true) {   
                     lgkorUI.confirm('', {
                         title:'저장 하시겠습니까?',
                         okBtnName: '확인',
@@ -155,6 +155,14 @@
                                     }
                                 }
                             })
+                        }
+                    });
+                } else if (!authFlag) {
+                    lgkorUI.alert('', {
+                        title:'휴대전화 인증이 필요합니다.',
+                        okBtnName: '확인',
+                        ok: function() {
+                            $('.btn-open').focus();
                         }
                     });
                 }
@@ -179,10 +187,10 @@
                 $this.find('input').val('');
             });
 
-            $('.btn-open').on('click', function() {
+            $('.btn-open, #userName, #phoneNo').on('click', function() {
                 var result = validation.validate(['privcyCheck']);
 
-                if (result.success) {
+                if (!authFlag && result.success) {
                     authManager.open(function() {
                         if ($('#userName').val()) {
                             $('#authName').val($('#userName').val()).prop('readonly', true);
@@ -200,9 +208,7 @@
             // 인증 완료 하기
             self.$authPopup.find('.btn-auth').on('click', function() {
                 authManager.confirm('.btn-open', function(success, result) {
-                    if (success) {
-                        
-                    }
+                    authFlag = success;
                 });
             });
 

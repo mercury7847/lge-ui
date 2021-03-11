@@ -1314,7 +1314,7 @@
                     top: 0;
                     right: 0;
                     left: 0;
-                    z-index: 1;
+                    z-index: 6;
                     border-radius: 8px;
                     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
                     background-color: $color-bg-wt;
@@ -1325,7 +1325,7 @@
                         top: 0;
                         right: 0;
                         left: 0;
-                        z-index: 2;
+                        z-index: 7;
                         border-color: $color-white;
                         &:after {
                             transform: rotate(180deg);
