@@ -78,6 +78,13 @@
                             return false;
                         }
                     }
+                    function rangeFlag(minNum, maxNum){
+                        if( minNum <= num4 && num4 <= maxNum)  {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
 
                     switch(firstVal){
                         case "010":
@@ -94,7 +101,7 @@
                                 return validateNum10();
                             }
                             if( _length == 11) {
-                                if( (9500 <= num4 && num4 <= 9999) || (1700 <= num4 && num4 <= 1799)) {
+                                if(rangeFlag(9500, 9999) || rangeFlag(1700, 1799)) {
                                     return true;
                                 } else {
                                     return false;
@@ -106,11 +113,7 @@
                                 return validateNum10();
                             }
                             if( _length == 11) {
-                                if( (9000 <= num4 && num4 <= 9999)) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return rangeFlag(9000, 9999);
                             }
                         break;
                         case "017": case "018":
@@ -149,7 +152,7 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
+                    pattern: /^(010|016|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
                     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                     patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
