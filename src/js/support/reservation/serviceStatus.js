@@ -402,9 +402,46 @@
                 }).on('click', '.btn-group .btn-confirm', function() {
                     var result = self.validation.validate();
                     if( result.success == true) {
-                        self.authManager.confirm(this, function(success, result) {
-                            self.completeAuth(success, result);
-                        });
+                        if(lgkorUI.isLogin) {
+                            self.authManager.confirm(this, function(success, result) {
+                                self.completeAuth(success, result);
+                            });
+                        } else {
+                            var $changeForm = $('#changeEngineerFormData');
+                            var url = $changeForm.data('ajax');
+                            var formData = self.validation.getAllValues();
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxDataPost(url, formData, function(result) {
+                                var data = result.data;
+                                
+                                if (data.resultFlag == 'Y') {
+                                    lgkorUI.hideLoading();
+                                    lgkorUI.alert('', {
+                                        title:'예약이 완료 되었습니다.',
+                                        okBtnName: '확인',
+                                        ok: function() {
+                                            $changeForm.attr('action', data.url);
+                                            $changeForm.submit();
+                                        }
+                                    });   
+                                } else {
+                                    if (data.resultMessage) {
+                                        lgkorUI.alert("", {
+                                            title: data.resultMessage,
+                                            ok: function() {
+                                                if (self.isOneView == 'Y') {
+                                                    if (data.resultMessage.indexOf('휴대전화번호') != -1) {
+                                                        $('#phoneNo').prop('readonly', false);
+                                                        $('#phoneNo').focus();
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                    lgkorUI.hideLoading();
+                                }
+                            }, 'POST');
+                        }
                     }
                 });
 
@@ -704,12 +741,14 @@
                         register: authRegister
                     }
                 
-                self.authManager = new AuthManager(managerOpt);
-                
-    
-                self.el.popup.find('.btn-send').on('click', function() {
-                    self.authManager.send(this);
-                });
+                if( $('#authNo').length ) {
+                    self.authManager = new AuthManager(managerOpt);
+                    
+        
+                    self.el.popup.find('.btn-send').on('click', function() {
+                        self.authManager.send(this);
+                    });
+                }
             },
             complete : function(){
                 var self = this;
