@@ -71,6 +71,14 @@
                     var num3 = value.substr(3,3);
                     var num4 = value.substr(3,4);
 
+                    function validateNum10(){
+                        if( 200<= num3 && num3 <= 899) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+
                     switch(firstVal){
                         case "010":
                             if( num4th == 0 || num4th == 1) {
@@ -83,11 +91,7 @@
                         break;
                         case "011":
                             if( _length == 10) {
-                                if( 200<= num3 && num3 <= 899) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return validateNum10();
                             }
                             if( _length == 11) {
                                 if( (9500 <= num4 && num4 <= 9999) || (1700 <= num4 && num4 <= 1799)) {
@@ -99,11 +103,7 @@
                         break;
                         case "016":
                             if( _length == 10) {
-                                if( 200<= num3 && num3 <= 899) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return validateNum10();
                             }
                             if( _length == 11) {
                                 console.log(num4)
@@ -116,33 +116,21 @@
                         break;
                         case "017":
                             if( _length == 10) {
-                                if( 200<= num3 && num3 <= 899) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return validateNum10();
                             } else {
                                 return false;
                             }
                         break;
                         case "018":
                             if( _length == 10) {
-                                if( 200<= num3 && num3 <= 899) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return validateNum10();
                             } else {
                                 return false;
                             }
                         break;
                         case "019":
                             if( _length == 10) {
-                                if( 200<= num3 && num3 <= 899) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return validateNum10();
                             }
                             if( _length == 11) {
                                 if( (9000 <= num4 && num4 <= 9999)) {
