@@ -408,7 +408,6 @@
                                 self.completeAuth(success, result);
                             });
                         } else {
-                            console.log('예약!')
                             var $changeForm = $('#reservationTimePopup');
                             var url = $changeForm.data('auth-url');
                             var formData = {
