@@ -402,7 +402,7 @@
                 }).on('click', '.btn-group .btn-confirm', function() {
                     var result = self.validation.validate();
                     if( result.success == true) {
-                        if(lgkorUI.isLogin) {
+                        if(!lgkorUI.isLogin) {
                             self.authManager.confirm(this, function(success, result) {
                                 self.completeAuth(success, result);
                             });
