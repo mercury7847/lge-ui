@@ -279,7 +279,7 @@
                 self._setSearch();
             });
 
-            $(window).on('resize', function(e){
+            $(window).on('resizeend', function(e){
                 self._resize();
             });
             self._resize();

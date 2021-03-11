@@ -1412,7 +1412,8 @@
                                     sendParam.easyRequestCard = param.easyRequestCard
                                 }
                                 if(typeof modelUrlPath !== 'undefined') {
-                                    sendParam.modelUrlPath = modelUrlPath;
+                                    var queryString = location.search;
+                                    sendParam.modelUrlPath = modelUrlPath + queryString;
                                 }
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
                                     console.log(result);

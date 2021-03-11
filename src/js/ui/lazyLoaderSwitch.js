@@ -30,12 +30,10 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector +"img[data-pc-src][data-m-src]");
+            self.$items = $(self.options.selector +"img[data-pc-src][data-m-src],.ui_bg_switch");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
-            //self._action();
-            //$(window).trigger('addResizeCallback', self._action());
         },
 
         _bindEvents: function _bindEvents() {
@@ -45,7 +43,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 self._action();
             }).trigger('scroll' + self.eventNS);
 
-            $(window).on('resize', function(e){
+            $(window).on('resizeend', function(e){
                 self._resize();
             });
         },
@@ -59,6 +57,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
         },
 
         _action: function _action() {
+            
             var self = this;
 
             var scrollValue = self._getScrollValue();
@@ -104,7 +103,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
         reload: function($dm){
             var self = this;
-            var $items = $dm.find("img[data-pc-src][data-m-src]");
+            var $items = $dm.find("img[data-pc-src][data-m-src],.ui_bg_switch");
             $items.each(function(idx, item){
                 self._loadImage($(item),null);
             });
@@ -120,15 +119,22 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             if(self.mode != mode) {
                 //console.log('resize!!!!!',$items.length);
                 self.mode = mode;
-                var $items = $(self.options.selector +"img[data-pc-src][data-m-src][data-current-image]");
+                var $items = $(self.options.selector +"img[data-pc-src][data-m-src][data-current-image],.ui_bg_switch[data-current-image]");
                 $items.each(function(idx,item){
                     var $img = $(item);
                     var src = $img.attr('data-' + mode + '-src');
                     var currentImage = $img.attr('data-current-image');
                     if(src && src != currentImage) {
-                        $img.attr("src", src);
-                        //$img.attr("data-lazy", src);
-                        $img.attr('data-current-image',src);
+                        if($img.hasClass("ui_bg_switch")) {
+                            $img.css({
+                                'background-image': 'url(' + src + ')'
+                            });
+                            $img.attr('data-current-image',src);
+                        } else {
+                            $img.attr("src", src);
+                            //$img.attr("data-lazy", src);
+                            $img.attr('data-current-image',src);
+                        }
                     }
                 });
             }
@@ -146,10 +152,16 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 var src = $img.attr('data-' + mode + '-src');
                 var currentImage = $img.attr('data-current-image');
                 if(src && src != currentImage) {
-                    
-                    $img.attr("src", src);
-                    //$img.attr("data-lazy", src);
-                    $img.attr('data-current-image',src);
+                    if($img.hasClass("ui_bg_switch")) {
+                        $img.css({
+                            'background-image': 'url(' + src + ')'
+                        });
+                        $img.attr('data-current-image',src);
+                    } else {
+                        $img.attr("src", src);
+                        //$img.attr("data-lazy", src);
+                        $img.attr('data-current-image',src);
+                    }
                     /*
                     if ($img[0].complete) {
                         cb.call($img);
