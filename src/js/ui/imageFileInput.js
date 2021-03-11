@@ -71,7 +71,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 msgType;
 
 
-            if (individualFlag) {
+            if (self.options.individualFlag) {
                 if (!self._checkIndividualFileSize(file)) {
                     success = false;
                     msgType = 'size';
