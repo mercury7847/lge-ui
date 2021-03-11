@@ -54,7 +54,7 @@ var Curation = (function() {
         _bindEvents: function() {
             var self = this;
             
-            $(window).on('resize', function(){
+            $(window).on('resizeend', function(){
                 self.resizeCalcSmartFilter();
             });
         },
