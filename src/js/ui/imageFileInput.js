@@ -75,8 +75,15 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 if (!self._checkIndividualFileSize(file)) {
                     success = false;
                     msgType = 'size';
+
+                    return {
+                        success: success,
+                        message: msgType
+                    };
                 }
-            } else if (!self._checkFileSize(file)) {
+            } 
+            
+            if (!self._checkFileSize(file)) {
                 success = false;
                 msgType = 'size';
             } else if (!self._checkFileFormat(file)) {
