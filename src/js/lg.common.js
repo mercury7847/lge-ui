@@ -79,11 +79,19 @@ var isApp = function(){
             "ui/smoothScrollTab",
             "ui/checkboxAllChecker",
             //"ui/imageSwitch"
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
         ], function () {    
             console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
-            
+            console.log(location.hostname)
+            if(location.hostname == "cms50.lge.co.kr") {
+                console.log('lazy cms50');
+                this.vcLazyLoaderSwitch();
+                this.vcLazyLoader();
+            }
+
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
             this.find('.ui_dropdown').vcDropdown();
