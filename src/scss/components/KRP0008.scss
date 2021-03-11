@@ -1053,12 +1053,18 @@
                     display: block;
                     position: relative;
                     min-height: 48px;
-                    padding: 11px 40px 11px 15px;
                     border: 1px solid $color-border;
                     border-radius: 8px;
                     background: $color-bg-wt;
                     @include font-small;
                     text-align: right;
+                    a {
+                        display:block;
+                        padding: 11px 40px 11px 15px;
+                        @include mobile {
+                            padding:12px 40px 13px 15px;
+                        }
+                    }
                     .ui_dropdown_toggle {
                         &:after {
                             position: absolute;

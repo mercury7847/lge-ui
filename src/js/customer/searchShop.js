@@ -846,34 +846,36 @@
         //리스트 컨테이너 높이 설정...스크롤영역
         _setListArea: function(){
             var self = this;
-            //self.windowHeight = $(window).innerHeight();
 
-            //var top = $('.container').position().top;
             var containerHeight = $('.container').height();
             var scheight = self.$searchContainer.is(':hidden') ? 0 : self.$searchContainer.height();
             var optheight = self.$optionContainer.is(':hidden') ? 0 : self.$optionContainer.height();
+            
             var $listBox = $('.result-list-box');
             var resultheight = $listBox.is(':hidden')? 0 :$('.result-list-box').height();
             
+            var $tit = self.$leftContainer.find('> .tit');
+            var titheight = $tit.is(':hidden') ? 0 : self.$leftContainer.find('> .tit').outerHeight();
+            
             //
-            var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
-            var listop = self.$defaultListContainer.offset().top;
-            var listpaddingtop = parseInt(self.$defaultListContainer.css('padding-top'));
+            //var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+            //var listop = self.$defaultListContainer.offset().top;
+            //var listpaddingtop = parseInt(self.$defaultListContainer.css('padding-top'));
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
+            
+            var $scrollWrap = self.$defaultListContainer.find('.scroll-wrap');
 
-            var listheight;
+            /*
             if(self.searchResultMode){
-                console.log('mode');
                 //listheight = self.windowHeight - listop - listpaddingtop - paddingtop - optheight;
-                listheight = containerHeight - scheight - resultheight - optheight;
             } else{
-                listheight = self.windowHeight - listop - paddingtop - optheight;
+                //listheight = self.windowHeight - listop - paddingtop - optheight;
             }
-            //jsw
-            console.log('?>??',containerHeight,scheight, resultheight, optheight);
-            //console.log('jsw2', top,self.$leftContainer,self.$searchContainer,self.$optionContainer,self.$defaultListContainer);
-            self.$defaultListContainer.find('.scroll-wrap').height(listheight);
-            //self.$defaultListContainer.find('.scroll-wrap').innerHeight(listheight);
+            */
+
+            var listheight = containerHeight - scheight - optheight - resultheight - titheight - paddingtop;
+
+            $scrollWrap.height(listheight);
         },
 
         _resize: function(){

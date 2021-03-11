@@ -408,9 +408,15 @@
                                 self.completeAuth(success, result);
                             });
                         } else {
+                            console.log('예약!')
                             var $changeForm = $('#changeEngineerFormData');
                             var url = $changeForm.data('auth-url');
-                            var formData = self.validation.getAllValues();
+                            var formData = {
+                                userNm : $('#userNm').val(),
+                                phoneNo : $('#phoneNo').val(),
+                                numberName : ''
+                            };
+                            console.log(formData)
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                                 var data = result.data;
