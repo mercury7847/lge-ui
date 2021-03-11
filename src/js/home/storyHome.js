@@ -122,6 +122,10 @@
 
             var section = $(this).closest('.story-section');
             if(section.hasClass('user_story')){
+                if(IS_LOGIN == "Y"){
+                    $(".new_story").show();
+                    setRepositionTagBox($('.new_story'));
+                }
                 loadStoryList('user_story', 1, "UserStory");
             } else{
                 loadStoryList('new_story', 1, 'NewStory');
@@ -227,6 +231,9 @@
         console.log(section.attr('class'), " [selectTags:", selectTags, ']');
 
         if(section.hasClass('user_story')){
+            if(selectTags.mode == "search"){
+                $('.new_story').hide();
+            }
             loadStoryList('user_story', 1, "UserStory", selectTags);
         } else{
             loadStoryList('new_story', 1, 'NewStory', selectTags);
