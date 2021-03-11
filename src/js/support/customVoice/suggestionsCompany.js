@@ -12,32 +12,54 @@
 
                 var register = {
                     privcyCheck: {
+                        required: true,
                         msgTarget: '.err-block'
                     },
                     userName: {
+                        required: true,
                         maxLength : 30,
                         pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
+                        required: true,
                         maxLength : 11,
                         pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block'
                     },
                     email:{
+                        required: true,
+                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         minLength: 1,
                         maxLength: 50,
-                        pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        msgTarget: '.err-block'
+                        msgTarget: '.err-block',
+                        errorMsg: '이메일 주소를 입력해주세요.',
+                        patternMsg: '올바른 이메일 형식이 아닙니다.',
+                        validate : function(value){
+                            var _pattern = new RegExp(this.pattern);
+
+                            if( _pattern.test(value) == true) {
+                                if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        }
                     },
                     replyCheck: {
+                        required: true,
                         msgTarget: '.reply-err-block'
                     },
                     title: {
+                        required: true,
                         msgTarget: '.err-block'
                     },
                     content: {
+                        required: true,
                         msgTarget: '.err-block'
                     }
                 }
