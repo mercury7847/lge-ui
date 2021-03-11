@@ -143,6 +143,8 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
 
             contID = items.eq(self.tabIndex).find('a').attr('href');
             $(contID).stop().show().animate({opacity:1}, 220);
+            console.log("_setTabContents:",$(contID))
+            $(contID).find('.ui_carousel_slider').vcCarousel('update');
         },
 
         setTabIndex: function(idx){

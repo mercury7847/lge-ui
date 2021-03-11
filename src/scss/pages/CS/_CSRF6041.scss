@@ -68,6 +68,16 @@
                 transform: rotate(-45deg);
             }
         }
+        .tooltip-wrap.share {
+            .tooltip-box {
+                &.fixed-right {
+                    padding-right:32px;
+                    @include mobile {
+                        padding-right:24px;
+                    }
+                }
+            }
+        }
         .tooltip-wrap .btn-close {
             position: absolute;
             top: 16px;
