@@ -270,6 +270,7 @@
 
     // 주문조회 로그인 안내 팝업
     .non-members-login {
+        text-align: center;
         .hello-msg {
             margin-bottom:20px;
             @include font-medium;
@@ -279,6 +280,7 @@
             word-break:keep-all;
             em {
                 font-weight:700;
+                color: $color-primary;
             }
         }
         .call-info {
