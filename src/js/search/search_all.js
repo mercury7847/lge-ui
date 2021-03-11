@@ -93,7 +93,7 @@
             '</div>' +
         '</div>' +
     '</a></li>';
-    var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
+    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
