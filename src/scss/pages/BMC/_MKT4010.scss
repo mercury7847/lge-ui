@@ -6,3 +6,15 @@
     line-height:24px;
     font-weight:700;
 }
+
+.input-info {
+    .bold-txt + .parti-date {
+        margin-top:0;
+    }
+    .parti-date {
+        margin-top:40px;
+        .date {
+            margin-bottom:12px;
+        }
+    }
+}
