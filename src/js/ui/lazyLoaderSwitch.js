@@ -34,8 +34,6 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
-            //self._action();
-            //$(window).trigger('addResizeCallback', self._action());
         },
 
         _bindEvents: function _bindEvents() {
