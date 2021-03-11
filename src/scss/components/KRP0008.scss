@@ -1320,6 +1320,10 @@
                     background-color: $color-bg-wt;
                 }
                 &.open {
+                    height: 48px;
+                    @include mobile {
+                        height: 42px;
+                    }
                     .select-button {
                         position: absolute;
                         top: 0;
