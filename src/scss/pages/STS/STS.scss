@@ -241,7 +241,7 @@
                     border-color: rgba(255,255,255,.4);
                     color: $color-white;
                 }
-                @include pc {
+                @media screen and (min-width: 1058px) {
                     .visual-area {
                         overflow: hidden;
                         height: 486px;
