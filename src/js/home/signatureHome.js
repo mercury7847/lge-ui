@@ -84,7 +84,7 @@ $(function() {
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
-                console.log(currentStep);
+                //console.log(currentStep);
                 canScroll = true;
                 return; 
             }
