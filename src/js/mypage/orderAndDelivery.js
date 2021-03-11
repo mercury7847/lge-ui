@@ -1491,7 +1491,7 @@
             bankName: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
         console.log("### sendBankConfirm ###", sendata)
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(BANK_CONFIRM_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### sendBankConfirm complete", result);
 
             lgkorUI.alert("",{
