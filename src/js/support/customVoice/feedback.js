@@ -1,7 +1,7 @@
 (function() {
     var validation;
     var authManager;
-    var authFlag = false;
+    var authFlag = lgkorUI.isLogin;
 
     var custom = {
         init: function() {
