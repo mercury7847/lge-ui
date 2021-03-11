@@ -186,6 +186,7 @@
                         margin-top:8px;
                         @include mobile {
                             max-width:initial;
+                            min-height:63px;
                             margin-top:10px;
                         }
                         li {
