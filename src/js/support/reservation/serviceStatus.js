@@ -686,7 +686,7 @@
                 });
             },
             authSetting: function() {
-                if (!$('#reservationTimePopup').length) return;
+                if (!$('#reservationTimePopup').length || $('html').data('login') !="Y") return;
     
                 var self = this;
                 var authRegister = {
