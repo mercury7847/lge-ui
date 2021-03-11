@@ -417,14 +417,7 @@
                                 
                                 if (data.resultFlag == 'Y') {
                                     lgkorUI.hideLoading();
-                                    lgkorUI.alert('', {
-                                        title:'예약이 완료 되었습니다.',
-                                        okBtnName: '확인',
-                                        ok: function() {
-                                            $changeForm.attr('action', data.url);
-                                            $changeForm.submit();
-                                        }
-                                    });   
+                                    self.complete();
                                 } else {
                                     if (data.resultMessage) {
                                         lgkorUI.alert("", {
