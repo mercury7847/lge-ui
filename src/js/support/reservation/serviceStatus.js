@@ -408,7 +408,7 @@
                             });
                         } else {
                             var $changeForm = $('#changeEngineerFormData');
-                            var url = $changeForm.data('ajax');
+                            var url = $changeForm.data('auth-url');
                             var formData = self.validation.getAllValues();
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
