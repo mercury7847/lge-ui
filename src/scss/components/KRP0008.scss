@@ -1535,6 +1535,11 @@
 
         .payment-amount {
             margin-top: 24px;
+            .info-text {
+                margin-bottom: 12px;
+                @include font-x-small;
+                color: $color-gray-1;
+            }
             ul > li {
                 &:not(:first-child) {
                     .price-info {
@@ -2550,6 +2555,7 @@
             padding-right: 16px;
             img {
                 width: 56px;
+                border: 1px solid $color-border;
             }
         }
     }

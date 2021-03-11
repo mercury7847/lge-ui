@@ -686,7 +686,7 @@
                 });
             },
             authSetting: function() {
-                if (!$('#reservationTimePopup').length) return;
+                if (!$('#reservationTimePopup').length || !lgkorUI.isLogin) return;
     
                 var self = this;
                 var authRegister = {

@@ -1,18 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
     <g fill="none" fill-rule="evenodd">
         <g>
             <g>
                 <g>
                     <g>
-                        <path d="M0 0H48V48H0z" opacity=".3" transform="translate(-310 -9490) translate(270 9344) translate(0 100) translate(40 46)"/>
-                        <g transform="translate(-310 -9490) translate(270 9344) translate(0 100) translate(40 46) translate(2 3)">
-                            <path fill="#FFF" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 0H44V38H17z"/>
-                            <path fill="#222" d="M27 14H44V15.5H27z"/>
-                            <rect width="3" height="3" x="38" y="9" fill="#222" rx="1.5"/>
-                            <rect width="3" height="3" x="38" y="18" fill="#222" rx="1.5"/>
-                            <path fill="#FFF" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M0 11H28V43H0z"/>
-                            <circle cx="14" cy="30" r="9" fill="#EDEDED" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                            <rect width="19" height="1.5" x="5" y="15" fill="#222" rx=".75"/>
+                        <g>
+                            <path d="M0 64L64 64 64 0 0 0z" transform="translate(-302 -9537) translate(270 9392) translate(0 100) translate(32 45)"/>
+                            <g transform="translate(-302 -9537) translate(270 9392) translate(0 100) translate(32 45) translate(3.2 4)">
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M53.968 0c1.72 0 3.113 1.394 3.113 3.114v43.07c0 1.72-1.394 3.113-3.113 3.113H36.324V17.384c0-1.66-1.3-3.017-2.937-3.109l-.176-.005H22.054V3.114c0-1.72 1.394-3.114 3.114-3.114h28.8z"/>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.114 14.27H33.21c1.72 0 3.113 1.394 3.113 3.114V52.67c0 1.72-1.394 3.114-3.113 3.114H3.114C1.394 55.784 0 54.39 0 52.67V40.343h0V17.384c0-1.72 1.394-3.114 3.114-3.114z"/>
+                                <path fill="#000" d="M36.148 18L57.081 18 57.081 20 36.148 20z"/>
+                                <rect width="6.357" height="2" x="46.054" y="12.065" fill="#000" rx="1"/>
+                                <rect width="6.357" height="2" x="46.054" y="23.481" fill="#000" rx="1"/>
+                                <circle cx="18.162" cy="38.919" r="11.676" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path fill="#000" d="M9.173 19.46h17.978c.553 0 1 .447 1 1 0 .552-.447 1-1 1H9.173c-.552 0-1-.448-1-1 0-.553.448-1 1-1z"/>
+                            </g>
                         </g>
                     </g>
                 </g>

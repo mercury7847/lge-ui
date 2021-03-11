@@ -303,6 +303,13 @@
                     });       
                 }
             });
+
+            $(document).on('click', '.btn_ui_outlink', function(){
+                var $this= $(this);
+                var $popup = $this.closest('article.lay-wrap');
+
+                $popup.vcModal('hide');
+            });
         }
     }
 
