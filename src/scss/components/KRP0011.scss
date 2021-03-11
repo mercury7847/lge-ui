@@ -26,8 +26,8 @@
     .title {
         margin-bottom:64px;
         font-weight:700;
-        font-size:40px;
-        line-height:56px;
+        font-size:32px;
+        line-height:52px;
         text-align:center;
         * {
             font-weight:inherit;
@@ -36,8 +36,8 @@
         }
         @include mobile {
             margin-bottom:32px;
-            font-size:27px;
-            line-height:38px;
+            font-size:24px;
+            line-height:33px;
         }
     }
 
