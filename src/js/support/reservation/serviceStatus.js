@@ -408,15 +408,13 @@
                                 self.completeAuth(success, result);
                             });
                         } else {
-                            console.log('예약!')
-                            var $changeForm = $('#changeEngineerFormData');
-                            var url = $changeForm.data('auth-url');
+                            var $changePopup = $('#reservationTimePopup');
+                            var url = $changePopup.data('auth-url');
                             var formData = {
                                 userNm : $('#userNm').val(),
                                 phoneNo : $('#phoneNo').val(),
                                 numberName : ''
                             };
-                            console.log(formData)
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                                 var data = result.data;
@@ -427,15 +425,7 @@
                                 } else {
                                     if (data.resultMessage) {
                                         lgkorUI.alert("", {
-                                            title: data.resultMessage,
-                                            ok: function() {
-                                                if (self.isOneView == 'Y') {
-                                                    if (data.resultMessage.indexOf('휴대전화번호') != -1) {
-                                                        $('#phoneNo').prop('readonly', false);
-                                                        $('#phoneNo').focus();
-                                                    }
-                                                }
-                                            }
+                                            title: data.resultMessage
                                         });
                                     }
                                     lgkorUI.hideLoading();
@@ -753,6 +743,7 @@
             complete : function(){
                 var self = this;
 
+
                 // if ($('[name=bdType]:checked').val() == 4) {
                 //     $('#productCode').val('CRB');
                 // }
@@ -774,6 +765,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
+
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
 
