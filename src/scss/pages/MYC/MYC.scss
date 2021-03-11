@@ -890,12 +890,16 @@
                     .tit {
                         float:left;
                         border-bottom:none;
+                        @include mobile {
+                            margin-bottom:24px;
+                            padding-bottom:46px;
+                        }
                     }
                     .flt-cont {
                         float:right;
-                        @include mobile {
-                            padding-bottom:72px;
-                        }
+                        // @include mobile {
+                        //     padding-bottom:72px;
+                        // }
                         .btn-link {
                             margin-top:0;
                         }

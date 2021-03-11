@@ -71,16 +71,16 @@
 
     &:disabled,
     &.disabled {
-        border-color:#f3b7c7 !important;
-        background:#f3b7c7;
-        color:$color-white;
+        border-color:#ddd !important;
+        background:#f4f4f4;
+        color:$color-gray-4;
         cursor:default;
         &:hover,
         &:focus,
         &:active {
-            border-color:#f3b7c7 !important;
-            background:#f3b7c7;
-            color: $color-white;
+            border-color:#ddd !important;
+            background:#f4f4f4;
+            color: $color-gray-4;
         }
     }
     // 작은사이즈 버튼

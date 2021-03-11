@@ -8,7 +8,11 @@
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "이용가이드/FAQ" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
