@@ -409,7 +409,7 @@
                             });
                         } else {
                             console.log('예약!')
-                            var $changeForm = $('#changeEngineerFormData');
+                            var $changeForm = $('#reservationTimePopup');
                             var url = $changeForm.data('auth-url');
                             var formData = {
                                 userNm : $('#userNm').val(),
