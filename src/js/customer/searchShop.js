@@ -279,7 +279,7 @@
                 self._setSearch();
             });
 
-            $(window).on('resize', function(e){
+            $(window).on('resizeend', function(e){
                 self._resize();
             });
             self._resize();
@@ -322,7 +322,7 @@
         
         _sendKeywordData: function(keywords, userLocation){
             var self = this;
-
+            
             console.log("### _loadStoreData ###", keywords)
             lgkorUI.requestAjaxData(self.bestShopUrl, keywords, function(result){
                 if(result.data.length){
@@ -847,23 +847,35 @@
         _setListArea: function(){
             var self = this;
 
-            var top = $('.container').position().top;
-            var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
-            var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionContainer.height();
-            var resultheight = $('.result-list-box').height();
-            var listop = self.$defaultListContainer.offset().top;
-            var listpaddingtop = parseInt(self.$defaultListContainer.css('padding-top'));
-            var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
-
-            var listheight;
-            if(self.searchResultMode){
-                listheight = self.windowHeight - listop - listpaddingtop - paddingtop - optheight;
-            } else{
-                listheight = self.windowHeight - listop - paddingtop - optheight;
-            }
+            var containerHeight = $('.container').height();
+            var scheight = self.$searchContainer.is(':hidden') ? 0 : self.$searchContainer.height();
+            var optheight = self.$optionContainer.is(':hidden') ? 0 : self.$optionContainer.height();
             
-            self.$defaultListContainer.find('.scroll-wrap').height(listheight);
+            var $listBox = $('.result-list-box');
+            var resultheight = $listBox.is(':hidden')? 0 :$('.result-list-box').height();
+            
+            var $tit = self.$leftContainer.find('> .tit');
+            var titheight = $tit.is(':hidden') ? 0 : self.$leftContainer.find('> .tit').outerHeight();
+            
+            //
+            //var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+            //var listop = self.$defaultListContainer.offset().top;
+            //var listpaddingtop = parseInt(self.$defaultListContainer.css('padding-top'));
+            var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
+            
+            var $scrollWrap = self.$defaultListContainer.find('.scroll-wrap');
+
+            /*
+            if(self.searchResultMode){
+                //listheight = self.windowHeight - listop - listpaddingtop - paddingtop - optheight;
+            } else{
+                //listheight = self.windowHeight - listop - paddingtop - optheight;
+            }
+            */
+
+            var listheight = containerHeight - scheight - optheight - resultheight - titheight - paddingtop;
+
+            $scrollWrap.height(listheight);
         },
 
         _resize: function(){

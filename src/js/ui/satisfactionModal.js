@@ -11,12 +11,15 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
         var isContent = false;
         var register = {
             serviceName: {
+                required: true,
                 msgTarget: '.service-err-block'
             },
             csaFlag: {
+                required: true,
                 msgTarget: '.csa-err-block'
             },
             rating: {
+                required: true,
                 msgTarget: '.err-block'
             },
             content: {
@@ -81,11 +84,12 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                 isContent = false;
                 param = {};
 
-                validation.reset();
                 $popupCont.find('input[type=radio]').prop('checked', false);
                 $popupCont.find('textarea').val('');
                 $popupCont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
                 $popupCont.find('#rating').vcStarRating('selectedIndex', 0);
+           
+                validation.reset();
             });
         });
     })();

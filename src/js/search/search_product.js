@@ -9,7 +9,7 @@
     var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
+    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -663,6 +663,7 @@
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
@@ -825,10 +826,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },

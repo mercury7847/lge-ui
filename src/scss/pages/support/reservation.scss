@@ -597,40 +597,28 @@
         }
 
         .result-btn-group {
-            border-bottom:1px solid #ddd;
-            background-color:#fff;
+            background-color: #f4f4f4;
             &.fixed {
                 box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.1);
             }
             .group-box {
-                max-width:1460px;
+                max-width:1380px;
                 margin:0 auto;
-                padding:24px 40px;
+                padding:16px 0;
                 font-size:0;
-                text-align:center;
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
                 flex-wrap: wrap;
-                .btn-link {
-                    font-size: 20px;
-                    padding-right: 0;
-                    text-decoration: none;
-                    &::after {
-                        width: 20px;
-                        height: 20px;
-                        display: inline-block;
-                        position: relative;
-                        top: 3px;
-                        right: auto;
-                        margin-left: 12px;
-                        background-size: 18px;
-                    }
-                    &:hover,
-                    &:focus {
-                        color: #da0f47;
-                        &::after {
-                            background-image: url(/lg5-common/images/icons/btn-arr-16-red.svg);
+                &-title {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                &-btngroup {
+                    .btn {
+                        margin-left: 8px;
+                        &:first-child {
+                            margin-left: 0;
                         }
                     }
                 }
@@ -717,18 +705,20 @@
                 }
             }
         }
-
-        @include pc {
+        @include tablet {
             .result-btn-group {
                 .group-box {
-                    li {
-                        flex: 1;
-                        position: relative;
-                        max-width: 320px;
-                        width: 100%;
-                        margin-left: 32px;
-                        &:first-child {
-                            margin-left: 0;
+                    padding: 24px 0;
+                    text-align:center;
+                    flex-direction: column;
+                    &-title {
+                        font-size: 14px;
+                        margin-bottom: 16px;
+                        line-height: 1.57;
+                    }
+                    &-btngroup {
+                        .btn {
+                            margin-top: 8px;
                         }
                     }
                 }
@@ -737,48 +727,6 @@
         @include mobile{
             .result-header {
                 padding:0 16px;
-            }
-            .result-btn-group {
-                .group-box {
-                    padding:0;
-                    justify-content: center;
-                    li {
-                        min-width: 50%;
-                        flex: 1;
-                        height: 90px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-wrap: wrap;
-                        padding: 20px;
-                        .btn-link {
-                            font-size: 16px;
-                            &::after {
-                                background-size: 14px;
-                                margin-left: 6px;
-                                top: 4px;
-                            }
-                        }
-                        &:nth-child(2n+1) {
-                            border-right: 1px solid #ddd;
-                        }
-                        &:nth-child(4n+1),
-                        &:nth-child(4n+2) {
-                            border-bottom: 1px solid #ddd;
-                        }
-                        &:last-child {
-                            border-right: 0;
-                        }
-                    }
-                    .btn {
-                        padding-top: 0;
-                        padding-bottom: 0;
-                        height: 56px;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
             }
         }
     }

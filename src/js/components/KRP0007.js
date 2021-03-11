@@ -384,7 +384,7 @@
                 });
 
                 if(!$('.cate-m .cate-wrap').length){
-                    $(window).on('resize', function(){
+                    $(window).on('resizeend', function(){
                         self.cateWrapStatus();
                     })
                 }

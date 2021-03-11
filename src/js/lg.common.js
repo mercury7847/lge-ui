@@ -12,6 +12,7 @@ var isApp = function(){
     if(isApp()) $('html').addClass('app');
 
     window.onload = function(){
+        console.log('lazy??????????? onload');
         vcui.require([
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
@@ -19,6 +20,7 @@ var isApp = function(){
             var $b = $('body');
             $b.vcLazyLoaderSwitch();
             $b.vcLazyLoader();
+            console.log('lazy???????????');
         });
     };
 
@@ -77,11 +79,19 @@ var isApp = function(){
             "ui/smoothScrollTab",
             "ui/checkboxAllChecker",
             //"ui/imageSwitch"
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
         ], function () {    
             console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
-            
+            console.log(location.hostname)
+            if(location.hostname == "cms50.lge.co.kr") {
+                console.log('lazy cms50');
+                this.vcLazyLoaderSwitch();
+                this.vcLazyLoader();
+            }
+
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
             this.find('.ui_dropdown').vcDropdown();
@@ -387,7 +397,7 @@ var isApp = function(){
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resize', function(e){
+                $(window).on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -465,7 +475,9 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
+                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
+                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -475,7 +487,7 @@ var isApp = function(){
                                 data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
                             }
                             if(data && data.content.find(".ui_carousel_slider").length > 0){
-                                data.content.find('.ui_carousel').vcCarousel('update');
+                                data.content.find('.ui_carousel_slider').vcCarousel('update');
                             }
                         }
                     }
@@ -1093,7 +1105,7 @@ var isApp = function(){
                 url : url,
                 dataType : dtype,
                 data : data,
-                timeout : timeout
+                timeout : 180000
             }).done(function (result) {
 
                 if(dtype != "json") {

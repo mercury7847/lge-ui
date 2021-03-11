@@ -10,7 +10,7 @@
     //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
 
-    var productItemTemplate = '<li><div class="item{{#if modelStatusCode!="ACTIVE"}} discontinued{{/if}}">' +
+    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -93,7 +93,7 @@
             '</div>' +
         '</div>' +
     '</a></li>';
-    var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
+    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -741,6 +741,7 @@
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
@@ -789,7 +790,7 @@
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             item.isVideo = lgkorUI.stringToBool(item.isVideo);
-                            item.desc = $div.html(item.desc).text(); //html strip
+                            item.desc = vcui.string.replaceAll($div.html(item.desc).text(), searchedValue, replaceText); //html strip
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -829,6 +830,7 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.address = vcui.string.replaceAll(item.address, searchedValue, replaceText);
                             item.linkItem.forEach(function(obj, idx){
                                 obj.url = encodeURI(obj.url);
                             });
@@ -974,10 +976,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
