@@ -108,6 +108,7 @@
 			position:relative;
 			text-align:center;
 			a {
+                padding:0 30px;
 				text-align:center;
 				cursor: url('/lg5-common/images/KRP0008/zoomin_cursor.png'), url('/lg5-common/images/KRP0008/zoomin_cursor.cur'), pointer !important;
 			}
@@ -328,16 +329,32 @@
                 .btn-arrow {
                     width: 36px;
                     height: 36px;
+                    @include mobile {
+                        width:40px;
+                        height:40px;
+                    }
                     &:before {
                         width: 36px;
                         height: 36px;
                         background-size: 100%;
+                        @include mobile {
+                            width:40px;
+                            height:40px;
+                            background:url('/lg5-common/images/KRP0008/btn-carousel-small-mo-80.svg') no-repeat 0 0;
+                            background-size:40px;
+                            box-shadow:none;
+                        }
                     }
                 }
                 button {
                     padding:0;
                     &.prev {
                         left: 6px;
+                        @include mobile {
+                            &:before {
+                                transform:rotate(180deg);
+                            }
+                        }
                     }
                     &.next {
                         right: 6px;
@@ -980,7 +997,7 @@
                         @include mobile {
                             .tooltip-box {
                                 min-width: calc(100vw - 48px);
-                                left: -16px;
+                                left: -24px;
                             }
                         }
                     }
@@ -1036,12 +1053,18 @@
                     display: block;
                     position: relative;
                     min-height: 48px;
-                    padding: 11px 40px 11px 15px;
                     border: 1px solid $color-border;
                     border-radius: 8px;
                     background: $color-bg-wt;
                     @include font-small;
                     text-align: right;
+                    a {
+                        display:block;
+                        padding: 11px 40px 11px 15px;
+                        @include mobile {
+                            padding:12px 40px 13px 15px;
+                        }
+                    }
                     .ui_dropdown_toggle {
                         &:after {
                             position: absolute;

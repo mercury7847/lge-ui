@@ -403,27 +403,27 @@
                     var result = self.validation.validate();
                     if( result.success == true) {
                         if(!lgkorUI.isLogin) {
+
                             self.authManager.confirm(this, function(success, result) {
                                 self.completeAuth(success, result);
                             });
                         } else {
+                            console.log('예약!')
                             var $changeForm = $('#changeEngineerFormData');
-                            var url = $changeForm.data('ajax');
-                            var formData = self.validation.getAllValues();
+                            var url = $changeForm.data('auth-url');
+                            var formData = {
+                                userNm : $('#userNm').val(),
+                                phoneNo : $('#phoneNo').val(),
+                                numberName : ''
+                            };
+                            console.log(formData)
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                                 var data = result.data;
                                 
                                 if (data.resultFlag == 'Y') {
                                     lgkorUI.hideLoading();
-                                    lgkorUI.alert('', {
-                                        title:'예약이 완료 되었습니다.',
-                                        okBtnName: '확인',
-                                        ok: function() {
-                                            $changeForm.attr('action', data.url);
-                                            $changeForm.submit();
-                                        }
-                                    });   
+                                    self.complete();
                                 } else {
                                     if (data.resultMessage) {
                                         lgkorUI.alert("", {
@@ -723,7 +723,7 @@
                 });
             },
             authSetting: function() {
-                if (!$('#reservationTimePopup').length || !lgkorUI.isLogin) return;
+                if (!$('#reservationTimePopup').length || lgkorUI.isLogin) return;
     
                 var self = this;
                 var authRegister = {
@@ -742,9 +742,9 @@
                     }
                 
                 if( $('#authNo').length ) {
+
                     self.authManager = new AuthManager(managerOpt);
                     
-        
                     self.el.popup.find('.btn-send').on('click', function() {
                         self.authManager.send(this);
                     });
