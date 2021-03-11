@@ -11,7 +11,7 @@
             '<td>{{partModel}}</td>' +
         '</tr>' +
         '<tr>' +
-            '<td>부품</td>' +
+            '<td>재생부품</td>' +
             '<td>{{partOld.number}}</td>' +
             '<td>{{partOld.price}}</td>' +
             '<td>{{partModel}}</td>' +

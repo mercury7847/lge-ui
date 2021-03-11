@@ -663,7 +663,7 @@
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             item.isVideo = lgkorUI.stringToBool(item.isVideo);
-                            item.desc = $div.html(item.desc).text(); //html strip
+                            item.desc = vcui.string.replaceAll($div.html(item.desc).text(), searchedValue, replaceText); //html strip
                             $list_ul.append(vcui.template(storyItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -828,10 +828,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },

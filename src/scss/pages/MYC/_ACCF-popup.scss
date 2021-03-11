@@ -1061,6 +1061,7 @@
             margin-bottom:17px;
             @include mobile {
                 margin-bottom:8px;
+                padding-bottom:46px;
             }
         }
         .flt-cont {
@@ -1073,7 +1074,7 @@
                     display:inline-block;
                 }
                 @include mobile {
-                    padding-bottom:72px;
+                    // padding-bottom:72px;
                     a.btn-link {
                         margin-top:4px;
                     }

@@ -661,6 +661,7 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.address = vcui.string.replaceAll(item.address, searchedValue, replaceText);
                             item.linkItem.forEach(function(obj, idx){
                                 obj.url = encodeURI(obj.url);
                             });
@@ -828,10 +829,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },

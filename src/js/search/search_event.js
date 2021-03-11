@@ -825,10 +825,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },

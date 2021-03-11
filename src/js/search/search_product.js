@@ -663,6 +663,7 @@
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
@@ -825,10 +826,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
