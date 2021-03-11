@@ -1409,7 +1409,7 @@
                                 if(sendParam.easyRequestCard) {
                                     sendParam.easyRequestCard = param.easyRequestCard
                                 }
-                                if(typeof odelUrlPath !== 'undefined') {
+                                if(typeof modelUrlPath !== 'undefined') {
                                     sendParam.modelUrlPath = modelUrlPath;
                                 }
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){

@@ -278,26 +278,27 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
-                var url, param = {},
+                var param = {},
+                    url = self.resultUrl,
                     data = self.data = $.extend({}, self.data, data);
                 
-                if (data.seq) {
-                    url = self.centerUrl;
+                if (data.seq) {    
                     param = {
                         seq: data.seq,
-                        page: 1
+                        category: data.category,
+                        subCategory: data.subCategory,
+                        modelCode: data.modelCode,
+                        serviceType: data.serviceType
                     };
-
-                    
                 } else {
-                    url = self.resultUrl;
                     param = {
                         category: data.category,
                         subCategory: data.subCategory,
                         modelCode: data.modelCode,
                         serviceType: data.serviceType
-                    }
+                    };
                 }
+
                 self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
@@ -312,8 +313,6 @@
             });
 
             $('.ui_tab').on('tabchange', function(e, data) {
-                console.log('tab')
-
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';
