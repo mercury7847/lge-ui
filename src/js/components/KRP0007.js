@@ -77,9 +77,11 @@
                         // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
                         // '{{/if}}' +
                         '<a href="#">' +
-                            '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '{{#if (reviewsCount > 0)}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
+                            '{{/if}}' +
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
