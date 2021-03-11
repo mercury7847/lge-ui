@@ -241,31 +241,32 @@
             margin-bottom: 8px;
         }
         .result-tit {
-            display: -webkit-box;
-            max-height: 52px;
             margin-bottom: 4px;
-            text-overflow: clip;
-            //text-overflow:ellipsis;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow:hidden;
             @include font-medium;
             color: $color-default;
             font-weight: $font-weight-bold;
             
             @include mobile {
-                max-height: 46px;
+                //max-height: 46px;
                 margin-bottom: 6px;
                 font-size: 15px;
                 line-height: 23px;
             }
-            > a {
-                display: block;    
+            > a:first-child,
+            > strong {
+                display: block;
+                max-height: 52px;
+                @include textEllipsisClamp(2);
+                word-break: break-all;
+                @include mobile {
+                    max-height: 46px;
+                }
             }
             
         }
         .cs {
             display: block;
+            margin-top: 4px;
             @include font-medium;
             color: $color-default;
             font-weight: $font-weight-regular;
@@ -390,6 +391,9 @@
             overflow:hidden;
             @include font-medium;
             color: $color-default;
+            @include mobile {
+                max-height: 44px;
+            }
         }
         
         .review-info {
