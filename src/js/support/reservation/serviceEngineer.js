@@ -624,9 +624,10 @@
                     });
                 }
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
-                    console.log(data);
+                    
                     self.$cont.commonModel('updateSummary', {
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: 'product'
@@ -679,6 +680,8 @@
                     self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                         self.$selectedModelBar.vcSticky();
                     });
+
+                    lgkorUI.showLoading();
                 });
             });
 
