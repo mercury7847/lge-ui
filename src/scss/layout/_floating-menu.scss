@@ -1,6 +1,6 @@
 .floating-wrap {
     position:fixed;
-    right:100px;
+    right:56px;
     bottom:48px;
     z-index:1;
     @include mobile {
@@ -128,7 +128,7 @@
         }
 	}
 	&.top {
-        right:100px;
+        right:56px;
         bottom:48px;
         @include mobile {
             right:20px;
@@ -153,7 +153,7 @@
 		}
 	}
 	&.chat {
-        right:100px;
+        right:56px;
         bottom:(112px+72px+12px);
 
         @include mobile {
@@ -162,7 +162,7 @@
         }
     }
     &.cs-call {
-        right:100px;
+        right:56px;
         bottom:(112px+172px);
         @include mobile {
             right:24px;
@@ -178,7 +178,7 @@
         }
     }
     &.btn3 {
-        right:100px;
+        right:56px;
         bottom:460px;
         @include mobile {
             right:24px;
@@ -186,7 +186,7 @@
         }
     }
     &.btn4 {
-        right:100px;
+        right:56px;
         bottom:548px;
         @include mobile {
             right:24px;
@@ -194,7 +194,7 @@
         }
     }
     &.lately {
-        right:100px;
+        right:56px;
         bottom:192px;
         z-index:101;
         @include mobile {
@@ -203,7 +203,7 @@
         }
     }
     &.cs-cst {
-        right:100px;
+        right:56px;
         bottom:120px;
         @include mobile {
             right:20px;
@@ -341,7 +341,7 @@
         }
     }
     .pop-conts {
-        max-height:648px;
+        max-height:408px;
         padding:0 24px;
         @include mobile {
             max-height:100%;
