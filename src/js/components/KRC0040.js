@@ -65,6 +65,7 @@ $(window).ready(function(){
                 }
 				
 				var currentIdx = -1;
+				var isAllHidden = true;
 				$component.find('.info-tab').each(function(idx, item){
 					var percent = 0, display;
 					var contID = $(item).find('a').attr('href');
@@ -93,7 +94,10 @@ $(window).ready(function(){
 						display = percent <= 0 ? 'none' : 'block';
 						bar.css({width: percent+"%", display: display});
 
-						if(display == "block") currentIdx = idx;
+						if(display == "block") {
+							isAllHidden = false;
+							currentIdx = idx;
+						}
 					}
 				}); 
 				
@@ -109,6 +113,12 @@ $(window).ready(function(){
 					$moreInfos.children().removeClass('active');
 					$moreInfos.children().eq(no).addClass('active');
 					$onText.text($moreInfos.children().eq(no).text());
+				}
+
+				if(isAllHidden) {
+					$component.hide();
+				} else {
+					$component.show();
 				}
             });
 		}
