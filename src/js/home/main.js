@@ -8,11 +8,109 @@ $(function () {
         }
     });
 
+    var sceneTmpl =  '<div class="scene">\n'+
+        '   <div class="img">\n'+
+        '       <img src={{imagePath}} alt={{imageAlt}}>\n'+
+        '   </div>\n'+
+        '   <section class="lay-conts ui-alert-msg">\n'+
+        '   </section>\n'+
+        '   <div class="btn-wrap laypop">\n'+
+        '       <button type="button" class="btn ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
+        '   </div>\n'+
+        '</article>';
 
 
+
+    //혁신이 만들어낸<br>TV이상의, 作
+    // <span class="opac">차원이 다른</span><br>LG 올레드 TV
+
+    var sceneTmpl = '<div class="scene">\n'+
+        '   <div class="img">\n'+
+        '       {{#if isImage}} <img src="{{imagePath}}" alt="{{imageAlt}}">\n'+
+        '       {{#else}}<div class="video" data-src="{{videoPath}}" data-ext="{{videoExt}}" data-alt="{{videoAlt}}"></div>{{/if}}\n'+
+        '   </div>\n'+
+        '   <div class="text-cont">\n'+
+        '       <p>{{#raw descTxt}}</p>\n'+
+        '   </div>\n'+
+        '   {{#if isBanner}} {{#raw bannerHtml}} {{#else}}\n'+ 
+        '       <div class="text-link">\n'+
+        '           <a href="{{linkPath}}">{{linkTxt}}</a>\n'+
+        '       </div>\n'+
+        '   {{/if}}\n'+
+        '   <div class="counter">\n'+
+        '       <span class="num"><span class="blind">현재위치</span>{{nowNum}}</span>/<span class="num"><span class="blind">전체갯수</span>{{totalNum}}</span>\n'+
+        '   </div>\n'+
+        '   <div class="next-arr">\n'+
+        '       <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>\n'+
+        '   </div>\n'+
+        '</div>';
+
+    var bannerTmpl = '<div class="flow-banner">\n'+
+        '   <div class="slide-wrap ui_carousel_slider_banner1">\n'+
+        '       <div class="flow-bar-wrap">\n'+
+        '           <div class="flow-bar" style="width:10%;"></div>\n'+
+        '       </div>\n'+
+        '       <div class="slide-content ui_carousel_list">\n'+
+        '           <ul class="slide-track ui_carousel_track">\n'+
+        '               {{#each item in list}}\n'+
+        '                   <li class="slide-conts ui_carousel_slide">\n'+
+        '                       <div class="thumb">\n'+
+        '                           <img src="{{item.imagePath}}" alt="{{item.imageAlt}}">\n'+
+        '                       </div>\n'+
+        '                       <a href="{{item.linkPath}}" class="text-area">\n'+ 
+        '                           <span class="inner"><span class="tit">{{item.linkTxt}}</span></span>\n'+
+        '                       </a>\n'+
+        '                   </li>\n'+                        
+        '               {{/each}}\n'+                        
+        '           </ul>\n'+
+        '       </div>\n'+
+        '       <div class="slide-controls">\n'+
+        '           <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>\n'+
+        '           <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>\n'+
+        '       </div>\n'+
+        '   </div>\n'+
+        '</div>';
+    
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
         // 플로우배너
+        /*
+        var sceneArr = {
+            isImage : true,
+            imagePath : 'imagePath-1',
+            imageAlt : 'imageAlt-1',
+            videoPath : 'videoPath',
+            videoExt : '',
+            videoAlt : 'videoAlt',
+            descTxt : '',
+            isBanner : true,
+            bannerHtml : '',
+            linkPath : 'linkPath',
+            linkTxt : 'linkTxt',
+            nowNum : '1',
+            totalNum : '6'
+        }
+
+
+        var testArr = {
+
+            list: [
+                {
+                    imagePath : 'imagePath-1',
+                    imageAlt : 'imageAlt-1',
+                    linkPath : 'linkPath-1',
+                    linkPath : 'linkTxt-1'
+                },
+                {
+                    imagePath : 'imagePath-2',
+                    imageAlt : 'imageAlt-2',
+                    linkPath : 'linkPath-2',
+                    linkPath : 'linkTxt-2'
+                }
+            ]
+        }
+        */
+
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
@@ -80,7 +178,6 @@ $(function () {
         });
 
         $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
-            
 
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -90,15 +187,12 @@ $(function () {
                 $(this).find('.flow-bar-wrap').show();
             }
 
-
             var wd = $(this).find('.flow-bar-wrap').width();
             var dotWd = Math.ceil(wd/carousel.slideCount);
             $(this).find('.flow-bar').css({
                 'width':dotWd,
                 'left':dotWd*index
             });
-
-
 
         }).vcCarousel({
             infinite: true,
@@ -115,13 +209,11 @@ $(function () {
                     breakpoint: 10000,
                     settings: {
                         infinite: true,
-                        //autoplay: true,
                         variableWidth : false,
                         dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 1, 
-                        centerMode: true,
-                        // centerPadding: '13.5%',
+                        centerMode: true
                     }
                 },
                 {
@@ -193,6 +285,7 @@ $(function () {
                         slidesToScroll: 1                                
                     });
                 }
+
 
             }else if(data.name == 'pc'){
 
@@ -270,7 +363,7 @@ $(function () {
                 if(timeDiff > 35){
                     if(currentPage == maxLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && e.deltaY<0){
+                        if(st<=0 && e.deltaY<0){
                             wheelScene(-1);
                         }
                     }else{
@@ -454,6 +547,10 @@ $(function () {
             var createVideoObject = function() {
                 
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
+                var regExp = "\.(mp4|webm|ogv)";
+
+                console.log(src, src.match(regExp));
+
                 if ( !extArr.length ) return false;
 
                 var $video = $('<video '+ videoAttr +'></video>');
@@ -599,36 +696,3 @@ $(function () {
 
     });
 });
-
-/*
-    function _getEventPoint(ev, type) {
-        var e = ev.originalEvent || ev;
-        if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
-        else e = e.touches && e.touches[0] || e;
-
-        return {
-            x : e.pageX || e.clientX,
-            y : e.pageY || e.clientY
-        };
-    }
-    
-    var wheelInterval = null;
-    var $contentWrap = $('.section-cover');
-
-    $(document).on('touchstart touchend touchcancel', function(e) {
-
-        var data = _getEventPoint(e);
-        if (e.type == 'touchstart') {
-            touchSy = data.y;
-        } else {
-
-            if(wheelInterval) clearTimeout(wheelInterval);
-            wheelInterval = setTimeout(function(){
-                var st = $contentWrap.scrollTop();
-                if(st==0 && touchSy - data.y < -80){
-                    console.log('up');
-                }
-            }, 100);
-        }
-    });
-*/
