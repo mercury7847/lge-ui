@@ -9,15 +9,19 @@ $(function() {
     });
     
 
-    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
+    vcui.require(['ui/carousel','ui/lazyLoaderSwitch','libs/jquery.transit.min'], function () {     
 
-        $('.signature-theme .ui_carousel_slider').vcCarousel({
+        var $sigTheme = $('.signature-theme .ui_carousel_slider');
+        $sigTheme.vcCarousel({
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            lazyLoad:'progressive'
         });
 
-        $('.signature-showroom .ui_carousel_slider').vcCarousel({
+        var $sigShowRoom = $('.signature-showroom .ui_carousel_slider');
+        $sigShowRoom.vcCarousel({
             settings: "unslick",
+            lazyLoad:'progressive',
             responsive: [
                 {
                     breakpoint: 10000,
@@ -32,6 +36,8 @@ $(function() {
                 }
             ]
         });
+        $('body').vcLazyLoaderSwitch('reload',$sigTheme);
+        $('body').vcLazyLoaderSwitch('reload',$sigShowRoom);
 
         var isApplication = isApp();
         var $window   = $(window);
@@ -78,7 +84,7 @@ $(function() {
             var arr = wheelArr[step];
             if(!vcui.isArray(arr)){ 
                 currentStep = step;
-                console.log(currentStep);
+                //console.log(currentStep);
                 canScroll = true;
                 return; 
             }

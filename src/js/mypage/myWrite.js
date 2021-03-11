@@ -95,10 +95,12 @@
             checkNoData: function() {
                 var self = this;
                 if(self.$myLists.find('li').length > 0) {
-                    self.$sectionInner.show();
+                    //self.$sectionInner.show();
+                    self.$pagination.show();
                     self.$noData.hide();
                 } else {
-                    self.$sectionInner.hide();
+                    //self.$sectionInner.hide();
+                    self.$pagination.hide();
                     self.$noData.show();
                 }
             },
