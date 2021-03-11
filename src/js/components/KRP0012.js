@@ -42,13 +42,13 @@
             //상품 리뷰 위젯
             var productcode = $section.data('productCode');
             if(productcode) {
-                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '"></div>');
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
             }
 
             //상품 소셜 위젯
             var widgetId = $section.data('widgetId');
             if(productcode && widgetId) {
-                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
         }
     }
