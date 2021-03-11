@@ -952,6 +952,12 @@ CS.MD.commonModel = function() {
                         page: 1
                     });
 
+                    if (typeof subValue !== 'string') {
+                        self.updateSummary({
+                            product: [$this.find('option:selected').text(), $subCategory.find('option[value="'+value+'"]').text()]
+                        });
+                    }
+
                     self._requestData();
                 });
             });
@@ -994,6 +1000,10 @@ CS.MD.commonModel = function() {
                     subCategory: $this.val(),
                     subCategoryNm: $this.find('option:selected').text(),
                     page: 1
+                });
+
+                self.updateSummary({
+                    product: [$category.find('option:selected').text(), $this.find('option:selected').text()]
                 });
 
                 self._requestData();

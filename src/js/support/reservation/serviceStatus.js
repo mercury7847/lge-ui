@@ -402,9 +402,36 @@
                 }).on('click', '.btn-group .btn-confirm', function() {
                     var result = self.validation.validate();
                     if( result.success == true) {
-                        self.authManager.confirm(this, function(success, result) {
-                            self.completeAuth(success, result);
-                        });
+                        if(!lgkorUI.isLogin) {
+
+                            self.authManager.confirm(this, function(success, result) {
+                                self.completeAuth(success, result);
+                            });
+                        } else {
+                            var $changePopup = $('#reservationTimePopup');
+                            var url = $changePopup.data('auth-url');
+                            var formData = {
+                                userNm : $('#userNm').val(),
+                                phoneNo : $('#phoneNo').val(),
+                                numberName : ''
+                            };
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxDataPost(url, formData, function(result) {
+                                var data = result.data;
+                                
+                                if (data.resultFlag == 'Y') {
+                                    lgkorUI.hideLoading();
+                                    self.complete();
+                                } else {
+                                    if (data.resultMessage) {
+                                        lgkorUI.alert("", {
+                                            title: data.resultMessage
+                                        });
+                                    }
+                                    lgkorUI.hideLoading();
+                                }
+                            }, 'POST');
+                        }
                     }
                 });
 
@@ -686,7 +713,7 @@
                 });
             },
             authSetting: function() {
-                if (!$('#reservationTimePopup').length || !lgkorUI.isLogin) return;
+                if (!$('#reservationTimePopup').length || lgkorUI.isLogin) return;
     
                 var self = this;
                 var authRegister = {
@@ -704,15 +731,18 @@
                         register: authRegister
                     }
                 
-                self.authManager = new AuthManager(managerOpt);
-                
-    
-                self.el.popup.find('.btn-send').on('click', function() {
-                    self.authManager.send(this);
-                });
+                if( $('#authNo').length ) {
+
+                    self.authManager = new AuthManager(managerOpt);
+                    
+                    self.el.popup.find('.btn-send').on('click', function() {
+                        self.authManager.send(this);
+                    });
+                }
             },
             complete : function(){
                 var self = this;
+
 
                 // if ($('[name=bdType]:checked').val() == 4) {
                 //     $('#productCode').val('CRB');
@@ -735,6 +765,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
+
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
 

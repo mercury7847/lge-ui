@@ -11,7 +11,7 @@
     @include mobile {
         max-width: 100%;
         padding:0;
-        box-shadow:none;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     }
 
     .back-layer {
@@ -101,6 +101,9 @@
         @include mobile {
             // padding:20px 20px;
         }
+        .ui_smooth_scroll {
+            background-color: $color-white;
+        }
         .tab-menu-belt {
             display:table;
             table-layout:fixed;
@@ -116,12 +119,13 @@
             // }
             @include mobile {
                 display:block;
-                width:100%;
-                max-width:100%;
+                width:auto;
+                //max-width:100%;
                 // margin-top:20px;
+                margin: 0;
                 padding:0 3px;
-                overflow-x:auto;
-                -webkit-overflow-scrolling: touch;
+                //overflow-x:auto;
+                //-webkit-overflow-scrolling: touch;
                 white-space:nowrap;
                 text-align:left;
             }
@@ -199,7 +203,7 @@
                         line-height:22px;
                     }
                     &.disabled {
-                        background:#808080;
+                        background:#f3b7c7;
                     }
                 }
             }
@@ -215,8 +219,10 @@
         .contents-menu-list
             {
             .tab-menu-belt {
-                float:right;
-                width:800px;
+                //float:right;
+                @media screen and (min-width: $desktop-s-width + 1) {
+                    width:800px !important;
+                }
                 &.type-btn {
                     margin-right:115px;
                     text-align:right;

@@ -905,6 +905,7 @@
                                     $paymentAmount.find('button.minus').attr('disabled',false);
                                     $paymentAmount.find('button.plus').attr('disabled',false);
                                 }
+                                $paymentAmount.find('>info-text').hide();
                             }
                         }
                     } else {
@@ -920,6 +921,7 @@
                             //케어십 신청됬으므로 수량체크버튼 비활성
                             $paymentAmount.find('button.minus').attr('disabled',true);
                             $paymentAmount.find('button.plus').attr('disabled',true);
+                            $paymentAmount.find('>info-text').show();
                         }
                     }
                 });
@@ -1408,6 +1410,9 @@
                                 };
                                 if(sendParam.easyRequestCard) {
                                     sendParam.easyRequestCard = param.easyRequestCard
+                                }
+                                if(typeof modelUrlPath !== 'undefined') {
+                                    sendParam.modelUrlPath = modelUrlPath;
                                 }
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
                                     console.log(result);

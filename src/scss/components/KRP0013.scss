@@ -23,13 +23,13 @@
 	.title {
 		margin-bottom: 64px;
 		font-weight: bold;
-		@include font(40px,56px);
+		@include font(32px,52px);
 		color: #000;
 		text-align:center;
 
 		@include mobile {
 			margin-bottom: 32px;
-			@include font(27px,38px);
+			@include font(24px,33px);
 		}
 	}
 
