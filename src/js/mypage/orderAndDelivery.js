@@ -1084,7 +1084,7 @@
 
                 SHIPPING_DATA = vcui.clone(shipping);
             }
-            
+
             //결제정보
             if(data.payment) {
                 if(Object.keys(data.payment).length){
@@ -1384,9 +1384,12 @@
         //결제정보
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
+
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+                
             leng = Object.keys(PAYMENT_DATA).length;
             console.log("PAYMENT_DATA:",PAYMENT_DATA)
-            if(leng){
+            if(listData.contDtlType == "C01" && leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
