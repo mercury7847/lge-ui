@@ -391,6 +391,9 @@
             overflow:hidden;
             @include font-medium;
             color: $color-default;
+            @include mobile {
+                max-height: 44px;
+            }
         }
         
         .review-info {
