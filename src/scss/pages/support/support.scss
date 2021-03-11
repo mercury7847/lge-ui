@@ -1215,6 +1215,16 @@
 
     &.popup-wrap {
         // 레이어팝업 체크박스
+
+        &.row-footer {
+
+            .pop-conts {
+                @include mobile {
+                    height:calc(100% - 122px - 36px);
+                    max-height:calc(100% - 122px - 36px);
+                }
+            }
+        }
         .pop-footer {
             &.check-type {
                 input {
@@ -1222,6 +1232,10 @@
                         padding-left: 30px;
                         font-size: 16px;
                         line-height: 26px;
+
+                        @include mobile {
+                            font-size:13px;
+                        }
                         &::before {
                             width: 20px;
                             height: 20px;
@@ -1234,6 +1248,12 @@
                         }
                     }
                 }
+            }
+            &.align-between {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
             }
         }
     }

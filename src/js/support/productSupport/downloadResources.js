@@ -23,36 +23,38 @@
             '</div>' +
         '</li>';
     var driverListTemplate = 
+        '{{#each (item, index) in listData}}' +
         '<li>' +
-            '{{# if (typeof detailUrl != "undefined" && detailUrl) { #}}' +
-            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}" data-cseq="{{cSeq}}">{{#if os}}{{os}} {{/if}}{{title}}</button></p>' +
+            '{{# if (typeof item.detailUrl != "undefined" && item.detailUrl) { #}}' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{item.detailUrl}}" data-file-id="{{item.fileId}}" data-cseq="{{item.cSeq}}">{{#if item.os}}{{item.os}} {{/if}}{{item.title}}</button></p>' +
             '{{# } else { #}}' +
-                '{{# if (typeof os == "string" && os) { #}}' +
-                '<p class="tit">{{os}} {{title}}</p>' +
+                '{{# if (typeof item.os == "string" && item.os) { #}}' +
+                '<p class="tit">{{item.os}} {{item.title}}</p>' +
                 '{{# } else { #}}' +
-                '<p class="tit">{{title}}</p>' +
+                '<p class="tit">{{item.title}}</p>' +
                 '{{# } #}}' +
             '{{# } #}}' +
             '<div class="info-wrap">' +
-                '{{# if (typeof category != "undefined" || typeof date != "undefined") { #}}' +
+                '{{# if (typeof item.category != "undefined" || typeof item.date != "undefined") { #}}' +
                 '<ul class="options">' +
-                    '{{# if (typeof category != "undefined") { #}}' +
-                    '<li>{{category}}</li>' +
+                    '{{# if (typeof item.category != "undefined") { #}}' +
+                    '<li>{{item.category}}</li>' +
                     '{{# } #}}' +
-                    '{{# if (typeof date != "undefined") { #}}' +
-                    '<li>{{date}}</li>' +
+                    '{{# if (typeof item.date != "undefined") { #}}' +
+                    '<li>{{item.date}}</li>' +
                     '{{# } #}}' +
                 ' </ul>' +
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
                     '{{# if(!vcui.detect.isMobileDevice) { #}}' +
-                    '<a href="{{file.src}}" class="btn border size btn-download"><span>다운로드 {{#if file.size}}{{file.size}}{{/if}}{{#if file.os}}{{file.os}}{{/if}}</span></a>' +
+                    '<a href="{{item.file.src}}" class="btn border size btn-download"><span>다운로드 {{#if item.file.size}}{{item.file.size}}{{/if}}{{#if item.file.os}}{{item.file.os}}{{/if}}</span></a>' +
                     '{{# } else { #}}' +
-                    '<a href="{{file.src}}" class="btn border size btn-download"><span>이메일 보내기</span></a>' +
+                    '<a href="{{item.file.src}}" class="btn border size btn-download"><span>이메일 보내기</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
             '</div>' +
-        '</li>';
+        '</li>' +
+        '{{/each}}';
         
     var otherService = {
         template : 
@@ -287,6 +289,10 @@
                 data.categoryNm = $('#categoryNm').val();
                 data.subCategory = $('#subCategory').val();
                 data.subCategoryNm = $('#subCategoryNm').val();
+                if (!data.modelCode) {
+                    data.modelCode = $('#modelCode').val();
+                    data.productCode = $('#productCode').val();
+                }
             } else {
                 if (!self.isPSP) {
                     data.category = $('#category').val();
@@ -352,9 +358,9 @@
             self.$driverCount.html(page.totalCount);
         
             if (listArr.length) {
-                listArr.forEach(function(item) {
-                    html += vcui.template(driverListTemplate, item);
-                });
+                //listArr.forEach(function(item) {
+                    html = vcui.template(driverListTemplate, data);
+                //});
                 $list.html(html).show();
                 $list.find('>li').each(function(i) {
                     var $this = $(this);
@@ -585,6 +591,7 @@
                 var $this = $(this);
                 var url = $this.data('href'),
                     param = $.extend(self.param, {
+                        fileId: $this.data('fileId'),
                         cSeq: $this.data('cseq')
                     });
 

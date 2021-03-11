@@ -816,6 +816,9 @@
                         color: #111;
                         &[target='_blank'] {
                             background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
+                            @include mobile {
+                                background-position: right 28px top 8px;
+                            }
                         }
                     }
                 }
@@ -1316,7 +1319,7 @@
                 content: '';
             }
             span {
-                color: $color-primary;
+                color: $color-gray-1;
             }
         }
         .app-settings-button {
