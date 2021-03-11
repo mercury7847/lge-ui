@@ -486,7 +486,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.map-container').addClass('result-map');
             });
 
-            $(window).on('resize', function(e){
+            $(window).on('resizeend', function(e){
                 self._resize();
             });
             self._resize();

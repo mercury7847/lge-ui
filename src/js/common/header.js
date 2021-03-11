@@ -100,7 +100,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._menuToggle();
             });
 
-            $(window).on('resize', function(){
+            $(window).on('resizeend', function(){
                 self._resize();
             });
 

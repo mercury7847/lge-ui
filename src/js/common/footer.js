@@ -25,7 +25,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                 $(this).find('span').text(openerName);
             });
             
-            $(window).on('resize', function(e){
+            $(window).on('resizeend', function(e){
                 self._resize();
             });
             self._resize();
