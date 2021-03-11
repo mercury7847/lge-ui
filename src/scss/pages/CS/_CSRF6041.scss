@@ -72,6 +72,9 @@
             .tooltip-box {
                 &.fixed-right {
                     padding-right:32px;
+                    @include mobile {
+                        padding-right:24px;
+                    }
                 }
             }
         }
