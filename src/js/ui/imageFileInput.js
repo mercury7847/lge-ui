@@ -10,6 +10,10 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             regex: /[?!,.&^~]/,
             format: 'jpg|jpeg|png|gif',
             totalSize: 10 * 1024 * 1024,
+            individualFlag: false,
+            individual: {
+                size: 10 *  1024 * 1024
+            },
             templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>',
             message: {
                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
@@ -58,12 +62,21 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
 
             return true; 
         },
+        _checkIndividualFileSize: function _checkIndividual(file) {
+            return file.size <= this.options.individual.size
+        },
         _checkFile: function _checkFile(file) {
             var self = this,
                 success = true,
                 msgType;
 
-            if (!self._checkFileSize(file)) {
+
+            if (individualFlag) {
+                if (!self._checkIndividualFileSize(file)) {
+                    success = false;
+                    msgType = 'size';
+                }
+            } else if (!self._checkFileSize(file)) {
                 success = false;
                 msgType = 'size';
             } else if (!self._checkFileFormat(file)) {
