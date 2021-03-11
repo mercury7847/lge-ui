@@ -299,11 +299,11 @@
     }
 }
 .lately-popup {
-    top:-660px;
+    top:-415px;
     right:0;
     z-index:101;
     width:368px;
-    min-height:720px;
+    min-height:480px;
     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
     &.open {
         display:block;
@@ -324,8 +324,8 @@
         padding:24px 0 12px;
         .tit {
             span {
-                font-size:22px;
-                line-height:32px;
+                font-size:18px;
+                line-height:28px;
             }
         }
         @include mobile {
@@ -334,8 +334,8 @@
             .tit {
                 span {
                     height:100%;
-                    font-size:18px;
-                    line-height:26px;
+                    font-size:16px;
+                    line-height:24px;
                 }
             }
         }
@@ -353,8 +353,8 @@
                     display:table;
                     position:relative;
                     width:100%;
-                    height:144px;
-                    padding:24px 0;
+                    height:96px;
+                    padding:16px 0;
                     border-bottom:1px solid #ddd;
                     &:last-child {
                         border-bottom:none;
@@ -363,8 +363,8 @@
                         position:absolute;
                         top:50%;
                         left:0;
-                        width:96px;
-                        height:96px;
+                        width:64px;
+                        height:64px;
                         transform:translateY(-50%);
                         img {
                             width:100%;
@@ -372,31 +372,33 @@
                     }
                     dl {
                         display:table-cell;
-                        padding-left:120px;
+                        padding-left:90px;
                         vertical-align:middle;
                         dt {
                             display: -webkit-box;
                             -webkit-line-clamp:2;
                             -webkit-box-orient: vertical;
-                            max-height:52px;
+                            max-height:48px;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            font-size:16px;
-                            font-weight:700;
-                            line-height:26px;
+                            font-size:14px;
+                            font-weight:500;
+                            line-height:24px;
                         }
                         dd {
                             margin-top:8px;
-                            font-size:18px;
-                            font-weight:700;
-                            line-height:30px;
+                            font-size:14px;
+                            font-weight:500;
+                            line-height:24px;
                         }
                     }
                 }
                 @include mobile {
                     li {
-                        height:130px;
+                        height:120px;
+                        padding:20px 0;
                         dl {
+                            padding-left:104px;
                             dt {
                                 font-size:14px;
                                 line-height:22px;
@@ -408,8 +410,8 @@
                         }
                     }
                     .img {
-                        width:80px;
-                        height:80px;
+                        width:80px !important;
+                        height:80px !important;
                     }
                 }
             }
