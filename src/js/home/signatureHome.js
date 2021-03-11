@@ -51,8 +51,8 @@ $(function() {
         var currentPage = 0;
         var touchSy = 0;
         var $scenes = $('.signature-hero').children().add('.signature-wrap');
-        var totalPage = $scenes.length;
         var stepLens = 0;
+        var pageLens = $scenes.length -1;
         var posArr = [];
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
@@ -91,14 +91,35 @@ $(function() {
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);    
+                var $target = $(item.target);  
+
+                var isDisplay;
+                var obj = $.extend({}, item.transit);
+
+                if(obj['display']!==undefined){
+                    isDisplay = obj['display'];
+                    delete obj['display'];
+                }
+                
+                if(isDisplay!==undefined && isDisplay!=='none'){
+                    $target.css('display',isDisplay);
+                }
+                
                 if(i==0){
-                    $target.transit(item.transit, function(){
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
                         currentStep = step;
                         canScroll = true;
+
                     });  
                 }else{
-                    $target.transit(item.transit);  
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
+                    });  
                 }                               
             }
         }
@@ -184,7 +205,7 @@ $(function() {
                 if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && e.deltaY<0){
+                        if(st<=0 && e.deltaY<0){
                             wheelScene(-1);
                         }
                     }else{
@@ -275,7 +296,7 @@ $(function() {
                     }
                 }
 
-                if(currentPage == maxLens){
+                if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
@@ -296,7 +317,6 @@ $(function() {
             }
         });
 
-
         
         function _stringToObj(str){
             
@@ -307,9 +327,10 @@ $(function() {
             for(var i=0; i<arr.length; i++){
                 var match = arr[i].match(regex);
                 if(match !== null){
-                    obj[match[1]] = match[2];
+                    obj[match[1]] = match[2]=="''"? '':match[2];
                 }
             }
+
             return obj;
         }
 
@@ -562,14 +583,52 @@ $(function() {
                     e.preventDefault();
                     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
                     if($compareTarget[0] != e.currentTarget) {
-                        if(currentPage !== totalPage-1){
-                            moveScene(totalPage-1,stepLens,0);
+                        if(currentPage !== pageLens){
+                            moveScene(pageLens,stepLens,0);
                         }                        
                         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
                     }
                 }                
             }      
         });
+
+        // 접근성 탭 이동시 화면처리
+        $(document).on('focusin', function(e){
+
+            if($.contains($('.signature-wrap')[0], e.target)){
+                currentPage = pageLens;
+                currentStep = stepLens;
+            }else if($.contains($('.signature-hero')[0], e.target)){
+                // currentPage = 0;
+                // currentStep = 0;
+            }
+
+        });
+
+        //전시기록 더보기...
+        var $artGuide = $('.signature-section.art-guide');
+        var $artMoreBtn = $artGuide.find('button.btn-moreview');
+        $artGuide.find('.art-guide-list > li:gt(5)').hide();
+
+        $artMoreBtn.on('click', function(e){
+            e.preventDefault();
+
+            var $span = $(this).find('span').eq(0);
+            var toggleTxt = $(this).data('toggleTxt');            
+            var txt = $span.text();
+            $(this).data('toggleTxt', txt);
+
+            if($(this).hasClass('fold')){
+                $(this).removeClass('fold');
+                $span.text(toggleTxt);
+                $artGuide.find('.art-guide-list > li:gt(5)').hide();
+            }else{
+                $(this).addClass('fold');
+                $span.text(toggleTxt);
+                $artGuide.find('.art-guide-list > li').show();
+            }
+        });
+
 
         if(isApplication){
             render();
@@ -589,21 +648,13 @@ $(function() {
             // 앱 대응시 주석처리 end
         }
 
-        //전시기록 더보기...
-        var $artGuide = $('.signature-section.art-guide');
-        var $artMoreBtn = $artGuide.find('button.btn-moreview');
-        console.log($artMoreBtn)
-        $artMoreBtn.on('click', function(e){
-            e.preventDefault();
+        // 시작시 한 스탭 이동시킴.
+        setTimeout(function(){
+            if(currentStep<1) wheelScene(1);
+        }, 800);
 
-            toggleMoreClick();
-        });
-
-
-
+        
         window.resizeScene = render;
-
-
 
     });
 });

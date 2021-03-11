@@ -100,6 +100,7 @@
         var touchSy = 0;
         var $scenes = $('#fixed-wrap').children().add('.thinq-wrap');
         var stepLens = 0;
+        var pageLens = $scenes.length-1;
         var posArr = [];
         var wheelArr = [];       
 
@@ -130,17 +131,40 @@
                 return; 
             }
 
+            
+
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);    
+                var $target = $(item.target);   
+                
+                var isDisplay;
+                var obj = $.extend({}, item.transit);
+                
+                if(obj['display']!==undefined){
+                    isDisplay = obj['display'];
+                    delete obj['display'];
+                }
+                
+                if(isDisplay!==undefined && isDisplay!=='none'){
+                    $target.css('display',isDisplay);
+                }
+                
                 if(i==0){
-                    $target.transit(item.transit, function(){
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
                         currentStep = step;
                         canScroll = true;
+
                     });  
                 }else{
-                    $target.transit(item.transit);  
-                }                               
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
+                    });  
+                }                                              
             }
         }
 
@@ -223,7 +247,7 @@
                 if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && e.deltaY<0){
+                        if(st<=0 && e.deltaY<0){
                             wheelScene(-1);
                         }
                     }else{
@@ -315,7 +339,7 @@
                     }
                 }
 
-                if(currentPage == maxLens){
+                if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
@@ -583,8 +607,6 @@
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                     currentStep = _findStep(currentPage);
                     setBeforeCss(currentStep);
-
-                    console.log(currentStep);
                     moveScene(currentPage,currentStep,0);
                 }, 100);
             }
@@ -746,6 +768,20 @@
                 }                
             }      
         });
+
+         // 접근성 탭 이동시 화면처리
+         $(document).on('focusin', function(e){
+
+            if($.contains($('.thinq-wrap')[0], e.target)){
+                currentPage = pageLens;
+                currentStep = stepLens;
+            }else if($.contains($('.thinq-hero')[0], e.target)){
+                // currentPage = 0;
+                // currentStep = 0;
+            }
+
+        });
+
 
         function doWheelfixedElement(selector){
             function fixedScrolled(e) {
