@@ -990,7 +990,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.$slider.append(self.$slides);
                     }
                 }
-            }
+            } 
                         
             self.cleanUpRows();
 
