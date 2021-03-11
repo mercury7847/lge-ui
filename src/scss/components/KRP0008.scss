@@ -989,12 +989,16 @@
                     border-radius: 8px 0 0 8px;
                     background-image: linear-gradient(113deg, #8d71ec, #ff537c 99%);
                     color: $color-white;
+                    @include mobile {
+                        padding: 10px 16px 9px;
+                    }
                     .tooltip-wrap {
                         margin-top: 0;
                         .tooltip-icon {
                             background-image: url('/lg5-common/images/icons/icon-tooltip-white.svg');
                         }
                         @include mobile {
+                            margin-top: -1px;
                             .tooltip-box {
                                 min-width: calc(100vw - 48px);
                                 left: -24px;
@@ -1058,11 +1062,14 @@
                     background: $color-bg-wt;
                     @include font-small;
                     text-align: right;
+                    @include mobile {
+                        min-height: 42px;
+                    }
                     a {
                         display:block;
                         padding: 11px 40px 11px 15px;
                         @include mobile {
-                            padding:12px 40px 13px 15px;
+                            padding: 9px 40px 9px 15px;
                         }
                     }
                     .ui_dropdown_toggle {
@@ -1124,6 +1131,10 @@
                     }
                 }
                 &.open {
+                    height: 48px;
+                    @include mobile {
+                        height: 42px;
+                    }
                     .select-button {
                         position: absolute;
                         top: 1px;
