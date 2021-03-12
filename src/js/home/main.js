@@ -433,8 +433,8 @@ $(function () {
         var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
 
         
-        $(document).on('touchstart touchend touchcancel', function(e) {
-
+        $('.container').on('touchstart touchend touchcancel', function(e) {
+            
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 touchSy = data.y;
@@ -547,9 +547,8 @@ $(function () {
             var createVideoObject = function() {
                 
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
-                var regExp = "\.(mp4|webm|ogv)";
-
-                console.log(src, src.match(regExp));
+                // var regExp = "\.(mp4|webm|ogv)";
+                // console.log(src, src.match(regExp));
 
                 if ( !extArr.length ) return false;
 
@@ -674,14 +673,18 @@ $(function () {
         });          
 
         if(isApplication){
+
             render();
+            $('header').find('.header-bottom').addClass('app-btm');
     
-            var leng = $scenes.length;
-            var lastScene = $scenes.eq(leng-1);
-            var height = lastScene.height();
-            var padding = parseInt($('footer').css('padding-bottom'));
-            lastScene.height(height+160);
-            $('footer').css({paddingBottom:padding + 160});
+            // var leng = $scenes.length;
+            // var lastScene = $scenes.eq(leng-1);
+            // var height = lastScene.height();
+            // var padding = parseInt($('footer').css('padding-bottom'));
+            // lastScene.height(height+160);
+            // $('footer').css({paddingBottom:padding + 160});
+
+
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
@@ -691,8 +694,9 @@ $(function () {
             // 앱 대응시 주석처리 end
         }
         
+
         $window.trigger('breakpointchange');
-        window.resizeScene = render;        
+        window.resizeScene = render;      
 
     });
 });
