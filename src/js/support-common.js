@@ -63,7 +63,7 @@
 
                 
                 cookieExpire.setDate(cookieExpire.getDate() + expire);
-                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; EXPIRES=' + cookieExpire.toUTCString()) + '; PATH=/; DOMAIN=; SECURE=';
 
                 document.cookie = cookieText;
             },
@@ -2441,6 +2441,7 @@ function validatePhone(value){
     function commonInit(){
         //input type number 숫자키패드
         $('input[type="number"]').attr('inputmode', 'numeric');
+        //$('input[type="number"]').attr('oninput', 'this.value = this.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")');
         
         $('[data-format=koreng]').on('input', function() {
             var $this = $(this),
@@ -2488,6 +2489,12 @@ function validatePhone(value){
             $(this).on('mousewheel',function(e){
                 e.preventDefault();
             });
+        });
+
+        $(document).on('keydown', 'input[type="number"]', function(e){
+            if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109) {
+                e.preventDefault();
+            }
         });
 
         $(document).on('keyup', 'input[type="number"]', function(e){

@@ -18,44 +18,73 @@
             color: $color-white;
             text-align: center;
 
+            .sub-copy {
+                margin-bottom: 20px;
+                @include font-large-1;
+            }
+            .main-copy {
+                @include font($font-large-6,66px);
+            }
             .logo-area {
                 margin-top: 16px;
             }
 
+            //.dimmed {
+            //    transition: opacity 0.3s ease-in;
+            //}
+
             .content {
-                [class*="cont"] {
-                    position: absolute;
-                    right: 0;
-                    left: 0;
-                    transform: translateY(-50%);
-                    z-index: 2;
-                    text-align: center;
-                    &[class*="1"] {
-                        top: 50%;
-                    }
-                    &[class*="2"] {
-                        top: 50%;
-                    }
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                z-index: 2;
+                text-align: center;
+                .cont1 {
+                    transition: transform 0.5s ease-in-out, opacity 1.5s ease-in-out;
+                    font-weight: 700;
+                    @include font(52px,70px);
+                    color: #fff;
                 }
             }
             @include mobile {
                 font-size: 28px;
                 line-height: 38px;
+                .sub-copy {
+                    margin-bottom: 10px;
+                    .mo-only {
+                        display: none;
+                    }
+                }
+                .main-copy {
+                    @include font(27px,38px);
+                }
                 .logo-area {
+                    margin-top: 12px;
                     img {
                         max-width: 168px;
                     }
                 }
-                .content {
-                    [class*="cont"] {
-                        transform: translateY(0);
-                        &[class*="1"] {
-                            top: 100px;
-                        }
-                        &[class*="2"] {
-                            top: 100px;
-                        }
-                    }
+            }
+            &.active{
+                .dimmed {
+                    opacity: 0;
+                }
+                .cont1{
+                    opacity: 0;
+                    transform:translateY(100px);
+
+                }
+            }
+            &.on{
+                .dimmed {
+                    opacity: 1 !important;
+                    transition: opacity 1.5s ease-in-out;
+                }
+                .cont1{
+                    opacity: 1;
+                    transform:translateY(0px);
+
                 }
             }
         }
@@ -80,8 +109,7 @@
                 .cont1 {
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     font-weight: 700;
-                    font-size: 56px;
-                    line-height: 72px;
+                    @include font(52px,70px);
                     color: #fff;
                 }
                 .cont2 {
@@ -89,8 +117,7 @@
                     margin-top: 24px;
                     color:#fff;
                     font-weight: 700;
-                    font-size: $font-large-1;
-                    line-height: 30px;
+                    @include font($font-large-1,30px);
                 }
                 @include mobile {
                     top: 0;
@@ -101,8 +128,7 @@
                     padding: 80px 32px;
                     text-align: left;
                     .cont1 {
-                        font-size: 34px;
-                        line-height: 44px;
+                        @include font(30px,40px);
                     }
                     .cont2 {
                         margin-top: 60px;
@@ -172,15 +198,14 @@
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     color:#fff;
                     font-weight: 700;
-                    font-size: 56px;
-                    line-height: 72px;
+                    @include font(52px,70px);
                 }
                 .cont2 {
                     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
                     margin-top: 24px;
                     color:#fff;
                     font-weight: 700;
-                    @include font(20px,30px);
+                    @include font($font-large-1,30px);
                 }
                 @include mobile {
                     top: 0;
@@ -190,12 +215,11 @@
                     padding: 80px 32px;
                     color: $color-white;
                     .cont1 {
-                        font-size: 34px;
-                        line-height: 44px;
+                        @include font(30px,40px);
                     }
                     .cont2 {
                         margin-top: 60px;
-                        @include font(20px,28px);
+                        line-height: 28px;
                         span {
                             display: block;
                             margin-top: 40px;
@@ -390,19 +414,19 @@
                 }
             }
             .title {
-                margin: 32px 0 24px;
+                margin: 32px 0 12px;
                 @include font-large-2;
             }
             .body-copy {
-                margin-bottom: 20px;
+                margin-bottom: 24px;
                 @include font-medium;
             }
             @include mobile {
                 .box {
-                    margin: 40px 0 60px;
+                    margin: 32px 0 60px;
                 }
                 .title {
-                    margin: 40px 0 16px;
+                    margin-bottom: 10px;
                 }
             }
         }
@@ -472,6 +496,9 @@
                 padding-top: 0;
                 text-align: center;
                 .tabs {
+                    @include pc {
+                        overflow: hidden;
+                    }
                     > li {
                         text-align: center;
                         opacity: .3;
@@ -549,17 +576,20 @@
                 }
             }
             .title {
-                margin: 32px 0 24px;
+                margin: 32px 0 12px;
                 @include font-large-2;
             }
             .body-copy {
-                margin-bottom: 20px;
+                margin-bottom: 24px;
                 @include font-medium;
             }
 
             @include mobile {
                 .box {
-                    margin: 40px 0 60px;
+                    margin: 32px 0 60px;
+                }
+                .title {
+                    margin-bottom: 10px;
                 }
             }
         }
@@ -567,12 +597,15 @@
 
     .thinq-life-icons {
         font-size: 0;
+        margin-top: -8px;
         li {
             display: inline-block;
+            margin-top: 8px;
             background: no-repeat top left;
+            background-size: 56px;
             span {
                 display: block;
-                padding: 4px 0 4px 64px;
+                padding: 4px 0 4px 68px;
                 @include font-small;
                 text-align: left;
                 @include mobile {
@@ -580,11 +613,80 @@
                 }
             }
             &:nth-child(1) {
-                margin-right: 24px;
-                background-image: url('/lg5-common/images/PRH/icon01.svg');
+                margin-right: 20px;
+                @include mobile {
+                    margin-right: 12px;
+                }
             }
-            &:nth-child(2) {
-                background-image: url('/lg5-common/images/PRH/icon01.svg');
+        }
+        @at-root .thinq-lifestyle {
+            .free-life-wrap {
+                .thinq-life-icons {
+                    &.morning {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-styler.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-refrigerator.svg');
+                            }
+                        }
+                    }
+                    &.afternoon {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-refrigerator.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-airpurifier.svg');
+                            }
+                        }
+                    }
+                    &.evening {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-tv.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-airconditioner.svg');
+                            }
+                        }
+                    }
+                }
+            }
+            .happy-life-wrap {
+                .thinq-life-icons {
+                    &.morning {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-tv.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-airpurifier.svg');
+                            }
+                        }
+                    }
+                    &.afternoon {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-oven.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-tv.svg');
+                            }
+                        }
+                    }
+                    &.evening {
+                        li {
+                            &:nth-child(1) {
+                                background-image: url('/lg5-common/images/PRH/icon-washtower.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/lg5-common/images/PRH/icon-cleaner.svg');
+                            }
+                        }
+                    }
+                }
             }
         }
     }
