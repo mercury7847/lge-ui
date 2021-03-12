@@ -407,7 +407,7 @@
             self.$address1.on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.searchCenterName.trigger('click');
+                    self._setSearch();
                 }
             });
             self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
