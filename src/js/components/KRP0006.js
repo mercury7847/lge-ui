@@ -61,7 +61,7 @@
                         var check = lgkorUI.stringToBool(data.ResponseUITop.success);
                         if(check) {
                             self.reloadComponent($item, data.ResponseUITop);              
-                        } else if(data.productCurationProposal) {
+                        } else if(data.productCurationProposal.uiMessage && data.productCurationProposal.uiMessage.length > 0) {
                             //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
                             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
                             var array = cookieValue.split('|');
@@ -73,8 +73,8 @@
                         }
                     } else if(_type == "r-btm") {
                         //하단영역
-                        var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
-                        if(data.storeConsultation) {
+                        var check = data.categoryBestProduct.uiMessage && data.categoryBestProduct.length > 0;
+                        if(data.storeConsultation.uiMessage && data.storeConsultation.uiMessage.length > 0) {
                             //제품 비교하기 페이지에서 제품 페이지 진입 시
                             var referrer = document.referrer;
                             var currentUrl = location.href.split("//")[1].split('/')[0];
