@@ -416,6 +416,7 @@
             result = validation.validate(['topic', 'subTopic', 'bdType', 'fan', 'addFan', 'installType', 'tvPosition', 'userNm', 'phoneNo', 'zipCode', 'userAddress', 'detailAddress']);
 
             if (result.success) {
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data;
 
@@ -423,6 +424,9 @@
                         $('.time-wrap').timeCalendar('update', data.timeList);
                         $('.time-wrap').find('.box-desc').hide();
                         $('.time-wrap').find('.box-table').show();
+
+                        self.$stepEngineer.removeClass('active');
+                        self.$completeBtns.hide();
                     } else {
                         if (data.resultMessage) {
                             if (data.tAlert == 'Y') {
@@ -437,6 +441,8 @@
                             });
                         }
                     }
+
+                    lgkorUI.hideLoading();
                 });
             }
         },
