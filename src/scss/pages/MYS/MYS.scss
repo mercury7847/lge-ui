@@ -446,13 +446,15 @@
             @include font-large-1;
             color: #000;
             a {
+                position: relative;
                 &:after {
-                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    right: -26px;
+                    transform: translateY(-50%);
                     width: 24px;
                     height: 24px;
-                    margin-left: 2px;
                     background: url('/lg5-common/images/icons/btn-arr-24x24-black2.svg') no-repeat 0 0;
-                    vertical-align: -4px;
                     content: '';
                 }
             }
@@ -465,14 +467,6 @@
                 text-align: right;
             }
         }
-        //&.care-info,
-        //&.like-info,
-        //&.recent-info {
-        //    .box-title {
-        //        padding-bottom: 0;
-        //        border-bottom: 0;
-        //    }
-        //}
     }
     .board-list {
         > li {
