@@ -97,7 +97,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
             
             if (self.active.$el[0] !== e.target && !$.contains(self.active.$el[0], e.target)) {
-                // self.active.$el.find(':visible:focusable').first().focus();
+                self.active.$el.find(':visible:focusable').first().focus();
                 e.stopPropagation();
             }
         },
@@ -387,9 +387,10 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     $focusEl.eq(0).focus();
                 } else {
                     // 레이어에 포커싱
-                    //self.$el.focus();
-                    // self.$el.attr('tabindex', 0).focus();
+                    
+                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
                     self.$el.find(':focusable:visible').first().focus();
+                    //self.$el.focus(); 
 
                 }
 
@@ -397,9 +398,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 if ($focusEl.length > 0) {
                     $focusEl.eq(0).focus();
                 } else {
-                    // self.$el.focus();
-                    // self.$el.attr('tabindex', 0).focus();
+                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
                     self.$el.find(':focusable:visible').first().focus();
+                    //self.$el.focus(); 
                 }
 
                 // 버튼
@@ -604,7 +605,10 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 $focusEl.eq(0).focus();
             } else {
                 // 레이어에 포커싱
-                self.$el.attr('tabindex', 0).focus();
+                //self.$el.attr('tabindex', 0).focus(); 
+                self.$el.find(':focusable:visible').first().focus();
+                //self.$el.focus(); 
+
 
             }
             
