@@ -106,7 +106,7 @@ const concatNames = [
     src + "/js/common/footer.js",
     src + "/js/common/header.js",
     src + "/js/ui/accordion.js",
-    src + "/js/ui/carousel.js",
+    //src + "/js/ui/carousel.js",
     src + "/js/ui/dropdown.js",
     src + "/js/ui/modal.js",
     src + "/js/ui/selectbox.js",
