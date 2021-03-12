@@ -37,7 +37,7 @@
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '<a href="#">' +
+                '<a href="{{url}}">' +
                     '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
