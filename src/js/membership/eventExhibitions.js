@@ -118,8 +118,6 @@
                     "typeFlag": sendflag
                 }
 
-                console.log("### requestCart ###", param)
-
                 var ajaxUrl = $contents.attr('data-cart-url');
                 lgkorUI.requestCart(ajaxUrl, param);
             }

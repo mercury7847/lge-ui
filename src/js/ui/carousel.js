@@ -183,8 +183,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            console.log("ADD ver.2021.03.12")
-
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
@@ -1855,7 +1853,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.$slider.removeClass(_V.LOADING);
 
             self.initUI();
-
             if (opt.lazyLoad === 'progressive') {
                 
                 // 임시 response 이미지 체크 루틴
@@ -2406,7 +2403,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.variableWidth === false) {
-                
                 var offset = self.$slides.first().outerWidth(true) - self.$slides.first().width();
                 self.$slideTrack.children('.' + _V.SLIDE).width(self.slideWidth - offset);
             }

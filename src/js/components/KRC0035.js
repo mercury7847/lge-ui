@@ -9,7 +9,7 @@ $(document).ready(function(){
     $KRC0035.buildCommonUI();
 
     vcui.require(['ui/carousel'], function () {
-		KRC0035.find(".ui_carousel_slider").each(function(cdx, slide){
+		$KRC0035.find(".ui_carousel_slider").each(function(cdx, slide){
 			$(slide).vcCarousel({
 				infinite: false,
 				autoplay: true,
