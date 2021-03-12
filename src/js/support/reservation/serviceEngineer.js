@@ -142,10 +142,12 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
                     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                    validate : function(value){
+                        return validatePhone(value);
+                    } 
                 },
                 zipCode: {
                     required: true,
@@ -188,10 +190,12 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
@@ -449,10 +453,10 @@
                     if (arr.length) {
                         self.updateEngineer(arr[0]);
                         if (arr.length > 1) {
-                            var html = vcui.template(engineerTmpl, data);
+                            // var html = vcui.template(engineerTmpl, data);
                             
-                            self.$engineerSlider.find('.slide-track').html(html);
-                            self.$engineerSlider.vcCarousel('reinit');
+                            // self.$engineerSlider.find('.slide-track').html(html);
+                            // self.$engineerSlider.vcCarousel('reinit');
                             self.$stepEngineer.find('.btn').show();
                         } else {
                             self.$stepEngineer.find('.btn').hide();
@@ -740,7 +744,15 @@
 
                     // self.$cont.find('.btm-more.both .chk-wrap').show();
 
-                    if (self.autoFlag) self.requestDate();
+                    if (self.autoFlag) {
+                        self.$stepInput.find('.step-btn-wrap').show();
+                        self.$stepDate.removeClass('active');
+                        self.$stepEngineer.removeClass('active');
+                        self.$completeBtns.hide();
+                        $('.date-wrap').calendar('reset');
+                        $('.time-wrap').timeCalendar('reset');  
+                        self.autoFlag = false;
+                    }
                 }); 
             });
 
@@ -785,7 +797,7 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
+            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
                 var url = self.$engineerPopup.data('engineerListUrl'),
                     param;
 
@@ -830,6 +842,10 @@
 
                     lgkorUI.hideLoading();
                 });
+            });
+
+            self.$engineerSlider.on('carouselreinit', function() {
+                $('#choiceEngineerPopup').vcModal();
             });
 
             // 엔지니어 선택

@@ -450,7 +450,7 @@
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM_DETAIL;
         if(isCaredetail) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
 
-        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckEnable:false});
+        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y"});
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
@@ -576,12 +576,19 @@
             var dataID = $(this).closest('.box').data("id");
             var prodID = $(this).closest('.col-table').data('prodId');
             var pdpUrl = $(this).attr("href");
-            if(PAGE_TYPE == PAGE_TYPE_LIST){                
+            if(PAGE_TYPE == PAGE_TYPE_LIST){        
+                var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
                 var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
+                var sendUrl = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
+                sendUrl += "&startDate=" + dateData.startDate + "&endDate=" + dateData.endDate + "&periodSelect=" + dateData.periodSelect;
+                location.href = sendUrl;
             } else{
                 setProductStatus(dataID, prodID, pdpUrl);
             }
+        }).on('click', '.lnb-contents > .btn-group button', function(e){
+            e.preventDefault();
+
+            sendListPage();
         });
 
         cancelAllChecker = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('instance');
@@ -1815,6 +1822,10 @@
     //상품 클릭...
     function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
+
+        //리스트에서는 상품 이미지에서만 체크..go pdp
+        //상세보기 둘다 체크후..go pdp
+        //리스트에서는 네임은 상세로...go detail
         
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
@@ -1833,10 +1844,11 @@
 
             lgkorUI.hideLoading();
         });
+    }
 
-        //리스트에서는 상품 이미지에서만 체크..go pdp
-        //상세보기 둘다 체크후..go pdp
-        //리스트에서는 네임은 상세로...
+    //주문/배송 목록가기...
+    function sendListPage(){
+
     }
 
     document.addEventListener('DOMContentLoaded', function () {

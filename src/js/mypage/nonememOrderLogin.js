@@ -1,6 +1,7 @@
 ;(function(){
-    var LOGIN_CONFIRM_URL;
+    var SUBMIT_CONFIRM_URL;
     var SUPPLY_CONFIRM_URL;
+    var LOGIN_CONFIRM_URL;
 
     var emailInquiryValidation;
     var phoneInquiryValidation;
@@ -9,12 +10,15 @@
         vcui.require(['ui/validation', 'ui/modal', 'ui/tab'], function () {             
             setting();
             bindEvents();
+
+            loginChecked();
         });
     }
 
     function setting(){
-        LOGIN_CONFIRM_URL = $('.contents.non-members').data('confirmUrl');
+        SUBMIT_CONFIRM_URL = $('.contents.non-members').data('confirmUrl');
         SUPPLY_CONFIRM_URL = $('.contents.non-members').data('disposableConfirmUrl');
+        LOGIN_CONFIRM_URL = $('.contents.non-members').data('loginConfirmUrl');
 
         var register;
 
@@ -81,6 +85,10 @@
         });
     }
 
+    function loginChecked(){
+        lgkorUI.requestAjaxData(LOGIN_CONFIRM_URL);
+    }
+
     function sendConfirm(type){
         lgkorUI.showLoading();
 
@@ -96,7 +104,7 @@
         }
 
         var firstSpeling = sendata.sendOrderNumber.substr(0,1).toUpperCase(); 
-        var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : LOGIN_CONFIRM_URL;
+        var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : SUBMIT_CONFIRM_URL;
 
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
