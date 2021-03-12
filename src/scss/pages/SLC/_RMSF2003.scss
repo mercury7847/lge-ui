@@ -330,6 +330,11 @@ br.pc-only {
                 &:first-child {
                     margin-top:0;
                 }
+                &.zindex {
+                    border-radius:8px 8px 0 0;
+                    border-color:#000;
+                    border-bottom-color:transparent;
+                }
                 dt {
                     width:75px;
                     color:#767676;
@@ -405,7 +410,7 @@ br.pc-only {
                                 outline:0;
                             }
                             .ico {
-                            background:url('/lg5-common/images/icons/icon-triangle-dis-24.svg') no-repeat;
+                            background:url('/lg5-common/images/icons/btn-down-16-gray.svg') no-repeat;
                             }
                         }
                     }
