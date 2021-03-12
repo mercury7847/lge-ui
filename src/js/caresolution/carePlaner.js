@@ -314,7 +314,7 @@
 
         $categoryTabCtrler = new vcui.ui.SmoothScrollTab('.ui_smoothScroll_tab');
 
-        $('.ui_carousel_slider').vcCarousel({
+        $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel({
             settings: "unslick",
             responsive: [
                 {
@@ -803,7 +803,7 @@
             var display = $putItemContainer.css('display');
             $putItemContainer.css({display:'block'});
             
-            $('.ui_carousel_slider3').vcCarousel({
+            $('.contents.care-plan').find('.ui_carousel_slider3').vcCarousel({
                 settings: "unbuild",
                 responsive: [
                     {
@@ -834,9 +834,9 @@
                 ]
             });
             if(leng < 3){
-                $('.ui_carousel_slider3').find('.slide-controls').hide();
+                $('.contents.care-plan').find('.ui_carousel_slider3').find('.slide-controls').hide();
             } else{
-                $('.ui_carousel_slider3').find('.slide-controls').show();
+                $('.contents.care-plan').find('.ui_carousel_slider3').find('.slide-controls').show();
             }
             $putItemContainer.css({display:display});
         }
