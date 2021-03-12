@@ -1699,7 +1699,9 @@ var isApp = function(){
     });
 
     global.addEventListener('load', function(){
-        $('.ui_sticky').vcSticky('update');
+        vcui.require(['ui/sticky'], function () {
+            $('.ui_sticky').vcSticky('update');
+        });
     });
 
 })(window);
