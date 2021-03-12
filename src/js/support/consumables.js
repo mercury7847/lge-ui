@@ -163,6 +163,12 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
             //소모품 대체, 공유 모델명 검색
             $("#keyword").on("input", function() {
                 var keyword = $(this).val().toUpperCase().trim();
+                var regex = /[^a-zA-Z0-9.\-]/g;
+
+                if (regex.test(keyword)) {
+                    $(this).val(keyword.replace(regex,""));
+                    return;
+                }
 
                 var $list = $(this).parents('.model-infomation').find('.model-infomation-list');
                 var $listItem = $list.find('li');

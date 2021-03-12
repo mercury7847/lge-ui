@@ -35,9 +35,18 @@
             @@if(context.link) {
             <a href="#n" class="btn-link"><span>@@link</span></a>
             }
+            @@if(boxType === "video") {
+            @@if(context.date) {
+            <!-- 210312 수정 [돔 이동] -->
+            <div class="date">@@date</div>
+            <!-- // 210312 수정 [돔 이동] -->
+            }
+            }
         </div>
+        @@if(boxType != "video") {
         @@if(context.date) {
         <div class="date">@@date</div>
+        }
         }
         @@if(context.sns) {
         <div class="sns-wrap">

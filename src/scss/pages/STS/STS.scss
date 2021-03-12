@@ -206,6 +206,7 @@
                     }
                 }
                 .text-area {
+                    position: relative;
                     @include pc {
                         padding: 24px 32px 32px;
                     }
@@ -215,10 +216,14 @@
                 }
                 .date {
                     position: absolute;
-                    top: auto;
-                    bottom: 32px;
+                    top: 24px;
                     right: 32px;
-                    color: $color-default;
+                    font-weight: 400;
+                    color: $color-gray-1;
+                    @include mobile {
+                        top: 21px;
+                        right: 16px;
+                    }
                 }
             }
             &.image,
@@ -352,8 +357,11 @@
             top: 16px;
             right: 16px;
             font-weight: 500;
-            @include font-small;
+            @include font($font-small,24px);
             color: $color-white;
+            @include mobile {
+                line-height: 22px;
+            }
         }
         .sns-wrap {
             position: absolute;
