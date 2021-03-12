@@ -30,9 +30,14 @@
                         maxLength: 30
                     },
                     phoneNo: {
+                        minLength: 10,
+                        maxLength: 11,
                         msgTarget: '.err-block',
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
-                        maxLength: 11
+                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo: {
                         msgTarget: '.err-block',

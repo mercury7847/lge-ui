@@ -60,74 +60,7 @@
 
             self.isLogin = lgkorUI.isLogin;
 
-            function validatePhone(value, target){
-                var _pattern = new RegExp(target.pattern);
-                        
-
-                if( _pattern.test(value) == true) {
-                    var _length = value.length;
-                    var firstVal = value.substr(0,3);
-                    var num4th = value.substr(3,1);
-                    var num3 = value.substr(3,3);
-                    var num4 = value.substr(3,4);
-
-                    function validateNum10(){
-                        if( 200<= num3 && num3 <= 899) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                    function rangeFlag(minNum, maxNum){
-                        if( minNum <= num4 && num4 <= maxNum)  {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-
-                    switch(firstVal){
-                        case "010":
-                            if( num4th == 0 || num4th == 1) {
-                                return false;
-                            }
-
-                            if( value.length != 11) {
-                                return false;
-                            }
-                        break;
-                        case "011":
-                            if( _length == 10) {
-                                return validateNum10();
-                            }
-                            if( _length == 11) {
-                                if(rangeFlag(9500, 9999) || rangeFlag(1700, 1799)) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            }
-                        break;
-                        case "016":case "019":
-                            if( _length == 10) {
-                                return validateNum10();
-                            }
-                            if( _length == 11) {
-                                return rangeFlag(9000, 9999);
-                            }
-                        break;
-                        case "017": case "018":
-                            if( _length == 10) {
-                                return validateNum10();
-                            } else {
-                                return false;
-                            }
-                        break;
-                    }
-                } else {
-                    return false;
-                }
-            }
+            
 
             var register = {
                 topic: {
@@ -152,12 +85,11 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|016|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
                     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
                     patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
                     validate : function(value){
-                        return validatePhone(value, this);
+                        return validatePhone(value);
                     }
                 },
                 date: {
@@ -194,7 +126,10 @@
                         pattern: /^(010|016|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
                         errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'                        
+                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
