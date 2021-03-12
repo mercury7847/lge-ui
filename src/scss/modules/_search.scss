@@ -4,13 +4,13 @@
 
 .input-keyword-wrap {
     max-width: (1146px + 80px);
-    margin: 0 auto 120px;
-    padding: 48px 40px 0;
+    margin: 0 auto 64px;
+    padding: 56px 40px 0;
     @include mobile {
         max-width: 100%;
         //padding: 102px 16px 50px;
-        margin-bottom: 60px;
-        padding: 40px 16px 0;
+        margin-bottom: 48px;
+        padding: 12px 16px 0;
 
         &.fixed-top {
             .input-keyword {
@@ -127,9 +127,8 @@
             border-radius: 4px;
             .input-sch {
                 input.txt {
-                    height: 52px;
+                    height: 46px;
                     padding-right: 52px;
-                    //padding: 0 97px 0 0;
                     font-weight: 500;
                     @include font(20px,28px);
                 }

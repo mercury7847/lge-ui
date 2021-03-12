@@ -344,6 +344,24 @@ CS.MD.search = function() {
                 self.$el.find('.autocomplete-box').find('.no-keyword').show();
             }
         },
+        _search: function() {
+            var self = this;
+            var val = self.$el.find('input[type=text]').val().trim();
+            
+            if (val.length > 1) {
+                if (self.$el.find('.recently-keyword').length) {
+                    cookieKeyword.addCookie(val);
+                    self._setRecently();
+                }
+                $('.search-error').hide();
+            } else {
+                $('.search-error').show();   
+            }
+
+            self.$el.removeClass('on');
+            self.$el.trigger('searchafter');
+
+        },
         _bindEvent: function() {
             var self = this;
            
@@ -403,24 +421,12 @@ CS.MD.search = function() {
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.$el.find('.btn-search').trigger('click');
+                    self._search();
                 }
             });
 
             self.$el.find('.btn-search').on('click', function() {
-                var val = self.$el.find('input[type=text]').val().trim();
-                if (val.length > 1) {
-                    if (self.$el.find('.recently-keyword').length) {
-                        cookieKeyword.addCookie(val);
-                        self._setRecently();
-                    }
-                    $('.search-error').hide();
-                } else {
-                    $('.search-error').show();   
-                }
-
-                self.$el.removeClass('on');
-                self.$el.trigger('searchafter');
+                self._search();
             });
 
             self.$el.find('.btn-list-all').on('click', function() {
