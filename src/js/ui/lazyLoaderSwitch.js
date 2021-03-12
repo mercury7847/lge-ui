@@ -27,6 +27,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             }
 
             self.mode = "";
+            self.scrollTimer = null;
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
@@ -40,7 +41,12 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self.$con.on('scroll' + self.eventNS, function () {
-                self._action();
+                if(self.scrollTimer) {
+                    clearTimeout(self.scrollTimer);
+                }
+                self.scrollTimer = setTimeout(function(){
+                    self._action();
+                }, 200);
             }).trigger('scroll' + self.eventNS);
 
             $(window).on('resizeend', function(e){

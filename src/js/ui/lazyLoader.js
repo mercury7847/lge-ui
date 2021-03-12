@@ -24,11 +24,13 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
+            self.scrollTimer = null;
+
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
             self.$items = $(self.options.selector+"[data-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
-
+            
 
             self._bindEvents();
         },
@@ -37,8 +39,18 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self.$con.on('scroll' + self.eventNS, function () {
+                if(self.scrollTimer) {
+                    clearTimeout(self.scrollTimer);
+                }
+                self.scrollTimer = setTimeout(function(){
+                    self._action();
+                }, 200);
+            }).trigger('scroll' + self.eventNS);
+            /*
+            self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
+            */
         },
 
         _getContainerSize: function _getContainerSize() {
