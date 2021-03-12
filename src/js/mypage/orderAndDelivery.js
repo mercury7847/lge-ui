@@ -444,11 +444,9 @@
         var isOrderlist = $('.contents.mypage').hasClass('orderAndDelivery'); 
         var isOrderdetail = $('.contents.mypage').hasClass('orderAndDelivery-detail'); 
         var isNonemem = $('.contents.mypage').hasClass('non-members'); 
-        var isCaredetail = $('.contents.mypage').hasClass('orderAndDelivery-careDetail'); 
         if(isOrderlist) PAGE_TYPE = PAGE_TYPE_LIST;
         if(isOrderdetail) PAGE_TYPE = PAGE_TYPE_DETAIL;
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM_DETAIL;
-        if(isCaredetail) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
 
         $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y"});
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
@@ -456,7 +454,10 @@
         END_DATE = dateData.endDate;
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
-        console.log("TAB_FLAG:", TAB_FLAG);
+        if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
+
+
+        console.log("TAB_FLAG / PAGE_TYPE:", TAB_FLAG, " / ", PAGE_TYPE);
 
         var register = {
             paymentCard:{
