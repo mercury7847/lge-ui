@@ -1,0 +1,761 @@
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    background-color: #e4e4e4;
+
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+img {
+    border: 0;
+}
+
+.wwrs-ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.wwrs-ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.wwrs-cf:before,
+.wwrs-cf:after {
+    content: " ";
+    display: table;
+}
+
+.wwrs-cf:after {
+    clear: both;
+}
+
+.wwrs-cf {
+    *zoom: 1;
+}
+
+.wwrs-wrapper,
+.wwrs-wrapper .wwrs-faq h2 {
+    font-family: 'Segoe Pro', 'Segoe UI', Segoe, Arial, sans-serif;
+    font-weight: normal;
+}
+
+.wwrs-wrapper h1,
+.wwrs-wrapper h2,
+.wwrs-wrapper h3,
+.wwrs-wrapper h4,
+.wwrs-top-header nav,
+.wwrs-headline {
+    font-family: 'Segoe Pro Light', 'Segoe UI Light', 'Segoe Light', Segoe, Arial, sans-serif;
+    font-weight: 100;
+}
+
+.wwrs-wrapper strong,
+.wwrs-video-controls span,
+.wwrs-video-info h2 {
+    font-family: 'Segoe Pro Bold', 'Segoe UI Bold', Segoe Bold, Segoe, Arial, sans-serif;
+}
+
+.wwrs-srp-elements,
+.wwrs-logo-windows,
+.wwrs-logo-microsoft,
+.wwrs-video-controls .wwrs-frame,
+.wwrs-video-play,
+.wwrs-features li i,
+.wwrs-expandable i,
+.wwrs-tablet-controls a {
+    background: url("../img/general-sprite-elements.png") no-repeat;
+}
+
+.wwrs-btn {
+    padding: 5px 12px;
+    display: inline-block;
+    background-color: #9c9c9c;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.4em;
+    cursor: pointer;
+    -webkit-transition: background-color .3s ease-in-out;
+    -moz-transition: background-color .3s ease-in-out;
+    -o-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+}
+
+.wwrs-btn:hover {
+    background-color: #707070;
+}
+
+.wwrs-btn.wwrs-cyan:hover {
+    background-color: #009af2;
+}
+
+.wwrs-btn.wwrs-purple:hover {
+    background-color: #9b3196;
+}
+
+.wwrs-btn.wwrs-white:hover {
+    background-color: #FAFAFA;
+}
+
+.wwrs-module h1 {
+    margin: 0 0 10px 0;
+    font-size: 27px;
+    line-height: 30px;
+}
+
+.wwrs-hero h1 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.wwrs-headline {
+    clear: both;
+    font-size: 26px;
+}
+
+.wwrs-module .wwrs-headline {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.wwrs-unformat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wwrs-cyan,
+.wwrs-purple,
+.wwrs-btn {
+    color: #FFF;
+}
+
+.wwrs-cyan,
+.wwrs-btn.wwrs-cyan {
+    background: #00bcf2;
+}
+
+.wwrs-purple,
+.wwrs-btn.wwrs-purple {
+    background: #9b4f96;
+}
+
+.wwrs-white,
+.wwrs-btn.wwrs-white {
+    background: #FFF;
+}
+
+.wwrs-text-gray,
+.wwrs-text-gray a {
+    color: #505050;
+}
+
+.wwrs-text-gray-light,
+.wwrs-text-gray-light a {
+    color: #666;
+}
+
+.wwrs-text-cyan,
+.wwrs-text-cyan a {
+    color: #00bcf2;
+}
+
+.wwrs-text-purple,
+.wwrs-text-purple a,
+.wwrs-top-header .wwrs-active a {
+    color: #9b4f96;
+}
+
+
+.wwrs-wrapper {
+    position: relative;
+    width: 860px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #000;
+}
+
+
+.wwrs-module {
+    padding: 20px 27px;
+    overflow: hidden;
+    min-height: 190px;
+}
+
+
+.wwrs-module.wwrs-hero {
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+
+.wwrs-module.wwrs-nospace {
+    padding: 0;
+}
+
+.wwrs-module.wwrs-nospace-vertical {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.wwrs-module.wwrs-offset {
+    padding: 20px 0;
+}
+
+.wwrs-module.wwrs-offset-right {
+    padding-right: 0;
+}
+
+.wwrs-module.wwrs-offset-left {
+    padding-left: 0;
+}
+
+.wwrs-module.wwrs-left .wwrs-info,
+.wwrs-module.wwrs-right .wwrs-info {
+    width: 338px;
+}
+
+.wwrs-module .wwrs-media {
+    width: 400px;
+}
+
+.wwrs-module.wwrs-left .wwrs-info {
+    float: left;
+}
+
+.wwrs-module.wwrs-left .wwrs-media {
+    float: right;
+}
+
+.wwrs-module.wwrs-right .wwrs-info {
+    float: right;
+}
+
+.wwrs-module.wwrs-right .wwrs-media {
+    float: left;
+}
+
+
+.wwrs-top-header .wwrs-row {
+    padding: 20px 27px 15px;
+}
+
+.wwrs-top-header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 20px;
+}
+
+.wwrs-top-header li {
+    padding-right: 20px;
+    display: inline;
+}
+
+.wwrs-top-header a {
+    text-decoration: none;
+    color: #75787D;
+}
+
+.wwrs-top-header a:hover {
+    color: #000A7F;
+}
+
+.wwrs-logo-windows {
+    width: 92px;
+    height: 22px;
+    margin: 0;
+    background-position: 0 0;
+    float: right;
+}
+
+.logo,
+nav,
+nav ul {
+    display: inline;
+}
+
+.logo {
+    float: left;
+}
+
+nav {
+    margin-left: 50px;
+}
+
+nav {
+    margin-top: -20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.wwrs-footer {
+
+    padding: 14px 27px;
+
+    background-color: #442359;
+
+}
+
+
+.wwrs-logo-microsoft {
+
+    float: right;
+
+    width: 45px;
+
+    height: 10px;
+
+    display: block;
+
+    background-position: 0 -33px;
+
+}
+
+
+.wwrs-disclaimer {
+    padding: 17px 27px;
+
+    font-size: 13px;
+
+    color: #a2a7aa;
+
+}
+
+
+
+.wwrs-disclaimer ul {
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+
+
+.wwrs-disclaimer li {
+
+    margin-bottom: 7px;
+
+}
+
+
+#layer_popup {
+    position: absolute;
+    left: 130px;
+    top: 100px;
+    width: 600px;
+    height: 450px;
+    background: url("/lgekr/microsite/pc/2013/10/windows8.1/_ui/img/popup.jpg") no-repeat;
+}
+
+#layer_popup a {
+    position: absolute;
+    top: 401px;
+    display: inline-block;
+    width: 120px;
+    height: 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#layer_popup a span {
+    line-height: 25px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+#layer_popup a.ok {
+    left: 175px;
+}
+
+#layer_popup a.no {
+    left: 308px;
+}
+
+#layer_popup a.closed {
+    top: 0px;
+    left: 561px;
+    display: inline-block;
+    width: 39px;
+    height: 34px;
+}
+
+#layer_popup a.closed span {
+    visibility: hidden;
+}
+
+#layer_popup .info {
+    width: 502px;
+    height: 280px;
+    padding: 20px 25px;
+    overflow: auto;
+    position: absolute;
+    top: 57px;
+    left: 23px;
+    font: normal 12px "돋움", "굴림";
+}
+
+.care_box {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #666;
+}
+
+.care_box h4 {
+    position: absolute;
+    top: -29px;
+    *top: -14px;
+    padding: 2px 3px 2px 24px;
+    font-size: 13px;
+    color: #c00000;
+    background: #fff url("../img/icon_caution.gif") no-repeat 0 3px;
+}
+
+.care_box ul,
+.care_box ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.care_box ul li {
+    padding-left: 11px;
+    text-indent: -11px;
+}
+
+.wwrs-content .care_box {
+    margin-bottom: 13px;
+}
+
+.white-background {
+
+    background-color: #ffffff;
+
+}
+
+
+
+/* ----- HERO ----- */
+
+.wwrs-hero {
+
+    position: relative;
+
+    height: 360px;
+
+}
+
+.wwrs-hero img {
+
+    display: block;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: -1;
+
+}
+
+.wwrs-hero .wwrs-bg-purple {
+
+    background: url("../img/landing-hero-graphic-860.png") no-repeat 0 0;
+
+    width: 262px;
+
+    height: 265px;
+
+    padding-left: 35px;
+
+    color: #FFF;
+
+    font-size: 37.16px;
+
+    line-height: 42.88px;
+
+    display: table;
+
+    *display: block;
+
+}
+
+.wwrs-hero .wwrs-bg-purple span {
+
+    *padding-top: 50px;
+
+    display: table-cell;
+
+    *display: block;
+
+    vertical-align: middle;
+
+}
+
+
+
+/* ----- Updating Instructions ----- */
+
+.wwrs-update {
+
+    height: 231px;
+
+}
+
+
+
+.wwrs-module.wwrs-right .wwrs-info {
+
+    width: 300px;
+
+}
+
+
+
+.wwrs-update-info {
+
+    padding-top: 30px;
+
+}
+
+
+
+.wwrs-update-info h2 {
+
+    font-size: 27px;
+
+    line-height: 36px;
+
+    padding-bottom: 20px;
+
+}
+
+
+
+.system-lookup-container {
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+
+
+.system-updates-container {
+
+    float: left;
+
+    width: 226px;
+
+    padding-bottom: 20px;
+
+    height: 190px;
+
+}
+
+
+
+.system-updates-container-right {
+
+    float: left;
+
+    width: 244px;
+
+    padding-bottom: 20px;
+
+    height: 190px;
+
+}
+
+
+
+.system-updates-container-middle {
+
+    float: left;
+
+    width: 226px;
+
+    padding-bottom: 20px;
+
+    border-left: 1px solid #e0e0e0;
+
+    border-right: 1px solid #e0e0e0;
+
+    height: 190px;
+
+}
+
+
+
+.system-lookup-container h3,
+
+.system-updates-container h3,
+
+.system-updates-container-middle h3 {
+
+    margin: 0;
+
+    padding-bottom: 10px;
+
+    font-size: 27px;
+
+}
+
+
+
+.system-updates-container-right h3 {
+
+    margin: 0;
+
+    font-size: 27px;
+
+}
+
+
+
+.system-lookup-container p {
+
+    margin: 0;
+
+}
+
+
+
+.system-updates-container p {
+
+    margin: -10px 0 15px 0;
+
+}
+
+
+
+form {
+
+    margin-top: 10px;
+
+}
+
+
+
+form label {
+
+    float: left;
+
+    margin-top: 7px;
+
+    padding-right: 10px;
+
+}
+
+
+
+form input {
+
+    float: left;
+
+    padding-right: 10px;
+
+}
+
+
+
+#modelNumberInput {
+
+    font-size: 23px;
+
+    border: 1px solid #000000;
+
+}
+
+
+
+#modelNumberSubmit {
+
+    border: 0;
+
+    margin-left: 10px;
+
+}
+
+
+
+/* ----- Compatibility Center ----- */
+
+.wwrs-module {
+
+    min-height: 45px;
+
+}
+
+
+
+.wwrs-compatibility-center h3,
+
+.wwrs-compatibility-center p {
+
+    display: inline;
+
+}
+
+
+
+.wwrs-compatibility-center h3 {
+
+    font-size: 27px;
+
+}
+
+
+
+.wwrs-compatibility-center a {
+
+    margin: 0 0 0 30px;
+
+}

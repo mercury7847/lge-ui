@@ -42,6 +42,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 input, select, textarea, button {
   vertical-align:middle;
   border:none;
+  border-radius: 0;
   -webkit-appearance:none;
   -moz-appearance:none;appearance:none;
 }

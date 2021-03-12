@@ -238,7 +238,9 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.$items = self.$scroller.children();
 
             self.$items.each(function () {
-                width += $(this).outerWidth(true);
+                if(this.style.display!="none") {
+                    width += $(this).outerWidth(true);
+                }
             });
             self.$scroller.css('width', width + paddingWidth);
         },

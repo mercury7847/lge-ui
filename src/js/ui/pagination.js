@@ -5,7 +5,9 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             page: 1,
             visibleCount: 5,
-            totalCount: 1
+            totalCount: 1,
+            scrollTop : 0,
+            scrollTarget : null
         },
 
         initialize: function initialize(el, options) {
@@ -44,9 +46,13 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if(!!data.page) {
                     self.options.page = data.page;
                 }
+                //2021-03-05 visibleCount 5 고정
+                self.options.visibleCount = 5;
+                /*
                 if(!!data.visibleCount) {
                     self.options.visibleCount = data.visibleCount;
                 }
+                */
                 if(!!data.totalCount) {
                     self.options.totalCount = data.totalCount;
                 }
@@ -115,7 +121,11 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if($(e.currentTarget).hasClass('disabled')) return;
                 let value = $(e.currentTarget).attr('href').replace("#", "");
                 self.triggerHandler("page_click", value);
-                $('html, body').animate({scrollTop: 0 }, 0);
+                if(self.options.scrollTarget) {
+                    self.options.scrollTarget.animate({"scrollTop": self.options.scrollTop }, 0);
+                } else {
+                    $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
+                }
                 /*
                 if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
                     self.triggerHandler("page_click", {

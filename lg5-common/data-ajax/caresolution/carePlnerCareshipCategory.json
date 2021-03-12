@@ -6,92 +6,68 @@
     "param": {},
     "data": [
         {
-            "categoryID": "DDD",
+            "categoryID": "aaa",
             "categoryName": "공기청정기"
         },
         {
-            "categoryID": "GGG",
+            "categoryID": "bbb",
             "categoryName": "전기레인지"
         },
         {
-            "categoryID": "AAA",
+            "categoryID": "ccc",
             "categoryName": "정수기"
         },
         {
-            "categoryID": "FFF",
+            "categoryID": "ddd",
             "categoryName": "스타일러"
         },
         {
-            "categoryID": "GGG",
+            "categoryID": "eee",
             "categoryName": "전기레인지"
         },
         {
-            "categoryID": "HHH",
+            "categoryID": "fff",
             "categoryName": "식기세척기"
         },
         {
-            "categoryID": "III",
+            "categoryID": "ggg",
             "categoryName": "안마의자"
         },
         {
-            "categoryID": "DDD",
+            "categoryID": "hhh",
             "categoryName": "공기청정기"
         },
         {
-            "categoryID": "GGG",
+            "categoryID": "iii",
             "categoryName": "전기레인지"
         },
         {
-            "categoryID": "AAA",
+            "categoryID": "jjj",
             "categoryName": "정수기"
         },
         {
-            "categoryID": "FFF",
+            "categoryID": "kkk",
             "categoryName": "스타일러"
         },
         {
-            "categoryID": "GGG",
+            "categoryID": "lll",
             "categoryName": "전기레인지"
         },
         {
-            "categoryID": "HHH",
+            "categoryID": "mmm",
             "categoryName": "식기세척기"
         },
         {
-            "categoryID": "III",
+            "categoryID": "nnn",
             "categoryName": "안마의자"
         },
         {
-            "categoryID": "DDD",
+            "categoryID": "ooo",
             "categoryName": "공기청정기"
         },
         {
-            "categoryID": "GGG",
+            "categoryID": "ppp",
             "categoryName": "전기레인지"
-        },
-        {
-            "categoryID": "AAA",
-            "categoryName": "정수기"
-        },
-        {
-            "categoryID": "FFF",
-            "categoryName": "스타일러"
-        },
-        {
-            "categoryID": "GGG",
-            "categoryName": "전기레인지"
-        },
-        {
-            "categoryID": "HHH",
-            "categoryName": "식기세척기"
-        },
-        {
-            "categoryID": "III",
-            "categoryName": "안마의자"
-        },
-        {
-            "categoryID": "DDD",
-            "categoryName": "공기청정기"
         }
     ]
 }

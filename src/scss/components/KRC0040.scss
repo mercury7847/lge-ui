@@ -3,6 +3,8 @@
 @import "../components-app";
 
 .KRC0040 {
+    z-index:1;
+    border-top:1px solid #ddd;
     background:#fff;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
 
@@ -45,7 +47,7 @@
                         position:relative;
                         overflow:hidden;
                         padding:20px 10px;
-                        color:#000;
+                        color:#666;
                         font-size:14px;
                         line-height:24px;
                         font-weight:700;
@@ -62,8 +64,11 @@
                         }
                     }
                     &.active {
-                        a .bar {
-                            display:block;
+                        a {
+                            color:#000;
+                            .bar {
+                                display:block;
+                            }
                         }
                     }
                 }

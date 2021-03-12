@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="582" height="200" viewBox="0 0 582 200">
+    <defs>
+        <path id="z7ykobwz4a" d="M8 0h566c4.418 0 8 3.582 8 8v184c0 4.418-3.582 8-8 8H8c-4.418 0-8-3.582-8-8V8c0-4.418 3.582-8 8-8z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-661 -693) translate(621 139) translate(40 516) translate(0 38)">
+                            <mask id="c6jcbldmub" fill="#fff">
+                                <use xlink:href="#z7ykobwz4a"/>
+                            </mask>
+                            <path stroke="#DDD" d="M574 .5H8c-2.071 0-3.946.84-5.303 2.197C1.339 4.054.5 5.929.5 8v184c0 2.071.84 3.946 2.197 5.303C4.054 198.661 5.929 199.5 8 199.5h566c2.071 0 3.946-.84 5.303-2.197 1.358-1.357 2.197-3.232 2.197-5.303V8c0-2.071-.84-3.946-2.197-5.303C577.946 1.339 576.071.5 574 .5z"/>
+                            <g mask="url(#c6jcbldmub)">
+                                <g>
+                                    <text font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="12" font-weight="bold" transform="translate(226 76)">
+                                        <tspan x="0" y="50" fill="#AAA">제품 이미지 준비중입니다.</tspan>
+                                    </text>
+                                    <g>
+                                        <g>
+                                            <path fill="#F4F4F4" stroke="#AAA" stroke-width="1.5" d="M23.926.811h-20c-.62 0-1.183.252-1.59.66-.408.407-.66.97-.66 1.59v14c0 .622.252 1.184.66 1.591.407.408.97.66 1.59.66h20c.622 0 1.184-.252 1.591-.66.408-.407.66-.97.66-1.59v-14c0-.622-.252-1.184-.66-1.592-.407-.407-.97-.659-1.59-.659z" transform="translate(226 76) translate(50) translate(2.074 5.939)"/>
+                                            <g transform="translate(226 76) translate(50) translate(2.074 5.939) translate(3.926 3.561)">
+                                                <rect width="4" height="4" fill="#AAA" rx="2"/>
+                                                <path stroke="#AAA" stroke-linejoin="round" stroke-width="1.5" d="M1 10.536V12.5c0 .276.224.5.5.5h17c.276 0 .5-.224.5-.5V7.506h0l-4.992-4.983-4.997 6.002-4.03-3.022L1 10.536z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

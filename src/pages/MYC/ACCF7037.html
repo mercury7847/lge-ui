@@ -31,7 +31,7 @@
 									<dt class="tit"><label for="categorySelect" class="req">구매처<span class="blind">필수입력</span></label></dt>
 									<dd class="conts">
 										<div class="select-wrap">
-											<select class="ui_selectbox" id="categorySelect" name="category" title="구매처 선택" data-required="true">
+											<select class="ui_selectbox" id="categorySelect" name="accountFlag" title="구매처 선택" data-required="true">
 												<option value="" class="placeholder">구매처 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 												<option value="">이마트</option>
 												<option value="">이마트</option>
@@ -39,14 +39,14 @@
 										</div>
 										<div class="select-half">
 											<div class="select-wrap">
-												<select class="ui_selectbox" id="areaSelect" name="area" title="지역 선택">
+												<select class="ui_selectbox" id="areaSelect" name="localName" title="지역 선택">
 													<option value="" class="placeholder">지역 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 													<option value="">지역 선택</option>
 													<option value="">지역 선택</option>
 												</select>
 											</div>
 											<div class="select-wrap">
-												<select class="ui_selectbox" id="branchSelect" name="branch" title="지점 선택" data-required="true">
+												<select class="ui_selectbox" id="branchSelect" name="spotName" title="지점 선택" data-required="true">
 													<option value="" class="placeholder">지점 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
 													<option value="">지점 선택</option>
 													<option value="">지점 선택</option>
@@ -69,7 +69,7 @@
 									<dd class="conts">
 										<div class="box">
 											<div class="input-wrap">
-												<input type="text" id="inputReceipt" name="receipt" value="" placeholder="구매 영수증의 바코드 번호를 입력하세요." data-required="true">
+												<input type="text" id="inputReceipt" name="barcodeNo" value="" placeholder="구매 영수증의 바코드 번호를 입력하세요." data-required="true">
 												<div class="err-block"><p class="err-msg"></p></div>
 											</div>
 											<div class="cell">

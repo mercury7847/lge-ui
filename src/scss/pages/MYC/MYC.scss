@@ -117,16 +117,12 @@
                             top: -3px;
                         }
                     }
-                    &.payment {
-                        .payment-info {
-                            .btn-group {
-                                margin: 40px 0 80px;
-                                @include mobile {
-                                    margin: 40px 0 60px;
-                                    .btn {
-                                        width: auto;
-                                    }
-                                }
+                    .btn-group.btn-payment {
+                        margin: 40px 0 80px;
+                        @include mobile {
+                            margin: 40px 0 60px;
+                            .btn {
+                                width: auto;
                             }
                         }
                     }
@@ -894,12 +890,16 @@
                     .tit {
                         float:left;
                         border-bottom:none;
+                        @include mobile {
+                            margin-bottom:24px;
+                            padding-bottom:46px;
+                        }
                     }
                     .flt-cont {
                         float:right;
-                        @include mobile {
-                            padding-bottom:72px;
-                        }
+                        // @include mobile {
+                        //     padding-bottom:72px;
+                        // }
                         .btn-link {
                             margin-top:0;
                         }
@@ -919,6 +919,7 @@
 }
 
 .page-change {
+    height:100%;
     .btn-close {
         position:absolute;
         top:28px;

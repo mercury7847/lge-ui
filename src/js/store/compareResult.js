@@ -32,7 +32,7 @@
             var $li = $(this).parents('li');
             if($(this).hasClass("buycart")) {
                 //구매
-                if($li.attr('data-requireCare')) {
+                if(lgkorUI.stringToBool($li.attr('data-requireCare'))) {
                     var obj = {
                         title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
                         ok: function (){
@@ -56,15 +56,16 @@
         var param = {
             "id":$dm.attr('data-id'),
             "sku":$dm.attr('data-sku'),
+            "rtSeq":$dm.attr('data-rtSeq'),
             "typeFlag":cartType,
         }
 
-        var categoryId = $dm.attr('data-categoryId');
-        param.categoryId = categoryId ? categoryId : null;
-        var rtSeq = $dm.attr('data-rtSeq');
-        param.rtSeq = rtSeq ? rtSeq : null;
-        var requireCare = $dm.attr('data-requireCare');
-        param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
+        //var categoryId = $dm.attr('data-categoryId');
+        //param.categoryId = categoryId ? categoryId : null;
+        //var rtSeq = $dm.attr('data-rtSeq');
+        //param.rtSeq = rtSeq ? rtSeq : null;
+        //var requireCare = $dm.attr('data-requireCare');
+        //param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
 
         lgkorUI.requestCart(ajaxUrl, param, true);
     }

@@ -67,7 +67,7 @@
 					@include mobile {
 						padding:0 6px;
 					}
-					> img {
+					a > img {
 						width:100%;
 						height:auto;
 						vertical-align:top;
@@ -76,14 +76,14 @@
 						$typeDefault: #111;
 						$typeWhite: #fff;
 						position:absolute;
-						left:24px;
-						right:24px;
-						bottom:40px;
+						left:44px;
+						right:44px;
+						bottom:64px;
 						padding:0 8px;
 						@include mobile {
-							left:20px;
-							right:20px;
-							bottom:28px;
+							left:26px;
+							right:26px;
+							bottom:32px;
 							padding:0;
 						}
 						color:$typeDefault;
@@ -109,12 +109,11 @@
 						}
 						.info-tit {
 							display:block;
-							margin-top:6px;
+							margin-top:8px;
 							font-weight:700;
 							font-size:32px;
 							line-height:52px;
 							@include mobile {
-								margin-top:8px;
 								font-size:27px;
 								line-height:38px;
 							}
@@ -122,12 +121,12 @@
 						.info-tag {
 							display:block;
 							width:50%;
-							margin-top:16px;
+							margin-top:12px;
 							margin-left:-8px;
 							font-size:0;
 							font-weight:700;
 							@include mobile {
-								margin-top:12px;
+								margin-top:20px;
 							}
 							& > span {
 								display:inline-block;

@@ -422,6 +422,9 @@
 
     @include mobile {
         padding-left: 0;
+        ul.nav {
+            display:block;
+        }
     }
 
     .dimmed {
@@ -636,7 +639,7 @@
                         display: block;
                     }
                     &:after {
-                        transform: rotate(-180deg);
+                        transform: rotate(0);
                     }
                 }
             }
@@ -656,6 +659,7 @@
                 height: 24px;
                 background: url('/lg5-common/images/icons/btn-arr-48-black.svg') no-repeat 0 0;
                 background-size: 24px 24px;
+                transform: rotate(180deg);
                 transition: all ease 500ms;
                 content: '';
             }
@@ -812,6 +816,9 @@
                         color: #111;
                         &[target='_blank'] {
                             background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
+                            @include mobile {
+                                background-position: right 28px top 8px;
+                            }
                         }
                     }
                 }
@@ -887,7 +894,7 @@
             }
         }
         .slide-controls {
-            display: none;
+            //display: none;
             .btn-arrow {
                 position: absolute;
                 top: 6.563vw;
@@ -1030,7 +1037,7 @@
                     margin-bottom: 0;
                     padding: 14px 16px;
                     font-weight: 400;
-                    font-size: $font-medium;
+                    font-size: $font-small;
                     line-height: 22px;
                     &:after {
                         position: absolute;
@@ -1249,7 +1256,7 @@
         position: fixed;
         top: 11px;
         right: 11px;
-        z-index: 100;
+        z-index: 112;
         width: auto;
         height: auto;
         padding: 0;
@@ -1270,9 +1277,14 @@
                 right: 0;
                 bottom: 0;
                 left: 0;
-                z-index: 99;
+                z-index: 111;
                 overflow-y: auto;
                 background-color: #fff;
+            }
+            &.app-btm {
+                @include mobile {
+                    padding-bottom:60px;
+                }
             }
         }
     }
@@ -1294,11 +1306,12 @@
     }
 
     .login-info {
-        padding-bottom: 20px;
+        padding: 3px 0 17px;
         font-weight: 700;
         font-size: $font-large;
         line-height: 26px;
         .text {
+            margin-top: -3px;
             &:after {
                 display: inline-block;
                 width: 16px;
@@ -1311,7 +1324,7 @@
                 content: '';
             }
             span {
-                color: $color-primary;
+                color: $color-gray-1;
             }
         }
         .app-settings-button {
@@ -1326,6 +1339,17 @@
             &.active {
                 display: block;
             }
+        }
+    }
+    .btn-logout {
+        position: fixed;
+        top: 17px;
+        right: 55px;
+        z-index: 10;
+        a {
+            display: block;
+            font-weight: 500;
+            @include font(13px,21px);
         }
     }
 }
@@ -1367,7 +1391,7 @@ html {
         .KRP0032,
         .quick-menu-list,
         .easy-path {
-            display: none;
+            display: none !important;
         }
 
         .btn-app-ar {

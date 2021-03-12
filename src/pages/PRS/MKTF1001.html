@@ -2,31 +2,39 @@
 <html lang="ko">
     @@include('./common/head.html', {
 		pageCSS: ["PRS/PRS"],
-		pageJS: ["home/storeHome"]
+		pageJS: ["home/storeHome"],
+		pageTitle : '전체 제품 | LG전자',
+		pageDesc : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.'
+		
     })
 <body>
 	<div class="wrap">
+		<!-- 210311_H1추가 -->
 		@@include('./common/header.html', {
-			"mobileCase": "main"
+			"mobileCase": "main",
+			hiddenTitle : "LG전자의 다양한 제품을 만나보세요." 
 		})
+		<!-- //210311_H1추가 -->
 
 		<div class="container">
 			<div class="contents">
 				<div class="sub-main">
 					<!-- 히어로 -->
 					<div class="hero-banner slide-wrap ui_wide_slider">
-						<div class="custom-indi-wrap">
+						<!-- 210308_임시삭제 -->
+						<!-- <div class="custom-indi-wrap">
 							<div class="custom-indis">
 								<ul class="indis ui_wideslider_dots">
 									<li>
 										<button type="button" class="btn-indi">
-											<!-- <p>No.1의 혁신1</p> -->
+											!-- <p>No.1의 혁신1</p> --
 											<div class="bar"></div>
 										</button>
 									</li>
+									
 									<li>
 										<button type="button" class="btn-indi">
-											<!-- <p>No.1의 혁신2</p> -->
+											!-- <p>No.1의 혁신2</p> --
 											<div class="bar"></div>
 										</button>
 									</li>
@@ -35,7 +43,8 @@
 							<button type="button" class="indi-control ui_carousel_play play">
 								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
 							</button>
-						</div>
+						</div> -->
+						<!-- //210308_임시삭제 -->
 						<div class="slide-content ui_carousel_list">
 							<ul class="slide-track ui_carousel_track">
 								<!-- slide -->
@@ -43,17 +52,19 @@
 									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span>
 									<div class="slide-info-area">
 										<div class="boxs">
+											<!-- 210308_문구수정 -->
 											<p class="txt">
-												혼수가전<br>얼마나 합이<br>잘 맞을까?
-												<small>새출발을 위한 혼수 지원<br>최대 250만원 상당 혜택!</small>
+												공간 인테리어<br>가전으로 꾸며볼까?
+												<small>행사 모델 동시 구매 시,<br>최대 250만원 상당 혜택!</small>
 											</p>
+											<!-- //210308_문구수정 -->
 										</div>
-										<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
+										<a href="/lg-objet-collection" class="link"><span>2021<br>오브제컬렉션으로</span></a> <!-- 210308_문구및링크수정 -->
 									</div>
 								</li>
 								<!-- // slide -->
 								<!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
+								<!-- <li class="slide-conts ui_carousel_slide">
 									<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span>
 									<div class="slide-info-area">
 										<div class="boxs">
@@ -64,7 +75,7 @@
 										</div>
 										<a href="#" class="link"><span>2020<br>올 뉴 웨딩 페스타</span></a>
 									</div>
-								</li>
+								</li> -->
 								<!-- // slide -->
 							</ul>
 						</div>
@@ -102,13 +113,21 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/tvs" class="slide-box">
-													<span class="txt">TV/AV</span> <!-- 210304_문구수정 -->
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-tv-64.svg" alt="TV"></i>
+													<!-- //210310 아이콘 추가 -->
+													<!-- 210308_문구수정 -->
+													<span class="txt">TV</span> <!-- 210304_문구수정 -->
+													<!-- //210308_문구수정 -->
 												</a>
 											</li>
 											<!-- //slide -->
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/projectors" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-proejctor-64.svg" alt="프로젝터"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">프로젝터</span>
 												</a>
 											</li>
@@ -116,7 +135,12 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/home-audio" class="slide-box">
-													<span class="txt"></span>AV</span>
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-av-64.svg" alt="AV"></i>
+													<!-- //210310 아이콘 추가 -->
+													<!-- 210308_문구수정 -->
+													<span class="txt">AV</span></span>
+													<!-- //210308_문구수정 -->
 												</a>
 											</li>
 											<!-- //slide -->
@@ -142,6 +166,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/notebook" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-laptop-64.svg" alt="노트북"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">노트북</span>
 												</a>
 											</li>
@@ -149,6 +176,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/all-in-one-pc-and-desktop" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-pc-64.svg" alt="일체형/데스크톱"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">일체형/데스크톱</span>
 												</a>
 											</li>
@@ -156,6 +186,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/monitors" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-monitor-64.svg" alt="모니터"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">모니터</span>
 												</a>
 											</li>
@@ -163,6 +196,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/iot/" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-iot-64.svg" alt="IoT 기기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">IoT 기기</span>
 												</a>
 											</li>
@@ -189,6 +225,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/refrigerators/" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-refrigerator-64.svg" alt="냉장고"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">냉장고</span>
 												</a>
 											</li>
@@ -196,6 +235,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/kimchi-refrigerators" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-kimchi-refrigerator-64.svg" alt="김치냉장고"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">김치냉장고</span>
 												</a>
 											</li>
@@ -203,6 +245,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/microwaves-and-ovens	" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-light-wav-ooven-64.svg" alt="광파오븐/전자레인지"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">광파오븐/전자레인지</span>
 												</a>
 											</li>
@@ -210,6 +255,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/electric-ranges" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-cook-top-64.svg" alt="전기레인지"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">전기레인지</span>
 												</a>
 											</li>
@@ -217,6 +265,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/dishwashers" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-dish-washer-64.svg" alt="식기세척기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">식기세척기</span>
 												</a>
 											</li>
@@ -224,6 +275,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/water-purifiers" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-waterpurifier-64.svg" alt="정수기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">정수기</span>
 												</a>
 											</li>
@@ -231,6 +285,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-homebrew" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-beer-maker-64.svg" alt="맥주제조기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">맥주제조기</span>
 												</a>
 											</li>
@@ -238,6 +295,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/kitchen-builtin" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-built-in-64.svg" alt="빌트인가전"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">빌트인가전</span>
 												</a>
 											</li>
@@ -264,6 +324,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/wash-tower" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-wash-tower-64.svg" alt="워시타워"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">워시타워</span>
 												</a>
 											</li>
@@ -271,6 +334,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/washing-machines" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-washer-64.svg" alt="세탁기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">세탁기</span>
 												</a>
 											</li>
@@ -278,6 +344,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/dryers" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-dryer-64.svg" alt="건조기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">건조기</span>
 												</a>
 											</li>
@@ -285,6 +354,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-styler" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-styler-64.svg" alt="스타일러"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">스타일러</span>
 												</a>
 											</li>
@@ -292,6 +364,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/vacuum-cleaners" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-vacuum-cleaner-64.svg" alt="청소기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">청소기</span>
 												</a>
 											</li>
@@ -299,6 +374,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/massage-chairs" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-massage-chair-64.svg" alt="안마의자"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">안마의자</span>
 												</a>
 											</li>
@@ -325,6 +403,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/air-conditioners" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-air-conditioner-64.svg" alt="에어컨"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">에어컨</span>
 												</a>
 											</li>
@@ -332,6 +413,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/system-air-conditioners" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-system-air-conditioner-64.svg" alt="시스템 에어컨"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">시스템 에어컨</span>
 												</a>
 											</li>
@@ -339,6 +423,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/air-purifier" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-air-cleaner-64.svg" alt="공기청정기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">공기청정기</span>
 												</a>
 											</li>
@@ -346,6 +433,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/dehumidifiers-and-humidifiers" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-dehumidifier-64.svg" alt="제습/가습기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">제습/가습기</span>
 												</a>
 											</li>
@@ -353,6 +443,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/ceiling-fan" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-ceiling-fan-64.svg" alt="실링팬"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">실링팬</span>
 												</a>
 											</li>
@@ -379,6 +472,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/smartphones" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-mobile-64.svg" alt="스마트폰"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">스마트폰</span>
 												</a>
 											</li>
@@ -386,6 +482,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/feature-phones" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-feature-phone-64.svg" alt="피처폰"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">피처폰</span>
 												</a>
 											</li>
@@ -412,6 +511,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/beauty-devices" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-beauty-device-64.svg" alt="뷰티 디바이스"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">뷰티 디바이스</span>
 												</a>
 											</li>
@@ -419,6 +521,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/medical-devices-medihair" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-medihair-64.svg" alt="의료기기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">의료기기</span>
 												</a>
 											</li>
@@ -445,6 +550,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/bottom-freezer-refrigerators" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-refrigerator-64.svg" alt="상냉장 냉장고"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">상냉장 냉장고</span>
 												</a>
 											</li>
@@ -452,6 +560,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/convertible-package" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-convertible-refrigerator-64.svg" alt="컨버터블 패키지"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">컨버터블 패키지</span>
 												</a>
 											</li>
@@ -459,6 +570,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/kimchi-refrigerators" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-kimchi-refrigerator-64.svg" alt="김치냉장고"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">김치냉장고</span>
 												</a>
 											</li>
@@ -466,6 +580,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/wash-tower" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-wash-tower-64.svg" alt="워시타워"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">워시타워</span>
 												</a>
 											</li>
@@ -473,6 +590,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/lg-styler" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-styler-64.svg" alt="스타일러"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">스타일러</span>
 												</a>
 											</li>
@@ -480,6 +600,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/microwaves-and-ovens" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-oven-64.svg" alt="광파오븐"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">광파오븐</span>
 												</a>
 											</li>
@@ -487,6 +610,9 @@
 											<!-- slide -->
 											<li class="slide-conts ui_carousel_slide">
 												<a href="https://wwwstg.lge.co.kr/lg-objet-collection/dishwashers" class="slide-box">
+													<!-- 210310 아이콘 추가 -->
+													<i><img src="/lg5-common/images/PRS/icon-objet-dish-washer-64.svg" alt="식기세척기"></i>
+													<!-- //210310 아이콘 추가 -->
 													<span class="txt">식기세척기</span>
 												</a>
 											</li>
@@ -516,14 +642,15 @@
 								</ul>
 							</div>
 							<div class="slide-content ui_carousel_list">
+								<!-- 210308_문구수정 -->
 								<ul class="slide-track ui_carousel_track">
 									<!-- slide -->
 									<li class="slide-conts ui_carousel_slide">
 										<a href="#n" class="slide-box">
 											<img src="/lg5-common/images/PRS/img-recom-product-01.jpg" alt="">
 											<div class="inner">
-												<p>건강까지<br>지켜주는<br>진짜 스타일러</p>
-												<button type="button" class="btn border">LG TROMM 스타일러</button>
+												<p>내게<br>필요한 것은<br>초고화력!</p>
+												<button type="button" class="btn border">LG WHISEN ThinQ</button>
 											</div>
 										</a>
 									</li> 
@@ -533,8 +660,8 @@
 										<a href="#n" class="slide-box">
 											<img src="/lg5-common/images/PRS/img-recom-product-02.jpg" alt="">
 											<div class="inner">
-												<p>내게<br>필요한 것은<br>초고화력!</p>
-												<button type="button" class="btn border">LG DIOS 인덕션</button>
+												<p>반려동물과 함께<br>깨끗하고<br>건강하게</p>
+												<button type="button" class="btn border">건조기 스팀 펫</button>
 											</div>
 										</a>
 									</li> 
@@ -544,8 +671,8 @@
 										<a href="#n" class="slide-box">
 											<img src="/lg5-common/images/PRS/img-recom-product-03.jpg" alt="">
 											<div class="inner">
-												<p>위생이 중요한<br>아이 옷<br>스팀 건조로<br>건강하게</p>
-												<button type="button" class="btn border">LG TROMM 건조기</button>
+												<p>공기청정을 넘어<br>더 강력해진<br>인공지능 공간청정</p>
+												<button type="button" class="btn border">공기청정기 알파</button>
 											</div>
 										</a>
 									</li> 
@@ -555,14 +682,14 @@
 										<a href="#n" class="slide-box">
 											<img src="/lg5-common/images/PRS/img-recom-product-04.jpg" alt="">
 											<div class="inner">
-												<p>당신만의<br>버킷리스트를<br>완성해보세요</p>
-												<button type="button" class="btn border">LG WING</button>
+												<p>세탁 건조의<br>새로운 장르를 열다.</p>
+												<button type="button" class="btn border">LG TROMM 워시타워</button>
 											</div>
 										</a>
 									</li> 
 									<!-- // slide -->
 									<!-- slide -->
-									<li class="slide-conts ui_carousel_slide">
+									<!-- <li class="slide-conts ui_carousel_slide">
 										<a href="#n" class="slide-box">
 											<img src="/lg5-common/images/PRS/img-recom-product-01.jpg" alt="">
 											<div class="inner">
@@ -570,9 +697,10 @@
 												<button type="button" class="btn border">LG TROMM 스타일러</button>
 											</div>
 										</a>
-									</li> 
+									</li>  -->
 									<!-- // slide -->
 								</ul>
+								<!-- //210308_문구수정 -->
 							</div>
 							<div class="slide-controls">
 								<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
@@ -590,16 +718,21 @@
 						<div class="buy-product">
 							<div class="inner">
 								<div class="best">
-									<a href="#">
+									<!-- 210308_문구및링크수정 -->
+									<a href="/medical-devices/hgn1">
 										<div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>
 										<!-- <div class="img"><img src="/lg5-common/images/PRS/img-buy-product-best.jpg" alt="LG 오브제 컬렉션 워시타워" data-pc-src="/lg5-common/images/PRS/img-buy-product-best.jpg" data-m-src="/lg5-common/images/PRS/img-buy-product-best-m.jpg"></div> -->
 										<span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-buy-product-best.jpg');" data-pc-src="/lg5-common/images/PRS/img-buy-product-best.jpg" data-m-src="/lg5-common/images/PRS/img-buy-product-best-m.jpg" aria-hidden="hidden"></span>
 										<div class="product-info">
-											<p class="tit">LG 오브제 컬렉션<br>워시타워</p>
-											<div class="price">4,830,000원</div>
+											<p class="tit">프라엘 메디헤어</p>
+											<!-- 210308_문구수정 -->
+											<div class="price">1,880,010원</div>
+											<!-- //210308_문구수정 -->
 										</div>
 									</a>
+									<!-- //210308_문구및링크수정 -->
 								</div>
+								<!-- 210308_제품임시수정 -->
 								<!-- 210303_제품임시수정 -->
 								<ol class="list">
 									<li>
@@ -607,43 +740,44 @@
 											<div class="flag"><span class="num">2</span></div>
 											<div class="img"><img src="/lg5-common/images/dummy/temp/img-buy-product-t01.jpg" alt="LG TROMM ThinQ 미니 세탁기"></div>
 											<div class="product-info">
-												<p class="tit">LG TROMM ThinQ<br>미니 세탁기</p>
-												<div class="price">3,680,000원</div>
+												<p class="tit">오브제컬렉션 A9S</p>
+												<div class="price">1,990,000원</div>
 											</div>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="/monitors/32gk850f">
 											<div class="flag"><span class="num">3</span></div>
-											<div class="img"><img src="/lg5-common/images/dummy/temp/img-buy-product-t02.jpg" alt="LG 오브제컬렉션 식기세척기 스팀"></div>
+											<div class="img"><img src="/kr/images/monitors/md08042340/gallery/medium01.jpg" alt="LG 오브제컬렉션 식기세척기 스팀"></div>
 											<div class="product-info">
-												<p class="tit">LG 오브제컬렉션<br>식기세척기 스팀</p>
-												<div class="price">2,460,000원</div>
+												<p class="tit">울트라기어 모니터</p>
+												<div class="price">690,000원</div>
 											</div>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="/notebook/16z90p-ga79k">
 											<div class="flag"><span class="num">4</span></div>
-											<div class="img"><img src="/lg5-common/images/dummy/temp/img-buy-product-t03.jpg" alt="LG 코드제로 A9S 펫 ThinQ A9S 펫 ThinQ"></div>
+											<div class="img"><img src="/kr/images/notebook/md08917848/gallery/medium18.jpg" alt="LG 코드제로 A9S 펫 ThinQ A9S 펫 ThinQ"></div>
 											<div class="product-info">
-												<p class="tit">LG 코드제로 A9S 펫 ThinQ</p> <!-- 210304_문구수정 -->
-												<div class="price">1,360,000원</div>
+												<p class="tit">그램 16</p> <!-- 210304_문구수정 -->
+												<div class="price">1,569,000원</div>
 											</div>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="/home-audio/hbs-tfn7-black">
 											<div class="flag"><span class="num">5</span></div>
-											<div class="img"><img src="/lg5-common/images/dummy/temp/img-buy-product-t04.jpg" alt="LG SIGNATURE OLED R"></div>
+											<div class="img"><img src="/kr/images/home-audio/md08534008/gallery/medium01.jpg" alt="LG SIGNATURE OLED R"></div>
 											<div class="product-info">
-												<p class="tit">LG SIGNATURE OLED R</p>
-												<div class="price">10,800,000원</div>
+												<p class="tit">톤프리</p>
+												<div class="price">190,000원</div>
 											</div>
 										</a>
 									</li>
 								</ol>
 								<!-- //210303_제품임시수정 -->
+								<!-- //210308_제품임시수정 -->
 							</div>
 						</div>
 					</div>
@@ -787,25 +921,31 @@
 					<div class="module-box wide">
 						<div class="product-banner">
 							<img src="/lg5-common/images/PRS/img-banner-product-category-01.jpg" alt="LG DIOS 얼음정수기냉장고" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-01.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-01-m.jpg">
-							<div class="product-info-link type-l">
+							<!-- 210308_클래스수정 -->
+							<div class="product-info-link fc-black type-l"> <!-- 210306_클래스추가 -->
+							<!-- //210308_클래스수정 -->
+								<!-- 210308_문구및링크수정 -->
 								<a href="#">
-									<p class="tit">1등답게,<br>디오스가 새로움을 오픈</p>
+									<p class="tit">처음 만나는<br>공간인테리어 가전</p>
 								</a>
 								<div class="link-area">
-									<a href="#" class="txt-link"><span>제품 모두 보기</span></a>
-									<a href="#" class="txt-link"><span>LG DIOS 얼음정수기냉장고</span></a>
+									<a href="/lg-objet-collection" class="txt-link"><span>LG Objet Collection</span></a>
+									<!-- <a href="#" class="txt-link"><span>LG DIOS 얼음정수기냉장고</span></a> -->
 								</div>
+								 <!-- //210308_문구및링크수정 -->
 							</div>
 						</div>
 						<div class="product-banner">
 							<img src="/lg5-common/images/PRS/img-banner-product-category-02.jpg" alt="LG TROMM 건조기" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-02.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-02-m.jpg">
-							<div class="product-info-link type-r">
+							<div class="product-info-link fc-white type-r"> <!-- 210306_클래스추가 -->
+								<!-- 210308_문구및링크수정 -->
 								<a href="#">
-									<p class="tit">백라이트 없이 스스로<br>빛나는 건 올레드 TV뿐</p>
+									<p class="tit">우리 집은<br>트루스팀이 있어 안심입니다</p>
 								</a>
 								<div class="link-area">
-									<a href="#" class="txt-link"><span>OLED TV</span></a>
+									<a href="/lg-objet-collection" class="txt-link"><span>LG전자 건강관리 가전 STEAM</span></a>
 								</div>
+								<!-- //210308_문구및링크수정 -->
 							</div>
 						</div>
 					</div>
@@ -835,7 +975,9 @@
 														<span class="flag"><span class="blind">제품 상태</span>베스트</span>
 													</div>
 													<p class="tit">
-														<a href="#"><span class="blind">모델명</span>돌리면 보이는 새로움 LG WING 타이틀 2줄</a>
+														<!-- 210308 문구수정 -->
+														<a href="#"><span class="blind">모델명</span>돌리면 보이는 새로움 LG WING</a>
+														<!-- //210308 문구수정 -->
 													</p>
 													<p class="product-sku"><span class="blind">모델넘버</span>75NANO99KNB</p>
 													<div class="review-info">
@@ -863,31 +1005,33 @@
 									<!-- slide -->
 									<li class="slide-conts ui_carousel_slide img-type"> <!-- 풀 이미지 사용 하는 경우 -->
 										<div class="slide-box">
-											<div class="img"><img src="/lg5-common/images/PRS/img-new-product-list-full.jpg" alt="LG DIOS 김치톡톡 스탠드형"></div>
+											<div class="img"><img src="/lg5-common/images/PRS/img-new-product-list-full.jpg" alt="휘센"></div> <!-- 210308_문구수정 -->
 											<div class="product-area">
+												<!-- 210308_플래그및문구수정 -->
 												<div class="product-contents">
-													<div class="flag-wrap bar-type">
+													<!-- <div class="flag-wrap bar-type">
 														<span class="flag"><span class="blind">제품 상태</span>베스트</span>
 														<span class="flag"><span class="blind">제품 상태</span>으뜸효율 10%</span>
-													</div>
-													<p class="tit"><a href="#">LG DIOS 김치톡톡 스탠드형</a></p>
-													<p class="product-sku"><span class="blind">모델넘버</span>75NANO99KNB</p>
+													</div> -->
+													<p class="tit"><a href="#">휘센</a></p>
+													<p class="product-sku"><span class="blind">모델넘버</span>FQ25LBNRA2</p>
 													<div class="review-info">
 														<a href="#">
 														<div class="star is-review"><span class="blind">리뷰있음</span></div>
-														<div class="average-rating"><span class="blind">평점</span>4.0</div>
-														<div class="review-count"><span class="blind">리뷰 수</span>(<span>48</span>)</div>
+														<div class="average-rating"><span class="blind">평점</span>4.8</div>
+														<div class="review-count"><span class="blind">리뷰 수</span>(<span>5</span>)</div>
 														</a>
 													</div>
 												</div>
 												<div class="product-price">
-													<div class="original">
-														<span class="blind">기존가격</span><em>2,200,000</em>원
-													</div>
+													<!-- <div class="original">
+														<span class="blind">기존가격</span><em>1,830,000</em>원
+													</div> -->
 													<div class="total">
-														<span class="blind">판매가격</span><em>1,830,000</em>원
+														<span class="blind">판매가격</span><em>1,149,000</em>원
 													</div>
 												</div>
+												<!-- //210308_플래그및문구수정 -->
 											</div>
 										</div>
 									</li>
@@ -913,7 +1057,7 @@
 														</a>
 													</div>
 												</div>
-												<div class="product-price">
+												<!-- <div class="product-price">
 													<a href="#">
 														<div class="original">
 															<span class="blind">기존가격</span><em>1,400,000</em>원
@@ -922,7 +1066,7 @@
 															<span class="blind">판매가격</span><em>1,280,000</em>원
 														</div>
 													</a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</li>
@@ -1060,14 +1204,18 @@
 										<div class="slide-box">
 											<div class="img"><img src="/lg5-common/images/PRS/img-new-product-list-full-02.jpg" alt="LG 오브제컬렉션 스타일러"></div>
 											<div class="product-area">
+												<!-- 210308_플래그및문구수정 -->
 												<div class="product-contents">
-													<p class="tit"><a href="#">LG 오브제컬렉션 스타일러</a></p>
-													<p class="product-sku"><span class="blind">모델넘버</span>S5GFO</p>
+													<div class="flag-wrap bar-type">
+														<span class="flag"><span class="blind">제품 상태</span>으뜸효율 10%</span>
+													</div>
+													<p class="tit"><a href="#">A9S 올인원타워</a></p>
+													<p class="product-sku"><span class="blind">모델넘버</span>W16EG</p>
 													<div class="review-info">
 														<a href="#">
 														<div class="star is-review"><span class="blind">리뷰있음</span></div>
-														<div class="average-rating"><span class="blind">평점</span>4.0</div>
-														<div class="review-count"><span class="blind">리뷰 수</span>(<span>48</span>)</div>
+														<div class="average-rating"><span class="blind">평점</span>5.0</div>
+														<div class="review-count"><span class="blind">리뷰 수</span>(<span>3</span>)</div>
 														</a>
 													</div>
 												</div>
@@ -1076,6 +1224,7 @@
 														<span class="blind">판매가</span><em>2,430,000</em>원
 													</div>
 												</div>
+												<!-- //210308_플래그및문구수정 -->
 											</div>
 										</div>
 									</li>
@@ -1093,7 +1242,8 @@
 					<!-- 신제품 -->
 					<div class="module-box">
 						<div class="tit-wrap">
-							<p class="tit"><em>김엘지</em>님을 위한 제품 추천</p>
+							<!-- 210311 수정 [.name 클래스 추가] -->
+							<p class="tit"><em class="name">김엘지</em>님을 위한 제품 추천</p>
 							<p class="desc">고객님이 좋아할 만한 제품을 추천드려요.</p>
 						</div>
 						<div class="slide-wrap product-recom-slide">

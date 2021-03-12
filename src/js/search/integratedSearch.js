@@ -2,9 +2,9 @@
     //최근검색어
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>'
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //추천태그
-    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>'
+    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
 
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -12,9 +12,10 @@
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     //제품미리보기
     var previewItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
+        '<div class="image"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></div>' +
         '<div class="info">' +
-            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span><span class="price">{{price}}원</span>' +
+            '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span>' +
+            '<span class="price"{{#if !obsFlag}} style="visibility: hidden;"{{/if}}>{{price}}원</span>' +
         '</div></a></li>';
     //연관검색어
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
@@ -29,8 +30,6 @@
         setting: function() {
             var self = this;
 
-            //최근 검색어 저장 최대수
-            self.maxSaveRecentKeyword = 5;
             //최소 검색어 글자수
             self.minLength = 2;
             //타이머
@@ -42,6 +41,7 @@
             self.$searchLayer = $('#layerSearch');
             //검색어 입력input
             self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
+            self.$inputSearch.attr('data-autofocus',true);
             //검색버튼
             self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
             
@@ -114,6 +114,7 @@
 
             self.$inputSearch.keydown(function(key) {
                 if (key.keyCode == 13) {
+                    key.preventDefault();
                     self.$buttonSearch.trigger('click');
                 }
             });
@@ -124,7 +125,7 @@
                 
                 var searchVal = this.value;
                 if (searchVal.length < self.minLength) {
-                    self.showAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(true);
                     //self.hideAnimation(self.$searchResultArea);
                     self.hideSearchResultArea();
                     return;
@@ -206,23 +207,15 @@
         },
 
 
-        showAnimation:function($item) {
-            $item.show();
-            /*
-            $item.css({'opacity':0});
-            $item.show();
-            $item.animate({opacity:1},100);
-            */
-        },
+        openSearchInputLayer: function(open) {
+            var self = this;
+            if(open) {
+                self.updateRecentSearchList();
+                self.$searchKeywordArea.show();
 
-        hideAnimation:function($item) {
-            $item.hide();
-            /*
-            $item.animate({opacity:0},100,function() {
-                $item.hide();
-                $item.css({'opacity':1});
-            });
-            */
+            } else {
+                self.$searchKeywordArea.hide();
+            }
         },
 
         hideSearchResultArea:function() {
@@ -257,7 +250,7 @@
                         $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
                     });
                     self.$autoComplete.show();
-                    self.hideAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(false);
                     self.$searchSimilar.hide();
 
                     //모바일
@@ -271,10 +264,10 @@
                     if(data.similarText) {
                         self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
                         self.$searchSimilar.show();
-                        self.hideAnimation(self.$searchKeywordArea);
+                        self.openSearchInputLayer(false);
                     } else {
                         self.$searchSimilar.hide();
-                        self.showAnimation(self.$searchKeywordArea);
+                        self.openSearchInputLayer(true);
                     }
                 }
             });
@@ -326,6 +319,8 @@
                     arr.forEach(function(item, index) {
                         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                         item.price = vcui.number.addComma(item.price);
+                        item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
+                        console.log(item.obsFlag);
                         $list_ul.append(vcui.template(previewItemTemplate, item));
                     });
                     self.$resultPreviewList.show();
@@ -336,7 +331,7 @@
 
                 if(showSearchResultArea) {
                     //검색결과가 있는 경우.
-                    self.hideAnimation(self.$searchKeywordArea);
+                    self.openSearchInputLayer(false);
                     self.$resultPreview.show();
                     self.$searchSimilar.hide();
                     if(isSaveRecentKeyword) self.addRecentSearcheText(searchedValue);
@@ -385,21 +380,8 @@
         addRecentSearcheText:function(text) {
             if(!text || text.length < 1) return;
             var self = this;
-            /*
-            var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
-            if(!searchedList) {
-                searchedList = [];
-            }
-            var findIndex = $.inArray(text, searchedList);
-            if(findIndex < 0) {
-                searchedList.push(text);
-                if(searchedList.length > self.maxSaveRecentKeyword) {
-                    searchedList.shift();
-                }
-                localStorage.searchedList = JSON.stringify(searchedList);
-            }
-            */
-            lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
+
+            lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text, lgkorUI.MAX_SAVE_RECENT_KEYWORD);
             self.updateRecentSearchList();
         },
 
@@ -407,10 +389,10 @@
         updateRecentSearchList:function() {
             var self = this;
 
-            //lgkorUI.addCookieArrayValue(lgkorUI.RECSNT,modelID);
             var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
             var searchedList = cookieValue ? cookieValue.split('|') : [];
-            //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+            //searchedList = vcui.array.reverse(searchedList);
+            
             var arr = searchedList instanceof Array ? searchedList : [];
             var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
             $list_ul.empty();
@@ -439,7 +421,7 @@
                     var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                     $list_ul.empty();
                     arr.forEach(function(item, index) {
-                        $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                        $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                     });
                     self.$popularKeywordList.show();
                 } else {
@@ -477,7 +459,7 @@
         },
     }
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         intergratedSearch.init();
     });
 })();

@@ -27,7 +27,7 @@
 
             .pop-conts {
                 overflow:auto;
-                height:392px;
+                height:calc(100% - 78px - 116px);
 
                 &.mCustomScrollbar {
                     overflow:hidden;
@@ -139,12 +139,7 @@
         }
         .pop-footer {
             padding:26px 40px 40px;
-            &.align-between {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
+            
         }
 
     }
@@ -170,7 +165,7 @@
                 }
 
                 .pop-conts {
-                    height:332px;
+                    height:calc(100% - 78px - 76px);
                     &.mCustomScrollbar {
                         padding:0;
     
@@ -189,7 +184,7 @@
                 }
              
                 .pop-footer {
-                    padding:20px 16px;
+                    padding:10px 16px;
                     .btn-close {
                         min-width:100px;
                         padding: 15px 0;
@@ -209,7 +204,7 @@
             .popup-wrap {
 
                 .pop-conts {
-                    height:348px;
+                    height:calc(100% - 138px);
                     padding:40px 16px 10px;
                     &.mCustomScrollbar {
                         padding:0;
@@ -447,6 +442,7 @@
 
     //히어로 or 제품 지원 영역 상단
     .home-cont-top {
+        display: none;
         position: absolute;
         top:48px; 
         left:0;
@@ -476,6 +472,7 @@
 
         @include mobile {
             display: flex;
+            display: none;
             justify-content: space-between;
             align-items: center;
             top:24px; 
@@ -711,7 +708,7 @@
         @include tablet {
             .support-list {
                 width:100%;
-                padding:110px 0 60px;
+                padding:60px 0;
                 text-align: center;
 
                 .list-header {
@@ -754,6 +751,7 @@
     
                 ul {
                     max-width:336px;
+                    width:100%;
                     > li {
                         a {
                             font-size:13px;
@@ -1434,7 +1432,7 @@
 
         .hero-container {
             position: relative;
-            height:620px;
+            height:580px;
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
@@ -1669,11 +1667,15 @@
         }
         .search-input {
             width:100%;            
-            height:66px;
-
-            input[type="text"]  {
-                padding:21px 90px 21px 32px;
+            height:68px;
+            input[type=text]  {
+                padding:21px 64px 21px 32px;
                 border-radius:30px;
+            }
+            &.clear {
+                input[type=text]  {
+                    padding-right:90px;
+                }   
             }
         }
         .autocomplete-box {
@@ -1696,10 +1698,10 @@
             margin-top:-31px;
             padding:0 16px;
             .search-box {
-    
                 .btn-search {
-                    right:0;
-                    height:62px;
+                    right:17px;
+                    height:60px;
+                    width:34px;
                 }
                 .btn-delete {
                     right:60px ;
@@ -1707,9 +1709,13 @@
             }
             .search-input {
                 height:62px;
-    
-                input[type="text"]  {
-                    padding:18px 97px 20px 20px;
+                input[type=text]  {
+                    padding:18px 41px 20px 20px;
+                }
+                &.clear {
+                    input[type=text]  {
+                        padding-right:97px;
+                    }   
                 }
             }
             .autocomplete-box {
@@ -2428,7 +2434,7 @@
         }
         .item-list {
             position:relative;
-            margin:0 auto;
+            margin:0 -12px;
 
             @include clearfix;
 
@@ -2534,7 +2540,6 @@
             .main-list-wrap {
                 position: relative;
                 overflow:visible !important;
-                padding:0 6px;
             }
 
             .slide-track {
@@ -2654,7 +2659,6 @@
         box-sizing: border-box;
         background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
 
-
         .support-toggle-list-wrap {
             .support-list ul > li a:hover {
                 color:#8d71ec;
@@ -2662,7 +2666,7 @@
         }
 
         @include pc-size-m {
-            height:480px
+            height:420px
         }
 
         @include tablet {
@@ -2671,6 +2675,12 @@
                     .indi-wrap {
                         bottom:0;
                     }
+                }
+            }
+
+            .support-toggle-list-wrap {
+                .support-list {
+                    padding:60px 0;
                 }
             }
         }

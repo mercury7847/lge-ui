@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
+        pageCSS: ["BMC/BMC"],
+        pageTitle: "멤버십 안내 | LG전자 ",
+        pageDesc: "LG전자 멤버십의 다양한 혜택들을 한눈에 확인해 보세요. 제휴 카드 할인 혜택, 포인트 적립 및 사용 등 LG전자 고객만을 위한 특별한 혜택을 만나보세요."
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "LG전자 멤버십" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             <!-- membership -->

@@ -17,6 +17,9 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
             var target = self.$el.next().find(query).first();
             if(target.length < 1) {
                 target = self.$el.parent().find(query).first();
+                if(target.length < 1) {
+                    target = self.$el.parent().parent().find(query).first();
+                }
             }
             self.$clearButton = target;
 
@@ -34,13 +37,16 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             if(self.options.alway) {
                 self.$clearButton.show();
+                self.$el.parent().addClass('clear');
             } else {
                 var value = self.$el.val();
                 if(value && value.length > 0) {
                     self.$clearButton.show();
+                    self.$el.parent().addClass('clear');
                 } else {
                     if(!self.options.alway) {
                         self.$clearButton.hide();
+                        self.$el.parent().removeClass('clear');
                     }
                 }
             }

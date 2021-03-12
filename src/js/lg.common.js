@@ -11,6 +11,18 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+    window.onload = function(){
+        console.log('lazy??????????? onload');
+        vcui.require([
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
+        ], function () {
+            var $b = $('body');
+            $b.vcLazyLoaderSwitch();
+            $b.vcLazyLoader();
+            console.log('lazy???????????');
+        });
+    };
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -45,35 +57,41 @@ var isApp = function(){
 
     $.fn.buildCommonUI = function () {
         vcui.require([
-                            'ui/selectbox',
-                            'ui/calendar',
-                            'ui/accordion',
-                            'ui/carousel',
-                            'ui/modal',
-                            'ui/tab',       
-                            'ui/lazyLoader',
-                            "ui/videoBox",
-                            "ui/youtubeBox",
-                            "ui/imageSwitch",
-                            "ui/dropdown",
-                            "ui/textControl",
-                            "ui/fileInput",
-                            "ui/radioShowHide",
-                            'ui/inputClearButton',
-                            "ui/starRating",
-                            "ui/tooltipTarget",
-                            "ui/sticky",
-                            "ui/formatter",
-                            "ui/scrollNavi",
-                            "ui/smoothScroll",
-                            "ui/smoothScrollTab",
-                            "ui/checkboxAllChecker"
+            'ui/selectbox',
+            'ui/calendar',
+            'ui/accordion',
+            'ui/carousel',
+            'ui/modal',
+            'ui/tab',       
+            "ui/videoBox",
+            "ui/youtubeBox",
+            "ui/dropdown",
+            "ui/textControl",
+            "ui/fileInput",
+            "ui/radioShowHide",
+            'ui/inputClearButton',
+            "ui/starRating",
+            "ui/tooltipTarget",
+            "ui/sticky",
+            "ui/formatter",
+            "ui/scrollNavi",
+            "ui/smoothScroll",
+            "ui/smoothScrollTab",
+            "ui/checkboxAllChecker",
+            //"ui/imageSwitch"
+            'ui/lazyLoaderSwitch',
+            'ui/lazyLoader'
         ], function () {    
             console.log("buildCommonUI!!!!");
-            
-            this.vcImageSwitch();
-            this.vcLazyLoader();
-    
+
+            //this.vcImageSwitch();
+            console.log(location.hostname)
+            if(location.hostname == "cms50.lge.co.kr") {
+                console.log('lazy cms50');
+                this.vcLazyLoaderSwitch();
+                this.vcLazyLoader();
+            }
+
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
             this.find('.ui_dropdown').vcDropdown();
@@ -87,8 +105,9 @@ var isApp = function(){
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
-            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
-
+            
+            //this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
+            
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
 
@@ -240,16 +259,18 @@ var isApp = function(){
     
     global['lgkorUI'] = {
         COMPARE_KEY: "prod_compare",
-        COMPARE_LIMIT: 3,
         CAREPLANER_KEY: "care_planer",
         CAREPLANER_ID: "putitem_list",
         CAREPLANER_PRICE: "putitem_price",
         MOBILE_CHECK_WIDTH: 768,
         STICKY_MODULES:[],
         NO_IMAGE: "/lg5-common/images/icons/noimage.svg",
+        NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
+        MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
+        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
             this._bindErrBackEvent();
             this._addImgOnloadEvent();
@@ -277,6 +298,14 @@ var isApp = function(){
             $(img).addClass('no-img');
         },
 
+        addModelNameImgErrorEvent: function(img){
+            var self = this;
+            img.onerror = null;
+            $(img).attr('src', self.NO_IMAGE_MODEL_NAME);
+            $(img).addClass('no-img');
+        },
+
+
         _createMainWrapper: function(){
             if ( $('.container-fluid:has(.header)').length && !$('main').length ) {
                 //$('.container-fluid:has(.header) ~ div,.container-fluid.iw_section:has(.header) ~ section').not(':has(.footer-box)').wrapAll('<main></main>');
@@ -288,7 +317,7 @@ var isApp = function(){
             var self = this;
 
             vcui.require([  
-                'helper/responsiveImage',
+                //'helper/responsiveImage',
                 'helper/breakpointDispatcher',
                 'common/header', 
                 'common/footer',  
@@ -299,10 +328,8 @@ var isApp = function(){
                 'ui/carousel',
                 'ui/modal',
                 'ui/tab',       
-                'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch", 
                 "ui/textControl",
                 "ui/fileInput",
                 "ui/radioShowHide",
@@ -315,9 +342,8 @@ var isApp = function(){
                 "ui/scrollNavi",
                 "ui/smoothScroll",
                 "ui/smoothScrollTab",
-                "ui/selectTarget",
                 'ui/imageFileInput'
-            ], function (ResponsiveImage, BreakpointDispatcher) {
+            ], function (/*ResponsiveImage,*/ BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
                     matches: {
@@ -359,17 +385,24 @@ var isApp = function(){
                     }
                 }).start();     
                 
+                /*
                 var breakpoint = {
                     mobile: 768,
                     pc: 100000
                 }
                 
                 new ResponsiveImage('body', breakpoint);
-
-
+                */
+                
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                $(window).on('resizeend', function(e){
+                    self.resetFlexibleBox();
+                });  
+                self.resetFlexibleBox();
+
+                /*
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
                     self.resizeCallbacks.push(callback);
@@ -382,8 +415,9 @@ var isApp = function(){
 
                     self.resetFlexibleBox();
                 });  
-                self.resetFlexibleBox();              
-    
+                self.resetFlexibleBox();
+                */
+
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
                 vcui.ui.setDefaults('Modal', {
@@ -441,7 +475,9 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
+                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
+                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -449,6 +485,9 @@ var isApp = function(){
                             }
                             if(data && data.content.find('.ui_smooth_scroll').length>0){
                                 data.content.find('.ui_smooth_scroll').vcSmoothScroll('refresh');
+                            }
+                            if(data && data.content.find(".ui_carousel_slider").length > 0){
+                                data.content.find('.ui_carousel_slider').vcCarousel('update');
                             }
                         }
                     }
@@ -598,7 +637,6 @@ var isApp = function(){
                 var callbackOk, callbackCancel;
     
                 if(options && options.ok && typeof options.ok =='function'){
-                    console.log("option.ok");
                     callbackOk = options.ok;
                     delete options['ok'];
                 } 
@@ -624,7 +662,6 @@ var isApp = function(){
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
                     if(e.type =='modalok'){
-                        console.log(callbackOk)
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
@@ -692,19 +729,23 @@ var isApp = function(){
             
         }(),
 
+        getCompareLimit: function(){
+            return window.breakpoint.isMobile ? 2 : 3;
+        },
+
         addCompareProd: function(categoryId, data){
             var self = this;
 
             console.log("### addCompareProd ###", categoryId)
 
-            self.COMPARE_LIMIT = window.breakpoint.isMobile ? 2 : 3;
+            var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
                 compareStorage[categoryId] = [data];
             } else{
                 var leng = compareStorage[categoryId].length;
-                if(leng < self.COMPARE_LIMIT){
+                if(leng < compareLimit){
                     compareStorage[categoryId].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
@@ -790,6 +831,67 @@ var isApp = function(){
             return returnValue;
         },
 
+        //만료기간을 가진 스토리지 저장
+        setExipreStorage: function(key, value, expireTime){
+            var storage = sessionStorage.getItem(key);
+            var storageData = storage? JSON.parse(storage) : {};        
+            //Internet Explorer 불가
+            //storageData = Object.assign(storageData, value);
+
+            var cookieExpire = new Date();
+            cookieExpire.setDate(cookieExpire.getDate() + days);
+            var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
+
+            value += ("&&&" + expireDateString);
+
+            $.extend(storageData, value);
+            sessionStorage.setItem(key, JSON.stringify(storageData));
+
+            console.log("### setStorage ###", storageData)
+            //$(window).trigger("changeStorageData");
+
+            return storageData;
+        },
+
+        getExipreStorage: function(key){							
+            var storage = sessionStorage.getItem(key); 
+            if(storage){
+                var i = JSON.parse(storage);
+                
+                var index = !i ? -1 : i.indexOf("&&&");
+                if(index != -1) {
+                    var checkExpire = new Date();
+
+                    var arr = i.split('&&&');
+                    if(arr.length > 1) {
+                        var value = arr[0];
+                        var date = arr[1];
+
+                        var year = date.substring(0, 4);
+                        var month = date.substring(4, 6);
+                        var day = date.substring(6, 8);
+                        var hour = date.substring(8, 10);
+                        var minute = date.substring(10, 12);
+                        var second = date.substring(12, 14);
+                        var expire = new Date(year, month-1, day, hour, minute, second);
+                        var res = vcui.date.compare(checkExpire,expire);
+                        if(res != 1) {
+                            //날짜 지남
+                            self.removeStorage(key,null);
+                            return null;
+                        } else {
+                            return value;
+                        }
+                     } else {
+                         return i;
+                     }
+                }
+            } else {
+                return null;
+            }
+        },
+
+        //쿠키
         setCookie: function(cookieName, cookieValue, deleteCookie) {
             var cookieExpire = new Date();
             if(deleteCookie) {
@@ -886,7 +988,7 @@ var isApp = function(){
             }
         },
 
-        addCookieArrayValue: function(cookieName, addData) {
+        addCookieArrayValue: function(cookieName, addData, maxLength) {
             var self = this;
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
@@ -917,9 +1019,19 @@ var isApp = function(){
             var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
 
             addData += ("&&&" + expireDateString);
+
             itemArray.unshift(addData);
+            itemArray = itemArray.slice(0,maxLength);
+
             items = itemArray.join('|');
             self.setCookie(cookieName, items);
+
+            /*
+            console.log('saved',itemArray.length);
+            var test = self.getCookie(cookieName);
+            var searchedList = test.split('|');
+            console.log(searchedList);
+            */
         },
 
         removeCookieArrayValue: function(cookieName, removeData) {
@@ -964,7 +1076,8 @@ var isApp = function(){
                     self.loadCommonShareUI();
                 };
                 script.onerror = function(e){ 
-                    alert('kakao api를 로드할수 없습니다.');
+                    //alert('kakao api를 로드할수 없습니다.');
+                    console.log('kakao api를 로드할수 없습니다.');
                 }
                 script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
                 document.head.appendChild(script); 
@@ -983,14 +1096,16 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
             var self = this;
             var dtype = dataType? dataType : "json";
+            var timeout = timeout ? timeout : 10000;
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
-                data : data
+                data : data,
+                timeout : 180000
             }).done(function (result) {
 
                 if(dtype != "json") {
@@ -1023,14 +1138,15 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
+                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
+                        lgkorUI.hideLoading();
                     }
-                    lgkorUI.hideLoading();
                     return;
                 }
 
@@ -1043,6 +1159,7 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
+                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1060,23 +1177,33 @@ var isApp = function(){
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
 
+                        lgkorUI.hideLoading();
+
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
-
-                        lgkorUI.hideLoading();
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
+                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+                lgkorUI.hideLoading();
+            }).always(function() {
+                lgkorUI.hideLoading();
+                //console.log( "complete" );
             });
         },
 
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
+        },
+
+        requestAjaxDataAddTimeout: function(url, timeout, data, callback, type, dataType, ignoreCommonSuccessCheck){
+            var self = this;
+            self.requestAjaxData(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout);
         },
 
         requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {
@@ -1151,6 +1278,7 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
@@ -1186,6 +1314,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
@@ -1353,38 +1482,125 @@ var isApp = function(){
         },
 
         searchModelName: function(){
-            vcui.require([
-                'ui/selectTarget'
-            ], function () {
-                $('.ul_select_target').vcSelectTarget({
-                    callback: function(data, target) {
-                        var $this = this.$el;
-                        var $target = $(target);
+            var optionsTmpl =  '<option value="{{code}}">{{name}}</options>';
 
-                        $target.off('change.modeName').on('change.modeName', function() {
-                            var url = $('.category-select').data('ajax'),
-                                categoryVal = $this.val(),
-                                subcategoryVal = $(this).val(),
-                                param;
+            var modelName = {
+                options: {
+                    text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
+                    imgPath: '/lg5-common/images/CS/img-model-name-example.jpg',
+                    imageAlt: '모델명 및 제조번호 확인 예시 이미지',
+                    categoryPlaceholder: '카테고리 선택',
+                    subCategoryPlaceholder: '세부 카테고리 선택'
+                },
+                init: function() {
+                    var self = this;
 
-                            if (subcategoryVal) {
-                                param = {
-                                    category: categoryVal,
-                                    subCategory: subcategoryVal
-                                };
+                    self.$modelButton = $('[data-href="#modelNamePopup"]');
+                    self.$modelPopup = $('#modelNamePopup');
+                    self.$category = self.$modelPopup.find('#select1');
+                    self.$subCategory = self.$modelPopup.find('#select2');
+                    self.$result = self.$modelPopup.find('.example-result');
 
-                                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                                    var data = result.data;
+                    self.searchModelNameUrl = self.$modelPopup.data('modelUrl');
+                    self.searchSubCategoryUrl = self.$modelPopup.data('subCategoryUrl');
 
-                                    $('.example-result .txt').html(data.text);
-                                    $('.example-result .img img').attr('src', data.imgPath);
-                                    $('.example-result .img img').attr('alt', data.imgAlt);
-                                });
-                            }
-                        });
+                    self.bindEvent();
+                },
+                setting: function() {
+                    var self = this;
+                    
+                    self.category = self.$modelPopup.data('category');
+                    self.subCategory = self.$modelPopup.data('subCategory');
+                    
+                    if (self.category) {
+                        self.$category.find('option[value="'+self.category+'"]').prop('selected', true);
+                        self.$category.vcSelectbox('update');
+                        self.searchSubCategory(self.category, self.subCategory);
+                        if (self.subCategory) {
+                            self.searchModelName(self.category, self.subCategory);
+                        }
                     }
-                });
-            });
+                },
+                searchSubCategory: function(category, subCategory) {
+                    var self = this;
+                    var subCategory = subCategory || '';
+                    var param = {
+                        cateSelect: category || self.$category.val()
+                    };
+                    
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(self.searchSubCategoryUrl, param, function(result) {
+                        var data = result.data;
+                        var html = '';
+
+                        data.forEach(function(item) {
+                            html += vcui.template(optionsTmpl, item);
+                        });
+
+                        self.$subCategory.find('option:not(.placeholder)').remove();
+                        self.$subCategory.append(html).prop('disabled', false);
+                        self.$subCategory.find('option[value="'+subCategory+'"]').prop('selected', true);
+                        self.$subCategory.vcSelectbox('update');
+
+                        lgkorUI.hideLoading();
+                    }, 'POST');
+                },
+                searchModelName: function(category, subCategory) {
+                    var self = this;
+                    var param = {
+                        category: category || self.$category.val(),
+                        subCategory: subCategory || self.$subCategory.val()
+                    };
+                    
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
+                        var $resultTxt = self.$result.find('.txt'),
+                            $resultImg = self.$result.find('.img img');
+                        var data = result.data;
+                        
+                        $resultTxt.html(data.text);
+                        $resultImg.attr('src', data.imgPath);
+                        $resultImg.attr('alt', data.imageAlt);
+
+                        lgkorUI.hideLoading();
+                    }, 'POST');
+                },
+                bindEvent: function() {
+                    var self = this;
+
+                    self.$modelButton.on('click', function() {
+                        self.setting();
+                        self.$modelPopup.vcModal();
+                    });
+
+                    self.$category.on('change', function() {
+                        self.searchSubCategory();
+                    });
+
+                    self.$subCategory.on('change', function() {
+                        self.searchModelName();
+                    });
+
+                    self.$modelPopup.on('modalhidden', function() {
+                        var $resultTxt = self.$result.find('.txt'),
+                            $resultImg = self.$result.find('.img img');
+                        var options = self.options;
+
+                        $resultTxt.html(options.text);
+                        $resultImg.attr('src', options.imgPath);
+                        $resultImg.attr('alt', options.imageAlt);
+
+                        self.$category.find('option.placeholder').prop('selected', true);
+                        self.$subCategory.prop('disabled', true);
+                        self.$subCategory.find('option:not(.placeholder)').remove();
+
+                        self.$category.vcSelectbox('update');
+                        self.$subCategory.vcSelectbox('update');
+                    });
+                }
+            }
+
+            modelName.init();
         },
 
         addLimitedInputEvent: function(ipt){
@@ -1412,39 +1628,69 @@ var isApp = function(){
 
             var $wishItem = $('input['+checkAttr+']');
 
-            lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
-                var data = result.data.data;
-                if(data){
-                    var listData = data.listData != undefined ? data.listData : null;
-                    var wishListId = data.wishListId;
-                    $wishItem.each(function(idx, item){
-                        var $item = $(item);
-                        if(!$item.data('wishListId')) {
-                            console.log('null',$item);
-                            $item.data('wishListId', wishListId);
-                        };
-                    });                
-                    if(listData) {
-                        listData.forEach(function(item,index){
-                            var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
-                            if($wish.length > 0) {
-                                $wish.data(item);
-                                $wish.prop("checked",true);
-                            }
-                        });
+            if($wishItem.length > 0) {
+                lgkorUI.requestAjaxData(ajaxUrl, {"type":"list"}, function(result){
+                    var data = result.data.data;
+                    if(data){
+                        var listData = data.listData != undefined ? data.listData : [];
+                        var wishListId = data.wishListId;
+                        /*
+                        $wishItem.each(function(idx, item){
+                            var $item = $(item);
+                            if(!$item.data('wishListId')) {
+                                $item.data('wishListId', wishListId);
+                            };
+                        }); 
+                        */
+                        if(wishListId) {
+                            $wishItem.each(function(idx, item){
+                                var $item = $(item);
+                                if(!$item.data('wishListId')) {
+                                    $item.data('wishListId', wishListId);
+                                };
+                                var itemId = $item.attr(checkAttr);
+                                for (var i = 0, len = listData.length; i < len; i++) {
+                                    var listItem = listData[i];
+                                    if (listItem.sku == itemId) {
+                                        $item.data(listItem);
+                                        $item.prop("checked",true);
+                                        break;
+                                    }
+                                }
+                            });
+                            /*
+                            listData.forEach(function(item,index){
+                                var $wish = $wishItem.filter('[' + checkAttr + '="'+item.sku+'"]' );
+                                console.log($wish);
+                                if($wish.length > 0) {
+                                    $wish.data(item);
+                                    $wish.prop("checked",true);
+                                }
+                            });
+                            */
+                        }
                     }
+                },"GET", null, true);
+            }
+        },
+
+        //크레마로그인
+        cremaLogin:function() {
+            if(typeof digitalData !== 'undefined') {
+                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
+                    window.cremaAsyncInit = function () {
+                        crema.init("이름",digitalData.userInfo.unifyId);
+                    };
+                } else {
+                    window.cremaAsyncInit = function () {
+                        crema.init(null,null);
+                    };
                 }
-            },"GET", null, true);
-        
-            //var checkModel = [];
-            /*
-            $wishItem.each(function(idx,obj){
-                var model = obj.attr(checkAttr);
-                if(model){
-                    checkModel.push(model);
-                }
-            });
-            */
+            } else {
+                window.cremaAsyncInit = function () {
+                    crema.init(null,null);
+                };
+            }
         }
     }
 
@@ -1453,7 +1699,9 @@ var isApp = function(){
     });
 
     global.addEventListener('load', function(){
-        $('.ui_sticky').vcSticky('update');
+        vcui.require(['ui/sticky'], function () {
+            $('.ui_sticky').vcSticky('update');
+        });
     });
 
 })(window);

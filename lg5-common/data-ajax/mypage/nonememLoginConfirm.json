@@ -1,0 +1,15 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "N",
+        "alert":{
+            "okBtnName": "로그인",
+            "cancelBtnName": "취소",
+            "isConfirm": true,
+            "title": "로그인이 필요합니다.",
+            "okUrl": "http://wwwstg.lge.co.kr"
+        }
+    }
+}

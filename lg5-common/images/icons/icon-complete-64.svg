@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
     <defs>
-        <path id="zk06xml06a" d="M0 0H64V64H0z"/>
+        <path id="khmcgdmrda" d="M0 0H64V64H0z"/>
     </defs>
     <g fill="none" fill-rule="evenodd">
         <g>
             <g>
                 <g>
-                    <g transform="translate(-928 -282) translate(270 282) translate(478) translate(180)">
-                        <mask id="7u9mji38tb" fill="#fff">
-                            <use xlink:href="#zk06xml06a"/>
+                    <g transform="translate(-928 -290) translate(270 290) translate(350) translate(308)">
+                        <mask id="5hl5at7phb" fill="#fff">
+                            <use xlink:href="#khmcgdmrda"/>
                         </mask>
-                        <g stroke="#000" stroke-width="2" mask="url(#7u9mji38tb)">
+                        <g stroke="#76892D" mask="url(#5hl5at7phb)">
                             <g transform="translate(7 7)">
-                                <circle cx="25" cy="25" r="25"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 25.703L20.277 36 38 15"/>
+                                <circle cx="25" cy="25" r="25" stroke-width="2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.167" d="M12 25.703L20.277 36 38 15"/>
                             </g>
                         </g>
                     </g>

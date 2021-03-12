@@ -82,10 +82,12 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
-                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    validate : function(value){
+                        return validatePhone(value);
+                    } 
                 },
                 date: {
                     required: true,
@@ -118,10 +120,12 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
@@ -360,6 +364,9 @@
 
             self.$calendarDate.calendar('reset');
             self.$calendarTime.timeCalendar('reset');
+            self.$cont.commonModel('focus', self.$productBar, function() {
+                self.$productBar.vcSticky();
+            });
         },
         bindEvent: function() {
             var self = this;

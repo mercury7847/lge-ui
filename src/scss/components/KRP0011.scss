@@ -2,6 +2,17 @@
 
 @import "../components-app";
 
+.component-wrap {
+    .KRP0011 {
+        .component-inner {
+            padding:120px 0;
+            @include mobile {
+                padding:60px 0;
+            }
+        }
+    }
+}
+
 .KRP0011 {
     .component-inner {
         // max-width:1146px + 80px;
@@ -15,8 +26,8 @@
     .title {
         margin-bottom:64px;
         font-weight:700;
-        font-size:40px;
-        line-height:56px;
+        font-size:32px;
+        line-height:52px;
         text-align:center;
         * {
             font-weight:inherit;
@@ -25,8 +36,8 @@
         }
         @include mobile {
             margin-bottom:32px;
-            font-size:27px;
-            line-height:38px;
+            font-size:24px;
+            line-height:33px;
         }
     }
 
@@ -59,8 +70,8 @@
                         height:240px;
                         margin:0 auto;
                         @include mobile {
-                            width:130px;
-                            height:130px;
+                            width:100%;
+                            height:auto;
                         }
                     }
                 }
@@ -178,6 +189,9 @@
                 }
                 .price-area {
                     margin-top:24px;
+                    .zero-price {
+                        color:#666;
+                    }
                 }
             }
         }

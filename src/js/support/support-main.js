@@ -41,18 +41,6 @@
             },
             init : function(){
                 this.toggle();
-
-                // $(this.el.list).each(function(){
-                //     var $this = $(this);
-                //     var $anchor = $this.find('a');
-
-                //     $anchor.filter(function(){
-                //         var $this = $(this);
-                //         if( $this.text() == "") {
-                //             return true
-                //         }
-                //     }).remove();
-                // })
             }
         },
         moreShow : {
@@ -472,22 +460,27 @@
                    
                     vcui.require(['ui/validation', 'ui/formatter'], function () {
                         self.addressFinder = new AddressFind();
-                        $('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
+                        //$('#servicePhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
                             agreePrivacyCheck : {
                                 required : true,
                                 msgTarget : ".err-block"
                             },
+
                             serviceUserName : {
                                 required : true,
                                 msgTarget : ".err-block"
                             },
                             servicePhoneNo : {
                                 required : true,
+                                minLength : 10,
                                 maxLength : 11,
                                 pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                                 msgTarget : ".err-block",
+                                validate : function(value){
+                                    return validatePhone(value);
+                                } 
                             }
                         };
                         self.validation = new vcui.ui.CsValidation('.service-reserv', {register : register});
@@ -603,10 +596,12 @@
                                     required: true,
                                     minLength: 10,
                                     maxLength: 11,
-                                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                                     msgTarget: '.err-block',
-                                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                                    errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                    patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                    validate : function(value){
+                                        return validatePhone(value);
+                                    } 
                                 },
                                 authNo:{
                                     required: true,

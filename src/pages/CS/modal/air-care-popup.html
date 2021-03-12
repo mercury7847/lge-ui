@@ -1,4 +1,4 @@
-<article id="airCarePopup" class="popup-wrap full support" data-role="modal-init"><!-- 2021.02.18 class 추가 : support --><!-- 2021.02.23 data-role 추가 : modal-init -->
+<article id="airCarePopup" class="popup-wrap full support row-footer" data-role="modal-init"><!-- 2021.03.11 row-footer 추가 -->
     <header class="pop-header">
         <h1 class="tit"><span>안내</span></h1>
     </header>
@@ -16,12 +16,15 @@
             </li>
         </ul>
     </section>
-    <footer class="pop-footer check-type">
+	<!-- 2021.03.08 footer 태그 div로 수정 -->
+    <div  class="pop-footer check-type align-between">
         <!-- 2021.02.23 data-role 추가 -->
         <span class="chk-wrap" data-role="today-cookie-check">
             <input type="checkbox" id="checkToday">
             <label for="checkToday">오늘 하루 열지 않기</label>
         </span>
-    </footer>
+        <!-- 2021.03.11 닫기버튼 추가 -->
+        <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+    </div>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>

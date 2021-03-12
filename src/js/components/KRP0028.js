@@ -10,9 +10,9 @@
             '<div class="flag-wrap bar-type">' +
                 '<span class="flag">{{categoryName}}</span>' +
             '</div>' +
-            '<p class="tit">{{storyTitle}}</p>' +
+            '<p class="tit">{{#raw storyTitle}}</p>' +
             '<div class="desc-wrap">' +
-                '<span class="desc">{{storyDesc}}</span>' +
+                '<span class="desc">{{#raw storyDesc}}</span>' +
             '</div>' +
         '</div>' +
         '<div class="btn-area">' +

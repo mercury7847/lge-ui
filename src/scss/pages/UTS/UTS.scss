@@ -411,7 +411,7 @@
 
     .search-result-category {
         max-width: (1380px + 80px);
-        margin: 80px auto 0;
+        margin: 48px auto 0;
         padding: 0 40px;
         .inner {
             position: relative;
@@ -605,9 +605,24 @@
             }
         }
         @include mobile {
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 0 20px 60px;
             border-top: 0;
+        }
+
+        // 검색결과 타이틀 라인 제거
+        &.w-filter {
+            @include tablet {
+                .lay-filter {
+                    .fiter-head:after,
+                    .filter-head:after {
+                        display: none;
+                    }
+                    .plp-filter-wrap .filter-top {
+                        padding-top: 20px;
+                    }
+                }
+            }
         }
     }
 
@@ -752,43 +767,6 @@
     }
 }
 
-
-.rounded-list {
-    font-size: 0;
-    li {
-        display: inline-block;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-    .rounded {
-        display: inline-block;
-        padding: 6px 12px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-        .text {
-            display: block;
-            @include font-small;
-        }
-    }
-    @include mobile {
-        //li {
-        //    display: block;
-        //    margin-right: 0;
-        //    margin-bottom: 6px;
-        //}
-        .rounded {
-            .text {
-                font-size: $font-small;
-                line-height: 22px;
-            }
-        }
-    }
-}
-
 @import "SERF9001";
 @import "SERF9003";
 @import "SERF9009";
@@ -801,6 +779,9 @@
 // 개인정보취급방침, 이벤트개인정보처리방침, 이용약관
 .contents.term-wrap {
     border-top:8px solid #f4f4f4;
+    &.bt-none {
+        border-top:none;
+    }
     .cont-wrap {
         border:none;
     }
@@ -1451,6 +1432,7 @@
                         display: block;
                         flex: 1;
                         margin-left: 24px;
+                        margin-bottom: 0;
                         padding: 0;
                     }
                 }
@@ -1559,31 +1541,30 @@
             span {
                 display: block;
                 margin-bottom: 8px;
+                font-weight: 700;
                 @include font($font-large-4,52px);
                 color: $color-default;
-                em {
-                    font-weight: 700;
-                }
             }
         }
 
         @include mobile {
-            padding: 0 16px 56px;
+            padding: 0 16px 60px;
             p {
-                padding-top: 45px;
-                font-size: 14px;
-                line-height: 22px;
-                /*&:before {
-                    width: 34px;
-                    height: 34px;
-                    margin-left: -17px;
-                    background-size: 34px;
-                }*/
                 span {
-                    margin-bottom: 14px;
-                    font-size: 16px;
-                    line-height: 19px;
+                    margin-bottom: 12px;
+                    @include font($font-large-2,33px);
                 }
+            }
+        }
+    }
+    @at-root .contents.search .cont-wrap & {
+        .no-data {
+            margin-top: 0;
+            @include pc {
+                margin-bottom: 80px;
+            }
+            @include mobile {
+                padding-bottom: 60px;
             }
         }
     }

@@ -105,6 +105,7 @@ body {
         margin: 0 -18px;
         padding: 0 18px;
         text-decoration: none;
+        @include font(16px, 24px);
         &:after {
             content: '';
             display: block;

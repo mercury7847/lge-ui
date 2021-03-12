@@ -19,14 +19,21 @@
 
                         <div class="lnb-contents">
                             <!-- 등급별 클래스 / 텍스트
+                                .basic / 미가입
                                 .standard / 스탠다드
                                 .gold / 골드
                                 .royal-gold / 로얄골드
                                 .signature / LG SIGNATURE
                             -->
-                            <div class="my-dashboard standard">
+                            <div class="my-dashboard basic">
                                 <div class="my-membership">
-                                    <div class="membership-level">이엘지 님의 멤버십 등급은 <br class="mo-only"><a href="#" class="btn-link"><span>LG SIGNATURE</span></a> 입니다.</div>
+                                    <!-- 가입회원 문구 -->
+                                    <!-- <div class="membership-level">이엘지 님의 멤버십 등급은 <br class="mo-only"><a href="#" class="btn-link"><span>LG SIGNATURE</span></a> 입니다.</div> -->
+
+                                    <!-- 210310 수정 [미가입케이스 추가] -->
+                                    <!-- 미가입회원 문구 -->
+                                    <div class="membership-level">이엘지 님, <br class="mo-only">멤버십을 가입해보세요.</div>
+                                    <!-- 210310 수정 [미가입케이스 추가] -->
 
                                     <div class="btn-area">
                                         <a href="#" class="btn-link"><span>회원정보 수정</span></a>
@@ -37,7 +44,15 @@
                                     <li>
                                         <dl class="point">
                                             <dt class="title">맴버십포인트(P)</dt>
-                                            <dd class="number">8,000,000</dd>
+                                            <!-- 가입회원 포인트 노출 -->
+                                            <!-- <dd class="number">8,000,000</dd> -->
+
+                                            <!-- 210310 수정 [미가입케이스 추가] -->
+                                            <!-- 미가입회원 가입버튼 노출 -->
+                                            <dd class="btn-area">
+                                                <a href="#" class="btn size-m border"><span>멤버십 가입</span></a>
+                                            </dd>
+                                            <!-- // 210310 수정 [미가입케이스 추가] -->
                                         </dl>
                                     </li>
                                     <li>
@@ -83,9 +98,11 @@
                                     </div>
                                     <div class="subscriptions">
                                         <ul>
-                                            <li><a href="#" class="btn-text small">MY 스토리</a></li>
-                                            <li><a href="#" class="btn-text small">MY e-카탈로그</a></li>
-                                            <li><a href="#" class="btn-text small">MY 이벤트</a></li>
+                                            <!-- 210308 수정 [텍스트 수정] -->
+                                            <li><a href="#" class="btn-text small">나의 스토리</a></li>
+                                            <li><a href="#" class="btn-text small">마이컬렉션</a></li>
+                                            <li><a href="#" class="btn-text small">나의 이벤트</a></li>
+                                            <!-- // 210308 수정 [텍스트 수정] -->
                                         </ul>
                                     </div>
                                 </div>

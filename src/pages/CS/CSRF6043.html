@@ -2,11 +2,17 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["CS/CS"],
-        pageJS: ["customer/faq"]
+        pageJS: ["customer/faq"],
+        pageTitle: "이용가이드/FAQ | LG전자 고객지원",
+        pageDesc: "LG전자 서비스의 자주 묻는 질문 FAQ 및 이용 가이드로 편리한 서비스를 이용해 보세요. 간편 해결 방법 및 전문 상담 예약 가이드가 준비되어 있습니다."
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "이용가이드/FAQ" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
@@ -26,7 +32,9 @@
                         </div> -->
                         <div class="input-wrap">
                             <div class="box">   
-                                <input type="text" placeholder="검색어 입력">
+                                <form role="search" action="">
+                                    <input type="search" placeholder="검색어 입력" class="ui_input_clearbutton">
+                                </form>
                                 <div class="cell">
                                     <button type="submit" class="btn-search">
                                         <span class="blind">검색</span>

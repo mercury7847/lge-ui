@@ -6,7 +6,11 @@
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "통합검색" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             <!-- 통합검색 -->
@@ -342,15 +346,7 @@
                 </div>
                 <!-- // 210218 수정 [이미지 변경, br 태그 위치 수정] -->
 
-                <div class="search-not-result">
-                    <div class="no-data">
-                        <p>
-                            <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
-                            다시 한번 확인해주세요.
-                        </p>
-                    </div>
-                </div>
-                
+
                 <div class="cont-wrap">
                     <div class="search-result-wrap all">
 
@@ -366,7 +362,16 @@
                                         })
                                     </div>
                                 </div>
-                            </div>    
+                            </div>
+                        </div>
+
+                        <div class="search-not-result">
+                            <div class="no-data">
+                                <p>
+                                    <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
+                                    다시 한번 확인해주세요.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="result-list-wrap">

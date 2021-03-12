@@ -190,10 +190,12 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
-                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    validate : function(value){
+                        return validatePhone(value);
+                    } 
                 }
             }
             var authOptions = {
@@ -216,10 +218,12 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
@@ -246,6 +250,35 @@
                 if (!self.isLogin) authManager = new AuthManager(authOptions);
 
                 self.bindEvent();
+
+                self.$engineerSlider.vcCarousel({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint:767,
+                            settings: {
+                                variableWidth : true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
 
                 self.$cont.commonModel({
                     register: register,
@@ -278,26 +311,27 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
-                var url, param = {},
+                var param = {},
+                    url = self.resultUrl,
                     data = self.data = $.extend({}, self.data, data);
                 
-                if (data.seq) {
-                    url = self.centerUrl;
+                if (data.seq) {    
                     param = {
                         seq: data.seq,
-                        page: 1
+                        category: data.category,
+                        subCategory: data.subCategory,
+                        modelCode: data.modelCode,
+                        serviceType: data.serviceType
                     };
-
-                    
                 } else {
-                    url = self.resultUrl;
                     param = {
                         category: data.category,
                         subCategory: data.subCategory,
                         modelCode: data.modelCode,
                         serviceType: data.serviceType
-                    }
+                    };
                 }
+
                 self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
@@ -312,8 +346,6 @@
             });
 
             $('.ui_tab').on('tabchange', function(e, data) {
-                console.log('tab')
-
                 switch(data.selectedIndex) {
                     case 0:
                         self.searchType = 'local';
@@ -375,7 +407,7 @@
             self.$address1.on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.searchCenterName.trigger('click');
+                    self._setSearch();
                 }
             });
             self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
@@ -402,18 +434,47 @@
                 self._setSearch();
             });
 
-            // self.$centerPagination.on('pageClick', function(e) {
-            //     var param = {
-            //         page: e.page
-            //     };
-
-            //     self.requestCenterData(param)
-            // });
-
             // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
-                self.$engineerSlider.vcCarousel('resize');
-                self.$engineerSlider.vcCarousel('reinit');
+            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+                var url = self.$engineerPopup.data('engineerListUrl');
+                var data = self.data,
+                    param = {
+                        category: data.category,
+                        subCategory: data.subCategory,
+                        productCode: data.productCode,
+                        serviceType: data.serviceType,
+                        deptCode: self.data.deptCode,
+                        lockUserId: data.lockUserId,
+                        date: data.date,
+                        time: data.time      
+                    };
+                
+                
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        arr = data.engineerList instanceof Array ? data.engineerList : []; 
+
+                    if (data.resultFlag == 'Y') {  
+                        if (arr.length) {
+                            var html = vcui.template(engineerTmpl, data);
+                                
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            self.$engineerSlider.vcCarousel('reinit');
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+                    lgkorUI.hideLoading();
+                });
+            });
+
+            self.$engineerSlider.on('carouselreinit', function() {
+                $('#choiceEngineerPopup').vcModal();
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
@@ -617,6 +678,9 @@
             self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                self.$selectedModelBar.vcSticky();
+            });
         },
         _getKeyword: function(){
             var self = this;
@@ -844,14 +908,16 @@
         setWarranty: function(data) {
             var self = this;
             var $warranty = self.$stepInput.find('[name=buyingdate]');
-
+            
             if (self.isLogin) {
                 if (data.warrantyText && data.warrantValue) {
+                    console.log(1);
                     $warranty.closest('.conts').append('<p class="form-text">'+data.warrantyText+'</p>');
                     $warranty.filter('[value='+data.warrantValue+']').prop('checked', true);
                     
                     $warranty.closest('.rdo-list-wrap').hide();
                 } else {
+                    console.log(2);
                     $warranty.closest('.rdo-list-wrap').show();
                 }
             }
@@ -864,7 +930,7 @@
             if (!options) {
                 var options = {
                     page:1
-                }
+                };
             }
 
             param = $.extend(param, options);
@@ -882,18 +948,16 @@
                 if (dataArr.length) {
                     html = vcui.template(centerTmpl, data);
                     $listTable.find('tbody').html(html);
-                    //self.$centerPagination.pagination('update', data.listPage);
 
                     $noData.hide();
                     $listTable.show();
-                    //self.$centerPagination.show();
                 } else {
                     $noData.show();
                     $listTable.hide();
-                    //self.$centerPagination.hide();
                 }
-
-                self.setWarranty(data);
+                if (data.resultFlag == 'Y') {
+                    self.setWarranty(data);
+                }
                 self.setTopic(data);
 
                 lgkorUI.hideLoading();
@@ -1030,6 +1094,7 @@
                 date: data.date                
             };
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(self.timeUrl, param, function(result) {
                 var data = result.data;
 
@@ -1047,6 +1112,11 @@
                         lgkorUI.alert("", { title: data.resultMessage });
                     }
                 }
+
+                self.$stepInput.removeClass('active');
+                self.$completeBtns.hide();
+
+                lgkorUI.hideLoading();
             }, 'POST');
         },
         reqestEngineer: function() {
@@ -1063,7 +1133,7 @@
                     time: data.time      
                 };
             
-
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
                 var data = result.data,
                     arr = data.engineerList instanceof Array ? data.engineerList : []; 
@@ -1100,11 +1170,11 @@
                     if (arr.length) {
                         self.updateEngineer(arr[0]);
                         if (arr.length > 1) {
-                            var html = vcui.template(engineerTmpl, data);
+                            // var html = vcui.template(engineerTmpl, data);
                             
-                            self.$engineerSlider.find('.slide-track').html(html);
-                            self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
-                            self.$engineerSlider.not('.is-loaded').vcCarousel(slideConfig);
+                            // self.$engineerSlider.find('.slide-track').html(html);
+                            // self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
+                            // self.$engineerSlider.not('.is-loaded').vcCarousel(slideConfig);
                             self.$engineerResult.find('.btn').show();
                         } else {
                             self.$engineerResult.find('.btn').hide();
@@ -1113,6 +1183,7 @@
                         self.$completeBtns.show();
                     }
                 }
+                lgkorUI.hideLoading();
             });
         },
         updateEngineer: function(data) {

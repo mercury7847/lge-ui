@@ -132,6 +132,9 @@
                 .tit-text {
                     margin-top:24px;
                     @include title-h5;
+                    @include mobile {
+                        margin-top:20px;
+                    }
                 }
             }
             @include mobile {

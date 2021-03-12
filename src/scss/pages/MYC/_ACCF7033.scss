@@ -19,8 +19,8 @@
     border-collapse:separate;
     border-spacing:24px 0;
     @include mobile {
-        width:auto;
-        margin:-4px;
+        width:100%;
+        margin:-6px 0;
         border-spacing:0;
     }
     li {
@@ -31,11 +31,11 @@
         background-color:#f4f4f4;
         text-align:center;
         @include mobile {
-            display:inline-block;
-            width:calc((100% - 20px) / 2 );
-            height:166px;
-            margin:4px;
-            padding:20px 16px;
+            display:flex;
+            width:100%;
+            height:auto;
+            margin:6px 0;
+            padding:24px;
             vertical-align:top;
         }
         .ico {
@@ -62,6 +62,10 @@
             font-weight:500;
             line-height:26px;
             @include mobile {
+                flex: 1;
+                align-self: center;
+                margin-top: 0;
+                margin-left: 24px;
                 font-size:14px;
                 line-height:22px;
             }
@@ -182,6 +186,7 @@
                         margin-top:8px;
                         @include mobile {
                             max-width:initial;
+                            min-height:63px;
                             margin-top:10px;
                         }
                         li {
@@ -498,5 +503,296 @@
 .select-wrap .ui-selectbox-wrap .ui-selectbox-list {
     .ui-select-scroll {
         display:none !important;
+    }
+}
+
+
+// ./support/product-support.scss 가져옴
+// 다운로드/SW 팝업
+.driver-section {
+    .btn-delete {
+        position:absolute;
+        top:50%;
+        right:54px;
+        width:20px;
+        height:20px;
+        margin-top:-10px;
+        background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+
+        @include mobile {
+            right: 68px;
+        }
+    }
+    .btn-search {
+        position:absolute;
+        top:0;
+        right:0;
+        width:54px;
+        height:48px;
+        background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;
+
+        @include mobile {
+            width:68px;
+            height:46px;
+        }
+    }
+    .keyword-search {
+        text-align:center;
+        .search-box {
+            display:inline-block;
+            position:relative;
+            width:443px;
+            text-align:left;
+            @include mobile {
+                display:block;
+                width:100%;
+            }
+        }
+        .search-input {
+            position:relative;
+            width:443px;
+            margin:0 auto;
+            text-align:left;
+            input[type=text] {
+                width:100%;
+                padding:11px 54px 11px 24px;
+                @include font-medium;
+                border-radius:24px;
+                border:0 none;
+                background:#fff;
+                box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                // text-transform:uppercase;
+            }
+            &.clear {
+                input[type=text] {
+                    padding-right:80px;
+                }
+            }
+
+            @include mobile {
+                width:100%;
+            }
+        }
+        .search-error {
+            display:none;
+            margin-top:6px;
+            color:#f00;
+            @include font-small;
+            vertical-align:top;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:20px;
+                height:20px;
+                margin:2px 4px 0 0;
+                background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
+                vertical-align:top;
+                @include mobile {
+                    margin-top:1px;
+                }
+            }
+        }
+        .search-desc {
+            margin-top:12px;
+            @include font-medium
+        }
+    }
+
+
+    .form-wrap {
+        margin-bottom:32px;
+        @include clearfix;
+        .forms {
+            float:left;
+            width:calc(50% - 12px);
+            & + .forms {
+                float:right;
+                margin:0;
+            }
+            .tit {
+                display:block;
+                width:100%;
+                margin-bottom:8px;
+                padding:0;
+                label {
+                    @include font-small;
+                    font-weight:500;
+                }
+            }
+            .conts {
+                display:block;
+                width:100%;
+            }
+        }
+    }
+    .tabs-wrap {
+        margin-bottom:12px;
+    }
+    .driver-inner-search {
+        margin-bottom:80px;
+        padding:32px;
+        background: #f4f4f4;
+        border-radius:8px;
+    }
+    @include mobile {
+        .form-wrap {
+            margin-bottom:52px;
+            .forms {
+                float:none;
+                width:100%;
+                & + .forms {
+                    float:none;
+                    margin-top:24px;
+                }
+                .tit {
+                    display:block;
+                    width:100%;
+                    margin-bottom:6px;
+                    padding:0;
+                }
+                .conts {
+                    display:block;
+                    width:100%;
+                }
+            }
+        }
+        .tabs-wrap {
+            margin-bottom:20px;
+        }
+    }
+}
+
+// 제품사용설명서 리스트
+.download-list-wrap {
+    margin-top:32px;
+    & > .desc {
+        position:relative;
+        margin-bottom:8px;
+        padding-left:11px;
+        @include font-small;
+        &:before {
+            content:'';
+            position:absolute;
+            left:0;
+            top:50%;
+            transform:translateY(-50%);
+            width:3px;
+            height:3px;
+            border-radius:50%;
+            background:#000;
+        }
+    }
+    .download-list {
+        margin:-16px -8px 0;
+        @include clearfix;
+        & > li {
+            float:left;
+            width:calc(50% - 16px);
+            margin:16px 8px 0;
+            padding:24px 32px;
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            .desc {
+                @include textEllipsisClamp(2);
+            }
+            @include pc {
+                .desc {
+                    height:48px;
+                }
+            }
+        }
+        .tit {
+            display:block;
+            @include font-medium;
+            font-weight:700;
+            a, button {
+                font-size:inherit;
+                font-weight:inherit;
+                line-height:inherit;
+                vertical-align:top;
+                text-align:left;
+            }
+        }
+        .desc {
+            height:48px;
+            @include font-small;
+            @include textEllipsisClamp(2);
+        }
+        .options {
+            color:#767676;
+            @include font-small;
+            @include clearfix;
+            & > li {
+                position:relative;
+                display:inline;
+                &:after {
+                    content:'';
+                    display:inline-block;
+                    width:1px;
+                    height:10px;
+                    margin:7px 8px 0;
+                    background:#ddd;
+                }
+                &:last-child {
+                    margin:0;
+                    padding:0;
+                    &:after {
+                        content:none;
+                    }
+                }
+            }
+        }
+        .info-wrap {
+            display:flex;
+            margin-top:12px;
+            align-items:center;
+            justify-content:space-between;
+        }
+        .btn-wrap {
+            @include clearfix;
+            .btn {
+                float:left;
+                & + .btn {
+                    margin-left:8px;
+                }
+            }
+            &:only-child {
+                margin-left:auto;
+            }
+        }
+    }
+    @include mobile {
+        .download-list {
+            margin:0;
+            & > li {
+                float:none;
+                width:100%;
+                margin:12px 0 0;
+                padding:20px;
+                border-radius:4px;
+                box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+            }
+            .desc {
+                height:auto;
+            }
+            .options {
+                & > li {
+                    &:after {
+                        margin:6px 6px 0;
+                    }
+                }
+            }
+            .info-wrap {
+                display:block;
+                margin-top:8px;
+                .btn-wrap {
+                    margin-top:8px;
+                    text-align:center;
+                    .btn {
+                        float:none;
+                    }
+                }
+            }
+        }
     }
 }

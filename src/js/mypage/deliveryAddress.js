@@ -165,6 +165,7 @@
             formdata.addressID = $('#popup-editAddress').data("addressId");
             formdata.city = $('#popup-editAddress').data("city");
             formdata.defaultAddress = $('#popup-editAddress input[name=defaultAddress]').prop('checked');
+            formdata.telephoneNumber = addressInfoValidation.getValues("telephoneNumber");
             loadaddressList(type, formdata);
         } 
     }
@@ -205,7 +206,7 @@
             userAddress: formdata ? formdata.userAddress : "",
             detailAddress: formdata ? formdata.detailAddress : "",
             phoneNumber: formdata ? formdata.phoneNumber : "",
-            telephoneNumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
+            telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
         }
         console.log("send data:", sendata);
@@ -216,17 +217,21 @@
 
                 addressListData = result.data.addressList;
 
-                if(addressListData.length){
+                var isDefault = false;
+                if(addressListData.length){                    
                     for(var idx in addressListData){
                         addressListData[idx]["dataID"] = idx;
                         addressListData[idx]["receiverUserMasking"] = txtMasking.name(addressListData[idx].receiverUser);
                         addressListData[idx]["addressMasking"] = txtMasking.substr(addressListData[idx].userAddress + addressListData[idx].detailAddress, 20);
                         addressListData[idx]["phoneNumberMasking"] = txtMasking.phone(addressListData[idx].phoneNumber);
+                        if(!addressListData[idx].addressNickName) addressListData[idx].addressNickName = "집";
                         $('.addressListWrap').append(vcui.template(addressListTemplate, addressListData[idx]));
+
+                        if(addressListData[idx].defaultAddress) isDefault = true;
                     }
-                } else{
-                    $('.addressListWrap').after(noData);
-                }
+                } 
+                
+                if(!isDefault) $('.addressListWrap').append(noData);
             }
 
             lgkorUI.hideLoading();

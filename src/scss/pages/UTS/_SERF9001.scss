@@ -1,3 +1,39 @@
+.rounded-list {
+    font-size: 0;
+    li {
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .rounded {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        .text {
+            display: block;
+            @include font-small;
+        }
+    }
+    @include mobile {
+        //li {
+        //    display: block;
+        //    margin-right: 0;
+        //    margin-bottom: 6px;
+        //}
+        .rounded {
+            .text {
+                font-size: $font-small;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
 .search-layer {
     //display: none;
     overflow-y: auto;
@@ -36,8 +72,8 @@
 
     .inner {
         max-width: (1146px + 80px);
-        margin: 180px auto;
-        padding: 0 40px;
+        margin: 0 auto;
+        padding: 180px 40px;
     }
 
     .input-keyword-wrap {
@@ -49,15 +85,15 @@
             }
         }
 
-        .input-sch {
-            input.txt {
-                &:focus {
-                    outline: none;
-                    border-bottom: 2px solid transparent;
-                    background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
-                }
-            }
-        }
+        //.input-sch {
+        //    input.txt {
+        //        &:focus {
+        //            outline: none;
+        //            border-bottom: 2px solid transparent;
+        //            background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
+        //        }
+        //    }
+        //}
 
         .search-similar {
             margin-top: 64px;
@@ -87,7 +123,7 @@
     }
 
     @include mobile {
-        margin-top: 72px + 88px;
+        min-height: auto !important;
         &:before {
             position: fixed;
             top: 0;
@@ -107,8 +143,8 @@
 
         .inner {
             max-width: 100%;
-            margin: 0 auto 60px;
-            padding: 0 16px;
+            margin: 0;
+            padding: (72px + 88px) 16px 60px;
         }
 
         .input-keyword-wrap {
@@ -148,29 +184,29 @@
         //width: 100%;
         padding-top: 80px;
         @include pc {
+            margin: 0 -32px;
             > div {
                 flex: 1;
-                margin-right: 32px;
-                padding-right: 32px;
-                border-right: 1px solid $color-border;
-                &:last-child {
-                    margin-right: 0;
-                    padding-right: 0;
-                    border-right: none;
-                }
+                //margin-right: 32px;
+                padding: 0 32px;
+                //&:last-child {
+                    //margin-right: 0;
+                    //padding-right: 0;
+                    //border-right: none;
+                //}
             }
         }
         @include mobile {
             flex-direction: column;
             padding-top: 20px;
             > div {
-                margin-bottom: 32px;
-                padding-bottom: 32px;
-                border-bottom: 1px solid $color-border;
+                //margin-bottom: 32px;
+                padding-bottom: 60px;
+                //border-bottom: 1px solid $color-border;
                 &:last-child {
-                    margin-bottom: 0;
+                    //margin-bottom: 0;
                     padding-bottom: 0;
-                    border-bottom: none;
+                    //border-bottom: none;
                 }
             }
         }
@@ -216,10 +252,11 @@
     }
     .btn-delete {
         position: absolute;
-        top: 6px;
+        top: 50%;
         right: 0;
         width: 16px;
         height: 16px;
+        margin-top: -8px;
         margin-left: 4px;
         background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat 0 0;
     }
@@ -233,10 +270,6 @@
                     }
                 }
             }
-        }
-        .btn-delete {
-            position: absolute;
-            top: 4px;
         }
     }
 }
@@ -281,12 +314,11 @@
 
 .result-preview-list {
     ul {
-        @include clearfix;
+        display: flex;
+        flex-wrap: wrap;
         > li {
-            float: left;
             @include calc(width,50%,12px);
             &:nth-child(odd) {
-                clear: left;
                 margin-right: 24px;
             }
             &:nth-child(2) ~ li {
@@ -297,6 +329,7 @@
     .item {
         position: relative;
         display: block;
+        height: 100%;
         padding: 12px 16px;
         border-radius: 8px;
         background-color: #fff;
@@ -312,6 +345,7 @@
             }
         }
         .info {
+            min-height: 118px;
             padding: 12px 0 12px 130px;
             @include font-medium;
             .name {
@@ -320,6 +354,8 @@
                 @include textEllipsis;
             }
             .sku {
+                display: block;
+                @include textEllipsis;
                 color: $color-gray-1;
             }
             .price {
@@ -355,6 +391,7 @@
                 }
             }
             .info {
+                min-height: auto;
                 padding: 0;
             }
         }

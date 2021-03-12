@@ -108,6 +108,7 @@
 			position:relative;
 			text-align:center;
 			a {
+                padding:0 30px;
 				text-align:center;
 				cursor: url('/lg5-common/images/KRP0008/zoomin_cursor.png'), url('/lg5-common/images/KRP0008/zoomin_cursor.cur'), pointer !important;
 			}
@@ -328,15 +329,32 @@
                 .btn-arrow {
                     width: 36px;
                     height: 36px;
+                    @include mobile {
+                        width:40px;
+                        height:40px;
+                    }
                     &:before {
                         width: 36px;
                         height: 36px;
                         background-size: 100%;
+                        @include mobile {
+                            width:40px;
+                            height:40px;
+                            background:url('/lg5-common/images/KRP0008/btn-carousel-small-mo-80.svg') no-repeat 0 0;
+                            background-size:40px;
+                            box-shadow:none;
+                        }
                     }
                 }
                 button {
+                    padding:0;
                     &.prev {
                         left: 6px;
+                        @include mobile {
+                            &:before {
+                                transform:rotate(180deg);
+                            }
+                        }
                     }
                     &.next {
                         right: 6px;
@@ -506,14 +524,6 @@
                 display: inline-block;
                 @include font-small;
                 vertical-align: middle;
-                &:after {
-                    display: inline-block;
-                    width: 1px;
-                    height: 12px;
-                    margin: 0 8px;
-                    background-color: $color-border;
-                    content: '';
-                }
             }
             .review-info {
                 display: inline-block;
@@ -532,6 +542,18 @@
                     margin-right: 4px;
                     background: url("/lg5-common/images/KRP0008/icon-review.svg") no-repeat 0 center;
                     vertical-align: bottom;
+                }
+                .crema-product-reviews-score {
+                    display:inline-block;
+                    font-size:16px;
+                    &:before {
+                        display: inline-block;
+                        width: 1px;
+                        height: 12px;
+                        margin: 0 8px;
+                        background-color: $color-border;
+                        content: '';
+                    }
                 }
             }
             @include mobile {
@@ -581,7 +603,7 @@
                         flex: none;
                         display: block;
                         width: 104px;
-                        padding-top: 8px;
+                        padding-top: 5px;
                         padding-right: 24px;
                         @include font-small;
                     }
@@ -967,10 +989,20 @@
                     border-radius: 8px 0 0 8px;
                     background-image: linear-gradient(113deg, #8d71ec, #ff537c 99%);
                     color: $color-white;
+                    @include mobile {
+                        padding: 10px 16px 9px;
+                    }
                     .tooltip-wrap {
                         margin-top: 0;
                         .tooltip-icon {
                             background-image: url('/lg5-common/images/icons/icon-tooltip-white.svg');
+                        }
+                        @include mobile {
+                            margin-top: -1px;
+                            .tooltip-box {
+                                min-width: calc(100vw - 48px);
+                                left: -24px;
+                            }
                         }
                     }
                 }
@@ -1025,12 +1057,21 @@
                     display: block;
                     position: relative;
                     min-height: 48px;
-                    padding: 11px 40px 11px 15px;
                     border: 1px solid $color-border;
                     border-radius: 8px;
                     background: $color-bg-wt;
                     @include font-small;
                     text-align: right;
+                    @include mobile {
+                        min-height: 42px;
+                    }
+                    a {
+                        display:block;
+                        padding: 11px 40px 11px 15px;
+                        @include mobile {
+                            padding: 9px 40px 9px 15px;
+                        }
+                    }
                     .ui_dropdown_toggle {
                         &:after {
                             position: absolute;
@@ -1090,6 +1131,10 @@
                     }
                 }
                 &.open {
+                    height: 48px;
+                    @include mobile {
+                        height: 42px;
+                    }
                     .select-button {
                         position: absolute;
                         top: 1px;
@@ -1280,18 +1325,22 @@
                     top: 0;
                     right: 0;
                     left: 0;
-                    z-index: 1;
+                    z-index: 6;
                     border-radius: 8px;
                     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
                     background-color: $color-bg-wt;
                 }
                 &.open {
+                    height: 48px;
+                    @include mobile {
+                        height: 42px;
+                    }
                     .select-button {
                         position: absolute;
                         top: 0;
                         right: 0;
                         left: 0;
-                        z-index: 2;
+                        z-index: 7;
                         border-color: $color-white;
                         &:after {
                             transform: rotate(180deg);
@@ -1461,25 +1510,62 @@
         }
 
         .careship-service {
-            @include clearfix;
+            //@include clearfix;
             margin-top: 40px;
             padding: 0 24px;
+            @include mobile {
+                padding: 0 12px;
+            }
             .box {
                 margin: 7px -24px 0;
             }
-            .text {
-                float: left;
+            > .text {
+                position: relative;
+                z-index: 4;
+                //float: left;
                 @include font-small;
                 .tooltip-wrap {
                     margin-top: 0;
                 }
             }
             .select-option {
-                float: right;
+                //float: right;
                 .select-list-wrap > ul {
-                    margin-left: -26px;
+                    position: relative;
+                    margin-top: 0;
+                    //margin-left: -26px;
                     li {
-                        padding-left: 26px;
+                        width: 100%;
+                        margin-top: 0;
+                        //padding-left: 26px;
+                        padding-left: 0;
+                        .rdo-wrap {
+                            position: absolute;
+                            top: -24px;
+                            right: 0;
+                            z-index: 5;
+                            input + label {
+                                @include font-small;
+                                &:after {
+                                    top: 0;
+                                }
+                            }
+                        }
+                        &:first-child {
+                            .rdo-wrap {
+                                right: 90px;
+                            }
+                        }
+                    }
+                }
+                .careship-option {
+                    margin: -48px -24px 0;
+                    padding: 73px 24px 24px;
+                    border-radius: 8px;
+                    background-color: $color-bg;
+                    @include mobile {
+                        margin: -48px -12px 0 0;
+                        padding: 68px 16px 24px;
                     }
                 }
             }
@@ -1487,6 +1573,11 @@
 
         .payment-amount {
             margin-top: 24px;
+            .info-text {
+                margin-bottom: 12px;
+                @include font-x-small;
+                color: $color-gray-1;
+            }
             ul > li {
                 &:not(:first-child) {
                     .price-info {
@@ -2502,9 +2593,13 @@
             padding-right: 16px;
             img {
                 width: 56px;
+                border: 1px solid $color-border;
             }
         }
     }
 }
+
+// 비회원 팝업
+@import "../pages/UTC/OBSF9039";
 
 @import "KRP0008_CS";

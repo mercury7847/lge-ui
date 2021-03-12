@@ -7,9 +7,12 @@
 })
 <body>
 <div class="wrap">
+    <!-- 210311_H1추가 -->
     @@include('./common/header.html', {
-        "mobileCase": "main"
+        "mobileCase": "main",
+        hiddenTitle: "차원이 다른 케어솔루션을 만나보세요."
     })
+    <!-- //210311_H1추가 -->
 
     <main class="container">
         <div class="contents caresolution home">
@@ -31,11 +34,11 @@
                                         <div class="bar"></div>
                                     </button>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <button type="button" class="btn-indi">
                                         <div class="bar"></div>
                                     </button>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <button type="button" class="indi-control ui_carousel_play play">
@@ -70,7 +73,7 @@
                                 </div>
                             </li>
                             <!-- // slide -->
-                            <!-- slide -->
+                            <!-- slide
                             <li class="slide-conts ui_carousel_slide">
                                 <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/SLS/visual-3.jpg');" data-pc-src="/lg5-common/images/SLS/visual-3.jpg" data-m-src="/lg5-common/images/SLS/m-visual-3.jpg" aria-hidden="hidden"></span>
                                 <div class="slide-info-area">
@@ -82,7 +85,7 @@
                                     <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
                                 </div>
                             </li>
-                            <!-- // slide -->
+                            // slide -->
                         </ul>
                     </div>
                     <div class="slide-controls">
@@ -149,7 +152,7 @@
                         <div class="slide-content ui_carousel_list">
                             <ul class="slide-track ui_carousel_track">
                                 <!-- slide -->
-                                <li class="slide-conts ui_carousel_slide slide_on">
+                                <li class="slide-conts ui_carousel_slide"> <!-- 210311_클래스삭제 -->
                                    <div class="thumb">
                                         <img src="/lg5-common/images/SLS/banner-img-001.jpg" alt="">
                                    </div>
@@ -286,7 +289,7 @@
                         <div class="slide-content ui_carousel_list">
                             <ul class="slide-track ui_carousel_track">
                                 <!-- slide -->
-                                <li class="slide-conts ui_carousel_slide slide_on">
+                                <li class="slide-conts ui_carousel_slide"> <!-- 210311_클래스삭제 -->
                                    <div class="thumb">
                                         <img src="/lg5-common/images/SLS/banner-img-006.jpg" alt="">
                                    </div>

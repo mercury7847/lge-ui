@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["STC/STC"]
+        pageCSS: ["STC/STC"],
+        pageTitle: "LG 모바일 스위치 | LG전자",
+        pageDesc: "내용확인"
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "LG모바일스위치" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             <div class="contents switch-wrap">

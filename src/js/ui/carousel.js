@@ -183,7 +183,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
@@ -204,6 +203,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.shouldClick = true;
             self.$slider = $(element);
             self.$slidesCache = null;
+            self.slidesToShow = self.options.slidesToShow;
             self.transformType = null;
             self.transitionType = null;
             self.hidden = 'hidden';
@@ -236,7 +236,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             // Strict HTML recognition (must start with <)
             // Extracted from jQuery v1.11 source
             self.htmlExpr = REGEX_HTML;
-
 
             self.registerBreakpoints();
             self.init(true);
@@ -991,7 +990,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.$slider.append(self.$slides);
                     }
                 }
-            }
+            } 
                         
             self.cleanUpRows();
 
@@ -1263,7 +1262,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 } else {
 
                     // 추가 김두일
-                    if(opt.infinite === true){
+                    
+                    if(opt.infinite === true || opt.variableWidth === true){
                         targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                     }else{
                         var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
@@ -1401,6 +1401,13 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (creation) {
                 self.triggerHandler(_N + 'init', [self, self.currentSlide]);
             }
+
+            /*
+            if(self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').length <= opt.slidesToShow){
+                self.$slider.find(opt.slide + ':not(' + _V.CLONED + ')').addClass(opt.activeClass);               
+            }
+            */
+
 
             if (opt.accessibility === true) {
                 self.initADA();
@@ -1839,8 +1846,19 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             self.initUI();
 
-
             if (opt.lazyLoad === 'progressive') {
+                
+                // 임시 response 이미지 체크 루틴
+                //2021-03-10 정승우
+                var $imgsToLoad = $('img[data-pc-src][data-m-src]', self.$slider);
+                $imgsToLoad.each(function () {
+                    var image = $(this);
+                    image.on('load', function (e) {
+                        self.setPosition();
+                        self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
+                    });
+                });
+                ////임시 response 이미지 체크 루틴
                 self.progressiveLazyLoad();
             }
         },
@@ -2028,7 +2046,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 imageSizes = image.attr('data-sizes') || self.$slider.attr('data-sizes');
                 
                 image.onerror = function () {
-                    if (tryCount < 3) {
+                    if (tryCount < 2) {
 
                         setTimeout(function () {
                             self.progressiveLazyLoad(tryCount + 1);
@@ -2240,6 +2258,15 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.setPosition();
                     }
 
+                    if (self.$el.find('.indi-wrap').find('li').length < 2){
+                        self.$el.find('.indi-wrap').hide();
+        
+                        self.$el.addClass('slide-solo');
+                    } else {
+                        self.$el.find('.indi-wrap').show();
+        
+                        self.$el.removeClass('slide-solo');
+                    }
 
                     self.triggerHandler(_N + 'resize', [self, self.currentSlide]);
 

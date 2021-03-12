@@ -45,11 +45,11 @@
                             '{{#each item in sibling.siblingModels}}'+
                                 '<li>'+
                                     '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id="{{categoryId}}" id="product-{{sibling.siblingType}}-{{item.modelName}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
+                                        '<input type="radio" data-category-id="{{categoryId}}" id="product-{{sibling.siblingType}}-{{item.modelId}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
                                         '{{#if sibling.siblingType=="color"}}'+
-                                            '<label for="product-{{sibling.siblingType}}-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                            '<label for="product-{{sibling.siblingType}}-{{item.modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}'+
-                                            '<label for="product-{{sibling.siblingType}}-{{item.modelName}}">{{item.siblingValue}}</label>'+
+                                            '<label for="product-{{sibling.siblingType}}-{{item.modelId}}">{{item.siblingValue}}</label>'+
                                         '{{/if}}'+
                                     '</div>'+
                                 '</li>'+
@@ -64,19 +64,24 @@
                 '{{/each}}'+
             '{{/if}}'+
             '<div class="flag-wrap bar-type">' +
-                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
+                '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
                     '<a href="{{modelUrlPath}}">{{#raw modelDisplayName}}</a>' +
                 '</div>' +
-                '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
+                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
                     '<div class="review-info">' +
+                        // '{{#if salesModelCode}}' +
+                        // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
+                        // '{{/if}}' +
                         '<a href="#">' +
-                            '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '{{#if (reviewsCount > 0)}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
+                            '{{/if}}' +
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
@@ -116,7 +121,8 @@
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
+                            //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
@@ -201,7 +207,6 @@
                         }
                         filterData = storageFilterData;
                     }
-                    console.log("change:",change)
                     self.filterLayer.resetFilter(filterData, change);
                 });
 
@@ -381,7 +386,7 @@
                 });
 
                 if(!$('.cate-m .cate-wrap').length){
-                    $(window).on('resize', function(){
+                    $(window).on('resizeend', function(){
                         self.cateWrapStatus();
                     })
                 }
@@ -427,8 +432,7 @@
 
                     if(arr.length){
                         arr.forEach(function(item, index) {
-                            item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
-                            console.log(item.checkBtnFlag,item.obsInventoryFlag,item.obsSellFlag,item.obsBtnRule);
+                            item.checkBtnFlag = self.checkBtnFlag(item);
                             var listItem = self.makeListItem(item);
                             self.$productList.append(listItem);
                         });
@@ -472,7 +476,7 @@
 
                     if(arr.length){
                         var item = arr[0];
-                        item.checkBtnFlag = (lgkorUI.stringToBool(item.obsInventoryFlag) && lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule!="disable");
+                        item.checkBtnFlag = self.checkBtnFlag(item);
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
@@ -484,6 +488,22 @@
                         self.fnBreakPoint();
                     };
                 }, true);
+            },
+
+            checkBtnFlag: function(item) {
+                if(item.bizType == "CARESOLUTION") {
+                    if (!item.years1TotAmt && item.years1TotAmt != "") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                        return true
+                    } else {
+                        return false;
+                    }
+                }
             },
 
             makeListItem: function(item){

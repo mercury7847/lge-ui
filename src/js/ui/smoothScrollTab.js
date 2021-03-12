@@ -78,9 +78,13 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
                 self.smoothScroll.prevPage();
             });
 
-            //console.log("self.options.usedTabLink:", self.options.usedTabLink)
             if(self.options.usedTabLink){
-                self.$el.on('click', self.options.tabItem, function(e){
+                self.$el.on('click', self.options.tabItem, function(e){         
+                    var cid = $(this).find('a').attr('href');
+                    if(cid){
+                        if($(cid).length) e.preventDefault();
+                    }               
+
                     var idx = $(this).index();
                     if(idx != self.tabIndex){
                         self.tabIndex = idx;
@@ -139,6 +143,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
 
             contID = items.eq(self.tabIndex).find('a').attr('href');
             $(contID).stop().show().animate({opacity:1}, 220);
+            $(contID).find('.ui_carousel_slider').vcCarousel('update');
         },
 
         setTabIndex: function(idx){
@@ -175,7 +180,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self.smoothScroll.moveFirst();
             self.smoothScroll.toggleEnabled(chk);
         }
-
+        
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 

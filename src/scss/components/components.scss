@@ -691,7 +691,7 @@
     @if $size == w { // wide
         max-width:((1146px * 100%) / 1380px);
     } @else if $size == n { // narrow
-        max-width:((678px * 100%) / 1380px);
+        max-width:((678px * 100%) / 1440px);
     }
     @include mobile {
         max-width:100%;
@@ -1674,5 +1674,19 @@ html.modal-open {
                 }
             }
         }
+    }
+}
+
+.crema_product_reviews_score_star_wrapper {
+    width:14px;
+    height:23px;
+}
+.crema-product-reviews-score {
+    height:23px;
+    line-height:23px;
+    svg {
+        fill:#FFB019 !important; // PDP 별점 컬러 수정
+        vertical-align: middle;
+        margin-top:-6px;
     }
 }

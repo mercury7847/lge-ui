@@ -6,23 +6,25 @@
     //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="sku">{{#raw sku}}</div>' +
                     '<div class="review-info">' +
+                        '{{#if review > 0}}' +
                         '<a href="{{url}}">' +
-                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                         '</a>' +
+                        '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
                         '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
@@ -32,44 +34,46 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
+                    '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
-                        '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                        '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
-                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                            '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
-                            '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
     var shopItemTemplate = '<li><div class="item">' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">' +
-                    '{{#each item in flag}}<span class="flag blue{{item.class}}">{{item.title}}</span>{{/each}}' +
+                    '{{#each item in flag}}<span class="flag{{#if item.class}} blue{{/if}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
                     '<a href="{{url}}">{{#raw title}}</a>' +
                 '</div>' +
                 '<div class="result-detail">' +
                     '<div href="{{url}}" class="shop-info">' +
-                        '<a href="{{url}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
                         '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="혼잡"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size"><span>{{item.title}}</span></a>{{/each}}' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -92,6 +96,18 @@
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -111,6 +127,13 @@
                 });
             },
 
+            getCategoryFromFilter: function(filterData) {
+                if(!filterData) return null;
+                var filterData = JSON.parse(filterData);
+                var category = filterData["category"];
+                return category ? category : [];
+            },
+
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
@@ -124,8 +147,6 @@
             setting: function() {
                 var self = this;
 
-                //최근 검색어 저장 최대수
-                self.maxSaveRecentKeyword = 5;
                 //최소 검색어 글자수
                 self.minLength = 2;
                 //타이머
@@ -266,6 +287,7 @@
 
                 self.$inputSearch.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearch.trigger('click');
                     }
                 });
@@ -278,6 +300,7 @@
 
                 self.$inputSearchFixed.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearchFixed.trigger('click');
                     }
                 });
@@ -421,6 +444,7 @@
             openSearchInputLayer: function(open) {
                 var self = this;
                 if(open) {
+                    self.updateRecentSearchList();
                     self.$searchInputLayer.show();
                     self.$inputKeyword.addClass('focus-on');
 
@@ -552,6 +576,8 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
+                    //2021-03-11 제대로 값을 못받아와서 임시 처장
+                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색내 검색어 세팅
@@ -585,6 +611,12 @@
                             $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
                         });
                         self.$relatedKeywordList.show();
+
+                        if(self.$relatedKeywordList.height() > 24) {
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -631,6 +663,10 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.address = vcui.string.replaceAll(item.address, searchedValue, replaceText);
+                            item.linkItem.forEach(function(obj, idx){
+                                obj.url = encodeURI(obj.url);
+                            });
                             $list_ul.append(vcui.template(shopItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -730,12 +766,16 @@
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
+
+                    var $selectTab = self.getTabItembySelected();
+                    self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
                 });
             },
 
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -746,6 +786,8 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text)
                 self.updateRecentSearchList();
             },
 
@@ -753,25 +795,35 @@
             addRecentSearcheText:function(text) {
                 if(!text || text.length < 1) return;
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                self.updateRecentSearchList();
+                */
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text, lgkorUI.MAX_SAVE_RECENT_KEYWORD);
                 self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
             updateRecentSearchList:function() {
                 var self = this;
-                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
+                var searchedList = cookieValue ? cookieValue.split('|') : [];
+                //searchedList = vcui.array.reverse(searchedList);
+
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
@@ -779,10 +831,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
@@ -799,7 +851,7 @@
                         var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                         });
                         self.$popularKeywordList.show();
                     } else {

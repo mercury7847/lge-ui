@@ -122,16 +122,25 @@
         }
     }
 
+    &.basic,
     &.standard {
         background-image: linear-gradient(107deg, #8d71ec, #ff537c 99%);
-        .membership-level {
-            background-image: url('/lg5-common/images/MYS/icon-standard.png');
-            background-size: 48px 48px;
-        }
         .bookmark {
             .btn.mix {
                 background-image: linear-gradient(111deg, #8d71ec 17%, #ff537c 115%);
             }
+        }
+    }
+    &.basic {
+        .membership-level {
+            padding-left: 0;
+            background-image: none;
+        }
+    }
+    &.standard {
+        .membership-level {
+            background-image: url('/lg5-common/images/MYS/icon-standard.png');
+            background-size: 48px 48px;
         }
     }
     &.gold {
@@ -221,13 +230,30 @@
             }
         }
         .number {
+            padding-top: 4px;
             font-weight: 700;
             font-size: $font-large-5;
             line-height: 52px;
             color: $color-white;
             @include tablet {
+                padding-top: 8px;
                 font-size: $font-large-3;
                 line-height: 37px;
+            }
+        }
+        .btn-area {
+            padding-top: 16px;
+            .btn {
+                border-color: $color-white !important;
+                color: $color-white;
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary !important;
+                }
+            }
+            @include tablet {
+                padding-top: 6px;
             }
         }
         .coupon {
@@ -420,13 +446,15 @@
             @include font-large-1;
             color: #000;
             a {
+                position: relative;
                 &:after {
-                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    right: -26px;
+                    transform: translateY(-50%);
                     width: 24px;
                     height: 24px;
-                    margin-left: 2px;
                     background: url('/lg5-common/images/icons/btn-arr-24x24-black2.svg') no-repeat 0 0;
-                    vertical-align: -4px;
                     content: '';
                 }
             }
@@ -439,14 +467,6 @@
                 text-align: right;
             }
         }
-        //&.care-info,
-        //&.like-info,
-        //&.recent-info {
-        //    .box-title {
-        //        padding-bottom: 0;
-        //        border-bottom: 0;
-        //    }
-        //}
     }
     .board-list {
         > li {

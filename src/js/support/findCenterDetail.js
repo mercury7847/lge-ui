@@ -46,9 +46,13 @@
                     },
                     smsPhoneNo : {
                         required : true,
+                        minLength : 10,
                         maxLength : 11,
                         pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                         msgTarget : ".err-block",
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     }
                 };
                 self.validation = new vcui.ui.CsValidation('.sms-clause-layer', {register : register});
@@ -101,17 +105,23 @@
 
                         var ajaxUrl = $('.store-info-wrap').data('smsUrl');
 
-                        lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                            if (result.data.resultFlag == 'Y') {
-                                self.hide();
-                            } else {
-                                if (result.data.resultMessage) {
-                                    lgkorUI.alert("", {
-                                        title: result.data.resultMessage
-                                    });
-                                }
+                        lgkorUI.confirm("", {
+                            title: $('#smsPhoneNo').val() + "로<br> 문자를 보내시겠습니까?",
+                            ok : function(){
+                                lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
+                                    if (result.data.resultFlag == 'Y') {
+                                        self.hide();
+                                    } 
+                                    if (result.data.resultMessage) {
+                                        lgkorUI.alert("", {
+                                            title: result.data.resultMessage
+                                        });
+                                    }
+                                })
                             }
-                        })
+                        });
+
+                        
                     }
                 }
             })

@@ -142,10 +142,12 @@
                     required: true,
                     minLength: 10,
                     maxLength: 11,
-                    pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                     msgTarget: '.err-block',
-                    errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    validate : function(value){
+                        return validatePhone(value);
+                    } 
                 },
                 zipCode: {
                     required: true,
@@ -188,10 +190,12 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
@@ -449,10 +453,10 @@
                     if (arr.length) {
                         self.updateEngineer(arr[0]);
                         if (arr.length > 1) {
-                            var html = vcui.template(engineerTmpl, data);
+                            // var html = vcui.template(engineerTmpl, data);
                             
-                            self.$engineerSlider.find('.slide-track').html(html);
-                            self.$engineerSlider.vcCarousel('reinit');
+                            // self.$engineerSlider.find('.slide-track').html(html);
+                            // self.$engineerSlider.vcCarousel('reinit');
                             self.$stepEngineer.find('.btn').show();
                         } else {
                             self.$stepEngineer.find('.btn').hide();
@@ -557,7 +561,6 @@
                 $('#centerCode').val('');
                 $('#date').val('');
                 $('#time').val('');
-                $('#phoneNo').val('');
                 self.$stepInput.find('input[type=radio]').prop('checked', false);
                 
                 $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
@@ -573,11 +576,11 @@
                             $(this).val($(this).data('defaultValue')).prop('readonly', true);
                         });
                     }
-                    $('.address-err-msg + .chk-wrap').hide();
-                    $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
+                    // $('.address-err-msg + .chk-wrap').hide();
+                    // $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
                 }
 
-                $('input[type=text], textarea').not(notInput).val('');
+                $('input[type=text], input[type=number], textarea').not(notInput).val('');
 
                 $('#fanEtc').prop('disabled', true);
 
@@ -625,9 +628,10 @@
                     });
                 }
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var resultData = result.data;
-                    console.log(data);
+                    
                     self.$cont.commonModel('updateSummary', {
                         product: [data.categoryName, data.subCategoryName, data.modelCode],
                         reset: 'product'
@@ -680,6 +684,8 @@
                     self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                         self.$selectedModelBar.vcSticky();
                     });
+
+                    lgkorUI.showLoading();
                 });
             });
 
@@ -736,9 +742,17 @@
                     self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
 
-                    self.$cont.find('.btm-more.both .chk-wrap').show();
+                    // self.$cont.find('.btm-more.both .chk-wrap').show();
 
-                    if (self.autoFlag) self.requestDate();
+                    if (self.autoFlag) {
+                        self.$stepInput.find('.step-btn-wrap').show();
+                        self.$stepDate.removeClass('active');
+                        self.$stepEngineer.removeClass('active');
+                        self.$completeBtns.hide();
+                        $('.date-wrap').calendar('reset');
+                        $('.time-wrap').timeCalendar('reset');  
+                        self.autoFlag = false;
+                    }
                 }); 
             });
 
@@ -783,8 +797,55 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
-                self.$engineerSlider.vcCarousel('resize');
+            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+                var url = self.$engineerPopup.data('engineerListUrl'),
+                    param;
+
+                var productCode = $('#productCode').val();
+
+                if ($('[name=bdType]:checked').val() == 4) {
+                    productCode = 'CRB';
+                }
+
+                param = {
+                    serviceType: $('#serviceType').val(),
+                    category: $('#category').val(),
+                    subCategory: $('#subCategory').val(),
+                    lockUserId: $('#lockUserId').val(),
+                    zipCode: $('#zipCode').val(),
+                    userAddress: $('#userAddress').val(),
+                    detailAddress: $('#detailAddress').val(),
+                    productCode: productCode,
+                    date: $('#date').val(),
+                    time: $('#time').val()
+                }
+
+                param = $.extend(param, self.dateParam);
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data,
+                        arr = data.engineerList instanceof Array ? data.engineerList : []; 
+
+                    if (data.resultFlag == 'Y') {  
+                        if (arr.length) {
+                            var html = vcui.template(engineerTmpl, data);
+                            self.$engineerSlider.find('.slide-track').html(html);
+                            self.$engineerSlider.vcCarousel('reinit');
+                        }
+                    } else {
+                        if (data.resultMessage) {
+                            lgkorUI.alert("", {
+                                title: data.resultMessage
+                            });
+                        }
+                    }
+
+                    lgkorUI.hideLoading();
+                });
+            });
+
+            self.$engineerSlider.on('carouselreinit', function() {
+                $('#choiceEngineerPopup').vcModal();
             });
 
             // 엔지니어 선택
@@ -868,6 +929,15 @@
                 } else {
                     $('#fanEtc').prop('disabled', true);
                     $('#fanEtc').val('');
+                }
+            });
+
+            $('[name=tvPosition]').on('change', function() {
+                if ($(this).attr('id') == 'tvPosition04') {
+                    $('#tvPositionEtc').prop('disabled', false);
+                } else {
+                    $('#tvPositionEtc').prop('disabled', true);
+                    $('#tvPositionEtc').val('');
                 }
             });
         }

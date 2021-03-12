@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <!-- 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <title>lge</title>
-        <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
-        <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0015.min.css" />
-        <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/BMC/BMC.min.css" />
-        <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
-        <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
-        <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
-        <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
-        <script src="/lg5-common/js/vcui.min.js"></script>
-        <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
-        <script src="/lg5-common/js/lg.common.min.js"></script>
-        <script src="/lg5-common/js/components/KRC0015.min.js"></script>
-    </head>
-    <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageTitle: "멤버십 | LG전자",
+        pageDesc: "LG전자 멤버십이란? 베스트샵에서 제품 구매 시 포인트가 적립되며 이는 전국 베스트샵, 서비스센터 및 렌탈 구매 시 현금처럼 사용 가능한 특별한 혜택입니다."
+    })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "LG전자 멤버십" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             <!-- 210215 수정 -->

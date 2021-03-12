@@ -18,6 +18,10 @@ $(window).ready(function(){
 
         var isInitChecked = false;
 
+        var compareIds = "";
+
+        var isFirstOpen = true;
+
         function init(){
             //초기화
             $('.btn-init').on('click', function(e){
@@ -59,33 +63,41 @@ $(window).ready(function(){
                 setCompareStatus();
             }).on("excessiveCompareStorage", function(){
                 addToastAlert('excessive');
+                updateCompareButton();
             });
         }
-        function setCompares(){
-            $('.sticy-compare .list-inner li').empty();
-
+        function setCompares(){         
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var isCompare = vcui.isEmpty(storageCompare);
             if(!isCompare){
-                console.log("### storageCompare ###", storageCompare)
+                //console.log("### storageCompare ###", storageCompare)
                 if(!vcui.isEmpty(storageCompare)){
-                    for(var i in storageCompare){
-                        console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
-                        var list = $('.sticy-compare .list-inner li').eq(i);                    
-                        var listItem = vcui.template(itemTemplate, storageCompare[i]);
-                        list.html(listItem);
+                    var ids = vcui.array.map(storageCompare, function(item){
+                        return item.id;
+                    }).join('|');
+                    
+                    if(compareIds != ids){
+                        compareIds = ids;
+                        //console.log("### setCompares render ###", compareIds)
+                        $('.sticy-compare .list-inner li').empty();
+                        for(i in storageCompare){
+                            //console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
+                            list = $('.sticy-compare .list-inner li').eq(i);                    
+                            listItem = vcui.template(itemTemplate, storageCompare[i]);
+                            list.html(listItem);
+                        }
                     }
                 }
             }
 
             var leng = !storageCompare ? "0" : storageCompare.length;
             var $count = $('div.compare-title div.count');
-            $count.text(leng + "/" + lgkorUI.COMPARE_LIMIT);
+            $count.text(leng + "/" + lgkorUI.getCompareLimit());
+            updateCompareButton();
         }
 
         function setCompareStatus(){
-            console.log("setCompareStatus~~");
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var leng = !storageCompare ? 0 : storageCompare.length;
@@ -96,11 +108,19 @@ $(window).ready(function(){
                     _$('.KRP0015').css({display:'block', y:height});
 
                     if(leng < limit) closeCompareBox();
-                    else openCompareBox();
+                    else{
+                        if(isFirstOpen){
+                            isFirstOpen = false;
+                            openCompareBox();
+                        } 
+                    }
                 } else{
                     var isOpen = $('.right-cont .more-arrow').hasClass('open');
                     if(!isOpen){
-                        if(leng >= limit) openCompareBox();
+                        if(leng >= limit && isFirstOpen){
+                            isFirstOpen = false;
+                            openCompareBox();
+                        } 
                     }
                 }
 
@@ -140,7 +160,7 @@ $(window).ready(function(){
         function addToastAlert(mode){
             var msg;
             if(mode == "excessive"){
-                msg = lgkorUI.COMPARE_LIMIT + "개까지 비교가능합니다.";
+                msg = lgkorUI.getCompareLimit() + "개까지 비교가능합니다.";
             } else{
                 msg = "비교하기 기능이 초기화되었습니다.";
             }
@@ -151,6 +171,15 @@ $(window).ready(function(){
         function setClearCompare(){
             var categoryId = lgkorUI.getHiddenInputData().categoryId;
             lgkorUI.initCompareProd(categoryId);
+        }
+
+        function updateCompareButton() {
+            var count = $('.compare-list .list-inner li>.item-inner').length;
+            if(count > 1) {
+                $('.btn-compare').prop('disabled',false);
+            } else {
+                $('.btn-compare').prop('disabled',true);
+            }
         }
 
         init();

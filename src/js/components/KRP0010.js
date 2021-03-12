@@ -20,6 +20,6 @@ $(window).ready(function(){
 
     $('.KRP0010 div.prod-print').on('click', 'button', function(e){
         e.preventDefault();
-        windows.print();
+        window.print();
     });
 });

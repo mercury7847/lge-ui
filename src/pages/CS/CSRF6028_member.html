@@ -35,9 +35,9 @@
                 @@include('./common/support/selected-model-bar.html')
 
                 <!-- 회원 - 제품 없을 시 -->
-                @@include('./common/support/select-my-model.html', {
+                <!-- (@@)include('./common/support/select-my-model.html', {
                     "noItem": true
-                })
+                }) -->
 
                 <!-- 회원 - 보유제품 펼침 -->
                 @@include('./common/support/select-my-model.html')
@@ -69,7 +69,7 @@
                             <!-- 약관 동의 -->
                             <div class="step-box active" id="stepTerms">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     @@include('./common/support/accept-terms.html', {
@@ -107,7 +107,7 @@
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput" data-ajax="/lg5-common/data-ajax/support/possibleDate.json">
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
                                     <div class="tit-wrap">
@@ -507,7 +507,7 @@
                                                         <label for="tvPosition04">기타</label>
                                                     </span>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="tvPositionEtc" id="tvPositionEtc" maxlength="10" placeholder="최대 10자 입력 가능">
+                                                        <input type="text" name="tvPositionEtc" id="tvPositionEtc" maxlength="10" placeholder="최대 10자 입력 가능" disabled>
                                                     </div>
                                                 </li>
                                             </ul>   
@@ -619,7 +619,7 @@
                                         <div class="engineer-desc">
                                             <p class="txt"><span class="date">2020.08.17 11:20</span>에 <span class="name">홍길동</span> 전문 엔지니어가 입력하신 주소로 방문하여<br> <span class="topic">구입사양 &gt; 전기요금 문의</span>에 대한 증상을<br> 해결해드릴 예정입니다.</p>
                                             <div class="btn-wrap">
-                                                <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn border size"><span>다른 엔지니어 선택</span></button>
+                                                <button type="button" data-href="#choiceEngineerPopup" class="btn border size"><span>다른 엔지니어 선택</span></button>
                                             </div>
                                         </div>
                                     </div>

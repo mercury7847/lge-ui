@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <!-- 210224 수정 -->
+    <!-- 210308 수정 --><!-- 210224 수정 -->
     @@include('./common/head.html', {
-        pageCSS: [
-            "MYC/MYC",
-            "support/support",
-            "support/product-support"
-        ],
+        pageCSS: ["MYC/MYC"],
         pageJS: ["mypage/myProdRegist"]
     })
-    <!-- //210224 수정 -->
+    <!-- //210308 수정 --><!-- //210224 수정 -->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -55,16 +51,16 @@
                                         <!-- 201217 수정 -->
                                         <!-- 제품 등록 회원 혜택 -->
                                         <ul class="mymem-benefit">
-                                            <li>
+                                            <!-- <li>
                                                 <i class="ico ico01"></i>
-                                                <!-- 210201 수정 -->
+                                                !-- 210201 수정 --
                                                 <p>1년 무상 A/S 를 제공<br>(제품별 상이)</p>
-                                                <!-- //210201 수정 -->
-                                            </li>
+                                                !-- //210201 수정 --
+                                            </li> 210305 수정 [삭제] -->
                                             <li>
                                                 <i class="ico ico02"></i>
                                                 <!-- 210201 수정 -->
-                                                <p>보유제품 등록 시<br>멤버십 포인트 지급</p>
+                                                <p>보유제품 등록 후 리뷰 작성 시<br>멤버십 포인트 적립</p><!-- 210305 수정 [문구 변경] -->
                                                 <!-- //210201 수정 -->
                                             </li>
                                             <li>
@@ -770,7 +766,7 @@
             <header class="pop-header">
                 <h1 class="tit"><span>설치 전 주의사항 및 사용법</span></h1>
             </header>
-            <section class="pop-conts no-footer file-detail">
+            <section class="pop-conts file-detail"> <!-- 210312_,클래스삭제 -->
             </section>
             <footer class="pop-footer center">
                 <div class="btn-group">

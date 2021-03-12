@@ -22,6 +22,7 @@
 	}
 
 	.title {
+		text-align: center;
 		h2 {
 			@include title-h4;
 			@include mobile {
@@ -31,7 +32,7 @@
 	}
 
 	.tabs-wrap {
-		margin-top:32px;
+		margin-top:48px;
 		text-align:left;
 		&.btn-type:before {
 			content:' ';
@@ -44,6 +45,7 @@
 			background-color:#ddd;
 		}
 		@include mobile {
+			margin-top:40px;
 			.tabs > li {
 				margin-left:24px;
 				&:first-child {
@@ -70,6 +72,17 @@
 			background-color:transparent;
 		}
 		.num-list {
+			> p {
+				list-style: decimal;
+				position:relative;
+				margin-top:2px;
+				color:#000;
+				font-size:16px;
+				line-height:26px;
+				&:first-child {
+					margin-top:0;
+				}
+			}
 			ol {
 				padding:0 16px;
 				li {

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["SLC/SLC"]
+        pageCSS: ["SLC/SLC"],
+        pageTitle: "고객혜택 | LG전자",
+        pageDesc: "LG전자 케어솔루션/케어십 고객만을 위한 특별한 혜택을 소개합니다. 5년 무상 A/S 서비스와, 가전 구매 할인 등 다양한 혜택을 확인해 보세요."
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "케어솔루션 고객혜택" 
+        })
+        <!-- //210311_H1추가 -->
 
         <main class="container">
             <div class="contents caresolution benefit">

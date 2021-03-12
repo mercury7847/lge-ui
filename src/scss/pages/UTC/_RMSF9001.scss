@@ -1,8 +1,25 @@
 .subscribe {
     .cont-wrap .section .sec-tit {
-        margin-bottom: 12px;
-        font-size: 22px;
-        line-height: 32px;
+        margin-bottom: 16px;
+        @include font-large-3;
+    }
+    .form-wrap {
+        .forms {
+            .box {
+                &.type2 {
+                    @include mobile {
+                        .input-wrap {
+                            display:table-cell;
+                        }
+                        .cell {
+                            display:table-cell;
+                            width:1%;
+                            padding-left:6px;
+                        }
+                    }
+                }
+            }
+        }
     }
     @media screen and (min-width: 1284px) {
         .accord-cont {

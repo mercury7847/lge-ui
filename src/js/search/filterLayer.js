@@ -191,6 +191,7 @@ var FilterLayer = (function() {
 
                 listSortingSearchin.siblings('input').keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         listSortingSearchin.trigger('click');
                     }
                 });
@@ -213,6 +214,7 @@ var FilterLayer = (function() {
 
                 filterSearchin.siblings('input').keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         filterSearchin.trigger('click');
                     }
                 });
@@ -469,9 +471,15 @@ var FilterLayer = (function() {
             });
 
             //필터 라디오버튼
+            //2021-03-05 검색관련해서 수정.
+            self.$layFilter.find('.ui_filter_accordion input[type="radio"]').each(function(idx, el){
+                $(el).prop('checked', false);
+            });
+            /*
             self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
                 $(el).prop('checked', true);
             });
+            */
 
             //필터 체크박스
             self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){

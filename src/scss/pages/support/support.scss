@@ -1215,6 +1215,16 @@
 
     &.popup-wrap {
         // 레이어팝업 체크박스
+
+        &.row-footer {
+
+            .pop-conts {
+                @include mobile {
+                    height:calc(100% - 122px - 36px);
+                    max-height:calc(100% - 122px - 36px);
+                }
+            }
+        }
         .pop-footer {
             &.check-type {
                 input {
@@ -1222,18 +1232,28 @@
                         padding-left: 30px;
                         font-size: 16px;
                         line-height: 26px;
+
+                        @include mobile {
+                            font-size:13px;
+                        }
                         &::before {
                             width: 20px;
                             height: 20px;
                         }
                         &::after {
-                            top: 9px;
-                            left: 7px;
-                            width: 11px;
-                            height: 9px;
+                            top: 2px;
+                            left: 0px;
+                            width: 24px;
+                            height: 24px;
                         }
                     }
                 }
+            }
+            &.align-between {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
             }
         }
     }
@@ -1456,4 +1476,46 @@
 .btn-nav-arrow {
     // 네비게이션 버튼이 센터 찾기 검색 결과 창 위로 겹치는 현상 때문에 추가
     z-index: auto;
+}
+
+.update-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:28px 49px 29px;
+    background: #f4f4f4;
+    border-radius:10px;
+
+    p {
+        font-size:16px;
+        line-height:1.63;
+    }
+
+    .btn-link {
+        font-size:14px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        padding:22px 20px;
+
+        .btn-link {
+            margin-top:30px;
+            font-size:13px;
+        }
+    }
+}
+
+.find-model-number {
+    display: block !important;
+    max-width:none;
+    position:relative;
+
+    .pop-conts.no-footer {
+        max-height:none;
+        height:auto;
+        overflow:auto;
+    }
 }

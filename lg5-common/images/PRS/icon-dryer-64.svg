@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-645 -1732) translate(128 414) translate(0 1318) translate(517.195)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                    <path d="M1.725 0h22.55C25.228 0 26 .772 26 1.725v30.55c0 .953-.772 1.725-1.725 1.725H1.725C.772 34 0 33.228 0 32.275V1.725C0 .772.772 0 1.725 0zM1 9.5h24" transform="translate(-645 -1732) translate(128 414) translate(0 1318) translate(517.195) translate(12 12) translate(7 3)"/>
+                                </g>
+                                <g fill="#000" transform="translate(-645 -1732) translate(128 414) translate(0 1318) translate(517.195) translate(12 12) translate(7 3) translate(3 3)">
+                                    <rect width="6" height="1.5" x="14" y="1" rx=".75"/>
+                                    <rect width="6" height="1.5" y="1" rx=".75"/>
+                                    <path fill-rule="nonzero" d="M10 0c-.828 0-1.5.672-1.5 1.5S9.172 3 10 3s1.5-.672 1.5-1.5S10.828 0 10 0z"/>
+                                </g>
+                                <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(-645 -1732) translate(128 414) translate(0 1318) translate(517.195) translate(12 12) translate(7 3) translate(6 14)">
+                                    <circle cx="7.5" cy="7.5" r="7.5"/>
+                                    <path d="M4 9.5c1.274.667 2.441.667 3.5 0 1.059-.667 2.226-.667 3.5 0M4 6.5c1.274.667 2.441.667 3.5 0 1.059-.667 2.226-.667 3.5 0"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

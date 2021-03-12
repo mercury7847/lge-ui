@@ -135,7 +135,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 20;
+    z-index: 1001;
     width: 100%;
     padding: 32px 40px 40px;
     border-radius: 8px;
@@ -143,13 +143,13 @@
 	background:#fff;
     @include mobile {
         max-width: 100%;
-        padding:25px 16px;
+        padding:25px 40px 25px 16px;
 	}
 	.cap-section{
 		max-width: 1460px;
 		width:100%;
 		margin:0 auto;
-		h1{
+		h1, h2{
 			font-size:16px;
 			line-height:26px;
 			overflow-x:auto;

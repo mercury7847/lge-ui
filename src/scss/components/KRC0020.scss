@@ -90,13 +90,14 @@
                         opacity:1 !important;
                     }
                     .icon-text {
-                        color:#000;
+                        color:#000 !important;
+                        text-decoration:underline;
                     }
                 }
                 .icon-text {
                     display:block;
                     background: none;
-                    color:#aaa;
+                    color:#aaa !important;
                     @include font-medium;
                     font-weight:700;
                 }	
@@ -328,64 +329,64 @@
                     }
                 }
     
-                @include mobile {
-                    @if $bg == lightgray {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-lightgray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                    } @else if $bg == dark {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-lightgray,
-                        .fc-white {
-                            color:#fff !important;
-                            * {
-                                color:#fff !important;
-                            }
-                        }
-                    } @else if $bg == black {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-lightgray,
-                        .fc-white {
-                            color:#fff !important;
-                            * {
-                                color:#fff !important;
-                            }
-                        }
-                    } @else if $bg == white {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-lightgray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                    } @else if $bg == gray {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-lightgray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                    }
-                }
+                // @include mobile {
+                //     @if $bg == lightgray {
+                //         .fc-black,
+                //         .fc-dark-gray,
+                //         .fc-gray,
+                //         .fc-lightgray,
+                //         .fc-white {
+                //             color:#000 !important;
+                //             * {
+                //                 color:#000 !important;
+                //             }
+                //         }
+                //     } @else if $bg == dark {
+                //         .fc-black,
+                //         .fc-dark-gray,
+                //         .fc-gray,
+                //         .fc-lightgray,
+                //         .fc-white {
+                //             color:#fff !important;
+                //             * {
+                //                 color:#fff !important;
+                //             }
+                //         }
+                //     } @else if $bg == black {
+                //         .fc-black,
+                //         .fc-dark-gray,
+                //         .fc-gray,
+                //         .fc-lightgray,
+                //         .fc-white {
+                //             color:#fff !important;
+                //             * {
+                //                 color:#fff !important;
+                //             }
+                //         }
+                //     } @else if $bg == white {
+                //         .fc-black,
+                //         .fc-dark-gray,
+                //         .fc-gray,
+                //         .fc-lightgray,
+                //         .fc-white {
+                //             color:#000 !important;
+                //             * {
+                //                 color:#000 !important;
+                //             }
+                //         }
+                //     } @else if $bg == gray {
+                //         .fc-black,
+                //         .fc-dark-gray,
+                //         .fc-gray,
+                //         .fc-lightgray,
+                //         .fc-white {
+                //             color:#000 !important;
+                //             * {
+                //                 color:#000 !important;
+                //             }
+                //         }
+                //     }
+                // }
             }
         }
     }

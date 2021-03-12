@@ -1,0 +1,9 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "success": "Y",
+        "isLogin": true,
+        "isRestock": false
+    }
+}

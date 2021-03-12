@@ -6,23 +6,25 @@
     //연관검색어
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
-    var productItemTemplate = '<li><div class="item">' +
+    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="sku">{{#raw sku}}</div>' +
                     '<div class="review-info">' +
+                        '{{#if review > 0}}' +
                         '<a href="{{url}}">' +
-                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                         '</a>' +
+                        '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
                         '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
@@ -32,91 +34,27 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '{{#if obsFlag=="Y"}}' +
                 '<a href="#">' +
+                    '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
-                        '{{#if ((price || originalPrice) && carePrice)}}<p class="tit">케어솔루션</p>{{/if}}{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                        '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
+                    '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
-                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                            '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
-                            '{{#if (carePrice && price)}}<p class="tit">구매</p>{{/if}}{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                     '</div>' +
                 '</a>' +
-                '{{/if}}' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
-
-    //필터 템플릿
-    /*
-    var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont"><div class="range-wrap">' +
-                '<div name="{{filterId}}" class="ui_filter_slider ui_price_slider" data-range="0,{{length}}" data-values="{{filterValues}}" data-min="{{minFilterValue}}" data-max="{{maxFilterValue}}"></div>' +
-                '<p class="min range-num">{{minTitle}}</p><p class="max range-num">{{maxTitle}}</p>' +
-            '</div></div>' +
-        '</div>' +
-    '</li>';
-    var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}</div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-            '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
-        '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
-                '<span class="blind ui_accord_text">내용 더 보기</span>' +
-            '</a>' +
-        '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
-        '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
-                '</div>{{/each}}' +
-            '</div>' +
-        '</div>' +
-    '</li>';
-    */
 
     var recommendProdTemplate = 
         '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
@@ -125,7 +63,7 @@
             '<li class="lists">'+
                 '<div class="list-inner">'+
                     '<span class="thumb">'+
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">'+
+                        '<img src="{{item.image}}" alt="" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this);">'+
                     '</span>'+
                     '<div class="info">'+
                         '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
@@ -157,6 +95,18 @@
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -176,21 +126,13 @@
                 });
             },
 
-            /*
-            makeFilterData: function(data) {
-                var filterdata = JSON.parse(data.filterData);
-                var filterlist = [];
-                for(key in filterdata) {
-                    if(key == "categoryId") {
-                        data[key] = filterdata[key];
-                    } else {
-                        filterlist = filterlist.concat(filterdata[key]);
-                    }
-                }
-                data.filterData = filterlist;
-                return data;
+            getCategoryFromFilter: function(filterData) {
+                if(!filterData) return null;
+                var filterData = JSON.parse(filterData);
+                var category = filterData["category"];
+                return category ? category : [];
             },
-            */
+
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
@@ -204,8 +146,6 @@
             setting: function() {
                 var self = this;
 
-                //최근 검색어 저장 최대수
-                self.maxSaveRecentKeyword = 5;
                 //최소 검색어 글자수
                 self.minLength = 2;
                 //타이머
@@ -346,6 +286,7 @@
 
                 self.$inputSearch.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearch.trigger('click');
                     }
                 });
@@ -358,6 +299,7 @@
 
                 self.$inputSearchFixed.keydown(function(key) {
                     if (key.keyCode == 13) {
+                        key.preventDefault();
                         self.$buttonSearchFixed.trigger('click');
                     }
                 });
@@ -501,6 +443,7 @@
             openSearchInputLayer: function(open) {
                 var self = this;
                 if(open) {
+                    self.updateRecentSearchList();
                     self.$searchInputLayer.show();
                     self.$inputKeyword.addClass('focus-on');
 
@@ -632,6 +575,8 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
+                    //2021-03-11 제대로 값을 못받아와서 임시 처장
+                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색내 검색어 세팅
@@ -665,6 +610,12 @@
                             $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
                         });
                         self.$relatedKeywordList.show();
+
+                        if(self.$relatedKeywordList.height() > 24) {
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -714,6 +665,7 @@
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
@@ -811,12 +763,16 @@
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
+
+                    var $selectTab = self.getTabItembySelected();
+                    self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
                 });
             },
 
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
@@ -827,6 +783,8 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                */
+                lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text)
                 self.updateRecentSearchList();
             },
 
@@ -834,25 +792,35 @@
             addRecentSearcheText:function(text) {
                 if(!text || text.length < 1) return;
                 var self = this;
+                /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 if(!searchedList) {
                     searchedList = [];
                 }
                 var findIndex = $.inArray(text, searchedList);
                 if(findIndex < 0) {
-                    searchedList.push(text);
+                    //searchedList.push(text);
+                    searchedList.unshift(text);
                     if(searchedList.length > self.maxSaveRecentKeyword) {
-                        searchedList.shift();
+                        //searchedList.shift();
+                        searchedList.pop();
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
+                self.updateRecentSearchList();
+                */
+                lgkorUI.addCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text, lgkorUI.MAX_SAVE_RECENT_KEYWORD);
                 self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
             updateRecentSearchList:function() {
                 var self = this;
-                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
+                var searchedList = cookieValue ? cookieValue.split('|') : [];
+                //searchedList = vcui.array.reverse(searchedList);
+                
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
@@ -860,10 +828,10 @@
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
-                    //self.$recentKeywordList.show();
+                    self.$recentKeywordList.show();
                     self.$recentKeywordList.find('div.no-data').hide();
                 } else {
-                    //self.$recentKeywordList.hide();
+                    self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
@@ -880,7 +848,7 @@
                         var $list_ul = self.$popularKeywordList.find('div.keyword-list ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item, "index":index+1}));
                         });
                         self.$popularKeywordList.show();
                     } else {

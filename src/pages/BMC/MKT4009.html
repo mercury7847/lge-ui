@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["caresolution/addressManagement"]
     })
 <body>
-    <article id="popup" class="win-popup-wrap">
+    <article id="popup" class="win-popup-wrap uiForm"
+        data-event-id = "eventID_TEST"
+        data-sku-url = "/lg5-common/data-ajax/mypage/product/checkSku.json"
+    >
         <header class="pop-header">
             <h1 class="tit"><span>이벤트 참여하기</span></h1>
         </header>
@@ -19,7 +23,7 @@
                         <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" id="buyerName" value="홍길동" placeholder="이름을 입력해 주세요." disabled>
+                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly>
                             </span>
                         </dd>
                     </dl>
@@ -37,7 +41,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="buyerPhone" placeholder="‘-’없이 번호만 입력해 주세요." disabled>
+                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly>
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -52,7 +56,7 @@
                         <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                                <input type="text" name="modelName" data-required="true" id="modelName" placeholder="모델명을 입력해 주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -61,11 +65,11 @@
                         <dd class="conts">
                             <div class="box">
                                 <div class="input-wrap">
-                                    <input type="text" id="serialNum" placeholder="S/N을 입력해 주세요.">
-                                    <p class="link"><a href="#n" class="btn-link">제품 제조번호 확인방법</a></p>
+                                    <input type="text" name="serialNum" data-required="true" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                                    <p class="link"><a href="#" data-control="modal" id="serialPopupBtn" class="btn-link">제품 제조번호 확인방법</a></p>
                                 </div>
                                 <div class="cell">
-                                    <button type="button" class="btn"><span>제조번호 확인</span></button>
+                                    <button type="button" class="btn" id="serialCheckBtn"><span>제조번호 확인</span></button>
                                 </div>
                             </div>
                         </dd>
@@ -76,18 +80,18 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" id="buyerAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" class="disabled" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" readonly>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                        <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" class="disabled" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                                <input type="text" name="buyerAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -111,7 +115,7 @@
                         <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="recipientName" placeholder="이름을 입력해 주세요." value="">
+                                <input type="text" name="recipientName" data-required="true" id="recipientName" placeholder="이름을 입력해 주세요." value="">
                             </div>
                         </dd>
                     </dl>
@@ -121,7 +125,7 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                                <input type="text" name="recipientPhone" data-required="true" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
                             </div>
                         </dd>
                     </dl>
@@ -143,18 +147,18 @@
                             <div class="address-box">
                                 <div class="box">
                                     <div class="input-wrap zip-code">
-                                        <input type="text" id="recipientAddr" value="05723" placeholder="우편번호" disabled>
+                                        <input type="text" class="disabled" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" readonly>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                        <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
                                     </div>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                    <input type="text" class="disabled" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                                <input type="text" name="recipientAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
                             </div>
                             <!-- 210126 수정 - 돔 추가 -->
                             @@include('./common/modules/bullet-list.html', {
@@ -218,7 +222,7 @@
                     })
                     <div class="agree-input">
                             <span class="chk-wrap">
-                                <input type="checkbox" id="chk1-1" name="agreechk-1" >
+                                <input type="checkbox" id="chk1-1" name="agreechk-1" data-required="true" >
                                 <label for="chk1-1">동의합니다</label>
                             </span>
                     </div>
@@ -254,7 +258,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="chk2-1" name="agreechk-2" >
+                            <input type="checkbox" id="chk2-1" name="agreechk-2" data-required="true" >
                             <label for="chk2-1">동의합니다</label>
                         </span>
                     </div>
@@ -293,7 +297,7 @@
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="chk3-1" name="agreechk-3" >
+                            <input type="checkbox" id="chk3-1" name="agreechk-3" data-required="true">
                             <label for="chk3-1">동의합니다</label>
                         </span>
                     </div>
@@ -303,10 +307,313 @@
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>신청하기</span></button>
+                <button type="button" class="btn pink" id="uiSubmit"><span>신청하기</span></button>
             </div>
         </footer>
-        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
+
+    <article id="serialPopup" class="popup-wrap" data-list-url="/lg5-common/data-ajax/support/searchModelName.json">
+        <!-- 210126 수정 - 전체 화면 변경 -->
+        <header class="pop-header">
+            <h1 class="tit"><span>모델명 확인 방법</span></h1>
+        </header>
+        <section class="pop-conts common-pop academy-pop no-footer"><!-- [11.27 수정] common-pop Class 추가 -->
+            <p class="noti-txt">사용하시는 제품의 <em>모델명</em>과 <em>제조번호</em>를 확인해주세요.</p>
+            <div class="example-list">
+                <dl>
+                    <dt>모델명</dt>
+                    <dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
+                </dl>
+                <dl>
+                    <dt>제조번호</dt>
+                    <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
+                </dl>
+                <dl class="sel-category">
+                    <dt>카테고리 선택</dt>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select1" title="카테고리 선택">
+                                <option value="" class="placeholder">TV/AV</option>
+                                <option value="">카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select2" title="세부 카테고리 선택" disabled>
+                                <option value="" class="placeholder">세부 카테고리 선택</option>
+                                <option value="">세부 카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+
+                <div class="example-result">
+                    <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+                    <div class="img" aria-hidden="true">
+                        <!-- 
+                            제품 이미지 없을 경우
+                            <img src="/lg5-common/images/img-nodata.svg" alt=""> 
+                        -->
+                        <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+    </article>
+    
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation','ui/modal','ui/selectbox'], function (Validation) {
+
+                // 구매자 정보 셋팅값 입력
+                var buyerInfo = {
+                    buyerName : { value:'홍길동' },
+                    buyerPhone: { value:'01023457890'},
+                    buyerZipCode: { value:'02345' },
+                    buyerAddrInfo: { value:'서울시' },
+                    buyerAddrDetail: { value:'엘지 송파빌딩 1702호' }
+                }
+
+                var addAddressObj = {}
+                $.each(buyerInfo, function(key, value){
+                    var newKey = key.replace('buyer','recipient');
+                    addAddressObj[newKey] = value;
+                })
+
+                
+                // 구매자 정보를 비움
+                var emptyAddAddressObj = {
+                    recipientName:'',
+                    recipientPhone:'',
+                    recipientZipCode:'',
+                    recipientAddrInfo:'',
+                    recipientAddrDetail:''
+                }
+                var vaildObj = {
+                    modelName:{
+                        required: true,
+                        errorMsg: "모델명을 입력해 주세요.",
+                    },
+                    serialNum:{
+                        required: true,
+						validate : function(val){
+							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
+							return reg.test(val);
+						},
+                        errorMsg: "제조번호를 입력해 주세요.",
+					}
+                }
+
+                var errorObj = {}; // 에러 담는곳
+                $('#serialNum').css('text-transform', 'uppercase'); // 시리얼넘버 대문자만
+
+				var validation = new Validation('.uiForm',{register:$.extend(buyerInfo, vaildObj)});
+                
+                validation.on('errors', function(e,data){
+                    errorObj = data;
+
+                }).on('success', function(data){
+                    // 성공시 처리
+                    errorObj = {};
+                    //console.log(validation.getValues());
+
+                }).on('nextfocus', function(e,target){
+
+                    if(target.attr('name') == 'buyerAddrInfo'){
+                        setTimeout(function () {
+                            $('#buyerAddrBtn').focus();
+                        }, 10);                        
+                    }
+
+                    if(target.attr('name') == 'recipientAddrInfo'){
+                        setTimeout(function () {
+                            $('#recipientAddrBtn').focus();
+                        }, 10);
+                    }
+
+                });
+
+                var checkSerialSuccess = false;
+
+                // 제조번호 확인
+                $('#serialCheckBtn').on('input', function(e){
+                    checkSerialSuccess = false;
+                    if(e.target.value.length > 14){
+                        e.target.value = e.target.value.slice(0, 14);
+                    }
+                })
+
+                $('#serialCheckBtn').on('click', function(e){
+
+                    var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
+                    var checkSerial = serialRegex.test($('#serialNum').val());
+
+                    if(checkSerial) {
+                        var test = validation.validate(['modelName','serialNum']);
+                        if(test.validItem['modelName']) {
+                            lgkorUI.alert("", {title: test.validItem['modelName']});
+                        } else {
+                            var ajaxUrl = $('#popup').data('skuUrl');
+                            var eventId = $('#popup').data('eventId');
+                            var values = validation.getValues();
+                            if(ajaxUrl, eventId) {
+                                var param = {
+                                    'modelName':values.modelName,
+                                    'serialNum':values.serialNum,
+                                    'eventId':eventId
+                                }
+                                lgkorUI.showLoading();
+                                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                                    lgkorUI.hideLoading();
+                                    var data = result.data;
+                                    if(lgkorUI.stringToBool(data.success)){
+                                        checkSerialSucces = true;
+                                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                                    } else {
+                                        checkSerialSucces = false;
+                                    }
+                                });
+                            }
+                        }
+                    } else {
+                        checkSerialSucces = false;
+                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        $('#serialNum').focus();
+                    }
+                });
+
+                // 구매자 정보와 같음
+                $('#info').on('click',function(e){
+                    if(e.currentTarget.checked){
+                        validation.setValues(addAddressObj);
+                    }else{
+                        validation.setValues(emptyAddAddressObj);
+                    }
+                });
+
+                // 구매정보 주소 찾기
+                var addressFinder = new AddressFind();
+
+                $('#buyerAddrBtn').on('click', function(e){
+                    addressFinder.open(function(data){
+                        $('input[name=buyerZipCode]').val(data.zonecode);
+                        $('input[name=buyerAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=buyerAddrDetail]').focus();
+                    });
+                });
+
+                // 사은품 주소 찾기
+                $('#recipientAddrBtn').on('click', function(e){
+                    addressFinder.open(function(data){
+                        $('input[name=recipientZipCode]').val(data.zonecode);
+                        $('input[name=recipientAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=recipientAddrDetail]').focus();
+                    });
+                });
+
+
+                // 신청하기
+                $('#uiSubmit').on('click', function(){  
+                    if(checkSerialSuccess){
+                        validation.validate(); 	
+                    }else if(errorObj['serialNum']){
+                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인해 주세요."});
+                        $('#serialCheckBtn').focus(); // 제조번호 확인버튼으로 포커스 이동
+                    }else{
+                        validation.validate();
+                    }
+                });
+
+                //// 제품 제조번호 확인방법 
+
+                var modelData = null;
+                var modelListData = null;
+                var $serialPopupBtn = $('#serialPopupBtn');
+                var $serialPopup = $('#serialPopup');
+
+                $serialPopupBtn.on('click', function(e){
+                    e.preventDefault();
+                    if(!modelData) {
+                        var ajaxUrl = $serialPopup.attr('data-list-url');
+                        lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+
+                            var selectbox = $serialPopup.find('.ui_selectbox:eq(0)');
+                            var data = result.data;
+                            modelData = data;
+                            var arr = data instanceof Array ? data : [];
+                            modelListData = vcui.array.reduce(arr, function (prev, cur) {
+                                return prev.concat(cur['modelList']);
+                            }, []); 
+
+                            var newArr = [{'text':'선택'}];
+                            arr.forEach(function(item, index) {
+                                newArr.push({'text':item.categoryName, 'value':index});
+                            });
+                            selectbox.vcSelectbox('update', newArr);
+                            $serialPopup.vcModal('open');
+
+                        });
+
+
+                    } else {
+                        var selectbox = $serialPopup.find('.ui_selectbox:eq(0)');
+                        selectbox.vcSelectbox('selectedIndex', 0, true);
+                        $serialPopup.vcModal('open');
+                    }
+
+                });
+
+                //카테고리 선택
+                $serialPopup.on('change', '.ui_selectbox:eq(0)', function(e,data){
+                    var index = data.selectedIndex;
+                    var $selectbox = $serialPopup.find('.ui_selectbox:eq(1)');
+                    if(index == 0) {
+                        $selectbox.vcSelectbox('disabled', true);
+                    } else {
+                        $selectbox.vcSelectbox('disabled', false);
+                        var mdData = modelData[index-1];
+                        var arr = mdData.modelList instanceof Array ? mdData.modelList : [];
+                        var newArr = [{'text':'세부 카테고리 선택', 'value':''}]
+                        arr.forEach(function(item, index) {
+                            newArr.push({'text':item.modelName, 'value':item.modelName});
+                        });     
+
+                        $selectbox.vcSelectbox('update', newArr);
+                    }
+                });
+
+                //모델 선택
+                $serialPopup.on('change', '.ui_selectbox:eq(1)', function(e,data){
+
+                    var value = $(this).val();
+                    var obj = vcui.array.filterOne(modelListData, function(item, index) {
+		                return item['modelName'] === value;
+		            });
+                    var imageUrl = obj['imageUrl'];
+                    var text, imageAlt = obj['imageAlt'];
+
+                    if(vcui.isEmpty(imageUrl)) {
+                        text = imageAlt = "제품 이미지 준비중입니다.";
+                        imageUrl = "/lg5-common/images/img-nodata.svg";
+                    }
+
+                    $serialPopup.find('div.example-result p.txt').text(text);
+                    $serialPopup.find('div.example-result img').attr({'src':imageUrl,'alt':imageAlt});
+                });
+            })
+
+        });
+        
+    </script>
+
 </body>
 </html>

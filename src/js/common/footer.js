@@ -25,8 +25,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                 $(this).find('span').text(openerName);
             });
             
+            $(window).on('resizeend', function(e){
+                self._resize();
+            });
             self._resize();
-            $(window).trigger('addResizeCallback', self._resize.bind(self));
+            //$(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
         _addMobileLinks: function(){

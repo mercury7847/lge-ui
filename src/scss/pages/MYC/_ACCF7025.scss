@@ -45,6 +45,16 @@
             font-weight: 700;
         }
     }
+    > .btn-area {
+        .btn {
+            border-color: $color-white !important;
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $color-primary !important;
+            }
+        }
+    }
     .form-wrap {
         max-width:912px;
         margin:24px auto 0;

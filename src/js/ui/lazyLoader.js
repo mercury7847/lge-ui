@@ -15,7 +15,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             mode: 'vertical',
             container: 'window',
             dataAttribute: 'data-src',
-            useFade: true
+            useFade: false
         },
 
         initialize: function initialize(el, options) {

@@ -314,7 +314,7 @@ $(window).ready(function(){
                 }
 
                 console.log("contLoadMode:",contLoadMode, REQUEST_MODE_SCROLL)
-                if(contLoadMode != REQUEST_MODE_SCROLL) changeViewContents(data.storyinfo);
+                if(contLoadMode != REQUEST_MODE_SCROLL && contLoadMode != REQUEST_MODE_YEAR) changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
 

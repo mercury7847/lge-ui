@@ -6,6 +6,12 @@
     })
 <body>
     <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "매장 정보" 
+        })
+        <!-- //210311_H1추가 -->
+
         <div class="container">
             <!-- 메장정보 -->
             <!-- 2021.1.28 -->
@@ -327,44 +333,46 @@
                                         <li><a href="#tab3">지하철</a></li>
                                         <li><a href="#tab4">주차장</a></li>
                                     </ul>
-                                    <div id="tab1" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
-                                                "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
-                                                "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
-                                                "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab2" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab3" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
-                                            ]
-                                        })
-                                    </div>
-                                    <div id="tab4" class="tabs-contents">
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "bulletTxt" : [
-                                                "강남본점 건물 22대 주차 가능합니다"
-                                            ]
-                                        })
-                                    </div>
                                 </div>
+                                <!-- 210305 위치이동 -->
+                                <div id="tab1" class="tabs-contents">
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "강남구청역 방향에서 4412/301 승차 일지아트홀 정류장(학동사거리) 하차",
+                                            "압구정동 방향에서 2411/143승차 영동고교앞 정류장하차 학동사거리 200미터 도보",
+                                            "신사동 방향에서 4212/145/4412 승차 호림아트홀 정류장 하차 학동사거리 150미터 도보",
+                                            "영동대교 방향에서 4212 승차 호림아트홀 하차 학동사거리 150미터 도보"
+                                        ]
+                                    })
+                                </div>
+                                <div id="tab2" class="tabs-contents">
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "7호선 강남구청역 4번 출구에서 학동사거리 방향 700미터 학동사거리 횡단보도 건너 위치, 분당선 압구정로데오역 4번 출구에서 학동사거리 방향 350미터 위치"
+                                        ]
+                                    })
+                                </div>
+                                <div id="tab3" class="tabs-contents">
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "영동대교 남단 방향에서 도산대로 방향 우회전→청담사거리 직진 →학동사거리(학동역 사거리 와는 틀림) 건너기 전 우측 코너에 위치"
+                                        ]
+                                    })
+                                </div>
+                                <div id="tab4" class="tabs-contents">
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "강남본점 건물 22대 주차 가능합니다"
+                                        ]
+                                    })
+                                </div>
+                                <!-- //210305 위치이동 -->
                             </div>
                             <!-- //오시는길 -->
 
                             <div class="notice-info">
-                                <div class="txt">“<span class="point">강남본점</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</div>
-                                <a href="#n" class="btn dark-gray size-m"><span>평가하기</span></a>
+                                <div class="txt">“<span class="point">금천서비스센터</span>”의 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</div>
+                                <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
                             </div>
                         </div>
                         
@@ -380,5 +388,8 @@
             <!-- // 메장정보 -->
         </div>
     </div>
+
+    <!-- 만족도 조사 팝업 -->
+    @@include('./CS/CSRF6065.html')
 </body>
 </html>

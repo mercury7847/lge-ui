@@ -50,6 +50,8 @@
                 var url = self.$contWrap.data('returnUrl');
                 if(url) {
                     location.href = url;
+                } else {
+                    history.back();
                 }
             });
 
@@ -132,6 +134,8 @@
                 var url = self.$contWrap.data('okUrl');
                 if(url) {
                     location.href = url;
+                } else {
+                    history.back();
                 }
             });
         }

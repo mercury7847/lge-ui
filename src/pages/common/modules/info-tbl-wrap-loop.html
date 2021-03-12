@@ -37,6 +37,12 @@
                                 @@if ( context.col1.productType.wishCount ) {
                                 <p class="count">구매 희망 수량 : 2</p>                                
                                 }
+                                @@if ( context.col1.productType.totalPrice) {
+                                <!-- 210308 수정 [추가] -->
+                                <p class="price">
+                                    <span class="blind">구매가격</span>@@col1.productType.totalPrice
+                                </p>
+                                }
                             </div>
                             @@if ( context.col1.productType.price ) {
                             <p class="price">
@@ -49,6 +55,20 @@
                         </div>
                     </div>
                     }
+                    @@if ( context.monthlyPrice ) {
+                    <!-- 210308 수정 [추가] -->
+                    <div class="col col1-2">
+                        <div class="monthly-price">
+                            @@if ( context.monthlyPrice.price ) {
+                            <p class="price"><span class="blind">@@monthlyPrice.blind</span>@@monthlyPrice.price</p>
+                            }
+                            @@if ( context.monthlyPrice.details ) {
+                            <a href="#n" class="btn-link monthlyPrice-btn">@@monthlyPrice.details</a>
+                            }
+                        </div>
+                    </div>
+                    <!-- // 210308 수정 [추가] -->
+                    }
                     @@if ( context.col2 ) {
                     <div class="col col2">
                         @@if ( context.col2.stateType ) {
@@ -57,7 +77,7 @@
                             <p class="tit"><span class="blind">@@col2.blind</span>@@col2.stateType.tit</p>
                             }
                             @@if ( context.col2.stateType.titRed ) {
-                            <p class="tit cancel"><span class="blind">@@col2.blind</span>@@col2.stateType.titRed</p>    
+                            <p class="tit cancel"><span class="blind">@@col2.blind</span>@@col2.stateType.titRed</p>
                             }
                             @@if ( context.col2.stateType.desc ) {
                             <p class="desc">@@col2.stateType.desc</p>
@@ -69,10 +89,10 @@
                                 }
                                 @@if ( context.col2.stateType.btn2 ) {
                                 <a href="#n" class="btn size border stateInner-btn" data-type="@@col2.stateType.btn2Type"><span>@@col2.stateType.btn2</span></a>
-                                }  
+                                }
                                 @@if ( context.col2.stateType.btn3 ) {
                                 <a href="#n" class="btn size border stateInner-btn" data-type="@@col2.stateType.btn3Type"><span>@@col2.stateType.btn3</span></a>
-                                }                            
+                                }
                             </div>
                             }
                         </div>

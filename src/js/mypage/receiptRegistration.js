@@ -21,23 +21,24 @@
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
                 self.$inputReceipt = self.$formWrap.find('#inputReceipt');
+                self.$inputReceipt.attr("autocomplete","off");
                 self.$inquiryButton = self.$formWrap.find('#inquiryButton');
 
                 var register = {
-                    category:{
+                    accountFlag:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
                         msgTarget: '.err-block'
                     },
-                    area:{
+                    localName:{
                         required: false,
                     },
-                    branch:{
+                    spotName:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
                         msgTarget: '.err-block'
                     },
-                    receipt:{
+                    barcodeNo:{
                         required: true,
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
@@ -46,13 +47,24 @@
                 };
                 vcui.require(['ui/validation'], function () {
                     self.validation = new vcui.ui.Validation('div.cont-wrap .form-wrap',{register:register});
+                    self.validation.on('change', function(e,target){
+                        var parent = $(this).parent().parent();
+                        var errBlock = parent.find('.err-block:eq(0)');
+                        if(errBlock.length > 0) {
+                            errBlock.hide();
+                        } else {
+                            errBlock = parent.parent().find('.err-block:eq(0)');
+                            errBlock.hide();
+                        }
+                    });
                 });
             },
 
             bindEvents: function() {
                 var self = this;
                 self.$inputReceipt.on("input",function(){
-                    this.value = this.value.replace(/[^0-9]/g, '');
+                    this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
+                    $(this).parent().find('.err-block:eq(0)').hide();
                 });
                 
                 self.$categorySelect.on('change', function(e){
@@ -63,20 +75,29 @@
                         self.$areaSelect.vcSelectbox('update');
                         self.$branchSelect.find('option:not(:eq(0))').remove();
                         self.$branchSelect.vcSelectbox('update');
+                        self.validation.setRequireItem("spotName",true);
                     } else {
                         var data = areaData[selectValue];
                         if(data) {
+                            var hasBrachDataCheck = false;
                             var arr = data instanceof Array ? data : [];
                             self.$areaSelect.find('option:not(:eq(0))').remove();
                             if(arr.length > 0) {
                                 arr.forEach(function(item, index) {
                                     self.$areaSelect.append(vcui.template(localOptTemplate, item));
+                                    var data = branchData[item.value];
+                                    var arr = data instanceof Array ? data : [];
+                                    if(arr.length > 0) {
+                                        hasBrachDataCheck = true;
+                                    }
                                 });
                             }
                             self.$areaSelect.vcSelectbox('update');
                             self.$branchSelect.find('option:not(:eq(0))').remove();
                             self.$branchSelect.vcSelectbox('update');
                             self.$areaSelect.parents('div.select-wrap').show();
+
+                            self.validation.setRequireItem("spotName",hasBrachDataCheck);
                         } else {
                             self.$areaSelect.parents('div.select-wrap').hide();
                             data = branchData[selectValue];
@@ -90,11 +111,16 @@
                                 }
                                 self.$branchSelect.vcSelectbox('update');
                                 self.$branchSelect.parents('div.select-wrap').show();
+                                self.validation.setRequireItem("spotName",true);
                             } else {
                                 self.$branchSelect.parents('div.select-wrap').hide();
+                                self.validation.setRequireItem("spotName",false);
                             }
                         }
                     }
+
+                    self.$areaSelect.vcSelectbox('selectedIndex',0,false);
+                    self.$branchSelect.vcSelectbox('selectedIndex',0,false);
                 });
 
                 self.$areaSelect.on('change', function(e){
@@ -115,16 +141,28 @@
                             }
                             self.$branchSelect.vcSelectbox('update');
                             self.$branchSelect.parents('div.select-wrap').show();
+                            self.validation.setRequireItem("spotName",true);
                         } else {
                             self.$branchSelect.parents('div.select-wrap').hide();
+                            self.validation.setRequireItem("spotName",false);
                         }
                     }
+                    self.$branchSelect.vcSelectbox('selectedIndex',0,false);
                 });
 
                 self.$inquiryButton.on('click', function(e) {
                     var result = self.validation.validate();
                     if(result.success){
                         self.requestData(self.validation.getAllValues());
+                    } else {
+
+                        console.log(result);
+                        if(result.validArray && result.validArray.length > 0) {
+                            var item = result.validArray[0];
+                            if(item.errmsg) {
+                                lgkorUI.alert("", {title: item.errmsg});
+                            }
+                        }
                     }
                 })
             },
@@ -155,15 +193,20 @@
             requestData: function(param) {
                 var self = this;
                 var ajaxUrl = self.$formWrap.attr('data-receipt-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    /*                    
                     var data = result.data;
+                    console.log(data);
                     var alert = data.alert;
                     if(alert) {
                         self.openAlert(alert);
                     }
+                    */
                 });
             },
 
+            /*
             openAlert: function(alert) {
                 //알림
                 var obj ={title: alert.title,
@@ -178,6 +221,7 @@
                 }
                 lgkorUI.alert(desc, obj);
             },
+            */
         };
 
         receiptRegist.init();                

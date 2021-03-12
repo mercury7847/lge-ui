@@ -286,26 +286,26 @@
             cancelBtnName: "취소",
             okBtnName: "본인인증",
             ok: function(){
-                // sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
-                // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
-                //     if(lgkorUI.stringToBool(result.data.success)){
+                sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val()
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
+                    if(lgkorUI.stringToBool(result.data.success)){
 
-                //         window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                //         document.form_chk.action = result.data.niceAntionUrl;
-                //         document.form_chk.m.value = result.data.m;
-                //         document.form_chk.EncodeData.value = result.data.sEncData;
-                //         document.form_chk.auth_type.value = result.data.auth_type;
-                //         document.form_chk.param_r1.value = result.data.param_r1;
-                //         document.form_chk.param_r2.value = result.data.param_r2;
-                //         document.form_chk.param_r3.value = result.data.param_r3;
-                //         document.form_chk.target = "popupChk";
-                //         document.form_chk.submit();
-                //     } else{
-                //         console.log("Fail !!!");
-                //     }
-                // });
+                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                        document.form_chk.action = result.data.niceAntionUrl;
+                        document.form_chk.m.value = result.data.m;
+                        document.form_chk.EncodeData.value = result.data.sEncData;
+                        document.form_chk.auth_type.value = result.data.auth_type;
+                        document.form_chk.param_r1.value = result.data.param_r1;
+                        document.form_chk.param_r2.value = result.data.param_r2;
+                        document.form_chk.param_r3.value = result.data.param_r3;
+                        document.form_chk.target = "popupChk";
+                        document.form_chk.submit();
+                    } else{
+                        console.log("Fail !!!");
+                    }
+                });
 
-                editPaymentInfomation();
+                //editPaymentInfomation()
             }
         });
     }
@@ -466,9 +466,10 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
+        sendata.confirmType = sendPaymentMethod;
 
         console.log("### setArsAgreeConfirm ###", sendata);
-        lgkorUI.requestAjaxData(ARS_AGREE_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             console.log("### setArsAgreeConfirm [complete] ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -484,7 +485,7 @@
     function savePaymentInfoCancel(){
         try{
             cardValidation.setValues(cardInfo);
-            $('.ui_card_number').vcFormatter('update');
+            //$('.ui_card_number').vcFormatter('update');
     
             bankValidation.setValues(bankInfo);
             setHiddenData('paymentMethodConfirm', "N");
@@ -530,6 +531,7 @@
         }
     }
 
+    //납부 정보 유효성 체크
     function paymentInfoValidation(){
         var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");

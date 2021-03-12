@@ -148,11 +148,17 @@ $block: (block1, block2, block3);
         &.align-top {
             .visual-box {
                 margin-top:28px;
+                @include mobile {
+                    margin-top:20px;
+                }
             }
         }
         &.align-bottom {
             .visual-box {
                 margin-bottom:28px;
+                @include mobile {
+                    margin-bottom:20px;
+                }
             }
         }
         &.align-left,

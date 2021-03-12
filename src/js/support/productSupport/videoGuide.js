@@ -16,28 +16,36 @@
         '</li>';
     var topicTmpl = 
         '{{#each (item, index) in list}}' +
-        '{{# if (item.code) { #}}' +
-        '<option value="{{item.code}}">{{item.name}}</option>' +
-        '{{# } else { #}}' +
-        '<option value="{{item.value}}">{{item.name}}</option>' +
-        '{{# } #}}' +
+        '<option value="{{item.code}}" data-name="{{item.name}}">{{item.name}}</option>' +
         '{{/each}}';
 
     var videoGuide = {
         init: function() {
             var self = this;
+            var param = {};
 
             self.options = {
+                category: '',
+                categoryNm: '',
+                subCategory: '',
+                subCategoryNm: '',
+                modelCode: '',
+                productCode: '',
+                page: 1
+            };
+
+            param = {
                 category: $('#category').val(),
                 categoryNm: $('#categoryNm').val(),
                 subCategory: $('#subCategory').val(),
                 subCategoryNm: $('#subCategoryNm').val(),
                 modelCode: $('#modelCode').val(),
                 productCode: $('#productCode').val(),
+                topicNm: $('#topicNm').val(),
+                subTopicNm: $('#subTopicNm').val(),
+                keyword: $('#keyword').val(),
                 page: 1
             };
-
-            self.param = $.extend({}, self.options);
 
             self.$cont = $('.contents');
             self.$productBar = self.$cont.find('.prod-selected-wrap');
@@ -62,11 +70,10 @@
             self.$resultPagination = self.$resultWrap.find('.pagination');
             self.$noData = self.$resultWrap.find('.no-data');
 
-
+            self.param = param;
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.subTopicUrl = self.$stepInput.data('subTopicUrl');
             self.listUrl = self.$stepInput.data('listUrl');
-
 
             self.bindEvent();
 
@@ -83,43 +90,43 @@
             self.$resultPagination.pagination({
                 pageCount: 5
             });
-            self.$productBar.vcSticky();
         
             if (!self.param.subCategory) {
                 self.$cont.commonModel('complete');
             }
+        },
+        setPopularKeyword: function(data) {
+            var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
+            this.$keywordWrap.search('setPopularKeyword', arr);
         },
         drawTopicList: function(data) {
             var self = this;
             var listArr = data.topicList instanceof Array ? data.topicList : [],
                 html = '';
 
+            self.$searchTopic.find('option:not(.placeholder)').remove();
             if (listArr.length) {
-                html = vcui.template(topicTmpl, {
-                    list: listArr
-                });
-
-                self.$searchTopic.find('option:not(.placeholder)').remove();
+                html = vcui.template(topicTmpl, {list: listArr});
                 self.$searchTopic.append(html).prop('disabled', false);
-                self.$searchTopic.vcSelectbox('update');
+                self.$searchTopic.find('option[data-name="'+self.param.topicNm+'"]').prop('selected', true);
+            } else {
+                self.$searchTopic.prop('disabled', true);
             }
+            self.$searchTopic.vcSelectbox('update');
         },
         drawSubTopicList: function(data) {
             var self = this;
-            var arr = data instanceof Array ? data : [],
+            var listArr = data.subTopicList instanceof Array ? data.subTopicList : [],
                 html = '';
 
             self.$searchSubTopic.find('option:not(.placeholder)').remove();
-
-            if (arr.length) {
-                html = vcui.template(topicTmpl, {
-                    list: arr
-                });
+            if (self.param.topicNm && listArr.length) {
+                html = vcui.template(topicTmpl, {list: listArr});
                 self.$searchSubTopic.append(html).prop('disabled', false);
+                self.$searchSubTopic.find('option[data-name="'+self.param.subTopicNm+'"]').prop('selected', true);
             } else {
                 self.$searchSubTopic.prop('disabled', true);
             }
-
             self.$searchSubTopic.vcSelectbox('update');
         },
         drawList: function(result) {
@@ -132,7 +139,7 @@
             var isNotEmpty = false;
 
             self.drawSummary(param);
-            // self.$searchKeyword.vcInputClearButton('changeVal', self.param.keyword);
+
             self.$searchKeyword.val(self.param.keyword);
             self.$searchKeyword.trigger('update'); 
 
@@ -185,56 +192,74 @@
                 $keyword.empty();
             }
 
-            // self.$searchKeyword.vcInputClearButton('changeVal', keyword);
             self.$searchKeyword.val(keyword);
             self.$searchKeyword.trigger('update');
         },
-        setPopularKeyword: function(data) {
-            var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
-            this.$keywordWrap.search('setPopularKeyword', arr);
+        requestComplete: function() {
+            var self = this;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxData(self.resultUrl, self.param, function(result) {
+                lgkorUI.hideLoading();
+                
+                var data = result.data;
+                
+                self.setPopularKeyword(data);
+                self.drawList(result);
+
+                if (self.param.subCategory) {
+                    self.drawTopicList(data);
+                    self.drawSubTopicList(data);
+
+                    self.$cont.commonModel('updateSummary', {
+                        product: [self.param.categoryNm, self.param.subCategoryNm, self.param.modelCode],
+                        reset: 'product'
+                    });
+                } else {
+                    self.$cont.commonModel('updateSummary', {
+                        tit: '서비스이용을 위해 제품을 선택해 주세요.',
+                        reset: 'noProduct'
+                    });
+                }
+                
+                self.$myProductWarp.hide();
+                self.$cont.commonModel('next', self.$stepInput);
+                self.$cont.commonModel('focus', self.$productBar, function() {
+                    self.$productBar.vcSticky();
+                });
+            });
         },
         requestSubTopic: function() {
             var self = this;
 
-            var param = {
-                topic: self.param.topic,
-                topicNm: self.param.topicNm,
-                category: self.param.category,
-                categoryNm: self.param.categoryNm,
-                subCategory: self.param.subCategory,
-                subCategoryNm: self.param.subCategoryNm,
-                productCode: self.param.productCode
-            }
-
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(self.subTopicUrl, param, function(result) {
-                var data = result.data.optionData || result.data;
-
-                self.drawSubTopicList(data);
+            lgkorUI.requestAjaxData(self.listUrl, self.param, function(result) {
                 lgkorUI.hideLoading();
+                self.drawSubTopicList(result.data);
+                self.drawList(result);
             });
         },
         requestData: function(type) {
             var self = this;
-            var param = $.extend({}, self.param);
+            var param = $.extend(true, {}, self.param);
 
             param['type'] = type;
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(self.listUrl, param, function(result) {
-                self.drawList(result);
                 lgkorUI.hideLoading();
-            }, 'POST', 'json', false);
+                self.drawList(result);
+            });
         },
         bindEvent: function() {
             var self = this;
 
             self.$cont.on('reset', function(e) {
-                self.param = $.extend({}, self.options);
+                self.param = $.extend(true, {}, self.options);
 
                 self.$cont.commonModel('next', self.$stepModel);
-
-                self.$stepInput.find('#keyword').val('');
+                self.$resultSummary.hide();
+                self.isLogin && self.$myProductWarp.show();
 
                 self.$searchTopic.find('option:not(.placeholder)').remove();
                 self.$searchSubTopic.find('option:not(.placeholder)').remove();
@@ -242,13 +267,9 @@
                 self.$searchSubTopic.find('option.placeholder').prop('selected', true);
                 self.$searchTopic.prop('disabled', true).vcSelectbox('update');
                 self.$searchSubTopic.prop('disabled', true).vcSelectbox('update');
-
-                $('.search-summary').hide();
-
-                if (self.isLogin) self.$myProductWarp.show();   
+                self.$stepInput.find('#keyword').val('');   
             });
-
-            self.$cont.on('complete', function(e, data, url) {
+            self.$cont.on('complete', function(e, data) {
                 var param = {
                     category: data.category,
                     categoryNm: data.categoryNm || data.categoryName,
@@ -258,85 +279,54 @@
                     productCode: data.productCode,
                     page: data.page || 1
                 };
+                $.extend(self.param, param);
 
-                self.param = $.extend(self.param, param);
-
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
-                    var resultData = result.data;
-                    
-                    self.drawList(result);
-                    self.setPopularKeyword(resultData);
-
-                    self.$myProductWarp.hide();
-
-                    if (param.subCategory) {
-                        self.drawTopicList(resultData);
-
-                        self.$cont.commonModel('updateSummary', {
-                            product: [param.categoryNm, param.subCategoryNm, param.modelCode],
-                            reset: 'product'
-                        });
-
-                        self.$cont.commonModel('next', self.$stepInput);
-                        self.$cont.commonModel('focus', self.$productBar, function() {
-                            self.$productBar.vcSticky();
-                        });
-                    } else {
-                        self.$cont.commonModel('updateSummary', {
-                            tit: '서비스이용을 위해 제품을 선택해 주세요.',
-                            reset: 'noProduct'
-                        });
-                        self.$productBar.vcSticky();
-                    }
-                    
-                    lgkorUI.hideLoading();
-                });
+                self.requestComplete();
             });
 
             self.$searchTopic.on('change', function() {
-                var val = self.$searchTopic.val();
+                var topicCode = self.$searchTopic.val(),
+                    topicName = topicCode ? self.$searchTopic.find('option:selected').text() : '';
+                var param = { 
+                    topic: topicCode,
+                    topicNm: topicName,
+                    subTopic: '',
+                    subTopicNm: '',
+                    page:1
+                };
+                $.extend(self.param, param);
 
-                if (val) {
-                    var param = { 
-                        topic: val,
-                        topicNm: val ? self.$searchTopic.find('option:selected').text() : '',
-                        subTopic: '',
-                        subTopicNm: '',
-                        page:1
-                    };
-                    self.param = $.extend(self.param, param);
-                    self.requestSubTopic();
-                } else {
-                    var param = { 
-                        topic: '',
-                        topicNm: '',
-                        subTopic: '',
-                        subTopicNm: '',
-                        keyword: '',
-                        page:1
-                    };
-                    self.param = $.extend(self.param, param);
-
-                    self.$stepInput.find('#keyword').val('');
-                    self.drawSummary();
-                    self.drawSubTopicList();
-                    self.requestData();
-                }
+                if (!topicCode) {
+                    self.param.keyword = '';
+                    self.$searchKeyword.val('');
+                    self.drawSummary();    
+                } 
+                self.requestSubTopic();
             });
 
             self.$searchSubTopic.on('change', function() {
-                var val = self.$searchSubTopic.val();
+                var subTopicCode = self.$searchSubTopic.val(),
+                    subTopicName = subTopicCode ? self.$searchSubTopic.find('option:selected').text() : '';
+                var param = {  
+                    subTopic: subTopicCode,
+                    subTopicNm: subTopicName,
+                    page:1
+                };
+                $.extend(self.param, param);
+                self.requestData(); 
+            });
 
-                if (val) {
+            self.$searchBtn.on('click', function(e, keyword) {
+                var value = keyword || self.$searchKeyword.val();
+
+                if (value.trim().length > 1) {
                     var param = { 
-                        page:1, 
-                        subTopic: self.$searchSubTopic.val(),
-                        subTopicNm: self.$searchSubTopic.find('option:selected').text()
+                        keyword: value,
+                        page:1 
                     };
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
                     self.requestData();
-                } 
+                }
             });
 
             self.$searchKeyword.on('keydown', function(e) {
@@ -350,21 +340,8 @@
                 self.$searchBtn.trigger('click', [self.$searchKeyword.val().trim()]);
             });
 
-            self.$searchBtn.on('click', function(e, keyword) {
-                var value = keyword || self.$searchKeyword.val();
-
-                if (value.trim().length > 1) {
-                    var param = { 
-                        page:1, 
-                        keyword: value 
-                    };
-                    self.param = $.extend(self.param, param);
-                    self.requestData();
-                }
-            });
-
             self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
-                var param =  $.extend(self.param, param);
+                var param =  $.extend(true, self.param, param);
                 lgkorUI.requestAjaxData(url, param, function(result) {
                     callback(result.data);
                 });
@@ -372,15 +349,15 @@
 
             self.$resultPagination.on('pageClick', function(e) {
                 var type = $(e.currentTarget).closest('.tabs-contents').attr('id');
-                
                 var param = {page: e.page};
-                self.$param = $.extend(self.param, param);
+
+                $.extend(self.param, param);
                 self.requestData(type);
             });
 
             self.$resultSummary.on('click', '.btn-delete', function() {
-                var param = { keyword: '', page: 1 };
-                self.param = $.extend(self.param, param);
+                var param = {keyword: '', page: 1};
+                $.extend(self.param, param);
                 self.requestData();
             });
         }

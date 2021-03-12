@@ -1,5 +1,15 @@
-//크레마
 (function(i,s,o,g,r,a,m){
+    var isMobile = false;
+    if(vcui.detect.isMobile){
+        isMobile = true;
+    }
+    
+    if(location.hostname == "www.lge.co.kr") {
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+    } else {
+        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+    }
+
     if(s.getElementById(g)){
         return
     };
@@ -17,46 +27,33 @@
     console.log('a',a);
     console.log('m',m);
     */
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
 
 (function() {
     var KRP0012 = {
         init: function() {
             var self = this;
-            if(typeof digitalData !== 'undefined') {
-                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
-                    window.cremaAsyncInit = function () {
-                        crema.init("이름",digitalData.userInfo.unifyId);
-                    };
-                } else {
-                    window.cremaAsyncInit = function () {
-                        crema.init(null,null);
-                    };
-                }
-            } else {
-                window.cremaAsyncInit = function () {
-                    crema.init(null,null);
-                };
-            }
+            //크레마
+            lgkorUI.cremaLogin();
 
             var $section = $('.KRP0012');
             var $contWrap = $section.find('.cont-wrap');
             $contWrap.empty();
             //상품 리뷰 위젯
-            var productcode = $section.data('productcode');
+            var productcode = $section.data('productCode');
             if(productcode) {
-                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '"></div>');
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
             }
 
             //상품 소셜 위젯
             var widgetId = $section.data('widgetId');
             if(productcode && widgetId) {
-                $contWrap.append('<div class="crema-product-reviews" data-productcode="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
         }
     }
 
-    $(window).ready(function(){
+    $(document).ready(function(){
         if(!document.querySelector('.KRP0012')) return false;
         //$('.KRP0012').buildCommonUI();
         KRP0012.init();

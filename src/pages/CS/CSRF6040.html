@@ -2,11 +2,17 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["CS/CS"],
-        pageJS: ["customer/searchShop"]
+        pageJS: ["customer/searchShop"],
+        pageTitle: "매장 찾기 | LG전자 고객지원",
+        pageDesc: "고객님과 가장 가까운 지역의 LG전자 매장을 찾아보실 수 있습니다. 각 매장 운영 시간이 상이 할 수 있으니, 매장별 상세정보를 꼭 확인하시기 바랍니다."
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "매장 찾기" 
+        })
+        <!-- //210311_H1추가 -->
 
         <div class="container">
             <!-- 매장찾기 -->
@@ -24,8 +30,9 @@
                         data-latitude="37.5670135" 
                         data-longitude="126.9783740"
                         data-user-address="경기도 김포시 유현로 19"
-                        data-login-url=""
+                        data-login-url="loginurl"
                         data-shop-id=""
+                        data-sales-code="GGG"
                     >
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>

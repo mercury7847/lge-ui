@@ -166,6 +166,12 @@
         max-width:none;
         border-radius:0;
         transform:none !important;
+        &.tit-line3 {
+            .pop-conts {
+                max-height:calc(100% - 146px);
+                height:calc(100% - 146px);
+            }
+        }
     }
     > .btn-close {
         position:absolute;
@@ -207,6 +213,9 @@
             overflow:hidden;
             text-overflow:ellipsis;
             word-break:keep-all;
+            br {
+                display: none;
+            }
         }
         @include mobile {
             margin:0 16px;
@@ -691,6 +700,12 @@
                     }
                     .date-select-box.col-2 {
                         padding-right:0;
+                        .cell:first-child {
+                            width:60%;
+                        }
+                        .cell:last-child {
+                            width:40%;
+                        }
                     }
                 }
             }
@@ -1057,6 +1072,15 @@
                 }
             }
         }
+        .input-info:not(.type2) {
+            .bk-infos {
+                dd:last-child {
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+        }
         .btn-link {
             margin-top: 24px;
         }
@@ -1229,58 +1253,58 @@
                         }
                     }
                 }
-                ul {
-                    @include clearfix;
-                    margin-top:48px;
-                    li {
-                        float:left;
-                        position:relative;
-                        width: 240px;
-                        //padding:0 0 0 56px;
-                        img {
-                            max-width: 100%;
-                            vertical-align: top;
-                        }
-                        @include mobile {
-                            float:inherit;
-                            width: auto;
-                            padding:48px 0 0 0;
-                        }
-                        &:first-child {
-                            margin-right:56px;
-                            @include mobile {
-                                margin-right:0;
-                                padding:0;
-                            }
-                            &:after {
-                                content:'';
-                                display:block;
-                                position:absolute;
-                                top:50%;
-                                right:-40px;
-                                width: 24px;
-                                height: 24px;
-                                margin-top: -12px;
-                                background: url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat 50% 50%;
-                                background-size: 24px 24px;
-                                @include mobile {
-                                    top:auto;
-                                    bottom:-36px;
-                                    right:50%;
-                                    margin-top: 0;
-                                    background: url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat 50% 50%;
-                                    background-size: 24px 24px;
-                                }
-                            }
-                        }
-                        img {
-                            @include mobile {
-                                display:block;
-                                width:100%;
-                            }
-                        }
-                    }
-                }
+                // ul {
+                //     @include clearfix;
+                //     margin-top:48px;
+                //     li {
+                //         float:left;
+                //         position:relative;
+                //         width: 240px;
+                //         //padding:0 0 0 56px;
+                //         img {
+                //             max-width: 100%;
+                //             vertical-align: top;
+                //         }
+                //         @include mobile {
+                //             float:inherit;
+                //             width: auto;
+                //             padding:48px 0 0 0;
+                //         }
+                //         &:first-child {
+                //             margin-right:56px;
+                //             @include mobile {
+                //                 margin-right:0;
+                //                 padding:0;
+                //             }
+                //             &:after {
+                //                 content:'';
+                //                 display:block;
+                //                 position:absolute;
+                //                 top:50%;
+                //                 right:-40px;
+                //                 width: 24px;
+                //                 height: 24px;
+                //                 margin-top: -12px;
+                //                 background: url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat 50% 50%;
+                //                 background-size: 24px 24px;
+                //                 @include mobile {
+                //                     top:auto;
+                //                     bottom:-36px;
+                //                     right:50%;
+                //                     margin-top: 0;
+                //                     background: url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat 50% 50%;
+                //                     background-size: 24px 24px;
+                //                 }
+                //             }
+                //         }
+                //         img {
+                //             @include mobile {
+                //                 display:block;
+                //                 width:100%;
+                //             }
+                //         }
+                //     }
+                // }
             }
 
             .example-result {
@@ -1578,9 +1602,7 @@
                 .lately-list {
                     ul {
                         li {
-                            display: block;
                             dl {
-                                display: block;
                                 dd {
                                     &.category {
                                         font-size: 14px;

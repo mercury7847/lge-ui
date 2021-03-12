@@ -54,10 +54,12 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        pattern: /^(010|011|017|018|019)\d{3,4}\d{4}$/,
                         msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        } 
                     },
                     authNo:{
                         required: true,
@@ -236,10 +238,12 @@
             });
         },
         centerSetting: function() {
-            $('.btn-center-link').on('click', function(){
-                var url = $(this).attr("href");
+            $('.btn-center-link').on('click', function(e){
+                var url = $(this).data("href") || $(this).attr('href');
                 var windowHeight = $(window).innerHeight();
                 window.open(url, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                // window.open(url)
+                e.preventDefault();
             });
         },
 
@@ -400,9 +404,36 @@
                 }).on('click', '.btn-group .btn-confirm', function() {
                     var result = self.validation.validate();
                     if( result.success == true) {
-                        self.authManager.confirm(this, function(success, result) {
-                            self.completeAuth(success, result);
-                        });
+                        if(!lgkorUI.isLogin) {
+
+                            self.authManager.confirm(this, function(success, result) {
+                                self.completeAuth(success, result);
+                            });
+                        } else {
+                            var $changePopup = $('#reservationTimePopup');
+                            var url = $changePopup.data('auth-url');
+                            var formData = {
+                                userNm : $('#userNm').val(),
+                                phoneNo : $('#phoneNo').val(),
+                                numberName : ''
+                            };
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxDataPost(url, formData, function(result) {
+                                var data = result.data;
+                                
+                                if (data.resultFlag == 'Y') {
+                                    lgkorUI.hideLoading();
+                                    self.complete();
+                                } else {
+                                    if (data.resultMessage) {
+                                        lgkorUI.alert("", {
+                                            title: data.resultMessage
+                                        });
+                                    }
+                                    lgkorUI.hideLoading();
+                                }
+                            }, 'POST');
+                        }
                     }
                 });
 
@@ -684,7 +715,7 @@
                 });
             },
             authSetting: function() {
-                if (!$('#reservationTimePopup').length) return;
+                if (!$('#reservationTimePopup').length || lgkorUI.isLogin) return;
     
                 var self = this;
                 var authRegister = {
@@ -702,15 +733,18 @@
                         register: authRegister
                     }
                 
-                self.authManager = new AuthManager(managerOpt);
-                
-    
-                self.el.popup.find('.btn-send').on('click', function() {
-                    self.authManager.send(this);
-                });
+                if( $('#authNo').length ) {
+
+                    self.authManager = new AuthManager(managerOpt);
+                    
+                    self.el.popup.find('.btn-send').on('click', function() {
+                        self.authManager.send(this);
+                    });
+                }
             },
             complete : function(){
                 var self = this;
+
 
                 // if ($('[name=bdType]:checked').val() == 4) {
                 //     $('#productCode').val('CRB');
@@ -733,6 +767,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
+
 
                     if (data.resultFlag == 'Y' && data.url !== "") {
 

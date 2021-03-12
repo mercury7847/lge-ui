@@ -8,7 +8,8 @@ $(window).ready(function(){
 		var $onText;
 		var $moreInfos;
 
-        var selectIdx;
+		var selectIdx;
+		var prevIdx;
 
         function init(){
             setting();
@@ -22,7 +23,7 @@ $(window).ready(function(){
 
             $mainSticky = $('.KRP0009');
 
-            selectIdx = 0;
+            selectIdx = prevIdx = 0;
 
 			$component.parent().height($component.innerHeight());
         }
@@ -52,7 +53,7 @@ $(window).ready(function(){
 				var dist = -scrolltop + comptop;	
                 
                 if(dist <= topDistance){
-					var top = $mainSticky.length ? $mainSticky.height()-2 : 0;
+					var top = $mainSticky.length ? $mainSticky.height() : 0;
                     $component.addClass('fixed').css({
                         position:"fixed",
 						top:top,
@@ -64,6 +65,7 @@ $(window).ready(function(){
                 }
 				
 				var currentIdx = -1;
+				var isAllHidden = true;
 				$component.find('.info-tab').each(function(idx, item){
 					var percent = 0, display;
 					var contID = $(item).find('a').attr('href');
@@ -92,15 +94,31 @@ $(window).ready(function(){
 						display = percent <= 0 ? 'none' : 'block';
 						bar.css({width: percent+"%", display: display});
 
-						if(display == "block") currentIdx = idx;
+						if(display == "block") {
+							isAllHidden = false;
+							currentIdx = idx;
+						}
 					}
 				}); 
 				
 				if(selectIdx != currentIdx){
+					prevIdx = selectIdx;
 					selectIdx = currentIdx;
+
+					var no = selectIdx;
+					if(selectIdx < 0){
+						no = prevIdx;
+					}
+
 					$moreInfos.children().removeClass('active');
-					$moreInfos.children().eq(selectIdx).addClass('active');
-					$onText.text($moreInfos.children().eq(selectIdx).text());
+					$moreInfos.children().eq(no).addClass('active');
+					$onText.text($moreInfos.children().eq(no).text());
+				}
+
+				if(isAllHidden) {
+					$component.hide();
+				} else {
+					$component.show();
 				}
             });
 		}
@@ -124,13 +142,10 @@ $(window).ready(function(){
         function scrollMoved(id){
             if($(id).length){
 				var topDistance = 0;
-				if($mainSticky.length) topDistance += $mainSticky.height();
+				if($mainSticky.length) topDistance += $mainSticky.height()-2;
 
-				var movtop = $(id).offset().top - topDistance+2;
-
-				var firstId = $component.find('.info-tab').eq(0).find('a').attr('href');
-				if(id == firstId) movtop -= $component.height();
-    
+				var movtop = $(id).offset().top - topDistance;
+				
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }
         }

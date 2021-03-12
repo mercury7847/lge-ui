@@ -1,6 +1,6 @@
 {
   "data": {
-    "allOwnedProductYn": "N",
+    "allOwnedProductYn": "Y",
     "alert": {
       "rightBtnName": "장바구니로 이동",
       "leftBtnName": "확인",
@@ -30,7 +30,7 @@
           "appendClass": ""
         },
         {
-          "price": "월 29,900원",
+          "price": "월 9,900원",
           "text": "이용요금",
           "appendClass": ""
         },
@@ -40,7 +40,35 @@
           "appendClass": "sale"
         }
       ]
-    }
+    },
+    "newProductInfo": [
+      {
+        "options":[
+          "가입비 100,000원 선납",
+          "의무 사용기간 36개월",
+          "방문 주기 1회/6개월"
+        ],
+        "totalPrice": "월 45,878원"
+      },
+      {
+        "options":[
+          "가입비 100,000원 선납",
+          "의무 사용기간 36개월",
+          "방문 주기 1회/6개월"
+        ],
+        "originalPrice": "월 12,990원",
+        "totalPrice": "월 45,878원"
+      },
+      {
+        "options":[
+          "가입비 100,000원 선납",
+          "의무 사용기간 36개월",
+          "방문 주기 1회/6개월"
+        ],
+        "originalPrice": "월 12,990원",
+        "totalPrice": "월 45,878원"
+      }
+    ]
   },
   "message": null,
   "ssoCheckUrl": null,

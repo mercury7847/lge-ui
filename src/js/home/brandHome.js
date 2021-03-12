@@ -87,7 +87,7 @@
             ]
         }); 
         
-        
+        var isApplication = isApp();
         var $window   = $(window);
         var $contentWrap = $('.thinq-wrap');   
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
@@ -100,6 +100,7 @@
         var touchSy = 0;
         var $scenes = $('#fixed-wrap').children().add('.thinq-wrap');
         var stepLens = 0;
+        var pageLens = $scenes.length-1;
         var posArr = [];
         var wheelArr = [];       
 
@@ -110,8 +111,11 @@
         $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        $('.next-arr').on('a', function(e){
+        $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
+            var step = $(e.currentTarget).data('currentStep');
+            if(step) currentStep = step;
+            wheelScene(1);
         });
         
         
@@ -127,17 +131,40 @@
                 return; 
             }
 
+            
+
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);    
+                var $target = $(item.target);   
+                
+                var isDisplay;
+                var obj = $.extend({}, item.transit);
+                
+                if(obj['display']!==undefined){
+                    isDisplay = obj['display'];
+                    delete obj['display'];
+                }
+                
+                if(isDisplay!==undefined && isDisplay!=='none'){
+                    $target.css('display',isDisplay);
+                }
+                
                 if(i==0){
-                    $target.transit(item.transit, function(){
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
                         currentStep = step;
                         canScroll = true;
+
                     });  
                 }else{
-                    $target.transit(item.transit);  
-                }                               
+                    $target.transit(obj, function(){
+                        if(isDisplay==='none'){
+                            $target.css('display',isDisplay);
+                        }
+                    });  
+                }                                              
             }
         }
 
@@ -165,7 +192,6 @@
             }
             
         }
-
         
 
         function moveScene(idx, step, speed){
@@ -221,7 +247,7 @@
                 if(timeDiff > 35){
                     if(currentStep == stepLens){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && e.deltaY<0){
+                        if(st<=0 && e.deltaY<0){
                             wheelScene(-1);
                         }
                     }else{
@@ -236,36 +262,104 @@
         });
 
 
+        // 터치 이벤트 처리
+
+        /*
+        // 안드로이드 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        android.showBottomMenuOver(boolean isOver)
+        
+        하단메뉴 스크롤 기능 사용 여부 설정
+        android.setEnableScrollBottomMenu(blooean);
+
+        하단메뉴 노출 여부 설정
+        android.showBottomMenu(blooean);
 
 
-        $(document).on('touchstart touchend touchcancel', function(e) {
+        //iOS 
+        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+
+        var obj = new Object();
+        obj.command = "showBottomMenuOver";
+        obj.value ="Y"; //Y - 덮는 형태 ,N - 덮지 않는 형태 
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 스크롤 기능 사용 여부 설정
+        var obj = new Object();
+        obj.command = "setEnableScrollBottomMenu";
+        obj.value ="Y"; //Y 사용, N 미사용
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+
+        하단메뉴 노출 여부 설정
+        var obj = new Object();
+        obj.command = "showBottomMenu";
+        obj.value ="Y"; //Y 노출, N 미노출
+        var jsonString= JSON.stringify(obj);
+        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        */
+
+
+        var isAndroid = vcui.detect.isAndroid;
+        var isIOS = vcui.detect.isIOS;
+
+        if(isApplication) {
+            if(isAndroid && android) android.showBottomMenuOver(true);
+            if(isIOS){
+                var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            }
+        }
+
+        var showBottomMenuY= JSON.stringify({command:'showBottomMenu', value:'Y'});
+        var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
+
+        
+        $('.container').on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 touchSy = data.y;
             } else {
 
+                if (touchSy - data.y > 80) {
+                    // console.log('down');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
+                    }
+                } else if (touchSy - data.y < -80) {
+                    // console.log('up');
+                    if(isApplication) {
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
+                    }
+                }
+
                 if(currentStep == stepLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
                         var st = $contentWrap.scrollTop();
-                        if(st==0 && touchSy - data.y < -80){
+                        if(st<=0 && touchSy - data.y < -80){
                             wheelScene(-1);
-                            console.log('up');
                         }
                     }, 100);
+
                 }else{
+
                     if (touchSy - data.y > 80) {
                         wheelScene(1);
-                        console.log('down');
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
-                        console.log('up');
                     }
                 }    
                 
             }
         });
+
 
 
         function _getEventPoint(ev, type) {
@@ -513,8 +607,6 @@
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                     currentStep = _findStep(currentPage);
                     setBeforeCss(currentStep);
-
-                    console.log(currentStep);
                     moveScene(currentPage,currentStep,0);
                 }, 100);
             }
@@ -677,6 +769,20 @@
             }      
         });
 
+         // 접근성 탭 이동시 화면처리
+         $(document).on('focusin', function(e){
+
+            if($.contains($('.thinq-wrap')[0], e.target)){
+                currentPage = pageLens;
+                currentStep = stepLens;
+            }else if($.contains($('.thinq-hero')[0], e.target)){
+                // currentPage = 0;
+                // currentStep = 0;
+            }
+
+        });
+
+
         function doWheelfixedElement(selector){
             function fixedScrolled(e) {
                 var evt = e || window.event;
@@ -699,15 +805,22 @@
             render(0);
         });     
 
-        // 앱 대응시 주석처리
-        $window.on('resizeend', function(e){
+        if(isApplication){
             render();
-        });
-        $window.trigger('resizeend');
-        // 앱 대응시 주석처리 end
+            $('header').find('.header-bottom').addClass('app-btm');
+        } else{
+            // 앱 대응시 주석처리
+            $window.on('resizeend', function(e){
+                render();
+            });
+            $window.trigger('resizeend');
+            // 앱 대응시 주석처리 end
+        }
         
         $window.trigger('breakpointchange');
-        window.resizeScene = render;        
+        window.resizeScene = render;
+
+         
 
     });
 });
