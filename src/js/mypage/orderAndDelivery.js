@@ -1,5 +1,3 @@
-const { on } = require("gulp");
-
 (function() {
     var ORDER_INQUIRY_LIST_URL;
     var ORDER_DETAIL_URL;

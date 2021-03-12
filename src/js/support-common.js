@@ -2492,13 +2492,9 @@ function validatePhone(value){
         });
 
         $(document).on('keydown', 'input[type="number"]', function(e){
-            if( e.keyCode == 189) {
+            if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109) {
                 e.preventDefault();
             }
-
-            // if ((e.keyCode < 48) || (e.keyCode > 57)){
-            //     e.preventDefault();
-            // }
         });
 
         $(document).on('keyup', 'input[type="number"]', function(e){
