@@ -106,14 +106,14 @@ const concatNames = [
     src + "/js/common/footer.js",
     src + "/js/common/header.js",
     src + "/js/ui/accordion.js",
-    //src + "/js/ui/carousel.js",
+    src + "/js/ui/carousel.js",
     src + "/js/ui/dropdown.js",
     src + "/js/ui/modal.js",
     src + "/js/ui/selectbox.js",
     src + "/js/ui/smoothScroll.js",
     src + "/js/ui/tab.js",
     src + "/js/ui/lazyLoader.js",
-    //src + "/js/ui/imageSwitch.js",
+    src + "/js/ui/imageSwitch.js",
     src + "/js/ui/lazyLoaderSwitch.js",
     src + "/js/ui/calendar.js",
     src + "/js/ui/videoBox.js",
@@ -133,9 +133,6 @@ const concatNames = [
     src + "/js/ui/imageFileInput.js",
     src + "/js/ui/checkboxAllChecker.js"
 ];
-gulp.task("delete-common-ui", function () {
-    return del("/js/vcui.common-ui.js");
-});
 gulp.task("concat-js", () => gulp
     .src(concatNames)
     .pipe(concat("vcui.common-ui.js"))
@@ -368,7 +365,7 @@ gulp.task("watch", ["browser-sync"], () => {
 gulp.task("build", ["clean", "static"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
-gulp.task("build:server", ["clean", "delete-common-ui", "static"], () =>{
+gulp.task("build:server", ["clean", "static"], () =>{
     gulp.start(["styles:server", "scripts", "guide", "html"]);
 });
 

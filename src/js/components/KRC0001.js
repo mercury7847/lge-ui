@@ -1,13 +1,9 @@
-$(window).ready(function(){
-	if(!document.querySelector('.KRC0001')) return false;
-
-	$('.KRC0001').buildCommonUI();
-
+(function() {
 	var listWrapTemplate = 
 	'<div id="{{id}}" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">'+
 	'</div>';
 
-	var listItemTemplate = 
+	var KRC0001_listItemTemplate = 
 		'<div class="list-contents-wrap ui_carousel_slider">'+
 			'<ul class="items unit-list ui_carousel_track">'+
 				'{{#each item in productList}}'+
@@ -54,17 +50,17 @@ $(window).ready(function(){
 	var KRC0001 = {
 		init: function(){
 			var self = this;
-            vcui.require(['ui/carousel'], function () {
+            //vcui.require(['ui/carousel'], function () {
 				self.setting();
 				self.bindEvents();
-			});
+			//});
 		},
 
 		setting: function() {
 			var self = this;
 			
 			self.$section = $('section.KRC0001');			
-			$('section.KRC0001').each(function(idx, item){
+			self.$section.each(function(idx, item){
 				var title = $(item).find('.title');
 				var productListUrl = $(item).data('listUrl');
 				var listwrap = $(item).find('.products-list-wrap');
@@ -75,24 +71,35 @@ $(window).ready(function(){
 					listwrap.append(listgroup);
 				} else{
 					var tab = $(item).find('.tabs li > a[data-type="RV"]');
-					if(tab.length){
+					if(tab.length) {
 						listID = tab.attr('href').replace("#", "");
-						listgroup = vcui.template(listWrapTemplate, {id:listID});
+					} else {
+						//2021-03-13 정승우  탭이없는 화면이 어째서 인지 있어서 예외처리
+						//https://wwwstg.lge.co.kr/washing-machines/f21vdd#n
+						tab = $(item).find('.tabs li.on > a');
+						listID = tab.attr('href').replace("#", "");
+					} 
+					if(listID){
+						if($(item).find("#"+listID).length > 0) {
+							//이미있다
+						} else {
+							listgroup = vcui.template(listWrapTemplate, {id:listID});
 
-						var tabIndex = tab.parent().index();
-						console.log("tabIndex:", tabIndex)
-						if(tabIndex == 0) listwrap.prepend(listgroup);
-						else{
-							var nextId = $(item).find('.tabs li').eq(tabIndex-1).find('>a').attr('href');
-							listwrap.find(nextId).after(listgroup);
+							var tabIndex = tab.parent().index();
+							if(tabIndex == 0) listwrap.prepend(listgroup);
+							else{
+								var nextId = $(item).find('.tabs li').eq(tabIndex-1).find('>a').attr('href');
+								listwrap.find(nextId).after(listgroup);
+							}
 						}
+					} else {
+						//웬지 탭이 없다.
 					}
 				}
 				
 				if(listID){
 					var sendata = {};
 					lgkorUI.requestAjaxDataPost(productListUrl, sendata, function(result) {
-
 						var data = result.data[0];
 						for(var key in data.productList){
 							var item = data.productList[key];
@@ -103,8 +110,8 @@ $(window).ready(function(){
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 						}
 
-						var lists = vcui.template(listItemTemplate, data);
-						$("#"+listID).append(lists);
+						var lists = vcui.template(KRC0001_listItemTemplate, data);
+						$("#"+listID).html(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
 						if($("#"+listID).index()) $("#"+listID).hide();
 					});
@@ -169,6 +176,7 @@ $(window).ready(function(){
 				nextArrow:'.btn-arrow.next',
 				slidesToShow: 4,
 				slidesToScroll: 4,
+				lazyLoad: 'progressive',
 				responsive: [{
 					breakpoint: 100000,
 					settings: {
@@ -191,7 +199,7 @@ $(window).ready(function(){
 					breakpoint: 768,
 					settings: {
 						slidesToShow: 1,
-						slidesToScroll: 1
+						slidesToScroll: 1,
 					}
 				}]
 			});
@@ -206,27 +214,6 @@ $(window).ready(function(){
 				self.requestCart($(this));
 			})
 		},
-
-		/*
-		requestData: function(_id) {
-			var self = this;
-			var ajaxUrl = self.$section.attr('data-list-url');
-			lgkorUI.requestAjaxData(ajaxUrl, {"id":_id}, function(result) {
-				var data = result.data;
-				var arr = data instanceof Array ? data : [];
-				var $list_ul = self.$slider.find('ul');
-				$list_ul.empty();
-				console.log(arr);
-				arr.forEach(function(item, index) {
-					item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                    item.price = item.price ? vcui.number.addComma(item.price) : null;
-					$list_ul.append(vcui.template(listItemTemplate, item));
-				});
-				$list_ul.vcImageSwitch('reload');
-				self.$slider.vcCarousel('reinit');
-			});
-		},
-		*/
 
 		requestCart: function($this) {
 			var self = this;
@@ -244,10 +231,13 @@ $(window).ready(function(){
 				// 		"pageType": "plp"
 			}
 
-			console.log("### requestCart ###", param)
-
 			lgkorUI.requestCart(ajaxUrl, param);
 		},
 	};
-	KRC0001.init();
-})
+
+	$(document).ready(function(){
+		if(!document.querySelector('.KRC0001')) return false;
+		$('.KRC0001').buildCommonUI();
+		KRC0001.init();
+	});
+})();
