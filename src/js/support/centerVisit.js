@@ -251,6 +251,35 @@
 
                 self.bindEvent();
 
+                self.$engineerSlider.vcCarousel({
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint:767,
+                            settings: {
+                                variableWidth : true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
                 self.$cont.commonModel({
                     register: register,
                     selected: data
@@ -406,7 +435,7 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            self.$engineerPopup.on('modalshown', function() {
+            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
                 var url = self.$engineerPopup.data('engineerListUrl');
                 var data = self.data,
                     param = {
@@ -420,46 +449,17 @@
                         time: data.time      
                     };
                 
+                
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
                     var data = result.data,
                         arr = data.engineerList instanceof Array ? data.engineerList : []; 
-                    var slideConfig = {
-                        slidesToShow: 4,
-                        slidesToScroll: 4,
-                        responsive: [
-                            {
-                                breakpoint: 10000,
-                                settings: {
-                                    slidesToShow: 4,
-                                    slidesToScroll: 4,
-                                }
-                            },
-                            {
-                                breakpoint: 1024,
-                                settings: {
-                                    slidesToShow: 3,
-                                    slidesToScroll: 3,
-                                }
-                            },
-                            {
-                                breakpoint:767,
-                                settings: {
-                                    variableWidth : true,
-                                    slidesToShow: 1,
-                                    slidesToScroll: 1
-                                }
-                            }
-                        ]
-                    };
 
                     if (data.resultFlag == 'Y') {  
                         if (arr.length) {
                             var html = vcui.template(engineerTmpl, data);
-                            
+                                
                             self.$engineerSlider.find('.slide-track').html(html);
-                            if (!self.$engineerSlider.hasClass('ui_carousel_initialized')) {
-                                self.$engineerSlider.vcCarousel(slideConfig);
-                            }
                             self.$engineerSlider.vcCarousel('reinit');
                         }
                     } else {
@@ -469,7 +469,12 @@
                             });
                         }
                     }
+                    lgkorUI.hideLoading();
                 });
+            });
+
+            self.$engineerSlider.on('carouselreinit', function() {
+                $('#choiceEngineerPopup').vcModal();
             });
 
             self.$stepCenter.on('change', '[name=center]', function() {
@@ -1089,6 +1094,7 @@
                 date: data.date                
             };
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(self.timeUrl, param, function(result) {
                 var data = result.data;
 
@@ -1106,6 +1112,11 @@
                         lgkorUI.alert("", { title: data.resultMessage });
                     }
                 }
+
+                self.$stepInput.removeClass('active');
+                self.$completeBtns.hide();
+
+                lgkorUI.hideLoading();
             }, 'POST');
         },
         reqestEngineer: function() {
@@ -1122,7 +1133,7 @@
                     time: data.time      
                 };
             
-
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(self.engineerUrl, param, function(result) {
                 var data = result.data,
                     arr = data.engineerList instanceof Array ? data.engineerList : []; 
@@ -1159,11 +1170,11 @@
                     if (arr.length) {
                         self.updateEngineer(arr[0]);
                         if (arr.length > 1) {
-                            var html = vcui.template(engineerTmpl, data);
+                            // var html = vcui.template(engineerTmpl, data);
                             
-                            self.$engineerSlider.find('.slide-track').html(html);
-                            self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
-                            self.$engineerSlider.not('.is-loaded').vcCarousel(slideConfig);
+                            // self.$engineerSlider.find('.slide-track').html(html);
+                            // self.$engineerSlider.filter('.is-loaded').vcCarousel('reinit');
+                            // self.$engineerSlider.not('.is-loaded').vcCarousel(slideConfig);
                             self.$engineerResult.find('.btn').show();
                         } else {
                             self.$engineerResult.find('.btn').hide();
@@ -1172,6 +1183,7 @@
                         self.$completeBtns.show();
                     }
                 }
+                lgkorUI.hideLoading();
             });
         },
         updateEngineer: function(data) {
