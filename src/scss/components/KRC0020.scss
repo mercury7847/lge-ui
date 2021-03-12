@@ -331,6 +331,11 @@
     
                 @include mobile {
                     @if $bg == lightgray {
+                        .title.fc-black,
+                        .title.fc-dark-gray,
+                        .title.fc-gray,
+                        .title.fc-lightgray,
+                        .title.fc-white
                         .body-copy.fc-black,
                         .body-copy.fc-dark-gray,
                         .body-copy.fc-gray,
@@ -342,6 +347,11 @@
                             }
                         }
                     } @else if $bg == dark {
+                        .title.fc-black,
+                        .title.fc-dark-gray,
+                        .title.fc-gray,
+                        .title.fc-lightgray,
+                        .title.fc-white
                         .body-copy.fc-black,
                         .body-copy.fc-dark-gray,
                         .body-copy.fc-gray,
@@ -353,6 +363,11 @@
                             }
                         }
                     } @else if $bg == black {
+                        .title.fc-black,
+                        .title.fc-dark-gray,
+                        .title.fc-gray,
+                        .title.fc-lightgray,
+                        .title.fc-white
                         .body-copy.fc-black,
                         .body-copy.fc-dark-gray,
                         .body-copy.fc-gray,
@@ -364,6 +379,11 @@
                             }
                         }
                     } @else if $bg == white {
+                        .title.fc-black,
+                        .title.fc-dark-gray,
+                        .title.fc-gray,
+                        .title.fc-lightgray,
+                        .title.fc-white
                         .body-copy.fc-black,
                         .body-copy.fc-dark-gray,
                         .body-copy.fc-gray,
@@ -375,6 +395,11 @@
                             }
                         }
                     } @else if $bg == gray {
+                        .title.fc-black,
+                        .title.fc-dark-gray,
+                        .title.fc-gray,
+                        .title.fc-lightgray,
+                        .title.fc-white
                         .body-copy.fc-black,
                         .body-copy.fc-dark-gray,
                         .body-copy.fc-gray,
