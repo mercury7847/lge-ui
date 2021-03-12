@@ -694,6 +694,12 @@
                     }
                     .date-select-box.col-2 {
                         padding-right:0;
+                        .cell:first-child {
+                            width:60%;
+                        }
+                        .cell:last-child {
+                            width:40%;
+                        }
                     }
                 }
             }
