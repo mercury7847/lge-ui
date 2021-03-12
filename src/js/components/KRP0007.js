@@ -77,7 +77,7 @@
                         // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
                         // '{{/if}}' +
                         '<a href="#">' +
-                            '{{#if (reviewsCount > 0)}}' +
+                            '{{#if (reviewsCount != "0")}}' +
                             '<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
@@ -582,6 +582,7 @@
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+                item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
                 item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(years1TotAmt) : null;
 
