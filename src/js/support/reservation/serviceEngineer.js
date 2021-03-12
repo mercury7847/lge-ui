@@ -744,7 +744,15 @@
 
                     // self.$cont.find('.btm-more.both .chk-wrap').show();
 
-                    if (self.autoFlag) self.requestDate();
+                    if (self.autoFlag) {
+                        self.$stepInput.find('.step-btn-wrap').show();
+                        self.$stepDate.removeClass('active');
+                        self.$stepEngineer.removeClass('active');
+                        self.$completeBtns.hide();
+                        $('.date-wrap').calendar('reset');
+                        $('.time-wrap').timeCalendar('reset');  
+                        self.autoFlag = false;
+                    }
                 }); 
             });
 

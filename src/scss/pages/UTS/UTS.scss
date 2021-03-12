@@ -609,6 +609,21 @@
             padding: 0 20px 60px;
             border-top: 0;
         }
+
+        // 검색결과 타이틀 라인 제거
+        &.w-filter {
+            @include tablet {
+                .lay-filter {
+                    .fiter-head:after,
+                    .filter-head:after {
+                        display: none;
+                    }
+                    .plp-filter-wrap .filter-top {
+                        padding-top: 20px;
+                    }
+                }
+            }
+        }
     }
 
     .main-wrap {
