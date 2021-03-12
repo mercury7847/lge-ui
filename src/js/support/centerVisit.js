@@ -903,14 +903,16 @@
         setWarranty: function(data) {
             var self = this;
             var $warranty = self.$stepInput.find('[name=buyingdate]');
-
+            
             if (self.isLogin) {
                 if (data.warrantyText && data.warrantValue) {
+                    console.log(1);
                     $warranty.closest('.conts').append('<p class="form-text">'+data.warrantyText+'</p>');
                     $warranty.filter('[value='+data.warrantValue+']').prop('checked', true);
                     
                     $warranty.closest('.rdo-list-wrap').hide();
                 } else {
+                    console.log(2);
                     $warranty.closest('.rdo-list-wrap').show();
                 }
             }
@@ -923,7 +925,7 @@
             if (!options) {
                 var options = {
                     page:1
-                }
+                };
             }
 
             param = $.extend(param, options);
@@ -941,18 +943,16 @@
                 if (dataArr.length) {
                     html = vcui.template(centerTmpl, data);
                     $listTable.find('tbody').html(html);
-                    //self.$centerPagination.pagination('update', data.listPage);
 
                     $noData.hide();
                     $listTable.show();
-                    //self.$centerPagination.show();
                 } else {
                     $noData.show();
                     $listTable.hide();
-                    //self.$centerPagination.hide();
                 }
-
-                self.setWarranty(data);
+                if (data.resultFlag == 'Y') {
+                    self.setWarranty(data);
+                }
                 self.setTopic(data);
 
                 lgkorUI.hideLoading();

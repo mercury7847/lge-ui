@@ -63,7 +63,7 @@
 
                 
                 cookieExpire.setDate(cookieExpire.getDate() + expire);
-                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; EXPIRES=' + cookieExpire.toUTCString()) + '; PATH=/; DOMAIN=; SECURE=';
 
                 document.cookie = cookieText;
             },
@@ -2496,9 +2496,9 @@ function validatePhone(value){
                 e.preventDefault();
             }
 
-            if ((e.keyCode < 48) || (e.keyCode > 57)){
-                e.preventDefault();
-            }
+            // if ((e.keyCode < 48) || (e.keyCode > 57)){
+            //     e.preventDefault();
+            // }
         });
 
         $(document).on('keyup', 'input[type="number"]', function(e){
