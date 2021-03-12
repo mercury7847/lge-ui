@@ -19,7 +19,7 @@
 							'<p class="product-sku"><span class="blind">모델넘버</span>{{item.salesModelCode}}</p>' +
 							'<div class="review-info">' +
 								'{{#if (item.reviewsCount != "0")}}'+
-								'<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
+								'<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
 								'<div class="average-rating"><span class="blind">평점</span>{{item.reviewsScore}}</div>' +
 								'<div class="review-count"><span class="blind">리뷰 수</span>({{item.reviewsCount}})</div>' +
 								'{{/if}}' +
@@ -111,8 +111,10 @@
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 							item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
+							console.log(item.reviewsCount, (item.reviewsCount != "0"));
 						}
 
+						console.log(data);
 						var lists = vcui.template(KRC0001_listItemTemplate, data);
 						$("#"+listID).html(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
