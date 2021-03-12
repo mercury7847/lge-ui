@@ -594,8 +594,11 @@
             self.$downloadPopup.on('click','div.search-input button.btn-search', function(e){
                 var param = {"page":1};
                 var search = self.$downloadSearch.val();
-                if(search) {
+                if(search && search.length > 0) {
                     param.search = search;
+                } else {
+                    lgkorUI.alert("", {title: "검색어를 입력하고 조회해 주세요."});
+                    return;
                 }
                 //if(search) {
                     self.$downloadSearch.data('search',search);
