@@ -353,9 +353,9 @@ CS.MD.search = function() {
                     cookieKeyword.addCookie(val);
                     self._setRecently();
                 }
-                $('.search-error').hide();
+                self.$el.find('.search-error').hide();
             } else {
-                $('.search-error').show();   
+                self.$el.find('.search-error').show();   
             }
 
             self.$el.removeClass('on');
@@ -409,7 +409,7 @@ CS.MD.search = function() {
                         self.$el.addClass('on');
                     }]);
 
-                    $('.search-error').hide();
+                    self.$el.find('.search-error').hide();
                 } else {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
