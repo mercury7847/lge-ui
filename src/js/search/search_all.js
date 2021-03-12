@@ -640,6 +640,8 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
+                    //2021-03-11 제대로 값을 못받아와서 임시 처장
+                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색한 검색어

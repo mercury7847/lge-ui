@@ -21,14 +21,14 @@
                     <div class="brand-hero signature-hero">
                         <div class="scene01">
                             <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-signature-visual.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m.jpg" aria-hidden="true"></div>
-                            <div class="image blur ui_bg_switch" data-step-0="opacity:0" data-step-1="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur1.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur1.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur1.jpg" aria-hidden="true"></div>
-                            <div class="image blur ui_bg_switch" data-step-1="opacity:0" data-step-2="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur2.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur2.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur2.jpg" aria-hidden="true"></div>
+                            <div class="image blur ui_bg_switch" data-step-1="opacity:0" data-step-2="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur1.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur1.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur1.jpg" aria-hidden="true"></div>
+                            <!-- <div class="image blur ui_bg_switch" data-step-0="opacity:0" data-step-1="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur2.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur2.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur2.jpg" aria-hidden="true"></div> -->
                             <div class="content">
                                 <div class="cont2" data-step-0="opacity:0, y:200%" data-step-1="opacity:1, y:-50%" data-step-2="opacity:0, y:-200%">
                                     <p>예술은 기술에 <br class="mo-only">영감을 줍니다.</p>
                                     <p>기술은 예술을 <br class="mo-only">완성합니다.</p>
                                 </div>
-                                <div class="cont3" data-step-1="opacity:0, y:200%" data-step-2="opacity:1, y:-50%">
+                                <div class="cont3" data-step-1="display:none, opacity:0, y:200%" data-step-2="display:'', opacity:1, y:-50%">
                                     <p>가전, 작품이 되다<br>LG SIGNATURE</p>
                                     <div class="btn-group youtube-box" data-step-1="opacity:0, y:300px" data-step-2="opacity:1, y:0px"><!-- 210224 수정 [.youtube-box 클래스 추가] -->
                                         <a href="#signature-cont4" class="btn border size-m"><span>LG SIGNATURE 작품 보기</span></a>
@@ -545,9 +545,115 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="box">
+                                                <div class="thumb">
+                                                    <img src="/lg5-common/images/PRH/img-signature-artguide01.jpg" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType: true,
+                                                        flags: [
+                                                            "본태 미술관"
+                                                        ]
+                                                    })
+                                                    <h3 class="title"><span>본래 아름다움 그대로</span></h3>
+                                                    <div class="btn-group youtube-box">
+                                                        <!-- 210305 수정 [버튼 위치 변경] -->
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
+                                                        <a href="http://www.noblesse.com/home/news/magazine/detail.php?no=8600" class="btn border size" target="_blank" title="새 창 열림"><span>기사 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="box">
+                                                <div class="thumb">
+                                                    <img src="/lg5-common/images/PRH/img-signature-artguide02.jpg" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType: true,
+                                                        flags: [
+                                                            "제주도립 김창열 미술관"
+                                                        ]
+                                                    })
+                                                    <h3 class="title"><span>예술의 종착지</span></h3>
+                                                    <div class="btn-group youtube-box">
+                                                        <!-- 210305 수정 [버튼 위치 변경] -->
+                                                        <a href="#" data-src="https://www.youtube.com/embed/MLnyvXaAQKQ" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a>
+                                                        <a href="http://www.noblesse.com/home/news/magazine/detail.php?no=8600" class="btn border size" target="_blank" title="새 창 열림"><span>기사 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="box">
+                                                <div class="thumb">
+                                                    <img src="/lg5-common/images/PRH/img-signature-artguide03.jpg" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType: true,
+                                                        flags: [
+                                                            "경기도 미술관"
+                                                        ]
+                                                    })
+                                                    <h3 class="title"><span>예술의 유희</span></h3>
+                                                    <div class="btn-group youtube-box">
+                                                        <!-- 210305 수정 [버튼 위치 변경] -->
+                                                        <a href="#" data-src="https://www.youtube.com/embed/Pn7uxM4L09g" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                        <a href="http://www.noblesse.com/home/news/magazine/detail.php?no=7781" class="btn border size" target="_blank" title="새 창 열림"><span>기사 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="box">
+                                                <div class="thumb">
+                                                    <img src="/lg5-common/images/PRH/img-signature-artguide04.jpg" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType: true,
+                                                        flags: [
+                                                            "엄뮤지엄"
+                                                        ]
+                                                    })
+                                                    <h3 class="title"><span>작업실에서 미술관으로</span></h3>
+                                                    <div class="btn-group youtube-box">
+                                                        <!-- 210305 수정 [버튼 위치 변경] -->
+                                                        <a href="#" data-src="https://www.youtube.com/embed/RXTFT8_czGI" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                        <a href="http://www.noblesse.com/home/news/magazine/detail.php?no=7521" class="btn border size" target="_blank" title="새 창 열림"><span>기사 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="box">
+                                                <div class="thumb">
+                                                    <img src="/lg5-common/images/PRH/img-signature-artguide05.jpg" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType: true,
+                                                        flags: [
+                                                            "바우지움 조각 미술관"
+                                                        ]
+                                                    })
+                                                    <h3 class="title"><span>돌과 바람의 미술관</span></h3>
+                                                    <div class="btn-group youtube-box">
+                                                        <!-- 210305 수정 [버튼 위치 변경] -->
+                                                        <a href="#" data-src="https://www.youtube.com/embed/AhFta1qCpzk" data-type="youtube" data-target="modal" class="btn border size see-video"><span>영상 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                        <a href="http://www.noblesse.com/home/news/magazine/detail.php?no=8413" class="btn border size" target="_blank" title="새 창 열림"><span>기사 보기</span></a><!-- 210224 수정 [링크 추가] -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
                                     </ul>
                                     <!-- 클릭 시 .fold 추가, toggle text - 더보기 / 접기 -->
-                                    <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                    <button type="button" class="btn-moreview block" id="uiMoreViewBtn" data-toggle-txt="접기"><span>더보기</span></button>
                                 </div>
                             </div>
 

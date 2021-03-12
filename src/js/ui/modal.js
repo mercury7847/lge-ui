@@ -92,18 +92,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         },
         _handleFocusin: function _handleFocusin(e) {
             var self = this;
-
             if (!self.active) {
                 return;
             }
+            
             if (self.active.$el[0] !== e.target && !$.contains(self.active.$el[0], e.target)) {
-                self.active.$el.find(':focusable').first().focus();
+                self.active.$el.find(':visible:focusable').first().focus();
                 e.stopPropagation();
             }
         },
         _handleClick: function _handleClick(e) {
             e.preventDefault();
-
             var self = this,
                 $el = $(e.currentTarget),
                 target = $el.attr('href') || $el.attr('data-href'),
@@ -388,14 +387,20 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     $focusEl.eq(0).focus();
                 } else {
                     // 레이어에 포커싱
-                    self.$el.attr('tabindex', 0).focus();
+                    
+                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
+                    self.$el.find(':focusable:visible').first().focus();
+                    //self.$el.focus(); 
+
                 }
 
                 var $focusEl = self.$('[data-autofocus=true]');
                 if ($focusEl.length > 0) {
                     $focusEl.eq(0).focus();
                 } else {
-                    self.$el.attr('tabindex', 0).focus();
+                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
+                    self.$el.find(':focusable:visible').first().focus();
+                    //self.$el.focus(); 
                 }
 
                 // 버튼
@@ -550,7 +555,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 core.css3.prefix('user-select') && self.$(options.dragHandle).css(core.css3.prefix('user-select'), 'none');
                 self.on('mousedown touchstart', options.dragHandle, function (e) {
                     e.preventDefault();
-
                     var isMouseDown = true,
                         pos = self.$el.position(),
                         oriPos = {
@@ -559,7 +563,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     },
                         _handler;
 
-                    $doc.on(self.makeEventNS('mousemove mouseup touchmove touchend touchcancel'), _handler = function handler(e) {
+                    $doc.on(self.makeEventNS('mousemove mouseup touchmove touchend touchcancel'), _handler = function handler(e) {                        
                         switch (e.type) {
                             case 'mousemove':
                             case 'touchmove':
@@ -601,12 +605,16 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 $focusEl.eq(0).focus();
             } else {
                 // 레이어에 포커싱
-                self.$el.attr('tabindex', 0).focus();
-            }
+                //self.$el.attr('tabindex', 0).focus(); 
+                self.$el.find(':focusable:visible').first().focus();
+                //self.$el.focus(); 
 
+
+            }
+            
             $doc.off('focusin' + self.getEventNS()).on('focusin' + self.getEventNS(), self.proxy(function (e) {
                 if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) {
-                    self.$el.find(':focusable').first().focus();
+                    self.$el.find(':focusable:visible').first().focus();
                     e.stopPropagation();
                 }
             }));
