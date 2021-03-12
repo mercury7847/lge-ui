@@ -206,6 +206,7 @@
                 
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
+                self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
                 if(typeof productPrice !== 'undefined') {
                     self.$pdpInfoPaymentAmount.data('price',productPrice);
                 } else {
@@ -226,16 +227,6 @@
                 //
                 //self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
-                //최초 체크 jsw
-                var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
-                if(checkinput.length > 0) {
-                    var check = lgkorUI.stringToBool(checkinput.val());
-                    if(check) {
-                        console.log('???');
-                        var $paymentAmount = self.$pdpInfoCareshipService.siblings('div.payment-amount');
-                        $paymentAmount.find('>.info-text').show();
-                    }
-                }
 
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
                 
@@ -396,6 +387,14 @@
                         //렌탈타입
                         self.updateAssociatedCardList($cardList, self.rentalCardList);
                     }
+                }
+
+                //최초 케어쉽 체크 여부
+                var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
+                if(checkinput.length > 0) {
+                    var check = lgkorUI.stringToBool(checkinput.val());
+                    var $paymentAmount = self.$pdpInfoCareshipService.siblings('div.payment-amount');
+                    self.updatePaymentAmountState($paymentAmount, check);
                 }
 
                 //
@@ -918,14 +917,7 @@
                                 self.updatePaymentAmountPrice($paymentAmount);
 
                                 //수량체크버튼 활성
-                                var $input = $paymentAmount.find('input.quantity');
-                                if(parseInt($input.val()) == 1) {
-                                    $paymentAmount.find('button.plus').attr('disabled',false);
-                                } else {
-                                    $paymentAmount.find('button.minus').attr('disabled',false);
-                                    $paymentAmount.find('button.plus').attr('disabled',false);
-                                }
-                                $paymentAmount.find('>.info-text').hide();
+                                self.updatePaymentAmountState($paymentAmount, false);
                             }
                         }
                     } else {
@@ -939,12 +931,7 @@
                             self.updatePaymentAmountPrice($paymentAmount);
 
                             //케어십 신청됬으므로 수량체크버튼 비활성
-                            $paymentAmount.find('button.minus').attr('disabled',true);
-                            $paymentAmount.find('button.plus').attr('disabled',true);
-                            $paymentAmount.find('input.quantity').val(1);
-                            $paymentAmount.data('quantity',1);
-                            self.updatePaymentAmountPrice($paymentAmount);
-                            $paymentAmount.find('>.info-text').show();
+                            self.updatePaymentAmountState($paymentAmount, true);
                         }
                     }
                 });
@@ -1287,13 +1274,35 @@
                     totalPrice += totalAdditional;
                 }
 
+                console.log("update",totalPrice, quantity);
                 var $total = $paymentAmount.find('dl.total-payment span.price');
                 $total.text(prefix + vcui.number.addComma(totalPrice * quantity) + '원');
             },
 
             //케어솔루션 선택 여부에 따른 구매수량 버튼 활성/비활성
-            updatePaymentAmountState: function($paymentAmount) {
+            updatePaymentAmountState: function($paymentAmount, isCare) {
+                var self = this;
+                if(isCare) {
+                    //케어십 신청됬으므로 수량체크버튼 비활성
+                    $paymentAmount.find('button.minus').attr('disabled',true);
+                    $paymentAmount.find('button.plus').attr('disabled',true);
+                    $paymentAmount.find('input.quantity').val(1);
+                    $paymentAmount.data('quantity',1);
+                    $paymentAmount.find('>.info-text').show();                
+                } else {
+                    //수량체크버튼 활성
+                    var $input = $paymentAmount.find('input.quantity');
+                    if(parseInt($input.val()) == 1) {
+                        $paymentAmount.find('button.minus').attr('disabled',true);
+                        $paymentAmount.find('button.plus').attr('disabled',false);
+                    } else {
+                        $paymentAmount.find('button.minus').attr('disabled',false);
+                        $paymentAmount.find('button.plus').attr('disabled',false);
+                    }
+                    $paymentAmount.find('>.info-text').hide();
+                }
 
+                self.updatePaymentAmountPrice($paymentAmount);
             },
 
             //구매진행
