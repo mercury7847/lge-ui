@@ -42,7 +42,6 @@ $(window).ready(function(){
 							'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>'+
 						'</div>'+
 					'</div>'+
-					'<div class="caption">{{storyTitle}}</div>'+
 				'</div>'+
 				'{{/if}}'+
 			'</div>'+
@@ -178,6 +177,10 @@ $(window).ready(function(){
                 e.preventDefault();
 
                 toggleVideoInfo();
+            }).on('click', '.controller-wrap button', function(e){
+                e.preventDefault();
+
+                toggleVideoCtrl(this);
             });
             $('.video-list-wrap').on('click', '.video-list li a', function(e){
                 e.preventDefault();
@@ -185,6 +188,29 @@ $(window).ready(function(){
                 var storyID = $(this).data('storyId');
                 setViewContents(storyID);
             });
+        }
+
+        function toggleVideoCtrl(ctrl){
+            var video = $(ctrl).parent().siblings('video').get(0);
+            var name = $(ctrl).attr('name');
+            var newname, newtext;
+            if(name == 'pause'){
+                newname = "play";
+                newtext = $(ctrl).data("playText");
+
+                $(ctrl).removeClass('pause').addClass('play');
+
+                video.pause();
+            } else{
+                newname = "pause";
+                newtext = $(ctrl).data("pauseText");
+
+                $(ctrl).removeClass('play').addClass('pause');
+
+                video.play();
+            }
+
+            $(ctrl).attr('name', newname).text(newtext);
         }
 
         function toggleVideoInfo(){

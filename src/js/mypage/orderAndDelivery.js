@@ -1398,10 +1398,10 @@
             leng = Object.keys(PAYMENT_DATA).length;
             
             var isRender = false;
-            if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) isRender = true;
-            else{
+            if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL){
                 if(listData.contDtlType == "C01") isRender = true;
-            }
+            } else isRender = true;
+            
             console.log("isRender:",isRender)
 
             if(isRender && leng){
@@ -1594,7 +1594,7 @@
                 console.log("### takeback productList ###", productList);
 
                 addPopProdductList(popup, productList, false);
-    
+                
                 productPrices = productList[0].productPrice ? parseInt(productList[0].productPrice) : 0;
                 discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
                 mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
@@ -1608,6 +1608,8 @@
 
                 $('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
+            //구매 결재정보 이름
+            //케어 납부정보 이름
 
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
@@ -1826,7 +1828,6 @@
     function setMethodReceiptPop(){
 
     }
-
     //상품 클릭...
     function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
@@ -1837,7 +1838,9 @@
         
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
-            "sku": listData[dataId].productList[prodId].productNameEN
+            "sku": listData[dataId].productList[prodId].productNameEN,
+            tabFlag: TAB_FLAG,
+            rtModelSeq: listData[dataId].productList[prodId].rtModelSeq
         }
 
         console.log("### setProductStatus ###", sendata);
