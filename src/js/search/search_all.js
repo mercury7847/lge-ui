@@ -37,7 +37,7 @@
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '<a href="{{url}}>' +
+                '<a href="{{url}}">' +
                     '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
@@ -640,8 +640,6 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
-                    //2021-03-11 제대로 값을 못받아와서 임시 처장
-                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색한 검색어
