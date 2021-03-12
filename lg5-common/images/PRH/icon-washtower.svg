@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g transform="translate(-32 -12948) translate(0 106) translate(0 8874) translate(32 2888) translate(0 784) translate(0 296)">
+                                        <rect width="112" height="112" fill="#F4F4F4" rx="56"/>
+                                        <g>
+                                            <g>
+                                                <g stroke="#000" stroke-width="3">
+                                                    <path d="M44.55 1.5H3.45c-.538 0-1.026.218-1.379.571S1.5 2.911 1.5 3.45v69.1c0 .538.218 1.026.571 1.379s.84.571 1.379.571h41.1c.538 0 1.026-.218 1.379-.571s.571-.84.571-1.379V3.45c0-.538-.218-1.026-.571-1.379s-.84-.571-1.379-.571z" transform="translate(16 16) translate(16 2)"/>
+                                                </g>
+                                                <g fill="#000" transform="translate(16 16) translate(16 2) translate(0 35)">
+                                                    <rect width="16" height="3" x="32" y=".6" rx="1.5"/>
+                                                    <rect width="16" height="3" y=".6" rx="1.5"/>
+                                                    <path fill-rule="nonzero" d="M24 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/>
+                                                </g>
+                                                <g transform="translate(16 16) translate(16 2) translate(14 46)">
+                                                    <circle cx="10" cy="10" r="10" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <path fill="#000" fill-rule="nonzero" d="M15.845 7.257L18 5.497 16.003 4l-3.087 2.325C12.34 6.76 12 7.44 12 8.162v3.69c0 .725.342 1.407.922 1.841L16.002 16 18 14.505l-2.07-1.536c-.585-.434-.93-1.12-.93-1.847V9.038c0-.69.31-1.344.845-1.781z"/>
+                                                </g>
+                                                <g transform="translate(16 16) translate(16 2) translate(14 10)">
+                                                    <circle cx="10" cy="10" r="10" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <path fill="#000" fill-rule="nonzero" d="M15.845 7.257L18 5.497 16.003 4l-3.087 2.325C12.34 6.76 12 7.44 12 8.162v3.69c0 .725.342 1.407.922 1.841L16.002 16 18 14.505l-2.07-1.536c-.585-.434-.93-1.12-.93-1.847V9.038c0-.69.31-1.344.845-1.781z"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
