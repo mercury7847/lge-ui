@@ -444,19 +444,20 @@
         var isOrderlist = $('.contents.mypage').hasClass('orderAndDelivery'); 
         var isOrderdetail = $('.contents.mypage').hasClass('orderAndDelivery-detail'); 
         var isNonemem = $('.contents.mypage').hasClass('non-members'); 
-        var isCaredetail = $('.contents.mypage').hasClass('orderAndDelivery-careDetail'); 
         if(isOrderlist) PAGE_TYPE = PAGE_TYPE_LIST;
         if(isOrderdetail) PAGE_TYPE = PAGE_TYPE_DETAIL;
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM_DETAIL;
-        if(isCaredetail) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
 
-        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckEnable:false});
+        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y"});
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
-        console.log("TAB_FLAG:", TAB_FLAG);
+        if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
+
+
+        console.log("TAB_FLAG / PAGE_TYPE:", TAB_FLAG, " / ", PAGE_TYPE);
 
         var register = {
             paymentCard:{
@@ -576,12 +577,19 @@
             var dataID = $(this).closest('.box').data("id");
             var prodID = $(this).closest('.col-table').data('prodId');
             var pdpUrl = $(this).attr("href");
-            if(PAGE_TYPE == PAGE_TYPE_LIST){                
+            if(PAGE_TYPE == PAGE_TYPE_LIST){        
+                var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
                 var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
-                location.href = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
+                var sendUrl = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
+                sendUrl += "&startDate=" + dateData.startDate + "&endDate=" + dateData.endDate + "&periodSelect=" + dateData.periodSelect;
+                location.href = sendUrl;
             } else{
                 setProductStatus(dataID, prodID, pdpUrl);
             }
+        }).on('click', '.lnb-contents > .btn-group button', function(e){
+            e.preventDefault();
+
+            sendListPage();
         });
 
         cancelAllChecker = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('instance');
@@ -962,6 +970,7 @@
 
                 for(var cdx in list[idx].productList){
                     var prodlist = list[idx].productList[cdx];
+                    console.log("prodlist:",prodlist)
                     var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
                     prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
                     template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
@@ -1096,7 +1105,7 @@
     
                     if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
                     if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
-                    
+                
                     PAYMENT_DATA = vcui.clone(payment);
                 }
             }
@@ -1388,8 +1397,15 @@
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
                 
             leng = Object.keys(PAYMENT_DATA).length;
-            console.log("PAYMENT_DATA:",PAYMENT_DATA)
-            if(listData.contDtlType == "C01" && leng){
+            
+            var isRender = false;
+            if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL){
+                if(listData.contDtlType == "C01") isRender = true;
+            } else isRender = true;
+            
+            console.log("isRender:",isRender)
+
+            if(isRender && leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
@@ -1579,7 +1595,7 @@
                 console.log("### takeback productList ###", productList);
 
                 addPopProdductList(popup, productList, false);
-    
+                
                 productPrices = productList[0].productPrice ? parseInt(productList[0].productPrice) : 0;
                 discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
                 mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
@@ -1593,6 +1609,8 @@
 
                 $('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
+            //구매 결재정보 이름
+            //케어 납부정보 이름
 
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
@@ -1811,14 +1829,19 @@
     function setMethodReceiptPop(){
 
     }
-
     //상품 클릭...
     function setProductStatus(dataId, prodId, pdpUrl){
         lgkorUI.showLoading();
+
+        //리스트에서는 상품 이미지에서만 체크..go pdp
+        //상세보기 둘다 체크후..go pdp
+        //리스트에서는 네임은 상세로...go detail
         
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
-            "sku": listData[dataId].productList[prodId].productNameEN
+            "sku": listData[dataId].productList[prodId].productNameEN,
+            tabFlag: TAB_FLAG,
+            rtModelSeq: listData[dataId].productList[prodId].rtModelSeq
         }
 
         console.log("### setProductStatus ###", sendata);
@@ -1833,10 +1856,11 @@
 
             lgkorUI.hideLoading();
         });
+    }
 
-        //리스트에서는 상품 이미지에서만 체크..go pdp
-        //상세보기 둘다 체크후..go pdp
-        //리스트에서는 네임은 상세로...
+    //주문/배송 목록가기...
+    function sendListPage(){
+
     }
 
     document.addEventListener('DOMContentLoaded', function () {

@@ -22,19 +22,21 @@ $(window).ready(function(){
 							'</strong>' +
 							'<p class="product-sku"><span class="blind">모델넘버</span>{{item.salesModelCode}}</p>' +
 							'<div class="review-info">' +
-								'{{#if (item.reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+								'{{#if (item.reviewsCount > 0)}}'+
+								'<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
 								'<div class="average-rating"><span class="blind">평점</span>{{item.reviewsScore}}</div>' +
 								'<div class="review-count"><span class="blind">리뷰 수</span>({{item.reviewsCount}})</div>' +
+								'{{/if}}' +
 							'</div>' +
 							'{{#if item.checkBtnFlag}}'+
-							'<div class="product-price">' +
-								'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
-								'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
-							'</div>' +
+								'<div class="product-price">' +
+									'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
+									'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
+								'</div>' +
 							'{{/if}}'+	
 						'</div>' +
-						'{{#if item.buyBtnFlag == "Y" && item.obsBtnRule != "disable"}}'+
-						'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+						'{{#if item.checkPriceFlag}}'+
+							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
@@ -95,6 +97,7 @@ $(window).ready(function(){
 						for(var key in data.productList){
 							var item = data.productList[key];
 							item.checkBtnFlag = self.checkBtnFlag(item);
+							item.checkPriceFlag = self.checkPriceFlag(item);
 							item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
@@ -111,9 +114,49 @@ $(window).ready(function(){
 			self.setCarousel(self.$section.find('div.products-list-wrap .ui_carousel_slider'));
 		},
 
+		/*
 		checkBtnFlag: function(item) {
 			if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
 				return true;
+			} else {
+				return false;
+			}
+		},
+		*/
+
+		checkBtnFlag: function(item) {
+			if(item.bizType == "PRODUCT") {
+				if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
+					return true
+				} else {
+					return false;
+				}
+			} else if(item.bizType == "DISPOSABLE") {
+				//소모품 DISPOSABLE
+				if (item.obsInventoryQty > 0) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		},
+
+		checkPriceFlag: function(item) {
+			if(item.bizType == "PRODUCT") {
+				if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
+					return true
+				} else {
+					return false;
+				}
+			} else if(item.bizType == "DISPOSABLE") {
+				//소모품 DISPOSABLE
+				if(!item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}

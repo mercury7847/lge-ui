@@ -49,13 +49,13 @@
             }
         }
 
-        & + .search-result-category {
-            padding: 0 40px 48px;
-            @include mobile {
-                margin-top: -8px;
-                padding: 0 0 32px;
-            }
-        }
+        //& + .search-result-category {
+        //    padding: 0 40px 48px;
+        //    @include mobile {
+        //        margin-top: -8px;
+        //        padding: 0 0 32px;
+        //    }
+        //}
     }
 
     .recommended-curation {
@@ -411,7 +411,7 @@
 
     .search-result-category {
         max-width: (1380px + 80px);
-        margin: 48px auto 0;
+        margin: 32px auto 0;
         padding: 0 40px;
         .inner {
             position: relative;
@@ -511,7 +511,7 @@
         }
         @include mobile {
             max-width: 100%;
-            margin-top: 40px;
+            margin-top: 24px;
             padding: 0;
             //.inner { title 있을 경우 필요함
             //    padding-left: 76px;
@@ -528,7 +528,7 @@
     }
     .search-banner {
         max-width: (1380px + 80px);
-        margin: 80px auto 0;
+        margin: 40px auto 0;
         padding: 0 40px;
         a {
             //overflow: hidden;
@@ -570,7 +570,7 @@
         @include mobile {
             max-width: 100%;
             height: auto;
-            margin: 40px 0 0;
+            margin: 32px 0 0;
             padding: 0 16px;
             a {
                 overflow: hidden;
@@ -597,7 +597,7 @@
     }
     .cont-wrap {
         position: relative;
-        margin-top: 80px;
+        margin-top: 64px;
         padding: 0 40px 120px;
         @media screen and (min-width: 1025px){
             &.w-filter {
@@ -608,6 +608,21 @@
             margin-top: 40px;
             padding: 0 20px 60px;
             border-top: 0;
+        }
+
+        // 검색결과 타이틀 라인 제거
+        &.w-filter {
+            @include tablet {
+                .lay-filter {
+                    .fiter-head:after,
+                    .filter-head:after {
+                        display: none;
+                    }
+                    .plp-filter-wrap .filter-top {
+                        padding-top: 20px;
+                    }
+                }
+            }
         }
     }
 
@@ -661,58 +676,48 @@
 
 .search-result-wrap {
     @include clearfix;
-     //max-width: 1284px;
-     //max-width: 1146px;
      min-height: 1000px;
      margin: 0 auto;
     @include mobile {
         min-height: auto;
     }
-    .result-area {
-        //float: left;
-        width: 100%;
-        //max-width: 1284px;
-        //margin: 0 auto;
-    }
-/*
-    @media screen and (max-width: 1780px) {
-        position: relative;
-        .btn-filter {
-            position: absolute;
-            //top: 29px;
-            top: 0;
-            left: 0;
-            & ~ .list-sorting {
-                padding-left: 48px;
-                @include mobile {
-                    padding: 26px 0 62px 38px;
-                }
+    &.all {
+        .list-sorting {
+            display: none !important;
+            &.fixed {
+                display: block !important;
             }
         }
     }
-
-    @media screen and (max-width: 1284px) {
-        max-width: 100%;
-        .result-area {
-            float: none;
-        }
+    .result-area {
+        width: 100%;
     }
-*/
+
     .result-list-wrap {
+        & + .result-list-wrap {
+            margin-top: 80px;
+        }
         .title {
-            @include font-large-1;
+            @include font($font-large-2,34px);
             &.type2 {
                 @include font-large;
             }
             @include mobile {
-                @include font-medium;
+                @include font($font-large-1,28px);
+            }
+        }
+        @include mobile {
+            position: relative;
+            padding-bottom: 45px;
+            & + .result-list-wrap {
+                margin-top: 40px;
             }
         }
     }
 
     .list-head {
         @include clearfix;
-        padding: 0 0 16px;
+        padding: 0 0 24px;
         .title {
             float: left;
         }
@@ -727,6 +732,17 @@
                     //height: 6px;
                     //border-width: 1px 1px 0 0;
                 //}
+            }
+        }
+        @include mobile {
+            padding: 0 0 16px;
+            .btn-area {
+                position: absolute;
+                bottom: 12px;
+                right: 0;
+                .btn-link {
+                    margin-top: 0;
+                }
             }
         }
     }
@@ -1323,7 +1339,7 @@
 }
 
 .list-sorting {
-    display: none;
+    //display: none;
     .input-keyword-wrap {
         display: none;
     }

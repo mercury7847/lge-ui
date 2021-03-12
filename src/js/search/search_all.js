@@ -17,7 +17,7 @@
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="sku">{{#raw sku}}</div>' +
                     '<div class="review-info">' +
                         '{{#if review > 0}}' +
                         '<a href="{{url}}">' +
@@ -37,18 +37,18 @@
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '<a href="#">' +
-                    '{{#if carePrice}}' +
+                '<a href="{{url}}">' +
+                    '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
-                        '{{#if carePrice}}<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                        '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
                         '<div class="original">' +
-                            '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                            '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
-                            '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                     '</div>' +
                 '</a>' +
@@ -99,7 +99,7 @@
             '<div class="info-text">' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="sku">{{#raw sku}}</div>' +
                     '<div class="info-btm">' +
                         '<div class="text model">{{desc}}</div>' +
                     '</div>' +
@@ -135,7 +135,7 @@
                 '</div>' +
                 '<div class="result-detail">' +
                     '<div href="{{url}}" class="shop-info">' +
-                        '<a href="{{url}}" class="desc add">{{address}}</a>' +
+                        '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
                         '<a href="{{url}}" class="desc time">{{time}}</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="혼잡"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
@@ -154,7 +154,7 @@
             '<div class="info-text">' +
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
-                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="sku">{{#raw sku}}</div>' +
                     '<div class="info-btm">' +
                         '{{#each item in category}}<span class="text">{{item}}</span>{{/each}}' +
                     '</div>' +
@@ -640,8 +640,6 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
-                    //2021-03-11 제대로 값을 못받아와서 임시 처장
-                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색한 검색어

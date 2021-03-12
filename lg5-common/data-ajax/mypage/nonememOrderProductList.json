@@ -10,92 +10,25 @@
             "orderCancelAbleYn": "Y",
             "productList": [
                 {
-                    "modelID": "ADC495769328",
-                    "productFlag": "케어십",
-                    "productNameKR": "LG 디오스 상냉장하냉동",
-                    "productNameEN": "OLED55BXPUA",
-                    "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                    "productPDPurl": "#none",
-                    "productDetailUrl": "http://www.lge.com",
-                    "specList": ["Silver"],
-                    "productTotal": "",
-                    "productPrice": "1760000",
-                    "discountPrice": "50000",
-                    "memberShipPoint":"0",
-                    "orderStatus": {
-                        "disabled": "",
-                        "statusText": "결제완료",
-                        "statusClass": "",
-                        "statusDate": "배송희망일 2020.09.18"
-                    },
-                    "statusButtonList": [],
-                    "itemCancelAbleYn": "Y"
-                },
-                {
-                    "modelID": "ADC4957639428",
-                    "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                    "productNameEN": "OLED552445UA",
-                    "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                    "productPDPurl": "http://www.lge.com",
-                    "productDetailUrl": "http://www.lge.com",
-                    "specList": [],
-                    "productTotal": "1",
-                    "productPrice": "50000",
-                    "discountPrice": "5000",
-                    "orderStatus": {
-                        "disabled": "",
-                        "statusText": "결제완료",
-                        "statusClass": "",
-                        "statusDate": "배송희망일 2020.09.18"
-                    },
-                    "statusButtonList": [
-                        {
-                            "className": "deliveryInquiry",
-                            "buttonName": "배송조회"
-                        },
-                        {
-                            "className": "deliveryRequest",
-                            "buttonName": "배송문의"
-                        },
-                        {
-                            "className": "takeBackInner",
-                            "buttonName": "반품신청"
-                        }
-                    ]
-                },
-                {
-                    "modelID": "ADC4957639428",
-                    "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                    "productNameEN": "OLED552445UA",
-                    "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                    "productPDPurl": "http://www.lge.com",
-                    "productDetailUrl": "http://www.lge.com",
-                    "specList": [],
-                    "productTotal": "1",
-                    "productPrice": "50000",
-                    "discountPrice": "5000",
-                    "orderStatus": {
-                        "disabled": "",
-                        "statusText": "결제완료",
-                        "statusClass": "",
-                        "statusDate": "배송희망일 2020.09.18"
-                    },
-                    "statusButtonList": [
-                        {
-                            "className": "deliveryInquiry",
-                            "buttonName": "배송조회"
-                        },
-                        {
-                            "className": "deliveryRequest",
-                            "buttonName": "배송문의"
-                        },
-                        {
-                            "className": "productReview",
-                            "buttonName": "제품리뷰"
-                        }
-                    ]
-                }
-            ],
+				"productNameKR": "LG DIOS 인덕션 전기레인지",
+				"productNameEN": "BEI3MTR.AKOR",
+				"productSku": "BEI3MTR.AKOR",
+				"qty": 8,
+				"productPDPurl": "https: //wwwstg.lge.co.kr/electric-ranges/bei3mtr, modelID=MD08750903, productImage=https://wwwstg.lge.co.kr/kr/images/electric-ranges/md08750903/md08750903-350x350.jpg, itemStatus=Invoiced, recyclingPickup=Y, shippingNoteTxt=한번에 가져다 주세요",
+				"delivWish": "2021 - 03 - 29 23: 59: 59",
+				"inspectionVisit": null,
+				"productPrice": 5500000,
+				"specList": ["", ""],
+				"orderStatus": {
+					"disabled": "",
+					"statusText": "걸제 완료",
+					"statusClass": "",
+					"statusDate": ""
+				},
+				"statusButtonList": [],
+				"itemCancelAbleYn":""
+            }
+        ],
             "repaymentInfo": {
                 "bankUserName": "이엘지",
                 "bankList": [
@@ -123,12 +56,10 @@
             }
         },
       "payment":{
-          "paymentMethodName":"신용카드(분할결제) 결제수단",
-          "receiptUrl": "/html/MYC/ACCF7105.html",
-          "orderPrice": 2834060,
-          "discountPrice": 834060,
-          "memberShipPoint": 0,
-          "totalPrice": 2000000
+        "orderPrice": 44000000,
+        "totalPrice": "44,000,000",
+        "paymentMethodName": "국민은행 00999085576331 - 마진",
+        "receiptUrl":""
       },
       "shipping":{
           "name":"이연철",

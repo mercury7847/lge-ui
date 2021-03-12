@@ -63,7 +63,7 @@
 
                 
                 cookieExpire.setDate(cookieExpire.getDate() + expire);
-                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; expires=' + cookieExpire.toUTCString());
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; EXPIRES=' + cookieExpire.toUTCString()) + '; PATH=/; DOMAIN=; SECURE=';
 
                 document.cookie = cookieText;
             },
@@ -344,6 +344,24 @@ CS.MD.search = function() {
                 self.$el.find('.autocomplete-box').find('.no-keyword').show();
             }
         },
+        _search: function() {
+            var self = this;
+            var val = self.$el.find('input[type=text]').val().trim();
+            
+            if (val.length > 1) {
+                if (self.$el.find('.recently-keyword').length) {
+                    cookieKeyword.addCookie(val);
+                    self._setRecently();
+                }
+                self.$el.find('.search-error').hide();
+            } else {
+                self.$el.find('.search-error').show();   
+            }
+
+            self.$el.removeClass('on');
+            self.$el.trigger('searchafter');
+
+        },
         _bindEvent: function() {
             var self = this;
            
@@ -391,7 +409,7 @@ CS.MD.search = function() {
                         self.$el.addClass('on');
                     }]);
 
-                    $('.search-error').hide();
+                    self.$el.find('.search-error').hide();
                 } else {
                     self.$el.find('.autocomplete-box').find('ul').empty();
                     $('.autocomplete-box').hide();
@@ -403,24 +421,12 @@ CS.MD.search = function() {
             }).on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.$el.find('.btn-search').trigger('click');
+                    self._search();
                 }
             });
 
             self.$el.find('.btn-search').on('click', function() {
-                var val = self.$el.find('input[type=text]').val().trim();
-                if (val.length > 1) {
-                    if (self.$el.find('.recently-keyword').length) {
-                        cookieKeyword.addCookie(val);
-                        self._setRecently();
-                    }
-                    $('.search-error').hide();
-                } else {
-                    $('.search-error').show();   
-                }
-
-                self.$el.removeClass('on');
-                self.$el.trigger('searchafter');
+                self._search();
             });
 
             self.$el.find('.btn-list-all').on('click', function() {
@@ -1358,6 +1364,7 @@ CS.MD.commonModel = function() {
             }
 
             self.$myModelArea.show();
+            self.$myModelArea.find('.search-error').hide();
             self.$myModelSlider.vcCarousel('resize');
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
@@ -2441,6 +2448,7 @@ function validatePhone(value){
     function commonInit(){
         //input type number 숫자키패드
         $('input[type="number"]').attr('inputmode', 'numeric');
+        //$('input[type="number"]').attr('oninput', 'this.value = this.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")');
         
         $('[data-format=koreng]').on('input', function() {
             var $this = $(this),
@@ -2488,6 +2496,12 @@ function validatePhone(value){
             $(this).on('mousewheel',function(e){
                 e.preventDefault();
             });
+        });
+
+        $(document).on('keydown', 'input[type="number"]', function(e){
+            if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109) {
+                e.preventDefault();
+            }
         });
 
         $(document).on('keyup', 'input[type="number"]', function(e){

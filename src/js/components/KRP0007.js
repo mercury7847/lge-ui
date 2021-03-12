@@ -98,24 +98,34 @@
                 '<div class="flag-wrap bar-type">' +
                     '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
-                '{{#if obsBtnRule == "enable"}}'+
-                '<div class="price-area">' +
-                    '{{#if obsTotalDiscountPrice}}'+
-                        '{{#if obsOriginalPrice}}<div class="original">' +
-                            '<em class="blind">판매가격</em>' +
-                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                        '</div>{{/if}}' +
-                        '{{#if obsSellingPrice}}<div class="total">' +
-                            '<em class="blind">총 판매가격</em>' +
-                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-                        '</div>{{/if}}' +
-                    '{{#else}}'+
-                        '{{#if obsOriginalPrice}}<div class="total">' +
-                            '<em class="blind">총 판매가격</em>' +
-                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                        '</div>{{/if}}' +
-                    '{{/if}}'+
-                '</div>' +
+                '{{#if checkPriceFlag}}'+
+                    '{{#if bizType == "CARESOLUTION"}}' +
+                        '<div class="price-area care">' +
+                            '<div class="total-price">' +
+                                '<em class="text">기본 월 요금</em>' +
+                                '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
+                            '</div>' +
+                            '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+                        '</div>' +
+                    '{{#else}}' +
+                        '<div class="price-area">' +
+                            '{{#if obsTotalDiscountPrice}}'+
+                                '{{#if obsOriginalPrice}}<div class="original">' +
+                                    '<em class="blind">판매가격</em>' +
+                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                '</div>{{/if}}' +
+                                '{{#if obsSellingPrice}}<div class="total">' +
+                                    '<em class="blind">총 판매가격</em>' +
+                                    '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+                                '</div>{{/if}}' +
+                            '{{#else}}'+
+                                '{{#if obsOriginalPrice}}<div class="total">' +
+                                    '<em class="blind">총 판매가격</em>' +
+                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                '</div>{{/if}}' +
+                            '{{/if}}'+
+                        '</div>' +
+                    '{{/if}}' +
                 '{{/if}}'+
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
@@ -433,6 +443,7 @@
                     if(arr.length){
                         arr.forEach(function(item, index) {
                             item.checkBtnFlag = self.checkBtnFlag(item);
+                            item.checkPriceFlag = self.checkPriceFlag(item);
                             var listItem = self.makeListItem(item);
                             self.$productList.append(listItem);
                         });
@@ -477,6 +488,7 @@
                     if(arr.length){
                         var item = arr[0];
                         item.checkBtnFlag = self.checkBtnFlag(item);
+                        item.checkPriceFlag = self.checkPriceFlag(item);
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
@@ -491,15 +503,45 @@
             },
 
             checkBtnFlag: function(item) {
-                if(item.bizType == "CARESOLUTION") {
+                if(item.bizType == "PRODUCT") {
+                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                        return true
+                    } else {
+                        return false;
+                    }
+                } else if(item.bizType == "CARESOLUTION") {
                     if (!item.years1TotAmt && item.years1TotAmt != "") {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
+                    //소모품 DISPOSABLE
+                    if (item.obsInventoryQty > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+
+            checkPriceFlag: function(item) {
+                if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
+                    } else {
+                        return false;
+                    }
+                } else if(item.bizType == "CARESOLUTION") {
+                    if ((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    //소모품 DISPOSABLE
+                    if(!item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+                        return true;
                     } else {
                         return false;
                     }
@@ -540,6 +582,8 @@
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+
+                item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(years1TotAmt) : null;
 
                 //flag
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);

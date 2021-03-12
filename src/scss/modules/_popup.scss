@@ -166,6 +166,12 @@
         max-width:none;
         border-radius:0;
         transform:none !important;
+        &.tit-line3 {
+            .pop-conts {
+                max-height:calc(100% - 146px);
+                height:calc(100% - 146px);
+            }
+        }
     }
     > .btn-close {
         position:absolute;
@@ -694,6 +700,12 @@
                     }
                     .date-select-box.col-2 {
                         padding-right:0;
+                        .cell:first-child {
+                            width:60%;
+                        }
+                        .cell:last-child {
+                            width:40%;
+                        }
                     }
                 }
             }
@@ -1590,9 +1602,7 @@
                 .lately-list {
                     ul {
                         li {
-                            display: block;
                             dl {
-                                display: block;
                                 dd {
                                     &.category {
                                         font-size: 14px;

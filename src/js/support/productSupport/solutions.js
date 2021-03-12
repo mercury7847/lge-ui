@@ -247,9 +247,10 @@
 
                     self.$myModelArea.hide();  
                     
-                    self.$cont.commonModel('next', self.$stepInput, function() {
+                    self.$cont.commonModel('next', self.$stepInput); 
+                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                         self.$selectedModelBar.vcSticky();
-                    }); 
+                    });
                     lgkorUI.hideLoading();
                 }, 'POST');
             },
@@ -474,7 +475,9 @@
                 self.$selectTopic.vcSelectbox('update');
                 self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
+                self.$keywordInput.trigger('update');
                 self.$solutionsWrap.find('.search-more').hide();
+                self.$solutionsWrap.find('.search-error').hide();
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
                 
@@ -510,6 +513,7 @@
 
                 self.$solutionsResult.find('.title .tit').on('click', '.btn-delete', function() {
                     self.$keywordInput.val('');
+                    self.$keywordInput.trigger('update');
                     self.param.keywords = [];
                     self.requestData('click');
                 });

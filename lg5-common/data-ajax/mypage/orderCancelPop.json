@@ -260,21 +260,18 @@
         "discountPrice": 834060,
         "memberShipPoint": 0,
         "totalPrice": 2000000,
-        "transType": "C"
+        "transType": "B"
       },
       "shipping": {
-        "name": "대저로 -",
-        "email": "promiser@naver.com",
-        "street": "부산 강서구 대저로235번길 9 (대저1동)\nhnnn",
-        "city": "-",
-        "countryId": "KR",
-        "postcode": "46702",
-        "telephone": "12343131331",
-        "telephonenumber": "12343131331",
-        "company": "Wise13",
-        "recyclingPickup": "Y",
-        "shippingNoteTxt": "",
-        "instpectionVisit": "Y"
+        "name":"이연철",
+        "street":"디지털로10길 22 (가산동, LG전자가산 B) 123",
+        "city":"서울",
+        "postcode":"08513",
+        "telephone":"01093696245",
+        "telephonenumber":"01093696245",
+        "recyclingPickup":"Y",
+        "shippingNoteTxt":"배송요청사항",
+        "instpectionVisit":"Y"
       }
     },
     "param": {

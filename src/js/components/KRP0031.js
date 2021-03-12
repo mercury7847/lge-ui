@@ -28,6 +28,9 @@ $(window).ready(function(){
             self.$modelButton = self.$el.find('[data-href="#modelNamePopup"]');
             self.$modelPopup = self.$el.find('#modelNamePopup');
 
+            self.$cateSelect = self.$el.find('#cateSelect');
+            self.$subCateSelect = self.$el.find('#subCateSelect');
+
             self.searchModelNameUrl = self.$modelPopup.data('modelUrl');
 
             vcui.require(['ui/validation'], function () {
@@ -72,16 +75,16 @@ $(window).ready(function(){
                         html += vcui.template(optionsTmpl, temp);
                     });
                     
-                    $('#select1').find('option:not(.placeholder)').remove();
-                    $('#select1').append(html);
-                    $('#select1').vcSelectbox('update');
+                    self.$cateSelect.find('option:not(.placeholder)').remove();
+                    self.$cateSelect.append(html);
+                    self.$cateSelect.vcSelectbox('update');
 
                     self.$modelPopup.vcModal();
                     lgkorUI.hideLoading();
                 }, 'POST');
             });
 
-            $('#select1').on('change', function() {
+            self.$cateSelect.on('change', function() {
                 var param = {
                     superCategoryId: $(this).val()
                 };
@@ -100,17 +103,17 @@ $(window).ready(function(){
                         html += vcui.template(optionsTmpl, temp);
                     });
 
-                    $('#select2').find('option:not(.placeholder)').remove();
-                    $('#select2').append(html).prop('disabled', false);
-                    $('#select2').vcSelectbox('update');
+                    self.$subCateSelect.find('option:not(.placeholder)').remove();
+                    self.$subCateSelect.append(html).prop('disabled', false);
+                    self.$subCateSelect.vcSelectbox('update');
 
                     lgkorUI.hideLoading();
                 }, 'POST');
             });
 
-            $('#select2').on('change', function() {
+            self.$subCateSelect.on('change', function() {
                 var param = {
-                    superCategoryId: $('#select1').val(),
+                    superCategoryId: self.$cateSelect.val(),
                     categoryId: $(this).val()
                 };
                 
@@ -133,12 +136,12 @@ $(window).ready(function(){
                 $('.example-result .img img').attr('src', options.imageUrl);
                 $('.example-result .img img').attr('alt', options.imageAlt);
 
-                $('#select1').find('option:not(.placeholder)').remove();
-                $('#select2').prop('disabled', true);
-                $('#select2').find('option:not(.placeholder)').remove();
+                self.$cateSelect.find('option:not(.placeholder)').remove();
+                self.$subCateSelect.prop('disabled', true);
+                self.$subCateSelect.find('option:not(.placeholder)').remove();
 
-                $('#select1').vcSelectbox('update');
-                $('#select2').vcSelectbox('update');
+                self.$cateSelect.vcSelectbox('update');
+                self.$subCateSelect.vcSelectbox('update');
             });
         }
     }

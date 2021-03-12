@@ -128,6 +128,9 @@ const concatNames = [
     src + "/js/ui/formatter.js",
     src + "/js/ui/scrollNavi.js",
     src + "/js/ui/smoothScrollTab.js",
+    src + "/js/ui/toast.js",
+    src + "/js/ui/spinner.js",
+    src + "/js/ui/imageFileInput.js",
     src + "/js/ui/checkboxAllChecker.js"
 ];
 gulp.task("concat-js", () => gulp

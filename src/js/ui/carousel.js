@@ -183,6 +183,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
+            console.log("ADD ver.2021.03.12")
+
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
@@ -1264,7 +1266,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 } else {
 
                     // 추가 김두일
-                    if(opt.infinite === true){
+                    
+                    if(opt.infinite === true || opt.variableWidth === true){
                         targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                     }else{
                         var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
@@ -2265,6 +2268,16 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     self.checkResponsive();
                     if (!self.unbuilded) {
                         self.setPosition();
+                    }
+
+                    if (self.$el.find('.indi-wrap').find('li').length < 2){
+                        self.$el.find('.indi-wrap').hide();
+        
+                        self.$el.addClass('slide-solo');
+                    } else {
+                        self.$el.find('.indi-wrap').show();
+        
+                        self.$el.removeClass('slide-solo');
                     }
 
                     self.triggerHandler(_N + 'resize', [self, self.currentSlide]);

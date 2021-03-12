@@ -206,7 +206,7 @@
                     margin-bottom:9px;
                 }
                 .btn-fold {
-                    width:234px;
+                    width:245px;
                 }
             }
         }
@@ -335,6 +335,18 @@
     }
 }
 
+.lately-popup {
+    .pop-conts {
+
+    }
+    @include mobile {
+        .pop-conts {
+            height:calc(100% - 132px);
+            max-height:calc(100% - 132px);
+        }
+    }
+}
+
 .mobile {
     .quick-menu {
         .service-menu, .history {
@@ -352,6 +364,13 @@
                     width:100%;
                     height: 100%;
                     background: rgba(0,0,0,0.7);
+                }
+            }
+        }
+        .history-list {
+            .img {
+                .name {
+                    color:#fff;
                 }
             }
         }
