@@ -60,8 +60,16 @@
 
                 self.$myLists.on("click", "a", function(e){
                     e.preventDefault();
+                    var ajaxUrl = self.$lnbContents.attr('data-list-url');
+                    var _id = $(this).attr('href').replace("#","");
+                    if(ajaxUrl) {
+                        var url = ajaxUrl + "?id=" + _id;
+                        self.requestModal(url);
+                    }
+                    /*
                     var _id = $(this).attr('href').replace("#","");
                     self.openDetailPopup(_id);
+                    */
                 });
 
                 self.$pagination.on('page_click', function(e, data) {
@@ -103,6 +111,40 @@
                     self.$pagination.hide();
                     self.$noData.show();
                 }
+            },
+
+            requestModal: function(url) {
+                var self = this;
+                if(url) {
+                    lgkorUI.requestAjaxData(url, null, function(result){
+                        self.openModalFromHtml(result);
+                    }, null, "html");
+                }
+            },
+
+            openModalFromHtml: function(html) {
+                /*
+                $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
+                    var title = $(this).data('title');
+                    var url = $(this).data('src');
+                    if(url) {
+                        var obj = {title:title +'<br>화면으로 이동합니다.', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                            var form = $('<form action="' + url + '" method="post"></form>');
+                            $('body').append(form);
+                            form.submit();
+                        }};
+                        //var desc = title +'<br>화면으로 이동합니다.';
+                        lgkorUI.confirm(null, obj);
+                    }
+                }).on('click.modal-link-event','a.modal-link',function(e){
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    if(url) {
+                        window.open(url, '_blank', 'width=800, height=800');
+                    }
+                });
+                */
+                $('#event-modal').html(html).vcModal();
             },
 
             openDetailPopup: function(id) {
