@@ -76,8 +76,10 @@
 					} else {
 						//2021-03-13 정승우  탭이없는 화면이 어째서 인지 있어서 예외처리
 						//https://wwwstg.lge.co.kr/washing-machines/f21vdd#n
+						/*
 						tab = $(item).find('.tabs li.on > a');
 						listID = tab.attr('href').replace("#", "");
+						*/
 					} 
 					if(listID){
 						if($(item).find("#"+listID).length > 0) {
