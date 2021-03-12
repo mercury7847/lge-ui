@@ -247,9 +247,10 @@
 
                     self.$myModelArea.hide();  
                     
-                    self.$cont.commonModel('next', self.$stepInput, function() {
+                    self.$cont.commonModel('next', self.$stepInput); 
+                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
                         self.$selectedModelBar.vcSticky();
-                    }); 
+                    });
                     lgkorUI.hideLoading();
                 }, 'POST');
             },
