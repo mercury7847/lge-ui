@@ -476,6 +476,7 @@
                 self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
                 self.$solutionsWrap.find('.search-more').hide();
+                self.$solutionsWrap.find('.search-error').hide();
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
                 
