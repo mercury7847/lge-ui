@@ -1291,6 +1291,11 @@
                 $total.text(prefix + vcui.number.addComma(totalPrice * quantity) + '원');
             },
 
+            //케어솔루션 선택 여부에 따른 구매수량 버튼 활성/비활성
+            updatePaymentAmountState: function($paymentAmount) {
+
+            },
+
             //구매진행
             productBuy: function($dm) {
                 var self = this;
