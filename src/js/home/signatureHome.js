@@ -275,7 +275,7 @@ $(function() {
         var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
 
         
-        $(document).on('touchstart touchend touchcancel', function(e) {
+        $('.container').on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
@@ -632,13 +632,7 @@ $(function() {
 
         if(isApplication){
             render();
-    
-            var leng = $scenes.length;
-            var lastScene = $scenes.eq(leng-1);
-            var height = lastScene.height();
-            var padding = parseInt($('footer').css('padding-bottom'));
-            lastScene.height(height+160);
-            $('footer').css({paddingBottom:padding + 160});
+            $('header').find('.header-bottom').addClass('app-btm');
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
