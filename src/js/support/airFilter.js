@@ -132,8 +132,8 @@
                     authPhoneNo: {
                         required: true,
                         msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
                         validate : function(value){
                             return validatePhone(value);
                         } 
