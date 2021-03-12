@@ -1,0 +1,33 @@
+{
+    "status":"success",
+    "message":"",
+    "data": {
+        "success": "Y",
+        "recommendProduct" : [
+            {
+                "productId": "75NANO99KNB",
+                "linkPath":"#1",
+                "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2010000",
+                "productPrice" : "10002000"
+            },
+            {
+                "productId": "65NANO99KNB",
+                "linkPath":"#2",
+                "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "productName" : "LG TROMM 미니워시",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "1000000"
+            },
+            {
+                "productId": "75NANO99KNB",
+                "linkPath":"#3",
+                "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "productName" : "전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "5600000",
+                "productPrice" : "1000000"
+            }
+        ]    
+    }
+}
