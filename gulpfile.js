@@ -139,7 +139,6 @@ gulp.task("delete-common-ui", function () {
 });
 gulp.task("concat-js", () => gulp
     .src(concatNames)
-    .pipe(del("vcui.common-ui.js"))
     .pipe(concat("vcui.common-ui.js"))
     .pipe(gulp.dest(src + "/js"))
 );
