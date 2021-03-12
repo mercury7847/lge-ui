@@ -60,7 +60,7 @@
 
                 self.$myLists.on("click", "a", function(e){
                     e.preventDefault();
-                    var ajaxUrl = self.$lnbContents.attr('data-list-url');
+                    var ajaxUrl = self.$lnbContents.attr('data-detail-url');
                     var _id = $(this).attr('href').replace("#","");
                     if(ajaxUrl) {
                         var url = ajaxUrl + "?id=" + _id;
