@@ -625,6 +625,12 @@
         },
         reset: function() {
             var self = this;
+            var $listTable = self.$stepCenter.find('.center-result-wrap .tb_row'),
+                $noData = self.$stepCenter.find('.no-data');
+
+            $listTable.find('tbody').empty();
+            $listTable.hide();
+            $noData.show();
 
             self.data = $.extend({}, self.options);
 
@@ -653,7 +659,9 @@
             self.$citySelect2.vcSelectbox('update');
             self.$address1.val('').prop('disabled', true);
 
-
+            self.$cont.find('.ui_tab').vcTab('select', 0);
+            self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
+            self.$cont.find('.ui_input_clearbutton').trigger('update');
 
             $('#engineerNm').val('');
             $('#engineerCode').val('');
@@ -678,9 +686,7 @@
             self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
-            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                self.$selectedModelBar.vcSticky();
-            });
+            self.$cont.commonModel('focus', self.$selectedModelBar);
         },
         _getKeyword: function(){
             var self = this;
