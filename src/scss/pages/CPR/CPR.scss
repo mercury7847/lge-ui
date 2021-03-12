@@ -247,9 +247,6 @@
                 padding: 23px 0;
                 .chk-wrap input + label {
                     @include font-medium;
-                    &:before {
-                        top: 3px;
-                    }
                 }
                 @include mobile {
                     bottom:10px;
@@ -264,14 +261,6 @@
                         background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $color-bg-wt);
                         content: '';
                     }
-                    .chk-wrap input + label {
-                        &:before {
-                            top: 1px;
-                        }
-                        &:after {
-                            top: 7px;
-                        }
-                    }
                 }
             }
         }
@@ -283,6 +272,9 @@
                 padding-top: 24px;
                 .item {
                     padding: 16px 48px;
+                    @include mobile {
+                        padding: 16px 12px;
+                    }
                     &.compare-item {
                         padding-bottom: 16px;
                     }

@@ -2143,15 +2143,15 @@ $input: (chk, rdo);
                 width:16px;
                 height:16px;
                 margin-top:-8px;
-                background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat;
-                transform:rotate(90deg);
+                background:url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat;
+                // transform:rotate(90deg);
                 transition:all 0.1s;
             }
         }
         &.on {
             .ui-select-button {
                 .ico {
-                    transform:rotate(270deg);
+                    transform:rotate(180deg);
                 }
             }
         }
