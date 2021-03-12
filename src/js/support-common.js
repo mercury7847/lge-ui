@@ -1364,6 +1364,7 @@ CS.MD.commonModel = function() {
             }
 
             self.$myModelArea.show();
+            self.$myModelArea.find('.search-error').hide();
             self.$myModelSlider.vcCarousel('resize');
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
