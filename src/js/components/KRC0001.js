@@ -22,15 +22,17 @@ $(window).ready(function(){
 							'</strong>' +
 							'<p class="product-sku"><span class="blind">모델넘버</span>{{item.salesModelCode}}</p>' +
 							'<div class="review-info">' +
-								'{{#if (item.reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+								'{{#if (item.reviewsCount > 0)}}'+
+								'<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
 								'<div class="average-rating"><span class="blind">평점</span>{{item.reviewsScore}}</div>' +
 								'<div class="review-count"><span class="blind">리뷰 수</span>({{item.reviewsCount}})</div>' +
+								'{{/if}}' +
 							'</div>' +
 							'{{#if item.checkBtnFlag}}'+
-							'<div class="product-price">' +
-								'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
-								'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
-							'</div>' +
+								'<div class="product-price">' +
+									'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
+									'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
+								'</div>' +
 							'{{/if}}'+	
 						'</div>' +
 						'{{#if item.buyBtnFlag == "Y" && item.obsBtnRule != "disable"}}'+
