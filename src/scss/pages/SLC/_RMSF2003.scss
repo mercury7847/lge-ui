@@ -863,6 +863,9 @@ br.pc-only {
                                 width:50%;
                                 margin-left:0;
                                 text-align:center;
+                                a {
+                                    padding-top:16px;
+                                }
                             }
                         }
                     }
@@ -987,9 +990,10 @@ br.pc-only {
                     &:first-child {
                         max-width:100%;
                         padding:0;
-                        background:#f4f4f4;
+                        // background:#f4f4f4;
                     }
-                    .tabs-wrap.new-type {
+                    .tabs-wrap.new-type,
+                    .tabs-wrap.border-type {
                         max-width:1380px + 80px;
                         margin:0 auto 32px;
                         padding:0 40px;
@@ -998,9 +1002,13 @@ br.pc-only {
                             margin:0;
                         }
                         &:before {
-                            background:none;
+                            // background:none;
+                            right:40px;
+                            left:40px;
                             @include mobile {
-                                background:#222;
+                                right:0;
+                                left:0;
+                                // background:#222;
                             }
                         }
                         .tabs {
@@ -1009,7 +1017,7 @@ br.pc-only {
                                     border:0;
                                     border-radius:0;
                                     @include mobile {
-                                        border:1px solid #222;
+                                        // border:1px solid #222;
                                         border-bottom:0;
                                         border-right:0;
                                         border-radius:0;
@@ -1019,7 +1027,7 @@ br.pc-only {
                                     &.on a {
                                         @include mobile {
                                             border-left:0;
-                                            border-right:1px solid #222;
+                                            // border-right:1px solid #222;
                                         }
                                     }
                                 }
