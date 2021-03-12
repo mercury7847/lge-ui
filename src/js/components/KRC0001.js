@@ -97,7 +97,7 @@
 					}
 				}
 				
-				if(listID){
+				if(listID && productListUrl && productListUrl.length > 0){
 					var sendata = {};
 					lgkorUI.requestAjaxDataPost(productListUrl, sendata, function(result) {
 						var data = result.data[0];
