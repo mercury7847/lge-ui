@@ -503,7 +503,7 @@
             },
 
             checkBtnFlag: function(item) {
-                if(item.bindType == "PRODUCT") {
+                if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {
@@ -526,7 +526,7 @@
             },
 
             checkPriceFlag: function(item) {
-                if(item.bindType == "PRODUCT") {
+                if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {

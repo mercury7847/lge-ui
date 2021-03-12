@@ -35,8 +35,8 @@ $(window).ready(function(){
 								'</div>' +
 							'{{/if}}'+	
 						'</div>' +
-						'{{#if item.buyBtnFlag == "Y" && item.obsBtnRule != "disable"}}'+
-						'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+						'{{#if item.checkPriceFlag}}'+
+							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
@@ -97,6 +97,7 @@ $(window).ready(function(){
 						for(var key in data.productList){
 							var item = data.productList[key];
 							item.checkBtnFlag = self.checkBtnFlag(item);
+							item.checkPriceFlag = self.checkPriceFlag(item);
 							item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
@@ -113,9 +114,49 @@ $(window).ready(function(){
 			self.setCarousel(self.$section.find('div.products-list-wrap .ui_carousel_slider'));
 		},
 
+		/*
 		checkBtnFlag: function(item) {
 			if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
 				return true;
+			} else {
+				return false;
+			}
+		},
+		*/
+
+		checkBtnFlag: function(item) {
+			if(item.bizType == "PRODUCT") {
+				if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
+					return true
+				} else {
+					return false;
+				}
+			} else if(item.bizType == "DISPOSABLE") {
+				//소모품 DISPOSABLE
+				if (item.obsInventoryQty > 0) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		},
+
+		checkPriceFlag: function(item) {
+			if(item.bizType == "PRODUCT") {
+				if(lgkorUI.stringToBool(item.buyBtnFlag) && item.obsBtnRule=="enable") {
+					return true
+				} else {
+					return false;
+				}
+			} else if(item.bizType == "DISPOSABLE") {
+				//소모품 DISPOSABLE
+				if(!item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}
