@@ -2441,6 +2441,7 @@ function validatePhone(value){
     function commonInit(){
         //input type number 숫자키패드
         $('input[type="number"]').attr('inputmode', 'numeric');
+        //$('input[type="number"]').attr('oninput', 'this.value = this.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")');
         
         $('[data-format=koreng]').on('input', function() {
             var $this = $(this),
@@ -2488,6 +2489,16 @@ function validatePhone(value){
             $(this).on('mousewheel',function(e){
                 e.preventDefault();
             });
+        });
+
+        $(document).on('keydown', 'input[type="number"]', function(e){
+            if( e.keyCode == 189) {
+                e.preventDefault();
+            }
+
+            if ((e.keyCode < 48) || (e.keyCode > 57)){
+                e.preventDefault();
+            }
         });
 
         $(document).on('keyup', 'input[type="number"]', function(e){
