@@ -15,7 +15,7 @@
         '</div>' +
     '</li>'
 
-    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}} ">' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
@@ -382,14 +382,20 @@
 
             //사용설명서
             self.$myProductList.on('click','>ul li div.btns button.manual-btn', function(e) {
-                var _id = $(this).parents('li').attr('data-model-id');
-                self.requestManualData(_id,1,false);
+                var $li = $(this).parents('li');
+                var _id = $li.attr('data-model-id');
+                var sku = $li.attr('data-model-code');
+                self.requestManualData(_id,sku,1,false);
             });
 
             //다운로드/sw
             self.$myProductList.on('click','>ul li div.btns button.download-btn', function(e) {
-                var _id = $(this).parents('li').attr('data-model-id');
+                var $li = $(this).parents('li');
+                var _id = $li.attr('data-model-id');
+                var sku = $li.attr('data-model-code');
+
                 self.$downloadPopup.attr('data-model-id', _id);
+                self.$downloadPopup.attr('data-model-code', sku);
                 self.$downloadSearch.val("");
                 self.$downloadSearch.data('search',null);
                 self.requestDownloadData({"page":1}, true, true);
@@ -497,8 +503,9 @@
             //메뉴얼 더보기
             self.$manualMoreButton.on('click', function(e){
                 var _id = self.$manualPopup.attr('data-model-id');
+                var code = self.$manualPopup.attr('data-model-code');
                 var page = parseInt(self.$manualPopup.data('page')) + 1;
-                self.requestManualData(_id,page,true);
+                self.requestManualData(_id,code,page,true);
             });
 
             //메뉴얼 다운로드
@@ -768,15 +775,15 @@
             self.$registMyProductMainPage.find('.err-block').hide();
         },
 
-        requestManualData: function(_id, page, isMore) {
+        requestManualData: function(_id, sku, page, isMore) {
             var self = this;
             var ajaxUrl = self.$manualPopup.attr('data-list-url');
-            lgkorUI.requestAjaxData(ajaxUrl, {"id":_id, "page":page}, function(result) {
+            lgkorUI.requestAjaxData(ajaxUrl, {"id":_id, "sku":sku, "page":page}, function(result) {
                 var data = result.data;
                 var param = result.param;
                 var pagination = param.pagination;
 
-                self.$manualPopup.attr({"data-model-id":param.id, "data-page": pagination.page,"data-totalCount": pagination.totalCount});
+                self.$manualPopup.attr({"data-model-id":_id, "data-model-code":sku, "data-page": pagination.page,"data-totalCount": pagination.totalCount});
                 self.$manualPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
                 if(parseInt(pagination.page) <  parseInt(pagination.totalCount)) {
@@ -814,6 +821,10 @@
             var _id = self.$downloadPopup.attr('data-model-id');
             if(_id) {
                 param.id = _id;
+            }
+            var sku = self.$downloadPopup.attr('data-model-code');
+            if(sku) {
+                param.sku = sku;
             }
 
             var ajaxUrl = self.$downloadPopup.attr('data-list-url');

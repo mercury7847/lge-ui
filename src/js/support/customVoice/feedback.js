@@ -28,23 +28,23 @@
                     //     minLength: 10,
                     //     maxLength: 11,
                     //     msgTarget: '.err-block',
-                    //     errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                    //     patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                    //     errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
                     // },
                     contactPhoneNo1 : {
                         pattern: /^(010|011|016|017|018|019)$/,
                         msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
                     },
                     contactPhoneNo2 : {
                         pattern: /^d{3,4}$/,
                         msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
                     },
                     contactPhoneNo3 : {
                         pattern: /^d{4}$/,
                         msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대전화 번호를 입력해주세요.'
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
                     },
                     email:{
                         required: true,
@@ -108,8 +108,8 @@
                             minLength: 10,
                             maxLength: 11,
                             msgTarget: '.err-block',
-                            errorMsg: '정확한 휴대전화 번호를 입력해주세요.',
-                            patternMsg: '정확한 휴대전화 번호를 입력해주세요.',
+                            errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                            patternMsg: '정확한 휴대폰번호를 입력해주세요.',
                             validate : function(value){
                                 return validatePhone(value);
                             } 

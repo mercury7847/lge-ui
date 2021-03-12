@@ -166,6 +166,12 @@
         max-width:none;
         border-radius:0;
         transform:none !important;
+        &.tit-line3 {
+            .pop-conts {
+                max-height:calc(100% - 146px);
+                height:calc(100% - 146px);
+            }
+        }
     }
     > .btn-close {
         position:absolute;
