@@ -1281,6 +1281,11 @@
                 overflow-y: auto;
                 background-color: #fff;
             }
+            &.app-btm {
+                @include mobile {
+                    padding-bottom:60px;
+                }
+            }
         }
     }
 }
