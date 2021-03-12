@@ -133,8 +133,13 @@ const concatNames = [
     src + "/js/ui/imageFileInput.js",
     src + "/js/ui/checkboxAllChecker.js"
 ];
+gulp.task("delete-common-ui", function () {
+    console.log('delete common??');
+    return del("/js/vcui.common-ui.js");
+});
 gulp.task("concat-js", () => gulp
     .src(concatNames)
+    .pipe(del("vcui.common-ui.js"))
     .pipe(concat("vcui.common-ui.js"))
     .pipe(gulp.dest(src + "/js"))
 );
@@ -369,7 +374,7 @@ gulp.task("build:server", ["clean", "static"], () =>{
     gulp.start(["styles:server", "scripts", "guide", "html"]);
 });
 
-gulp.task('server-build', ["concat-js"], function() {
+gulp.task('server-build', ["delete-common-ui","concat-js"], function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
         gulp.start('build:server');
