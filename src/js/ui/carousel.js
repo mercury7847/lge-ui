@@ -183,6 +183,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
+            console.log("ADD ver.2021.03.12")
+
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
