@@ -61,7 +61,7 @@
                         var check = lgkorUI.stringToBool(data.ResponseUITop.success);
                         if(check) {
                             self.reloadComponent($item, data.ResponseUITop);              
-                        } else if(data.productCurationProposal.uiMessage && data.productCurationProposal.uiMessage.length > 0) {
+                        } else {
                             //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
                             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
                             var array = cookieValue.split('|');
@@ -73,8 +73,8 @@
                         }
                     } else if(_type == "r-btm") {
                         //하단영역
-                        var check = data.categoryBestProduct.uiMessage && data.categoryBestProduct.length > 0;
-                        if(data.storeConsultation.uiMessage && data.storeConsultation.uiMessage.length > 0) {
+                        var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
+                        if(check) {
                             //제품 비교하기 페이지에서 제품 페이지 진입 시
                             var referrer = document.referrer;
                             var currentUrl = location.href.split("//")[1].split('/')[0];
@@ -84,15 +84,15 @@
                             } else if(check) {
                                 self.reloadComponent($item, data.categoryBestProduct);
                             }
-                        } else if(check) {
-                            self.reloadComponent($item, data.categoryBestProduct);
+                        } else {
+                            self.reloadComponent($item, data.storeConsultation);
                         }
                     }
                 });
             },
 
             reloadComponent: function($dm, data) {
-                if(data.uiInfo && data.uiMessage) {
+                if(data.uiInfo && data.uiMessage && data.uiMessage.length > 0) {
                     $dm.find('.inner p.txt').text(data.uiMessage);
                     $dm.find('.inner a').attr("href",data.uiInfo);
                     $dm.show();
