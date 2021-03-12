@@ -423,7 +423,7 @@
 					a {
 						display:block;
 						position:relative;
-						padding:12px 32px 40px;
+						padding:32px 56px 40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
 						@include mobile {
@@ -441,8 +441,9 @@
 							}
 						}
 						.img {
+							text-align:center;
 							img {
-								max-width:240px;
+								max-width:200px;
 								width:100%;
 							}
 						}
