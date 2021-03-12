@@ -224,8 +224,19 @@
                 //
                 self.$pdpInfoAdditionalPurchase = self.$pdpInfo.find('.additional-purchase');
                 //
-                self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
+                //self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
+                //최초 체크 jsw
+                var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
+                if(checkinput.length > 0) {
+                    var check = lgkorUI.stringToBool(checkinput.val());
+                    if(check) {
+                        console.log('???');
+                        var $paymentAmount = self.$pdpInfoCareshipService.siblings('div.payment-amount');
+                        $paymentAmount.find('>.info-text').show();
+                    }
+                }
+
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
                 
                 //렌탈 가격 정보 정리
@@ -397,7 +408,9 @@
                     prevArrow:'.btn-arrow.prev',
                     nextArrow:'.btn-arrow.next',
                     focusOnSelect: false,
-                    focusOnChange: false
+                    focusOnChange: false,
+                    dots: false,
+                    buildDots: false
                 });
                 self.$pdpMobileVisual.show();
             },
@@ -883,7 +896,7 @@
                 });
 
                 //케어쉽 서비스 선택 관련
-                self.$pdpInfoAllCareshipService.on('change','input[type=radio]', function(e){
+                self.$pdpInfoCareshipService.on('change','input[type=radio]', function(e){
                     //케어쉽필수 제품인지 체크해서 알림창 뛰움
                     var val = $(this).val();
                     var $careshipService = $(this).parents('.careship-service');
@@ -912,7 +925,7 @@
                                     $paymentAmount.find('button.minus').attr('disabled',false);
                                     $paymentAmount.find('button.plus').attr('disabled',false);
                                 }
-                                $paymentAmount.find('>info-text').hide();
+                                $paymentAmount.find('>.info-text').hide();
                             }
                         }
                     } else {
@@ -928,7 +941,10 @@
                             //케어십 신청됬으므로 수량체크버튼 비활성
                             $paymentAmount.find('button.minus').attr('disabled',true);
                             $paymentAmount.find('button.plus').attr('disabled',true);
-                            $paymentAmount.find('>info-text').show();
+                            $paymentAmount.find('input.quantity').val(1);
+                            $paymentAmount.data('quantity',1);
+                            self.updatePaymentAmountPrice($paymentAmount);
+                            $paymentAmount.find('>.info-text').show();
                         }
                     }
                 });
