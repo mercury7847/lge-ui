@@ -844,14 +844,26 @@ br.pc-only {
                 margin:0 auto;
                 padding:0 40px;
                 @include mobile {
-                    padding:0 16px;
+                    // padding:0 16px;
+                    padding:0;
                 }
                 .tabs-wrap {
                     text-align:left;
-                    &.new-type {
+                    &.new-type,
+                    &.border-type {
                         margin-bottom:32px;
                         @include mobile {
                             margin-bottom:0;
+                        }
+                    }
+                    .tabs {
+                        @include mobile {
+                            width:100%;
+                            li {
+                                width:50%;
+                                margin-left:0;
+                                text-align:center;
+                            }
                         }
                     }
                 }
