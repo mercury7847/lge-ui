@@ -969,6 +969,7 @@
 
                 for(var cdx in list[idx].productList){
                     var prodlist = list[idx].productList[cdx];
+                    console.log("prodlist:",prodlist)
                     var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
                     prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
                     template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
@@ -1103,7 +1104,7 @@
     
                     if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
                     if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
-                    
+                
                     PAYMENT_DATA = vcui.clone(payment);
                 }
             }
@@ -1395,8 +1396,15 @@
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
                 
             leng = Object.keys(PAYMENT_DATA).length;
-            console.log("PAYMENT_DATA:",PAYMENT_DATA)
-            if(listData.contDtlType == "C01" && leng){
+            
+            var isRender = false;
+            if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) isRender = true;
+            else{
+                if(listData.contDtlType == "C01") isRender = true;
+            }
+            console.log("isRender:",isRender)
+
+            if(isRender && leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;

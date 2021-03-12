@@ -18,7 +18,7 @@
               "orderTotal": "3",
               "orderCancelAbleYn": "Y",
               "requestOrderAbleYn": "Y",
-              "contDtlType": "R00",
+              "contDtlType": "C01",
               "productList": [
                   {
                       "modelID": "ADC495769328",
@@ -324,6 +324,13 @@
         }
       ],
       "payment":{
+        "paymentMethodName":"신용카드(분할결제) 결제수단",
+        "receiptUrl": "/html/MYC/ACCF7105.html",
+        "orderPrice": 2834060,
+        "discountPrice": 834060,
+        "memberShipPoint": 0,
+        "totalPrice": 2000000,
+        "transType": "B"
       },
       "shipping":{
           "name":"이연철",
