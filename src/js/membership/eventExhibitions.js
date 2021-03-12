@@ -45,7 +45,7 @@
                         '<div class="review-info">' +
                             '<a href="#">' +
                                 '{{#if (reviewsCount != "0")}}' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
+                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                                 '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
                                 '{{/if}}' +
