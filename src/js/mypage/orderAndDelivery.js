@@ -1577,14 +1577,10 @@
             var discountPrices = 0;
             var mempointPrices = 0;
             var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
-            productList.specList = vcui.array.filter(productList.specList, function(item){
-                var chk = item != null && item != "null" && item != undefined ? true : false;
-                return chk;
-            });
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
-
+                
                 addPopProdductList(popup, productList, true);
                 
                 $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
@@ -1697,7 +1693,12 @@
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
                 orderedQuantity: listdata.orderedQuantity
-            })
+            });
+
+            listdata.specList = vcui.array.filter(listdata.specList, function(item){
+                var chk = item != null && item != "null" && item != undefined ? true : false;
+                return chk;
+            });
 
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck}));
         }
