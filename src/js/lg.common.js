@@ -1189,7 +1189,6 @@ var isApp = function(){
                 console.log('ajaxFail',url,err);
                 lgkorUI.hideLoading();
             }).always(function() {
-                lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },

@@ -18,7 +18,7 @@
 				"delivWish": "2021 - 03 - 29 23: 59: 59",
 				"inspectionVisit": null,
 				"productPrice": 5500000,
-				"specList": ["", ""],
+				"specList": ["null", "null"],
 				"orderStatus": {
 					"disabled": "",
 					"statusText": "걸제 완료",
@@ -59,7 +59,7 @@
         "orderPrice": 44000000,
         "totalPrice": "44,000,000",
         "paymentMethodName": "국민은행 00999085576331 - 마진",
-        "receiptUrl":""
+        "receiptUrl":"http://wwwstg.lge.co.kr"
       },
       "shipping":{
           "name":"이연철",
