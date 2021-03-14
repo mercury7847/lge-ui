@@ -665,7 +665,37 @@
             e.preventDefault();
 
             setSalesReceiotPop();
-        })
+        });
+
+        //영수증 팝업 인쇄
+        $('#popup-salesReceipt').on('click',"div.btn-group button.pink", function(e){
+            e.preventDefault();
+            var receiptTemplate = '<html lang="ko" class="js">' +
+                '<head>' +
+                    '<meta charset="UTF-8">' +
+                    '<meta http-equiv="X-UA-TextLayoutMetrics" content="gdi">' +
+                    '<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">' +
+                    '<title>영수증</title>' +
+                    '<link rel="shortcut icon" href="/lg5-common/images/favicon.ico">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/reset.min.css">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/app.min.css">' +
+                    '<link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/MYC/MYC.min.css">' +
+                '</head>' +
+                '<body><article id="popup" class="win-popup-wrap">{{#raw html}}</article></body>' +
+            '</html>'
+
+            var html = $('#popup-salesReceipt').html();
+            var setting = "width=640, height=800, all=no";
+            var objWin = window.open('', 'print',setting);
+            objWin.document.write(vcui.template(receiptTemplate, {"html":html}));
+            objWin.focus(); 
+            objWin.document.close();
+            objWin.onload=function() {
+                objWin.print();
+                objWin.close();
+            }
+        });
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 

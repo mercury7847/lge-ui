@@ -111,10 +111,8 @@
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 							item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
-							console.log(item.reviewsCount, (item.reviewsCount != "0"));
 						}
 
-						console.log(data);
 						var lists = vcui.template(KRC0001_listItemTemplate, data);
 						$("#"+listID).html(lists);
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));

@@ -53,7 +53,7 @@
             var html = $parent.html();
             var setting = "width=640, height=800, all=no";
             var objWin = window.open('', 'print',setting);
-            objWin.document.write(vcui.template(KRP0010_PRINT, {"head":$('head').html(),"html":html}));
+            objWin.document.write(vcui.template(KRP0010_PRINT, {"html":html}));
             objWin.focus(); 
             objWin.document.close();
             objWin.onload=function() {
