@@ -1106,6 +1106,7 @@
             //결제정보
             if(data.payment) {
                 if(Object.keys(data.payment).length){
+                    console.log("### data.payment ###",data.payment)
                     var payment = data.payment;
                     payment.orderPrice = vcui.number.addComma(payment.orderPrice);
                     payment.discountPrice = vcui.number.addComma(payment.discountPrice);
@@ -1402,6 +1403,8 @@
         //결제정보
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
+
+            console.log("### PAYMENT_DATA ###",PAYMENT_DATA)
 
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
                 
