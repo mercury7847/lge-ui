@@ -1577,6 +1577,10 @@
             var discountPrices = 0;
             var mempointPrices = 0;
             var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
+            productList.specList = vcui.array.filter(productList.specList, function(item){
+                var chk = item != null && item != "null" && item != undefined ? true : false;
+                return chk;
+            });
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
