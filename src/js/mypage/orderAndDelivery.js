@@ -665,7 +665,37 @@
             e.preventDefault();
 
             setSalesReceiotPop();
-        })
+        });
+
+        //영수증 팝업 인쇄
+        $('#popup-salesReceipt').on('click',"div.btn-group button.pink", function(e){
+            e.preventDefault();
+            var receiptTemplate = '<html lang="ko" class="js">' +
+                '<head>' +
+                    '<meta charset="UTF-8">' +
+                    '<meta http-equiv="X-UA-TextLayoutMetrics" content="gdi">' +
+                    '<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">' +
+                    '<title>영수증</title>' +
+                    '<link rel="shortcut icon" href="/lg5-common/images/favicon.ico">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/reset.min.css">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/app.min.css">' +
+                    '<link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/MYC/MYC.min.css">' +
+                '</head>' +
+                '<body><article id="popup" class="win-popup-wrap">{{#raw html}}</article></body>' +
+            '</html>'
+
+            var html = $('#popup-salesReceipt').html();
+            var setting = "width=640, height=800, all=no";
+            var objWin = window.open('', 'print',setting);
+            objWin.document.write(vcui.template(receiptTemplate, {"html":html}));
+            objWin.focus(); 
+            objWin.document.close();
+            objWin.onload=function() {
+                objWin.print();
+                objWin.close();
+            }
+        });
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
@@ -1134,7 +1164,8 @@
             //월 납부 정보...
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
-                monthpayment.requsetCardInfo = monthpayment.cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                var cardReqYnName = monthpayment.cardReqYnName ? monthpayment.cardReqYnName + " - " : "";
+                monthpayment.requsetCardInfo = cardReqYnName + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
@@ -1166,7 +1197,10 @@
                     }
                 }
                 cardValidation.setValues(cardInfo);
-                bankValidation.setValues(bankInfo);
+                bankValidation.setValues(bankInfo);        
+
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
@@ -1177,6 +1211,16 @@
 
             lgkorUI.hideLoading();
         });
+    }
+    //카드/은행 셀렉트박스 리셋...
+    function setDelectData(selector, list, selectId){
+        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
+        for(var idx in list){
+            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
+            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
+            selector.append(option);
+        }
+        selector.vcSelectbox('update');
     }
 
 

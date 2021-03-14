@@ -85,7 +85,6 @@ var isApp = function(){
             console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
-            console.log(location.hostname)
             if(location.hostname == "cms50.lge.co.kr") {
                 console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
@@ -272,14 +271,23 @@ var isApp = function(){
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
-            this._bindErrBackEvent();
-            this._addImgOnloadEvent();
-            this._preloadComponents();
-            this._addTopButtonCtrl();
-            this._createMainWrapper();
-            this._switchLinker();
+            var self = this;
+
+            self._bindErrBackEvent();
+            self._addImgOnloadEvent();
+            self._preloadComponents();
+            self._addTopButtonCtrl();
+            self._createMainWrapper();
+            self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
+
+            //유사제품 추천...
+            $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
+                e.preventDefault();
+
+                self.addEqualCompare($(this).data('modelIds'));
+            })
         },
 
         _addImgOnloadEvent: function(){
@@ -784,6 +792,14 @@ var isApp = function(){
             console.log("### setCompapreCookie ###", compareCookie);
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
+        },
+
+        addEqualCompare: function(ids){
+            var self = this;
+
+            self.setCookie(self.COMPARE_COOKIE_NAME, ids);
+
+            location.href = "/compare";
         },
 
         setStorage: function(key, value){
