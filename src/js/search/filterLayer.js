@@ -358,6 +358,7 @@ var FilterLayer = (function() {
             self.$layFilter.css('display', '');
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
+            var expands = [];
             var arr = data instanceof Array ? data : [];
             if(arr.length > 0) {
 
@@ -423,6 +424,8 @@ var FilterLayer = (function() {
                             }
                             break;
                     }
+
+                    if(item.defalutUnfoldFlag == "N") expands.push(index);
                 });
                 self._filterBindCustomEvents();
             }
@@ -431,6 +434,8 @@ var FilterLayer = (function() {
 
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
+
+            for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {

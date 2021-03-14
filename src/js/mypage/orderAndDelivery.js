@@ -1062,6 +1062,10 @@
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
                     }
 
+                    if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+                        list[idx].apiType = "OBS";
+                    }
+
                     ORDER_LIST.push(list[idx]);
                 }
             }
