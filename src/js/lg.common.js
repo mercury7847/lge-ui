@@ -12,7 +12,6 @@ var isApp = function(){
     if(isApp()) $('html').addClass('app');
 
     window.onload = function(){
-        console.log('lazy??????????? onload');
         vcui.require([
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
@@ -20,7 +19,6 @@ var isApp = function(){
             var $b = $('body');
             $b.vcLazyLoaderSwitch();
             $b.vcLazyLoader();
-            console.log('lazy???????????');
         });
     };
 
