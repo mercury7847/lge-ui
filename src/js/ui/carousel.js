@@ -183,8 +183,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            console.log("ADD ver.2021.03.12")
-
             core.extend(self, componentInitials);
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
@@ -971,12 +969,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (self.$slides) {
 
                 var isMarkuped = self.$slideTrack.hasClass('ui_static');
-                // comahead
-                self.$slides.css('float', '');
 
                 self.$slides.removeClass(_V.SLIDE + ' ' + opt.activeClass + ' ' + _V.CENTER + ' ' + _V.VISIBLE + ' ' + _V.CURRENT).removeAttr('aria-hidden data-' + _V.INDEX + ' tabindex role').each(function () {
                     $(this).attr('style', $(this).data('originalStyling'));
                 });
+
+                self.$slides.css('float', '');
 
                 if (isMarkuped) {
                     self.$list.off().removeClass('ui_static');
@@ -992,6 +990,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.$slider.append(self.$slides);
                     }
                 }
+
+                
             } 
                         
             self.cleanUpRows();
@@ -1017,9 +1017,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             transition[self.transitionType] = '';
 
             if (opt.fade === false) {
-                self.$slideTrack.css(transition);
+                if(self.$slideTrack) self.$slideTrack.css(transition);
             } else {
-                self.$slides.eq(slide).css(transition);
+                if(self.$slides) self.$slides.eq(slide).css(transition);
             }
         },
         fadeSlide: function fadeSlide(slideIndex, callback) {
@@ -1482,10 +1482,16 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$dots.length) {
                 self.$slider.on(_N + 'afterchange', function (e, carousel, index) {
-                    self.$dots.find('[data-bind-text]').text('');
-                    self.$dots.eq(index).find('[data-bind-text]').text(function () {
-                        return this.getAttribute('data-bind-text') || '';
-                    });
+                    //if(self.$dots.find('[data-bind-text]')) self.$dots.find('[data-bind-text]').text('');
+
+                    if(self.$dots){
+                        self.$dots.find('[data-bind-text]').text('');
+                        self.$dots.eq(index).find('[data-bind-text]').text(function () {
+                            return this.getAttribute('data-bind-text') || '';
+                        });
+                    } 
+
+                    
                 });
             }
         },
@@ -1847,7 +1853,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.$slider.removeClass(_V.LOADING);
 
             self.initUI();
-
             if (opt.lazyLoad === 'progressive') {
                 
                 // 임시 response 이미지 체크 루틴
@@ -1911,7 +1916,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
         /** startTransition 기능추가*/
         startTransition: function startTransition(idx) {
             var self = this;    
-            var $target, startCss, endCss,  aniObj, obj;    
+
+            if(!self.$slides) return;
+            var $target, startCss, endCss,  aniObj, obj;  
             var $currentTarget = $(self.$slides.get(idx));
             var $obj = $currentTarget.find('[data-p-ani]');            
 
@@ -2396,7 +2403,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.variableWidth === false) {
-                
                 var offset = self.$slides.first().outerWidth(true) - self.$slides.first().width();
                 self.$slideTrack.children('.' + _V.SLIDE).width(self.slideWidth - offset);
             }

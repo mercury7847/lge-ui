@@ -475,9 +475,7 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
-                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
-                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -1277,6 +1275,8 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            console.log("### requestCart ###", param);
+
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -1313,6 +1313,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            console.log("### requestWish ###", param, wish);
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
