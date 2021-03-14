@@ -236,7 +236,7 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
-        $('select[name=contractInfo]').on('change', function(e, data){
+        $('select[name="contractInfo"]').on('change', function(e){
             changeContractInfo();
         });
     }

@@ -147,7 +147,13 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
             if(self._checkNull(originStr) == true) return originStr;
 
             strLength = originStr.length;
-            maskingStr = originStr.replace(/(?<=.{1})./gi, "*");
+            if(strLength < 3){
+                maskingStr = originStr.substring(0,1) + originStr.substring(1).replace(/[0-9a-zA-Z]/g, "*");
+            } else {
+                maskingStr = originStr.substring(0,2) + originStr.substring(2).replace(/[0-9a-zA-Z]/g, "*");
+            }
+            // ie 호환성 관련 look behind 같은 regex 타입 사용 못함
+           // maskingStr = originStr.replace(/(?<=.{1})./gi, "*");
 
             if(strLength > 2){
                 lastStr = originStr.substr(strLength-1, 1);
@@ -168,7 +174,12 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
             strLength = originStr.length; 
             if(strLength < leng) return;
 
-            maskingStr = originStr.replace(new RegExp('(?<=.{' + leng + '}).', 'gi'), "*"); 
+            if(strLength < 5){
+                maskingStr = originStr.replace(/[0-9a-zA-Z]/g, "*");
+            } else {
+                maskingStr = originStr.substring(0,leng) + originStr.substring(leng).replace(/[0-9a-zA-Z]/g, "*");
+            }
+            //maskingStr = originStr.replace(new RegExp('(?<=.{' + leng + '}).', 'gi'), "*"); 
 
 
             return maskingStr;
