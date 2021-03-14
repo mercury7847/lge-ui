@@ -1689,10 +1689,11 @@
                 mempointPrice: mempointPrice
             });
 
+            var orderedQuantity = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ?  listdata.productTotal : listdata.orderedQuantity;
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                orderedQuantity: listdata.orderedQuantity
+                orderedQuantity: orderedQuantity
             });
 
             listdata.specList = vcui.array.filter(listdata.specList, function(item){
