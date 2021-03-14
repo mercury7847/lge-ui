@@ -584,7 +584,7 @@
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
                 item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
-                item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(years1TotAmt) : null;
+                item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;
 
                 //flag
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
