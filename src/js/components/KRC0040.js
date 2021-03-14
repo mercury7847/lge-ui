@@ -114,12 +114,6 @@ $(window).ready(function(){
 					$moreInfos.children().eq(no).addClass('active');
 					$onText.text($moreInfos.children().eq(no).text());
 				}
-
-				if(isAllHidden) {
-					$component.hide();
-				} else {
-					$component.show();
-				}
             });
 		}
 		
@@ -146,7 +140,11 @@ $(window).ready(function(){
 
 				var movtop = $(id).offset().top - topDistance;
 				
-                $('html, body').stop().animate({scrollTop:movtop}, 200);
+				$('html, body').stop().animate({scrollTop:movtop}, 200);
+				
+				if($moreInfos.data('isOpen')){
+					toggleTabList();
+				}
             }
         }
     
