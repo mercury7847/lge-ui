@@ -135,12 +135,19 @@ var FilterLayer = (function() {
                 e.preventDefault();
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
+
+                $('html, body').css({
+                    overflow:"hidden"
+                });
             });
 
             // 모바일 필터박스 닫기
             $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
                 e.preventDefault();
                 self.$layFilter.removeClass('open');
+                $('html, body').css({
+                    overflow:"visible"
+                });
             });
 
             // 모바일 필터박스 확인
