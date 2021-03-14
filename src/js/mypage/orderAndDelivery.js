@@ -1064,6 +1064,7 @@
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
                         list[idx].apiType = "OBS";
+                        list[idx].requestNo = "";
                     }
 
                     ORDER_LIST.push(list[idx]);
