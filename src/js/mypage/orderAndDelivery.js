@@ -1164,7 +1164,8 @@
             //월 납부 정보...
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
-                monthpayment.requsetCardInfo = monthpayment.cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                var cardReqYnName = monthpayment.cardReqYnName ? monthpayment.cardReqYnName + " - " : "";
+                monthpayment.requsetCardInfo = cardReqYnName + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
@@ -1196,7 +1197,10 @@
                     }
                 }
                 cardValidation.setValues(cardInfo);
-                bankValidation.setValues(bankInfo);
+                bankValidation.setValues(bankInfo);        
+
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
@@ -1207,6 +1211,16 @@
 
             lgkorUI.hideLoading();
         });
+    }
+    //카드/은행 셀렉트박스 리셋...
+    function setDelectData(selector, list, selectId){
+        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
+        for(var idx in list){
+            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
+            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
+            selector.append(option);
+        }
+        selector.vcSelectbox('update');
     }
 
 
