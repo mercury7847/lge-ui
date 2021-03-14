@@ -482,6 +482,7 @@
         console.log("step1 validation start!!");
         var result = step1Validation.validate();
         var data = getInputData('creditInquire');
+        console.log("detailAddress:", step1Validation.getValues("detailAddress"));
         if(result.success){
             completed = data === "Y" ? true : false;
             if(!completed){
@@ -701,6 +702,7 @@
                     }
 
                     var total = parseInt(productPriceInfo.total.count);
+                    console.log("productPriceInfo.total.count:", productPriceInfo.total.count)
                     if(total) abled = "Y";
                 }
                 

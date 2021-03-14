@@ -322,6 +322,93 @@
           "commonCodeId": "90"
         }
       ],
+      "cardList": [
+        {
+          "commonCodeName": "국민카드",
+          "sortNo": 1,
+          "commonCodeId": "A01"
+        },
+        {
+          "commonCodeName": "신한카드",
+          "sortNo": 2,
+          "commonCodeId": "A02"
+        },
+        {
+          "commonCodeName": "우리카드",
+          "sortNo": 3,
+          "commonCodeId": "A03"
+        },
+        {
+          "commonCodeName": "롯데카드",
+          "sortNo": 4,
+          "commonCodeId": "A04"
+        },
+        {
+          "commonCodeName": "현대카드",
+          "sortNo": 5,
+          "commonCodeId": "A05"
+        },
+        {
+          "commonCodeName": "외환카드",
+          "sortNo": 6,
+          "commonCodeId": "A06"
+        },
+        {
+          "commonCodeName": "농협카드",
+          "sortNo": 7,
+          "commonCodeId": "A07"
+        },
+        {
+          "commonCodeName": "씨티카드",
+          "sortNo": 8,
+          "commonCodeId": "A08"
+        },
+        {
+          "commonCodeName": "하나카드",
+          "sortNo": 9,
+          "commonCodeId": "A09"
+        },
+        {
+          "commonCodeName": "삼성카드",
+          "sortNo": 10,
+          "commonCodeId": "A10"
+        },
+        {
+          "commonCodeName": "BC카드",
+          "sortNo": 11,
+          "commonCodeId": "A11"
+        },
+        {
+          "commonCodeName": "NH카드",
+          "sortNo": 12,
+          "commonCodeId": "B01"
+        },
+        {
+          "commonCodeName": "광주카드",
+          "sortNo": 13,
+          "commonCodeId": "B02"
+        },
+        {
+          "commonCodeName": "산은캐피탈",
+          "sortNo": 14,
+          "commonCodeId": "B03"
+        },
+        {
+          "commonCodeName": "전북카드",
+          "sortNo": 15,
+          "commonCodeId": "B04"
+        },
+        {
+          "commonCodeName": "제주카드",
+          "sortNo": 16,
+          "commonCodeId": "B05"
+        },
+        {
+          "commonCodeName": "수협카드",
+          "sortNo": 17,
+          "commonCodeId": "B99"
+        }
+      ],
       "payment":{
           "paymentMethodName":"신용카드(분할결제) 결제수단",
           "receiptUrl": "/html/MYC/ACCF7105.html",
