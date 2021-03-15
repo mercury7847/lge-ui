@@ -36,7 +36,7 @@
                 self.$pagination = $contents.find('.pagination');
                 self.$sortsWrap = $contents.find('.sorting-wrap');
                 self.$sortTotal = $contents.find('#count');
-                self.$sorttSelectWrap = $self.$sortsWrap.find('.sort-select-wrap');
+                self.$sorttSelectWrap = self.$sortsWrap.find('.sort-select-wrap');
                 self.$sortSelect = $contents.find('.ui_selectbox');
                 self.$listWrap = $contents.find('.list-wrap');
                 self.$noData = $contents.find('.no-data');
