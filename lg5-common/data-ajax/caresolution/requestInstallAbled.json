@@ -1,6 +1,7 @@
 {
   "data": {
-    "allOwnedProductYn": "Y",
+    "beforeVisitModelFlag": "N",
+    "allOwnedProductYn": "N",
     "alert": {
       "rightBtnName": "장바구니로 이동",
       "leftBtnName": "확인",
