@@ -1234,6 +1234,9 @@
                 if(cardData && cardData.cardSale) {
                     monthPrice -= cardData.cardSale;
                 }
+                if(monthPrice < 0) {
+                    monthPrice = 0;
+                }
                 //월 이용요금
                 var $priceInfo = self.$pdpInfoCareshipService.find('dl.price-info span.price');
                 $priceInfo.html(vcui.number.addComma(monthPrice) + '원' + (selectCareshipInfoData.freeMonth ? ('<em class="desc">무상할인(' + selectCareshipInfoData.freeMonth + '개월)</em>') : ''));
@@ -1271,8 +1274,11 @@
                         $careLi.hide();
                         totalPrice = price;
                     } else {
+                        if(carePrice < 0) {
+                            carePrice = 0;
+                        }
                         $careLi.find('span.price').text("월 " + vcui.number.addComma(carePrice) +"원");
-
+                        
                         var $careshipService = $paymentAmount.siblings('.careship-service');
                         var checkinput = $careshipService.find('input[type=radio]:checked');
                         if(checkinput.length > 0) {
