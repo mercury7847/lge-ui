@@ -67,7 +67,6 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
 
             var openIndex = self.options.openIndex;
             openIndex = openIndex!==undefined? openIndex : -1;
-
             if (openIndex === 'all') {
                 self.options.singleOpen = false;
                 self.expandAll();                
@@ -75,13 +74,18 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 self.collapseAll();
                 var indexes = [].concat(openIndex);
                 
-                if (self.options.singleOpen) {
-                    self.expand(indexes[0], false);
-                } else {
-                    core.each(indexes, function (index) {
-                        self.expand(index, false);
-                    });
-                }
+
+                //collapaseAll() 떄문인지 열리지 않는 오류로 setTimeout 후 실행...
+                setTimeout(function(){
+                    if (self.options.singleOpen) {
+                        self.expand(indexes[0], false);
+                    } else {
+                        core.each(indexes, function (index) {
+                            console.log("indexes:", index)
+                            self.expand(index, false);
+                        });
+                    }
+                }, 10);
             }
             
         },
