@@ -43,15 +43,29 @@ $(document).ready(function() {
                 });
 
                 if ($(window).scrollTop() > 100) {
-                    $('.floating-menu.top').show();
+                    //$('.floating-menu.top').show();
+                    $('.floating-menu.top').css({
+                        "position" : "static"
+                    });
                 } else {
-                    $('.floating-menu.top').hide();
+                    //$('.floating-menu.top').hide();
+                    $('.floating-menu.top').css({
+                        "position" : "absolute",
+                        "right" : 0
+                    });
                 }
                 $(window).scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        $('.floating-menu.top').show();
+                        //$('.floating-menu.top').show();
+                        $('.floating-menu.top').css({
+                            "position" : "static"
+                        });
                     } else {
-                        $('.floating-menu.top').hide();
+                        //$('.floating-menu.top').hide();
+                        $('.floating-menu.top').css({
+                            "position" : "absolute",
+                            "right" : 0
+                        });
                     }
                 });
             }
