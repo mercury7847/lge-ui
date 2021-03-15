@@ -248,14 +248,11 @@
                 }
                 .tit {
                     flex: 1;
+                    overflow: hidden;
+                    padding-left: 16px;
+                    max-height: 48px;
                     span {
-                        display: block;
-                        max-height: 48px;
-                        padding-left: 16px;
-                        text-overflow: ellipsis;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
+                        @include textEllipsisClamp(2);
                         @include font-medium;
                         font-weight: 500;
                         @include mobile {
