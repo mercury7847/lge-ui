@@ -1166,6 +1166,12 @@
                     }
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
+
+                    var selectedValue = $selectBox.vcSelectbox('selectedOption');
+                    var parent = $selectBox.parents('li.lists');
+                    var findLi = parent.find('.article-box li:eq('+ (selectBoxIndex+1) + ') span');
+                    console.log(selectedValue.text, selectBoxIndex,findLi);
+                    findLi.text(selectedValue.text);
                 }
             },
 
@@ -1274,7 +1280,6 @@
                     totalPrice += totalAdditional;
                 }
 
-                console.log("update",totalPrice, quantity);
                 var $total = $paymentAmount.find('dl.total-payment span.price');
                 $total.text(prefix + vcui.number.addComma(totalPrice * quantity) + '원');
             },
