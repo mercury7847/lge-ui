@@ -510,7 +510,7 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if (!item.years1TotAmt && item.years1TotAmt != "") {
+                    if (item.years1TotAmt && item.years1TotAmt != "") {
                         return true;
                     } else {
                         return false;
@@ -526,6 +526,7 @@
             },
 
             checkPriceFlag: function(item) {
+                console.log("### checkPriceFlag ###", item.bizType)
                 if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
@@ -533,14 +534,14 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if ((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) {
+                    if ((item.rTypeCount && item.rTypeCount != "") || (item.cTypeCount && item.cTypeCount != "")) {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
                     //소모품 DISPOSABLE
-                    if(!item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+                    if(item.obsTotalDiscountPrice && item.obsTotalDiscountPrice != "") {
                         return true;
                     } else {
                         return false;
