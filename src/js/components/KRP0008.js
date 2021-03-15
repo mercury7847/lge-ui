@@ -1217,6 +1217,7 @@
                     "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix
                 }
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
+                $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
             },
 
@@ -1767,7 +1768,6 @@
                         "productImg": compareData.productImg,
                         "productAlt": compareData.productAlt
                     }
-                    console.log(compareData,compareId);
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
                         $dm.prop('checked', false);
