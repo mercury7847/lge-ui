@@ -786,7 +786,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     };
 
                     self.searchResultMode = init ? false : true;
-                    self.schReaultTmplID = "localSearch";
+                    self.schReaultTmplID = "userAddressSearch";
 
                     // self.$map.getAdressPositions(result.data.userAdress, callback);
                     self.searchAddressToCoordinate(result.data.userAdress, callback);
