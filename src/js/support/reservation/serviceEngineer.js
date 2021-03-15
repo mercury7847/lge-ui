@@ -691,7 +691,7 @@
                         self.$selectedModelBar.vcSticky();
                     });
 
-                    lgkorUI.showLoading();
+                    lgkorUI.hideLoading();
                 });
             });
 
