@@ -69,7 +69,7 @@
                         '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
                         '<a href="{{url}}" class="desc time">' +
                         '{{#each item in time}}' +
-                            '<span><em>item.week</em> {{item.time}}</span>' +
+                            '<span><em>{{item.week}}</em> {{item.time}}</span>' +
                         '{{/each}}' +
                         '</a>' +
                     '</div>' +

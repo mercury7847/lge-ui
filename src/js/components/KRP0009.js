@@ -61,8 +61,8 @@ $(window).ready(function(){
             //jsw
             //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
             $(window).on('changeButton.KRP0009', function(e,data){
-                var btn = $component.find("a.extra-menu");
-                //var btn = $component.find("#extraBtn");
+                //var btn = $component.find("a.extra-menu");
+                var btn = $component.find("#extraBtn");
                 if(data) {
                     btn.find('span').text(data.title);
                     if(data.disabled) {
@@ -73,8 +73,8 @@ $(window).ready(function(){
                 }
             });
 
-            $component.find("a.extra-menu").on('click', function(e){
-            //$component.find("#extraBtn").on('click', function(e){
+            //$component.find("a.extra-menu").on('click', function(e){
+            $component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
                 if(!$(this).hasClass("disabled")) $(window).trigger("sendExtraAction.KRP0009");
