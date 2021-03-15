@@ -738,6 +738,9 @@
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
+                        //
+                        //정렬 셀렉트 박스
+                        self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
                         self.$tab.parents('.search-tabs-wrap').show();
                         self.$tab.vcSmoothScroll('refresh');
@@ -751,6 +754,8 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
+                        //
+                        self.$listSorting.find('.sort-select-wrap').show();
                     }
 
                     //페이지
