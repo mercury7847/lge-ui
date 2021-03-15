@@ -1571,7 +1571,18 @@
                         loginFlag = data.loginFlag;
                         
                         //보유멤버쉽 포인트
-                        //var myMembershipPoint = data.myMembershipPoint;
+                        var myMembershipPoint = data.myMembershipPoint;
+                        if(loginFlag) {
+                            //로그인
+                            self.$benefitInfoPopup.find('.price-info.point').hide();
+                            var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');
+                            $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
+                            $pointMember.show();
+                        } else {
+                            //로그인 아님
+                            self.$benefitInfoPopup.find('.price-info.point').show();
+                            self.$benefitInfoPopup.find('.price-info.point.member').hide();
+                        }
                         
                         if(self.$component.data('consumables')) {
                             self.consumables.init(data);
