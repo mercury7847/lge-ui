@@ -538,7 +538,7 @@ var CareCartInfo = (function() {
             if($item_li) {
                 var $p_text_disabled = $item_li.find('p.text-disabled');
                 if(disabled) {
-                    $item_li.addClass('item-disabled');
+                    $item_li.removeClass('item-disabled').addClass('item-disabled');
                     if($p_text_disabled.length > 0) {
                         $p_text_disabled.show();
                     } else {
