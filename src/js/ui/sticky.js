@@ -21,7 +21,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             stickyClass: 'fixed',
             stickyContainer: 'body',
             usedAnchor: false,
-            isHidden: true,
+            isHidden: false,
             actClass: "active",
             anchorClass: "a",
             isContainerAbled: true
@@ -254,7 +254,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
             self.wrapper.height(self.$el.outerHeight(true));
 
             self.scrollDistance = self.scrollTop - (self.stickyRect.top + self.marginTop);
-            self._setStickyMobileStatus();
+            
+            if(opt.isHidden) self._setStickyMobileStatus();
         },
 
         _handleResize: function _handleResize(e) {
