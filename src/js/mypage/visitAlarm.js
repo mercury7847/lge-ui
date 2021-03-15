@@ -49,6 +49,11 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
+                var hash = location.hash;
+                if(hash) {
+                    var index = self.$selectContract.find('option[value='+hash.replace("#","")+']').index();
+                    self.$selectContract.vcSelectbox('selectedIndex',index,true);
+                }
                 //현재 설정된 계약 갯수 가져옴
                 /*
                 var $option = self.$selectContract.find('option');
@@ -241,6 +246,8 @@
             requestData: function(contract) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
+                location.hash = contract;
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
                     var data = result.data;
 
