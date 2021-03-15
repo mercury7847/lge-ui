@@ -1,6 +1,35 @@
 
+
+// /lg5-common/images/dummy/temp/img-care-01.jpg
+
+var itemTmpl = '{{#each obj in list}}\n'+
+    '<li class="item ui_carousel_slide">\n'+
+    '   <div class="prd-care-vertical ">\n'+
+    '       <div class="img-wrap">\n'+
+    '           <a href="{{obj.modelUrlPath}}">\n'+
+    '               <img src="{{obj.mediumImgAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)">\n'+
+    '           </a>\n'+
+    '       </div>\n'+
+    '       <div class="txt-wrap">\n'+
+    '           <p class="tit"><span class="blind">{{obj.modelDisplayName}}</p>\n'+
+    '           <p class="code"><span class="blind">제품 코드</span>{{obj.modelId}}</p>\n'+
+    '       </div>\n'+
+    '       <div class="info-wrap">\n'+
+    '           <div class="price-wrap">\n'+
+    '               <div class="total-price">\n'+
+    '                   {{#if obj.totalPrice}}'+
+    '                       <p class="price">{{obj.totalPrice}}</p>\n'+
+    '                   {{/if}}'
+    '                   <button type="button" class="btn border" data-url={{obj.modelUrlPath}}><span>담기</span></button>\n'+
+    '               </div>\n'+
+    '           </div>\n'+
+    '       </div>\n'+
+    '   </div>\n'+
+    '</li>\n'+
+    '{{/each}}'
+
 $(function(){
-    vcui.require(['ui/carousel'], function () {
+    vcui.require(['ui/carousel','ui/tab'], function () {
 
         // 플로우배너
         $('.ui_carousel_slider_banner').vcCarousel({
@@ -126,7 +155,6 @@ $(function(){
             ]
         });
 
-
         // 케어솔루션 추천제품 
         $('.ui_carousel_slider1').vcCarousel({
             infinite: false,
@@ -236,5 +264,21 @@ $(function(){
                 }
             ]
         });
+
+        $('.ui_product_tab').on('tabbeforechange tabinit', function(e,data){
+
+            if(e.type=='tabinit'){
+
+            }else{
+                e.preventDefault();
+                $('.ui_product_tab').vcTab('select', data.selectedIndex, true );
+            }
+            
+
+        }).vcTab({selectors:{
+            prevButton:".ui_smooth_prev",
+            nextButton:".ui_smooth_next",
+            smoothScroll:'.ui_smooth_tab'
+        }});
     });    
 });

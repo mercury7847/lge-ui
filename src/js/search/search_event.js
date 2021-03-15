@@ -101,9 +101,9 @@
                             var diffCat = vcui.array.different(category1,category2);
                             if(diffCat.length > 0) {
                                 if(category2 && category2.length > 0) {
-                                    data.filterData = JSON.stringify({"category":category2});
+                                    data.filterData = JSON.stringify({"sourcetype":category2});
                                 } else {
-                                    data.filterData = "{}";
+                                    data.filterData =  JSON.stringify({});
                                 }
                             }
                         }
@@ -129,7 +129,7 @@
             getCategoryFromFilter: function(filterData) {
                 if(!filterData) return null;
                 var filterData = JSON.parse(filterData);
-                var category = filterData["category"];
+                var category = filterData["sourcetype"];
                 return category ? category : [];
             },
 
@@ -738,6 +738,9 @@
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
+                        //
+                        //정렬 셀렉트 박스
+                        self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
                         self.$tab.parents('.search-tabs-wrap').show();
                         self.$tab.vcSmoothScroll('refresh');
@@ -751,6 +754,8 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
+                        //
+                        self.$listSorting.find('.sort-select-wrap').show();
                     }
 
                     //페이지
