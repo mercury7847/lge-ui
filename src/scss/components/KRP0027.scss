@@ -24,12 +24,11 @@
             margin-bottom:32px;
         }
         .tabs-wrap {
-            text-align:left;
-        }
-        .tabs-wrap.border-type {
+            z-index: 1;
             max-width: 1380px + 80px;
-            margin: 0 auto;
+            margin: 0 auto -1px;
             padding:0 40px;
+            text-align:left;
             @media screen and (min-width:(1380px + 80px)) {
                 &:before {
                     right: 40px;
@@ -37,8 +36,11 @@
                 }
             }
             @include mobile {
+                margin: 0;
                 padding:0;
             }
+        }
+        .tabs-wrap.border-type {
         }
         .title + .tabs-wrap {
             padding-top:80px;
