@@ -44,13 +44,14 @@
             margin-bottom:48px;
         }
         .tabs-wrap {
+            text-align: left;
             margin-bottom:48px;
         }
         tr {
             td {
                 &:first-child{
                     display:table-cell;
-                    color:#767676;
+                    color:#000;
                 }
                 &:nth-child(3){
                     display:none;
@@ -114,7 +115,7 @@
             margin-bottom:80px;
 
             @include mobile {
-                margin:0 16px 80px;
+                margin:0 16px 60px;
             }
         }
         .video-content {

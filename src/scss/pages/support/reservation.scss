@@ -52,7 +52,7 @@
                 }
             }
             .status {
-                margin-top:12px;
+                margin-top:16px;
                 color:#fff;
                 @include font-medium;
                 > span {
@@ -400,7 +400,7 @@
                         @include font-medium;
                     }
                     .address {
-                        color: #767676;
+                        color: #666;
                         @include font-small;
                     }
                 }
