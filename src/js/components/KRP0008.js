@@ -147,6 +147,14 @@
 
                 //크레마
                 lgkorUI.cremaLogin();
+
+                //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
+                if(typeof reviewsCount !== 'undefined') {
+                    reviewsCount = 103;
+                    if(parseInt(reviewsCount) > 0) {
+                        $(window).trigger("changeCategory.KRP0009",{"title":"리뷰(" + reviewsCount + ")","linkName":"review"});
+                    }
+                }
             },
 
             setting: function() {
@@ -770,7 +778,11 @@
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href').replace("#","");
+                    var addS = $(this).data('add');
                     if(url) {
+                        if(addS) {
+                            url += addS;
+                        }
                         location.href = url;
                     }
                 });
@@ -1216,6 +1228,9 @@
                     "rtModelSeq":selectRentalInfoData.rtModelSeq,
                     "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix
                 }
+                //결헙하여 할인받기 링크용 값 추가
+                $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
+
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
                 $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
