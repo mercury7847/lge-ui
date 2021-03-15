@@ -1572,7 +1572,7 @@
                         
                         //보유멤버쉽 포인트
                         var myMembershipPoint = data.myMembershipPoint;
-                        if(loginFlag) {
+                        if(lgkorUI.stringToBool(loginFlag)) {
                             //로그인
                             self.$benefitInfoPopup.find('.price-info.point').hide();
                             var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');

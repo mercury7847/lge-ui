@@ -4,7 +4,6 @@
     var PRODUCT_STATUS_URL;
     var ORDER_CANCEL_POP_URL;
     var ORDER_SAILS_URL;
-    var BANK_CONFIRM_URL;
     var ORDER_REQUEST_URL;
     var ORDER_BENEFIT_URL;
 
@@ -108,9 +107,11 @@
                                 '{{/if}}'+
                                 '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
                             '</div>'+
+                            '{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
                                 '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
                             '</p>'+
+                            '{{/if}}'+
                         '</div>'+
                     '</div>'+
                     '<div class="col col2">'+
@@ -160,9 +161,11 @@
                                     '</div>'+
                                     '{{/if}}'+
                                     '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                    '{{#if listData.contDtlType == "C01"}}'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원 결제완료'+
                                     '</p>'+
+                                    '{{/if}}'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+
@@ -425,7 +428,6 @@
         PRODUCT_STATUS_URL = $('.contents.mypage').data('productStatus');
         ORDER_CANCEL_POP_URL = $('.contents.mypage').data('orderCancelPopup');
         ORDER_SAILS_URL = $('.contents.mypage').data('orderSales');
-        BANK_CONFIRM_URL = $('.contents.mypage').data('accountCheck');
         
         ORDER_REQUEST_URL = $('.contents.mypage').data('orderRequest');
 
@@ -802,10 +804,21 @@
     }
 
     //반품신청 확인...
-    function takebackSubmit(){
-        var selectReason = $('#popup-takeback').find('#slt01 option:selected').val().replace(/[_-]/gi, '');
-        var writeReason = $('#popup-takeback').find('textarea').val().replace(/[_-]/gi, '');
-        if(!selectReason.length && !writeReason.length){
+    function takebackSubmit(){        
+        var selectReason = $('#popup-takeback').find('#slt01 option:selected').val();
+        var writeReason = $('#popup-takeback').find('textarea').val();
+        var selectReasonTrim = selectReason.replace(/[_-]/gi, '');
+        var writeReasonTrim = writeReason.replace(/[_-]/gi, '');
+        var reason = "";
+        if(selectReasonTrim.length){
+            reason = selectReason == "etc" ? writeReason : selectReason;
+        }
+
+        if(writeReasonTrim.length) reason = writeReason;
+
+        console.log(reason)
+
+        if(reason == ""){
             lgkorUI.alert("", {
                 title: "반품을 신청하시려면, 상세 사유가 필요합니다. 반품 사유를 입력해 주세요."
             });
@@ -847,15 +860,37 @@
     }
     //취소신청 확인...
     function cancelSubmit(){
-        var selectReason = $('#popup-cancel').find('#cancelReason option:selected').val().replace(/[_-]/gi, '');
-        var writeReason = $('#popup-cancel').find('textarea').val().replace(/[_-]/gi, '');
-        if(!selectReason.length && !writeReason.length){
+        var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
+        if(!chkItems.length){
+            lgkorUI.alert("", {
+                title: "취소 대상 제품을 선택해 주세요."
+            });
+
+            return;
+        }
+
+        var selectReason = $('#popup-cancel').find('#cancelReason option:selected').val();
+        var writeReason = $('#popup-cancel').find('textarea').val();
+        var selectReasonTrim = selectReason.replace(/[_-]/gi, '');
+        var writeReasonTrim = writeReason.replace(/[_-]/gi, '');
+        var reason = "";
+        if(selectReasonTrim.length){
+            reason = selectReason == "etc" ? writeReason : selectReason;
+        }
+
+        if(writeReasonTrim.length) reason = writeReason;
+
+        console.log(reason)
+
+        if(reason == ""){
             lgkorUI.alert("", {
                 title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
             });
 
             return;
         }
+
+
 
         var transtype = $('#popup-cancel').data('transType');        
         if(transtype == "B"){
@@ -933,7 +968,7 @@
         $('#popup-cancel').find('.mempointPrices').text(vcui.number.addComma(mempointPrices)+"원");
         $('#popup-cancel').find('.totalPrice').text(vcui.number.addComma(totalPrice)+"원");
 
-        $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+        //$('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
     }
 
     function setDeliveryInquiry(dataID, prodID){
@@ -1635,7 +1670,7 @@
                 $('#popup-cancel').find('#cancelReason').vcSelectbox('update');
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
-                $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', true);
+                $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
@@ -1663,23 +1698,29 @@
                 $('#popup-takeback').find('#slt01').vcSelectbox('update');
                 $('#popup-takeback').find('textarea').attr('disabled', "disabled").val('');
 
-                $('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+                //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
             //구매 결재정보 이름
             //케어 납부정보 이름
 
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
-            var totalPrice = productPrices - discountPrices - mempointPrices;
-            var discountComma = vcui.number.addComma(mempointPrices);
-            var template = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? nonememPriceInfoTemplate : priceInfoTemplate;
-            popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
-                typeName: infoTypeName,
-                productPrices: vcui.number.addComma(productPrices),
-                discountPrices: vcui.number.addComma(discountPrices),
-                mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
-                totalPrice: vcui.number.addComma(totalPrice)
-            }));
+
+            if(productList[0].contDtlType != "C09"){
+                popup.find('.sect-wrap.cnt01').show();
+                var totalPrice = productPrices - discountPrices - mempointPrices;
+                var discountComma = vcui.number.addComma(mempointPrices);
+                var template = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? nonememPriceInfoTemplate : priceInfoTemplate;
+                popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
+                    typeName: infoTypeName,
+                    productPrices: vcui.number.addComma(productPrices),
+                    discountPrices: vcui.number.addComma(discountPrices),
+                    mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
+                    totalPrice: vcui.number.addComma(totalPrice)
+                }));
+            } else{
+                popup.find('.sect-wrap.cnt01').hide();
+            }
 
 
             popup.data('transType', result.data.payment.transType);
@@ -1699,7 +1740,10 @@
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
                 var username;
-                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL)
+                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL) username = result.data.orderUser.userName;
+                else username = result.data.orderUser.userName;
+                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(username);
+
 
                 bankInfoBlock.show();
             } else{
@@ -1816,9 +1860,11 @@
             lgkorUI.hideLoading();
             
             if(result.data.success == "N"){
-                lgkorUI.alert("", {
-                    title: result.data.alert.title
-                });
+                if(result.data.alert){
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                }
             } else{
                 popup.vcModal('close');
 
@@ -1905,6 +1951,7 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
             "sku": listData[dataId].productList[prodId].productNameEN,
+            contDtlType: listData[dataId].productList[prodId].contDtlType,
             tabFlag: TAB_FLAG,
             rtModelSeq: listData[dataId].productList[prodId].rtModelSeq
         }
