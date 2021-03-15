@@ -151,7 +151,7 @@
                 var requireCare = $dm.attr('data-requireCare');
                 param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
                 */
-                lgkorUI.requestCart(ajaxUrl, param);
+                lgkorUI.requestCart(ajaxUrl, param, true);
             },
 
             requestWish: function($dm, wish) {

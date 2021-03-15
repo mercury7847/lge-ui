@@ -234,7 +234,7 @@
 				// 		"pageType": "plp"
 			}
 
-			lgkorUI.requestCart(ajaxUrl, param);
+			lgkorUI.requestCart(ajaxUrl, param, true);
 		},
 	};
 
