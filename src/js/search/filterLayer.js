@@ -484,14 +484,15 @@ var FilterLayer = (function() {
 
             //필터 라디오버튼
             //2021-03-05 검색관련해서 수정.
+            /*
             self.$layFilter.find('.ui_filter_accordion input[type="radio"]').each(function(idx, el){
                 $(el).prop('checked', false);
             });
-            /*
+            */
+            //첫번쨰 라디오 버튼 선택
             self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
                 $(el).prop('checked', true);
             });
-            */
 
             //필터 체크박스
             self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
@@ -554,11 +555,13 @@ var FilterLayer = (function() {
                             if(findDm.length > 0) {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
+                                /*
                                 var index = findDm.parents('li').index();
                                 var $pa = findDm.parents('.ui_filter_accordion');
                                 $pa.vcAccordion('setOption','useAnimate',false);
                                 $pa.vcAccordion('expand',index);
                                 $pa.vcAccordion('setOption','useAnimate',true);
+                                */
                             }
                         });
 
@@ -575,6 +578,17 @@ var FilterLayer = (function() {
                         }
                     }
                 }
+
+                //체크된 버튼이 있는 항목 열어두기
+                var checkedRadio = self.$layFilter.find('.ui_filter_accordion input:checked');
+                checkedRadio.each(function(idx, findDm) {
+                    var $findDm = $(findDm);
+                    var index = $findDm.parents('li').index();
+                    var $pa = $findDm.parents('.ui_filter_accordion');
+                    $pa.vcAccordion('setOption','useAnimate',false);
+                    $pa.vcAccordion('expand',index);
+                    $pa.vcAccordion('setOption','useAnimate',true);
+                });
 
                 self.$layFilter.find('.ui_filter_accordion input[type=checkbox]:checked').each(function(idx,obj){
                     self.resetSelectFilterCount(obj);
