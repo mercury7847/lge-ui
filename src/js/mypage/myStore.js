@@ -29,7 +29,7 @@
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '<a href="{{requestUrl}}" class="btn border size"><span>매장 상담 신청</span></a>' +
+                '<a href="{{requestUrl}}" class="btn border size"><span>매장 방문 예약</span></a>' +
             '</div>' +
         '</div>' +
     '</li>'
@@ -119,7 +119,7 @@
                     });
                     */
                 } else {
-                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인',
+                    var obj = {title:'', cancelBtnName:'아니오', okBtnName:'네',
                         ok: function (){
                             lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                                 var data = result.data;

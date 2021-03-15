@@ -12,8 +12,10 @@
             }
         }
         .title {
-            @include font-medium;
-            color: #767676;
+            font-size:16px;
+            color: #666;
+            font-weight:normal;
+            line-height:1.63;
             width:210px;
             strong {
                 font-weight: normal;
@@ -23,8 +25,9 @@
             width:calc(100% - 210px);
             color: #000;
             @include font-medium;
+            font-weight:500;
             .point {
-                color:#ec455a;
+                color:#da0f47;
             }
             .line {
                 display:block;
@@ -93,6 +96,7 @@
             .title,
             .description {
                 margin-left: 12px;
+                width:100%;
             }
             @include pc {
                 li {
@@ -177,17 +181,18 @@
         dt {
             font-size: 16px;
             color: #000;
+            font-weight:500;
             margin-bottom: 20px;
         }
     }
     @include mobile {
         &-list {
             .title {
-                width:96px;
+                width:82px;
             }
             .description {
                 width:calc(100% - 96px);
-                padding-left:12px;
+                padding-left:0;
                 .btn {
                     margin-top:12px;
                 }
@@ -198,6 +203,7 @@
         }
         &-dl {
             dt {
+                font-size:14px;
                 margin-bottom: 20px;
             }
         }

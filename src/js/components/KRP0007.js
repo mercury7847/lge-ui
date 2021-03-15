@@ -77,8 +77,8 @@
                         // '<div class="crema-product-reviews-score" data-product-code="{{salesModelCode}}" data-format="{{{stars}}} {{{score}}}({{{reviews_count}}})" data-hide-ifzero="1">' +
                         // '{{/if}}' +
                         '<a href="#">' +
-                            '{{#if (reviewsCount > 0)}}' +
-                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>' +
+                            '{{#if (reviewsCount != "0")}}' +
+                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                             '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                             '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
                             '{{/if}}' +
@@ -510,7 +510,7 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if (!item.years1TotAmt && item.years1TotAmt != "") {
+                    if (item.years1TotAmt && item.years1TotAmt != "") {
                         return true;
                     } else {
                         return false;
@@ -526,6 +526,7 @@
             },
 
             checkPriceFlag: function(item) {
+                console.log("### checkPriceFlag ###", item.bizType)
                 if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
@@ -533,14 +534,14 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if ((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) {
+                    if ((item.rTypeCount && item.rTypeCount != "") || (item.cTypeCount && item.cTypeCount != "")) {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
                     //소모품 DISPOSABLE
-                    if(!item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+                    if(item.obsTotalDiscountPrice && item.obsTotalDiscountPrice != "") {
                         return true;
                     } else {
                         return false;
@@ -582,8 +583,9 @@
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+                item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
-                item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(years1TotAmt) : null;
+                item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;
 
                 //flag
                 item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);
@@ -622,6 +624,38 @@
                 if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
                 //console.log("### item.siblingType ###", item.siblingType)
+
+            //     '{{#if checkPriceFlag}}'+
+            //     '{{#if bizType == "CARESOLUTION"}}' +
+            //         '<div class="price-area care">' +
+            //             '<div class="total-price">' +
+            //                 '<em class="text">기본 월 요금</em>' +
+            //                 '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
+            //             '</div>' +
+            //             '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+            //         '</div>' +
+            //     '{{#else}}' +
+            //         '<div class="price-area">' +
+            //             '{{#if obsTotalDiscountPrice}}'+
+            //                 '{{#if obsOriginalPrice}}<div class="original">' +
+            //                     '<em class="blind">판매가격</em>' +
+            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+            //                 '</div>{{/if}}' +
+            //                 '{{#if obsSellingPrice}}<div class="total">' +
+            //                     '<em class="blind">총 판매가격</em>' +
+            //                     '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+            //                 '</div>{{/if}}' +
+            //             '{{#else}}'+
+            //                 '{{#if obsOriginalPrice}}<div class="total">' +
+            //                     '<em class="blind">총 판매가격</em>' +
+            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+            //                 '</div>{{/if}}' +
+            //             '{{/if}}'+
+            //         '</div>' +
+            //     '{{/if}}' +
+            // '{{/if}}'+
+
+            console.log(item.checkPriceFlag, item.bizType, item.obsTotalDiscountPrice, item.obsOriginalPrice, item.obsSellingPrice)
 
                 return vcui.template(productItemTemplate, item);
             },

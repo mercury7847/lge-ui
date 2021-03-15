@@ -12,7 +12,6 @@ var isApp = function(){
     if(isApp()) $('html').addClass('app');
 
     window.onload = function(){
-        console.log('lazy??????????? onload');
         vcui.require([
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
@@ -20,7 +19,6 @@ var isApp = function(){
             var $b = $('body');
             $b.vcLazyLoaderSwitch();
             $b.vcLazyLoader();
-            console.log('lazy???????????');
         });
     };
 
@@ -85,7 +83,6 @@ var isApp = function(){
             console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
-            console.log(location.hostname)
             if(location.hostname == "cms50.lge.co.kr") {
                 console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
@@ -272,14 +269,23 @@ var isApp = function(){
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
-            this._bindErrBackEvent();
-            this._addImgOnloadEvent();
-            this._preloadComponents();
-            this._addTopButtonCtrl();
-            this._createMainWrapper();
-            this._switchLinker();
+            var self = this;
+
+            self._bindErrBackEvent();
+            self._addImgOnloadEvent();
+            self._preloadComponents();
+            self._addTopButtonCtrl();
+            self._createMainWrapper();
+            self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
+
+            //유사제품 추천...
+            $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
+                e.preventDefault();
+
+                self.addEqualCompare($(this).data('modelIds'));
+            })
         },
 
         _addImgOnloadEvent: function(){
@@ -475,9 +481,7 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
-                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
-                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -788,6 +792,14 @@ var isApp = function(){
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
+        addEqualCompare: function(ids){
+            var self = this;
+
+            self.setCookie(self.COMPARE_COOKIE_NAME, ids);
+
+            location.href = "/compare";
+        },
+
         setStorage: function(key, value){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
@@ -1090,6 +1102,7 @@ var isApp = function(){
             ], function (Sharer) {
                 // 공유하기 헬퍼 빌드
                 Sharer.init({
+                    appKey: "ded59364395778ecf9b0c8d952eaf16b",
                     selector: '.sns-list > li >  a',
                     attr: 'data-link-name' // sns서비스명을 가져올 속성
                 });
@@ -1107,7 +1120,6 @@ var isApp = function(){
                 data : data,
                 timeout : 180000
             }).done(function (result) {
-
                 if(dtype != "json") {
                     if(callback && typeof callback === 'function') callback(result);
                     return;
@@ -1138,14 +1150,12 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
-                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
-                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1159,7 +1169,6 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
-                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1176,20 +1185,15 @@ var isApp = function(){
                     */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
-
-                        lgkorUI.hideLoading();
-
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
-                lgkorUI.hideLoading();
             }).always(function() {
                 lgkorUI.hideLoading();
                 //console.log( "complete" );
@@ -1278,6 +1282,8 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            console.log("### requestCart ###", param);
+
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -1314,6 +1320,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            console.log("### requestWish ###", param, wish);
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
@@ -1541,8 +1548,6 @@ var isApp = function(){
                         self.$subCategory.append(html).prop('disabled', false);
                         self.$subCategory.find('option[value="'+subCategory+'"]').prop('selected', true);
                         self.$subCategory.vcSelectbox('update');
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 searchModelName: function(category, subCategory) {
@@ -1561,8 +1566,6 @@ var isApp = function(){
                         $resultTxt.html(data.text);
                         $resultImg.attr('src', data.imgPath);
                         $resultImg.attr('alt', data.imageAlt);
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 bindEvent: function() {

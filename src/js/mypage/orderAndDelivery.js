@@ -278,7 +278,7 @@
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
@@ -288,13 +288,13 @@
     var carePaymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
     '{{#set method = paymentMethodName}}' +
     '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-    '{{#if receiptUrl}}<a href="#" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
+    '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
     '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
@@ -455,7 +455,6 @@
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
-
 
         console.log("TAB_FLAG / PAGE_TYPE:", TAB_FLAG, " / ", PAGE_TYPE);
 
@@ -666,7 +665,37 @@
             e.preventDefault();
 
             setSalesReceiotPop();
-        })
+        });
+
+        //영수증 팝업 인쇄
+        $('#popup-salesReceipt').on('click',"div.btn-group button.pink", function(e){
+            e.preventDefault();
+            var receiptTemplate = '<html lang="ko" class="js">' +
+                '<head>' +
+                    '<meta charset="UTF-8">' +
+                    '<meta http-equiv="X-UA-TextLayoutMetrics" content="gdi">' +
+                    '<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">' +
+                    '<title>영수증</title>' +
+                    '<link rel="shortcut icon" href="/lg5-common/images/favicon.ico">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/reset.min.css">' +
+                    '<link rel="stylesheet" href="/lg5-common/css/app.min.css">' +
+                    '<link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/MYC/MYC.min.css">' +
+                '</head>' +
+                '<body><article id="popup" class="win-popup-wrap">{{#raw html}}</article></body>' +
+            '</html>'
+
+            var html = $('#popup-salesReceipt').html();
+            var setting = "width=640, height=800, all=no";
+            var objWin = window.open('', 'print',setting);
+            objWin.document.write(vcui.template(receiptTemplate, {"html":html}));
+            objWin.focus(); 
+            objWin.document.close();
+            objWin.onload=function() {
+                objWin.print();
+                objWin.close();
+            }
+        });
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
@@ -970,10 +999,15 @@
 
                 for(var cdx in list[idx].productList){
                     var prodlist = list[idx].productList[cdx];
-                    console.log("prodlist:",prodlist)
                     var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
                     prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
                     template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
+                    
+                    prodlist.specList = vcui.array.filter(prodlist.specList, function(item){
+                        var chk = item != null && item != "null" && item != undefined ? true : false;
+                        return chk;
+                    });
+
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice}));
                 }
             }
@@ -1058,6 +1092,11 @@
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
                     }
 
+                    if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+                        list[idx].apiType = "OBS";
+                        list[idx].requestNo = "";
+                    }
+
                     ORDER_LIST.push(list[idx]);
                 }
             }
@@ -1097,6 +1136,7 @@
             //결제정보
             if(data.payment) {
                 if(Object.keys(data.payment).length){
+                    console.log("### data.payment ###",data.payment)
                     var payment = data.payment;
                     payment.orderPrice = vcui.number.addComma(payment.orderPrice);
                     payment.discountPrice = vcui.number.addComma(payment.discountPrice);
@@ -1124,7 +1164,8 @@
             //월 납부 정보...
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
-                monthpayment.requsetCardInfo = monthpayment.cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                var cardReqYnName = monthpayment.cardReqYnName ? monthpayment.cardReqYnName + " - " : "";
+                monthpayment.requsetCardInfo = cardReqYnName + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
@@ -1156,7 +1197,10 @@
                     }
                 }
                 cardValidation.setValues(cardInfo);
-                bankValidation.setValues(bankInfo);
+                bankValidation.setValues(bankInfo);        
+
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
+                setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
@@ -1167,6 +1211,16 @@
 
             lgkorUI.hideLoading();
         });
+    }
+    //카드/은행 셀렉트박스 리셋...
+    function setDelectData(selector, list, selectId){
+        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
+        for(var idx in list){
+            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
+            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
+            selector.append(option);
+        }
+        selector.vcSelectbox('update');
     }
 
 
@@ -1394,6 +1448,8 @@
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
 
+            console.log("### PAYMENT_DATA ###",PAYMENT_DATA)
+
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
                 
             leng = Object.keys(PAYMENT_DATA).length;
@@ -1568,7 +1624,7 @@
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
-
+                
                 addPopProdductList(popup, productList, true);
                 
                 $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
@@ -1642,6 +1698,9 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
+                var username;
+                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL)
+
                 bankInfoBlock.show();
             } else{
                 bankInfoBlock.hide();
@@ -1674,11 +1733,17 @@
                 mempointPrice: mempointPrice
             });
 
+            var orderedQuantity = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ?  listdata.productTotal : listdata.orderedQuantity;
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                orderedQuantity: listdata.orderedQuantity
-            })
+                orderedQuantity: orderedQuantity
+            });
+
+            listdata.specList = vcui.array.filter(listdata.specList, function(item){
+                var chk = item != null && item != "null" && item != undefined ? true : false;
+                return chk;
+            });
 
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck}));
         }

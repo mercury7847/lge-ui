@@ -328,14 +328,14 @@
             }
         }
         @include mobile {
-            margin: 60px 0;
+            margin: 48px 0 60px;
             .title {
                 font-weight: 700;
                 font-size: $font-large-2;
                 line-height: 33px;
             }
             .image {
-                margin-top: 40px;
+                margin-top: 32px;
             }
         }
     }
@@ -356,7 +356,7 @@
         }
         @include mobile {
             .eyebrow {
-                margin-bottom: 6px;
+                margin-bottom: 8px;
             }
             .title {
                 font-size: $font-large-2;
@@ -366,7 +366,7 @@
     }
     .free-life-wrap {
         @include mobile {
-            padding-top: 60px;
+            padding-top: 48px;
         }
         .inner {
             position: relative;
@@ -441,13 +441,13 @@
         padding: 80px 0 120px;
         background-color: $color-bg;
         @include mobile {
-            padding: 60px 0;
+            padding: 48px 0 60px;
         }
         .title-area {
             margin-bottom: 48px;
             text-align: center;
             @include mobile {
-                margin-bottom: 40px;
+                margin-bottom: 32px;
             }
         }
         .joyful-life {
@@ -546,8 +546,11 @@
                         @include font-large-2;
                     }
                     .desc {
-                        margin-top: 24px;
+                        margin-top: 12px;
                         @include font-medium;
+                        @include mobile {
+                            margin-top: 10px;
+                        }
                     }
                 }
             }
@@ -556,13 +559,13 @@
     .happy-life-wrap {
         padding: 80px 0 120px;
         @include mobile {
-            padding: 60px 0 0;
+            padding: 48px 0 0;
         }
         .title-area {
-            margin-bottom: 80px;
+            margin-bottom: 48px;
             text-align: center;
             @include mobile {
-                margin-bottom: 40px;
+                margin-bottom: 32px;
             }
         }
         .happy-life {
@@ -1193,9 +1196,9 @@
             }
         }
         @include mobile {
-            padding: 60px 0;
+            padding: 48px 0 60px;
             .title-area {
-                margin-bottom: 40px;
+                margin-bottom: 32px;
                 .title {
                     font-size: $font-large-2;
                     line-height: 33px;

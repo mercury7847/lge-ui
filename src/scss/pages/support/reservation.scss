@@ -52,7 +52,7 @@
                 }
             }
             .status {
-                margin-top:12px;
+                margin-top:16px;
                 color:#fff;
                 @include font-medium;
                 > span {
@@ -144,8 +144,11 @@
             float:left;
             .txt {
                 @include font-medium;
+                .date, .name {
+                    font-weight:bold;
+                }
                 .topic {
-                    color:#ff2e55;
+                    color:#000;
                     font-weight:400;
                 }
             }
@@ -400,7 +403,7 @@
                         @include font-medium;
                     }
                     .address {
-                        color: #767676;
+                        color: #666;
                         @include font-small;
                     }
                 }
@@ -662,7 +665,7 @@
             @include mobile {
                 display:block;
                 padding:0 16px;
-                margin-bottom:37px;
+                margin-bottom:40px;
                 .banner {
                     display:block;
                     padding:24px;
@@ -753,6 +756,7 @@
     .toggle-layer {
         display:none;
         margin-top:24px;
+        margin-bottom:40px;
         padding:24px 32px 64px;
         border:1px solid #ddd;
         border-radius:8px;
@@ -868,7 +872,7 @@
 
     @include pc {
         #authNo {
-            max-width: 45.5%;
+            max-width: 350px;
         }
     }
 
@@ -932,16 +936,38 @@
                     margin-top: 0;
                 }
                 .form-infos {
-                    margin-bottom: 20px;
+                    margin-bottom: 48px;
                 }
                 .tit-wrap {
-                    margin-bottom: 10px;
+                    margin-bottom: 24px;
+
+                    .tit {
+                        font-size:24px;
+                        line-height:1.63;
+                    }
                 }
                 .bullet-list {
                     &.top-border {
                         margin-top: 10px;
                         padding-top: 10px
                     }
+                }
+            }
+        }
+
+        @include mobile {
+            .pop-conts {
+                .section {
+                    .form-infos {
+                        margin-bottom:32px;
+                    }
+                    .tit-wrap {
+                        margin-bottom:12px;
+                        .tit {
+                            font-size:16px;
+                        }
+                    }
+
                 }
             }
         }

@@ -144,13 +144,14 @@ $(window).ready(function(){
         }
 
         function setSubStickyStatus(){
-            //console.log("setSubStickyStatus:", selectIdx);
             var chk = false;
-            // if(selectIdx < 0){
-            //     if(prevIdx < 1) chk = true;
-            // } else if(selectIdx == 0) chk = true;
+            if(selectIdx < 0){
+                if(prevIdx < 1) chk = true;
+            } else if(selectIdx == 0) chk = true;
 
-            if(selectIdx < 1) chk = true;
+            //if(selectIdx < 1) chk = true;
+
+            console.log(prevIdx, selectIdx, chk)
 
             if(chk) $subSticky.show().find('.inner').slideDown(150);
             else $subSticky.find('.inner').slideUp(150, function(){$subSticky.hide()});;
