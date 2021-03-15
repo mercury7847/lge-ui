@@ -18,7 +18,8 @@
                 padding: 12px 20px 16px;
             }
             &.item-type2 {
-                min-height: 200px;
+                min-height: 153px;
+                padding: 24px 32px;
                 @include mobile {
                     display: block;
                     min-height: 115px;
@@ -193,9 +194,6 @@
                         @include pc {
                             flex-direction: row-reverse;
                             justify-content: flex-end;
-                            .original {
-                                margin: 0 0 0 8px;
-                            }
                         }
                         @include mobile {
                             position: relative;
@@ -217,9 +215,9 @@
                 }
             }
             .price-info + .price-info {
-                margin-top: 16px;
+                margin-top: 12px;
                 @include mobile {
-                    margin-top: 8px;
+                    margin-top: 5px;
                 }
             }
             .btn-area {
@@ -284,10 +282,12 @@
                 @include font-large-1;
             }
             .result-info {
+                .info-text {
+                    padding-top: 0;
+                }
                 @include mobile {
                     .info-text {
                         min-height: 83px;
-                        padding-top: 0;
                     }
                 }
             }
@@ -486,9 +486,14 @@
         .price-info {
             white-space: nowrap;
             .tit {
-                margin-bottom: 4px;
+                //margin-bottom: 4px;
                 @include font-x-small;
                 color: $color-default;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 22px;
+
+                }
             }
             .price {
                 display: inline-block;
@@ -497,18 +502,24 @@
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
-                    font-size: 15px;
-                    line-height: 23px;
+                    font-size: 14px;
+                    line-height: 22px;
                 }
             }
             .original {
-                margin: 0 8px 0 0;
+                margin-left: 8px;
                 vertical-align: bottom;
                 .price {
-                    @include font-small;
+                    @include font-x-small;
                     color: $color-gray-1;
                     text-decoration: line-through;
-                    font-weight: $font-weight-medium;
+                }
+                @include mobile {
+                    margin-right: 4px;
+                    margin-left: 0;
+                    .price {
+                        @include font(11px,19px);
+                    }
                 }
             }
         }
@@ -585,6 +596,8 @@
 
     &.support-list {
         .item {
+            min-height: auto;
+            padding: 24px 32px;
             @include mobile {
                 padding: 16px 20px;
             }
@@ -608,19 +621,29 @@
             }
         }
         .result-thumb {
-            top: 16px;
+            margin: -8px 0;
+            //position: static;
+            & + .result-info {
+                padding: 4px 0 4px 32px;
+            }
+            @include mobile {
+                position: static;
+                margin: 0;
+                & + .result-info {
+                    padding: 0 0 0 16px;
+                }
+            }
         }
         .result-info {
             @include clearfix;
             @include mobile {
-                &:only-child {
-                    .info-text {
-                        padding-left: 0;
-                    }
+                .info-text {
+                    padding-left: 0;
                 }
             }
             .info-text {
                 flex: 1;
+                min-height: auto;
                 padding-top: 0;
             }
         }
@@ -641,9 +664,11 @@
             background-size: 100% 100%;
 
             @include mobile {
-                float: right;
-                width: 32px;
-                height: 32px;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                width: 17px;
+                height: 17px;
             }
            span {
                 display: inline-block;
