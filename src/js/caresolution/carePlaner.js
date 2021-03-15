@@ -483,7 +483,7 @@
         
         if(!_isDirectCare && _careCateId){
             var uitab = $fixedTab.find('.service_tab').vcTab('instance');
-            uitab.select(1, true);
+            uitab.select(_careCateId.tabId, true);
         }
 
         var tabID = getTabID();
@@ -493,7 +493,7 @@
 
             var selectId = 0;
             for(var id in result.data){
-                if(!_isDirectCare && _careCateId === result.data[id].categoryID){
+                if(!_isDirectCare && _careCateId.tabCategoryId === result.data[id].categoryID){
                     _isDirectCare = true;
                     selectId = id;
                 }
@@ -550,6 +550,16 @@
             $prodListContainer.find('> ul.inner').empty();
 
             addProdItemList();
+
+            if(_careCateId && _careCateId.tabModelId && _careCateId.tabRtModelSeq) {
+                var findArr = vcui.array.filter(result.data.productList, function(item, index) {
+                    return (item.modelId == _careCateId.tabModelId && item.rtModelSeq == _careCateId.tabRtModelSeq);
+                });
+                if(findArr.length > 0) {
+                    var findModel = findArr[0];
+                    requestAddPutItem(findModel);
+                }
+            }
         });
     }
 
@@ -727,6 +737,19 @@
         requestPutItem(sendata);
     }
 
+    function requestAddPutItem(data){
+        var itemList = _putItemList.concat();
+        itemList.unshift(data);
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(itemList)
+        }
+        
+        requestPutItem(sendata);
+
+    }
+
     //담기 삭제...
     function removePutItem(id){
         console.log(id)
@@ -746,7 +769,6 @@
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_putItemUrl, sendata, function(result){
-            lgkorUI.hideLoading();
             
             if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
@@ -925,8 +947,6 @@
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
             }
-
-            console.log(result)
 
             var estimatePrice = $('#pop-estimate').find('.estimate-price');
             for(var str in result.data.priceInfo) estimatePrice.find('.estimate-'+str).text(result.data.priceInfo[str]);
