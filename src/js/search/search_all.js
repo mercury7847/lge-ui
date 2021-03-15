@@ -35,7 +35,7 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{#if obsFlag=="Y" && !rentalFlag}}' +
+            '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
                     '{{#if carePrice != "0"}}' +
@@ -44,12 +44,14 @@
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
+                    '{{#if !rentalFlag}}' +
                         '<div class="original">' +
                             '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
                             '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
+                    '{{/if}}' +
                     '</div>' +
                 '</a>' +
             '</div>' +
