@@ -3,38 +3,88 @@
     "message":"",
     "data": {
         "success": "Y",
-        "productList" : [
-                    {
-                        "productId": "65NANO99KNA",
-                        "linkPath":"#1",
-                        "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "productOriginPrice" : "2000000",
-                        "productPrice" : "1000000"
+        "data" : [
+                    {                       
+
+                        "modelId":"65NANO99KNA",
+                        "saleModelCode":"FQ2",
+                        "saleSuffixCode":"AKOR",
+                        "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "obsOriginalPrice":"1100000",
+                        "obsMemberPrice":"1000",
+                        "obsDiscountPrice":"20000",
+                        "obsSellFlag":"",
+                        "obsInventoryFlag":"",
+                        "obsInventoryQty":"",
+                        "modelStatusCode":"ACTIVE",
+                        "categoryId":"",
+                        "categoryName":"",
+                        "modelUrlPath":"#1",
+                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
+                    },
+                    {  
+                        "modelId":"75NANO99KNA",
+                        "saleModelCode":"FQ2",
+                        "saleSuffixCode":"AKOR",
+                        "modelName":"전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "modelDisplayName":"전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "obsOriginalPrice":"1100000",
+                        "obsMemberPrice":"1000",
+                        "obsDiscountPrice":"20000",
+                        "obsSellFlag":"",
+                        "obsInventoryFlag":"",
+                        "obsInventoryQty":"",
+                        "modelStatusCode":"ACTIVE",
+                        "categoryId":"",
+                        "categoryName":"",
+                        "modelUrlPath":"#2",
+                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
                     },
                     {
-                        "productId": "75NANO99KNA",
-                        "linkPath":"#2",
-                        "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "productName" : "전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "productOriginPrice" : "2000000",
-                        "productPrice" : "1000000"
+
+                        "modelId":"55NANO99KNA",
+                        "saleModelCode":"FQ2",
+                        "saleSuffixCode":"AKOR",
+                        "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                        "obsOriginalPrice":"1100000",
+                        "obsMemberPrice":"1000",
+                        "obsDiscountPrice":"20000",
+                        "obsSellFlag":"",
+                        "obsInventoryFlag":"",
+                        "obsInventoryQty":"",
+                        "modelStatusCode":"ACTIVE",
+                        "categoryId":"",
+                        "categoryName":"",
+                        "modelUrlPath":"#2",
+                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
                     },
                     {
-                        "productId": "55NANO99KNA",
-                        "linkPath":"#3",
-                        "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "productOriginPrice" : "2000000",
-                        "productPrice" : "3000000"
-                    },
-                    {
-                        "productId": "45NANO99KNA",
-                        "linkPath":"#4",
-                        "imagePath" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "productName" : "LG TROMM 미니워시",
-                        "productOriginPrice" : "2000000",
-                        "productPrice" : "4000000"
+                        "modelId":"45NANO99KNA",
+                        "saleModelCode":"FQ2",
+                        "saleSuffixCode":"AKOR",
+                        "modelName":"LG TROMM 미니워시",
+                        "modelDisplayName":"LG TROMM 미니워시",
+                        "obsOriginalPrice":"1100000",
+                        "obsMemberPrice":"1000",
+                        "obsDiscountPrice":"20000",
+                        "obsSellFlag":"",
+                        "obsInventoryFlag":"",
+                        "obsInventoryQty":"",
+                        "modelStatusCode":"ACTIVE",
+                        "categoryId":"",
+                        "categoryName":"",
+                        "modelUrlPath":"#2",
+                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
                     }
         ]    
     }
