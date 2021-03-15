@@ -121,7 +121,7 @@
                 }
 
                 var ajaxUrl = $contents.attr('data-cart-url');
-                lgkorUI.requestCart(ajaxUrl, param);
+                lgkorUI.requestCart(ajaxUrl, param, true);
             }
         }).on('change', '.product-option input[type=radio]', function(e){
             requestSibling(this);
