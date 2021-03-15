@@ -3,37 +3,37 @@
     "message":"",
     "data": {
         "success": "Y",
-        "rankBuyProduct" : [
+        "productList" : [
             {
-                "productId": "0001",
+                "productId": "75NANO99KNA",
                 "linkPath":"/medical-devices/hgn1",
                 "imagePath" : "/lg5-common/images/PRS/img-buy-product-best.jpg",
                 "productName" : "프라엘 메디헤어2",
                 "productPrice" : "2000000"
             },
             {
-                "productId": "0002",
+                "productId": "55NANO99KNA",
                 "linkPath":"#1",
-                "imagePath" : "/lg5-common/images/dummy/temp/img-buy-product-t01.jpg",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-buy-product-t012.jpg",
                 "productName" : "오브제컬렉션 A9S",
                 "productPrice" : "2100000"
             },
             {
-                "productId": "0003",
+                "productId": "65NANO99KNA",
                 "linkPath":"#2",
                 "imagePath" : "/lg5-common/images/dummy/temp/img-buy-product-t02.jpg",
                 "productName" : "울트라기어 모니터",
                 "productPrice" : "1100000"
             },
             {
-                "productId": "0004",
+                "productId": "45NANO99KNA",
                 "linkPath":"#3",
                 "imagePath" : "/lg5-common/images/dummy/temp/img-buy-product-t03.jpg",
                 "productName" : "그램16",
                 "productPrice" : "5100000"
             },
             {
-                "productId": "0005",
+                "productId": "35NANO99KNA",
                 "linkPath":"#4",
                 "imagePath" : "/lg5-common/images/dummy/temp/img-buy-product-t04.jpg",
                 "productName" : "톤프리",
