@@ -147,6 +147,14 @@
 
                 //크레마
                 lgkorUI.cremaLogin();
+
+                //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
+                if(typeof reviewsCount !== 'undefined') {
+                    reviewsCount = 103;
+                    if(parseInt(reviewsCount) > 0) {
+                        $(window).trigger("changeCategory.KRP0009",{"title":"리뷰(" + reviewsCount + ")","linkName":"review"});
+                    }
+                }
             },
 
             setting: function() {
@@ -770,7 +778,11 @@
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href').replace("#","");
+                    var addS = $(this).data('add');
                     if(url) {
+                        if(addS) {
+                            url += addS;
+                        }
                         location.href = url;
                     }
                 });
@@ -1216,6 +1228,9 @@
                     "rtModelSeq":selectRentalInfoData.rtModelSeq,
                     "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix
                 }
+                //결헙하여 할인받기 링크용 값 추가
+                $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
+
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
                 $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
@@ -1233,6 +1248,9 @@
                 var monthPrice = carePrice;
                 if(cardData && cardData.cardSale) {
                     monthPrice -= cardData.cardSale;
+                }
+                if(monthPrice < 0) {
+                    monthPrice = 0;
                 }
                 //월 이용요금
                 var $priceInfo = self.$pdpInfoCareshipService.find('dl.price-info span.price');
@@ -1271,8 +1289,11 @@
                         $careLi.hide();
                         totalPrice = price;
                     } else {
+                        if(carePrice < 0) {
+                            carePrice = 0;
+                        }
                         $careLi.find('span.price').text("월 " + vcui.number.addComma(carePrice) +"원");
-
+                        
                         var $careshipService = $paymentAmount.siblings('.careship-service');
                         var checkinput = $careshipService.find('input[type=radio]:checked');
                         if(checkinput.length > 0) {
@@ -1400,7 +1421,7 @@
                         //케어쉽필수 제품인지 체크해서 알림창 뛰움
                         if($careSiblingOption.length < 1) {
                             if(careRequire) {
-                                $('#careRequireBuyPopup').vcModal();
+                                //$('#careRequireBuyPopup').vcModal();
                                 isRental = true;
                             }
                         } else {
@@ -1456,12 +1477,21 @@
 
                     var ajaxUrl;
                     if(isRental) {
+                        var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
+
                         if(self.loginCheckEnd) {
                             if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
-                                    location.href = url;
+                                    if(isDirectBuy) {
+                                        $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                            location.href = url;
+                                        });
+                                        $('#careRequireBuyPopup').vcModal();
+                                    } else {
+                                        location.href = url;
+                                    }
                                 }
                             } else {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
@@ -1477,16 +1507,19 @@
                                     var queryString = location.search;
                                     sendParam.modelUrlPath = modelUrlPath + queryString;
                                 }
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    console.log(result);
-                                    /*
-                                    var data = result.data;
-                                    var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
-                                    if(obsDirectPurchaseUrl){
-                                        location.href = obsDirectPurchaseUrl;
-                                    }
-                                    */
-                                });
+
+                                if(isDirectBuy) {
+                                    $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                        lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                            console.log(result);
+                                        });
+                                    });
+                                    $('#careRequireBuyPopup').vcModal();
+                                } else {
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        console.log(result);
+                                    });
+                                }
                             }
                             console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",url,param);
                         } else {

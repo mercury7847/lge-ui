@@ -383,9 +383,10 @@
             e.preventDefault();
             
             var $this = $(this);
-            var _id = $this.attr('href').replace("#","");
             var $dropDown = $this.parents('.ui_dropdown');
-            $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
+            var cardId = $this.data("cardId");
+            var selectext = cardId == "" ? $('#pop-estimate').data("cardDescription") : $this.attr('data-card-title');
+            $dropDown.find('a.ui_dropdown_toggle').text(selectext);
             
             $dropDown.vcDropdown("close");
 
@@ -403,7 +404,7 @@
             console.log("sumTotal:" + sum)
 
 
-        }).on('click', '.estimate-price button', function(e){
+        }).on('click', '.estimate-price .request-btn', function(e){
             e.preventDefault();
 
             sendRequestConfirm();
@@ -948,6 +949,7 @@
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                 var cardItemTemplate = '<li><a href="#" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
                         selectList.append(vcui.template(groupItemTemplate,obj));
@@ -962,6 +964,10 @@
                         });
                     }
                 });
+
+                $('#pop-estimate').data("cardDescription", result.data.paymentInfo.cardDescription);
+                $cardInfo.find('.ui_dropdown a.ui_dropdown_toggle').text(result.data.paymentInfo.cardDescription);
+
                 $cardInfo.show();
             } else {
                 $cardInfo.hide();

@@ -51,9 +51,9 @@ $(window).ready(function(){
 
             $(window).on('changeCategory.KRP0009', function(e,data){
                 if(data){
-                    var $li = $items.filter('[data-link-name="'+data.linkName+'"]' );
+                    var $li = $component.find('.tab-menu-belt li a[data-link-name="'+data.linkName+'"]' );
                     if($li.length > 0) {
-                        $li.find('a').text(data.title);
+                        $li.text(data.title);
                     }
                 }
             });
