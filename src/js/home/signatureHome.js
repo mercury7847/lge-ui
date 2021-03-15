@@ -106,7 +106,7 @@ $(function() {
                 }
                 
                 if(i==0){
-                    $target.transit(obj, function(){
+                    $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
                             $target.css('display',isDisplay);
                         }
@@ -115,7 +115,7 @@ $(function() {
 
                     });  
                 }else{
-                    $target.transit(obj, function(){
+                    $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
                             $target.css('display',isDisplay);
                         }
@@ -645,7 +645,7 @@ $(function() {
         // 시작시 한 스탭 이동시킴.
         setTimeout(function(){
             if(currentStep<1) wheelScene(1);
-        }, 800);
+        }, 1000);
 
         
         window.resizeScene = render;

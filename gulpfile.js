@@ -200,10 +200,10 @@ gulp.task("jsCompile:helper", () => gulp
 );
 gulp.task("jsCompile:libs", () => gulp
     .src(src + "/js/libs/*")
-    .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
-    .pipe(sourcemaps.write('./maps'))
+    //.pipe(sourcemaps.init())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/libs/"))
 );
 gulp.task("jsCompile:ui", () => gulp

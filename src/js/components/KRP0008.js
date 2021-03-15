@@ -953,12 +953,14 @@
                     //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
                         var value = $(this).vcSelectbox('selectedOption').value;
+                        self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],0, true);
                     });
                     //의무사용기간 선택
                     self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
+                        self.rentalInfoBoxUpdate(1, $(this));
                         self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
                     });
                     //방문주기 선택 - 화면 가격 정보 갱신
@@ -968,6 +970,7 @@
                         var $li =  $(this).parents('li');
                         $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
                         self.updateRentalInfoPrice(itemData);
+                        self.rentalInfoBoxUpdate(2, $(this));
                     });
                 };
 
@@ -1167,12 +1170,16 @@
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
 
-                    var selectedValue = $selectBox.vcSelectbox('selectedOption');
-                    var parent = $selectBox.parents('li.lists');
-                    var findLi = parent.find('.article-box li:eq('+ (selectBoxIndex+1) + ') span');
-                    console.log(selectedValue.text, selectBoxIndex,findLi);
-                    findLi.text(selectedValue.text);
+                    self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
                 }
+            },
+
+            //렌탈 케어솔루션 셀렉트 박스 선택에 따른 메세지 수정
+            rentalInfoBoxUpdate: function(index, $selectBox) {
+                var selectedValue = $selectBox.vcSelectbox('selectedOption');
+                var parent = $selectBox.parents('li.lists');
+                var findLi = parent.find('.article-box li:eq('+ (index+1) + ') span');
+                findLi.text(selectedValue.text);
             },
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
