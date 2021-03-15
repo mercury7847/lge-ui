@@ -41,6 +41,8 @@
 
     var allOwnedProductYn;
 
+    var beforeVisitModelFlag;
+
     function init(){
         console.log("requestRental Start!!!");
     
@@ -657,6 +659,7 @@
         installAdress = {};
 
         allOwnedProductYn = "N";
+        beforeVisitModelFlag = "M";
 
         var code = [];
         $('.order-list li').each(function(idx, item){
@@ -750,12 +753,25 @@
 
                 allOwnedProductYn = result.data.allOwnedProductYn;
 
+                beforeVisitModelFlag = result.data.beforeVisitModelFlag || "M";
+
                 if(result.data.allOwnedProductYn == "Y"){
                     step2Block.find('.forAOP').hide();
                 } else{
                     step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
                     step2Block.find('.datepicker').removeClass('disabled');
+
+                    var rbv = step2Block.find(".requestBeforeVisit");
+                    rbv.show();
+                    rbv.find('.tit .label').removeClass('req');
+                    rbv.find('.tit .label span').remove();
+                    if(beforeVisitModelFlag == "M"){
+                        rbv.find('.tit .label').addClass('req');
+                        rbv.find('.tit .label').append('<span class="blind">필수</span>');
+                    } else if(beforeVisitModelFlag == "N"){
+                        rbv.hide();
+                    }
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
@@ -773,6 +789,8 @@
         if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
             return;
         }
+
+        lgkorUI.showLoading();
 
         var sendata = {
             rentalCareType: getInputData('rentalCareType'),

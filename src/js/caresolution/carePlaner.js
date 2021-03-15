@@ -207,8 +207,8 @@
             '           <div class="tit-info">'+
             '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
             '               <div class="etc-info">'+
-            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelCd}}</span>'+
-            '                   <span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>'+
+            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelName}}</span>'+
+            '                   {{#if item.colorOption}}<span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>{{/if}}'+
             '               </div>'+
             '           </div>'+
             '           <div class="etc-info">'+
@@ -295,36 +295,41 @@
 
         $categoryTabCtrler = new vcui.ui.SmoothScrollTab('.ui_smoothScroll_tab');
 
-        $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                        
-                    }
-                },
-                {
-                    breakpoint: 1090,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 2, 
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: "unslick"
-                }
-            ]
+        $(window).on('breakpointchange', function(e){
+            var breakpoint = window.breakpoint;    
+            if(breakpoint.name == 'pc'){    
+                $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel({
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1090,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2, 
+                                slidesToScroll: 2
+                            }
+                        }
+                    ]
+                });   
+                $('.contents.care-plan').find('.ui_carousel_slider .slide-controls').show();
+            }else if(breakpoint.name == 'mobile'){    
+                $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel('destroy');    
+                $('.contents.care-plan').find('.ui_carousel_slider .slide-controls').hide();                        
+            }    
         });
+        $(window).trigger('breakpointchange');
     }
 
     function eventBind(){
@@ -371,12 +376,18 @@
             var togglewrap = $(this).closest('.ui_active_toggle_wrap');
 
             togglewrap.toggleClass('active');
-
+            
             if(togglewrap.hasClass('active')){
                 lgkorUI.resetFlexibleBox();
-            };
+            } ;
         });
 
+        $putItemContainer.find('.ui_active_toggle').off('click').on('click', function(e){
+            e.preventDefault();
+            
+            var isOpen = !$(this).data('isOpen');
+            setMobilePutItemBoxStatus(isOpen, true);
+        })
 
         //카드 할인 드롭다운 선택
         $('#pop-estimate').on('click','.alliance-card .select-list li a', function(e){
@@ -404,7 +415,7 @@
             console.log("sumTotal:" + sum)
 
 
-        }).on('click', '.estimate-price .request-btn', function(e){
+        }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
 
             sendRequestConfirm();
@@ -421,6 +432,24 @@
                 setNextProdList();
             }
         });
+    }
+
+    function setMobilePutItemBoxStatus(isOpen, anim){
+        var wraptop;
+        var item = $putItemContainer.find('.ui_active_toggle');
+        if(isOpen){
+            wraptop = 0;
+            item.css({transform:'rotate(0deg)'});
+        } else{
+            wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
+            item.css({transform:'rotate(180deg)'});
+        }
+        item.data('isOpen', isOpen);
+
+        if(breakpoint.name == 'mobile'){
+            if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
+            else $putItemContainer.css({top:wraptop});
+        }
     }
 
     function sendRequestConfirm(){
@@ -493,7 +522,7 @@
 
             var selectId = 0;
             for(var id in result.data){
-                if(!_isDirectCare && _careCateId.tabCategoryId === result.data[id].categoryID){
+                if(!_isDirectCare && _careCateId && _careCateId.tabCategoryId === result.data[id].categoryID){
                     _isDirectCare = true;
                     selectId = id;
                 }
@@ -893,6 +922,8 @@
 
     function openPutItemBox(){
         putItemStatus("open");
+
+        setMobilePutItemBoxStatus(false, false);
 
         $putItemContainer.stop().transition({y:0}, 550, "easeInOutCubic");
         $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 16}, 550, 'easeInOutCubic');

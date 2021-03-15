@@ -7,6 +7,6 @@ $(window).ready(function(){
         e.preventDefault();
 
         var url = $(this).data('compareUrl');
-        self.addEqualCompare($(this).data('modelIds'), url);
+        lgkorUI.addEqualCompare($(this).data('modelIds'), url);
     })
 });

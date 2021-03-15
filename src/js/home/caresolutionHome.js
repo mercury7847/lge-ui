@@ -208,28 +208,22 @@ $(function(){
 
         // 케어솔루션 혜택
         // 다른 케어솔루션 
-        $('.ui_carousel_m1_slider').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: "unslick"
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: false,
-                        dots: true,
-                        arrows: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1,
-                        //variableWidth : true
-                        //centerMode: true,
-                        //centerPadding: '8px',
-                    }
-                }
-            ]
+        $(window).on('breakpointchange', function(e){
+
+            var breakpoint = window.breakpoint;    
+            if(breakpoint.name == 'mobile'){    
+                $('.ui_carousel_m1_slider').vcCarousel({
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                });
+                
+            }else if(breakpoint.name == 'pc'){    
+                $('.ui_carousel_m1_slider').vcCarousel('destroy');       
+                $('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
+            }    
         });
+        $(window).trigger('breakpointchange');
 
         // 케어솔루션 가이드
         $('.care-guide-visual .ui_carousel_slider2').vcCarousel({
