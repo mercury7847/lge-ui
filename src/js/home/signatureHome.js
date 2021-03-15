@@ -610,6 +610,10 @@ $(function() {
         var $artMoreBtn = $artGuide.find('button.btn-moreview');
         $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
+        var artGuideLen = $artGuide.find('.art-guide-list > li').length;
+        if(artGuideLen<6) $artMoreBtn.hide();
+
+
         $artMoreBtn.on('click', function(e){
             e.preventDefault();
 
