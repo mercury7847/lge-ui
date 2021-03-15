@@ -41,10 +41,14 @@
                 z-index: 2;
                 text-align: center;
                 .cont1 {
-                    transition: transform 0.5s ease-in-out, opacity 1.5s ease-in-out;
+                    transition: transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s ease-in-out;
+                    transform:translateY(200px);
                     font-weight: 700;
                     @include font(52px,70px);
                     color: #fff;
+                }
+                .dimmed {
+                    opacity: 0;                    
                 }
             }
             @include mobile {
@@ -72,14 +76,15 @@
                 }
                 .cont1{
                     opacity: 0;
-                    transform:translateY(100px);
+                    transform:translateY(200px);
 
                 }
             }
             &.on{
                 .dimmed {
+                    transition: opacity 0.5s 0.5s ease-in-out;
                     opacity: 1 !important;
-                    transition: opacity 1.5s ease-in-out;
+                    
                 }
                 .cont1{
                     opacity: 1;

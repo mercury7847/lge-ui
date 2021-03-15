@@ -133,6 +133,7 @@
                         @include font-medium;
                         font-weight:700;
                         @include mobile {
+                            padding-right:24px;
                             font-size:15px;
                             line-height:23px;
                         }
