@@ -229,7 +229,8 @@
                     "rating":"40",
                     "review":"34",
                     "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE!"
+                    "modelStatusCode":"ACTIVE!",
+                    "rentalFlag":"N"
                 },
                 {
                     "url":"#",
@@ -254,7 +255,8 @@
                     "rating":"39",
                     "review":"33",
                     "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE"
+                    "modelStatusCode":"ACTIVE",
+                    "rentalFlag":"N"
                 },
                 {
                     "url":"#",
@@ -279,7 +281,8 @@
                     "rating":"39",
                     "review":"33",
                     "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE"
+                    "modelStatusCode":"ACTIVE",
+                    "rentalFlag":"N"
                 },
                 {
                     "url":"#",
@@ -304,7 +307,8 @@
                     "rating":"39",
                     "review":"33",
                     "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE"
+                    "modelStatusCode":"ACTIVE",
+                    "rentalFlag":"N"
                 }
             ]
         },

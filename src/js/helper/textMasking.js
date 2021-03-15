@@ -96,8 +96,6 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
                 return originStr;
             }
 
-            console.log("originStr :", originStr)
-
             maskingStr = originStr.toString().replace(originStr, originStr.toString().replace(/(\d{4})(\d{4})(\d{4})(\d{4})/gi,'$1-****-****-$4')); 
 
             return maskingStr;

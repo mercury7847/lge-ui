@@ -335,7 +335,7 @@
 
         // 예약 일시 변경
         &.reservation-time-pop {
-            padding-top:12px;
+            padding-top:8px;
             .tit-wrap {
                 position:relative;
                 .info {           
@@ -383,8 +383,9 @@
 
         // 예약 취소
         &.cancel-pop {
+            margin-bottom:32px;
             .guide-box {
-                margin-bottom:15px;
+                margin-bottom:8px;
                 padding:24px;
                 background:#f4f4f4;
                 border-radius:10px;
@@ -395,11 +396,12 @@
                     text-align:center;
                     border-radius:8px;
                     .type {
-                        color:#ec455a;
+                        color:#da0f47;
                     }
                 }
             }
             @include mobile {
+                margin-bottom:0;
                 .guide-box {
                     padding:22px 18px;
 
