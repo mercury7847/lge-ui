@@ -176,6 +176,7 @@
             } else {
                 self.$resultCont.hide();
                 self.$resultCont.find('.video-list').empty();
+                console.log(self.param.keyword)
                 self.$noData.show();
             }
         },

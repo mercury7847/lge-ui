@@ -17,6 +17,11 @@
             width:210px;
             strong {
                 font-weight: normal;
+
+                @include mobile {
+                    font-weight:bold;
+                    color:#000;
+                }
             }
         }
         .description {
@@ -24,7 +29,7 @@
             color: #000;
             @include font-medium;
             .point {
-                color:#ec455a;
+                color:#da0f47;
             }
             .line {
                 display:block;
@@ -183,7 +188,7 @@
     @include mobile {
         &-list {
             .title {
-                width:96px;
+                width:82px;
             }
             .description {
                 width:calc(100% - 96px);

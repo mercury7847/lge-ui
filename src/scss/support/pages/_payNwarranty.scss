@@ -5,7 +5,7 @@
         // max-width: 1178px;
         margin: 0 auto;
         position: relative;
-        padding: 0 0 60px;
+        padding: 0;;
         @include mobile {
             padding: 34px 0 ;
         }
@@ -19,7 +19,7 @@
         }
     }
     .scroll-x {
-        margin-bottom: 24px;
+        margin-bottom: 17px;
         overflow-x: auto;
         &:last-child {
             margin-bottom: 0;
@@ -27,6 +27,14 @@
         table {
             min-width: 720px;
             width: calc(100% - 1px);
+        }
+
+        @include mobile {
+            margin-bottom:12px;
+
+            &:last-child {
+                margin-bottom:0;
+            }
         }
     }
     .tooltip-wrap {
@@ -124,11 +132,13 @@
         }
         &[class*="-subtitle"] {
             font-size: 16px;
-            margin-bottom: 30px;
+            font-weight:bold;
+            margin-top:21px;
+            margin-bottom: 22px;
             line-height:1.63;
             @include mobile {
-                margin-top: 12px;
-                margin-bottom: 24px;
+                margin-top: 23px;
+                margin-bottom: 16px;
             }
         }
     }
@@ -144,14 +154,16 @@
         }
       
         dt {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             line-height: 1.44;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+
+            
         }
         dd {
             font-size: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 34px;
             line-height:1.63;
             &:last-child {
                 margin-bottom: 0;
@@ -300,10 +312,12 @@
     .note-box {
         background-color: #f4f4f4;
         padding: 24px 40px;
+        font-size: 14px;
+
         .in-note-box {
             margin-top: 2px;
-            margin-bottom: 8px;
             font-size: 14px;
+            margin-bottom: 8px;
         }
         @include mobile {
             padding: 20px;
