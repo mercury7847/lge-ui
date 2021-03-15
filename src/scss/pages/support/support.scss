@@ -212,7 +212,8 @@
             font-size:16px;
             line-height:24px;
             .point {
-                color:#ec455a;
+                color:#da0f47;
+                font-weight:normal;
             }
         }
         &.type-A {
@@ -234,7 +235,7 @@
             margin-bottom: 12px;
         }
         @include mobile {
-            padding: 20px 16px;
+            padding: 20px;
             margin-bottom: 40px;
             .tit {
                 margin-bottom:12px;
@@ -243,7 +244,7 @@
             }
             .desc {
                 font-size:14px;
-                line-height:18px;
+                line-height:22px;
             }
             &.type-A {
                 display: block;
@@ -493,7 +494,7 @@
         .text  {
             font-size: 14px;
             line-height: 1.71;
-            color: #767676;
+            color: #666;
             margin-left: 13px;
         }
         &:before {
