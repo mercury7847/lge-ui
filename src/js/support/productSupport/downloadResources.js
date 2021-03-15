@@ -611,7 +611,7 @@
             });
 
             // 다운로드 버튼 클릭
-            self.$driverSec.on('click', '.btn-download', function(e){
+            self.$cont.on('click', '.btn-download', function(e){
                 var $this = $(this);
                 var fileUrl = $this.attr('href');
                 var $item = $this.closest('li');
@@ -624,6 +624,19 @@
                     }
                     $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
                 }
+
+                // 테스트 
+                e.preventDefault();
+                $.ajax({
+                    type : "GET",
+                    url : fileUrl,
+                    dataType : 'json',
+                    timeout : 180000
+                }).done(function (result) {
+                    console.log(result)
+                }).fail(function(err){
+                    console.log('ajaxFail', err);
+                });
             })
 
             //이메일 주소 입력팝업 보내기 버튼 클릭시 

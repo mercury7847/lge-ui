@@ -28,14 +28,14 @@
                         '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
-                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '{{#if hasCare && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{#if obsFlag=="Y"}}' +
+            '{{#if obsFlag=="Y" && !rentalFlag}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
                     '{{#if carePrice != "0"}}' +
@@ -138,7 +138,7 @@
                         '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
                         '<a href="{{url}}" class="desc time">' +
                         '{{#each item in time}}' +
-                            '<span><em>item.week</em> {{item.time}}</span>' +
+                            '<span><em>{{item.week}}</em> {{item.time}}</span>' +
                         '{{/each}}' +
                         '</a>' +
                     '</div>' +
@@ -749,6 +749,7 @@
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                             $list_ul.append(vcui.template(productItemTemplate, item));
                         });
                         $resultListWrap.show();
@@ -886,6 +887,7 @@
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
                             if(data.noDataList.length > 0) {

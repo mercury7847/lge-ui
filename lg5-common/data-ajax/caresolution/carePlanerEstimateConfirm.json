@@ -8,6 +8,7 @@
             "totalPrice" : "월 61,400원",
             "totalTrans" : "월 -15,000원",
             "usedPrice" : "월 36,000원",
+            "sumPrice": 36000,
             "requestUrl": "lge.com"
         },
         "paymentInfo": {
@@ -75,7 +76,8 @@
                     "price": "월 -5,000원",
                     "appendClass": "sale"
                 }
-            ]
+            ],
+            "discountUrl": "https://wwwstg.lge.co.kr"
         },
         "itemList":[
             {
