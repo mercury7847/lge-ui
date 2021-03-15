@@ -1,0 +1,59 @@
+{
+    "status":"success",
+    "message":"",
+    "data": {
+        "success": "Y",
+        "data" : [
+            {            
+
+                "modelId":"65NANO99KBB",
+                "saleModelCode":"FQ2",
+                "saleSuffixCode":"AKOR",
+                "modelName":"프라엘 메디헤어2",
+                "modelDisplayName":"프라엘 메디헤어2",
+                "obsOriginalPrice":"2000000",
+                "obsMemberPrice":"1000",
+                "obsDiscountPrice":"20000",
+                "obsSellFlag":"",
+                "obsInventoryFlag":"",
+                "obsInventoryQty":"",
+                "modelStatusCode":"ACTIVE",
+                "categoryId":"",
+                "categoryName":"",
+                "modelUrlPath":"#1",
+                "samllImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "mediumImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "largeImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "isFlag" : "best",
+                "averageRating" : "4.2",
+                "reviewCount" : "1056",
+                "reviewLinkPath" : "#11"
+            },
+            {
+
+                "modelId":"75NANO99KBB",
+                "saleModelCode":"FQ2",
+                "saleSuffixCode":"AKOR",
+                "modelName":"프라엘 메디헤어3",
+                "modelDisplayName":"프라엘 메디헤어3",
+                "obsOriginalPrice":"300000",
+                "obsMemberPrice":"1000",
+                "obsDiscountPrice":"20000",
+                "obsSellFlag":"",
+                "obsInventoryFlag":"",
+                "obsInventoryQty":"",
+                "modelStatusCode":"ACTIVE",
+                "categoryId":"",
+                "categoryName":"",
+                "modelUrlPath":"#2",
+                "samllImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "mediumImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "largeImgAddr":"/lg5-common/images/PRS/img-buy-product-best.jpg",
+                "isFlag" : "energy",
+                "averageRating" : "4.1",
+                "reviewCount" : "1011",
+                "reviewLinkPath" : "#12"
+            }
+        ]    
+    }
+}

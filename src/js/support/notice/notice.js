@@ -26,6 +26,7 @@
                 self.$pagination = $contents.find('.pagination');
                 self.$sortsWrap = $contents.find('.sorting-wrap');
                 self.$sortTotal = $contents.find('#count');
+                self.$sortSelectWrap = $contents.find('.sort-select-wrap');
                 self.$sortSelect = $contents.find('.ui_selectbox');
                 self.$listWrap = $contents.find('.tb_row');
                 self.$noData = $contents.find('.empty-row');
@@ -63,8 +64,12 @@
                         });
                         self.$listWrap.find('tbody').prepend(html);
                         self.$noData.hide();
+                        //self.$sortSelectWrap.show();
+                        //self.$pagination.show();
                     } else {
                         self.$noData.show();
+                        //self.$sortSelectWrap.hide();
+                        //self.$pagination.hide();
                     }
 
                     lgkorUI.hideLoading();

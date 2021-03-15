@@ -90,7 +90,7 @@
                 "saleSuffixCode":"AKOR",
                 "modelName":"톤프리",
                 "modelDisplayName":"톤프리",
-                "obsOriginalPrice":"1000000",
+                "obsOriginalPrice":null,
                 "obsMemberPrice":"1000",
                 "obsDiscountPrice":"20000",
                 "obsSellFlag":"",
