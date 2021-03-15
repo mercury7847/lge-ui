@@ -24,15 +24,23 @@
             margin-bottom:32px;
         }
         .tabs-wrap {
+            z-index: 1;
+            max-width: 1380px + 80px;
+            margin: 0 auto -1px;
+            padding:0 40px;
             text-align:left;
-        }
-        .tabs-wrap.border-type {
-            max-width:1380px;
-            margin: 0 auto;
-            // padding:0 40px;
+            @media screen and (min-width:(1380px + 80px)) {
+                &:before {
+                    right: 40px;
+                    left: 40px;
+                }
+            }
             @include mobile {
+                margin: 0;
                 padding:0;
             }
+        }
+        .tabs-wrap.border-type {
         }
         .title + .tabs-wrap {
             padding-top:80px;
@@ -156,6 +164,7 @@
                             @include font-medium;
                             font-weight: 500;
                             color: $color-gray-1;
+                            white-space: nowrap;
                         }
                         &.on a {
                             color:#000;
