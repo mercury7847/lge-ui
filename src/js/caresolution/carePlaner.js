@@ -551,12 +551,15 @@
 
             addProdItemList();
 
-            if(_careCateId && _careCateId.tabModelId && _careCateId.tabRtModelSeq) {
+            if(_careCateId && _careCateId.tabModelId) {
                 var findArr = vcui.array.filter(result.data.productList, function(item, index) {
-                    return (item.modelId == _careCateId.tabModelId && item.rtModelSeq == _careCateId.tabRtModelSeq);
+                    return (item.modelId == _careCateId.tabModelId);
                 });
                 if(findArr.length > 0) {
-                    var findModel = findArr[0];
+                    var findModel = JSON.parse(JSON.stringify(findArr[0]));
+                    if(_careCateId.tabRtModelSeq) {
+                        findModel.rtModelSeq = _careCateId.tabRtModelSeq;
+                    }
                     requestAddPutItem(findModel);
                 }
             }
