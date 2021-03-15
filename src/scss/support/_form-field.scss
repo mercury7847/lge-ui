@@ -37,7 +37,9 @@
 }
 
 .keyword-search {
+    position: relative;
     text-align:center;
+    z-index:2;
     &.default {
         .search-box {
             width:100%;
@@ -472,7 +474,7 @@
         .form-col {
             flex:1;
             & + .form-col {
-                margin-top:28px;
+                margin-top:32px;
                 margin-left:0;
             }
         }

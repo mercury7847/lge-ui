@@ -28,7 +28,7 @@
                     width:64px;
                     height:64px;
                     transform:translate(0, -50%);
-                    background:url("/lg5-common/images/icons/icon-12-80.svg") no-repeat;
+                    background:url("/lg5-common/images/icons/img-evaluation-64.svg") no-repeat;
                     background-size:100%;
                 }
                 .point {
@@ -382,7 +382,7 @@
     &.video-guide {
         .search-wrap{
             max-width:912px;
-            margin:0 auto 48px;
+            margin:0 auto 80px;
             .title {
                 margin-bottom:16px;
                 text-align:center;
@@ -429,7 +429,7 @@
                 }
             }
             @include mobile {
-                margin-top: 56px;
+                margin-top: 0;
                 margin-bottom:40px;
                 padding: 0 16px;
                 .title {
@@ -474,17 +474,23 @@
                     .btn-delete {
                         display:inline-block;
                         position:static;
-                        width:14px;
-                        height:14px;
-                        margin:7px 0 0 8px;
+                        width:20px;
+                        height:20px;
+                        margin:3px 0 0 7px;
                         vertical-align:top;
                         background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat;
-                        background-size:100%;
+                        background-size:100% 100%;
                     }
                 }
                 @include mobile {
-                    margin-bottom:40px;
+                    margin-bottom:23px;
                     padding:0 16px;
+
+                    .summary {
+                        .btn-delete {
+                            margin:0 0 0 7px;
+                        }
+                    }
                 }
             }
             .search-result {
@@ -504,9 +510,9 @@
                     .result-tit {
                         display:none;
                         padding-bottom:12px;
-                        font-size:22px;
+                        font-size:24px;
                         font-weight:700;
-                        line-height:32px;
+                        line-height:1.63;
                         border-bottom:2px solid #222;
                         @include pc {
                             display:block;
@@ -515,10 +521,10 @@
                     .result-total {
                         margin-top:12px;
                         @include font-small;
-                        font-weight:$font-weight-medium;
+                        font-weight:normal;
                         text-align:right;
                         .count {
-                            color:#ec455a
+                            color:#da0f47;
                         }
                     }
                 }
