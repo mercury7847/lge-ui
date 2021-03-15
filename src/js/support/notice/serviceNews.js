@@ -75,12 +75,12 @@
                     
                         self.$listWrap.show();
                         self.$noData.hide();
-                        self.$pagination.show();
-                        self.$sorttSelectWrap.show();
+                        //self.$pagination.show();
+                        //self.$sorttSelectWrap.show();
                     } else {
                         self.$listWrap.hide();
-                        self.$sorttSelectWrap.hide();
-                        self.$pagination.hide();
+                        //self.$sorttSelectWrap.hide();
+                        //self.$pagination.hide();
                         self.$noData.show();
                     }
 
