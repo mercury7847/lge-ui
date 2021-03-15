@@ -67,7 +67,11 @@
                 '<div class="result-detail">' +
                     '<div href="{{url}}" class="shop-info">' +
                         '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
-                        '<a href="{{url}}" class="desc time">{{time}}</a>' +
+                        '<a href="{{url}}" class="desc time">' +
+                        '{{#each item in time}}' +
+                            '<span><em>item.week</em> {{item.time}}</span>' +
+                        '{{/each}}' +
+                        '</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="혼잡"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
                 '</div>' +
