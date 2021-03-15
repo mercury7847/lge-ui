@@ -213,7 +213,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self.$map = self.$mapContainer.vcCenterMap('instance');
 
                         if (sval) {
-                            self._loadStoreData(seq);
+                            self._loadStoreData(sval);
                         } else {
                             if (!vcui.detect.isMobile) { // pc device
                                 if (!self.isLogin) { // 비로그인

@@ -676,7 +676,19 @@
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param, true);
+
+                    if(param.typeFlag == "C") {
+                        lgkorUI.confirm('', {
+                            title: "케어십 서비스를 신청하시는 경우<br>1개의 제품만 장바구니에 담을 수 있습니다.<br>해당 제품을 장바구니에 담으시겠어요?",
+                            okBtnName: '네',
+                            cancelBtnName: '아니오',
+                            ok:function(){
+                                lgkorUI.requestCart(ajaxUrl, param, true);
+                            }
+                        });
+                    } else {
+                        lgkorUI.requestCart(ajaxUrl, param, true);
+                    }
                 });
 
                 //매장방문예약 (모바일pc구분)
@@ -696,7 +708,7 @@
                         } else {
                             lgkorUI.confirm('', {
                                 title:'해당 제품을 전시하는 매장이 없습니다.<br>가까운 매장에서 비슷한 제품을<br>전시하는지 확인해보시겠어요?',
-                                okBtnName: '예',
+                                okBtnName: '네',
                                 cancelBtnName: '아니오',
                                 ok: function() {
                                     location.href = url;
