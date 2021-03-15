@@ -96,7 +96,7 @@
                 checked: chk,
                 shopId: $(this).data("shopId")
             }
-            console.log(sendata)
+
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(bookMarkerUrl, sendata, function(result){
                 if(result.data.success == "N"){
                     lgkorUI.alert("", {
@@ -104,6 +104,14 @@
                     });
                     
                     ipt.prop('checked', !chk);
+                } else {
+                    if(chk) {
+                        //추가
+                        $(window).trigger("toastshow","단골매장이 등록되었습니다.");
+                    } else {
+                        //삭제
+                        $(window).trigger("toastshow","단골매장이 해제되었습니다.");
+                    }
                 }
             });
         })
