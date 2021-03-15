@@ -213,7 +213,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self.$map = self.$mapContainer.vcCenterMap('instance');
 
                         if (sval) {
-                            self._loadStoreData(seq);
+                            self._loadStoreData(sval);
                         } else {
                             if (!vcui.detect.isMobile) { // pc device
                                 if (!self.isLogin) { // 비로그인
@@ -786,7 +786,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     };
 
                     self.searchResultMode = init ? false : true;
-                    self.schReaultTmplID = "localSearch";
+                    self.schReaultTmplID = "userAddressSearch";
 
                     // self.$map.getAdressPositions(result.data.userAdress, callback);
                     self.searchAddressToCoordinate(result.data.userAdress, callback);

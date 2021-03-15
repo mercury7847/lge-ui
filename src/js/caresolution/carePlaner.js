@@ -225,25 +225,6 @@
             '   </li>'+
             '</ul>'+
             '</div>';
-        
-        var _estimatePriceTemplate = 
-            '<div class="estimate-price">'+
-                '<dl>'+
-                    '<dt>기본 이용 요금</dt>'+
-                    '<dd>{{totalPrice}}</dd>'+
-                '</dl>'+
-                '<dl>'+
-                    '<dt>결합 할인</dt>'+
-                    '<dd class="sale">{{totalTrans}}</dd>'+
-                '</dl>'+
-                '<dl class="total">'+
-                    '<dt>최종 이용 요금</dt>'+
-                    '<dd>{{usedPrice}}</dd>'+
-                '</dl>'+
-                '<a href="{{requestUrl}}" class="btn block"}}">'+
-                    '<span>청약 신청하기</span>'+
-                '</a>'+
-            '</div>';
             
 
     var _showItemLength = 8;
@@ -409,13 +390,23 @@
             $dropDown.vcDropdown("close");
 
             var maxCardSale = $this.attr('data-card-sale');
-            if(maxCardSale > 0) $('#pop-estimate').find('.alliance-card .price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
-            else $('#pop-estimate').find('.alliance-card .price').hide();
-        }).on('click', '.estimate-price a', function(e){
+            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
+            else $('#pop-estimate').find('.discount-price').hide();
+
+            $('#pop-estimate').data("selectId", $this.data('cardId'));
+
+            var sumTotal = parseInt($('#pop-estimate').data("sumPrice"));
+            var sum =  sumTotal - maxCardSale;
+            var addCommaSum = vcui.number.addComma(sum);
+            $('#pop-estimate').find(".estimate-usedPrice").text("월 " + addCommaSum + "원");
+
+            console.log("sumTotal:" + sum)
+
+
+        }).on('click', '.estimate-price button', function(e){
             e.preventDefault();
 
-            var href = $(this).attr('href');
-            sendRequestConfirm(href);
+            sendRequestConfirm();
         });
 
         $(window).on("scroll", function(){
@@ -431,9 +422,16 @@
         });
     }
 
-    function sendRequestConfirm(url){
+    function sendRequestConfirm(){
         lgkorUI.showLoading();
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, {}, function(result){
+
+        var url = $('#pop-estimate').data('requestUrl');
+        var sendata = {
+            rtModelSeq: $('#pop-estimate').data('rtModelSeq'),
+            easyRequestCard: $('#pop-estimate').data('selectId')
+        }
+
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, sendata, function(result){
             lgkorUI.hideLoading();
             
             var alert = result.data.alert;
@@ -475,7 +473,7 @@
             } else {
                 window.location.href = result.data.sendUrl;
             }
-        });
+        }, "POST");
     }
 
     //카테고리 로드...
@@ -930,9 +928,16 @@
             console.log(result)
 
             var estimatePrice = $('#pop-estimate').find('.estimate-price');
-            var newelement = vcui.template(_estimatePriceTemplate, result.data.priceInfo);
-            estimatePrice.after(newelement);
-            estimatePrice.remove();
+            for(var str in result.data.priceInfo) estimatePrice.find('.estimate-'+str).text(result.data.priceInfo[str]);
+
+            $('#pop-estimate').data("requestUrl", result.data.priceInfo.requestUrl);
+            $('#pop-estimate').data("sumPrice", result.data.priceInfo.sumPrice);
+
+            $('#pop-estimate').find('.tooltip-wrap .tooltip-box a').attr('href', result.data.paymentInfo.discountUrl);
+
+            var modelist = [];
+            for(var idx in result.data.itemList) modelist.push(result.data.itemList[idx].csmsRtModelSeq);
+            $('#pop-estimate').data("rtModelSeq", modelist.join(","));
 
          
             var $cardInfo = $('#pop-estimate').find('.alliance-card');
@@ -942,7 +947,7 @@
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                var cardItemTemplate = '<li><a href="#" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
                         selectList.append(vcui.template(groupItemTemplate,obj));

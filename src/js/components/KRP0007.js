@@ -327,7 +327,7 @@
                             "pageType": "plp"
                         }
                         var ajaxUrl = self.$section.attr('data-cart-url');
-                        lgkorUI.requestCart(ajaxUrl, param);
+                        lgkorUI.requestCart(ajaxUrl, param, true);
                     }
                 });
 

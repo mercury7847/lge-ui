@@ -207,7 +207,7 @@
 
 .logo {
     float: left;
-    padding-left: 56px;
+    padding-left: 42px;
     a {
         display: block;
         width: 76px;
@@ -418,7 +418,7 @@
     font-size: 0;
     white-space: nowrap;
 
-    padding-left: 40px;
+    padding-left: 28px;
 
     @include mobile {
         padding-left: 0;
@@ -1425,6 +1425,30 @@ html {
                 position: relative;
                 right: auto;
                 bottom: auto;
+            }
+        }
+
+        .floating-wrap {
+            //노치 있음
+            &.app-LGEAPP-in {
+                bottom:95px;
+                &.app-chng-pos {
+                    bottom:24px;
+                }
+            }
+            //노치 없음
+            &.app-LGEAPP-io {
+                bottom:55px;
+                &.app-chng-pos {
+                    bottom:24px;
+                }
+            }
+            //안드로이드
+            &.app-LGEAPP {
+                bottom:95px;
+                &.app-chng-pos {
+                    bottom:24px;
+                }
             }
         }
     }

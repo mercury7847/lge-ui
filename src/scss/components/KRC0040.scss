@@ -4,9 +4,6 @@
 
 .KRC0040 {
     z-index:1;
-    border-top:1px solid #ddd;
-    background:#fff;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
 
     .back-layer {
         position: fixed;
@@ -19,18 +16,22 @@
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
         opacity: .5;
     }
-    
+
     .inner {
+        border-top:1px solid #ddd;
+        background:#fff;
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .product-info-more {
         position:relative;
         max-width:1380px + 80px;
         margin:0 auto;
         padding:0 40px;
         @include mobile {
+            max-width: 100%;
             padding:0;
         }
-    }
-
-    .product-info-more {
         @include pc {
             .on-txt {
                 display:none;
