@@ -582,8 +582,9 @@ var FilterLayer = (function() {
                 //체크된 버튼이 있는 항목 열어두기
                 var checkedRadio = self.$layFilter.find('.ui_filter_accordion input:checked');
                 checkedRadio.each(function(idx, findDm) {
-                    var index = findDm.parents('li').index();
-                    var $pa = findDm.parents('.ui_filter_accordion');
+                    var $findDm = $(findDm);
+                    var index = $findDm.parents('li').index();
+                    var $pa = $findDm.parents('.ui_filter_accordion');
                     $pa.vcAccordion('setOption','useAnimate',false);
                     $pa.vcAccordion('expand',index);
                     $pa.vcAccordion('setOption','useAnimate',true);
