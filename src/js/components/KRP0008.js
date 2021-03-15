@@ -147,6 +147,14 @@
 
                 //크레마
                 lgkorUI.cremaLogin();
+
+                //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
+                if(typeof reviewsCount !== 'undefined') {
+                    reviewsCount = 103;
+                    if(parseInt(reviewsCount) > 0) {
+                        $(window).trigger("changeCategory.KRP0009",{"title":"리뷰(" + reviewsCount + ")","linkName":"review"});
+                    }
+                }
             },
 
             setting: function() {
