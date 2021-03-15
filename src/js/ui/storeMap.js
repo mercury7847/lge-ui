@@ -146,7 +146,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         self._onSuccessGeolocation(e);
                     }, 
                     function(e){
-                        self._onErrorGeolocation();
+                        self._onErrorGeolocation(e);
                     }
                 );
             } else {
@@ -163,11 +163,18 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._setting(self.userLatitude, self.userLongitude);
         },
         
-        _onErrorGeolocation : function _onErrorGeolocation() {
+        _onErrorGeolocation : function _onErrorGeolocation(e) {
             var self = this;
 
+            var msg;
+            if(e){
+                msg = "[" + e.code + "]" + e.message;
+            } else{
+                msg = "현재 위치를 찾을 수 없습니다."
+            }
+
             lgkorUI.alert("", {
-                title: "현재 위치를 찾을 수 없습니다.",
+                title: msg,
                 ok: function(){
                     self._setting();
                 }
