@@ -48,7 +48,7 @@ $(document).ready(function() {
                     $('.floating-menu.top').hide();
                 }
                 $(window).scroll(function(){
-                    if ($(this).scrollTop() > 50) {
+                    if ($(this).scrollTop() > 100) {
                         $('.floating-menu.top').show();
                     } else {
                         $('.floating-menu.top').hide();
