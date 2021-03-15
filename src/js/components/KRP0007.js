@@ -158,6 +158,7 @@
 
         var categoryId = lgkorUI.getHiddenInputData().categoryId;
         var storageName = categoryId+'_lgeProductFilter';
+        var saveListDataStorageName = categoryId+'_lgeProductFilterSaveListData';
         
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
 
@@ -165,6 +166,10 @@
             init: function() {
                 var self = this;
 
+                self.savedPLPData = {};
+                self.savedPLPData.listData = [];
+                self.savedPLPData.pagination = {page:0, totalCount:0};
+                
                 self.setting();
                 self.bindEvents();
 
@@ -178,7 +183,7 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
-                        lgkorUI.setStorage(storageName, data);
+                        lgkorUI.setStorage(storageName, data, true);
     
                         var param = {};
                         var filterdata = JSON.parse(data.filterData);
@@ -200,8 +205,6 @@
                     var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
 
-                    console.log("### storageFilters ###", storageFilters)
-    
                     var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
                         var storageFilterData = JSON.parse(storageFilters.filterData);
@@ -217,11 +220,38 @@
                         }
                         filterData = storageFilterData;
                     }
-                    self.filterLayer.resetFilter(filterData, change);
+
+                    var hash = location.hash.replace("#","");
+                    if(hash && hash == categoryId) {
+                        self.filterLayer.resetFilter(filterData, false);
+                        self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
+                        self.$productList.empty();
+                        self.updateProductList(self.savedPLPData.listData);
+                        self.setPageData(self.savedPLPData.pagination);
+                    } else {
+                        self.filterLayer.resetFilter(filterData, change);
+                    }
                 });
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+
+                /*
+                var hash = location.hash.replace("#","");
+                if(hash) {
+                    var data = JSON.parse(decodeURIComponent(hash));
+                    console.log(data);
+                    if(!vcui.isEmpty(data)) {
+                        self.requestSearch(data, true, true);
+                    } else {
+                        var ajaxUrl = self.$section.attr('data-wish-url');
+                        lgkorUI.checkWishItem(ajaxUrl);
+                    }
+                } else {
+                    var ajaxUrl = self.$section.attr('data-wish-url');
+                    lgkorUI.checkWishItem(ajaxUrl);
+                }
+                */
             },
 
             setting: function() {
@@ -260,11 +290,10 @@
 
             bindEvents: function() {
                 var self = this;
-                
+
                 //찜하기
                 self.$productList.on('change','li div.btn-area-wrap div.wishlist input',function(e){
                     var isLogin = lgkorUI.getHiddenInputData().isLogin;
-                    console.log("isLogin:", isLogin);
                     if(isLogin == "N"){
                         lgkorUI.alert("", {
                             title: "로그인이 필요합니다."
@@ -424,11 +453,15 @@
             requestSearch: function(data, isNew){
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
-                data.categoryId = categoryId;
-                data.pageType = "plp";
-                console.log("### requestSearch ###", data)
+                //if(!isHash) {
+                    data.categoryId = categoryId;
+                    data.pageType = "plp";
+                    //var hash = lgkorUI.obj2HashString(data);
+                    //var hash = encodeURIComponent(JSON.stringify(data));
+                    location.hash = categoryId;
+                //}
+
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
-                    console.log("### requestSearch onComplete ###");
                     var data = result.data[0];
                     
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
@@ -436,26 +469,19 @@
                     
                     if(isNew) {
                         self.$productList.empty();
+                        self.savedPLPData.listData = [];
+                        self.savedPLPData.pagination = {page:0, totalCount:0};
                     }
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
                     if(arr.length){
-                        arr.forEach(function(item, index) {
-                            item.checkBtnFlag = self.checkBtnFlag(item);
-                            item.checkPriceFlag = self.checkPriceFlag(item);
-                            var listItem = self.makeListItem(item);
-                            self.$productList.append(listItem);
-                        });
+                        self.updateProductList(arr);
 
-                        self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
-
-                        self.addCarouselModule();
-
-                        self.fnBreakPoint();
-                        self.setCompares();
-    
                         self.setPageData(data.pagination);
+
+                        self.savedPLPData.listData = self.savedPLPData.listData.concat(arr);
+                        lgkorUI.setStorage(saveListDataStorageName, self.savedPLPData, false);
 
                         /*
                         var ajaxUrl = self.$section.attr('data-wish-url');
@@ -465,6 +491,24 @@
                         self.setPageData({page:0, totalCount:0});
                     }
                 });
+            },
+
+            updateProductList: function(arr) {
+                var self = this;
+                arr.forEach(function(item, index) {
+                    item.checkBtnFlag = self.checkBtnFlag(item);
+                    item.checkPriceFlag = self.checkPriceFlag(item);
+                    var listItem = self.makeListItem(item);
+                    self.$productList.append(listItem);
+                });
+
+                self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
+                self.addCarouselModule();
+
+                self.fnBreakPoint();
+
+                self.setCompares();
             },
 
             requestSibling: function(rdo){
@@ -478,11 +522,10 @@
                     "pageType": "plp",
                     "callType": "productSummary",
                     "categoryId": lgkorUI.getHiddenInputData().categoryId
-                }            
-                console.log("@@@ requestSibling @@@", sendata)
-                lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
-                    console.log("@@@ requestSibling onComplete @@@", result);
+                }
 
+                lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
+                    
                     var arr = (result.data && result.data instanceof Array) ? result.data : [];
 
                     if(arr.length){
@@ -526,7 +569,6 @@
             },
 
             checkPriceFlag: function(item) {
-                console.log("### checkPriceFlag ###", item.bizType)
                 if(item.bizType == "PRODUCT") {
                     if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
                         return true
@@ -655,8 +697,6 @@
             //     '{{/if}}' +
             // '{{/if}}'+
 
-            console.log(item.checkPriceFlag, item.bizType, item.obsTotalDiscountPrice, item.obsOriginalPrice, item.obsSellingPrice)
-
                 return vcui.template(productItemTemplate, item);
             },
 
@@ -738,7 +778,6 @@
                 var $this = $(atag);
                 var _id = $this.data('id');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                console.log("### setCompareState ###", categoryId)
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
                     var contents = compare.siblings('.product-contents');

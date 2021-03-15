@@ -153,6 +153,9 @@ var FilterLayer = (function() {
             // 모바일 필터박스 확인
             self.$layFilter.find('div.filter-btn-wrap button').on('click', function(e){
                 self.$layFilter.removeClass('open');
+                $('html, body').css({
+                    overflow:"visible"
+                });
                 self.triggerFilterChangeEvent();
             });
 
