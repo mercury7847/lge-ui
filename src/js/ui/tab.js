@@ -8,6 +8,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
     "use strict";
 
     var name = 'tab',
+        eventInit = name + 'init',
         eventBeforeChange = name + 'beforechange',
         eventChanged = name + 'change',
         selectedClass = 'on';
@@ -30,10 +31,14 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             selectedClass: selectedClass,
             selectedText: '선택됨',
             tabsSelector: '>ul>li',
-            tabForceHeight: false
+            tabForceHeight: false,            
         },
 
-        selectors: {},
+        selectors: {
+            prevButton : '',
+            nextButton : '',
+            smoothScroll : ''
+        },
         /**
          * 생성자
          * @param {string|Element|jQuery} el 해당 엘리먼트(노드, id, jQuery 어떤 형식이든 상관없다)
@@ -52,11 +57,23 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             self.$srText = $hide.length ? $hide : $('<em class="blind">' + self.options.selectedText + '</em>');
 
             var $child = self.$el.children().eq(0);
+
             if (!$child.is('ul')) {
                 self.options.tabsSelector = '>' + $child[0].tagName.toLowerCase() + self.options.tabsSelector;
                 if ($child.css('overflow') === 'hidden') {
-                    $child.vcSmoothScroll({eventPassthrough:'horizontal'});
+                    $child.vcSmoothScroll({eventPassthrough:'horizontal'});                    
                 }
+            }
+
+            if(self.$smoothScroll[0]){
+                self.$smoothScroll.vcSmoothScroll({
+                    center: true, 
+                    autoCenterScroll:false, 
+                    selectors:{ 
+                        prevButton:self.$prevButton, 
+                        nextButton:self.$nextButton
+                    }
+                });
             }
 
             self.panelNameArr = [];
@@ -69,6 +86,13 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                 self.options.selectedIndex = index;
             }
             self.select(self.options.selectedIndex, true);
+
+            self.triggerHandler(eventInit, {
+                selectedIndex: index,
+                relatedTarget: self.$tabs.get(index),
+                button: self.$tabs.eq(index).find('>a'),
+                content: self.$contents.eq(index)
+            });
         },
 
         update: function update() {
@@ -206,6 +230,8 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
         select: function select(index, noTrigger) {
             var self = this,
                 e;
+
+                console.log('select', index, noTrigger);
 
             if(!noTrigger){
                 //if (index < 0 || self.$tabs.length && index >= self.$tabs.length) {
