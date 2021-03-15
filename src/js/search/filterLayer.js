@@ -432,7 +432,7 @@ var FilterLayer = (function() {
                             break;
                     }
 
-                    if(item.defalutUnfoldFlag == "N") expands.push(index);
+                    if(item.defalutUnfoldFlag == "Y") expands.push(index);
                 });
                 self._filterBindCustomEvents();
             }

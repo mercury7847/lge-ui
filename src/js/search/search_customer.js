@@ -90,7 +90,7 @@
                 '</div></div>' +
             '</div>' +
             '{{#if linkItem}}<div class="btn-area">' +
-                '{{#each item in linkItem}}<button type="button" class="btn border size" data-file-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
+                '{{#each item in linkItem}}<button type="button" class="btn border size-m" data-file-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
             '</div>{{/if}}' +
             '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
         '</div>' +
