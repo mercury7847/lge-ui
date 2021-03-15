@@ -1120,9 +1120,10 @@ var isApp = function(){
                 data : data,
                 timeout : 180000
             }).done(function (result) {
-
+                
                 if(dtype != "json") {
                     if(callback && typeof callback === 'function') callback(result);
+                    lgkorUI.hideLoading();
                     return;
                 }
 
@@ -1153,12 +1154,12 @@ var isApp = function(){
                         if(callback && typeof callback === 'function') callback(result); 
                         else lgkorUI.hideLoading();
                     } else {
+                        lgkorUI.hideLoading();
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
-                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1189,9 +1190,7 @@ var isApp = function(){
                     */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
-
                         lgkorUI.hideLoading();
-
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
