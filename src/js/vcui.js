@@ -131,7 +131,7 @@ if (!window.JSON) {
                 }
                 return '"' + value.toString().replace(escRE, escFunc) + '"';
             };
-        })(),
+        })()
     };
 }
 
@@ -3994,7 +3994,7 @@ if (!window.JSON) {
                 };
 
                 return s;
-            })(),
+            })()
 
         };
     });
