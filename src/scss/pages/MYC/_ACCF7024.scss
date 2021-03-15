@@ -119,8 +119,15 @@
                 position:absolute;
                 top:34px;
                 left:0;
+                height:26px;
                 @include mobile {
                     top:28px;
+                    height:24px;
+                }
+            }
+            &.ui_all_checkbox {
+                > .chk-wrap {
+                    display:inline-block;
                 }
             }
             @include mobile {
