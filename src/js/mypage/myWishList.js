@@ -122,6 +122,21 @@
                 var index = page - 1;
                 if(index < 0) index = 0;
                 var self = this;
+
+                var arr =  self.listData.splice(0,10);
+                arr.forEach(function(item, index) {
+                    item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                    item.price = item.price ? vcui.number.addComma(item.price) : null;
+                    self.$list.append(vcui.template(listItemTemplate, item));
+                });
+                self.$list.data('page',page);
+                if(self.listData.length > 0) {
+                    self.$moreButton.show();
+                } else {
+                    self.$moreButton.hide();
+                }
+
+                /*
                 var arr =  self.listData.slice(index*10,page*10);
                 arr.forEach(function(item, index) {
                     item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
@@ -129,11 +144,12 @@
                     self.$list.append(vcui.template(listItemTemplate, item));
                 });
                 self.$list.data('page',page);
-                if(arr.length > 0) {
-                    self.$moreButton.show();
-                } else {
+                if(page*10 >= self.listData.length) {
                     self.$moreButton.hide();
+                } else {
+                    self.$moreButton.show();
                 }
+                */
             },
 
             requestRemove: function($dm) {
