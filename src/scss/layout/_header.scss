@@ -1431,14 +1431,14 @@ html {
         .floating-wrap {
             //노치 있음
             &.app-LGEAPP-in {
-                bottom:60px;
+                bottom:95px;
                 &.app-chng-pos {
                     bottom:24px;
                 }
             }
             //노치 없음
             &.app-LGEAPP-io {
-                bottom:95px;
+                bottom:55px;
                 &.app-chng-pos {
                     bottom:24px;
                 }
