@@ -204,7 +204,7 @@
                 param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
                 */
 
-                lgkorUI.requestCart(ajaxUrl, param);
+                lgkorUI.requestCart(ajaxUrl, param, true);
             },
 
             checkNoData: function() {
