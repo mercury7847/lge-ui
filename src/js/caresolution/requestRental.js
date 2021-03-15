@@ -652,6 +652,8 @@
             return;
         }
 
+        lgkorUI.showLoading();
+
         installAdress = {};
 
         allOwnedProductYn = "N";
@@ -675,9 +677,29 @@
         }
         console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
+            lgkorUI.hideLoading();
+
             console.log("success :", result.data.success);
 
             productPriceInfo = result.data.productPriceInfo;
+
+            console.log("productStatus :", result.data.productStatus);
+            if(result.data.productStatus){
+                for(var str in result.data.productStatus){
+                    var modelID = result.data.productStatus[str].modelID;
+                    var installAbled = result.data.productStatus[str].installAbled;
+                    var listItem = $('.order-list .order-item[data-item-id=' + modelID + ']');
+                    if(installAbled == "Y"){
+                        $(listItem).removeClass('disabled');
+                        $(listItem).find('.disabled-message p').text("");
+                        requestInfoBlock.setItemInfoDisabled(modelID, false)
+                    } else{
+                        if(!$(listItem).hasClass('disabled')) $(listItem).addClass('disabled');
+                        $(listItem).find('.disabled-message p').text(result.data.productStatus[str].availableMessage);
+                        requestInfoBlock.setItemInfoDisabled(modelID, true)
+                    }
+                }
+            }
 
             var abled = "N";
             if(lgkorUI.stringToBool(result.data.success)){
@@ -686,25 +708,9 @@
                 });
                 abled = "Y";
             } else{
-                if(result.data.productStatus){
-                    console.log("productStatus :", result.data.productStatus);
-                    for(var str in result.data.productStatus){
-                        var modelID = result.data.productStatus[str].modelID;
-                        var installAbled = result.data.productStatus[str].installAbled;
-                        var listItem = $('.order-list .order-item[data-item-id=' + modelID + ']');
-                        if(installAbled == "Y"){
-                            $(listItem).removeClass('disabled');
-                        } else{
-                            if(!$(listItem).hasClass('disabled')) $(listItem).addClass('disabled');
-                            $(listItem).find('.disabled-message p').text(result.data.productStatus[str].availableMessage);
-                            requestInfoBlock.setItemInfoDisabled(modelID, true)
-                        }
-                    }
-
-                    var total = parseInt(productPriceInfo.total.count);
-                    console.log("productPriceInfo.total.count:", productPriceInfo.total.count)
-                    if(total) abled = "Y";
-                }
+                var total = parseInt(productPriceInfo.total.count);
+                console.log("productPriceInfo.total.count:", productPriceInfo.total.count)
+                if(total) abled = "Y";
                 
                 lgkorUI.confirm(result.data.alert.desc, {
                     typeClass: "type2",
@@ -890,7 +896,11 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        lgkorUI.showLoading();
+
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
+            lgkorUI.hideLoading();
+            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
