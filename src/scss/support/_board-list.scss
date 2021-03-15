@@ -36,6 +36,9 @@
         }
     }
     @include mobile {
+        .total {
+            font-size:13px;
+        }
         .sort-box {
             .sort-select-wrap {
                 margin-left:20px;
