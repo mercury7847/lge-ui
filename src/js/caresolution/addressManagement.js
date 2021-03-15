@@ -97,32 +97,88 @@ var AddressRegist = (function() {
             self._updateFromDaumPostData(data);
         });
 
-        var register = {
-            addressName:{
-                required: true,
-            },
-            name:{
-                required: true
-            },
-            zipCode:{
-                required: true,
-                pattern: /^[0-9]+$/
-            },
-            userAddress:{
-                required: true
-            },
-            detailAddress:{
-                required: true
-            },
-            mobilePhone:{
-                required: true,
-                pattern: /^[0-9]+$/
-            },
-            phone:{
-                required: false,
-                pattern: /^[0-9]+$/
+        //청약신청에서 인풋 키값 예외처리...
+        var register;
+        if(self.$content.data("exception")){
+            register = {
+                addressNickName:{
+                    required: true,
+                    errorMsg: "주소별칭을 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                receiverUser:{
+                    required: true,
+                    errorMsg: "이름을 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                zipCode:{
+                    required: true,
+                    pattern: /^[0-9]+$/,
+                    errorMsg: "우편번호를 확인해주세요.",
+                    msgTarget: '.err-block'
+                },
+                userAddress:{
+                    required: true,
+                    errorMsg: "주소를 확인해주세요.",
+                    msgTarget: '.err-block'
+                },
+                detailAddress:{
+                    required: true,
+                    errorMsg: "상세주소를 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                mobilePhone:{
+                    required: true,
+                    pattern: /^[0-9]+$/
+                },
+                phoneNumber:{
+                    required: false,
+                    pattern: /^[0-9]+$/,
+                    errorMsg: "휴대폰번호를 입력해주세요.",
+                    msgTarget: '.err-block'
+                }
+            }
+        } else{
+            register = {
+                addressName:{
+                    required: true,
+                    errorMsg: "주소별칭을 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                name:{
+                    required: true,
+                    errorMsg: "이름을 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                zipCode:{
+                    required: true,
+                    pattern: /^[0-9]+$/,
+                    errorMsg: "우편번호를 확인해주세요.",
+                    msgTarget: '.err-block'
+                },
+                userAddress:{
+                    required: true,
+                    errorMsg: "주소를 확인해주세요.",
+                    msgTarget: '.err-block'
+                },
+                detailAddress:{
+                    required: true,
+                    errorMsg: "상세주소를 입력해주세요.",
+                    msgTarget: '.err-block'
+                },
+                mobilePhone:{
+                    required: true,
+                    pattern: /^[0-9]+$/
+                },
+                phone:{
+                    required: false,
+                    pattern: /^[0-9]+$/,
+                    errorMsg: "휴대폰번호를 입력해주세요.",
+                    msgTarget: '.err-block'
+                }
             }
         }
+
 
         vcui.require(['ui/pagination','ui/validation'], function () {
             self._bindEvents();

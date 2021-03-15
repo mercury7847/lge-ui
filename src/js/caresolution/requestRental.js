@@ -202,7 +202,8 @@
         }
         bankValidation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(3) .by-bank',{register:register});
 
-        deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
+        $('#popup-delivery-address').data("exception", true);
+        deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address", null, true);
         addressFinder = new AddressFind();
     }
 
