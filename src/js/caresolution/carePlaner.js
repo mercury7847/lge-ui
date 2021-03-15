@@ -207,8 +207,8 @@
             '           <div class="tit-info">'+
             '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
             '               <div class="etc-info">'+
-            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelCd}}</span>'+
-            '                   <span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>'+
+            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelName}}</span>'+
+            '                   {{#if item.colorOption}}<span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>{{/if}}'+
             '               </div>'+
             '           </div>'+
             '           <div class="etc-info">'+

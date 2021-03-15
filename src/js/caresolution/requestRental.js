@@ -774,6 +774,8 @@
             return;
         }
 
+        lgkorUI.showLoading();
+
         var sendata = {
             rentalCareType: getInputData('rentalCareType'),
             registFrontNumber: step1Value.registFrontNumber,
