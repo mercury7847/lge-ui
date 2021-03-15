@@ -676,7 +676,7 @@
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param);
+                    lgkorUI.requestCart(ajaxUrl, param, true);
                 });
 
                 //매장방문예약 (모바일pc구분)
