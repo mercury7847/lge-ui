@@ -119,7 +119,7 @@
                     });
                     */
                 } else {
-                    var obj = {title:'', cancelBtnName:'아니오', okBtnName:'예',
+                    var obj = {title:'', cancelBtnName:'아니오', okBtnName:'네',
                         ok: function (){
                             lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                                 var data = result.data;

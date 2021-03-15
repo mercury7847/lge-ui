@@ -1120,7 +1120,6 @@ var isApp = function(){
                 data : data,
                 timeout : 180000
             }).done(function (result) {
-
                 if(dtype != "json") {
                     if(callback && typeof callback === 'function') callback(result);
                     return;
@@ -1151,14 +1150,12 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
-                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
-                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1172,7 +1169,6 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
-                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1189,21 +1185,17 @@ var isApp = function(){
                     */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
-
-                        lgkorUI.hideLoading();
-
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
-                lgkorUI.hideLoading();
             }).always(function() {
+                lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },
@@ -1556,8 +1548,6 @@ var isApp = function(){
                         self.$subCategory.append(html).prop('disabled', false);
                         self.$subCategory.find('option[value="'+subCategory+'"]').prop('selected', true);
                         self.$subCategory.vcSelectbox('update');
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 searchModelName: function(category, subCategory) {
@@ -1576,8 +1566,6 @@ var isApp = function(){
                         $resultTxt.html(data.text);
                         $resultImg.attr('src', data.imgPath);
                         $resultImg.attr('alt', data.imageAlt);
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 bindEvent: function() {

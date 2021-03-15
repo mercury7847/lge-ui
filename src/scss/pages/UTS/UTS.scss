@@ -677,6 +677,11 @@
                 display: block !important;
             }
         }
+        .result-list-wrap {
+            @include mobile {
+                padding-bottom: 45px;
+            }
+        }
     }
     .result-area {
         width: 100%;
@@ -697,7 +702,6 @@
         }
         @include mobile {
             position: relative;
-            padding-bottom: 45px;
             & + .result-list-wrap {
                 margin-top: 40px;
             }
