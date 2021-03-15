@@ -279,13 +279,6 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
-
-            //유사제품 추천...
-            $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
-                e.preventDefault();
-
-                self.addEqualCompare($(this).data('modelIds'));
-            })
         },
 
         _addImgOnloadEvent: function(){
@@ -792,12 +785,12 @@ var isApp = function(){
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
-        addEqualCompare: function(ids){
+        addEqualCompare: function(ids, url){
             var self = this;
 
             self.setCookie(self.COMPARE_COOKIE_NAME, ids);
 
-            location.href = "/compare";
+            location.href = url;
         },
 
         setStorage: function(key, value){
