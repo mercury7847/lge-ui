@@ -1,21 +1,19 @@
 .recommend-list-box {
     clear: both;
-    //max-width: (1284px + 80px);
     max-width: 1146px;
     margin: 56px auto 0;
-    //padding: 0 40px;
     @include mobile {
-        padding: 0;
+        margin-top: 40px;
     }
 
     .title {
-        padding-bottom: 16px;
-        @include font-large-1;
+        padding-bottom: 32px;
+        @include font($font-large-2,34px);
         color: #000;
+        text-align: center;
         @include mobile {
-            padding-bottom: 12px;
-            @include font-large;
-            line-height: 26px;
+            padding-bottom: 24px;
+            @include font($font-large-1,28px);
         }
     }
 
@@ -59,7 +57,7 @@
                         left: 50%;
                         transform: translateX(-50%);
                         //max-width: 100%;
-                        //height: 100%;
+                        height: 100%;
                         //border-radius: 8px 0 0 8px;
                     }
                 }
@@ -75,29 +73,28 @@
                 display: table-cell;
                 position: relative;
                 //width: 270px;
-                padding: 24px 24px 60px 20px;
+                padding: 32px 24px 60px;
                 @include mobile {
                     display: block;
                     width: 100%;
-                    padding: 24px 16px;
+                    padding: 17px 27px;
                 }
             }
             .btn-area {
-                position: absolute;
-                bottom:24px;
-                left: 24px;
+                margin-top: 16px;
+                .btn-link {
+                    @include font-small;
+                }
                 @include mobile {
-                    position: static;
-                    margin-top: 12px;
+                    margin-top: 8px;
                 }
             }
             .tit {
+                overflow: hidden;
                 width: 100%;
                 max-height: 56px;
-                font-size: 16px;
-                line-height: 28px;
                 margin-bottom: 4px;
-                overflow: hidden;
+                @include font($font-medium,26px);
                 text-overflow: clip;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
@@ -106,18 +103,16 @@
                 font-weight: 700;
                 @include mobile {
                     max-height: 48px;
-                    margin-bottom: 10px;
-                    line-height: 24px;
+                    @include font($font-medium - 1,23px);
                 }
             }
             .copy {
                 margin-top: 4px;
-                font-size: 14px;
-                line-height: 20px;
+                @include font($font-small,24px);
                 color: #000;
                 @include mobile {
-                    margin-top: 10px;
-                    line-height: 24px;
+                    margin-top: 2px;
+                    line-height: 22px;
                 }
             }
             
