@@ -282,8 +282,10 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         _hashchange:function _hashchange(e){
             var self = this;            
             var hash = window.location.hash;
+
+            
             if(hash.search(self.randomKey) < 0) {
-                self.close();
+                //self.close();
             }
 
         },
