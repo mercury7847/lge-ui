@@ -196,7 +196,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             useTransformAlign: true,
             variableWidth: true, 
             variableHeight: true,
-            removeModalCss: false
+            removeModalCss: false,
+            isHash : true
         },
 
         events: {
@@ -425,13 +426,13 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }**********/
             });
 
-
-
-            window.removeEventListener("hashchange", this._hashchange.bind(this));
-            window.addEventListener("hashchange", this._hashchange.bind(this));
-
-            self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
-            window.location.hash = self.randomKey;
+            if(opts.isHash){
+                window.removeEventListener("hashchange", this._hashchange.bind(this));
+                window.addEventListener("hashchange", this._hashchange.bind(this));
+                self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+                window.location.hash += "#"+self.randomKey;
+            }
+            
         
         
 
@@ -492,8 +493,15 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 self.destroy();
             });
 
-            window.removeEventListener("hashchange", this._hashchange.bind(this));
-            window.history.replaceState(null,null,' ');
+            
+
+            if(self.options.isHash){
+                window.removeEventListener("hashchange", this._hashchange.bind(this));
+                var hash = window.location.hash;
+                hash = hash.replace(hash, "#"+self.randomKey);
+                window.location.hash = hash;
+            }
+
             
         },
 
