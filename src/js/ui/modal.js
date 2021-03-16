@@ -428,17 +428,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }**********/
             });
 
-<<<<<<< HEAD
-
-
-            window.removeEventListener("hashchange", this._hashchange.bind(this));
-            window.addEventListener("hashchange", this._hashchange.bind(this));
-
-            self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
-
-            console.log(window.location.hash );
-            window.location.hash += "#"+self.randomKey;
-=======
             if(opts.isHash){
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 window.addEventListener("hashchange", this._hashchange.bind(this));
@@ -446,7 +435,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 window.location.hash += "#"+self.randomKey;
             }
             
->>>>>>> 4883c270c00365c0dc4130cc5260bbc6ceaa566d
         
         
 
@@ -507,10 +495,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 self.destroy();
             });
 
-<<<<<<< HEAD
-            window.removeEventListener("hashchange", this._hashchange.bind(this));
-            //window.history.replaceState(null,null,' ');
-=======
             
 
             if(self.options.isHash){
@@ -520,7 +504,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 window.location.hash = hash;
             }
 
->>>>>>> 4883c270c00365c0dc4130cc5260bbc6ceaa566d
             
         },
 
