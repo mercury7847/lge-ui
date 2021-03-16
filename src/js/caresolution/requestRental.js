@@ -660,7 +660,7 @@
         installAdress = {};
 
         allOwnedProductYn = "N";
-        beforeVisitModelFlag = "M";
+        beforeVisitModelFlag = "N";
 
         var code = [];
         $('.order-list li').each(function(idx, item){
@@ -754,7 +754,7 @@
 
                 allOwnedProductYn = result.data.allOwnedProductYn;
 
-                beforeVisitModelFlag = result.data.beforeVisitModelFlag || "M";
+                beforeVisitModelFlag = result.data.beforeVisitModelFlag || "N";
 
                 if(result.data.allOwnedProductYn == "Y"){
                     step2Block.find('.forAOP').hide();

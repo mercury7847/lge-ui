@@ -75,6 +75,7 @@ $(document).ready(function() {
                     }
                     */
                 }
+
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
                     $('.floating-menu.top').css({
