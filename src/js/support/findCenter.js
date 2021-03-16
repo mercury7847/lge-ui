@@ -1114,6 +1114,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.waiting-state').hide()
                 $('html,body').scrollTop(self.$leftContainer.offset().top)
             }
+
+            $('html,body').stop().animate({
+                scrollTop : $('.map-container').offset().top
+            }, 400)
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산

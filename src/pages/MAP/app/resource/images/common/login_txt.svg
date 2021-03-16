@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="125" height="140" viewBox="0 0 125 140">
+    <g fill="#fff">
+        <text font-family="NanumSquareB, NanumSquare" font-size="34px" transform="translate(-144 -111.445) translate(144 140.445)">
+            <tspan letter-spacing="0.446em"><tspan x="0" y="0">또</tspan><tspan y="0" letter-spacing="0.126em"> </tspan><tspan y="0" letter-spacing="0.1em">다른</tspan><tspan x="0" y="51">세상과</tspan></tspan><tspan x="0" y="102">마주하다</tspan>
+        </text>
+        <path d="M0 0H18V3H0z" transform="translate(-144 -111.445) translate(180 125.445)"/>
+    </g>
+</svg>
