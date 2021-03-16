@@ -594,7 +594,7 @@ var isApp = function(){
 
         showLoading:function(msg){
             vcui.require(['ui/spinner'],function(){
-                var str = msg? msg : '데이터를 불러오는 중입니다.';
+                var str = msg? msg : '진행중입니다';
                 $('html').addClass('dim');
                 $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
                 $('body').vcSpinner({msg:str});
