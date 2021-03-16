@@ -528,7 +528,7 @@
                     if(!loaded) {
                         self.$awardPopup.data('loaded', true);
                         if(typeof awards !== 'undefined' && awards.length > 0) {
-                            var arr = awards instanceof Array ? awards : [];
+                            var arr = awards instanceof Array ? awards.slice(0,4) : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
 

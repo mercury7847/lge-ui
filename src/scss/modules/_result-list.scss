@@ -501,18 +501,18 @@
             .price {
                 display: inline-block;
                 vertical-align: bottom;
-                @include font-large-1;
+                @include font(16px,26px);
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
-                    font-size: 14px;
-                    line-height: 22px;
+                    @include font(14px,22px);
                 }
             }
             .original {
                 margin-left: 8px;
                 vertical-align: bottom;
                 .price {
+                    font-weight: 400;
                     @include font-x-small;
                     color: $color-gray-1;
                     text-decoration: line-through;

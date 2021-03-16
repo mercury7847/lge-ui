@@ -406,13 +406,14 @@
     }
 
     @include mobile {
-        margin-top: 60px;
+        margin-top: 32px;
         .search-result-text {
             margin-bottom: 12px;
-            @include font($font-large-2,33px);
+            @include font($font-large-1,28px);
         }
         .similar-text {
-            line-height: 22px;
+            @include font($font-small - 1,21px);
+            line-height: 21px;
         }
     }
 }
