@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .cls-5{fill:none}.cls-4{stroke:none}
+        </style>
+    </defs>
+    <g id="그룹_530" transform="translate(-1103 -61)">
+        <g id="그룹_155" transform="translate(822 -267)">
+            <g id="타원_19" fill="none" stroke="#fff" stroke-width="2px" transform="translate(285 332)">
+                <circle cx="16" cy="16" r="16" class="cls-4"/>
+                <circle cx="16" cy="16" r="15" class="cls-5"/>
+            </g>
+            <text id="LV." fill="#fff" font-family="LucidaGrande-Bold, Lucida Grande" font-size="14px" font-weight="700" letter-spacing="-0.075em" transform="translate(293 353)">
+                <tspan x="0" y="0">LV.</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
