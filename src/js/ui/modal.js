@@ -279,11 +279,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         },
 
         _hashchange:function _hashchange(e){
-
-            //console.log(e);
             var self = this;            
             var hash = window.location.hash;
-            if(hash.search(self.cid) < 0) {
+            if(hash.search(self.randomKey) < 0) {
                 self.close();
             }
 
@@ -428,16 +426,12 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             });
 
 
-            // window.history.replaceState({
-            //     page: self.cid
-            // }, document.title, document.location.href+'/'+self.cid);
-
-            // window.history.replaceState({page:self.cid}, document.title, document.location.href);
-
 
             window.removeEventListener("hashchange", this._hashchange.bind(this));
             window.addEventListener("hashchange", this._hashchange.bind(this));
-            window.location.hash = self.cid;
+
+            self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+            window.location.hash = self.randomKey;
         
         
 
@@ -499,6 +493,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             });
 
             window.removeEventListener("hashchange", this._hashchange.bind(this));
+            window.history.replaceState(null,null,' ');
+            
         },
 
         /**

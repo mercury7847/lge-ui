@@ -161,6 +161,7 @@
 
                 self.thisMonth = parseInt(hiddenInput.month);
 
+                lgkorUI.showLoading();
                 self.requestMoreData(1);
                 self.requestOwnData(false);
 
@@ -812,6 +813,35 @@
             });
         },
 
+        requsetOSData:function(param) {
+            var self = this;
+            var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
+                var selectedIndex = 0;
+
+                var data = result.data;
+                self.$selectOS.empty();
+                var arr = data instanceof Array ? data : [];
+                self.osList = arr;
+                if(arr.length < 2) {
+                    self.$selectOS.prop('disabled', true);
+                    //self.$selectOS.append('<option value="">없음</option>');
+                } else {
+                    self.$selectOS.prop('disabled', false);
+                }
+                    //self.$selectOS.append('<option value="">전체</option>');
+                arr.forEach(function(item, index){
+                    if(selectedOSValue == item.code) {
+                        selectedIndex = index;
+                    }
+                    self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
+                });
+                self.$selectOS.vcSelectbox('update');
+                self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
+            });
+        },
+
         requestDownloadData: function(param, selectOSUpdate, openDownloadPopup) {
             var self = this;
 
@@ -853,6 +883,9 @@
                 if(sku) {
                     param.sku = sku;
                 }
+
+                //OS 또 갱신
+                self.requsetOSData(param);
 
                 var ajaxUrl = self.$downloadPopup.attr('data-list-url');
 
