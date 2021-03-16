@@ -765,7 +765,7 @@ var isApp = function(){
 
                 self.setStorage(self.COMPARE_KEY, compareStorage, true);
             } else {
-                self.removeStorage(self.COMPARE_KEY);
+                self.removeStorage(self.COMPARE_KEY, categoryId);
             }
         },
 
