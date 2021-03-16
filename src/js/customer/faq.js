@@ -16,9 +16,8 @@
                 self.setting();
                 self.bindEvents();
                 self.params = {};
+                self.searchNewData();
             });
-
-            //self.searchNewData();
         },
 
         setting: function() {
@@ -89,6 +88,7 @@
             var ajaxUrl = self.$searchWrap.attr('data-url');
             //console.log(ajaxUrl, param);
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var param = result.param;
                 var data = result.data;
