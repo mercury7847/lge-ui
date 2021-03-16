@@ -1,0 +1,18 @@
+{
+    "status":"success",
+    "message":null,
+    "data": [
+        {
+            "code":"전체",
+            "codeName":"전체"
+        },
+        {
+            "code":"Window",
+            "codeName":"Window"
+        },
+        {
+            "code":"Mac",
+            "codeName":"Mac"
+        }
+    ]
+}

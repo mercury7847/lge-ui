@@ -490,6 +490,14 @@
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }
+
+                    //2021-03-16 필터 활성/비활성 기능. 서버에서 enableList가 제대로 안들어옴 수정후 사용할것
+                    /*
+                    if(data.filterEnableList) {
+                        self.filterLayer.enableFilterList(data.filterEnableList);
+                    }
+                    */
+
                 });
             },
 
@@ -525,7 +533,7 @@
                 }
 
                 lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
-                    
+
                     var arr = (result.data && result.data instanceof Array) ? result.data : [];
 
                     if(arr.length){
