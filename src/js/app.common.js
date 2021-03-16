@@ -1,6 +1,6 @@
 var LGEAPPHostName = window.location.hostname;
 var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush;
-
+var LGEAPPclickCNT = 0;
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -31,14 +31,42 @@ $(document).ready(function() {
                 //Quick메뉴 AR 버튼 이벤트
                 $(".btn-app-ar a").off("click").on({
                     click : function() {
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                            var obj = new Object();
-                            obj.command = "showAR";
-                            var jsonString= JSON.stringify(obj);
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            void android.openAR(null);
+                        $(this).addClass("active");
+
+                        if(LGEAPPclickCNT > 0){
+                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                                var obj = new Object();
+                                obj.command = "showAR";
+                                var jsonString= JSON.stringify(obj);
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openAR(null);
+                            }
                         }
+                        LGEAPPclickCNT++;
+                        /*
+                        setTimeout(function(){
+                            $(".btn-app-ar a").removeClass("active");
+                            LGEAPPclickCNT = 0;
+                        }, 2000);
+                        */
+                    },
+                    focusout : function(){
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
+                    }
+                });
+
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
+                    }
+                });
+                $(".section-cover").scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
                     }
                 });
 

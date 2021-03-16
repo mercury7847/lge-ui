@@ -35,7 +35,8 @@
             .info {
                 color:#fff;
                 font-weight:700;
-                @include font-large;
+                font-size:18px;
+                line-height:28px;
                 span + span {
                     position:relative;
                     margin-left:12px;
@@ -54,7 +55,8 @@
             .status {
                 margin-top:16px;
                 color:#fff;
-                @include font-medium;
+                font-size:16px;
+                line-height:26px;
                 > span {
                     color:#fffd7c;
                 }
@@ -75,7 +77,7 @@
         }
         @include mobile {
             .box {
-                padding:20px 16px;
+                padding:16px;
             }
             .btn-center-link {
                 margin-top: 16px;
@@ -91,6 +93,8 @@
                 flex: 1;
                 padding-left:16px;
                 .info {
+                    font-size:14px;
+                    line-height:22px;
                     span {
                         display:block;
                         & + span {
@@ -104,6 +108,8 @@
                 }
                 .status {
                     margin-top:8px;
+                    font-size:13px;
+                    line-height:21px;
                 }
             }
         }
@@ -318,7 +324,7 @@
             margin-bottom:40px;
             padding:32px 40px;
             border-radius:8px;
-            border:1px solid #ddd;
+            background: #f4f4f4;
             .tit {
                 display:block;
                 margin-bottom:16px;
@@ -360,8 +366,7 @@
                     padding-top:12px;
                 }
                 .b-txt {
-                    color:#767676;
-                    font-weight:500;
+                    font-weight:normal;
                 }
             }
             @include mobile {
@@ -390,8 +395,13 @@
             }
         }
         .center-result-wrap {
-            margin-top:48px;
+            margin-top:64px;
             .tb_row {
+                .col01 {width:90px;}
+                .col02 {width:auto;}
+                .col03 {width:115px;}
+
+
                 .info {
                     text-align:left;
                     label {
@@ -421,6 +431,22 @@
             }
             @include mobile {
                 margin-top:40px;
+
+                .tb_row {
+                    .col01 {width:53px;}
+                    .col02 {width:auto;}
+                    .col03 {width:75px;}
+
+                    table {
+                        thead {
+                            th {
+                                font-size:13px;
+                            }
+                        }
+                    }
+
+
+                }
             }
         }
         .tabs-wrap {

@@ -1402,6 +1402,7 @@ html {
                 display:none;
                 font-size:14px;
                 line-height:22px;
+                white-space:nowrap;
                 &:after {
                     content:' ';
                     display:inline-block;
@@ -1438,8 +1439,7 @@ html {
                     justify-content: center;
                     padding: 0;
                 }
-                &:hover,
-                &:active {
+                &.active {
                     width:309px !important;
                     span {
                         display:none;
