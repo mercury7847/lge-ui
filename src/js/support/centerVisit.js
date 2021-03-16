@@ -551,8 +551,10 @@
                 var $popupCont = $this.closest('.pop-conts');
                 var $tabCont = $popupCont.find('.tabs-contents');
 
+                console.log(data.button[0].hash)
+
                 $tabCont.hide();
-                $tabCont.filter('#tab' + (data.selectedIndex+1)).show();
+                $tabCont.filter(data.button[0].hash).show();
             })
 
 
