@@ -216,11 +216,9 @@
 
                     .btn-area {
                         @include csmobile {
-                            position: absolute;
-                            top:auto;
                             right:0;
+                            left: auto;
                             bottom:-59px;
-                            text-align:right;
                             @include mobile {
                                 top:auto;
                                 right:0;

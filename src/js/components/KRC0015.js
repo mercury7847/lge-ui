@@ -14,7 +14,7 @@ $(window).ready(function(){
             nextArrow:'.btn-arrow.next',
             playSelector: '.btn-play.play',
             adaptiveHeight: true,
-            lazyLoad: 'progressive',
+            lazyLoad: 'anticipated', //수정 jsw
         }).on('carouselbeforechange', function(e, slide, prev, next){
             if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
                 $(slide.$slides.get(prev)).find("video").get(0).pause();

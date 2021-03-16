@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall;
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush;
 
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
@@ -42,29 +42,72 @@ $(document).ready(function() {
                     }
                 });
 
+                //하단 탭바 덮는 경우
+                LGEquickMenuPosCover = function(bool){
+                    if(bool == "Y"){
+                        $('.floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }else{
+                        $('.floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }
+                }
+                //하단 탭바 미는 경우
+                LGEquickMenuPosPush = function(bool){
+                    $('.floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
+                    /*
+                    if(bool == "Y"){
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }else{
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }
+                    */
+                }
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
                     $('.floating-menu.top').css({
-                        "position" : "static"
+                        "position" : "static",
+                        "right" : "20px",
+                        "bottom" : "24px"
+                        //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                     });
                 } else {
                     //$('.floating-menu.top').hide();
                     $('.floating-menu.top').css({
                         "position" : "absolute",
-                        "right" : 0
+                        "right" : 0,
+                        "bottom" : 0
+                        //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                     });
                 }
                 $(window).scroll(function(){
                     if ($(this).scrollTop() > 100) {
                         //$('.floating-menu.top').show();
                         $('.floating-menu.top').css({
-                            "position" : "static"
+                            "position" : "static",
+                            "right" : "20px",
+                            "bottom" : "24px"
+                            //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                         });
                     } else {
                         //$('.floating-menu.top').hide();
                         $('.floating-menu.top').css({
                             "position" : "absolute",
-                            "right" : 0
+                            "right" : 0,
+                            "bottom" : 0
+                            //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                         });
                     }
                 });
@@ -83,13 +126,8 @@ $(document).ready(function() {
                     $(".floating-wrap").addClass("app-LGEAPP");
                 }
                 /*
-                if(){
-                    //하단 탭바가 사라졌을 경우
-                    $(".floating-wrap").addClass("app-chng-pos");
-                }else{
-                    //하단 탭바가 나타났을 경우
-                    $(".floating-wrap").removeClass("app-chng-pos");
-                }
+                덮는 경우 : app-chng-pos
+                미는 경우 : app-chng-push-pos
                 */
             }
         }

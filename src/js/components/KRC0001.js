@@ -10,7 +10,7 @@
 				'<li class="js-model ui_carousel_slide" data-id="{{item.modelId}}" data-sku="{{item.sku}}">' +
 					'<div class="item">' +
 						'<div class="product-image">' +
-							'<a href="{{item.modelUrlPath}}"><img src="{{item.mediumImageAddr}}" alt="{{item.imageAltText}}" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
+							'<a href="{{item.modelUrlPath}}"><img data-lazy="{{item.mediumImageAddr}}" alt="{{item.imageAltText}}" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
 						'</div>' +
 						'<div class="product-contents">' +
 							'<strong class="product-name">' +
@@ -179,7 +179,7 @@
 				nextArrow:'.btn-arrow.next',
 				slidesToShow: 4,
 				slidesToScroll: 4,
-				lazyLoad: 'progressive',
+				lazyLoad: 'anticipated',
 				responsive: [{
 					breakpoint: 100000,
 					settings: {
