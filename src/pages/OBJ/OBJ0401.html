@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"],pageJS: ["objet/experienceModel"] })
+@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"] })
 
 <body>
     <div class="wrap">
@@ -9,9 +9,11 @@
         <div class="container">
             @@include('./common/modules/page-header.html', { "pageTitle": "제품체험" })
             <!-- mypage -->
-            <div class="contents objet model_experience">
+            <div class="contents objetcollection model_experience">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html')
+
                         <div class="lnb-contents">
                             <!-- 등급별 클래스 / 텍스트
                                 .basic / 미가입
