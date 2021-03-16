@@ -76,6 +76,10 @@
             bindEvent: function() {
                 var self = this;
 
+                self.$listWrap.on('click', '.board-tit a', function() {
+                    lgkorUI.backHistory(this);
+                });
+
                 self.$searchWrap.find('input[type="text"]').on('input', function() {
                     var val = $(this).val().trim();
 
