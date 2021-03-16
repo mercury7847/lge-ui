@@ -503,6 +503,7 @@ $(function () {
             newW = Math.max(boxW, Math.round(targetW*rate));
             newH = Math.max(boxH, Math.round(targetH*rate));
 
+
             $(target).css({
                 width: newW,
                 height: newH,
@@ -610,6 +611,8 @@ $(function () {
 
         // 렌더링
 
+
+
         var render = function(idx){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -641,10 +644,16 @@ $(function () {
                 posArr.push(allHeight);
                 $(this).height(itemHeight);
                 
+                // var imageSize = {
+                //     //<img data-natural-width = '1980' data-natural-height = '1080'>
+                //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920, 
+                //     height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1285,//1285 1476 1080
+                // };
+
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
-                    width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 1920, 
-                    height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1080
+                    width : window.breakpoint.name=='pc'? 1920 : 720, 
+                    height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
                 };
 
                 _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);

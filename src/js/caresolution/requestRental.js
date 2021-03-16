@@ -89,6 +89,12 @@
 
         creditInquireButton = $('.creditInquire');
 
+
+        // number e block;
+        $('input[type=number]').on('onkeydown', function(e){
+            return e.keyCode !== 69;
+        });
+
         var register = {
             registFrontNumber:{
                 required: true,
@@ -124,7 +130,6 @@
         }
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
-
         register = {
             userName:{
                 required: true,
@@ -141,17 +146,17 @@
                 errorMsg: "전화번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
-            zipCode: {
+            installZipCode: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            userAddress: {
+            installUserAddress: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            detailAddress: {
+            installDetailAddress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 msgTarget: '.err-address-install'
@@ -940,6 +945,10 @@
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+
+            item.find('input[name=installZipCode]').val(data.zonecode);
+            item.find('input[name=installUserAddress]').val(data.roadAddress);
+            item.find('input[name=installDetailAddress]').val('');
         });
     }
 
@@ -1076,7 +1085,8 @@
             });
             return;
         }
-        console.log("requestAgreeChecker:", agreechk)
+        console.log("requestAgreeChecker:", agreechk);
+        
 
         var step1Value = step1Validation.getValues(); 
         var step2Value = step2Validation.getValues();

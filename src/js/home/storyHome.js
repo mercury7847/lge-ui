@@ -302,6 +302,9 @@
                     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
                 }
+
+                console.log(sectionItem);
+                
             } else{
                 sectionItem.hide();
                 lgkorUI.hideLoading();
@@ -370,7 +373,7 @@
                 }
             }
             var boxleft = raw * (status.boxwidth + status.distance);
-console.log("status.boxwidth:", status.boxwidth)
+            console.log("status.boxwidth:", status.boxwidth)
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
