@@ -950,7 +950,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$prevArrow && self.$prevArrow.length) {
 
-                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.prevArrow)) {
                     self.$prevArrow.remove();
@@ -959,7 +959,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$nextArrow && self.$nextArrow.length) {
 
-                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.nextArrow)) {
                     self.$nextArrow.remove();
