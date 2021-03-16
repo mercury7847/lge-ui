@@ -1386,6 +1386,11 @@
 
 //앱 인 경우 퀵메뉴 리스트 안보이게
 html {
+    .box {
+        .btn-app-barcode{
+            display:none;
+        }
+    }
     &.app {
         .KRP0005,
         .KRP0032,
@@ -1488,6 +1493,27 @@ html {
                 }
                 &.app-chng-push-pos {
                     bottom:24px;
+                }
+            }
+        }
+
+        @include mobile {
+            #appType {
+                .box {
+                    display:block;
+                    text-align:right;
+                    .input-wrap {
+                        display:block;
+                        width:100%;
+                        margin-bottom:6px;
+                    }
+                    .btn-app-barcode{
+                        display:inline-block;
+                    }
+                    .cell{
+                        display:inline-block;
+                        width:auto;
+                    }
                 }
             }
         }

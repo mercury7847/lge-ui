@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="6.364" height="10.728" viewBox="0 0 6.364 10.728">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #888;
+      }
+    </style>
+  </defs>
+  <path id="_-e-arrow_icon" data-name="-e-arrow_icon" class="cls-1" d="M337.793,167.571a1,1,0,0,1,0-1.414l3.657-3.657-3.657-3.657a1,1,0,0,1,1.415-1.414l4.364,4.364a1,1,0,0,1,0,1.414l-4.364,4.364a1,1,0,0,1-1.415,0Z" transform="translate(-337.5 -157.136)"/>
+</svg>

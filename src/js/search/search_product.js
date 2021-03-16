@@ -71,7 +71,7 @@
                         '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
                         '<p class="copy">{{item.desc}}</p>'+
                         '<div class="btn-area btm">'+
-                            '<a href="{{item.url}}" class="btn border size"><span>{{item.urlTitle}}</span></a>'+
+                            '<a href="{{item.url}}" class="btn-link"><span>{{item.urlTitle}}</span></a>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
