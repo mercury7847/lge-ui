@@ -134,7 +134,8 @@
         $('.compare-result.ui_sticky').vcSticky('update');
     }
 
-    $(window).load(function(){
+    $(document).ready(function(){
+    //$(window).load(function(){
         init();
     })
 })();
