@@ -1857,7 +1857,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 
                 // 임시 response 이미지 체크 루틴
                 //2021-03-10 정승우
-                var $imgsToLoad = $('img[data-pc-src][data-m-src]', self.$slider);
+                var $imgsToLoad = $('img[data-pc-src][data-m-src],img[data-lazy]', self.$slider);
                 $imgsToLoad.each(function () {
                     var image = $(this);
                     image.on('load', function (e) {

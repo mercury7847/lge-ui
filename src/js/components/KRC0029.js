@@ -14,7 +14,7 @@ $(window).ready(function(){
             nextArrow:'.btn-arrow.next',
             playSelector: '.btn-play.play',
             adaptiveHeight: true,
-            lazyLoad: 'progressive',
+            lazyLoad: 'anticipated' //수정 jsw
         });
     });
 });
