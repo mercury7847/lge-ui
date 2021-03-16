@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fec732;
+      }
+
+      .cls-2 {
+        fill: #0d1824;
+        font-size: 14px;
+        font-family: Helvetica-Bold, Helvetica;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+    </style>
+  </defs>
+  <g id="그룹_220" data-name="그룹 220" transform="translate(-102 -355)">
+    <path id="패스_574" data-name="패스 574" class="cls-1" d="M10,0A10,10,0,1,1,0,10,10,10,0,0,1,10,0Z" transform="translate(102 355)"/>
+    <text id="P" class="cls-2" transform="translate(108 370)"><tspan x="0" y="0">P</tspan></text>
+  </g>
+</svg>
