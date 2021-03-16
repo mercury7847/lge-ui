@@ -11,6 +11,14 @@
             width:56px;
             height:56px;
             margin-bottom:16px;
+
+            @include mobile {
+                margin-bottom:8px;
+
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
             &:last-child {
                 margin-bottom:0;
             }
@@ -95,33 +103,11 @@
         text-align:left;
         white-space:nowrap;
         transition:all ease 0.5s;
-        // .icon {
-        //     position:absolute;
-        //     top:0;
-        //     right:0;
-        //     width:72px;
-        //     height:72px;
-        //     font-size:0;
-        //     text-align:center;
-        //     background:#fff;
-        //     transition:width ease 0.5s;
-        //     &:before {
-        //         content:'';
-        //         display:inline-block;
-        //         width:0;
-        //         height:100%;
-        //         vertical-align:middle;;
-        //     }
-        //     img {
-        //         display:inline-block;
-        //         width:48px;
-        //         height:48px;
-        //         vertical-align:middle;;
-        //     }
-        // }
+       
         .txt {
             @include textEllipsis;
-            padding-right: 44px;
+            width:100%;
+            padding-right: 40px;
         }
         &.off {
             width: 100%;
@@ -130,6 +116,7 @@
             padding-left:24px;
         }
         @include mobile {
+            padding-left:24px;
         }
     }
     @include mobile {
@@ -169,7 +156,7 @@
         }
         &.on {
             ul > li {
-                margin-bottom: 12px;
+                margin-bottom: 8px;
                 a {
                     opacity: 1;
                 }
@@ -203,10 +190,13 @@
             }
             &.on {
                 ul > li {
-                    margin-bottom:9px;
+                    margin-bottom:6px;
+                    &:last-child {
+                        margin-bottom:12px;
+                    }
                 }
                 .btn-fold {
-                    width:245px;
+                    width:248px;
                 }
             }
         }

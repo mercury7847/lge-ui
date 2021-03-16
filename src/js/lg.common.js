@@ -654,7 +654,8 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
@@ -710,7 +711,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     

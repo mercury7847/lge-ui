@@ -948,11 +948,17 @@
         margin-bottom: 40px;
     }
 }
+
 .rdo-wrap.btn-type3 input + label:before, .rdo-wrap.btn-type3 input:checked + label {
-    color:#000;
+    color:#da0f47;
 }
 .rdo-wrap.btn-type3 input + label:before, .rdo-wrap.btn-type3 input:checked + label:after {
     background: none;
     border-color:#da0f47;
-    
+}
+
+@include mobile {
+    .rdo-wrap.btn-type3 input + label span {
+        font-size:14px;
+    }
 }
