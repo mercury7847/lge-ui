@@ -757,12 +757,16 @@ var isApp = function(){
         removeCompareProd: function(categoryId, id){
             var self = this;
 
-            var compareStorage = self.getStorage(self.COMPARE_KEY);
-            compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
-                return item['id'] != id;
-            });
+            if(id) {
+                var compareStorage = self.getStorage(self.COMPARE_KEY);
+                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                    return item['id'] != id;
+                });
 
-            self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+            } else {
+                self.removeStorage(self.COMPARE_KEY, categoryId);
+            }
         },
 
         initCompareProd: function(categoryId){

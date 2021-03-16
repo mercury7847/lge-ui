@@ -488,9 +488,9 @@
                     position:fixed;
                     top:126px;
                 }
-                @include mobile {
-                    top:48px;
-                }
+                // @include mobile {
+                //     top:48px;
+                // }
 
                 .result-btn-wrap {
                     margin:0;
