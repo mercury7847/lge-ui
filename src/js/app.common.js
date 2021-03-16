@@ -29,16 +29,29 @@ $(document).ready(function() {
                 $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt">우리집에 어울리는 가전을 찾아보세요</span></a></div></div>');
                 //$("#quickMenu").prepend('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
                 //Quick메뉴 AR 버튼 이벤트
+                var LGEclickCNT = 0;
                 $(".btn-app-ar a").off("click").on({
                     click : function() {
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                            var obj = new Object();
-                            obj.command = "showAR";
-                            var jsonString= JSON.stringify(obj);
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            void android.openAR(null);
+                        $(this).addClass("active");
+
+                        if(LGEclickCNT > 0){
+                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                                var obj = new Object();
+                                obj.command = "showAR";
+                                var jsonString= JSON.stringify(obj);
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openAR(null);
+                            }
                         }
+                        LGEclickCNT++;
+                        setTimeout(function(){
+                            $(".btn-app-ar a").removeClass("active");
+                            LGEclickCNT = 0;
+                        }, 2000);
+                    },
+                    focusout : function(){
+                        LGEclickCNT = 0;
                     }
                 });
 
