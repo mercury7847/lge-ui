@@ -45,26 +45,36 @@ $(document).ready(function() {
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
                     $('.floating-menu.top').css({
-                        "position" : "static"
+                        "position" : "static",
+                        "right" : "20px",
+                        "bottom" : "24px"
+                        //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                     });
                 } else {
                     //$('.floating-menu.top').hide();
                     $('.floating-menu.top').css({
                         "position" : "absolute",
-                        "right" : 0
+                        "right" : 0,
+                        "bottom" : 0
+                        //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                     });
                 }
                 $(window).scroll(function(){
                     if ($(this).scrollTop() > 100) {
                         //$('.floating-menu.top').show();
                         $('.floating-menu.top').css({
-                            "position" : "static"
+                            "position" : "static",
+                            "right" : "20px",
+                            "bottom" : "24px"
+                            //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                         });
                     } else {
                         //$('.floating-menu.top').hide();
                         $('.floating-menu.top').css({
                             "position" : "absolute",
-                            "right" : 0
+                            "right" : 0,
+                            "bottom" : 0
+                            //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                         });
                     }
                 });
@@ -83,13 +93,8 @@ $(document).ready(function() {
                     $(".floating-wrap").addClass("app-LGEAPP");
                 }
                 /*
-                if(){
-                    //하단 탭바가 사라졌을 경우
-                    $(".floating-wrap").addClass("app-chng-pos");
-                }else{
-                    //하단 탭바가 나타났을 경우
-                    $(".floating-wrap").removeClass("app-chng-pos");
-                }
+                덮는 경우 : app-chng-pos
+                미는 경우 : app-chng-push-pos
                 */
             }
         }

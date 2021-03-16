@@ -628,6 +628,35 @@ var FilterLayer = (function() {
                     $selNum.text('');
                 }
             }
+        },
+
+        enableFilterList: function(filterList) {
+            var self = this;
+            var enableData = {};
+            filterList.forEach(function(filterItem, index) {
+                var filterId = filterItem.filterId;
+                if(!enableData[filterId]) {
+                    enableData[filterId] = [];
+                }
+
+                enableData[filterId].push(filterItem.filterValueId);
+            });
+            
+            for(key in enableData){
+                var filterValues = enableData[key];
+                var findDm = self.$layFilter.find('li[data-filterid="'+key+'"]');
+                findDm.find('input').each(function(idx,input){
+                    var val = input.value;
+                    var arr = vcui.array.filter(filterValues, function(item, index) {
+                        return item == val;
+                    });
+                    if(arr.length > 0) {
+                        input.disabled = false;
+                    } else {
+                        input.disabled = true;
+                    }
+                });
+            }
         }
     }
     return FilterLayer;
