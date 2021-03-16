@@ -1440,12 +1440,12 @@ html {
                 }
                 &:hover,
                 &:active {
-                    width:309px;
+                    width:309px !important;
                     span {
                         display:none;
                     }
                     .app-ar-txt {
-                        display:block;
+                        display:flex;
                     }
                 }
             }
