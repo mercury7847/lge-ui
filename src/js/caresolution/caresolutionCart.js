@@ -338,6 +338,15 @@
                 }, null, "html");
             },
 
+            //장바구니 카운트 갱신
+            requestCartCount: function() {
+                var self = this;
+                var ajaxUrl = self.$cartContent.attr('data-count-url');
+                if(ajaxUrl) {
+                    lgkorUI.requestCartCount(ajaxUrl);
+                }
+            },
+
             //아이템 삭제 (리스트로 전달)
             requestRemoveItem: function(items, seqs) {
                 var self = this;
@@ -348,6 +357,7 @@
                     self.updateList(result.data);
                     self.requestInfo();
                     $(window).trigger("toastshow", "선택한 제품이 삭제되었습니다.");
+                    self.requestCartCount();
                 });
             },
 
