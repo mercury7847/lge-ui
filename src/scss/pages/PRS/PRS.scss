@@ -43,9 +43,9 @@
 								display:inline-block;
 								.txt {
 									color:#fff;
-									font-size:56px;
+									font-size:52px;
 									font-weight:700;
-									line-height:72px;
+									line-height:70px;
 									small {
 										display:block;
 										padding-top:16px;
@@ -60,20 +60,20 @@
 							position:absolute;
 							right:0;
 							bottom:0;
-							padding-right:44px;
+							padding-right:60px;
 							color:#fff;
-							font-size:56px;
+							font-size:52px;
 							font-weight:700;
-							line-height:72px;
+							line-height:70px;
 							text-align:right;
 							&:after {
 								content:' ';
 								position:absolute;
 								right:0;
-								bottom:14px;
-								width:40px;
-								height:40px;
-								background:url('/lg5-common/images/PRS/btn-arrow-right-40.svg') no-repeat 0 0;
+								bottom:8px;
+								width:56px;
+								height:56px;
+								background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
 							}
 						}
 					}
@@ -720,6 +720,7 @@
 					.img {
 						a {
 							display:block;
+							text-align:center;
 							img {
 								max-width:200px;
 								width:100%;

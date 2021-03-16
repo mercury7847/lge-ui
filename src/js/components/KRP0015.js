@@ -35,6 +35,10 @@ $(window).ready(function(){
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 lgkorUI.setCompapreCookie(categoryId);
 
+                //비교하기 비우기
+                //2021-03-16
+                lgkorUI.removeCompareProd(categoryId);
+
                 var url = $(this).data('url');
                 if(url) {
                     location.href = url;
@@ -110,7 +114,8 @@ $(window).ready(function(){
                     if(leng < limit) closeCompareBox();
                     else{
                         if(isFirstOpen){
-                            isFirstOpen = false;
+                            //2021-03-16 리밋에 도달하는 갯수가 되면 매번 열려야 한다고 해서 수정
+                            //isFirstOpen = false;
                             openCompareBox();
                         } 
                     }
@@ -118,7 +123,7 @@ $(window).ready(function(){
                     var isOpen = $('.right-cont .more-arrow').hasClass('open');
                     if(!isOpen){
                         if(leng >= limit && isFirstOpen){
-                            isFirstOpen = false;
+                            //isFirstOpen = false;
                             openCompareBox();
                         } 
                     }

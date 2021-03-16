@@ -88,7 +88,11 @@ br.pc {
                 .slide-conts {
                     height:640px;
                     .bg {
-                        background-size:cover;
+                        background-size: cover;
+                        @include mobile {
+                            height: 100%;
+                            padding-bottom: 0;
+                        }
                     }
                     .slide-info-area {
                         top:80px;
@@ -102,9 +106,9 @@ br.pc {
                             display:inline-block;
                             .txt {
                                 color:#fff;
-                                font-size:56px;
+                                font-size:52px;
                                 font-weight:700;
-                                line-height:72px;
+                                line-height:70px;
                                 small {
                                     display:block;
                                     padding-top:16px;
@@ -119,48 +123,56 @@ br.pc {
                         position:absolute;
                         right:0;
                         bottom:0;
-                        padding-right:44px;
+                        padding-right:60px;
                         color:#fff;
-                        font-size:56px;
+                        font-size:52px;
                         font-weight:700;
-                        line-height:72px;
+                        line-height:70px;
                         text-align:right;
                         &:after {
                             content:' ';
                             position:absolute;
                             right:0;
-                            bottom:14px;
-                            width:40px;
-                            height:40px;
-                            background:url('/lg5-common/images/PRS/btn-arrow-right-40.svg') no-repeat 0 0;
+                            bottom:8px;
+                            width:56px;
+                            height:56px;
+                            background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
                         }
                     }
                 }
             }
         }
         .custom-indi-wrap {
-            bottom:20px;
+            bottom:24px;
+            right: 40px;
+            left: 40px;
             .custom-indis {
-                max-width:calc(100% - 44px);
-                vertical-align:middle;
+                max-width: (1380px + 30px);
                 .indis {
+                    width: 100%;
+                    table-layout: fixed;
                     li {
-                        width:120px;
+                        width: auto;
+                        padding: 0 15px;
                         &.on {
-                            width:868px;
+                            width: auto;
                         }
                     }
                 }
             }
             .indi-control {
-                margin:0 0 0 16px;
-                //border-radius:50%;
-                //background-color:#fff;
-                //opacity:.7;
-                //&:before, &:after {
-                //    height:12px;
-                //    background-color:#000;
-                //}
+                display: block !important;
+                position: absolute;
+                bottom: 16px;
+                right: 50%;
+                margin-right: -690px;
+                @media screen and (max-width: (1460px + 30px)) {
+                    right: 15px;
+                    margin-right: 0;
+                    @include mobile {
+                        right: 0;
+                    }
+                }
             }
         }
         .slide-controls {
@@ -185,10 +197,10 @@ br.pc {
                     .slide-conts {
                         height:460px;
                         .slide-info-area {
-                            top:50px;
-                            right:8px;
-                            bottom:50px;
-                            left:16px;
+                            top:40px;
+                            right:20px;
+                            bottom:102px;
+                            left:20px;
                             padding: 0;
                             .boxs {
                                 .txt {
@@ -205,8 +217,8 @@ br.pc {
                         }
                         .link {
                             padding-right:22px;
-                            font-size:20px;
-                            line-height:27px;
+                            font-size:16px;
+                            line-height:24px;
                             &:after {
                                 bottom:2px;
                                 width:20px;
@@ -221,7 +233,21 @@ br.pc {
                 display:none;
             }
             .custom-indi-wrap {
-                bottom:4px;
+                bottom: 20px;
+                right: 16px;
+                left: 16px;
+                max-width: none;
+                .custom-indis {
+                    margin: 0 -5px;
+                    .indis {
+                        li {
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                .indi-control {
+                    bottom: 20px;
+                }
             }
         }
     }

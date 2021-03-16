@@ -594,7 +594,7 @@ var isApp = function(){
 
         showLoading:function(msg){
             vcui.require(['ui/spinner'],function(){
-                var str = msg? msg : '데이터를 불러오는 중입니다.';
+                var str = msg? msg : '진행중입니다';
                 $('html').addClass('dim');
                 $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
                 $('body').vcSpinner({msg:str});
@@ -654,7 +654,8 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
@@ -710,7 +711,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     
@@ -757,12 +758,16 @@ var isApp = function(){
         removeCompareProd: function(categoryId, id){
             var self = this;
 
-            var compareStorage = self.getStorage(self.COMPARE_KEY);
-            compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
-                return item['id'] != id;
-            });
+            if(id) {
+                var compareStorage = self.getStorage(self.COMPARE_KEY);
+                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                    return item['id'] != id;
+                });
 
-            self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+            } else {
+                self.removeStorage(self.COMPARE_KEY, categoryId);
+            }
         },
 
         initCompareProd: function(categoryId){

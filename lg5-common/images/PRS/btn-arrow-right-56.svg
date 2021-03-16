@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+    <defs>
+        <filter id="bvr15ikowa" width="105.1%" height="119.4%" x="-2.5%" y="-9.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g filter="url(#bvr15ikowa)" transform="translate(-1704 -556) translate(0 119) translate(160 83)">
+                    <g>
+                        <g>
+                            <path d="M0 0H56V56H0z" transform="translate(1126 273) translate(418 81)"/>
+                            <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                                <path d="M0 0L15 17.5 0 35" transform="translate(1126 273) translate(418 81) translate(21 12.25)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

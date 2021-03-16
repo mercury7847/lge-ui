@@ -185,6 +185,7 @@
                                 temp.forEach(function(item) {
                                     data['keywords'].push(item);
                                 });
+                                self.$keywordInput.val(decodeURIComponent(searchObj.searchKeyword));
                                 self.$keywordWrap.find('.search-more').show();
                             }
                         } else {
