@@ -130,12 +130,14 @@
                                             "topBorder" : true,
                                             "bulletTxt" : [
                                                 '토요일은 12시 30분에 접수가 마감되오니 양해해 주시기 바랍니다.',
-                                                '각 센터 운영 시간이 상이할 수 있으니, <span class="point">해당 센터의 상세 정보를 꼭 확인하시기 바랍니다.</span>'
+                                                '각 센터 운영 시간이 상이할 수 있으니, 해당 센터의 상세 정보를 꼭 확인하시기 바랍니다.'
                                             ]
                                         })
+                                        <!-- 2021.03.16 <span class="point"></span> 삭제 -->
                                     </div>
 
-                                    <div class="tabs-wrap new-type ui_tab">
+                                    <!-- 2021.03.16 class="new-type" > "border-type left" 로 변경 -->
+                                    <div class="tabs-wrap border-type ui_tab left">
                                         <ul class="tabs">
                                             <li class="on"><a href="#tab1">지역<em class="blind">선택됨</em></a></li>
                                             <li><a href="#tab2">지하철 역</a></li>
@@ -275,9 +277,11 @@
                                         <div class="tb_row tb-row-bl">
                                             <table>
                                                 <colgroup>
-                                                    <col style="width:90px">
-                                                    <col style="">
-                                                    <col style="width:115px">
+                                                    <!-- 2021.03.16 인라인 스타일 삭제 class 추가  -->
+                                                    <col class="col01">
+                                                    <col class="col02">
+                                                    <col class="col03">
+                                                    <!-- //2021.03.16 인라인 스타일 삭제 class 추가  -->
                                                 </colgroup>
                                                 <thead>
                                                 <tr>
