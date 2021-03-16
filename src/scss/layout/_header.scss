@@ -1402,6 +1402,7 @@ html {
                 display:none;
                 font-size:14px;
                 line-height:22px;
+                white-space:nowrap;
                 &:after {
                     content:' ';
                     display:inline-block;
