@@ -403,8 +403,8 @@ CS.MD.search = function() {
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
                         self._setAutoComplete(result.searchList)
                         
-                        $('.autocomplete-box').show();
-                        $('.keyword-box').hide();
+                        self.$el.find('.autocomplete-box').show();
+                        self.$el.find('.keyword-box').hide();
 
                         self.$el.addClass('on');
                     }]);
@@ -412,8 +412,8 @@ CS.MD.search = function() {
                     self.$el.find('.search-error').hide();
                 } else {
                     self.$el.find('.autocomplete-box').find('ul').empty();
-                    $('.autocomplete-box').hide();
-                    $('.keyword-box').show();
+                    self.$el.find('.autocomplete-box').hide();
+                    self.$el.find('.keyword-box').show();
                     !self.isKeyword && self.$el.removeClass('on');
                 }
 
