@@ -384,10 +384,10 @@
                     <div class="scroll-wrap border-type ui_product_tab">
                         <div class="ui_smooth_tab">
                             <ul class="tabs">
-                                <li class="on"><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
-                                <li><a href="#tab2">베스트</a></li>
-                                <li><a href="#tab3">신혼부부 추천</a></li>
-                                <li><a href="#tab4">반려동물</a></li>
+                                <li class="on" data-ajax-url=""><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
+                                <li data-ajax-url=""><a href="#tab2">베스트</a></li>
+                                <li data-ajax-url=""><a href="#tab3">신혼부부 추천</a></li>
+                                <li data-ajax-url=""><a href="#tab4">반려동물</a></li>
                             </ul>
                         </div>
                         <div class="scroll-controls ui_smooth_controls">
@@ -460,7 +460,7 @@
 
                 <!-- Why 케어솔루션 -->
                 <div class="care-home-section why-care">
-                    <div class="slide-wrap ui_carousel_slider ui_carousel_1_slider">
+                    <div class="slide-wrap ui_carousel_slider">
                         <div class="indi-wrap">
                             <ul class="indi-conts ui_carousel_dots">
                                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -900,7 +900,7 @@
                     </div>
                     <div class="slide-wrap ui_carousel_m1_slider"><!-- 2021.03.15  ui_carousel_slider 삭제-->
                         <div class="indi-wrap">
-                            <ul class="indi-conts ui_carousel_dots">
+                            <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                             </ul>
                         </div>
@@ -929,8 +929,8 @@
                             </ul>
                         </div>
                         <div class="slide-controls">
-                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            <button type="button" class="btn-arrow prev ui_carousel_prev" style="display: none;"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_carousel_next" style="display: none;"><span class="blind">다음</span></button>
                         </div>
                     </div>
                 </div>

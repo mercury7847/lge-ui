@@ -31,6 +31,18 @@
 }
 /* //삭제 예정 */
 
+.container {
+    .page-header {
+        .btn-desc {
+            @include mobile {
+                .btn + .btn {
+                    margin-top:8px;
+                }
+            }
+        }
+    }
+}
+
 .support {
     .tooltip-wrap {
         &.share {
@@ -216,12 +228,14 @@
                 font-weight:normal;
             }
         }
+
         &.type-A {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 48px;
-            margin-bottom: 40px;
+            margin-top:10px;
+            margin-bottom: 60px;
             text-align: left;
             .text {
                 font-size: 16px;
@@ -233,6 +247,15 @@
             line-height: 1.42;
             padding: 24px;
             margin-bottom: 12px;
+        }
+        @include tablet {
+            &.type-A {
+                display: block;
+
+                .btn-link {
+                    margin-top: 12px;
+                }
+            }
         }
         @include mobile {
             padding: 20px;
@@ -249,13 +272,11 @@
             &.type-A {
                 display: block;
                 padding: 20px 24px;
-                margin-bottom: 32px;
+                margin:0;
                 .text {
                     font-size: 14px;
                 }
-                .btn-link {
-                    margin-top: 12px;
-                }
+               
             }
             &.type-B {
                 font-size: 18px;
@@ -300,6 +321,9 @@
                             }
 
                             .subtitle {
+                                &.gray {
+                                    color:#666;
+                                }
                                 strong {
                                     font-weight: bold;
                                 }
@@ -318,7 +342,7 @@
                     }
                     .accord-cont {
                         margin: 0 24px 24px 24px;
-                        padding: 20px 24px;
+                        padding: 24px 32px;
                         border-radius: 8px;
                         background-color: #f4f4f4;
                         display: none;

@@ -207,6 +207,11 @@
             } else {
                 return valueObject;
             }
+        },
+        backHistory: function(item) {
+            var url = $(item).attr('href');
+            url = url.split('?')[1];
+            history.replaceState(null, '', '?'+url);
         }
     }
 

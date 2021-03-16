@@ -493,6 +493,10 @@
             bindEvent: function() {
                 var self = this;
 
+                self.$cont.find('.result-box').on('click', '.item', function() {
+                    lgkorUI.backHistory(this);
+                });
+
                 self.$cont.on('complete', function(e, data) { 
                     var param = {
                         category: data.category,
