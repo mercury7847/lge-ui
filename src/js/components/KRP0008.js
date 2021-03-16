@@ -528,7 +528,7 @@
                     if(!loaded) {
                         self.$awardPopup.data('loaded', true);
                         if(typeof awards !== 'undefined' && awards.length > 0) {
-                            var arr = awards instanceof Array ? awards : [];
+                            var arr = awards instanceof Array ? awards.slice(0,4) : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
 
@@ -1061,7 +1061,7 @@
             bindPopupEvents: function() {
                 var self = this;
                 
-                $('article').on('click', 'button', function(e) {
+                $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
                     //console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
@@ -1484,6 +1484,7 @@
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
                                     if(isDirectBuy) {
+                                        $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
                                         $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
                                             location.href = url;
                                         });
@@ -1508,6 +1509,7 @@
                                 }
 
                                 if(isDirectBuy) {
+                                    $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
                                     $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
                                         lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
                                             console.log(result);
@@ -1520,7 +1522,7 @@
                                     });
                                 }
                             }
-                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",url,param);
+                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",param);
                         } else {
                             self.processProductBuy = $dm;
                         }
@@ -1552,46 +1554,48 @@
 
             //로그인 데이타 정보 가져오기
             getRewardInfo: function() {
-                var self = this;
-                var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
-                var param = {
-                    modelId: sendData.modelId
-                }
-                /*
-                if(!ajaxUrl) {
-                    //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
-                    ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
-                }
-                */
-                if(ajaxUrl) {
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                        var data = result.data[0];
-                        //로그인
-                        loginFlag = data.loginFlag;
-                        
-                        //보유멤버쉽 포인트
-                        var myMembershipPoint = data.myMembershipPoint;
-                        if(lgkorUI.stringToBool(loginFlag)) {
+                if(typeof sendData !== 'undefined') {
+                    var self = this;
+                    var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
+                    var param = {
+                        modelId: sendData.modelId
+                    }
+                    /*
+                    if(!ajaxUrl) {
+                        //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
+                        ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
+                    }
+                    */
+                    if(ajaxUrl) {
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                            var data = result.data[0];
                             //로그인
-                            self.$benefitInfoPopup.find('.price-info.point').hide();
-                            var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');
-                            $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
-                            $pointMember.show();
-                        } else {
-                            //로그인 아님
-                            self.$benefitInfoPopup.find('.price-info.point').show();
-                            self.$benefitInfoPopup.find('.price-info.point.member').hide();
-                        }
-                        
-                        if(self.$component.data('consumables')) {
-                            self.consumables.init(data);
-                        }
+                            loginFlag = data.loginFlag;
+                            
+                            //보유멤버쉽 포인트
+                            var myMembershipPoint = data.myMembershipPoint;
+                            if(lgkorUI.stringToBool(loginFlag)) {
+                                //로그인
+                                self.$benefitInfoPopup.find('.price-info.point').hide();
+                                var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');
+                                $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
+                                $pointMember.show();
+                            } else {
+                                //로그인 아님
+                                self.$benefitInfoPopup.find('.price-info.point').show();
+                                self.$benefitInfoPopup.find('.price-info.point.member').hide();
+                            }
+                            
+                            if(self.$component.data('consumables')) {
+                                self.consumables.init(data);
+                            }
 
-                        self.loginCheckEnd = true;
-                        if(self.processProductBuy) {
-                            self.productBuy(self.processProductBuy);
-                        }
-                    }, true);
+                            self.loginCheckEnd = true;
+                            if(self.processProductBuy) {
+                                self.productBuy(self.processProductBuy);
+                            }
+                        }, true);
+                    }
                 }
             },
 

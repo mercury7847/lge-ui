@@ -6,9 +6,9 @@
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
                 '</div>' +
-                '<p class="tit">{{topic}}{{#if (modelCode)}} &gt; {{subTopic}}{{/if}}</p>' +
+                '<p class="tit">{{topic}} &gt; {{subTopic}}</p>' +
                 '<ul class="options">' +
-                    '<li>{{category}} &gt; {{subCategory}}{{#if (modelCode)}} : {{modelCode}} {{/if}}</li>' +
+                    '<li>{{category}}{{#if (modelCode)}} &gt; {{subCategory}} : {{modelCode}} {{/if}}</li>' +
                     '<li>접수번호 {{registNumber}}</li>' +
                     '<li>접수일 {{registDate}}</li>' +
                 '</ul>' +

@@ -950,7 +950,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$prevArrow && self.$prevArrow.length) {
 
-                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.prevArrow)) {
                     self.$prevArrow.remove();
@@ -959,7 +959,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$nextArrow && self.$nextArrow.length) {
 
-                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.nextArrow)) {
                     self.$nextArrow.remove();
@@ -1798,6 +1798,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (rangeStart > 0) rangeStart--;
                     if (rangeEnd <= self.slideCount) rangeEnd++;
                 }
+                //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
+                if (rangeEnd <= self.slideCount) rangeEnd++;
             }
 
             loadRange = self.$slider.find('.' + _V.SLIDE).slice(rangeStart, rangeEnd);
