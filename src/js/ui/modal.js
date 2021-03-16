@@ -71,6 +71,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.add(modal);
             if (self.stack.length === 1) {
                 $(document).triggerHandler('modalfirstopen');
+                $('html, body').css({
+                    overflow:"hidden"
+                });
             }
         },
         _handleModalHidden: function _handleModalHidden(e) {
@@ -88,6 +91,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             } else {
                 self.active = null;
                 $(document).triggerHandler('modallastclose');
+                $('html, body').css({
+                    overflow:"visible"
+                });
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -282,12 +288,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         _hashchange:function _hashchange(e){
             var self = this;            
             var hash = window.location.hash;
-
-            
             if(hash.search(self.randomKey) < 0) {
-                //self.close();
+                self.close();
             }
-
         },
 
         _bindAria: function _bindAria() {

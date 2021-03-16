@@ -524,6 +524,14 @@ $(function () {
         }
 
         // 비디오 태그 처리
+        /*
+        <div class="img">
+            <img src="/lg5-common/images/MA/img-main-00.jpg"  data-pc-src="/lg5-common/images/MA/img-main-00.jpg" data-m-src="/lg5-common/images/MA/img-main-00-m.jpg" alt="">
+            <!-- 동영상 가이드 -->
+            <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
+        </div>
+        */
+
         function updateVideo(video) {
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),

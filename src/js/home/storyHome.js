@@ -303,8 +303,6 @@
                     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
                 }
 
-                console.log(sectionItem);
-                
             } else{
                 sectionItem.hide();
                 lgkorUI.hideLoading();

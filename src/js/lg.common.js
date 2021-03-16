@@ -430,9 +430,9 @@ var isApp = function(){
                             //this.$('.pop_contents').attr('tabindex', 0);
                             //console.log(this);
 
-                            $('html, body').css({
-                                overflow:"hidden"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"hidden"
+                            // });
     
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
@@ -449,9 +449,9 @@ var isApp = function(){
                             }
                         },
                         modalhidden: function(e){
-                            $('html, body').css({
-                                overflow:"visible"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"visible"
+                            // });
                         }
                     }
                 });
@@ -600,7 +600,7 @@ var isApp = function(){
                 if($target[0]){
                     $target.vcSpinner({msg:str, position:'absolute'}).vcSpinner('spin'); 
                 }else{
-                    $('html').addClass('dim');
+                    // $('html').addClass('dim');
                     $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
                     $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
                 }
@@ -618,7 +618,7 @@ var isApp = function(){
                     $target.vcSpinner('stop');
                 }else{
                     $('.loading_dim').remove();
-                    $('html').removeClass('dim');
+                    // $('html').removeClass('dim');
                     $('body').vcSpinner('stop');
                 }
                 
