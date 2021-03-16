@@ -227,6 +227,11 @@
             window.open(_url);
             e.preventDefault();
         })
+
+        $(document).on('click', '.btn-page-close', function(e){
+            window.close();
+            e.preventDefault();
+        })
         
     });
 })();

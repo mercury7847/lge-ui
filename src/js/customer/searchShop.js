@@ -875,6 +875,9 @@
 
             var listheight = containerHeight - scheight - optheight - resultheight - titheight - paddingtop;
 
+            var contop = self.$defaultListContainer.offset().top;
+            listheight = self.windowHeight - contop - self.$optionContainer.height();
+
             $scrollWrap.height(listheight);
         },
 
