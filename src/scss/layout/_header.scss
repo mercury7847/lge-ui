@@ -1435,6 +1435,9 @@ html {
                 &.app-chng-pos {
                     bottom:24px;
                 }
+                &.app-chng-push-pos {
+                    bottom:24px;
+                }
             }
             //노치 없음
             &.app-LGEAPP-io {
@@ -1442,11 +1445,17 @@ html {
                 &.app-chng-pos {
                     bottom:24px;
                 }
+                &.app-chng-push-pos {
+                    bottom:24px;
+                }
             }
             //안드로이드
             &.app-LGEAPP {
                 bottom:95px;
                 &.app-chng-pos {
+                    bottom:24px;
+                }
+                &.app-chng-push-pos {
                     bottom:24px;
                 }
             }
