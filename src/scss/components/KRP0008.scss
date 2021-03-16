@@ -526,6 +526,44 @@
                 vertical-align: middle;
             }
             .review-info {
+                .star-rating-wrap {
+                    display:inline-block;
+                    height:24px;
+                    font-size:14px;
+                    line-height:24px;
+                    @include mobile {
+                        line-height:18px;
+                    }
+                    &:before {
+                        content:' ';
+                        display:inline-block;
+                        width:1px;
+                        height:12px;
+                        margin:0 4px 0 6px;
+                        background-color:#ddd;
+                        vertical-align:-1px;
+                    }
+                    .star-inner {
+                        display:inline-block;
+                        margin-top:-2px;
+                        vertical-align:middle;
+                    }
+                    .star-inner,
+                    .star-rating {
+                        position:relative;
+                        width:80px;
+                        height:16px;
+                        background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
+                        background-repeat:no-repeat;
+                        background-size:80px 16px;
+                        .star-rating {
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                        }
+                    }
+                }
                 display: inline-block;
                 font-size: 0;
                 vertical-align: top;
