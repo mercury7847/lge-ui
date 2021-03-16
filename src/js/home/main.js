@@ -72,7 +72,7 @@ $(function () {
         '</div>';
     
 
-    vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
+    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
         /*
         var sceneArr = {
@@ -655,6 +655,8 @@ $(function () {
                     width : window.breakpoint.name=='pc'? 1920 : 720, 
                     height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
                 };
+
+                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
                 _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
                 totalHeight += itemHeight;
