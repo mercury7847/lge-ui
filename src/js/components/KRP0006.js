@@ -15,7 +15,7 @@
                 var $item = $(item);
                 $item.hide();
                 var modelID = $item.attr('data-model-id');
-                var sku = $item.attr('data-sku');
+                var biz = $item.attr('data-biz-type');
                 var ajaxUrl = $item.attr('data-response-url');
 
                 //모델아이디가 있으면 쿠키저장
@@ -29,7 +29,7 @@
 
                     var param = {
                         "modelID":modelID,
-                        "sku":sku
+                        "bizType":biz
                     }
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                         var data = result.data ? result.data : {};
