@@ -53,6 +53,7 @@ $(document).ready(function() {
                         */
                     },
                     focusout : function(){
+                        $(".btn-app-ar a").removeClass("active");
                         LGEclickCNT = 0;
                     }
                 });
