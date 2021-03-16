@@ -498,7 +498,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             if(self.options.isHash){
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 var hash = window.location.hash;
-                hash = hash.replace(hash, "#"+self.randomKey);
+                hash = hash.replace("#"+self.randomKey, '');
                 window.location.hash = hash;
             }
 
