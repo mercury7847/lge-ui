@@ -16,6 +16,25 @@
         }
     }
 
+    .note-box {
+        padding: 40px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        &-title {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .in-note-box {
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        @include mobile {
+            padding: 16px;
+        }
+    }
+
     /* pages */
     /* 공지사항 */
     &.notice {
@@ -136,25 +155,49 @@
         }
     }
 
-    .note-box {
-        padding: 40px;
-        background-color: #f4f4f4;
-        border-radius: 8px;
-        margin-bottom: 24px;
-        &-title {
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 1.5;
-            margin-bottom: 16px;
+    &.recycable-parts {
+        .note-box {
+            margin-bottom:80px;
         }
-        .in-note-box {
-            margin-top: 16px;
-            margin-bottom: 16px;
+
+        .board-top-search {
+            margin-bottom:64px;
+            .bullet-list {
+                margin-top:12px;
+            }
         }
+
         @include mobile {
-            padding: 16px;
+            .note-box {
+                margin-bottom:40px;
+            }
+    
+            .board-top-search {
+                margin-bottom:60px;
+
+                .input-wrap {
+                    input {
+                        padding-right:45px;
+                    }
+                }
+
+                .btn-search {
+                    width:50px;
+                }
+            }
+
+            .search-wrap {
+                .sort-search {
+                    .select-wrap {
+                        width:120px;
+                    }
+                }
+            }
         }
     }
+
+    
+    
 
     // 개인정보 처리 방침 개정안내
     .noticeViewWrap {
