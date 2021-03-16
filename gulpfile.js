@@ -361,7 +361,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/objetcollection/**", ["jsCompile:objet"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
