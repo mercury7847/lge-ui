@@ -273,8 +273,8 @@
         '<li><dl><dt>일반전화번호</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
         '<li><dl><dt>설치 주소</dt><dd>{{postcode}} {{maskingAddress}}</dd></dl></li>' +
         '<li><dl><dt>배송 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
-        '<li><dl><dt>설치장소</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
-        '<li><dl><dt>설치희망 일시</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
+        '<li><dl><dt>설치장소</dt><dd>{{installPlaceNm}}</dd></dl></li>' +
+        '<li><dl><dt>설치희망 일시</dt><dd>{{instReqDate}}</dd></dl></li>' +
         '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
@@ -1173,10 +1173,10 @@
                 if(Object.keys(data.payment).length){
                     console.log("### data.payment ###",data.payment)
                     var payment = data.payment;
-                    payment.orderPrice = vcui.number.addComma(payment.orderPrice);
-                    payment.discountPrice = vcui.number.addComma(payment.discountPrice);
-                    payment.memberShipPoint = vcui.number.addComma(payment.memberShipPoint);
-                    payment.totalPrice = vcui.number.addComma(payment.totalPrice);
+                    payment.orderPrice = vcui.number.addComma(payment.originalTotalPrice);
+                    payment.discountPrice = vcui.number.addComma(payment.discount);
+                    payment.memberShipPoint = vcui.number.addComma(payment.membershipPoint);
+                    payment.totalPrice = vcui.number.addComma(payment.grandTotal);
     
                     if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
                     if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;

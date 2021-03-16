@@ -422,10 +422,16 @@ $(function () {
         var isIOS = vcui.detect.isIOS;
 
         if(isApplication) {
-            if(isAndroid && android) android.showBottomMenuOver(true);
+            if(isAndroid && android) {
+                android.showBottomMenuOver(true);
+                android.setEnableScrollBottomMenu(false);
+            }
             if(isIOS){
                 var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+                var jsonString2= JSON.stringify({command:"setEnableScrollBottomMenu", value:"N"});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString2);
             }
         }
 
@@ -443,14 +449,14 @@ $(function () {
                 if (touchSy - data.y > 80) {
                     // console.log('down');
                     if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(true);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
                     }
                 } else if (touchSy - data.y < -80) {
                     // console.log('up');
                     if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(false);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
                     }
                 }
 

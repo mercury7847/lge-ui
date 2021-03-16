@@ -274,6 +274,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             self._bindAria(); // aria 셋팅
+
+
+        },
+
+        _hashchange:function _hashchange(e){
+            var self = this;            
+            var hash = window.location.hash;
+            if(hash.search(self.randomKey) < 0) {
+                self.close();
+            }
+
         },
 
         _bindAria: function _bindAria() {
@@ -413,6 +424,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     $(me.options.opener).attr('aria-controls', modalid);
                 }**********/
             });
+
+
+
+            window.removeEventListener("hashchange", this._hashchange.bind(this));
+            window.addEventListener("hashchange", this._hashchange.bind(this));
+
+            self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+            window.location.hash = self.randomKey;
+        
+        
+
         },
 
         /**
@@ -469,6 +491,10 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 self.destroy();
             });
+
+            window.removeEventListener("hashchange", this._hashchange.bind(this));
+            window.history.replaceState(null,null,' ');
+            
         },
 
         /**
@@ -694,6 +720,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
          * 닫기
          */
         close: function close() {
+
             this.hide();
         },
 

@@ -1,6 +1,6 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall;
-
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush;
+var LGEAPPclickCNT = 0;
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -26,21 +26,83 @@ $(document).ready(function() {
 
             if($(".main-wrap").length > 0){
                 //Quick메뉴 AR 버튼 추가
-                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
+                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt">우리집에 어울리는 가전을 찾아보세요</span></a></div></div>');
                 //$("#quickMenu").prepend('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
                 //Quick메뉴 AR 버튼 이벤트
                 $(".btn-app-ar a").off("click").on({
                     click : function() {
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                            var obj = new Object();
-                            obj.command = "showAR";
-                            var jsonString= JSON.stringify(obj);
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            void android.openAR(null);
+                        $(this).addClass("active");
+
+                        if(LGEAPPclickCNT > 0){
+                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                                var obj = new Object();
+                                obj.command = "showAR";
+                                var jsonString= JSON.stringify(obj);
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openAR(null);
+                            }
                         }
+                        LGEAPPclickCNT++;
+                        /*
+                        setTimeout(function(){
+                            $(".btn-app-ar a").removeClass("active");
+                            LGEAPPclickCNT = 0;
+                        }, 2000);
+                        */
+                    },
+                    focusout : function(){
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
                     }
                 });
+
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
+                    }
+                });
+                $(".section-cover").scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(".btn-app-ar a").removeClass("active");
+                        LGEAPPclickCNT = 0;
+                    }
+                });
+
+                //하단 탭바 덮는 경우
+                LGEquickMenuPosCover = function(bool){
+                    if(bool == "Y"){
+                        $('.floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }else{
+                        $('.floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }
+                }
+                //하단 탭바 미는 경우
+                LGEquickMenuPosPush = function(bool){
+                    $('.floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
+                    /*
+                    if(bool == "Y"){
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }else{
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }
+                    */
+                }
 
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
