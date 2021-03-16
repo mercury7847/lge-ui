@@ -1439,7 +1439,8 @@ html {
                     justify-content: center;
                     padding: 0;
                 }
-                &.active {
+                &:hover,
+                &:focus {
                     width:309px !important;
                     span {
                         display:none;
