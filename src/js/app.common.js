@@ -45,12 +45,21 @@ $(document).ready(function() {
                             }
                         }
                         LGEclickCNT++;
+                        /*
                         setTimeout(function(){
                             $(".btn-app-ar a").removeClass("active");
                             LGEclickCNT = 0;
                         }, 2000);
+                        */
                     },
                     focusout : function(){
+                        LGEclickCNT = 0;
+                    }
+                });
+
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(".btn-app-ar a").removeClass("active");
                         LGEclickCNT = 0;
                     }
                 });
