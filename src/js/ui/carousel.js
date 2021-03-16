@@ -1449,7 +1449,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            self.$playButon = self.$('.' + _V.PLAY);
+            self.$playButon = self.$('.' + _V.PLAY).show();
             if (self.$playButon.length) {
                 opt.pauseOnHover = true;
 
@@ -1466,6 +1466,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             if (self.$playButon.length) {
+
                 self.$slider.on(_N + 'play ' + _N + 'stop destory', function (e) {
                     var $items = self.$playButon.find('[data-bind-text]');
                     var state = e.type === _N + 'play' ? 'stop' : 'play';
