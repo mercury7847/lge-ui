@@ -1,0 +1,200 @@
+@charset "utf-8";
+
+/* Common */
+.ltsp0 {
+    letter-spacing:0 !important;
+}
+
+.btn {
+    display:block;
+    height:60px;
+    border-radius:6px;
+    line-height:60px;
+    font-family:'Nanum Myeongjo', sans-serif !important;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:8px;
+    text-align:center;
+}
+.btn:hover, .btn:focus{
+    text-decoration:none;
+}
+.btn span {
+    position:relative;
+}
+.btn.bg-yellow {
+    background-color:#fcc433;
+    color:#372906;
+}
+.btn.bg-gray {
+    background-color:#3e3934;
+    color:#978b7e;
+    letter-spacing:0;
+}
+.btn.bg-blue {
+    background-color:#2b2d75;
+    color:#fff;
+}
+.btn.bg-purple {
+    background-color:#685dd3;
+    color:#fff;
+}
+.btn.bg-purple[disabled] {
+    background-color:#efefef;
+    color:#888;
+}
+
+.input-wrap {
+    position:relative;
+}
+.input-wrap:before {
+    content:'';
+    position:absolute;
+    left:30px;
+    top:50%;
+    width:1px;
+    height:20px;
+    background-color:#13110f;
+    transform:translate(0, -50%);
+}
+.input-wrap input {
+    width:100%;
+    height:60px;
+    padding:10px 10px 5px 40px;
+    background-color:#fff;
+    border:0;
+    border-radius:6px;
+    font-family:'Noto Sans Myanmar', sans-serif;
+    font-weight:500;
+    font-size:20px;
+    /* line-height:60px; */
+    color:#574c40;
+}
+
+/* Header */
+#header {
+    position:relative;
+    height:57px;
+    background-color:#13110f;
+    z-index:10;
+}
+#header .inner {
+    position:relative;
+    height:inherit;
+    padding:0 60px;
+    background-color:inherit;
+}
+#header .btn-back {
+    display:inline-block;
+    position:absolute;
+    left:0;
+    top:0;
+    padding:18px 0 14px 20px;
+}
+#header .btn-back span {
+    overflow:hidden;
+    display:block;
+    width:40px;
+    height:25px;
+    text-indent:-9999px;
+    background:url(../images/icon/ico_back.png) no-repeat left top;
+    background-size:100%;
+}
+#header .btn-question {
+    display:inline-block;
+    position:absolute;
+    right:0;
+    top:0;
+    padding:18px 20px 14px 15px;
+}
+#header .btn-question span {
+    overflow:hidden;
+    display:block;
+    width:25px;
+    height:25px;
+    text-indent:-9999px;
+    background:url(../images/icon/ico_question.png) no-repeat left top;
+    background-size:100%;
+}
+#header h1 {
+    display:block;
+    overflow:hidden;
+    padding:20px 0 14px;
+    text-align:center;
+    font-weight:700;
+    font-size:18px;
+    line-height:23px;
+    color:#978b7e;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    letter-spacing:-0.025em;
+}
+
+/* Footer */
+#footer {
+    position:fixed;
+    left:50%;
+    bottom:0;
+    width:100%;
+    max-width:400px;
+    z-index:10;
+    transform:translate(-50%, 0);
+}
+#footer .inner {
+
+}
+
+#footer .btn-wrap {
+    min-height:80px;
+    background-color:#272522;
+    font-size:20px;
+    text-align:center;
+}
+#footer .btn-wrap > div {
+    display:flex;
+    padding:10px 20px;
+    justify-content:space-between;
+}
+#footer .btn-wrap .btn {
+    flex:1;
+}
+#footer .btn-wrap .btn + .btn {
+    margin-left:10px;
+    flex:2.8237;
+}
+.ext-footer #footer .btn-wrap > div {
+    padding:29px 20px 0;
+}
+.ext-footer #footer .btn-wrap .txt-area {
+    display:block;
+    padding:20px 20px 0;
+    height:60px;
+    text-align:center;
+    font-family:'Noto Sans Myanmar', sans-serif;
+    font-weight:600;
+    color:#978b7e;
+}
+.ext-footer #footer .btn-wrap .txt-area > a {
+    display:block;
+    color:#978b7e;
+    font-size:18px;
+    font-weight:500;
+    line-height:22px;
+    text-align:center;
+}
+.ext-footer #footer .btn-wrap .txt-area > a span {
+    display:inline-block;
+    border-bottom:1px solid #978b7e;
+}
+
+/* Container */
+#container {
+    padding:19px 0 115px;
+    -webkit-overflow-scrolling:touch;
+}
+#header + #container {
+    padding:0 0 130px;
+}
+.ext-footer #header + #container {
+    padding:0 0 200px;
+}
