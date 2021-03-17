@@ -272,9 +272,14 @@
         @include mobile {
             & > li {   
                 &.video-type {
+                    .item {
+                        padding-right:60px;
+                    }
                     .icon-movie {
-                        width:60px;
-                        height:60px;
+                        right:12px;
+                        width:24px;
+                        height:24px;
+                        background-size: cover;
                     }
                 }
                 .item {
