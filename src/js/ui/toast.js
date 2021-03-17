@@ -13,7 +13,7 @@ vcui.define('ui/toast', ['jquery', 'vcui'], function ($, core) {
     var Toast = core.ui('Toast', {
         bindjQuery: true,
         defaults: {
-            delaytime: 1500
+            delaytime: 3000
         },
 
         initialize: function initialize(el, options) {
