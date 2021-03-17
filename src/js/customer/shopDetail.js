@@ -105,8 +105,7 @@
                         cancelBtnName: "아니오",
                         okBtnName: "네",
                         ok: function(){
-                            location.href = loginUrl;
-
+                            window.opener.location.href = result.data.loginUrl;
                             window.close();
                         }
                     });

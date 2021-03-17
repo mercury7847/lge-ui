@@ -265,6 +265,7 @@ var isApp = function(){
         NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
+        HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
@@ -605,7 +606,7 @@ var isApp = function(){
                     $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
                 }
                 
-            })   
+            }); 
         },
 
     
