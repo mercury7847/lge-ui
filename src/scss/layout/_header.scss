@@ -118,12 +118,13 @@
         .btn-back {
             position: relative;
             display: inline-block;
-            width: 48px;
-            height: 35px;
-            padding: 5px 12px 6px;
-            background: url('/lg5-common/images/icons/btn-back-48.svg') no-repeat center center;
-            background-size: 24px;
+            padding: 6px 0 6px 36px;
+            background: url('/lg5-common/images/icons/btn-back-48.svg') no-repeat left 16px center;
+            background-size: 16px;
             vertical-align: top;
+            .text {
+                @include font(14px,22px);
+            }
         }
         //.nav-item {
         //    display: inline-block;
