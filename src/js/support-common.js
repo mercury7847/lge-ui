@@ -209,8 +209,13 @@
             }
         },
         backHistory: function(item) {
-            var url = $(item).attr('href');
-            url = url.split('?')[1];
+            var url;
+            if (item.constructor == Object) {
+                url = $.param(item);
+            } else {
+                url = $(item).attr('href');
+                url = url.substr(url.indexOf('?') + 1);
+            }
             history.replaceState(null, '', '?'+url);
         }
     }
@@ -516,7 +521,6 @@ CS.MD.commonModel = function() {
             '</a>' +
         '</div>';
 
-    var termsValidation;
     var myModel = [];
 
     function Plugin(el, opt) {
@@ -526,13 +530,11 @@ CS.MD.commonModel = function() {
             stepActiveClass: 'active',
             page: 1,
             total: 0,
-            register: {},
-            isRequest: true,
             selected: {
                 category: '',
-                categoryName: '',
+                categoryNm: '',
                 subCategory: '',
-                subCategoryName: '',
+                subCategoryNm: '',
                 modelCode: '',
                 productCode: '',
             },
@@ -545,17 +547,16 @@ CS.MD.commonModel = function() {
         self.options = $.extend({}, defaults, opt);
         
         self._initialize();
+        self._setting();
         self._bindEvent();  
     }
 
     Plugin.prototype = {
         _initialize: function() {
             var self = this;
-            var opts = self.options;
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
-            self.$stepTerms = self.$el.find('#stepTerms');
             self.$stepInquiry = self.$el.find('#stepInquiryType');
             self.$stepModel = self.$el.find('#stepModel');
             self.$stepInput = self.$el.find('#stepInput');
@@ -592,13 +593,15 @@ CS.MD.commonModel = function() {
             self.$modelNoData = self.$modelBox.find('.no-data');
 
             self.$modelPopup = $('#modelNamePopup');
+        },
+        _setting: function() {
+            var self = this;
+            var opts = self.options;
 
-            // 옵션
-            self.isDefault = $('#category').val() ? true : false;
-            self.subCategoryUrl = self.$searchArea.data('subCategoryUrl') || self.$modelBox.find('#categorySelect').data('ajax');
             self.modelUrl = self.$searchArea.data('modelUrl');
             self.resultUrl = self.$searchArea.data('resultUrl');
-            self.isRequest = opts.isRequest;
+            self.subCategoryUrl = self.$searchArea.data('subCategoryUrl');
+
             self.page = opts.page;
             self.totalCount = opts.totalCount;
             self.selected = opts.selected;
@@ -609,15 +612,15 @@ CS.MD.commonModel = function() {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val()
             };
+            self.selected.category = '1111';
+
             self.isModel = (self.selected.modelCode || self.selected.subCategory) ? true : false;
-            self.isPrivacy = (self.$stepTerms.length && self.$stepTerms.hasClass('active')) ? true : false
             
             lgkorUI.searchModelName();
 
-            self._initMyProduct();
-            self._initStepTerms();
+            self._setMyProduct();
             
-            if (self.isModel && !self.isPrivacy) {
+            if (self.isModel) {
                 if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
                     self.$el.find('#isMyProduct').val('Y');
                 }
@@ -659,7 +662,7 @@ CS.MD.commonModel = function() {
                 }
 
                 self.$selectedModelBar.show();
-                if (self.isDefault) {
+                if (self.isModel) {
                     if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
                         self.$el.find('#isMyProduct').val('Y');
                     }
@@ -690,8 +693,6 @@ CS.MD.commonModel = function() {
                 self.$el.find('#categoryNm').val(data.categoryName);
                 self.$el.find('#subCategory').val(data.subCategory);
                 self.$el.find('#subCategoryNm').val(data.subCategoryName);
-                
-                data.isRequest = false;
 
                 self.$el.trigger('complete', [data]);
             });
@@ -901,7 +902,6 @@ CS.MD.commonModel = function() {
 
                 self.selected = $.extend(self.selected, data);
 
-                data.isRequest = true;
                 self.$el.find('#category').val(data.category);
                 self.$el.find('#categoryNm').val(data.categoryName);
                 self.$el.find('#subCategory').val(data.subCategory);
@@ -1073,7 +1073,7 @@ CS.MD.commonModel = function() {
                 self._requestData();
             });
         },
-        _initMyProduct: function() {
+        _setMyProduct: function() {
             var self = this;
 
             if (!self.$myModelSlider.length) return;
@@ -1123,8 +1123,6 @@ CS.MD.commonModel = function() {
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
                 } else {
-                    data.isRequest = true;
-
                     self.$el.find('#category').val(data.category);
                     self.$el.find('#categoryNm').val(data.categoryName);
                     self.$el.find('#subCategory').val(data.subCategory);
@@ -1134,7 +1132,7 @@ CS.MD.commonModel = function() {
                     self.$el.find('#isMyProduct').val('Y');
                     self.$el.trigger('complete', [data, url]);
 
-                    if (data.modelCode) lgkorUI.recentlySearch.addCookie(data.modelCode);
+                    lgkorUI.recentlySearch.addCookie(data.modelCode);
                 }
             });
 
@@ -1156,54 +1154,6 @@ CS.MD.commonModel = function() {
                 }
             });
         },
-        _initStepTerms: function() {
-            var self = this;
-
-            if (!self.$stepTerms.length || !self.isPrivacy) return;
-
-            termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                privcyCheck: { msgTarget: '.err-block' }
-            }});
-
-            self.$stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
-                
-                if (result.success) {
-                    if ($('.contents.email-inquiry').length) {
-                        var url = location.search;
-
-                        if (url.indexOf("?") > -1) {
-                            var search = url.substring(1);
-                            var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-
-                            if (searchObj.parts) {
-                                $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
-                                return;
-                            } else if (searchObj.simple) {
-                                $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
-                                return;
-                            }
-                        }
-                    }
-
-                    if (self.isModel) {
-                        if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
-                            self.$el.find('#isMyProduct').val('Y');
-                        }
-                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
-                    } else {
-                        self.$myModelArea.show();
-                        self.next(self.$stepModel);
-                        self.$myModelSlider.vcCarousel('resize');
-                    }
-                    
-                    if (self.$selectedModelBar.length) {
-                        self.$selectedModelBar.show();
-                        self.focus(self.$selectedModelBar);
-                    }
-                }
-            });
-        },
         _resetFlexibleBox: function() {
             var self = this;
             var maxheight = 0;
@@ -1213,8 +1163,6 @@ CS.MD.commonModel = function() {
                     var flexiblebox = $(child).find('.info');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
                 });
-
-                // $(item).find('.slide-conts').height(maxheight);
             });
 
             self.$modelSlider.find('.slide-conts').height(maxheight);
@@ -1336,8 +1284,6 @@ CS.MD.commonModel = function() {
             var self = this;
             var opts = self.options;
 
-            self.isDefault = false;
-            self.isRequest = true;
             self.page = opts.page;
             self.totalCount = opts.totalCount;
             self.selected = {
@@ -1398,6 +1344,7 @@ CS.MD.commonModel = function() {
 
     CS.MD.plugin(pluginName, Plugin);
 }();
+
 
 CS.MD.calendar = function() {
     var dateUtil = vcui.date;
