@@ -680,5 +680,9 @@
     }
     @include mobile {
         padding: 60px 0;
+        p {
+            font-size:14px;
+            line-height:22px;
+        }
     }
 }
