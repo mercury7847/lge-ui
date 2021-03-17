@@ -185,6 +185,7 @@
                                 temp.forEach(function(item) {
                                     data['keywords'].push(item);
                                 });
+                                self.$keywordInput.val(decodeURIComponent(searchObj.searchKeyword));
                                 self.$keywordWrap.find('.search-more').show();
                             }
                         } else {
@@ -475,7 +476,9 @@
                 self.$selectTopic.vcSelectbox('update');
                 self.$selectSubTopic.vcSelectbox('update');
                 self.$keywordInput.val('');
+                self.$keywordInput.trigger('update');
                 self.$solutionsWrap.find('.search-more').hide();
+                self.$solutionsWrap.find('.search-error').hide();
                 self.$solutionsWrap.find('#research').prop('checked', false);
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
                 
@@ -489,6 +492,10 @@
             },
             bindEvent: function() {
                 var self = this;
+
+                self.$cont.find('.result-box').on('click', '.item', function() {
+                    lgkorUI.backHistory(this);
+                });
 
                 self.$cont.on('complete', function(e, data) { 
                     var param = {
@@ -511,6 +518,7 @@
 
                 self.$solutionsResult.find('.title .tit').on('click', '.btn-delete', function() {
                     self.$keywordInput.val('');
+                    self.$keywordInput.trigger('update');
                     self.param.keywords = [];
                     self.requestData('click');
                 });

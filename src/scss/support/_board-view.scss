@@ -10,14 +10,15 @@
         position:relative;
         &-head {
             padding-bottom:16px;
-            border-bottom:2px solid #222;
+            border-bottom:1px solid #666;
             .flag-wrap {
                 margin-bottom:2px;
             }
             .head {
                 &-title {
                     font-weight:$font-weight-bold;
-                    @include font-large-4;
+                    font-size:32px;
+                    line-height:1.63;
 
                     @include mobile {
                         font-size:24px;
@@ -31,7 +32,7 @@
                         float:left;
                         color:#000;
                         @include font-small;
-                        font-weight:500;
+                        font-weight:normal;
                         position:relative;
                         margin-left:8px;
                         padding-left:9px;
@@ -43,9 +44,6 @@
                             width:1px;
                             height:14px;
                             background:#ddd;
-                        }
-                        & + li {
-
                         }
                         .point {
                             color:#ec455a;
@@ -73,6 +71,21 @@
                         margin-top:10px;
                         display: block;
                         > li {
+                            &.category, &.topic {
+                                width:100%;
+                                margin-left:0;
+                                padding-left:0;
+                                &:before {
+                                    display: none;
+                                }
+                            }
+                            &.topic + li {
+                                margin-left:0;
+                                padding-left:0;
+                                &:before {
+                                    display: none;
+                                }
+                            }
                             & + li {
                                 &:before {
                                     height:10px;
@@ -118,7 +131,7 @@
             }
         }
         &-body {
-            padding:48px 0 80px;
+            padding:60px 0 120px;
             .view-content {
                 img {
                     max-width: 100%;
@@ -199,7 +212,7 @@
             &-label {
                 position: relative;
                 margin-right:64px;
-                color: #767676;
+                color: #666;
             }
             &-desc {
                 color:#000;

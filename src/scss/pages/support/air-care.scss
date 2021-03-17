@@ -5,6 +5,17 @@
 @import "../../utilities/mixins";
 
 .air-care {
+    &.air-care-result {
+        .cont-wrap {
+            > .btn-group {
+                margin-top:80px;
+
+                @include mobile {
+                    margin-top:60px;
+                }
+            }
+        }
+    }
     [data-format=alnum] {
         text-transform:uppercase;
     }
@@ -122,14 +133,20 @@
     }
     .paragraph-1 {
         margin-top: 16px;
-    }
-    .search-info.type-A{
-        margin-top:40px;
-    }
+        color:#666;
 
-    @include mobile {
-        .search-info.type-A{
-            margin-top:20px;
+        .btn-link {
+            margin-left:0;
+            font-size:14px;
+        }
+
+        .icon-download-btn {
+            color:#000;
+            text-decoration: underline;
+
+            .icon-download {
+                margin-left:4px;
+            }
         }
     }
 }
@@ -139,18 +156,49 @@
         &.air-care{
             .section-title{
                 .tit{
-                    font-size:14px;
+                    font-size:16px;
+                    margin-bottom:8px;
+                }
+
+                @include mobile {
+                    .tit {
+                        margin-top:43px;
+                        font-size:14px;
+                    }
+                }
+            }
+            .modal-gray-box {
+                @include mobile {
+                    padding:22px 20px;
+                }
+            }
+            .modal-gray-box-title {
+                @include mobile {
+                    font-size:20px;
+                    line-height:1.4;   
+                    text-align:left;
                 }
             }
             .gray-box{
-                font-size:14px;
-                line-height:24px;
-                padding:32px;
+                font-size:16px;
+                line-height:26px;
+                padding:29px 23px 27px;
+
+                @include mobile {
+                    font-size:14px;
+                    line-height:22px;
+                }
             }
             .text-box{
-                margin-bottom:12px;
-                font-size:14px;
-                color:#767676;
+                margin-bottom:4px;
+                font-size:16px;
+                line-height:1.63;
+                color:#000;
+                font-weight:normal;
+
+                @include mobile {
+                    font-size:14px;
+                }
             }
             .tbl-list{
                 th,td{

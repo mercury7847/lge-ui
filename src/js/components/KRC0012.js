@@ -12,7 +12,7 @@ $(window).ready(function(){
             prevArrow:'.btn-arrow.prev',
             nextArrow:'.btn-arrow.next',
             adaptiveHeight:true,
-            lazyLoad:'progressive'
+            lazyLoad:'anticipated' //수정 jsw
         });
     });
 })

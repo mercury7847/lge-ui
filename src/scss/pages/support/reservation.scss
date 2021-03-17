@@ -35,7 +35,8 @@
             .info {
                 color:#fff;
                 font-weight:700;
-                @include font-large;
+                font-size:18px;
+                line-height:28px;
                 span + span {
                     position:relative;
                     margin-left:12px;
@@ -52,9 +53,10 @@
                 }
             }
             .status {
-                margin-top:12px;
+                margin-top:16px;
                 color:#fff;
-                @include font-medium;
+                font-size:16px;
+                line-height:26px;
                 > span {
                     color:#fffd7c;
                 }
@@ -75,7 +77,7 @@
         }
         @include mobile {
             .box {
-                padding:20px 16px;
+                padding:16px;
             }
             .btn-center-link {
                 margin-top: 16px;
@@ -91,6 +93,8 @@
                 flex: 1;
                 padding-left:16px;
                 .info {
+                    font-size:14px;
+                    line-height:22px;
                     span {
                         display:block;
                         & + span {
@@ -104,6 +108,8 @@
                 }
                 .status {
                     margin-top:8px;
+                    font-size:13px;
+                    line-height:21px;
                 }
             }
         }
@@ -144,8 +150,11 @@
             float:left;
             .txt {
                 @include font-medium;
+                .date, .name {
+                    font-weight:bold;
+                }
                 .topic {
-                    color:#ff2e55;
+                    color:#000;
                     font-weight:400;
                 }
             }
@@ -315,7 +324,7 @@
             margin-bottom:40px;
             padding:32px 40px;
             border-radius:8px;
-            border:1px solid #ddd;
+            background: #f4f4f4;
             .tit {
                 display:block;
                 margin-bottom:16px;
@@ -357,8 +366,7 @@
                     padding-top:12px;
                 }
                 .b-txt {
-                    color:#767676;
-                    font-weight:500;
+                    font-weight:normal;
                 }
             }
             @include mobile {
@@ -387,8 +395,13 @@
             }
         }
         .center-result-wrap {
-            margin-top:48px;
+            margin-top:64px;
             .tb_row {
+                .col01 {width:90px;}
+                .col02 {width:auto;}
+                .col03 {width:115px;}
+
+
                 .info {
                     text-align:left;
                     label {
@@ -400,7 +413,7 @@
                         @include font-medium;
                     }
                     .address {
-                        color: #767676;
+                        color: #666;
                         @include font-small;
                     }
                 }
@@ -418,13 +431,29 @@
             }
             @include mobile {
                 margin-top:40px;
+
+                .tb_row {
+                    .col01 {width:53px;}
+                    .col02 {width:auto;}
+                    .col03 {width:75px;}
+
+                    table {
+                        thead {
+                            th {
+                                font-size:13px;
+                            }
+                        }
+                    }
+
+
+                }
             }
         }
         .tabs-wrap {
             margin-bottom:48px;
         }
         .tabs-contents {
-            &#tab3 {
+            &#tab-3 {
                 .select-wrap ,
                 .keyword-search {
                     flex:1;
@@ -662,7 +691,7 @@
             @include mobile {
                 display:block;
                 padding:0 16px;
-                margin-bottom:37px;
+                margin-bottom:40px;
                 .banner {
                     display:block;
                     padding:24px;
@@ -753,6 +782,7 @@
     .toggle-layer {
         display:none;
         margin-top:24px;
+        margin-bottom:40px;
         padding:24px 32px 64px;
         border:1px solid #ddd;
         border-radius:8px;
@@ -868,7 +898,7 @@
 
     @include pc {
         #authNo {
-            max-width: 45.5%;
+            max-width: 350px;
         }
     }
 
@@ -932,16 +962,38 @@
                     margin-top: 0;
                 }
                 .form-infos {
-                    margin-bottom: 20px;
+                    margin-bottom: 48px;
                 }
                 .tit-wrap {
-                    margin-bottom: 10px;
+                    margin-bottom: 24px;
+
+                    .tit {
+                        font-size:24px;
+                        line-height:1.63;
+                    }
                 }
                 .bullet-list {
                     &.top-border {
                         margin-top: 10px;
                         padding-top: 10px
                     }
+                }
+            }
+        }
+
+        @include mobile {
+            .pop-conts {
+                .section {
+                    .form-infos {
+                        margin-bottom:32px;
+                    }
+                    .tit-wrap {
+                        margin-bottom:12px;
+                        .tit {
+                            font-size:16px;
+                        }
+                    }
+
                 }
             }
         }

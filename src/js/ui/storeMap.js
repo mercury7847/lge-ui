@@ -70,7 +70,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '       </div>'+
                     '       <div class="btn-group">'+
                                 '{{#if consultFlag == "Y"}}'+
-                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 방문 예약</a>'+
                                 '{{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
@@ -146,7 +146,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         self._onSuccessGeolocation(e);
                     }, 
                     function(e){
-                        self._onErrorGeolocation();
+                        self._onErrorGeolocation(e);
                     }
                 );
             } else {
@@ -163,11 +163,18 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._setting(self.userLatitude, self.userLongitude);
         },
         
-        _onErrorGeolocation : function _onErrorGeolocation() {
+        _onErrorGeolocation : function _onErrorGeolocation(e) {
             var self = this;
 
+            var msg;
+            if(e){
+                msg = "[" + e.code + "]" + e.message;
+            } else{
+                msg = "현재 위치를 찾을 수 없습니다."
+            }
+
             lgkorUI.alert("", {
-                title: "현재 위치를 찾을 수 없습니다.",
+                title: msg,
                 ok: function(){
                     self._setting();
                 }

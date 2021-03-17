@@ -22,6 +22,7 @@
         right: 68px;
     }
 }
+
 .btn-search {
     position:absolute;
     top:0;
@@ -37,7 +38,13 @@
 }
 
 .keyword-search {
+    position: relative;
     text-align:center;
+    z-index:2;
+
+    .btn-delete {
+        display: none;
+    }
     &.default {
         .search-box {
             width:100%;
@@ -96,6 +103,9 @@
             background:#fff;
             box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
             // text-transform:uppercase;
+        }
+        .btn-delete {
+            display:none;
         }
         &.clear {
             input[type=text] {
@@ -472,7 +482,7 @@
         .form-col {
             flex:1;
             & + .form-col {
-                margin-top:28px;
+                margin-top:32px;
                 margin-left:0;
             }
         }
@@ -865,7 +875,7 @@
     } 
     .time-wrap {
         height:468px;
-        padding:25px 36px;
+        padding:25px 32px;
         border-radius:8px;
         box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         .box-desc {
@@ -947,6 +957,16 @@
     }
 }
 
-.rdo-wrap.btn-type3 input + label:before, .rdo-wrap.btn-type3 input + label:after {
+.rdo-wrap.btn-type3 input + label:before, .rdo-wrap.btn-type3 input:checked + label {
+    color:#da0f47;
+}
+.rdo-wrap.btn-type3 input + label:before, .rdo-wrap.btn-type3 input:checked + label:after {
     background: none;
+    border-color:#da0f47;
+}
+
+@include mobile {
+    .rdo-wrap.btn-type3 input + label span {
+        font-size:14px;
+    }
 }

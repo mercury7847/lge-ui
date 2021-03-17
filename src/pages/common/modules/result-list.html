@@ -186,9 +186,10 @@
                 </div>    
                 }  
                 @@if (context.btnB) { 
-                <div class="btn-area">   
+                <div class="btn-area">
+                    <!-- 210312 수정 [버튼 클래스 .size -> size-m 수정] -->
                     @@for ( var i=0; i < btnB.length; i++ ) {
-                    <button type="button" class="btn border size"><span>`+btnB[i]+`</span></button>
+                    <button type="button" class="btn border size-m"><span>`+btnB[i]+`</span></button>
                     }
                 </div>
                 }

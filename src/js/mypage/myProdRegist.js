@@ -154,7 +154,7 @@
                         self.$yearSelect.append('<option value="'+item+'">'+item+'</option>');
                     });
                     self.$yearSelect.vcSelectbox('update');
-                    self.thisYear = year[year.length-1];
+                    self.thisYear = year[0];
                 } else {
                     self.thisYear = "";
                 }
@@ -594,8 +594,11 @@
             self.$downloadPopup.on('click','div.search-input button.btn-search', function(e){
                 var param = {"page":1};
                 var search = self.$downloadSearch.val();
-                if(search) {
+                if(search && search.length > 0) {
                     param.search = search;
+                } else {
+                    lgkorUI.alert("", {title: "검색어를 입력하고 조회해 주세요."});
+                    return;
                 }
                 //if(search) {
                     self.$downloadSearch.data('search',search);
@@ -809,39 +812,48 @@
             });
         },
 
+        requsetOSData:function(param) {
+            var self = this;
+            var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
+                var selectedIndex = 0;
+
+                var data = result.data;
+                self.$selectOS.empty();
+                var arr = data instanceof Array ? data : [];
+                self.osList = arr;
+                if(arr.length < 2) {
+                    self.$selectOS.prop('disabled', true);
+                    //self.$selectOS.append('<option value="">없음</option>');
+                } else {
+                    self.$selectOS.prop('disabled', false);
+                }
+                    //self.$selectOS.append('<option value="">전체</option>');
+                arr.forEach(function(item, index){
+                    if(selectedOSValue == item.code) {
+                        selectedIndex = index;
+                    }
+                    self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
+                });
+                self.$selectOS.vcSelectbox('update');
+                self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
+            });
+        },
+
         requestDownloadData: function(param, selectOSUpdate, openDownloadPopup) {
             var self = this;
 
             //self.$downloadPopup.find('div.keyword-search .search-error').hide();
 
-            if(param.search) {
-                self.$downloadSearch.val(param.search);
-            }
-
-            var _id = self.$downloadPopup.attr('data-model-id');
-            if(_id) {
-                param.id = _id;
-            }
-            var sku = self.$downloadPopup.attr('data-model-code');
-            if(sku) {
-                param.sku = sku;
-            }
-
-            var ajaxUrl = self.$downloadPopup.attr('data-list-url');
-
-            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                var data = result.data;
-                var param = result.param;
-
-                self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
-                self.$downloadMainPage.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
-
-                //if(selectOSUpdate) {
-                    var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
-                    var selectedIndex = 0;
-
+            if(!self.osList) {
+                var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                    var data = result.data;
                     self.$selectOS.empty();
-                    var arr = data.osOption instanceof Array ? data.osOption : [];
+                    var arr = data instanceof Array ? data : [];
+                    self.osList = arr;
                     if(arr.length < 2) {
                         self.$selectOS.prop('disabled', true);
                         //self.$selectOS.append('<option value="">없음</option>');
@@ -849,54 +861,107 @@
                         self.$selectOS.prop('disabled', false);
                     }
                         //self.$selectOS.append('<option value="">전체</option>');
-                        arr.forEach(function(item, index){
-                            if(selectedOSValue == item.code) {
-                                selectedIndex = index;
-                            }
-                            self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
-                        });
-//                    }
+                    arr.forEach(function(item, index){
+                        self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
+                    });
                     self.$selectOS.vcSelectbox('update');
-                    if(selectOSUpdate) {
-                        self.$selectOS.vcSelectbox('selectedIndex',0,false);
-                    } else {
-                        self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
-                    }
-                //}
+                    self.$selectOS.vcSelectbox('selectedIndex',0,false);
 
-                arr = data.listData instanceof Array ? data.listData : [];
-                var $list = self.$downloadMainPage.find('div.download-list-wrap>ul');
-                $list.empty();
-                if(arr.length > 0) {
-                    arr.forEach(function(item, index) {
-                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                    self.requestDownloadData(param, selectOSUpdate, openDownloadPopup);
+                });
+            } else {
+                if(param.search) {
+                    self.$downloadSearch.val(param.search);
+                }
+
+                var _id = self.$downloadPopup.attr('data-model-id');
+                if(_id) {
+                    param.id = _id;
+                }
+                var sku = self.$downloadPopup.attr('data-model-code');
+                if(sku) {
+                    param.sku = sku;
+                }
+
+                //OS 또 갱신
+                self.requsetOSData(param);
+
+                var ajaxUrl = self.$downloadPopup.attr('data-list-url');
+
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                    var data = result.data;
+                    var param = result.param;
+
+                    self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
+                    self.$downloadMainPage.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
+
+                    //if(selectOSUpdate) {
+
                         /*
-                        var list = item.list;
-                        if(list) {
-                            list.forEach(function(item, index) {
-                                list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
+                        var selectedIndex = 0;
+
+                        self.$selectOS.empty();
+                        var arr = data.osOption instanceof Array ? data.osOption : [];
+                        if(arr.length < 2) {
+                            self.$selectOS.prop('disabled', true);
+                            //self.$selectOS.append('<option value="">없음</option>');
+                        } else {
+                            self.$selectOS.prop('disabled', false);
+                        }
+                            //self.$selectOS.append('<option value="">전체</option>');
+                            arr.forEach(function(item, index){
+                                if(selectedOSValue == item.code) {
+                                    selectedIndex = index;
+                                }
+                                self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
                             });
+    //                    }
+                        self.$selectOS.vcSelectbox('update');
+                        if(selectOSUpdate) {
+                            self.$selectOS.vcSelectbox('selectedIndex',0,false);
+                        } else {
+                            self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
                         }
                         */
-                        $list.append(vcui.template(downloadListItemTemplate, item));
-                    });
-                    self.$downloadMainPage.find('.no-data').hide();
-                    self.$downloadMainPage.find('div.desc-wrap p.desc').show();
-                    self.$downloadPopupPagination.show();
 
-                    $list.find('.ui_dropdown').vcDropdown();
-                } else {
-                    self.$downloadMainPage.find('.no-data').show();
-                    self.$downloadMainPage.find('div.desc-wrap p.desc').hide();
-                    self.$downloadPopupPagination.hide();
-                }
+                    //}
 
-                if(openDownloadPopup) {
-                    self.$downloadDetailPage.hide();
-                    self.$downloadMainPage.show();
-                    self.$downloadPopup.vcModal();
-                }
-            });
+                    arr = data.listData instanceof Array ? data.listData : [];
+                    var $list = self.$downloadMainPage.find('div.download-list-wrap>ul');
+                    $list.empty();
+                    if(arr.length > 0) {
+                        arr.forEach(function(item, index) {
+                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            /*
+                            var list = item.list;
+                            if(list) {
+                                list.forEach(function(item, index) {
+                                    list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
+                                });
+                            }
+                            */
+                            $list.append(vcui.template(downloadListItemTemplate, item));
+                        });
+                        self.$downloadMainPage.find('.no-data').hide();
+                        self.$downloadMainPage.find('div.desc-wrap p.desc').show();
+                        self.$downloadPopupPagination.show();
+
+                        $list.find('.ui_dropdown').vcDropdown();
+                    } else {
+                        self.$downloadMainPage.find('.no-data').show();
+                        self.$downloadMainPage.find('div.desc-wrap p.desc').hide();
+                        self.$downloadPopupPagination.hide();
+                    }
+
+                    if(openDownloadPopup) {
+                        self.$downloadDetailPage.hide();
+                        self.$downloadMainPage.show();
+                        self.$downloadPopup.vcModal();
+                    }
+                });
+            }
         }
     }
 

@@ -141,23 +141,22 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
         
         initialize: function initialize(el, options) {
             var self = this;
-
             if (self.supr(el, options) === false) {
                 return;
             }
             importCss();
-            self.spin();
         },
 
-        spin: function spin(msg) {
+        spin: function spin(options) {
             var self = this;
-            var opts = self.options;
+            var opts = $.extend(self.options, options);
 
             self.stop();
-            self.$contents = $('<div></div>');            
+
+            self.$contents = $('<div></div>');        
             self.$contents.attr('role', 'progressbar');
 
-            //var yp = (opts.msg && opts.msg != '')? 'calc('+opts.top+' - 20px)' : opts.top;
+            // var yp = (opts.msg && opts.msg != '')? 'calc('+opts.top+' - 20px)' : opts.top;
             
             self.$contents.css({
                 position: opts.position,
@@ -169,9 +168,8 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             });
 
             if(opts.className) self.$contents.addClass(opts.className);
-            self.$el.append(self.$contents);      
+            self.$el.append(self.$contents);             
             
-            if(msg) opts.msg = msg;
             self._build();
         },
 

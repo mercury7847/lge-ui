@@ -6,23 +6,24 @@
         .item {
             display: flex;
             flex-wrap: wrap;
-            min-height: 176px;
-            padding: 32px 48px;
-            align-items: center;
+            min-height: 172px;
+            padding: 16px 32px;
+            //align-items: center;
             border-radius: 8px;
             box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
             background-color: #ffffff;
             @include mobile {
-                min-height: 164px;
+                min-height: 138px;
                 align-items: flex-start;
-                padding: 28px 24px;
+                padding: 12px 20px 16px;
             }
             &.item-type2 {
-                min-height: 200px;
+                min-height: 153px;
+                padding: 24px 32px;
                 @include mobile {
                     display: block;
-                    min-height: 139px;
-                    //padding: 28px 24px;
+                    min-height: 142px;
+                    padding: 16px 20px;
                 }
             }
         }
@@ -39,17 +40,17 @@
             position: relative;
             width: 140px;
             //height: 140px;
-            margin-right: 40px;
+            margin-right: 32px;
             a {
                 display:block;
             }
             @include mobile {
                 position: absolute;
-                top: 28px;
-                left: 24px;
+                top: 12px;
+                left: 20px;
                 width: 110px;
                 //height: 110px;
-                margin-right: 20px;
+                margin-right: 16px;
             }
             img {
                 max-width: 100%;
@@ -117,9 +118,13 @@
                 overflow: hidden;
                 width: 140px;
                 //height: 105px;
+                > div {
+                    position: relative;
+                }
                 @include mobile {
                     width: 110px;
                     //height: 82.5px;
+                    top: 16px;
                 }
                 img.no-img {
                     width: 100%;
@@ -132,11 +137,15 @@
             flex: 1;
             justify-content: space-between;
             align-items: center;
+            .info-text {
+                align-self: start;
+                padding-top: 12px;
+            }
             @include mobile {
                 display: block;
                 .info-text {
                     min-height: 110px;
-                    padding-left: 130px;
+                    padding: 4px 0 0 126px;
                 }
             }
             .info-price {
@@ -144,12 +153,12 @@
                 flex-direction: column;
                 align-items: flex-start;
                 @include pc {
-                    min-width: 232px;
+                    min-width: 248px;
                     padding-left: 32px;
                     &:before {
                         position: absolute;
-                        top: 24px;
-                        bottom: 24px;
+                        top: 16px;
+                        bottom: 16px;
                         right: 280px;
                         width: 1px;
                         background-color: $color-border;
@@ -159,7 +168,7 @@
                 @include mobile {
                     display: block;
                     width: 100%;
-                    margin-top: 20px;
+                    margin-top: 12px;
                     padding-top: 12px;
                     border-top: 1px solid $color-border;
                     text-align: left;
@@ -173,21 +182,6 @@
                     }
                 }
                 .price-info {
-                    //&:only-child {
-                    //    .tit {
-                    //        display: none;
-                    //    }
-                    //    @include mobile {
-                    //        &.rental {
-                    //            justify-content: flex-end;
-                    //        }
-                    //        &.sales {
-                    //            .original + .price-in {
-                    //                justify-content: flex-end;
-                    //            }
-                    //        }
-                    //    }
-                    //}
                     &.rental {
                         @include mobile {
                             display: flex;
@@ -196,32 +190,34 @@
                     }
                     &.sales {
                         display: flex;
+                        align-items: flex-end;
                         @include pc {
                             flex-direction: row-reverse;
-                            align-items: flex-end;
-                            .original {
-                                margin: 0 0 0 8px;
-                            }
+                            justify-content: flex-end;
                         }
                         @include mobile {
-                            flex-direction: column-reverse;
-                            .original + .price-in {
-                                display: flex;
-                                justify-content: space-between;
-                                width: 100%;
+                            position: relative;
+                            justify-content: flex-end;
+                            .original,
+                            .price-in {
+                                display: inline-block;
                             }
-                            .original {
-                                margin: 0;
-                                text-align: right;
+                            .price-in {
+                                .tit {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    transform: translateY(-50%);
+                                }
                             }
                         }
                     }
                 }
             }
             .price-info + .price-info {
-                margin-top: 16px;
+                margin-top: 12px;
                 @include mobile {
-                    margin-top: 8px;
+                    margin-top: 5px;
                 }
             }
             .btn-area {
@@ -238,19 +234,15 @@
         }
         
         .flag-wrap {
-            margin-bottom: 8px;
+            margin-bottom: 2px;
         }
         .result-tit {
-            margin-bottom: 4px;
-            @include font-medium;
+            margin-bottom: 1px;
+            font-weight: 700;
+            @include font($font-medium,26px);
             color: $color-default;
-            font-weight: $font-weight-bold;
-            
             @include mobile {
-                //max-height: 46px;
-                margin-bottom: 6px;
-                font-size: 15px;
-                line-height: 23px;
+                @include font(15px,23px);
             }
             > a:first-child,
             > strong {
@@ -267,27 +259,38 @@
         .cs {
             display: block;
             margin-top: 4px;
-            @include font-medium;
+            font-weight: 400;
+            @include font($font-medium,26px);
             color: $color-default;
-            font-weight: $font-weight-regular;
             .cs-inner + .cs-inner {
                 margin-left: 4px;
                 &:before {
                     display: inline-block;
-                    content: '';
-                    width: 1px;
-                    height: 14px;
-                    background: #222;
+                    margin-right: 4px;
+                    content: '>';
                 }
+            }
+            @include mobile {
+                margin-top: 2px;
+                @include font(13px,21px)
             }
         }
         .item-type2 {
             .result-tit {
                 max-width: 680px;
                 max-height: 60px;
-                margin-bottom: 4px;
                 @include font-large-1;
-            } 
+            }
+            .result-info {
+                .info-text {
+                    padding-top: 0;
+                }
+                @include mobile {
+                    .info-text {
+                        min-height: 83px;
+                    }
+                }
+            }
         }
         @include pc {
             .sku {
@@ -295,14 +298,17 @@
             }
         }
         .info-btm {
-            margin-top: 20px;
+            margin-top: 12px;
             font-size: 0;
+            @include mobile {
+                margin-top: 6px;
+            }
             .text {
                 display: inline-block;
                 position: relative;
                 margin-right: 6px;
                 padding-right: 6px;
-                @include font-small;
+                @include font($font-small,24px);
                 &:last-child {
                     margin-right: 0;
                     padding-right: 0;
@@ -321,7 +327,8 @@
                 @include mobile {
                     display: block; 
                     margin-left: 0;
-                    padding-left: 0; 
+                    padding-left: 0;
+                    @include font($font-x-small,20px);
                     &:before,
                     &:not(:last-child):before {
                         display: none;
@@ -383,16 +390,17 @@
             display: -webkit-box;
             max-width: 680px;
             max-height: 52px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-overflow: clip;
             //text-overflow:ellipsis;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow:hidden;
-            @include font-medium;
+            @include font($font-medium,26px);
             color: $color-default;
             @include mobile {
                 max-height: 44px;
+                @include font(13px,21px);
             }
         }
         
@@ -403,7 +411,7 @@
             vertical-align: top;
             a {
                 display:block;
-                padding-bottom:10px;
+                //padding-bottom:10px;
             }
             @include mobile {
                 margin-right: 0;
@@ -433,6 +441,14 @@
                 margin: 0;
                 @include textEllipsis;
                 @include font-medium;
+                @include mobile {
+                    &.time {
+                        margin-top: 2px;
+                    }
+                }
+                span + span {
+                    margin-left: 8px;
+                }
             }
         }
         .shop-state {
@@ -440,6 +456,7 @@
             top: 24px;
             right: 32px;
             @include mobile {
+                top: 16px;
                 right: 20px;
             }
             span {
@@ -472,29 +489,40 @@
         .price-info {
             white-space: nowrap;
             .tit {
-                margin-bottom: 4px;
+                //margin-bottom: 4px;
                 @include font-x-small;
                 color: $color-default;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 22px;
+
+                }
             }
             .price {
                 display: inline-block;
                 vertical-align: bottom;
-                @include font-large-1;
+                @include font(16px,26px);
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
-                    font-size: 15px;
-                    line-height: 23px;
+                    @include font(14px,22px);
                 }
             }
             .original {
-                margin: 4px 8px 0 0;
+                margin-left: 8px;
                 vertical-align: bottom;
                 .price {
-                    @include font-small;
+                    font-weight: 400;
+                    @include font-x-small;
                     color: $color-gray-1;
                     text-decoration: line-through;
-                    font-weight: $font-weight-medium;
+                }
+                @include mobile {
+                    margin-right: 4px;
+                    margin-left: 0;
+                    .price {
+                        @include font(11px,19px);
+                    }
                 }
             }
         }
@@ -535,7 +563,7 @@
                 display: block;
                 padding: 24px 32px;
                 @include mobile {
-                    padding: 24px 20px;
+                    padding: 16px 20px;
                 }
             }
             .result-info {
@@ -546,7 +574,7 @@
                 @include mobile {
                     .info-text {
                         min-height: auto;
-                        padding-left: 0;
+                        padding: 0;
                     }
                 }
                 @include pc {
@@ -563,18 +591,23 @@
             .btn + .btn {
                 margin-left: 4px;
             }
+            @include mobile {
+                margin-top: 12px;
+            }
         }
     }
 
     &.support-list {
-        //.item {
-        //    @include mobile {
-        //        padding: 32px 24px;
-        //    }
-        //}
+        .item {
+            min-height: auto;
+            padding: 24px 32px;
+            @include mobile {
+                padding: 16px 20px;
+            }
+        }
         .info-btm {
             @include mobile {
-                margin-top: 12px;
+                margin-top: 6px;
                 .text {
                     display: inline-block;
                     margin-right: 6px;
@@ -585,25 +618,39 @@
                 }
             }
         }
+        .sku + .info-btm {
+            @include mobile {
+                margin-top: 12px;
+            }
+        }
+        .result-thumb {
+            margin: -8px 0;
+            //position: static;
+            & + .result-info {
+                padding: 4px 0 4px 32px;
+            }
+            @include mobile {
+                position: static;
+                margin: 0;
+                & + .result-info {
+                    padding: 0 0 0 16px;
+                }
+            }
+        }
         .result-info {
             @include clearfix;
-            //align-items: flex-end;
             @include mobile {
-                //flex-direction: row;
-                &:only-child {
-                    .info-text {
-                        padding-left: 0;
-                    }
+                .info-text {
+                    padding-left: 0;
                 }
             }
             .info-text {
                 flex: 1;
-                //width: 100%;
+                min-height: auto;
+                padding-top: 0;
             }
         }
         .btn-area {
-            //float: right;
-            //margin-top: -32px;
             align-self: center;
             @include mobile {
                 width: 100%;
@@ -620,10 +667,11 @@
             background-size: 100% 100%;
 
             @include mobile {
-                float: right;
-                width: 32px;
-                height: 32px;
-                margin-top: 24px;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                width: 17px;
+                height: 17px;
             }
            span {
                 display: inline-block;

@@ -153,6 +153,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
+                        zoom:14,
                         templates: {
                             infoWindow: 
                             '<div class="info-overlaybox">'+
@@ -213,7 +214,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self.$map = self.$mapContainer.vcCenterMap('instance');
 
                         if (sval) {
-                            self._loadStoreData(seq);
+                            self._loadStoreData(sval);
                         } else {
                             if (!vcui.detect.isMobile) { // pc device
                                 if (!self.isLogin) { // 비로그인
@@ -333,6 +334,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
+                e.stopPropagation();
                 self._openWindowPop(this)
             });
 
@@ -540,7 +542,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 });
                 self.$map.applyMapData(self.storeData);
                 self._setResultText();
-                if (seq) self.$map.selectedMarker(self.storeData[0].id);
+                if (seq) self.$map.selectInfoWindow(self.storeData[0].id);
 
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
@@ -786,7 +788,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     };
 
                     self.searchResultMode = init ? false : true;
-                    self.schReaultTmplID = "localSearch";
+                    self.schReaultTmplID = "userAddressSearch";
 
                     // self.$map.getAdressPositions(result.data.userAdress, callback);
                     self.searchAddressToCoordinate(result.data.userAdress, callback);
@@ -1114,6 +1116,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.waiting-state').hide()
                 $('html,body').scrollTop(self.$leftContainer.offset().top)
             }
+
+            $('html,body').stop().animate({
+                scrollTop : $('.map-container').offset().top
+            }, 400)
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산

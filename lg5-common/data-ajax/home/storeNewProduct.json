@@ -1,0 +1,95 @@
+{
+    "status":"success",
+    "message":"",
+    "data": {
+        "success": "Y",
+        "data" : [
+            {        
+
+                "productId": "65NANO99KNA",
+                "linkPath":"#1",
+                "imagePath" : "/lg5-common/images/PRS/img-new-product-list-01.jpg",
+                "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "1000000",
+                "isFlag" : "best",
+                "averageRating" : "4.2",
+                "reviewCount" : "1056",
+                "reviewLinkPath" : "#11"
+            },
+            {
+                "productId": "75NANO99KNA",
+                "linkPath":"#2",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t02.jpg",
+                "productName" : "전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "1000000",
+                "isFlag" : "energy",
+                "averageRating" : "4.1",
+                "reviewCount" : "1011",
+                "reviewLinkPath" : "#12"
+            },
+            {
+                "productId": "55NANO99KNA",
+                "linkPath":"#3",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t03.jpg",
+                "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "3000000",
+                "isFlag" : "best",
+                "averageRating" : "4.5",
+                "reviewCount" : "190",
+                "reviewLinkPath" : "#13"
+            },
+            {
+                "productId": "45NANO99KNA",
+                "linkPath":"#4",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t04.jpg",
+                "productName" : "LG TROMM 미니워시",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "4000000",
+                "isFlag" : "energy",
+                "averageRating" : "2.1",
+                "reviewCount" : "320",
+                "reviewLinkPath" : "#14"
+            },
+            {            
+
+                "productId": "35NANO99KNA",
+                "linkPath":"#5",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t05.jpg",
+                "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "1000000",
+                "isFlag" : "best",
+                "averageRating" : "3.1",
+                "reviewCount" : "10",
+                "reviewLinkPath" : "#15"
+            },
+            {
+                "productId": "25NANO99KNA",
+                "linkPath":"#6",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t06.jpg",
+                "productName" : "전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "1000000",
+                "isFlag" : "",
+                "averageRating" : "4.9",
+                "reviewCount" : "20",
+                "reviewLinkPath" : "#16"
+            },
+            {
+                "productId": "15NANO99KNA",
+                "linkPath":"#7",
+                "imagePath" : "/lg5-common/images/dummy/temp/img-new-product-list-t07.jpg",
+                "productName" : "LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "productOriginPrice" : "2000000",
+                "productPrice" : "3000000",
+                "isFlag" : "best",
+                "averageRating" : "5.0",
+                "reviewCount" : "11",
+                "reviewLinkPath" : "#17"
+            }
+        ]    
+    }
+}

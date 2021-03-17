@@ -12,7 +12,6 @@ var isApp = function(){
     if(isApp()) $('html').addClass('app');
 
     window.onload = function(){
-        console.log('lazy??????????? onload');
         vcui.require([
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
@@ -20,7 +19,6 @@ var isApp = function(){
             var $b = $('body');
             $b.vcLazyLoaderSwitch();
             $b.vcLazyLoader();
-            console.log('lazy???????????');
         });
     };
 
@@ -85,7 +83,6 @@ var isApp = function(){
             console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
-            console.log(location.hostname)
             if(location.hostname == "cms50.lge.co.kr") {
                 console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
@@ -268,16 +265,19 @@ var isApp = function(){
         NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
+        HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
         init: function(){
-            this._bindErrBackEvent();
-            this._addImgOnloadEvent();
-            this._preloadComponents();
-            this._addTopButtonCtrl();
-            this._createMainWrapper();
-            this._switchLinker();
+            var self = this;
+
+            self._bindErrBackEvent();
+            self._addImgOnloadEvent();
+            self._preloadComponents();
+            self._addTopButtonCtrl();
+            self._createMainWrapper();
+            self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
         },
@@ -431,9 +431,9 @@ var isApp = function(){
                             //this.$('.pop_contents').attr('tabindex', 0);
                             //console.log(this);
 
-                            $('html, body').css({
-                                overflow:"hidden"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"hidden"
+                            // });
     
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
@@ -450,9 +450,9 @@ var isApp = function(){
                             }
                         },
                         modalhidden: function(e){
-                            $('html, body').css({
-                                overflow:"visible"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"visible"
+                            // });
                         }
                     }
                 });
@@ -475,9 +475,7 @@ var isApp = function(){
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
-                            console.log(this)
                             if(data && data.content.find('.ui_carousel').length > 0) {
-                                console.log("ui_carousel")
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                             if(data && data.content.find('.ui_smooth_scrolltab').length>0){
@@ -595,21 +593,36 @@ var isApp = function(){
             });
         },
 
-        showLoading:function(msg){
+        showLoading:function(msg, target){
             vcui.require(['ui/spinner'],function(){
-                var str = msg? msg : '데이터를 불러오는 중입니다.';
-                $('html').addClass('dim');
-                $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
-                $('body').vcSpinner({msg:str});
-                $('body').vcSpinner('spin', str); 
-            })   
+                var str = msg? msg : '진행중입니다';
+                var $target = target instanceof $ ? target : $(target);
+
+                if($target[0]){
+                    $target.vcSpinner({msg:str, position:'absolute'}).vcSpinner('spin'); 
+                }else{
+                    // $('html').addClass('dim');
+                    $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
+                    $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
+                }
+                
+            }); 
         },
+
     
-        hideLoading:function(){
+        hideLoading:function(target){
             vcui.require(['ui/spinner'],function(){
-                $('.loading_dim').remove();
-                $('html').removeClass('dim');
-                $('body').vcSpinner('stop');
+
+                var $target = target instanceof $ ? target : $(target);
+
+                if($target[0]){
+                    $target.vcSpinner('stop');
+                }else{
+                    $('.loading_dim').remove();
+                    // $('html').removeClass('dim');
+                    $('body').vcSpinner('stop');
+                }
+                
             });
         },
 
@@ -657,7 +670,8 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
@@ -713,7 +727,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     
@@ -752,7 +766,7 @@ var isApp = function(){
                     return false;
                 }
             }
-            self.setStorage(self.COMPARE_KEY, compareStorage);
+            self.setStorage(self.COMPARE_KEY, compareStorage, true);
 
             return true;
         },
@@ -760,12 +774,16 @@ var isApp = function(){
         removeCompareProd: function(categoryId, id){
             var self = this;
 
-            var compareStorage = self.getStorage(self.COMPARE_KEY);
-            compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
-                return item['id'] != id;
-            });
+            if(id) {
+                var compareStorage = self.getStorage(self.COMPARE_KEY);
+                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                    return item['id'] != id;
+                });
 
-            self.setStorage(self.COMPARE_KEY, compareStorage);
+                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+            } else {
+                self.removeStorage(self.COMPARE_KEY, categoryId);
+            }
         },
 
         initCompareProd: function(categoryId){
@@ -788,12 +806,24 @@ var isApp = function(){
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
-        setStorage: function(key, value){
+        addEqualCompare: function(ids, url){
+            var self = this;
+
+            self.setCookie(self.COMPARE_COOKIE_NAME, ids);
+
+            location.href = url;
+        },
+
+        setStorage: function(key, value, isExtend){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
-            $.extend(storageData, value);
+            if(isExtend) {
+                $.extend(storageData, value);
+            } else {
+                storageData = value;
+            }
             sessionStorage.setItem(key, JSON.stringify(storageData));
 
             console.log("### setStorage ###", storageData)
@@ -1090,6 +1120,7 @@ var isApp = function(){
             ], function (Sharer) {
                 // 공유하기 헬퍼 빌드
                 Sharer.init({
+                    appKey: "ded59364395778ecf9b0c8d952eaf16b",
                     selector: '.sns-list > li >  a',
                     attr: 'data-link-name' // sns서비스명을 가져올 속성
                 });
@@ -1107,7 +1138,6 @@ var isApp = function(){
                 data : data,
                 timeout : 180000
             }).done(function (result) {
-
                 if(dtype != "json") {
                     if(callback && typeof callback === 'function') callback(result);
                     return;
@@ -1138,14 +1168,12 @@ var isApp = function(){
                             result.data = {"success" : "N"};
                         }
                         if(callback && typeof callback === 'function') callback(result); 
-                        else lgkorUI.hideLoading();
                     } else {
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
                             });
                         }
-                        lgkorUI.hideLoading();
                     }
                     return;
                 }
@@ -1159,7 +1187,6 @@ var isApp = function(){
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
-                    else lgkorUI.hideLoading();
                 } else {
                     var data = result.data;
                     //success가 비어 있으면 성공(Y) 라 친다
@@ -1176,20 +1203,15 @@ var isApp = function(){
                     */
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
-
-                        lgkorUI.hideLoading();
-
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
-                        else lgkorUI.hideLoading();
                     } 
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
-                lgkorUI.hideLoading();
             }).always(function() {
                 lgkorUI.hideLoading();
                 //console.log( "complete" );
@@ -1278,6 +1300,8 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            console.log("### requestCart ###", param);
+
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -1314,6 +1338,7 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+            console.log("### requestWish ###", param, wish);
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
@@ -1541,8 +1566,6 @@ var isApp = function(){
                         self.$subCategory.append(html).prop('disabled', false);
                         self.$subCategory.find('option[value="'+subCategory+'"]').prop('selected', true);
                         self.$subCategory.vcSelectbox('update');
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 searchModelName: function(category, subCategory) {
@@ -1561,8 +1584,6 @@ var isApp = function(){
                         $resultTxt.html(data.text);
                         $resultImg.attr('src', data.imgPath);
                         $resultImg.attr('alt', data.imageAlt);
-
-                        lgkorUI.hideLoading();
                     }, 'POST');
                 },
                 bindEvent: function() {
@@ -1672,6 +1693,108 @@ var isApp = function(){
                     }
                 },"GET", null, true);
             }
+        },
+
+        stringCompress:function(str, asArray) {
+            asArray = (asArray === true);
+            var i,
+                dictionary = {},
+                uncompressed = str,
+                c,
+                wc,
+                w = "",
+                result = [],
+                ASCII = '',
+                dictSize = 256;
+            for (i = 0; i < 256; i += 1) {
+                dictionary[String.fromCharCode(i)] = i;
+            }
+        
+            for (i = 0; i < uncompressed.length; i += 1) {
+                c = uncompressed.charAt(i);
+                wc = w + c;
+                //Do not use dictionary[wc] because javascript arrays
+                //will return values for array['pop'], array['push'] etc
+               // if (dictionary[wc]) {
+                if (dictionary.hasOwnProperty(wc)) {
+                    w = wc;
+                } else {
+                    result.push(dictionary[w]);
+                    ASCII += String.fromCharCode(dictionary[w]);
+                    // Add wc to the dictionary.
+                    dictionary[wc] = dictSize++;
+                    w = String(c);
+                }
+            }
+        
+            // Output the code for w.
+            if (w !== "") {
+                result.push(dictionary[w]);
+                ASCII += String.fromCharCode(dictionary[w]);
+            }
+            return asArray ? result : ASCII;
+        },
+
+        stringDecompress:function (str) {
+            var i, tmp = [],
+                dictionary = [],
+                compressed = str,
+                w,
+                result,
+                k,
+                entry = "",
+                dictSize = 256;
+            for (i = 0; i < 256; i += 1) {
+                dictionary[i] = String.fromCharCode(i);
+            }
+        
+            if(compressed && typeof compressed === 'string') {
+                // convert string into Array.
+                for(i = 0; i < compressed.length; i += 1) {
+                    tmp.push(compressed[i].charCodeAt(0));
+                }
+                compressed = tmp;
+                tmp = null;
+            }
+        
+            w = String.fromCharCode(compressed[0]);
+            result = w;
+            for (i = 1; i < compressed.length; i += 1) {
+                k = compressed[i];
+                if (dictionary[k]) {
+                    entry = dictionary[k];
+                } else {
+                    if (k === dictSize) {
+                        entry = w + w.charAt(0);
+                    } else {
+                        return null;
+                    }
+                }
+        
+                result += entry;
+        
+                // Add w+entry[0] to the dictionary.
+                dictionary[dictSize++] = w + entry.charAt(0);
+        
+                w = entry;
+            }
+            return result;
+        },
+
+        obj2HashString:function(obj) {
+            var compress = lgkorUI.stringCompress(JSON.stringify(obj));
+            //console.log(compress);
+            var result = compress.substring(1, compress.length-1);
+            //var result = compress;
+            return result;
+        },
+
+        hashString2Obj:function(str) {
+            var orig =  decodeURIComponent("{"+str+"}"); //"{"+str+"}";
+            //console.log(orig);
+            var decompress = lgkorUI.stringDecompress(orig);
+            var result = JSON.parse(decompress);
+            return result;
         },
 
         //크레마로그인

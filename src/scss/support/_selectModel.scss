@@ -157,7 +157,7 @@
                         position:absolute;
                         top:16px;
                         right:16px;
-                        padding:6px 12px;
+                        padding:5px 12px;
                         font-size:12px;
                         font-weight:500;
                         line-height:1;
@@ -201,7 +201,13 @@
                 .tit {
                     position:static;
                     white-space:normal;
+                    font-size:20px;
+                    line-height:1.4;
                     transform:translateX(0);
+
+                    strong {
+                        display: block;
+                    }
                 }
             }
             .my-product-slider {
@@ -221,7 +227,7 @@
                     }
                     &-box {
                         margin:0 12px;
-                        padding:28px 20px 24px;
+                        padding:34px 20px 30px;
                         .category {
                             height:24px;
                             margin-bottom:12px;

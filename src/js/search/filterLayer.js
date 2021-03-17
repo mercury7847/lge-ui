@@ -135,17 +135,27 @@ var FilterLayer = (function() {
                 e.preventDefault();
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
+
+                $('html, body').css({
+                    overflow:"hidden"
+                });
             });
 
             // 모바일 필터박스 닫기
             $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
                 e.preventDefault();
                 self.$layFilter.removeClass('open');
+                $('html, body').css({
+                    overflow:"visible"
+                });
             });
 
             // 모바일 필터박스 확인
             self.$layFilter.find('div.filter-btn-wrap button').on('click', function(e){
                 self.$layFilter.removeClass('open');
+                $('html, body').css({
+                    overflow:"visible"
+                });
                 self.triggerFilterChangeEvent();
             });
 
@@ -358,6 +368,7 @@ var FilterLayer = (function() {
             self.$layFilter.css('display', '');
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
+            var expands = [];
             var arr = data instanceof Array ? data : [];
             if(arr.length > 0) {
 
@@ -423,6 +434,8 @@ var FilterLayer = (function() {
                             }
                             break;
                     }
+
+                    if(item.defalutUnfoldFlag == "Y") expands.push(index);
                 });
                 self._filterBindCustomEvents();
             }
@@ -431,6 +444,8 @@ var FilterLayer = (function() {
 
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
+
+            for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
@@ -472,14 +487,15 @@ var FilterLayer = (function() {
 
             //필터 라디오버튼
             //2021-03-05 검색관련해서 수정.
+            /*
             self.$layFilter.find('.ui_filter_accordion input[type="radio"]').each(function(idx, el){
                 $(el).prop('checked', false);
             });
-            /*
+            */
+            //첫번쨰 라디오 버튼 선택
             self.$layFilter.find('.ui_filter_accordion input[type="radio"]:eq(0)').each(function(idx, el){
                 $(el).prop('checked', true);
             });
-            */
 
             //필터 체크박스
             self.$layFilter.find('.ui_filter_accordion input[type="checkbox"]').each(function(idx, el){
@@ -542,11 +558,13 @@ var FilterLayer = (function() {
                             if(findDm.length > 0) {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
+                                /*
                                 var index = findDm.parents('li').index();
                                 var $pa = findDm.parents('.ui_filter_accordion');
                                 $pa.vcAccordion('setOption','useAnimate',false);
                                 $pa.vcAccordion('expand',index);
                                 $pa.vcAccordion('setOption','useAnimate',true);
+                                */
                             }
                         });
 
@@ -563,6 +581,17 @@ var FilterLayer = (function() {
                         }
                     }
                 }
+
+                //체크된 버튼이 있는 항목 열어두기
+                var checkedRadio = self.$layFilter.find('.ui_filter_accordion input:checked');
+                checkedRadio.each(function(idx, findDm) {
+                    var $findDm = $(findDm);
+                    var index = $findDm.parents('li').index();
+                    var $pa = $findDm.parents('.ui_filter_accordion');
+                    $pa.vcAccordion('setOption','useAnimate',false);
+                    $pa.vcAccordion('expand',index);
+                    $pa.vcAccordion('setOption','useAnimate',true);
+                });
 
                 self.$layFilter.find('.ui_filter_accordion input[type=checkbox]:checked').each(function(idx,obj){
                     self.resetSelectFilterCount(obj);
@@ -598,6 +627,35 @@ var FilterLayer = (function() {
                 } else {
                     $selNum.text('');
                 }
+            }
+        },
+
+        enableFilterList: function(filterList) {
+            var self = this;
+            var enableData = {};
+            filterList.forEach(function(filterItem, index) {
+                var filterId = filterItem.filterId;
+                if(!enableData[filterId]) {
+                    enableData[filterId] = [];
+                }
+
+                enableData[filterId].push(filterItem.filterValueId);
+            });
+            
+            for(key in enableData){
+                var filterValues = enableData[key];
+                var findDm = self.$layFilter.find('li[data-filterid="'+key+'"]');
+                findDm.find('input').each(function(idx,input){
+                    var val = input.value;
+                    var arr = vcui.array.filter(filterValues, function(item, index) {
+                        return item == val;
+                    });
+                    if(arr.length > 0) {
+                        input.disabled = false;
+                    } else {
+                        input.disabled = true;
+                    }
+                });
             }
         }
     }

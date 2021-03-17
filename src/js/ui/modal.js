@@ -7,6 +7,11 @@
 vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
+    var isAndroid = core.detect.isAndroid;
+    var isIOS = core.detect.isIOS;
+    var isApplication = isApp(); // 앱에서 처리 못할때를 대비
+
+
     var $doc = $(document),
         $win = $(window),
         detect = core.detect,
@@ -71,6 +76,22 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.add(modal);
             if (self.stack.length === 1) {
                 $(document).triggerHandler('modalfirstopen');
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+
+                /* 앱에서 처리 못할때를 대비
+                if(isApplication) {
+                    if(isAndroid && android) {
+                        android.setEnableScrollBottomMenu(false);
+                    }
+                    if(isIOS){
+                        var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value:"N"});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }
+                }
+                */
+                
             }
         },
         _handleModalHidden: function _handleModalHidden(e) {
@@ -88,6 +109,21 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             } else {
                 self.active = null;
                 $(document).triggerHandler('modallastclose');
+                $('html, body').css({
+                    overflow:"visible"
+                });
+
+                /* 앱에서 처리 못할때를 대비
+                if(isApplication) {
+                    if(isAndroid && android) {
+                        android.setEnableScrollBottomMenu(true);
+                    }
+                    if(isIOS){
+                        var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value:"Y"});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }
+                }
+                */
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -196,7 +232,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             useTransformAlign: true,
             variableWidth: true, 
             variableHeight: true,
-            removeModalCss: false
+            removeModalCss: false,
+            isHash : true
         },
 
         events: {
@@ -274,6 +311,16 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             self._bindAria(); // aria 셋팅
+
+
+        },
+
+        _hashchange:function _hashchange(e){
+            var self = this;            
+            var hash = window.location.hash;
+            if(hash.search(self.randomKey) < 0) {
+                self.close();
+            }
         },
 
         _bindAria: function _bindAria() {
@@ -413,6 +460,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     $(me.options.opener).attr('aria-controls', modalid);
                 }**********/
             });
+
+            if(opts.isHash){
+                window.removeEventListener("hashchange", this._hashchange.bind(this));
+                window.addEventListener("hashchange", this._hashchange.bind(this));
+                self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+                window.location.hash += "#"+self.randomKey;
+            }
+            
+        
+        
+
         },
 
         /**
@@ -469,6 +527,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 self.destroy();
             });
+
+            
+
+            if(self.options.isHash){
+                window.removeEventListener("hashchange", this._hashchange.bind(this));
+                var hash = window.location.hash;
+                hash = hash.replace("#"+self.randomKey, '');
+                window.location.hash = hash;
+            }
+
+            
         },
 
         /**
@@ -694,6 +763,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
          * 닫기
          */
         close: function close() {
+
             this.hide();
         },
 

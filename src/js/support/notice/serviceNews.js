@@ -36,9 +36,11 @@
                 self.$pagination = $contents.find('.pagination');
                 self.$sortsWrap = $contents.find('.sorting-wrap');
                 self.$sortTotal = $contents.find('#count');
+                self.$sorttSelectWrap = self.$sortsWrap.find('.sort-select-wrap');
                 self.$sortSelect = $contents.find('.ui_selectbox');
                 self.$listWrap = $contents.find('.list-wrap');
                 self.$noData = $contents.find('.no-data');
+
 
                 self.params = {
                     'keyword': self.$searchWrap.find('#keyword').val(),
@@ -73,8 +75,12 @@
                     
                         self.$listWrap.show();
                         self.$noData.hide();
+                        //self.$pagination.show();
+                        //self.$sorttSelectWrap.show();
                     } else {
                         self.$listWrap.hide();
+                        //self.$sorttSelectWrap.hide();
+                        //self.$pagination.hide();
                         self.$noData.show();
                     }
 
@@ -84,6 +90,10 @@
             bindEvent: function() {
                 var self = this;
                 
+                self.$listWrap.on('click', 'a.item', function() {
+                    lgkorUI.backHistory(this);
+                });
+
                 self.$searchWrap.find('input[type="text"]').on('input', function() {
                     var val = $(this).val().trim();
 

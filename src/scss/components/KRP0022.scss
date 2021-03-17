@@ -4,10 +4,14 @@
 
 .KRP0022 {
 	.tabs-wrap {
-		max-width: 1380px;
+		max-width: 1380px + 80px;
 		margin: 0 auto 80px;
-		padding: 40px 0 0;
+		padding: 40px 40px 0;
 		text-align: left;
+		&:before {
+			right:40px;
+			left:40px;
+		}
 	}
 	.tab-contents {
 		max-width:1380px + 80px;

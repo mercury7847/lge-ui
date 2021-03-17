@@ -96,8 +96,6 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
                 return originStr;
             }
 
-            console.log("originStr :", originStr)
-
             maskingStr = originStr.toString().replace(originStr, originStr.toString().replace(/(\d{4})(\d{4})(\d{4})(\d{4})/gi,'$1-****-****-$4')); 
 
             return maskingStr;
@@ -147,8 +145,13 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
             if(self._checkNull(originStr) == true) return originStr;
 
             strLength = originStr.length;
-            maskingStr = originStr.replace(/(?<=.{1})./gi, "*");
-
+            if(strLength < 3){
+                maskingStr = originStr.substring(0,1) + originStr.substring(1).replace(/[\S]/g, "*");
+            } else {
+                maskingStr = originStr.substring(0,1) + originStr.substring(2).replace(/[\S]/g, "*");
+            }
+            // ie 호환성 관련 look behind 같은 regex 타입 사용 못함
+           // maskingStr = originStr.replace(/(?<=.{1})./gi, "*");
             if(strLength > 2){
                 lastStr = originStr.substr(strLength-1, 1);
                 maskingStr = maskingStr.substr(0, strLength-1) + lastStr;
@@ -168,8 +171,12 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
             strLength = originStr.length; 
             if(strLength < leng) return;
 
-            maskingStr = originStr.replace(new RegExp('(?<=.{' + leng + '}).', 'gi'), "*"); 
-
+            if(strLength < 5){
+                maskingStr = originStr.replace(/[0-9a-zA-Z]/g, "*");
+            } else {
+                maskingStr = originStr.substring(0,leng) + originStr.substring(leng).replace(/[\S]/g, "*");
+            }
+            //maskingStr = originStr.replace(new RegExp('(?<=.{' + leng + '}).', 'gi'), "*");
 
             return maskingStr;
         }

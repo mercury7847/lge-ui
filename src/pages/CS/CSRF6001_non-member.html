@@ -14,13 +14,15 @@
             <div class="contents support support-home">
 
                 <!-- 로그인 툴팁 -->
-                <div class="tooltip-login">
+                <!-- 2021.03.16 마크업 수정 -->
+                <a href="" class="tooltip-login">
                     <div class="tooltip-inner">
                         <p><strong>회원전용 서비스</strong>로 더 편리하게 이용할 수 있어요. </p>
-                        <a href="" class="btn-link">로그인</a>
+                        <span class="btn-link">로그인</span>
                         <button class="btn-tooltip-close"><span class="blind">접기</span></button>
                     </div>
-                </div>
+                </a>
+                <!-- //2021.03.16 마크업 수정 -->
                 <!-- //로그인 툴팁 -->
 
 
@@ -29,7 +31,7 @@
                     <div class="hero-container">
                         <div class="support-nav-container">
                             <div class="home-cont-top">
-                                <h2 class="cont-top-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h2>
+                                <h1 class="cont-top-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h1>
                                 <a href="#" class="btn-fast-support">빠른 제품지원</a>
                             </div>
                             <div class="slide-wrap ui_carousel_slider support-list-slider">
@@ -335,7 +337,8 @@
                                                         <dt class="tit"><label for="serviceUserName" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                         <dd class="conts">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="serviceUserName" placeholder="이름 입력" value="" name="serviceUserName" data-required="true" required disabled maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                                                <!-- 2021.03.17 disabled 삭제 -->
+                                                                <input type="text" id="serviceUserName" placeholder="이름 입력" value="" name="serviceUserName" data-required="true" required maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요." data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
                                                             </div>
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                         </dd>
@@ -346,8 +349,8 @@
                                                         <dt class="tit"><label for="servicePhoneNo" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                         <dd class="conts">
                                                             <div class="input-wrap">
-                                                                                                    <!-- 2021.02.10 type number로 수정, minlength, maxlength 추가-->
-                                                                <input type="number" id="servicePhoneNo" placeholder="휴대폰 번호 입력" value="" minlength="10" maxlength="11" name="servicePhoneNo" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" disabled required>
+                                                                <!-- 2021.03.17 disabled 삭제 -->
+                                                                <input type="number" id="servicePhoneNo" placeholder="휴대폰 번호 입력" value="" minlength="10" maxlength="11" name="servicePhoneNo" data-error-msg="휴대전화를 정확히 입력해주세요" data-pattern-msg="휴대전화를 정확히 입력해주세요" data-required="true" required>
                                                             </div>
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                         </dd>
@@ -371,14 +374,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" value="" id="serviceDetailAddress" name="serviceDetailAddress" placeholder="상세주소를 입력해주세요." disabled>
+                                                        <!-- 2021.03.17 placeholder 문구 변경 -->
+                                                        <input type="text" value="" id="serviceDetailAddress" name="serviceDetailAddress" placeholder="단독주택 등일 경우 층수 또는 호수 등을 입력 하세요." disabled>
                                                     </div>
                                                 </dd>
                                             </dl>
                                         </div>
                                         <div class="btn-wrap">
-                                            <!-- 2021.02.18 disabled 추가 -->
-                                            <button type="button" class="btn size-m btn-reservation disabled" disabled><span>예약하기</span></button>
+                                            <!-- 2021.03.17 disabled 삭제 -->
+                                            <button type="button" class="btn size-m btn-reservation"><span>예약하기</span></button>
                                         </div>
                                     </form>
                                 </div>

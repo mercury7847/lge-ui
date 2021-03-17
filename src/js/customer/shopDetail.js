@@ -96,14 +96,29 @@
                 checked: chk,
                 shopId: $(this).data("shopId")
             }
-            console.log(sendata)
+
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(bookMarkerUrl, sendata, function(result){
                 if(result.data.success == "N"){
-                    lgkorUI.alert("", {
-                        title: result.data.alert.title
+                    console.log("result.data.success")
+                    lgkorUI.confirm("로그인 후 이용가능 합니다.<br>로그인하시겠어요? ", {
+                        title: "",
+                        cancelBtnName: "아니오",
+                        okBtnName: "네",
+                        ok: function(){
+                            window.opener.location.href = result.data.loginUrl;
+                            window.close();
+                        }
                     });
                     
                     ipt.prop('checked', !chk);
+                } else {
+                    if(chk) {
+                        //추가
+                        $(window).trigger("toastshow","단골매장이 등록되었습니다.");
+                    } else {
+                        //삭제
+                        $(window).trigger("toastshow","단골매장이 해제되었습니다.");
+                    }
                 }
             });
         })

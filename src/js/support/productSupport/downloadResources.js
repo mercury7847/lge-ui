@@ -55,7 +55,7 @@
             '</div>' +
         '</li>' +
         '{{/each}}';
-        
+            
     var otherService = {
         template : 
             '<li>' +
@@ -559,6 +559,10 @@
             self.$driverBtn.on('click', function(e) {
                 var $error = self.$driverSec.find('.search-error');
                 var keyword = self.$driverKeyword.val().trim();
+                var $keywordBox = $(this).closest('.keyword-box');
+                var historyBox = $('<div class="search-history" />');
+                var $history = $('.search-history');
+                var oldSearch = '<div class="old-keyword">“<span class="color-3">' + keyword + '</span>” 검색 결과<button class="btn-clear-old"><span class="blind">삭제</span></button></div>';
 
                 if (keyword.length) { 
                     self.driverParam = $.extend(self.driverParam, {
@@ -567,10 +571,32 @@
                     });
                     self.searchDriverList();
                     $error.hide();
+
+                    if( $history.length ) {
+                        $history.html(oldSearch);
+                    } else {
+                        historyBox.append(oldSearch)
+                        $keywordBox.after(historyBox);
+                    }
+
                 } else {
                     $error.show();
                 }
             });
+
+            $(document).on('click', '.search-history .btn-clear-old', function(e){
+                var $this = $(this);
+                var $oldKeyword = $this.closest('.old-keyword');
+
+                $oldKeyword.remove();
+                $('.driver-inner-search .keyword-search .btn-delete').trigger('click');
+                self.driverParam = $.extend(self.driverParam, {
+                    keyword: "",
+                    page: 1
+                });
+                self.searchDriverList();
+            });
+
 
             self.$driverSec.find('#os').on('change', function() {
                 self.driverParam = $.extend(self.driverParam, {
@@ -611,7 +637,7 @@
             });
 
             // 다운로드 버튼 클릭
-            self.$driverSec.on('click', '.btn-download', function(e){
+            self.$cont.on('click', '.btn-download', function(e){
                 var $this = $(this);
                 var fileUrl = $this.attr('href');
                 var $item = $this.closest('li');
@@ -624,6 +650,19 @@
                     }
                     $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
                 }
+
+                // 테스트 
+                e.preventDefault();
+                $.ajax({
+                    type : "GET",
+                    url : fileUrl,
+                    dataType : 'json',
+                    timeout : 180000
+                }).done(function (result) {
+                    console.log(result)
+                }).fail(function(err){
+                    console.log('ajaxFail', err);
+                });
             })
 
             //이메일 주소 입력팝업 보내기 버튼 클릭시 

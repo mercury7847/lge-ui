@@ -31,10 +31,14 @@ $(window).ready(function(){
         function bindEvents(){
     
             $component.on('click', '.info-tab a', function(e){
-                e.preventDefault();
-        
-                var id = $(this).attr('href');
-                scrollMoved(id);
+				var id = $(this).attr('href');
+				var idx = id.indexOf("#iw_comp");
+				console.log("idx:",idx)
+				if(idx > -1){
+					e.preventDefault();
+			
+					scrollMoved(id);
+				}
 			});
 			
 			$onText.on('click', function(e){
@@ -69,34 +73,39 @@ $(window).ready(function(){
 				$component.find('.info-tab').each(function(idx, item){
 					var percent = 0, display;
 					var contID = $(item).find('a').attr('href');
-					var bar = $(item).find('a .bar');
-					var cont = $(contID);
-					if(cont.length){
-						var conty = cont.offset().top;
-						var contheight = cont.outerHeight(true);
 
-						if(!idx) conty -= $component.height();
-						
-						var endanchor = $(item).find('a').data('endTarget');
-						if(endanchor && $(endanchor).length){
-							var endy = $(endanchor).offset().top;
-							var endheight = $(endanchor).outerHeight(true);
-							contheight = endy - conty + endheight;
-						}
-		
-						var contop = -scrolltop + conty;
-						if(contop < topDistance){
-							var scrolldist = topDistance - contop;
-							percent = scrolldist / contheight * 100;
-		
-							if(percent > 100) percent = 0;
-						}
-						display = percent <= 0 ? 'none' : 'block';
-						bar.css({width: percent+"%", display: display});
-
-						if(display == "block") {
-							isAllHidden = false;
-							currentIdx = idx;
+					var contIDX = contID.indexOf("#iw_comp");
+					console.log("contIDX:", contIDX)
+					if(contIDX > -1){
+						var bar = $(item).find('a .bar');
+						var cont = $(contID);
+						if(cont.length){
+							var conty = cont.offset().top;
+							var contheight = cont.outerHeight(true);
+	
+							if(!idx) conty -= $component.height();
+							
+							var endanchor = $(item).find('a').data('endTarget');
+							if(endanchor && $(endanchor).length){
+								var endy = $(endanchor).offset().top;
+								var endheight = $(endanchor).outerHeight(true);
+								contheight = endy - conty + endheight;
+							}
+			
+							var contop = -scrolltop + conty;
+							if(contop < topDistance){
+								var scrolldist = topDistance - contop;
+								percent = scrolldist / contheight * 100;
+			
+								if(percent > 100) percent = 0;
+							}
+							display = percent <= 0 ? 'none' : 'block';
+							bar.css({width: percent+"%", display: display});
+	
+							if(display == "block") {
+								isAllHidden = false;
+								currentIdx = idx;
+							}
 						}
 					}
 				}); 
@@ -113,12 +122,6 @@ $(window).ready(function(){
 					$moreInfos.children().removeClass('active');
 					$moreInfos.children().eq(no).addClass('active');
 					$onText.text($moreInfos.children().eq(no).text());
-				}
-
-				if(isAllHidden) {
-					$component.hide();
-				} else {
-					$component.show();
 				}
             });
 		}
@@ -146,7 +149,11 @@ $(window).ready(function(){
 
 				var movtop = $(id).offset().top - topDistance;
 				
-                $('html, body').stop().animate({scrollTop:movtop}, 200);
+				$('html, body').stop().animate({scrollTop:movtop}, 200);
+				
+				if($moreInfos.data('isOpen')){
+					toggleTabList();
+				}
             }
         }
     

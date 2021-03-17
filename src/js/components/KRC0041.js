@@ -19,7 +19,7 @@ $(window).ready(function(){
                         slidesToShow: 1, 
                         slidesToScroll: 1,
                         adaptiveHeight:true,
-                        lazyLoad: 'progressive',
+                        lazyLoad: 'anticipated' //수정 jsw
                     }
                 }
             ]

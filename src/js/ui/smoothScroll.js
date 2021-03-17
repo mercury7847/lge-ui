@@ -165,9 +165,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             directionLockThreshold: 5,
             mouseWheelSpeed: 20,
             momentum: true,
-            autoCenterScroll: true,
-            prevButton: '',
-            nextButton: '',
+            autoCenterScroll: true,            
 
             bounce: true,
             bounceTime: 600,
@@ -180,9 +178,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             useTransition: true,
             useTransform: true,
             resizeRefresh: true
+            
         },
         selectors: {
-            scroller: '>*:first'
+            scroller: '>*:first',
+            prevButton: '',
+            nextButton: ''
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -215,6 +216,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self.$el.css('overflow', 'hidden');
             self.scrollerStyle = self.$scroller[0].style;
+
 
             self._initEvents();
             self.refresh();
@@ -259,7 +261,6 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$nextButton) {
                 self.$nextButton.prop('disabled', self.x === self.maxScrollX);
-
                 if (self.x === self.maxScrollX) {
                     self.$nextButton.addClass('disabled');
                 } else {
@@ -280,21 +281,22 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var opt = self.options;
 
-            if (opt.prevButton && opt.nextButton) {
-                (self.$prevButton = $(opt.prevButton)).on('click' + self.eventNS, function (e) {
+            //if (opt.prevButton && opt.nextButton) {
+                self.$prevButton.on('click' + self.eventNS, function (e) {
                     e.preventDefault();
                     self.prevPage();
                 });
 
-                (self.$nextButton = $(opt.nextButton)).on('click' + self.eventNS, function (e) {
+                self.$nextButton.on('click' + self.eventNS, function (e) {
                     e.preventDefault();
                     self.nextPage();
                 });
 
                 self.on('smoothscrollend', function (e, data) {
                     self._activateButtons();
+
                 });
-            }
+            //}
 
             self._handle(self.$wrapper, 'mousedown');
             self._handle(self.$wrapper, 'mouseleave');
@@ -464,13 +466,11 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
         prevPage: function prevPage() {
             var self = this;
-
             self.scrollTo(Math.min(0, self.x + self.wrapperWidth), 0, 200);
         },
 
         nextPage: function nextPage() {
             var self = this;
-
             self.scrollTo(Math.max(self.maxScrollX, self.x - self.wrapperWidth), 0, 200);
         },
 

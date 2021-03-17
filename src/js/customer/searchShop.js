@@ -11,7 +11,7 @@
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
-            '<div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
+            '<div class="store-info-list ui_marker_selector" tabindex="0">'+
                 '<div class="point-wrap">'+
                     '<div class="point {{selected}}">'+
                         '<span class="num">{{num}}</span>'+
@@ -192,17 +192,17 @@
                 self._toggleOptContainer();
             });
 
-            self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
-                var $target = $(e.currentTarget);
-                var id = $target.parent().data('id');
+            self.$defaultListLayer.on('click', 'li > .ui_marker_selector .tit-wrap, li > .ui_marker_selector .addr', function(e){
+                var id = $(this).closest('li').data('id');
                 
                 self.$map.selectedMarker(id);
             })
             .on('click', 'li > .ui_marker_selector .btn-detail', function(e){
                 e.preventDefault();
 
+                var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
                 var id = $(this).attr("href").replace("#", "");
-                void(window.open(self.detailUrl+id, "_blank", "width=1070, height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));
+                void(window.open(self.detailUrl+id, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));
             });
 
             self.$searchField.on('focus', function(e){
@@ -499,6 +499,12 @@
 
                         self.$optionContainer.css({y:0}).removeClass('open');
                     });
+
+                    if(window.breakpoint.isMobile){
+                        $('html, body').css({
+                            overflow: 'visible'
+                        });
+                    }
                 } else{
                     optop = self.$optionContainer.position().top;
 
@@ -507,6 +513,12 @@
                     self.$optionContainer.addClass('open');
 
                     self.$optionContainer.stop().css({y:optop}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+
+                    if(window.breakpoint.isMobile){
+                        $('html, body').css({
+                            overflow: 'hidden'
+                        });
+                    }
                 }
             }
         },
@@ -874,6 +886,9 @@
             */
 
             var listheight = containerHeight - scheight - optheight - resultheight - titheight - paddingtop;
+
+            var contop = self.$defaultListContainer.offset().top;
+            listheight = self.windowHeight - contop - self.$optionContainer.height();
 
             $scrollWrap.height(listheight);
         },

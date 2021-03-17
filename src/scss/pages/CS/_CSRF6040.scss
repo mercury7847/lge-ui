@@ -216,11 +216,9 @@
 
                     .btn-area {
                         @include csmobile {
-                            position: absolute;
-                            top:auto;
                             right:0;
+                            left: auto;
                             bottom:-59px;
-                            text-align:right;
                             @include mobile {
                                 top:auto;
                                 right:0;
@@ -377,7 +375,7 @@
                         display:table;
                         width:100%;
                         table-layout:fixed;
-                        cursor:pointer;
+                        //cursor:pointer; 2021-03-16
                         .point-wrap {
                             display:table-cell;
                             width:50px;
@@ -395,6 +393,7 @@
                             }
                             .tit-wrap {
                                 font-size:0;
+                                cursor:pointer;
                                 .name {
                                     display:inline-block;
                                     margin-right:8px;
@@ -437,6 +436,7 @@
                                 -moz-line-clamp:2;
                                 -ms-line-clamp:2;
                                 -webkit-line-clamp:2;
+                                cursor:pointer;
                                 @include csmobile {
                                     margin-top:12px;
                                     font-size:14px;
@@ -489,7 +489,7 @@
                     top:126px;
                 }
                 @include mobile {
-                    top:48px;
+                    top:0;
                 }
 
                 .result-btn-wrap {

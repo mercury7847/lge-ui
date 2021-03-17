@@ -205,7 +205,7 @@ var res = {
 		// },
 		"Page" : {
 			"공통(UTS)" : {
-				"통합검색(NS)" : {
+				"통합검색" : {
 					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
 					"검색결과 있음" : {
 						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
@@ -230,19 +230,19 @@ var res = {
 					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
 					"소식지 신청(NS)" : ["/html/UTS/COMF2004.html","","검수완료"]
                 },
-                "에러페이지(NS)" : {
+                "에러페이지" : {
                     "시스템 점검" : ["/html/UTS/COMF0001.html","","검수요청"],
                     "505Error/404Error" : ["/html/UTS/COMF0002.html","","검수요청"],
                     "공통 에러페이지" : ["/html/UTS/COMF0003.html","","검수요청"]
                 },
-				"이메일(NS)" : {
+				"이메일" : {
 					"주문완료(가상계좌)" : ["/html/UTC/OBSF9021_1.html","","검수완료"],
 					"주문완료(신용카드)" : ["/html/UTC/OBSF9021_2.html","","검수완료"],
 					"청약완료" : ["/html/UTC/OBSF9021_3.html","","검수완료"],
 					"계약서발급" : ["/html/UTC/OBSF9021_4.html","","검수완료"],
 				}
 			},
-			"B2C메인(MA,NS)" : {
+			"B2C메인(MA)" : {
 				"B2C메인" : ["/html/MA/MKTF1000.html","",""]
 			},
 			"스토어(PRS)" : {
@@ -265,13 +265,13 @@ var res = {
 				},
 				"LG 페이" : {
 					"LG 페이" : ["/html/STC/MKT5003.html","","검수완료"],
-					"LG 페이_영상 보기 팝업(NS)" : ["/html/STC/MKT5003_popup.html","","검수완료"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","검수완료"],
 					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","검수완료"],
 					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","검수완료"]
 				},
 				"LG 모바일 스위치" : {
 					 "모바일스위치란?" : ["/html/STC/MKT5006.html","","검수완료"],
-					 "타사 안드로이드 LG스마트 폰으로(NS)" : ["/html/STC/MKT5007.html","","검수완료"]
+					 "타사 안드로이드 LG스마트 폰으로" : ["/html/STC/MKT5007.html","","검수완료"]
 				}
 			},
 			// "스토리(STR)" : {
@@ -301,7 +301,7 @@ var res = {
 				//"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
 			"이벤트/멤버십(BMC)" : {
-				"이벤트(NS)" : {
+				"이벤트" : {
 					// "리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
 					"상세_종료(지난이벤트)" : ["/html/BMC/MKT4005.html","","검수완료"],
@@ -317,7 +317,7 @@ var res = {
 					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 					"케어솔루션_이벤트 응모 내역 조회" : ["/html/BMC/MKT4016.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 				},
-				"기획전(NS)" : {
+				"기획전" : {
 					// "리스트" : ["/html/BMC/OBS4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/OBS4002.html","","검수완료"],
 				},
@@ -327,13 +327,13 @@ var res = {
 					"멤버십 혜택" : ["/html/BMC/ACC4003.html","","검수완료"],
 					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
 					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
-					"카드혜택 팝업(NS)" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
+					"카드혜택 팝업" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
 				}
 			},
-			"마이페이지(MYS,NS)" : {
+			"마이페이지(MYS)" : {
 				"홈(서브메인)" : ["/html/MYS/ACCF7001.html","",""]
 			},
-			"마이페이지(MYC,NS)" : {
+			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
 					"주문/배송 조회(구매 리스트)" : ["/html/MYC/ACCF7002.html","","검수완료"],
 					"주문/배송 상세보기" : ["/html/MYC/ACCF7003.html","","검수완료"],
@@ -352,6 +352,7 @@ var res = {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
+					"계약현황-해지 상담 신청 내 팝업" : ["/html/MYC/ACCF7055_popup.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
 					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]
@@ -393,8 +394,8 @@ var res = {
 				"매장찾기" : {
 					"매장칮기 검색/결과 " : ["/html/CS/CSRF6040.html","","검수완료"],
 					"매장 상세(NS)" : ["/html/CS/CSRF6041.html","","검수완료"],
-					"위치정보제공동의 팝업(NS)" : ["/html/CS/CSRF6098.html","","검수완료"],
-					"현재위치정보 팝업(NS)" : ["/html/CS/CSRF6099.html","","검수완료"],
+					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
+					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {

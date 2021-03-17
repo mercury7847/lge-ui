@@ -151,7 +151,8 @@
             $('.map').vcCenterMap({
                 keyID: 'vsay0tnzme',
                 latitude : latitude,
-                longitude: longitude
+                longitude: longitude,
+                zoom:17
             }).on('mapinit', function(e){
                 map = $('.map').vcCenterMap('instance');
                 var marker = new naver.maps.Marker({
@@ -225,6 +226,11 @@
             var $this = $(this);
             var _url = $this.data('gotoUrl');
             window.open(_url);
+            e.preventDefault();
+        })
+
+        $(document).on('click', '.btn-page-close', function(e){
+            window.close();
             e.preventDefault();
         })
         

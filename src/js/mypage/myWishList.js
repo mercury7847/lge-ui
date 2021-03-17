@@ -34,11 +34,12 @@
         var wishList = {         
             init: function() {
                 var self = this;
-                vcui.require(['ui/pagination'], function () {
+                //vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
+                    self.listData = [];
                     self.requestData(/*{"page": 1}*/);
-                });
+                //});
             },
 
             setting: function() {
@@ -47,6 +48,7 @@
                 self.$list = self.$contents.find('div.info-tbl-wrap ul');
                 //self.$pagination = self.$contents.find('.pagination').vcPagination();
                 self.$noData = self.$contents.find('.no-data');
+                self.$moreButton = self.$contents.find('button.btn-moreview');
             },
 
             bindEvents: function() {
@@ -78,6 +80,13 @@
                     }
                 });
 
+                self.$moreButton.on('click',function(e){
+                    var page = self.$list.data('page');
+                    if(page) {
+                        self.moreListData(page+1);
+                    }
+                });
+
                 /*
                 self.$pagination.on('page_click', function(e, data) {
                     self.requestData({"page": data});
@@ -94,14 +103,53 @@
                     //self.$pagination.vcPagination('setPageInfo',param.pagination);
 
                     var arr = data.listData instanceof Array ? data.listData : [];
+                    self.listData = arr;
+                    self.$list.empty();
+                    self.moreListData(1);
+                    /*
                     self.$list.empty();
                     arr.forEach(function(item, index) {
                         item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                         item.price = item.price ? vcui.number.addComma(item.price) : null;
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
+                    */
                     self.checkNoData();
                 });
+            },
+
+            moreListData(page) {
+                var index = page - 1;
+                if(index < 0) index = 0;
+                var self = this;
+
+                var arr =  self.listData.splice(0,10);
+                arr.forEach(function(item, index) {
+                    item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                    item.price = item.price ? vcui.number.addComma(item.price) : null;
+                    self.$list.append(vcui.template(listItemTemplate, item));
+                });
+                self.$list.data('page',page);
+                if(self.listData.length > 0) {
+                    self.$moreButton.show();
+                } else {
+                    self.$moreButton.hide();
+                }
+
+                /*
+                var arr =  self.listData.slice(index*10,page*10);
+                arr.forEach(function(item, index) {
+                    item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                    item.price = item.price ? vcui.number.addComma(item.price) : null;
+                    self.$list.append(vcui.template(listItemTemplate, item));
+                });
+                self.$list.data('page',page);
+                if(page*10 >= self.listData.length) {
+                    self.$moreButton.hide();
+                } else {
+                    self.$moreButton.show();
+                }
+                */
             },
 
             requestRemove: function($dm) {
@@ -156,7 +204,7 @@
                 param.requireCare = requireCare ? lgkorUI.stringToBool(requireCare) :null;
                 */
 
-                lgkorUI.requestCart(ajaxUrl, param);
+                lgkorUI.requestCart(ajaxUrl, param, true);
             },
 
             checkNoData: function() {

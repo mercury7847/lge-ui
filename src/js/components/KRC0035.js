@@ -1,10 +1,15 @@
 $(document).ready(function(){
-    if(!document.querySelector('.KRC0035')) return false;
-    
-    $('.KRC0035').buildCommonUI();
+	var $KRC0035 = $('.KRC0035');
+
+	//if(!document.querySelector('.KRC0035')) return false;
+    if(!($KRC0035.length > 0)) return false;
+	
+	var $KRC0035 = $('.KRC0035');
+
+    $KRC0035.buildCommonUI();
 
     vcui.require(['ui/carousel'], function () {
-		$('.KRC0035').find(".ui_carousel_slider").each(function(cdx, slide){
+		$KRC0035.find(".ui_carousel_slider").each(function(cdx, slide){
 			$(slide).vcCarousel({
 				infinite: false,
 				autoplay: true,
@@ -13,8 +18,9 @@ $(document).ready(function(){
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				adaptiveHeight: true,
-				lazyLoad: 'progressive',
+				lazyLoad: 'anticipated', //수정 jsw
 			});
 		});
+		//$('body').vcLazyLoaderSwitch('reload',$KRC0035);
 	});
 })

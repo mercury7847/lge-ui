@@ -44,9 +44,11 @@
                     '<div class="sku">{{#if salesModelCode}}{{salesModelCode}}{{/if}}</div>' +
                         '<div class="review-info">' +
                             '<a href="#">' +
-                                '{{#if (reviewsCount > 0)}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                                '{{#if (reviewsCount != "0")}}' +
+                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                                 '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
+                                '{{/if}}' +
                             '</a>' +
                         '</div>' +
                         '<ul class="spec-info">' +
@@ -118,10 +120,8 @@
                     "typeFlag": sendflag
                 }
 
-                console.log("### requestCart ###", param)
-
                 var ajaxUrl = $contents.attr('data-cart-url');
-                lgkorUI.requestCart(ajaxUrl, param);
+                lgkorUI.requestCart(ajaxUrl, param, true);
             }
         }).on('change', '.product-option input[type=radio]', function(e){
             requestSibling(this);
@@ -177,6 +177,7 @@
         
         item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
         item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+        item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
         //flag
         item.newProductBadgeFlag = lgkorUI.stringToBool(item.newProductBadgeFlag);

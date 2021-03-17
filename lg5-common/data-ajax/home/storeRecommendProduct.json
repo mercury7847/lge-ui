@@ -1,0 +1,73 @@
+{
+    "status":"success",
+    "message":"",
+    "data": {
+        "success": "Y",
+        "data" : [
+            {
+                
+                "modelId":"75NANO99KNA",
+                "saleModelCode":"FQ2",
+                "saleSuffixCode":"AKOR",
+                "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "obsOriginalPrice":"1100000",
+                "obsMemberPrice":"1000",
+                "obsDiscountPrice":"20000",
+                "obsSellFlag":"",
+                "obsInventoryFlag":"",
+                "obsInventoryQty":"",
+                "modelStatusCode":"ACTIVE",
+                "categoryId":"",
+                "categoryName":"",
+                "modelUrlPath":"#2",
+                "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
+                
+            },
+            {
+
+                "modelId":"65NANO99KNA",
+                "saleModelCode":"FQ2",
+                "saleSuffixCode":"AKOR",
+                "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "obsOriginalPrice":"1100000",
+                "obsMemberPrice":"1000",
+                "obsDiscountPrice":"20000",
+                "obsSellFlag":"",
+                "obsInventoryFlag":"",
+                "obsInventoryQty":"",
+                "modelStatusCode":"ACTIVE",
+                "categoryId":"",
+                "categoryName":"",
+                "modelUrlPath":"#2",
+                "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
+            },
+            {
+                
+                "modelId":"55NANO99KNA",
+                "saleModelCode":"FQ2",
+                "saleSuffixCode":"AKOR",
+                "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
+                "obsOriginalPrice":"1100000",
+                "obsMemberPrice":"1000",
+                "obsDiscountPrice":"20000",
+                "obsSellFlag":"",
+                "obsInventoryFlag":"",
+                "obsInventoryQty":"",
+                "modelStatusCode":"ACTIVE",
+                "categoryId":"",
+                "categoryName":"",
+                "modelUrlPath":"#2",
+                "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
+            }
+        ]    
+    }
+}

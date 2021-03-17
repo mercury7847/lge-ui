@@ -1,17 +1,17 @@
 // gulp...
 const gulp = require("gulp"),
-        sass = require('gulp-sass'),
-        sourcemaps = require('gulp-sourcemaps'),
-        rename = require('gulp-rename'),
-        browserSync = require('browser-sync'),
-        uglify = require('gulp-uglify'),
-        concat = require('gulp-concat'),
-        cleanCSS = require('gulp-clean-css'),
-        gulpif = require('gulp-if'),
-        fileinclude = require('gulp-file-include'),
-        git = require('gulp-git'),
-        del = require('del'),
-        terser = require('gulp-terser');
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
+    rename = require('gulp-rename'),
+    browserSync = require('browser-sync'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
+    cleanCSS = require('gulp-clean-css'),
+    gulpif = require('gulp-if'),
+    fileinclude = require('gulp-file-include'),
+    git = require('gulp-git'),
+    del = require('del'),
+    terser = require('gulp-terser');
 
 var src = "./src";
 var dist = './dist';
@@ -25,7 +25,7 @@ gulp.task("browser-sync", () => {
         },
         port: 3010,
         startPath: "./guide/",
-        middleware: function (req, res, next) {
+        middleware: function(req, res, next) {
             if (/\.json|\.txt|\.html/.test(req.url) && req.method.toUpperCase() == 'POST') {
                 // console.log('[POST => GET] : ' + req.url);
                 req.method = 'GET';
@@ -38,7 +38,7 @@ gulp.task("browser-sync", () => {
 
 // html 파일 생성...
 gulp.task('html', () => gulp
-    .src([src + '/pages/**/*', "!"+src+"/pages/common", "!"+src+'/pages/common/**'], {base:src + '/pages/'})
+    .src([src + '/pages/**/*', "!" + src + "/pages/common", "!" + src + '/pages/common/**'], { base: src + '/pages/' })
     .pipe(fileinclude({
         prefix: '@@',
         basepath: src + '/pages/'
@@ -49,7 +49,7 @@ gulp.task('html', () => gulp
 //guide page 파일생성...
 gulp.task('guide', ["guide:html", "guide:images", "guide:css", "guide:js", "guide:data-js"]);
 gulp.task('guide:html', () => gulp
-    .src(src + '/guide/**/*.html', {base:src + '/guide/'})
+    .src(src + '/guide/**/*.html', { base: src + '/guide/' })
     .pipe(fileinclude({
         prefix: '@@',
         basepath: '@file'
@@ -76,9 +76,9 @@ gulp.task("guide:data-js", () => gulp
 
 
 var scssOptions = {
-    outputStyle : "expanded",
-    indentType : "tab",
-    indentWidth : 1,
+    outputStyle: "expanded",
+    indentType: "tab",
+    indentWidth: 1,
     precision: 6,
     sourceComments: false
 };
@@ -86,16 +86,16 @@ var scssOptions = {
 gulp.task("styles", () => gulp
     .src(src + "/scss/**/*.scss")
     .pipe(sass(scssOptions).on('error', sass.logError))
-    .pipe(rename({suffix: ".min"}))
+    .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest(dist + sourceFolder + "/css/"))
-    .pipe(browserSync.reload({stream:true}))
+    .pipe(browserSync.reload({ stream: true }))
 );
 gulp.task("styles:server", () => gulp
     .src(src + "/scss/**/*.scss")
     .pipe(sourcemaps.init())
     .pipe(sass(scssOptions).on('error', sass.logError))
-    .pipe(cleanCSS({compatibility: 'ie9'}))
-    .pipe(rename({suffix: ".min"}))
+    .pipe(cleanCSS({ compatibility: 'ie9' }))
+    .pipe(rename({ suffix: ".min" }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/css/"))
 );
@@ -128,6 +128,9 @@ const concatNames = [
     src + "/js/ui/formatter.js",
     src + "/js/ui/scrollNavi.js",
     src + "/js/ui/smoothScrollTab.js",
+    src + "/js/ui/toast.js",
+    src + "/js/ui/spinner.js",
+    src + "/js/ui/imageFileInput.js",
     src + "/js/ui/checkboxAllChecker.js"
 ];
 gulp.task("concat-js", () => gulp
@@ -139,27 +142,29 @@ gulp.task("concat-js", () => gulp
 // Compile JS
 gulp.task("scripts", () => {
     gulp.start(["jsCompile",
-                    "jsCompile:common", 
-                    "jsCompile:components", 
-                    "jsCompile:support", 
-                    "jsCompile:helper", 
-                    "jsCompile:libs", 
-                    "jsCompile:ui", 
-                    "jsCompile:mypage",
-                    "jsCompile:cart",
-                    "jsCompile:customer",
-                    "jsCompile:search",
-                    "jsCompile:caresolution",
-                    "jsCompile:store",
-                    "jsCompile:membership",
-                    "jsCompile:home"
+        "jsCompile:common",
+        "jsCompile:components",
+        "jsCompile:support",
+        "jsCompile:helper",
+        "jsCompile:libs",
+        "jsCompile:ui",
+        "jsCompile:mypage",
+        "jsCompile:cart",
+        "jsCompile:customer",
+        "jsCompile:search",
+        "jsCompile:caresolution",
+        "jsCompile:store",
+        "jsCompile:membership",
+        "jsCompile:homebrew",
+        "jsCompile:home",
+        "jsCompile:objet"
     ]);
 });
 gulp.task("jsCompile", () => gulp
     .src(src + "/js/*.js")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/"))
 );
@@ -175,7 +180,7 @@ gulp.task("jsCompile:components", () => gulp
     .src(src + "/js/components/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/components/"))
 );
@@ -183,7 +188,7 @@ gulp.task("jsCompile:support", () => gulp
     .src(src + "/js/support/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["**/*.js", "**/!*.min.js"], uglify()))
-    .pipe(gulpif(["**/*.js", "**/!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["**/*.js", "**/!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/support/"))
 );
@@ -199,7 +204,7 @@ gulp.task("jsCompile:libs", () => gulp
     .src(src + "/js/libs/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/libs/"))
 );
@@ -216,7 +221,7 @@ gulp.task("jsCompile:mypage", () => gulp
     .pipe(sourcemaps.init())
     .pipe(terser())
     //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/mypage/"))
 );
@@ -232,7 +237,7 @@ gulp.task("jsCompile:customer", () => gulp
     .src(src + "/js/customer/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/customer/"))
 );
@@ -240,7 +245,7 @@ gulp.task("jsCompile:search", () => gulp
     .src(src + "/js/search/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/search/"))
 );
@@ -248,7 +253,7 @@ gulp.task("jsCompile:caresolution", () => gulp
     .src(src + "/js/caresolution/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/caresolution/"))
 );
@@ -256,7 +261,7 @@ gulp.task("jsCompile:store", () => gulp
     .src(src + "/js/store/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/store/"))
 );
@@ -264,17 +269,33 @@ gulp.task("jsCompile:membership", () => gulp
     .src(src + "/js/membership/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/membership/"))
+);
+gulp.task("jsCompile:homebrew", () => gulp
+    .src(src + "/js/homebrew/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/homebrew/"))
 );
 gulp.task("jsCompile:home", () => gulp
     .src(src + "/js/home/**/*")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/home/"))
+);
+gulp.task("jsCompile:objet", () => gulp
+    .src(src + "/js/objet/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
 );
 
 // fonts, images
@@ -310,7 +331,7 @@ gulp.task("static:pcsvc", () => gulp
 
 // dist 폴더 비움
 gulp.task('clean', function() {
-	return del.sync("./dist");
+    return del.sync("./dist");
 });
 
 
@@ -322,7 +343,7 @@ gulp.task("watch", ["browser-sync"], () => {
     // Watch html files
     gulp.watch(src + "/pages/**/*.html", ["html"]).on('change', browserSync.reload);
     gulp.watch(src + "/pages/**/**/*.html", ["html"]).on('change', browserSync.reload);
-    
+
     // Watch guide files
     gulp.watch(src + '/guide/**/*.html', ["guide:html"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/guide/images/**", ["guide:images"]).on('change', browserSync.reload);
@@ -348,7 +369,9 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/caresolution/**", ["jsCompile:caresolution"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/homebrew/**", ["jsCompile:homebrew"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
@@ -359,15 +382,15 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static"], () =>{
+gulp.task("build", ["clean", "static"], () => {
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
-gulp.task("build:server", ["clean", "static"], () =>{
+gulp.task("build:server", ["clean", "static"], () => {
     gulp.start(["styles:server", "scripts", "guide", "html"]);
 });
 
 gulp.task('server-build', ["concat-js"], function() {
-    git.revParse({args:'HEAD'}, function (err, hash) {
+    git.revParse({ args: 'HEAD' }, function(err, hash) {
         dist += ("/" + hash);
         gulp.start('build:server');
     });

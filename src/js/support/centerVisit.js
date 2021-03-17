@@ -546,14 +546,16 @@
                 $tabCont.hide().eq(0).show();
             })
 
-            self.warrantyGuide.find('.ui_tab').on('tabchange', function(e, data){
-                var $this = $(this);
-                var $popupCont = $this.closest('.pop-conts');
-                var $tabCont = $popupCont.find('.tabs-contents');
+            // self.warrantyGuide.find('.ui_tab').on('tabchange', function(e, data){
+            //     var $this = $(this);
+            //     var $popupCont = $this.closest('.pop-conts');
+            //     var $tabCont = $popupCont.find('.tabs-contents');
 
-                $tabCont.hide();
-                $tabCont.filter('#tab' + (data.selectedIndex+1)).show();
-            })
+            //     console.log(data.button[0].hash)
+
+            //     $tabCont.hide();
+            //     $tabCont.filter(data.button[0].hash).show();
+            // })
 
 
             // 엔지니어 선택
@@ -625,6 +627,12 @@
         },
         reset: function() {
             var self = this;
+            var $listTable = self.$stepCenter.find('.center-result-wrap .tb_row'),
+                $noData = self.$stepCenter.find('.no-data');
+
+            $listTable.find('tbody').empty();
+            $listTable.hide();
+            $noData.show();
 
             self.data = $.extend({}, self.options);
 
@@ -653,7 +661,9 @@
             self.$citySelect2.vcSelectbox('update');
             self.$address1.val('').prop('disabled', true);
 
-
+            self.$cont.find('.ui_tab').vcTab('select', 0);
+            self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
+            self.$cont.find('.ui_input_clearbutton').trigger('update');
 
             $('#engineerNm').val('');
             $('#engineerCode').val('');
@@ -678,9 +688,7 @@
             self.$completeBtns.hide();
 
             self.$cont.commonModel('next', self.$stepModel);
-            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                self.$selectedModelBar.vcSticky();
-            });
+            self.$cont.commonModel('focus', self.$selectedModelBar);
         },
         _getKeyword: function(){
             var self = this;

@@ -207,6 +207,16 @@
             } else {
                 return valueObject;
             }
+        },
+        backHistory: function(item) {
+            var url;
+            if (item.constructor == Object) {
+                url = $.param(item);
+            } else {
+                url = $(item).attr('href');
+                url = url.substr(url.indexOf('?') + 1);
+            }
+            history.replaceState(null, '', '?'+url);
         }
     }
 
@@ -353,9 +363,9 @@ CS.MD.search = function() {
                     cookieKeyword.addCookie(val);
                     self._setRecently();
                 }
-                $('.search-error').hide();
+                self.$el.find('.search-error').hide();
             } else {
-                $('.search-error').show();   
+                self.$el.find('.search-error').show();   
             }
 
             self.$el.removeClass('on');
@@ -403,17 +413,17 @@ CS.MD.search = function() {
                     self.$el.trigger('autocomplete', [param, self.autoUrl, function(result) {
                         self._setAutoComplete(result.searchList)
                         
-                        $('.autocomplete-box').show();
-                        $('.keyword-box').hide();
+                        self.$el.find('.autocomplete-box').show();
+                        self.$el.find('.keyword-box').hide();
 
                         self.$el.addClass('on');
                     }]);
 
-                    $('.search-error').hide();
+                    self.$el.find('.search-error').hide();
                 } else {
                     self.$el.find('.autocomplete-box').find('ul').empty();
-                    $('.autocomplete-box').hide();
-                    $('.keyword-box').show();
+                    self.$el.find('.autocomplete-box').hide();
+                    self.$el.find('.keyword-box').show();
                     !self.isKeyword && self.$el.removeClass('on');
                 }
 
@@ -1364,6 +1374,7 @@ CS.MD.commonModel = function() {
             }
 
             self.$myModelArea.show();
+            self.$myModelArea.find('.search-error').hide();
             self.$myModelSlider.vcCarousel('resize');
             self.$keywordInput.val('');
             self.$categoryBox.find('.box').removeClass('on off');
@@ -1392,6 +1403,8 @@ CS.MD.commonModel = function() {
 
     CS.MD.plugin(pluginName, Plugin);
 }();
+
+
 
 CS.MD.calendar = function() {
     var dateUtil = vcui.date;
@@ -2454,6 +2467,18 @@ function validatePhone(value){
                 value = $this.val();
             
             var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            
+            if (regex.test(value)) {
+                $this.val(value.replace(regex, ''));
+                return;
+            }
+        });
+
+        $('[data-format=email]').on('input', function() {
+            var $this = $(this),
+                value = $this.val();
+            
+            var regex = /[가-힣ㄱ-ㅎㅏ-ㅣㆍ ᆢ\s]/g;
             
             if (regex.test(value)) {
                 $this.val(value.replace(regex, ''));

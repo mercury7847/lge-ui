@@ -41,6 +41,8 @@
 
     var allOwnedProductYn;
 
+    var beforeVisitModelFlag;
+
     function init(){
         console.log("requestRental Start!!!");
     
@@ -87,6 +89,12 @@
 
         creditInquireButton = $('.creditInquire');
 
+
+        // number e block;
+        $('input[type=number]').on('onkeydown', function(e){
+            return e.keyCode !== 69;
+        });
+
         var register = {
             registFrontNumber:{
                 required: true,
@@ -122,7 +130,6 @@
         }
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
-
         register = {
             userName:{
                 required: true,
@@ -139,17 +146,17 @@
                 errorMsg: "전화번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
-            zipCode: {
+            installZipCode: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            userAddress: {
+            installUserAddress: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            detailAddress: {
+            installDetailAddress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 msgTarget: '.err-address-install'
@@ -200,7 +207,8 @@
         }
         bankValidation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(3) .by-bank',{register:register});
 
-        deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
+        $('#popup-delivery-address').data("exception", true);
+        deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address", null, true);
         addressFinder = new AddressFind();
     }
 
@@ -482,6 +490,7 @@
         console.log("step1 validation start!!");
         var result = step1Validation.validate();
         var data = getInputData('creditInquire');
+        console.log("detailAddress:", step1Validation.getValues("detailAddress"));
         if(result.success){
             completed = data === "Y" ? true : false;
             if(!completed){
@@ -651,9 +660,12 @@
             return;
         }
 
+        lgkorUI.showLoading();
+
         installAdress = {};
 
         allOwnedProductYn = "N";
+        beforeVisitModelFlag = "N";
 
         var code = [];
         $('.order-list li').each(function(idx, item){
@@ -674,9 +686,29 @@
         }
         console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
+            lgkorUI.hideLoading();
+
             console.log("success :", result.data.success);
 
             productPriceInfo = result.data.productPriceInfo;
+
+            console.log("productStatus :", result.data.productStatus);
+            if(result.data.productStatus){
+                for(var str in result.data.productStatus){
+                    var modelID = result.data.productStatus[str].modelID;
+                    var installAbled = result.data.productStatus[str].installAbled;
+                    var listItem = $('.order-list .order-item[data-item-id=' + modelID + ']');
+                    if(installAbled == "Y"){
+                        $(listItem).removeClass('disabled');
+                        $(listItem).find('.disabled-message p').text("");
+                        requestInfoBlock.setItemInfoDisabled(modelID, false)
+                    } else{
+                        if(!$(listItem).hasClass('disabled')) $(listItem).addClass('disabled');
+                        $(listItem).find('.disabled-message p').text(result.data.productStatus[str].availableMessage);
+                        requestInfoBlock.setItemInfoDisabled(modelID, true)
+                    }
+                }
+            }
 
             var abled = "N";
             if(lgkorUI.stringToBool(result.data.success)){
@@ -685,24 +717,9 @@
                 });
                 abled = "Y";
             } else{
-                if(result.data.productStatus){
-                    console.log("productStatus :", result.data.productStatus);
-                    for(var str in result.data.productStatus){
-                        var modelID = result.data.productStatus[str].modelID;
-                        var installAbled = result.data.productStatus[str].installAbled;
-                        var listItem = $('.order-list .order-item[data-item-id=' + modelID + ']');
-                        if(installAbled == "Y"){
-                            $(listItem).removeClass('disabled');
-                        } else{
-                            if(!$(listItem).hasClass('disabled')) $(listItem).addClass('disabled');
-                            $(listItem).find('.disabled-message p').text(result.data.productStatus[str].availableMessage);
-                            requestInfoBlock.setItemInfoDisabled(modelID, true)
-                        }
-                    }
-
-                    var total = parseInt(productPriceInfo.total.count);
-                    if(total) abled = "Y";
-                }
+                var total = parseInt(productPriceInfo.total.count);
+                console.log("productPriceInfo.total.count:", productPriceInfo.total.count)
+                if(total) abled = "Y";
                 
                 lgkorUI.confirm(result.data.alert.desc, {
                     typeClass: "type2",
@@ -742,12 +759,25 @@
 
                 allOwnedProductYn = result.data.allOwnedProductYn;
 
+                beforeVisitModelFlag = result.data.beforeVisitModelFlag || "N";
+
                 if(result.data.allOwnedProductYn == "Y"){
                     step2Block.find('.forAOP').hide();
                 } else{
                     step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
                     step2Block.find('.datepicker').removeClass('disabled');
+
+                    var rbv = step2Block.find(".requestBeforeVisit");
+                    rbv.show();
+                    rbv.find('.tit .label').removeClass('req');
+                    rbv.find('.tit .label span').remove();
+                    if(beforeVisitModelFlag == "M"){
+                        rbv.find('.tit .label').addClass('req');
+                        rbv.find('.tit .label').append('<span class="blind">필수</span>');
+                    } else if(beforeVisitModelFlag == "N"){
+                        rbv.hide();
+                    }
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
@@ -765,6 +795,8 @@
         if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
             return;
         }
+
+        lgkorUI.showLoading();
 
         var sendata = {
             rentalCareType: getInputData('rentalCareType'),
@@ -888,7 +920,11 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        lgkorUI.showLoading();
+
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
+            lgkorUI.hideLoading();
+            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -909,6 +945,10 @@
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+
+            item.find('input[name=installZipCode]').val(data.zonecode);
+            item.find('input[name=installUserAddress]').val(data.roadAddress);
+            item.find('input[name=installDetailAddress]').val('');
         });
     }
 
@@ -1045,7 +1085,8 @@
             });
             return;
         }
-        console.log("requestAgreeChecker:", agreechk)
+        console.log("requestAgreeChecker:", agreechk);
+        
 
         var step1Value = step1Validation.getValues(); 
         var step2Value = step2Validation.getValues();

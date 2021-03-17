@@ -27,7 +27,7 @@
                         '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
-                        '{{#if hasCare}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '{{#if hasCare && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' +
@@ -36,19 +36,21 @@
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
-                '<a href="#">' +
+                '<a href="{{url}}">' +
                     '{{#if carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
+                    '{{#if !rentalFlag}}' +
                         '<div class="original">' +
                             '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
                         '<div class="price-in">' +
                             '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
                         '</div>' +
+                    '{{/if}}' +
                     '</div>' +
                 '</a>' +
             '</div>' +
@@ -62,18 +64,22 @@
                     '{{#each item in flag}}<span class="flag{{#if item.class}} blue{{/if}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
-                    '<a href="{{url}}">{{#raw title}}</a>' +
+                    '<a href="{{url}}" target="_blank">{{#raw title}}</a>' +
                 '</div>' +
                 '<div class="result-detail">' +
-                    '<div href="{{url}}" class="shop-info">' +
-                        '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
-                        '<a href="{{url}}" class="desc time">{{time}}</a>' +
+                    '<div href="{{url}}" class="shop-info" target="_blank">' +
+                        '<a href="{{url}}" class="desc add" target="_blank">{{#raw address}}</a>' +
+                        '<a href="{{url}}" class="desc time" target="_blank">' +
+                        '{{#each item in time}}' +
+                            '<span><em>{{item.week}}</em> {{item.time}}</span>' +
+                        '{{/each}}' +
+                        '</a>' +
                     '</div>' +
                     '<div class="shop-state"><span class="{{#if shopState=="원활"}}skyblue{{#elsif shopState=="보통"}}olive{{#elsif shopState=="혼잡"}}red{{#else}}{{/if}}">{{shopState}}</span></div>' +
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
+                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size-m" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';
@@ -138,7 +144,7 @@
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
                 for(key in filterdata) {
-                    makeData[key] = filterdata[key].join(",");
+                    makeData[key] = filterdata[key].join("||");
                 }
                 data.filterData = JSON.stringify(makeData);
                 return data;
@@ -576,8 +582,6 @@
                     var param = result.param;
 
                     var searchedValue = param.search;
-                    //2021-03-11 제대로 값을 못받아와서 임시 처장
-                    searchedValue = value;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //검색내 검색어 세팅
@@ -724,6 +728,7 @@
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
                             if(data.noDataList.length > 0) {
@@ -741,6 +746,9 @@
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
+                        //
+                        //정렬 셀렉트 박스
+                        self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
                         self.$tab.parents('.search-tabs-wrap').show();
                         self.$tab.vcSmoothScroll('refresh');
@@ -754,6 +762,8 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
+                        //
+                        self.$listSorting.find('.sort-select-wrap').show();
                     }
 
                     //페이지

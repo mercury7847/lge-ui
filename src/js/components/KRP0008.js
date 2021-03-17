@@ -147,6 +147,13 @@
 
                 //크레마
                 lgkorUI.cremaLogin();
+
+                //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
+                if(typeof reviewsCount !== 'undefined') {
+                    if(parseInt(reviewsCount) > 0) {
+                        $(window).trigger("changeCategory.KRP0009",{"title":"리뷰(" + reviewsCount + ")","linkName":"review"});
+                    }
+                }
             },
 
             setting: function() {
@@ -206,6 +213,7 @@
                 
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
+                self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
                 if(typeof productPrice !== 'undefined') {
                     self.$pdpInfoPaymentAmount.data('price',productPrice);
                 } else {
@@ -226,16 +234,6 @@
                 //
                 //self.$pdpInfoAllCareshipService = self.$pdpInfo.find('.careship-service');
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
-                //최초 체크 jsw
-                var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
-                if(checkinput.length > 0) {
-                    var check = lgkorUI.stringToBool(checkinput.val());
-                    if(check) {
-                        console.log('???');
-                        var $paymentAmount = self.$pdpInfoCareshipService.siblings('div.payment-amount');
-                        $paymentAmount.find('>.info-text').show();
-                    }
-                }
 
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
                 
@@ -398,6 +396,14 @@
                     }
                 }
 
+                //최초 케어쉽 체크 여부
+                var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
+                if(checkinput.length > 0) {
+                    var check = lgkorUI.stringToBool(checkinput.val());
+                    var $paymentAmount = self.$pdpInfoCareshipService.siblings('div.payment-amount');
+                    self.updatePaymentAmountState($paymentAmount, check);
+                }
+
                 //
                 self.$pdpMobileSlider.vcCarousel({
                     infinite: false,
@@ -522,7 +528,7 @@
                     if(!loaded) {
                         self.$awardPopup.data('loaded', true);
                         if(typeof awards !== 'undefined' && awards.length > 0) {
-                            var arr = awards instanceof Array ? awards : [];
+                            var arr = awards instanceof Array ? awards.slice(0,4) : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
 
@@ -677,7 +683,19 @@
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
-                    lgkorUI.requestCart(ajaxUrl, param);
+
+                    if(param.typeFlag == "C") {
+                        lgkorUI.confirm('', {
+                            title: "케어십 서비스를 신청하시는 경우<br>1개의 제품만 장바구니에 담을 수 있습니다.<br>해당 제품을 장바구니에 담으시겠어요?",
+                            okBtnName: '네',
+                            cancelBtnName: '아니오',
+                            ok:function(){
+                                lgkorUI.requestCart(ajaxUrl, param, true);
+                            }
+                        });
+                    } else {
+                        lgkorUI.requestCart(ajaxUrl, param, true);
+                    }
                 });
 
                 //매장방문예약 (모바일pc구분)
@@ -697,7 +715,7 @@
                         } else {
                             lgkorUI.confirm('', {
                                 title:'해당 제품을 전시하는 매장이 없습니다.<br>가까운 매장에서 비슷한 제품을<br>전시하는지 확인해보시겠어요?',
-                                okBtnName: '예',
+                                okBtnName: '네',
                                 cancelBtnName: '아니오',
                                 ok: function() {
                                     location.href = url;
@@ -759,7 +777,11 @@
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href').replace("#","");
+                    var addS = $(this).data('add');
                     if(url) {
+                        if(addS) {
+                            url += addS;
+                        }
                         location.href = url;
                     }
                 });
@@ -918,14 +940,7 @@
                                 self.updatePaymentAmountPrice($paymentAmount);
 
                                 //수량체크버튼 활성
-                                var $input = $paymentAmount.find('input.quantity');
-                                if(parseInt($input.val()) == 1) {
-                                    $paymentAmount.find('button.plus').attr('disabled',false);
-                                } else {
-                                    $paymentAmount.find('button.minus').attr('disabled',false);
-                                    $paymentAmount.find('button.plus').attr('disabled',false);
-                                }
-                                $paymentAmount.find('>.info-text').hide();
+                                self.updatePaymentAmountState($paymentAmount, false);
                             }
                         }
                     } else {
@@ -939,12 +954,7 @@
                             self.updatePaymentAmountPrice($paymentAmount);
 
                             //케어십 신청됬으므로 수량체크버튼 비활성
-                            $paymentAmount.find('button.minus').attr('disabled',true);
-                            $paymentAmount.find('button.plus').attr('disabled',true);
-                            $paymentAmount.find('input.quantity').val(1);
-                            $paymentAmount.data('quantity',1);
-                            self.updatePaymentAmountPrice($paymentAmount);
-                            $paymentAmount.find('>.info-text').show();
+                            self.updatePaymentAmountState($paymentAmount, true);
                         }
                     }
                 });
@@ -966,12 +976,14 @@
                     //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
                         var value = $(this).vcSelectbox('selectedOption').value;
+                        self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],0, true);
                     });
                     //의무사용기간 선택
                     self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
+                        self.rentalInfoBoxUpdate(1, $(this));
                         self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
                     });
                     //방문주기 선택 - 화면 가격 정보 갱신
@@ -981,6 +993,7 @@
                         var $li =  $(this).parents('li');
                         $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
                         self.updateRentalInfoPrice(itemData);
+                        self.rentalInfoBoxUpdate(2, $(this));
                     });
                 };
 
@@ -1048,7 +1061,7 @@
             bindPopupEvents: function() {
                 var self = this;
                 
-                $('article').on('click', 'button', function(e) {
+                $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
                     //console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
@@ -1064,6 +1077,14 @@
                 self.$popPdpVisualImage.find('div.zoom-area img').on('load',function(e) {
                     self.pinchZoom.update(true);
                 });
+            },
+
+            scrollMovedById: function(id){
+                if($(id).length){
+                    var compheight = 0;//$component.height();
+                    var movtop = $(id).offset().top - compheight+2;
+                    $('html, body').stop().animate({scrollTop:movtop}, 150);
+                }
             },
 
             //PDP SIDE 관련
@@ -1179,7 +1200,17 @@
                     }
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
+
+                    self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
                 }
+            },
+
+            //렌탈 케어솔루션 셀렉트 박스 선택에 따른 메세지 수정
+            rentalInfoBoxUpdate: function(index, $selectBox) {
+                var selectedValue = $selectBox.vcSelectbox('selectedOption');
+                var parent = $selectBox.parents('li.lists');
+                var findLi = parent.find('.article-box li:eq('+ (index+1) + ') span');
+                findLi.text(selectedValue.text);
             },
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
@@ -1204,7 +1235,11 @@
                     "rtModelSeq":selectRentalInfoData.rtModelSeq,
                     "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix
                 }
+                //결헙하여 할인받기 링크용 값 추가
+                $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
+
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
+                $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
             },
 
@@ -1220,6 +1255,9 @@
                 var monthPrice = carePrice;
                 if(cardData && cardData.cardSale) {
                     monthPrice -= cardData.cardSale;
+                }
+                if(monthPrice < 0) {
+                    monthPrice = 0;
                 }
                 //월 이용요금
                 var $priceInfo = self.$pdpInfoCareshipService.find('dl.price-info span.price');
@@ -1258,8 +1296,11 @@
                         $careLi.hide();
                         totalPrice = price;
                     } else {
+                        if(carePrice < 0) {
+                            carePrice = 0;
+                        }
                         $careLi.find('span.price').text("월 " + vcui.number.addComma(carePrice) +"원");
-
+                        
                         var $careshipService = $paymentAmount.siblings('.careship-service');
                         var checkinput = $careshipService.find('input[type=radio]:checked');
                         if(checkinput.length > 0) {
@@ -1289,6 +1330,32 @@
 
                 var $total = $paymentAmount.find('dl.total-payment span.price');
                 $total.text(prefix + vcui.number.addComma(totalPrice * quantity) + '원');
+            },
+
+            //케어솔루션 선택 여부에 따른 구매수량 버튼 활성/비활성
+            updatePaymentAmountState: function($paymentAmount, isCare) {
+                var self = this;
+                if(isCare) {
+                    //케어십 신청됬으므로 수량체크버튼 비활성
+                    $paymentAmount.find('button.minus').attr('disabled',true);
+                    $paymentAmount.find('button.plus').attr('disabled',true);
+                    $paymentAmount.find('input.quantity').val(1);
+                    $paymentAmount.data('quantity',1);
+                    $paymentAmount.find('>.info-text').show();                
+                } else {
+                    //수량체크버튼 활성
+                    var $input = $paymentAmount.find('input.quantity');
+                    if(parseInt($input.val()) == 1) {
+                        $paymentAmount.find('button.minus').attr('disabled',true);
+                        $paymentAmount.find('button.plus').attr('disabled',false);
+                    } else {
+                        $paymentAmount.find('button.minus').attr('disabled',false);
+                        $paymentAmount.find('button.plus').attr('disabled',false);
+                    }
+                    $paymentAmount.find('>.info-text').hide();
+                }
+
+                self.updatePaymentAmountPrice($paymentAmount);
             },
 
             //구매진행
@@ -1361,7 +1428,7 @@
                         //케어쉽필수 제품인지 체크해서 알림창 뛰움
                         if($careSiblingOption.length < 1) {
                             if(careRequire) {
-                                $('#careRequireBuyPopup').vcModal();
+                                //$('#careRequireBuyPopup').vcModal();
                                 isRental = true;
                             }
                         } else {
@@ -1417,12 +1484,22 @@
 
                     var ajaxUrl;
                     if(isRental) {
+                        var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
+
                         if(self.loginCheckEnd) {
                             if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
-                                    location.href = url;
+                                    if(isDirectBuy) {
+                                        $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
+                                        $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                            location.href = url;
+                                        });
+                                        $('#careRequireBuyPopup').vcModal();
+                                    } else {
+                                        location.href = url;
+                                    }
                                 }
                             } else {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
@@ -1438,18 +1515,23 @@
                                     var queryString = location.search;
                                     sendParam.modelUrlPath = modelUrlPath + queryString;
                                 }
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    console.log(result);
-                                    /*
-                                    var data = result.data;
-                                    var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
-                                    if(obsDirectPurchaseUrl){
-                                        location.href = obsDirectPurchaseUrl;
-                                    }
-                                    */
-                                });
+
+                                if(isDirectBuy) {
+                                    //2021-03-17 정승우 로그인 안되있을 경우 일단 로그인 창 먼저 뛰우고 케어십 안내 페이지 뜨게 하기 위해서 제거
+                                    //$('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
+                                    //$('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                        lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                            console.log(result);
+                                        });
+                                    //});
+                                    //$('#careRequireBuyPopup').vcModal();
+                                } else {
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        console.log(result);
+                                    });
+                                }
                             }
-                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",url,param);
+                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",param);
                         } else {
                             self.processProductBuy = $dm;
                         }
@@ -1481,35 +1563,48 @@
 
             //로그인 데이타 정보 가져오기
             getRewardInfo: function() {
-                var self = this;
-                var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
-                var param = {
-                    modelId: sendData.modelId
-                }
-                /*
-                if(!ajaxUrl) {
-                    //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
-                    ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
-                }
-                */
-                if(ajaxUrl) {
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                        var data = result.data[0];
-                        //로그인
-                        loginFlag = data.loginFlag;
-                        
-                        //보유멤버쉽 포인트
-                        //var myMembershipPoint = data.myMembershipPoint;
-                        
-                        if(self.$component.data('consumables')) {
-                            self.consumables.init(data);
-                        }
+                if(typeof sendData !== 'undefined') {
+                    var self = this;
+                    var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
+                    var param = {
+                        modelId: sendData.modelId
+                    }
+                    /*
+                    if(!ajaxUrl) {
+                        //스테이지 서버에 페이지가 제대로 배포되면 제거할 예정
+                        ajaxUrl = "/mkt/ajax/product/retrieveModelRewardInfo";
+                    }
+                    */
+                    if(ajaxUrl) {
+                        lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                            var data = result.data[0];
+                            //로그인
+                            loginFlag = data.loginFlag;
+                            
+                            //보유멤버쉽 포인트
+                            var myMembershipPoint = data.myMembershipPoint;
+                            if(lgkorUI.stringToBool(loginFlag)) {
+                                //로그인
+                                self.$benefitInfoPopup.find('.price-info.point').hide();
+                                var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');
+                                $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
+                                $pointMember.show();
+                            } else {
+                                //로그인 아님
+                                self.$benefitInfoPopup.find('.price-info.point').show();
+                                self.$benefitInfoPopup.find('.price-info.point.member').hide();
+                            }
+                            
+                            if(self.$component.data('consumables')) {
+                                self.consumables.init(data);
+                            }
 
-                        self.loginCheckEnd = true;
-                        if(self.processProductBuy) {
-                            self.productBuy(self.processProductBuy);
-                        }
-                    }, true);
+                            self.loginCheckEnd = true;
+                            if(self.processProductBuy) {
+                                self.productBuy(self.processProductBuy);
+                            }
+                        }, true);
+                    }
                 }
             },
 
@@ -1729,7 +1824,6 @@
                         "productImg": compareData.productImg,
                         "productAlt": compareData.productAlt
                     }
-                    console.log(compareData,compareId);
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
                         $dm.prop('checked', false);

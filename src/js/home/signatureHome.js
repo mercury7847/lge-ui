@@ -106,7 +106,7 @@ $(function() {
                 }
                 
                 if(i==0){
-                    $target.transit(obj, function(){
+                    $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
                             $target.css('display',isDisplay);
                         }
@@ -115,7 +115,7 @@ $(function() {
 
                     });  
                 }else{
-                    $target.transit(obj, function(){
+                    $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
                             $target.css('display',isDisplay);
                         }
@@ -264,10 +264,16 @@ $(function() {
         var isIOS = vcui.detect.isIOS;
 
         if(isApplication) {
-            if(isAndroid && android) android.showBottomMenuOver(true);
+            if(isAndroid && android) {
+                android.showBottomMenuOver(true);
+                android.setEnableScrollBottomMenu(false);
+            }
             if(isIOS){
                 var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+
+                var jsonString2= JSON.stringify({command:"setEnableScrollBottomMenu", value:"N"});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString2);
             }
         }
 
@@ -285,14 +291,14 @@ $(function() {
                 if (touchSy - data.y > 80) {
                     // console.log('down');
                     if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(true);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
+                        if(isAndroid && android) android.showBottomMenu(false);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
                     }
                 } else if (touchSy - data.y < -80) {
                     // console.log('up');
                     if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(false);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
+                        if(isAndroid && android) android.showBottomMenu(true);
+                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
                     }
                 }
 
@@ -575,20 +581,27 @@ $(function() {
 
 
         $(document).on('click', 'a', function(e){
+            
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+
             if(href == '#' || href == '#n'){
                 e.preventDefault();
             }else{
                 if (href && /^(#|\.)\w+/.test(href)) {    
+                    
                     e.preventDefault();
+                    
                     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
                     if($compareTarget[0] != e.currentTarget) {
                         if(currentPage !== pageLens){
                             moveScene(pageLens,stepLens,0);
                         }                        
                         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                        if(href == '#content'){
+                            $('.signature-tabs .ui_tab').find('a').eq(0).focus();
+                        }
                     }
-                }                
+                }
             }      
         });
 
@@ -609,6 +622,10 @@ $(function() {
         var $artGuide = $('.signature-section.art-guide');
         var $artMoreBtn = $artGuide.find('button.btn-moreview');
         $artGuide.find('.art-guide-list > li:gt(5)').hide();
+
+        var artGuideLen = $artGuide.find('.art-guide-list > li').length;
+        if(artGuideLen<6) $artMoreBtn.hide();
+
 
         $artMoreBtn.on('click', function(e){
             e.preventDefault();
@@ -645,7 +662,7 @@ $(function() {
         // 시작시 한 스탭 이동시킴.
         setTimeout(function(){
             if(currentStep<1) wheelScene(1);
-        }, 800);
+        }, 1000);
 
         
         window.resizeScene = render;

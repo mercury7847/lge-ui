@@ -950,7 +950,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$prevArrow && self.$prevArrow.length) {
 
-                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$prevArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.prevArrow)) {
                     self.$prevArrow.remove();
@@ -959,7 +959,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$nextArrow && self.$nextArrow.length) {
 
-                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', '');
+                self.$nextArrow.removeClass(_V.DISABLED + ' ' + _V.ARROW + ' ' + _V.HIDDEN).prop('disabled', false).removeAttr('aria-hidden aria-disabled tabindex').css('display', 'none');
 
                 if (self.htmlExpr.test(opt.nextArrow)) {
                     self.$nextArrow.remove();
@@ -969,12 +969,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (self.$slides) {
 
                 var isMarkuped = self.$slideTrack.hasClass('ui_static');
-                // comahead
-                self.$slides.css('float', '');
 
                 self.$slides.removeClass(_V.SLIDE + ' ' + opt.activeClass + ' ' + _V.CENTER + ' ' + _V.VISIBLE + ' ' + _V.CURRENT).removeAttr('aria-hidden data-' + _V.INDEX + ' tabindex role').each(function () {
                     $(this).attr('style', $(this).data('originalStyling'));
                 });
+
+                self.$slides.css('float', '');
 
                 if (isMarkuped) {
                     self.$list.off().removeClass('ui_static');
@@ -990,6 +990,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.$slider.append(self.$slides);
                     }
                 }
+
+                
             } 
                         
             self.cleanUpRows();
@@ -1015,9 +1017,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             transition[self.transitionType] = '';
 
             if (opt.fade === false) {
-                self.$slideTrack.css(transition);
+                if(self.$slideTrack) self.$slideTrack.css(transition);
             } else {
-                self.$slides.eq(slide).css(transition);
+                if(self.$slides) self.$slides.eq(slide).css(transition);
             }
         },
         fadeSlide: function fadeSlide(slideIndex, callback) {
@@ -1447,7 +1449,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            self.$playButon = self.$('.' + _V.PLAY);
+            self.$playButon = self.$('.' + _V.PLAY).show();
             if (self.$playButon.length) {
                 opt.pauseOnHover = true;
 
@@ -1464,6 +1466,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             if (self.$playButon.length) {
+
                 self.$slider.on(_N + 'play ' + _N + 'stop destory', function (e) {
                     var $items = self.$playButon.find('[data-bind-text]');
                     var state = e.type === _N + 'play' ? 'stop' : 'play';
@@ -1480,10 +1483,16 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$dots.length) {
                 self.$slider.on(_N + 'afterchange', function (e, carousel, index) {
-                    self.$dots.find('[data-bind-text]').text('');
-                    self.$dots.eq(index).find('[data-bind-text]').text(function () {
-                        return this.getAttribute('data-bind-text') || '';
-                    });
+                    //if(self.$dots.find('[data-bind-text]')) self.$dots.find('[data-bind-text]').text('');
+
+                    if(self.$dots){
+                        self.$dots.find('[data-bind-text]').text('');
+                        self.$dots.eq(index).find('[data-bind-text]').text(function () {
+                            return this.getAttribute('data-bind-text') || '';
+                        });
+                    } 
+
+                    
                 });
             }
         },
@@ -1789,6 +1798,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (rangeStart > 0) rangeStart--;
                     if (rangeEnd <= self.slideCount) rangeEnd++;
                 }
+                //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
+                if (rangeEnd <= self.slideCount) rangeEnd++;
             }
 
             loadRange = self.$slider.find('.' + _V.SLIDE).slice(rangeStart, rangeEnd);
@@ -1845,12 +1856,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.$slider.removeClass(_V.LOADING);
 
             self.initUI();
-
             if (opt.lazyLoad === 'progressive') {
                 
                 // 임시 response 이미지 체크 루틴
                 //2021-03-10 정승우
-                var $imgsToLoad = $('img[data-pc-src][data-m-src]', self.$slider);
+                var $imgsToLoad = $('img[data-pc-src][data-m-src],img[data-lazy]', self.$slider);
                 $imgsToLoad.each(function () {
                     var image = $(this);
                     image.on('load', function (e) {
@@ -1909,7 +1919,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
         /** startTransition 기능추가*/
         startTransition: function startTransition(idx) {
             var self = this;    
-            var $target, startCss, endCss,  aniObj, obj;    
+
+            if(!self.$slides) return;
+            var $target, startCss, endCss,  aniObj, obj;  
             var $currentTarget = $(self.$slides.get(idx));
             var $obj = $currentTarget.find('[data-p-ani]');            
 
@@ -2394,7 +2406,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.variableWidth === false) {
-                
                 var offset = self.$slides.first().outerWidth(true) - self.$slides.first().width();
                 self.$slideTrack.children('.' + _V.SLIDE).width(self.slideWidth - offset);
             }

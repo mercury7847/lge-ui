@@ -61,6 +61,7 @@
 
                     var reveal_url = self.$cartContent.attr('data-reveal-url');
                     if(reveal_url) {
+                        lgkorUI.showLoading();
                         lgkorUI.requestAjaxDataPost(reveal_url, null, function(result){
                             self.updateList(result.data);
 
@@ -338,16 +339,27 @@
                 }, null, "html");
             },
 
+            //장바구니 카운트 갱신
+            requestCartCount: function() {
+                var self = this;
+                var ajaxUrl = self.$cartContent.attr('data-count-url');
+                if(ajaxUrl) {
+                    lgkorUI.requestCartCount(ajaxUrl);
+                }
+            },
+
             //아이템 삭제 (리스트로 전달)
             requestRemoveItem: function(items, seqs) {
                 var self = this;
                 var ajaxUrl = self.$cartContent.attr('data-remove-url');
                 var postData = {'itemID': (items instanceof Array ? items.join() : items),
                                 'itemSeq': (seqs instanceof Array ? seqs.join() : seqs)};
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     self.updateList(result.data);
                     self.requestInfo();
                     $(window).trigger("toastshow", "선택한 제품이 삭제되었습니다.");
+                    self.requestCartCount();
                 });
             },
 

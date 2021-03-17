@@ -25,6 +25,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             latitude: 37.5666805, // 최초로딩위치-절대(서울시청 기준)            
             x : 126.9784147,
             y : 37.5666805,
+            zoom: 11,
             boundsMargin: 50,
             overlayName : 'ui_overlay_item',
             templates: {
@@ -83,6 +84,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             }
             self.latitude = parseFloat(self.options.latitude || self.options.y);
             self.longitude = parseFloat(self.options.longitude || self.options.x);
+            self.zoom = self.options.zoom;
 
             self.itemArr = [];
 
@@ -102,6 +104,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             var self = this;
             var options = {
                 center: new naver.maps.LatLng(self.latitude, self.longitude),
+                zoom: self.zoom,
                 level: 3
             };
             self.map = new naver.maps.Map(self.$el[0], options);
@@ -289,7 +292,9 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             var bounds = new naver.maps.LatLngBounds();
             var info = null;
-            for(var i=0; i<self.itemArr.length; i++){
+            var length = self.itemArr.length > 3 ? 3 : self.itemArr.length;
+
+            for(var i=0; i<length; i++){
                 info = self.itemArr[i].info;
                 bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsx, info.gpsInfo.gpsy));
             }
@@ -438,11 +443,11 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             self.itemArr = [];
             self._draw(data);   
-            
+            self.itemArr[0].info.selected = true;
             self._addInfoWindow();
-  
+            
             self._setMapBounds();
-
+            
             self._changeMarkersState(); 
         },
 

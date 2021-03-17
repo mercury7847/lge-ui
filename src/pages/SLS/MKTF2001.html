@@ -3,7 +3,8 @@
 @@include('./common/head.html', {
     pageCSS: ["SLS/SLS"],
     pageJS: ["home/caresolutionHome"],
-    "pageTitle": "케어솔루션 메인"
+    pageTitle: "케어솔루션 렌탈 제품 | LG전자",
+    pageDesc: "LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다."
 })
 <body>
 <div class="wrap">
@@ -56,7 +57,7 @@
                                             LG전자만의<br> 차원이 다른<br> 렌탈 서비스는?
                                         </p>
                                     </div>
-                                    <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
+                                    <a href="/care-solutions/why" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a><!-- 210316 수정 [링크 추가] -->
                                 </div>
                             </li>
                             <!-- // slide -->
@@ -66,10 +67,10 @@
                                 <div class="slide-info-area">
                                     <div class="boxs">
                                         <p class="txt">
-                                            LG전자만의<br> 차원이 다른<br> 렌탈 서비스는?
+                                            차원이 다른<br> 전문가의<br> 가전 관리 서비스는?
                                         </p>
                                     </div>
-                                    <a href="#" class="link"><span>케어솔루션 <br class="pc">더 알아보기</span></a>
+                                    <a href="/care-solutions/why-careship" class="link"><span>케어십 <br class="pc">더 알아보기</span></a><!-- 210316 수정 [텍스트 수정, 링크 추가] -->
                                 </div>
                             </li>
                             <!-- // slide -->
@@ -380,13 +381,13 @@
                     <div class="tit-wrap">
                         <h3 class="set-tit">케어솔루션 추천 제품</h3>
                     </div>
-                    <div class="scroll-wrap border-type ui_smooth_scrolltab">
+                    <div class="scroll-wrap border-type ui_product_tab">
                         <div class="ui_smooth_tab">
                             <ul class="tabs">
-                                <li class="on"><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
-                                <li><a href="#tab2">베스트</a></li>
-                                <li><a href="#tab3">신혼부부 추천</a></li>
-                                <li><a href="#tab4">반려동물</a></li>
+                                <li class="on" data-ajax-url=""><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
+                                <li data-ajax-url=""><a href="#tab2">베스트</a></li>
+                                <li data-ajax-url=""><a href="#tab3">신혼부부 추천</a></li>
+                                <li data-ajax-url=""><a href="#tab4">반려동물</a></li>
                             </ul>
                         </div>
                         <div class="scroll-controls ui_smooth_controls">
@@ -396,112 +397,14 @@
                     </div>
                     <div id="tab1" class="tab-content" aria-labelledby="tab1" role="tabpanel">
                         <div class="prd-list-wrap">
-                            <div class="slide-wrap ui_carousel_slider1">
+                            <div class="slide-wrap ui_product_carousel_slider">
                                 <div class="indi-wrap">
-                                    <ul class="indi-conts ui_carousel_dots">
+                                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                     </ul>
                                 </div>
                                 <div class="slide-content ui_carousel_list">
                                     <ul class="inner slide-track ui_carousel_track">
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-01.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <p class="tit">
-                                                        <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                    </p>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-02.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-03.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-04.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -509,112 +412,14 @@
                     </div>
                     <div id="tab2" class="tab-content" aria-labelledby="tab2" role="tabpanel">
                         <div class="prd-list-wrap">
-                            <div class="slide-wrap ui_carousel_slider1">
+                            <div class="slide-wrap ui_product_carousel_slider">
                                 <div class="indi-wrap">
-                                    <ul class="indi-conts ui_carousel_dots">
+                                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                     </ul>
                                 </div>
                                 <div class="slide-content ui_carousel_list">
                                     <ul class="inner slide-track ui_carousel_track">
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-01.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <p class="tit">
-                                                        <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                    </p>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-02.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-03.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-04.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -622,112 +427,14 @@
                     </div>
                     <div id="tab3" class="tab-content" aria-labelledby="tab3" role="tabpanel">
                         <div class="prd-list-wrap">
-                            <div class="slide-wrap ui_carousel_slider1">
+                            <div class="slide-wrap ui_product_carousel_slider">
                                 <div class="indi-wrap">
-                                    <ul class="indi-conts ui_carousel_dots">
+                                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                     </ul>
                                 </div>
                                 <div class="slide-content ui_carousel_list">
                                     <ul class="inner slide-track ui_carousel_track">
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-01.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <p class="tit">
-                                                        <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                    </p>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-02.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-03.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-04.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -735,112 +442,14 @@
                     </div>
                     <div id="tab4" class="tab-content" aria-labelledby="tab4" role="tabpanel">
                         <div class="prd-list-wrap">
-                            <div class="slide-wrap ui_carousel_slider1">
+                            <div class="slide-wrap ui_product_carousel_slider">
                                 <div class="indi-wrap">
-                                    <ul class="indi-conts ui_carousel_dots">
+                                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                     </ul>
                                 </div>
                                 <div class="slide-content ui_carousel_list">
                                     <ul class="inner slide-track ui_carousel_track">
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-01.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <p class="tit">
-                                                        <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                    </p>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-02.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-03.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item ui_carousel_slide">
-                                            <div class="prd-care-vertical ">
-                                                <div class="img-wrap">
-                                                    <a href="#n">
-                                                        <img src="/lg5-common/images/dummy/temp/img-care-04.jpg" alt="제품 이미지">
-                                                    </a>
-                                                </div>
-                                                <div class="txt-wrap">
-                                                    <a href="#n">
-                                                        <p class="tit">
-                                                            <span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 듀얼 냉온정수기
-                                                        </p>
-                                                    </a>
-                                                    <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
-                                                </div>
-                                                <div class="info-wrap">
-                                                    <div class="price-wrap">
-                                                        <div class="total-price">
-                                                            <p class="price">월 5,200원</p>
-                                                            <button type="button" class="btn border"><span>담기</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -851,7 +460,7 @@
 
                 <!-- Why 케어솔루션 -->
                 <div class="care-home-section why-care">
-                    <div class="slide-wrap ui_carousel_slider ui_carousel_1_slider">
+                    <div class="slide-wrap ui_carousel_slider">
                         <div class="indi-wrap">
                             <ul class="indi-conts ui_carousel_dots">
                                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1048,7 +657,7 @@
                     </div>
                     <div id="tab001" class="tab-content" aria-labelledby="tab001" role="tabpanel">
                         <div class="benefit-cont benefit-cont-1">
-                            <div class="slide-wrap ui_carousel_slider ui_carousel_m1_slider">
+                            <div class="slide-wrap ui_carousel_m1_slider"> <!-- 2021.03.15  ui_carousel_slider 삭제-->
                                 <div class="indi-wrap">
                                     <ul class="indi-conts ui_carousel_dots">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1107,7 +716,7 @@
                     </div>
                     <div id="tab002" class="tab-content" aria-labelledby="tab002" role="tabpanel">
                         <div class="benefit-cont benefit-cont-2">
-                            <div class="slide-wrap ui_carousel_slider ui_carousel_m1_slider">
+                            <div class="slide-wrap ui_carousel_m1_slider"><!-- 2021.03.15  ui_carousel_slider 삭제-->
                                 <div class="indi-wrap">
                                     <ul class="indi-conts ui_carousel_dots">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1194,7 +803,7 @@
                     </div>
                     <div id="tab003" class="tab-content" aria-labelledby="tab003" role="tabpanel">
                         <div class="benefit-cont benefit-cont-3">
-                            <div class="slide-wrap ui_carousel_slider ui_carousel_m1_slider">
+                            <div class="slide-wrap ui_carousel_m1_slider"><!-- 2021.03.15  ui_carousel_slider 삭제-->
                                 <div class="indi-wrap">
                                     <ul class="indi-conts ui_carousel_dots">
                                         <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1289,9 +898,9 @@
                     <div class="tit-wrap">
                         <h3 class="set-tit">이미 케어솔루션을 이용하고 계신가요?</h3>
                     </div>
-                    <div class="slide-wrap ui_carousel_slider ui_carousel_m1_slider">
+                    <div class="slide-wrap ui_carousel_m1_slider"><!-- 2021.03.15  ui_carousel_slider 삭제-->
                         <div class="indi-wrap">
-                            <ul class="indi-conts ui_carousel_dots">
+                            <ul class="indi-conts ui_carousel_dots" style="display: none;">
                                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                             </ul>
                         </div>
@@ -1320,8 +929,8 @@
                             </ul>
                         </div>
                         <div class="slide-controls">
-                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            <button type="button" class="btn-arrow prev ui_carousel_prev" style="display: none;"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_carousel_next" style="display: none;"><span class="blind">다음</span></button>
                         </div>
                     </div>
                 </div>

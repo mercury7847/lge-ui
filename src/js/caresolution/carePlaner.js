@@ -207,8 +207,8 @@
             '           <div class="tit-info">'+
             '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
             '               <div class="etc-info">'+
-            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelCd}}</span>'+
-            '                   <span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>'+
+            '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelName}}</span>'+
+            '                   {{#if item.colorOption}}<span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>{{/if}}'+
             '               </div>'+
             '           </div>'+
             '           <div class="etc-info">'+
@@ -224,25 +224,6 @@
             '   {{/each}}'+
             '   </li>'+
             '</ul>'+
-            '</div>';
-        
-        var _estimatePriceTemplate = 
-            '<div class="estimate-price">'+
-                '<dl>'+
-                    '<dt>기본 이용 요금</dt>'+
-                    '<dd>{{totalPrice}}</dd>'+
-                '</dl>'+
-                '<dl>'+
-                    '<dt>결합 할인</dt>'+
-                    '<dd class="sale">{{totalTrans}}</dd>'+
-                '</dl>'+
-                '<dl class="total">'+
-                    '<dt>최종 이용 요금</dt>'+
-                    '<dd>{{usedPrice}}</dd>'+
-                '</dl>'+
-                '<a href="{{requestUrl}}" class="btn block"}}">'+
-                    '<span>청약 신청하기</span>'+
-                '</a>'+
             '</div>';
             
 
@@ -314,36 +295,41 @@
 
         $categoryTabCtrler = new vcui.ui.SmoothScrollTab('.ui_smoothScroll_tab');
 
-        $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                        
-                    }
-                },
-                {
-                    breakpoint: 1090,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 2, 
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: "unslick"
-                }
-            ]
+        $(window).on('breakpointchange', function(e){
+            var breakpoint = window.breakpoint;    
+            if(breakpoint.name == 'pc'){    
+                $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel({
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1090,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2, 
+                                slidesToScroll: 2
+                            }
+                        }
+                    ]
+                });   
+                $('.contents.care-plan').find('.ui_carousel_slider .slide-controls').show();
+            }else if(breakpoint.name == 'mobile'){    
+                $('.contents.care-plan').find('.ui_carousel_slider').vcCarousel('destroy');    
+                $('.contents.care-plan').find('.ui_carousel_slider .slide-controls').hide();                        
+            }    
         });
+        $(window).trigger('breakpointchange');
     }
 
     function eventBind(){
@@ -390,32 +376,49 @@
             var togglewrap = $(this).closest('.ui_active_toggle_wrap');
 
             togglewrap.toggleClass('active');
-
+            
             if(togglewrap.hasClass('active')){
                 lgkorUI.resetFlexibleBox();
-            };
+            } ;
         });
 
+        $putItemContainer.find('.ui_active_toggle').off('click').on('click', function(e){
+            e.preventDefault();
+            
+            var isOpen = !$(this).data('isOpen');
+            setMobilePutItemBoxStatus(isOpen, true);
+        })
 
         //카드 할인 드롭다운 선택
         $('#pop-estimate').on('click','.alliance-card .select-list li a', function(e){
             e.preventDefault();
             
             var $this = $(this);
-            var _id = $this.attr('href').replace("#","");
             var $dropDown = $this.parents('.ui_dropdown');
-            $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
+            var cardId = $this.data("cardId");
+            var selectext = cardId == "" ? $('#pop-estimate').data("cardDescription") : $this.attr('data-card-title');
+            $dropDown.find('a.ui_dropdown_toggle').text(selectext);
             
             $dropDown.vcDropdown("close");
 
             var maxCardSale = $this.attr('data-card-sale');
-            if(maxCardSale > 0) $('#pop-estimate').find('.alliance-card .price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
-            else $('#pop-estimate').find('.alliance-card .price').hide();
-        }).on('click', '.estimate-price a', function(e){
+            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
+            else $('#pop-estimate').find('.discount-price').hide();
+
+            $('#pop-estimate').data("selectId", $this.data('cardId'));
+
+            var sumTotal = parseInt($('#pop-estimate').data("sumPrice"));
+            var sum =  sumTotal - maxCardSale;
+            var addCommaSum = vcui.number.addComma(sum);
+            $('#pop-estimate').find(".estimate-usedPrice").text("월 " + addCommaSum + "원");
+
+            console.log("sumTotal:" + sum)
+
+
+        }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
 
-            var href = $(this).attr('href');
-            sendRequestConfirm(href);
+            sendRequestConfirm();
         });
 
         $(window).on("scroll", function(){
@@ -431,9 +434,34 @@
         });
     }
 
-    function sendRequestConfirm(url){
+    function setMobilePutItemBoxStatus(isOpen, anim){
+        var wraptop;
+        var item = $putItemContainer.find('.ui_active_toggle');
+        if(isOpen){
+            wraptop = 0;
+            item.css({transform:'rotate(0deg)'});
+        } else{
+            wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
+            item.css({transform:'rotate(180deg)'});
+        }
+        item.data('isOpen', isOpen);
+
+        if(breakpoint.name == 'mobile'){
+            if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
+            else $putItemContainer.css({top:wraptop});
+        }
+    }
+
+    function sendRequestConfirm(){
         lgkorUI.showLoading();
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, {}, function(result){
+
+        var url = $('#pop-estimate').data('requestUrl');
+        var sendata = {
+            rtModelSeq: $('#pop-estimate').data('rtModelSeq'),
+            easyRequestCard: $('#pop-estimate').data('selectId')
+        }
+
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(url, sendata, function(result){
             lgkorUI.hideLoading();
             
             var alert = result.data.alert;
@@ -475,7 +503,7 @@
             } else {
                 window.location.href = result.data.sendUrl;
             }
-        });
+        }, "POST");
     }
 
     //카테고리 로드...
@@ -484,7 +512,7 @@
         
         if(!_isDirectCare && _careCateId){
             var uitab = $fixedTab.find('.service_tab').vcTab('instance');
-            uitab.select(1, true);
+            uitab.select(_careCateId.tabId, true);
         }
 
         var tabID = getTabID();
@@ -494,7 +522,7 @@
 
             var selectId = 0;
             for(var id in result.data){
-                if(!_isDirectCare && _careCateId === result.data[id].categoryID){
+                if(!_isDirectCare && _careCateId && _careCateId.tabCategoryId === result.data[id].categoryID){
                     _isDirectCare = true;
                     selectId = id;
                 }
@@ -551,6 +579,19 @@
             $prodListContainer.find('> ul.inner').empty();
 
             addProdItemList();
+
+            if(_careCateId && _careCateId.tabModelId) {
+                var findArr = vcui.array.filter(result.data.productList, function(item, index) {
+                    return (item.modelId == _careCateId.tabModelId);
+                });
+                if(findArr.length > 0) {
+                    var findModel = JSON.parse(JSON.stringify(findArr[0]));
+                    if(_careCateId.tabRtModelSeq) {
+                        findModel.rtModelSeq = _careCateId.tabRtModelSeq;
+                    }
+                    requestAddPutItem(findModel);
+                }
+            }
         });
     }
 
@@ -728,6 +769,19 @@
         requestPutItem(sendata);
     }
 
+    function requestAddPutItem(data){
+        var itemList = _putItemList.concat();
+        itemList.unshift(data);
+
+        var sendata = {
+            tabID: getTabID(),
+            itemList: JSON.stringify(itemList)
+        }
+        
+        requestPutItem(sendata);
+
+    }
+
     //담기 삭제...
     function removePutItem(id){
         console.log(id)
@@ -747,7 +801,6 @@
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_putItemUrl, sendata, function(result){
-            lgkorUI.hideLoading();
             
             if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
@@ -870,6 +923,8 @@
     function openPutItemBox(){
         putItemStatus("open");
 
+        setMobilePutItemBoxStatus(false, false);
+
         $putItemContainer.stop().transition({y:0}, 550, "easeInOutCubic");
         $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 16}, 550, 'easeInOutCubic');
 
@@ -927,12 +982,17 @@
                 return;
             }
 
-            console.log(result)
-
             var estimatePrice = $('#pop-estimate').find('.estimate-price');
-            var newelement = vcui.template(_estimatePriceTemplate, result.data.priceInfo);
-            estimatePrice.after(newelement);
-            estimatePrice.remove();
+            for(var str in result.data.priceInfo) estimatePrice.find('.estimate-'+str).text(result.data.priceInfo[str]);
+
+            $('#pop-estimate').data("requestUrl", result.data.priceInfo.requestUrl);
+            $('#pop-estimate').data("sumPrice", result.data.priceInfo.sumPrice);
+
+            $('#pop-estimate').find('.tooltip-wrap .tooltip-box a').attr('href', result.data.paymentInfo.discountUrl);
+
+            var modelist = [];
+            for(var idx in result.data.itemList) modelist.push(result.data.itemList[idx].csmsRtModelSeq);
+            $('#pop-estimate').data("rtModelSeq", modelist.join(","));
 
          
             var $cardInfo = $('#pop-estimate').find('.alliance-card');
@@ -942,7 +1002,8 @@
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                var cardItemTemplate = '<li><a href="#" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
                         selectList.append(vcui.template(groupItemTemplate,obj));
@@ -957,6 +1018,10 @@
                         });
                     }
                 });
+
+                $('#pop-estimate').data("cardDescription", result.data.paymentInfo.cardDescription);
+                $cardInfo.find('.ui_dropdown a.ui_dropdown_toggle').text(result.data.paymentInfo.cardDescription);
+
                 $cardInfo.show();
             } else {
                 $cardInfo.hide();

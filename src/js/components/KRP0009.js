@@ -51,9 +51,9 @@ $(window).ready(function(){
 
             $(window).on('changeCategory.KRP0009', function(e,data){
                 if(data){
-                    var $li = $items.filter('[data-link-name="'+data.linkName+'"]' );
+                    var $li = $component.find('.tab-menu-belt li a[data-link-name="'+data.linkName+'"]' );
                     if($li.length > 0) {
-                        $li.find('a').text(data.title);
+                        $li.text(data.title);
                     }
                 }
             });
@@ -61,8 +61,8 @@ $(window).ready(function(){
             //jsw
             //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
             $(window).on('changeButton.KRP0009', function(e,data){
-                var btn = $component.find("a.extra-menu");
-                //var btn = $component.find("#extraBtn");
+                //var btn = $component.find("a.extra-menu");
+                var btn = $component.find("#extraBtn");
                 if(data) {
                     btn.find('span').text(data.title);
                     if(data.disabled) {
@@ -73,8 +73,8 @@ $(window).ready(function(){
                 }
             });
 
-            $component.find("a.extra-menu").on('click', function(e){
-            //$component.find("#extraBtn").on('click', function(e){
+            //$component.find("a.extra-menu").on('click', function(e){
+            $component.find("#extraBtn").on('click', function(e){
                 e.preventDefault();
 
                 if(!$(this).hasClass("disabled")) $(window).trigger("sendExtraAction.KRP0009");
@@ -144,13 +144,14 @@ $(window).ready(function(){
         }
 
         function setSubStickyStatus(){
-            //console.log("setSubStickyStatus:", selectIdx);
             var chk = false;
-            // if(selectIdx < 0){
-            //     if(prevIdx < 1) chk = true;
-            // } else if(selectIdx == 0) chk = true;
+            if(selectIdx < 0){
+                if(prevIdx < 1) chk = true;
+            } else if(selectIdx == 0) chk = true;
 
-            if(selectIdx < 1) chk = true;
+            //if(selectIdx < 1) chk = true;
+
+            console.log(prevIdx, selectIdx, chk)
 
             if(chk) $subSticky.show().find('.inner').slideDown(150);
             else $subSticky.find('.inner').slideUp(150, function(){$subSticky.hide()});;

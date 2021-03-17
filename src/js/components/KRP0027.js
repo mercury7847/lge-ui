@@ -42,7 +42,6 @@ $(window).ready(function(){
 							'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>'+
 						'</div>'+
 					'</div>'+
-					'<div class="caption">{{storyTitle}}</div>'+
 				'</div>'+
 				'{{/if}}'+
 			'</div>'+
@@ -62,7 +61,7 @@ $(window).ready(function(){
 					'<p class="date">{{baseDate}}</p>'+
 					'<div class="share-area">'+
 						'<div class="tooltip-wrap share">'+
-							'<a href="#n" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget"><span class="blind">제품 공유하기</span></a>'+
+							'<a href="#n" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>'+
 							'<div class="tooltip-box fixed-right" aria-hidden="true" style="display: none;">'+
 								'<span class="title">공유</span>'+
 								'<div class="sns-wrap">'+
@@ -166,7 +165,7 @@ $(window).ready(function(){
             });
             $(window).scroll(function(){
                 if(window.breakpoint.name == "mobile"){
-                    setContListScrolled()
+                    setContListScrolled();
                 }
             })
 
@@ -178,6 +177,10 @@ $(window).ready(function(){
                 e.preventDefault();
 
                 toggleVideoInfo();
+            }).on('click', '.controller-wrap button', function(e){
+                e.preventDefault();
+
+                toggleVideoCtrl(this);
             });
             $('.video-list-wrap').on('click', '.video-list li a', function(e){
                 e.preventDefault();
@@ -185,6 +188,31 @@ $(window).ready(function(){
                 var storyID = $(this).data('storyId');
                 setViewContents(storyID);
             });
+
+            $(window).on('resize', function(){setContListScrolled();})
+        }
+
+        function toggleVideoCtrl(ctrl){
+            var video = $(ctrl).parent().siblings('video').get(0);
+            var name = $(ctrl).attr('name');
+            var newname, newtext;
+            if(name == 'pause'){
+                newname = "play";
+                newtext = $(ctrl).data("playText");
+
+                $(ctrl).removeClass('pause').addClass('play');
+
+                video.pause();
+            } else{
+                newname = "pause";
+                newtext = $(ctrl).data("pauseText");
+
+                $(ctrl).removeClass('play').addClass('pause');
+
+                video.play();
+            }
+
+            $(ctrl).attr('name', newname).text(newtext);
         }
 
         function toggleVideoInfo(){
@@ -226,6 +254,7 @@ $(window).ready(function(){
     
                 var templateList = vcui.template(viewerTemplate, data);
                 $('.video-wrap').append(templateList);
+                $('.video-wrap').find('.ui_tooltip-target').vcTooltipTarget();
     
                 $('#match-models .pop-conts').empty();
                 for(var key in data.modelList){
@@ -249,11 +278,28 @@ $(window).ready(function(){
                         scrolldist = listheight - wrapheight - 10;
 
                         if(scrolltop >= scrolldist) getList = true;
+
+                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                     } else{
                         scrolltop = $(window).scrollTop();
                         contop = contList.offset().top;
                         wrapheight = contList.height();
                         if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
+
+                        var videotop = $('.video-wrap').offset().top;
+                        if(-scrolltop + videotop < 0){
+                            var innerwidth = $('.video-wrap').find('.video-inner').width();
+                            var innerheight = $('.video-wrap').find('.video-inner').height();
+                            $('.video-wrap').css({paddingTop:innerheight}).find('.video-inner').css({
+                                position: 'fixed',
+                                top:0,
+                                height: innerheight,
+                                width: innerwidth,
+                                zIndex: 10
+                            })
+                        } else{
+                            $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        }
                     }
 
                     if(getList) setContentsList(REQUEST_MODE_SCROLL, page+1);

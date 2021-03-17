@@ -271,6 +271,11 @@
                     @include mobile {
                         margin-bottom:40px;
                     }
+                    .bullet-list {
+                        .b-txt {
+                            word-break:break-all;
+                        }
+                    }
                     .info-tit-wrap {
                         display: flex;
                         justify-content: space-between;
@@ -491,7 +496,7 @@
                             display:inline-block;
                             position:static;
                             width:auto;
-                            margin-top:16px;
+                            margin-top:24px;
                             -webkit-transform:translateY(0%);
                             transform:translateY(0%);
                         }

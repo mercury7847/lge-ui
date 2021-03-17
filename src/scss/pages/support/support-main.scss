@@ -319,6 +319,7 @@
     // 상단 로그인 툴팁 박스
     .tooltip {
         &-login {
+            display: block;
             max-width:1920px;
             margin:0 auto;
             background-image: linear-gradient(92deg, #9c86e7, #ff537c 97%);
@@ -442,7 +443,6 @@
 
     //히어로 or 제품 지원 영역 상단
     .home-cont-top {
-        display: none;
         position: absolute;
         top:48px; 
         left:0;
@@ -460,6 +460,7 @@
             text-align: left;
         }
         .btn-fast-support {
+            display: none;
             margin-left:24px;
         }
 

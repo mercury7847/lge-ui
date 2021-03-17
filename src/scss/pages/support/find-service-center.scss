@@ -292,9 +292,9 @@
 
                 }
                 .desc {
-                    padding:0 0 12px;
-                    border-bottom: 2px solid $color-default;
-                    @include font-small;
+                    padding:0 0 16px;
+                    border-bottom: 1px solid #666;
+                    font-size:16px;
                     color: $color-default;
                     font-weight: $font-weight-bold;
 
@@ -406,12 +406,12 @@
                             }
                             
                             .addr {
-                                margin-top:16px;
-                                color:#616161;
+                                margin-top:8px;
+                                color:#000;
                                 font-size:16px;
-                                line-height:24px;
+                                line-height:26px;
                                 overflow:hidden; 
-                                max-height:48px;
+                                max-height:52px;
                                 text-overflow:ellipsis;
                                 word-break:break-all;
                                 -moz-line-clamp:2;
@@ -531,7 +531,7 @@
                         bottom: 0;
                         left: 40px;
                         width: calc(100% - 80px);
-                        height: 2px;
+                        height: 1px;
                         background-color: $color-default;
                         @include mobile {
                             width: calc(100% - 36px);
@@ -847,22 +847,17 @@
 
         .point {
             position:relative;
-            width:34px;
-            height:48px;
-            background:url('/lg5-common/images/icons/icon-point-off.svg') no-repeat;
-            background-size:34px 48px;
+            width:40px;
+            height:40px;
+            background:url('/lg5-common/images/CS/icon-store-off-40.svg') no-repeat;
+            background-size:40px 40px;
             text-align:center;
             
-            @include csmobile {
-                width:31px;
-                height:44px;
-                background-size:31px 44px;
-            }
             .num {
                 display:inline-block;
-                margin-top:8px;
-                color:#979797;
-                font-size:12px;
+                margin-top:6px;
+                color:#666;
+                font-size:13px;
                 line-height:16px;
                 font-weight:700;
                 @include csmobile {
@@ -870,11 +865,8 @@
                 }
             }
             &.on {
-                background:url('/lg5-common/images/icons/icon-point-on.svg') no-repeat;
-                background-size:34px 48px;
-                @include csmobile {
-                    background-size:31px 44px;
-                }
+                background:url('/lg5-common/images/CS/icon-store-on-40.svg') no-repeat;
+                background-size:40px 40px;
                 .num {
                     color:#EC455A;
                 }
@@ -898,8 +890,8 @@
                 overflow:hidden;
             }
             @include tablet {
-                top: 279px;
-                height: calc(100vh - 356px);
+                top: 270px;
+                height: calc(100vh - 347px);
                 z-index:10 !important;
 
                 &.active {
@@ -908,11 +900,11 @@
                 }
             }
             @include mobile {
-                top:333px;
-                height:calc(100vh - 388px);
+                top:326px;
+                height:calc(100vh - 381px);
                 &.local-map {
-                    top:385px;
-                    height:calc(100vh - 388px);
+                    top:378px;
+                    height:calc(100vh - 381px);
                 }
 
             }
@@ -924,8 +916,8 @@
             top:0;
             right:0;
             bottom:0;
-            height:100%;
-            width: 100vw;
+            height:100% !important;
+            width:100% !important;
 
             .point-wrap {
                 display:block;
@@ -943,10 +935,12 @@
                         width:320px;
                         padding:20px;
                     }
-                    .name {
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:700;
+                    .tit-wrap {
+                        .name {
+                            font-size:18px;
+                            line-height:24px;
+                            font-weight:700;
+                        }
                     }
                     .adress {
                         margin-top:8px;
@@ -1083,6 +1077,11 @@
     }
     .bullet-list {
         margin-top: 0;
+        color:#666;
+
+        .b-txt:before {
+            background-color: #666;
+        }
     }
     .cell {
         position: relative;
@@ -1090,8 +1089,8 @@
     @media screen and (min-width: 1280px) {
         .cell {
             &:nth-child(n+2) {
-                margin-left: 48px;
-                padding-left: 49px;
+                margin-left: 40px;
+                padding-left: 41px;
                 &::before {
                     content: '';
                     display: block;
@@ -1269,6 +1268,7 @@
                                         display: flex;
                                         align-items: center;
                                         flex-wrap: wrap;
+                                        font-weight:500;
                                         .key {
                                             color: #000;
                                         }
@@ -1751,9 +1751,11 @@
         }
         .opt-list {
             margin-top:12px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             li {
                 display:inline-block;
-                margin-left:32px;
                 padding:0;
                 vertical-align:top;
                 &:first-child {
@@ -1764,6 +1766,7 @@
                     display:block;
                     width:48px;
                     height:48px;
+                    margin:0 auto;
                     border-radius:50%;
                     background-color:#f4f4f4;
                     background-repeat:no-repeat;
@@ -1773,6 +1776,7 @@
                 .name {
                     display:block;
                     @include font-x-small;
+                    font-weight:500;
                     text-align:center;
                 }
                 &.opt-mobile:before {
@@ -1788,11 +1792,6 @@
                     background-image:url(/lg5-common/images/icons/icon_expendables.svg);
                 }
             }
-            @include mobile {
-                li {
-                    margin-left: 24px;
-                }
-            }
         }
     }
 }
@@ -1803,8 +1802,8 @@
         .map-container {
             &.result-map {
                 .store-map-con {
-                    top: 125px;
-                    height:calc(100vh - 181px);
+                    top: 123px;
+                    height:calc(100vh - 179px);
                 }
             }
         }

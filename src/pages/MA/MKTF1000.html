@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-		pageCSS: ["MA/MA"]
+		pageCSS: ["MA/MA"],
+        pageTitle: "엘지이닷컴 | LG전자",
+        pageDesc: "차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다."
     })
 <body>
 	<div class="wrap">
         @@include('./common/header.html', {
-            "mobileCase": "main"
+            "mobileCase": "main",
+            hiddenTitle: "엘지이닷컴"
         })
 
 		<div class="container">
 			<div class="contents">
 				<div class="main-wrap">
                     <div class="scene-cover">
+                        <!-- 210312_전체소스변경 -->
                         <div class="scene">
+                            <!-- 210316_반응형이미지수정 -->
                             <div class="img">
-                                <img src="/lg5-common/images/MA/img-main-01.jpg" alt="">
+                                <img src="/lg5-common/images/MA/img-main-00.jpg"  data-pc-src="/lg5-common/images/MA/img-main-00.jpg" data-m-src="/lg5-common/images/MA/img-main-00-m.jpg" alt="">
+                                <!-- 동영상 가이드 -->
                                 <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
                             </div>
-                            <!-- 210306_문구수정 -->
-                            <!-- 210309_문구수정 -->
+
+                            <!-- //210316_반응형이미지수정 -->
                             <div class="text-cont">
-                                <p>혁신이 만들어낸<br>TV이상의, 作</p>
+                                <p><a href="/lg-object-collection"><span class="opac">오브제로</span><br>인테리어하다</a></p>
                             </div>
-                            <!-- //210309_문구수정 -->
                             <div class="text-link">
-                                <a href="#"><span class="opac">차원이 다른</span><br>LG 올레드 TV</a>
+                                <a href="#">Object Collection</a>
                             </div>
-                            <!-- //210306_문구수정 -->
                             <div class="counter">
                                 <span class="num"><span class="blind">현재위치</span>1</span>/<span class="num"><span class="blind">전체갯수</span>6</span>
                             </div>
@@ -36,9 +40,11 @@
                             </div>
                         </div>
                         <div class="scene">
-                            <div class="img"><img src="/lg5-common/images/MA/img-main-02.jpg" alt=""></div>
+                            <!-- 210316_반응형이미지수정 -->
+                            <div class="img"><img src="/lg5-common/images/MA/img-main-02.jpg"  data-pc-src="/lg5-common/images/MA/img-main-02.jpg" data-m-src="/lg5-common/images/MA/img-main-02-m.jpg" alt=""></div>
+                            <!-- //210316_반응형이미지수정 -->
                             <div class="text-cont">
-                                <p><a href="/lg-object-collection"><span class="opac">처음 만나는<br>공간 인테리어 가전</span><br>LG Objet Collection</a></p> <!-- 210306_문구및링크수정 -->
+                                <p><a href="/lg-object-collection"><span class="opac">처음 만나는</span><br>공간 인테리어 가전</a></p>
                             </div>
                             <div class="flow-banner">
                                 <div class="slide-wrap ui_carousel_slider_banner1">
@@ -122,11 +128,34 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                        </div>                   
+                        </div>
                         <div class="scene">
+                            <!-- 210316_반응형이미지수정 -->
+                            <div class="img"><img src="/lg5-common/images/MA/img-main-01.jpg"  data-pc-src="/lg5-common/images/MA/img-main-01.jpg" data-m-src="/lg5-common/images/MA/img-main-01-m.jpg" alt=""></div>
+                            <!-- //210316_반응형이미지수정 -->
+                            <!-- 210306_문구수정 -->
+                            <!-- 210309_문구수정 -->
+                            <div class="text-cont">
+                                <p><span class="opac">스스로 빛나는<br>올레드TV로</span><br>세상을 마주하세요</p>
+                            </div>
+                            <!-- //210309_문구수정 -->
+                            <div class="text-link">
+                                <a href="#">LG 올레드 TV</a>
+                            </div>
+                            <!-- //210306_문구수정 -->
+                            <div class="counter">
+                                <span class="num"><span class="blind">현재위치</span>3</span>/<span class="num"><span class="blind">전체갯수</span>6</span>
+                            </div>
+                            <div class="next-arr">
+                                <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
+                            </div>
+                        </div>
+                        <!-- //210312_전체소스변경 -->
+                        <!-- 210312_삭제 -->
+                        <!-- <div class="scene">
                             <div class="img"><img src="/lg5-common/images/MA/img-main-03.jpg" alt=""></div>
                             <div class="text-cont">
-                                <p><a href="/care-solutions"><span class="opac">우리집 가전을<br>걱정없이</span><br>늘 새 것처럼?</a></p> <!-- 210306_링크삽입 -->
+                                <p><a href="/care-solutions"><span class="opac">우리집 가전을<br>걱정없이</span><br>늘 새 것처럼?</a></p> <!-- 210306_링크삽입 --
                             </div>
                             <div class="flow-banner">
                                 <div class="slide-wrap ui_carousel_slider_banner2">
@@ -134,9 +163,9 @@
                                         <div class="flow-bar" style="width:10%;"></div>
                                     </div>
                                     <div class="slide-content ui_carousel_list">
-                                        <!-- 210306_수정(배너갯수/링크삽입/문구수정) -->
+                                        <!-- 210306_수정(배너갯수/링크삽입/문구수정) --
                                         <ul class="slide-track ui_carousel_track">
-                                            <!-- slide -->
+                                            <!-- slide --
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="thumb">
                                                     <img src="/lg5-common/images/MA/img-main-banner-01.jpg" alt="">
@@ -148,7 +177,7 @@
                                                 </a>
                                             </li>
                                             <!-- //slide -->
-                                            <!-- slide -->
+                                            <!-- slide --
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="thumb">
                                                     <img src="/lg5-common/images/MA/img-main-banner-02.jpg" alt="">
@@ -160,7 +189,7 @@
                                                 </a>
                                             </li>
                                             <!-- //slide -->
-                                            <!-- slide -->
+                                            <!-- slide --
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="thumb">
                                                     <img src="/lg5-common/images/MA/img-main-banner-01.jpg" alt="">
@@ -172,7 +201,7 @@
                                                 </a>
                                             </li>
                                             <!-- //slide -->
-                                            <!-- slide -->
+                                            <!-- slide --
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="thumb">
                                                     <img src="/lg5-common/images/MA/img-main-banner-02.jpg" alt="">
@@ -183,9 +212,9 @@
                                                     </span>
                                                 </a>
                                             </li>
-                                            <!-- //slide -->
+                                            <!-- //slide --
                                         </ul>
-                                        <!-- 210306_수정(배너갯수/링크삽입/문구수정) -->
+                                        <!-- 210306_수정(배너갯수/링크삽입/문구수정) --
                                     </div>
                             
                                     <div class="slide-controls">
@@ -200,9 +229,12 @@
                             <div class="next-arr">
                                 <a href="#" class="arr"><span class="blind">다음 테마관 이동</span></a>
                             </div>
-                        </div>
+                        </div> -->
+                        <!-- //210312_삭제 -->
                         <div class="scene">
-                            <div class="img"><img src="/lg5-common/images/MA/img-main-04.jpg" alt=""></div>
+                            <!-- 210316_반응형이미지수정 -->
+                            <div class="img"><img src="/lg5-common/images/MA/img-main-04.jpg"  data-pc-src="/lg5-common/images/MA/img-main-04.jpg" data-m-src="/lg5-common/images/MA/img-main-04-m.jpg" alt=""></div>
+                            <!-- //210316_반응형이미지수정 -->
                             <div class="text-cont">
                                 <p><span class="opac">에어컨을 넘어</span><br>에어퀄리티 시대</p> <!-- 210306_문구수정 -->
                             </div>
@@ -217,7 +249,9 @@
                             </div>
                         </div>
                         <div class="scene">
-                            <div class="img"><img src="/lg5-common/images/MA/img-main-05.jpg" alt=""></div>
+                            <!-- 210316_반응형이미지수정 -->
+                            <div class="img"><img src="/lg5-common/images/MA/img-main-05.jpg"  data-pc-src="/lg5-common/images/MA/img-main-05.jpg" data-m-src="/lg5-common/images/MA/img-main-05-m.jpg" alt=""></div>
+                            <!-- //210316_반응형이미지수정 -->
                             <div class="text-cont">
                                 <p><span class="opac">공기청정을 넘어</span><br>새로운 공간 청정의 시작</p> <!-- 210306_문구수정 -->
                             </div>
@@ -232,7 +266,9 @@
                             </div>
                         </div>
                         <div class="scene">
-                            <div class="img"><img src="/lg5-common/images/MA/img-main-06.jpg" alt=""></div>
+                            <!-- 210316_반응형이미지수정 -->
+                            <div class="img"><img src="/lg5-common/images/MA/img-main-06.jpg"  data-pc-src="/lg5-common/images/MA/img-main-06.jpg" data-m-src="/lg5-common/images/MA/img-main-06-m.jpg" alt=""></div>
+                            <!-- //210316_반응형이미지수정 -->
                             <div class="text-cont">
                                 <p>[TBD]두근두근<br>사랑가득<br>우리집은?</p> <!-- 210306_문구수정 -->
                             </div>
