@@ -172,17 +172,18 @@
                     justify-content: center;
                     background-color: #fff;
                     padding: 0 12px;
+                    color:#aaa;
                     &:before {
                         content:counter(counter);
                         display:inline-block;
                         width:32px;
                         height:32px;
                         margin-right: 12px;
-                        color:$color-default;
                         font-size:$font-small;
                         font-weight:$font-weight-bold;
                         line-height:32px;
                         border-radius:50%;
+                        color:#aaa;
                         background-color:#e4e4e4;
                     }
                     &:first-child {
@@ -208,6 +209,14 @@
                         @include font-small;
                         font-weight:$font-weight-bold;
                         white-space:nowrap;
+                    }
+
+                    &.on {
+                        color:#000;
+
+                        &:before {
+                            color:#000;
+                        }
                     }
                 }
                 &::before {
