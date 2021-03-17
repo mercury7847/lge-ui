@@ -443,7 +443,6 @@
 
     //히어로 or 제품 지원 영역 상단
     .home-cont-top {
-        display: none;
         position: absolute;
         top:48px; 
         left:0;
@@ -461,6 +460,7 @@
             text-align: left;
         }
         .btn-fast-support {
+            display: none;
             margin-left:24px;
         }
 
