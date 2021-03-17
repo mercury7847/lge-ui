@@ -605,7 +605,7 @@ var isApp = function(){
                     $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
                 }
                 
-            })   
+            }); 
         },
 
     

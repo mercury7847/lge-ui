@@ -352,6 +352,7 @@ var res = {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
+					"계약현황-해지 상담 신청 내 팝업" : ["/html/MYC/ACCF7055_popup.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
 					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]

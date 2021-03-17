@@ -112,6 +112,7 @@
                 formData.append(key, param[key]);
             }
 
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxFileData(url, formData, function(result) {
                 var data = result.data;
 
@@ -119,6 +120,8 @@
                     result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                     self.$submitForm.submit();
                 } else {
+                    lgkorUI.hideLoading();
+                    
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
