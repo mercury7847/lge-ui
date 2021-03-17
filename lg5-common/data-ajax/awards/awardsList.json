@@ -39,7 +39,8 @@
                 "storyUrl": "#",
                 "modelCnt": 2,
                 "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
-                "categoryName": "주방가전"
+                "categoryName": "주방가전",
+                "sitemapLinkPath":"#"
             },
             {
                 "storyId": "ST00003004",
@@ -53,7 +54,8 @@
                 "storyUrl": "#",
                 "modelCnt": 2,
                 "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
-                "categoryName": "주방가전"
+                "categoryName": "주방가전",
+                "sitemapLinkPath":"#"
             },
             {
                 "storyId": "ST00003004",
@@ -65,7 +67,8 @@
                 "storyUrl": "#",
                 "modelCnt": 2,
                 "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
-                "categoryName": "주방가전"
+                "categoryName": "주방가전",
+                "sitemapLinkPath":"#"
             }
         ]
     }

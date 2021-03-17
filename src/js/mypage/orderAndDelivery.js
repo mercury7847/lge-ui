@@ -1610,6 +1610,7 @@
 
         var sendata = {
             confirmType: "bank",
+            bankUser: $('#'+popname).data('bankAccountNm'),
             bankNumber: $('#'+popname).find('.bank-input-box input').val(),
             bankName: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
@@ -1754,6 +1755,7 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
+                popup.data("bankAccountNm", result.data.payment.bankAccountNm);
                 popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.payment.bankAccountNm);
 
                 bankInfoBlock.show();
