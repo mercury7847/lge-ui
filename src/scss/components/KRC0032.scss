@@ -145,13 +145,18 @@
                 }
                 &.type-narrow {
                     .inner {
-                        @include boxs(n);
+                        // @include boxs(n);
+                        max-width:49.2%;
                     }
                 }
 
                 &.box-align-left {
                     .inner {
                         margin-right:auto;
+                        padding-left:2.5%;
+                        @include mobile {
+                            padding-left:0;
+                        }
                     }
                 }
                 &.box-align-center {
