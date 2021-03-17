@@ -228,16 +228,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 $(item).data('subwidth', categorywidth);
                 $(item).on('mouseover focus', '> a', function(e){
+                    e.preventDefault();
                     self._setOver(idx, -1);
                 }).on('mouseout', '> a', function(e){    
-                    self._setOut();
+                    //self._setOut();
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
                     $(child).on('mouseover focus', '> a, focus', function(e){
+                        e.preventDefault();
                         self._setOver(idx, cdx);
                     }).on('mouseout', '> a', function(){
-                        self._setOut();
+                        //self._setOut();
                     });
 
                     self._addCarousel($(child).find('.ui_carousel_slider'));
@@ -249,17 +251,26 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             $('.nav-wrap .nav-inner').on('mouseover', function(e){
                 self._removeOutTimeout();
             }).on('mouseout', function(e){
-                self._setOut();
+                //self._setOut();
             });
+
+            $('header').on('mouseleave', function(){
+                // console.log('leave')
+                self._setOut();
+            })
+
+            $('.nav-category-inner').on('mouseleave',function(){
+                self._setOut();
+            })
 
             self.$leftArrow.on('click', function(e){
                 e.preventDefault();
-
+                e.stopPropagation();
                 self._setNavPosition(1);
             });
             self.$rightArrow.on('click', function(e){
-                e.preventDefault();
-
+                e.preventDefault();               
+                e.stopPropagation();
                 self._setNavPosition(-1);
             });
 
@@ -357,9 +368,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self._removeOutTimeout();
        
-            self.outTimer = setTimeout(function(){
-                self._setOutAction(item);
-            }, 180);
+            //self.outTimer = setTimeout(function(){
+            self._setOutAction(item);
+            //}, 180);
         },
 
         _setOutAction: function(item){
@@ -368,7 +379,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$pcNavItems.each(function(idx, item){
                 var catecontainer = $(item).find('> .nav-category-container');
                 if(catecontainer.length){
-                    catecontainer.stop().animate({width:0}, 150, function(){
+                    catecontainer.stop().animate({width:0}, 300, function(){
                         self._setActiveAbled($(item), false);
                         catecontainer.css('display', 'none');
 
