@@ -4,12 +4,16 @@
 }
 .beer-manufacture {
     position: relative;
+    min-height:700px;
     text-align: center;
     @at-root .care-plan .cont-wrap {
         &.beer-manufacture {
             padding:0;
             background-color: #0d0d0f;
         }
+    }
+    @include mobile {
+        min-height:300px;
     }
     img {
         width: 100%;
