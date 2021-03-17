@@ -1610,9 +1610,9 @@
 
         var sendata = {
             confirmType: "bank",
-            bankUser: $('#'+popname).data('bankAccountNm'),
-            bankNumber: $('#'+popname).find('.bank-input-box input').val(),
-            bankName: $('#'+popname).find('.bank-input-box select option:selected').val()
+            paymentUser: $('#'+popname).data('bankAccountNm'),
+            paymentBankNumber: $('#'+popname).find('.bank-input-box input').val(),
+            paymentBank: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
         console.log("### sendBankConfirm ###", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
