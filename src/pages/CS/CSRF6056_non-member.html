@@ -12,16 +12,21 @@
         @@include('./common/header.html')
 
         <div class="container">
+
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '개선해 주세요',
                 'pageDesc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.',
                 'progressArr': [
-                    { 'progress' : '개선 내용 접수'},
-                    { 'progress' : '상담사 확인'},
-                    { 'progress' : '해당 부서 전달'},
-                    { 'progress' : '원인 조사 및 조치'}
+                    { 'progress' : '개선 내용 접수', 'on':'on'},
+                    { 'progress' : '상담사 확인', 'on':'on'},
+                    { 'progress' : '해당 부서 전달', 'on':'on'},
+                    { 'progress' : '원인 조사 및 조치', 'on':'on'}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
+
+            
             <div class="contents support suggestions">
                 <!-- 선택 제품 플로팅바 -->
                 @@include('./common/support/selected-model-bar.html')

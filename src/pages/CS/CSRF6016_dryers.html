@@ -12,14 +12,16 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '의류건조기 전문 상담 예약',
                 'pageDesc': '의류건조기 불편사항에 대해 전문상담사의 상담을 받으실 수 있으며, 상담 과정에서 필요 시 서비스 엔지니어 출장접수도 바로 가능합니다.',
                 'progressArr': [
-                    { 'progress' : '예약 내용 입력'},
-                    { 'progress' : '예약 완료'}
+                    { 'progress' : '예약 내용 입력', 'on':'on'},
+                    { 'progress' : '예약 완료', 'on':''}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             <div class="contents support request-call">
 
                 @@include('./common/support/service-guide.html', {

@@ -154,7 +154,7 @@
                         self.$yearSelect.append('<option value="'+item+'">'+item+'</option>');
                     });
                     self.$yearSelect.vcSelectbox('update');
-                    self.thisYear = year[year.length-1];
+                    self.thisYear = year[0];
                 } else {
                     self.thisYear = "";
                 }

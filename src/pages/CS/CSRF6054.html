@@ -11,17 +11,19 @@
         @@include('./common/header.html')
 
         <div class="container">
-            <!-- 2021.02.04 progressArr 추가 -->
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '칭찬합니다',
                 'pageDesc': '칭찬이나 고마운 마음을 전하실 수 있습니다.',
                 'progressArr': [
-                    { 'progress' : '칭찬 내용 접수'},
-                    { 'progress' : '상담사 확인'},
-                    { 'progress' : '해당 부서 전달'},
-                    { 'progress' : '원인 조사 및 조치'}
+                    { 'progress' : '칭찬 내용 접수', 'on':'on'},
+                    { 'progress' : '상담사 확인', 'on':'on'},
+                    { 'progress' : '해당 부서 전달', 'on':'on'},
+                    { 'progress' : '원인 조사 및 조치', 'on':'on'}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
+            
             <div class="contents support feedback">
                 <!-- 2021.02.04 삭제 -->
                 <!-- <ol class="reception-progress type-1 wrap-type">

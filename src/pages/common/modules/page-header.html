@@ -54,7 +54,7 @@
     <div class="progress-wrap">
         <ol>
             @@for (var i=0; i < context.progressArr.length; i++) {
-                <li><span class="txt">`+progressArr[i].progress+`</span></li>
+                <li class="`+progressArr[i].on+`"><span class="txt">`+progressArr[i].progress+`</span></li>
             }
         </ol>
     </div>
