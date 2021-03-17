@@ -544,23 +544,26 @@
                         background-color:#ddd;
                         vertical-align:middle;
                     }
-                    .star-inner {
+                    a {
                         display:inline-block;
-                        vertical-align:middle;
-                    }
-                    .star-inner,
-                    .star-rating {
-                        position:relative;
-                        width:80px;
-                        height:16px;
-                        background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
-                        background-repeat:no-repeat;
-                        background-size:80px 16px;
+                        .star-inner {
+                            display:inline-block;
+                            vertical-align:middle;
+                        }
+                        .star-inner,
                         .star-rating {
-                            position:absolute;
-                            top:0;
-                            left:0;
-                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                            position:relative;
+                            width:80px;
+                            height:16px;
+                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
+                            background-repeat:no-repeat;
+                            background-size:80px 16px;
+                            .star-rating {
+                                position:absolute;
+                                top:0;
+                                left:0;
+                                background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                            }
                         }
                     }
                     .scope {
