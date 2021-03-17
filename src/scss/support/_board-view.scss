@@ -71,8 +71,13 @@
                         margin-top:10px;
                         display: block;
                         > li {
+                            //float:none;
+                            //padding-left:0;
+                            //margin-left:0;
+                            
                             & + li {
                                 &:before {
+                                    //display: none;
                                     height:10px;
                                 }
                             }
