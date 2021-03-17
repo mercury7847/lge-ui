@@ -5,9 +5,9 @@
 	}
 }
 .cnt02 {
-	margin-top:80px;
+	margin-top:120px;
 	@include mobile {
-		margin-top:40px;
+		margin-top:60px;
 	}
 }
 
@@ -119,11 +119,15 @@
 		padding:0 16px;
 	}
 	.bullet-list {
-		margin-top:48px;
+		margin-top:24px;
+		sup {
+			font-size:6px;
+			line-height:1;
+		}
 		@include mobile {
 			display:inline-block;
 			margin-top:24px;
-			text-align:left;
+			// text-align:left;
 		}
 	}
 	.section {
@@ -140,6 +144,28 @@
 				margin-top:24px;
 				@include mobile {
 					margin-top:12px;
+				}
+			}
+			.dual-type2 {
+				.info {
+					margin:48px auto 0;
+					@include mobile {
+						margin:0;
+					}
+					> li {
+						margin-top:40px;
+					}
+				}
+				.tit {
+					font-size:28px;
+					line-height:38px;
+					@include mobile {
+						font-size:24px;
+						line-height:33px;
+					}
+				}
+				.info {
+					max-width:1192px;
 				}
 			}
 			@include mobile {
@@ -166,9 +192,26 @@
 			}
 		}
 		.desc {
-			margin-top:24px;
+			margin-top:16px;
 			font-size:18px;
-			line-height:30px;
+			line-height:28px;
+			strong {
+				display:block;
+				padding-bottom:6px;
+				font-size:32px;
+				line-height:52px;
+				@include mobile {
+					margin-bottom:16px;
+					font-size:24px;
+					line-height:33px;
+				}
+			}
+			&.strong {
+				margin-top:64px;
+				@include mobile {
+					margin-top:32px;
+				}
+			}
 			&.type2 {
 				margin-top:16px;
 				font-size:16px;
@@ -179,9 +222,9 @@
 			margin-top:32px;
 		}
 		.img {
-			margin-top:32px;
+			margin-top:48px;
 			img {
-				max-width:912px;
+				max-width:1380px;
 				width:100%;
 			}
 			&.logo-img {
@@ -314,12 +357,12 @@
 				}
 			}
 			.desc {
-				font-size:15px;
-				line-height:23px;
+				font-size:14px;
+				line-height:22px;
 				&.type2 {
 					margin-top:8px;
-					font-size:14px;
-					line-height:22px;
+					// font-size:14px;
+					// line-height:22px;
 				}
 			}
 			.btn {
@@ -367,6 +410,7 @@
 		}
 	}
 	.dual-type2 {
+		text-align:center;
 		.img {
 			margin-top:48px;
 			text-align:center;
@@ -382,9 +426,9 @@
 			}
 		}
 		.tit {
-			font-size:28px;
+			font-size:40px;
 			font-weight:700;
-			line-height:38px;
+			line-height:56px;
 		}
 		.desc {
 			margin-top:16px;
@@ -394,9 +438,8 @@
 		.info {
 			display:table;
 			table-layout:fixed;
-			max-width:1192px;
 			width:calc(100% + 48px);
-			margin:48px auto 0;
+			margin:48px -24px 0;
 			border-spacing:24px 0;
 			font-size:0;
 			&.size2 {
@@ -460,7 +503,7 @@
 					// 	margin-top:0;
 					// }
 					@include mobile {
-						margin-top:40px;
+						margin-top:12px;
 					}
 					dl {
 						padding-top:12px;
@@ -497,9 +540,9 @@
 			.text {
 				dl {
 					dt {
-						font-size:28px;
+						font-size:40px;
 						font-weight:700;
-						line-height:38px;
+						line-height:56px;
 					}
 					dd {
 						margin-top:16px;
@@ -516,10 +559,10 @@
 			&.type1 {
 				> div {
 					&:first-child.text {
-						padding:0 48px 0 14%;
+						padding:0 141px 0 0;
 					}
 					&:last-child.text {
-						padding-left:48px;
+						padding-left:141px;
 					}
 				}
 			}
@@ -564,7 +607,7 @@
 					}
 					&.reverse {
 						display:flex;
-						flex-direction: column-reverse;
+						flex-direction:column-reverse;
 						.text:first-child {
 							padding:0;
 						}
@@ -572,18 +615,21 @@
 				}
 				&.type2 {
 					display:flex;
-					flex-direction: column-reverse;
+					flex-direction:column;
 					> div {
 						width:100% !important;
+						&.img {
+							margin-top:32px;
+						}
 						&.text {
 							text-align:center;
 							dl {
 								dt {
-									font-size:20px;
-									line-height:28px;
+									font-size:27px;
+									line-height:38px;
 								}
 								dd {
-									margin-top:8px;
+									margin-top:16px;
 									font-size:14px;
 									line-height:22px;
 								}
@@ -798,7 +844,7 @@
 			}
 		}		
 		@include mobile {
-			margin:60px -16px 0;
+			margin:60px 0 0;
 			.accord-btn {
 				.title {
 					font-size:15px;

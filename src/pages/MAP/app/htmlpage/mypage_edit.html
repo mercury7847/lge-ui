@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0">
+    <title>시공간</title>
+
+    <!-- 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansmyanmar.css" rel="stylesheet">
+    <!-- //웹폰트 -->
+
+    <link href="../resource/css/platform.css" rel="stylesheet">
+
+    <script src="../resource/js/libs/jquery-3.6.0.min.js"></script>
+    <script src="../resource/js/ui-common.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+        <div class="inner">
+            <a href="#" class="btn-back"><span>뒤로가기</span></a>
+            <h1>내 정보 수정</h1>
+        </div>
+    </div>
+    <!-- //Header -->
+
+    <div class="main-cont03">
+        <div class="photo-area">
+            <div>
+                <img src="../resource/images/common/base.png" alt="">
+            </div>
+            <button type="button"><span>사진등록</span></button>
+        </div>
+
+        <div class="form-box">
+            <label for="nickname">닉네임</label>
+            <div class="input-wrap">
+                <input type="text" id="nickname" value="이피컴퍼니">
+            </div>
+
+            <label for="tel">전화번호</label>
+            <div class="input-wrap">
+                <input type="text" id="tel" value="010-7478-2773">
+            </div>
+        </div>
+
+        <div class="opt-box">
+            <div class="inner">
+                <div>
+                    <p>마케팅 수신 동의</p>
+                    <div class="opt-switch">
+                        <label for="marketing">
+                            <input type="checkbox" id="marketing">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <p>푸시 알림 동의</p>
+                    <div class="opt-switch">
+                        <label for="push">
+                            <input type="checkbox" id="push" checked>
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <p><a href="#">회원탈퇴</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btm-menu">
+        <div class="btn-box">
+            <a href="#" class="btn bg-purple"><span>수정 완료</span></a>
+        </div>
+        <div>
+            <a href="#"><i class="ico-home"></i><span>홈</span></a>
+            <a href="#"><i class="ico-game"></i><span>게임</span></a>
+            <a href="#"><i class="ico-map"></i><span>지도</span></a>
+            <a href="#" class="on"><i class="ico-profile"></i><span>프로필</span></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
