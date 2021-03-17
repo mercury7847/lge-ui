@@ -462,6 +462,8 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        lgkorUI.showLoading();
+        
         CTI_REQUEST_KEY = "";
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();

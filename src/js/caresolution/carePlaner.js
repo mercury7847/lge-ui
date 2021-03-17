@@ -438,7 +438,8 @@
         var wraptop;
         var item = $putItemContainer.find('.ui_active_toggle');
         if(isOpen){
-            wraptop = 0;
+            wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
+            if(wraptop < 0) wraptop = 0;
             item.css({transform:'rotate(0deg)'});
         } else{
             wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
@@ -446,7 +447,7 @@
         }
         item.data('isOpen', isOpen);
 
-        if(breakpoint.name == 'mobile'){
+        if(window.breakpoint.name == 'mobile'){
             if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
             else $putItemContainer.css({top:wraptop});
         }
@@ -914,6 +915,10 @@
                 openPutItemBox();
             } else{
                 if($putItemContainer.hasClass('close')) openPutItemBox();
+                else{
+                    var isOpen = $putItemContainer.find('.ui_active_toggle').data('isOpen');
+                    if(isOpen) setMobilePutItemBoxStatus(true, true);
+                }
             }
         } else{
             hidePutItemBox();

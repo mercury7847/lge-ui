@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0">
+    <title>시공간</title>
+
+    <!-- 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansmyanmar.css" rel="stylesheet">
+    <!-- //웹폰트 -->
+
+    <link href="../resource/css/platform.css" rel="stylesheet">
+
+    <script src="../resource/js/libs/jquery-3.6.0.min.js"></script>
+    <script src="../resource/js/libs/swiper-bundle.js"></script>
+    <script src="../resource/js/ui-common.js"></script>
+    <script>
+        $(document).ready(function(){
+            var swiper01 = new Swiper('.main-round-slide-wrap .swiper-container', {
+                effect: "coverflow",
+                loop: true,
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 35,
+                    depth: 215,
+                    modifier: 1,
+                    slideShadows: false
+                }
+            });
+
+            var swiper02 = new Swiper('.main-slide-wrap .swiper-container', {
+                pagination: {
+                    el: '.main-slide-wrap .swiper-pagination'
+                }
+            });
+
+            var swiper03 = new Swiper('.popular-game-slide-wrap .swiper-container, .recommend-game-slide-wrap .swiper-container', {
+                slidesPerView: 'auto',
+                //slidesPerView: 3,
+                spaceBetween: 10
+            });
+        });
+    </script>
+</head>
+<body class="bg-blue">
+<div id="wrap">
+    <div class="main-wrap">
+        <h1 class="logo"><a href="#">시공간</a></h1>
+        <div class="point-wrap">
+            <div>
+                <a href="#">
+                    <span>5,000</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-main">
+            <img src="../resource/images/common/bg_main.png" alt="">
+        </div>
+
+        <div class="main-round-slide-wrap">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide01.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide02.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide03.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide04.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide05.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide06.png)"></div>
+                    <div class="swiper-slide" style="background-image:url(../resource/images/common/round_slide07.png)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-cont">
+        <div class="article">
+            <h2>내 게임</h2>
+            <div class="img mov">
+                <img src="../resource/images/common/my_game.png" alt="">
+            </div>
+        </div>
+                             
+
+        <div class="main-slide-wrap">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../resource/images/common/event_slide01.png" alt="">
+                            <div class="event-info">
+                                <strong>시공간 오픈 EVENT</strong>
+                                <p>모든 게임 무료 체험 1회<br>21년 2월 28일 까지~</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../resource/images/common/event_slide01.png" alt="">
+                            <div class="event-info">
+                                <strong>시공간 오픈 EVENT</strong>
+                                <p>모든 게임 무료 체험 1회<br>21년 2월 28일 까지~</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../resource/images/common/event_slide01.png" alt="">
+                            <div class="event-info">
+                                <strong>시공간 오픈 EVENT</strong>
+                                <p>모든 게임 무료 체험 1회<br>21년 2월 28일 까지~</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+                         
+
+        <div class="article">
+            <h2>인기 게임</h2>
+            <div class="popular-game-slide-wrap">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/popular_game01.png" alt=""></span>
+                                <div class="info">
+                                    <p>물오름달 열닷새</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:80%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/popular_game02.png" alt=""></span>
+                                <div class="info">
+                                    <p>경주의 밤</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:100%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/popular_game03.png" alt=""></span>
+                                <div class="info">
+                                    <p>서울의 달</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:80%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                
+
+        <div class="article">
+            <h2>추천 게임</h2>
+            <div class="recommend-game-slide-wrap">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/recom_game.png" alt=""></span>
+                                <div class="info">
+                                    <p>서울의 달</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:100%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/recom_game.png" alt=""></span>
+                                <div class="info">
+                                    <p>같이의 가치</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:80%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <span class="img"><img src="../resource/images/common/recom_game.png" alt=""></span>
+                                <div class="info">
+                                    <p>경주의 추억</p>
+                                    <div class="star-point-wrap">
+                                        <span class="star-point"><span style="width:100%;"></span></span>
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                
+    </div>
+
+    <div class="btm-menu">
+        <div>
+            <a href="#"><i class="ico-home"></i><span>홈</span></a>
+            <a href="#" class="on"><i class="ico-game"></i><span>게임</span></a>
+            <a href="#"><i class="ico-map"></i><span>지도</span></a>
+            <a href="#"><i class="ico-profile"></i><span>프로필</span></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

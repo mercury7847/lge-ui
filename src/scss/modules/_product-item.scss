@@ -348,9 +348,11 @@
                     }
                 }
                 @include mobile {
-                    margin: 4px 0 16px;
+                    margin: 8px 0 16px;
                     li {
                         display: inline-block;
+                        margin-top: 0;
+                        line-height: 21px;
                         &:after {
                             display: inline-block;
                             width: 1px;

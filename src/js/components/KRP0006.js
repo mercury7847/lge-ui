@@ -45,6 +45,18 @@
                 e.preventDefault();
                 $(this).closest('.inner').slideUp(200);
             });
+
+            /*
+            self.component.on('click', '.inner a', function(e){
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if(url) {
+                    var form = $('<form action="' + url + '" method="post"></form>');
+                    $('body').append(form);
+                    form.submit();
+                }
+            });
+            */
         },
 
         reloadData: function(data) {
@@ -65,6 +77,9 @@
                         var count = $item.attr('data-top-cookie-count');
                         var checkCookieCount = !count ? 5 : count; 
                         if(array.length >= checkCookieCount) {
+                            //2021-03-17
+                            //현재 서버에서 잘못오고 있어서 임의로 데이타 수정 (큐레이션으로 이동) 큐레이션 url 불확실
+                            //data.productCurationProposal = {"uiInfo": "https://wwwstg.lge.co.kr/my-collection/curation-submain", "uiMessage": "제품 선택에 고민이 있으신가요? 내게 맞는 제품을 찾아보세요."};
                             self.reloadComponent($item, data.productCurationProposal);
                         }
                     }

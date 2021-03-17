@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-sns2</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-13" transform="translate(-32.000000, 0.000000)">
-            <g id="ic_f_facebook_24" transform="translate(32.000000, 0.000000)">
-                <rect id="Rectangle-9-Copy-2" fill-opacity="0" fill="#F5F5F5" x="0" y="0" width="24" height="24"></rect>
-                <path d="M10.5882215,20 L13.6421398,20 L13.6421398,12.4359974 L15.7726889,12.4359974 L16,9.90383366 L13.6421398,9.90383366 L13.6421398,8.46133853 C13.6421398,7.86419753 13.763679,7.6280052 14.3470671,7.6280052 L16,7.6280052 L16,5 L13.8852182,5 C11.612764,5 10.5882215,5.98960364 10.5882215,7.88466537 L10.5882215,9.90383366 L9,9.90383366 L9,12.4678363 L10.5882215,12.4678363 L10.5882215,20 Z" id="Fill-1" fill="#787878"></path>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <path fill="#F5F5F5" fill-opacity="0" d="M0 0H32V32H0z"/>
+                <path fill="#666" d="M14.118 26.667h4.072V16.58h2.84l.303-3.376H18.19v-1.923c0-.796.162-1.111.94-1.111h2.203V6.667h-2.82c-3.03 0-4.395 1.32-4.395 3.846v2.692H12v3.419h2.118v10.043z"/>
             </g>
         </g>
     </g>

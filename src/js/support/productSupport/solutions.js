@@ -51,7 +51,7 @@
 
     var keywordsTemplate = 
         '{{# if (typeof topic != "undefined" && topic != "") { #}}' +
-            '{{# if (typeof subTopic != "undefined" && subTopic != "" && topic != "All") { #}}' +
+            '{{# if (typeof subTopic != "undefined" && subTopic != "" && topic != "전체") { #}}' +
             '“<span class="point">{{topic}} &gt; {{subTopic}}</span>”' +
             '{{# } else { #}}' +
             '“<span class="point">{{topic}}</span>”' +
@@ -97,9 +97,9 @@
             options: {
                 keywords: [],
                 topic: '',
-                topicNm: 'All',
+                topicNm: '전체',
                 subTopic: '',
-                subTopicNm: 'All',
+                subTopicNm: '전체',
                 sort: 'new',
                 page: 1,
                 research: false,
@@ -240,7 +240,7 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
-                    if (self.param.topicNm != 'All') {
+                    if (self.param.topicNm != '전체') {
                         self.setSubFilter(data);
                     }
                     self.setSolutionsList(data);
@@ -438,7 +438,7 @@
 
                     self.setFilter(data);
                     
-                    if (self.param.topicNm != 'All') {
+                    if (self.param.topicNm != '전체') {
                         self.setSubFilter(data);
                     }
 
@@ -532,7 +532,7 @@
                             topic: code,
                             topicNm: name,
                             subTopic: '',
-                            subTopicNm: 'All'
+                            subTopicNm: '전체'
                         };
 
                     self.param = $.extend(self.param, param);
@@ -589,7 +589,7 @@
                             topic: code,
                             topicNm: name,
                             subTopic: '',
-                            subTopicNm: 'All'
+                            subTopicNm: '전체'
                         };
 
                     self.param = $.extend(self.param, param);
@@ -666,9 +666,9 @@
                         if (!isChecked) {
                             self.resetFilter();
                             data['topic'] = '';
-                            data['topicNm'] = 'All';
+                            data['topicNm'] = '전체';
                             data['subTopic'] = '';
-                            data['subTopicNm'] = 'All';
+                            data['subTopicNm'] = '전체';
                             data['keywords'] = [];
                             data['keywords'].push(value);
                         } else {
