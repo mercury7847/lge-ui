@@ -37,6 +37,8 @@
             vcui.require(['ui/pagination'], function () {
                 self.setting();
                 self.bindEvents();
+
+                self.checkNoData();
             });
         },
 
@@ -47,10 +49,11 @@
             var $tabs = $pageHeader.find('div.ui_tab');
             self.$mainTab = $tabs.eq(0);
             self.$subTab = $tabs.eq(1);
-            var $sortList = self.$section.find('div.sort-list');
-            self.$selectOrder = $sortList.find('.ui_selectbox');
+            self.$sortList = self.$section.find('div.sort-list');
+            self.$selectOrder = self.$sortList.find('.ui_selectbox');
             self.$totalCounter = self.$section.find('#totalCount');
             self.$list = self.$section.find('ul.award-list');
+            self.$noData = self.$section.find('div.no-data');
             self.$pagination = self.$section.find('.pagination').vcPagination();
         },
 
@@ -118,7 +121,7 @@
             var ajaxUrl = self.$section.attr('data-list-url');
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 var tempData = result.data;
-                var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
+                var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : tempData;
                 //var param = result.param;
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
                 self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCnt) +'개');
@@ -168,9 +171,24 @@
                     item.awardList = modelInfo ? modelInfo.join(',') : "";
                     self.$list.append(vcui.template(awardsListItemTemplate, item));
                 });
+
+                self.checkNoData();
             });
         },
         
+        checkNoData: function() {
+            var self = this;
+            if(self.$list.find('li').length > 0) {
+                self.$noData.hide();
+                self.$pagination.show();
+                self.$totalCounter.show();
+            } else {
+                self.$noData.show();
+                self.$pagination.hide();
+                self.$totalCounter.hide();
+            }
+        },
+
         /*
         requestAwardPopupData: function(_id) {
             var self = this;

@@ -36,6 +36,15 @@
 	&.stage-full {
         max-width:1920px;
         margin:0 auto;
+        .usp-banner-wrap {
+            .carousel-box {
+                .text-area.type-narrow {
+                    .inner {
+                        @include boxs(n) ;
+                    }
+                }
+            }
+        }
     }
     &.stage-wide {
         max-width:1600px;
