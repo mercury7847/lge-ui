@@ -271,6 +271,11 @@
                     @include mobile {
                         margin-bottom:40px;
                     }
+                    .bullet-list {
+                        .b-txt {
+                            word-break:break-all;
+                        }
+                    }
                     .info-tit-wrap {
                         display: flex;
                         justify-content: space-between;
