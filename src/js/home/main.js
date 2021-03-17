@@ -72,7 +72,7 @@ $(function () {
         '</div>';
     
 
-    vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
+    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
         /*
         var sceneArr = {
@@ -503,6 +503,7 @@ $(function () {
             newW = Math.max(boxW, Math.round(targetW*rate));
             newH = Math.max(boxH, Math.round(targetH*rate));
 
+
             $(target).css({
                 width: newW,
                 height: newH,
@@ -523,6 +524,14 @@ $(function () {
         }
 
         // 비디오 태그 처리
+        /*
+        <div class="img">
+            <img src="/lg5-common/images/MA/img-main-00.jpg"  data-pc-src="/lg5-common/images/MA/img-main-00.jpg" data-m-src="/lg5-common/images/MA/img-main-00-m.jpg" alt="">
+            <!-- 동영상 가이드 -->
+            <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
+        </div>
+        */
+
         function updateVideo(video) {
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
@@ -610,6 +619,8 @@ $(function () {
 
         // 렌더링
 
+
+
         var render = function(idx){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -641,11 +652,19 @@ $(function () {
                 posArr.push(allHeight);
                 $(this).height(itemHeight);
                 
+                // var imageSize = {
+                //     //<img data-natural-width = '1980' data-natural-height = '1080'>
+                //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920, 
+                //     height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1285,//1285 1476 1080
+                // };
+
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
-                    width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 1920, 
-                    height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1080
+                    width : window.breakpoint.name=='pc'? 1920 : 720, 
+                    height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
                 };
+
+                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
                 _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
                 totalHeight += itemHeight;
