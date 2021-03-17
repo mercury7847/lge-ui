@@ -147,6 +147,9 @@
                     .inner {
                         // @include boxs(n);
                         max-width:49.2%;
+                        @include mobile {
+                            max-width:100%;
+                        }
                     }
                 }
 
