@@ -144,7 +144,7 @@
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
                 for(key in filterdata) {
-                    makeData[key] = filterdata[key].join(",");
+                    makeData[key] = filterdata[key].join("||");
                 }
                 data.filterData = JSON.stringify(makeData);
                 return data;

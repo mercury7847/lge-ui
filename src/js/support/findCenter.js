@@ -153,6 +153,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
+                        zoom:14,
                         templates: {
                             infoWindow: 
                             '<div class="info-overlaybox">'+
@@ -333,6 +334,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
+                e.stopPropagation();
                 self._openWindowPop(this)
             });
 
@@ -540,7 +542,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 });
                 self.$map.applyMapData(self.storeData);
                 self._setResultText();
-                if (seq) self.$map.selectedMarker(self.storeData[0].id);
+                if (seq) self.$map.selectInfoWindow(self.storeData[0].id);
 
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
