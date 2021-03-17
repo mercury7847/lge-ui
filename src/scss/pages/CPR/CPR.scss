@@ -46,11 +46,11 @@
                 box-shadow: none;
                 text-align: center;
                 &.compare-item {
-                    padding-bottom: 144px;
+                    padding-bottom: 118px;
                     // border:none;
                     // box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                     @media (min-width: $tablet-s-width + 1) and (max-width: 1146px) {
-                        padding-bottom: 204px;
+                        padding-bottom: 156px;
                     }
                 }
 
@@ -66,11 +66,8 @@
                         max-width: 160px;
                     }
                 }
-                .product-contents {
-                    padding:0 12px;
-                }
                 .product-info {
-                    margin-bottom: 16px;
+                    margin-bottom: 20px;
                     padding-top:16px;
                     font-size:0;
                     .product-name {
@@ -87,6 +84,9 @@
                         color:#000;
                     }
                 }
+                .product-bottom {
+                    bottom: 40px;
+                }
                 .price-area {
                     flex-wrap: nowrap;
                     justify-content: center;
@@ -102,7 +102,7 @@
                     @media all and (max-width: 1146px) {
                         flex-direction: column;
                         align-items: center;
-                        height: 106px;
+                        height: 70px;
                         .btn {
                             width: 100%;
                             &:not(:first-child) {
@@ -113,6 +113,9 @@
                     }
                 }
                 @include mobile {
+                    .product-contents {
+                        padding:0 12px;
+                    }
                     .product-info {
                         margin-bottom: 16px;
                         .product-name {
@@ -137,8 +140,8 @@
                         }
                     }
                     .product-button {
-                        height: 70px;
-                        margin-top: 16px;
+                        //height: 70px;
+                        //margin-top: 16px;
                         .btn {
                             max-width: 140px;
                             padding: 4px 0;
@@ -276,7 +279,10 @@
                         padding: 16px 12px;
                     }
                     &.compare-item {
-                        padding-bottom: 16px;
+                        padding-bottom: 50px;
+                        @include mobile {
+                            padding-bottom: 72px;
+                        }
                     }
                     .product-image,
                     .product-info .sku,
@@ -290,7 +296,9 @@
                         .product-name {
                             margin-top: 0;
                             a {
-                                -webkit-line-clamp: 1;
+                                //-webkit-line-clamp: 1;
+                                overflow: visible;
+                                -webkit-line-clamp: initial;
                             }
                         }
                     }
@@ -303,7 +311,9 @@
                         }
                     }
                     .product-bottom {
-                        position: static;
+                        bottom: 16px;
+                        right: 16px;
+                        left: 16px;
                     }
                 }
                 @include mobile {
