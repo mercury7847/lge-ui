@@ -504,18 +504,29 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 self.destroy();
             });
-
             
+
 
             if(self.options.isHash){
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 var hash = window.location.hash;
                 hash = hash.replace("#"+self.randomKey, '');
-                window.location.hash = hash;
+                if(hash=='') {
+                    self._removeLocationHash();
+                }else{
+                    window.location.hash = hash;
+                }
             }
 
             
         },
+
+        _removeLocationHash : function(){
+            var noHashURL = window.location.href.replace(/#.*$/, '');
+            window.history.replaceState('', document.title, noHashURL) 
+        },
+
+        
 
         /**
          * 도큐먼트의 가운데에 위치하도록 지정
