@@ -35,6 +35,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     slidesToScroll: 1
                 });
             });
+
+            var gotourl = self.$el.data('gotoUrl');
+            var cancelurl = self.$el.data('cancelUrl');
         },
 
         _getLoginInfo: function(){
