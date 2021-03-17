@@ -104,6 +104,9 @@
             box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
             // text-transform:uppercase;
         }
+        .btn-delete {
+            display:none;
+        }
         &.clear {
             input[type=text] {
                 padding-right:80px;
