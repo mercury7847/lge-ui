@@ -256,7 +256,7 @@ $(function(){
                 e.preventDefault();
 
                 var url = $(data.relatedTarget).data('ajaxUrl') || careProductUrl;
-                
+                              
                 lgkorUI.requestAjaxData(url, {}, function(result){
                     
                     var html = buildTabProduct(result);

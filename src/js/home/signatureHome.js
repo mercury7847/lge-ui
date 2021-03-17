@@ -581,20 +581,27 @@ $(function() {
 
 
         $(document).on('click', 'a', function(e){
+            
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+
             if(href == '#' || href == '#n'){
                 e.preventDefault();
             }else{
                 if (href && /^(#|\.)\w+/.test(href)) {    
+                    
                     e.preventDefault();
+                    
                     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
                     if($compareTarget[0] != e.currentTarget) {
                         if(currentPage !== pageLens){
                             moveScene(pageLens,stepLens,0);
                         }                        
                         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                        if(href == '#content'){
+                            $('.signature-tabs .ui_tab').find('a').eq(0).focus();
+                        }
                     }
-                }                
+                }
             }      
         });
 
