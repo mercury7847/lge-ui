@@ -58,6 +58,39 @@
         }
     }
 
+    .search-history {
+        margin-bottom:32px;
+        .old-keyword {
+            display: inline-block;
+            font-size:20px;
+            font-weight:bold;
+            color:#000;
+            line-height:1.5;
+            vertical-align: middle;
+        }
+
+        .btn-clear-old {
+            display: inline-block;
+            width:20px;
+            height:20px;
+            margin-top:6px;
+            margin-left:4px;
+            border-radius:50%;
+            vertical-align: top;
+            background: url("/lg5-common/images/icons/icon-delete-20.svg") no-repeat 0 0;
+            background-size: 100% 100%;
+        }
+
+        @include mobile {
+            .old-keyword {
+                font-size:16px;
+            }
+            .btn-clear-old {
+                margin-top:3px;
+            }
+        }
+    }
+
     
     .driver-section {
         .banner-wrap {
@@ -880,7 +913,7 @@
                     left:0;
                     width:100%;
                     border-bottom:1px solid #ddd;
-                    z-index:1;
+                    z-index:3;
                 }    
             }
 
