@@ -502,16 +502,16 @@
 
                     self.validateInit();
 
-                    self.el.agreeChk.on('change', function(e){
-                        var $this = $(this);
-                        var _checked = $this.prop('checked');
+                    // self.el.agreeChk.on('change', function(e){
+                    //     var $this = $(this);
+                    //     var _checked = $this.prop('checked');
 
-                        if( _checked ) {
-                            self.inputVisible();
-                        } else {
-                            self.inputDisable();
-                        }
-                    });
+                    //     if( _checked ) {
+                    //         self.inputVisible();
+                    //     } else {
+                    //         self.inputDisable();
+                    //     }
+                    // });
 
                     self.el.popup.find('.btn-agree').on('click', function(e){
                         e.preventDefault();

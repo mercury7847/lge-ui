@@ -21,8 +21,8 @@
     var TAB_FLAG_ORDER = "ORDER";
     var TAB_FLAG_CARE = "CARE";
 
-    var METHOD_CARD = "C";
-    var METHOD_BANK = "B";
+    var METHOD_CARD = "CARD";
+    var METHOD_BANK = "BANK";
 
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -827,7 +827,7 @@
         }
 
         var transtype = $('#popup-takeback').data('transType');        
-        if(transtype == "B"){
+        if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-takeback')) return;
     
             var bankNumber = $('#popup-takeback').find('.bank-input-box input').val();
@@ -893,7 +893,7 @@
 
 
         var transtype = $('#popup-cancel').data('transType');        
-        if(transtype == "B"){
+        if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-cancel')) return;
     
             var bankNumber = $('#popup-cancel').find('.bank-input-box input').val();
@@ -1180,7 +1180,9 @@
     
                     if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
                     if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
-                
+
+                    var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
+                    if(prodList.itemStatus == "Ordered" && data.payment.paymentType == "41") payment.receiptUrl = "";
                     PAYMENT_DATA = vcui.clone(payment);
                 }
             }
@@ -1206,7 +1208,7 @@
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
 
 
-                if(monthpayment.transType == "B"){
+                if(monthpayment.transType == METHOD_BANK){
                     paymentMethod = "bank";
                     bankInfo = {
                         paymentBank: monthpayment.transCorpCode,
@@ -1700,8 +1702,6 @@
 
                 //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
-            //구매 결재정보 이름
-            //케어 납부정보 이름
 
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
@@ -1725,7 +1725,8 @@
 
             popup.data('transType', result.data.payment.transType);
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
-            if(result.data.payment.transType == "B"){
+
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK){
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
                 var bankList = result.data.bankList;
                 for(idx in bankList){
@@ -1739,11 +1740,7 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
-                var username;
-                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL) username = result.data.orderUser.userName;
-                else username = result.data.orderUser.userName;
-                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(username);
-
+                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.payment.bankAccountNm);
 
                 bankInfoBlock.show();
             } else{
@@ -1821,7 +1818,7 @@
 
         var bankName = "";
         var bankAccountNo = "";
-        if(popup.data("transType") == "B"){
+        if(popup.data("transType") == METHOD_BANK){
             bankName = popup.find('.bank-input-box select option:selected').val();
             bankAccountNo = popup.find('.bank-input-box input').val();
         }
@@ -1905,7 +1902,7 @@
 
     //영수증 발급내역...
     function setReceiptListPop(){
-        var method = PAYMENT_DATA.transType == "C" ? "카드영수증" : "현금영수증";
+        var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
         $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
 
