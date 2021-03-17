@@ -32,13 +32,19 @@ $(function(){
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
 
+        var requestObj = {
+            newProductIds:'0001,0002,0003,0004', 
+            bestProductIds:'0001,0002,0003,0004',
+            newMarryProductIds:'0001,0002,0003,0004',
+            petProductIds:'0001,0002,0003,0004'
+        }
+
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
             autoplay: false,
             slidesToScroll: 1,
             slidesToShow: 1
         });
-
 
         // 플로우배너
 

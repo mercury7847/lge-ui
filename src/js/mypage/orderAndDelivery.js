@@ -281,7 +281,7 @@
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
@@ -291,13 +291,13 @@
     var carePaymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
     '{{#set method = paymentMethodName}}' +
     '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-    '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+    '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
     '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
@@ -993,7 +993,13 @@
 
     function setMonthlyPricePop(dataId, prodId){
         var sendata = {
-            rtModelSeq: CARE_LIST[dataId].productList[prodId].rtModelSeq
+            rtModelSeq: CARE_LIST[dataId].productList[prodId].rtModelSeq,
+            contDtlType: CARE_LIST[dataId].contDtlType,
+            cardCorpCode: MONTHLY_PAYMENT_DATA.cardCorpCode,
+            cardCorpName: MONTHLY_PAYMENT_DATA.cardCorpName,
+            cardReqYn: MONTHLY_PAYMENT_DATA.cardReqYn,
+            cardReqYnName: MONTHLY_PAYMENT_DATA.cardReqYnName,
+            cardType: MONTHLY_PAYMENT_DATA.cardType
         }
         lgkorUI.requestAjaxData(ORDER_BENEFIT_URL, sendata, function(result){
             $('#popup-monthly-price').empty().html(result).vcModal();
@@ -1391,6 +1397,8 @@
     }
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        lgkorUI.showLoading();
+
         CTI_REQUEST_KEY = "";
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
@@ -1447,7 +1455,7 @@
                 CTI_REQUEST_KEY: CTI_REQUEST_KEY,
 
                 requestNo: listData.requestNo,
-                custReqNo: MONTHLY_PAYMENT_DATA.custReqNo,
+                custRegNo: MONTHLY_PAYMENT_DATA.custRegNo,
                 transMemName: MONTHLY_PAYMENT_DATA.transMemName
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
