@@ -1157,14 +1157,15 @@
         }
     }
     @include tablet {
-        
+        max-height:300px;
+        transition:.6s max-height ease;
         .btn-waiting-toggle {
             display: block;
         }
 
         &.hidden {
-            
             max-height:63px;
+            transition:.6s max-height ease;
             .btn-waiting-toggle {
                 background-image: url("/lg5-common/images/icons/btn-arrow-down.svg");
             }
