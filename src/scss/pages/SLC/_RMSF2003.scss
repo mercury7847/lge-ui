@@ -872,12 +872,12 @@ br.pc-only {
                 }
                 .cate-scroll-wrap {
                     position:relative;
-                    @include mobile {
-                        padding:24px 0;
-                    }
                     .tabs {
                         white-space:nowrap;
                         font-size:0;
+                        @include mobile {
+                            padding:24px 0;
+                        }
                         > li {
                             position:relative;
                             display:inline-block;

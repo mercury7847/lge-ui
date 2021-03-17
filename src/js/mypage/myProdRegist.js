@@ -161,7 +161,6 @@
 
                 self.thisMonth = parseInt(hiddenInput.month);
 
-                lgkorUI.showLoading();
                 self.requestMoreData(1);
                 self.requestOwnData(false);
 
