@@ -153,6 +153,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
+                        zoom:14,
                         templates: {
                             infoWindow: 
                             '<div class="info-overlaybox">'+
