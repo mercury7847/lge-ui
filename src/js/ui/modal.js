@@ -6,12 +6,7 @@
  */
 vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
     "use strict";
-
-    var isAndroid = core.detect.isAndroid;
-    var isIOS = core.detect.isIOS;
-    var isApplication = isApp(); // 앱에서 처리 못할때를 대비
-
-
+    
     var $doc = $(document),
         $win = $(window),
         detect = core.detect,
@@ -80,17 +75,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     overflow:"hidden"
                 });
 
-                /* 앱에서 처리 못할때를 대비
-                if(isApplication) {
-                    if(isAndroid && android) {
-                        android.setEnableScrollBottomMenu(false);
-                    }
-                    if(isIOS){
-                        var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value:"N"});
-                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                    }
-                }
-                */
+                //앱에서 처리 못할때를 대비
+                lgkorUI.setEnableAppScrollBottomMenu(false);
                 
             }
         },
@@ -113,17 +99,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     overflow:"visible"
                 });
 
-                /* 앱에서 처리 못할때를 대비
-                if(isApplication) {
-                    if(isAndroid && android) {
-                        android.setEnableScrollBottomMenu(true);
-                    }
-                    if(isIOS){
-                        var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value:"Y"});
-                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                    }
-                }
-                */
+                //앱에서 처리 못할때를 대비
+                lgkorUI.setEnableAppScrollBottomMenu(true);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
