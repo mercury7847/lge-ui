@@ -695,6 +695,8 @@
         }
     }
     .download-list {
+        display:flex;
+        flex-wrap:wrap;
         margin:-16px -8px 0;
         @include clearfix;
         & > li {
