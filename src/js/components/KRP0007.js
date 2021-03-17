@@ -492,11 +492,9 @@
                     }
 
                     //2021-03-16 필터 활성/비활성 기능. 서버에서 enableList가 제대로 안들어옴 수정후 사용할것
-                    /*
                     if(data.filterEnableList) {
                         self.filterLayer.enableFilterList(data.filterEnableList);
                     }
-                    */
 
                 });
             },

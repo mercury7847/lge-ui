@@ -1438,11 +1438,17 @@
         if(payments.result){
             lgkorUI.showLoading();
 
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+
             var sendata = {
                 confirmType: sendPaymentMethod,
                 CERTI_ID: CERTI_ID,
                 BATCH_KEY: BATCH_KEY,
-                CTI_REQUEST_KEY: CTI_REQUEST_KEY
+                CTI_REQUEST_KEY: CTI_REQUEST_KEY,
+
+                requestNo: listData.requestNo,
+                custReqNo: MONTHLY_PAYMENT_DATA.custReqNo,
+                transMemName: MONTHLY_PAYMENT_DATA.transMemName
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
 
