@@ -546,16 +546,16 @@
                 $tabCont.hide().eq(0).show();
             })
 
-            self.warrantyGuide.find('.ui_tab').on('tabchange', function(e, data){
-                var $this = $(this);
-                var $popupCont = $this.closest('.pop-conts');
-                var $tabCont = $popupCont.find('.tabs-contents');
+            // self.warrantyGuide.find('.ui_tab').on('tabchange', function(e, data){
+            //     var $this = $(this);
+            //     var $popupCont = $this.closest('.pop-conts');
+            //     var $tabCont = $popupCont.find('.tabs-contents');
 
-                console.log(data.button[0].hash)
+            //     console.log(data.button[0].hash)
 
-                $tabCont.hide();
-                $tabCont.filter(data.button[0].hash).show();
-            })
+            //     $tabCont.hide();
+            //     $tabCont.filter(data.button[0].hash).show();
+            // })
 
 
             // 엔지니어 선택
