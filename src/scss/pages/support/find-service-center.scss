@@ -865,7 +865,7 @@
                 }
             }
             &.on {
-                background:url('/lg5-common/images/icons/icon-point-on.svg') no-repeat;
+                background:url('/lg5-common/images/CS/icon-store-on-40.svg') no-repeat;
                 background-size:40px 40px;
                 .num {
                     color:#EC455A;
@@ -1751,9 +1751,11 @@
         }
         .opt-list {
             margin-top:12px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             li {
                 display:inline-block;
-                margin-left:32px;
                 padding:0;
                 vertical-align:top;
                 &:first-child {
@@ -1788,11 +1790,6 @@
                 }
                 &.opt-expendables:before {
                     background-image:url(/lg5-common/images/icons/icon_expendables.svg);
-                }
-            }
-            @include mobile {
-                li {
-                    margin-left: 24px;
                 }
             }
         }
