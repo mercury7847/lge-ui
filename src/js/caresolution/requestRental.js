@@ -922,9 +922,7 @@
     function setArsAgreeConfirm(){
         lgkorUI.showLoading();
 
-        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
-            lgkorUI.hideLoading();
-            
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
