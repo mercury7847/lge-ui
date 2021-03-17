@@ -404,6 +404,13 @@
                     self.updatePaymentAmountState($paymentAmount, check);
                 }
 
+                //리뷰 클릭하기
+                self.$pdpInfoProductDetailInfo.on('click','.star-rating-wrap a', function(e) {
+                    var href = $(this).attr('href');
+                    console.log(href);
+                    self.scrollMovedById(href);
+                });
+
                 //
                 self.$pdpMobileSlider.vcCarousel({
                     infinite: false,
@@ -1080,9 +1087,10 @@
             },
 
             scrollMovedById: function(id){
-                if($(id).length){
+                var $id = $(id);
+                if($id.length){
                     var compheight = 0;//$component.height();
-                    var movtop = $(id).offset().top - compheight+2;
+                    var movtop = $id.offset().top - compheight+2;
                     $('html, body').stop().animate({scrollTop:movtop}, 150);
                 }
             },
