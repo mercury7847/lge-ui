@@ -207,6 +207,16 @@
             } else {
                 return valueObject;
             }
+        },
+        backHistory: function(item) {
+            var url;
+            if (item.constructor == Object) {
+                url = $.param(item);
+            } else {
+                url = $(item).attr('href');
+                url = url.substr(url.indexOf('?') + 1);
+            }
+            history.replaceState(null, '', '?'+url);
         }
     }
 
@@ -1393,6 +1403,8 @@ CS.MD.commonModel = function() {
 
     CS.MD.plugin(pluginName, Plugin);
 }();
+
+
 
 CS.MD.calendar = function() {
     var dateUtil = vcui.date;

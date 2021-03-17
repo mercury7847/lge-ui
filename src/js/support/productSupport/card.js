@@ -58,6 +58,10 @@
                 'page': 1
             };
 
+            self.$resultWrap.find('.card-list').on('click', 'a', function() {
+                lgkorUI.backHistory(this);
+            });
+
             self.$resultPagination.pagination({
                 pageCount: 12
             });

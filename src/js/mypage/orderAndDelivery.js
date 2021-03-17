@@ -163,7 +163,7 @@
                                     '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
                                     '{{#if listData.contDtlType == "C01"}}'+
                                     '<p class="price">'+
-                                        '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원 결제완료'+
+                                        '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
                                     '</p>'+
                                     '{{/if}}'+
                                 '</div>'+

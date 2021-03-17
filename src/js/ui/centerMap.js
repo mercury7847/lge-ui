@@ -289,7 +289,9 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             var bounds = new naver.maps.LatLngBounds();
             var info = null;
-            for(var i=0; i<self.itemArr.length; i++){
+            var length = self.itemArr.length > 3 ? 3 : self.itemArr.length;
+
+            for(var i=0; i<length; i++){
                 info = self.itemArr[i].info;
                 bounds.extend(new naver.maps.LatLng(info.gpsInfo.gpsx, info.gpsInfo.gpsy));
             }
