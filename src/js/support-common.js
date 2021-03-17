@@ -2474,6 +2474,18 @@ function validatePhone(value){
             }
         });
 
+        $('[data-format=email]').on('input', function() {
+            var $this = $(this),
+                value = $this.val();
+            
+            var regex = /[가-힣ㄱ-ㅎㅏ-ㅣㆍ ᆢ\s]/g;
+            
+            if (regex.test(value)) {
+                $this.val(value.replace(regex, ''));
+                return;
+            }
+        });
+
         $('[data-format=alnum]').on('input', function() {
             var $this = $(this),
                 value = $this.val();
