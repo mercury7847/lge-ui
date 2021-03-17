@@ -133,12 +133,12 @@
                     '{{#each item in flag}}<span class="flag{{#if item.class}} blue{{/if}}">{{item.title}}</span>{{/each}}' +
                 '</div>' +
                 '<div class="result-tit">' +
-                    '<a href="{{url}}">{{#raw title}}</a>' +
+                    '<a href="{{url}}" target="_blank">{{#raw title}}</a>' +
                 '</div>' +
                 '<div class="result-detail">' +
-                    '<div href="{{url}}" class="shop-info">' +
-                        '<a href="{{url}}" class="desc add">{{#raw address}}</a>' +
-                        '<a href="{{url}}" class="desc time">' +
+                    '<div href="{{url}}" class="shop-info" target="_blank">' +
+                        '<a href="{{url}}" class="desc add" target="_blank">{{#raw address}}</a>' +
+                        '<a href="{{url}}" class="desc time" target="_blank">' +
                         '{{#each item in time}}' +
                             '<span><em>{{item.week}}</em> {{item.time}}</span>' +
                         '{{/each}}' +

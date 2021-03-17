@@ -185,7 +185,7 @@ $(function(){
         var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
         var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
         var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        var storeRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRecommendProduct.json';
+        //var storeRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRecommendProduct.json';
         var storeNewRecommendProductUrl = $('.ui_recom_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
 
 
@@ -316,59 +316,26 @@ $(function(){
 
 
         // 제품 추천 렌더링
-        function buildRecommend(result){
+        function buildRecommend(){
 
-            var data = result.data;
-            if(data && data.data){
-                var arr = data.data;
+            $(window).on('breakpointchange', function(e){
 
-                var list = vcui.array.map(arr, function(item, index){
+                var breakpoint = window.breakpoint;    
+                if(breakpoint.name == 'mobile'){    
+                    
+                    $('.ui_recom_carousel').vcCarousel('destroy');
+                    
+                }else if(breakpoint.name == 'pc'){   
+                    
+                    $('.ui_recom_carousel').vcCarousel({
+                        infinite: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    });
+                }    
+            })
 
-                    var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
-                    var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
-                    var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
-
-                    if(obsOriginalPrice || obsOriginalPrice!=='' || obsOriginalPrice!=='0'){ 
-                        item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
-                    }else{
-                        item['obsOriginalPrice'] = null;
-                    }
-
-                    var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-
-                    if(price || price!=='' || price!=='0'){ 
-                        item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
-                    }else{
-                        item['totalPrice'] = null;
-                    }
-
-                    return item;
-                });
-
-                var recommentStr = vcui.template(recommendTmpl, {list : list});
-                $('.ui_recom_carousel').find('.ui_carousel_track').html(recommentStr);
-                
-
-                $(window).on('breakpointchange', function(e){
-
-                    var breakpoint = window.breakpoint;    
-                    if(breakpoint.name == 'mobile'){    
-                        
-                        $('.ui_recom_carousel').vcCarousel('destroy');
-                        
-                    }else if(breakpoint.name == 'pc'){   
-                        
-                        $('.ui_recom_carousel').vcCarousel({
-                            infinite: true,
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        });
-                    }    
-                })
-
-                $(window).trigger('breakpointchange');
-                
-            }
+            $(window).trigger('breakpointchange');
             
         }
         
@@ -572,7 +539,7 @@ $(function(){
         lgkorUI.requestAjaxData(storeExhibitionProductUrl,{modelId : exhibitModelId.toString()}, buildExhibit);
 
         // 제품 추천 요청
-        lgkorUI.requestAjaxData(storeRecommendProductUrl,{modelId : recommendModelId.toString()}, buildRecommend);
+        // lgkorUI.requestAjaxData(storeRecommendProductUrl,{modelId : recommendModelId.toString()}, buildRecommend);
 
 
         // 새제품 추천 제품코드
@@ -584,6 +551,8 @@ $(function(){
         lgkorUI.requestAjaxData(storeNewRecommendProductUrl, {modelId : newProductRecommendModelId.toString()}, buildNewRecommend);
 
         
+        buildRecommend();
+
         $('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
