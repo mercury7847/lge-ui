@@ -830,9 +830,9 @@
         if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-takeback')) return;
     
-            var bankNumber = $('#popup-takeback').find('.bank-input-box input').val();
-            var bankName = $('#popup-takeback').find('.bank-input-box select option:selected').val();
-            if(!popBankConfirm || popBankInfo.bankName != bankName || popBankInfo.bankNumber != bankNumber){
+            var paymentBankNumber = $('#popup-takeback').find('.bank-input-box input').val();
+            var paymentBank = $('#popup-takeback').find('.bank-input-box select option:selected').val();
+            if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
                 lgkorUI.alert("", {
                     title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
                 });
@@ -896,9 +896,9 @@
         if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-cancel')) return;
     
-            var bankNumber = $('#popup-cancel').find('.bank-input-box input').val();
-            var bankName = $('#popup-cancel').find('.bank-input-box select option:selected').val();
-            if(!popBankConfirm || popBankInfo.bankName != bankName || popBankInfo.bankNumber != bankNumber){
+            var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
+            var paymentBank = $('#popup-cancel').find('.bank-input-box select option:selected').val();
+            if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
                 lgkorUI.alert("", {
                     title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
                 });
@@ -1625,8 +1625,8 @@
             if(result.data.success == "Y"){
                 popBankConfirm = true;
                 popBankInfo = {
-                    bankNumber: sendata.bankNumber,
-                    bankName: sendata.bankName
+                    paymentBankNumber: sendata.paymentBankNumber,
+                    paymentBank: sendata.paymentBank
                 }
             } else{
                 popBankConfirm = false;
