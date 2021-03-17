@@ -1089,7 +1089,7 @@
             scrollMovedById: function(id){
                 var $id = $(id);
                 if($id.length){
-                    var compheight = 0;//$component.height();
+                    var compheight = 50;//$component.height();
                     var movtop = $id.offset().top - compheight+2;
                     $('html, body').stop().animate({scrollTop:movtop}, 150);
                 }
