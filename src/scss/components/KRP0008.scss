@@ -1312,9 +1312,6 @@
                     & + label {
                         padding-left: 28px;
                         &:after {
-                            display: none;
-                        }
-                        &:before {
                             top: 0;
                             left: 0;
                             width: 24px;
@@ -1323,7 +1320,7 @@
                         }
                     }
                     &:checked {
-                        & + label:before {
+                        & + label:after {
                             background-color: transparent;
                             background-image: url('/lg5-common/images/icons/btn-compare-on-24.svg');
                         }
