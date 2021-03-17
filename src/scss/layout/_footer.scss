@@ -14,16 +14,25 @@ footer {
         max-width:1284px;
         margin:0 auto;
         padding:24px 0;
-        border-bottom:2px solid #222;
+        border-bottom:1px solid #666;
         text-align:center;
         color:#000;
         dt {
-            @include font-x-small;
-            font-weight:500;
+            @include font(12px,16px);
         }
         dd {
-            @include font-large-1;
+            @include font(18px,28px);
             font-weight:700;
+        }
+        @include mobile {
+            padding-top: 32px;
+            dt {
+                margin-bottom: 2px;
+                @include font(13px,21px);
+            }
+            dd {
+                font-size: 20px;
+            }
         }
     }
     // footer cont
@@ -206,13 +215,13 @@ footer {
         @media screen and (min-width:768px) {
             .pc-dropdown-wrap {
                 position:relative;
-                padding-bottom:80px;
+                padding-bottom:120px;
                 .btns {
                     position:absolute;
                     bottom:0;
                     right:0;
                     left:0;
-                    padding:16px 0 24px;
+                    padding:32px 0 48px;
                     text-align:center;
                     .btn.border {
                         &::after {
@@ -252,8 +261,8 @@ footer {
                 }
             }
             .link-wrap {
-                margin:-12px -6px 0;
-                padding-bottom:24px;
+                margin:-12px -6px -20px;
+                padding-bottom:16px;
                 font-size:0;
                 .link-section {
                     display:inline-block;
@@ -376,35 +385,21 @@ footer {
             }
             .bottom-head {
                 position:relative;
-                padding:12px 0;
+                padding:16px 0;
                 @include clearfix;
-                @include mobile {
-                    padding:32px 0 40px;
-                }
                 .dropdown-wrap {
                     float:left;
-                    @include mobile {
-                        float:none;
-                        font-size:0;
-                    }
                     .dropdowns {
                         display:inline-block;
                         position:relative;
                         margin-right:24px;
+                        padding: 8px 0;
                         vertical-align:top;
-                        @include mobile {
-                            margin-right:0;
-                            margin-left:12px;
-                            width:calc((100% - 12px) / 2);
-                            &:first-child {
-                                margin-left:0;
-                            }
-                        }
                         .slt-btn {
                             display:inline-block;
                             color:#000;
                             font-size:12px;
-                            line-height:24px;
+                            line-height:16px;
                             font-weight:500;
                             vertical-align:top;
                             &::after {
@@ -412,32 +407,16 @@ footer {
                                 display:inline-block;
                                 width:16px;
                                 height:16px;
-                                margin:4px 0 0 2px;
-                                background:url("/lg5-common/images/icons/icon-arr-16-gray.svg") center no-repeat;
+                                margin:0 0 0 4px;
+                                background:url("/lg5-common/images/icons/btn-down-16-black.svg") center no-repeat;
                                 vertical-align:top;
-                            }
-                            @include mobile {
-                                position:relative;
-                                display:block;
-                                padding:11px 28px 11px 12px;
-                                border:1px solid #aaa;
-                                border-radius:8px;
-                                font-size:14px;
-                                line-height:16px;
-                                &::after {
-                                    position:absolute;
-                                    top:50%;
-                                    right:12px;
-                                    margin:-8px 0 0 0;
-                                    background:url('/lg5-common/images/icons/icon-arr-40-bk.svg') center no-repeat;                                    
-                                    background-size:100%;
-                                }
+                                transition: all .3s;
                             }
                         }
                         .lists {
                             display:none;
                             position:absolute;
-                            top:25px;
+                            top:33px;
                             left:50%;
                             transform:translateX(-50%);
                             z-index:10;
@@ -445,12 +424,6 @@ footer {
                             border-radius:4px;
                             background:#fff;
                             box-shadow:2px 4px 12px 0 rgba(#000, .16);
-                            @include mobile {
-                                top:46px;
-                                left:0;
-                                right:0;
-                                transform:translateX(0);
-                            }
                             li {
                                 a {
                                     display:block;
@@ -468,6 +441,11 @@ footer {
                             }
                         }
                         &.open {
+                            .slt-btn {
+                                &::after {
+                                    transform: rotate(180deg);
+                                }
+                            }
                             .lists {
                                 display:block;
                             }
@@ -477,33 +455,98 @@ footer {
                 .sns-link {
                     float:right;
                     font-size:0;
-                    @include mobile {
-                        float:none;
-                        display:flex;
-                        padding:0 12px;
-                        margin-top:32px;
-                        justify-content:space-between;
-                    }
                     li {
                         display:inline-block;
-                        margin-left:8px;
+                        margin-left:20px;
                         vertical-align:top;
-                        @include mobile {
-                            margin-left:0;
-                        }
                         &:first-child {
                             margin-left:0;
                         }
                         a {
                             display:block;
-                            width:24px;
-                            height:24px;
-                            font-size:0;
+                            padding-left: 40px;
+                            font-weight: 500;
+                            @include font(12px,16px);
+                            color: $color-gray-1;
+                            background: no-repeat center left;
                             @for $i from 1 through 6 {
                                 &.sns#{$i} {
-                                    background:url('/lg5-common/images/icons/icon-sns#{$i}.svg') center no-repeat;
+                                    background-image:url('/lg5-common/images/icons/icon-sns#{$i}.svg');
+                                }
+                            }
+                        }
+                    }
+                }
+                @include tablet {
+                    padding:16px 0 24px;
+                    .dropdown-wrap {
+                        float: none;
+                        .dropdowns {
+                            padding: 0;
+                            .slt-btn {
+                                line-height: 16px;
+                            }
+                        }
+                    }
+                    .sns-link {
+                        display: flex;
+                        justify-content: space-evenly;
+                        float: none;
+                        margin-top: 24px;
+                        li {
+                            a {
+                                display:block;
+                                padding-top: 34px;
+                                padding-left: 0;
+                                background-position: center top;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+                @include mobile {
+                    padding:40px 0 32px;
+                    .dropdown-wrap {
+                        font-size:0;
+                        .dropdowns {
+                            margin-right:0;
+                            margin-left:6px;
+                            width:calc((100% - 6px) / 2);
+                            &:first-child {
+                                margin-left:0;
+                            }
+                            .slt-btn {
+                                position:relative;
+                                display:block;
+                                padding:11px 28px 11px 12px;
+                                border:1px solid #ddd;
+                                border-radius:8px;
+                                &::after {
+                                    position:absolute;
+                                    top:50%;
+                                    right:12px;
+                                    margin:-8px 0 0 0;
+                                    background:url('/lg5-common/images/icons/icon-arr-40-bk.svg') center no-repeat;
                                     background-size:100%;
                                 }
+                            }
+                            .lists {
+                                top:48px;
+                                left:0;
+                                right:0;
+                                transform:translateX(0);
+                            }
+                        }
+                    }
+                    .sns-link {
+                        flex-wrap: wrap;
+                        margin-top:16px;
+                        li {
+                            margin-top: 16px;
+                            margin-left:4px;
+                            width:calc((100% / 3) - 3px);
+                            &:nth-child(4) {
+                                margin-left: 0;
                             }
                         }
                     }
@@ -511,11 +554,8 @@ footer {
             }
             .bottom-body {
                 position:relative;
-                padding-top:12px;
+                padding-top:16px;
                 border-top:1px solid #ddd;
-                @include mobile {
-                    padding-top:8px;
-                }
                 .bottom-link {
                     font-size:0;
                     li {
@@ -533,8 +573,7 @@ footer {
                         a {
                             display:inline-block;
                             color:#000;
-                            @include font-x-small;
-                            font-weight:500;
+                            @include font(12px,16px);
                             &:hover {
                                 text-decoration:underline;
                             }
@@ -542,20 +581,32 @@ footer {
                     }
                 }
                 .comp-info {
-                    margin-top:20px;
+                    margin-top:16px;
                     padding-right:220px;
                     @media screen and (max-width:1200px) {
                         padding-right:0;
                     }
                     @include mobile {
-                        margin-top:32px;
+                        margin-top:40px;
                     }
                     p {
+                        margin-top: 4px;
                         color:#767676;
-                        @include font-x-small;
+                        @include font(12px,16px);
                         font-weight:500;
                         &.info {
                             margin-bottom:4px;
+                        }
+                        @include mobile {
+                            margin-top: 0;
+                            &.info {
+                                span {
+                                    margin-top: 4px;
+                                    &:first-child {
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
                         }
                         span {
                             display:inline-block;
@@ -566,10 +617,7 @@ footer {
                             }
                         }
                         &:first-child {
-                            margin-bottom:8px;
-                            @include mobile {
-                                margin-bottom:10px;
-                            }
+                            margin-bottom:12px;
                         }
                     }
                 }
@@ -583,16 +631,13 @@ footer {
                         bottom:auto;
                         margin-top:24px;
                     }
-                    @include mobile {
-                        margin-top:32px;
-                    }
                     .ismsp {
                         position:relative;
                         display:inline-block;
-                        padding:8px 0 8px 72px;
+                        padding:8px 0 8px 56px;
                         color:#000;
-                        @include font-small;
-                        font-weight:700;
+                        @include font(12px,16px);
+                        font-weight:500;
                         @include mobile {
                             padding:0 0 0 40px;
                         }
@@ -601,9 +646,9 @@ footer {
                             position:absolute;
                             top:50%;
                             left:0;
-                            width:64px;
-                            height:64px;
-                            margin-top:-32px;
+                            width:48px;
+                            height:48px;
+                            margin-top:-24px;
                             background:url('/lg5-common/images/img-ismsp.png') center no-repeat;
                             background-size:100%;
                             @include mobile {
