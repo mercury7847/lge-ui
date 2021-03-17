@@ -61,6 +61,7 @@
 
                     var reveal_url = self.$cartContent.attr('data-reveal-url');
                     if(reveal_url) {
+                        lgkorUI.showLoading();
                         lgkorUI.requestAjaxDataPost(reveal_url, null, function(result){
                             self.updateList(result.data);
 
@@ -353,6 +354,7 @@
                 var ajaxUrl = self.$cartContent.attr('data-remove-url');
                 var postData = {'itemID': (items instanceof Array ? items.join() : items),
                                 'itemSeq': (seqs instanceof Array ? seqs.join() : seqs)};
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     self.updateList(result.data);
                     self.requestInfo();

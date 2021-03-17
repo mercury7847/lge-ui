@@ -11,14 +11,16 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '원격상담 예약이 완료되었습니다.',
                 'progressArr': [
-                    { 'progress' : '제품 선택'},
-                    { 'progress' : '예약 내용 입력'},
-                    { 'progress' : '예약 완료'}
+                    { 'progress' : '제품 선택', 'on':''},
+                    { 'progress' : '예약 내용 입력', 'on':''},
+                    { 'progress' : '예약 완료', 'on':'on'}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             
             <div class="contents support service-status-detail">
                 <div class="complete-summary">
