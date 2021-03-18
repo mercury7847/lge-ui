@@ -92,7 +92,6 @@
 
 
     .cont-wrap {
-        padding-bottom:64px;
         .detail-info-wrap {
             .right-box {
                 .info-list {
@@ -246,6 +245,10 @@
             width:61.1111vw;
         }
 
+        .slide-controls {
+            display: none;
+        }
+
         .opt-list {
             li {
                 margin-left:8px;
@@ -255,8 +258,6 @@
             }
         }
         .cont-wrap {
-            padding-bottom:116px;
-
             .tit-wrap {
                 .tit-info {
                     h2.name {
