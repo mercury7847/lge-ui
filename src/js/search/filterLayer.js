@@ -645,7 +645,8 @@ var FilterLayer = (function() {
             for(key in enableData){
                 var filterValues = enableData[key];
                 var findDm = self.$layFilter.find('li[data-filterid="'+key+'"]');
-                findDm.find('input').each(function(idx,input){
+                //2021-03-18 정승우 체크박스는 제외해 달라는 요청
+                findDm.find(':input:not([type=checkbox])').each(function(idx,input){
                     var val = input.value;
                     var arr = vcui.array.filter(filterValues, function(item, index) {
                         return item == val;

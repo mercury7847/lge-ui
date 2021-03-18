@@ -575,7 +575,7 @@
                     time: data.time
                 }
 
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                lgkorUI.requestAjaxDataPost(url, data, function(result) {
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
@@ -811,7 +811,15 @@
                     self.searchAddressToCoordinate(data.userAdress, callback);
                 } else{
                     if(data.location && data.location != ""){
-                        location.href = data.location;
+                        lgkorUI.confirm('로그인을 하셔야 이용하실 수 있습니다. <br>로그인 하시겠습니까?',{
+                            typeClass:'type2',
+                            title:'',
+                            okBtnName: '네',
+                            cancelBtnName: '아니요',
+                            ok: function() {
+                                location.href = data.location;
+                            }
+                        });
                     } else{
                         lgkorUI.alert("", {
                             title: data.alert.title
@@ -1074,7 +1082,12 @@
                         }
 
                         lgkorUI.alert("", {
-                            title: data.resultMessage
+                            title: data.resultMessage,
+                            ok: function() {
+                                $('html, body').stop().animate({
+                                    scrollTop: self.$stepCenter.find('.tabs-wrap').offset().top - 40
+                                }, 400);
+                            }
                         });
                     }
 
@@ -1196,23 +1209,24 @@
         },
         updateEngineer: function(data) {
             var self = this,
-                $engineerBox = self.$engineerResult.find('.engineer-info'),
                 $resultBox = self.$engineerResult.find('.engineer-desc');
 
             self.$engineerResult.find('.engineer-img img').attr({
                 'src': data.image,
                 'alt': data.engineerName
             });                             
-            $engineerBox.find('.name').html(data.engineerName);
-            $engineerBox.find('.center').html(data.centerName);
+            // $engineerBox.find('.name').html(data.engineerName);
+            // $engineerBox.find('.center').html(data.centerName);
 
-            $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
-            $resultBox.find('.name').html(data.engineerName);
+            // $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
+            // $resultBox.find('.name').html(data.engineerName);
 
             $('#engineerNm').val(data.engineerName);
             $('#engineerCode').val(data.engineerCode);
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
+
+            $resultBox.find('.txt').html('<span>'+self.data.subCategoryName+'</span> 제품의 해결을 위해 <span>'+data.centerName+'</span>의 <br class="pc-only">전문 엔지니어 <span>'+data.engineerName+'</span>(이) 가 <span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 예약이 가능합니다.<br>예약 완료를 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
 
             self.data['resrvSeq'] = data.resrvSeq;
         },
