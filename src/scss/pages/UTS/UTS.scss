@@ -659,16 +659,29 @@
             border-top: 0;
         }
 
-        // 검색결과 타이틀 라인 제거
         &.w-filter {
             @include tablet {
                 .lay-filter {
-                    .fiter-head:after,
-                    .filter-head:after {
-                        display: none;
+                    .fiter-head,
+                    .filter-head {
+                        height: 88px;
+                        border-bottom: 1px solid $color-border;
+                        &:after {
+                            display: none;
+                        }
+                        .tit {
+                            padding: 48px 0 16px;
+                        }
                     }
-                    .plp-filter-wrap .filter-top {
-                        padding-top: 20px;
+                    .plp-filter-wrap {
+                        padding-top: 88px;
+                        .filter-close {
+                            top: 44px;
+                        }
+                        .filter-top {
+                            display: none;
+                            padding-top: 20px;
+                        }
                     }
                 }
             }
