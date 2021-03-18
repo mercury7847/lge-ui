@@ -40,7 +40,10 @@
             .carousel-box {
                 .text-area.type-narrow {
                     .inner {
-                        @include boxs(n) ;
+                        max-width:49.131%;
+                        @include mobile {
+                            max-width:100%;
+                        }
                     }
                 }
             }
@@ -114,7 +117,7 @@
 				transform:translateX(-50%);
 				z-index:1;
 				width:100%;
-				max-width:1380px + 220px;
+				max-width:1380px + 160px;
                 margin:0 auto;
                 padding:0 80px;
 
@@ -165,10 +168,10 @@
                 &.box-align-left {
                     .inner {
                         margin-right:auto;
-                        padding-left:2.5%;
-                        @include mobile {
-                            padding-left:0;
-                        }
+                        // padding-left:2.5%;
+                        // @include mobile {
+                        //     padding-left:0;
+                        // }
                     }
                 }
                 &.box-align-center {
