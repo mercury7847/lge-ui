@@ -149,7 +149,7 @@
                 lgkorUI.cremaLogin();
 
                 //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
-                if(typeof reviewsCount !== 'undefined') {
+                if(typeof reviewsCount !== 'undefined' && reviewsCount != "") {
                     if(parseInt(reviewsCount) > 0) {
                         $(window).trigger("changeCategory.KRP0009",{"title":"리뷰(" + reviewsCount + ")","linkName":"review"});
                     }
@@ -214,7 +214,7 @@
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
-                if(typeof productPrice !== 'undefined') {
+                if(typeof productPrice !== 'undefined' && productPrice != "") {
                     self.$pdpInfoPaymentAmount.data('price',productPrice);
                 } else {
                     self.$pdpInfoPaymentAmount.data('price',0);
@@ -407,7 +407,6 @@
                 //리뷰 클릭하기
                 self.$pdpInfoProductDetailInfo.on('click','.star-rating-wrap a', function(e) {
                     var href = $(this).attr('href');
-                    console.log(href);
                     self.scrollMovedById(href);
                 });
 
@@ -622,6 +621,9 @@
                     var param = JSON.parse(JSON.stringify(sendData));
                     var $paymentAmount = $(this).parents('.payment-amount');
 
+                    //렌탈케어 제품인가(일반구매의 케어십과 틀림)
+                    var isRentalCareTab = $paymentAmount.find('div.purchase-button').hasClass('rental');
+
                     //소모품이 있는가
                     var cart = [];
                     var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
@@ -691,7 +693,7 @@
 
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
 
-                    if(param.typeFlag == "C") {
+                    if(!isRentalCareTab && param.typeFlag == "C") {
                         lgkorUI.confirm('', {
                             title: "케어십 서비스를 신청하시는 경우<br>1개의 제품만 장바구니에 담을 수 있습니다.<br>해당 제품을 장바구니에 담으시겠어요?",
                             okBtnName: '네',
@@ -1284,6 +1286,9 @@
             updatePaymentAmountPrice: function($paymentAmount) {
                 var self = this;
 
+                //렌탈케어 제품인가(일반구매의 케어십과 틀림)
+                var isRentalCareTab = $paymentAmount.find('div.purchase-button').hasClass('rental');
+                
                 var quantity = $paymentAmount.data('quantity');
                 var price = parseInt($paymentAmount.data('price'));
                 var carePrice = parseInt($paymentAmount.data('carePrice'));
@@ -1293,7 +1298,9 @@
 
                 //console.log(price, quantity, carePrice, cardData, prefix);
 
-                if(cardData && cardData.cardSale) {
+                //2021-03-17
+                //구매의 케어십은 카드세일을 적용하여 표시하지 않는다 (렌탈케어만 적용해서 표시)
+                if(isRentalCareTab && cardData && cardData.cardSale) {
                     carePrice -= parseInt(cardData.cardSale);
                 }
                 var totalPrice = price + (carePrice ? carePrice : 0);
@@ -1374,6 +1381,9 @@
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
                 var $paymentAmount = $dm.parents('.payment-amount');
 
+                //렌탈케어 제품인가(일반구매의 케어십과 틀림)
+                //var isRentalCareTab = $paymentAmount.find('div.purchase-button').hasClass('rental');
+                
                 //var $purchaseButton = $dm.parents('.purchase-button');
                 /*if($purchaseButton.hasClass('rental')) {
                     //렌탈타입
@@ -1598,11 +1608,11 @@
                                 $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
                                 $pointMember.show();
                                 //구매혜택 가격 갱신
-                                if(typeof obsOriginalPrice  !== 'undefined') {
+                                if(typeof obsOriginalPrice !== 'undefined' && obsOriginalPrice != "") {
                                     var memberPoint = parseInt(myMembershipPoint);
                                     var originalPrice = parseInt(obsOriginalPrice);
-                                    var totalDiscountPrice = (typeof obsTotalDiscountPrice  !== 'undefined') ? parseInt(obsTotalDiscountPrice) : 0;
-                                    var addRewardAmt = (typeof rewardAmt != 'undefined') ? parseInt(rewardAmt) : 0;
+                                    var totalDiscountPrice = (typeof obsTotalDiscountPrice  !== 'undefined'  && totalDiscountPrice != "") ? parseInt(obsTotalDiscountPrice) : 0;
+                                    var addRewardAmt = (typeof rewardAmt !== 'undefined' && rewardAmt != "") ? parseInt(rewardAmt) : 0;
                                     
                                     var totalSale = totalDiscountPrice + addRewardAmt + memberPoint;
                                     if(totalSale > originalPrice) totalSale = originalPrice;
