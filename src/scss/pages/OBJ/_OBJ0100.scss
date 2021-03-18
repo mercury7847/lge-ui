@@ -7966,6 +7966,17 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 /********************************************************************************************************************************/
 
 @media (max-width:767px) {
+    .h2Tile.gallery {
+        display: block;
+        width: 100%;
+        padding: 0px 24px;
+        font-family: Inter;
+        font-size: 64px;
+        font-weight: bold;
+        line-height: 1.19;
+        letter-spacing: -0.58px;
+        color: #101010;
+    }
     .gallery_top_list {
         position: relative;
         width: 100vw;

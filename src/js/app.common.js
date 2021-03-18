@@ -115,6 +115,18 @@ $(document).ready(function() {
                         $('.floating-menu.btn-app-ar .app-ar').css("transform", "translateY(68px)");
                     }
                 });
+
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $('.floating-wrap').css({
+                            "height" : "136px"
+                        });
+                    }else{
+                        $('.floating-wrap').css({
+                            "height" : "68px"
+                        });
+                    }
+                });
                 */
             }
 
