@@ -474,6 +474,9 @@
 			.text-img-wrap {
 				.img-area {
 					text-align:left;
+					.img {
+						margin-top:0;
+					}
 					@include mobile {
 						text-align:center;
 					}
