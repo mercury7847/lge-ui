@@ -3,3 +3,29 @@
 @import "../../utilities/mixins";
 //제품체험
 @import "OBJ0302";
+//갤러리
+.objet.gallery {
+    background: #f0eeee;
+    @import "OBJ0401";
+}
+
+@media (min-width:768px) {
+    .btnMobi {
+        display: none;
+    }
+    .only_pc {
+        display: block;
+    }
+    .only_mobile {
+        display: none;
+    }
+}
+
+@media (max-width:767px) {
+    .only_pc {
+        display: none;
+    }
+    .only_mobile {
+        display: block;
+    }
+}

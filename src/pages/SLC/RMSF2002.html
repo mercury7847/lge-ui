@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210317 스크립트 추가 caresolutionWhyTab.js-->
     @@include('./common/head.html', {
         pageCSS: ["SLC/SLC"],
+        pageJS: ["caresolution/caresolutionWhyTab"], 
         pageTitle: "WHY 케어솔루션 | LG전자",
         pageDesc: "LG전자 케어솔루션으로 관리가 필요한 가전제품들을 관리할 수 있습니다. 차원이 다른 전문가들이 케어해주어 고객의 삶에 안전과 편리함을 전달드립니다."
     })
+    <!-- //210317 스크립트 추가 caresolutionWhyTab.js-->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -27,7 +30,7 @@
 
                 <!-- contents -->
                 <div class="ui_sticky"><!-- 210203 수정 [div.ui_sticky 돔 추가] -->
-                    <div class="tabs-wrap border-type ui_tab csn-tabs "><!-- 210203 수정 [.btn-type -> .border-type 수정] --><!-- 201221 수정 [.btn-type class 추가] -->
+                    <div class="tabs-wrap border-type ui_why_tab csn-tabs"><!-- 210203 수정 [.btn-type -> .border-type 수정] --><!-- 201221 수정 [.btn-type class 추가] -->
                         <ul class="tabs">
                             <li class="on"><a href="#caresolution1">Why 케어솔루션<em class="blind">선택됨</em></a></li>
                             <li><a href="#caresolution2">케어솔루션 매니저</a></li>
@@ -662,7 +665,9 @@
                                 "안드로이드만 가능, 아이폰은 서비스 지원 불가"
                             ]
                         })
-                        <a href="#n" class="btn border"><span>보이는 ARS 앱 설치하기</span></a>
+                        <!-- 210316 링크수정 -->
+                        <a href="https://play.google.com/store/apps/details?id=com.callgate.ars" target="_blank" class="btn border"><span>보이는 ARS 앱 설치하기</span></a>
+                        <!-- //210316 링크수정 -->
                     </div>
                     <!-- // 201221 수정 [내부 DOM 수정] -->
                 </div>
@@ -781,7 +786,9 @@
                             <div class="tit-wrap">
                                 <h3 class="tit">케어솔루션 매니저 지원 안내</h3>
                                 <p class="desc">케어솔루션 공식 유지관리 서비스 파트너에 도전해 보세요.</p>
-                                <a href="#n" class="btn size-m border"><span>매니저 모집 안내 바로가기</span></a><!-- 210203 수정 [.size -> .size-m 클래스 변경] -->
+                                <!-- 210316 링크수정 -->
+                                <a href="https://himsolutek.com/caresolution/manager/consultation" target="_blank" class="btn size-m border"><span>매니저 모집 안내 바로가기</span></a><!-- 210203 수정 [.size -> .size-m 클래스 변경] -->
+                                <!-- //210316 링크수정 -->
                             </div>
                             <!-- 201221 수정 [DOM 수정] -->
                             <div class="gray-block-wrap type2">

@@ -149,7 +149,7 @@
                                                     <dt class="tit"><label for="inp01-1" class="req">이름<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="이름을 입력해주세요" value="이엘지" disabled>
+                                                            <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="이름 입력" value="이엘지" disabled><!-- 210317 수정 [placeholder 수정] -->
                                                             <!-- <p class="comp">본인 인증 완료</p> -->
                                                         </div>
                                                     </dd>
@@ -160,7 +160,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="number" id="inp01-2-yet" name="userPhone" value="01012349876" data-max-length="11" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." disabled>
+                                                                <input type="number" id="inp01-2-yet" name="userPhone" value="01012349876" data-max-length="11" data-required="true" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" disabled><!-- 210317 수정 [placeholder 수정] -->
                                                             </div>
                                                         </div>
                                                     </dd>
@@ -207,7 +207,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="email" id="inp01-4" placeholder="이메일 주소를 입력해주세요." value="" name="userEmail" data-required="true"><!-- 210305 수정 [input type 수정] -->
+                                                            <input type="email" id="inp01-4" placeholder="이메일 입력" value="" name="userEmail" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -232,7 +232,7 @@
                                                         </div>
                                                         <div class="input-wrap">
                                                             <!-- 2020-11-13 name 수정-->
-                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true">
+                                                            <input type="text" value="" name="detailAddress" placeholder="상세 주소 입력" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                         </div>
                                                         <div class="btm-more err-address"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                     </dd>
@@ -291,7 +291,7 @@
                                                     <dt class="tit"><label for="inp02-1" class="req">인수자<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-1" placeholder="이름을 입력해주세요." value="" name="userName" data-required="true">
+                                                            <input type="text" id="inp02-1" placeholder="이름 입력" value="" name="userName" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -309,7 +309,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inp02-2" placeholder="(-)없이 입력해주세요" name="userPhone" maxlength="11" data-min-length="10" data-max-length="11" data-required="true">
+                                                            <input type="number" id="inp02-2" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" name="userPhone" maxlength="11" data-min-length="10" data-max-length="11" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -318,7 +318,7 @@
                                                     <dt class="tit"><label for="inp02-3" class="req">연락처<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="number" id="inp02-3" placeholder="(-)없이 입력해주세요" name="userTelephone" maxlength="12" data-equal-number="0212345678" data-required="true">
+                                                            <input type="number" id="inp02-3" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" name="userTelephone" maxlength="12" data-equal-number="0212345678" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                             <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
                                                         </div>
                                                     </dd>
@@ -344,7 +344,7 @@
                                                         <div class="box type2">
                                                             <div class="input-wrap">
                                                                 <!-- 2020-11-13 name 수정-->
-                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요." data-required="true"> <!-- 2020-11-25 -->
+                                                                <input type="text" value="" name="detailAddress" placeholder="상세 주소 입력" data-required="true"> <!-- 2020-11-25 --><!-- 210317 수정 [placeholder 수정] -->
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn installAbledConfirm"><span>설치 가능여부 확인</span></button>
@@ -357,9 +357,11 @@
                                                     <dt class="tit"><label for="slt02-1">배송 요청사항</label></dt>
                                                     <dd class="conts">
                                                         <!-- 2020-11-20 -->
+                                                        <!-- 210316 maxlength 추가 -->
                                                         <div class="input-wrap">
-                                                            <input type="text" id="slt02-1" value="" name="installRequriement" placeholder="기사님에게 요청하실 메시지입니다." disabled>
+                                                            <input type="text" id="slt02-1" value="" name="installRequriement" maxlength="20" placeholder="기사님에게 요청하실 메시지 입력" disabled><!-- 210317 수정 [placeholder 수정] -->
                                                         </div>
+                                                        <!-- //210316 maxlength 추가 -->
                                                         <!-- //2020-11-20 -->
                                                     </dd>
                                                 </dl>
@@ -368,7 +370,7 @@
                                                     <dd class="conts">
                                                         <div class="select-wrap">
                                                             <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true" disabled>
-                                                                <option value="" class="placeholder">선택</option>
+                                                                <option value="" class="placeholder">설치 장소 선택</option><!-- 210317 수정 [텍스트 수정] -->
                                                                 <option value="aaa">설치 장소 a</option>
                                                                 <option value="bbb">설치 장소 b</option>
                                                             </select>
@@ -527,11 +529,13 @@
                                                                             </dt>
                                                                             <dd class="conts">
                                                                                 <div class="select-wrap">
-                                                                                    <select class="ui_selectbox" title="카드사 선택" name="associatedCard" data-required="true">
-                                                                                        <option value="" class="placeholder"data-discount-price="0">카드 선택</option> <!-- 2021-01-12 -->
-                                                                                        <option value="11" class="placeholder" data-discount-price="20000">카드 선택1</option> <!-- 2021-01-12 -->
-                                                                                        <option value="22" class="placeholder" data-discount-price="15000">카드 선택2</option> <!-- 2021-01-12 -->
+                                                                                    <!-- 210317 수정 [title, placeholder 수정 / class="placeholder" 첫 옵션에만 필요] -->
+                                                                                    <select class="ui_selectbox" title="제휴카드 선택" name="associatedCard" data-required="true">
+                                                                                        <option value="" class="placeholder" data-discount-price="0">제휴카드 선택</option> <!-- 2021-01-12 -->
+                                                                                        <option value="11" data-discount-price="20000">카드 선택1</option> <!-- 2021-01-12 -->
+                                                                                        <option value="22" data-discount-price="15000">카드 선택2</option> <!-- 2021-01-12 -->
                                                                                     </select>
+                                                                                    <!-- // 210317 수정 [placeholder 수정] -->
                                                                                 </div>
                                                                                 <div class="btm-more right">
                                                                                     <p class="discount-txt">최대 23,000원 청구 할인</p>
@@ -596,7 +600,7 @@
                                                                                 <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
                                                                                 <dd class="conts">
                                                                                     <div class="input-wrap">
-                                                                                        <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true"><!-- 210305 수정 [input type 수정] -->
+                                                                                        <input type="number" id="ipt-card1" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
                                                                                     </div>
                                                                                     <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                                 </dd>
@@ -606,7 +610,7 @@
                                                                                 <dd class="conts">
                                                                                     <div class="box">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="number" id="ipt-card2" value="0322" placeholder="유효기간을 입력해주세요" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true">
+                                                                                            <input type="number" id="ipt-card2" value="0322" placeholder="MMYY" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                                                         </div>
                                                                                         <div class="cell">
                                                                                             <button type="button" class="btn paymentCardConfirm"><span>납부 카드 확인</span></button>
@@ -638,7 +642,7 @@
                                                                                 <dt class="tit"><label for="ipt-bank1" class="req">예금주명<span class="blind">필수입력</span></label></dt>
                                                                                 <dd class="conts">
                                                                                     <div class="input-wrap">
-                                                                                        <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요" value="이엘지" name="paymentUserName" disabled>
+                                                                                        <input type="text" id="ipt-bank1" placeholder="예금주명 입력" value="이엘지" name="paymentUserName" disabled><!-- 210317 수정 [placeholder 수정] -->
                                                                                     </div>
                                                                                 </dd>
                                                                             </dl>
@@ -646,8 +650,8 @@
                                                                                 <dt class="tit"><label for="slt-bank1" class="req">은행명<span class="blind">필수입력</span></label></dt>
                                                                                 <dd class="conts">
                                                                                     <div class="select-wrap">
-                                                                                        <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true">
-                                                                                            <option value="" class="placeholder">선택해주세요.</option>
+                                                                                        <select class="ui_selectbox" id="slt-bank1" title="은행명 선택" name="paymentBank" data-required="true"><!-- 210317 수정 [title 수정] -->
+                                                                                            <option value="" class="placeholder">은행명 선택</option><!-- 210317 수정 [placeholder 수정] -->
                                                                                             <option value="111">은행1</option>
                                                                                             <option value="222">은행2</option>
                                                                                             <option value="333">은행3</option>
@@ -661,7 +665,7 @@
                                                                                 <dd class="conts">
                                                                                     <div class="box">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="number" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"><!-- 210305 수정 [input type 수정] -->
+                                                                                            <input type="number" id="ipt-bank2" value="123456789123" placeholder="&lsquo;-&lsquo;없이 숫자만 입력" name="paymentBankNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
                                                                                         </div>
                                                                                         <div class="cell">
                                                                                             <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>

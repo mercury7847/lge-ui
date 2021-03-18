@@ -231,7 +231,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             var self = this,
                 e;
 
-                console.log('select', index, noTrigger);
+                // console.log('select', index, noTrigger);
 
             if(!noTrigger){
                 //if (index < 0 || self.$tabs.length && index >= self.$tabs.length) {

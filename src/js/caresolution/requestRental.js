@@ -89,6 +89,12 @@
 
         creditInquireButton = $('.creditInquire');
 
+
+        // number e block;
+        $('input[type=number]').on('onkeydown', function(e){
+            return e.keyCode !== 69;
+        });
+
         var register = {
             registFrontNumber:{
                 required: true,
@@ -124,7 +130,6 @@
         }
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
-
         register = {
             userName:{
                 required: true,
@@ -141,17 +146,17 @@
                 errorMsg: "전화번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
-            zipCode: {
+            installZipCode: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            userAddress: {
+            installUserAddress: {
                 required: true,
                 errorMsg: "주소를 확인해주세요.",
                 msgTarget: '.err-address-install'
             },
-            detailAddress: {
+            installDetailAddress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 msgTarget: '.err-address-install'
@@ -581,14 +586,10 @@
             return false;
         }
 
-        if(paymethod == "bank"){
-            chk = compareInputData(bankInputData, bankValidation.getValues());
-
-            if(!chk) return false;
-        } else{
-            chk = compareInputData(cardInputData, cardValidation.getValues());
-
-            if(!chk) return false;
+        chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
+        if(!chk){
+            setInputData('arsAgree', "N");
+            return false;
         }
 
         chk = getInputData('arsAgree');
@@ -917,9 +918,7 @@
     function setArsAgreeConfirm(){
         lgkorUI.showLoading();
 
-        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
-            lgkorUI.hideLoading();
-            
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -1076,7 +1075,8 @@
             });
             return;
         }
-        console.log("requestAgreeChecker:", agreechk)
+        console.log("requestAgreeChecker:", agreechk);
+        
 
         var step1Value = step1Validation.getValues(); 
         var step2Value = step2Validation.getValues();

@@ -11,6 +11,7 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '센터방문 예약',
                 'pageDesc': '온라인으로 예약 후 방문하시면 기다림 없이 서비스를 받으실 수 있습니다..',
@@ -18,11 +19,12 @@
                     { 'btn' : '요금 및 보증 기간 안내 ', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
                 ],
                 'progressArr': [
-                    { 'progress' : '제품 선택'},
-                    { 'progress' : '예약 내용 입력'},
-                    { 'progress' : '예약 완료'}
+                    { 'progress' : '제품 선택', 'on':'on'},
+                    { 'progress' : '예약 내용 입력', 'on':'on'},
+                    { 'progress' : '예약 완료', 'on':''}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             <div class="contents support visit-center">
                 <!-- 서비스 안내 -->
                 @@include('./common/support/service-guide.html', {
@@ -139,13 +141,13 @@
                                     <!-- 2021.03.16 class="new-type" > "border-type left" 로 변경 -->
                                     <div class="tabs-wrap border-type ui_tab left">
                                         <ul class="tabs">
-                                            <li class="on"><a href="#tab1">지역<em class="blind">선택됨</em></a></li>
-                                            <li><a href="#tab2">지하철 역</a></li>
-                                            <li><a href="#tab3">센터명</a></li>
+                                            <li class="on"><a href="#tab-1">지역<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#tab-2">지하철 역</a></li>
+                                            <li><a href="#tab-3">센터명</a></li>
                                         </ul>
                                     </div>
 
-                                    <div id="tab1" class="tabs-contents">
+                                    <div id="tab-1" class="tabs-contents">
                                         <div class="form-wrap">
                                             <div class="forms">
                                                 <div class="adress-input-box">
@@ -185,7 +187,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="tab2" class="tabs-contents">
+                                    <div id="tab-2" class="tabs-contents">
                                         <div class="form-wrap">   
                                             <div class="forms">
                                                 <div class="adress-input-box">
@@ -228,7 +230,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="tab3" class="tabs-contents">
+                                    <div id="tab-3" class="tabs-contents">
                                         <div class="form-wrap">
                                             <div class="forms">
                                                 <div class="adress-input-box">

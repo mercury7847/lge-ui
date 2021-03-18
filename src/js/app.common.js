@@ -26,7 +26,7 @@ $(document).ready(function() {
 
             if($(".main-wrap").length > 0){
                 //Quick메뉴 AR 버튼 추가
-                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt">우리집에 어울리는 가전을 찾아보세요</span></a></div></div>');
+                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt">우리집에 제품을 가상으로 배치해보세요.</span></a></div></div>');
                 //$("#quickMenu").prepend('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
                 //Quick메뉴 AR 버튼 이벤트
                 $(".btn-app-ar a").off("click").on({
@@ -69,40 +69,6 @@ $(document).ready(function() {
                         LGEAPPclickCNT = 0;
                     }
                 });
-
-                //하단 탭바 덮는 경우
-                LGEquickMenuPosCover = function(bool){
-                    if(bool == "Y"){
-                        $('.floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
-                        /*
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        }else{
-                        }
-                        */
-                    }else{
-                        $('.floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
-                        /*
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        }else{
-                        }
-                        */
-                    }
-                }
-                //하단 탭바 미는 경우
-                LGEquickMenuPosPush = function(bool){
-                    $('.floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
-                    /*
-                    if(bool == "Y"){
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        }else{
-                        }
-                    }else{
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                        }else{
-                        }
-                    }
-                    */
-                }
 
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
@@ -158,6 +124,40 @@ $(document).ready(function() {
                 덮는 경우 : app-chng-pos
                 미는 경우 : app-chng-push-pos
                 */
+
+                //하단 탭바 덮는 경우
+                LGEquickMenuPosCover = function(bool){
+                    if(bool == "Y"){
+                        $('.floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }else{
+                        $('.floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
+                        /*
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                        */
+                    }
+                }
+                //하단 탭바 미는 경우
+                LGEquickMenuPosPush = function(bool){
+                    $('.floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
+                    /*
+                    if(bool == "Y"){
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }else{
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                        }else{
+                        }
+                    }
+                    */
+                }
             }
         }
 

@@ -72,45 +72,8 @@ $(function () {
         '</div>';
     
 
-    vcui.require(['ui/scrollNavi','ui/smoothScroll'], function () {
+    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
-        /*
-        var sceneArr = {
-            isImage : true,
-            imagePath : 'imagePath-1',
-            imageAlt : 'imageAlt-1',
-            videoPath : 'videoPath',
-            videoExt : '',
-            videoAlt : 'videoAlt',
-            descTxt : '',
-            isBanner : true,
-            bannerHtml : '',
-            linkPath : 'linkPath',
-            linkTxt : 'linkTxt',
-            nowNum : '1',
-            totalNum : '6'
-        }
-
-
-        var testArr = {
-
-            list: [
-                {
-                    imagePath : 'imagePath-1',
-                    imageAlt : 'imageAlt-1',
-                    linkPath : 'linkPath-1',
-                    linkPath : 'linkTxt-1'
-                },
-                {
-                    imagePath : 'imagePath-2',
-                    imageAlt : 'imageAlt-2',
-                    linkPath : 'linkPath-2',
-                    linkPath : 'linkTxt-2'
-                }
-            ]
-        }
-        */
-
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
@@ -377,66 +340,9 @@ $(function () {
 
         });
         
-        // 터치 이벤트 처리
-
-        /*
-        // 안드로이드 
-        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
-        android.showBottomMenuOver(boolean isOver)
-        
-        하단메뉴 스크롤 기능 사용 여부 설정
-        android.setEnableScrollBottomMenu(blooean);
-
-        하단메뉴 노출 여부 설정
-        android.showBottomMenu(blooean);
-
-
-        //iOS 
-        하단메뉴가 화면을 덮는 형태인지 아닌지 결정
-
-        var obj = new Object();
-        obj.command = "showBottomMenuOver";
-        obj.value ="Y"; //Y - 덮는 형태 ,N - 덮지 않는 형태 
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-
-
-        하단메뉴 스크롤 기능 사용 여부 설정
-        var obj = new Object();
-        obj.command = "setEnableScrollBottomMenu";
-        obj.value ="Y"; //Y 사용, N 미사용
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-
-
-        하단메뉴 노출 여부 설정
-        var obj = new Object();
-        obj.command = "showBottomMenu";
-        obj.value ="Y"; //Y 노출, N 미노출
-        var jsonString= JSON.stringify(obj);
-        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-        */
-
-
-        var isAndroid = vcui.detect.isAndroid;
-        var isIOS = vcui.detect.isIOS;
-
-        if(isApplication) {
-            if(isAndroid && android) {
-                android.showBottomMenuOver(true);
-                android.setEnableScrollBottomMenu(false);
-            }
-            if(isIOS){
-                var jsonString= JSON.stringify({command:'showBottomMenuOver', value:'Y'});
-                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-
-                var jsonString2= JSON.stringify({command:"setEnableScrollBottomMenu", value:"N"});
-                webkit.messageHandlers.callbackHandler.postMessage(jsonString2);
-            }
-        }
-
-        var showBottomMenuY= JSON.stringify({command:'showBottomMenu', value:'Y'});
-        var showBottomMenuN= JSON.stringify({command:'showBottomMenu', value:'N'});
+        // 앱 하단 메뉴 컨트롤
+        lgkorUI.showAppBottomMenuOver(true);
+        lgkorUI.setEnableAppScrollBottomMenu(false);
 
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
@@ -448,16 +354,11 @@ $(function () {
 
                 if (touchSy - data.y > 80) {
                     // console.log('down');
-                    if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(false);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuN);
-                    }
+                    lgkorUI.showAppBottomMenu(false);
+
                 } else if (touchSy - data.y < -80) {
                     // console.log('up');
-                    if(isApplication) {
-                        if(isAndroid && android) android.showBottomMenu(true);
-                        if(isIOS) webkit.messageHandlers.callbackHandler.postMessage(showBottomMenuY);
-                    }
+                    lgkorUI.showAppBottomMenu(true);
                 }
 
                 if(currentPage == maxLens){
@@ -503,6 +404,7 @@ $(function () {
             newW = Math.max(boxW, Math.round(targetW*rate));
             newH = Math.max(boxH, Math.round(targetH*rate));
 
+
             $(target).css({
                 width: newW,
                 height: newH,
@@ -523,6 +425,14 @@ $(function () {
         }
 
         // 비디오 태그 처리
+        /*
+        <div class="img">
+            <img src="/lg5-common/images/MA/img-main-00.jpg"  data-pc-src="/lg5-common/images/MA/img-main-00.jpg" data-m-src="/lg5-common/images/MA/img-main-00-m.jpg" alt="">
+            <!-- 동영상 가이드 -->
+            <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
+        </div>
+        */
+
         function updateVideo(video) {
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
@@ -610,6 +520,8 @@ $(function () {
 
         // 렌더링
 
+
+
         var render = function(idx){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -641,11 +553,19 @@ $(function () {
                 posArr.push(allHeight);
                 $(this).height(itemHeight);
                 
+                // var imageSize = {
+                //     //<img data-natural-width = '1980' data-natural-height = '1080'>
+                //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920, 
+                //     height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1285,//1285 1476 1080
+                // };
+
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
-                    width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 1920, 
-                    height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1080
+                    width : window.breakpoint.name=='pc'? 1920 : 720, 
+                    height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
                 };
+
+                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
                 _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
                 totalHeight += itemHeight;
@@ -682,14 +602,6 @@ $(function () {
 
             render();
             $('header').find('.header-bottom').addClass('app-btm');
-    
-            // var leng = $scenes.length;
-            // var lastScene = $scenes.eq(leng-1);
-            // var height = lastScene.height();
-            // var padding = parseInt($('footer').css('padding-bottom'));
-            // lastScene.height(height+160);
-            // $('footer').css({paddingBottom:padding + 160});
-
 
         } else{
             // 앱 대응시 주석처리

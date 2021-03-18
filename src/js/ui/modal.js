@@ -6,7 +6,7 @@
  */
 vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
     "use strict";
-
+    
     var $doc = $(document),
         $win = $(window),
         detect = core.detect,
@@ -71,6 +71,13 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.add(modal);
             if (self.stack.length === 1) {
                 $(document).triggerHandler('modalfirstopen');
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+
+                //앱에서 처리 못할때를 대비
+                lgkorUI.setEnableAppScrollBottomMenu(false);
+                
             }
         },
         _handleModalHidden: function _handleModalHidden(e) {
@@ -88,6 +95,12 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             } else {
                 self.active = null;
                 $(document).triggerHandler('modallastclose');
+                $('html, body').css({
+                    overflow:"visible"
+                });
+
+                //앱에서 처리 못할때를 대비
+                lgkorUI.setEnableAppScrollBottomMenu(true);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -282,12 +295,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         _hashchange:function _hashchange(e){
             var self = this;            
             var hash = window.location.hash;
-
-            
             if(hash.search(self.randomKey) < 0) {
-                //self.close();
+                self.close();
             }
-
         },
 
         _bindAria: function _bindAria() {
@@ -494,18 +504,29 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 self.destroy();
             });
-
             
+
 
             if(self.options.isHash){
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 var hash = window.location.hash;
                 hash = hash.replace("#"+self.randomKey, '');
-                window.location.hash = hash;
+                if(hash=='') {
+                    self._removeLocationHash();
+                }else{
+                    window.location.hash = hash;
+                }
             }
 
             
         },
+
+        _removeLocationHash : function(){
+            var noHashURL = window.location.href.replace(/#.*$/, '');
+            window.history.replaceState('', document.title, noHashURL) 
+        },
+
+        
 
         /**
          * 도큐먼트의 가운데에 위치하도록 지정

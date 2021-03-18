@@ -499,6 +499,12 @@
 
                         self.$optionContainer.css({y:0}).removeClass('open');
                     });
+
+                    if(window.breakpoint.isMobile){
+                        $('html, body').css({
+                            overflow: 'visible'
+                        });
+                    }
                 } else{
                     optop = self.$optionContainer.position().top;
 
@@ -507,6 +513,12 @@
                     self.$optionContainer.addClass('open');
 
                     self.$optionContainer.stop().css({y:optop}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+
+                    if(window.breakpoint.isMobile){
+                        $('html, body').css({
+                            overflow: 'hidden'
+                        });
+                    }
                 }
             }
         },

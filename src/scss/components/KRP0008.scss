@@ -529,8 +529,9 @@
                 .star-rating-wrap {
                     display:inline-block;
                     height:24px;
-                    font-size:14px;
+                    font-size:0;
                     line-height:24px;
+                    vertical-align:top;
                     @include mobile {
                         line-height:18px;
                     }
@@ -539,28 +540,39 @@
                         display:inline-block;
                         width:1px;
                         height:12px;
-                        margin:0 4px 0 6px;
+                        margin:0 6px;
                         background-color:#ddd;
-                        vertical-align:-1px;
-                    }
-                    .star-inner {
-                        display:inline-block;
-                        margin-top:-2px;
                         vertical-align:middle;
                     }
-                    .star-inner,
-                    .star-rating {
-                        position:relative;
-                        width:80px;
-                        height:16px;
-                        background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
-                        background-repeat:no-repeat;
-                        background-size:80px 16px;
+                    a {
+                        display:inline-block;
+                        .star-inner {
+                            display:inline-block;
+                            vertical-align:middle;
+                        }
+                        .star-inner,
                         .star-rating {
-                            position:absolute;
-                            top:0;
-                            left:0;
-                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                            position:relative;
+                            width:80px;
+                            height:16px;
+                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
+                            background-repeat:no-repeat;
+                            background-size:80px 16px;
+                            .star-rating {
+                                position:absolute;
+                                top:0;
+                                left:0;
+                                background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                            }
+                        }
+                    }
+                    .scope {
+                        margin-left:4px;
+                        font-size:14px;
+                        line-height:24px;
+                        vertical-align:top;
+                        @include mobile {
+                            line-height:18px;
                         }
                     }
                 }
@@ -1303,9 +1315,6 @@
                     & + label {
                         padding-left: 28px;
                         &:after {
-                            display: none;
-                        }
-                        &:before {
                             top: 0;
                             left: 0;
                             width: 24px;
@@ -1314,7 +1323,7 @@
                         }
                     }
                     &:checked {
-                        & + label:before {
+                        & + label:after {
                             background-color: transparent;
                             background-image: url('/lg5-common/images/icons/btn-compare-on-24.svg');
                         }

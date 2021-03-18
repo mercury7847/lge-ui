@@ -11,15 +11,17 @@
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '이메일문의',
                 'pageDesc': '궁금한 점이 있으시면 무엇이든 물어보세요.',
                 'progressArr': [
-                    { 'progress' : '문의유형 선택'},
-                    { 'progress' : '문의내용 입력'},
-                    { 'progress' : '문의 완료'}
+                    { 'progress' : '문의유형 선택', 'on':'on'},
+                    { 'progress' : '문의내용 입력', 'on':'on'},
+                    { 'progress' : '문의 완료', 'on':''}
                 ]
             })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
             <div class="contents support email-inquiry">
 
                 <!-- 선택 제품 플로팅바 -->
@@ -360,7 +362,7 @@
                                                 <div class="tit"><label for="userEmail" class="req">이메일<span class="blind">필수입력</span></label></div>
                                                 <div class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="userEmail" id="userEmail" placeholder="이메일 입력" value="" minlength="5" maxlength="50" data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="이메일 주소를 정확히 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="userEmail" id="userEmail" placeholder="이메일 입력" value="" minlength="1" maxlength="50" data-format="email" data-error-msg="이메일 주소를 입력해주세요." data-pattern-msg="이메일 주소를 정확히 입력해주세요." data-required="true" required>
                                                     </div>
                                                     <div class="btm-more err-block">
                                                         <p class="err-msg"></p>

@@ -11,6 +11,12 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+
+    var isAndroid = vcui.detect.isAndroid;
+    var isIOS = vcui.detect.isIOS;
+    var isApplication = isApp();
+
+
     window.onload = function(){
         vcui.require([
             'ui/lazyLoaderSwitch',
@@ -265,6 +271,7 @@ var isApp = function(){
         NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
+        HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
@@ -430,9 +437,9 @@ var isApp = function(){
                             //this.$('.pop_contents').attr('tabindex', 0);
                             //console.log(this);
 
-                            $('html, body').css({
-                                overflow:"hidden"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"hidden"
+                            // });
     
                             if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
@@ -449,9 +456,9 @@ var isApp = function(){
                             }
                         },
                         modalhidden: function(e){
-                            $('html, body').css({
-                                overflow:"visible"
-                            });
+                            // $('html, body').css({
+                            //     overflow:"visible"
+                            // });
                         }
                     }
                 });
@@ -592,21 +599,36 @@ var isApp = function(){
             });
         },
 
-        showLoading:function(msg){
+        showLoading:function(msg, target){
             vcui.require(['ui/spinner'],function(){
                 var str = msg? msg : '진행중입니다';
-                $('html').addClass('dim');
-                $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
-                $('body').vcSpinner({msg:str});
-                $('body').vcSpinner('spin', str); 
-            })   
+                var $target = target instanceof $ ? target : $(target);
+
+                if($target[0]){
+                    $target.vcSpinner({msg:str, position:'absolute'}).vcSpinner('spin'); 
+                }else{
+                    // $('html').addClass('dim');
+                    $('body').append("<div class='loading_dim' style='position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.3);z-index:199999999'></div>")
+                    $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
+                }
+                
+            }); 
         },
+
     
-        hideLoading:function(){
+        hideLoading:function(target){
             vcui.require(['ui/spinner'],function(){
-                $('.loading_dim').remove();
-                $('html').removeClass('dim');
-                $('body').vcSpinner('stop');
+
+                var $target = target instanceof $ ? target : $(target);
+
+                if($target[0]){
+                    $target.vcSpinner('stop');
+                }else{
+                    $('.loading_dim').remove();
+                    // $('html').removeClass('dim');
+                    $('body').vcSpinner('stop');
+                }
+                
             });
         },
 
@@ -654,7 +676,7 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                
+
                 var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok modalcancel', function (e) {
@@ -1111,7 +1133,7 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide) {
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
@@ -1197,7 +1219,7 @@ var isApp = function(){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
             }).always(function() {
-                lgkorUI.hideLoading();
+                if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },
@@ -1798,7 +1820,46 @@ var isApp = function(){
                     crema.init(null,null);
                 };
             }
+        },
+
+        // 앱 하단 메뉴 컨트롤 부분
+
+        // 앱 하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        showAppBottomMenuOver:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.showBottomMenuOver(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:'showBottomMenuOver', value:flag? "Y":"N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 스크롤 기능 사용 여부 설정
+        setEnableAppScrollBottomMenu:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.setEnableScrollBottomMenu(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value : flag? "Y" : "N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 노출 여부 설정
+        showAppBottomMenu:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.showBottomMenu(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'showBottomMenu', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
         }
+        
     }
 
     document.addEventListener('DOMContentLoaded', function () {

@@ -53,6 +53,11 @@
             })
             
             <div class="award-breakdown">
+                <!-- 210317 수정 [no data 케이스 추가] -->
+                <div class="no-data" style="display: none;">
+                    <p>수상 내역이 없습니다.</p>
+                </div>
+                <!-- // 210317 수정 [no data 케이스 추가] -->
                 <ul class="award-list">
 
                 @@loop('./common/partials/KRP0028-list.html', [

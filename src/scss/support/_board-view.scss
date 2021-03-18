@@ -71,6 +71,21 @@
                         margin-top:10px;
                         display: block;
                         > li {
+                            &.category, &.topic {
+                                width:100%;
+                                margin-left:0;
+                                padding-left:0;
+                                &:before {
+                                    display: none;
+                                }
+                            }
+                            &.topic + li {
+                                margin-left:0;
+                                padding-left:0;
+                                &:before {
+                                    display: none;
+                                }
+                            }
                             & + li {
                                 &:before {
                                     height:10px;

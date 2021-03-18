@@ -207,6 +207,16 @@
             } else {
                 return valueObject;
             }
+        },
+        backHistory: function(item) {
+            var url;
+            if (item.constructor == Object) {
+                url = $.param(item);
+            } else {
+                url = $(item).attr('href');
+                url = url.substr(url.indexOf('?') + 1);
+            }
+            history.replaceState(null, '', '?'+url);
         }
     }
 
@@ -1394,6 +1404,8 @@ CS.MD.commonModel = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
+
+
 CS.MD.calendar = function() {
     var dateUtil = vcui.date;
     var detect = vcui.detect;
@@ -2462,6 +2474,18 @@ function validatePhone(value){
             }
         });
 
+        $('[data-format=email]').on('input', function() {
+            var $this = $(this),
+                value = $this.val();
+            
+            var regex = /[가-힣ㄱ-ㅎㅏ-ㅣㆍ ᆢ\s]/g;
+            
+            if (regex.test(value)) {
+                $this.val(value.replace(regex, ''));
+                return;
+            }
+        });
+
         $('[data-format=alnum]').on('input', function() {
             var $this = $(this),
                 value = $this.val();
@@ -2485,6 +2509,12 @@ function validatePhone(value){
         }
 
         if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
+
+        $(document).on('input', 'input[type="text"]', function(){
+            if (this.maxLength > 0 && this.value.length > this.maxLength){
+                this.value = this.value.slice(0, this.maxLength);
+            }  
+        });
 
         $(document).on('input', 'input[type="number"]', function(){
             if (this.maxLength > 0 && this.value.length > this.maxLength){
