@@ -1133,7 +1133,7 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide) {
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
@@ -1219,7 +1219,7 @@ var isApp = function(){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
             }).always(function() {
-                lgkorUI.hideLoading();
+                if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },

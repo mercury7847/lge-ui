@@ -71,7 +71,7 @@
     padding: 18px 0;
 
     @include mobile {
-        padding: 21px 0;
+        padding: 14px 0;
     }
 }
 
@@ -90,7 +90,7 @@
                 border-top: 0;
             }
             .nav-item {
-                padding: 2px 6px 9px;
+                padding: 6px 6px 8px;
                 font-weight: 500;
                 @include font($font-medium - 1,23px);
                 color: $color-gray-1;
@@ -105,10 +105,10 @@
                         display: block;
                         position: absolute;
                         top: auto;
-                        bottom: 0;
-                        right: auto;
-                        left: 0;
-                        width: 100%;
+                        bottom: -1px;
+                        right: 6px;
+                        left: 6px;
+                        width: auto;
                         height: 4px;
                         background-color: $color-default;
                     }
@@ -336,7 +336,7 @@
         float: none;
         padding-right: 0;
         position: absolute;
-        top: 12px;
+        top: 6px;
         right: 51px;
         z-index: 1;
         .shortcut {
@@ -1240,7 +1240,7 @@
 
 .mobile-nav-button {
     position: absolute;
-    top: 12px;
+    top: 6px;
     right: 11px;
     width: 34px;
     height: 34px;
@@ -1488,7 +1488,7 @@ html {
             }
             //안드로이드
             &.app-LGEAPP {
-                bottom:95px;
+                bottom:84px;
                 &.app-chng-pos {
                     bottom:24px;
                 }

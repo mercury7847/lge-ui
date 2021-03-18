@@ -74,43 +74,6 @@ $(function () {
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
-        /*
-        var sceneArr = {
-            isImage : true,
-            imagePath : 'imagePath-1',
-            imageAlt : 'imageAlt-1',
-            videoPath : 'videoPath',
-            videoExt : '',
-            videoAlt : 'videoAlt',
-            descTxt : '',
-            isBanner : true,
-            bannerHtml : '',
-            linkPath : 'linkPath',
-            linkTxt : 'linkTxt',
-            nowNum : '1',
-            totalNum : '6'
-        }
-
-
-        var testArr = {
-
-            list: [
-                {
-                    imagePath : 'imagePath-1',
-                    imageAlt : 'imageAlt-1',
-                    linkPath : 'linkPath-1',
-                    linkPath : 'linkTxt-1'
-                },
-                {
-                    imagePath : 'imagePath-2',
-                    imageAlt : 'imageAlt-2',
-                    linkPath : 'linkPath-2',
-                    linkPath : 'linkTxt-2'
-                }
-            ]
-        }
-        */
-
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
