@@ -201,6 +201,7 @@
                     data.categoryNm = $('#categoryNm').val();
                     data.subCategory = $('#subCategory').val();
                     data.subCategoryNm = $('#subCategoryNm').val();
+                    data.productCode = $('#productCode').val();
                 } else {
                     if (!self.isPSP) {
                         data.category = $('#category').val();
