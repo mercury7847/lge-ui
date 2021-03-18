@@ -78,6 +78,9 @@
 
     var tagMngChkList;
 
+    var firstLoadCnt = 0;
+    var firstLoadLength = 1;
+
     function init(){      
         STORY_LIST_URL = $('.contents.story-main').data("storyList");
         IS_LOGIN = $('.contents.story-main').data("loginflag");
@@ -98,7 +101,10 @@
             loadStoryList('user_story', 1, 'UserStory');
     
             $('.new_story').hide();
-            if(IS_LOGIN == "Y") loadStoryList('new_story', 1, 'NewStory');
+            if(IS_LOGIN == "Y"){
+                firstLoadLength = 2;
+                loadStoryList('new_story', 1, 'NewStory');
+            } 
         });
     }
 
@@ -341,11 +347,15 @@
                 $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
             } else{
                 scrolltop = 0;
-                if(sectionItem.hasClass('new_story')){
-                    scrolltop = sectionItem.offset().top;
+                if(firstLoadCnt >= firstLoadLength){
+                    if(sectionItem.hasClass('new_story')){
+                        scrolltop = sectionItem.offset().top;
+                    }
                 }
                 $('html, body').animate({scrollTop: scrolltop}, 200);
             }
+
+            if(firstLoadCnt < firstLoadLength) firstLoadCnt++;
 
             lgkorUI.hideLoading();
         }
