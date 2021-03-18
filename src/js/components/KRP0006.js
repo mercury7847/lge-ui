@@ -28,7 +28,7 @@
                     self.firstLoad = false;
 
                     var param = {
-                        "modelID":modelID,
+                        "modelId":modelID,
                         "bizType":biz
                     }
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
