@@ -3,17 +3,15 @@
     var noDataTxt = '검색된 결과가 없습니다.';
     var listTmpl = 
         '<tr>' +
-            '<td rowspan="2">{{sort}}</td>' +
+            // '<td rowspan="2">{{sort}}</td>' +
             '<td rowspan="2">{{partName}}</td>' +
             '<td>신품</td>' +
-            '<td>{{partNew.number}}</td>' +
-            '<td>{{partNew.price}}</td>' +
+            '<td><p>{{partNew.number}}</p><p>({{partNew.price}})</p></td>' +
             '<td>{{partModel}}</td>' +
         '</tr>' +
         '<tr>' +
             '<td>재생부품</td>' +
-            '<td>{{partOld.number}}</td>' +
-            '<td>{{partOld.price}}</td>' +
+            '<td><p>{{partOld.number}}</p><p>({{partOld.price}})</p></td>' +
             '<td>{{partModel}}</td>' +
         '</tr>';
 
@@ -86,6 +84,18 @@
         bindEvent: function() {
             var self = this;
 
+            self.$searchInput.on('input', function() {
+                var $this = $(this),
+                value = $this.val();
+            
+                var regex = /[가-힣ㄱ-ㅎㅏ-ㅣㆍ ᆢ\s]/g;
+                
+                if (regex.test(value)) {
+                    $this.val(value.replace(regex, ''));
+                    return;
+                }
+            });
+
             self.$searchInput.on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
@@ -95,7 +105,7 @@
 
             self.$searchButton.on('click', function() {
                 var sortVal = self.$searchSelect.val(),
-                    keywordVal = self.$searchInput.val(),
+                    keywordVal = self.$searchInput.val().toUpperCase(),
                     errorTxt = '', flag = false;
 
                 if (!sortVal) errorTxt = '제품을 선택 해 주세요.';
