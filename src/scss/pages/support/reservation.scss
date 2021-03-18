@@ -148,14 +148,11 @@
         }
         .engineer-desc {
             float:left;
+            width:calc(100% - 194px);
             .txt {
                 @include font-medium;
-                .date, .name {
+                span {
                     font-weight:bold;
-                }
-                .topic {
-                    color:#000;
-                    font-weight:400;
                 }
             }
             .btn-wrap {
@@ -174,11 +171,6 @@
                 float:left;
                 width:calc(100% - 104px);
                 padding-left:24px;
-                .txt {
-                    br {
-                        display:none
-                    }
-                }
                 .btn-wrap {
                     margin-top:16px;
                 }
@@ -396,6 +388,11 @@
         }
         .center-result-wrap {
             margin-top:64px;
+            .title {
+                margin-bottom:16px;
+                @include font-large;
+                font-weight:$font-weight-bold;
+            }
             .tb_row {
                 .col01 {width:90px;}
                 .col02 {width:auto;}
