@@ -7,7 +7,6 @@
         },
 
         setting: function() {
-            console.log('asdasd');
             var self = this;
             self.$contents = $('div.contents.care-plan');
             self.$btnArea = self.$contents.find('div.btn-area');
@@ -21,15 +20,24 @@
                 if(index == 0) {
                     //YES
                     var url = self.$contents.data('gotoUrl');
-                    console.log('yes',url);
                     if(url) {
                         lgkorUI.setCookie(lgkorUI.HOMEBREW_CHECK_COOKIE_NAME, "Y");
                         location.href = url;
                     }
                 } else {
                     //NO 홈이동
-                    console.log('no');
-                    location.href = "/";
+                    var url = self.$contents.data('data-cencel-url');
+                    if(url) {
+                        location.href = url;
+                    } else {
+                        var referrer = document.referrer;
+                        var index = referrer.indexOf('lge.co.kr');
+                        if(index > 0) {
+                            history.back();
+                        } else {
+                            location.href = "/";
+                        }
+                    }
                 }
             });
         }
