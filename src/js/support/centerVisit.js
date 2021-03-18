@@ -1226,7 +1226,7 @@
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
 
-            $resultBox.find('.txt').html('<span>'+self.data.subCategoryName+'</span> 제품의 해결을 위해 <span>'+data.centerName+'</span>의 <br class="pc-only">전문 엔지니어 <span>'+data.engineerName+'</span>(이) 가 <span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 예약이 가능합니다.<br>예약 완료를 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
+            $resultBox.find('.txt').html('<span>'+self.data.subCategoryName+'</span> 제품의 해결을 위해 <span>'+data.centerName+'</span>의 <br class="pc-only">전문 엔지니어 <span>'+data.engineerName+'</span>(이) 가 <span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 예약이 가능합니다.<br><br>예약 완료를 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
 
             self.data['resrvSeq'] = data.resrvSeq;
         },
