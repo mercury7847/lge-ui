@@ -6,7 +6,6 @@
  * Copyright 2014-2020 Vladimir Kharlampidi
  *
  * Released under the MIT License
- *
  * Released on: June 16, 2020
  */
 
@@ -156,7 +155,7 @@
      * http://www.idangero.us/
      *
      * Licensed under MIT
-     
+     *
      * Released on: May 15, 2020
      */
 
