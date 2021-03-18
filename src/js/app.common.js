@@ -69,6 +69,24 @@ $(document).ready(function() {
                         LGEAPPclickCNT = 0;
                     }
                 });
+            }
+
+            if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
+                var agent = navigator.userAgent;
+                if(agent.indexOf("LGEAPP-in") != -1) {
+                    //노치 있음
+                    $(".floating-wrap").addClass("app-LGEAPP-in");
+                }else if(agent.indexOf("LGEAPP-io") != -1) {
+                    //노치 없음
+                    $(".floating-wrap").addClass("app-LGEAPP-io");
+                }else if(agent.indexOf("LGEAPP") != -1) {
+                    //안드로이드
+                    $(".floating-wrap").addClass("app-LGEAPP");
+                }
+                /*
+                덮는 경우 : app-chng-pos
+                미는 경우 : app-chng-push-pos
+                */
 
                 //하단 탭바 덮는 경우
                 LGEquickMenuPosCover = function(bool){
@@ -140,24 +158,6 @@ $(document).ready(function() {
                         });
                     }
                 });
-            }
-
-            if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
-                var agent = navigator.userAgent;
-                if(agent.indexOf("LGEAPP-in") != -1) {
-                    //노치 있음
-                    $(".floating-wrap").addClass("app-LGEAPP-in");
-                }else if(agent.indexOf("LGEAPP-io") != -1) {
-                    //노치 없음
-                    $(".floating-wrap").addClass("app-LGEAPP-io");
-                }else if(agent.indexOf("LGEAPP") != -1) {
-                    //안드로이드
-                    $(".floating-wrap").addClass("app-LGEAPP");
-                }
-                /*
-                덮는 경우 : app-chng-pos
-                미는 경우 : app-chng-push-pos
-                */
             }
         }
 
