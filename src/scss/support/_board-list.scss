@@ -17,7 +17,7 @@
     .total {
         float:left;
         font-weight:700;
-        font-size:14px;
+        @include font-small;
         .count {
             color: #da0f47;
         }
