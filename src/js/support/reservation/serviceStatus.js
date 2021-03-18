@@ -769,6 +769,8 @@
 
                 formData = $.extend(formData, formParam);
 
+                console.log('complete');
+
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
 
@@ -778,8 +780,10 @@
                         formData = $.extend(formData, {
                             acptNo : data.acptNo
                         })
-                        $('#acptNo').val(result.data.acptNo);
+                        alert('data.acptNo : ' + data.acptNo);
+                        $('#acptNo').val(data.acptNo);
                         $form.attr('action', result.data.url);
+                        
                         $form.submit();
                     } else {
                         if (data.resultMessage) {
