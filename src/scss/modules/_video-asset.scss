@@ -249,6 +249,7 @@
 			border: solid 1px #dddddd;
 			background-color: #ffffff;
 			overflow-y: hidden;
+			white-space: normal;
 			@include font-small;
 			&:hover,
 			&:focus {
