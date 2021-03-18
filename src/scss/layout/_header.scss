@@ -1403,6 +1403,7 @@ html {
         .btn-app-ar {
             .app-ar {
                 position:relative;
+                transition:transform .5s ease-out;
             }
             .app-ar-txt {
                 display:none;
