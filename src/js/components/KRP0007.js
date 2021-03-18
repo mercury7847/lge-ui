@@ -691,7 +691,7 @@
 
                 if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
-                //console.log("### item.siblingType ###", item.siblingType)
+                //console.log("### item.siblingType ###", item.siblingType);
 
             //     '{{#if checkPriceFlag}}'+
             //     '{{#if bizType == "CARESOLUTION"}}' +
