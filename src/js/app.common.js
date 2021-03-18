@@ -69,6 +69,43 @@ $(document).ready(function() {
                         LGEAPPclickCNT = 0;
                     }
                 });
+
+                if ($(window).scrollTop() > 100) {
+                    //$('.floating-menu.top').show();
+                    $('.floating-menu.top').css({
+                        "position" : "static",
+                        "right" : "20px",
+                        "bottom" : "24px"
+                        //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
+                    });
+                } else {
+                    //$('.floating-menu.top').hide();
+                    $('.floating-menu.top').css({
+                        "position" : "absolute",
+                        "right" : 0,
+                        "bottom" : 0
+                        //"transition" : "opacity 0s ease-out, transform 0s ease-out"
+                    });
+                }
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        //$('.floating-menu.top').show();
+                        $('.floating-menu.top').css({
+                            "position" : "static",
+                            "right" : "20px",
+                            "bottom" : "24px"
+                            //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
+                        });
+                    } else {
+                        //$('.floating-menu.top').hide();
+                        $('.floating-menu.top').css({
+                            "position" : "absolute",
+                            "right" : 0,
+                            "bottom" : 0
+                            //"transition" : "opacity 0s ease-out, transform 0s ease-out"
+                        });
+                    }
+                });
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
@@ -121,43 +158,6 @@ $(document).ready(function() {
                     }
                     */
                 }
-
-                if ($(window).scrollTop() > 100) {
-                    //$('.floating-menu.top').show();
-                    $('.floating-menu.top').css({
-                        "position" : "static",
-                        "right" : "20px",
-                        "bottom" : "24px"
-                        //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
-                    });
-                } else {
-                    //$('.floating-menu.top').hide();
-                    $('.floating-menu.top').css({
-                        "position" : "absolute",
-                        "right" : 0,
-                        "bottom" : 0
-                        //"transition" : "opacity 0s ease-out, transform 0s ease-out"
-                    });
-                }
-                $(window).scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        //$('.floating-menu.top').show();
-                        $('.floating-menu.top').css({
-                            "position" : "static",
-                            "right" : "20px",
-                            "bottom" : "24px"
-                            //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
-                        });
-                    } else {
-                        //$('.floating-menu.top').hide();
-                        $('.floating-menu.top').css({
-                            "position" : "absolute",
-                            "right" : 0,
-                            "bottom" : 0
-                            //"transition" : "opacity 0s ease-out, transform 0s ease-out"
-                        });
-                    }
-                });
             }
         }
 
