@@ -10,6 +10,12 @@
 		margin-top:60px;
 	}
 }
+.cnt03 {
+	margin-top:48px;
+	@include mobile {
+		margin-top:32px;
+	}
+}
 
 .align-center {
 	text-align:center;
@@ -118,6 +124,43 @@
 	@include mobile {
 		padding:0 16px;
 	}
+	&.full {
+		max-width:100%;
+		.sec-ori {
+			max-width:1380px + 80px;
+			margin:0 auto;
+			padding:0 40px;
+			@include mobile {
+				padding:0;
+			}
+		}
+		.full-size {
+			margin:48px -40px 0;
+			background-color:#f4f4f4;
+			.dual-tip {
+				max-width:1380px + 80px;
+				margin:0 auto;
+				padding:80px 40px;
+				.bullet-list {
+					margin-top:68px;
+				}
+				.slide-wrap {
+					.indi-wrap {
+						bottom:-40px;
+					}
+				}
+			}
+			@include mobile {
+				margin:32px -16px 0;
+				.dual-tip {
+					padding:40px 16px;
+					.slide-controls {
+						display:none;
+					}
+				}
+			}
+		}
+	}
 	.bullet-list {
 		margin-top:24px;
 		sup {
@@ -154,6 +197,10 @@
 					}
 					> li {
 						margin-top:40px;
+						.img {
+							border-radius:8px;
+							overflow:hidden;
+						}
 					}
 				}
 				.tit {
@@ -229,7 +276,7 @@
 			}
 			&.logo-img {
 				img {
-					max-width:186px;
+					max-width:210px;
 				}
 			}
 			&.type1 {
@@ -246,34 +293,66 @@
 				display:inline-block;
 			}
 		}
-		.bullet-list {
-			display:inline-block;
-			text-align:left;
-		}
+		// .bullet-list {
+		// 	display:inline-block;
+		// 	text-align:left;
+		// }
 		.dual-tab {
 			margin-top:40px;
 			.tabs-wrap {
+				text-align:left;
 				.tabs {
 					li {
-						margin:0 32px;
+						display:block;
+						margin:23px 0;
+						@include mobile {
+							display:inline-block;
+						}
 						&.on {
 							a {
-								font-weight:700;
+								dl {
+									dt {
+										color:#000;
+										font-weight:700;
+									}
+									dd {
+										display:block;
+									}
+								}
 							}
 						}
 						a {
 							color:#000;
-							font-size:18px;
+							font-size:0;
 							font-weight:normal;
 							line-height:28px;
-							text-align:center;
 							.ico {
-								display:block;
+								display:inline-block;
 								width:80px;
 								height:80px;
-								margin:0 auto 8px;
+								// margin:0 auto 8px;
 								background-repeat:0 0;
 								background-size:80px 80px;
+								vertical-align:middle;
+							}
+							dl {
+								display:inline-block;
+								padding-left:24px;
+								text-align:left;
+								vertical-align:middle;
+								dt {
+									color:#aaa;
+									font-size:16px;
+									font-weight:normal;
+									line-height:26px;
+								}
+								dd {
+									display:none;
+									margin-top:8px;
+									font-size:16px;
+									font-weight:normal;
+									line-height:26px;
+								}
 							}
 						}
 						&:nth-child(1) {
@@ -317,12 +396,49 @@
 				@include mobile {
 					text-align:center;
 					.tabs {
+						width:100%;
 						padding:0;
+						white-space:inherit;
 						li {
-							margin:0 12px;
+							width:33.33%;
+							margin:0;
 							a {
 								font-size:15px;
 								line-height:23px;
+								dl {
+									@include mobile {
+										display:block;
+										position:relative;
+										padding:12px 0 110px;
+										text-align:center;
+										dd {
+											position:absolute;
+											top:0;
+											right:0;
+											left:0;
+											width:300%;
+											padding-top:62px;
+										}
+									}
+								}
+							}
+							&:nth-child(2) {
+								a {
+									dl {
+										dd {
+											left:-100%;
+										}
+									}
+								}
+							}
+							&:nth-child(3) {
+								a {
+									dl {
+										dd {
+											left:-200%;
+										}
+									}
+								}
 							}
 						}
 					}
@@ -344,6 +460,20 @@
 				}
 				.indi-wrap {
 					bottom:-72px;
+				}
+			}
+		}
+		.dual-type3 {
+			position:relative;
+			.bullet-list {
+				text-align:left;
+			}
+			.text-img-wrap {
+				.img-area {
+					text-align:left;
+					@include mobile {
+						text-align:center;
+					}
 				}
 			}
 		}
@@ -371,6 +501,9 @@
 			}
 			.img {
 				margin-top:16px;
+				@include mobile {
+					margin-top:24px;
+				}
 				&.big {
 					img {
 						width:auto;
@@ -503,7 +636,7 @@
 					// 	margin-top:0;
 					// }
 					@include mobile {
-						margin-top:12px;
+						margin-top:40px;
 					}
 					dl {
 						padding-top:12px;
@@ -610,6 +743,9 @@
 						flex-direction:column-reverse;
 						.text:first-child {
 							padding:0;
+						}
+						.img {
+							padding-top:32px;
 						}
 					}
 				}
