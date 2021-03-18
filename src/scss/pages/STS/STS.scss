@@ -25,7 +25,7 @@
             }
         }
         @include mobile {
-            padding-bottom: 40px;
+            padding-bottom: 60px;
             border-width: 12px;
             &:first-child {
                 .title {
@@ -50,7 +50,7 @@
             line-height: 42px;
             text-align: center;
             @include mobile {
-                margin: 60px 0 24px;
+                margin: 44px 0 24px;
                 font-size: $font-large-2;
                 line-height: 33px;
             }
@@ -65,8 +65,10 @@
                 }
             }
             @include mobile {
-                bottom: 49px;
-                right: 24px;
+                top: 109px;
+                right: 0;
+                left: 0;
+                text-align: center;
             }
         }
     }
@@ -460,12 +462,12 @@
         }
         @include mobile {
             margin: 0 -16px;
-            padding-bottom: 70px;
+            padding: 46px 0 20px;
             .slide-content {
                 padding: 0 16px;
                 .slide-conts {
                     padding: 0 12px 16px 0;
-                    width: 88.889vw;
+                    width: 92.222vw;
 
                 }
             }
@@ -498,9 +500,6 @@
                 margin-top: -8px;
                 .tags {
                     margin: 8px 0 0 8px;
-                    .chk-btn input + label {
-                        border-radius: 8px;
-                    }
                 }
             }
         }

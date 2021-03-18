@@ -552,9 +552,10 @@ br.pc-only {
 .care-plan {
     .cont-wrap {
         max-width:100%;
-        padding:0;
+        padding:0 0 80px 0;
         background:#fff;
         @include mobile {
+            padding-bottom: 60px;
             border:none;
         }
     }
@@ -872,12 +873,12 @@ br.pc-only {
                 }
                 .cate-scroll-wrap {
                     position:relative;
-                    @include mobile {
-                        padding:24px 0;
-                    }
                     .tabs {
                         white-space:nowrap;
                         font-size:0;
+                        @include mobile {
+                            padding:24px 0;
+                        }
                         > li {
                             position:relative;
                             display:inline-block;
@@ -1224,7 +1225,7 @@ br.pc-only {
                     max-height:80vh;
                     overflow-x:hidden;
                     overflow-y:scroll;
-                    padding-bottom:226px;
+                    padding-bottom:226px;//pparks
                 }
                 .prd-care-horizon {
                     //height:204px;

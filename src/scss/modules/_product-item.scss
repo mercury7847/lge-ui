@@ -341,26 +341,30 @@
                 color: #000;
                 li {
                     margin-top: 6px;
-                    @include textClipClamp(1);
                     font-size:13px;
                     line-height:13px;
+                    @include pc {
+                        @include textClipClamp(1);
+                    }
                 }
                 @include mobile {
-                    margin: 4px 0 16px;
-                    //li {
-                    //    display: inline-block;
-                    //    &:after {
-                    //        display: inline-block;
-                    //        width: 1px;
-                    //        height: 10px;
-                    //        margin: 0 6px;
-                    //        background-color: $color-border;
-                    //        content: '';
-                    //    }
-                    //    &:last-child:after {
-                    //        display: none;
-                    //    }
-                    //}
+                    margin: 8px 0 16px;
+                    li {
+                        display: inline-block;
+                        margin-top: 0;
+                        line-height: 21px;
+                        &:after {
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 6px;
+                            background-color: $color-border;
+                            content: '';
+                        }
+                        &:last-child:after {
+                            display: none;
+                        }
+                    }
                 }
             }
             .spec-info2 {

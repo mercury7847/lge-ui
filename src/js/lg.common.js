@@ -11,6 +11,12 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+
+    var isAndroid = vcui.detect.isAndroid;
+    var isIOS = vcui.detect.isIOS;
+    var isApplication = isApp();
+
+
     window.onload = function(){
         vcui.require([
             'ui/lazyLoaderSwitch',
@@ -265,6 +271,7 @@ var isApp = function(){
         NO_IMAGE_MODEL_NAME: "/lg5-common/images/icons/noimage-modelName.svg",
         RECENT_PROD_COOKIE_NAME: "myRecentProduct", //최근 본 제품 쿠키
         COMPARE_COOKIE_NAME: "LG5_CompareCart", //비교하기 쿠키
+        HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
@@ -605,7 +612,7 @@ var isApp = function(){
                     $('body').vcSpinner({msg:str, position:'fixed'}).vcSpinner('spin'); 
                 }
                 
-            })   
+            }); 
         },
 
     
@@ -1126,7 +1133,7 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide) {
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
@@ -1212,7 +1219,7 @@ var isApp = function(){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
             }).always(function() {
-                lgkorUI.hideLoading();
+                if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },
@@ -1813,7 +1820,46 @@ var isApp = function(){
                     crema.init(null,null);
                 };
             }
+        },
+
+        // 앱 하단 메뉴 컨트롤 부분
+
+        // 앱 하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        showAppBottomMenuOver:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.showBottomMenuOver(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:'showBottomMenuOver', value:flag? "Y":"N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 스크롤 기능 사용 여부 설정
+        setEnableAppScrollBottomMenu:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.setEnableScrollBottomMenu(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value : flag? "Y" : "N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 노출 여부 설정
+        showAppBottomMenu:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.showBottomMenu(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'showBottomMenu', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
         }
+        
     }
 
     document.addEventListener('DOMContentLoaded', function () {

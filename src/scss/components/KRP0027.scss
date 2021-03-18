@@ -29,10 +29,6 @@
             margin: 0 auto -1px;
             padding:0 40px;
             text-align:left;
-            &:before {
-                right:40px;
-                left:40px;
-            }
             @media screen and (min-width:(1380px + 80px)) {
                 &:before {
                     right: 40px;

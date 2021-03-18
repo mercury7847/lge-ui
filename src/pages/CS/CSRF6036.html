@@ -22,7 +22,9 @@
                         <h2 class="tit">센터찾기</h2>
                     </div>
                     <!-- //2021.02.05 모바일 전용 타이틀 추가-->
-                    <div class="waiting-state">
+
+                    <!-- 2021.03.17 class hidden 추가 -->
+                    <div class="waiting-state hidden">
                         <div class="cell">
                             <h2 class="waiting-state-title">현재 고객 대기상태</h2>
                             <!-- 2021.01.18 status 마크업 수정 -->
@@ -54,6 +56,8 @@
                                 ]
                             })
                         </div>
+                        <!-- 2021.03.17 버튼 추가 -->
+                        <button class="btn-waiting-toggle"><span class="blind">펼치기</span></button>
                     </div>
                     <div class="map-container" data-config="/lg5-common/data-ajax/support/searchshop/searchShopConfig.json">
                         <div class="store-list-wrap">

@@ -281,7 +281,7 @@
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
@@ -291,13 +291,13 @@
     var carePaymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+        '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>';
 
     var noneMemPaymentTemplate = 
     '{{#set method = paymentMethodName}}' +
     '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
-    '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link">영수증 발급 내역</a>{{/if}}'+
+    '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
     '</dd></dl></li>'+        
     '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+            
     '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
@@ -830,9 +830,9 @@
         if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-takeback')) return;
     
-            var bankNumber = $('#popup-takeback').find('.bank-input-box input').val();
-            var bankName = $('#popup-takeback').find('.bank-input-box select option:selected').val();
-            if(!popBankConfirm || popBankInfo.bankName != bankName || popBankInfo.bankNumber != bankNumber){
+            var paymentBankNumber = $('#popup-takeback').find('.bank-input-box input').val();
+            var paymentBank = $('#popup-takeback').find('.bank-input-box select option:selected').val();
+            if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
                 lgkorUI.alert("", {
                     title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
                 });
@@ -896,9 +896,9 @@
         if(transtype == METHOD_BANK){
             if(!getBankBnumberValidation('popup-cancel')) return;
     
-            var bankNumber = $('#popup-cancel').find('.bank-input-box input').val();
-            var bankName = $('#popup-cancel').find('.bank-input-box select option:selected').val();
-            if(!popBankConfirm || popBankInfo.bankName != bankName || popBankInfo.bankNumber != bankNumber){
+            var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
+            var paymentBank = $('#popup-cancel').find('.bank-input-box select option:selected').val();
+            if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
                 lgkorUI.alert("", {
                     title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
                 });
@@ -993,7 +993,13 @@
 
     function setMonthlyPricePop(dataId, prodId){
         var sendata = {
-            rtModelSeq: CARE_LIST[dataId].productList[prodId].rtModelSeq
+            rtModelSeq: CARE_LIST[dataId].productList[prodId].rtModelSeq,
+            contDtlType: CARE_LIST[dataId].contDtlType,
+            cardCorpCode: MONTHLY_PAYMENT_DATA.cardCorpCode,
+            cardCorpName: MONTHLY_PAYMENT_DATA.cardCorpName,
+            cardReqYn: MONTHLY_PAYMENT_DATA.cardReqYn,
+            cardReqYnName: MONTHLY_PAYMENT_DATA.cardReqYnName,
+            cardType: MONTHLY_PAYMENT_DATA.cardType
         }
         lgkorUI.requestAjaxData(ORDER_BENEFIT_URL, sendata, function(result){
             $('#popup-monthly-price').empty().html(result).vcModal();
@@ -1391,6 +1397,8 @@
     }
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        lgkorUI.showLoading();
+
         CTI_REQUEST_KEY = "";
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
@@ -1438,11 +1446,17 @@
         if(payments.result){
             lgkorUI.showLoading();
 
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+
             var sendata = {
                 confirmType: sendPaymentMethod,
                 CERTI_ID: CERTI_ID,
                 BATCH_KEY: BATCH_KEY,
-                CTI_REQUEST_KEY: CTI_REQUEST_KEY
+                CTI_REQUEST_KEY: CTI_REQUEST_KEY,
+
+                requestNo: listData.requestNo,
+                custRegNo: MONTHLY_PAYMENT_DATA.custRegNo,
+                transMemName: MONTHLY_PAYMENT_DATA.transMemName
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
 
@@ -1596,8 +1610,9 @@
 
         var sendata = {
             confirmType: "bank",
-            bankNumber: $('#'+popname).find('.bank-input-box input').val(),
-            bankName: $('#'+popname).find('.bank-input-box select option:selected').val()
+            paymentUser: $('#'+popname).data('bankAccountNm'),
+            paymentBankNumber: $('#'+popname).find('.bank-input-box input').val(),
+            paymentBank: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
         console.log("### sendBankConfirm ###", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
@@ -1610,8 +1625,8 @@
             if(result.data.success == "Y"){
                 popBankConfirm = true;
                 popBankInfo = {
-                    bankNumber: sendata.bankNumber,
-                    bankName: sendata.bankName
+                    paymentBankNumber: sendata.paymentBankNumber,
+                    paymentBank: sendata.paymentBank
                 }
             } else{
                 popBankConfirm = false;
@@ -1740,6 +1755,7 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
+                popup.data("bankAccountNm", result.data.payment.bankAccountNm);
                 popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.payment.bankAccountNm);
 
                 bankInfoBlock.show();

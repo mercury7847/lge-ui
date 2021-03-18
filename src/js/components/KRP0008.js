@@ -404,6 +404,13 @@
                     self.updatePaymentAmountState($paymentAmount, check);
                 }
 
+                //리뷰 클릭하기
+                self.$pdpInfoProductDetailInfo.on('click','.star-rating-wrap a', function(e) {
+                    var href = $(this).attr('href');
+                    console.log(href);
+                    self.scrollMovedById(href);
+                });
+
                 //
                 self.$pdpMobileSlider.vcCarousel({
                     infinite: false,
@@ -1079,6 +1086,15 @@
                 });
             },
 
+            scrollMovedById: function(id){
+                var $id = $(id);
+                if($id.length){
+                    var compheight = 50;//$component.height();
+                    var movtop = $id.offset().top - compheight+2;
+                    $('html, body').stop().animate({scrollTop:movtop}, 150);
+                }
+            },
+
             //PDP SIDE 관련
 
             //제휴카드 리스트 정리 펑션
@@ -1509,13 +1525,14 @@
                                 }
 
                                 if(isDirectBuy) {
-                                    $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
-                                    $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                    //2021-03-17 정승우 로그인 안되있을 경우 일단 로그인 창 먼저 뛰우고 케어십 안내 페이지 뜨게 하기 위해서 제거
+                                    //$('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
+                                    //$('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
                                         lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
                                             console.log(result);
                                         });
-                                    });
-                                    $('#careRequireBuyPopup').vcModal();
+                                    //});
+                                    //$('#careRequireBuyPopup').vcModal();
                                 } else {
                                     lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
                                         console.log(result);
@@ -1580,6 +1597,26 @@
                                 var $pointMember = self.$benefitInfoPopup.find('.price-info.point.member');
                                 $pointMember.find('.point-confirm input').val(vcui.number.addComma(myMembershipPoint));
                                 $pointMember.show();
+                                //구매혜택 가격 갱신
+                                if(typeof obsOriginalPrice  !== 'undefined') {
+                                    var memberPoint = parseInt(myMembershipPoint);
+                                    var originalPrice = parseInt(obsOriginalPrice);
+                                    var totalDiscountPrice = (typeof obsTotalDiscountPrice  !== 'undefined') ? parseInt(obsTotalDiscountPrice) : 0;
+                                    var addRewardAmt = (typeof rewardAmt != 'undefined') ? parseInt(rewardAmt) : 0;
+                                    
+                                    var totalSale = totalDiscountPrice + addRewardAmt + memberPoint;
+                                    if(totalSale > originalPrice) totalSale = originalPrice;
+                                    
+                                    var total = originalPrice - totalSale;
+                                    if(total < 0) total = 0;
+                                    
+                                    var percent = Math.floor(totalSale/originalPrice*100.0);
+
+                                    var $discountRate = self.$benefitInfoPopup.find('.discount-rate');
+                                    $discountRate.text(percent+"%");
+                                    $discountRate.siblings('.price').text(vcui.number.addComma(totalSale)+"원");
+                                    self.$benefitInfoPopup.find('.price-info.total-payment .price').text(vcui.number.addComma(total)+"원");
+                                } 
                             } else {
                                 //로그인 아님
                                 self.$benefitInfoPopup.find('.price-info.point').show();
