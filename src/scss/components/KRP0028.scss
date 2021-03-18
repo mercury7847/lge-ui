@@ -44,12 +44,14 @@
                 max-width:1380px + 80px;
                 margin:0 auto;
                 padding:0 40px;
+                @media screen and (min-width:(1380px + 80px)) {
+                    &:before {
+                        right: 40px;
+                        left: 40px;
+                    }
+                }
                 @include mobile {
                     padding:0;
-                }
-                &:before {
-                    right:40px;
-                    left:40px;
                 }
             }
         }
