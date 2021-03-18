@@ -826,8 +826,7 @@
             return;
         }
 
-        var transtype = $('#popup-takeback').data('transType');        
-        if(transtype == METHOD_BANK){
+        if($('#popup-takeback').data('isBank')){
             if(!getBankBnumberValidation('popup-takeback')) return;
     
             var paymentBankNumber = $('#popup-takeback').find('.bank-input-box input').val();
@@ -889,11 +888,8 @@
 
             return;
         }
-
-
-
-        var transtype = $('#popup-cancel').data('transType');        
-        if(transtype == METHOD_BANK){
+  
+        if($('#popup-cancel').data('isBank')){
             if(!getBankBnumberValidation('popup-cancel')) return;
     
             var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
@@ -1116,6 +1112,7 @@
             MONTHLY_PAYMENT_DATA = {};
 
 
+            var priceKey = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? "productPrice" : "productTotalPrice";
             if(data.listData && data.listData.length){
                 var leng, cdx, idx;
                 var list = data.listData;
@@ -1130,7 +1127,9 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx][priceKey]);
+                        
+                        if(!list[idx].productList[cdx]['orderedQuantity']) list[idx].productList[cdx]['orderedQuantity'] = list[idx].productList[cdx]['productTotal'];
                     }
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
@@ -1737,12 +1736,12 @@
                 popup.find('.sect-wrap.cnt01').hide();
             }
 
-
-            popup.data('transType', result.data.payment.transType);
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
 
             console.log("productList[0].itemStatus:",productList[0].itemStatus)
             if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){
+                popup.data('isBank', true);
+
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
                 var bankList = result.data.bankList;
                 for(idx in bankList){
@@ -1761,6 +1760,7 @@
 
                 bankInfoBlock.show();
             } else{
+                popup.data('isBank', false);
                 bankInfoBlock.hide();
             }
 
@@ -1779,7 +1779,7 @@
             listdata["prodID"] = idx;
             listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
 
-            var productPrice = listdata.productPrice ? parseInt(listdata.productPrice) : 0;
+            var productPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
             var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
 
@@ -1834,7 +1834,7 @@
 
         var bankName = "";
         var bankAccountNo = "";
-        if(popup.data("transType") == METHOD_BANK){
+        if(popup.data("isBank")){
             bankName = popup.find('.bank-input-box select option:selected').val();
             bankAccountNo = popup.find('.bank-input-box input').val();
         }
