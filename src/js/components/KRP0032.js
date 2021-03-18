@@ -80,7 +80,7 @@ $(window).ready(function(){
                     if(index == 0) {
                         self.$image.attr({"src":item.smallImageAddr,"alt":item.imageAltText})
                     }
-                    item.price = item.price ? vcui.number.addComma(item.obsSellingPrice) : null;
+                    item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
 					self.$list.append(vcui.template(popuplistItemTemplate, item));
                 });
 
