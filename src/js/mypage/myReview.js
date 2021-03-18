@@ -36,8 +36,19 @@
             //크레마
             lgkorUI.cremaLogin();
 
-            //var $section = $('.contents.mypage');
-            //var $contWrap = $section.find('.lnb-contents');
+            var isMobileNow = false;
+            if(vcui.detect.isMobile){
+                isMobileNow = true;
+            }
+
+            var $section = $('.contents.mypage');
+            var $contWrap = $section.find('.lnb-contents');
+
+            if(isMobileNow) {
+                $contWrap.append('<style>.crema-reviews > iframe { max-width: 100% !important; }</style> <div class="crema-reviews" data-type="managing-reviews"></div>');
+            } else {
+                $contWrap.append('<div class="crema-reviews" data-type="managing-reviews"></div>');
+            }
         }
     }
 
