@@ -1113,6 +1113,7 @@
 
 
             var priceKey = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? "productPrice" : "productTotalPrice";
+            console.log("priceKey:", priceKey)
             if(data.listData && data.listData.length){
                 var leng, cdx, idx;
                 var list = data.listData;
@@ -1128,6 +1129,8 @@
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx][priceKey]);
+
+                        console.log('list[idx].productList[cdx]["addCommaProdPrice"]:',list[idx].productList[cdx]["addCommaProdPrice"])
                         
                         if(!list[idx].productList[cdx]['orderedQuantity']) list[idx].productList[cdx]['orderedQuantity'] = list[idx].productList[cdx]['productTotal'];
                     }
@@ -1773,11 +1776,12 @@
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
         console.log("isCheck:", isCheck)
-        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();                
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();
+        var priceKey = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? "productPrice" : "productTotalPrice";        
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata[priceKey]);
 
             var productPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
@@ -1790,7 +1794,7 @@
                 discountPrice: discountPrice,
                 mempointPrice: mempointPrice
             });
-
+console.log("PRICE_INFO_DATA:", PRICE_INFO_DATA)
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,

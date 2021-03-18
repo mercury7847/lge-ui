@@ -113,14 +113,10 @@
                 pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             },
             zipCode: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                required: true
             },
             userAddress: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                required: true
             },
             detailAddress: {
                 required: true,
@@ -146,17 +142,13 @@
                 errorMsg: "전화번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
-            installZipCode: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address-install'
+            zipCode: {
+                required: true
             },
-            installUserAddress: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address-install'
+            userAddress: {
+                required: true
             },
-            installDetailAddress: {
+            detailAddress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 msgTarget: '.err-address-install'
@@ -458,13 +450,12 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
-        step1Validation.on('validerror', function(e, data){
-            if(Object.keys(data).length == 1){
-                if(data.chkPrivacy){
-                    $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
-                }
-            }
-        });
+        // step1Validation.on('errors', function(e, data){
+        //     console.log("step1Validation validerror:", data)
+        //     if(Object.keys(data).length == 2){
+        //         var isDA = data.detailAddress;
+        //     }
+        // });
     }
 
     function setNextStep(){
@@ -487,10 +478,8 @@
     //계약자 정보입력 밸리데이션...
     function setStep1Validation(){
         var completed = false;
-        console.log("step1 validation start!!");
         var result = step1Validation.validate();
         var data = getInputData('creditInquire');
-        console.log("detailAddress:", step1Validation.getValues("detailAddress"));
         if(result.success){
             completed = data === "Y" ? true : false;
             if(!completed){
@@ -507,6 +496,20 @@
                     lgkorUI.alert("", {
                         title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
                     });
+                } else{
+                    var isRFN = result.validItem.registFrontNumber;
+                    var isRBF = result.validItem.registBackFirst;
+                    var isUE = result.validItem.userEmail;
+                    if(!isRFN && !isRBF && !isUE){
+                        var isZP = result.validItem.zipCode;
+                        var isUD = result.validItem.userAddress;
+                        if(isZP && isUD) $(window).trigger("toastshow", "주소를 확인해주세요.");
+                        else{
+                            var isCP = result.validItem.chkPrivacy;
+                            var isDA = result.validItem.detailAddress;
+                            if(!isDA && isCP) $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
+                        }
+                    } 
                 }
             }
         }
@@ -827,11 +830,22 @@
 
                     step1Block.find('input[name=registFrontNumber]').prop("disabled", true);
                     step1Block.find('input[name=registBackFirst]').prop("disabled", true);
+
+                    //step1LastValidation();             
                 } else{
                     setInputData('creditInquire', 'N');
                 }
             }
         });
+    }
+
+    function step1LastValidation(){
+        var step1Value = step1Validation.getValues();
+        var result = step1Validation.validate();
+        var isDA = result.validItem.detailAddress;
+        if(!isDA){
+            stepAccordion.expand(1, true)
+        }
     }
 
     //설치 정보 입력 타입 선택...
@@ -1062,9 +1076,6 @@
         }
 
         if(!chk){
-            lgkorUI.alert("", {
-                title:'입력정보를 확인해주세요.'
-            });
             return;
        }
 

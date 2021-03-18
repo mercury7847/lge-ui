@@ -339,6 +339,12 @@
             if(page > 1){
                 var status = getAlignStatusValues(sectionItem);
                 $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
+            } else{
+                scrolltop = 0;
+                if(sectionItem.hasClass('new_story')){
+                    scrolltop = sectionItem.offset().top;
+                }
+                $('html, body').animate({scrollTop: scrolltop}, 200);
             }
 
             lgkorUI.hideLoading();
