@@ -14,7 +14,7 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           <a href="#n">'+
+        '           <a href="{{modelUrlPath}}">'+
         '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
         '           </a>'+
         '       </div>'+
@@ -22,7 +22,7 @@
         '       {{#if moduleType == "module-type3"}}'+
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
-        '           <a href="#n">'+
+        '           <a href="{{modelUrlPath}}">'+
         '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
         '           </a>'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
@@ -514,6 +514,8 @@
         if(!_isDirectCare && _careCateId){
             var uitab = $fixedTab.find('.service_tab').vcTab('instance');
             uitab.select(_careCateId.tabId, true);
+
+            _serviceID = _careCateId.tabId;
         }
 
         var tabID = getTabID();
@@ -524,7 +526,6 @@
             var selectId = 0;
             for(var id in result.data){
                 if(!_isDirectCare && _careCateId && _careCateId.tabCategoryId === result.data[id].categoryID){
-                    _isDirectCare = true;
                     selectId = id;
                 }
                 var category = vcui.template(_categoryItemTemplate, result.data[id]);
@@ -581,7 +582,7 @@
 
             addProdItemList();
 
-            if(_careCateId && _careCateId.tabModelId) {
+            if(!_isDirectCare && _careCateId && _careCateId.tabModelId) {
                 var findArr = vcui.array.filter(result.data.productList, function(item, index) {
                     return (item.modelId == _careCateId.tabModelId);
                 });
@@ -593,6 +594,8 @@
                     requestAddPutItem(findModel);
                 }
             }
+            _isDirectCare = true;
+            _careCateId = null;
         });
     }
 
