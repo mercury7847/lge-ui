@@ -11,6 +11,12 @@ var isApp = function(){
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApp()) $('html').addClass('app');
 
+
+    var isAndroid = vcui.detect.isAndroid;
+    var isIOS = vcui.detect.isIOS;
+    var isApplication = isApp();
+
+
     window.onload = function(){
         vcui.require([
             'ui/lazyLoaderSwitch',
@@ -1127,7 +1133,7 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide) {
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
@@ -1213,7 +1219,7 @@ var isApp = function(){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
             }).always(function() {
-                lgkorUI.hideLoading();
+                if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 //console.log( "complete" );
             });
         },
@@ -1814,7 +1820,46 @@ var isApp = function(){
                     crema.init(null,null);
                 };
             }
+        },
+
+        // 앱 하단 메뉴 컨트롤 부분
+
+        // 앱 하단메뉴가 화면을 덮는 형태인지 아닌지 결정
+        showAppBottomMenuOver:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.showBottomMenuOver(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:'showBottomMenuOver', value:flag? "Y":"N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 스크롤 기능 사용 여부 설정
+        setEnableAppScrollBottomMenu:function(flag){
+            if(isApplication) {
+                if(isAndroid && android) {
+                    android.setEnableScrollBottomMenu(flag);
+                }
+                if(isIOS){
+                    var jsonString= JSON.stringify({command:"setEnableScrollBottomMenu", value : flag? "Y" : "N"});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+        // 앱 하단메뉴 노출 여부 설정
+        showAppBottomMenu:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.showBottomMenu(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'showBottomMenu', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
         }
+        
     }
 
     document.addEventListener('DOMContentLoaded', function () {

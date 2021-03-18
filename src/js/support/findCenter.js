@@ -1207,6 +1207,19 @@ function moveDetail(el, detailUrl, windowHeight) {
     $(window).ready(function(){
         searchShop.init();
 
+        $('.waiting-state .btn-waiting-toggle').on('click', function(){
+            var $this = $(this);
+            var $wrap = $this.closest('.waiting-state');
+
+            if( $wrap.hasClass('hidden')) {
+                $wrap.removeClass('hidden')
+                $this.find('.blind').text('접기')
+            } else {
+                $wrap.addClass('hidden')
+                $this.find('.blind').text('펼치기')
+            }
+        })
+
          // PC버전으로 돌아가면 지도 영역 스타일 초기화
          $(window).resize(function() {
             if($(window).width() > 1024) {

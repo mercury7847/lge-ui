@@ -1057,8 +1057,11 @@
 
 // 센터찾기
 .waiting-state {
+    position: relative;
+    overflow: hidden;
     padding: 16px 40px;
     background-color: #f4f4f4;
+    max-height:none;
     display: flex;
     &-title {
         font-size: 16px;
@@ -1085,6 +1088,17 @@
     }
     .cell {
         position: relative;
+    }
+
+    .btn-waiting-toggle {
+        display: none;
+        position: absolute;
+        top:16px; 
+        right:16px;
+        width:30px;
+        height:30px;
+        background: url("/lg5-common/images/icons/btn-arrow-up.svg") no-repeat 0 0;
+        background-size: 100% 100%;
     }
     @media screen and (min-width: 1280px) {
         .cell {
@@ -1139,6 +1153,21 @@
             .status-icon {
                 display: block;
                 margin-left: 0;
+            }
+        }
+    }
+    @include tablet {
+        max-height:300px;
+        transition:.6s max-height ease;
+        .btn-waiting-toggle {
+            display: block;
+        }
+
+        &.hidden {
+            max-height:63px;
+            transition:.6s max-height ease;
+            .btn-waiting-toggle {
+                background-image: url("/lg5-common/images/icons/btn-arrow-down.svg");
             }
         }
     }

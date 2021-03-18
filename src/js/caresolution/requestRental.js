@@ -586,14 +586,10 @@
             return false;
         }
 
-        if(paymethod == "bank"){
-            chk = compareInputData(bankInputData, bankValidation.getValues());
-
-            if(!chk) return false;
-        } else{
-            chk = compareInputData(cardInputData, cardValidation.getValues());
-
-            if(!chk) return false;
+        chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
+        if(!chk){
+            setInputData('arsAgree', "N");
+            return false;
         }
 
         chk = getInputData('arsAgree');
@@ -922,9 +918,7 @@
     function setArsAgreeConfirm(){
         lgkorUI.showLoading();
 
-        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){
-            lgkorUI.hideLoading();
-            
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -945,10 +939,6 @@
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
-
-            item.find('input[name=installZipCode]').val(data.zonecode);
-            item.find('input[name=installUserAddress]').val(data.roadAddress);
-            item.find('input[name=installDetailAddress]').val('');
         });
     }
 
