@@ -28,7 +28,7 @@
                 inputReason:{
                     required: true,
                     errorMsg: "해지 신청사유를 입력해주세요.",
-                    msgTarget: '.err-block'
+                    msgTarget: '.err-block2'
                 },
                 selectDate:{
                     required: true,
@@ -60,18 +60,18 @@
                 if(result.success) {
                     self.requestApply();
                 } else {
+                    var errorData = {};
                     result.validArray.forEach(function(obj,idx){
-                        if(obj.key == "selectDate") {
-                            var parent = self.$calendar.parent();
-                            parent.find('.err-msg').text(obj.errmsg).show();
-                            parent.find('.err-block').show();
-                        };
-                        if(obj.key == "selectTime") {
-                            var parent = self.$timeTable.parent();
-                            parent.find('.err-msg').text(obj.errmsg).show();
-                            parent.find('.err-block').show();
-                        };
+                        errorData[obj.key] = obj;
                     });
+
+                    if(errorData["inputReason"]) {
+                        lgkorUI.alert("", {title:"해지 사유를 입력해 주세요."});
+                    } else if(errorData["selectDate"]) {
+                        lgkorUI.alert("", {title:"해지 희망일을 선택해주세요."});
+                    } else if(errorData["selectTime"]) {
+                        lgkorUI.alert("", {title:"해지 희망 시간을 선택해주세요."});
+                    }
                 }
             });
 
@@ -129,7 +129,7 @@
             param.dateList = null;
 
             param.reason =  self.registValidation.getValues('inputReason');
-
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var url = self.$contWrap.data('okUrl');
                 if(url) {
