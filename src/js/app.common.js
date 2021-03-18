@@ -70,6 +70,7 @@ $(document).ready(function() {
                     }
                 });
 
+                /*
                 if ($(window).scrollTop() > 100) {
                     //$('.floating-menu.top').show();
                     $('.floating-menu.top').css({
@@ -104,6 +105,14 @@ $(document).ready(function() {
                             "bottom" : 0
                             //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                         });
+                    }
+                });
+                */
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $('.floating-menu.btn-app-ar .app-ar').css("transform", "translateY(0)");
+                    }else{
+                        $('.floating-menu.btn-app-ar .app-ar').css("transform", "translateY(68px)");
                     }
                 });
             }
