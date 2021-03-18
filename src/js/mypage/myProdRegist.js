@@ -1,3 +1,34 @@
+(function(i,s,o,g,r,a,m){
+    var isMobile = false;
+    if(vcui.detect.isMobile){
+        isMobile = true;
+    }
+    
+    if(location.hostname == "www.lge.co.kr") {
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+    } else {
+        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+    }
+
+    if(s.getElementById(g)){
+        return
+    };
+    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+    a.id=g;
+    a.async=1;
+    a.src=r;
+    m.parentNode.insertBefore(a,m);
+    /*
+    console.log('i',i);
+    console.log('s',s);
+    console.log('o',o);
+    console.log('g',g);
+    console.log('r',r);
+    console.log('a',a);
+    console.log('m',m);
+    */
+})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
+
 (function(){
     var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
     '<li class="lists" data-model="{{jsonModel}}">' +
@@ -38,6 +69,12 @@
                     '{{#each item in linkBtn}}' +
                         '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
                     '{{/each}}' +
+                    '{{#if reviewWrite}}' +
+                        '{{#if isMobile}}' +
+                            '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}" review-source="mobile_my_orders">리뷰작성</a>' +
+                        '{{#else}}' +
+                            '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}">리뷰작성</a>' +
+                        '{{/if}}' +
                 '</div>' +
                 '{{#if disabled}}<p class="product-on"><span class="blind">보유중인 제품이</span>{{#if disabledReason}}{{disabledReason}}{{#else}}단종되었습니다.{{/if}}</p>{{/if}}' +
             '</div>' +
@@ -127,6 +164,14 @@
     var myProductRegistration = {
         init: function() {
             var self = this;
+            //크레마
+            lgkorUI.cremaLogin();
+            
+            self.isMobileNow = false;
+            if(vcui.detect.isMobile){
+                self.isMobileNow = true;
+            }
+
             vcui.require(['ui/validation', 'ui/pagination'], function () {             
                 self.setting();
                 self.bindEvents();
@@ -690,6 +735,8 @@
                     }
                     item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
                     item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
+                    item.reviewWrite = lgkorUI.stringToBool(item.reviewWrite);
+                    item.isMobile = self.isMobileNow;
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
                 self.checkNoData();
