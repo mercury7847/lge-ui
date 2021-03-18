@@ -54,7 +54,10 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                 switch (e.type) {
                     case 'mouseenter':
                     case 'focusin':
+                        self._open(true);
+                        break;
                     case 'click':
+                        e.preventDefault();
                         self._open(true);
                         break;
                     case 'mouseleave':
