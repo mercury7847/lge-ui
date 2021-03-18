@@ -40,7 +40,10 @@
             .carousel-box {
                 .text-area.type-narrow {
                     .inner {
-                        @include boxs(n) ;
+                        max-width:49.131%;
+                        @include mobile {
+                            max-width:100%;
+                        }
                     }
                 }
             }
