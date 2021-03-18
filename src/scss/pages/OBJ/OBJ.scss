@@ -1,31 +1,119 @@
-@charset "UTF-8";
-@import "../../utilities/variables";
-@import "../../utilities/mixins";
-//제품체험
-@import "OBJ0302";
-//갤러리
-.objet.gallery {
-    background: #f0eeee;
-    @import "OBJ0401";
-}
-
-@media (min-width:768px) {
-    .btnMobi {
-        display: none;
+    @charset "UTF-8";
+    @import "../../utilities/variables";
+    @import "../../utilities/mixins";
+    //제품체험
+    @import "OBJ0302";
+    //갤러리
+    .objet.gallery {
+        background: #f0eeee;
+        @import "OBJ0401";
     }
-    .only_pc {
-        display: block;
+    
+    @media (min-width:768px) {
+        .btnMobi {
+            display: none;
+        }
+        .only_pc {
+            display: block;
+        }
+        .only_mobile {
+            display: none;
+        }
     }
-    .only_mobile {
-        display: none;
+    
+    @media (max-width:767px) {
+        .only_pc {
+            display: none;
+        }
+        .only_mobile {
+            display: block;
+        }
     }
-}
-
-@media (max-width:767px) {
-    .only_pc {
-        display: none;
+    
+    .brand-wrap {
+        .objetcollection-tabs {
+            background-color: $color-bg-wt;
+            .tabs-wrap {
+                max-width: 1380px + 80px;
+                margin: 0 auto;
+                padding-top: 40px;
+                text-align: left;
+                @include mobile {
+                    padding-top: 32px;
+                }
+                &:before {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    height: 1px;
+                    background: $color-border;
+                    content: '';
+                }
+                @include pc {
+                    padding-right: 40px;
+                    padding-left: 40px;
+                }
+                @media screen and (min-width:(1380px + 80px)) {
+                    &:before {
+                        right: 40px;
+                        left: 40px;
+                    }
+                }
+                .tabs {
+                    @include mobile {
+                        padding: 0 16px;
+                    }
+                    >li {
+                        margin-left: 36px;
+                        @include mobile {
+                            margin-left: 20px;
+                        }
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        >a {
+                            padding: 0 0 19px;
+                            @include font-large;
+                            @include mobile {
+                                padding-bottom: 15px;
+                            }
+                        }
+                        &.on {
+                            >a:after {
+                                position: absolute;
+                                left: 0;
+                                bottom: -2px;
+                                width: 100%;
+                                height: 5px;
+                                border-radius: 5px 5px 0 0;
+                                background-color: $color-default;
+                                content: '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.on {
+            &.active {
+                .signature-tabs,
+                .thinq-tabs {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 15;
+                    //@at-root .mac & {
+                    //    right: 0;
+                    //}
+                    &~.tab-contents {
+                        padding-top: 91px;
+                        @include mobile {
+                            padding-top: 74px;
+                        }
+                    }
+                }
+            }
+        }
     }
-    .only_mobile {
-        display: block;
-    }
-}
