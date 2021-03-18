@@ -151,8 +151,6 @@ $(window).ready(function(){
 
             //if(selectIdx < 1) chk = true;
 
-            console.log(prevIdx, selectIdx, chk)
-
             if(chk) $subSticky.show().find('.inner').slideDown(150);
             else $subSticky.find('.inner').slideUp(150, function(){$subSticky.hide()});;
         }
