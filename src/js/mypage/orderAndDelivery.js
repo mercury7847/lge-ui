@@ -105,7 +105,7 @@
                                     '</ul>'+
                                 '</div>'+
                                 '{{/if}}'+
-                                '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
                             '{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
@@ -160,7 +160,7 @@
                                         '</ul>'+
                                     '</div>'+
                                     '{{/if}}'+
-                                    '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                    '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                                     '{{#if listData.contDtlType == "C01"}}'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
@@ -285,7 +285,7 @@
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
-        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+        
+        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}P</dd></dl></li>'+        
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
@@ -1130,7 +1130,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
                     }
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
@@ -1154,7 +1154,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
                     }
 
                     CARE_LIST.push(list[idx]);
@@ -1741,7 +1741,8 @@
             popup.data('transType', result.data.payment.transType);
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
 
-            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK){
+            console.log("productList[0].itemStatus:",productList[0].itemStatus)
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
                 var bankList = result.data.bankList;
                 for(idx in bankList){
@@ -1776,7 +1777,7 @@
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productPrice"]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
 
             var productPrice = listdata.productPrice ? parseInt(listdata.productPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
@@ -1790,11 +1791,10 @@
                 mempointPrice: mempointPrice
             });
 
-            var orderedQuantity = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ?  listdata.productTotal : listdata.orderedQuantity;
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                orderedQuantity: orderedQuantity
+                orderedQuantity: listdata.orderedQuantity
             });
 
             listdata.specList = vcui.array.filter(listdata.specList, function(item){

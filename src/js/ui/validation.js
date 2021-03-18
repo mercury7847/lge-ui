@@ -622,7 +622,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 }
                 
                 self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);                
-                self._swicthErrorMsg(self.validItemObj);
+                self._swicthErrorMsg(self.validItemObj, [key]);
                 if(!vcui.isEmpty(self.validItemObj)){                    
                     self.triggerHandler('errors', [self.validItemObj]);
                 } 
@@ -887,11 +887,13 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             });
             return result;
         },
-        reset: function reset() {
+        reset: function reset(targetArr) {
             var self = this;
             var $target, msg, nobj;
 
             for(var key in self.register){
+                if (targetArr && !vcui.array.include(targetArr, key)) continue;
+                
                 nobj = self.register[key];
                 if (nobj.required){
                     $target = self.$el.find('[name='+ key +']');

@@ -162,9 +162,9 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
 
         substr: function(str, leng){
             var self = this;
-            var originStr = str; 
-            var maskingStr; 
-            var strLength; 
+            var originStr = str;
+            var maskingStr;
+            var strLength;
 
             if(self._checkNull(originStr) == true) return originStr;
 
@@ -172,7 +172,7 @@ vcui.define('helper/textMasking', ['jquery', 'vcui'], function($, core) {
             if(strLength < leng) return;
 
             if(strLength < 5){
-                maskingStr = originStr.replace(/[0-9a-zA-Z]/g, "*");
+                maskingStr = originStr.replace(/[\S]/g, "*");
             } else {
                 maskingStr = originStr.substring(0,leng) + originStr.substring(leng).replace(/[\S]/g, "*");
             }

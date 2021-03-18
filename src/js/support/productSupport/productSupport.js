@@ -105,6 +105,26 @@
             lgkorUI.recentlySearch.addCookie($('#modelCode').val());
 
             lgkorUI.initProductSlider();
+            $(document).on('click', '.btn-my-pd', function(e){
+                if( !lgkorUI.isLogin ) {
+                    e.preventDefault();
+
+                    var _url = $(this).attr('href');
+
+                    lgkorUI.confirm('로그인을 하셔야 이용하실 수 있습니다. <br>로그인 하시겠습니까?',{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = _url;
+                        },
+                        cancel: function() {
+                            
+                        }
+                    });
+                }
+            });
             $('.related-info .info-slider').vcCarousel({
                 infinite: false,
                 autoplay: false,

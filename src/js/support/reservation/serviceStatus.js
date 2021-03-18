@@ -769,17 +769,17 @@
 
                 formData = $.extend(formData, formParam);
 
+
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
 
-
                     if (data.resultFlag == 'Y' && data.url !== "") {
-
                         formData = $.extend(formData, {
                             acptNo : data.acptNo
                         })
-                        $('#acptNo').val(result.data.acptNo);
+                        $('#acptNo').val(data.acptNo);
                         $form.attr('action', result.data.url);
+                        
                         $form.submit();
                     } else {
                         if (data.resultMessage) {

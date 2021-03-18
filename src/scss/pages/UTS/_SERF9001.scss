@@ -78,6 +78,7 @@
 
     .input-keyword-wrap {
         position: relative;
+        margin-bottom: 0;
         padding: 0;
         @include pc {
             .input-keyword {
@@ -123,38 +124,42 @@
     }
 
     @include mobile {
-        min-height: auto !important;
-        &:before {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 3;
-            height: 72px;
-            background-color: #fff;
-            content: '';
-        }
+        //min-height: auto !important;
+        //&:before {
+        //    position: fixed;
+        //    top: 0;
+        //    right: 0;
+        //    left: 0;
+        //    z-index: 3;
+        //    height: 72px;
+        //    background-color: #fff;
+        //    content: '';
+        //}
         .btn-close {
             position: fixed;
-            top: 16px;
-            right: 16px;
+            right: auto;
+            left: 0;
             z-index: 3;
+            width: 32px;
+            height: 46px;
+            background: url('/lg5-common/images/icons/btn-arr-48.svg') no-repeat left 8px center;
+            background-size: 24px;
         }
 
         .inner {
             max-width: 100%;
             margin: 0;
-            padding: (72px + 88px) 16px 60px;
+            padding: (48px + 66px) 16px 60px;
         }
 
         .input-keyword-wrap {
             .input-keyword {
                 position: fixed;
-                top: 72px;
+                top: 0;
                 left: 0;
                 right: 0;
                 z-index: 3;
-                padding: 16px 16px 20px;
+                padding: 48px 16px 20px 44px;
                 background-color: $color-bg-wt;
             }
         }
@@ -181,32 +186,26 @@
 
     .search-keyword-area {
         display: flex;
-        //width: 100%;
         padding-top: 80px;
         @include pc {
             margin: 0 -32px;
             > div {
                 flex: 1;
-                //margin-right: 32px;
                 padding: 0 32px;
-                //&:last-child {
-                    //margin-right: 0;
-                    //padding-right: 0;
-                    //border-right: none;
-                //}
             }
         }
         @include mobile {
-            flex-direction: column;
+            flex-wrap: wrap;
+            margin-left: -30px;
             padding-top: 20px;
             > div {
-                //margin-bottom: 32px;
-                padding-bottom: 60px;
-                //border-bottom: 1px solid $color-border;
+                flex: 1;
+                padding-bottom: 40px;
+                padding-left: 30px;
                 &:last-child {
-                    //margin-bottom: 0;
+                    flex: auto;
+                    width: 100%;
                     padding-bottom: 0;
-                    //border-bottom: none;
                 }
             }
         }
@@ -300,7 +299,7 @@
 
     @include mobile {
         display: block;
-        padding-top: 24px;
+        padding-top: 20px;
         .result-preview {
             display: block;
             width: 100%;

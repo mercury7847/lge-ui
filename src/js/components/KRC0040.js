@@ -33,7 +33,6 @@ $(window).ready(function(){
             $component.on('click', '.info-tab a', function(e){
 				var id = $(this).attr('href');
 				var idx = id.indexOf("#iw_comp");
-				console.log("idx:",idx)
 				if(idx > -1){
 					e.preventDefault();
 			
@@ -75,7 +74,6 @@ $(window).ready(function(){
 					var contID = $(item).find('a').attr('href');
 
 					var contIDX = contID.indexOf("#iw_comp");
-					console.log("contIDX:", contIDX)
 					if(contIDX > -1){
 						var bar = $(item).find('a .bar');
 						var cont = $(contID);
