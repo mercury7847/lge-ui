@@ -617,7 +617,7 @@
     
                             self.el.container.find('.btn-auth-confirm').on('click', function() {
                                 self.authManager.send(this);
-                                self.el.container.find('#authNo').attr('disabled', false);
+                                //self.el.container.find('#authNo').attr('disabled', false);
                             });
     
                             self.el.container.find('.btn-inquiry').on('click', function(){

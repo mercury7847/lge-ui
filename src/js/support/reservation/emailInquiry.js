@@ -274,8 +274,16 @@
 
             // 문의 유형 선택 시
             self.$inquiryBox.on('change', '[name=subsection]', function() {
-                self.$recordBox.find('input[type=radio]').eq(0).prop('checked', true);
-                self.$recordBox[$(this).data('inquiryName') == 'A/S' ? 'show':'hide']();
+                if ($(this).data('inquiryName') == 'A/S') {
+                    self.$recordBox.show();    
+                } else {
+                    self.$recordBox.hide();
+                    self.$recordBox.find('input[type=radio]').eq(0).prop('checked', true);
+                    self.$rcptNoBox.hide();
+                    self.$rcptNoBox.find('input').val('');
+                }
+
+                validation.reset(['cRcptNo']);
             });
 
             // 상담/서비스 이력 선택 시
@@ -283,6 +291,7 @@
                 if ($(this).val() == '0') {
                     self.$rcptNoBox.hide();
                     self.$rcptNoBox.find('input').val('');
+                    validation.reset(['cRcptNo']);
                 } else {
                     self.$rcptNoBox.show();
                 }
