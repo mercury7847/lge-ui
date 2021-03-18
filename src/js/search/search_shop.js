@@ -27,7 +27,7 @@
                         '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
-                        '{{#if hasCare && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '{{#if cTypeCount != "0" && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' +
@@ -37,7 +37,7 @@
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
-                    '{{#if carePrice != "0"}}' +
+                    '{{#if hasCare && carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
