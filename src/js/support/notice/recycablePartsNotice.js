@@ -25,7 +25,6 @@
             self.$searchInput = self.$searchWrap.find('input[type=text]');
             self.$searchButton = self.$searchWrap.find('.btn-search');
             self.$sortingWrap = self.$cont.find('.sorting-wrap');
-            self.$sortingCount = self.$sortingWrap.find('.count');
 
             self.$resultTable = self.$cont.find('.tb_row');
             self.$resultNoData = self.$resultTable.find('.empty-row');
@@ -51,14 +50,17 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(self.listUrl, self.param, function(result) {
-                var $tableBody = self.$resultTable.find('tbody');
+                var $tableBody = self.$resultTable.find('tbody'),
+                    $total = self.$sortingWrap.find('.total');
                 var data = result.data,
                     listArr = data.listData instanceof Array ? data.listData : [],
                     page = data.listPage,
                     html = '';
 
                 $tableBody.find('tr').not('.empty-row').remove();
-                self.$sortingCount.html(page.totalCount);
+                
+                $total.html('"<em class="count">'+self.param.keyword+'</em>"로  <em class="count">'+page.totalCount+'</em>건의 검색 결과를 찾았습니다.')
+                $total.show();
 
                 if (listArr.length) {
                     listArr.forEach(function(item) {
