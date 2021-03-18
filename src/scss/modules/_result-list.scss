@@ -148,6 +148,22 @@
                     padding: 4px 0 0 126px;
                 }
             }
+            .spec-info {
+                @include pc {
+                    display: none;
+                }
+                @include mobile {
+                    margin-top: 12px;
+                    padding: 8px 12px;
+                    border-radius: 8px;
+                    background-color: $color-bg;
+                    @include font(12px,20px);
+                    span {
+                        margin-right: 8px;
+                        color: $color-gray-1;
+                    }
+                }
+            }
             .info-price {
                 display: flex;
                 flex-direction: column;
