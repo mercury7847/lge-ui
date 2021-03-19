@@ -1873,9 +1873,10 @@
                     var box = $('.box[data-id=' + dataId + ']');
                     box.find('.orderCancel-btn, .requestOrder-btn').remove();
 
+                    var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
                     for(var idx in matchIds){
                         var block = box.find('.tbody .row').eq(matchIds[idx]);
-                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>취소접수</p>');
+                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
                     }
                 } else reloadOrderInquiry();
             }
