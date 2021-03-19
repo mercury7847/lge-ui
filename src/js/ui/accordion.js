@@ -81,7 +81,6 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                         self.expand(indexes[0], false);
                     } else {
                         core.each(indexes, function (index) {
-                            console.log("indexes:", index)
                             self.expand(index, false);
                         });
                     }
