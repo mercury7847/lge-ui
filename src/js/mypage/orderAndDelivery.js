@@ -223,7 +223,7 @@
                             '<tr>'+
                                 '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
                                 '<td class="discountPrices">{{discountPrices}}원</td>'+
-                                '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
+                                '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}P</td>{{/if}}'+
                                 '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                             '</tr>'+
                         '</tbody>'+
