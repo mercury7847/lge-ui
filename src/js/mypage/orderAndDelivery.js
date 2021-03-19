@@ -221,10 +221,10 @@
                         '</thead>'+
                         '<tbody>'+
                             '<tr>'+
-                                '<td class="productPrices">{{productPrices}}원</td>'+
+                                '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
                                 '<td class="discountPrices">{{discountPrices}}원</td>'+
                                 '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
-                                '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                                '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                             '</tr>'+
                         '</tbody>'+
                     '</table>'+
@@ -252,8 +252,8 @@
                 '</thead>'+
                 '<tbody>'+
                     '<tr>'+
-                        '<td class="productPrices">{{productPrices}}원</td>'+
-                        '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                        '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
+                        '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                     '</tr>'+
                 '</tbody>'+
             '</table>'+
@@ -947,22 +947,23 @@
     }
 
     function resetCancelPriceInfo(){
-        var productPrices = 0;
+        var originalTotalPrices = 0;
         var discountPrices = 0;
         var mempointPrices = 0;
+        var productTotalPrices = 0;
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
             var idx = $(item).val();
             
-            productPrices += PRICE_INFO_DATA[idx].productPrice;
+            originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
             discountPrices += PRICE_INFO_DATA[idx].discountPrice;
             mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
+            productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
         });
-        var totalPrice = productPrices - discountPrices - mempointPrices;
-        $('#popup-cancel').find('.productPrices').text(vcui.number.addComma(productPrices)+"원");
+        $('#popup-cancel').find('.originalTotalPrices').text(vcui.number.addComma(originalTotalPrices)+"원");
         $('#popup-cancel').find('.discountPrices').text(vcui.number.addComma(discountPrices)+"원");
         $('#popup-cancel').find('.mempointPrices').text(vcui.number.addComma(mempointPrices)+"원");
-        $('#popup-cancel').find('.totalPrice').text(vcui.number.addComma(totalPrice)+"원");
+        $('#popup-cancel').find('.totalPrice').text(vcui.number.addComma(productTotalPrices)+"원");
 
         //$('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
     }
@@ -1111,9 +1112,6 @@
             ORDER_USER_DATA = {};
             MONTHLY_PAYMENT_DATA = {};
 
-
-            var priceKey = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? "productPrice" : "productTotalPrice";
-            console.log("priceKey:", priceKey)
             if(data.listData && data.listData.length){
                 var leng, cdx, idx;
                 var list = data.listData;
@@ -1128,11 +1126,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx][priceKey]);
-
-                        console.log('list[idx].productList[cdx]["addCommaProdPrice"]:',list[idx].productList[cdx]["addCommaProdPrice"])
-                        
-                        if(!list[idx].productList[cdx]['orderedQuantity']) list[idx].productList[cdx]['orderedQuantity'] = list[idx].productList[cdx]['productTotal'];
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
                     }
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
@@ -1671,9 +1665,10 @@
             POP_PROD_DATA = [];
             var popup;
             var infoTypeName;
-            var productPrices = 0;
+            var originalTotalPrices = 0;
             var discountPrices = 0;
             var mempointPrices = 0;
+            var productTotalPrices = 0;
             var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
@@ -1706,9 +1701,10 @@
 
                 addPopProdductList(popup, productList, false);
                 
-                productPrices = productList[0].productPrice ? parseInt(productList[0].productPrice) : 0;
+                originalTotalPrices = productList[0].originalTotalPrice ? parseInt(productList[0].originalTotalPrice) : 0;
                 discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
                 mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
+                productTotalPrices = productList[0].productTotalPrice ? parseInt(productList[0].productTotalPrice) : 0;
 
                 $('#popup-takeback').find('.info-tbl-wrap .info-wrap .infos').empty().append("<li>주문일<em>" + listData[dataId].orderDate + "</em></li>");
                
@@ -1725,15 +1721,14 @@
 
             if(productList[0].contDtlType != "C09"){
                 popup.find('.sect-wrap.cnt01').show();
-                var totalPrice = productPrices - discountPrices - mempointPrices;
                 var discountComma = vcui.number.addComma(mempointPrices);
                 var template = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? nonememPriceInfoTemplate : priceInfoTemplate;
                 popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
                     typeName: infoTypeName,
-                    productPrices: vcui.number.addComma(productPrices),
+                    originalTotalPrices: vcui.number.addComma(originalTotalPrices),
                     discountPrices: vcui.number.addComma(discountPrices),
                     mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
-                    totalPrice: vcui.number.addComma(totalPrice)
+                    productTotalPrices: vcui.number.addComma(productTotalPrices)
                 }));
             } else{
                 popup.find('.sect-wrap.cnt01').hide();
@@ -1776,25 +1771,27 @@
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
         console.log("isCheck:", isCheck)
-        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();
-        var priceKey = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? "productPrice" : "productTotalPrice";        
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata[priceKey]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
 
-            var productPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
+            var originalTotalPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
             var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
+            var productTotalPrice = listdata.productTotalPrice ? parseInt(listdata.productTotalPrice) : 0;
 
             if(listdata.itemCancelAbleYn == "N") listdata.orderStatus.disabled = "disabled";
         
             PRICE_INFO_DATA.push({
-                productPrice: productPrice,
+                originalTotalPrice: originalTotalPrice,
                 discountPrice: discountPrice,
-                mempointPrice: mempointPrice
+                mempointPrice: mempointPrice,
+                productTotalPrice: productTotalPrice
             });
-console.log("PRICE_INFO_DATA:", PRICE_INFO_DATA)
+            console.log("PRICE_INFO_DATA:", PRICE_INFO_DATA)
+
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
