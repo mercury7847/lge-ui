@@ -2,7 +2,14 @@
     @import "../../utilities/variables";
     @import "../../utilities/mixins";
     //공간체험
-    @import "OBJ0301";
+    .space_pc {
+        @import "OBJ0301";
+    }
+    
+    .space_mobi {
+        @import "OBJ0301_mobi";
+    }
+    
     //제품체험
     @import "OBJ0302";
     //갤러리
