@@ -555,6 +555,12 @@
 
                     if(arr.length){
                         var item = arr[0];
+                        var uniqId = changeItem.data('uniqId');
+                        if(uniqId) {
+                            item.uniqId = uniqId;
+                        } else {
+                            item.uniqId = vcui.getUniqId(8);
+                        }
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
@@ -570,7 +576,8 @@
 
             checkBtnFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
-                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                    var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
+                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {
                         return false;
@@ -593,7 +600,7 @@
 
             checkPriceFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
-                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                    if(lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {
                         return false;

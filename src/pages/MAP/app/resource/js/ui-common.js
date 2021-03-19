@@ -8013,7 +8013,7 @@
 
                 i3 = binarySearch(this.x, x2);
                 i1 = i3 - 1; // We have our indexes i1 & i3, so we can calculate already:
-                // y2 := ((x2−x1) × (y3−y1)) ÷ (x3−x1) + y1
+                // y2 := ((x2âˆ’x1) Ã— (y3âˆ’y1)) Ã· (x3âˆ’x1) + y1
 
                 return (x2 - this.x[i1]) * (this.y[i3] - this.y[i1]) / (this.x[i3] - this.x[i1]) + this.y[i1];
             };
@@ -9641,7 +9641,7 @@ $(document).ready(function () {
     });
 
     //Main Top - Swiper
-    if($(".main-round-slide-wrap").length > 0){
+    if ($(".main-round-slide-wrap").length > 0) {
         new Swiper('.main-round-slide-wrap .swiper-container', {
             effect: "coverflow",
             loop: true,
@@ -9659,7 +9659,7 @@ $(document).ready(function () {
     }
 
     //Main Event - Swiper
-    if($(".main-slide-wrap").length > 0){
+    if ($(".main-slide-wrap").length > 0) {
         new Swiper('.main-slide-wrap .swiper-container', {
             pagination: {
                 el: '.main-slide-wrap .swiper-pagination'
@@ -9673,16 +9673,20 @@ $(document).ready(function () {
         spaceBetween: 10
     }
     //Main Popular Game - Swiper
-    if($(".popular-game-slide-wrap").length > 0){
+    if ($(".popular-game-slide-wrap").length > 0) {
         new Swiper('.popular-game-slide-wrap .swiper-container', slideOpt);
     }
     //Main Recommend Game - Swiper
-    if($(".recommend-game-slide-wrap").length > 0){
+    if ($(".recommend-game-slide-wrap").length > 0) {
         new Swiper('.recommend-game-slide-wrap .swiper-container', slideOpt);
     }
 
+    slider();
+});
+
+var slider = function(){
     //Game View - Swiper
-    if($(".main-top-slide-wrap").length > 0){
+    if ($(".main-top-slide-wrap").length > 0) {
         new Swiper('.main-top-slide-wrap .swiper-container', {
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -9693,4 +9697,4 @@ $(document).ready(function () {
             }
         });
     }
-});
+}
