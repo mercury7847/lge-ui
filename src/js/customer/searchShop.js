@@ -163,14 +163,10 @@
 
             self._resize();
             
-<<<<<<< HEAD
             
             vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function (StoreMap) {
 
 
-=======
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support-common.min'], function () {
->>>>>>> 34aa6fcae43665f31e1b1af2ef4f19d567e60ce9
                 self.bestShopUrl = $('.map-container').data("bestShop");
                 self.localUrl = $('.map-container').data("localList");
                 self.subwayUrl = $('.map-container').data("subwayList");
@@ -194,13 +190,6 @@
 
                 self.$map = new StoreMap(self.$mapContainer,{
 
-<<<<<<< HEAD
-=======
-                // 임시 소스
-                $('#quickMenu').quickMenu();
-
-                self.$mapContainer.vcStoreMap({
->>>>>>> 34aa6fcae43665f31e1b1af2ef4f19d567e60ce9
                     keyID: $('.map-container').data("mapId"),
                     appKey: $('.map-container').data("appKey"),
                     longitude : self.currentLongitude,
