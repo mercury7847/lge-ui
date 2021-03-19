@@ -101,6 +101,8 @@
                 self.$pagination.pagination();
             
                 self.bindEvent();
+
+                $('.view-content img').rwdImageMaps();
             },
             searchList: function() {
                 var self = this,
@@ -215,7 +217,7 @@
             }
         }
 
-        $('.view-content img').rwdImageMaps();
+        
         
         notice.init();
     });
