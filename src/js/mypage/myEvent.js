@@ -15,7 +15,7 @@
         '{{#if showEndEventUrl}}<a href="{{#if endEventUrl}}{{endEventUrl}}{{#else}}#{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
     '</div></li>'
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         var myEvent = {
             init: function() {
                 var self = this;
