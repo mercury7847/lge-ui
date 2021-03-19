@@ -589,6 +589,10 @@
                             });
                         }
                     }
+
+                    $('html, body').stop().animate({
+                        scrollTop: self.$stepInput.offset().top - 74
+                    }, 400);
                 });
             });
 
@@ -998,6 +1002,10 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
+
+                $('html, body').stop().animate({
+                    scrollTop: self.$subTopicBox.offset().top - 74
+                }, 400);
             });
         },
         reqeustSolutions: function(url, param) {
@@ -1202,6 +1210,10 @@
                         }
                         self.$stepInput.addClass('active');
                         self.$completeBtns.show();
+
+                        $('html, body').stop().animate({
+                            scrollTop: self.$stepInput.offset().top - 74
+                        }, 400);
                     }
                 }
                 lgkorUI.hideLoading();
