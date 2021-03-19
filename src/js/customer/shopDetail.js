@@ -81,7 +81,7 @@
             ]
         });
 
-        $('.btn-close').on('click', function(e){
+        $('.cont-wrap > .btn-close').on('click', function(e){
             e.preventDefault();
 
             window.close();
