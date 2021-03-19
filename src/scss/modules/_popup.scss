@@ -129,6 +129,12 @@
             max-width:100%;
         }
     }
+    &.full-sm {
+        max-width:444px;
+        @include mobile {
+            max-width:100%;
+        }
+    }
     &.small {
         max-width:444px;
         .pop-conts {
