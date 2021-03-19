@@ -5,7 +5,7 @@
 <body>
     <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
     <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
-    <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script>
+    <!-- <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script> -->
     <script src="/lg5-common/temp_OBJ/js/es6-promise.auto.js"></script>
     <script src="/lg5-common/temp_OBJ/js/smooth-scrollbar.js"></script>
     <script>
@@ -105,7 +105,7 @@
                     });
                 });
                 //@pck 2020-10-22 모바일 사이즈 이슈 fix, option {scale : '1'}추가
-                html2canvas(document.querySelector("#simulator_dw"), {
+                /*html2canvas(document.querySelector("#simulator_dw"), {
                     scale: '1'
                 }).then(function(canvas) {
                     var img_name = "LG_Objet";
@@ -119,7 +119,7 @@
                             saveAs(uri, img_name);
                         }, 'image/png');
                     }
-                })
+                })*/
 
                 function saveAs(uri, filename) {
                     // 캡쳐된 파일을 이미지 파일로 내보낸다.
@@ -723,58 +723,59 @@
                 });
             });
 
-            html2canvas(document.querySelector("#simulator_dw"), {
+            /*html2canvas(document.querySelector("#simulator_dw"), {
                 scale: '1',
                 logging: false,
                 useCORS: true
-            }).then(function(canvas) {
-                /*
-                var img_name = "LG_Objet.png";
-                if (canvas.msToBlob) {
-                	var blob = canvas.msToBlob();
-                	window.navigator.msSaveBlob(blob, img_name );
-                } else {
-                	saveAs(canvas.toDataURL(), img_name );
-                }
-                */
-                //alert(canvas.width);
-                var imgDataUrl = canvas.toDataURL('image/jpeg');
+            }).then(function(canvas) {*/
+            /*
+            var img_name = "LG_Objet.png";
+            if (canvas.msToBlob) {
+            	var blob = canvas.msToBlob();
+            	window.navigator.msSaveBlob(blob, img_name );
+            } else {
+            	saveAs(canvas.toDataURL(), img_name );
+            }
+            */
+            //alert(canvas.width);
+            /*var imgDataUrl = canvas.toDataURL('image/jpeg');
 
-                var blobBin = atob(imgDataUrl.split(',')[1]); // base64 데이터 디코딩
-                var array = [];
-                for (var i = 0; i < blobBin.length; i++) {
-                    array.push(blobBin.charCodeAt(i));
-                }
-                var file = new Blob([new Uint8Array(array)], {
-                    type: 'image/jpeg'
-                }); // Blob 생성
+            var blobBin = atob(imgDataUrl.split(',')[1]); // base64 데이터 디코딩
+            var array = [];
+            for (var i = 0; i < blobBin.length; i++) {
+                array.push(blobBin.charCodeAt(i));
+            }
+            var file = new Blob([new Uint8Array(array)], {
+                type: 'image/jpeg'
+            }); // Blob 생성
+            */
 
-
-                var formdata = new FormData(); // formData 생성
-                formdata.append("file", file); // file data 추가
-                formdata.append("jsa_bg0", $("#jsa_bg0").val());
-                formdata.append("jsa_bg1", $("#jsa_bg1").val());
-                formdata.append("jsa_bg2", $("#jsa_bg2").val());
-                formdata.append("jsa_bg3", $("#jsa_bg3").val());
-                formdata.append("refrigerator_LT", $("#refrigerator_LT").val());
-                formdata.append("refrigerator_LB", $("#refrigerator_LB").val());
-                formdata.append("refrigerator_RB", $("#refrigerator_RB").val());
-                formdata.append("refrigerator_convertible_L", $("#refrigerator_convertible_L").val());
-                formdata.append("refrigerator_convertible_M", $("#refrigerator_convertible_M").val());
-                formdata.append("refrigerator_convertible_R", $("#refrigerator_convertible_R").val());
-                formdata.append("dish", $("#dish").val());
-                formdata.append("oven", $("#oven").val());
-                formdata.append("water", $("#water").val());
-                formdata.append("refrigerator_T", $("#refrigerator_T").val());
-                formdata.append("refrigerator_M", $("#refrigerator_M").val());
-                formdata.append("refrigerator_B", $("#refrigerator_B").val());
-                formdata.append("wash_T", $("#wash_T").val());
-                formdata.append("wash_B", $("#wash_B").val());
-                formdata.append("styler", $("#styler").val());
-                formdata.append("clean", $("#clean").val());
-                formdata.append("aroot", "M");
-                //alert($("#refrigerator_LT").val());
-                $.ajax({
+            var formdata = new FormData(); // formData 생성
+            //formdata.append("file", file); // file data 추가
+            formdata.append("jsa_bg0", $("#jsa_bg0").val());
+            formdata.append("jsa_bg1", $("#jsa_bg1").val());
+            formdata.append("jsa_bg2", $("#jsa_bg2").val());
+            formdata.append("jsa_bg3", $("#jsa_bg3").val());
+            formdata.append("refrigerator_LT", $("#refrigerator_LT").val());
+            formdata.append("refrigerator_LB", $("#refrigerator_LB").val());
+            formdata.append("refrigerator_RB", $("#refrigerator_RB").val());
+            formdata.append("refrigerator_convertible_L", $("#refrigerator_convertible_L").val());
+            formdata.append("refrigerator_convertible_M", $("#refrigerator_convertible_M").val());
+            formdata.append("refrigerator_convertible_R", $("#refrigerator_convertible_R").val());
+            formdata.append("dish", $("#dish").val());
+            formdata.append("oven", $("#oven").val());
+            formdata.append("water", $("#water").val());
+            formdata.append("refrigerator_T", $("#refrigerator_T").val());
+            formdata.append("refrigerator_M", $("#refrigerator_M").val());
+            formdata.append("refrigerator_B", $("#refrigerator_B").val());
+            formdata.append("wash_T", $("#wash_T").val());
+            formdata.append("wash_B", $("#wash_B").val());
+            formdata.append("styler", $("#styler").val());
+            formdata.append("clean", $("#clean").val());
+            formdata.append("aroot", "M");
+            $(".sns_popup, .mask").fadeIn();
+            //alert($("#refrigerator_LT").val());
+            /*$.ajax({
                     type: 'post',
                     url: '/canvas_save.jsp',
                     data: formdata,
@@ -797,7 +798,7 @@
                         //$("#btnSubmit").prop("disabled", false);
                     }
                 });
-            });
+            });*/
             //});
             //}
         });

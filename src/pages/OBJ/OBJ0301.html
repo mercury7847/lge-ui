@@ -5,7 +5,7 @@
 <body>
     <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
     <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
-    <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script>
+    <!-- <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script> -->
     <script src="/lg5-common/temp_OBJ/js/es6-promise.auto.js"></script>
     <script src="/lg5-common/temp_OBJ/js/smooth-scrollbar.js"></script>
     <script>
@@ -758,79 +758,80 @@
                 });
             });
 
-            html2canvas(document.querySelector("#simulator_dw"), {
+            /*html2canvas(document.querySelector("#simulator_dw"), {
                 scale: '1'
-            }).then(function(canvas) {
-                /*
-                var img_name = "LG_Objet.png";
-                if (canvas.msToBlob) {
-                	var blob = canvas.msToBlob();
-                	window.navigator.msSaveBlob(blob, img_name );
-                } else {
-                	saveAs(canvas.toDataURL(), img_name );
-                }
-                */
-                //alert(canvas.width);
-                var imgDataUrl = canvas.toDataURL('image/jpeg');
+            }).then(function(canvas) {*/
+            /*
+            var img_name = "LG_Objet.png";
+            if (canvas.msToBlob) {
+            	var blob = canvas.msToBlob();
+            	window.navigator.msSaveBlob(blob, img_name );
+            } else {
+            	saveAs(canvas.toDataURL(), img_name );
+            }
+            */
+            //alert(canvas.width);
+            //var imgDataUrl = canvas.toDataURL('image/jpeg');
 
-                var blobBin = atob(imgDataUrl.split(',')[1]); // base64 데이터 디코딩
-                var array = [];
-                for (var i = 0; i < blobBin.length; i++) {
-                    array.push(blobBin.charCodeAt(i));
-                }
-                var file = new Blob([new Uint8Array(array)], {
-                    type: 'image/jpeg'
-                }); // Blob 생성
+            /*var blobBin = atob(imgDataUrl.split(',')[1]); // base64 데이터 디코딩
+            var array = [];
+            for (var i = 0; i < blobBin.length; i++) {
+                array.push(blobBin.charCodeAt(i));
+            }
+            var file = new Blob([new Uint8Array(array)], {
+                type: 'image/jpeg'
+            }); // Blob 생성
+            */
 
-
-                var formdata = new FormData(); // formData 생성
-                formdata.append("file", file); // file data 추가
-                formdata.append("jsa_bg0", $("#jsa_bg0").val());
-                formdata.append("jsa_bg1", $("#jsa_bg1").val());
-                formdata.append("jsa_bg2", $("#jsa_bg2").val());
-                formdata.append("jsa_bg3", $("#jsa_bg3").val());
-                formdata.append("refrigerator_LT", $("#refrigerator_LT").val());
-                formdata.append("refrigerator_LB", $("#refrigerator_LB").val());
-                formdata.append("refrigerator_RB", $("#refrigerator_RB").val());
-                formdata.append("refrigerator_convertible_L", $("#refrigerator_convertible_L").val());
-                formdata.append("refrigerator_convertible_M", $("#refrigerator_convertible_M").val());
-                formdata.append("refrigerator_convertible_R", $("#refrigerator_convertible_R").val());
-                formdata.append("dish", $("#dish").val());
-                formdata.append("oven", $("#oven").val());
-                formdata.append("water", $("#water").val());
-                formdata.append("clean", $("#clean").val());
-                formdata.append("refrigerator_T", $("#refrigerator_T").val());
-                formdata.append("refrigerator_M", $("#refrigerator_M").val());
-                formdata.append("refrigerator_B", $("#refrigerator_B").val());
-                formdata.append("wash_T", $("#wash_T").val());
-                formdata.append("wash_B", $("#wash_B").val());
-                formdata.append("styler", $("#styler").val());
-                formdata.append("aroot", "P");
-                //alert($("#refrigerator_LT").val());
-                $.ajax({
-                    type: 'post',
-                    url: 'canvas_save.jsp',
-                    data: formdata,
-                    dataType: "json",
-                    processData: false, // data 파라미터 강제 string 변환 방지!!
-                    contentType: false, // application/x-www-form-urlencoded; 방지!!
-                    success: function(data) {
-                        if (data.err == "0") {
-                            //alert("정상적으로 등록되었습니다.");
-                            update_file_name = data.seq;
-                            //alert(update_file_name);
-                            setTimeout($('#final_img').attr('src', "/nfsimg/" + update_file_name.substring(10, 18) + "/canvas_img_" + update_file_name + ".jpg"), 1000);
-                            document.getElementById('loading').style.display = 'none';
-                            $(".sns_popup, .mask").fadeIn();
-                        }
-                    },
-                    error: function(e) {
-                        alert(e.responseText);
-                        console.log("ERROR : ", e);
-                        //$("#btnSubmit").prop("disabled", false);
+            var formdata = new FormData(); // formData 생성
+            //formdata.append("file", file); // file data 추가
+            formdata.append("jsa_bg0", $("#jsa_bg0").val());
+            formdata.append("jsa_bg1", $("#jsa_bg1").val());
+            formdata.append("jsa_bg2", $("#jsa_bg2").val());
+            formdata.append("jsa_bg3", $("#jsa_bg3").val());
+            formdata.append("refrigerator_LT", $("#refrigerator_LT").val());
+            formdata.append("refrigerator_LB", $("#refrigerator_LB").val());
+            formdata.append("refrigerator_RB", $("#refrigerator_RB").val());
+            formdata.append("refrigerator_convertible_L", $("#refrigerator_convertible_L").val());
+            formdata.append("refrigerator_convertible_M", $("#refrigerator_convertible_M").val());
+            formdata.append("refrigerator_convertible_R", $("#refrigerator_convertible_R").val());
+            formdata.append("dish", $("#dish").val());
+            formdata.append("oven", $("#oven").val());
+            formdata.append("water", $("#water").val());
+            formdata.append("clean", $("#clean").val());
+            formdata.append("refrigerator_T", $("#refrigerator_T").val());
+            formdata.append("refrigerator_M", $("#refrigerator_M").val());
+            formdata.append("refrigerator_B", $("#refrigerator_B").val());
+            formdata.append("wash_T", $("#wash_T").val());
+            formdata.append("wash_B", $("#wash_B").val());
+            formdata.append("styler", $("#styler").val());
+            formdata.append("aroot", "P");
+            //alert($("#refrigerator_LT").val());
+            $(".sns_popup, .mask").fadeIn();
+            /*$.ajax({
+                type: 'post',
+                url: 'canvas_save.jsp',
+                data: formdata,
+                dataType: "json",
+                processData: false, // data 파라미터 강제 string 변환 방지!!
+                contentType: false, // application/x-www-form-urlencoded; 방지!!
+                success: function(data) {
+                    if (data.err == "0") {
+                        //alert("정상적으로 등록되었습니다.");
+                        update_file_name = data.seq;
+                        //alert(update_file_name);
+                        setTimeout($('#final_img').attr('src', "/nfsimg/" + update_file_name.substring(10, 18) + "/canvas_img_" + update_file_name + ".jpg"), 1000);
+                        document.getElementById('loading').style.display = 'none';
+                        $(".sns_popup, .mask").fadeIn();
                     }
-                });
-            });
+                },
+                error: function(e) {
+                    alert(e.responseText);
+                    console.log("ERROR : ", e);
+                    //$("#btnSubmit").prop("disabled", false);
+                }
+            });*/
+            /*});*/
 
         });
 
