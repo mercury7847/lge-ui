@@ -1468,6 +1468,7 @@ html {
         }
 
         .floating-wrap {
+            z-index:5;
             //노치 있음
             &.app-LGEAPP-in {
                 bottom:114px;
