@@ -219,7 +219,9 @@
         notice.init();
 
         $(window).on('load', function(){
-            $('.view-content img').rwdImageMaps();
+            setTimeout(function(){
+                $('.view-content img').rwdImageMaps();
+            }, 500)
         })
     });
 })();
