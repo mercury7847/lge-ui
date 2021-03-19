@@ -629,6 +629,11 @@
 
         chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
         if(!chk){
+            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
+            lgkorUI.alert("",{title:msg});
+
+            step3Block.find('.arsAgreeRequest').prop('disabled', true);
+
             setInputData('arsAgree', "N");
             return false;
         }
@@ -1158,7 +1163,8 @@
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
             MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
             preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
-            collectRequest: step2Block.find('input[name=collectRequest]:checked').val()
+            collectRequest: step2Block.find('input[name=collectRequest]:checked').val(),
+            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked')
         };
         console.log(sendata);
 
