@@ -77,6 +77,7 @@
                                 //선택된 제품이 없다
                                 careCartInfo.setEmptyData();
                             }
+                            self.requestCartCount();
                         });
                     }
                 //});
