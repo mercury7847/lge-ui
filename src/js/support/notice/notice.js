@@ -214,6 +214,8 @@
                 });
             }
         }
+
+        $('.view-content img').rwdImageMaps();
         
         notice.init();
     });
