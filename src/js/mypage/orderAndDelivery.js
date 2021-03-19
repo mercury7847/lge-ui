@@ -954,11 +954,13 @@
             discountPrices += PRICE_INFO_DATA[idx].discountPrice;
             mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
             productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
+
+            console.log("PRICE_INFO_DATA[idx].productTotalPrice:",PRICE_INFO_DATA[idx].productTotalPrice)
         });
         $('#popup-cancel').find('.originalTotalPrices').text(vcui.number.addComma(originalTotalPrices)+"원");
         $('#popup-cancel').find('.discountPrices').text(vcui.number.addComma(discountPrices)+"원");
         $('#popup-cancel').find('.mempointPrices').text(vcui.number.addComma(mempointPrices)+"원");
-        $('#popup-cancel').find('.totalPrice').text(vcui.number.addComma(productTotalPrices)+"원");
+        $('#popup-cancel').find('.productTotalPrices').text(vcui.number.addComma(productTotalPrices)+"원");
 
         //$('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
     }
@@ -1684,7 +1686,7 @@
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
                 console.log("### takeback productList ###", productList);
-
+//Pending
                 addPopProdductList(popup, productList, false);
                 
                 originalTotalPrices = productList[0].originalTotalPrice ? parseInt(productList[0].originalTotalPrice) : 0;
