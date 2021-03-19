@@ -1236,6 +1236,9 @@
                 if(cardData && cardData.cardSale) {
                     monthPrice -= cardData.cardSale;
                 }
+                if(monthPrice < 0) {
+                    monthPrice = 0;
+                }
                 //월 이용요금
                 var $priceInfo = self.$pdpInfoCareSiblingOption.find('dl.price-info span.price');
                 $priceInfo.html('<span class="sub-text">(1년차 월 요금 기준)</span>' + vcui.number.addComma(monthPrice) + '원' + (selectRentalInfoData.freeMonth ? ('<em class="desc">무상할인(' + selectRentalInfoData.freeMonth + '개월)</em>') : ''));
@@ -1300,20 +1303,35 @@
 
                 //2021-03-17
                 //구매의 케어십은 카드세일을 적용하여 표시하지 않는다 (렌탈케어만 적용해서 표시)
-                if(isRentalCareTab && cardData && cardData.cardSale) {
+                if(cardData && cardData.cardSale) {
                     carePrice -= parseInt(cardData.cardSale);
                 }
-                var totalPrice = price + (carePrice ? carePrice : 0);
+
+                var totalPrice = price;
+                if(isRentalCareTab) {
+                    totalPrice = (carePrice ? carePrice : 0);
+                }
+                //var totalPrice = price + (isRentalCareTab ? (carePrice ? carePrice : 0) : 0);
 
                 var $careLi = $paymentAmount.find('li.careship-price-info');
-                if($careLi.length > 0) {
-                    if(!carePrice || parseInt(carePrice) == 0) {
+                if($careLi.length > 0 && self.$pdpInfoCareshipService && self.$pdpInfoCareshipService.length > 0) {
+
+                    //케어쉽 체크 여부
+                    var checkinput = self.$pdpInfoCareshipService.find('input[type=radio]:checked');
+                    if(checkinput.length > 0) {
+                        var check = lgkorUI.stringToBool(checkinput.val());
+                    }
+
+                    //if(!carePrice || parseInt(carePrice) <= 0) {
+                    //케어십 미신청 일경우 케어십 이용요금 숨김
+                    if(!check) {
                         $careLi.hide();
-                        totalPrice = price;
+                        //totalPrice = price;
                     } else {
                         if(carePrice < 0) {
                             carePrice = 0;
                         }
+
                         $careLi.find('span.price').text("월 " + vcui.number.addComma(carePrice) +"원");
                         
                         var $careshipService = $paymentAmount.siblings('.careship-service');
