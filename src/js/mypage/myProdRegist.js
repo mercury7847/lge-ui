@@ -785,7 +785,7 @@
 
         checkNoData: function() {
             var self = this;
-            var $list = self.$registProductList.find('>ul li');
+            var $list = self.$registProductList.find('>ul>li');
             if($list.length > 0) {
                 var param = lgkorUI.getHiddenInputData();
                 var page = parseInt(param.page);
@@ -797,12 +797,14 @@
                     self.$registProductMoreBtn.hide();
                 }
                 self.$registProductNoData.hide();
+                self.$registProductList.find('>ul').show();
             } else {
                 self.$registProductMoreBtn.hide();
                 self.$registProductNoData.show();
+                self.$registProductList.find('>ul').hide();
             }
 
-            $list = self.$myProductList.find('>ul li');
+            $list = self.$myProductList.find('>ul>li');
             if($list.length > 0) {
                 self.$myProductNoData.hide();
             } else {
