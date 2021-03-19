@@ -292,7 +292,8 @@ gulp.task("jsCompile:home", () => gulp
 gulp.task("jsCompile:objet", () => gulp
     .src(src + "/js/objet/**/*")
     .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(terser())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
