@@ -12,10 +12,11 @@
 
 				// Since WebKit doesn't know the height until after the image has loaded, perform everything in an onload copy
 				$('<img />').on('load', function() {
-					var attrW = 'width',
-						attrH = 'height',
-						w = $that.attr(attrW),
-						h = $that.attr(attrH);
+					var w = $that.get(0).naturalWidth,
+						h = $that.get(0).naturalHeight;
+
+                        var temp = new Image();
+						temp.src = $that.attr('src');
 
 					if (!w || !h) {
 						var temp = new Image();
@@ -101,6 +102,8 @@
                 self.$pagination.pagination();
             
                 self.bindEvent();
+
+                
             },
             searchList: function() {
                 var self = this,
@@ -214,7 +217,10 @@
                 });
             }
         }
-        
         notice.init();
+
+        $(window).on('load', function(){
+            $('.view-content img').rwdImageMaps();
+        })
     });
 })();

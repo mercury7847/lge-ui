@@ -612,15 +612,16 @@
             transform: translateY(-50%);
             width: 100%;
             padding: 0 80px;
-            @include font($font-large-1,30px);
             .title {
                 display: block;
                 margin-bottom: 8px;
                 @include textEllipsis;
+                @include font($font-large-1,30px);
             }
             .sub-copy {
                 display: block;
                 @include textEllipsis;
+                @include font($font-medium,26px);
             }
         }
         br {
@@ -632,13 +633,16 @@
             margin: 32px 0 0;
             padding: 0 16px;
             a {
-                height: 78px;
+                height: 96px;
             }
             .text-area {
                 padding: 0 24px;
-                @include font($font-x-small,20px);
                 .title {
                     margin-bottom: 0;
+                    @include font(13px,21px);
+                }
+                .sub-copy {
+                    @include font($font-x-small,20px);
                 }
             }
         }
@@ -1407,16 +1411,14 @@
 @media screen and (max-width: 1024px) {
     .btn-filter {
         //position: relative;
-        top: 33px;
-        right: 0;
-        left: auto;
-        //top: auto;
+        top: 0;
+        left: 0;
         .ico-filter {
             top: 0;
             width: auto;
             margin-right: 0;
-            padding-right: 40px;
-            background-position: right 0;
+            padding-left: 40px;
+            background-position: left center;
             font-weight: 700;
             font-size: 13px;
             line-height: 32px;
@@ -1427,22 +1429,7 @@
 .list-sorting {
     //display: none;
     @include tablet {
-        padding: 33px 85px 16px 0;
-        .sort-area {
-            .sort-list {
-                margin: 5px 0 6px;
-            }
-            .list-count {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-            .sort-select-wrap {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-        }
+        padding: 44px 0 16px 0;
     }
     .input-keyword-wrap {
         display: none;
@@ -1466,9 +1453,6 @@
             position: relative;
             vertical-align: middle;
             margin-left: 24px;
-            @media screen and (max-width: 1024px) {
-                display: none;
-            }
             .search-inner {
                  width: 200px;
                  height: 36px;
@@ -1492,8 +1476,20 @@
                     background: url('/lg5-common/images/icons/icon-search-20.svg');
                 }
             }
-        } 
-
+        }
+        @media screen and (max-width: 1024px) {
+            &.left {
+                padding-top: 0;
+            }
+            .sort-check-area {
+                position: absolute;
+                top: 4px;
+                right: 0;
+            }
+            .sort-search-area {
+                display: none;
+            }
+        }
     }
     &.fixed {
         display: block;
