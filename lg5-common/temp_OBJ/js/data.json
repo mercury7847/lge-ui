@@ -1,0 +1,23 @@
+{
+  "backgroundImages" : {
+    "modern" : [
+      '01kitchen_modern.png',
+      '02kitchen_modern.png',
+      '03utilityroom_modern.png',
+      '04livingroom_modern.png'
+    ],
+    "nature" : [
+      '01kitchen_nature.png',
+      '02kitchen_nature.png',
+      '03utilityroom_nature.png',
+      '04livingroom_nature.png'
+    ],
+    "nordic" : [
+      '01kitchen_nordic.png',
+      '02kitchen_nordic.png',
+      '03utilityroom_nordic.png',
+      '04livingroom_nordic.png'
+    ]
+  },
+  "verInfo" : "2020-09-21",
+}
