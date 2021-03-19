@@ -1,7 +1,7 @@
 //KRP0007
 (function () {
     var productItemTemplate =
-    '<li>' +
+    '<li data-uniq-id="{{uniqId}}">' +
         '<div class="item plp-item">' +
         '{{#if promotionBadges}}'+
             '<div class="badge">' +
@@ -90,7 +90,9 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        //cTypeCount
+                        //'{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        '{{#if lastBulletName}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -151,7 +153,7 @@
         '</div>' +
     '</li>';
                     
-    $(window).ready(function(){
+    $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
         $('.KRP0007').buildCommonUI();
@@ -222,12 +224,22 @@
                     }
 
                     var hash = location.hash.replace("#","");
-                    if(hash && hash == categoryId) {
-                        self.filterLayer.resetFilter(filterData, false);
+                    if(hash && hash.length == 8) {
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
-                        self.$productList.empty();
-                        self.updateProductList(self.savedPLPData.listData);
-                        self.setPageData(self.savedPLPData.pagination);
+                        if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
+                            self.filterLayer.resetFilter(filterData, false);
+                            self.$productList.empty();
+                            self.updateProductList(self.savedPLPData.listData, true);
+                            self.setPageData(self.savedPLPData.pagination);
+                            var $li =self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
+                            $(window).ready(function(){
+                                setTimeout(function(){
+                                    $(window).scrollTop($li.offset().top);
+                                }, 500);
+                            });
+                        } else {
+                            self.filterLayer.resetFilter(filterData, change);
+                        }
                     } else {
                         self.filterLayer.resetFilter(filterData, change);
                     }
@@ -290,6 +302,14 @@
 
             bindEvents: function() {
                 var self = this;
+
+                self.$productList.on('click','a', function(e){
+                    var $li = $(this).parents('li');
+                    var uniqId = $li.data('uniqId');
+                    if(uniqId && uniqId.length == 8) {
+                        location.hash = uniqId;
+                    }        
+                });
 
                 //찜하기
                 self.$productList.on('change','li div.btn-area-wrap div.wishlist input',function(e){
@@ -458,7 +478,7 @@
                     data.pageType = "plp";
                     //var hash = lgkorUI.obj2HashString(data);
                     //var hash = encodeURIComponent(JSON.stringify(data));
-                    location.hash = categoryId;
+                    //location.hash = categoryId;
                 //}
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
@@ -476,7 +496,7 @@
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
 
                     if(arr.length){
-                        self.updateProductList(arr);
+                        self.updateProductList(arr, false);
 
                         self.setPageData(data.pagination);
 
@@ -499,11 +519,12 @@
                 });
             },
 
-            updateProductList: function(arr) {
+            updateProductList: function(arr, restoreList) {
                 var self = this;
                 arr.forEach(function(item, index) {
-                    item.checkBtnFlag = self.checkBtnFlag(item);
-                    item.checkPriceFlag = self.checkPriceFlag(item);
+                    if(!restoreList) {
+                        item.uniqId = vcui.getUniqId(8);
+                    }
                     var listItem = self.makeListItem(item);
                     self.$productList.append(listItem);
                 });
@@ -536,8 +557,12 @@
 
                     if(arr.length){
                         var item = arr[0];
-                        item.checkBtnFlag = self.checkBtnFlag(item);
-                        item.checkPriceFlag = self.checkPriceFlag(item);
+                        var uniqId = changeItem.data('uniqId');
+                        if(uniqId) {
+                            item.uniqId = uniqId;
+                        } else {
+                            item.uniqId = vcui.getUniqId(8);
+                        }
                         var listItem = self.makeListItem(item);
                         changeItem.before(listItem);
                         changeItem.remove();
@@ -553,7 +578,8 @@
 
             checkBtnFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
-                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                    var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
+                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {
                         return false;
@@ -576,7 +602,7 @@
 
             checkPriceFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
-                    if(lgkorUI.stringToBool(item.obsCartFlag) && item.obsBtnRule=="enable") {
+                    if(lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule=="enable") {
                         return true
                     } else {
                         return false;
@@ -628,6 +654,9 @@
                 */
                 item.sliderImages = sliderImages;
                 
+                item.checkBtnFlag = self.checkBtnFlag(item);
+                item.checkPriceFlag = self.checkPriceFlag(item);
+
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
@@ -644,7 +673,10 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
-                item.lastBulletName = inputdata.lastBulletName;
+
+                item.lastBulletName = "";
+                console.log(item.rTypeCount, item.cTypeCount)
+                if((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -671,7 +703,7 @@
 
                 if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
-                //console.log("### item.siblingType ###", item.siblingType)
+                //console.log("### item.siblingType ###", item.siblingType);
 
             //     '{{#if checkPriceFlag}}'+
             //     '{{#if bizType == "CARESOLUTION"}}' +

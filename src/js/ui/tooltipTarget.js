@@ -7,7 +7,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             interval: 200,
             tooltip: '.tooltip-box',
-            type : 'click', //click, over
+            type : 'over', //click, over
             closeButtonClass : 'btn-close',
             offsetParentClass : 'tooltip-wrap',
             fixed : null
@@ -55,10 +55,12 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                     case 'mouseenter':
                     case 'focusin':
                     case 'click':
+                        e.preventDefault();
                         self._open(true);
                         break;
                     case 'mouseleave':
                     case 'focusout':
+                        e.preventDefault();
                         self._close();
                         break;
                 }

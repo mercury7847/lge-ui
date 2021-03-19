@@ -292,7 +292,8 @@ gulp.task("jsCompile:home", () => gulp
 gulp.task("jsCompile:objet", () => gulp
     .src(src + "/js/objet/**/*")
     .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(terser())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
@@ -300,7 +301,7 @@ gulp.task("jsCompile:objet", () => gulp
 
 // fonts, images
 gulp.task("static", () => {
-    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc"]);
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ"]);
 });
 gulp.task("static:data-ajax", () => gulp
     .src("./lg5-common/data-ajax/**")
@@ -325,6 +326,10 @@ gulp.task("static:videos", () => gulp
 gulp.task("static:pcsvc", () => gulp
     .src("./lg5-common/pcsvc/**")
     .pipe(gulp.dest(dist + sourceFolder + "/pcsvc/"))
+);
+gulp.task("static:temp_OBJ", () => gulp
+    .src("./lg5-common/temp_OBJ/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/temp_OBJ/"))
 );
 
 

@@ -118,6 +118,7 @@
         .btn-back {
             position: relative;
             display: inline-block;
+            min-height: 34px;
             padding: 6px 0 6px 36px;
             background: url('/lg5-common/images/icons/btn-back-48.svg') no-repeat left 16px center;
             background-size: 16px;
@@ -1403,6 +1404,7 @@ html {
         .btn-app-ar {
             .app-ar {
                 position:relative;
+                transition:transform .5s ease-out;
             }
             .app-ar-txt {
                 display:none;
@@ -1469,6 +1471,7 @@ html {
             //노치 있음
             &.app-LGEAPP-in {
                 bottom:114px;
+                z-index:5;
                 &.app-chng-pos {
                     bottom:24px;
                 }
@@ -1479,6 +1482,7 @@ html {
             //노치 없음
             &.app-LGEAPP-io {
                 bottom:79px;
+                z-index:5;
                 &.app-chng-pos {
                     bottom:24px;
                 }
@@ -1489,6 +1493,7 @@ html {
             //안드로이드
             &.app-LGEAPP {
                 bottom:84px;
+                z-index:5;
                 &.app-chng-pos {
                     bottom:84px;
                 }

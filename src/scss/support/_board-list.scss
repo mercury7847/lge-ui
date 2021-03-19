@@ -17,7 +17,7 @@
     .total {
         float:left;
         font-weight:700;
-        font-size:14px;
+        @include font-small;
         .count {
             color: #da0f47;
         }
@@ -323,19 +323,24 @@
                     background-image:url('/lg5-common/images/icons/icon_remote-reservation.svg');
                 }
                 &.menu-video a:before {
-                    background-image:url('/lg5-common/images/icons/icon_video-reservation.svg');
+                    //background-image:url('/lg5-common/images/icons/icon_video-reservation.svg');
+                    background-image:url('/kr/support/images/icon/icon_video-reservation.svg');
                 }
                 &.menu-engineer a:before {
-                    background-image:url('/lg5-common/images/icons/icon_engineer-reservation.svg');
+                    //background-image:url('/lg5-common/images/icons/icon_engineer-reservation.svg');
+                    background-image:url('/kr/support/images/icon/icon_engineer-reservation.svg');
                 }
                 &.menu-installation a:before {
-                    background-image:url('/lg5-common/images/icons/icon_installation-reservation.svg');
+                    //background-image:url('/lg5-common/images/icons/icon_installation-reservation.svg');
+                    background-image:url('/kr/support/images/icon/icon_installation-reservation.svg');
                 }
                 &.menu-center a:before {
-                    background-image:url('/lg5-common/images/icons/icon_center-reservation.svg');
+                    //background-image:url('/lg5-common/images/icons/icon_center-reservation.svg');
+                    background-image:url('/kr/support/images/icon/icon_center-reservation.svg');
                 }
                 &.menu-resolution a:before {
-                    background-image:url('/lg5-common/images/icons/icon-product-resolution-64.svg');
+                    //background-image:url('/lg5-common/images/icons/icon-product-resolution-64.svg');
+                    background-image:url('/kr/support/images/icon/icon-product-resolution-64.svg');
                     width: 64px;
                     height: 64px;
                     border-radius: 50%;

@@ -27,7 +27,7 @@
                         '{{/if}}' +
                     '</div>' +
                     '<div class="info-btm">' +
-                        '{{#if hasCare && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                        '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                         '<div class="text hashtag-wrap">' +
                             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                         '</div>' +
@@ -37,7 +37,7 @@
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
-                    '{{#if carePrice != "0"}}' +
+                    '{{#if hasCare && carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
@@ -721,6 +721,7 @@
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                                 item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
+                                item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
                                 $list_ul.append(vcui.template(productItemTemplate, item));
                             });
                             if(data.noDataList.length > 0) {

@@ -113,14 +113,10 @@
                 pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             },
             zipCode: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                required: true
             },
             userAddress: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address'
+                required: true
             },
             detailAddress: {
                 required: true,
@@ -146,17 +142,13 @@
                 errorMsg: "전화번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
-            installZipCode: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address-install'
+            zipCode: {
+                required: true
             },
-            installUserAddress: {
-                required: true,
-                errorMsg: "주소를 확인해주세요.",
-                msgTarget: '.err-address-install'
+            userAddress: {
+                required: true
             },
-            installDetailAddress: {
+            detailAddress: {
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 msgTarget: '.err-address-install'
@@ -170,6 +162,9 @@
                 required: true,
                 errorMsg: "설치희망일을 선택해주세요.",
                 msgTarget: '.err-block'
+            },
+            preVisitAgree:{
+                required: true,
             }
         }
         step2Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(2)',{register:register});
@@ -458,13 +453,12 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
-        step1Validation.on('validerror', function(e, data){
-            if(Object.keys(data).length == 1){
-                if(data.chkPrivacy){
-                    $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
-                }
-            }
-        });
+        // step1Validation.on('errors', function(e, data){
+        //     console.log("step1Validation validerror:", data)
+        //     if(Object.keys(data).length == 2){
+        //         var isDA = data.detailAddress;
+        //     }
+        // });
     }
 
     function setNextStep(){
@@ -487,10 +481,8 @@
     //계약자 정보입력 밸리데이션...
     function setStep1Validation(){
         var completed = false;
-        console.log("step1 validation start!!");
         var result = step1Validation.validate();
         var data = getInputData('creditInquire');
-        console.log("detailAddress:", step1Validation.getValues("detailAddress"));
         if(result.success){
             completed = data === "Y" ? true : false;
             if(!completed){
@@ -507,6 +499,20 @@
                     lgkorUI.alert("", {
                         title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
                     });
+                } else{
+                    var isRFN = result.validItem.registFrontNumber;
+                    var isRBF = result.validItem.registBackFirst;
+                    var isUE = result.validItem.userEmail;
+                    if(!isRFN && !isRBF && !isUE){
+                        var isZP = result.validItem.zipCode;
+                        var isUD = result.validItem.userAddress;
+                        if(isZP && isUD) $(window).trigger("toastshow", "주소를 확인해주세요.");
+                        else{
+                            var isCP = result.validItem.chkPrivacy;
+                            var isDA = result.validItem.detailAddress;
+                            if(!isDA && isCP) $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
+                        }
+                    } 
                 }
             }
         }
@@ -514,38 +520,68 @@
         return completed;
     }
 
+    function step2InstallValidation(){
+        var result = step2Validation.validate(["zipCode", "userAddress"]);
+        if(!result.success){
+            $(window).trigger("toastshow", "주소를 확인해주세요.");
+            return false;
+        }
+        
+        result = step2Validation.validate(["detailAddress"]);
+        if(!result.success) return false;
+
+        return true;
+    }
+
     //설치 정보 입력 밸리데이션...
     function setStep2Validation(){
         var completed = false;
         console.log("step2 validation start!!");
-        var result = step2Validation.validate();
+        var result = step2Validation.validate(["userName", "userPhone", "userTelephone"]);
         if(result.success){
-            console.log("step2Validation.validate(); Success!!!");
+            var installvalidate = step2InstallValidation();
+            if(installvalidate){
+                var data = getInputData('installAbled');
 
-            var data = getInputData('installAbled');
-            console.log("setStep2Validation() > installAbled :", data);
+                var chk = false;
+                if(data == "Y"){
+                    chk = compareInputData(installAdress, step2Validation.getValues());
+                }
 
-            var chk = false;
-            if(data == "Y"){
-                chk = compareInputData(installAdress, step2Validation.getValues());
-                console.log("chk :", chk)
+                if(!chk){
+                    lgkorUI.alert("", {
+                        title: "설치 가능여부 확인이 필요합니다."
+                    });
+                } else{
+                    if(allOwnedProductYn == "Y"){
+                        var installplace = step2Validation.validate(["inatallPlace"]);
+                        chk = installplace.success;
+                    } else{
+                        var restresult = step2Validation.validate(["inatallPlace", "inatallDate"]);
+                        chk = restresult.success;
+                        if(chk){
+                            var isBeforeVisitChk = false;
+                            if(beforeVisitModelFlag == "M"){
+                                isBeforeVisitChk = true;
+                            } else if(beforeVisitModelFlag == "O"){
+                                var preVisitRequest = step2Block.find("input[name=preVisitRequest]:checked").val();
+                                if(preVisitRequest == "Y"){
+                                    isBeforeVisitChk = true;
+                                }
+                            }
+
+                            if(isBeforeVisitChk){
+                                var beforeVisitAgree = step2Validation.validate(["preVisitAgree"]);
+                                chk = beforeVisitAgree.success;
+
+                                if(!chk) $(window).trigger("toastshow", "서비스 제공을 위한 개인정보 수집/이용 동의가 필요합니다.");
+                            }
+                        }
+                    }
+                }
             }
-
-            if(!chk){
-                lgkorUI.alert("", {
-                    title: "설치 가능여부 확인이 필요합니다."
-                });
-            }
-
             completed = chk;
-        } else{
-            console.log("step2Validation.validate(); Fail!!!", result.validItem, step2Validation.getValues());
-            if(allOwnedProductYn == "Y"){
-                var leng = Object.keys(result.validItem).length;
-                var exist = "inatallDate" in result.validItem;
-                if(leng == 1 && exist) completed = true;
-            }
-        }
+        } 
 
         return completed;
     }
@@ -566,14 +602,12 @@
         if(cardApply == "Y"){
             chk = step3Block.find('input[name=cardApplyaAgree]').prop('checked');
             if(!chk){
-                console.log("fail!!! : 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의가 필요합니다." );
                 $(window).trigger("toastshow", "제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의가 필요합니다.");
                 return false;
             } 
 
             value = step3Block.find('select[name=associatedCard] option:selected').val();
             if(value == ""){
-                console.log("fail!!! : 신용카드의 카드사를 선택해주세요." );
                 $(window).trigger("toastshow", "신용카드의 카드사를 선택해주세요.");
                 return false;
             }
@@ -582,25 +616,41 @@
         paymethod = getPaymentMethod();
         result = paymethod == "bank" ? bankValidation.validate() : cardValidation.validate();
         if(!result.success){
-            console.log("fail!!! paymethod:",result);
+            return false;
+        }
+
+        var cardAbled = getInputData('cardAbled');
+        if(cardAbled == "N"){
+            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
+            lgkorUI.alert("",{title:msg});
+            
             return false;
         }
 
         chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
         if(!chk){
+            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
+            lgkorUI.alert("",{title:msg});
+
+            step3Block.find('.arsAgreeRequest').prop('disabled', true);
+
             setInputData('arsAgree', "N");
             return false;
         }
 
         chk = getInputData('arsAgree');
         if(chk !== "Y"){
-            console.log("fail!!! : arsAgree");
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 신청해주세요"
+            })
             return false;
         }
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
         if(!chk){
-            console.log("fail!!! : selfClearingAgree");
+            lgkorUI.alert("", {
+                title: '자동결제를 위해 정기결제 신청을 동의해주세요.'
+            });
             return false;
         }
         
@@ -642,19 +692,8 @@
 
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
-        var values = step2Validation.getValues();
-
-        var errmsg = "";
-        if(values.zipCode == "" || values.userAddress == "") errmsg = "주소를 확인해주세요.";
-        else if(values.detailAddress == "") errmsg = "상세주소를 입력해주세요."
-
-        if(errmsg != ""){
-            lgkorUI.alert("", {
-                title: errmsg
-            });
-
-            return;
-        }
+        var result = step2InstallValidation();
+        if(!result) return;
 
         lgkorUI.showLoading();
 
@@ -771,6 +810,11 @@
                     if(beforeVisitModelFlag == "M"){
                         rbv.find('.tit .label').addClass('req');
                         rbv.find('.tit .label').append('<span class="blind">필수</span>');
+                        //preVisitRequest
+                        step2Validation.setValues({preVisitRequest:"Y"});
+                        step2Block.find('input[name=preVisitAgree]').prop('checked', false);
+                        rbv.find('.visible-target1').show();
+                        rbv.find('input[name=preVisitRequest]').not('[value=Y]').prop('disabled', true);
                     } else if(beforeVisitModelFlag == "N"){
                         rbv.hide();
                     }
@@ -827,11 +871,22 @@
 
                     step1Block.find('input[name=registFrontNumber]').prop("disabled", true);
                     step1Block.find('input[name=registBackFirst]').prop("disabled", true);
+
+                    //step1LastValidation();             
                 } else{
                     setInputData('creditInquire', 'N');
                 }
             }
         });
+    }
+
+    function step1LastValidation(){
+        var step1Value = step1Validation.getValues();
+        var result = step1Validation.validate();
+        var isDA = result.validItem.detailAddress;
+        if(!isDA){
+            stepAccordion.expand(1, true)
+        }
     }
 
     //설치 정보 입력 타입 선택...
@@ -848,6 +903,8 @@
             telephone.val(telephone.data('equalNumber'));
 
             step2Block.find('input[name=detailAddress]').val(step1Validation.getValues('detailAddress'));
+
+            step2Validation.validate(["userName", "userPhone", "userTelephone", "zipCode", "userAddress", "detailAddress"]);
         } else{
             step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
         }
@@ -1062,17 +1119,12 @@
         }
 
         if(!chk){
-            lgkorUI.alert("", {
-                title:'입력정보를 확인해주세요.'
-            });
             return;
        }
 
         var agreechk = requestAgreeChecker.getAllChecked();
         if(!agreechk){
-            lgkorUI.alert("", {
-                title:'케어솔루션 청약신청<br>고객동의를 해주세요.'
-            });
+            $(window).trigger("toastshow", "청약 신청을 위해 케어솔루션 청약신청 고객 동의가 필요합니다.");
             return;
         }
         console.log("requestAgreeChecker:", agreechk);
@@ -1111,7 +1163,8 @@
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
             MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
             preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
-            collectRequest: step2Block.find('input[name=collectRequest]:checked').val()
+            collectRequest: step2Block.find('input[name=collectRequest]:checked').val(),
+            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked')
         };
         console.log(sendata);
 

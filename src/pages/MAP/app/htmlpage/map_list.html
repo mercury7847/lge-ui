@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0">
+    <title>시공간</title>
+
+    <!-- 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansmyanmar.css" rel="stylesheet">
+    <!-- //웹폰트 -->
+
+    <link href="../resource/css/platform.css" rel="stylesheet">
+
+    <script src="../resource/js/libs/jquery-3.6.0.min.js"></script>
+    <script src="../resource/js/ui-common.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <div class="map-cont">
+        <!-- /*
+        지도영역
+        하단 이미지는 api 적용시 삭제
+        */ -->        
+        <div class="map-area">
+            <img src="../resource/images/temp/map.jpg" style="height:100%;" alt="">
+
+            <!-- /* 마커 */ -->
+            <div class="custom-marker"><div>물오름달 열닷새<span></span></div></div>
+            <div class="custom-marker"><div>신라의 달밤<span></span></div></div>
+            <div class="custom-marker active"><div>신구의 추억<span></span></div></div>
+            <!-- /* //마커 */ -->
+        </div>
+        <!-- /* //지도영역 */ -->
+
+        <div class="map-search">
+            <form>
+                <div class="inner">
+                    <div class="walking-count">
+                        <p>2,134</p>
+                    </div>
+                    <div>
+                        <div class="input-wrap">
+                            <input type="text" value="" placeholder="게임 또는 지역 검색">
+                        </div>
+                        <button type="submit"><span>검색</span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="g-item">
+            <a href="#"><img src="../resource/images/temp/game_item01.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="btm-menu">
+        <div>
+            <a href="#"><i class="ico-home"></i><span>홈</span></a>
+            <a href="#" class="on"><i class="ico-game"></i><span>게임</span></a>
+            <a href="#"><i class="ico-map"></i><span>지도</span></a>
+            <a href="#"><i class="ico-profile"></i><span>프로필</span></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

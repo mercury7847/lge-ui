@@ -5,6 +5,7 @@
 
 // 매장정보
 .store-info-wrap {
+    padding-bottom:80px;
     .opt-list {
         margin-bottom:12px;
         li {
@@ -32,16 +33,20 @@
                 text-align:center;
             }
             &.opt-mobile:before {
-                background-image:url(/lg5-common/images/icons/cate_icon_mobile.svg);
+                //background-image:url(/lg5-common/images/icons/cate_icon_mobile.svg);
+                background-image:url(/kr/support/images/icon/cate_icon_mobile.svg);
             }
             &.opt-it-monitor:before {
-                background-image:url(/lg5-common/images/icons/cate_icon_it-monitors.svg);
+                //background-image:url(/lg5-common/images/icons/cate_icon_it-monitors.svg);
+                background-image:url(/kr/support/images/icon/cate_icon_it-monitors.svg);
             }
             &.opt-small-appliances:before {
-                background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+                //background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+                background-image:url(/kr/support/images/icon/icon_small-appliances.svg);
             }
             &.opt-expendables:before {
-                background-image:url(/lg5-common/images/icons/icon_small-appliances.svg);
+                //background-image:url(/lg5-common/images/icons/icon_expendables.svg);
+                background-image:url(/kr/support/images/icon/icon_expendables.svg);
             }
         }
     }

@@ -6,7 +6,7 @@
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
                 '</div>' +
-                '<p class="tit">{{topic}} &gt; {{subTopic}}</p>' +
+                '<p class="tit">{{topic}}{{#if (subTopic)}} &gt; {{subTopic}}{{/if}}</p>' +
                 '<ul class="options">' +
                     '<li>{{category}}{{#if (modelCode)}} &gt; {{subCategory}} : {{modelCode}} {{/if}}</li>' +
                     '<li>접수번호 {{registNumber}}</li>' +
@@ -219,9 +219,9 @@
                 var $this = $(this),
                     number = $this.data('number');
 
-                lgkorUI.backHistory({
-                    page: self.$form.find('#page').val()
-                });
+                // lgkorUI.backHistory({
+                //     page: self.$form.find('#page').val()
+                // });
 
                 self.$form.find('#number').val(number);
                 self.$form.submit();
@@ -769,17 +769,17 @@
 
                 formData = $.extend(formData, formParam);
 
+
                 lgkorUI.requestAjaxDataPost(url, formData, function(result) {
                     var data = result.data;
 
-
                     if (data.resultFlag == 'Y' && data.url !== "") {
-
                         formData = $.extend(formData, {
                             acptNo : data.acptNo
                         })
-                        $('#acptNo').val(result.data.acptNo);
+                        $('#acptNo').val(data.acptNo);
                         $form.attr('action', result.data.url);
+                        
                         $form.submit();
                     } else {
                         if (data.resultMessage) {

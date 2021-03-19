@@ -320,7 +320,7 @@
     .tooltip {
         &-login {
             display: block;
-            max-width:1920px;
+            max-width:100%;
             margin:0 auto;
             background-image: linear-gradient(92deg, #9c86e7, #ff537c 97%);
         }
@@ -1428,7 +1428,7 @@
 
     //히어로 영역
     .home-hero {
-        max-width:1920px;
+        max-width:100%;
         margin:0 auto;
 
         .hero-container {

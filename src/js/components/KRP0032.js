@@ -4,7 +4,7 @@ $(window).ready(function(){
 	$('.KRP0032').buildCommonUI();
 
 	var popuplistItemTemplate = '<li>' +
-        '<div class="img"><a href="{{modelUrlPath}}"><img data-src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
+        '<div class="img"><a href="{{modelUrlPath}}"><img data-temp-src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
         '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
     '</li>'
 
@@ -50,10 +50,10 @@ $(window).ready(function(){
         
         resetImage: function() {
             var self = this;
-            var $img = self.$popup.find('img[data-src]');
+            var $img = self.$popup.find('img[data-temp-src]');
             $img.each(function(idx,obj){
                 if(!obj.src.length || obj.src.length == "") {
-                    obj.src = obj.dataset.src;
+                    obj.src = obj.dataset.tempSrc;
                 }
             });
         },
@@ -80,7 +80,7 @@ $(window).ready(function(){
                     if(index == 0) {
                         self.$image.attr({"src":item.smallImageAddr,"alt":item.imageAltText})
                     }
-                    item.price = item.price ? vcui.number.addComma(item.obsSellingPrice) : null;
+                    item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
 					self.$list.append(vcui.template(popuplistItemTemplate, item));
                 });
 

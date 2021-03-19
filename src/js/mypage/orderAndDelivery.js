@@ -105,7 +105,7 @@
                                     '</ul>'+
                                 '</div>'+
                                 '{{/if}}'+
-                                '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
                             '{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
@@ -160,7 +160,7 @@
                                         '</ul>'+
                                     '</div>'+
                                     '{{/if}}'+
-                                    '{{#if listData.productTotal}}<p class="count">수량 : {{listData.productTotal}}</p>{{/if}}'+
+                                    '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                                     '{{#if listData.contDtlType == "C01"}}'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
@@ -215,16 +215,16 @@
                             '<tr>'+
                                 '<th scope="col">제품 금액</th>'+
                                 '<th scope="col">할인 금액 합계</th>'+
-                                '{{#if mempointPrices != "0"}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
+                                '{{#if isMemberShip}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
                                 '<th scope="col">{{typeName}} 신청 금액</th>'+
                             '</tr>'+
                         '</thead>'+
                         '<tbody>'+
                             '<tr>'+
-                                '<td class="productPrices">{{productPrices}}원</td>'+
+                                '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
                                 '<td class="discountPrices">{{discountPrices}}원</td>'+
-                                '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
-                                '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                                '{{#if isMemberShip}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
+                                '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                             '</tr>'+
                         '</tbody>'+
                     '</table>'+
@@ -252,8 +252,8 @@
                 '</thead>'+
                 '<tbody>'+
                     '<tr>'+
-                        '<td class="productPrices">{{productPrices}}원</td>'+
-                        '<td><em class="bold black totalPrice">{{totalPrice}}원</em></td>'+
+                        '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
+                        '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                     '</tr>'+
                 '</tbody>'+
             '</table>'+
@@ -285,7 +285,7 @@
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
-        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+        
+        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}P</dd></dl></li>'+        
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
@@ -772,7 +772,6 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(url, sendata, function(result){
-                lgkorUI.hideLoading();
                 
                 var data = result.data;
 
@@ -816,8 +815,6 @@
 
         if(writeReasonTrim.length) reason = writeReason;
 
-        console.log(reason)
-
         if(reason == ""){
             lgkorUI.alert("", {
                 title: "반품을 신청하시려면, 상세 사유가 필요합니다. 반품 사유를 입력해 주세요."
@@ -826,8 +823,7 @@
             return;
         }
 
-        var transtype = $('#popup-takeback').data('transType');        
-        if(transtype == METHOD_BANK){
+        if($('#popup-takeback').data('isBank')){
             if(!getBankBnumberValidation('popup-takeback')) return;
     
             var paymentBankNumber = $('#popup-takeback').find('.bank-input-box input').val();
@@ -880,8 +876,6 @@
 
         if(writeReasonTrim.length) reason = writeReason;
 
-        console.log(reason)
-
         if(reason == ""){
             lgkorUI.alert("", {
                 title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
@@ -889,11 +883,8 @@
 
             return;
         }
-
-
-
-        var transtype = $('#popup-cancel').data('transType');        
-        if(transtype == METHOD_BANK){
+  
+        if($('#popup-cancel').data('isBank')){
             if(!getBankBnumberValidation('popup-cancel')) return;
     
             var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
@@ -951,22 +942,25 @@
     }
 
     function resetCancelPriceInfo(){
-        var productPrices = 0;
+        var originalTotalPrices = 0;
         var discountPrices = 0;
         var mempointPrices = 0;
+        var productTotalPrices = 0;
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
             var idx = $(item).val();
             
-            productPrices += PRICE_INFO_DATA[idx].productPrice;
+            originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
             discountPrices += PRICE_INFO_DATA[idx].discountPrice;
             mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
+            productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
+
+            console.log("PRICE_INFO_DATA[idx].productTotalPrice:",PRICE_INFO_DATA[idx].productTotalPrice)
         });
-        var totalPrice = productPrices - discountPrices - mempointPrices;
-        $('#popup-cancel').find('.productPrices').text(vcui.number.addComma(productPrices)+"원");
+        $('#popup-cancel').find('.originalTotalPrices').text(vcui.number.addComma(originalTotalPrices)+"원");
         $('#popup-cancel').find('.discountPrices').text(vcui.number.addComma(discountPrices)+"원");
         $('#popup-cancel').find('.mempointPrices').text(vcui.number.addComma(mempointPrices)+"원");
-        $('#popup-cancel').find('.totalPrice').text(vcui.number.addComma(totalPrice)+"원");
+        $('#popup-cancel').find('.productTotalPrices').text(vcui.number.addComma(productTotalPrices)+"원");
 
         //$('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
     }
@@ -1115,7 +1109,6 @@
             ORDER_USER_DATA = {};
             MONTHLY_PAYMENT_DATA = {};
 
-
             if(data.listData && data.listData.length){
                 var leng, cdx, idx;
                 var list = data.listData;
@@ -1130,7 +1123,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
                     }
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
@@ -1154,7 +1147,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
                     }
 
                     CARE_LIST.push(list[idx]);
@@ -1177,7 +1170,7 @@
             //결제정보
             if(data.payment) {
                 if(Object.keys(data.payment).length){
-                    console.log("### data.payment ###",data.payment)
+                    console.log("### data.payment ###",data.payment);
                     var payment = data.payment;
                     payment.orderPrice = vcui.number.addComma(payment.originalTotalPrice);
                     payment.discountPrice = vcui.number.addComma(payment.discount);
@@ -1251,8 +1244,6 @@
             }
 
             renderPage();
-
-            lgkorUI.hideLoading();
         });
     }
     //카드/은행 셀렉트박스 리셋...
@@ -1316,7 +1307,7 @@
     //납부 정보 유효성 체크
     function paymentInfoValidation(){
         var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        console.log("paymentMethodConfirm:", paymentMethodConfirm)
+        console.log("paymentMethodConfirm:", paymentMethodConfirm);
         if(paymentMethodConfirm  == "N"){
             return{
                 result: false,
@@ -1377,7 +1368,7 @@
         
         console.log("paymentMethodAbled(); sendata :", sendata);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
-            console.log("### requestAjaxData ###", result)
+            console.log("### requestAjaxData ###", result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -1405,7 +1396,7 @@
 
         console.log("### setArsAgreeConfirm ###", sendata);
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
-            console.log("### setArsAgreeConfirm [complete] ###", result)
+            console.log("### setArsAgreeConfirm [complete] ###", result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -1444,8 +1435,6 @@
     function savePaymentInfoOk(){
         var payments = paymentInfoValidation();
         if(payments.result){
-            lgkorUI.showLoading();
-
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
             var sendata = {
@@ -1461,12 +1450,11 @@
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
 
             console.log("savePaymentInfo : [sendata] ", sendata);
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     requestOrderInquiry();
                 }
-
-                lgkorUI.hideLoading();
             });
         } else{
             lgkorUI.alert("", {
@@ -1499,7 +1487,7 @@
         $listBox = $('.inner-box.payment');
         if($listBox.length > 0) {
 
-            console.log("### PAYMENT_DATA ###",PAYMENT_DATA)
+            console.log("### PAYMENT_DATA ###",PAYMENT_DATA);
 
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
                 
@@ -1510,7 +1498,7 @@
                 if(listData.contDtlType == "C01") isRender = true;
             } else isRender = true;
             
-            console.log("isRender:",isRender)
+            console.log("isRender:",isRender);
 
             if(isRender && leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
@@ -1555,8 +1543,6 @@
 
     //주문접수...
     function setOrderRequest(dataId){
-        lgkorUI.showLoading();
-
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
         var productList = vcui.array.map(listData.productList, function(item, idx){
             return{
@@ -1566,7 +1552,7 @@
             }
         });
 
-        console.log("productList:", productList)
+        console.log("productList:", productList);
 
         var sendata = {
             contDtlType: listData.contDtlType,
@@ -1576,11 +1562,10 @@
             productList: JSON.stringify(productList)
         }
         console.log("### setOrderRequest ###", sendata);
+        lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
             console.log("### setOrderRequest complete", result);
             
-            lgkorUI.hideLoading();
-
             if(result.data.obsDirectPurchaseUrl){
                 location.href = result.data.obsDirectPurchaseUrl;
 
@@ -1614,7 +1599,7 @@
             paymentBankNumber: $('#'+popname).find('.bank-input-box input').val(),
             paymentBank: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
-        console.log("### sendBankConfirm ###", sendata)
+        console.log("### sendBankConfirm ###", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### sendBankConfirm complete", result);
 
@@ -1635,9 +1620,7 @@
     }
     //취소/반품 신청을 위한 데이터 요정...
     function getPopOrderData(dataId, calltype){
-        lgkorUI.showLoading();
-
-        console.log("### getPopOrderData [TAB_FLAG]###", TAB_FLAG)
+        console.log("### getPopOrderData [TAB_FLAG]###", TAB_FLAG);
     
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var memInfos = lgkorUI.getHiddenInputData();
@@ -1658,9 +1641,10 @@
             sendUserEmail: memInfos.sendUserEmail,
             sendPhoneNumber: memInfos.sendPhoneNumber
         }
-        console.log("### getPopOrderData ###", sendata)
+        console.log("### getPopOrderData ###", sendata);
+        lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP_URL, sendata, function(result){
-            console.log("### getPopOrderData complete", result)
+            console.log("### getPopOrderData complete", result);
             lgkorUI.hideLoading();
 
             if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) result.data.listData = [result.data.listData];
@@ -1669,9 +1653,10 @@
             POP_PROD_DATA = [];
             var popup;
             var infoTypeName;
-            var productPrices = 0;
+            var originalTotalPrices = 0;
             var discountPrices = 0;
             var mempointPrices = 0;
+            var productTotalPrices = 0;
             var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
@@ -1701,12 +1686,13 @@
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
                 console.log("### takeback productList ###", productList);
-
+//Pending
                 addPopProdductList(popup, productList, false);
                 
-                productPrices = productList[0].productPrice ? parseInt(productList[0].productPrice) : 0;
+                originalTotalPrices = productList[0].originalTotalPrice ? parseInt(productList[0].originalTotalPrice) : 0;
                 discountPrices = productList[0].discountPrice ? parseInt(productList[0].discountPrice) : 0;
                 mempointPrices = productList[0].memberShipPoint ? parseInt(productList[0].memberShipPoint) : 0;
+                productTotalPrices = productList[0].productTotalPrice ? parseInt(productList[0].productTotalPrice) : 0;
 
                 $('#popup-takeback').find('.info-tbl-wrap .info-wrap .infos').empty().append("<li>주문일<em>" + listData[dataId].orderDate + "</em></li>");
                
@@ -1723,25 +1709,27 @@
 
             if(productList[0].contDtlType != "C09"){
                 popup.find('.sect-wrap.cnt01').show();
-                var totalPrice = productPrices - discountPrices - mempointPrices;
                 var discountComma = vcui.number.addComma(mempointPrices);
+                var isMemberShip = productList[0].memberShipPoint != "0" ? true : false;
                 var template = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? nonememPriceInfoTemplate : priceInfoTemplate;
                 popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
                     typeName: infoTypeName,
-                    productPrices: vcui.number.addComma(productPrices),
+                    isMemberShip: isMemberShip,
+                    originalTotalPrices: vcui.number.addComma(originalTotalPrices),
                     discountPrices: vcui.number.addComma(discountPrices),
                     mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
-                    totalPrice: vcui.number.addComma(totalPrice)
+                    productTotalPrices: vcui.number.addComma(productTotalPrices)
                 }));
             } else{
                 popup.find('.sect-wrap.cnt01').hide();
             }
 
-
-            popup.data('transType', result.data.payment.transType);
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
 
-            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK){
+            console.log("productList[0].itemStatus:",productList[0].itemStatus);
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){
+                popup.data('isBank', true);
+
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
                 var bankList = result.data.bankList;
                 for(idx in bankList){
@@ -1760,6 +1748,7 @@
 
                 bankInfoBlock.show();
             } else{
+                popup.data('isBank', false);
                 bankInfoBlock.hide();
             }
 
@@ -1771,30 +1760,32 @@
     }
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
-        console.log("isCheck:", isCheck)
-        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();                
+        console.log("isCheck:", isCheck);
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productPrice"]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
 
-            var productPrice = listdata.productPrice ? parseInt(listdata.productPrice) : 0;
+            var originalTotalPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
             var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
+            var productTotalPrice = listdata.productTotalPrice ? parseInt(listdata.productTotalPrice) : 0;
 
             if(listdata.itemCancelAbleYn == "N") listdata.orderStatus.disabled = "disabled";
         
             PRICE_INFO_DATA.push({
-                productPrice: productPrice,
+                originalTotalPrice: originalTotalPrice,
                 discountPrice: discountPrice,
-                mempointPrice: mempointPrice
+                mempointPrice: mempointPrice,
+                productTotalPrice: productTotalPrice
             });
+            console.log("PRICE_INFO_DATA:", PRICE_INFO_DATA);
 
-            var orderedQuantity = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ?  listdata.productTotal : listdata.orderedQuantity;
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                orderedQuantity: orderedQuantity
+                orderedQuantity: listdata.orderedQuantity
             });
 
             listdata.specList = vcui.array.filter(listdata.specList, function(item){
@@ -1834,7 +1825,7 @@
 
         var bankName = "";
         var bankAccountNo = "";
-        if(popup.data("transType") == METHOD_BANK){
+        if(popup.data("isBank")){
             bankName = popup.find('.bank-input-box select option:selected').val();
             bankAccountNo = popup.find('.bank-input-box input').val();
         }
@@ -1866,9 +1857,8 @@
             productList: JSON.stringify(prodlist)
         }
 
-        lgkorUI.showLoading();
-
         console.log("### " + sendata.callType + " ###", sendata);
+        lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendata, function(result){
             lgkorUI.hideLoading();
             
@@ -1885,9 +1875,10 @@
                     var box = $('.box[data-id=' + dataId + ']');
                     box.find('.orderCancel-btn, .requestOrder-btn').remove();
 
+                    var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
                     for(var idx in matchIds){
                         var block = box.find('.tbody .row').eq(matchIds[idx]);
-                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>취소접수</p>');
+                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
                     }
                 } else reloadOrderInquiry();
             }
@@ -1955,8 +1946,6 @@
     }
     //상품 클릭...
     function setProductStatus(dataId, prodId, pdpUrl){
-        lgkorUI.showLoading();
-
         //리스트에서는 상품 이미지에서만 체크..go pdp
         //상세보기 둘다 체크후..go pdp
         //리스트에서는 네임은 상세로...go detail
@@ -1970,6 +1959,7 @@
         }
 
         console.log("### setProductStatus ###", sendata);
+        lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.data.success == "N"){
                 lgkorUI.alert("", {
@@ -1978,8 +1968,6 @@
             } else{
                 location.href = pdpUrl;
             }
-
-            lgkorUI.hideLoading();
         });
     }
 

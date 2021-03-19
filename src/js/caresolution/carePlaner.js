@@ -14,7 +14,7 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           <a href="#n">'+
+        '           <a href="{{modelUrlPath}}">'+
         '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
         '           </a>'+
         '       </div>'+
@@ -22,7 +22,7 @@
         '       {{#if moduleType == "module-type3"}}'+
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
-        '           <a href="#n">'+
+        '           <a href="{{modelUrlPath}}">'+
         '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
         '           </a>'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
@@ -438,10 +438,14 @@
         var wraptop;
         var item = $putItemContainer.find('.ui_active_toggle');
         if(isOpen){
+            $putItemContainer.find('.total-info').removeAttr('style');
+            $putItemContainer.find('.total-info dl').show();
             wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
             if(wraptop < 0) wraptop = 0;
             item.css({transform:'rotate(0deg)'});
         } else{
+            $putItemContainer.find('.total-info').css({background:'#ffffff'})
+            $putItemContainer.find('.total-info dl').hide();
             wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
             item.css({transform:'rotate(180deg)'});
         }
@@ -514,6 +518,8 @@
         if(!_isDirectCare && _careCateId){
             var uitab = $fixedTab.find('.service_tab').vcTab('instance');
             uitab.select(_careCateId.tabId, true);
+
+            _serviceID = _careCateId.tabId;
         }
 
         var tabID = getTabID();
@@ -524,7 +530,6 @@
             var selectId = 0;
             for(var id in result.data){
                 if(!_isDirectCare && _careCateId && _careCateId.tabCategoryId === result.data[id].categoryID){
-                    _isDirectCare = true;
                     selectId = id;
                 }
                 var category = vcui.template(_categoryItemTemplate, result.data[id]);
@@ -581,7 +586,7 @@
 
             addProdItemList();
 
-            if(_careCateId && _careCateId.tabModelId) {
+            if(!_isDirectCare && _careCateId && _careCateId.tabModelId) {
                 var findArr = vcui.array.filter(result.data.productList, function(item, index) {
                     return (item.modelId == _careCateId.tabModelId);
                 });
@@ -593,6 +598,8 @@
                     requestAddPutItem(findModel);
                 }
             }
+            _isDirectCare = true;
+            _careCateId = null;
         });
     }
 
@@ -700,6 +707,8 @@
 
             var deleteItem = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
 
+            if(!_currentItemList[blockID].modelUrlPath) _currentItemList[blockID].modelUrlPath = "";
+
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[blockID]);
             var addItem = $(prodlist).get(0);
             deleteItem.before(addItem);
@@ -732,6 +741,7 @@
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
+            if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
