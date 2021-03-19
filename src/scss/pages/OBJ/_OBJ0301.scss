@@ -1,5 +1,5 @@
 @charset "UTF-8";
-simulator .simulator-header {
+.simulator .simulator-header {
     width: 53.8%;
     min-width: 860px;
     margin: 0 auto;
@@ -107,11 +107,11 @@ simulator .simulator-header {
 }
 
 .simulator.full .objet_select_slider {
-    position: fixed;
+    position: absolute;
     top: 56px;
     left: 0;
     right: 0;
-    bottom: 0;
+    // bottom: 0;
     margin: 0;
     padding: 0;
     animation: blowUpModal 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;

@@ -10,7 +10,7 @@
     <script src="/lg5-common/temp_OBJ/js/smooth-scrollbar.js"></script>
     <script>
         var update_file_name = "";
-        Kakao.init('15afb9ea300add2a9f9acbe1a6b21c19');
+        //Kakao.init('15afb9ea300add2a9f9acbe1a6b21c19');
 
         function setCookie(cookieName, value, exdays) {
             var exdate = new Date();
@@ -151,7 +151,7 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/modules/page-header.html', { "pageTitle": "공간체험" })
+            @@include('./common/modules/page-header.html', { "hiddenTitle": "공간체험" })
             <!-- mypage -->
             <div class="contents objet space_experience">
                 <div class="cont-wrap">
@@ -160,7 +160,7 @@
                             <h2 class="h2Tile simul">오브제 체험</h2>
                             <p class="textType01">공간을 선택해주세요.</p>
                         </div>
-                        <div style="position: fixed; top: 50%; left: 50%; z-index: 10; transform: translate(-50%, -50%);display:none" id="loading"><img src='/content/images/common/loading.gif' alt='로딩바' /></div>
+                        <div style="position: fixed; top: 50%; left: 50%; z-index: 10; transform: translate(-50%, -50%);display:none" id="loading"><img src='/lg5-common/images/OBJ/simulator/common/loading.gif' alt='로딩바' /></div>
                         <div class="select_objet" data-simulator-sidebar="">
                             <ul class="select_objet_list">
                                 <li class="type01"><button type="button" class="btn-objet-type type01">소재와 컬러</button>
@@ -421,6 +421,61 @@
         </div>
         @@include('./common/footer.html')
     </div>
+
+    <div id="simulator_dw" style="position: fixed; width: 7680px; height: 1080px; left: 0px; top: -9999px;">
+        <div class="objet_bg" style="width: 7680px;"></div>
+    </div>
+    <div class="mask"></div>
+    <div class="control-bx">
+        <div class="step01">
+            <div class="objet-list">
+                <ul>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_01.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_02.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_03.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_04.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_05.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_06.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_07.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_09.png" /></li>
+                    <li><img src="/lg5-common/images/OBJ/simulator/simulator_img3/appliances/Thumb_08.png" /></li>
+                </ul>
+            </div>
+            <div class="num1">
+                <span>1</span>제품을 선택하고 나만의<br />LG 오브제컬렉션을 만들어 보세요.
+            </div>
+        </div>
+        <div class="step02">
+            <div class="objet-list2">
+                <ul>
+                    <li>소재와 컬러</li>
+                    <li>인테리어 선택</li>
+                    <li>추천조합</li>
+                </ul>
+            </div>
+            <div class="num2">
+                <span>2</span> 제품 소재와 컬러, 인테리어까지<br />다양한 옵션을 체험하세요
+            </div>
+        </div>
+        <div class="step03">
+            <div class="num3">
+                <span>3</span> 체험한 나만의 LG오브제컬렉션을<br> 공유하고 구매해 보세요.
+            </div>
+            <!-- <div class="objet-list3">
+                <span>구매·공유하기</span>
+            </div> -->
+        </div>
+        <div class="simul-start-div">
+            <div class="statr-bx">
+                <p>마우스 휠을 사용하거나<br />드래그하여 좌우로 둘러보세요.<br>
+                    <label for="noViewCheck"><input type="checkbox" id="noViewCheck" onclick="noshow_guide()"><span>7일동안 보지 않기<span></label>
+                </p>
+                <button type="button" class="btn-simul-start-close"><span>닫기</span></button>
+            </div>
+            <div class="start-mask"></div>
+        </div>
+        <div class="maska"></div>
+    </div>
     <!-- @ 박춘기 시뮬레이터 라이브러리 추가, bottom 정의 필요 -->
     <script src="/lg5-common/temp_OBJ/js/simulator_0122.js"></script>
     <script src="/lg5-common/temp_OBJ/js/swiper.js"></script>
@@ -498,9 +553,11 @@
                                 var selectedIndex = this.realIndex;
                                 //dummyImgEL.classList.add('active');
                                 this.destroy(false, true);
-
+                                simulatorResizeFn();
                                 var selectedSlideIndex = selectedIndex;
                                 simulator.objSwiperInit(selectedSlideIndex);
+
+
                                 if (guide_yn != "N") {
                                     $(".control-bx").fadeIn();
                                 }
@@ -512,6 +569,34 @@
                     },
                 });
             }
+        }
+        $(window).on("resize", function() {
+            //     setTimeout(function() {
+            simulatorResizeFn();
+            //     }, 100);
+
+        });
+
+        function simulatorResizeFn() {
+            var simulatorH = $(window).height();
+            var simulatorW = $(window).width();
+            var headH = $("header").height();
+            var breadcrumbH = $(".breadcrumb").outerHeight(); //objet space_experience
+            var pageHeader = $(".page-header").outerHeight();
+            var simulatorTop;
+            var simulatorHeight;
+            if (simulatorW > 767) {
+                simulatorTop = 149;
+                simulatorHeight = simulatorH - simulatorTop;
+            } else {
+                simulatorTop = 80;
+                simulatorHeight = simulatorH - simulatorTop;
+            }
+            $("#objet_select_slider").css({
+                "top": simulatorTop,
+                "height": simulatorHeight
+            });
+            $(".objet.space_experience").css("height", (simulatorHeight - pageHeader));
         }
 
         $(function() {
@@ -561,7 +646,10 @@
         });
 
         //기기 선택 부
-        $(".lg-appliances input[type=checkbox]").on("click", function() {
+
+
+        $(document).on("click", ".lg-appliances input[type='checkbox']", function() {
+            console.log("ddd");
             if (this.checked) {
                 if (this.value == "refrigerator_convertible") {
                     $('.rf-con').show();
@@ -720,7 +808,7 @@
                 //alert($("#refrigerator_LT").val());
                 $.ajax({
                     type: 'post',
-                    url: '/canvas_save.jsp',
+                    url: 'canvas_save.jsp',
                     data: formdata,
                     dataType: "json",
                     processData: false, // data 파라미터 강제 string 변환 방지!!
