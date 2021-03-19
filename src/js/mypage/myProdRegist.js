@@ -69,12 +69,13 @@
                     '{{#each item in linkBtn}}' +
                         '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
                     '{{/each}}' +
-                    '{{#if reviewWrite}}' +
+                    '{{#if reviewBtn}}' +
                         '{{#if isMobile}}' +
                             '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}" review-source="mobile_my_orders">리뷰작성</a>' +
                         '{{#else}}' +
                             '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}">리뷰작성</a>' +
                         '{{/if}}' +
+                    '{{/if}}' +
                 '</div>' +
                 '{{#if disabled}}<p class="product-on"><span class="blind">보유중인 제품이</span>{{#if disabledReason}}{{disabledReason}}{{#else}}단종되었습니다.{{/if}}</p>{{/if}}' +
             '</div>' +
@@ -735,7 +736,7 @@
                     }
                     item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
                     item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
-                    item.reviewWrite = lgkorUI.stringToBool(item.reviewWrite);
+                    item.reviewBtn = lgkorUI.stringToBool(item.reviewBtn);
                     item.isMobile = self.isMobileNow;
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
