@@ -1684,7 +1684,7 @@
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
                 console.log("### takeback productList ###", productList);
-
+//Pending
                 addPopProdductList(popup, productList, false);
                 
                 originalTotalPrices = productList[0].originalTotalPrice ? parseInt(productList[0].originalTotalPrice) : 0;
