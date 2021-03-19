@@ -286,7 +286,9 @@
                             line-height: 38px;
                         }
                         .tag-wrap {
-                            margin-top: 20px;
+                            .tags {
+                                margin-top: 20px;
+                            }
                         }
                     }
                 }
@@ -340,8 +342,10 @@
                 }
             }
             .tag-wrap {
-                margin-top: 12px;
-                font-size: 0;
+                .tags {
+                    margin-top: 12px;
+                    font-size: 0;
+                }
                 .tag {
                     display: inline-block;
                     font-weight: 700;
@@ -354,6 +358,7 @@
             }
         }
         .date {
+            display: none;
             position: absolute;
             top: 16px;
             right: 16px;
