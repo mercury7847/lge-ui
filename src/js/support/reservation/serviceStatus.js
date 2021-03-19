@@ -6,7 +6,7 @@
                     '<span class="flag green">{{type}}</span>' +
                     '{{#if (status)}}<span class="flag">{{status}}</span>{{/if}}' +
                 '</div>' +
-                '<p class="tit">{{topic}} &gt; {{subTopic}}</p>' +
+                '<p class="tit">{{topic}}{{#if (subTopic)}} &gt; {{subTopic}}{{/if}}</p>' +
                 '<ul class="options">' +
                     '<li>{{category}}{{#if (modelCode)}} &gt; {{subCategory}} : {{modelCode}} {{/if}}</li>' +
                     '<li>접수번호 {{registNumber}}</li>' +
