@@ -1133,7 +1133,7 @@ var isApp = function(){
             });
         },
 
-        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide) {
+        requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide, failCallback) {
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
@@ -1221,8 +1221,15 @@ var isApp = function(){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
+                if(failCallback && typeof failCallback === 'function') failCallback(err);
             });
         },
+
+        requestAjaxDataFailCheck: function(url, data, successCallback, failCallback) {
+            var self = this;
+            self.requestAjaxData(url, data, successCallback, null, null, null, null, null, failCallback);
+        },
+        
 
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
