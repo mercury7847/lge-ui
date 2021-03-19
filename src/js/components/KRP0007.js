@@ -90,7 +90,9 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        //cTypeCount
+                        //'{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        '{{#if lastBulletName}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -675,7 +677,10 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
-                item.lastBulletName = inputdata.lastBulletName;
+
+                item.lastBulletName = "";
+                console.log(item.rTypeCount, item.cTypeCount)
+                if((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
