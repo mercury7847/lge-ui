@@ -1144,11 +1144,12 @@ var isApp = function(){
                 data : data,
                 timeout : 180000
             }).done(function (result) {
+                if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
+
                 if(dtype != "json") {
                     if(callback && typeof callback === 'function') callback(result);
                     return;
                 }
-
 
                 if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
                     location.reload();                
@@ -1218,9 +1219,7 @@ var isApp = function(){
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
-            }).always(function() {
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
-                //console.log( "complete" );
             });
         },
 
@@ -1338,6 +1337,11 @@ var isApp = function(){
                                 title: data.alert.title
                             });
                         }
+                    } else {
+                        var message = result.message || data.message;
+                        lgkorUI.alert("", {
+                            title: message
+                        });
                     }
                 }
             }, true);
@@ -1373,6 +1377,11 @@ var isApp = function(){
                             title: data.alert.title
                         });
                         */
+                    } else {
+                        var message = result.message || data.message;
+                        lgkorUI.alert("", {
+                            title: message
+                        });
                     }
                 }
             }, true);
