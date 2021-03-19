@@ -12,10 +12,8 @@
 
 				// Since WebKit doesn't know the height until after the image has loaded, perform everything in an onload copy
 				$('<img />').on('load', function() {
-					var attrW = 'width',
-						attrH = 'height',
-						w = $that.attr(attrW),
-						h = $that.attr(attrH);
+					var w = $that.width(),
+						h = $that.height();
 
 					if (!w || !h) {
 						var temp = new Image();
@@ -219,7 +217,9 @@
         notice.init();
 
         $(window).on('load', function(){
-            $('.view-content img').rwdImageMaps();
+            setTimeout(function(){
+                $('.view-content img').rwdImageMaps();
+            }, 500)
         })
     });
 })();
