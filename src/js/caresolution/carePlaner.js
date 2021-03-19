@@ -438,10 +438,14 @@
         var wraptop;
         var item = $putItemContainer.find('.ui_active_toggle');
         if(isOpen){
+            $putItemContainer.find('.total-info').removeAttr('style');
+            $putItemContainer.find('.total-info dl').show();
             wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
             if(wraptop < 0) wraptop = 0;
             item.css({transform:'rotate(0deg)'});
         } else{
+            $putItemContainer.find('.total-info').css({background:'#ffffff'})
+            $putItemContainer.find('.total-info dl').hide();
             wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
             item.css({transform:'rotate(180deg)'});
         }
@@ -703,6 +707,8 @@
 
             var deleteItem = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
 
+            if(!_currentItemList[blockID].modelUrlPath) _currentItemList[blockID].modelUrlPath = "";
+
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[blockID]);
             var addItem = $(prodlist).get(0);
             deleteItem.before(addItem);
@@ -735,6 +741,7 @@
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
+            if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
