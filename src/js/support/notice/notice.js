@@ -102,7 +102,7 @@
             
                 self.bindEvent();
 
-                $('.view-content img').rwdImageMaps();
+                
             },
             searchList: function() {
                 var self = this,
@@ -216,9 +216,10 @@
                 });
             }
         }
-
-        
-        
         notice.init();
+
+        $(window).on('load', function(){
+            $('.view-content img').rwdImageMaps();
+        })
     });
 })();
