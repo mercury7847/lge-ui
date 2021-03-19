@@ -101,6 +101,8 @@
                 self.$pagination.pagination();
             
                 self.bindEvent();
+
+                
             },
             searchList: function() {
                 var self = this,
@@ -214,9 +216,10 @@
                 });
             }
         }
-
-        $('.view-content img').rwdImageMaps();
-        
         notice.init();
+
+        $(window).on('load', function(){
+            $('.view-content img').rwdImageMaps();
+        })
     });
 })();
