@@ -174,7 +174,18 @@
                 }
 
                 </div>
-                
+
+                @@if (context.specInfo) {
+                <!-- 210318 수정 [스펙 정보 추가] -->
+                <div class="spec-info">
+                    <ul>
+                        <li><span>제품 분류</span>냉온정수기+세척수</li>
+                        <li><span>직수방식</span>정수/냉수(순간냉각)/온수(순간온수)</li>
+                        <li><span>색상</span>실버</li>
+                    </ul>
+                </div>
+                <!-- // 210318 수정 [스펙 정보 추가] -->
+                }
             </div>
 
                 @@if (context.btnA) {
@@ -197,18 +208,6 @@
                 <div class="video-info">   
                     <span class="hidden">동영상 포함</span>
                 </div>
-            }
-            
-            @@if (context.specInfo) {
-            <!-- 210318 수정 [스펙 정보 추가] -->
-            <div class="spec-info">
-                <ul>
-                    <li><span>제품 분류</span>냉온정수기+세척수</li>
-                    <li><span>직수방식</span>정수/냉수(순간냉각)/온수(순간온수)</li>
-                    <li><span>색상</span>실버</li>
-                </ul>
-            </div>
-            <!-- // 210318 수정 [스펙 정보 추가] -->
             }
             
             @@if (context.priceInfo) {

@@ -55,15 +55,15 @@
             img {
                 max-width: 100%;
                 vertical-align: top;
-                @at-root .result-list > li {
-                    .discontinued {
-                        .result-thumb {
-                            img {
-                                opacity: .3;
-                            }
-                        }
-                    }
-                }
+                //@at-root .result-list > li { 단종/구매불가 케이스
+                //    .discontinued {
+                //        .result-thumb {
+                //            img {
+                //                opacity: .3;
+                //            }
+                //        }
+                //    }
+                //}
             }
             .flag-end-wrap {
                 position: absolute;
@@ -138,8 +138,10 @@
             justify-content: space-between;
             align-items: center;
             .info-text {
+                flex: 1;
                 align-self: start;
                 padding-top: 12px;
+                padding-right: 80px;
             }
             @include mobile {
                 display: block;
@@ -149,18 +151,36 @@
                 }
             }
             .spec-info {
+                font-size: 0;
+                li {
+                    @include font-x-small;
+                    span {
+                        color: $color-gray-1;
+                    }
+                }
                 @include pc {
-                    display: none;
+                    max-width: 569px;
+                    margin-top: 8px;
+                    padding-top: 4px;
+                    border-top: 1px solid $color-border;
+                    li {
+                        display: inline-block;
+                        margin-right: 16px;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        span {
+                            margin-right: 4px;
+                        }
+                    }
                 }
                 @include mobile {
-                    margin-top: 12px;
+                    margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
-                    @include font(12px,20px);
                     span {
                         margin-right: 8px;
-                        color: $color-gray-1;
                     }
                 }
             }

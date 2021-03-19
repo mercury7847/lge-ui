@@ -219,9 +219,9 @@
                 var $this = $(this),
                     number = $this.data('number');
 
-                lgkorUI.backHistory({
-                    page: self.$form.find('#page').val()
-                });
+                // lgkorUI.backHistory({
+                //     page: self.$form.find('#page').val()
+                // });
 
                 self.$form.find('#number').val(number);
                 self.$form.submit();
