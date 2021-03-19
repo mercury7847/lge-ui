@@ -17,7 +17,7 @@
         }
         .summary-img {
             display:inline-block;
-            width:120px;
+            max-width:120px;
             vertical-align:middle;
             margin-right:48px;
             img {
@@ -83,7 +83,7 @@
                 margin-top: 16px;
             }
             .summary-img {
-                width:80px;
+                max-width:80px;
                 margin-right: 0;
                 img {
                     width:100%;
@@ -418,7 +418,8 @@
                     display:inline-block;
                     width:32px;
                     height:32px;
-                    background:url(/lg5-common/images/icons/icon_popup-window.svg) no-repeat;
+                    //background:url(/lg5-common/images/icons/icon_popup-window.svg) no-repeat;
+                    background:url(/kr/support/images/icon/icon_popup-window.svg) no-repeat;
                     background-size:32px 32px;
                 }
             }

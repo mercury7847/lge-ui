@@ -304,7 +304,7 @@
                 self.$productList.on('click','a', function(e){
                     var $li = $(this).parents('li');
                     var uniqId = $li.data('uniqId');
-                    if(uniqId.length == 8) {
+                    if(uniqId && uniqId.length == 8) {
                         location.hash = uniqId;
                     }        
                 });
