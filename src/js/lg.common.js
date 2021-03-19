@@ -1171,6 +1171,7 @@ var isApp = function(){
                                 lgkorUI.alert("", {
                                     title: result.message
                                 });
+                                result.message = null;
                             }
                             result.data = {"success" : "N"};
                         }
@@ -1338,10 +1339,11 @@ var isApp = function(){
                             });
                         }
                     } else {
-                        var message = result.message || data.message;
-                        lgkorUI.alert("", {
-                            title: message
-                        });
+                        if(result.message) {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
                     }
                 }
             }, true);
@@ -1378,10 +1380,11 @@ var isApp = function(){
                         });
                         */
                     } else {
-                        var message = result.message || data.message;
-                        lgkorUI.alert("", {
-                            title: message
-                        });
+                        if(result.message) {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
                     }
                 }
             }, true);
