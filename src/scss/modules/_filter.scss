@@ -538,30 +538,30 @@
         width: 32px;
         height: 32px;
         margin-right: 24px;
-        background: url("/lg5-common/images/icons/btn-filter-32.svg") no-repeat 0 0;
-        background-size: 32px 32px;
+        background: url("/lg5-common/images/icons/btn-filter-64.svg") no-repeat 0 0;
+        background-size: 32px;
         @media screen and (min-width: 1025px) {
             display: none;
         }
         @include mobile {
             top:3px;
             margin-right: 20px;
-            background-size: 32px 32px;
         }
     }
     &.applied {
         .ico-filter {
-        position: relative;
-            &:after {
-                position: absolute;
-                top: -7px;
-                right: 0;
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background-color: #ec455a;
-                content: '';
-            }
+            background-image: url("/lg5-common/images/icons/btn-filter-64-applied.svg");
+        //position: relative;
+            //&:after {
+            //    position: absolute;
+            //    top: -7px;
+            //    right: 0;
+            //    width: 5px;
+            //    height: 5px;
+            //    border-radius: 50%;
+            //    background-color: #ec455a;
+            //    content: '';
+            //}
         } 
     }
 }
