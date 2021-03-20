@@ -94,6 +94,7 @@
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
+                    self.curationLayer = new Curation(self.$contentsSearch);
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
@@ -714,6 +715,9 @@
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
 
+                    //스마트 필터
+                    self.curationLayer.setCurationData(data);
+                    
                     //noData 체크
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
