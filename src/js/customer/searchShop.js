@@ -91,16 +91,13 @@
             '</div>'+
         '</li>';
 
-    var searchTypeNames = ["local", "subway", "search"];
-
-    
+    var searchTypeNames = ["local", "subway", "search"];    
 
     var searchShop = {
         init: function(){
             var self = this;            
             self._setting();            
         },
-
 
         _setting: function(){
             var self = this;
@@ -110,83 +107,71 @@
 
             self.isTransion = false;
 
-            // self.configUrl = $('.map-container').data("config"); 
+            self.bestShopUrl = $('.map-container').data("bestShop");
+            self.localUrl = $('.map-container').data("localList");
+            self.subwayUrl = $('.map-container').data("subwayList");
+            self.stationUrl = $('.map-container').data("stationList");
+            self.detailUrl = $('.map-container').data("detail");
+            self.userAddress = $('.map-container').data("userAddress"); //'서울특별시 강동구 고덕로 130'
+            self.currentLatitude = $('.map-container').data("latitude") || "37.5235644"; // 강남본점 위도
+            self.currentLongitude = $('.map-container').data("longitude") || "127.0395764"; // 강남본점 경도
+            self.loginUrl = $('.map-container').data("loginUrl");
+            self.shopID = $('.map-container').data("shopId");
+            self.salesCode = $('.map-container').data("salesCode");
 
-            self.bestShopUrl = "";
-            self.localUrl = "";
-            self.subwayUrl = "";
-            self.stationUrl = "";
-            self.detailUrl = "";
-
-            self.storeData = [];
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
             self.$defaultListContainer = self.$leftContainer.find('.list-wrap'); //리스트 컨테이너...
             self.$defaultListLayer = self.$defaultListContainer.find('.sch-list .scroll-wrap .list-item'); 
-
             self.$searchContainer = self.$leftContainer.find('.sch-box');
-
-            self.$map = null; //맵 모듈...
-            self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
+            self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...            
             self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
 
+            self.$optionContainer.find('input[type=checkbox]').prop('checked', false); // 옵션을 다 품.
+
+            self.$citySelect = $('#select1'); //시/도 선택
+            self.$boroughSelect = $('#select2'); //구.군 선택
+            self.$localSearchButton = $('.search-local'); //지역검색 버튼
+            self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
+
+            self.$subwayCitySelect = $('#select3'); //지역선택
+            self.$subwayLineSelect = $('#select4'); //호선 선택
+            self.$subwayStationSelect = $('#select5'); //역 선택
+            self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
+
+
+            self.$searchField = $('#tab3 .input-sch input');
+            self.$searchButton = $('#tab3 .btn-search');
+            self.$searchResultContainer = $('.result-list-box');
+
+
+            self.$localSearchButton.prop('disabled', false);
+            self.$boroughSelect.prop('disabled', false);            
+            $('.result-btn-wrap .view-info-btn').hide(); // 
+            
+            
+
+            self.$map = null; //맵 모듈...
+            self.userLatitude = null;
+            self.userLongitude = null; 
+            self.applyOptions = null;          
+            
+            
             //검색...
             self.searchKeyword = "";
             self.searchType = "local";
 
-
-            self.currentLatitude = "";
-            self.currentLongitude = "";
-
-            self.loginUrl = "";
-
-            self.shopID = "";
-
             self.isUserAddressClick = false;
-
-            self.isSalesCode = false;
-            self.isReloadSalesCode = false;
-
-            self.applyOptions;
+            
             self.defaultOptions = self._getOptions();
+            self.applyOptions = self._getOptions();  
 
-            self.$searchField = $('#tab3 .input-sch input');
-            self.$searchButton = $('#tab3 .btn-search');
-
-            $('.result-btn-wrap .view-info-btn').hide(); // 
-            
-
-
-            self.$searchResultContainer = $('.result-list-box');
-            self.defaultInfoViewId = vcui.uri.getParam('shopId');
-
-            self._resize();
+            self.defaultInfoViewId = vcui.uri.getParam('shopId');   
+            self.totalStoreData = [];         
             
             
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function (StoreMap) {
-
-
-                self.bestShopUrl = $('.map-container').data("bestShop");
-                self.localUrl = $('.map-container').data("localList");
-                self.subwayUrl = $('.map-container').data("subwayList");
-                self.stationUrl = $('.map-container').data("stationList");
-                self.detailUrl = $('.map-container').data("detail");
-                self.userAddress = $('.map-container').data("userAddress"); //'서울특별시 강동구 고덕로 130'
-
-
-                self.currentLatitude = $('.map-container').data("latitude");
-                self.currentLongitude = $('.map-container').data("longitude");
-
-                self.userLatitude = null;
-                self.userLongitude = null;
-
-                
-                self.loginUrl = $('.map-container').data("loginUrl");
-                self.shopID = $('.map-container').data("shopId");
-                self.salesCode = $('.map-container').data("salesCode");
-                self.totalStoreData = [];
-
+            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function (StoreMap) {  
 
                 self.$map = new StoreMap(self.$mapContainer,{
 
@@ -195,9 +180,10 @@
                     longitude : self.currentLongitude,
                     latitude: self.currentLatitude
 
-                }).on('maploaded', function(e){
-
-                    self._requestTotalStoreData();                    
+                }).on('maploaded', function(e){                    
+                    
+                    self._requestTotalStoreData();
+                
 
                 }).on('mapinit', function(e, data){
                     
@@ -218,7 +204,10 @@
                             var shopName = nArr[0]['shopName'];
                             self.$searchField.val(shopName); 
                             self.$map.draw(nArr,null,null,true);
-                        }                        
+                        }  
+                    }else if(self.salesCode!==""){   
+                        // 세일코드가 있는 경우 
+                        self._requestSaleStoreData();
 
                     }else{
 
@@ -232,11 +221,10 @@
                             nArr = self._filterDistance(self.totalStoreData , {lat: self.currentLatitude, long:self.currentLongitude, limit:25});
                             self.$map.draw(nArr, self.currentLatitude, self.currentLongitude, null, true);
                         }
+
                     }
 
-
                 }).on('mapchanged', function(e, data){	
-
                     self._setItemList(data);
                     self._setItemPosition();     
 
@@ -249,38 +237,17 @@
 
                 $(".sch-box .tabs-wrap").vcTab().on("tabchange", function(e, data){
                     self._setListArea();
-                    self._setTabInit();
-                    
+                    self._setTabInit();                    
                     self.searchType = searchTypeNames[data.selectedIndex];
                 });
 
-                self.$citySelect = $('#select1'); //시/도 선택
-                self.$boroughSelect = $('#select2'); //구.군 선택
-                self.$localSearchButton = $('.search-local'); //지역검색 버튼
-                self.$searchUserAdressButton = $('.search-userAdress'); //내 주소 검색 버튼
-
-                self.$localSearchButton.prop('disabled', false);
-                self.$boroughSelect.prop('disabled', false);
                 self.$boroughSelect.vcSelectbox('update');
-
-                self.$subwayCitySelect = $('#select3'); //지역선택
-                self.$subwayLineSelect = $('#select4'); //호선 선택
-                self.$subwayStationSelect = $('#select5'); //역 선택
-                self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
+                
 			});
         },
 
         _dataLoaded : function(){
             var self = this;
-
-
-            if(self.$map) self.$map.start();
-
-            if(self.salesCode) {
-                self._requestSaleStoreData();
-            }
-
-            return;
 
             lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
                 typeClass: "type2",
@@ -362,26 +329,22 @@
 
             self.$searchButton.on('click', function(e){
                 e.preventDefault();
-
                 self._setSearch();
             });
 
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
                 e.preventDefault();
-
                 self._returnSearchMode();
             });
 
             self.$searchContainer.on('click', '.btn-view', function(e){
                 e.preventDefault();
-
                 self._showMap();
             });
 
             self.$leftContainer.on('click', '.btn-fold', function(e){
                 e.preventDefault();
-
                 self._toggleLeftContainer();
             })
 
@@ -392,10 +355,15 @@
                 self._optToggleAllChecked();
             });
             self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+                
                 e.preventDefault();
                 self._setOptINIT();
 
+
             }).on('click', '.btn-group button:last-child', function(e){
+
+                // 필터 적용
+                console.log('필터 적용');
                 e.preventDefault();
                 self._setOptApply();
             });
@@ -465,15 +433,26 @@
             var self = this;
             self.userLatitude = position.coords.latitude;
             self.userLongitude = position.coords.longitude;
-            if(self.$map) self.$map.start(self.userLatitude, self.userLongitude);
+
+
+            if(self.$map) {
+                self.$map.setUserLocation(self.userLatitude, self.userLongitude);
+                self.$map.start(self.userLatitude, self.userLongitude);
+            }
         },
         
         _onErrorGeolocation : function _onErrorGeolocation(e) {
             var self = this;
 
+            var errorCodes={
+                'code1' : "위치정보 권한이 없습니다.",
+                'code2' : "위치정보 오류가 있습니다.",
+                'code3' : "제한된 시간이 지났습니다."
+            }
+
             var msg;
             if(e){
-                msg = "[" + e.code + "]" + e.message;
+                msg = errorCodes["code" + e.code];
             } else{
                 msg = "현재 위치를 찾을 수 없습니다."
             }
@@ -489,33 +468,65 @@
 
         _requestSaleStoreData : function(){
             var self = this;
+
+            // lgkorUI.showLoading();
+
             lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search', salesCode:self.salesCode}, function(result){
 
                 if(result.data.length){
 
                     var arr = vcui.array.map(result.data, function(item, index){
-
                         var itemObj = vcui.array.filterOne(self.totalStoreData, function(obj,i){
                             return item['shopID'] == obj['shopID']
                         });
-
                         return itemObj;
                     });
 
-                    self.$map.draw(arr);
+                    var defaultLat = self.currentLatitude;
+                    var defaultLong = self.currentLongitude;
+
+                    if(self.userLatitude && self.userLongitude) {
+
+                        defaultLat = self.userLatitude;
+                        defaultLong = self.userLatitude;
+                    }
+
+                    var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+
+                    if(nArr.length == 0){                       
+
+                        lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                            title: "",
+                            cancelBtnName: "아니오",
+                            okBtnName: "네",
+                            ok: function(){
+                                setTimeout(function(){
+                                    var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:20});
+                                    self.$map.draw(newArr, defaultLat, defaultLong);
+                                },300);
+                            }
+                        });
+                    }else{
+                        self.$map.draw(nArr, defaultLat, defaultLong);
+                    }                    
                 } 
+
+                // lgkorUI.hideLoading();
 
             }, function(err){
                 // console.log(err);
                 console.log('map store 정보를 가져올수 없습니다.')
+                // lgkorUI.hideLoading();
             });
 
         },
 
         _requestTotalStoreData : function(){
-            var self = this;
 
+            var self = this;
             if(self.totalStoreData.length > 0) return;
+
+            // lgkorUI.showLoading();
 
             lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search'}, function(result){
 
@@ -530,16 +541,22 @@
                     self._dataLoaded();
                 } 
 
+                // lgkorUI.hideLoading();
+
             }, function(err){
-                // console.log(err);
                 console.log('map store 정보를 가져올수 없습니다.')
+
+                // lgkorUI.hideLoading();
             });
 
         },
 
         _filterOptions:function(arr, keywords){
 
-            console.log(keywords);
+            var self = this;
+
+            var checked = self.$optionContainer.find('input[type=checkbox]:checked');
+            if(checked.length==0) return arr;
 
             var nArr = vcui.array.filter(arr, function(item,index){
 
@@ -548,7 +565,8 @@
                     return info.flagName.toUpperCase() === 'NEW';
                 });
 
-                var newStoreType = newStore? true : false;
+                var newStoreType = (keywords.etcType==="Y" && (newStore? true : false))? true : false;
+
                 var ckServiceCenterType = keywords.serviceCenterType===''? false : true;
                 var ckStoreCompanyCodee = keywords.storeCompanyCode===''? false : true;
                 var ckStoreFormType = keywords.storeFormType===''? false : true;
@@ -563,8 +581,7 @@
                 var shopType = ckStoreCompanyCodee? vcui.array.include(storeCompanyCodeArr, item.shopType) : false;
                 var storeFormType = ckStoreFormType? vcui.array.include(storeFormTypeArr, item.storeFormType) : false;
                 var storeType = ckStoreType? vcui.array.include(storeTypeArr, item.storeType) : false;
-
-                if(!centerType && !centerType && !storeFormType && !storeType && !newStoreType) return true;
+                
 
                 return shopType || centerType || storeFormType || storeType || newStoreType;
             });
@@ -575,7 +592,7 @@
         },
 
 
-        _renderStore: function(lat, long, salescode){
+        _renderStore: function(lat, long){
             var self = this;
 
             self.applyOptions = self._getOptions(); // 롤백을 위해 저장;
@@ -583,12 +600,8 @@
 
             if(lat && long){
                 // 내주소로 검색 반경 5Km 내 검색
-                var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:5});
-                nArr = self._filterOptions(nArr, keywords);
-
-                console.log(lat, long);
-
-                self.$map.draw(nArr, lat, long);
+                var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:10});
+                nArr = self._filterOptions(nArr, keywords);               
 
                 if(nArr.length==0){
 
@@ -598,34 +611,34 @@
                         okBtnName: "네",
                         ok: function(){
                             setTimeout(function(){
-                                var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:10});
+                                var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:20});
                                 nArr = self._filterOptions(nArr, keywords);
-                                self.$map.draw(nArr, lat, long);
+                                self._setSearchResultMode(nArr.length);
+                                self.$map.draw(nArr, lat, long, null, true);
                             },300);
                         }
                     });
+                }else{
+                    self._setSearchResultMode(nArr.length);
+                    self.$map.draw(nArr, lat, long, null, true);
                 }
                 
                 return;
             }
-            /*
-            if(salescode){
-                self.isSalesCode = true;
-                keywords.salesCode = salescode;
-                // keywords.userAddress = self.userAddress;
-            }
-            */
+
+            var resultLen = 0;
 
             if(keywords.searchType =='local'){
 
                 var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
-                    return xsearch(item.shopAdress, keywords.searchCity).length > 0;
+                    return keywords.searchCity!==''? xsearch(item.shopAdress, keywords.searchCity).length > 0 : false;
                 });
                 nArr = vcui.array.filter(nArr, function(item,index){
-                    return xsearch(item.shopAdress, keywords.searchBorough).length > 0;
+                    return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
                 });
-
+                
                 nArr = self._filterOptions(nArr, keywords);
+                resultLen = nArr.length;
                 self.$map.draw(nArr);
 
             }else if(keywords.searchType =='subway'){
@@ -634,70 +647,24 @@
                 if(geo.length>1){
                     var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:1});
                     nArr = self._filterOptions(nArr, keywords);
+                    resultLen = nArr.length;
                     self.$map.draw(nArr, geo[0], geo[1]);
                 }
             }else if(keywords.searchType =='search'){
 
                 var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
-                    return xsearch(item.shopName, keywords.searchKeyword).length > 0;
+                    return keywords.searchKeyword!==''? xsearch(item.shopName, keywords.searchKeyword).length > 0 : false;
                 });
                 nArr = self._filterOptions(nArr, keywords);
+                resultLen = nArr.length;
                 self.$map.draw(nArr);
             }
 
-            self._setSearchResultMode();
+            self._setSearchResultMode(resultLen);
 
 
         },
         
-        _sendKeywordData: function(keywords, userLocation){
-            var self = this;
-            
-            console.log("### _renderStore ###", keywords)
-            lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, keywords, function(result){
-
-                console.log(result);
-
-                if(result.data.length){
-                    self.storeData = vcui.array.map(result.data, function(item, index){
-                        item['id'] = item['shopID']; //info.shopID || agCode    
-                        item['info'] = false;
-                        item["selected"] = false;
-                        item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
-                        return item;
-                    });
-                    //self.$map.applyMapData(self.storeData, self.searchType, {lat: self.currentLatitude, long:self.currentLongitude});
-
-                    self.isSalesCode = false;
-                    self.isReloadSalesCode = false;
-                } else{
-                    if(self.isSalesCode){
-                        if(self.isReloadSalesCode){
-                            self.isSalesCode = false;
-                            self.isReloadSalesCode = false;
-
-                            self._renderStore(false, userLocation);
-                        } else{
-                            lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
-                                title: "",
-                                cancelBtnName: "아니오",
-                                okBtnName: "네",
-                                ok: function(){
-                                    self.isReloadSalesCode = true;
-    
-                                    keywords.dist = 20;
-                                    self._sendKeywordData(keywords);
-                                },
-                                cancel: function(){
-                                    self._renderStore(false, userLocation); 
-                                }
-                            });
-                        }
-                    }
-                }
-            });
-        },
-
         _loadLocalAreaList: function(val){
             var self = this;
             
@@ -736,14 +703,12 @@
         //적용 된 옵션 되돌리기
         _applyOptionChecked: function(){
             var self = this;
-
             self._setOptionStatus(self.applyOptions);
         },
 
         //옵션 초기화
         _setDefaultOption: function(){
             var self = this;
-
             self._setOptionStatus(self.defaultOptions);
         },
 
@@ -755,7 +720,7 @@
             for(var str in data){
                 var values = data[str].split("|");
                 for(var idx in values){
-                    if(values[idx] != "") self.$optionContainer.find('input[name=' + values[idx] + ']').prop('checked', true);
+                    if(values[idx] != "") self.$optionContainer.find('input[value=' + values[idx] + ']').prop('checked', true);
                 }
             }
 
@@ -784,17 +749,35 @@
 
             return checked.join("|");
         },
-
+        // 필터 초기화
         _setOptINIT: function(){
             var self = this;
-
             self._setDefaultOption();
+            self._setOptText();
         },
 
+        _setOptText:function(){
+
+            var self = this;
+            return;
+
+            var len = self.$optionContainer.find('input[type=checkbox]:checked').not('input[id=all-chk]').length;
+            var html = ''
+            if(len>0){
+                html = '옵션 선택(' + len +')<span class="blind">열기</span></span>'
+            }else{
+                html = '옵션 선택' + len +'<span class="blind">열기</span></span>'
+            }
+            self.$optionContainer.find('#opt-label').html(html);
+
+        },
+
+        // 필터 적용 버튼
         _setOptApply: function(){
             var self = this;
             self._toggleOptContainer();
             self._renderStore();
+            self._setOptText();
         },
 
         _optToggleAllChecked: function(){
@@ -846,7 +829,8 @@
                     if(self.isMobile){
                         $('html, body').css({
                             overflow: 'visible'
-                        });
+                        });                       
+
                     }
                 } else{
                     optop = self.$optionContainer.position().top;
@@ -861,6 +845,7 @@
                         $('html, body').css({
                             overflow: 'hidden'
                         });
+
                     }
                 }
             }
@@ -873,73 +858,37 @@
         },
 
         _showMap: function(){
-            var self = this;
+            var self = this;                
+            var toggle = self.$searchContainer.find('.btn-view');
+            if(toggle.hasClass('map')){
 
-            // position: absolute;
-            // top: 0;
-            // left: 0;
-            // right: 0;
-            // bottom: 0;
-            // width: 100%;
-            // z-index: 1;
-
-            //btn-list-fold            
-
-            //return;
-
-            //if(!self.isTransion){
-                //self.isTransion = true;
-                
-                var toggle = self.$searchContainer.find('.btn-view');
-                if(toggle.hasClass('map')){
-
-                    // $( ".btn-list-fold" ).after( $('.store-map-con') );
-                    $('.store-map-con').css({
-                        'position':'relative',
-                        'visibility':'visible',
-                        'left':'0',
-                        'height':'400'
-                    });
-                    
-                    /*
-                    var maptop = self.$defaultListContainer.position().top;
-                    $('.store-map-con').css({
-                        position: 'absolute',
-                        visibility: 'visible',
-                        top: maptop,
-                        left:0,
-                        x: self.windowWidth,
-                        height: self.$mapContainer.height(),
-                        'z-index': 5
-                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
-                    */
-        
-                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                    self.$map.resize(self.windowWidth, 400);
-
-                } else{
-                    
-                    // $('.store-list-wrap').after( $('.store-map-con') );
-
-                    $('.store-map-con').css({
-                        'position':'absolute',
-                        'visibility':'hidden',
-                        'left':'0',
-                        'height':'0'
-                    });
-
-                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                $('.store-map-con').css({
+                    'position':'relative',
+                    'visibility':'visible',
+                    'left':'0',
+                    'height':'400'
+                });                   
     
-                    //$('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
-                }
-            //}
+                toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
+                self.$map.resize(self.windowWidth, 400);
+
+            } else{                    
+
+                $('.store-map-con').css({
+                    'position':'absolute',
+                    'visibility':'hidden',
+                    'left':'0',
+                    'height':'0'
+                });
+
+                toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+            }
         },
 
         _getKeyword: function(){
             var self = this;
 
             var optdata = self._getOptions();
-
             var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
 
             var keywords = {
@@ -964,7 +913,6 @@
                 storeFormType: optdata.storeFormType,
                 storeType: optdata.storeType,
                 etcType: optdata.etcType
-
 
             }
 
@@ -1135,7 +1083,7 @@
 
         _returnSearchMode: function(){
             var self = this;
-                
+            
             self.$searchContainer.stop().transition({opacity:1}, 320, "easeInOutCubic");
             $('.result-list-box').stop().css({display:'none'})            
             
@@ -1147,6 +1095,7 @@
 
             if(self.isMobile){
 
+                self.$optionContainer.show();
                 var toggle = self.$searchContainer.find('.btn-view');
 
                 if(toggle.hasClass('map')){
@@ -1163,22 +1112,22 @@
             self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
         },
 
-        _setSearchResultMode: function(){
+        _setSearchResultMode: function(resultCnt){
 
             var self = this;
 
-            self._setResultText();
-
+            
+            self._setResultText(resultCnt);
             self.$searchContainer.stop().transition({opacity:0}, 320, "easeInOutCubic");
 
             $('.store-list-wrap .tit').hide();
             self.$searchContainer.css('display', 'none');
-
             $('.result-list-box').stop().css({display:'block', opacity:0}).transition({opacity:1}, 410, "easeInOutCubic");
             
             var paddingtop = 0;
 
             if(self.isMobile){
+                self.$optionContainer.hide();
                 var resultop = $('.result-list-box').position().top;
                 var resultheight = $('.result-list-box').outerHeight(true);
                 var listop = self.$defaultListContainer.offset().top;
@@ -1191,79 +1140,73 @@
                     'left':'0',
                     'height':'400'
                 });
-
-                
                 $('body,html').scrollTop(0);
-
             }
 
-            self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);
-            self._setListArea();
-
+            self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);            
             self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
+            self._setListArea();
             
         },
 
-        _setResultText: function(){
+        _setResultText: function(total){
             var self = this;
 
             var keywords = self._getKeyword();
             var searchKeyword;
             if(self.searchType == "local"){
                 if(!self.isUserAddressClick){
-                    var cityname = self.$citySelect.find('option[value=' + keywords.searchCity + ']').text();
-                    var borough = self.$boroughSelect.find('option[value=' + keywords.searchBorough + ']').text();
+                    
+                    var cityname = self.$citySelect.find('option:selected').text();
+                    var borough = self.$boroughSelect.find('option:selected').text();
                     searchKeyword = cityname + " " + borough;
-                }else searchKeyword = self.userAddress;
+
+                }else{
+                    searchKeyword = self.userAddress;
+                }
             } else if(self.searchType == "subway"){
-                var stationame = self.$subwayStationSelect.find('option[value=' + keywords.searchSubwayStation + ']').text();
+                var stationame = self.$subwayStationSelect.find('option:selected').text();
                 searchKeyword = stationame;
             } else{
                 searchKeyword = keywords.searchKeyword;
             }
 
-            var total = self.$defaultListLayer.find('> li').length;
+
             var resultxt = vcui.template(searchResultText[self.searchType], {
                 keyword: searchKeyword,
                 total: total ? total.toString() : "0"
             });
             self.$searchResultContainer.find('.result-txt').html(resultxt);
-
             self.isUserAddressClick = false;
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역
         _setListArea: function(){
             var self = this;
-
             var $scrollWrap = self.$defaultListContainer.find('.scroll-wrap');
 
-            if(self.windowWidth < 1025){
+            if(self.isMobile){
 
                 $scrollWrap.css({
                     'height':'auto',
                     'overflow-y':'initial'
                 });
 
-            }else{
-                
+            }else{                
                 
                 var container = self.$leftContainer.height();
                 var listTop = self.$defaultListContainer.position().top;
                 var title = $('.store-list-wrap .tit').height();
-                var opt = $('.store-list-box > .opt-cont').height();
+                var opt = 80;//$('.store-list-box > .opt-cont').height();
 
-                var ht = container - listTop - title - opt;              
-                // $scrollWrap.height(ht);
+                var ht = container - listTop - title - opt;     
+
 
                 $scrollWrap.css({
                     'height':ht,
                     'overflow-y':'scroll'
                 });
-
-            }
-            
-            
+            }   
 
         },
 
@@ -1272,8 +1215,7 @@
             var self = this;
 
             self.windowWidth = $(window).innerWidth();
-            self.windowHeight = $(window).innerHeight();
-            
+            self.windowHeight = $(window).innerHeight();            
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;
@@ -1285,21 +1227,22 @@
                 mapwidth = self.windowWidth;
                 mapheight = 400;
 
-                
-                $('.store-map-con').css({
-                    'position':'absolute',
-                    'visibility':'hidden',
-                    'left':'0',
-                    'height':mapheight
-                });
+                if(!$('.store-map-con').hasClass('isMobile')){
 
-                $( ".btn-list-fold" ).after( $('.store-map-con') );
-                
+                    $('.store-map-con').addClass('isMobile').css({
+                        'position':'absolute',
+                        'visibility':'hidden',
+                        'left':'0',
+                        'height':mapheight
+                    });
+    
+                    $( ".btn-list-fold" ).after( $('.store-map-con') );
+
+                }
 
             } else{
-                self.isMobile = false;
 
-                
+                self.isMobile = false;                
 
                 if(self.$leftContainer.hasClass('close')){
                     mapmargin = 24;
@@ -1309,16 +1252,19 @@
                 mapwidth = self.windowWidth - mapmargin;            
                 mapheight = $('.map-container').height();
 
-                $('.store-list-wrap').after( $('.store-map-con') );
+                if($('.store-map-con').hasClass('isMobile')){
 
-                $('.store-map-con').css({
-                    'position':'absolute',
-                    'visibility':'visible',
-                    'left':'0',
-                    'height':mapheight
-                });
+                    self.$optionContainer.show();
 
+                    $('.store-list-wrap').after( $('.store-map-con') );
+                    $('.store-map-con').removeClass('isMobile').css({
+                        'position':'absolute',
+                        'visibility':'visible',
+                        'left':'0',
+                        'height':mapheight
+                    });
 
+                }
             }
             
             self.$mapContainer.css({
