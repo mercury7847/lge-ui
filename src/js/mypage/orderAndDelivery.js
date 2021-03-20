@@ -330,7 +330,7 @@
         '</dl></li>'+        
         '<li><dl><dt>월 납부 수단</dt><dd>{{transTypeNm}}</dd></dl></li>'+        
         '<li><dl><dt>은행(카드)명</dt><dd>{{transCorpName}}</dd></dl></li>'+        
-        '<li><dl><dt>계좌(카드)번호</dt><dd>{{transAccountNum}}</dd></dl></li>';
+        '<li><dl><dt>계좌(카드)번호</dt><dd>{{maskingTransAccountNum}}</dd></dl></li>';
 
     var receiptHeaderTemplate = 
         '<div class="info-tbl-wrap">'+
@@ -1177,8 +1177,7 @@
                     payment.memberShipPoint = vcui.number.addComma(payment.membershipPoint);
                     payment.totalPrice = vcui.number.addComma(payment.grandTotal);
     
-                    if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
-                    if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+                    //if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
                     var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
                     if(prodList.itemStatus == "Ordered" && data.payment.paymentType == "41") payment.receiptUrl = "";
@@ -1237,6 +1236,8 @@
 
                 setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
                 setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
+
+                monthpayment.maskingTransAccountNum = monthpayment.transType == METHOD_BANK ? txtMasking.substr(monthpayment.transAccountNum, 6) : txtMasking.card(monthpayment.transAccountNum);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
