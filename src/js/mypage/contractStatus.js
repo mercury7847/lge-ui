@@ -641,7 +641,8 @@
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
 
-            data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
+            if(data.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
             changeFieldValue('contract-info', data.contractInfo);
     
             info = {
