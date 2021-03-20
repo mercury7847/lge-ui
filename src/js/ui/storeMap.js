@@ -105,6 +105,13 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             });            
         },
 
+        setUserLocation :function setUserLocation(lat, long){
+            var self = this;
+            self.userLatitude = lat;
+            self.userLongitude = long;
+
+        },
+
         start : function start(lat, long){
             var self = this;
             if(self.map) return;
@@ -119,8 +126,24 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             };
             self.map = new naver.maps.Map(self.$el[0], options);
 
+            if(self.userLatitude && self.userLongitude){
+
+                var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">내위치</span></a>';
+                naver.maps.Event.once(self.map, 'init_stylemap', function() {
+
+                    var customControl = new naver.maps.CustomControl(locationBtnHtml, {
+                        position: naver.maps.Position.BOTTOM_LEFT
+                    });
+
+                    customControl.setMap(self.map);
+                    naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
+                        self.map.setCenter(new naver.maps.LatLng(self.userLatitude, self.userLongitude));
+                    });
+                });
+            }            
+
             self._bindEvent();            
-            self.triggerHandler('mapinit', {lat: self.userLatitude, long: self.userLongitude});
+            self.triggerHandler('mapinit');
         },
 
         selectedMarker:function selectedMarker(id){
@@ -288,7 +311,19 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
                 var lat = obj.info.gpsInfo.gpsy;
                 var long = obj.info.gpsInfo.gpsx;
+
+
+                var panBounds = new naver.maps.LatLngBounds(
+                    new naver.maps.LatLng(lat, long),
+                    new naver.maps.LatLng(parseFloat(lat) + 0.0000001, long)
+                );
+
+
+                //self.currentLatitude = $('.map-container').data("latitude") || "37.5235644 0.0000001"; // 강남본점 위도
+                //self.currentLongitude = $('.map-container').data("longitude") || "127.0395764 0.0000001"; // 강남본점 경도
+
                 
+                // self.map.panToBounds(panBounds, {duration:350, easing:"easeOutCubic"});
                 self.map.panTo(new naver.maps.LatLng(lat, long), {duration:350, easing:"easeOutCubic"});
 
                 self.triggerHandler('changemarkerstatus', [{id:id}]);
