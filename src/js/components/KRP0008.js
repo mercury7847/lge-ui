@@ -99,14 +99,14 @@
                 vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                     self.pinchZoom = new PinchZoom('.zoom-area');
     
-                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(e){
                         e.preventDefault();
                         var zoom =self. pinchZoom.getZoomFactor();
                         if(Math.round(zoom) >= 4) zoom = 0;
                         self.pinchZoom.runZoom(zoom+1, true); 
                     });
     
-                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(e){
                         e.preventDefault();
                         var zoom =self.pinchZoom.getZoomFactor();
                         self.pinchZoom.runZoom(zoom-1, true); 
