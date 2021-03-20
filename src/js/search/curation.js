@@ -28,38 +28,59 @@ var Curation = (function() {
         '</div>' +
     '</li>'
 
-    function Curation($targetCuration) {
+    function Curation($targetCuration, smartFilterChangeEventFunc) {
         var self = this;
-        self._setting($targetCuration);
+        self._setting($targetCuration, smartFilterChangeEventFunc);
         self._bindEvents();
-
-        /*
-        vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
-            self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
-            self._bindEvents();
-            self.initLoadEnd = true;
-            if(self.filterData) {
-                self.filterData = vcui.array.filter(self.filterData, function(item, idx){
-                    return item.filterValues && item.filterValues.length > 0;
-                });
-                self.updateFilter(self.filterData);
-            }
-            if(self.resetData) {
-                self.resetFilter(self.resetData, self.firstLoadTrigger);
-            }
-        });
-        */
     }
 
     //public
     Curation.prototype = {
-        _setting: function($targetCuration) {
+        _setting: function($targetCuration, smartFilterChangeEventFunc) {
             var self = this;
             self.$el = $targetCuration;
+            self.smartFilterChangeEventFunc = smartFilterChangeEventFunc;
+
             self.$curation = self.$el.find('div.recommended-curation');
             self.$smartFilterList = self.$el.find('div.smart-filter');
             self.$smartFilterResult = self.$smartFilterList.find('div.filter-result');
             self.$smartFilterMore = self.$smartFilterList.find('> .inner > .btn-moreview');
+        },
+
+        triggerSmartFilterChangeEvent: function () {
+            var self = this;
+            var filterData = self.getDataFromSmartFilter();
+            self.smartFilterChangeEventFunc(filterData, self._makeFilterData(filterData));
+        },
+
+        getMakeDataFromSmartFilter: function() {
+            var self = this;
+            var filterData = self.getDataFromSmartFilter();
+            return self._makeFilterData(filterData)
+        },
+
+        getDataFromSmartFilter: function() {
+            var self = this;
+            var data = {};
+            self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
+                var filterId = el.dataset.filterId;
+                var filterValueId = el.dataset.filterValueId;
+                var tempArray = data[filterId];
+                if(!tempArray) {
+                    tempArray = [];
+                }
+                tempArray.push(filterValueId);
+                data[filterId] = tempArray;
+            });
+            return data;
+        },
+
+        _makeFilterData: function(data) {
+            var makeData = {};
+            for(key in data) {
+                makeData[key] = data[key].join("||");
+            }
+            return JSON.stringify(makeData);
         },
 
         _bindEvents: function() {
@@ -88,6 +109,8 @@ var Curation = (function() {
                 } else {
                     self.removeSelectSmartFilterResult(param.filterValueId);
                 }
+
+                self.triggerSmartFilterChangeEvent();
             });
 
             //스마트필터 결과 리스트 아이템 삭제 버튼
@@ -96,6 +119,8 @@ var Curation = (function() {
                 var $li = $(this).parents('li');
                 var filterValueId = $li.data('filterValueId');
                 self.removeSelectSmartFilterResult(filterValueId);
+
+                self.triggerSmartFilterChangeEvent();
             });
 
             //스마트필터 선택 초기화
@@ -104,6 +129,8 @@ var Curation = (function() {
                 self.$smartFilterResult.find('li[data-filter-value-id]').remove();
                 self.$smartFilterList.find('input[data-filter-id]').prop('checked',false);
                 self.$smartFilterResult.hide();
+
+                self.triggerSmartFilterChangeEvent();
             });
 
             //스마트필터 더보기
@@ -136,7 +163,7 @@ var Curation = (function() {
         },
 
         setCurationData: function(data) {
-            console.log('set curation',data);
+            //console.log('set curation',data);
             var self = this;
             var curationData = data.curation;
             if(curationData && curationData.length > 0) {
@@ -245,6 +272,18 @@ var Curation = (function() {
                 self.$smartFilterMore.show();
             } else {
                 self.$smartFilterMore.hide();
+            }
+        },
+
+        resetFilter: function(data, triggerFilterChangeEvent) {
+            var self = this;
+
+            var filterData = JSON.parse(data);
+            
+            console.log(filterData);
+
+            if(triggerFilterChangeEvent) {
+                self.triggerFilterChangeEvent();
             }
         }
     }
