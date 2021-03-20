@@ -1220,12 +1220,9 @@ var isApp = function(){
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
-<<<<<<< HEAD
                 if(failCallback && typeof failCallback === 'function') failCallback(err);
 
             }).always(function() {
-=======
->>>>>>> 34aa6fcae43665f31e1b1af2ef4f19d567e60ce9
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
             });
         },
