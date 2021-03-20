@@ -1222,6 +1222,7 @@ var isApp = function(){
                 console.log('ajaxFail',url,err);
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 if(failCallback && typeof failCallback === 'function') failCallback(err);
+
             });
         },
 
