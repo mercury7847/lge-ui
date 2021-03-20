@@ -106,7 +106,7 @@
                     userAddress: "",
                     detailAddress: "",
                     phoneNumber: "",
-                    telephoneNumber: "",
+                    telephonenumber: "",
                     defaultAddress:false,
                     city: ""
                 }
@@ -186,6 +186,7 @@
         $('#popup-editAddress').find('.err-block').hide();
 
         addressInfoValidation.setValues(pops.addressInfo);
+        addressInfoValidation.setValues({telephoneNumber:pops.addressInfo.telephonenumber});
 
         $('#popup-editAddress').data("type", pops.editMode);
         $('#popup-editAddress').data("addressId", pops.addressInfo.addressID);

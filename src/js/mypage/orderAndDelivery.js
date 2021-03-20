@@ -1177,8 +1177,7 @@
                     payment.memberShipPoint = vcui.number.addComma(payment.membershipPoint);
                     payment.totalPrice = vcui.number.addComma(payment.grandTotal);
     
-                    if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
-                    if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+                    //if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
                     var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
                     if(prodList.itemStatus == "Ordered" && data.payment.paymentType == "41") payment.receiptUrl = "";
