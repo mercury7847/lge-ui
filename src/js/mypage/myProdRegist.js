@@ -71,9 +71,9 @@
                     '{{/each}}' +
                     '{{#if reviewBtn}}' +
                         '{{#if isMobile}}' +
-                            '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}" review-source="mobile_my_orders">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
                         '{{#else}}' +
-                            '<a href="#" class="crema-new-review-link" data-product-code="{{modelCode}}">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
                         '{{/if}}' +
                     '{{/if}}' +
                 '</div>' +

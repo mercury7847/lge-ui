@@ -7,7 +7,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             interval: 200,
             tooltip: '.tooltip-box',
-            type : 'over', //click, over
+            type : 'click', //click, over
+            layerOutClose : true, // 툴팁 바깥을 터치할 경우 닫기를 원함 (type over시 무시)
             closeButtonClass : 'btn-close',
             offsetParentClass : 'tooltip-wrap',
             fixed : null
@@ -147,6 +148,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                 self.$tooltip.attr('aria-hidden', 'false');
                 self.isShow = true;
                 self._positionCheck();
+                self.setOuterTouchEvent(true);
             }, self.options.interval);
         },
 
@@ -168,7 +170,29 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             }
             self.$tooltip.attr('aria-hidden', 'true');
             self.$el.parent(".tooltip-wrap").removeClass('active');
-        }
+            self.setOuterTouchEvent(false);
+        },
+
+        setOuterTouchEvent: function(enable) {
+            var self = this;
+            if(enable) {
+                if(self.options.layerOutClose) {
+                    $(document).off('.tooltipTarget').on('click.tooltipTarget',function(e){
+                        if(self.isShow) {
+                            var $this = $(e.target);
+                            if($this.hasClass('tooltip-box') || $(this).parents('tooltip-box').length > 0) {
+                                //툴팁내부
+                            } else {
+                                //툴팁외부
+                                self._close();
+                            }
+                        }
+                    });
+                }
+            } else {
+                $(document).off('.tooltipTarget');
+            }
+        },
     });
 
     return TooltipTarget;
