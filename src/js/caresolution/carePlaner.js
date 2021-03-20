@@ -435,25 +435,28 @@
     }
 
     function setMobilePutItemBoxStatus(isOpen, anim){
-        var wraptop;
-        var item = $putItemContainer.find('.ui_active_toggle');
-        if(isOpen){
-            $putItemContainer.find('.total-info').removeAttr('style');
-            $putItemContainer.find('.total-info dl').show();
-            wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
-            if(wraptop < 0) wraptop = 0;
-            item.css({transform:'rotate(0deg)'});
-        } else{
-            $putItemContainer.find('.total-info').css({background:'#ffffff'})
-            $putItemContainer.find('.total-info dl').hide();
-            wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
-            item.css({transform:'rotate(180deg)'});
-        }
-        item.data('isOpen', isOpen);
-
-        if(window.breakpoint.name == 'mobile'){
-            if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
-            else $putItemContainer.css({top:wraptop});
+        if(window.breakpoint.isMobile){
+            console.log("setMobilePutItemBoxStatus:")
+            var wraptop;
+            var item = $putItemContainer.find('.ui_active_toggle');
+            if(isOpen){
+                $putItemContainer.find('.total-info').removeAttr('style');
+                $putItemContainer.find('.total-info dl').show();
+                wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
+                if(wraptop < 0) wraptop = 0;
+                item.css({transform:'rotate(0deg)'});
+            } else{
+                $putItemContainer.find('.total-info').css({background:'#ffffff'})
+                $putItemContainer.find('.total-info dl').hide();
+                wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
+                item.css({transform:'rotate(180deg)'});
+            }
+            item.data('isOpen', isOpen);
+    
+            if(window.breakpoint.name == 'mobile'){
+                if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
+                else $putItemContainer.css({top:wraptop});
+            }
         }
     }
 
