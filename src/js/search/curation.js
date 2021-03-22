@@ -294,7 +294,7 @@ var Curation = (function() {
             var self = this;
 
             var filterData = JSON.parse(data);
-            
+            //console.log(filterData);
             var arr = filterData.data.split('||');
             if(arr instanceof Array) {
                 arr.forEach(function(item,index) {

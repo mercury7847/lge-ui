@@ -90,16 +90,16 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        //cTypeCount
-                        //'{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
                         '{{#if lastBulletName}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
             '<div class="product-bottom">' +
+                '{{#if bizType != "CARESOLUTION"}}'+
                 '<div class="flag-wrap bar-type">' +
                     '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
+                '{{/if}}'+
                 '{{#if checkPriceFlag}}'+
                     '{{#if bizType == "CARESOLUTION"}}' +
                         '<div class="price-area care">' +
@@ -677,10 +677,6 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
-
-                item.lastBulletName = "";
-                console.log(item.rTypeCount, item.cTypeCount)
-                if((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);
@@ -691,14 +687,35 @@
 
                 if(!item.rtModelSeq) item.rtModelSeq = "";
 
-                var bulletLength = item.bulletFeatures.length;
-                var showLength = bulletLength;
-                if(bulletLength > 4){
-                    showLength = item.cTypeCount > 0 ? 4 : bulletLength;
-                }
+                var bulletLength, showLength;
+                item.lastBulletName = "";
                 item.showBulletFeatures = [];
-                for(var i=0;i<showLength;i++){
-                    item.showBulletFeatures.push(item.bulletFeatures[i]);
+                if(item.bizType == "PRODUCT"){
+                    if(item.bulletFeatures){
+                        bulletLength = item.bulletFeatures.length;
+                        showLength = item.cTypeCount > 0 ? 4 : bulletLength;
+                        if(showLength > bulletLength) showLength = bulletLength;
+                        for(var i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
+                    }
+
+                    if(item.cTypeCount > 0) item.lastBulletName = inputdata.lastBulletName;
+                } else if(item.bizType == "CARESOLUTION"){
+                    if(item.bulletFeatures){
+                        bulletLength = item.bulletFeatures.length;
+                        showLength = bulletLength;
+                        if(showLength > bulletLength) showLength = bulletLength;
+                        for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
+                    }
+                    item.lastBulletName = inputdata.lastBulletName;
+                } else if(item.bizType == "DISPOSABLE"){
+                    if(item.compatibleModels){
+                        item.lastBulletName = inputdata.lastBulletName;
+                        bulletLength = item.compatibleModels.length;
+                        showLength = bulletLength > 5 ? 5 : bulletLength;
+                        for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
+
+                        if(showLength < bulletLength) item.showBulletFeatures.push({specText:"총 " + bulletLength + "개"});
+                    }
                 }
 
                 if(!item.obsBtnRule) item.obsBtnRule = "";
