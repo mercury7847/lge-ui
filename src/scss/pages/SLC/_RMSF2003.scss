@@ -251,6 +251,8 @@ br.pc-only {
         .etc {
             .comb-txt {
                 color:#000;
+                font-size:14px;
+                line-height:26px;
                 span {
                     color:#da0f47;
                 }
@@ -1252,7 +1254,7 @@ br.pc-only {
                     .txt-wrap {
                         .etc {
                             position:relative;
-                            @include font-small;
+                            @include font-medium;
                             font-weight:700;
                             @include mobile {
                                 position:absolute;
