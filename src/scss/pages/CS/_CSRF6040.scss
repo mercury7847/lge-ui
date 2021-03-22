@@ -1092,26 +1092,19 @@
             }
         }
         .location-btn {
-            display:none;
-            @include mobile {
+            display:block;
+            margin:0 0 10px 10px;
+            a {
                 display:block;
-                position:fixed;
-                bottom:72px;
-                left:16px;
-                // width:48px;
-                // height:48px;
-                a {
-                    display:block;
-                    width:48px;
-                    height:48px;
-                    border-radius:24px;
-                    background:url('/lg5-common/images/CS/icon-location-off-mo-64.svg') #fff no-repeat center center;
-                    background-size:32px;
-                    background-color:#fff;
-                    box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
-                    &.on {
-                        background-image:url('/lg5-common/images/CS/icon-location-on-mo-64.svg');
-                    }
+                width:48px;
+                height:48px;
+                border-radius:24px;
+                background:url('/lg5-common/images/CS/icon-location-off-mo-64.svg') #fff no-repeat center center;
+                background-size:32px;
+                background-color:#fff;
+                box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                &:hover {
+                    background-image:url('/lg5-common/images/CS/icon-location-on-mo-64.svg');
                 }
             }
         }
