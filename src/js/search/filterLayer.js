@@ -691,19 +691,21 @@ var FilterLayer = (function() {
                     var isOpen = lgkorUI.stringToBool(item[self.unfoldFlagName]);
                     if(isOpen) {
                         var $findDm = $list_ul.find('li[data-filterId="' + item.filterId + '"]');
-                        var index = $findDm.index();
-                        closeIndex = vcui.array.remove(closeIndex, index);
-                        //var $pa = $findDm.parents('.ui_filter_accordion');
-                        //$pa.vcAccordion('setOption','useAnimate',false);
-                        $pa.vcAccordion('expand',index,false);
-                        //$pa.vcAccordion('setOption','useAnimate',true);
+                        if($findDm.length > 0) {
+                            var index = $findDm.index();
+                            closeIndex = vcui.array.remove(closeIndex, index);
+                            //var $pa = $findDm.parents('.ui_filter_accordion');
+                            //$pa.vcAccordion('setOption','useAnimate',false);
+                            $pa.vcAccordion('expand',index,false);
+                            //$pa.vcAccordion('setOption','useAnimate',true);
+                        }
                     }
                 });
 
                 closeIndex.forEach(function(item, index) {
-                        //$pa.vcAccordion('setOption','useAnimate',false);
-                        $pa.vcAccordion('collapse',item,false);
-                        //$pa.vcAccordion('setOption','useAnimate',true);
+                    //$pa.vcAccordion('setOption','useAnimate',false);
+                    $pa.vcAccordion('collapse',item,false);
+                    //$pa.vcAccordion('setOption','useAnimate',true);
                 });
             }
         }
