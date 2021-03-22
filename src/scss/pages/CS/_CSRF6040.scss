@@ -339,7 +339,7 @@
                 }
                 .list-item {
                     position: relative;
-                    padding-bottom:32px;
+                    // padding-bottom:32px;
                 }
                 .list-item > li {
                     position:relative;
@@ -1064,6 +1064,13 @@
                                 &:first-child {
                                     margin-left:0;
                                 }
+                            }
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                border-color:#000 !important;
+                                background:#fff;
+                                color:#616161;
                             }
                         }
                     }
