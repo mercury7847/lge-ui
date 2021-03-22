@@ -119,7 +119,8 @@
                             }
                         }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
-                        data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        //data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        console.log(data);
                         self.requestSearch(self.makeFilterData(data));
                     });
 
@@ -127,10 +128,13 @@
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim();
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value) && value.length > 1) {
+                    if(!(!value)) {
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         var filterQueryData = self.getListSortingData();
+                        //스마트필터 추가
+                        var smartFilter = lgkorUI.getParameterByName('smartFilter');
+                        filterQueryData.smartFilter = smartFilter;
                         self.requestSearchData(value, force, filterQueryData, true);
                     }
 
@@ -398,8 +402,8 @@
 
                     var filterData  = self.filterLayer.getDataFromFilter();
                     filterData.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
-
-                    filterData.page = data;
+                    var postData = self.makeFilterData(filterData);
+                    postData.page = data;
                     self.requestSearch(filterData);
                 });
 

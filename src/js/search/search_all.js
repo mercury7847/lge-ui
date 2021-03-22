@@ -211,13 +211,21 @@
                     self.updateRecentSearchList();
                     self.bindEvents();
 
-                    //self.curationLayer = new Curation(self.$contentsSearch);
+                    self.curationLayer = new Curation(self.$contentsSearch, function(data, sendData){
+                        var tab = self.getTabItembyCategoryID('product');
+                        if(tab.length > 0) {
+                            var value = self.$contentsSearch.attr('data-search-value');
+                            value = !value ? null : value.trim(); 
+                            var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                            self.sendSearchPage(tab.attr('href'),value,force,data);
+                        }
+                    });
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value) && value.length > 1) {
+                    if(!(!value)) {
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
@@ -302,10 +310,13 @@
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
             },
 
-            sendSearchPage: function(searchUrl, search, force) {
+            sendSearchPage: function(searchUrl, search, force, smartFilter) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
                     var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
+                    if(smartFilter) {
+                        url += ("&smartFilter="+JSON.stringify(smartFilter));
+                    }
                     location.href = url;
                 }
             },
@@ -879,7 +890,7 @@
                     }
 
                     //스마트 필터
-                    //self.curationLayer.setCurationData(data);
+                    self.curationLayer.setCurationData(data);
 
                     //noData 체크
                     if(noData) {

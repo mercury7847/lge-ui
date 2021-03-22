@@ -89,6 +89,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             self.searchType = "local";
             self.itemArr = [];
+            self.infoWindow = null;
 
             self.centerID = 0;
             self.centerMarker;
@@ -118,7 +119,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             var firstLat = lat ? lat : self.latitude;
             var firstLong = long ? long : self.longitude;
-            // var padding = self.options.padding;
 
             var options = {
                 center: new naver.maps.LatLng(firstLat, firstLong),
@@ -128,11 +128,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             if(self.userLatitude && self.userLongitude){
 
-                var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">내위치</span></a>';
+                var locationBtnHtml = '<div class="location-btn"><a href="#"><span class="blind">현재 위치</span></a></div>';
                 naver.maps.Event.once(self.map, 'init_stylemap', function() {
 
                     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-                        position: naver.maps.Position.BOTTOM_LEFT
+                        position: naver.maps.Position.LEFT_BOTTOM
                     });
 
                     customControl.setMap(self.map);
@@ -140,6 +140,21 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         self.map.setCenter(new naver.maps.LatLng(self.userLatitude, self.userLongitude));
                     });
                 });
+
+
+                var myPointMarker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(self.userLatitude, self.userLongitude),
+                    map: self.map,
+                    icon: {
+                         url:'/lg5-common/images/CS/icon-location-my-mo-32.svg'                 
+                    },
+                    size:new naver.maps.Size(32,32),
+                    origin:new naver.maps.Point(0,0),
+                    anchor:new naver.maps.Point(32,32)
+                });
+
+                myPointMarker.setMap(self.map);
+
             }            
 
             self._bindEvent();            
@@ -170,7 +185,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             naver.maps.Event.addListener(self.map, 'dragend', function() {
                 self._updateMarkers();  
 
-            });               
+            });   
+            
         },  
 
 
@@ -304,27 +320,13 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 marker.setIcon(self._getMarkerIcon(obj.info, obj.num));                         
 
                 self.markerIndex++;
-                marker.setZIndex(self.markerIndex);
-
-                var zoom = self.map.getZoom();
-                if(zoom < 12) self.map.setZoom(12);
+                marker.setZIndex(self.markerIndex);                
 
                 var lat = obj.info.gpsInfo.gpsy;
                 var long = obj.info.gpsInfo.gpsx;
 
-
-                var panBounds = new naver.maps.LatLngBounds(
-                    new naver.maps.LatLng(lat, long),
-                    new naver.maps.LatLng(parseFloat(lat) + 0.0000001, long)
-                );
-
-
-                //self.currentLatitude = $('.map-container').data("latitude") || "37.5235644 0.0000001"; // 강남본점 위도
-                //self.currentLongitude = $('.map-container').data("longitude") || "127.0395764 0.0000001"; // 강남본점 경도
-
-                
-                // self.map.panToBounds(panBounds, {duration:350, easing:"easeOutCubic"});
-                self.map.panTo(new naver.maps.LatLng(lat, long), {duration:350, easing:"easeOutCubic"});
+                self.map.setZoom(15);
+                self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.005, long));
 
                 self.triggerHandler('changemarkerstatus', [{id:id}]);
 
@@ -343,7 +345,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     borderWidth: 0,
                     backgroundColor: '#ffffff00',
                     disableAnchor: true,
-                    pixelOffset: {x:0, y:-25}
+                    pixelOffset: new naver.maps.Point(0, -20),
+                    // anchorSize: new naver.maps.Size(30, 300),
                 })
 
                 naver.maps.Event.addListener(marker, 'click', self._clickMarker.bind(self));

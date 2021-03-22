@@ -143,11 +143,15 @@
                         ok: function() {
                             var ajaxUrl = self.$form.data('ajax');
                             var data = validation.getAllValues();
+
+                            lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
                                 if (result.data.resultFlag == 'Y') {
                                     result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
                                     self.$form.submit();
                                 } else {
+                                    lgkorUI.hideLoading();
+
                                     if (result.data.resultMessage) {
                                         lgkorUI.alert('', {
                                             title: result.data.resultMessage,

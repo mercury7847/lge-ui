@@ -213,6 +213,10 @@
             e.preventDefault();
 
             okMempointModify();
+        }).on('change', 'input[name=point-cancel]', function(e){
+            e.preventDefault();
+            
+            $(this).prop('checked', true);
         });
 
         $('#popup-contractIssue').on('click', '.btn-group button.pink', function(e){
@@ -578,12 +582,18 @@
     }
 
     function showMempointModify(){
+        $('.mempoint-btn').prop('disabled', true);
+
+        $('.mempoint-info').find('input[name=point-cancel]').prop('checked', true);
+
         $('.mempoint-info .viewer').hide();
 
         $('.mempoint-info .modify').show();
         $('.mempoint-info .btn-group').show();
     }
     function cancelMempointModify(){
+        $('.mempoint-btn').prop('disabled', false);
+
         $('.mempoint-info .viewer').show();
 
         $('.mempoint-info .modify').hide();
@@ -591,8 +601,6 @@
     }
     //멤버십 포인트 차감동의 저장
     function okMempointModify(){
-        lgkorUI.showLoading();
-
         var sendata = {
             isAgree: $('.mempoint-info').data('isAgree'),
             deductType: $('.mempoint-info').data('deductType'),
@@ -600,6 +608,7 @@
             deductPoint: $('.mempoint-info').data('deductPoint'),
             contractID: $('select[name=contractInfo]').find('option:selected').val()
         }
+        console.log("### okMempointModify ###", sendata.isAgree);
         if(sendata.isAgree){
             var chk = $('.mempoint-info').find('input[name=point-cancel]').prop('checked');
             sendata.isAgree = !chk;
@@ -610,8 +619,10 @@
                 lgkorUI.alert("", {title:"차감 포인트를 선택해 주세요."});
                 return;
             }
+            sendata.isAgree = true;
         }
         console.log("### okMempointModify ###", sendata);
+        lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(MEMPOINT_DEDUCT_URL, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
@@ -642,7 +653,8 @@
             changeFieldValue('actual-info', info);
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
-            if(data.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
+            else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
             changeFieldValue('contract-info', data.contractInfo);
     
             info = {
@@ -678,11 +690,10 @@
             var userpointComma = vcui.number.addComma(userpoint);
             var deductpointComma = vcui.number.addComma(deductpoint);
             if(isAgree){
+                isAgreeText = "동의 ("+data.memberPointInfo.memPointPayLimit+")";
                 if(deductype == "deduct"){
-                    isAgreeText = "동의 ("+deductpointComma+"P차감)";
                     $('.mempoint-info input[value=deduct]').prop('checked', true);
                 } else{
-                    isAgreeText = "동의 (전액 차감)";
                     $('.mempoint-info input[value=all]').prop('checked', true);
                 }
                 $('.mempoint-info .agreeBox').show();

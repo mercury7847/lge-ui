@@ -65,7 +65,8 @@ var Curation = (function() {
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
-                var tempArray = data[filterId];
+                //var tempArray = data[filterId];
+                var tempArray = data['data'];
                 if(!tempArray) {
                     tempArray = [];
                 }
@@ -280,8 +281,16 @@ var Curation = (function() {
 
             var filterData = JSON.parse(data);
             
-            console.log(filterData);
-
+            console.log('reset',filterData);
+            var arr = filterData.data;
+            arr.forEach(function(item,index) {
+                var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                if($input.length > 0) {
+                    $input.prop('checked',true);
+                    self.removeSelectSmartFilterResult(item);
+                }
+            });
+            
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
             }

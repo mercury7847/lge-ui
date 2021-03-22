@@ -85,7 +85,7 @@
                             '<span class="blind">전화번호</span>'+
                             '{{shopTelphone}}'+
                         '</span>'+
-                        '<a href="#{{shopID}}" class="btn-detail">상세보기</a>'+
+                        '<a href="#" data-url="{{detailUrl}}" class="btn-detail">상세보기</a>'+
                     '</div>'+
                 '</div>'+
             '</div>'+
@@ -299,6 +299,11 @@
         _bindEvents: function(){
             var self = this;
 
+            window.infoWindowDetail = function(url){
+                var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
+                void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+            }
+
             self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
                 self._toggleOptContainer();
@@ -312,10 +317,9 @@
             })
             .on('click', 'li > .ui_marker_selector .btn-detail', function(e){
                 e.preventDefault();
+                var url = $(e.currentTarget).data("url");
+                infoWindowDetail(url);
 
-                var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
-                var id = $(this).attr("href").replace("#", "");
-                void(window.open(self.detailUrl+id, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));
             });
 
             self.$searchField.on('focus', function(e){
@@ -338,6 +342,8 @@
                 self._returnSearchMode();
             });
 
+
+            // 리스트 보기/지도보기
             self.$searchContainer.on('click', '.btn-view', function(e){
                 e.preventDefault();
                 self._showMap();
@@ -392,8 +398,7 @@
                 self._setSearch();
             });
 
-            $(window).on('resizeend', function(e){               
-
+            $(window).on('resizeend', function(e){   
                 self._resize();
             });
             self._resize();
@@ -535,7 +540,8 @@
                         item['id'] = item['shopID'];
                         item['info'] = false;
                         item["selected"] = false;
-                        item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
+                        item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID'] +'")' //self.detailUrl+item['shopID'];
+                        //item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
                         return item;
                     });
                     self._dataLoaded();
@@ -759,16 +765,14 @@
         _setOptText:function(){
 
             var self = this;
-            return;
-
             var len = self.$optionContainer.find('input[type=checkbox]:checked').not('input[id=all-chk]').length;
             var html = ''
             if(len>0){
-                html = '옵션 선택(' + len +')<span class="blind">열기</span></span>'
+                html = '옵션 선택(' + len +')'
             }else{
-                html = '옵션 선택' + len +'<span class="blind">열기</span></span>'
+                html = '옵션 선택'
             }
-            self.$optionContainer.find('#opt-label').html(html);
+            self.$optionContainer.find('#opt-label').find('em').html(html);
 
         },
 
@@ -857,10 +861,11 @@
             self._resize();
         },
 
-        _showMap: function(){
+        _showMap: function(flag){
             var self = this;                
             var toggle = self.$searchContainer.find('.btn-view');
-            if(toggle.hasClass('map')){
+
+            if(flag){
 
                 $('.store-map-con').css({
                     'position':'relative',
@@ -872,17 +877,34 @@
                 toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
                 self.$map.resize(self.windowWidth, 400);
 
-            } else{                    
+            }else{
 
-                $('.store-map-con').css({
-                    'position':'absolute',
-                    'visibility':'hidden',
-                    'left':'0',
-                    'height':'0'
-                });
+                if(toggle.hasClass('map')){
 
-                toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                    $('.store-map-con').css({
+                        'position':'relative',
+                        'visibility':'visible',
+                        'left':'0',
+                        'height':'400'
+                    });                   
+        
+                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
+                    self.$map.resize(self.windowWidth, 400);
+    
+                } else{                    
+    
+                    $('.store-map-con').css({
+                        'position':'absolute',
+                        'visibility':'hidden',
+                        'left':'0',
+                        'height':'0'
+                    });
+    
+                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                }
+
             }
+            
         },
 
         _getKeyword: function(){
@@ -1018,6 +1040,9 @@
             }else{
                 if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
                 selectedMarker.siblings().find('.point').removeClass('on');
+
+                console.log(self.isMobile);
+                if(self.isMobile) self._showMap(true);
             }
             
         },
@@ -1051,6 +1076,7 @@
                         shopAdress: arr[i].info.shopAdress,
                         shopTelphone: arr[i].info.shopTelphone,
                         shopID: arr[i].info.shopID,
+                        detailUrl:self.detailUrl+arr[i].info.shopID,
                         selected: arr[i].info.selected ? " on" : ""
                     }
 
@@ -1197,14 +1223,13 @@
                 var container = self.$leftContainer.height();
                 var listTop = self.$defaultListContainer.position().top;
                 var title = $('.store-list-wrap .tit').height();
-                var opt = 80;//$('.store-list-box > .opt-cont').height();
-
-                var ht = container - listTop - title - opt;     
+                var opt = 80; //$('.store-list-box > .opt-cont').height();
+                var ht = container - listTop - title - opt;                   
 
 
                 $scrollWrap.css({
                     'height':ht,
-                    'overflow-y':'scroll'
+                    'overflow-y':'auto'
                 });
             }   
 
@@ -1214,8 +1239,8 @@
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).innerWidth();
-            self.windowHeight = $(window).innerHeight();            
+            self.windowWidth = $(window).width();
+            self.windowHeight = $(window).height();            
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;

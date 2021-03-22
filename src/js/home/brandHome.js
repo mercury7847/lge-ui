@@ -102,9 +102,13 @@
         var stepLens = 0;
         var pageLens = $scenes.length-1;
         var posArr = [];
-        var wheelArr = [];       
-
+        var wheelArr = [];      
         var regex = /^data-step-(-?\d*)/;
+
+        // 웨일 결합처리
+        $('.foot-cont').find('.menu-opener').on('click', function(e){
+            $('html,body').scrollTop(pageLens*winHeight);
+        });
 
 
         $('#fixed-wrap').children().css({'overflow':'hidden'});
