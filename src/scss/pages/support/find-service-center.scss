@@ -135,7 +135,7 @@
                 display: flex;
                 flex-direction: column;
                 height:calc(100vh - 96px);
-                padding-bottom:80px;
+                // padding-bottom:80px;
                 &:after {
                     content:' ';
                     display:block;
@@ -589,6 +589,7 @@
             }
 
             .opt-cont {
+                display: none !important;
                 position:absolute;
                 left:0;
                 right:0;
@@ -1598,7 +1599,8 @@
                     &.open {
                         top:-6px;
                         .opt-layer {
-                            height:calc(100% - 56px - 83px);
+                            //height:calc(100% - 56px - 83px);
+                            height:calc(100% - 83px);
                             box-sizing:border-box;
                             padding-bottom:0;
 
@@ -1647,7 +1649,7 @@
                     height:100vh;
                     transform: none;
                     transition: none;
-                    padding-bottom:56px;
+                    // padding-bottom:56px;
                     box-sizing:border-box;
                 }
                 .sch-box {
@@ -1701,7 +1703,8 @@
 
                 .list-wrap {
                     padding:0 0 0 16px;
-                    height:calc(100vh - 333px - 56px);
+                    //height:calc(100vh - 333px - 56px);
+                    height:calc(100vh - 333px);
 
                     .sch-list {
                         position:relative;
@@ -1714,7 +1717,8 @@
                 .opt-cont {
                     &.open {
                         .opt-layer {
-                            height:calc(100% - 56px - 62px);
+                            //height:calc(100% - 56px - 62px);
+                            height:calc(100% - 62px);
                         }
                     }
                     .btn-sel {
@@ -1745,12 +1749,14 @@
                         }
                     }
                     .list-wrap {
-                        height:calc(100vh - 125px - 56px);
+                        //height:calc(100vh - 125px - 56px);
+                        height:calc(100vh - 125px);
                     }
                 }
                 &.local:not(.active) {
                     .list-wrap {
-                        height:calc(100vh - 385px - 56px);
+                        //height:calc(100vh - 385px - 56px);
+                        height:calc(100vh - 385px);
                     }
                 }
             }
