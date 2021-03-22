@@ -175,6 +175,20 @@
             '</div>'+
         '</li>';
 
+    var addFreeCareShipTempalte = 
+        '<li class="slide-conts ui_carousel_slide freeCareshipBox">'+
+            '<div class="conts-wrap">'+
+                '<div class="prd-care-horizon ui_flexible_box holding-care2">'+
+                    '<div class="ui_flexible_cont">'+
+                        '<div class="box">'+
+                            '<p class="tit">케어십 일시납 확인으로 기존 제품과의<br>결합 할인이 가능합니다.<br>제품을 담아 할인을 받아보세요.</p>'+
+                            '<p class="txt">결합 할인 가능 제품만 해당, 기존계약 문의 1577-4090</p>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</li>';
+
     var putItemPriceTemplate = 
         '<div class="total-info">'+
             '<dl>'+
@@ -823,12 +837,14 @@
 
             if(result.data.isLogin){
                 $('.freeCareshipBox').remove();
-                if(result.data.contract.freeCareShip == "Y"){
+                var freeCareShip = result.data.contract.freeCareShip;
+                if(freeCareShip == "Y" || freeCareShip == "X"){
                     $('.login-empty').hide();
+                    
+                    var template = freeCareShip == "Y" ? freeCareshipTemplate : addFreeCareShipTempalte;
 
-                    var addlist = vcui.template(freeCareshipTemplate);
                     $('.prd-contract-wrap.ui_active_toggle_wrap').show();
-                    $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(addlist);
+                    $('.ui_total_prod .ui_carousel_slider .slide-track').prepend(template);
                 }
                 $('.ui_total_prod .ui_carousel_slider').vcCarousel('reinit');
                 lgkorUI.resetFlexibleBox();
@@ -920,6 +936,7 @@
     }
 
     function setPutItemStatus(){
+        console.log("### setPutItemStatus ###");
         var leng = $putItemContainer.find('.contract-slide').children().length;
         if(leng){
             if($putItemContainer.css('display') == 'none'){
@@ -927,10 +944,18 @@
                 $putItemContainer.css({display:'block', y:height});
                 openPutItemBox();
             } else{
+                console.log("### setPutItemStatus111 ###");
                 if($putItemContainer.hasClass('close')) openPutItemBox();
                 else{
+                    console.log("### setPutItemStatus222 ###");
                     var isOpen = $putItemContainer.find('.ui_active_toggle').data('isOpen');
                     if(isOpen) setMobilePutItemBoxStatus(true, true);
+                    else{
+                        if(window.breakpoint.isMobile){
+                            $putItemContainer.find('.total-info').css({background:'#ffffff'})
+                            $putItemContainer.find('.total-info dl').hide();
+                        }
+                    }
                 }
             }
         } else{
