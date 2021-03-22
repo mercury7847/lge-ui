@@ -119,7 +119,8 @@
                             }
                         }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
-                        data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        //data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        console.log(data);
                         self.requestSearch(self.makeFilterData(data));
                     });
 
@@ -398,8 +399,8 @@
 
                     var filterData  = self.filterLayer.getDataFromFilter();
                     filterData.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
-
-                    filterData.page = data;
+                    var postData = self.makeFilterData(filterData);
+                    postData.page = data;
                     self.requestSearch(filterData);
                 });
 
