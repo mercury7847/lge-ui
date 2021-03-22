@@ -1938,7 +1938,7 @@
         receiptdata.paymentMethod = PAYMENT_DATA.paymentMethodName;
         receiptdata.orderUser = SHIPPING_DATA.maskingName;
 
-        $('#popup-salesReceipt').find('.tb-col table tbody').append(vcui.template(receiptPopInfoTemplate, receiptdata));
+        $('#popup-salesReceipt').find('.tb-col table tbody').empty().append(vcui.template(receiptPopInfoTemplate, receiptdata));
         $('#popup-salesReceipt').vcModal();
     }
     //카드/현금 영수증 팝업...
