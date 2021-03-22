@@ -398,8 +398,7 @@
                 self._setSearch();
             });
 
-            $(window).on('resizeend', function(e){               
-
+            $(window).on('resizeend', function(e){   
                 self._resize();
             });
             self._resize();
@@ -1227,13 +1226,14 @@
                 var listTop = self.$defaultListContainer.position().top;
                 var title = $('.store-list-wrap .tit').height();
                 var opt = 80; //$('.store-list-box > .opt-cont').height();
-
-                var ht = container - listTop - title - opt;     
+                var ht = container - listTop - title - opt;    
+                
+                console.log('easdfasfd');
 
 
                 $scrollWrap.css({
                     'height':ht,
-                    'overflow-y':'scroll'
+                    'overflow-y':'auto'
                 });
             }   
 
@@ -1243,8 +1243,8 @@
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).innerWidth();
-            self.windowHeight = $(window).innerHeight();            
+            self.windowWidth = $(window).width();
+            self.windowHeight = $(window).height();            
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;
