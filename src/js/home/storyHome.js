@@ -303,8 +303,10 @@
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
+                console.log("page:", page);
+                console.log("result.data.recommendTags:", result.data.recommendTags);
                 if(page == 1 && result.data.recommendTags){
-                    var putIdx = result.data.storyList.length < 9 ? result.data.storyList.length : 9; 
+                    var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
                 }

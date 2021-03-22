@@ -211,7 +211,7 @@
                     self.updateRecentSearchList();
                     self.bindEvents();
 
-                    self.curationLayer = new Curation(self.$contentsSearch);
+                    //self.curationLayer = new Curation(self.$contentsSearch);
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
@@ -879,7 +879,7 @@
                     }
 
                     //스마트 필터
-                    self.curationLayer.setCurationData(data);
+                    //self.curationLayer.setCurationData(data);
 
                     //noData 체크
                     if(noData) {

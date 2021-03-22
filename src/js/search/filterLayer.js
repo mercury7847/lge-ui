@@ -1,6 +1,6 @@
 var FilterLayer = (function() {
     //필터 템플릿
-    var filterSliderTemplate = '<li data-filterId="{{filterId}}">' +
+    var filterSliderTemplate = '<li data-filterId="{{filterId}}" class="filter-slider-tag">' +
         '<div class="head">' +
             '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<div class="tit">{{filterGroupName}}</div>' +
@@ -68,14 +68,14 @@ var FilterLayer = (function() {
         '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'
     '</div></li>'
 
-    function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc) {
+    function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc) {
         var self = this;
         self.filterData = null;
         self.resetData = null;
         self.firstLoadTrigger = false;
         self.initLoadEnd = false;
         vcui.require(['ui/rangeSlider', 'ui/accordion'], function () {
-            self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc);
+            self._setting($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc);
             self._bindEvents();
             self.initLoadEnd = true;
             if(self.filterData) {
@@ -92,13 +92,14 @@ var FilterLayer = (function() {
 
     //public
     FilterLayer.prototype = {
-        _setting: function($targetFilter, $categorySelect, $listSorting, $targetFilterButton, filterChangeEventFunc) {
+        _setting: function($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc) {
             var self = this;
             self.filterChangeEventFunc = filterChangeEventFunc;
             self.$layFilter = $targetFilter;
             self.$targetFilterButton = $targetFilterButton;
             self.$listSorting = $listSorting;
             self.$categorySelect = $categorySelect;
+            self.unfoldFlagName = unfoldFlagName;
             
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider();
             self.$layFilter.find('.ui_order_accordion').vcAccordion();
@@ -434,9 +435,13 @@ var FilterLayer = (function() {
                             }
                             break;
                     }
-
-                    if(item.defalutUnfoldFlag == "Y") expands.push(index);
                 });
+
+                //선택된 값으로 항목 열어두기
+                if(self.unfoldFlagName) {
+                    self.openFilterSection(data, self.unfoldFlagName);
+                }
+
                 self._filterBindCustomEvents();
             }
 
@@ -545,11 +550,13 @@ var FilterLayer = (function() {
                         findRange.attr('data-min',(min+""));
                         findRange.attr('data-max',(max+""));
                         findRange.vcRangeSlider('reset',min+','+max);
-                        var index = findRange.parents('li').index();
-                        var $pa = findRange.parents('.ui_filter_accordion');
-                        $pa.vcAccordion('setOption','useAnimate',false);
-                        $pa.vcAccordion('expand',index);
-                        $pa.vcAccordion('setOption','useAnimate',true);
+                        if(!self.unfoldFlagName) {
+                            var index = findRange.parents('li').index();
+                            var $pa = findRange.parents('.ui_filter_accordion');
+                            //$pa.vcAccordion('setOption','useAnimate',false);
+                            $pa.vcAccordion('expand',index,false);
+                            //$pa.vcAccordion('setOption','useAnimate',true);
+                        }
                     } else {
                         //check or radio
                         var item = data[key];
@@ -561,9 +568,9 @@ var FilterLayer = (function() {
                                 /*
                                 var index = findDm.parents('li').index();
                                 var $pa = findDm.parents('.ui_filter_accordion');
-                                $pa.vcAccordion('setOption','useAnimate',false);
-                                $pa.vcAccordion('expand',index);
-                                $pa.vcAccordion('setOption','useAnimate',true);
+                                //$pa.vcAccordion('setOption','useAnimate',false);
+                                $pa.vcAccordion('expand',index,false);
+                                //$pa.vcAccordion('setOption','useAnimate',true);
                                 */
                             }
                         });
@@ -588,9 +595,9 @@ var FilterLayer = (function() {
                     var $findDm = $(findDm);
                     var index = $findDm.parents('li').index();
                     var $pa = $findDm.parents('.ui_filter_accordion');
-                    $pa.vcAccordion('setOption','useAnimate',false);
-                    $pa.vcAccordion('expand',index);
-                    $pa.vcAccordion('setOption','useAnimate',true);
+                    //$pa.vcAccordion('setOption','useAnimate',false);
+                    $pa.vcAccordion('expand',index,false);
+                    //$pa.vcAccordion('setOption','useAnimate',true);
                 });
 
                 self.$layFilter.find('.ui_filter_accordion input[type=checkbox]:checked').each(function(idx,obj){
@@ -656,6 +663,47 @@ var FilterLayer = (function() {
                     } else {
                         input.disabled = true;
                     }
+                });
+            }
+        },
+
+        //선택된 값으로 항목 열기
+        openFilterSection: function(data, unfoldFlagName) {
+            var self = this;
+            var foldFlag = unfoldFlagName || self.unfoldFlagName;
+            var arr = data instanceof Array ? data : [];
+            if(foldFlag && arr.length > 0) {
+                var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
+
+                //열려있지만 체크된 값이 없는 항목 체크
+                var closeIndex = [];
+                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');
+                $li.each(function(idx, findDm) {
+                    var $findDm = $(findDm);
+                    if($findDm.find('input:checked').length < 1) {
+                        var index = $findDm.index();
+                        closeIndex.push(index);
+                    }
+                });
+
+                var $pa =  $list_ul.parents('.ui_filter_accordion');
+                arr.forEach(function(item, index) {
+                    var isOpen = lgkorUI.stringToBool(item[self.unfoldFlagName]);
+                    if(isOpen) {
+                        var $findDm = $list_ul.find('li[data-filterId="' + item.filterId + '"]');
+                        var index = $findDm.index();
+                        closeIndex = vcui.array.remove(closeIndex, index);
+                        //var $pa = $findDm.parents('.ui_filter_accordion');
+                        //$pa.vcAccordion('setOption','useAnimate',false);
+                        $pa.vcAccordion('expand',index,false);
+                        //$pa.vcAccordion('setOption','useAnimate',true);
+                    }
+                });
+
+                closeIndex.forEach(function(item, index) {
+                        //$pa.vcAccordion('setOption','useAnimate',false);
+                        $pa.vcAccordion('collapse',item,false);
+                        //$pa.vcAccordion('setOption','useAnimate',true);
                 });
             }
         }

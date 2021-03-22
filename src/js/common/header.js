@@ -2,6 +2,26 @@
 vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
+    var noneMemPopTemplate = 
+        '<article id="popup-beforeNoneMemOrder" class="popup-wrap small">'+
+            '<header class="pop-header">'+
+                '<h1 class="tit"><span>주문/배송 조회</span></h1>'+
+            '</header>'+
+            '<section class="pop-conts common-pop non-members">'+
+                '<div class="non-members-login">'+
+                    '<p class="hello-msg">주문/배송 조회를 선택하셨습니다.</p>'+
+                    '<p class="hello-desc">회원 주문조회를 하시려면 <em>[회원 로그인]</em>을 선택해주시고, 비회원 주문조회를 하시려면 <em>[비회원 주문조회]</em>를 선택해주세요.</p>'+
+                '</div>'+
+            '</section>'+
+            '<footer class="pop-footer center">'+
+                '<div class="btn-group">'+
+                    '<button type="button" class="btn gray" onclick="location.href=' + "'{{orderurl}}'" + '"><span>비회원 주문조회</span></button>'+
+                    '<button type="button" class="btn pink" onclick="location.href=' + "'{{loginurl}}'" + '"><span>회원 로그인</span></button>'+
+                '</div>'+
+            '</footer>'+
+            '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>'+
+        '</article>';
+
     var Header = core.ui('Header', {
         bindjQuery: true,
         defaults: {
@@ -38,6 +58,22 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             var gotourl = self.$el.data('gotoUrl');
             var cancelurl = self.$el.data('cancelUrl');
+            self.$el.find('.before-login a').each(function(idx, item){
+                var href = $(item).attr('href');
+                var exist = href.indexOf(cancelurl);
+                if(exist > -1){
+                    $(item).on('click', function(e){
+                        e.preventDefault();
+
+                        var popup = $('#popup-beforeNoneMemOrder');
+                        if(!popup.length){
+                            var poptemplate = vcui.template(noneMemPopTemplate, {orderurl: cancelurl, loginurl:gotourl});
+                            $('body').append(poptemplate);
+                        }                        
+                        $('#popup-beforeNoneMemOrder').vcModal();
+                    });
+                }
+            });
         },
 
         _getLoginInfo: function(){
