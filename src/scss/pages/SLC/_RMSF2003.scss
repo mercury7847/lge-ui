@@ -190,15 +190,15 @@ br.pc-only {
             min-height:inherit;
             padding:0;
             @include mobile {
-                left:16px;
-                height:16px;
+                left:32px;
+                height:32px;
             }
         }
         .box {
             position:relative;
             padding-left:88px;
             @include mobile {
-                padding-left:112px;
+                padding-left:80px;
             }
             p {
                 @include font-medium;
@@ -214,16 +214,47 @@ br.pc-only {
                     top:50%;
                     left:0;
                     transform:translateY(-50%);
-                    width:40px;
-                    height:40px;
+                    width:48px;
+                    height:48px;
                     margin-right:2px;
                     background:url('/lg5-common/images/SLC/img-add-product-40.svg') no-repeat;
                     @include mobile {
-                        width:100px;
-                        height:100px;
+                        width:48px;
+                        height:48px;
                         // background:url('/lg5-common/images/icons/icon-01-100.svg') no-repeat;
-                        background-size:100px 100px;
+                        background-size:48px 48px;
                     }
+            }
+        }
+    }
+
+    &.holding-care2 {
+        text-align:center;
+        .ui_flexible_cont {
+            height:100%;
+            .box {
+                display:table-cell;
+                vertical-align:middle;
+                .tit {
+                    font-size:16px;
+                    font-weight:700;
+                    line-height:26px;
+                }
+                .txt {
+                    margin-top:8px;
+                    font-size:14px;
+                    line-height:24px;
+                }
+                @include mobile {
+                    .tit {
+                        font-size:14px;
+                        line-height:22px;
+                    }
+                    .txt {
+                        font-size:13px;
+                        line-height:21px;
+                    }
+                }
             }
         }
     }

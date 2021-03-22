@@ -261,5 +261,10 @@
             }
         }
     }
-    
+    .box-list.event-type {
+		.box-list-inner .lists .list-inner .info .tit {
+			max-height:30px;
+			-webkit-line-clamp:1;
+		}
+	}
 }
