@@ -217,7 +217,7 @@
                             var value = self.$contentsSearch.attr('data-search-value');
                             value = !value ? null : value.trim(); 
                             var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                            self.sendSearchPage(tab.attr('href'),value,force,sendData);
+                            self.sendSearchPage(tab.attr('href'),value,force,data);
                         }
                     });
 
@@ -315,7 +315,7 @@
                     var fi = searchUrl.indexOf('?');
                     var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
                     if(smartFilter) {
-                        url += ("$smart="+smartFilter);
+                        url += ("&smartFilter="+JSON.stringify(smartFilter));
                     }
                     location.href = url;
                 }
