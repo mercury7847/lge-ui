@@ -166,20 +166,30 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
-            background: url(/lg5-common/images/OBJ/main/bg_material.jpg) no-repeat center right -45%;
-            background-color: #f0eeee;
+            background: url(/lg5-common/images/OBJ/main/bg_material.jpg) #f0eeee no-repeat center right -45%;
             background-size: contain;
+            @include mobile {
+                background: url(/lg5-common/images/OBJ/main/bg-index-material.jpg) #f0eeee no-repeat bottom -30% left;
+                background-size: 100%;
+            }
             .textArea {
                 position: absolute;
                 left: 5%;
                 top: 30%;
                 z-index: 9;
+                @include mobile {
+                    left: 15px;
+                    top: 5%;
+                }
                 .txStyle01 {
                     font-size: 56px;
                     font-weight: bold;
                     line-height: 1.21;
                     letter-spacing: -0.5px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .btn.border {
                     margin-top: 25px;
@@ -190,8 +200,16 @@
                 z-index: 9;
                 top: 13.3%;
                 right: 40%;
+                @include mobile {
+                    top: 40%;
+                    right: auto;
+                    left: 5px;
+                }
                 img {
                     box-shadow: 0 24px 40px 0 #00000028;
+                    @include mobile {
+                        width: 135px;
+                    }
                 }
                 .img {
                     float: left;
@@ -216,6 +234,12 @@
                     line-height: 1.2;
                     letter-spacing: -0.74px;
                     color: #fefefe;
+                    @include mobile {
+                        font-size: 60px;
+                        white-space: nowrap;
+                        left: 125px;
+                        z-index: 5;
+                    }
                 }
             }
             .mist {
@@ -223,8 +247,15 @@
                 z-index: 9;
                 bottom: 12%;
                 right: 22%;
+                @include mobile {
+                    top: 50%;
+                    right: -20%;
+                }
                 img {
                     box-shadow: 0 24px 40px 0 #00000028;
+                    @include mobile {
+                        width: 135px;
+                    }
                 }
                 .img {
                     float: left;
@@ -249,6 +280,9 @@
                     line-height: 1.2;
                     letter-spacing: -0.74px;
                     color: #fefefe;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
             .nature {
@@ -256,8 +290,15 @@
                 z-index: 9;
                 top: 26.2%;
                 right: 1%;
+                @include mobile {
+                    top: 72%;
+                    right: 20px;
+                }
                 img {
                     box-shadow: 0 24px 40px 0 #00000028;
+                    @include mobile {
+                        width: 135px;
+                    }
                 }
                 .img {
                     float: left;
@@ -282,6 +323,9 @@
                     line-height: 1.2;
                     letter-spacing: -0.74px;
                     color: #fefefe;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
             .img {
@@ -293,6 +337,15 @@
                 z-index: 8;
                 top: -32px;
                 left: -48px;
+                @include mobile {
+                    top: -15px;
+                    left: -25px;
+                }
+            }
+            .name {
+                @include mobile {
+                    display: none;
+                }
             }
             .txStyle03 {
                 position: absolute;
@@ -303,7 +356,13 @@
                 font-weight: bold;
                 line-height: 1;
                 letter-spacing: -0.69px;
-                color: #101010;
+                color: #222222;
+                @include mobile {
+                    left: 15px;
+                    font-size: 42px;
+                    bottom: auto;
+                    top: 30%;
+                }
             }
         }
         &.mainContent04 {
@@ -317,12 +376,18 @@
                 left: 5%;
                 top: 30%;
                 z-index: 9;
+                @include mobile {
+                    top: 15%
+                }
                 .txStyle01 {
                     font-size: 56px;
                     font-weight: bold;
                     line-height: 1.21;
                     letter-spacing: -0.5px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .btn.border {
                     margin-top: 25px;
@@ -338,29 +403,58 @@
                 font-family: Inter;
                 font-size: 120px;
                 font-weight: bold;
+                @include mobile {
+                    font-size: 42px;
+                    bottom: auto;
+                    top: 45%;
+                }
             }
             .img01 {
                 top: 0px;
                 right: 29%;
                 z-index: 9;
+                @include mobile {
+                    display: none;
+                }
             }
             .img02 {
                 top: 104px;
                 right: 28%;
                 z-index: 7;
                 width: 484px;
+                @include mobile {
+                    display: none;
+                }
             }
             .img03 {
                 top: 372px;
                 right: 2%;
                 z-index: 8;
                 width: 312px;
+                @include mobile {
+                    display: none;
+                }
             }
             .img04 {
                 top: 213px;
                 right: 3%;
                 z-index: 8;
                 width: 586px;
+                @include mobile {
+                    display: none;
+                }
+            }
+            .img05 {
+                display: none;
+                @include mobile {
+                    display: block;
+                    left: 0;
+                    right: 0;
+                    top: 52%;
+                    img {
+                        width: 100%;
+                    }
+                }
             }
             .tx01 {
                 position: absolute;
@@ -375,6 +469,9 @@
                 top: 178px;
                 right: 7%;
                 z-index: 9;
+                @include mobile {
+                    display: none;
+                }
             }
             &>div {
                 position: absolute;
@@ -393,13 +490,20 @@
                 position: absolute;
                 left: 120px;
                 top: 30%;
-                z-index: 999;
+                z-index: 9;
+                @include mobile {
+                    left: 15px;
+                    top: 25%;
+                }
                 .txStyle01 {
                     font-size: 56px;
                     font-weight: bold;
                     line-height: 1.21;
                     letter-spacing: -0.5px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .btn.border {
                     margin-top: 25px;
@@ -408,13 +512,18 @@
             .txStyle03 {
                 position: absolute;
                 left: 120px;
-                bottom: 112px;
+                bottom: 50px;
                 font-family: Inter;
                 font-size: 160px;
                 font-weight: bold;
                 line-height: 1;
                 letter-spacing: -0.69px;
                 color: #222222;
+                @include mobile {
+                    left: 15px;
+                    top: 12%;
+                    font-size: 42px;
+                }
             }
             .g-bx {
                 position: absolute;
@@ -422,15 +531,29 @@
                 margin-top: -307px;
                 &.gallery01 {
                     left: 662px;
+                    @include mobile {
+                        left: 15px;
+                        right: 15px;
+                        margin-top: 0;
+                    }
                     .img {
                         width: 890px;
                         height: 555px;
                         background: url(/lg5-common/images/OBJ/main/bg_brand02.jpg) no-repeat center left;
                         background-size: auto 100%;
+                        @include mobile {
+                            width: 100%;
+                            height: 260px;
+                            background: url(/lg5-common/images/OBJ/main/bg_brand02.jpg) no-repeat center center;
+                            background-size: cover;
+                        }
                     }
                 }
                 &.gallery02 {
                     left: 1672px;
+                    @include mobile {
+                        display: none;
+                    }
                     .img {
                         width: 418px;
                         height: 555px;
@@ -440,6 +563,9 @@
                 }
                 &.gallery03 {
                     left: 2210px;
+                    @include mobile {
+                        display: none;
+                    }
                     .img {
                         width: 890px;
                         height: 555px;
@@ -452,9 +578,61 @@
                     line-height: 1.55;
                     letter-spacing: -0.14px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 14px;
+                    }
                 }
                 p.img {
                     margin-bottom: 25px;
+                    @include mobile {
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        &.mainContent01 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: url(/lg5-common/images/OBJ/main/main_visual_LGobjet.jpg) no-repeat center center;
+            background-size: cover;
+            .textArea {
+                position: absolute;
+                left: 80px;
+                top: 30%;
+                z-index: 999;
+                @include mobile {
+                    left: 50%;
+                    top: 10%;
+                    text-align: center;
+                    transform: translateX(-50%);
+                    white-space: nowrap;
+                }
+                .txStyle04 {
+                    font-size: 64px;
+                    font-weight: bold;
+                    line-height: 1.25;
+                    letter-spacing: -0.58px;
+                    color: #fefefe;
+                    @include mobile {
+                        font-size: 30px;
+                    }
+                }
+                .txStyle02 {
+                    margin-top: 16px;
+                    font-size: 22px;
+                    line-height: 1.55;
+                    letter-spacing: -0.14px;
+                    color: #fefefe;
+                    @include mobile {
+                        font-size: 15px;
+                    }
+                }
+                .btn.border {
+                    border-color: #ffffff !important;
+                    color: #ffffff;
+                    margin-top: 25px;
                 }
             }
         }
@@ -480,6 +658,9 @@
                     letter-spacing: -0.5px;
                     color: #222222;
                     white-space: nowrap;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .btn.border {
                     margin-top: 25px;
@@ -498,6 +679,12 @@
                 letter-spacing: -14.93px;
                 color: #ffffff;
                 transform: translateX(-50%);
+                @include mobile {
+                    top: 33%;
+                    left: 15px;
+                    font-size: 120px;
+                    transform: translateX(0%);
+                }
             }
             .collection-list {
                 position: absolute;
@@ -512,6 +699,10 @@
                     left: 50%;
                     top: 194px;
                     margin-left: -760px;
+                    @include mobile {
+                        margin-left: -180px;
+                        top: 130px;
+                    }
                 }
                 .co02 {
                     display: none;
@@ -519,6 +710,10 @@
                     left: 50%;
                     margin-left: -510px;
                     top: 39px;
+                    @include mobile {
+                        margin-left: 15px;
+                        top: -30px;
+                    }
                 }
                 .co03 {
                     display: none;
@@ -526,6 +721,9 @@
                     top: 0px;
                     left: 50%;
                     margin-left: -300px;
+                    @include mobile {
+                        display: none !important;
+                    }
                 }
                 .co04 {
                     display: none;
@@ -533,6 +731,9 @@
                     top: 2px;
                     left: 50%;
                     margin-left: -65px;
+                    @include mobile {
+                        display: none !important;
+                    }
                 }
                 .co05 {
                     display: none;
@@ -540,6 +741,9 @@
                     top: 1px;
                     left: 50%;
                     margin-left: 110px;
+                    @include mobile {
+                        display: none !important;
+                    }
                 }
                 .co06 {
                     display: none;
@@ -547,6 +751,9 @@
                     top: 14px;
                     left: 50%;
                     margin-left: 290px;
+                    @include mobile {
+                        display: none !important;
+                    }
                 }
                 .co07 {
                     display: none;
@@ -554,6 +761,9 @@
                     top: 207px;
                     left: 50%;
                     margin-left: 700px;
+                    @include mobile {
+                        display: none !important;
+                    }
                 }
                 .fadeInRightN {
                     display: block;
