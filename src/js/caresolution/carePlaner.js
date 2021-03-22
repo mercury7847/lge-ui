@@ -14,17 +14,17 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           <a href="{{modelUrlPath}}">'+
+        '           {{#if moduleType == "" || moduleType == ""}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
-        '           </a>'+
+        '           {{#if moduleType == "" || moduleType == ""}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
-        '           <a href="{{modelUrlPath}}">'+
+        '           {{#if moduleType == "" || moduleType == ""}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
-        '           </a>'+
+        '           {{#if moduleType == "" || moduleType == ""}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
         '       <div class="info-wrap">'+
