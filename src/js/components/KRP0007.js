@@ -147,9 +147,11 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
                 '<a href="#" data-id="{{modelId}}"><span>비교하기</span></a>' +
             '</div>' +
+            '{{/if}}'+
         '</div>' +
     '</li>';
                     
