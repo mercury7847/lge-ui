@@ -106,6 +106,22 @@
             max-width:100%;
             height:auto;
             vertical-align:top;
+            /* 클래스별이미지분기 */
+            &.pc{
+                display:inline-block;
+            }
+            &.mobile{
+                display:none;
+            }
+            @include mobile {
+                &.pc{
+                    display:none;
+                }
+                &.mobile{
+                    display:inline-block;
+                }
+            }
+            /* //클래스별이미지분기 */
         }
     }
     .hero-banner {
