@@ -7874,7 +7874,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     bottom: 0;
     content: '';
     background-image: linear-gradient(0deg, rgba(54, 54, 54, 0.9) 0%, rgba(54, 54, 54, 0) 65%, rgba(54, 54, 54, 0) 100%);
-    z-index: 5;
+    z-index: 1;
 }
 
 .gallery_thumb_wrap .gallery_thumb_body .gallery_thumb_list li a .unit_img img {
@@ -7899,39 +7899,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     display: none;
 }
 
-.gallery_thumb_wrap .gallery_thumb_body .btn_more {
-    position: relative;
-    width: 100%;
-    padding-top: 25px;
-    margin-bottom: 25px;
-    overflow: visible;
-    border-top: 1px solid #d4d4d4;
-    text-align: center;
-}
-
 .gallery_thumb_wrap .gallery_thumb_body.is_over .btn_more {
     display: block;
 }
 
 .gallery_thumb_wrap .gallery_thumb_body.is_active .btn_more {
     display: none;
-}
-
-.gallery_thumb_wrap .gallery_thumb_body .btn_more:before {
-    position: absolute;
-    left: 50%;
-    top: -16px;
-    content: '';
-    width: 32px;
-    height: 32px;
-    margin-left: -16px;
-    background: url("/lg5-common/images/OBJ/gallery/ico_btn_more.png");
-}
-
-.gallery_thumb_wrap .gallery_thumb_body .btn_more span {
-    font-size: 16px;
-    color: #a3a5a5;
-    font-weight: 500;
 }
 
 .mask {

@@ -128,12 +128,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             if(self.userLatitude && self.userLongitude){
 
-                //  48*48
                 var locationBtnHtml = '<div class="location-btn"><a href="#"><span class="blind">현재 위치</span></a></div>';
                 naver.maps.Event.once(self.map, 'init_stylemap', function() {
 
                     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-                        position: naver.maps.Position.BOTTOM_LEFT
+                        position: naver.maps.Position.LEFT_BOTTOM
                     });
 
                     customControl.setMap(self.map);
@@ -147,14 +146,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     position: new naver.maps.LatLng(self.userLatitude, self.userLongitude),
                     map: self.map,
                     icon: {
-                         url:'/lg5-common/images/CS/icon-location-my-mo-32.svg',
-                         size:new naver.maps.Size(16,16),
-                         origin:new naver.maps.Point(0,0),
-                         anchor:new naver.maps.Point(16,16)                       
+                         url:'/lg5-common/images/CS/icon-location-my-mo-32.svg'                 
                     },
-                    // size:new naver.maps.Size(48,48),
-                    // origin:new naver.maps.Point(0,0),
-                    // anchor:new naver.maps.Point(48,48)
+                    size:new naver.maps.Size(32,32),
+                    origin:new naver.maps.Point(0,0),
+                    anchor:new naver.maps.Point(32,32)
                 });
 
                 myPointMarker.setMap(self.map);
