@@ -120,71 +120,76 @@
             display: inline-block;
             min-height: 34px;
             padding: 6px 0 6px 36px;
-            background: url('/lg5-common/images/icons/btn-back-48.svg') no-repeat left 16px center;
+            background: url('/lg5-common/images/icons/btn-arr-32-left.svg') no-repeat left 16px center;
             background-size: 16px;
             vertical-align: top;
             .text {
                 @include font(14px,22px);
             }
         }
-        //.nav-item {
-        //    display: inline-block;
-        //    padding: 11px 0;
-        //    font-weight: 500;
-        //    @include font($font-medium - 1,23px);
-        //}
-        //&.is-depth {
-        //    position: relative;
-        //    .nav-item {
-        //        position: relative;
-        //        &:after {
-        //            position: absolute;
-        //            top: 50%;
-        //            right: -20px;
-        //            width: 16px;
-        //            height: 16px;
-        //            margin-top: -8px;
-        //            background: url('/lg5-common/images/icons/btn-arr-32-black.svg') no-repeat left center;
-        //            background-size: 100% 100%;
-        //            transform: rotate(-90deg);
-        //            transition: all ease 200ms;
-        //            vertical-align: bottom;
-        //            content: '';
-        //        }
-        //        &.on {
-        //            &:after {
-        //                transform: rotate(90deg);
-        //            }
-        //        }
-        //    }
-        //    .nav-category-container {
-        //        position: absolute;
-        //        top: 45px;
-        //        right: -8px;
-        //        left: -8px;
-        //        z-index: 10;
-        //        padding: 0 0 12px;
-        //        background-color: #fff;
-        //        box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
-        //        > ul {
-        //            > li {
-        //                display: block;
-        //                a {
-        //                    display: block;
-        //                    padding: 9px 52px;
-        //                    font-weight: 500;
-        //                    font-size: $font-small;
-        //                    line-height: 22px;
-        //                    color: $color-gray-4;
-        //                    &:focus,
-        //                    &.on {
-        //                        color: $color-default;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        &.is-depth {
+            position: relative;
+            text-align: center;
+            .btn-back {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .nav-item {
+                position: relative;
+                display: inline-block;
+                padding: 5px 0 6px;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 23px;
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    right: -20px;
+                    width: 16px;
+                    height: 16px;
+                    margin-top: -8px;
+                    background: url('/lg5-common/images/icons/btn-arr-32-left.svg') no-repeat left center;
+                    background-size: 100% 100%;
+                    transform: rotate(-90deg);
+                    transition: all ease 200ms;
+                    vertical-align: bottom;
+                    content: '';
+                }
+                &.on {
+                    &:after {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+            .nav-category-container {
+                position: absolute;
+                top: 34px;
+                right: 0;
+                left: 0;
+                z-index: 103;
+                padding: 4px 0 6px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
+                text-align: left;
+                > ul {
+                    > li {
+                        display: block;
+                        a {
+                            display: block;
+                            padding: 12px 16px;
+                            font-size: 15px;
+                            line-height: 23px;
+                            &:focus,
+                            &.on {
+                                background-color: $color-bg;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
