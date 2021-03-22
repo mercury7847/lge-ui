@@ -132,6 +132,9 @@
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         var filterQueryData = self.getListSortingData();
+                        //스마트필터 추가
+                        var smartFilter = lgkorUI.getParameterByName('smartFilter');
+                        filterQueryData.smartFilter = smartFilter;
                         self.requestSearchData(value, force, filterQueryData, true);
                     }
 
