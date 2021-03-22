@@ -91,6 +91,12 @@
                 self.$searchLayer.vcModal();
             });
             */
+
+            self.$searchLayer.off('modalshown').on('modalshown', function(e, data){
+                console.log('modalSHown');
+                self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
+            });
+
             $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
                 self.updateBasicData();
                 self.updateRecentSearchList();
@@ -99,6 +105,7 @@
             //통합검색 닫음
             self.$searchLayer.find('button.btn-close').off('.intergrated').on("click.intergrated", function(e) {
                 clearTimeout(self.searchTimer);
+                self.$searchLayer.off('modalshown')
                 //self.hideAnimation(self.$searchLayer);
                 //console.log('close modal');
                 //self.$searchLayer.vcModal('close');
