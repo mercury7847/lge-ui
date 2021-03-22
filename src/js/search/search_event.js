@@ -94,7 +94,7 @@
                     self.bindEvents();
                     self.savedFilterData = null;
                     
-                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
@@ -115,7 +115,7 @@
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim();
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value) && value.length > 1) {
+                    if(!(!value)) {
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         var filterQueryData = self.getListSortingData();

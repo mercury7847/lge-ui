@@ -301,7 +301,7 @@ gulp.task("jsCompile:objet", () => gulp
 
 // fonts, images
 gulp.task("static", () => {
-    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ"]);
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ", "static:event"]);
 });
 gulp.task("static:data-ajax", () => gulp
     .src("./lg5-common/data-ajax/**")
@@ -330,6 +330,10 @@ gulp.task("static:pcsvc", () => gulp
 gulp.task("static:temp_OBJ", () => gulp
     .src("./lg5-common/temp_OBJ/**")
     .pipe(gulp.dest(dist + sourceFolder + "/temp_OBJ/"))
+);
+gulp.task("static:event", () => gulp
+    .src("./lg5-common/event/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/event/"))
 );
 
 

@@ -215,7 +215,7 @@
                             '<tr>'+
                                 '<th scope="col">제품 금액</th>'+
                                 '<th scope="col">할인 금액 합계</th>'+
-                                '{{#if mempointPrices != "0"}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
+                                '{{#if isMemberShip}} <th scope="col">{{typeName}} 신청 멤버십 포인트</th>{{/if}}'+
                                 '<th scope="col">{{typeName}} 신청 금액</th>'+
                             '</tr>'+
                         '</thead>'+
@@ -223,7 +223,7 @@
                             '<tr>'+
                                 '<td class="originalTotalPrices">{{originalTotalPrices}}원</td>'+
                                 '<td class="discountPrices">{{discountPrices}}원</td>'+
-                                '{{#if mempointPrices != "0"}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
+                                '{{#if isMemberShip}} <td class="mempointPrices">{{mempointPrices}}원</td>{{/if}}'+
                                 '<td><em class="bold black productTotalPrices">{{productTotalPrices}}원</em></td>'+
                             '</tr>'+
                         '</tbody>'+
@@ -330,7 +330,7 @@
         '</dl></li>'+        
         '<li><dl><dt>월 납부 수단</dt><dd>{{transTypeNm}}</dd></dl></li>'+        
         '<li><dl><dt>은행(카드)명</dt><dd>{{transCorpName}}</dd></dl></li>'+        
-        '<li><dl><dt>계좌(카드)번호</dt><dd>{{transAccountNum}}</dd></dl></li>';
+        '<li><dl><dt>계좌(카드)번호</dt><dd>{{maskingTransAccountNum}}</dd></dl></li>';
 
     var receiptHeaderTemplate = 
         '<div class="info-tbl-wrap">'+
@@ -1177,8 +1177,7 @@
                     payment.memberShipPoint = vcui.number.addComma(payment.membershipPoint);
                     payment.totalPrice = vcui.number.addComma(payment.grandTotal);
     
-                    if(payment.discountPrice != "0") payment.discountPrice = "-" + payment.discountPrice;
-                    if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
+                    //if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
                     var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
                     if(prodList.itemStatus == "Ordered" && data.payment.paymentType == "41") payment.receiptUrl = "";
@@ -1237,6 +1236,8 @@
 
                 setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
                 setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
+
+                monthpayment.maskingTransAccountNum = monthpayment.transType == METHOD_BANK ? txtMasking.substr(monthpayment.transAccountNum, 6) : txtMasking.card(monthpayment.transAccountNum);
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
@@ -1710,9 +1711,11 @@
             if(productList[0].contDtlType != "C09"){
                 popup.find('.sect-wrap.cnt01').show();
                 var discountComma = vcui.number.addComma(mempointPrices);
+                var isMemberShip = productList[0].memberShipPoint != "0" ? true : false;
                 var template = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? nonememPriceInfoTemplate : priceInfoTemplate;
                 popup.find('.sect-wrap.cnt01').append(vcui.template(template, {
                     typeName: infoTypeName,
+                    isMemberShip: isMemberShip,
                     originalTotalPrices: vcui.number.addComma(originalTotalPrices),
                     discountPrices: vcui.number.addComma(discountPrices),
                     mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
@@ -1873,9 +1876,10 @@
                     var box = $('.box[data-id=' + dataId + ']');
                     box.find('.orderCancel-btn, .requestOrder-btn').remove();
 
+                    var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
                     for(var idx in matchIds){
                         var block = box.find('.tbody .row').eq(matchIds[idx]);
-                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>취소접수</p>');
+                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
                     }
                 } else reloadOrderInquiry();
             }

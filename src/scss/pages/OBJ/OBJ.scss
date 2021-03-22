@@ -1,6 +1,11 @@
     @charset "UTF-8";
     @import "../../utilities/variables";
     @import "../../utilities/mixins";
+    //오브제 메인
+    .objet-main {
+        @import "OBJ0100";
+    }
+    
     //공간체험
     .space_pc {
         @import "OBJ0301";
@@ -123,6 +128,69 @@
                         }
                     }
                 }
+            }
+        }
+        .tab-contents {
+            padding-top: 0;
+        }
+        .tab-contents {
+            .inner {
+                max-width: (1380px + 80px);
+                margin: 0 auto;
+                padding: 0 40px;
+                @include mobile {
+                    max-width: 100%;
+                    padding: 0 16px;
+                    .gray-box {
+                        margin: 0 -16px;
+                        padding: 40px 16px;
+                    }
+                }
+            }
+            .gray-box {
+                padding: 48px 64px;
+                background-color: $color-bg;
+            }
+        }
+        .image {
+            img {
+                max-width: 100%;
+                @include mobile {
+                    width: 100%;
+                }
+            }
+        }
+        .animate-target {
+            opacity: .3;
+            // transform: translateY(100px);
+            transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+            &.animated {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .content-title {
+            margin: 80px 0 48px;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 52px;
+            text-align: center;
+            @include mobile {
+                margin: 48px 0 32px;
+                font-size: 24px;
+                line-height: 33px;
+            }
+            &+.signature-section {
+                margin-top: 0;
+            }
+        }
+        .btn.border {
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: inherit;
+                background-image: none;
+                color: inherit;
             }
         }
     }

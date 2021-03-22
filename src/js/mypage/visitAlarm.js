@@ -290,11 +290,15 @@
                         return;
                     }
                     //날짜 새로 그리기
+                    var getBasicDate = null;
                     var arr = (data.dayList && data.dayList instanceof Array) ? data.dayList : [];
                     $list.empty();
                     arr.forEach(function(obj, index) {
                         obj.expectedDate = date;
                         obj.listData.forEach(function(item, index) {
+                            if(item.value && !getBasicDate) {
+                                getBasicDate = item.value;
+                            }
                             item.dateString = vcui.date.format(item.value,'yyyy년 M월.d일');
                             item.day = vcui.date.format(item.value,'d');
                             if(!(!item.value) && item.value == date) {
@@ -325,6 +329,9 @@
 
                     //선택 시간 정보 텍스트 수정
                     var selectedData = self.getSelectedVisitDayData();
+                    if(!selectedData.date) {
+                        selectedData.date = getBasicDate;
+                    }
                     self.setVisitDateText(selectedData);
                     
                     self.$timeTableWrap.hide();
@@ -347,6 +354,8 @@
                         self.setVisitQna(data.visitQna);
                         self.setIrregularCheckout(data.irregularCheckout);
                     }
+                    //reloadData
+                    self.reloadData();
                 }); 
                 $('#popupChangeVisitDate').vcModal('close');
             },
@@ -374,7 +383,12 @@
             setVisitDateText: function(selectedData) {
                 var self = this;
                 self.$visitDate.text(vcui.date.format(selectedData.date,'yyyy.MM.dd') + " " + (!selectedData.time?"":selectedData.time));
-                self.$popupChangeVisitDate.find('div.month-wrap span.month').text(vcui.date.format(selectedData.date,'yyyy.MM'));
+                self.setMonthText(selectedData.date);
+            },
+
+            setMonthText: function(date) {
+                var self = this;
+                self.$popupChangeVisitDate.find('div.month-wrap span.month').text(vcui.date.format(date,'yyyy.MM'));
             },
 
             requestEnableVisitTime:function(selectedData) {
@@ -415,6 +429,12 @@
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
                 }); 
+            },
+
+            reloadData:function() {
+                var self = this;
+                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
+                self.requestData(selectValue);
             }
         }
     $(document).ready(function() {

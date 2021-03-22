@@ -171,7 +171,7 @@
         //}
         .tabs {
             > li {
-                margin-left:40px;
+                margin-left:34px;
                 @include mobile {
                     margin-left:20px;
                 }
@@ -179,12 +179,12 @@
                     margin-left:0;
                 }
                 > a {
-                    padding-bottom: 19px;
+                    padding-bottom:12px;
                     font-weight:700;
                     font-size: $font-large;
                     line-height: 28px;
                     @include mobile {
-                        padding-bottom:16px;
+                        padding-bottom:10px;
                         border-width:3px;
                         font-size:($font-large - 1);
                         line-height:25px;
