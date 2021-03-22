@@ -128,7 +128,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             if(self.userLatitude && self.userLongitude){
 
-                var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">내위치</span></a>';
+                //  48*48
+                var locationBtnHtml = '<div class="location-btn"><a href="#"><span class="blind">현재 위치</span></a></div>';
                 naver.maps.Event.once(self.map, 'init_stylemap', function() {
 
                     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
@@ -145,12 +146,12 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 var myPointMarker = new naver.maps.Marker({
                     position: new naver.maps.LatLng(self.userLatitude, self.userLongitude),
                     map: self.map,
-                    // icon: {
-                    //      url:'',
-                    //      size:new naver.maps.Size(48,48),
-                    //      origin:new naver.maps.Point(0,0),
-                    //      anchor:new naver.maps.Point(48,48)                       
-                    // },
+                    icon: {
+                         url:'/lg5-common/images/CS/icon-location-my-mo-32.svg',
+                         size:new naver.maps.Size(16,16),
+                         origin:new naver.maps.Point(0,0),
+                         anchor:new naver.maps.Point(16,16)                       
+                    },
                     // size:new naver.maps.Size(48,48),
                     // origin:new naver.maps.Point(0,0),
                     // anchor:new naver.maps.Point(48,48)

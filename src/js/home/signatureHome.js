@@ -58,6 +58,12 @@ $(function() {
         var regex = /^data-step-(-?\d*)/;
 
 
+        // 웨일 결합처리
+        $('.foot-cont').find('.menu-opener').on('click', function(e){
+            $('html,body').scrollTop(pageLens*winHeight);
+        });
+
+
         $('.signature-hero').children().css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
