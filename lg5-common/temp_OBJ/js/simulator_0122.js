@@ -1,6 +1,7 @@
 if (navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/)) {
-    document.location.href = "/html/OBJ/OBJ0301_mobi.html";
+    document.location.href = "/lg-object-collection/simulatorMobi";
 }
+
 
 
 /**

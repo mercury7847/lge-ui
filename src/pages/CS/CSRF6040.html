@@ -179,7 +179,9 @@
                                 <!-- option -->
                                 <!-- 2021.1.27 input name, id, for 수정-->
                                 <div class="opt-cont"><!-- 열렸을 때 높이값 계산 : [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
-                                    <button type="button" class="btn-sel" id="opt-label"><span>옵션 선택 <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
+                                    <!-- 210322 태그 수정 -->
+                                    <button type="button" class="btn-sel" id="opt-label"><span><em>옵션 선택</em> <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
+                                    <!-- //210322 태그 수정 -->
                                     <div class="opt-layer" aria-labelledby="opt-label">
                                         <div class="scroll-wrap">
                                             <div class="list-item">
@@ -300,6 +302,12 @@
                             @@include('./common/partials/CSRF6040-map.html')
                         </div>
                         <!-- //map -->
+
+                        <!-- 210322 현재위치 모바일 버튼 추가 -->
+                        <div class="location-btn">
+                            <a href="#"><span class="blind">현재 위치</span></a> <!-- 선택 시 on 클래스 추가 -->
+                        </div>
+                        <!-- //210322 현재위치 모바일 버튼 추가 -->
                     </div>
                 </div>
             </div>

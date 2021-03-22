@@ -1,57 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="79px" height="22px" viewBox="0 0 79 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>product</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M8,0 L319,0 C323.418278,-8.11624501e-16 327,3.581722 327,8 L327,640 C327,644.418278 323.418278,648 319,648 L8,648 C3.581722,648 5.41083001e-16,644.418278 0,640 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z" id="path-1"></path>
-        <filter x="-7.3%" y="-3.4%" width="115.9%" height="108.0%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <filter x="-2.0%" y="-13.5%" width="104.1%" height="127.1%" filterUnits="objectBoundingBox" id="filter-3">
-            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-    </defs>
-    <g id="케어플래너" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="RMSF2003_01케솔_4toast" transform="translate(-270.000000, -862.000000)">
-            <rect fill="#FFFFFF" x="0" y="0" width="1920" height="1080"></rect>
-            <g id="02-List" transform="translate(270.000000, 488.000000)">
-                <g id="02-3-List" transform="translate(0.000000, 130.000000)">
-                    <g id="List" transform="translate(0.000000, 42.000000)">
-                        <g id="product">
-                            <g id="BG">
-                                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                            </g>
-                            <g id="img_care_01" transform="translate(44.000000, 16.000000)" fill="#FFFFFF">
-                                <polygon id="Rectangle" points="0 0 240 0 240 240 0 240"></polygon>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-            <g id="@-Floating" transform="translate(0.000000, 718.000000)">
-                <g filter="url(#filter-3)" transform="translate(0.000000, 74.000000)">
-                    <polygon id="BG" fill="#FFFFFF" points="0 2.95014013e-13 1920 2.95014013e-13 1920 288 0 288"></polygon>
-                    <g id="product" transform="translate(270.000000, 70.000000)">
-                        <g>
-                            <rect id="Rectangle" stroke="#DA0F47" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="490" height="176" rx="8"></rect>
-                            <g id="flag">
-                                <path d="M0.5,21.5 L71,21.5 C75.1421356,21.5 78.5,18.1421356 78.5,14 L78.5,0.5 L8,0.5 C3.85786438,0.5 0.5,3.85786438 0.5,8 L0.5,21.5 Z" id="Rectangle" stroke="#DA0F47" fill="#DA0F47"></path>
-                                <text id="결합할인제품" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="12" font-weight="400" line-spacing="12" fill="#FFFFFF">
-                                    <tspan x="6" y="19">결합할인제품</tspan>
-                                </text>
-                            </g>
-                        </g>
-                    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="79" height="22" viewBox="0 0 79 22">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path fill="#DA0F47" d="M8 0h71v14c0 4.418-3.582 8-8 8H0V8c0-4.418 3.582-8 8-8z" transform="translate(-998 -3244) translate(998 3244)"/>
+                    <path fill="#FFF" fill-rule="nonzero" d="M7.188 11.824c2.388-.54 3.984-1.644 4.656-3.3h2.508V9.64H11.7v.96h2.652v.984h1.236V6.088h-1.236v1.476h-2.244c.06-.312.084-.648.084-.996H7.344v.996h3.48c-.168 1.512-1.5 2.7-4.068 3.252l.432 1.008zm8.7 5.004v-.996H9.792v-.996h5.796v-2.808H8.532v.984h5.82v.9H8.556v2.916h7.332zm8.172-8.712V7.12h-2.58V5.992h-1.236V7.12h-2.58v.996h6.396zm2.052 4.296V9.808h1.536v-1.02h-1.536v-2.7h-1.236v6.324h1.236zm-5.256-.072c1.572 0 2.628-.768 2.628-1.92 0-1.14-1.056-1.908-2.628-1.908-1.56 0-2.628.768-2.628 1.908 0 1.152 1.068 1.92 2.628 1.92zm0-.924c-.864 0-1.44-.372-1.44-.996 0-.612.576-.984 1.44-.984s1.452.372 1.452.984c0 .624-.588.996-1.452.996zm5.256 5.376v-3.936h-1.224v.996h-4.476v-.996h-1.224v3.936h6.924zm-1.224-.984h-4.476v-.996h4.476v.996zM35.1 7.936V7h-2.58V5.98h-1.236V7h-2.58v.936H35.1zm2.052 4.068V9.556h1.536v-1.02h-1.536V6.064h-1.236v5.94h1.236zm-5.256-.144c1.596 0 2.628-.672 2.628-1.764 0-1.104-1.032-1.788-2.628-1.788-1.584 0-2.628.684-2.628 1.788 0 1.092 1.044 1.764 2.628 1.764zm0-.888c-.876 0-1.44-.324-1.44-.876 0-.564.564-.888 1.44-.888.888 0 1.452.324 1.452.888 0 .552-.564.876-1.452.876zm5.616 5.856v-.924h-6.12v-.852h5.76v-2.556h-6.996v.912h5.772v.78H30.18v2.64h7.332zM48.66 13.96V6.088h-1.236v7.872h1.236zm-5.844-1.728c1.632 0 2.868-1.14 2.868-2.712 0-1.584-1.236-2.712-2.868-2.712s-2.88 1.128-2.88 2.712c0 1.572 1.248 2.712 2.88 2.712zm0-1.068c-.96 0-1.668-.66-1.668-1.644 0-.996.708-1.644 1.668-1.644.948 0 1.668.648 1.668 1.644 0 .984-.72 1.644-1.668 1.644zm6.156 5.556v-1.008h-6.144v-2.544H41.58v3.552h7.392zm11.04.192V6.076h-1.176v10.836h1.176zm-2.196-.516V6.292h-1.164v3.6h-1.596V10.9h1.596v5.496h1.164zm-6.468-1.572c1.044-.66 1.74-1.824 2.124-3.192.384 1.26 1.056 2.328 2.076 2.928l.72-.9c-1.512-.876-2.208-2.748-2.208-4.596v-.78h1.788v-1.02h-4.896v1.02h1.908v.78c0 1.932-.72 3.888-2.256 4.848l.744.912zm19.296-4.44v-.996H69.18V7.396h1.524V6.4h-8.028v.996h1.536v1.992h-1.476v.996h7.908zm-2.7-.996h-2.496V7.396h2.496v1.992zm2.472 7.404v-3.444H67.32v-1.104h4.284v-.996H61.8v.996h4.284v1.104h-3.108v3.444h7.44zm-1.212-.984H64.2v-1.476h5.004v1.476z" transform="translate(-998 -3244) translate(998 3244)"/>
                 </g>
             </g>
         </g>
