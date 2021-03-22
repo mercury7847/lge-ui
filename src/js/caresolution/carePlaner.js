@@ -944,10 +944,8 @@
                 $putItemContainer.css({display:'block', y:height});
                 openPutItemBox();
             } else{
-                console.log("### setPutItemStatus111 ###");
                 if($putItemContainer.hasClass('close')) openPutItemBox();
                 else{
-                    console.log("### setPutItemStatus222 ###");
                     var isOpen = $putItemContainer.find('.ui_active_toggle').data('isOpen');
                     if(isOpen) setMobilePutItemBoxStatus(true, true);
                     else{
