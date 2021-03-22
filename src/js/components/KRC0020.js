@@ -58,6 +58,8 @@
 				});
 
 				self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', function(e){
+					e.preventDefault();
+
 					var $this = $(this).closest('.ui_carousel_slide');
 					var thisIndex = $this.index();
 					$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
