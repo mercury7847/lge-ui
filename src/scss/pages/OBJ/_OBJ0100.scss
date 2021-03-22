@@ -376,6 +376,9 @@
                 left: 5%;
                 top: 30%;
                 z-index: 9;
+                @include mobile {
+                    top: 15%
+                }
                 .txStyle01 {
                     font-size: 56px;
                     font-weight: bold;
@@ -402,6 +405,8 @@
                 font-weight: bold;
                 @include mobile {
                     font-size: 42px;
+                    bottom: auto;
+                    top: 45%;
                 }
             }
             .img01 {
@@ -443,6 +448,12 @@
                 display: none;
                 @include mobile {
                     display: block;
+                    left: 0;
+                    right: 0;
+                    top: 52%;
+                    img {
+                        width: 100%;
+                    }
                 }
             }
             .tx01 {
@@ -479,13 +490,20 @@
                 position: absolute;
                 left: 120px;
                 top: 30%;
-                z-index: 999;
+                z-index: 9;
+                @include mobile {
+                    left: 15px;
+                    top: 25%;
+                }
                 .txStyle01 {
                     font-size: 56px;
                     font-weight: bold;
                     line-height: 1.21;
                     letter-spacing: -0.5px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .btn.border {
                     margin-top: 25px;
@@ -494,13 +512,18 @@
             .txStyle03 {
                 position: absolute;
                 left: 120px;
-                bottom: 112px;
+                bottom: 50px;
                 font-family: Inter;
                 font-size: 160px;
                 font-weight: bold;
                 line-height: 1;
                 letter-spacing: -0.69px;
                 color: #222222;
+                @include mobile {
+                    left: 15px;
+                    top: 12%;
+                    font-size: 42px;
+                }
             }
             .g-bx {
                 position: absolute;
@@ -508,15 +531,29 @@
                 margin-top: -307px;
                 &.gallery01 {
                     left: 662px;
+                    @include mobile {
+                        left: 15px;
+                        right: 15px;
+                        margin-top: 0;
+                    }
                     .img {
                         width: 890px;
                         height: 555px;
                         background: url(/lg5-common/images/OBJ/main/bg_brand02.jpg) no-repeat center left;
                         background-size: auto 100%;
+                        @include mobile {
+                            width: 100%;
+                            height: 260px;
+                            background: url(/lg5-common/images/OBJ/main/bg_brand02.jpg) no-repeat center center;
+                            background-size: cover;
+                        }
                     }
                 }
                 &.gallery02 {
                     left: 1672px;
+                    @include mobile {
+                        display: none;
+                    }
                     .img {
                         width: 418px;
                         height: 555px;
@@ -526,6 +563,9 @@
                 }
                 &.gallery03 {
                     left: 2210px;
+                    @include mobile {
+                        display: none;
+                    }
                     .img {
                         width: 890px;
                         height: 555px;
@@ -538,9 +578,15 @@
                     line-height: 1.55;
                     letter-spacing: -0.14px;
                     color: #222222;
+                    @include mobile {
+                        font-size: 14px;
+                    }
                 }
                 p.img {
                     margin-bottom: 25px;
+                    @include mobile {
+                        margin-bottom: 15px;
+                    }
                 }
             }
         }
@@ -556,12 +602,22 @@
                 left: 80px;
                 top: 30%;
                 z-index: 999;
+                @include mobile {
+                    left: 50%;
+                    top: 10%;
+                    text-align: center;
+                    transform: translateX(-50%);
+                    white-space: nowrap;
+                }
                 .txStyle04 {
                     font-size: 64px;
                     font-weight: bold;
                     line-height: 1.25;
                     letter-spacing: -0.58px;
                     color: #fefefe;
+                    @include mobile {
+                        font-size: 30px;
+                    }
                 }
                 .txStyle02 {
                     margin-top: 16px;
@@ -569,8 +625,13 @@
                     line-height: 1.55;
                     letter-spacing: -0.14px;
                     color: #fefefe;
+                    @include mobile {
+                        font-size: 15px;
+                    }
                 }
                 .btn.border {
+                    border-color: #ffffff !important;
+                    color: #ffffff;
                     margin-top: 25px;
                 }
             }
