@@ -75,6 +75,9 @@ $(function () {
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
 
+
+        
+
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
@@ -208,6 +211,11 @@ $(function () {
         var $scenes = $('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
+
+        // 웨일 결합처리
+        $('.foot-cont').find('.menu-opener').on('click', function(e){
+            $('html,body').scrollTop(maxLens*winHeight);
+        });
 
         $('.scene').css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});

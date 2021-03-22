@@ -33,6 +33,12 @@
 		}
 		.text-wrap {
 			padding:0 48px;
+			&.side-left-text {
+				padding:0 96px 0 0;
+			}
+			&.side-right-text {
+				padding:0 0 0 96px;
+			}
 			@include mobile {
 				&.side-left-text,
 				&.side-right-text {
