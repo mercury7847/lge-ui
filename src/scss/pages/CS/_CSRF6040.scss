@@ -939,6 +939,10 @@
             bottom:0;
             height:100%;
 
+            .map_copyright {
+                display:none !important;
+            }
+
             .my-location {
                 @include mobile {
                     position:absolute;
