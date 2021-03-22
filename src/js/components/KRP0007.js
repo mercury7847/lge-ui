@@ -702,7 +702,7 @@
                 } else if(item.bizType == "CARESOLUTION"){
                     if(item.bulletFeatures){
                         bulletLength = item.bulletFeatures.length;
-                        showLength = bulletLength;
+                        showLength = bulletLength > 4 ? 4 : bulletLength;
                         if(showLength > bulletLength) showLength = bulletLength;
                         for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
                     }
