@@ -85,7 +85,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             var self = this;
             
             self._setting();
-            self._setOptData();
+            // self._setOptData();
         },
 
         _setting: function(){
@@ -124,7 +124,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
-            self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
+            //self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
             //self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
@@ -320,11 +320,11 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             });
 
-            self.$optionContainer.on('click', '.btn-sel', function(e){
-                e.preventDefault();
+            // self.$optionContainer.on('click', '.btn-sel', function(e){
+            //     e.preventDefault();
 
-                self._toggleOptContainer();
-            });
+            //     self._toggleOptContainer();
+            // });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
@@ -380,21 +380,21 @@ function moveDetail(el, detailUrl, windowHeight) {
             })
 
             // 옵션 설정
-            self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
-                self._optAllChecked();
-            });
-            self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
-                self._optToggleAllChecked();
-            });
-            self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
-                e.preventDefault();
+            // self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
+            //     self._optAllChecked();
+            // });
+            // self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
+            //     self._optToggleAllChecked();
+            // });
+            // self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+            //     e.preventDefault();
 
-                self._setOptINIT();
-            }).on('click', '.btn-group button:last-child', function(e){
-                e.preventDefault();
+            //     self._setOptINIT();
+            // }).on('click', '.btn-group button:last-child', function(e){
+            //     e.preventDefault();
 
-                self._setOptApply();
-            });
+            //     self._setOptApply();
+            // });
 
             // 지역 검색
             self.$citySelect.on('change', function(e){
@@ -586,77 +586,77 @@ function moveDetail(el, detailUrl, windowHeight) {
             }
         },
 
-        _setOptData: function(){
-            var self = this;
+        // _setOptData: function(){
+        //     var self = this;
 
-            self.optionData = {
-                serviceProduct: []
-            }
-            self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
-                if($(item).prop('checked')) self.optionData.serviceProduct.push($(item).val());
-            });
-        },
+        //     self.optionData = {
+        //         serviceProduct: []
+        //     }
+        //     self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
+        //         if($(item).prop('checked')) self.optionData.serviceProduct.push($(item).val());
+        //     });
+        // },
 
-        _setOptINIT: function(){
-            var self = this;
+        // _setOptINIT: function(){
+        //     var self = this;
 
-            self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
-            self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
-            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
-            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
-        },
+        //     self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
+        //     self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
+        //     self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
+        //     self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+        // },
 
-        _setOptApply: function(){
-            var self = this;
+        // _setOptApply: function(){
+        //     var self = this;
 
-            self._setOptData();
-        },
+        //     self._setOptData();
+        // },
 
-        _optToggleAllChecked: function(){
-            var self = this;
+        // _optToggleAllChecked: function(){
+        //     var self = this;
 
-            var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
-            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', chked);
-        },
+        //     var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
+        //     self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', chked);
+        // },
 
-        _optAllChecked: function(){
-            var self = this;
+        // _optAllChecked: function(){
+        //     var self = this;
 
-            var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
-            var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
+        //     var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
+        //     var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
             
-            var chked = total == chktotal ? true : false;
-            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
-        },
+        //     var chked = total == chktotal ? true : false;
+        //     self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
+        // },
 
-        _toggleOptContainer: function(){
-            var self = this;
+        // _toggleOptContainer: function(){
+        //     var self = this;
 
-            if(!self.isTransion){
-                self.isTransion = true;
+        //     if(!self.isTransion){
+        //         self.isTransion = true;
 
-                var optop;
-                var isOpen = self.$optionContainer.hasClass('open');
-                if(isOpen){
-                    optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
-                    self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
-                        self.isTransion = false;
-                        // self.$leftContainer.find('.dim').remove();
-                        self.$optionContainer.removeAttr('style').removeClass('open');
-                    });
-                } else{
-                    optop = self.$optionContainer.position().top;
+        //         var optop;
+        //         var isOpen = self.$optionContainer.hasClass('open');
+        //         if(isOpen){
+        //             optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
+        //             self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
+        //                 self.isTransion = false;
+        //                 // self.$leftContainer.find('.dim').remove();
+        //                 self.$optionContainer.removeAttr('style').removeClass('open');
+        //             });
+        //         } else{
+        //             optop = self.$optionContainer.position().top;
 
-                    self.$optionContainer.addClass('open');
-                    // self.$leftContainer.prepend('<div class="dim"></div>');
-                    self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
-                    if(window.innerWidth < 768) {
-                        $('html,body').scrollTop($('.store-list-wrap').offset().top)
-                    }
+        //             self.$optionContainer.addClass('open');
+        //             // self.$leftContainer.prepend('<div class="dim"></div>');
+        //             self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+        //             if(window.innerWidth < 768) {
+        //                 $('html,body').scrollTop($('.store-list-wrap').offset().top)
+        //             }
                     
-                }
-            }
-        },
+        //         }
+        //     }
+        // },
 
         _toggleLeftContainer: function(){
             var self = this;
@@ -1102,13 +1102,14 @@ function moveDetail(el, detailUrl, windowHeight) {
             var top = $('.container').position().top;
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionContainer.height();
+            // var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
             var paddingtop = parseInt(self.$defaultListContainer.find('.sch-list').css('padding-top'));
             
             var listheight;
             if(self.searchResultMode){
-                listheight = self.windowHeight - resultheight - optheight - paddingtop;
+                // listheight = self.windowHeight - resultheight - optheight - paddingtop;
+                listheight = self.windowHeight - resultheight - paddingtop;
             } else{
                 listheight = self.windowHeight - titheight - scheight - paddingtop;
             }
