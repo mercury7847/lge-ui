@@ -196,6 +196,10 @@
 		}
 		.tabs-contents {
 			.category-list {
+				min-height:112px;
+				@include mobile {
+					min-height:100%;
+				}
 				ul {
 					font-size:0;
 					li {
