@@ -346,7 +346,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                     $doc.off('.selectbox' + self.cid);
                 }
                 self.isShown = isOpen;
-                self.$label.find('.ui-select-button').attr('title', self.attrTitle + (isOpen ? ' 닫기' : ' 열기'));
+                var atitle = self.attrTitle == undefined ? "" : self.attrTitle;
+                self.$label.find('.ui-select-button').attr('title', atitle + (isOpen ? ' 닫기' : ' 열기'));
 
                 self.triggerHandler('selectboxtoggle');
             });

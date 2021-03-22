@@ -339,7 +339,7 @@
                 }
                 .list-item {
                     position: relative;
-                    padding-bottom:32px;
+                    // padding-bottom:32px;
                 }
                 .list-item > li {
                     position:relative;
@@ -642,7 +642,7 @@
                     background:#fff;
                     line-height:1;
                     @include csmobile {
-                        height:76px;
+                        height:56px;
                     }
                     span {
                         display:inline-block;
@@ -939,6 +939,20 @@
             bottom:0;
             height:100%;
 
+            .my-location {
+                @include mobile {
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    z-index:1;
+                    width:16px;
+                    height:16px;
+                    background:url('/lg5-common/images/CS/icon-location-my-mo-32.svg') no-repeat 0 0;
+                    background-size:16px;
+                    transform:translate(-50%, -50%);
+                }
+            }
+
             .point-wrap {
                 display:block;
             }
@@ -1051,6 +1065,13 @@
                                     margin-left:0;
                                 }
                             }
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                border-color:#000 !important;
+                                background:#fff;
+                                color:#616161;
+                            }
                         }
                     }
 
@@ -1066,6 +1087,30 @@
                         transform:translateX(-50%);
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
                         background-size:57px 36px;
+                    }
+                }
+            }
+        }
+        .location-btn {
+            display:none;
+            @include mobile {
+                display:block;
+                position:fixed;
+                bottom:72px;
+                left:16px;
+                // width:48px;
+                // height:48px;
+                a {
+                    display:block;
+                    width:48px;
+                    height:48px;
+                    border-radius:24px;
+                    background:url('/lg5-common/images/CS/icon-location-off-mo-64.svg') #fff no-repeat center center;
+                    background-size:32px;
+                    background-color:#fff;
+                    box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                    &.on {
+                        background-image:url('/lg5-common/images/CS/icon-location-on-mo-64.svg');
                     }
                 }
             }
