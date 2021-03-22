@@ -47,7 +47,7 @@
             var self = this;
             self.$cancelButton.on('click',function(e){
                 //history.back();
-                var url = self.$contWrap.data('returnUrl');
+                var url = self.$contWrap.data('cancelUrl');
                 if(url) {
                     location.href = url;
                 } else {

@@ -217,7 +217,7 @@
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value) && value.length > 1) {
+                    if(!(!value)) {
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
@@ -624,6 +624,7 @@
             requestSearchInput:function(value) {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
+                console.log(ajaxUrl,value);
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
                     self.openSearchInputLayer(false);
                     var data = result.data;
