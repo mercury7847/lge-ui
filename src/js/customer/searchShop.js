@@ -768,7 +768,7 @@
             var len = self.$optionContainer.find('input[type=checkbox]:checked').not('input[id=all-chk]').length;
             var html = ''
             if(len>0){
-                html = '옵션 선택(' + len +')'
+                html = '옵션 선택 (' + len +')'
             }else{
                 html = '옵션 선택'
             }

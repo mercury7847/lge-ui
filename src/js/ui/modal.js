@@ -263,7 +263,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
-            self.$(self.options.dragHandle).attr('tabindex', 0);
+            self.$(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
 
             var removeModalCss = self.$el.data('removeModalCss');
             self.options.removeModalCss = removeModalCss ? removeModalCss : false;
