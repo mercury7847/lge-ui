@@ -31,12 +31,12 @@ var itemTmpl = '{{#each obj in list}}'+
 $(function(){
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
-
+        // 제품 코드 관리 부분
         var requestObj = {
             newProductIds:'0001,0002,0003,0004', 
-            bestProductIds:'0001,0002,0003,0004',
-            newMarryProductIds:'0001,0002,0003,0004',
-            petProductIds:'0001,0002,0003,0004'
+            bestProductIds:'a001,0002,0003,0004',
+            newMarryProductIds:'b001,0002,0003,0004',
+            petProductIds:'c001,0002,0003,0004'
         }
 
         $('.ui_carousel_slider').vcCarousel({
@@ -262,8 +262,23 @@ $(function(){
                 e.preventDefault();
 
                 var url = $(data.relatedTarget).data('ajaxUrl') || careProductUrl;
+
+                var modelIds = '';
+
+                console.log(data.selectedIndex);
+                
+                if(data.selectedIndex == '0'){
+                    modelIds = requestObj.newProductIds.toString();
+                }else if(data.selectedIndex == '1'){
+                    modelIds = requestObj.bestProductIds.toString();
+                }else if(data.selectedIndex == '2'){
+                    modelIds = requestObj.newMarryProductIds.toString();
+                }else if(data.selectedIndex == '3'){
+                    modelIds = requestObj.petProductIds.toString();
+                }
+                
                               
-                lgkorUI.requestAjaxData(url, {}, function(result){
+                lgkorUI.requestAjaxDataFailCheck(url, {modelId : modelIds}, function(result){
                     
                     var html = buildTabProduct(result);
                     $(data.content).find('.ui_carousel_track').empty().append(html);
@@ -313,6 +328,8 @@ $(function(){
 
                     $(data.content).transit({opacity:1});
                     
+                }, function(err){
+                    // console.log(err);
                 });
             }else if(e.type=='tabchange'){
 
