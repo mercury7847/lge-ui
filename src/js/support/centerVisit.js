@@ -1221,14 +1221,15 @@
         },
         updateEngineer: function(data) {
             var self = this,
+                $engineerBox = self.$engineerResult.find('.engineer-profile'),
                 $resultBox = self.$engineerResult.find('.engineer-desc');
 
-            self.$engineerResult.find('.engineer-img img').attr({
+            $engineerBox.find('.engineer-img img').attr({
                 'src': data.image,
                 'alt': data.engineerName
             });                             
-            // $engineerBox.find('.name').html(data.engineerName);
-            // $engineerBox.find('.center').html(data.centerName);
+            $engineerBox.find('.name').html(data.engineerName);
+            $engineerBox.find('.center').html(data.centerName);
 
             // $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
             // $resultBox.find('.name').html(data.engineerName);
