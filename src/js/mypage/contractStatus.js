@@ -690,11 +690,10 @@
             var userpointComma = vcui.number.addComma(userpoint);
             var deductpointComma = vcui.number.addComma(deductpoint);
             if(isAgree){
+                isAgreeText = "동의 ("+data.memberPointInfo.memPointPayLimit+")";
                 if(deductype == "deduct"){
-                    isAgreeText = "동의 ("+deductpointComma+"P차감)";
                     $('.mempoint-info input[value=deduct]').prop('checked', true);
                 } else{
-                    isAgreeText = "동의 (전액 차감)";
                     $('.mempoint-info input[value=all]').prop('checked', true);
                 }
                 $('.mempoint-info .agreeBox').show();
