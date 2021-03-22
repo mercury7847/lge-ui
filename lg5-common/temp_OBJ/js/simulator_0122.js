@@ -2,8 +2,6 @@ if (navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|Net
     document.location.href = "/html/OBJ/OBJ0301_mobi.html";
 }
 
-
-
 /**
  * 2020/09/08
  * author : 박춘기
