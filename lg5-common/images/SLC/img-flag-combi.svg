@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79px" height="22px" viewBox="0 0 79 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>product</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,0 L319,0 C323.418278,-8.11624501e-16 327,3.581722 327,8 L327,640 C327,644.418278 323.418278,648 319,648 L8,648 C3.581722,648 5.41083001e-16,644.418278 0,640 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z" id="path-1"></path>
+        <filter x="-7.3%" y="-3.4%" width="115.9%" height="108.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-2.0%" y="-13.5%" width="104.1%" height="127.1%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="2" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="케어플래너" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="RMSF2003_01케솔_4toast" transform="translate(-270.000000, -862.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="1920" height="1080"></rect>
+            <g id="02-List" transform="translate(270.000000, 488.000000)">
+                <g id="02-3-List" transform="translate(0.000000, 130.000000)">
+                    <g id="List" transform="translate(0.000000, 42.000000)">
+                        <g id="product">
+                            <g id="BG">
+                                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            </g>
+                            <g id="img_care_01" transform="translate(44.000000, 16.000000)" fill="#FFFFFF">
+                                <polygon id="Rectangle" points="0 0 240 0 240 240 0 240"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="@-Floating" transform="translate(0.000000, 718.000000)">
+                <g filter="url(#filter-3)" transform="translate(0.000000, 74.000000)">
+                    <polygon id="BG" fill="#FFFFFF" points="0 2.95014013e-13 1920 2.95014013e-13 1920 288 0 288"></polygon>
+                    <g id="product" transform="translate(270.000000, 70.000000)">
+                        <g>
+                            <rect id="Rectangle" stroke="#DA0F47" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="490" height="176" rx="8"></rect>
+                            <g id="flag">
+                                <path d="M0.5,21.5 L71,21.5 C75.1421356,21.5 78.5,18.1421356 78.5,14 L78.5,0.5 L8,0.5 C3.85786438,0.5 0.5,3.85786438 0.5,8 L0.5,21.5 Z" id="Rectangle" stroke="#DA0F47" fill="#DA0F47"></path>
+                                <text id="결합할인제품" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="12" font-weight="400" line-spacing="12" fill="#FFFFFF">
+                                    <tspan x="6" y="19">결합할인제품</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
