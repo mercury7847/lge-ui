@@ -1,0 +1,30 @@
+{
+    "status":"success",
+    "message":"",
+    "data": {
+        "success": "Y",
+        "data" : [
+            {   
+                "categoryId" : "id-01",
+                "title" : "TV", 
+                "linkPath" : "https://wwwstg.lge.co.kr/tvs", 
+                "iconPath" : "/lg5-common/images/PRS/icon-tv-64.svg", 
+                "iconAlt" : "TV"
+            },
+            {   
+                "categoryId" : "id-02",
+                "title" : "프로젝터", 
+                "linkPath" : "https://wwwstg.lge.co.kr/projectors", 
+                "iconPath" : "/lg5-common/images/PRS/icon-proejctor-64.svg", 
+                "iconAlt" : "프로젝터"
+            },
+            {   
+                "categoryId" : "id-03",
+                "title" : "AV", 
+                "linkPath" : "https://wwwstg.lge.co.kr/home-audio", 
+                "iconPath" : "/lg5-common/images/PRS/icon-av-64.svg", 
+                "iconAlt" : "AV"
+            }
+        ]            
+    }
+}
