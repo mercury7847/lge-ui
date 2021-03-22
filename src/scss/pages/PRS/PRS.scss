@@ -246,12 +246,12 @@
 					}
 				}
 			}
-			&#category1 .slide-wrap {
-				padding-bottom:0;
-				@include mobile {
-					padding-bottom:24px;
-				}
-			}
+			// &#category1 .slide-wrap {
+			// 	padding-bottom:0;
+			// 	@include mobile {
+			// 		padding-bottom:24px;
+			// 	}
+			// }
 		}
 		.tit-wrap {
 			margin-bottom:48px;
@@ -341,7 +341,7 @@
 			}
 		}
 		.slide-wrap {
-			padding-bottom:60px;
+			// padding-bottom:60px;
 			@include mobile {
 				padding-bottom:24px;
 			}
