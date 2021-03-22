@@ -624,7 +624,6 @@
             requestSearchInput:function(value) {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                console.log(ajaxUrl,value);
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
                     self.openSearchInputLayer(false);
                     var data = result.data;

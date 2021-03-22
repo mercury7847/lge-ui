@@ -354,6 +354,8 @@
                         self.setVisitQna(data.visitQna);
                         self.setIrregularCheckout(data.irregularCheckout);
                     }
+                    //reloadData
+                    self.reloadData();
                 }); 
                 $('#popupChangeVisitDate').vcModal('close');
             },
@@ -427,6 +429,12 @@
                     var selectedData = self.getSelectedVisitDayData();
                     self.setVisitDateText(selectedData);
                 }); 
+            },
+
+            reloadData:function() {
+                var self = this;
+                var selectValue = self.$selectContract.vcSelectbox('selectedOption').value;
+                self.requestData(selectValue);
             }
         }
     $(document).ready(function() {
