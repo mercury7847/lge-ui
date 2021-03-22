@@ -90,7 +90,9 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        '{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        //cTypeCount
+                        //'{{#if cTypeCount > 0}}<li>{{lastBulletName}}</li>{{/if}}'+
+                        '{{#if lastBulletName}}<li>{{lastBulletName}}</li>{{/if}}'+
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -182,7 +184,7 @@
                 self.setCompares();
 
                 vcui.require(['search/filterLayer.min'], function () {
-                    self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, function (data) {
+                    self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, "defalutUnfoldFlag", function (data) {
                         lgkorUI.setStorage(storageName, data, true);
     
                         var param = {};
@@ -509,6 +511,10 @@
                         self.setPageData({page:0, totalCount:0});
                     }
 
+                    //전달된 필터 기본값으로 열기
+                    if(data.filterList) {
+                        self.filterLayer.openFilterSection(data.filterList, "defalutUnfoldFlag");
+                    }
                     //2021-03-16 필터 활성/비활성 기능. 서버에서 enableList가 제대로 안들어옴 수정후 사용할것
                     if(data.filterEnableList) {
                         self.filterLayer.enableFilterList(data.filterEnableList);
@@ -671,7 +677,10 @@
                 item.newProductBadgeName = inputdata.newProductBadgeName;
                 item.bestBadgeName = inputdata.bestBadgeName;
                 item.cashbackBadgeName = inputdata.cashbackBadgeName;
-                item.lastBulletName = inputdata.lastBulletName;
+
+                item.lastBulletName = "";
+                console.log(item.rTypeCount, item.cTypeCount)
+                if((!item.rTypeCount && item.rTypeCount != "") || (!item.cTypeCount && item.cTypeCount != "")) item.lastBulletName = inputdata.lastBulletName;
                 
                 //장바구니
                 item.wishListFlag = lgkorUI.stringToBool(item.wishListFlag);

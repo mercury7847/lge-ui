@@ -64,6 +64,12 @@ br.pc-only {
         @include mobile {
             padding-left:12px;
         }
+        .flag-wrap {
+            .flag {
+                color:#666;
+                font-weight:500;
+            }
+        }
         .tit-info {
             height:76px;
             margin-top:4px;
@@ -85,7 +91,7 @@ br.pc-only {
                 }
             }
             .code {
-                color:#767676;
+                color:#000;
                 @include font-small;
                 font-weight:500;
                 overflow:hidden;
@@ -223,20 +229,31 @@ br.pc-only {
     }
 
     &.comb-type {
-        border-color:#ec455a;
+        border-color:#da0f47;
         &:before {
-            content:'';
+            content:'결합할인제품';
             display:block;
             position:absolute;
             top:-2px;
             left:-2px;
-            width:24px;
-            height:24px;
-            background:url('/lg5-common/images/icons/icon-more-pk2-20.svg') no-repeat;
+            width:79px;
+            height:22px;
+            background:url('/lg5-common/images/SLC/img-flag-combi.svg') no-repeat;
+            background-size:79px 22px;
+            font-size:0;
+            @include mobile {
+                left:-4px;
+                width:72px;
+                height:19px;
+                background-size:72px 19px;
+            }
         }
         .etc {
             .comb-txt {
-                color:#EC455A;
+                color:#000;
+                span {
+                    color:#da0f47;
+                }
             }
         }
     }
@@ -766,7 +783,7 @@ br.pc-only {
                 font-weight:700;
                 vertical-align:middle;
                 strong {
-                    color:#ec455a;
+                    color:#da0f47;
                 }
                 @include mobile {
                     float:right;
@@ -833,9 +850,9 @@ br.pc-only {
     }
 
     .care-solution-wrap {
-        padding-top:80px;
+        padding-top:64px;
         @include mobile {
-            padding-top:40px;
+            padding-top:32px;
         }
         .fixed-tab-wrap {
             background:#fff;
@@ -852,10 +869,10 @@ br.pc-only {
                     text-align:left;
                     &.new-type,
                     &.border-type {
-                        margin-bottom:32px;
-                        @include mobile {
-                            margin-bottom:0;
-                        }
+                        // margin-bottom:16px;
+                        // @include mobile {
+                        //     margin-bottom:0;
+                        // }
                     }
                     .tabs {
                         @include mobile {
@@ -864,9 +881,9 @@ br.pc-only {
                                 width:50%;
                                 margin-left:0;
                                 text-align:center;
-                                a {
-                                    padding-top:16px;
-                                }
+                                // a {
+                                //     padding-top:16px;
+                                // }
                             }
                         }
                     }
@@ -874,20 +891,21 @@ br.pc-only {
                 .cate-scroll-wrap {
                     position:relative;
                     .tabs {
+                        padding:16px 0;
                         white-space:nowrap;
                         font-size:0;
                         @include mobile {
-                            padding:24px 0;
+                            padding:20px 0 30px;
                         }
                         > li {
                             position:relative;
                             display:inline-block;
                             vertical-align:middle;
-                            margin-left:16px;
-                            padding-left:16px;
+                            margin-left:12px;
+                            padding-left:12px;
                             @include mobile {
-                                margin-left:8px;
-                                padding-left:8px
+                                margin-left:6px;
+                                padding-left:6px
                             }
                             &:before {
                                 content:'';
@@ -896,9 +914,9 @@ br.pc-only {
                                 top:50%;
                                 left:0;
                                 width:1px;
-                                height:12px;
-                                margin-top:-6px;
-                                background:#d8d8d8;
+                                height:10px;
+                                margin-top:-5px;
+                                background:#ddd;
                             }
                             &:first-child {
                                 margin-left:0;
@@ -976,10 +994,10 @@ br.pc-only {
                 }
             }
             &.tab-fix {
-                padding-bottom:28px;
+                padding:32px 0 8px;
                 box-shadow:0 2px 20px 0 rgba(0, 0, 0, 0.2);
                 @include mobile {
-                    padding:0;
+                    padding:16px 0 4px;
                     box-shadow:0 1px 10px 0 rgba(0, 0, 0, 0.2);
                 }
                 .inner {
@@ -996,7 +1014,7 @@ br.pc-only {
                     .tabs-wrap.new-type,
                     .tabs-wrap.border-type {
                         max-width:1380px + 80px;
-                        margin:0 auto 32px;
+                        margin:0 auto;
                         padding:0 40px;
                         @include mobile {
                             padding:0;
@@ -1042,7 +1060,7 @@ br.pc-only {
         .care-top-wrap {
             @include clearfix;
             max-width:1380px + 80px;
-            margin:28px auto 16px;
+            margin:32px auto 16px;
             padding:0 40px;
             @include mobile {
                 margin-top:10px;
@@ -1134,7 +1152,7 @@ br.pc-only {
                 background:url('/lg5-common/images/icons/icon-12-80.svg') no-repeat;
             }
             strong {
-                color:#ec455a;
+                color:#da0f47;
             }
         }
         @include mobile {
@@ -1184,7 +1202,7 @@ br.pc-only {
                     font-weight:700;
                     vertical-align:middle;
                     strong {
-                        color:#ec455a;
+                        color:#da0f47;
                     }
                     @include mobile {
                         float:right;
@@ -1233,7 +1251,8 @@ br.pc-only {
                     border:1px solid #ddd;
                     .txt-wrap {
                         .etc {
-                            @include font-large;
+                            position:relative;
+                            @include font-small;
                             font-weight:700;
                             @include mobile {
                                 position:absolute;
@@ -1251,7 +1270,7 @@ br.pc-only {
                         }
                     }
                     &.comb-type {
-                        border:2px solid #ec455a;
+                        border:2px solid #da0f47;
                     }
                     
                     &.empty {

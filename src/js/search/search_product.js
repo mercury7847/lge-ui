@@ -86,7 +86,7 @@
             '{{/each}}'+
         '</ul>';
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         var search = {
             init: function() {
                 var self = this;
@@ -94,9 +94,18 @@
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
-                    self.savedFilterData = null;
+
+                    self.savedSmartFilterData = null;
+                    self.curationLayer = new Curation(self.$contentsSearch, function(data, sendData){
+                        self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
+
+                        var filterData  = self.filterLayer.getDataFromFilter();
+                        filterData.smartFilter = sendData;
+                        self.requestSearch(self.makeFilterData(filterData));
+                    });
                     
-                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, function (data) {
+                    self.savedFilterData = null;
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
@@ -110,6 +119,7 @@
                             }
                         }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
+                        data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
                         self.requestSearch(self.makeFilterData(data));
                     });
 
@@ -384,9 +394,13 @@
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
-                    postData.page = data;
-                    self.requestSearch(postData);
+                    //var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
+
+                    var filterData  = self.filterLayer.getDataFromFilter();
+                    filterData.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+
+                    filterData.page = data;
+                    self.requestSearch(filterData);
                 });
 
                 //검색 이동 로그 쌓기
@@ -712,6 +726,13 @@
                     if(data.serviceLinkers && data.serviceLinkers.length){
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
+                    }
+
+                    //스마트 필터
+                    self.curationLayer.setCurationData(data);
+                    if(!vcui.isEmpty(filterQueryData.smartFilter)) {
+                        //스마트필터가 이미 존재하였다
+                        self.curationLayer.resetFilter(filterQueryData.smartFilter);
                     }
 
                     //noData 체크

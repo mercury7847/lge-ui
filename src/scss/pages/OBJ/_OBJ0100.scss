@@ -1,0 +1,308 @@
+.brand-hero {
+    .content {
+        >div {
+            opacity: 0;
+        }
+    }
+    /* // 2021.03.03 추가 */
+    .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        &.blur {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+    [class*="scene"] {
+        position: relative;
+        //position: fixed;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        .dimmed {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background-color: rgba($color-default, .6);
+        }
+        .count {
+            position: absolute;
+            // right: 120px;
+            // bottom: 24px;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 68px;
+            z-index: 2;
+            font-weight: 700;
+            @include font($font-small, 24px);
+            color: $color-white;
+            opacity: .5;
+            @include mobile {
+                bottom: 36px;
+                @include font($font-x-small, 20px);
+                opacity: .7;
+            }
+        }
+        .next-arr {
+            display: block;
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            z-index: 2;
+            transform: translateX(-50%);
+            .arr {
+                display: block;
+                width: 32px;
+                height: 32px;
+                background: url('/lg5-common/images/MA/icon-arr-32x32.svg') no-repeat 0 0;
+                animation: arr 1s infinite;
+            }
+            @include mobile {
+                width: 100%;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 5px 0;
+                //background-color: rgba(#000, .4);
+                transform: none;
+                .arr {
+                    width: 100%;
+                    background-size: 24px;
+                    background-position-x: center;
+                }
+            }
+        }
+        @keyframes arr {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.objet-hero {
+    [class*="scene"] {
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 82px;
+        color: $color-white;
+        text-align: center;
+        .btn-group {
+            margin-top: 36px;
+            .btn.border {
+                border-color: $color-white !important;
+                background-image: none;
+                color: $color-white;
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary !important;
+                }
+            }
+        }
+        @include mobile {
+            font-size: 34px;
+            line-height: 44px;
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                margin-top: 24px;
+                .btn.border {
+                    width: auto;
+                    margin: 8px auto 0;
+                }
+            }
+        }
+        .content {
+            [class*="cont"] {
+                position: absolute;
+                right: 0;
+                left: 0;
+                transform: translateY(-50%);
+                z-index: 2;
+                text-align: center;
+                &[class*="1"] {
+                    top: 50%;
+                }
+                &[class*="2"] {
+                    top: 50%;
+                    @include mobile {
+                        p:nth-child(2) {
+                            margin-top: 24px;
+                        }
+                    }
+                }
+                &[class*="3"] {
+                    top: 50%;
+                }
+            }
+        }
+    }
+}
+
+.brand-wrap {
+    .objetcollection-tabs {
+        background-color: $color-bg-wt;
+        .tabs-wrap {
+            max-width: 1380px + 80px;
+            margin: 0 auto;
+            padding-top: 40px;
+            text-align: left;
+            @include mobile {
+                padding-top: 32px;
+            }
+            &:before {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 1px;
+                background: $color-border;
+                content: '';
+            }
+            @include pc {
+                padding-right: 40px;
+                padding-left: 40px;
+            }
+            @media screen and (min-width:(1380px + 80px)) {
+                &:before {
+                    right: 40px;
+                    left: 40px;
+                }
+            }
+            .tabs {
+                @include mobile {
+                    padding: 0 16px;
+                }
+                >li {
+                    margin-left: 36px;
+                    @include mobile {
+                        margin-left: 20px;
+                    }
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    >a {
+                        padding: 0 0 19px;
+                        @include font-large;
+                        @include mobile {
+                            padding-bottom: 15px;
+                        }
+                    }
+                    &.on {
+                        >a:after {
+                            position: absolute;
+                            left: 0;
+                            bottom: -2px;
+                            width: 100%;
+                            height: 5px;
+                            border-radius: 5px 5px 0 0;
+                            background-color: $color-default;
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.on {
+        &.active {
+            .signature-tabs,
+            .thinq-tabs {
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 15;
+                //@at-root .mac & {
+                //    right: 0;
+                //}
+                &~.tab-contents {
+                    padding-top: 91px;
+                    @include mobile {
+                        padding-top: 74px;
+                    }
+                }
+            }
+        }
+    }
+    .tab-contents {
+        padding-top: 0;
+    }
+    .tab-contents {
+        .inner {
+            max-width: (1380px + 80px);
+            margin: 0 auto;
+            padding: 0 40px;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
+                .gray-box {
+                    margin: 0 -16px;
+                    padding: 40px 16px;
+                }
+            }
+        }
+        .gray-box {
+            padding: 48px 64px;
+            background-color: $color-bg;
+        }
+    }
+    .image {
+        img {
+            max-width: 100%;
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+    .animate-target {
+        opacity: .3;
+        // transform: translateY(100px);
+        transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+        &.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .content-title {
+        margin: 80px 0 48px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 52px;
+        text-align: center;
+        @include mobile {
+            margin: 48px 0 32px;
+            font-size: 24px;
+            line-height: 33px;
+        }
+        &+.signature-section {
+            margin-top: 0;
+        }
+    }
+    .btn.border {
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: inherit;
+            background-image: none;
+            color: inherit;
+        }
+    }
+}
