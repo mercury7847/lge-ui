@@ -110,7 +110,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
             
             if (self.active.$el[0] !== e.target && !$.contains(self.active.$el[0], e.target)) {
-                self.active.$el.find(':visible:focusable').first().focus();
+                self.active.$el.find(':visible:focusable').first().focus();     
                 e.stopPropagation();
             }
         },
@@ -263,6 +263,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
+            self.$(self.options.dragHandle).attr('tabindex', 0);
 
             var removeModalCss = self.$el.data('removeModalCss');
             self.options.removeModalCss = removeModalCss ? removeModalCss : false;

@@ -765,16 +765,14 @@
         _setOptText:function(){
 
             var self = this;
-            return;
-
             var len = self.$optionContainer.find('input[type=checkbox]:checked').not('input[id=all-chk]').length;
             var html = ''
             if(len>0){
-                html = '옵션 선택(' + len +')<span class="blind">열기</span></span>'
+                html = '옵션 선택(' + len +')'
             }else{
-                html = '옵션 선택' + len +'<span class="blind">열기</span></span>'
+                html = '옵션 선택'
             }
-            self.$optionContainer.find('#opt-label').html(html);
+            self.$optionContainer.find('#opt-label').find('em').html(html);
 
         },
 
@@ -1226,9 +1224,7 @@
                 var listTop = self.$defaultListContainer.position().top;
                 var title = $('.store-list-wrap .tit').height();
                 var opt = 80; //$('.store-list-box > .opt-cont').height();
-                var ht = container - listTop - title - opt;    
-                
-                console.log('easdfasfd');
+                var ht = container - listTop - title - opt;                   
 
 
                 $scrollWrap.css({
