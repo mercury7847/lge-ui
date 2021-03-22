@@ -281,8 +281,16 @@ var Curation = (function() {
 
             var filterData = JSON.parse(data);
             
-            console.log(filterData);
-
+            console.log('reset',filterData);
+            var arr = filterData.data;
+            arr.forEach(function(item,index) {
+                var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                if($input.length > 0) {
+                    $input.prop('checked',true);
+                    self.removeSelectSmartFilterResult(item);
+                }
+            });
+            
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
             }
