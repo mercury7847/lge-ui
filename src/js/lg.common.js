@@ -1242,9 +1242,9 @@ var isApp = function(){
             self.requestAjaxData(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout);
         },
 
-        requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck) {
+        requestAjaxDataPost: function(url, data, callback, ignoreCommonSuccessCheck, ignoreCommonLoadingHide) {
             var self = this;
-            self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck);
+            self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck, null, ignoreCommonLoadingHide);
         },
 
         requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
@@ -1294,6 +1294,7 @@ var isApp = function(){
         },
 
         requestCartCount: function(ajaxUrl) {
+
             lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success)) {
@@ -1310,7 +1311,7 @@ var isApp = function(){
                         utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                     }
                 }
-            }, true);
+            }, true, true);
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
