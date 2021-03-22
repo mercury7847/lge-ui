@@ -1,13 +1,14 @@
 
-var categoryTabTmpl = '{{#each item in list}}\n'+
+var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
-'       <a href="#{{item.categoryId}}">{{item.categoryName}}</a>\n'+
+'       <a href="#{{obj.categoryId}}">{{obj.categoryName}}</a>\n'+
 '   </li>\n'+
 '{{/each}}';
 
-var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
+
+var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   <div class="tabs-contents" id="{{obj.categoryId}}">\n'+
-    '   <div class="slide-wrap category-list-slide">\n'+
+    '   <div class="slide-wrap category-list-slide ui_category_carousel">\n'+
     '        <div class="indi-wrap">\n'+
     '            <ul class="indi-conts ui_carousel_dots" style="display:none;">\n'+
     '                <li><button type="button" class="btn-indi"><span class="blind">{{obj.dotLabel}}</span></button></li>\n'+
@@ -15,15 +16,7 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '        </div>\n'+
     '        <div class="category-list">\n'+
     '            <div class="slide-content ui_carousel_list">\n'+
-    '                <ul class="slide-track ui_carousel_track">\n'+
-    '                   {{#each item in obj.categoryList}}\n'+
-    '                       <li class="slide-conts ui_carousel_slide">\n'+
-    '                           <a href="{{item.linkPath}}" class="slide-box">\n'+
-    '                               <i><img src="{{item.iconPath}}" alt={{item.iconAlt}}"></i>\n'+
-    '                               <span class="txt">{{item.title}}</span>\n'+
-    '                           </a>\n'+
-    '                       </li>\n'+
-    '                   {{/each}}\n'+
+    '                <ul class="slide-track ui_carousel_track">\n'+                  
     '                </ul>\n'+
     '            </div>\n'+
     '        </div>\n'+
@@ -34,6 +27,15 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '   </div>\n'+
     '   </div>\n'+
     '{{/each}}';
+
+var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
+    '                       <li class="slide-conts ui_carousel_slide">\n'+
+    '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
+    '                               <i><img src="{{obj.iconPath}}" alt={{obj.iconAlt}}"></i>\n'+
+    '                               <span class="txt">{{obj.title}}</span>\n'+
+    '                           </a>\n'+
+    '                       </li>\n'+
+    '                   {{/each}}'
 
 var bestRankBuyProductTmpl =
     '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
@@ -183,9 +185,9 @@ $(function(){
 
 
         var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
+        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
         var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
         var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        //var storeRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRecommendProduct.json';
         var storeNewRecommendProductUrl = $('.ui_recom_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
 
 
@@ -388,33 +390,104 @@ $(function(){
             }
             
         }
+
+
+        function errorRequest(err){
+            //console.log(err);
+        }
+
+        function buildSubCatagoryTab(result, categoryId){
+
+            var data = result.data;
+            if(data && data.data){
+
+                var arr = data.data;
+                var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
+                $('#'+categoryId).find('.ui_carousel_track').html(tabContentStr);
+
+                var breakpoint = window.breakpoint;    
+                if(breakpoint.name == 'mobile'){    
+                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel({
+                        infinite: true,
+                        variableWidth : false,
+                        dots: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    });
+                    
+                }else if(breakpoint.name == 'pc'){    
+                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('destroy');                            
+                }  
+
+
+                console.log(arr);
+
+            }
+
+        }
         
         // 카테고리 화면 렌더링
         function buildCategoryTab(result){
 
             var data = result.data;
 
-            if(data && data.catagoryTab){
-                var arr = data.catagoryTab;
+            if(data && data.data){
+                var arr = data.data;
 
-                arr = vcui.array.map(arr, function(item){
+                arr = vcui.array.map(arr, function(item,index){
                     item['dotLabel'] = '{{no}}번 내용 보기';
                     return item;
                 });
 
+
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
-                var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
+                var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});
 
                 $('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
                 $('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
-                $('.module-box.cnt01 .ui_category_tab').vcTab();
+
+                $('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                    
+                    var categoryId = null;
+
+                    console.log(data);
+
+                    if(e.type=='tabinit'){
+
+                        categoryId = arr[0].categoryId;
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
+                            buildSubCatagoryTab(e, categoryId);
+                        }, errorRequest);
+
+                    }else if(e.type=='tabbeforechange'){
+
+                        $(data.content).css({opacity:0});
+
+                        var len = $(data.content).find('.ui_carousel_track > li').length;
+                        if(len>0) return;
+                        e.preventDefault();
+
+                        categoryId = arr[data.selectedIndex].categoryId;
+
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
+                            buildSubCatagoryTab(e, categoryId);
+                            $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
+                            $(data.content).transit({opacity:1});
+
+                        }, errorRequest);
+                    
+                        
+                    }else{
+                        $(data.content).transit({opacity:1});
+                    }
+                }).vcTab();
 
 
                 $(window).on('breakpointchange', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
-                        $('.category-list-slide').vcCarousel({
+                        $('.ui_category_carousel').vcCarousel({
                             infinite: true,
                             variableWidth : false,
                             dots: true,
@@ -423,7 +496,7 @@ $(function(){
                         });
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $('.category-list-slide').vcCarousel('destroy');                            
+                        $('.ui_category_carousel').vcCarousel('destroy');                            
                     }    
                 })
 
@@ -525,10 +598,10 @@ $(function(){
         // ajax request 부분
 
         // 카테고리 요청
-        lgkorUI.requestAjaxData(storeCategoryTabUrl,{}, buildCategoryTab);
+        lgkorUI.requestAjaxDataFailCheck(storeCategoryTabUrl,{}, buildCategoryTab);
 
         // 많이 구매하는 제품 요청
-        lgkorUI.requestAjaxData(storeRankBuyProductUrl,{modelId : rankBuyModelId.toString()}, buildRankBuyProduct);
+        lgkorUI.requestAjaxDataFailCheck(storeRankBuyProductUrl,{modelId : rankBuyModelId.toString()}, buildRankBuyProduct);
         
         // 추천 기획전 로컬데이터에서  제품코드 추출
         var exhibitModelId = vcui.array.map(exhibitionLocal, function(item){
@@ -536,19 +609,16 @@ $(function(){
         });
 
         // 추천 기획전 요청
-        lgkorUI.requestAjaxData(storeExhibitionProductUrl,{modelId : exhibitModelId.toString()}, buildExhibit);
+        lgkorUI.requestAjaxDataFailCheck(storeExhibitionProductUrl,{modelId : exhibitModelId.toString()}, buildExhibit);
 
-        // 제품 추천 요청
-        // lgkorUI.requestAjaxData(storeRecommendProductUrl,{modelId : recommendModelId.toString()}, buildRecommend);
-
-
+        
         // 새제품 추천 제품코드
         var newProductRecommendModelId = vcui.array.map(newProductRecommendLocal, function(item){
             return item['modelId'];
         });
 
         // 새제품 추천부분 요청
-        lgkorUI.requestAjaxData(storeNewRecommendProductUrl, {modelId : newProductRecommendModelId.toString()}, buildNewRecommend);
+        lgkorUI.requestAjaxDataFailCheck(storeNewRecommendProductUrl, {modelId : newProductRecommendModelId.toString()}, buildNewRecommend);
 
         
         buildRecommend();
