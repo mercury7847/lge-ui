@@ -155,3 +155,427 @@
         }
     }
 }
+
+
+/* Objet Collection */
+
+.objet-collection {
+    .mainContent {
+        &.mainContent02 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: url(/lg5-common/images/OBJ/main/bg_material.jpg) no-repeat center right -45%;
+            background-color: #f0eeee;
+            background-size: contain;
+            .textArea {
+                position: absolute;
+                left: 5%;
+                top: 30%;
+                z-index: 9;
+                .txStyle01 {
+                    font-size: 56px;
+                    font-weight: bold;
+                    line-height: 1.21;
+                    letter-spacing: -0.5px;
+                    color: #222222;
+                }
+                .btn.border {
+                    margin-top: 25px;
+                }
+            }
+            .fenix {
+                position: absolute;
+                z-index: 9;
+                top: 13.3%;
+                right: 40%;
+                img {
+                    box-shadow: 0 24px 40px 0 #00000028;
+                }
+                .img {
+                    float: left;
+                }
+                .name {
+                    float: left;
+                    margin-left: 5px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    letter-spacing: -0.1px;
+                    color: #787878;
+                    writing-mode: vertical-rl;
+                }
+                .txFenix {
+                    position: absolute;
+                    z-index: 9;
+                    top: 17.7%;
+                    left: -180px;
+                    font-family: Inter;
+                    font-size: 80px;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    letter-spacing: -0.74px;
+                    color: #fefefe;
+                }
+            }
+            .mist {
+                position: absolute;
+                z-index: 9;
+                bottom: 12%;
+                right: 22%;
+                img {
+                    box-shadow: 0 24px 40px 0 #00000028;
+                }
+                .img {
+                    float: left;
+                }
+                .name {
+                    float: left;
+                    margin-left: 5px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    letter-spacing: -0.1px;
+                    color: #787878;
+                    writing-mode: vertical-rl;
+                }
+                .txMist {
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 18%;
+                    left: -155px;
+                    font-family: Inter;
+                    font-size: 80px;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    letter-spacing: -0.74px;
+                    color: #fefefe;
+                }
+            }
+            .nature {
+                position: absolute;
+                z-index: 9;
+                top: 26.2%;
+                right: 1%;
+                img {
+                    box-shadow: 0 24px 40px 0 #00000028;
+                }
+                .img {
+                    float: left;
+                }
+                .name {
+                    float: left;
+                    margin-left: 5px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    letter-spacing: -0.1px;
+                    color: #787878;
+                    writing-mode: vertical-rl;
+                }
+                .txNat {
+                    position: absolute;
+                    z-index: 9;
+                    top: 48px;
+                    left: -215px;
+                    font-family: Inter;
+                    font-size: 80px;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    letter-spacing: -0.74px;
+                    color: #fefefe;
+                }
+            }
+            .img {
+                position: relative;
+                z-index: 9;
+            }
+            .img2 {
+                position: absolute;
+                z-index: 8;
+                top: -32px;
+                left: -48px;
+            }
+            .txStyle03 {
+                position: absolute;
+                left: 4%;
+                bottom: 112px;
+                font-family: Inter;
+                font-size: 160px;
+                font-weight: bold;
+                line-height: 1;
+                letter-spacing: -0.69px;
+                color: #101010;
+            }
+        }
+        &.mainContent04 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0eeee;
+            .textArea {
+                position: absolute;
+                left: 5%;
+                top: 30%;
+                z-index: 9;
+                .txStyle01 {
+                    font-size: 56px;
+                    font-weight: bold;
+                    line-height: 1.21;
+                    letter-spacing: -0.5px;
+                    color: #222222;
+                }
+                .btn.border {
+                    margin-top: 25px;
+                }
+            }
+            .txStyle05 {
+                left: 3%;
+                line-height: 1;
+                letter-spacing: -0.69px;
+                color: #222222;
+                z-index: 9;
+                bottom: 112px;
+                font-family: Inter;
+                font-size: 120px;
+                font-weight: bold;
+            }
+            .img01 {
+                top: 0px;
+                right: 29%;
+                z-index: 9;
+            }
+            .img02 {
+                top: 104px;
+                right: 28%;
+                z-index: 7;
+                width: 484px;
+            }
+            .img03 {
+                top: 372px;
+                right: 2%;
+                z-index: 8;
+                width: 312px;
+            }
+            .img04 {
+                top: 213px;
+                right: 3%;
+                z-index: 8;
+                width: 586px;
+            }
+            .tx01 {
+                position: absolute;
+                font-family: Inter;
+                font-weight: bold;
+                font-size: 80px;
+                line-height: 1.2;
+                letter-spacing: -0.74px;
+                color: #fefefe;
+            }
+            .txm {
+                top: 178px;
+                right: 7%;
+                z-index: 9;
+            }
+            &>div {
+                position: absolute;
+                .img-overflow {
+                    box-shadow: 0 24px 40px 0 #00000028;
+                }
+            }
+        }
+        &.mainContent05 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0eeee;
+            .textArea {
+                position: absolute;
+                left: 120px;
+                top: 30%;
+                z-index: 999;
+                .txStyle01 {
+                    font-size: 56px;
+                    font-weight: bold;
+                    line-height: 1.21;
+                    letter-spacing: -0.5px;
+                    color: #222222;
+                }
+                .btn.border {
+                    margin-top: 25px;
+                }
+            }
+            .txStyle03 {
+                position: absolute;
+                left: 120px;
+                bottom: 112px;
+                font-family: Inter;
+                font-size: 160px;
+                font-weight: bold;
+                line-height: 1;
+                letter-spacing: -0.69px;
+                color: #222222;
+            }
+            .g-bx {
+                position: absolute;
+                top: 50%;
+                margin-top: -307px;
+                &.gallery01 {
+                    left: 662px;
+                    .img {
+                        width: 890px;
+                        height: 555px;
+                        background: url(/lg5-common/images/OBJ/main/bg_brand02.jpg) no-repeat center left;
+                        background-size: auto 100%;
+                    }
+                }
+                &.gallery02 {
+                    left: 1672px;
+                    .img {
+                        width: 418px;
+                        height: 555px;
+                        background: url(/lg5-common/images/OBJ/main/img-g02.png) no-repeat center;
+                        background-size: auto 100%;
+                    }
+                }
+                &.gallery03 {
+                    left: 2210px;
+                    .img {
+                        width: 890px;
+                        height: 555px;
+                        background: url(/lg5-common/images/OBJ/main/img-g03.png) no-repeat center left;
+                        background-size: auto 100%;
+                    }
+                }
+                p {
+                    font-size: 22px;
+                    line-height: 1.55;
+                    letter-spacing: -0.14px;
+                    color: #222222;
+                }
+                p.img {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+    .collection_last {
+        width: 100%;
+        background-color: #f0eeee;
+        overflow: hidden;
+        .cl01 {
+            position: relative;
+            height: 100vh;
+            .textArea {
+                position: absolute;
+                left: 50%;
+                top: 14%;
+                z-index: 10;
+                text-align: center;
+                transform: translateX(-50%);
+                .txStyle01 {
+                    font-size: 56px;
+                    font-weight: bold;
+                    line-height: 1.21;
+                    letter-spacing: -0.5px;
+                    color: #222222;
+                    white-space: nowrap;
+                }
+                .btn.border {
+                    margin-top: 25px;
+                }
+            }
+            .txStyle06 {
+                position: absolute;
+                z-index: 9;
+                left: 50%;
+                top: 18.6%;
+                white-space: nowrap;
+                opacity: 0.3;
+                font-family: Inter;
+                font-size: 280px;
+                font-weight: bold;
+                letter-spacing: -14.93px;
+                color: #ffffff;
+                transform: translateX(-50%);
+            }
+            .collection-list {
+                position: absolute;
+                z-index: 11;
+                top: 41%;
+                left: 0px;
+                width: 100%;
+                height: 266px;
+                .co01 {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    top: 194px;
+                    margin-left: -760px;
+                }
+                .co02 {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -510px;
+                    top: 39px;
+                }
+                .co03 {
+                    display: none;
+                    position: absolute;
+                    top: 0px;
+                    left: 50%;
+                    margin-left: -300px;
+                }
+                .co04 {
+                    display: none;
+                    position: absolute;
+                    top: 2px;
+                    left: 50%;
+                    margin-left: -65px;
+                }
+                .co05 {
+                    display: none;
+                    position: absolute;
+                    top: 1px;
+                    left: 50%;
+                    margin-left: 110px;
+                }
+                .co06 {
+                    display: none;
+                    position: absolute;
+                    top: 14px;
+                    left: 50%;
+                    margin-left: 290px;
+                }
+                .co07 {
+                    display: none;
+                    position: absolute;
+                    top: 207px;
+                    left: 50%;
+                    margin-left: 700px;
+                }
+                .fadeInRightN {
+                    display: block;
+                    animation: fadeInRight2 2s;
+                    -moz-animation: fadeInRight2 2s;
+                    -webkit-animation: fadeInRight2 2s;
+                    -o-animation: fadeInRight2 2s;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeInRight2 {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}

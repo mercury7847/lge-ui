@@ -71,7 +71,8 @@ var Curation = (function() {
                     tempArray = [];
                 }
                 tempArray.push(filterValueId);
-                data[filterId] = tempArray;
+                //data[filterId] = tempArray;
+                data['data'] = tempArray;
             });
             return data;
         },
@@ -243,6 +244,19 @@ var Curation = (function() {
             }
         },
 
+        addSelectSmartFilterResult: function(filterId, filterValueId) {
+            var param = {
+                "filterId" : filterId,
+                "filterValueId" : filterValueId
+            }
+            var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+            if($findLi.length < 1) {
+                self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
+                self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                self.$smartFilterResult.show();
+            }
+        },
+
         resizeCalcSmartFilter: function() {
             var self = this;
             var $content = self.$smartFilterList.find('div.content');
@@ -281,16 +295,49 @@ var Curation = (function() {
 
             var filterData = JSON.parse(data);
             
-            console.log('reset',filterData);
-            var arr = filterData.data;
-            arr.forEach(function(item,index) {
-                var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+            var arr = filterData.data.split('||');
+            if(arr instanceof Array) {
+                arr.forEach(function(item,index) {
+                    var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                    if($input.length > 0) {
+                        $input.prop('checked',true);
+
+                        var param = {
+                            "filterId": $input.data('filterId'),
+                            "filterValueId": $input.val(),
+                            "filterValueName": $input.attr('name')
+                        }
+
+                        var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                        if($findLi.length < 1) {
+                            self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
+                            self.$smartFilterResult.show();
+                        }
+                    }
+                });
+
+                self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+            } else if(typeof arr === 'string' || arr instanceof String){
+                var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
                 if($input.length > 0) {
                     $input.prop('checked',true);
-                    self.removeSelectSmartFilterResult(item);
+
+                    var param = {
+                        "filterId": $input.data('filterId'),
+                        "filterValueId": $input.val(),
+                        "filterValueName": $input.attr('name')
+                    }
+
+                    var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                    if($findLi.length < 1) {
+                        self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
+                        self.$smartFilterResult.show();
+                    }
                 }
-            });
-            
+
+                self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+            }
+
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
             }
