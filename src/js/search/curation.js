@@ -65,7 +65,8 @@ var Curation = (function() {
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
-                var tempArray = data[filterId];
+                //var tempArray = data[filterId];
+                var tempArray = data['data'];
                 if(!tempArray) {
                     tempArray = [];
                 }
