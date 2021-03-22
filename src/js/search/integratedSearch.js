@@ -94,7 +94,31 @@
 
             self.$searchLayer.off('modalshown').on('modalshown', function(e, data){
                 console.log('modalSHown');
-                self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
+
+                // create invisible dummy input to receive the focus first
+                var fakeInput = document.createElement('input');
+                fakeInput.setAttribute('type', 'text');
+                fakeInput.setAttribute("readonly",true);
+                fakeInput.style.position = 'absolute';
+                fakeInput.style.opacity = 0;
+                fakeInput.style.height = 0;
+                fakeInput.style.fontSize = '16px'; // disable auto zoom
+
+                // you may need to append to another element depending on the browser's auto 
+                // zoom/scroll behavior
+                document.body.prepend(fakeInput)
+
+                // focus so that subsequent async focus will work
+                fakeInput.focus()
+
+                setTimeout(function() {
+                    // now we can focus on the target input
+                    self.$inputSearch.focus()
+                    // cleanup
+                    fakeInput.remove()
+                }, 1000);
+
+                //self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
             });
 
             $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
