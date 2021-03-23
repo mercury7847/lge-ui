@@ -270,6 +270,11 @@
                     margin-bottom:64px;
                     @include mobile {
                         margin-bottom:40px;
+                        &.photo {
+                            .slide-controls {
+                                display: none;
+                            }
+                        }
                     }
                     .bullet-list {
                         .b-txt {

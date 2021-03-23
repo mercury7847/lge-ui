@@ -100,8 +100,7 @@
                         self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
 
                         var filterData  = self.filterLayer.getDataFromFilter();
-                        console.log('???',data);
-                        if(data.data.length > 0) {
+                        if(data && data.data && data.data.length > 0) {
                             //스마트 필터가 있으면 사이드 필터 제거
                             filterData.filterData = null;
                         }
