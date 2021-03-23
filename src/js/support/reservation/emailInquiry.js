@@ -14,9 +14,29 @@
     '{{/each}}';
 
     var validation;
+
     var reservation = {
         init: function() {
             var self = this;
+            var param = {};
+
+            self.options = {
+                category: '',
+                categoryNm: '',
+                subCategory: '',
+                subCategoryNm: '',
+                modelCode: '',
+                productCode: ''
+            };
+
+            param = {
+                category: $('#category').val(),
+                categoryNm: $('#categoryNm').val(),
+                subCategory: $('#subCategory').val(),
+                subCategoryNm: $('#subCategoryNm').val(),
+                modelCode: $('#modelCode').val(),
+                productCode: $('#productCode').val()
+            };
 
             self.$cont = $('.contents');
             self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
@@ -25,6 +45,7 @@
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
+            self.$stepTerms = self.$cont.find('#stepTerms');
             self.$stepInquiry = self.$cont.find('#stepInquiryType');
             self.$stepInput = self.$cont.find('#stepInput');
             
@@ -34,7 +55,7 @@
             self.$recordBox = self.$stepInput.find('#recordBox');
             self.$rcptNoBox = self.$stepInput.find('#rcptNoBox');
 
-            self.param = {};
+            self.param = param;
             self.isLogin = lgkorUI.isLogin;
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
 
@@ -98,14 +119,15 @@
                 }
             }
 
-            vcui.require(['ui/validation', 'ui/imageFileInput', 'support/common/searchModel.min'], function () {
+            vcui.require(['ui/validation', 'ui/imageFileInput'], function () {
                 self.bindEvent();
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
-                self.$cont.vcSearchModel({
-                    useCookie: false
-                }); 
+                self.$cont.commonModel({
+                    register: register,
+                    selected: self.param
+                });
 
                 var url = location.search;
 
@@ -124,43 +146,51 @@
                 }
             });
         },
-        loadInquiry: function() {
+        loadInquiry: function(data, url) {
             var self = this;
             var param = {
-                category: self.param.category,
-                subCategory: self.param.subCategory,
-                modelCode: self.param.modelCode,
-                serviceType: self.param.serviceType
+                category: data.category,
+                subCategory: data.subCategory,
+                modelCode: data.modelCode,
+                serviceType: $('#serviceType').val()
             };
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(self.resultUrl, param, function(result) {
-                var data = result.data;
-                var result = data.inquiryList instanceof Array ? data.inquiryList.length : false;
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                var resultData = result.data;
+                var result = resultData.inquiryList instanceof Array ? resultData.inquiryList.length : false;
                 var html = '';
 
+                self.$inquiryList.empty();
+
                 if (result) {
-                    html = vcui.template(inquiryTmpl, data);
+                    html = vcui.template(inquiryTmpl, resultData);
                     self.$inquiryList.html(html);
                     self.$inquiryBox.show();
 
-                    self.nextStepInput();
+                    self.nextStepInput(data);
+                } else {
+                    self.$inquiryBox.hide();
                 }
-
                 lgkorUI.hideLoading();
             });
         },
-        nextStepInput: function() {
+        nextStepInput: function(data) {
             var self = this;
             var summaryOpt = {
-                product: [self.param.categoryNm, self.param.subCategoryNm, self.param.modelCode],
+                product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                 reset: 'type'
             };
 
+            self.$myModelWrap.hide();
             self.$selectedModelBar.show();
             self.$completeBtns.show();
 
-            self.$cont.vcSearchModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.commonModel('next', self.$stepInput);
+            self.$cont.commonModel('focus', self.$selectedModelBar, function() {
+                self.$selectedModelBar.vcSticky();
+            });
         },
         requestComplete: function() {
             var self = this;
@@ -187,24 +217,23 @@
                     }
                     self.$submitForm.submit();
                 } else {
-                    lgkorUI.hideLoading();
-                    
                     if (data.resultMessage) {
                         lgkorUI.alert("", { title: data.resultMessage });
                     }
+                    lgkorUI.hideLoading();
                 }
             }, 'POST');
         },
         reset: function() {
             var self = this;
 
-            self.param = {};
-
             self.$recordBox.hide();
             self.$rcptNoBox.hide();
             self.$inquiryBox.hide();
             self.$inquiryList.empty();
             self.$completeBtns.hide();
+            self.$selectedModelBar.hide();
+            self.$myModelWrap.hide();
 
             self.$stepInput.find('[name=subsection]').prop('checked', false);
             self.$stepInput.find('[name=record]').eq(0).prop('checked', true);
@@ -221,19 +250,23 @@
 
             self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
             self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
+            self.$cont.commonModel('next', self.$stepInquiry);
+            self.$cont.commonModel('focus', self.$cont);
         },
         bindEvent: function() {
             var self = this;
 
             // 모델 선택 & 문의 재선택
-            self.$cont.on('complete', function(e, data) {
-                self.param = $.extend(true, self.param, data);
-
-                if (data.productCode) {
-                    self.loadInquiry();
+            self.$cont.on('complete', function(e, data, url) {
+                if (!data.categoryNm) {
+                    data.categoryNm = data.categoryName;
+                    data.subCategoryNm = data.subCategoryName;
+                }
+                if (url) {
+                    self.loadInquiry(data, url);
                 } else {
                     self.$inquiryBox.hide();
-                    self.nextStepInput();
+                    self.nextStepInput(data);
                 }
             }).on('reset', function() {
                 self.reset();
