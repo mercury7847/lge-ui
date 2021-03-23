@@ -98,8 +98,7 @@ var Curation = (function() {
             self.$curation.on('click', 'a.curation', function(e){
                 e.preventDefault();
                 var selectCuration = this.dataset.curation;
-                console.log(selectCuration);
-
+                
                 self.curationSelectEventFunc(selectCuration);
             });
 
@@ -298,6 +297,14 @@ var Curation = (function() {
             } else {
                 self.$smartFilterMore.hide();
             }
+        },
+
+        resetCuration: function(data, triggerFilterChangeEvent) {
+            var self = this;
+
+            self.$curation.find('ul.curation-list > li').removeClass('on');
+            var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
+            $a.parents('li').addClass('on');
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
