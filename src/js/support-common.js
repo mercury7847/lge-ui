@@ -2531,7 +2531,7 @@ function validatePhone(value){
         });
 
         $(document).on('keydown', 'input[type="number"]', function(e){
-            if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109) {
+            if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 110 || e.keyCode == 190) {
                 e.preventDefault();
             }
         });
@@ -2560,16 +2560,21 @@ function validatePhone(value){
             var $this = $(this);
             var v = $this.val();
 
-            if( v != null && v != "") {
+            if( e.keyCode != 8 && e.keyCode != 46) {
+                if( v != null && v != "") {
+                    $this.data('oldValue', v);
+                }
+            } else {
                 $this.data('oldValue', v);
             }
+            
         });
 
         $(document).on('blur', 'input[type="number"]', function(e){
             var $this = $(this);
             var v = $this.val();
             var oldVal = $this.data('oldValue');
-
+            
             if( v == null || v == "") {
                 $this.val(oldVal);
             }

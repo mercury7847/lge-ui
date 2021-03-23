@@ -217,7 +217,15 @@
                             var value = self.$contentsSearch.attr('data-search-value');
                             value = !value ? null : value.trim(); 
                             var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                            self.sendSearchPage(tab.attr('href'),value,force,sendData);
+                            self.sendSearchPage(tab.attr('href'),value,force,sendData,null);
+                        }
+                    }, function(curation){
+                        var tab = self.getTabItembyCategoryID('product');
+                        if(curation && tab.length > 0) {
+                            var value = self.$contentsSearch.attr('data-search-value');
+                            value = !value ? null : value.trim(); 
+                            var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                            self.sendSearchPage(tab.attr('href'),value,force,null,curation);
                         }
                     });
 
@@ -310,11 +318,14 @@
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
             },
 
-            sendSearchPage: function(searchUrl, search, force, smartFilter) {
+            sendSearchPage: function(searchUrl, search, force, smartFilter, curation) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
                     var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
-                    if(smartFilter) {
+                    if(curation) {
+                        url += ("&curation="+curation);
+
+                    } else if(smartFilter) {
                         url += ("&smartFilter="+smartFilter);
                     }
                     location.href = url;

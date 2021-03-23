@@ -1,6 +1,6 @@
 var Curation = (function() {
     //큐레이션 템플릿
-    var curationTemplate = '<li><a href="#{{curationId}}" class="curation"><span>{{text}}</span></a></li>';
+    var curationTemplate = '<li><a href="#" class="curation" data-curation="{{curationId}}"><span>{{text}}</span></a></li>';
     var sFilterTemplate = '<li class="row" {{#if hidden}}style="display: none;"{{/if}}>' +
         '<div class="label">{{filterGroupName}}</div>' +
         '<div class="content">' +
@@ -24,22 +24,23 @@ var Curation = (function() {
     var sFilterResultTemplate = '<li data-filter-id="{{filterId}}" data-filter-value-id="{{filterValueId}}">' +
         '<div class="rounded">' +
             '<span class="text">{{filterValueName}}</span>' +
-            '<button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
+            '<a href="#sf" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
         '</div>' +
     '</li>'
 
-    function Curation($targetCuration, smartFilterChangeEventFunc) {
+    function Curation($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
         var self = this;
-        self._setting($targetCuration, smartFilterChangeEventFunc);
+        self._setting($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc);
         self._bindEvents();
     }
 
     //public
     Curation.prototype = {
-        _setting: function($targetCuration, smartFilterChangeEventFunc) {
+        _setting: function($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
             var self = this;
             self.$el = $targetCuration;
             self.smartFilterChangeEventFunc = smartFilterChangeEventFunc;
+            self.curationSelectEventFunc = curationSelectEventFunc;
 
             self.$curation = self.$el.find('div.recommended-curation');
             self.$smartFilterList = self.$el.find('div.smart-filter');
@@ -93,6 +94,14 @@ var Curation = (function() {
                 self.resizeCalcSmartFilter();
             });
 
+            //스마트 큐레이션 아이템 클릭
+            self.$curation.on('click', 'a.curation', function(e){
+                e.preventDefault();
+                var selectCuration = this.dataset.curation;
+                
+                self.curationSelectEventFunc(selectCuration);
+            });
+
             //스마트필터 리스트 아이템 클릭
             self.$smartFilterList.on('click', 'div input', function(e){
                 var checked = this.checked;
@@ -116,7 +125,7 @@ var Curation = (function() {
             });
 
             //스마트필터 결과 리스트 아이템 삭제 버튼
-            self.$smartFilterResult.on('click', 'button.btn-delete', function(e){
+            self.$smartFilterResult.on('click', 'a.btn-delete', function(e){
                 e.preventDefault();
                 var $li = $(this).parents('li');
                 var filterValueId = $li.data('filterValueId');
@@ -176,7 +185,7 @@ var Curation = (function() {
                 });
                 var scrillTab = self.$curation.find('.ui_smooth_scrolltab');
                 scrillTab.vcSmoothScrollTab('refresh');
-                scrillTab.vcSmoothScrollTab('setTabIndex',-1);
+                scrillTab.vcSmoothScrollTab('setTabIndex',-999);
                 
                 self.$curation.show();
             } else {
@@ -288,6 +297,14 @@ var Curation = (function() {
             } else {
                 self.$smartFilterMore.hide();
             }
+        },
+
+        resetCuration: function(data, triggerFilterChangeEvent) {
+            var self = this;
+
+            self.$curation.find('ul.curation-list > li').removeClass('on');
+            var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
+            $a.parents('li').addClass('on');
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
