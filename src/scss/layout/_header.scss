@@ -1345,6 +1345,7 @@
             height: 34px;
             background: url('/lg5-common/images/icons/icon-app-settings.svg') no-repeat center center;
             background-size: 20px;
+            z-index: 113;
             &.active {
                 display: block;
             }
@@ -1432,7 +1433,7 @@ html {
                     margin-right:5px;
                     width:18px;
                     height:19px;
-                    background:url(/lg5-common/images/MAP/ico_ar.png) no-repeat left top;
+                    background:url('/lg5-common/images/MAP/ico_ar.png') no-repeat left top;
                     background-size:100%;
                 }
             }
