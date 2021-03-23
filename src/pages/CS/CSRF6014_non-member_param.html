@@ -50,30 +50,6 @@
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
 
-                            <!-- 약관 동의 -->
-                            <div class="step-box active" id="stepTerms">
-                                <div class="section">
-                                    <div class="form-infos first-type">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                    </div>
-                                    @@include('./common/support/accept-terms.html', {
-                                        member: true
-                                    })
-                                </div>
-                                <!-- 
-                                    1. 회원
-                                      - 제품 정보 + 마케팅 수신동의 안 한 경우 
-                                    2. 비회원
-                                      - 제품 정보
-
-                                    일 경우 노출
-                                -->
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div> 
-                            </div>
-                            <!-- // 약관 동의 -->
-
                             <!-- 문의 타입 -->
                             <!-- 
                                 1. 회원
@@ -84,7 +60,7 @@
 
                                 일 경우 active 클래스 삭제
                             -->
-                            <div class="step-box" id="stepInquiryType">
+                            <div class="step-box active" id="stepInquiryType">
                                 <div class="inquiry-sections">
                                     <div class="section">
                                         <div class="tit-wrap">
@@ -158,8 +134,16 @@
 
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput">
-                                <div class="form-infos first-type">
-                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                <div class="section">
+                                    <div class="form-infos first-type">
+                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                    </div>
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">약관 동의</h2>
+                                    </div>
+                                    @@include('./common/support/accept-terms.html', {
+                                        member: false
+                                    })
                                 </div>
                                 <div class="section" id="inquiryBox">
                                     <div class="tit-wrap">
