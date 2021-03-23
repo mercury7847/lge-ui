@@ -147,9 +147,11 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
                 '<a href="#" data-id="{{modelId}}"><span>비교하기</span></a>' +
             '</div>' +
+            '{{/if}}'+
         '</div>' +
     '</li>';
                     
@@ -702,7 +704,7 @@
                 } else if(item.bizType == "CARESOLUTION"){
                     if(item.bulletFeatures){
                         bulletLength = item.bulletFeatures.length;
-                        showLength = bulletLength;
+                        showLength = bulletLength > 4 ? 4 : bulletLength;
                         if(showLength > bulletLength) showLength = bulletLength;
                         for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
                     }

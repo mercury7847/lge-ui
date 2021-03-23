@@ -21,7 +21,7 @@ var Curation = (function() {
             '</div>' +
         '</div>' +
     '</li>';
-    var sFilterResultTemplate = '<li data-filter-id={{filterId}} data-filter-value-id={{filterValueId}}>' +
+    var sFilterResultTemplate = '<li data-filter-id="{{filterId}}" data-filter-value-id="{{filterValueId}}">' +
         '<div class="rounded">' +
             '<span class="text">{{filterValueName}}</span>' +
             '<button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
@@ -294,7 +294,7 @@ var Curation = (function() {
             var self = this;
 
             var filterData = JSON.parse(data);
-            
+            //console.log(filterData);
             var arr = filterData.data.split('||');
             if(arr instanceof Array) {
                 arr.forEach(function(item,index) {
