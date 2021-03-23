@@ -1515,16 +1515,18 @@ html {
                     display:block;
                     text-align:right;
                     .input-wrap {
-                        display:block;
-                        width:100%;
                         margin-bottom:6px;
                     }
                     .btn-app-barcode{
-                        display:inline-block;
+                        display:table-cell;
+                        width:1%;
+                        padding-left:6px;
                     }
                     .cell{
                         display:inline-block;
+                        margin-top:6px;
                         width:auto;
+                        vertical-align:top;
                     }
                 }
             }
