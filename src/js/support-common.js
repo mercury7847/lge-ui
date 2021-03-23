@@ -2509,7 +2509,6 @@ function validatePhone(value){
         }
 
         if ($('.ui_common_scroll').length && !vcui.detect.isMobileDevice) {
-            console.log('스크롤바 실행')
             $('.ui_common_scroll').mCustomScrollbar();
         }
 
