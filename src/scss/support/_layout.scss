@@ -42,7 +42,7 @@
             & ~ .section {
                 margin:120px 0 0;
             }
-            &[style*="display: none"] + .section {
+            &[style*="display: none"]:first-child + .section {
                 margin:0;
             }
             &-box {

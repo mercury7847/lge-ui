@@ -2560,16 +2560,21 @@ function validatePhone(value){
             var $this = $(this);
             var v = $this.val();
 
-            if( v != null && v != "") {
+            if( e.keyCode != 8 && e.keyCode != 46) {
+                if( v != null && v != "") {
+                    $this.data('oldValue', v);
+                }
+            } else {
                 $this.data('oldValue', v);
             }
+            
         });
 
         $(document).on('blur', 'input[type="number"]', function(e){
             var $this = $(this);
             var v = $this.val();
             var oldVal = $this.data('oldValue');
-
+            
             if( v == null || v == "") {
                 $this.val(oldVal);
             }
