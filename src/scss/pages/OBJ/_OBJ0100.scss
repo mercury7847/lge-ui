@@ -809,14 +809,35 @@
                 width: calc((100% - 40px)/3);
                 height: 560px;
                 background: #eae9e7;
+                &:nth-child(3n-2) {
+                    margin-left: 0;
+                }
+                @include mobile {
+                    width: calc((100% - 8px)/2);
+                    height: 58vw;
+                    margin-top: 8px;
+                    &:nth-child(even) {
+                        margin-left: 8px;
+                    }
+                    &:nth-child(odd) {
+                        margin-left: 0;
+                    }
+                }
                 &.list01 {
                     width: calc(((100% - 40px)*2)/3 + 20px);
+                    @include mobile {
+                        width: 100%;
+                        height: 95vw;
+                    }
                     >a {
                         position: relative;
                         z-index: 9;
                         padding: 198px 80px;
                         -webkit-transition-duration: 0.4s;
                         transition-duration: 0.4s;
+                        @include mobile {
+                            padding-left: 20px;
+                        }
                         .name {
                             position: relative;
                             z-index: 10;
@@ -824,19 +845,13 @@
                             font-weight: bold;
                             line-height: 1.3;
                             letter-spacing: -0.34px;
-                            color: #101010;
+                            color: #222222;
+                            @include mobile {
+                                font-size: 23px;
+                            }
                         }
                         .btn {
-                            display: inline-block;
-                            margin-top: 28px;
-                            padding: 16px 24px;
-                            font-family: Inter;
-                            font-size: 16px;
-                            font-weight: 500;
-                            line-height: 1.38;
-                            letter-spacing: -0.09px;
-                            color: #fefefe;
-                            background: #101010;
+                            margin-top: 25px;
                         }
                         .fenix {
                             position: absolute;
@@ -849,6 +864,12 @@
                             line-height: 1.2;
                             letter-spacing: -0.74px;
                             color: #fefefe;
+                            @include mobile {
+                                top: 50px;
+                                right: auto;
+                                left: 20px;
+                                font-size: 50px;
+                            }
                         }
                         .img {
                             position: absolute;
@@ -856,6 +877,15 @@
                             z-index: 8;
                             top: 124px;
                             box-shadow: 0 20px 40px 0 #00000028;
+                            @include mobile {
+                                right: 25px;
+                                top: 25px;
+                                width: 80px;
+                                z-index: 11;
+                                img {
+                                    width: 100%
+                                }
+                            }
                         }
                         .img2 {
                             position: absolute;
@@ -863,6 +893,14 @@
                             right: 206px;
                             top: 244px;
                             box-shadow: 0 20px 40px 0 #00000028;
+                            @include mobile {
+                                right: 85px;
+                                top: 80px;
+                                width: 80px;
+                                img {
+                                    width: 100%
+                                }
+                            }
                         }
                         &:hover {
                             padding: 198px 80px;
@@ -898,6 +936,9 @@
                 }
                 &.list02 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/rf.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-rf-hover.jpg") no-repeat;
                         background-size: cover;
@@ -905,6 +946,9 @@
                 }
                 &.list03 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/ct.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-rf-con-hover.jpg") no-repeat;
                         background-size: cover;
@@ -912,6 +956,9 @@
                 }
                 &.list04 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/kimchi.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-rf-kimchi-hover.jpg") no-repeat;
                         background-size: cover;
@@ -919,6 +966,9 @@
                 }
                 &.list05 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/wash.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/wash-hover.jpg") no-repeat;
                         background-size: cover;
@@ -926,6 +976,9 @@
                 }
                 &.list06 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/styler.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-styler-hover.jpg") no-repeat;
                         background-size: cover;
@@ -940,6 +993,9 @@
                 // }
                 &.list08 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/oven.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-oven-hover.jpg") no-repeat;
                         background-size: cover;
@@ -947,6 +1003,9 @@
                 }
                 &.list09 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/dw.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-dish-hover.jpg") no-repeat;
                         background-size: cover;
@@ -954,6 +1013,9 @@
                 }
                 &.list10 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/water.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-water-hover.jpg") no-repeat;
                         background-size: cover;
@@ -961,6 +1023,9 @@
                 }
                 &.list11 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/cleaner.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
                         background: url("/lg5-common/images/OBJ/main/images-co-list-cleaner-hover.png") no-repeat;
                         background-size: cover;
@@ -968,13 +1033,13 @@
                 }
                 &.list12 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/aircon.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
                     .bgList {
-                        background: url("/lg5-common/images/OBJ/main/images-co-list-aircon-hover.png") no-repeat;
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-aircon-hover.jpg") no-repeat;
                         background-size: cover;
                     }
-                }
-                &:nth-child(3n-2) {
-                    margin-left: 0;
                 }
                 >a {
                     position: relative;
@@ -986,6 +1051,10 @@
                     line-height: 1.5;
                     letter-spacing: -0.1px;
                     color: #787878;
+                    @include mobile {
+                        height: 58vw;
+                        padding: 50vw 15px 0px;
+                    }
                     &:hover {
                         padding: 440px 32px 0px;
                         font-size: 32px;
@@ -1032,124 +1101,164 @@
 /* 체험하기 */
 
 .signature-experience {
-    .textExp {
-        position: absolute;
-        top: 100px;
-        left: 150px;
-        opacity: 0.8;
-        font-family: Inter;
-        font-size: 160px;
-        font-weight: bold;
-        line-height: 1;
-        letter-spacing: -0.69px;
-        color: #ffffff;
-    }
-    .mtbi_start {
-        max-width: 880px;
-        position: absolute;
-        left: 50%;
-        top: 23%;
-        transform: translateX(-50%)
-    }
-    .mtbi-test {
-        position: absolute;
-        overflow: hidden;
-        left: 0px;
-        width: 420px;
-        height: 520px;
-        box-shadow: 0 24px 40px 0 #00000028;
-        -moz-box-shadow: 0 24px 40px 0 #00000028;
-        -webkit-box-shadow: 0 24px 40px 0 #00000028;
-        .mtbi-bx-image {
+    height: 100vh;
+    background-color: #f0eeee;
+    .objet-section {
+        position: relative;
+        height: calc(100vh - 91px);
+        .textExp {
             position: absolute;
-            z-index: 998;
-            top: 0px;
-            left: 0px;
-            width: 420px;
-            height: 520px;
-            background: url("/lg5-common/images/OBJ/main/intro-pc-01.jpg") no-repeat;
-            background-size: cover;
-            transition: all 1s;
-        }
-    }
-    .mtbi-pass {
-        position: absolute;
-        overflow: hidden;
-        right: 0px;
-        width: 420px;
-        height: 520px;
-        box-shadow: 0 24px 40px 0 #00000028;
-        -moz-box-shadow: 0 24px 40px 0 #00000028;
-        -webkit-box-shadow: 0 24px 40px 0 #00000028;
-        .mtbi-bx-image {
-            position: absolute;
-            z-index: 998;
-            top: 0px;
-            left: 0px;
-            width: 420px;
-            height: 520px;
-            background: url("/lg5-common/images/OBJ/main/intro-pc-02.jpg") no-repeat;
-            background-size: cover;
-            transition: all 1s;
-        }
-    }
-    .mtbi-bx {
-        cursor: pointer;
-        .sub-title {
-            margin-top: 254px;
+            top: 100px;
+            left: 150px;
+            opacity: 0.8;
             font-family: Inter;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.38;
-            letter-spacing: -0.1px;
-            color: #fefefe;
-        }
-        .title {
-            margin-top: 16px;
-            font-size: 40px;
+            font-size: 160px;
             font-weight: bold;
-            line-height: 1.3;
-            letter-spacing: -0.34px;
-            color: #fefefe;
-        }
-        &:hover {
-            .mtbi-bx-image {
-                z-index: 9;
-                transform: scale(1.2);
-            }
-            a {
-                outline: solid 4px #a08c68;
-                outline-offset: -4px;
+            line-height: 1;
+            letter-spacing: -0.69px;
+            color: #ffffff;
+            @include mobile {
+                top: -80px;
+                left: 50%;
+                font-size: 80px;
+                transform: translateX(-50%);
+                white-space: nowrap;
             }
         }
-        p {
-            position: relative;
-            z-index: 999;
-        }
-        >a {
+        .mtbi_start {
+            max-width: 880px;
+            display: flex;
             position: absolute;
-            top: 0px;
-            left: 0px;
-            padding: 0px 40px;
-            z-index: 999;
-            display: block;
-            width: 100%;
-            height: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            @include mobile {
+                position: relative;
+                left: auto;
+                top: auto;
+                flex-direction: column;
+                padding: 0 15px;
+                margin-top: 115px;
+                transform: translate(0%, 0%);
+            }
+        }
+        .mtbi-test {
+            position: relative;
             overflow: hidden;
-            .design-btnType02 {
-                margin-top: 24px;
-                display: inline-block;
-                padding: 16px 0px;
-                width: 160px;
-                text-align: center;
+            width: 420px;
+            height: 520px;
+            box-shadow: 0 24px 40px 0 #00000028;
+            -moz-box-shadow: 0 24px 40px 0 #00000028;
+            -webkit-box-shadow: 0 24px 40px 0 #00000028;
+            @include mobile {
+                width: 100%;
+                height: 60vw;
+            }
+            .mtbi-bx-image {
+                position: absolute;
+                z-index: 998;
+                top: 0px;
+                left: 0px;
+                width: 420px;
+                height: 520px;
+                background: url("/lg5-common/images/OBJ/main/intro-pc-01.jpg") no-repeat;
+                background-size: cover;
+                transition: all 1s;
+                @include mobile {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .mtbi-pass {
+            position: relative;
+            overflow: hidden;
+            width: 420px;
+            height: 520px;
+            margin-left: 40px;
+            box-shadow: 0 24px 40px 0 #00000028;
+            -moz-box-shadow: 0 24px 40px 0 #00000028;
+            -webkit-box-shadow: 0 24px 40px 0 #00000028;
+            @include mobile {
+                margin-top: 35px;
+                margin-left: 0px;
+                width: 100%;
+                height: 60vw;
+            }
+            .mtbi-bx-image {
+                position: absolute;
+                z-index: 998;
+                top: 0px;
+                left: 0px;
+                width: 420px;
+                height: 520px;
+                background: url("/lg5-common/images/OBJ/main/intro-pc-02.jpg") no-repeat;
+                background-size: cover;
+                transition: all 1s;
+                @include mobile {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .mtbi-bx {
+            cursor: pointer;
+            .sub-title {
+                margin-top: 307px;
                 font-family: Inter;
                 font-size: 16px;
                 font-weight: 500;
-                line-height: 1.71;
-                letter-spacing: -0.09px;
+                line-height: 1.38;
+                letter-spacing: -0.1px;
                 color: #fefefe;
-                background: #101010;
+                @include mobile {
+                    margin-top: 21vw;
+                }
+            }
+            .title {
+                margin-top: 16px;
+                font-size: 40px;
+                font-weight: bold;
+                line-height: 1.3;
+                letter-spacing: -0.34px;
+                color: #fefefe;
+            }
+            &:hover {
+                .mtbi-bx-image {
+                    z-index: 9;
+                    transform: scale(1.2);
+                }
+                a {
+                    outline: solid 4px #a08c68;
+                    outline-offset: -4px;
+                }
+            }
+            p {
+                position: relative;
+                z-index: 999;
+            }
+            >a {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                padding: 0px 40px;
+                z-index: 999;
+                display: block;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                .btn.border {
+                    margin-top: 24px;
+                    border-color: #ffffff !important;
+                    color: #ffffff;
+                }
             }
         }
+    }
+}
+
+@include mobile {
+    .btn {
+        padding: 10px 20px;
     }
 }
