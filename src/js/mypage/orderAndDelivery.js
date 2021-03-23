@@ -1,3 +1,4 @@
+
 (function() {
     var ORDER_INQUIRY_LIST_URL;
     var ORDER_DETAIL_URL;
@@ -1305,60 +1306,84 @@
     window.editPaymentInfomation = editPaymentInfomation;
     window.fnNiceFail = fnNiceFail;
 
+    //납부정보 input 밸리데이션...
+    function paymentFieldValidation(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var result = paymentMethodIndex ? bankValidation.validate() : cardValidation.validate();
+        
+        return result.success;
+    }
+    //납부정보 입력 데이터 비교...
+    function compareInputData(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
+        var chk = true;
+        for(var str in values){
+            if(paymentInfo[str] !== values[str]){
+                chk = false;
+
+                break;
+            }
+        }
+
+        return chk;
+    }
+    //납부정보 확인 유무...
+    function paymentConfirmYN(){
+        if(paymentMethodConfirm == "N"){
+            paymentErrorAlert();
+            return false;
+        }
+
+        return true;
+    }
+    //납부 확인 오류창...
+    function paymentErrorAlert(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        lgkorUI.alert("",{
+            title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
+        });
+        arsAgree = "N";
+    }
+
     //납부 정보 유효성 체크
     function paymentInfoValidation(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        console.log("paymentMethodConfirm:", paymentMethodConfirm);
-        if(paymentMethodConfirm  == "N"){
-            return{
-                result: false,
-                title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
-            }
-        }
-        
-        var chk = 0;
-        var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
-        for(var key in values){
-            if(values[key] == paymentInfo[key]) chk++;
-        }
-        
-        if(chk != Object.keys(values).length){
-            paymentMethodConfirm = "N";
-            return{
-                result: false,
-                title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
-            }
+        var chk = paymentConfirmYN();
+        if(!chk) return false;
+
+        chk = compareInputData();
+        if(!chk){
+            paymentErrorAlert();
+            return false;
         }
 
         if(arsAgree == "N"){
-            return{
-                result: false,
+            lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 신청해주세요."
-            }
+            });
+            
+            return false;
         }
 
         if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
-            return{
-                result: false,
+            lgkorUI.alert("",{
                 title: "자동결제를 위해 정기결제 신청을 동의해주세요."
-            }
+            });
+            return false;
         }
-
-        return{
-            result: true
-        }
+        
+        return true;
     }
     //납부카드/계좌 확인...
     function paymentMethodAbled(item){
-        var sendata;
-        var mode = $(item).hasClass('paymentCardConfirm') ? METHOD_CARD : METHOD_BANK;
-        var result = mode == METHOD_CARD ? cardValidation.validate() : bankValidation.validate();
-        if(!result.success) return false;
-
+        var chk = paymentFieldValidation();
+        if(!chk) return false;
+        
         paymentInfo = {};
 
         CERTI_ID = BATCH_KEY = "";
 
+        var sendata;
         if($(item).hasClass('paymentCardConfirm')){
             sendata = cardValidation.getValues();
             sendata.confirmType = METHOD_CARD;
@@ -1379,7 +1404,6 @@
 
             if(lgkorUI.stringToBool(result.data.success)){
                 paymentInfo = sendata.confirmType == METHOD_CARD ? cardValidation.getAllValues() : bankValidation.getAllValues();
-                paymentInfo.confirmType = sendata.confirmType;
             }
 
             sendPaymentMethod = sendata.confirmType;
@@ -1389,6 +1413,16 @@
     }
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        var chk = paymentConfirmYN();
+        if(!chk) return;
+
+        chk = compareInputData();
+        if(!chk){
+            paymentErrorAlert();
+            return;
+        }
+
+
         lgkorUI.showLoading();
 
         CTI_REQUEST_KEY = "";
@@ -1434,8 +1468,8 @@
     }
     //납부 정보변경 저장...
     function savePaymentInfoOk(){
-        var payments = paymentInfoValidation();
-        if(payments.result){
+        var chk = paymentInfoValidation();
+        if(chk){
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
             var sendata = {
@@ -1457,11 +1491,7 @@
                     requestOrderInquiry();
                 }
             });
-        } else{
-            lgkorUI.alert("", {
-                title: payments.title
-            });
-        }
+        } 
     }
 
     function renderPage(){

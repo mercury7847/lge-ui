@@ -594,6 +594,44 @@
         return result;
     }
 
+    //납부정보 결재수단 INPUT 밸리데이션...
+    function paymentFiledValidation(){
+        var paymethod = getPaymentMethod();
+        var result = paymethod == "bank" ? bankValidation.validate() : cardValidation.validate();
+        if(!result.success){
+            return "";
+        }
+
+        return paymethod;
+    }
+
+    //납부정보 결재수단 밸리데이션...
+    function paymentValidation(){
+        var paymethod = paymentFiledValidation();
+        if(paymethod == "") return false;
+
+        var cardAbled = getInputData('cardAbled');
+        if(cardAbled == "N"){
+            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
+            lgkorUI.alert("",{title:msg});
+            
+            return false;
+        }
+
+        var chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
+        if(!chk){
+            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
+            lgkorUI.alert("",{title:msg});
+
+            step3Block.find('.arsAgreeRequest').prop('disabled', true);
+
+            setInputData('arsAgree', "N");
+            return false;
+        }
+
+        return true;
+    }
+
     //납부 정보 입력 밸리데이션...
     function setStep3Validation(){
         console.log("step3 validation start!!");
@@ -612,31 +650,9 @@
                 return false;
             }
         }
-
-        paymethod = getPaymentMethod();
-        result = paymethod == "bank" ? bankValidation.validate() : cardValidation.validate();
-        if(!result.success){
-            return false;
-        }
-
-        var cardAbled = getInputData('cardAbled');
-        if(cardAbled == "N"){
-            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
-            lgkorUI.alert("",{title:msg});
-            
-            return false;
-        }
-
-        chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
-        if(!chk){
-            var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
-            lgkorUI.alert("",{title:msg});
-
-            step3Block.find('.arsAgreeRequest').prop('disabled', true);
-
-            setInputData('arsAgree', "N");
-            return false;
-        }
+        
+        chk = paymentValidation();
+        if(!chk) return false;
 
         chk = getInputData('arsAgree');
         if(chk !== "Y"){
@@ -942,6 +958,9 @@
     }
     //납부계좌확인...
     function setBankAbledConfirm(){
+        var paymethod = paymentFiledValidation();
+        if(paymethod == "") return false;
+
         var values = bankValidation.getValues();
         var sendata = {
             confirmType: "bank",
@@ -973,6 +992,9 @@
 
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        var chk = paymentValidation();
+        if(!chk) return;        
+
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
