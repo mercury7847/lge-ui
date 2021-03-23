@@ -31,21 +31,21 @@
                     //     errorMsg: '정확한 휴대폰번호를 입력해주세요.',
                     //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
                     // },
-                    contactPhoneNo1 : {
-                        pattern: /^(010|011|016|017|018|019)$/,
-                        msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
-                    },
-                    contactPhoneNo2 : {
-                        pattern: /^d{3,4}$/,
-                        msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
-                    },
-                    contactPhoneNo3 : {
-                        pattern: /^d{4}$/,
-                        msgTarget: '.contact-box-err-blocK',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
-                    },
+                    // contactPhoneNo1 : {
+                    //     pattern: /^(010|011|016|017|018|019)$/,
+                    //     msgTarget: '.contact-box-err-blocK',
+                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    // },
+                    // contactPhoneNo2 : {
+                    //     pattern: /^d{3,4}$/,
+                    //     msgTarget: '.contact-box-err-blocK',
+                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    // },
+                    // contactPhoneNo3 : {
+                    //     pattern: /^d{4}$/,
+                    //     msgTarget: '.contact-box-err-blocK',
+                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    // },
                     email:{
                         required: true,
                         //pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -125,7 +125,7 @@
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 authManager = new AuthManager(authOptions);
 
-                self.bindEvent();
+                //self.bindEvent();
             });
         },
         
@@ -184,38 +184,38 @@
                 });
             });
 
-            self.$authPopup.on('modalhide', function() {
-                var $this = $(this);
+            // self.$authPopup.on('modalhide', function() {
+            //     var $this = $(this);
 
-                self.$authPopup.find('.btn-send').text('인증번호 발송');
-                $this.find('#authNo').prop('disabled', true);
-                $this.find('input').val('');
-            });
+            //     self.$authPopup.find('.btn-send').text('인증번호 발송');
+            //     $this.find('#authNo').prop('disabled', true);
+            //     $this.find('input').val('');
+            // });
 
-            $('.btn-open, #userName, #phoneNo').on('click', function() {
-                var result = validation.validate(['privcyCheck']);
+            // $('.btn-open, #userName, #phoneNo').on('click', function() {
+            //     var result = validation.validate(['privcyCheck']);
 
-                if (!authFlag && result.success) {
-                    authManager.open(function() {
-                        if ($('#userName').val()) {
-                            $('#authName').val($('#userName').val()).prop('readonly', true);
-                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
-                        }
-                    });
-                }
-            });
+            //     if (!authFlag && result.success) {
+            //         authManager.open(function() {
+            //             if ($('#userName').val()) {
+            //                 $('#authName').val($('#userName').val()).prop('readonly', true);
+            //                 $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
+            //             }
+            //         });
+            //     }
+            // });
 
-            // 인증문자 보내기
-            self.$authPopup.find('.btn-send').on('click', function() {
-                authManager.send(this);
-            });
+            // // 인증문자 보내기
+            // self.$authPopup.find('.btn-send').on('click', function() {
+            //     authManager.send(this);
+            // });
 
-            // 인증 완료 하기
-            self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm('.btn-open', function(success, result) {
-                    authFlag = success;
-                });
-            });
+            // // 인증 완료 하기
+            // self.$authPopup.find('.btn-auth').on('click', function() {
+            //     authManager.confirm('.btn-open', function(success, result) {
+            //         authFlag = success;
+            //     });
+            // });
 
             // $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
             //     this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');

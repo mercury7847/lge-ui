@@ -62,7 +62,6 @@ $(function() {
         $('.container').css({ 'overflow': 'visible', 'height': 'auto' });
 
         $('.next-arr').on('click', 'a', function(e) {
-            console.log("aaaa");
             e.preventDefault();
             var step = $(e.currentTarget).data('currentStep');
             if (step) currentStep = step;
@@ -126,7 +125,6 @@ $(function() {
 
         // 휠 애니메이션 스탭
         function wheelScene(delta) {
-
             if (!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;

@@ -216,9 +216,8 @@
             e.preventDefault();
             var _domain = location.origin;
             var _url = _domain + $(this).attr('href');
-
             window.open(_url, "width=1070, height=" + window.innerHeight + ", location=no, menubar=no, status=no, toolbar=no");
-            window.close();
+            // window.close();
         });
 
         //현재 창 닫고 해당 url로 이동
@@ -231,8 +230,7 @@
 
         $(document).on('click', '.btn-page-close', function(e){
             window.close();
-            e.preventDefault();
+            return false;
         })
-        
     });
 })();
