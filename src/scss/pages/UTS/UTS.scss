@@ -902,9 +902,9 @@
                 line-height:38px;
                 font-weight:700;
                 text-align:center;
-                @include mobile {
-                    display:none;
-                }
+                // @include mobile {
+                //     display:none;
+                // }
             }
             .select-dl {
                 display:table;
