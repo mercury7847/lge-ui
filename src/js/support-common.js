@@ -2508,7 +2508,9 @@ function validatePhone(value){
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
 
-        if ($('.ui_common_scroll').length && !lgkorUI.isMobile()) $('.ui_common_scroll').mCustomScrollbar();
+        if ($('.ui_common_scroll').length && !vcui.detect.isMobileDevice) {
+            $('.ui_common_scroll').mCustomScrollbar();
+        }
 
         $(document).on('input', 'input[type="text"]', function(){
             if (this.maxLength > 0 && this.value.length > this.maxLength){

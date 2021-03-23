@@ -230,10 +230,8 @@
         })
 
         $(document).on('click', '.btn-page-close', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            self.opener = self;
             window.close();
+            return false;
         })
     });
 })();

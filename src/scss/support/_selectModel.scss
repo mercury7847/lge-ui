@@ -831,7 +831,8 @@
 }
 
 //모바일 디바이스 스크롤 오토
-.mobile .prod-search-wrap .category-box .category-list-wrap>.category-list>li .box.on .sub-category .mCustomScrollBox {overflow:auto;}
+.mobile .prod-search-wrap .category-box .category-list-wrap>.category-list>li .box.on .sub-category-list {position: relative; height:100%; overflow:auto;}
+
 
 @keyframes btnExpand {
     0% {

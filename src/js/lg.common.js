@@ -541,8 +541,6 @@ var isApp = function(){
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
-
-                self.loadKakaoSdkForShare();
             });
 
             vcui.require([
@@ -588,7 +586,8 @@ var isApp = function(){
                     }
                 }).start();
             });
-            //self.loadKakaoSdkForShare();
+
+            self.loadKakaoSdkForShare();
         },
 
         //top 버튼 컨틀롤...
