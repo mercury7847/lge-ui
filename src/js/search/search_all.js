@@ -323,7 +323,7 @@
                     var fi = searchUrl.indexOf('?');
                     var url = searchUrl + ((fi<0) ? "?" : "&") +"search="+encodeURIComponent(search)+"&force="+force;
                     if(curation) {
-                        url += ("&curatuion="+curation);
+                        url += ("&curation="+curation);
 
                     } else if(smartFilter) {
                         url += ("&smartFilter="+smartFilter);
