@@ -87,18 +87,19 @@
                     var referrer = document.referrer;
                     var currentUrl = location.href.split("//")[1].split('/')[0];
                     var compareUrl = currentUrl + $item.attr('data-bottom-compare-url');
-                    //
-                    var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
-                    var array = cookieValue.split('|');
-                    var checkCookieCount = 5; 
-
-                    if(!(!compareUrl) && referrer && (referrer.indexOf(compareUrl) != -1) && check) {
+                    
+                    if(compareUrl && referrer && (referrer.indexOf(compareUrl) != -1)) {
+                        //제품 비교하기 페이지에서 제품 페이지 진입 시
+                        self.reloadComponent($item, data.storeConsultation);
+                    } else {
                         //최근 본 제품이 4개 이하인 경우
-                        if(array.length < checkCookieCount) {
+                        var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
+                        var array = cookieValue.split('|');
+                        var checkCookieCount = 5; 
+
+                        if(check && array.length < checkCookieCount) {
                             self.reloadComponent($item, data.categoryBestProduct);
                         }
-                    } else {
-                        self.reloadComponent($item, data.storeConsultation);
                     }
                 }
             });
