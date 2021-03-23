@@ -1339,11 +1339,13 @@
             display: none;
             position: absolute;
             right: 11px;
-            top : -4px;
+            // top : -4px;
+            top: 59px;
             width: 34px;
             height: 34px;
             background: url('/lg5-common/images/icons/icon-app-settings.svg') no-repeat center center;
             background-size: 20px;
+            z-index: 113;
             &.active {
                 display: block;
             }
@@ -1425,6 +1427,14 @@ html {
                     margin-left:6px;
                     background:url('/lg5-common/images/icons/icon-float-arr-16.svg') no-repeat 0 0;
                     vertical-align:-2px;
+                }
+                i{
+                    display:inline-block;
+                    margin-right:5px;
+                    width:18px;
+                    height:19px;
+                    background:url('/lg5-common/images/MAP/ico_ar.png') no-repeat left top;
+                    background-size:100%;
                 }
             }
             a {

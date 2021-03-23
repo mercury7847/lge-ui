@@ -24,7 +24,7 @@ var Curation = (function() {
     var sFilterResultTemplate = '<li data-filter-id="{{filterId}}" data-filter-value-id="{{filterValueId}}">' +
         '<div class="rounded">' +
             '<span class="text">{{filterValueName}}</span>' +
-            '<button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
+            '<a href="#sf" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
         '</div>' +
     '</li>'
 
@@ -116,7 +116,7 @@ var Curation = (function() {
             });
 
             //스마트필터 결과 리스트 아이템 삭제 버튼
-            self.$smartFilterResult.on('click', 'button.btn-delete', function(e){
+            self.$smartFilterResult.on('click', 'a.btn-delete', function(e){
                 e.preventDefault();
                 var $li = $(this).parents('li');
                 var filterValueId = $li.data('filterValueId');
