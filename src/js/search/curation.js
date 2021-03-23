@@ -1,6 +1,6 @@
 var Curation = (function() {
     //큐레이션 템플릿
-    var curationTemplate = '<li><a href="#{{curationId}}" class="curation"><span>{{text}}</span></a></li>';
+    var curationTemplate = '<li><a href="#" class="curation" data-curation="{{curationId}}"><span>{{text}}</span></a></li>';
     var sFilterTemplate = '<li class="row" {{#if hidden}}style="display: none;"{{/if}}>' +
         '<div class="label">{{filterGroupName}}</div>' +
         '<div class="content">' +
@@ -28,18 +28,19 @@ var Curation = (function() {
         '</div>' +
     '</li>'
 
-    function Curation($targetCuration, smartFilterChangeEventFunc) {
+    function Curation($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
         var self = this;
-        self._setting($targetCuration, smartFilterChangeEventFunc);
+        self._setting($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc);
         self._bindEvents();
     }
 
     //public
     Curation.prototype = {
-        _setting: function($targetCuration, smartFilterChangeEventFunc) {
+        _setting: function($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
             var self = this;
             self.$el = $targetCuration;
             self.smartFilterChangeEventFunc = smartFilterChangeEventFunc;
+            self.curationSelectEventFunc = curationSelectEventFunc;
 
             self.$curation = self.$el.find('div.recommended-curation');
             self.$smartFilterList = self.$el.find('div.smart-filter');
@@ -91,6 +92,15 @@ var Curation = (function() {
             //리사이즈할 경우 스마트 필터의 열고닫기 버튼을 새로 계산
             $(window).on('resizeend', function(){
                 self.resizeCalcSmartFilter();
+            });
+
+            //스마트 큐레이션 아이템 클릭
+            self.$curation.on('click', 'a.curation', function(e){
+                e.preventDefault();
+                var selectCuration = this.dataset.curation;
+                console.log(selectCuration);
+
+                self.curationSelectEventFunc(selectCuration);
             });
 
             //스마트필터 리스트 아이템 클릭
@@ -176,7 +186,7 @@ var Curation = (function() {
                 });
                 var scrillTab = self.$curation.find('.ui_smooth_scrolltab');
                 scrillTab.vcSmoothScrollTab('refresh');
-                scrillTab.vcSmoothScrollTab('setTabIndex',-1);
+                scrillTab.vcSmoothScrollTab('setTabIndex',-999);
                 
                 self.$curation.show();
             } else {

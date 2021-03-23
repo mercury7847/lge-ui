@@ -216,7 +216,7 @@
             e.preventDefault();
             var _domain = location.origin;
             var _url = _domain + $(this).attr('href');
-            //window.open(_url, "width=1070, height=" + window.innerHeight + ", location=no, menubar=no, status=no, toolbar=no");
+            window.open(_url, "width=1070, height=" + window.innerHeight + ", location=no, menubar=no, status=no, toolbar=no");
             // window.close();
         });
 
