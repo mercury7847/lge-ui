@@ -65,7 +65,9 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             var register = self.options.register || {};
             var newObj = {};
-    
+            
+
+
             self.$el.find('[name]').each(function(index,item){
 
                 var required = $(item).data('required'); 
@@ -96,12 +98,18 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         errorMsg : errorMsg
                     }
 
-                    if(value!=undefined){ 
-                        newObj[item.name]['value'] = value;
-                    }else{
-                        if($(item).is(':checkbox')) newObj[item.name]['value'] = false;
-                    }
+                    if($(item).is(':radio')){
+                        var radioValue = self.$el.find('input[type=radio][name="'+ item.name+'"]:checked').eq(0).val();
+                        if(radioValue) newObj[item.name]['value'] = radioValue;
 
+                    }else{
+
+                        if(value!=undefined){ 
+                            newObj[item.name]['value'] = value;
+                        }else{
+                            if($(item).is(':checkbox')) newObj[item.name]['value'] = false;                            
+                        }
+                    }
 
                     if(pattern) newObj[item.name]['pattern'] = new RegExp(pattern);
                     if(minLength) newObj[item.name]['minLength'] = minLength;
@@ -160,6 +168,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 msg = "";
 
                 var obj = self.register[key];
+
                 if(obj.value) nObj[key] = obj.value;
                 if(obj.msgTarget) msg = obj.msgTarget;
                 $target = self.$el.find('[name='+ key +']');
@@ -342,12 +351,17 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         setValues : function setValues(obj){ 
             var self = this;  
             var $target;  
+
+            console.log(obj);
+
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
                 
                 if($target.is(':radio')){
                     //CS 제외
+
                     if( !$('.contents.support').length ) {
+
                         $target.filter('[value='+ obj[key] +']').prop('checked', true);
                     }
                 } else if($target.is(':checkbox')){                    
