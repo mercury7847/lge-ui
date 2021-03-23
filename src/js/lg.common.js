@@ -324,9 +324,6 @@ var isApp = function(){
 
             vcui.require([  
                 //'helper/responsiveImage',
-                'helper/breakpointDispatcher',
-                'common/header', 
-                'common/footer',  
                 'ui/spinner',         
                 'ui/selectbox',
                 'ui/calendar',
@@ -348,7 +345,10 @@ var isApp = function(){
                 "ui/scrollNavi",
                 "ui/smoothScroll",
                 "ui/smoothScrollTab",
-                'ui/imageFileInput'
+                'ui/imageFileInput',
+                'helper/breakpointDispatcher',
+                'common/header', 
+                'common/footer',  
             ], function (/*ResponsiveImage,*/ BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
@@ -541,9 +541,11 @@ var isApp = function(){
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
+
+                self.loadKakaoSdkForShare();
             });
 
-            self.loadKakaoSdkForShare();
+            //self.loadKakaoSdkForShare();
         },
 
         //top 버튼 컨틀롤...
