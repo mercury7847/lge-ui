@@ -113,6 +113,24 @@
     }
 }
 
+.btn-floating-wrap {
+    .btn-inner {
+        display:none;
+        //&.open {
+        //    display:block;
+        //}
+    }
+
+    &.open {
+        .more-plus-linker {
+            transform:rotate(45deg);
+        }
+        .btn-inner {
+            display: block;
+        }
+    }
+}
+
 .floating-menu {
 	position:fixed;
 	opacity:1;
@@ -128,7 +146,7 @@
         }
 	}
 	&.top {
-        right:56px;
+        right:48px;
         bottom:48px;
         @include mobile {
             right:20px;
@@ -153,7 +171,7 @@
 		}
 	}
 	&.chat {
-        right:56px;
+        right:48px;
         bottom:(112px+72px+12px);
 
         @include mobile {
@@ -162,7 +180,7 @@
         }
     }
     &.cs-call {
-        right:56px;
+        right:48px;
         bottom:(112px+172px);
         @include mobile {
             right:24px;
@@ -170,15 +188,21 @@
         }
     }
     &.more-plus {
-        right:112px;
-        bottom:(112px+72px+28px);
+        //right:112px;
+        //bottom:(112px+72px+28px);
+        //@include mobile {
+        //    right:36px;
+        //    bottom:155px;
+        //}
+        right:48px;
+        bottom:104px + 16px;
         @include mobile {
-            right:36px;
-            bottom:155px;
+            right:20px;
+            bottom:92px;
         }
     }
     &.btn3 {
-        right:56px;
+        right:48px;
         bottom:460px;
         @include mobile {
             right:24px;
@@ -186,7 +210,7 @@
         }
     }
     &.btn4 {
-        right:56px;
+        right:48px;
         bottom:548px;
         @include mobile {
             right:24px;
@@ -194,7 +218,7 @@
         }
     }
     &.lately {
-        right:56px;
+        right:48px;
         bottom:192px;
         z-index:101;
         @include mobile {
@@ -203,14 +227,71 @@
         }
     }
     &.cs-cst {
-        right:56px;
+        right:48px;
         bottom:120px;
         @include mobile {
             right:20px;
             bottom:92px;
         }
     }
+    &.floating-list {
+        right:48px;
+        bottom:104px + 32px + 56px;
+        @include mobile {
+            right:20px;
+            bottom:80px + 24px + 56px;
+        }
+        display: flex;
+        flex-direction: column-reverse;
+    }
 
+    .floating-linker {
+        &:not(:last-child) {
+            margin-top: 16px;
+        }
+        a {
+            display: block;
+            min-width: 170px;
+            padding: 14px 68px 14px 28px;
+            border: 1px solid $color-white;
+            border-radius: 28px;
+            box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
+            background: no-repeat right 16px center;
+            text-align: center;
+            &:active {
+                border: 1px solid $color-primary;
+            }
+            @include mobile {
+                min-width: 140px;
+                padding: 12px 52px 12px 24px;
+                background-size: 32px;
+            }
+        }
+        .text {
+            font-weight: 500;
+            @include font-medium;
+        }
+        &.cs-cst {
+            a {
+                background-image:url('/lg5-common/images/icons/icon-phone-40.svg');
+            }
+        }
+        &.chat {
+            a {
+                background-image:url('/lg5-common/images/icons/icon-chat-40.svg');
+            }
+        }
+        &.my-collection {
+            a {
+                background-image:url('/lg5-common/images/icons/icon-mycollection-40.svg');
+            }
+        }
+        &.recently {
+            a {
+                background-image:url('/lg5-common/images/icons/icon-recently-40.svg');
+            }
+        }
+    }
 	.chatbot-linker {
 		width:88px;
         height:88px;
@@ -239,11 +320,11 @@
     }
     .more-plus-linker {
         position:relative;
-        width:64px;
-        height:64px;
+        width:56px;
+        height:56px;
         border-radius:50%;
-        background-color:#EC455A;
-        box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        background-image: linear-gradient(315deg, #fb5a72, #fa263e);
+        background-color:#fa263e;
         transition:opacity 0.8s ease-out, transform 0.5s ease-out;
         &:before {
             content:' ';
@@ -251,14 +332,15 @@
             position:absolute;
             top:50%;
             left:50%;
-            width:23px;
-            height:23px;
+            width:40px;
+            height:40px;
             background:url('/lg5-common/images/icons/icon-more-plus-x.svg') no-repeat;
-            background-size:23px 23px;
+            background-size:100%;
             transform:translate(-50%, -50%);
         }
         a {
 			display:block;
+            position:relative;
 			width:100%;
 			height:100%;
             color:#fff;

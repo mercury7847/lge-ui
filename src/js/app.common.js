@@ -26,7 +26,7 @@ $(document).ready(function() {
 
             if($(".main-wrap").length > 0){
                 //Quick메뉴 AR 버튼 추가
-                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt">우리집에 제품을 가상으로 배치해보세요.</span></a></div></div>');
+                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요.</span></a></div></div>');
                 //$("#quickMenu").prepend('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
                 //Quick메뉴 AR 버튼 이벤트
                 $(".btn-app-ar a").off("click").on({
@@ -184,36 +184,30 @@ $(document).ready(function() {
         }
 
         LGEAPPsetArBarcode = function() {
-            if (window.breakpoint.isMobile) {
-                //제조번호 카메라 버튼 노출
-                $('#appType').addClass("app-type");
-                //제조번호 카메라 버튼 이벤트
-                $(".app-exec").off("click").on({
-                    click : function() {
-                        if (isApp()) {
-                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                                var obj = new Object();
-                                obj.command = "scanBarcode";
-                                obj.callback ="LGEAPPreturnArBarcode";
-                                var jsonString= JSON.stringify(obj);
-                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                            } else {
-                                void android.openBarcodeScanner("LGEAPPreturnArBarcode");
-                            }
+            //console.log('event!');
+            //제조번호 카메라 버튼 이벤트
+            $(".app-exec").off("click").on({
+                click : function() {
+                    if (isApp()) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            var obj = new Object();
+                            obj.command = "scanBarcode";
+                            obj.callback ="LGEAPPreturnArBarcode";
+                            var jsonString= JSON.stringify(obj);
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                         } else {
-                            var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-
-                            obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                            var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-
-                            lgkorUI.confirm(desc, obj);
+                            void android.openBarcodeScanner("LGEAPPreturnArBarcode");
                         }
+                    } else {
+                        var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+
+                        obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
+                        var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+
+                        lgkorUI.confirm(desc, obj);
                     }
-                });
-            } else {
-                //제조번호 카메라 버튼 비노출
-                $('#appType').removeClass("app-type");
-            }
+                }
+            });
         }
 
         //리턴 된 바코드 값 입력
@@ -244,11 +238,13 @@ $(document).ready(function() {
             }
         }
 
-        LGEAPPsetArBarcode();
-        $(window).on({
-            resize : function() {
-                LGEAPPsetArBarcode();
-            }
-        });
+        if (isApp()) {
+            LGEAPPsetArBarcode();
+            $(window).on({
+                resize : function() {
+                    LGEAPPsetArBarcode();
+                }
+            });
+        }
     }
 });

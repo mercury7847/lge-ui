@@ -100,8 +100,18 @@
                         self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
 
                         var filterData  = self.filterLayer.getDataFromFilter();
+                        if(data && data.data && data.data.length > 0) {
+                            //스마트 필터가 있으면 사이드 필터 제거
+                            filterData.filterData = null;
+                        }
                         filterData.smartFilter = sendData;
                         self.requestSearch(self.makeFilterData(filterData));
+                    }, function(data){
+                        //큐레이션 선택
+                        var filterData  = {};
+                        filterData.curation = data;
+                        console.log(filterData);
+                        self.requestSearch(filterData);
                     });
                     
                     self.savedFilterData = null;
@@ -131,9 +141,23 @@
                         //현재 선택된 카테고리 기준으로 검색
                         self.setinputSearchValue(value);
                         var filterQueryData = self.getListSortingData();
-                        //스마트필터 추가
-                        var smartFilter = lgkorUI.getParameterByName('smartFilter');
-                        filterQueryData.smartFilter = smartFilter;
+
+                        //큐레이션 추가
+                        var curation = lgkorUI.getParameterByName('curation');
+                        if(curation && curation.length > 0) {
+                            filterQueryData.filterData = null;
+                            filterQueryData.curation = curation;
+                            console.log('test',curation);
+                        } else {
+                            //스마트필터 추가
+                            var smartFilter = lgkorUI.getParameterByName('smartFilter');
+                            if(smartFilter && smartFilter.length > 0) {
+                                //스마트 필터가 있으면 사이드 필터 제거
+                                filterQueryData.filterData = null;
+                                filterQueryData.smartFilter = smartFilter;
+                            }
+                        }
+
                         self.requestSearchData(value, force, filterQueryData, true);
                     }
 
@@ -218,7 +242,9 @@
                 self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
                 self.$searchResult = self.$contWrap.find('div.search-result-wrap');
                 self.$listSorting = self.$searchResult.find('div.list-sorting');
-                
+                //
+                self.$sortListCurationHidden = self.$listSorting.find('div.sort-list');                
+
                 //필터
                 self.$layFilter = self.$contWrap.find('div.lay-filter');
                 //모바일 필터열기버튼
@@ -657,9 +683,15 @@
                     if(data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
-                        if(self.savedFilterData && self.savedFilterData.filterData) {
-                            var filterData = JSON.parse(self.savedFilterData.filterData);
-                            self.filterLayer.resetFilter(filterData);
+
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            //스마트 필터가 존재하면 사이드 필터 숨김
+                            filterShow = false;
+                        } else {
+                            if(self.savedFilterData && self.savedFilterData.filterData) {
+                                var filterData = JSON.parse(self.savedFilterData.filterData);
+                                self.filterLayer.resetFilter(filterData);
+                            }
                         }
                     }
 
@@ -733,7 +765,16 @@
 
                     //스마트 필터
                     self.curationLayer.setCurationData(data);
-                    if(!vcui.isEmpty(filterQueryData.smartFilter)) {
+                    //스마트필터중 큐레이션이 있으면 sort, 검색내검색, 구매가능 등을 숨긴다
+                    if(vcui.isEmpty(data.curation)) {
+                        self.$sortListCurationHidden.show();
+                    } else {
+                        self.$sortListCurationHidden.hide();
+                    }
+                    if(!vcui.isEmpty(filterQueryData.curation)) {
+                        //큐레이션이 이미 존재하였다
+                        self.curationLayer.resetCuration(filterQueryData.curation);
+                    } else if(!vcui.isEmpty(filterQueryData.smartFilter)) {
                         //스마트필터가 이미 존재하였다
                         self.curationLayer.resetFilter(filterQueryData.smartFilter);
                     }
@@ -780,6 +821,9 @@
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
+                        } else {
+                            self.$contWrap.removeClass('w-filter');
+                            self.$layFilter.hide();
                         }
                         self.$btnFilter.show();
                         //

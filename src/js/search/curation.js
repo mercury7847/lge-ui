@@ -1,6 +1,6 @@
 var Curation = (function() {
     //큐레이션 템플릿
-    var curationTemplate = '<li><a href="#{{curationId}}" class="curation"><span>{{text}}</span></a></li>';
+    var curationTemplate = '<li><a href="#" class="curation" data-curation="{{curationId}}"><span>{{text}}</span></a></li>';
     var sFilterTemplate = '<li class="row" {{#if hidden}}style="display: none;"{{/if}}>' +
         '<div class="label">{{filterGroupName}}</div>' +
         '<div class="content">' +
@@ -24,22 +24,23 @@ var Curation = (function() {
     var sFilterResultTemplate = '<li data-filter-id="{{filterId}}" data-filter-value-id="{{filterValueId}}">' +
         '<div class="rounded">' +
             '<span class="text">{{filterValueName}}</span>' +
-            '<button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
+            '<a href="#sf" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>' +
         '</div>' +
     '</li>'
 
-    function Curation($targetCuration, smartFilterChangeEventFunc) {
+    function Curation($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
         var self = this;
-        self._setting($targetCuration, smartFilterChangeEventFunc);
+        self._setting($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc);
         self._bindEvents();
     }
 
     //public
     Curation.prototype = {
-        _setting: function($targetCuration, smartFilterChangeEventFunc) {
+        _setting: function($targetCuration, smartFilterChangeEventFunc, curationSelectEventFunc) {
             var self = this;
             self.$el = $targetCuration;
             self.smartFilterChangeEventFunc = smartFilterChangeEventFunc;
+            self.curationSelectEventFunc = curationSelectEventFunc;
 
             self.$curation = self.$el.find('div.recommended-curation');
             self.$smartFilterList = self.$el.find('div.smart-filter');
@@ -93,6 +94,14 @@ var Curation = (function() {
                 self.resizeCalcSmartFilter();
             });
 
+            //스마트 큐레이션 아이템 클릭
+            self.$curation.on('click', 'a.curation', function(e){
+                e.preventDefault();
+                var selectCuration = this.dataset.curation;
+                
+                self.curationSelectEventFunc(selectCuration);
+            });
+
             //스마트필터 리스트 아이템 클릭
             self.$smartFilterList.on('click', 'div input', function(e){
                 var checked = this.checked;
@@ -116,7 +125,7 @@ var Curation = (function() {
             });
 
             //스마트필터 결과 리스트 아이템 삭제 버튼
-            self.$smartFilterResult.on('click', 'button.btn-delete', function(e){
+            self.$smartFilterResult.on('click', 'a.btn-delete', function(e){
                 e.preventDefault();
                 var $li = $(this).parents('li');
                 var filterValueId = $li.data('filterValueId');
@@ -176,7 +185,7 @@ var Curation = (function() {
                 });
                 var scrillTab = self.$curation.find('.ui_smooth_scrolltab');
                 scrillTab.vcSmoothScrollTab('refresh');
-                scrillTab.vcSmoothScrollTab('setTabIndex',-1);
+                scrillTab.vcSmoothScrollTab('setTabIndex',-999);
                 
                 self.$curation.show();
             } else {
@@ -290,15 +299,43 @@ var Curation = (function() {
             }
         },
 
+        resetCuration: function(data, triggerFilterChangeEvent) {
+            var self = this;
+
+            self.$curation.find('ul.curation-list > li').removeClass('on');
+            var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
+            $a.parents('li').addClass('on');
+        },
+
         resetFilter: function(data, triggerFilterChangeEvent) {
             var self = this;
 
             var filterData = JSON.parse(data);
-            //console.log(filterData);
-            var arr = filterData.data.split('||');
-            if(arr instanceof Array) {
-                arr.forEach(function(item,index) {
-                    var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+            if(filterData && filterData.data) {
+                var arr = filterData.data.split('||');
+                if(arr instanceof Array) {
+                    arr.forEach(function(item,index) {
+                        var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                        if($input.length > 0) {
+                            $input.prop('checked',true);
+
+                            var param = {
+                                "filterId": $input.data('filterId'),
+                                "filterValueId": $input.val(),
+                                "filterValueName": $input.attr('name')
+                            }
+
+                            var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                            if($findLi.length < 1) {
+                                self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
+                                self.$smartFilterResult.show();
+                            }
+                        }
+                    });
+
+                    self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                } else if(typeof arr === 'string' || arr instanceof String){
+                    var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
                     if($input.length > 0) {
                         $input.prop('checked',true);
 
@@ -314,32 +351,13 @@ var Curation = (function() {
                             self.$smartFilterResult.show();
                         }
                     }
-                });
 
-                self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-            } else if(typeof arr === 'string' || arr instanceof String){
-                var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
-                if($input.length > 0) {
-                    $input.prop('checked',true);
-
-                    var param = {
-                        "filterId": $input.data('filterId'),
-                        "filterValueId": $input.val(),
-                        "filterValueName": $input.attr('name')
-                    }
-
-                    var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
-                    if($findLi.length < 1) {
-                        self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                        self.$smartFilterResult.show();
-                    }
+                    self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                 }
 
-                self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-            }
-
-            if(triggerFilterChangeEvent) {
-                self.triggerFilterChangeEvent();
+                if(triggerFilterChangeEvent) {
+                    self.triggerFilterChangeEvent();
+                }
             }
         }
     }

@@ -275,25 +275,25 @@
                                         <li>
                                             <div class="rounded">
                                                 <span class="text">SSD 1TB</span>
-                                                <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="rounded">
                                                 <span class="text">LPDDR4x32GB</span>
-                                                <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="rounded">
                                                 <span class="text">인텔 10세대 타이거레이크 i7</span>
-                                                <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="rounded">
                                                 <span class="text">인텔 10세대 타이거레이크 i5</span>
-                                                <button type="button" class="btn-delete"><span class="blind">선택한 항목 삭제</span></button>
+                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -319,14 +319,16 @@
                 <!-- // 검색 결과 없음 -->
 
                 <div class="cont-wrap w-filter"><!-- filter 보임 class : w-filter -->
+                    <!-- 210323 문구수정 -->
                     @@include('./common/modules/list-filter.html', {
                         "search" : true,
                         "serviceLinkClass" : "product",
                         "btmLink" : [
-                            {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
+                            {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
                             {"text" : "매장 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"}
                         ]
                     })
+                    <!-- //210323 문구수정 -->
                     <div class="search-result-wrap result-product">
                         <div class="result-area">
                             <!-- 210316 수정 ["필터" 텍스트 추가] -->
@@ -499,7 +501,9 @@
 
                     <div class="mobile-service-link">
                         <ul> 
-                            <li><a href="#n" class="btn-text"><span>매장 방문 예약</span><img src="/lg5-common/images/icons/ic-main-calender-48.svg" alt=""></a></li>
+                            <!-- 210323 문구수정 -->
+                            <li><a href="#n" class="btn-text"><span>매장 상담 신청</span><img src="/lg5-common/images/icons/ic-main-calender-48.svg" alt=""></a></li>
+                            <!-- //210323 문구수정 -->
                         
                             <li><a href="#n" class="btn-text"><span>매장 찾기</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
                             

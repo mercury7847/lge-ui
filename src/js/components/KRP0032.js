@@ -1,4 +1,4 @@
-$(window).ready(function(){
+$(document).ready(function(){
 	if(!document.querySelector('.KRP0032')) return false;
 
 	$('.KRP0032').buildCommonUI();
@@ -34,9 +34,8 @@ $(window).ready(function(){
             });
 
             self.$popup.on('click','.ui_modal_close',function(e){
-                self.$popup.addClass('close');
-                self.$popup.removeClass('open');
-                self.$popup.hide();
+                e.preventDefault();
+                self.closePopup();
             });
             
             self.$section.hide();
@@ -58,12 +57,41 @@ $(window).ready(function(){
             });
         },
 
+        //리스트 열기
         openPopup: function() {
             var self = this;
             self.resetImage();
             self.$popup.show();
             self.$popup.removeClass('close');
             self.$popup.addClass('open');
+            //
+            self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+            self.ignoreOverflow = (self.bodyOvewflow != "hidden");
+            if(self.ignoreOverflow){
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+            }
+        },
+
+        //리스트 닫기
+        closePopup: function() {
+            var self = this;
+            self.$popup.addClass('close');
+            self.$popup.removeClass('open');
+            self.$popup.hide();
+            //
+            if(self.ignoreOverflow) {
+                if(self.bodyOvewflow) {
+                    $('html, body').css({
+                        overflow:self.bodyOvewflow
+                    });
+                } else {
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
+            }
         },
 
 		requestData: function(openPopup) {
@@ -103,4 +131,4 @@ $(window).ready(function(){
         }
 	};
 	KRP0032.init();
-})
+});

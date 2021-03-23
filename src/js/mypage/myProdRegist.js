@@ -725,6 +725,14 @@
             var ajaxUrl = self.$contents.attr('data-own-list-url');
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                 var data = result.data;
+                var totalListCount = data.totalListCount ? data.totalListCount : 0;
+                var $title = self.$myProductList.siblings('.tit-wrap');
+                if(parseInt(totalListCount) > 0) {
+                    $title.find('.tit').text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
+                } else {
+                    $title.find('.tit').text('보유 제품 목록');
+                }
+
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$myProductList.find('>ul');
                 $list.empty();
@@ -741,6 +749,10 @@
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
                 self.checkNoData();
+
+                //크레마 리로드
+                lgkorUI.cremaReload();
+
                 if(addNewItem) {
                     $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                 }
@@ -753,6 +765,14 @@
             lgkorUI.requestAjaxData(ajaxUrl, {"page":page}, function(result) {
                 var data = result.data;
                 var param = result.param;
+                var totalListCount = data.totalListCount ? data.totalListCount : 0;
+                var $title = self.$registProductList.siblings('.tit-wrap');
+                if(parseInt(totalListCount) > 0) {
+                    $title.find('.tit').text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
+                } else {
+                    $title.find('.tit').text('등록 가능 제품');
+                }
+
                 self.setPageData(param.pagination);
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$registProductList.find('>ul');
