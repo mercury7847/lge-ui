@@ -184,7 +184,7 @@ $(document).ready(function() {
         }
 
         LGEAPPsetArBarcode = function() {
-            console.log('event!');
+            //console.log('event!');
             //제조번호 카메라 버튼 이벤트
             $(".app-exec").off("click").on({
                 click : function() {
