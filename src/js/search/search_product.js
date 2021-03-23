@@ -100,6 +100,11 @@
                         self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
 
                         var filterData  = self.filterLayer.getDataFromFilter();
+                        console.log('???',data);
+                        if(data.data.length > 0) {
+                            //스마트 필터가 있으면 사이드 필터 제거
+                            filterData.filterData = null;
+                        }
                         filterData.smartFilter = sendData;
                         self.requestSearch(self.makeFilterData(filterData));
                     });
@@ -133,6 +138,10 @@
                         var filterQueryData = self.getListSortingData();
                         //스마트필터 추가
                         var smartFilter = lgkorUI.getParameterByName('smartFilter');
+                        if(smartFilter && smartFilter.length > 0) {
+                            //스마트 필터가 있으면 사이드 필터 제거
+                            filterQueryData.filterData = null;
+                        }
                         filterQueryData.smartFilter = smartFilter;
                         self.requestSearchData(value, force, filterQueryData, true);
                     }
@@ -657,9 +666,15 @@
                     if(data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
-                        if(self.savedFilterData && self.savedFilterData.filterData) {
-                            var filterData = JSON.parse(self.savedFilterData.filterData);
-                            self.filterLayer.resetFilter(filterData);
+
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            //스마트 필터가 존재하면 사이드 필터 숨김
+                            filterShow = false;
+                        } else {
+                            if(self.savedFilterData && self.savedFilterData.filterData) {
+                                var filterData = JSON.parse(self.savedFilterData.filterData);
+                                self.filterLayer.resetFilter(filterData);
+                            }
                         }
                     }
 
@@ -780,6 +795,12 @@
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
+                        //    self.$btnFilter.show();
+                        } else {
+                            console.log('noFIlter');
+                            self.$contWrap.removeClass('w-filter');
+                            self.$layFilter.hide();
+                         //   self.$btnFilter.hide();
                         }
                         self.$btnFilter.show();
                         //
