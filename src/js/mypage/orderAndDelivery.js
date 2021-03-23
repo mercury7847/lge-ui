@@ -1264,14 +1264,13 @@
     function sendChangeConfirm(){
         var sendata = {confirmType: "PAYMENT"};
 
-        lgkorUI.confirm("납부정보 변경을 위해 고객님의 본인인증이 필요합니다. 진행하시겠습니까?", {
-            title: "납부정보 변경",
-            cancelBtnName: "취소",
-            okBtnName: "본인인증",
-            ok: function(){
-                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
-                    if(lgkorUI.stringToBool(result.data.success)){
-
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
+            if(lgkorUI.stringToBool(result.data.success)){
+                lgkorUI.confirm("납부정보 변경을 위해 고객님의 본인인증이 필요합니다. 진행하시겠습니까?", {
+                    title: "납부정보 변경",
+                    cancelBtnName: "취소",
+                    okBtnName: "본인인증",
+                    ok: function(){         
                         window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
                         document.form_chk.action = result.data.niceAntionUrl;
                         document.form_chk.m.value = result.data.m;
@@ -1282,12 +1281,10 @@
                         document.form_chk.param_r3.value = result.data.param_r3;
                         document.form_chk.target = "popupChk";
                         document.form_chk.submit();
-                    } else{
-                        console.log("Fail !!!");
+
+                        // editPaymentInfomation();        
                     }
                 });
-
-                //editPaymentInfomation();
             }
         });
     }
