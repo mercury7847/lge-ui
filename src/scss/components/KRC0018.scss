@@ -162,7 +162,7 @@
 	}
 	@include mobile {
 		.component-inner {
-			padding:0;
+			padding:0 !important;
 		}
 	}
 	.square-partition {
