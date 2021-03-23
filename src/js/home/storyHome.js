@@ -277,6 +277,7 @@
             if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
             else sectionItem.find('.btn-moreview').show();
             
+            console.log("result.data.selectTags:", result.data.selectTags);
             if(result.data.selectTags){
                 sectionItem.find('.inner h2.title').hide();
                 
