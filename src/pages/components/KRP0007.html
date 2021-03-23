@@ -150,13 +150,13 @@
 
                     <div class="plp-list-wrap">
                         <!-- component -->
-                        
-                       @@include('./common/modules/list-filter.html', {
-                           "btmLink" : [
+                        <!-- 210323 문구수정 -->
+                        @@include('./common/modules/list-filter.html', {
+                            "btmLink" : [
                                 {"text" : "나에게 맞는<br>케어솔루션 제품 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
-                                {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"}
-                           ],
-                           "select" : [
+                                {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"}
+                            ],
+                            "select" : [
                                     {"option" : "추천순", "default":'value="popular"'},
                                     {"option" : "인기순", "default":'value="popularity"'},
                                     {"option" : "최신순", "default":'value="latest"'},
@@ -164,7 +164,8 @@
                                     {"option" : "가격 낮은순", "default":'value="pricelow"'},
                                     {"option" : "리뷰 많은순", "default":'value="review"'}
                                 ]
-                       })
+                        })
+                        <!-- //210323 문구수정 -->
                         <!-- // component -->
 
                         <!-- component -->
