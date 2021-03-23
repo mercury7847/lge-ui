@@ -230,6 +230,7 @@
         })
 
         $(document).on('click', '.btn-page-close', function(e){
+            self.opener = self;
             window.close();
             e.preventDefault();
         })
