@@ -107,7 +107,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                         if(value!=undefined){ 
                             newObj[item.name]['value'] = value;
                         }else{
-                            if($(item).is(':checkbox')) newObj[item.name]['value'] = false;                            
+                            //if($(item).is(':checkbox')) newObj[item.name]['value'] = false;                            
                         }
                     }
 
@@ -352,7 +352,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var self = this;  
             var $target;  
 
-            console.log(obj);
 
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
@@ -361,15 +360,16 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     //CS 제외
 
                     if( !$('.contents.support').length ) {
-
                         $target.filter('[value='+ obj[key] +']').prop('checked', true);
                     }
+
                 } else if($target.is(':checkbox')){                    
 
                     //CS 제외
                     if( !$('.contents.support').length ) {
-                        $target.filter('[name='+ key +']').prop('checked', obj[key]);
+                        $target.filter('[value='+ obj[key] +']').prop('checked', true);
                     }
+
                 }else{
                     if($target.is('select')){
 
