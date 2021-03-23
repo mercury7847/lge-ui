@@ -794,12 +794,9 @@
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
-                        //    self.$btnFilter.show();
                         } else {
-                            console.log('noFIlter');
                             self.$contWrap.removeClass('w-filter');
                             self.$layFilter.hide();
-                         //   self.$btnFilter.hide();
                         }
                         self.$btnFilter.show();
                         //
