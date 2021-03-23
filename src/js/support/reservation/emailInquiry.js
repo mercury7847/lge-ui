@@ -232,6 +232,7 @@
                 if (data.productCode) {
                     self.loadInquiry();
                 } else {
+                    self.$inquiryBox.hide();
                     self.nextStepInput();
                 }
             }).on('reset', function() {
