@@ -92,6 +92,7 @@
             });
             */
 
+            /*
             self.$searchLayer.off('modalshown').on('modalshown', function(e, data){
                 console.log('modalSHown');
 
@@ -120,6 +121,7 @@
 
                 //self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
             });
+            */
 
             $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
                 self.updateBasicData();
