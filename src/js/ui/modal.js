@@ -71,9 +71,13 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.add(modal);
             if (self.stack.length === 1) {
                 $(document).triggerHandler('modalfirstopen');
-                $('html, body').css({
-                    overflow:"hidden"
-                });
+
+                var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"hidden"
+                    });
+                }
 
                 //앱에서 처리 못할때를 대비
                 lgkorUI.setEnableAppScrollBottomMenu(false);
@@ -95,9 +99,14 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             } else {
                 self.active = null;
                 $(document).triggerHandler('modallastclose');
-                $('html, body').css({
-                    overflow:"visible"
-                });
+
+                var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
+                
 
                 //앱에서 처리 못할때를 대비
                 lgkorUI.setEnableAppScrollBottomMenu(true);
@@ -110,7 +119,19 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
             
             if (self.active.$el[0] !== e.target && !$.contains(self.active.$el[0], e.target)) {
-                self.active.$el.find(':visible:focusable').first().focus();     
+
+                var $first = self.active.$el.find(':visible:focusable').first(); 
+
+                console.log($first);
+                if($first.is('input')){
+                    setTimeout(function(){
+                        $first.focus(); 
+                        console.log('2');
+                    },100)
+                }else{
+                    $first.focus(); 
+                }
+                    
                 e.stopPropagation();
             }
         },
@@ -261,7 +282,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
             self.$el.addClass('ui_modal_container');
 
-
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
             self.$el.find(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
@@ -409,25 +429,20 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 var $focusEl = self.$el.find('[data-autofocus=true]');
 
                 // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
-                if ($focusEl.length > 0) {
+                if ($focusEl.length > 0) {     
+                    
                     $focusEl.eq(0).focus();
+
                 } else {
                     // 레이어에 포커싱
                     
-                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
-                    self.$el.find(':focusable:visible').first().focus();
+                    var $first = self.$el.find(':visible:focusable').first(); 
+                    $first.focus(); 
+                    
                     //self.$el.focus(); 
 
                 }
 
-                var $focusEl = self.$('[data-autofocus=true]');
-                if ($focusEl.length > 0) {
-                    $focusEl.eq(0).focus();
-                } else {
-                    // self.$el.attr('tabindex', 0).focus(); // 모달내 셀럭터 박스 스크롤 문제
-                    self.$el.find(':focusable:visible').first().focus();
-                    //self.$el.focus(); 
-                }
 
                 // 버튼
                 /**************if (me.options.opener) {
@@ -661,19 +676,20 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
             if ($focusEl.length > 0) {
+                
                 $focusEl.eq(0).focus();
+                
             } else {
                 // 레이어에 포커싱
-                //self.$el.attr('tabindex', 0).focus(); 
-                self.$el.find(':focusable:visible').first().focus();
-                //self.$el.focus(); 
-
+                
+                var $first = self.$el.find(':visible:focusable').first(); 
+                $first.focus(); 
 
             }
             
             $doc.off('focusin' + self.getEventNS()).on('focusin' + self.getEventNS(), self.proxy(function (e) {
                 if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) {
-                    self.$el.find(':focusable:visible').first().focus();
+                    self.$el.find(':focusable:visible').first().focus();                    
                     e.stopPropagation();
                 }
             }));

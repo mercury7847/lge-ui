@@ -76,7 +76,7 @@ $(function () {
         // 플로우배너
 
 
-        
+        $('body').addClass('ignore-overflow-hidden');
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
@@ -611,10 +611,13 @@ $(function () {
             render();
             $('header').find('.header-bottom').addClass('app-btm');
 
+            console.log(isApplication);
+
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
                 render();
+                console.log(e);
             });
             $window.trigger('resizeend');
             // 앱 대응시 주석처리 end
