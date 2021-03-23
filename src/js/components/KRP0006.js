@@ -77,23 +77,24 @@
                         var count = $item.attr('data-top-cookie-count');
                         var checkCookieCount = !count ? 5 : count; 
                         if(array.length >= checkCookieCount) {
-                            //2021-03-17
-                            //현재 서버에서 잘못오고 있어서 임의로 데이타 수정 (큐레이션으로 이동) 큐레이션 url 불확실
-                            //data.productCurationProposal = {"uiInfo": "https://wwwstg.lge.co.kr/my-collection/curation-submain", "uiMessage": "제품 선택에 고민이 있으신가요? 내게 맞는 제품을 찾아보세요."};
                             self.reloadComponent($item, data.productCurationProposal);
                         }
                     }
                 } else if(_type == "r-btm") {
                     //하단영역
                     var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
-                    if(check) {
-                        //제품 비교하기 페이지에서 제품 페이지 진입 시
-                        var referrer = document.referrer;
-                        var currentUrl = location.href.split("//")[1].split('/')[0];
-                        var compareUrl = currentUrl + $item.attr('data-bottom-compare-url');
-                        if(!(!compareUrl) && referrer && (referrer.indexOf(compareUrl) != -1)) {
-                            self.reloadComponent($item, data.storeConsultation);
-                        } else if(check) {
+                    //제품 비교하기 페이지에서 제품 페이지 진입 시
+                    var referrer = document.referrer;
+                    var currentUrl = location.href.split("//")[1].split('/')[0];
+                    var compareUrl = currentUrl + $item.attr('data-bottom-compare-url');
+                    //
+                    var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
+                    var array = cookieValue.split('|');
+                    var checkCookieCount = 5; 
+
+                    if(!(!compareUrl) && referrer && (referrer.indexOf(compareUrl) != -1) && check) {
+                        //최근 본 제품이 4개 이하인 경우
+                        if(array.length < checkCookieCount) {
                             self.reloadComponent($item, data.categoryBestProduct);
                         }
                     } else {
