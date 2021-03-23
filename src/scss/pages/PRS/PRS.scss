@@ -201,11 +201,12 @@
 					min-height:100%;
 				}
 				ul {
+					margin-top: 20px;
 					font-size:0;
 					li {
 						display:inline-block;
 						width:25%;
-						margin-top:48px;
+						margin-top:28px;
 						@media screen and (min-width:768px) and (max-width:1200px) {
 							width:33.33%;
 						}
@@ -977,13 +978,18 @@
 				}
 			}
 			.tabs-contents {
-				padding:40px 0;
+				padding:32px 0;
 				background-color:#f4f4f4;
+				.slide-wrap {
+					padding-bottom: 0;
+				}
 				.category-list {
-					margin-top:0;
 					ul {
+						display: flex;
+						flex-wrap: wrap;
+						margin-top: -43px;
 						li {
-							margin-top:0;
+							margin-top:43px;
 							text-align:center;
 							a {
 								display:block;
