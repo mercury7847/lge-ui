@@ -324,9 +324,7 @@ var isApp = function(){
 
             vcui.require([  
                 //'helper/responsiveImage',
-                'helper/breakpointDispatcher',
-                'common/header', 
-                'common/footer',  
+                //'helper/breakpointDispatcher',
                 'ui/spinner',         
                 'ui/selectbox',
                 'ui/calendar',
@@ -348,48 +346,50 @@ var isApp = function(){
                 "ui/scrollNavi",
                 "ui/smoothScroll",
                 "ui/smoothScrollTab",
-                'ui/imageFileInput'
-            ], function (/*ResponsiveImage,*/ BreakpointDispatcher) {
+                'ui/imageFileInput',
+                'common/header', 
+                'common/footer',  
+            ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
-                new BreakpointDispatcher({
-                    matches: {
-                        '(min-width: 768px)' : function(mq) {
-                            var data;
-                            if (mq.matches) {
-                                // pc
-                                data = {
-                                    name: 'pc',
-                                    min: 768,
-                                    max: 999999,
-                                    isMobile: false,
-                                    isPc: true,
-                                    prev: window.breakpoint || {}
-                                };
+                // new BreakpointDispatcher({
+                //     matches: {
+                //         '(min-width: 768px)' : function(mq) {
+                //             var data;
+                //             if (mq.matches) {
+                //                 // pc
+                //                 data = {
+                //                     name: 'pc',
+                //                     min: 768,
+                //                     max: 999999,
+                //                     isMobile: false,
+                //                     isPc: true,
+                //                     prev: window.breakpoint || {}
+                //                 };
                                 
-                            } else {
-                                // mobile
-                                data = {
-                                    name: 'mobile',
-                                    min: 0,
-                                    max: 767,
-                                    isMobile: true,
-                                    isPc: false,
-                                    prev: window.breakpoint || {}
-                                };
-                            }
+                //             } else {
+                //                 // mobile
+                //                 data = {
+                //                     name: 'mobile',
+                //                     min: 0,
+                //                     max: 767,
+                //                     isMobile: true,
+                //                     isPc: false,
+                //                     prev: window.breakpoint || {}
+                //                 };
+                //             }
     
-                            window.breakpoint = data;
-                            $(window).data('breakpoint', data).trigger('breakpointchange', data);
-                        }
+                //             window.breakpoint = data;
+                //             $(window).data('breakpoint', data).trigger('breakpointchange', data);
+                //         }
     
-                        /* 
-                        '(min-width : 769px) and (max-width : 1599px)' : function(mq){
-                        },
-                        '(min-width : 1600px)' : function(mq){
-                        } 
-                        */
-                    }
-                }).start();     
+                //         /* 
+                //         '(min-width : 769px) and (max-width : 1599px)' : function(mq){
+                //         },
+                //         '(min-width : 1600px)' : function(mq){
+                //         } 
+                //         */
+                //     }
+                // }).start();     
                 
                 /*
                 var breakpoint = {
@@ -541,6 +541,50 @@ var isApp = function(){
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
+            });
+
+            vcui.require([
+                'helper/breakpointDispatcher'
+            ], function (BreakpointDispatcher) {
+                new BreakpointDispatcher({
+                    matches: {
+                        '(min-width: 768px)' : function(mq) {
+                            var data;
+                            if (mq.matches) {
+                                // pc
+                                data = {
+                                    name: 'pc',
+                                    min: 768,
+                                    max: 999999,
+                                    isMobile: false,
+                                    isPc: true,
+                                    prev: window.breakpoint || {}
+                                };
+                                
+                            } else {
+                                // mobile
+                                data = {
+                                    name: 'mobile',
+                                    min: 0,
+                                    max: 767,
+                                    isMobile: true,
+                                    isPc: false,
+                                    prev: window.breakpoint || {}
+                                };
+                            }
+    
+                            window.breakpoint = data;
+                            $(window).data('breakpoint', data).trigger('breakpointchange', data);
+                        }
+    
+                        /* 
+                        '(min-width : 769px) and (max-width : 1599px)' : function(mq){
+                        },
+                        '(min-width : 1600px)' : function(mq){
+                        } 
+                        */
+                    }
+                }).start();
             });
 
             self.loadKakaoSdkForShare();
@@ -1842,6 +1886,15 @@ var isApp = function(){
                 window.cremaAsyncInit = function () {
                     crema.init(null,null);
                 };
+            }
+        },
+
+        //크레마리플래쉬
+        cremaReload:function() {
+            if(typeof crema !== 'undefined' && typeof crema == "object" && typeof crema.run == 'function') {
+                setTimeout(function(){
+                    crema.run();
+                },500);
             }
         },
 

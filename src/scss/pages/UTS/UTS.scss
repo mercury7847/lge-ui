@@ -690,6 +690,13 @@
                     }
                 }
             }
+            @media screen and (min-width: $tablet-l-width + 1) {
+                .search-result-wrap {
+                    float: left;
+                    @include calc(width,100%,240px);
+                    //min-height: 1000px;
+                }
+            }
         }
     }
 
@@ -742,19 +749,7 @@
 
 
 .search-result-wrap {
-    @include clearfix;
-     margin: 0 auto;
-    @media screen and (min-width: $tablet-l-width + 1) {
-        float: left;
-        @include calc(width,100%,240px);
-        //min-height: 1000px;
-    }
-    @include mobile {
-        min-height: auto;
-    }
     &.all {
-        float: none;
-        width: 100%;
         .list-sorting {
             display: none !important;
             &.fixed {
@@ -902,9 +897,9 @@
                 line-height:38px;
                 font-weight:700;
                 text-align:center;
-                @include mobile {
-                    display:none;
-                }
+                // @include mobile {
+                //     display:none;
+                // }
             }
             .select-dl {
                 display:table;

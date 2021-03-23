@@ -974,12 +974,85 @@
                 //케어십 이용요금
                 self.$pdpInfoCareshipService.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
+
+                    var $paymentAmount = self.$pdpInfoCareshipService.siblings('.payment-amount');
+                    var cardData = $paymentAmount.data('cardData');
+                    var carePrice = parseInt($paymentAmount.data('carePrice'));
+
+                    var $careLi = self.$careshipInfoPopup.find('ul.info-list li:eq(0)');
+                    if(carePrice && $careLi.length > 0) {
+                        $careLi.find('dd').text("월 " + vcui.number.addComma(carePrice) + "원")
+                    }
+
+                    var $cardLi = self.$careshipInfoPopup.find('.card-care-pop');
+                    if(cardData && cardData.cardSale && $cardLi.length > 0) {
+                        $cardLi.find('dt').text(cardData.cardSubName);
+                        var cardSale = parseInt(cardData.cardSale);
+                        if(cardSale > 0) {
+                            cardSale = "-" + vcui.number.addComma(cardSale) + "원";
+                        }
+                        $cardLi.find('dd.discount').text(cardSale);
+                        $cardLi.show();
+                    } else {
+                        $cardLi.hide();
+                    }
+
+                    var $total = self.$careshipInfoPopup.find('.total-payment');
+                    if(carePrice && $total.length > 0) {
+                        var total = carePrice;
+                        if(cardData && cardData.cardSale) {
+                            total -= parseInt(cardData.cardSale);
+                        }
+                        if(total < 0) total = 0;
+                        $total.find('dd').text("월 " + vcui.number.addComma(total) + "원");
+                    }
+
                     self.$careshipInfoPopup.vcModal();
                 });
 
                 //케어솔루션 이용요금 
                 self.$pdpInfoCareSiblingOption.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
+                    
+                    var $paymentAmount = self.$pdpInfoCareSiblingOption.siblings('.payment-amount');
+                    var cardData = $paymentAmount.data('cardData');
+                    var carePrice = parseInt($paymentAmount.data('carePrice'));
+                    var careData = $paymentAmount.data('careData');
+
+                    var $title = self.$caresolutionInfoPopup.find('.small-title');
+                    if(careData && careData.dutyTerm && $title.length > 0) {
+                        var $title = self.$caresolutionInfoPopup.find('.small-title');
+                        $title.find('span').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 5년')
+                    }
+
+                    var $careLi = self.$caresolutionInfoPopup.find('ul.info-list li:eq(0)');
+                    if(carePrice && $careLi.length > 0) {
+                        $careLi.find('dd').text("월 " + vcui.number.addComma(carePrice) + "원")
+                    }
+
+                    var $cardLi = self.$caresolutionInfoPopup.find('.card-care-pop');
+                    if(cardData && cardData.cardSale && $cardLi.length > 0) {
+                        $cardLi.find('dt').text(cardData.cardSubName);
+                        var cardSale = parseInt(cardData.cardSale);
+                        if(cardSale > 0) {
+                            cardSale = "-" + vcui.number.addComma(cardSale) + "원";
+                        }
+                        $cardLi.find('dd.discount').text(cardSale);
+                        $cardLi.show();
+                    } else {
+                        $cardLi.hide();
+                    }
+
+                    var $total = self.$caresolutionInfoPopup.find('.total-payment');
+                    if(carePrice && $total.length > 0) {
+                        var total = carePrice;
+                        if(cardData && cardData.cardSale) {
+                            total -= parseInt(cardData.cardSale);
+                        }
+                        if(total < 0) total = 0;
+                        $total.find('dd').text("월 " + vcui.number.addComma(total) + "원");
+                    }
+
                     self.$caresolutionInfoPopup.vcModal();
                 });
 
@@ -1249,7 +1322,8 @@
                 //가격정보
                 var careData = {
                     "rtModelSeq":selectRentalInfoData.rtModelSeq,
-                    "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix
+                    "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix,
+                    "dutyTerm":selectRentalInfoData.dutyTerm
                 }
                 //결헙하여 할인받기 링크용 값 추가
                 $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
@@ -1282,7 +1356,8 @@
                 //가격정보
                 var careData = {
                     "rtModelSeq":selectCareshipInfoData.rtModelSeq,
-                    "caresolutionSalesCodeSuffix":selectCareshipInfoData.caresolutionSalesCodeSuffix
+                    "caresolutionSalesCodeSuffix":selectCareshipInfoData.caresolutionSalesCodeSuffix,
+                    "dutyTerm":selectCareshipInfoData.dutyTerm
                 }
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice});
                 self.updatePaymentAmountPrice($paymentAmount);

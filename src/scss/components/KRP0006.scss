@@ -21,6 +21,7 @@
             @include font-large;
             font-weight:500;
             @include textEllipsisClamp(2);
+            word-break:keep-all;
             @include mobile {
                 padding:0 40px 0 0;
             }

@@ -110,6 +110,9 @@
             $('html,body').scrollTop(pageLens*winHeight);
         });
 
+        // 모달이후 overflow :visible 문제 해결
+        $('body').addClass('ignore-overflow-hidden');
+
 
         $('#fixed-wrap').children().css({'overflow':'hidden'});
         $('html').css({'overflow':'hidden'});

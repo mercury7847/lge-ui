@@ -176,7 +176,7 @@
                 position: absolute;
                 left: 5%;
                 top: 30%;
-                z-index: 9;
+                z-index: 10;
                 @include mobile {
                     left: 15px;
                     top: 5%;
@@ -357,6 +357,7 @@
                 line-height: 1;
                 letter-spacing: -0.69px;
                 color: #222222;
+                z-index: 10;
                 @include mobile {
                     left: 15px;
                     font-size: 42px;
@@ -787,5 +788,368 @@
         opacity: 1;
         -webkit-transform: none;
         transform: none;
+    }
+}
+
+
+/* 제품 */
+
+#collection-list {
+    padding: 100px 0px 160px;
+    .list {
+        width: 100%;
+        margin: 0 auto;
+        >ul {
+            overflow: hidden;
+            >li {
+                float: left;
+                position: relative;
+                margin-top: 20px;
+                margin-left: 20px;
+                width: calc((100% - 40px)/3);
+                height: 560px;
+                background: #eae9e7;
+                &.list01 {
+                    width: calc(((100% - 40px)*2)/3 + 20px);
+                    >a {
+                        position: relative;
+                        z-index: 9;
+                        padding: 198px 80px;
+                        -webkit-transition-duration: 0.4s;
+                        transition-duration: 0.4s;
+                        .name {
+                            position: relative;
+                            z-index: 10;
+                            font-size: 40px;
+                            font-weight: bold;
+                            line-height: 1.3;
+                            letter-spacing: -0.34px;
+                            color: #101010;
+                        }
+                        .btn {
+                            display: inline-block;
+                            margin-top: 28px;
+                            padding: 16px 24px;
+                            font-family: Inter;
+                            font-size: 16px;
+                            font-weight: 500;
+                            line-height: 1.38;
+                            letter-spacing: -0.09px;
+                            color: #fefefe;
+                            background: #101010;
+                        }
+                        .fenix {
+                            position: absolute;
+                            z-index: 9;
+                            top: 170px;
+                            right: 218px;
+                            font-family: Inter;
+                            font-size: 80px;
+                            font-weight: bold;
+                            line-height: 1.2;
+                            letter-spacing: -0.74px;
+                            color: #fefefe;
+                        }
+                        .img {
+                            position: absolute;
+                            right: 72px;
+                            z-index: 8;
+                            top: 124px;
+                            box-shadow: 0 20px 40px 0 #00000028;
+                        }
+                        .img2 {
+                            position: absolute;
+                            z-index: 10;
+                            right: 206px;
+                            top: 244px;
+                            box-shadow: 0 20px 40px 0 #00000028;
+                        }
+                        &:hover {
+                            padding: 198px 80px;
+                            .fenix,
+                            .img,
+                            .img2 {
+                                opacity: 0;
+                                filter: opacity(0);
+                            }
+                            .btn {
+                                color: #fff;
+                            }
+                        }
+                    }
+                    .bgList {
+                        position: absolute;
+                        z-index: 9;
+                        width: 100%;
+                        height: 100%;
+                        top: 0px;
+                        left: 0px;
+                        opacity: 0;
+                        background: url("/lg5-common/images/OBJ/main/list01-hover.jpg") no-repeat;
+                        background-size: cover;
+                        -webkit-transition-duration: 0.4s;
+                        transition-duration: 0.4s;
+                    }
+                    &:hover {
+                        .bgList {
+                            opacity: 1;
+                        }
+                    }
+                }
+                &.list02 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/rf.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-rf-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list03 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/ct.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-rf-con-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list04 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/kimchi.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-rf-kimchi-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list05 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/wash.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/wash-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list06 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/styler.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-styler-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                // &.list07 {
+                //     width: 860px;
+                //     background: url("/lg5-common/images/OBJ/main/list07-hover.jpg") no-repeat;
+                //     .bgList {
+                //         background: url("/lg5-common/images/OBJ/main/list07-hover.jpg") no-repeat;
+                //     }
+                // }
+                &.list08 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/oven.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-oven-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list09 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/dw.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-dish-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list10 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/water.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-water-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list11 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/cleaner.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-cleaner-hover.png") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list12 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/aircon.png") no-repeat center center;
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-aircon-hover.png") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &:nth-child(3n-2) {
+                    margin-left: 0;
+                }
+                >a {
+                    position: relative;
+                    z-index: 9;
+                    display: block;
+                    height: 560px;
+                    padding: 492px 32px 0px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    letter-spacing: -0.1px;
+                    color: #787878;
+                    &:hover {
+                        padding: 440px 32px 0px;
+                        font-size: 32px;
+                        font-weight: bold;
+                        line-height: 1.63;
+                        letter-spacing: -0.27px;
+                        color: #fefefe;
+                        background: none;
+                        .txt {
+                            opacity: 1;
+                        }
+                    }
+                    .txt {
+                        opacity: 0;
+                        font-size: 16px;
+                        font-weight: normal;
+                        line-height: 1.5;
+                        letter-spacing: -0.1px;
+                        color: #fefefe;
+                    }
+                }
+                .bgList {
+                    position: absolute;
+                    z-index: 9;
+                    width: 100%;
+                    height: 100%;
+                    top: 0px;
+                    left: 0px;
+                    opacity: 0;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                }
+                &:hover {
+                    .bgList {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 체험하기 */
+
+.signature-experience {
+    .textExp {
+        position: absolute;
+        top: 100px;
+        left: 150px;
+        opacity: 0.8;
+        font-family: Inter;
+        font-size: 160px;
+        font-weight: bold;
+        line-height: 1;
+        letter-spacing: -0.69px;
+        color: #ffffff;
+    }
+    .mtbi_start {
+        max-width: 880px;
+        position: absolute;
+        left: 50%;
+        top: 23%;
+        transform: translateX(-50%)
+    }
+    .mtbi-test {
+        position: absolute;
+        overflow: hidden;
+        left: 0px;
+        width: 420px;
+        height: 520px;
+        box-shadow: 0 24px 40px 0 #00000028;
+        -moz-box-shadow: 0 24px 40px 0 #00000028;
+        -webkit-box-shadow: 0 24px 40px 0 #00000028;
+        .mtbi-bx-image {
+            position: absolute;
+            z-index: 998;
+            top: 0px;
+            left: 0px;
+            width: 420px;
+            height: 520px;
+            background: url("/lg5-common/images/OBJ/main/intro-pc-01.jpg") no-repeat;
+            background-size: cover;
+            transition: all 1s;
+        }
+    }
+    .mtbi-pass {
+        position: absolute;
+        overflow: hidden;
+        right: 0px;
+        width: 420px;
+        height: 520px;
+        box-shadow: 0 24px 40px 0 #00000028;
+        -moz-box-shadow: 0 24px 40px 0 #00000028;
+        -webkit-box-shadow: 0 24px 40px 0 #00000028;
+        .mtbi-bx-image {
+            position: absolute;
+            z-index: 998;
+            top: 0px;
+            left: 0px;
+            width: 420px;
+            height: 520px;
+            background: url("/lg5-common/images/OBJ/main/intro-pc-02.jpg") no-repeat;
+            background-size: cover;
+            transition: all 1s;
+        }
+    }
+    .mtbi-bx {
+        cursor: pointer;
+        .sub-title {
+            margin-top: 254px;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.38;
+            letter-spacing: -0.1px;
+            color: #fefefe;
+        }
+        .title {
+            margin-top: 16px;
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 1.3;
+            letter-spacing: -0.34px;
+            color: #fefefe;
+        }
+        &:hover {
+            .mtbi-bx-image {
+                z-index: 9;
+                transform: scale(1.2);
+            }
+            a {
+                outline: solid 4px #a08c68;
+                outline-offset: -4px;
+            }
+        }
+        p {
+            position: relative;
+            z-index: 999;
+        }
+        >a {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 0px 40px;
+            z-index: 999;
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .design-btnType02 {
+                margin-top: 24px;
+                display: inline-block;
+                padding: 16px 0px;
+                width: 160px;
+                text-align: center;
+                font-family: Inter;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1.71;
+                letter-spacing: -0.09px;
+                color: #fefefe;
+                background: #101010;
+            }
+        }
     }
 }
