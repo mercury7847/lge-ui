@@ -2562,7 +2562,7 @@ function validatePhone(value){
             var v = $this.val();
 
             console.log('e.keyCode : ' + e.keyCode)
-            if( e.keyCode != 8 && e.keyCode != 48) {
+            if( e.keyCode != 8 && e.keyCode != 46) {
                 if( v != null && v != "") {
                     $this.data('oldValue', v);
                 }
