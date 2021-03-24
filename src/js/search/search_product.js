@@ -110,7 +110,6 @@
                         //큐레이션 선택
                         var filterData  = {};
                         filterData.curation = data;
-                        console.log(filterData);
                         self.requestSearch(filterData);
                     });
                     
@@ -424,9 +423,19 @@
                 self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
                     //var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
-
                     var filterData  = self.filterLayer.getDataFromFilter();
-                    filterData.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+
+                    var curation = self.curationLayer.getSelectedCuration();
+                    if(curation) {
+                        filterData.filterData = null;
+                        filterData.curation = curation;
+                    } else {
+                        var smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        if(smartFilter) {
+                            filterData.filterData = null;
+                            filterData.smartFilter = smartFilter;
+                        }
+                    }
                     var postData = self.makeFilterData(filterData);
                     postData.page = data;
                     self.requestSearch(filterData);
@@ -825,7 +834,12 @@
                             self.$contWrap.removeClass('w-filter');
                             self.$layFilter.hide();
                         }
-                        self.$btnFilter.show();
+
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            self.$btnFilter.hide();
+                        } else {
+                            self.$btnFilter.show();
+                        }
                         //
                         self.$listSorting.find('.sort-select-wrap').show();
                     }
