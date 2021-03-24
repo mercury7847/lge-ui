@@ -2,6 +2,13 @@
 ;(function(){
 
     function init(){
+
+        // 210324  title tag remove 추가
+        var manageInfoStr = $('.manager-info .txt p').text();        
+        manageInfoStr = vcui.string.stripTags(manageInfoStr);
+        manageInfoStr = vcui.string.trim(manageInfoStr);
+        $('.manager-info .txt p').html(manageInfoStr);
+
             
         vcui.require(['ui/storeMap', 'ui/carousel'], function () {
             var mapId = $('.contents.store-info-wrap').data("mapId");
