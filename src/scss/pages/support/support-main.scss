@@ -1548,6 +1548,7 @@
                 }
             }
             .notice-list {
+                height:73px;
                 line-height:73px;
                 @include textEllipsis;
             }
