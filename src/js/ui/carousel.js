@@ -2270,14 +2270,17 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.setPosition();
                     }
 
-                    if (self.$el.find('.indi-wrap').find('li').length < 2){
-                        self.$el.find('.indi-wrap').hide();
-        
-                        self.$el.addClass('slide-solo');
-                    } else {
-                        self.$el.find('.indi-wrap').show();
-        
-                        self.$el.removeClass('slide-solo');
+                    if(self.$el[0]){
+
+                        if (self.$el.find('.indi-wrap').find('li').length < 2){
+                            self.$el.find('.indi-wrap').hide();
+            
+                            self.$el.addClass('slide-solo');
+                        } else {
+                            self.$el.find('.indi-wrap').show();
+            
+                            self.$el.removeClass('slide-solo');
+                        }
                     }
 
                     self.triggerHandler(_N + 'resize', [self, self.currentSlide]);
