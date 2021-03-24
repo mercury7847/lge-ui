@@ -286,9 +286,6 @@
                 max-height: 52px;
                 @include textEllipsisClamp(2);
                 word-break: break-all;
-                @include mobile {
-                    max-height: 46px;
-                }
             }
             
         }

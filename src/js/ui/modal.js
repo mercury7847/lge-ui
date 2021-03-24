@@ -122,7 +122,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 var $first = self.active.$el.find(':visible:focusable').first(); 
 
-                console.log($first);
                 if($first.is('input')){
                     setTimeout(function(){
                         $first.focus(); 
