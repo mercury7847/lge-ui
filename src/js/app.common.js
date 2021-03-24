@@ -184,30 +184,40 @@ $(document).ready(function() {
         }
 
         LGEAPPsetArBarcode = function() {
-            //console.log('event!');
-            //제조번호 카메라 버튼 이벤트
-            $(".app-exec").off("click").on({
-                click : function() {
-                    if (isApp()) {
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                            var obj = new Object();
-                            obj.command = "scanBarcode";
-                            obj.callback ="LGEAPPreturnArBarcode";
-                            var jsonString= JSON.stringify(obj);
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            void android.openBarcodeScanner("LGEAPPreturnArBarcode");
-                        }
-                    } else {
-                        var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-
-                        obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                        var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-
-                        lgkorUI.confirm(desc, obj);
+            //if (window.breakpoint.isMobile) {
+                //직접입력 이벤트
+                $(".app-direct").off("click").on({
+                    click : function() {
+                        $(this).addClass("on").siblings("button").removeClass("on");
+                        $(this).closest(".appType-tab").next(".box").find("input").focus();
                     }
-                }
-            });
+                });
+
+                //제조번호 카메라 버튼 이벤트
+                $(".app-exec").off("click").on({
+                    click : function() {
+                        $(this).addClass("on").siblings("button").removeClass("on");
+                        if (isApp()) {
+                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                                var obj = new Object();
+                                obj.command = "scanBarcode";
+                                obj.callback ="LGEAPPreturnArBarcode";
+                                var jsonString= JSON.stringify(obj);
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openBarcodeScanner("LGEAPPreturnArBarcode");
+                            }
+                        } else {
+                            var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+
+                            obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
+                            var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+
+                            lgkorUI.confirm(desc, obj);
+                        }
+                    }
+                });
+            //}
         }
 
         //리턴 된 바코드 값 입력
@@ -238,13 +248,11 @@ $(document).ready(function() {
             }
         }
 
-        if (isApp()) {
-            LGEAPPsetArBarcode();
-            $(window).on({
-                resize : function() {
-                    LGEAPPsetArBarcode();
-                }
-            });
-        }
+        LGEAPPsetArBarcode();
+        $(window).on({
+            resize : function() {
+                LGEAPPsetArBarcode();
+            }
+        });
     }
 });
