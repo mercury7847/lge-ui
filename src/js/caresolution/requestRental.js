@@ -739,7 +739,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             lgkorUI.hideLoading();
 
-            console.log("success :", result.data.success);
+            console.log("success :", result.data);
 
             productPriceInfo = result.data.productPriceInfo;
 
@@ -928,6 +928,9 @@
 
     //납부카드확인...
     function setCardAbledConfirm(){
+        var paymethod = paymentFiledValidation();
+        if(paymethod == "") return false;
+
         var values = cardValidation.getValues();
         var sendata = {
             confirmType: "card",
@@ -1108,6 +1111,7 @@
                 appendClass: "sale"
             })
         }
+        console.log("newPriceInfo:", newPriceInfo)
         requestInfoBlock.updatePaymentInfo(newPriceInfo);
     }
 

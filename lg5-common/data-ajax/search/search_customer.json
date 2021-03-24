@@ -229,12 +229,14 @@
             {
                 "title": "매장 찾기",
                 "image": "/lg5-common/images/icons/icon-img02-64.svg",
-                "url": "#n"
+                "url": "#n",
+                "target": "_blank"
             },
             {
                 "title": "매장 방문 예약",
                 "image": "/lg5-common/images/icons/ic-main-calender-48.svg",
-                "url": "#n"
+                "url": "#n",
+                "target": "_blank"
             }
         ],
         "noDataList":[
