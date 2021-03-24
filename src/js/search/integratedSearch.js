@@ -210,6 +210,14 @@
             console.log('open Popup');
             self.$searchLayer.addClass('open');
             self.$inputSearch.focus();
+            //
+            self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+            self.ignoreOverflow = (self.bodyOvewflow != "hidden");
+            if(self.ignoreOverflow){
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+            }
         },
 
         closeSearchPopup: function() {
@@ -217,6 +225,18 @@
             console.log('close popup');
             clearTimeout(self.searchTimer);
             self.$searchLayer.removeClass('open');
+            //
+            if(self.ignoreOverflow) {
+                if(self.bodyOvewflow) {
+                    $('html, body').css({
+                        overflow:self.bodyOvewflow
+                    });
+                } else {
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
+            }
         },
 
         //검색어창에 입력후 검색
