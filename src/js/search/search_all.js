@@ -199,7 +199,7 @@
     '</div></li>';
 
     var searchBnrTemplate = 
-        '<a href="{{url}}">'+
+        '<a href="{{url}}" target="{{target}}">'+
             '<img src="{{pcImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+
