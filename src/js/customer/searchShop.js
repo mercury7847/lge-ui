@@ -508,7 +508,14 @@
                                 setTimeout(function(){
                                     var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:20});
                                     self.$map.draw(newArr, defaultLat, defaultLong);
+                                    
                                 },300);
+                            },
+                            cancel:function(){
+                                setTimeout(function(){
+                                    self._setItemList(nArr);
+                                    self._setItemPosition();  
+                                },300);                             
                             }
                         });
                     }else{
@@ -622,6 +629,12 @@
                                 self._setSearchResultMode(nArr.length);
                                 self.$map.draw(nArr, lat, long, null, true);
                             },300);
+                        },
+                        cancel:function(){
+                            setTimeout(function(){
+                                self._setItemList(nArr);
+                                self._setItemPosition();  
+                            },300);                             
                         }
                     });
                 }else{
