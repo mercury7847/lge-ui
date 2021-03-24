@@ -81,6 +81,34 @@
             }
         },
 
+        focusAndOpenKeyboard: function(el, timeout) {
+            if(!timeout) {
+                timeout = 100;
+            }
+            if(el) {
+                // Align temp input element approximately where the input element is
+                // so the cursor doesn't jump around
+                var __tempEl__ = document.createElement('input');
+                __tempEl__.style.position = 'absolute';
+                __tempEl__.style.top = (el.offsetTop + 7) + 'px';
+                __tempEl__.style.left = el.offsetLeft + 'px';
+                __tempEl__.style.height = 0;
+                __tempEl__.style.opacity = 0;
+                // Put this temp element as a child of the page <body> and focus on it
+                document.body.appendChild(__tempEl__);
+                __tempEl__.focus();
+            
+                // The keyboard is open. Now do a delayed focus on the target element
+                setTimeout(function() {
+                    console.log('focus click');
+                    el.focus();
+                    el.click();
+                    // Remove the temp element
+                    document.body.removeChild(__tempEl__);
+                }, timeout);
+            }
+        },
+
         bindEvents: function() {
             var self = this;
 
@@ -91,12 +119,21 @@
                 self.$searchLayer.vcModal();
             });
             */
+           /*
+           $('a[href="#layerSearch"]').on('click', function(e){
+               console.log('layter but');
+               self.$inputSearch.focus();
+               self.$inputSearch.click();
+           });
+           */
 
-            /*
             self.$searchLayer.off('modalshown').on('modalshown', function(e, data){
                 console.log('modalSHown');
 
+                self.focusAndOpenKeyboard(self.$inputSearch);
+
                 // create invisible dummy input to receive the focus first
+                /*
                 var fakeInput = document.createElement('input');
                 fakeInput.setAttribute('type', 'text');
                 fakeInput.setAttribute("readonly",true);
@@ -118,10 +155,10 @@
                     // cleanup
                     fakeInput.remove()
                 }, 1000);
+                */
 
                 //self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
             });
-            */
 
             $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
                 self.updateBasicData();

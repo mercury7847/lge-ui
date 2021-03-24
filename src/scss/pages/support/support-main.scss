@@ -1548,6 +1548,7 @@
                 }
             }
             .notice-list {
+                height:73px;
                 line-height:73px;
                 @include textEllipsis;
             }
@@ -1626,8 +1627,8 @@
                 }
 
                 .notice-list {
-                    padding:11px 0 10px;
-                    line-height:1.2;
+                    height:40px;
+                    line-height:40px;
                 }
 
                 .slide-contents {

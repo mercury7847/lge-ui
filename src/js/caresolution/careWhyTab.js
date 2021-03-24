@@ -126,9 +126,6 @@
                 self.visibleCount = 8;
                 self.setting();
                 self.bindEvents();
-                //
-                var categoryID = self.findSelectCategoryID();
-                self.requestProdList(categoryID);
             },
 
             setting: function() {
@@ -150,6 +147,12 @@
                     self.requestProdList(categoryID);
                 });
 
+                //최초 선택시 카테고리탭 선택
+                self.$tab.on("tabinit", function(e, data){
+                    var categoryID = self.findSelectCategoryID();
+                    self.requestProdList(categoryID);
+                });
+
                 var $list = self.$contents.find('div.tab-content .prd-list-wrap');
                 $list.on('change', '.info-wrap select', function(e){
                     e.preventDefault();
@@ -164,10 +167,20 @@
 
             findSelectCategoryID: function() {
                 var self = this;
-                return self.$tab.find('li.on a').attr('href').replace("#","");
+                var categoryId = null;
+                var $a = self.$tab.find('li.on a');
+                if($a.length > 0) {
+                    var href = $a.attr('href');
+                    if(href) {
+                        categoryId = href.replace("#","");
+                    }
+                }
+                return categoryId;
             },
 
             requestProdList: function(categoryID) {
+                if(!categoryID) return;
+
                 var self = this;
                 var ajaxUrl = self.$contents.data('prodList');
                 var param = {

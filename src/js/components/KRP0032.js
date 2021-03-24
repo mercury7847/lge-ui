@@ -1,4 +1,4 @@
-$(window).ready(function(){
+$(document).ready(function(){
 	if(!document.querySelector('.KRP0032')) return false;
 
 	$('.KRP0032').buildCommonUI();
@@ -131,4 +131,4 @@ $(window).ready(function(){
         }
 	};
 	KRP0032.init();
-})
+});

@@ -495,10 +495,13 @@ footer {
                     }
                     .sns-link {
                         display: flex;
-                        justify-content: space-evenly;
+                        //justify-content: space-evenly;
+                        flex-wrap: wrap;
                         float: none;
-                        margin-top: 24px;
                         li {
+                            width: (100% / 6);
+                            margin-top: 24px;
+                            margin-left:0;
                             a {
                                 display:block;
                                 padding-top: 34px;
@@ -544,15 +547,10 @@ footer {
                         }
                     }
                     .sns-link {
-                        flex-wrap: wrap;
                         margin-top:16px;
                         li {
+                            width: (100% / 3);
                             margin-top: 16px;
-                            margin-left:4px;
-                            width:calc((100% / 3) - 3px);
-                            &:nth-child(4) {
-                                margin-left: 0;
-                            }
                         }
                     }
                 }

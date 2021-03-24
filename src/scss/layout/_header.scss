@@ -402,6 +402,13 @@
             }
         }
     }
+    @include pc {
+        .links {
+            &.mobile {
+                display:none;
+            }
+        }
+    }
 
     @include mobile {
         padding: 32px 16px;
@@ -415,6 +422,9 @@
                 a {
                     font-weight: 500;
                 }
+            }
+            & + .links {
+                padding-top:18px;
             }
         }
     }
@@ -1430,7 +1440,7 @@ html {
                 }
                 i{
                     display:inline-block;
-                    margin-right:5px;
+                    margin-right:10px;
                     width:18px;
                     height:19px;
                     background:url('/lg5-common/images/MAP/ico_ar.png') no-repeat left top;

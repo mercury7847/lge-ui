@@ -473,11 +473,13 @@
 
                 .result-btn-wrap {
                     margin:0;
-                    padding:12px 40px 50px;
+                    height:100px;
+                    padding:30px 40px 30px 25px;
                     background:#fff;
 
                     @include csmobile {
                         padding:20px 20px;
+                        height:auto;
                         border:none;
                     }
                     .btn-back {
