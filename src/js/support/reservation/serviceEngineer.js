@@ -44,16 +44,20 @@
         '</div>' +  
     '</div>' +
     '{{/each}}';
+
     var validation;
     var authManager;
     var addressFinder;
     var dateUtil = vcui.date;
+    var detect = vcui.detect;
+    var isLogin = lgkorUI.isLogin;
 
     var reservation = {
         init: function() {
             var self = this;
             
             self.$cont = $('.contents');
+            self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
             self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
             self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
@@ -90,16 +94,23 @@
 
             self.$authPopup = $('#certificationPopup');
 
-            self.autoFlag = false; 
-            self.isLogin = lgkorUI.isLogin;
+            self.resultUrl = self.$searchModelWrap.data('resultUrl');
+            isLogin = lgkorUI.isLogin;
             self.isOneView = 'N';
+            self.autoFlag = false; 
+            self.$cont.find('#route').val(detect.isMobile ? 'WWW2' : 'WWWW1');
 
             if ($('#appCall').length) {
-                self.isLogin = true;
+                isLogin = true;
                 self.isOneView = $('#appCall').val();
             }
 
             var register = {
+                privcyCheck: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
+                },
                 topic: {
                     required: true,
                     msgTarget: '.topic-msg',
@@ -112,23 +123,28 @@
                 },
                 bdType: {
                     required: true,
-                    msgTarget: '.bd-type-msg'
+                    msgTarget: '.bd-type-msg',
+                    errorMsg: '건물유형을 선택해주세요.'
                 },
                 fan: {
                     required: true,
-                    msgTarget: '.fan-msg'
+                    msgTarget: '.fan-msg',
+                    errorMsg: '실외기 위치를 선택해주세요.'
                 },
                 addFan: {
                     required: true,
-                    msgTarget: '.add-fan-msg'
+                    msgTarget: '.add-fan-msg',
+                    errorMsg: '실외기 위치를 선택해주세요.'
                 },
                 installType: {
                     required: true,
-                    msgTarget: '.install-type-msg'
+                    msgTarget: '.install-type-msg',
+                    errorMsg: '설치형태를 선택해주세요.'
                 },
                 tvPosition: {
                     required: true,
-                    msgTarget: '.tv-position-msg'
+                    msgTarget: '.tv-position-msg',
+                    errorMsg: '설치 위치를 선택해주세요.'
                 },
                 userNm: {
                     required: true,
@@ -151,66 +167,72 @@
                 },
                 zipCode: {
                     required: true,
-                    msgTarget: '.address-err-msg'
+                    msgTarget: '.address-err-msg',
+                    errorMsg: '정확한 주소를 입력해주세요.'
                 },
                 userAddress: {
                     required: true,
-                    msgTarget: '.address-err-msg'
+                    msgTarget: '.address-err-msg',
+                    errorMsg: '정확한 주소를 입력해주세요.'
                 },
                 detailAddress: {
                     required: true,
-                    msgTarget: '.address-err-msg'
+                    msgTarget: '.address-err-msg',
+                    errorMsg: '정확한 주소를 입력해주세요.'
                 },
                 date: {
                     required: true,
-                    msgTarget: '.err-msg'
+                    msgTarget: '.err-msg',
+                    errorMsg: '날짜를 선택해주세요.'
                 },
                 time: {
                     required: true,
-                    msgTarget: '.err-msg'
+                    msgTarget: '.err-msg',
+                    errorMsg: '시간을 선택해주세요.'
                 }
             }
-            var authOptions = {
-                elem: {
-                    popup: '#certificationPopup',
-                    name: '#authName',
-                    phone: '#authPhoneNo',
-                    number: '#authNo'
-                },
-                register: {
-                    authName: {
-                        required: true,
-                        maxLength: 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
-                    },
-                    authPhoneNo: {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 11,
-                        msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        validate : function(value){
-                            return validatePhone(value);
-                        } 
-                    },
-                    authNo:{
-                        required: true,
-                        msgTarget: '.err-block',
-                        errorMsg: '인증번호를 입력해주세요.',
-                    }
-                }
-            };
-            vcui.require(['ui/validation'], function () {
+
+            vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
 
-                if (!self.isLogin) authManager = new AuthManager(authOptions);
-
-                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
+                if (!isLogin) {
+                    authManager = new AuthManager({
+                        elem: {
+                            popup: '#certificationPopup',
+                            name: '#authName',
+                            phone: '#authPhoneNo',
+                            number: '#authNo'
+                        },
+                        register: {
+                            authName: {
+                                required: true,
+                                maxLength: 30,
+                                pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                msgTarget: '.err-block',
+                                errorMsg: '이름을 입력해주세요.',
+                                patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
+                            },
+                            authPhoneNo: {
+                                required: true,
+                                minLength: 10,
+                                maxLength: 11,
+                                msgTarget: '.err-block',
+                                errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                validate : function(value){
+                                    return validatePhone(value);
+                                } 
+                            },
+                            authNo:{
+                                required: true,
+                                msgTarget: '.err-block',
+                                errorMsg: '인증번호를 입력해주세요.',
+                            }
+                        }
+                    });
+                }
+                
 
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
@@ -243,25 +265,9 @@
 
                 self.bindEvent();
 
-                self.$cont.commonModel({
-                    register: register,
-                    selected: {
-                        category: self.$cont.find('#category').val(),
-                        categoryName: self.$cont.find('#categoryNm').val(),
-                        subCategory: self.$cont.find('#subCategory').val(),
-                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                        modelCode: self.$cont.find('#modelCode').val(),
-                        productCode: self.$cont.find('#productCode').val()
-                    }
-                });
-
-                self.$dateWrap.calendar({
-                    inputTarget: '#date'
-                });
-
-                self.$timeWrap.timeCalendar({
-                    inputTarget: '#time'
-                });
+                self.$dateWrap.calendar({inputTarget:'#date'});
+                self.$timeWrap.timeCalendar({inputTarget:'#time'});
+                self.$cont.vcSearchModel();
             });
         },
         setTopicList: function(data) {
@@ -533,6 +539,7 @@
                         self.$submitForm.submit();
                     }
                 } else {
+                    lgkorUI.hideLoading();
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage,
@@ -546,70 +553,57 @@
                             }
                         });
                     }
-                    lgkorUI.hideLoading();
                 }
             }, 'POST');
         },
         bindEvent: function() {
             var self = this;
             self.$cont.on('reset', function(e) {
+                self.$topicList.empty();
+                self.$subTopicList.empty();
+                self.$subTopicBox.hide();
                 self.$solutionsBanner.hide();
                 self.$fanBox.hide();
                 self.$bdTypeBox.hide();
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
+                self.$completeBtns.hide();
+                self.$stepInput.find('.step-btn-wrap').show();
                 self.$myModelArea.show();
 
-                $('#engineerNm').val('');
-                $('#engineerCode').val('');
-                $('#centerNm').val('');
-                $('#centerCode').val('');
-                $('#date').val('');
-                $('#time').val('');
-                self.$stepInput.find('input[type=radio]').prop('checked', false);
-                
-                $('[name=buyingdate]').closest('.conts').find('.form-text').remove();
-
-                $('#rentalN').prop('checked', true);
-
-                var notInput = '';
-                if (self.isLogin) {
-                    notInput += '#userNm, #phoneNo';
+                if (isLogin) {
+                    var notInput = '#userNm, #phoneNo';
                     if ($('#detailAddress').data('defaultValue')) {
                         notInput += ', #zipCode, #userAddress, #detailAddress';
                         $('[data-default-value]').each(function() {
                             $(this).val($(this).data('defaultValue')).prop('readonly', true);
                         });
                     }
-                    // $('.address-err-msg + .chk-wrap').hide();
-                    // $('.address-err-msg + .chk-wrap').find('input[type=radio]').prop('checked', false);
                 }
 
-                $('input[type=text], input[type=number], textarea').not(notInput).val('');
+                self.$stepInput.find('input[type=text], input[type=number], textarea').not(notInput).val('');
+                self.$stepInput.find('#fanEtc').prop('disabled', true);
+                self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
+                self.$stepInput.find('#rentalN').prop('checked', true);
+                self.$stepEngineer.find('#engineerNm').val('');
+                self.$stepEngineer.find('#engineerCode').val('');
+                self.$stepEngineer.find('#centerNm').val('');
+                self.$stepEngineer.find('#centerCode').val('');
+                self.$stepInput.find('input[type=radio]').prop('checked', false);
 
-                $('#fanEtc').prop('disabled', true);
+                validation.reset();
+                self.$dateWrap.calendar('reset');
+                self.$timeWrap.timeCalendar('reset');
+                self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+                self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
 
-                $('.date-wrap').calendar('reset');
-
-                $('.time-wrap').timeCalendar('reset');
-
-                self.$completeBtns.hide();
-                self.$stepInput.find('.step-btn-wrap').show();
                 self.autoFlag = false;
-
-                self.$cont.commonModel('next', self.$stepModel);
-                self.$cont.commonModel('focus', self.$selectedModelBar);
             });
 
             // 모델 선택 후 이벤트
-            self.$cont.on('complete', function(e, data, url) {    
-                var param = {
-                    modelCode: data.modelCode,
-                    serviceType: $('#serviceType').val(),
-                    category: data.category,
-                    subCategory: data.subCategory
-                };
+            self.$cont.on('complete', function(e, data) {    
+                var param = data;
 
                 if (data.subCategory == 'CT50019275') {
                     lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 <br>필요 함에 따라 고객 상담실 1544-7777로 전화주시면 <br>신속한 상담에 도움드리고 있습니다. <br><br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 <br>아래 ’예약’ 버튼을 클릭하시어 연락처 등을 <br>남겨 주시기 바랍니다. <br>다만, 접수된 순으로 처리하고 있어 다소 지연되는 점<br>양해 부탁드립니다.',{
@@ -621,28 +615,20 @@
                             location.href = '/support/request-call-reservation-dryer';
                         },
                         cancel: function() {
-                            self.$cont.commonModel('reset');
+                            self.$cont.vcSearchModel('reset');
                         }
                     });
                     return;
                 }
 
-                if (data.memberModel) {
-                    param = $.extend(param, {
-                        salesDt: data.salesDt,
-                        memberModel: data.memberModel
-                    });
-                }
-
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                lgkorUI.requestAjaxDataPost(self.resultUrl, param, function(result) {
                     var resultData = result.data;
                     
-                    self.$cont.commonModel('updateSummary', {
-                        product: [data.categoryName, data.subCategoryName, data.modelCode],
+                    self.$cont.vcSearchModel('updateSummary', {
+                        product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                         reset: 'product'
                     });
-                
                     
                     // 에어컨 > 시스템 에어컨 OR 창문형/이동식 선택 시
                     if (data.category == 'CT50019183') {
@@ -685,11 +671,6 @@
 
                     
                     self.$myModelArea.hide();
-
-                    self.$cont.commonModel('next', self.$stepInput);
-                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                        self.$selectedModelBar.vcSticky();
-                    });
 
                     lgkorUI.hideLoading();
                 });
@@ -899,7 +880,7 @@
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',

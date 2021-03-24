@@ -34,6 +34,11 @@
                         '</div>' +
                     '</div>' +
                 '</div>' +
+                '<div class="spec-info"><ul>' +
+                    '{{#each item in techSpecs}}' +
+                        '<li><span>{{item.SPEC_NAME}}</span>{{item.SPEC_VALUE_NAME}}</li>' +
+                    '{{/each}}' +
+                '</ul></div>' +
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
@@ -194,7 +199,7 @@
     '</div></li>';
 
     var searchBnrTemplate = 
-        '<a href="{{url}}">'+
+        '<a href="{{url}}" target="{{target}}">'+
             '<img src="{{pcImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+

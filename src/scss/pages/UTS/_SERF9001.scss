@@ -38,12 +38,16 @@
     //display: none;
     overflow-y: auto;
     position: fixed;
-    top: 0;
+    top: 100%;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
     background-color: #fff;
+
+    &.open {
+        top: 0;
+    }
 
     //&:after {
     //    content: '';

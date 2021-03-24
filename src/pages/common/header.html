@@ -87,6 +87,11 @@
                 <!-- 로그인 후 -->
                 <div class="login-info after-login">
                     <a href="#" class="text"><span>이엘지</span>님 안녕하세요</a>
+                    <!-- 210324 수정 [모바일 마이페이지 버튼 추가] -->
+                    <div class="btn-mypage">
+                        <a href="#"><span class="blind">마이페이지</span></a>
+                    </div>
+                    <!-- // 210324 수정 [모바일 마이페이지 버튼 추가] -->
                     <!-- 210305 수정 [로그아웃 버튼 추가] -->
                     <div class="btn-logout">
                         <a href="#"><span>로그아웃</span></a>
@@ -1652,12 +1657,12 @@
                     <li><a href="#" class="bestshop" target="_blank" title="새창열림">베스트샵</a></li>
                     <li><a href="#" class="business" target="_blank" title="새창열림">B2B</a></li>
                 </ul>
-                <!-- 210324 아웃링크추가 -->
+                <!-- 210324 수정 [모바일 아웃링크 추가] -->
                 <ul class="links mobile">
-                    <li><a href="#" class="thinq" target="_blank" title="새창열림">ThinQ</a></li>
-                    <li><a href="#" class="member" target="_blank" title="새창열림">멤버십앱</a></li>
+                    <li><a href="#" class="member" target="_blank" title="새창열림">LG전자 멤버십</a></li>
+                    <li><a href="#" class="thinq" target="_blank" title="새창열림">LG ThinQ</a></li>
                 </ul>
-                <!-- //210324 아웃링크추가 -->
+                <!-- 210324 수정 [모바일 아웃링크 추가] -->
             </div>
             <!-- // 20201230 수정 -->
             <div class="mobile-nav-banner">
@@ -1826,6 +1831,16 @@
     </div>
 </div>
 <!-- // 210322 수정 [드롭다운 메뉴 추가] -->
+}
+
+@@if (context.mobileCase === "all" || context.mobileCase === "subMain") {
+<!-- 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
+<!-- Mobile Sub Main Header -->
+<div class="mobile-nav-wrap sub-main">
+    <a href="#" class="btn-back"><span class="blind">이전</span></a>
+    <span class="nav-item">LG SIGNATURE</span>
+</div>
+<!-- // 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
 }
 
 <!-- Breadcrumb -->
