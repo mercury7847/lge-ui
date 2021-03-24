@@ -15,22 +15,22 @@
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
-                    userName: {
-                        required: true,
-                        maxLength: 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
-                    },
-                    phoneNo: {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 11,
-                        msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
-                    },
+                    // userName: {
+                    //     required: true,
+                    //     maxLength: 30,
+                    //     pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                    //     msgTarget: '.err-block',
+                    //     errorMsg: '이름을 입력해주세요.',
+                    //     patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                    // },
+                    // phoneNo: {
+                    //     required: true,
+                    //     minLength: 10,
+                    //     maxLength: 11,
+                    //     msgTarget: '.err-block',
+                    //     errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    // },
                     // contactPhoneNo1 : {
                     //     pattern: /^(010|011|016|017|018|019)$/,
                     //     msgTarget: '.contact-box-err-blocK',
