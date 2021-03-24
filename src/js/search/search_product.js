@@ -830,13 +830,16 @@
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
-                            self.$btnFilter.show();
                         } else {
                             self.$contWrap.removeClass('w-filter');
                             self.$layFilter.hide();
-                            self.$btnFilter.hide();
                         }
 
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            self.$btnFilter.hide();
+                        } else {
+                            self.$btnFilter.show();
+                        }
                         //
                         self.$listSorting.find('.sort-select-wrap').show();
                     }
