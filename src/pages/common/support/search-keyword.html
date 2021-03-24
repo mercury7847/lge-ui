@@ -11,8 +11,7 @@
 }
     <div class="search-box">
         <div class="search-input">
-            <!-- 2021.03.24 maxlength 추가 -->
-            <input type="text" id="@@inputId" class="ui_input_clearbutton" placeholder="@@inputTitle" title="@@inputTitle" autocomplete="off" data-clear-button="button.btn-delete" @@if(context.inputDisabled){disabled} maxlength="30">
+            <input type="text" id="@@inputId" class="ui_input_clearbutton" placeholder="@@inputTitle" title="@@inputTitle" autocomplete="off" data-clear-button="button.btn-delete" @@if(context.inputDisabled){disabled}>
             <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
             <button type="button" class="btn-search"><span class="blind">검색</span></button>
         </div>
