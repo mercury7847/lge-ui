@@ -112,25 +112,8 @@
                             <input type="hidden" name="serviceType" id="serviceType" value="E">
                             <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
-                            <!-- 약관 동의 -->
-                            <div class="step-box active" id="stepTerms">
-                                <div class="section">
-                                    <!-- 2021.03.15 class first-type 추가 -->
-                                    <div class="form-infos first-type">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                    </div>
-                                    @@include('./common/support/accept-terms.html', {
-                                        member: false
-                                    })
-                                    <div class="step-btn-wrap">
-                                        <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                    </div> 
-                                </div>
-                            </div>
-                            <!-- // 약관 동의 -->
-
                             <!-- 제품 선택 -->
-                            <div class="step-box" id="stepModel">
+                            <div class="step-box active" id="stepModel">
                                 <!-- 제품 카테고리 선택 -->
                                 @@include('./common/support/select-model.html', {
                                     "category": [
@@ -153,10 +136,18 @@
 
                             <!-- 예약 내용 입력 -->
                             <div class="step-box" id="stepInput">
+                                <div class="form-infos first-type">
+                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                </div>
                                 <div class="section">
-                                    <div class="form-infos">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">약관 동의</h2>
                                     </div>
+                                    @@include('./common/support/accept-terms.html', {
+                                        member: false
+                                    })
+                                </div>
+                                <div class="section">
                                     <div class="tit-wrap">
                                         <h2 class="tit">제품 추가정보</h2>
                                     </div>

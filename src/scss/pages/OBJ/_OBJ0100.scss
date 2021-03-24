@@ -1,4 +1,6 @@
 .brand-hero {
+    position: relative;
+    z-index: 10;
     .content {
         >div {
             opacity: 0;
