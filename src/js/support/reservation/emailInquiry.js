@@ -214,6 +214,7 @@
 
             validation.reset();
 
+            self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
             self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
             self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
         },
