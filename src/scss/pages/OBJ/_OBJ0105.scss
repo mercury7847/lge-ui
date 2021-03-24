@@ -10594,7 +10594,7 @@
     #brand-visualM .brand-logo {
         position: fixed;
         z-index: 10;
-        top: 57px;
+        top: 0px;
         line-height: 100vh;
         width: 100%;
         margin: 0 auto;
@@ -10607,18 +10607,18 @@
         position: fixed;
         z-index: 10;
         width: 100%;
-        top: 74px;
+        top: 0;
         opacity: 0;
         overflow: hidden;
-        height: calc(100vh - 74px);
+        height: 100vh;
     }
     #brand01M .mask-bg {
         position: absolute;
         z-index: 9;
         width: 100%;
-        height: calc(100vh - 74px);
+        height: 100%;
         left: 0px;
-        top: 74px;
+        top: 0px;
         opacity: 0.64;
         background-color: #000000;
     }
@@ -10729,7 +10729,7 @@
         z-index: 99;
         overflow: hidden;
         width: 100%;
-        height: calc(100vh - 74px);
+        height: 100vh;
         bottom: 0px;
     }
     #brand_simulM .mask-bg {
@@ -10738,7 +10738,7 @@
         width: 100%;
         height: 100%;
         left: 0px;
-        top: 74px;
+        top: 0px;
         opacity: 0.64;
         background-color: #000000;
     }
@@ -15132,19 +15132,19 @@
     }
     .brandParallex01 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-02.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-02.png") no-repeat;
     }
     .brandParallex02 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-03.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-03.png") no-repeat;
     }
     .brandParallex03 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-04.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-04.png") no-repeat;
     }
     .brandParallex04 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-07.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-07.png") no-repeat;
     }
     .knock {
         position: absolute;
