@@ -119,7 +119,7 @@
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
-                            '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
+                            '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
                                 '{{#each status in listData.statusButtonList}}'+
                                 '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
@@ -162,7 +162,7 @@
                                     '</div>'+
                                     '{{/if}}'+
                                     '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
-                                    '{{#if listData.contDtlType == "C01"}}'+
+                                    '{{#if listData.contDtlType == "C01" && listData.addCommaProdPrice != "0"}}'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
                                     '</p>'+
@@ -1015,7 +1015,7 @@
     function setOrderListContents(){
         var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var leng = list.length;
-
+        
         if(leng){
             $('.inquiry-list-notify').show();
 
@@ -1040,11 +1040,11 @@
                     template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
                     
                     prodlist.specList = vcui.array.filter(prodlist.specList, function(item){
-                        var chk = item != null && item != "null" && item != undefined ? true : false;
+                        var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-
-                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice}));
+                    
+                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true}));
                 }
             }
 
@@ -1064,16 +1064,97 @@
             $('.care-step-info').show();
         }
     }
-
-
-    //### REQUEST ###
-
+    
     //취소/반품 확인 리스트 리로드...
     function reloadOrderInquiry(){
         requestOrderInquiry();
     }
 
-    //페이지 목록 로드...
+    //카드/은행 셀렉트박스 리셋...
+    function setDelectData(selector, list, selectId){
+        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
+        for(var idx in list){
+            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
+            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
+            selector.append(option);
+        }
+        selector.vcSelectbox('update');
+    }
+
+    //납부정보 input 밸리데이션...
+    function paymentFieldValidation(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var result = paymentMethodIndex ? bankValidation.validate() : cardValidation.validate();
+        
+        return result.success;
+    }
+    //납부정보 입력 데이터 비교...
+    function compareInputData(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
+        var chk = true;
+        for(var str in values){
+            if(paymentInfo[str] !== values[str]){
+                chk = false;
+
+                break;
+            }
+        }
+
+        return chk;
+    }
+    //납부정보 확인 유무...
+    function paymentConfirmYN(){
+        if(paymentMethodConfirm == "N"){
+            paymentErrorAlert();
+            return false;
+        }
+
+        return true;
+    }
+
+    //납부 확인 오류창...
+    function paymentErrorAlert(){
+        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        lgkorUI.alert("",{
+            title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
+        });
+        arsAgree = "N";
+    }
+
+    //납부 정보 유효성 체크
+    function paymentInfoValidation(){
+        var chk = paymentConfirmYN();
+        if(!chk) return false;
+
+        chk = compareInputData();
+        if(!chk){
+            paymentErrorAlert();
+            return false;
+        }
+
+        if(arsAgree == "N"){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 신청해주세요."
+            });
+            
+            return false;
+        }
+
+        if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 정기결제 신청을 동의해주세요."
+            });
+            return false;
+        }
+        
+        return true;
+    }
+
+    //### REQUEST ###
+
+
+    //페이지 리스트 로드...
     function requestOrderInquiry(page){
         lgkorUI.showLoading();
     
@@ -1110,6 +1191,7 @@
             ORDER_USER_DATA = {};
             MONTHLY_PAYMENT_DATA = {};
 
+            //구매목록 리스트...PAGE_TYPE_LIST, PAGE_TYPE_DETAIL, PAGE_TYPE_NONMEM_DETAIL
             if(data.listData && data.listData.length){
                 var leng, cdx, idx;
                 var list = data.listData;
@@ -1124,7 +1206,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
                     }
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
@@ -1136,6 +1218,8 @@
                 }
             }
 
+            
+            //구매목록 리스트...PAGE_TYPE_CAREDETAIL
             if(data.careListData && data.careListData.length){
                 list = data.careListData;
                 for(idx in list){
@@ -1148,7 +1232,7 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["productTotalPrice"]);
+                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
                     }
 
                     CARE_LIST.push(list[idx]);
@@ -1248,16 +1332,6 @@
             renderPage();
         });
     }
-    //카드/은행 셀렉트박스 리셋...
-    function setDelectData(selector, list, selectId){
-        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
-        for(var idx in list){
-            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
-            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
-            selector.append(option);
-        }
-        selector.vcSelectbox('update');
-    }
 
 
     //정보변경 확인...
@@ -1303,74 +1377,6 @@
     window.editPaymentInfomation = editPaymentInfomation;
     window.fnNiceFail = fnNiceFail;
 
-    //납부정보 input 밸리데이션...
-    function paymentFieldValidation(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        var result = paymentMethodIndex ? bankValidation.validate() : cardValidation.validate();
-        
-        return result.success;
-    }
-    //납부정보 입력 데이터 비교...
-    function compareInputData(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        var values = paymentMethodIndex ? bankValidation.getAllValues() : cardValidation.getAllValues();
-        var chk = true;
-        for(var str in values){
-            if(paymentInfo[str] !== values[str]){
-                chk = false;
-
-                break;
-            }
-        }
-
-        return chk;
-    }
-    //납부정보 확인 유무...
-    function paymentConfirmYN(){
-        if(paymentMethodConfirm == "N"){
-            paymentErrorAlert();
-            return false;
-        }
-
-        return true;
-    }
-    //납부 확인 오류창...
-    function paymentErrorAlert(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
-        lgkorUI.alert("",{
-            title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
-        });
-        arsAgree = "N";
-    }
-
-    //납부 정보 유효성 체크
-    function paymentInfoValidation(){
-        var chk = paymentConfirmYN();
-        if(!chk) return false;
-
-        chk = compareInputData();
-        if(!chk){
-            paymentErrorAlert();
-            return false;
-        }
-
-        if(arsAgree == "N"){
-            lgkorUI.alert("",{
-                title: "자동결제를 위해 ARS 출금동의 신청해주세요."
-            });
-            
-            return false;
-        }
-
-        if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
-            lgkorUI.alert("",{
-                title: "자동결제를 위해 정기결제 신청을 동의해주세요."
-            });
-            return false;
-        }
-        
-        return true;
-    }
     //납부카드/계좌 확인...
     function paymentMethodAbled(item){
         var chk = paymentFieldValidation();
@@ -1788,12 +1794,11 @@
     }
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
-        console.log("isCheck:", isCheck);
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["productTotalPrice"]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["rowTotal"]);
 
             var originalTotalPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
@@ -1808,7 +1813,6 @@
                 mempointPrice: mempointPrice,
                 productTotalPrice: productTotalPrice
             });
-            console.log("PRICE_INFO_DATA:", PRICE_INFO_DATA);
 
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
@@ -1817,11 +1821,11 @@
             });
 
             listdata.specList = vcui.array.filter(listdata.specList, function(item){
-                var chk = item != null && item != "null" && item != undefined ? true : false;
+                var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -1947,7 +1951,7 @@
             prodlist.statusButtonList = [];
             var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
             prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
-            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false}));
+            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false, isBtnSet:false}));
         }
         
         $('#popup-receipt-list').vcModal();
