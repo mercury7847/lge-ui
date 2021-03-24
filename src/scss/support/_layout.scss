@@ -3,10 +3,8 @@
 .container {
     .cont-wrap {
         padding-top:0;
-        
         .section {
             margin-top:0;
-
             .tit-wrap {
                 &.type-row {
                     display: flex;
@@ -28,17 +26,14 @@
                             margin-left:8px;
                         }
                     }
-
                     @include tablet {
                         display: block;
-
                         .btn-link {
                             margin-top:17px;
                         }
                     }
                 }
             }
-
             & ~ .section {
                 margin:120px 0 0;
             }
@@ -57,7 +52,6 @@
                     font-weight:$font-weight-bold;
                 }
             }
-
             &.related-info-list {
                 margin-top: 120px;
                 .list-wrap {
@@ -101,12 +95,15 @@
                     }
                 }
             }
-
             &.pc-connect-section {
                 @include pc {
                     margin-top:0;
                 }
             }
+        }
+        .form-infos + .section,
+        .form-infos + .section[style*="display: none"] + .section {
+            margin:0;
         }
     }
     .step-box {
@@ -263,14 +260,6 @@
         .btn-group {
             margin-top:40px;
             padding:0;
-        }
-    }
-}
-
-.bullet-list {
-    .b-txt {
-        .point {
-            color:#da0f47;
         }
     }
 }
