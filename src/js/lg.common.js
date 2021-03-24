@@ -1888,16 +1888,10 @@ var isApp = function(){
 
         //크레마로그인
         cremaLogin:function() {
-            if(typeof digitalData !== 'undefined') {
-                if(digitalData.userInfo && !vcui.isEmpty(digitalData.userInfo)) {
-                    window.cremaAsyncInit = function () {
-                        crema.init("이름",digitalData.userInfo.unifyId);
-                    };
-                } else {
-                    window.cremaAsyncInit = function () {
-                        crema.init(null,null);
-                    };
-                }
+            if(typeof cremaid !== 'undefined' && typeof cremaname !== 'undefined') {
+                window.cremaAsyncInit = function () {
+                    crema.init(cremaid, cremaname);
+                };
             } else {
                 window.cremaAsyncInit = function () {
                     crema.init(null,null);

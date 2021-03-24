@@ -68,6 +68,9 @@
             //연관검색어
             self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
+            $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
+            //self.$searchLayer.show();
+
             //self.$searchResultArea.hide();
             self.hideSearchResultArea();
             self.$searchSimilar.hide();
@@ -112,70 +115,22 @@
         bindEvents: function() {
             var self = this;
 
-            //통합검색 노출
-            /*
-            $('div.contents.search div.cont-wrap a').on("click", function(e) {
-                //self.showAnimation(self.$searchLayer);
-                self.$searchLayer.vcModal();
-            });
-            */
-           /*
-           $('a[href="#layerSearch"]').on('click', function(e){
-               console.log('layter but');
-               self.$inputSearch.focus();
-               self.$inputSearch.click();
-           });
-           */
-
-            self.$searchLayer.off('modalshown').on('modalshown', function(e, data){
-                console.log('modalSHown');
-
-                self.focusAndOpenKeyboard(self.$inputSearch);
-
-                // create invisible dummy input to receive the focus first
-                /*
-                var fakeInput = document.createElement('input');
-                fakeInput.setAttribute('type', 'text');
-                fakeInput.setAttribute("readonly",true);
-                fakeInput.style.position = 'absolute';
-                fakeInput.style.opacity = 0;
-                fakeInput.style.height = 0;
-                fakeInput.style.fontSize = '16px'; // disable auto zoom
-
-                // you may need to append to another element depending on the browser's auto 
-                // zoom/scroll behavior
-                document.body.prepend(fakeInput)
-
-                // focus so that subsequent async focus will work
-                fakeInput.focus()
-
-                setTimeout(function() {
-                    // now we can focus on the target input
-                    self.$inputSearch.focus()
-                    // cleanup
-                    fakeInput.remove()
-                }, 1000);
-                */
-
-                //self.$inputSearch.click(function(){ self.$inputSearch.trigger('focus') });
-            });
-
             $('li.search>a[href="#layerSearch"]').off('.intergrated').on("click.intergrated", function(e) {
+                e.preventDefault();
                 self.updateBasicData();
                 self.updateRecentSearchList();
+                self.openSearchPopup();
             });
 
             //통합검색 닫음
             self.$searchLayer.find('button.btn-close').off('.intergrated').on("click.intergrated", function(e) {
-                clearTimeout(self.searchTimer);
-                self.$searchLayer.off('modalshown')
-                //self.hideAnimation(self.$searchLayer);
-                //console.log('close modal');
-                //self.$searchLayer.vcModal('close');
+                e.preventDefault();
+                self.closeSearchPopup();
             });
 
             //검색버튼
             self.$buttonSearch.off('.intergrated').on('click.intergrated', function(e){
+                e.preventDefault();
                 clearTimeout(self.searchTimer);
 
                 var searchVal = self.$inputSearch.val();
@@ -250,6 +205,40 @@
             });
         },
 
+        openSearchPopup: function() {
+            var self = this;
+            console.log('open Popup');
+            self.$searchLayer.addClass('open');
+            self.$inputSearch.focus();
+            //
+            self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+            self.ignoreOverflow = (self.bodyOvewflow != "hidden");
+            if(self.ignoreOverflow){
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+            }
+        },
+
+        closeSearchPopup: function() {
+            var self = this;
+            console.log('close popup');
+            clearTimeout(self.searchTimer);
+            self.$searchLayer.removeClass('open');
+            //
+            if(self.ignoreOverflow) {
+                if(self.bodyOvewflow) {
+                    $('html, body').css({
+                        overflow:self.bodyOvewflow
+                    });
+                } else {
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
+            }
+        },
+
         //검색어창에 입력후 검색
         searchItem:function($item, sendSearchPage) {
             var self = this;
@@ -257,7 +246,7 @@
             if(sendSearchPage) {
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
-                self.$searchLayer.vcModal('close');
+                self.closeSearchPopup();
             } else {
                 self.requestSearch(searchVal, false);
             }
@@ -270,7 +259,7 @@
             if(sendSearchPage) {
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
-                self.$searchLayer.vcModal('close');
+                self.closeSearchPopup();
             } else {
                 self.requestSearch(searchVal, false);
             }
