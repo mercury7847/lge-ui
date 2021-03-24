@@ -402,6 +402,13 @@
             }
         }
     }
+    @include pc {
+        .links {
+            &.mobile {
+                display:none;
+            }
+        }
+    }
 
     @include mobile {
         padding: 32px 16px;
@@ -415,6 +422,9 @@
                 a {
                     font-weight: 500;
                 }
+            }
+            & + .links {
+                padding-top:18px;
             }
         }
     }
