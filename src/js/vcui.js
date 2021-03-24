@@ -3535,7 +3535,10 @@ if (!window.JSON) {
             })(escapeChars),
             escapeRegexp = /[&><'"]/g,
             unescapeRegexp = /\&[^;]+;/g, // /(&amp;|&gt;|&lt;|&quot;|&#39;|&#[0-9]{1,5};)/g,
-            tagRegexp = /<\/?[^>]+>/gi,
+            // tagRegexp = /<\/?[^>]+>/gi,
+            tagRegexp = /(\"?\'?\/?<([^>]+)>\"?\'?)/gi,
+
+            
             scriptRegexp = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/ig,
             hexRegexp = /^\&#x([\da-fA-F]+);$/;
 

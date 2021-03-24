@@ -1,1535 +1,807 @@
 {
-    "ssoCheckUrl": null,
-    "status": "success",
-    "message": null,
-    "param":{
-        "pagination": {
-            "page": 1,
-            "totalCount": 1
-        }
-    },
     "data": {
-        "productOrderCount": 5,
-        "caresolutionOrdercount": 3,
-        "listData": [
+      "listData": [
+        {
+          "orderNumber": "000006666",
+          "orderDate": "2021.03.24",
+          "orderType": "NS",
+          "status": "Wait for Authorization",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "26900",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
             {
-                "orderDate": "2020.09.18",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
+              "productNameKR": "LG 울트라HD 모니터",
+              "productNameEN": "32UN500.BKR",
+              "modelID": "MD08748493",
+              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "VA",
+                "80 cm"
+              ],
+              "itemStatus": "Invoiced",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "결제 완료",
+                "statusClass": "",
+                "statusDate": "배송희망일 2021.03.31",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            },
+            {
+              "productNameKR": "펫 흡입구",
+              "productNameEN": "AGB74612304",
+              "modelID": "MD08920313",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "114000",
+              "productTotalPrice": 114000,
+              "rowTotal": 114000,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Picking",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송준비중",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
                 }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
-                }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
-                }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
-                }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
-                }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "Y",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productFlag": "케어십",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-productw.jpg",
-                        "productPDPurl": "#none",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["Silver"],
-                        "productTotal": "",
-                        "productPrice": "1760000",
-                        "discountPrice": "50000",
-                        "memberShipPoint":"0",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [],
-                        "itemCancelAbleYn": "Y"
-                    },
-                    {
-                        "modelID": "ADC49576932834",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    },
-                    {
-                        "modelID": "ADC495769328456",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "50000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "배송희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "productReview",
-                                "buttonName": "제품리뷰"
-                            }
-                        ]
-                    }
-                ],
-                "repaymentInfo": {
-                    "bankUserName": "이엘지",
-                    "bankList": [
-                        {
-                            "bankValue": "국민은행_코드",
-                            "bankName": "국민은행"
-                        },
-                        {
-                            "bankValue": "하나은행_코드",
-                            "bankName": "하나은행"
-                        },
-                        {
-                            "bankValue": "기업은행_코드",
-                            "bankName": "기업은행"
-                        },
-                        {
-                            "bankValue": "우리은행_코드",
-                            "bankName": "우리은행"
-                        },
-                        {
-                            "bankValue": "신한은행_코드",
-                            "bankName": "신한은행"
-                        }
-                    ]
-                }
-            },
-            {
-                "orderDate": "2020.09.05",
-                "orderNumber": "20203987102999",
-                "orderTotal": "3",
-                "orderCancelAbleYn": "N",
-                "productList": [
-                    {
-                        "modelID": "ADC495769328",
-                        "productNameKR": "LG 디오스 상냉장하냉동",
-                        "productNameEN": "OLED55BXPUA",
-                        "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": ["주요스펙1", "주요스펙2"],
-                        "productTotal": "1",
-                        "productPrice": "1990000",
-                        "discountPrice": "80000",
-                        "orderStatus": {
-                            "disabled": "disabled",
-                            "statusText": "취소완료",
-                            "statusClass": "cancel",
-                            "statusDate": ""
-                        },
-                        "statusButtonList": [],
-                        "cancelAbled": "Y",
-                        "takebackAbled": "N"
-                    },
-                    {
-                        "modelID": "ADC4957639428",
-                        "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                        "productNameEN": "OLED552445UA",
-                        "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                        "productPDPurl": "http://www.lge.com",
-                        "productDetailUrl": "http://www.lge.com",
-                        "specList": [],
-                        "productTotal": "1",
-                        "productPrice": "57000",
-                        "discountPrice": "5000",
-                        "orderStatus": {
-                            "disabled": "",
-                            "statusText": "결제완료",
-                            "statusClass": "",
-                            "statusDate": "설치희망일 2020.09.18"
-                        },
-                        "statusButtonList": [
-                            {
-                                "className": "deliveryInquiry",
-                                "buttonName": "배송조회"
-                            },
-                            {
-                                "className": "deliveryRequest",
-                                "buttonName": "배송문의"
-                            },
-                            {
-                                "className": "takeBackInner",
-                                "buttonName": "반품신청"
-                            }
-                        ]
-                    }
-                ]
+              ]
             }
-        ],
-        "careListData": [
-          {
-              "orderDate": "2020.09.05",
-              "orderNumber": "20203987102999",
-              "orderTotal": "3",
-              "orderCancelAbleYn": "N",
-              "productList": [
-                  {
-                      "modelID": "CARE495769328",
-                      "productNameKR": "LG 디오스 상냉장하냉동",
-                      "productNameEN": "OLED55BXPUA",
-                      "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": ["주요스펙1", "주요스펙2"],
-                      "productTotal": "1",
-                      "productPrice": "1990000",
-                      "discountPrice": "80000",
-                      "orderStatus": {
-                          "disabled": "disabled",
-                          "statusText": "취소완료",
-                          "statusClass": "cancel",
-                          "statusDate": ""
-                      },
-                      "statusButtonList": [],
-                      "cancelAbled": "Y",
-                      "takebackAbled": "N"
-                  }
-              ]
-          },
-          {
-              "orderDate": "2020.09.05",
-              "orderNumber": "20203987102999",
-              "orderTotal": "3",
-              "orderCancelAbleYn": "Y",
-              "productList": [
-                  {
-                      "modelID": "CARE49576932834",
-                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                      "productNameEN": "OLED552445UA",
-                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": [],
-                      "productTotal": "1",
-                      "productPrice": "50000",
-                      "discountPrice": "5000",
-                      "orderStatus": {
-                          "disabled": "",
-                          "statusText": "결제완료",
-                          "statusClass": "",
-                          "statusDate": "배송희망일 2020.09.18"
-                      },
-                      "statusButtonList": [
-                          {
-                              "className": "deliveryInquiry",
-                              "buttonName": "배송조회"
-                          },
-                          {
-                              "className": "deliveryRequest",
-                              "buttonName": "배송문의"
-                          },
-                          {
-                              "className": "takeBackInner",
-                              "buttonName": "반품신청"
-                          }
-                      ]
-                  },
-                  {
-                      "modelID": "CARE495769328456",
-                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                      "productNameEN": "OLED552445UA",
-                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": [],
-                      "productTotal": "1",
-                      "productPrice": "50000",
-                      "discountPrice": "5000",
-                      "orderStatus": {
-                          "disabled": "",
-                          "statusText": "결제완료",
-                          "statusClass": "",
-                          "statusDate": "배송희망일 2020.09.18"
-                      },
-                      "statusButtonList": [
-                          {
-                              "className": "deliveryInquiry",
-                              "buttonName": "배송조회"
-                          },
-                          {
-                              "className": "deliveryRequest",
-                              "buttonName": "배송문의"
-                          },
-                          {
-                              "className": "productReview",
-                              "buttonName": "제품리뷰"
-                          }
-                      ]
-                  }
-              ],
-              "repaymentInfo": {
-                  "bankUserName": "이엘지",
-                  "bankList": [
-                      {
-                          "bankValue": "국민은행_코드",
-                          "bankName": "국민은행"
-                      },
-                      {
-                          "bankValue": "하나은행_코드",
-                          "bankName": "하나은행"
-                      },
-                      {
-                          "bankValue": "기업은행_코드",
-                          "bankName": "기업은행"
-                      },
-                      {
-                          "bankValue": "우리은행_코드",
-                          "bankName": "우리은행"
-                      },
-                      {
-                          "bankValue": "신한은행_코드",
-                          "bankName": "신한은행"
-                      }
-                  ]
-              }
-          },
-          {
-              "orderDate": "2020.09.05",
-              "orderNumber": "20203987102999",
-              "orderTotal": "3",
-              "orderCancelAbleYn": "Y",
-              "productList": [
-                  {
-                      "modelID": "CARE49576932834",
-                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                      "productNameEN": "OLED552445UA",
-                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": [],
-                      "productTotal": "1",
-                      "productPrice": "50000",
-                      "discountPrice": "5000",
-                      "orderStatus": {
-                          "disabled": "",
-                          "statusText": "결제완료",
-                          "statusClass": "",
-                          "statusDate": "배송희망일 2020.09.18"
-                      },
-                      "statusButtonList": [
-                          {
-                              "className": "deliveryInquiry",
-                              "buttonName": "배송조회"
-                          },
-                          {
-                              "className": "deliveryRequest",
-                              "buttonName": "배송문의"
-                          },
-                          {
-                              "className": "takeBackInner",
-                              "buttonName": "반품신청"
-                          }
-                      ]
-                  },
-                  {
-                      "modelID": "CARE495769328456",
-                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                      "productNameEN": "OLED552445UA",
-                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": [],
-                      "productTotal": "1",
-                      "productPrice": "50000",
-                      "discountPrice": "5000",
-                      "orderStatus": {
-                          "disabled": "",
-                          "statusText": "결제완료",
-                          "statusClass": "",
-                          "statusDate": "배송희망일 2020.09.18"
-                      },
-                      "statusButtonList": [
-                          {
-                              "className": "deliveryInquiry",
-                              "buttonName": "배송조회"
-                          },
-                          {
-                              "className": "deliveryRequest",
-                              "buttonName": "배송문의"
-                          },
-                          {
-                              "className": "productReview",
-                              "buttonName": "제품리뷰"
-                          }
-                      ]
-                  }
-              ],
-              "repaymentInfo": {
-                  "bankUserName": "이엘지",
-                  "bankList": [
-                      {
-                          "bankValue": "국민은행_코드",
-                          "bankName": "국민은행"
-                      },
-                      {
-                          "bankValue": "하나은행_코드",
-                          "bankName": "하나은행"
-                      },
-                      {
-                          "bankValue": "기업은행_코드",
-                          "bankName": "기업은행"
-                      },
-                      {
-                          "bankValue": "우리은행_코드",
-                          "bankName": "우리은행"
-                      },
-                      {
-                          "bankValue": "신한은행_코드",
-                          "bankName": "신한은행"
-                      }
-                  ]
-              }
-          },
-          {
-              "orderDate": "2020.09.05",
-              "orderNumber": "20203987102999",
-              "orderTotal": "3",
-              "orderCancelAbleYn": "N",
-              "productList": [
-                  {
-                      "modelID": "CARE495769328",
-                      "productNameKR": "LG 디오스 상냉장하냉동",
-                      "productNameEN": "OLED55BXPUA",
-                      "productImage": "/lg5-common/images/dummy/@img-product.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": ["주요스펙1", "주요스펙2"],
-                      "productTotal": "1",
-                      "productPrice": "1990000",
-                      "discountPrice": "80000",
-                      "orderStatus": {
-                          "disabled": "disabled",
-                          "statusText": "취소완료",
-                          "statusClass": "cancel",
-                          "statusDate": ""
-                      },
-                      "statusButtonList": [],
-                      "cancelAbled": "Y",
-                      "takebackAbled": "N"
-                  },
-                  {
-                      "modelID": "CARE4957639428",
-                      "productNameKR": "LG 디오스 냉장고 일반형 정수 필터",
-                      "productNameEN": "OLED552445UA",
-                      "productImage": "/lg5-common/images/dummy/@img-product2.jpg",
-                      "productPDPurl": "http://www.lge.com",
-                      "productDetailUrl": "http://www.lge.com",
-                      "specList": [],
-                      "productTotal": "1",
-                      "productPrice": "57000",
-                      "discountPrice": "5000",
-                      "orderStatus": {
-                          "disabled": "",
-                          "statusText": "결제완료",
-                          "statusClass": "",
-                          "statusDate": "설치희망일 2020.09.18"
-                      },
-                      "statusButtonList": [
-                          {
-                              "className": "deliveryInquiry",
-                              "buttonName": "배송조회"
-                          },
-                          {
-                              "className": "deliveryRequest",
-                              "buttonName": "배송문의"
-                          },
-                          {
-                              "className": "takeBackInner",
-                              "buttonName": "반품신청"
-                          }
-                      ]
-                  }
-              ]
-          }
-        ],
-        "payment":{
-            "paymentMethodName":"신용카드(분할결제) 결제수단",
-            "receiptUrl": "/html/MYC/ACCF7105.html",
-            "orderPrice": 2834060,
-            "discountPrice": 834060,
-            "memberShipPoint": 0,
-            "totalPrice": 2000000,
-            "transType": "B"
+          ],
+          "orderCancelAbleYn": "Y",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
         },
-        "shipping":{
-            "name":"",
-            "street":"디지털로10길 22 (가산동, LG전자가산 B) 123",
-            "city":"서울",
-            "postcode":"08513",
-            "telephone":"01093696245",
-            "telephonenumber":"01093696245",
-            "recyclingPickup":"Y",
-            "shippingNoteTxt":"배송요청사항",
-            "instpectionVisit":"Y"
+        {
+          "orderNumber": "000006639",
+          "orderDate": "2021.03.24",
+          "orderType": "NS",
+          "status": "Wait for Authorization",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "26900",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "펫 흡입구",
+              "productNameEN": "AGB74612304",
+              "modelID": "MD08920313",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "114000",
+              "productTotalPrice": 114000,
+              "rowTotal": 114000,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Picking",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송준비중",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
+                }
+              ]
+            },
+            {
+              "productNameKR": "LG TONE Free",
+              "productNameEN": "HBS-TFN7.AGKRWH",
+              "modelID": "MD08534009",
+              "productPDPurl": "https://wwwstg.lge.co.kr/home-audio/hbs-tfn7-white",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/home-audio/md08534009/md08534009-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Picking",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송준비중",
+                "statusClass": "",
+                "statusDate": "배송희망일 2021.03.31",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
+                }
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "Y",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
         },
-        "bankList": [
-          {
-            "commonCodeName": "산업은행",
-            "sortNo": 1,
-            "commonCodeId": "02"
-          },
-          {
-            "commonCodeName": "기업은행",
-            "sortNo": 2,
-            "commonCodeId": "03"
-          },
-          {
-            "commonCodeName": "국민은행",
-            "sortNo": 3,
-            "commonCodeId": "04"
-          },
-          {
-            "commonCodeName": "외환은행",
-            "sortNo": 4,
-            "commonCodeId": "05"
-          },
-          {
-            "commonCodeName": "수협중앙",
-            "sortNo": 5,
-            "commonCodeId": "07"
-          },
-          {
-            "commonCodeName": "농협중앙회",
-            "sortNo": 6,
-            "commonCodeId": "11"
-          },
-          {
-            "commonCodeName": "단위농협",
-            "sortNo": 7,
-            "commonCodeId": "12"
-          },
-          {
-            "commonCodeName": "우리은행",
-            "sortNo": 8,
-            "commonCodeId": "20"
-          },
-          {
-            "commonCodeName": "신한은행",
-            "sortNo": 9,
-            "commonCodeId": "21"
-          },
-          {
-            "commonCodeName": "SC제일",
-            "sortNo": 10,
-            "commonCodeId": "23"
-          },
-          {
-            "commonCodeName": "KEB하나은행(구하나,구외환)",
-            "sortNo": 11,
-            "commonCodeId": "25"
-          },
-          {
-            "commonCodeName": "씨티은행",
-            "sortNo": 12,
-            "commonCodeId": "27"
-          },
-          {
-            "commonCodeName": "대구은행",
-            "sortNo": 13,
-            "commonCodeId": "31"
-          },
-          {
-            "commonCodeName": "부산은행",
-            "sortNo": 14,
-            "commonCodeId": "32"
-          },
-          {
-            "commonCodeName": "광주은행",
-            "sortNo": 15,
-            "commonCodeId": "34"
-          },
-          {
-            "commonCodeName": "제주은행",
-            "sortNo": 16,
-            "commonCodeId": "35"
-          },
-          {
-            "commonCodeName": "전북은행",
-            "sortNo": 17,
-            "commonCodeId": "37"
-          },
-          {
-            "commonCodeName": "경남은행",
-            "sortNo": 18,
-            "commonCodeId": "39"
-          },
-          {
-            "commonCodeName": "마을금고",
-            "sortNo": 19,
-            "commonCodeId": "45"
-          },
-          {
-            "commonCodeName": "신용협동",
-            "sortNo": 20,
-            "commonCodeId": "48"
-          },
-          {
-            "commonCodeName": "상호저축",
-            "sortNo": 21,
-            "commonCodeId": "50"
-          },
-          {
-            "commonCodeName": "HSBC은행",
-            "sortNo": 22,
-            "commonCodeId": "54"
-          },
-          {
-            "commonCodeName": "도이치",
-            "sortNo": 23,
-            "commonCodeId": "55"
-          },
-          {
-            "commonCodeName": "우체국",
-            "sortNo": 24,
-            "commonCodeId": "71"
-          },
-          {
-            "commonCodeName": "K뱅크",
-            "sortNo": 25,
-            "commonCodeId": "89"
-          },
-          {
-            "commonCodeName": "카카오뱅크",
-            "sortNo": 26,
-            "commonCodeId": "90"
-          }
-        ]
-    }
-}
+        {
+          "orderNumber": "000006435",
+          "orderDate": "2021.03.23",
+          "orderType": "SM",
+          "status": "Picking",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "141900",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "토탈케어플러스 H13 필터",
+              "productNameEN": "ADQ74834312",
+              "modelID": "MD08918843",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "2",
+              "productPrice": "65500",
+              "productTotalPrice": 131000,
+              "rowTotal": 131000,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Wait for Authorization",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송준비중",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
+                }
+              ]
+            },
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "Y",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006426",
+          "orderDate": "2021.03.23",
+          "orderType": "SM",
+          "status": "Closed",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "65500",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 1,
+          "productList": [
+            {
+              "productNameKR": "토탈케어플러스 H13 필터",
+              "productNameEN": "ADQ74834312",
+              "modelID": "MD08918843",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "65500",
+              "productTotalPrice": 65500,
+              "rowTotal": 65500,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006234",
+          "orderDate": "2021.03.22",
+          "orderType": "NS",
+          "status": "Closed",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "0",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            },
+            {
+              "productNameKR": "LG 울트라HD 모니터",
+              "productNameEN": "32UN500.BKR",
+              "modelID": "MD08748493",
+              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "VA",
+                "80 cm"
+              ],
+              "itemStatus": "Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "refunded",
+                "statusClass": "",
+                "statusDate": "배송희망일 2021.03.24",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006228",
+          "orderDate": "2021.03.22",
+          "orderType": "NS",
+          "status": "Closed",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "8800",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "LG TROMM",
+              "productNameEN": "F18VDP.AKOR",
+              "modelID": "MD08045851",
+              "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "18kg",
+                "모던 스테인리스"
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            },
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006225",
+          "orderDate": "2021.03.22",
+          "orderType": "SM",
+          "status": "Closed",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "0",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "토탈케어플러스 H13 필터",
+              "productNameEN": "ADQ74834312",
+              "modelID": "MD08918843",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "65500",
+              "productTotalPrice": 65500,
+              "rowTotal": 65500,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            },
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "refunded",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006216",
+          "orderDate": "2021.03.22",
+          "orderType": "SM",
+          "status": "Picking",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "5900",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 1,
+          "productList": [
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Cancel Approved",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 승인",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006207",
+          "orderDate": "2021.03.22",
+          "orderType": "NS",
+          "status": "Closed",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "24700",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "LG TROMM",
+              "productNameEN": "F18VDP.AKOR",
+              "modelID": "MD08045851",
+              "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "18kg",
+                "모던 스테인리스"
+              ],
+              "itemStatus": "Cancel Refunded",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "취소 완료",
+                "statusClass": "",
+                "statusDate": "",
+                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/TEST123456"
+              },
+              "statusButtonList": [
+                
+              ]
+            },
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "2",
+              "productPrice": "10900",
+              "productTotalPrice": 21800,
+              "rowTotal": 21800,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Delivered",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송완료",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/TEST123456"
+              },
+              "statusButtonList": [
+                {
+                  "className": "productReview",
+                  "buttonName": "제품리뷰"
+                },
+                {
+                  "className": "deliveryInquiry",
+                  "buttonName": "배송조회"
+                },
+                {
+                  "className": "takeBackInner",
+                  "buttonName": "반품신청"
+                }
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "Y",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000006201",
+          "orderDate": "2021.03.22",
+          "orderType": "NS",
+          "status": "Complete",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "4700",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 2,
+          "productList": [
+            {
+              "productNameKR": "LG 울트라HD 모니터",
+              "productNameEN": "32UN500.BKR",
+              "modelID": "MD08748493",
+              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
+              "modelType": "일반(G)",
+              "orderedQuantity": "1",
+              "productPrice": "12900",
+              "productTotalPrice": 12900,
+              "rowTotal": 12900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "VA",
+                "80 cm"
+              ],
+              "itemStatus": "Shipped",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송중",
+                "statusClass": "",
+                "statusDate": "배송희망일 2021.03.24",
+                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/on_delivery"
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
+                }
+              ]
+            },
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "2",
+              "productPrice": "10900",
+              "productTotalPrice": 21800,
+              "rowTotal": 21800,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Delivered",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송완료",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/on_delivery"
+              },
+              "statusButtonList": [
+                {
+                  "className": "productReview",
+                  "buttonName": "제품리뷰"
+                },
+                {
+                  "className": "deliveryInquiry",
+                  "buttonName": "배송조회"
+                },
+                {
+                  "className": "takeBackInner",
+                  "buttonName": "반품신청"
+                }
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "N",
+          "orderRetuenAbleYn": "Y",
+          "requestOrderAbleYn": "N"
+        },
+        {
+          "orderNumber": "000005967",
+          "orderDate": "2021.03.22",
+          "orderType": "SM",
+          "status": "Picking",
+          "apiType": "OBS",
+          "requestNo": "",
+          "grandTotalValue": "10900",
+          "grandTotalCurrency": "KRW",
+          "contDtlType": "",
+          "email": "",
+          "orderTotal": 1,
+          "productList": [
+            {
+              "productNameKR": "실밥 거름망",
+              "productNameEN": "ADQ72933301",
+              "modelID": "MD08918846",
+              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+              "modelType": "소모품(A)",
+              "orderedQuantity": "1",
+              "productPrice": "10900",
+              "productTotalPrice": 10900,
+              "rowTotal": 10900,
+              "productSalePriceCurrency": "KRW",
+              "specList": [
+                "",
+                ""
+              ],
+              "itemStatus": "Wait for Authorization",
+              "requestNo": "",
+              "orderStatus": {
+                "disabled": "",
+                "statusText": "배송준비중",
+                "statusClass": "",
+                "statusDate": "배송희망일 ",
+                "deliveryUrl": ""
+              },
+              "statusButtonList": [
+                {
+                  "className": "deliveryRequest",
+                  "buttonName": "배송문의"
+                }
+              ]
+            }
+          ],
+          "orderCancelAbleYn": "Y",
+          "orderRetuenAbleYn": "N",
+          "requestOrderAbleYn": "N"
+        }
+      ],
+      "careListData": [
+        
+      ]
+    },
+    "param": {
+      "pagination": {
+        "careTotalCount": 0,
+        "page": null,
+        "totalCount": 2
+      }
+    },
+    "message": "success",
+    "status": "success"
+  }

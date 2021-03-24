@@ -23,6 +23,13 @@
         @import "OBJ0400";
     }
     
+    //브랜드스토리
+    .brand_story {
+        position: relative;
+        z-index: 1;
+        @import "OBJ0105";
+    }
+    
     @media (min-width:768px) {
         .btnMobi {
             display: none;

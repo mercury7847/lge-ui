@@ -803,7 +803,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
         },
         reset: function reset() {
             var self = this;
-            var defaults = $.extend(true, {}, self.default);
+            var defaults = $.extend(true, {}, self.defaults);
             var modelStepFirst = self.$stepBox.eq(0).attr('id') == 'stepModel' ? true : false;
 
             self.page = defaults.page;

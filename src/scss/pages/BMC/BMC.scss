@@ -235,9 +235,26 @@
     }
     // VIEW
     @import "MKT4002";
+}
 
-    &.exhibition {
-        .ev-detail-wrap .ev-detail-top {
+// 기획전
+.contents.exhibition {
+    .cont-wrap {
+        max-width: 100%;
+        padding: 0 0 120px;
+        @include mobile {
+            padding-bottom: 60px;
+        }
+    }
+    .ev-detail-top {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+        @include mobile {
+            max-width: 100%;
+            padding: 0;
+        }
+        .top-inner {
             position: relative;
             .component-wrap {
                 top:24px;
@@ -246,6 +263,85 @@
                     top:30px;
                     right:16px;
                 }
+            }
+        }
+    }
+    .ev-detail-con {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+        @include mobile {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+
+    .ev-detail-bottom {
+        @include mobile {
+            padding: 0;
+        }
+        .cont-inner {
+            max-width: 1380px + 80px;
+            margin: 0 auto;
+            padding: 16px 40px 0;
+            @include mobile {
+                max-width: 100%;
+                padding: 16px 16px 0;
+            }
+            .counter {
+                font-weight: 700;
+                @include font-small;
+            }
+            .ev-category-title {
+                margin-top: 48px;
+                font-weight: 700;
+                font-size: $font-large-2;
+                line-height: 34px;
+                @include mobile {
+                    margin-top: 40px;
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+            }
+        }
+        .ui_sticky {
+            background-color: $color-white;
+        }
+        .tabs-wrap {
+            max-width: 1380px + 80px;
+            margin: 0 auto;
+            padding: 64px 40px 0;
+            text-align: left;
+            @media screen and (min-width:(1380px + 80px)) {
+                &:before {
+                    right: 40px;
+                    left: 40px;
+                }
+            }
+            @include mobile {
+                max-width: 100%;
+                padding: 48px 0 0;
+            }
+        }
+        .ev-prd-wrap {
+            margin-top: 24px;
+            @include mobile {
+                margin-top: 16px;
+            }
+        }
+        .notice-wrap {
+            max-width: 1380px;
+            margin: 48px auto 0;
+            @media screen and (max-width:(1380px + 80px + 1px)) {
+                margin: 48px 40px 0;
+            }
+            @include mobile {
+                margin: 40px 16px 0;
+            }
+        }
+        .btn-wrap {
+            @include mobile {
+                padding: 0 16px;
             }
         }
     }
