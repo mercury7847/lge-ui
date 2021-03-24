@@ -213,15 +213,22 @@ var CareCartInfo = (function() {
                 }
 
                 totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
-                var price = parseInt(totalData.price) - (!(totalData.sale) ? 0 : parseInt(totalData.sale));
+
+                var originPrice = parseInt(totalData.price); 
+                var price = originPrice - (!(totalData.sale) ? 0 : parseInt(totalData.sale));
 
                 var cardSale =  self.$paymentInfo.attr("data-card-sale");
                 if(cardSale) {
                     price = price - parseInt(cardSale);
+                    
                     if(totalData.sale) {
                         totalData.sale = parseInt(totalData.sale) + parseInt(cardSale);
                     }
                 }
+
+                if(price < 0) price = 0;
+                if(totalData.sale > originPrice) totalData.sale = originPrice;
+
                 totalData.price = vcui.number.addComma(price);
                 if(totalData.sale) {
                     totalData.sale = vcui.number.addComma(totalData.sale);
@@ -384,7 +391,6 @@ var CareCartInfo = (function() {
                         var footery = -scrolltop + $('footer').first().offset().top - 100;
                         var infoheight = self.$cartContent.find('.info-area').outerHeight(true);
                         if(footery < infoheight){
-                            //console.log(infoheight)
                             self.$cartContent.find('.info-area').css({y:footery - infoheight})
                         } else{
                             self.$cartContent.find('.info-area').css({y:0})
@@ -482,7 +488,6 @@ var CareCartInfo = (function() {
             //if(!$itemCheck.is(':not(:checked)'))
             if(agreechk) {
                 //동의서 모두 체크
-                //console.log(self.$agreement);
                 if(self.$agreement.attr('data-has-careship')) {
                     //케어쉽 상품이 포함되어있는지 체크
                     $('#careship-subscription-popup').vcModal();
