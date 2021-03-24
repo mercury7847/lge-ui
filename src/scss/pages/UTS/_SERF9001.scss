@@ -46,6 +46,7 @@
     background-color: #fff;
 
     &.open {
+        display:block !important;
         top: 0;
     }
 
