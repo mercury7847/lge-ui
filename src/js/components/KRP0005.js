@@ -6,6 +6,8 @@
             self.setting();
             self.bindEvents();
 
+            self.getChatPinCode();
+
             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             if(cookieValue) {
                 self.requestData(false);
@@ -21,6 +23,33 @@
 
             self.$popup = $('#KRP0032');
             self.$list = self.$popup.find('div.lately-list ul');
+        },
+
+        getChatPinCode: function() {
+            var self = this;
+            var $chat = self.$KRP0005.find('div.floating-linker.chat a');
+            if($chat.length > 0) {
+                var ajaxUrl = self.$KRP0005.data('pincodeUrl');
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var chatUrl = self.$KRP0005.data('chatUrl');
+                    var isApplication = isApp();
+                    chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
+                    if(pinCode) {
+                        chatUrl += ("&code="+pinCode);
+                    }
+
+                    $chat.attr('href',chatUrl);
+                });
+            }
         },
 
         bindEvents: function() {
