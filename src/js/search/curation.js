@@ -109,8 +109,16 @@ var Curation = (function() {
             //스마트 큐레이션 아이템 클릭
             self.$curation.on('click', 'a.curation', function(e){
                 e.preventDefault();
-                var selectCuration = this.dataset.curation;
-                
+                var $li = $(this).parents('li');
+                var isSelected = $li.hasClass('select-curation');
+                var selectCuration = null;
+                if(isSelected) {
+                    $li.removeClass('on select-curation');
+                } else {
+                    $li.addClass('on select-curation');
+                    selectCuration = this.dataset.curation;
+                }
+
                 self.curationSelectEventFunc(selectCuration);
             });
 
@@ -316,7 +324,7 @@ var Curation = (function() {
 
             self.$curation.find('ul.curation-list > li').removeClass('on');
             var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
-            $a.parents('li').addClass('on');
+            $a.parents('li').addClass('on select-curation');
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
