@@ -15,22 +15,22 @@
                     privcyCheck: {
                         msgTarget: '.err-block'
                     },
-                    // userName: {
-                    //     required: true,
-                    //     maxLength: 30,
-                    //     pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                    //     msgTarget: '.err-block',
-                    //     errorMsg: '이름을 입력해주세요.',
-                    //     patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
-                    // },
-                    // phoneNo: {
-                    //     required: true,
-                    //     minLength: 10,
-                    //     maxLength: 11,
-                    //     msgTarget: '.err-block',
-                    //     errorMsg: '정확한 휴대폰번호를 입력해주세요.',
-                    //     patternMsg: '정확한 휴대폰번호를 입력해주세요.'
-                    // },
+                    userName: {
+                        required: true,
+                        maxLength: 30,
+                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        msgTarget: '.err-block',
+                        errorMsg: '이름을 입력해주세요.',
+                        patternMsg: '이름은 한글 또는 영문만 입력 가능합니다.'
+                    },
+                    phoneNo: {
+                        required: true,
+                        minLength: 10,
+                        maxLength: 11,
+                        msgTarget: '.err-block',
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    },
                     // contactPhoneNo1 : {
                     //     pattern: /^(010|011|016|017|018|019)$/,
                     //     msgTarget: '.contact-box-err-blocK',
@@ -184,42 +184,42 @@
                 });
             });
 
-            // self.$authPopup.on('modalhide', function() {
-            //     var $this = $(this);
+            self.$authPopup.on('modalhide', function() {
+                var $this = $(this);
 
-            //     self.$authPopup.find('.btn-send').text('인증번호 발송');
-            //     $this.find('#authNo').prop('disabled', true);
-            //     $this.find('input').val('');
-            // });
+                self.$authPopup.find('.btn-send').text('인증번호 발송');
+                $this.find('#authNo').prop('disabled', true);
+                $this.find('input').val('');
+            });
 
-            // $('.btn-open, #userName, #phoneNo').on('click', function() {
-            //     var result = validation.validate(['privcyCheck']);
+            $('.btn-open, #userName, #phoneNo').on('click', function() {
+                var result = validation.validate(['privcyCheck']);
 
-            //     if (!authFlag && result.success) {
-            //         authManager.open(function() {
-            //             if ($('#userName').val()) {
-            //                 $('#authName').val($('#userName').val()).prop('readonly', true);
-            //                 $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
-            //             }
-            //         });
-            //     }
-            // });
+                if (!authFlag && result.success) {
+                    authManager.open(function() {
+                        if ($('#userName').val()) {
+                            $('#authName').val($('#userName').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
+                        }
+                    });
+                }
+            });
 
-            // // 인증문자 보내기
-            // self.$authPopup.find('.btn-send').on('click', function() {
-            //     authManager.send(this);
-            // });
+            // 인증문자 보내기
+            self.$authPopup.find('.btn-send').on('click', function() {
+                authManager.send(this);
+            });
 
-            // // 인증 완료 하기
-            // self.$authPopup.find('.btn-auth').on('click', function() {
-            //     authManager.confirm('.btn-open', function(success, result) {
-            //         authFlag = success;
-            //     });
-            // });
+            // 인증 완료 하기
+            self.$authPopup.find('.btn-auth').on('click', function() {
+                authManager.confirm('.btn-open', function(success, result) {
+                    authFlag = success;
+                });
+            });
 
-            // $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-            //     this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            // })
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            })
         }
     }
 
