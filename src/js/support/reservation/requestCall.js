@@ -335,6 +335,7 @@
 
             self.$topicList.empty();
             self.$subTopicList.empty();
+            self.$subTopicBox.hide();
             self.$solutionsBanner.hide();
             self.$completeBtns.hide();
         
