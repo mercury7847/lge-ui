@@ -516,9 +516,9 @@ $(function() {
         }
 
         // 시작시 한 스탭 이동시킴.
-        setTimeout(function() {
-            if (currentStep < 1) wheelScene(1);
-        }, 1000);
+        // setTimeout(function() {
+        //     if (currentStep < 1) wheelScene(1);
+        // }, 1000);
 
 
         window.resizeScene = render;
