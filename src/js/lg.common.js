@@ -462,6 +462,20 @@ var isApp = function(){
                         }
                     }
                 });
+
+                //캐로우셀
+                vcui.ui.setDefaults('Carousel', {
+                    events: {
+                        carouselinit: function (e, data) {   
+                            if(data.$el.find('.youtube-box').length>0) {                      
+                                data.$el.find('.youtube-box').vcYoutubeBox();
+                            }   
+                            if(data.$el.find('.animation-box').length>0) {                      
+                                data.$el.find('.animation-box').vcVideoBox();
+                            }      
+                        }
+                    }
+                });
     
                 // 아코디언의 기본설정을 멀티오픈으로 설정해놓는다,
                 vcui.ui.setDefaults('Accordion', {

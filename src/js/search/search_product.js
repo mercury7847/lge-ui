@@ -76,7 +76,7 @@
                         '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
                         '<p class="copy">{{item.desc}}</p>'+
                         '<div class="btn-area btm">'+
-                            '<a href="{{item.url}}" class="btn-link"><span>{{item.urlTitle}}</span></a>'+
+                            '<a href="{{item.url}}" target="{{item.target}}" class="btn-link"><span>{{item.urlTitle}}</span></a>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -87,7 +87,7 @@
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
-            '<li><a href="{{item.url}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
             '{{/each}}'+
         '</ul>';
 
