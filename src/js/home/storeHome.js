@@ -398,6 +398,7 @@ $(function(){
 
         function buildSubCatagoryTab(result, categoryId){
 
+            $(window).trigger('breakpointchange');
             var data = result.data;
             if(data && data.data){
 
@@ -413,14 +414,12 @@ $(function(){
                         dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 3
-                    });
+                    }).vcCarousel('resize');
+
                     
                 }else if(breakpoint.name == 'pc'){    
-                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('destroy');                            
+                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('unbuild');                            
                 }  
-
-
-                console.log(arr);
 
             }
 
@@ -439,7 +438,6 @@ $(function(){
                     return item;
                 });
 
-
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
                 var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});
 
@@ -450,7 +448,6 @@ $(function(){
                     
                     var categoryId = null;
 
-                    console.log(data);
 
                     if(e.type=='tabinit'){
 
