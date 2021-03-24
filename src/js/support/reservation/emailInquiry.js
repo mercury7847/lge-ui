@@ -14,6 +14,8 @@
     '{{/each}}';
 
     var validation;
+    var isLogin = lgkorUI.isLogin;
+
     var reservation = {
         init: function() {
             var self = this;
@@ -35,7 +37,6 @@
             self.$rcptNoBox = self.$stepInput.find('#rcptNoBox');
 
             self.param = {};
-            self.isLogin = lgkorUI.isLogin;
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
 
             var register = {
@@ -207,7 +208,7 @@
             self.$stepInput.find('#inquiryTitle').val('');
             self.$stepInput.find('#inquiryContent').val('');
 
-            if (!self.isLogin) {
+            if (!isLogin) {
                 self.$stepInput.find('#userName').val('');
                 self.$stepInput.find('#userEmail').val('');
             }
