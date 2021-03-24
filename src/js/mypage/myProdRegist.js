@@ -71,9 +71,9 @@
                     '{{/each}}' +
                     '{{#if reviewBtn}}' +
                         '{{#if isMobile}}' +
-                            '<a href="#" class="12 crema-new-review-link btn-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
                         '{{#else}}' +
-                            '<a href="#" class="12 crema-new-review-link btn-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
                         '{{/if}}' +
                     '{{/if}}' +
                 '</div>' +
@@ -355,7 +355,7 @@
             });
             
             //크레마# 이동 막음
-            self.$myProductList.on('click','a[href="#"]', function(e) {
+            self.$myProductList.on('click','a.crema-new-review-link', function(e) {
                 e.preventDefault();
             });
 
@@ -1040,7 +1040,7 @@
         }
     }
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         myProductRegistration.init();
     });
 })();
