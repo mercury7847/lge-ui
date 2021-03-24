@@ -1380,6 +1380,8 @@ var isApp = function(){
                         //NN
                         utility.find('.cart').append('<span class="count"><span class="blind">장바구니 제품 수</span>' + cartCnt + '</span>');
                     }
+                    
+                    $('.header-wrap .header-top .utility .cart a').attr('href', data.cartUrl);
 
                     if(isToast && lgkorUI.stringToBool(data.success)) {
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");

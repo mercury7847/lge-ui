@@ -168,7 +168,8 @@
                     <div class="keyword-search ui_search" data-search-url="/search/result/support?category=customer&force=false&search=" data-autocomplete-url="/lg5-common/data-ajax/support/main/searchAutoComplete.json">
                         <div class="search-box">
                             <div class="search-input">
-                                <input type="text" id="search" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="검색어를 입력해주세요.(예:모델명, 증상 등)" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                                <!-- 2021.03.24 maxlength 추가 -->
+                                <input type="text" id="search" class="ui_input_clearbutton" placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="검색어를 입력해주세요.(예:모델명, 증상 등)" autocomplete="off" data-clear-button="button.btn-delete" ui-modules="InputClearButton" maxlenglth="30">
                                 <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
                                 <button type="button" class="btn-search"><span class="blind">검색</span></button>
                             </div>
