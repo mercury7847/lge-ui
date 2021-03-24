@@ -125,7 +125,7 @@
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 authManager = new AuthManager(authOptions);
 
-                //self.bindEvent();
+                self.bindEvent();
             });
         },
         
