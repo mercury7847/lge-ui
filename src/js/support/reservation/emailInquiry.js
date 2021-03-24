@@ -103,23 +103,18 @@
 
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
-                self.$cont.vcSearchModel({
-                    useCookie: false
-                }); 
+                self.$cont.vcSearchModel(); 
 
                 var url = location.search;
 
-                if (url.indexOf("?") > -1) {
-                    var flag = $('#stepTerms').length && $('#stepTerms').hasClass('active') ? true : false;
+                if (url.indexOf("?") > -1) {                    
                     var search = url.substring(1);
                     var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 
-                    if (!flag) {
-                        if (searchObj.parts) {
-                            $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
-                        } else if (searchObj.simple) {
-                            $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
-                        }
+                    if (searchObj.parts) {
+                        $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
+                    } else if (searchObj.simple) {
+                        $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
                     }
                 }
             });
