@@ -256,7 +256,7 @@
             border: 1px solid $color-white;
             border-radius: 28px;
             box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.15);
-            background: no-repeat right 16px center;
+            background: $color-white no-repeat right 16px center;
             text-align: center;
             &:active {
                 border: 1px solid $color-primary;

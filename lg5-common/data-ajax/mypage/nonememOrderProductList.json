@@ -3,58 +3,86 @@
   "status": "success",
   "message": null,
   "data": {
-      "listData":{
-            "orderDate": "2020.09.05",
-            "orderNumber": "20203987102999",
-            "orderTotal": "3",
-            "orderCancelAbleYn": "Y",
-            "productList": [
-                {
-				"productNameKR": "LG DIOS 인덕션 전기레인지",
-				"productNameEN": "BEI3MTR.AKOR",
-				"productSku": "BEI3MTR.AKOR",
-				"qty": 8,
-				"productPDPurl": "https: //wwwstg.lge.co.kr/electric-ranges/bei3mtr, modelID=MD08750903, productImage=https://wwwstg.lge.co.kr/kr/images/electric-ranges/md08750903/md08750903-350x350.jpg, itemStatus=Invoiced, recyclingPickup=Y, shippingNoteTxt=한번에 가져다 주세요",
-				"delivWish": "2021 - 03 - 29 23: 59: 59",
-				"inspectionVisit": null,
-				"productPrice": 5500000,
-				"specList": ["null", "null"],
-				"orderStatus": {
-					"disabled": "",
-					"statusText": "걸제 완료",
-					"statusClass": "",
-					"statusDate": ""
-				},
-				"statusButtonList": [],
-				"itemCancelAbleYn":""
-            }
+      "listData":
+      {
+        "orderNumber": "000006666",
+        "orderDate": "2021.03.24",
+        "orderType": "NS",
+        "status": "Wait for Authorization",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "26900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 2,
+        "productList": [
+          {
+            "productNameKR": "LG 울트라HD 모니터",
+            "productNameEN": "32UN500.BKR",
+            "modelID": "MD08748493",
+            "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "VA",
+              "80 cm"
+            ],
+            "itemStatus": "Invoiced",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "결제 완료",
+              "statusClass": "",
+              "statusDate": "배송희망일 2021.03.31",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ]
+          },
+          {
+            "productNameKR": "펫 흡입구",
+            "productNameEN": "AGB74612304",
+            "modelID": "MD08920313",
+            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
+            "modelType": "소모품(A)",
+            "orderedQuantity": "1",
+            "productPrice": "114000",
+            "productTotalPrice": 114000,
+            "rowTotal": 114000,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "",
+              ""
+            ],
+            "itemStatus": "Picking",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "배송준비중",
+              "statusClass": "",
+              "statusDate": "배송희망일 ",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              {
+                "className": "deliveryRequest",
+                "buttonName": "배송문의"
+              }
+            ]
+          }
         ],
-            "repaymentInfo": {
-                "bankUserName": "이엘지",
-                "bankList": [
-                    {
-                        "bankValue": "국민은행_코드",
-                        "bankName": "국민은행"
-                    },
-                    {
-                        "bankValue": "하나은행_코드",
-                        "bankName": "하나은행"
-                    },
-                    {
-                        "bankValue": "기업은행_코드",
-                        "bankName": "기업은행"
-                    },
-                    {
-                        "bankValue": "우리은행_코드",
-                        "bankName": "우리은행"
-                    },
-                    {
-                        "bankValue": "신한은행_코드",
-                        "bankName": "신한은행"
-                    }
-                ]
-            }
-        },
+        "orderCancelAbleYn": "Y",
+        "orderRetuenAbleYn": "N",
+        "requestOrderAbleYn": "N"
+      },
       "payment":{
         "orderPrice": 44000000,
         "totalPrice": "44,000,000",
