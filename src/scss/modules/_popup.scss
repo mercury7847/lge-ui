@@ -1102,9 +1102,12 @@
             @include font-medium;
         }
         .gray-txt-box {
-            padding:24px;
+            padding:20px 24px;
             border-radius:8px;
             background:#f4f4f4;
+            @include mobile {
+                padding:16px 20px;
+            }
             p {
                 @include font-medium;
                 em {
