@@ -190,6 +190,22 @@
                 }
             }
         }
+        &.sub-main {
+            position: relative;
+            text-align: center;
+            .btn-back {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .nav-item {
+                display: inline-block;
+                padding: 5px 0 6px;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 23px;
+            }
+        }
     }
 }
 
@@ -1361,15 +1377,32 @@
             }
         }
     }
-    .btn-logout {
+    .btn-mypage {
         position: fixed;
-        top: 17px;
-        right: 55px;
+        top: 11px;
+        right: 56px;
         z-index: 113;
         a {
             display: block;
+            width: 34px;
+            height: 34px;
+            background: url('/lg5-common/images/icons/icon-person.svg') no-repeat center center;
+            background-size: 24px;
+        }
+    }
+    .btn-logout {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 113;
+        a {
+            display: block;
+            padding: 0 10px 1px;
+            border-radius: 24px;
+            border: 1px solid $color-border;
             font-weight: 500;
             @include font(13px,21px);
+            color: $color-gray-1;
         }
     }
 }
