@@ -71,9 +71,9 @@
                     '{{/each}}' +
                     '{{#if reviewBtn}}' +
                         '{{#if isMobile}}' +
-                            '<a href="#" class="crema-new-review-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
                         '{{#else}}' +
-                            '<a href="#" class="crema-new-review-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
+                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
                         '{{/if}}' +
                     '{{/if}}' +
                 '</div>' +
@@ -309,7 +309,7 @@
 
         bindEvents: function() {
             var self = this;
-
+            
             //등록가능제품 등록하기
             self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
                 e.preventDefault();
@@ -354,6 +354,11 @@
                 self.requestMoreData(page);
             });
             
+            //크레마# 이동 막음
+            self.$myProductList.on('click','a.crema-new-review-link', function(e) {
+                e.preventDefault();
+            });
+
             //보유제품 직접 등록
             self.$registProductList.on('click','div.btm-box button' ,function(e) {
                 self.registMyProductPopupClear();    
@@ -1035,7 +1040,7 @@
         }
     }
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         myProductRegistration.init();
     });
 })();
