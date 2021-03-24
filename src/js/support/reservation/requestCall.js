@@ -350,6 +350,8 @@
             validation.reset();
             self.$calendarDate.calendar('reset');
             self.$calendarTime.timeCalendar('reset');
+            self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+            self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
         },
         bindEvent: function() {
             var self = this;
