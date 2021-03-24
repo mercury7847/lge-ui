@@ -54,6 +54,7 @@ var Curation = (function() {
             self.smartFilterChangeEventFunc(filterData, self._makeFilterData(filterData));
         },
 
+        //선택된 스마트 필터 반환
         getMakeDataFromSmartFilter: function() {
             var self = this;
             var filterData = self.getDataFromSmartFilter();
@@ -86,6 +87,17 @@ var Curation = (function() {
             return JSON.stringify(makeData);
         },
 
+        //선택된 큐레이션 반환
+        getSelectedCuration: function() {
+            var self = this;
+            var $li = self.$curation.find('ul.curation-list > li.on');
+            if($li.length > 0) {
+                return $li.find('a.curation').data('curation');
+            }
+            return null;
+        },
+
+        //이벤트
         _bindEvents: function() {
             var self = this;
             
@@ -98,8 +110,7 @@ var Curation = (function() {
             self.$curation.on('click', 'a.curation', function(e){
                 e.preventDefault();
                 var selectCuration = this.dataset.curation;
-                console.log(selectCuration);
-
+                
                 self.curationSelectEventFunc(selectCuration);
             });
 
@@ -298,6 +309,14 @@ var Curation = (function() {
             } else {
                 self.$smartFilterMore.hide();
             }
+        },
+
+        resetCuration: function(data, triggerFilterChangeEvent) {
+            var self = this;
+
+            self.$curation.find('ul.curation-list > li').removeClass('on');
+            var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
+            $a.parents('li').addClass('on');
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {

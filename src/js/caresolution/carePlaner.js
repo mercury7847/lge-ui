@@ -14,17 +14,17 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           {{#if moduleType == "" || moduleType == ""}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
-        '           {{#if moduleType == "" || moduleType == ""}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
-        '           {{#if moduleType == "" || moduleType == ""}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
-        '           {{#if moduleType == "" || moduleType == ""}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
         '       <div class="info-wrap">'+
@@ -664,7 +664,7 @@
         lgkorUI.showLoading();
 
         console.log("setChangeOptionChip:", idx, _currentItemList[idx]['rtModelSeq'])
-
+        
         var sendata = {
             tabID: getTabID(),
             modelID: _currentItemList[idx]['modelId'],
@@ -672,6 +672,7 @@
             feeCd: optdata['siblingFee'].value,
             usePeriodCd: optdata['siblingUsePeriod'].value,
             visitCycleCd: optdata['siblingVisitCycle'].value,
+            comboFlag: "1/2/3",
             blockID: idx
         }
 

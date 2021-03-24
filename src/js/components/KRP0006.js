@@ -96,7 +96,6 @@
                         var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
                         var array = cookieValue.split('|');
                         var checkCookieCount = 5; 
-
                         if(check && array.length < checkCookieCount) {
                             self.reloadComponent($item, data.categoryBestProduct);
                         }
@@ -109,8 +108,10 @@
             var resTemplate = '<div class="inner">' +
                 '<a href="{{uiInfo}}"><p class="txt">{{uiMessage}}</p></a>' +
                 '<button type="button" class="btn-close"><span class="blind">닫기</span></button>' +
-            '</div>'
-            if(data.uiInfo && data.uiMessage && data.uiMessage.length > 0) {
+            '</div>';
+            var url = data.uiInfo || data.uiUrlPath;
+            data.uiInfo = url;
+            if(url && data.uiMessage && data.uiMessage.length > 0) {
                 $dm.append(vcui.template(resTemplate, data));
                 //$dm.find('.inner p.txt').text(data.uiMessage);
                 //$dm.find('.inner a').attr("href",data.uiInfo);

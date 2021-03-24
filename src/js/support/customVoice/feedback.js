@@ -125,7 +125,7 @@
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 authManager = new AuthManager(authOptions);
 
-                //self.bindEvent();
+                self.bindEvent();
             });
         },
         
@@ -184,42 +184,42 @@
                 });
             });
 
-            // self.$authPopup.on('modalhide', function() {
-            //     var $this = $(this);
+            self.$authPopup.on('modalhide', function() {
+                var $this = $(this);
 
-            //     self.$authPopup.find('.btn-send').text('인증번호 발송');
-            //     $this.find('#authNo').prop('disabled', true);
-            //     $this.find('input').val('');
-            // });
+                self.$authPopup.find('.btn-send').text('인증번호 발송');
+                $this.find('#authNo').prop('disabled', true);
+                $this.find('input').val('');
+            });
 
-            // $('.btn-open, #userName, #phoneNo').on('click', function() {
-            //     var result = validation.validate(['privcyCheck']);
+            $('.btn-open, #userName, #phoneNo').on('click', function() {
+                var result = validation.validate(['privcyCheck']);
 
-            //     if (!authFlag && result.success) {
-            //         authManager.open(function() {
-            //             if ($('#userName').val()) {
-            //                 $('#authName').val($('#userName').val()).prop('readonly', true);
-            //                 $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
-            //             }
-            //         });
-            //     }
-            // });
+                if (!authFlag && result.success) {
+                    authManager.open(function() {
+                        if ($('#userName').val()) {
+                            $('#authName').val($('#userName').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
+                        }
+                    });
+                }
+            });
 
-            // // 인증문자 보내기
-            // self.$authPopup.find('.btn-send').on('click', function() {
-            //     authManager.send(this);
-            // });
+            // 인증문자 보내기
+            self.$authPopup.find('.btn-send').on('click', function() {
+                authManager.send(this);
+            });
 
-            // // 인증 완료 하기
-            // self.$authPopup.find('.btn-auth').on('click', function() {
-            //     authManager.confirm('.btn-open', function(success, result) {
-            //         authFlag = success;
-            //     });
-            // });
+            // 인증 완료 하기
+            self.$authPopup.find('.btn-auth').on('click', function() {
+                authManager.confirm('.btn-open', function(success, result) {
+                    authFlag = success;
+                });
+            });
 
-            // $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-            //     this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            // })
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+            })
         }
     }
 

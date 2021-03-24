@@ -44,6 +44,11 @@
         }
     }
     
+    .sub-main {
+        position: relative;
+        z-index: 1;
+    }
+    
     .brand-wrap {
         .objetcollection-tabs {
             background-color: $color-bg-wt;
@@ -192,4 +197,27 @@
                 color: inherit;
             }
         }
+    }
+    
+    .btn.border.w {
+        border-color: #ffffff !important;
+        color: #ffffff;
+    }
+    
+    #collection_div,
+    #collection_divM {
+        position: relative;
+        z-index: 1;
+    }
+    
+    [data-aos^=fade][data-aos^=fade] {
+        opacity: 1 !important;
+        transition-property: opacity, transform;
+    }
+    
+    .objet_detail {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
     }
