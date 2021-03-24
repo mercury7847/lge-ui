@@ -185,7 +185,7 @@
             self.$myProductWarp.hide();
             self.$completeBtns.show();
 
-            self.$cont.commonModel('updateSummary', summaryOpt);
+            self.$cont.vcSearchModel('updateSummary', summaryOpt);
         },
         setTopic: function(data) {
             var self = this;
