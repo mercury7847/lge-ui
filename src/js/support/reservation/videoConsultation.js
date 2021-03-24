@@ -105,7 +105,7 @@
                 }
             };
 
-            vcui.require(['ui/validation'], function () {
+            vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 
                 if (!isLogin) {
