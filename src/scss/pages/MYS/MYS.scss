@@ -64,11 +64,17 @@
             font-weight: 700;
             @include font-large-1;
             color: $color-white;
-            text-decoration: underline;
+            text-decoration:none;
+            @include mobile {
+                font-size:20px;
+                line-height:28px;
+            }
             &:after {
+                top:4px;
                 width: 24px;
                 height: 24px;
-                background-image: url('/lg5-common/images/icons/btn-arr-24x24-white2.svg');
+                background-image: url('/lg5-common/images/icons/btn-arr-16-white.svg');
+                background-size:16px;
             }
         }
     }
@@ -104,6 +110,7 @@
                     font-size: $font-small;
                     line-height: 22px;
                     text-align: center;
+                    text-decoration:none;
                     &:not(:first-child):before {
                         position: absolute;
                         @include calc(top, 50%, 5px);
