@@ -11,40 +11,54 @@ $(function() {
         var $fwindow = $(window);
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        $fwindow.on('scroll resize', function() {
+        $fwindow.on('resize', function() {
             scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         });
-
+        $(".objet-wrap").on('scroll', function() {
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        });
         $('.only_pc [data-type="content"]').each(function(index, e) {
             var $contentObj = $(this);
             var fgOffset = parseInt($contentObj.offset().top);
             var yPos;
 
-            $fwindow.on('scroll resize', function() {
+            $fwindow.on('resize', function() {
+                yPos = (fgOffset - scrollTop) / ($contentObj.data('speed'));
+
+                $contentObj.css('top', yPos);
+            });
+            $(".objet-wrap").on('scroll', function() {
                 yPos = (fgOffset - scrollTop) / ($contentObj.data('speed'));
 
                 $contentObj.css('top', yPos);
             });
         });
-        $('.only_pc [data-type="background"]').each(function() {
-            var $backgroundObj = $(this);
-            var backgroundObj2 = $(this).height() * 2;
-            var bgOffset = parseInt($backgroundObj.offset().top - backgroundObj2);
-            var yPos;
-            var coords;
-            var windowH = $(window).height();
+        // $('.only_pc [data-type="background"]').each(function() {
+        //     var $backgroundObj = $(this);
+        //     var backgroundObj2 = $(this).height() * 2;
+        //     var bgOffset = parseInt($backgroundObj.offset().top - backgroundObj2);
+        //     var yPos;
+        //     var coords;
+        //     console.log("$backgroundObj", $backgroundObj);
+        //     console.log("$backgroundObj.offset().top", $backgroundObj.offset().top);
+        //     $fwindow.on('resize', function() {
+        //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
+        //         coords = '50% ' + yPos + 'px';
 
-            $fwindow.on('scroll resize', function() {
-                yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') + windowH || 0));
-                coords = '50% ' + yPos + 'px';
-                console.log("windowH", windowH);
-                console.log("yPos", yPos);
-                console.log("coords", coords);
-                $backgroundObj.css({ backgroundPosition: coords });
-            });
-        });
+        //         $backgroundObj.css({ backgroundPosition: coords });
+        //         console.log("3333");
+        //     });
+        //     $(".objet-wrap").on('scroll', function() {
+        //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
+        //         coords = '50% ' + yPos + 'px';
+
+        //         $backgroundObj.css({ backgroundPosition: coords });
+        //         console.log("4444");
+        //     });
+        // });
 
         $fwindow.trigger('scroll');
+        $(".objet-wrap").trigger('scroll');
     };
 
     parallaxIt();
@@ -54,12 +68,17 @@ $(function() {
     });
 
 
-    $(window).scroll(function() {
+    // $(window).on("scroll", function() {
+    //     console.log("ddd");
+    //     scrollEvent();
+    // });
+    $(".objet-wrap").on("scroll", function(e) {
         scrollEvent();
+        //parallaxIt();
     });
 
     function scrollEvent() {
-        var scrollE = $(window).scrollTop();
+        var scrollE = $(".objet-wrap").scrollTop();
 
         var div = $(window).height(),
             div2 = $(window).height() * 2,
