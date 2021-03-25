@@ -65,7 +65,7 @@
         '                   <dt>가입비</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="1" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingFee}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -79,7 +79,7 @@
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -93,7 +93,7 @@
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingVisitCycle}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectVisitCycleID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -423,12 +423,15 @@
 
             var sumTotal = parseInt($('#pop-estimate').data("sumPrice"));
             var sum =  sumTotal - maxCardSale;
+            if(sum < 0) sum = 0;
             var addCommaSum = vcui.number.addComma(sum);
             $('#pop-estimate').find(".estimate-usedPrice").text("월 " + addCommaSum + "원");
 
-            console.log("sumTotal:" + sum)
+            $('#pop-estimate').find('.pop-conts .bullet-list').hide();
+            var descId = $this.data('descId');
+            if(descId != "") $('#pop-estimate').find('.pop-conts .bullet-list').eq(parseInt(descId)).show();            
 
-
+            console.log("sumTotal:" + sum);
         }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
 
@@ -655,15 +658,13 @@
         if(siblingType == "siblingColors"){
             setChangeColorChip(idx, optionData.optdata);
         } else{
-            setChangeOptionChip(idx, optionData.optdata)
+            setChangeOptionChip(idx, optionData.optdata, $(item).data('comboId'))
         }
     }
 
     //색상 외 옵션 변경...
-    function setChangeOptionChip(idx, optdata){
+    function setChangeOptionChip(idx, optdata, comboId){
         lgkorUI.showLoading();
-
-        console.log("setChangeOptionChip:", idx, _currentItemList[idx]['rtModelSeq'])
         
         var sendata = {
             tabID: getTabID(),
@@ -672,9 +673,11 @@
             feeCd: optdata['siblingFee'].value,
             usePeriodCd: optdata['siblingUsePeriod'].value,
             visitCycleCd: optdata['siblingVisitCycle'].value,
-            comboFlag: "1/2/3",
+            comboFlag: comboId,
             blockID: idx
         }
+
+        console.log("setChangeOptionChip:", sendata)
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -897,8 +900,7 @@
                             variableWidth : false,
                             dots: false,
                             slidesToShow: 2,
-                            slidesToScroll: 2
-                            
+                            slidesToScroll: 2                            
                         }
                     },
                     {
@@ -1044,7 +1046,7 @@
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                var cardItemTemplate = '<li><a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
 
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
@@ -1056,6 +1058,7 @@
                             if(!item.cardId) {
                                 item.label = "선택취소"
                             }
+                            item.descId = idx;
                             selectList.append(vcui.template(cardItemTemplate, item));
                         });
                     }
@@ -1078,6 +1081,8 @@
             var estimateProdList = vcui.template(_estimateProdTemplate, result.data);
             listwrap.after($(estimateProdList).get(0));
             listwrap.remove();
+
+            $('#pop-estimate').find('.pop-conts .bullet-list').hide();
 
             $('#pop-estimate').vcModal();
                 
