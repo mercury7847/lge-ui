@@ -16,7 +16,10 @@
     }
     
     //제품체험
-    @import "OBJ0302";
+    .model_experience {
+        @import "OBJ0302";
+    }
+    
     //갤러리
     .objet.gallery {
         background: #f0eeee;
