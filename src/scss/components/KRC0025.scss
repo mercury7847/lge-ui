@@ -62,7 +62,7 @@
         }
     }
     &.stage-medium {
-        max-width:1380px;
+        max-width:1380px + 80px;
         .unit-list {
             &.block1 {
                 &.type-wide {
