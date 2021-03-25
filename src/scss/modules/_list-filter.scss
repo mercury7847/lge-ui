@@ -2,6 +2,10 @@
     @include clearfix;
     padding-bottom:12px;
 
+    @include mobile {
+        padding-bottom: 16px;
+    }
+
     .check-soldout {
         float: right;
         margin-right: 40px;
