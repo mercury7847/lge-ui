@@ -726,7 +726,7 @@
                             location.href = url;
                         } else {
                             lgkorUI.confirm('', {
-                                title:'해당 제품을 전시하는 매장이 없습니다.<br>가까운 매장에서 비슷한 제품을<br>전시하는지 확인해보시겠어요?',
+                                title:'해당 제품을 전시하는 매장은 없습니다.<br>하지만 매장에서 제품 상담을 받으실 수는 있습니다.<span>가까운 매장을 찾아 상담을 진행하시겠어요?</span>',
                                 okBtnName: '네',
                                 cancelBtnName: '아니오',
                                 ok: function() {
@@ -1331,6 +1331,36 @@
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
                 $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
+                //
+                //꼭 확인하세요 부분 케어솔루션 총요금 업데이트
+                var selectInfoData = selectRentalInfoData;
+
+                var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
+                
+                var infoTotal = 0;
+                
+                //1년차 계산
+                if(selectInfoData.years1TotAmt) {
+                    infoTotal += (selectInfoData.years1TotAmt * 12);
+                }
+                //2년차 계산
+                if(selectInfoData.years2TotAmt) {
+                    infoTotal += (selectInfoData.years2TotAmt * 12);
+                }
+                //3년차 계산
+                if(selectInfoData.years3TotAmt) {
+                    infoTotal += (selectInfoData.years3TotAmt * 12);
+                }
+                //4년차 계산
+                if(selectInfoData.years4TotAmt) {
+                    infoTotal += (selectInfoData.years4TotAmt * 12);
+                }
+                //5년차 계산
+                if(selectInfoData.years5TotAmt) {
+                    infoTotal += (selectInfoData.years5TotAmt * 12);
+                }
+
+
             },
 
             //케어십 계약기간 선택에 따른 가격정보 변경
