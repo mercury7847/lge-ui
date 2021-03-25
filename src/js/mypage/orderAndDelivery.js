@@ -1632,7 +1632,7 @@
 
         var sendata = {
             confirmType: "bank",
-            paymentUser: $('#'+popname).data('bankAccountNm'),
+            paymentUser: $('#'+popname).data('userName'),
             paymentBankNumber: $('#'+popname).find('.bank-input-box input').val(),
             paymentBank: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
@@ -1783,10 +1783,8 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
-                popup.data("bankAccountNm", result.data.payment.bankAccountNm);
-                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.payment.bankAccountNm);
-
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) popup.find('.form-wrap .forms dd .input-wrap input').removeAttr('readonly');
+                popup.data("userName", result.data.orderUser.userName);
+                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.orderUser.userName);
 
                 bankInfoBlock.show();
             } else{
