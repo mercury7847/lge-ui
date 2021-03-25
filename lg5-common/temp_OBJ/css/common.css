@@ -3168,7 +3168,7 @@
     }
     .collect_tab.active {
         /*top: 56px; */
-        top: 0;
+        top: 91px;
     }
     .collect_tab.active .c_tab_bg {
         display: block;
@@ -12559,7 +12559,8 @@
     }
     .collect_tab.active {
         position: fixed;
-        top: 0px;
+        display: block !important;
+        top: 74px !important;
         bottom: inherit;
     }
     .collect_tab.active .c_tab_bg {
