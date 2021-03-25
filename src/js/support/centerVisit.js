@@ -149,13 +149,6 @@
 
             var seq = lgkorUI.searchParamsToObject('seq');
             var data = {
-                category: self.$cont.find('#category').val(),
-                categoryName: self.$cont.find('#categoryNm').val(),
-                subCategory: self.$cont.find('#subCategory').val(),
-                subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                modelCode: self.$cont.find('#modelCode').val(),
-                productCode: self.$cont.find('#productCode').val(),
-                serviceType: self.$cont.find('#serviceType').val(),
                 lockUserId: self.$cont.find('#lockUserId').val(),
                 pageCode: self.$cont.find('#pageCode').val()
             };
@@ -287,7 +280,7 @@
 
                 self.$dateWrap.calendar({inputTarget:'#date'});
                 self.$timeWrap.timeCalendar({inputTarget:'#time'});
-                self.$cont.vcSearchModel(); 
+                self.$cont.vcSearchModel({model:data}); 
 
                 self.$keywordWrap.search({
                     template: {
