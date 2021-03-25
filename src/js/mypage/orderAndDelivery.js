@@ -977,10 +977,26 @@
 
     function setDeliveryRequest(dataID, prodID){
         console.log("[setDeliveryRequest]", dataID, prodID);
+
+        lgkorUI.confirm('이메일 배송 문의를 위해서는 개인정보 수집 및 이용에<br>동의 하셔야 이용 가능합니다.<br>동의 하시겠습니까?',{
+            typeClass:'type2',
+            title:'',
+            okBtnName: '네',
+            cancelBtnName: '아니요',
+            ok: function() {
+            },
+            cancel: function() {
+            }
+        });
     }
 
     function setProductReview(dataID, prodID){
         console.log("[setProductReview]", dataID, prodID);
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var productPDPurl = listData[dataID].productList[prodID].productPDPurl + "#pdp_review";
+        
+        void(window.open(productPDPurl));
     }
 
     function setUseReview(dataID, prodID){
@@ -1292,8 +1308,8 @@
             //월 납부 정보...
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
-                var cardReqYnName = monthpayment.cardReqYnName ? monthpayment.cardReqYnName + " - " : "";
-                monthpayment.requsetCardInfo = cardReqYnName + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                if(monthpayment.cardReqYn == "N") monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
+                else monthpayment.requsetCardInfo = cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
@@ -1788,8 +1804,11 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
-                popup.data("userName", result.data.orderUser.userName);
-                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.orderUser.userName);
+                var uname;
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) uname = result.data.orderUser.userName;
+                else uname = result.data.payment.bankAccountNm;
+                popup.data("userName", uname);
+                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(uname);
 
                 bankInfoBlock.show();
             } else{
