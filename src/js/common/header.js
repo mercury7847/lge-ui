@@ -90,10 +90,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                     
                     if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                    else{
+                        self.$el.find('.btm-before-login').hide();
+                        self.$el.find('.btm-after-login').show();
+                    }
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
 
                     if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
+                    else{
+                        self.$el.find('.btm-before-login').show();
+                        self.$el.find('.btm-after-login').hide();
+                    }
                 }
             });
         },
