@@ -84,12 +84,12 @@
                     }
                 }
 
+                self.bindEvent();
+
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
 
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
                 self.$cont.vcSearchModel(); 
-
-                self.bindEvent();
             });
         },
         requestComplete: function() {
