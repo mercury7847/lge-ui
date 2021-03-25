@@ -10589,12 +10589,12 @@
     #brand-visualM {
         position: relative;
         width: 100%;
-        height: 400vh;
+        // height: 400vh;
     }
     #brand-visualM .brand-logo {
-        position: fixed;
-        z-index: 10;
-        top: 57px;
+        // position: fixed;
+        z-index: 12;
+        top: 0px;
         line-height: 100vh;
         width: 100%;
         margin: 0 auto;
@@ -10604,21 +10604,21 @@
         background-size: 327px auto;
     }
     #brand01M {
-        position: fixed;
+        // position: fixed;
         z-index: 10;
         width: 100%;
-        top: 74px;
-        opacity: 0;
+        top: 0;
+        // opacity: 0;
         overflow: hidden;
-        height: calc(100vh - 74px);
+        // height: 100vh;
     }
     #brand01M .mask-bg {
         position: absolute;
         z-index: 9;
         width: 100%;
-        height: calc(100vh - 74px);
+        height: 100%;
         left: 0px;
-        top: 74px;
+        top: 0px;
         opacity: 0.64;
         background-color: #000000;
     }
@@ -10720,34 +10720,36 @@
         padding-top: 24px;
     }
     .brand-collect {
-        margin: 60px auto;
+        // margin: 60px auto;
         text-align: center;
     }
     #brand_simulM {
-        opacity: 0;
-        position: fixed;
-        z-index: 99;
+        // opacity: 0;
+        position: absolute;
+        z-index: 8;
         overflow: hidden;
         width: 100%;
-        height: calc(100vh - 74px);
+        // height: 100vh;
         bottom: 0px;
+        top: 0;
+        padding: 60px 0;
     }
     #brand_simulM .mask-bg {
         position: absolute;
-        z-index: 9;
+        z-index: 7;
         width: 100%;
         height: 100%;
         left: 0px;
-        top: 74px;
+        top: 0px;
         opacity: 0.64;
         background-color: #000000;
     }
     #brand_simulM .brant-tx {
         position: absolute;
         left: 24px;
-        top: 50%;
-        z-index: 99;
-        margin-top: -274px;
+        // top: 50%;
+        z-index: 9;
+        // margin-top: -274px;
     }
     #brand_simulM .brant-tx .tx01p {
         font-family: Inter;
@@ -10773,7 +10775,7 @@
         color: #fefefe;
     }
     #brand_simulM .brant-tx .tx02 {
-        margin-top: 12px;
+        // margin-top: 12px;
         opacity: 0.8;
         font-size: 16px;
         line-height: 1.5;
@@ -14987,16 +14989,16 @@
     .wt-info-bx>p:first-child {
         margin-top: 0px;
     }
-    #brand-area2 {
+    #brand-area2M {
         position: relative;
-        z-index: 99;
-        width: 100%;
-        height: 200vh;
+        // z-index: 99;
+        // width: 100%;
+        // height: 200vh;
         /*background: url("/lg5-common/images/OBJ/mobi_img/img-brand01.jpg") no-repeat center center; background-size: contain; */
     }
     .bg-fix-brand2 {
         position: absolute;
-        z-index: 9;
+        z-index: 6;
         width: 100%;
         top: 0;
         left: 0px;
@@ -15005,7 +15007,7 @@
         background-size: cover;
     }
     .bg-fix-brand2.active {
-        position: fixed;
+        // position: fixed;
     }
     .bg-fix-brand2.active2 {
         top: inherit;
@@ -15059,7 +15061,7 @@
         width: 100%;
         height: 100vh;
         position: relative;
-        z-index: 99;
+        z-index: 5;
     }
     .c-bottrom {
         padding: 0px 26px;
@@ -15132,19 +15134,19 @@
     }
     .brandParallex01 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-02.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-02.png") no-repeat;
     }
     .brandParallex02 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-03.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-03.png") no-repeat;
     }
     .brandParallex03 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-04.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-04.png") no-repeat;
     }
     .brandParallex04 {
         height: 219px;
-        background: url("../images_mobi/brand_img/images-brand-07.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/brand/images-brand-07.png") no-repeat;
     }
     .knock {
         position: absolute;

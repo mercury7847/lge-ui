@@ -43,6 +43,8 @@
 
     var beforeVisitModelFlag;
 
+    var ajaxMethod = "get";
+
     function init(){
         console.log("requestRental Start!!!");
     

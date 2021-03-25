@@ -106,7 +106,7 @@
                                     '</ul>'+
                                 '</div>'+
                                 '{{/if}}'+
-                                '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
+                                '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
                             '{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
@@ -161,7 +161,7 @@
                                         '</ul>'+
                                     '</div>'+
                                     '{{/if}}'+
-                                    '{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
+                                    //'{{#if listData.orderedQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                                     '{{#if listData.contDtlType == "C01" && listData.addCommaProdPrice != "0"}}'+
                                     '<p class="price">'+
                                         '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
@@ -266,7 +266,7 @@
         '<li><dl><dt>휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
         '<li><dl><dt>연락처</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
         '<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
-        '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
+        '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
     
     var careShippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
@@ -276,7 +276,7 @@
         '<li><dl><dt>배송 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
         '<li><dl><dt>설치장소</dt><dd>{{installPlaceNm}}</dd></dl></li>' +
         '<li><dl><dt>설치희망 일시</dt><dd>{{instReqDate}}</dd></dl></li>' +
-        '<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>' +
+        '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
         '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
     var paymentListTemplate = 
@@ -1044,7 +1044,7 @@
                         return chk;
                     });
                     
-                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true}));
+                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
             }
 
@@ -1249,6 +1249,8 @@
                 shipping.instpectionVisit = lgkorUI.stringToBool(shipping.instpectionVisit);
                 shipping.recyclingPickup = lgkorUI.stringToBool(shipping.recyclingPickup);
 
+                shipping.isBeforeVisit = PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL ? false : true;
+
                 SHIPPING_DATA = vcui.clone(shipping);
             }
 
@@ -1265,7 +1267,7 @@
                     //if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
                     var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
-                    if(prodList.itemStatus == "Ordered" && data.payment.paymentType == "41") payment.receiptUrl = "";
+                    if(prodList.orderReceiptAbleYn != "Y") payment.receiptUrl = "";
                     PAYMENT_DATA = vcui.clone(payment);
                 }
             }
@@ -1741,7 +1743,7 @@
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
 
-            if(productList[0].contDtlType != "C09"){
+            if(productList[0].contDtlType == "C01"){
                 popup.find('.sect-wrap.cnt01').show();
                 var discountComma = vcui.number.addComma(mempointPrices);
                 var isMemberShip = productList[0].memberShipPoint != "0" ? true : false;
@@ -1795,10 +1797,11 @@
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
+        var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata["rowTotal"]);
+            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata[prodPriceKey]);
 
             var originalTotalPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
@@ -1825,7 +1828,7 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:false}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -1893,16 +1896,20 @@
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendata, function(result){
             lgkorUI.hideLoading();
+
+            popup.vcModal('close');
             
             if(result.data.success == "N"){
                 if(result.data.alert){
                     lgkorUI.alert("", {
                         title: result.data.alert.title
                     });
+                } else{
+                    lgkorUI.alert("", {
+                        title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
+                    });
                 }
             } else{
-                popup.vcModal('close');
-
                 if(PAGE_TYPE == PAGE_TYPE_LIST){
                     var box = $('.box[data-id=' + dataId + ']');
                     box.find('.orderCancel-btn, .requestOrder-btn').remove();
@@ -1946,12 +1953,13 @@
         $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
 
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var isQuantity = TAB_FLAG == TAB_FLAG_ORDER ? true : false;
         for(var cdx in listData[0].productList){
             var prodlist = vcui.clone(listData[0].productList[cdx]);
             prodlist.statusButtonList = [];
             var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
             prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
-            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false, isBtnSet:false}));
+            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false, isBtnSet:false, isQuantity:isQuantity}));
         }
         
         $('#popup-receipt-list').vcModal();

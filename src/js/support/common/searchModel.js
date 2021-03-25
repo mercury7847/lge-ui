@@ -796,7 +796,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             var self = this,
                 opt = self.options;
 
-            var $nextStep = $target ? $target : self.$stepInput;
+            var $nextStep = $target ? $target : self.$stepModel.next();
 
             $nextStep.siblings('.'+ opt.stepClass).removeClass(opt.stepActiveClass);
             $nextStep.addClass(opt.stepActiveClass);
