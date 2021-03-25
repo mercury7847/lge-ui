@@ -872,18 +872,17 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             };
             var setAppLocation = function(currentLocation){
-            	if (currentLocation != '')
-            	{
-            		var arrLocation = currentLocation.split(',');
-                    self.latitude = arrLocation[0];
-                    self.longitude = arrLocation[1];
+            	if (currentLocation == '') currentLocation = '37.55401,126.97486'
+        		var arrLocation = currentLocation.split(',');
+                self.latitude = arrLocation[0];
+                self.longitude = arrLocation[1];
 
-                    self.searchResultMode = init ? false : true;
-                    self.schReaultTmplID = "currentSearch";
+                self.searchResultMode = init ? false : true;
+                self.schReaultTmplID = "currentSearch";
 
-                    self._loadStoreData();    
-                    !init && self._showResultLayer();
-            	}
+                self._loadStoreData();    
+                !init && self._showResultLayer();
+    
             };
             var getAppCurrentLocation = function() {
                 if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -897,12 +896,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                 {
     	        	try 
     	        	{
-    	        		var appCurrentLocation = android.getLocation();
-    	        		setAppLocation(appCurrentLocation);		
-    	        		//setAppLocation('37.4764751,126.8877776');
+    	        		var appGeoAgree = android.getLocationActive();
+    	        		if (appGeoAgree=='Y'){
+    	        			searchCurrentSearch();
+    	        		}
+    	        		else
+    	        		{
+        	        		setAppLocation('37.55401,126.97486');		    	        			
+    	        		}
             		} 
     	        	catch (e) 
     	        	{
+    	        		setAppLocation('37.55401,126.97486');
             		}
                 }	
             };
