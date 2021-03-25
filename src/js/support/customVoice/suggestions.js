@@ -1,5 +1,8 @@
 (function() {
     var validation;
+    var dateUtil = vcui.date;
+    var detect = vcui.detect;
+    var isLogin = lgkorUI.isLogin;
 
     var reservation = {
         init: function() {
@@ -15,11 +18,10 @@
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
 
-            self.isLogin = lgkorUI.isLogin;
-
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
+            vcui.require(['ui/validation', 'ui/formatter', 'support/common/searchModel.min'], function () {
                 var register = {
                     privcyCheck: {
+                        required: true,
                         msgTarget: '.err-block'
                     },
                     userName: {
@@ -84,19 +86,8 @@
 
                 validation = new vcui.ui.CsValidation('#submitForm', {register:register});
 
-                self.$cont.commonModel({
-                    register: register,
-                    selected: {
-                        category: self.$cont.find('#category').val(),
-                        categoryName: self.$cont.find('#categoryNm').val(),
-                        subCategory: self.$cont.find('#subCategory').val(),
-                        subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                        modelCode: self.$cont.find('#modelCode').val(),
-                        productCode: self.$cont.find('#productCode').val()
-                    }
-                });
-
-                $('.ui_imageinput').vcImageFileInput();
+                self.$cont.find('.ui_imageinput').vcImageFileInput();
+                self.$cont.vcSearchModel(); 
 
                 self.bindEvent();
             });
@@ -133,31 +124,23 @@
         bindEvent: function() {
             var self = this;
 
-            $('.contents').on('reset', function() {
-                self.$myModelArea.show();
+            self.$cont.on('reset', function() {
                 self.$completeBtns.hide();
 
-                self.$cont.commonModel('next', self.$stepModel);
-                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                    self.$selectedModelBar.vcSticky();
-                }); 
+                validation.reset();
+
+                self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+                self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
+                self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
             });
 
-            $('.contents').on('complete', function(e, data) {
-                console.log(data);
-
-                self.$cont.commonModel('updateSummary', {
-                    product: [data.categoryName, data.subCategoryName, data.modelCode],
+            self.$cont.on('complete', function(e, data) {
+                self.$cont.vcSearchModel('updateSummary', {
+                    product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                     reset: 'product'
                 });
                 
-                self.$myModelArea.hide();
                 self.$completeBtns.show();
-
-                self.$cont.commonModel('next', self.$stepInput);
-                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                    self.$selectedModelBar.vcSticky();
-                });
             });
 
             self.$completeBtns.find('.btn-confirm').on('click', function() {
