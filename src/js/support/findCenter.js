@@ -871,6 +871,42 @@ function moveDetail(el, detailUrl, windowHeight) {
                     });
                 }
             };
+            var setAppLocation = function(currentLocation){
+            	if (currentLocation != '')
+            	{
+            		var arrLocation = currentLocation.split(',');
+                    self.latitude = arrLocation[0];
+                    self.longitude = arrLocation[1];
+
+                    self.searchResultMode = init ? false : true;
+                    self.schReaultTmplID = "currentSearch";
+
+                    self._loadStoreData();    
+                    !init && self._showResultLayer();
+            	}
+            };
+            var getAppCurrentLocation = function() {
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                	var obj = new Object();
+                	obj.command = "getGPS";
+                	obj.callback ="setAppLocation";
+                	var jsonString= JSON.stringify(obj);
+                	webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+                else
+                {
+    	        	try 
+    	        	{
+    	        		var appCurrentLocation = android.getLocation();
+    	        		setAppLocation(appCurrentLocation);		
+    	        		//setAppLocation('37.4764751,126.8877776');
+            		} 
+    	        	catch (e) 
+    	        	{
+            		}
+                }	
+            };
+            
             var obj ={
                 title:'위치 정보 제공 동의', 
                 typeClass:'type2', 
@@ -894,13 +930,21 @@ function moveDetail(el, detailUrl, windowHeight) {
                         }
                     });
                 }};
-            var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
-                
-            if (!cookie.getCookie('geoAgree')) {
-                lgkorUI.confirm(desc, obj);
-            } else {
-                searchCurrentSearch();
+            
+            if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
+                var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
+
+	            if (!cookie.getCookie('geoAgree')) {
+	                lgkorUI.confirm(desc, obj);
+	            } else {
+	                searchCurrentSearch();
+	            }
             }
+            else
+        	{
+            	getAppCurrentLocation();
+        	}
+            
         },
 
         // 지하철역 검색...
