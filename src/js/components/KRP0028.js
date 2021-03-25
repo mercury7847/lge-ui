@@ -142,10 +142,10 @@
                         $ul.append(vcui.template(subTabItemTemplate, item));
                     });
                     if(arr.length > 0) {
-                        self.$subTab.find()
-                        self.$subTab.vcSmoothScroll('refresh');
+                        self.$subTab.vcTab('update');
                         self.$subTab.vcTab('select',0);
                         self.$subTab.parents('.tabs-bg').show();
+                        self.$subTab.vcSmoothScroll('refresh');
                     } else {
                         self.$subTab.parents('.tabs-bg').hide();
                     }
