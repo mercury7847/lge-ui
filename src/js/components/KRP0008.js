@@ -1331,6 +1331,9 @@
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice,"price":0});
                 $paymentAmount.data('prefix', '월');
                 self.updatePaymentAmountPrice($paymentAmount);
+                //
+                //꼭 확인하세요 부분 케어솔루션 총요금 업데이트
+                
             },
 
             //케어십 계약기간 선택에 따른 가격정보 변경
