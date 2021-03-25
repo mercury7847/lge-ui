@@ -67,14 +67,14 @@ var Curation = (function() {
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
-                //var tempArray = data[filterId];
-                var tempArray = data['data'];
+                var tempArray = data[filterId];
+                //var tempArray = data['data'];
                 if(!tempArray) {
                     tempArray = [];
                 }
                 tempArray.push(filterValueId);
-                //data[filterId] = tempArray;
-                data['data'] = tempArray;
+                data[filterId] = tempArray;
+                //data['data'] = tempArray;
             });
             return data;
         },
@@ -331,48 +331,52 @@ var Curation = (function() {
             var self = this;
 
             var filterData = JSON.parse(data);
-            if(filterData && filterData.data) {
-                var arr = filterData.data.split('||');
-                if(arr instanceof Array) {
-                    arr.forEach(function(item,index) {
-                        var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+            if(filterData) {
+
+                for(key in filterData) {
+                    var arr = filterData[key].split('||');
+                    if(arr instanceof Array) {
+                        arr.forEach(function(item,index) {
+                            var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                            if($input.length > 0) {
+                                $input.prop('checked',true);
+    
+                                var param = {
+                                    "filterId": $input.data('filterId'),
+                                    "filterValueId": $input.val(),
+                                    "filterValueName": $input.attr('name')
+                                }
+    
+                                var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                                if($findLi.length < 1) {
+                                    self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
+                                    self.$smartFilterResult.show();
+                                }
+                            }
+                        });
+    
+                        self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
+                    } else if(typeof arr === 'string' || arr instanceof String){
+                        var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
                         if($input.length > 0) {
                             $input.prop('checked',true);
-
+    
                             var param = {
                                 "filterId": $input.data('filterId'),
                                 "filterValueId": $input.val(),
                                 "filterValueName": $input.attr('name')
                             }
-
+    
                             var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
                             if($findLi.length < 1) {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                                 self.$smartFilterResult.show();
                             }
                         }
-                    });
-
-                    self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                } else if(typeof arr === 'string' || arr instanceof String){
-                    var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
-                    if($input.length > 0) {
-                        $input.prop('checked',true);
-
-                        var param = {
-                            "filterId": $input.data('filterId'),
-                            "filterValueId": $input.val(),
-                            "filterValueName": $input.attr('name')
-                        }
-
-                        var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
-                        if($findLi.length < 1) {
-                            self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                            self.$smartFilterResult.show();
-                        }
+    
+                        self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                     }
 
-                    self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                 }
 
                 if(triggerFilterChangeEvent) {
