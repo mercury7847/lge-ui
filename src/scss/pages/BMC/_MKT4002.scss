@@ -233,6 +233,79 @@
                 &:only-child {
                     padding:0;
                 }
+                .img_view {
+                    position:relative;
+                    .btn_participation {
+                        position:absolute;
+                        width:31.5%;
+                        height:17.3%;
+                        bottom:24.2%;
+                        left:34%;
+                        cursor:pointer;
+                        @include mobile {
+                            width:38.5%;
+                            height:12.3%;
+                            bottom:16.2%;
+                            left:31%;
+                        }
+                    }
+                    .onM {
+                        display:none;
+                    }
+                    @include mobile {
+                        .onW {
+                            display:none;
+                        }
+                        .onM {
+                            display:block;
+                        }
+                    }
+                }
+                .indexVisual {
+                    .onM {
+                        display:none;
+                    }
+                    @include mobile {
+                        .onW {
+                            display:none;
+                        }
+                        .onM {
+                            display:block;
+                        }
+                    }
+                    .btn_wrap {
+                        position:relative;
+                        &>a {
+                            display:block;
+                            position:absolute;
+                            &.btn_advice,
+                            &.btn_findstore {
+                                top:11%;
+                                width:19%;
+                                height:9%;
+                                @include mobile {
+                                    top:13.5%;
+                                    width:32%;
+                                    height:6%;
+                                }
+                            }
+                            &.btn_advice {
+                                right:26%;
+                            }
+                            &.btn_findstore {
+                                right:6%;
+                            }
+                            @include mobile {
+                                &.btn_advice {
+                                    right:51%;
+                                }
+                                &.btn_findstore {
+                                    right:18%;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             .btn-group {
                 position:absolute;

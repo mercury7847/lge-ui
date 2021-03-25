@@ -143,7 +143,7 @@
                     });
                     if(arr.length > 0) {
                         self.$subTab.find()
-                        self.$subTab.vcTab('update');
+                        self.$subTab.vcSmoothScroll('refresh');
                         self.$subTab.vcTab('select',0);
                         self.$subTab.parents('.tabs-bg').show();
                     } else {

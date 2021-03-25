@@ -207,7 +207,6 @@
 
         openSearchPopup: function() {
             var self = this;
-            console.log('open Popup');
             self.$searchLayer.addClass('open');
             self.$inputSearch.focus();
             //
@@ -231,7 +230,6 @@
 
         closeSearchPopup: function() {
             var self = this;
-            console.log('close popup');
             clearTimeout(self.searchTimer);
             self.$searchLayer.removeClass('open');
             //
