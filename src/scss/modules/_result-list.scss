@@ -396,17 +396,22 @@
             display: inline-block;
             .hashtag {
                 display: inline-block;
+                margin-left: 4px;
                 @include font-small;
                 @include mobile {
                     position: static;
                     height: auto;
+                    margin-left: 6px;
                     padding: 0;
                     border-radius: 0;
                     border: 0;
                     font-size: 13px;
                     line-height: 13px;
                 }
-            } 
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
         }
         
         .sku {
