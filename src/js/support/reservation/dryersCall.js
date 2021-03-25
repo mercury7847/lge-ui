@@ -88,7 +88,7 @@
                 param = validation.getAllValues();
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
