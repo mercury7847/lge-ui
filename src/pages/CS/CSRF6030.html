@@ -64,25 +64,8 @@
                             <input type="hidden" name="lockUserId" id="lockUserId" value="113851867205">
                             <input type="hidden" name="pageCode" id="pageCode" value="B00055">
 
-                            <!-- 약관 동의 -->
-                            <div class="step-box active" id="stepTerms">
-                                <div class="section">
-                                    <!-- 2021.03.15 class first-type 추가 -->
-                                    <div class="form-infos first-type">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                    </div>
-                                    @@include('./common/support/accept-terms.html', {
-                                        member: true
-                                    })
-                                </div>
-                                <div class="step-btn-wrap">
-                                    <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                </div> 
-                            </div>
-                            <!-- // 약관 동의 -->
-
                             <!-- 제품 선택 -->
-                            <div class="step-box" id="stepModel">
+                            <div class="step-box active" id="stepModel">
                                 @@include('./common/support/select-model.html', {
                                     "url": "/lg5-common/data-ajax/support/visitCenter/selectModel.json",
                                     "category": [
@@ -104,11 +87,19 @@
                             <!-- // 제품 선택 -->
 
                             <div class="step-box" id="stepCenter" data-center-url="/lg5-common/data-ajax/support/visitCenter/centerList.json" data-local-list-url="/lg5-common/data-ajax/support/searchshop/bestShopArea.json" data-subway-list-url="/lg5-common/data-ajax/support/searchshop/selectSubwayList.json" data-station-list-url="/lg5-common/data-ajax/support/searchshop/selectStation.json" data-user-adress-checked-url="/lg5-common/data-ajax/support/searchshop/userAdressChecked.json" data-detail-url="/html/CS/CSRF6037.html">
+                                <div class="form-infos first-type">
+                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                </div>
                                 <div class="section">
-                                    <div class="form-infos">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">약관 동의</h2>
                                     </div>
-                                    
+                                    @@include('./common/support/accept-terms.html', {
+                                        member: true
+                                    })
+                                </div>
+
+                                <div class="section">
                                     <div class="tit-wrap">
                                         <h2 class="tit">방문 센터</h2>
                                     </div>
