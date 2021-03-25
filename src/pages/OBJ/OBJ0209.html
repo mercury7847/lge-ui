@@ -27,6 +27,19 @@
 
         <div class="container">
             <!-- @@include('./common/modules/page-header.html', { "pageTitle": "Gallery" }) -->
+            <div class="brand-wrap objet-wrap">
+                <div class="objetcollection-tabs">
+                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                        <ul class="tabs">
+                            <li><a href="/html/OBJ/OBJ0100.html/#objet-cont1">LG Objet Collection<em class="blind">선택됨</em></a></li>
+                            <li class="on"><a href="/html/OBJ/OBJ0100.html/#objet-cont2">제품</a></li>
+                            <li><a href="/html/OBJ/OBJ0100.html/#objet-cont3">체험</a></li>
+                            <li><a href="/html/OBJ/OBJ0100.html/#objet-cont4">갤러리</a></li>
+                            <li><a href="/html/OBJ/OBJ0100.html/#objet-cont5">브랜드 스토리</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="objet_detail waterpurifier only_pc">
                 <div id="collection_div">
                     <div class="collect_tab">
@@ -603,6 +616,41 @@
         @@include('./common/partials/KRP0004.html')
         <!-- // component / Scroll to the top -->
     </div>
+
+
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+                $(window).on("scroll", function() {
+                    autoFixedLinkTab()
+                });
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
+        });
+        //]]>
+    </script>
 </body>
 
 </html>
