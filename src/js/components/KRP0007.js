@@ -85,6 +85,7 @@
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
+                        '{{#if firstBulletName}}<li>{{firstBulletName}}</li>{{/if}}'+
                         '{{#if showBulletFeatures}}' +
                             '{{#each item in showBulletFeatures}}' +
                                 '<li>{{#raw item.specText}}</li>' +
@@ -690,10 +691,11 @@
                 if(!item.rtModelSeq) item.rtModelSeq = "";
 
                 var bulletLength, showLength;
-                item.lastBulletName = "";
+                item.firstBulletName = null;
+                item.lastBulletName = null;
                 item.showBulletFeatures = [];
                 if(item.bizType == "PRODUCT"){
-                    if(item.bulletFeatures){
+                    if(item.bulletFeatures && item.bulletFeatures.length > 0){
                         bulletLength = item.bulletFeatures.length;
                         showLength = item.cTypeCount > 0 ? 4 : bulletLength;
                         if(showLength > bulletLength) showLength = bulletLength;
@@ -702,7 +704,7 @@
 
                     if(item.cTypeCount > 0) item.lastBulletName = inputdata.lastBulletName;
                 } else if(item.bizType == "CARESOLUTION"){
-                    if(item.bulletFeatures){
+                    if(item.bulletFeatures && item.bulletFeatures.length > 0){
                         bulletLength = item.bulletFeatures.length;
                         showLength = bulletLength > 4 ? 4 : bulletLength;
                         if(showLength > bulletLength) showLength = bulletLength;
@@ -710,11 +712,11 @@
                     }
                     item.lastBulletName = inputdata.lastBulletName;
                 } else if(item.bizType == "DISPOSABLE"){
-                    if(item.compatibleModels){
-                        item.lastBulletName = inputdata.lastBulletName;
+                    if(item.compatibleModels && item.compatibleModels.length > 0){
+                        item.firstBulletName = inputdata.lastBulletName;
                         bulletLength = item.compatibleModels.length;
                         showLength = bulletLength > 5 ? 5 : bulletLength;
-                        for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
+                        for(i=0;i<showLength;i++) item.showBulletFeatures.push({specText:item.compatibleModels[i].model});
 
                         if(showLength < bulletLength) item.showBulletFeatures.push({specText:"총 " + bulletLength + "개"});
                     }
