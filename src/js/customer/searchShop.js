@@ -284,13 +284,13 @@
     	        		}
     	        		else
     	        		{
-        	        		//setAppLocation('37.55401,126.97486');		    	        			
+        	        		setAppLocation('37.55401,126.97486');		    	        			
     	        		}
             		} 
     	        	catch (e) 
     	        	{
     	                
-    	        		//setAppLocation('37.55401,126.97486');
+    	        		setAppLocation('37.55401,126.97486');
             		}
                 }	
             };
