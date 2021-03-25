@@ -2124,6 +2124,9 @@ button.scroll-down {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: -15px;
+    input {
+        appearance: auto;
+    }
 }
 
 .simul-start-div .statr-bx label span {
