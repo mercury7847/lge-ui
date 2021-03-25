@@ -458,25 +458,36 @@ footer {
                     }
                 }
                 .sns-link {
+                    display: flex;
                     float:right;
                     font-size:0;
                     li {
-                        display:inline-block;
+                        //display:flex;
                         margin-left:20px;
-                        vertical-align:top;
+                        //vertical-align:top;
                         &:first-child {
                             margin-left:0;
                         }
                         a {
-                            display:block;
-                            padding-left: 40px;
+                            display:flex;
+                            align-items: center;
+                            //padding-left: 40px;
                             font-weight: 500;
                             @include font(12px,16px);
                             color: $color-gray-1;
-                            background: no-repeat center left;
+                            &:before {
+                                display: inline-block;
+                                margin-right: 8px;
+                                width: 32px;
+                                height: 32px;
+                                background: no-repeat center center;
+                                content: '';
+                            }
                             @for $i from 1 through 6 {
                                 &.sns#{$i} {
-                                    background-image:url('/lg5-common/images/icons/icon-sns#{$i}.svg');
+                                    &:before {
+                                        background-image:url('/lg5-common/images/icons/icon-sns#{$i}.svg');
+                                    }
                                 }
                             }
                         }
@@ -503,11 +514,14 @@ footer {
                             margin-top: 24px;
                             margin-left:0;
                             a {
-                                display:block;
+                                flex-direction: column;
                                 padding-top: 34px;
                                 padding-left: 0;
                                 background-position: center top;
                                 text-align: center;
+                                &:before {
+                                    margin-right: 0;
+                                }
                             }
                         }
                     }
