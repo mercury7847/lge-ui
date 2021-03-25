@@ -118,7 +118,7 @@
                 });
             },
 
-            moreListData(page) {
+            moreListData: function(page) {
                 var index = page - 1;
                 if(index < 0) index = 0;
                 var self = this;
@@ -129,6 +129,7 @@
                     item.price = item.price ? vcui.number.addComma(item.price) : null;
                     self.$list.append(vcui.template(listItemTemplate, item));
                 });
+
                 self.$list.data('page',page);
                 if(self.listData.length > 0) {
                     self.$moreButton.show();
