@@ -13,7 +13,7 @@
             margin-bottom:16px;
 
             @include mobile {
-                margin-bottom:8px;
+                margin-bottom:12px;
 
                 &:last-child {
                     margin-bottom:0;
@@ -169,7 +169,7 @@
         }
         &.on {
             ul > li {
-                margin-bottom: 8px;
+                margin-bottom:16px;
                 a {
                     opacity: 1;
                 }
@@ -203,10 +203,7 @@
             }
             &.on {
                 ul > li {
-                    margin-bottom:6px;
-                    &:last-child {
-                        margin-bottom:12px;
-                    }
+                    margin-bottom:12px;
                 }
                 .btn-fold {
                     width:248px;
