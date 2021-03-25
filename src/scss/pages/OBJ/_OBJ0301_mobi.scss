@@ -2508,6 +2508,11 @@ button.scroll-down {
     position: relative;
     z-index: 99;
     text-align: center;
+    label {
+        input {
+            appearance: auto;
+        }
+    }
 }
 
 .simul-start-div2 .statr-bx p {
