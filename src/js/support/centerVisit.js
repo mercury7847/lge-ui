@@ -149,17 +149,15 @@
 
             var seq = lgkorUI.searchParamsToObject('seq');
             var data = {
-                category: self.$cont.find('#category').val(),
-                categoryName: self.$cont.find('#categoryNm').val(),
-                subCategory: self.$cont.find('#subCategory').val(),
-                subCategoryName: self.$cont.find('#subCategoryNm').val(),
-                modelCode: self.$cont.find('#modelCode').val(),
-                productCode: self.$cont.find('#productCode').val(),
-                serviceType: self.$cont.find('#serviceType').val(),
                 lockUserId: self.$cont.find('#lockUserId').val(),
                 pageCode: self.$cont.find('#pageCode').val()
             };
             var register = {
+                privcyCheck: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
+                },
                 date: {
                     required: true,
                     msgTarget: '.err-msg',
@@ -239,7 +237,7 @@
             }
             self.$cont.find('#route').val(self.isMobile ? 'WWW2' : 'WWWW1');
 
-            vcui.require(['ui/validation', 'helper/naverMapApi'], function () {
+            vcui.require(['ui/validation', 'helper/naverMapApi', 'support/common/searchModel.min'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 naverMap = new vcui.helper.NaverMapApi({
                     mapService: 'naver',
@@ -280,17 +278,10 @@
                     ]
                 });
 
-                self.$cont.commonModel({
-                    register: register,
-                    selected: data
-                });
+                self.$dateWrap.calendar({inputTarget:'#date'});
+                self.$timeWrap.timeCalendar({inputTarget:'#time'});
+                self.$cont.vcSearchModel({model:data}); 
 
-                self.$dateWrap.calendar({
-                    inputTarget: '#date'
-                });
-                self.$timeWrap.timeCalendar({
-                    inputTarget: '#time'
-                });
                 self.$keywordWrap.search({
                     template: {
                         autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
@@ -335,13 +326,9 @@
                 self.requestCenterData(param, url);
 
                 self.$myProductWrap.hide();
-                self.$cont.commonModel('updateSummary', {
-                    product: [data.categoryName, data.subCategoryName, data.modelCode],
+                self.$cont.vcSearchModel('updateSummary', {
+                    product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                     reset: 'product'
-                });
-                self.$cont.commonModel('next', self.$stepCenter);
-                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                    self.$selectedModelBar.vcSticky();
                 });
             });
 
@@ -640,9 +627,6 @@
 
             self.data = $.extend({}, self.options);
 
-            self.$dateWrap.calendar('reset');
-            self.$timeWrap.timeCalendar('reset');
-
             self.$topicList.empty();
             self.$subTopicList.empty();
             self.$solutionsBanner.hide();
@@ -691,8 +675,11 @@
 
             self.$completeBtns.hide();
 
-            self.$cont.commonModel('next', self.$stepModel);
-            self.$cont.commonModel('focus', self.$selectedModelBar);
+            validation.reset();
+            self.$dateWrap.calendar('reset');
+            self.$timeWrap.timeCalendar('reset');
+            self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+            self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
         },
         _getKeyword: function(){
             var self = this;
@@ -1259,13 +1246,14 @@
                     $('#acptNo').val(data.acptNo);
                     self.$submitForm.submit();
                 } else {
+                    lgkorUI.hideLoading();
+                    
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
                 }
-                lgkorUI.hideLoading();
             }, 'POST');
         }
     }

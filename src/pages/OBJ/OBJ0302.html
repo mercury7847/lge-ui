@@ -14,22 +14,29 @@
             <div class="contents objet model_experience">
                 <div class="cont-wrap">
 
-
+                    <!-- model_set_wrap -->
                     <!-- data-model-cate:제품군, data-model-code:상품코드, data-model-completed:선택완료여부(y,n)  -->
                     <div data-model-cate="" data-model-code="" data-model-completed="" class="model_set_wrap">
                         <div class="model_set">
-                            <button type="button" class="btn_model_del"><span>선택 제품 삭제</span></button>
-                            <button type="button" class="btn_model_sel"><span>제품 선택</span></button>
+                            <button type="button" class="btn_model_del"><span class="blind">선택 제품 삭제</span></button>
+                            <button type="button" class="btn_model_sel"><span class="blind">제품 선택</span></button>
                             <div class="sel_model_set">
-                                <!-- data-direction:도어방향, data-door-code:도어상품코드, data-material:도어재질, data-color:도어색상 -->
-                                <button type="button" data-direction="" data-door-code="" data-material="" data-color="" class="model_door"><span>도어 선택</span></button>
+                                <!-- data-door-direction:도어방향(좌상-LT, 좌하-LB, 우하-TB, 상-T, 중-M, 하-B), 
+                                    data-door-model_location:도어코드(TT, BB, MM), 
+                                    data-door-model_spec_material:도어재질(fenix-F, sis-S, glass-G, metal-M), 
+                                    data-door-model_spec_color:도어색상(샌드-SD, 보타닉-BT, 스톤-ST, 실버-SV, 그린-GR, 맨해론미드나잇-MT, 베이지-BE, 실버-SV, 핑크-PK, 민트-MN, 화이트-WH, 그레이-GY, 블랙-BK) -->
+                                <button type="button" data-door-direction="" data-door-model_location="" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">
+                                    <span class="blind">도어 선택</span>
+                                    <span class="door_img"><img src="" alt=""></span>
+                                </button>
+                                <div class="default_img"><img src="" alt=""></div>
                             </div>
                         </div>
                         <div class="model_next">
                             <button type="button" class="btn_model_add"><span>제품 추가</span></button>
                         </div>
                     </div>
-
+                    <!--// model_set_wrap -->
 
                 </div>
             </div>
