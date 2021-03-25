@@ -1267,7 +1267,8 @@
                     //if(payment.memberShipPoint != "0") payment.memberShipPoint = "-" + payment.memberShipPoint;
 
                     var prodList = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].productList[0] : data.careListData[0].productList[0];
-                    if(prodList.orderReceiptAbleYn != "Y") payment.receiptUrl = "";
+                    var orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
+                    if(orderReceiptAbleYn != "Y") payment.receiptUrl = "";
                     PAYMENT_DATA = vcui.clone(payment);
                 }
             }
@@ -1784,6 +1785,8 @@
 
                 popup.data("bankAccountNm", result.data.payment.bankAccountNm);
                 popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(result.data.payment.bankAccountNm);
+
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) popup.find('.form-wrap .forms dd .input-wrap input').removeAttr('readonly');
 
                 bankInfoBlock.show();
             } else{
