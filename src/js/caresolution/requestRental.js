@@ -1113,7 +1113,8 @@
                 appendClass: "sale"
             })
         }
-        console.log("newPriceInfo:", newPriceInfo)
+
+        if(newPriceInfo.total.price < 0) newPriceInfo.total.price = 0;
         requestInfoBlock.updatePaymentInfo(newPriceInfo);
     }
 
