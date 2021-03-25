@@ -248,23 +248,75 @@
 
         _dataLoaded : function(){
             var self = this;
+            setAppLocation = function(currentLocation){
+            	if (currentLocation == '') currentLocation = '37.55401,126.97486'
+        		var arrLocation = currentLocation.split(',');
 
-            lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
-                typeClass: "type2",
-                title: "위치 정보 제공 동의",
-                cancelBtnName: "아니요",
-                okBtnName: "네",
-                cancel: function(){                    
+                self.userLatitude = arrLocation[0];
+                self.userLongitude = arrLocation[1];
+
+                if(self.$map) {
+                    self.$map.setUserLocation(self.userLatitude, self.userLongitude);
+                    self.$map.start(self.userLatitude, self.userLongitude)
+                }
+            };
+            var getAppCurrentLocation = function() {
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                	var obj = new Object();
+                	obj.command = "getGPS";
+                	obj.callback ="setAppLocation";
+                	var jsonString= JSON.stringify(obj);
+                	webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+                else
+                {
+
                     setTimeout(function(){
                         if(self.$map) self.$map.start();
                     },300);
-                },
-                ok:function(){
-                    setTimeout(function(){
-                        self._getCurrentLocation();
-                    },300);
-                }
-            });    
+    	        	try 
+    	        	{
+    	        		var appGeoAgree = android.getLocationActive();
+    	        		if (appGeoAgree=='Y'){
+    	                    setTimeout(function(){
+    	                        self._getCurrentLocation();
+    	                    },300);
+    	        		}
+    	        		else
+    	        		{
+        	        		//setAppLocation('37.55401,126.97486');		    	        			
+    	        		}
+            		} 
+    	        	catch (e) 
+    	        	{
+    	                
+    	        		//setAppLocation('37.55401,126.97486');
+            		}
+                }	
+            };
+            
+            if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
+	            lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
+	                typeClass: "type2",
+	                title: "위치 정보 제공 동의",
+	                cancelBtnName: "아니요",
+	                okBtnName: "네",
+	                cancel: function(){                    
+	                    setTimeout(function(){
+	                        if(self.$map) self.$map.start();
+	                    },300);
+	                },
+	                ok:function(){
+	                    setTimeout(function(){
+	                        self._getCurrentLocation();
+	                    },300);
+	                }
+	            });    
+            }
+            else
+            {
+            	getAppCurrentLocation();
+            }
             
         },
 
