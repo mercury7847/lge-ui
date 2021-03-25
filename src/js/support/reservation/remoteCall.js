@@ -65,6 +65,11 @@
             self.$cont.find('#route').val(detect.isMobile ? 'WWW2' : 'WWWW1');
 
             var register = {
+                privcyCheck: {
+                    required: true,
+                    msgTarget: '.err-block',
+                    errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.'
+                },
                 topic: {
                     required: true,
                     msgTarget: '.topic-msg',
