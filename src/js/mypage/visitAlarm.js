@@ -18,7 +18,8 @@
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
                 '</div>{{/if}}' +
-                '{{#if type=="next"}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
+                //'{{#if type=="next"}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
+                '{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
             '</div>' +
         '</div>' +
     '</li>'
@@ -258,6 +259,18 @@
                     self.$list.empty();
                     arr.forEach(function(item, index) {
                         item.dateString = vcui.date.format(item.date,'yyyy.MM.dd');
+                        
+                        var itemMonth = parseInt(vcui.date.format(item.date,'M'));
+                        var itemYear = parseInt(vcui.date.format(item.date,'yyyy'));
+                        var thisMonth = new Date().getMonth() + 1;
+                        var thisYear = new Date().getFullYear();
+                        item.changeEnable = false;
+                        if(itemYear < thisYear) {
+                            item.changeEnable = true;
+                        } else if(itemYear == thisYear && itemMonth <= thisMonth) {
+                            item.changeEnable = true;
+                        }
+
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
                 });
