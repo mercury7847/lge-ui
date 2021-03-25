@@ -25,7 +25,6 @@
         color:#000;
         border-radius:8px;
         font-size: 16px;
-        margin-bottom:16px;
         .bullet-list {
             margin-top: 0;
             .b-txt{
@@ -90,15 +89,13 @@
         margin-top:0;
         .text {
             margin-bottom: 8px;
+            font-weight:$font-weight-medium;
+            @include font-medium;
         }
         @include mobile {
             text-align: left;
             .text {
-                font-size: 14px;
-                margin-bottom: 16px;
-            }
-            .req {
-                text-align: left;
+                margin-bottom:12px;
             }
         }
     }
