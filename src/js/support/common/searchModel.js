@@ -822,6 +822,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$el.find('#productCode').val('');
             self.$el.find('#salesModelCode').val('');
             self.$el.find('#isMyProduct').val('N');
+            self.$el.find('.agree-wrap input[type=checkbox]').prop('checked', false);
 
             self.$searchArea.find('.search-error').hide();
             self.$keywordInput.val('');
