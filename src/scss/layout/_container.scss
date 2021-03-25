@@ -5,10 +5,10 @@
     .page-header {
         max-width:1380px + 80px;
         margin:0 auto;
-        padding:24px 40px 80px;
+        padding:16px 40px 64px;
         text-align:center;
         @include mobile {
-            padding:4px 16px 24px;
+            padding:4px 16px 16px;
         }
         &.type2 {
             padding-bottom: 24px;

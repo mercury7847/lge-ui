@@ -11630,20 +11630,17 @@ $(function() {
 
         $(this).find("a .unit_name").text(unitName);
     });
-    $(window).on("load", function() {
-        var swiper = new Swiper('.gallery_top_list', {
-            autoHeight: true, //enable auto height
-            spaceBetween: 0,
-            loop: true,
-            pagination: {
-                el: '.gallery_top_list .swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-        swiper();
+    var swiper = new Swiper('.gallery_top_list', {
+        autoHeight: true, //enable auto height
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+            el: '.gallery_top_list .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
     });
 });
