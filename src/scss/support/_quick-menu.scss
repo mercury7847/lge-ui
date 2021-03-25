@@ -13,7 +13,7 @@
             margin-bottom:16px;
 
             @include mobile {
-                margin-bottom:8px;
+                margin-bottom:12px;
 
                 &:last-child {
                     margin-bottom:0;
@@ -33,8 +33,8 @@
         height:56px;
         padding:12px;
         text-align:center;
-        border-radius:50px;
-        box-shadow:0px 7px 16.7px 1.3px rgba(0, 0, 0, 0.08);
+        border-radius:28px;
+        box-shadow:0px 4px 11px 0 rgba(0, 0, 0, 0.15);
         background:#fff;
 
 
@@ -152,8 +152,8 @@
             }
         }
         .btn-option {
-            background-image:linear-gradient(315deg,#fb5a72,#fa263e);
-            background-color: #fa263e;
+            background-image:linear-gradient(to top, #fb5a72, #fa263e);
+            box-shadow:0px 4px 11px 0 rgba(0, 0, 0, 0.15);
             &:before {
                 content:'';
                 position:absolute;
@@ -161,22 +161,22 @@
                 top:8px;
                 width:40px;
                 height:40px;
-                transform:rotate(225deg);
+                transform:rotate(0);
                 transition:transform .3s .1s ease-out;
-                background:url(/lg5-common/images/icons/btn-close-24-white.svg) no-repeat;
+                background:url(/lg5-common/images/icons/icon-more-plus-x.svg) no-repeat;
                 background-size:100%;
             }
         }
         &.on {
             ul > li {
-                margin-bottom: 8px;
+                margin-bottom:16px;
                 a {
                     opacity: 1;
                 }
             }
             .btn-expand {
                 &::before {
-                    transform:rotate(0);
+                    transform:rotate(225deg);
                 }
             }
         }
@@ -203,10 +203,7 @@
             }
             &.on {
                 ul > li {
-                    margin-bottom:6px;
-                    &:last-child {
-                        margin-bottom:12px;
-                    }
+                    margin-bottom:12px;
                 }
                 .btn-fold {
                     width:248px;
@@ -255,7 +252,8 @@
                 }
                 .name {
                     font-size:12px;
-                    margin-top: 6px;
+                    line-height:22px;
+                    font-weight:$font-weight-medium;
                     @include textEllipsis;
                     opacity: 0;
                     transition: opacity ease .5s;
@@ -265,17 +263,21 @@
         .count {
             display:block;
             position:absolute;
-            top:-8px;
-            right:-8px;
+            top:-9px;
+            right:0;
             z-index:11;
-            width:24px;
-            height:24px;            
+            width:18px;
+            height:18px;            
             color:#fff;
-            font-size:12px;
-            line-height:23px;
+            font-size:11px;
+            line-height:18px;
+            font-weight:$font-weight-bold;
             text-align:center;
             border-radius:50%;
-            background-color:#ec455a;
+            background-color:$color-primary;
+            @include mobile {
+                font-size:12px;
+            }
         }
         .btn-expand {
             z-index: 10;
