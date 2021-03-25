@@ -546,7 +546,7 @@ function eventModelChk(){
 
 	$.ajax({
 		type: "POST",
-		url: "/kr/event/ManufactureChk.lgajax",
+		url: "/event/ManufactureChk.lgajax",
 		dataType:"json",
 		data: jQuery("form[name=frm]").serialize(),
 		success: function(json) {
@@ -563,7 +563,7 @@ function eventModelChk(){
 			}
 		},
 		error: function(request, status, error) {
-			alert(svrErrMsg);
+			alert(error);
 			return;
 		}
 	});
@@ -972,7 +972,7 @@ function goProc() {
 
 			$.ajax({
 				type: "POST",
-				url: "/kr/event/EV00016073Submit.lgajax",
+				url: "/event/EV00016073Submit.lgajax",
 				dataType:"json",
 				data: jQuery("form[name=frm]").serialize(),
 				success: function(json) {
@@ -989,7 +989,7 @@ function goProc() {
 					}*/
 				},
 				error: function(request, status, error) {
-					alert(svrErrMsg);
+					alert(error);
 					return;
 				}
 			});

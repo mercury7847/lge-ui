@@ -1743,7 +1743,10 @@
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
 
-            if(productList[0].contDtlType == "C01"){
+            var isPriceBlock = true;
+            if(TAB_FLAG == TAB_FLAG_CARE && productList[0].contDtlType != "C01") isPriceBlock = false;
+
+            if(isPriceBlock){
                 popup.find('.sect-wrap.cnt01').show();
                 var discountComma = vcui.number.addComma(mempointPrices);
                 var isMemberShip = productList[0].memberShipPoint != "0" ? true : false;
