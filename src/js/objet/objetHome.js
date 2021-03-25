@@ -523,7 +523,8 @@ $(function() {
         var arSplitUrl = sOriginImgUrl.split("#"); //   "#" 로 전체 url 을 나눈다
         var nArLength = arSplitUrl.length;
         var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
-        if (targetName.length > 0) {
+        console.log("targetName", targetName);
+        if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
             setTimeout(function() {
                 if (currentStep < 1) wheelScene(1);
                 $("[aria-controls='" + targetName + "']").trigger("click");
