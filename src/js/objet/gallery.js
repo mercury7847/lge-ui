@@ -11644,5 +11644,6 @@ $(function() {
                 prevEl: '.swiper-button-prev',
             },
         });
+        swiper();
     });
 });
