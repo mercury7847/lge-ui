@@ -13,31 +13,33 @@
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
-                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-                '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
-                '<div class="result-detail">' +
-                    '<div class="sku">{{#raw sku}}</div>' +
-                    '<div class="review-info">' +
-                        '{{#if review > 0}}' +
-                        '<a href="{{url}}">' +
-                            '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
-                            '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                            '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                        '</a>' +
-                        '{{/if}}' +
-                    '</div>' +
-                    '<div class="info-btm">' +
-                        '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
-                        '<div class="text hashtag-wrap">' +
-                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                '<div class="detail-wrap">' +
+                    '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                    '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
+                    '<div class="result-detail">' +
+                        '<div class="sku">{{#raw sku}}</div>' +
+                        '<div class="review-info">' +
+                            '{{#if review > 0}}' +
+                            '<a href="{{url}}">' +
+                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                                '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                            '</a>' +
+                            '{{/if}}' +
+                        '</div>' +
+                        '<div class="info-btm">' +
+                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                            '<div class="text hashtag-wrap">' +
+                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                            '</div>' +
                         '</div>' +
                     '</div>' +
+                    '<div class="spec-info"><ul>' +
+                        '{{#each item in techSpecs}}' +
+                            '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
+                        '{{/each}}' +
+                    '</ul></div>' +
                 '</div>' +
-                '<div class="spec-info"><ul>' +
-                    '{{#each item in techSpecs}}' +
-                        '<li><span>{{item.SPEC_NAME}}</span>{{item.SPEC_VALUE_NAME}}</li>' +
-                    '{{/each}}' +
-                '</ul></div>' +
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
@@ -729,6 +731,11 @@
                             data.noDataList.forEach(function(item, index) {
                                 if(!item.hash) {
                                     item.hash = [];
+                                }
+                                if(item.techSpecs) {
+                                    item.techSpecs.forEach(function(index, obj) {
+                                        obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
+                                    });
                                 }
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
