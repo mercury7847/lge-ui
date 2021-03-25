@@ -968,6 +968,11 @@
 
     function setDeliveryInquiry(dataID, prodID){
         console.log("[setDeliveryInquiry]", dataID, prodID);
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var orderStatus = listData[dataID].productList[prodID].orderStatus;
+        
+        void(window.open(orderStatus.deliveryUrl, "_blank"));
     }
 
     function setDeliveryRequest(dataID, prodID){
@@ -1872,7 +1877,7 @@
         var reasonId = popname == "popup-cancel" ? "cancelReason" : "slt01";
         var selectReason = popup.find('#'+reasonId + ' option:selected').val();
         var writeReason = popup.find('textarea').val();
-        var reson = writeReason ? writeReason : selectReason;
+        var reason = writeReason ? writeReason : selectReason;
 
         var sendata = {
             callType: popname == "popup-cancel" ? "ordercancel" : "orderreturn",
@@ -1885,7 +1890,7 @@
             bankName: bankName,
             bankAccountNo: bankAccountNo,
 
-            reson: reson,
+            reason: reason,
 
             sendOrderNumber: memInfos.sendOrderNumber,
             sendInquiryType: memInfos.sendInquiryType,
