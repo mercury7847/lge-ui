@@ -293,6 +293,12 @@
                 padding: 0 16px;
             }
         }
+        .tab-contents {
+            padding-bottom: 12px;
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
         .cont-inner {
             max-width: 1380px + 80px;
             margin: 0 auto;
