@@ -871,7 +871,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     });
                 }
             };
-            var setAppLocation = function(currentLocation){
+            setAppLocation = function(currentLocation){
             	if (currentLocation == '') currentLocation = '37.55401,126.97486'
         		var arrLocation = currentLocation.split(',');
                 self.latitude = arrLocation[0];
