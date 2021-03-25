@@ -252,7 +252,8 @@
                 }
                 .name {
                     font-size:12px;
-                    margin-top: 6px;
+                    line-height:22px;
+                    font-weight:$font-weight-medium;
                     @include textEllipsis;
                     opacity: 0;
                     transition: opacity ease .5s;
@@ -262,17 +263,21 @@
         .count {
             display:block;
             position:absolute;
-            top:-8px;
-            right:-8px;
+            top:-9px;
+            right:0;
             z-index:11;
-            width:24px;
-            height:24px;            
+            width:18px;
+            height:18px;            
             color:#fff;
-            font-size:12px;
-            line-height:23px;
+            font-size:11px;
+            line-height:18px;
+            font-weight:$font-weight-bold;
             text-align:center;
             border-radius:50%;
-            background-color:#ec455a;
+            background-color:$color-primary;
+            @include mobile {
+                font-size:12px;
+            }
         }
         .btn-expand {
             z-index: 10;
