@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+    <defs>
+        <filter id="ctawp8rh7a">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M0 0H56V56H0z" transform="translate(-489 -822) translate(0 244) translate(465 568) translate(24 10)"/>
+                                    <g stroke-linecap="round" filter="url(#ctawp8rh7a)" transform="translate(-489 -822) translate(0 244) translate(465 568) translate(24 10)">
+                                        <g stroke="#979797" stroke-width="2">
+                                            <path stroke-linejoin="round" d="M11.125 3.5L18.051 0 25.125 3.5" transform="translate(10.5 8.167)"/>
+                                            <path stroke-linejoin="round" d="M11.125 17.5L18.051 14 25.125 17.5" transform="translate(10.5 8.167) matrix(1 0 0 -1 0 31.5)"/>
+                                            <path stroke-linejoin="round" d="M11.125 39.667L18.051 36.167 25.125 39.667" transform="translate(10.5 8.167) matrix(1 0 0 -1 0 75.833)"/>
+                                            <path stroke-linejoin="round" d="M7 5.25L0 8.854 0 16.917" transform="translate(10.5 8.167)"/>
+                                            <path stroke-linejoin="round" d="M36.167 5.25L29.167 8.854 29.167 16.917" transform="translate(10.5 8.167) matrix(-1 0 0 1 65.333 0)"/>
+                                            <path stroke-linejoin="round" d="M36.167 22.167L29.167 25.771 29.167 33.833" transform="translate(10.5 8.167) rotate(180 32.667 28)"/>
+                                            <path stroke-linejoin="round" d="M7 22.167L0 25.771 0 33.833" transform="translate(10.5 8.167) matrix(1 0 0 -1 0 56)"/>
+                                            <path d="M18.125 17.5L18.125 24.5M18.125 31.5L18.125 38.5M18.125 0L18.125 8.167M36.167 8.854L29.167 12.091" transform="translate(10.5 8.167)"/>
+                                            <path d="M7 8.854L0 12.091" transform="translate(10.5 8.167) matrix(-1 0 0 1 7 0)"/>
+                                            <path d="M7 26.833L0 30.07" transform="translate(10.5 8.167) rotate(180 3.5 28.452)"/>
+                                            <path d="M36.167 26.833L29.167 30.07" transform="translate(10.5 8.167) matrix(1 0 0 -1 0 56.903)"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
