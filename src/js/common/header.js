@@ -83,12 +83,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             lgkorUI.requestAjaxDataPost(loginInfoUrl, {}, function(result){
                 self.isLogin = result.data.isLogin;
                 self.$el.find('.login-info').css('display', 'none');
+
+                console.log("### isLogin:", self.isLogin)
+
                 if(self.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
                     if(result.data.name) {
                         self.$el.find('.login-info.after-login > a:not(".btn-logout")').html('<span>' + result.data.name + '</span>님 안녕하세요');
                     }
-                    
+
                     if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
                     else{
                         self.$el.find('.btm-before-login').hide();
