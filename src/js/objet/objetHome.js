@@ -519,7 +519,17 @@ $(function() {
         // setTimeout(function() {
         //     if (currentStep < 1) wheelScene(1);
         // }, 1000);
+        var sOriginImgUrl = window.location.href;
+        var arSplitUrl = sOriginImgUrl.split("#"); //   "#" 로 전체 url 을 나눈다
+        var nArLength = arSplitUrl.length;
+        var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
+        if (targetName.length > 0) {
+            setTimeout(function() {
+                if (currentStep < 1) wheelScene(1);
+                $("[aria-controls='" + targetName + "']").trigger("click");
+            }, 1000);
 
+        }
 
         window.resizeScene = render;
 
