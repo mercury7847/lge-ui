@@ -42,8 +42,10 @@
 
             var $li = $('li.review-here[data-model-code]');
             $li.each(function(index, item){
-                var enModelName = item.dataset.modelCode;
-                $(item).append(vcui.template(cremaReviewTemplate, {"enModelName":enModelName}));
+                if(item.dataset.reviewFlag.toLowerCase() == "s") {
+                    var enModelName = item.dataset.modelCode;
+                    $(item).append(vcui.template(cremaReviewTemplate, {"enModelName":enModelName}));
+                }
             });
 
             //크레마# 이동 막음
