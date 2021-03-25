@@ -809,6 +809,10 @@
                 }
             }
         }
+        .slide-track {
+            display:flex;
+            flex-wrap:wrap;
+        }
         .slide-conts {
             padding: 12px;
         }
@@ -825,6 +829,7 @@
         }
         .item-box {
             position: relative;
+            height:100%;
             padding: 0 32px 40px;
             border-radius: 8px;
             background-color: #fff;

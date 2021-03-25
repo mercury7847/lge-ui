@@ -39,141 +39,141 @@
         }
         <div class="result-info">
             <div class="info-text">
-                @@if (context.flags) {
-                <div class="flag-wrap bar-type">
-                    @@for ( var i=0; i < flags.length; i++ ) {
-                    <span class="flag">`+flags[i]+`</span>
+                <div class="detail-wrap"><!-- 210325 수정 [div.detail-wrap 추가] -->
+                    @@if (context.flags) {
+                    <div class="flag-wrap bar-type">
+                        @@for ( var i=0; i < flags.length; i++ ) {
+                        <span class="flag">`+flags[i]+`</span>
+                        }
+                    </div>
                     }
-                </div>
-                }
-                @@if (context.flagsTy2) {
-                <div class="flag-wrap bar-type">
-                    @@flagsTy2
-                </div>
-                }
-                
-                @@if(context.itemLink) {
-                <div class="result-tit">
-                    <strong>@@tit</strong>
-                    @@if(context.cs) {
-                    <span class="cs">
-                        <span class="cs-inner">
-                            <span>IT/모니터</span>><span>데스크톱/일체형</span>
+                    @@if (context.flagsTy2) {
+                    <div class="flag-wrap bar-type">
+                        @@flagsTy2
+                    </div>
+                    }
+                    @@if(context.itemLink) {
+                    <div class="result-tit">
+                        <strong>@@tit</strong>
+                        @@if(context.cs) {
+                        <span class="cs">
+                            <span class="cs-inner">
+                                <span>IT/모니터</span>><span>데스크톱/일체형</span>
+                            </span>
+                            <span class="cs-inner">
+                                통합 드라이버 설치 프로그램
+                            </span>
                         </span>
-                        <span class="cs-inner">
-                            통합 드라이버 설치 프로그램 
-                        </span>
-                    </span>
+                        }
+                    </div>
                     }
-                </div>
-                }
-                @@if(!context.itemLink) {
-                <div class="result-tit">
-                    <a href="#">
-                        @@tit
-                    </a>
-                    @@if(context.cs) {
-                    <a href="#" class="cs">
-                        <span class="cs-inner">
-                            <span>IT/모니터</span>&#62;<span>데스크톱/일체형</span>
-                        </span>
-                        <span class="cs-inner">
-                            통합 드라이버 설치 프로그램 
-                        </span>
-                    </a>
-                    }
-                </div>
-                }
-                <div class="result-detail">
-                    @@if (context.sku) {
-                    <div class="sku">@@sku</div>
-                    }
-                    @@if (context.skuTy2) {
-                        <div class="sku"><a href="#">@@skuTy2</a></div>
-                    }
-                    
-                    @@if (context.review) {
-                    <div class="review-info">
+                    @@if(!context.itemLink) {
+                    <div class="result-tit">
                         <a href="#">
-                            @@if (context.isReview) {
-                            <div class="star is-review"><span class="blind">리뷰있음</span></div>
-                            <div class="average-rating"><span class="blind">평점</span>42</div>
-                            <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
-                            }
-                            @@if (!context.isReview) {
-                            <div class="star"><span class="blind">리뷰없음</span></div>
-                            <div class="average-rating"><span class="blind">평점</span>0</div>
-                            <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
-                            }
+                            @@tit
                         </a>
+                        @@if(context.cs) {
+                        <a href="#" class="cs">
+                            <span class="cs-inner">
+                                <span>IT/모니터</span>&#62;<span>데스크톱/일체형</span>
+                            </span>
+                            <span class="cs-inner">
+                                통합 드라이버 설치 프로그램
+                            </span>
+                        </a>
+                        }
                     </div>
                     }
-                    @@if (context.desc) {
-                    <div class="desc">
-                        <span>@@desc</span>
-                    </div>
-                    }
-                    @@if ( !context.shopInfo) {
-                    <div class="info-btm">
-                    }    
-                        @@if (context.careflag) {
-                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
-                        <span class="text careflag">
-                            케어십 가능
-                        </span>
-                        <!-- // 210218 수정 [돔 - 앞으로 이동] -->
+                    <div class="result-detail">
+                        @@if (context.sku) {
+                        <div class="sku">@@sku</div>
                         }
-                        @@if (context.hashtag) {
-                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
-                        <div class="text hashtag-wrap">
-                            @@for ( var i=0; i < hashtag.length; i++ ) {
-                            <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
-                            }
-                        </div>
-                        <!-- 210218 수정 [돔 - 앞으로 이동] -->
-                        }
-                        @@if (context.date) {
-                        <span class="text date">@@date</span>
-                        }
-                        @@if (context.model) {
-                        <div class="text model">
-                            @@model
-                        </div>
+                        @@if (context.skuTy2) {
+                            <div class="sku"><a href="#">@@skuTy2</a></div>
                         }
 
-                        @@if (context.InfoText) {
-                            @@for ( var i=0; i < InfoText.length; i++ ) {
-                            <span class="text">`+InfoText[i]+`</span>
-                            }
-                        }
-
-                    @@if ( !context.shopInfo) {    
-                    </div>
-                    }
-                    @@if( !context.itemLink) {
-                        @@if (context.shopInfo) {
-                        <div href="#" class="shop-info">
-                            <a href="#" class="desc add">서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP</a>
-                            @@if (context.shopTime) {
-                            <a href="#" class="desc time"><!-- 210218 수정 [span, em 태그 추가] -->
-                                <span><em>월~금</em> 09:00~18:00</span>
-                                <span><em>토요일</em> 09:00~13:00</span>
+                        @@if (context.review) {
+                        <div class="review-info">
+                            <a href="#">
+                                @@if (context.isReview) {
+                                <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                <div class="average-rating"><span class="blind">평점</span>42</div>
+                                <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                }
+                                @@if (!context.isReview) {
+                                <div class="star"><span class="blind">리뷰없음</span></div>
+                                <div class="average-rating"><span class="blind">평점</span>0</div>
+                                <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
+                                }
                             </a>
-                            }
-                            @@if (context.shopTel) {
-                            <span class="desc tel">02-3448-5191</span>
-                            }
                         </div>
-                    }
-                    @@if (context.state) {
-                    <div class="shop-state">
-                        <!-- 210223 수정 [센터 혼잡도 컬러값 수정] -->
-                        <span class="@@stateClass">@@state</span>
-                    </div>
-                    }
-                }
+                        }
+                        @@if (context.desc) {
+                        <div class="desc">
+                            <span>@@desc</span>
+                        </div>
+                        }
+                        @@if ( !context.shopInfo) {
+                        <div class="info-btm">
+                        }
+                            @@if (context.careflag) {
+                            <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                            <span class="text careflag">
+                                케어십 가능
+                            </span>
+                            <!-- // 210218 수정 [돔 - 앞으로 이동] -->
+                            }
+                            @@if (context.hashtag) {
+                            <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                            <div class="text hashtag-wrap">
+                                @@for ( var i=0; i < hashtag.length; i++ ) {
+                                <span class="hashtag"><span>#</span>`+hashtag[i]+`</span>
+                                }
+                            </div>
+                            <!-- 210218 수정 [돔 - 앞으로 이동] -->
+                            }
+                            @@if (context.date) {
+                            <span class="text date">@@date</span>
+                            }
+                            @@if (context.model) {
+                            <div class="text model">
+                                @@model
+                            </div>
+                            }
 
-                </div>
+                            @@if (context.InfoText) {
+                                @@for ( var i=0; i < InfoText.length; i++ ) {
+                                <span class="text">`+InfoText[i]+`</span>
+                                }
+                            }
+
+                        @@if ( !context.shopInfo) {
+                        </div>
+                        }
+                        @@if( !context.itemLink) {
+                            @@if (context.shopInfo) {
+                            <div href="#" class="shop-info">
+                                <a href="#" class="desc add">서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP 서울특별시 강서구 공항대로 431(등촌동) LG BESTSHOP</a>
+                                @@if (context.shopTime) {
+                                <a href="#" class="desc time"><!-- 210218 수정 [span, em 태그 추가] -->
+                                    <span><em>월~금</em> 09:00~18:00</span>
+                                    <span><em>토요일</em> 09:00~13:00</span>
+                                </a>
+                                }
+                                @@if (context.shopTel) {
+                                <span class="desc tel">02-3448-5191</span>
+                                }
+                            </div>
+                        }
+                        @@if (context.state) {
+                        <div class="shop-state">
+                            <!-- 210223 수정 [센터 혼잡도 컬러값 수정] -->
+                            <span class="@@stateClass">@@state</span>
+                        </div>
+                        }
+                    }
+                    </div>
+                </div><!-- 210325 수정 [div.detail-wrap 추가] -->
 
                 @@if (context.specInfo) {
                 <!-- 210318 수정 [스펙 정보 추가] -->
