@@ -722,6 +722,7 @@
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
                             $list_ul.empty();
+                            var $div = $("<div/>");
                             data.noDataList.forEach(function(item, index) {
                                 if(!item.hash) {
                                     item.hash = [];
