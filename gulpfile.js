@@ -182,7 +182,8 @@ gulp.task("jsCompile:common", () => gulp
 gulp.task("jsCompile:components", () => gulp
     .src(src + "/js/components/*")
     .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(terser())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/components/"))
@@ -388,7 +389,7 @@ gulp.task("watch", ["browser-sync"], () => {
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/fonts/**", ["static:fonts"]).on('change', browserSync.reload);
-    gulp.watch("./lg5-common/images/**", ["static:images"]).on('change', browserSync.reload);
+    //gulp.watch("./lg5-common/images/**", ["static:images"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/template/**", ["static:template"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/videos/**", ["static:videos"]).on('change', browserSync.reload);
 });
