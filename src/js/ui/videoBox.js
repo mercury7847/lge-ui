@@ -15,6 +15,8 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             };
 
             self.$video = self.$el.find("video").get(0);
+            self.$video.setAttribute('playsinline', true);
+            self.$video.style.backgroundColor="#000000";
             //self.$defaultVname = self.$el.find("video").find('source').attr('src');
             self.$ctrler = self.$el.find('.controller-wrap button');
             self.$acctrler = self.$el.find(".play-animaion-btn");
