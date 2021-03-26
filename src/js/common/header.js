@@ -92,19 +92,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         self.$el.find('.login-info.after-login > a:not(".btn-logout")').html('<span>' + result.data.name + '</span>님 안녕하세요');
                     }
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').hide();
-                        self.$el.find('.btm-after-login').show();
-                    }
+                    self.$el.find('.mypage.after-login').css('display', 'inline-block');
+
+                    self.$el.find('.btm-before-login').hide();
+                    self.$el.find('.btm-after-login').show();
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').show();
-                        self.$el.find('.btm-after-login').hide();
-                    }
+                    self.$el.find('.mypage.before-login').css('display', 'inline-block');
+
+                    self.$el.find('.btm-before-login').show();
+                    self.$el.find('.btm-after-login').hide();
                 }
             });
         },
