@@ -275,23 +275,18 @@
             max-width:1380px;
             height:100%;
             margin:0 auto;
-            position:absolute;
-            top:0;
-            right:0;
-            bottom:0;
-            left:0;
-            padding-top:80px;
+            padding:0 40px;
             @include mobile {
                 padding:32px 16px 0;
             }
             .inner {
                 display:table-cell;
                 margin: 0 auto;
-                padding:56px 0;
+                // padding:56px 0;
 
                 @include mobile {
                     max-width: 100%;
-                    padding:32px 0;
+                    // padding:32px 0;
                 }
             }
         }
@@ -317,6 +312,15 @@
         }
         &.align-top {
             .text-wrap {
+                height:100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                padding-top: 80px;
+                @include mobile {
+                    padding-top: 32px;
+                }
                 .inner {
                     vertical-align:top;
                 }
@@ -324,6 +328,11 @@
         }
         &.align-middle {
             .text-wrap {
+                position:absolute;
+                top:50%;
+                right:0;
+                left:0;
+                transform:translateY(-50%);
                 .inner {
                     vertical-align:middle;
                 }
@@ -413,6 +422,35 @@
                             margin-left:auto;
                             margin-right:auto;
                         }
+                    }
+                }
+            }
+        }
+        .align-#{$key} {
+            @if $key == top {
+                &.text-area {
+                    height: 100%;
+                    .text-wrap {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        padding-top: 80px;
+                        @include mobile {
+                            padding-top: 32px;
+                        }
+                    }
+                }
+            }
+            @if $key == middle {
+                &.text-area {
+                    height: 100%;
+                    .text-wrap {
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        left: 0;
+                        transform:translateY(-50%);
                     }
                 }
             }
