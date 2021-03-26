@@ -58,7 +58,7 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
     '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
-    '       <div class="img"><img src="{{obj.mediumImgAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
     '           <p class="tit">{{obj.modelDisplayName}}</p>\n'+
     '           {{#if obj.totalPrice}}'+
@@ -97,7 +97,7 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
     '       <a href="{{obj.modelUrlPath}}">\n'+
-    '           <div class="img"><img src="{{obj.mediumImgAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
     '               <div class="code">{{obj.modelId}}</div>\n'+
@@ -124,7 +124,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 var recommendTmpl = '{{#each obj in list}}\n'+
     '   <li class="slide-conts ui_carousel_slide">\n'+
     '       <a href="{{obj.modelUrlPath}}" class="slide-box">\n'+
-    '           <div class="img"><img src="{{obj.mediumImgAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
     '               <div class="code">{{obj.modelId}}</div>\n'+
