@@ -406,6 +406,9 @@
                 width: 50%;
                 padding: 12px;
                 //min-height: 335px;
+                a {
+                    display:block;
+                }
             }
             @include tablet {
                 margin: 0;
