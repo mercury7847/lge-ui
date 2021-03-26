@@ -6,7 +6,7 @@
 <body>
     <div class="wrap">
         <div><strong>팝업</strong></div><br>
-        <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>케어솔루션 월 요금 혜택 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>케어솔루션 할인 혜택 팝업 열기</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>케어십 할인 혜택 팝업 열기</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>케어십 안내 팝업 열기</span></button><br><br>
         <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>품절 안내 팝업 열기</span></button><br><br>
@@ -20,17 +20,56 @@
         <button type="button" data-href="#laypop9" data-control="modal" class="btn"><span>동일 제품 청약 제한 안내</span></button><br><br>
     </div>
 
-    <!-- 케어솔루션 월 요금 혜택 popup -->
-    @@include('./common/popup/OBSF9003_popup1.html', {
-        "popupID":"popup1"
+    <!-- 210326 수정 [전체 수정] -->
+    <!-- 케어솔루션 할인 혜택 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup1',
+        title : "케어솔루션 할인 혜택",
+        h2Tit : "의무 사용기간 3년/계약기간 5년",
+        feeType : "type2",
+        fee : "36,900원",
+        tableArr : [
+            { "td1" : "1년차(1~12회차)", "td2" : "36,900원", "td3" : "3,6,9,12 무상할인"},
+            { "td1" : "2년차(13~24회차)", "td2" : "36,900원", "td3" : "15, 18 무상할인"},
+            { "td1" : "3년차(25~36회차)", "td2" : "36,900원", "td3" : ""},
+            { "td1" : "4년차(37~48회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "5년차(49~60회차)", "td2" : "13,900원", "td3" : ""},
+        ],
+        feeDt : "무상할인 적용 회차(6회)",
+        freeMonth : "3, 6, 9, 12, 15, 18",
+        bTit : "케어솔루션 안내",
+        bTxt : [
+            "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
+            "5년 동안 무상 A/S(계약 기간 내)",
+            "초기구입비용 0원(60개월 분할 납부)"
+        ]
     })
-    <!-- // 케어솔루션 월 요금 혜택 popup -->
+    <!-- // 케어솔루션 할인 혜택 -->
 
-    <!-- 케어십 할인 혜택popup -->
-    @@include('./common/popup/OBSF9003_popup2.html', {
-        "popupID":"popup2"
+    <!-- 케어십 할인 혜택 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup2',
+        title : "케어십 할인 혜택",
+        h2Tit : "계약기간 1년",
+        feeType : "type2",
+        fee : "19,900원",
+        tableArr : [
+            { "td1" : "1년차(1~12회차)", "td2" : "19,900원", "td3" : "6, 12 무상할인"},
+            { "td1" : "2년차(13~24회차)", "td2" : "19,900원", "td3" : ""},
+            { "td1" : "3년차(25~36회차)", "td2" : "19,900원", "td3" : ""},
+            { "td1" : "4년차(37~48회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "5년차(49~60회차)", "td2" : "13,900원", "td3" : ""},
+        ],
+        feeDt : "무상할인 적용 회차(2회)",
+        freeMonth : "6, 12",
+        bTit : "케어십 안내",
+        bTxt : [
+            "케어십 요금은 대표요금제 기준이며, 요금제에 따라 제공되는 혜택이 다를 수 있습니다.",
+            "해지의사가 없을시, 1년 단위로 자동연장됩니다."
+        ]
     })
-    <!-- // 케어십 할인 혜택 popup -->
+    <!-- // 케어십 할인 혜택 -->
+    <!-- // 210326 수정 [전체 수정] -->
 
     <!-- 케어십 안내 popup -->
     @@include('./common/popup/OBSF9003_popup3.html', {

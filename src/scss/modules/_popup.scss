@@ -1018,7 +1018,7 @@
                 color:#000;
                 @include font-medium;
                 em {
-                    color:#000;
+                    color:$color-primary;
                 }
                 small {
                     display:block;
