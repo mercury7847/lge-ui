@@ -37,24 +37,9 @@
                             <input type="hidden" name="productCode" id="productCode" value="">
                             <input type="hidden" name="serviceType" id="serviceType" value="C">
 
-                            <!-- 약관동의 -->
-                            <div class="step-box active" id="stepTerms">
-                                <div class="section">
-                                    <div class="form-infos">
-                                        <p class="req" aria-disabled="true">필수 입력 항목</p>
-                                    </div>
-                                    @@include('./common/support/accept-terms.html', {
-                                        member: true
-                                    })
-                                    <div class="step-btn-wrap">
-                                        <button type="button" class="btn border size-m btn-next"><span>다음</span></button>
-                                    </div> 
-                                </div>
-                            </div>
-
                             <!-- 접수 -->
-                            <div class="step-box" id="stepModel" data-model-check-url="/lg5-common/data-ajax/support/airCare/modelCheck.json" data-serial-check-url="/lg5-common/data-ajax/support/airCare/serialCheck.json">
-                                <div class="section" id="aircareBox">
+                            <div class="step-box active" id="stepInput" data-model-check-url="/lg5-common/data-ajax/support/airCare/modelCheck.json" data-serial-check-url="/lg5-common/data-ajax/support/airCare/serialCheck.json">
+                                <div class="section">
                                     <div class="gray-box">
                                         <div class="text-box">
                                             LG전자는 최고의 고객만족 서비스를 위해, 2012년 이후 생산했던 공기청정기와 스탠드형 에어컨 일부 모델에 적용한 3M의 특정 필터(‘3M 초미세 먼지 필터’)의 유해성이 입증되지 않았으나,<br><br> 고객님이 우려하실 수 있어, 원하시는 경우 OIT가 포함되지 않은 필터로 무상으로 공급해 드리고자 서비스 홈페이지를 통해 신청을 받고 있습니다. 대상 모델을 확인하시고, 아래 화면에서 신청하시면 지역에 따라 다르지만 6/27일(월) 이후 순차 배송예정 입니다.<br><br>고객만족을 위해 항상 최선을 다하겠습니다.
@@ -78,11 +63,20 @@
                                         })
                                     </div>
                                 </div>
-                                
+
                                 <div class="section">
-                                    <div class="form-infos">
+                                    <div class="form-infos first-type">
                                         <p class="req" aria-disabled="true">필수 입력 항목</p>
                                     </div>
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">약관 동의</h2>
+                                    </div>
+                                    @@include('./common/support/accept-terms.html', {
+                                        member: true
+                                    })
+                                </div>
+                                
+                                <div class="section">
                                     <div class="tit-wrap">
                                         <h2 class="tit">제품군, 모델, 제조번호를 입력해 주세요.</h2>
                                     </div>
@@ -226,9 +220,11 @@
                                                 <label for="content">요청사항<span class="blind">필수항목</span></label>
                                             </div>
                                             <div class="conts">
-                                                <div class="input-wrap count">
-                                                    <textarea class="ui_textcontrol" name="content" id="content" placeholder="요청하실 내용을 150자 내외로 입력해 주세요." maxlength="150" data-limit="150" data-count-target="#txt-count2"></textarea>
-                                                    <span id="txt-count2" class="cell total"><em>0</em> / 150</span>
+                                                <div class="text-form">   
+                                                    <div class="input-wrap">
+                                                        <textarea class="ui_textcontrol" name="content" id="content" placeholder="요청하실 내용을 150자 내외로 입력해 주세요." maxlength="150" data-limit="150" data-count-target="#txt-count1"></textarea>
+                                                        <span id="txt-count1" class="inner-text"><em>0</em> / 150</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

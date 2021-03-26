@@ -70,7 +70,7 @@
 
             $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
             //self.$searchLayer.css({position: "absolute", top: -9999});
-            //self.$searchLayer.attr("aria-hidden",true).show();
+            self.$searchLayer.attr("aria-hidden",true).show();
 
             //self.$searchResultArea.hide();
             self.hideSearchResultArea();

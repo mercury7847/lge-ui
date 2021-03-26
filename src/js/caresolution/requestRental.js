@@ -43,7 +43,7 @@
 
     var beforeVisitModelFlag;
 
-    var ajaxMethod = "get";
+    var ajaxMethod = "post";
 
     function init(){
         console.log("requestRental Start!!!");
@@ -443,7 +443,7 @@
             e.preventDefault();
             //문자 동의 발송
 
-            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(MSG_SEND_URL);
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(MSG_SEND_URL, null, null, ajaxMethod);
         });
 
         $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
@@ -843,7 +843,7 @@
             }
             
             setInputData('installAbled', abled);
-        });
+        }, ajaxMethod);
     }
 
     //신용정보 조회...
@@ -895,7 +895,7 @@
                     setInputData('creditInquire', 'N');
                 }
             }
-        });
+        }, ajaxMethod);
     }
 
     function step1LastValidation(){
@@ -959,7 +959,7 @@
             } else{
                 cardInputData = {};
             }
-        });
+        }, ajaxMethod);
     }
     //납부계좌확인...
     function setBankAbledConfirm(){
@@ -992,7 +992,7 @@
             } else{
                 bankInputData = {};
             }
-        });
+        }, ajaxMethod);
     }
 
     //ARS출금동의 신청...
@@ -1008,7 +1008,7 @@
             });
 
             setInputData('arsAgree', result.data.success);
-        });
+        }, ajaxMethod);
     }
 
     function changePrevisitRequest(abled){
@@ -1133,7 +1133,7 @@
                 })
             }
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     //청약신청하기...
@@ -1232,7 +1232,7 @@
             }
 
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
