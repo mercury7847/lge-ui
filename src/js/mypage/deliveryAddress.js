@@ -55,7 +55,9 @@
             addressNickName:{
                 required: true,
                 errorMsg: "주소별칭을 입력해주세요.",
-                msgTarget: '.err-block'
+                msgTarget: '.err-block',
+                minLength : 1,
+                maxLength: 150
             },
             receiverUser: {
                 required: true,
@@ -65,7 +67,7 @@
             zipCode: {
                 required: true,
                 errorMsg: "우편번호를 확인해주세요.",
-                msgTarget: '.err-block'
+                // msgTarget: '.err-block'
             },
             userAddress: {
                 required: true,
@@ -73,17 +75,34 @@
                 msgTarget: '.err-block'
             },
             detailAddress: {
-                required: true,
+                required: false,
                 errorMsg: "상세주소를 입력해주세요.",
-                msgTarget: '.err-block'
+                // msgTarget: '.err-block'
             },
             phoneNumber: {
                 required: true,
                 errorMsg: "휴대폰번호를 입력해주세요.",
                 msgTarget: '.err-block'
+            },
+            defaultAddress: {
+                required: false
             }
         }
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
+        addressInfoValidation.on()
+
+        addressInfoValidation.on('errors', function(e,data){
+
+            console.log(data);
+        
+        }).on('nextfocus', function(e,target){
+
+            if(target.attr('name') == 'zipCode'){
+                setTimeout(function () {
+                    $('#popup-editAddress').find('.find-address').focus();
+                }, 10);                        
+            }            
+        });
 
         addressFinder = new AddressFind();
 
@@ -157,6 +176,8 @@
 
     function sendaddressInfo(){
         var result = addressInfoValidation.validate();
+
+        console.log(result);
         if(result.success){
             $('#popup-editAddress').vcModal('close');
 
@@ -166,6 +187,7 @@
             formdata.city = $('#popup-editAddress').data("city");
             formdata.defaultAddress = $('#popup-editAddress input[name=defaultAddress]').prop('checked');
             formdata.telephoneNumber = addressInfoValidation.getValues("telephoneNumber");
+
             loadaddressList(type, formdata);
         } 
     }
@@ -176,7 +198,10 @@
             $('#popup-editAddress').data('city', data.sido + " " + data.sigungu);
             $('#popup-editAddress').find('input[name=zipCode]').val(data.zonecode);
             $('#popup-editAddress').find('input[name=userAddress]').val(data.roadAddress);
-            $('#popup-editAddress').find('input[name=detailAddress]').val('');
+            $('#popup-editAddress').find('input[name=detailAddress]').val('').focus();
+            $('#popup-editAddress').find('input[name=userAddress]').siblings('.err-block').hide();
+
+
         });
     }
 
@@ -210,7 +235,7 @@
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
         }
-        console.log("send data:", sendata);
+        // console.log("send data:", sendata);
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
