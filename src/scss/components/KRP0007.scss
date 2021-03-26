@@ -65,13 +65,12 @@
                 border-bottom: 1px solid $color-border;
                 @include tablet {
                     //padding: 0;
-                    //overflow: hidden;
-                    padding-left: 45px;
+                    overflow: hidden;
+                    padding-left: 16px;
                     border-bottom: 0;
                 }
                 @include mobile {
-                    padding-top: 9px;
-                    padding-bottom: 9px;
+                    padding: 9px 0 9px 45px;
                 }
                 .cate-scroll-wrap {
                     position: relative;
@@ -119,9 +118,6 @@
                     margin-top: -24px;
                     transform: translateX(-50%);
                     z-index: 10;
-                    @media screen and (max-width: 1024px) {
-                        display: none;
-                    }
                     .btn-arrow {
                         position: absolute;
                         //box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.06);
@@ -132,6 +128,9 @@
                     .next {
                         right: 0;
                     }
+                    @include tablet {
+                        display: none !important;
+                    }
                 }
             }
             .mobile-more-btn {
@@ -140,9 +139,12 @@
                 top: 0;
                 right: 0;
                 width: 48px;
-                height: 64px;
+                height: 76px;
                 //margin-top: -16px;
                 background-color: #fff;
+                @include mobile {
+                    height: 64px;
+                }
                 a {
                     position: absolute;
                     top: 50%;
