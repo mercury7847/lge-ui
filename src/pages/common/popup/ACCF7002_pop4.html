@@ -7,9 +7,10 @@
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">@@h2Tit</h2>
             </div>
+            @@if(context.feeType === undefined) {
             <div class="fee-info-wrap">
                 <dl>
-                    <dt>예상월요금</dt>
+                    <dt>예상 이용 요금</dt>
                     <dd>@@fee1</dd>
                 </dl>
                 <dl>
@@ -21,6 +22,15 @@
                     <dd>@@fee3</dd>
                 </dl>
             </div>
+            }
+            @@if(context.feeType === "type2") {
+            <div class="fee-info-wrap type2">
+                <dl class="total">
+                    <dt>예상 이용요금</dt>
+                    <dd>@@fee</dd>
+                </dl>
+            </div>
+            }
         </div>
 
         <!-- 210126 수정 -->
@@ -63,7 +73,7 @@
             <dl class="fee-txt">
                 <dt>@@feeDt</dt>
                 <dd>
-                    납부 월 회차 : <em>@@freeMonth회차</em> 월 납부 금액 할인 (0원)
+                    납부 월 회차 : <em>@@freeMonth</em> 회차 월 납부금액 할인(0원)
                     <!-- 210125 수정 -->
                     <ul class="bullet-list">
                         <li class="b-txt">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</li>

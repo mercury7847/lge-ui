@@ -50,7 +50,9 @@
 
             //크레마# 이동 막음
             $li.on('click','a.crema-new-review-link', function(e) {
-                e.preventDefault();
+                if($(this).attr('href') == "#") {
+                    e.preventDefault();
+                }
             });
 
             //크레마 리로드
