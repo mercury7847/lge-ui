@@ -69,7 +69,6 @@
             self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
             $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
-            //self.$searchLayer.css({position: "absolute", top: -9999});
             self.$searchLayer.attr("aria-hidden",true).show();
 
             //self.$searchResultArea.hide();
@@ -84,35 +83,7 @@
                 location.href = url;
             }
         },
-
-        focusAndOpenKeyboard: function(el, timeout) {
-            if(!timeout) {
-                timeout = 100;
-            }
-            if(el) {
-                // Align temp input element approximately where the input element is
-                // so the cursor doesn't jump around
-                var __tempEl__ = document.createElement('input');
-                __tempEl__.style.position = 'absolute';
-                __tempEl__.style.top = (el.offsetTop + 7) + 'px';
-                __tempEl__.style.left = el.offsetLeft + 'px';
-                __tempEl__.style.height = 0;
-                __tempEl__.style.opacity = 0;
-                // Put this temp element as a child of the page <body> and focus on it
-                document.body.appendChild(__tempEl__);
-                __tempEl__.focus();
-            
-                // The keyboard is open. Now do a delayed focus on the target element
-                setTimeout(function() {
-                    console.log('focus click');
-                    el.focus();
-                    el.click();
-                    // Remove the temp element
-                    document.body.removeChild(__tempEl__);
-                }, timeout);
-            }
-        },
-
+        
         bindEvents: function() {
             var self = this;
 
@@ -121,15 +92,9 @@
                 self.updateBasicData();
                 self.updateRecentSearchList();
                 //self.openSearchPopup();
+                //직접 구문이 작성되야 최신아이폰에서 포커스시 키보드가 열린다
 
                 self.$searchLayer.attr("aria-hidden",false).addClass('open');
-                //self.$searchLayer.css({top: 0});
-
-                /*
-                setTimeout(function() {
-                    self.$inputSearch.focus();
-                }, 300);
-                */
                 self.$inputSearch.focus();
                 
                 //
@@ -188,11 +153,9 @@
                 //자동완성 리스트 오버
             
                 e.preventDefault();
-                //console.log('mouse in');
                 self.searchItem($(this),false);
             });/*.on('mouseout', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
-                //console.log('mouse out');
             });*/
 
             //연관검색어 클릭
@@ -227,12 +190,8 @@
         openSearchPopup: function() {
             var self = this;
             self.$searchLayer.attr("aria-hidden",false).addClass('open');
-            //self.$searchLayer.css({top: 0});
 
-            setTimeout(function() {
-                self.$inputSearch.focus();
-            }, 300)
-            //self.$inputSearch.focus();
+            self.$inputSearch.focus();
             
             //
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
@@ -257,8 +216,6 @@
             var self = this;
             clearTimeout(self.searchTimer);
             self.$searchLayer.attr("aria-hidden",true).removeClass('open');
-            //self.$searchLayer.css({top: -9999});
-            //
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
