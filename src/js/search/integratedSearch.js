@@ -69,7 +69,7 @@
             self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
             $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
-            //self.$searchLayer.show();
+            self.$searchLayer.show();
 
             //self.$searchResultArea.hide();
             self.hideSearchResultArea();
