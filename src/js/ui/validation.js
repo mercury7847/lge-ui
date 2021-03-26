@@ -802,6 +802,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 $target = self.$el.find('[name='+ prop +']');
                 nobj = self.register[prop];
                 msg = nobj['msgTarget'];
+
                 if (!$target.prop('disabled')) {
                     if(msg){ 
                         var errblock = self._getMsgBlock($target, msg);
