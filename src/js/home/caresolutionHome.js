@@ -1,27 +1,3 @@
-
-
-// /lg5-common/images/dummy/temp/img-care-01.jpg
-
-/*
-                categoryId: "CT50000095"
-                categoryName: "냉온정수기"
-                largeImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-450x450.jpg"
-                mediumImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg"
-                modelDisplayName: "상하좌우 정수기"
-                modelId: "MD08750473"
-                modelName: "WD503AP"
-                modelStatusCode: "ACTIVE"
-                modelUrlPath: "/care-solutions/water-purifiers/wd503ap"
-                obsOriginalPrice: "월 0원"
-                rtModelSeq: "1543731"
-                salesModelCode: "WD503AP"
-                salesSuffixCode: "AKOR"
-                smallImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-280x280.jpg"
-                totalPrice: "월 0원"
-                years1TotAmt: 36900
-                */
-
-
 var itemTmpl = '{{#each obj in list}}'+
     '<li class="item ui_carousel_slide">\n'+
     '   <div class="prd-care-vertical">\n'+
