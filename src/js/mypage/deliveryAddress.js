@@ -81,6 +81,9 @@
                 required: true,
                 errorMsg: "휴대폰번호를 입력해주세요.",
                 msgTarget: '.err-block'
+            },
+            defaultAddress: {
+                required: false
             }
         }
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
@@ -166,6 +169,7 @@
             formdata.city = $('#popup-editAddress').data("city");
             formdata.defaultAddress = $('#popup-editAddress input[name=defaultAddress]').prop('checked');
             formdata.telephoneNumber = addressInfoValidation.getValues("telephoneNumber");
+
             loadaddressList(type, formdata);
         } 
     }
@@ -210,7 +214,7 @@
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
         }
-        console.log("send data:", sendata);
+        // console.log("send data:", sendata);
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){

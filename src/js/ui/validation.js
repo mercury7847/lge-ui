@@ -106,8 +106,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                         if(value!=undefined){ 
                             newObj[item.name]['value'] = value;
-                        }else{
-                            //if($(item).is(':checkbox')) newObj[item.name]['value'] = false;                            
                         }
                     }
 
@@ -347,27 +345,47 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             return null;
         },
 
+        _setCheckboxValue : function(key, value){
+
+            var self = this;
+            var $target = self.$el.find('[name='+ key +']');
+            var values = (value && value.split(',')) || [];
+
+            if($target.length>0){
+
+                $target.prop('checked', false);
+
+                $.each(values, function(index, value){
+                    var $item = $target.filter('[value='+ value +']');
+                    if($item){ 
+                        $item.prop('checked', true);
+                    }
+                });     
+
+            }
+                      
+
+        },
+
         // setValues({name:'asdf, email:'asdfa'})
         setValues : function setValues(obj){ 
             var self = this;  
             var $target;  
-
 
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
                 
                 if($target.is(':radio')){
                     //CS 제외
-
                     if( !$('.contents.support').length ) {
-                        $target.filter('[value='+ obj[key] +']').prop('checked', true);
+                        self._setCheckboxValue(key, obj[key]);
                     }
 
                 } else if($target.is(':checkbox')){                    
 
                     //CS 제외
                     if( !$('.contents.support').length ) {
-                        $target.filter('[value='+ obj[key] +']').prop('checked', true);
+                        self._setCheckboxValue(key, obj[key]);
                     }
 
                 }else{
