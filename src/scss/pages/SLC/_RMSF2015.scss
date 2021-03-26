@@ -161,16 +161,41 @@ br.m {
         }
     }
     .csn-tab-contents .csn-ars-bottom {
-        padding:80px 40px;
+        position:relative;
+        max-width:1380px + 80px;
+        margin:-40px auto 120px;
+        padding:48px 117px;
+        text-align:left;
         @include mobile {
-            padding:32px 16px 60px;
+            margin:60px 16px;
+            padding:40px 16px;
+            border-radius:8px;
         }
         .inner .txt-cell .tit {
             font-size:24px;
             line-height:32px;
+            @include mobile {
+                font-size:20px;
+                line-height:28px;
+            }
+        }
+        .inner .img-cell {
+            position:absolute;
+            top:50%;
+            right:117px;
+            margin-top:-64px;
+            @include mobile {
+                position:static;
+                margin-top:24px;
+                text-align:center;
+            }
         }
         .inner .img-cell img {
             max-width:128px;
+            @include mobile {
+                max-width:80px;
+            }
+            
         }
     }
 }
