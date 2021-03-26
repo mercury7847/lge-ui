@@ -3,7 +3,7 @@ $(window).ready(function(){
 
     $('.KRP0031').buildCommonUI();
     var register = {
-        searchKeyword: {
+        search: {
             msgTarget: '.search-error',
             minLength: 2
         }
