@@ -7,7 +7,7 @@
     if(location.hostname == "www.lge.co.kr") {
         r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     } else {
-        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     }
 
     if(s.getElementById(g)){
@@ -27,7 +27,7 @@
     console.log('a',a);
     console.log('m',m);
     */
-})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function(){
 
