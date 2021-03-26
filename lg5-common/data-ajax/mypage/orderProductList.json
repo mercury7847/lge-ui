@@ -70,8 +70,8 @@
               },
               "statusButtonList": [
                 {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
+                  "className": "requestOrder",
+                  "buttonName": "주문접수"
                 }
               ]
             }
