@@ -45,9 +45,6 @@
             '{{#if orderCancelAbleYn == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
-            '{{#if requestOrderAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link requestOrder-btn" style="right:90px;">주문접수</a>'+
-            '{{/if}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
             '</div>'+
@@ -73,9 +70,6 @@
             '</div>'+
             '{{#if orderCancelAbleYn == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-            '{{/if}}'+
-            '{{#if requestOrderAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link requestOrder-btn" style="right:90px;">주문접수</a>'+
             '{{/if}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link">청약 상세보기</a>'+
@@ -514,11 +508,6 @@
 
             var dataID = $(this).closest('.box').data("id");
             openCancelPop(dataID);
-        }).on('click', '.requestOrder-btn', function(e){
-            e.preventDefault();
-
-            var dataID = $(this).closest('.box').data("id");
-            setOrderRequest(dataID);
         }).on('click', '.stateInner-btn', function(e){
             e.preventDefault();
 
@@ -549,6 +538,10 @@
 
                 case "contractStatus":
                     setContractStatus(dataID, prodID);
+                    break;
+
+                case "requestOrder":
+                    setOrderRequest(dataID, prodID);
                     break;
             }
         }).on('click', '.btn-moreview', function(e){
@@ -1049,7 +1042,6 @@
             if(start == 0) $('.inquiry-list-wrap').empty();            
 
             for(var idx=start;idx<end;idx++){
-                if(list[idx].requestOrderAbleYn === undefined) list[idx].requestOrderAbleYn = "N";
                 var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
                 var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
@@ -1600,17 +1592,22 @@
     }
 
     //주문접수...
-    function setOrderRequest(dataId){
+    function setOrderRequest(dataId, prodId){
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
-        var productList = vcui.array.map(listData.productList, function(item, idx){
-            return{
-                orderedQuantity: item.orderedQuantity,
-                reqLineSeq: item.reqLineSeq,
-                productNameEN: item.productNameEN
-            }
-        });
+        // var productList = vcui.array.map(listData.productList, function(item, idx){
+        //     return{
+        //         orderedQuantity: item.orderedQuantity,
+        //         reqLineSeq: item.reqLineSeq,
+        //         productNameEN: item.productNameEN
+        //     }
+        // });
 
-        console.log("productList:", productList);
+        var prodlist = listData.productList[prodId];
+        var productList = [{
+            orderedQuantity: prodlist.orderedQuantity,
+            reqLineSeq: prodlist.reqLineSeq,
+            productNameEN: prodlist.productNameEN,
+        }];
 
         var sendata = {
             contDtlType: listData.contDtlType,
@@ -1631,14 +1628,10 @@
             }
 
             if(result.data.success == "Y"){
-                if(sendata.contDtlType == "R00"){
-                    var box = $('.box[data-id=' + dataId + ']');
-                    box.find('.requestOrder-btn').remove();
-
-                    box.find('.tbody .row').each(function(idx, item){
-                        $(item).find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>청약완료</p><p class="desc">제품 주문은 자동으로 진행됩니다.</p>');
-                    });
-                }
+                var box = $('.box[data-id=' + dataId + ']');
+                var prodbox = box.find('.tbody .row .col-table[data-prod-id=' + prodId + ']');
+                console.log(box, prodbox)
+                prodbox.find('.col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>주문접수</p><p class="desc">제품 주문은 자동으로 진행됩니다.</p>');
             } else{
                 lgkorUI.alert("", {
                     title: result.data.alert.title

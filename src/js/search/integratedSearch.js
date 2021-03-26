@@ -69,8 +69,8 @@
             self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
             $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
-            self.$searchLayer.css({position: absolute, top: -9999});
-            self.$searchLayer.attr("aria-hidden","true").show();
+            self.$searchLayer.css({position: "absolute", top: -9999});
+            self.$searchLayer.attr("aria-hidden",true).show();
 
             //self.$searchResultArea.hide();
             self.hideSearchResultArea();
@@ -208,7 +208,7 @@
 
         openSearchPopup: function() {
             var self = this;
-            self.$searchLayer.attr("aria-hidden","false").addClass('open');
+            self.$searchLayer.attr("aria-hidden",false).addClass('open');
             self.$searchLayer.css({top: 0});
 
             setTimeout(function() {
@@ -238,7 +238,7 @@
         closeSearchPopup: function() {
             var self = this;
             clearTimeout(self.searchTimer);
-            self.$searchLayer.attr("aria-hidden","true").removeClass('open');
+            self.$searchLayer.attr("aria-hidden",true).removeClass('open');
             self.$searchLayer.css({top: -9999});
             //
 
