@@ -794,6 +794,7 @@
         });
 
         var sendata = {
+            type: "add",
             tabID: getTabID(),
             itemList: JSON.stringify(itemList)
         }
@@ -811,7 +812,6 @@
         }
         
         requestPutItem(sendata);
-
     }
 
     //담기 삭제...
@@ -822,6 +822,7 @@
         console.log(_putItemList);
 
         var sendata = {
+            type: "remove",
             tabID: getTabID(),
             itemList: JSON.stringify(_putItemList)
         }
@@ -863,6 +864,9 @@
                     $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']').eq(0).addClass('comb-type');
                 }
             }
+
+            console.log("sendata.type", sendata.type)
+            if(sendata.type == "add") $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
 
             setPutItems(result.data);
         });

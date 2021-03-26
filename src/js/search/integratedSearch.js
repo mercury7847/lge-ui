@@ -120,7 +120,25 @@
                 e.preventDefault();
                 self.updateBasicData();
                 self.updateRecentSearchList();
-                self.openSearchPopup();
+                //self.openSearchPopup();
+
+                self.$searchLayer.attr("aria-hidden",false).addClass('open');
+                //self.$searchLayer.css({top: 0});
+
+                /*
+                setTimeout(function() {
+                    self.$inputSearch.focus();
+                }, 300);
+                */
+                self.$inputSearch.focus();
+                
+                //
+                var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"hidden"
+                    });
+                }
             });
 
             //통합검색 닫음
