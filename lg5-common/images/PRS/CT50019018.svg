@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 0h27c.828 0 1.5.672 1.5 1.5v22c0 .828-.672 1.5-1.5 1.5h-27C.672 25 0 24.328 0 23.5v-22C0 .672.672 0 1.5 0z" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195) translate(12 12) translate(5 7.5)"/>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 9.5h21c.828 0 1.5.672 1.5 1.5v5c0 .828-.672 1.5-1.5 1.5h-21c-.828 0-1.5-.672-1.5-1.5v-5c0-.828.672-1.5 1.5-1.5z" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195) translate(12 12) translate(5 7.5)"/>
+                                <g fill="#000" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195) translate(12 12) translate(5 7.5) translate(9.5 2.5)">
+                                    <rect width="1.5" height="1.5" x="9" rx=".75"/>
+                                    <rect width="8" height="1.5" rx=".75"/>
+                                </g>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 22L30 22" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195) translate(12 12) translate(5 7.5)"/>
+                                <path stroke="#000" stroke-linecap="round" stroke-width="1.5" d="M0 6L29 6" transform="translate(-683 -1223) translate(128 414) translate(0 809) translate(555.195) translate(12 12) translate(5 7.5)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
