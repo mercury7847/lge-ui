@@ -206,7 +206,7 @@ $(function(){
         
         // 추천 기획전
         var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
-        var exhibitionModelIdArr = exhibitionModelId.split('|');
+        var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var exhibitionLocal = [
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",

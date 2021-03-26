@@ -208,7 +208,12 @@
         openSearchPopup: function() {
             var self = this;
             self.$searchLayer.addClass('open');
-            self.$inputSearch.focus();
+
+            setTimeout(function() {
+                self.$inputSearch.focus();
+            }, 300)
+            //self.$inputSearch.focus();
+            
             //
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
