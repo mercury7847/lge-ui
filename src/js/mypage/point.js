@@ -71,7 +71,7 @@
 
             //멤버십 포인트 종류 라디오버튼
             self.$dateFilter.on('change','.select-list-wrap input[type=radio]',function(e){
-                self.requestData(1, true);
+                self.$inquiryButton.trigger('click');
             });
 
         },

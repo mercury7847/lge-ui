@@ -40,25 +40,36 @@
             var $contWrap = $section.find('.cont-wrap');
             $contWrap.empty();
 
+            var isMobile = vcui.detect.isMobile;
             var productcode = $section.data('productCode');
-            var widgetId = $section.data('widgetId');
+            //var widgetId = $section.data('widgetId');
 
-            //상품 소셜 위젯
-            if(productcode && widgetId) {
-                if(vcui.detect.isMobile){
+            if(productcode) {
+                //아이콘 위젯
+                if(isMobile){
                     $contWrap.append('<style>.crema_statistics_widget > iframe[src^="[http://review-api9.cre.ma/]http://review-api9.cre.ma";] { display: none !important; }</style>' +
-                        '<div class="crema-product-reviews crema_statistics_widget" data-product-code="' + productcode +'" data-widget-id="' + widgetId + '" data-widget-style="statistics"></div>');
+                        '<div class="crema-product-reviews crema_statistics_widget" data-product-code="' + productcode +'" data-widget-id="' + "110" + '" data-widget-style="statistics"></div>');
                 } else {
                     $contWrap.append('<style>.crema_statistics_widget > iframe[src^="[http://review-api9.cre.ma/]http://review-api9.cre.ma";] { display: none !important; }</style>' +
-                        '<div class="crema-product-reviews crema_statistics_widget" data-product-code="' + productcode +'" data-widget-id="' + widgetId + '" data-widget-style="statistics"></div>');
+                        '<div class="crema-product-reviews crema_statistics_widget" data-product-code="' + productcode +'" data-widget-id="' + "109" + '" data-widget-style="statistics"></div>');
                 }
-                //$contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
+
+                //상품 리뷰 위젯
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+
+                //상품 소셜 위젯
+                if(isMobile){
+                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "40" + '"></div>');
+                } else {
+                    $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "39" + '"></div>');
+                }
             }
 
-            //상품 리뷰 위젯
-            if(productcode) {
-                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+            /*
+            if(productcode && widgetId) {
+                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
+            */
         }
     }
 
