@@ -356,7 +356,9 @@
             
             //크레마# 이동 막음
             self.$myProductList.on('click','a.crema-new-review-link', function(e) {
-                e.preventDefault();
+                if($(this).attr('href') == "#") {
+                    e.preventDefault();
+                }
             });
 
             //보유제품 직접 등록
