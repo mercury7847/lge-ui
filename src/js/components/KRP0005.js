@@ -11,6 +11,9 @@
             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             if(cookieValue) {
                 self.requestData(false);
+            } else {
+                //최근본 제품이 없으면 최근본 제품 버튼을 숨긴다
+                self.$KRP0005.find('.floating-linker.recently').hide();
             }
 		},
 
