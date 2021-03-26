@@ -344,9 +344,11 @@
                         '<div class="title">'+
                             '<p>영수증 내역</p>'+
                         '</div>'+
+                        '{{#if method != ""}}'+
                         '<div class="btn-area">'+
                             '<a href="{{receiptUrl}}" target="_blank" class="btn size border methodReceipt-btn"><span>{{method}}</span></a>'+
                         '</div>'+
+                        '{{/if}}'+
                     '</div>'+
                 '</div>'+
                 '<a href="#n" class="btn-link salesReceipt-btn">거래영수증</a>'+
@@ -1778,7 +1780,7 @@
                     isMemberShip: isMemberShip,
                     originalTotalPrices: vcui.number.addComma(originalTotalPrices),
                     discountPrices: vcui.number.addComma(discountPrices),
-                    mempointPrices: discountComma == "0" ? "0" : "-"+discountComma,
+                    mempointPrices: discountComma == "0" ? "0" : discountComma,
                     productTotalPrices: vcui.number.addComma(productTotalPrices)
                 }));
             } else{
@@ -1976,11 +1978,12 @@
 
     //영수증 발급내역...
     function setReceiptListPop(){
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
+        if(listData[0].cashReceiptAbleYn != "Y") method = "";   
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
         $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
 
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var isQuantity = TAB_FLAG == TAB_FLAG_ORDER ? true : false;
         for(var cdx in listData[0].productList){
             var prodlist = vcui.clone(listData[0].productList[cdx]);
