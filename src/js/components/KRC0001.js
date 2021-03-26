@@ -32,7 +32,7 @@
 							'{{/if}}'+	
 						'</div>' +
 						'{{#if item.checkPriceFlag}}'+
-							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.sku}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.salesModelName}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
 						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
@@ -111,6 +111,7 @@
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 							item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
+							item.salesModelName = (item.salesModelName && item.salesModelName.length > 0) ? item.salesModelName : item.salesModelCode + '.' + item.salesSuffixCode;
 						}
 
 						var lists = vcui.template(KRC0001_listItemTemplate, data);
