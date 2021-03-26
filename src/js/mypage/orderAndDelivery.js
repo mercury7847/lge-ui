@@ -1305,7 +1305,10 @@
             if(data.monthlyPayment){
                 var monthpayment = data.monthlyPayment;
                 if(monthpayment.cardReqYn == "N") monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
-                else monthpayment.requsetCardInfo = cardReqYnName + " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                else{
+                    monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
+                    if(monthpayment.cardCorpName != '') monthpayment.requsetCardInfo += " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                }
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
                 if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;

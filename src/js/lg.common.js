@@ -1210,6 +1210,7 @@ var isApp = function(){
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
+            console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
                 url : url,
