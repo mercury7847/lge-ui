@@ -644,10 +644,10 @@ var isApp = function(){
 
         _historyBack: function(){
             var self = this;
-
+            
             var referrer = document.referrer;
             var index = -1;
-            var leng = self.DOMAIN_LIST.length;
+            var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
                 if(index > -1){
