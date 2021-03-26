@@ -40,6 +40,7 @@
     .mobile-nav-wrap,
     .mobile-nav-button,
     .login-mobile,
+    .nav-logout,
     .shortcut-service-link,
     .mobile-nav-banner {
         display: none;
@@ -1342,6 +1343,7 @@
     }
 
     .login-info {
+        position: relative;
         padding: 3px 0 17px;
         font-weight: 700;
         font-size: $font-large;
@@ -1380,10 +1382,10 @@
         }
     }
     .btn-mypage {
-        position: fixed;
-        top: 11px;
-        right: 56px;
-        z-index: 113;
+        position: absolute;
+        top: -1px;
+        right: 0;
+        z-index: 1;
         a {
             display: block;
             width: 34px;
@@ -1393,6 +1395,7 @@
         }
     }
     .btn-logout {
+        display: none;
         position: fixed;
         top: 16px;
         left: 16px;
@@ -1406,6 +1409,17 @@
             @include font(13px,21px);
             color: $color-gray-1;
         }
+    }
+}
+
+.nav-logout {
+    border-top: 12px solid $color-bg;
+    .btn-logout {
+        display: block;
+        padding: 24px 16px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 21px;
     }
 }
 
