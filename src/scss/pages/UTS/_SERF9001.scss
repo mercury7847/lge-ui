@@ -48,6 +48,16 @@
     &.open {
         display:block !important;
         top: 0;
+        @include mobile {
+            .btn-close {
+                top: 24px;
+            }
+            .input-keyword-wrap {
+                .input-keyword {
+                    top: 0;
+                }
+            }
+        }
     }
 
     //&:after {
@@ -74,7 +84,7 @@
             right: 48px;
         }
         @include mobile {
-            top: 24px;
+            top: 100%;
         }
     }
 
@@ -163,7 +173,7 @@
         .input-keyword-wrap {
             .input-keyword {
                 position: fixed;
-                top: 0;
+                top: 100%;
                 left: 0;
                 right: 0;
                 z-index: 3;
