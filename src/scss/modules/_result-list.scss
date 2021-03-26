@@ -396,7 +396,7 @@
             display: inline-block;
             .hashtag {
                 display: inline-block;
-                margin-left: 4px;
+                margin-right: 4px;
                 @include font-small;
                 @include mobile {
                     position: static;
