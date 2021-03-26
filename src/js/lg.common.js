@@ -644,10 +644,10 @@ var isApp = function(){
 
         _historyBack: function(){
             var self = this;
-
+            
             var referrer = document.referrer;
             var index = -1;
-            var leng = self.DOMAIN_LIST.length;
+            var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
                 if(index > -1){
@@ -1210,6 +1210,7 @@ var isApp = function(){
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
+            console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
                 url : url,

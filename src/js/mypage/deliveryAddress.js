@@ -49,15 +49,15 @@
     function setting(){
         DELIVERY_ADDRESS_LIST = $('.contents.mypage').data('addressList');
 
+        $('#address-regist-form').find('input[name="addressNickName"]').attr('maxlength','60');
+
         txtMasking = new vcui.helper.TextMasking();
 
         var register = {
             addressNickName:{
                 required: true,
                 errorMsg: "주소별칭을 입력해주세요.",
-                msgTarget: '.err-block',
-                minLength : 1,
-                maxLength: 150
+                msgTarget: '.err-block'
             },
             receiverUser: {
                 required: true,
@@ -177,10 +177,9 @@
     function sendaddressInfo(){
         var result = addressInfoValidation.validate();
 
-        console.log(result);
         if(result.success){
-            $('#popup-editAddress').vcModal('close');
 
+            $('#popup-editAddress').vcModal('close');
             var type = $('#popup-editAddress').data("type");
             var formdata = addressInfoValidation.getValues();
             formdata.addressID = $('#popup-editAddress').data("addressId");
