@@ -2,12 +2,32 @@
 
 // /lg5-common/images/dummy/temp/img-care-01.jpg
 
+/*
+                categoryId: "CT50000095"
+                categoryName: "냉온정수기"
+                largeImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-450x450.jpg"
+                mediumImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg"
+                modelDisplayName: "상하좌우 정수기"
+                modelId: "MD08750473"
+                modelName: "WD503AP"
+                modelStatusCode: "ACTIVE"
+                modelUrlPath: "/care-solutions/water-purifiers/wd503ap"
+                obsOriginalPrice: "월 0원"
+                rtModelSeq: "1543731"
+                salesModelCode: "WD503AP"
+                salesSuffixCode: "AKOR"
+                smallImageAddr: "/kr/images/water-purifiers/md08750473/md08750473-280x280.jpg"
+                totalPrice: "월 0원"
+                years1TotAmt: 36900
+                */
+
+
 var itemTmpl = '{{#each obj in list}}'+
     '<li class="item ui_carousel_slide">\n'+
     '   <div class="prd-care-vertical">\n'+
     '       <div class="img-wrap">\n'+
     '           <a href="{{obj.modelUrlPath}}">\n'+
-    '               <img src="{{obj.mediumImgAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this);">\n'+
+    '               <img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this);">\n'+
     '           </a>\n'+
     '       </div>\n'+
     '       <div class="txt-wrap">\n'+
@@ -20,7 +40,7 @@ var itemTmpl = '{{#each obj in list}}'+
     '                   {{#if obj.totalPrice}}'+
     '                       <p class="price">{{#raw obj.totalPrice}}</p>\n'+
     '                   {{/if}}'+
-    '                   <button type="button" class="btn border" data-url="{{obj.modelUrlPath}}"><span>자세히 보기</span></button>\n'+
+    '                   <button type="button" class="btn border ui_care_detail_btn" data-url="{{obj.modelUrlPath}}"><span>자세히 보기</span></button>\n'+
     '               </div>\n'+
     '           </div>\n'+
     '       </div>\n'+
@@ -216,7 +236,8 @@ $(function(){
 
             var data = result.data;
             if(data && data.data){
-                var arr = data.data;
+                var arr = data.data;               
+
 
                 var list = vcui.array.map(arr, function(item, index){
 
@@ -247,6 +268,13 @@ $(function(){
         }
 
 
+        $(document).on('click', '.ui_care_detail_btn', function(e){
+            e.preventDefault();
+            var $target = $(e.currentTarget);
+            var url = $target.data('url');
+            if(url) location.href = url;
+        });
+
         var careProductUrl = '/lg5-common/data-ajax/home/storeCareProductList.json';
 
 
@@ -262,23 +290,8 @@ $(function(){
                 e.preventDefault();
 
                 var url = $(data.relatedTarget).data('ajaxUrl') || careProductUrl;
-
-                var modelIds = '';
-
-                console.log(data.selectedIndex);
-                
-                if(data.selectedIndex == '0'){
-                    modelIds = requestObj.newProductIds.toString();
-                }else if(data.selectedIndex == '1'){
-                    modelIds = requestObj.bestProductIds.toString();
-                }else if(data.selectedIndex == '2'){
-                    modelIds = requestObj.newMarryProductIds.toString();
-                }else if(data.selectedIndex == '3'){
-                    modelIds = requestObj.petProductIds.toString();
-                }
-                
                               
-                lgkorUI.requestAjaxDataFailCheck(url, {modelId : modelIds}, function(result){
+                lgkorUI.requestAjaxDataFailCheck(url, {}, function(result){
                     
                     var html = buildTabProduct(result);
                     $(data.content).find('.ui_carousel_track').empty().append(html);
