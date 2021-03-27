@@ -125,7 +125,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 if($first.is('input')){
                     setTimeout(function(){
                         $first.focus(); 
-                        // console.log('2');
                     },100)
                 }else{
                     $first.focus(); 
