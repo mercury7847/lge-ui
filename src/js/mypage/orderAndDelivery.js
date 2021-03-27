@@ -409,6 +409,15 @@
 
     var sendPaymentMethod;
 
+    var resultNames = {
+        cancelpending : "취소 접수",		
+        onhold : "취소중",				
+        cancelauthorized : "취소 접수",	
+        cancelapproved : "취소 승인",		
+        cancelrefunded : "취소 완료",		
+        canceled : "취소 완료"	
+    }
+
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
             vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
@@ -587,9 +596,24 @@
                 for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
                 var orderNumberList = JSON.stringify(orderNumbers);
 
-                var sendUrl = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
-                sendUrl += "&startDate=" + dateData.startDate + "&endDate=" + dateData.endDate + "&periodSelect=" + dateData.periodSelect + "&orderNumberList=" + orderNumberList;
-                location.href = sendUrl;
+                var sendata = {
+                    orderNumber: listdata[dataID].orderNumber,
+                    requestNo: listdata[dataID].requestNo,
+                    tabFlag: TAB_FLAG,
+                    startDate: dateData.startDate,
+                    endDate: dateData.endDate,
+                    periodSelect: dateData.periodSelect,
+                    orderNumberList: orderNumberList
+                }
+
+                lgkorUI.setHiddenInputData(sendata);
+                console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
+
+                $('#goDetailForm').attr('action', ORDER_DETAIL_URL);
+
+                setTimeout(function(){
+                    $('#goDetailForm').submit();  
+                }, 100);
             } else{
                 setProductStatus(dataID, prodID, pdpUrl);
             }
@@ -1102,12 +1126,47 @@
     //카드/은행 셀렉트박스 리셋...
     function setDelectData(selector, list, selectId){
         selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
-        for(var idx in list){
-            var selected = list[idx].commonCodeId == selectId ? " selected" : "";
-            var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
-            selector.append(option);
+        var list = vcui.array.map(list, function(item, idx){
+            item['text'] =  item.commonCodeName ;
+            item['value'] = item.commonCodeId;
+            return item;
+        });
+
+        console.log(list);
+
+        var selected = vcui.array.filterOne(list, function(item, idx){
+
+            console.log(item);
+            var codes = item.commonCodeId.split("^");
+            var obj = codes[0] === selectId ? true : false;
+
+            return obj;
+        });
+        
+        var idx = vcui.array.indexOf(list, selected);
+        console.log(idx)
+        if(selected){
+            selector.vcSelectbox('update', list, selected.value);
+        } else{
+            selector.vcSelectbox('update', list);
         }
-        selector.vcSelectbox('update');
+        //selector.vcSelectbox('update', list, selected.value);
+
+
+
+
+        // selector.vcSelectbox('update', list);
+        // for(var idx in list){
+        //     var codes = list[idx].commonCodeId.split("^");
+        //     var selected = codes[0] === selectId ? " selected" : "";
+        //     console.log(codes[0], selectId, selected)
+        //     var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
+        //     selector.append(option);
+        // }
+        // setTimeout(function(){
+        //     console.log("selector:", selector)
+        //     selector.vcSelectbox('update');
+        // }, 10);        
     }
 
     //납부정보 input 밸리데이션...
@@ -1380,18 +1439,18 @@
                     cancelBtnName: "취소",
                     okBtnName: "본인인증",
                     ok: function(){         
-                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                        document.form_chk.action = result.data.niceAntionUrl;
-                        document.form_chk.m.value = result.data.m;
-                        document.form_chk.EncodeData.value = result.data.sEncData;
-                        document.form_chk.auth_type.value = result.data.auth_type;
-                        document.form_chk.param_r1.value = result.data.param_r1;
-                        document.form_chk.param_r2.value = result.data.param_r2;
-                        document.form_chk.param_r3.value = result.data.param_r3;
-                        document.form_chk.target = "popupChk";
-                        document.form_chk.submit();
+                        // window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                        // document.form_chk.action = result.data.niceAntionUrl;
+                        // document.form_chk.m.value = result.data.m;
+                        // document.form_chk.EncodeData.value = result.data.sEncData;
+                        // document.form_chk.auth_type.value = result.data.auth_type;
+                        // document.form_chk.param_r1.value = result.data.param_r1;
+                        // document.form_chk.param_r2.value = result.data.param_r2;
+                        // document.form_chk.param_r3.value = result.data.param_r3;
+                        // document.form_chk.target = "popupChk";
+                        // document.form_chk.submit();
 
-                        // editPaymentInfomation();        
+                        editPaymentInfomation();        
                     }
                 });
             }

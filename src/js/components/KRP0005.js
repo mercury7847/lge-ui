@@ -108,10 +108,12 @@
             //
             self.bodyOvewflow = $('body').css('overflow').toLowerCase();
             self.ignoreOverflow = (self.bodyOvewflow != "hidden");
-            if(self.ignoreOverflow){
-                $('html, body').css({
-                    overflow:"hidden"
-                });
+            if(vcui.detect.isMobile) { 
+                if(self.ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"hidden"
+                    });
+                }
             }
         },
 
@@ -122,15 +124,17 @@
             self.$popup.removeClass('open');
             self.$popup.hide();
             //
-            if(self.ignoreOverflow) {
-                if(self.bodyOvewflow) {
-                    $('html, body').css({
-                        overflow:self.bodyOvewflow
-                    });
-                } else {
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
+            if(vcui.detect.isMobile){
+                if(self.ignoreOverflow) {
+                    if(self.bodyOvewflow) {
+                        $('html, body').css({
+                            overflow:self.bodyOvewflow
+                        });
+                    } else {
+                        $('html, body').css({
+                            overflow:"visible"
+                        });
+                    }
                 }
             }
         },
