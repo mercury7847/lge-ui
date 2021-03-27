@@ -165,6 +165,7 @@
     var myProductRegistration = {
         init: function() {
             var self = this;
+            self.loadingCount = 0;
             //크레마
             lgkorUI.cremaLogin();
             
@@ -328,9 +329,11 @@
                 */
                 var param = $li.data('model');
                 var ajaxUrl = self.$contents.attr('data-add-url');
-                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                self.showLoading();
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     $li.remove();
                     self.requestOwnData(true);
+                    self.hideLoading();
                     /*
                     var item = result.data;
                     if(item) {
@@ -344,6 +347,8 @@
                         $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                     }
                     */
+                }, "POST", null, null, null, true, function(err){
+                    self.hideLoading(true);
                 });
             });
 
@@ -385,13 +390,17 @@
                 };
 
                 var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    self.showLoading();
+                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                         var data = result.data;
                         var success = lgkorUI.stringToBool(data.success);
                         if(success) {
                             $li.remove();
                             self.checkNoData();
                         }
+                        self.hideLoading();
+                    }, "POST", null, null, null, true, function(err){
+                        self.hideLoading(true);
                     });
                 }};
                 var desc = '선택하신 제품을<br>보유제품에서 삭제하시겠어요?';
@@ -535,9 +544,13 @@
                         if(result) {
                             var param = self.registMyProductValidation.getAllValues();
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
-                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                            self.showLoading();
+                            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
                                 self.requestOwnData(true);
+                                self.hideLoading();
+                            }, "POST", null, null, null, true, function(err){
+                                self.hideLoading(true);
                             });
                         }
                     } else {
@@ -727,9 +740,25 @@
             });
         },
 
+        showLoading: function () {
+            var self = this;
+            ++self.loadingCount;
+            lgkorUI.showLoading();
+        },
+
+        hideLoading: function (force) {
+            var self = this;
+            --self.loadingCount;
+            if(self.loadingCount <= 0 || force) {
+                self.loadingCount = 0;
+                lgkorUI.hideLoading();
+            }  
+        },
+
         requestOwnData: function(addNewItem) {
             var self = this;
             var ajaxUrl = self.$contents.attr('data-own-list-url');
+            self.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                 var data = result.data;
                 var totalListCount = data.totalListCount ? data.totalListCount : 0;
@@ -763,12 +792,16 @@
                 if(addNewItem) {
                     $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
                 }
+                self.hideLoading();
+            }, null, null, null, null, true, function(err){
+                self.hideLoading(true);
             });
         },
 
         requestMoreData: function(page) {
             var self = this;
             var ajaxUrl = self.$contents.attr('data-list-url');
+            self.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, {"page":page}, function(result) {
                 var data = result.data;
                 var param = result.param;
@@ -790,6 +823,9 @@
                     $list.append(vcui.template(productListItemTemplate, item));
                 });
                 self.checkNoData();
+                self.hideLoading();
+            }, null, null, null, null, true, function(err){
+                self.hideLoading(true);
             });
         },
 
@@ -858,6 +894,7 @@
         requestManualData: function(_id, sku, page, isMore) {
             var self = this;
             var ajaxUrl = self.$manualPopup.attr('data-list-url');
+            self.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, {"id":_id, "sku":sku, "page":page}, function(result) {
                 var data = result.data;
                 var param = result.param;
@@ -886,6 +923,9 @@
                 }
 
                 lgkorUI.resetFlexibleBox();
+                self.hideLoading();
+            }, null, null, null, null, true, function(err){
+                self.hideLoading(true);
             });
         },
 
@@ -925,7 +965,7 @@
 
             if(!self.osList) {
                 var ajaxUrl = self.$downloadPopup.attr('data-os-url');
-                lgkorUI.showLoading();
+                self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     self.$selectOS.empty();
@@ -945,6 +985,9 @@
                     self.$selectOS.vcSelectbox('selectedIndex',0,false);
 
                     self.requestDownloadData(param, selectOSUpdate, openDownloadPopup);
+                    self.hideLoading();
+                }, null, null, null, null, true, function(err){
+                    self.hideLoading(true);
                 });
             } else {
                 if(param.search) {
@@ -965,7 +1008,7 @@
 
                 var ajaxUrl = self.$downloadPopup.attr('data-list-url');
 
-                lgkorUI.showLoading();
+                self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     var param = result.param;
@@ -1037,6 +1080,9 @@
                         self.$downloadMainPage.show();
                         self.$downloadPopup.vcModal();
                     }
+                    self.hideLoading();
+                }, null, null, null, null, true, function(err){
+                    self.hideLoading(true);
                 });
             }
         }
