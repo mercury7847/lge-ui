@@ -1212,7 +1212,6 @@ var isApp = function(){
             var self = this;
             var dtype = dataType? dataType : "json";
             var timelimit = timeout ? timeout : 15000;
-            console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
                 url : url,
@@ -1242,7 +1241,7 @@ var isApp = function(){
                                 data.success = "N";
                                 result.data = data;
                             }
-                        } else {
+                        }/* else {
                             if(result.message) {
                                 lgkorUI.alert("", {
                                     title: result.message
@@ -1250,13 +1249,19 @@ var isApp = function(){
                                 result.message = null;
                             }
                             result.data = {"success" : "N"};
-                        }
+                        }*/
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
-                        if(result.message) {
+                        if(data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
-                                title: result.message
+                                title: data.alert.title
                             });
+                        } else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
                         }
                     }
                     return;
@@ -1288,7 +1293,15 @@ var isApp = function(){
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        self.commonAlertHandler(data.alert);
+                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                            self.commonAlertHandler(data.alert);
+                        }/* else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
+                        }*/
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 
@@ -1439,6 +1452,7 @@ var isApp = function(){
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
             console.log("### requestWish ###", param, wish);
+
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
