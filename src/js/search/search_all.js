@@ -208,6 +208,8 @@
         var search = {
             init: function() {
                 var self = this;
+                self.uniqId = vcui.getUniqId(8);
+                
                 //vcui.require(['ui/tab'], function () {
                     self.setting();
                     self.updateRecentSearchList();
