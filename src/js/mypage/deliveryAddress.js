@@ -89,7 +89,7 @@
             }
         }
 
-        $('#address-regist-form').find('input[name="addressNickName"]').attr('maxlength','60');
+        $('#address-regist-form').find('input[name="addressNickName"]').attr('maxlength','60'); // 주소지 별칭 글자수 제한 60
         $('#address-regist-form').find('input[name="detailAddress"]').attr('maxlength', '50'); // 상세주소 글자수 제한 50
 
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
