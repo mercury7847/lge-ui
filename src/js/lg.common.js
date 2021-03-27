@@ -1305,7 +1305,6 @@ var isApp = function(){
             self.requestAjaxData(url, data, successCallback, null, null, null, null, null, failCallback);
         },
         
-
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
