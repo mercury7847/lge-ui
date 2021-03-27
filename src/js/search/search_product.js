@@ -99,6 +99,8 @@
         var search = {
             init: function() {
                 var self = this;
+                self.uniqId = vcui.getUniqId(8);
+
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
                     self.updateRecentSearchList();
@@ -141,32 +143,47 @@
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    //입력된 검색어가 있으면 선택된 카테고리로 값 조회
-                    var value = self.$contentsSearch.attr('data-search-value');
-                    value = !value ? null : value.trim();
-                    var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value)) {
-                        //현재 선택된 카테고리 기준으로 검색
-                        self.setinputSearchValue(value);
-                        var filterQueryData = self.getListSortingData();
-
-                        //큐레이션 추가
-                        var curation = lgkorUI.getParameterByName('curation');
-                        if(curation && curation.length > 0) {
-                            filterQueryData.filterData = null;
-                            filterQueryData.curation = curation;
-                            console.log('test',curation);
-                        } else {
-                            //스마트필터 추가
-                            var smartFilter = lgkorUI.getParameterByName('smartFilter');
-                            if(smartFilter && smartFilter.length > 0) {
-                                //스마트 필터가 있으면 사이드 필터 제거
-                                filterQueryData.filterData = null;
-                                filterQueryData.smartFilter = smartFilter;
+                    var hash = location.hash.replace("#","");
+                    var savedData = lgkorUI.getStorage(hash);
+                    if(savedData && savedData.search) {
+                        self.savedFilterData = JSON.parse(JSON.stringify(savedData));
+                        if(self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+                            var str;
+                            for (key in filterData) {
+                                str = filterData[key];
+                                filterData[key] = str.split("||");
                             }
+                            self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
+                        self.requestSearchData(savedData.search,savedData.force,savedData, true);
+                    } else {
+                        //입력된 검색어가 있으면 선택된 카테고리로 값 조회
+                        var value = self.$contentsSearch.attr('data-search-value');
+                        value = !value ? null : value.trim();
+                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if(!(!value)) {
+                            //현재 선택된 카테고리 기준으로 검색
+                            self.setinputSearchValue(value);
+                            var filterQueryData = self.getListSortingData();
 
-                        self.requestSearchData(value, force, filterQueryData, true);
+                            //큐레이션 추가
+                            var curation = lgkorUI.getParameterByName('curation');
+                            if(curation && curation.length > 0) {
+                                filterQueryData.filterData = null;
+                                filterQueryData.curation = curation;
+                            } else {
+                                //스마트필터 추가
+                                var smartFilter = lgkorUI.getParameterByName('smartFilter');
+                                if(smartFilter && smartFilter.length > 0) {
+                                    //스마트 필터가 있으면 사이드 필터 제거
+                                    filterQueryData.filterData = null;
+                                    filterQueryData.smartFilter = smartFilter;
+                                }
+                            }
+
+                            self.requestSearchData(value, force, filterQueryData, true);
+                        }
                     }
 
                     self.updateBasicData();
@@ -631,7 +648,9 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
-                console.log("저장할 데아타",postData);
+                lgkorUI.setStorage(self.uniqId, postData);
+                location.hash = self.uniqId;
+
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
