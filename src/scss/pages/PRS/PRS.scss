@@ -987,8 +987,11 @@
 					ul {
 						display: flex;
 						flex-wrap: wrap;
+						height:136px;
 						margin-top: -43px;
+						overflow:hidden;
 						li {
+							width:33.33%;
 							margin-top:43px;
 							text-align:center;
 							a {
