@@ -110,6 +110,7 @@
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        item.store = item.store ? item.store : null; 
                         if(isBuy) {
                             item.startDate = null;
                             item.endDate = null;
