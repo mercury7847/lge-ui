@@ -1125,7 +1125,6 @@
 
     //카드/은행 셀렉트박스 리셋...
     function setDelectData(selector, list, selectId){
-        selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
         var list = vcui.array.map(list, function(item, idx){
             item['text'] =  item.commonCodeName ;
             item['value'] = item.commonCodeId;
@@ -1150,11 +1149,10 @@
         } else{
             selector.vcSelectbox('update', list);
         }
-        //selector.vcSelectbox('update', list, selected.value);
+        selector.vcSelectbox('update', list, selected.value);
 
 
-
-
+        // selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
         // selector.vcSelectbox('update', list);
         // for(var idx in list){
         //     var codes = list[idx].commonCodeId.split("^");
@@ -1911,7 +1909,9 @@
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
-            listdata["addCommaProdPrice"] = vcui.number.addComma(listdata[prodPriceKey]);
+            
+            if(TAB_FLAG == TAB_FLAG_CARE) listdata["addCommaProdPrice"] = "월 " + vcui.number.addComma(listdata[prodPriceKey]);
+            else listdata["addCommaProdPrice"] = vcui.number.addComma(listdata[prodPriceKey]);
 
             var originalTotalPrice = listdata.originalTotalPrice ? parseInt(listdata.originalTotalPrice) : 0;
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
@@ -2021,6 +2021,12 @@
             sendPhoneNumber: memInfos.sendPhoneNumber,
             
             productList: JSON.stringify(prodlist)
+        }
+
+        var sendRealData;
+        if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+            sendRealData = sendata;
+            sendRealData.productList = JSON.stringify(prodlist)
         }
 
         console.log("### " + sendata.callType + " ###", sendata);
