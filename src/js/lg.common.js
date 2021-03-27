@@ -274,7 +274,8 @@ var isApp = function(){
         HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
-        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
+        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
+        DOMAIN_LIST:["lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
         init: function(){
             var self = this;
 
@@ -632,16 +633,30 @@ var isApp = function(){
 
         //에러 페이지 되돌아가기
         _bindErrBackEvent: function(){
+            var self = this;
+
             $('body').find('.contents.error-page .btns a').on('click', function(e){
                 e.preventDefault();
 
-                var referrer = document.referrer;
-                var index = referrer.indexOf('lge.co.kr');
-                // if(index > 0) history.back();
-                // else location.href = 
-
-                history.back();
+                self._historyBack();
             })
+        },
+
+        _historyBack: function(){
+            var self = this;
+            
+            var referrer = document.referrer;
+            var index = -1;
+            var leng = lgkorUI.DOMAIN_LIST.length;
+            for(var i=0;i<leng;i++){
+                index = referrer.indexOf('lge.co.kr');
+                if(index > -1){
+                    break;
+                }
+            }
+            
+            if(index < 0) location.href = "/";
+            else history.back();
         },
 
         resetFlexibleBox: function(){
@@ -1195,6 +1210,7 @@ var isApp = function(){
             var self = this;
             var dtype = dataType? dataType : "json";
             var timeout = timeout ? timeout : 10000;
+            console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
                 url : url,
@@ -1947,6 +1963,8 @@ var isApp = function(){
         }
         
     }
+
+    window.historyBack = lgkorUI._historyBack;
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();

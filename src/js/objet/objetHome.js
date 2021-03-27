@@ -531,6 +531,29 @@ $(function() {
             }, 1000);
 
         }
+        $("[aria-controls='objet-cont4']").on("click", function() {
+            setTimeout(function() {
+                var swiper = new Swiper('.gallery_top_list', {
+                    //autoHeight: true, //enable auto height
+                    spaceBetween: 0,
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+                    loop: true,
+
+                    pagination: {
+                        el: '.gallery_top_list .swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            }, 100);
+
+        })
 
         window.resizeScene = render;
 

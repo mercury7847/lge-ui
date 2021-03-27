@@ -20,16 +20,20 @@
         border-top: 16px solid $color-bg;
         &:first-child {
             border-top: 0;
-            .title {
-                margin-top: 64px;
+            .inner {
+                > .title {
+                    margin-top: 64px;
+                }
             }
         }
         @include mobile {
             padding-bottom: 60px;
             border-width: 12px;
             &:first-child {
-                .title {
-                    margin-top: 40px;
+                .inner {
+                    > .title {
+                        margin-top: 40px;
+                    }
                 }
             }
         }
@@ -399,29 +403,29 @@
     .tag-area {
         .title {
             display: block;
-            margin-bottom: 16px;
+            margin: 24px 0 16px;
             font-weight: 700;
-            @include font-large-1;
+            font-size: 18px;
+            line-height: 28px;
+            text-align: left;
             @include mobile {
-                margin: 24px 0 20px;
+                margin: 3px 0 16px;
+                line-height: 26px;
             }
         }
         .tag-lists {
             > li {
-                margin-top: 8px;
-                @include mobile {
-                    margin-top: 12px;
-                }
+                margin-top: 16px;
             }
         }
         .tag {
             display: table;
-            padding: 20px 24px;
-            border-radius: 36px;
+            padding: 15px 24px;
+            border-radius: 100px;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
             background-color: $color-bg-wt;
             @include mobile {
-                padding: 16px;
+                padding: 14px 20px;
             }
             .text,
             .btn {
@@ -429,12 +433,17 @@
                 vertical-align: middle;
             }
             .text {
-                padding-right: 48px;
+                padding-right: 28px;
                 font-weight: 700;
-                @include font-medium;
+                font-size: 20px;
+                line-height: 30px;
                 word-break: break-all;
             }
             .btn {
+                padding: 7px 12px;
+                font-size: 12px;
+                line-height: 1;
+                color: $color-default;
                 &:focus,
                 &:hover,
                 &:active {

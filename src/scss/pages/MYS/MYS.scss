@@ -373,6 +373,7 @@
                 }
                 .btn-text {
                     color: $color-gray-1;
+                    text-decoration:none;
                 }
             }
         }
@@ -405,6 +406,9 @@
                 width: 50%;
                 padding: 12px;
                 //min-height: 335px;
+                a {
+                    display:block;
+                }
             }
             @include tablet {
                 margin: 0;
@@ -809,6 +813,10 @@
                 }
             }
         }
+        .slide-track {
+            display:flex;
+            flex-wrap:wrap;
+        }
         .slide-conts {
             padding: 12px;
         }
@@ -825,6 +833,7 @@
         }
         .item-box {
             position: relative;
+            height:100%;
             padding: 0 32px 40px;
             border-radius: 8px;
             background-color: #fff;

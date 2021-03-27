@@ -162,6 +162,7 @@ function markingReset(item) {
 	$(item).find(".marking .marking-test").val("");
 	$(item).find(".marking").addClass("top");
 	//$(item).find(".photo .view > img").attr("src","/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_1.jpg");
+	// [SI] 
 	$(item).find(".photo .view > img").attr("src","https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_1.jpg");
 	$(item).find(".marking .tab a").removeClass("active").eq(0).addClass("active");
 }
@@ -335,18 +336,13 @@ function layerInit(){//입력 값 초기화
 
 //참여하기 프로세스
 function goProc() {
-	
 	var frmCheck = true;
 	var frm = document.frm;
 	if (frmCheck && isOpen.value === "N") {
 		alert("이벤트가 종료 되었습니다.");
 		frmCheck = false;
-	}
+	} //완료
 	
-	/*if (submitCnt > 0) {
-		alert(" 처리중입니다. ");
-		frmCheck = false;
-	}*/
 	
 	//개인정보 수집이용 동의
 	if(frmCheck && ($("#agree01").val() != "1" || $("#agree01_01").is(":checked") == false)){
@@ -421,24 +417,18 @@ function goProc() {
 		
 		//마지막 체크 안하고
 		submitCnt++;
-		//frm.target = "hid_frmame";
-		//frm.action = submitUrl;
-		//frm.submit();
 		
 		 var param = $("#frm").serialize();
-         //param += '&eventId='+'<c:out value="${eventId }"/>';
-         //param += '&uid='+ '<c:out value="${memberInformation.unifyId}"/>'
-         //param += '&userId='+ '<c:out value="${memberInformation.userId}"/>'
          $.ajax({
          	type: 'POST',
-         	url: '/kr/evt/event_update.lgajax',
+         	url: '/evt/EV00016071_event_update.lgajax',
              data : param,
              success:function(data){
              	if(data.status == "success" && data.data.success == "Y"){
                  	alert("신청되었습니다.");
                  	self.close();
              	}else{
-             		alert("오류가 발생했습니다.<br/>관리자에게 문의하세요.");
+             		alert(data.data.alert.title);
              	}
              }
          })

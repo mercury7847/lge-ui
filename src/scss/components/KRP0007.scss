@@ -8,14 +8,16 @@
     @include clearfix;
     .cate-wrap {      
         //height:102px;
-        padding:45px 0 21px;
+        //padding:45px 0 21px;
         background:#fff;
         //border-bottom: 8px solid #f4f4f4;
-        @include mobile {
-            height: auto;
-            padding: 24px 0 12px;
-            //border-bottom: 12px solid #f4f4f4;
+        @include tablet {
+            border-bottom: 1px solid $color-border;
         }
+        //@include mobile {
+        //    height: auto;
+        //    padding: 24px 0 12px;
+        //}
         .cate-list {
             position: relative;          
             @include clearfix;
@@ -37,17 +39,17 @@
                 .chk-wrap input+label {
                     padding:8px 16px;
                     color:#000;
-                    font-weight:$font-weight-bold;
-                    @include font-large;
-                    line-height:34px;
-                    @media screen and (max-width: 1024px) {
-                        @include font-large-2;
-                    }
+                    font-weight:700;
+                    font-size: $font-large;
+                    line-height: 28px;
+                    //@media screen and (max-width: 1024px) {
+                    //    @include font-large-2;
+                    //}
 
                     @include mobile {
-                        padding:7px 16px;
-                        font-size: 17px;
-                        line-height: 25px;
+                        padding:8px 12px;
+                        font-size: 16px;
+                        line-height: 24px;
                     }
                     &:before {
                         display:none;
@@ -58,44 +60,52 @@
                 }
             }
             .fixed-tab-wrap {
-                padding: 0 67px;
-                @media screen and (max-width: 1024px) {
-                    padding: 0;
+                //padding: 0 67px;
+                padding: 13px 0;
+                border-bottom: 1px solid $color-border;
+                @include tablet {
+                    //padding: 0;
                     overflow: hidden;
+                    padding-left: 16px;
+                    border-bottom: 0;
+                }
+                @include mobile {
+                    padding: 9px 0 9px 45px;
                 }
                 .cate-scroll-wrap {
                     position: relative;
+                    text-align: center;
                     .tabs {
+                        display: inline-block;
                         padding:3px;
                         white-space: nowrap;
                         font-size: 0;
-                        @media screen and (max-width: 1024px) {
-                            &:before {
-                                display: inline-block;
-                                content: '';
-                                width: 52px;
-                                height: 32px;
-                                margin-left: -8px;
-                            }
-                        }    
+                        vertical-align: top;
+                        //@media screen and (max-width: 1024px) {
+                        //    &:before {
+                        //        display: inline-block;
+                        //        content: '';
+                        //        width: 52px;
+                        //        height: 32px;
+                        //        margin-left: -8px;
+                        //    }
+                        //}
                         > li {
                             position: relative;
                             display: inline-block;
                             vertical-align: top;
-                            margin-left: 16px;
-                            padding-left: 16px;
+                            margin-left: 8px;
                             &:first-child {
                                 margin-left: 0;
-                                padding-left: 0;
                             }
-                            @include mobile {
-                                margin: 0 8px;
-                                padding: 0;
-                                &:first-child {
-                                    margin: 0 8px;
-                                    padding: 0;
-                                }
-                            }
+                            //@include mobile {
+                            //    margin: 0 8px;
+                            //    padding: 0;
+                            //    &:first-child {
+                            //        margin: 0 8px;
+                            //        padding: 0;
+                            //    }
+                            //}
                         }
                     }
                 }
@@ -105,46 +115,53 @@
                     left: 50%;
                     width: 100%;
                     max-width: 100%;
-                    margin-top: -28px;
+                    margin-top: -24px;
                     transform: translateX(-50%);
                     z-index: 10;
-                    @media screen and (max-width: 1024px) {
-                        display: none;
-                    }
                     .btn-arrow {
                         position: absolute;
                         //box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.06);
                     }
                     .prev {
-                        left: -70px;
+                        left: 0;
                     }
                     .next {
-                        right: -70px;
+                        right: 0;
+                    }
+                    @include tablet {
+                        display: none !important;
                     }
                 }
             }
             .mobile-more-btn {
                 display: none;
                 position: absolute;
-                top: 50%;
-                right: 16px;
-                height: 100%;
-                margin-top: -16px;
+                top: 0;
+                right: 0;
+                width: 48px;
+                height: 76px;
+                //margin-top: -16px;
                 background-color: #fff;
+                @include mobile {
+                    height: 64px;
+                }
                 a {
-                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    right: 16px;
                     width: 32px;
                     height: 32px;
-                    background: #fff url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat center center;
+                    margin-top: -16px;
+                    background: #fff url('/lg5-common/images/icons/btn-arr-down-64.svg') no-repeat left center;
                     background-size: 32px 32px;
                 }
-                &::before {
+                &:before {
                     display: inline-block;
                     content: '';
                     position: absolute;
                     top: 0;
-                    right: 32px;
-                    width: 40px;
+                    right: 48px;
+                    width: 32px;
                     height: 100%;
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
                 }
@@ -175,12 +192,11 @@
                     }
                     
                     .mobile-more-btn {
-                        height: auto;
                         &::before {
                             display: none;
                         }
                         a {
-                            background: #fff url('/lg5-common/images/icons/btn-arrow-up.svg') no-repeat;
+                            transform: rotate(-180deg);
                         }
                     }
                 }
@@ -196,8 +212,8 @@
 
         @include mobile {
             max-width: 100%;
-            margin-top:34px;
-            padding: 0 20px 50px;
+            margin-top:40px;
+            padding: 0 16px 50px;
 
         }
         .lay-filter {

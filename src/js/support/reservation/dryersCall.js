@@ -1,40 +1,24 @@
 (function() {
     var validation;
     var authManager;
-    var termsValidation;
+    var detect = vcui.detect;
+    var isLogin = lgkorUI.isLogin;
 
     var reservation = {
         init: function() {
             var self = this;
             
             self.$cont = $('.contents');
-            self.$productBar = self.$cont.find('.prod-selected-wrap');
-            self.$myProductWarp = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
-            self.$stepArea = self.$cont.find('.step-area');
             self.$completeBtns = self.$cont.find('.btn-group');
-
-            self.$stepTerms = self.$cont.find('#stepTerms');
-            self.$stepModel = self.$cont.find('#stepModel');
-
-            self.$stepInput = self.$cont.find('#stepInput');
-            self.$topicBox = self.$cont.find('#topicBox');
-            self.$topicWrap = self.$cont.find('#topicList');
-            self.$topicList = self.$topicWrap.find('.rdo-list');
-            self.$subTopicBox = self.$cont.find('#subTopicBox');
-            self.$subTopicWrap = self.$cont.find('#subTopicList');
-            self.$subTopicList = self.$subTopicWrap.find('.rdo-list');
-            self.$solutionsBanner = self.$cont.find('#solutionBanner');
-            self.$solutionsPopup = $('#solutionsPopup');
-            self.$calendarWrap = self.$cont.find('.calendar-area');
-            self.$calendarDate = self.$calendarWrap.find('.date-wrap');
-            self.$calendarTime = self.$calendarWrap.find('.time-wrap');
-
             self.$authPopup = $('#certificationPopup');
 
-            self.isLogin = lgkorUI.isLogin;
+            self.$cont.find('#route').val(detect.isMobile ? 'WWW2' : 'WWWW1');
 
             var register = {
+                privcyCheck: {
+                    msgTarget: '.err-block'
+                },
                 userNm: {
                     required: true,
                     maxLength: 30,
@@ -55,99 +39,81 @@
                     } 
                 }
             };
-            var authOptions = {
-                elem: {
-                    popup: '#certificationPopup',
-                    name: '#authName',
-                    phone: '#authPhoneNo',
-                    number: '#authNo'
-                },
-                register: {
-                    authName: {
-                        required: true,
-                        maxLength: 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                        msgTarget: '.err-block',
-                        errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
-                    },
-                    authPhoneNo: {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 11,
-                        msgTarget: '.err-block',
-                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        validate : function(value){
-                            return validatePhone(value);
-                        } 
-                    },
-                    authNo:{
-                        required: true,
-                        msgTarget: '.err-block',
-                        errorMsg: '인증번호를 입력해주세요.',
-                    }
-                }
-            };
-            vcui.require(['ui/validation'], function () {
-                validation = new vcui.ui.CsValidation('.step-area', {register:register});
-                termsValidation = new vcui.ui.CsValidation('#stepTerms', {
-                    register: {
-                        privcyCheck: { msgTarget: '.err-block' }
-                    }
-                });
-                if (!self.isLogin) authManager = new AuthManager(authOptions);
 
-                $('#route').val(lgkorUI.isMobile() ? 'WWW2' : 'WWWW1');
+            vcui.require(['ui/validation'], function () {
+                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                if (!isLogin) {
+                    authManager = new AuthManager({
+                        elem: {
+                            popup: '#certificationPopup',
+                            name: '#authName',
+                            phone: '#authPhoneNo',
+                            number: '#authNo'
+                        },
+                        register: {
+                            authName: {
+                                required: true,
+                                maxLength: 30,
+                                pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                msgTarget: '.err-block',
+                                errorMsg: '이름을 입력해주세요.',
+                                patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
+                            },
+                            authPhoneNo: {
+                                required: true,
+                                minLength: 10,
+                                maxLength: 11,
+                                msgTarget: '.err-block',
+                                errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                                validate : function(value){
+                                    return validatePhone(value);
+                                } 
+                            },
+                            authNo:{
+                                required: true,
+                                msgTarget: '.err-block',
+                                errorMsg: '인증번호를 입력해주세요.',
+                            }
+                        }
+                    });
+                }
 
                 self.bindEvent();
             });
         },
         requestComplete: function() {
             var self = this;
-
-            var url = self.$submitForm.data('ajax');
-            var param = validation.getAllValues();
+            var url = self.$submitForm.data('ajax'),
+                param = validation.getAllValues();
 
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(url, param, function(result) {
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    $('#acptNo').val(data.acptNo);
+                    self.$cont.find('#acptNo').val(data.acptNo);
+                    self.$submitForm.submit();
                 } else {
                     lgkorUI.hideLoading();
+
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
                 }
-                self.$submitForm.submit();
-            }, 'POST');
+            });
         },
-        
         bindEvent: function() {
             var self = this;
-
-            $('#stepTerms .btn-next').click(function() {
-                var result;
-                
-                //개인정보 수집 및 이용에 대한 동의 유효성 체크
-                result = termsValidation.validate();
-                if (result.success) {
-                    $('.step-box').removeClass('active');
-                    $('#stepInput').addClass('active');
-                    $('.btn-group').show();    
-                }
-            });
 
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
 
                 if (result.success == true) {    
-                    if (self.isLogin) {
+                    if (isLogin) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',

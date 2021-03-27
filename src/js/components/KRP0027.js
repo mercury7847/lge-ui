@@ -66,10 +66,10 @@ $(window).ready(function(){
 								'<span class="title">공유</span>'+
 								'<div class="sns-wrap">'+
 									'<ul class="sns-list">'+
-										'<li><a href="#none" data-url="" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#none" data-url="" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#none" data-url="" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#none" data-url="" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>'+
 									'</ul>'+
 								'</div>'+
 								'<button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
@@ -135,14 +135,28 @@ $(window).ready(function(){
             });
         }
 
+        //?storyId=ST00011178
+
+
         function setting(){
             VIDEO_LIST_URL = $('.KRP0027').data("videoListUrl");
             VIEWER_DATA_URL = $('.KRP0027').data("viewerDataUrl");
 
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
-            yearTab = $('.video-list-wrap .ui_tab');
+            yearTab = $('.video-list-wrap .ui_year_tab');
             contList = $('.tabs-cont.sub_cate_list');
+            
+            var storyId = vcui.uri.getParam('storyId');
+            setShareUrl(storyId);
+
+        }
+
+        function setShareUrl(storyId){
+            $('.KRP0027').find('[data-link-name="facebook"]').attr('data-url', vcui.uri.updateQueryParam(location.href, 'storyId', storyId));
+            $('.KRP0027').find('[data-link-name="twitter"]').attr('data-url', vcui.uri.updateQueryParam(location.href, 'storyId', storyId));
+            $('.KRP0027').find('[data-link-name="kakaotalk"]').attr('data-url', vcui.uri.updateQueryParam(location.href, 'storyId', storyId));
+            $('.KRP0027').find('[data-link-name="copy_url"]').attr('data-url', vcui.uri.updateQueryParam(location.href, 'storyId', storyId));
         }
 
         function bindEvents(){
@@ -156,7 +170,7 @@ $(window).ready(function(){
 
             yearTab.on('tabchange', function(e, data){
                 setContentsList(REQUEST_MODE_YEAR, 1);
-            });
+            }).vcTab();
 
             contList.scroll(function(e){
                 if(window.breakpoint.name == "pc"){
@@ -243,16 +257,19 @@ $(window).ready(function(){
             console.log("### changeViewContents ###", data)
 
             if(data != undefined){
+
                 var isMoreModel = false;
                 var modelist = data.modelList;
                 if(modelist && modelist.length > 1){
                     if(modelist[0].models.length > 1) isMoreModel = true;
                 }
                 data.isMoreModel = isMoreModel;
-    
                 if(!data.videoType) data.videoType = "youtube";
-    
+
+
+                data['shareUrl'] = vcui.uri.updateQueryParam(location.href, 'storyId', data.storyId);    
                 var templateList = vcui.template(viewerTemplate, data);
+
                 $('.video-wrap').append(templateList);
                 $('.video-wrap').find('.ui_tooltip-target').vcTooltipTarget();
     

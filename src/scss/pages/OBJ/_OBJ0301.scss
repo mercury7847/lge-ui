@@ -1,5 +1,6 @@
 @charset "UTF-8";
 .simulator .simulator-header {
+    padding-top: 0;
     width: 53.8%;
     min-width: 860px;
     margin: 0 auto;
@@ -7,6 +8,7 @@
 
 .simulator .simulator-header h2 {
     width: 100%;
+    padding-top: 50px;
 }
 
 .simulator .textType01 {
@@ -27,7 +29,11 @@
     overflow: hidden;
 }
 
-.objet_select_slider .obj-swiper-container {
+.simulator .objet_select_slider {
+    top: 0;
+}
+
+.simulator full .objet_select_slider .obj-swiper-container {
     display: flex;
     width: 53.8%;
     height: 100%;
@@ -2124,6 +2130,9 @@ button.scroll-down {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: -15px;
+    input {
+        appearance: auto;
+    }
 }
 
 .simul-start-div .statr-bx label span {

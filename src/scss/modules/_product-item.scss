@@ -83,12 +83,12 @@
 
         @include pc {
             &.plp-item {
-                padding-bottom: 166px;
+                padding-bottom: 140px;
             }
         }
 
         @include mobile {
-            padding: 36px 36px 32px;
+            padding: 37px 40px 32px;
         }
 
         .badge {
@@ -163,7 +163,7 @@
         .product-option {
             position: relative;
             //width: 100%;
-            margin: 5px -5px 13px;
+            margin: 5px -5px 12px;
             font-size: 0;
             text-align: center;
             &:before,
@@ -186,6 +186,7 @@
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
             }
             @include mobile {
+                margin: 16px -5px;
                 &:before,
                 &:after {
                     width:32px;
@@ -244,6 +245,11 @@
             }
 
             &.color {
+                .option-list {
+                    li {
+                        padding: 0 5px;
+                    }
+                }
                 .chk-wrap-colorchip {
                     input {
                         & + label {
@@ -255,6 +261,24 @@
                             & + label {
                                 &:after {
                                     border-color: $color-primary;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            & + label {
+                                width:28px;
+                                height:28px;
+                                &:before {
+                                    content:' ';
+                                    position:absolute;
+                                    top:3px;
+                                    left:3px;
+                                    width:22px;
+                                    height:22px;
+                                }
+                                &:after {
+                                    width:28px;
+                                    height:28px;
                                 }
                             }
                         }
@@ -310,8 +334,12 @@
             .sku {
                 display: inline-block;
                 margin-right:6px;
-                @include font-small;
+                font-size: $font-small;
+                line-height: 24px;
                 vertical-align: top;
+                @include mobile {
+                    line-height: 22px;
+                }
             }
             .review-info {
                 display: inline-block;
@@ -321,7 +349,11 @@
                 .average-rating,
                 .review-count {
                     display: inline-block;
-                    @include font-small;
+                    font-size: $font-small;
+                    line-height: 24px;
+                    @include mobile {
+                        line-height: 22px;
+                    }
                 }
                 .star {
                     width: 20px;
@@ -335,7 +367,7 @@
                 }
             }
             .spec-info {
-                margin: 12px 0 24px;
+                margin: 6px 0 12px;
                 font-size: $font-small;
                 line-height: 14px;
                 color: #000;
@@ -348,11 +380,12 @@
                     }
                 }
                 @include mobile {
-                    margin: 8px 0 16px;
+                    margin: 8px 0;
                     li {
                         display: inline-block;
                         margin-top: 0;
-                        line-height: 21px;
+                        font-size: 14px;
+                        line-height: 22px;
                         &:after {
                             display: inline-block;
                             width: 1px;
@@ -437,12 +470,12 @@
 
             @include mobile {
                 .original {
-                    font-size: 13px;
-                    line-height: 21px;
+                    font-size: 14px;
+                    line-height: 22px;
                 }
                 .total {
-                    font-size: $font-large;
-                    line-height: 23px;
+                    font-size: $font-medium;
+                    line-height: 24px;
                 }
             }
 
@@ -515,8 +548,8 @@
         }
         .product-compare {
             position: absolute;
-            top: 12px;
-            right: 20px;
+            top: 16px;
+            right: 24px;
             a {
                 font-weight: 500;
                 @include font-small;
@@ -524,11 +557,53 @@
                     color: $color-primary;
                 }
             }
+            @include mobile {
+                top: 10px;
+            }
+        }
+        .product-ar {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            &:before {
+                display: inline-block;
+                width: 1px;
+                height: 12px;
+                margin-right: 4px;
+                background-color: $color-border;
+                content: '';
+            }
+            a {
+                display: inline-block;
+                padding-left: 28px;
+                font-weight: 500;
+                @include font-small;
+                color: #6735ea;
+                background: url('/lg5-common/images/icons/icon-ar-80.png') no-repeat left center;
+                background-size: 24px;
+            }
+
+            & + .product-compare {
+                right: 116px;
+            }
+            @include mobile {
+                top: 10px;
+                &:before {
+                    height: 10px;
+                }
+                a {
+                    padding-left: 24px;
+                    background-size: 20px;
+                }
+                & + .product-compare {
+                    right: 112px;
+                }
+            }
         }
         .product-bottom {
             @include pc {
                 position: absolute;
-                bottom: 48px;
+                bottom: 32px;
                 right: 46px;
                 left: 46px;
             }
@@ -537,6 +612,9 @@
             display: table;
             width: 100%;
             margin-top: 16px;
+            @include mobile {
+                margin-top: 12px;
+            }
             .wishlist,
             .cart,
             .btn-area {
@@ -655,7 +733,7 @@
                     .title {
                         margin-bottom: 8px;
                         font-weight: 700;
-                        @include font-large-2;
+                        @include font($font-large-3,34px);
                         @include mobile {
                             font-size:24px;
                             line-height:33px;
@@ -664,7 +742,10 @@
 
                     .sub-copy {
                         font-weight: 500;
-                        @include font-medium;
+                        @include font($font-large,28px);
+                        @include mobile {
+                            @include font($font-small,22px);
+                        }
                     }
                 }
 

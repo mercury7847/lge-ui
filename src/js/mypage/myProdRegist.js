@@ -7,7 +7,7 @@
     if(location.hostname == "www.lge.co.kr") {
         r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     } else {
-        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     }
 
     if(s.getElementById(g)){
@@ -27,7 +27,7 @@
     console.log('a',a);
     console.log('m',m);
     */
-})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function(){
     var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
@@ -356,7 +356,9 @@
             
             //크레마# 이동 막음
             self.$myProductList.on('click','a.crema-new-review-link', function(e) {
-                e.preventDefault();
+                if($(this).attr('href') == "#") {
+                    e.preventDefault();
+                }
             });
 
             //보유제품 직접 등록
