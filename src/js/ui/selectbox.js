@@ -169,11 +169,13 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                     
                     if ('text' in item) {
                         self.el.options.add(new Option(item.text || item.value, item.value));
+                        if(item.placeholder) $(self.el.options).addClass('placeholder');
                     } else {
                         core.each(item, function (txt, val) {
-                            self.el.options.add(new Option(txt, val));
+                            self.el.options.add(new Option(txt, val));                            
                             return false;
                         });
+                        if(item.placeholder) $(self.el.options).addClass('placeholder');                        
                     }
                 });
             } else if (core.is(list, 'json')) {
