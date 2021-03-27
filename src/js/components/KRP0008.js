@@ -335,8 +335,6 @@
                     }
                 }
 
-                //console.log('result',rentalSelectBoxIndex1,rentalSelectBoxIndex2,rentalSelectBoxIndex3);
-
                 //케어십 가격 정보 정리
                 var careSelectIndex = 0;
 
@@ -1186,7 +1184,6 @@
                 
                 $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
-                    //console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
                         location.href = buttonLinkUrl;
                     }
@@ -1552,8 +1549,6 @@
                 var prefix = $paymentAmount.data('prefix');
                 prefix = !prefix ? "" : prefix + " ";
 
-                //console.log(price, quantity, carePrice, cardData, prefix);
-
                 //2021-03-17
                 //구매의 케어십은 카드세일을 적용하여 표시하지 않는다 (렌탈케어만 적용해서 표시)
                 if(cardData && cardData.cardSale) {
@@ -1647,6 +1642,17 @@
             //구매진행
             productBuy: function($dm) {
                 var self = this;
+
+                //홈브류 제품 로그인 안내 뛰우기
+                if (location.href.indexOf("lg-homebrew") > -1 && !lgkorUI.stringToBool(loginFlag)) {
+                    var $memberBuyGuide = $('#memberBuyGuide');
+                    //현재 페이지 오타가 있어서 임의로 수정. 반영되면 삭제할것
+                    $memberBuyGuide.find('div.non-members-login').html('<p class="hello-desc">맥주제조기 및 홈브루 캡슐 제품 구매를 위해서는<br>LG전자 통합 로그인이 필요합니다.</p>');
+                    //$memberBuyGuide.find('.btn-group button.btn-confirm').data('linkUrl','/sso/api/Login');
+                    $memberBuyGuide.vcModal();
+                    return;
+                };
+
                 self.processProductBuy = null;
 
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
@@ -1820,14 +1826,12 @@
                                     });
                                 }
                             }
-                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",param);
                         } else {
                             self.processProductBuy = $dm;
                         }
                     } else {
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                         //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
-                        console.log("!!!!!buy",ajaxUrl,param);
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                                 console.log(result);
