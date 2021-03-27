@@ -736,8 +736,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                 targetBreakpoint = self._getTargetBreakpoint();
 
-                console.log(targetBreakpoint, bs[targetBreakpoint])
-
                 if (targetBreakpoint !== null) {
                     if (self.activeBreakpoint !== null) {
 
@@ -1011,7 +1009,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     self.$list.off().removeClass('ui_static');
                     self.$slideTrack.attr('style', '').off().removeClass('ui_static');
                     self.$slideTrack.empty().append(self.$slides);
-                    // console.log(self.$slides);
                 } else {
                     self.$slideTrack.children(this.options.slide).detach();
                     self.$slideTrack.detach();
@@ -1431,6 +1428,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                 self.buildPlayButton();
                 self.buildAccessbility();
+
+
             }
 
             if (creation) {
@@ -1470,7 +1469,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if(self.$el.find('.indi-wrap').find('li').length < 2){
                 self.$el.find('.indi-wrap').hide();
-
                 self.$el.addClass('slide-solo');
             }
 
@@ -1885,6 +1883,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opacity: 1
             });
 
+            self.$slides.show(); // 210327 추가
+
             self.$slider.removeClass(_V.LOADING);
 
             self.initUI();
@@ -2292,7 +2292,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
             
-            //console.log($(window).width(), "//", self.windowWidth);
 
             //if ($(window).width() !== self.windowWidth) {
                 clearTimeout(self.windowDelay);
@@ -2989,8 +2988,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             self.interrupted = false;
             self.shouldClick = self.touchObject.swipeLength > 10 ? false : true;
-
-            // console.log(self.shouldClick);
 
             if (self.touchObject.curX === undefined) {
                 return false;
