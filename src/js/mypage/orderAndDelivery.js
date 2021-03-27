@@ -84,11 +84,11 @@
                         '<span class="blind">제품정보</span>'+
                         '<div class="product-info">'+
                             '<div class="thumb">'+
-                                '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                                '<a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                             '</div>'+
                             '<div class="infos">'+
                                 '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                                '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
+                                '<p class="name"><a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
                                 '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
                                 '{{#if listData.specList && listData.specList.length > 0}}'+
                                 '<div class="more">'+
@@ -139,11 +139,11 @@
                             '<span class="blind">제품정보</span>'+
                             '<div class="product-info">'+
                                 '<div class="thumb">'+
-                                    '<a href="{{listData.productPDPurl}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
+                                    '<a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                                 '</div>'+
                                 '<div class="infos">'+
                                     '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                                    '<p class="name"><a href="{{listData.productPDPurl}}"><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
+                                    '<p class="name"><a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
                                     '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
                                     '{{#if listData.specList && listData.specList.length > 0}}'+
                                     '<div class="more">'+
@@ -575,18 +575,20 @@
             setMonthlyPricePop(dataID, prodID);
         }).on('click', '.thumb a', function(e){
             e.preventDefault();
-
-            var dataID = $(this).closest('.box').data("id");
-            var prodID = $(this).closest('.col-table').data('prodId');
-            var pdpUrl = $(this).attr("href");
-            setProductStatus(dataID, prodID, pdpUrl);
+            var $this = $(this);
+            var pdpUrl = $this.attr("href");
+            if(pdpUrl) {
+                var dataID = $this.closest('.box').data("id");
+                var prodID = $this.closest('.col-table').data('prodId');
+                setProductStatus(dataID, prodID, pdpUrl);
+            }
         }).on('click', '.infos .name a', function(e){
             e.preventDefault();
-
-            var wrapper = $(this).closest(".contents");
-            var dataID = $(this).closest('.box').data("id");
-            var prodID = $(this).closest('.col-table').data('prodId');
-            var pdpUrl = $(this).attr("href");
+            var $this = $(this);
+            var pdpUrl = $this.attr("href");
+            //var wrapper = $this.closest(".contents");
+            var dataID = $this.closest('.box').data("id");
+            var prodID = $this.closest('.col-table').data('prodId');
             if(PAGE_TYPE == PAGE_TYPE_LIST){        
                 var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
                 var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
@@ -615,7 +617,9 @@
                     $('#goDetailForm').submit();  
                 }, 100);
             } else{
-                setProductStatus(dataID, prodID, pdpUrl);
+                if(pdpUrl) {
+                    setProductStatus(dataID, prodID, pdpUrl);
+                }
             }
         }).on('click', '.lnb-contents > .btn-group button', function(e){
             e.preventDefault();
@@ -1024,12 +1028,12 @@
     }
 
     function setProductReview(dataID, prodID){
-        console.log("[setProductReview]", dataID, prodID);
-
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
-        var productPDPurl = listData[dataID].productList[prodID].productPDPurl + "#pdp_review";
-        
-        void(window.open(productPDPurl));
+        var url = listData[dataID].productList[prodID].productPDPurl;
+        if(url && url.length > 0) {
+            var productPDPurl = url + "#pdp_review";
+            void(window.open(productPDPurl));
+        }
     }
 
     function setUseReview(dataID, prodID){
@@ -1137,16 +1141,18 @@
             var obj = codes[0] === selectId ? true : false;
             return obj;
         });
+        list.unshift({
+            text: "선택해주세요.",
+            value: "",
+            placeholder: true
+        });
 
         var idx = vcui.array.indexOf(list, selected);
-        console.log(idx)
         if(idx>0){
-            console.log(idx)
             selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', idx);
         } else{
             selector.vcSelectbox('update', list);
         }
-              
     }
 
     //납부정보 input 밸리데이션...
@@ -2032,12 +2038,15 @@
                 }
             }
     
-            sendRealData = {};
-            sendRealData.orderList = [];
+            var orderList = [];
             for(var key in newProductList){
                 var clonedata = vcui.clone(sendata);
                 clonedata.productList = JSON.stringify(newProductList[key]);
-                sendRealData.orderList.push(clonedata);
+                orderList.push(clonedata);
+            }
+
+            sendRealData = {
+                orderList: JSON.stringify(orderList)
             }
         }
 
