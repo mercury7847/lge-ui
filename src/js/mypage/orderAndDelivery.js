@@ -1141,16 +1141,18 @@
             var obj = codes[0] === selectId ? true : false;
             return obj;
         });
+        list.unshift({
+            text: "선택해주세요.",
+            value: "",
+            placeholder: true
+        });
 
         var idx = vcui.array.indexOf(list, selected);
-        console.log(idx)
         if(idx>0){
-            console.log(idx)
             selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', idx);
         } else{
             selector.vcSelectbox('update', list);
         }
-              
     }
 
     //납부정보 input 밸리데이션...
@@ -2036,12 +2038,15 @@
                 }
             }
     
-            sendRealData = {};
-            sendRealData.orderList = [];
+            var orderList = [];
             for(var key in newProductList){
                 var clonedata = vcui.clone(sendata);
                 clonedata.productList = JSON.stringify(newProductList[key]);
-                sendRealData.orderList.push(clonedata);
+                orderList.push(clonedata);
+            }
+
+            sendRealData = {
+                orderList: JSON.stringify(orderList)
             }
         }
 
