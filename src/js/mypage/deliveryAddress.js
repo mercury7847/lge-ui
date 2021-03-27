@@ -75,7 +75,7 @@
                 msgTarget: '.err-block'
             },
             detailAddress: {
-                required: false,
+                required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 // msgTarget: '.err-block'
             },
@@ -93,7 +93,7 @@
 
         addressInfoValidation.on('errors', function(e,data){
 
-            console.log(data);
+            // console.log(data);
         
         }).on('nextfocus', function(e,target){
 
