@@ -470,6 +470,9 @@
                         totalCount: totalCount,
                         page: page
                     });
+                } else {
+                    //아예 데이타가 없다
+                    self.$btnMore.hide();
                 }
             },
 
