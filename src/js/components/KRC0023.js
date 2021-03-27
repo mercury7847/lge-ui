@@ -8,32 +8,14 @@ $(window).ready(function(){
         $('.KRC0023').find('.ui_carousel_slider2').vcToggleCarousel({
             pcOption: "unbuild",
             mobileOption: {
-                infinite: false,
+                infinite: true,
                 dots: true,
                 slidesToShow: 1, 
                 slidesToScroll: 1
             }
         });
-    });
-    
 
+        console.log('asdfsadf');
+    });    
 
-    // $('.KRC0023').find('.ui_carousel_slider2').vcCarousel({
-    //     // settings: "unbuild",
-    //     responsive: [
-    //         {
-    //             breakpoint: 10000,
-    //             settings: "unbuild"
-    //         },
-    //         {
-    //             breakpoint: 768,
-    //             settings: {
-    //                 infinite: false,
-    //                 dots: true,
-    //                 slidesToShow: 1, 
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //     ]
-    // });
 })
