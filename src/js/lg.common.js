@@ -1211,14 +1211,14 @@ var isApp = function(){
         requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide, failCallback) {
             var self = this;
             var dtype = dataType? dataType : "json";
-            var timeout = timeout ? timeout : 10000;
+            var timelimit = timeout ? timeout : 20000;
             console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
                 data : data,
-                timeout : 180000
+                timeout : timelimit
             }).done(function (result) {
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
 

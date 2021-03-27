@@ -122,15 +122,31 @@
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    //입력된 검색어가 있으면 선택된 카테고리로 값 조회
-                    var value = self.$contentsSearch.attr('data-search-value');
-                    value = !value ? null : value.trim();
-                    var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value)) {
-                        //현재 선택된 카테고리 기준으로 검색
-                        self.setinputSearchValue(value);
-                        var filterQueryData = self.getListSortingData();
-                        self.requestSearchData(value, force, filterQueryData, true);
+                    var hash = location.hash.replace("#","");
+                    var savedData = lgkorUI.getStorage(hash);
+                    if(savedData && savedData.search) {
+                        self.savedFilterData = JSON.parse(JSON.stringify(savedData));
+                        if(self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+                            var str;
+                            for (key in filterData) {
+                                str = filterData[key];
+                                filterData[key] = str.split("||");
+                            }
+                            self.savedFilterData.filterData =  JSON.stringify(filterData);
+                        }
+                        self.requestSearchData(savedData.search,savedData.force,savedData, true);
+                    } else {
+                        //입력된 검색어가 있으면 선택된 카테고리로 값 조회
+                        var value = self.$contentsSearch.attr('data-search-value');
+                        value = !value ? null : value.trim();
+                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if(!(!value)) {
+                            //현재 선택된 카테고리 기준으로 검색
+                            self.setinputSearchValue(value);
+                            var filterQueryData = self.getListSortingData();
+                            self.requestSearchData(value, force, filterQueryData, true);
+                        }
                     }
 
                     self.updateBasicData();
@@ -579,6 +595,9 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
+                lgkorUI.setStorage(self.uniqId, postData);
+                location.hash = self.uniqId;
+                
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
