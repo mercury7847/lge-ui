@@ -29,6 +29,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 self.$el.prop('readonly', true);
             }
 
+
         },
         _options: function _options(cb) {
             core.each(core.toArray(this.el.options), cb);
@@ -185,6 +186,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             if (selectedValue) {
                 self.el.value = selectedValue;
+                // self.el.selectedIndex = selectedValue;
             }
         },
 
@@ -704,7 +706,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 });
             });
 
+
             self.$listWrapper.empty().html('<ul>' + html + '</ul>').find('li:eq(' + self.el.selectedIndex + ')').addClass('on');
+            if(selectedValue) self.selectedIndex(selectedValue);
 
             self.$selectbox.toggle(self.display);
         },

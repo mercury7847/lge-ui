@@ -208,7 +208,6 @@
         var search = {
             init: function() {
                 var self = this;
-                self.uniqId = vcui.getUniqId(8);
                 
                 //vcui.require(['ui/tab'], function () {
                     self.setting();
@@ -665,6 +664,7 @@
             requestSearchData:function(value, force) {
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
+
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
                     self.openSearchInputLayer(false);
 

@@ -10,14 +10,6 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
             if (self.supr(el, options) === false) {
                 return;
             }
-            console.log("ToggleCarousel Start!!!");
-
-            self.clones = [];
-            self.$el.children().each(function(idx, item){
-                self.clones.push($(item).clone());
-            })
-
-            self.isCarousel = false;
 
             self._setting();
             self._bindEvents();
@@ -26,7 +18,7 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
         _bindEvents: function(){
             var self = this;
 
-            $(window).on("breakpointchange.togglecarousel", function(){
+            $(window).off("breakpointchange.togglecarousel").on("breakpointchange.togglecarousel", function(){
                 self._setting();
             })
         },
@@ -34,30 +26,29 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
         _setting: function(){
             var self = this;
 
-            self.$el.vcCarousel("destroy");
-
-            self.$el.empty();
-            for(var idx in self.clones) self.$el.append(self.clones[idx].clone());
-
             var options = window.breakpoint.name == "mobile" ? self.options.mobileOption : self.options.pcOption;
             if(options !== "unbuild"){
-                if(self.isCarousel) self.$el.vcCarousel('reinit').vcCarousel('refresh');
-               else self.$el.vcCarousel(options);
-
-               self.isCarousel = true;
+                self.$el.vcCarousel(options);
             } else{
-                self.$el.find('.indi-wrap').hide();
-                self.$el.find('.slide-controls').hide();
+                self.$el.vcCarousel('destroy');
+
             }
         },
 
         update: function(){
-            var self = this;
-            
+            var self = this;            
             var options = window.breakpoint.name == "mobile" ? self.options.mobileOption : self.options.pcOption;
             if(options !== "unbuild"){
-                self.$el.vcCarousel('update')
+                self.$el.vcCarousel('update');
             }
+        },
+        destroy: function () {
+            var self = this;
+            $(window).off("breakpointchange.togglecarousel");
+            if(self.$el) self.$el.vcCarousel('destroy');            
+
+            self.supr();
+            
         }
     });
 
