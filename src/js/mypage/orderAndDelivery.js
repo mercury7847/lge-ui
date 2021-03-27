@@ -337,7 +337,7 @@
                 '<div class="box-title">'+
                     '<p>주문 영수증 확인</p>'+
                 '</div>'+
-                '<div class="tbl-layout size3">'+
+                '<div class="tbl-layout{{#if method != ""}} size3{{/if}}">'+
                     '<div class="thead" aria-hidden="true">'+    
                         '<span class="th col1">제품정보</span>'+    
                         '<span class="th col2">진행상태</span>'+    
@@ -581,8 +581,14 @@
             if(PAGE_TYPE == PAGE_TYPE_LIST){        
                 var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
                 var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+
+                var prodlist = listdata[dataID].productList;
+                var orderNumbers = [];
+                for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
+                var orderNumberList = JSON.stringify(orderNumbers);
+
                 var sendUrl = ORDER_DETAIL_URL + "?orderNumber=" + listdata[dataID].orderNumber + "&requestNo=" + listdata[dataID].requestNo + "&tabFlag=" + TAB_FLAG;
-                sendUrl += "&startDate=" + dateData.startDate + "&endDate=" + dateData.endDate + "&periodSelect=" + dateData.periodSelect;
+                sendUrl += "&startDate=" + dateData.startDate + "&endDate=" + dateData.endDate + "&periodSelect=" + dateData.periodSelect + "&orderNumberList=" + orderNumberList;
                 location.href = sendUrl;
             } else{
                 setProductStatus(dataID, prodID, pdpUrl);
@@ -1401,7 +1407,12 @@
         arsAgree = "N";
     }
     //나이스 콜백 -인증실패
-    function fnNiceFail(){
+    function fnNiceFail(msg){
+        if(msg){
+            lgkorUI.alert("", {
+                title: msg
+            })
+        }
     }
     window.editPaymentInfomation = editPaymentInfomation;
     window.fnNiceFail = fnNiceFail;
@@ -1692,12 +1703,18 @@
         var requestNo = listData[dataId].requestNo;
         var apiType = listData[dataId].apiType;
 
+        var prodlist = listData[dataId].productList;
+        var orderNumbers = [];
+        for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
+
         var sendata = {
             callType: calltype,
             orderNumber: orderNumber,
             requestNo: requestNo,
             apiType: apiType,
             tabFlag: TAB_FLAG,
+
+            orderNumberList: JSON.stringify(orderNumbers),
             
             sendOrderNumber: memInfos.sendOrderNumber,
             sendInquiryType: memInfos.sendInquiryType,
@@ -1854,7 +1871,8 @@
             POP_PROD_DATA.push({
                 productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
-                orderedQuantity: listdata.orderedQuantity
+                orderedQuantity: listdata.orderedQuantity,
+                orderNumber: listdata.orderNumber
             });
 
             listdata.specList = vcui.array.filter(listdata.specList, function(item){
@@ -1878,8 +1896,28 @@
 
         getPopOrderData(dataId, "ordercancel"); 
     }
+    //반품신청...
+    function takebackOk(){
+        var productList = [POP_PROD_DATA[0]];
+        var matchIds = [0];
+        
+        setCancelTakebackData('popup-takeback', productList, matchIds);
+    }
+    //취소신청...
+    function cancelOk(){
+        var productList = [];
+        var matchIds = [];
+        var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
+        chkItems.each(function(idx, item){
+            var id = $(item).val();
+            productList.push(POP_PROD_DATA[id]);
 
-    //취소/반품 공통 데이터 생성
+            matchIds.push(id);
+        });
+        
+        setCancelTakebackData('popup-cancel', productList, matchIds);
+    }
+    //취소/반품 공통 SUBMIT...
     function setCancelTakebackData(popname, prodlist, matchIds){
         var popup = $('#'+popname);
 
@@ -1956,28 +1994,6 @@
                 } else reloadOrderInquiry();
             }
         });
-    }
-
-    //반품신청...
-    function takebackOk(){
-        var productList = [POP_PROD_DATA[0]];
-        var matchIds = [0];
-        
-        setCancelTakebackData('popup-takeback', productList, matchIds);
-    }
-    //취소신청...
-    function cancelOk(){
-        var productList = [];
-        var matchIds = [];
-        var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
-        chkItems.each(function(idx, item){
-            var id = $(item).val();
-            productList.push(POP_PROD_DATA[id]);
-
-            matchIds.push(id);
-        });
-        
-        setCancelTakebackData('popup-cancel', productList, matchIds);
     }
 
     //영수증 발급내역...
