@@ -35,7 +35,7 @@
     var myMembership = {
         init: function() {
             var self = this;
-
+            
             self.setting();
             vcui.require(['ui/pagination', 'ui/datePeriodFilter'], function () {
                 self.$pagination.eq(dataTypeBuy).vcPagination({scrollTarget:self.titWrap.eq(dataTypeBuy)});
