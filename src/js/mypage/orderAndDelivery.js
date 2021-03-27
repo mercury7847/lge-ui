@@ -2038,12 +2038,15 @@
                 }
             }
     
-            sendRealData = {};
-            sendRealData.orderList = [];
+            var orderList = [];
             for(var key in newProductList){
                 var clonedata = vcui.clone(sendata);
                 clonedata.productList = JSON.stringify(newProductList[key]);
-                sendRealData.orderList.push(clonedata);
+                orderList.push(clonedata);
+            }
+
+            sendRealData = {
+                orderList: JSON.stringify(orderList)
             }
         }
 

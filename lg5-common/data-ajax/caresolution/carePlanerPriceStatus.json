@@ -6,6 +6,39 @@
         "success": "Y",
         "blockID": 1,
         "rtModelSeq": 382,
-        "monthPrice": "34,000"
+        "monthPrice": "34,000",
+        "selectFeeID": "bbb",
+        "siblingFee": [
+            {
+                "siblingCode": 0,
+                "siblingValue": "납부A"
+            },
+            {
+                "siblingCode": "bbb",
+                "siblingValue": "미납부B"
+            }
+        ],
+        "selectUserPeriodID": "8년_code",
+        "siblingUsePeriod": [
+            {
+                "siblingCode": "4년_code",
+                "siblingValue": "4년"
+            },
+            {
+                "siblingCode": "8년_code",
+                "siblingValue": "8년"
+            }
+        ],
+        "selectVisitCycleID": "5개월_code",
+        "siblingVisitCycle":[
+            {
+                "siblingCode": "1개월_code",
+                "siblingValue": "2개월"
+            },
+            {
+                "siblingCode": "5개월_code",
+                "siblingValue": "5개월"
+            }
+        ]
     }
 }
