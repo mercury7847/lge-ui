@@ -1137,16 +1137,18 @@
             var obj = codes[0] === selectId ? true : false;
             return obj;
         });
+        list.unshift({
+            text: "선택해주세요.",
+            value: "",
+            placeholder: true
+        });
 
         var idx = vcui.array.indexOf(list, selected);
-        console.log(idx)
         if(idx>0){
-            console.log(idx)
             selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', idx);
         } else{
             selector.vcSelectbox('update', list);
         }
-              
     }
 
     //납부정보 input 밸리데이션...
