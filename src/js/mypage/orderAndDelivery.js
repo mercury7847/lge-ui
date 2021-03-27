@@ -1125,46 +1125,27 @@
 
     //카드/은행 셀렉트박스 리셋...
     function setDelectData(selector, list, selectId){
+
+
         var list = vcui.array.map(list, function(item, idx){
             item['text'] =  item.commonCodeName ;
             item['value'] = item.commonCodeId;
             return item;
         });
 
-        console.log(list);
-
         var selected = vcui.array.filterOne(list, function(item, idx){
-
-            console.log(item);
             var codes = item.commonCodeId.split("^");
             var obj = codes[0] === selectId ? true : false;
-
             return obj;
         });
-        
+
         var idx = vcui.array.indexOf(list, selected);
-        console.log(idx)
-        if(selected){
-            selector.vcSelectbox('update', list, selected.value);
+        if(idx>0){
+            selector.vcSelectbox('update', list, idx);
         } else{
             selector.vcSelectbox('update', list);
         }
-        selector.vcSelectbox('update', list, selected.value);
-
-
-        // selector.empty().append('<option value="" class="placeholder">선택해주세요.</option>')
-        // selector.vcSelectbox('update', list);
-        // for(var idx in list){
-        //     var codes = list[idx].commonCodeId.split("^");
-        //     var selected = codes[0] === selectId ? " selected" : "";
-        //     console.log(codes[0], selectId, selected)
-        //     var option = '<option value="' + list[idx].commonCodeId + '"' + selected + '>' + list[idx].commonCodeName + '</option>';
-        //     selector.append(option);
-        // }
-        // setTimeout(function(){
-        //     console.log("selector:", selector)
-        //     selector.vcSelectbox('update');
-        // }, 10);        
+              
     }
 
     //납부정보 input 밸리데이션...
@@ -1529,6 +1510,7 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
 
+
         console.log("### setArsAgreeConfirm ###", sendata);
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             console.log("### setArsAgreeConfirm [complete] ###", result);
@@ -1543,10 +1525,11 @@
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        cardValidation.setValues(cardInfo);
+        //cardValidation.setValues(cardInfo);
         //$('.ui_card_number').vcFormatter('update');
 
-        bankValidation.setValues(bankInfo);
+        //bankValidation.setValues(bankInfo);
+
         
         paymentMethodConfirm = "N";
         arsAgree = "N";
