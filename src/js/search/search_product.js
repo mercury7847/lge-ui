@@ -435,14 +435,14 @@
                     var filterData  = self.filterLayer.getDataFromFilter();
 
                     var curation = self.curationLayer.getSelectedCuration();
-                    if(curation) {
+                    if(!vcui.isEmpty(curation)) {
                         filterData.filterData = null;
                         filterData.curation = curation;
                     } else {
-                        var smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
-                        if(smartFilter) {
+                        var smartFilter = self.curationLayer.getDataFromSmartFilter();
+                        if(!vcui.isEmpty(smartFilter)) {
                             filterData.filterData = null;
-                            filterData.smartFilter = smartFilter;
+                            filterData.smartFilter = self.curationLayer._makeFilterData(smartFilter);
                         }
                     }
                     var postData = self.makeFilterData(filterData);
@@ -631,6 +631,7 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
+                console.log("저장할 데아타",postData);
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
