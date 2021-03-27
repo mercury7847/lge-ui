@@ -1126,7 +1126,6 @@
     //카드/은행 셀렉트박스 리셋...
     function setDelectData(selector, list, selectId){
 
-
         var list = vcui.array.map(list, function(item, idx){
             item['text'] =  item.commonCodeName ;
             item['value'] = item.commonCodeId;
@@ -1140,8 +1139,10 @@
         });
 
         var idx = vcui.array.indexOf(list, selected);
+        console.log(idx)
         if(idx>0){
-            selector.vcSelectbox('update', list, idx);
+            console.log(idx)
+            selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', idx);
         } else{
             selector.vcSelectbox('update', list);
         }
@@ -1399,7 +1400,7 @@
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
-                savePaymentInfoCancel();
+                paymentBlockInit();
             }
 
             renderPage();
@@ -1525,12 +1526,15 @@
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        //cardValidation.setValues(cardInfo);
-        //$('.ui_card_number').vcFormatter('update');
+        cardValidation.setValues(cardInfo);
+        $('.ui_card_number').vcFormatter('update');
 
-        //bankValidation.setValues(bankInfo);
+        bankValidation.setValues(bankInfo);
 
-        
+        paymentBlockInit();
+    }
+    //납부변경 초기화...
+    function paymentBlockInit(){        
         paymentMethodConfirm = "N";
         arsAgree = "N";
         
@@ -2001,20 +2005,45 @@
             sendInquiryType: memInfos.sendInquiryType,
             sendUserName: memInfos.sendUserName,
             sendUserEmail: memInfos.sendUserEmail,
-            sendPhoneNumber: memInfos.sendPhoneNumber,
-            
-            productList: JSON.stringify(prodlist)
+            sendPhoneNumber: memInfos.sendPhoneNumber
         }
 
         var sendRealData;
         if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
             sendRealData = sendata;
             sendRealData.productList = JSON.stringify(prodlist)
+        } else{
+
+            var newProductList = {};
+            for(var idx in prodlist){
+                var ordernum = prodlist[idx].orderNumber;
+                var match = "";
+                for(var str in newProductList){
+                    if(ordernum == str){
+                        match = str;
+                        break;
+                    }
+                }
+    
+                if(match == ""){
+                    newProductList[ordernum] = [prodlist[idx]];
+                } else{
+                    newProductList[str].push(prodlist[idx]);
+                }
+            }
+    
+            sendRealData = {};
+            sendRealData.orderList = [];
+            for(var key in newProductList){
+                var clonedata = vcui.clone(sendata);
+                clonedata.productList = JSON.stringify(newProductList[key]);
+                sendRealData.orderList.push(clonedata);
+            }
         }
 
-        console.log("### " + sendata.callType + " ###", sendata);
+        console.log("### " + sendata.callType + " ###", sendRealData);
         lgkorUI.showLoading();
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();
 
             popup.vcModal('close');
