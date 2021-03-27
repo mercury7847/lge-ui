@@ -650,6 +650,8 @@ var isApp = function(){
             var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
+                console.log("referrer:", referrer)
+                console.log("_historyBack:", index, referrer)
                 if(index > -1){
                     break;
                 }

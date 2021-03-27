@@ -157,7 +157,7 @@
         paymentModifyBlock.on('click', '.paymentCardConfirm, .paymentBankConfirm', function(e){
             e.preventDefault();
 
-            paymentMethodAbled(this);
+            setPaymentMethodAbled(this);
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
 
@@ -447,6 +447,7 @@
     //납부정보 확인 유무...
     function paymentConfirmYN(){
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");
+        console.log("paymentMethodAbled:",paymentMethodAbled)
         if(paymentMethodAbled == "N"){
             paymentErrorAlert();
             return false;
@@ -456,14 +457,14 @@
     }
     //납부 확인 오류창...
     function paymentErrorAlert(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
         lgkorUI.alert("",{
             title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
         });
         setHiddenData('arsAgree', "N");
     }
     //납부카드/계좌 확인...
-    function paymentMethodAbled(item){
+    function setPaymentMethodAbled(item){
         var chk = paymentFieldValidation();
         if(!chk) return false;
 
