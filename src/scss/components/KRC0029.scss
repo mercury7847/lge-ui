@@ -175,7 +175,11 @@
     }
 
     .ui_carousel_list {
+        height:480px;
         overflow: hidden;
+        @include mobile {
+            height:100%;
+        }
     }
 
     .carousel-box {

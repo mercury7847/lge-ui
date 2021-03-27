@@ -14,8 +14,8 @@
             <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap"
-                    data-buy-url="/lg5-common/data-ajax/mypage/membership/my_purchase_history.json"
-                    data-free-url="/lg5-common/data-ajax/mypage/membership/my_purchase_history.json"
+                    data-buy-url="/lg5-common/data-ajax/mypage/membership/my_buy_history.json"
+                    data-free-url="/lg5-common/data-ajax/mypage/membership/my_free_history.json"
                 >
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -128,7 +128,7 @@
                                     <!-- //210129 수정 -->
                                     <div class="section-inner">
                                         <div class="inner-box">
-                                            <div class="filters rdo-type2" data-list-url="/lg5-common/data-ajax/mypage/membership/my_purchase_history.json">
+                                            <div class="filters rdo-type2">
                                                 <!-- filter -->
                                                 @@include('./common/modules/mem-filter.html', {
                                                     "tabType" : true,
