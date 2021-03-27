@@ -194,7 +194,6 @@ var Curation = (function() {
         },
 
         setCurationData: function(data) {
-            //console.log('set curation',data);
             var self = this;
             var curationData = data.curation;
             if(curationData && curationData.length > 0) {
