@@ -1126,7 +1126,6 @@
     //카드/은행 셀렉트박스 리셋...
     function setDelectData(selector, list, selectId){
 
-
         var list = vcui.array.map(list, function(item, idx){
             item['text'] =  item.commonCodeName ;
             item['value'] = item.commonCodeId;
@@ -1140,8 +1139,10 @@
         });
 
         var idx = vcui.array.indexOf(list, selected);
+        console.log(idx)
         if(idx>0){
-            selector.vcSelectbox('update', list, idx);
+            console.log(idx)
+            selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', idx);
         } else{
             selector.vcSelectbox('update', list);
         }
@@ -1399,7 +1400,7 @@
 
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
-                savePaymentInfoCancel();
+                paymentBlockInit();
             }
 
             renderPage();
@@ -1525,12 +1526,15 @@
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
-        //cardValidation.setValues(cardInfo);
-        //$('.ui_card_number').vcFormatter('update');
+        cardValidation.setValues(cardInfo);
+        $('.ui_card_number').vcFormatter('update');
 
-        //bankValidation.setValues(bankInfo);
+        bankValidation.setValues(bankInfo);
 
-        
+        paymentBlockInit();
+    }
+    //납부변경 초기화...
+    function paymentBlockInit(){        
         paymentMethodConfirm = "N";
         arsAgree = "N";
         
