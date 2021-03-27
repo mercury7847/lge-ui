@@ -125,7 +125,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 if($first.is('input')){
                     setTimeout(function(){
                         $first.focus(); 
-                        console.log('2');
                     },100)
                 }else{
                     $first.focus(); 
@@ -283,7 +282,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
-            self.$el.find(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
+            //self.$el.find(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
+            //self.$el.attr('tabindex', 0); // 210322 수정
+
 
             var removeModalCss = self.$el.data('removeModalCss');
             self.options.removeModalCss = removeModalCss ? removeModalCss : false;
@@ -425,21 +426,22 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     e.stopPropagation();
                 });
 
+
                 var $focusEl = self.$el.find('[data-autofocus=true]');
 
                 // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
-                if ($focusEl.length > 0) {     
-                    
+                if ($focusEl.length > 0) {
                     $focusEl.eq(0).focus();
-
                 } else {
                     // 레이어에 포커싱
-                    
-                    var $first = self.$el.find(':visible:focusable').first(); 
-                    $first.focus(); 
-                    
-                    //self.$el.focus(); 
+                    self.$el.attr('tabindex', 0).focus();
+                }
 
+                var $focusEl = self.$('[data-autofocus=true]');
+                if ($focusEl.length > 0) {
+                    $focusEl.eq(0).focus();
+                } else {
+                    self.$el.attr('tabindex', 0).focus();
                 }
 
 
@@ -673,18 +675,18 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var $focusEl = self.$el.find('[data-autofocus=true]');
 
+            
             // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
             if ($focusEl.length > 0) {
-                
                 $focusEl.eq(0).focus();
-                
             } else {
                 // 레이어에 포커싱
-                
-                var $first = self.$el.find(':visible:focusable').first(); 
-                $first.focus(); 
+                //var $first = self.$el.find(':visible:focusable').first(); 
+                //$first.focus(); 
 
+                self.$el.attr('tabindex', 0).focus();
             }
+
             
             $doc.off('focusin' + self.getEventNS()).on('focusin' + self.getEventNS(), self.proxy(function (e) {
                 if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) {

@@ -431,7 +431,6 @@
             var descId = $this.data('descId');
             if(descId != "") $('#pop-estimate').find('.pop-conts .bullet-list').eq(parseInt(descId)).show();            
 
-            console.log("sumTotal:" + sum);
         }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
 
@@ -453,7 +452,6 @@
 
     function setMobilePutItemBoxStatus(isOpen, anim){
         if(window.breakpoint.isMobile){
-            console.log("setMobilePutItemBoxStatus:")
             var wraptop;
             var item = $putItemContainer.find('.ui_active_toggle');
             if(isOpen){
@@ -677,8 +675,6 @@
             blockID: idx
         }
 
-        console.log("setChangeOptionChip:", sendata)
-
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
@@ -689,8 +685,6 @@
             
             var blockID = result.data.blockID;
 
-            console.log("result.data :", result.data);
-            
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
@@ -816,10 +810,7 @@
 
     //담기 삭제...
     function removePutItem(id){
-        console.log(id)
-        console.log(_putItemList);
         _putItemList.splice(id, 1);
-        console.log(_putItemList);
 
         var sendata = {
             type: "remove",
@@ -865,7 +856,6 @@
                 }
             }
 
-            console.log("sendata.type", sendata.type)
             if(sendata.type == "add") $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
 
             setPutItems(result.data);
@@ -943,7 +933,6 @@
     }
 
     function setPutItemStatus(){
-        console.log("### setPutItemStatus ###");
         var leng = $putItemContainer.find('.contract-slide').children().length;
         if(leng){
             if($putItemContainer.css('display') == 'none'){
@@ -1171,7 +1160,7 @@
         };
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function() {
         init();
     });
 })();
