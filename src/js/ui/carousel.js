@@ -55,7 +55,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
         SRONLY: 'blind', //'hide , blind',
         PREV: prefixModule + 'prev',
         NEXT: prefixModule + 'next',
-
         UNBUILD: 'unbuild'
     };
 
@@ -135,7 +134,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             fade: false,                    // 슬라이딩이 아닌 fade in/out으로 할 것인가
             focusOnSelect: false,           // 선택한 요소에 포커싱 사용
             focusOnChange: false,           // 활성화후에 포커싱시킬 것인가
-            infinite: false,                 // 무한루프 사용 여부
+            infinite: true,                 // 무한루프 사용 여부
             initialSlide: 0,                // 처음 로딩시에 활성화시킬 슬라이드 인덱스
             autoScrollActive: false,        // 처음 로딘시 on클래스가 있는 슬라이드로 슬라이드 시킬 것인가
             lazyLoad: 'ondemand',           // or progressive. 지연로딩 방식을 설정
@@ -187,6 +186,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (!self.options.activeClass) {
                 self.options.activeClass = _V.ACTIVE;
             }
+
+            
+
             self.touchObject = {};
             self.activeBreakpoint = null;
             self.animType = null;
@@ -237,8 +239,30 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             // Extracted from jQuery v1.11 source
             self.htmlExpr = REGEX_HTML;
 
+            /* 무한 롤링 일괄적용
+            self.options.infinite = true;            
+            if(self.options.responsive){
+
+                var responsiveArr = vcui.array.reduce(self.options.responsive, function (prev, cur) {
+
+                    if(vcui.isString(cur['settings'])){
+                        prev.push(cur);
+                    }else{
+                        var settings = $.extend({}, cur['settings']);
+                        settings['infinite'] = true;
+                        cur['settings'] = settings;
+                        prev.push(cur);
+                    }                    
+                    return prev;
+                }, []);
+                self.options.responsive = responsiveArr;
+            }
+            */
+
+
             self.registerBreakpoints();
             self.init(true);
+
             
         },
 
@@ -712,12 +736,17 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                 targetBreakpoint = self._getTargetBreakpoint();
 
+                console.log(targetBreakpoint, bs[targetBreakpoint])
+
                 if (targetBreakpoint !== null) {
                     if (self.activeBreakpoint !== null) {
+
                         if (targetBreakpoint !== self.activeBreakpoint || forceUpdate) {
                             self.activeBreakpoint = targetBreakpoint;
+
                             if (bs[targetBreakpoint] === _V.UNBUILD) {
                                 self.unbuild(targetBreakpoint);
+                                
                             } else {
                                 self.options = opt = $.extend({}, self.originalSettings, bs[targetBreakpoint]);
                                 if (initial === true) {
@@ -755,7 +784,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                 // only trigger breakpoints during an actual break. not on initialize.
                 if (!initial && triggerBreakpoint !== false) {
-                    self.triggerHandler(_N + 'breakpoint', [self, triggerBreakpoint]);
+                    self.triggerHandler(_N+'breakpoint', [self, triggerBreakpoint]);
                 }
             }
         },
@@ -837,28 +866,20 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.dots && self.$dots !== null) {
 
-                $('li', self.$dots).off('click.' + _N, self.changeSlide).off('mouseenter.' + _N).off('mouseleave.' + _N);
+                $('li', self.$dots).off(addEventNS('click'), self.changeSlide).off(addEventNS('mouseenter')).off(addEventNS('mouseleave'));
 
                 if (opt.accessibility === true) {
-                    self.$dots.off('keydown.' + _N, self.keyHandler);
+                    self.$dots.off(addEventNS('keydown'), self.keyHandler);
                 }
             }
 
-            self.$slider.off('focus.' + _N + ' blur.' + _N);
+            self.$slider.off(addEventNS('focus blur'));
 
             if (opt.arrows === true && self.slideCount > opt.slidesToShow) {
-                self.$prevArrow && self.$prevArrow.off('click.' + _N, self.changeSlide);
-                self.$nextArrow && self.$nextArrow.off('click.' + _N, self.changeSlide);
+                self.$prevArrow && self.$prevArrow.off(addEventNS('click'), self.changeSlide);
+                self.$nextArrow && self.$nextArrow.off(addEventNS('click'), self.changeSlide);
             }
-
-            /*
-            self.$list.off('touchstart.' + _N + ' mousedown.' + _N, self.swipeHandler);
-            self.$list.off('touchmove.' + _N + ' mousemove.' + _N, self.swipeHandler);
-            self.$list.off('touchend.' + _N + ' mouseup.' + _N, self.swipeHandler);
-            self.$list.off('touchcancel.' + _N + ' mouseleave.' + _N, self.swipeHandler);
-            self.$list.off('click.' + _N, self.clickHandler);
-
-            */
+           
 
             self.$list.off(addEventNS('touchstart mousedown'), self.swipeHandler);
             self.$list.off(addEventNS('touchmove mousemove'), self.swipeHandler);
@@ -872,29 +893,39 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.cleanUpSlideEvents();
 
             if (opt.accessibility === true) {
-                self.$list.off('keydown.' + _N, self.keyHandler);
+                self.$list.off(addEventNS('keydown'), self.keyHandler);
             }
 
             if (opt.focusOnSelect === true) {
-                $(self.$slideTrack).children().off('click.' + _N, self.selectHandler);
+                $(self.$slideTrack).children().off(addEventNS('click'), self.selectHandler);
             }
 
-            $(window).off('orientationchange.' + _N + '-' + self.instanceUid, self.orientationChange);
+            // $(window).off('orientationchange.' + _N + '-' + self.instanceUid, self.orientationChange);
+            // $(window).off('resize.' + _N + '-' + self.instanceUid, self.resize);
 
-            $(window).off('resize.' + _N + '-' + self.instanceUid, self.resize);
+            $(window).off(addEventNS('resize') +'-' + self.instanceUid);
+            $(window).off(addEventNS('orientationchange') + '-' + self.instanceUid);
 
-            $('[draggable!=true]', self.$slideTrack).off('dragstart', self.preventDefault);
+            // $(window).off('resize.' + _N + '-' + self.instanceUid, self.resize);
 
-            $(window).off('load.' + _N + '-' + self.instanceUid, self.setPosition);
-            $(document).off('ready.' + _N + '-' + self.instanceUid, self.setPosition);
+
+            $(window).off(addEventNS('load') + '-' + self.instanceUid, self.setPosition);
+            $(document).on(addEventNS('ready') + '-' + self.instanceUid, self.setPosition);
+
+
+
+            $('[draggable!=true]', self.$slideTrack).off(addEventNS('dragstart'), self.preventDefault);
+
+            // $(window).off('load.' + _N + '-' + self.instanceUid, self.setPosition);
+            // $(document).off('ready.' + _N + '-' + self.instanceUid, self.setPosition);
         },
         cleanUpSlideEvents: function cleanUpSlideEvents() {
 
             var self = this,
                 opt = self.options;
 
-            self.$list.off('mouseenter.' + _N);
-            self.$list.off('mouseleave.' + _N);
+            self.$list.off(addEventNS('mouseenter'));
+            self.$list.off(addEventNS('mouseleave'));
         },
         cleanUpRows: function cleanUpRows() {
 
@@ -980,6 +1011,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     self.$list.off().removeClass('ui_static');
                     self.$slideTrack.attr('style', '').off().removeClass('ui_static');
                     self.$slideTrack.empty().append(self.$slides);
+                    // console.log(self.$slides);
                 } else {
                     self.$slideTrack.children(this.options.slide).detach();
                     self.$slideTrack.detach();
@@ -1099,7 +1131,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var focusTimer;
 
-            self.on('mouseenter mouseleave', function (e) {
+            self.on(addEventNS('mouseenter mouseleave'), function (e) {
                 clearTimeout(focusTimer);
                 switch(e.type) {
                     case 'mouseenter': self.triggerHandler('carouselactive'); break;
@@ -1107,7 +1139,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             });
 
-            self.on('focusin focusout', function (e) {
+            self.on(addEventNS('focusin focusout'), function (e) {
                 switch(e.type) {
                     case 'focusin':
                         if (!self.focussed) {
@@ -1117,7 +1149,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         }
                         break;
                     case 'focusout':
-                        if (e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
+
+                        if (self.$slider && self.$slider[0] && e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
                             self.focussed = false;
                             self.autoPlay();
                             self.triggerHandler('carouseldeactive');
@@ -1467,7 +1500,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$playButon.length) {
 
-                self.$slider.on(_N + 'play ' + _N + 'stop destory', function (e) {
+                self.$slider.on(_N + 'play ' + _N + 'stop destroy', function (e) {
                     var $items = self.$playButon.find('[data-bind-text]');
                     var state = e.type === _N + 'play' ? 'stop' : 'play';
 
@@ -1561,16 +1594,16 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opt = self.options;
 
             if (opt.arrows === true && self.slideCount > opt.slidesToShow) {
-                self.$prevArrow.off('click.' + _N).on('click.' + _N, {
+                self.$prevArrow.off(addEventNS('click')).on(addEventNS('click'), {
                     message: 'previous'
                 }, self.changeSlide);
-                self.$nextArrow.off('click.' + _N).on('click.' + _N, {
+                self.$nextArrow.off(addEventNS('click')).on(addEventNS('click'), {
                     message: 'next'
                 }, self.changeSlide);
 
                 if (opt.accessibility === true) {
-                    self.$prevArrow.on('keydown.' + _N, self.keyHandler);
-                    self.$nextArrow.on('keydown.' + _N, self.keyHandler);
+                    self.$prevArrow.on(addEventNS('keydown'), self.keyHandler);
+                    self.$nextArrow.on(addEventNS('keydown'), self.keyHandler);
                 }
             }
         },
@@ -1580,7 +1613,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opt = self.options;
 
             if (opt.dots === true) {
-                $('li', self.$dots).on('click.' + _N, {
+                $('li', self.$dots).on(addEventNS('click'), {
                     message: 'index'
                 }, function (e) {
                     e.preventDefault();
@@ -1588,13 +1621,13 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 });
 
                 if (opt.accessibility === true) {
-                    self.$dots.on('keydown.' + _N, self.keyHandler);
+                    self.$dots.on(addEventNS('keydown'), self.keyHandler);
                 }
             }
 
             if (opt.dots === true && opt.pauseOnDotsHover === true) {
 
-                $('li', self.$dots).on('mouseenter.' + _N, $.proxy(self.interrupt, self, true)).on('mouseleave.' + _N, $.proxy(self.interrupt, self, false));
+                $('li', self.$dots).on(addEventNS('mouseenter'), $.proxy(self.interrupt, self, true)).on(addEventNS('mouseleave'), $.proxy(self.interrupt, self, false));
             }
         },
         initSlideEvents: function initSlideEvents() {
@@ -1604,8 +1637,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.pauseOnHover) {
 
-                self.$list.on('mouseenter.' + _N, $.proxy(self.interrupt, self, true));
-                self.$list.on('mouseleave.' + _N, $.proxy(self.interrupt, self, false));
+                self.$list.on(addEventNS('mouseenter'), $.proxy(self.interrupt, self, true));
+                self.$list.on(addEventNS('mouseleave'), $.proxy(self.interrupt, self, false));
             }
         },
         initializeEvents: function initializeEvents() {
@@ -1646,8 +1679,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             $(window).on(addEventNS('orientationchange') + '-' + self.instanceUid, $.proxy(self.orientationChange, self));
-
-            $(window).on(addEventNS('resize') + '-' + self.instanceUid, $.proxy(self.resize, self));
+            $(window).on(addEventNS('resize') +'-' + self.instanceUid, $.proxy(self.resize, self));
 
             $('[draggable!=true]', self.$slideTrack).on('dragstart', self.preventDefault);
 
@@ -2251,8 +2283,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             self.paused = !opt.autoplay;
             self.autoPlay();
-
+            self.resize();
             self.triggerHandler(_N + 'reinit', [self]);
+
         },
         resize: function resize() {
 
@@ -2270,7 +2303,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         self.setPosition();
                     }
 
-                    if(self.$el[0]){
+                    if(self.$el && self.$el[0]){
 
                         if (self.$el.find('.indi-wrap').find('li').length < 2){
                             self.$el.find('.indi-wrap').hide();
@@ -2978,7 +3011,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     case 'down':
 
                         slideCount = opt.swipeToSlide ? self.checkNavigable(self.currentSlide + self.getSlideCount()) : self.currentSlide + self.getSlideCount();
-
                         self.currentDirection = 0;
 
                         break;
@@ -2987,7 +3019,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     case 'up':
 
                         slideCount = opt.swipeToSlide ? self.checkNavigable(self.currentSlide - self.getSlideCount()) : self.currentSlide - self.getSlideCount();
-
                         self.currentDirection = 1;
 
                         break;
@@ -3005,7 +3036,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             } else {
 
                 if (self.touchObject.startX !== self.touchObject.curX) {
-
                     self.slideHandler(self.currentSlide);
                     self.touchObject = {};
                 }
