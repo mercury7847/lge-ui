@@ -294,19 +294,19 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    // window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                    // document.form_chk.action = result.data.niceAntionUrl;
-                    // document.form_chk.m.value = result.data.m;
-                    // document.form_chk.EncodeData.value = result.data.sEncData;
-                    // document.form_chk.auth_type.value = result.data.auth_type;
-                    // document.form_chk.param_r1.value = result.data.param_r1;
-                    // document.form_chk.param_r2.value = result.data.param_r2;
-                    // document.form_chk.param_r3.value = result.data.param_r3;
-                    // document.form_chk.target = "popupChk";
-                    // document.form_chk.submit();
+                    window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                    document.form_chk.action = result.data.niceAntionUrl;
+                    document.form_chk.m.value = result.data.m;
+                    document.form_chk.EncodeData.value = result.data.sEncData;
+                    document.form_chk.auth_type.value = result.data.auth_type;
+                    document.form_chk.param_r1.value = result.data.param_r1;
+                    document.form_chk.param_r2.value = result.data.param_r2;
+                    document.form_chk.param_r3.value = result.data.param_r3;
+                    document.form_chk.target = "popupChk";
+                    document.form_chk.submit();
 
                     // editBasicInfomation();
-                    editPaymentInfomation();
+                    //editPaymentInfomation();
                 }
             });
         }, ajaxMethod);
@@ -327,7 +327,12 @@
         setHiddenData('arsAgree', "N");
     }
     //나이스 콜백 -인증실패
-    function fnNiceFail(){
+    function fnNiceFail(msg){
+        if(msg){
+            lgkorUI.alert("", {
+                title: msg
+            })
+        }
     }
     window.editBasicInfomation = editBasicInfomation;
     window.editPaymentInfomation = editPaymentInfomation;
