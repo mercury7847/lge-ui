@@ -743,6 +743,9 @@
         showLoading: function () {
             var self = this;
             ++self.loadingCount;
+            self.loadingTimer = setTimeout(function() {
+                self.hideLoading(true);
+            }, 15000);
             lgkorUI.showLoading();
         },
 
@@ -750,6 +753,7 @@
             var self = this;
             --self.loadingCount;
             if(self.loadingCount <= 0 || force) {
+                clearTimeout(self.loadingTimer);
                 self.loadingCount = 0;
                 lgkorUI.hideLoading();
             }  

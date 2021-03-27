@@ -1211,7 +1211,7 @@ var isApp = function(){
         requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide, failCallback) {
             var self = this;
             var dtype = dataType? dataType : "json";
-            var timelimit = timeout ? timeout : 20000;
+            var timelimit = timeout ? timeout : 15000;
             console.log("requestAjaxData:", type)
             $.ajax({
                 type : type? type : "GET",
