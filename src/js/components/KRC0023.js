@@ -15,7 +15,6 @@ $(window).ready(function(){
             }
         });
 
-        console.log('asdfsadf');
     });    
 
 })
