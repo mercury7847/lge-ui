@@ -144,7 +144,7 @@
         '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
         '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
-        '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{item.combineText}}</span></p>'+
+        '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{#raw item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
         '                               <button type="button" class="btn-del" tabindex="" data-model-id="{{item.modelId}}"><span class="blind">제품 삭제</span></button>'+
@@ -689,7 +689,24 @@
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
             $prodListContainer.find('> ul.inner > li.item').eq(blockID).find('.price-wrap .price').text("월 " + result.data["monthPrice"] + "원");
+
+            var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+            setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
+            setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
+            setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
         });
+    }
+    function setCliblingData(selector, list, selectId){
+
+        var selectIdx = 0;
+        var list = vcui.array.map(list, function(item, idx){
+            item['text'] =  item.siblingValue ;
+            item['value'] = item.siblingCode;
+
+            if(item.siblingCode == selectId) selectIdx = idx;
+            return item;
+        });
+        selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', selectIdx, false);
     }
 
     //색상 옵션 변경...
