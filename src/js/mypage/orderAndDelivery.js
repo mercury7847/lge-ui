@@ -1425,18 +1425,18 @@
                     cancelBtnName: "취소",
                     okBtnName: "본인인증",
                     ok: function(){         
-                        // window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                        // document.form_chk.action = result.data.niceAntionUrl;
-                        // document.form_chk.m.value = result.data.m;
-                        // document.form_chk.EncodeData.value = result.data.sEncData;
-                        // document.form_chk.auth_type.value = result.data.auth_type;
-                        // document.form_chk.param_r1.value = result.data.param_r1;
-                        // document.form_chk.param_r2.value = result.data.param_r2;
-                        // document.form_chk.param_r3.value = result.data.param_r3;
-                        // document.form_chk.target = "popupChk";
-                        // document.form_chk.submit();
+                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                        document.form_chk.action = result.data.niceAntionUrl;
+                        document.form_chk.m.value = result.data.m;
+                        document.form_chk.EncodeData.value = result.data.sEncData;
+                        document.form_chk.auth_type.value = result.data.auth_type;
+                        document.form_chk.param_r1.value = result.data.param_r1;
+                        document.form_chk.param_r2.value = result.data.param_r2;
+                        document.form_chk.param_r3.value = result.data.param_r3;
+                        document.form_chk.target = "popupChk";
+                        document.form_chk.submit();
 
-                        editPaymentInfomation();        
+                        // editPaymentInfomation();        
                     }
                 });
             }
@@ -1743,7 +1743,7 @@
             }
         });    
     }
-    //취소/반품 신청을 위한 데이터 요정...
+    //취소/반품 신청을 위한 데이터 요정...후 팝업 열기
     function getPopOrderData(dataId, calltype){
         console.log("### getPopOrderData [TAB_FLAG]###", TAB_FLAG);
     
@@ -1795,8 +1795,30 @@
                 
                 addPopProdductList(popup, productList, true);
                 
-                $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
-                $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered"){
+                    for(var idx in PRICE_INFO_DATA){
+                        if(productList[idx].itemCancelAbleYn != "N"){
+                            originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
+                            discountPrices += PRICE_INFO_DATA[idx].discountPrice;
+                            mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
+                            productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
+                        }
+                    }
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllChecked');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setDisenabled', true);
+                    $('#popup-cancel').on('change.disabled', '.ui_all_checkbox input[type=checkbox]',function(e){
+                        e.preventDefault();
+                        
+                        $(this).prop('checked', true);
+                    });
+                } else{
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setDisenabled', false);
+                    $('#popup-cancel').off('change.disabled');
+                }
+                
 
                 $('#popup-cancel').find('#cancelReason option').prop('selected', false);
                 $('#popup-cancel').find('#cancelReason option').eq(0).prop('selected', true);
