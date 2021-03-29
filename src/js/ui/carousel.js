@@ -1883,8 +1883,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opacity: 1
             });
 
-            self.$slides.show(); // 210327 추가
-
+            self.$slideTrack.children('.' + _V.SLIDE).show(); // 210327 추가
             self.$slider.removeClass(_V.LOADING);
 
             self.initUI();
