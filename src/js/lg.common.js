@@ -1241,13 +1241,13 @@ var isApp = function(){
                                 result.data.success = "N";
                             }
                         } else {
-                        //     if(result.message) {
-                        //         lgkorUI.alert("", {
-                        //             title: result.message
-                        //         });
-                        //         //result.message = null;
-                        //     }
-                        //result.data = {"success" : "N"};
+                            //     if(result.message) {
+                            //         lgkorUI.alert("", {
+                            //             title: result.message
+                            //         });
+                            //         //result.message = null;
+                            //     }
+                            //result.data = {"success" : "N"};
                             if(!data.success && !(typeof(data.success) === "boolean")) {
                                 result.data.success = "N";
                             }
