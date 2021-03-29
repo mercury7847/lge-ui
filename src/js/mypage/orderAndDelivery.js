@@ -1435,7 +1435,7 @@
                         cancelBtnName: "취소",
                         okBtnName: "본인인증",
                         ok: function(){         
-                            window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                            void(window.open("", "popupChk", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                             document.form_chk.action = result.data.niceAntionUrl;
                             document.form_chk.m.value = result.data.m;
                             document.form_chk.EncodeData.value = result.data.sEncData;
@@ -1959,6 +1959,7 @@
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
+        var isQuantity = TAB_FLAG == TAB_FLAG_CARE ? true : false;
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
@@ -1992,7 +1993,7 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:false}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -2113,41 +2114,41 @@
         }
 
         console.log("### " + sendata.callType + " ###", orderList);
-        // lgkorUI.showLoading();
-        // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
-        //     lgkorUI.hideLoading();
+        lgkorUI.showLoading();
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
+            lgkorUI.hideLoading();
 
-        //     popup.vcModal('close');
+            popup.vcModal('close');
 
-        //     if(result.status == "fail"){
-        //         lgkorUI.alert("", {
-        //             title: result.message
-        //         });
-        //     } else{
-        //         if(result.data.success == "N"){
-        //             if(result.data.alert){
-        //                 lgkorUI.alert("", {
-        //                     title: result.data.alert.title
-        //                 });
-        //             } else{
-        //                 lgkorUI.alert("", {
-        //                     title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
-        //                 });
-        //             }
-        //         } else{
-        //             if(PAGE_TYPE == PAGE_TYPE_LIST){
-        //                 var box = $('.box[data-id=' + dataId + ']');
-        //                 box.find('.orderCancel-btn, .requestOrder-btn').remove();
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                });
+            } else{
+                if(result.data.success == "N"){
+                    if(result.data.alert){
+                        lgkorUI.alert("", {
+                            title: result.data.alert.title
+                        });
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
+                        });
+                    }
+                } else{
+                    if(PAGE_TYPE == PAGE_TYPE_LIST){
+                        var box = $('.box[data-id=' + dataId + ']');
+                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
     
-        //                 var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
-        //                 for(var idx in matchIds){
-        //                     var block = box.find('.tbody .row').eq(matchIds[idx]);
-        //                     block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
-        //                 }
-        //             } else reloadOrderInquiry();
-        //         }
-        //     }
-        // });
+                        var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
+                        for(var idx in matchIds){
+                            var block = box.find('.tbody .row').eq(matchIds[idx]);
+                            block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
+                        }
+                    } else reloadOrderInquiry();
+                }
+            }
+        });
     }
 
     //영수증 발급내역...

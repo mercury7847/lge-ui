@@ -1128,7 +1128,8 @@
                 };
 
                 //제휴카드 할인 드롭다운 선택
-                self.$pdpInfo.on('click','div.option-contents div.ui_dropdown_list li a', function(e){
+                //div.option-contents
+                self.$pdpInfo.on('click','div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
                     var $dropDown = $this.parents('.ui_dropdown');
@@ -1171,7 +1172,8 @@
                     }
                 });
 
-                var cardDropdown = self.$pdpInfo.find('div.option-contents div.ui_dropdown_list');
+                //div.option-contents
+                var cardDropdown = self.$pdpInfo.find('div.ui_dropdown_list');
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click');
@@ -1816,13 +1818,13 @@
                                     //$('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
                                     //$('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
                                         lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                            console.log(result);
+                                            //console.log(result);
                                         });
                                     //});
                                     //$('#careRequireBuyPopup').vcModal();
                                 } else {
                                     lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                        console.log(result);
+                                        //console.log(result);
                                     });
                                 }
                             }
@@ -1834,7 +1836,7 @@
                         //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                                console.log(result);
+                                //console.log(result);
                                 var data = result.data;
                                 var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
                                 if(obsDirectPurchaseUrl){

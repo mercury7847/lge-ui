@@ -286,6 +286,27 @@
             max-width: 100%;
             padding: 0;
         }
+
+        &.finish {
+            position: relative;
+            &:after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 40px;
+                left: 40px;
+                z-index: 10;
+                background-color: $color-default;
+                opacity: .7;
+                content: '';
+            }
+            @include mobile {
+                &:after {
+                    right: 0;
+                    left: 0;
+                }
+            }
+        }
     }
 
     .ev-detail-category {
