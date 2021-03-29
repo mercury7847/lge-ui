@@ -1,6 +1,7 @@
 (function() {
     var validation;
     var addressFinder;
+    var authFlag = lgkorUI.isLogin;
 
     var modalInit = {
         el : {
@@ -46,8 +47,7 @@
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
-            self.$stepModel = self.$cont.find('#stepModel');
-            self.$aircareBox = self.$cont.find('#aircareBox');
+            self.$stepInput = self.$cont.find('#stepInput');
             self.$aircareListWrap = self.$cont.find('#aircareList');
             self.$aircareList = self.$aircareListWrap.find('.rdo-list');
             
@@ -56,11 +56,12 @@
             self.isModelCheck = false;
             self.isSerialCheck = false;
 
-            self.modelCheckUrl = self.$stepModel.data('modelCheckUrl');
-            self.serialCheckUrl = self.$stepModel.data('serialCheckUrl');
+            self.modelCheckUrl = self.$stepInput.data('modelCheckUrl');
+            self.serialCheckUrl = self.$stepInput.data('serialCheckUrl');
 
             var register = {
                 privcyCheck: {
+                    required: true,
                     msgTarget: '.err-block'
                 },
                 productFamily: {
@@ -82,19 +83,6 @@
                     msgTarget: '.err-block',
                     errorMsg: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
                     patternMsg: '올바른 제조번호를 입력해 주세요.'
-                },
-                userName: {
-                    required: true,
-                    maxLength: 30,
-                    pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
-                    msgTarget: '.err-block',
-                    errorMsg: '이름을 입력해주세요.',
-                    patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
-                },
-                phoneNo: {
-                    required: true,
-                    pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                    msgTarget: '.err-block'
                 },
                 zipcode: {
                     required: true,
@@ -146,18 +134,21 @@
                 }
             };
 
-            
-
-            vcui.require(['ui/validation'], function () {
+            vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 addressFinder = new AddressFind();
                 authManager = new AuthManager(authOptions);
 
                 self.bindEvent();
 
-                self.$cont.commonModel({
-                    register: register
-                });
+                if (authFlag) {
+                    self.$cont.vcSearchModel({onlyMyModel:true});
+                    self.$cont.on('complete', function() {
+                        $('html,body').stop().animate({
+                            scrollTop: $('.cont-wrap').offset().top
+                        });
+                    });
+                }
             });
         },
 
@@ -182,13 +173,13 @@
                 if (data.resultFlag == 'Y') {
                     self.$submitForm.submit();
                 } else {
+                    lgkorUI.hideLoading();
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                     }
                 }
-                lgkorUI.hideLoading();
             }, 'POST');
         },
 
@@ -289,8 +280,6 @@
                     self.$cont.find('#zipCode').val(data.zonecode);
                     self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
-
-                    self.$cont.find('.btm-more.both .chk-wrap').show();
                 }); 
             });
 
@@ -315,6 +304,15 @@
                             }
                         });
                         return false;
+                    } else if (!authFlag) {
+                        lgkorUI.alert('', {
+                            title:'휴대전화 인증이 필요합니다.',
+                            okBtnName: '확인',
+                            ok: function() {
+                                $('.btn-open').focus();
+                            }
+                        });
+                        return false;
                     }
 
                     lgkorUI.confirm('', {
@@ -327,6 +325,19 @@
                     });       
                 }
             });
+
+            $('.btn-open, #userName, #phoneNo').on('click', function() {
+                var result = validation.validate(['privcyCheck']);
+
+                if (!authFlag && result.success) {
+                    authManager.open(function() {
+                        if ($('#userName').val()) {
+                            $('#authName').val($('#userName').val()).prop('readonly', true);
+                            $('#authPhoneNo').val($('#phoneNo').val()).prop('readonly', true);
+                        }
+                    });
+                }
+            });
         
             // 인증문자 보내기
             self.$authPopup.find('.btn-send').on('click', function() {
@@ -335,7 +346,9 @@
 
             // 인증 완료 하기
             self.$authPopup.find('.btn-auth').on('click', function() {
-                authManager.confirm('.btn-open');
+                authManager.confirm('.btn-open', function(success, result) {
+                    authFlag = success;
+                });
             });
         }
     }

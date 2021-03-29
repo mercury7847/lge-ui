@@ -690,10 +690,12 @@
 
             $prodListContainer.find('> ul.inner > li.item').eq(blockID).find('.price-wrap .price').text("월 " + result.data["monthPrice"] + "원");
 
-            var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
-            setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
-            setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
-            setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+            if(sendata.tabID == 0){
+                var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+            }
         });
     }
     function setCliblingData(selector, list, selectId){

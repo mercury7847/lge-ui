@@ -350,7 +350,7 @@
         lgkorUI.showLoading();
 
         var sendata = userInfoValidation.getAllValues();
-        sendata.confirmType = f;
+        sendata.confirmType = MODE_USER;
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){

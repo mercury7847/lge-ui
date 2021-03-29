@@ -102,11 +102,11 @@
                                 '{{/if}}'+
                                 '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
-                            '{{#if listData.contDtlType != "C09"}}'+
+                            //'{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
                                 '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
                             '</p>'+
-                            '{{/if}}'+
+                            //'{{/if}}'+
                         '</div>'+
                     '</div>'+
                     '<div class="col col2">'+
@@ -1424,26 +1424,32 @@
         var sendata = {confirmType: "PAYMENT"};
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
-            if(lgkorUI.stringToBool(result.data.success)){
-                lgkorUI.confirm("납부정보 변경을 위해 고객님의 본인인증이 필요합니다. 진행하시겠습니까?", {
-                    title: "납부정보 변경",
-                    cancelBtnName: "취소",
-                    okBtnName: "본인인증",
-                    ok: function(){         
-                        window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                        document.form_chk.action = result.data.niceAntionUrl;
-                        document.form_chk.m.value = result.data.m;
-                        document.form_chk.EncodeData.value = result.data.sEncData;
-                        document.form_chk.auth_type.value = result.data.auth_type;
-                        document.form_chk.param_r1.value = result.data.param_r1;
-                        document.form_chk.param_r2.value = result.data.param_r2;
-                        document.form_chk.param_r3.value = result.data.param_r3;
-                        document.form_chk.target = "popupChk";
-                        document.form_chk.submit();
-
-                        // editPaymentInfomation();        
-                    }
-                });
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                })
+            } else{
+                if(lgkorUI.stringToBool(result.data.success)){
+                    lgkorUI.confirm("납부정보 변경을 위해 고객님의 본인인증이 필요합니다. 진행하시겠습니까?", {
+                        title: "납부정보 변경",
+                        cancelBtnName: "취소",
+                        okBtnName: "본인인증",
+                        ok: function(){         
+                            window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                            document.form_chk.action = result.data.niceAntionUrl;
+                            document.form_chk.m.value = result.data.m;
+                            document.form_chk.EncodeData.value = result.data.sEncData;
+                            document.form_chk.auth_type.value = result.data.auth_type;
+                            document.form_chk.param_r1.value = result.data.param_r1;
+                            document.form_chk.param_r2.value = result.data.param_r2;
+                            document.form_chk.param_r3.value = result.data.param_r3;
+                            document.form_chk.target = "popupChk";
+                            document.form_chk.submit();
+    
+                            // editPaymentInfomation();        
+                        }
+                    });
+                }
             }
         });
     }
@@ -1700,22 +1706,28 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
             console.log("### setOrderRequest complete", result);
             
-            if(result.data.obsDirectPurchaseUrl){
-                location.href = result.data.obsDirectPurchaseUrl;
-
-                return;
-            }
-//
-            if(result.data.success == "Y"){
-                var box = $('.box[data-id=' + dataId + ']');
-                var prodbox = box.find('.tbody .row .col-table[data-prod-id=' + prodId + ']');
-                console.log(box, prodbox)
-                prodbox.find('.col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>주문접수</p><p class="desc">제품 주문은 자동으로 진행됩니다.</p>');
-            } else{
+            if(result.status == "fail"){
                 lgkorUI.alert("", {
-                    title: result.data.alert.title
-                });
-            }            
+                    title: result.message
+                })
+            } else{
+                if(result.data.obsDirectPurchaseUrl){
+                    location.href = result.data.obsDirectPurchaseUrl;
+    
+                    return;
+                }
+    //
+                if(result.data.success == "Y"){
+                    var box = $('.box[data-id=' + dataId + ']');
+                    var prodbox = box.find('.tbody .row .col-table[data-prod-id=' + prodId + ']');
+                    console.log(box, prodbox)
+                    prodbox.find('.col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>주문접수</p><p class="desc">제품 주문은 자동으로 진행됩니다.</p>');
+                } else{
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                }  
+            }          
         });   
     }
 
@@ -1733,18 +1745,24 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### sendBankConfirm complete", result);
 
-            lgkorUI.alert("",{
-                title: result.data.alert.title
-            });
-
-            if(result.data.success == "Y"){
-                popBankConfirm = true;
-                popBankInfo = {
-                    paymentBankNumber: sendata.paymentBankNumber,
-                    paymentBank: sendata.paymentBank
-                }
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                })
             } else{
-                popBankConfirm = false;
+                lgkorUI.alert("",{
+                    title: result.data.alert.title
+                });
+    
+                if(result.data.success == "Y"){
+                    popBankConfirm = true;
+                    popBankInfo = {
+                        paymentBankNumber: sendata.paymentBankNumber,
+                        paymentBank: sendata.paymentBank
+                    }
+                } else{
+                    popBankConfirm = false;
+                }
             }
         });    
     }
@@ -1783,6 +1801,14 @@
             console.log("### getPopOrderData complete", result);
             lgkorUI.hideLoading();
 
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                });
+
+                return;
+            }
+            
             if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) result.data.listData = [result.data.listData];
 
             PRICE_INFO_DATA = [];
@@ -2083,28 +2109,34 @@
             lgkorUI.hideLoading();
 
             popup.vcModal('close');
-            
-            if(result.data.success == "N"){
-                if(result.data.alert){
-                    lgkorUI.alert("", {
-                        title: result.data.alert.title
-                    });
-                } else{
-                    lgkorUI.alert("", {
-                        title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
-                    });
-                }
-            } else{
-                if(PAGE_TYPE == PAGE_TYPE_LIST){
-                    var box = $('.box[data-id=' + dataId + ']');
-                    box.find('.orderCancel-btn, .requestOrder-btn').remove();
 
-                    var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
-                    for(var idx in matchIds){
-                        var block = box.find('.tbody .row').eq(matchIds[idx]);
-                        block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                });
+            } else{
+                if(result.data.success == "N"){
+                    if(result.data.alert){
+                        lgkorUI.alert("", {
+                            title: result.data.alert.title
+                        });
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
+                        });
                     }
-                } else reloadOrderInquiry();
+                } else{
+                    if(PAGE_TYPE == PAGE_TYPE_LIST){
+                        var box = $('.box[data-id=' + dataId + ']');
+                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
+    
+                        var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
+                        for(var idx in matchIds){
+                            var block = box.find('.tbody .row').eq(matchIds[idx]);
+                            block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
+                        }
+                    } else reloadOrderInquiry();
+                }
             }
         });
     }
@@ -2165,12 +2197,18 @@
         console.log("### setProductStatus ###", sendata);
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
-            if(result.data.success == "N"){
+            if(result.status == "fail"){
                 lgkorUI.alert("", {
-                    title: result.data.alert.title
-                });
+                    title: result.message
+                })
             } else{
-                location.href = pdpUrl;
+                if(result.data.success == "N"){
+                    lgkorUI.alert("", {
+                        title: result.data.alert.title
+                    });
+                } else{
+                    location.href = pdpUrl;
+                }
             }
         });
     }
