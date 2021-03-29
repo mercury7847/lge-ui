@@ -106,11 +106,9 @@
         var firstSpeling = sendata.sendOrderNumber.substr(0,1).toUpperCase(); 
         var ajaxUrl = firstSpeling == "N" ? SUPPLY_CONFIRM_URL : SUBMIT_CONFIRM_URL;
 
-        console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, sendata, function(result){
             if(result.data.success == "Y"){
                 lgkorUI.setHiddenInputData(sendata);
-                console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
 
                 $('#noneMemberForm').attr('action', result.data.sendUrl);
 

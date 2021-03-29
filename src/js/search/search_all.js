@@ -215,6 +215,7 @@
         var search = {
             init: function() {
                 var self = this;
+                self.uniqId = vcui.getUniqId(8);
                 
                 //vcui.require(['ui/tab'], function () {
                     self.setting();
@@ -238,6 +239,12 @@
                             self.sendSearchPage(tab.attr('href'),value,force,null,curation);
                         }
                     });
+
+                    var hash = location.hash.replace("#","");
+                    var savedData = lgkorUI.getStorage(hash);
+                    if(savedData && savedData.search) {
+                        if(savedData.href) self.scrollHref = savedData.href;
+                    }
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
@@ -507,6 +514,14 @@
                 //검색 이동 로그 쌓기
                 $('ul.result-list').on('click', 'a', function(e){
                     self.sendLog(this);
+                    //리스트 아이템 이동후 back했을 경우 기억했다가 이동하기 위함
+                    var href = $(this).attr('href');
+                    if(href){
+                        //extend
+                        var scrollTop = $(document).scrollTop();
+                        lgkorUI.setStorage(self.uniqId, {"href":scrollTop}, true);
+                        location.hash = self.uniqId;
+                    }
                 });
 
                 //스크롤 이벤트
@@ -973,6 +988,11 @@
 
                     var $selectTab = self.getTabItembySelected();
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
+
+                    if(self.scrollHref) {
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
+                    }
                 });
             },
 
