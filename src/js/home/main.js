@@ -300,9 +300,13 @@ $(function () {
                     return false;
                 }
 
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                speedTime = Math.max(0,speedTime);
+
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
-                }, speed, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
+                }, speedTime, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
+
                     canScroll = true
                     currentPage = idx;                        
                     $('html').removeClass('sceneMoving');
@@ -593,12 +597,19 @@ $(function () {
             $contentWrap.css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
 
+            // console.log(idx);
+
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
+
+                console.log(currentPage);
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+
+                    console.log(currentPage);
+
                     moveScene(currentPage,0);
                 }, 100);
             }
@@ -614,13 +625,10 @@ $(function () {
             render();
             $('header').find('.header-bottom').addClass('app-btm');
 
-            console.log(isApplication);
-
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
                 render();
-                console.log(e);
             });
             $window.trigger('resizeend');
             // 앱 대응시 주석처리 end
