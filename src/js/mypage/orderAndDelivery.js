@@ -102,11 +102,11 @@
                                 '{{/if}}'+
                                 '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
-                            '{{#if listData.contDtlType != "C09"}}'+
+                            //'{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
                                 '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
                             '</p>'+
-                            '{{/if}}'+
+                            //'{{/if}}'+
                         '</div>'+
                     '</div>'+
                     '<div class="col col2">'+
