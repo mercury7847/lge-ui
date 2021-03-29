@@ -3,63 +3,84 @@
         if(!document.querySelector('.KRC0020')) return false;
 
     	$('.KRC0020').buildCommonUI();
-        
-        var KRC0020 = {
-            init: function() {
-                var self = this;
 
-                self.setting();
-                self.bindEvents();
-            },
+		$('.KRC0020').each(function(){
 
-            setting: function() {
-				var self = this;
-				self.isDragging = false;
-				self.$obj = $('.KRC0020');
-				self.$carousel = self.$obj.find('.ui_carousel_slider');
-				self.$dots = $('#dots');
+			var root = this;
 
-				vcui.require(['ui/carousel'], function () {
-					self.$carousel.vcCarousel({
-						infinite: false,
-						responsive: [
-						{
-							breakpoint: 768,
-							settings: {
-								dots: true,
-								slidesToShow: 3,
-								slidesToScroll: 3,
-								swipeToSlide: false,
-								prevArrow:'.btn-arrow.prev',
-            					nextArrow:'.btn-arrow.next',
-							}
-						},
-						{
-							breakpoint: 999999,
-							settings: {
-								dots: false,
-								slidesToShow: 6,
-								slidesToScroll: 1,
-								swipeToSlide: true,
-							}
-						}]
+			var KRC0020 = {
+				init: function() {
+					var self = this;	
+					self.setting();
+					self.bindEvents();
+				},
+	
+				setting: function() {
+					var self = this;
+					self.isDragging = false;
+					self.$obj = $(root);
+					var txtType = $(root).filter('.no-img').length > 0 ? true : false;
+
+					var setttingOpt = {
+						dots: true,
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						swipeToSlide: false,
+						prevArrow:'.btn-arrow.prev',
+						nextArrow:'.btn-arrow.next',
+					};
+					if(txtType){
+	
+						setttingOpt = {
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							swipeToSlide: false,
+							prevArrow:'.btn-arrow.prev',
+							nextArrow:'.btn-arrow.next',
+						}
+					}
+					
+	
+					self.$carousel = self.$obj.find('.ui_carousel_slider');
+	
+					vcui.require(['ui/carousel'], function () {
+
+						if(txtType){
+
+							self.$carousel.on('carouselinit carouselafterchange', function(e,data,crrentIdx){
+								var $target = self.$carousel.find('.slider-nav .ui_carousel_slide a');	
+								if($target.length > 0){
+									$target.eq(crrentIdx).trigger('click');	
+								}								
+							});
+						}
+
+
+						self.$carousel.vcCarousel({
+							infinite: false,
+							responsive: [
+							{
+								breakpoint: 768,
+								settings: setttingOpt
+							},
+							{
+								breakpoint: 999999,
+								settings: {
+									dots: false,
+									slidesToShow: 6,
+									slidesToScroll: 1,
+									swipeToSlide: true,
+								}
+							}]
+						});
 					});
-				});
+	
+				},
 
-            },
+				selectIndex:function(e){
 
-            bindEvents: function() {
-				var self = this;
-				
-				self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
-					$(this).addClass('hover');
-				}).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
-					$(this).removeClass('hover');
-				});
-
-				self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', function(e){
 					e.preventDefault();
-
 					var $this = $(this).closest('.ui_carousel_slide');
 					var thisIndex = $this.index();
 					$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
@@ -68,13 +89,30 @@
 					$(this).parents('.KRC0020').attr('data-index',thisIndex);
 					$(this).parents('.KRC0020').find('.slider-for .group.active').removeClass('active');
 					$(this).parents('.KRC0020').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
-				});
 
-			}
-			
-        };
+				},
+	
+				bindEvents: function() {
+					var self = this;
+					
+					self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
+						$(this).addClass('hover');
+					}).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
+						$(this).removeClass('hover');
+					});
+	
+					self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', self.selectIndex);
+	
+				}
+				
+			};
+	
+			KRC0020.init();
 
-        KRC0020.init();
+
+		})
+        
+        
     });
 })();
 
