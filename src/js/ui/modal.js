@@ -80,7 +80,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(false);
+                lgkorUI.appIsLayerPopup(false);
                 
             }
         },
@@ -109,7 +109,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(true);
+                lgkorUI.appIsLayerPopup(true);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -445,9 +445,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
 
-                // 앱 레이어팝업구분
-                lgkorUI.appIsLayerPopup(true);
-
 
                 // 버튼
                 /**************if (me.options.opener) {
@@ -535,8 +532,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
                 self.destroy();
 
-                // 앱 레이어팝업구분
-                lgkorUI.appIsLayerPopup(false);
             });
             
 
