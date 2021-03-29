@@ -575,7 +575,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 display: 'block',
                 position: 'absolute',
                 //backgroundColor: '#ffffff',
-                outline: 'none',
+                // outline: 'none',
                 minHeight: scrollHeight,
                 backgroundClip: 'padding-box' //,
                 //top: top = isOverHeight ? '0%' : '50%'//,
