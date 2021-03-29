@@ -73,8 +73,6 @@
         var paymentID = $('#contractInfo').find('option:selected').val();
         var period = idx > -1 ? $('#usePeriod').find('option').eq(idx).val() : "";
 
-        console.log(period)
-        
         var sendata = {
             paymentID: paymentID,
             period: period
