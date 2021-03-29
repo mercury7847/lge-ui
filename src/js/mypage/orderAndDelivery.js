@@ -1236,6 +1236,8 @@
         var orderNumber = $('.contents.mypage').data('orderNumber');
         var requestNo = $('.contents.mypage').data('requestNo');
 
+        var orderNumberList = $('.contents.mypage').data('orderNumberList');
+
         var sendata = {
             startDate: START_DATE,
             endDate: END_DATE,
@@ -1243,6 +1245,8 @@
             orderNumber: orderNumber,
             requestNo: requestNo,
             tabFlag: TAB_FLAG,
+
+            orderNumberList: JSON.stringify(orderNumberList),
 
             sendInquiryType: memInfos.sendInquiryType,
             sendOrderNumber: memInfos.sendOrderNumber,
@@ -1306,7 +1310,8 @@
 
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+                        var rowTotal = list[idx].productList[cdx]["rowTotal"];
+                        list[idx].productList[cdx]["addCommaProdPrice"] = rowTotal ? vcui.number.addComma(rowTotal) : "0";
                     }
 
                     CARE_LIST.push(list[idx]);

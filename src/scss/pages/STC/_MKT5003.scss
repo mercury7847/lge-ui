@@ -40,19 +40,25 @@
     .tit-wrap {
         position:absolute;
         top:50%;
-        left:19.4792vw;
-        transform:translateY(-50%);
-        @include mobile {
-            top:44px;
+        left:50%;
+        transform:translate(-573px,-50%);
+        @media screen and (max-width: 1146px) {
             left:40px;
-            right:40px;
+            transform:translate(0,-50%);
+        }
+        @include mobile {
+            top:48px;
+            right:20px;
+            left: 20px;
             transform:translateY(0);
+        }
+        @include pc {
+            color: $color-white;
         }
         .tit {
             font-size:48px;
             line-height:64px;
             font-weight:700;
-            color: #000;
             @include mobile {
                 font-size:26px;
                 line-height:35px;
@@ -60,11 +66,10 @@
         }
         .txt {
             display:block;
-            padding-top:8px;
+            padding-top:20px;
             font-size:24px;
             line-height:34px;
             font-weight:700;
-            color: #000;
             @include mobile {
                 padding-top:6px;
                 font-size:16px;
@@ -72,9 +77,22 @@
             }
         }
         .btn-area {
-            margin-top: 24px;
+            margin-top: 32px;
             .btn {
-                background-color: transparent;
+                padding: 7px 15px;
+                @include font-small;
+                @include pc {
+                    border-color: $color-white !important;
+                    color: $color-white;
+                }
+                @include mobile {
+                    padding:10px 19px;
+                }
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary !important;
+                }
             }
         }
     }
@@ -105,44 +123,49 @@
 
 .lgpay-content {
     width: 100%;
-    max-width: calc(1146px + 80px);
-    margin: 64px auto;
-    padding: 0 40px;
+    margin-top: 80px;
     @include mobile {
-        max-width: 100%;
-        margin:60px auto;
-        padding: 0 16px;
+        margin-top: 48px;
+    }
+    .lgpay-intro-wrap {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
+            }
     }
     .lgpay-introdution {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 80px;
+        margin-bottom: 120px;
         @include mobile {
             display: block;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             text-align: center;
         }
         .lgpay-text {
             width: 436px;
             padding-top: 56px;
             padding-right: 40px;
-            @include mobile {
-                width: 100%;
-                padding: 0 20px 32px;
-            }
+
             .num {
-                display: block;
+                display: none;
                 margin-bottom: 12px;
                 font-weight: 700;
                 @include font-large-2;
                 color: $color-gray-1;
             }
             .tit {
-                @include font-large-2;
+                font-weight: 700;
+                @include font(40px,56px);
+                word-break: keep-all;
             }
             .desc {
-                margin-top: 12px;
-                @include font-medium;
+                margin-top: 16px;
+                @include font($font-medium,26px);
+                word-break: keep-all;
                 .txt {
                     display: block;
                     margin-top: 16px;
@@ -151,15 +174,28 @@
                 }
             }
             .btn-area {
-                margin-top: 24px;
-                @include mobile {
+                margin-top: 32px;
+            }
+            @include mobile {
+                width: 100%;
+                padding: 0 16px 32px;
+                .tit {
+                    @include font(27px,38px);
+                }
+                .desc {
+                    margin-top: 12px;
+                    @include font(15px,23px);
+                }
+                .btn-area {
                     margin-top: 24px;
-                    .btn {
-                        width: 100%;
+                }
+                .bullet-list {
+                    margin-top: 8px;
+                    .b-txt {
+                        display: inline-block;
                     }
                 }
             }
-            
         }
         .lgpay-visual {
             max-width: 678px;
@@ -194,85 +230,155 @@
                 order: 1;
             }
         }
-        @include mobile {
-            .bullet-list {
-                margin-top: 16px;
-                .b-txt {
-                    display: inline-block;
-                }
-            }
-        }
     }
 }
 .lgpay-service {
     margin-bottom: 100px;
+    padding: 120px 0;
+    background-color: $color-bg;
     @include mobile {
         margin: 60px 0;
+        padding: 60px 0;
     }
-    ul {
-        @include clearfix;
-        margin: 0 -12px;
-        @include mobile {
-            margin: 0;
-        }
-        li {
-            position: relative;
-            float: left;
-            width: 50%;
-            //height: 247px;
+    .inner {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+        .service-title {
             margin-bottom: 64px;
-            padding: 0 12px;
-            //padding: 30px 28px 16px;
+            @include font(40px,56px);
             text-align: center;
-            @include mobile {
-                float: none;
-                width: 100%;
-                margin-bottom: 16px;
-                padding: 0;
+        }
+        @include mobile {
+            max-width: 100%;
+            padding: 0 16px;
+            .service-title {
+                margin-bottom: 32px;
+                @include font(27px,38px);
             }
-            .img-area {
-                margin-bottom: 16px;
-                img {
+        }
+        > ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -24px 0 0 -24px;
+            > li {
+                position: relative;
+                width: 50%;
+                padding: 24px 0 0 24px;
+                &:nth-child(1) {
                     width: 100%;
+                    .img-area {
+                        max-width: 678px;
+                    }
+                    .text-area {
+                        align-self: center;
+                    }
                 }
             }
+            @include mobile {
+                margin: -12px 0 0;
+                > li {
+                    width: 100%;
+                    padding: 12px 0 0;
+                }
+            }
+        }
+    }
+    .box {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        height: 100%;
+        border-radius: 8px;
+        background-color: $color-white;
+    }
+    .img-area {
+        align-self: flex-end;
+        max-width: 300px;
+        img {
+            width: 100%;
+            border-radius: 0 8px 8px 0;
+        }
+    }
+    .text-area {
+        padding: 48px 40px 48px 48px;
+        .tit {
+            margin-bottom: 16px;
+            font-weight: 700;
+            @include font-large-2;
+        }
+        .desc {
+            @include font-medium;
+        }
+        .bullet-list {
+            margin-top: 8px;
+        }
+    }
+    @include mobile {
+        .box {
+            flex-direction: column-reverse;
+        }
+        .img-area {
+            max-width: 100%;
+            img {
+                border-radius: 0 0 8px 8px;
+            }
+        }
+        .text-area {
+            padding: 32px 12px 40px;
             .tit {
-                margin-bottom: 12px;
+                margin-bottom: 16px;
                 font-weight: 700;
-                @include font-large;
+                @include font-large-2;
             }
             .desc {
                 @include font-medium;
+            }
+            .bullet-list {
+                margin-top: 8px;
             }
         }
     }
 }
 .btm-link {
-    padding: 120px 0;
+    margin: 80px 0 120px;
+    padding: 48px 0;
     text-align: center;
     @include mobile {
-        padding: 60px 0;
+        margin: 60px 0;
+        padding: 40px 16px;
+    }
+    &:before {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 24px;
+        background: url('/lg5-common/images/STC/lg-pay-logo.png') no-repeat 0 0;
+        background-size: 100%;
+        content: '';
     }
     .tit {
         font-weight: 700;
-        @include font-large;
+        @include font($font-large-2,34px);
+        @include mobile {
+            @include font($font-large-1,28px);
+        }
     }
     .btn-area {
        margin-top: 24px;
     }
 }
-.slide-cont {
-    background: #f4f4fb;
-}
+
 .slide-wrap.carousel-type {
     &.carousel-1 {
         &.lg-pay {
-            max-width: (1146px + 80px);
+            max-width: 1380px;
             margin: 0 auto;
-            
+            background: #f4f4fb;
+
             .indi-wrap {
                 position: absolute;
-                bottom: 48px;
+                bottom: 32px;
                 margin-top: 0;
                 li {
                     padding: 0 4px;
@@ -280,12 +386,13 @@
             }
             @include mobile {
                 max-width: 100%;
-                padding: 32px 0 56px;
+                padding: 45px 0 64px;
                 .indi-wrap {
                     bottom: 32px;
                 }
             }
             .slide-controls {
+                display: none;
                 right: 0;
                 left: 0;
                 transform: translateX(0px);
@@ -313,45 +420,41 @@
                 }
             }
             .slide-content {
-                .slide-track {
-                    height: 455px;
-                    @include mobile {
-                        height: auto;
-                    }
-                }
                 .slide-conts {
                     height: 455px;
                     .inner {
                         display: table;
                         width: 100%;
-                        max-width: (1146px + 80px);
+                        max-width: (1380px + 80px);
+                        height: 100%;
                         margin: 0 auto;
-                        padding: 0 70px;
+                        padding: 0 40px;
                         font-size: 0;
+                        @media screen and (min-width:(1380px + 80px + 1)) {
+                            padding: 0 157px;
+                        }
                     }
                     .slide-info-area {
                         display: table-cell;
                         width: 396px;
-                        padding-top: 95px;
                         //margin-right: 93px;
+                        vertical-align: middle;
                         .boxs {
                             .step {
                                 font-weight: 700;
-                                @include font-large;
+                                @include font-small;
                                 color: $color-gray-1;
                             }
                             .title {
-                                margin: 8px 0 12px;
+                                margin: 2px 0 16px;
                                 font-weight: 700;
-                                @include font-large-2;
+                                @include font($font-large-2,34px);
                             }
                             .desc {
                                 @include font-medium;
-                                small {
-                                    display: block;
-                                    margin-top: 16px;
-                                    color: $color-gray-1;
-                                }
+                            }
+                            .bullet-list {
+                                margin-top: 8px;
                             }
                             .btn-area {
                                 margin-top: 24px;
@@ -361,9 +464,8 @@
                     .visual-area {
                         display: table-cell;
                         width: 560px;
-                        padding-top: 48px;
                         text-align: right;
-                        vertical-align: top;
+                        vertical-align: middle;
                         img {
                             width: 100%;
                             max-width: 560px;
@@ -371,37 +473,46 @@
                     }
 
                     @include mobile {
-                        height: auto;
+                        height: 100%;
+                        margin: 0;
+                        padding-bottom: 14.2%;
                         .inner {
-                            display: block;
+                            //display: flex;
+                            //flex-direction: column;
+                            //justify-content: space-between;
                             max-width: 100%;
-                            padding: 0 20px;
+                            padding: 0 16px;
                         }
                         .slide-info-area {
                             display: block;
                             width: 100%;
+                            min-height: 202px;
                             padding-top: 0;
                             text-align: center;
                             .boxs {
                                 padding: 0 20px;
-                                .btn-area {
-                                    .btn {
-                                        min-width: 100%;
-                                    }
+                                .title {
+                                    margin-bottom: 12px;
+                                    @include font($font-large-1,28px);
                                 }
                             }
                         }
                         .visual-area {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            left: 0;
+                            //align-content: flex-end;
                             display: block;
                             width: 100%;
                             height: auto;
-                            padding-top: 32px;
                             img {
                                 max-width: 100%;
-                                height: auto;
+                                //height: auto;
                             }
                         }
                     }
+
                 }
             }
         }
