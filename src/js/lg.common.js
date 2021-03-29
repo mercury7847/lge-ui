@@ -1238,20 +1238,23 @@ var isApp = function(){
                         var data = result.data;
                         if(data && !Array.isArray(data) && typeof data === 'object') {
                             if(!data.success && !(typeof(data.success) === "boolean")) {
-                                data.success = "N";
-                                result.data = data;
+                                result.data.success = "N";
                             }
-                        }/* else {
-                            if(result.message) {
-                                lgkorUI.alert("", {
-                                    title: result.message
-                                });
-                                result.message = null;
+                        } else {
+                            //     if(result.message) {
+                            //         lgkorUI.alert("", {
+                            //             title: result.message
+                            //         });
+                            //         //result.message = null;
+                            //     }
+                            //result.data = {"success" : "N"};
+                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                                result.data.success = "N";
                             }
-                            result.data = {"success" : "N"};
-                        }*/
+                        }
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
+                        var data = result.data;
                         if(data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
                                 title: data.alert.title
@@ -1271,8 +1274,7 @@ var isApp = function(){
                     var data = result.data;
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
@@ -1281,8 +1283,7 @@ var isApp = function(){
                     //success가 비어 있으면 성공(Y) 라 친다
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     /*
