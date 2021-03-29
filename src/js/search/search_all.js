@@ -36,6 +36,13 @@
                         '</div>' +
                     '</div>' +
                 '</div>' +
+                '{{#if techSpecs && techSpecs.length > 0}}' +
+                    '<div class="spec-info"><ul>' +
+                        '{{#each item in techSpecs}}' +
+                            '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
+                        '{{/each}}' +
+                    '</ul></div>' +
+                '{{/if}}' +
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
