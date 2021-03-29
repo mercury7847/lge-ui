@@ -108,6 +108,7 @@
 
         addressFinder = new AddressFind();
 
+        $('#address-regist-form input[name=telephoneNumber]').attr('type', 'number');
         lgkorUI.addLimitedInputEvent($('#address-regist-form input[name=telephoneNumber]'));
     }
 
@@ -201,8 +202,6 @@
             $('#popup-editAddress').find('input[name=userAddress]').val(data.roadAddress);
             $('#popup-editAddress').find('input[name=detailAddress]').val('').focus();
             $('#popup-editAddress').find('input[name=userAddress]').siblings('.err-block').hide();
-
-
         });
     }
 

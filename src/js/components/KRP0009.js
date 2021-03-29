@@ -21,9 +21,14 @@ $(window).ready(function(){
         var selectIdx;
         var prevIdx;
 
+        var checkHeight = 72;
+
         function init(){
             setting();
             bindEvents();
+
+            //0329 정승우 기본적으로 제일 처음 아이템 1개를 선택해 달라고 해서 작업
+            $items.eq(0).addClass('active');
         }
 
         function setting(){
@@ -122,17 +127,24 @@ $(window).ready(function(){
                     var id = $(item).find('a').attr('href');
                     if($(id).length){
                         var contop = $(id).offset().top;
-                        if(-scrolltop + contop <= $component.height()){
+                        var compheight = checkHeight; /*$component.find('.product-simple-info').height();*/
+                        if(-scrolltop + contop <= compheight/*$component.height()*/){
                             currentIdx = idx;
                         }
                     }
                 });
 
-                if(currentIdx != selectIdx) selectIndex(currentIdx);
+                if(currentIdx == -1 && selectIdx == -1) {
+                    //0329 정승우 기본적으로 제일 처음 아이템 1개를 선택해 달라고 해서 작업
+                    $items.removeClass('active');
+                    $items.eq(0).addClass('active');
+                } else {
+                    if(currentIdx != selectIdx) selectIndex(currentIdx);
+                }
             });
         }
 
-        function selectIndex(idx){            
+        function selectIndex(idx){          
             $items.removeClass('active');
 
             prevIdx = selectIdx;
@@ -157,11 +169,15 @@ $(window).ready(function(){
 
         function scrollMoved(id){
             if($(id).length){
-                var compheight = $component.height();
-
-                var firstId = $items.eq(0).find('a').attr('href');
-                if(id == firstId) compheight = 72;
-
+                var compheight = $items.eq(0).height();
+                if(compheight < checkHeight) {
+                    compheight = checkHeight;
+                } else {
+                    checkHeight = compheight;
+                }
+                //var firstId = $items.eq(0).find('a').attr('href');
+                //if(id == firstId) compheight = 72;
+                
                 var movtop = $(id).offset().top - compheight+2;
     
                 $('html, body').stop().animate({scrollTop:movtop}, 200);

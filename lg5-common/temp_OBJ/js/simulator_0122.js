@@ -2419,9 +2419,11 @@ var go_shop_model = "";
                             link = 'onclick="showShopLinkAlert();"';
                         } else {
                             if (configData.object[i].id == 'refrigerator') {
-                                link = 'onclick="showSelectVolume();"';
+                                //link = 'onclick="showSelectVolume();"';
+                                link = 'data-href="#objModal2" data-control="modal"';
                             } else if (configData.object[i].id == 'refrigerator_convertible') {
-                                link = 'onclick="showSelectFunction();"';
+                                //link = 'onclick="showSelectFunction();"';
+                                link = 'data-href="#objModal3" data-control="modal"';
                             } else {
                                 go_shop_model = configData.object[i].id;
                                 link = 'onclick="goshop(' + i + ');"';
@@ -2441,6 +2443,9 @@ var go_shop_model = "";
                 if (outputHtml !== '') {
                     document.getElementById('goshoptxt').style.display = '';
                     stageSetting.objetSelectedListArea.innerHTML = outputHtml;
+                    $(".popup-wrap.sns_popup").removeClass("typ2");
+                } else {
+                    $(".popup-wrap.sns_popup").addClass("typ2");
                 }
             }
         },
