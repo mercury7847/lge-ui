@@ -176,9 +176,12 @@ $(function() {
                     return false;
                 }
 
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                speedTime = Math.max(0,speedTime);
+
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
-                }, speed, 'easeInOutQuart',  function() { 
+                }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;     
                     moveStep(step);          
