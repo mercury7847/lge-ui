@@ -7,19 +7,19 @@
     margin:0 auto;
     @include clearfix;
     .cate-wrap {
+        background:#fff;
         //height:102px;
         //padding:45px 0 21px;
-        background:#fff;
         //border-bottom: 8px solid #f4f4f4;
-        @include tablet {
-            min-height: 76px;
-            border-bottom: 1px solid $color-border;
-        }
-        @include mobile {
-            min-height: 65px;
+        //@include tablet {
+            //min-height: 76px;
+            //border-bottom: 1px solid $color-border;
+        //}
+        //@include mobile {
+        //    min-height: 65px;
         //    height: auto;
         //    padding: 24px 0 12px;
-        }
+        //}
         .cate-list {
             position: relative;          
             @include clearfix;
@@ -68,11 +68,11 @@
                 @include tablet {
                     //padding: 0;
                     overflow: hidden;
-                    padding-left: 16px;
+                    padding-left: 32px;
                     border-bottom: 0;
                 }
                 @include mobile {
-                    padding: 9px 0 9px 45px;
+                    padding: 9px 0 9px 32px;
                 }
                 .cate-scroll-wrap {
                     position: relative;
