@@ -349,10 +349,15 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             var self = this;
             var $target = self.$el.find('[name='+ key +']');
+
+            if(typeof value === "boolean"){
+                if($target.length>0) $target.prop('checked', value);
+
+                return;
+            };
+
             var values = (value && value.split(',')) || [];
-
             if($target.length>0){
-
                 $target.prop('checked', false);
 
                 $.each(values, function(index, value){

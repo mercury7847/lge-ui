@@ -1369,7 +1369,15 @@
                 if(monthpayment.cardReqYn == "N") monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
                 else{
                     monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
-                    if(monthpayment.cardCorpName != '') monthpayment.requsetCardInfo += " - " + monthpayment.cardCorpName + " " + monthpayment.cardTypeName;
+                    var suffix = " - ";
+                    if(monthpayment.cardCorpName != ''){
+                        suffix = " ";
+                        monthpayment.requsetCardInfo += " - " + monthpayment.cardCorpName;
+                     }
+                     
+                     if(monthpayment.cardTypeName != ""){
+                         monthpayment.requsetCardInfo += suffix + monthpayment.cardTypeName;                         
+                     }
                 }
 
                 monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
@@ -1959,7 +1967,6 @@
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
-        var isQuantity = TAB_FLAG == TAB_FLAG_CARE ? true : false;
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
@@ -2155,7 +2162,7 @@
     function setReceiptListPop(){
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
-        if(listData[0].cashReceiptAbleYn != "Y") method = "";   
+        if(PAYMENT_DATA.transType == METHOD_BANK && listData[0].cashReceiptAbleYn != "Y") method = "";
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
         $('#popup-receipt-list').find('.sect-wrap').empty().append(header);
 

@@ -1142,8 +1142,15 @@
     //청약신청하기...
     function rentalRequest(){
         var chk = false;
+        //stepAccordion.expand(1, true)
+        var stepperStatus = stepAccordion.getActivate();
+        console.log()
         if(setStep1Validation()){
+            if(stepperStatus.content.length < 2) stepAccordion.expand(1, true);
+
             if(setStep2Validation()){
+                if(stepperStatus.content.length < 3) stepAccordion.expand(2, true);
+
                 if(setStep3Validation()){
                     chk = true;
                 }
