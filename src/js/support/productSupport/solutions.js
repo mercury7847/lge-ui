@@ -143,9 +143,8 @@
                 self.bindEvent();
 
                 if (!self.isPSP) {
-                    self.$cont.commonModel({
-                        register: {},
-                        selected: self.param
+                    vcui.require(['support/common/searchModel.min'], function () {
+                        self.$cont.vcSearchModel({model:self.param});
                     });
                 }
                 
@@ -233,7 +232,7 @@
                     var data = result.data,
                         param = result.param;
                     
-                    self.$cont.commonModel('updateSummary', {
+                    self.$cont.vcSearchModel('updateSummary', {
                         product: [model.categoryNm, model.subCategoryNm, model.modelCode],
                         reset: 'product'
                     });
@@ -247,12 +246,6 @@
                     self.setSolutionsList(data);
                     self.setKeyword(param);
 
-                    self.$myModelArea.hide();  
-                    
-                    self.$cont.commonModel('next', self.$stepInput); 
-                    self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                        self.$selectedModelBar.vcSticky();
-                    });
                     lgkorUI.hideLoading();
                 }, 'POST');
             },
@@ -488,8 +481,6 @@
                 $('#centerFind').hide();
 
                 $('.info-banner').remove();
-
-                self.$cont.commonModel('next', self.$stepModel);
             },
             bindEvent: function() {
                 var self = this;
@@ -501,9 +492,9 @@
                 self.$cont.on('complete', function(e, data) { 
                     var param = {
                         category: data.category,
-                        categoryNm: data.categoryName,
+                        categoryNm: data.categoryNm,
                         subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryName,
+                        subCategoryNm: data.subCategoryNm,
                         modelCode: data.modelCode,
                         productCode: data.productCode,
                         page: data.page || 1
@@ -563,9 +554,9 @@
                     var param = {
                         keywords: data.keywords,
                         category: data.category,
-                        categoryNm: data.categoryName,
+                        categoryNm: data.categoryNm,
                         subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryName,
+                        subCategoryNm: data.subCategoryNm,
                         modelCode: data.modelCode,
                         productCode: data.productCode
                     };

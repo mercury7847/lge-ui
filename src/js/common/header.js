@@ -84,7 +84,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.isLogin = result.data.isLogin;
                 self.$el.find('.login-info').css('display', 'none');
 
-                console.log("### isLogin:", self.isLogin)
+                // console.log("### isLogin:", self.isLogin)
 
                 if(self.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');

@@ -425,7 +425,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
 
             self.invalid = [];
             if ($.inArray(keyCode, self.byPassKeys) === -1 || keyCode === 46 || keyCode === 8) {
-                console.log(self.el, self.$el)
+                // console.log(self.el, self.$el)
                 var caretPos = core.dom.getCaretPos(self.$el).begin,
                     currVal = self.$el.val(),
                     currValL = currVal.length,
@@ -584,7 +584,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
         destroy: function destroy() {
             clearInterval(this.watchTimer);
             this.supr();
-            console.log('formatter destroy');
+            // console.log('formatter destroy');
         }
     });
 
