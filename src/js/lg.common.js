@@ -1252,6 +1252,7 @@ var isApp = function(){
                         }*/
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
+                        var data = result.data;
                         if(data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
                                 title: data.alert.title
