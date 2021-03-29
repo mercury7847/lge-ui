@@ -4,163 +4,163 @@
       {
         "commonCodeName": "산업은행",
         "sortNo": 1,
-        "commonCodeId": "02"
+        "commonCodeId": "02^002"
       },
       {
         "commonCodeName": "기업은행",
         "sortNo": 2,
-        "commonCodeId": "03"
+        "commonCodeId": "03^003"
       },
       {
         "commonCodeName": "국민은행",
         "sortNo": 3,
-        "commonCodeId": "04"
+        "commonCodeId": "04^004"
       },
       {
         "commonCodeName": "수협중앙",
         "sortNo": 5,
-        "commonCodeId": "07"
+        "commonCodeId": "07^007"
       },
       {
         "commonCodeName": "농협중앙회",
         "sortNo": 6,
-        "commonCodeId": "11"
+        "commonCodeId": "11^011"
       },
       {
         "commonCodeName": "단위농협",
         "sortNo": 7,
-        "commonCodeId": "12"
+        "commonCodeId": "12^012"
       },
       {
         "commonCodeName": "우리은행",
         "sortNo": 8,
-        "commonCodeId": "20"
+        "commonCodeId": "20^020"
       },
       {
         "commonCodeName": "신한은행",
         "sortNo": 9,
-        "commonCodeId": "21"
+        "commonCodeId": "21^088"
       },
       {
         "commonCodeName": "SC제일",
         "sortNo": 10,
-        "commonCodeId": "23"
+        "commonCodeId": "23^023"
       },
       {
         "commonCodeName": "KEB하나은행(구하나,구외환)",
         "sortNo": 11,
-        "commonCodeId": "25"
+        "commonCodeId": "25^081"
       },
       {
         "commonCodeName": "씨티은행",
         "sortNo": 12,
-        "commonCodeId": "27"
+        "commonCodeId": "27^027"
       },
       {
         "commonCodeName": "대구은행",
         "sortNo": 13,
-        "commonCodeId": "31"
+        "commonCodeId": "31^031"
       },
       {
         "commonCodeName": "부산은행",
         "sortNo": 14,
-        "commonCodeId": "32"
+        "commonCodeId": "32^032"
       },
       {
         "commonCodeName": "광주은행",
         "sortNo": 15,
-        "commonCodeId": "34"
+        "commonCodeId": "34^034"
       },
       {
         "commonCodeName": "제주은행",
         "sortNo": 16,
-        "commonCodeId": "35"
+        "commonCodeId": "35^035"
       },
       {
         "commonCodeName": "전북은행",
         "sortNo": 17,
-        "commonCodeId": "37"
+        "commonCodeId": "37^037"
       },
       {
         "commonCodeName": "경남은행",
         "sortNo": 18,
-        "commonCodeId": "39"
+        "commonCodeId": "39^039"
       },
       {
         "commonCodeName": "마을금고",
         "sortNo": 19,
-        "commonCodeId": "45"
+        "commonCodeId": "45^045"
       },
       {
         "commonCodeName": "신용협동",
         "sortNo": 20,
-        "commonCodeId": "48"
+        "commonCodeId": "48^048"
       },
       {
         "commonCodeName": "상호저축",
         "sortNo": 21,
-        "commonCodeId": "50"
+        "commonCodeId": "50^050"
       },
       {
         "commonCodeName": "HSBC은행",
         "sortNo": 22,
-        "commonCodeId": "54"
+        "commonCodeId": "54^054"
       },
       {
         "commonCodeName": "도이치",
         "sortNo": 23,
-        "commonCodeId": "55"
+        "commonCodeId": "55^055"
       },
       {
         "commonCodeName": "우체국",
         "sortNo": 24,
-        "commonCodeId": "71"
+        "commonCodeId": "71^071"
       },
       {
         "commonCodeName": "K뱅크",
         "sortNo": 25,
-        "commonCodeId": "89"
+        "commonCodeId": "89^089"
       },
       {
         "commonCodeName": "카카오뱅크",
         "sortNo": 26,
-        "commonCodeId": "90"
+        "commonCodeId": "90^090"
       }
     ],
     "listData": [
       {
-        "orderNumber": "000006207",
-        "orderType": "NS",
-        "orderDate": "2021.03.22",
-        "status": "Wait for Authorization",
+        "orderNumber": "000008353",
+        "orderType": "NB",
+        "orderDate": "2021.03.29",
+        "status": "Pending",
         "apiType": "OBS",
         "orderTotal": 2,
         "productList": [
           {
-            "productNameKR": "LG TROMM",
-            "productNameEN": "F18VDP.AKOR",
-            "modelID": "MD08045851",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
-            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productNameKR": "LG 울트라HD 모니터",
+            "productNameEN": "32UN500.BKR",
+            "modelID": "MD08748493",
+            "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
             "orderedQuantity": "1",
-            "itemStatus": "Invoiced",
+            "itemStatus": "Ordered",
             "originalPrice": "14300",
             "discountAmount": "0",
             "rowTotal": 12900,
             "originalTotalPrice": 14300,
             "productPrice": "12900",
             "discountPrice": 1400,
-            "memberShipPoint": "3717",
-            "productTotalPrice": 9183,
+            "memberShipPoint": "175",
+            "productTotalPrice": 12725,
             "specList": [
-              "18kg",
-              "모던 스테인리스"
+              "VA",
+              "80 cm"
             ],
             "orderStatus": {
               "disabled": "",
-              "statusText": "결제 완료",
+              "statusText": "주문 접수",
               "statusClass": "",
-              "statusDate": "배송희망일 2021.03.25",
+              "statusDate": "배송희망일 2021.03.31",
               "deliveryUrl": ""
             },
             "statusButtonList": [
@@ -169,87 +169,78 @@
             "itemCancelAbleYn": ""
           },
           {
-            "productNameKR": "실밥 거름망",
-            "productNameEN": "ADQ72933301",
-            "modelID": "MD08918846",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "orderedQuantity": "2",
-            "itemStatus": "Delivered",
-            "originalPrice": "11500",
+            "productNameKR": "LG TROMM",
+            "productNameEN": "F18VDP.AKOR",
+            "modelID": "MD08045851",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+            "orderedQuantity": "1",
+            "itemStatus": "Ordered",
+            "originalPrice": "14300",
             "discountAmount": "0",
-            "rowTotal": 21800,
-            "originalTotalPrice": 23000,
-            "productPrice": "10900",
-            "discountPrice": 1200,
-            "memberShipPoint": "6283",
-            "productTotalPrice": 15517,
+            "rowTotal": 12900,
+            "originalTotalPrice": 14300,
+            "productPrice": "12900",
+            "discountPrice": 1400,
+            "memberShipPoint": "175",
+            "productTotalPrice": 12725,
             "specList": [
-              "",
-              ""
+              "18kg",
+              "모던 스테인리스"
             ],
             "orderStatus": {
               "disabled": "",
-              "statusText": "배송완료",
+              "statusText": "주문 접수",
               "statusClass": "",
-              "statusDate": "배송희망일 ",
+              "statusDate": "배송희망일 2021.03.31",
               "deliveryUrl": ""
             },
             "statusButtonList": [
-              {
-                "className": "productReview",
-                "buttonName": "제품리뷰"
-              },
-              {
-                "className": "deliveryInquiry",
-                "buttonName": "배송조회"
-              },
-              {
-                "className": "takeBackInner",
-                "buttonName": "반품신청"
-              }
+              
             ],
-            "itemCancelAbleYn": "N"
+            "itemCancelAbleYn": ""
           }
         ],
+        "orderReceiptAbleYn": "N",
         "orderCancelAbleYn": "Y",
-        "orderReturnAbleYn": "Y",
-        "orderReceiptAbleYn": "Y"
+        "orderReturnAbleYn": "N",
+        "bundleCancelYn": "Y"
       }
     ],
     "payment": {
-      "creditCard": "신한",
-      "installment": "0",
-      "installmentName": "0개월",
-      "paymentDate": "2021-03-21 15:00:00",
-      "bankName": "",
-      "bankAccountNo": "",
-      "bankAccountNm": "임현주",
-      "depositExpectedDate": "2021-03-23 15:40:38",
-      "membershipPoint": "10000",
-      "paymentApprovalNumber": "7202103222559831",
-      "originalTotalPrice": "37300",
-      "grandTotal": "24,700",
-      "discount": 2600,
-      "paymentMethodName": "네이버페이",
-      "transType": "NAVER",
-      "paymentType": "42",
-      "paymentTypeName": "네이버페이",
+      "creditCard": "",
+      "installment": "00",
+      "installmentName": "일시불",
+      "paymentDate": "",
+      "bankName": "하나은행",
+      "bankAccountNo": "23493833279937",
+      "bankAccountNm": "마진",
+      "depositExpectedDate": "2021-03-30 23:59:59",
+      "membershipPoint": "350",
+      "paymentApprovalNumber": "7202103292560479",
+      "originalTotalPrice": "28600",
+      "grandTotal": "25,450",
+      "discount": 2800,
+      "orderReceiptAbleYn": "N",
+      "paymentMethodName": "계좌이체 하나은행 23493833279937 LG전자(주)_엘지이닷컴(마진) 2021.03.30 까지 입금",
+      "transType": "BANK",
+      "paymentType": "41",
+      "paymentTypeName": "계좌이체",
       "receiptUrl": ""
     },
     "shipping": {
-      "name": "임현주",
-      "email": "kdy9307@lgcns.com",
-      "street": "서울 구로구 신도림로 78 (신도림동, 신도림3차동아아파트)\n304-1901",
+      "recyclingPickup": "Y",
+      "shippingNoteTxt": " \nㅋㅇㅁㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ",
+      "inspectionVisit": "",
+      "name": "마진",
+      "email": "jjinma@lgcns.com",
+      "street": "서울 금천구 디지털로10길 22  (가산동)\n1층 프로젝트룸 안쪽88888",
       "city": "-",
       "countryId": "KR",
-      "postcode": "08207",
-      "telephone": "01020047593",
-      "telephonenumber": "01020047593",
-      "company": "",
-      "recyclingPickup": "",
-      "shippingNoteTxt": "경비실",
-      "inspectionVisit": ""
+      "postcode": "08513",
+      "telephone": "01026738098",
+      "telephonenumber": "",
+      "company": "최근배송지"
     }
   },
   "param": {

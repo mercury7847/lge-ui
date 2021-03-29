@@ -294,7 +294,7 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                    void(window.open("", "popupChk", "width=500, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                     document.form_chk.action = result.data.niceAntionUrl;
                     document.form_chk.m.value = result.data.m;
                     document.form_chk.EncodeData.value = result.data.sEncData;

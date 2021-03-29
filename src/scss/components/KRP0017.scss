@@ -76,12 +76,17 @@
                     > ul {
                         font-size:0;
                         .category-column {
-                            display:inline-block;
-                            width:50%;
+                            // display:inline-block;
+                            // width:50%;
+                            display:block;
+                            width:100%;
                             vertical-align:top;
                             &.upperframe {
                                 display:block;
                                 width:100%;
+                            }
+                            & + .category-column {
+                                margin-top:32px;
                             }
                         }
                         .category-column.upperframe + .category-column.upperframe {

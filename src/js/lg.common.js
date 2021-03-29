@@ -1266,6 +1266,7 @@ var isApp = function(){
                                 });
                             }
                         }
+                        if(failCallback && typeof failCallback === 'function') failCallback();
                     }
                     return;
                 }
