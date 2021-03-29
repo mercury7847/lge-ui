@@ -37,6 +37,7 @@
 }
 
 @include pc {
+    .header-wrap .mobile-only,
     .mobile-nav-wrap,
     .mobile-nav-button,
     .login-mobile,

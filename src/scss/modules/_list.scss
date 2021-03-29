@@ -362,6 +362,9 @@
                                     font-weight:700;
                                     color:$color-primary;
                                 }
+                                &:focus + label {
+                                    outline:-webkit-focus-ring-color auto 1px;
+                                }
                             }
                         }
                     }

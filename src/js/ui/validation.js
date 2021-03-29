@@ -950,16 +950,16 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if($first.is(':radio') || $first.is(':checkbox')){
                     var $checked =self.$el.find('[name='+ firstName +']:checked');
                     if($checked.length>0){
-                        $checked.focus();
+                        $checked.blur().focus();
                     }else{
-                        $first.eq(0).focus();
+                        $first.eq(0).blur().focus();
                     }
                     
                 }else{
                     if ($first.is(':hidden')) {
-                        $first.parent().attr('tabindex', 0).focus().removeAttr('tabindex');
+                        $first.parent().attr('tabindex', 0).blur().focus().removeAttr('tabindex');
                     } else {
-                        $first.focus();
+                        $first.blur().focus();
                     }
                 }    
                 if($first.hasClass('ui_selectbox')) {
