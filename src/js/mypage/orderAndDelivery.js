@@ -1959,6 +1959,7 @@
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
+        var isQuantity = TAB_FLAG == TAB_FLAG_CARE ? true : false;
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
@@ -1992,7 +1993,7 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:false}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
