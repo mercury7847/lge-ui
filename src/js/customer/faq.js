@@ -86,7 +86,6 @@
         requestData:function(param) {
             var self = this;
             var ajaxUrl = self.$searchWrap.attr('data-url');
-            //console.log(ajaxUrl, param);
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
