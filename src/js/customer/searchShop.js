@@ -232,7 +232,7 @@
                     self._setMarkerSelected(obj);
 
                 }).on('maperror', function(e, error){
-                    console.log(error);
+                    // console.log(error);
                 });
 
                 $(".sch-box .tabs-wrap").vcTab().on("tabchange", function(e, data){
@@ -421,7 +421,7 @@
             }).on('click', '.btn-group button:last-child', function(e){
 
                 // 필터 적용
-                console.log('필터 적용');
+                // console.log('필터 적용');
                 e.preventDefault();
                 self._setOptApply();
             });
@@ -472,7 +472,7 @@
         _getCurrentLocation : function _getCurrentLocation() {
             var self = this;       
             if (navigator.geolocation) {
-                console.log("### _getCurrentLocation ###");
+                // console.log("### _getCurrentLocation ###");
                 navigator.geolocation.getCurrentPosition(
                     function(e){
                         self._onSuccessGeolocation(e);
@@ -579,7 +579,7 @@
 
             }, function(err){
                 // console.log(err);
-                console.log('map store 정보를 가져올수 없습니다.')
+                // console.log('map store 정보를 가져올수 없습니다.')
                 // lgkorUI.hideLoading();
             });
 
@@ -609,7 +609,7 @@
                 // lgkorUI.hideLoading();
 
             }, function(err){
-                console.log('map store 정보를 가져올수 없습니다.')
+                // console.log('map store 정보를 가져올수 없습니다.')
 
                 // lgkorUI.hideLoading();
             });
@@ -1080,7 +1080,7 @@
                     if(result.success == "Y"){
                         self._renderStore(result.pointy, result.pointx);
                     } else{
-                        console.log(result.errMsg)
+                        // console.log(result.errMsg)
                     }
                 });                
             } else{
@@ -1106,7 +1106,7 @@
                 if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
                 selectedMarker.siblings().find('.point').removeClass('on');
 
-                console.log(self.isMobile);
+                // console.log(self.isMobile);
                 if(self.isMobile) self._showMap(true);
             }
             
