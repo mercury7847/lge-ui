@@ -1435,7 +1435,7 @@
                         cancelBtnName: "취소",
                         okBtnName: "본인인증",
                         ok: function(){         
-                            window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                            void(window.open("", "popupChk", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                             document.form_chk.action = result.data.niceAntionUrl;
                             document.form_chk.m.value = result.data.m;
                             document.form_chk.EncodeData.value = result.data.sEncData;
@@ -1819,14 +1819,21 @@
             var discountPrices = 0;
             var mempointPrices = 0;
             var productTotalPrices = 0;
-            var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
+            var getListData = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData : result.data.careListData;
+            var productList = getListData[0].productList;
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
                 
                 addPopProdductList(popup, productList, true);
+
+                console.log("getListData[0].bundleCancelYn:", getListData[0].bundleCancelYn);
+
+                var isAllChecked = false;
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
+                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
                 
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered"){
+                if(isAllChecked){
                     for(var idx in PRICE_INFO_DATA){
                         if(productList[idx].itemCancelAbleYn != "N"){
                             originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
@@ -1952,6 +1959,7 @@
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
+        var isQuantity = TAB_FLAG == TAB_FLAG_CARE ? true : false;
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
@@ -1985,7 +1993,7 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:false}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -2076,6 +2084,8 @@
             var newProductList = {};
             for(var idx in prodlist){
                 var ordernum = prodlist[idx].orderNumber;
+                if(!ordernum) ordernum = "noneOrderNumber";
+
                 var match = "";
                 for(var str in newProductList){
                     if(ordernum == str){
@@ -2103,7 +2113,7 @@
             }
         }
 
-        console.log("### " + sendata.callType + " ###", sendRealData);
+        console.log("### " + sendata.callType + " ###", orderList);
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();

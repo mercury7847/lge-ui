@@ -1266,6 +1266,7 @@ var isApp = function(){
                                 });
                             }
                         }
+                        if(failCallback && typeof failCallback === 'function') failCallback();
                     }
                     return;
                 }
@@ -1976,7 +1977,20 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // 앱 isLayoutPopup
+        appIsLayerPopup:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.isLayerPopup(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'isLayerPopup', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
         }
+
         
     }
 
