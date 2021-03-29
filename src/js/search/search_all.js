@@ -248,7 +248,7 @@
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
                     } else {
-                        self.requestSearchData("",false);
+                        //self.requestSearchData("",false);
                     }
 
                     self.updateBasicData();
@@ -672,6 +672,7 @@
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
                     self.openSearchInputLayer(false);
 
