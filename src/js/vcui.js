@@ -6343,7 +6343,7 @@ if (!window.JSON) {
             if (timeCounter) {
                 diff = time - timeCounter;
                 // 이 콘솔은 디버깅을 위한 것이므로 지우지 말것.
-                console.log('[' + name + '] ' + diff + 'ms');
+                //console.log('[' + name + '] ' + diff + 'ms');
                 delete this.timeCounters[key];
             }
             return diff;
