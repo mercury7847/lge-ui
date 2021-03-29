@@ -86,7 +86,7 @@
         }
     }
     .sign-up-steps {
-        padding:48px 32px;
+        padding:32px;
         border-radius:8px;
         background:#f4f4f4;
         font-size:0;
@@ -104,7 +104,7 @@
         }
         @include mobile {
             margin:0 -16px;
-            padding:32px 16px;
+            padding:24px 16px 36px;
             border-radius:0;
             overflow-x:auto;
         }
@@ -121,13 +121,15 @@
             &::after {
                 content:' ';
                 position:absolute;
-                top:36px;
+                top:50%;
                 right:-52px;
                 width:32px;
                 height:32px;
+                margin-top:-16px;
                 background:url('/lg5-common/images/icons/icon-arrow-left-b-56.svg') center no-repeat;
                 background-size:100%;
                 @include mobile {
+                    // top:16px;
                     right:-40px;
                     width:32px;
                     height:32px;
@@ -137,6 +139,23 @@
                 margin-right:0;
                 &::after {
                     display:none;
+                }
+            }
+            p {
+                padding:0 24px;
+                color:#000;
+                @include font-medium;
+                font-weight:700;
+                text-align:center;
+                small {
+                    display:block;
+                    color:#da0f47;
+                    @include font-small;
+                    font-weight:500;
+                }
+                
+                @include mobile {
+                    padding:0;
                 }
             }
             dl {
@@ -167,14 +186,15 @@
         }
     }
     .sign-up-bottom {
+        margin-top:24px;
         padding:0 48px 48px;
         border-radius:0 0 8px 8px;
-        background:#f4f4f4;
+        // background:#f4f4f4;
         font-size:0;
         text-align:center;
         @include mobile {
             margin:0 -16px;
-            padding:0 16px 32px;
+            padding:32px 16px 0;
             text-align:left;
         }
         .qr-lists {
@@ -187,16 +207,24 @@
             li {
                 display:inline-block;
                 vertical-align:top;
-                margin-left:24px;
+                margin:0 67px;
                 text-align:center;
                 @include mobile {
-                    margin-left:24px;
+                    display:block;
+                    margin:0;
                 }
+                // @include mobile {
+                //     margin-left:24px;
+                // }
                 &:first-child {
                     margin-left:0;
                 }
+                &:last-child {
+                    margin-right:0;
+                }
                 p {
-                    margin-top:8px;
+                    max-width:128px;
+                    margin:8px auto 0;
                     padding:4px 0;
                     border-radius:8px;
                     background-color:#666;
@@ -207,6 +235,7 @@
                 .img {
                     display:block;
                     width:128px;
+                    margin:0 auto;
                     border-radius:8px;
                     border:1px solid #ddd;
                     overflow:hidden;
@@ -216,13 +245,50 @@
                         vertical-align:top;
                     }
                 }
+                a {
+                    display:block;
+                    width:190px;
+                    margin-top:24px;
+                    padding:12px 0;
+                    padding-left:15px;
+                    border:1px solid #ddd;
+                    border-radius:26px;
+                    background:#fff;
+                    color:#000;
+                    font-weight:700;
+                    font-size:16px;
+                    line-height:28px;
+                    @include mobile {
+                        margin:24px auto 0;
+                        font-size:14px;
+                    }
+                    span {
+                        display:inline-block;
+                        vertical-align:top;
+                    }
+                    &::before {
+                        content:' ';
+                        display:inline-block;
+                        width:24px;
+                        height:28px;
+                        margin-right:8px;
+                        vertical-align:top;
+                        background-size:100%;
+                        background-repeat:no-repeat;
+                        background-position:center;
+                    }
+                    &.btn1::before {
+                        background-image:url("/lg5-common/images/BMC/img-app-icon1.png");
+                    }
+                    &.btn2::before {
+                        background-image:url("/lg5-common/images/BMC/img-app-icon2.png");
+                    }
+                }
             }
         }
         .down-link-lists {
-            display:inline-block;
-            margin-left:120px;
             vertical-align:top;
-            text-align:left;
+            text-align:center;
             @include mobile {
                 display:block;
                 margin-top:32px;
@@ -239,9 +305,9 @@
                 }
             }
             a {
-                display:block;
+                display:inline-block;
                 width:190px;
-                margin:0 auto;
+                margin:0 40px;
                 padding:12px 0;
                 padding-left:15px;
                 border:1px solid #ddd;
@@ -275,9 +341,9 @@
                 &.btn2::before {
                     background-image:url("/lg5-common/images/BMC/img-app-icon2.png");
                 }
-                & + a {
-                    margin-top:16px;
-                }
+                // & + a {
+                //     margin-top:16px;
+                // }
             }
         }
     }

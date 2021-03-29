@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <path id="r1e3pk0pna" d="M0 0H64V64H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-1104 -931) translate(0 695) translate(270 120) translate(0 84) translate(702) translate(132 32)">
+                                <mask id="zpiq51wrsb" fill="#fff">
+                                    <use xlink:href="#r1e3pk0pna"/>
+                                </mask>
+                                <g mask="url(#zpiq51wrsb)">
+                                    <g>
+                                        <path stroke="#000" stroke-width="2" d="M44.4 4.36H2c-.276 0-.526.112-.707.293-.181.18-.293.43-.293.707v19.52c0 .276.112.526.293.707.18.181.43.293.707.293h18.318L7.294 38.683c-.182.2-.27.453-.262.704.007.256.112.509.313.699L22.657 54.54c.196.184.447.275.697.272.25-.002.499-.098.69-.286l30.369-29.845c.24-.236.345-.576.28-.906L52.26 11.382c-.04-.207-.144-.39-.289-.529s-.331-.235-.54-.267l-2.669-.415-3.526-5.36c-.185-.282-.499-.451-.835-.451z" transform="translate(5 4)"/>
+                                        <path stroke="#000" stroke-width="2" d="M7.294 38.683c-.182.2-.27.453-.262.704.007.256.112.509.313.699L22.657 54.54c.196.184.447.275.697.272.25-.002.499-.098.69-.286l30.369-29.845c.24-.236.345-.576.28-.906L52.26 11.382c-.04-.207-.144-.39-.289-.529s-.331-.235-.54-.267L38.5 8.58c-.313-.048-.63.054-.855.275l-30.35 29.83z" transform="translate(5 4)"/>
+                                        <text font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="11" font-weight="bold" transform="translate(5 4) rotate(-45 29.646 32.646)">
+                                            <tspan x="16.132" y="36.646" fill="#DA0F47">SALE</tspan>
+                                        </text>
+                                        <g stroke="#000" stroke-width="2.24" transform="translate(5 4) translate(43.346 7.84)">
+                                            <ellipse cx="3.419" cy="7.84" rx="2.299" ry="2.24"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.698 5.544L11.339 0"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
