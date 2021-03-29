@@ -605,6 +605,7 @@
                 lgkorUI.setStorage(self.uniqId, postData);
                 location.hash = self.uniqId;
                 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
