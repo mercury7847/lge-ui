@@ -3,8 +3,6 @@
     var resultTabs;
 
     function init(){
-        console.log("compare result start~~!!!");
-
         vcui.require(['ui/sticky', 'ui/smoothScrollTab'], function () {
             setting();
             bindEvents();

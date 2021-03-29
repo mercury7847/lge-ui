@@ -97,8 +97,6 @@
 
         addressInfoValidation.on('errors', function(e,data){
 
-            // console.log(data);
-        
         }).on('nextfocus', function(e,target){
 
             if(target.attr('name') == 'zipCode'){
@@ -238,7 +236,6 @@
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
         }
-        // console.log("send data:", sendata);
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
