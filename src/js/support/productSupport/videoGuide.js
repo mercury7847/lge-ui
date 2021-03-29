@@ -84,16 +84,13 @@
                     keywordList: '<li><a href="#">{{keyword}}</a></li>'
                 }
             });
-            self.$cont.commonModel({
-                selected: self.param
-            });
             self.$resultPagination.pagination({
                 pageCount: 5
             });
-        
-            if (!self.param.subCategory) {
-                self.$cont.commonModel('complete');
-            }
+
+            vcui.require(['support/common/searchModel.min'], function () {
+                self.$cont.vcSearchModel();
+            });
         },
         setPopularKeyword: function(data) {
             var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
