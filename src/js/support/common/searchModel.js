@@ -74,6 +74,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             page: 1,
             total: 0,
             useCookie: true,
+            onlyMyModel: false,
             model: {
                 category: '',
                 categoryNm: '',
@@ -160,12 +161,14 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             });
             
             self._setMyModel();
-            self._setTerms();
-            self._bindEvent();
-            
-            lgkorUI.searchModelName();
-            
-            opts.useCookie && self.hasModel && self.complete();
+
+            if (!opts.onlyMyModel) {
+                self._bindEvent();
+                
+                lgkorUI.searchModelName();
+                
+                opts.useCookie && self.hasModel && self.complete();
+            }
         },
         _bindEvent: function _bindEvent() {
             var self = this;
@@ -627,55 +630,6 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 }
             });
         },
-        _setTerms: function _setTerms() {
-            var self = this;
-            var $stepTerms = self.$el.find('#stepTerms');
-
-            if (!$stepTerms.length) return;
-
-            var termsValidation = new vcui.ui.CsValidation('#stepTerms', {register: {
-                privcyCheck: { msgTarget: '.err-block' }
-            }});
-
-            $stepTerms.find('.btn-next').on('click', function() {
-                var result = termsValidation.validate();
-                
-                if (result.success) {
-                    if ($('.contents.email-inquiry').length) {
-                        var url = location.search;
-
-                        if (url.indexOf("?") > -1) {
-                            var search = url.substring(1);
-                            var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-
-                            if (searchObj.parts) {
-                                $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
-                                return;
-                            } else if (searchObj.simple) {
-                                $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
-                                return;
-                            }
-                        }
-                    }
-
-                    if (self.hasModel) {
-                        if (self.selected.modelCode && myModel.indexOf(self.selected.modelCode) != -1) {
-                            self.$el.find('#isMyProduct').val('Y');
-                        }
-                        self.$el.trigger('complete', [self.selected, self.resultUrl]);
-                    } else {
-                        self.$myModelArea.show();
-                        self.next(self.$stepModel);
-                        self.$myModelSlider.vcCarousel('resize');
-                    }
-                    
-                    if (self.$selectedModelBar.length) {
-                        self.$selectedModelBar.show();
-                        self.focus(self.$selectedModelBar);
-                    }
-                }
-            });
-        },
         _resetFlexibleBox: function _resetFlexibleBox() {
             var self = this;
             var maxheight = 0;
@@ -871,11 +825,13 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
             self.$el.trigger('complete', [data]);
 
-            self.$myModelArea.hide();
-            self.next();
-            self.focus(self.$selectedModelBar, function() {
-                self.$selectedModelBar.vcSticky();
-            });
+            if (!self.options.onlyMyModel) {
+                self.$myModelArea.hide();
+                self.next();
+                self.focus(self.$selectedModelBar, function() {
+                    self.$selectedModelBar.vcSticky();
+                });
+            }
         }
     });
 
