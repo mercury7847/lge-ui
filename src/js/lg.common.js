@@ -1241,15 +1241,16 @@ var isApp = function(){
                                 data.success = "N";
                                 result.data = data;
                             }
-                        }/* else {
-                            if(result.message) {
-                                lgkorUI.alert("", {
-                                    title: result.message
-                                });
-                                result.message = null;
-                            }
-                            result.data = {"success" : "N"};
-                        }*/
+                        }
+                        // else {
+                        //     if(result.message) {
+                        //         lgkorUI.alert("", {
+                        //             title: result.message
+                        //         });
+                        //         //result.message = null;
+                        //     }
+                        //     result.data = {"success" : "N"};
+                        // }
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
                         var data = result.data;
