@@ -155,8 +155,6 @@
                     if(result.success){
                         self.requestData(self.validation.getAllValues());
                     } else {
-
-                        console.log(result);
                         if(result.validArray && result.validArray.length > 0) {
                             var item = result.validArray[0];
                             if(item.errmsg) {
@@ -195,14 +193,6 @@
                 var ajaxUrl = self.$formWrap.attr('data-receipt-url');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                    /*                    
-                    var data = result.data;
-                    console.log(data);
-                    var alert = data.alert;
-                    if(alert) {
-                        self.openAlert(alert);
-                    }
-                    */
                 });
             },
 

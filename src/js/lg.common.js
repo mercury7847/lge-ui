@@ -274,7 +274,8 @@ var isApp = function(){
         HOMEBREW_CHECK_COOKIE_NAME: "lgeAgeCheckFlag", //홈브류 연령체크 쿠키
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
-        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수
+        MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
+        DOMAIN_LIST:["lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
         init: function(){
             var self = this;
 
@@ -632,16 +633,32 @@ var isApp = function(){
 
         //에러 페이지 되돌아가기
         _bindErrBackEvent: function(){
+            var self = this;
+
             $('body').find('.contents.error-page .btns a').on('click', function(e){
                 e.preventDefault();
 
-                var referrer = document.referrer;
-                var index = referrer.indexOf('lge.co.kr');
-                // if(index > 0) history.back();
-                // else location.href = 
-
-                history.back();
+                self._historyBack();
             })
+        },
+
+        _historyBack: function(){
+            var self = this;
+            
+            var referrer = document.referrer;
+            var index = -1;
+            var leng = lgkorUI.DOMAIN_LIST.length;
+            for(var i=0;i<leng;i++){
+                index = referrer.indexOf('lge.co.kr');
+                console.log("referrer:", referrer)
+                console.log("_historyBack:", index, referrer)
+                if(index > -1){
+                    break;
+                }
+            }
+            
+            if(index < 0) location.href = "/";
+            else history.back();
         },
 
         resetFlexibleBox: function(){
@@ -1194,13 +1211,13 @@ var isApp = function(){
         requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide, failCallback) {
             var self = this;
             var dtype = dataType? dataType : "json";
-            var timeout = timeout ? timeout : 10000;
+            var timelimit = timeout ? timeout : 15000;
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
                 data : data,
-                timeout : 180000
+                timeout : timelimit
             }).done(function (result) {
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
 
@@ -1221,25 +1238,35 @@ var isApp = function(){
                         var data = result.data;
                         if(data && !Array.isArray(data) && typeof data === 'object') {
                             if(!data.success && !(typeof(data.success) === "boolean")) {
-                                data.success = "N";
-                                result.data = data;
+                                result.data.success = "N";
                             }
+                        } else {
+                            //     if(result.message) {
+                            //         lgkorUI.alert("", {
+                            //             title: result.message
+                            //         });
+                            //         //result.message = null;
+                            //     }
+                            //result.data = {"success" : "N"};
+                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                                result.data.success = "N";
+                            }
+                        }
+                        if(callback && typeof callback === 'function') callback(result); 
+                    } else {
+                        var data = result.data;
+                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                            lgkorUI.alert("", {
+                                title: data.alert.title
+                            });
                         } else {
                             if(result.message) {
                                 lgkorUI.alert("", {
                                     title: result.message
                                 });
-                                result.message = null;
                             }
-                            result.data = {"success" : "N"};
                         }
-                        if(callback && typeof callback === 'function') callback(result); 
-                    } else {
-                        if(result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message
-                            });
-                        }
+                        if(failCallback && typeof failCallback === 'function') failCallback();
                     }
                     return;
                 }
@@ -1248,8 +1275,7 @@ var isApp = function(){
                     var data = result.data;
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
@@ -1258,8 +1284,7 @@ var isApp = function(){
                     //success가 비어 있으면 성공(Y) 라 친다
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     /*
@@ -1270,7 +1295,15 @@ var isApp = function(){
                     if(!self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        self.commonAlertHandler(data.alert);
+                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                            self.commonAlertHandler(data.alert);
+                        }/* else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
+                        }*/
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 
@@ -1289,7 +1322,6 @@ var isApp = function(){
             self.requestAjaxData(url, data, successCallback, null, null, null, null, null, failCallback);
         },
         
-
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
@@ -1422,6 +1454,7 @@ var isApp = function(){
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
             console.log("### requestWish ###", param, wish);
+
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
@@ -1944,9 +1977,24 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // 앱 isLayoutPopup
+        appIsLayerPopup:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.isLayerPopup(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'isLayerPopup', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
         }
+
         
     }
+
+    window.historyBack = lgkorUI._historyBack;
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();

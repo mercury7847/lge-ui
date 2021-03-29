@@ -7,7 +7,7 @@
     if(location.hostname == "www.lge.co.kr") {
         r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     } else {
-        r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
+        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
     }
 
     if(s.getElementById(g)){
@@ -27,7 +27,7 @@
     console.log('a',a);
     console.log('m',m);
     */
-})(window,document,'script','cremajssdk','//swidgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function() {
 
@@ -334,8 +334,6 @@
                         }
                     }
                 }
-
-                //console.log('result',rentalSelectBoxIndex1,rentalSelectBoxIndex2,rentalSelectBoxIndex3);
 
                 //케어십 가격 정보 정리
                 var careSelectIndex = 0;
@@ -1007,6 +1005,24 @@
                         $total.find('dd').text("월 " + vcui.number.addComma(total) + "원");
                     }
 
+                    //연차별 월요금
+                    var popupData = $paymentAmount.data('popupData');
+                    if(popupData) {
+                        var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
+
+                        $table.each(function(idx,obj){
+                            var key = (idx+1)+"";
+                            var data = popupData[key];
+                            var $tr = $(obj);
+                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price));
+                            if(data.free.length > 0) {
+                                $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
+                            } else {
+                                $tr.find('td:eq(2)').text("");
+                            }
+                        });
+                    }
+
                     self.$careshipInfoPopup.vcModal();
                 });
 
@@ -1019,9 +1035,8 @@
                     var carePrice = parseInt($paymentAmount.data('carePrice'));
                     var careData = $paymentAmount.data('careData');
 
-                    var $title = self.$caresolutionInfoPopup.find('.small-title');
+                    var $title = self.$caresolutionInfoPopup.find('.small-title:eq(0)');
                     if(careData && careData.dutyTerm && $title.length > 0) {
-                        var $title = self.$caresolutionInfoPopup.find('.small-title');
                         $title.find('span').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 5년')
                     }
 
@@ -1051,6 +1066,27 @@
                         }
                         if(total < 0) total = 0;
                         $total.find('dd').text("월 " + vcui.number.addComma(total) + "원");
+                    }
+
+                    //연차별 월요금
+                    var popupData = $paymentAmount.data('popupData');
+                    if(popupData) {
+                        var $btmInfo = self.$caresolutionInfoPopup.find('.btm_info');
+                        $btmInfo.find('dl:eq(0) dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
+                        $btmInfo.find('span.point').text(popupData.rtFreePeriod+'회차');
+                        var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
+
+                        $table.each(function(idx,obj){
+                            var key = (idx+1)+"";
+                            var data = popupData[key];
+                            var $tr = $(obj);
+                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price));
+                            if(data.free.length > 0) {
+                                $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
+                            } else {
+                                $tr.find('td:eq(2)').text("");
+                            }
+                        });
                     }
 
                     self.$caresolutionInfoPopup.vcModal();
@@ -1092,7 +1128,8 @@
                 };
 
                 //제휴카드 할인 드롭다운 선택
-                self.$pdpInfo.on('click','div.option-contents div.ui_dropdown_list li a', function(e){
+                //div.option-contents
+                self.$pdpInfo.on('click','div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
                     var $dropDown = $this.parents('.ui_dropdown');
@@ -1135,7 +1172,8 @@
                     }
                 });
 
-                var cardDropdown = self.$pdpInfo.find('div.option-contents div.ui_dropdown_list');
+                //div.option-contents
+                var cardDropdown = self.$pdpInfo.find('div.ui_dropdown_list');
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click');
@@ -1148,7 +1186,6 @@
                 
                 $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
-                    //console.log('popup link',buttonLinkUrl);
                     if(buttonLinkUrl) {
                         location.href = buttonLinkUrl;
                     }
@@ -1338,29 +1375,69 @@
                 var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
                 
                 var infoTotal = 0;
-                
-                //1년차 계산
-                if(selectInfoData.years1TotAmt) {
-                    infoTotal += (selectInfoData.years1TotAmt * 12);
-                }
-                //2년차 계산
-                if(selectInfoData.years2TotAmt) {
-                    infoTotal += (selectInfoData.years2TotAmt * 12);
-                }
-                //3년차 계산
-                if(selectInfoData.years3TotAmt) {
-                    infoTotal += (selectInfoData.years3TotAmt * 12);
-                }
-                //4년차 계산
-                if(selectInfoData.years4TotAmt) {
-                    infoTotal += (selectInfoData.years4TotAmt * 12);
-                }
-                //5년차 계산
-                if(selectInfoData.years5TotAmt) {
-                    infoTotal += (selectInfoData.years5TotAmt * 12);
+                var popupData = {
+                    "rtFreePeriod":selectInfoData.rtFreePeriod,
+                    "rtFreePeriodCount":rtFreePeriod.length,
+                    "1":{},
+                    "2":{},
+                    "3":{},
+                    "4":{},
+                    "5":{}
+                };
+
+                for(var y=1;y<6;y++){
+                    var price = 0;
+                    switch(y) {
+                        case 1:
+                            price = selectInfoData.years1TotAmt;
+                            break;
+                        case 2:
+                            price = selectInfoData.years2TotAmt;
+                            break;
+                        case 3:
+                            price = selectInfoData.years3TotAmt;
+                            break;
+                        case 4:
+                            price = selectInfoData.years4TotAmt;
+                            break;
+                        case 5:
+                            price = selectInfoData.years5TotAmt;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if(price) {
+                        var key = y+"";
+                        popupData[key].price = price;
+                        popupData[key].free = [];
+                        infoTotal += (price * 12);
+                    }
                 }
 
+                rtFreePeriod.forEach(function(item, index){
+                    if(item <= 12 && selectInfoData.years1TotAmt) {
+                        infoTotal -= selectInfoData.years1TotAmt;
+                        popupData["1"].free.push(item);
+                    } else if(item <= 24 && selectInfoData.years2TotAmt) {
+                        infoTotal -= selectInfoData.years2TotAmt;
+                        popupData["2"].free.push(item);
+                    } else if(item <= 36 && selectInfoData.years3TotAmt) {
+                        infoTotal -= selectInfoData.years3TotAmt;
+                        popupData["3"].free.push(item);
+                    } else if(item <= 48 && selectInfoData.years4TotAmt) {
+                        infoTotal -= selectInfoData.years4TotAmt;
+                        popupData["4"].free.push(item);
+                    } else if(item <= 60 && selectInfoData.years5TotAmt) {
+                        infoTotal -= selectInfoData.years5TotAmt;
+                        popupData["5"].free.push(item);
+                    }
+                });
 
+                var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + '원(대표요금제 기준)');
+
+                $paymentAmount.data('popupData',popupData);
             },
 
             //케어십 계약기간 선택에 따른 가격정보 변경
@@ -1391,6 +1468,73 @@
                 }
                 $paymentAmount.data({"careData":careData,"carePrice":carePrice});
                 self.updatePaymentAmountPrice($paymentAmount);
+
+                //케어십 할인 혜택 이용요금 팝업용 데이타
+                var selectInfoData = selectCareshipInfoData;
+
+                var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
+                
+                var infoTotal = 0;
+                var popupData = {
+                    "rtFreePeriod":selectInfoData.rtFreePeriod,
+                    "rtFreePeriodCount":rtFreePeriod.length,
+                    "1":{},
+                    "2":{},
+                    "3":{},
+                    "4":{},
+                    "5":{},
+                    "6":{}
+                };
+
+                for(var y=1;y<7;y++){
+                    var price = 0;
+                    switch(y) {
+                        case 1:
+                            price = selectInfoData.years1TotAmt;
+                            break;
+                        case 2:
+                            price = selectInfoData.years2TotAmt;
+                            break;
+                        case 3:
+                            price = selectInfoData.years3TotAmt;
+                            break;
+                        case 4:
+                            price = selectInfoData.years4TotAmt;
+                            break;
+                        case 5:
+                            price = selectInfoData.years5TotAmt;
+                            break;
+                        case 6:
+                            price = selectInfoData.years6TotAmt;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if(price) {
+                        var key = y+"";
+                        popupData[key].price = price;
+                        popupData[key].free = [];
+                    }
+                }
+
+                rtFreePeriod.forEach(function(item, index){
+                    if(item <= 12) {
+                        popupData["1"].free.push(item);
+                    } else if(item <= 24) {
+                        popupData["2"].free.push(item);
+                    } else if(item <= 36) {
+                        popupData["3"].free.push(item);
+                    } else if(item <= 48) {
+                        popupData["4"].free.push(item);
+                    } else if(item <= 60) {
+                        popupData["5"].free.push(item);
+                    } else if(item <= 70) {
+                        popupData["6"].free.push(item);
+                    }
+                });
+
+                $paymentAmount.data('popupData',popupData);
             },
 
             //구매 가격정보 갱신
@@ -1406,8 +1550,6 @@
                 var cardData = $paymentAmount.data('cardData');
                 var prefix = $paymentAmount.data('prefix');
                 prefix = !prefix ? "" : prefix + " ";
-
-                //console.log(price, quantity, carePrice, cardData, prefix);
 
                 //2021-03-17
                 //구매의 케어십은 카드세일을 적용하여 표시하지 않는다 (렌탈케어만 적용해서 표시)
@@ -1502,6 +1644,17 @@
             //구매진행
             productBuy: function($dm) {
                 var self = this;
+
+                //홈브류 제품 로그인 안내 뛰우기
+                if (location.href.indexOf("lg-homebrew") > -1 && !lgkorUI.stringToBool(loginFlag)) {
+                    var $memberBuyGuide = $('#memberBuyGuide');
+                    //현재 페이지 오타가 있어서 임의로 수정. 반영되면 삭제할것
+                    $memberBuyGuide.find('div.non-members-login').html('<p class="hello-desc">맥주제조기 및 홈브루 캡슐 제품 구매를 위해서는<br>LG전자 통합 로그인이 필요합니다.</p>');
+                    //$memberBuyGuide.find('.btn-group button.btn-confirm').data('linkUrl','/sso/api/Login');
+                    $memberBuyGuide.vcModal();
+                    return;
+                };
+
                 self.processProductBuy = null;
 
                 var tempSendData = JSON.parse(JSON.stringify(sendData));
@@ -1665,27 +1818,25 @@
                                     //$('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
                                     //$('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
                                         lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                            console.log(result);
+                                            //console.log(result);
                                         });
                                     //});
                                     //$('#careRequireBuyPopup').vcModal();
                                 } else {
                                     lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                        console.log(result);
+                                        //console.log(result);
                                     });
                                 }
                             }
-                            console.log((lgkorUI.stringToBool(loginFlag))?"!!!!!rental":"!!!!!notlogin rental",param);
                         } else {
                             self.processProductBuy = $dm;
                         }
                     } else {
                         ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                         //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
-                        console.log("!!!!!buy",ajaxUrl,param);
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                                console.log(result);
+                                //console.log(result);
                                 var data = result.data;
                                 var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
                                 if(obsDirectPurchaseUrl){

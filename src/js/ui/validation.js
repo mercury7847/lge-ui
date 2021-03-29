@@ -106,8 +106,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                         if(value!=undefined){ 
                             newObj[item.name]['value'] = value;
-                        }else{
-                            //if($(item).is(':checkbox')) newObj[item.name]['value'] = false;                            
                         }
                     }
 
@@ -347,27 +345,52 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             return null;
         },
 
+        _setCheckboxValue : function(key, value){
+
+            var self = this;
+            var $target = self.$el.find('[name='+ key +']');
+
+            if(typeof value === "boolean"){
+                if($target.length>0) $target.prop('checked', value);
+
+                return;
+            };
+
+            var values = (value && value.split(',')) || [];
+            if($target.length>0){
+                $target.prop('checked', false);
+
+                $.each(values, function(index, value){
+                    var $item = $target.filter('[value='+ value +']');
+                    if($item){ 
+                        $item.prop('checked', true);
+                    }
+                });     
+
+            }
+                      
+
+        },
+
         // setValues({name:'asdf, email:'asdfa'})
         setValues : function setValues(obj){ 
             var self = this;  
             var $target;  
-
 
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
                 
                 if($target.is(':radio')){
                     //CS 제외
-
                     if( !$('.contents.support').length ) {
-                        $target.filter('[value='+ obj[key] +']').prop('checked', true);
+                        self._setCheckboxValue(key, obj[key]);
                     }
 
                 } else if($target.is(':checkbox')){                    
 
                     //CS 제외
                     if( !$('.contents.support').length ) {
-                        $target.filter('[value='+ obj[key] +']').prop('checked', true);
+                        self._setCheckboxValue(key, obj[key]);
                     }
 
                 }else{
@@ -784,6 +807,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 $target = self.$el.find('[name='+ prop +']');
                 nobj = self.register[prop];
                 msg = nobj['msgTarget'];
+
                 if (!$target.prop('disabled')) {
                     if(msg){ 
                         var errblock = self._getMsgBlock($target, msg);
@@ -931,16 +955,16 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if($first.is(':radio') || $first.is(':checkbox')){
                     var $checked =self.$el.find('[name='+ firstName +']:checked');
                     if($checked.length>0){
-                        $checked.focus();
+                        $checked.blur().focus();
                     }else{
-                        $first.eq(0).focus();
+                        $first.eq(0).blur().focus();
                     }
                     
                 }else{
                     if ($first.is(':hidden')) {
-                        $first.parent().attr('tabindex', 0).focus().removeAttr('tabindex');
+                        $first.parent().attr('tabindex', 0).blur().focus().removeAttr('tabindex');
                     } else {
-                        $first.focus();
+                        $first.blur().focus();
                     }
                 }    
                 if($first.hasClass('ui_selectbox')) {

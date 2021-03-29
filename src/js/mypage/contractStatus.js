@@ -33,6 +33,8 @@
 
     var txtMasking;
 
+    var ajaxMethod = "POST";
+
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
     function init(){
@@ -155,7 +157,7 @@
         paymentModifyBlock.on('click', '.paymentCardConfirm, .paymentBankConfirm', function(e){
             e.preventDefault();
 
-            paymentMethodAbled(this);
+            setPaymentMethodAbled(this);
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
 
@@ -267,7 +269,7 @@
                     });
                 }
             }
-        });
+        }, ajaxMethod);
     }
 
     //정보변경 확인...
@@ -292,7 +294,7 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                    void(window.open("", "popupChk", "width=500, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                     document.form_chk.action = result.data.niceAntionUrl;
                     document.form_chk.m.value = result.data.m;
                     document.form_chk.EncodeData.value = result.data.sEncData;
@@ -304,10 +306,10 @@
                     document.form_chk.submit();
 
                     // editBasicInfomation();
-                    // editPaymentInfomation();
+                    //editPaymentInfomation();
                 }
             });
-        });
+        }, ajaxMethod);
     }
 
     //나이스 콜백 -정보변경
@@ -325,7 +327,12 @@
         setHiddenData('arsAgree', "N");
     }
     //나이스 콜백 -인증실패
-    function fnNiceFail(){
+    function fnNiceFail(msg){
+        if(msg){
+            lgkorUI.alert("", {
+                title: msg
+            })
+        }
     }
     window.editBasicInfomation = editBasicInfomation;
     window.editPaymentInfomation = editPaymentInfomation;
@@ -352,7 +359,7 @@
             }
 
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     //제휴카드 신청
@@ -417,7 +424,7 @@
             $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     //납부정보 input 밸리데이션...
@@ -445,6 +452,7 @@
     //납부정보 확인 유무...
     function paymentConfirmYN(){
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");
+        console.log("paymentMethodAbled:",paymentMethodAbled)
         if(paymentMethodAbled == "N"){
             paymentErrorAlert();
             return false;
@@ -454,14 +462,14 @@
     }
     //납부 확인 오류창...
     function paymentErrorAlert(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
         lgkorUI.alert("",{
             title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
         });
         setHiddenData('arsAgree', "N");
     }
     //납부카드/계좌 확인...
-    function paymentMethodAbled(item){
+    function setPaymentMethodAbled(item){
         var chk = paymentFieldValidation();
         if(!chk) return false;
 
@@ -490,12 +498,13 @@
 
             if(lgkorUI.stringToBool(result.data.success)){
                 paymentInfo = sendata.confirmType == METHOD_CARD ? cardValidation.getAllValues() : bankValidation.getAllValues();
+                paymentInfo.confirmType = sendata.confirmType;
             }
 
             sendPaymentMethod = sendata.confirmType;
 
             setHiddenData('paymentMethodConfirm', result.data.success);
-        });
+        }, ajaxMethod);
     }
 
     //ARS출금동의 신청...
@@ -527,7 +536,7 @@
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
 
             setHiddenData('arsAgree', result.data.success);
-        });
+        }, ajaxMethod);
     }
 
     //납부 정보변경 취소...
@@ -572,7 +581,7 @@
                 }
 
                 lgkorUI.hideLoading();
-            });
+            }, ajaxMethod);
         } 
     }
 
@@ -654,7 +663,7 @@
             }
 
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     function changeFieldValue(gname, data){
@@ -813,7 +822,7 @@
             lgkorUI.hideLoading();
 
             $('html, body').animate({scrollTop:0}, 220);
-        });
+        }, ajaxMethod);
     }
 
     function setHiddenData(iptname, value){

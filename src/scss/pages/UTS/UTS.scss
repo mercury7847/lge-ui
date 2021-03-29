@@ -363,6 +363,11 @@
                     background-image: url('/lg5-common/images/icons/btn-minus.svg');
                 }
             }
+            &.unfold {
+                &:before {
+                    transform:rotate(45deg);
+                }
+            }
         }
 
         .filter-result {

@@ -104,6 +104,8 @@
         var search = {
             init: function() {
                 var self = this;
+                self.uniqId = vcui.getUniqId(8);
+                
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
                     self.updateRecentSearchList();
@@ -114,6 +116,8 @@
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
+                            if(!category1) category1 = [];
+                            if(!category2) category2 = [];
                             var diffCat = vcui.array.different(category1,category2);
                             if(diffCat.length > 0) {
                                 if(category2 && category2.length > 0) {
@@ -127,15 +131,32 @@
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    //입력된 검색어가 있으면 선택된 카테고리로 값 조회
-                    var value = self.$contentsSearch.attr('data-search-value');
-                    value = !value ? null : value.trim();
-                    var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                    if(!(!value)) {
-                        //현재 선택된 카테고리 기준으로 검색
-                        self.setinputSearchValue(value);
-                        var filterQueryData = self.getListSortingData();
-                        self.requestSearchData(value, force, filterQueryData, true);
+                    var hash = location.hash.replace("#","");
+                    var savedData = lgkorUI.getStorage(hash);
+                    if(savedData && savedData.search) {
+                        self.savedFilterData = JSON.parse(JSON.stringify(savedData));
+                        if(self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+                            var str;
+                            for (key in filterData) {
+                                str = filterData[key];
+                                filterData[key] = str.split("||");
+                            }
+                            self.savedFilterData.filterData =  JSON.stringify(filterData);
+                        }
+                        if(savedData.href) self.scrollHref = savedData.href;
+                        self.requestSearchData(savedData.search,savedData.force,savedData, true);
+                    } else {
+                        //입력된 검색어가 있으면 선택된 카테고리로 값 조회
+                        var value = self.$contentsSearch.attr('data-search-value');
+                        value = !value ? null : value.trim();
+                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if(!(!value)) {
+                            //현재 선택된 카테고리 기준으로 검색
+                            self.setinputSearchValue(value);
+                            var filterQueryData = self.getListSortingData();
+                            self.requestSearchData(value, force, filterQueryData, true);
+                        }
                     }
                     
                     self.updateBasicData();
@@ -406,6 +427,14 @@
                 //검색 이동 로그 쌓기
                 $('ul.result-list').on('click', 'a', function(e){
                     self.sendLog(this);
+                    //리스트 아이템 이동후 back했을 경우 기억했다가 이동하기 위함
+                    var href = $(this).attr('href');
+                    if(href){
+                        //extend
+                        var scrollTop = $(document).scrollTop();
+                        lgkorUI.setStorage(self.uniqId, {"href":scrollTop}, true);
+                        location.hash = self.uniqId;
+                    }
                 });
                 
                 //스크롤 이벤트
@@ -584,6 +613,10 @@
                     //postData.filter = JSON.stringify(filterQueryData);
                 }
 
+                lgkorUI.setStorage(self.uniqId, postData);
+                location.hash = self.uniqId;
+                
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
@@ -795,6 +828,11 @@
 
                     var $selectTab = self.getTabItembySelected();
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
+
+                    if(self.scrollHref) {
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
+                    }
                 });
             },
 

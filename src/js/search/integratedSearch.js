@@ -69,7 +69,7 @@
             self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
             $('li.search>a[href="#layerSearch"]').removeAttr('data-control');
-            //self.$searchLayer.show();
+            self.$searchLayer.attr("aria-hidden",true).show();
 
             //self.$searchResultArea.hide();
             self.hideSearchResultArea();
@@ -83,35 +83,7 @@
                 location.href = url;
             }
         },
-
-        focusAndOpenKeyboard: function(el, timeout) {
-            if(!timeout) {
-                timeout = 100;
-            }
-            if(el) {
-                // Align temp input element approximately where the input element is
-                // so the cursor doesn't jump around
-                var __tempEl__ = document.createElement('input');
-                __tempEl__.style.position = 'absolute';
-                __tempEl__.style.top = (el.offsetTop + 7) + 'px';
-                __tempEl__.style.left = el.offsetLeft + 'px';
-                __tempEl__.style.height = 0;
-                __tempEl__.style.opacity = 0;
-                // Put this temp element as a child of the page <body> and focus on it
-                document.body.appendChild(__tempEl__);
-                __tempEl__.focus();
-            
-                // The keyboard is open. Now do a delayed focus on the target element
-                setTimeout(function() {
-                    console.log('focus click');
-                    el.focus();
-                    el.click();
-                    // Remove the temp element
-                    document.body.removeChild(__tempEl__);
-                }, timeout);
-            }
-        },
-
+        
         bindEvents: function() {
             var self = this;
 
@@ -119,7 +91,19 @@
                 e.preventDefault();
                 self.updateBasicData();
                 self.updateRecentSearchList();
-                self.openSearchPopup();
+                //self.openSearchPopup();
+                //직접 구문이 작성되야 최신아이폰에서 포커스시 키보드가 열린다
+
+                self.$searchLayer.attr("aria-hidden",false).addClass('open');
+                self.$inputSearch.focus();
+                
+                //
+                var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"hidden"
+                    });
+                }
             });
 
             //통합검색 닫음
@@ -169,11 +153,9 @@
                 //자동완성 리스트 오버
             
                 e.preventDefault();
-                //console.log('mouse in');
                 self.searchItem($(this),false);
             });/*.on('mouseout', 'div.keyword-list ul li a', function(e){
                 e.preventDefault();
-                //console.log('mouse out');
             });*/
 
             //연관검색어 클릭
@@ -207,8 +189,10 @@
 
         openSearchPopup: function() {
             var self = this;
-            self.$searchLayer.addClass('open');
+            self.$searchLayer.attr("aria-hidden",false).addClass('open');
+
             self.$inputSearch.focus();
+            
             //
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
@@ -231,8 +215,7 @@
         closeSearchPopup: function() {
             var self = this;
             clearTimeout(self.searchTimer);
-            self.$searchLayer.removeClass('open');
-            //
+            self.$searchLayer.attr("aria-hidden",true).removeClass('open');
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
@@ -397,7 +380,6 @@
                         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                         item.price = vcui.number.addComma(item.price);
                         item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
-                        console.log(item.obsFlag);
                         $list_ul.append(vcui.template(previewItemTemplate, item));
                     });
                     self.$resultPreviewList.show();

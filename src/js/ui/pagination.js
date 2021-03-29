@@ -122,7 +122,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 let value = $(e.currentTarget).attr('href').replace("#", "");
                 self.triggerHandler("page_click", value);
                 if(self.options.scrollTarget) {
-                    self.options.scrollTarget.animate({"scrollTop": self.options.scrollTop }, 0);
+                    $('html, body').animate({"scrollTop": self.options.scrollTarget.offset().top}, 0);
                 } else {
                     $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
                 }

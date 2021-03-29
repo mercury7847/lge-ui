@@ -15,34 +15,51 @@
     > .inner {
         position:relative;
         @include pc {
-            padding:80px 40px;
+            //padding:80px 40px;
+            //.background-area {
+            //    position:absolute;
+            //    top:0;
+            //    left:0;
+            //    right:0;
+            //    bottom:0;
+            //    text-align:center;
+            //    img {
+            //        width:auto;
+            //        // max-width:100%;
+            //        height:auto;
+            //        vertical-align:top;
+            //    }
+            //}
             .background-area {
-                position:absolute;
-                top:0;
-                left:0;
-                right:0;
-                bottom:0;
-                text-align:center;
+                //margin: -80px -40px;
                 img {
-                    width:auto;
-                    max-width:100%;
-                    height:auto;
+                    width: 100%;
                     vertical-align:top;
                 }
             }
-            > .animation-box {
-                position:absolute;
-                top:0;
-                left:0;
-                right:0;
-                bottom:0;
-            }
+            //> .animation-box {
+            //    position:absolute;
+            //    top:0;
+            //    left:0;
+            //    right:0;
+            //    bottom:0;
+            //}
         }
         @include mobile {
             .background-area {
                 img {
                     width: 100%;
                 }
+            }
+        }
+
+        @include pc {
+            .text-box-wrap {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                padding: 80px 40px;
             }
         }
 

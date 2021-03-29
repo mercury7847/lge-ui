@@ -43,7 +43,7 @@
 
     var beforeVisitModelFlag;
 
-    var ajaxMethod = "get";
+    var ajaxMethod = "post";
 
     function init(){
         console.log("requestRental Start!!!");
@@ -207,6 +207,9 @@
         $('#popup-delivery-address').data("exception", true);
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address", null, true);
         addressFinder = new AddressFind();
+
+        step1Block.find('input[name=detailAddress]').attr('maxlength', 50);
+        step2Block.find('input[name=detailAddress]').attr('maxlength', 50);
     }
 
     //이벤트 등록...
@@ -443,7 +446,7 @@
             e.preventDefault();
             //문자 동의 발송
 
-            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(MSG_SEND_URL);
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(MSG_SEND_URL, null, null, ajaxMethod);
         });
 
         $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
@@ -843,7 +846,7 @@
             }
             
             setInputData('installAbled', abled);
-        });
+        }, ajaxMethod);
     }
 
     //신용정보 조회...
@@ -866,7 +869,7 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
-                window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                void(window.open("", "nicePopUp", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
                 document.form_chk.param_r1.value = result.data.param_r1;
@@ -895,7 +898,7 @@
                     setInputData('creditInquire', 'N');
                 }
             }
-        });
+        }, ajaxMethod);
     }
 
     function step1LastValidation(){
@@ -959,7 +962,7 @@
             } else{
                 cardInputData = {};
             }
-        });
+        }, ajaxMethod);
     }
     //납부계좌확인...
     function setBankAbledConfirm(){
@@ -992,7 +995,7 @@
             } else{
                 bankInputData = {};
             }
-        });
+        }, ajaxMethod);
     }
 
     //ARS출금동의 신청...
@@ -1008,7 +1011,7 @@
             });
 
             setInputData('arsAgree', result.data.success);
-        });
+        }, ajaxMethod);
     }
 
     function changePrevisitRequest(abled){
@@ -1113,7 +1116,8 @@
                 appendClass: "sale"
             })
         }
-        console.log("newPriceInfo:", newPriceInfo)
+
+        if(newPriceInfo.total.price < 0) newPriceInfo.total.price = 0;
         requestInfoBlock.updatePaymentInfo(newPriceInfo);
     }
 
@@ -1132,14 +1136,21 @@
                 })
             }
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     //청약신청하기...
     function rentalRequest(){
         var chk = false;
+        //stepAccordion.expand(1, true)
+        var stepperStatus = stepAccordion.getActivate();
+        console.log()
         if(setStep1Validation()){
+            if(stepperStatus.content.length < 2) stepAccordion.expand(1, true);
+
             if(setStep2Validation()){
+                if(stepperStatus.content.length < 3) stepAccordion.expand(2, true);
+
                 if(setStep3Validation()){
                     chk = true;
                 }
@@ -1231,7 +1242,7 @@
             }
 
             lgkorUI.hideLoading();
-        });
+        }, ajaxMethod);
     }
 
     document.addEventListener('DOMContentLoaded', function () {

@@ -144,7 +144,7 @@
         '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
         '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
-        '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{item.combineText}}</span></p>'+
+        '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{#raw item.combineText}}</span></p>'+
         '                           </div>'+  
         '                           <div class="del-item">'+
         '                               <button type="button" class="btn-del" tabindex="" data-model-id="{{item.modelId}}"><span class="blind">제품 삭제</span></button>'+
@@ -431,7 +431,6 @@
             var descId = $this.data('descId');
             if(descId != "") $('#pop-estimate').find('.pop-conts .bullet-list').eq(parseInt(descId)).show();            
 
-            console.log("sumTotal:" + sum);
         }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
 
@@ -453,7 +452,6 @@
 
     function setMobilePutItemBoxStatus(isOpen, anim){
         if(window.breakpoint.isMobile){
-            console.log("setMobilePutItemBoxStatus:")
             var wraptop;
             var item = $putItemContainer.find('.ui_active_toggle');
             if(isOpen){
@@ -677,8 +675,6 @@
             blockID: idx
         }
 
-        console.log("setChangeOptionChip:", sendata)
-
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
             
@@ -689,13 +685,30 @@
             
             var blockID = result.data.blockID;
 
-            console.log("result.data :", result.data);
-            
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
             $prodListContainer.find('> ul.inner > li.item').eq(blockID).find('.price-wrap .price').text("월 " + result.data["monthPrice"] + "원");
+
+            if(sendata.tabID == 0){
+                var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+            }
         });
+    }
+    function setCliblingData(selector, list, selectId){
+
+        var selectIdx = 0;
+        var list = vcui.array.map(list, function(item, idx){
+            item['text'] =  item.siblingValue ;
+            item['value'] = item.siblingCode;
+
+            if(item.siblingCode == selectId) selectIdx = idx;
+            return item;
+        });
+        selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', selectIdx, false);
     }
 
     //색상 옵션 변경...
@@ -794,6 +807,7 @@
         });
 
         var sendata = {
+            type: "add",
             tabID: getTabID(),
             itemList: JSON.stringify(itemList)
         }
@@ -811,17 +825,14 @@
         }
         
         requestPutItem(sendata);
-
     }
 
     //담기 삭제...
     function removePutItem(id){
-        console.log(id)
-        console.log(_putItemList);
         _putItemList.splice(id, 1);
-        console.log(_putItemList);
 
         var sendata = {
+            type: "remove",
             tabID: getTabID(),
             itemList: JSON.stringify(_putItemList)
         }
@@ -863,6 +874,8 @@
                     $('.ui_total_prod .ui_carousel_slider').find('.ui_flexible_box[data-contract-flag='+result.data.contract.transModelCheck+']').eq(0).addClass('comb-type');
                 }
             }
+
+            if(sendata.type == "add") $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
 
             setPutItems(result.data);
         });
@@ -939,7 +952,6 @@
     }
 
     function setPutItemStatus(){
-        console.log("### setPutItemStatus ###");
         var leng = $putItemContainer.find('.contract-slide').children().length;
         if(leng){
             if($putItemContainer.css('display') == 'none'){
@@ -1167,7 +1179,7 @@
         };
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function() {
         init();
     });
 })();

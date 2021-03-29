@@ -100,6 +100,10 @@
                     color:#aaa !important;
                     @include font-medium;
                     font-weight:700;
+                    @include mobile {
+                        font-size:15px;
+                        line-height:23px;
+                    }
                 }	
                 &.icon {
                     .icon-text {

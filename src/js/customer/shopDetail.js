@@ -106,7 +106,6 @@
 
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(bookMarkerUrl, sendata, function(result){
                 if(result.data.success == "N"){
-                    console.log("result.data.success")
                     lgkorUI.confirm("로그인 후 이용가능 합니다.<br>로그인하시겠어요? ", {
                         title: "",
                         cancelBtnName: "아니오",

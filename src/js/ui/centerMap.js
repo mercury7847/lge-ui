@@ -119,16 +119,13 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(e){
-                        console.log("1")
                         self._onSuccessGeolocation(e);
                     }, 
                     function(e){
-                        console.log("2")
                         self._onErrorGeolocation(e);
                     }
                 );
             } else {
-                console.log("3")
                 self._onErrorGeolocation();
             }        
         },
@@ -277,7 +274,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
         _changeMarkersState: function _changeMarkersState(){
             var self = this;
-            console.log("#### _changeMarkersState ###")
+            // console.log("#### _changeMarkersState ###")
             if(!self.map) return;
             var items = self.itemArr;
             // var showItems = self._setItemVisible();
@@ -312,7 +309,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     borderWidth: 0,
                     backgroundColor: '#ffffff00',
                     disableAnchor: true,
-                    pixelOffset: {x:0, y:-25}
+                    pixelOffset: {x:3, y:-25}
                 })
                 naver.maps.Event.addListener(marker, 'click', function(e){
                     var id = $(e.overlay.icon.content).data('id');                    
@@ -337,6 +334,20 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
             else items[0].infoWindow.open(self.map, items[0].item);
+
+            self.selectedMarker(items[0].id);
+        },
+
+        resizeInfoWindow: function(id) {
+            var self = this;
+            var items;
+
+            items = self.itemArr.filter(function(item, index){
+                return item.id == id;   
+            });
+
+            // if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
+            // else items[0].infoWindow.open(self.map, items[0].item);
 
             self.selectedMarker(items[0].id);
         },
@@ -438,7 +449,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
         applyMapData: function(data){
             var self = this;
-            console.log("### applyMapData ###");
+            // console.log("### applyMapData ###");
             self.deleteMapdata();
 
             self.itemArr = [];
@@ -471,7 +482,15 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             });
 
             self._changeMarkersState();
+            self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
 
+            // if ( window.innerWidth  < 1025 && window.innerWidth  > 767) {
+            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y).destinationPoint(0,1150), {duration:460, easing:"easeOutCubic"});
+            // } else if (window.innerWidth < 768 ) {
+            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y).destinationPoint(0,750), {duration:460, easing:"easeOutCubic"});
+            // }else {
+            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
+            // }
             self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
         }
     });

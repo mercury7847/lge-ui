@@ -1,10 +1,12 @@
 
 (function(){
+
     var listItemTemplate = '<li data-id="{{id}}">' +
         '<div class="item">' +
             '<span class="branch">{{title}}</span>' +
             '<a href="{{url}}" class="title"><strong>{{address}}</strong></a>' +
             '<span class="phone">{{tel}}</span>' +
+            '<span class="detail"><a href="{{url}}" class="btn-link">상세보기</a></span>'+
             '<div class="bookmark">' +
                 '<span class="chk-bookmark-wrap">' +
                     '<input type="checkbox" id="mark-shop-{{index}}" name="mark-shop" {{#if bookmark}}checked{{/if}}>' +
@@ -92,6 +94,7 @@
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     self.$storeList.empty();
+
                     arr.forEach(function(item, index) {
                         item.index = index;
                         self.$storeList.append(vcui.template(listItemTemplate, item));

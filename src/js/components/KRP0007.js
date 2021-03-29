@@ -238,7 +238,7 @@
                             $(window).ready(function(){
                                 setTimeout(function(){
                                     $(window).scrollTop($li.offset().top);
-                                }, 500);
+                                }, 300);
                             });
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
@@ -470,6 +470,9 @@
                         totalCount: totalCount,
                         page: page
                     });
+                } else {
+                    //아예 데이타가 없다
+                    self.$btnMore.hide();
                 }
             },
 
