@@ -6,18 +6,20 @@
 .KRP0007 {
     margin:0 auto;
     @include clearfix;
-    .cate-wrap {      
+    .cate-wrap {
         //height:102px;
         //padding:45px 0 21px;
         background:#fff;
         //border-bottom: 8px solid #f4f4f4;
         @include tablet {
+            min-height: 76px;
             border-bottom: 1px solid $color-border;
         }
-        //@include mobile {
+        @include mobile {
+            min-height: 65px;
         //    height: auto;
         //    padding: 24px 0 12px;
-        //}
+        }
         .cate-list {
             position: relative;          
             @include clearfix;
