@@ -207,6 +207,9 @@
         $('#popup-delivery-address').data("exception", true);
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address", null, true);
         addressFinder = new AddressFind();
+
+        step1Block.find('input[name=detailAddress]').attr('maxlength', 50);
+        step2Block.find('input[name=detailAddress]').attr('maxlength', 50);
     }
 
     //이벤트 등록...
