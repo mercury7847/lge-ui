@@ -869,7 +869,7 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
-                window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                void(window.open("", "nicePopUp", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
                 document.form_chk.param_r1.value = result.data.param_r1;

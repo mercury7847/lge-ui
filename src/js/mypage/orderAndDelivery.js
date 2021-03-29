@@ -1819,14 +1819,21 @@
             var discountPrices = 0;
             var mempointPrices = 0;
             var productTotalPrices = 0;
-            var productList = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData[0].productList : result.data.careListData[0].productList;
+            var getListData = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData : result.data.careListData;
+            var productList = getListData[0].productList;
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
                 
                 addPopProdductList(popup, productList, true);
+
+                console.log("getListData[0].bundleCancelYn:", getListData[0].bundleCancelYn);
+
+                var isAllChecked = false;
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
+                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
                 
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered"){
+                if(isAllChecked){
                     for(var idx in PRICE_INFO_DATA){
                         if(productList[idx].itemCancelAbleYn != "N"){
                             originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
@@ -1952,6 +1959,7 @@
     function addPopProdductList(popup, productList, isCheck){
         var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
+        var isQuantity = TAB_FLAG == TAB_FLAG_CARE ? true : false;
         for(var idx in productList){
             var listdata = productList[idx];
             listdata["prodID"] = idx;
@@ -1985,7 +1993,7 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:false}));
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -2076,6 +2084,8 @@
             var newProductList = {};
             for(var idx in prodlist){
                 var ordernum = prodlist[idx].orderNumber;
+                if(!ordernum) ordernum = "noneOrderNumber";
+
                 var match = "";
                 for(var str in newProductList){
                     if(ordernum == str){
@@ -2103,42 +2113,42 @@
             }
         }
 
-        console.log("### " + sendata.callType + " ###", sendRealData);
-        lgkorUI.showLoading();
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
-            lgkorUI.hideLoading();
+        console.log("### " + sendata.callType + " ###", orderList);
+        // lgkorUI.showLoading();
+        // lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
+        //     lgkorUI.hideLoading();
 
-            popup.vcModal('close');
+        //     popup.vcModal('close');
 
-            if(result.status == "fail"){
-                lgkorUI.alert("", {
-                    title: result.message
-                });
-            } else{
-                if(result.data.success == "N"){
-                    if(result.data.alert){
-                        lgkorUI.alert("", {
-                            title: result.data.alert.title
-                        });
-                    } else{
-                        lgkorUI.alert("", {
-                            title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
-                        });
-                    }
-                } else{
-                    if(PAGE_TYPE == PAGE_TYPE_LIST){
-                        var box = $('.box[data-id=' + dataId + ']');
-                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
+        //     if(result.status == "fail"){
+        //         lgkorUI.alert("", {
+        //             title: result.message
+        //         });
+        //     } else{
+        //         if(result.data.success == "N"){
+        //             if(result.data.alert){
+        //                 lgkorUI.alert("", {
+        //                     title: result.data.alert.title
+        //                 });
+        //             } else{
+        //                 lgkorUI.alert("", {
+        //                     title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
+        //                 });
+        //             }
+        //         } else{
+        //             if(PAGE_TYPE == PAGE_TYPE_LIST){
+        //                 var box = $('.box[data-id=' + dataId + ']');
+        //                 box.find('.orderCancel-btn, .requestOrder-btn').remove();
     
-                        var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
-                        for(var idx in matchIds){
-                            var block = box.find('.tbody .row').eq(matchIds[idx]);
-                            block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
-                        }
-                    } else reloadOrderInquiry();
-                }
-            }
-        });
+        //                 var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
+        //                 for(var idx in matchIds){
+        //                     var block = box.find('.tbody .row').eq(matchIds[idx]);
+        //                     block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
+        //                 }
+        //             } else reloadOrderInquiry();
+        //         }
+        //     }
+        // });
     }
 
     //영수증 발급내역...
