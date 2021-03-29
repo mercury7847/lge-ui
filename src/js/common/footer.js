@@ -107,9 +107,9 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 $('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
                     $(item).find('> a').on('click', function(e){
-                        console.log($(e.currentTarget).closest('.btn_open').length)
+                        // console.log($(e.currentTarget).closest('.btn_open').length)
                         if(!$(e.currentTarget).closest('.btn_open').length){
-                            console.log(this)
+                            // console.log(this)
                             var href = $(e.currentTarget).attr('href');
                             location.href =href;
                         }

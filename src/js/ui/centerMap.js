@@ -119,16 +119,13 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(e){
-                        console.log("1")
                         self._onSuccessGeolocation(e);
                     }, 
                     function(e){
-                        console.log("2")
                         self._onErrorGeolocation(e);
                     }
                 );
             } else {
-                console.log("3")
                 self._onErrorGeolocation();
             }        
         },
@@ -277,7 +274,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
         _changeMarkersState: function _changeMarkersState(){
             var self = this;
-            console.log("#### _changeMarkersState ###")
+            // console.log("#### _changeMarkersState ###")
             if(!self.map) return;
             var items = self.itemArr;
             // var showItems = self._setItemVisible();
@@ -452,7 +449,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
         applyMapData: function(data){
             var self = this;
-            console.log("### applyMapData ###");
+            // console.log("### applyMapData ###");
             self.deleteMapdata();
 
             self.itemArr = [];

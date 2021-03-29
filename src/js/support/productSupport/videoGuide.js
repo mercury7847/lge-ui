@@ -84,16 +84,13 @@
                     keywordList: '<li><a href="#">{{keyword}}</a></li>'
                 }
             });
-            self.$cont.commonModel({
-                selected: self.param
-            });
             self.$resultPagination.pagination({
                 pageCount: 5
             });
-        
-            if (!self.param.subCategory) {
-                self.$cont.commonModel('complete');
-            }
+
+            vcui.require(['support/common/searchModel.min'], function () {
+                self.$cont.vcSearchModel();
+            });
         },
         setPopularKeyword: function(data) {
             var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
@@ -212,22 +209,17 @@
                     self.drawTopicList(data);
                     self.drawSubTopicList(data);
 
-                    self.$cont.commonModel('updateSummary', {
+                    self.$cont.vcSearchModel('updateSummary', {
                         product: [self.param.categoryNm, self.param.subCategoryNm, self.param.modelCode],
                         reset: 'product'
                     });
                 } else {
-                    self.$cont.commonModel('updateSummary', {
+                    self.$cont.vcSearchModel('updateSummary', {
                         tit: '서비스이용을 위해 제품을 선택해 주세요.',
                         reset: 'noProduct'
                     });
                 }
-                
-                self.$myProductWarp.hide();
-                self.$cont.commonModel('next', self.$stepInput);
-                self.$cont.commonModel('focus', self.$productBar, function() {
-                    self.$productBar.vcSticky();
-                });
+            
             });
         },
         requestSubTopic: function() {
@@ -258,9 +250,7 @@
             self.$cont.on('reset', function(e) {
                 self.param = $.extend(true, {}, self.options);
 
-                self.$cont.commonModel('next', self.$stepModel);
                 self.$resultSummary.hide();
-                self.isLogin && self.$myProductWarp.show();
 
                 self.$searchTopic.find('option:not(.placeholder)').remove();
                 self.$searchSubTopic.find('option:not(.placeholder)').remove();
@@ -273,9 +263,9 @@
             self.$cont.on('complete', function(e, data) {
                 var param = {
                     category: data.category,
-                    categoryNm: data.categoryNm || data.categoryName,
+                    categoryNm: data.categoryNm,
                     subCategory: data.subCategory,
-                    subCategoryNm: data.subCategoryNm || data.subCategoryName,
+                    subCategoryNm: data.subCategoryNm,
                     modelCode: data.modelCode,
                     productCode: data.productCode,
                     page: data.page || 1

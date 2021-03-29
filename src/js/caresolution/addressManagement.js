@@ -433,7 +433,7 @@ var AddressManagement = (function() {
                     var ajaxUrl = self.$content.attr('data-remove-url');
                     var param = {addressID:addressID, page:self.$pagination.attr("data-page")};
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                        console.log("### remove ###")
+                        // console.log("### remove ###")
                         self._updateList(result);
                     });
 

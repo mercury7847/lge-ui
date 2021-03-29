@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H64V64H0z" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32)"/>
+                                <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <g stroke="#DA0F47">
+                                        <path d="M1.33 9.247C-.68 6.043-.412 3.26 2.135.9 5.322-1.316 9.655.56 15.133 6.53" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6) rotate(-14 39.146 -2.173)"/>
+                                        <path d="M22.938 9.15c-1.943-3.164-1.654-5.914.868-8.25C26.99-1.316 31.323.56 36.8 6.527" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6) rotate(-14 39.146 -2.173) matrix(-1 0 0 1 58.47 0)"/>
+                                        <path d="M15.2 8.4v-.8c0-1.105.895-2 2-2h2.4c1.105 0 2 .895 2 2v.8" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6) rotate(-14 39.146 -2.173)"/>
+                                    </g>
+                                    <path stroke="#000" d="M22.28 24.8H48v22.8c0 1.105-.895 2-2 2H8.4c-1.105 0-2-.895-2-2V28.735" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6)"/>
+                                    <g stroke="#000">
+                                        <path d="M2 0h42.4c1.105 0 2 .895 2 2v8.4h0H0V2C0 .895.895 0 2 0z" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6) rotate(-14 78.982 8.742)"/>
+                                        <path d="M16.8 0H29.6V10.4H16.8z" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6) rotate(-14 78.982 8.742)"/>
+                                    </g>
+                                    <path stroke="#000" d="M22.4 24.8H32V49.6H22.4z" transform="translate(-402 -931) translate(0 695) translate(270 120) translate(0 84) translate(132 32) translate(6 6)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
