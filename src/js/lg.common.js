@@ -1238,19 +1238,20 @@ var isApp = function(){
                         var data = result.data;
                         if(data && !Array.isArray(data) && typeof data === 'object') {
                             if(!data.success && !(typeof(data.success) === "boolean")) {
-                                data.success = "N";
-                                result.data = data;
+                                result.data.success = "N";
                             }
-                        }
-                        // else {
+                        } else {
                         //     if(result.message) {
                         //         lgkorUI.alert("", {
                         //             title: result.message
                         //         });
                         //         //result.message = null;
                         //     }
-                        //     result.data = {"success" : "N"};
-                        // }
+                        //result.data = {"success" : "N"};
+                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                                result.data.success = "N";
+                            }
+                        }
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
                         var data = result.data;
