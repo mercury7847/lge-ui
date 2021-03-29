@@ -812,6 +812,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -833,6 +840,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -858,6 +872,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -879,6 +900,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -901,6 +929,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -929,6 +964,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
