@@ -73,7 +73,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function
 
                 var docheight = $(document).outerHeight(true);
                 if(self.docHeight != docheight){
-                    console.log("### update ###");
+                    //console.log("### update ###");
                     self.update();
                     self.docHeight = $(document).outerHeight(true);
                 }
