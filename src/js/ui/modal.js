@@ -80,7 +80,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(false);
+                lgkorUI.appIsLayerPopup(false);
                 
             }
         },
@@ -109,7 +109,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(true);
+                lgkorUI.appIsLayerPopup(true);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -445,6 +445,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
 
+
                 // 버튼
                 /**************if (me.options.opener) {
                     var modalid;
@@ -457,10 +458,16 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             });
 
             if(opts.isHash){
+
+                // window.removeEventListener('popstate',this._hashchange.bind(this));
+                // window.addEventListener('popstate',this._hashchange.bind(this));
+
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 window.addEventListener("hashchange", this._hashchange.bind(this));
                 self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
                 window.location.hash += "#"+self.randomKey;
+
+
             }
             
         
@@ -501,6 +508,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             defer.done(function () {
+
+                
+
                 self.trigger('modalhidden', {
                     module: self
                 });
@@ -521,11 +531,14 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 ////// $('body').removeAttr('aria-hidden');    // 비활성화를 푼다.
 
                 self.destroy();
+
             });
             
 
-
+            
             if(self.options.isHash){
+
+                
                 window.removeEventListener("hashchange", this._hashchange.bind(this));
                 var hash = window.location.hash;
                 hash = hash.replace("#"+self.randomKey, '');
@@ -534,14 +547,15 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }else{
                     window.location.hash = hash;
                 }
+                
             }
 
             
         },
 
         _removeLocationHash : function(){
-            var noHashURL = window.location.href.replace(/#.*$/, '');
-            window.history.replaceState('', document.title, noHashURL) 
+            // var noHashURL = window.location.href.replace(/#.*$/, '');
+            // window.history.replaceState('', document.title, noHashURL) 
         },
 
         
