@@ -479,6 +479,7 @@
 			}
 		}
 		.plan-exhib-slide {
+			padding-bottom:32px;
 			.inner {
 				.product-info {
 					position:absolute;
@@ -873,6 +874,7 @@
 			}
 		}
 		.product-recom-slide {
+			padding-bottom:32px;
 			.slide-content {
 				.slide-conts {
 					padding:12px;
@@ -978,9 +980,9 @@
 				}
 			}
 			.tabs-contents {
-				padding:32px 0;
+				padding:32px 0 40px;
 				background-color:#f4f4f4;
-				.slide-wrap {
+				.slide-wrap.slide-solo {
 					padding-bottom: 0;
 				}
 				.category-list {
@@ -1131,6 +1133,7 @@
 				}
 			}
 			.plan-exhib-slide {
+				padding-bottom:24px;
 				.inner {
 					> .img {
 						height:600px;
@@ -1299,6 +1302,7 @@
 				}
 			}
 			.product-recom-slide {
+				padding-bottom:0;
 				.slide-content {
 					.slide-conts {
 						padding:6px 16px;
