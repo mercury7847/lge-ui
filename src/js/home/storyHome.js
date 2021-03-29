@@ -234,7 +234,7 @@
         }
         var section = $(item).closest('.story-section');
 
-        console.log(section.attr('class'), " [selectTags:", selectTags, ']');
+        // console.log(section.attr('class'), " [selectTags:", selectTags, ']');
 
         if(section.hasClass('user_story')){
             if(selectTags.mode == "search"){
@@ -254,7 +254,7 @@
             type: type,
             selectTags: selectTag ? selectTag : ""
         }
-        console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
+        // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
             console.log("### requestAjaxData ###", result);
 
@@ -277,7 +277,7 @@
             if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
             else sectionItem.find('.btn-moreview').show();
             
-            console.log("result.data.selectTags:", result.data.selectTags);
+            // console.log("result.data.selectTags:", result.data.selectTags);
             if(result.data.selectTags){
                 sectionItem.find('.inner h2.title').hide();
                 
@@ -304,8 +304,8 @@
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
-                console.log("page:", page);
-                console.log("result.data.recommendTags:", result.data.recommendTags);
+                // console.log("page:", page);
+                // console.log("result.data.recommendTags:", result.data.recommendTags);
                 if(page == 1 && result.data.recommendTags){
                     var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
@@ -329,7 +329,7 @@
         sectionItem.data("imgLoadId", imgLoadId);
 
         if(imgLoadId == imgLoadTotal){
-            console.log("### img load complete ###");
+            // console.log("### img load complete ###");
 
             setRepositionTagBox(sectionItem);
             
@@ -390,7 +390,7 @@
                 }
             }
             var boxleft = raw * (status.boxwidth + status.distance);
-            console.log("status.boxwidth:", status.boxwidth)
+            // console.log("status.boxwidth:", status.boxwidth)
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
@@ -424,7 +424,7 @@
             boxwidth = wrapwidth;
         }
         
-        console.log(wrapwidth, boxwidth)
+        // console.log(wrapwidth, boxwidth)
 
         return {
             rawnum: rawnum,

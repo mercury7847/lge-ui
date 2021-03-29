@@ -206,8 +206,8 @@
             self.$surveyPopup = $('#surveyPopup');
             self.$fileDetailPopup = $('#fileDetailPopup');
 
-            if (vcui.detect.isMobileDevice) {
-                vcui.require(['ui/validation'], function () {
+            vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
+                if (vcui.detect.isMobileDevice) {
                     var emailRegister = {
                         userEmail : {
                             required: true,
@@ -234,36 +234,18 @@
                     }
     
                     self.emailValidate = new vcui.ui.CsValidation('#fileSendToEmail', {register:emailRegister});
+                }
 
-                    self.setting();
-                    self.bindEvent();
-
-                    if (!self.isPSP) {
-                        self.$cont.commonModel({
-                            register: {},
-                            selected: self.param
-                        });
-                    }
-
-                    self.$manualPagination.data('page', 1);
-                    self.$driverPagination.pagination();
-                });
-            } else {
                 self.setting();
                 self.bindEvent();
 
                 if (!self.isPSP) {
-                    self.$cont.commonModel({
-                        register: {},
-                        selected: self.param
-                    });
+                    self.$cont.vcSearchModel({model:self.param});
                 }
 
                 self.$manualPagination.data('page', 1);
                 self.$driverPagination.pagination();
-            }
-
-            
+            });
         },
         setting: function() {
             var self = this;
@@ -441,7 +423,7 @@
                 self.setDriverList(data.driver);
                 self.setOsActive(data.driver.osOption)
 
-                self.$cont.commonModel('updateSummary', {
+                self.$cont.vcSearchModel('updateSummary', {
                     product: [param.categoryNm, param.subCategoryNm, param.modelCode],
                     reset: 'product'
                 });
@@ -460,10 +442,6 @@
                 //만족도 평가 박스 모델코드 삽입
                 self.setSurvey(data.satisfy);
 
-                self.$cont.commonModel('next', self.$stepInput);
-                self.$cont.commonModel('focus', self.$selectedModelBar, function() {
-                    self.$selectedModelBar.vcSticky();
-                });
                 lgkorUI.hideLoading();
             });
         },
@@ -501,9 +479,6 @@
                     type: 'driver'
                 });
 
-                self.isLogin && self.$myModelWrap.show();
-                self.$cont.commonModel('next', self.$stepModel);
-                
                 self.$manualSec.find('.download-list').empty();
                 self.$manualPagination.data('page', 1);
 
@@ -520,9 +495,9 @@
             self.$cont.on('complete', function(e, data) {    
                 var param = {
                     category: data.category,
-                    categoryNm: data.categoryName,
+                    categoryNm: data.categoryNm,
                     subCategory: data.subCategory,
-                    subCategoryNm: data.subCategoryName,
+                    subCategoryNm: data.subCategoryNm,
                     modelCode: data.modelCode,
                     productCode: data.productCode
                 };

@@ -602,14 +602,9 @@ $(function () {
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
-
-                console.log(currentPage);
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-
-                    console.log(currentPage);
-
                     moveScene(currentPage,0);
                 }, 100);
             }
