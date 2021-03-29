@@ -238,7 +238,7 @@
                             $(window).ready(function(){
                                 setTimeout(function(){
                                     $(window).scrollTop($li.offset().top);
-                                }, 500);
+                                }, 300);
                             });
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
