@@ -1989,6 +1989,29 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // history back 사용하기
+        addHistoryBack:function(cid, callback){
+
+            var uid = '.history-back-'+cid;
+
+            $(window).off('popstate'+uid).on('popstate'+uid, function(){      
+                var state = window.history.state;
+                if(state.data && state.data == uid){
+                    if(callback && vcui.isFunction(callback)) callback.call(this);
+                    $(window).off('popstate'+uid);
+                }
+            });
+
+            window.history.replaceState({ data: uid }, null, null);
+            window.history.pushState({ data: uid+'-open' }, null, null);
+
+        },
+
+        removeHistoryBack:function(cid){
+            var uid = '.history-back-'+cid;
+            $(window).off('popstate'+uid);
         }
 
         

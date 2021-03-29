@@ -458,16 +458,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             });
 
             if(opts.isHash){
-
-                // window.removeEventListener('popstate',this._hashchange.bind(this));
-                // window.addEventListener('popstate',this._hashchange.bind(this));
-
-                window.removeEventListener("hashchange", this._hashchange.bind(this));
-                window.addEventListener("hashchange", this._hashchange.bind(this));
-                self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
-                window.location.hash += "#"+self.randomKey;
-
-
+                lgkorUI.addHistoryBack(self.cid, function(){
+                    self.close();
+                });
             }
             
         
@@ -534,28 +527,18 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             });
             
-
-            
-            if(self.options.isHash){
-
-                
-                window.removeEventListener("hashchange", this._hashchange.bind(this));
-                var hash = window.location.hash;
-                hash = hash.replace("#"+self.randomKey, '');
-                if(hash=='') {
-                    self._removeLocationHash();
-                }else{
-                    window.location.hash = hash;
-                }
-                
+            if(self.options.isHash){                
+                lgkorUI.removeHistoryBack(self.cid);
             }
+
+
 
             
         },
 
         _removeLocationHash : function(){
-            // var noHashURL = window.location.href.replace(/#.*$/, '');
-            // window.history.replaceState('', document.title, noHashURL) 
+            var noHashURL = window.location.href.replace(/#.*$/, '');
+            window.history.replaceState('', document.title, noHashURL) 
         },
 
         
