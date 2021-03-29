@@ -30,7 +30,7 @@
         var myWrite = {
             init: function() {
                 var self = this;
-                vcui.require(['ui/pagination','ui/validation','ui/datePeriodFilter'], function () {
+                vcui.require(['ui/pagination'/*,'ui/validation'*/,'ui/datePeriodFilter'], function () {
                     self.setting();
                     self.bindEvents();
                     self.checkNoData();
@@ -204,7 +204,7 @@
 
             requestModal: function(dm) {
                 var self = this;
-                var ajaxUrl = $(dm).attr('href');
+                var ajaxUrl =  encodeURI($(dm).attr('href'));
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                     self.openModalFromHtml(result);
                 }, null, "html");
