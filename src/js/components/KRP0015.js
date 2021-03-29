@@ -106,7 +106,9 @@ $(window).ready(function(){
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var leng = !storageCompare ? 0 : storageCompare.length;
             if(leng){
-                var limit = window.breakpoint.name == "mobile" ? 2 : 3;
+                //0329 1개 이상이면 열기로 바뀜
+                var limit = 1;
+                //var limit = window.breakpoint.name == "mobile" ? 2 : 3;                
                 if(_$('.KRP0015').css('display') == 'none'){
                     var height = _$('.KRP0015').outerHeight(true);
                     _$('.KRP0015').css({display:'block', y:height});

@@ -493,6 +493,10 @@
                         left:0;
                         max-width:calc(100% - 120px);
                         margin-top:0;
+                        &.err-address-install {
+                            position:static;
+                            margin-top:8px;
+                        }
                     }
                     .comp {
                         position:absolute;
