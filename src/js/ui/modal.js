@@ -80,7 +80,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.appIsLayerPopup(false);
+                lgkorUI.appIsLayerPopup(true);
                 
             }
         },
@@ -109,7 +109,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.appIsLayerPopup(true);
+                lgkorUI.appIsLayerPopup(false);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
