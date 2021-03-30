@@ -105,14 +105,22 @@
             self.$popup.show();
             self.$popup.removeClass('close');
             self.$popup.addClass('open');
-            //
-            self.bodyOvewflow = $('body').css('overflow').toLowerCase();
-            self.ignoreOverflow = (self.bodyOvewflow != "hidden");
-            if(vcui.detect.isMobile) { 
-                if(self.ignoreOverflow){
-                    $('html, body').css({
-                        overflow:"hidden"
-                    });
+
+            self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
+            if(!self.ignoreOverflowForce){
+                self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+            } else {
+                self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+                self.ignoreOverflow = (self.bodyOvewflow != "hidden");
+                if(vcui.detect.isMobile) { 
+                    if(self.ignoreOverflow){
+                        $('html, body').css({
+                            overflow:"hidden"
+                        });
+                    }
                 }
             }
         },
@@ -124,7 +132,17 @@
             self.$popup.removeClass('open');
             self.$popup.hide();
             //
-            if(vcui.detect.isMobile){
+            if(self.ignoreOverflowForce) {
+                if(self.bodyOvewflow) {
+                    $('html, body').css({
+                        overflow:self.bodyOvewflow
+                    });
+                } else {
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
+            } else if(vcui.detect.isMobile){
                 if(self.ignoreOverflow) {
                     if(self.bodyOvewflow) {
                         $('html, body').css({
