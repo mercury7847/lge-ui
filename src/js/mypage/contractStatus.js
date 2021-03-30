@@ -836,7 +836,9 @@
                 requestPartnerCardYn = "";
 
                 var viewertop = $('.sects.payment.viewer').offset().top;
-                $('html, body').animate({scrollTop:viewertop}, 200)
+                $('html, body').animate({scrollTop:viewertop}, 200, function(){
+                    setRequestCard();
+                })
             } else{
                 $('html, body').animate({scrollTop:0}, 220);
             }
