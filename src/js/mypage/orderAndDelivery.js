@@ -1426,6 +1426,20 @@
 
                 monthpayment.maskingTransAccountNum = monthpayment.transType == METHOD_BANK ? txtMasking.substr(monthpayment.transAccountNum, 6) : txtMasking.card(monthpayment.transAccountNum);
 
+                //납부정보 변경 버튼 유무..
+                if(monthpayment.cancelFlag == "Y") monthpayment.isChangePayment = false;
+                else{
+                    var listData = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? CARE_LIST[0] : ORDER_LIST[0];
+                    var cancelProdList = vcui.array.filter(listData.productList, function(item){
+                        return item.itemStatus != "Cancel Refunded";
+                    });
+                    console.log("### cancelProdList:", cancelProdList.length);
+
+                    if(cancelProdList.length) monthpayment.isChangePayment = true;
+                    else monthpayment.isChangePayment = false;
+                }
+                console.log("### monthpayment.isChangePayment:", monthpayment.isChangePayment);
+
                 MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
 
                 paymentBlockInit();
@@ -1678,6 +1692,9 @@
         if($listBox.length > 0) {
             leng = Object.keys(MONTHLY_PAYMENT_DATA).length;
             if(leng){
+                if(MONTHLY_PAYMENT_DATA.isChangePayment) $listBox.find('.changePayment-btn').show();
+                else $listBox.find('.changePayment-btn').hide();
+                
                 $listBox.show().find('ul').html(vcui.template(monthlyPaymentTemplate, MONTHLY_PAYMENT_DATA));
             } else{
                 $listBox.hide();
