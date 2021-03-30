@@ -84,29 +84,31 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.isLogin = result.data.isLogin;
                 self.$el.find('.login-info').css('display', 'none');
 
-                // console.log("### isLogin:", self.isLogin)
-
                 if(self.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
                     if(result.data.name) {
                         self.$el.find('.login-info.after-login > a:not(".btn-logout")').html('<span>' + result.data.name + '</span>님 안녕하세요');
                     }
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').hide();
-                        self.$el.find('.btm-after-login').show();
+                    if(self.displayMode){
+                        if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                        else{
+                            self.$el.find('.btm-before-login').hide();
+                            self.$el.find('.btm-after-login').show();
+                        }
                     }
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').show();
-                        self.$el.find('.btm-after-login').hide();
+                    if(self.displayMode){
+                        if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
+                        else{
+                            self.$el.find('.btm-before-login').show();
+                            self.$el.find('.btm-after-login').hide();
+                        }
                     }
                 }
-            });
+            }, false, true);
         },
 
         _setting: function(){
@@ -203,6 +205,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         self.$el.find('.mypage.before-login').css('display', 'inline-block');
                     }
                 }
+
+
+                self.$el.find('.btm-before-login').hide();
+                self.$el.find('.btm-after-login').hide();
 
                 self._arrowState();
             } else{
@@ -329,7 +335,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             $('header').on('mouseleave', function(){
-                // console.log('leave')
                 self._setOut();
             })
 

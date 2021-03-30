@@ -1281,11 +1281,15 @@
                     list[idx].orderNumberTitle = "주문번호";
                     list[idx].groupNumber = list[idx].orderNumber;
 
-
+                    var chk = 0;
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+
+                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
                     }
+
+                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
                         list[idx].apiType = "OBS";
@@ -1308,11 +1312,16 @@
                     list[idx].orderNumberTitle = "계약 요청 번호";
                     list[idx].groupNumber = list[idx].requestNo ? list[idx].requestNo : list[idx].orderNumber;
 
+                    var chk = 0;
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         var rowTotal = list[idx].productList[cdx]["rowTotal"];
                         list[idx].productList[cdx]["addCommaProdPrice"] = rowTotal ? vcui.number.addComma(rowTotal) : "0";
+
+                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
                     }
+
+                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
 
                     CARE_LIST.push(list[idx]);
                 }
@@ -1321,10 +1330,10 @@
             //배송정보
             if(data.shipping) {
                 var shipping = data.shipping;
-                shipping.maskingName = txtMasking.name(shipping.name);
-                shipping.maskingAddress = txtMasking.substr(shipping.city + " " + shipping.street,14);
-                shipping.maskingTelephone = txtMasking.phone(shipping.telephone);
-                shipping.maskingTelephonenumber = txtMasking.phone(shipping.telephonenumber);
+                shipping.maskingName = shipping.name;
+                shipping.maskingAddress = shipping.city + " " + shipping.street;
+                shipping.maskingTelephone = shipping.telephone;
+                shipping.maskingTelephonenumber = shipping.telephonenumber;
                 shipping.instpectionVisit = lgkorUI.stringToBool(shipping.instpectionVisit);
                 shipping.recyclingPickup = lgkorUI.stringToBool(shipping.recyclingPickup);
 
@@ -1356,9 +1365,9 @@
             if(data.orderUser) {
                 var orderusers = data.orderUser;
                 orderusers.nameTitle = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? "성명" : "주문하는 분";
-                orderusers.userName = txtMasking.name(orderusers.userName);
-                orderusers.phoneNumber = txtMasking.phone(orderusers.phoneNumber);
-                orderusers.email = txtMasking.email(orderusers.email);
+                orderusers.userName = orderusers.userName;
+                orderusers.phoneNumber = orderusers.phoneNumber;
+                orderusers.email = orderusers.email;
 
                 ORDER_USER_DATA = vcui.clone(orderusers);
             }
