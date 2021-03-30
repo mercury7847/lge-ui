@@ -719,6 +719,8 @@
             }
         });
 
+        lgkorUI.addLimitedInputEvent($('input[name=birthDt]'));
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
@@ -767,7 +769,20 @@
     }
 
     function getBankBnumberValidation(popname){
-        var bankValue = $('#' + popname).find('.bank-input-box select option:selected').val();
+        var bankValue;
+
+        if($('#' + popname).data('isBirthDt')){
+            bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            if(!bankValue){
+                lgkorUI.alert("", {
+                    title: "생년월일을 입력해 주세요."
+                });
+    
+                return false;
+            }
+        }
+
+        bankValue = $('#' + popname).find('.bank-input-box select option:selected').val();
         if(!bankValue){
             lgkorUI.alert("", {
                 title: "환불계좌 은행을 선택해 주세요."
@@ -1542,7 +1557,7 @@
             sendata.confirmType = METHOD_BANK;
         }
         
-        console.log("paymentMethodAbled(); sendata :", sendata);
+        console.log("paymentMethodAbled(); sendata :", sendata, PAYMENT_METHOD_CONFIRM);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### requestAjaxData ###", result);
             lgkorUI.alert(result.data.alert.desc, {
@@ -1795,6 +1810,9 @@
             paymentBankNumber: $('#'+popname).find('.bank-input-box input').val(),
             paymentBank: $('#'+popname).find('.bank-input-box select option:selected').val()
         }
+
+        if($('#'+popname).data('isBirthDt')) sendata.birthDt = $('#' + popname).find('input[name=birthDt]').val();
+
         console.log("### sendBankConfirm ###", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PAYMENT_METHOD_CONFIRM, sendata, function(result){
             console.log("### sendBankConfirm complete", result);
@@ -1991,9 +2009,10 @@
     
                 popup.find('.chk-wrap.bottom input[type=checkbox]').prop("checked", false);
 
-                var uname;
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) uname = result.data.orderUser.userName;
+                var uname, isBirthDt = false;
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) isBirthDt = true, uname = result.data.orderUser.userName;
                 else uname = result.data.payment.bankAccountNm;
+                popup.data('isBirthDt', isBirthDt);
                 popup.data("userName", uname);
                 popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(uname);
 
@@ -2101,6 +2120,10 @@
         if(popup.data("isBank")){
             bankName = popup.find('.bank-input-box select option:selected').val();
             bankAccountNo = popup.find('.bank-input-box input').val();
+
+            paymentUser = popup.data('userName');
+
+            birthDt = popup.data('isBirthDt') ? popup.find('input[name=birthDt]').val() : "";
         }
 
         var reasonId = popname == "popup-cancel" ? "cancelReason" : "slt01";
@@ -2115,6 +2138,9 @@
             requestNo: requestNo,
             apiType: apiType,
             tabFlag: TAB_FLAG,
+
+            paymentUser: paymentUser,
+            birthDt: birthDt,
 
             bankName: bankName,
             bankAccountNo: bankAccountNo,
@@ -2166,7 +2192,7 @@
             }
         }
 
-        console.log("### " + sendata.callType + " ###", orderList);
+        console.log("### " + sendata.callType + " ###", sendRealData);
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();
