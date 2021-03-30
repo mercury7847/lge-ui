@@ -802,7 +802,7 @@
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
-                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
