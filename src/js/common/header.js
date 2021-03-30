@@ -150,11 +150,31 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
 
                 self._menuToggle();
+                var active = self.$hamburger.hasClass('active');
+                if(active){
+                    lgkorUI.addHistoryBack(self.cid, function(){
+                        self._menuToggle();
+                    });
+                }else{
+                    lgkorUI.removeHistoryBack(self.cid)
+                }
+
             });
 
             $(window).on('resizeend', function(){
                 self._resize();
             });
+
+            // window.addEventListener('popstate', function () {
+            //     console.log('popstate', history.state);
+
+            //     var state = history.state;
+            //     if(state.data && state.data == 'gnb-open-replace'){
+            //         self._menuToggle();
+            //     }
+            //     //document.querySelector('#state').innerHTML = JSON.stringify(history.state);
+            // });
+
 
             $('.mobile-category-container .category').vcSmoothScroll();
 
