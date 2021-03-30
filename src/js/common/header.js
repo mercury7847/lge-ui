@@ -169,17 +169,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._resize();
             });
 
-            // window.addEventListener('popstate', function () {
-            //     console.log('popstate', history.state);
-
-            //     var state = history.state;
-            //     if(state.data && state.data == 'gnb-open-replace'){
-            //         self._menuToggle();
-            //     }
-            //     //document.querySelector('#state').innerHTML = JSON.stringify(history.state);
-            // });
-
-
+           
             $('.mobile-category-container .category').vcSmoothScroll();
 
             $('.mobile-nav-wrap.is-depth > a.nav-item').on('click', function(e){
