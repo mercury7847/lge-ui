@@ -1,241 +1,770 @@
-    @charset "UTF-8";
-    @import "../../utilities/variables";
-    @import "../../utilities/mixins";
-    //오브제 메인
-    .objet-main {
-        @import "OBJ0100";
+@charset "UTF-8";
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+//오브제 메인
+.objet-main {
+    @import "OBJ0100";
+}
+
+//공간체험
+.space_pc {
+    @import "OBJ0301";
+}
+
+.space_mobi {
+    @import "OBJ0301_mobi";
+}
+
+//제품체험
+.model_experience {
+    @import "OBJ0302";
+}
+
+//갤러리
+.objet.gallery {
+    background: #f0eeee;
+    @import "OBJ0400";
+}
+
+//브랜드스토리
+.brand_story {
+    position: relative;
+    z-index: 1;
+    @import "OBJ0105";
+}
+
+@media (min-width:768px) {
+    .btnMobi {
+        display: none;
     }
-    
-    //공간체험
-    .space_pc {
-        @import "OBJ0301";
+    .only_pc {
+        display: block;
     }
-    
-    .space_mobi {
-        @import "OBJ0301_mobi";
+    .only_mobile {
+        display: none;
     }
-    
-    //제품체험
-    .model_experience {
-        @import "OBJ0302";
+}
+
+@media (max-width:767px) {
+    .only_pc {
+        display: none;
     }
-    
-    //갤러리
-    .objet.gallery {
-        background: #f0eeee;
-        @import "OBJ0400";
+    .only_mobile {
+        display: block;
     }
-    
-    //브랜드스토리
-    .brand_story {
-        position: relative;
-        z-index: 1;
-        @import "OBJ0105";
-    }
-    
-    @media (min-width:768px) {
-        .btnMobi {
-            display: none;
-        }
-        .only_pc {
-            display: block;
-        }
-        .only_mobile {
-            display: none;
-        }
-    }
-    
-    @media (max-width:767px) {
-        .only_pc {
-            display: none;
-        }
-        .only_mobile {
-            display: block;
-        }
-    }
-    
-    .sub-main {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .brand-wrap {
-        .objetcollection-tabs {
-            background-color: $color-bg-wt;
-            .tabs-wrap {
-                max-width: 1380px + 80px;
-                margin: 0 auto;
-                padding-top: 40px;
-                text-align: left;
-                @include mobile {
-                    padding-top: 32px;
-                }
-                &:before {
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    left: 0;
-                    height: 1px;
-                    background: $color-border;
-                    content: '';
-                }
-                @include pc {
-                    padding-right: 40px;
-                    padding-left: 40px;
-                }
-                @media screen and (min-width:(1380px + 80px)) {
-                    &:before {
-                        right: 40px;
-                        left: 40px;
-                    }
-                }
-                .tabs {
-                    @include mobile {
-                        padding: 0 16px;
-                    }
-                    >li {
-                        margin-left: 36px;
-                        @include mobile {
-                            margin-left: 20px;
-                        }
-                        &:first-child {
-                            margin-left: 0;
-                        }
-                        >a {
-                            padding: 0 0 19px;
-                            @include font-large;
-                            @include mobile {
-                                padding-bottom: 15px;
-                            }
-                        }
-                        &.on {
-                            >a:after {
-                                position: absolute;
-                                left: 0;
-                                bottom: -2px;
-                                width: 100%;
-                                height: 5px;
-                                border-radius: 5px 5px 0 0;
-                                background-color: $color-default;
-                                content: '';
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        &.on {
-            &.active {
-                .objetcollection-tabs {
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    left: 0;
-                    z-index: 15;
-                    //@at-root .mac & {
-                    //    right: 0;
-                    //}
-                    &~.tab-contents {
-                        padding-top: 91px;
-                        @include mobile {
-                            padding-top: 74px;
-                        }
-                    }
-                }
-            }
-        }
-        .tab-contents {
-            padding-top: 0;
-        }
-        .tab-contents {
-            .inner {
-                max-width: (1380px + 80px);
-                margin: 0 auto;
-                padding: 0 40px;
-                @include mobile {
-                    max-width: 100%;
-                    padding: 0 16px;
-                    .gray-box {
-                        margin: 0 -16px;
-                        padding: 40px 16px;
-                    }
-                }
-            }
-            .gray-box {
-                padding: 48px 64px;
-                background-color: $color-bg;
-            }
-        }
-        .image {
-            img {
-                max-width: 100%;
-                @include mobile {
-                    width: 100%;
-                }
-            }
-        }
-        .animate-target {
-            opacity: .3;
-            // transform: translateY(100px);
-            transition: transform 0.8s ease-out, opacity 0.5s ease-out;
-            &.animated {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .content-title {
-            margin: 80px 0 48px;
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 52px;
-            text-align: center;
+}
+
+.sub-main {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-wrap {
+    .objetcollection-tabs {
+        background-color: $color-bg-wt;
+        .tabs-wrap {
+            max-width: 1380px + 80px;
+            margin: 0 auto;
+            padding-top: 40px;
+            text-align: left;
             @include mobile {
-                margin: 48px 0 32px;
-                font-size: 24px;
-                line-height: 33px;
+                padding-top: 32px;
             }
-            &+.signature-section {
-                margin-top: 0;
+            &:before {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 1px;
+                background: $color-border;
+                content: '';
+            }
+            @include pc {
+                padding-right: 40px;
+                padding-left: 40px;
+            }
+            @media screen and (min-width:(1380px + 80px)) {
+                &:before {
+                    right: 40px;
+                    left: 40px;
+                }
+            }
+            .tabs {
+                @include mobile {
+                    padding: 0 16px;
+                }
+                >li {
+                    margin-left: 36px;
+                    @include mobile {
+                        margin-left: 20px;
+                    }
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    >a {
+                        padding: 0 0 19px;
+                        @include font-large;
+                        @include mobile {
+                            padding-bottom: 15px;
+                        }
+                    }
+                    &.on {
+                        >a:after {
+                            position: absolute;
+                            left: 0;
+                            bottom: -2px;
+                            width: 100%;
+                            height: 5px;
+                            border-radius: 5px 5px 0 0;
+                            background-color: $color-default;
+                            content: '';
+                        }
+                    }
+                }
             }
         }
-        .btn.border {
-            &:hover,
-            &:focus,
-            &:active {
-                border-color: inherit;
-                background-image: none;
-                color: inherit;
+    }
+    &.on {
+        &.active {
+            .objetcollection-tabs {
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 15;
+                //@at-root .mac & {
+                //    right: 0;
+                //}
+                &~.tab-contents {
+                    padding-top: 91px;
+                    @include mobile {
+                        padding-top: 74px;
+                    }
+                }
             }
         }
     }
-    
-    .btn.border.w {
-        border-color: #ffffff !important;
-        color: #ffffff;
+    .tab-contents {
+        padding-top: 0;
     }
-    
-    #collection_div,
-    #collection_divM {
-        position: relative;
-        z-index: 1;
+    .tab-contents {
+        .inner {
+            max-width: (1380px + 80px);
+            margin: 0 auto;
+            padding: 0 40px;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
+                .gray-box {
+                    margin: 0 -16px;
+                    padding: 40px 16px;
+                }
+            }
+        }
+        .gray-box {
+            padding: 48px 64px;
+            background-color: $color-bg;
+        }
     }
-    
-    [data-aos^=fade][data-aos^=fade] {
-        opacity: 1 !important;
-        transition-property: opacity, transform;
+    .image {
+        img {
+            max-width: 100%;
+            @include mobile {
+                width: 100%;
+            }
+        }
     }
-    
-    .objet_detail {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
+    .animate-target {
+        opacity: .3;
+        // transform: translateY(100px);
+        transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+        &.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    
-    .brand-wrap.objet-wrap.fixed_link_tab {
-        height: auto !important;
+    .content-title {
+        margin: 80px 0 48px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 52px;
+        text-align: center;
+        @include mobile {
+            margin: 48px 0 32px;
+            font-size: 24px;
+            line-height: 33px;
+        }
+        &+.signature-section {
+            margin-top: 0;
+        }
     }
-    
-    .fixed_link_tab {
-        overflow: visible !important;
+    .btn.border {
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: inherit;
+            background-image: none;
+            color: inherit;
+        }
     }
+}
+
+.btn.border.w {
+    border-color: #ffffff !important;
+    color: #ffffff;
+}
+
+#collection_div,
+#collection_divM {
+    position: relative;
+    z-index: 1;
+}
+
+[data-aos^=fade][data-aos^=fade] {
+    opacity: 1 !important;
+    transition-property: opacity, transform;
+}
+
+.objet_detail {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-wrap.objet-wrap.fixed_link_tab {
+    height: auto !important;
+}
+
+.fixed_link_tab {
+    overflow: visible !important;
+}
+
+
+/* 공간체험 팝업 */
+
+.popup-wrap.sns_popup {
+    max-width: 910px;
+    &.typ2 {
+        max-width: 440px;
+        .has_none {
+            display: block;
+        }
+        .has_sel {
+            display: none;
+        }
+    }
+    .has_none {
+        display: none;
+        .txt {
+            text-align: center;
+            padding-left: 0;
+            line-height: 1.625;
+            ;
+            &:before {
+                display: none;
+            }
+        }
+    }
+    .has_sel {
+        display: block;
+    }
+}
+
+.popup-wrap.sns_popup .pop-conts {
+    padding: 40px 40px;
+    @include mobile {
+        padding: 15px;
+    }
+}
+
+.popup-wrap.sns_popup .pop-conts .txt {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #000000;
+    @include mobile {
+        padding-left: 10px;
+        font-size: 12px;
+    }
+    &:before {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        content: '';
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #000000;
+        transform: translateY(-50%);
+    }
+}
+
+.sns_popup .selected-objet-list-container {
+    display: inline-block;
+    width: 100%;
+    padding: 38px;
+    background-color: #f4f4f4;
+    text-align: left;
+    @include mobile {
+        padding: 7px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul {
+    display: inline-block;
+    // max-width: 384px;
+}
+
+.sns_popup .selected-objet-list-container ul>li {
+    position: relative;
+    z-index: 999;
+    float: left;
+    margin-left: 4px;
+}
+
+.sns_popup .selected-objet-list-container ul>li:first-child {}
+
+.sns_popup .selected-objet-list-container ul>li:nth-child(4n+0):after {}
+
+.sns_popup .selected-objet-list-container ul>li.empty {
+    width: 100%;
+    max-width: 254px;
+    height: auto;
+    margin: 58px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #787878;
+}
+
+.sns_popup .selected-objet-list-container button {
+    width: 58px;
+    padding-top: 40px;
+    opacity: 0.72;
+    filter: opacity(72);
+    font-size: 10px;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+.sns_popup .selected-objet-list-container .active button {
+    opacity: 1;
+    filter: opacity(100);
+    color: #101010;
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]:checked,
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]:not(:checked) {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    @include mobile {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]:not(:checked)+a {
+    pointer-events: none;
+    cursor: default;
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]:checked+label {
+    cursor: pointer;
+}
+
+.sns_popup .selected-objet-list-container ul>li {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50% 50%;
+    margin: 12px;
+    @include mobile {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul>li a {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    cursor: pointer;
+    @include mobile {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul>li a span {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-size: 150px 150px;
+    background-position: 50% 50%;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    @include mobile {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]+a span.cover {
+    opacity: 1;
+    background-size: 160px 160px;
+    @include mobile {
+        background-size: 80px 80px;
+    }
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]+a:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.sns_popup .selected-objet-list-container ul>li input[type="checkbox"]:checked+a:before {
+    opacity: 0;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn01 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-a.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn02 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-b.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn03 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-c.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn04 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-dish-wash.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn05 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-oven.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn06 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-water.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn07 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-styler.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li .btn08 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn01 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-a_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn02 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-b_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn03 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-c_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn04 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-dish-wash_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn05 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-oven_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn06 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-water_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn07 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-styler_2.png") no-repeat center top;
+}
+
+.sns_popup .selected-objet-list-container ul>li.active .btn08 {
+    background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower_2.png") no-repeat center top;
+}
+
+.option_sel_popup.popup-wrap {
+    max-width: 554px;
+    .txt {
+        font-size: 16px;
+        color: #000000;
+        @include mobile {
+            font-size: 14px;
+        }
+    }
+    .refrigerator_typ {
+        padding: 30px 24px;
+        margin-top: 18px;
+        border-radius: 6px;
+        background: #f4f4f4;
+        text-align: center;
+        dl {
+            dt {
+                font-size: 18px;
+                color: #000000;
+                font-weight: 700;
+                line-height: 1;
+                @include mobile {
+                    font-size: 15px;
+                }
+            }
+            dd {
+                margin-top: 18px;
+                .rf_choice_set {
+                    position: relative;
+                    input[type=radio] {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        border: none;
+                        background: transparent;
+                        &:checked+label {
+                            border: 1px solid #da0f47;
+                            .radio_txt {
+                                color: #da0f47;
+                                &:before {
+                                    position: absolute;
+                                    content: '';
+                                    display: block;
+                                    width: 20px;
+                                    height: 20px;
+                                    left: 0;
+                                    top: 50%;
+                                    background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                    transform: translateY(-50%);
+                                }
+                            }
+                        }
+                    }
+                    label {
+                        display: block;
+                        width: 100%;
+                        border: 1px solid #ffffff;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        background: #ffffff;
+                        .radio_txt {
+                            position: relative;
+                            display: inline-block;
+                            padding: 0 30px;
+                            font-size: 16px;
+                            line-height: 3.25;
+                            color: #000000;
+                            font-weight: 500;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    &+.rf_choice_set {
+                        margin-top: 8px;
+                    }
+                }
+            }
+            &+dl {
+                margin-top: 20px;
+                padding-top: 30px;
+                border-top: 1px solid #dddddd;
+            }
+        }
+    }
+    .refrigerator_typ2 {
+        margin-top: 30px;
+        dl {
+            dt {
+                display: flex;
+                justify-content: space-between;
+                background: #f4f4f4;
+                span {
+                    font-size: 16px;
+                    color: #000000;
+                    font-weight: 500;
+                    line-height: 2.375;
+                    text-align: center;
+                    &.tit1 {
+                        width: 200px;
+                        @include mobile {
+                            width: 150px;
+                        }
+                    }
+                    &.tit2 {
+                        width: 160px;
+                        @include mobile {
+                            width: 110px;
+                        }
+                    }
+                    @include mobile {
+                        font-size: 10px;
+                    }
+                }
+            }
+            dd {
+                .rf_choice_set2 {
+                    position: relative;
+                    input[type=radio] {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        border: none;
+                        background: transparent;
+                        &:checked+label {
+                            border: 1px solid #da0f47;
+                            border-radius: 6px;
+                            .radio_txt1 {
+                                &:before {
+                                    position: absolute;
+                                    content: '';
+                                    display: block;
+                                    width: 20px;
+                                    height: 20px;
+                                    left: 20px;
+                                    top: 50%;
+                                    background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                    transform: translateY(-50%);
+                                }
+                            }
+                        }
+                    }
+                    label {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        border: 1px solid transparent;
+                        border-bottom: 1px solid #dddddd;
+                        overflow: hidden;
+                        .radio_txt1 {
+                            position: relative;
+                            width: 200px;
+                            padding-left: 50px;
+                            font-size: 18px;
+                            line-height: 2.88;
+                            color: #000000;
+                            font-weight: 700;
+                            @include mobile {
+                                width: 150px;
+                                font-size: 13px;
+                            }
+                        }
+                        .radio_txt2 {
+                            width: 160px;
+                            padding-right: 30px;
+                            text-align: right;
+                            font-size: 18px;
+                            line-height: 2.88;
+                            color: #000000;
+                            font-weight: 700;
+                            @include mobile {
+                                width: 110px;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                    &+.rf_choice_set2 {
+                        margin-top: -1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.option_sel_popup2.popup-wrap {
+    .pop-conts {
+        padding-bottom: 60px;
+    }
+    max-width: 444px;
+    .txt {
+        font-size: 16px;
+        color: #000000;
+        @include mobile {
+            font-size: 14px;
+        }
+    }
+    .sel_convertible {
+        padding: 30px;
+        margin-top: 18px;
+        border-radius: 6px;
+        background: #f4f4f4;
+        @include mobile {
+            padding: 15px;
+        }
+        .btn_sel_convertible {
+            display: block;
+            width: 100%;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            text-align: center;
+            background: #ffffff;
+            span {
+                position: relative;
+                display: inline-block;
+                padding: 0 30px;
+                font-size: 16px;
+                line-height: 3.375;
+                color: #000000;
+                font-weight: 500;
+                @include mobile {
+                    font-size: 14px;
+                }
+            }
+            &:hover {
+                border-color: #da0f47;
+                span {
+                    color: #da0f47;
+                    &:before {
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        left: 0px;
+                        top: 50%;
+                        background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+            &+.btn_sel_convertible {
+                margin-top: 8px;
+                @include mobile {
+                    margin-top: 6px;
+                }
+            }
+        }
+    }
+}
