@@ -1999,10 +1999,9 @@ var isApp = function(){
             if(!isMobileDevice) return;
 
             var uid = '.history-back-'+cid;
-
             $(window).off('popstate'+uid).on('popstate'+uid, function(){      
                 var state = window.history.state;
-                if(state.data && state.data == uid){
+                if(state && state.data && state.data == uid){
                     if(callback && vcui.isFunction(callback)) callback.call(this);
                     $(window).off('popstate'+uid);
                 }
@@ -2019,7 +2018,7 @@ var isApp = function(){
 
             var uid = '.history-back-'+cid;
             var state = window.history.state;
-            if(state.data && state.data == uid+'-open'){
+            if(state && state.data && state.data == uid+'-open'){
                 window.history.back();
             }
             $(window).off('popstate'+uid);
