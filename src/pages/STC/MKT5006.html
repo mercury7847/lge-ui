@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["STC/STC"],
+        pageJS: ["components/KRP0005"],
         pageTitle: "LG 모바일 스위치 | LG전자",
         pageDesc: "LG 모바일 스위치로 소중한 데이터를 이어가보세요. 이전에 사용하던 제품 속 주소록, 사진, 동영상 등 데이터를 쉽고 빠르게 LG 모바일 스위치로 이동해 보세요."
     })
+    <!-- //210330 스키티챗JS 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -79,6 +82,11 @@
         <!-- 210226 플로팅버튼 추가 -->
         <!-- @@include('./common/footer.html') -->
         <div class="floating-wrap">
+            <!-- 210330 스키티챗 추가 -->
+			<!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+			<!-- //210330 스키티챗 추가 -->
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
             <!-- // component / Scroll to the top -->

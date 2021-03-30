@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["STS/STS"],
-        pageJS: ["home/storyHome"],
+        pageJS: [
+            "home/storyHome","components/KRP0005"
+        ],
         pageTitle: "스토리 | LG전자",
         pageDesc: "LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다."
     })
+    <!-- //210330 스키티챗JS 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -113,6 +117,11 @@
         @@include('./common/footer.html')
         <div class="floating-wrap">
             <div class="floating-menu">
+                <!-- 210330 스키티챗 추가 -->
+                <!-- component / Sticky chat -->
+                @@include('./common/partials/KRP0005.html')
+                <!-- // component / Sticky chat -->
+                <!-- //210330 스키티챗 추가 -->
                 <div class="easy-path">
                     <div class="inner">
                         <a href="/lg5-common/data-ajax/home/tag_mnger.html" data-is-login="Y">
@@ -121,6 +130,7 @@
                     </div>
                     <article id="popup-tagMnger" class="popup-wrap"></article>
                 </div>
+                
             </div>
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
