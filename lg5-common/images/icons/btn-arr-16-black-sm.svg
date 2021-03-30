@@ -6,9 +6,9 @@
                     <g>
                         <g>
                             <g>
-                                <path d="M0 0H16V16H0z" transform="translate(-1374 -456) translate(270 322) translate(1000) translate(0 42) translate(32 88) translate(72 4)"/>
+                                <path d="M0 0H16V16H0z" transform="translate(-1431 -304) translate(269 257) translate(235) translate(48 40) translate(783 2) translate(96 5)"/>
                                 <g stroke="#000" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M0 0L4.286 5 0 10" transform="translate(-1374 -456) translate(270 322) translate(1000) translate(0 42) translate(32 88) translate(72 4) translate(6 3.5)"/>
+                                    <path d="M0 0.5L5 5.5 0 10.5" transform="translate(-1431 -304) translate(269 257) translate(235) translate(48 40) translate(783 2) translate(96 5) translate(6 3.5)"/>
                                 </g>
                             </g>
                         </g>
