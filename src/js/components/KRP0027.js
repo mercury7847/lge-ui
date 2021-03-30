@@ -35,7 +35,7 @@ $(window).ready(function(){
 					'<p class="hidden pc">{{storyTitle}}</p>'+
 					'<p class="hidden mobile">{{storyTitle}}</p>'+
 					'<div class="animation-area">'+
-						'<video autoplay muted loop>'+
+						'<video autoplay muted loop style="background:#333333;">'+
 							'<source src="{{storyMovieUrl}}" type="video/mp4">'+
 						'</video>'+
 						'<div class="controller-wrap wa-btn">'+
