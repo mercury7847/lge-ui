@@ -4,8 +4,8 @@
             <g>
                 <g>
                     <g>
-                        <path d="M0 0H64V64H0z" transform="translate(-770 -9537) translate(270 9392) translate(468 100) translate(32 45)"/>
-                        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(-770 -9537) translate(270 9392) translate(468 100) translate(32 45) translate(10.4 11.2)">
+                        <path d="M0 0H64V64H0z" transform="translate(-653 -7672) translate(270 7540) translate(351 100) translate(32 32)"/>
+                        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(-653 -7672) translate(270 7540) translate(351 100) translate(32 32) translate(10.4 11.2)">
                             <path stroke="#000" d="M3.053 25.6H2c-1.105 0-2-.895-2-2v-12c0-1.105.895-2 2-2h10C12 4.298 16.298 0 21.6 0s9.6 4.298 9.6 9.6h10c1.105 0 2 .895 2 2v12c0 1.105-.895 2-2 2M21.6 4.8c-2.651 0-4.8 2.149-4.8 4.8h9.6c0-2.651-2.149-4.8-4.8-4.8zm-3.2 16h6.4c.884 0 1.6.716 1.6 1.6v6.4c0 .884-.716 1.6-1.6 1.6h-6.4c-.884 0-1.6-.716-1.6-1.6v-6.4c0-.884.716-1.6 1.6-1.6z"/>
                             <path stroke="#000" d="M41.6 25.6v14c0 1.105-.895 2-2 2h-36c-1.105 0-2-.895-2-2v-14h15.2v3.2c0 .835.639 1.52 1.454 1.593l.146.007h6.4c.884 0 1.6-.716 1.6-1.6h0v-3.2h15.2z"/>
                             <rect width="9.6" height="9.6" x="16.8" y="20.8" stroke="#DA0F47" rx="1.6"/>

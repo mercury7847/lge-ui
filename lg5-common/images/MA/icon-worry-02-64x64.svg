@@ -1,20 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <path d="M0 0H64V64H0z" transform="translate(-1012 -6748) translate(270 6600) translate(702 100) translate(40 48)"/>
-                        <g stroke-width="2" transform="translate(-1012 -6748) translate(270 6600) translate(702 100) translate(40 48) translate(5 6)">
-                            <path fill="#FFF" stroke="#222" stroke-linejoin="round" d="M0 21.452L15.905 10 32 21.452 32 52 0 52zM32.5 30.908L43.435 23 54.5 30.908 54.5 52 32.5 52z"/>
-                            <path fill="#FFF" stroke="#EC455A" d="M43.42 1c-2.48 0-4.728 1.023-6.356 2.671-1.633 1.653-2.644 3.936-2.644 6.454 0 6.4 7.868 14.643 9 15.802 1.131-1.158 9-9.401 9-15.802 0-2.518-1.01-4.8-2.643-6.454C48.148 2.023 45.9 1 43.42 1z"/>
-                            <rect width="20" height="6" x="6" y="26" fill="#F4F4F4" stroke="#222" rx="2"/>
-                            <rect width="20" height="6" x="6" y="38" fill="#F4F4F4" stroke="#222" rx="2"/>
-                            <rect width="8" height="8" x="39.42" y="5" fill="#FFF" stroke="#EC455A" rx="4"/>
-                        </g>
-                    </g>
-                </g>
-            </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-450.000000, -353.000000)">
+            <image id="img_bestshop_64" x="455" y="362" width="55" height="46" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAuCAYAAACMAoEVAAAABGdBTUEAALGOfPtRkwAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAN6ADAAQAAAABAAAALgAAAAAkdTmkAAAEaUlEQVRoBe2YW4hVVRjHZ3QmZ0qbQC1tbCTSJEswukBZimEppkwQPfRSCGIXIiikeqpeeimiAp/CJ8EuiOItwxIHy6Ki6OJURomDo03pSE1majPN9PvNnBV2Zu+zx332nHOQ84ffWWuv6/etb621N6empqbmMtgCf8FAmdEGbdGmTORg5XYqf35tykQhYtMyGa24QbRBR7UpE4VVy2SwDAbJzJ4xGRhTsUNUnavY0CQYVpdQP4P666ERemEftMNMmAsNoI7CTmiG5TAJfoDdcCtcAqfB+WQvHIRRlRMVUiuVL8IOmAhz4C6YBy/B+/APfAf7oQ0Owy9gu5DOJn8H/AQHoBNG3Tnm+O8dZz5fqyn4EcbCBDgJD8CTcAjOPrOLefamuxnyZf8ueCK/IuLZMaRonW1c1GC9FPru2QUfwa+wGTTWr4jt4AvXRfgCPgej+SbcBkEX5DJJOyW0zyRNcs76P2ANvAoXwr3gVvwT1uX4kLQbFsDD4BZ+D5ZA2TQS5/xaMDpvwN8QImL5BtgEn4HRaQKj5qVyAuZBUG3IlCpN2iZuy6nwJVwERswoLgS35VfQDx3wAqyH38Hb9Ti8DWWTqxkOb9TKur2mgGfM+kPwG1wK08G+ooPt0JLjDKmOG92guWSOwLFQEJMWsiemS3RxknP1dLsW3HIdcBQmg856zSsj6k0annX8KtCxfaDj48GFCjulk7xbPEqZOefgYfXzJ5pOwSfgy/gbMDJG8TX4AEKknybvtvX5KegCb04d2AY61gq+Rr4Hyx3X8aMUZ09U28SyuMF8l/lV4dnS8MvBC2gteIEE6dy3cB041qNgu2vA/o/APeDt2gwzwKg+C1GKsyeqbcEyjYiTq+9EXgr3Qw+4xfpAhx+CVTAfjMqNcAo2gO32gxG/BYLBjeSbwO3uxTOqKuTcHma+EzxLa2AvTALPigYuhbvBSOiwBlvnDauMtrer59XUs7kTNoKvlnUw6gqrWmiimVQajfvAM/cxaLx6Br6GheBYRkpdDL7Yn4dlYKTmgBdO6Et2mEZiz7BOUQV1UYW5siWkz4GGe9401ItjMUyAoLDVPqWgDd6Cd+Em6AHPqC/zcdABJ6Bkilspz9WD4BfIyzAb1O3gBRF0AxnPpHK7roBX4HGYCmoWPAY6mKQ4e5L6RdZnOljkDOdWmJk9hS6UczMp+9bByTSp53ulB9vOqtAhH2pRmt9gT7Gz9VSyc8Us9uACVfK2LDZy//uboOjBKm2AauQqLSIjtafQF0rsGAcnL53S19v/Og0WDQwM+IUyTLW1tX5E76qrH7PqymM7/D4tuVJtSx3DqeVxjumFdbbJLULJHXPCVJGj3yI7N9SPa27p3vqz+Xx1TlzWfKqv9zDlg23z60vxnCpyIWJxjmn4Fce3HzENbc2XWqmcK7WRaeerOpd25crdrxq5ckcg7fzVyKVduXL3O+8j5zegmjaUnF+/W3Anzf8UFd9nLI61wdXQAv5rXAnyX2ttK0bv/AvR75d5At/cDAAAAABJRU5ErkJggg=="></image>
         </g>
     </g>
 </svg>
