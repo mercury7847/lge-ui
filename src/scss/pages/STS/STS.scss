@@ -3,6 +3,15 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+.sticky-easy {
+    .floating-menu.floating-list {
+        bottom:262px;
+        @include mobile {
+            bottom:232px;
+        }
+    }
+}
+
 .story-main {
     .cont-wrap {
         max-width: 100%;
