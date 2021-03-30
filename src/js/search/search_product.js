@@ -492,7 +492,12 @@
                         location.hash = self.uniqId;
                     }
                 });
-                
+
+                //리사이즈 체크
+                $(window).on('resizeend', function(e){   
+                    self.updateRelatedKeywordMoreButton();
+                });
+
                 //스크롤 이벤트
                 $(window).on('scroll', function(e){
                     self._setScrollMoved();
@@ -672,6 +677,13 @@
                 lgkorUI.setStorage(self.uniqId, postData);
                 location.hash = self.uniqId;
 
+                //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
+                if(vcui.isEmpty(filterQueryData.curation)) {
+                    self.$sortListCurationHidden.show();
+                } else {
+                    self.$sortListCurationHidden.hide();
+                }
+
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
@@ -714,12 +726,7 @@
                         });
                         self.$relatedKeywordList.show();
 
-                        var $li = $list_ul.find('>li:eq(0)');
-                        if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
-                            self.$relatedKeywordMobileMoreButton.show();
-                        } else {
-                            self.$relatedKeywordMobileMoreButton.hide();
-                        }
+                        self.updateRelatedKeywordMoreButton();
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -780,7 +787,7 @@
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
-                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
@@ -924,6 +931,18 @@
                         self.scrollHref = null;
                     }
                 });
+            },
+
+            //연관검색어 더보기 버튼 노출 여부 체크
+            updateRelatedKeywordMoreButton:function () {
+                var self = this;
+                var $list_ul = self.$relatedKeywordList.find('ul');
+                var $li = $list_ul.find('>li:eq(0)');
+                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+                    self.$relatedKeywordMobileMoreButton.show();
+                } else {
+                    self.$relatedKeywordMobileMoreButton.hide();
+                }    
             },
 
             //최근 검색어 삭제
