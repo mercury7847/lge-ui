@@ -225,6 +225,9 @@
             right:20px;
             bottom:160px;
         }
+        & + .easy-path {
+            margin-top:14px;
+        }
     }
     &.cs-cst {
         right:48px;
@@ -235,6 +238,7 @@
         }
     }
     &.floating-list {
+        position:fixed;
         right:48px;
         bottom:104px + 32px + 56px;
         @include mobile {
@@ -246,6 +250,8 @@
     }
 
     .floating-linker {
+        width:100% !important;
+        height:100% !important;
         &:not(:last-child) {
             margin-top: 16px;
         }

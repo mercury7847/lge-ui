@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
+        pageJS: ["components/KRP0005"],
         pageTitle: "LG SIGNATURE | LG전자",
         pageDesc: "LG전자의 초프리미엄 브랜드 SIGNATURE 가전 제품을 소개합니다. 압도적인 성능과 정제된 디자인으로 본실에 충실한 LG 시그니처 제품을 경험해 보세요."
     })
+    <!-- //210330 스키티챗JS 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -1097,6 +1100,11 @@
         <!-- 210226 플로팅버튼 추가 -->
         <!-- @@include('./common/footer.html') -->
         <div class="floating-wrap">
+            <!-- 210330 스키티챗 추가 -->
+			<!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+			<!-- //210330 스키티챗 추가 -->
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
             <!-- // component / Scroll to the top -->
