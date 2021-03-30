@@ -437,11 +437,12 @@ $(function() {
             posArr = [];
             wheelArr = [];
                         
-            var $prevTarget = $('.container').prevAll(':visible:first');
+            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
             var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
+
             
             $scenes.each(function(i) {                        
                 var arr = [];
@@ -496,8 +497,9 @@ $(function() {
                     itemHeight = winHeight;    
                 }
                 allHeight += itemHeight;
-                posArr.push(allHeight);
+                posArr.push(itemHeight);
                 $(this).height(itemHeight);
+
                 totalHeight += itemHeight;
 
                 $(this).find('.img > .video').each(function() {
@@ -612,6 +614,8 @@ $(function() {
 
         // 시작시 한 스탭 이동시킴.
         setTimeout(function(){
+
+            console.log(currentStep);
             if(currentStep<1) wheelScene(1);
         }, 1000);
 
