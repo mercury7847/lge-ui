@@ -200,6 +200,7 @@
             <!-- 20210126 장바구니 버튼 분리 -->
             <div class="product-button double">
                 @@if(context.doubleButton.button) {
+                    <!-- 210330 수정 [렌탈 장바구니 삭제 / 자세히보기 버튼 추가] -->
                     @@for ( var i=0; i < doubleButton.button.length; i++ ) {
                     <a href="#n" class="btn border">`+doubleButton.button[i]+`</a>
                     }
