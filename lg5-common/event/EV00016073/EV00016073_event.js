@@ -506,7 +506,7 @@ function gocheck(str1,str2){
 function eventModelChk(){
 	$.ajax({
 		type: "POST",
-		url: "/event/ManufactureChk.lgajax",
+		url: "/evt/ManufactureChk.lgajax",
 		dataType:"json",
 		data: jQuery("form[name=frm]").serialize(),
 		success: function(json) {
@@ -834,7 +834,7 @@ function goProc() {
 			
 			$.ajax({
 				type: "POST",
-				url: "/event/EV00016073Submit.lgajax",
+				url: "/evt/EV00016073Submit.lgajax",
 				data:formData,
 				processData: false,
 				contentType: false,
