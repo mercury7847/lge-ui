@@ -664,7 +664,8 @@
                     display: flex;
                     //justify-content: space-between;
                     width: 100%;
-                    &[class*="select"] {
+                    &[class*="select"],
+                    &[class*="color"] {
                         margin-top: 24px;
                     }
                     &[class*="color"] {
