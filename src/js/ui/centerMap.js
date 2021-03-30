@@ -309,7 +309,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     borderWidth: 0,
                     backgroundColor: '#ffffff00',
                     disableAnchor: true,
-                    pixelOffset: {x:3, y:-25}
+                    pixelOffset: new naver.maps.Point(0, -20),
                 })
                 naver.maps.Event.addListener(marker, 'click', function(e){
                     var id = $(e.overlay.icon.content).data('id');                    
@@ -338,18 +338,46 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
             self.selectedMarker(items[0].id);
         },
 
-        resizeInfoWindow: function(id) {
+        selectedMarker: function selectedMarker(id){
             var self = this;
-            var items;
 
-            items = self.itemArr.filter(function(item, index){
-                return item.id == id;   
+            var centerPoint;
+            var marker;
+
+            vcui.array.map(self.itemArr, function(item, index){
+                var selected = item.id == id ? true : false;
+                item.info.selected = selected;        
+                
+                if(selected) marker = item;
             });
 
-            // if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
-            // else items[0].infoWindow.open(self.map, items[0].item);
+            centerPoint = {x: marker.info.gpsInfo.gpsx, y: marker.info.gpsInfo.gpsy}
+            
+            self._changeMarkersState();
+            self._setCenter(centerPoint, -(marker.infoWindow.contentSize.height+marker.infoWindow.anchorSize.height+20+36)/2, 0);
+        },
 
-            self.selectedMarker(items[0].id);
+        _setCenter: function _setCenter(point, offsetX, offsetY) {
+            var self = this;
+            
+            var scale = Math.pow(2, self.map.getZoom());
+            var pixelOffset = new naver.maps.Point((offsetX / scale) || 0, (offsetY / scale) || 0);
+            var worldCoordinateNewCenter = new naver.maps.Point(parseFloat(point.x) - pixelOffset.x, parseFloat(point.y) + pixelOffset.y);
+
+            self.map.panTo(new naver.maps.LatLng(worldCoordinateNewCenter.x, worldCoordinateNewCenter.y), {duration:460, easing:"easeOutCubic"});
+        },
+
+        resizeInfoWindow: function() {
+            var self = this;
+            var items; 
+
+            items = self.itemArr.filter(function(item, index){
+                if (item.info.selected) {
+                    return item;
+                }
+            });
+
+            if(items[0].infoWindow.getMap()) items[0].infoWindow.close(), items[0].infoWindow.open(self.map, items[0].item);
         },
 
         _addCustomMarker : function _addCustomMarker(x,y,info,idx) {
@@ -464,34 +492,7 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
         resize: function resize(width, height){
             var self = this;
-
             self.map.setSize({width: width, height: height})
-
-            //self._changeMarkersState();
-        },
-
-        selectedMarker: function selectedMarker(id){
-            var self = this;
-
-            var centerPoint;
-            vcui.array.map(self.itemArr, function(item, index){
-                var selected = item.id == id ? true : false;
-                item.info.selected = selected;        
-                
-                if(selected) centerPoint = {x: item.info.gpsInfo.gpsx, y: item.info.gpsInfo.gpsy}
-            });
-
-            self._changeMarkersState();
-            self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
-
-            // if ( window.innerWidth  < 1025 && window.innerWidth  > 767) {
-            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y).destinationPoint(0,1150), {duration:460, easing:"easeOutCubic"});
-            // } else if (window.innerWidth < 768 ) {
-            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y).destinationPoint(0,750), {duration:460, easing:"easeOutCubic"});
-            // }else {
-            //     self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
-            // }
-            self.map.panTo(new naver.maps.LatLng(centerPoint.x, centerPoint.y), {duration:460, easing:"easeOutCubic"});
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////
