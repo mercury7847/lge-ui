@@ -677,6 +677,13 @@
                 lgkorUI.setStorage(self.uniqId, postData);
                 location.hash = self.uniqId;
 
+                //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
+                if(vcui.isEmpty(filterQueryData.curation)) {
+                    self.$sortListCurationHidden.show();
+                } else {
+                    self.$sortListCurationHidden.hide();
+                }
+
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
