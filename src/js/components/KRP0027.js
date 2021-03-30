@@ -243,7 +243,7 @@ $(window).ready(function(){
             var sendata = {
                 storyId: sid
             }
-            console.log("### setViewContents ###", sendata)
+            // console.log("### setViewContents ###", sendata)
             lgkorUI.requestAjaxDataPost(VIEWER_DATA_URL, sendata, function(result){    
                 changeViewContents(result.data[0]);
 
@@ -254,7 +254,7 @@ $(window).ready(function(){
         function changeViewContents(data){
             $('.video-wrap').empty();
 
-            console.log("### changeViewContents ###", data)
+            // console.log("### changeViewContents ###", data)
 
             if(data != undefined){
 
@@ -338,7 +338,7 @@ $(window).ready(function(){
                 categoryId: mode != REQUEST_MODE_SUPERCATEGORY ? idxs.categoryId : "",
                 year: mode == REQUEST_MODE_YEAR ? idxs.year : ""
             }
-            console.log("### setContentsList ###", sendata)
+            // console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
                 var page = data.pagination.page;
@@ -376,7 +376,7 @@ $(window).ready(function(){
                     break;
                 }
 
-                console.log("contLoadMode:",contLoadMode, REQUEST_MODE_SCROLL)
+                // console.log("contLoadMode:",contLoadMode, REQUEST_MODE_SCROLL)
                 if(contLoadMode != REQUEST_MODE_SCROLL && contLoadMode != REQUEST_MODE_YEAR) changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
