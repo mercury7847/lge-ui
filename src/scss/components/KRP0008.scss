@@ -1360,6 +1360,16 @@
                 }
             }
         }
+        .btn-wing-experience {
+            margin-top: 20px;
+            text-align: right;
+            .btn-link {
+                @include font-small;
+            }
+            @include mobile {
+                margin-top: 16px;
+            }
+        }
 
 
         .additional-purchase {
@@ -1828,14 +1838,13 @@
     }
 
     .care-solution-info {
-        @include mobile {
-            margin-top: 48px;
-            padding: 24px 12px;
-        }
         .bullet-list {
             margin-top: 80px;
             padding-top: 24px;
             border-top: 1px solid $color-border;
+            @include mobile {
+                margin-top: 40px;
+            }
             .b-txt {
                 padding-left: 11px;
                 &:before {
@@ -2670,6 +2679,119 @@
             img {
                 width: 56px;
                 border: 1px solid $color-border;
+            }
+        }
+    }
+}
+
+// 윙 체험존 위치보기
+.wing-experience-wrap {
+    .banner-area {
+        position: relative;
+        border-radius: 8px;
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 56px;
+            transform: translateY(-50%);
+            .sub-copy {
+                font-size: 16px;
+                line-height: 26px;
+            }
+            .wing-logo {
+                display: block;
+                width: 164px;
+                height: 29px;
+                margin-top: 4px;
+                background: url('/lg5-common/images/KRP0008/lg-wing-logo.png') no-repeat 0 0;
+                background-size: 164px auto;
+            }
+            .copy {
+                margin-top: 20px;
+                font-weight: 700;
+                font-size: 22px;
+                line-height: 32px;
+            }
+        }
+        .banner {
+            img {
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+    }
+    .experience-shop-list {
+        margin-top: 48px;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -24px 0 0 -24px;
+            li {
+                width: 33.33%;
+                padding: 24px 0 0 24px;
+            }
+        }
+        a {
+            display: block;
+            padding: 22px 0;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background-color: $color-white;
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            font-weight: 500;
+            @include font-medium;
+            text-align: center;
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $color-primary;
+            }
+        }
+    }
+    @include mobile {
+        .banner-area {
+            .banner-text {
+                left: 20px;
+                .sub-copy {
+                    font-size: 11px;
+                    line-height: 19px;
+                }
+                .wing-logo {
+                    width: 118px;
+                    height: 21px;
+                    background-size: 118px auto;
+                }
+                .copy {
+                    margin-top: 12px;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+        .experience-shop-list {
+            margin-top: 40px;
+            ul {
+                margin: -12px 0 0 -12px;
+                li {
+                    width: 50%;
+                    padding: 12px 0 0 12px;
+                }
+            }
+            a {
+                display: block;
+                padding: 22px 0;
+                border: 2px solid transparent;
+                border-radius: 8px;
+                background-color: $color-white;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                font-weight: 500;
+                @include font-medium;
+                text-align: center;
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary;
+                }
             }
         }
     }
