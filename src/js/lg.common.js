@@ -7,14 +7,16 @@ var isApp = function(){
 ;(function(global){
 
     if(global['lgkorUI']) return;
-    console.log("lgkorUI start!!!");
-    if(vcui.detect.isMac) $('html').addClass('mac');
-    if(isApp()) $('html').addClass('app');
+    // console.log("lgkorUI start!!!");
 
-
+    var isApplication = isApp();
     var isAndroid = vcui.detect.isAndroid;
     var isIOS = vcui.detect.isIOS;
-    var isApplication = isApp();
+    var isMobileDevice = isAndroid || isIOS; 
+
+    if(vcui.detect.isMac) $('html').addClass('mac');
+    if(isApplication) $('html').addClass('app');
+    if(isMobileDevice) $('html').addClass('mdevice');
 
 
     window.onload = function(){
@@ -1255,7 +1257,7 @@ var isApp = function(){
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
                         var data = result.data;
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
                                 title: data.alert.title
                             });
@@ -1292,10 +1294,10 @@ var isApp = function(){
                         data.success = "Y";
                     }
                     */
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             self.commonAlertHandler(data.alert);
                         }/* else {
                             if(result.message) {
@@ -1369,7 +1371,7 @@ var isApp = function(){
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -1433,7 +1435,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1473,7 +1475,7 @@ var isApp = function(){
                     }
                 } else {
                     callbackFail(data);
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(data.alert.isConfirm && data.alert.okUrl) {
                             data.alert.okUrl = data.alert.okUrl + location.href;
                         }
@@ -1989,6 +1991,37 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // history back 사용하기
+        addHistoryBack:function(cid, callback){
+
+            if(!isMobileDevice) return;
+
+            var uid = '.history-back-'+cid;
+            $(window).off('popstate'+uid).on('popstate'+uid, function(){      
+                var state = window.history.state;
+                if(state && state.data && state.data == uid){
+                    if(callback && vcui.isFunction(callback)) callback.call(this);
+                    $(window).off('popstate'+uid);
+                }
+            });
+
+            window.history.replaceState({ data: uid }, null, null);
+            window.history.pushState({ data: uid+'-open' }, null, null);
+
+        },
+
+        removeHistoryBack:function(cid){
+
+            if(!isMobileDevice) return;
+
+            var uid = '.history-back-'+cid;
+            var state = window.history.state;
+            if(state && state.data && state.data == uid+'-open'){
+                window.history.back();
+            }
+            $(window).off('popstate'+uid);
         }
 
         
