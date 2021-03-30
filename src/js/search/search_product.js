@@ -705,7 +705,8 @@
                         });
                         self.$relatedKeywordList.show();
 
-                        if(self.$relatedKeywordList.height() > 24) {
+                        var $li = $list_ul.find('>li:eq(0)');
+                        if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
                             self.$relatedKeywordMobileMoreButton.show();
                         } else {
                             self.$relatedKeywordMobileMoreButton.hide();

@@ -41,33 +41,30 @@
                 }
             }
             .item {
-                padding:40px 48px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding:200px 48px 40px;
                 border: 1px solid $color-border;
                 box-shadow: none;
                 text-align: center;
-                &.compare-item {
-                    padding-bottom: 118px;
-                    // border:none;
-                    // box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-                    @media (min-width: $tablet-s-width + 1) and (max-width: 1146px) {
-                        padding-bottom: 156px;
-                    }
-                }
-
                 @include mobile {
-                    padding: 8px 0 0;
-                    &.compare-item {
-                        padding-bottom: 153px;
-                    }
+                    padding: 168px 0 24px;
                 }
 
                 .product-image {
+                    position: absolute;
+                    top: 40px;
+                    right: 0;
+                    left: 0;
                     img {
                         max-width: 160px;
                     }
+                    @include mobile {
+                        top: 8px;
+                    }
                 }
                 .product-info {
-                    margin-bottom: 20px;
                     padding-top:16px;
                     font-size:0;
                     .product-name {
@@ -85,10 +82,10 @@
                     }
                 }
                 .product-bottom {
-                    bottom: 40px;
+                    position: static;
+                    margin-top: 20px;
                 }
                 .price-area {
-                    flex-wrap: nowrap;
                     justify-content: center;
                 }
                 .product-button {
@@ -117,7 +114,6 @@
                         padding:0 12px;
                     }
                     .product-info {
-                        margin-bottom: 16px;
                         .product-name {
                             a {
                                 @include font-medium;
@@ -140,20 +136,13 @@
                         }
                     }
                     .product-button {
-                        //height: 70px;
-                        //margin-top: 16px;
+                        margin-top: 16px;
                         .btn {
                             max-width: 140px;
                             padding: 4px 0;
                             font-size: $font-small;
                             line-height: 22px;
                         }
-                    }
-                    .product-bottom {
-                        position: absolute;
-                        bottom: 24px;
-                        right: 24px;
-                        left: 24px;
                     }
                 }
             }
@@ -162,7 +151,7 @@
         .result-tabs {
             position: relative;
             height:72px;
-            margin-top: 122px;
+            margin-top: 72px;
             padding:18px 0;
             @include mobile {
                 height:100%;
