@@ -1,4 +1,9 @@
 (function(){
+/*
+<!-- IFRAME 시작 -->
+<iframe src="https://www.lge.co.kr/lgekor/bestshop/product/applyCounsel.do?device=w&inflow=mycollection&orgcode=0113"></iframe>
+<!-- IFRAME 종료  -->
+*/
 
     function isRegExp(a){
 		return a.constructor===RegExp;
