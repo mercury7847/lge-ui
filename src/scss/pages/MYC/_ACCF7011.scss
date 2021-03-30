@@ -199,3 +199,21 @@
         }
     }
 }
+
+&.non-members {
+    @include pc {
+        .info-tbl-wrap.type2 .box {
+            .col-table .col {
+                padding-right: 93px;
+            }
+            .product-info .price {
+                padding-right: 48px;
+            }
+        }
+    }
+    @include mobile {
+        .cont-wrap {
+            padding: 0 16px 60px;
+        }
+    }
+}
