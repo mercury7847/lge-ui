@@ -93,7 +93,7 @@
 
 
         // number e block;
-        $('input[type=number]').on('onkeydown', function(e){
+        $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
         });
 
