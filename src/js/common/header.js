@@ -151,13 +151,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 self._menuToggle();
                 var active = self.$hamburger.hasClass('active');
+
                 if(active){
-                    lgkorUI.addHistoryBack(self.cid, function(){
-                        self._menuToggle();
+                    lgkorUI.addHistoryBack(self.cid, function(){                    
+                        self._menuToggle(true);
                     });
-                }else{
-                    lgkorUI.removeHistoryBack(self.cid)
+                } else{
+                    lgkorUI.removeHistoryBack(self.cid);
                 }
+                
 
             });
 
@@ -540,27 +542,27 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
 
-        _menuToggle: function(){
+        _menuToggle: function(forceActive){
             var self = this,
             active, replaceText;
 
             replaceText = self.$hamburger.find('.blind');
-            active = self.$hamburger.hasClass('active');
+            active = forceActive==undefined? self.$hamburger.hasClass('active') : forceActive;
+
 
             if(active){
                 self.$hamburger.removeClass('active');
                 replaceText.text("메뉴 열기");
-
                 $('.ui_gnb_accordion').vcAccordion("collapseAll");
-
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+
+
             } else{
                 self.$hamburger.addClass('active');
                 replaceText.text("메뉴 닫기");
-
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-
                 $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+
             }
         },
 
