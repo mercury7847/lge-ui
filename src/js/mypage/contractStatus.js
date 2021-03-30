@@ -35,6 +35,8 @@
 
     var ajaxMethod = "POST";
 
+    var requestPartnerCardYn = "";
+
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
     function init(){
@@ -56,6 +58,13 @@
 
             var firstData = $('select[name=contractInfo]').find('option:nth-child(1)').val();
             if(firstData) changeContractInfo();
+            else{
+                if(requestPartnerCardYn == "Y"){
+                    var nodata = mypage.find('.no-data').text();
+                    mypage.find('.no-data').html("<p>" + nodata + "<br>케어솔루션 계약시 제휴카드를 신청하시면 더욱 편리한 이용이 가능합니다.</p>");
+                }
+                requestPartnerCardYn = ""
+            }
         });
     }
 
@@ -135,6 +144,8 @@
         bankInfo = bankValidation.getAllValues();
 
         txtMasking = new vcui.helper.TextMasking();
+
+        requestPartnerCardYn = getHiddenData("requestPartnerCardYn");
     }
 
     function bindEvents(){
@@ -793,10 +804,10 @@
     function getMaskingData(data){
         var newdata = {};
         for(var key in data){
-            if(key == "name") newdata[key] = txtMasking.name(data[key]);
-            else if(key == "email") newdata[key] = txtMasking.email(data[key]);
-            else if(key == "adress") newdata[key] = txtMasking.substr(data[key], 20);
-            else newdata[key] = txtMasking.phone(data[key]);
+            if(key == "name") newdata[key] = data[key];
+            else if(key == "email") newdata[key] = data[key];
+            else if(key == "adress") newdata[key] = data[key], 20;
+            else newdata[key] = data[key];
         }
 
         return newdata;
@@ -821,7 +832,14 @@
 
             lgkorUI.hideLoading();
 
-            $('html, body').animate({scrollTop:0}, 220);
+            if(requestPartnerCardYn == "Y"){
+                requestPartnerCardYn = "";
+
+                var viewertop = $('.sects.payment.viewer').offset().top;
+                $('html, body').animate({scrollTop:viewertop}, 200)
+            } else{
+                $('html, body').animate({scrollTop:0}, 220);
+            }
         }, ajaxMethod);
     }
 
