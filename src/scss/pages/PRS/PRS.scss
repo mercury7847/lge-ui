@@ -245,6 +245,9 @@
 									height:16px;
 									margin-top:-8px;
 									background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+									@include mobile {
+										display:none;
+									}
 								}
 							}
 						}

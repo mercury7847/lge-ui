@@ -7,14 +7,16 @@ var isApp = function(){
 ;(function(global){
 
     if(global['lgkorUI']) return;
-    console.log("lgkorUI start!!!");
-    if(vcui.detect.isMac) $('html').addClass('mac');
-    if(isApp()) $('html').addClass('app');
+    // console.log("lgkorUI start!!!");
 
-
+    var isApplication = isApp();
     var isAndroid = vcui.detect.isAndroid;
     var isIOS = vcui.detect.isIOS;
-    var isApplication = isApp();
+    var isMobileDevice = isAndroid || isIOS; 
+
+    if(vcui.detect.isMac) $('html').addClass('mac');
+    if(isApplication) $('html').addClass('app');
+    if(isMobileDevice) $('html').addClass('mdevice');
 
 
     window.onload = function(){
@@ -1994,6 +1996,8 @@ var isApp = function(){
         // history back 사용하기
         addHistoryBack:function(cid, callback){
 
+            if(!isMobileDevice) return;
+
             var uid = '.history-back-'+cid;
 
             $(window).off('popstate'+uid).on('popstate'+uid, function(){      
@@ -2010,7 +2014,14 @@ var isApp = function(){
         },
 
         removeHistoryBack:function(cid){
+
+            if(!isMobileDevice) return;
+
             var uid = '.history-back-'+cid;
+            var state = window.history.state;
+            if(state.data && state.data == uid+'-open'){
+                window.history.back();
+            }
             $(window).off('popstate'+uid);
         }
 
