@@ -495,9 +495,6 @@
                     .result-txt {
                         @include font-small;
                         font-weight: $font-weight-bold;
-                        @include csmobile {
-                            padding:0 0 20px 0;
-                        }
                         strong {
                             font-weight:normal;
                             color:#EC455A;
