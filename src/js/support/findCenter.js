@@ -320,8 +320,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             setStoreClass(activeTabIndex);
 
             self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
-                
-                
                 setStoreClass(data.selectedIndex);
                 switch(data.selectedIndex) {
                     case 0:
@@ -339,17 +337,16 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             });
 
-            // self.$optionContainer.on('click', '.btn-sel', function(e){
-            //     e.preventDefault();
-
-            //     self._toggleOptContainer();
-            // });
-
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
                 
                 self.$map.selectInfoWindow(id);
+
+                if ($(window).data('breakpoint').isMobile) {
+                    self._showMap(true);
+                    $('html, body').animate({scrollTop:self.$container.offset().top})
+                }
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
@@ -508,9 +505,11 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             $(window).on('resizeend', function(e){
                 self._resize();
+            }).on('breakpointchange', function() {
+                self.$map.resizeInfoWindow();
             });
+
             self._resize();
-            //$(window).trigger('addResizeCallback', self._resize.bind(self));
         },
         searchAddressToCoordinate: function(address, callback) { 
             var self = this;
@@ -684,7 +683,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             self._resize();
         },
 
-        _showMap: function(){
+        _showMap: function(flag){
             var self = this;
 
             if(!self.isTransion){
@@ -692,7 +691,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 
                 var toggle = self.$leftContainer.find('.btn-view');
                 if(window.innerWidth < 1025) {
-                    if(toggle.hasClass('map')){
+                    if(flag || toggle.hasClass('map')){
                         self.$mapContainer.css({
                             marginLeft : 0
                         })
@@ -1217,25 +1216,11 @@ function moveDetail(el, detailUrl, windowHeight) {
             var self = this;
 
             self.windowWidth = $(window).width();
-            self.windowHeight = $(window).innerHeight();
+            self.windowHeight = $(window).height();
 
-            self._setListArea();
-
-            
             var mapwidth, mapheight, mapmargin;
-            var tid = 0;
-            var tidSpeed = 0;
-            var moreSet = false;
 
-            var $activeList = self.$defaultListLayer.find('>li').has('.point.on');
-
-            if( $activeList.length ) {
-                console.log('info window resize');
-                var id = $activeList.data('id');
-                self.$map.resizeInfoWindow(id);
-            }
-
-            if(window.innerWidth < 1025){
+            if(self.windowWidth < 1025){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1257,37 +1242,15 @@ function moveDetail(el, detailUrl, windowHeight) {
                 
                 mapwidth = self.windowWidth - mapmargin;
                 mapheight = $('.map-container').height();
-
-                if( mapmargin > self.windowWidth/2) {
-                    tidSpeed = 300;
-                    moreSet = true;
-                }
-                
             }
 
-            
+            self.$mapContainer.css({
+                width: mapwidth,
+                height: mapheight,
+                marginLeft: mapmargin
+            });
 
-            clearTimeout(tid);
-
-            tid = setTimeout(function(){
-                if( moreSet ) {
-                    if(self.$leftContainer.hasClass('close')){
-                        mapmargin = 0;
-                    } else{
-                        mapmargin = self.$leftContainer.width();
-                    }
-                    mapwidth = self.windowWidth - mapmargin;
-                }
-                self.$mapContainer.css({
-                    width: mapwidth,
-                    height: mapheight,
-                    'margin-left': mapmargin
-                });
-                
-                if(self.$map) {
-                    self.$map.resize(mapwidth, mapheight);
-                }
-            } ,tidSpeed);
+            if(self.$map) self.$map.resize(mapwidth, mapheight);
         }
     }
 
