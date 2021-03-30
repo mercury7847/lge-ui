@@ -1,12 +1,15 @@
 .non-members {
     .cont-wrap {
-        max-width:1146px + 80px;
-        @include mobile {
-            padding:0 16px;
-        }
+        //max-width:1146px + 80px;
+        //@include mobile {
+        //    padding:0 16px;
+        //}
         &.login-type {
             max-width:678px + 80px;
         }
+    }
+    .section-wrap .sects > .tit-wrap {
+        border-bottom: 0;
     }
     .welcome-joinus {
         display:table;
@@ -206,16 +209,20 @@
     .membership-benefit {
         display:table;
         width:calc(100% + 48px);
-        margin:40px -24px 0;
+        margin:80px -24px 0;
+        padding: 0;
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
+        background: none;
         @include mobile {
             display:block;
             width:auto;
+            height: auto;
             margin:60px -16px 0;
-            padding:32px 16px 60px;
+            padding:32px 16px 0;
             border-top:12px solid #f4f4f4;
+            border-radius: 0;
         }
         .box {
             display:table-cell;

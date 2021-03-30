@@ -31,7 +31,7 @@
 
 
 (function() {
-    var KRP0012 = {
+    var KRP0019 = {
         init: function() {
             var self = this;
             //크레마
@@ -39,9 +39,16 @@
 
             var $section = $('.KRP0019');
 			//갤러리형 위젯(SNS 리뷰)
-            var widgetId = $section.data('widgetId');
+            var mobileWidgetId = $section.data('mobileWidgetId');
+            var pcWidgetId = $section.data('pcWidgetId');
+            var isMobile = vcui.detect.isMobileDevice;
+            var widgetId = isMobile ? mobileWidgetId : pcWidgetId;
             if(widgetId) {
-                $section.find('.cont-wrap').html('<div class="crema-reviews" data-widget-id="'  + widgetId + '"></div>');
+                if(isMobile) {
+                    $section.find('.cont-wrap').html('<style>.crema-reviews > iframe{max-width:100%!important;}</style><div class="crema-reviews" data-widget-id="' + widgetId + '"></div>');
+                } else {
+                    $section.find('.cont-wrap').html('<div class="crema-reviews" data-widget-id="' + widgetId + '"></div>');
+                }
             }
         }
     }
@@ -49,27 +56,6 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0019')) return false;
         //$('.KRP0019').buildCommonUI();
-        KRP0012.init();
+        KRP0019.init();
     });
 })();
-
-/*
-$(window).ready(function(){
-	if(!document.querySelector('.KRP0019')) return false;
-
-	$('.KRP0019').buildCommonUI();
-
-	vcui.require(['ui/carousel'], function () {
-		$('.KRP0019').find(".ui_carousel_slider").each(function(cdx, slide){
-			$(slide).vcCarousel({
-				infinite: false,
-				autoplay: true,
-				// prevArrow:'.btn-arrow.prev',
-				// nextArrow:'.btn-arrow.next',
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			});
-		});
-	});
-})
-*/

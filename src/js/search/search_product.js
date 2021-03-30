@@ -119,9 +119,18 @@
                         self.requestSearch(self.makeFilterData(filterData));
                     }, function(data){
                         //큐레이션 선택
-                        var filterData  = {};
-                        filterData.curation = data;
-                        self.requestSearch(filterData);
+                        //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
+                        if(vcui.isEmpty(data)) {
+                            self.$sortListCurationHidden.show();
+                            var filterData  = self.filterLayer.getDataFromFilter();
+                            filterData.curation = data;
+                            self.requestSearch(self.makeFilterData(filterData));
+                        } else {
+                            var filterData  = {};
+                            self.$sortListCurationHidden.hide();
+                            filterData.curation = data;
+                            self.requestSearch(filterData);
+                        }
                     });
                     
                     self.savedFilterData = null;
@@ -705,7 +714,8 @@
                         });
                         self.$relatedKeywordList.show();
 
-                        if(self.$relatedKeywordList.height() > 24) {
+                        var $li = $list_ul.find('>li:eq(0)');
+                        if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
                             self.$relatedKeywordMobileMoreButton.show();
                         } else {
                             self.$relatedKeywordMobileMoreButton.hide();
@@ -822,12 +832,6 @@
 
                     //스마트 필터
                     self.curationLayer.setCurationData(data);
-                    //스마트필터중 큐레이션이 있으면 sort, 검색내검색, 구매가능 등을 숨긴다
-                    if(vcui.isEmpty(data.curation)) {
-                        self.$sortListCurationHidden.show();
-                    } else {
-                        self.$sortListCurationHidden.hide();
-                    }
                     if(!vcui.isEmpty(filterQueryData.curation)) {
                         //큐레이션이 이미 존재하였다
                         self.curationLayer.resetCuration(filterQueryData.curation);
