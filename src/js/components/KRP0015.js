@@ -23,6 +23,8 @@ $(window).ready(function(){
         var isFirstOpen = true;
 
         function init(){
+            self.willRemoveForCompare = false;
+
             //초기화
             $('.btn-init').on('click', function(e){
                 setClearCompare();
@@ -37,6 +39,7 @@ $(window).ready(function(){
 
                 //비교하기 비우기
                 //2021-03-16
+                self.willRemoveForCompare = true;
                 lgkorUI.removeCompareProd(categoryId);
 
                 var url = $(this).data('url');
@@ -137,7 +140,11 @@ $(window).ready(function(){
 
                 if(isInitChecked){
                     isInitChecked = false;
-                    addToastAlert();
+                    if(!self.willRemoveForCompare) {
+                        addToastAlert();
+                    } else {
+                        self.willRemoveForCompare = false;
+                    }
                 }
             }
         }
