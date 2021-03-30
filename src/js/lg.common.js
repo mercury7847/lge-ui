@@ -12,7 +12,7 @@ var isApp = function(){
     var isApplication = isApp();
     var isAndroid = vcui.detect.isAndroid;
     var isIOS = vcui.detect.isIOS;
-    var isMobileDevice = isAndroid || isIOS; 
+    var isMobileDevice = vcui.detect.isMobileDevice; 
 
     if(vcui.detect.isMac) $('html').addClass('mac');
     if(isApplication) $('html').addClass('app');
@@ -88,11 +88,11 @@ var isApp = function(){
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
         ], function () {    
-            console.log("buildCommonUI!!!!");
+            // console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
             if(location.hostname == "cms50.lge.co.kr") {
-                console.log('lazy cms50');
+                // console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
                 this.vcLazyLoader();
             }
@@ -289,6 +289,10 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
+
+
+
+
         },
 
         _addImgOnloadEvent: function(){
