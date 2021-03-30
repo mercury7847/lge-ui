@@ -1736,7 +1736,7 @@
     //컨텐츠 영역 로그인 박스
     .home-login {
         position:relative;
-        padding:80px 0;
+        padding:48px 0;
         color:#000;
         &:before {
             content:"";
@@ -1755,7 +1755,7 @@
         }
 
         .login-tit {
-            margin-bottom:32px;
+            margin-bottom:18px;
             font-size:32px;
             line-height:1.63;
         }
@@ -1783,7 +1783,7 @@
             }
         }
         .btn-wrap {
-            margin-top:48px;
+            margin-top:32px;
 
             .btn-login {
                 display: inline-block;
@@ -1795,11 +1795,12 @@
                 border-radius:30px;
                 border:2px solid #000;
                 box-sizing: border-box;
-                transition:.3s color ease-in-out, .3s background-color ease-in-out;
+                transition:.3s color ease-in-out, .3s background-color ease-in-out, .3s border-color ease-in-out;
 
                 &:focus, &:hover {
-                    color:#da0f47;
-                    background: #fff;
+                    color:#fff;
+                    background: #fa263e;
+                    border-color:#fa263e;
                 }
             }
         }
@@ -2679,6 +2680,10 @@
             } 
         }
 
+        .support-nav-container {
+            padding:30px 40px;
+        }
+
         @include pc-size-m {
             height:420px
         }
@@ -2687,21 +2692,21 @@
             .support-nav-container {
                 .support-list-slider {
                     .indi-wrap {
-                        bottom:0;
+                        bottom:20px;
                     }
                 }
             }
 
             .support-toggle-list-wrap {
                 .support-list {
-                    padding:60px 0;
+                    padding:50px 0;
                 }
             }
         }
 
         @include mobile {
             .support-nav-container {
-                padding:60px 16px;
+                padding:44px 16px;
             }
             .home-cont-top {
                 top:60px;

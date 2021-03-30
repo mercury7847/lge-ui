@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+	<!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["STC/STC"],
+		pageJS: ["components/KRP0005"],
 		pageTitle: "LG 듀얼스크린 | LG전자",
         pageDesc: "LG전자 듀얼 스크린으로 놀라운 5G를 만나보세요. 편리함을 뛰어넘어 차별화된 서비스로 화면 이동 없이 다른 화면으로 더 넓게! 듀얼 스크린을 경험해 보세요."
     })
+	<!-- //210330 스키티챗JS 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -778,6 +781,11 @@
 		<!-- 210226 플로팅버튼 추가 -->
         <!-- @@include('./common/footer.html') -->
         <div class="floating-wrap">
+			<!-- 210330 스키티챗 추가 -->
+			<!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+			<!-- //210330 스키티챗 추가 -->
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
             <!-- // component / Scroll to the top -->
