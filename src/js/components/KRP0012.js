@@ -55,7 +55,11 @@
                 }
 
                 //상품 리뷰 위젯
-                $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+                if(isMobile){
+                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
+                } else {
+                    $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+                }
 
                 //상품 소셜 위젯
                 if(isMobile){
