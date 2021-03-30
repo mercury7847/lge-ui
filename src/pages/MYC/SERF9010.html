@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "최근 본 제품",
+            })
+            <!-- mypage -->
+            <div class="contents mypage non-members">
+                <div class="cont-wrap">
+                    <div class="lnb-contents">
+                        <div class="info-tbl-wrap type2">
+                            <ul>
+                                @@loop('./common/modules/bdcard-list.html', [
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        more : true,
+                                        price : "5,141,000원",
+                                        oriPrice : "5,300,000원",
+                                        nonBtn : true
+                                    },
+                                    {
+                                        disabled : true,
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        soldout : "품절되었습니다."
+                                    },
+                                    {
+                                        disabled : true,
+                                        thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                        name : "LG 디오스 상냉장하냉동",
+                                        name2 : "OLED55BXPUA",
+                                        soldout : "단종되었습니다.",
+                                    }
+                                ])
+                            </ul>
+                        </div>
+                        <div class="no-data">
+                            <p>최근 본 제품이 없습니다.</p>
+                        </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "최근에 확인하신 제품을 최대 10개까지 확인 가능하며 해당 내용은 6개월 동안 유지된 후 가장 오래된 제품부터 삭제됩니다."
+                            ]
+                        })
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

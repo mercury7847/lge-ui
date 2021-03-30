@@ -2956,8 +2956,7 @@ if (!window.JSON) {
             detect.isBadAndroid = /Android /.test(na.appVersion) && !(/Chrome\/\d/.test(na.appVersion));
             detect.isOpera = !!(win.opera && win.opera.buildNumber);
             detect.isWebKit = /WebKit/.test(ua);
-            detect.isTouch = !!('ontouchstart' in global);
-            detect.isMobileDevice = ('ontouchstart' in win) || win.DocumentTouch && document instanceof DocumentTouch || na.msMaxTouchPoints;
+            detect.isTouch = !!('ontouchstart' in global);         
 
             match = /(msie) ([\w.]+)/.exec(lua) || /(trident)(?:.*rv.?([\w.]+))?/.exec(lua) || ['', null, -1];
             detect.isIE = !detect.isWebKit && !detect.isOpera && match[1] !== null;
@@ -2979,6 +2978,10 @@ if (!window.JSON) {
 
             detect.msPointer = !!(na.msPointerEnabled && na.msMaxTouchPoints && !win.PointerEvent);
             detect.pointer = !!((win.PointerEvent && na.pointerEnabled && na.maxTouchPoints) || detect.msPointer);
+
+            // detect.isMobileDevice = ('ontouchstart' in win) || win.DocumentTouch && document instanceof DocumentTouch || na.msMaxTouchPoints;
+            detect.isMobileDevice = detect.isIOS || detect.isAndroid; // 터치 기반 일반 PC? 어떻게 처리?
+
 
             if (detect.isAndroid) {
                 detect.androidVersion = function () {
@@ -6343,7 +6346,7 @@ if (!window.JSON) {
             if (timeCounter) {
                 diff = time - timeCounter;
                 // 이 콘솔은 디버깅을 위한 것이므로 지우지 말것.
-                console.log('[' + name + '] ' + diff + 'ms');
+                //console.log('[' + name + '] ' + diff + 'ms');
                 delete this.timeCounters[key];
             }
             return diff;

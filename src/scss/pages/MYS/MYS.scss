@@ -20,37 +20,22 @@
 }
 
 .my-dashboard {
-    padding: 35px 48px 48px 50px;
+    padding: 40px 48px 40px 48px;
     border-radius: 8px;
-    & + .mypage-section {
-        padding-top: 64px;
-    }
 
     @include tablet {
         position: relative;
-        margin-bottom: 115px;
+        margin-bottom: 109px;
         padding: 40px 16px 30px;
         border-radius: 8px 8px 0 0;
         @include mobile {
             border-radius: 0;
         }
-        &:after {
-            position: absolute;
-            bottom: -115px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background-color: $color-bg;
-            content: '';
-        }
-        & + .mypage-section {
-            padding-top: 40px;
-        }
     }
 
     .membership-level {
         background: no-repeat left -8px top -1px;
-        padding: 5px 0 10px 40px;
+        //padding: 5px 0 10px 40px;
         font-size: $font-large-1;
         line-height: 30px;
         color: $color-white;
@@ -88,8 +73,14 @@
             margin-top: 8px;
             .btn-link {
                 color: $color-white;
+                &:not(:last-child) {
+                    margin-right: 24px;
+                }
                 &:after {
-                    background-image: url('/lg5-common/images/icons/btn-arr-20x20-white.svg');
+                    width: 16px;
+                    height: 16px;
+                    background-image: url('/lg5-common/images/icons/btn-arr-16-white-sm.svg');
+                    background-size: 16px;
                 }
             }
         }
@@ -99,30 +90,13 @@
             }
             .btn-area {
                 float: none;
-                margin-top: 32px;
-                border: 1px solid rgba(255,255,255,.4);
-                border-radius: 8px;
-                font-size: 0;
+                margin-top: 16px;
                 .btn-link {
                     position: relative;
-                    width: 50%;
-                    padding: 6px 0;
                     font-size: $font-small;
                     line-height: 22px;
-                    text-align: center;
-                    text-decoration:none;
-                    &:not(:first-child):before {
-                        position: absolute;
-                        @include calc(top, 50%, 5px);
-                        left: 0;
-                        width: 1px;
-                        height: 11px;
-                        background-color: $color-white;
-                        opacity: .3;
-                        content: '';
-                    }
-                    &:after {
-                        display: none;
+                    &:not(:last-child) {
+                        margin-right: 20px;
                     }
                 }
             }
@@ -140,7 +114,7 @@
     }
     &.basic {
         .membership-level {
-            padding-left: 0;
+            //padding-left: 0;
             background-image: none;
         }
     }
@@ -188,7 +162,7 @@
     }
 
     .my-info {
-        padding: 30px 0 40px;
+        padding: 26px 0 40px;
         font-size: 0;
         > li {
             position: relative;
@@ -213,7 +187,7 @@
             > li {
                 width: 50%;
                 &:nth-child(n+3) {
-                    margin-top: 33px;
+                    margin-top: 24px;
                 }
                 &:not(:first-child):before {
                     height: 29px;
@@ -225,8 +199,8 @@
         }
         .title {
             display: inline-block;
-            padding-left: 21px;
-            background: url('/lg5-common/images/MYS/icon-01.png') no-repeat 0 center;
+            padding-left: 28px;
+            background: url('/lg5-common/images/MYS/icon-point.svg') no-repeat 0 center;
             font-weight: 500;
             font-size: $font-small;
             line-height: 24px;
@@ -240,7 +214,7 @@
             padding-top: 4px;
             font-weight: 700;
             font-size: $font-large-5;
-            line-height: 52px;
+            line-height: 56px;
             color: $color-white;
             @include tablet {
                 padding-top: 8px;
@@ -265,12 +239,17 @@
         }
         .coupon {
             .title {
-                background-image: url('/lg5-common/images/MYS/icon-02.png');
+                background-image: url('/lg5-common/images/MYS/icon-coupon.svg');
             }
         }
         .product {
             .title {
-                background-image: url('/lg5-common/images/MYS/icon-03.png');
+                background-image: url('/lg5-common/images/MYS/icon-product.svg');
+            }
+        }
+        .care-solution {
+            .title {
+                background-image: url('/lg5-common/images/MYS/icon-caresolution.svg');
             }
         }
     }
@@ -319,14 +298,14 @@
             float: right;
             margin-top: 30px;
             ul {
-                padding: 4px 0;
+                padding: 4px 8px;
                 border: 1px solid rgba(255,255,255,.5);
                 border-radius: 8px;
                 font-size: 0;
                 li {
                     position: relative;
                     display: inline-block;
-                    padding: 0 12px;
+                    padding: 0 8px;
                     &:not(:first-child):before {
                         position: absolute;
                         @include calc(top,50%,6px);
@@ -345,17 +324,20 @@
         }
         @include tablet {
             position: absolute;
-            bottom: -71px;
+            bottom: -77px;
             right: 0;
             left: 0;
             padding: 0 16px;
+            @include mobile {
+                bottom: -69px;
+            }
             .bookmark {
                 float: none;
                 width: 100%;
             }
             .subscriptions {
                 float: none;
-                margin-top: 19px;
+                margin-top: 32px;
                 ul {
                     display: flex;
                     justify-content: space-between;
@@ -367,13 +349,16 @@
                         padding: 0;
                         text-align: center;
                         &:not(:first-child):before {
-                            background-color: $color-border;
+                            opacity: .5;
+                            background-color: $color-default;
                         }
                     }
                 }
                 .btn-text {
-                    color: $color-gray-1;
-                    text-decoration:none;
+                    font-size: 15px;
+                    line-height: 23px;
+                    color: $color-default;
+                    text-decoration: underline;
                 }
             }
         }
@@ -383,16 +368,23 @@
 .mypage-section {
     padding-top: 80px;
     .section-title {
-        margin-bottom: 32px;
+        margin-bottom: 48px;
         font-weight: 700;
-        @include font-large-2;
+        font-size: 32px;
+        line-height: 52px;
         color: #000;
         text-align: center;
     }
+    @include tablet {
+        padding-bottom: 80px;
+        border-top: 12px solid $color-bg;
+    }
     @include mobile {
-        padding: 40px 16px 0;
+        padding: 60px 16px;
         .section-title {
-            margin-bottom: 24px;
+            margin-bottom: 32px;
+            font-size: 24px;
+            line-height: 33px;
         }
     }
 
@@ -415,7 +407,7 @@
                 > li {
                     float: none;
                     width: 100%;
-                    padding: 0 0 24px;
+                    padding: 0 0 12px;
                     &:last-child {
                         padding-bottom: 0;
                     }
@@ -438,12 +430,12 @@
     }
     .shadow-box {
         height: 100%;
-        padding: 32px 48px 48px;
+        padding: 32px 40px 48px;
         border-radius: 8px;
         background-color: $color-bg-wt;
         box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
         @include mobile {
-            padding: 24px 20px 40px;
+            padding: 24px 20px 32px;
             &.like-info,
             &.recent-info {
                 padding-bottom: 24px;
@@ -451,31 +443,47 @@
         }
         .box-title {
             @include clearfix;
-            padding-bottom: 12px;
+            position: relative;
+            padding-bottom: 24px;
             border-bottom: 1px solid $color-border;
             font-weight: 700;
-            @include font-large-1;
+            font-size: 24px;
+            line-height: 34px;
             color: #000;
-            a {
+            @include mobile {
+                padding-bottom: 14px;
+                font-size: 20px;
+                line-height: 28px;
+            }
+            .title {
+                display: inline-block;
                 position: relative;
                 &:after {
                     position: absolute;
                     top: 50%;
-                    right: -26px;
-                    transform: translateY(-50%);
-                    width: 24px;
-                    height: 24px;
-                    background: url('/lg5-common/images/icons/btn-arr-24x24-black2.svg') no-repeat 0 0;
+                    right: -40px;
+                    transform: translateY(calc(-50% + 1px));
+                    width: 32px;
+                    height: 32px;
+                    background: url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                     content: '';
+                    @include mobile {
+                        right: -28px;
+                        width: 24px;
+                        height: 24px;
+                        background-size: 24px;
+                    }
                 }
             }
             .sub-text {
-                float: right;
-                padding-top: 6px;
-                font-weight: 500;
+                position: absolute;
+                bottom: 18px;
+                right: 0;
+                font-weight: 400;
                 @include font-small;
-                color: $color-gray-1;
-                text-align: right;
+                @include mobile {
+                    bottom: 14px;
+                }
             }
         }
     }
@@ -485,46 +493,76 @@
         }
         .content {
             padding-right: 92px;
+            @include mobile {
+                padding-right: 0;
+            }
             .title {
                 font-weight: 700;
                 @include font-medium;
                 @include textEllipsis;
             }
             .text {
-                font-weight: 500;
                 @include font-small;
-                color: $color-gray-1;
             }
         }
         .progress {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding-left: 26px;
-            background: url('/lg5-common/images/icons/icon-proc.svg') no-repeat 0 center;
+            @include pc {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 8px 10px;
+            }
+            border-radius: 8px;
+            border: 1px solid $color-primary;
             font-weight: 700;
-            @include font-medium;
-            color: #ff5000;
+            font-size: 12px;
+            line-height: 1;
+            color: $color-primary;
             &.complete {
-                background-image: url('/lg5-common/images/icons/icon-comp.svg');
-                color: #18847e;
+                border-color: $color-positive;
+                color: $color-positive;
             }
             @include mobile {
-                top: auto;
-                bottom: 0;
+                display: inline-block;
+                margin-top: 8px;
+                padding: 5px 10px;
             }
         }
         .btn {
-            position: absolute;
-            @include calc(top,50%,16px);
-            right: 0;
-            &.gray {
-                color: $color-default;
+            @include pc {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            @include mobile {
+                display: inline-block;
+                margin-top: 8px;
             }
         }
         &.my-board {
             > li {
                 margin-top: 24px;
+                &:first-child {
+                    margin-top: 32px;
+                    @include mobile {
+                        margin-top: 24px;
+                    }
+                }
+            }
+            .content {
+                .title {
+                    margin-bottom: 6px;
+                }
+                @include mobile {
+                    .title {
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+        }
+        &.product {
+            > li {
+                margin-top: 28px;
                 &:first-child {
                     margin-top: 32px;
                 }
@@ -533,25 +571,21 @@
                 .title {
                     margin-bottom: 4px;
                 }
-                @include mobile {
-                    padding-right: 0;
-                }
-            }
-        }
-        &.product {
-            > li {
-                margin-top: 15px;
-                &:first-child {
-                    margin-top: 32px;
-                }
             }
             @include mobile {
+                > li {
+                    margin-top: 24px;
+                    &:first-child {
+                        margin-top: 24px;
+                    }
+                }
                 .content {
                     .title {
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
                         -webkit-box-orient: vertical;
                         white-space: normal;
+                        margin-bottom: 2px;
                     }
                 }
             }
@@ -560,50 +594,48 @@
     .care-info {
         .service-date {
             position: relative;
-            margin-top: 20px;
-            padding: 19px 0;
-            border-top: 1px solid $color-border;
+            margin-top: 8px;
+            padding: 16px 0;
+            border-top: 1px solid $color-default;
             background-color: $color-bg;
             font-weight: 700;
-            @include font-large;
+            font-size: 16px;
+            line-height: 26px;
             text-align: center;
+            @include mobile {
+                margin-top: 10px;
+                padding: 12px 0;
+                font-size: 14px;
+                line-height: 22px;
+            }
             &:before {
                 position: absolute;
-                top: -22px;
+                top: -13px;
                 right: 0;
                 left: 0;
                 height: 12px;
                 background-color: #fff;
                 content: '';
             }
-            em {
-                color: $color-gray-1;
-            }
         }
         .service-info {
-            margin-top: 24px;
+            padding: 10px 8px 0;
             li {
                 display: flex;
-                align-items: baseline;
+                align-items: flex-end;
                 margin-top: 12px;
                 .name {
-                    flex: 1;
+                    //flex: 1;
                     font-weight: 700;
                     @include font-medium;
-                    .number {
-                        margin-left: 8px;
-                        font-weight: 500;
-                        @include font-small;
-                        color: $color-gray-1;
-                    }
                 }
                 .text {
-                    flex: 1;
+                    //flex: 1;
                     @include font-small;
                 }
             }
             @include mobile {
-                margin-top: 16px;
+                padding: 8px 12px 0;
                 li {
                     flex-direction: column;
                     margin-top: 16px;
@@ -617,89 +649,111 @@
     .process-wrap {
         > ul > li {
             position: relative;
-            margin-top: 20px;
-            padding-left: 116px;
+            margin-top: 48px;
             &:first-child {
-                margin-top: 28px;
+                margin-top: 32px;
             }
             @include mobile {
-                padding-left: 0;
+                margin-top: 40px;
                 &:first-child {
-                    margin-top: 32px;
+                    margin-top: 24px;
                 }
             }
         }
         .title {
-            position: absolute;
-            @include calc(top,50%,-6px);
+            //position: absolute;
+            //@include calc(top,50%,-6px);
             //top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+            //left: 0;
+            //transform: translateY(-50%);
+            display: block;
+            margin-bottom: 6px;
             font-weight: 700;
             @include font-medium;
             @include mobile {
                 display: block;
-                position: static;
-                transform: translateY(0);
-                margin-bottom: 4px;
+                //position: static;
+                //transform: translateY(0);
+                margin-bottom: 0;
             }
         }
         .process-list {
             font-size: 0;
+            @include pc {
+                padding: 0 6px;
+            }
             > li {
                 position: relative;
                 display: inline-block;
                 padding-top: 12px;
+                padding-bottom: 26px;
                 &:not(:last-child) {
-                    padding-right: 32px;
+                    padding-right: 80px;
                     &:after {
                         position: absolute;
-                        @include calc(top,50%,4px);
-                        right: 6px;
-                        width: 20px;
-                        height: 20px;
-                        background: url('/lg5-common/images/icons/btn-arr-20x20-gray.svg') no-repeat 0 0;
+                        @include calc(top,50%,10px);
+                        right: 24px;
+                        width: 32px;
+                        height: 32px;
+                        background: url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                         content: '';
                     }
                 }
                 @include mobile {
+                    padding-top: 16px;
+                    padding-bottom: 23px;
                     &:not(:last-child) {
-                        padding-right: 24px;
+                        padding-right: 54px;
                         &:after {
-                            @include calc(top,50%,2px);
-                            right: 4px;
-                            width: 16px;
-                            height: 16px;
-                            background-image: url('/lg5-common/images/icons/btn_arrow_right_16.svg');
+                            @include calc(top,50%,4px);
+                            right: 15px;
+                            width: 24px;
+                            height: 24px;
+                            background-size: 24px;
                         }
                     }
                 }
             }
             .box {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                width: 106px;
-                height: 106px;
+                width: 64px;
+                height: 64px;
                 border-radius: 50%;
                 background-color: $color-bg;
                 text-align: center;
-                @include mobile {
-                    width: 74px;
-                    height: 74px;
-                }
+
                 dt {
+                    position: absolute;
+                    bottom: -26px;
+                    left: 0;
+                    right: 0;
                     font-weight: 500;
-                    @include font-small;
-                    color: $color-gray-1;
+                    font-size: 12px;
+                    line-height: 22px;
+                    text-align: center;
                 }
                 dd {
                     font-weight: 700;
-                    font-size: $font-large-3;
-                    line-height: 38px;
-                    @include mobile {
-                        font-size: $font-large-1;
-                        line-height: 28px;
+                    font-size: 32px;
+                    line-height: 52px;
+                    &.zero {
+                        color: $color-gray-1;
+                    }
+                }
+                @include mobile {
+                    width: 60px;
+                    height: 60px;
+                    dt {
+                        bottom: -23px;
+                        font-size: 11px;
+                        line-height: 19px;
+                    }
+                    dd {
+                        font-size: 24px;
+                        line-height: 33px;
                     }
                 }
             }
@@ -707,45 +761,44 @@
     }
 
     .my-management.shopping {
-        .like-info,
-        .recent-info {
-            .list-wrap {
-                position: relative;
-                &:before {
-                    position: absolute;
-                    top: -22px;
-                    right: 0;
-                    left: 0;
-                    height: 12px;
-                    background-color: #fff;
-                    content: '';
-                }
-            }
-        }
         .product-items {
-            margin-top: 20px;
+            margin: 32px 0 0;
+            @include mobile {
+                margin-top: 24px;
+            }
             > li {
                 width: 100%;
-                padding-bottom: 8px;
+                padding: 0 0 40px;
+                @include mobile {
+                    padding-bottom: 24px;
+                }
                 &:last-child {
                     padding-bottom: 0;
                 }
                 .item {
-                    display: table;
                     width: 100%;
-                    padding: 16px 24px;
-                    border: 1px solid $color-border;
                     box-shadow: none;
-                    .product-image {
-                        display: table-cell;
-                        width: 122px;
-                        vertical-align: top;
+
+                    @include pc {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        min-height: 122px;
+                        padding: 0 0 0 122px;
+                        .product-image {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            //display: table-cell;
+                            width: 122px;
+                        }
                     }
+
                     .product-info {
-                        padding-top: 8px;
-                        padding-left: 16px;
+                        padding-top: 0;
+                        padding-left: 32px;
                         .product-name {
-                            height: 52px;
+                            margin-top: 0;
                             a {
                                 @include font-medium;
                             }
@@ -753,30 +806,39 @@
                     }
                     .price-area {
                         padding-top: 18px;
-                        padding-left: 16px;
-                        .original {}
+                        padding-left: 32px;
+                        .original {
+                            @include font-small;
+                        }
                         .total {
-                            @include font-large;
+                            font-size: 18px;
+                            line-height: 28px;
                         }
                     }
+
                     @include mobile {
-                        padding: 16px 12px 16px 8px;
+                        display: table;
+                        padding: 0;
                         .product-image {
-                            width: 85px;
+                            display: table-cell;
+                            width: 100px;
                             vertical-align: middle;
                         }
                         .product-info {
                             padding-top: 0;
-                            padding-left: 8px;
+                            padding-left: 16px;
                             .product-name {
-                                height: 44px;
+                                max-height: 44px;
                             }
                         }
                         .price-area {
-                            padding-top: 16px;
-                            padding-left: 8px;
+                            padding-top: 8px;
+                            padding-left: 16px;
+                            flex-direction: column-reverse;
+                            align-items: flex-start;
                             .total {
-                                @include font-large;
+                                font-size: 16px;
+                                line-height: 24px;
                             }
                         }
                     }

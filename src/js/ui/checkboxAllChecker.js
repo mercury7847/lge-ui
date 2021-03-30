@@ -11,7 +11,8 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'checkboxAllChecker',
         defaults: {
             allCheckClass: '.ui_all_checker', //전체 선택 체크박스 클래스...
-            checkBoxItemsTargetQuery: null
+            checkBoxItemsTargetQuery: null,
+            disabled: false
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -67,19 +68,23 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
         _toggleAllChecked: function(){
             var self = this;
 
-            var chk = self.$allChecker.prop('checked');
-            self.$items.prop('checked', chk);
-
-            self.trigger('allCheckerChange', [self.getAllChecked()]);
+            if(!self.options.disabled){
+                var chk = self.$allChecker.prop('checked');
+                self.$items.prop('checked', chk);
+    
+                self.trigger('allCheckerChange', [self.getAllChecked()]);
+            }
         },
 
         _allChecked: function(){
             var self = this;
 
-            var leng = self.$items.closest(':checked').length;
-            self.$allChecker.prop('checked', self.total === leng);
+            if(!self.options.disabled){
+                var leng = self.$items.closest(':checked').length;
+                self.$allChecker.prop('checked', self.total === leng);
 
-            self.trigger('allCheckerChange', [self.getAllChecked()]);
+                self.trigger('allCheckerChange', [self.getAllChecked()]);
+            }
         },
 
         setChecked: function(iptname, chk){
@@ -114,6 +119,12 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             return self.$items.closest(':checked');
+        },
+
+        setDisenabled: function(disabled){
+            var self = this;
+
+            self.options.disabled = disabled;
         }
     });
 });

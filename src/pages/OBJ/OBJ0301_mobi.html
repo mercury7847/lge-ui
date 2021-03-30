@@ -4,8 +4,7 @@
 
 <body>
     <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
-    <script src="/lg5-common/temp_OBJ/js/FileSaver.js"></script>
-    <!-- <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script> -->
+    <script src="/lg5-common/temp_OBJ/js/html2canvas.js"></script>
     <script src="/lg5-common/temp_OBJ/js/es6-promise.auto.js"></script>
     <script src="/lg5-common/temp_OBJ/js/smooth-scrollbar.js"></script>
     <script>
@@ -130,6 +129,11 @@
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
+                        let desc = "";
+                        let obj = {
+                            title: '이미지 파일이 다운로드 되었습니다.'
+                        };
+                        lgkorUI.alert(desc, obj);
                     } else {
                         alert("이미지 다운로드 실패");
                     }
@@ -259,8 +263,13 @@
                                 <button type="button" class="btn-share">사이트 공유하기</button>
                             </div>
                             -->
-                            <div class="img-download typ2">
+                            <!-- <div class="img-download typ2">
                                 <button type="button" class="btn-dw" id="save"><span>구매·공유하기</span></button>
+                            </div> -->
+                            <div class="img-download">
+                                @@include('./common/partials/KRP0016.html')
+                                <button type="button" class="btn-url-share" title="저장하기"><span class="blind">저장하기</span></button>
+                                <button type="button" data-href="#objModal1" data-control="modal" id="save" class="btn-dw" title="제품 구매하기"><span class="blind">제품 구매하기</span></button>
                             </div>
                             <div class="simulator_arr">
                                 <button type="button" class="btn-prev-simul">이전</button>
@@ -276,7 +285,7 @@
                             </div>
                         </div>
 
-                        <div class="sns_popup layer_popup">
+                        <!-- <div class="sns_popup layer_popup">
                             <div data-scrollbar="true">
                                 <h2>LG 오브제 컬렉션 체험 완료</h2>
                                 <div class="title-section">
@@ -285,7 +294,7 @@
 
                                 <div class="selected-objet-list-container">
                                     <ul class="selected-objet-list" data-objet-selected-list>
-                                        <!--
+                                        /*
                                         <li>
                                             <input type="checkbox" name="selected-objet-list" value="refrigerator" id="refrigerator">
                                             <label for="refrigerator">
@@ -293,15 +302,15 @@
                                                 <span class="focus" style="background-image:url(/lg5-common/images/OBJ/simulator/mobile/simulator_img2/appliances/Thumb_01_selected.png);">상냉장 냉장고</span>
                                             </label>
                                         </li>
-                                        -->
+                                        */
                                         <li class="empty">
                                             체험한 제품이 없습니다. <br />나만의 오브제 컬렉션을 만들어보세요.
                                         </li>
                                     </ul>
                                     <p class="txt" id="goshoptxt" style="display:none">위 제품을 선택하시면 구매페이지로 이동합니다</p>
-                                    <!-- 베스트 온라인 몰 버튼 부 -->
-                                    <!-- <button type="button" class="btn-buy-shop">베스트온라인몰 가기</button> -->
-                                    <!-- 베스트 온라인 몰 버튼 부 -->
+                                    /* 베스트 온라인 몰 버튼 부 */
+                                    /* <button type="button" class="btn-buy-shop">베스트온라인몰 가기</button>*/
+                                    /* 베스트 온라인 몰 버튼 부 */
                                 </div>
                                 <button type="button" class="btn-url-res btn-pop-reserve"><span>매장상담예약</span></button>
                                 <strong>02. 오브제컬렉션 공유 및 저장</strong>
@@ -314,7 +323,7 @@
                                         <li><button type="button" class="btn-confirm btn-fb" onclick="javascript:share('fb')">페이스북</button></li>
                                         <li><button type="button" class="btn-confirm btn-nb" onclick="javascript:share('nv')">블로그</button></li>
                                         <li><button type="button" class="btn-confirm btn-kakao" onclick="javascript:share('kt')">카카오톡</button></li>
-                                        <!--li><button type="button" class="btn-confirm btn-insta">인스타</button></li-->
+                                    </*li><button type="button" class="btn-confirm btn-insta">인스타</button></li*/>
                                     </ul>
                                     <div class="btn">
                                         <button type="button" class="btn-url-share">저장하기</button>
@@ -322,7 +331,7 @@
                                 </div>
                                 <button type="button" class="btn-close">닫기</button>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="objet_popup layer_popup">
                             <strong>FENIX (페닉스)</strong>
                             <ul>
@@ -436,6 +445,7 @@
                     <div class="objet_bg" style="width: 7680px;"></div>
                 </div>
                 <div class="mask"></div>
+                @@include('./common/popup/OBJ0301_pop1.html', { popupID: 'objModal1' }) @@include('./common/popup/OBJ0301_pop2.html', { popupID: 'objModal2' }) @@include('./common/popup/OBJ0301_pop3.html', { popupID: 'objModal3' })
             </div>
             <!-- // 공간체험 -->
         </div>
@@ -831,7 +841,7 @@
             formdata.append("styler", $("#styler").val());
             formdata.append("clean", $("#clean").val());
             formdata.append("aroot", "M");
-            $(".sns_popup, .mask").fadeIn();
+            //$(".sns_popup, .mask").fadeIn();
             //alert($("#refrigerator_LT").val());
             /*$.ajax({
                     type: 'post',

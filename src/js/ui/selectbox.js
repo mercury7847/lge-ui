@@ -29,6 +29,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 self.$el.prop('readonly', true);
             }
 
+
         },
         _options: function _options(cb) {
             core.each(core.toArray(this.el.options), cb);
@@ -168,11 +169,13 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                     
                     if ('text' in item) {
                         self.el.options.add(new Option(item.text || item.value, item.value));
+                        if(item.placeholder) $(self.el.options).addClass('placeholder');
                     } else {
                         core.each(item, function (txt, val) {
-                            self.el.options.add(new Option(txt, val));
+                            self.el.options.add(new Option(txt, val));                            
                             return false;
                         });
+                        if(item.placeholder) $(self.el.options).addClass('placeholder');                        
                     }
                 });
             } else if (core.is(list, 'json')) {
@@ -185,6 +188,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             if (selectedValue) {
                 self.el.value = selectedValue;
+                // self.el.selectedIndex = selectedValue;
             }
         },
 
@@ -704,7 +708,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 });
             });
 
+
             self.$listWrapper.empty().html('<ul>' + html + '</ul>').find('li:eq(' + self.el.selectedIndex + ')').addClass('on');
+            if(selectedValue) self.selectedIndex(selectedValue);
 
             self.$selectbox.toggle(self.display);
         },

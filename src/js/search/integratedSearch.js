@@ -380,7 +380,6 @@
                         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                         item.price = vcui.number.addComma(item.price);
                         item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
-                        console.log(item.obsFlag);
                         $list_ul.append(vcui.template(previewItemTemplate, item));
                     });
                     self.$resultPreviewList.show();

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+	<!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
 		pageCSS: ["PRS/PRS"],
-		pageJS: ["home/storeHome"],
+		pageJS: [
+			"home/storeHome", "components/KRP0005"
+		],
 		pageTitle : '전체 제품 | LG전자',
 		pageDesc : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.'
 		
     })
+	<!-- //210330 스키티챗JS 추가 -->
 <body>
 	<div class="wrap">
 		<!-- 210311_H1추가 -->
@@ -604,6 +608,11 @@
                 </div>
             </div> -->
 			<!-- //210303_삭제(임시)-->
+			<!-- 210330 스키티챗 추가 -->
+			<!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+			<!-- //210330 스키티챗 추가 -->
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
             <!-- // component / Scroll to the top -->

@@ -61,10 +61,19 @@ function moveDetail(el, detailUrl, windowHeight) {
                                 '<span class="value">{{bizHours.saturday}}</span>'+
                             '</p>'+
                             '<p class="cell">'+
-                                '<a href="#{{shopID}}" class="btn-link">상세보기</a>'+
+                                '<a href="#{{shopID}}" class="btn-link" title="새창으로 열림 - {{shopName}}">상세보기</a>'+
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
+                        '<div class="useable-service">' + 
+                            '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
+                            '{{#each (item, index) in serviceProduct}}' +
+                                '{{# if(index > 0) { #}}' +
+                                ', '+
+                                '{{# } #}}' +    
+                                '<span class="name">{{item.name}}</span>'+
+                            '{{/each}}' +
+                        '</div>' + 
                         '<ul class="opt-list">'+
                             '{{#each item in serviceProduct}}' +
                             '<li class="{{item.class}}">'+
@@ -114,6 +123,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self.storeData = [];
 
+            self.$container = $('.map-container');
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
 
             self.$defaultListContainer = self.$leftContainer.find('.list-wrap'); //리스트 컨테이너...
@@ -185,6 +195,15 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '           </dl>'+
                             '       </div>'+
                             '       {{# if(typeof serviceProduct != "undefined") { #}}' +
+                                    '<div class="useable-service">' + 
+                                        '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
+                                        '{{#each (item, index) in serviceProduct}}' +
+                                            '{{# if(index > 0) { #}}' +
+                                            ', '+
+                                            '{{# } #}}' +    
+                                            '<span class="name">{{item.name}}</span>'+
+                                        '{{/each}}' +
+                                    '</div>' + 
                             '       <ul class="opt-list">'+
                             '           {{#each item in serviceProduct}}' +
                             '           <li class="{{item.class}}">'+
@@ -234,7 +253,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self._bindEvents();
                     }).on('mapchanged', function(e, data){
                         self._setItemList(data);
-                        self._setItemPosition();                        
+                        self._setItemPosition();      
 
                         if(self.searchResultMode){
                             self._setSearchResultMode();
@@ -301,8 +320,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             setStoreClass(activeTabIndex);
 
             self.$searchContainer.find('.ui_tab').on('tabchange', function(e, data) {
-                
-                
                 setStoreClass(data.selectedIndex);
                 switch(data.selectedIndex) {
                     case 0:
@@ -320,17 +337,16 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             });
 
-            // self.$optionContainer.on('click', '.btn-sel', function(e){
-            //     e.preventDefault();
-
-            //     self._toggleOptContainer();
-            // });
-
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
                 
                 self.$map.selectInfoWindow(id);
+
+                if ($(window).data('breakpoint').isMobile) {
+                    self._showMap(true);
+                    $('html, body').animate({scrollTop:self.$container.offset().top})
+                }
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
                 e.preventDefault();
@@ -354,14 +370,13 @@ function moveDetail(el, detailUrl, windowHeight) {
                 $('.map-container').removeClass('result-map');
 
                 if( window.innerWidth < 768) {
-                    $('.page-header').show();
+                    $('.page-header').show().removeAttr('style');
                     $('.waiting-state').show()
                 }
             });
 
             self.$leftContainer.on('click', '.btn-view', function(e){
                 e.preventDefault();
-
                 self._showMap();
             });
 
@@ -490,9 +505,11 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             $(window).on('resizeend', function(e){
                 self._resize();
+            }).on('breakpointchange', function() {
+                self.$map.resizeInfoWindow();
             });
+
             self._resize();
-            //$(window).trigger('addResizeCallback', self._resize.bind(self));
         },
         searchAddressToCoordinate: function(address, callback) { 
             var self = this;
@@ -666,38 +683,28 @@ function moveDetail(el, detailUrl, windowHeight) {
             self._resize();
         },
 
-        _showMap: function(){
+        _showMap: function(flag){
             var self = this;
 
             if(!self.isTransion){
                 self.isTransion = true;
                 
                 var toggle = self.$leftContainer.find('.btn-view');
-                if($(window).width() < 1025) {
-                    if(toggle.hasClass('map')){
-                        var maptop = self.$defaultListContainer.position().top;
+                if(window.innerWidth < 1025) {
+                    if(flag || toggle.hasClass('map')){
                         self.$mapContainer.css({
                             marginLeft : 0
                         })
-                        self.$map.resize(window.innerWidth, $('.store-map-con').outerHeight());
-                        $('.store-map-con').css({
-                            visibility: 'visible',
-                            // top: maptop,
-                            left:0,
-                            x: self.windowWidth,
-                            // height: self.$mapContainer.height(),
-                            'z-index': 5
-                        }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
-            
+                        self.$container.addClass('show-map');
                         toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
                         
                     } else{
+                        self.$container.removeClass('show-map');
                         toggle.removeClass("list").addClass('map').find('span').text('지도보기');
-        
-                        $('.store-map-con').stop().transition({x:'100vw'}, 350, "easeInOutCubic", function(){self.isTransion = false;})
                     }
                 }
-               
+                self.isTransion = false;
+                self._resize();
             }
         },
 
@@ -921,6 +928,8 @@ function moveDetail(el, detailUrl, windowHeight) {
                     searchCurrentSearch();
                 },
                 cancel: function() {
+                    lgkorUI.cookie.setCookie("geoAgreeCancel", 'Y', 1);
+
                     lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                         title: '현재 위치 정보',
                         typeClass: 'type2',
@@ -939,7 +948,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
                 var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
 
-	            if (!cookie.getCookie('geoAgree')) {
+	            if (!cookie.getCookie('geoAgree') || !cookie.getCookie('geoAgreeCancel')) {
 	                lgkorUI.confirm(desc, obj);
 	            } else {
 	                searchCurrentSearch();
@@ -1074,6 +1083,14 @@ function moveDetail(el, detailUrl, windowHeight) {
                 } else {
                     self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: itemtop}, 220);
                 }
+
+                if( window.innerWidth < 1025) {
+                    if( self.$container.hasClass('show-map') && !self.$container.hasClass('result-map') ) {
+                        $('html, body').stop().animate({
+                            scrollTop :self.$container.offset().top 
+                        })
+                    }
+                }
             }
         },
 
@@ -1199,20 +1216,14 @@ function moveDetail(el, detailUrl, windowHeight) {
             var self = this;
 
             self.windowWidth = $(window).width();
-            self.windowHeight = $(window).innerHeight();
+            self.windowHeight = $(window).height();
 
-            self._setListArea();
-
-            
             var mapwidth, mapheight, mapmargin;
-            var tid = 0;
-            var tidSpeed = 0;
-            var moreSet = false;
 
-            if(window.breakpoint.isMobile){
+            if(self.windowWidth < 1025){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
-                mapheight = self.$defaultListContainer.find('.sch-list').outerHeight();
+                mapheight = 400;
 
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.page-header:visible').hide();
@@ -1231,37 +1242,15 @@ function moveDetail(el, detailUrl, windowHeight) {
                 
                 mapwidth = self.windowWidth - mapmargin;
                 mapheight = $('.map-container').height();
-
-                if( mapmargin > self.windowWidth/2) {
-                    tidSpeed = 300;
-                    moreSet = true;
-                }
-                
             }
 
-            
+            self.$mapContainer.css({
+                width: mapwidth,
+                height: mapheight,
+                marginLeft: mapmargin
+            });
 
-            clearTimeout(tid);
-
-            tid = setTimeout(function(){
-                if( moreSet ) {
-                    if(self.$leftContainer.hasClass('close')){
-                        mapmargin = 0;
-                    } else{
-                        mapmargin = self.$leftContainer.width();
-                    }
-                    mapwidth = self.windowWidth - mapmargin;
-                }
-                self.$mapContainer.css({
-                    width: mapwidth,
-                    height: mapheight,
-                    'margin-left': mapmargin
-                });
-                
-                if(self.$map) {
-                    self.$map.resize(mapwidth, mapheight);
-                }
-            } ,tidSpeed);
+            if(self.$map) self.$map.resize(mapwidth, mapheight);
         }
     }
 
@@ -1288,6 +1277,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 var toggle = searchShop.$leftContainer.find('.btn-view');
                 if(toggle.hasClass('list')){
                     toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+                    $('.map-container').removeClass('show-map');
                 }
             }
             searchShop._resize()

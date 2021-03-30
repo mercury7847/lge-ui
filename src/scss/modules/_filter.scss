@@ -513,7 +513,7 @@
     //float: left;
     position: absolute;
     top: 0;
-    left: 16px;
+    //left: 16px;
     z-index: 1;
     &:before {
         content:' ';
@@ -527,9 +527,11 @@
     }
     @include tablet {
         top: 21px;
+        left: 40px;
     }
     @include mobile {
         top: 14px;
+        left: 16px;
     }
     .ico-filter {
         display: inline-block;
@@ -567,7 +569,13 @@
 }
 
 .cate-m {
-    //min-height: 70px;
+    @include tablet {
+        min-height: 76px;
+        border-bottom: 1px solid #ddd;
+        @include mobile {
+            min-height: 65px;
+        }
+    }
     //border-bottom: 12px solid #f4f4f4;
     background:#fff; /* 2021.2.15 추가 */
 }

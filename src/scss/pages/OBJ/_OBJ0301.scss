@@ -33,7 +33,7 @@
     top: 0;
 }
 
-.simulator full .objet_select_slider .obj-swiper-container {
+.simulator .objet_select_slider .obj-swiper-container {
     display: flex;
     width: 53.8%;
     height: 100%;
@@ -2403,198 +2403,6 @@ strong.selected-objet-list-title {
     margin: 40px 0 20px 0;
 }
 
-.selected-objet-list-container {
-    display: inline-block;
-    width: 100%;
-    padding: 32px 0px;
-    border: solid 1px #eeeadf;
-    background-color: #fafafa;
-    text-align: center;
-}
-
-.selected-objet-list-container ul {
-    display: inline-block;
-    max-width: 384px;
-}
-
-.selected-objet-list-container ul>li {
-    position: relative;
-    z-index: 999;
-    float: left;
-    margin-left: 4px;
-}
-
-.selected-objet-list-container ul>li:first-child {}
-
-.selected-objet-list-container ul>li:nth-child(4n+0):after {}
-
-.selected-objet-list-container ul>li.empty {
-    width: 100%;
-    max-width: 254px;
-    height: auto;
-    margin: 58px;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
-    color: #787878;
-}
-
-.selected-objet-list-container button {
-    width: 58px;
-    padding-top: 40px;
-    opacity: 0.72;
-    filter: opacity(72);
-    font-size: 10px;
-    color: #fff;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
-}
-
-.selected-objet-list-container .active button {
-    opacity: 1;
-    filter: opacity(100);
-    color: #101010;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]:checked,
-.selected-objet-list-container ul>li input[type="checkbox"]:not(:checked) {
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    width: 84px;
-    height: 84px;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]:not(:checked)+a {
-    pointer-events: none;
-    cursor: default;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]:checked+label {
-    cursor: pointer;
-}
-
-.selected-objet-list-container ul>li {
-    position: relative;
-    display: inline-block;
-    width: 84px;
-    height: 84px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: 50% 50%;
-    margin: 6px;
-}
-
-.selected-objet-list-container ul>li a {
-    position: relative;
-    display: inline-block;
-    width: 84px;
-    height: 84px;
-    cursor: pointer;
-}
-
-.selected-objet-list-container ul>li a span {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    width: 84px;
-    height: 84px;
-    text-indent: -9999px;
-    background-repeat: no-repeat;
-    background-size: 80px 80px;
-    background-position: 50% 50%;
-    -webkit-transition: opacity 0.5s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
-    -o-transition: opacity 0.5s ease-in-out;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]+a span.cover {
-    opacity: 1;
-    background-size: 84px 84px;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]+a:before {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.selected-objet-list-container ul>li input[type="checkbox"]:checked+a:before {
-    opacity: 0;
-}
-
-.selected-objet-list-container ul>li .btn01 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-a.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn02 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-b.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn03 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-c.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn04 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-dish-wash.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn05 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-oven.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn06 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-water.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn07 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-styler.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li .btn08 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn01 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-a_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn02 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-b_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn03 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-refrigerator-c_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn04 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-dish-wash_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn05 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-oven_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn06 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-water_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn07 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-styler_2.png") no-repeat center top;
-}
-
-.selected-objet-list-container ul>li.active .btn08 {
-    background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower_2.png") no-repeat center top;
-}
-
 .layer_popup .scrollbar-track.scrollbar-track-y {
     display: block !important;
     opacity: .5;
@@ -2612,4 +2420,59 @@ strong.selected-objet-list-title {
     font-size: 16px;
     color: #404040;
     border: solid 1px #e0e0e0;
+}
+
+.simulator.full .objet_select_slider .img-download {}
+
+.simulator.full .objet_select_slider .img-download .component-wrap {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.simulator.full .objet_select_slider .img-download .share {
+    position: relative;
+    top: auto;
+    right: auto;
+    padding: 0;
+    height: 50px;
+}
+
+.simulator.full .objet_select_slider .img-download .component-wrap .KRP0016 .inner {
+    padding: 0;
+}
+
+.simulator.full .objet_select_slider .img-download .tooltip-wrap.share .tooltip-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url('/lg5-common/images/icons/icon-share-24.svg') #ffffff no-repeat center center;
+    background-size: 35px;
+}
+
+.simulator.full .objet_select_slider .img-download .tooltip-wrap.share [data-fixed="fixed-right"]+.tooltip-box {
+    top: -200px;
+}
+
+.simulator.full .objet_select_slider .img-download .btn-url-share {
+    width: 50px;
+    height: 50px;
+    margin-left: 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url('/lg5-common/images/OBJ/simulator/ico/ico_simul_down.png') #ffffff center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.simulator.full .objet_select_slider .img-download .btn-dw {
+    width: 50px;
+    height: 50px;
+    margin-left: 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url('/lg5-common/images/OBJ/simulator/ico/ico_simul_cart.png') #ffffff center center no-repeat;
+    background-size: 100% 100%;
 }

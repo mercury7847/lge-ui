@@ -93,7 +93,7 @@
 
 
         // number e block;
-        $('input[type=number]').on('onkeydown', function(e){
+        $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
         });
 
@@ -207,6 +207,9 @@
         $('#popup-delivery-address').data("exception", true);
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address", null, true);
         addressFinder = new AddressFind();
+
+        step1Block.find('input[name=detailAddress]').attr('maxlength', 50);
+        step2Block.find('input[name=detailAddress]').attr('maxlength', 50);
     }
 
     //이벤트 등록...
@@ -737,15 +740,11 @@
             zipCode: step2Validation.getValues("zipCode"),
             cardDiscountPrice: selectCardValue
         }
-        console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             lgkorUI.hideLoading();
 
-            console.log("success :", result.data);
-
             productPriceInfo = result.data.productPriceInfo;
 
-            console.log("productStatus :", result.data.productStatus);
             if(result.data.productStatus){
                 for(var str in result.data.productStatus){
                     var modelID = result.data.productStatus[str].modelID;
@@ -840,6 +839,9 @@
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
                 step2Block.find('select[name=inatallPlace]').vcSelectbox('update');
+
+                step2Block.find('input[name=detailAddress]').prop('disabled', true);
+                step2Block.find('button.installAbledConfirm').prop('disabled', true);
             }
             
             setInputData('installAbled', abled);
@@ -866,7 +868,7 @@
         console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
-                window.open('', 'nicePopUp', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                void(window.open("", "nicePopUp", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
                 document.form_chk.action = result.data.niceAntionUrl;
                 document.form_chk.EncodeData.value = result.data.sEncData;
                 document.form_chk.param_r1.value = result.data.param_r1;
@@ -1023,6 +1025,9 @@
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+
+            step2Block.find('input[name=detailAddress]').prop('disabled', false);
+            step2Block.find('button.installAbledConfirm').prop('disabled', false);
         });
     }
 
@@ -1034,6 +1039,9 @@
             item.find('input[name=detailAddress]').val(data.detailAddress);
 
             $('.err-address').hide();
+
+            step2Block.find('input[name=detailAddress]').prop('disabled', false);
+            step2Block.find('button.installAbledConfirm').prop('disabled', false);
         });
     }
 
@@ -1139,8 +1147,15 @@
     //청약신청하기...
     function rentalRequest(){
         var chk = false;
+        //stepAccordion.expand(1, true)
+        var stepperStatus = stepAccordion.getActivate();
+        console.log()
         if(setStep1Validation()){
+            if(stepperStatus.content.length < 2) stepAccordion.expand(1, true);
+
             if(setStep2Validation()){
+                if(stepperStatus.content.length < 3) stepAccordion.expand(2, true);
+
                 if(setStep3Validation()){
                     chk = true;
                 }

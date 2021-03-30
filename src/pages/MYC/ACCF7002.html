@@ -32,6 +32,17 @@
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
                 data-tab-flag="ORDER"
             >
+                <form id="goDetailForm" action="" method="post">
+                    <div class="hidden-input-group">
+                        <input type="hidden" name="orderNumber" value="">
+                        <input type="hidden" name="requestNo" value="">
+                        <input type="hidden" name="tabFlag" value="">
+                        <input type="hidden" name="startDate" value="">
+                        <input type="hidden" name="endDate" value="">
+                        <input type="hidden" name="periodSelect" value="">
+                        <input type="hidden" name="orderNumberList" value="">
+                    </div>
+                </form>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {

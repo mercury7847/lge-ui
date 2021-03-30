@@ -7,14 +7,16 @@ var isApp = function(){
 ;(function(global){
 
     if(global['lgkorUI']) return;
-    console.log("lgkorUI start!!!");
-    if(vcui.detect.isMac) $('html').addClass('mac');
-    if(isApp()) $('html').addClass('app');
+    // console.log("lgkorUI start!!!");
 
-
+    var isApplication = isApp();
     var isAndroid = vcui.detect.isAndroid;
     var isIOS = vcui.detect.isIOS;
-    var isApplication = isApp();
+    var isMobileDevice = vcui.detect.isMobileDevice; 
+
+    if(vcui.detect.isMac) $('html').addClass('mac');
+    if(isApplication) $('html').addClass('app');
+    if(isMobileDevice) $('html').addClass('mdevice');
 
 
     window.onload = function(){
@@ -86,11 +88,11 @@ var isApp = function(){
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
         ], function () {    
-            console.log("buildCommonUI!!!!");
+            // console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
             if(location.hostname == "cms50.lge.co.kr") {
-                console.log('lazy cms50');
+                // console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
                 this.vcLazyLoader();
             }
@@ -287,6 +289,10 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
+
+
+
+
         },
 
         _addImgOnloadEvent: function(){
@@ -650,6 +656,8 @@ var isApp = function(){
             var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
+                console.log("referrer:", referrer)
+                console.log("_historyBack:", index, referrer)
                 if(index > -1){
                     break;
                 }
@@ -1209,14 +1217,13 @@ var isApp = function(){
         requestAjaxData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, timeout, ignoreCommonLoadingHide, failCallback) {
             var self = this;
             var dtype = dataType? dataType : "json";
-            var timeout = timeout ? timeout : 10000;
-            console.log("requestAjaxData:", type)
+            var timelimit = timeout ? timeout : 15000;
             $.ajax({
                 type : type? type : "GET",
                 url : url,
                 dataType : dtype,
                 data : data,
-                timeout : 180000
+                timeout : timelimit
             }).done(function (result) {
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
 
@@ -1237,25 +1244,35 @@ var isApp = function(){
                         var data = result.data;
                         if(data && !Array.isArray(data) && typeof data === 'object') {
                             if(!data.success && !(typeof(data.success) === "boolean")) {
-                                data.success = "N";
-                                result.data = data;
+                                result.data.success = "N";
                             }
+                        } else {
+                            //     if(result.message) {
+                            //         lgkorUI.alert("", {
+                            //             title: result.message
+                            //         });
+                            //         //result.message = null;
+                            //     }
+                            //result.data = {"success" : "N"};
+                            if(data && !data.success && !(typeof(data.success) === "boolean")) {
+                                result.data.success = "N";
+                            }
+                        }
+                        if(callback && typeof callback === 'function') callback(result); 
+                    } else {
+                        var data = result.data;
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
+                            lgkorUI.alert("", {
+                                title: data.alert.title
+                            });
                         } else {
                             if(result.message) {
                                 lgkorUI.alert("", {
                                     title: result.message
                                 });
-                                result.message = null;
                             }
-                            result.data = {"success" : "N"};
                         }
-                        if(callback && typeof callback === 'function') callback(result); 
-                    } else {
-                        if(result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message
-                            });
-                        }
+                        if(failCallback && typeof failCallback === 'function') failCallback();
                     }
                     return;
                 }
@@ -1264,8 +1281,7 @@ var isApp = function(){
                     var data = result.data;
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     if(callback && typeof callback === 'function') callback(result); 
@@ -1274,8 +1290,7 @@ var isApp = function(){
                     //success가 비어 있으면 성공(Y) 라 친다
                     if(data && !Array.isArray(data) && typeof data === 'object') {
                         if(!data.success && !(typeof(data.success) === "boolean")) {
-                            data.success = "Y";
-                            result.data = data;
+                            result.data.success = "Y";
                         }
                     }
                     /*
@@ -1283,10 +1298,18 @@ var isApp = function(){
                         data.success = "Y";
                     }
                     */
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        self.commonAlertHandler(data.alert);
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
+                            self.commonAlertHandler(data.alert);
+                        }/* else {
+                            if(result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
+                        }*/
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
                     } 
@@ -1305,7 +1328,6 @@ var isApp = function(){
             self.requestAjaxData(url, data, successCallback, null, null, null, null, null, failCallback);
         },
         
-
         requestAjaxDataIgnoreCommonSuccessCheck: function(url, data, callback, type, dataType) {
             var self = this;
             self.requestAjaxData(url, data, callback, type, dataType, true);
@@ -1353,7 +1375,7 @@ var isApp = function(){
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -1397,7 +1419,7 @@ var isApp = function(){
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
                     var utility = $('div.header-wrap div.utility');
                     utility.find('.cart span.count').remove();
@@ -1417,7 +1439,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1438,12 +1460,13 @@ var isApp = function(){
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
             console.log("### requestWish ###", param, wish);
+
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     if(wish) {
                         $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
                     } else{
@@ -1456,7 +1479,7 @@ var isApp = function(){
                     }
                 } else {
                     callbackFail(data);
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(data.alert.isConfirm && data.alert.okUrl) {
                             data.alert.okUrl = data.alert.okUrl + location.href;
                         }
@@ -1960,7 +1983,51 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // 앱 isLayoutPopup
+        appIsLayerPopup:function(flag){
+
+            if(isApplication) {
+                if(isAndroid && android) android.isLayerPopup(flag);
+                if(isIOS) {
+                    var jsonString= JSON.stringify({command:'isLayerPopup', value:flag? "Y" : 'N'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                }
+            }
+        },
+
+        // history back 사용하기
+        addHistoryBack:function(cid, callback){
+
+            if(!isMobileDevice) return;
+
+            var uid = '.history-back-'+cid;
+            $(window).off('popstate'+uid).on('popstate'+uid, function(){      
+                var state = window.history.state;
+                if(state && state.data && state.data == uid){
+                    if(callback && vcui.isFunction(callback)) callback.call(this);
+                    $(window).off('popstate'+uid);
+                }
+            });
+
+            window.history.replaceState({ data: uid }, null, null);
+            window.history.pushState({ data: uid+'-open' }, null, null);
+
+        },
+
+        removeHistoryBack:function(cid){
+
+            if(!isMobileDevice) return;
+
+            var uid = '.history-back-'+cid;
+            var state = window.history.state;
+            if(state && state.data && state.data == uid+'-open'){
+                window.history.back();
+            }
+            $(window).off('popstate'+uid);
         }
+
         
     }
 

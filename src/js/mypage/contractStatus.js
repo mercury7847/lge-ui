@@ -35,6 +35,8 @@
 
     var ajaxMethod = "POST";
 
+    var requestPartnerCardYn = "";
+
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
     function init(){
@@ -56,6 +58,13 @@
 
             var firstData = $('select[name=contractInfo]').find('option:nth-child(1)').val();
             if(firstData) changeContractInfo();
+            else{
+                if(requestPartnerCardYn == "Y"){
+                    var nodata = mypage.find('.no-data').text();
+                    mypage.find('.no-data').html("<p>" + nodata + "<br>케어솔루션 계약시 제휴카드를 신청하시면 더욱 편리한 이용이 가능합니다.</p>");
+                }
+                requestPartnerCardYn = ""
+            }
         });
     }
 
@@ -135,6 +144,8 @@
         bankInfo = bankValidation.getAllValues();
 
         txtMasking = new vcui.helper.TextMasking();
+
+        requestPartnerCardYn = getHiddenData("requestPartnerCardYn");
     }
 
     function bindEvents(){
@@ -157,7 +168,7 @@
         paymentModifyBlock.on('click', '.paymentCardConfirm, .paymentBankConfirm', function(e){
             e.preventDefault();
 
-            paymentMethodAbled(this);
+            setPaymentMethodAbled(this);
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
 
@@ -294,19 +305,19 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    // window.open('', 'popupChk', 'width=500, height=640, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-                    // document.form_chk.action = result.data.niceAntionUrl;
-                    // document.form_chk.m.value = result.data.m;
-                    // document.form_chk.EncodeData.value = result.data.sEncData;
-                    // document.form_chk.auth_type.value = result.data.auth_type;
-                    // document.form_chk.param_r1.value = result.data.param_r1;
-                    // document.form_chk.param_r2.value = result.data.param_r2;
-                    // document.form_chk.param_r3.value = result.data.param_r3;
-                    // document.form_chk.target = "popupChk";
-                    // document.form_chk.submit();
+                    void(window.open("", "popupChk", "width=390, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+                    document.form_chk.action = result.data.niceAntionUrl;
+                    document.form_chk.m.value = result.data.m;
+                    document.form_chk.EncodeData.value = result.data.sEncData;
+                    document.form_chk.auth_type.value = result.data.auth_type;
+                    document.form_chk.param_r1.value = result.data.param_r1;
+                    document.form_chk.param_r2.value = result.data.param_r2;
+                    document.form_chk.param_r3.value = result.data.param_r3;
+                    document.form_chk.target = "popupChk";
+                    document.form_chk.submit();
 
                     // editBasicInfomation();
-                    editPaymentInfomation();
+                    //editPaymentInfomation();
                 }
             });
         }, ajaxMethod);
@@ -327,7 +338,12 @@
         setHiddenData('arsAgree', "N");
     }
     //나이스 콜백 -인증실패
-    function fnNiceFail(){
+    function fnNiceFail(msg){
+        if(msg){
+            lgkorUI.alert("", {
+                title: msg
+            })
+        }
     }
     window.editBasicInfomation = editBasicInfomation;
     window.editPaymentInfomation = editPaymentInfomation;
@@ -345,7 +361,7 @@
         lgkorUI.showLoading();
 
         var sendata = userInfoValidation.getAllValues();
-        sendata.confirmType = f;
+        sendata.confirmType = MODE_USER;
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
         console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
@@ -447,6 +463,7 @@
     //납부정보 확인 유무...
     function paymentConfirmYN(){
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");
+        console.log("paymentMethodAbled:",paymentMethodAbled)
         if(paymentMethodAbled == "N"){
             paymentErrorAlert();
             return false;
@@ -456,14 +473,14 @@
     }
     //납부 확인 오류창...
     function paymentErrorAlert(){
-        var paymentMethodIndex = $('.monthly-payment-modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
+        var paymentMethodIndex = $('.mypage .section-wrap .sects.payment.modify input[name=method-pay]:checked').data("visibleTarget") == ".by-bank";
         lgkorUI.alert("",{
             title: paymentMethodIndex ? "납부 계좌 확인이 필요합니다." : "납부 카드 확인이 필요합니다."
         });
         setHiddenData('arsAgree', "N");
     }
     //납부카드/계좌 확인...
-    function paymentMethodAbled(item){
+    function setPaymentMethodAbled(item){
         var chk = paymentFieldValidation();
         if(!chk) return false;
 
@@ -787,10 +804,10 @@
     function getMaskingData(data){
         var newdata = {};
         for(var key in data){
-            if(key == "name") newdata[key] = txtMasking.name(data[key]);
-            else if(key == "email") newdata[key] = txtMasking.email(data[key]);
-            else if(key == "adress") newdata[key] = txtMasking.substr(data[key], 20);
-            else newdata[key] = txtMasking.phone(data[key]);
+            if(key == "name") newdata[key] = data[key];
+            else if(key == "email") newdata[key] = data[key];
+            else if(key == "adress") newdata[key] = data[key], 20;
+            else newdata[key] = data[key];
         }
 
         return newdata;
@@ -815,7 +832,14 @@
 
             lgkorUI.hideLoading();
 
-            $('html, body').animate({scrollTop:0}, 220);
+            if(requestPartnerCardYn == "Y"){
+                requestPartnerCardYn = "";
+
+                var viewertop = $('.sects.payment.viewer').offset().top;
+                $('html, body').animate({scrollTop:viewertop}, 200)
+            } else{
+                $('html, body').animate({scrollTop:0}, 220);
+            }
         }, ajaxMethod);
     }
 

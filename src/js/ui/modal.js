@@ -80,7 +80,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(false);
+                lgkorUI.appIsLayerPopup(true);
                 
             }
         },
@@ -109,7 +109,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 
 
                 //앱에서 처리 못할때를 대비
-                lgkorUI.setEnableAppScrollBottomMenu(true);
+                lgkorUI.appIsLayerPopup(false);
             }
         },
         _handleFocusin: function _handleFocusin(e) {
@@ -125,7 +125,6 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 if($first.is('input')){
                     setTimeout(function(){
                         $first.focus(); 
-                        console.log('2');
                     },100)
                 }else{
                     $first.focus(); 
@@ -283,7 +282,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
 
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
-            self.$el.find(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
+            //self.$el.find(self.options.dragHandle).attr('tabindex', 0); // 210322 수정
+            //self.$el.attr('tabindex', 0); // 210322 수정
+
 
             var removeModalCss = self.$el.data('removeModalCss');
             self.options.removeModalCss = removeModalCss ? removeModalCss : false;
@@ -425,22 +426,24 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     e.stopPropagation();
                 });
 
+
                 var $focusEl = self.$el.find('[data-autofocus=true]');
 
                 // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
-                if ($focusEl.length > 0) {     
-                    
+                if ($focusEl.length > 0) {
                     $focusEl.eq(0).focus();
-
                 } else {
                     // 레이어에 포커싱
-                    
-                    var $first = self.$el.find(':visible:focusable').first(); 
-                    $first.focus(); 
-                    
-                    //self.$el.focus(); 
-
+                    self.$el.attr('tabindex', 0).focus();
                 }
+
+                var $focusEl = self.$('[data-autofocus=true]');
+                if ($focusEl.length > 0) {
+                    $focusEl.eq(0).focus();
+                } else {
+                    self.$el.attr('tabindex', 0).focus();
+                }
+
 
 
                 // 버튼
@@ -455,10 +458,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             });
 
             if(opts.isHash){
-                window.removeEventListener("hashchange", this._hashchange.bind(this));
-                window.addEventListener("hashchange", this._hashchange.bind(this));
-                self.randomKey = ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
-                window.location.hash += "#"+self.randomKey;
+                lgkorUI.addHistoryBack(self.cid, function(){
+                    self.close();
+                });
             }
             
         
@@ -499,6 +501,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             defer.done(function () {
+
+                
+
                 self.trigger('modalhidden', {
                     module: self
                 });
@@ -519,20 +524,14 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 ////// $('body').removeAttr('aria-hidden');    // 비활성화를 푼다.
 
                 self.destroy();
+
             });
             
-
-
-            if(self.options.isHash){
-                window.removeEventListener("hashchange", this._hashchange.bind(this));
-                var hash = window.location.hash;
-                hash = hash.replace("#"+self.randomKey, '');
-                if(hash=='') {
-                    self._removeLocationHash();
-                }else{
-                    window.location.hash = hash;
-                }
+            if(self.options.isHash){                
+                lgkorUI.removeHistoryBack(self.cid);
             }
+
+
 
             
         },
@@ -573,7 +572,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 display: 'block',
                 position: 'absolute',
                 //backgroundColor: '#ffffff',
-                outline: 'none',
+                // outline: 'none',
                 minHeight: scrollHeight,
                 backgroundClip: 'padding-box' //,
                 //top: top = isOverHeight ? '0%' : '50%'//,
@@ -673,18 +672,18 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var $focusEl = self.$el.find('[data-autofocus=true]');
 
+            
             // 레이어내에 data-autofocus를 가진 엘리먼트에 포커스를 준다.
             if ($focusEl.length > 0) {
-                
                 $focusEl.eq(0).focus();
-                
             } else {
                 // 레이어에 포커싱
-                
-                var $first = self.$el.find(':visible:focusable').first(); 
-                $first.focus(); 
+                //var $first = self.$el.find(':visible:focusable').first(); 
+                //$first.focus(); 
 
+                self.$el.attr('tabindex', 0).focus();
             }
+
             
             $doc.off('focusin' + self.getEventNS()).on('focusin' + self.getEventNS(), self.proxy(function (e) {
                 if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) {

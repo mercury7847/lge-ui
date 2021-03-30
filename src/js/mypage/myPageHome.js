@@ -38,7 +38,7 @@
             
             //
             var cremaReviewTemplate =
-                (vcui.detect.isMobile) ? '<a href="#" class="crema-new-review-link btn gray size" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>':'<a href="#" class="crema-new-review-link btn gray size" data-product-code="{{enModelName}}">리뷰작성</a>';
+                (vcui.detect.isMobile) ? '<a href="#" class="crema-new-review-link btn border size" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>':'<a href="#" class="crema-new-review-link btn border size" data-product-code="{{enModelName}}">리뷰작성</a>';
 
             var $li = $('li.review-here[data-model-code]');
             $li.each(function(index, item){

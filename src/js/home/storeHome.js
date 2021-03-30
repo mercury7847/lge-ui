@@ -188,7 +188,7 @@ $(function(){
         return name? obj[name] : obj;
     }
 
-    vcui.require(['ui/toggleCarousel', 'ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
 
         var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
@@ -426,17 +426,14 @@ $(function(){
 
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){    
+
                     $('#'+categoryId).find('.ui_category_carousel').vcCarousel({
-                        infinite: true,
-                        variableWidth : false,
-                        dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 3
-                    }).vcCarousel('resize');
-
+                    }).vcCarousel('reinit');
                     
                 }else if(breakpoint.name == 'pc'){    
-                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('unbuild');                            
+                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('destroy');                      
                 }  
 
             }

@@ -36,6 +36,13 @@
                         '</div>' +
                     '</div>' +
                 '</div>' +
+                '{{#if techSpecs && techSpecs.length > 0}}' +
+                    '<div class="spec-info"><ul>' +
+                        '{{#each item in techSpecs}}' +
+                            '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
+                        '{{/each}}' +
+                    '</ul></div>' +
+                '{{/if}}' +
             '</div>' +
             '{{#if obsFlag=="Y"}}' +
             '<div class="info-price">' +
@@ -208,6 +215,8 @@
         var search = {
             init: function() {
                 var self = this;
+                self.uniqId = vcui.getUniqId(8);
+                
                 //vcui.require(['ui/tab'], function () {
                     self.setting();
                     self.updateRecentSearchList();
@@ -231,6 +240,12 @@
                         }
                     });
 
+                    var hash = location.hash.replace("#","");
+                    var savedData = lgkorUI.getStorage(hash);
+                    if(savedData && savedData.search) {
+                        if(savedData.href) self.scrollHref = savedData.href;
+                    }
+
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
@@ -240,7 +255,7 @@
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
                     } else {
-                        self.requestSearchData("",false);
+                        //self.requestSearchData("",false);
                     }
 
                     self.updateBasicData();
@@ -499,6 +514,19 @@
                 //검색 이동 로그 쌓기
                 $('ul.result-list').on('click', 'a', function(e){
                     self.sendLog(this);
+                    //리스트 아이템 이동후 back했을 경우 기억했다가 이동하기 위함
+                    var href = $(this).attr('href');
+                    if(href){
+                        //extend
+                        var scrollTop = $(document).scrollTop();
+                        lgkorUI.setStorage(self.uniqId, {"href":scrollTop}, true);
+                        location.hash = self.uniqId;
+                    }
+                });
+
+                //리사이즈 체크
+                $(window).on('resizeend', function(e){   
+                    self.updateRelatedKeywordMoreButton();
                 });
 
                 //스크롤 이벤트
@@ -663,6 +691,8 @@
             requestSearchData:function(value, force) {
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
+
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
                     self.openSearchInputLayer(false);
 
@@ -695,11 +725,7 @@
                         });
                         self.$relatedKeywordList.show();
 
-                        if(self.$relatedKeywordList.height() > 24) {
-                            self.$relatedKeywordMobileMoreButton.show();
-                        } else {
-                            self.$relatedKeywordMobileMoreButton.hide();
-                        }
+                        self.updateRelatedKeywordMoreButton();
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -776,7 +802,7 @@
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
-                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
@@ -787,6 +813,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -808,6 +841,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -833,6 +873,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -854,6 +901,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -876,6 +930,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -904,6 +965,13 @@
                         });
                         $resultListWrap.show();
                         noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
                     } else {
                         $resultListWrap.hide();
                     }
@@ -963,7 +1031,24 @@
 
                     var $selectTab = self.getTabItembySelected();
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
+
+                    if(self.scrollHref) {
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
+                    }
                 });
+            },
+
+            //연관검색어 더보기 버튼 노출 여부 체크
+            updateRelatedKeywordMoreButton:function () {
+                var self = this;
+                var $list_ul = self.$relatedKeywordList.find('ul');
+                var $li = $list_ul.find('>li:eq(0)');
+                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+                    self.$relatedKeywordMobileMoreButton.show();
+                } else {
+                    self.$relatedKeywordMobileMoreButton.hide();
+                }    
             },
 
             //최근 검색어 삭제

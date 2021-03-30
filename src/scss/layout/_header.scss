@@ -37,6 +37,7 @@
 }
 
 @include pc {
+    .header-wrap .mobile-only,
     .mobile-nav-wrap,
     .mobile-nav-button,
     .login-mobile,
@@ -304,7 +305,7 @@
                     position: absolute;
                     top: 24px;
                     left: 50%;
-                    z-index: 103;
+                    z-index: 104;
                     transform: translateX(-50%);
                     padding-top: 14px;
                     .mypage-layer-inner {
@@ -468,7 +469,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 3;
+        z-index: 101;
         background-color: rgba(0,0,0,.56);
         content: '';
     }
@@ -1368,11 +1369,12 @@
         .app-settings-button {
             display: none;
             position: absolute;
-            right: 11px;
+            //right: 11px;
             // top : -4px;
-            top: 59px;
+            right: -5px;
+            top: -2px;
             width: 34px;
-            height: 34px;
+            height: 36px;
             background: url('/lg5-common/images/icons/icon-app-settings.svg') no-repeat center center;
             background-size: 20px;
             // z-index: 113;
@@ -1514,6 +1516,11 @@ html {
         }
     }
     &.app {
+        .login-mobile {
+            .btn-mypage {
+                right: 30px;
+            }
+        }
         .KRP0005,
         .KRP0032,
         .quick-menu-list,

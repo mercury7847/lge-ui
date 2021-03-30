@@ -19,9 +19,9 @@
 
             var searchRoadUrl;
             if(vcui.detect.isMobile){
-                searchRoadUrl = "https://m.map.naver.com/route.nhn?ex=" + longitude + "&ey=" + latitude + "&ename=" + shopname + "&menu=route&pathType=1";
+                searchRoadUrl = "https://m.map.naver.com/route.nhn?ex=" + longitude + "&ey=" + latitude + "&ename=LG전자 " + shopname + "&menu=route&pathType=1";
             } else{
-                searchRoadUrl = "https://map.naver.com/index.nhn?elng=" + longitude + "&elat=" + latitude + "&etext=" + shopname + "&menu=route&pathType=1";
+                searchRoadUrl = "https://map.naver.com/index.nhn?elng=" + longitude + "&elat=" + latitude + "&etext=LG전자 " + shopname + "&menu=route&pathType=1";
             }
             $('.searchRoad-btn').attr("href", encodeURI(searchRoadUrl));
 
@@ -106,7 +106,6 @@
 
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(bookMarkerUrl, sendata, function(result){
                 if(result.data.success == "N"){
-                    console.log("result.data.success")
                     lgkorUI.confirm("로그인 후 이용가능 합니다.<br>로그인하시겠어요? ", {
                         title: "",
                         cancelBtnName: "아니오",

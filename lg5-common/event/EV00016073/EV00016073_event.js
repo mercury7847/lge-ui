@@ -3,10 +3,9 @@ var serial_btn_cnt = 0;
 var num = "{}[]()<>?|`~'!@#$%^&*-+=,.;:\"'\\/ ";
 var eventPath = "/WEB-INF/jsp/event/EV00016073/";
 var mainUrl = eventPath + "event_main.jsp";
-var submitUrl = eventPath + "event_proc.jsp";
 
 $(document).ready(function() {
-
+	
 	//행사 모델 자세히 보기
     $('.eventModel').on('click', function(){
     	//if( $.trim( $("#myName").val() ) != "" ){
@@ -75,19 +74,6 @@ $(document).ready(function() {
 		alert("이메일 주소를  정확하게 입력하였는지 다시 한번  확인해주세요.");
 	});
     
-	
-	// 응모내역 확인하기
-    $("#btn_check").click(function(e) {
-        e.preventDefault();
-        if (isType) { // 웹
-            window.open('/lgekor/event/common/event_join_check.jsp?event_id=1000003746', '_blank', 'width=450, height=420, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-        }else { // 모바일
-            openPopupCenter("/lgekor/event/common/event_join_check.jsp?event_id=1000003746",'','460','430');
-        }
-        //alert("이벤트 오픈 준비중입니다.");
-    });
-    
-
 	//구제품모델명,신제품제조번호 영문/숫자만 가능
     $("#oldModelName, #serialNo").keyup(function(event){
 		if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
@@ -110,8 +96,6 @@ $(document).ready(function() {
             }
         }
     });
-		
-	
     
     //시리얼번호 대문자로 전환
     $("#serialNo").bind('keyup', function() {
@@ -124,10 +108,7 @@ $(document).ready(function() {
        //구제품모델명 대문자로 전환
     $("#oldModelName").bind('keyup', function() {
         $(this).val($(this).val().toUpperCase());   
-
     });
-  
-  
 	
 	// 구매 연
     $("#purchaseYear").change(function() {
@@ -142,32 +123,24 @@ $(document).ready(function() {
         
         var startM = 1;
         var endM   = 3;
-        
-        
-        
         var mOptionStr = "<option value=''>선택</option>";
 
         if(sel_year!=""){
-
             for (var i=startM;i<=endM;i++) {
                 var tmp = "";
                 if (i < 10) tmp = "0"+i; else tmp = ""+i;
                  mOptionStr += "<option value='"+tmp+"'>"+tmp+"</option>";
             }
         }
-
         $("#purchaseMonth").html(mOptionStr);
         $("#purchaseDate").html("<option value=''>선택</option>");
-
     });
-
 
     // 구매 월
     $("#purchaseMonth").change(function() {
         var sm =  $("#purchaseMonth").val(); //월 구분 할때 사용
         var startday= 1;
         var endday= 31;
-
         var dOptionStr = "<option value=''>선택</option>";
 
         if(sm!=""){
@@ -202,9 +175,6 @@ $(document).ready(function() {
         
         var startM = 1;
         var endM   = 4;
-        
-        
-        
         var mOptionStr = "<option value=''>선택</option>";
 
         if(sel_year!=""){
@@ -218,16 +188,13 @@ $(document).ready(function() {
 
         $("#producInstallMonth").html(mOptionStr);
         $("#producInstallDate").html("<option value=''>선택</option>");
-
     });
-
 
     // 설치 월
     $("#producInstallMonth").change(function() {
         var sm =  $("#producInstallMonth").val(); //월 구분 할때 사용
         var startday= 1;
         var endday= 31;
-
         var dOptionStr = "<option value=''>선택</option>";
 
         if(sm!=""){
@@ -296,12 +263,9 @@ $(document).ready(function() {
 
          $("#channel").html(dOptionStr);
     });
-      
     
 	 $('#model1').on('change', function(e){
-    	
     	var dOptionStr = "<option value=''>선택</option>";
-    	    	
         if( $(this).val() == "LG휘센듀얼에어컨" ){
 			dOptionStr += "<option value='FQ23LADRBZ.AKOR'>FQ23LADRBZ.AKOR</option>";
 			dOptionStr += "<option value='FQ23LADRBN.AKOR'>FQ23LADRBN.AKOR</option>";
@@ -476,10 +440,8 @@ $(document).ready(function() {
         $("#model2").html(dOptionStr);
     });
     
-    
     $('#model2').on('change', function(e){
     	$(".price").show();
-    	
     	if( 
     		$(this).val() == "FQ20VAWWTN.AKOR" ||
 			$(this).val() == "FQ20VAWWAN.AKOR" ||
@@ -515,8 +477,7 @@ $(document).ready(function() {
     		$("#priceVal").html(" 100,000원");
     		$("#giftVal").val("100,000원");
     	}
-    	
-        
+
     });
     
     //제조번호확인-수정필요 (제조번호 유효성, 중복 체크)
@@ -543,10 +504,9 @@ function gocheck(str1,str2){
 
 //시리얼번호 유효성 및 중복 체크
 function eventModelChk(){
-
 	$.ajax({
 		type: "POST",
-		url: "/event/ManufactureChk.lgajax",
+		url: "/evt/ManufactureChk.lgajax",
 		dataType:"json",
 		data: jQuery("form[name=frm]").serialize(),
 		success: function(json) {
@@ -594,8 +554,6 @@ function validatePrd(){
     return prdCheck;
 }
 
-
-
 function initEventHandlers() {
 	//참여자 이름 특수문자 제어
 	$("#firstName").on("keyup", function() {
@@ -638,7 +596,6 @@ function initEventHandlers() {
 	}).keyup(function() {
 		if ($(this).val() != null && $(this).val() != '') {
 			$(this).val($(this).val().replace(/[^0-9]/g, ''));
-			
 		}
 		
 	});
@@ -657,7 +614,6 @@ function initEventHandlers() {
 	$("#agree02_02").click(function() {
 		$("#agree02").val("0");
 	});	
-
 }
 
 //  레이어팝업 노출/비노출 제어
@@ -668,90 +624,11 @@ var layerClose = function(obj){
 	$(obj).hide();
 }
 
-//loginStatus 유효성 체크 
-
-function eventSsoCheck(){
-	var loginStatus = '';
-
-	$.ajax({
-		type: "POST",
-		async : false,
-		url:  "/lgekor/event/common/event_sso_check.jsp",
-		dataType:"json",
-		success: function(json) {
-			mainLoginYn = json.mainLoginYn;
-			loginStatus = json.loginStatus;
-			//다시 로그인 요청 unifyId값이 다를경우 다시 로그인 요청
-			if($('#unifyId').val() != json.unifyId){
-				loginStatus = "forcelogin";
-			}
-		},
-		error: function(request, status, error) {
-			alert("오류가 발생하였습니다.");
-			return;
-		}
-	});	
-	return loginStatus;
-}
-
-
-// 이벤트 참여하기 레이어팝업 열기
-function eventEntry1() {
-	var loginStatus = eventSsoCheck();
-	//통합회원 테스트기간 으로 우선 열림으로 바꿔둠 반영시 삭제 
-	isOpen = "Y" ;//테스트
-	mainLoginYn = "Y" ;//테스트
-	loginStatus = "active";//테스트
-	
-	//통합회원 테스트기간 으로 우선 열림으로 바꿔둠 반영시 삭제 
-	
-	if(isOpen==="Y"){
-		//var fnLoginEventUrl = fnLoginEvent(serverType);
-		
-		if(mainLoginYn == "Y" && loginStatus == "active"){
-			layerPop(".event_popup");
-			$(".dim1").show();
-			document.getElementById("event_popup").scrollIntoView();
-		}else{
-			var fnLoginEventUrl = "";
-			if(loginStatus == "forcelogin"){
-				fnLoginEventUrl = fnForceLoginEvent(serverType);
-			}else{
-				fnLoginEventUrl = fnLoginEvent(serverType);
-			}
-			
-			alert("본 이벤트는 LG전자 회원 로그인 후 참여 가능합니다.");
-			top.location.href = fnLoginEventUrl;
-		}
-	}else{
-		alert("이벤트 기간이 아닙니다.");
-	}
-}
-
-
-// 이벤트 참여하기 레이어팝업 닫기
-function eventEntryClose() {
-	if(confirm("이벤트 응모를 취소하시겠습니까?") == true){
-		layerClose(".event_popup");
-		init();
-		layerInit();
-		$(".dim1").hide();
-		
-	}else{
-		
-		return; 
-		
-	}
-	
-}
 function init(){//입력 값 초기화
-
 	document.frm.reset();
 	$("#agree01").val("");
 	$("#agree02").val("");
-	
 	$("#serialNo").attr("readonly",false);
-
 }
 
 // 이벤트 응모실패
@@ -761,7 +638,6 @@ function eventCmpltfail() {
 	init();
 	layerInit();
 	location.reload();
-	
 }
 
 // 이벤트 응모완료 팝업 닫기
@@ -791,22 +667,17 @@ function goProc() {
 	if (frmCheck && isOpen === "N") {
 		alert("이벤트가 종료 되었습니다.");
 		frmCheck = false;
-		
 	}
-	
 	if (submitCnt > 0) {
 		alert(" 처리중입니다. ");
 		frmCheck = false;
-		
 	}
-    
     if (frmCheck && !$("input[id='agree01_01']").is(":checked")) {
         alert("[필수]개인정보 수집 이용 동의를 체크해 주십시오.");
         //체크,라디오 포커스 이동
         scroll_move( "agree01_01" );
         frmCheck = false;
     }
-
     if (frmCheck && !$("input[id='agree02_01']").is(":checked")) {
         alert("[필수]개인정보 처리 위탁 동의를 체크해 주십시오.");
         //체크,라디오 포커스 이동
@@ -824,13 +695,11 @@ function goProc() {
 		$("#email1").focus();
 		frmCheck = false;
 	}
-	
 	if(frmCheck && $.trim($("#email2").val()) === ""){
 		alert("이메일 주소를 입력해주세요.");
 		$("#email3").focus();
 		frmCheck = false;
 	}
-	
 	var fullEmail = $("#email1").val() + "@" + $("#email2").val(); 
 	
 	if(frmCheck && !chkEmail(fullEmail)){//이메일 체크
@@ -868,8 +737,6 @@ function goProc() {
 		$("#oldProduct").focus();
 		frmCheck = false;
 	}
-	
-	 
 	 
 	//3.신모델정보
 	if (frmCheck && $.trim($("#purchaseYear").val()) === "") {
@@ -903,7 +770,8 @@ function goProc() {
         $("#branch").focus();
         frmCheck = false;
     }
-     if (frmCheck && $.trim($("#newProductType").val()) === "") {
+    
+    if (frmCheck && $.trim($("#newProductType").val()) === "") {
 		alert("제품 타입을 입력해주세요.");
 		$("#newProductType").focus();
 		frmCheck = false;
@@ -919,7 +787,6 @@ function goProc() {
 		$("#btn_product").focus();
 		frmCheck = false;
 	}
-    
     if ( frmCheck && $.trim($("#ptUpload2").val()) === "") {
 		alert("제조번호사진을 등록해 주십시오.");
 		$("#ptUpload2").val("");
@@ -927,7 +794,6 @@ function goProc() {
 		$("#productPic").focus();
 		frmCheck = false;
 	}
-    
 	if ( frmCheck && $.trim($("#ptUpload3").val()) === "") {
 		alert("거래내역서 등록해 주십시오.");
 		$("#ptUpload3").val("");
@@ -957,36 +823,24 @@ function goProc() {
         $("#giftCard").focus();
         frmCheck = false;
     }
-    
-	   
 	if (frmCheck) {
 		var confirmTxt = "정보 수정이 불가합니다. 다시 한 번 확인해주세요!\n"
 						+ "입력하신 내용으로 응모하시겠습니까?\n"
 		var ck = confirm(confirmTxt);
 
 		if(ck == true){//확인
-			/*submitCnt++;
-			frm.target = "hid_frmame";
-			frm.action = submitUrl;
-			frm.submit();*/
 
+			var formData = new FormData(document.getElementById('frm'));
+			
 			$.ajax({
 				type: "POST",
-				url: "/event/EV00016073Submit.lgajax",
-				dataType:"json",
-				data: jQuery("form[name=frm]").serialize(),
+				url: "/evt/EV00016073Submit.lgajax",
+				data:formData,
+				processData: false,
+				contentType: false,
 				success: function(json) {
-					var result = json.resultCode;
-					/*
-					if(result == "0"){
-						$("#prdChk").val("Y");
-						alert(json.msg);
-						$("#serialNo").attr("readonly","readonly");
-					}else{
-						$("#prdChk").val("N");
-							alert(json.msg);
-							frm.serialNo.focus();
-					}*/
+					var result = json.data.alert.title;
+					alert(result);
 				},
 				error: function(request, status, error) {
 					alert(error);
@@ -994,70 +848,9 @@ function goProc() {
 				}
 			});
 	    }
-		
 	} else {
 		return false; 
-		
 	}
-	
-}
-
-function proc_result(resultCode){
-
-    if (resultCode == "1") {
-        alert("종료 된 이벤트 입니다.");
-        submitCnt = 0;//중복클릭 리셋
-        eventCmpltfail();
-        goUrl();
-    } else if (resultCode == "2") {
-        alert("잘못된 접근 입니다.\n새로고침 후 다시 시도해 주세요.("+resultCode+")");
-        submitCnt = 0;
-        eventCmpltfail();
-        goUrl();
-
-    } else if(resultCode == "14" || resultCode == "15") {
-		//회원 로그인여부 체크 - 회원정보 없음
-		alert("로그인 정보가 없습니다. 다시 로그인해주시기 바랍니다.");
-		goUrl();
-    } else if (resultCode == "3") {
-        alert("이미 참여한 전화번호 입니다.");
-        submitCnt = 0;
-        eventCmpltfail();
-        goUrl();
-
-    } else if (resultCode == "4") {
-        alert("이미 참여한 시리얼번호 입니다.");
-        submitCnt = 0;
-        eventCmpltfail();
-        goUrl();
-
-    } else if (resultCode == "5" || resultCode == "6" || resultCode == "7"|| resultCode == "8"|| resultCode == "9"|| resultCode == "10") {
-        alert("이벤트 참여 중 오류가 발생 하였습니다.\n잠시 후 다시 시도해 주십시오.("+resultCode+")");
-        submitCnt = 0;
-        eventCmpltfail();
-        goUrl();
-
-    } else if (resultCode == "13-1" || resultCode == "13-2" || resultCode == "13-3"|| resultCode == "13-4"|| resultCode == "13-5"|| resultCode == "13-6") {
-        alert("이벤트 참여 중 파일등록 오류가 발생하였습니다.\n 파일을 확인하시어 시도해 주십시오.("+resultCode+")");
-        submitCnt = 0;
-        return false;
-        //eventCmpltfail();
-        //goUrl();
-
-    } else {
-        submitCnt = 0;
-        document.frm.target = "";
-        document.frm.action = "";
-        //eventCmpltfail();
-        $('.mobile body').css({'height':'auto'});
-
-        alert("참여해 주셔서 감사합니다.");
-        goUrl();
-    }
-}
-
-function goUrl(){
-	top.location.href = location.href;
 }
 
 function fnChgFile(obj,target){
@@ -1065,10 +858,10 @@ function fnChgFile(obj,target){
 	var fileValue = $(obj).val().split("\\");
 	var fileName = fileValue[fileValue.length-1];
 	$target.val(fileName);
-	
+
 	checkFile(obj,target);
-	
 }
+
 //파일업로드 체크
 function checkFile(obj,target){
 	var $id = $(target);
@@ -1079,7 +872,6 @@ function checkFile(obj,target){
 		obj.outerHTML = obj.outerHTML;
 		$id.focus();
 		return false;
-
     }
 	
 	var thumbext = "";
@@ -1112,8 +904,9 @@ function checkFile(obj,target){
 		}
 	}
 	
-	
+	return true;
 }
+
 //이메일 체크 정규식
 function chkEmail(str)
 {

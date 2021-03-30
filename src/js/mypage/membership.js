@@ -35,7 +35,7 @@
     var myMembership = {
         init: function() {
             var self = this;
-
+            
             self.setting();
             vcui.require(['ui/pagination', 'ui/datePeriodFilter'], function () {
                 self.$pagination.eq(dataTypeBuy).vcPagination({scrollTarget:self.titWrap.eq(dataTypeBuy)});
@@ -110,6 +110,7 @@
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                        item.store = item.store ? item.store : null; 
                         if(isBuy) {
                             item.startDate = null;
                             item.endDate = null;

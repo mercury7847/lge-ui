@@ -49,7 +49,7 @@
     function setting(){
         DELIVERY_ADDRESS_LIST = $('.contents.mypage').data('addressList');
 
-        $('#address-regist-form').find('input[name="addressNickName"]').attr('maxlength','60');
+        
 
         txtMasking = new vcui.helper.TextMasking();
 
@@ -75,7 +75,7 @@
                 msgTarget: '.err-block'
             },
             detailAddress: {
-                required: false,
+                required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 // msgTarget: '.err-block'
             },
@@ -88,13 +88,15 @@
                 required: false
             }
         }
+
+        $('#address-regist-form').find('input[name="addressNickName"]').attr('maxlength','60'); // 주소지 별칭 글자수 제한 60
+        $('#address-regist-form').find('input[name="detailAddress"]').attr('maxlength', '50'); // 상세주소 글자수 제한 50
+
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
         addressInfoValidation.on()
 
         addressInfoValidation.on('errors', function(e,data){
 
-            console.log(data);
-        
         }).on('nextfocus', function(e,target){
 
             if(target.attr('name') == 'zipCode'){
@@ -106,7 +108,12 @@
 
         addressFinder = new AddressFind();
 
+        $('#address-regist-form input[name=telephoneNumber]').attr('type', 'number');
         lgkorUI.addLimitedInputEvent($('#address-regist-form input[name=telephoneNumber]'));
+
+        $('input[type=number]').on('keydown', function(e){
+            return e.keyCode !== 69;
+        });
     }
 
     function bindEvents(){
@@ -199,8 +206,6 @@
             $('#popup-editAddress').find('input[name=userAddress]').val(data.roadAddress);
             $('#popup-editAddress').find('input[name=detailAddress]').val('').focus();
             $('#popup-editAddress').find('input[name=userAddress]').siblings('.err-block').hide();
-
-
         });
     }
 
@@ -234,7 +239,6 @@
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
         }
-        // console.log("send data:", sendata);
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){

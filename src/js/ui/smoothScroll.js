@@ -267,6 +267,16 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                     self.$nextButton.removeClass('disabled');
                 }
             }
+
+            // 0330 vertical 스크롤 허용
+
+            if(self.maxScrollX >= 0){
+                self.toggleEnabled(false);
+            }else{
+                self.toggleEnabled(true);
+            }
+
+
         },
 
         enable: function enable() {
@@ -975,6 +985,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self.hasHorizontalScroll = opt.scrollX && self.maxScrollX < 0;
             self.hasVerticalScroll = opt.scrollY && self.maxScrollY < 0;
+
+            
 
             if (!self.hasHorizontalScroll) {
                 self.maxScrollX = 0;
