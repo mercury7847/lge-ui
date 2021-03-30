@@ -90,6 +90,10 @@
 
             vcui.require(['support/common/searchModel.min'], function () {
                 self.$cont.vcSearchModel();
+
+                if (!self.param.subCategory) {
+                    self.$cont.vcSearchModel('complete', param);
+                }
             });
         },
         setPopularKeyword: function(data) {

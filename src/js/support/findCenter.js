@@ -61,7 +61,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                                 '<span class="value">{{bizHours.saturday}}</span>'+
                             '</p>'+
                             '<p class="cell">'+
-                                '<a href="#{{shopID}}" class="btn-link">상세보기</a>'+
+                                '<a href="#{{shopID}}" class="btn-link" title="새창으로 열림 - {{shopName}}">상세보기</a>'+
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
