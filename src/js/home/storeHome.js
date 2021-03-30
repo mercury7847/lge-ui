@@ -164,7 +164,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                   <div class="review-info">\n'+
     '                       <a href="{{reviewLinkPath}}">\n'+
     '                           <div class="star is-review"><span class="blind">리뷰있음</span></div>\n'+
-    '                           <div class="average-rating"><span class="blind">평점</span>{{averageRating}}</div>\n'+
+    '                           <div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>\n'+
     '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewCount}}</span>)</div>\n'+
     '                       </a>\n'+
     '                   </div>\n'+
@@ -276,10 +276,18 @@ $(function(){
 
                     var obj = newProductRecommendLocal[index];
 
+                    console.log(item);
+
+                    // item['reviewCount'] = 1000223;
+
                     item['fullImagePath'] = obj && obj['fullImagePath'];
-                    item['isReview'] = parseInt(obj['reviewCount']) > 0 ? true : false;
-                    item['reviewLinkPath'] = obj['reviewLinkPath'] || "";
-                    item['modelDisplayName'] = vcui.string.stripTags(obj['modelDisplayName']);
+                    item['isReview'] = parseInt(item['reviewCount']) > 0 ? true : false;
+                    item['reviewLinkPath'] = item['modelUrlPath']? item['modelUrlPath'] + "#pdp_review" : null;
+                    item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+
+                    if(parseInt(item['reviewCount']) > 0 ){
+                        item['reviewCount'] = vcui.number.addComma(parseInt(item['reviewCount']));
+                    }
 
 
                     return item;
