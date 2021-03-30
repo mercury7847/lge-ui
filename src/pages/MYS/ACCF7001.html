@@ -103,9 +103,11 @@
                                         <ul>
                                             <!-- 210308 수정 [텍스트 수정] -->
                                             <!-- 210326 문구수정 -->
-                                            <li><a href="#" class="btn-text small">스토리</a></li>
-                                            <li><a href="#" class="btn-text small">마이컬렉션</a></li>
-                                            <li><a href="#" class="btn-text small">이벤트</a></li>
+                                            <!-- 210329 수정 [.small 클래스 삭제] -->
+                                            <li><a href="#" class="btn-text">스토리</a></li>
+                                            <li><a href="#" class="btn-text">마이컬렉션</a></li>
+                                            <li><a href="#" class="btn-text">이벤트</a></li>
+                                            <!-- // 210329 수정 [.small 클래스 삭제] -->
                                             <!-- //210326 문구수정 -->
                                             <!-- // 210308 수정 [텍스트 수정] -->
                                         </ul>
@@ -121,7 +123,7 @@
                                             <!-- 210326 a태그영역 수정 -->
                                             <a href="#">
                                                 <div class="shadow-box">
-                                                    <h4 class="box-title">최근 문의/예약 조회</h4>
+                                                    <h4 class="box-title"><span class="title">최근 문의/예약 조회</span></h4><!-- 210329 수정 [span 태그 추가] -->
                                                     <ul class="board-list my-board">
                                                         <li>
                                                             <dl class="content">
@@ -152,7 +154,7 @@
                                             <!-- 210326 a태그영역 수정 -->
                                             <a href="#">
                                                 <div class="shadow-box">
-                                                    <h4 class="box-title">나의 글 보기</h4>
+                                                    <h4 class="box-title"><span class="title">나의 글 보기</span></h4><!-- 210329 수정 [span 태그 추가] -->
                                                     <ul class="board-list my-board">
                                                         <li>
                                                             <dl class="content">
@@ -181,14 +183,14 @@
                                         </li>
                                         <li>
                                             <div class="shadow-box">
-                                                <h4 class="box-title"><a href="#">보유제품(8)</a></h4>
+                                                <h4 class="box-title"><a href="#"><span class="title">보유제품(8)</span></a></h4><!-- 210329 수정 [span 태그 추가] -->
                                                 <ul class="board-list product">
                                                     <li>
                                                         <dl class="content">
                                                             <dt class="title">LG TROMM 미니워시+전기식 건조기</dt>
                                                             <dd class="text">75NANO99KNB</dd>
                                                         </dl>
-                                                        <a href="#" class="btn gray size"><span>리뷰작성</span></a>
+                                                        <a href="#" class="btn border size"><span>리뷰작성</span></a><!-- 210329 수정 [.gray -> .border 클래스 수정] -->
                                                     </li>
                                                     <li>
                                                         <dl class="content">
@@ -201,7 +203,8 @@
                                                             <dt class="title">LG TROMM 미니워시+전기식 건조기</dt>
                                                             <dd class="text">75NANO99KNB</dd>
                                                         </dl>
-                                                        <a href="#" class="btn gray size"><span>리뷰작성</span></a>
+                                                        <a href="#" class="btn border size"><span>리뷰작성</span></a><!-- 210329 수정 [.gray -> .border 클래스 수정] -->
+                                                    </li>
                                                     </li>
                                                 </ul>
                                                 <!-- 210225 수정 [데이터 없는 경우 추가] -->
@@ -212,7 +215,7 @@
                                         </li>
                                         <li>
                                             <div class="shadow-box care-info">
-                                                <h4 class="box-title"><a href="#">[케어솔루션]케어십/렌탈(10)</a></h4>
+                                                <h4 class="box-title"><a href="#"><span class="title">[케어솔루션]케어십/렌탈(10)</span></a></h4><!-- 210329 수정 [span 태그 추가] -->
                                                 <div class="service-date">
                                                     <span><em>다음 방문 서비스</em> 2021.02.14</span>
                                                 </div>
@@ -250,7 +253,7 @@
                                         <li>
                                             <div class="shadow-box order-process">
                                                 <h4 class="box-title">
-                                                    <a href="#">주문 조회(22)</a>
+                                                    <a href="#"><span class="title">주문 조회(22)</span></a><!-- 210329 수정 [span 태그 추가] -->
                                                     <span class="sub-text">최근 3개월 기준</span>
                                                 </h4>
                                                 <div class="process-wrap">
@@ -273,13 +276,13 @@
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송준비중</dt>
-                                                                        <dd>2</dd>
+                                                                        <dd class="zero">0</dd><!-- 210329 수정 [0일 경우 컬러 변경(.zero 클래스 추가)] -->
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송중</dt>
-                                                                        <dd>2</dd>
+                                                                        <dd class="zero">0</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
@@ -343,7 +346,7 @@
                                         </li>
                                         <li>
                                             <div class="shadow-box like-info">
-                                                <h4 class="box-title"><a href="#">찜한 제품(8)</a></h4>
+                                                <h4 class="box-title"><a href="#"><span class="title">찜한 제품(8)</span></a></h4><!-- 210329 수정 [span 태그 추가] -->
                                                 <div class="list-wrap">
                                                     <ul class="product-items">
                                                         @@loop('./common/modules/product-list-item-loop.html', [
@@ -371,7 +374,7 @@
                                         </li>
                                         <li>
                                             <div class="shadow-box recent-info">
-                                                <h4 class="box-title"><a href="#">최근 본 제품(12)</a></h4>
+                                                <h4 class="box-title"><a href="#"><span class="title">최근 본 제품(12)</span></a></h4><!-- 210329 수정 [span 태그 추가] -->
                                                 <div class="list-wrap">
                                                     <ul class="product-items">
                                                         @@loop('./common/modules/product-list-item-loop.html', [
