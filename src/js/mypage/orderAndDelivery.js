@@ -1281,11 +1281,15 @@
                     list[idx].orderNumberTitle = "주문번호";
                     list[idx].groupNumber = list[idx].orderNumber;
 
-
+                    var chk = 0;
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+
+                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
                     }
+
+                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
                         list[idx].apiType = "OBS";
@@ -1308,11 +1312,16 @@
                     list[idx].orderNumberTitle = "계약 요청 번호";
                     list[idx].groupNumber = list[idx].requestNo ? list[idx].requestNo : list[idx].orderNumber;
 
+                    var chk = 0;
                     for(cdx in list[idx].productList){
                         list[idx].productList[cdx]["prodID"] = cdx;
                         var rowTotal = list[idx].productList[cdx]["rowTotal"];
                         list[idx].productList[cdx]["addCommaProdPrice"] = rowTotal ? vcui.number.addComma(rowTotal) : "0";
+
+                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
                     }
+
+                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
 
                     CARE_LIST.push(list[idx]);
                 }
