@@ -28,9 +28,11 @@
                     e.preventDefault();
     
                     if( $listWrap.hasClass('active')) {
+                        $this.find('.blind').text('문제점 해결방안 목록 펼치기');
                         $listWrap.removeClass('active').siblings().removeClass('siblings');
                         $list.stop().slideUp();
                     } else {
+                        $this.find('.blind').text('문제점 해결방안 목록 접기');
                         $listWrap.removeClass('siblings').addClass('active').siblings().removeClass('active').addClass('siblings').find(self.el.list).stop().slideUp(function(){
                             $(this).attr('style', '');
                         });
