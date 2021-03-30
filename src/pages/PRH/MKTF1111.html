@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
+        pageJS: ["components/KRP0005"],
         pageTitle: "LG SIGNATURE | LG전자",
         pageDesc: "LG전자의 초프리미엄 브랜드 SIGNATURE 가전 제품을 소개합니다. 압도적인 성능과 정제된 디자인으로 본실에 충실한 LG 시그니처 제품을 경험해 보세요."
     })
+    <!-- //210330 스키티챗JS 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -20,6 +23,7 @@
                     <!-- Hero Banner -->
                     <div class="brand-hero signature-hero">
                         <div class="scene01">
+                            <!-- 210330 data-step 수정 -->
                             <div class="image ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img-signature-visual.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m.jpg" aria-hidden="true"></div>
                             <div class="image blur ui_bg_switch" style="display:none;" data-step-1="display:none, opacity:0" data-step-2="display:'', opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur1.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur1.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur1.jpg" aria-hidden="true"></div>
                             <!-- <div class="image blur ui_bg_switch" data-step-0="opacity:0" data-step-1="opacity:1" style="background-image:url('/lg5-common/images/PRH/img-signature-visual-blur2.jpg')" data-pc-src="/lg5-common/images/PRH/img-signature-visual-blur2.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m-blur2.jpg" aria-hidden="true"></div> -->
@@ -39,6 +43,7 @@
                             <div class="next-arr">
                                 <a href="#" class="arr" data-current-step="2"><span class="blind">아래로 스크롤</span></a>
                             </div>
+                            <!-- 210330 data-step 수정 end -->
                         </div>
                     </div>
                     <!-- // Hero Banner -->
@@ -1097,6 +1102,11 @@
         <!-- 210226 플로팅버튼 추가 -->
         <!-- @@include('./common/footer.html') -->
         <div class="floating-wrap">
+            <!-- 210330 스키티챗 추가 -->
+			<!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+			<!-- //210330 스키티챗 추가 -->
             <!-- component / Scroll to the top -->
             @@include('./common/partials/KRP0004.html')
             <!-- // component / Scroll to the top -->

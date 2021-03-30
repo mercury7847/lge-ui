@@ -495,9 +495,6 @@
                     .result-txt {
                         @include font-small;
                         font-weight: $font-weight-bold;
-                        @include csmobile {
-                            padding:0 0 20px 0;
-                        }
                         strong {
                             font-weight:normal;
                             color:#EC455A;
@@ -558,15 +555,14 @@
 
         .point {
             position:relative;
-            width:40px;
-            height:40px;
-            background:url('/lg5-common/images/CS/icon-store-off-40.svg') no-repeat;
-            background-size:40px 40px;
+            width:34px;
+            height:48px;
+            background:url('/lg5-common/images/icons/icon-point-off.svg') no-repeat;
+            background-size:34px 48px;
             text-align:center;
-            
             .num {
                 display:inline-block;
-                margin-top:6px;
+                margin-top:8px;
                 color:#666;
                 font-size:13px;
                 line-height:16px;
@@ -576,8 +572,7 @@
                 }
             }
             &.on {
-                background:url('/lg5-common/images/CS/icon-store-on-40.svg') no-repeat;
-                background-size:40px 40px;
+                background-image:url('/lg5-common/images/icons/icon-point-on.svg');
                 z-index:1;
                 .num {
                     color:#EC455A;
@@ -602,8 +597,7 @@
             top:0;
             right:0;
             bottom:0;
-            height:100% !important;
-            width:100% !important;
+            height:100%;
 
             .point-wrap {
                 display:block;
@@ -740,22 +734,26 @@
 
         @include tablet {
             .store-map-con {
-                display: none;
+                //display: none;
+                visibility: hidden;
                 top: 0;
                 height: 400px;
                 z-index:10 !important;
             }
+            .map-area {
+                height:100% !important;
+            }
 
             &.result-map {
                 .store-map-con {
-                    display: block;
+                    // display: block;
                     visibility: visible;
                     top:134px;
                 }
             }
             &.show-map {
                 .store-map-con {
-                    display: block;
+                    // display: block;
                     visibility: visible;
                 }
             }

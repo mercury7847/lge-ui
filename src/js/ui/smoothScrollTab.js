@@ -103,7 +103,8 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
         _setArrowCtrlStatus: function(){
             var self = this;
 
-            if(self.smoothScroll.maxScrollX == 0){
+
+            if(self.smoothScroll.maxScrollX >= 0){
                 self.controls.hide();
             } else{
                 self.controls.show();

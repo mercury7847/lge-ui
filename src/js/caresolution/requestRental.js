@@ -93,7 +93,7 @@
 
 
         // number e block;
-        $('input[type=number]').on('onkeydown', function(e){
+        $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
         });
 
@@ -740,15 +740,11 @@
             zipCode: step2Validation.getValues("zipCode"),
             cardDiscountPrice: selectCardValue
         }
-        console.log("[setInstallAbledConfirm] sendata:", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             lgkorUI.hideLoading();
 
-            console.log("success :", result.data);
-
             productPriceInfo = result.data.productPriceInfo;
 
-            console.log("productStatus :", result.data.productStatus);
             if(result.data.productStatus){
                 for(var str in result.data.productStatus){
                     var modelID = result.data.productStatus[str].modelID;
@@ -843,6 +839,9 @@
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
                 step2Block.find('select[name=inatallPlace]').vcSelectbox('update');
+
+                step2Block.find('input[name=detailAddress]').prop('disabled', true);
+                step2Block.find('button.installAbledConfirm').prop('disabled', true);
             }
             
             setInputData('installAbled', abled);
@@ -1026,6 +1025,9 @@
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+
+            step2Block.find('input[name=detailAddress]').prop('disabled', false);
+            step2Block.find('button.installAbledConfirm').prop('disabled', false);
         });
     }
 
@@ -1037,6 +1039,9 @@
             item.find('input[name=detailAddress]').val(data.detailAddress);
 
             $('.err-address').hide();
+
+            step2Block.find('input[name=detailAddress]').prop('disabled', false);
+            step2Block.find('button.installAbledConfirm').prop('disabled', false);
         });
     }
 

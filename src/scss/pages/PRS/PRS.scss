@@ -245,6 +245,9 @@
 									height:16px;
 									margin-top:-8px;
 									background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+									@include mobile {
+										display:none;
+									}
 								}
 							}
 						}
@@ -989,7 +992,7 @@
 					ul {
 						display: flex;
 						flex-wrap: wrap;
-						height:136px;
+						height:100%;
 						margin-top: -43px;
 						overflow:hidden;
 						li {
@@ -1002,7 +1005,7 @@
 									display:block;
 									width:100%;
 									margin-top:6px;
-									padding:0;
+									padding:0 2px;
 									font-size:15px;
 									line-height:23px;
 								}

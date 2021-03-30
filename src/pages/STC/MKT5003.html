@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    pageCSS: ["STC/STC"],
-    pageTitle: "LG 페이 | LG전자",
-    pageDesc: "LG 페이로 쉽고 빠르게 결제해 보세요. LG 페이는 카드를 모바일에 등록하여 온/오프라인 어느 곳이든 안전하고 빠르게 결제할 수 있는 서비스입니다."
-})
+    <!-- 210330 스키티챗JS 추가 -->
+    @@include('./common/head.html', {
+        pageCSS: ["STC/STC"],
+        pageJS: ["components/KRP0005"],
+        pageTitle: "LG 페이 | LG전자",
+        pageDesc: "LG 페이로 쉽고 빠르게 결제해 보세요. LG 페이는 카드를 모바일에 등록하여 온/오프라인 어느 곳이든 안전하고 빠르게 결제할 수 있는 서비스입니다."
+    })
+    <!-- //210330 스키티챗JS 추가 -->
 <body>
 <div class="wrap">
     <!-- 210311_H1추가 -->
@@ -356,6 +359,11 @@
     <!-- 210226 플로팅버튼 추가 -->
     <!-- @@include('./common/footer.html') -->
     <div class="floating-wrap">
+        <!-- 210330 스키티챗 추가 -->
+        <!-- component / Sticky chat -->
+        @@include('./common/partials/KRP0005.html')
+        <!-- // component / Sticky chat -->
+        <!-- //210330 스키티챗 추가 -->
         <!-- component / Scroll to the top -->
         @@include('./common/partials/KRP0004.html')
         <!-- // component / Scroll to the top -->

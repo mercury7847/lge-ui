@@ -7,14 +7,16 @@ var isApp = function(){
 ;(function(global){
 
     if(global['lgkorUI']) return;
-    console.log("lgkorUI start!!!");
-    if(vcui.detect.isMac) $('html').addClass('mac');
-    if(isApp()) $('html').addClass('app');
+    // console.log("lgkorUI start!!!");
 
-
+    var isApplication = isApp();
     var isAndroid = vcui.detect.isAndroid;
     var isIOS = vcui.detect.isIOS;
-    var isApplication = isApp();
+    var isMobileDevice = vcui.detect.isMobileDevice; 
+
+    if(vcui.detect.isMac) $('html').addClass('mac');
+    if(isApplication) $('html').addClass('app');
+    if(isMobileDevice) $('html').addClass('mdevice');
 
 
     window.onload = function(){
@@ -86,11 +88,11 @@ var isApp = function(){
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
         ], function () {    
-            console.log("buildCommonUI!!!!");
+            // console.log("buildCommonUI!!!!");
 
             //this.vcImageSwitch();
             if(location.hostname == "cms50.lge.co.kr") {
-                console.log('lazy cms50');
+                // console.log('lazy cms50');
                 this.vcLazyLoaderSwitch();
                 this.vcLazyLoader();
             }
@@ -287,6 +289,10 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
+
+
+
+
         },
 
         _addImgOnloadEvent: function(){
@@ -1248,14 +1254,14 @@ var isApp = function(){
                             //         //result.message = null;
                             //     }
                             //result.data = {"success" : "N"};
-                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                            if(data && !data.success && !(typeof(data.success) === "boolean")) {
                                 result.data.success = "N";
                             }
                         }
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
                         var data = result.data;
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
                                 title: data.alert.title
                             });
@@ -1292,10 +1298,10 @@ var isApp = function(){
                         data.success = "Y";
                     }
                     */
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             self.commonAlertHandler(data.alert);
                         }/* else {
                             if(result.message) {
@@ -1369,7 +1375,7 @@ var isApp = function(){
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -1413,7 +1419,7 @@ var isApp = function(){
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
                     var utility = $('div.header-wrap div.utility');
                     utility.find('.cart span.count').remove();
@@ -1433,7 +1439,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1460,7 +1466,7 @@ var isApp = function(){
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     if(wish) {
                         $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
                     } else{
@@ -1473,7 +1479,7 @@ var isApp = function(){
                     }
                 } else {
                     callbackFail(data);
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(data.alert.isConfirm && data.alert.okUrl) {
                             data.alert.okUrl = data.alert.okUrl + location.href;
                         }
@@ -1994,11 +2000,12 @@ var isApp = function(){
         // history back 사용하기
         addHistoryBack:function(cid, callback){
 
-            var uid = '.history-back-'+cid;
+            if(!isMobileDevice) return;
 
+            var uid = '.history-back-'+cid;
             $(window).off('popstate'+uid).on('popstate'+uid, function(){      
                 var state = window.history.state;
-                if(state.data && state.data == uid){
+                if(state && state.data && state.data == uid){
                     if(callback && vcui.isFunction(callback)) callback.call(this);
                     $(window).off('popstate'+uid);
                 }
@@ -2010,7 +2017,14 @@ var isApp = function(){
         },
 
         removeHistoryBack:function(cid){
+
+            if(!isMobileDevice) return;
+
             var uid = '.history-back-'+cid;
+            var state = window.history.state;
+            if(state && state.data && state.data == uid+'-open'){
+                window.history.back();
+            }
             $(window).off('popstate'+uid);
         }
 

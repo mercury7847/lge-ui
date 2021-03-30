@@ -143,7 +143,7 @@
               "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
               "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
               "orderedQuantity": "1",
-              "itemStatus": "Ordered",
+              "itemStatus": "Ordereds",
               "originalPrice": "14300",
               "discountAmount": "0",
               "rowTotal": 12900,
@@ -232,7 +232,7 @@
         "grandTotal": "24,700",
         "discount": 2600,
         "paymentMethodName": "네이버페이",
-        "transType": "NAVER",
+        "transType": "BANK",
         "paymentType": "42",
         "paymentTypeName": "네이버페이",
         "receiptUrl": ""
@@ -250,6 +250,11 @@
         "recyclingPickup": "",
         "shippingNoteTxt": "경비실",
         "inspectionVisit": ""
+      },
+      "orderUser":{
+        "userName": "박엘지",
+        "phoneNumber": "01098738946",
+        "email": "lg@lge.com"
       }
     },
     "param": {

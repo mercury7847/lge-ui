@@ -308,10 +308,12 @@ var res = {
 					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 					"상세_당첨자발표2" : ["/html/BMC/MKT4007_2.html","_blank:width=912,height=560,scrollbars=yes","검수완료"],
 					"상세_PC아카데미" : ["/html/BMC/MKT4008.html","","검수완료"],
+					"(헤더,푸터X)상세_PC아카데미" : ["/html/BMC/MKT4008_1.html","","검수완료"],
 					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","_blank:width=912,height=560,scrollbars=yes","검수완료"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","검수완료"],
 					"상세_미리미리페스티벌" : ["/html/BMC/MKT4011.html","","검수완료"],
+					"(헤더,푸터X)상세_미리미리페스티벌" : ["/html/BMC/MKT4011_1.html","","검수완료"],
 					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","검수완료"],
 					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
@@ -360,6 +362,7 @@ var res = {
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","검수완료"],
+					"최근 본 제품(비회원)" : ["/html/MYC/SERF9010.html","","진행중"],
 					"구독" : ["/html/MYC/ACCF7017.html","","검수완료"],
 					"단골매장" : ["/html/MYC/ACCF7019.html","","검수완료"],
 					"재입고 알림" : ["/html/MYC/ACCF7072.html","","검수완료"]

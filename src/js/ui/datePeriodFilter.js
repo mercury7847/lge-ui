@@ -17,6 +17,8 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
             periodSelectInputName:'periodSelect',
             dateBetweenCheckEnable : true,
             dateBetweenCheckValue : "2",
+            minDate: null,//'-5y',//new Date∂(), //'-5y' 날짜 하한값 null 기본값 5년
+            maxDate: null //'+5y', // 날짜 상한값 //null 기값 5년
         },
 
         initialize: function initialize(el, options) {
@@ -85,6 +87,14 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
                 var date = new Date();
                 self.$dateFilterEndDate.vcCalendar('setDate', date);
                 self.setBeforePeriod(self.options.dateBetweenCheckValue);
+            }
+
+            if(self.options.minDate) {
+                self.$dateFilterStartDate.vcCalendar('setMinDate',self.options.minDate);
+            }
+
+            if(self.options.maxDate) {
+                self.$dateFilterEndDate.vcCalendar('setMaxDate',self.options.maxDate);
             }
         },
 

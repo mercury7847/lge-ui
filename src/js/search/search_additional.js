@@ -442,6 +442,11 @@
                     }
                 });
                 
+                //리사이즈 체크
+                $(window).on('resizeend', function(e){   
+                    self.updateRelatedKeywordMoreButton();
+                });
+
                 //스크롤 이벤트
                 $(window).on('scroll', function(e){
                     self._setScrollMoved();
@@ -663,11 +668,7 @@
                         });
                         self.$relatedKeywordList.show();
 
-                        if(self.$relatedKeywordList.height() > 24) {
-                            self.$relatedKeywordMobileMoreButton.show();
-                        } else {
-                            self.$relatedKeywordMobileMoreButton.hide();
-                        }
+                        self.updateRelatedKeywordMoreButton();
                     } else {
                         self.$relatedKeywordList.hide();
                     }
@@ -838,6 +839,18 @@
                         self.scrollHref = null;
                     }
                 });
+            },
+
+            //연관검색어 더보기 버튼 노출 여부 체크
+            updateRelatedKeywordMoreButton:function () {
+                var self = this;
+                var $list_ul = self.$relatedKeywordList.find('ul');
+                var $li = $list_ul.find('>li:eq(0)');
+                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+                    self.$relatedKeywordMobileMoreButton.show();
+                } else {
+                    self.$relatedKeywordMobileMoreButton.hide();
+                }    
             },
 
             //최근 검색어 삭제

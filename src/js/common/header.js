@@ -84,29 +84,31 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.isLogin = result.data.isLogin;
                 self.$el.find('.login-info').css('display', 'none');
 
-                // console.log("### isLogin:", self.isLogin)
-
                 if(self.isLogin){
                     self.$el.find('.login-info.after-login').css('display', 'block');
                     if(result.data.name) {
                         self.$el.find('.login-info.after-login > a:not(".btn-logout")').html('<span>' + result.data.name + '</span>님 안녕하세요');
                     }
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').hide();
-                        self.$el.find('.btm-after-login').show();
+                    if(self.displayMode){
+                        if(self.displayMode == "pc") self.$el.find('.mypage.after-login').css('display', 'inline-block');
+                        else{
+                            self.$el.find('.btm-before-login').hide();
+                            self.$el.find('.btm-after-login').show();
+                        }
                     }
                 } else{
                     self.$el.find('.login-info.before-login').css('display', 'block');
 
-                    if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
-                    else{
-                        self.$el.find('.btm-before-login').show();
-                        self.$el.find('.btm-after-login').hide();
+                    if(self.displayMode){
+                        if(self.displayMode == "pc") self.$el.find('.mypage.before-login').css('display', 'inline-block');
+                        else{
+                            self.$el.find('.btm-before-login').show();
+                            self.$el.find('.btm-after-login').hide();
+                        }
                     }
                 }
-            });
+            }, false, true);
         },
 
         _setting: function(){
@@ -151,13 +153,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 self._menuToggle();
                 var active = self.$hamburger.hasClass('active');
+
                 if(active){
-                    lgkorUI.addHistoryBack(self.cid, function(){
-                        self._menuToggle();
+                    lgkorUI.addHistoryBack(self.cid, function(){                    
+                        self._menuToggle(true);
                     });
-                }else{
-                    lgkorUI.removeHistoryBack(self.cid)
+                } else{
+                    lgkorUI.removeHistoryBack(self.cid);
                 }
+                
 
             });
 
@@ -165,17 +169,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._resize();
             });
 
-            // window.addEventListener('popstate', function () {
-            //     console.log('popstate', history.state);
-
-            //     var state = history.state;
-            //     if(state.data && state.data == 'gnb-open-replace'){
-            //         self._menuToggle();
-            //     }
-            //     //document.querySelector('#state').innerHTML = JSON.stringify(history.state);
-            // });
-
-
+           
             $('.mobile-category-container .category').vcSmoothScroll();
 
             $('.mobile-nav-wrap.is-depth > a.nav-item').on('click', function(e){
@@ -211,6 +205,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         self.$el.find('.mypage.before-login').css('display', 'inline-block');
                     }
                 }
+
+
+                self.$el.find('.btm-before-login').hide();
+                self.$el.find('.btm-after-login').hide();
 
                 self._arrowState();
             } else{
@@ -337,7 +335,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             $('header').on('mouseleave', function(){
-                // console.log('leave')
                 self._setOut();
             })
 
@@ -540,27 +537,27 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
 
-        _menuToggle: function(){
+        _menuToggle: function(forceActive){
             var self = this,
             active, replaceText;
 
             replaceText = self.$hamburger.find('.blind');
-            active = self.$hamburger.hasClass('active');
+            active = forceActive==undefined? self.$hamburger.hasClass('active') : forceActive;
+
 
             if(active){
                 self.$hamburger.removeClass('active');
                 replaceText.text("메뉴 열기");
-
                 $('.ui_gnb_accordion').vcAccordion("collapseAll");
-
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+
+
             } else{
                 self.$hamburger.addClass('active');
                 replaceText.text("메뉴 닫기");
-
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-
                 $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+
             }
         },
 

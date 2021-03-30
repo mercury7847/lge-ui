@@ -1,4 +1,9 @@
 (function(){
+/*
+<!-- IFRAME 시작 -->
+<iframe src="https://www.lge.co.kr/lgekor/bestshop/product/applyCounsel.do?device=w&inflow=mycollection&orgcode=0113"></iframe>
+<!-- IFRAME 종료  -->
+*/
 
     function isRegExp(a){
 		return a.constructor===RegExp;
@@ -171,7 +176,7 @@
             self.totalStoreData = [];         
             
             
-            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function (StoreMap) {  
+            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support/common/quickMenu.min'], function (StoreMap) {  
 
                 self.$map = new StoreMap(self.$mapContainer,{
 
@@ -235,12 +240,13 @@
                     // console.log(error);
                 });
 
+                $('#quickMenu').vcQuickMenu();
                 $(".sch-box .tabs-wrap").vcTab().on("tabchange", function(e, data){
                     self._setListArea();
                     self._setTabInit();                    
                     self.searchType = searchTypeNames[data.selectedIndex];
                 });
-
+                
                 self.$boroughSelect.vcSelectbox('update');
                 
 			});

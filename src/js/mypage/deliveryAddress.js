@@ -110,6 +110,10 @@
 
         $('#address-regist-form input[name=telephoneNumber]').attr('type', 'number');
         lgkorUI.addLimitedInputEvent($('#address-regist-form input[name=telephoneNumber]'));
+
+        $('input[type=number]').on('keydown', function(e){
+            return e.keyCode !== 69;
+        });
     }
 
     function bindEvents(){
