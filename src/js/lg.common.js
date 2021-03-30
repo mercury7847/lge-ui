@@ -1257,7 +1257,7 @@ var isApp = function(){
                         if(callback && typeof callback === 'function') callback(result); 
                     } else {
                         var data = result.data;
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             lgkorUI.alert("", {
                                 title: data.alert.title
                             });
@@ -1294,10 +1294,10 @@ var isApp = function(){
                         data.success = "Y";
                     }
                     */
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
-                        if(data.alert && !vcui.isEmpty(data.alert)) {
+                        if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             self.commonAlertHandler(data.alert);
                         }/* else {
                             if(result.message) {
@@ -1371,7 +1371,7 @@ var isApp = function(){
                     if(!data.success && !(typeof(data.success) === "boolean")) {
                         data.success = "Y";
                     }
-                    if(!self.stringToBool(data.success) && data.alert) {
+                    if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
                         console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
@@ -1435,7 +1435,7 @@ var isApp = function(){
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                     }
                 } else {
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(isToast) {
                             $(window).trigger("toastshow",data.alert.title);
                         } else {
@@ -1475,7 +1475,7 @@ var isApp = function(){
                     }
                 } else {
                     callbackFail(data);
-                    if(data.alert && !vcui.isEmpty(data.alert)) {
+                    if(data && data.alert && !vcui.isEmpty(data.alert)) {
                         if(data.alert.isConfirm && data.alert.okUrl) {
                             data.alert.okUrl = data.alert.okUrl + location.href;
                         }
