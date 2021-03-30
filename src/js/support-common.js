@@ -1174,81 +1174,6 @@ CS.MD.pagination = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
-/*
-* quick menu
-*/
-CS.MD.quickMenu = function() {
-    var pluginName = 'quickMenu';
-    
-    function Plugin(el, opt) {
-        var self = this;
-            self.$el = $(el),
-            self.el = el;
-
-        // var defaults = {};
-        // self.options = $.extend({}, defaults, opt);
-    
-        self.$topBtn = self.$el.find('.btn-top');
-        self.$menuBtn = self.$el.find('.btn-expand');
-
-        self._bindEvent();
-    }
-
-    Plugin.prototype = {
-        _bindEvent: function() {
-            var self = this;
-
-            self.$menuBtn.on('click', function(e) {
-                var $item = $(this).parent();
-
-                if ($item.hasClass('on')) {
-                    $item.removeClass('on');
-                } else {
-                    $item.addClass('on');
-                    $('.history-list').removeClass('on');
-                }
-            });
-            self.$topBtn.on('click', function (e) {
-                $('html, body').stop().animate({
-                    scrollTop: 0
-                }, 400);
-            });
-
-            CS.UI.$win.on('scroll resize', function(){
-                if (self.$el.find('.on').length > 0) {
-                    self.$el.find('.on').removeClass('on');
-                }
-
-                if (CS.UI.$win.scrollTop() > 100) {
-                    self.$topBtn.removeClass('off');
-                } else {
-                    self.$topBtn.addClass('off');
-                }
-            });
-
-            CS.UI.$doc.on('click', function(e) {
-                if (!$(e.target).closest(self.$el).length) {
-                    self.$el.find('.on').removeClass('on');
-                }
-            });
-
-            CS.UI.$win.on('breakpointchange.'+pluginName, function(e, data){
-                if (data.isMobile) {
-                    $('.history-btn:first-child').off('click').on('click', function(e) {
-                        if (!$('.history-list').hasClass('on')) {
-                            // e.preventDefault();
-                            $('.history-list').addClass('on');
-                            self.$menuBtn.parent().removeClass('on');
-                        }
-                    });
-                }
-            })
-        }
-    }
-
-    CS.MD.plugin(pluginName, Plugin);
-}();
-
 var AuthManager = function() {
     var SENDTEXT = '인증번호 발송';
     var RESENDTEXT = '인증번호 재발송';
@@ -1503,7 +1428,9 @@ function validatePhone(value){
     }
 }
 (function($){
-
+    vcui.require(['support/common/quickMenu.min'], function() {
+        $('#quickMenu').vcQuickMenu();
+    });
 
     function commonInit(){
         //input type number 숫자키패드
@@ -1550,7 +1477,6 @@ function validatePhone(value){
         if( lgkorUI.cookie.getCookie('accessPageFirst') != "done") {
             lgkorUI.cookie.setCookie("accessPageFirst", "done", 365);
         }
-        $('#quickMenu').quickMenu();
 
         if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);

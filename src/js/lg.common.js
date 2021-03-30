@@ -1250,7 +1250,7 @@ var isApp = function(){
                             //         //result.message = null;
                             //     }
                             //result.data = {"success" : "N"};
-                            if(!data.success && !(typeof(data.success) === "boolean")) {
+                            if(data && !data.success && !(typeof(data.success) === "boolean")) {
                                 result.data.success = "N";
                             }
                         }
@@ -1415,7 +1415,7 @@ var isApp = function(){
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
                     var utility = $('div.header-wrap div.utility');
                     utility.find('.cart span.count').remove();
@@ -1462,7 +1462,7 @@ var isApp = function(){
             param.wish = wish;
             lgkorUI.requestAjaxDataPost(postUrl, param, function(result){
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success)) {
+                if(data && lgkorUI.stringToBool(data.success)) {
                     if(wish) {
                         $(window).trigger("toastshow","선택하신 제품이 찜한 제품에 추가되었습니다.");
                     } else{
