@@ -45,9 +45,11 @@
             '{{#if orderCancelAbleYn == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
+            '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
-                '<a href="#n" class="btn-link">주문/배송 상세보기</a>'+
+                '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
             '</div>'+
+            '{{/if}}'+
         '</div>';
 
     var careInquiryListTemplate = 
@@ -71,9 +73,11 @@
             '{{#if orderCancelAbleYn == "Y"}}'+
             '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
             '{{/if}}'+
+            '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
-                '<a href="#n" class="btn-link">청약 상세보기</a>'+
+                '<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>'+
             '</div>'+
+            '{{/if}}'+
         '</div>';
         
 
@@ -558,6 +562,9 @@
                 case "requestOrder":
                     setOrderRequest(dataID, prodID);
                     break;
+
+                case "orderInfos":
+                    break;
             }
         }).on('click', '.btn-moreview', function(e){
             e.preventDefault();
@@ -589,33 +596,8 @@
             //var wrapper = $this.closest(".contents");
             var dataID = $this.closest('.box').data("id");
             var prodID = $this.closest('.col-table').data('prodId');
-            if(PAGE_TYPE == PAGE_TYPE_LIST){        
-                var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
-                var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
-
-                var prodlist = listdata[dataID].productList;
-                var orderNumbers = [];
-                for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
-                var orderNumberList = JSON.stringify(orderNumbers);
-
-                var sendata = {
-                    orderNumber: listdata[dataID].orderNumber,
-                    requestNo: listdata[dataID].requestNo,
-                    tabFlag: TAB_FLAG,
-                    startDate: dateData.startDate,
-                    endDate: dateData.endDate,
-                    periodSelect: dateData.periodSelect,
-                    orderNumberList: orderNumberList
-                }
-
-                lgkorUI.setHiddenInputData(sendata);
-                console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
-
-                $('#goDetailForm').attr('action', ORDER_DETAIL_URL);
-
-                setTimeout(function(){
-                    $('#goDetailForm').submit();  
-                }, 100);
+            if(PAGE_TYPE == PAGE_TYPE_LIST){     
+                sendDetailPage(dataID);   
             } else{
                 if(pdpUrl) {
                     setProductStatus(dataID, prodID, pdpUrl);
@@ -625,6 +607,11 @@
             e.preventDefault();
 
             sendListPage();
+        }).on('click', '.detailView-btn', function(e){
+            e.preventDefault();
+            
+            var dataID = $(this).closest('.box').data("id");
+            sendDetailPage(dataID);
         });
 
         cancelAllChecker = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('instance');
@@ -737,6 +724,35 @@
 
         //     setMethodReceiptPop();
         // });
+    }
+
+    function sendDetailPage(dataID){
+        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+
+        var prodlist = listdata[dataID].productList;
+        var orderNumbers = [];
+        for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
+        var orderNumberList = JSON.stringify(orderNumbers);
+
+        var sendata = {
+            orderNumber: listdata[dataID].orderNumber,
+            requestNo: listdata[dataID].requestNo,
+            tabFlag: TAB_FLAG,
+            startDate: dateData.startDate,
+            endDate: dateData.endDate,
+            periodSelect: dateData.periodSelect,
+            orderNumberList: orderNumberList
+        }
+
+        lgkorUI.setHiddenInputData(sendata);
+        console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
+
+        $('#goDetailForm').attr('action', ORDER_DETAIL_URL);
+
+        setTimeout(function(){
+            $('#goDetailForm').submit();  
+        }, 100);
     }
 
     function changeTabFlag(tab){
@@ -1296,6 +1312,8 @@
                         list[idx].requestNo = "";
                     }
 
+                    list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
+
                     ORDER_LIST.push(list[idx]);
                 }
             }
@@ -1322,6 +1340,8 @@
                     }
 
                     if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+
+                    list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
 
                     CARE_LIST.push(list[idx]);
                 }
