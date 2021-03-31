@@ -1277,6 +1277,7 @@
         }
 
         @include mobile {
+            overflow:hidden;
             padding:24px 16px;
 
             .had-pd-inner {
@@ -1291,6 +1292,9 @@
                 }
             }
             .had-pd-slider {
+                .slide-content {
+                    overflow:visible !important;
+                }
                 .slide-track {
                     height:200px;
                 }

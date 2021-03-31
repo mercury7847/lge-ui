@@ -131,7 +131,7 @@ br.m {
             margin:32px -16px 0;
         }
         &.tab-content {
-            margin-top:32px;
+            margin-top:48px;
             @include mobile {
                 margin:16px -16px 0;
             }
@@ -235,9 +235,9 @@ br.m {
             .tabs-wrap {
                 margin-top: 26px;
                 &.btn-type {
-                    &:before {
-                        display: none;
-                    }
+                    // &:before {
+                    //     display: none;
+                    // }
                     .tabs {
                         // padding: 0;
                         > li {
@@ -340,6 +340,7 @@ br.m {
     .csn-itr-cont {
         .csn-itr-head {
             display:table;
+            margin-top:48px;
             padding:48px 64px;
             border-radius:8px;
             width:100%;
@@ -433,7 +434,7 @@ br.m {
             .csn-icon-list {
                 overflow:hidden;
                 > ul {
-                    margin-top:-90px;
+                    margin-top:-48px;
                     margin-left:-60px;
                     font-size:0;
                     @include mobile {
@@ -443,7 +444,7 @@ br.m {
                     > li {
                         display:inline-block;
                         width:50%;
-                        margin-top:90px;
+                        margin-top:48px;
                         padding-left:60px;
                         vertical-align:top;
                         @include mobile {

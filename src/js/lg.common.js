@@ -2006,8 +2006,7 @@ var isApp = function(){
         },
 
         // openAR 링크 보내기
-        openAR:function(modelId, defaultUrl, mobileDeviceUrl){
-
+        openAR:function(modelId){
             if(isApplication) {
                 if(modelId){
                     if(isAndroid && android) android.openAR(modelId);
@@ -2015,17 +2014,13 @@ var isApp = function(){
                         var jsonString= JSON.stringify({command:'showAR', product:modelId});
                         webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                     }
-                }                
-            }else{
-                if(isMobileDevice) {
-                    if(mobileDeviceUrl) location.href = mobileDeviceUrl;
-                }else{
-                    if(defaultUrl) location.href = defaultUrl;
                 }
+                return true;
+            }else{
+                return false;
             }
-
         },
-
+        
         // history back 사용하기
         addHistoryBack:function(cid, callback){
 
