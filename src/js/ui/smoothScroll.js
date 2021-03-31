@@ -270,11 +270,15 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             // 0330 vertical 스크롤 허용
 
-            if(self.maxScrollX >= 0){
-                self.toggleEnabled(false);
-            }else{
-                self.toggleEnabled(true);
+            if (!self.hasHorizontalScroll) {
+                if(self.maxScrollX >= 0){
+                    self.toggleEnabled(false);
+                }else{
+                    self.toggleEnabled(true);
+                }            
             }
+
+            
 
 
         },
