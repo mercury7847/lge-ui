@@ -277,6 +277,7 @@
 				}
 			}
 			.desc {
+				display:none;
 				margin-top:12px;
 				font-size:18px;
 				line-height:28px;
@@ -495,6 +496,26 @@
 					top:48px;
 					left:32px;
 					color:#000;
+					&.fc-black {
+						.tit,
+						.date {
+							color:#000;
+						}
+						.btn.border {
+							border-color:#000 !important;
+							color:#000;
+						}
+					}
+					&.fc-white {
+						.tit,
+						.date {
+							color:#fff;
+						}
+						.btn.border {
+							border-color:#fff !important;
+							color:#fff;
+						}
+					}
 					.tit {
 						font-size:48px;
 						line-height:64px;

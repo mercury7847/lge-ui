@@ -123,7 +123,6 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             if(winwidth > 767) mode = self.options.pc_prefix;
             else mode = self.options.mobile_prefix;
             if(self.mode != mode) {
-                //console.log('resize!!!!!',$items.length);
                 self.mode = mode;
                 var $items = $(self.options.selector +"img[data-pc-src][data-m-src][data-current-image],.ui_bg_switch[data-current-image]");
                 $items.each(function(idx,item){
@@ -164,7 +163,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                         });
                         $img.attr('data-current-image',src);
                     } else {
-                        $img.attr("src", src);
+                        $img.attr("src", src); 
                         //$img.attr("data-lazy", src);
                         $img.attr('data-current-image',src);
                     }
@@ -188,7 +187,6 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                     item.dataset.currentImage = imgsrc;
                     item.src = imgsrc;
                     var $img = $(item);
-                    console.log(self.$items);
                     if ($img[0].complete) {
                         cb.call($img);
                     } else {

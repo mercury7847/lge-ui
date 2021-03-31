@@ -40,8 +40,6 @@
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
     function init(){
-        console.log("contractStatus start!!");
-
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');

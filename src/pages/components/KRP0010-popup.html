@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRP0010"
+    })
+<body>
+    <article id="popup1" class="win-popup-wrap sar-popup">
+        <header class="pop-header">
+            <h1 class="tit"><span>전자파 흡수율 지수 확인</span></h1>
+        </header>
+        <section class="pop-conts">
+            <div class="input-keyword-wrap">
+                <div class="input-keyword">
+                    @@include('./common/modules/search-input.html', {
+                        "placeholder" : "‘-’를 포함한 모델명을 입력해 주세요.",
+                        "value" : "",
+                        "title" : "모델명 입력"
+                    })
+                </div>
+            </div>
+            <div class="result-wrap">
+                <div class="tb-scroll">
+                    <div class="tb_row tb-row-bl">
+                        <table>
+                            <caption>모델별 전자파 등급, 전자파 흡수율 지수 안내</caption>
+                            <colgroup>
+                                <col style="width:26%">
+                                <col style="width:11%">
+                                <col style="">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">모델명</th>
+                                <th scope="col">등급</th>
+                                <th scope="col">전자파 흡수율 지수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>LM-Q520N</td>
+                                <td>2</td>
+                                <td>Head SAR 0.813 W/kg, Body SAR 1.110 W/kg</td>
+                            </tr>
+                            <tr>
+                                <td>LM-Q310N</td>
+                                <td>1</td>
+                                <td>Head SAR 0.596 W/kg, Body SAR 0.914 W/kg</td>
+                            </tr>
+                            <tr>
+                                <td>LM-Q920N</td>
+                                <td>2</td>
+                                <td>Head SAR 1.130 W/kg, Body SAR 0.691 W/kg</td>
+                            </tr>
+                            <tr>
+                                <td>LM-Q630N</td>
+                                <td>2</td>
+                                <td>Head SAR : 1.117 W/kg, Body SAR : 0.548 W/kg</td>
+                            </tr>
+                            <tr>
+                                <td>LM-Q510N</td>
+                                <td>2</td>
+                                <td>Head SAR 1.157 W/kg Body SAR 1.050 W/kg</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @@include('./common/modules/pagination.html', {
+                    count: 5
+                })
+            </div>
+            <div class="sar-summary">
+                <dl>
+                    <dt>전자파 흡수율(SAR) 이란?</dt>
+                    <dd>전자파 흡수율(SAR : Specific Absorption Rate)은 휴대폰에서 나오는 전자파가 인체에 흡수되는 에너지의 양 (단위:W/kg)을 나타내는 단위입니다. SAR 측정기준은 최대 출력 조건에서 휴대폰의 전자파를 측정하지만, 실제 사용 조건에서는 사용자가 최대 출력 조건에 노출될 위험은 매우 적습니다</dd>
+                </dl>
+            </div>
+            <div class="sar-info-area">
+                <div class="input-info">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">전자파 흡수율 정보</h2>
+                    </div>
+                    <div class="cont-wrap">
+                        <div class="cont-box">
+                            <dl>
+                                <dt>전자파흡수율(SAR) 인체 노출 기준</dt>
+                                <dd>우리나라는 국제권고기준(2 W/㎏)보다 엄격한 1.6 W/㎏으로 정하고 있으며 미국도 우리와 같은 기준을 적용하고 있습니다. 안전기준인 1.6 W/㎏은 미국 안전규격인 IEEE C95.1에 명시된 위험예상 가능 수준보다 50배나 더 엄격하게 설정한 것이며 성인, 약자, 어린이 등 연령과 건강에 관계없이 사람들의 안전을 보장하기에 충분한 여유 치가 포함된 안전한 수치입니다.<br><br>
+                                    휴대폰의 SAR 측정은 국립전파연구원 고시 제2010-45호(전자파 흡수율 측정기준 및 측정방법)에 따르며 측정값이 안전기준을 만족할 경우만 판매가 가능하도록 되어 있습니다.<br><br>
+                                    LG전자는 전자파 인체노출 기준에 적합한 제품을 휴대폰에서 사용하는 모든 송신 주파수 대역의 최대 출력 조건에서 안전기준을 초과하지 않도록 설계 및 생산하고 있으며 시중에 유통되기 전에 상기의 기준에 대한 적합성을 인증 받고 있습니다. SAR시험은 안전기준 수치를 기준으로 합격/불합격만 판정하는 시험으로 낮은 SAR 값이 상대적으로 더 안전 할 것이라는 주장은 추측일 뿐 밝혀진 과학적 증거는 없으며, 안전기준인 1.6 W/kg 이하 SAR 값의 차이가 덜 안전하다 또는 더 안전하다는 것을 의미하지는 않습니다.</dd>
+                            </dl>
+                            <dl>
+                                <dt>SAR 시험 시와 실제 통화 시 SAR 값의 차이점</dt>
+                                <dd>인증을 위한 SAR시험 시에는 휴대폰 출력이 최대인 상태에서 측정하나, 실제 통화 시에는 기지국과의 통신에 필요한 최소한의 출력만 사용하도록 설계되어 있어 시험시보다 훨씬 낮은 출력 상태가 되므로 일상적인 통화시의 SAR 값은 휴대폰 인증 시험시의 SAR 값에 비해 매우 적습니다.<br><br>
+                                    실생활에서는 인증시험과 달리 통화 시 휴대폰을 잡는 방법과 기지국과의 거리 및 특성에 따라 SAR 값이 달라질 수 있으며 이런 이유로 생기는 SAR 값 차이가 서로 다른 휴대폰 간의 공개된 SAR 값 차이보다 훨씬 크며, 일반적으로 실제 통화 시 SAR 값은 공개된 SAR 값의 수에 불과할 정도로 극히 작습니다.<br><br>
+                                    SAR 측정값은 측정 불확도와 양산 시 편차로 인증 당시 값과 일부 차이가 날 수 있으나, 이 경우에도 안전기준을 충분히 만족합니다. 단, 안전기준 만족을 위해 반드시 LG전자에서 제공하는 별매품이나 소모품을 사용해야 하며 그렇지 않을 경우 안전을 보장하지 못할 수도 있음을 유의하시기 바랍니다.</dd>
+                            </dl>
+                            <dl>
+                                <dt>자세한 정보</dt>
+                                <dd>
+                                    <ul>
+                                        <li>국립전파연구원(RRA) : <a href="http://rra.go.kr/index.jsp" target="_blank" title="새창열림">http://rra.go.kr/index.jsp</a></li>
+                                        <li>이엠에프(EMF) : <a href="http://www.emf.or.kr/" target="_blank" title="새창열림">http://www.emf.or.kr/</a></li>
+                                        <li>세계보건기구 (WHO) : <a href="http://www.who.int/peh-emf/en/" target="_blank" title="새창열림">http://www.who.int/peh-emf/en/</a></li>
+                                        <li>미국식품의약국(FDA) : <a href="http://www.fda.gov/cellphones/" target="_blank" title="새창열림">http://www.fda.gov/cellphones/</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-info">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">올바른 휴대폰 사용 방법</h2>
+                    </div>
+                    <div class="cont-wrap">
+                        <div class="cont-box">
+                            <dl>
+                                <dt>전자파의 인체 흡수율을 줄이는 휴대폰 사용법</dt>
+                                <dd>
+                                    <p>휴대폰은 저전력 무선 송수신기로 사용 환경에 따라 발생되는 전자파의 세기가 다양하게 변합니다. 특히, 사람의 얼굴 부분과 머리 부위는 휴대폰과 아주 가까이 있기 때문에 휴대폰의 모양이나 인체와 휴대폰간의 상대적 위치에 따라 전자파노출 정도가 심하게 변할 수 있으므로 다음을 참고한다면 전자파의 인체흡수율(SAR)을 더 낮출 수 있습니다.
+                                    </p>
+                                    <ol>
+                                        <li>전자파에 대한 노출 정도는 휴대폰이 인체로부터 멀수록 급격히 감소하므로 직접통화보다는 핸즈프리 (이어폰, 블루투스)를 사용하는 편이 좋습니다.</li>
+                                        <li>휴대폰 화면에 표시되는 수신강도가 낮게 표시되는 지역은 기지국과의 통신을 위해 상대적으로 휴대폰 전자파의 세기가 커지므로 장시간 사용은 피하는 것이 좋습니다.</li>
+                                        <li>휴대폰 전자파에 민감하여 노출량을 줄이고 싶다면 음성통화보다는 문자 메시지나 SNS(Social Network Service)를 이용하는 것도 하나의 방법이 될 수 있습니다.</li>
+                                        <li>좌·우 얼굴 부위를 교대로 접촉하여 휴대폰을 이용하면 전자파의 인체흡수율을 줄일 수 있습니다.</li>
+                                        <li>성장기 어린이는 전자파에 대한 인체의 영향이 성인보다 클 수 있으므로 가급적 휴대폰 이용을 자제하는 것이 좋습니다.</li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

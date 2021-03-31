@@ -298,17 +298,27 @@ var isApp = function(){
         _addImgOnloadEvent: function(){
             var self = this;
             $('img').not('[data-pc-src]').on('error', function(e){
+                var img = this;
+                img.onerror = null;
+                if ( !img.complete || !img.naturalWidth ) {
+                    img.src = self.NO_IMAGE;
+                    img.classList.add('no-img');
+                }
+                /*
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
                 $(this).addClass('no-img');
+                */
             });
         },
 
         addImgErrorEvent: function(img){
             var self = this;
             img.onerror = null;
-            $(img).attr('src', self.NO_IMAGE);
-            $(img).addClass('no-img');
+            if ( !img.complete || !img.naturalWidth ) {
+                img.src = self.NO_IMAGE;
+                img.classList.add('no-img');
+            }
         },
 
         addModelNameImgErrorEvent: function(img){
@@ -656,8 +666,6 @@ var isApp = function(){
             var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
-                console.log("referrer:", referrer)
-                console.log("_historyBack:", index, referrer)
                 if(index > -1){
                     break;
                 }
@@ -1008,13 +1016,15 @@ var isApp = function(){
             }
         },
 
+        //lgkorUI.setCookie('','', false, 1);
+
         //쿠키
-        setCookie: function(cookieName, cookieValue, deleteCookie) {
+        setCookie: function(cookieName, cookieValue, deleteCookie, expireDay) {
             var cookieExpire = new Date();
             if(deleteCookie) {
                 cookieExpire = new Date(1);
             } else {
-                var days = 30*6;
+                var days = expireDay? expireDay : 30*6;
                 cookieExpire.setDate(cookieExpire.getDate() + days);
             }
 
@@ -1611,7 +1621,6 @@ var isApp = function(){
             var moduleIDs = vcui.array.map(self.STICKY_MODULES, function(item){
                 return item.uniqueID;
             });
-            //console.log("moduleIDs :", moduleIDs);
 
             var uniqueID = self.setUniqueID();
             while(vcui.array.has(moduleIDs, uniqueID)) uniqueID = setUniqueID();
@@ -1919,7 +1928,6 @@ var isApp = function(){
 
         hashString2Obj:function(str) {
             var orig =  decodeURIComponent("{"+str+"}"); //"{"+str+"}";
-            //console.log(orig);
             var decompress = lgkorUI.stringDecompress(orig);
             var result = JSON.parse(decompress);
             return result;
@@ -1997,6 +2005,22 @@ var isApp = function(){
             }
         },
 
+        // openAR 링크 보내기
+        openAR:function(modelId){
+            if(isApplication) {
+                if(modelId){
+                    if(isAndroid && android) android.openAR(modelId);
+                    if(isIOS) {
+                        var jsonString= JSON.stringify({command:'showAR', product:modelId});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }
+                }
+                return true;
+            }else{
+                return false;
+            }
+        },
+        
         // history back 사용하기
         addHistoryBack:function(cid, callback){
 

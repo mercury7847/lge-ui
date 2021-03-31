@@ -294,11 +294,11 @@
 				var validation = new Validation('.uiForm', { register : buyerInfoObj});
                 
                 validation.on('errors', function(e,data){
-                    console.log(data);
+                    //console.log(data);
 
                 }).on('success', function(data){
                     // 성공이 이벤트
-                    console.log(validation.getValues());
+                    //console.log(validation.getValues());
 
                 }).on('nextfocus', function(e,$target){
 
@@ -339,7 +339,6 @@
 
                 // 신청하기 버튼 이벤트
                 $('#uiSubmit').on('click', function(){  
-                    console.log('asdf')
                     validation.validate(); 	                    
                 });          
                 

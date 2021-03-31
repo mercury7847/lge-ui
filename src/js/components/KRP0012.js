@@ -18,15 +18,6 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-    /*
-    console.log('i',i);
-    console.log('s',s);
-    console.log('o',o);
-    console.log('g',g);
-    console.log('r',r);
-    console.log('a',a);
-    console.log('m',m);
-    */
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function() {
@@ -56,14 +47,14 @@
 
                 //상품 리뷰 위젯
                 if(isMobile){
-                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
+                    $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
                 } else {
                     $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
                 }
 
                 //상품 소셜 위젯
                 if(isMobile){
-                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "40" + '"></div>');
+                    $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "40" + '"></div>');
                 } else {
                     $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "39" + '"></div>');
                 }

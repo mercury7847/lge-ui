@@ -242,10 +242,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                                     self._setUserAdressSearch(true);
                                 }
                             } else { // mobile device
-                                if (!self.isLogin) { // 비로그인
+                                if (!cookie.getCookie('geoAgreeCancel')) {
                                     self._setCurrentSearch(true);
-                                } else { // 로그인
-                                    self._setUserAdressSearch(true);
+                                } else {
+                                    self._loadStoreData();
                                 }
                             }
                         }
@@ -343,9 +343,19 @@ function moveDetail(el, detailUrl, windowHeight) {
                 
                 self.$map.selectInfoWindow(id);
 
-                if ($(window).data('breakpoint').isMobile) {
+
+                if ($(window).innerWidth() < 1025) {
                     self._showMap(true);
-                    $('html, body').animate({scrollTop:self.$container.offset().top})
+
+                    if (!$(window).data('breakpoint').isMobile) {
+                        $('html, body').animate({scrollTop:self.$container.offset().top});
+                    } else {
+                        if (!self.$container.hasClass('result-map')) {
+                            $('html, body').animate({scrollTop:self.$container.offset().top});
+                        } else {
+                            $('html, body').animate({scrollTop:0})
+                        }
+                    }
                 }
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
@@ -394,23 +404,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self._toggleLeftContainer();
             })
 
-            // 옵션 설정
-            // self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
-            //     self._optAllChecked();
-            // });
-            // self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
-            //     self._optToggleAllChecked();
-            // });
-            // self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
-            //     e.preventDefault();
-
-            //     self._setOptINIT();
-            // }).on('click', '.btn-group button:last-child', function(e){
-            //     e.preventDefault();
-
-            //     self._setOptApply();
-            // });
-
             // 지역 검색
             self.$citySelect.on('change', function(e){
                 self._loadLocalAreaList(e.target.value);
@@ -446,8 +439,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchSubwayButton.on('click', function(e){
                 //  지하철역 검색
                 self._setSubwaySearch();
-                $('.map-container').addClass('result-map');
-
             });
 
             // 센터명 검색
@@ -484,7 +475,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.searchCenterName.on('click', function() {
                 // 센터명 검색
                 self._setSearch();
-                $('.map-container').addClass('result-map');
             });
 
             // 주소 검색
@@ -500,7 +490,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchAddressButton.on('click', function() {
                 // 주소 검색
                 self._setKakaoSearch();
-                $('.map-container').addClass('result-map');
             });
 
             $(window).on('resizeend', function(e){
@@ -802,11 +791,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     !init && self._showResultLayer();
                 } else{
                     if (init) {
-                        if (!vcui.detect.isMobile) { // pc device
-                            self._loadStoreData();
-                        } else { // mobile device
-                            self._setCurrentSearch(true);
-                        }
+                        self._loadStoreData();
                     } else {
                         if(result.data.location && result.data.location != ""){
                             lgkorUI.confirm('로그인을 하셔야 이용하실 수 있습니다. <br>로그인 하시겠습니까?',{
@@ -844,6 +829,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self.schReaultTmplID = "currentSearch";
                         
                         cookie.setCookie('geoAgree','Y', 1);
+                        cookie.deleteAllCookie('geoAgreeCancel');
 
                         self._loadStoreData();    
                         !init && self._showResultLayer();
@@ -852,13 +838,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                             title: '현재 위치 정보',
                             typeClass: 'type2',
                             ok: function() {
-                                self.searchResultMode = init ? false : true;
-
-                                self.latitude = self.defaultLatitude;
-                                self.longitude = self.defaultLongitude;
-
-                                self._loadStoreData();    
-                                !init && self._showResultLayer();
+                                if (init) {
+                                    self.searchResultMode = false;
+    
+                                    self.latitude = self.defaultLatitude;
+                                    self.longitude = self.defaultLongitude;
+                                    
+                                    if (self.isLogin) {
+                                        self._setUserAdressSearch(true);
+                                    } else {
+                                        self._loadStoreData();
+                                    }
+                                }
                             }
                         });
                     }); 
@@ -867,13 +858,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                         title: '현재 위치 정보',
                         typeClass: 'type2',
                         ok: function() {
-                            self.searchResultMode = init ? false : true;
+                            if (init) {
+                                self.searchResultMode = false;
 
-                            self.latitude = self.defaultLatitude;
-                            self.longitude = self.defaultLongitude;
-
-                            self._loadStoreData();    
-                            !init && self._showResultLayer();
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
+                                
+                                if (self.isLogin) {
+                                    self._setUserAdressSearch(true);
+                                } else {
+                                    self._loadStoreData();
+                                }
+                            }
                         }
                     });
                 }
@@ -928,19 +924,27 @@ function moveDetail(el, detailUrl, windowHeight) {
                     searchCurrentSearch();
                 },
                 cancel: function() {
-                    lgkorUI.cookie.setCookie("geoAgreeCancel", 'Y', 1);
+                    if(init) {
+                        cookie.setCookie("geoAgreeCancel", 'Y', 1);
+                        cookie.deleteAllCookie('geoAgree');
+                    }
 
                     lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                         title: '현재 위치 정보',
                         typeClass: 'type2',
                         ok: function() {
-                            self.searchResultMode = init ? false : true;
+                            if (init) {
+                                self.searchResultMode = false;
 
-                            self.latitude = self.defaultLatitude;
-                            self.longitude = self.defaultLongitude;
-
-                            self._loadStoreData();    
-                            !init && self._showResultLayer();
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
+                                
+                                if (self.isLogin) {
+                                    self._setUserAdressSearch(true);
+                                } else {
+                                    self._loadStoreData();
+                                }
+                            }
                         }
                     });
                 }};
@@ -948,14 +952,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
                 var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
 
-	            if (!cookie.getCookie('geoAgree') || !cookie.getCookie('geoAgreeCancel')) {
+	            if (!cookie.getCookie('geoAgree')) {
 	                lgkorUI.confirm(desc, obj);
 	            } else {
 	                searchCurrentSearch();
 	            }
-            }
-            else
-        	{
+            } else {
             	getAppCurrentLocation();
         	}
             
@@ -1146,7 +1148,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var searchResultVal = {
                 search: $('#address1').val(),
-                localSearch: $('#select1 option:selected').text() + ' ' + $('#select2 option:selected').text(),
+                localSearch: $('#select1 option:selected').text() + ($('#select2').val() ? ' ' + $('#select2 option:selected').text() : ''),
                 roadSearch: '',
                 subwaySearch: $('#select5').val(),
                 userAddressSearch:'',
@@ -1192,12 +1194,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             if( window.innerWidth < 768) {
                 $('.page-header').hide();
                 $('.waiting-state').hide()
-                $('html,body').scrollTop(self.$leftContainer.offset().top)
+                $('html,body').scrollTop(0);
+            } else {
+                $('html,body').stop().animate({
+                    scrollTop : $('.map-container').offset().top
+                }, 400)
             }
-
-            $('html,body').stop().animate({
-                scrollTop : $('.map-container').offset().top
-            }, 400)
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산
@@ -1215,12 +1217,12 @@ function moveDetail(el, detailUrl, windowHeight) {
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).width();
+            self.windowWidth = window.innerWidth;
             self.windowHeight = $(window).height();
 
             var mapwidth, mapheight, mapmargin;
 
-            if(self.windowWidth < 1025){
+            if(self.windowWidth < 1025){ console.log('pc'+ self.windowWidth);
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1229,7 +1231,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
-            } else{
+            } else{  console.log('mo'+ self.windowWidth);
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }
@@ -1272,7 +1274,10 @@ function moveDetail(el, detailUrl, windowHeight) {
 
          // PC버전으로 돌아가면 지도 영역 스타일 초기화
          $(window).resize(function() {
-            if($(window).width() > 1024) {
+            if ($(window).width() > 767) {
+                $('.waiting-state').removeAttr('style');
+            }
+            if ($(window).width() > 1024) {
                 $('.store-map-con').removeAttr('style');
                 var toggle = searchShop.$leftContainer.find('.btn-view');
                 if(toggle.hasClass('list')){

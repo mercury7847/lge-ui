@@ -2,7 +2,7 @@
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
     var csUI = {
-        isLogin: $('#topLoginFlag').length ? ($('#topLoginFlag').val() == 'Y' ? true : false) : ($('html').data('login') == 'Y' ? true : false),
+        isLogin: $('html').data('login') == 'Y' ? true : false,
         initProductSlider: function() {
             // 관련 소모품이 필요하신가요?
             $('.product-slider').vcCarousel({
@@ -57,13 +57,16 @@
             }
         },
         cookie: {
-            setCookie: function(cookieName, value, expire) {
+            setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
                 var cookieExpire = new Date();
 
-                
-                cookieExpire.setDate(cookieExpire.getDate() + expire);
-                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; EXPIRES=' + cookieExpire.toUTCString()) + '; PATH=/; DOMAIN=; SECURE=';
+                if (deleteCookie) {
+                    cookieExpire = new Date(1);
+                } else {
+                    cookieExpire.setDate(cookieExpire.getDate() + expire);
+                }
+                cookieText = cookieName + '=' + escape(value) + ((expire == null) ? '' : '; EXPIRES=' + cookieExpire.toUTCString()) + '; PATH=/';
 
                 document.cookie = cookieText;
             },
@@ -111,7 +114,10 @@
                 }
             },
             deleteAllCookie: function(cookieName) {
-                this.setCookie(cookieName, '', '-1');
+                var cookieValue = this.getCookie(cookieName);
+                if (cookieValue) {
+                    this.setCookie(cookieName, cookieValue, '', true);
+                }
             }
         },
         recentlySearch: {
@@ -225,13 +231,6 @@
 
 var CS = CS || {};
 CS.MD = CS.MD || {};
-CS.UI = CS.UI || {};
-
-CS.UI = {};
-CS.UI.$doc = $(document);
-CS.UI.$win = $(window);
-CS.UI.$html = $('html');
-CS.UI.$body = $('body');
 
 CS.MD.plugin = function(pluginName, Plugin) {
     $.fn[pluginName] = function(options) {
@@ -549,6 +548,8 @@ CS.MD.calendar = function() {
                 self.$calendar.find('.choice').removeClass('choice');
                 self.activeDate = date;
                 $this.addClass('choice');
+                $this.closest('tbody').find('td').find('button span.blind').remove();
+                $this.find('button').append('<span class="blind">선택됨</span>');
                 if (opts.inputTarget) {
                     self.$input.val(format);
                 }
@@ -906,6 +907,8 @@ CS.MD.timeCalendar = function() {
                 self.activeTime = time;
                 $this.addClass('choice');
                 $this.siblings('th').addClass('choice');
+                $this.closest('tbody').find('td').find('button span.blind').remove();
+                $this.find('button').append('<span class="blind">선택됨</span>');
 
                 if (self.options.inputTarget) self.$input.val(time);
 
@@ -1242,8 +1245,8 @@ var AuthManager = function() {
                     if (resultData.resultFlag == 'Y') {
                         //$(el).find('span').html(RESENDTEXT);
                         
-                        console.log($(el))
-                        console.log($(el).html())
+                        //console.log($(el))
+                        //console.log($(el).html())
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }

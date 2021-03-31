@@ -33,6 +33,12 @@
         }
         .order-list {
             padding-bottom: 60px;
+            li {
+                &:last-child {
+                    padding-bottom:0;
+                    border-bottom:none;
+                }
+            }
         }
     }
 }

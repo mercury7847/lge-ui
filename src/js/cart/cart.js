@@ -69,7 +69,6 @@
             }
 
             var data = d.data;
-            console.log(data);
             
             //구매/렌탈 카운트
             self.$buyCount.text('구매 ' + data.buyCount + (data.buyCount>0?"+":""));
@@ -163,12 +162,12 @@
     }
 
     function requestWishProduct(param) {
-        console.log(param);
+        //console.log(param);
     }
 
     //카트 선택사항 변경
     function requestChangeCart(param) {
-        console.log(param);
+        //console.log(param);
     }
 
     function changeBlindLabelTextSiblingCheckedInput(input, trueText, falseText) {
@@ -222,7 +221,6 @@
                     checkedProduct.each(function (index, item) {
                         var index = self.$productCheck.index(item);
                         var product = cartProducts[index];
-                        console.log({'productId':product.productId, 'quantity':'0'});
                         paramData.push({'productId':product.productId, 'quantity':'0'});
                     });
                     if(paramData.length > 0) {

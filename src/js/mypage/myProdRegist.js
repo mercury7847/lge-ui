@@ -18,15 +18,6 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-    /*
-    console.log('i',i);
-    console.log('s',s);
-    console.log('o',o);
-    console.log('g',g);
-    console.log('r',r);
-    console.log('a',a);
-    console.log('m',m);
-    */
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function(){
@@ -212,7 +203,8 @@
                 self.requestOwnData(false);
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
-                if(self.modelCode) {
+                self.serialNumber = lgkorUI.getParameterByName('serialNumber');
+                if(self.modelCode || self.serialNumber) {
                     self.registMyProductPopupClear();
                     self.$registMyProductMainPage.show();
                     self.$modelCheckHelpPage.hide();               
@@ -293,6 +285,8 @@
             //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
 
             //nodata
+            //03-31 정승우 멤버십/마케팅 관련 데이타 가져오는게 아직 미흡하여 일단 막음
+            /*
             var hiddenData = lgkorUI.getHiddenInputData();
             var membership = lgkorUI.stringToBool(hiddenData.membership);
             var marketing = lgkorUI.stringToBool(hiddenData.marketing);
@@ -305,7 +299,8 @@
             } else {
                 self.$registProductNoData = self.$contents.find('div.no-data-case:eq(0)');
             }
-
+            */
+            self.$registProductNoData = self.$contents.find('div.no-data');
         },
 
         bindEvents: function() {
@@ -890,6 +885,12 @@
             self.$registMyProductMainPage.find('input').val("");
             if(self.modelCode) {
                 self.$registMyProductMainPage.find('input[name=sku]').val(self.modelCode);
+                self.modelCode = null;
+            }
+            if(self.serialNumber) {
+                //시리얼
+                self.$registMyProductMainPage.find('input[name=sn]').val(self.serialNumber);
+                self.serialNumber = null;
             }
             self.$registMyProductMainPage.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
             self.$registMyProductMainPage.find('.err-block').hide();

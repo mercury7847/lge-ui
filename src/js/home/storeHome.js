@@ -1,10 +1,8 @@
-
 var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
 '       <a href="#{{obj.categoryId}}">{{obj.categoryName}}</a>\n'+
 '   </li>\n'+
 '{{/each}}';
-
 
 var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   <div class="tabs-contents" id="{{obj.categoryId}}">\n'+
@@ -69,7 +67,6 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   </li>\n'+
     '{{/each}}';
 
-
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <li class="slide-conts ui_carousel_slide">\n'+
     '       <div class="slide-box">\n'+
@@ -80,7 +77,7 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '                   data-pc-src="{{obj.pcImagePath}}"'+ 
     '                   data-m-src="{{obj.mobileImagePath}}" onError="lgkorUI.addImgErrorEvent(this)">'+
     '               </div>\n'+
-    '               <div class="product-info">\n'+
+    '               <div class="product-info {{obj.textClass}}">\n'+
     '                   <p class="tit">{{#raw obj.title}}</p>\n'+
     '                   <div class="date">{{obj.date}}</div>\n'+
     '                   <a href="{{obj.modelUrlPath}}" class="btn border">자세히 보기</a>\n'+
@@ -92,7 +89,6 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '       </div>\n'+
     '   </li>\n'+
     '{{/each}}';
-
 
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -120,7 +116,6 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   </li>\n'+
     '{{/each}}';
 
-
 var recommendTmpl = '{{#each obj in list}}\n'+
     '   <li class="slide-conts ui_carousel_slide">\n'+
     '       <a href="{{obj.modelUrlPath}}" class="slide-box">\n'+
@@ -146,7 +141,6 @@ var recommendTmpl = '{{#each obj in list}}\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
-
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '   <div class="slide-box">\n'+
@@ -178,8 +172,6 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '   </div>\n'+
     '</li>';
 
-    
-    
 $(function(){
 
     function getUriQuery(url, name){
@@ -214,7 +206,8 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
-                "modelUrlPath" : "#1"
+                "modelUrlPath" : "#1",
+                "textClass":"fc-black"
             },
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
@@ -222,7 +215,8 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
-                "modelUrlPath" : "#2"
+                "modelUrlPath" : "#2",
+                "textClass" : "fc-white"
             }
         ]
 
@@ -276,8 +270,6 @@ $(function(){
 
                     var obj = newProductRecommendLocal[index];
 
-                    console.log(item);
-
                     // item['reviewCount'] = 1000223;
 
                     item['fullImagePath'] = obj && obj['fullImagePath'];
@@ -296,7 +288,7 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){                  
+                    if(list[index]){       
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);

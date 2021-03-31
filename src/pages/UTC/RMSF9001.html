@@ -14,14 +14,11 @@
 
         <div class="container">
             <!-- 20201221 수정 (타이틀 텍스트 수정, 스텝 영역 추가) -->
+            <!-- 210331 스텝 영역 삭제 -->
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "렌탈 케어솔루션",
-                "stepArr" : [
-                    { "step" : "01 장바구니", "class" : "", "text" : "" },
-                    { "step" : "02 청약신청", "class" : "current", "text" : "<span class='blind'>현재 페이지</span>" },
-                    { "step" : "03 청약완료", "class" : "", "text" : "" }
-                ]
+                "pageTitle": "렌탈 케어솔루션"
             })
+            <!-- //210331 스텝 영역 삭제 -->
             <!-- 청약 신청 -->
             <!-- 20201221 수정 (전체적으로 확인해야함, 텍스트 및 자잘한 수정) -->
             <div class="contents subscribe">
@@ -280,7 +277,7 @@
                                             </div>
                                             <!-- 210331 버튼추가 -->
                                             <div class="btn-move">
-                                                <button type="button" class="btn border size"><span>설치 정보 등록하기</span></button>
+                                                <button type="button" class="btn border size nextStep-btn"><span>설치 정보 등록하기</span></button> <!-- 210331_2 nextStep-btn 추가-->
                                             </div>
                                             <!-- //210331 버튼추가 -->
                                         </div>
@@ -496,7 +493,7 @@
                                             </div>
                                             <!-- 210331 버튼추가 -->
                                             <div class="btn-move">
-                                                <button type="button" class="btn border size"><span>납부 정보 등록하기</span></button>
+                                                <button type="button" class="btn border size nextStep-btn"><span>납부 정보 등록하기</span></button> <!-- 210331_2 nextStep-btn 추가-->
                                             </div>
                                             <!-- //210331 버튼추가 -->
                                         </div>
@@ -933,6 +930,15 @@
     @@include('./common/popup/RMSF9001_pop10.html', {
         popupID: "popup-credit-terms",
         chkname: "agreechker-credit",
+        tempName: "신용정보제공에 대한 안내"
+    })
+    <!-- // 개인정보 수집 약관전문 보기 popup -->
+
+    <!-- 개인정보 수집 약관전문 보기 popup -->
+    <!-- 210331_2 추가-->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-credit-terms2",
+        chkname: "agreechker-credit2",
         tempName: "신용정보제공에 대한 안내"
     })
     <!-- // 개인정보 수집 약관전문 보기 popup -->
