@@ -20,11 +20,11 @@
         setting: function() {
             var self = this;		
             
-            self.$KRP0005 = $('.KRP0005');
-            self.$floatingWrap = self.$KRP0005.parents('.btn-floating-wrap');
+            self.$floatingWrap = $('.btn-floating-wrap');
+            self.$KRP0005 = $('.KRP0005.floating-menu');
             self.moreButton = self.$KRP0005.find('.more-plus-linker a');
 
-            self.$popup = $('#KRP0032');
+            self.$popup = $('#KRP0032:eq(0)');
             self.$list = self.$popup.find('div.lately-list ul');
         },
 

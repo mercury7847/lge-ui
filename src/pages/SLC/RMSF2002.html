@@ -564,22 +564,26 @@
                         </div>
 
                         <!-- 201220 수정 [항목 추가] -->
-                        <div class="csn-section csn-b2bs">
+                        <!-- 210331 항목삭제 -->
+                        <!-- <div class="csn-section csn-b2bs">
                             <div class="tit-wrap">
                                 <h3 class="tit">B2B 케어솔루션 전문 상담</h3>
                                 <p class="desc">기업, 공공기관, 학교 등 공간에 맞는 <br class="m">최고의 케어솔루션 제품을 만나보세요.</p>
                                 <p class="call">문의전화 : 1588-1234</p>
                             </div>
                             <a href="#n" class="btn border"><span>자세히 보기</span></a>
-                        </div>
+                        </div> -->
+                        <!-- //210331 항목삭제 -->
                         <!-- // 201220 수정 [항목 추가] -->
 
                         <div class="csn-section type2">
                             <div class="section-inner">
+                                <!-- 210331 문구수정 -->
                                 <div class="tit-wrap">
-                                    <h3 class="tit">케어솔루션 가입 및 상담 문의하기</h3><!-- 201221 수정 [br 태그 삭제] -->
-                                    <p class="desc">신규 가입 및 기존고객 상담을 위한 <br class="m">전화 번호를 확인하세요.</p>
+                                    <h3 class="tit">케어솔루션 고객센터</h3><!-- 201221 수정 [br 태그 삭제] -->
+                                    <!-- <p class="desc">신규 가입 및 기존고객 상담을 위한 <br class="m">전화 번호를 확인하세요.</p> -->
                                 </div>
+                                <!-- //210331 문구수정 -->
                                 <div class="gray-block-wrap">
                                     <div class="blocks">
                                         <dl>
@@ -587,7 +591,9 @@
                                                 <p class="tit">신규고객을 위한 가입문의</p>
                                             </dt>
                                             <dd>평일 09:30~12:30, 13:30~18:30<br>ARS 상담예약 상시운영</dd>
-                                            <dd class="num">080-755-2222</dd>
+                                            <!-- 210331 모바일전화걸기로 수정 -->
+                                            <dd class="num"><a href="tel:080-755-2222">080-755-2222</a></dd>
+                                            <!-- //210331 모바일전화걸기로 수정 -->
                                         </dl>
                                     </div>
                                     <div class="blocks">
@@ -602,20 +608,35 @@
                                                 })
                                             </dt>
                                             <dd>평일 09:00~18:00<br>토요일 09:00~13:00</dd>
-                                            <dd class="num">1577-4090</dd>
+                                            <!-- 210331 모바일전화걸기로 수정 -->
+                                            <dd class="num"><a href="tel:1577-4090">1577-4090</a></dd>
+                                            <!-- //210331 모바일전화걸기로 수정 -->
                                         </dl>
                                     </div>
+                                    <!-- 210331 내용추가 -->
+                                    <div class="blocks">
+                                        <dl>
+                                            <dt>
+                                                <p class="tit">B2B 케어솔루션 전문 상담</p>
+                                            </dt>
+                                            <dd>기업, 공공기관, 학교 등 공간에 맞는 최고의 케어솔루션 제품을 만나보세요.</dd>
+                                            <dd class="num"><a href="tel:1588-1234">1588-1234</a></dd>
+                                        </dl>
+                                    </div>
+                                    <!-- //210331 내용추가 -->
                                 </div>
                             </div>
                             <div class="section-inner">
                                 <div class="tit-wrap">
+                                    <!-- 210331 문구수정 -->
                                     <h3 class="tit">케어솔루션 보이는 ARS 서비스</h3><!-- 201221 수정 [br 태그 삭제] -->
-                                    <p class="desc">상담사 연결 없이도 스마트폰 화면을 보며 쉽고 <br class="m">간편하게 서비스 이용이 가능합니다.</p>
+                                    <p class="desc">원하는 시간에 케어솔루션 고객센터(1577-4090)에 전화하면 스마트폰에 자동으로 보이는 ARS 화면이 뜹니다.<br>이제 상담사 연결 없이 화면을 보며 원하는 메뉴로 쉽고 빠르게 이동 하세요.</p>
                                     @@include('./common/modules/bullet-list.html', {
                                         "bulletTxt" : [
-                                            "개인고객 및 계약자 본인의 경우 서비스 이용이 가능합니다."
+                                            "케어솔루션 가입자 및 개인고객만 이용 가능"
                                         ]
                                     })
+                                    <!-- //210331 문구수정 -->
                                 </div>
                                 <ul class="csn-ars-svc">
                                     <li class="svc1">
@@ -657,14 +678,15 @@
 
                     <!-- 201221 수정 [내부 DOM 수정] -->
                     <div class="csn-ars-bottom">
-                        <h3 class="tit">보이는 ARS 서비스 화면이 뜨지 않나요?</h3>
-                        <p class="desc">Google Play에서 보이는 ARS 앱을 설치해주세요.</p>
+                        <!-- 210331 문구수정 -->
+                        <h3 class="tit">케어솔루션 고객센터에 전화 걸었는데 보이는 ARS 화면이 뜨지 않나요?</h3>
+                        <p class="desc">Google Play에서 보이는 ARS 앱을 다운 받으세요. 앱을 열어 LG전자를 선택하면 서비스로 바로 연결됩니다.</p>
                         @@include('./common/modules/bullet-list.html', {
                             "bulletTxt" : [
-                                "스마트폰에서만 설치 가능",
-                                "안드로이드만 가능, 아이폰은 서비스 지원 불가"
+                                "‘보이는 ARS’ 앱은 현재 안드로이드만 지원됩니다."
                             ]
                         })
+                        <!-- //210331 문구수정 -->
                         <!-- 210316 링크수정 -->
                         <a href="https://play.google.com/store/apps/details?id=com.callgate.ars" target="_blank" class="btn border"><span>보이는 ARS 앱 설치하기</span></a>
                         <!-- //210316 링크수정 -->

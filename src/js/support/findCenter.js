@@ -439,8 +439,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchSubwayButton.on('click', function(e){
                 //  지하철역 검색
                 self._setSubwaySearch();
-                $('.map-container').addClass('result-map');
-
             });
 
             // 센터명 검색
@@ -477,7 +475,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.searchCenterName.on('click', function() {
                 // 센터명 검색
                 self._setSearch();
-                $('.map-container').addClass('result-map');
             });
 
             // 주소 검색
@@ -493,7 +490,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchAddressButton.on('click', function() {
                 // 주소 검색
                 self._setKakaoSearch();
-                $('.map-container').addClass('result-map');
             });
 
             $(window).on('resizeend', function(e){
@@ -1152,7 +1148,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var searchResultVal = {
                 search: $('#address1').val(),
-                localSearch: $('#select1 option:selected').text() + ' ' + $('#select2 option:selected').text(),
+                localSearch: $('#select1 option:selected').text() + ($('#select2').val() ? ' ' + $('#select2 option:selected').text() : ''),
                 roadSearch: '',
                 subwaySearch: $('#select5').val(),
                 userAddressSearch:'',
@@ -1221,12 +1217,12 @@ function moveDetail(el, detailUrl, windowHeight) {
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).width();
+            self.windowWidth = window.innerWidth;
             self.windowHeight = $(window).height();
 
             var mapwidth, mapheight, mapmargin;
 
-            if(self.windowWidth < 1025){
+            if(self.windowWidth < 1025){ console.log('pc'+ self.windowWidth);
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1235,7 +1231,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
-            } else{
+            } else{  console.log('mo'+ self.windowWidth);
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }
