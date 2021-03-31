@@ -468,8 +468,8 @@
 
         @include mobile {
             position: absolute;
-            bottom: -80px;
-            right: 52px;
+            top: -4px;
+            right: 32px;
             z-index: 2;
             width: auto;
             margin-top: 0;
@@ -489,8 +489,8 @@
                     width: 32px;
                     height: 32px;
                     padding: 4px;
-                    background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat 0 0;
-                    background-size: 28px;
+                    background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat center center;
+                    background-size: 24px;
                     font-size: 0;
                     text-align: left;
                     &:after {
@@ -524,7 +524,7 @@
             float: none;
             width: auto;
             margin: 0 -16px;
-            padding: 40px 16px 0;
+            padding: 24px 16px 0;
             border-top: 12px solid $color-bg;
         }
         .product-detail-info {
@@ -556,7 +556,8 @@
             }
             .review-info {
                 .star-rating-wrap {
-                    display:inline-block;
+                    display: none;
+                    //display:inline-block;
                     height:24px;
                     font-size:0;
                     line-height:24px;
@@ -635,7 +636,11 @@
                     }
                 }
             }
-            @include mobile {
+        }
+        &.visible-sm {
+            padding: 16px 16px 8px;
+            border-top: 0;
+            .product-detail-info {
                 position: relative;
                 .flag-wrap.bar-type .flag {
                     font-size: 11px;
@@ -692,7 +697,7 @@
                     }
                 }
                 @include mobile {
-                    padding-bottom: 40px;
+                    padding: 0 0 40px;
                     > [class*="sibling-"] {
                         flex-direction: column;
                         justify-content: left;
