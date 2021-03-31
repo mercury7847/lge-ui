@@ -1276,6 +1276,8 @@
                 }
 
                 if(endtitle != ""){
+                    lgkorUI.hideLoading();
+                    
                     lgkorUI.alert(endesc, {
                         title: endtitle,
                         okBtnName: endbntname,
@@ -1287,12 +1289,12 @@
                     location.href= result.data.sendUrl;
                 }
             } else{
+                lgkorUI.hideLoading();
+
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
             }
-
-            lgkorUI.hideLoading();
         }, ajaxMethod);
     }
 

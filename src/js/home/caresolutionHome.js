@@ -46,12 +46,6 @@ $(function(){
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
         // 제품 코드 관리 부분
-        var requestObj = {
-            newProductIds:'0001,0002,0003,0004', 
-            bestProductIds:'a001,0002,0003,0004',
-            newMarryProductIds:'b001,0002,0003,0004',
-            petProductIds:'c001,0002,0003,0004'
-        }
 
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
@@ -284,12 +278,13 @@ $(function(){
                         infinite: false,
                         slidesToShow: 4,
                         slidesToScroll: 1,
-                        variableWidth : true,
+                        variableWidth : false,
+                        // centerMode:true,
                         responsive: [
                             {
                                 breakpoint: 10000,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 4,
                                     slidesToScroll: 1, 
                                 }
@@ -297,7 +292,7 @@ $(function(){
                             {
                                 breakpoint: 1200,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 3,
                                     slidesToScroll: 1,   
                                 }
@@ -305,7 +300,7 @@ $(function(){
                             {
                                 breakpoint: 900,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 2,
                                     slidesToScroll: 1,
                                     
@@ -314,7 +309,7 @@ $(function(){
                             {
                                 breakpoint: 768,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 1, 
                                     slidesToScroll: 1
                                 }

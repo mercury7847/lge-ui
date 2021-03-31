@@ -65,15 +65,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
-                        '<div class="useable-service">' + 
-                            '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
-                            '{{#each (item, index) in serviceProduct}}' +
-                                '{{# if(index > 0) { #}}' +
-                                ', '+
-                                '{{# } #}}' +    
-                                '<span class="name">{{item.name}}</span>'+
-                            '{{/each}}' +
-                        '</div>' + 
                         '<ul class="opt-list">'+
                             '{{#each item in serviceProduct}}' +
                             '<li class="{{item.class}}">'+
@@ -1220,7 +1211,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var mapwidth, mapheight, mapmargin;
 
-            if(self.windowWidth < 1025){ console.log('pc'+ self.windowWidth);
+            if(self.windowWidth < 1025){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1229,7 +1220,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
-            } else{  console.log('mo'+ self.windowWidth);
+            } else{
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }

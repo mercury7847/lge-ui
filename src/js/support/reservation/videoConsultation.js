@@ -263,6 +263,9 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
+                $('html,body').animate({
+                    scrollTop: self.$subTopicBox.offset().top - $('.prod-selected-wrap').outerHeight()
+                });
             });
         },
         reqeustSolutions: function(url, param) {
@@ -297,6 +300,11 @@
                     self.$calendarTime.timeCalendar('update', data.timeList);
                     self.$calendarTime.find('.box-desc').hide();
                     self.$calendarTime.find('.box-table').show();
+                    if ($(window).data('breakpoint').isMobile) {
+                        $('html,body').animate({
+                            scrollTop: self.$calendarTime.parent().offset().top - $('.prod-selected-wrap').outerHeight()
+                        });
+                    }
                 } else {
                     if (data.resultMessage) {                            
                         lgkorUI.alert("", {

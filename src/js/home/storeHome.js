@@ -198,6 +198,8 @@ $(function(){
         
         // 추천 기획전
         var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
+        // console.log(exhibitionModelId);
+
         var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var exhibitionLocal = [
             {
@@ -220,12 +222,14 @@ $(function(){
             }
         ]
 
-        if(exhibitionModelIdArr.length == exhibitionLocal.length){
+        //if(exhibitionModelIdArr.length == exhibitionLocal.length){
             exhibitionLocal = vcui.array.map(exhibitionLocal, function(item, index){
                 item['modelId'] = exhibitionModelIdArr[index];
                 return item;
             });
-        }
+        //}
+
+        console.log(exhibitionLocal)
 
 
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
@@ -354,7 +358,7 @@ $(function(){
 
                 var nArr = vcui.array.map(exhibitionLocal, function(item, index){
                     var nObj = item;
-                    var codesArr = nObj['modelId'].split(',');
+                    var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
                     var list = vcui.array.filter(arr, function(item) {
                         return vcui.array.include(codesArr, item['modelId']);
                     });
