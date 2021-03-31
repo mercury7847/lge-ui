@@ -203,7 +203,8 @@
                 self.requestOwnData(false);
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
-                if(self.modelCode) {
+                self.serialNumber = lgkorUI.getParameterByName('serialNumber');
+                if(self.modelCode || self.serialNumber) {
                     self.registMyProductPopupClear();
                     self.$registMyProductMainPage.show();
                     self.$modelCheckHelpPage.hide();               
@@ -884,6 +885,12 @@
             self.$registMyProductMainPage.find('input').val("");
             if(self.modelCode) {
                 self.$registMyProductMainPage.find('input[name=sku]').val(self.modelCode);
+                self.modelCode = null;
+            }
+            if(self.serialNumber) {
+                //시리얼
+                self.$registMyProductMainPage.find('input[name=sn]').val(self.serialNumber);
+                self.serialNumber = null;
             }
             self.$registMyProductMainPage.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
             self.$registMyProductMainPage.find('.err-block').hide();
