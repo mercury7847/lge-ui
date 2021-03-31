@@ -766,6 +766,7 @@
             }
             & + .cont-wrap {
                 margin-top:80px;
+                padding:0;
                 @include mobile {
                     margin-top:60px;
                 }
@@ -886,6 +887,9 @@
         }
         .cont-wrap {
             .section {
+                @include mobile {
+                    padding:0;
+                }
                 .tit-wrap {
                     position:relative;
                     @include mobile {

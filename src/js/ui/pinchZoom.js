@@ -271,7 +271,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
 
 
         destroy:function destroy(){
-            // console.log('destroy');
             this.$container.off('touchstart.pinchzoom');
             this.$container.off('touchmove.pinchzoom');
             this.$container.off('touchend.pinchzoom');
@@ -294,8 +293,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
             self.lastDragPosition = false;
             self.hasInteraction = true;
             self._handleDrag(event);
-
-            //console.log('_handleDragStart');
         },
 
         /**
@@ -327,8 +324,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
             this.nthZoom = 0;
             this.lastZoomCenter = false;
             this.hasInteraction = true;
-
-            //console.log('handleZoomStart');
         },
 
         /**
@@ -355,8 +350,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
         _handleZoomEnd: function _handleZoomEnd() {
             this.triggerHandler(this.options.zoomEndEventName);
             this._end();
-
-            //console.log('handleZoomEnd');
         },
 
         /**
@@ -506,7 +499,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
                 });
               }
               this.triggerHandler(this.options.dragUpdateEventName);
-              //console.log(this.options.dragUpdateEventName);
             }
         },
 

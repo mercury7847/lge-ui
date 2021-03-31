@@ -62,8 +62,6 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
                 var imgsrc = item.dataset[(self.mode + "Src")];
                 //imgsrc += '?test=test2';
                 //var test = imgsrc.substring(imgsrc.lastIndexOf('/') + 1);
-                //console.log(test);
-                //console.log(self.mode + "Src",imgsrc,item.src);
                 if(imgsrc && imgsrc != item.dataset.currentImage) {
                     item.src = imgsrc;
                     item.dataset.currentImage = imgsrc;

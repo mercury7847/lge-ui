@@ -18,15 +18,6 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-    /*
-    console.log('i',i);
-    console.log('s',s);
-    console.log('o',o);
-    console.log('g',g);
-    console.log('r',r);
-    console.log('a',a);
-    console.log('m',m);
-    */
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function() {
@@ -1440,7 +1431,7 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + '원(대표요금제 기준)');
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 기준)') : '원(대표요금제 기준)'));
 
                 $paymentAmount.data('popupData',popupData);
             },

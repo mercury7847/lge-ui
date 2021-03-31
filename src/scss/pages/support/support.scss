@@ -511,19 +511,16 @@
         }
     }
     .status-icon {
-        display: inline-flex;
-        align-items: center;
+        display:inline-flex;
+        align-items:center;
         .status {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.71;
-            color: #000;
+            @include font-small;
+            font-weight:$font-weight-medium;
         }
         .text  {
-            font-size: 14px;
-            line-height: 1.71;
+            @include font-small;
             color: #666;
-            margin-left: 13px;
+            margin-left:9px;
         }
         &:before {
             content:'';
@@ -532,7 +529,7 @@
             height:12px;
             border-radius:50%;
             vertical-align:middle;
-            margin-right: 4px;
+            margin-right:5px;
         }
         &.gray:before {
             background-color: #ccc;
@@ -1512,7 +1509,7 @@
                 line-height:24px;
                 background:transparent;
                 &::placeholder{
-                    color:#aaa;
+                    color:#666;
                 }
             }
         }

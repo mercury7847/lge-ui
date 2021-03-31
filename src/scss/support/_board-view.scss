@@ -282,6 +282,19 @@
         }
         .star-rating-wrap {
             margin-top:24px;
+
+            .current_rating_score {
+                display: inline-block;
+                font-size:16px;
+                line-height:24px;
+                vertical-align: middle;
+                margin-left:4px;
+
+                @include mobile {
+                    font-size:14px;
+                    line-height:22px;
+                }
+            }
         }
         .input-wrap {
             margin-top:8px;

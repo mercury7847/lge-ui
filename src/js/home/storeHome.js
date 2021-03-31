@@ -171,7 +171,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '       </div>\n'+
     '   </div>\n'+
     '</li>';
-    
+
 $(function(){
 
     function getUriQuery(url, name){
@@ -267,8 +267,6 @@ $(function(){
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || [];
 
                     var obj = newProductRecommendLocal[index];
-
-                    console.log(item);
 
                     // item['reviewCount'] = 1000223;
 

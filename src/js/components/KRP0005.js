@@ -86,6 +86,11 @@
                     }
                 } else {
                     //
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    if(href) {
+                        location.href = href;
+                    }
                 }
             });
 
@@ -132,7 +137,7 @@
             self.$popup.removeClass('open');
             self.$popup.hide();
             //
-            if(self.ignoreOverflowForce) {
+            if(!self.ignoreOverflowForce) {
                 if(self.bodyOvewflow) {
                     $('html, body').css({
                         overflow:self.bodyOvewflow

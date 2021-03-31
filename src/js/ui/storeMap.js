@@ -70,7 +70,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '       </div>'+
                     '       <div class="btn-group">'+
                                 '{{#if consultFlag == "Y"}}'+
-                    '           <a href="/support/visit-store-reservation?orgCode={{shopID}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                    '           <a href="/support/visit-store-reservation?orgCode={{orgCode}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
                                 '{{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
@@ -471,6 +471,29 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
         resize: function resize(width, height){
             var self = this;
             self.map.setSize({width: width, height: height})
+        },
+
+        addMaker: function(lat, long){
+            var self = this;
+
+            self.start();
+
+            // new naver.maps.Marker({
+            //     position: new naver.maps.LatLng(lat, long),
+            //     map: self.map,
+            //     icon: {
+            //          url:'/lg5-common/images/CS/icon-location-my-mo-32.svg'                 
+            //     },
+            //     size:new naver.maps.Size(32,32),
+            //     origin:new naver.maps.Point(0,0),
+            //     anchor:new naver.maps.Point(32,32)
+            // });
+
+            
+            new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat, long),
+                map: self.map
+            })
         }
 
     });

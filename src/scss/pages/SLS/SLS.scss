@@ -1298,6 +1298,12 @@ br.pc {
 
         }
     }
+    .mob-only {
+        display:inline-block;
+        @include mobile {
+            display:block;
+        }
+    }
 }
 
 

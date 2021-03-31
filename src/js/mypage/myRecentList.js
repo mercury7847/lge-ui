@@ -1,5 +1,5 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}">' +
+    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}" data-typeFlag="{{typeFlag}}">' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
                 '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
@@ -14,15 +14,15 @@
                 '<p class="price">' +
                     '{{#if obsBtnFlag=="enable"}}' +
                     '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
-                    '{{#if price}}<span class="blind">구매가격</span>{{price}}원{{/if}}' +
+                    '{{#if price}}<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원{{/if}}' +
                     '{{/if}}' +
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
-            '{{#if !disabled && obsBtnFlag=="enable"}}' +
+            '{{#if !disabled}}' +
                 '<div class="col btn-col">' +
-                    '{{#if typeFlag=="A"||typeFlag=="P"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
-                    '{{#if typeFlag=="A"||typeFlag=="C"}}<button type="button" class="btn size border rentalcart"><span>렌탈 장바구니</span></button>{{/if}}' +
+                    '{{#if obsBtnFlag=="enable"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
+                    '<button type="button" class="btn size border"><span>자세히 보기</span></button>' +
                 '</div>' +
             '{{/if}}' +
         '</div>' +
@@ -68,21 +68,32 @@
                 self.$list.on('click','li div.btn-col button', function(e) {
                     var $li = $(this).parents('li');
                     if($(this).hasClass("buycart")) {
-                        //구매
-                        if(lgkorUI.stringToBool($li.attr('data-requireCare'))) {
-                            var obj = {
-                                title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
-                                ok: function (){
-                                    self.requestCart($li,"C");
-                                }
-                            };
-                            lgkorUI.alert(null, obj);
+                        var typeFlag = $li.attr('data-typeFlag').toUpperCase();
+                        if(typeFlag == "C") {
+                            //렌탈장바구니로
+                            self.requestCart($li,"C");
                         } else {
-                            self.requestCart($li,"P");
+                            //일반구매제품
+                            if(lgkorUI.stringToBool($li.attr('data-requireCare'))) {
+                                //케어십 필수 제품
+                                var obj = {
+                                    title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
+                                    ok: function (){
+                                        self.requestCart($li,"C");
+                                    }
+                                };
+                                lgkorUI.alert(null, obj);
+                            } else {
+                                self.requestCart($li,"P");
+                            }
                         }
                     } else {
-                        //렌탈
-                        self.requestCart($li,"C");
+                        //자세히보기
+                        var $a = $li.find('a:eq(0)');
+                        var href = $a.attr('href');
+                        if(href) {
+                            location.href = href;
+                        }
                     }
                 });
             },
