@@ -42,7 +42,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             lgkorUI.requestCartCount(self.$el.attr('data-cart-url'));
 
-            vcui.require(['ui/carousel', 'ui/smoothScroll'], function () {            
+            vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min'], function () {            
                 self._setting();
                 self._bindEvents();
                 self._resize();
@@ -128,8 +128,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
-
-            
+            self.$headerBottom = self.$el.find('.header-bottom');            
 
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
@@ -178,6 +177,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(this).toggleClass('on')
                 $(this).parent().find('.nav-category-container').toggle();
             });
+
 
             self._pcSetting();
             self._mobileSetting();
@@ -544,19 +544,49 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             replaceText = self.$hamburger.find('.blind');
             active = forceActive==undefined? self.$hamburger.hasClass('active') : forceActive;
 
+            var isMotion = false;
 
             if(active){
-                self.$hamburger.removeClass('active');
-                replaceText.text("메뉴 열기");
-                $('.ui_gnb_accordion').vcAccordion("collapseAll");
-                if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+
+                if(vcui.detect.isMobileDevice && isMotion){
+
+                    self.$headerBottom.transit({x:'105%'}, 300, 'easeInOutQuad',function(){
+                        self.$headerBottom.hide();
+                        self.$hamburger.removeClass('active');
+                        replaceText.text("메뉴 열기");
+                        $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
+                        if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+                    }); 
+
+                }else{
+
+                    self.$hamburger.removeClass('active');
+                    replaceText.text("메뉴 열기");
+                    $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
+                    if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+
+                }
 
 
             } else{
-                self.$hamburger.addClass('active');
-                replaceText.text("메뉴 닫기");
-                if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-                $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+
+                if(vcui.detect.isMobileDevice && isMotion){
+                    self.$hamburger.addClass('active');
+                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+                    replaceText.text("메뉴 닫기");
+
+                    self.$headerBottom.css({x:'105%'}).show().transit({x:0}, 500, 'easeInOutQuad');
+
+                    
+                }else{
+
+                    self.$hamburger.addClass('active');
+                    replaceText.text("메뉴 닫기");
+                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+
+                }             
 
             }
         },
