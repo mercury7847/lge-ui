@@ -2023,6 +2023,25 @@
 
         @include tablet {
             margin-top:50px;
+            .headline {
+                text-align: center;
+                .title {
+                    display: block;
+                }
+                .list-filter {
+                    display:block;
+                    margin-top:32px;
+                    margin-left:0;
+                    text-align: right;
+                }
+    
+                .btn-solution-link {
+                    display: inline-block;
+                    position: static;
+                    margin-bottom:40px;
+                    padding:11px 20px 10px;
+                }
+            }
             .popular-list-wrap {
                 margin-left:0;
                 margin-right:0;
@@ -2040,17 +2059,11 @@
 
         @include mobile {
             .headline {
-                text-align: center;
+                
                 .title {
-                    display: block;
                     font-size:24px;
                 }
                 .list-filter {
-                    display:block;
-                    margin-top:32px;
-                    margin-left:0;
-                    text-align: right;
-    
                     span {
                         font-size:13px;
                     }
@@ -2067,10 +2080,6 @@
                 }
     
                 .btn-solution-link {
-                    display: inline-block;
-                    position: static;
-                    margin-bottom:40px;
-                    padding:11px 20px 10px;
                     font-size:13px;
                     border-radius:30px;
                 }

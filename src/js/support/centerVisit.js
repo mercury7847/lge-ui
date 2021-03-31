@@ -57,7 +57,7 @@
                 '{{# } #}}' +
                 '<label for="engineer{{index}}">' +
                     '<div class="img">' +
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                        '<img src="{{item.image}}" alt="{{item.engineerName}} 엔지니어 사진" aria-hidden="true">' +
                     '</div>' +
                     '<p class="tit">{{item.engineerName}}</p>' +
                     '<p class="desc">{{item.centerName}}</p>' +
@@ -107,7 +107,7 @@
             self.$citySelect2 = $('#address');
             self.$address1 = $('#keyword');
             self.$keywordWrap = $('.ui_search');
-            self.searchCenterName = $('#tab3').find('.btn-search');
+            self.searchCenterName = $('#tab-3').find('.btn-search');
 
             // 희망날짜
             self.$dateWrap = self.$stepDate.find('.date-wrap');
@@ -1189,7 +1189,7 @@
 
             $engineerBox.find('.engineer-img img').attr({
                 'src': data.image,
-                'alt': data.engineerName
+                'alt': data.engineerName + ' 엔지니어 사진'
             });                             
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);

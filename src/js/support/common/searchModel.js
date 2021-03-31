@@ -726,10 +726,14 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             var defaults = $.extend(true, {}, self.defaults);
             var modelStepFirst = self.$stepBox.eq(0).attr('id') == 'stepModel' ? true : false;
 
+            self.hasModel = false;
             self.page = defaults.page;
             self.totalCount = defaults.totalCount;
-            self.hasModel = false;
-            self.model = defaults.model;
+            self.model = $.extend(true, defaults.model, {
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val(),
+                salesModelCode: self.$el.find('#salesModelCode').val()
+            });
             self.param = $.extend(true, defaults.model, {
                 keyword: ''
             });
