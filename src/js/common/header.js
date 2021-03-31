@@ -567,7 +567,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 }
 
-                self.$dimmed.hide();
+                //self.$dimmed.hide();
             } else{
 
                 if(vcui.detect.isMobileDevice && isMotion){
@@ -588,8 +588,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 }             
 
-                self.$dimmed.show();
-
+                //self.$dimmed.show();
             }
         },
 
