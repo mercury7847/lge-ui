@@ -132,7 +132,10 @@
     &.scroll {
         @include mobile {
             .floating-menu.more-plus {
-                bottom:92px;
+                bottom:90px;
+            }
+            .floating-list {
+                bottom:80px + 24px + 56px;
             }
         }
     }
@@ -206,6 +209,7 @@
         @include mobile {
             right:20px;
             bottom:24px;
+            transition:all .1s;
             // bottom:92px;
         }
     }
@@ -251,7 +255,8 @@
         bottom:104px + 32px + 56px;
         @include mobile {
             right:20px;
-            bottom:80px + 24px + 56px;
+            bottom:94px;
+            // bottom:80px + 24px + 56px;
         }
         display: flex;
         flex-direction: column-reverse;
