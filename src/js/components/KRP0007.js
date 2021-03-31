@@ -148,6 +148,11 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '{{#if arFlag=="Y"}}' +
+            '<div class="product-ar">' +
+			    '<a href="#" data-ar-model-id="{{modelId}}"><span>AR 체험</span></a>' +
+			'</div>' +
+            '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
                 '<a href="#" data-id="{{modelId}}"><span>비교하기</span></a>' +
@@ -400,6 +405,15 @@
                 self.$productList.on('change', '.product-option input[type=radio]', function(e){
                     self.requestSibling(this);
                 })
+
+                //AR체험하기 클릭
+                self.$productList.on('click','div.product-ar a', function (e){
+                    e.preventDefault();
+                    var modelId = this.dataset.arModelId;
+                    if(!lgkorUI.openAR(modelId)) {
+                        $('#arPlayPop').vcModal();
+                    }
+                });
 
                 //모바일 카테고리 풀다운메뉴
                 self.$cateFulldown.on('click', function(e){

@@ -545,6 +545,15 @@
                 self.$awardPopup.on('click','li a.award-item', function(e) {
                     self.$awardPopup.find('.btn-group button[data-link-url]').trigger('click');
                 });
+
+                //AR체험하기 클릭
+                self.$component.on('click','div.pdp-ar-area a.btn-ar', function (e){
+                    e.preventDefault();
+                    var modelId = this.dataset.arModelId;
+                    if(!lgkorUI.openAR(modelId)) {
+                        $('#arPlayPop').vcModal();
+                    }
+                });
             },
 
             bindSideEvents: function() {
