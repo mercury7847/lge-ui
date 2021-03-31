@@ -471,6 +471,29 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
         resize: function resize(width, height){
             var self = this;
             self.map.setSize({width: width, height: height})
+        },
+
+        addMaker: function(lat, long){
+            var self = this;
+
+            self.start();
+
+            // new naver.maps.Marker({
+            //     position: new naver.maps.LatLng(lat, long),
+            //     map: self.map,
+            //     icon: {
+            //          url:'/lg5-common/images/CS/icon-location-my-mo-32.svg'                 
+            //     },
+            //     size:new naver.maps.Size(32,32),
+            //     origin:new naver.maps.Point(0,0),
+            //     anchor:new naver.maps.Point(32,32)
+            // });
+
+            
+            new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat, long),
+                map: self.map
+            })
         }
 
     });
