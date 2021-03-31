@@ -243,7 +243,11 @@ function moveDetail(el, detailUrl, windowHeight) {
                                 }
                             } else { // mobile device
                                 if (!self.isLogin) { // 비로그인
-                                    self._setCurrentSearch(true);
+                                    if (!cookie.getCookie('geoAgreeCancel')) {
+                                        self._setCurrentSearch(true);
+                                    } else {
+                                        self._loadStoreData();
+                                    }
                                 } else { // 로그인
                                     self._setUserAdressSearch(true);
                                 }
@@ -343,9 +347,19 @@ function moveDetail(el, detailUrl, windowHeight) {
                 
                 self.$map.selectInfoWindow(id);
 
-                if ($(window).data('breakpoint').isMobile) {
+
+                if ($(window).innerWidth() < 1025) {
                     self._showMap(true);
-                    $('html, body').animate({scrollTop:self.$container.offset().top})
+
+                    if (!$(window).data('breakpoint').isMobile) {
+                        $('html, body').animate({scrollTop:self.$container.offset().top});
+                    } else {
+                        if (!self.$container.hasClass('result-map')) {
+                            $('html, body').animate({scrollTop:self.$container.offset().top});
+                        } else {
+                            $('html, body').animate({scrollTop:0})
+                        }
+                    }
                 }
             })
             .on('click', 'li > .ui_marker_selector .btn-link', function(e){
@@ -844,6 +858,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self.schReaultTmplID = "currentSearch";
                         
                         cookie.setCookie('geoAgree','Y', 1);
+                        cookie.deleteAllCookie('geoAgreeCancel');
 
                         self._loadStoreData();    
                         !init && self._showResultLayer();
@@ -928,7 +943,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                     searchCurrentSearch();
                 },
                 cancel: function() {
-                    lgkorUI.cookie.setCookie("geoAgreeCancel", 'Y', 1);
+                    if(init) {
+                        cookie.setCookie("geoAgreeCancel", 'Y', 1);
+                        cookie.deleteAllCookie('geoAgree');
+                    }
 
                     lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                         title: '현재 위치 정보',
@@ -938,9 +956,8 @@ function moveDetail(el, detailUrl, windowHeight) {
 
                             self.latitude = self.defaultLatitude;
                             self.longitude = self.defaultLongitude;
-
-                            self._loadStoreData();    
-                            !init && self._showResultLayer();
+                                
+                            init && self._loadStoreData();
                         }
                     });
                 }};
@@ -948,7 +965,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
                 var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
 
-	            if (!cookie.getCookie('geoAgree') || !cookie.getCookie('geoAgreeCancel')) {
+	            if (!cookie.getCookie('geoAgree')) {
 	                lgkorUI.confirm(desc, obj);
 	            } else {
 	                searchCurrentSearch();
@@ -1192,12 +1209,12 @@ function moveDetail(el, detailUrl, windowHeight) {
             if( window.innerWidth < 768) {
                 $('.page-header').hide();
                 $('.waiting-state').hide()
-                $('html,body').scrollTop(self.$leftContainer.offset().top)
+                $('html,body').scrollTop(0);
+            } else {
+                $('html,body').stop().animate({
+                    scrollTop : $('.map-container').offset().top
+                }, 400)
             }
-
-            $('html,body').stop().animate({
-                scrollTop : $('.map-container').offset().top
-            }, 400)
         },
 
         // 리사이즈 시 .store-map-con 위치 다시 계산
@@ -1272,7 +1289,10 @@ function moveDetail(el, detailUrl, windowHeight) {
 
          // PC버전으로 돌아가면 지도 영역 스타일 초기화
          $(window).resize(function() {
-            if($(window).width() > 1024) {
+            if ($(window).width() > 767) {
+                $('.waiting-state').removeAttr('style');
+            }
+            if ($(window).width() > 1024) {
                 $('.store-map-con').removeAttr('style');
                 var toggle = searchShop.$leftContainer.find('.btn-view');
                 if(toggle.hasClass('list')){

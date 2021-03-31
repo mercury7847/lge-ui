@@ -599,7 +599,6 @@
                         click: function(swiper, event) {
 
                             this.update(); //간혹 swiper 내부 세팅값이 반영안되는 케이스가 존재함
-                            console.log(this.activeIndex);
 
                             var clickedEl = this.clickedSlide;
                             if (clickedEl.classList.contains('swiper-slide-active')) {
@@ -704,7 +703,6 @@
 
 
         $(document).on("click", ".lg-appliances input[type='checkbox']", function() {
-            console.log("ddd");
             if (this.checked) {
                 if (this.value == "refrigerator_convertible") {
                     $('.rf-con').show();
