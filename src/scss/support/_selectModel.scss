@@ -418,7 +418,6 @@
                 padding:24px 12px 0; 
                 .box {
                     position:relative;
-                    overflow:hidden;
                     border-radius:8px;
                     box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
 
@@ -440,6 +439,8 @@
                         > a {
                             display:block;
                             position:relative;
+                            overflow:hidden;
+                            border-radius:8px;
                             padding:40px 16px 64px;
                             z-index:1;
                             &:after {
