@@ -250,30 +250,34 @@
         var prevTime = new Date().getTime();
 
         // 휠 이벤트 처리
-        document.addEventListener('wheel', function(e){
 
-            var open = $('#layerSearch').hasClass('open');           
-            if(!open){    
-                var curTime = new Date().getTime();
-                if(typeof prevTime !== 'undefined'){
-                    var timeDiff = curTime-prevTime;
-                    if(timeDiff > 35){
-                        if(currentStep == stepLens){
-                            var st = $contentWrap.scrollTop();
-                            if(st<=0 && e.deltaY<0){
-                                wheelScene(-1);
-                            }
-                        }else{
-                            if(e.deltaY>0 || e.deltaY<0){
-                                wheelScene(e.deltaY);
-                            }
-                        }
-                    }                    
-                }            
-                prevTime = curTime; 
-            }               
+        if(!vcui.detect.isMobileDevice){
 
-        });
+            document.addEventListener('wheel', function(e){
+
+                var open = $('#layerSearch').hasClass('open');           
+                if(!open){    
+                    var curTime = new Date().getTime();
+                    if(typeof prevTime !== 'undefined'){
+                        var timeDiff = curTime-prevTime;
+                        if(timeDiff > 35){
+                            if(currentStep == stepLens){
+                                var st = $contentWrap.scrollTop();
+                                if(st<=0 && e.deltaY<0){
+                                    wheelScene(-1);
+                                }
+                            }else{
+                                if(e.deltaY>0 || e.deltaY<0){
+                                    wheelScene(e.deltaY);
+                                }
+                            }
+                        }                    
+                    }            
+                    prevTime = curTime; 
+                }               
+
+            });
+        }
 
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
