@@ -595,7 +595,7 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if (item.years1TotAmt && item.years1TotAmt != "") {
+                    if (item.years1TotAmt && item.years1TotAmt != "" && item.obsBtnRule=="enable") {
                         return true;
                     } else {
                         return false;
