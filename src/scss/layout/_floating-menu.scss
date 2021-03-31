@@ -129,6 +129,13 @@
             display: block;
         }
     }
+    &.scroll {
+        @include mobile {
+            .floating-menu.more-plus {
+                bottom:92px;
+            }
+        }
+    }
 }
 
 .floating-menu {
@@ -198,7 +205,8 @@
         bottom:104px + 16px;
         @include mobile {
             right:20px;
-            bottom:92px;
+            bottom:24px;
+            // bottom:92px;
         }
     }
     &.btn3 {
