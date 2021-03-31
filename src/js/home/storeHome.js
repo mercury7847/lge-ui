@@ -207,7 +207,7 @@ $(function(){
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
                 "modelUrlPath" : "#1",
-                "textClass":"fc-black"
+                "textClass":"fc-black"  
             },
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
@@ -216,7 +216,7 @@ $(function(){
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
                 "modelUrlPath" : "#2",
-                "textClass" : "fc-white"
+                "textClass" : "fc-black"
             }
         ]
 
