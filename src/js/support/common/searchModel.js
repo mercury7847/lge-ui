@@ -360,27 +360,10 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     data = $this.data(),
                     opt = self.options;
 
-                // if (self.$el.hasClass('service-engineer') && data.subCategory == 'CT50019275') {
-                //     lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 <br>필요 함에 따라 고객 상담실 1544-7777로 전화주시면 <br>신속한 상담에 도움드리고 있습니다. <br><br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 <br>아래 ’예약’ 버튼을 클릭하시어 연락처 등을 <br>남겨 주시기 바랍니다. <br>다만, 접수된 순으로 처리하고 있어 다소 지연되는 점<br>양해 부탁드립니다.',{
-                //         typeClass:'type2',
-                //         title:'',
-                //         okBtnName: '예약',
-                //         cancelBtnName: '이전',
-                //         ok: function() {
-                //             location.href = '/support/request-call-reservation-dryer';
-                //         },
-                //         cancel: function() {
-                //             self.reset();
-                //         }
-                //     });
-                //     return;
-                // }
-
                 if (self.$el.hasClass('service-engineer') && (data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
                     lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
                         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
                     });
-
                     return;
                 }
 
@@ -467,27 +450,10 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var $this = $(this),
                     $category = self.$modelBox.find('#categorySelect');
 
-                // if (self.$el.hasClass('service-engineer') && $this.val() == 'CT50019275') {
-                //     lgkorUI.confirm('의류 건조기 제품은 불편 사항 및 제품 환경 확인 등이 <br>필요 함에 따라 고객 상담실 1544-7777로 전화주시면 <br>신속한 상담에 도움드리고 있습니다. <br><br>업무 시간 외, 공휴일, 상담사 통화가 어려운 경우 <br>아래 ’예약’ 버튼을 클릭하시어 연락처 등을 <br>남겨 주시기 바랍니다. <br>다만, 접수된 순으로 처리하고 있어 다소 지연되는 점<br>양해 부탁드립니다.',{
-                //         typeClass:'type2',
-                //         title:'',
-                //         okBtnName: '예약',
-                //         cancelBtnName: '이전',
-                //         ok: function() {
-                //             location.href = '/support/request-call-reservation-dryer';
-                //         },
-                //         cancel: function() {
-                //             self.reset();
-                //         }
-                //     });
-                //     return;
-                // }
-
                 if (self.$el.hasClass('service-engineer') && ($this.val() == 'CT50019259' || $this.val() == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
                     lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
                         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
                     });
-
                     return;
                 }
 
@@ -760,10 +726,14 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             var defaults = $.extend(true, {}, self.defaults);
             var modelStepFirst = self.$stepBox.eq(0).attr('id') == 'stepModel' ? true : false;
 
+            self.hasModel = false;
             self.page = defaults.page;
             self.totalCount = defaults.totalCount;
-            self.hasModel = false;
-            self.model = defaults.model;
+            self.model = $.extend(true, defaults.model, {
+                pageCode: self.$el.find('#pageCode').val(),
+                serviceType: self.$el.find('#serviceType').val(),
+                salesModelCode: self.$el.find('#salesModelCode').val()
+            });
             self.param = $.extend(true, defaults.model, {
                 keyword: ''
             });

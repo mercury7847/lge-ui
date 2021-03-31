@@ -859,11 +859,29 @@
                         padding:0;
                     }
                     &.btn-col {
-                        width:15.8%;
-                        text-align:right;
+                        padding-right: 0;
+                        text-align:center;
                         white-space:nowrap;
-                        .btn {
-                            display: block;
+                        //.btn {
+                        //    display: block;
+                        //}
+                        @media screen and (min-width: $tablet-l-width + 1) {
+                            width:282px;
+                            .btn {
+                                display: inline-block;
+                                &:not(:last-child) {
+                                    margin-right: 8px;
+                                }
+                            }
+                        }
+                        @include tablet {
+                            width:15.8%;
+                            .btn {
+                                display: block;
+                                &:not(:last-child) {
+                                    margin-bottom: 6px;
+                                }
+                            }
                         }
                         @include mobile {
                             width:100%;
@@ -872,14 +890,6 @@
                             .btn {
                                 &:not(:first-child) {
                                     margin-top: 4px;
-                                }
-                            }
-                        }
-                        @include pc {
-                            .btn {
-                                float: right;
-                                &:not(:first-child) {
-                                    margin-top: 6px;
                                 }
                             }
                         }
@@ -909,7 +919,12 @@
             }
             &.disabled {
                 .col-table {
-                    padding-right:15.8%;
+                    @include pc {
+                        padding-right:15.8%;
+                        @media screen and (min-width: $tablet-l-width + 1) {
+                            padding-right:282px;
+                        }
+                    }
                 }
                 .product-info {
                     .thumb {

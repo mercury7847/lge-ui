@@ -1,5 +1,5 @@
 if (!navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/)) {
-    document.location.href = "/lg-object-collection/simulator";
+    document.location.href = "/lg-objet-collection/simulator";
 }
 
 

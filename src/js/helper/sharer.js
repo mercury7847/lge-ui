@@ -107,7 +107,6 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
             'copy_url': {
                 support: detect.PC | detect.MOBILE,
                 run: function(data) {
-                    // console.log(data);
                     /* 
                     core.dom.copyToClipboard(data.url, {
                         onSuccess: function () {

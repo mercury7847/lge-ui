@@ -514,8 +514,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             });
             self.maxHeight = parseInt(self.$listWrapper.css('max-height'), 10);
 
-            // console.log(self.$listWrapper.css('max-height'));
-
             self.$scrollbar = $(self.tmpl('scrollbar'));
             self.$list.append(self.$scrollbar);
             if (!isTouch) {

@@ -202,7 +202,9 @@
 		height: 100vh;
 		padding:8% 0 5%;
 		@include mobile {
-			padding-top:18%;
+			height:auto;
+			// padding-top:18%;
+			padding-top:3%;
 		}
 		.video-asset {
 			max-width: 1284px;

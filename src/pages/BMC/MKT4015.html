@@ -513,8 +513,6 @@
 
                 }).on('success', function(data){
                     // 성공이 이벤트
-                    console.log(validation.getValues());
-
                 }).on('nextfocus', function(e,$target){
 
                     if($target.attr('name') == 'addressInfo'){
@@ -628,8 +626,6 @@
                 var $serialPopupBtn = $('#serialPopupBtn');
                 var $serialPopup = $('#serialPopup');
 
-                console.log('asdfasdfsafd');
-
                 $serialPopupBtn.on('click', function(e){
                     e.preventDefault();
                     
@@ -642,7 +638,6 @@
                             var data = result.data;
                             modelData = data;
 
-                            console.log(modelData);
                             var arr = data instanceof Array ? data : [];
                             modelListData = vcui.array.reduce(arr, function (prev, cur) {
                                 return prev.concat(cur['modelList']);

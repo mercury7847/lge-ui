@@ -1214,7 +1214,7 @@
                 letter-spacing: -0.1px;
                 color: #fefefe;
                 @include mobile {
-                    margin-top: 21vw;
+                    margin-top: 0;
                 }
             }
             .title {
@@ -1224,6 +1224,10 @@
                 line-height: 1.3;
                 letter-spacing: -0.34px;
                 color: #fefefe;
+                @include mobile {
+                    margin-top: 12px;
+                    font-size: 24px;
+                }
             }
             &:hover {
                 .mtbi-bx-image {
@@ -1253,6 +1257,9 @@
                     margin-top: 24px;
                     border-color: #ffffff !important;
                     color: #ffffff;
+                }
+                @include mobile {
+                    padding: 33px 20px 0px;
                 }
             }
         }

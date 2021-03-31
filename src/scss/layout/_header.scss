@@ -257,9 +257,9 @@
 
 .utility {
     float: right;
-    padding-right: 224px;
+    padding-right: 247px;
     @media screen and (min-width: 1760px) {
-        padding-right: 240px;
+        padding-right: 263px;
     }
     .shortcut {
         font-size: 0;
@@ -1568,6 +1568,7 @@ html {
             .app-ar {
                 position:relative;
                 transition:transform .5s ease-out;
+                box-shadow:none;
             }
             .app-ar-txt {
                 display:none;
@@ -1579,13 +1580,13 @@ html {
                     display:inline-block;
                     width:16px;
                     height:16px;
-                    margin-left:6px;
+                    margin-left:2px;
                     background:url('/lg5-common/images/icons/icon-float-arr-16.svg') no-repeat 0 0;
                     vertical-align:-2px;
                 }
                 i{
                     display:inline-block;
-                    margin-right:10px;
+                    margin-right:6px;
                     width:18px;
                     height:19px;
                     background:url('/lg5-common/images/MAP/ico_ar.png') no-repeat left top;
@@ -1619,7 +1620,7 @@ html {
                     padding: 0;
                 }
                 &.active {
-                    width:309px !important;
+                    width:260px !important;
                     span {
                         display:none;
                     }

@@ -86,6 +86,11 @@
                     }
                 } else {
                     //
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    if(href) {
+                        location.href = href;
+                    }
                 }
             });
 
