@@ -49,6 +49,8 @@
 
     var contractUserPhone;
 
+    var isBeforeUnload = true;
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
             setting();
@@ -471,6 +473,10 @@
             step3Block.find('input[name=selfClearingAgree]').prop('checked', chk);
 
             if(chk) $('#popup-selfClearing').vcModal('close');
+        });
+
+        $(window).on('beforeunload', function(e){
+            if(isBeforeUnload) return '변경사항이 저장되지 않을 수 있습니다.'
         });
     }
 
@@ -1262,6 +1268,8 @@
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
+                isBeforeUnload = false;
+
                 var endtitle = "";
                 var endesc = "";
                 var endbntname = "";
@@ -1277,7 +1285,7 @@
 
                 if(endtitle != ""){
                     lgkorUI.hideLoading();
-                    
+
                     lgkorUI.alert(endesc, {
                         title: endtitle,
                         okBtnName: endbntname,
@@ -1298,7 +1306,7 @@
         }, ajaxMethod);
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function(){
         init();
-    });
+    })
 })();
