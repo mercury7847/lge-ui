@@ -222,5 +222,55 @@
         $(window).on('load', function(){
             $('.view-content img').rwdImageMaps();
         })
+
+
+
+        var $contSticky = $('.fn-scroll-notice');
+            var $contTab = $contSticky.find('.tabs');
+            var scrollFlag = true;
+            var sectionArr = ["#sect_info", "#sect_install", "#sect_deliver"]
+
+            function scrollTarget(targetId){
+                scrollFlag = false;
+
+                if( $(targetId).length ) {
+                    $('html, body').stop().animate({
+                        scrollTop : $(targetId).offset().top - $contTab.outerHeight() + 1
+                    }, function(){
+                        scrollFlag = true;
+                    })
+                }
+            }
+
+            $contTab.find('a').on('click', function(e){
+                var $this = $(this);
+                var $li = $this.closest('li');
+                var curIndex = $li.index();
+
+                $li.addClass('on').siblings().removeClass('on');
+                scrollTarget(sectionArr[curIndex]);
+                e.preventDefault();
+            });
+
+
+            if( $contSticky.length ) {
+                $(window).on('scroll', function(){
+                    var _top = $(this).scrollTop();
+        
+                    if( _top >= $contSticky.offset().top ) {
+                        $contSticky.addClass('fixed');
+                    } else {
+                        $contSticky.removeClass('fixed');
+                    }
+
+                    sectionArr.forEach(function(v, i){
+                        if( _top >= $(v).offset().top - $contTab.outerHeight() && _top < $(v).offset().top + $(v).outerHeight() - $contTab.outerHeight()) {
+                            if( scrollFlag ) {
+                                $contTab.find('li').eq(i).addClass('on').siblings().removeClass('on');
+                            }
+                        }
+                    })
+                });
+            }
     });
 })();
