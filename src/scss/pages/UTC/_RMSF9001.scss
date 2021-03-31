@@ -300,3 +300,87 @@
         }
     }
 }
+.accord-step {
+    ul {
+        font-size:0;
+        li {
+            display:inline-block;
+            position:relative;
+            margin-left:24px;
+            color:#aaa;
+            font-size:28px;
+            font-weight:700;
+            line-height:38px;
+            @include mobile {
+                margin-left:10px;
+                font-size:18px;
+                letter-spacing:-1px;
+                line-height:24px;
+                .title {
+                    line-height:24px !important;
+                }
+            }
+            &:first-child {
+                margin-left:0;
+            }
+            &.on {
+                color:#000;
+                .rd {
+                    background-color:#000;
+                    color:#fff;
+                }
+            }
+            .title {
+                display:inline-block;
+            }
+            .rd {
+                display:inline-block;
+                width:24px;
+                height:24px;
+                margin:5px 6px 0 0;
+                padding:4px 0 6px;
+                border-radius:50%;
+                background-color:#ddd;
+                color:#fff;
+                font-size:14px;
+                line-height:100%;
+                text-align:center;
+                vertical-align:top;
+                @include mobile {
+                    width:16px;
+                    height:16px;
+                    margin:4px 4px 0 0;
+                    padding:3px 0 5px;
+                    font-size:10px;
+                }
+            }
+        }
+    }
+}
+.step-block {
+    .btn-move {
+        margin-top:24px;
+        text-align:center;
+        @include mobile {
+            margin-top:60px;
+        }
+        .btn {
+            padding-right:32px;
+            &:after {
+                content:' ';
+                position:absolute;
+                top:8px;
+                right:12px;
+                width:16px;
+                height:16px;
+                background:url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
+            }
+            &:hover,
+            &:focus {
+                border-color:#000 !important;
+                background:transparent;
+                color:#000;
+            }
+        }
+    }
+}
