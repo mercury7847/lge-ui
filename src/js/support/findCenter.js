@@ -65,15 +65,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
-                        '<div class="useable-service">' + 
-                            '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
-                            '{{#each (item, index) in serviceProduct}}' +
-                                '{{# if(index > 0) { #}}' +
-                                ', '+
-                                '{{# } #}}' +    
-                                '<span class="name">{{item.name}}</span>'+
-                            '{{/each}}' +
-                        '</div>' + 
                         '<ul class="opt-list">'+
                             '{{#each item in serviceProduct}}' +
                             '<li class="{{item.class}}">'+
@@ -287,7 +278,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
                 self.$citySelect2 = $('#select6');
                 self.$address1 = $('#address1');
-                self.searchCenterName = $('#tab3').find('.btn-search');
+                self.$searchCenterName = $('#tab3').find('.btn-search');
 
                 self.$zipCode = $('#zipCode');
                 self.$address2 = $('#address2');
@@ -453,7 +444,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$address1.on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.searchCenterName.trigger('click');
+                    self.$searchCenterName.trigger('click');
                 }
             });
 
@@ -472,7 +463,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
 
-            self.searchCenterName.on('click', function() {
+            self.$searchCenterName.on('click', function() {
                 // 센터명 검색
                 self._setSearch();
             });
@@ -1010,9 +1001,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.schReaultTmplID = "roadSearch";
                 self.searchResultMode = true;
 
-                // $(window).off('keyup.searchShop');
                 self._loadStoreData();
-
                 self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
@@ -1222,7 +1211,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var mapwidth, mapheight, mapmargin;
 
-            if(self.windowWidth < 1025){ console.log('pc'+ self.windowWidth);
+            if(self.windowWidth < 1025){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1231,7 +1220,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
-            } else{  console.log('mo'+ self.windowWidth);
+            } else{
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }
