@@ -32,13 +32,12 @@
 
     var noData = '<div class="no-data"><p>기본배송지를 등록해주세요.</p></div>';
 
-    var txtMasking;
     var addressListData;
     var addressInfoValidation;
     var addressFinder;
 
     function init(){
-        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'helper/textMasking', 'caresolution/addressManagement.min'], function () {
+        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'caresolution/addressManagement.min'], function () {
             setting();
             bindEvents();
     
@@ -48,10 +47,6 @@
 
     function setting(){
         DELIVERY_ADDRESS_LIST = $('.contents.mypage').data('addressList');
-
-        
-
-        txtMasking = new vcui.helper.TextMasking();
 
         var register = {
             addressNickName:{
@@ -250,9 +245,9 @@
                 if(addressListData.length){                    
                     for(var idx in addressListData){
                         addressListData[idx]["dataID"] = idx;
-                        addressListData[idx]["receiverUserMasking"] = txtMasking.name(addressListData[idx].receiverUser);
-                        addressListData[idx]["addressMasking"] = txtMasking.substr(addressListData[idx].userAddress + addressListData[idx].detailAddress, 20);
-                        addressListData[idx]["phoneNumberMasking"] = txtMasking.phone(addressListData[idx].phoneNumber);
+                        addressListData[idx]["receiverUserMasking"] = addressListData[idx].receiverUser;
+                        addressListData[idx]["addressMasking"] = addressListData[idx].userAddress + addressListData[idx].detailAddress;
+                        addressListData[idx]["phoneNumberMasking"] = addressListData[idx].phoneNumber;
                         if(!addressListData[idx].addressNickName) addressListData[idx].addressNickName = "집";
                         $('.addressListWrap').append(vcui.template(addressListTemplate, addressListData[idx]));
 
