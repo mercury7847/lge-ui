@@ -7,6 +7,7 @@ br.m {
 }
 // visual title
 .visual-tit-wrap {
+    display: none;
     position:relative;
     height:480px;
     background:url('/lg5-common/images/SLC/bg-visual-tit02.jpg') center no-repeat;
@@ -102,10 +103,12 @@ br.m {
         padding-top:0;
     }
     &.type2 {
-        padding-top:80px;
+        //padding-top:80px;
+        padding-top: 16px; // 히어로배너 display:none 되면서 추가
         @include mobile {
             padding-top:0;
             .cont-wrap .csn-section:first-child {
+                padding-top: 4px;
                 border-top:none;
             }
         }
@@ -274,7 +277,12 @@ br.m {
     // 케어솔루션이란?
     .csn-intro {
         position:relative;
+        display: flex;
+        @include mobile {
+            flex-direction: column;
+        }
         .img {
+            flex: none;
             display:block;
             width:calc(60% - 80px);
             border-radius:8px;
@@ -291,11 +299,13 @@ br.m {
             }
         }
         > dl {
-            position:absolute;
-            right:0;
-            top:50%;
-            width:40%;
-            transform:translateY(-50%);
+            align-self: center;
+            padding-left: 80px;
+            //position:absolute;
+            //right:0;
+            //top:50%;
+            //width:40%;
+            //transform:translateY(-50%);
             > dt {
                 font-weight:700;
                 @include font($font-large-5,56px);
@@ -316,12 +326,13 @@ br.m {
             }
             @include mobile {
                 position:relative;
-                right:auto;
-                top:auto;
+                //right:auto;
+                //top:auto;
                 width:100%;
                 max-width:100%;
                 margin-top:32px;
-                transform:translate(0);
+                padding-left: 0;
+                //transform:translate(0);
                 text-align:center;
                 > dt {
                     @include font(27px,38px);

@@ -802,8 +802,10 @@
             init : function(){
                 var self = this;
                 var $popup = $(self.el.popup);
+                
 
 
+                
                 if($popup.length ) {
                     $popup.each(function(v, i){
                         var $this = $(this);
@@ -813,7 +815,7 @@
                             $this.addClass('hidden');
                         }
                     })
-                    $popup.not('.hidden').addClass('active');
+                    $popup.not('.hidden').addClass('active').attr('tabindex', '0');
 
                     if( $popup.filter('.active').length ) {
                         $('html').css('overflow', 'hidden');
@@ -823,12 +825,16 @@
                         }
                         $popup.filter('.active').stop().fadeIn();
 
+                        $popup.filter('.active').first().focus();
+
                         if( !vcui.detect.isMobileDevice) {
                             $popup.filter('.active').not('.mCustomScrollbar').find('.pop-conts').mCustomScrollbar();
                             $popup.filter('.active').not('.mCustomScrollbar').find('.video-figure').mCustomScrollbar();
                         }
                     }
                 }
+
+
 
                 $popup.find(self.el.close).on('click', function(e){
                     var $this =$(this);
@@ -860,9 +866,31 @@
                     e.preventDefault();
                 });
 
+                var $elFocus = $('.ui_modal_wrap.init-type').find('a, button, input, textarea').filter(':visible');
+
                 $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
                     e.preventDefault();
                     e.stopPropagation();
+                })
+
+                $elFocus.first().css('color', 'red')
+                $elFocus.last().css('color', 'blue')
+
+                $popup.filter('.active').first().on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9) {
+                        if( $(e.target).is('.popup-init') ) {
+                            e.preventDefault();
+                            $elFocus.last().focus();
+                        }
+                    }
+                })
+
+                $elFocus.last().on('keydown', function(e){
+
+                    if( !e.shiftKey && e.keyCode == 9) {
+                        e.preventDefault();
+                        $elFocus.first().focus();
+                    }
                 })
             }
         },
