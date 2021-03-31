@@ -544,6 +544,10 @@ br.pc {
         }
         .slide-content {
             padding: 0 4px 48px;
+            .slide-track {
+                display:flex;
+                flex-wrap:wrap;
+            }
         }
         .inner {
             @include clearfix;
@@ -575,6 +579,7 @@ br.pc {
                 border-radius:8px;
                 box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
                 @media screen and (max-width:1400px) {
+                    height:100%;
                     padding:12px 20px 32px;
                 }
                 @include mobile {
