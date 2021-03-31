@@ -805,7 +805,7 @@
                     self.$benefitInfoPopup.vcModal();
                 });
 
-                //인포 옵션 변경 (링크로 바뀜) jsw
+                //인포 옵션 변경 (링크로 바뀜)
                 self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
                     var siblingCode = this.dataset.siblingCode;
                     var siblingGroupCode = this.dataset.siblingGroupCode;

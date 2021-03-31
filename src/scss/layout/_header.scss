@@ -67,6 +67,20 @@
         max-width: 100%;
         padding: 0 16px;
     }
+    .dimmed {
+        display: none;
+        position: fixed;
+        top: 126px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+        background-color: rgba(0,0,0,.56);
+        content: '';
+        @include mobile {
+            top: 0;
+        }
+    }
 }
 
 .header-top {
@@ -461,18 +475,6 @@
         ul.nav {
             display:block;
         }
-    }
-
-    .dimmed {
-        display: none;
-        position: fixed;
-        top: 126px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 101;
-        background-color: rgba(0,0,0,.56);
-        content: '';
     }
 }
 .nav-brand-gate {
@@ -1339,7 +1341,6 @@
                 overflow-y: auto;
                 padding-top: 60px;
                 background-color: #fff;
-                box-shadow: -12px 4px 12px 0 rgba(0, 0, 0, 0.15);
             }
             &.app-btm {
                 @include mobile {
