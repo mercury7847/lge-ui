@@ -1769,6 +1769,11 @@ var go_shop_model = "";
                     if (colorWarningPopup) {
                         colorWarningPopup.style.display = 'block';
                         colorWarningPopup.classList.add('actived');
+                        let desc = "각 소재별 재질감이 달라 <br />같은 소재끼리의 조합을 권장합니다.";
+                        let obj = {
+                            title: '다른 소재를 선택하셨습니다.'
+                        };
+                        lgkorUI.alert(desc, obj);
                     }
 
                     userSelected.selectedObjet[existIndex].selectedObject_different_color_group = true;

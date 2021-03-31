@@ -486,11 +486,15 @@
 		.plan-exhib-slide {
 			padding-bottom:32px;
 			.inner {
+				.img {
+					border-radius:8px;
+					overflow:hidden;
+				}
 				.product-info {
 					position:absolute;
 					top:48px;
 					left:32px;
-					color:#fff;
+					color:#000;
 					.tit {
 						font-size:48px;
 						line-height:64px;
@@ -513,8 +517,8 @@
 					.btn {
 						margin-top:48px;
 						&.border {
-							border-color:#fff !important;
-							color:#fff;
+							// border-color:#fff !important;
+							// color:#fff;
 							&:hover,
 							&:focus,
 							&:active {
@@ -1150,7 +1154,6 @@
 						position:absolute;
 						top:48px;
 						left:32px;
-						color:#fff;
 						.tit {
 							font-size:28px;
 							line-height:38px;
