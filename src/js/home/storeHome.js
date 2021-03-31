@@ -211,7 +211,7 @@ $(function(){
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>우리가족을 위한<br>건강관리가전<br>추가 혜택",
+                "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
                 "modelUrlPath" : "#1"
@@ -219,7 +219,7 @@ $(function(){
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "<sup>찾던 LG전자 가전 혜택</sup>우리가족을 위한<br>건강관리가전<br>추가 혜택",
+                "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
                 "modelUrlPath" : "#2"
