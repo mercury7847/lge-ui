@@ -52,6 +52,13 @@
                 self.bindEvents();
                 self.bindPopupEvents();
 
+                //03-31
+                //방문 알리미 > 다음방문 서비스 상세 영역에 [방문일정 변경 요청] 버튼은 하이케어의 요청으로 파일럿 운영에 대한 추가 요구사항 분석 및 반영 이후 적용되어야 한다고 합니다.
+                //때문에 현재 시점에서는 해당 버튼을 숨김 처리 해주십시오. 개발/STG/운영에 모두 숨김처리 요청드립니다.
+                //임시코드
+                self.$list.find('div.svc-lists button').hide();
+
+
                 var hash = location.hash;
                 if(hash) {
                     var index = self.$selectContract.find('option[value='+hash.replace("#","")+']').index();
