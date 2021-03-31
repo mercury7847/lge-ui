@@ -538,10 +538,12 @@
     .section_part3 {
         position:relative;
         max-width:640px;
+        margin:0 auto;
     }
 
     //세탁기 / 에어컨 / 냉장고 LG가전 세척서비스 2021.02.25
     .fn-scroll-notice {
+        height:100px;
         .tabs {
             &.type3 {
                 ul {
@@ -590,6 +592,35 @@
             }
         }
 
+        &.fixed {
+            .tabs {
+                position:fixed;
+                top:0;
+                left:50%;
+                max-width:640px;
+                width:100%;
+                transform:translateX(-50%);
+            }
+        }
+
+        @include mobile {
+            height:56px;
+
+            .tabs {
+                &.type3 {
+                    ul {
+                        li {
+                            height:56px;
+                            a {
+                                height: 56px;
+                                line-height:54px;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
