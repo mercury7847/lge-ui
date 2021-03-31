@@ -284,6 +284,8 @@
             //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
 
             //nodata
+            //03-31 정승우 멤버십/마케팅 관련 데이타 가져오는게 아직 미흡하여 일단 막음
+            /*
             var hiddenData = lgkorUI.getHiddenInputData();
             var membership = lgkorUI.stringToBool(hiddenData.membership);
             var marketing = lgkorUI.stringToBool(hiddenData.marketing);
@@ -296,7 +298,8 @@
             } else {
                 self.$registProductNoData = self.$contents.find('div.no-data-case:eq(0)');
             }
-
+            */
+            self.$registProductNoData = self.$contents.find('div.no-data');
         },
 
         bindEvents: function() {

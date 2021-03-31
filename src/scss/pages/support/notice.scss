@@ -534,7 +534,65 @@
         .links a.link14 {top: 91.5%;left: 78%;width: 14.0625%;height: 1.1924%;}
         .links a.link15 {bottom: 0;left: 0;width: 100%;height: 2.9288%;}
     }
-    
+
+    .section_part3 {
+        position:relative;
+        max-width:640px;
+    }
+
+    //세탁기 / 에어컨 / 냉장고 LG가전 세척서비스 2021.02.25
+    .fn-scroll-notice {
+        .tabs {
+            &.type3 {
+                ul {
+                    display:flex;
+                    padding: 0;
+
+                    li {
+                        flex:1;
+                        background: #fff;
+                        color: #333;
+                        margin-left: 0;
+                        height:100px;
+                        box-sizing:border-box;
+
+                        &:first-child {
+                            a {
+                                border-left: 1px solid #ccc;
+                            }
+                        }
+
+                        &.on a, 
+                        a:hover {
+                            color: #fff;
+                            background: #a50034;
+                        }
+
+                        a {
+                            display: block;
+                            width: 100%;
+                            height: 100px;
+                            color: #333;
+                            border-top: 1px solid #ccc;
+                            border-right: 1px solid #ccc;
+                            border-bottom: 1px solid #ccc;
+                            background: #fff;
+                            line-height:98px;
+                            text-align: center;
+                            font-size: 30px;
+
+                            &:before {
+                                background: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 @import "../../support/pages/payNwarranty";
+
+
