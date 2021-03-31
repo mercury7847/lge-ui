@@ -969,7 +969,7 @@
                     }
                 });
 
-                //케어십 이용요금
+                //케어십 이용요금 jsw
                 self.$pdpInfoCareshipService.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
 
@@ -977,25 +977,25 @@
                     var cardData = $paymentAmount.data('cardData');
                     var carePrice = parseInt($paymentAmount.data('carePrice'));
 
-                    var $careLi = self.$careshipInfoPopup.find('ul.info-list li:eq(0)');
+                    var $careLi = self.$careshipInfoPopup.find('.fee-info-wrap dl:eq(0)');
                     if(carePrice && $careLi.length > 0) {
                         $careLi.find('dd').text("월 " + vcui.number.addComma(carePrice) + "원")
                     }
 
-                    var $cardLi = self.$careshipInfoPopup.find('.card-care-pop');
+                    var $cardLi = self.$careshipInfoPopup.find('.fee-info-wrap dl:eq(1)');
                     if(cardData && cardData.cardSale && $cardLi.length > 0) {
                         $cardLi.find('dt').text(cardData.cardSubName);
                         var cardSale = parseInt(cardData.cardSale);
                         if(cardSale > 0) {
                             cardSale = "-" + vcui.number.addComma(cardSale) + "원";
                         }
-                        $cardLi.find('dd.discount').text(cardSale);
+                        $cardLi.find('dd.minus').text(cardSale);
                         $cardLi.show();
                     } else {
                         $cardLi.hide();
                     }
 
-                    var $total = self.$careshipInfoPopup.find('.total-payment');
+                    var $total = self.$careshipInfoPopup.find('.fee-info-wrap dl.total');
                     if(carePrice && $total.length > 0) {
                         var total = carePrice;
                         if(cardData && cardData.cardSale) {
@@ -1008,6 +1008,10 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
+                        var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
+                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
+                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
+
                         var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
 
                         $table.each(function(idx,obj){
@@ -1035,30 +1039,30 @@
                     var carePrice = parseInt($paymentAmount.data('carePrice'));
                     var careData = $paymentAmount.data('careData');
 
-                    var $title = self.$caresolutionInfoPopup.find('.small-title:eq(0)');
+                    var $title = self.$caresolutionInfoPopup.find('.tit-wrap.type2:eq(0)');
                     if(careData && careData.dutyTerm && $title.length > 0) {
-                        $title.find('span').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 5년')
+                        $title.find('.h2-tit').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 5년')
                     }
 
-                    var $careLi = self.$caresolutionInfoPopup.find('ul.info-list li:eq(0)');
+                    var $careLi = self.$caresolutionInfoPopup.find('.fee-info-wrap dl:eq(0)');
                     if(carePrice && $careLi.length > 0) {
                         $careLi.find('dd').text("월 " + vcui.number.addComma(carePrice) + "원")
                     }
 
-                    var $cardLi = self.$caresolutionInfoPopup.find('.card-care-pop');
+                    var $cardLi = self.$caresolutionInfoPopup.find('.fee-info-wrap dl:eq(1)');
                     if(cardData && cardData.cardSale && $cardLi.length > 0) {
                         $cardLi.find('dt').text(cardData.cardSubName);
                         var cardSale = parseInt(cardData.cardSale);
                         if(cardSale > 0) {
                             cardSale = "-" + vcui.number.addComma(cardSale) + "원";
                         }
-                        $cardLi.find('dd.discount').text(cardSale);
+                        $cardLi.find('dd.minus').text(cardSale);
                         $cardLi.show();
                     } else {
                         $cardLi.hide();
                     }
 
-                    var $total = self.$caresolutionInfoPopup.find('.total-payment');
+                    var $total = self.$caresolutionInfoPopup.find('.fee-info-wrap dl.total');
                     if(carePrice && $total.length > 0) {
                         var total = carePrice;
                         if(cardData && cardData.cardSale) {
@@ -1071,9 +1075,10 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
-                        var $btmInfo = self.$caresolutionInfoPopup.find('.btm_info');
-                        $btmInfo.find('dl:eq(0) dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
-                        $btmInfo.find('span.point').text(popupData.rtFreePeriod+'회차');
+                        var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
+                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
+                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
+                        
                         var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
 
                         $table.each(function(idx,obj){

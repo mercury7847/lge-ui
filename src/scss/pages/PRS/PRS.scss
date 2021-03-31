@@ -420,6 +420,7 @@
 			.list {
 				display:flex;
 				flex-flow:row wrap;
+				flex-wrap:wrap;
 				width:50%;
 				&:after {
 					content:' ';
@@ -432,6 +433,7 @@
 					a {
 						display:block;
 						position:relative;
+						height:100%;
 						padding:32px 56px 40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -484,11 +486,15 @@
 		.plan-exhib-slide {
 			padding-bottom:32px;
 			.inner {
+				.img {
+					border-radius:8px;
+					overflow:hidden;
+				}
 				.product-info {
 					position:absolute;
 					top:48px;
 					left:32px;
-					color:#fff;
+					color:#000;
 					.tit {
 						font-size:48px;
 						line-height:64px;
@@ -511,8 +517,8 @@
 					.btn {
 						margin-top:48px;
 						&.border {
-							border-color:#fff !important;
-							color:#fff;
+							// border-color:#fff !important;
+							// color:#fff;
 							&:hover,
 							&:focus,
 							&:active {
@@ -1148,7 +1154,6 @@
 						position:absolute;
 						top:48px;
 						left:32px;
-						color:#fff;
 						.tit {
 							font-size:28px;
 							line-height:38px;

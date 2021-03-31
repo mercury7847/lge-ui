@@ -7,6 +7,7 @@ br.m {
 }
 // visual title
 .visual-tit-wrap {
+    display: none;
     position:relative;
     height:480px;
     background:url('/lg5-common/images/SLC/bg-visual-tit01.jpg') center no-repeat;
@@ -68,7 +69,8 @@ br.m {
 .csn-tabs {
     max-width:1380px + 80px;
     margin: 0 auto;
-    padding:40px 40px 0;
+    //padding:40px 40px 0;
+    padding:16px 40px 0;
     text-align: left;
     &:before {
         right: 40px;
@@ -78,7 +80,8 @@ br.m {
     //     padding: 0;
     // }
     @include mobile {
-        padding:32px 16px 0;
+        //padding:32px 16px 0;
+        padding:4px 16px 0;
         &:before {
             right: 0;
             left: 0;
@@ -409,6 +412,7 @@ br.m {
                     }
                 }
                 .desc {
+                    display: none;
                     margin-top:16px;
                     @include font-medium;
                     @include mobile {
@@ -1002,7 +1006,9 @@ br.m {
             border-color:#fff !important;
             color:#fff;
             &:hover,
-            &:focus {
+            &:focus,
+            &:active {
+                border-color:$color-primary !important;
                 background-image: none;
             }
         }
