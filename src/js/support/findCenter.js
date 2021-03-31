@@ -242,14 +242,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                                     self._setUserAdressSearch(true);
                                 }
                             } else { // mobile device
-                                if (!self.isLogin) { // 비로그인
-                                    if (!cookie.getCookie('geoAgreeCancel')) {
-                                        self._setCurrentSearch(true);
-                                    } else {
-                                        self._loadStoreData();
-                                    }
-                                } else { // 로그인
-                                    self._setUserAdressSearch(true);
+                                if (!cookie.getCookie('geoAgreeCancel')) {
+                                    self._setCurrentSearch(true);
+                                } else {
+                                    self._loadStoreData();
                                 }
                             }
                         }
@@ -407,23 +403,6 @@ function moveDetail(el, detailUrl, windowHeight) {
 
                 self._toggleLeftContainer();
             })
-
-            // 옵션 설정
-            // self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
-            //     self._optAllChecked();
-            // });
-            // self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
-            //     self._optToggleAllChecked();
-            // });
-            // self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
-            //     e.preventDefault();
-
-            //     self._setOptINIT();
-            // }).on('click', '.btn-group button:last-child', function(e){
-            //     e.preventDefault();
-
-            //     self._setOptApply();
-            // });
 
             // 지역 검색
             self.$citySelect.on('change', function(e){
@@ -816,11 +795,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     !init && self._showResultLayer();
                 } else{
                     if (init) {
-                        if (!vcui.detect.isMobile) { // pc device
-                            self._loadStoreData();
-                        } else { // mobile device
-                            self._setCurrentSearch(true);
-                        }
+                        self._loadStoreData();
                     } else {
                         if(result.data.location && result.data.location != ""){
                             lgkorUI.confirm('로그인을 하셔야 이용하실 수 있습니다. <br>로그인 하시겠습니까?',{
@@ -867,13 +842,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                             title: '현재 위치 정보',
                             typeClass: 'type2',
                             ok: function() {
-                                self.searchResultMode = init ? false : true;
-
-                                self.latitude = self.defaultLatitude;
-                                self.longitude = self.defaultLongitude;
-
-                                self._loadStoreData();    
-                                !init && self._showResultLayer();
+                                if (init) {
+                                    self.searchResultMode = false;
+    
+                                    self.latitude = self.defaultLatitude;
+                                    self.longitude = self.defaultLongitude;
+                                    
+                                    if (self.isLogin) {
+                                        self._setUserAdressSearch(true);
+                                    } else {
+                                        self._loadStoreData();
+                                    }
+                                }
                             }
                         });
                     }); 
@@ -882,13 +862,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                         title: '현재 위치 정보',
                         typeClass: 'type2',
                         ok: function() {
-                            self.searchResultMode = init ? false : true;
+                            if (init) {
+                                self.searchResultMode = false;
 
-                            self.latitude = self.defaultLatitude;
-                            self.longitude = self.defaultLongitude;
-
-                            self._loadStoreData();    
-                            !init && self._showResultLayer();
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
+                                
+                                if (self.isLogin) {
+                                    self._setUserAdressSearch(true);
+                                } else {
+                                    self._loadStoreData();
+                                }
+                            }
                         }
                     });
                 }
@@ -952,12 +937,18 @@ function moveDetail(el, detailUrl, windowHeight) {
                         title: '현재 위치 정보',
                         typeClass: 'type2',
                         ok: function() {
-                            self.searchResultMode = init ? false : true;
+                            if (init) {
+                                self.searchResultMode = false;
 
-                            self.latitude = self.defaultLatitude;
-                            self.longitude = self.defaultLongitude;
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
                                 
-                            init && self._loadStoreData();
+                                if (self.isLogin) {
+                                    self._setUserAdressSearch(true);
+                                } else {
+                                    self._loadStoreData();
+                                }
+                            }
                         }
                     });
                 }};
@@ -970,9 +961,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 	            } else {
 	                searchCurrentSearch();
 	            }
-            }
-            else
-        	{
+            } else {
             	getAppCurrentLocation();
         	}
             

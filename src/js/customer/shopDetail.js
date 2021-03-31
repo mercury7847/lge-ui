@@ -30,7 +30,7 @@
                 appKey: appkey,
                 longitude : longitude,
                 latitude: latitude
-            }).on('mapinit', function(e,data){
+            }).on('maploaded', function(e,data){
                 var map = $('.map').vcStoreMap('instance');
                 map.addMaker(latitude, longitude);
             });
