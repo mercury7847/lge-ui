@@ -280,7 +280,7 @@
                                             </div>
                                             <!-- 210331 버튼추가 -->
                                             <div class="btn-move">
-                                                <button type="button" class="btn border size"><span>설치 정보 등록하기</span></button>
+                                                <button type="button" class="btn border size nextStep-btn"><span>설치 정보 등록하기</span></button> <!-- 210331_2 nextStep-btn 추가-->
                                             </div>
                                             <!-- //210331 버튼추가 -->
                                         </div>
@@ -496,7 +496,7 @@
                                             </div>
                                             <!-- 210331 버튼추가 -->
                                             <div class="btn-move">
-                                                <button type="button" class="btn border size"><span>납부 정보 등록하기</span></button>
+                                                <button type="button" class="btn border size nextStep-btn"><span>납부 정보 등록하기</span></button> <!-- 210331_2 nextStep-btn 추가-->
                                             </div>
                                             <!-- //210331 버튼추가 -->
                                         </div>
@@ -933,6 +933,15 @@
     @@include('./common/popup/RMSF9001_pop10.html', {
         popupID: "popup-credit-terms",
         chkname: "agreechker-credit",
+        tempName: "신용정보제공에 대한 안내"
+    })
+    <!-- // 개인정보 수집 약관전문 보기 popup -->
+
+    <!-- 개인정보 수집 약관전문 보기 popup -->
+    <!-- 210331_2 추가-->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-credit-terms2",
+        chkname: "agreechker-credit2",
         tempName: "신용정보제공에 대한 안내"
     })
     <!-- // 개인정보 수집 약관전문 보기 popup -->
