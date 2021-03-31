@@ -535,6 +535,8 @@
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
         sendata.confirmType = sendPaymentMethod;
 
+        setHiddenData('arsAgree', "N");
+
         console.log("### setArsAgreeConfirm ###", sendata);
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             console.log("### setArsAgreeConfirm [complete] ###", result)
@@ -545,7 +547,7 @@
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
 
             setHiddenData('arsAgree', result.data.success);
-        }, ajaxMethod);
+        }, ajaxMethod, null, true);
     }
 
     //납부 정보변경 취소...
