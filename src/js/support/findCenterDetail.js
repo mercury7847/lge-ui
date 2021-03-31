@@ -109,9 +109,8 @@
                             title: $('#smsPhoneNo').val() + "로<br> 문자를 보내시겠습니까?",
                             ok : function(){
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
-                                    if (result.data.resultFlag == 'Y') {
-                                        self.hide();
-                                    } 
+                                    self.hide();
+                                     
                                     if (result.data.resultMessage) {
                                         lgkorUI.alert("", {
                                             title: result.data.resultMessage
