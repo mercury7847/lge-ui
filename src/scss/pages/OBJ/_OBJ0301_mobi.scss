@@ -1453,7 +1453,7 @@ img {
 }
 
 .color_warning_popup {
-    display: none;
+    display: none !important;
 }
 
 .color_warning_popup:after {
