@@ -1,10 +1,5 @@
 @@if (!context.noItem) {
-@@if (context.show) {
 <div class="my-product-wrap">
-}
-@@if (!context.show) {
-<div class="my-product-wrap" style="display: none">    
-}
     <div class="box open">
         <div class="title">
             <p class="tit">이엘지님이 <br>보유하고 있는 제품 (8)</p>
@@ -67,12 +62,7 @@
 }
 
 @@if (context.noItem) {
-@@if (context.show) {
 <div class="my-product-wrap no-item">
-}
-@@if (!context.show) {
-<div class="my-product-wrap no-item" style="display: none">    
-}
     <div class="box">
         <p class="txt">등록하신 제품이 없습니다. 제품을 등록해보시겠어요 ?</p>
         <button type="button" class="btn mix size-m" data-trk-count="/product_register"><span>제품 등록</span></button> <!-- 2021.02.04 테스트 attribute 추가-->
