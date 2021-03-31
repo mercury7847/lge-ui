@@ -65,15 +65,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
-                        '<div class="useable-service">' + 
-                            '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
-                            '{{#each (item, index) in serviceProduct}}' +
-                                '{{# if(index > 0) { #}}' +
-                                ', '+
-                                '{{# } #}}' +    
-                                '<span class="name">{{item.name}}</span>'+
-                            '{{/each}}' +
-                        '</div>' + 
                         '<ul class="opt-list">'+
                             '{{#each item in serviceProduct}}' +
                             '<li class="{{item.class}}">'+
