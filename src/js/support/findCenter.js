@@ -1211,7 +1211,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var mapwidth, mapheight, mapmargin;
 
-            if(self.windowWidth < 1025){ console.log('pc'+ self.windowWidth);
+            if(self.windowWidth < 1025){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
                 mapheight = 400;
@@ -1220,7 +1220,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     $('.page-header:visible').hide();
                     $('.waiting-state:visible').hide();
                 }
-            } else{  console.log('mo'+ self.windowWidth);
+            } else{
                 if( self.$leftContainer.hasClass('active') ) {
                     $('.waiting-state:hidden').show();
                 }

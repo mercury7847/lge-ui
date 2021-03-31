@@ -9,50 +9,52 @@
 >
 <!-- //2021-02-25 바로구매, 렌탈 url추가 -->
     <div class="product-detail-info">
-        @@include('./common/modules/flags.html', {
-            barType: true,
-            flags: ["베스트","신제품","캐시백"]
-        })
-        <div class="product-name">
-            <h2 class="name">LG 올레드 갤러리 TV</h2>
-            <!-- 공유하기 -->
-            <div class="product-share">
-                @@include('./common/modules/tooltip.html', {
-                    "share" : true,
-                    "fixed" : "fixed-right",
-                    "type" : "include",
-                    "page" : "tooltip-share"
-                })
+        <div class="hidden-sm"><!-- 210331 수정 [.hidden-sm 추가] -->
+            @@include('./common/modules/flags.html', {
+                barType: true,
+                flags: ["베스트","신제품","캐시백"]
+            })
+            <div class="product-name">
+                <h2 class="name">LG 올레드 갤러리 TV</h2>
+                <!-- 공유하기 -->
+                <div class="product-share">
+                    @@include('./common/modules/tooltip.html', {
+                        "share" : true,
+                        "fixed" : "fixed-right",
+                        "type" : "include",
+                        "page" : "tooltip-share"
+                    })
+                </div>
+                <!-- // 공유하기 -->
             </div>
-            <!-- // 공유하기 -->
-        </div>
-        <div class="sku">OLED77GXKNA</div>
-        <!-- 리뷰 별점 영역 -->
-        <div class="review-info">
-            <!-- 210316 별점 수정 -->
-            <!-- 210317 a링크추가 -->
-            <div class="star-rating-wrap">
-                <a href="#pdp_review">
-                    <div class="star-inner">
-                        <div class="star-rating" style="width:60%;">
-                            <span class="blind">현재 별점 : 4.4</span>
+            <div class="sku">OLED77GXKNA</div>
+            <!-- 리뷰 별점 영역 -->
+            <div class="review-info">
+                <!-- 210316 별점 수정 -->
+                <!-- 210317 a링크추가 -->
+                <div class="star-rating-wrap">
+                    <a href="#pdp_review">
+                        <div class="star-inner">
+                            <div class="star-rating" style="width:60%;">
+                                <span class="blind">현재 별점 : 4.4</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <span class="scope">4.4(리뷰 8)</span>
+                    </a>
+                    <span class="scope">4.4(리뷰 8)</span>
+                </div>
+                <!-- //210317 a링크추가 -->
+                <!-- //210316 별점 수정 -->
+                <!-- 2021-02-25 크레마 리뷰 -->
+                <div class="crema-product-reviews-score"
+                    data-product-code="75NANO99KNB"
+                    data-format="{{{stars}}} {{{score}}}(리뷰 {{{reviews_count}}})"
+                    data-star-style="multiple"
+                >
+                </div>
+                <!-- //2021-02-25 크레마 리뷰 -->
             </div>
-            <!-- //210317 a링크추가 -->
-            <!-- //210316 별점 수정 -->
-            <!-- 2021-02-25 크레마 리뷰 -->
-            <div class="crema-product-reviews-score"
-				data-product-code="75NANO99KNB"
-				data-format="{{{stars}}} {{{score}}}(리뷰 {{{reviews_count}}})"
-				data-star-style="multiple"
-			>
-			</div> 
-            <!-- //2021-02-25 크레마 리뷰 -->
-        </div>
-        <!-- // 리뷰 별점 영역 -->
+            <!-- // 리뷰 별점 영역 -->
+        </div><!-- 210331 수정 [.hidden-sm 추가] -->
         <div class="product-detail-option">
             <!-- Sibling 정보 선택 -->
             <div class="sibling-option">
