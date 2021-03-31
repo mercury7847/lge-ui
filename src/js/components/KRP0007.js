@@ -401,6 +401,15 @@
                     self.requestSibling(this);
                 })
 
+                //AR체험하기 클릭
+                self.$productList.on('click','div.product-ar a', function (e){
+                    e.preventDefault();
+                    var modelId = this.dataset.arModelId;
+                    if(!lgkorUI.openAR(modelId)) {
+                        $('#arPlayPop').vcModal();
+                    }
+                });
+                
                 //모바일 카테고리 풀다운메뉴
                 self.$cateFulldown.on('click', function(e){
                     e.preventDefault();
