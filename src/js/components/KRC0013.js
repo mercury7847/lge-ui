@@ -44,7 +44,6 @@ $(document).ready(function() {
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
             
             var accDesc = $(this).data('acc-desc') || "";
-            console.log("acc2",accDesc);
             
             var appendElement = $(item).find('.visual-set');
             appendElement.find('.visual-area').remove();

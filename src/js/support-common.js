@@ -548,6 +548,8 @@ CS.MD.calendar = function() {
                 self.$calendar.find('.choice').removeClass('choice');
                 self.activeDate = date;
                 $this.addClass('choice');
+                $this.siblings().find('button span.blind').remove();
+                $this.find('button').append('<span class="blind">선택됨</span>');
                 if (opts.inputTarget) {
                     self.$input.val(format);
                 }
@@ -905,6 +907,8 @@ CS.MD.timeCalendar = function() {
                 self.activeTime = time;
                 $this.addClass('choice');
                 $this.siblings('th').addClass('choice');
+                $this.siblings('td').find('button span.blind').remove();
+                $this.find('button').append('<span class="blind">선택됨</span>');
 
                 if (self.options.inputTarget) self.$input.val(time);
 
@@ -1241,8 +1245,8 @@ var AuthManager = function() {
                     if (resultData.resultFlag == 'Y') {
                         //$(el).find('span').html(RESENDTEXT);
                         
-                        console.log($(el))
-                        console.log($(el).html())
+                        //console.log($(el))
+                        //console.log($(el).html())
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }

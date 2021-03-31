@@ -20,7 +20,6 @@ $(window).ready(function(){
             var ariaDesc = $(this).attr('aria-describedby');
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
             var accDesc = $(this).data('acc-desc') || "";
-            console.log("acc",accDesc);
             appendElement.find('.visual-area').remove();
     
             var html = "";

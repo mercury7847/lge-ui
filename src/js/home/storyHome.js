@@ -256,8 +256,6 @@
         }
         // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-            console.log("### requestAjaxData ###", result);
-
             if(result.data.loginUrl){
                 location.href = result.data.loginUrl;
 
