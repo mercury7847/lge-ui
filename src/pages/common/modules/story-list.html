@@ -7,12 +7,12 @@
 <div class="flexbox">
 }
     <div class="box @@boxType">
-        <div class="visual-area">
+        <a href="#" class="visual-area"><!-- 210331 수정 [a 태그로 변경] -->
             <span class="image"><img @@image alt=""></span>
             @@if(boxType === "video") {
-            <a href="#n" class="btn-video"><span class="blind">동영상 재생</span></a>
+            <span class="btn-video"><em class="blind">동영상 재생</em></span><!-- 210331 수정 [span 태그로 변경] -->
             }
-        </div>
+        </a>
         <div class="text-area">
             @@include('./common/modules/flags.html', {
                 boxType: true,
