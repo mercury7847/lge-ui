@@ -103,13 +103,17 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             var opts = self.options,
                 index = self.el.selectedIndex;
 
+            self.$ratingBox.find('a span.blind').remove();
             self.$ratingBox.find('a').removeClass('on');
             
             if (opts.label) {
                 self.$label.find('.score').html(self.el.value); 
             }
 
-            index > 0 && self.$ratingBox.find('a').slice(0, index).addClass('on');
+            if (index > 0) {
+                self.$ratingBox.find('a').eq(index - 1).append('<span class="blind">선택됨</span>')
+                self.$ratingBox.find('a').slice(0, index).addClass('on');
+            }
         },
         selectedIndex: function update(index) {
             var self = this;
