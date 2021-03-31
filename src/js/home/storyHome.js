@@ -23,9 +23,9 @@
 
             var storyListTemplate = 
                 '<div class="flexbox">'+
-                    '<div class="box-wrap">'+
+                    //'<div class="box-wrap">'+
                         '<div class="box {{contentsType}}">'+
-                            '<div class="visual-area">'+
+                            '<a href="{{storyUrl}}" class="visual-area">'+
                                 '{{#if contentsType == "image"}}'+
                                 '<span class="image">'+
                                     '<img onload="onImgLoadEvent(this)" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
@@ -36,7 +36,7 @@
                                 '</span>'+
                                 '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
                                 '{{/if}}'+
-                            '</div>'+
+                            '</a>'+
                             '<div class="text-area">'+
                                 '{{#if contentsName}}'+
                                 '<div class="flag-wrap box-type">'+
@@ -54,7 +54,7 @@
                             '</div>'+        
                             '<div class="date">{{regDate}}</div>'+
                         '</div>'+
-                    '</div>'+
+                    //'</div>'+
                 '</div>';
 
     var tagBoxTemplate = 
