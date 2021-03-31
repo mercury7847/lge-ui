@@ -159,12 +159,12 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                   {{/each}}\n'+
     '               </div>\n'+
     '               <p class="tit"><a href="{{modelUrlPath}}"><span class="blind">모델명</span>{{modelDisplayName}}</a></p>\n'+
-    '               <p class="product-sku"><span class="blind">모델넘버</span>{{modelId}}</p>\n'+
+    '               <p class="product-sku"><span class="blind">모델넘버</span>{{modelName}}</p>\n'+
     '               {{#if isReview}}'+
     '                   <div class="review-info">\n'+
     '                       <a href="{{reviewLinkPath}}">\n'+
     '                           <div class="star is-review"><span class="blind">리뷰있음</span></div>\n'+
-    '                           <div class="average-rating"><span class="blind">평점</span>{{averageRating}}</div>\n'+
+    '                           <div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>\n'+
     '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewCount}}</span>)</div>\n'+
     '                       </a>\n'+
     '                   </div>\n'+
@@ -252,13 +252,14 @@ $(function(){
             if(data && data.data){
                 var arr = data.data;
 
-                var list = vcui.array.map(arr, function(item, index){
 
+                var list = vcui.array.map(arr, function(item, index){
+                    
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
-                    if(obsOriginalPrice || obsOriginalPrice!=='' || obsOriginalPrice!=='0'){ 
+                    if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                     }else{
                         item['obsOriginalPrice'] = null;
@@ -266,29 +267,36 @@ $(function(){
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
-                    if(price || price!=='' || price!=='0'){ 
+                    if(price!==0){ 
                         item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
                     }else{
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || [];
 
-
                     var obj = newProductRecommendLocal[index];
+
+                    console.log(item);
+
+                    // item['reviewCount'] = 1000223;
 
                     item['fullImagePath'] = obj && obj['fullImagePath'];
                     item['isReview'] = parseInt(item['reviewCount']) > 0 ? true : false;
-                    item['reviewLinkPath'] = item['reviewLinkPath'] || "";
+                    item['reviewLinkPath'] = item['modelUrlPath']? item['modelUrlPath'] + "#pdp_review" : null;
                     item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+
+                    if(parseInt(item['reviewCount']) > 0 ){
+                        item['reviewCount'] = vcui.number.addComma(parseInt(item['reviewCount']));
+                    }
+
 
                     return item;
                 });
 
                 var posArr = [0, 6];
-
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){                        
+                    if(list[index]){                  
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
@@ -365,14 +373,14 @@ $(function(){
                         var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                         var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
-                        if(obsOriginalPrice || obsOriginalPrice!=='' || obsOriginalPrice!=='0'){ 
+                        if(obsOriginalPrice!==0){ 
                             item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                         }else{
                             item['obsOriginalPrice'] = null;
                         }
                         
                         var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-                        if(price || price!=='' || price!=='0'){ 
+                        if(price!==0){ 
                             item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
                         }else{
                             item['totalPrice'] = null;
@@ -531,7 +539,7 @@ $(function(){
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-                    if(price || price!=='' || price!=='0'){ 
+                    if(price!==0){ 
                         item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
                     }else{
                         item['totalPrice'] = null;
