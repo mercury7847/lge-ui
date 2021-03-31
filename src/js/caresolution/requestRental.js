@@ -986,8 +986,6 @@
                 title: result.data.alert.title
             });
 
-            console.log("### setArsAgreeConfirm complete ###", result.data.success)
-
             setInputData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
     }

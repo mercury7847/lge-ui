@@ -1016,13 +1016,15 @@ var isApp = function(){
             }
         },
 
+        //lgkorUI.setCookie('','', false, 1);
+
         //쿠키
-        setCookie: function(cookieName, cookieValue, deleteCookie) {
+        setCookie: function(cookieName, cookieValue, deleteCookie, expireDay) {
             var cookieExpire = new Date();
             if(deleteCookie) {
                 cookieExpire = new Date(1);
             } else {
-                var days = 30*6;
+                var days = expireDay? expireDay : 30*6;
                 cookieExpire.setDate(cookieExpire.getDate() + days);
             }
 
@@ -2001,6 +2003,27 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // openAR 링크 보내기
+        openAR:function(modelId, defaultUrl, mobileDeviceUrl){
+
+            if(isApplication) {
+                if(modelId){
+                    if(isAndroid && android) android.openAR(modelId);
+                    if(isIOS) {
+                        var jsonString= JSON.stringify({command:'showAR', product:modelId});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }
+                }                
+            }else{
+                if(isMobileDevice) {
+                    if(mobileDeviceUrl) location.href = mobileDeviceUrl;
+                }else{
+                    if(defaultUrl) location.href = defaultUrl;
+                }
+            }
+
         },
 
         // history back 사용하기
