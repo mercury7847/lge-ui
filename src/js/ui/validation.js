@@ -795,7 +795,9 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     msg = nobj['msgTarget'];
                     if(msg) {
                         var errblock = self._getMsgBlock($target, msg);
+                        var errfield = self._getMsgField(errblock);
                         errblock.hide();
+                        errfield.removeAttr('id');
                         $target.removeAttr('aria-describedby');
                     }
                 }
@@ -815,6 +817,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                         var errfield = self._getMsgField(errblock);
                         errfield.text(obj[prop]);
+                        errfield.attr('id', prop + 'Error');
                         $target.attr('aria-describedby', prop + 'Error');
                     }
                 }
@@ -949,6 +952,9 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var rObj = self._setCheckValidate(false, targetArr);
 
             var firstName = vcui.object.keys(rObj)[0];
+
+            self._swicthErrorMsg(self.validItemObj, targetArr);
+
             if(firstName){
                 var $first = self.$el.find('[name='+ firstName +']');
 
@@ -982,7 +988,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             }else{
                 self.triggerHandler('validerror', [self.validItemObj]);
             }
-            self._swicthErrorMsg(self.validItemObj, targetArr);
 
             var arr = [];
             for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
