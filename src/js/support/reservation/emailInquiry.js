@@ -248,6 +248,10 @@
                 }
 
                 validation.reset(['cRcptNo']);
+
+                $('html,body').animate({
+                    scrollTop: self.$inquiryBox.next().offset().top - $('.prod-selected-wrap').outerHeight()
+                });
             });
 
             // 상담/서비스 이력 선택 시
