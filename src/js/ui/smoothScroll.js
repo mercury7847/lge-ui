@@ -268,18 +268,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            // 0330 vertical 스크롤 허용
-
-            if (!self.hasHorizontalScroll) {
-                if(self.maxScrollX >= 0){
-                    self.toggleEnabled(false);
-                }else{
-                    self.toggleEnabled(true);
-                }            
-            }
-
             
-
 
         },
 
@@ -989,14 +978,17 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self.hasHorizontalScroll = opt.scrollX && self.maxScrollX < 0;
             self.hasVerticalScroll = opt.scrollY && self.maxScrollY < 0;
-
             
 
             if (!self.hasHorizontalScroll) {
                 self.maxScrollX = 0;
                 self.scrollerWidth = self.wrapperWidth;
+                self.toggleEnabled(false); // 0330 vertical 스크롤 허용
+            }else{
+                self.toggleEnabled(true); // 0330 vertical 스크롤 허용
             }
 
+            
             if (!self.hasVerticalScroll) {
                 self.maxScrollY = 0;
                 self.scrollerHeight = self.wrapperHeight;

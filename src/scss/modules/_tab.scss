@@ -91,6 +91,9 @@
 
     &.btn-type {
         text-align:center; /*2021-01-04 edit*/
+        &.left {
+            text-align:left;
+        }
         &:before {
             position: absolute;
             bottom: 1px !important;
