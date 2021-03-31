@@ -1291,6 +1291,9 @@
                 }
             }
             .had-pd-slider {
+                .slide-content {
+                    overflow:visible !important;
+                }
                 .slide-track {
                     height:200px;
                 }
