@@ -29,6 +29,9 @@
 		height:100%;
 		// height:100vh;
 		overflow:hidden;
+		> a {
+			display:block;
+		}
 		.opac {
 			opacity:.7;
 		}
@@ -98,7 +101,7 @@
 			right:120px;
 			bottom:120px;
 			z-index:2;
-			> a {
+			> .a {
 				display:block;
 				position:relative;
 				padding-right:69px;
@@ -120,7 +123,7 @@
 			}
 			@include mobile {
 				right:16px;
-				bottom:120px;
+				bottom:160px;
 				> a {
 					padding-right:24px;
 					font-size:24px;
@@ -902,7 +905,15 @@
 							.inner {
 								display: block;
 								width: 100%;
+								position:absolute;
+								right:40px;
+								bottom:28px;
 								//height: 100%;
+								@include mobile {
+									width:auto;
+									right:18px;
+									bottom:16px;
+								}
 							}
 							@include mobile {
 								padding: 14px;
@@ -946,6 +957,8 @@
 								display: flex;
 								flex-wrap: wrap;
 								align-items: center;
+								width:100%;
+								height:100%;
 								.tit {
 									width: 100%;
 									@include font-large-3;

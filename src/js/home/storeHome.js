@@ -127,7 +127,7 @@ var recommendTmpl = '{{#each obj in list}}\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
-    '               <div class="code">{{obj.modelId}}</div>\n'+
+    '               <div class="code">{{obj.modelName}}</div>\n'+
     '               <div class="price-area">\n'+
     '                   <div class="original">\n'+
     '                       {{#if obj.obsOriginalPrice}}'+

@@ -841,6 +841,7 @@ function goProc() {
 				success: function(json) {
 					var result = json.data.alert.title;
 					alert(result);
+					self.close();
 				},
 				error: function(request, status, error) {
 					alert(error);
