@@ -37,6 +37,7 @@
             '</div>' +
         '</div>' +
         '<div class="product-contents">' +
+        /*
             '{{#if siblings}}'+
                 '{{#each sibling in siblings}}'+
                 '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
@@ -63,6 +64,7 @@
                 '</div>' +
                 '{{/each}}'+
             '{{/if}}'+
+            */
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +

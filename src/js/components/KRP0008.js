@@ -786,13 +786,16 @@
                 //링크
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();
-                    var url = $(this).attr('href').replace("#","");
-                    var addS = $(this).data('add');
-                    if(url) {
-                        if(addS) {
-                            url += addS;
+                    var $this = $(this);
+                    if(!$this.attr('data-control')) {
+                        var url = $this.attr('href').replace("#","");
+                        var addS = $this.data('add');
+                        if(url) {
+                            if(addS) {
+                                url += addS;
+                            }
+                            location.href = url;
                         }
-                        location.href = url;
                     }
                 });
 
@@ -804,23 +807,23 @@
 
                 //인포 옵션 변경 (링크로 바뀜)
                 self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                    var siblingCode = this.dataset.siblingCode;
+                    var siblingGroupCode = this.dataset.siblingGroupCode;
+                    if(typeof siblingList !== 'undefined' && siblingList && siblingList.length > 0 && siblingList[0].siblingModels) {
+                        var selectOne = vcui.array.filterOne(siblingList[0].siblingModels, function(item) {
+                            return item.siblingCode == siblingCode && item.siblingGroupCode == siblingGroupCode;
+                        });
+                        var url = selectOne.modelUrlPath;
+                        if(url) {
+                            location.href = url;
+                        }
+                    }
+
+                    /*
                     var url = e.target.value;
                     if(url) {
                         location.href = url;
                     }
-                    /*
-                    var $optionList = $(this).parents('.option-list').siblings('div').find('span');
-                    if($optionList.length > 0) {
-                        $optionList.first().text($(this).siblings('label').find('span').text());
-                    }
-                    var $siblingOption = $(this).parents('.sibling-option');
-                    var $findData = $siblingOption.find('input:checked');
-                    var param = {};
-                    $findData.each(function (i, o) {
-                        var $o = $(o);
-                        param[$o.attr('name')] = $o.attr('value');
-                    });
-                    self.requestSelectOption(param);
                     */
                 });
 
@@ -969,7 +972,7 @@
                     }
                 });
 
-                //케어십 이용요금 jsw
+                //케어십 이용요금
                 self.$pdpInfoCareshipService.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
 
