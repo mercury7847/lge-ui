@@ -45,6 +45,8 @@
 
     var ajaxMethod = "post";
 
+    var selectPaymentMethod;
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
             setting();
@@ -224,6 +226,17 @@
                 $('html, body').stop().animate({scrollTop:contop}, 350);
             }
         });
+
+        $('.nextStep-btn').on('click', function(e){
+            e.preventDefault();
+
+            if(setNextStep()){
+                stepAccordion.expand(step, true);
+                var activeValue = stepAccordion.getActivate();
+                var contop = $(activeValue.header[step]).offset().top;
+                $('html, body').stop().animate({scrollTop:contop}, 350);
+            }
+        })
 
         requestButton.on('click', function(e){
             rentalRequest();
@@ -606,9 +619,12 @@
         if(paymethod == "") return false;
 
         var cardAbled = getInputData('cardAbled');
-        if(cardAbled == "N"){
+        if(selectPaymentMethod != paymethod || cardAbled == "N"){
             var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
             lgkorUI.alert("",{title:msg});
+
+            selectPaymentMethod = "";
+            setInputData('arsAgree', "N");
             
             return false;
         }
@@ -620,7 +636,9 @@
 
             step3Block.find('.arsAgreeRequest').prop('disabled', true);
 
+            selectPaymentMethod = "";
             setInputData('arsAgree', "N");
+
             return false;
         }
 
@@ -934,6 +952,7 @@
                     paymentCardNumber: values.paymentCardNumber,
                     paymentCardPeriod: values.paymentCardPeriod
                 }
+                selectPaymentMethod = "card";
             } else{
                 cardInputData = {};
             }
@@ -966,6 +985,7 @@
                     paymentBank: values.paymentBank,
                     paymentBankNumber: values.paymentBankNumber
                 }
+                selectPaymentMethod = "bank";
             } else{
                 bankInputData = {};
             }
@@ -975,7 +995,10 @@
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
         var chk = paymentValidation();
-        if(!chk) return;        
+        if(!chk){
+            setInputData('cardAbled', "N");       
+            return;
+        }        
 
         lgkorUI.showLoading();
 
@@ -1153,6 +1176,23 @@
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
         var payment = getPaymentMethod() == "bank";
+
+        var notes = step2Block.find('input[name=installRequriement]').val();
+        var instReqDate = step2Value.inatallDate;
+        var collectRequest = step2Block.find('input[name=collectRequest]:checked').val();
+        var preVisitRequest = step2Block.find('input[name=preVisitRequest]:checked').val();
+
+        if(allOwnedProductYn == "Y"){
+            notes = "";
+            instReqDate = "";
+            collectRequest = "";
+            preVisitRequest = "";
+        } else{
+            if(beforeVisitModelFlag == "N"){
+                preVisitRequest = "";
+            }
+        }
+
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1174,17 +1214,20 @@
             RCV_POST_CODE: step2Value.zipCode,
             RCV_BAS_ADDR: step2Value.userAddress,
             RCV_DTL_ADDR: step2Value.detailAddress,
-            INSTALL_PLACE: step2Value.inatallPlace,
-            INST_REQ_DATE: step2Value.inatallDate,
-            NOTES: step2Block.find('input[name=installRequriement]').val(),
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
             MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
-            preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
-            collectRequest: step2Block.find('input[name=collectRequest]:checked').val(),
-            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked')
+            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked'),
+            INSTALL_PLACE: step2Value.inatallPlace,
+
+            NOTES: notes,
+            INST_REQ_DATE: instReqDate,
+            collectRequest: collectRequest,
+            preVisitRequest: preVisitRequest
         };
 
         lgkorUI.showLoading();
+
+        console.log("### rentalRequest ###", sendata);
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
