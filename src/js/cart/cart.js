@@ -221,7 +221,6 @@
                     checkedProduct.each(function (index, item) {
                         var index = self.$productCheck.index(item);
                         var product = cartProducts[index];
-                        console.log({'productId':product.productId, 'quantity':'0'});
                         paramData.push({'productId':product.productId, 'quantity':'0'});
                     });
                     if(paramData.length > 0) {

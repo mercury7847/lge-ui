@@ -187,7 +187,6 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                     item.dataset.currentImage = imgsrc;
                     item.src = imgsrc;
                     var $img = $(item);
-                    console.log(self.$items);
                     if ($img[0].complete) {
                         cb.call($img);
                     } else {

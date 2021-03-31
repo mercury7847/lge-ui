@@ -138,11 +138,9 @@
             "bizType": bizType,
             "pageType": "plp",
             "callType": "productSummary"
-        }            
-        console.log("@@@ requestSibling @@@", sendata)
+        }
+        
         lgkorUI.requestAjaxDataPost(ajaxurl, sendata, function(result){
-            console.log("@@@ requestSibling onComplete @@@", result);
-
             var arr = (result.data && result.data instanceof Array) ? result.data : [];
 
             if(arr.length){
