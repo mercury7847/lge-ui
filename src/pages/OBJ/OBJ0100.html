@@ -257,7 +257,7 @@
                                     Experience
                                 </div>
                                 <div class="mtbi_start">
-                                    <div class="mtbi-test mtbi-bx">
+                                    <div class="mtbi-test mtbi-bx" id="tempAlert">
                                         <a href="/lg-objet-collection/experience">
                                             <p class="sub-title">Objet Collcetion</p>
                                             <p class="title">제품 체험하기</p>
@@ -276,6 +276,20 @@
                                 </div>
                             </div>
                         </div>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            $(document).ready(function() {
+                                $("#tempAlert").on("click", function(e) {
+                                    e.preventDefault();
+                                    let desc = "4월 15일 오픈예정입니다.";
+                                    let obj = {
+                                        title: '준비중입니다.'
+                                    };
+                                    lgkorUI.alert(desc, obj);
+                                });
+                            });
+                            //]]>
+                        </script>
                         <!-- // 체험 -->
                         <!-- 갤러리 -->
                         <div id="objet-cont4" class="tab-contents signature-gallery">
