@@ -625,8 +625,10 @@ var isApp = function(){
         _addTopButtonCtrl: function(){
             $(window).scroll(function(){
                 if ($(this).scrollTop() > 100) {
+                    $(window).trigger('floatingTopShow');
                     $('.floating-menu.top').removeClass('call-yet');
                 } else {
+                    $(window).trigger('floatingTopHide');
                     $('.floating-menu.top').addClass('call-yet');
                 }
             });
