@@ -298,17 +298,27 @@ var isApp = function(){
         _addImgOnloadEvent: function(){
             var self = this;
             $('img').not('[data-pc-src]').on('error', function(e){
+                var img = this;
+                img.onerror = null;
+                if ( !img.complete || !img.naturalWidth ) {
+                    img.src = self.NO_IMAGE;
+                    img.classList.add('no-img');
+                }
+                /*
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
                 $(this).addClass('no-img');
+                */
             });
         },
 
         addImgErrorEvent: function(img){
             var self = this;
             img.onerror = null;
-            $(img).attr('src', self.NO_IMAGE);
-            $(img).addClass('no-img');
+            if ( !img.complete || !img.naturalWidth ) {
+                img.src = self.NO_IMAGE;
+                img.classList.add('no-img');
+            }
         },
 
         addModelNameImgErrorEvent: function(img){
@@ -1008,13 +1018,15 @@ var isApp = function(){
             }
         },
 
+        //lgkorUI.setCookie('','', false, 1);
+
         //쿠키
-        setCookie: function(cookieName, cookieValue, deleteCookie) {
+        setCookie: function(cookieName, cookieValue, deleteCookie, expireDay) {
             var cookieExpire = new Date();
             if(deleteCookie) {
                 cookieExpire = new Date(1);
             } else {
-                var days = 30*6;
+                var days = expireDay? expireDay : 30*6;
                 cookieExpire.setDate(cookieExpire.getDate() + days);
             }
 
@@ -1995,6 +2007,27 @@ var isApp = function(){
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 }
             }
+        },
+
+        // openAR 링크 보내기
+        openAR:function(modelId, defaultUrl, mobileDeviceUrl){
+
+            if(isApplication) {
+                if(modelId){
+                    if(isAndroid && android) android.openAR(modelId);
+                    if(isIOS) {
+                        var jsonString= JSON.stringify({command:'showAR', product:modelId});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    }
+                }                
+            }else{
+                if(isMobileDevice) {
+                    if(mobileDeviceUrl) location.href = mobileDeviceUrl;
+                }else{
+                    if(defaultUrl) location.href = defaultUrl;
+                }
+            }
+
         },
 
         // history back 사용하기
