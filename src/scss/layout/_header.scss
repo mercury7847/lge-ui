@@ -1404,6 +1404,20 @@
                 display: block;
             }
         }
+        &.after-login {
+            .btn-mypage {
+                &:after {
+                    position: absolute;
+                    top: 6px;
+                    right: 6px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 2px;
+                    background-color: $color-primary;
+                    content: '';
+                }
+            }
+        }
     }
     .btn-mypage {
         position: absolute;
@@ -1416,18 +1430,6 @@
             height: 34px;
             background: url('/lg5-common/images/icons/icon-person-48-m.svg') no-repeat center center;
             background-size: 24px;
-        }
-        &.after-login {
-            &:after {
-                position: absolute;
-                top: 6px;
-                right: 6px;
-                width: 4px;
-                height: 4px;
-                border-radius: 2px;
-                background-color: $color-primary;
-                content: '';
-            }
         }
     }
     .btn-logout {
