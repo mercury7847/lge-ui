@@ -45,9 +45,7 @@
 
     var ajaxMethod = "post";
 
-    function init(){
-        console.log("requestRental Start!!!");
-    
+    function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
             setting();
             bindEvents();
@@ -457,13 +455,6 @@
 
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
-
-        // step1Validation.on('errors', function(e, data){
-        //     console.log("step1Validation validerror:", data)
-        //     if(Object.keys(data).length == 2){
-        //         var isDA = data.detailAddress;
-        //     }
-        // });
     }
 
     function setNextStep(){
@@ -541,7 +532,6 @@
     //설치 정보 입력 밸리데이션...
     function setStep2Validation(){
         var completed = false;
-        console.log("step2 validation start!!");
         var result = step2Validation.validate(["userName", "userPhone", "userTelephone"]);
         if(result.success){
             var installvalidate = step2InstallValidation();
@@ -639,7 +629,6 @@
 
     //납부 정보 입력 밸리데이션...
     function setStep3Validation(){
-        console.log("step3 validation start!!");
         var cardApply, chk, value, paymethod, result;
         cardApply = step3Block.find('input[name=cardApplication]:checked').val();
         if(cardApply == "Y"){
@@ -673,10 +662,7 @@
                 title: '자동결제를 위해 정기결제 신청을 동의해주세요.'
             });
             return false;
-        }
-        
-        console.log("step3Validation.validate(); Success!!!");
-        
+        }        
         
         return true;
     }
@@ -692,21 +678,18 @@
             userAddress: values.userAddress,
             detailAddress: values.detailAddress
         }
-        console.log("setInstallAdress() >", installAdress)
     }
 
     //입력 후 데이터가 바뀐 경우 체크..
     function compareInputData(initData, currentData){
         var chk = true;
         for(var str in initData){
-            console.log("compareInputData:", initData[str], currentData[str])
             if(initData[str] !== currentData[str]){
                 chk = false;
 
                 break;
             }
         }
-        console.log("compareInputData result:", chk)
 
         return chk;
     }
@@ -770,7 +753,6 @@
                 abled = "Y";
             } else{
                 var total = parseInt(productPriceInfo.total.count);
-                console.log("productPriceInfo.total.count:", productPriceInfo.total.count)
                 if(total) abled = "Y";
                 
                 lgkorUI.confirm(result.data.alert.desc, {
@@ -788,7 +770,6 @@
             } 
 
             if(result.data.newProductInfo && result.data.newProductInfo.length){
-                console.log("### result.data.newProductInfo ###", result.data.newProductInfo)
                 $('.order-list li').each(function(idx, item){
                     var info = result.data.newProductInfo[idx];
 
@@ -803,8 +784,6 @@
 
             cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
-
-            console.log("setInstallAbledConfirm() abled :", abled);
             
             if(abled == "Y"){
                 setInstallAdress();
@@ -865,7 +844,6 @@
             userEmail: step1Value.userEmail,
             zipCode: step1Value.zipCode
         }
-        console.log("sendata:",sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
                 void(window.open("", "nicePopUp", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
@@ -911,7 +889,6 @@
 
     //설치 정보 입력 타입 선택...
     function changeInstallInputType(type){
-        console.log("### changeInstallInputType ###", type)
         if(type){
             var step1Value = step1Validation.getValues();
 
@@ -942,7 +919,6 @@
             cardNumber: values.paymentCardNumber,
             cardPeriod: values.paymentCardPeriod
         }
-        console.log("setCardAbledConfirm(); >", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -975,7 +951,6 @@
             bankName: values.paymentBank,
             bankNumber: values.paymentBankNumber
         }
-        console.log("setBankAbledConfirm(); >", sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -1004,13 +979,17 @@
 
         lgkorUI.showLoading();
 
+        setInputData('arsAgree', "N");
+
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
+            console.log("### setArsAgreeConfirm complete ###", result.data.success)
+
             setInputData('arsAgree', result.data.success);
-        }, ajaxMethod);
+        }, ajaxMethod, null, true);
     }
 
     function changePrevisitRequest(abled){
@@ -1149,7 +1128,6 @@
         var chk = false;
         //stepAccordion.expand(1, true)
         var stepperStatus = stepAccordion.getActivate();
-        console.log()
         if(setStep1Validation()){
             if(stepperStatus.content.length < 2) stepAccordion.expand(1, true);
 
@@ -1170,16 +1148,13 @@
         if(!agreechk){
             $(window).trigger("toastshow", "청약 신청을 위해 케어솔루션 청약신청 고객 동의가 필요합니다.");
             return;
-        }
-        console.log("requestAgreeChecker:", agreechk);
-        
+        }        
 
         var step1Value = step1Validation.getValues(); 
         var step2Value = step2Validation.getValues();
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
         var payment = getPaymentMethod() == "bank";
-        console.log("### rentalRequest ###", payment);
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1210,7 +1185,6 @@
             collectRequest: step2Block.find('input[name=collectRequest]:checked').val(),
             isAgree: step3Block.find('input[name=useMemPoint]').prop('checked')
         };
-        console.log(sendata);
 
         lgkorUI.showLoading();
 
