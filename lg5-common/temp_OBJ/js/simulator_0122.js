@@ -1769,6 +1769,11 @@ var go_shop_model = "";
                     if (colorWarningPopup) {
                         colorWarningPopup.style.display = 'block';
                         colorWarningPopup.classList.add('actived');
+                        let desc = "각 소재별 재질감이 달라 <br />같은 소재끼리의 조합을 권장합니다.";
+                        let obj = {
+                            title: '다른 소재를 선택하셨습니다.'
+                        };
+                        lgkorUI.alert(desc, obj);
                     }
 
                     userSelected.selectedObjet[existIndex].selectedObject_different_color_group = true;
@@ -2415,19 +2420,29 @@ var go_shop_model = "";
 
                     if (selectedObjectComplete) {
                         //소재가 서로 다를 경우 안내 팝업 노출
-                        if (selectedObjectDifferentColorGroup) {
-                            link = 'onclick="showShopLinkAlert();"';
+                        // if (selectedObjectDifferentColorGroup) {
+                        //     link = 'onclick="showShopLinkAlert();"';
+                        // } else {
+                        //     if (configData.object[i].id == 'refrigerator') {
+                        //         //link = 'onclick="showSelectVolume();"';
+                        //         link = 'data-href="#objModal2" data-control="modal"';
+                        //     } else if (configData.object[i].id == 'refrigerator_convertible') {
+                        //         //link = 'onclick="showSelectFunction();"';
+                        //         link = 'data-href="#objModal3" data-control="modal"';
+                        //     } else {
+                        //         go_shop_model = configData.object[i].id;
+                        //         link = 'onclick="goshop(' + i + ');"';
+                        //     }
+                        // }
+                        if (configData.object[i].id == 'refrigerator') {
+                            //link = 'onclick="showSelectVolume();"';
+                            link = 'data-href="#objModal2" data-control="modal"';
+                        } else if (configData.object[i].id == 'refrigerator_convertible') {
+                            //link = 'onclick="showSelectFunction();"';
+                            link = 'data-href="#objModal3" data-control="modal"';
                         } else {
-                            if (configData.object[i].id == 'refrigerator') {
-                                //link = 'onclick="showSelectVolume();"';
-                                link = 'data-href="#objModal2" data-control="modal"';
-                            } else if (configData.object[i].id == 'refrigerator_convertible') {
-                                //link = 'onclick="showSelectFunction();"';
-                                link = 'data-href="#objModal3" data-control="modal"';
-                            } else {
-                                go_shop_model = configData.object[i].id;
-                                link = 'onclick="goshop(' + i + ');"';
-                            }
+                            go_shop_model = configData.object[i].id;
+                            link = 'onclick="goshop(' + i + ');"';
                         }
                         //상냉장고일 경우 용량선택
 

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', { pageCSS: ["OBJ/OBJ"], pageJS: ["objet/experienceModel"] })
+<script type="text/javascript">
+    //<![CDATA[
+
+
+
+
+    //]]>
+</script>
 
 <body>
 
@@ -13,12 +21,21 @@
             <!-- 오브제 콜렉션 모델 체험하기 -->
             <div class="contents objet model_experience">
                 <div class="cont-wrap">
+                    <h2 class="title"><img src="/lg5-common/images/OBJ/experience/leader/img_h2_objet.png" alt="LG Objet Collection">제품 체험하기</h2>
                     <!-- 모델 체험하기 영역 -->
                     <div class="model_simul_wrap">
                         <!-- 좌측 모델 시뮬 영역 -->
                         <div class="model_simul_area area1">
                             <div class="model_simul_body">
                                 <button type="button" class="make_model"><span>나만의 오브제 컬렉션 제품을 만들어 보세요.</span></button>
+
+                            </div>
+                        </div>
+                        <!--// 좌측 모델 시뮬 영역 -->
+                        <!-- 모델 시뮬 영역 (상황에 따라 위치 이동) -->
+                        <div class="simul_wrap">
+                            <div class="simul_body">
+                                <button type="button" class="model_reset"><span>제품 다시 선택</span></button>
                                 <!-- model_set_wrap -->
                                 <!-- data-model-cate:제품군, data-model-code:상품코드, data-model-completed:선택완료여부(y,n)  -->
                                 <div data-model-cate="" data-model_code="" data-model-completed="" class="model_set_wrap">
@@ -28,12 +45,12 @@
                                         <div class="sel_model_set">
                                             <!-- data-door-direction:도어방향(좌상-LT, 좌하-LB, 우하-TB, 상-T, 중-M, 하-B), 
                         data-door-model_location:도어코드(TT, BB, MM), 
-                        data-door-model_spec_material:도어재질(fenix-F, sis-S, glass-G, metal-M), 
+                        data-door-model_spec_material:도어재질(F, S, G, M), 
                         data-door-model_spec_color:도어색상(샌드-SD, 보타닉-BT, 스톤-ST, 실버-SV, 그린-GR, 맨해론미드나잇-MT, 베이지-BE, 실버-SV, 핑크-PK, 민트-MN, 화이트-WH, 그레이-GY, 블랙-BK) -->
                                             <button type="button" data-door-direction="" data-door-model_location="" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">
-                        <span class="blind">도어 선택</span>
-                        <span class="door_img"><img src="" alt=""></span>
-                    </button>
+                                                <span class="blind">도어 선택</span>
+                                                <span class="door_img"><img src="" alt=""></span>
+                                            </button>
                                             <div class="default_img"><img src="" alt=""></div>
                                         </div>
                                         <span class="model_name">노크온 매직스페이스</span>
@@ -45,7 +62,7 @@
                                 <!--// model_set_wrap -->
                             </div>
                         </div>
-                        <!--// 좌측 모델 시뮬 영역 -->
+                        <!--// 모델 시뮬 영역 -->
                         <!-- 우측 스텝 영역 -->
                         <div class="model_simul_step_wrap" data-simul-step="0">
                             <!-- STEP 1 -->
@@ -56,12 +73,50 @@
                                         <span class="tit">제품 선택하기</span>
                                     </div>
                                 </dt>
-                                <dd></dd>
-                            </dl>
-                            <!--// STEP 1 -->
-                            <!-- STEP 2 -->
-                            <dl class="simul_step2">
-                                <dt>
+                                <dd>
+                                    <div class="model_choice_area">
+                                        <div class="slide-content ui_carousel_list">
+                                            <ul class="slide-track ui_carousel_track">
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    11111
+                                                </li>
+                                                <!-- //slide -->
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide ">
+                                                    22222
+                                                </li>
+                                                <!-- //slide -->
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    33333
+                                                </li>
+                                                <!-- //slide -->
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    44444
+                                                </li>
+                                                <!-- //slide -->
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    55555
+                                                </li>
+                                                <!-- //slide -->
+                                            </ul>
+                                        </div>
+
+                                        <div class="slide-controls">
+                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                        </div>
+                                    </div>
+                        </div>
+                        </dd>
+                        </dl>
+                        <!--// STEP 1 -->
+                        <!-- STEP 2 -->
+                        <dl class="simul_step2">
+                            <dt>
                                     <div class="simul_tit">
                                         <span class="step">STEP 2.</span>
                                         <span class="tit">소재와컬러 선택하기
@@ -75,29 +130,31 @@
                                         </span>
                                     </div>
                                 </dt>
-                                <dd></dd>
-                            </dl>
-                            <!--// STEP 2 -->
-                            <!-- STEP 3 -->
-                            <dl class="simul_step3">
-                                <dt>
+                            <dd>
+                                <div class="model_simul_area area2"></div>
+                            </dd>
+                        </dl>
+                        <!--// STEP 2 -->
+                        <!-- STEP 3 -->
+                        <dl class="simul_step3">
+                            <dt>
                                     <div class="simul_tit">
                                         <span class="step">STEP 3.</span>
                                         <span class="tit">기능과 가격을 비교하여 모델 정하기</span>
                                     </div>
                                 </dt>
-                                <dd></dd>
-                            </dl>
-                            <!--// STEP 3 -->
-                        </div>
-                        <!--// 우측 스텝 영역 -->
+                            <dd></dd>
+                        </dl>
+                        <!--// STEP 3 -->
                     </div>
-                    <!--// 모델 체험하기 영역 -->
+                    <!--// 우측 스텝 영역 -->
                 </div>
+                <!--// 모델 체험하기 영역 -->
             </div>
-            <!-- // 오브제 콜렉션 모델 체험하기 -->
         </div>
-        @@include('./common/footer.html')
+        <!-- // 오브제 콜렉션 모델 체험하기 -->
+    </div>
+    @@include('./common/footer.html')
     </div>
 
 
