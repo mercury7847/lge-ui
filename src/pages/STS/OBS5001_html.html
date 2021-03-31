@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
+    @@include('./common/head.html', {
+        pageCSS: ["STS/STS"],
+        pageJS: [
+        ],
+        pageTitle: "스토리 | LG전자",
+        pageDesc: "LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다."
+    })
+<!--            "home/storyHome","components/KRP0005"-->
+    <!-- //210330 스키티챗JS 추가 -->
+<body>
+    <!-- 210330 이지패스+스티키챗 케이스로 클래스 추가 -->
+    <div class="wrap sticky-easy">
+    <!-- //210330 이지패스+스티키챗 케이스로 클래스 추가 -->
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            "mobileCase": "main",
+            hiddenTitle : "스토리와 함께 삶을 채워보세요."
+        })
+        <!-- //210311_H1추가 -->
+
+        <div class="container">
+            <!-- 스토리홈 -->
+            <div class="contents story-main" data-story-list="/lg5-common/data-ajax/home/storyList.json">
+                <div class="cont-wrap">
+                    <div class="story-section user_story">
+                        <div class="inner">
+                            <h2 class="title">LG가전의 다양한 스토리를 만나보세요.</h2><!-- 210325 수정 [문구 수정] -->
+                            <!--  [D] height 체크해주세요 -->
+                            <div class="flexbox-wrap">
+                            </div>
+                            <button type="button" class="btn-moreview block"><span>스토리 더보기</span></button>
+                        </div>
+                    </div>
+                    <div class="story-section new_story">
+                        <div class="inner">
+                            <h2 class="title">새로운 스토리를 확인해보세요.</h2>
+                            <div class="flexbox-wrap">
+                                @@loop('./common/modules/story-list.html', [
+                                    {
+                                        "boxType" : "image",
+                                        "image" : "data-pc-src='/lg5-common/images/STS/img-story-01.jpg' data-m-src='/lg5-common/images/STS/img-story-01-m.jpg'",
+                                        "flag" : "제품 활용 팁",
+                                        "title" : "혁신이 만들어낸<br>TV 이상의 작품",
+                                        "tags" : ["가을","LGOLEDR"],
+                                        "date" : "방금 전"
+                                    },{
+                                        "boxType" : "video",
+                                        "image" : "data-src='/lg5-common/images/STS/thumb-story-01.jpg'",
+                                        "flag" : "광고/켐페인 영상",
+                                        "title" : "처음 만나는 공간인테리어 가전<br>LG Objet Collection",
+                                        "tags" : ["가을","공간인테리어"],
+                                        "date" : "4시간 전"
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-pc-src='/lg5-common/images/STS/img-story-02.jpg' data-m-src='/lg5-common/images/STS/img-story-02-m.jpg'",
+                                        "flag" : "비하인드 스토리",
+                                        "title" : "나만 알고 있는<br>제주의 숨은 힐링",
+                                        "tags" : ["가을","WING에담다"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "video",
+                                        "image" : "data-src='/lg5-common/images/STS/thumb-story-02.jpg'",
+                                        "flag" : "광고/켐페인 영상",
+                                        "title" : "당신의 건강까지 지켜주는<br>진짜 스타일러는 스타일러 뿐",
+                                        "tags" : ["가을","미세먼지"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "video",
+                                        "image" : "data-src='/lg5-common/images/STS/thumb-story-03.jpg'",
+                                        "flag" : "광고/켐페인 영상",
+                                        "title" : "하루의 스트레스를 날려주는<br>‘LG힐링미 안마의자’를 만나…",
+                                        "tags" : ["가을","2020NEW"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-pc-src='/lg5-common/images/STS/img-story-03.jpg' data-m-src='/lg5-common/images/STS/img-story-03-m.jpg'",
+                                        "flag" : "비하인드 스토리",
+                                        "title" : "트롬건조 하나면<br>뽀송뽀송한 빨래…",
+                                        "tags" : ["가을","LifeWithLG"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-pc-src='/lg5-common/images/STS/img-story-04.jpg' data-m-src='/lg5-common/images/STS/img-story-04-m.jpg'",
+                                        "flag" : "제품 활용 팁",
+                                        "title" : "써볼수록 따져볼수록<br>역시 워시타워",
+                                        "tags" : ["가을","LifeWithLG"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-src='/lg5-common/images/STS/img-story-05.jpg'",
+                                        "flag" : "제품 활용 팁",
+                                        "title" : "이젠 밖보단 집에서<br>수제 홈맥 타임!",
+                                        "tags" : ["가을","LG홈브루"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-src='/lg5-common/images/STS/img-story-06.jpg'",
+                                        "flag" : "비하인드 스토리",
+                                        "title" : "나에게 부족한 건,<br>초고화력이었다",
+                                        "tags" : ["가을","초고화력"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "boxType" : "video",
+                                        "image" : "data-src='/lg5-common/images/STS/thumb-story-04.jpg'",
+                                        "flag" : "광고/켐페인 영상",
+                                        "title" : "디오스가 새로움을 OPEN<br>LG DIOS 얼음정수기냉장고",
+                                        "tags" : ["가을","스마트홈"],
+                                        "date" : "2020.11.25"
+                                    },{
+                                        "tagList" : true,
+                                        "tags" : ["가전은역시LG","웰빙","코로나싱글라이프싱글","미세먼지","반려동물"]
+                                    },{
+                                        "boxType" : "image",
+                                        "image" : "data-src='/lg5-common/images/STS/img-story-07.jpg'",
+                                        "flag" : "비하인드 스토리",
+                                        "title" : "김치톡톡 덕분에<br>오늘 김치도 잘 먹…",
+                                        "tags" : ["가을","김치유산균"],
+                                        "date" : "2020.11.25"
+                                    }
+                                ])
+                            </div>
+                            <button type="button" class="btn-moreview block"><span>스토리 더보기</span></button>
+                        </div>
+                    </div>
+                    <div class="story-section">
+                        <div class="inner">
+                            <h2 class="title">실제 사용 리뷰를 확인해보세요.</h2>
+                            <div class="story-review slide-wrap">
+                                <div class="indi-wrap">
+                                    <ul class="indi-conts ui_carousel_dots">
+                                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                    </ul>
+                                </div>
+                                <div class="slide-content ui_carousel_list">
+                                    <div class="flexbox-wrap slide-track ui_carousel_track">
+                                        @@loop('./common/modules/story-list.html', [
+                                            {
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-01.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "워시타워 하나면 뽀송뽀송한 빨래<br>워시타워 하나면 뽀송뽀송한 빨래",
+                                                "link" : "생활가전",
+                                                "sns" : [
+                                                    {"class" : "blog", "text" : "네이버 블로그"},
+                                                    {"class" : "post", "text" : "네이버 포스트"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-02.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "메리디안의 기술로 만든 원음의 공간메리디안의 기술로 만든 원음",
+                                                "link" : "TV/AV",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"},
+                                                    {"class" : "blog", "text" : "네이버 블로그"},
+                                                    {"class" : "post", "text" : "네이버 포스트"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-03.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "피부 속부터 밝혀주는 프리미엄 피부 속부터 밝혀주는 프리미엄",
+                                                "link" : "뷰티/의료기기",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"}
+                                                ]
+                                            },{
+                                                "carousel" : true,
+                                                "boxType" : "review",
+                                                "image" : "data-src='/lg5-common/images/STS/img-story-review-04.jpg'",
+                                                "flag" : "체험리뷰",
+                                                "title" : "보안과 편리함을 동시에! 보안과 편리함을 동시에!",
+                                                "link" : "모바일",
+                                                "sns" : [
+                                                    {"class" : "instagram", "text" : "인스타그램"}
+                                                ]
+                                            }
+                                        ])
+                                    </div>
+                                </div>
+                                <div class="slide-controls">
+                                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                </div>
+                            </div>
+                            <div class="btn-more">
+                                <a href="#n" class="btn-link"><span>더 보기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 스토리홈 -->
+        </div>
+
+        @@include('./common/footer.html')
+        <div class="floating-wrap">
+            <div class="floating-menu">
+                <!-- 210330 스키티챗 추가 -->
+                <!-- component / Sticky chat -->
+                @@include('./common/partials/KRP0005.html')
+                <!-- // component / Sticky chat -->
+                <!-- //210330 스키티챗 추가 -->
+                <div class="easy-path">
+                    <div class="inner">
+                        <a href="/lg5-common/data-ajax/home/tag_mnger.html" data-is-login="Y">
+                            <p>라이프 스타일에 맞는 가전을 찾아볼까요?</p>
+                        </a>
+                    </div>
+                    <article id="popup-tagMnger" class="popup-wrap"></article>
+                </div>
+                
+            </div>
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+        </div>
+    </div>
+</body>
+</html>
