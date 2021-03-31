@@ -57,7 +57,7 @@
                 '{{# } #}}' +
                 '<label for="engineer{{index}}">' +
                     '<div class="img">' +
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                        '<img src="{{item.image}}" alt="{{item.engineerName}} 엔지니어 사진" aria-hidden="true">' +
                     '</div>' +
                     '<p class="tit">{{item.engineerName}}</p>' +
                     '<p class="desc">{{item.centerName}}</p>' +
@@ -1189,7 +1189,7 @@
 
             $engineerBox.find('.engineer-img img').attr({
                 'src': data.image,
-                'alt': data.engineerName
+                'alt': data.engineerName + ' 엔지니어 사진'
             });                             
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);
