@@ -70,7 +70,6 @@ vcui.define('ui/scrollNavi', ['jquery', 'vcui', 'ui/smoothScroll'], function ($,
                         self.isScrollEnd = true;
                         self.selectedIndex = self._getIndexWithX(self.posArr, -data.x+self.areaWidth/2);
                         
-                        // console.log(self.selectedIndex);
                         /*
                         if(self.interval != null) {
                             clearInterval(self.interval);

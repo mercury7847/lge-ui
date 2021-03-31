@@ -9,7 +9,6 @@
  $(function () {
     vcui.require(['ui/rangeSlider'], function () {
         $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
-            console.log(data);
         });
     });
 });

@@ -100,7 +100,6 @@
 
             /*
             openModalFromHtml: function(html) {
-                console.log(html);
                 $('#event-modal').html(html).vcModal();
             },
             */

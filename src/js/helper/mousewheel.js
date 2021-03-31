@@ -124,7 +124,6 @@ vcui.define('helper/mousewheel', ['jquery', 'vcui'], function ($, core) {
         if (deltaY === 0 && deltaX === 0) {
             return;
         }
-        console.log(deltaX, deltaY);
 
         // Need to convert lines and pages to pixels if we aren't already in pixels
         // There are three delta modes:

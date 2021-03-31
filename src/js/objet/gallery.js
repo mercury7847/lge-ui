@@ -11554,7 +11554,6 @@ $(function() {
         $(".carousel-item").removeClass("active");
         $(this).parent("li").addClass("active");
         var clickActive = $(".carousel-item:visible").index($(".carousel-item.active"));
-        //console.log(clickActive);
         if ($(".gllery_slider").hasClass("full") === false) {
             //$(".gllery_slider.full").css({"opacity":0});
             $(".carousel-item").each(function() {
