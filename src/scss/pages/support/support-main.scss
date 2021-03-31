@@ -2691,6 +2691,18 @@
         @include tablet {
             .support-nav-container {
                 .support-list-slider {
+                    .slide-controls {
+                        display: block;
+
+                        .btn-arrow {
+                            &.prev {
+                                left:0;
+                            }
+                            &.next {
+                                right:0;
+                            }
+                        }
+                    }
                     .indi-wrap {
                         bottom:20px;
                     }

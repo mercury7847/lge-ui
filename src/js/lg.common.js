@@ -298,17 +298,27 @@ var isApp = function(){
         _addImgOnloadEvent: function(){
             var self = this;
             $('img').not('[data-pc-src]').on('error', function(e){
+                var img = this;
+                img.onerror = null;
+                if ( !img.complete || !img.naturalWidth ) {
+                    img.src = self.NO_IMAGE;
+                    img.classList.add('no-img');
+                }
+                /*
                 $(this).off('error');
                 $(this).attr('src', self.NO_IMAGE);
                 $(this).addClass('no-img');
+                */
             });
         },
 
         addImgErrorEvent: function(img){
             var self = this;
             img.onerror = null;
-            $(img).attr('src', self.NO_IMAGE);
-            $(img).addClass('no-img');
+            if ( !img.complete || !img.naturalWidth ) {
+                img.src = self.NO_IMAGE;
+                img.classList.add('no-img');
+            }
         },
 
         addModelNameImgErrorEvent: function(img){

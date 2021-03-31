@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke="#000" stroke-width="1.5">
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-128 -3734) translate(128 414) translate(0 3215) translate(0 105) translate(.195)">
+                                <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                            </g>
+                            <g>
+                                <g>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M1.805 2.521l6.751.291c2.898.125 5.8.124 8.697-.003l6.552-.288h0l-1 11.879 1.87 17.386c.077.716-.366 1.385-1.055 1.595C20.075 34.461 16.503 35 12.904 35c-3.607 0-7.24-.542-10.902-1.626-.694-.206-1.142-.879-1.065-1.599L2.805 14.4h0l-1-11.879z" transform="translate(-128 -3734) translate(128 414) translate(0 3215) translate(0 105) translate(.195) translate(19 14)"/>
+                                    <path d="M2.805 14.179s3.332.907 10 .907c3.91 0 7.244-.303 10-.907M2.805 8.179s3.332.695 10 .695c3.91 0 7.244-.232 10-.695M5.805 2.5l.55-.979C6.708.891 7.375.5 8.099.5h9.364c.698 0 1.345.364 1.708.96l.634 1.04h0" transform="translate(-128 -3734) translate(128 414) translate(0 3215) translate(0 105) translate(.195) translate(19 14)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
