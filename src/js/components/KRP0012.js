@@ -47,14 +47,14 @@
 
                 //상품 리뷰 위젯
                 if(isMobile){
-                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
+                    $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
                 } else {
                     $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
                 }
 
                 //상품 소셜 위젯
                 if(isMobile){
-                    $contWrap.append('<style>.crema-product-reviews > iframe { maxwidth: 100% !important; }</style><div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "40" + '"></div>');
+                    $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "40" + '"></div>');
                 } else {
                     $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "39" + '"></div>');
                 }
