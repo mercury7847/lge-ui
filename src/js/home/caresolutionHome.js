@@ -279,7 +279,11 @@ $(function(){
                         slidesToShow: 4,
                         slidesToScroll: 1,
                         variableWidth : false,
+<<<<<<< HEAD
+                        // centerMode : true,
+=======
                         // centerMode:true,
+>>>>>>> 43bd55ccf14af8aa53f05f13e9fb974fa527f617
                         responsive: [
                             {
                                 breakpoint: 10000,
