@@ -77,7 +77,7 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '                   data-pc-src="{{obj.pcImagePath}}"'+ 
     '                   data-m-src="{{obj.mobileImagePath}}" onError="lgkorUI.addImgErrorEvent(this)">'+
     '               </div>\n'+
-    '               <div class="product-info">\n'+
+    '               <div class="product-info {{obj.textClass}}">\n'+
     '                   <p class="tit">{{#raw obj.title}}</p>\n'+
     '                   <div class="date">{{obj.date}}</div>\n'+
     '                   <a href="{{obj.modelUrlPath}}" class="btn border">자세히 보기</a>\n'+
@@ -206,7 +206,8 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
-                "modelUrlPath" : "#1"
+                "modelUrlPath" : "#1",
+                "textClass":"fc-black"
             },
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
@@ -214,7 +215,8 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2020.11.01~2020.11.30",
-                "modelUrlPath" : "#2"
+                "modelUrlPath" : "#2",
+                "textClass" : "fc-white"
             }
         ]
 
