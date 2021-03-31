@@ -1277,6 +1277,7 @@
         }
 
         @include mobile {
+            overflow:hidden;
             padding:24px 16px;
 
             .had-pd-inner {
