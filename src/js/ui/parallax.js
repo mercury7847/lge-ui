@@ -36,7 +36,6 @@ vcui.define('ui/parallax', ['jquery', 'vcui'], function ($, core) {
             core.util.loadImages($('img[data-src]')).done(function(){
                 self.update();
                 self._bindEvents();
-                // console.log('loadImages complete');
             });
             
         },
@@ -99,8 +98,6 @@ vcui.define('ui/parallax', ['jquery', 'vcui'], function ($, core) {
             var sy = self.scrollTop-self.stickyRect.top + self.marginTop;
             var percent = parseInt(opt.totalFrame)/ht*sy/parseInt(opt.totalFrame)*100;
             percent = Math.max(0, Math.min(100, percent));
-
-            // console.log(self.percent, percent)
 
             if(self.percent == percent){
                 self.isComplete = true;

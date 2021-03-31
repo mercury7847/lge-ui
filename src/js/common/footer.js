@@ -49,7 +49,6 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 self.$el.find('.link-wrap .link-section .dep2-wrap').each(function(idx, item){
                     var id = $(item).data('groupId');
-                    //console.log(id)
                     $(item).find('> li').each(function(cdx, child){
                         if (itemList[id] instanceof Array) {
                             itemList[id].push($(child).clone());
@@ -107,9 +106,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 $('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
                     $(item).find('> a').on('click', function(e){
-                        // console.log($(e.currentTarget).closest('.btn_open').length)
                         if(!$(e.currentTarget).closest('.btn_open').length){
-                            // console.log(this)
                             var href = $(e.currentTarget).attr('href');
                             location.href =href;
                         }

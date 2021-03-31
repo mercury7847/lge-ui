@@ -1242,8 +1242,8 @@ var AuthManager = function() {
                     if (resultData.resultFlag == 'Y') {
                         //$(el).find('span').html(RESENDTEXT);
                         
-                        console.log($(el))
-                        console.log($(el).html())
+                        //console.log($(el))
+                        //console.log($(el).html())
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
                     }

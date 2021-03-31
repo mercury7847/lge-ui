@@ -614,8 +614,6 @@ $(function() {
 
         // 시작시 한 스탭 이동시킴.
         setTimeout(function(){
-
-            console.log(currentStep);
             if(currentStep<1) wheelScene(1);
         }, 1000);
 

@@ -427,7 +427,6 @@
             }).on('click', '.btn-group button:last-child', function(e){
 
                 // 필터 적용
-                // console.log('필터 적용');
                 e.preventDefault();
                 self._setOptApply();
             });

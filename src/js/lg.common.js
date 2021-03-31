@@ -666,8 +666,6 @@ var isApp = function(){
             var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
                 index = referrer.indexOf('lge.co.kr');
-                console.log("referrer:", referrer)
-                console.log("_historyBack:", index, referrer)
                 if(index > -1){
                     break;
                 }
@@ -1621,7 +1619,6 @@ var isApp = function(){
             var moduleIDs = vcui.array.map(self.STICKY_MODULES, function(item){
                 return item.uniqueID;
             });
-            //console.log("moduleIDs :", moduleIDs);
 
             var uniqueID = self.setUniqueID();
             while(vcui.array.has(moduleIDs, uniqueID)) uniqueID = setUniqueID();
@@ -1929,7 +1926,6 @@ var isApp = function(){
 
         hashString2Obj:function(str) {
             var orig =  decodeURIComponent("{"+str+"}"); //"{"+str+"}";
-            //console.log(orig);
             var decompress = lgkorUI.stringDecompress(orig);
             var result = JSON.parse(decompress);
             return result;
