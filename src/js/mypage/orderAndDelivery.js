@@ -1321,6 +1321,7 @@
                     }
 
                     if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+                    else list[idx].orderCancelAbleYn = "N";
 
                     if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
                         list[idx].apiType = "OBS";
@@ -1355,6 +1356,7 @@
                     }
 
                     if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+                    else list[idx].orderCancelAbleYn = "N";
 
                     list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
 
@@ -2117,6 +2119,8 @@
 
         var bankName = "";
         var bankAccountNo = "";
+        var paymentUser = "";
+        var birthDt = "";
         if(popup.data("isBank")){
             bankName = popup.find('.bank-input-box select option:selected').val();
             bankAccountNo = popup.find('.bank-input-box input').val();
