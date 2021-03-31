@@ -279,7 +279,7 @@ $(function(){
                         slidesToShow: 4,
                         slidesToScroll: 1,
                         variableWidth : false,
-                        centerMode:true,
+                        // centerMode:true,
                         responsive: [
                             {
                                 breakpoint: 10000,
