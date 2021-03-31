@@ -420,6 +420,7 @@
 			.list {
 				display:flex;
 				flex-flow:row wrap;
+				flex-wrap:wrap;
 				width:50%;
 				&:after {
 					content:' ';
@@ -432,6 +433,7 @@
 					a {
 						display:block;
 						position:relative;
+						height:100%;
 						padding:32px 56px 40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
