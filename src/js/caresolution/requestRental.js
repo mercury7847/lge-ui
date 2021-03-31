@@ -47,6 +47,8 @@
 
     var selectPaymentMethod;
 
+    var contractUserPhone;
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
             setting();
@@ -327,13 +329,15 @@
         $('.search-postcode').on('click', function(e){
             e.preventDefault();
 
-            getPostCode($(this).closest('.conts'));
+            var idx = $(this).closest('.lists').index();
+            getPostCode($(this).closest('.conts'), idx);
         });
 
         $('.openDelivery').on('click', function(e){
             e.preventDefault();
 
-            openDeliveryPop($(this).closest('.conts'))
+            var idx = $(this).closest('.lists').index();
+            openDeliveryPop($(this).closest('.conts'), idx)
         });
 
         $('input[name=nicePopChker]').on('change', function(e){
@@ -555,7 +559,7 @@
                 if(data == "Y"){
                     chk = compareInputData(installAdress, step2Validation.getValues());
                 }
-
+                
                 if(!chk){
                     lgkorUI.alert("", {
                         title: "설치 가능여부 확인이 필요합니다."
@@ -689,9 +693,6 @@
     function setInstallAdress(){
         var values = step2Validation.getValues(); 
         installAdress = {
-            userName: values.userName,
-            userTelephone: values.userTelephone,
-            userPhone: values.userPhone,
             zipCode: values.zipCode,
             userAddress: values.userAddress,
             detailAddress: values.detailAddress
@@ -913,9 +914,7 @@
             for(var str in step1Value){
                 step2Block.find('input[name=' + str +']').val(step1Value[str]);
             }
-
-            var telephone = step2Block.find('input[name=userTelephone]');
-            telephone.val(telephone.data('equalNumber'));
+            step2Block.find('input[name=userTelephone]').val(contractUserPhone);
 
             step2Block.find('input[name=detailAddress]').val(step1Validation.getValues('detailAddress'));
 
@@ -923,6 +922,26 @@
         } else{
             step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
         }
+        setInputData('installAbled', "N");
+        step2Block.find('button.installAbledConfirm').prop('disabled', false);
+    }
+
+    //설치정보 배송지목록 선택 시
+    function setInstallInfos(data){
+        step2Block.find('input[name=userName]').val(data.receiverUser);
+        step2Block.find('input[name=userPhone]').val(data.phoneNumber);
+        step2Block.find('input[name=userTelephone]').val(data.telephoneNumber);
+        step2Block.find('input[name=zipCode]').val(data.zipCode);
+        step2Block.find('input[name=userAddress]').val(data.userAddress);
+        step2Block.find('input[name=detailAddress]').val(data.detailAddress);
+        
+        step2Block.find('input[name=installInpuType]').prop('checked', false);
+
+        step2Block.data("infoType", "list");
+    }
+    //설치정보 주소찾기 선택시
+    function setInstallInfosSearch(){
+        step2Block.find('input[name=installInpuType]').prop('checked', false);
     }
 
     //납부카드확인...
@@ -1020,19 +1039,26 @@
     }
 
     //우편번호 찾기 연동...
-    function getPostCode(item){
+    function getPostCode(item, idx){
         addressFinder.open(function(data){
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+            
+            if(idx){
+                setInputData('installAbled', "N");
+                step2Block.find('input[name=detailAddress]').prop('disabled', false);
+                step2Block.find('button.installAbledConfirm').prop('disabled', false);
 
-            step2Block.find('input[name=detailAddress]').prop('disabled', false);
-            step2Block.find('button.installAbledConfirm').prop('disabled', false);
+                setInstallInfosSearch();
+            } else{
+                contractUserPhone = "";
+            }
         });
     }
 
     //배송지 목록 팝업 오픈...
-    function openDeliveryPop(item){
+    function openDeliveryPop(item, idx){
         deliveryMnger.open(function(data){
             item.find('input[name=zipCode]').val(data.zipCode);
             item.find('input[name=userAddress]').val(data.userAddress);
@@ -1040,8 +1066,15 @@
 
             $('.err-address').hide();
 
-            step2Block.find('input[name=detailAddress]').prop('disabled', false);
-            step2Block.find('button.installAbledConfirm').prop('disabled', false);
+            if(idx){
+                setInputData('installAbled', "N");
+                step2Block.find('input[name=detailAddress]').prop('disabled', false);
+                step2Block.find('button.installAbledConfirm').prop('disabled', false);
+
+                setInstallInfos(data);
+            } else{
+                contractUserPhone = data.telephoneNumber;
+            }
         });
     }
 
@@ -1226,8 +1259,6 @@
         };
 
         lgkorUI.showLoading();
-
-        console.log("### rentalRequest ###", sendata);
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
