@@ -412,10 +412,12 @@ $(function() {
             });
 
             stepLens = wheelArr.length - 1;
-            console.log("winHeight", winHeight);
-            console.log("totalHeight", totalHeight);
+            // console.log("winHeight", winHeight);
+            // console.log("totalHeight", totalHeight);
+            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
+            $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
             if (page !== undefined) {
                 currentPage = page;
@@ -464,45 +466,45 @@ $(function() {
         });
 
         // 접근성 탭 이동시 화면처리
-        $(document).on('focusin', function(e) {
+        // $(document).on('focusin', function(e) {
 
-            if ($.contains($('.Objet-wrap')[0], e.target)) {
-                currentPage = pageLens;
-                currentStep = stepLens;
-            } else if ($.contains($('.Objet-hero')[0], e.target)) {
-                // currentPage = 0;
-                // currentStep = 0;
-            }
+        //     if ($.contains($('.Objet-wrap')[0], e.target)) {
+        //         currentPage = pageLens;
+        //         currentStep = stepLens;
+        //     } else if ($.contains($('.Objet-hero')[0], e.target)) {
+        //         // currentPage = 0;
+        //         // currentStep = 0;
+        //     }
 
-        });
+        // });
 
         //전시기록 더보기...
-        var $artGuide = $('.Objet-section.art-guide');
-        var $artMoreBtn = $artGuide.find('button.btn-moreview');
-        $artGuide.find('.art-guide-list > li:gt(5)').hide();
+        // var $artGuide = $('.Objet-section.art-guide');
+        // var $artMoreBtn = $artGuide.find('button.btn-moreview');
+        // $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
-        var artGuideLen = $artGuide.find('.art-guide-list > li').length;
-        if (artGuideLen < 6) $artMoreBtn.hide();
+        // var artGuideLen = $artGuide.find('.art-guide-list > li').length;
+        // if (artGuideLen < 6) $artMoreBtn.hide();
 
 
-        $artMoreBtn.on('click', function(e) {
-            e.preventDefault();
+        // $artMoreBtn.on('click', function(e) {
+        //     e.preventDefault();
 
-            var $span = $(this).find('span').eq(0);
-            var toggleTxt = $(this).data('toggleTxt');
-            var txt = $span.text();
-            $(this).data('toggleTxt', txt);
+        //     var $span = $(this).find('span').eq(0);
+        //     var toggleTxt = $(this).data('toggleTxt');
+        //     var txt = $span.text();
+        //     $(this).data('toggleTxt', txt);
 
-            if ($(this).hasClass('fold')) {
-                $(this).removeClass('fold');
-                $span.text(toggleTxt);
-                $artGuide.find('.art-guide-list > li:gt(5)').hide();
-            } else {
-                $(this).addClass('fold');
-                $span.text(toggleTxt);
-                $artGuide.find('.art-guide-list > li').show();
-            }
-        });
+        //     if ($(this).hasClass('fold')) {
+        //         $(this).removeClass('fold');
+        //         $span.text(toggleTxt);
+        //         $artGuide.find('.art-guide-list > li:gt(5)').hide();
+        //     } else {
+        //         $(this).addClass('fold');
+        //         $span.text(toggleTxt);
+        //         $artGuide.find('.art-guide-list > li').show();
+        //     }
+        // });
 
 
         if (isApplication) {
