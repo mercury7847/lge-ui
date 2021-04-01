@@ -768,7 +768,7 @@
                         });
                         self.$searchResultCategory.show();
                         self.$searchResultCategory.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                        noData = false;
+                        //noData = false;
                     } else {
                         self.$searchResultCategory.hide();
                     }
@@ -980,6 +980,7 @@
                     self.curationLayer.setCurationData(data);
 
                     //noData 체크
+                    console.log('no?',noData);
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');

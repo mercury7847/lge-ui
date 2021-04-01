@@ -98,15 +98,23 @@
             z-index: 1;
         }
         .product-image {
+            min-height: 250px;
             a {
                 display: block;
                 text-align: center;
                 img {
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 250px;
                 }
             }
-
+            @include mobile {
+                min-height: 200px;
+                a {
+                    img {
+                        max-width: 200px;
+                    }
+                }
+            }
 
             .slide-wrap {
                 .indi-wrap {
