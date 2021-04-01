@@ -15,7 +15,11 @@ br.m {
 		line-height:480px;
 		text-align:center;
 		.txt-wrap {
-			margin-top:-80px;
+			margin-top:96px;
+            vertical-align:top;
+            .tit {
+                color:#000;
+            }
 		}
 		@include mobile {
 			height:270px;
@@ -34,7 +38,7 @@ br.m {
     }
     .csn-tab-contents .cont-wrap .section .tit-wrap .tit {
         border-bottom:none;
-        font-size:36px;
+        font-size:32px;
         line-height:52px;
         text-align:center;
         @include mobile {
@@ -87,7 +91,7 @@ br.m {
             width:auto;
             padding:36px 32px;
             border-radius:8px;
-            border:1px solid #ddd;
+            // border:1px solid #ddd;
             background:none;
             @include mobile {
                 width:100%;

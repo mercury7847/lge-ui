@@ -1,21 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
     <g fill="none" fill-rule="evenodd">
         <g>
-            <g>
-                <g>
-                    <g>
-                        <path d="M0 0H64V64H0z" opacity=".3" transform="translate(-1004 -7311) translate(270 7166) translate(702 100) translate(32 45)"/>
-                        <g stroke-width="2">
-                            <path stroke="#000" d="M37 25c-3.314 0-6.314-1.343-8.485-3.515C26.343 19.314 25 16.314 25 13c0-2.613.835-5.03 2.252-7l-25.358.005c-.247.026-.467.143-.627.315C1.1 6.5 1 6.737 1 7l.004 36.233c.061 1.88.864 3.572 2.125 4.794C4.389 49.248 6.107 50 8 50l29.935-.062c1.712-.228 3.229-1.076 4.317-2.31S44 44.773 44 43s-.66-3.394-1.748-4.628C40.97 36.918 39.092 36 37 36V25z" transform="translate(-1004 -7311) translate(270 7166) translate(702 100) translate(32 45) translate(7 6)"/>
-                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M7 22L27.905 22M7 16L24 16" transform="translate(-1004 -7311) translate(270 7166) translate(702 100) translate(32 45) translate(7 6)"/>
-                            <path stroke="#000" d="M9.754 49.996l28.182-.058c1.712-.228 3.228-1.077 4.317-2.31C43.34 46.393 44 44.773 44 43c0-1.772-.659-3.39-1.744-4.63-1.09-1.247-2.61-2.112-4.328-2.37l-24.682-.001C14.351 37.55 15 39.449 15 41.5c0 2.11-.689 4.06-1.853 5.638-.886 1.2-2.048 2.184-3.393 2.858z" transform="translate(-1004 -7311) translate(270 7166) translate(702 100) translate(32 45) translate(7 6)"/>
-                            <g stroke="#DA0F47" transform="translate(-1004 -7311) translate(270 7166) translate(702 100) translate(32 45) translate(7 6) translate(24)">
-                                <circle cx="13" cy="13" r="12"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 13L18 13M13 8L13 18"/>
-                            </g>
-                        </g>
-                    </g>
+            <path d="M0 0H64V64H0z"/>
+            <g transform="translate(6.5 12.5)">
+                <g stroke="#000" stroke-width="2">
+                    <path d="M28.926 28.5H9.703c-1.254 3.35-3.518 6.194-6.372 8.15.654.531 1.487.85 2.395.85h19.4c1.05 0 2-.425 2.687-1.113.688-.688 1.113-1.638 1.113-2.687v-5.2z" transform="translate(21.574)"/>
+                    <path d="M10.152 19.5c.32 1.283.49 2.622.49 4 0 1.74-.273 3.42-.773 5.001l19.057-.001v-9H10.152zM4.679 10.499c2.658 2.294 4.633 5.427 5.491 9.001h18.756v-9L4.68 10.499z" transform="translate(21.574)"/>
+                    <path d="M25.126 1.5h-19.4c-1.05 0-2 .425-2.687 1.113-.687.688-1.113 1.638-1.113 2.687l.001 3.57c.91.461 1.76 1.006 2.542 1.63h24.457V5.3c0-1.05-.425-2-1.113-2.687-.687-.688-1.637-1.113-2.687-1.113z" transform="translate(21.574)"/>
                 </g>
+                <circle cx="16" cy="23" r="16" stroke="#000" stroke-width="2"/>
+                <text fill="#DA0F47" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="18" font-weight="400">
+                    <tspan x="10.5" y="30.5">P</tspan>
+                </text>
             </g>
         </g>
     </g>
