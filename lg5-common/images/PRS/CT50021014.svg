@@ -1,0 +1,23 @@
+<svg id="img_Printer_64" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="img_Printer_64-2" data-name="img_Printer_64">
+    <g id="Circle_64">
+      <g id="Rectangle" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5">
+        <rect width="64" height="64" rx="32" stroke="none"/>
+        <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="31.25" fill="none"/>
+      </g>
+    </g>
+    <g id="ic" transform="translate(14.499 24.5)">
+      <g id="printer">
+        <rect id="사각형_2" data-name="사각형 2" width="4" height="1.5" rx="0.75" transform="translate(5.499 4.5)"/>
+        <path id="사각형_1" data-name="사각형 1" d="M1.5,0h17A1.5,1.5,0,0,1,20,1.5V9H0V1.5A1.5,1.5,0,0,1,1.5,0Z" transform="translate(7.5 -7.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="빼기_2" data-name="빼기 2" d="M9907.5,2347H9903a1.5,1.5,0,0,1-1.5-1.5v-11a1.5,1.5,0,0,1,1.5-1.5h29a1.5,1.5,0,0,1,1.5,1.5v11a1.5,1.5,0,0,1-1.5,1.5h-4.5v-5h-20Z" transform="translate(-9899.999 -2331.499)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+      <g id="print" transform="translate(-0.001)">
+        <path id="사각형_4" data-name="사각형 4" d="M0,0H20V10.5A1.5,1.5,0,0,1,18.5,12H1.5A1.5,1.5,0,0,1,0,10.5Z" transform="translate(7.5 10.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.5"/>
+        <rect id="사각형_6" data-name="사각형 6" width="14" height="1.5" rx="0.75" transform="translate(10.5 17.5)"/>
+        <rect id="사각형_3" data-name="사각형 3" width="26" height="1.5" rx="0.75" transform="translate(4.5 9.5)"/>
+        <rect id="사각형_8" data-name="사각형 8" width="14" height="1.5" rx="0.75" transform="translate(10.5 14.5)"/>
+      </g>
+    </g>
+  </g>
+</svg>
