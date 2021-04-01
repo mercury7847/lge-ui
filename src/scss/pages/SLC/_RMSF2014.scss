@@ -235,9 +235,9 @@ br.m {
             .tabs-wrap {
                 margin-top: 26px;
                 &.btn-type {
-                    &:before {
-                        display: none;
-                    }
+                    // &:before {
+                    //     display: none;
+                    // }
                     .tabs {
                         // padding: 0;
                         > li {
