@@ -462,17 +462,17 @@ $(function() {
         });
 
         // 접근성 탭 이동시 화면처리
-        // $(document).on('focusin', function(e) {
+        $(document).on('focusin', function(e) {
 
-        //     if ($.contains($('.Objet-wrap')[0], e.target)) {
-        //         currentPage = pageLens;
-        //         currentStep = stepLens;
-        //     } else if ($.contains($('.Objet-hero')[0], e.target)) {
-        //         // currentPage = 0;
-        //         // currentStep = 0;
-        //     }
+            if ($.contains($('.Objet-wrap')[0], e.target)) {
+                currentPage = pageLens;
+                currentStep = stepLens;
+            } else if ($.contains($('.Objet-hero')[0], e.target)) {
+                // currentPage = 0;
+                // currentStep = 0;
+            }
 
-        // });
+        });
 
         //전시기록 더보기...
         var $artGuide = $('.Objet-section.art-guide');
