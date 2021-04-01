@@ -1009,4 +1009,9 @@
 		   }
 		}
 	}
+	.br {
+		@include mobile {
+			display:block;
+		}
+	}
 }
