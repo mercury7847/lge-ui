@@ -427,6 +427,10 @@
                                 
                             self.$engineerSlider.find('.slide-track').html(html);
                             self.$engineerSlider.vcCarousel('reinit');
+                        } else {
+                            lgkorUI.alert('', {
+                                title: '방문 가능한 다른 엔지니어가 없습니다.'
+                            });
                         }
                     } else {
                         if (data.resultMessage) {
@@ -543,15 +547,16 @@
                     time: data.time
                 }
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
+                    lgkorUI.hideLoading();
+                    
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
                         self.updateEngineer(infoData);
                     } else {
                         if (data.resultMessage) {
-                            self.$engineerPopup.vcModal('hide');
-                            
                             lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
