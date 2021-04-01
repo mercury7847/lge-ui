@@ -14,7 +14,7 @@
             })
             <!-- mypage -->
             <!-- 2021.03.05 -->
-            <div class="contents mypage orderAndDelivery-careDetail"        
+            <div class="contents mypage orderAndDelivery-detail"        
                 data-order-inquiry-list="/lg5-common/data-ajax/mypage/careOrderDetailList.json"
                 data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
                 data-order-cancel-popup="/lg5-common/data-ajax/mypage/orderCancelPop.json"
@@ -414,6 +414,40 @@
 
     <!-- 매월 납부금 할인 내역 -->
     <article id="popup-monthly-price" class="popup-wrap">
+    </article>
+    <!-- // 매월 납부금 할인 내역 -->
+
+    <!-- 매월 납부금 할인 내역 -->
+    <article id="popup-orderDetailView" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>주문 상세</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <div class="section-wrap">
+                <div class="sects">
+                    <div class="section-inner type0">
+                        <!-- 배송 설치 정보 -->
+                        <div class="inner-box shipping">
+                            <p class="inner-tit">배송 설치 정보 (실사용자)</p>
+                            <div class="dl-infolist-wrap">
+                                <ul class="lists"></ul>
+                            </div>
+                        </div>
+                        <!-- // 배송 설치 정보 -->
+    
+                        <!-- 결제 정보 -->
+                        <div class="inner-box payment">
+                            <p class="inner-tit">결제 정보</p>
+                            <div class="dl-infolist-wrap">
+                                <ul class="lists"></ul>
+                            </div>
+                        </div>
+                        <!-- // 결제 정보 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!-- // 매월 납부금 할인 내역 -->
 </body>

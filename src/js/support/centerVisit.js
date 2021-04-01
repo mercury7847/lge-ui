@@ -544,7 +544,8 @@
                     serviceType: data.serviceType,
                     lockUserId: data.lockUserId,
                     date: data.date,
-                    time: data.time
+                    time: data.time,
+                    beforeEngineerCode: $('#engineerCode').val()
                 }
 
                 lgkorUI.showLoading();

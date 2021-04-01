@@ -863,7 +863,8 @@
                     date: $('#date').val(),
                     time: $('#time').val(),
                     lockUserId: $('#lockUserId').val(),
-                    productCode: productCode
+                    productCode: productCode,
+                    beforeEngineerCode: $('#engineerCode').val()
                 }
 
                 param = $.extend(param, infoData);
