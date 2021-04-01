@@ -692,10 +692,10 @@
                 self.$downloadMainPage.show();
             });
 
-            //메뉴얼 확인 방법 팝업
+            //모델 확인 방법 팝업
             //카테고리 선택
-            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(0)', function(e,data){
-                var index = data.selectedIndex;
+            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(0)', function(e){
+                var index = this.selectedIndex;
                 var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(1)');
                 if(index == 0) {
                     selectbox.prop('disabled', true);
@@ -720,8 +720,8 @@
             });
 
             //모델 선택
-            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(1)', function(e,data){
-                var index = data.selectedIndex;
+            self.$modelCheckHelpPage.on('change', '.ui_selectbox:eq(1)', function(e){
+                var index = this.selectedIndex;
                 var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(1)');
                 var option = selectbox.find('option').eq(index);
                 self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
