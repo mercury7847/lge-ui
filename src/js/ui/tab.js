@@ -57,11 +57,13 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             self.$srText = $hide.length ? $hide : $('<em class="blind">' + self.options.selectedText + '</em>');
 
             var $child = self.$el.children().eq(0);
-
             if (!$child.is('ul')) {
+
                 self.options.tabsSelector = '>' + $child[0].tagName.toLowerCase() + self.options.tabsSelector;
                 if ($child.css('overflow') === 'hidden') {
-                    $child.vcSmoothScroll({eventPassthrough:'horizontal'});                    
+                    self.$smoothScroll = $child;
+                    self.$smoothScroll.vcSmoothScroll();   
+
                 }
             }
 
@@ -94,11 +96,15 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                 content: self.$contents.eq(index)
             });
         },
+        
 
         update: function update() {
             var self = this;
             self._findControls();
-            self._buildARIA();
+            self._buildARIA();                 
+
+            if(self.$smoothScroll[0]) self.$smoothScroll.vcSmoothScroll('refresh');  
+
         },
         getSelectIdx:function getSelectIdx(){
             return this.selectedIndex;
