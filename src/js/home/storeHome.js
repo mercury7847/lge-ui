@@ -457,6 +457,7 @@ $(function(){
                 $('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
                 $('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
+
                 $('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
                     
                     var categoryId = null;
@@ -492,6 +493,9 @@ $(function(){
                 }).vcTab();
 
 
+                $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
+
+
                 $(window).on('breakpointchange', function(e){
 
                     var breakpoint = window.breakpoint;    
@@ -503,6 +507,7 @@ $(function(){
                             slidesToShow: 3,
                             slidesToScroll: 3
                         });
+
                         
                     }else if(breakpoint.name == 'pc'){    
                         $('.ui_category_carousel').vcCarousel('destroy');                            
@@ -510,6 +515,8 @@ $(function(){
                 })
 
                 $(window).trigger('breakpointchange');
+
+                
 
 
             }
