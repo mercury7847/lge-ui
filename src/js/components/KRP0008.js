@@ -1017,10 +1017,24 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
-                        console.log("1",popupData);
-                        var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
+                        var $btmInfo = self.$careshipInfoPopup.find('dl.fee-txt');
+                        var find = $btmInfo.find('ul.bullet-list');
+                        var $bulletList = null;
+                        if(find.length > 0) {
+                            $bulletList = find.clone();
+                        }
+                        $btmInfo.empty();
+                        if(popupData.rtFreePeriodCount > 0) {
+                            $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
+                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + '회차</em>회차월 납부 금액 할인(0원)</dd>');
+                        } else {
+                            $btmInfo.append('<dd></dd>');
+                        }
+                        $btmInfo.find('dd').append($bulletList);
+                        /*
                         $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
                         $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
+                        */
 
                         var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
 
@@ -1085,10 +1099,24 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
-                        console.log("2",popupData);
                         var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
+                        var find = $btmInfo.find('ul.bullet-list');
+                        var $bulletList = null;
+                        if(find.length > 0) {
+                            $bulletList = find.clone();
+                        }
+                        $btmInfo.empty();
+                        if(popupData.rtFreePeriodCount > 0) {
+                            $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
+                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + '회차</em>회차월 납부 금액 할인(0원)</dd>');
+                        } else {
+                            $btmInfo.append('<dd></dd>');
+                        }
+                        $btmInfo.find('dd').append($bulletList);
+                        /*
                         $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
                         $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
+                        */
                         
                         var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
 
