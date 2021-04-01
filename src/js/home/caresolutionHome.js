@@ -73,7 +73,7 @@ $(function(){
                         infinite: true,
                         //autoplay: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 1, 
                         centerMode: true,
@@ -86,7 +86,7 @@ $(function(){
                         infinite: true,
                         //autoplay: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 2,
                         slidesToScroll: 1,  
                         centerMode: true, 
@@ -117,7 +117,6 @@ $(function(){
             slidesToScroll: 1,
             variableWidth : true,
             dots: false,
-
             responsive: [
                 {
                     breakpoint: 10000,
@@ -125,7 +124,7 @@ $(function(){
                         infinite: true,
                         //autoplay: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 4,
                         slidesToScroll: 1
                     }
@@ -136,7 +135,7 @@ $(function(){
                         infinite: true,
                         //autoplay: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 1
                     }
@@ -157,7 +156,7 @@ $(function(){
                     settings: {
                         infinite: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 2, 
                         slidesToScroll: 1
                     }

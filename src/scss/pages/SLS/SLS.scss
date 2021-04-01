@@ -415,6 +415,7 @@ br.pc {
             }
             .slide-track {
                 .slide-conts {
+                    display:none;
                     position: relative;
                     padding: 0 12px;
                     @include mobile {

@@ -241,11 +241,11 @@
                             self.$productList.empty();
                             self.updateProductList(self.savedPLPData.listData, true);
                             self.setPageData(self.savedPLPData.pagination);
-                            var $li =self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
+                            var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
                             $(window).ready(function(){
                                 setTimeout(function(){
                                     $(window).scrollTop($li.offset().top);
-                                }, 300);
+                                }, 500);
                             });
                         } else {
                             self.filterLayer.resetFilter(filterData, change);

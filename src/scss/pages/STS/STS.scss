@@ -4,10 +4,50 @@
 @import "../../utilities/mixins";
 
 .sticky-easy {
+    .btn-floating-wrap {
+        .floating-menu.more-plus {
+            bottom:120px !important;
+            @include mobile {
+                bottom:90px !important;
+            }
+        }
+        &.scroll {
+            .floating-menu.more-plus {
+                bottom:190px !important;
+                @include mobile {
+                    bottom:160px !important;
+                }
+            }    
+        }
+    }
+    .floating-wrap .floating-menu {
+        .easy-path {
+            .inner {
+                top:auto;
+                bottom:-72px;
+                @include mobile {
+                    bottom:-68px;
+                }
+            }
+            &.scroll {
+                .inner {
+                    bottom:0 !important;
+                }
+            }
+        }
+    }
     .floating-menu.floating-list {
-        bottom:262px;
+        bottom:192px;
         @include mobile {
-            bottom:232px;
+            bottom:162px !important;
+        }
+    }
+    .btn-floating-wrap.scroll {
+        .floating-menu.floating-list {
+            bottom:262px !important;
+            @include mobile {
+                bottom:232px !important;
+            }
         }
     }
 }
