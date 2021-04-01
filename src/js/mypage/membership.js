@@ -22,7 +22,7 @@
                         '<li>{{#if quantity!=null}}구매수량 : {{quantity}}{{/if}}</li>' +
                         '{{#if store}}<li>{{store}}</li>{{/if}}' +
                         '{{#if date}}<li>{{date}}{{#if type}} {{type}}{{/if}}</li>{{/if}}' +
-                        '{{#if startDate}}<li>서비스 기간 :<br>{{startDate}}~{{#if endDate}}{{endDate}}{{/if}}</li>{{/if}}' +
+                        '{{#if serviceDt}}<li>서비스 기간 :<br>{{serviceDt}}</li>{{/if}}' +
                     '</ul></div>' +
                 '</div>' +
             '</div>' +
@@ -111,13 +111,7 @@
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                         item.store = item.store ? item.store : null; 
-                        if(isBuy) {
-                            item.startDate = null;
-                            item.endDate = null;
-                        } else {
-                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
-                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
-                        }
+                        item.serviceDt = item.serviceDt ? item.serviceDt : null;
                         $list.append(vcui.template(listItemTemplate, item));
                     });
                 }
