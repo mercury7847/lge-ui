@@ -160,6 +160,14 @@
         }).on('change', 'input[type=checkbox]', function(){
             setTagMngChecked();
         });
+
+        $(window).on('floatingTopHide', function(e){
+            $('.floating-wrap .easy-path').removeClass('scroll');
+        }); 
+
+        $(window).on('floatingTopShow', function(e){
+            $('.floating-wrap .easy-path').addClass('scroll');
+        }); 
     }
 
     function setTagMngChecked(){
