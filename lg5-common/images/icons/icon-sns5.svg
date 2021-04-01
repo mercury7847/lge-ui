@@ -1,16 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
     <g fill="none" fill-rule="evenodd">
         <g>
-            <g>
-                <path d="M0 0H32V32H0z" opacity=".688"/>
+            <path fill="#F5F5F5" fill-opacity="0" d="M0 0H32V32H0z"/>
+            <g fill="#666">
                 <g>
-                    <path stroke="#666" stroke-width="2" d="M3.888 20H2.182C.977 20 0 18.947 0 17.647V2.353C0 1.053.977 0 2.182 0h7.636C11.023 0 12 1.053 12 2.353v3.15" transform="translate(6 4.667)"/>
-                    <path fill="#666" d="M3.333.25h5.334c0 .828-.672 1.5-1.5 1.5H4.833c-.828 0-1.5-.672-1.5-1.5z" transform="translate(6 4.667)"/>
-                    <g transform="translate(6 4.667) translate(5.333 6.667)">
-                        <rect width="16" height="16" fill="#666" rx="4"/>
-                        <circle cx="13.333" cy="2.667" r="1" fill="#FFF"/>
-                        <circle cx="8" cy="8.333" r="4.5" stroke="#FFF"/>
-                    </g>
+                    <path d="M13.333 0v13.434H0V0h13.333zM5.581 3.932H3.577v5.243h1.997V6.529l1.854 2.646H9.43V3.932H7.434v2.645L5.581 3.932zM9.444 19.332l-2.777 3.277-2.778-3.277h5.555zm3.89-4.587l-2.779 3.276H2.777L0 14.745h13.333z" transform="translate(9.333 5.333)"/>
                 </g>
             </g>
         </g>

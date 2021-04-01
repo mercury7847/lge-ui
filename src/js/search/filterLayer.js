@@ -333,12 +333,14 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 var items = self.$categorySelect.find('li input:checked');
                 items.each(function(idx, el){
-                    var tempArray = filterData[el.name];
-                    if(!tempArray) {
-                        tempArray = [];
+                    if(el.value && el.value.length > 0) {
+                        var tempArray = filterData[el.name];
+                        if(!tempArray) {
+                            tempArray = [];
+                        }
+                        tempArray.push(el.value);
+                        filterData[el.name] = tempArray;
                     }
-                    tempArray.push(el.value);
-                    filterData[el.name] = tempArray;
                 });
             }
 
@@ -420,7 +422,15 @@ var FilterLayer = (function() {
                                             $list_category.empty();
                                             item.filterValues.forEach(function(obj, idx){
                                                 obj.filterId = item.filterId;
-                                                obj.index = idx;
+                                                obj.index = (idx+1);
+                                                if(idx == 0) {
+                                                    //전체 넣기
+                                                    var allObj = JSON.parse(JSON.stringify(obj));
+                                                    allObj.index = 0;
+                                                    allObj.filterValueId = "";
+                                                    allObj.filterValueName = "전체";
+                                                    $list_category.append(vcui.template(filterCategoryTopTemplate, allObj));
+                                                }
                                                 $list_category.append(vcui.template(filterCategoryTopTemplate, obj));
                                             });
                                             self.$categorySelect.vcSmoothScrollTab('refresh');
@@ -581,7 +591,7 @@ var FilterLayer = (function() {
                             if(findCategory.length > 0) {
                                 findCategory.prop('checked', false);
                                 item.forEach(function(val, index) {
-                                    var findInput = self.$categorySelect.find('input[name='+key+'][value='+val+']');
+                                    var findInput = self.$categorySelect.find('input[name='+key+'][value="'+val+'"]');
                                     findInput.prop('checked', true);
                                 });
                             }
