@@ -918,14 +918,6 @@
                 right:36px;
             }
             &.disabled {
-                .col-table {
-                    @include pc {
-                        padding-right:15.8%;
-                        @media screen and (min-width: $tablet-l-width + 1) {
-                            padding-right:282px;
-                        }
-                    }
-                }
                 .product-info {
                     .thumb {
                         > a img {
