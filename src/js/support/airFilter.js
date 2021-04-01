@@ -217,12 +217,13 @@
                             
                             self.isModelCheck = false;
                             self.isSerialCheck = false;
+                        }
 
-                            if (data.resultMessage) {
-                                lgkorUI.alert('', {
-                                    title: data.resultMessage
-                                });
-                            }
+                        if (data.resultMessage) {
+                            lgkorUI.alert('', {
+                                title: data.resultMessage,
+                                okBtnName: '확인'
+                            });
                         }
                         lgkorUI.hideLoading();
                     });
@@ -266,6 +267,13 @@
                             self.isSerialCheck = false;
                         } else {
                             self.isSerialCheck = true;
+
+                            if (data.resultMessage) {
+                                lgkorUI.alert('', {
+                                    title: data.resultMessage,
+                                    okBtnName: '확인'
+                                });
+                            }
                         }
                         lgkorUI.hideLoading();
                     });
