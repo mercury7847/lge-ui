@@ -232,7 +232,7 @@
             '           </div>'+
             '           <div class="price-info">'+
             '               <p class="price sale"><span class="blind">기본 이용 요금</span>{{item.originalPrice}}</p>'+
-            '               <p class="price"><span class="blind">최종 이용 요금</span>{{item.monthPrice}}</p>'+
+            '               <p class="price"><span class="blind">최종 이용 요금</span>월 {{item.monthPrice}}</p>'+
             '           </div>'+
             '       </div>'+
             '   {{/each}}'+
@@ -1039,7 +1039,11 @@
             }
 
             var estimatePrice = $('#pop-estimate').find('.estimate-price');
-            for(var str in result.data.priceInfo) estimatePrice.find('.estimate-'+str).text(result.data.priceInfo[str]);
+            for(var str in result.data.priceInfo){
+                var price = str == "usedPrice" ? "월 " + result.data.priceInfo[str] : result.data.priceInfo[str];
+                console.log(str, price)
+                estimatePrice.find('.estimate-'+str).text(price);
+            }
 
             $('#pop-estimate').data("requestUrl", result.data.priceInfo.requestUrl);
             $('#pop-estimate').data("sumPrice", result.data.priceInfo.sumPrice);
