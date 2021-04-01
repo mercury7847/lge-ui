@@ -620,7 +620,7 @@
                     padding-right:70px;
 
                     .list-tit {
-                        color:rgba(255,255,255,0.4);
+                        color:rgba(255,255,255,0.5);
                         transition:.6s color;
 
                         .txt-highlight {
@@ -1441,7 +1441,7 @@
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
-            background: rgba(0, 0, 0, 0.5);
+            // background: rgba(0, 0, 0, 0.5);
 
             &:before {
                 content:"";
@@ -1469,12 +1469,12 @@
             
             .hero-container {
                 height:460px;
-                background: none;
+                // background: none;
 
                 &:before {
                     background-image: url("/lg5-common/images/CS/img-support-home-hero-mo.jpg");
                     background-size:cover;
-                    background-position:top center;
+                    background-position:bottom center;
                 }
             }
 
