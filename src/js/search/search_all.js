@@ -980,7 +980,6 @@
                     self.curationLayer.setCurationData(data);
 
                     //noData 체크
-                    console.log('no?',noData);
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
                             var $list_ul = self.$resultListNoData.find('ul.result-list');
