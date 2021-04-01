@@ -124,7 +124,7 @@
             .store-list-box {
                 display: flex;
                 flex-direction: column;
-                height:calc(100vh - 96px);
+                height:100vh;
                 &:after {
                     content:' ';
                     display:block;
