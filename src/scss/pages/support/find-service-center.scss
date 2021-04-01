@@ -124,7 +124,7 @@
             .store-list-box {
                 display: flex;
                 flex-direction: column;
-                height:100vh;
+                height:calc(100vh - 96px);
                 &:after {
                     content:' ';
                     display:block;
@@ -1137,6 +1137,9 @@
                 .result-list-box {
                     display:block;
                     position: relative;
+                }
+                .store-list-box {
+                    height:100vh;
                 }
             }
             @include pc {
