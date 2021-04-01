@@ -1,27 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="60px" height="58px" viewBox="0 0 60 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>img_addProduct_64</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-462.000000, -242.000000)">
-            <g id="img_addProduct_64" transform="translate(460.000000, 239.000000)">
-                <g id="img_addProduct_40">
-                    <g>
-                        <polygon id="guidebox" points="0 64 64 64 64 0 0 0"></polygon>
-                        <g id="Group-28" transform="translate(3.200000, 4.000000)">
-                            <path d="M53.9675676,0 C55.6871136,0 57.0810811,1.39396748 57.0810811,3.11351351 L57.0810811,46.1837838 C57.0810811,47.9033298 55.6871136,49.2972973 53.9675676,49.2972973 L36.3238,49.297 L36.3243243,17.3837838 C36.3243243,15.7235324 35.024835,14.3667931 33.3874897,14.275199 L33.2108108,14.2702703 L22.0538,14.27 L22.0540541,3.11351351 C22.0540541,1.39396748 23.4480215,0 25.1675676,0 L53.9675676,0 Z" id="Combined-Shape" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M3.11351351,14.2702703 L33.2108108,14.2702703 C34.9303568,14.2702703 36.3243243,15.6642378 36.3243243,17.3837838 L36.3243243,52.6702703 C36.3243243,54.3898163 34.9303568,55.7837838 33.2108108,55.7837838 L3.11351351,55.7837838 C1.39396748,55.7837838 -2.33505555e-16,54.3898163 0,52.6702703 L0,40.3431442 L0,40.3431442 L0,27.6203257 L0,17.3837838 C-2.10583654e-16,15.6642378 1.39396748,14.2702703 3.11351351,14.2702703 Z" id="Rectangle" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <polygon id="Rectangle" fill="#000000" points="36.1480579 18 57.0810811 18 57.0810811 20 36.1480579 20"></polygon>
-                            <rect id="Rectangle" fill="#000000" x="46.0540541" y="12.0648649" width="6.35675676" height="2" rx="1"></rect>
-                            <rect id="Rectangle" fill="#000000" x="46.0540541" y="23.4810811" width="6.35675676" height="2" rx="1"></rect>
-                            <circle id="Oval" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="18.1621622" cy="38.9189189" r="11.6756757"></circle>
-                            <path d="M12.6756757,38.4 C12.4816297,38.4 12.3243243,38.5573054 12.3243243,38.7513514 C12.3243243,38.9453973 12.4816297,39.1027027 12.6756757,39.1027027 L23.6486486,39.1027027 C23.8426946,39.1027027 24,38.9453973 24,38.7513514 C24,38.5573054 23.8426946,38.4 23.6486486,38.4 L12.6756757,38.4 Z" id="Rectangle" stroke="#DA0F47" stroke-width="1.2972973"></path>
-                            <path d="M12.6756757,38.4 C12.4816297,38.4 12.3243243,38.5573054 12.3243243,38.7513514 C12.3243243,38.9453973 12.4816297,39.1027027 12.6756757,39.1027027 L23.6486486,39.1027027 C23.8426946,39.1027027 24,38.9453973 24,38.7513514 C24,38.5573054 23.8426946,38.4 23.6486486,38.4 L12.6756757,38.4 Z" id="Rectangle" stroke="#DA0F47" stroke-width="1.2972973" transform="translate(18.162162, 38.751351) rotate(-270.000000) translate(-18.162162, -38.751351) "></path>
-                            <path d="M9.17297297,19.4594595 L27.1513514,19.4594595 C27.7036361,19.4594595 28.1513514,19.9071747 28.1513514,20.4594595 C28.1513514,21.0117442 27.7036361,21.4594595 27.1513514,21.4594595 L9.17297297,21.4594595 C8.62068822,21.4594595 8.17297297,21.0117442 8.17297297,20.4594595 C8.17297297,19.9071747 8.62068822,19.4594595 9.17297297,19.4594595 Z" id="Rectangle" fill="#000000"></path>
-                        </g>
-                    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <path d="M0 64L64 64 64 0 0 0z"/>
+            <g transform="translate(8 9)">
+                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M45 0c1.806 0 3 1.16 3 2.929V38.07C48 39.841 46.806 41 45 41H30V13.678c0-1.422-1.108-2.585-2.508-2.673l-.17-.005H18V2.929C18 1.159 19.194 0 21 0h24z"/>
+                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 11h26c1.105 0 2 .895 2 2v31c0 1.105-.895 2-2 2H2c-1.105 0-2-.895-2-2V13c0-1.105.895-2 2-2z"/>
+                <path fill="#000" d="M30.087 14.48L48.09 14.48 48.09 16.2 30.087 16.2z"/>
+                <rect width="6" height="2" x="38" y="9" fill="#000" rx="1"/>
+                <rect width="6" height="2" x="38" y="19" fill="#000" rx="1"/>
+                <circle cx="15" cy="32" r="9" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <g fill="#DA0F47">
+                    <path d="M1 4h8c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1z" transform="translate(10 27) rotate(90 5 5)"/>
+                    <path d="M1 4h8c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1z" transform="translate(10 27) rotate(-180 5 5)"/>
                 </g>
+                <path fill="#000" d="M8 16h14c.552 0 1 .448 1 1s-.448 1-1 1H8c-.552 0-1-.448-1-1s.448-1 1-1z"/>
             </g>
         </g>
     </g>

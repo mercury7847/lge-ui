@@ -824,6 +824,10 @@
                             var html = vcui.template(engineerTmpl, data);
                             self.$engineerSlider.find('.slide-track').html(html);
                             self.$engineerSlider.vcCarousel('reinit');
+                        } else {
+                            lgkorUI.alert('', {
+                                title: '방문 가능한 다른 엔지니어가 없습니다.'
+                            });
                         }
                     } else {
                         if (data.resultMessage) {
@@ -859,20 +863,22 @@
                     date: $('#date').val(),
                     time: $('#time').val(),
                     lockUserId: $('#lockUserId').val(),
-                    productCode: productCode
+                    productCode: productCode,
+                    beforeEngineerCode: $('#engineerCode').val()
                 }
 
                 param = $.extend(param, infoData);
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    lgkorUI.hideLoading();
+                    
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
                         self.updateEngineer(infoData);
                     } else {
                         if (data.resultMessage) {
-                            self.$engineerPopup.vcModal('hide');
-                            
                             lgkorUI.alert("", {
                                 title: data.resultMessage
                             });
