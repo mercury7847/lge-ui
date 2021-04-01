@@ -207,7 +207,7 @@ $(function(){
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
-                "date" : "2020.11.01~2020.11.30",
+                "date" : "2021.03.01~2021.04.04",
                 "modelUrlPath" : "#1",
                 "textClass":"fc-black"  
             },
@@ -216,20 +216,21 @@ $(function(){
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
-                "date" : "2020.11.01~2020.11.30",
+                "date" : "2021.03.01~2021.04.04",
                 "modelUrlPath" : "#2",
                 "textClass" : "fc-black"
             }
         ]
 
-        //if(exhibitionModelIdArr.length == exhibitionLocal.length){
-            exhibitionLocal = vcui.array.map(exhibitionLocal, function(item, index){
-                item['modelId'] = exhibitionModelIdArr[index];
-                return item;
-            });
-        //}
 
-        console.log(exhibitionLocal)
+        var newExhibitionLocal = [];
+
+        for(var i=0; i<exhibitionModelIdArr.length; i++){
+            var obj = exhibitionLocal[i];
+            obj['modelId'] = exhibitionModelIdArr[i];
+            newExhibitionLocal.push(obj);
+
+        }
 
 
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
@@ -356,7 +357,7 @@ $(function(){
             if(data && data.data){
                 var arr = data.data;
 
-                var nArr = vcui.array.map(exhibitionLocal, function(item, index){
+                var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
                     var list = vcui.array.filter(arr, function(item) {
