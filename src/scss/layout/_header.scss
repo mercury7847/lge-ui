@@ -1341,6 +1341,7 @@
                 overflow-y: auto;
                 padding-top: 60px;
                 background-color: #fff;
+                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.3);
             }
             &.app-btm {
                 @include mobile {
@@ -1643,7 +1644,7 @@ html {
         .floating-wrap {
             //노치 있음
             &.app-LGEAPP-in {
-                bottom:114px;
+                bottom:79px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
