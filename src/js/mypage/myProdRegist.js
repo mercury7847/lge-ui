@@ -26,7 +26,7 @@
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
             '<div class="info-wrap">' +
-                '<p class="name"><span class="blind">모델명</span>{{sku}}</p>' +
+                '<p class="name"><span class="blind">모델명</span>{{#raw sku}}</p>' +
                 '<ul class="info-lists">' +
                     '<li><dl><dt>구매일자</dt><dd>{{date}}</dd></dl></li>' +
                     '<li><dl><dt>카테고리</dt><dd>{{category}}</dd></dl></li>' +
