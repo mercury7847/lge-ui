@@ -1487,6 +1487,9 @@
                     border-radius:50%;
                     background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat;
                 }
+                input[type="file"]:focus + .btn-upload {
+                    outline:1px solid #000;
+                }
                 .btn-del {
                     display:none;
                     width:24px;

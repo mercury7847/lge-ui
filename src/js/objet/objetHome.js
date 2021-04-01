@@ -412,6 +412,8 @@ $(function() {
             });
 
             stepLens = wheelArr.length - 1;
+            console.log("winHeight", winHeight);
+            console.log("totalHeight", totalHeight);
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
 
