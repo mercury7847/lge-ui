@@ -75,7 +75,8 @@ $(function () {
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
 
-
+        $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+        
         $('body').addClass('ignore-overflow-hidden');
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
@@ -476,7 +477,7 @@ $(function () {
                 src  = srcArr[modeV],
                 */
                 src    = $target.data('src'),            
-                videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
+                videoAttr = $target.data('options') || 'autoplay playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
 
