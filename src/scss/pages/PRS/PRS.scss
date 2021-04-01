@@ -46,6 +46,7 @@
 									font-size:52px;
 									font-weight:700;
 									line-height:70px;
+									word-break:keep-all;
 									small {
 										display:block;
 										padding-top:16px;
@@ -1180,6 +1181,7 @@
 							font-size:28px;
 							line-height:38px;
 							font-weight:700;
+							word-break:keep-all;
 							sup {
 								font-size:14px;
 								font-weight:500;
@@ -1259,12 +1261,13 @@
 					width:100%;
 				}
 				.product-info-link {
-					top:auto;
+					top:40px;
 					//top:112px;
 					right:0;
-					bottom:0;
+					// bottom:0;
 					left:0;
 					text-align:center;
+					transform:translateY(0);
 					&.type-l {
 						left:0;
 					}
@@ -1274,6 +1277,7 @@
 					.tit {
 						font-size:28px;
 						line-height:38px;
+						word-break:keep-all;
 					}
 				}
 				.link-area {
