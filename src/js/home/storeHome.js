@@ -159,7 +159,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                       <a href="{{reviewLinkPath}}">\n'+
     '                           <div class="star is-review"><span class="blind">리뷰있음</span></div>\n'+
     '                           <div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>\n'+
-    '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewCount}}</span>)</div>\n'+
+    '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewsCount}}</span>)</div>\n'+
     '                       </a>\n'+
     '                   </div>\n'+
     '               {{/if}}'+
@@ -246,7 +246,6 @@ $(function(){
             if(data && data.data){
                 var arr = data.data;
 
-
                 var list = vcui.array.map(arr, function(item, index){
                     
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
@@ -266,19 +265,18 @@ $(function(){
                     }else{
                         item['totalPrice'] = null;
                     }
-                    item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || [];
+                    item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
 
                     var obj = newProductRecommendLocal[index];
 
-                    // item['reviewCount'] = 1000223;
 
                     item['fullImagePath'] = obj && obj['fullImagePath'];
-                    item['isReview'] = parseInt(item['reviewCount']) > 0 ? true : false;
+                    item['isReview'] = parseInt(item['reviewsCount']) > 0 ? true : false;
                     item['reviewLinkPath'] = item['modelUrlPath']? item['modelUrlPath'] + "#pdp_review" : null;
                     item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
-                    if(parseInt(item['reviewCount']) > 0 ){
-                        item['reviewCount'] = vcui.number.addComma(parseInt(item['reviewCount']));
+                    if(parseInt(item['reviewsCount']) > 0 ){
+                        item['reviewsCount'] = vcui.number.addComma(parseInt(item['reviewsCount']));
                     }
 
 

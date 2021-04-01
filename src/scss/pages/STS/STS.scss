@@ -37,14 +37,17 @@
         }
     }
     .floating-menu.floating-list {
-        bottom:262px;
+        bottom:192px;
         @include mobile {
             bottom:162px !important;
         }
     }
     .btn-floating-wrap.scroll {
         .floating-menu.floating-list {
-            bottom:232px !important;
+            bottom:262px !important;
+            @include mobile {
+                bottom:232px !important;
+            }
         }
     }
 }

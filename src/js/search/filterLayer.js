@@ -63,8 +63,8 @@ var FilterLayer = (function() {
         '</div>' +
     '</li>';
 
-    var filterCategoryTopTemplate = '<li><div class="chk-wrap">' +
-        '<input type="checkbox" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
+    var filterCategoryTopTemplate = '<li><div class="rdo-wrap">' +
+        '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
         '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'
     '</div></li>'
 

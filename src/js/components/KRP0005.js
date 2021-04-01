@@ -100,11 +100,11 @@
             });
 
             $(window).on('floatingTopHide', function(e){
-                self.$floatingWrap.removeClass('scroll',1000);
+                self.$floatingWrap.removeClass('scroll');
             }); 
 
             $(window).on('floatingTopShow', function(e){
-                self.$floatingWrap.addClass('scroll',1000);
+                self.$floatingWrap.addClass('scroll');
             }); 
         },
 
