@@ -96,7 +96,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
-    '               <div class="code">{{obj.modelId}}</div>\n'+
+    '               <div class="code">{{obj.modelName}}</div>\n'+
     '               <div class="price-area">\n'+
     '                   <div class="original">\n'+
     '                       {{#if obj.obsOriginalPrice}}'+
@@ -207,7 +207,7 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2021.03.01~2021.04.04",
-                "modelUrlPath" : "#1",
+                "modelUrlPath" : "/temp/under-construction",
                 "textClass":"fc-black"  
             },
             {
@@ -216,14 +216,11 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2021.03.01~2021.04.04",
-                "modelUrlPath" : "#2",
+                "modelUrlPath" : "/temp/under-construction",
                 "textClass" : "fc-black"
             }
         ]
         // 직접관리하는 영역 끝
-
-
-
 
         
         var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
