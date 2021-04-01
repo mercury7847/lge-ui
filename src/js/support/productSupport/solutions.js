@@ -135,7 +135,7 @@
                 self.$keywordInput = self.$solutionsWrap.find('#keyword');
                 self.$keywordBtn = self.$solutionsWrap.find('.keyword-search .btn-search');
 
-                self.$bannerCenter = self.$cont.find('#centerFind');
+                //self.$bannerCenter = self.$cont.find('#centerFind');
                 self.$bannerProduct = self.$cont.find('#recommProduct');
                 self.$bannerMenu = self.$cont.find('#serviceMenu');
 
@@ -289,7 +289,7 @@
                     self.$solutionsWrap.prepend(html);
                 }
 
-                self.$bannerCenter.show();
+                // self.$bannerCenter.show();
             },
             setPopularKeyword: function(data) {
                 var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
@@ -478,7 +478,7 @@
                 
                 $('#recommProduct').hide();
                 $('#serviceMenu').hide();
-                $('#centerFind').hide();
+                // $('#centerFind').hide();
 
                 $('.info-banner').remove();
             },
