@@ -865,16 +865,16 @@
         border:none;
     }
     .private-info-wrap {
-        max-width:1066px + 60px;
+        max-width:1380px + 80px;
         margin:0 auto;
-        padding:0 30px;
+        padding:0 40px;
         @include mobile {
             padding:0;
         }
         .inner {
             @include mobile {
                 margin-top:12px;
-                padding:40px 20px 56px;
+                padding:42px 16px 56px;
                 background:#fff;
                 &:first-child {
                     margin-top:0;
@@ -888,23 +888,32 @@
             font-size:16px;
             line-height:24px;
             &:first-child {
-                padding-top:40px;
+                padding-top:54px;
             }
             @include mobile {
                 padding:0;
                 font-size:14px;
                 line-height:18px;
                 border-radius:inherit;
+                &:first-child {
+                    padding-top:0;
+                }
             }
             .h2-tit {
-                margin-bottom:40px;
-                font-size:28px;
-                line-height:38px;
+                margin-bottom:12px;
+                font-size:24px;
+                line-height:34px;
                 font-weight:700;
                 text-align:center;
                 // @include mobile {
                 //     display:none;
                 // }
+                & + .txt {
+                    font-weight: 500;
+                    strong {
+                        font-weight: 500;
+                    }
+                }
             }
             .select-dl {
                 display:table;

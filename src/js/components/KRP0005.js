@@ -99,6 +99,13 @@
                 self.closePopup();
             });
 
+            $(window).on('floatingTopHide', function(e){
+                self.$floatingWrap.removeClass('scroll',1000);
+            }); 
+
+            $(window).on('floatingTopShow', function(e){
+                self.$floatingWrap.addClass('scroll',1000);
+            }); 
         },
 
         //최근본 제품 처리

@@ -637,29 +637,7 @@
                 }
             }
         }
-        &.visible-sm {
-            padding: 16px 16px 8px;
-            border-top: 0;
-            .product-detail-info {
-                position: relative;
-                .flag-wrap.bar-type .flag {
-                    font-size: 11px;
-                }
-                .product-name {
-                    position: static;
-                    margin-bottom: 6px;
-                    .name {
-                        font-size: 24px;
-                        line-height: 33px;
-                    }
-                }
-                .sku {
-                    display: inline-block;
-                    font-size: 14px;
-                    line-height: 18px;
-                }
-            }
-        }
+
         .product-detail-option {
             .sibling-option {
                 margin-bottom: 24px;
@@ -1838,6 +1816,59 @@
                     font-size: 14px;
                     line-height: 22px;
                     color: #000;
+                }
+            }
+        }
+    }
+
+    .mobile-pdp-info {
+        padding: 16px 0 8px;
+        .product-detail-info {
+            position: relative;
+            .flag-wrap.bar-type .flag {
+                font-size: 11px;
+            }
+            .product-name {
+                margin: 8px 0 6px;
+                .name {
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 33px;
+                }
+            }
+            .sku {
+                display: inline-block;
+                font-size: 13px;
+                line-height: 21px;
+            }
+            .review-info {
+                display: inline-block;
+                font-size: 0;
+                vertical-align: top;
+                .crema-product-reviews-score {
+                    display:inline-block;
+                    height: 21px;
+                    font-size:13px;
+                    line-height: 21px;
+                    &:before {
+                        display: inline-block;
+                        width: 1px;
+                        height: 12px;
+                        margin: 0 8px;
+                        background-color: $color-border;
+                        content: '';
+                    }
+                }
+            }
+        }
+        .product-share {
+            position: absolute;
+            top: -4px;
+            right: 0;
+            .tooltip-box {
+                .title {
+                    font-size: 16px;
+                    line-height: 24px;
                 }
             }
         }

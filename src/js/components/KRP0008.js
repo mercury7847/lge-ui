@@ -1655,11 +1655,7 @@
 
                 //홈브류 제품 로그인 안내 뛰우기
                 if (location.href.indexOf("lg-homebrew") > -1 && !lgkorUI.stringToBool(loginFlag)) {
-                    var $memberBuyGuide = $('#memberBuyGuide');
-                    //현재 페이지 오타가 있어서 임의로 수정. 반영되면 삭제할것
-                    $memberBuyGuide.find('div.non-members-login').html('<p class="hello-desc">맥주제조기 및 홈브루 캡슐 제품 구매를 위해서는<br>LG전자 통합 로그인이 필요합니다.</p>');
-                    //$memberBuyGuide.find('.btn-group button.btn-confirm').data('linkUrl','/sso/api/Login');
-                    $memberBuyGuide.vcModal();
+                    $('#memberBuyGuide').vcModal();
                     return;
                 };
 

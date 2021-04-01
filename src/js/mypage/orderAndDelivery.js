@@ -2053,7 +2053,7 @@
             });
 
             POP_PROD_DATA.push({
-                productNameKR: listdata.productNameKR,
+                //productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
                 orderedQuantity: listdata.orderedQuantity,
                 orderNumber: listdata.orderNumber
