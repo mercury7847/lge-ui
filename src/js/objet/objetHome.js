@@ -527,13 +527,13 @@ $(function() {
             console.log("targetName", targetName);
             if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
                 setTimeout(function() {
-                    if (currentStep < 1) wheelScene(1);
+                    moveStep(2);
                     $("[aria-controls='" + targetName + "']").trigger("click");
                 }, 1000);
 
             } else {
                 setTimeout(function() {
-                    if (currentStep < 1) wheelScene(-1);
+                    moveStep(1);
                 }, 1000);
             }
             $("[aria-controls='objet-cont4']").on("click", function() {
