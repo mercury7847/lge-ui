@@ -576,12 +576,12 @@ br.pc {
             }
             .prd-care-vertical {
                 position:relative;
+                height:100%;
                 padding:12px 40px 32px;
                 background:#fff;
                 border-radius:8px;
                 box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
                 @media screen and (max-width:1400px) {
-                    height:100%;
                     padding:12px 20px 32px;
                 }
                 @include mobile {
