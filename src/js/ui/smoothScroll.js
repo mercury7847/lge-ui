@@ -217,9 +217,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.$el.css('overflow', 'hidden');
             self.scrollerStyle = self.$scroller[0].style;
 
-
-            self._initEvents();
-            self.refresh();
+            self._initEvents();            
             self._activateButtons();
             //self.scrollTo(self.options.startX, self.options.startY);
             self.enable();
@@ -229,6 +227,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             } else {
                 self.scrollTo(opts.startX, opts.startY);
             }
+            self.refresh();
         },
 
         _calcScrollerWidth: function _calcScrollerWidth() {
@@ -987,7 +986,6 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             }else{
                 self.toggleEnabled(true); // 0330 vertical 스크롤 허용
             }
-
             
             if (!self.hasVerticalScroll) {
                 self.maxScrollY = 0;
