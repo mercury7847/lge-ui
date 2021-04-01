@@ -530,6 +530,10 @@ $(function() {
                 $("[aria-controls='" + targetName + "']").trigger("click");
             }, 1000);
 
+        } else {
+            setTimeout(function() {
+                if (currentStep < 1) wheelScene(-1);
+            }, 1000);
         }
         $("[aria-controls='objet-cont4']").on("click", function() {
             setTimeout(function() {

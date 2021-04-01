@@ -1032,6 +1032,7 @@ br.m {
         &.type2 {
             display: block;
             margin:24px -12px 0;
+            text-align:center;
             .row {
                 display:flex;
                 justify-content: center;
@@ -1041,6 +1042,12 @@ br.m {
                     align-items: center;
                     min-height: 176px;
                     margin: 24px 12px 0;
+                }
+                & + .btn {
+                    margin-top:48px;
+                    @include mobile {
+                        margin-top:32px;
+                    }
                 }
             }
             @include mobile {
@@ -1109,6 +1116,12 @@ br.m {
                         margin-top:8px;
                         color:$color-gray-1;
                         @include font-small;
+                        @include mobile {
+                            margin-top:12px;
+                        }
+                    }
+                    .bullet-list {
+                        margin-top:8px;
                         @include mobile {
                             margin-top:12px;
                         }

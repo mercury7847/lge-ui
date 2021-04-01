@@ -121,7 +121,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
 
-            self.$dimmed = self.$el.find('.nav-wrap .dimmed');
+            self.$dimmed = self.$el.find('.header-wrap .dimmed');
 
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
@@ -567,7 +567,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 }
 
-
+                //self.$dimmed.hide();
             } else{
 
                 if(vcui.detect.isMobileDevice && isMotion){
@@ -588,6 +588,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 }             
 
+                //self.$dimmed.show();
             }
         },
 

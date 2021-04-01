@@ -2,7 +2,7 @@
     position:fixed;
     right:48px;
     bottom:48px;
-    z-index:2;
+    z-index:10;
     @include mobile {
         right:20px;
         bottom:24px;
@@ -129,6 +129,22 @@
             display: block;
         }
     }
+    &.scroll {
+        .floating-menu.more-plus {
+            bottom:120px;
+        }
+        .floating-list {
+            bottom:192px;
+        }
+        @include mobile {
+            .floating-menu.more-plus {
+                bottom:90px;
+            }
+            .floating-list {
+                bottom:80px + 24px + 56px;
+            }
+        }
+    }
 }
 
 .floating-menu {
@@ -194,11 +210,15 @@
         //    right:36px;
         //    bottom:155px;
         //}
+        position:fixed;
         right:48px;
-        bottom:104px + 16px;
+        bottom:48px;
+        transition:all .1s;
+        // bottom:104px + 16px;
         @include mobile {
             right:20px;
-            bottom:92px;
+            bottom:24px;
+            // bottom:92px;
         }
     }
     &.btn3 {
@@ -240,10 +260,12 @@
     &.floating-list {
         position:fixed;
         right:48px;
-        bottom:104px + 32px + 56px;
+        bottom:122px;
+        // bottom:104px + 32px + 56px;
         @include mobile {
             right:20px;
-            bottom:80px + 24px + 56px;
+            bottom:94px;
+            // bottom:80px + 24px + 56px;
         }
         display: flex;
         flex-direction: column-reverse;

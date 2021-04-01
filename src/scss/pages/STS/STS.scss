@@ -197,6 +197,7 @@
             &.video {
                 .visual-area {
                     position: relative;
+                    border-radius: 8px 8px 0 0;
                     &:after {
                         position: absolute;
                         top: 0;
@@ -206,6 +207,9 @@
                         border-radius: 8px 8px 0 0;
                         background-color: rgba(0,0,0,.2);
                         content: '';
+                    }
+                    img {
+                        border-radius: 8px 8px 0 0;
                     }
                     .btn-video {
                         position: absolute;
@@ -266,7 +270,6 @@
                     .visual-area {
                         overflow: hidden;
                         height: 486px;
-                        border-radius: 8px;
                         .image {
                             display: block;
                             position: relative;
@@ -334,10 +337,10 @@
         }
         .visual-area {
             display: block;
-            border-radius: 8px 8px 0 0;
+            border-radius: 8px;
             img {
                 width: 100%;
-                border-radius: 8px 8px 0 0;
+                border-radius: 8px;
             }
         }
         .text-area {
