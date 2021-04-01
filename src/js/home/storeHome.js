@@ -182,25 +182,24 @@ $(function(){
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
-
-        var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
-        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
-        var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
-        var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        var storeNewRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
-
-                
+        // 직접관리하는 영역                
         // 많이 구매하는 제품 -> Best 이미지관리
+
         var rankBuyProductLocal = {
             "pcImagePath" : "/lg5-common/images/PRS/img-buy-product-best.jpg",
             "mobileImagePath" : "/lg5-common/images/PRS/img-buy-product-best-m.jpg"
         }
-        
-        // 추천 기획전
-        var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
-        // console.log(exhibitionModelId);
+        // 새로운 제품, 놓치지 마세요 -> 이미지관리
+        var newProductRecommendLocal = [{
+            "fullImagePath" : "/lg5-common/images/PRS/img-new-product-list-full.jpg"
+        },
+        {
+            "fullImagePath" : "/lg5-common/images/PRS/img-new-product-list-full-02.jpg"
+        }];
+        // class명 '.ui_exhib_carousel'에 attribute가  data-model-id = 'event1-code1,event1-code2|event2-code1,event2-code2'로 들어오는 값과 매칭시켜서 보여줌. 
+        // data-model-id = 'event1-code1,event1-code2' 이런 형식으로 들어오는경우 exhibitionLocal 에 첫번째 이벤트만 노출됨.
+        // data-model-id = 'A0,A1|B0,B1|C0,C1' 이런 형식으로 들어오는경우 exhibitionLocal 도 갯수만큼 추가해야함.
 
-        var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var exhibitionLocal = [
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
@@ -221,8 +220,19 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        // 직접관리하는 영역 끝
 
 
+
+
+        
+        var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
+        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
+        var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
+        var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
+        var storeNewRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
+        var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
+        var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var newExhibitionLocal = [];
 
         for(var i=0; i<exhibitionModelIdArr.length; i++){
@@ -231,18 +241,6 @@ $(function(){
             newExhibitionLocal.push(obj);
 
         }
-
-
-        // 새로운 제품, 놓치지 마세요 -> 이미지관리
-        var newProductRecommendLocal = [
-            {
-                "fullImagePath" : "/lg5-common/images/PRS/img-new-product-list-full.jpg",
-            },
-            {
-                "fullImagePath" : "/lg5-common/images/PRS/img-new-product-list-full-02.jpg",
-            }
-        ];
-
 
         // 새제품 추천 렌더링
         function buildNewRecommend(result){
