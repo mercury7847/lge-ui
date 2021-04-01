@@ -1341,6 +1341,7 @@
                 overflow-y: auto;
                 padding-top: 60px;
                 background-color: #fff;
+                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.3);
             }
             &.app-btm {
                 @include mobile {
