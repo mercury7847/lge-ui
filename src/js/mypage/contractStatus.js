@@ -193,9 +193,16 @@
         $('.mypage').on('click', '.contract-btn', function(e){
             e.preventDefault();
 
-            $('#popup-contractIssue').find('.pop-conts .gray-txt-box p em').text(userInfo.userEmail);
-
-            $('#popup-contractIssue').vcModal();
+            console.log("userInfo.userEmail:", userInfo.userEmail);
+            if(userInfo.userEmail){
+                $('#popup-contractIssue').find('.pop-conts .gray-txt-box p em').text(userInfo.userEmail);
+    
+                $('#popup-contractIssue').vcModal();
+            } else{
+                lgkorUI.alert("", {
+                    title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요."
+                });
+            }
         }).on('click', '.requestCard-btn', function(e){
             e.preventDefault();
 
