@@ -96,7 +96,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
-    '               <div class="code">{{obj.modelId}}</div>\n'+
+    '               <div class="code">{{obj.modelName}}</div>\n'+
     '               <div class="price-area">\n'+
     '                   <div class="original">\n'+
     '                       {{#if obj.obsOriginalPrice}}'+
@@ -159,7 +159,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                       <a href="{{reviewLinkPath}}">\n'+
     '                           <div class="star is-review"><span class="blind">리뷰있음</span></div>\n'+
     '                           <div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>\n'+
-    '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewCount}}</span>)</div>\n'+
+    '                           <div class="review-count"><span class="blind">리뷰 수</span>(<span>{{reviewsCount}}</span>)</div>\n'+
     '                       </a>\n'+
     '                   </div>\n'+
     '               {{/if}}'+
@@ -207,7 +207,7 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2021.03.01~2021.04.04",
-                "modelUrlPath" : "#1",
+                "modelUrlPath" : "/temp/under-construction",
                 "textClass":"fc-black"  
             },
             {
@@ -216,14 +216,11 @@ $(function(){
                 "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미 앵콜 Festival",
                 "imageAlt" : "",
                 "date" : "2021.03.01~2021.04.04",
-                "modelUrlPath" : "#2",
+                "modelUrlPath" : "/temp/under-construction",
                 "textClass" : "fc-black"
             }
         ]
         // 직접관리하는 영역 끝
-
-
-
 
         
         var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
@@ -249,7 +246,6 @@ $(function(){
             if(data && data.data){
                 var arr = data.data;
 
-
                 var list = vcui.array.map(arr, function(item, index){
                     
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
@@ -269,19 +265,18 @@ $(function(){
                     }else{
                         item['totalPrice'] = null;
                     }
-                    item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || [];
+                    item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
 
                     var obj = newProductRecommendLocal[index];
 
-                    // item['reviewCount'] = 1000223;
 
                     item['fullImagePath'] = obj && obj['fullImagePath'];
-                    item['isReview'] = parseInt(item['reviewCount']) > 0 ? true : false;
+                    item['isReview'] = parseInt(item['reviewsCount']) > 0 ? true : false;
                     item['reviewLinkPath'] = item['modelUrlPath']? item['modelUrlPath'] + "#pdp_review" : null;
                     item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
-                    if(parseInt(item['reviewCount']) > 0 ){
-                        item['reviewCount'] = vcui.number.addComma(parseInt(item['reviewCount']));
+                    if(parseInt(item['reviewsCount']) > 0 ){
+                        item['reviewsCount'] = vcui.number.addComma(parseInt(item['reviewsCount']));
                     }
 
 

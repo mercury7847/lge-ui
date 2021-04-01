@@ -623,14 +623,20 @@ var isApp = function(){
 
         //top 버튼 컨틀롤...
         _addTopButtonCtrl: function(){
+            var self = this;
             $(window).scroll(function(){
-                if ($(this).scrollTop() > 100) {
-                    $(window).trigger('floatingTopShow');
-                    $('.floating-menu.top').removeClass('call-yet');
-                } else {
-                    $(window).trigger('floatingTopHide');
-                    $('.floating-menu.top').addClass('call-yet');
+                if(self.scrollTimer) {
+                    clearTimeout(self.scrollTimer);
                 }
+                self.scrollTimer = setTimeout(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $(window).trigger('floatingTopShow');
+                        $('.floating-menu.top').removeClass('call-yet');
+                    } else {
+                        $(window).trigger('floatingTopHide');
+                        $('.floating-menu.top').addClass('call-yet');
+                    }
+                }, 200);
             });
             
             $('.back-to-top button').on('click', function (e) {

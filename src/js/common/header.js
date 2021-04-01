@@ -544,51 +544,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             replaceText = self.$hamburger.find('.blind');
             active = forceActive==undefined? self.$hamburger.hasClass('active') : forceActive;
 
-            var isMotion = false;
-
             if(active){
 
-                if(vcui.detect.isMobileDevice && isMotion){
+                self.$hamburger.removeClass('active');
+                replaceText.text("메뉴 열기");
+                $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
+                if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+                self.$dimmed.hide();
 
-                    self.$headerBottom.transit({x:'105%'}, 300, 'easeInOutQuad',function(){
-                        self.$headerBottom.hide();
-                        self.$hamburger.removeClass('active');
-                        replaceText.text("메뉴 열기");
-                        $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
-                        if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-                    }); 
-
-                }else{
-
-                    self.$hamburger.removeClass('active');
-                    replaceText.text("메뉴 열기");
-                    $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
-                    if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-
-                }
-
-                //self.$dimmed.hide();
             } else{
+                self.$hamburger.addClass('active');
+                replaceText.text("메뉴 닫기");
+                if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+                $('.marketing-link .ui_carousel_slider').vcCarousel('update');   
+                self.$dimmed.show();   
 
-                if(vcui.detect.isMobileDevice && isMotion){
-                    self.$hamburger.addClass('active');
-                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
-                    replaceText.text("메뉴 닫기");
-
-                    self.$headerBottom.css({x:'105%'}).show().transit({x:0}, 500, 'easeInOutQuad');
-
-                    
-                }else{
-
-                    self.$hamburger.addClass('active');
-                    replaceText.text("메뉴 닫기");
-                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
-
-                }             
-
-                //self.$dimmed.show();
             }
         },
 

@@ -768,7 +768,7 @@
                         });
                         self.$searchResultCategory.show();
                         self.$searchResultCategory.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                        noData = false;
+                        //noData = false;
                     } else {
                         self.$searchResultCategory.hide();
                     }

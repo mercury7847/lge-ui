@@ -47,7 +47,7 @@
 
     var selectPaymentMethod;
 
-    var contractUserPhone;
+    var contractUserPhone = "";
 
     var isBeforeUnload = true;
 
@@ -71,6 +71,8 @@
         step1Block = $('.requestRentalForm ul li:nth-child(1)');
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
+
+        contractUserPhone = getInputData("contractUserDefaultPhone");
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
 
