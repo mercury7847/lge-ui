@@ -45,7 +45,6 @@
             self.$boardSurvey.find('#rating').on('starRatingChange', function(e, value){
                 var $curScore = self.$boardSurvey.find('.current_rating_score');
 
-                console.log(value.value)
                 $curScore.html('(' + value.value + '점)');
             })
         },
