@@ -809,10 +809,16 @@
                 self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
                     var siblingCode = this.dataset.siblingCode;
                     var siblingGroupCode = this.dataset.siblingGroupCode;
-                    if(typeof siblingList !== 'undefined' && siblingList && siblingList.length > 0 && siblingList[0].siblingModels) {
-                        var selectOne = vcui.array.filterOne(siblingList[0].siblingModels, function(item) {
-                            return item.siblingCode == siblingCode && item.siblingGroupCode == siblingGroupCode;
-                        });
+                    if(typeof siblingList !== 'undefined' && siblingList && siblingList.length > 0) {
+                        var arr = siblingList[0].siblingModels;
+                        var count = arr.length;
+                        var selectOne = null;
+                        for(var n=0;n<count;n++) {
+                            selectOne = arr[n];
+                            if(selectOne.siblingCode == siblingCode && selectOne.siblingGroupCode == siblingGroupCode) {
+                                break;
+                            }
+                        }
                         var url = selectOne.modelUrlPath;
                         if(url) {
                             location.href = url;
@@ -1011,6 +1017,7 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
+                        console.log("1",popupData);
                         var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
                         $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
                         $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
@@ -1021,7 +1028,7 @@
                             var key = (idx+1)+"";
                             var data = popupData[key];
                             var $tr = $(obj);
-                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price));
+                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price) + "원");
                             if(data.free.length > 0) {
                                 $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
                             } else {
@@ -1078,6 +1085,7 @@
                     //연차별 월요금
                     var popupData = $paymentAmount.data('popupData');
                     if(popupData) {
+                        console.log("2",popupData);
                         var $btmInfo = self.$caresolutionInfoPopup.find('dl.fee-txt');
                         $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
                         $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
@@ -1088,7 +1096,7 @@
                             var key = (idx+1)+"";
                             var data = popupData[key];
                             var $tr = $(obj);
-                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price));
+                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price) + "원");
                             if(data.free.length > 0) {
                                 $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
                             } else {
