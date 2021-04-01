@@ -10,12 +10,14 @@
             '<div class="flag-wrap bar-type"><span class="flag">{{storyTypeName}}</span></div>' +
             '<p class="tit">{{#raw storyTitle}}</p>' +
             '<p class="desc">{{#raw storyDesc}}</p>' +
+            '{{#if tags.length > 0}}' +
             '<div class="hashtag-wrap">' +
                 '{{#each item in tags}}' +
                     '<span class="hashtag"><span>#</span>{{item.tagName}}</span>' +
                 '{{/each}}' +
             '</div>' +
-            '<p class="date">날짜데이타</p>' +
+            '{{/if}}' +
+            '<p class="date">{{lastUpdateDate}}</p>' +
         '</div>' +
     '</a></li>';
 
@@ -144,7 +146,7 @@
                 var arr = data.storyList instanceof Array ? data.storyList : [];
                 self.$list.empty();
                 arr.forEach(function(item, index) {
-                   item.storyDesc = vcui.string.replaceAll(item.storyDesc, '\n', '<br>');
+                    item.storyDesc = vcui.string.replaceAll(item.storyDesc, '\n', '<br>');
                     self.$list.append(vcui.template(storyListItemTemplate, item));
                 });
             });

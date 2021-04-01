@@ -475,8 +475,8 @@ CS.MD.calendar = function() {
             today: new Date(), // 오늘 날짜
             template: {
                 header: '<div class="month-wrap">' + '<button type="button" class="arrow prev"><span class="blind">이전</span></button>' + '<span class="month"></span>' + '<button type="button" class="arrow next"><span class="blind">다음</span></button>' + '</div>',
-                button: '<button type="button" class="day {{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{day}}</span></button>',
-                timeButton: '<button type="button" class="{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}"><span>{{time}}</span></button>'
+                button: '<button type="button" class="day {{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}><span>{{day}}</span></button>',
+                timeButton: '<button type="button" class="{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled":""}}><span>{{time}}</span></button>'
             },
             caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다',
             colWidth: 'calc(100% / 7)', // 셀 너비
