@@ -545,6 +545,15 @@
                 self.$awardPopup.on('click','li a.award-item', function(e) {
                     self.$awardPopup.find('.btn-group button[data-link-url]').trigger('click');
                 });
+
+                //AR체험하기 클릭
+                self.$component.on('click','div.pdp-ar-area a.btn-ar', function (e){
+                    e.preventDefault();
+                    var modelId = this.dataset.arModelId;
+                    if(!lgkorUI.openAR(modelId)) {
+                        $('#arPlayPop').vcModal();
+                    }
+                });
             },
 
             bindSideEvents: function() {
@@ -777,13 +786,16 @@
                 //링크
                 self.$pdpInfo.on('click','a.btn-link:not(.popup)', function(e) {
                     e.preventDefault();
-                    var url = $(this).attr('href').replace("#","");
-                    var addS = $(this).data('add');
-                    if(url) {
-                        if(addS) {
-                            url += addS;
+                    var $this = $(this);
+                    if(!$this.attr('data-control')) {
+                        var url = $this.attr('href').replace("#","");
+                        var addS = $this.data('add');
+                        if(url) {
+                            if(addS) {
+                                url += addS;
+                            }
+                            location.href = url;
                         }
-                        location.href = url;
                     }
                 });
 
@@ -795,23 +807,23 @@
 
                 //인포 옵션 변경 (링크로 바뀜)
                 self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                    var siblingCode = this.dataset.siblingCode;
+                    var siblingGroupCode = this.dataset.siblingGroupCode;
+                    if(typeof siblingList !== 'undefined' && siblingList && siblingList.length > 0 && siblingList[0].siblingModels) {
+                        var selectOne = vcui.array.filterOne(siblingList[0].siblingModels, function(item) {
+                            return item.siblingCode == siblingCode && item.siblingGroupCode == siblingGroupCode;
+                        });
+                        var url = selectOne.modelUrlPath;
+                        if(url) {
+                            location.href = url;
+                        }
+                    }
+
+                    /*
                     var url = e.target.value;
                     if(url) {
                         location.href = url;
                     }
-                    /*
-                    var $optionList = $(this).parents('.option-list').siblings('div').find('span');
-                    if($optionList.length > 0) {
-                        $optionList.first().text($(this).siblings('label').find('span').text());
-                    }
-                    var $siblingOption = $(this).parents('.sibling-option');
-                    var $findData = $siblingOption.find('input:checked');
-                    var param = {};
-                    $findData.each(function (i, o) {
-                        var $o = $(o);
-                        param[$o.attr('name')] = $o.attr('value');
-                    });
-                    self.requestSelectOption(param);
                     */
                 });
 
@@ -960,7 +972,7 @@
                     }
                 });
 
-                //케어십 이용요금 jsw
+                //케어십 이용요금
                 self.$pdpInfoCareshipService.on('click','dl.price-info a.btn-link.popup', function(e) {
                     e.preventDefault();
 
@@ -1431,7 +1443,7 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + '원(대표요금제 기준)');
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 기준)') : '원(대표요금제 기준)'));
 
                 $paymentAmount.data('popupData',popupData);
             },
@@ -1643,11 +1655,7 @@
 
                 //홈브류 제품 로그인 안내 뛰우기
                 if (location.href.indexOf("lg-homebrew") > -1 && !lgkorUI.stringToBool(loginFlag)) {
-                    var $memberBuyGuide = $('#memberBuyGuide');
-                    //현재 페이지 오타가 있어서 임의로 수정. 반영되면 삭제할것
-                    $memberBuyGuide.find('div.non-members-login').html('<p class="hello-desc">맥주제조기 및 홈브루 캡슐 제품 구매를 위해서는<br>LG전자 통합 로그인이 필요합니다.</p>');
-                    //$memberBuyGuide.find('.btn-group button.btn-confirm').data('linkUrl','/sso/api/Login');
-                    $memberBuyGuide.vcModal();
+                    $('#memberBuyGuide').vcModal();
                     return;
                 };
 

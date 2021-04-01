@@ -468,8 +468,8 @@
 
         @include mobile {
             position: absolute;
-            bottom: -80px;
-            right: 52px;
+            top: -4px;
+            right: 32px;
             z-index: 2;
             width: auto;
             margin-top: 0;
@@ -489,8 +489,8 @@
                     width: 32px;
                     height: 32px;
                     padding: 4px;
-                    background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat 0 0;
-                    background-size: 28px;
+                    background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat center center;
+                    background-size: 24px;
                     font-size: 0;
                     text-align: left;
                     &:after {
@@ -524,7 +524,7 @@
             float: none;
             width: auto;
             margin: 0 -16px;
-            padding: 40px 16px 0;
+            padding: 24px 16px 0;
             border-top: 12px solid $color-bg;
         }
         .product-detail-info {
@@ -556,7 +556,8 @@
             }
             .review-info {
                 .star-rating-wrap {
-                    display:inline-block;
+                    display: none;
+                    //display:inline-block;
                     height:24px;
                     font-size:0;
                     line-height:24px;
@@ -635,26 +636,8 @@
                     }
                 }
             }
-            @include mobile {
-                position: relative;
-                .flag-wrap.bar-type .flag {
-                    font-size: 11px;
-                }
-                .product-name {
-                    position: static;
-                    margin-bottom: 6px;
-                    .name {
-                        font-size: 24px;
-                        line-height: 33px;
-                    }
-                }
-                .sku {
-                    display: inline-block;
-                    font-size: 14px;
-                    line-height: 18px;
-                }
-            }
         }
+
         .product-detail-option {
             .sibling-option {
                 margin-bottom: 24px;
@@ -692,7 +675,7 @@
                     }
                 }
                 @include mobile {
-                    padding-bottom: 40px;
+                    padding: 0 0 40px;
                     > [class*="sibling-"] {
                         flex-direction: column;
                         justify-content: left;
@@ -1833,6 +1816,59 @@
                     font-size: 14px;
                     line-height: 22px;
                     color: #000;
+                }
+            }
+        }
+    }
+
+    .mobile-pdp-info {
+        padding: 16px 0 8px;
+        .product-detail-info {
+            position: relative;
+            .flag-wrap.bar-type .flag {
+                font-size: 11px;
+            }
+            .product-name {
+                margin: 8px 0 6px;
+                .name {
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 33px;
+                }
+            }
+            .sku {
+                display: inline-block;
+                font-size: 13px;
+                line-height: 21px;
+            }
+            .review-info {
+                display: inline-block;
+                font-size: 0;
+                vertical-align: top;
+                .crema-product-reviews-score {
+                    display:inline-block;
+                    height: 21px;
+                    font-size:13px;
+                    line-height: 21px;
+                    &:before {
+                        display: inline-block;
+                        width: 1px;
+                        height: 12px;
+                        margin: 0 8px;
+                        background-color: $color-border;
+                        content: '';
+                    }
+                }
+            }
+        }
+        .product-share {
+            position: absolute;
+            top: -4px;
+            right: 0;
+            .tooltip-box {
+                .title {
+                    font-size: 16px;
+                    line-height: 24px;
                 }
             }
         }

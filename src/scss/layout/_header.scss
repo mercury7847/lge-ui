@@ -67,6 +67,20 @@
         max-width: 100%;
         padding: 0 16px;
     }
+    .dimmed {
+        display: none;
+        position: fixed;
+        top: 126px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+        background-color: rgba(0,0,0,.56);
+        content: '';
+        @include mobile {
+            top: 0;
+        }
+    }
 }
 
 .header-top {
@@ -257,9 +271,9 @@
 
 .utility {
     float: right;
-    padding-right: 224px;
+    padding-right: 247px;
     @media screen and (min-width: 1760px) {
-        padding-right: 240px;
+        padding-right: 263px;
     }
     .shortcut {
         font-size: 0;
@@ -461,18 +475,6 @@
         ul.nav {
             display:block;
         }
-    }
-
-    .dimmed {
-        display: none;
-        position: fixed;
-        top: 126px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 101;
-        background-color: rgba(0,0,0,.56);
-        content: '';
     }
 }
 .nav-brand-gate {
@@ -1339,7 +1341,6 @@
                 overflow-y: auto;
                 padding-top: 60px;
                 background-color: #fff;
-                box-shadow: -12px 4px 12px 0 rgba(0, 0, 0, 0.15);
             }
             &.app-btm {
                 @include mobile {
@@ -1568,6 +1569,7 @@ html {
             .app-ar {
                 position:relative;
                 transition:transform .5s ease-out;
+                box-shadow:none;
             }
             .app-ar-txt {
                 display:none;
@@ -1579,13 +1581,13 @@ html {
                     display:inline-block;
                     width:16px;
                     height:16px;
-                    margin-left:6px;
+                    margin-left:2px;
                     background:url('/lg5-common/images/icons/icon-float-arr-16.svg') no-repeat 0 0;
                     vertical-align:-2px;
                 }
                 i{
                     display:inline-block;
-                    margin-right:10px;
+                    margin-right:6px;
                     width:18px;
                     height:19px;
                     background:url('/lg5-common/images/MAP/ico_ar.png') no-repeat left top;
@@ -1619,7 +1621,7 @@ html {
                     padding: 0;
                 }
                 &.active {
-                    width:309px !important;
+                    width:260px !important;
                     span {
                         display:none;
                     }

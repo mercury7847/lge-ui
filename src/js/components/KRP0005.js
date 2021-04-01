@@ -20,11 +20,11 @@
         setting: function() {
             var self = this;		
             
-            self.$KRP0005 = $('.KRP0005');
-            self.$floatingWrap = self.$KRP0005.parents('.btn-floating-wrap');
+            self.$floatingWrap = $('.btn-floating-wrap');
+            self.$KRP0005 = $('.KRP0005.floating-menu');
             self.moreButton = self.$KRP0005.find('.more-plus-linker a');
 
-            self.$popup = $('#KRP0032');
+            self.$popup = $('#KRP0032:eq(0)');
             self.$list = self.$popup.find('div.lately-list ul');
         },
 
@@ -86,6 +86,11 @@
                     }
                 } else {
                     //
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    if(href) {
+                        location.href = href;
+                    }
                 }
             });
 
@@ -94,6 +99,13 @@
                 self.closePopup();
             });
 
+            $(window).on('floatingTopHide', function(e){
+                self.$floatingWrap.removeClass('scroll',1000);
+            }); 
+
+            $(window).on('floatingTopShow', function(e){
+                self.$floatingWrap.addClass('scroll',1000);
+            }); 
         },
 
         //최근본 제품 처리
@@ -132,7 +144,7 @@
             self.$popup.removeClass('open');
             self.$popup.hide();
             //
-            if(self.ignoreOverflowForce) {
+            if(!self.ignoreOverflowForce) {
                 if(self.bodyOvewflow) {
                     $('html, body').css({
                         overflow:self.bodyOvewflow

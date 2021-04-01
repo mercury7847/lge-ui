@@ -422,6 +422,8 @@
         canceled : "취소 완료"	
     }
 
+    var ajaxMethod = "GET";
+
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
             vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
@@ -748,7 +750,6 @@
         }
 
         lgkorUI.setHiddenInputData(sendata);
-        console.log("### lgkorUI.getHiddenInputData() ###", lgkorUI.getHiddenInputData());
 
         $('#goDetailForm').attr('action', ORDER_DETAIL_URL);
 
@@ -1045,13 +1046,15 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productNameEN = listData[dataID].productList[prodID].productNameEN.split(".")[0];
 
+        var keyName = listData[dataID].productList[prodID].modelType == "G" ? "mktModelCd" : "parts";
+
         lgkorUI.confirm('이메일 배송 문의를 위해서는 개인정보 수집 및 이용에<br>동의 하셔야 이용 가능합니다.<br>동의 하시겠습니까?',{
             typeClass:'type2',
             title:'',
             okBtnName: '네',
             cancelBtnName: '아니요',
             ok: function() {
-                location.href = "/support/email-inquiry?mktModelCd=" + productNameEN
+                location.href = "/support/email-inquiry?" + keyName + "=" + productNameEN
             },
             cancel: function() {
             }
@@ -1559,9 +1562,7 @@
             sendata.confirmType = METHOD_BANK;
         }
         
-        console.log("paymentMethodAbled(); sendata :", sendata, PAYMENT_METHOD_CONFIRM);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
-            console.log("### requestAjaxData ###", result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -1589,17 +1590,13 @@
             return;
         }
 
-
         lgkorUI.showLoading();
 
         CTI_REQUEST_KEY = "";
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
-
-
-        console.log("### setArsAgreeConfirm ###", sendata);
+        arsAgree = "N";
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
-            console.log("### setArsAgreeConfirm [complete] ###", result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -1607,7 +1604,7 @@
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
 
             arsAgree = result.data.success;
-        });
+        }, ajaxMethod, null, true);
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
@@ -2056,7 +2053,7 @@
             });
 
             POP_PROD_DATA.push({
-                productNameKR: listdata.productNameKR,
+                //productNameKR: listdata.productNameKR,
                 productNameEN: listdata.productNameEN,
                 orderedQuantity: listdata.orderedQuantity,
                 orderNumber: listdata.orderNumber
@@ -2287,7 +2284,6 @@
             rtModelSeq: listData[dataId].productList[prodId].rtModelSeq
         }
 
-        console.log("### setProductStatus ###", sendata);
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(PRODUCT_STATUS_URL, sendata, function(result){
             if(result.status == "fail"){

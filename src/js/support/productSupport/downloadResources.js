@@ -483,7 +483,8 @@
                 self.$manualPagination.data('page', 1);
 
                 self.$driverSec.find('.download-list').empty();
-                self.$driverKeyword.val('');
+                self.$driverSec.find('.old-keyword').remove();
+                self.$driverKeyword.val('').trigger('update');
 
                 otherService.reset();
                 relatedInfo.reset();
@@ -564,7 +565,8 @@
                 var $oldKeyword = $this.closest('.old-keyword');
 
                 $oldKeyword.remove();
-                $('.driver-inner-search .keyword-search .btn-delete').trigger('click');
+
+                self.$driverKeyword.val('').trigger('update');
                 self.driverParam = $.extend(self.driverParam, {
                     keyword: "",
                     page: 1

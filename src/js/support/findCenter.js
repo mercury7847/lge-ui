@@ -65,15 +65,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
-                        '<div class="useable-service">' + 
-                            '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
-                            '{{#each (item, index) in serviceProduct}}' +
-                                '{{# if(index > 0) { #}}' +
-                                ', '+
-                                '{{# } #}}' +    
-                                '<span class="name">{{item.name}}</span>'+
-                            '{{/each}}' +
-                        '</div>' + 
                         '<ul class="opt-list">'+
                             '{{#each item in serviceProduct}}' +
                             '<li class="{{item.class}}">'+
@@ -287,7 +278,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
                 self.$citySelect2 = $('#select6');
                 self.$address1 = $('#address1');
-                self.searchCenterName = $('#tab3').find('.btn-search');
+                self.$searchCenterName = $('#tab3').find('.btn-search');
 
                 self.$zipCode = $('#zipCode');
                 self.$address2 = $('#address2');
@@ -439,8 +430,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchSubwayButton.on('click', function(e){
                 //  지하철역 검색
                 self._setSubwaySearch();
-                $('.map-container').addClass('result-map');
-
             });
 
             // 센터명 검색
@@ -455,7 +444,7 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$address1.on('keyup', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
-                    self.searchCenterName.trigger('click');
+                    self.$searchCenterName.trigger('click');
                 }
             });
 
@@ -474,10 +463,9 @@ function moveDetail(el, detailUrl, windowHeight) {
                 window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
             });
 
-            self.searchCenterName.on('click', function() {
+            self.$searchCenterName.on('click', function() {
                 // 센터명 검색
                 self._setSearch();
-                $('.map-container').addClass('result-map');
             });
 
             // 주소 검색
@@ -493,7 +481,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$searchAddressButton.on('click', function() {
                 // 주소 검색
                 self._setKakaoSearch();
-                $('.map-container').addClass('result-map');
             });
 
             $(window).on('resizeend', function(e){
@@ -1014,9 +1001,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.schReaultTmplID = "roadSearch";
                 self.searchResultMode = true;
 
-                // $(window).off('keyup.searchShop');
                 self._loadStoreData();
-
                 self._showResultLayer();
             } else{
                 lgkorUI.alert("", {
@@ -1152,7 +1137,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             var searchResultVal = {
                 search: $('#address1').val(),
-                localSearch: $('#select1 option:selected').text() + ' ' + $('#select2 option:selected').text(),
+                localSearch: $('#select1 option:selected').text() + ($('#select2').val() ? ' ' + $('#select2 option:selected').text() : ''),
                 roadSearch: '',
                 subwaySearch: $('#select5').val(),
                 userAddressSearch:'',
@@ -1221,7 +1206,7 @@ function moveDetail(el, detailUrl, windowHeight) {
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).width();
+            self.windowWidth = window.innerWidth;
             self.windowHeight = $(window).height();
 
             var mapwidth, mapheight, mapmargin;

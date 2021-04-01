@@ -53,7 +53,8 @@
     var searchResultText = {
         search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
         local: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
-        subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
+        myLocation: '내 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
     };
 
     var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
@@ -302,15 +303,11 @@
             };
             
             if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
-
-                /*
-                var bestShopMapAgree = lgkorUI.getCookie('bestShopMapAgree');
+                
+                var bestShopMapAgree = window.sessionStorage.getItem("bestShopMapAgree");
                 if(bestShopMapAgree && bestShopMapAgree=="Y"){
-
                     self._getCurrentLocation();
-
                 }else{
-
                     lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
                         typeClass: "type2",
                         title: "위치 정보 제공 동의",
@@ -323,14 +320,13 @@
                         },
                         ok:function(){
                             setTimeout(function(){
-                                lgkorUI.setCookie('bestShopMapAgree','Y', false, 1);
+                                window.sessionStorage.setItem("bestShopMapAgree", "Y");
                                 self._getCurrentLocation();
                             },300);
                         }
                     });
                 }
-                */                
-
+                /*
                 lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
                     typeClass: "type2",
                     title: "위치 정보 제공 동의",
@@ -347,7 +343,7 @@
                         },300);
                     }
                 });
-
+                */
 	                
             }
             else
@@ -1046,9 +1042,8 @@
         //검색...
         _setSearch: function(){
             var self = this;
-            var keyword, trim;
 
-
+            /*
             self.$citySelect = $('#select1'); //시/도 선택
             self.$boroughSelect = $('#select2'); //구.군 선택
             self.$localSearchButton = $('.search-local'); //지역검색 버튼
@@ -1062,6 +1057,11 @@
             self.$subwayLineSelect = $('#select4'); //호선 선택
             self.$subwayStationSelect = $('#select5'); //역 선택
             self.$searchSubwayButton = $('.search-subway'); //지하철 검색 버튼
+            */
+
+
+            var selectedIndex = $(".sch-box .tabs-wrap").vcTab('getSelectIdx');
+            self.searchType = searchTypeNames[selectedIndex];
 
 
             switch(self.searchType){
@@ -1115,9 +1115,14 @@
                 self.$map.getAdressPositions(self.userAddress, function(result){
 
                     if(result.success == "Y"){
+                        self.searchType="myLocation";
                         self._renderStore(result.pointy, result.pointx);
+                        
                     } else{
                         // console.log(result.errMsg)
+                        lgkorUI.alert("내 주소의 위치정보를 <br>찾을 수 없습니다.", {
+                            title:''
+                        });
                     }
                 });                
             } else{
@@ -1126,7 +1131,17 @@
                         title:'등록된 주소 정보가 없습니다.'
                     });
                 } else{
-                    location.href = self.loginUrl;
+
+                    lgkorUI.confirm("로그인 후 이용가능 합니다.<br>로그인하시겠어요? ", {
+                        title: "",
+                        cancelBtnName: "아니오",
+                        okBtnName: "네",
+                        ok: function(){
+                            setTimeout(function(){
+                                location.href = self.loginUrl;
+                            },300);
+                        }
+                    });
                 }
             }
         },

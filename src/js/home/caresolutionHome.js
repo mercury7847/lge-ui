@@ -1,3 +1,21 @@
+/*
+"modelStatusCode":"ACTIVE",
+"mediumImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-350x350.jpg",
+"modelId":"MD08747121",
+"modelUrlPath":"/care-solutions/lg-homebrew/bb052s",
+"smallImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-280x280.jpg",
+"salesModelCode":"BB052S",
+"years1TotAmt":49900,
+"categoryName":"맥주제조기",
+"salesSuffixCode":"AKOR",
+"largeImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-450x450.jpg",
+"modelName":"BB052S",
+"rtModelSeq":"1545027",
+"modelDisplayName":"LG 홈브루",
+"categoryId":"CT50000087"
+*/
+
+
 var itemTmpl = '{{#each obj in list}}'+
     '<li class="item ui_carousel_slide">\n'+
     '   <div class="prd-care-vertical">\n'+
@@ -8,13 +26,13 @@ var itemTmpl = '{{#each obj in list}}'+
     '       </div>\n'+
     '       <div class="txt-wrap">\n'+
     '           <p class="tit"><span class="blind">제품명</span>{{obj.modelDisplayName}}</p>\n'+
-    '           <p class="code"><span class="blind">제품 코드</span>{{obj.modelId}}</p>\n'+
+    '           <p class="code"><span class="blind">제품 코드</span>{{obj.modelName}}</p>\n'+
     '       </div>\n'+
     '       <div class="info-wrap">\n'+
     '           <div class="price-wrap">\n'+
     '               <div class="total-price">\n'+
-    '                   {{#if obj.totalPrice}}'+
-    '                       <p class="price">{{#raw obj.totalPrice}}</p>\n'+
+    '                   {{#if obj.years1TotAmt}}'+
+    '                       <p class="price">{{#raw obj.years1TotAmt}}</p>\n'+
     '                   {{/if}}'+
     '                   <button type="button" class="btn border ui_care_detail_btn" data-url="{{obj.modelUrlPath}}"><span>자세히 보기</span></button>\n'+
     '               </div>\n'+
@@ -28,12 +46,6 @@ $(function(){
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
         // 제품 코드 관리 부분
-        var requestObj = {
-            newProductIds:'0001,0002,0003,0004', 
-            bestProductIds:'a001,0002,0003,0004',
-            newMarryProductIds:'b001,0002,0003,0004',
-            petProductIds:'c001,0002,0003,0004'
-        }
 
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
@@ -217,22 +229,11 @@ $(function(){
 
                 var list = vcui.array.map(arr, function(item, index){
 
-                    var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
-                    var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
-                    var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
-
-                    if(obsOriginalPrice || obsOriginalPrice!=='' || obsOriginalPrice!=='0'){ 
-                        item['obsOriginalPrice'] = '월 '+vcui.number.addComma(obsOriginalPrice) + '원';
+                    var years1TotAmt = parseInt(item['years1TotAmt'] || "0");
+                    if(years1TotAmt!==0){ 
+                        item['years1TotAmt'] = '월 '+vcui.number.addComma(years1TotAmt) + '원';
                     }else{
-                        item['obsOriginalPrice'] = null;
-                    }
-
-                    var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-
-                    if(price || price!=='' || price!=='0'){ 
-                        item['totalPrice'] = '월 '+vcui.number.addComma(price) + '원';
-                    }else{
-                        item['totalPrice'] = null;
+                        item['years1TotAmt'] = null;
                     }
 
                     return item;
@@ -277,12 +278,13 @@ $(function(){
                         infinite: false,
                         slidesToShow: 4,
                         slidesToScroll: 1,
-                        variableWidth : true,
+                        variableWidth : false,
+                        // centerMode:true,
                         responsive: [
                             {
                                 breakpoint: 10000,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 4,
                                     slidesToScroll: 1, 
                                 }
@@ -290,7 +292,7 @@ $(function(){
                             {
                                 breakpoint: 1200,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 3,
                                     slidesToScroll: 1,   
                                 }
@@ -298,7 +300,7 @@ $(function(){
                             {
                                 breakpoint: 900,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 2,
                                     slidesToScroll: 1,
                                     
@@ -307,7 +309,7 @@ $(function(){
                             {
                                 breakpoint: 768,
                                 settings: {
-                                    variableWidth : false,
+                                    // variableWidth : false,
                                     slidesToShow: 1, 
                                     slidesToScroll: 1
                                 }

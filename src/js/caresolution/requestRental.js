@@ -45,6 +45,12 @@
 
     var ajaxMethod = "post";
 
+    var selectPaymentMethod;
+
+    var contractUserPhone;
+
+    var isBeforeUnload = true;
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
             setting();
@@ -225,6 +231,17 @@
             }
         });
 
+        $('.nextStep-btn').on('click', function(e){
+            e.preventDefault();
+
+            if(setNextStep()){
+                stepAccordion.expand(step, true);
+                var activeValue = stepAccordion.getActivate();
+                var contop = $(activeValue.header[step]).offset().top;
+                $('html, body').stop().animate({scrollTop:contop}, 350);
+            }
+        })
+
         requestButton.on('click', function(e){
             rentalRequest();
         });
@@ -314,13 +331,15 @@
         $('.search-postcode').on('click', function(e){
             e.preventDefault();
 
-            getPostCode($(this).closest('.conts'));
+            var idx = $(this).closest('.lists').index();
+            getPostCode($(this).closest('.conts'), idx);
         });
 
         $('.openDelivery').on('click', function(e){
             e.preventDefault();
 
-            openDeliveryPop($(this).closest('.conts'))
+            var idx = $(this).closest('.lists').index();
+            openDeliveryPop($(this).closest('.conts'), idx)
         });
 
         $('input[name=nicePopChker]').on('change', function(e){
@@ -455,6 +474,10 @@
 
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
+
+        $(window).on('beforeunload', function(e){
+            if(isBeforeUnload) return '변경사항이 저장되지 않을 수 있습니다.'
+        });
     }
 
     function setNextStep(){
@@ -542,7 +565,7 @@
                 if(data == "Y"){
                     chk = compareInputData(installAdress, step2Validation.getValues());
                 }
-
+                
                 if(!chk){
                     lgkorUI.alert("", {
                         title: "설치 가능여부 확인이 필요합니다."
@@ -606,9 +629,12 @@
         if(paymethod == "") return false;
 
         var cardAbled = getInputData('cardAbled');
-        if(cardAbled == "N"){
+        if(selectPaymentMethod != paymethod || cardAbled == "N"){
             var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
             lgkorUI.alert("",{title:msg});
+
+            selectPaymentMethod = "";
+            setInputData('arsAgree', "N");
             
             return false;
         }
@@ -620,7 +646,9 @@
 
             step3Block.find('.arsAgreeRequest').prop('disabled', true);
 
+            selectPaymentMethod = "";
             setInputData('arsAgree', "N");
+
             return false;
         }
 
@@ -671,9 +699,6 @@
     function setInstallAdress(){
         var values = step2Validation.getValues(); 
         installAdress = {
-            userName: values.userName,
-            userTelephone: values.userTelephone,
-            userPhone: values.userPhone,
             zipCode: values.zipCode,
             userAddress: values.userAddress,
             detailAddress: values.detailAddress
@@ -895,9 +920,7 @@
             for(var str in step1Value){
                 step2Block.find('input[name=' + str +']').val(step1Value[str]);
             }
-
-            var telephone = step2Block.find('input[name=userTelephone]');
-            telephone.val(telephone.data('equalNumber'));
+            step2Block.find('input[name=userTelephone]').val(contractUserPhone);
 
             step2Block.find('input[name=detailAddress]').val(step1Validation.getValues('detailAddress'));
 
@@ -905,6 +928,26 @@
         } else{
             step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
         }
+        setInputData('installAbled', "N");
+        step2Block.find('button.installAbledConfirm').prop('disabled', false);
+    }
+
+    //설치정보 배송지목록 선택 시
+    function setInstallInfos(data){
+        step2Block.find('input[name=userName]').val(data.receiverUser);
+        step2Block.find('input[name=userPhone]').val(data.phoneNumber);
+        step2Block.find('input[name=userTelephone]').val(data.telephoneNumber);
+        step2Block.find('input[name=zipCode]').val(data.zipCode);
+        step2Block.find('input[name=userAddress]').val(data.userAddress);
+        step2Block.find('input[name=detailAddress]').val(data.detailAddress);
+        
+        step2Block.find('input[name=installInpuType]').prop('checked', false);
+
+        step2Block.data("infoType", "list");
+    }
+    //설치정보 주소찾기 선택시
+    function setInstallInfosSearch(){
+        step2Block.find('input[name=installInpuType]').prop('checked', false);
     }
 
     //납부카드확인...
@@ -934,6 +977,7 @@
                     paymentCardNumber: values.paymentCardNumber,
                     paymentCardPeriod: values.paymentCardPeriod
                 }
+                selectPaymentMethod = "card";
             } else{
                 cardInputData = {};
             }
@@ -966,6 +1010,7 @@
                     paymentBank: values.paymentBank,
                     paymentBankNumber: values.paymentBankNumber
                 }
+                selectPaymentMethod = "bank";
             } else{
                 bankInputData = {};
             }
@@ -975,7 +1020,10 @@
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
         var chk = paymentValidation();
-        if(!chk) return;        
+        if(!chk){
+            setInputData('cardAbled', "N");       
+            return;
+        }        
 
         lgkorUI.showLoading();
 
@@ -997,19 +1045,26 @@
     }
 
     //우편번호 찾기 연동...
-    function getPostCode(item){
+    function getPostCode(item, idx){
         addressFinder.open(function(data){
             item.find('input[name=zipCode]').val(data.zonecode);
             item.find('input[name=userAddress]').val(data.roadAddress);
             item.find('input[name=detailAddress]').val('');
+            
+            if(idx){
+                setInputData('installAbled', "N");
+                step2Block.find('input[name=detailAddress]').prop('disabled', false);
+                step2Block.find('button.installAbledConfirm').prop('disabled', false);
 
-            step2Block.find('input[name=detailAddress]').prop('disabled', false);
-            step2Block.find('button.installAbledConfirm').prop('disabled', false);
+                setInstallInfosSearch();
+            } else{
+                contractUserPhone = "";
+            }
         });
     }
 
     //배송지 목록 팝업 오픈...
-    function openDeliveryPop(item){
+    function openDeliveryPop(item, idx){
         deliveryMnger.open(function(data){
             item.find('input[name=zipCode]').val(data.zipCode);
             item.find('input[name=userAddress]').val(data.userAddress);
@@ -1017,8 +1072,15 @@
 
             $('.err-address').hide();
 
-            step2Block.find('input[name=detailAddress]').prop('disabled', false);
-            step2Block.find('button.installAbledConfirm').prop('disabled', false);
+            if(idx){
+                setInputData('installAbled', "N");
+                step2Block.find('input[name=detailAddress]').prop('disabled', false);
+                step2Block.find('button.installAbledConfirm').prop('disabled', false);
+
+                setInstallInfos(data);
+            } else{
+                contractUserPhone = data.telephoneNumber;
+            }
         });
     }
 
@@ -1153,6 +1215,23 @@
         var cardValue = cardValidation.getValues();
         var bankValue = bankValidation.getValues();
         var payment = getPaymentMethod() == "bank";
+
+        var notes = step2Block.find('input[name=installRequriement]').val();
+        var instReqDate = step2Value.inatallDate;
+        var collectRequest = step2Block.find('input[name=collectRequest]:checked').val();
+        var preVisitRequest = step2Block.find('input[name=preVisitRequest]:checked').val();
+
+        if(allOwnedProductYn == "Y"){
+            notes = "";
+            instReqDate = "";
+            collectRequest = "";
+            preVisitRequest = "";
+        } else{
+            if(beforeVisitModelFlag == "N"){
+                preVisitRequest = "";
+            }
+        }
+
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1174,20 +1253,23 @@
             RCV_POST_CODE: step2Value.zipCode,
             RCV_BAS_ADDR: step2Value.userAddress,
             RCV_DTL_ADDR: step2Value.detailAddress,
-            INSTALL_PLACE: step2Value.inatallPlace,
-            INST_REQ_DATE: step2Value.inatallDate,
-            NOTES: step2Block.find('input[name=installRequriement]').val(),
             INFO_USED_AGREE: $('#popup-rentalAgree').find('input[name=rentalAgree-infoUtility]').prop('checked') ? "Y" : "N",
             MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
-            preVisitRequest: step2Block.find('input[name=preVisitRequest]:checked').val(),
-            collectRequest: step2Block.find('input[name=collectRequest]:checked').val(),
-            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked')
+            isAgree: step3Block.find('input[name=useMemPoint]').prop('checked'),
+            INSTALL_PLACE: step2Value.inatallPlace,
+
+            NOTES: notes,
+            INST_REQ_DATE: instReqDate,
+            collectRequest: collectRequest,
+            preVisitRequest: preVisitRequest
         };
 
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
+                isBeforeUnload = false;
+
                 var endtitle = "";
                 var endesc = "";
                 var endbntname = "";
@@ -1202,6 +1284,8 @@
                 }
 
                 if(endtitle != ""){
+                    lgkorUI.hideLoading();
+
                     lgkorUI.alert(endesc, {
                         title: endtitle,
                         okBtnName: endbntname,
@@ -1213,16 +1297,16 @@
                     location.href= result.data.sendUrl;
                 }
             } else{
+                lgkorUI.hideLoading();
+
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
             }
-
-            lgkorUI.hideLoading();
         }, ajaxMethod);
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function(){
         init();
-    });
+    })
 })();

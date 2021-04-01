@@ -1380,24 +1380,27 @@
                         top:3px;
                     }
                 }
-            }
-        }
-
-        .useable-service {
-            display: none;
-            font-size:14px;
-            line-height:1.4;
-
-            .useable-tit {
-                font-weight: 500;
-            }
-
-            @include mobile {
-                display: block;
-                font-size:13px;
-
-                .useable-tit { 
-                    display: block;
+                .useable-service {
+                    display: none;
+                    font-size:14px;
+                    line-height:1.4;
+        
+                    .useable-tit {
+                        font-weight: 500;
+                    }
+        
+                    @include mobile {
+                        display: block;
+                        font-size:13px;
+                        .useable-tit { 
+                            display: block;
+                        }
+                    }
+                }
+                .opt-list {
+                    @include mobile {
+                        display:none;
+                    }
                 }
             }
         }
@@ -1406,10 +1409,6 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-
-            @include mobile {
-                display: none;
-            }
             li {
                 display:inline-block;
                 padding:0;
@@ -1492,14 +1491,14 @@
                         z-index:11;
                     }
                     .list-wrap {
-                        margin-top:459px;
+                        margin-top:425px;
                     }
                 }
             }
 
             &.result-map {
                 .store-map-con {
-                    top: 59px;
+                    top: 25px;
                 }
             }
         }

@@ -107,7 +107,7 @@
             self.$citySelect2 = $('#address');
             self.$address1 = $('#keyword');
             self.$keywordWrap = $('.ui_search');
-            self.searchCenterName = $('#tab3').find('.btn-search');
+            self.searchCenterName = $('#tab-3').find('.btn-search');
 
             // 희망날짜
             self.$dateWrap = self.$stepDate.find('.date-wrap');
