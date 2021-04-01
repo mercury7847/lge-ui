@@ -9,7 +9,8 @@
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>반품신청 팝업</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>영수증 발급 내역 팝업</span></button><br><br>
         <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>케어솔루션 할인 내역 팝업</span></button><br><br>
-        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button><br><br><br><br>
+        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button><br><br>
+        <button type="button" data-href="#popup6" data-control="modal" class="btn"><span>주문 상세 팝업</span></button><br><br><br><br>
         <button type="button" data-href="#laypop1" data-control="modal" class="btn"><span>개인정보 동의 얼럿</span></button>
     </div>
 
@@ -84,6 +85,12 @@
     })
     <!-- // 케어십 할인 내역 -->
     <!-- // 210326 수정 [전체 수정] -->
+
+    <!-- 210401 추가 [청약 주문 상세 팝업] -->
+    @@include('./common/popup/ACCF7002_pop6.html', {
+        popupID: 'popup6'
+    })
+    <!-- // 210401 추가 [청약 주문 상세 팝업] -->
 
     <!-- 210319 개인정보 동의 팝업 추가 -->
     @@include('./common/modules/alert-modal.html', {
