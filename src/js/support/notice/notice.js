@@ -257,7 +257,7 @@
                 $(window).on('scroll', function(){
                     var _top = $(this).scrollTop();
         
-                    if( _top >= $contSticky.offset().top ) {
+                    if( _top >= $contSticky.offset().top &&  $('.contents.support').offset().top + $('.contents.support').outerHeight() - $contSticky.outerHeight() ) {
                         $contSticky.addClass('fixed');
                     } else {
                         $contSticky.removeClass('fixed');
