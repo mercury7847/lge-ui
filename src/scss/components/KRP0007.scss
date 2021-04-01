@@ -29,16 +29,16 @@
             @include mobile {
                 display: flex;
                 align-items: flex-start;
-                padding: 0 20px;
+                padding: 0;
             }
             .chk-cate {
-                 .chk-wrap input:checked+label {
+                 .rdo-wrap input:checked+label {
                     background:#e4e4e4;
                     border-radius:25px;
                     white-space:nowrap;
                     overflow:hidden;
                 }
-                .chk-wrap input+label {
+                .rdo-wrap input+label {
                     padding:8px 16px;
                     color:#000;
                     font-weight:700;
@@ -70,19 +70,34 @@
                     overflow: hidden;
                     padding-left: 32px;
                     border-bottom: 0;
+                    &:after {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        right: 40px;
+                        width: 16px;
+                        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+                        content: '';
+                    }
                 }
                 @include mobile {
-                    padding: 9px 0 9px 32px;
+                    padding: 9px 0 9px 48px;
+                    &:after {
+                        right: 0;
+                    }
                 }
                 .cate-scroll-wrap {
                     position: relative;
                     text-align: center;
                     .tabs {
                         display: inline-block;
-                        padding:3px;
+                        padding:3px 16px 3px 15px;
                         white-space: nowrap;
                         font-size: 0;
                         vertical-align: top;
+                        @media screen and (min-width: $tablet-s-width + 1) {
+                            padding:3px 0 3px 24px;
+                        }
                         //@media screen and (max-width: 1024px) {
                         //    &:before {
                         //        display: inline-block;
@@ -167,9 +182,9 @@
                     height: 100%;
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
                 }
-                @media screen and (max-width: 1024px) {
-                    display: block;
-                }
+                //@media screen and (max-width: 1024px) {
+                //    display: block;
+                //}
             }
         }
         @media screen and (max-width: 1024px) {
@@ -186,7 +201,7 @@
                                 white-space: normal;
                                 overflow:visible;
                                 text-align: left;
-                                .chk-wrap {
+                                .rdo-wrap {
                                     margin-bottom: 20px;
                                 }
                             }

@@ -514,37 +514,38 @@
     position: absolute;
     top: 0;
     //left: 16px;
-    z-index: 1;
+    z-index: 2;
     &:before {
         content:' ';
         position:absolute;
+        top: 0;
+        bottom: 0;
+        left:48px;
         z-index:0;
-        width:80px;
-        height:40px;
-        left:-20px;
-        background: url("/lg5-common/images/KRP0007/bg-filter-grad.svg") no-repeat 0 0;
-        background-size:80px 40px;
+        width:15px;
+        background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
     }
     @include tablet {
-        top: 21px;
+        //top: 21px;
         left: 40px;
     }
     @include mobile {
-        top: 14px;
-        left: 16px;
+        top: 0;
+        left: 0;
     }
     .ico-filter {
         display: inline-block;
         position:relative;
         z-index:1;
-        width: 32px;
-        height: 32px;
+        width: 48px;
+        height: 100%;
         margin-right: 24px;
-        background: url("/lg5-common/images/icons/btn-filter-64.svg") no-repeat 0 0;
+        background: #fff url("/lg5-common/images/icons/btn-filter-64.svg") no-repeat left center;
         background-size: 32px;
         @include mobile {
-            top:3px;
-            margin-right: 20px;
+            //top:3px;
+            margin-right: 15px;
+            background-position:  left 16px center;
         }
     }
     @media screen and (min-width: 1025px) {
@@ -570,10 +571,14 @@
 
 .cate-m {
     @include tablet {
+        position: relative;
         min-height: 76px;
         border-bottom: 1px solid #ddd;
         @include mobile {
             min-height: 65px;
+        }
+        .btn-filter {
+            bottom: 0;
         }
     }
     //border-bottom: 12px solid #f4f4f4;
