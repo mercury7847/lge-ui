@@ -231,8 +231,10 @@
                     self.cartAllChecker.update();
                 }
                 */
-                var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
-                self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked):not(:disabled)'));
+                var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':not(:disabled)');
+                var $selectItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked:not(:disabled)');
+
+                self.$cartAllCheck.prop('checked', ($cartItemCheck.length > 0 && $cartItemCheck.length == $selectItemCheck.length));
             },
 
             updateList: function(data) {
