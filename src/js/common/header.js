@@ -123,6 +123,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$dimmed = self.$el.find('.header-wrap .dimmed');
 
+            //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+            self.$dimmed.hide();
+
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
@@ -433,6 +436,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(two < 0) self.$dimmed.hide();
                 else self.$dimmed.show();
             }
+
+
+            //$$$$$$$$$$$$$$$$$$$$$$$$
+            self.$dimmed.hide();
         },
 
         _removeOutTimeout: function(){
@@ -550,16 +557,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 replaceText.text("메뉴 열기");
                 $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-                self.$dimmed.hide();
+
+                //$$$$$$$$$$$$$$$$$$$$$
+                //self.$dimmed.hide();
 
             } else{
                 self.$hamburger.addClass('active');
                 replaceText.text("메뉴 닫기");
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 $('.marketing-link .ui_carousel_slider').vcCarousel('update');   
-                self.$dimmed.show();   
+
+
+                //$$$$$$$$$$$$$$$$$$$$$$
+                //self.$dimmed.show();   
 
             }
+
+            self.$dimmed.hide();
         },
 
         _hamburgerDisabled: function(){
