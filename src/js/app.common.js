@@ -23,6 +23,12 @@ $(document).ready(function() {
             });
             //Quick메뉴, Easy-path 삭제
             $('.KRP0005,.KRP0032,.quick-menu-list,.easy-path').remove();
+            
+            //앱 개인정보 수정 링크 변경
+            $(".mod-link").each(function(){ 
+               this.href = this.href.replace("changeInfo.do", "changeInfo_app.do");
+            });
+
 
             if($(".main-wrap").length > 0){
                 //Quick메뉴 AR 버튼 추가
