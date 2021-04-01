@@ -1312,6 +1312,22 @@
         display: none;
     }
 
+    @include mobile {
+        & + .header-bottom {
+            display: block;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            bottom: 0;
+            z-index: 111;
+            transition: right .5s;
+            width: calc(100% - 20px);
+            overflow-y: auto;
+            padding-top: 60px;
+            background-color: #fff;
+        }
+    }
+
     &.active {
         position: fixed;
         top: 11px;
@@ -1329,22 +1345,15 @@
             background: url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat center center;
         }
 
-        & + .header-bottom {
-            @include mobile {
-                display: block;
-                position: fixed;
-                top: 0;
+        @include mobile {
+            & + .header-bottom {
                 right: 0;
-                bottom: 0;
-                left: 20px;
-                z-index: 111;
-                overflow-y: auto;
-                padding-top: 60px;
-                background-color: #fff;
-                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.3);
-            }
-            &.app-btm {
-                @include mobile {
+                .login-mobile {
+                    &:before {
+                        right: 0;
+                    }
+                }
+                &.app-btm {
                     padding-bottom:60px;
                 }
             }
@@ -1358,10 +1367,10 @@
     &:before {
         position: fixed;
         top: 0;
-        right: 0;
-        left: 20px;
+        right: -100%;
         z-index: 112;
-        width: 100%;
+        transition: right .5s;
+        width: calc(100% - 20px);
         height: 60px;
         background-color: $color-bg-wt;
         content: '';

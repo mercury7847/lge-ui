@@ -223,6 +223,20 @@
                 url = url.substr(url.indexOf('?') + 1);
             }
             history.replaceState(null, '', '?'+url);
+        },
+        scrollTo: function($target, margin) {
+            $target.on('focus', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+            $('html,body').stop().animate({scrollTop:$target.offset().top - (margin ? margin : 0)}, function() {
+                $target.focus();
+                if (!$target.is(':focus')) {
+                    $target.attr('tabindex', -1).focus().removeAttr('tabindex');
+                }
+                return false;
+            });
         }
     }
 
@@ -1560,31 +1574,14 @@ function validatePhone(value){
         $(document).on('change', '.agree-wrap input:checkbox', function(){
             var $this = $(this);
             var $wrap = $this.closest('.agree-wrap');
-            var $stepBox = $wrap.closest('.step-box');
-            var tid = 0;
-        
-            clearInterval(tid);
-        
-            if( $wrap.find('input:checkbox').filter(':checked').length == $wrap.find('input:checkbox').length ) {
+
+            if ($wrap.find('input:checkbox').filter(':checked').length == $wrap.find('input:checkbox').length) {
                 var $this = $(this);
                 var $curSection = $this.closest('.section').next('.section');
-                var $stepBox = $this.closest('.step-box');
-                var $stepBtn = $('.step-btn-wrap');
-                var $curTarget = null;
         
-                tid = setTimeout(function(){
-                    if( $curSection.length ) {
-                        $curSection.attr('tabindex', '0').focus().removeAttr('tabindex');
-                    } else {
-                        if( $stepBox.find('.step-btn-wrap button').length ) {
-                            $stepBox.find('.step-btn-wrap button').focus();
-                        } else {
-                            $stepBox.next('.step-box').attr('tabindex', '0').focus().removeAttr('tabindex');
-                        }
-                    }
-                }, 100)
+                lgkorUI.scrollTo($curSection, $('.prod-selected-wrap').outerHeight());
             }
-        })
+        });
         
         $(document).on('ajaxComplete', function() {
             $('img').not('[data-pc-src], #modelNamePopup img').on('error', function() {

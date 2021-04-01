@@ -601,6 +601,21 @@
                 }
             }
         }
+
+        .related-info-list {
+
+            > .btn-link {
+                position:absolute;
+                right:0;
+                top:0;
+            }
+            @include mobile {
+                > .btn-link {
+                    top: 65px;
+                    right:16px;
+                }
+            }
+        }
     }
     /* 카드뉴스 */
     &.card-news {   

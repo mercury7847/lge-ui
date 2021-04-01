@@ -9,33 +9,6 @@ footer {
         padding:0;
         padding-bottom:60px;
     }
-    // 고객센터 번호
-    .call-to {
-        max-width:1284px;
-        margin:0 auto;
-        padding:24px 0;
-        border-bottom:1px solid #666;
-        text-align:center;
-        color:#000;
-        dt {
-            font-weight: 500;
-            @include font(12px,16px);
-        }
-        dd {
-            @include font(18px,28px);
-            font-weight:700;
-        }
-        @include mobile {
-            padding-top: 32px;
-            dt {
-                margin-bottom: 2px;
-                @include font(13px,21px);
-            }
-            dd {
-                font-size: 20px;
-            }
-        }
-    }
     // footer cont
     .foot-cont {
         .cont-area {
@@ -477,10 +450,11 @@ footer {
                             color: $color-gray-1;
                             &:before {
                                 display: inline-block;
-                                margin-right: 8px;
-                                width: 32px;
-                                height: 32px;
+                                margin-right: 4px;
+                                width: 28px;
+                                height: 28px;
                                 background: no-repeat center center;
+                                background-size: 100%;
                                 content: '';
                             }
                             @for $i from 1 through 6 {
@@ -494,7 +468,7 @@ footer {
                     }
                 }
                 @include tablet {
-                    padding:16px 0 24px;
+                    padding:16px 0;
                     .dropdown-wrap {
                         float: none;
                         .dropdowns {
@@ -509,13 +483,12 @@ footer {
                         //justify-content: space-evenly;
                         flex-wrap: wrap;
                         float: none;
+                        margin-top: 16px;
                         li {
-                            width: (100% / 6);
-                            margin-top: 24px;
+                            width: (100% / 5);
+                            margin-top: 8px;
                             margin-left:0;
                             a {
-                                flex-direction: column;
-                                padding-top: 34px;
                                 padding-left: 0;
                                 background-position: center top;
                                 text-align: center;
@@ -527,7 +500,7 @@ footer {
                     }
                 }
                 @include mobile {
-                    padding:40px 0 32px;
+                    padding:40px 0 20px;
                     .dropdown-wrap {
                         font-size:0;
                         .dropdowns {
@@ -561,10 +534,15 @@ footer {
                         }
                     }
                     .sns-link {
-                        margin-top:16px;
+                        margin:12px -14px 0;
                         li {
                             width: (100% / 3);
-                            margin-top: 16px;
+                            margin-top: 0;
+                            padding: 0 14px;
+                            a {
+                                flex-direction: column;
+                                padding: 12px 0;
+                            }
                         }
                     }
                 }
@@ -597,20 +575,50 @@ footer {
                         }
                     }
                 }
+                // 고객센터 번호
+                .call-to {
+                    margin-top: 8px;
+                    font-size: 0;
+                    li {
+                        display: inline-block;
+                        font-size: 12px;
+                        line-height: 16px;
+                        color: $color-gray-1;
+                        a {
+                            color: $color-default;
+                        }
+                        &:not(:last-child):after {
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 6px;
+                            background-color: $color-gray-4;
+                            vertical-align: -1px;
+                            content: '';
+                        }
+                    }
+                    @include mobile {
+                        margin-top: 24px;
+                        li {
+                            &:not(:last-child) {
+                                margin-right: 12px;
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
                 .comp-info {
                     margin-top:16px;
                     padding-right:220px;
                     @media screen and (max-width:1200px) {
                         padding-right:0;
                     }
-                    @include mobile {
-                        margin-top:36px;
-                    }
                     p {
                         margin-top: 4px;
                         color:#767676;
                         @include font(12px,16px);
-                        font-weight:500;
                         &.info {
                             margin-bottom:4px;
                         }
@@ -632,6 +640,9 @@ footer {
                         }
                         &:first-child {
                             margin-bottom:12px;
+                            @include mobile {
+                                margin-bottom: 16px;
+                            }
                         }
                     }
                 }
