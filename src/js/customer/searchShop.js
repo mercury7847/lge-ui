@@ -5,6 +5,7 @@
 <!-- IFRAME 종료  -->
 */
 
+
     function isRegExp(a){
 		return a.constructor===RegExp;
 	}
@@ -523,7 +524,6 @@
             self.userLatitude = position.coords.latitude;
             self.userLongitude = position.coords.longitude;
 
-
             if(self.$map) {
                 self.$map.setUserLocation(self.userLatitude, self.userLongitude);
                 self.$map.start(self.userLatitude, self.userLongitude);
@@ -577,7 +577,7 @@
                     if(self.userLatitude && self.userLongitude) {
 
                         defaultLat = self.userLatitude;
-                        defaultLong = self.userLatitude;
+                        defaultLong = self.userLongitude;
                     }
 
                     var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});

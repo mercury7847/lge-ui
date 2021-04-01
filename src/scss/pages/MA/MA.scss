@@ -32,6 +32,13 @@
 		&:first-child {
 			height:calc(100vh - 84px);
 		}
+		&:nth-child(2) {
+			.text-link {
+				top:280px;
+				right:auto;
+				left:140px;
+			}
+		}
 		> a {
 			display:block;
 		}
@@ -375,6 +382,16 @@
 								margin-top:16px;
 							}
 						}
+						&:first-child {
+							.item-box {
+								background-color:#f1e6ed;
+							}
+						}
+						&:last-child {
+							.item-box {
+								background-color:#f3e2e2;
+							}
+						}
 						.item-box {
 							height:228px;
 							padding:48px 72px 48px 144px;
@@ -386,7 +403,7 @@
 								line-height:52px;
 							}
 							.desc {
-								margin-top:8px;
+								margin-top:4px;
 								color:#000;
 								font-size:20px;
 								font-weight:500;
@@ -397,7 +414,7 @@
 								// bottom:48px;
 								// left:50%;
 								display:inline-block;
-								margin-top:16px;
+								margin-top:20px;
 								padding-right:20px;
 								background:url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') no-repeat right 50%;
 								font-size:16px;
@@ -421,7 +438,7 @@
 									line-height:33px;
 								}
 								.desc {
-									margin-top:12px;
+									margin-top:4px;
 									font-size:14px;
 									line-height:22px;
 								}
@@ -888,16 +905,18 @@
 					   }
 					   .thumb {
 							position:relative;
-							&:before {
-								content:' ';
-								position:absolute;
-								right:0;
-								bottom:0;
-								left:0;
-								height:100px;
-								background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 6%, #000000 70%);
-								opacity:.5;
-							}
+							border-radius:8px;
+							box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5);
+							// &:before {
+							// 	content:' ';
+							// 	position:absolute;
+							// 	right:0;
+							// 	bottom:0;
+							// 	left:0;
+							// 	height:100px;
+							// 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 6%, #000000 70%);
+							// 	opacity:.5;
+							// }
 							img {
 								width: 100%;
 								border-radius: 8px;
@@ -914,10 +933,10 @@
 							.inner {
 								display: block;
 								width: 100%;
-								position:absolute;
-								right:40px;
-								bottom:28px;
-								//height: 100%;
+								// height: 100%;
+								// position:absolute;
+								// right:40px;
+								// bottom:28px;
 								@include mobile {
 									width:auto;
 									right:18px;
@@ -930,7 +949,7 @@
 							.tit {
 								display: block;
 								@include font-large-2;
-								color: #fff;
+								color: #000;
 								font-weight: 700;
 								@include mobile {
 									//font-size: 15px;
@@ -970,10 +989,10 @@
 								height:100%;
 								.tit {
 									width: 100%;
-									@include font-large-3;
-									text-align: right;
+									@include font-large-2;
+									text-align: left;
 									@include mobile {
-										text-align: right;
+										text-align: left;
 										font-size:16px;
 										line-height:24px;
 									}
