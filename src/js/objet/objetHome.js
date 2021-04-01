@@ -412,10 +412,12 @@ $(function() {
             });
 
             stepLens = wheelArr.length - 1;
-            console.log("winHeight", winHeight);
-            console.log("totalHeight", totalHeight);
+            // console.log("winHeight", winHeight);
+            // console.log("totalHeight", totalHeight);
+            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
+            $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
             if (page !== undefined) {
                 currentPage = page;
