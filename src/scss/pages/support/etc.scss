@@ -349,10 +349,10 @@
     font-weight:$font-weight-bold;
 }
 .example-box {
-    @include clearfix;
+    display: flex;
+    justify-content: space-between;
     .item {
-        float:left;
-        width:calc((100% - 16px) / 3);
+        flex:1;
         & + .item {
             margin-left:8px;
         }

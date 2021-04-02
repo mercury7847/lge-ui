@@ -382,6 +382,7 @@
                 width:48px;
                 height:48px;
                 background-image: url('/lg5-common/images/icons/btn-close-48-white.svg');
+                background-size: 48px;
             }
             @include mobile {
                 top:24px;
@@ -738,6 +739,39 @@
                         width:calc((100% - 8px) / 2);
                         @include mobile {
                             width:100%;
+                        }
+                    }
+                }
+
+                .gray-box {
+                    .form-wrap {
+                        width: 100%;
+                        max-width: 100%;
+                        .forms {
+                            .conts {
+                                width: 100%;
+                            }
+                        }
+                        &.col-2 {
+                            display: flex;
+                            justify-content: space-between;
+                            .forms {
+                                width:calc((100% - 8px) / 2);
+                                &.inner-type {
+                                    margin-top: 0;
+                                }
+                            }
+                        }
+                        &:not(:first-child) {
+                            margin-top: 16px;
+                        }
+                        .bank-input-box {
+                            .select-wrap {
+                                width: 39.2%;
+                            }
+                            .box {
+                                width: calc(100% - (39.2% + 8px));
+                            }
                         }
                     }
                 }

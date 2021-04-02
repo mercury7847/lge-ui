@@ -23,6 +23,7 @@
                 }
             }
             .tit {
+                padding-right: 80px;
                 font-size: $font-large-4;
                 line-height: 52px;
                 font-weight:700;
@@ -30,8 +31,12 @@
                 overflow:hidden;
                 text-overflow:ellipsis;
                 @include mobile {
+                    max-height: 66px;
+                    padding-right: 56px;
                     font-size: $font-large-2;
                     line-height: 33px;
+                    @include textEllipsisClamp(2);
+                    white-space: normal;
                 }
             }
             .sub-tit {

@@ -200,7 +200,11 @@
                 $('#popup-contractIssue').vcModal();
             } else{
                 lgkorUI.alert("", {
-                    title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요."
+                    title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요.",
+                    ok: function(){
+                        var movetop = $('.sects.user.viewer').offset().top - 80;
+                        $('html, body').animate({scrollTop:movetop}, 120)
+                    }
                 });
             }
         }).on('click', '.requestCard-btn', function(e){
@@ -310,18 +314,18 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    void(window.open("", "popupChk", "width=390, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
-                    document.form_chk.action = result.data.niceAntionUrl;
-                    document.form_chk.m.value = result.data.m;
-                    document.form_chk.EncodeData.value = result.data.sEncData;
-                    document.form_chk.auth_type.value = result.data.auth_type;
-                    document.form_chk.param_r1.value = result.data.param_r1;
-                    document.form_chk.param_r2.value = result.data.param_r2;
-                    document.form_chk.param_r3.value = result.data.param_r3;
-                    document.form_chk.target = "popupChk";
-                    document.form_chk.submit();
+                    // void(window.open("", "popupChk", "width=390, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+                    // document.form_chk.action = result.data.niceAntionUrl;
+                    // document.form_chk.m.value = result.data.m;
+                    // document.form_chk.EncodeData.value = result.data.sEncData;
+                    // document.form_chk.auth_type.value = result.data.auth_type;
+                    // document.form_chk.param_r1.value = result.data.param_r1;
+                    // document.form_chk.param_r2.value = result.data.param_r2;
+                    // document.form_chk.param_r3.value = result.data.param_r3;
+                    // document.form_chk.target = "popupChk";
+                    // document.form_chk.submit();
 
-                    // editBasicInfomation();
+                    editBasicInfomation();
                     //editPaymentInfomation();
                 }
             });
@@ -363,6 +367,9 @@
     }
     //사용자 정보변경 저장...
     function saveUserInfoOk(){
+        var result = userInfoValidation.validate();
+        if(!result.success) return;
+
         lgkorUI.showLoading();
 
         var sendata = userInfoValidation.getAllValues();
