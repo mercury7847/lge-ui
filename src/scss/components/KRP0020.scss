@@ -116,9 +116,11 @@
                             .thumb {
                                 display:block;
                                 position:relative;
+                                max-height:330px;
                                 // border-radius:8px;
                                 overflow:hidden;
                                 @include mobile {
+                                    max-height:230px;
                                     border-radius:0;
                                 }
                                 img {
