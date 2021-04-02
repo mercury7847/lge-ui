@@ -663,12 +663,12 @@ var go_shop_model = "";
             objet_set: [{
                     name: 'Best',
                     sets: [{
-                            setName: 'M870FBS451',
-                            setCoverImage: 'appliances/rf/popular/3-01.png',
+                            setName: 'M870GBB451',
+                            setCoverImage: 'appliances/rf/popular/1-07.png',
                             objetSelection: [
-                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'fn_botanic' },
-                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'fn_sand' },
-                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'fn_sand' },
+                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'mg_beige' },
+                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'mg_beige' },
+                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'mg_beige' },
                             ]
                         },
                         {
@@ -679,14 +679,13 @@ var go_shop_model = "";
                                 { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'st_silver' },
                                 { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'st_silver' },
                             ]
-                        },
-                        {
-                            setName: 'M870G3T451S',
-                            setCoverImage: 'appliances/rf/popular/3-03.png',
+                        }, {
+                            setName: 'M870GSM451',
+                            setCoverImage: 'appliances/rf/popular/2-12.png',
                             objetSelection: [
-                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'mg_mint' },
-                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'mg_silver' },
-                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'mg_pink' },
+                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'mg_silver' },
+                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'mg_mint' },
+                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'mg_mint' },
                             ]
                         },
                     ]
