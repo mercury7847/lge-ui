@@ -16,9 +16,9 @@
             @include font-large-3;
             font-weight:700;
             text-align:center;
-            @include mobile {
-                display:none;
-            }
+            // @include mobile {
+            //     display:none;
+            // }
         }
         > ul {
             max-width:1147px + 80px;

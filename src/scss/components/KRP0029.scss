@@ -71,8 +71,11 @@
 						display:block;
 						> img {
 							// width:100%;
-							height:590px;
+							max-height:590px;
 							vertical-align:top;
+							@include mobile {
+								max-height:414px;
+							}
 						}
 					} 
 					.info-area {
