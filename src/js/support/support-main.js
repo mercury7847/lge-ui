@@ -910,7 +910,7 @@
                 $searchInput.on('keyup', function(e) {
                     if (e.keyCode == 13) {
                         e.preventDefault();
-                        location.href = url + $searchInput.val();
+                        location.href = url + encodeURI(encodeURIComponent($searchInput.val()))
                     }
                 });
 
