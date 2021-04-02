@@ -228,8 +228,10 @@
 
                 if (data.productCode) {
                     self.loadInquiry();
+                    $('[data-product-only]').show();
                 } else {
                     self.$inquiryBox.hide();
+                    $('[data-product-only]').hide();
                     self.nextStepInput();
                 }
             }).on('reset', function() {
