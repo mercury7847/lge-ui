@@ -62,6 +62,8 @@ $(function() {
         $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(pageLens*winHeight);
         });
+
+
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -601,6 +603,9 @@ $(function() {
                 $span.text(toggleTxt);
                 $artGuide.find('.art-guide-list > li').show();
             }
+
+            //웨일 처리
+            $('html,body').scrollTop(pageLens*winHeight);
         });
 
 
