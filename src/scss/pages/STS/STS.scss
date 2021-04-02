@@ -72,6 +72,7 @@
             .inner {
                 > .title {
                     margin-top: 64px;
+                    word-break: keep-all;
                 }
             }
         }
@@ -429,6 +430,7 @@
             }
         }
         .sns-wrap {
+            display:none; /* 0402 삭제요청 */
             position: absolute;
             top: 16px;
             right: 16px;

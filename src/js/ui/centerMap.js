@@ -482,7 +482,9 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             self.itemArr = [];
             self._draw(data);   
-            self.itemArr[0].info.selected = true;
+            if (self.itemArr.length) {
+                self.itemArr[0].info.selected = true;
+            }
             self._addInfoWindow();
             
             self._setMapBounds();
