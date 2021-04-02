@@ -32,10 +32,10 @@ $(document).ready(function() {
 
             if($(".main-wrap").length > 0){
                 //Quick메뉴 AR 버튼 추가
-                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></a></div></div>');
+                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
                 //$("#quickMenu").prepend('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><a href="javascript:void(0);"><span>AR</span></a></div></div>');
                 //Quick메뉴 AR 버튼 이벤트
-                $(".btn-app-ar a").off("click").on({
+                $(".btn-app-ar a, .btn-app-ar button").off("click").on({
                     click : function() {
                         $(this).addClass("active");
 
@@ -57,8 +57,14 @@ $(document).ready(function() {
                         }, 2000);
                         */
                     },
+                    focusin : function(){
+                        setTimeout(function(){
+                            $(".btn-app-ar a, .btn-app-ar button").addClass("active");
+                            LGEAPPclickCNT = 1;
+                        }, 300);
+                    },
                     focusout : function(){
-                        $(".btn-app-ar a").removeClass("active");
+                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });

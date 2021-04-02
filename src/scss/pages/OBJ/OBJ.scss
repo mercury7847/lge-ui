@@ -516,6 +516,10 @@
     background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower_2.png") no-repeat center top;
 }
 
+input[type=radio] {
+    outline-offset: 0px;
+}
+
 .option_sel_popup.popup-wrap {
     max-width: 554px;
     .txt {

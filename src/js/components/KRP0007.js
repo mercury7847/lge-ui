@@ -237,10 +237,16 @@
                     if(hash && hash.length == 8) {
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
+                            //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
                             self.$productList.empty();
+                            //ajax로 요청했던 리스트 데이타 복구
                             self.updateProductList(self.savedPLPData.listData, true);
+                            //페이지 정보 복구
                             self.setPageData(self.savedPLPData.pagination);
+                            //토탈 카운트 복수
+                            self.setTotalCount(self.savedPLPData.totalCount);
+                            //PDP아이템을 눌렀을 경우 이동
                             var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
                             if($li.length > 0) {
                                 //크롬에 추가된 히스토리 복구 옵션 안쓰도록 함
@@ -495,6 +501,11 @@
                 }
             },
 
+            setTotalCount: function (totalCount) {
+                var self = this;
+                self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
+            },
+
             requestSearch: function(data, isNew){
                 var self = this;
                 var ajaxUrl = self.$section.attr('data-prod-list');
@@ -510,7 +521,8 @@
                     var data = result.data[0];
                     
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
-                    self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
+                    self.savedPLPData.totalCount = totalCount;
+                    self.setTotalCount(totalCount);
                     
                     if(isNew) {
                         self.$productList.empty();
@@ -523,6 +535,7 @@
                     if(arr.length){
                         self.updateProductList(arr, false);
 
+                        self.savedPLPData.pagination = data.pagination;
                         self.setPageData(data.pagination);
 
                         self.savedPLPData.listData = self.savedPLPData.listData.concat(arr);

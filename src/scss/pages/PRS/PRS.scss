@@ -647,9 +647,13 @@
 			& + .product-banner {
 				margin-top:24px;
 			}
-			> img {
+			& a{
+				display:inline-block;
+			}
+			& img {
 				max-width:1848px;
 				width:100%;
+				border-radius: 10px;
 			}
 			.product-info-link {
 				display:block;
