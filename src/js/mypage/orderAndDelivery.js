@@ -2040,7 +2040,7 @@
                 else uname = result.data.payment.bankAccountNm;
                 popup.data('isBirthDt', isBirthDt);
                 popup.data("userName", uname);
-                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(uname);
+                popup.find('input[name=bankUserName]').val(uname);
 
                 bankInfoBlock.show();
             } else{

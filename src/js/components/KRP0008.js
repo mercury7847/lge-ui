@@ -539,7 +539,8 @@
                         }
                     }
 
-                    self.$awardPopup.vcModal();
+                    self.$awardPopup.vcModal({ opener: this});
+
                 });
 
                 //수상내역 아이템 클릭

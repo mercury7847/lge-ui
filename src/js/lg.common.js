@@ -473,6 +473,10 @@ var isApp = function(){
                             }
                         },
                         modalhidden: function(e){
+                            var $modal = $(e.currentTarget);
+                            var $opener = $modal.vcModal('getOpener');
+                            if($opener) $opener.focus();
+
                             // $('html, body').css({
                             //     overflow:"visible"
                             // });
@@ -499,7 +503,7 @@ var isApp = function(){
                     singleOpen: false,
                     events: {
                         accordionexpand: function (e, data) {
-                            data.content.attr('tabindex', '0');                  
+                            // data.content.attr('tabindex', '0');                  
                             if(data.content.find('.ui_carousel').length>0) {                                
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }                            
