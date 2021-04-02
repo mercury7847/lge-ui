@@ -19,12 +19,10 @@
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
             '</div></div>' +
-            '{{#if !disabled}}' +
-                '<div class="col btn-col">' +
-                    '{{#if obsBtnFlag=="enable"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
-                    '<button type="button" class="btn size border"><span>자세히 보기</span></button>' +
-                '</div>' +
-            '{{/if}}' +
+            '<div class="col btn-col">' +
+                '{{#if !disabled && obsBtnFlag=="enable"}}<button type="button" class="btn size border buycart"><span>구매 장바구니</span></button>{{/if}}' +
+                '<button type="button" class="btn size border"><span>자세히 보기</span></button>' +
+            '</div>' +
         '</div>' +
         '<button type="button" class="btn-delete"><span class="blind">삭제</span></button>' +
     '</li>';
