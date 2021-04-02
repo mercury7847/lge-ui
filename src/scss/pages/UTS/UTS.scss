@@ -874,7 +874,7 @@
         .inner {
             @include mobile {
                 margin-top:12px;
-                padding:42px 16px 56px;
+                padding:12px 35px 24px;
                 background:#fff;
                 &:first-child {
                     margin-top:0;
@@ -886,9 +886,9 @@
             background:#fff;
             border-radius:4px;
             font-size:16px;
-            line-height:24px;
+            line-height:26px;
             &:first-child {
-                padding-top:54px;
+                padding-top:48px;
             }
             @include mobile {
                 padding:0;
@@ -900,18 +900,26 @@
                 }
             }
             .h2-tit {
-                margin-bottom:12px;
-                font-size:24px;
-                line-height:34px;
+                margin-bottom:8px;
+                font-size:20px;
+                line-height:30px;
                 font-weight:700;
                 text-align:center;
                 // @include mobile {
                 //     display:none;
                 // }
                 & + .txt {
-                    font-weight: 500;
+                    text-indent: 14px;
                     strong {
-                        font-weight: 500;
+                        font-weight: 400;
+                    }
+                }
+                @include mobile {
+                    font-size: 16px;
+                    line-height: 24px;
+                    & + .txt {
+                        font-size: 14px;
+                        line-height: 22px;
                     }
                 }
             }
@@ -1138,9 +1146,6 @@
             }
             &.center {
                 text-align:center;
-                @include tablet {
-                    text-align:left;
-                }
             }
         }
         
