@@ -326,6 +326,16 @@ body {
                         }
                     }
                 }
+                .disabled {
+                    .opt-switch {
+                        color: #aaa;
+                        input {
+                            & + span {
+                                background-color: #f4f4f4;
+                            }
+                        }
+                    }
+                }
             }
             &.v-align {
                 padding-top: 19px;
