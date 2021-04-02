@@ -1385,7 +1385,7 @@
 }
 
 .shop_reservation_popup {
-    display: none;
+    display: none !important;
 }
 
 .shop_reservation_popup:after {
