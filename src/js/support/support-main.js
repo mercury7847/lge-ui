@@ -253,6 +253,17 @@
                     draggable : false, 
                     responsive: [
                         {
+                            breakpoint: 9999,
+                            settings: {
+                                dots : false,
+                                arrows : false,
+                                draggable : false, 
+                                slidesToScroll: 1,
+                                arrowsUpdate: 'disabled',
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
                             breakpoint: 1920,
                             settings: {
                                 dots : false,
