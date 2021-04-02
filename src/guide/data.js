@@ -90,7 +90,7 @@ var res = {
 				"KRP0008_Product Summary[KRP0010] Popup" : ["/html/components/KRP0008-modal.html","","검수완료"],
 				"KRP0009_PDP Tab Anchor[KRP0012]" : ["/html/components/KRP0009.html","","검수완료"],
 				"KRP0010_PDP Specs[KRP0014]" : ["/html/components/KRP0010.html","","검수완료"],
-				"KRP0010_PDP Specs 팝업" : ["/html/components/KRP0010-popup.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+				"KRP0010_PDP Specs SAR 팝업" : ["/html/components/KRP0010-popup.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 				"KRP0011_PDP_Spec compare[KRC0041]" : ["/html/components/KRP0011.html","","검수완료"],
 				"KRP0012_PDP Reviews[KRP0015]" : ["/html/components/KRP0012.html","","검수완료"],
 				"KRP0013_PDP Support[KRP0016]" : ["/html/components/KRP0013.html","","검수완료"],

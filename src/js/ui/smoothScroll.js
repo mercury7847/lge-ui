@@ -590,11 +590,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             } else if (self.y < self.maxScrollY) {
                 y = self.maxScrollY;
             }
-
+            
             if (x == self.x && y == self.y) {
                 return false;
             }
 
+            
             self.scrollTo(x, y, time, self.options.bounceEasing);
             return true;
         },
@@ -658,6 +659,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.scrollTo(-pos.left, -pos.top, time, easing);
         },
 
+        
         scrollToActive: function scrollToActive(time, easing) {
             var $item = this.$scroller.children().filter('.on');
             if ($item.length) {
@@ -697,6 +699,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var opt = self.options;
             var e = ev.originalEvent || ev;
 
+
             if (eventType[e.type] != 1) {
                 if (e.button !== 0) {
                     return;
@@ -735,7 +738,6 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.directionLocked = 0;
 
             self._transitionTime();
-
             
 
             self.startTime = getTime();
@@ -772,6 +774,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.absStartY = self.y;
             self.pointX = self.downX = point.pageX;
             self.pointY = self.downY = point.pageY;
+
         },
 
         _move: function _move(ev) {
@@ -952,6 +955,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.update();
             self.scrollTo(self.options.startX, self.options.startY);
             self.triggerHandler('smoothscrollrefresh', self);
+
         },
 
         update: function update() {

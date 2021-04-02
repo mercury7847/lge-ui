@@ -640,7 +640,10 @@
                 "top": simulatorTop,
                 "height": simulatorHeight
             });
-            $(".objet.space_experience").css("height", (simulatorHeight - pageHeader));
+            if ($(".simulator").hasClass("full")) {
+                $(".objet.space_experience").css("height", (simulatorHeight - pageHeader));
+            }
+
         }
 
         // 소재와 컬러 선택 부
