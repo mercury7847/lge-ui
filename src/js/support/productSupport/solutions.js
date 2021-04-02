@@ -66,11 +66,21 @@
             '<div class="item">' +
                 '<div class="item-inner">' +
                     '<div class="product-image">' +
-                        '<img src="{{imgUrl}}" alt="">' +
+                        '<img src="{{mediumImageAddr}}" alt="">' +
                     '</div>' +
                     '<div class="product-info">' +
+                        '{{# if(bestFlag == "Y" || newFlag == "Y") { #}}' +
+                        '<div class="flag-wrap bar-type">' +
+                            '{{# if(newFlag == "Y") { #}}' +
+                            '<span class="flag">신제품</span>' +    
+                            '{{# } #}}' +
+                            '{{# if(bestFlag == "Y") { #}}' +
+                            '<span class="flag">베스트</span>' +    
+                            '{{# } #}}' +                
+                        '</div>' +
+                        '{{# } #}}' +
                         '<div class="product-name">' +
-                            '<p class="name"><a href="#" class="name">{{name}}</a></p>' +
+                            '<p class="name"><a href="{{modelUrlPath}}" class="name">{{modelDisplayName}}</a></p>' +
                             '<p class="model">{{modelName}}</p>' +
                         '</div>' +
                     '</div>' +
