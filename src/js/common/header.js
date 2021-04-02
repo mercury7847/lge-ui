@@ -123,6 +123,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$dimmed = self.$el.find('.header-wrap .dimmed');
 
+            self.$dimmed.hide();
+
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
@@ -215,8 +217,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(self.displayMode != "m"){                    
                     self.$pcNaviWrapper.css('display', 'none');
                     self.$mobileNaviWrapper.show();
-
                     self.displayMode = "m";
+
+                    setTimeout(function(){
+                        $('.marketing-link .ui_carousel_slider').vcCarousel('update'); 
+                    },100);
                 }
                 self.$leftArrow.hide();
                 self.$rightArrow.hide();
@@ -310,16 +315,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).on('mouseover focus', '> a', function(e){
                     e.preventDefault();
                     self._setOver(idx, -1);
-                }).on('mouseout', '> a', function(e){    
-                    //self._setOut();
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
                     $(child).on('mouseover focus', '> a, focus', function(e){
                         e.preventDefault();
                         self._setOver(idx, cdx);
-                    }).on('mouseout', '> a', function(){
-                        //self._setOut();
                     });
 
                     self._addCarousel($(child).find('.ui_carousel_slider'));
@@ -330,8 +331,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             $('.nav-wrap .nav-inner').on('mouseover', function(e){
                 self._removeOutTimeout();
-            }).on('mouseout', function(e){
-                //self._setOut();
             });
 
             $('header').on('mouseleave', function(){
@@ -433,6 +432,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(two < 0) self.$dimmed.hide();
                 else self.$dimmed.show();
             }
+
+
+            //$$$$$$$$$$$$$$$$$$$$$$$$
+            self.$dimmed.hide();
         },
 
         _removeOutTimeout: function(){
@@ -544,52 +547,26 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             replaceText = self.$hamburger.find('.blind');
             active = forceActive==undefined? self.$hamburger.hasClass('active') : forceActive;
 
-            var isMotion = false;
-
             if(active){
 
-                if(vcui.detect.isMobileDevice && isMotion){
+                self.$hamburger.removeClass('active');                                  
+                if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
 
-                    self.$headerBottom.transit({x:'105%'}, 300, 'easeInOutQuad',function(){
-                        self.$headerBottom.hide();
-                        self.$hamburger.removeClass('active');
-                        replaceText.text("메뉴 열기");
-                        $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
-                        if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-                    }); 
-
-                }else{
-
-                    self.$hamburger.removeClass('active');
+                setTimeout(function(){
                     replaceText.text("메뉴 열기");
-                    $('.ui_gnb_accordion').vcAccordion("collapseAll");                    
-                    if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
+                    $('.ui_gnb_accordion').vcAccordion("collapseAll");
+                },600);
 
-                }
+                self.$dimmed.hide();
 
-                //self.$dimmed.hide();
             } else{
-
-                if(vcui.detect.isMobileDevice && isMotion){
-                    self.$hamburger.addClass('active');
-                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
-                    replaceText.text("메뉴 닫기");
-
-                    self.$headerBottom.css({x:'105%'}).show().transit({x:0}, 500, 'easeInOutQuad');
-
-                    
-                }else{
-
-                    self.$hamburger.addClass('active');
-                    replaceText.text("메뉴 닫기");
-                    if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
-                    $('.marketing-link .ui_carousel_slider').vcCarousel('update');
-
-                }             
-
-                //self.$dimmed.show();
+                self.$hamburger.addClass('active');
+                if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+                replaceText.text("메뉴 닫기");
+                
+                self.$dimmed.show();   
             }
+
         },
 
         _hamburgerDisabled: function(){

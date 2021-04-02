@@ -231,7 +231,7 @@
             '               {{/each}}'+
             '           </div>'+
             '           <div class="price-info">'+
-            '               <p class="price sale"><span class="blind">기본 이용 요금</span>{{item.originalPrice}}</p>'+
+            '               {{#if item.originalPrice}}<p class="price sale"><span class="blind">기본 이용 요금</span>월 {{item.originalPrice}}</p>{{/if}}'+
             '               <p class="price"><span class="blind">최종 이용 요금</span>월 {{item.monthPrice}}</p>'+
             '           </div>'+
             '       </div>'+

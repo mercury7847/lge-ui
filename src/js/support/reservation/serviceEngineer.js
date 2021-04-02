@@ -289,6 +289,8 @@
                 self.$subTopicBox.show();
                 $('html,body').animate({
                     scrollTop: self.$subTopicBox.offset().top - $('.prod-selected-wrap').outerHeight()
+                }, function() {
+                    self.$subTopicBox.attr('tabindex', '0').focus().removeAttr('tabindex');
                 });
             });
         },
@@ -371,12 +373,12 @@
                             $('.date-wrap').calendar('update', data.dateList);
                             self.dateParam = result.param;
 
-                            console.log(result.param)
-
                             self.$stepInput.find('.step-btn-wrap').hide();
                             self.$stepDate.addClass('active');
                             self.$stepEngineer.removeClass('active');
                             self.$completeBtns.hide();
+
+                            lgkorUI.scrollTo(self.$stepDate, $('.prod-selected-wrap').outerHeight());
                         }
                     } else {
                         if (data.resultMessage) {
@@ -434,6 +436,15 @@
 
                         self.$stepEngineer.removeClass('active');
                         self.$completeBtns.hide();
+
+                        if ($(window).data('breakpoint').isMobile) {
+                            // $('html,body').animate({
+                            //     scrollTop: $('.time-wrap').parent().offset().top - $('.prod-selected-wrap').outerHeight()
+                            // }, function() {
+                            //     $('.time-wrap').parent().attr('tabindex', '0').focus().removeAttr('tabindex');
+                            // });
+                            lgkorUI.scrollTo($('.time-wrap').parent(), $('.prod-selected-wrap').outerHeight());
+                        }
                     } else {
                         if (data.resultMessage) {
                             if (data.tAlert == 'Y') {
@@ -476,6 +487,8 @@
                         }
                         self.$stepEngineer.addClass('active');
                         self.$completeBtns.show();
+
+                        lgkorUI.scrollTo(self.$stepEngineer, $('.prod-selected-wrap').outerHeight());
                     }
                 } else {
 
@@ -811,6 +824,10 @@
                             var html = vcui.template(engineerTmpl, data);
                             self.$engineerSlider.find('.slide-track').html(html);
                             self.$engineerSlider.vcCarousel('reinit');
+                        } else {
+                            lgkorUI.alert('', {
+                                title: '방문 가능한 다른 엔지니어가 없습니다.'
+                            });
                         }
                     } else {
                         if (data.resultMessage) {
@@ -846,20 +863,22 @@
                     date: $('#date').val(),
                     time: $('#time').val(),
                     lockUserId: $('#lockUserId').val(),
-                    productCode: productCode
+                    productCode: productCode,
+                    beforeEngineerCode: $('#engineerCode').val()
                 }
 
                 param = $.extend(param, infoData);
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    lgkorUI.hideLoading();
+                    
                     var data = result.data;
 
                     if (data.resultFlag == 'Y') {
                         self.updateEngineer(infoData);
                     } else {
                         if (data.resultMessage) {
-                            self.$engineerPopup.vcModal('hide');
-                            
                             lgkorUI.alert("", {
                                 title: data.resultMessage
                             });

@@ -1,20 +1,25 @@
-/*
-"modelStatusCode":"ACTIVE",
-"mediumImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-350x350.jpg",
-"modelId":"MD08747121",
-"modelUrlPath":"/care-solutions/lg-homebrew/bb052s",
-"smallImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-280x280.jpg",
-"salesModelCode":"BB052S",
-"years1TotAmt":49900,
-"categoryName":"맥주제조기",
-"salesSuffixCode":"AKOR",
-"largeImageAddr":"/kr/images/lg-homebrew/md08747121/md08747121-450x450.jpg",
-"modelName":"BB052S",
-"rtModelSeq":"1545027",
-"modelDisplayName":"LG 홈브루",
-"categoryId":"CT50000087"
-*/
+var tabTmpl = '{{#each obj in list}}\n'+
+'   <li>\n'+
+'       <a href="#{{obj.categoryType}}">{{obj.categoryName}}</a>\n'+
+'   </li>\n'+
+'{{/each}}';
 
+var tabContentTmpl = '{{#each obj in list}}'+
+    '<div id="{{obj.categoryType}}" class="tab-content" aria-labelledby="{{obj.categoryType}}" role="tabpanel">\n'+
+    '   <div class="prd-list-wrap">\n'+
+    '       <div class="slide-wrap ui_product_carousel_slider">\n'+
+    '           <div class="indi-wrap">\n'+
+    '               <ul class="indi-conts ui_carousel_dots" style="display: none;">\n'+
+    '                   <li><button type="button" class="btn-indi"><span class="blind">{{obj.dotLabel}}</span></button></li>\n'+
+    '               </ul>\n'+
+    '           </div>\n'+
+    '           <div class="slide-content ui_carousel_list">\n'+
+    '               <ul class="inner slide-track ui_carousel_track">{{#raw obj.models}}</ul>\n'+
+    '           </div>\n'+
+    '       </div>\n'+           
+    '   </div>\n'+
+    '</div>\n'+
+    '{{/each}}'
 
 var itemTmpl = '{{#each obj in list}}'+
     '<li class="item ui_carousel_slide">\n'+
@@ -46,7 +51,6 @@ $(function(){
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
         // 제품 코드 관리 부분
-
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
             autoplay: false,
@@ -55,7 +59,6 @@ $(function(){
         });
 
         // 플로우배너
-
         $('.ui_carousel_slider_banner').vcCarousel({
             infinite: true,
             //autoplay: true,
@@ -106,8 +109,7 @@ $(function(){
                     }
                 }
             ]
-        });
-        
+        });        
 
         $('.ui_carousel_slider_banner2').vcCarousel({
             infinite: true,
@@ -164,11 +166,9 @@ $(function(){
             ]
         });
 
-        
-
         // 케어솔루션 혜택
         // 다른 케어솔루션 
-        $(window).on('breakpointchange', function(e){
+        $(window).on('breakpointchange.caresolution', function(e){
 
             var breakpoint = window.breakpoint;    
             if(breakpoint.name == 'mobile'){    
@@ -183,7 +183,8 @@ $(function(){
                 $('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
             }    
         });
-        $(window).trigger('breakpointchange');
+
+        $(window).trigger('breakpointchange.caresolution');
 
         // 케어솔루션 가이드
         $('.care-guide-visual .ui_carousel_slider2').vcCarousel({
@@ -219,6 +220,104 @@ $(function(){
             ]
         });
 
+
+        $(document).on('click', '.ui_care_detail_btn', function(e){
+            e.preventDefault();
+            var $target = $(e.currentTarget);
+            var url = $target.data('url');
+            if(url) location.href = url;
+        });
+
+        var careProductUrl = $('.care-recommended').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCareProductList.json';
+
+        function requestTab(){
+
+            lgkorUI.requestAjaxDataFailCheck(careProductUrl, {}, function(result){
+
+                var data = result.data;
+                if(data && data.data){
+                    var arr = data.data;  
+
+                    var fArr = vcui.array.filter(arr, function(item, index){
+                        var list = item['models'];    
+                        return list && vcui.isArray(list) && list.length > 0;
+                    });
+
+                    fArr = vcui.array.map(fArr, function(item,index){
+                        item['dotLabel'] = '{{no}}번 내용 보기';
+                        if(item['models']){
+
+                            var nArr = item['models'];
+                            var list = vcui.array.map(nArr, function(obj, index){
+                                var years1TotAmt = parseInt(obj['years1TotAmt'] || "0");
+                                if(years1TotAmt!==0){ 
+                                    obj['years1TotAmt'] = '월 '+vcui.number.addComma(years1TotAmt) + '원';
+                                }else{
+                                    obj['years1TotAmt'] = null;
+                                }            
+                                return obj;
+                            });
+
+                            item['models'] = vcui.template(itemTmpl, {list:list})
+                        }
+                        return item;
+                    });
+
+                    $('.ui_product_tab').find('.tabs').html(vcui.template(tabTmpl, {list:fArr}));
+                    $('.ui_product_tab').after(vcui.template(tabContentTmpl, {list:fArr}));
+
+
+                    $('.ui_product_tab').vcTab({selectors:{
+                        prevButton:".ui_smooth_prev",
+                        nextButton:".ui_smooth_next",
+                        smoothScroll:'.ui_smooth_tab'
+                    }});
+
+
+                    $('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
+                        infinite: false,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        variableWidth : false,
+                        responsive: [
+                            {
+                                breakpoint: 1200,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3,   
+                                }
+                            },
+                            {
+                                breakpoint: 900,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 2,
+                                    
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1, 
+                                    slidesToScroll: 1
+                                }
+                            }
+                        ]
+                    });
+
+
+                }                
+
+            },function(err){
+                // console.log(err);
+            });    
+
+        }
+
+        requestTab();
+        
+        /*
+
         function buildTabProduct(result){
 
             var data = result.data;
@@ -244,18 +343,10 @@ $(function(){
         }
 
 
-        $(document).on('click', '.ui_care_detail_btn', function(e){
-            e.preventDefault();
-            var $target = $(e.currentTarget);
-            var url = $target.data('url');
-            if(url) location.href = url;
-        });
-
-        var careProductUrl = '/lg5-common/data-ajax/home/storeCareProductList.json';
+        
 
 
-        $('.ui_product_tab').on('tabbeforechange tabchange tabinit', function(e,data){   
-            
+        $('.ui_product_tab').on('tabbeforechange tabchange tabinit', function(e,data){               
 
             if(e.type =='tabbeforechange' || e.type=='tabinit'){
 
@@ -333,5 +424,6 @@ $(function(){
             nextButton:".ui_smooth_next",
             smoothScroll:'.ui_smooth_tab'
         }});
+        */
     });    
 });

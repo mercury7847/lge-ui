@@ -461,6 +461,7 @@
                         time: $('#time').val(),
                         lockUserId: $('#lockUserId').val(),
                         productCode: $('#productCode').val(),
+                        beforeEngineerCode: $('#engineerCode').val()
                     }
                     
                     param = $.extend(param, currentData);
