@@ -280,7 +280,7 @@
         .text-wrap {
             display:table;
             width:100%;
-            max-width:1380px;
+            max-width:(1380px + 80px);
             height:100%;
             margin:0 auto;
             padding:0 40px;
@@ -320,6 +320,9 @@
         }
         &.align-top {
             .text-wrap {
+                @media screen and (min-width: 1460px) {
+                    width: 1460px;
+                }
                 height:100%;
                 position: absolute;
                 top: 0;
@@ -339,6 +342,9 @@
         }
         &.align-middle {
             .text-wrap {
+                @media screen and (min-width: 1460px) {
+                    width: 1460px;
+                }
                 position:absolute;
                 top:50%;
                 right:0;
