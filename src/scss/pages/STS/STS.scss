@@ -72,6 +72,7 @@
             .inner {
                 > .title {
                     margin-top: 64px;
+                    word-break: keep-all;
                 }
             }
         }
