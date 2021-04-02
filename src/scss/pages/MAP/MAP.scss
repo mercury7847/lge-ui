@@ -326,7 +326,7 @@ body {
                         }
                     }
                 }
-                .disabled {
+                &.disabled {
                     .opt-switch {
                         color: #aaa;
                         input {
