@@ -314,18 +314,18 @@
                 cancelBtnName: "취소",
                 okBtnName: "본인인증",
                 ok: function(){
-                    // void(window.open("", "popupChk", "width=390, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
-                    // document.form_chk.action = result.data.niceAntionUrl;
-                    // document.form_chk.m.value = result.data.m;
-                    // document.form_chk.EncodeData.value = result.data.sEncData;
-                    // document.form_chk.auth_type.value = result.data.auth_type;
-                    // document.form_chk.param_r1.value = result.data.param_r1;
-                    // document.form_chk.param_r2.value = result.data.param_r2;
-                    // document.form_chk.param_r3.value = result.data.param_r3;
-                    // document.form_chk.target = "popupChk";
-                    // document.form_chk.submit();
+                    void(window.open("", "popupChk", "width=390, height=640, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+                    document.form_chk.action = result.data.niceAntionUrl;
+                    document.form_chk.m.value = result.data.m;
+                    document.form_chk.EncodeData.value = result.data.sEncData;
+                    document.form_chk.auth_type.value = result.data.auth_type;
+                    document.form_chk.param_r1.value = result.data.param_r1;
+                    document.form_chk.param_r2.value = result.data.param_r2;
+                    document.form_chk.param_r3.value = result.data.param_r3;
+                    document.form_chk.target = "popupChk";
+                    document.form_chk.submit();
 
-                    editBasicInfomation();
+                    // editBasicInfomation();
                     //editPaymentInfomation();
                 }
             });
