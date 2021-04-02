@@ -34,9 +34,21 @@
 		}
 		&:nth-child(2) {
 			.text-link {
+				//top:280px;
+				//right:auto;
+				left:140px;
+			}
+		}
+		&:nth-child(3) {
+			.text-link {
 				top:280px;
 				right:auto;
 				left:140px;
+				@include mobile {
+					top: 164px;
+					right: auto;
+					left: 16px;
+				}
 			}
 		}
 		> a {
@@ -129,6 +141,22 @@
 					width:64px;
 					height:64px;
 					background:url('/lg5-common/images/MA/icon-arr-64x64.svg') no-repeat 0 0;
+				}
+				&.sub{
+					font-size:40px;
+					line-height:56px;
+					padding-right:40px
+					&:after {
+						content:' ';
+						display:block;
+						position:absolute;
+						right:0;
+						bottom:8px;
+						width:40px;
+						height:40px;
+						background:url('/lg5-common/images/MA/icon-arr-40x40.svg') no-repeat 0 0;
+						transform: rotate(-90deg);
+					}
 				}
 			}
 			@include mobile {

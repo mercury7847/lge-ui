@@ -170,14 +170,14 @@
                             if($("#badgeAlarm").prop("checked")){
                                 $("#badgeAlarm").trigger("click");
                             }
-                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parent().addClass("disabled");
+                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parents("div").addClass("disabled");
 
                             //접근성
                             $("#pushAlarm").attr("aria-expanded", false);
                         break;
                         case "modalAlarmAgree" :
                             $("#pushAlarm").prop("checked", true).trigger("change");
-                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parent().removeClass("disabled");
+                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parents("div").removeClass("disabled");
                         break;
                         case "modalShopInfo" :
 
@@ -246,11 +246,14 @@
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(".main-panel").attr("aria-hidden", false);
+                        /*
                         $(".main-panel").attr("tabindex", 0).focus();
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(".main-panel").find("h1").focus();
                         }
+                        */
+                        $("#main-panel-title").attr("tabindex", "0").focus();
                     });
                 }
             });
@@ -292,7 +295,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         //$(this).attr("tabindex", 0).focus();
-                        $("#main-panel-title").attr("tabindex", "0").focus();
+                        $(this).find("h1").attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                         /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -318,8 +321,6 @@
                     optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "확인", "취소");
                 }
             });
-
-            $("#main-panel-title").attr("tabindex", "0").focus();
         });
     </script>
 
@@ -364,7 +365,7 @@
                     <!-- //로그인 후 -->
                     <div class="type02">
                         <label for="autoLogin">
-                            <p>자동 로그인</p>
+                            자동 로그인
                             <div class="opt-switch">
                                 <input type="checkbox" id="autoLogin" checked>
                                 <span></span>
@@ -384,7 +385,7 @@
                     <h2>앱 권한</h2>
                     <div class="type02">
                         <label for="locInfo">
-                            <p>위치정보 이용동의</p>
+                            위치정보 이용동의
                             <div class="opt-switch">
                                 <input type="checkbox" id="locInfo">
                                 <span></span>
@@ -431,7 +432,7 @@
                 <div class="opt-controls">
                     <div class="type02">
                         <label for="pushAlarm">
-                            <p>푸시 알림 받기</p>
+                            푸시 알림 받기
                             <div class="opt-switch">
                                 <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
                                 <span></span>
@@ -442,7 +443,7 @@
                     <!-- 안드로이드 인 경우에만 사용 -->
                     <div class="type02 disabled">
                         <label for="badgeAlarm">
-                            <p>배지 알림 받기</p>
+                            배지 알림 받기
                             <div class="opt-switch">
                                 <input type="checkbox" id="badgeAlarm" disabled>
                                 <span></span>
@@ -455,7 +456,7 @@
                 <div class="opt-controls">
                     <div class="type02">
                         <label for="mktPushAlarmChk">
-                            <p>마케팅 푸시 알림 받기</p>
+                            마케팅 푸시 알림 받기
                             <div class="opt-switch">
                                 <input type="checkbox" id="mktPushAlarmChk">
                                 <span></span>
@@ -466,7 +467,7 @@
                 </div>
             </div>
         </div>
-        <!-- //알림성정 -->
+        <!-- //알림성정 --> 
 
         <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">

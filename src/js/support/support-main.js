@@ -253,6 +253,17 @@
                     draggable : false, 
                     responsive: [
                         {
+                            breakpoint: 9999,
+                            settings: {
+                                dots : false,
+                                arrows : false,
+                                draggable : false, 
+                                slidesToScroll: 1,
+                                arrowsUpdate: 'disabled',
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
                             breakpoint: 1920,
                             settings: {
                                 dots : false,
@@ -420,6 +431,7 @@
                     // 주요 서비스 
                     self.main_service.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.main_service.config);
                     self.main_service.el.slider.addClass(self.slideActiveClass);
+                    self.inquiry.el.slider.vcCarousel('resize');
 
                     //수상목록
                     self.award.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.award.config);
@@ -471,8 +483,12 @@
                             },
 
                             serviceUserName : {
-                                required : true,
-                                msgTarget : ".err-block"
+                                required: true,
+                                maxLength: 30,
+                                pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                msgTarget: '.err-block',
+                                errorMsg: '이름을 입력해주세요.',
+                                patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                             },
                             servicePhoneNo : {
                                 required : true,
@@ -666,6 +682,9 @@
                     var self = this;
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
                     var $toggleCont = self.el.changeCont;
+
+                    $rdo.eq(0).prop('checked', true);
+                    $toggleCont.removeClass('active').eq(0).addClass('active');
     
                     $rdo.on('change', function(e){
                         var curValue = parseInt(this.value);
@@ -911,18 +930,18 @@
                     if (e.keyCode == 13) {
                         e.preventDefault();
                         var _value = $searchInput.val();
-                        location.href = url + encodeURI(encodeURIComponent(_value))
+                        location.href = url + encodeURI(_value)
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.on('keywordClick', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.search({

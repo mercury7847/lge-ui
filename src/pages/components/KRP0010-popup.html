@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        componentID: "KRP0010"
+        componentID: "KRP0010",
+        pageJS: ["components/KRP0010_SAR"],
     })
 <body>
-    <article id="popup1" class="win-popup-wrap sar-popup">
+    <article id="SAR-POPUP" class="win-popup-wrap sar-popup" data-search-url="/lg5-common/data-ajax/KRP0010/sar.json">
         <header class="pop-header">
             <h1 class="tit"><span>전자파 흡수율 지수 확인</span></h1>
         </header>
@@ -61,13 +62,20 @@
                                 <td>2</td>
                                 <td>Head SAR 1.157 W/kg Body SAR 1.050 W/kg</td>
                             </tr>
+                            <tr class="empty-row">
+                                <td colspan="3">
+                                    <div class="no-data">
+                                        <p>검색된 결과가 없습니다.</p>
+                                    </div>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                @@include('./common/modules/pagination.html', {
+                <!-- @@include('./common/modules/pagination.html', {
                     count: 5
-                })
+                }) -->
             </div>
             <div class="sar-summary">
                 <dl>
