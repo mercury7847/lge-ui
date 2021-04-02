@@ -276,7 +276,8 @@
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
-                            $(this).find("h1").focus();
+                            //$(this).find("h1").focus();
+                            $(this).find(".btn-opt-prev").attr("tabindex", "0").focus();
                         }
                     });
                 }
@@ -417,8 +418,8 @@
 
         <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <h1 id="sub-panel-title01">알림설정</h1>
-                <button type="button" data-panel=".alarm-setting" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <h1>알림설정</h1>
             </div>
 
             <div class="opt-container">
