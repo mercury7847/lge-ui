@@ -910,16 +910,19 @@
                 $searchInput.on('keyup', function(e) {
                     if (e.keyCode == 13) {
                         e.preventDefault();
-                        location.href = url + encodeURI(encodeURIComponent($searchInput.val()))
+                        var _value = $searchInput.val();
+                        location.href = url + encodeURI(encodeURIComponent(_value))
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
-                    location.href = url + $searchInput.val();
+                    var _value = $searchInput.val();
+                    location.href = url + encodeURI(encodeURIComponent(_value))
                 });
 
                 $searchWrap.on('keywordClick', function() {
-                    location.href = url + $searchInput.val();
+                    var _value = $searchInput.val();
+                    location.href = url + encodeURI(encodeURIComponent(_value))
                 });
 
                 $searchWrap.search({
