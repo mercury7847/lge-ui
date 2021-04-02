@@ -276,12 +276,9 @@ body {
                     justify-content: space-between;
                     width:100%;
                     min-height: 50px;
-                    & > span {
-                        display: flex;
-                        @include font(16px, 24px);
-                        &.txt-login-guide {
-                            color: #aaa;
-                        }
+                    @include font(16px, 24px);
+                    &.txt-login-guide {
+                        color: #aaa;
                     }
                 }
                 .opt-switch {
