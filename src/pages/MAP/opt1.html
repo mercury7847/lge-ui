@@ -174,12 +174,10 @@
 
                             //접근성
                             $("#pushAlarm").attr("aria-expanded", false);
-                            console.log(1)
                         break;
                         case "modalAlarmAgree" :
                             $("#pushAlarm").prop("checked", true).trigger("change");
                             $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parents("div").removeClass("disabled");
-                            console.log(2)
                         break;
                         case "modalShopInfo" :
 
