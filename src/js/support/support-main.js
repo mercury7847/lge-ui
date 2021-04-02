@@ -911,18 +911,18 @@
                     if (e.keyCode == 13) {
                         e.preventDefault();
                         var _value = $searchInput.val();
-                        location.href = url + encodeURI(encodeURIComponent(_value))
+                        location.href = url + encodeURI(_value)
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.on('keywordClick', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.search({
