@@ -1023,6 +1023,14 @@
                     }
                 }
             }
+
+            & ~ .option-contents {
+                .care-sibling-option {
+                    &:first-child {
+                        margin-top: 32px;
+                    }
+                }
+            }
         }
 
         .select-info {

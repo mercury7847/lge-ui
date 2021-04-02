@@ -683,6 +683,7 @@
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
                     var $toggleCont = self.el.changeCont;
 
+                    $rdo.eq(0).prop('checked', true);
                     $toggleCont.removeClass('active').eq(0).addClass('active');
     
                     $rdo.on('change', function(e){
