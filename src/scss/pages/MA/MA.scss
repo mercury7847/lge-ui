@@ -34,9 +34,21 @@
 		}
 		&:nth-child(2) {
 			.text-link {
+				//top:280px;
+				//right:auto;
+				left:140px;
+			}
+		}
+		&:nth-child(3) {
+			.text-link {
 				top:280px;
 				right:auto;
 				left:140px;
+				@include mobile {
+					top: 164px;
+					right: auto;
+					left: 16px;
+				}
 			}
 		}
 		> a {
