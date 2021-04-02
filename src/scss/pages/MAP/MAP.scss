@@ -276,34 +276,36 @@ body {
                     justify-content: space-between;
                     width:100%;
                     min-height: 50px;
-                    & > p {
+                    & > span {
                         display: flex;
                         @include font(16px, 24px);
                         &.txt-login-guide {
                             color: #aaa;
                         }
                     }
-                    & > span {
-                        position: relative;
-                        @include font(14px, 20px);
-                        color: #222;
-                        & + span {
-                            padding-left: 10px;
-                            margin-left: 10px;
-                            &:before {
-                                content: '';
-                                display: block;
-                                position: absolute;
-                                left: 0;
-                                top: 50%;
-                                width: 1px;
-                                height: 10px;
-                                background-color: #222;
-                                transform: translate(0, -50%);
+                    & > p{
+                        & > span {
+                            position: relative;
+                            @include font(14px, 20px);
+                            color: #222;
+                            & + span {
+                                padding-left: 10px;
+                                margin-left: 10px;
+                                &:before {
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 50%;
+                                    width: 1px;
+                                    height: 10px;
+                                    background-color: #222;
+                                    transform: translate(0, -50%);
+                                }
                             }
-                        }
-                        em {
-                            color: #ec455a;
+                            em {
+                                color: #ec455a;
+                            }
                         }
                     }
                 }
