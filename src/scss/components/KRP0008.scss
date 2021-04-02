@@ -1735,13 +1735,12 @@
 
         .purchase-button {
             .btn-group {
-                display: table;
+                display: flex;
+                align-items: center;
                 width: 100%;
                 .btn {
-                    display: table-cell;
                     margin-left: 0;
                     width: 100%;
-                    vertical-align: middle;
                 }
             }
             .btn {
@@ -1749,13 +1748,14 @@
                 &.cart {
                     width: auto;
                     min-width: 32px;
-                    padding: 0 16px 0 0;
+                    padding: 0;
                     border: 0;
                     background-color: transparent;
                     background-image: none;
                     line-height: 0;
                 }
                 &.like {
+                    margin-right: 16px;
                     .chk-wish-wrap {
                         input {
                             & + label {
@@ -1778,13 +1778,39 @@
                     }
                 }
                 &.cart {
-                    padding-right: 21px;
+                    margin-right: 24px;
                     &:before {
                         display: inline-block;
                         width: 32px;
                         height: 32px;
                         background: url('/lg5-common/images/icons/btn-cart-32.svg') no-repeat center center;
                         content: '';
+                    }
+                }
+                @include mobile {
+                    &.like,
+                    &.cart {
+                        min-width: 40px;
+                    }
+                    &.like {
+                        .chk-wish-wrap {
+                            input {
+                                & + label {
+                                    width: 40px;
+                                    height: 40px;
+                                    &:before {
+                                        width: 40px;
+                                        height: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.cart {
+                        &:before {
+                            width: 40px;
+                            height: 40px;
+                        }
                     }
                 }
             }
@@ -1834,6 +1860,7 @@
             .product-name {
                 margin: 8px 0 6px;
                 .name {
+                    padding-right: 80px;
                     font-weight: 700;
                     font-size: 24px;
                     line-height: 33px;

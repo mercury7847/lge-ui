@@ -517,6 +517,8 @@ var FilterLayer = (function() {
                 $(el).prop('checked', false);
             });
 
+            var selectedCategory = false;
+
             if(!(vcui.isEmpty(data))) {
                 /*
                 //필터 슬라이더
@@ -593,6 +595,7 @@ var FilterLayer = (function() {
                                 item.forEach(function(val, index) {
                                     var findInput = self.$categorySelect.find('input[name='+key+'][value="'+val+'"]');
                                     findInput.prop('checked', true);
+                                    selectedCategory = true;
                                 });
                             }
                         }
@@ -627,6 +630,11 @@ var FilterLayer = (function() {
                 self.$layFilter.find('.ui_filter_accordion input[type=checkbox]').each(function(idx,obj){
                     self.resetSelectFilterCount(obj);
                 });
+            }
+
+            //만약 선택된 카테고리가 없으면 전체로 선택
+            if(!selectedCategory && self.$categorySelect) {
+                self.$categorySelect.find('input:eq(0)').prop('checked', true);
             }
 
             if(triggerFilterChangeEvent) {
