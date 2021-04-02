@@ -439,6 +439,11 @@
             }
         }
     }
+    .result-wrap {
+        .empty-row {
+            display: none;
+        }
+    }
     .sar-summary {
         margin-top: 80px;
         padding: 32px 40px;

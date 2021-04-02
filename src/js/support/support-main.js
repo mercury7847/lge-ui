@@ -471,8 +471,12 @@
                             },
 
                             serviceUserName : {
-                                required : true,
-                                msgTarget : ".err-block"
+                                required: true,
+                                maxLength: 30,
+                                pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                                msgTarget: '.err-block',
+                                errorMsg: '이름을 입력해주세요.',
+                                patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                             },
                             servicePhoneNo : {
                                 required : true,
@@ -911,18 +915,18 @@
                     if (e.keyCode == 13) {
                         e.preventDefault();
                         var _value = $searchInput.val();
-                        location.href = url + encodeURI(encodeURIComponent(_value))
+                        location.href = url + encodeURI(_value)
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.on('keywordClick', function() {
                     var _value = $searchInput.val();
-                    location.href = url + encodeURI(encodeURIComponent(_value))
+                    location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.search({

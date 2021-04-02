@@ -293,7 +293,8 @@
 }
 
 .btn-moreview {
-    display:inline-block;
+    //display:inline-block; 기본 display:none
+    display: none;
     padding:3px 11px;
     border:1px solid #222;
     border-radius:16px;
@@ -313,7 +314,7 @@
         vertical-align:top;
     }
     &.block {
-        display:block;
+        //display:block; 기본 display:none
         width:auto;
         margin:32px auto 0;
         @include mobile {

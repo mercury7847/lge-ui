@@ -1,0 +1,21 @@
+{
+    "message": null,
+    "status": "success",
+    "data": [
+        {
+           "mdlName":"LG-LB3300P",
+           "grade":"1",
+           "sarCnt":"1.09 W/kg"
+        },
+        {
+            "mdlName":"LG-SV300",
+            "grade":"2",
+            "sarCnt":"0.518 W/kg"
+        },
+        {
+            "mdlName":"LG-LV3000",
+            "grade":"",
+            "sarCnt":"0.676 W/kg"
+        }
+    ]
+}
