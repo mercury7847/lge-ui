@@ -2745,6 +2745,7 @@
 
     //하단 수상 목록
     .awards {
+        overflow-x:hidden;
         padding-bottom:40px;
 
         .award-list-wrap {

@@ -253,6 +253,17 @@
                     draggable : false, 
                     responsive: [
                         {
+                            breakpoint: 9999,
+                            settings: {
+                                dots : false,
+                                arrows : false,
+                                draggable : false, 
+                                slidesToScroll: 1,
+                                arrowsUpdate: 'disabled',
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
                             breakpoint: 1920,
                             settings: {
                                 dots : false,
@@ -420,6 +431,7 @@
                     // 주요 서비스 
                     self.main_service.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.main_service.config);
                     self.main_service.el.slider.addClass(self.slideActiveClass);
+                    self.inquiry.el.slider.vcCarousel('resize');
 
                     //수상목록
                     self.award.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.award.config);
@@ -670,6 +682,8 @@
                     var self = this;
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
                     var $toggleCont = self.el.changeCont;
+
+                    $toggleCont.removeClass('active').eq(0).addClass('active');
     
                     $rdo.on('change', function(e){
                         var curValue = parseInt(this.value);

@@ -170,14 +170,14 @@
                             if($("#badgeAlarm").prop("checked")){
                                 $("#badgeAlarm").trigger("click");
                             }
-                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parent().addClass("disabled");
+                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parents("div").addClass("disabled");
 
                             //접근성
                             $("#pushAlarm").attr("aria-expanded", false);
                         break;
                         case "modalAlarmAgree" :
                             $("#pushAlarm").prop("checked", true).trigger("change");
-                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parent().removeClass("disabled");
+                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parents("div").removeClass("disabled");
                         break;
                         case "modalShopInfo" :
 
@@ -292,7 +292,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         //$(this).attr("tabindex", 0).focus();
-                        $("#main-panel-title").attr("tabindex", "0").focus();
+                        $(this).find("h1").attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                         /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
