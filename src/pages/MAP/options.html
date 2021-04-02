@@ -276,7 +276,8 @@
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
-                            $(this).find("h1").focus();
+                            //$(this).find("h1").focus();
+                            $(this).find(".btn-opt-prev").attr("tabindex", "0").focus();
                         }
                     });
                 }
@@ -312,6 +313,8 @@
                     optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "확인", "취소");
                 }
             });
+
+            $("#main-panel-title").attr("tabindex", "0").focus();
         });
     </script>
 
@@ -354,14 +357,14 @@
                         <button type="button" class="btn-opt-login" id="btn-opt-logout"><span>로그아웃</span></button>
                     </div>
                     <!-- //로그인 후 -->
-                    <div>
-                        <p>자동 로그인</p>
-                        <div class="opt-switch">
-                            <label for="autoLogin">
+                    <div class="type02">
+                        <label for="autoLogin">
+                            <p>자동 로그인</p>
+                            <div class="opt-switch">
                                 <input type="checkbox" id="autoLogin" checked>
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -374,14 +377,14 @@
 
                 <div class="opt-controls">
                     <h2>앱 권한</h2>
-                    <div>
-                        <p>위치정보 이용동의</p>
-                        <div class="opt-switch">
-                            <label for="locInfo">
+                    <div class="type02">
+                        <label for="locInfo">
+                            <p>위치정보 이용동의</p>
+                            <div class="opt-switch">
                                 <input type="checkbox" id="locInfo">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -415,44 +418,44 @@
 
         <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <h1 id="sub-panel-title01">알림설정</h1>
-                <button type="button" data-panel=".alarm-setting" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <h1>알림설정</h1>
             </div>
 
             <div class="opt-container">
                 <div class="opt-controls">
-                    <div>
-                        <p>푸시 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="pushAlarm">
+                    <div class="type02">
+                        <label for="pushAlarm">
+                            <p>푸시 알림 받기</p>
+                            <div class="opt-switch">
                                 <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
 
                     <!-- 안드로이드 인 경우에만 사용 -->
-                    <div class="disabled">
-                        <p>배지 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="badgeAlarm">
+                    <div class="type02 disabled">
+                        <label for="badgeAlarm">
+                            <p>배지 알림 받기</p>
+                            <div class="opt-switch">
                                 <input type="checkbox" id="badgeAlarm" disabled>
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                     <!-- //안드로이드 인 경우에만 사용 -->
                 </div>
 
                 <div class="opt-controls">
-                    <div>
-                        <p>마케팅 푸시 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="mktPushAlarmChk">
+                    <div class="type02">
+                        <label for="mktPushAlarmChk">
+                            <p>마케팅 푸시 알림 받기</p>
+                            <div class="opt-switch">
                                 <input type="checkbox" id="mktPushAlarmChk">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                     <p class="txt-guide">광고성 알림은 <span aria-current="time" aria-label="오후9시부터 오전8시">21:00~08:00</span>에는 발송되지 않습니다.</p>
                 </div>
