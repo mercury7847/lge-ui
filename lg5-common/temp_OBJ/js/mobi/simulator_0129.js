@@ -985,30 +985,29 @@ var go_shop_model = "";
             objet_set: [{
                     name: 'Best',
                     sets: [{
-                            setName: 'Z330FTS151',
-                            setCoverImage: 'appliances/rf_kimchi/popular/kim_3-01.png',
+                            setName: 'M870GBB451',
+                            setCoverImage: 'appliances/rf/popular/1-07.png',
                             objetSelection: [
-                                { objetSelection_id: 'refrigerator_T', objetSelection_colorCode: 'fn_stone' },
-                                { objetSelection_id: 'refrigerator_M', objetSelection_colorCode: 'fn_sand' },
-                                { objetSelection_id: 'refrigerator_B', objetSelection_colorCode: 'fn_sand' },
+                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'mg_beige' },
+                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'mg_beige' },
+                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'mg_beige' },
                             ]
                         },
                         {
-                            setName: 'Z330SGS151',
-                            setCoverImage: 'appliances/rf_kimchi/popular/kim_3-02.png',
+                            setName: 'M870SGS451',
+                            setCoverImage: 'appliances/rf/popular/3-02.png',
                             objetSelection: [
-                                { objetSelection_id: 'refrigerator_T', objetSelection_colorCode: 'st_green' },
-                                { objetSelection_id: 'refrigerator_M', objetSelection_colorCode: 'st_silver' },
-                                { objetSelection_id: 'refrigerator_B', objetSelection_colorCode: 'st_silver' },
+                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'st_green' },
+                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'st_silver' },
+                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'st_silver' },
                             ]
-                        },
-                        {
-                            setName: 'Z330GPB151',
-                            setCoverImage: 'appliances/rf_kimchi/popular/kim_3-03.png',
+                        }, {
+                            setName: 'M870GSM451',
+                            setCoverImage: 'appliances/rf/popular/2-12.png',
                             objetSelection: [
-                                { objetSelection_id: 'refrigerator_T', objetSelection_colorCode: 'mg_pink' },
-                                { objetSelection_id: 'refrigerator_M', objetSelection_colorCode: 'mg_beige' },
-                                { objetSelection_id: 'refrigerator_B', objetSelection_colorCode: 'mg_beige' },
+                                { objetSelection_id: 'refrigerator_LT', objetSelection_colorCode: 'mg_silver' },
+                                { objetSelection_id: 'refrigerator_LB', objetSelection_colorCode: 'mg_mint' },
+                                { objetSelection_id: 'refrigerator_RB', objetSelection_colorCode: 'mg_mint' },
                             ]
                         },
                     ]

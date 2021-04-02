@@ -367,6 +367,9 @@
     }
     //사용자 정보변경 저장...
     function saveUserInfoOk(){
+        var result = userInfoValidation.validate();
+        if(!result.success) return;
+
         lgkorUI.showLoading();
 
         var sendata = userInfoValidation.getAllValues();

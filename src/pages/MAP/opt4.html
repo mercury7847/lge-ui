@@ -246,11 +246,14 @@
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(".main-panel").attr("aria-hidden", false);
+                        /*
                         $(".main-panel").attr("tabindex", 0).focus();
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(".main-panel").find("h1").focus();
                         }
+                        */
+                        $(".main-panel").find("h1").attr("tabindex", "0").focus();
                     });
                 }
             });
@@ -292,7 +295,7 @@
                         //접근성
                         $(this).attr("aria-hidden", false);
                         //$(this).attr("tabindex", 0).focus();
-                        $("#main-panel-title").attr("tabindex", "0").focus();
+                        $(this).find("h1").attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
                         /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -318,8 +321,6 @@
                     optModal.open("modalPrdReg", "alertdialog", "<p>바코드로 편리하게 제품등록 하기위해 <br>APP을 설치하시겠습니까?</p>", "확인", "취소");
                 }
             });
-
-            $("#main-panel-title").attr("tabindex", "0").focus();
         });
     </script>
 
