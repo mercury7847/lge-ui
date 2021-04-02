@@ -101,7 +101,7 @@ $(function(){
                     settings: {
                         infinite: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 1, 
                         slidesToScroll: 1,
                         centerMode: true,
