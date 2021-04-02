@@ -33,6 +33,11 @@
     @import "OBJ0105";
 }
 
+header {
+    position: relative;
+    z-index: 999;
+}
+
 @media (min-width:768px) {
     .btnMobi {
         display: none;
