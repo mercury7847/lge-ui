@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        componentID: "KRP0010"
+        componentID: "KRP0010",
+        pageJS: ["components/KRP0010_SAR"],
     })
 <body>
-    <article id="popup1" class="win-popup-wrap sar-popup">
+    <article id="SAR-POPUP" class="win-popup-wrap sar-popup" data-search-url="/lg5-common/data-ajax/KRP0010/sar.json">
         <header class="pop-header">
             <h1 class="tit"><span>전자파 흡수율 지수 확인</span></h1>
         </header>

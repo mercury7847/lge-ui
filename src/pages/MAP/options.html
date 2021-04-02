@@ -272,13 +272,15 @@
                     $(data).stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).attr("tabindex", 0).focus();
+                        //$(this).attr("tabindex", 0).focus();
+                        $(this).find(".btn-opt-prev").attr("tabindex", "0").focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
-                            //$(this).find("h1").focus();
-                            $(this).find(".btn-opt-prev").attr("tabindex", "0").focus();
+                            $(this).find("h1").focus();
                         }
+                        */
                     });
                 }
             });
@@ -289,12 +291,15 @@
                     $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).attr("tabindex", 0).focus();
+                        //$(this).attr("tabindex", 0).focus();
+                        $("#main-panel-title").attr("tabindex", "0").focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
+                        */
                     });
                     $(data).stop().animate({"left":"100%"}, 250);
                 }
@@ -336,7 +341,7 @@
             <!-- <div class="gap"></div> -->
             <div class="opt-header">
                 <h1 id="main-panel-title">설정</h1>
-                <button type="button" class="btn-opt-close"><span>설정 닫기</span></button>
+                <button type="button" class="btn-opt-close"><span>닫기</span></button>
             </div>
 
             <div class="opt-container">
@@ -418,7 +423,7 @@
 
         <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전</span></button>
                 <h1>알림설정</h1>
             </div>
 
@@ -465,8 +470,8 @@
 
         <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">
-                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
-                <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".source-license" id="sub-panel-title02" class="btn-opt-prev"><span>이전</span></button>
+                <h1>오픈소스 라이선스</h1>
             </div>
             <div class="opt-container">
                 <div class="opt-controls">
