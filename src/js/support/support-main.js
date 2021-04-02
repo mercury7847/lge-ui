@@ -253,6 +253,17 @@
                     draggable : false, 
                     responsive: [
                         {
+                            breakpoint: 9999,
+                            settings: {
+                                dots : false,
+                                arrows : false,
+                                draggable : false, 
+                                slidesToScroll: 1,
+                                arrowsUpdate: 'disabled',
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
                             breakpoint: 1920,
                             settings: {
                                 dots : false,
@@ -672,6 +683,7 @@
                     var $rdo = self.el.container.find(self.el.authChangeRdo);
                     var $toggleCont = self.el.changeCont;
 
+                    $rdo.eq(0).prop('checked', true);
                     $toggleCont.removeClass('active').eq(0).addClass('active');
     
                     $rdo.on('change', function(e){

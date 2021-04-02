@@ -122,7 +122,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
 
             self.$dimmed = self.$el.find('.header-wrap .dimmed');
-
             self.$dimmed.hide();
 
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
@@ -432,10 +431,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(two < 0) self.$dimmed.hide();
                 else self.$dimmed.show();
             }
-
-
-            //$$$$$$$$$$$$$$$$$$$$$$$$
-            self.$dimmed.hide();
         },
 
         _removeOutTimeout: function(){

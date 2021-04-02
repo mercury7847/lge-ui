@@ -1,109 +1,84 @@
 {
-  "ssoCheckUrl": null,
-  "status": "success",
-  "message": null,
   "data": {
-      "listData":
-      {
-        "orderNumber": "000006666",
-        "orderDate": "2021.03.24",
-        "orderType": "NS",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "26900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "productList": [
-          {
-            "productNameKR": "LG 울트라HD 모니터",
-            "productNameEN": "32UN500.BKR",
-            "modelID": "MD08748493",
-            "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
-            "modelType": "일반(G)",
-            "orderedQuantity": "1",
-            "productPrice": "12900",
-            "productTotalPrice": 12900,
-            "rowTotal": 12900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "VA",
-              "80 cm"
-            ],
-            "itemStatus": "Invoiced",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "결제 완료",
-              "statusClass": "",
-              "statusDate": "배송희망일 2021.03.31",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              
-            ]
+    "listData": {
+      "orderNumber": "000009670",
+      "customerName": "이원",
+      "orderType": "SM",
+      "orderDate": "2021-04-02 16:23:46",
+      "orderTotal": 1,
+      "productList": [
+        {
+          "productNameKR": "점화 손잡이",
+          "productNameEN": "AEZ74213301",
+          "productSku": "AEZ74213301",
+          "orderedQuantity": "1",
+          "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/gas-range/aez74213301",
+          "modelID": "MD08918848",
+          "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/gas-range/md08918848/md08918848-350x350.jpg",
+          "itemStatus": "Picking",
+          "recyclingPickup": "null",
+          "shippingNoteTxt": " ",
+          "delivWish": "null",
+          "inspectionVisit": "null",
+          "modelType": "소모품(A)",
+          "originalTotalPrice": 5000,
+          "rowTotal": 5000,
+          "productTotalPrice": 5000,
+          "specList": [
+            "null",
+            "null"
+          ],
+          "orderStatus": {
+            "disabled": "",
+            "statusClass": "",
+            "statusText": "배송준비중",
+            "statusDate": "",
+            "deliveryUrl": ""
           },
-          {
-            "productNameKR": "펫 흡입구",
-            "productNameEN": "AGB74612304",
-            "modelID": "MD08920313",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "productPrice": "114000",
-            "productTotalPrice": 114000,
-            "rowTotal": 114000,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Picking",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "배송준비중",
-              "statusClass": "",
-              "statusDate": "배송희망일 ",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              {
-                "className": "deliveryRequest",
-                "buttonName": "배송문의"
-              }
-            ]
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      "payment":{
-        "orderPrice": 44000000,
-        "totalPrice": "44,000,000",
-        "paymentMethodName": "국민은행 00999085576331 - 마진",
-        "receiptUrl":"http://wwwstg.lge.co.kr"
-      },
-      "shipping":{
-          "name":"이연철",
-          "street":"디지털로10길 22 (가산동, LG전자가산 B) 123",
-          "city":"서울",
-          "postcode":"08513",
-          "telephone":"01093696245",
-          "telephonenumber":"01093696245",
-          "recyclingPickup":"Y",
-          "shippingNoteTxt":"배송요청사항",
-          "instpectionVisit":"Y"
-      },
-      "orderUser":{
-        "userName": "박엘지",
-        "phoneNumber": "01098738946",
-        "email": "lg@lge.com"
-      }
-  }
+          "statusButtonList": [
+            {
+              "className": "deliveryRequest",
+              "buttonName": "배송문의"
+            }
+          ],
+          "itemCancelAbleYn": "",
+          "orderCancelAbleYn": "Y"
+        }
+      ],
+      "orderCancelAbleYn": "Y",
+      "orderReturnAbleYn": "N",
+      "orderReceiptAbleYn": "Y",
+      "paymentMethodDisable": "N"
+    },
+    "payment": {
+      "originalTotalPrice": "5000",
+      "grandTotal": "5,000",
+      "paymentMethodName": "가상계좌 국민은행(00999085537547) 입금완료",
+      "transType": "BANK",
+      "paymentType": "41",
+      "paymentTypeName": "가상계좌",
+      "receiptUrl": "http://gpaytest.lgcns.com:15443/servlet/EBP2LGPServlet?v_pay_info=!9086ffee5c45209cdeefa1d15f2c7e2a34f7898d79200146ba53e0cc46045bcd434f8af335960c3a5e7b75a69ecf30d1e80cbd7962da5d59ace5981547c0469350401e2ff921591fac6eb33e60745ed40d111acfd214a33607574acc237d6fe8f5b29cb883b7cafb3d47b473a4c1b248f71952ff69eebb023a8549e51af6afb40b4f39cf2b2b4ed26d4454de969d48ff37fdbb08325bb7c5cb5bdc631402446ca6d1b00fb8809e56df0b93596eb414130ba0a4ddd6d11a770315f5072a73f42b65a4fd6889aae521d19237e1ab72650a562756882d7192e1486de19c914673602c88f3cb73a8e01f0752dfa3f6a33af1e9acb40ae52ee3a10e29160c281e8bf04aefa0a5735f728feb2f1109a995c42530d3b98deddbf74b45d97106e8ac6811306e38af1c23f3c475b94ccfd316dc874ecec9b624095f19f45a7ea1729b4ca285f2387d4e073353efefcd07b4987634ff688e9c50d3aa017f6c005d50fb1117406007a248cc464a02911b4cd9bde5a5c01f9d926324b9e99ba604ea3b8b655d1fbb8d3c8e2287484a995368e0ced064ccfe9158bd31cd7d0027248960ab6376eaecc6d46d3487e3f71190fdaa69a945ffe03866130d32d01b479c74601168526ba978d90661d051b94dc93d8f947a724a0bbe88b35fe15b3ca8a6584fabe2a5&v_order_type=R"
+    },
+    "shipping": {
+      "name": "이원",
+      "street": "서울 서대문구 증가로23가길 1 (북가좌동, 이헌빌라트)\n이헌빌라트101호",
+      "city": "",
+      "postcode": "03682",
+      "telephone": "01050616862",
+      "telephonenumber": "",
+      "recyclingPickup": "",
+      "shippingNoteTxt": " ",
+      "instpectionVisit": ""
+    },
+    "orderUser": {
+      "userName": "이원",
+      "email": "dldnjs0814@naver.com",
+      "phoneNumber": "01050616862"
+    },
+    "alert": {
+      
+    }
+  },
+  "message": "success",
+  "status": "success"
 }
