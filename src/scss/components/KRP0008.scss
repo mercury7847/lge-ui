@@ -51,6 +51,9 @@
             //margin-top:25px;
             margin: 0 -16px;
             padding-left:0;
+            .pdp-more-info {
+                display: none;
+            }
 		}
         @include pc {
             &.fixed {
