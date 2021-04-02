@@ -242,11 +242,14 @@
                             self.updateProductList(self.savedPLPData.listData, true);
                             self.setPageData(self.savedPLPData.pagination);
                             var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
-                            $(window).ready(function(){
-                                setTimeout(function(){
-                                    $(window).scrollTop($li.offset().top);
-                                }, 500);
-                            });
+                            if($li.length > 0) {
+                                //크롬에 추가된 히스토리 복구 옵션 안쓰도록 함
+                                if ('scrollRestoration' in history) {
+                                    history.scrollRestoration = 'manual';
+                                }
+                                //마지막에 클릭한 아이템으로 이동
+                                $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
+                            }
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
