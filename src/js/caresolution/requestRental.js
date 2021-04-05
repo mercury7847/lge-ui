@@ -743,18 +743,13 @@
             selectCardValue = step3Block.find('select[name=associatedCard]').find('option:selected').data('discountPrice');
         }
         
-
-
-
-
-        
         var sendata = {
             rtModelSeq: code.join(','),
             waterTestYn: getInputData('waterTestYn'),
             zipCode: step2Validation.getValues("zipCode"),
             cardDiscountPrice: selectCardValue
         }
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(485, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INSTALL_ABLED_URL, sendata, function(result){
             lgkorUI.hideLoading();
 
             productPriceInfo = result.data.productPriceInfo;
@@ -1005,9 +1000,6 @@
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
-
-
-
 
             var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
