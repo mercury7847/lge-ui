@@ -329,6 +329,17 @@ var CareCartInfo = (function() {
                 } else {
                     $maxCardSale.hide();
                 }
+
+                var $bulletList = self.$paymentInfo.find('div.total-payment-amount ul.bullet-list li.b-txt');
+                if(_id == "" || _id.length == 0) {
+                    $bulletList.hide();
+                } else if(_id.indexOf('direct') != -1) {
+                    $bulletList.eq(0).hide();
+                    $bulletList.eq(1).show();
+                } else {
+                    $bulletList.eq(0).show();
+                    $bulletList.eq(1).hide();
+                }
             });
     
             //청약하기버튼 클릭

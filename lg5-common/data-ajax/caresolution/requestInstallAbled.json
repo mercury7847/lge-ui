@@ -1,5 +1,7 @@
 {
   "data": {
+    "deliveryDate": "20210406",
+    "holidaysSet": ["20210406", "20210407", "20210408", "20210512"],
     "beforeVisitModelFlag": "O",
     "allOwnedProductYn": "N",
     "alert": {
