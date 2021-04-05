@@ -101,7 +101,7 @@ $(function(){
                     settings: {
                         infinite: true,
                         variableWidth : false,
-                        dots: true,
+                        // dots: true,
                         slidesToShow: 1, 
                         slidesToScroll: 1,
                         centerMode: true,
@@ -263,16 +263,19 @@ $(function(){
                         return item;
                     });
 
+                    if(fArr.length == 0){
+                        $('.care-recommended').hide();
+                        return;
+                    }
+
                     $('.ui_product_tab').find('.tabs').html(vcui.template(tabTmpl, {list:fArr}));
                     $('.ui_product_tab').after(vcui.template(tabContentTmpl, {list:fArr}));
-
 
                     $('.ui_product_tab').vcTab({selectors:{
                         prevButton:".ui_smooth_prev",
                         nextButton:".ui_smooth_next",
                         smoothScroll:'.ui_smooth_tab'
                     }});
-
 
                     $('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
                         infinite: false,
@@ -309,7 +312,7 @@ $(function(){
                 }                
 
             },function(err){
-                // console.log(err);
+                $('.care-recommended').hide();
             });    
 
         }

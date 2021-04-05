@@ -18,6 +18,19 @@ $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
     background-color: #4c3ef0;
     opacity: 0.6;
 }
+
+.hide {
+    overflow:hidden;
+    position:absolute;
+    z-index:-1;
+    width:0 !important;
+    height:0 !important;
+    overflow:hidden !important;
+    //font-size:1px;
+    //line-height:1px;
+    white-space:nowrap;
+}
+
 /*
 html,
 body {
@@ -86,6 +99,15 @@ body {
 
 .txt-guide {
     margin: 10px 18px;
+    > span {
+        position:relative;
+    }
+    .hide {
+        left:0;
+        top:0;
+        width:100% !important;
+        height:100% !important;
+    }
 }
 
 .lyr-opt-panel {
@@ -266,6 +288,74 @@ body {
                     }
                     em {
                         color: #ec455a;
+                    }
+                }
+            }
+            &.type02 {
+                & > label {
+                    display:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width:100%;
+                    min-height: 50px;
+                    @include font(16px, 24px);
+                    &.txt-login-guide {
+                        color: #aaa;
+                    }
+                }
+                .opt-switch {
+                    display: block;
+                    position: relative;
+                    height: 30px;
+                    input {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        & + span {
+                            display: inline-block;
+                            overflow: hidden;
+                            position: relative;
+                            width: 52px;
+                            height: inherit;
+                            border-radius: 60px;
+                            background-color: #ddd;
+                            cursor: pointer;
+                            transition: all ease 0.3s;
+                            text-indent: -9999px;
+                            &:after {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                left: 2px;
+                                top: 2px;
+                                width: 26px;
+                                height: 26px;
+                                border-radius: 50%;
+                                background-color: #fff;
+                                box-shadow: 1px 0 5px 0 rgba(0, 0, 0, 0.1);
+                                transition: all ease 0.3s;
+                            }
+                        }
+                        &:checked {
+                            & + span {
+                                background-color: #ec455a;
+                                &:after {
+                                    left: calc(100% - 28px);
+                                }
+                            }
+                        }
+                    }
+                }
+                &.disabled {
+                    .opt-switch {
+                        color: #aaa;
+                        input {
+                            & + span {
+                                background-color: #f4f4f4;
+                            }
+                        }
                     }
                 }
             }

@@ -62,6 +62,8 @@ $(function() {
         $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(pageLens*winHeight);
         });
+
+
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -581,8 +583,11 @@ $(function() {
         $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
         var artGuideLen = $artGuide.find('.art-guide-list > li').length;
-        if(artGuideLen<6) $artMoreBtn.hide();
-
+        if(artGuideLen<6) {
+            $artMoreBtn.css('display','none');
+        }else{
+            $artMoreBtn.css('display','block');
+        }
 
         $artMoreBtn.on('click', function(e){
             e.preventDefault();
@@ -601,6 +606,9 @@ $(function() {
                 $span.text(toggleTxt);
                 $artGuide.find('.art-guide-list > li').show();
             }
+
+            //웨일 처리
+            $('html,body').scrollTop(pageLens*winHeight);
         });
 
 

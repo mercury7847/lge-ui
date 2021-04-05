@@ -18,6 +18,7 @@
 //제품체험
 .model_experience {
     @import "OBJ0302";
+    @import "../../support/mcustom-scrollbar";
 }
 
 //갤러리
@@ -31,6 +32,11 @@
     position: relative;
     z-index: 1;
     @import "OBJ0105";
+}
+
+header {
+    position: relative;
+    z-index: 999;
 }
 
 @media (min-width:768px) {
@@ -59,9 +65,19 @@
     z-index: 1;
 }
 
+.popup-wrap>.btn-close {
+    z-index: 999;
+}
+
+.search-layer {
+    z-index: 1005;
+}
+
 .brand-wrap {
     .objetcollection-tabs {
         background-color: $color-bg-wt;
+        position: relative;
+        z-index: 999;
         .tabs-wrap {
             max-width: 1380px + 80px;
             margin: 0 auto;
@@ -512,6 +528,10 @@
 
 .sns_popup .selected-objet-list-container ul>li.active .btn08 {
     background: url("/lg5-common/images/OBJ/simulator/ico/ico-wash-tower_2.png") no-repeat center top;
+}
+
+input[type=radio] {
+    outline-offset: 0px;
 }
 
 .option_sel_popup.popup-wrap {

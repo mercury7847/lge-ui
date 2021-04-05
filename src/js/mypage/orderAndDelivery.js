@@ -1082,7 +1082,7 @@
     function setNoData(){
         $('.inquiry-list-wrap').empty().append('<div class="no-data"><p>주문 내역이 없습니다.</p></div>');
         $('.inquiry-list-notify').hide();
-        $('.btn-moreview').hide();
+        $('.btn-moreview').css('display','none');
     }
 
     function setMoreOrderList(){
@@ -1125,8 +1125,8 @@
                 }
             }
 
-            if(end < leng) $('.btn-moreview').show();
-            else $('.btn-moreview').hide();
+            if(end < leng) $('.btn-moreview').css('display','block');
+            else $('.btn-moreview').css('display','none');
         } else{
             setNoData();
         }
@@ -2040,7 +2040,7 @@
                 else uname = result.data.payment.bankAccountNm;
                 popup.data('isBirthDt', isBirthDt);
                 popup.data("userName", uname);
-                popup.find('.bank-input-box').closest('.conts').find('> .input-wrap input').val(uname);
+                popup.find('input[name=bankUserName]').val(uname);
 
                 bankInfoBlock.show();
             } else{

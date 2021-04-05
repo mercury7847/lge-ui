@@ -822,6 +822,10 @@
         }
     }
 
+    .engineer-pop {
+        overflow-x:hidden;
+    }
+
     .engineer-slider {
         .slide-controls {
             button {
@@ -1012,5 +1016,7 @@
         }
     }
 }
+
+[data-product-only] {display: none;}
 
 @import "../../support/pages/payNwarranty";

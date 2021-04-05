@@ -86,15 +86,23 @@
         IS_LOGIN = $('.contents.story-main').data("loginflag");
         STORY_URL = $('.contents.story-main').data("storyUrl");
 
-        vcui.require(['ui/toggleCarousel', "ui/sticky"], function () {
-            $('.story-review').vcToggleCarousel({
-                pcOption: "unbuild",
-                mobileOption: {
-                    variableWidth: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+        vcui.require(['ui/carousel', "ui/sticky"], function () {
+            $('.story-review .slide-controls button').hide();
+            $('.story-review .indi-wrap').hide();
+            $(window).on('breakpointchange', function(e){
+
+                var breakpoint = window.breakpoint;    
+                if(breakpoint.name == 'mobile'){ 
+                    $('.story-review').vcCarousel({
+                        variableWidth: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    });
+                }else if(breakpoint.name == 'pc'){   
+                    $('.story-review').vcCarousel('destroy');
+                }    
             });
+            $(window).trigger('breakpointchange');
 
             bindEvent();
 
@@ -280,8 +288,8 @@
                 sectionItem.find('.ui_sticky').parent().remove();
             }
 
-            if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
-            else sectionItem.find('.btn-moreview').show();
+            if(page == totalcnt) sectionItem.find('.btn-moreview').css('display','none');
+            else sectionItem.find('.btn-moreview').css('display','block');
             
             // console.log("result.data.selectTags:", result.data.selectTags);
             if(result.data.selectTags){

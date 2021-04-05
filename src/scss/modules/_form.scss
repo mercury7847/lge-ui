@@ -514,6 +514,7 @@
                 }
             }
         }
+
         // input case
         // : 주소찾기 pc만 다른 케이스
         @include pc {
@@ -728,6 +729,21 @@
         //         text-align:left;
         //     }
         // }
+
+        .gray-box {
+            margin-top:16px;
+            //margin-bottom:7px;
+            padding:24px;
+            border-radius:8px;
+            background:$color-bg;
+            &:first-child {
+                margin-top:0;
+            }
+            @include mobile {
+                //margin-bottom:0;
+                padding:20px 12px;
+            }
+        }
     }
 }
 .agree-wrap {
@@ -1236,17 +1252,17 @@
             }
         }
         .gray-box {
-            margin-top:16px;
+            //margin-top:16px;
             margin-bottom:7px;
-            padding:24px;
-            border-radius:8px;
-            background:$color-bg;
-            &:first-child {
-                margin-top:0;
-            }
+            //padding:24px;
+            //border-radius:8px;
+            //background:$color-bg;
+            //&:first-child {
+            //    margin-top:0;
+            //}
             @include mobile {
                 margin-bottom:0;
-                padding:20px 12px;
+                //padding:20px 12px;
             }
         }
         &:first-child {

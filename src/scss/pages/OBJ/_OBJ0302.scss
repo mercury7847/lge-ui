@@ -14,10 +14,385 @@ h2.title {
 .model_simul_wrap {
     display: flex;
     >.model_simul_area {
-        flex: 0 0 48%;
+        flex: 0 0 44.67%;
+        margin-right: 3.33%;
+        position: relative;
+        &.is_active {
+            .model_simul_body {
+                display: none;
+            }
+        }
+        .model_simul_body {
+            position: absolute;
+            left: 50%;
+            top: 130px;
+            width: 280px;
+            height: 497px;
+            border-radius: 7px;
+            overflow: hidden;
+            background: #f4f4f4;
+            transform: translateX(-50%);
+            .make_model {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                span {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 280px;
+                    padding-top: 50px;
+                    font-size: 16px;
+                    line-height: 1.625;
+                    text-align: center;
+                    transform: translate(-50%, -50%);
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        content: '';
+                        left: 50%;
+                        top: 0;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        background: url('/lg5-common/images/OBJ/experience/ico_model_add.png') #da0f47 center center no-repeat;
+                        transform: translateX( -50%);
+                    }
+                }
+            }
+        }
     }
     .simul_wrap {
         position: fixed;
+        display: none;
+        white-space: nowrap;
+        &.is_active {
+            display: block;
+        }
+        .model_reset {
+            position: absolute;
+            right: 18px;
+            top: 20px;
+            padding-left: 25px;
+            &:before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 50%;
+                width: 19px;
+                height: 19px;
+                background: url('/lg5-common/images/OBJ/experience/ico_btn_reset.png') center center no-repeat;
+                transform: translateY(-50%) rotate(0deg);
+                transition-duration: .5s;
+            }
+            &:active:before {
+                transform: translateY(-50%) rotate(-360deg);
+                transition-duration: 0s;
+            }
+            span {
+                font-size: 16px;
+                color: #da0f47;
+                text-decoration: underline;
+            }
+        }
+        .simul_body {
+            position: relative;
+            margin-top: 130px;
+            text-align: center;
+            font-size: 0;
+            .model_set_wrap {
+                position: relative;
+                display: inline-block;
+                &+.model_set_wrap {
+                    margin-left: 20px;
+                }
+                &[data-model-editing="Y"] {
+                    .model_set {
+                        //opacity: 1;
+                        .btn_model_sel {
+                            z-index: -1;
+                        }
+                    }
+                }
+                &[data-model-add="N"] {
+                    .model_next {
+                        display: none;
+                    }
+                }
+                &[data-del="Y"] {
+                    .model_set {
+                        .btn_model_del {
+                            display: block;
+                        }
+                    }
+                }
+                .model_set {
+                    position: relative;
+                    //opacity: .9;
+                    .btn_model_sel {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 5;
+                    }
+                    .btn_model_del {
+                        display: none;
+                        position: absolute;
+                        left: 50%;
+                        top: -50px;
+                        width: 40px;
+                        height: 40px;
+                        background: url('/lg5-common/images/OBJ/experience/bg_model_del.png') center center no-repeat;
+                        background-size: 100% 100%;
+                        transform: translateX(-50%);
+                    }
+                    .sel_model_set {
+                        position: relative;
+                        .door_wrap {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 2;
+                            .model_door {
+                                position: absolute;
+                                background: url('/lg5-common/images/OBJ/experience/bg_door_default.png') #ffffff center center no-repeat;
+                                &[data-edit="Y"] {
+                                    box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, .14);
+                                }
+                                .door_img {
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                        .default_img {
+                            height: 428px;
+                            img {
+                                height: 100%;
+                            }
+                        }
+                    }
+                    .model_name {
+                        display: block;
+                        margin-top: 50px;
+                        font-size: 22px;
+                        color: #000000;
+                        font-weight: 700;
+                        letter-spacing: -2px;
+                    }
+                }
+                &[data-model_code="W821AAA453"] {
+                    //얼음정수기냉장고
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="M871AAA551"] {
+                    //노크온 더블 매직스페이스
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="M870AAA451"] {
+                    //노크온 매직스페이스
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="M620AAA351"] {
+                    //빌트 인타입
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="M871AAA151"] {
+                    //매직 스페이스
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="RT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            right: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="M871AAA041"] {
+                    //베이직
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="RT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            right: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="Z330AAA151"] {
+                    //김치냉장고
+                    .model_door {
+                        &[data-door-direction="TT"] {
+                            width: 96.9%;
+                            height: 53.5%;
+                            left: 1.7%;
+                            top: .5%;
+                        }
+                        &[data-door-direction="MM"] {
+                            width: 96.9%;
+                            height: 16.4%;
+                            left: 1.7%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="BB"] {
+                            width: 96.9%;
+                            height: 22.5%;
+                            left: 1.7%;
+                            top: 75.5%;
+                        }
+                    }
+                }
+                &[data-model_code="X320AA"],
+                &[data-model_code="Y320AA"],
+                &[data-model_code="Z320AA"] {
+                    //컨버터블
+                    .model_door {
+                        &[data-door-direction="TT"] {
+                            width: 97.7%;
+                            height: 97.9%;
+                            left: .8%;
+                            top: .1%;
+                        }
+                    }
+                }
+                .model_next {
+                    position: absolute;
+                    right: -90px;
+                    top: 0;
+                    width: 80px;
+                    height: 428px;
+                    .btn_model_add {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: url('/lg5-common/images/OBJ/experience/bg_model_add.png') #dedede center center no-repeat;
+                    }
+                }
+            }
+        }
     }
     .model_simul_step_wrap {
         position: relative;
@@ -27,7 +402,7 @@ h2.title {
         border: 1px solid #dddddd;
         border-radius: 7px;
         overflow-y: auto;
-        >dl {
+        dl.simul_step {
             >dt {
                 padding: 40px 0 25px;
                 .simul_tit {
@@ -46,10 +421,370 @@ h2.title {
                         vertical-align: middle;
                     }
                 }
+                .comment {
+                    margin-top: 18px;
+                    font-size: 18px;
+                    color: #000000;
+                }
             }
             >dd {}
             &+dl {
                 border-top: 1px solid #dddddd;
+            }
+            &.simul_step1 {
+                >dd {
+                    min-height: 280px;
+                    .model_choice_area {
+                        .model_choice_tab {
+                            margin-bottom: 30px;
+                            &:before {
+                                display: none;
+                            }
+                            .swiper-wrapper {
+                                justify-content: center;
+                                .swiper-slide {
+                                    width: auto;
+                                    text-align: center;
+                                    .btn_model_pick {
+                                        .pic {
+                                            display: block;
+                                            width: 168px;
+                                            height: 170px;
+                                            text-align: center;
+                                            img {
+                                                height: 100%;
+                                            }
+                                        }
+                                        .model_name {
+                                            display: block;
+                                            margin-top: 10px;
+                                            font-size: 18px;
+                                            color: #222222;
+                                            font-weight: 700;
+                                            text-align: center;
+                                        }
+                                        transition:opacity .5s;
+                                        &.is_noActive {
+                                            opacity: .3;
+                                        }
+                                        &.is_active {
+                                            opacity: 1;
+                                        }
+                                        &:disabled {
+                                            opacity: .1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .model_sub_tab_wrap {
+                            display: none;
+                            &.is_active {
+                                display: block;
+                            }
+                            .model_sub_tab_head {
+                                text-align: left;
+                                .swiper-wrapper {
+                                    width: auto;
+                                    padding: 0 40px;
+                                    .swiper-slide {
+                                        display: inline-block;
+                                        width: auto;
+                                        margin-left: 32px;
+                                        &:first-child {
+                                            margin-left: 0;
+                                        }
+                                        &.on {
+                                            button {
+                                                color: #000;
+                                                border-bottom: 2px solid #222;
+                                                /*2021-01-04 edit*/
+                                            }
+                                        }
+                                        button {
+                                            display: block;
+                                            padding: 5px 0;
+                                            background-color: transparent;
+                                            font-size: 18px;
+                                            // line-height: 28px;
+                                            line-height: 32px;
+                                            font-weight: 700;
+                                            @include mobile {
+                                                // font-size: 15px;
+                                                // line-height: 23px;
+                                                padding: 8px 12px;
+                                                font-size: 18px;
+                                                line-height: 26px;
+                                            }
+                                        }
+                                        @include mobile {
+                                            margin-left: 8px;
+                                            &:first-child {
+                                                margin-left: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .model_sub_tab_cont {
+                                padding: 18px 40px;
+                                text-align: left;
+                                &:before {
+                                    display: none;
+                                }
+                                .swiper-wrapper {
+                                    width: auto;
+                                    //padding: 0 40px;
+                                    margin: 0;
+                                    .swiper-slide {
+                                        width: auto;
+                                        margin-left: 0;
+                                        margin-right: 10px;
+                                        .btn_model_sub_pick {
+                                            width: 130px;
+                                            height: 190px;
+                                            border: 1px solid transparent;
+                                            overflow: hidden;
+                                            &.is_selected {
+                                                border: 1px solid #da0f47;
+                                                border-radius: 7px;
+                                                overflow: hidden;
+                                            }
+                                            &:disabled {
+                                                opacity: .3;
+                                            }
+                                            .pic {
+                                                display: block;
+                                                width: 130px;
+                                                height: 130px;
+                                                text-align: center;
+                                                img {
+                                                    height: 100%;
+                                                }
+                                            }
+                                            .model_name {
+                                                display: block;
+                                                height: 60px;
+                                                font-size: 16px;
+                                                line-height: 1.25;
+                                                white-space: normal;
+                                                color: #222222;
+                                                text-align: center;
+                                            }
+                                            &.is_active {
+                                                border: 1px solid #da0f47;
+                                                border-radius: 7px;
+                                                .model_name {
+                                                    font-weight: 500;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.simul_step2 {
+                >dd {
+                    .color_mixing_area {
+                        .color_best {
+                            display: none;
+                            &.is_active {
+                                display: block;
+                            }
+                        }
+                        .color_my_pick {
+                            display: none;
+                            &.is_active {
+                                display: block;
+                            }
+                        }
+                        .color_sel_wrap {
+                            display: none;
+                            &.is_active {
+                                display: block;
+                            }
+                            .color_sel_body {
+                                position: relative;
+                                padding: 30px 40px 20px 40px;
+                                &:before {
+                                    position: absolute;
+                                    content: '';
+                                    top: 0;
+                                    left: 40px;
+                                    right: 40px;
+                                    height: 1px;
+                                    background: #dddddd;
+                                }
+                                &:after {
+                                    position: absolute;
+                                    content: '';
+                                    bottom: 0;
+                                    left: 40px;
+                                    right: 40px;
+                                    height: 1px;
+                                    background: #dddddd;
+                                }
+                                .swiper-wrapper {
+                                    .swiper-slide {
+                                        width: auto;
+                                        &+.swiper-slide {
+                                            margin-left: 32px;
+                                        }
+                                        dl {
+                                            position: relative;
+                                            dt {
+                                                font-size: 18px;
+                                                color: #000000;
+                                                font-weight: 700;
+                                            }
+                                            dd {
+                                                margin-top: 18px;
+                                                ul {
+                                                    display: flex;
+                                                    li {
+                                                        width: 72px;
+                                                        .btn_door_color_sel {
+                                                            text-align: center;
+                                                            .color_img {
+                                                                display: inline-block;
+                                                                width: 48px;
+                                                                height: 48px;
+                                                                img {
+                                                                    width: 100%;
+                                                                    height: 100%;
+                                                                }
+                                                            }
+                                                            .color_name {
+                                                                display: inline-block;
+                                                                margin-top: 10px;
+                                                                text-align: center;
+                                                                font-size: 14px;
+                                                                color: #000000;
+                                                                font-weight: 500;
+                                                                line-height: 1.4;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .etc_area {
+                        display: none;
+                        &.is_active {
+                            display: block;
+                        }
+                        .btn_wrap {
+                            padding: 20px 0;
+                            text-align: center;
+                            .btn+.btn {
+                                margin-left: 7px;
+                            }
+                        }
+                        .err-msg {
+                            margin-bottom: 20px;
+                            text-align: center;
+                            color: #000000;
+                        }
+                    }
+                }
+            }
+            &.simul_step3 {
+                >dd {
+                    .compare_sel_model_area {
+                        display: none;
+                        padding: 0 40px;
+                        &.is_active {
+                            display: block;
+                        }
+                        .tb_compare {
+                            table {
+                                table-layout: fixed;
+                                border-collapse: inherit;
+                                border-spacing: 0px;
+                                //border-collapse: separate;
+                                thead {
+                                    th {
+                                        padding: 0;
+                                        font-size: 16px;
+                                        color: #000000;
+                                        font-weight: 500;
+                                        text-align: center;
+                                        line-height: 2.375;
+                                        background: #f4f4f4;
+                                    }
+                                }
+                                tbody {
+                                    tr {
+                                        &:hover {
+                                            cursor: pointer;
+                                        }
+                                        &.is_active {
+                                            td {
+                                                border-top: 1px solid #da0f47;
+                                                border-bottom: 1px solid #da0f47;
+                                                &:first-child {
+                                                    border-left: 1px solid #da0f47;
+                                                    border-radius: 7px 0 0 7px;
+                                                }
+                                                &:last-child {
+                                                    border-right: 1px solid #da0f47;
+                                                    border-radius: 0 7px 7px 0;
+                                                }
+                                                span {
+                                                    &:before {
+                                                        position: absolute;
+                                                        content: '';
+                                                        left: 0;
+                                                        top: 50%;
+                                                        width: 20px;
+                                                        height: 20px;
+                                                        background: url(/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png);
+                                                        transform: translateY(-50%);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        td {
+                                            padding: 0;
+                                            border-bottom: 1px solid #dddddd;
+                                            font-size: 18px;
+                                            color: #000000;
+                                            font-weight: 700;
+                                            text-align: center;
+                                            line-height: 2.89;
+                                            span {
+                                                position: relative;
+                                                display: inline-block;
+                                                padding: 0 30px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .etc_area {
+                        display: none;
+                        &.is_active {
+                            display: block;
+                        }
+                        .btn_wrap {
+                            padding: 20px 0;
+                            text-align: center;
+                            .btn+.btn {
+                                margin-left: 7px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

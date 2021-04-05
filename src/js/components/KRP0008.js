@@ -200,6 +200,7 @@
 
                 //PDP 인포
                 self.$pdpInfo = $('div.pdp-info-area');
+                self.$mobilePdpInfo = $('div.mobile-pdp-info');
                 self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
                 self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
@@ -538,7 +539,8 @@
                         }
                     }
 
-                    self.$awardPopup.vcModal();
+                    self.$awardPopup.vcModal({ opener: this});
+
                 });
 
                 //수상내역 아이템 클릭
@@ -558,6 +560,12 @@
 
             bindSideEvents: function() {
                 var self = this;
+
+                //모바일 수상내역 버튼
+                self.$mobilePdpInfo.on('click','div.inner a.btn-link.popup', function (e) {
+                    e.preventDefault();
+                    self.$pdpMoreInfo.find('a.btn-link.popup').trigger('click');
+                });
 
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {

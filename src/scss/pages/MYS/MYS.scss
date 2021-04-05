@@ -462,9 +462,10 @@
                     position: absolute;
                     top: 50%;
                     right: -40px;
-                    transform: translateY(calc(-50% + 1px));
+                    transform: translateY(-50%);
                     width: 32px;
                     height: 32px;
+                    margin-top: 1px;
                     background: url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                     content: '';
                     @include mobile {
@@ -822,6 +823,7 @@
                         .product-image {
                             display: table-cell;
                             width: 100px;
+                            min-height: 100px;
                             vertical-align: middle;
                         }
                         .product-info {

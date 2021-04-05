@@ -473,6 +473,10 @@ var isApp = function(){
                             }
                         },
                         modalhidden: function(e){
+                            var $modal = $(e.currentTarget);
+                            var $opener = $modal.vcModal('getOpener');
+                            if($opener) $opener.focus();
+
                             // $('html, body').css({
                             //     overflow:"visible"
                             // });
@@ -499,7 +503,7 @@ var isApp = function(){
                     singleOpen: false,
                     events: {
                         accordionexpand: function (e, data) {
-                            data.content.attr('tabindex', '0');                  
+                            // data.content.attr('tabindex', '0');                  
                             if(data.content.find('.ui_carousel').length>0) {                                
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }                            
@@ -743,7 +747,7 @@ var isApp = function(){
                 cancel:function(){}
                 });
              */
-            return function (msg, options) {
+            return function (msg, options, opener) {
             
                 if (typeof msg !== 'string' && arguments.length === 0) {
                     options = msg;
@@ -773,8 +777,7 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok modalcancel', function (e) {
     
@@ -800,15 +803,16 @@ var isApp = function(){
              * @function
              * @param {string} msg 얼럿 메세지
              * @param {Object} options 모달 옵션
+             * @param {Element} opener 포커스 타겟
              * @example
              * lgkorUI.alert('<p>구매일자 : 2020. 06. 18</p><p>구매제품 : 얼음정수기냉장고</p>', {
                  title:'영수증 등록이 완료되었습니다.',
                  ok:function(){}
-                });
+                }, this);
              *  
              */
     
-            return function (msg, options) {
+            return function (msg, options, opener) {
                 if (typeof msg !== 'string' && arguments.length === 0) {
                     options = msg;
                     msg = '';
@@ -830,7 +834,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     

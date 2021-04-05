@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>LGE</title>
-    <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
-    <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-    <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css" />
-    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <link rel="stylesheet" href="/lg5-common/css/reset.min.css?ver=2.0" />
+    <link rel="stylesheet" href="/lg5-common/css/app.min.css?ver=2.0" />
+    <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css?ver=2.0" />
+    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js?ver=2.0"></script>
     <!-- <script src="/lg5-common/js/app.common.min.js"></script> -->
     <script>
         //var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -170,14 +174,14 @@
                             if($("#badgeAlarm").prop("checked")){
                                 $("#badgeAlarm").trigger("click");
                             }
-                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parent().addClass("disabled");
+                            $("#badgeAlarm").attr("disabled", true).closest(".opt-switch").parents("div").addClass("disabled");
 
                             //접근성
                             $("#pushAlarm").attr("aria-expanded", false);
                         break;
                         case "modalAlarmAgree" :
                             $("#pushAlarm").prop("checked", true).trigger("change");
-                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parent().removeClass("disabled");
+                            $("#badgeAlarm").attr("disabled", false).closest(".opt-switch").parents("div").removeClass("disabled");
                         break;
                         case "modalShopInfo" :
 
@@ -246,11 +250,14 @@
                     $(".lyr-opt-panel, .main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(".main-panel").attr("aria-hidden", false);
+                        /*
                         $(".main-panel").attr("tabindex", 0).focus();
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(".main-panel").find("h1").focus();
                         }
+                        */
+                        $(".main-panel").find("h1").attr("tabindex", "0").focus();
                     });
                 }
             });
@@ -272,12 +279,15 @@
                     $(data).stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).attr("tabindex", 0).focus();
+                        //$(this).attr("tabindex", 0).focus();
+                        $(this).find(".btn-opt-prev").attr("tabindex", "0").focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
+                        */
                     });
                 }
             });
@@ -288,12 +298,15 @@
                     $(".main-panel").stop().attr("aria-hidden", false).animate({"left":"0"}, 250, function(){
                         //접근성
                         $(this).attr("aria-hidden", false);
-                        $(this).attr("tabindex", 0).focus();
+                        //$(this).attr("tabindex", 0).focus();
+                        $(this).find("h1").attr("tabindex", 0).focus();
                         $(this).siblings("div").attr("aria-hidden", true).removeAttr("tabindex");
+                        /*
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                         }else{
                             $(this).find("h1").focus();
                         }
+                        */
                     });
                     $(data).stop().animate({"left":"100%"}, 250);
                 }
@@ -316,7 +329,9 @@
     </script>
 
     <!-- Google Tag Manager -->
+    <!--
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WL297VL');</script>
+    -->
     <!-- End Google Tag Manager -->
 </head>
 <body>
@@ -333,7 +348,7 @@
             <!-- <div class="gap"></div> -->
             <div class="opt-header">
                 <h1 id="main-panel-title">설정</h1>
-                <button type="button" class="btn-opt-close"><span>설정 닫기</span></button>
+                <button type="button" class="btn-opt-close"><span>닫기</span></button>
             </div>
 
             <div class="opt-container">
@@ -354,14 +369,14 @@
                         <button type="button" class="btn-opt-login" id="btn-opt-logout"><span>로그아웃</span></button>
                     </div>
                     <!-- //로그인 후 -->
-                    <div>
-                        <p>자동 로그인</p>
-                        <div class="opt-switch">
-                            <label for="autoLogin">
+                    <div class="type02">
+                        <label for="autoLogin">
+                            자동 로그인
+                            <div class="opt-switch">
                                 <input type="checkbox" id="autoLogin" checked>
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -374,14 +389,14 @@
 
                 <div class="opt-controls">
                     <h2>앱 권한</h2>
-                    <div>
-                        <p>위치정보 이용동의</p>
-                        <div class="opt-switch">
-                            <label for="locInfo">
+                    <div class="type02">
+                        <label for="locInfo">
+                            위치정보 이용동의
+                            <div class="opt-switch">
                                 <input type="checkbox" id="locInfo">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -415,46 +430,46 @@
 
         <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
             <div class="opt-header type-sub">
-                <h1 id="sub-panel-title01">알림설정</h1>
-                <button type="button" data-panel=".alarm-setting" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전</span></button>
+                <h1>알림설정</h1>
             </div>
 
             <div class="opt-container">
                 <div class="opt-controls">
-                    <div>
-                        <p>푸시 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="pushAlarm">
+                    <div class="type02">
+                        <label for="pushAlarm">
+                            푸시 알림 받기
+                            <div class="opt-switch">
                                 <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
 
                     <!-- 안드로이드 인 경우에만 사용 -->
-                    <div class="disabled">
-                        <p>배지 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="badgeAlarm">
+                    <div class="type02 disabled">
+                        <label for="badgeAlarm">
+                            배지 알림 받기
+                            <div class="opt-switch">
                                 <input type="checkbox" id="badgeAlarm" disabled>
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
                     <!-- //안드로이드 인 경우에만 사용 -->
                 </div>
 
                 <div class="opt-controls">
-                    <div>
-                        <p>마케팅 푸시 알림 받기</p>
-                        <div class="opt-switch">
-                            <label for="mktPushAlarmChk">
+                    <div class="type02">
+                        <label for="mktPushAlarmChk">
+                            마케팅 푸시 알림 받기
+                            <div class="opt-switch">
                                 <input type="checkbox" id="mktPushAlarmChk">
                                 <span></span>
-                            </label>
-                        </div>
+                            </div>
+                        </label>
                     </div>
-                    <p class="txt-guide">광고성 알림은 <span aria-current="time" aria-label="오후9시부터 오전8시">21:00~08:00</span>에는 발송되지 않습니다.</p>
+                    <p class="txt-guide">광고성 알림은 <span><span aria-hidden="true">21:00~08:00</span><span class="hide">오후 9시 부터 오전 8시</span></span>에는 발송되지 않습니다.</p>
                 </div>
             </div>
         </div>
@@ -462,8 +477,8 @@
 
         <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
             <div class="opt-header type-sub">
-                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
-                <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전 화면으로 가기</span></button>
+                <button type="button" data-panel=".source-license" id="sub-panel-title02" class="btn-opt-prev"><span>이전</span></button>
+                <h1>오픈소스 라이선스</h1>
             </div>
             <div class="opt-container">
                 <div class="opt-controls">
@@ -480,7 +495,9 @@
     </div>
 
     <!-- Google Tag Manager (noscript) -->
+    <!--
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+    -->
     <!-- End Google Tag Manager (noscript) -->
 </body>
 </html>

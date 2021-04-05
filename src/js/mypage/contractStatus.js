@@ -200,7 +200,11 @@
                 $('#popup-contractIssue').vcModal();
             } else{
                 lgkorUI.alert("", {
-                    title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요."
+                    title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요.",
+                    ok: function(){
+                        var movetop = $('.sects.user.viewer').offset().top - 80;
+                        $('html, body').animate({scrollTop:movetop}, 120)
+                    }
                 });
             }
         }).on('click', '.requestCard-btn', function(e){
@@ -363,6 +367,9 @@
     }
     //사용자 정보변경 저장...
     function saveUserInfoOk(){
+        var result = userInfoValidation.validate();
+        if(!result.success) return;
+
         lgkorUI.showLoading();
 
         var sendata = userInfoValidation.getAllValues();

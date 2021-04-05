@@ -19,24 +19,6 @@
                 "selectColorID": "LeatherYellow_code",
                 "siblingTypeName": "컬러",
                 "siblingColors": [
-                    {
-                        "siblingCode": "LeatherYellow_code",
-                        "siblingValue": "LeatherYellow",
-                        "modelId": "XCS23089484",
-                        "siblingGroupCode": "SGC129823"
-                    }, 
-                    {
-                        "siblingCode": "PlatinumSilver_code",
-                        "siblingValue": "PlatinumSilver",
-                        "modelId": "XCS23089484",
-                        "siblingGroupCode": "SGC129823"
-                    }, 
-                    {
-                        "siblingCode": "Opal_Blue_code",
-                        "siblingValue": "Opal_Blue",
-                        "modelId": "XCS23089484",
-                        "siblingGroupCode": "SGC129823"
-                    }
                 ],
                 "selectFeeID": "납부_code",
                 "siblingFee": [
