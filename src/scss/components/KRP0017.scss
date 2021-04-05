@@ -10,12 +10,15 @@
             padding-bottom:0;
         }
         .title {
-            padding:40px 0;
+            padding:16px 0 64px;
             background:#fff;
             color:#000;
             @include font-large-3;
             font-weight:700;
             text-align:center;
+            @include mobile {
+                padding:8px 0 32px;
+            }
             // @include mobile {
             //     display:none;
             // }
