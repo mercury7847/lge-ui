@@ -123,11 +123,12 @@
 			&.hero-banner {
 				.slide-content {
 					.slide-track  {
-						height:460px;
+						height:530px;
 						.slide-conts {
-							height:460px;
+							height:530px;
 							.bg {
 								// padding-bottom:127.8%;
+								padding-bottom:147.223%;
 							}
 							.slide-info-area {
 								top:42px;
@@ -309,13 +310,17 @@
 							left:24px;
 						}
 						> p {
-							padding-bottom:32px;
+							padding-bottom:42px;
 							color:#fff;
-							// font-size:48px;
-							font-size:2.5vw;
+							font-size:2.1vw;
 							font-weight:700;
+							line-height:2.95vw;
+							// font-size:40px;
+							// line-height:56px;
+							// font-size:48px;
+							// font-size:2.5vw;
 							// line-height:64px;
-							line-height:3.25vw;
+							// line-height:3.25vw;
 						}
 						.btn {
 							// position:absolute;
@@ -871,6 +876,8 @@
 					&.img-type {
 						.slide-box {
 							// padding-top:249px;
+							padding:0;
+							overflow:hidden;
 						}
 						.product-area {
 							position:absolute;
@@ -879,16 +886,22 @@
 							left:52px;
 						}
 						.img {
-							position:absolute;
-							top:0;
-							right:0;
-							bottom:0;
-							left:0;
-							padding:12px;
+							// position:absolute;
+							// top:0;
+							// right:0;
+							// bottom:0;
+							// left:0;
+							// padding:12px;
+							position:relative;
+							height:100%;
 							img {
-								max-width:327px;
-								width:100%;
-								height:100%;
+								// max-width:327px;
+								// width:100%;
+								// height:100%;
+								position:absolute;
+								top:50%;
+								left:50%;
+								transform:translate(-50%, -50%);
 							}
 						}
 						.product-contents {
@@ -1324,15 +1337,17 @@
 						}
 						&.img-type {
 							.slide-box {
-								padding-top:171px;
-								.product-area {
-									position:static;
-								}
+								// padding-top:171px;
+								padding-top:0;
+								// .product-area {
+								// 	position:static;
+								// }
 							}
 							.img {
 								padding:6px;
 								img {
 									max-width:100%;
+									width:100%;
 								}
 							}
 						}

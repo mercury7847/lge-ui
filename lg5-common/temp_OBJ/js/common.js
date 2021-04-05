@@ -22,13 +22,13 @@ $(function() {
         }
     }
 
-    $('.collect_tab').find("button").click(function() {
+    $('.only_pc .collect_tab').find("button").click(function() {
         var positionT = "#" + $(this).attr("class");
         var attrPosition;
         if ($(this).attr("class") == "wrap") {
             attrPosition = 0;
         } else {
-            attrPosition = $(positionT).offset().top;
+            attrPosition = $(positionT).offset().top + 10;
         }
         //var attrPosition = $(positionT).offset().top;
         $('html, body').animate({
@@ -40,24 +40,26 @@ $(function() {
     if ($("div").hasClass("collect_tab")) {
 
         $(window).scroll(function() {
-
+            //var headH = $(".objetcollection-tabs").height();
             var scrollTopa = $(window).scrollTop();
             var co_design = $("#co_design").offset().top;
             var co_function = $("#co_function").offset().top;
             var co_gallery = $("#co_gallery").offset().top;
 
+
+
             if (scrollTopa < co_design) {
-                $(".collect_tab span").removeClass("active");
-                $(".collect_tab > ul > li:first-child span").addClass("active");
+                $(".only_pc .collect_tab span").removeClass("active");
+                $(".only_pc .collect_tab > ul > li:first-child span").addClass("active");
             } else if (scrollTopa >= co_design && scrollTopa < co_function) {
-                $(".collect_tab span").removeClass("active");
-                $(".collect_tab .co_design span").addClass("active");
+                $(".only_pc .collect_tab span").removeClass("active");
+                $(".only_pc .collect_tab .co_design span").addClass("active");
             } else if (scrollTopa >= co_function && scrollTopa < co_gallery) {
-                $(".collect_tab span").removeClass("active");
-                $(".collect_tab .co_function span").addClass("active");
+                $(".only_pc .collect_tab span").removeClass("active");
+                $(".only_pc .collect_tab .co_function span").addClass("active");
             } else if (scrollTopa >= co_gallery) {
-                $(".collect_tab span").removeClass("active");
-                $(".collect_tab .co_gallery span").addClass("active");
+                $(".only_pc .collect_tab span").removeClass("active");
+                $(".only_pc .collect_tab .co_gallery span").addClass("active");
             }
         });
     }

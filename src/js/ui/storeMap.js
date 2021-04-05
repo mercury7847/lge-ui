@@ -293,7 +293,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
         _clickMarker:function(e){
 
             var self = this;
-
             var id = $(e.overlay.icon.content).data('id');                    
             var obj = vcui.array.filterOne(self.itemArr, function(item, idx){
                 return item.id == id;
@@ -306,6 +305,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 obj.info.selected = false;     
                 marker.setIcon(self._getMarkerIcon(obj.info, obj.num)); 
                 self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);
+                self.docOff('focusin');
 
             }else {
 
@@ -317,6 +317,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     nObj.item.setIcon(self._getMarkerIcon(info, nObj.num, true)); 
                 })
 
+                // console.log(obj.infoWindow.contentElement);
+
+                
+
                 marker.setIcon(self._getMarkerIcon(obj.info, obj.num));                         
 
                 self.markerIndex++;
@@ -327,6 +331,21 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
                 self.map.setZoom(15);
                 self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.005, long));
+
+
+                var $focusTarget = $(obj.infoWindow.contentElement);
+                var $first = $focusTarget.find(':visible:focusable').first();
+                if($first[0]) $first.focus();
+
+                self.docOff('focusin');
+                self.docOn('focusin', function (e) {
+                    if ($focusTarget[0] !== e.target && !$.contains($focusTarget[0], e.target)) {                         
+                        if($first[0]) $first.focus();
+                        e.stopPropagation();
+                    }
+                });
+
+                
 
                 self.triggerHandler('changemarkerstatus', [{id:id}]);
 
