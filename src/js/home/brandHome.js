@@ -66,7 +66,7 @@
             
             slidesToShow: 1,
             slidesToScroll: 1,   
-            dot:false,   
+            dots:false,   
             fade:true, 
             responsive: [
                 {
@@ -74,14 +74,14 @@
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        dot:false,   
+                        dots:false,   
                         fade:true, 
                     }
                 },
                 {
                     breakpoint: 768,
                     settings: {
-                        dot:true,
+                        dots:true,
                         fade:false,
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -603,15 +603,21 @@
         var deviceH = 612; // 핸드폰 사이즈
         var isLifeWrap = false;
         var isThinqApp = false;
+        var isMobile = false;
 
         $('.thinq-app').find('.app-wrap').css('position','relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
 
         
         $('.thinq-section.smart-thinq-wrap .app-smart-tabs').on('tabchange', function(e,data){
 
-            console.log($(e.currentTarget));
-            console.log($(e.currentTarget).siblings('.ui_carousel_slider'));
+            if($(e.currentTarget).siblings('.ui_carousel_slider').length>0) {    
+                var idx = data.selectedIndex;
+                $(e.currentTarget).siblings('.ui_carousel_slider').vcCarousel('goTo', idx);
+            } 
 
+        });
+
+        $('.thinq-section.smart-thinq-wrap .ui_tab').on('tabchange', function(e,data){
 
             if(data.content.find('.ui_carousel_slider').length>0) {                                
                 data.content.find('.ui_carousel_slider').vcCarousel('update');
@@ -621,7 +627,6 @@
 
         
         $('.thinq-tabs .ui_tab').on('tabchange', function(e, data){
-
 
             $contentWrap.scrollTop(0); 
             $contentWrap.off('scroll.app');  
@@ -635,7 +640,10 @@
                 isThinqApp = true;                
                 $contentWrap.on('scroll.app', scrollEvent);  
 
-                $('.thinq-section.smart-thinq-wrap').find('.ui_tab').vcTab('update');
+                if(data.content.find('.ui_tab').length>0) {                                
+                    data.content.find('.ui_tab').vcTab('update');
+                } 
+
                 if(data.content.find('.ui_carousel_slider').length>0) {                                
                     data.content.find('.ui_carousel_slider').vcCarousel('update');
                 } 
@@ -666,13 +674,12 @@
             return val;
         }
 
-        var isMobile = false;
 
         $window.on('breakpointchange', function(e){
 
-            var data = window.breakpoint;    
+            var data = window.breakpoint;            
             if(data.name == 'mobile'){    
-                isMobile = true;    
+                isMobile = true;   
             }else if(data.name == 'pc'){    
                 isMobile = false;
             }    

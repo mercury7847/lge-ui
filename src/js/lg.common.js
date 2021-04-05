@@ -277,7 +277,7 @@ var isApp = function(){
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
-        DOMAIN_LIST:["lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
         init: function(){
             var self = this;
 
@@ -677,7 +677,7 @@ var isApp = function(){
             var index = -1;
             var leng = lgkorUI.DOMAIN_LIST.length;
             for(var i=0;i<leng;i++){
-                index = referrer.indexOf('lge.co.kr');
+                index = referrer.indexOf(lgkorUI.DOMAIN_LIST[i]);
                 if(index > -1){
                     break;
                 }
@@ -856,8 +856,7 @@ var isApp = function(){
 
         addCompareProd: function(categoryId, data){
             var self = this;
-
-            console.log("### addCompareProd ###", categoryId)
+            
 
             var compareLimit = self.getCompareLimit();
 
@@ -908,8 +907,6 @@ var isApp = function(){
 
             var compareCookie = compareIDs.join("|");
 
-            console.log("### setCompapreCookie ###", compareCookie);
-
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
 
@@ -932,8 +929,6 @@ var isApp = function(){
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
-
-            console.log("### setStorage ###", storageData)
             
             $(window).trigger("changeStorageData");
 
@@ -983,8 +978,7 @@ var isApp = function(){
 
             $.extend(storageData, value);
             sessionStorage.setItem(key, JSON.stringify(storageData));
-
-            console.log("### setStorage ###", storageData)
+            
             //$(window).trigger("changeStorageData");
 
             return storageData;
@@ -1261,7 +1255,6 @@ var isApp = function(){
                 
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
-                    console.log('resultStatusFail',url,result);
                     if(ignoreCommonSuccessCheck) {
                         var data = result.data;
                         if(data && !Array.isArray(data) && typeof data === 'object') {
@@ -1322,7 +1315,6 @@ var isApp = function(){
                     */
                     if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
-                        console.log('resultDataFail',url,result);
                         if(data && data.alert && !vcui.isEmpty(data.alert)) {
                             self.commonAlertHandler(data.alert);
                         }/* else {
@@ -1338,7 +1330,6 @@ var isApp = function(){
                 }                
             }).fail(function(err){
                 //alert(url, err.message);
-                console.log('ajaxFail',url,err);
                 if(!ignoreCommonLoadingHide) lgkorUI.hideLoading();
                 if(failCallback && typeof failCallback === 'function') failCallback(err);
 
@@ -1399,7 +1390,6 @@ var isApp = function(){
                     }
                     if(data && !self.stringToBool(data.success) && data.alert) {
                         //에러
-                        console.log('resultDataFail',url,result);
                         self.commonAlertHandler(data.alert);
                     } else {
                         if(callback && typeof callback === 'function') callback(result);
@@ -1435,8 +1425,6 @@ var isApp = function(){
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
-            console.log("### requestCart ###", param);
-
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -1481,8 +1469,6 @@ var isApp = function(){
         },
 
         requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
-            console.log("### requestWish ###", param, wish);
-
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
