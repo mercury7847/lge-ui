@@ -43,8 +43,9 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
                 self.$history.removeClass('on');
             });
             self.$history.find('.btn-expand').on('click', function() {
+                var $this = $(this);
                 self.$service.removeClass('on');
-                self._altChange(self.$service.find('.btn-expand'), true)
+                self._altChange($this, true)
             });
 
             self.$menuBtn.on('click', function() {
