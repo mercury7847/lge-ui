@@ -52,7 +52,7 @@
     var isBeforeUnload = true;
 
     function init(){    
-        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
             setting();
             bindEvents();
         });
@@ -840,6 +840,14 @@
                     } else if(beforeVisitModelFlag == "N"){
                         rbv.hide();
                     }
+                    
+                    var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
+                    var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
+                        return vcui.date.format(item, "yyyy-MM-dd");
+                    });
+                    $('.ui_calendar').vcCalendar("setMinDate", mindate);
+                    $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
+                    $('.ui_calendar').vcCalendar('update');
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
