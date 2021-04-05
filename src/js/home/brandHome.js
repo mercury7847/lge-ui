@@ -46,6 +46,13 @@
             slidesToScroll: 3,
             responsive: [
                 {
+                    breakpoint: 10000,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
                     breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
@@ -56,15 +63,26 @@
         });
 
         $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
-            settings: "unslick",
+            
+            slidesToShow: 1,
+            slidesToScroll: 1,   
+            dot:false,   
+            fade:true, 
             responsive: [
                 {
                     breakpoint: 10000,
-                    settings: "unslick"
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dot:false,   
+                        fade:true, 
+                    }
                 },
                 {
                     breakpoint: 768,
                     settings: {
+                        dot:true,
+                        fade:false,
                         slidesToShow: 1,
                         slidesToScroll: 1
                     }
@@ -105,6 +123,13 @@
         var wheelArr = [];      
         var regex = /^data-step-(-?\d*)/;
 
+        // $scenes.eq(0).height(winHeight-100);
+
+        // if (history.scrollRestoration) {
+        //     window.history.scrollRestoration = 'manual';
+        // }
+
+
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(pageLens*winHeight);
@@ -137,8 +162,6 @@
                 canScroll = true;
                 return; 
             }
-
-            
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
@@ -349,14 +372,12 @@
 
 
         function _findIdx(py){
-            var idx = 0;
             for(var i=0; i<posArr.length; i++){
-                if(posArr[i]>py){
-                    idx = i;
-                    break;
+                if(posArr[i]>=py){
+                    return i;
                 }
             }
-            return idx;                
+            return 0;                
         }
 
         function _findStep(page){
@@ -366,7 +387,7 @@
                     var pageId = arr[0]['pageId'];
                     if(pageId == page) return i;
                 }else{
-                    return i;
+                    if(arr == page) return i;
                 }
             }
             return 0;
@@ -387,29 +408,22 @@
         }
 
         function updateVideo(video) {
+
+            var isAndroid = vcui.detect.isAndroid;
+            var isMobileDevice = vcui.detect.isMobileDevice;
+
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
-                $image    = $wrap.find('img'),
-                loaded    = $target.data('loaded'),
-                src       = $target.data('src'),                        
-                isAndroid = vcui.detect.isAndroid,
-                /*
-                modeV     = 5, // 사이즈별로 로드시
-                srcArr = (function() {
-                    var s5 = $target.data('src-v5') || $target.data('src'),
-                        s4 = $target.data('src-v4') || s5,
-                        s3 = $target.data('src-v3') || s4,
-                        s2 = $target.data('src-v2') || s3,
-                        s1 = $target.data('src-v1') || s2,
-                        arr = [null,s1,s2,s3,s4,s5];
-                    return arr;
-                })(),
-                src  = srcArr[modeV],
-                */
-                src    = $target.data('src'),                        
+                // $image    = $wrap.find('img'),
+                // loaded    = $target.data('loaded'),                  
                 videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
+
+            var src = $target.data('src');
+            if(isMobileDevice){
+                src = $target.data('mSrc') || $target.data('src');
+            }
 
             // 비디오 요소 생성.
             var createVideoObject = function() {
@@ -553,6 +567,8 @@
                             
             });  
 
+            posArr.push(10000);
+
 
             stepLens = wheelArr.length-1;                    
             $contentWrap.css({'overflow':'auto','height':winHeight});
@@ -563,13 +579,15 @@
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep);
                 moveScene(currentPage,currentStep,0);
+
             }else{
-                setTimeout(function(){
-                    currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                //setTimeout(function(){
+                    currentPage = _findIdx($('html, body').scrollTop());    
                     currentStep = _findStep(currentPage);
                     setBeforeCss(currentStep);
                     moveScene(currentPage,currentStep,0);
-                }, 100);
+
+                //}, 100);
             }
             
         }    
@@ -587,8 +605,23 @@
         var isThinqApp = false;
 
         $('.thinq-app').find('.app-wrap').css('position','relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
+
+        
+        $('.thinq-section.smart-thinq-wrap .app-smart-tabs').on('tabchange', function(e,data){
+
+            console.log($(e.currentTarget));
+            console.log($(e.currentTarget).siblings('.ui_carousel_slider'));
+
+
+            if(data.content.find('.ui_carousel_slider').length>0) {                                
+                data.content.find('.ui_carousel_slider').vcCarousel('update');
+            } 
+
+        });
+
         
         $('.thinq-tabs .ui_tab').on('tabchange', function(e, data){
+
 
             $contentWrap.scrollTop(0); 
             $contentWrap.off('scroll.app');  
@@ -601,6 +634,12 @@
                 deviceY = $device.position().top;
                 isThinqApp = true;                
                 $contentWrap.on('scroll.app', scrollEvent);  
+
+                $('.thinq-section.smart-thinq-wrap').find('.ui_tab').vcTab('update');
+                if(data.content.find('.ui_carousel_slider').length>0) {                                
+                    data.content.find('.ui_carousel_slider').vcCarousel('update');
+                } 
+
             }else{
                 isThinqApp = false;
             }
@@ -678,6 +717,7 @@
         function scrollEvent(){
 
             if(isThinqApp){
+                // console.log($contentWrap.scrollTop());
                 appMotion($contentWrap.scrollTop());                
             }   
             if(isLifeWrap){

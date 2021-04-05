@@ -827,7 +827,7 @@
                             siblingGroupCode.push(itemSiblingGroupCode ? itemSiblingGroupCode : "");
                         });
                         if(siblingGroupCode.length > 0) {
-                            lgkorUI.requestAjaxData(ajaxUrl,{"siblingCode":siblingCode.join(","),"siblingGroupCode":siblingGroupCode.join(",")}, function (result) {
+                            lgkorUI.requestAjaxData(ajaxUrl,{"siblingCode":siblingCode.join(","),"siblingGroupCode":siblingGroupCode.join(","),"groupCount":siblingGroupCode.length}, function (result) {
                                 var data = result.data;
                                 if(data.modelUrlPath) {
                                     location.href = url;

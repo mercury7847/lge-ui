@@ -154,6 +154,7 @@
         .item {
             padding:0 12px;
             &-inner {
+                display:block;
                 padding:12px 40px 32px;
                 border-radius:8px;
                 box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
