@@ -789,6 +789,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             if (!this.isShown) {
                 return;
             }
+            console.log("update")
             this._render();
             this._reposition();
         },
