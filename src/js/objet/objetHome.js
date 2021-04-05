@@ -536,8 +536,8 @@ $(function() {
                     $('.next-arr').trigger("click"); //wheelScene(1);
                     setTimeout(function() {
                         $("[aria-controls='" + targetName + "']").trigger("click");
-                    }, 500);
-                }, 500);
+                    }, 1000);
+                }, 1000);
 
 
             }
