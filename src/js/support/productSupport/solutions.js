@@ -64,7 +64,7 @@
     var recommProductItemTemplate =         
         '<div class="slide-conts ui_carousel_slide">' +
             '<div class="item">' +
-                '<div class="item-inner">' +
+                '<a href="{{modelUrlPath}}" class="item-inner">' +
                     '<div class="product-image">' +
                         '<img src="{{mediumImageAddr}}" alt="">' +
                     '</div>' +
@@ -80,11 +80,11 @@
                         '</div>' +
                         '{{# } #}}' +
                         '<div class="product-name">' +
-                            '<p class="name"><a href="{{modelUrlPath}}" class="name">{{modelDisplayName}}</a></p>' +
+                            '<p class="name">{{modelDisplayName}}</p>' +
                             '<p class="model">{{modelName}}</p>' +
                         '</div>' +
                     '</div>' +
-                '</div>' +
+                '</a>' +
             '</div>' +
         '</div>';
     var serviceMenuTemplate = 
