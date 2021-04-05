@@ -367,6 +367,7 @@
                     z-index: 1;
                     color: $color-white;
                     .btn-link {
+                        display:none;
                         margin-top: 16px;
                         color: $color-white;
                         &:after {

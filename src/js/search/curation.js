@@ -312,9 +312,9 @@ var Curation = (function() {
             }
             var $li = self.$smartFilterList.find('li.row');
             if($li.length > 3) {
-                self.$smartFilterMore.show();
+                self.$smartFilterMore.css('display','block');
             } else {
-                self.$smartFilterMore.hide();
+                self.$smartFilterMore.css('display','none');
             }
         },
 
