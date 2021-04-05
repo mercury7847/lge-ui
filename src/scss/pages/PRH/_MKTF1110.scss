@@ -1656,21 +1656,21 @@
             .app-smart-wrap {
                 position: relative;
                 //padding-left: 118px;
-                display: flex;
-                flex-direction: row-reverse;
-                justify-content: center;
-                align-items: center;
+                //display: flex;
+                //flex-direction: row-reverse;
+                //justify-content: center;
+                //align-items: center;
                 padding: 0 40px;
                 @include mobile {
                     display: block;
                     padding: 0 0 32px;
                 }
                 .app-smart-tabs {
-                    //position: absolute;
-                    //top: 50%;
-                    //left: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
                     z-index: 2;
-                    //transform: translateY(-50%);
+                    transform: translateY(-50%);
                     margin-left: 48px;
                     padding-left: 36px;
                     @include mobile {
@@ -1743,8 +1743,10 @@
                     .indi-wrap {
                         bottom: -32px;
                     }
-                    @include mobile {
-                        .slide-controls {
+                    .slide-controls {
+                        display: none;
+                        @include mobile {
+                            display: block;
                             .btn-arrow {
                                 &.prev {
                                     left: -10px;
@@ -1771,9 +1773,9 @@
                             }
                         }
                         @include pc {
-                            &:not(:first-child) {
-                                display: none;
-                            }
+                            //&:not(:first-child) {
+                            //    display: none;
+                            //}
                             .text-area {
                                 display: none;
                             }
