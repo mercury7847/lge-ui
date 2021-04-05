@@ -70,23 +70,25 @@
                     '</div>'+
                 '</div>'+
                 '<div class="info-wrap">'+
-                    '<div class="tit-wrap">'+
-                        '<p class="name">'+
-                            '<span class="blind">매장명</span>'+
-                            '{{shopName}}'+
-                        '</p>'+
-                        '{{#if flagInfo.length > 0}}'+
-                        '<div class="flag-wrap bar-type">'+
-                            '{{#each flag in flagInfo}}'+
-                            '<span class="flag {{flag.flagClass}}">{{flag.flagName}}</span>'+
-                            '{{/each}}'+
+                    '<a href="#">'+
+                        '<div class="tit-wrap">'+
+                            '<p class="name">'+
+                                '<span class="blind">매장명</span>'+
+                                '{{shopName}}'+
+                            '</p>'+
+                            '{{#if flagInfo.length > 0}}'+
+                            '<div class="flag-wrap bar-type">'+
+                                '{{#each flag in flagInfo}}'+
+                                '<span class="flag {{flag.flagClass}}">{{flag.flagName}}</span>'+
+                                '{{/each}}'+
+                            '</div>'+
+                            '{{/if}}'+
                         '</div>'+
-                        '{{/if}}'+
-                    '</div>'+
-                    '<p class="addr">'+
-                        '<span class="blind">주소</span>'+
-                        '{{shopAdress}}'+
-                    '</p>'+
+                        '<p class="addr">'+
+                            '<span class="blind">주소</span>'+
+                            '{{shopAdress}}'+
+                        '</p>'+
+                    '</a>'+
                     '<div class="etc-info">'+
                         '<span class="tel">'+
                             '<span class="blind">전화번호</span>'+
@@ -114,6 +116,7 @@
 
             self.isTransion = false;
 
+            self.$mapContainer = $('.map-container');
             self.bestShopUrl = $('.map-container').data("bestShop");
             self.localUrl = $('.map-container').data("localList");
             self.subwayUrl = $('.map-container').data("subwayList");
@@ -132,7 +135,7 @@
             self.$defaultListLayer = self.$defaultListContainer.find('.sch-list .scroll-wrap .list-item'); 
             self.$searchContainer = self.$leftContainer.find('.sch-box');
             
-            self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...            
+            self.$mapArea = $('.map-area'); //맴 모듈 컨테이너...            
             self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
 
             self.$optionContainer.find('input[type=checkbox]').prop('checked', false); // 옵션을 다 품.
@@ -180,7 +183,7 @@
             
             vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support/common/quickMenu.min'], function (StoreMap) {  
 
-                self.$map = new StoreMap(self.$mapContainer,{
+                self.$map = new StoreMap(self.$mapArea,{
 
                     keyID: $('.map-container').data("mapId"),
                     appKey: $('.map-container').data("appKey"),
@@ -325,26 +328,8 @@
                                 self._getCurrentLocation();
                             },300);
                         }
-                    });
+                    }, self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                 }
-                /*
-                lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
-                    typeClass: "type2",
-                    title: "위치 정보 제공 동의",
-                    cancelBtnName: "아니요",
-                    okBtnName: "네",
-                    cancel: function(){                    
-                        setTimeout(function(){
-                            if(self.$map) self.$map.start();
-                        },300);
-                    },
-                    ok:function(){
-                        setTimeout(function(){
-                            self._getCurrentLocation();
-                        },300);
-                    }
-                });
-                */
 	                
             }
             else
@@ -397,7 +382,7 @@
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector .tit-wrap, li > .ui_marker_selector .addr', function(e){
                 var id = $(this).closest('li').data('id');
-                self.$map.selectedMarker(id);
+                self.$map.selectedMarker(id, this);
 
                 $('body,html').scrollTop(0);
             })
@@ -601,7 +586,7 @@
                                     self._setItemPosition();  
                                 },300);                             
                             }
-                        });
+                        }, self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                     }else{
                         self.$map.draw(nArr, defaultLat, defaultLong);
                     }                    
@@ -721,7 +706,7 @@
                                 self._setItemPosition();  
                             },300);                             
                         }
-                    });
+                    },self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                 }else{
                     self._setSearchResultMode(nArr.length);
                     self.$map.draw(nArr, lat, long, null, true);
@@ -1141,7 +1126,7 @@
                                 location.href = self.loginUrl;
                             },300);
                         }
-                    });
+                    }, self.$searchUserAdressButton[0]);
                 }
             }
         },
@@ -1157,8 +1142,6 @@
             }else{
                 if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
                 selectedMarker.siblings().find('.point').removeClass('on');
-
-                // console.log(self.isMobile);
                 if(self.isMobile) self._showMap(true);
             }
             
@@ -1409,7 +1392,7 @@
                 }
             }
             
-            self.$mapContainer.css({
+            self.$mapArea.css({
                 width: mapwidth,
                 height: mapheight,
                 'margin-left': mapmargin
