@@ -777,7 +777,7 @@
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
             if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
-            else _currentItemList[blockID].modelUrlPath += "?dpType=careTab";
+            else _currentItemList[i].modelUrlPath += "?dpType=careTab";
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
