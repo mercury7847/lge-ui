@@ -247,7 +247,8 @@ body {
             padding-top: 0;
             font-weight: 400;
             @include font(14px, 20px);
-            color: #aaa;
+            //color: #aaa;
+            color: #666;
         }
         &:first-child {
             h2 {
