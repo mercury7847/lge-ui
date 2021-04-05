@@ -957,26 +957,42 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             if(firstName){
                 var $first = self.$el.find('[name='+ firstName +']');
+                var $anchorTarget = "";
 
                 if($first.is(':radio') || $first.is(':checkbox')){
                     var $checked =self.$el.find('[name='+ firstName +']:checked');
                     if($checked.length>0){
                         $checked.blur().focus();
+                        $anchorTarget = $checked;
                     }else{
                         $first.eq(0).blur().focus();
+                        $anchorTarget = $first.eq(0);
                     }
                     
                 }else{
                     if ($first.is(':hidden')) {
-                        $first.parent().attr('tabindex', 0).blur().focus().removeAttr('tabindex');
+                        $first.parent().attr('tabindex', 0).blur().focus().removeAttr('tabindex');                        
+                        $anchorTarget = $first.parent();
                     } else {
                         $first.blur().focus();
+                        $anchorTarget = $first;
                     }
                 }    
                 if($first.hasClass('ui_selectbox')) {
                     $first.vcSelectbox('focus');
                 }            
                 self.triggerHandler('nextfocus', [$first]);
+
+                if( $anchorTarget.length && window.innerWidth < 768 ) {
+                    var $prodSelectWrap = $('.prod-selected-wrap');
+
+                    if( $prodSelectWrap.length && $prodSelectWrap.hasClass('fixed')) {
+                        $('html, body').scrollTop($anchorTarget.offset().top - $prodSelectWrap.outerHeight() - 20);
+                    } else {
+                        $('html, body').scrollTop($anchorTarget.offset().top);
+                    }
+
+                }
             }
 
             self.validItemObj = rObj;
