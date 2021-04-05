@@ -1951,10 +1951,12 @@ var isApp = function(){
                 window.cremaAsyncInit = function () {
                     crema.init(cremaid, cremaname);
                 };
+                crema.init(cremaid, cremaname);
             } else {
                 window.cremaAsyncInit = function () {
                     crema.init(null,null);
                 };
+                crema.init(null,null);
             }
         },
 
