@@ -1000,6 +1000,7 @@
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
+            
 
             var chk = lgkorUI.stringToBool(result.data.success);
             setInputData('cardAbled', result.data.success);            
