@@ -6,8 +6,7 @@ footer {
         padding-bottom:66px;
     }
     @include mobile {
-        padding:0;
-        padding-bottom:60px;
+        padding: 16px 0 60px;
     }
     // footer cont
     .foot-cont {
@@ -29,19 +28,20 @@ footer {
                             position:absolute;
                             right:16px;
                             top:50%;
-                            width:20px;
-                            height:20px;
+                            width:16px;
+                            height:16px;
                             margin-top:-10px;
-                            background:url('/lg5-common/images/icons/icon-arr-40-bk.svg') center no-repeat;
+                            background:url('/lg5-common/images/icons/btn-arr-16-black.svg') center no-repeat;
                             background-size:100%;
+                            transform: rotate(90deg);
                             transition:all .3s;
                         }
                         a, span {
                             display:block;
-                            padding:18px 0;
+                            padding:17px 0;
                             color:#000;
-                            font-size:15px;
-                            line-height:16px;
+                            font-size:13px;
+                            line-height:21px;
                             font-weight:700;
                         }
                         a[target="_blank"] {
@@ -52,9 +52,9 @@ footer {
                                 width:16px;
                                 height:16px;
                                 margin-left:4px;
-                                background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                background:url('/lg5-common/images/icons/btn-outlink-16.svg') center no-repeat;
                                 background-size:100%;
-                                vertical-align:top;
+                                vertical-align:-3px;
                             }
                         }
                         &.hidden {
@@ -68,11 +68,11 @@ footer {
                     }
                     &.on {
                         .dep1::after {
-                            transform:rotate(180deg);
+                            transform:rotate(270deg);
                         }
                         .dep1 
                             a {
-                                text-decoration:underline;
+                                //text-decoration:underline;
                             }
                     }
                     &:first-child {
@@ -101,7 +101,7 @@ footer {
                                     width:16px;
                                     height:16px;
                                     margin-top:-8px;
-                                    background:url('/lg5-common/images/icons/icon-plus-16.svg') center no-repeat;
+                                    background:url('/lg5-common/images/icons/btn-plus-16.svg') center no-repeat;
                                     background-size:100%;
                                     transition:all 0.3s;
                                 }
@@ -114,8 +114,8 @@ footer {
                                     display:block;
                                     padding:12px 0;
                                     color:#000;
-                                    font-size:12px;
-                                    line-height:16px;
+                                    font-size:11px;
+                                    line-height:19px;
                                     font-weight:500;
                                 }
                                 a {
@@ -140,7 +140,7 @@ footer {
                                         transform:rotate(135deg);
                                     }
                                     a {
-                                        text-decoration:underline;
+                                        //text-decoration:underline;
                                     }
                                 }
                             }
@@ -152,7 +152,7 @@ footer {
                     }
 
                     .dep3-wrap {
-                        padding:14px 0 24px;
+                        padding:16px 0;
                         border-top:1px solid #ddd;
                         > li {
                             margin-top:12px;
@@ -162,10 +162,10 @@ footer {
                         }
                         .dep3 {
                             display:block;
-                            padding:0 12px;
+                            //padding:0 12px;
                             color:#767676;
-                            font-size:12px;
-                            line-height:16px;
+                            font-size:11px;
+                            line-height:19px;
                             //font-weight:500;
                             &[target="_blank"] {
                                 white-space:nowrap;
@@ -189,13 +189,13 @@ footer {
         @media screen and (min-width:768px) {
             .pc-dropdown-wrap {
                 position:relative;
-                padding-bottom:120px;
+                padding-bottom:136px;
                 .btns {
                     position:absolute;
                     bottom:0;
                     right:0;
                     left:0;
-                    padding:32px 0 48px;
+                    padding:48px 0;
                     text-align:center;
                     .btn.border {
                         &::after {
@@ -220,6 +220,7 @@ footer {
                 }
                 &.open {
                     .btns {
+                        padding-top: 6px;
                         .btn.border::after {
                             transform:rotate(180deg);
                         }
@@ -241,7 +242,7 @@ footer {
                 .link-section {
                     display:inline-block;
                     width:12.5%;
-                    margin-top:44px;
+                    margin-top:48px;
                     padding:0 6px;
                     vertical-align:top;
                     @media screen and (max-width:1200px) {

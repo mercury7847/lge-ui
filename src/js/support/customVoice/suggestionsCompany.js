@@ -18,15 +18,20 @@
                     userName: {
                         required: true,
                         maxLength : 30,
-                        pattern: /^[가-힣\s]|[a-zA-Z\s]+$/,
+                        pattern: /^[가-힣\s]+$|^[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
                     },
                     phoneNo: {
                         required: true,
-                        maxLength : 11,
-                        pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                        msgTarget: '.err-block'
+                        minLength: 10,
+                        maxLength: 11,
+                        msgTarget: '.err-block',
+                        errorMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
+                        validate : function(value){
+                            return validatePhone(value);
+                        }
                     },
                     email:{
                         required: true,

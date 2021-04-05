@@ -18,6 +18,19 @@ $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
     background-color: #4c3ef0;
     opacity: 0.6;
 }
+
+.hide {
+    overflow:hidden !important;
+    position:absolute;
+    width:0 !important;
+    height:0 !important;
+    //font-size:1px;
+    //line-height:1px;
+    color:transparent;
+    white-space:nowrap;
+    z-index:-1;
+}
+
 /*
 html,
 body {
@@ -75,6 +88,7 @@ body {
     @include font(14px, 20px);
     color: #aaa;
     span {
+        overflow: hidden;
         position: relative;
     }
     &.on {
@@ -86,6 +100,15 @@ body {
 
 .txt-guide {
     margin: 10px 18px;
+    > span {
+        position:relative;
+    }
+    .hide {
+        left:0;
+        top:0;
+        width:100% !important;
+        height:100% !important;
+    }
 }
 
 .lyr-opt-panel {
@@ -225,7 +248,8 @@ body {
             padding-top: 0;
             font-weight: 400;
             @include font(14px, 20px);
-            color: #aaa;
+            //color: #aaa;
+            color: #666;
         }
         &:first-child {
             h2 {

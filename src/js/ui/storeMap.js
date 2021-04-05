@@ -74,7 +74,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           {{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
-                    // '       <button class="info-overlay-close">닫기</button>'+
+                    '       <button class="info-overlay-close"><span class="blind">닫기</span></button>'+
                     '   </div>'+
                     '</div>'
             }
