@@ -52,7 +52,6 @@
             lgkorUI.requestAjaxData(ajaxUrl, {"modelName":modelName}, function(result) {
                 var data = result.data;
                 var arr = data instanceof Array ? data : [];
-                arr = [];
                 //sar 리스트 갱신
                 var $list_ul = self.$resultList.find('tbody');
                 $list_ul.find('tr:not(.empty-row)').remove();

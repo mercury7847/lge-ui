@@ -69,11 +69,12 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
-                                '{{#if consultFlag == "Y"}}'+
+                    '           {{#if consultFlag == "Y"}}'+
                     '           <a href="/support/visit-store-reservation?orgCode={{orgCode}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
-                                '{{/if}}'+
+                    '           {{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
+                    // '       <button class="info-overlay-close">닫기</button>'+
                     '   </div>'+
                     '</div>'
             }
@@ -90,6 +91,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.searchType = "local";
             self.itemArr = [];
             self.infoWindow = null;
+            self.$focusTarget = null;
 
             self.centerID = 0;
             self.centerMarker;
@@ -161,13 +163,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.triggerHandler('mapinit');
         },
 
-        selectedMarker:function selectedMarker(id){
+        selectedMarker:function selectedMarker(id, focusTarget){
             var self = this;
             var marker = vcui.array.filterOne(self.itemArr, function(item, i){
                 return item.id === id;
             });
 
             if(marker && marker.item){
+                self.$focusTarget = focusTarget instanceof $ ? focusTarget : $(focusTarget);
                 new naver.maps.Event.trigger(marker.item,'click');
             }
         },
@@ -316,9 +319,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     var info = nObj.info;
                     nObj.item.setIcon(self._getMarkerIcon(info, nObj.num, true)); 
                 })
-
-                // console.log(obj.infoWindow.contentElement);
-
                 
 
                 marker.setIcon(self._getMarkerIcon(obj.info, obj.num));                         
@@ -345,6 +345,19 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     }
                 });
 
+                var en = self.makeEventNS('click');
+
+                $focusTarget.off(en).on(en,'.info-overlay-close', function(evt){
+                    evt.preventDefault();
+                    if(obj.infoWindow.getMap()) {                
+                        obj.infoWindow.close();
+                        obj.info.selected = false;     
+                        marker.setIcon(self._getMarkerIcon(obj.info, obj.num)); 
+                        self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);
+                        self.docOff('focusin');
+                        if(self.$focusTarget[0]) self.$focusTarget.focus();
+                    }
+                });
                 
 
                 self.triggerHandler('changemarkerstatus', [{id:id}]);
