@@ -179,6 +179,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(this).parent().find('.nav-category-container').toggle();
             });
 
+            // header focus out 시 닫기
+            $(document).on('focusin.header',function(e){                
+                if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) { 
+                    self._setOut();                    
+                    e.stopPropagation();
+                }
+            });
+
 
             self._pcSetting();
             self._mobileSetting();

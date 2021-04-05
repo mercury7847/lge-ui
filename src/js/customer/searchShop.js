@@ -62,7 +62,7 @@
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
-            '<div class="store-info-list ui_marker_selector" tabindex="0">'+
+            '<div class="store-info-list ui_marker_selector">'+
                 '<div class="point-wrap">'+
                     '<div class="point {{selected}}">'+
                         '<span class="num">{{num}}</span>'+
