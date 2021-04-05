@@ -1523,4 +1523,938 @@
 			background:#F2D7D4 !important; color:#000 !important;
 		}
 	}
+
+	/* 0405 컬러추가 */
+	/* 냉장고 */
+	&.fridge_dark_shine {
+		& input + label:before {
+			background:#8a898f;
+		}
+	}
+	&.fridge_manhattan-midnight {
+		& input + label:before {
+			background:#525459;
+		}
+	}
+	&.fridge_montblanc-nature {
+		& input + label:before {
+			background:#a3a5a8;
+		}
+	}
+	&.fridge_black {
+		& input + label:before {
+			background:#000;
+		}
+	}
+	&.fridge_black-brown {
+		& input + label:before {
+			background:#3d3334;
+		}
+	}
+	&.fridge_saffiano {
+		& input + label:before {
+			background:#a4a3a8;
+		}
+	}
+	&.fridge_shiny-luce {
+		& input + label:before {
+			background:#676769;
+		}
+	}
+	&.fridge_shiny-saffiano {
+		& input + label:before {
+			background:#8b8c8f;
+		}
+	}
+	&.fridge_shiny-universe {
+		& input + label:before {
+			background:#666664;
+		}
+	}
+	&.fridge_shiny-pure {
+		& input + label:before {
+			background:#8b8d90;
+		}
+	}
+	&.fridge_shine {
+		& input + label:before {
+			background:#a6a6a6;
+		}
+	}
+	&.fridge_shine_ps3 {
+		& input + label:before {
+			background:#8a898e;
+		}
+	}
+	&.fridge_shiny-luce {
+		& input + label:before {
+			background:#e4e4e6;
+		}
+	}
+	&.fridge_stari-shine {
+		& input + label:before {
+			background:#aaaaae;
+		}
+	}
+	&.fridge_stainless {
+		& input + label:before {
+			background:#a8a8ab;
+		}
+	}
+	&.fridge_objet-grey {
+		& input + label:before {
+			background:#cdccc7;
+		}
+	}
+	&.fridge_objet-green {
+		& input + label:before {
+			background:#223529;
+		}
+	}
+	&.fridge_objet-manhattan-midnight {
+		& input + label:before {
+			background:#353336;
+		}
+	}
+	&.fridge_objet-mint {
+		& input + label:before {
+			background:#b7c7b6;
+		}
+	}
+	&.fridge_objet-beige {
+		& input + label:before {
+			background:#ede9e5;
+		}
+	}
+	&.fridge_objet-black {
+		& input + label:before {
+			background:#3b3b3f;
+		}
+	}
+	&.fridge_objet-silver {
+		& input + label:before {
+			background:#bebec3;
+		}
+	}
+	&.fridge_objet-pink {
+		& input + label:before {
+			background:#e3c3c0;
+		}
+	}
+	&.fridge_objet-white {
+		& input + label:before {
+			background:#e2e3e4;
+		}
+	}
+	&.fridge_western-black {
+		& input + label:before {
+			background:#363638;
+		}
+	}
+	&.fridge_pure {
+		& input + label:before {
+			background:#6d6d6d;
+		}
+	}
+	&.fridge_pure-flat {
+		& input + label:before {
+			background:#838387;
+		}
+	}
+	&.fridge_harmony-white {
+		& input + label:before {
+			background:#e1e1e3;
+		}
+	}
+	&.fridge_white {
+		& input + label:before {
+			background:#FFF;
+		}
+	}
+	/* 김치냉장고 */
+	&.kimchi_shiny-luce {
+		& input + label:before {
+			background:#e0e0e3;
+		}
+	}
+	&.kimchi_manhattan-midnight {
+		& input + label:before {
+			background:#565656;
+		}
+	}
+	&.kimchi_montblanc-nature {
+		& input + label:before {
+			background:#7a7c80;
+		}
+	}
+	&.kimchi_shiny-luce {
+		& input + label:before {
+			background:#717274;
+		}
+	}
+	&.kimchi_shiny-saffiano {
+		& input + label:before {
+			background:#79797a;
+		}
+	}
+	&.kimchi_shiny-pure {
+		& input + label:before {
+			background:#bfbfc4;
+		}
+	}
+	&.kimchi_stari-shine {
+		& input + label:before {
+			background:#9c9ca1;
+		}
+	}
+	&.kimchi_aria-wine {
+		& input + label:before {
+			background:#400400;
+		}
+	}
+	&.kimchi_objet-grey {
+		& input + label:before {
+			background:#cdccc7;
+		}
+	}
+	&.kimchi_objet-green {
+		& input + label:before {
+			background:#233328;
+		}
+	}
+	&.kimchi_manhattan-midnight {
+		& input + label:before {
+			background:#39393d;
+		}
+	}
+	&.kimchi_objet-mint {
+		& input + label:before {
+			background:#bacab9;
+		}
+	}
+	&.kimchi_objet-beige {
+		& input + label:before {
+			background:#eee9e6;
+		}
+	}
+	&.kimchi_objet-botanic {
+		& input + label:before {
+			background:#737d7d;
+		}
+	}
+	&.kimchi_objet-black {
+		& input + label:before {
+			background:#393b3f;
+		}
+	}
+	&.kimchi_objet-sand {
+		& input + label:before {
+			background:#d8c4ae;
+		}
+	}
+	&.kimchi_objet-stone {
+		& input + label:before {
+			background:#514b43;
+		}
+	}
+	&.kimchi_objet-silver {
+		& input + label:before {
+			background:#bebec3;
+		}
+	}
+	&.kimchi_objet-pink {
+		& input + label:before {
+			background:#e5c6c4;
+		}
+	}
+	&.kimchi_objet-white {
+		& input + label:before {
+			background:#e8e8ea;
+		}
+	}
+	&.kimchi_pure {
+		& input + label:before {
+			background:#898a8f;
+		}
+	}
+	&.kimchi_white {
+		& input + label:before {
+			background:#e8e8ea;
+		}
+	}
+	/* 정수기 */
+	&.water-purifiers_shiny-rose {
+		& input + label:before {
+			background:#bbb5b9;
+		}
+	}
+	&.water-purifiers_silver {
+		& input + label:before {
+			background:#848587;
+		}
+	}
+	&.water-purifiers_calming-green {
+		& input + label:before {
+			background:#3a4441;
+		}
+	}
+	&.water-purifiers_calming-beige {
+		& input + label:before {
+			background:#e1dfda;
+		}
+	}
+	&.water-purifiers_white {
+		& input + label:before {
+			background:#e8e8ea;
+		}
+	}
+	/* 오븐 전자레인지 */
+	&.oven_mist-beige {
+		& input + label:before {
+			background:#dedddc;
+		}
+	}
+	&.oven_black {
+		& input + label:before {
+			background:#000000;
+		}
+	}
+	&.oven_shiny-dia-black {
+		& input + label:before {
+			background:#676768;
+		}
+	}
+	&.oven_shiny-universe {
+		& input + label:before {
+			background:#8d8d8e;
+		}
+	}
+	&.oven_solid-green {
+		& input + label:before {
+			background:#343f34;
+		}
+	}
+	&.oven_solid-silver {
+		& input + label:before {
+			background:#bbbbbe;
+		}
+	}
+	&.oven_stari-shine {
+		& input + label:before {
+			background:#868788;
+		}
+	}
+	&.oven_stainless {
+		& input + label:before {
+			background:#656563;
+		}
+	}
+	&.oven_white {
+		& input + label:before {
+			background:#e8e8ea;
+		}
+	}
+	/* 식기세척기 */
+	&.dishwashers_nature-beige {
+		& input + label:before {
+			background:#d9d8d7;
+		}
+	}
+	&.dishwashers_dawn-grey {
+		& input + label:before {
+			background:#565553;
+		}
+	}
+	&.dishwashers_manhattan-midnight {
+		& input + label:before {
+			background:#404042;
+		}
+	}
+	&.dishwashers_shiny-pure {
+		& input + label:before {
+			background:#94918e;
+		}
+	}
+	&.dishwashers_solid-green {
+		& input + label:before {
+			background:#212c24;
+		}
+	}
+	&.dishwashers_solid-silver {
+		& input + label:before {
+			background:#bbbbbe;
+		}
+	}
+	&.dishwashers_stari-shine {
+		& input + label:before {
+			background:#8f9091;
+		}
+	}
+	&.dishwashers_aria-white {
+		& input + label:before {
+			background:#d8d9da;
+		}
+	}
+	&.dishwashers_pure {
+		& input + label:before {
+			background:#999490;
+		}
+	}
+	/* 전기레인지 */
+	&.ranges_black {
+		& input + label:before {
+			background:#000;
+		}
+	}
+	&.ranges_silver {
+		& input + label:before {
+			background:#28292d;
+		}
+	}
+	/* 워시타워 */
+	&.washtower_nature-green {
+		& input + label:before {
+			background:#3f4645;
+		}
+	}
+	&.washtower_nature-beige {
+		& input + label:before {
+			background:#ded7ce;
+		}
+	}
+	&.washtower_nature-pink {
+		& input + label:before {
+			background:#d0b5af;
+		}
+	}
+	&.washtower_lily-white {
+		& input + label:before {
+			background:#E8E8E8;
+		}
+	}
+	&.washtower_metallic-silver {
+		& input + label:before {
+			background:#727373;
+		}
+	}
+	&.washtower_sand-beige {
+		& input + label:before {
+			background:#c6c6c3;
+		}
+	}
+	&.washtower_starlight-silver {
+		& input + label:before {
+			background:#909090;
+		}
+	}
+	&.washtower_space-black {
+		& input + label:before {
+			background:#373839;
+		}
+	}
+	&.washtower_coral-pink {
+		& input + label:before {
+			background:#cab5b4;
+		}
+	}
+	&.washtower_forest-green {
+		& input + label:before {
+			background:#465050;
+		}
+	}
+	/* 세탁기 */
+	&.washing_modern-stainless {
+		& input + label:before {
+			background:#B1B1B3;
+		}
+	}
+	&.washing_mid-free-silver {
+		& input + label:before {
+			background:#aaaaaa;
+		}
+	}
+	&.washing_black-stainless {
+		& input + label:before {
+			background:#444446;
+		}
+	}
+	&.washing_sand-beige {
+		& input + label:before {
+			background:#EBE7E4;
+		}
+	}
+	&.washing_stone-silver {
+		& input + label:before {
+			background:#7A7A7C;
+		}
+	}
+	&.washing_white {
+		& input + label:before {
+			background:#FFF;
+		}
+	}
+	&.washing_white_ceramics-coating {
+		& input + label:before {
+			background:#EAEAEA;
+		}
+	}
+	/* 건조기 */
+	&.dryers_modern-stainless {
+		& input + label:before {
+			background:#727273;
+		}
+	}
+	&.dryers_black-stainless {
+		& input + label:before {
+			background:#444446;
+		}
+	}
+	&.dryers_stone-silver {
+		& input + label:before {
+			background:#7A7A7C;
+		}
+	}
+	&.dryers_white {
+		& input + label:before {
+			background:#e8e8ea;
+		}
+	}
+	/* 스타일러 */
+	&.styler_linen-black {
+		& input + label:before {
+			background:#333438;
+		}
+	}
+	&.styler_linen-white {
+		& input + label:before {
+			background:#F5F5F5;
+		}
+	}
+	&.styler_mist-green {
+		& input + label:before {
+			background:#424E4C;
+		}
+	}
+	&.styler_mist-beige {
+		& input + label:before {
+			background:#e5e4e0;
+		}
+	}
+	&.styler_black-tint-mirror {
+		& input + label:before {
+			background:#C5C6C8;
+		}
+	}
+	/* 청소기 */
+	&.vacuum_dark-silver {
+		& input + label:before {
+			background:#696C6E;
+		}
+	}
+	&.vacuum_bohemian-red {
+		& input + label:before {
+			background:#A81E1E;
+		}
+	}
+	&.vacuum_blossom-pink {
+		& input + label:before {
+			background:#ECAEC3;
+		}
+	}
+	&.vacuum_black {
+		& input + label:before {
+			background:#000000;
+		}
+	}
+	&.vacuum_vintage-wine {
+		& input + label:before {
+			background:#825969;
+		}
+	}
+	&.vacuum_shiny-blue {
+		& input + label:before {
+			background:#0E1F68;
+		}
+	}
+	&.vacuum_shiny-silver {
+		& input + label:before {
+			background:#56555A;
+		}
+	}
+	&.vacuum_steel-red {
+		& input + label:before {
+			background:#D92C26;
+		}
+	}
+	&.vacuum_steel-blue {
+		& input + label:before {
+			background:#666962;
+		}
+	}
+	&.vacuum_steel-titanium {
+		& input + label:before {
+			background:#67666C;
+		}
+	}
+	&.vacuum_sparkle-red {
+		& input + label:before {
+			background:#CD0000;
+		}
+	}
+	&.vacuum_iron-grey {
+		& input + label:before {
+			background:#54575d;
+		}
+	}
+	&.vacuum_calming-green {
+		& input + label:before {
+			background:#525750;
+		}
+	}
+	&.vacuum_calming-beige {
+		& input + label:before {
+			background:#E3E0DB;
+		}
+	}
+	&.vacuum_fantasy-silver {
+		& input + label:before {
+			background:#D0D1D4;
+		}
+	}
+	/* 안마의자 */
+	&.massage_noble-black {
+		& input + label:before {
+			background:#4A4F53;
+		}
+	}
+	&.massage_ivory {
+		& input + label:before {
+			background:#DDD0C0;
+		}
+	}
+	&.massage_ocean-grey {
+		& input + label:before {
+			background:#B7B5B6;
+		}
+	}
+	&.massage_camel-brown {
+		& input + label:before {
+			background:#A7764E;
+		}
+	}
+	/* 에어컨 */
+	&.aircon_newmetal-shine {
+		& input + label:before {
+			background:#EBECEE;
+		}
+	}
+	&.aircon_romantic-rose {
+		& input + label:before {
+			background:#C0B4B6;
+		}
+	}
+	&.aircon_signaure-metal {
+		& input + label:before {
+			background:#B6BDC3;
+		}
+	}
+	&.aircon_wedding-snow {
+		& input + label:before {
+			background:#F6F7F9;
+		}
+	}
+	&.aircon_calming-beige {
+		& input + label:before {
+			background:#E6E1DD;
+		}
+	}
+	&.aircon_creamy-snow {
+		& input + label:before {
+			background:#F8F8F8;
+		}
+	}
+	&.aircon_white {
+		& input + label:before {
+			background:#FFF;
+		}
+	}
+	/* 공기청정기 */
+	&.air-purifier_newmetal-shine {
+		& input + label:before {
+			background:#D7DCE0;
+		}
+	}
+	&.air-purifier_romantic-rose {
+		& input + label:before {
+			background:#C8BBB5;
+		}
+	}
+	&.air-purifier_rose-gold {
+		& input + label:before {
+			background:#DCC8BF;
+		}
+	}
+	&.air-purifier_silver {
+		& input + label:before {
+			background:#D2D6D9;
+		}
+	}
+	&.air-purifier_emerald {
+		& input + label:before {
+			background:#C2D5DB;
+		}
+	}
+	&.air-purifier_creamy-snow {
+		& input + label:before {
+			background:#F9F9F9;
+		}
+	}
+	&.air-purifier_white {
+		& input + label:before {
+			background:#FFF;
+		}
+	}
+	/* 스마트폰 */
+	&.smartphone_aurora-grey {
+		& input + label:before {
+			background:#292D36;
+		}
+	}
+	&.smartphone_aurora-green {
+		& input + label:before {
+			background:#007471;
+		}
+	}
+	&.smartphone_illusion-sunset {
+		& input + label:before {
+			background:#F2615C;
+		}
+	}
+	&.smartphone_aurora-pink {
+		& input + label:before {
+			background:#FFB1C1;
+		}
+	}
+	&.smartphone_aurora-blue {
+		& input + label:before {
+			background:#0022A2;
+		}
+	}
+	&.smartphone_aurora-red {
+		& input + label:before {
+			background:#A30821;
+		}
+	}
+	&.smartphone_ceramic-white {
+		& input + label:before {
+			background:#F7F7F7;
+		}
+	}
+	&.smartphone_mirror-titan {
+		& input + label:before {
+			background:#595959;
+		}
+	}
+	&.smartphone_mirror-red {
+		& input + label:before {
+			background:#BF103F;
+		}
+	}
+	&.smartphone_illusion-sky {
+		& input + label:before {
+			background:#A8D5EA;
+		}
+	}
+	&.smartphone_moonlight-titan {
+		& input + label:before {
+			background:#2A2E37;
+		}
+	}
+	&.smartphone_frozen-white {
+		& input + label:before {
+			background:#FFFEFA;
+		}
+	}
+	&.smartphone_black {
+		& input + label:before {
+			background:#000000;
+		}
+	}
+	&.smartphone_new-aurora-black {
+		& input + label:before {
+			background:#000000;
+		}
+	}
+	&.smartphone_new-moroccan-blue {
+		& input + label:before {
+			background:#015499;
+		}
+	}
+	&.smartphone_calming-red {
+		& input + label:before {
+			background:#8F0F26;
+		}
+	}
+	&.smartphone_mirror-black {
+		& input + label:before {
+			background:#39445D;
+		}
+	}
+	&.smartphone_new-platinum-grey {
+		& input + label:before {
+			background:#494D50;
+		}
+	}
+	&.smartphone_white {
+		& input + label:before {
+			background:#FFFFFF;
+		}
+	}
+	&.smartphone_blue-silver {
+		& input + label:before {
+			background:#2F5275;
+		}
+	}
+	&.smartphone_black-gold {
+		& input + label:before {
+			background:#F2D7D4;
+		}
+	}
+	/* 뷰티 */
+	&.beauty_steel-pink {
+		& input + label:before {
+			background:#E6C8DC;
+		}
+	}
+	&.beauty_platinum-white {
+		& input + label:before {
+			background:#EEEEEE;
+		}
+	}
+	&.beauty_pink {
+		& input + label:before {
+			background:#e69ead;
+		}
+	}
+	&.beauty_white {
+		& input + label:before {
+			background:#FFFFFF;
+		}
+	}
+	&.beauty_white-gold {
+		& input + label:before {
+			background:#FBF2E0;
+		}
+	}
+	/* 오브제컬렉션 */
+	&.objet_green {
+		& input + label:before {
+			background:#243328;
+		}
+	}
+	&.objet_silver {
+		& input + label:before {
+			background:#c8c9ca;
+		}
+	}
+	&.objet_solid-green {
+		& input + label:before {
+			background:#343f34;
+		}
+	}
+	&.objet_calming-green {
+		& input + label:before {
+			background:#3a4441;
+		}
+	}
+	&.objet_nature-green {
+		& input + label:before {
+			background:#4c5351;
+		}
+	}
+	&.objet_mist-green {
+		& input + label:before {
+			background:#586463;
+		}
+	}
+	&.objet_manhattan-midnight {
+		& input + label:before {
+			background:#37383b;
+		}
+	}
+	&.objet_grey {
+		& input + label:before {
+			background:#cdccc7;
+		}
+	}
+	&.objet_beige {
+		& input + label:before {
+			background:#f0ebe7;
+		}
+	}
+	&.objet_nature-beige {
+		& input + label:before {
+			background:#dad2ca;
+		}
+	}
+	&.objet_calming-beige {
+		& input + label:before {
+			background:#dfdad4;
+		}
+	}
+	&.objet_white {
+		& input + label:before {
+			background:#e2e2e3;
+		}
+	}
+	&.objet_mint {
+		& input + label:before {
+			background:#b7c7b6;
+		}
+	}
+	&.objet_pink {
+		& input + label:before {
+			background:#e3c3c0;
+		}
+	}
+	&.objet_nature-pink {
+		& input + label:before {
+			background:#dcc2bc;
+		}
+	}
+	&.objet_grey {
+		& input + label:before {
+			background:#cdccc7;
+		}
+	}
+	&.objet_mist-beige {
+		& input + label:before {
+			background:#e5e4e0;
+		}
+	}
+	&.objet_black {
+		& input + label:before {
+			background:#3a3a3f;
+		}
+	}
+	&.objet_botanic {
+		& input + label:before {
+			background:#737d7d;
+		}
+	}
+	&.objet_solid-silver {
+		& input + label:before {
+			background:#bbbbbe;
+		}
+	}
+	&.objet_sand {
+		& input + label:before {
+			background:#dcc8b0;
+		}
+	}
+	&.objet_stone {
+		& input + label:before {
+			background:#554d44;
+		}
+	}
 }
