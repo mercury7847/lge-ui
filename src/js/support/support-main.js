@@ -59,9 +59,9 @@
                     var $item = $this.find(self.el.hidden);
 
                     if( $item.length ) {
-                        $this.find(self.el.btn).show();
+                        $this.find(self.el.btn).css('display','block');
                     } else {
-                        $this.find(self.el.btn).hide();
+                        $this.find(self.el.btn).css('display','none');
                     }
                 })
             },
