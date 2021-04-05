@@ -4,21 +4,15 @@
             <g>
                 <g>
                     <g>
+                        <path d="M0 0H64V64H0z" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8)"/>
                         <g>
-                            <path fill="#FFF" d="M0 0H64V64H0z" transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221)"/>
-                            <path stroke="#222" stroke-linecap="round" stroke-width="3" d="M33.654 53H11.577C10.706 53 10 52.291 10 51.417V16.583c0-.874.706-1.583 1.577-1.583h37.846c.871 0 1.577.709 1.577 1.583v19" transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221)"/>
-                            <path stroke="#222" stroke-linecap="square" stroke-width="3" d="M11.396 24.5L48.604 24.5" transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221)"/>
-                            <path stroke="#222" stroke-linecap="round" stroke-width="3" d="M42.5 12L42.5 14M18.5 12L18.5 14" transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221)"/>
-                            <path stroke="#EC455A" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M41 46.851L45.102 51 54 42" transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221)"/>
-                            <g fill="#222">
-                                <g transform="translate(-387 -1099) translate(-346 118) translate(616 760) translate(117 221) translate(19 31)">
-                                    <ellipse cx="2" cy="2.068" rx="2" ry="2.068"/>
-                                    <ellipse cx="2" cy="11.818" rx="2" ry="2.068"/>
-                                    <ellipse cx="11.429" cy="2.068" rx="2" ry="2.068"/>
-                                    <ellipse cx="11.429" cy="11.818" rx="2" ry="2.068"/>
-                                    <ellipse cx="20.857" cy="2.068" rx="2" ry="2.068"/>
-                                </g>
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M33 43H4c-2.21 0-4-1.79-4-4V8c0-1.105.895-2 2-2h40c1.105 0 2 .895 2 2v17" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8) translate(10 10)"/>
+                            <path stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M34 35.5L39.079 40 47 31" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8) translate(10 10)"/>
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M37.5 6L37.5 0" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8) translate(10 10)"/>
+                            <g fill="#000">
+                                <path d="M0 0H4V4H0zM0 9H4V13H0zM9 0H13V4H9zM9 9H13V13H9zM18 0H22V4H18z" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8) translate(10 10) translate(11 21)"/>
                             </g>
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 6L7.5 0M0 13L44 13" transform="translate(-350 -1024) translate(270 870) translate(0 146) translate(80 8) translate(10 10)"/>
                         </g>
                     </g>
                 </g>
