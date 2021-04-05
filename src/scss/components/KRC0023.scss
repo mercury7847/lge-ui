@@ -63,10 +63,11 @@ $size: (img2, img3, img4);
         font-size:0;
         @include pc {
             .slide-track {
-                margin:-80px -12px 0;
-                .unit-box {
-                    margin-top:80px;
-                }
+                margin:0 -12px;
+                // margin:-80px -12px 0;
+                // .unit-box {
+                //     margin-top:80px;
+                // }
             }
         }
         .unit-box {

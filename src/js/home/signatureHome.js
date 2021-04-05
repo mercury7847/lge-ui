@@ -583,8 +583,11 @@ $(function() {
         $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
         var artGuideLen = $artGuide.find('.art-guide-list > li').length;
-        if(artGuideLen<6) $artMoreBtn.hide();
-
+        if(artGuideLen<6) {
+            $artMoreBtn.css('display','none');
+        }else{
+            $artMoreBtn.css('display','block');
+        }
 
         $artMoreBtn.on('click', function(e){
             e.preventDefault();

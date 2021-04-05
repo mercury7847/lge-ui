@@ -288,8 +288,8 @@
                 sectionItem.find('.ui_sticky').parent().remove();
             }
 
-            if(page == totalcnt) sectionItem.find('.btn-moreview').hide();
-            else sectionItem.find('.btn-moreview').show();
+            if(page == totalcnt) sectionItem.find('.btn-moreview').css('display','none');
+            else sectionItem.find('.btn-moreview').css('display','block');
             
             // console.log("result.data.selectTags:", result.data.selectTags);
             if(result.data.selectTags){

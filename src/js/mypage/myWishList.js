@@ -141,9 +141,9 @@
 
                 self.$list.data('page',page);
                 if(self.listData.length > 0) {
-                    self.$moreButton.show();
+                    self.$moreButton.css('display','block');
                 } else {
-                    self.$moreButton.hide();
+                    self.$moreButton.css('display','none');
                 }
 
                 /*

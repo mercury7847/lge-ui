@@ -909,9 +909,9 @@
                 self.$manualPopup.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
                 if(parseInt(pagination.page) <  parseInt(pagination.totalCount)) {
-                    self.$manualMoreButton.show();
+                    self.$manualMoreButton.css('display','block');
                 } else {
-                    self.$manualMoreButton.hide();
+                    self.$manualMoreButton.css('display','none');
                 }
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var $list = self.$manualPopup.find('div.user-guide-lists>ul');
