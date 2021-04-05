@@ -95,6 +95,16 @@
 					height:360px;
 				}
 			}
+
+			&.video {
+				@include mobile {
+					width: 100% !important;
+					margin-left: 0 !important;
+					video {
+						width: 100%;
+					}
+				}
+			}
 		}
 		.text-cont {
 			position:absolute;
@@ -193,7 +203,7 @@
 				}
 			}
 		}
-		&.text-black { //밝은 배경
+		&.fc-black { //밝은 배경
 			.text-cont {
 				> p {
 					color:#000;

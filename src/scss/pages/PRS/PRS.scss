@@ -77,6 +77,19 @@
 								background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
 							}
 						}
+						.fc-black {
+							.boxs {
+								.txt {
+									color:#000;
+								}
+							}
+							.link {
+								color:#000;
+								&:after {
+									background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+								}
+							}
+						}
 					}
 				}
 			}
