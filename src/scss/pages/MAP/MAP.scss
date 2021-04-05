@@ -21,13 +21,12 @@ $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
 
 .hide {
     position:absolute;
-    z-index:-10;
+    z-index:-1;
     width:0 !important;
     height:0 !important;
     overflow:hidden !important;
-    font-size:medium;
-    line-height:normal;
-    word-break:break-all;
+    font-size:1px;
+    line-height:1px;
 }
 
 /*
