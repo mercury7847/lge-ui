@@ -730,7 +730,7 @@
                 '<div class="item-list" data-more="hidden">' +
                 '{{/if}}'+
                     '<a href="/support/solutions-{{item.item_id}}?category={{item.parent_category}}&subCategory={{item.category}}">' + 
-                        '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.parent_cate_name}}</div>' + 
+                        '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.cate_name}}</div>' + 
                         '<strong class="item-tit">{{item.item_title}}</strong>' + 
                         '<ul class="bullet-list">' + 
                             '<li class="b-txt">{{item.parent_cate_name}} > {{item.cate_name}}</li>' + 
