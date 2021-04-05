@@ -803,11 +803,12 @@ var isApp = function(){
              * @function
              * @param {string} msg 얼럿 메세지
              * @param {Object} options 모달 옵션
+             * @param {Element} opener 포커스 타겟
              * @example
              * lgkorUI.alert('<p>구매일자 : 2020. 06. 18</p><p>구매제품 : 얼음정수기냉장고</p>', {
                  title:'영수증 등록이 완료되었습니다.',
                  ok:function(){}
-                });
+                }, this);
              *  
              */
     
