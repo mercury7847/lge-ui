@@ -183,14 +183,28 @@
 							position:absolute;
 							right:-10px;
 							bottom:3px;
-							width:20px;
-							height:20px;
 							background:url('/lg5-common/images/MA/icon-arr-64x64.svg') no-repeat 0 0;
 							width: 22px;
 							height: 22px;
 							background-size: 22px;
 							transform: rotate(0deg);
 						}
+					}
+				}
+			}
+		}
+		&.text-black { //밝은 배경
+			.text-cont {
+				> p {
+					color:#000;
+					//text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+				}
+			}
+			.text-link {
+				> .a {
+					color:#000;
+					&:after {
+						background:url('/lg5-common/images/MA/icon-arr-64x64-white.svg') no-repeat 0 0;
 					}
 				}
 			}

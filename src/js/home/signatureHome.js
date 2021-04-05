@@ -308,24 +308,24 @@ $(function() {
         }
 
         function _findIdx(py){
-            var idx = 0;
             for(var i=0; i<posArr.length; i++){
                 if(posArr[i]>py){
-                    idx = i;
-                    break;
+                    return i;
                 }
             }
-            return idx;                
+            return 0;                
         }
 
+
         function _findStep(page){
+
             for(var i=0; i<wheelArr.length; i++){
                 var arr = wheelArr[i];
                 if(vcui.isArray(arr)){
                     var pageId = arr[0]['pageId'];
                     if(pageId == page) return i;
                 }else{
-                    return i;
+                    if(arr == page) return i;
                 }
             }
             return 0;
@@ -348,29 +348,22 @@ $(function() {
 
         // 비디오 태그 생성
         function updateVideo(video) {
+
+            var isAndroid = vcui.detect.isAndroid;
+            var isMobileDevice = vcui.detect.isMobileDevice;
+
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
-                $image    = $wrap.find('img'),
-                loaded    = $target.data('loaded'),
-                src       = $target.data('src'),                        
-                isAndroid = vcui.detect.isAndroid,
-                /*
-                modeV     = 5, // 사이즈별로 로드시
-                srcArr = (function() {
-                    var s5 = $target.data('src-v5') || $target.data('src'),
-                        s4 = $target.data('src-v4') || s5,
-                        s3 = $target.data('src-v3') || s4,
-                        s2 = $target.data('src-v2') || s3,
-                        s1 = $target.data('src-v1') || s2,
-                        arr = [null,s1,s2,s3,s4,s5];
-                    return arr;
-                })(),
-                src  = srcArr[modeV],
-                */
-                src    = $target.data('src'),                        
+                // $image    = $wrap.find('img'),
+                // loaded    = $target.data('loaded'),                    
                 videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
+
+            var src = $target.data('src');
+            if(isMobileDevice){
+                src = $target.data('mSrc') || $target.data('src');
+            }
 
             // 비디오 요소 생성.
             var createVideoObject = function() {
@@ -495,7 +488,8 @@ $(function() {
                     }
                 }else{
                     wheelArr.push(i);
-                }        
+                }   
+                
 
                 if(i==0){
                     itemHeight = winHeight-prevAllHeight;   
@@ -503,7 +497,8 @@ $(function() {
                     itemHeight = winHeight;    
                 }
                 allHeight += itemHeight;
-                posArr.push(itemHeight);
+
+                posArr.push(allHeight);
                 $(this).height(itemHeight);
 
                 totalHeight += itemHeight;
@@ -514,6 +509,8 @@ $(function() {
                             
             });  
 
+            posArr.push(10000);
+
             stepLens = wheelArr.length-1;                    
             $contentWrap.css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
@@ -521,16 +518,15 @@ $(function() {
             if(page!==undefined){
                 currentPage = page;
                 currentStep = _findStep(currentPage);
-                setBeforeCss(currentStep);
+                setBeforeCss(currentStep, wheelArr);
                 moveScene(currentPage,currentStep,0);
             }else{
-                setTimeout(function(){
-                    currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-                    currentStep = _findStep(currentPage);
-                    setBeforeCss(currentStep);
-                    moveScene(currentPage,currentStep,0);
-                }, 100);
-            }            
+                currentPage = _findIdx($('html, body').scrollTop());
+                currentStep = _findStep(currentPage);
+                setBeforeCss(currentStep);
+                moveScene(currentPage,currentStep,0);
+            }   
+            
         }    
         
         // 탭이동 이벤트 처리
