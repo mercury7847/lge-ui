@@ -327,7 +327,13 @@
             }
 
             self.$manualPagination.data('page', page.page);
-            self.$manualPagination[page.view == 'Y' ? 'show': 'hide']();
+            // self.$manualPagination[page.view == 'Y' ? 'show': 'hide']();
+            
+            if(page.view=='Y'){
+                self.$manualPagination.css('display','block');
+            }else{
+                self.$manualPagination.css('display','none');
+            }
         },
         setDriverList: function(data) {
             var self = this;
