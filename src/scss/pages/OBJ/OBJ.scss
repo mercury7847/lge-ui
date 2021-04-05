@@ -69,6 +69,10 @@ header {
     z-index: 999;
 }
 
+.search-layer {
+    z-index: 1005;
+}
+
 .brand-wrap {
     .objetcollection-tabs {
         background-color: $color-bg-wt;
