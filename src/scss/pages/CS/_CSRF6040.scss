@@ -1074,6 +1074,24 @@
                             }
                         }
                     }
+                    .info-overlay-close {
+                        position:absolute;
+                        top:16px;
+                        right:16px;
+                        width:24px;
+                        height:24px;
+                        @include mobile {
+                            top:12px;
+                            right:12px;
+                        }
+                        &:before {
+                            content:' ';
+                            display:block;
+                            width:24px;
+                            height:24px;
+                            background:url('/lg5-common/images/icons/btn-close-24-black.svg') no-repeat 0 0;
+                        }
+                    }
 
                     &:after {
                         content:'';
