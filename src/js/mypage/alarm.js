@@ -81,12 +81,12 @@
                 if(self.$noticeList.find('li').length > 0) {
                     self.$setting.show();
                     self.$noticeList.show();
-                    self.$moreButton.show();
+                    self.$moreButton.css('display','block');
                     self.$noData.hide();
                 } else {
                     self.$setting.hide();
                     self.$noticeList.hide();
-                    self.$moreButton.hide();
+                    self.$moreButton.css('display','none');
                     self.$noData.show();
                 }
             },

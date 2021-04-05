@@ -264,9 +264,9 @@
 
                 var checkCount = $list_ul.find('>li').length;
                 if(checkCount < productList.length) {
-                    $div.find('.btn-moreview').show();
+                    $div.find('.btn-moreview').css('display','block');
                 } else {
-                    $div.find('.btn-moreview').hide();
+                    $div.find('.btn-moreview').css('display','none');
                 }
             },
 
