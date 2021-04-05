@@ -815,6 +815,28 @@
 
                 //인포 옵션 변경 (링크로 바뀜)
                 self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                    var ajaxUrl = self.$pdpInfo.attr('data-sibling-url');
+                    if(ajaxUrl) {
+                        var siblingCode = [];
+                        var siblingGroupCode = [];
+                        var $findInput = self.$pdpInfoSiblingOption.find('input:checked');
+                        $findInput.each(function (index, item) {
+                            var itemSiblingCode = item.dataset.siblingCode;
+                            var itemSiblingGroupCode = item.dataset.siblingGroupCode;
+                            siblingCode.push(itemSiblingCode ? itemSiblingCode : "");
+                            siblingGroupCode.push(itemSiblingGroupCode ? itemSiblingGroupCode : "");
+                        });
+                        if(siblingGroupCode.length > 0) {
+                            lgkorUI.requestAjaxData(ajaxUrl,{"siblingCode":siblingCode.join(","),"siblingGroupCode":siblingGroupCode.join(",")}, function (result) {
+                                var data = result.data;
+                                if(data.modelUrlPath) {
+                                    location.href = url;
+                                }
+                            });
+                        }
+                    }
+
+                    /*
                     var siblingCode = this.dataset.siblingCode;
                     var siblingGroupCode = this.dataset.siblingGroupCode;
                     if(typeof siblingList !== 'undefined' && siblingList && siblingList.length > 0) {
@@ -832,7 +854,7 @@
                             location.href = url;
                         }
                     }
-
+                    */
                     /*
                     var url = e.target.value;
                     if(url) {
@@ -1034,7 +1056,7 @@
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
-                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + '회차</em>회차월 납부 금액 할인(0원)</dd>');
+                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + ' 회차</em> 월납부금액 할인(0원)</dd>');
                         } else {
                             $btmInfo.append('<dd></dd>');
                         }
@@ -1116,7 +1138,7 @@
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
-                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + '회차</em>회차월 납부 금액 할인(0원)</dd>');
+                            $btmInfo.append('<dd>납부 월 회차 :<em>' + popupData.rtFreePeriod + ' 회차</em> 월납부금액 할인(0원)</dd>');
                         } else {
                             $btmInfo.append('<dd></dd>');
                         }
