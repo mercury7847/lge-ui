@@ -485,7 +485,7 @@
                             serviceUserName : {
                                 required: true,
                                 maxLength: 30,
-                                pattern: /^[가-힣]+$|^[a-zA-Z\s]+$/,
+                                pattern: /^[가-힣]|^[a-zA-Z\s]+$/,
                                 msgTarget: '.err-block',
                                 errorMsg: '이름을 입력해주세요.',
                                 patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
@@ -586,7 +586,7 @@
                             userName1 : {
                                 required: true,
                                 maxLength: 30,
-                                pattern: /^[가-힣]+$|^[a-zA-Z\s]+$/,
+                                pattern: /^[가-힣]|^[a-zA-Z\s]+$/,
                                 msgTarget: '.err-block',
                                 errorMsg: '이름을 입력해주세요.',
                                 patternMsg: '이름은 한글 또는 영문으로만 입력해주세요.'
@@ -730,7 +730,7 @@
                 '<div class="item-list" data-more="hidden">' +
                 '{{/if}}'+
                     '<a href="/support/solutions-{{item.item_id}}?category={{item.parent_category}}&subCategory={{item.category}}">' + 
-                        '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.parent_cate_name}}</div>' + 
+                        '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.cate_name}}</div>' + 
                         '<strong class="item-tit">{{item.item_title}}</strong>' + 
                         '<ul class="bullet-list">' + 
                             '<li class="b-txt">{{item.parent_cate_name}} > {{item.cate_name}}</li>' + 
