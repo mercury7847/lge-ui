@@ -104,10 +104,10 @@
                 var page = parseInt(param.page);
                 var totalCount = parseInt(param.totalCount);
                 if (page < totalCount) {
-                    self.$btnMore.show();
+                    self.$btnMore.css('display','block');
                 } else {
                     //더이상 없다
-                    self.$btnMore.hide();
+                    self.$btnMore.css('display','none');
                 }
 
                 lgkorUI.setHiddenInputData({
@@ -124,14 +124,14 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        self.$btnMore.show();
+                        self.$btnMore.css('display','block');
                     } else {
                         //더이상 없다
-                        self.$btnMore.hide();
+                        self.$btnMore.css('display','none');
                     }
                     self.$noData.hide();
                 } else {
-                    self.$btnMore.hide();
+                    self.$btnMore.css('display','none');
                     self.$noData.show();
                 }
             }
