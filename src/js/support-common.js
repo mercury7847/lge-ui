@@ -225,11 +225,6 @@
             history.replaceState(null, '', '?'+url);
         },
         scrollTo: function($target, margin) {
-            $target.on('focus', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-
             $('html,body').stop().animate({scrollTop:$target.offset().top - (margin ? margin : 0)}, function() {
                 $target.focus();
                 if (!$target.is(':focus')) {
