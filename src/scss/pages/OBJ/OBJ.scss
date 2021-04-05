@@ -18,6 +18,7 @@
 //제품체험
 .model_experience {
     @import "OBJ0302";
+    @import "../../support/mcustom-scrollbar";
 }
 
 //갤러리
@@ -62,6 +63,14 @@ header {
 .sub-main {
     position: relative;
     z-index: 1;
+}
+
+.popup-wrap>.btn-close {
+    z-index: 999;
+}
+
+.search-layer {
+    z-index: 1005;
 }
 
 .brand-wrap {
