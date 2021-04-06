@@ -167,7 +167,8 @@ $(function() {
                 }
 
                 $('html, body').stop(true).animate({
-                    scrollTop: scrollTopData
+                    //scrollTop: scrollTopData
+                    scrollTop: winHeight;
                 }, speed, 'easeInOutQuart', function() {
                     canScroll = true
                     currentPage = idx;
@@ -192,12 +193,12 @@ $(function() {
 
 
             //오브제 수정
-            if ($(".brand-wrap.objet-wrap").hasClass("active")) {
-                $("html").scrollTop(0);
-            } else {
-                let objetH = $(window).height();
-                $("html").scrollTop(objetH);
-            }
+            // if ($(".brand-wrap.objet-wrap").hasClass("active")) {
+            //     $("html").scrollTop(0);
+            // } else {
+            //     let objetH = $(window).height();
+            //     $("html").scrollTop(objetH);
+            // }
 
 
         }
