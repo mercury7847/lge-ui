@@ -162,7 +162,7 @@ $(function() {
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
-            var scrollTopData = winHeight * idx;
+            var scrollTopData = $(window).height(); //winHeight * idx;
             $scenes.removeClass('active').eq(idx).addClass('active');
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
