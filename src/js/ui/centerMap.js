@@ -342,8 +342,9 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 $target.focus();
                 $target.on('keydown', function(e){
                     if( e.shiftKey && e.keyCode == 9 ) {
-                        if( $(this).is('.info-overlaybox')) {
-                            $('[data-id="' + id + '"]').find('.ui_marker_selector').focus();
+                        
+                        if( $(e.target).hasClass('info-overlaybox')) {
+                            $targetFocus.last().focus();
                             e.preventDefault();
                         }
                     }
@@ -351,7 +352,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 $targetFocus.first().on('keydown', function(e){
                     if( e.shiftKey && e.keyCode == 9 ) {
                         $targetFocus.last().focus();
-                        console.log(1111)
                         e.preventDefault();
                     }
                 });
