@@ -167,7 +167,8 @@ $(function() {
                 }
 
                 $('html, body').stop(true).animate({
-                    scrollTop: scrollTopData
+                    //scrollTop: scrollTopData
+                    scrollTop: winHeight
                 }, speed, 'easeInOutQuart', function() {
                     canScroll = true
                     currentPage = idx;
