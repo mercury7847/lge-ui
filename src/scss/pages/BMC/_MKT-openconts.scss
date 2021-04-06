@@ -194,6 +194,7 @@
     .event09{
         .anker-wrap{
             width:100%;
+            background-color:#a0928f;
             a{
                 display:inline-block;
                 width:25%;
@@ -206,10 +207,15 @@
             }
             .slide-content {
                 .slide-conts {
+                    float:left;
+                    width:327px;
                     .slide-box {
                         .img {
                             width:327px;
                             height:327px;
+                            img{
+                                text-align:center;
+                            }
                         }
                         .prd_name {
                             padding:32px 0 0;
@@ -220,6 +226,7 @@
                         }
                     }
                     &.on {
+                        width:444px;
                         .slide-box {
                             .img {
                                 width:444px;

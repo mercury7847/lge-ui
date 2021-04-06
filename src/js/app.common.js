@@ -59,7 +59,7 @@ $(document).ready(function() {
                     },
                     focusin : function(){
                         setTimeout(function(){
-                            $(".btn-app-ar a, .btn-app-ar button").addClass("active").attr("tabindex", 0).focus();
+                            $(".btn-app-ar a, .btn-app-ar button").addClass("active");
                             LGEAPPclickCNT = 1;
                         }, 300);
                     },
