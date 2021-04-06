@@ -545,6 +545,12 @@
                 color:#aaa;
             }
         }
+        &[disabled='disabled']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[disabled='']:-ms-input-placeholder {
+            color:#aaa;
+        }
         &[readonly='readonly']:-ms-input-placeholder {
             color:#aaa;
         }

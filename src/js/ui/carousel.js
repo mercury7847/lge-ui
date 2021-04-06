@@ -1296,7 +1296,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     // 추가 김두일
                     
                     if(opt.infinite === true || opt.variableWidth === true){
-                        targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
+
                     }else{
                         var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
                         if(targetSlide[0] && (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width() < self.listWidth)){  
@@ -1304,6 +1305,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                             targetLeft = targetSlide[0]? (targetSlide[0].offsetLeft * -1) + dt : 0;
                         }else{
                             targetLeft = targetSlide[0]? targetSlide[0].offsetLeft * -1 : 0;
+
                         }
                     }
                     // 추가 end
@@ -1331,6 +1333,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     targetLeft += (self.$list.width() - targetSlide.outerWidth()) / 2;
                 }
             }
+
 
             return targetLeft;
         },
