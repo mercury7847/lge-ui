@@ -8,6 +8,11 @@ $(function() {
         }
     });
 
+    setTimeout(function() {
+        $("html").scrollTop(0);
+        $(".brand-wrap.objet-wrap").removeClass("active on");
+        console.log($("html").scrollTop());
+    }, 1000);
 
     vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
 
@@ -167,8 +172,8 @@ $(function() {
                 }
 
                 $('html, body').stop(true).animate({
-                    //scrollTop: scrollTopData
-                    scrollTop: winHeight
+                    scrollTop: scrollTopData
+                        //scrollTop: winHeight
                 }, speed, 'easeInOutQuart', function() {
                     canScroll = true
                     currentPage = idx;
@@ -193,12 +198,12 @@ $(function() {
 
 
             //오브제 수정
-            if ($(".brand-wrap.objet-wrap").hasClass("active")) {
-                $("html").scrollTop(0);
-            } else {
-                let objetH = $(window).height();
-                $("html").scrollTop(objetH);
-            }
+            // if ($(".brand-wrap.objet-wrap").hasClass("active")) {
+            //     $("html").scrollTop(0);
+            // } else {
+            //     let objetH = $(window).height();
+            //     $("html").scrollTop(objetH);
+            // }
 
 
         }
