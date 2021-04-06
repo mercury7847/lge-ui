@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+.ev-detail-con{
+
+    /* 클래스별이미지분기 */
+    .pc{
+        display:block !important;
+    }
+    .mobile{
+        display:none !important;
+    }
+    @include mobile {
+        .pc{
+            display:none !important;
+        }
+        .mobile{
+            display:block !important;
+        }
+    }
+    /* //클래스별이미지분기 */
+
+    .evnet06{
+        .benefit01{
+            padding:0 0 140px;
+            text-align:center;
+            img{
+                display:inline-block;
+                padding:0;
+            }
+
+            .benefit-slide {
+                padding:0 100px;
+                @include mobile {
+                    padding:0 36px;
+                }
+                &.slide-content {
+                    .slide-conts {
+                        padding:12px;
+                        .slide-box {
+                            display:block;
+                            position:relative;
+                            // height:220px;
+                            height:545px;
+                            padding:60px;
+                            border-radius:8px;
+                            background-color:#fff;
+                            box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                            @include mobile {
+                                height:auto;
+                                box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                                padding:25px;
+                            }
+                            .img {
+                                position:absolute;
+                                top:50%;
+                                left:60px;
+                                width:425px;
+                                height:425px;
+                                margin-top:-190px;
+                                img {
+                                    width:100%;
+                                }
+                                @include mobile {
+                                    position:static;
+                                    width:100%;
+                                    height:auto;
+                                    margin:0;
+                                }
+                            }
+                            .info {
+                                padding:80px 0 0 50%;
+                                text-align:left;
+                                @include mobile {
+                                    padding:26px 0 0 0;
+                                }
+                                .model {
+                                    display: -webkit-box;
+                                    -webkit-line-clamp:2;
+                                    -webkit-box-orient: vertical;
+                                    max-height:56px;
+                                    font-size:42px;
+                                    font-weight:700;
+                                    line-height:1.24;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    @include mobile {
+                                        font-size:16px;
+                                    }
+                                }
+                                .code {
+                                    font-size:36px;
+                                    font-weight:500;
+                                    line-height:1.28;
+                                    @include mobile {
+                                        padding-top:8px;
+                                        font-size:14px;
+                                    }
+                                }
+                                .price-area {
+                                    width:100%;
+                                    margin:40px 0 0;
+                                    padding:50px 0 0;
+                                    border-top:2px solid #e4e4e4;
+                                    @include mobile {
+                                        margin:20px 0 0;
+                                        padding:20px 0 0;
+                                    }
+                                    .total {
+                                        position: relative;
+                                        display:inline-block;
+                                        width:100%;
+                                        text-align:right;
+                                        margin-right: 8px;
+                                        font-weight: 700;
+                                        font-size: 48px;
+                                        line-height: 1.21;
+                                        color:#e34465;
+                                        em{
+                                            display:inline-block;
+                                            font-weight: 700;
+                                            font-size: 30px;
+                                            line-height: 1.93;
+                                            text-align:left;
+                                            @include mobile {
+                                                font-size:14px;
+                                            }
+                                        }
+                                        .tit{
+                                            position:absolute;
+                                            left:0;
+                                        }
+                                        @include mobile {
+                                            font-size:20px;
+                                        }
+                                    }
+                                    .original {
+                                        position: relative;
+                                        display:inline-block;
+                                        width:100%;
+                                        margin-right: 4px;
+                                        font-size: 30px;
+                                        line-height: 1.4;
+                                        color: #666666;
+                                        text-decoration:line-through;
+                                        text-align:right;
+                                        @include mobile {
+                                            font-size:14px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.slide-controls {
+                    max-width:1460px;
+                    margin-top:-30px;
+                    .prev {
+                        left:-12px;
+                    }
+                    .next {
+                        right:-12px;
+                    }
+                    .btn-arrow {
+                        width: 64px;
+                        height: 64px;
+                        .next{
+                            &::before {
+                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                            }
+                        }
+                        &::before {
+                            width: 64px;
+                            height: 64px;
+                            box-shadow: none;
+                        }
+                    }
+                    @include mobile {
+                        display:none;
+                    }
+                }
+            }
+        }
+        .benefit02{
+            padding:116px 0;
+            background-color:#f2f0f4;
+            text-align:center;
+            @include mobile {
+                padding:0;
+            }
+        }
+    }
+
+    .event09{
+        .anker-wrap{
+            width:100%;
+            a{
+                display:inline-block;
+                width:25%;
+            }
+        }
+        .objet-slide {
+            padding:80px 100px 0;
+            @include mobile {
+                padding:30px 36px 0;
+            }
+            .slide-content {
+                .slide-conts {
+                    .slide-box {
+                        .img {
+                            width:327px;
+                            height:327px;
+                        }
+                        .prd_name {
+                            padding:32px 0 0;
+                            text-align:center;
+                            font-size:16px;
+                            font-weight:700;
+                            color:rgba(0, 0, 0, 0.5);
+                        }
+                    }
+                    &.on {
+                        .slide-box {
+                            .img {
+                                width:444px;
+                                height:444px;
+                            }
+                            .prd_name {
+                                padding:30px 0 0;
+                                font-size:18px;
+                                color:#000000;
+                            }
+                        }
+                    }
+                }
+            }
+            .slide-controls {
+                max-width:1460px;
+                margin-top:-30px;
+                .prev {
+                    left:-12px;
+                }
+                .next {
+                    right:-12px;
+                }
+            }
+        }
+    }
+
+    .event10{
+        .remd_prd{
+            width:100%;
+            .tabs{
+                li{
+                    width:423px;
+                    height:199px;
+                    margin-left:0;
+                    @include tablet {
+                        width: 310px;
+                        height:150px;
+                        margin-left:4px;
+                    }
+                    &:first-child{
+                        margin-left:0;
+                        a{
+                            width:100%;
+                            height:100%;
+                            background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01.svg') no-repeat;
+                            background-size:contain;
+                        }
+                    }
+                    &:nth-child(2){
+                        a{
+                            width:100%;
+                            height:100%;
+                            background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02.svg') no-repeat;
+                            background-size:contain;
+                        }
+                    }
+                    &:nth-child(3){
+                        a{
+                            width:100%;
+                            height:100%;
+                            background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03.svg') no-repeat;
+                            background-size:contain;
+                        }
+                    }
+                    &.on{
+                        &:first-child{
+                            a{
+                                width:100%;
+                                height:100%;
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-on.svg') no-repeat;
+                                background-size:contain;
+                            }
+                        }
+                        &:nth-child(2){
+                            a{
+                                width:100%;
+                                height:100%;
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-on.svg') no-repeat;
+                                background-size:contain;
+                            }
+                        }
+                        &:nth-child(3){
+                            a{
+                                width:100%;
+                                height:100%;
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-on.svg') no-repeat;
+                                background-size:contain;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

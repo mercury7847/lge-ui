@@ -314,6 +314,7 @@
                     };
                     var cardId = careCartInfo.getSelectCardId();
                     postData.easyRequestCard = cardId;
+                    lgkorUI.showLoading();
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         var data = result.data;
                         careCartInfo.updateData(data);

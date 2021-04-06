@@ -436,15 +436,14 @@ $(function () {
         }
 
         function _findIdx(py){
-            var idx = 0;
             for(var i=0; i<posArr.length; i++){
                 if(posArr[i]>py){
-                    idx = i;
-                    break;
+                    return i;
                 }
             }
-            return idx;                
+            return 0;                
         }
+
 
         // 비디오 태그 처리
         /*
@@ -456,30 +455,22 @@ $(function () {
         */
 
         function updateVideo(video) {
+
+            var isAndroid = vcui.detect.isAndroid;
+            var isMobileDevice = vcui.detect.isMobileDevice;
+
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
-                $image    = $wrap.find('img'),
-                loaded    = $target.data('loaded'),
-                src       = $target.data('src'),
-                
-                isAndroid = vcui.detect.isAndroid,
-                /*
-                modeV     = 5, // 사이즈별로 로드시
-                srcArr = (function() {
-                    var s5 = $target.data('src-v5') || $target.data('src'),
-                        s4 = $target.data('src-v4') || s5,
-                        s3 = $target.data('src-v3') || s4,
-                        s2 = $target.data('src-v2') || s3,
-                        s1 = $target.data('src-v1') || s2,
-                        arr = [null,s1,s2,s3,s4,s5];
-                    return arr;
-                })(),
-                src  = srcArr[modeV],
-                */
-                src    = $target.data('src'),            
+                // $image    = $wrap.find('img'),
+                // loaded    = $target.data('loaded'),           
                 videoAttr = $target.data('options') || 'autoplay playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
+
+            var src = $target.data('src');
+            if(isMobileDevice){
+                src = $target.data('mSrc') || $target.data('src');
+            }
 
             // 비디오 요소 생성.
             var createVideoObject = function() {

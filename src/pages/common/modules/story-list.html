@@ -7,35 +7,37 @@
 <div class="flexbox">
 }
     <div class="box @@boxType">
+        <!-- 210406 a태그 안으로 내용 수정 -->
         <a href="@@all_link" class="visual-area"><!-- 210331 수정 [a 태그로 변경] -->
             <span class="image"><img @@image alt=""></span>
             @@if(boxType === "video") {
             <span class="btn-video"><em class="blind">동영상 재생</em></span><!-- 210331 수정 [span 태그로 변경] -->
             }
-        </a>
-        <div class="text-area">
-            @@include('./common/modules/flags.html', {
-                boxType: true,
-                flags: [
-                    "@@flag"
-                ]
-            })
-            <a href="#" class="card-title"><span>@@title</span></a>
-            @@if(context.tags) {
-            <div class="tag-wrap">
-                <ul class="tags">
-                    @@for ( var i=0; i < tags.length; i++ ) {
-                    <li class="tag">
-                        <a href="#">#`+tags[i]+`</a>
-                    </li>
-                    }
-                </ul>
+            <div class="text-area">
+                @@include('./common/modules/flags.html', {
+                    boxType: true,
+                    flags: [
+                        "@@flag"
+                    ]
+                })
+                <span class="card-title"><span>@@title</span></span>
+                @@if(context.tags) {
+                <div class="tag-wrap">
+                    <ul class="tags">
+                        @@for ( var i=0; i < tags.length; i++ ) {
+                        <li class="tag">
+                            <a href="#">#`+tags[i]+`</a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                }
+                <!-- @@if(context.link) {
+                <a href="#n" class="btn-link"><span>@@link</span></a>
+                } -->
             </div>
-            }
-            @@if(context.link) {
-            <a href="#n" class="btn-link"><span>@@link</span></a>
-            }
-        </div>
+        </a>
+        <!-- //210406 a태그 안으로 내용 수정 -->
         @@if(context.date) {
         <div class="date">@@date</div>
         }

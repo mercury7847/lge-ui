@@ -70,23 +70,25 @@
                     '</div>'+
                 '</div>'+
                 '<div class="info-wrap">'+
-                    '<div class="tit-wrap">'+
-                        '<p class="name">'+
-                            '<span class="blind">매장명</span>'+
-                            '{{shopName}}'+
-                        '</p>'+
-                        '{{#if flagInfo.length > 0}}'+
-                        '<div class="flag-wrap bar-type">'+
-                            '{{#each flag in flagInfo}}'+
-                            '<span class="flag {{flag.flagClass}}">{{flag.flagName}}</span>'+
-                            '{{/each}}'+
+                    '<a href="#">'+
+                        '<div class="tit-wrap">'+
+                            '<p class="name">'+
+                                '<span class="blind">매장명</span>'+
+                                '{{shopName}}'+
+                            '</p>'+
+                            '{{#if flagInfo.length > 0}}'+
+                            '<div class="flag-wrap bar-type">'+
+                                '{{#each flag in flagInfo}}'+
+                                '<span class="flag {{flag.flagClass}}">{{flag.flagName}}</span>'+
+                                '{{/each}}'+
+                            '</div>'+
+                            '{{/if}}'+
                         '</div>'+
-                        '{{/if}}'+
-                    '</div>'+
-                    '<p class="addr">'+
-                        '<span class="blind">주소</span>'+
-                        '{{shopAdress}}'+
-                    '</p>'+
+                        '<p class="addr">'+
+                            '<span class="blind">주소</span>'+
+                            '{{shopAdress}}'+
+                        '</p>'+
+                    '</a>'+
                     '<div class="etc-info">'+
                         '<span class="tel">'+
                             '<span class="blind">전화번호</span>'+
@@ -378,7 +380,7 @@
                 self._toggleOptContainer();
             });
 
-            self.$defaultListLayer.on('click', 'li > .ui_marker_selector .tit-wrap, li > .ui_marker_selector .addr', function(e){
+            self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
                 var id = $(this).closest('li').data('id');
                 self.$map.selectedMarker(id, this);
 

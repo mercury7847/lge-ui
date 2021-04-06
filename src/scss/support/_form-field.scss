@@ -52,6 +52,7 @@
         .search-input {
             width:100%;
             input[type=text] {
+                padding:10px 54px 10px 15px;
                 border:1px solid #ddd;
                 border-radius:8px;
                 box-shadow:none;
@@ -60,9 +61,19 @@
                     background:#ededed;
                 }
             }
+            &.clear {
+                input[type=text] {
+                    padding-right:80px;
+                }
+            }
             @include mobile {
                 input[type=text] {
-                    padding-left:11px;
+                    padding:11px 68px 11px 11px;
+                }
+                &.clear {
+                    input[type=text] {
+                        padding-right:95px;
+                    }
                 }
             }
         }
@@ -101,7 +112,7 @@
         text-align:left;
         input[type=text] {
             width:100%;
-            padding:11px 54px 11px 24px;
+            padding:10px 54px 10px 24px;
             @include font-medium;
             border-radius:24px;
             border:0 none;
@@ -518,6 +529,71 @@
         font-size:inherit;
         line-height:inherit;
         vertical-align:top;
+    }
+}
+
+.input-wrap {
+    input {
+        &[readonly='readonly'] {    
+            background:#ededed;
+            border-color:#ededed;
+        }
+        &[readonly=''] {    
+            background:#ededed;
+            border-color:#ededed;
+            &::placeholder {
+                color:#aaa;
+            }
+        }
+        &[readonly='readonly']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[readonly='']:-ms-input-placeholder {
+            color:#aaa;
+        }
+    }
+}
+.text-form {
+    textarea {
+        &[readonly='readonly']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[readonly='']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[disabled='disabled']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[disabled='']:-ms-input-placeholder {
+            color:#aaa;
+        }
+        &[readonly=''] {
+            background:#ededed;
+            border-color:#ededed;
+        }
+        &[disabled=''] {
+            background:#ededed;
+            border-color:#ededed;
+        }
+        &[readonly=''] + .inner-text {
+            background:#ededed;
+            border-color:#ededed;
+        }
+        &[disabled=''] + .inner-text {
+            background:#ededed;
+            border-color:#ededed;
+        }
+        & + .inner-text {
+            display: inline-block;
+            width: 100%;
+            padding: 0 16px 8px;
+            border: 1px solid #ddd;
+            border-top: 0;
+            border-radius: 0 0 8px 8px;
+            vertical-align: top;
+            @include font-small;
+            text-align: right;
+        }
     }
 }
 

@@ -52,7 +52,7 @@
     var isBeforeUnload = true;
 
     function init(){    
-        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
             setting();
             bindEvents();
         });
@@ -267,7 +267,7 @@
         privacyAgreeAllChker.on('allCheckerChange', function(e, status){
             setPrivacyAgreeStatus(status);
         });
-        $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
+        $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1), .btn-close', function(e){
             setPrivacyAgreePop(false);
         });
         privacyAgreeOkButton.on('click', function(e){
@@ -276,16 +276,16 @@
             }
         });
 
-
         rentalAgreeChker.on('change', function(e){
             var chk = $(this).prop('checked');
+
+            setRentalAgreePop(false);
+
             if(chk){
                 openRentalAgreePopup();
-            } else{
-                setRentalAgreePop(false);
             }
         })
-        $('#popup-rentalAgree').on('click', '.btn-group .btn:nth-child(1)', function(e){
+        $('#popup-rentalAgree').on('click', '.btn-group .btn:nth-child(1), .btn-close', function(e){
             setRentalAgreePop(false);
         });
         rentalAgreeOkButton.on('click', function(e){
@@ -309,11 +309,14 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            var idx = chkername.indexOf('rentalAgree')
-            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, true);
-            else{
+            var idx = chkername.indexOf('rentalAgree');
+            var cdx = chkername.indexOf('careshipAgree');
+
+            if(idx > -1 || cdx > -1){
                 rentalAgreeAllChker.setChecked(chkername, true);
                 rentalAgreeChecked();
+            } else{
+                privacyAgreeAllChker.setChecked(chkername, true);
             }
 
             var idname = $(this).closest('.popup-wrap').attr('id');
@@ -322,11 +325,14 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            var idx = chkername.indexOf('rentalAgree')
-            if(idx < 0) privacyAgreeAllChker.setChecked(chkername, false);
-            else{
+            var idx = chkername.indexOf('rentalAgree');
+            var cdx = chkername.indexOf('careshipAgree');
+
+            if(idx > -1 || cdx > -1){
                 rentalAgreeAllChker.setChecked(chkername, false);
                 rentalAgreeChecked();
+            } else{
+                privacyAgreeAllChker.setChecked(chkername, false);
             }
         });
 
@@ -443,13 +449,6 @@
 
             if(chk == "Y"){
                 setPrepaymentChecked();
-            }
-        });
-
-        $('input[name=rentalAgree]').on('change', function(){
-            var chker = $(this).prop('checked');
-            if(chker){
-                $('#popup-rentalAgree').vcModal();
             }
         });
 
@@ -841,6 +840,14 @@
                     } else if(beforeVisitModelFlag == "N"){
                         rbv.hide();
                     }
+                    
+                    var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
+                    var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
+                        return vcui.date.format(item, "yyyy-MM-dd");
+                    });
+                    $('.ui_calendar').vcCalendar("setMinDate", mindate);
+                    $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
+                    $('.ui_calendar').vcCalendar('update');
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
@@ -1092,6 +1099,27 @@
             var chk = getRentalAgreeAllChecked();
             rentalAgreeChker.prop('checked', chk);
         });
+
+        var scrollTarget;
+        if($('#popup-rentalAgree').find('.careshipUserChecked').length){
+            $('#popup-careshipAgree-userCheck').on('modalhide', function(){
+                setTimeout(function(){$('#popup-rentalAgree .ui_all_checker').focus();}, 300);
+            }).vcModal();
+
+            scrollTarget = ".careshipUserChecked";
+        }
+
+        if($('#popup-rentalAgree').find('.rentalUserChecked').length){
+            $('#popup-rentalAgree-userCheck').on('modalhide', function(){
+                setTimeout(function(){$('#popup-rentalAgree .ui_all_checker').focus();}, 300);
+            }).vcModal();
+
+            scrollTarget = ".rentalUserChecked";
+        }
+        // setTimeout(function(){
+        //     var movetop = $('#popup-rentalAgree').find(scrollTarget).position().top - 30;
+        //     $('#popup-rentalAgree').find('.pop-conts').scrollTop(movetop);
+        // }, 100);
     }
 
     function openPrivacyPopup(){

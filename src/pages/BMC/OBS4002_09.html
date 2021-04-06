@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: [
+            "membership/eventExhibitions"
+        ]
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "기획전" 
+        })
+        <!-- //210311_H1추가 -->
+
+        <main class="container">
+            <!-- event -->
+            <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <div class="contents event exhibition"
+                data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+            ><!-- 210126 수정 - .exhibition 추가 -->
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+
+                        <div class="ev-detail-top">
+                            <div class="top-inner">
+                                <div class="tit-wrap">
+                                    <p class="tit"><span class="blind">제목</span>LG Objet Collection 공간인테리어 가전 혜택</p>
+                                    <span class="sub-tit"><span class="blind">서브 제목</span>LG Objet Collection으로 우리집 인테리어 완성!  Objet Collection 제품을 구매하고 다양한 혜택을 누리세요.</span>
+                                </div>
+                                <!-- <div class="info-wrap">
+                                    <div class="info-list">
+                                        <div class="group">
+                                            <dl>
+                                                <dt>행사기간</dt>
+                                                <dd>2020.09.04 ~2020.09.30</dd>
+                                            </dl>
+                                        </div>
+                                        <dl>
+                                            <dt>행사채널</dt>
+                                            <dd>전채널</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>행사경품</dt>
+                                            <dd>청첩장 또는 웨딩홀 계약서 등 확인 후 제품 구매 시 할인혜택 제공</dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="finish-txt">
+                                        <p>기획전이 종료되었습니다.</p>
+                                    </div>
+                                </div> -->
+
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-con"><!-- 210329 수정 [종료된 기획전 .finish 클래스 추가] -->
+                            <div class="ev-cont event09">
+                                <div class="conts">
+                                    <!-- 이벤트 상세내용 자리 -->
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-01.png" class="pc" alt="이벤트 내용">
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-01-m.png" class="mobile" alt="이벤트 내용">
+                                   
+                                    <div class="anker-wrap">
+                                        <a href="#a01"><img src="/lg5-common/images/BMC/open_conts/event09/anker-01.png" class="pc" alt="이벤트 내용"><img src="/lg5-common/images/BMC/open_conts/event09/anker-01-m.png" class="mobile" alt="이벤트 내용"></a><a href="#a02"><img src="/lg5-common/images/BMC/open_conts/event09/anker-02.png" class="pc" alt="이벤트 내용"><img src="/lg5-common/images/BMC/open_conts/event09/anker-02-m.png" class="mobile" alt="이벤트 내용"></a><a href="#a03"><img src="/lg5-common/images/BMC/open_conts/event09/anker-03.png" class="pc" alt="이벤트 내용"><img src="/lg5-common/images/BMC/open_conts/event09/anker-03-m.png" class="mobile" alt="이벤트 내용"></a><a href="#a04"><img src="/lg5-common/images/BMC/open_conts/event09/anker-04.png" class="pc" class="pc" alt="이벤트 내용"><img src="/lg5-common/images/BMC/open_conts/event09/anker-04-m.png" class="mobile" alt="이벤트 내용"></a>
+                                    </div>
+
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-02.png" class="pc" alt="이벤트 내용">
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-02-m.png" class="mobile" alt="이벤트 내용">
+
+
+                                    <div class="slide-wrap objet-slide ui_objet_carousel">
+                                        <div class="slide-content ui_carousel_list">
+                                            <ul class="slide-track ui_carousel_track">
+                                                <!-- slide -->
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    <a href="#n" class="slide-box">
+                                                        <div class="img">
+                                                            <img src="/lg5-common/images/BMC/open_conts/event09/objet-01.jpg" alt="">
+                                                        </div>
+                                                        <div class="prd_name">
+                                                            <span>상냉장 냉장고</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="slide-conts on ui_carousel_slide">
+                                                    <a href="#n" class="slide-box">
+                                                        <div class="img">
+                                                            <img src="/lg5-common/images/BMC/open_conts/event09/objet-02.jpg" alt="">
+                                                        </div>
+                                                        <div class="prd_name">
+                                                            <span>상냉장 냉장고</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="slide-conts ui_carousel_slide">
+                                                    <a href="#n" class="slide-box">
+                                                        <div class="img">
+                                                            <img src="/lg5-common/images/BMC/open_conts/event09/objet-03.jpg" alt="">
+                                                        </div>
+                                                        <div class="prd_name">
+                                                            <span>상냉장 냉장고</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <!-- //slide -->
+                                            </ul>
+                                        </div>
+                                        <div class="slide-controls">
+                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                        </div>
+                                    </div>
+
+                                    <div id="a01">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-03.png" class="pc" alt="이벤트 내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-03-m.png" class="mobile" alt="이벤트 내용">
+                                    </div>
+                                   
+                                    <div id="a02">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-04.png" class="pc" alt="이벤트 내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-04-m.png" class="mobile" alt="이벤트 내용">
+                                    </div>
+
+                                    <div id="a03">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-05.png" class="pc" alt="이벤트 내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-05-m.png" class="mobile" alt="이벤트 내용">
+                                    </div>                                   
+
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-06.png" class="pc" alt="이벤트 내용">
+                                    <img src="/lg5-common/images/BMC/open_conts/event09/img-06-m.png" class="mobile" alt="이벤트 내용">
+
+                                    <div id="a04">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-07.png" class="pc" alt="이벤트 내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event09/img-07-m.png" class="mobile" alt="이벤트 내용">                                    
+                                    </div>
+                                    <!-- //이벤트 상세내용 자리 -->
+                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-category">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>
