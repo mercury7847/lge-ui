@@ -632,6 +632,9 @@
             $contentWrap.off('scroll.app');  
             $contentWrap.off('scroll.lifestyle');
 
+            $('html,body').scrollTop(pageLens*winHeight);
+
+
             $device.css('top', '');
             appMotion(0); 
 
