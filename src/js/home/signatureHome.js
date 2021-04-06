@@ -530,7 +530,9 @@ $(function() {
         }    
         
         // 탭이동 이벤트 처리
-        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){
+        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){   
+            //오류 처리
+            $('html,body').scrollTop(pageLens*winHeight);
             $contentWrap.scrollTop(0); 
         });
 

@@ -7,7 +7,7 @@ $(function() {
             return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
         }
     });
-
+    $("html").scrollTop(0);
 
     vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
 
@@ -193,12 +193,12 @@ $(function() {
 
 
             //오브제 수정
-            if ($(".brand-wrap.objet-wrap").hasClass("active")) {
-                $("html").scrollTop(0);
-            } else {
-                let objetH = $(window).height();
-                $("html").scrollTop(objetH);
-            }
+            // if ($(".brand-wrap.objet-wrap").hasClass("active")) {
+            //     $("html").scrollTop(0);
+            // } else {
+            //     let objetH = $(window).height();
+            //     $("html").scrollTop(objetH);
+            // }
 
 
         }
