@@ -1,3 +1,4 @@
+/*
 (function(i,s,o,g,r,a,m){
     var isMobile = false;
     if(vcui.detect.isMobile){
@@ -19,6 +20,7 @@
     a.src=r;
     m.parentNode.insertBefore(a,m);
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+*/
 
 (function() {
 
@@ -139,7 +141,7 @@
                 lgkorUI.checkWishItem(ajaxUrl);
 
                 //크레마
-                lgkorUI.cremaLogin();
+                //lgkorUI.cremaLogin();
 
                 //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
                 if(typeof reviewsCount !== 'undefined' && reviewsCount != "") {
