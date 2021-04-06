@@ -20,7 +20,7 @@ function moveDetail(el, detailUrl, windowHeight) {
 
     var searchListTemplate = 
         '<li data-id="{{shopID}}">'+
-            '<div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
+            '<a href="#" class="store-info-list ui_marker_selector">'+
                 '<div class="point-wrap">'+
                     '<div class="point {{selected}}">'+
                         '<span class="num">{{num}}</span>'+
@@ -60,9 +60,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                                 '<span class="key">토요일 : </span>'+
                                 '<span class="value">{{bizHours.saturday}}</span>'+
                             '</p>'+
-                            '<p class="cell">'+
-                                '<a href="#{{shopID}}" class="btn-link" title="새창으로 열림 - {{shopName}}">상세보기</a>'+
-                            '</p>'+
                         '</div>'+
                         '{{# if(typeof serviceProduct != "undefined") { #}}' +
                         '<ul class="opt-list">'+
@@ -75,7 +72,8 @@ function moveDetail(el, detailUrl, windowHeight) {
                         '{{# } #}}' +
                     '</div>'+
                 '</div>'+
-            '</div>'+
+            '</a>'+
+            '<a href="#{{shopID}}" class="btn-link" title="새창으로 열림 - {{shopName}}">상세보기</a>'+
         '</li>';
     var addressFinder;
     var cookie = lgkorUI.cookie;
@@ -157,7 +155,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         zoom:14,
                         templates: {
                             infoWindow: 
-                            '<div class="info-overlaybox">'+
+                            '<div class="info-overlaybox" tabindex="0">'+
                             '   <div class="inner">'+
                             '       <div class="tit-wrap">'+
                             '           <p class="name">'+
@@ -210,6 +208,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '           <a href="#{{shopID}}" class="btn dark-gray size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');">상세 보기</a>'+
                             '       </div>'+
                             '   </div>'+
+                            '   <button class="btn-overlay-close" ><span class="blind">닫기</span></button>'+
                             '</div>'
                         }
                     }).on('mapinit', function(e,data){
@@ -349,7 +348,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     }
                 }
             })
-            .on('click', 'li > .ui_marker_selector .btn-link', function(e){
+            .on('click', 'li > .btn-link', function(e){
                 e.preventDefault();
                 e.stopPropagation();
                 self._openWindowPop(this)
