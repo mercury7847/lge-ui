@@ -1,20 +1,20 @@
 (function() {
-    var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}">' +
+    var listItemTemplate = '<li class="box {{#if disabledReason}}disabled{{/if}}" data-id="{{modelId}}">' +
         '<div class="col-table">' +
             '<div class="col"><div class="product-info">' +
-                '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
+                '<div class="thumb"><a href="{{modelUrlPath}}"><img src="{{mediumImageAddr}}" alt="{{#if imageAltText}}{{imageAltText}}{{/if}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
                 '<div class="infos">' +
-                    '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
+                    '<p class="name"><a href="{{modelUrlPath}}"><span class="blind">제품명</span>{{#raw modelDisplayName}}</a></p>' +
                     '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
                     '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                     '<div class="more"><span class="blind">제품스펙</span><ul>' +
-                        '{{#if !disabled}}{{#each item in spec}}<li>{{item}}</li>{{/each}}{{/if}}' +
+                        '{{#each item in spec}}<li>{{item}}</li>{{/each}}' +
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
-                    '{{#if obsBtnFlag=="enable"}}' +
-                    '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
-                    '{{#if price}}<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원{{/if}}' +
+                    '{{#if obsSellFlag=="Y"}}' +
+                    '{{#if obsOriginalPrice}}<small><span class="blind">할인전 가격</span>{{obsOriginalPrice}}원</small>{{/if}}' +
+                    '{{#if obsSellingPrice}}<span class="blind">구매가격</span>{{obsSellingPrice}}원{{/if}}' +
                     '{{/if}}' +
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
                 '</p>' +
@@ -59,6 +59,7 @@
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
 
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result) {
                     var data = result.data;
                     var arr = data instanceof Array ? data : [];
@@ -67,9 +68,14 @@
     
                     arr.forEach(function(item, index) {
                         item.index = index;
-                        //item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                        //item.price = item.price ? vcui.number.addComma(item.price) : null;
-                        //item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
+                        item.obsOriginalPrice = item.obsOriginalPrice ? vcui.number.addComma(item.obsOriginalPrice) : null;
+                        item.obsSellingPrice = item.obsSellingPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
+                        item.disabledReason = null;
+                        if(item.extinction == "Y") {
+                            item.disabledReason = "단종되었습니다.";
+                        } else if(item.soludOut == "Y") {
+                            item.disabledReason = "품절되었습니다.";
+                        }
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
     
@@ -79,24 +85,11 @@
 
             requestRemove: function($dm) {
                 var self = this;
-                var ajaxUrl = self.$contents.attr('data-remove-url');
                 var _id = $dm.attr('data-id');
-                var param = {
-                    "id":_id,
-                    "sku":$dm.attr('data-sku'),
-                    "categoryId":$dm.attr('data-categoryId'),
-                    "rtSeq":$dm.attr('data-rtSeq')
-                }
 
                 var obj = {title:'삭제시 최근 본 제품 목록에서 제외<br>됩니다. 선택하신 제품을<br>최근 본 제품에서 삭제하시겠어요?', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                        var data = result.data;
-                        var success = lgkorUI.stringToBool(data.success);
-                        if (success) {
-                            lgkorUI.removeCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME, _id);
-                            self.requestData();
-                        }
-                    });
+                    lgkorUI.removeCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME, _id);
+                    self.requestData();
                 }};
                 lgkorUI.confirm(null, obj);
             },
