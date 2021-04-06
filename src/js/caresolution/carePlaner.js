@@ -15,7 +15,7 @@
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
-        '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
+        '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
@@ -23,7 +23,7 @@
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
-        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{#raw userFriendlyName}}</p>'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
@@ -134,14 +134,14 @@
         '                   <div class="prd-care-horizon ui_flexible_box{{#if item.combineFlag == "Y"}} comb-type{{/if}}">'+
         '                       <div class="ui_flexible_cont">'+
         '                           <div class="img-wrap">'+
-        '                               <img src="{{item.modelImg}}" alt="{{item.displayName}}">'+
+        '                               <img src="{{item.modelImg}}" alt="{{#raw item.displayName}}">'+
         '                           </div>'+
         '                           <div class="txt-wrap">'+
         '                             <div class="flag-wrap">'+
         '                                   <span class="flag"><span class="blind">서비스명</span>{{item.contractTypeNm}}</span>'+
         '                               </div>'+
         '                               <div class="tit-info">'+
-        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
+        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{#raw item.displayName}}</p>'+
         '                                   <p class="code"><span class="blind">제품 코드</span>{{item.modelName}}</p>'+
         '                               </div>'+
         '                               <p class="etc">월 {{item.originalPrice}}<span class="comb-txt">{{#raw item.combineText}}</span></p>'+
@@ -212,14 +212,14 @@
             '   {{#each item in itemList}}'+
             '   <li class="item">'+
             '       <div class="img-wrap">'+
-            '           <img src="{{item.imageUrl}}" alt="{{item.displayName}}">'+
+            '           <img src="{{item.imageUrl}}" alt="{{#raw item.displayName}}">'+
             '       </div>'+
             '       <div class="txt-wrap">'+
             '           <div class="flag-wrap">'+
             '               <span class="flag"><span class="blind">서비스명</span>{{item.contractTypeNm}}</span>'+
             '           </div>'+
             '           <div class="tit-info">'+
-            '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.displayName}}</p>'+
+            '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{#raw item.displayName}}</p>'+
             '               <div class="etc-info">'+
             '                   <span class="txt"><span class="blind">제품 코드</span>{{item.modelName}}</span>'+
             '                   {{#if item.colorOption}}<span class="txt"><span class="blind">색상</span>{{item.colorOption}}</span>{{/if}}'+

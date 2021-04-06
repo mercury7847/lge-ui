@@ -770,7 +770,6 @@
                             $list_ul.empty();
                             //var $div = $("<div/>");
                             data.noDataList.forEach(function(item, index) {
-                                /*
                                 if(!item.hash) {
                                     item.hash = [];
                                 }
@@ -785,11 +784,12 @@
                                 item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                                 item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
                                 $list_ul.append(vcui.template(productItemTemplate, item));
-                                */
+                                /*
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                                 $list_ul.append(vcui.template(additionalItemTemplate, item));
+                                */
                             });
                             if(data.noDataList.length > 0) {
                                 self.$resultListNoData.show();
