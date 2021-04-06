@@ -15,7 +15,7 @@
             position:relative;
             padding:24px 20px 32px;
             @include mobile {
-                padding:32px 16px 0;
+                padding:32px 16px;
             }
             .flag-wrap {
                 padding-bottom:2px;
@@ -111,15 +111,15 @@
         .info-wrap {
             position:relative;
             padding: 0 20px 24px;
+            border-top: 1px solid rgba($color-default,.5);
             @include mobile {
                 padding:0 16px;
             }
             .info-list {
                 padding-top:16px;
-                border-top: 1px solid rgba($color-default,.5);
                 //border-bottom:1px solid #ddd;
                 @include mobile {
-                    margin-top: 32px;
+                    //margin-top: 32px;
                     padding-top: 24px;
                 }
                 //.group {
