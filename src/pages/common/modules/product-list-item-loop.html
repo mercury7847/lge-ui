@@ -211,13 +211,6 @@
         }
         @@if (context.bottom) {
         <div class="product-bottom">
-            @@if (context.bottom.benefit) {
-            <div class="flag-wrap bar-type">
-                @@for ( var i=0; i < bottom.benefit.length; i++ ) {
-                <span class="flag">`+bottom.benefit[i]+`</span>
-                }
-            </div>
-            }
             @@if (context.bottom.price) {
             <div class="price-area">
                 @@if (context.bottom.originalPrice) {
@@ -241,6 +234,15 @@
                 </div>
                 <span class="small-text">(3개월/1회 방문)</span>
             </div>
+            }
+            @@if (context.bottom.benefit) {
+            <!-- 210406 수정 [플래그 수정 / 돔 위치 이동]-->
+            <div class="flag-wrap icon-type">
+                @@for ( var i=0; i < bottom.benefit.length; i++ ) {
+                <span class="flag `+bottom.benefit[i].icon+`">`+bottom.benefit[i].text+`</span>
+                }
+            </div>
+            <!-- // 210406 수정 [플래그 수정 / 돔 위치 이동]-->
             }
             <div class="btn-area-wrap">
                 <div class="wishlist">

@@ -833,10 +833,10 @@
             var page = parseInt(param.page);
             var totalCount = parseInt(param.totalCount);
             if (page < totalCount) {
-                self.$registProductMoreBtn.show();
+                self.$registProductMoreBtn.css('display','block');
             } else {
                 //더이상 없다
-                self.$registProductMoreBtn.hide();
+                self.$registProductMoreBtn.css('display','none');
             }
 
             lgkorUI.setHiddenInputData({
@@ -853,15 +853,15 @@
                 var page = parseInt(param.page);
                 var totalCount = parseInt(param.totalCount);
                 if (page < totalCount) {
-                    self.$registProductMoreBtn.show();
+                    self.$registProductMoreBtn.css('display','block');
                 } else {
                     //더이상 없다
-                    self.$registProductMoreBtn.hide();
+                    self.$registProductMoreBtn.css('display','none');
                 }
                 self.$registProductNoData.hide();
                 self.$registProductList.find('>ul').show();
             } else {
-                self.$registProductMoreBtn.hide();
+                self.$registProductMoreBtn.css('display','none');
                 self.$registProductNoData.show();
                 self.$registProductList.find('>ul').hide();
             }

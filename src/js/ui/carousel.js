@@ -164,7 +164,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             waitForAnimate: true,           // 애니메이션을 적용하는 동안 슬라이드를 앞으로 이동하라는 요청을 무시합니다.
             zIndex: 1000,                    // 슬라이드의 zIndex 값 설정, IE9 이하의 경우 유용함
             activeHover: false,
-            additionWidth: 0                // 모듈이 내부 너비를 제대로 계산 못할 때 가감할 너비를 설정
+            additionWidth: 0,                // 모듈이 내부 너비를 제대로 계산 못할 때 가감할 너비를 설정
+            lastFix : false
         },
         initialize: function initialize(element, options) {
 
@@ -1293,30 +1294,33 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     
                 } else {
 
-                    // 추가 김두일
-                    
-                    if(opt.infinite === true || opt.variableWidth === true){
-                        // console.log(targetSlide.offset().left);
-                        // targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
-                        // targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    // 추가 김두일                    
+                    if(opt.infinite === true){
                         if(vcui.detect.isSafari){
                             targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
                         }else{
                             targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                         }
 
-                    }else{
+                    }else if(opt.lastFix===true){
+
                         var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
                         if(targetSlide[0] && (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width() < self.listWidth)){  
                             var dt = self.listWidth - (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width());
                             targetLeft = targetSlide[0]? (targetSlide[0].offsetLeft * -1) + dt : 0;
                         }else{
                             targetLeft = targetSlide[0]? targetSlide[0].offsetLeft * -1 : 0;
-
                         }
+
+                    }else{
+                        if(vcui.detect.isSafari){
+                            targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
+                        }else{
+                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        }
+
                     }
                     // 추가 end
-                    //targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                     
                 }
 

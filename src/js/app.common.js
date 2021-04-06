@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush;
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen;
 var LGEAPPclickCNT = 0;
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
@@ -220,12 +220,16 @@ $(document).ready(function() {
                                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
                             }
                         } else {
-                            var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+                            if(LGEAPPcomfirmAPPOpen()){
 
-                            obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                            var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+                            }else{
+                                var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
 
-                            lgkorUI.confirm(desc, obj);
+                                obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
+                                var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+    
+                                lgkorUI.confirm(desc, obj);
+                            }
                         }
                     }
                 });
@@ -247,7 +251,8 @@ $(document).ready(function() {
                 //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
                 setTimeout(function() {
                     //location.href = "https://play.google.com/store/apps/details?id=com.hyundaicard.appcard";
-                    window.open("https://play.google.com/store/apps/", "_blank");
+                    location.href = "https://play.google.com/store/apps/";
+                    //window.open("https://play.google.com/store/apps/", "_blank");
                 }, 500);
             } else if (agent.indexOf("iPhone") != -1) {
                 setTimeout(function() {
@@ -257,6 +262,18 @@ $(document).ready(function() {
                     }
                 }, 25);
                 //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
+            }
+        }
+
+        LGEAPPcomfirmAPPOpen = function(){
+            var agent = navigator.userAgent;
+
+            if (agent.indexOf("Android") != -1) {
+                //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
+                location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+            } else if (agent.indexOf("iPhone") != -1) {
+                //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
+                location.href = "lgeapp://";
             }
         }
 

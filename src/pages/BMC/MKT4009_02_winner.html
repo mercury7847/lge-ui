@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>당첨결과(당첨)</span></button>
+    </div>
+
+    @@include('./common/popup/MKT4009_02_winner_pop1.html', {
+        popupID: 'popup1'
+    })
+</body>
+</html>
