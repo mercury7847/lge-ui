@@ -1935,14 +1935,18 @@ var isApp = function(){
         cremaLogin:function() {
             if(typeof cremaid !== 'undefined' && typeof cremaname !== 'undefined') {
                 window.cremaAsyncInit = function () {
-                    crema.init(cremaid, cremaname);
+                    if(typeof crema !== 'undefined') {
+                        crema.init(cremaid, cremaname);
+                    }
                 };
-                crema.init(cremaid, cremaname);
+                window.cremaAsyncInit();
             } else {
                 window.cremaAsyncInit = function () {
-                    crema.init(null,null);
+                    if(typeof crema !== 'undefined') {
+                        crema.init(cremaid, cremaname);
+                    }
                 };
-                crema.init(null,null);
+                window.cremaAsyncInit();
             }
         },
 

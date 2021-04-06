@@ -10,7 +10,7 @@
         '   <div class="prd-care-vertical {{moduleType}}">'+
         '       <div class="img-wrap">'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
-        '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
+        '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
@@ -18,7 +18,7 @@
         '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
         '       {{/if}}'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
-        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{#raw userFriendlyName}}</p>'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
