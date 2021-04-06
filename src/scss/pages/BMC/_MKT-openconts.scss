@@ -19,6 +19,25 @@
     }
     /* //클래스별이미지분기 */
 
+    .evnet02{
+        .benefit01{
+            padding:0 0 140px;
+            text-align:center;
+            img{
+                display:inline-block;
+                padding:0;
+            }
+       }
+        .benefit02{
+            padding:116px 0;
+            background-color:#f2f0f4;
+            text-align:center;
+            @include mobile {
+                padding:0;
+            }
+        }
+    }
+
     .evnet06{
         .benefit01{
             padding:0 0 140px;
@@ -201,41 +220,62 @@
             }
         }
         .objet-slide {
-            padding:80px 100px 0;
+            padding:80px 100px 100px;
             @include mobile {
-                padding:30px 36px 0;
+                padding:30px 0px 60px;
             }
             .slide-content {
-                .slide-conts {
-                    float:left;
-                    width:327px;
-                    .slide-box {
-                        .img {
-                            width:327px;
-                            height:327px;
-                            img{
-                                text-align:center;
-                            }
+                .slide-track{
+                    display:inline-flex;
+                    justify-content: space-between;
+                    .slide-conts {
+                        padding-top:50px;
+                        @include mobile {
+                            padding-top:25px;
                         }
-                        .prd_name {
-                            padding:32px 0 0;
-                            text-align:center;
-                            font-size:16px;
-                            font-weight:700;
-                            color:rgba(0, 0, 0, 0.5);
-                        }
-                    }
-                    &.on {
-                        width:444px;
                         .slide-box {
                             .img {
-                                width:444px;
-                                height:444px;
+                                width:327px;
+                                height:327px;
+                                @include mobile {
+                                    max-width: 187px;
+                                    height: auto;
+                                }
+                                img{
+                                    text-align:center;
+                                }
                             }
                             .prd_name {
-                                padding:30px 0 0;
-                                font-size:18px;
-                                color:#000000;
+                                padding:32px 0 0;
+                                text-align:center;
+                                font-size:16px;
+                                font-weight:700;
+                                color:rgba(0, 0, 0, 0.5);
+                                @include mobile {
+                                    padding-top:15px;
+                                }
+                            }
+                        }
+                        &.on {
+                            margin:0 24px;
+                            padding-top:0;
+                            @include mobile {
+                                margin:0 15px;
+                            }
+                            .slide-box {
+                                .img {
+                                    width:444px;
+                                    height:444px;
+                                    @include mobile {
+                                        max-width: 215px;
+                                        height: auto;
+                                    }
+                                }
+                                .prd_name {
+                                    padding:30px 0 0;
+                                    font-size:18px;
+                                    color:#000000;
+                                }
                             }
                         }
                     }
@@ -249,6 +289,9 @@
                 }
                 .next {
                     right:-12px;
+                }
+                @include mobile {
+                    display:none;
                 }
             }
         }
