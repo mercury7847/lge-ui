@@ -356,7 +356,6 @@
             padding: 7px 16px;
             border-radius: 100px;
             &.block {
-                display: block !important;
                 margin-top: 24px;
             }
             &.fold {
@@ -365,7 +364,6 @@
                 }
             }
             &.unfold {
-                display: block;
                 &:before {
                     transform:rotate(45deg);
                 }

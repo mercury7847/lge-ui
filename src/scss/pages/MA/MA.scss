@@ -44,10 +44,12 @@
 				top:280px;
 				right:auto;
 				left:140px;
+				transform:translateY(5%) !important;
 				@include mobile {
 					top: 164px;
 					right: auto;
 					left: 16px;
+					transform:translateY(1%) !important;
 				}
 			}
 		}
@@ -113,7 +115,7 @@
 			left:140px;
 			z-index:2;
 			> p {
-				color:#fff;
+				color:#fff !important;
 				font-size:56px;
 				font-weight:700;
 				line-height:74px;
@@ -137,7 +139,7 @@
 				display:block;
 				position:relative;
 				padding-right:69px;
-				color:#fff;
+				color:#fff !important;
 				font-size:56px;
 				font-weight:700;
 				line-height:74px;
@@ -214,7 +216,7 @@
 				> .a {
 					color:#000;
 					&:after {
-						background-image:url('/lg5-common/images/MA/icon-arr-64x64-black.svg');
+						// background-image:url('/lg5-common/images/MA/icon-arr-64x64-black.svg');
 					}
 				}
 			}
@@ -330,6 +332,12 @@
 			}
 			.next-arr {
 				
+			}
+
+			&:nth-child(3) {
+				.text-link {
+					transform:translateY(0) !important;
+				}
 			}
 		}
 	}

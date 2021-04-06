@@ -604,8 +604,20 @@ $(function () {
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                     moveScene(currentPage,0);
+
+                    if(window.sessionStorage){ 
+                        var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
+                        if(lgeMainScrollTop){
+                            $contentWrap.scrollTop(lgeMainScrollTop);                            
+                        }
+                        window.sessionStorage.removeItem('lgeMainScrollTop');
+                    }
+
                 }, 100);
             }
+
+            
+
             
         }
 
@@ -626,6 +638,11 @@ $(function () {
             $window.trigger('resizeend');
             // 앱 대응시 주석처리 end
         }
+
+        $(document).on('click', 'a', function(e){
+            var scrollTop = $contentWrap.scrollTop();
+            if(window.sessionStorage) window.sessionStorage.setItem('lgeMainScrollTop', scrollTop);
+        });
         
 
         $window.trigger('breakpointchange');
