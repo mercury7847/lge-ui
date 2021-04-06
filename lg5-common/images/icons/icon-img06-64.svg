@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-270 -4896) translate(270 4801) translate(0 95) translate(16.7 6.6)">
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.3.4h26c1.105 0 2 .895 2 2v46c0 1.105-.895 2-2 2h-26c-1.105 0-2-.895-2-2v-46c0-1.105.895-2 2-2z"/>
+                            <rect width="8" height="2" x="11.3" y="4.4" fill="#000" rx="1"/>
+                            <g fill="#DA0F47" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="10" font-weight="bold">
+                                <text transform="translate(6.3 18.4)">
+                                    <tspan x="0" y="12">ARS</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
