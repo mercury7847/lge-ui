@@ -14,7 +14,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
      * @name vcui.ui.CenterMap
      * @extends vcui.ui.View
      */
-
     var CenterMap = core.ui('CenterMap', /** @lends vcui.ui.CenterMap# */{
         bindjQuery: 'centerMap',
         defaults: { 
@@ -332,9 +331,46 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 return item.id == id;   
             });
 
-            if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
-            else items[0].infoWindow.open(self.map, items[0].item);
+            if(items[0].infoWindow.getMap()){
+                items[0].infoWindow.close();
+            } else {
+                items[0].infoWindow.open(self.map, items[0].item)
 
+                var $target = $(items[0].infoWindow.contentElement);
+                var $targetFocus = $target.find('a, button, input');
+    
+                $target.focus();
+                $target.on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
+                        if( $(this).is('.info-overlaybox')) {
+                            $('[data-id="' + id + '"]').find('.ui_marker_selector').focus();
+                            e.preventDefault();
+                        }
+                    }
+                });
+                $targetFocus.first().on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
+                        $targetFocus.last().focus();
+                        console.log(1111)
+                        e.preventDefault();
+                    }
+                });
+                $targetFocus.last().on('keydown', function(e){
+                    if( !e.shiftKey && e.keyCode == 9 ) {
+                        $targetFocus.first().focus();
+                        e.preventDefault();
+                    }
+                });
+                $target.on('click', '.btn-overlay-close', function(e){
+                    e.preventDefault();
+                    if( items[0].infoWindow.getMap() ) {
+                        $('[data-id="' + id + '"]').find('.store-info-list').focus();
+                        items[0].infoWindow.close();
+                    }
+                })
+            };
+            
+            
             self.selectedMarker(items[0].id);
         },
 
