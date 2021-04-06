@@ -166,13 +166,14 @@
                         height: 64px;
                         .next{
                             &::before {
-                            background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
                             }
                         }
                         &::before {
                             width: 64px;
                             height: 64px;
                             box-shadow: none;
+                        }
                     }
                     @include mobile {
                         display:none;

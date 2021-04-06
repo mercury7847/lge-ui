@@ -91,7 +91,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.searchType = "local";
             self.itemArr = [];
             self.infoWindow = null;
-            self.$focusTarget = null;
+            self.$nextFocusTarget = null;
 
             self.centerID = 0;
             self.centerMarker;
@@ -163,14 +163,15 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.triggerHandler('mapinit');
         },
 
-        selectedMarker:function selectedMarker(id, focusTarget){
+        selectedMarker:function selectedMarker(id, nextFocusTarget){
             var self = this;
             var marker = vcui.array.filterOne(self.itemArr, function(item, i){
                 return item.id === id;
             });
 
             if(marker && marker.item){
-                self.$focusTarget = focusTarget instanceof $ ? focusTarget : $(focusTarget);
+                console.log(nextFocusTarget);
+                self.$nextFocusTarget = nextFocusTarget instanceof $ ? nextFocusTarget : $(nextFocusTarget);
                 new naver.maps.Event.trigger(marker.item,'click');
             }
         },
@@ -355,7 +356,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         marker.setIcon(self._getMarkerIcon(obj.info, obj.num)); 
                         self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);
                         self.docOff('focusin');
-                        if(self.$focusTarget[0]) self.$focusTarget.focus();
+                        if(self.$nextFocusTarget[0]) self.$nextFocusTarget.focus();
                     }
                 });
                 
