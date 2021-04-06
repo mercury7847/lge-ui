@@ -380,7 +380,7 @@
                 self._toggleOptContainer();
             });
 
-            self.$defaultListLayer.on('click', 'li > .ui_marker_selector .tit-wrap, li > .ui_marker_selector .addr', function(e){
+            self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
                 var id = $(this).closest('li').data('id');
                 self.$map.selectedMarker(id, this);
 

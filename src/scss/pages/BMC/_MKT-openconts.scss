@@ -33,7 +33,7 @@
                 @include mobile {
                     padding:0 36px;
                 }
-                .slide-content {
+                &.slide-content {
                     .slide-conts {
                         padding:12px;
                         .slide-box {
@@ -152,7 +152,7 @@
                         }
                     }
                 }
-                .slide-controls {
+                &.slide-controls {
                     max-width:1460px;
                     margin-top:-30px;
                     .prev {
@@ -160,6 +160,20 @@
                     }
                     .next {
                         right:-12px;
+                    }
+                    .btn-arrow {
+                        width: 64px;
+                        height: 64px;
+                        .next{
+                            &::before {
+                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                            }
+                        }
+                        &::before {
+                            width: 64px;
+                            height: 64px;
+                            box-shadow: none;
+                        }
                     }
                     @include mobile {
                         display:none;

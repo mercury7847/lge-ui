@@ -46,8 +46,10 @@ var bestRankBuyProductTmpl =
     '   </span>\n'+
     '   <div class="product-info">\n'+
     '       <p class="tit">{{modelDisplayName}}</p>\n'+
+    '       {{#if isPrice}}'+
     '       {{#if totalPrice}}'+
     '           <div class="price">{{#raw totalPrice}}</div>\n'+
+    '       {{/if}}'+
     '       {{/if}}'+
     '   </div>\n'+
     '</a>';
@@ -59,8 +61,10 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
     '           <p class="tit">{{obj.modelDisplayName}}</p>\n'+
-    '           {{#if obj.totalPrice}}'+
-    '               <div class="price">{{#raw obj.totalPrice}}</div>\n'+
+    '           {{#if obj.isPrice}}'+
+    '               {{#if obj.totalPrice}}'+
+    '                   <div class="price">{{#raw obj.totalPrice}}</div>\n'+
+    '               {{/if}}'+
     '           {{/if}}'+
     '       </div>\n'+
     '       </a>\n'+
@@ -97,50 +101,27 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
     '               <div class="code">{{obj.modelName}}</div>\n'+
-    '               <div class="price-area">\n'+
-    '                   <div class="original">\n'+
-    '                       {{#if obj.obsOriginalPrice}}'+
-    '                           <em class="blind">기존가격</em>\n'+
-    '                           <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
-    '                       {{/if}}'+
+    '               {{#if obj.isPrice}}'+
+    '                   <div class="price-area">\n'+
+    '                       <div class="original">\n'+
+    '                           {{#if obj.obsOriginalPrice}}'+
+    '                               <em class="blind">기존가격</em>\n'+
+    '                               <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
+    '                           {{/if}}'+
+    '                       </div>\n'+
+    '                       <div class="total">\n'+
+    '                           {{#if obj.totalPrice}}'+
+    '                               <em class="blind">판매가격</em>\n'+
+    '                               <span class="price">{{#raw obj.totalPrice}}</span>\n'+
+    '                           {{/if}}'+
+    '                       </div>\n'+
     '                   </div>\n'+
-    '                   <div class="total">\n'+
-    '                       {{#if obj.totalPrice}}'+
-    '                           <em class="blind">판매가격</em>\n'+
-    '                           <span class="price">{{#raw obj.totalPrice}}</span>\n'+
-    '                       {{/if}}'+
-    '                   </div>\n'+
-    '           </div>\n'+
+    '               {{/if}}\n'+
     '           </div>\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
 
-var recommendTmpl = '{{#each obj in list}}\n'+
-    '   <li class="slide-conts ui_carousel_slide">\n'+
-    '       <a href="{{obj.modelUrlPath}}" class="slide-box">\n'+
-    '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
-    '           <div class="info">\n'+
-    '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
-    '               <div class="code">{{obj.modelName}}</div>\n'+
-    '               <div class="price-area">\n'+
-    '                   <div class="original">\n'+
-    '                       {{#if obj.obsOriginalPrice}}'+
-    '                           <em class="blind">기존가격</em>\n'+
-    '                           <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
-    '                       {{/if}}'+
-    '                   </div>\n'+
-    '                   <div class="total">\n'+
-    '                       {{#if obj.totalPrice}}'+
-    '                           <em class="blind">판매가격</em>\n'+
-    '                           <span class="price">{{#raw obj.totalPrice}}</span>\n'+
-    '                       {{/if}}'+
-    '                   </div>\n'+
-    '           </div>\n'+
-    '           </div>\n'+
-    '       </a>\n'+
-    '   </li>\n'+
-    '{{/each}}';
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '   <div class="slide-box">\n'+
@@ -165,8 +146,10 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '               {{/if}}'+
     '           </div>\n'+
     '           <div class="product-price">\n'+
-    '               <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}{{/if}}</div>\n'+
-    '               <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{#raw totalPrice}}{{/if}}</div>\n'+
+    '               {{#if isPrice}}\n'+
+    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}{{/if}}</div>\n'+
+    '                   <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{#raw totalPrice}}{{/if}}</div>\n'+
+    '               {{/if}}\n'+
     '           </div>\n'+
     '       </div>\n'+
     '   </div>\n'+
@@ -266,9 +249,9 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
 
                     var obj = newProductRecommendLocal[index];
-
 
                     item['fullImagePath'] = obj && obj['fullImagePath'];
                     item['isReview'] = parseInt(item['reviewsCount']) > 0 ? true : false;
@@ -376,6 +359,7 @@ $(function(){
                             item['totalPrice'] = null;
                         }
 
+                        item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
                         item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
                         return item;
@@ -541,7 +525,7 @@ $(function(){
                     }else{
                         item['totalPrice'] = null;
                     }
-
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
                     item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
                     item['num'] = index+1;
                     return item;
