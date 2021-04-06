@@ -183,6 +183,7 @@ $(function() {
                     moveStep(step);
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
+                    $("html").scrollTop(scrollTopData);
                     console.log("$('html').scrollTop(0)", $("html").scrollTop());
                     console.log("scrollTopData", scrollTopData);
                     $scenes.each(function() {
