@@ -272,14 +272,16 @@
         }
         .objet-slide {
             padding:80px 100px 100px;
+            max-width:1380px;
             @include mobile {
                 padding:30px 0px 60px;
             }
             .slide-content {
+                max-width:1380px;
                 .slide-track{
                     display:inline-flex;
                     justify-content: space-between;
-                    width:100%;
+                    max-width:100%;
                     .slide-conts {
                         max-width:100%;
                         padding-top:50px;
