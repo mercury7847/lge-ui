@@ -70,6 +70,7 @@
                         item.index = index;
                         item.obsOriginalPrice = item.obsOriginalPrice ? vcui.number.addComma(item.obsOriginalPrice) : null;
                         item.obsSellingPrice = item.obsSellingPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
+                        item.spec = item.specInfo ? item.specInfo.split(",") : [];
                         item.disabledReason = null;
                         if(item.extinction == "Y") {
                             item.disabledReason = "단종되었습니다.";
