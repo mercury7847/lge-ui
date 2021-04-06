@@ -31,12 +31,11 @@ $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
     z-index:-1;
 }
 
-/*
 html,
 body {
     height: 100%;
 }
-*/
+
 .btn-opt-close {
     position: relative;
     right: 0;
@@ -225,7 +224,7 @@ body {
             @include app-cal(padding-top, $main-hd-height, 0);
             overflow: hidden;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            //-webkit-overflow-scrolling: touch;
             background-color: #f4f4f4;
         }
     }
