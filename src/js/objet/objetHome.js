@@ -8,11 +8,11 @@ $(function() {
         }
     });
 
-    setTimeout(function() {
-        $("html").scrollTop(0);
-        $(".brand-wrap.objet-wrap").removeClass("active on");
-        console.log($("html").scrollTop());
-    }, 1000);
+    // setTimeout(function() {
+    //     $("html").scrollTop(0);
+    //     $(".brand-wrap.objet-wrap").removeClass("active on");
+    //     console.log($("html").scrollTop());
+    // }, 1000);
 
     vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
 
@@ -183,8 +183,8 @@ $(function() {
                     moveStep(step);
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
-                    $("html").scrollTop(scrollTopData);
-                    console.log("$('html').scrollTop(0)", $("html").scrollTop());
+                    $("html,body").scrollTop(scrollTopData);
+                    console.log("$('html,body').scrollTop(0)", $("html,body").scrollTop());
                     console.log("scrollTopData", scrollTopData);
                     $scenes.each(function() {
                         if ($(this).find('video').length != 0) {
