@@ -95,6 +95,16 @@
 					height:360px;
 				}
 			}
+
+			&.video {
+				@include mobile {
+					width: 100% !important;
+					margin-left: 0 !important;
+					video {
+						width: 100%;
+					}
+				}
+			}
 		}
 		.text-cont {
 			position:absolute;
@@ -193,7 +203,7 @@
 				}
 			}
 		}
-		&.text-black { //밝은 배경
+		&.fc-black { //밝은 배경
 			.text-cont {
 				> p {
 					color:#000;
@@ -204,7 +214,7 @@
 				> .a {
 					color:#000;
 					&:after {
-						background:url('/lg5-common/images/MA/icon-arr-64x64-white.svg') no-repeat 0 0;
+						background-image:url('/lg5-common/images/MA/icon-arr-64x64-black.svg');
 					}
 				}
 			}
