@@ -71,13 +71,13 @@ $(document).ready(function() {
 
                 $(window).scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        $(".btn-app-ar a").removeClass("active");
+                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
                 $(".section-cover").scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        $(".btn-app-ar a").removeClass("active");
+                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
