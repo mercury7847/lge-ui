@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="423" height="199" viewBox="0 0 423 199">
+    <defs>
+        <linearGradient id="maydfszgza" x1="24.187%" x2="24.187%" y1="112.018%" y2="50%">
+            <stop offset="0%" stop-color="#F5F5F5"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#maydfszgza)" d="M0 49.719L206.925 0 423 49.719 423 199 0 199z" transform="translate(-316 -2328) translate(270 1657) translate(46 671)"/>
+                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="32" font-weight="400" transform="translate(-316 -2328) translate(270 1657) translate(46 671)">
+                            <tspan x="89.5" y="113">반려동물의 흔적을</tspan>
+                        </text>
+                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="44" font-weight="bold" transform="translate(-316 -2328) translate(270 1657) translate(46 671)">
+                            <tspan x="84.5" y="168">아무도 모르게</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
