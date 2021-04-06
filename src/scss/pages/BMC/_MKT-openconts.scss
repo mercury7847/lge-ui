@@ -33,7 +33,7 @@
                 @include mobile {
                     padding:0 36px;
                 }
-                .slide-content {
+                &.slide-content {
                     .slide-conts {
                         padding:12px;
                         .slide-box {
@@ -152,7 +152,7 @@
                         }
                     }
                 }
-                .slide-controls {
+                &.slide-controls {
                     max-width:1460px;
                     margin-top:-30px;
                     .prev {
@@ -160,6 +160,20 @@
                     }
                     .next {
                         right:-12px;
+                    }
+                    .btn-arrow {
+                        width: 64px;
+                        height: 64px;
+                        .next{
+                            &::before {
+                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                            }
+                        }
+                        &::before {
+                            width: 64px;
+                            height: 64px;
+                            box-shadow: none;
+                        }
                     }
                     @include mobile {
                         display:none;
@@ -180,6 +194,7 @@
     .event09{
         .anker-wrap{
             width:100%;
+            background-color:#a0928f;
             a{
                 display:inline-block;
                 width:25%;
@@ -192,10 +207,15 @@
             }
             .slide-content {
                 .slide-conts {
+                    float:left;
+                    width:327px;
                     .slide-box {
                         .img {
                             width:327px;
                             height:327px;
+                            img{
+                                text-align:center;
+                            }
                         }
                         .prd_name {
                             padding:32px 0 0;
@@ -206,6 +226,7 @@
                         }
                     }
                     &.on {
+                        width:444px;
                         .slide-box {
                             .img {
                                 width:444px;
