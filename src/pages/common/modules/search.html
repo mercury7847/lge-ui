@@ -3,7 +3,9 @@
     <!-- input focus 시 .focus-on 추가 -->
     <div class="input-keyword" @@if(context.value){data-searchValue="@@value"}>
         @@include('./common/modules/search-input.html', {
-            "value" : "@@value"
+            "placeholder" : "@@placeholder",
+            "value" : "@@value",
+            "title" : "@@title"
         })
 
         @@if(context.layer) {

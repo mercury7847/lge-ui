@@ -32,14 +32,6 @@
                     left: 40px;
                 }
             }
-            .tabs {
-                > li {
-                    margin-left: 14px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
-            }
         }
         @include mobile {
             position: relative;
@@ -429,7 +421,7 @@
                 right: 16px;
                 width: 16px;
                 height: 16px;
-                background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat center center;
+                background: url('/lg5-common/images/icons/btn-clear-16.svg') no-repeat center center;
             }
             .rounded-list {
                 display: inline-block;
@@ -683,7 +675,7 @@
                         }
                     }
                     .plp-filter-wrap {
-                        padding-top: 88px;
+                        padding:88px 16px 150px;
                         .btn-reset,
                         .filter-close {
                             top: 44px;
