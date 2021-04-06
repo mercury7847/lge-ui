@@ -20,21 +20,11 @@
     /* //클래스별이미지분기 */
 
     .evnet02{
-        .benefit01{
-            padding:0 0 140px;
-            text-align:center;
-            img{
-                display:inline-block;
-                padding:0;
-            }
-       }
-        .benefit02{
-            padding:116px 0;
-            background-color:#f2f0f4;
-            text-align:center;
-            @include mobile {
-                padding:0;
-            }
+        .btn-wrap{
+
+        }
+        .reply-wrap{
+
         }
     }
 
