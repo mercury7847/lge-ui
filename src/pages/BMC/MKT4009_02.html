@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["caresolution/addressManagement"]
+    })
+<body>
+    <article id="popup" class="win-popup-wrap uiForm"
+        data-event-id = "eventID_TEST"
+        data-sku-url = "/lg5-common/data-ajax/mypage/product/checkSku.json"
+    >
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 참여하기</span></h1>
+        </header>
+        <section class="pop-conts academy-pop ev-detail-con">
+            <div class="input-info"><!-- 210126 수정 - .input-info 영역 내 돔 변경이 있음 -->
+                <div class="input-info-wrap"><!-- 210126 수정 - .input-info-wrap 돔 추가 -->
+                    <div class="tit-wrap">
+                        <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                        <h2 class="h2-tit">개인정보 수집 이용 및 처리 위탁 동의</h2>
+                    </div>
+                    <!-- 210126 수정 - 필수 표시 변경 -->
+                    <p class="tb-tit req">개인정보 수집 이용 동의(필수)<span class="blind">필수</span></p>
+                    <div class="tb_row tb-bor">
+                        <table>
+                            <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
+                            <colgroup>
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">수집항목</th>
+                                <th scope="col">목적</th>
+                                <th scope="col">보유기간</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="al-left">참여자 이름, 참여자 연락처</td>
+                                <td class="al-left">경품배송 시 본인 확인</td>
+                                <td class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                            "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                            <span class="chk-wrap">
+                                <input type="checkbox" id="chk1-1" name="agreechk-1" data-required="true" >
+                                <label for="chk1-1">동의합니다</label>
+                            </span>
+                    </div>
+                </div><!-- 210126 수정 - .input-info-wrap 돔 추가 -->
+                <div class="input-info-wrap"><!-- 210126 수정 - 클래스 수정 -->
+                    <!-- 210126 수정 - 필수 표시 변경 -->
+                    <p class="tb-tit req">개인정보 처리 위탁 동의<span class="blind">필수</span></p>
+                    <div class="tb_row tb-bor">
+                        <table>
+                            <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
+                            <colgroup>
+                                <col style="width:50%">
+                                <col style="">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수탁자</th>
+                                    <th scope="col">목적</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                                    <td>이벤트와 관련된 업무(경품발송 등)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk2-1" name="agreechk-2" data-required="true" >
+                            <label for="chk2-1">동의합니다</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-info-wrap"><!-- 210126 수정 - 클래스 수정 -->
+                    <p class="tb-tit">개인정보 수집 이용 동의(선택)</p>
+                    <div class="tb_row tb-bor top-brd">
+                        <table>
+                            <caption>개인정보 수집 이용 동의 안내</caption>
+                            <colgroup>
+                                <col style="width:100%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>LG전자 응원 댓글 등록 이벤트를 진행하여 생성한 콘텐츠와 그 안에 포함되어있는 결과물(이미지/글 등)에 대해 LG전자 홈페이지의 응원 댓글 이벤트의 콘텐츠가 LG전자 홈페이지 이벤트에 활용되는 것에 동의하십니까?</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "귀하께서는 본 동의를 거절하실 수 있습니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk3-1" name="agreechk-3" data-required="true">
+                            <label for="chk3-1">동의합니다</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">응모자 정보</h2>
+                </div>
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="buyerName">이름</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap">
+                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly>
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="buyerPhone">휴대폰</label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="reply" class="req">댓글<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                               <textarea id="reply" placeholder="댓글 입력"></textarea>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            
+
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink" id="uiSubmit"><span>참여하기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+    </article>
+
+    
+    <script>
+        $(function () {
+            
+            vcui.require(['ui/validation','ui/modal','ui/selectbox'], function (Validation) {
+
+                // 구매자 정보 셋팅값 입력
+                var buyerInfo = {
+                    buyerName : { value:'홍길동' },
+                    buyerPhone: { value:'01023457890'},
+                    buyerZipCode: { value:'02345' },
+                    buyerAddrInfo: { value:'서울시' },
+                    buyerAddrDetail: { value:'엘지 송파빌딩 1702호' }
+                }
+
+                var addAddressObj = {}
+                $.each(buyerInfo, function(key, value){
+                    var newKey = key.replace('buyer','recipient');
+                    addAddressObj[newKey] = value;
+                })
+
+                
+                // 구매자 정보를 비움
+                var emptyAddAddressObj = {
+                    recipientName:'',
+                    recipientPhone:'',
+                    recipientZipCode:'',
+                    recipientAddrInfo:'',
+                    recipientAddrDetail:''
+                }
+                var vaildObj = {
+                    modelName:{
+                        required: true,
+                        errorMsg: "모델명을 입력해 주세요.",
+                    },
+                    serialNum:{
+                        required: true,
+						validate : function(val){
+							var reg = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/
+							return reg.test(val);
+						},
+                        errorMsg: "제조번호를 입력해 주세요.",
+					}
+                }
+
+                var errorObj = {}; // 에러 담는곳
+                $('#serialNum').css('text-transform', 'uppercase'); // 시리얼넘버 대문자만
+
+				var validation = new Validation('.uiForm',{register:$.extend(buyerInfo, vaildObj)});
+                
+                validation.on('errors', function(e,data){
+                    errorObj = data;
+
+                }).on('success', function(data){
+                    // 성공시 처리
+                    errorObj = {};
+                    //console.log(validation.getValues());
+
+                }).on('nextfocus', function(e,target){
+
+                    if(target.attr('name') == 'buyerAddrInfo'){
+                        setTimeout(function () {
+                            $('#buyerAddrBtn').focus();
+                        }, 10);                        
+                    }
+
+                    if(target.attr('name') == 'recipientAddrInfo'){
+                        setTimeout(function () {
+                            $('#recipientAddrBtn').focus();
+                        }, 10);
+                    }
+
+                });
+
+                var checkSerialSuccess = false;
+
+                // 제조번호 확인
+                $('#serialCheckBtn').on('input', function(e){
+                    checkSerialSuccess = false;
+                    if(e.target.value.length > 14){
+                        e.target.value = e.target.value.slice(0, 14);
+                    }
+                })
+
+                $('#serialCheckBtn').on('click', function(e){
+
+                    var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ 
+                    var checkSerial = serialRegex.test($('#serialNum').val());
+
+                    if(checkSerial) {
+                        var test = validation.validate(['modelName','serialNum']);
+                        if(test.validItem['modelName']) {
+                            lgkorUI.alert("", {title: test.validItem['modelName']});
+                        } else {
+                            var ajaxUrl = $('#popup').data('skuUrl');
+                            var eventId = $('#popup').data('eventId');
+                            var values = validation.getValues();
+                            if(ajaxUrl, eventId) {
+                                var param = {
+                                    'modelName':values.modelName,
+                                    'serialNum':values.serialNum,
+                                    'eventId':eventId
+                                }
+                                lgkorUI.showLoading();
+                                lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                                    lgkorUI.hideLoading();
+                                    var data = result.data;
+                                    if(lgkorUI.stringToBool(data.success)){
+                                        checkSerialSucces = true;
+                                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                                    } else {
+                                        checkSerialSucces = false;
+                                    }
+                                });
+                            }
+                        }
+                    } else {
+                        checkSerialSucces = false;
+                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        $('#serialNum').focus();
+                    }
+                });
+
+                // 구매자 정보와 같음
+                $('#info').on('click',function(e){
+                    if(e.currentTarget.checked){
+                        validation.setValues(addAddressObj);
+                    }else{
+                        validation.setValues(emptyAddAddressObj);
+                    }
+                });
+
+                // 구매정보 주소 찾기
+                var addressFinder = new AddressFind();
+
+                $('#buyerAddrBtn').on('click', function(e){
+                    addressFinder.open(function(data){
+                        $('input[name=buyerZipCode]').val(data.zonecode);
+                        $('input[name=buyerAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=buyerAddrDetail]').focus();
+                    });
+                });
+
+                // 사은품 주소 찾기
+                $('#recipientAddrBtn').on('click', function(e){
+                    addressFinder.open(function(data){
+                        $('input[name=recipientZipCode]').val(data.zonecode);
+                        $('input[name=recipientAddrInfo]').val(data.roadAddress);
+                        
+                        // 상세정보로 포커스 이동
+                        $('input[name=recipientAddrDetail]').focus();
+                    });
+                });
+
+
+                // 신청하기
+                $('#uiSubmit').on('click', function(){  
+                    if(checkSerialSuccess){
+                        validation.validate(); 	
+                    }else if(errorObj['serialNum']){
+                        lgkorUI.alert("", {title: "제조번호(S/N)가 확인해 주세요."});
+                        $('#serialCheckBtn').focus(); // 제조번호 확인버튼으로 포커스 이동
+                    }else{
+                        validation.validate();
+                    }
+                });
+
+                //// 제품 제조번호 확인방법 
+
+                var modelData = null;
+                var modelListData = null;
+                var $serialPopupBtn = $('#serialPopupBtn');
+                var $serialPopup = $('#serialPopup');
+
+                $serialPopupBtn.on('click', function(e){
+                    e.preventDefault();
+                    if(!modelData) {
+                        var ajaxUrl = $serialPopup.attr('data-list-url');
+                        lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+
+                            var selectbox = $serialPopup.find('.ui_selectbox:eq(0)');
+                            var data = result.data;
+                            modelData = data;
+                            var arr = data instanceof Array ? data : [];
+                            modelListData = vcui.array.reduce(arr, function (prev, cur) {
+                                return prev.concat(cur['modelList']);
+                            }, []); 
+
+                            var newArr = [{'text':'선택'}];
+                            arr.forEach(function(item, index) {
+                                newArr.push({'text':item.categoryName, 'value':index});
+                            });
+                            selectbox.vcSelectbox('update', newArr);
+                            $serialPopup.vcModal('open');
+
+                        });
+
+
+                    } else {
+                        var selectbox = $serialPopup.find('.ui_selectbox:eq(0)');
+                        selectbox.vcSelectbox('selectedIndex', 0, true);
+                        $serialPopup.vcModal('open');
+                    }
+
+                });
+
+                //카테고리 선택
+                $serialPopup.on('change', '.ui_selectbox:eq(0)', function(e,data){
+                    var index = data.selectedIndex;
+                    var $selectbox = $serialPopup.find('.ui_selectbox:eq(1)');
+                    if(index == 0) {
+                        $selectbox.vcSelectbox('disabled', true);
+                    } else {
+                        $selectbox.vcSelectbox('disabled', false);
+                        var mdData = modelData[index-1];
+                        var arr = mdData.modelList instanceof Array ? mdData.modelList : [];
+                        var newArr = [{'text':'세부 카테고리 선택', 'value':''}]
+                        arr.forEach(function(item, index) {
+                            newArr.push({'text':item.modelName, 'value':item.modelName});
+                        });     
+
+                        $selectbox.vcSelectbox('update', newArr);
+                    }
+                });
+
+                //모델 선택
+                $serialPopup.on('change', '.ui_selectbox:eq(1)', function(e,data){
+
+                    var value = $(this).val();
+                    var obj = vcui.array.filterOne(modelListData, function(item, index) {
+		                return item['modelName'] === value;
+		            });
+                    var imageUrl = obj['imageUrl'];
+                    var text, imageAlt = obj['imageAlt'];
+
+                    if(vcui.isEmpty(imageUrl)) {
+                        text = imageAlt = "제품 이미지 준비중입니다.";
+                        imageUrl = "/lg5-common/images/img-nodata.svg";
+                    }
+
+                    $serialPopup.find('div.example-result p.txt').text(text);
+                    $serialPopup.find('div.example-result img').attr({'src':imageUrl,'alt':imageAlt});
+                });
+            })
+
+        });
+        
+    </script>
+
+</body>
+</html>
