@@ -534,6 +534,9 @@ label img {
             border-radius:50%;
             vertical-align:middle;
             margin-right:5px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center center;
         }
         &.gray:before {
             background-color: #ccc;
@@ -545,16 +548,19 @@ label img {
             background-color: #51b1ac;
         }
         &.red:before {
-            background-color: #e51346;
+            // background-color: #e51346;
+            background-image: url("/lg5-common/images/CS/icon-state-no.svg");
         }
         &.black:before {
             background-color: #222;
         }
         &.skyblue:before {
-            background:#21a9aa;
+            // background:#21a9aa;
+            background-image: url("/lg5-common/images/CS/icon-state-ok.svg");
         }
         &.olive:before {
-            background:#76892d;
+            // background:#76892d;
+            background-image: url("/lg5-common/images/CS/icon-state-mid.svg");
         }
         &.gradient1::before {
             background-image: linear-gradient(135deg, #8d71ec, #ff537c);
