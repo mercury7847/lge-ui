@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="334" height="52" viewBox="0 0 334 52">
+    <defs>
+        <path id="v3r55q6lra" d="M0 0.12L51.483 0.12 51.483 51.6 0 51.6z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <text fill="#000" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="30" font-weight="bold" transform="translate(-193 -5035) translate(0 2894) translate(193 2141)">
+                        <tspan x="60" y="39">LG전자주식회사 귀중 </tspan>
+                    </text>
+                    <g>
+                        <g transform="translate(-193 -5035) translate(0 2894) translate(193 2141)">
+                            <mask id="0zriwrcfob" fill="#fff">
+                                <use xlink:href="#v3r55q6lra"/>
+                            </mask>
+                            <path fill="#A51C37" d="M25.742 51.6c14.216 0 25.741-11.53 25.741-25.743C51.483 11.64 39.958.12 25.742.12 11.525.12 0 11.64 0 25.857 0 40.07 11.525 51.6 25.742 51.6" mask="url(#0zriwrcfob)"/>
+                        </g>
+                        <path fill="#FEFEFE" d="M24.8 14.4L24.8 36.8 32 36.8 32 34.803 26.854 34.803 26.854 14.4zM17.396 20.4c1.66 0 3.004-1.347 3.004-2.998 0-1.656-1.344-3.002-3.004-3.002-1.65 0-2.996 1.346-2.996 3.002 0 1.65 1.346 2.998 2.996 2.998" transform="translate(-193 -5035) translate(0 2894) translate(193 2141)"/>
+                        <path fill="#FEFEFE" d="M26.625 4.018C26.364 4.007 25.85 4 25.6 4 13.693 4 4 13.692 4 25.602c0 5.768 2.239 11.193 6.314 15.269 4.093 4.084 9.52 6.329 15.285 6.329 5.767 0 11.194-2.245 15.283-6.33 4.08-4.075 6.318-9.5 6.318-15.268v-.985l-.864.005H31.778v2.007H45.15v.29c-.689 10.185-9.194 18.263-19.55 18.263-5.228 0-10.143-2.037-13.846-5.734-3.703-3.696-5.74-8.614-5.74-13.846 0-5.23 2.037-10.148 5.74-13.845 3.703-3.702 8.618-5.74 13.845-5.74.237 0 .79.006 1.026.013V4.018z" transform="translate(-193 -5035) translate(0 2894) translate(193 2141)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,18 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
     <g fill="none" fill-rule="evenodd">
         <g>
-            <g>
-                <g>
-                    <g>
-                        <g>
-                            <path d="M0 0H32V32H0z" transform="translate(-1272 -195) translate(270 175) translate(351) translate(646 15)"/>
-                            <g stroke="#000" stroke-width="1.5" transform="translate(-1272 -195) translate(270 175) translate(351) translate(646 15) translate(5 5)">
-                                <circle cx="9.167" cy="9.167" r="8.417"/>
-                                <path stroke-linecap="round" d="M15.833 15.278L21.255 20.7"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
+            <path d="M0 0H32V32H0z"/>
+            <g stroke="#000" stroke-width="1.5" transform="translate(3.333 4)">
+                <circle cx="10.667" cy="10" r="9.25"/>
+                <path stroke-linecap="round" d="M17.342 16.572L23.418 22.752"/>
             </g>
         </g>
     </g>

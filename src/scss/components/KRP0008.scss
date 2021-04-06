@@ -1025,6 +1025,7 @@
             }
 
             & ~ .option-contents {
+                .info-accordion-wrap,
                 .care-sibling-option {
                     &:first-child {
                         margin-top: 32px;

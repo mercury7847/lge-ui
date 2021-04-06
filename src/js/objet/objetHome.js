@@ -162,10 +162,10 @@ $(function() {
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
-            console.log("idx", idx);
+            //console.log("idx", idx);
             var scrollTopData = $(window).height() * idx; //winHeight * idx;
-            console.log("$(window).height()", $(window).height());
-            console.log("scrollTopData", scrollTopData);
+            //console.log("$(window).height()", $(window).height());
+            //console.log("scrollTopData", scrollTopData);
             $scenes.removeClass('active').eq(idx).addClass('active');
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -184,8 +184,8 @@ $(function() {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     $("html,body").scrollTop(scrollTopData);
-                    console.log("$('html,body').scrollTop(0)", $("html,body").scrollTop());
-                    console.log("scrollTopData", scrollTopData);
+                    //console.log("$('html,body').scrollTop(0)", $("html,body").scrollTop());
+                    //console.log("scrollTopData", scrollTopData);
                     // $scenes.each(function() {
                     //     if ($(this).find('video').length != 0) {
                     //         if ($(this).hasClass('on')) {
