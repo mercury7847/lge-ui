@@ -15,7 +15,7 @@
             <!-- mypage -->
             <div class="contents mypage non-members">
                 <div class="cont-wrap">
-                    <div class="lnb-contents" data-list-url="/mkt/api/recentlyView/retrieveRecentlyView" data-remove-url="/my-page/removeRvProducts.lgajax">
+                    <div class="lnb-contents" data-list-url="/mkt/api/recentlyView/retrieveRecentlyView">
                         <div class="info-tbl-wrap type2">
                             <ul>
                                 @@loop('./common/modules/bdcard-list.html', [
@@ -110,7 +110,7 @@
                                 ])
                             </ul>
                         </div>
-                        <div class="no-data">
+                        <div class="no-data" style="display:none;">
                             <p>최근 본 제품이 없습니다.</p>
                         </div>
                         @@include('./common/modules/bullet-list.html', {
