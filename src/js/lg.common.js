@@ -1121,7 +1121,7 @@ var isApp = function(){
             }
         },
 
-        addCookieArrayValue: function(cookieName, addData, maxLength) {
+        addCookieArrayValue: function(cookieName, addData, maxLength, expireDay) {
             var self = this;
             var items = self.getCookie(cookieName, true); // 이미 저장된 값을 쿠키에서 가져오기
             var itemArray = [];
@@ -1146,7 +1146,7 @@ var isApp = function(){
             }
 
             //값 새로 저장
-            var days = 30*6;
+            var days = expireDay? expireDay : 30*6;
             var cookieExpire = new Date();
             cookieExpire.setDate(cookieExpire.getDate() + days);
             var expireDateString = vcui.date.format(cookieExpire,'yyyyMMddhhmmss');
@@ -1157,7 +1157,7 @@ var isApp = function(){
             itemArray = itemArray.slice(0,maxLength);
 
             items = itemArray.join('|');
-            self.setCookie(cookieName, items);
+            self.setCookie(cookieName, items, false, expireDay);
 
             /*
             console.log('saved',itemArray.length);
