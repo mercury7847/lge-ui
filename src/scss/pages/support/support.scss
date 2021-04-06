@@ -17,6 +17,10 @@
 @import "../../support/mcustom-scrollbar";
 
 /* 삭제 예정 */
+label img {
+    pointer-events: none;
+}
+
 .dummy {
     background-color:rgba(255, 70, 70, 0.2);
     p {

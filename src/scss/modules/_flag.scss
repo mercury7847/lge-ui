@@ -82,6 +82,22 @@
 			color: $color-default;
 		}
 	}
+	&.icon-type {
+		.flag {
+			padding: 2px 4px 2px 24px;
+			border-radius: 4px;
+			background: $color-bg no-repeat left 4px center;
+			font-size: 10px;
+			line-height: 18px;
+			color: $color-default;
+			&.cash {
+				background-image: url('/lg5-common/images/icons/icon-cash-16.svg');
+			}
+			&.gift {
+				background-image: url('/lg5-common/images/icons/icon-gift-16.svg');
+			}
+		}
+	}
 }
 
 // design flag

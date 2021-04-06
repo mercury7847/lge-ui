@@ -1,4 +1,5 @@
 $(function() {
+
     new WOW().init();
     var rellax = new Rellax('.rellax');
 
@@ -78,58 +79,61 @@ $(function() {
     });
 
     function scrollEvent() {
-        var scrollE = $(".objet-wrap").scrollTop();
+        if ($(".objetcollection-tabs .tabs li:last-child").hasClass("on")) {
+            var scrollE = $(".objet-wrap").scrollTop();
 
-        var div = $(window).height(),
-            div2 = $(window).height() * 2,
-            div3 = $(window).height() * 3 - 100,
-            div4 = $(window).height() * 4,
-            opcity = 0,
-            opcity2 = 0,
-            opcity3 = 0;
-        if (scrollE >= 0 && scrollE < div) {
-            opcity = 1 - (scrollE / div);
+            var div = $(window).height(),
+                div2 = $(window).height() * 2,
+                div3 = $(window).height() * 3 - 100,
+                div4 = $(window).height() * 4,
+                opcity = 0,
+                opcity2 = 0,
+                opcity3 = 0;
+            if (scrollE >= 0 && scrollE < div) {
+                opcity = 1 - (scrollE / div);
+            }
+
+            $(".only_pc .brand-logo").css("opacity", opcity);
+
+            if (scrollE >= div && scrollE < div2) {
+                opcity2 = (scrollE - div) / (div2 - div);
+            } else if (scrollE > div2 && scrollE < div3) {
+                opcity2 = 1 - (scrollE - div2) / (div3 - div2);
+            } else if (scrollE >= div3) {
+                opcity3 = (scrollE - div2) / (div3 - div2);
+                opcity2 = 0;
+                $("#brand02").css({
+                    opacity: opcity3,
+                    position: "absolute"
+                });
+            }
+            $("#brand01").css("opacity", opcity2);
+
+            var divBrand = $("#brand-area2").offset().top,
+                divBrand2 = $("#brand-area2").offset().top + $(window).height(),
+                opcity4 = 0;
+
+            if (scrollE >= divBrand && scrollE < divBrand2) {
+                opcity4 = (scrollE - divBrand) / (divBrand2 - divBrand);
+                $("#brand-area2").addClass("type-a");
+                $("#brand_simul").css({
+                    "position": "fixed",
+                    "opacity": opcity4
+                });
+            } else if (scrollE >= divBrand2) {
+
+                $("#brand_simul").css({
+                    "position": "absolute",
+                    "opacity": 1
+                });
+            } else {
+                $("#brand-area2").removeClass("type-a");
+                $("#brand_simul").css({
+                    "position": "fixed",
+                    "opacity": 0
+                });
+            }
         }
 
-        $(".only_pc .brand-logo").css("opacity", opcity);
-
-        if (scrollE >= div && scrollE < div2) {
-            opcity2 = (scrollE - div) / (div2 - div);
-        } else if (scrollE > div2 && scrollE < div3) {
-            opcity2 = 1 - (scrollE - div2) / (div3 - div2);
-        } else if (scrollE >= div3) {
-            opcity3 = (scrollE - div2) / (div3 - div2);
-            opcity2 = 0;
-            $("#brand02").css({
-                opacity: opcity3,
-                position: "absolute"
-            });
-        }
-        $("#brand01").css("opacity", opcity2);
-
-        var divBrand = $("#brand-area2").offset().top,
-            divBrand2 = $("#brand-area2").offset().top + $(window).height(),
-            opcity4 = 0;
-
-        if (scrollE >= divBrand && scrollE < divBrand2) {
-            opcity4 = (scrollE - divBrand) / (divBrand2 - divBrand);
-            $("#brand-area2").addClass("type-a");
-            $("#brand_simul").css({
-                "position": "fixed",
-                "opacity": opcity4
-            });
-        } else if (scrollE >= divBrand2) {
-
-            $("#brand_simul").css({
-                "position": "absolute",
-                "opacity": 1
-            });
-        } else {
-            $("#brand-area2").removeClass("type-a");
-            $("#brand_simul").css({
-                "position": "fixed",
-                "opacity": 0
-            });
-        }
     }
 });

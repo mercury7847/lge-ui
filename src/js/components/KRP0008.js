@@ -1055,6 +1055,11 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
+                        find = $btmInfo.find('a.btn');
+                        var $btn = null;
+                        if(find.length > 0) {
+                            var $btn = find.clone();
+                        }
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
@@ -1063,10 +1068,7 @@
                             $btmInfo.append('<dd></dd>');
                         }
                         $btmInfo.find('dd').append($bulletList);
-                        /*
-                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
-                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
-                        */
+                        $btmInfo.find('dd').append($btn);
 
                         var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
 
@@ -1137,6 +1139,11 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
+                        find = $btmInfo.find('a.btn');
+                        var $btn = null;
+                        if(find.length > 0) {
+                            var $btn = find.clone();
+                        }
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
@@ -1145,10 +1152,7 @@
                             $btmInfo.append('<dd></dd>');
                         }
                         $btmInfo.find('dd').append($bulletList);
-                        /*
-                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
-                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
-                        */
+                        $btmInfo.find('dd').append($btn);
                         
                         var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
 
@@ -1262,8 +1266,13 @@
                 
                 $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
+                    var isNew = $(this).attr('data-open-new');
                     if(buttonLinkUrl) {
-                        location.href = buttonLinkUrl;
+                        if(isNew == "Y") {
+                            window.open(buttonLinkUrl);
+                        } else {
+                            location.href = buttonLinkUrl;
+                        }
                     }
                 });
 
@@ -1490,7 +1499,9 @@
                         infoTotal += (price * 12);
                     }
                 }
-
+                
+                //2021-04-06 할인계산 제거
+                /*
                 rtFreePeriod.forEach(function(item, index){
                     if(item <= 12 && selectInfoData.years1TotAmt) {
                         infoTotal -= selectInfoData.years1TotAmt;
@@ -1509,9 +1520,10 @@
                         popupData["5"].free.push(item);
                     }
                 });
+                */
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 기준)') : '원(대표요금제 기준)'));
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 방문 기준)') : '원(대표요금제 기준)'));
 
                 $paymentAmount.data('popupData',popupData);
             },

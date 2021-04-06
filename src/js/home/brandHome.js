@@ -79,7 +79,7 @@
                     }
                 },
                 {
-                    breakpoint: 768,
+                    breakpoint: 1024,
                     settings: {
                         dots:true,
                         fade:false,
@@ -631,6 +631,9 @@
             $contentWrap.scrollTop(0); 
             $contentWrap.off('scroll.app');  
             $contentWrap.off('scroll.lifestyle');
+
+            $('html,body').scrollTop(pageLens*winHeight);
+
 
             $device.css('top', '');
             appMotion(0); 

@@ -607,13 +607,13 @@
                 .inner {
                     position:relative;
                     width:360px;
-                    padding:24px;
+                    padding:48px 24px 24px;
                     background:#fff;
                     border-radius:16px;
                     box-shadow:0 4px 10px 0 rgba(17,17,17,.32);
                     @include csmobile {
                         width:320px;
-                        padding:20px;
+                        padding:40px 20px 20px;
                     }
                     .tit-wrap {
                         .name {
@@ -729,6 +729,7 @@
                         background-size:57px 36px;
                     }
                 }
+               
             }
         }
 
@@ -1028,8 +1029,10 @@
                                         font-size: 14px;
                                         display: flex;
                                         align-items: center;
+                                        justify-content: flex-start;
                                         flex-wrap: wrap;
                                         font-weight:500;
+                                        padding-right:136px;
                                         .key {
                                             color: #000;
                                         }
@@ -1170,13 +1173,17 @@
                 .sch-list {
                     ul {
                         li {
+                            > .btn-link {
+                                position: absolute;
+                                bottom:102px;
+                                right:0;
+                            }
                             .store-info-list {
                                 .info-wrap {
                                     .etc-info {
                                         .bizHours {
                                             .cell {
                                                 &:last-child {
-                                                    flex: 1;
                                                     text-align: right;
                                                 }
                                             }
@@ -1245,6 +1252,8 @@
                         }
                     }
                 }
+
+               
                 &.active {
                     .tabs-contents {
                         .desc {
@@ -1300,17 +1309,19 @@
                 .sch-list {
                     ul {
                         li {
+                            > .btn-link {
+                                position: absolute;
+                                bottom:102px;
+                                left:43px;
+                                right:auto;
+                            }
                             .store-info-list {
                                 .info-wrap {
                                     .etc-info {
                                         .bizHours {
-                                            .cell {
-                                                &:last-child {
-                                                    margin-left: 0;
-                                                    margin-top: 8px;
-                                                    width: 100%;
-                                                }
-                                            }
+                                            // display: flex;
+                                            padding-right:0;
+                                            padding-bottom:26px;
                                         }
                                     }
                                 }
@@ -1374,6 +1385,21 @@
                     @include mobile {
                         width:320px;
                     }
+                }
+                .btn-overlay-close {
+                    position:absolute;
+                    width:24px;
+                    height:24px;
+                    top:16px;
+                    right:24px;
+                    background: url("/lg5-common/images/icons/btn-close-24.svg") no-repeat center center;
+                    background-size: 100% 100%;
+
+                    @include mobile {
+                        top:12px;
+                        right:16px;
+                    }
+
                 }
                 .tit-wrap {
                     position:relative;
