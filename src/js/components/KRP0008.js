@@ -1055,6 +1055,11 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
+                        find = $btmInfo.find('a.btn');
+                        var $btn = null;
+                        if(find.length > 0) {
+                            var $btn = find.clone();
+                        }
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
@@ -1063,10 +1068,7 @@
                             $btmInfo.append('<dd></dd>');
                         }
                         $btmInfo.find('dd').append($bulletList);
-                        /*
-                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
-                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
-                        */
+                        $btmInfo.find('dd').append($btn);
 
                         var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
 
@@ -1137,6 +1139,11 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
+                        find = $btmInfo.find('a.btn');
+                        var $btn = null;
+                        if(find.length > 0) {
+                            var $btn = find.clone();
+                        }
                         $btmInfo.empty();
                         if(popupData.rtFreePeriodCount > 0) {
                             $btmInfo.append('<dt>무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)</dt>');
@@ -1145,10 +1152,7 @@
                             $btmInfo.append('<dd></dd>');
                         }
                         $btmInfo.find('dd').append($bulletList);
-                        /*
-                        $btmInfo.find('dt:eq(0)').text('무상할인 적용 회차 ('+popupData.rtFreePeriodCount+'회)');
-                        $btmInfo.find('dd em').text(popupData.rtFreePeriod+'회차');
-                        */
+                        $btmInfo.find('dd').append($btn);
                         
                         var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
 
@@ -1262,8 +1266,13 @@
                 
                 $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
+                    var isNew = $(this).attr('data-open-new');
                     if(buttonLinkUrl) {
-                        location.href = buttonLinkUrl;
+                        if(isNew == "Y") {
+                            window.open(buttonLinkUrl);
+                        } else {
+                            location.href = buttonLinkUrl;
+                        }
                     }
                 });
 
