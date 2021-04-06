@@ -162,6 +162,7 @@ $(function() {
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
+            console.log("idx", idx);
             var scrollTopData = $(window).height() * idx; //winHeight * idx;
             $scenes.removeClass('active').eq(idx).addClass('active');
 
