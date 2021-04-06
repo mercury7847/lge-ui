@@ -981,6 +981,11 @@
         .btn.border {
             border-color: $color-white !important;
             color: $color-white;
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $color-primary !important;
+            };
         }
     }
     .signature-brand {
