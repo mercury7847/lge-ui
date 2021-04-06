@@ -160,7 +160,7 @@ $(window).ready(function(){
 
             var height = _$('.KRP0015').outerHeight(true) - $('.sticy-compare .compare-title').outerHeight(true);
             _$('.KRP0015').stop().transition({y:height}, 350, "easeInOutCubic");
-            $('body').addClass('open-compare');
+            _$('body').addClass('open-compare');
         }
 
         function hideCompareBox(){
@@ -170,7 +170,7 @@ $(window).ready(function(){
             _$('.KRP0015').stop().transition({y:height}, 350, "easeInOutCubic", function(){
                 _$('.KRP0015').css({display:'none', y:0});
             });
-            $('body').removeClass('open-compare');
+            _$('body').removeClass('open-compare');
         }
 
         function addToastAlert(mode){
