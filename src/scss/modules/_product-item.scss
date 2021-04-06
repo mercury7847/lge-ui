@@ -83,7 +83,7 @@
 
         @include pc {
             &.plp-item {
-                padding-bottom: 140px;
+                padding-bottom: 138px;
             }
         }
 
@@ -615,11 +615,17 @@
                 right: 46px;
                 left: 46px;
             }
+            .flag-wrap {
+                margin-top: 2px;
+                @include mobile {
+                    margin-top: 5px;
+                }
+            }
         }
         .btn-area-wrap {
             display: table;
             width: 100%;
-            margin-top: 16px;
+            margin-top: 12px;
             @include mobile {
                 margin-top: 12px;
             }

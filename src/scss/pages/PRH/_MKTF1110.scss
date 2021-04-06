@@ -986,8 +986,12 @@
 
                 .tabs {
                     margin:0;
+
                     @include pc {
                         overflow: hidden;
+                    }
+                    @include mobile {
+                        margin:0 0 32px;
                     }
 
                     >li {
@@ -1464,7 +1468,8 @@
                     padding: 7px 0 7px 64px;
                 }
             }
-            &:nth-child(1) {
+            &:nth-child(1),
+            &:nth-child(2) {
                 margin-right: 20px;
                 @include mobile {
                     margin-right: 12px;
