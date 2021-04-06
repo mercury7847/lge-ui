@@ -461,29 +461,34 @@
     .tag-area {
         .title {
             display: block;
-            margin: 24px 0 16px;
+            margin: 28px 0 28px 23px;
             font-weight: 700;
-            font-size: 18px;
-            line-height: 28px;
+            font-size: 28px;
+            line-height: 38px;
             text-align: left;
             @include mobile {
-                margin: 3px 0 16px;
-                line-height: 26px;
+                margin: 3px 0 24px 12px;
+                font-size:24px;
+                line-height:33px;
             }
         }
         .tag-lists {
+            padding:0 8px;
             > li {
                 margin-top: 16px;
+                @include mobile {
+                    margin-top:14px;
+                }
             }
         }
         .tag {
             display: table;
-            padding: 15px 24px;
+            padding: 16px 20px;
             border-radius: 100px;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
             background-color: $color-bg-wt;
             @include mobile {
-                padding: 14px 20px;
+                padding: 12px 16px;
             }
             .text,
             .btn {
@@ -491,11 +496,12 @@
                 vertical-align: middle;
             }
             .text {
-                padding-right: 28px;
+                padding-right: 24px;
                 font-weight: 700;
                 font-size: 20px;
                 line-height: 30px;
                 word-break: break-all;
+                padding-right:20px;
             }
             .btn {
                 padding: 7px 12px;
