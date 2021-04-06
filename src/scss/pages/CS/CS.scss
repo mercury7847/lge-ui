@@ -11,3 +11,15 @@
 
 //FAQ
 @import "CSRF6043";
+
+
+// 210406 임시 텍스트
+.cs-temp-text {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 32px 40px 24px;
+  @include font-medium;
+  p {
+    margin-bottom: 16px;
+  }
+}

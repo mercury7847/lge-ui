@@ -1490,7 +1490,7 @@
                         infoTotal += (price * 12);
                     }
                 }
-
+                
                 rtFreePeriod.forEach(function(item, index){
                     if(item <= 12 && selectInfoData.years1TotAmt) {
                         infoTotal -= selectInfoData.years1TotAmt;
@@ -1511,7 +1511,7 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 기준)') : '원(대표요금제 기준)'));
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 방문 기준)') : '원(대표요금제 기준)'));
 
                 $paymentAmount.data('popupData',popupData);
             },
