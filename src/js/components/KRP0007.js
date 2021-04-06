@@ -168,6 +168,9 @@
 
         $('.KRP0007').buildCommonUI();
 
+        //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
+        lgkorUI.showAppBottomMenu(false);
+
         var categoryId = lgkorUI.getHiddenInputData().categoryId;
         var storageName = categoryId+'_lgeProductFilter';
         var saveListDataStorageName = categoryId+'_lgeProductFilterSaveListData';
