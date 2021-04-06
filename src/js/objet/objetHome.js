@@ -186,16 +186,16 @@ $(function() {
                     $("html,body").scrollTop(scrollTopData);
                     console.log("$('html,body').scrollTop(0)", $("html,body").scrollTop());
                     console.log("scrollTopData", scrollTopData);
-                    $scenes.each(function() {
-                        if ($(this).find('video').length != 0) {
-                            if ($(this).hasClass('on')) {
-                                $(this).find('video')[0].play();
-                            } else {
-                                $(this).find('video')[0].pause();
-                                $(this).find('video')[0].currentTime = 0;
-                            }
-                        }
-                    });
+                    // $scenes.each(function() {
+                    //     if ($(this).find('video').length != 0) {
+                    //         if ($(this).hasClass('on')) {
+                    //             $(this).find('video')[0].play();
+                    //         } else {
+                    //             $(this).find('video')[0].pause();
+                    //             $(this).find('video')[0].currentTime = 0;
+                    //         }
+                    //     }
+                    // });
                 });
             }, 100);
 
@@ -439,7 +439,7 @@ $(function() {
             // console.log("totalHeight", totalHeight);
             let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
-            $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
+            //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
             if (page !== undefined) {
