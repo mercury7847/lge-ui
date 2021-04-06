@@ -41,6 +41,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self._getLoginInfo();
 
             lgkorUI.requestCartCount(self.$el.attr('data-cart-url'));
+            
 
             vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min'], function () {            
                 self._setting();
@@ -52,7 +53,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     infinite: false,
                     variableWidth: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    lastFix : true
                 });
             });
 

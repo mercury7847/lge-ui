@@ -80,6 +80,7 @@
 					width: 64px;
 					height: 64px;
 					background: no-repeat 0 0;
+					background-size:64px 64px;
 					content: '';
 				}
 				&.item-telephone {
@@ -110,6 +111,11 @@
 				&.item-location {
 					&:before {
 						background-image: url("/lg5-common/images/icons/icon-location-64.svg");
+					}
+				}
+				&.item-reservation {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-reservation-64.svg");
 					}
 				}
 			}
