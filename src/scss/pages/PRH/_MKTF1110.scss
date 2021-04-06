@@ -1629,51 +1629,81 @@
                 margin-bottom: 32px;
             }
             .tabs-wrap {
-                margin-bottom: 32px;
+                margin-bottom: 30px;
+                &:before {
+                    display: none;
+                }
                 .tabs {
-                    > li > a {
-                        padding-bottom: 6px;
-                        border-width: 2px;
+                    > li {
+                        margin-left: 24px;
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        > a {
+                            padding: 6px 0;
+                            border-width: 2px;
+                            line-height: 28px;
+                        }
                     }
                 }
                 @include mobile {
-                    margin-bottom: 40px;
-                    &:before {
-                        display: none;
-                    }
+                    margin-bottom: 14px;
                     .tabs {
                         padding: 0;
+                        > li {
+                            margin-left: 20px;
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                            > a {
+                                padding: 4px 0;
+                                font-size: 15px;
+                                line-height: 24px;
+                            }
+                        }
                     }
                 }
             }
-            @include pc {
-                .tab-contents {
-                    padding: 48px 0;
-                    background-color: $color-bg;
+            .tab-contents {
+                background-color: $color-bg;
+                @media screen and (min-width: $tablet-l-width + 1) {
+                    padding: 37px 0 59px;
+                }
+                @include tablet {
+                    padding: 32px 0 40px;
                 }
             }
 
             .app-smart-wrap {
                 position: relative;
-                //padding-left: 118px;
-                //display: flex;
-                //flex-direction: row-reverse;
-                //justify-content: center;
-                //align-items: center;
-                padding: 0 40px;
-                @include mobile {
+                padding: 0 500px 0 40px;
+                .image {
+                    text-align: center;
+                    img {
+                        width: 100%;
+                        max-width: 560px;
+                    }
+                }
+                @include tablet {
                     display: block;
                     padding: 0 0 32px;
+                    .image {
+                        text-align: center;
+                    }
                 }
                 .app-smart-tabs {
                     position: absolute;
                     top: 50%;
+                    right: 40px;
                     left: 50%;
                     z-index: 2;
                     transform: translateY(-50%);
                     margin-left: 48px;
                     padding-left: 36px;
-                    @include mobile {
+                    @media screen and (min-width: 1460px) {
+                        left: 50%;
+                    }
+                    @include tablet {
                         display: none;
                     }
                     .tabs {
@@ -1741,23 +1771,39 @@
                 }
                 .slide-wrap {
                     .indi-wrap {
-                        bottom: -32px;
+                        display: none !important;
+                        @include tablet {
+                            display: block !important;
+                            bottom: -32px;
+                        }
                     }
                     .slide-controls {
                         display: none;
-                        @include mobile {
+                        @include tablet {
                             display: block;
                             .btn-arrow {
                                 &.prev {
-                                    left: -10px;
+                                    left: -24px;
                                 }
                                 &.next {
-                                    right: -10px;
+                                    right: -24px;
+                                }
+                                @include mobile {
+                                    &.prev {
+                                        left: -10px;
+                                    }
+                                    &.next {
+                                        right: -10px;
+                                    }
                                 }
                             }
                         }
                     }
                     .ui_carousel_slide {
+                        padding: 0;
+                        @media screen and (min-width: 1460px) {
+                            padding: 0 83px;
+                        }
                         .text-area {
                             margin-top: 24px;
                             text-align: center;
@@ -1772,7 +1818,7 @@
                                 line-height: 22px;
                             }
                         }
-                        @include pc {
+                        @media screen and (min-width: $tablet-l-width + 1) {
                             //&:not(:first-child) {
                             //    display: none;
                             //}

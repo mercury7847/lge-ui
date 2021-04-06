@@ -79,7 +79,7 @@
                     }
                 },
                 {
-                    breakpoint: 768,
+                    breakpoint: 1024,
                     settings: {
                         dots:true,
                         fade:false,
