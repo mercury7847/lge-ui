@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="423" height="199" viewBox="0 0 423 199">
+    <defs>
+        <linearGradient id="qnml7ur5ya" x1="24.187%" x2="24.187%" y1="112.018%" y2="50%">
+            <stop offset="0%" stop-color="#F5F5F5"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#qnml7ur5ya)" d="M0 48.74L211.716 0 423 48.74 423 199 0 199z" transform="translate(-1181 -2328) translate(270 1657) translate(46 671) translate(865)"/>
+                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="32" font-weight="400" transform="translate(-1181 -2328) translate(270 1657) translate(46 671) translate(865)">
+                            <tspan x="90" y="112">패피의 의류관리는</tspan>
+                        </text>
+                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="44" font-weight="bold" transform="translate(-1181 -2328) translate(270 1657) translate(46 671) translate(865)">
+                            <tspan x="85" y="168">남보다 빠르게</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

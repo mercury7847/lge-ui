@@ -3,7 +3,7 @@
     '<tr>' +
         '<td class="board-tit">' +
             '<a href="{{url}}">' +
-                '<p>{{title}}</p>' +
+                '<p>{{#raw title}}</p>' +
             '</a>' +
         '</td>' +
         '<td>{{date}}</td>' +

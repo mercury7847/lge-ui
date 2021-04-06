@@ -5,19 +5,17 @@
 
 .contents.membership {
     .visual-wrap {
+        display: none;
         @import "ACC4002";
     }
     .page-tabs {
         max-width:1460px;
         margin:0 auto;
-        padding:40px 40px 0;
+        padding:0 40px;
         background-color:#fff;
         @include mobile {
             margin-bottom:32px;
-            padding:32px 0 0;
-            .tabs-wrap {
-                text-align:center;
-            }
+            padding:0;
         }
         &.type2 {
             margin-bottom:0;
@@ -37,9 +35,9 @@
 
     // SUB PAGES
     .cont-wrap {
-        padding-top:80px;
+        padding-top:48px;
         @include mobile {
-            padding:60px 0;
+            padding:40px 0;
         }
         .section-wrap {
             .sects {
@@ -467,3 +465,7 @@
 
 // 팝업
 @import "ACC-popup";
+
+
+// 오픈컨텐츠
+@import "MKT-openconts"
