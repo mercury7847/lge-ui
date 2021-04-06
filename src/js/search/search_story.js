@@ -680,6 +680,11 @@
                     if(data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
+                        //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
+                        if(vcui.detect.isMobile){
+                            self.filterLayer.openFilterSectionAll(2);
+                        }
+                        
                         if(self.savedFilterData && self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             self.filterLayer.resetFilter(filterData);
