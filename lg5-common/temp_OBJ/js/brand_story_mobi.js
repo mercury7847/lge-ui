@@ -75,7 +75,7 @@ $(function() {
 
     function scrollEvent() {
         var scrollE = $(window).scrollTop();
-        console.log(scrollE);
+        //console.log(scrollE);
 
         var fixbG = $("#brand-areaM").offset().top;
         if (scrollE >= fixbG) {

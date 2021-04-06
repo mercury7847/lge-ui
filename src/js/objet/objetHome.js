@@ -183,7 +183,8 @@ $(function() {
                     moveStep(step);
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
-
+                    console.log("$('html').scrollTop(0)", $("html").scrollTop());
+                    console.log("scrollTopData", scrollTopData);
                     $scenes.each(function() {
                         if ($(this).find('video').length != 0) {
                             if ($(this).hasClass('on')) {
