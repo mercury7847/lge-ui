@@ -985,6 +985,7 @@
                 text-align: center;
 
                 .tabs {
+                    margin:0;
                     @include pc {
                         overflow: hidden;
                     }
@@ -1268,6 +1269,9 @@
                     //transform: translateY(-50%);
                     max-width: none;
                     padding-top: 58px;
+                    .tabs {
+                        margin:0;
+                    }
 
                     .tabs>li {
                         display: block;
