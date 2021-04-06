@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="84" viewBox="0 0 400 84">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-781 -2122) translate(269 205) translate(0 151) translate(0 1377) translate(512 389)">
+                            <rect width="400" height="84" fill="#156247" rx="42"/>
+                            <text fill="#FFF" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="30" font-weight="400" letter-spacing="-.416">
+                                <tspan x="88" y="57">설문조사 참여하기</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1380px" height="631px" viewBox="0 0 1380 631" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#F75584" offset="0%"></stop>
+            <stop stop-color="#8D71EC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01">
+            <polygon id="Path" fill="#FFF4EE" fill-rule="nonzero" points="0 0 1380 0 1380 1377 0 1377"></polygon>
+            <path d="M1175.96,127 L1148.04,127 C1146.36,127 1145,125.659 1145,124 C1145,122.342 1146.36,121 1148.04,121 L1175.96,121 C1177.64,121 1179,122.342 1179,124 C1179,125.659 1177.64,127 1175.96,127 Z M1138.968,116.147 C1138.4,116.716 1137.655,117 1136.91,117 C1136.166,117 1135.421,116.716 1134.853,116.147 C1133.716,115.01 1133.716,113.167 1134.853,112.031 L1146.031,100.853 C1147.168,99.716 1149.011,99.716 1150.147,100.853 C1151.284,101.99 1151.284,103.832 1150.147,104.969 L1138.968,116.147 Z M1131,172 C1129.344,172 1128,170.64 1128,168.96 L1128,141.04 C1128,139.36 1129.344,138 1131,138 C1132.657,138 1134,139.36 1134,141.04 L1134,168.96 C1134,170.64 1132.657,172 1131,172 L1131,172 Z M1131,106 C1129.344,106 1128,104.64 1128,102.96 L1128,75.04 C1128,73.359 1129.344,72 1131,72 C1132.657,72 1134,73.359 1134,75.04 L1134,102.96 C1134,104.64 1132.657,106 1131,106 L1131,106 Z M1121.089,117 C1120.344,117 1119.599,116.716 1119.031,116.148 L1107.853,104.968 C1106.716,103.831 1106.716,101.989 1107.853,100.853 C1108.99,99.716 1110.832,99.716 1111.969,100.853 L1123.147,112.032 C1124.284,113.169 1124.284,115.01 1123.147,116.148 C1122.579,116.716 1121.834,117 1121.089,117 Z M1113,124 C1113,125.659 1111.639,127 1109.96,127 L1082.04,127 C1080.361,127 1079,125.659 1079,124 C1079,122.342 1080.361,121 1082.04,121 L1109.96,121 C1111.639,121 1113,122.342 1113,124 Z M1119.031,127.853 C1120.168,126.716 1122.011,126.716 1123.147,127.853 C1124.284,128.99 1124.284,130.833 1123.147,131.969 L1111.969,143.147 C1111.4,143.716 1110.656,144 1109.911,144 C1109.166,144 1108.421,143.716 1107.853,143.147 C1106.716,142.01 1106.716,140.168 1107.853,139.031 L1119.031,127.853 L1119.031,127.853 Z M1138.968,127.853 L1150.148,139.031 C1151.284,140.168 1151.284,142.011 1150.148,143.147 C1149.578,143.716 1148.834,144 1148.089,144 C1147.345,144 1146.599,143.716 1146.031,143.147 L1134.853,131.969 C1133.716,130.832 1133.716,128.99 1134.853,127.853 C1135.99,126.716 1137.831,126.716 1138.968,127.853 Z" id="Shape" fill="#FAE1D5" fill-rule="nonzero" opacity="0.7"></path>
+            <circle id="Oval" stroke="#FCEBE2" stroke-width="5" opacity="0.7" style="mix-blend-mode: multiply;" cx="1197" cy="176" r="9.5"></circle>
+            <path d="M264.156,154 L228.844,154 C226.721,154 225,152.211 225,150 C225,147.79 226.721,146 228.844,146 L264.156,146 C266.279,146 268,147.79 268,150 C268,152.211 266.279,154 264.156,154 Z M219.137,137.947 C218.435,138.649 217.515,139 216.595,139 C215.675,139 214.755,138.649 214.053,137.947 C212.649,136.542 212.649,134.267 214.053,132.861 L227.863,119.053 C229.267,117.649 231.543,117.649 232.947,119.053 C234.351,120.458 234.351,122.733 232.947,124.139 L219.137,137.947 Z M209,209 C206.791,209 205,207.28 205,205.156 L205,169.844 C205,167.719 206.791,166 209,166 C211.209,166 213,167.72 213,169.844 L213,205.156 C213,207.281 211.209,209 209,209 Z M209,127 C206.791,127 205,125.28 205,123.156 L205,87.844 C205,85.719 206.791,84 209,84 C211.209,84 213,85.719 213,87.844 L213,123.156 C213,125.281 211.209,127 209,127 L209,127 Z M194.404,139 C193.484,139 192.564,138.65 191.862,137.947 L178.053,124.137 C176.649,122.733 176.649,120.457 178.053,119.053 C179.458,117.649 181.733,117.649 183.138,119.053 L196.947,132.863 C198.351,134.267 198.351,136.543 196.947,137.947 C196.244,138.649 195.324,139 194.404,139 Z M186,150 C186,152.211 184.279,154 182.156,154 L146.844,154 C144.721,154 143,152.211 143,150 C143,147.79 144.721,146 146.844,146 L182.156,146 C184.279,146 186,147.79 186,150 Z M191.862,155.054 C193.267,153.649 195.542,153.649 196.947,155.054 C198.351,156.458 198.351,158.734 196.947,160.138 L183.138,173.946 C182.435,174.649 181.516,175 180.595,175 C179.675,175 178.755,174.649 178.053,173.946 C176.649,172.542 176.649,170.266 178.053,168.862 L191.862,155.054 Z M219.137,155.054 L232.947,168.862 C234.351,170.266 234.351,172.542 232.947,173.947 C232.244,174.649 231.324,175 230.404,175 C229.484,175 228.564,174.649 227.862,173.947 L214.053,160.138 C212.649,158.734 212.649,156.458 214.053,155.054 C215.458,153.649 217.733,153.649 219.137,155.054 Z" id="Shape" fill="#FAE1D5" fill-rule="nonzero" opacity="0.7"></path>
+            <g id="Group" transform="translate(477.000000, 112.000000)" fill="#111111" font-family="Helvetica" font-size="70" font-weight="normal">
+                <g id="LGE.COM-소개">
+                    <text>
+                        <tspan x="0.405" y="68">LGE.COM </tspan>
+                        <tspan x="342.680391" y="68" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">소개</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="Group" transform="translate(255.000000, 238.000000)" fill="#111111" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="26" font-weight="bold">
+                <text id="기존-각각-운영-되던-LG전자-홈페이지,-온라인-몰,-케어솔루션,-고객서비스-사이트를">
+                    <tspan x="0.615" y="30">기존 각각 운영 되던 LG전자 홈페이지, 온라인 몰, 케어솔루션, 고객서비스 사이트를</tspan>
+                </text>
+                <text id="1개의-사이트로-통합한-웹-&amp;앱을-만들었습니다.">
+                    <tspan x="190.476" y="68">1개의 사이트로 통합한 웹 &amp;앱을 만들었습니다.</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(251.000000, 326.000000)" fill="#111111" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="20" font-weight="normal">
+                <text id="LGE.COM은-고객-경험-여정의-주요-과정(인지,-검색,-결정,-구매,-사후관리)에서-자사만의-Only&amp;BEST-서비스를">
+                    <tspan x="0.157" y="23">LGE.COM은 고객 경험 여정의 주요 과정(인지, 검색, 결정, 구매, 사후관리)에서 자사만의 Only&amp;BEST 서비스를</tspan>
+                </text>
+                <text id="제공하여-고객에게-긍정적-경험(가치)을-제공하는-LG전자-포탈-서비스를-지향하고자-합니다.">
+                    <tspan x="76.195" y="52">제공하여 고객에게 긍정적 경험(가치)을 제공하는 LG전자 포탈 서비스를 지향하고자 합니다.</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(212.000000, 414.000000)">
+                <g transform="translate(0.000000, 21.000000)">
+                    <circle id="Oval" fill="#8167A8" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="87.5" cy="87.5" r="87.5"></circle>
+                    <circle id="Oval" fill="#E75B9A" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="230.5" cy="87.5" r="87.5"></circle>
+                    <circle id="Oval" fill="#EF8C87" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="372.5" cy="87.5" r="87.5"></circle>
+                    <circle id="Oval" fill="#F6AF6F" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="515.5" cy="87.5" r="87.5"></circle>
+                    <g transform="translate(52.000000, 56.000000)" fill="#FFFFFF" font-size="20" font-weight="normal">
+                        <text id="LG전자" font-family="Helvetica">
+                            <tspan x="5.979" y="19">LG</tspan>
+                            <tspan x="32.6586875" y="19" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">전자</tspan>
+                        </text>
+                        <text id="홈페이지" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">
+                            <tspan x="0.349" y="48">홈페이지</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(195.000000, 77.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="20" font-weight="normal" id="온라인몰">
+                        <text>
+                            <tspan x="0.349" y="18">온라인몰</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(328.000000, 77.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="20" font-weight="normal" id="케어솔루션">
+                        <text>
+                            <tspan x="0.562" y="18">케어솔루션</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(471.000000, 77.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="20" font-weight="normal" id="고객서비스">
+                        <text>
+                            <tspan x="0.562" y="18">고객서비스</tspan>
+                        </text>
+                    </g>
+                </g>
+                <polygon id="Path" fill="#D7D7D7" fill-rule="nonzero" style="mix-blend-mode: multiply;" points="670.5 96.5 694.5 108.5 670.5 120.5 670.5 110.5 632.5 110.5 632.5 106.5 670.5 106.5"></polygon>
+                <circle id="Oval" fill="url(#linearGradient-1)" fill-rule="nonzero" cx="835.5" cy="108.5" r="108.5"></circle>
+                <g transform="translate(767.000000, 89.000000)" fill="#FFFFFF" font-family="Helvetica" font-size="30" font-weight="normal" id="LGE.COM">
+                    <text>
+                        <tspan x="0.595" y="29">LGE.COM</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
