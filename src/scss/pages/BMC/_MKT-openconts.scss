@@ -19,26 +19,7 @@
     }
     /* //클래스별이미지분기 */
 
-    .evnet02{
-        .benefit01{
-            padding:0 0 140px;
-            text-align:center;
-            img{
-                display:inline-block;
-                padding:0;
-            }
-       }
-        .benefit02{
-            padding:116px 0;
-            background-color:#f2f0f4;
-            text-align:center;
-            @include mobile {
-                padding:0;
-            }
-        }
-    }
-
-    .evnet06{
+    .event06{
         .benefit01{
             padding:0 0 140px;
             text-align:center;
@@ -47,18 +28,17 @@
                 padding:0;
             }
 
-            .benefit-slide {
+            .benefit-slide{
                 padding:0 100px;
-                @include mobile {
+                @include mobile{
                     padding:0 36px;
                 }
-                &.slide-content {
+                .slide-content{
                     .slide-conts {
                         padding:12px;
                         .slide-box {
                             display:block;
                             position:relative;
-                            // height:220px;
                             height:545px;
                             padding:60px;
                             border-radius:8px;
@@ -171,7 +151,7 @@
                         }
                     }
                 }
-                &.slide-controls {
+                .slide-controls{
                     max-width:1460px;
                     margin-top:-30px;
                     .prev {
@@ -180,11 +160,11 @@
                     .next {
                         right:-12px;
                     }
-                    .btn-arrow {
+                    .btn-arrow{
                         width: 64px;
                         height: 64px;
                         .next{
-                            &::before {
+                            &::before{
                              background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
                             }
                         }
