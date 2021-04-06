@@ -335,6 +335,7 @@
 
         // 예약 일시 변경
         &.reservation-time-pop {
+            overflow-x:hidden;
             padding-top:8px;
             .tit-wrap {
                 position:relative;
