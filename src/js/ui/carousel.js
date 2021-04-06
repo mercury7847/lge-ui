@@ -1298,7 +1298,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if(opt.infinite === true || opt.variableWidth === true){
                         // console.log(targetSlide.offset().left);
                         // targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
-                        targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        // targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        if(vcui.detect.isSafari){
+                            targetLeft = targetSlide[0] ? targetSlide.offset().left * -1 : 0;
+                        }else{
+                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        }
 
                     }else{
                         var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
