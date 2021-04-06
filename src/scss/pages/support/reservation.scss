@@ -17,16 +17,15 @@
         }
         .summary-img {
             display:inline-block;
-            max-width:120px;
+            width:120px;
             vertical-align:middle;
             margin-right:48px;
             img {
                 max-width:100%;
+                width:100%;
             }
             &.type-icon {
-                img {
-                    max-width: 80px;
-                }
+                width:80px;
             }
         }
         .summary-info {
