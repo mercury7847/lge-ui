@@ -412,12 +412,8 @@ $(function() {
             });
 
             stepLens = wheelArr.length - 1;
-            // console.log("winHeight", winHeight);
-            // console.log("totalHeight", totalHeight);
-            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
-            $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
             if (page !== undefined) {
                 currentPage = page;
@@ -436,7 +432,6 @@ $(function() {
 
         // 탭이동 이벤트 처리
         $('.objetcollection-tabs .ui_tab').on('tabchange', function(e, data) {
-            moveScene(1, 2, 100)
             $contentWrap.scrollTop(0);
         });
 
@@ -480,32 +475,32 @@ $(function() {
         // });
 
         //전시기록 더보기...
-        // var $artGuide = $('.Objet-section.art-guide');
-        // var $artMoreBtn = $artGuide.find('button.btn-moreview');
-        // $artGuide.find('.art-guide-list > li:gt(5)').hide();
+        var $artGuide = $('.Objet-section.art-guide');
+        var $artMoreBtn = $artGuide.find('button.btn-moreview');
+        $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
-        // var artGuideLen = $artGuide.find('.art-guide-list > li').length;
-        // if (artGuideLen < 6) $artMoreBtn.hide();
+        var artGuideLen = $artGuide.find('.art-guide-list > li').length;
+        if (artGuideLen < 6) $artMoreBtn.hide();
 
 
-        // $artMoreBtn.on('click', function(e) {
-        //     e.preventDefault();
+        $artMoreBtn.on('click', function(e) {
+            e.preventDefault();
 
-        //     var $span = $(this).find('span').eq(0);
-        //     var toggleTxt = $(this).data('toggleTxt');
-        //     var txt = $span.text();
-        //     $(this).data('toggleTxt', txt);
+            var $span = $(this).find('span').eq(0);
+            var toggleTxt = $(this).data('toggleTxt');
+            var txt = $span.text();
+            $(this).data('toggleTxt', txt);
 
-        //     if ($(this).hasClass('fold')) {
-        //         $(this).removeClass('fold');
-        //         $span.text(toggleTxt);
-        //         $artGuide.find('.art-guide-list > li:gt(5)').hide();
-        //     } else {
-        //         $(this).addClass('fold');
-        //         $span.text(toggleTxt);
-        //         $artGuide.find('.art-guide-list > li').show();
-        //     }
-        // });
+            if ($(this).hasClass('fold')) {
+                $(this).removeClass('fold');
+                $span.text(toggleTxt);
+                $artGuide.find('.art-guide-list > li:gt(5)').hide();
+            } else {
+                $(this).addClass('fold');
+                $span.text(toggleTxt);
+                $artGuide.find('.art-guide-list > li').show();
+            }
+        });
 
 
         if (isApplication) {
@@ -531,14 +526,10 @@ $(function() {
             var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
             console.log("targetName", targetName);
             if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
-
                 setTimeout(function() {
-                    $('.next-arr').trigger("click"); //wheelScene(1);
-                    setTimeout(function() {
-                        $("[aria-controls='" + targetName + "']").trigger("click");
-                    }, 500);
-                }, 500);
-
+                    wheelScene(1);
+                    $("[aria-controls='" + targetName + "']").trigger("click");
+                }, 1000);
 
             }
             $("[aria-controls='objet-cont4']").on("click", function() {
