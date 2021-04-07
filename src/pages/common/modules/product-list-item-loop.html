@@ -320,31 +320,33 @@
 }
 @@if (context.banner) {
 <li class="item-banner @@banner.moduleType">
+    <!-- 210407 CMS 동기화 -->
     <div class="item">
-        @@include('./common/modules/flags.html', {
-            borderType: true,
-            flags: [
-                "제품관리팁"
-            ]
-        })
-        <div class="product-image">
-            <a href="#">
+        <a href="#">
+            @@include('./common/modules/flags.html', {
+                borderType: true,
+                flags: [
+                    "제품관리팁"
+                ]
+            })
+            <div class="product-image">
                 <img @@banner.visual alt="" class="lazyload">
-            </a>
-        </div>
-        <div class="banner-contents">
-            <div class="inner">
-                <div class="banner-info">
-                    <div class="title">@@banner.title</div>
-                    @@if(context.banner.copy) {
-                    <div class="sub-copy">@@banner.copy</div>
-                    }
-                </div>
-                <div class="banner-button">
-                    <a href="#n" class="btn border">@@banner.button</a>
+            </div>
+            <div class="banner-contents">
+                <div class="inner">
+                    <div class="banner-info">
+                        <div class="title">@@banner.title</div>
+                        @@if(context.banner.copy) {
+                        <div class="sub-copy">@@banner.copy</div>
+                        }
+                    </div>
+                    <div class="banner-button">
+                        <span class="btn border">@@banner.button</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+    <!-- //210407 CMS 동기화 -->
 </li>
 }
