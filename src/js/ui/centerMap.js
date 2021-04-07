@@ -15,41 +15,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
      * @extends vcui.ui.View
      */
 
-    function infoContentSet(item, id){
-        var $target = $(item.infoWindow.contentElement);
-        var $targetFocus = $target.find('a, button, input');
-
-        $target.focus();
-        $target.on('keydown', function(e){
-            if( e.shiftKey && e.keyCode == 9 ) {
-                
-                if( $(e.target).hasClass('info-overlaybox')) {
-                    $targetFocus.last().focus();
-                    e.preventDefault();
-                }
-            }
-        });
-        $targetFocus.first().on('keydown', function(e){
-            if( e.shiftKey && e.keyCode == 9 ) {
-                $targetFocus.last().focus();
-                e.preventDefault();
-            }
-        });
-        $targetFocus.last().on('keydown', function(e){
-            if( !e.shiftKey && e.keyCode == 9 ) {
-                $targetFocus.first().focus();
-                e.preventDefault();
-            }
-        });
-        $target.off('click').on('click', '.btn-overlay-close', function(e){
-            e.preventDefault();
-            if( item.infoWindow.getMap() ) {
-                $('[data-id="' + id + '"]').find('.store-info-list').focus();
-                item.infoWindow.close();
-            }
-        })
-    }
-
     var CenterMap = core.ui('CenterMap', /** @lends vcui.ui.CenterMap# */{
         bindjQuery: 'centerMap',
         defaults: { 
@@ -178,7 +143,14 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             naver.maps.Event.addListener(self.map, 'dragend', function() {
                 // self._changeMarkersState();
-            });               
+            });       
+            
+            naver.maps.Event.addListener(self.map, 'idle', function() {
+                var obj = vcui.array.filterOne(self.itemArr, function(item, idx){
+                    return item.info.selected == true;
+                });
+                if (obj) self.infoContentSet(obj.id);
+            });
         },  
 
         _setItemInfo : function _setItemInfo(arr){
@@ -348,21 +320,60 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 })
                 naver.maps.Event.addListener(marker, 'click', function(e){
                     var id = $(e.overlay.icon.content).data('id');                    
-                    var items = vcui.array.filter(self.itemArr, function(item, idx){
-                        return item.id == id;
-                    });
-                    if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
-                    else {
-                        items[0].infoWindow.open(self.map, e.overlay);
-                        infoContentSet(items[0], id);
-                    }
+                    // var items = vcui.array.filter(self.itemArr, function(item, idx){
+                    //     return item.id == id;
+                    // });
+                    // if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
+                    // else {
+                    //     items[0].infoWindow.open(self.map, e.overlay);
+                    //     // infoContentSet(items[0], id);
+                    // }
 
-                    self.selectedMarker(items[0].id);
-                    
+                    // self.selectedMarker(items[0].id);
+                    self.selectInfoWindow(id);
                 });
             };   
         },
+        infoContentSet: function(id){
+            var self = this;
+            var items = self.itemArr.filter(function(item, index){
+                return item.id == id;
+            });
 
+            var $target = $(items[0].infoWindow.contentElement);
+            var $targetFocus = $target.find('a, button, input');
+
+            $target.focus();
+            $target.off('keydown').on('keydown', function(e){
+                if( e.shiftKey && e.keyCode == 9 ) {
+                    
+                    if( $(e.target).hasClass('info-overlaybox')) {
+                        $targetFocus.last().focus();
+                        e.preventDefault();
+                    }
+                }
+            });
+            $targetFocus.first().off('keydown').on('keydown', function(e){
+                if( e.shiftKey && e.keyCode == 9 ) {
+                    $targetFocus.last().focus();
+                    e.preventDefault();
+                }
+            });
+            $targetFocus.last().off('keydown').on('keydown', function(e){
+                if( !e.shiftKey && e.keyCode == 9 ) {
+                    $targetFocus.first().focus();
+                    e.preventDefault();
+                }
+            });
+            $target.off('click').on('click', '.btn-overlay-close', function(e){
+                e.preventDefault();
+                if( items[0].infoWindow.getMap() ) {
+                    $('[data-id="' + id + '"]').find('.store-info-list').focus();
+                    items[0].infoWindow.close();
+                    items[0].info.selected = false;
+                }
+            })
+        },
         selectInfoWindow: function(id) {
             var self = this;
             var items;
@@ -375,9 +386,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 items[0].infoWindow.close();
             } else {
                 items[0].infoWindow.open(self.map, items[0].item)
-
-                infoContentSet(items[0], id);
-                
             };
             
             
@@ -399,8 +407,8 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             centerPoint = {x: marker.info.gpsInfo.gpsx, y: marker.info.gpsInfo.gpsy}
             
-            self._changeMarkersState();
             self._setCenter(centerPoint, -(marker.infoWindow.contentSize.height+marker.infoWindow.anchorSize.height+20+36)/2, 0);
+            self._changeMarkersState();
         },
 
         _setCenter: function _setCenter(point, offsetX, offsetY) {
