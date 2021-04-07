@@ -130,6 +130,9 @@
             @include mobile {
                 padding-bottom:40px;
             }
+            .inner {
+                padding-top:0;
+            }
         }
         .story-link {
             margin-top:-24px;
