@@ -375,19 +375,22 @@
             width:100%;
             padding:71px 0 99px;
             background-color:#fff7e2;
+            @include mobile {
+                padding:28px 0 45px;
+            }
             .tabs{
                 width:100%;
-                @include tablet {
-                    padding:0 24px;
+                padding: 0 46px;
+                @include mobile {
+                    padding: 0 22px;
                 }
                 li{
-                    width:423px;
+                    width:33.3%;
                     height:199px;
                     margin-left:0;
-                    @include tablet {
-                        width: 310px;
-                        height:150px;
-                        margin-left:4px;
+                    @include mobile {
+                        width:33.3%;
+                        height:176px;
                     }
                     &:first-child{
                         margin-left:0;
@@ -396,6 +399,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &:nth-child(2){
@@ -404,6 +413,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &:nth-child(3){
@@ -412,6 +427,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &.on{
@@ -421,6 +442,12 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                         &:nth-child(2){
@@ -429,6 +456,12 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                         &:nth-child(3){
@@ -437,17 +470,24 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                     }
                 }
             }
             .tabs-cont{
-                width:1260px;
-                margin: 0 56px 0 48px;
-                @include tablet {
-                    width:940px;
-                    margin:0 23px;
+                width:100%;
+                margin:0;
+                padding:0 46px;
+                @include mobile {
+                    width:100%;
+                    padding:0 22px;
                 }
             }
         }
