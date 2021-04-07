@@ -220,14 +220,14 @@ $(document).ready(function() {
                                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
                             }
                         } else {
-                            if(LGEAPPcomfirmAPPOpen()){
-
-                            }else{
+                            if(LGEAPPcomfirmAPPOpen()) {
+                                $(".app-exec span").append("a");
+                            } else {
                                 var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
 
                                 obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
                                 var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-    
+
                                 lgkorUI.confirm(desc, obj);
                             }
                         }
@@ -248,7 +248,7 @@ $(document).ready(function() {
             var agent = navigator.userAgent;
 
             if (agent.indexOf("Android") != -1) {
-                //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
+                location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
                 setTimeout(function() {
                     //location.href = "https://play.google.com/store/apps/details?id=com.hyundaicard.appcard";
                     location.href = "https://play.google.com/store/apps/";
@@ -261,7 +261,7 @@ $(document).ready(function() {
                         window.open("https://www.apple.com/kr/app-store/", "_blank");
                     }
                 }, 25);
-                //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
+                location.href = "lgeapp://";
             }
         }
 
