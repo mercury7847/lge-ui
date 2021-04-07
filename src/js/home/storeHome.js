@@ -276,7 +276,8 @@ $(function(){
                         $('.ui_new_product_carousel').vcCarousel({
                             infinite: true,
                             slidesToShow: 1,
-                            slidesToScroll: 1
+                            slidesToScroll: 1,
+                            variableWidth: true
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
