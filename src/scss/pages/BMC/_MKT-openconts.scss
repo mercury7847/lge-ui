@@ -20,6 +20,36 @@
     /* //클래스별이미지분기 */
 
     .event02{
+        .btn-wrap{
+            .btns{
+                margin:-16% 0 16%;
+                img{
+                    width:100%;
+                }
+                .write{
+                    width:36%;
+                    display:inline-block;
+                    margin-right:6%;
+                }
+                .result{
+                    width:36%;
+                    display:inline-block;
+                    &.dis{
+                        display:none;
+                    }
+                }
+                &.dis{
+                    .result{
+                        display:none;
+                        width:36%;
+                        &.dis{
+                            display:inline-block;
+                        }
+                    }
+                }
+            }
+
+        }
         .reply-wrap{
             .list-sorting{
                 padding:68px 0 12px;

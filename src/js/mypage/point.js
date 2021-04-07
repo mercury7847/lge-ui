@@ -46,7 +46,7 @@
                 self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckEnable":false, "minDate":"-20y"}).vcDatePeriodFilter('setNewYearDayToStartDate');
                 self.bindEvents();
                 self.checkNoData();
-                self.requestData(1, false);
+                self.requestData(1, true);
             });
         },
 
