@@ -159,6 +159,7 @@ gulp.task("scripts", () => {
         "jsCompile:store",
         "jsCompile:membership",
         "jsCompile:homebrew",
+        "jsCompile:event",
         "jsCompile:home",
         "jsCompile:objet"
     ]);
@@ -285,6 +286,14 @@ gulp.task("jsCompile:homebrew", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/homebrew/"))
 );
+gulp.task("jsCompile:event", () => gulp
+    .src(src + "/js/event/**/*")
+    //.pipe(sourcemaps.init())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    //.pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/event/"))
+);
 gulp.task("jsCompile:home", () => gulp
     .src(src + "/js/home/**/*")
     .pipe(sourcemaps.init())
@@ -383,6 +392,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/store/**", ["jsCompile:store"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/homebrew/**", ["jsCompile:homebrew"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/event/**", ["jsCompile:event"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
 
