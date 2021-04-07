@@ -328,6 +328,8 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
+                e.preventDefault();
+                
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
                 
@@ -338,12 +340,12 @@ function moveDetail(el, detailUrl, windowHeight) {
                     self._showMap(true);
 
                     if (!$(window).data('breakpoint').isMobile) {
-                        $('html, body').animate({scrollTop:self.$container.offset().top});
+                        $('html, body').stop().animate({scrollTop:self.$container.offset().top});
                     } else {
                         if (!self.$container.hasClass('result-map')) {
-                            $('html, body').animate({scrollTop:self.$container.offset().top});
+                            $('html, body').stop().animate({scrollTop:self.$container.offset().top});
                         } else {
-                            $('html, body').animate({scrollTop:0})
+                            $('html, body').stop().animate({scrollTop:0})
                         }
                     }
                 }
