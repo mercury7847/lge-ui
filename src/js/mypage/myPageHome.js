@@ -21,8 +21,41 @@
 })(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function(){
-
     var myHome = {
+        likeProdTemplate: '<ul class="product-items">'+
+                '{{#each item in list}}'+                                                  
+                '<li>'+
+                    '<div class="item">'+                
+                        '<div class="product-image" aria-hidden="true">'+
+                            '<a href="{{item.pdpUrl}}">'+
+                                '<img src="{{item.imageUrl}}" alt="{{item.imageAlt}}">'+
+                            '</a>'+                    
+                        '</div>'+
+                    '<div class="product-contents">'+
+                        '<div class="product-info">'+
+                            '<div class="product-name">'+
+                                '<a href="{{item.pdpUrl}}">{{#raw item.title}}</a>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="price-area">'+
+                        '{{#if item.addCommaOriginalPrice != "0"}}'+
+                        '<div class="original">'+
+                            '<em class="blind">판매가격</em>'+
+                            '<span class="price">{{item.addCommaOriginalPrice}}<em>원</em></span>'+
+                        '</div>'+
+                        '{{/if}}'+
+                        '{{#if item.addCommaPrice != "0"}}'+
+                        '<div class="total">'+
+                            '<em class="blind">총 판매가격</em>'+
+                            '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
+                        '</div>'+
+                        '{{/if}}'+
+                    '</div>'+
+                '</div>'+
+            '</li>'+
+            '{{/each}}'+
+        '</ul>',
         init: function() {
             //크레마
             lgkorUI.cremaLogin();
@@ -48,10 +81,86 @@
 
             //크레마 리로드
             lgkorUI.cremaReload();
+        },
+
+        setting: function(){
+            var self = this;
+
+            var sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
+
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+                if(result.status == "fail"){
+                    lgkorUI.alert("", {
+                        title: result.message
+                    })
+                } else{
+                    //주문조회...
+                    var orderList = result.orderList;
+                    var $orderProcess = $('.my-management.shopping .order-process');
+                    if(orderList.dataFlag == "Y"){                        
+                        var cnt = orderList.data.myShoppingCnt;
+                        var cntxt = parseInt(cnt) > 0 ? "(" + cnt + ")" : "";
+                        $orderProcess.find('.box-title').text("주문 조회" + cntxt);
+
+                        var num, key, numwrap;
+                        var numberData = orderList.data.normalData;
+                        var listwrap = $orderProcess.find('.process-wrap > ul > li:nth-child(1) .process-list');
+                        for(key in numberData){
+                            num = numberData[key];
+                            numwrap = listwrap.find('.' + key);
+                            numwrap.text(num);
+                            numwrap.removeClass('zero');
+                            
+                            if(parseInt(num) <= 0) numwrap.addClass('zero');
+                        }
+
+                        numberData = orderList.data.caresolutionData;
+                        listwrap = $orderProcess.find('.process-wrap > ul > li:nth-child(2) .process-list');
+                        for(key in numberData){
+                            num = numberData[key];
+                            numwrap = listwrap.find('.' + key);
+                            numwrap.removeClass('zero');
+
+                            if(key == "complete" && parseInt(num) > 0){
+                                var numtxt = "<a href='" + orderList.data.completeUrl + "'>" + num + "</a>";
+                                numwrap.text("").html(numtxt);
+                            } else{
+                                numwrap.text(num);
+                            }
+                            
+                            if(parseInt(num) <= 0) numwrap.addClass('zero');
+                        }
+                    } else{
+
+                    }
+
+                    //찜한제품...
+                    var wishList = result.wishList;
+                    var $likeInfo = $('.my-management.shopping .like-info');
+                    if(wishList.dataFlag == "Y"){                  
+                        cnt = wishList.data.wishCnt;
+                        cntxt = parseInt(cnt) > 0 ? "(" + cnt + ")" : "";
+                        $likeInfo.find('.box-title .title').text("찜한 제품" + cntxt);
+
+                        var newlist = vcui.array.map(wishList.data.list, function(item){
+                            item.addCommaOriginalPrice = vcui.number.addComma(item.originalPrice);
+                            item.addCommaPrice = vcui.number.addComma(item.price);
+
+                            return item;
+                        });
+
+                        $likeInfo.find('.list-wrap').empty().append(vcui.template(self.likeProdTemplate, {list:newlist}));
+                    } else{
+
+                    }
+                }          
+            });   
         }
     }
 
     $(document).ready(function() {
         myHome.init();
+
+        myHome.setting();
     });
 })();

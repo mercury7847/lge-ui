@@ -13,7 +13,7 @@
                 "pageTitle": "마이페이지"
             })
             <!-- mypage -->
-            <div class="contents mypage mypage-main">
+            <div class="contents mypage mypage-main" data-mypage-info="/lg5-common/data-ajax/mypage/mypageInfo.json">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html')
@@ -264,31 +264,31 @@
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>주문접수</dt>
-                                                                        <dd>8</dd>
+                                                                        <dd class="ordered">8</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>결제완료</dt>
-                                                                        <dd>1</dd>
+                                                                        <dd class="invoiced">1</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송준비중</dt>
-                                                                        <dd class="zero">0</dd><!-- 210329 수정 [0일 경우 컬러 변경(.zero 클래스 추가)] -->
+                                                                        <dd class="picking zero">0</dd><!-- 210329 수정 [0일 경우 컬러 변경(.zero 클래스 추가)] -->
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송중</dt>
-                                                                        <dd class="zero">0</dd>
+                                                                        <dd class="shipped zero">0</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송완료</dt>
-                                                                        <dd>1</dd>
+                                                                        <dd class="delivered">1</dd>
                                                                     </dl>
                                                                 </li>
                                                             </ul>
@@ -299,43 +299,43 @@
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>청약완료</dt>
-                                                                        <dd>8</dd>
+                                                                        <dd class="requestOk">8</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>주문접수</dt>
-                                                                        <dd>1</dd>
+                                                                        <dd class="ordered">1</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>결제완료</dt>
-                                                                        <dd>2</dd>
+                                                                        <dd class="invoiced">2</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송준비중</dt>
-                                                                        <dd>2</dd>
+                                                                        <dd class="picking">2</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송중</dt>
-                                                                        <dd>2</dd>
+                                                                        <dd class="shipped">2</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>배송완료</dt>
-                                                                        <dd>1</dd>
+                                                                        <dd class="delivered">1</dd>
                                                                     </dl>
                                                                 </li>
                                                                 <li>
                                                                     <dl class="box">
                                                                         <dt>계약완료</dt>
-                                                                        <dd>1</dd>
+                                                                        <dd class="complete">1</dd>
                                                                     </dl>
                                                                 </li>
                                                             </ul>
