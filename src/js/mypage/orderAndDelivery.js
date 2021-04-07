@@ -371,6 +371,10 @@
         '<tr><th scope="row">결제수단</th><td>{{paymentMethod}}</td>'+
         '<tr><th scope="row">서명</th><td>{{orderUser}}</td>';
 
+    var productOrderInfoTemplate =     
+        '<li><dl><dt>배송 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
+        '<li><dl><dt>배송 희망일</dt><dd>{{instReqDate}}</dd></dl></li>';
+
     var START_INDEX;
 
     var ORDER_LIST;
@@ -1673,7 +1677,7 @@
     }
 
     //주문정보 렌더링...
-    function orderInfoRender(wrap, shippingData, paymentData){
+    function orderInfoRender(wrap, shippingData, paymentData, prodorderinfo){
         var template;
         //배송정보
         var $listBox = wrap.find('.inner-box.shipping');
@@ -1712,6 +1716,18 @@
                 $listBox.hide();
             }
         }
+
+        //제품 주문 정보
+        $listBox = wrap.find('.inner-box.prodOrderInfo');
+        if(prodorderinfo && TAB_FLAG == TAB_FLAG_CARE && $listBox.length > 0) {                
+            leng = Object.keys(prodorderinfo).length;
+
+            if(leng){
+                $listBox.show().find('ul').html(vcui.template(productOrderInfoTemplate, prodorderinfo));
+            } else{
+                $listBox.hide();
+            }
+        }
     }
 
     //배송정보 데이터 추가 정의
@@ -1745,21 +1761,22 @@
     function openOrderInfoPop(dataId, prodId){
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productList = listData[dataId].productList[prodId];
+        var shipping, paymentdata;
 
         //배송정보
         if(productList.shipping) {
-            var shipping = resetShippingData(productList.shipping);
+            shipping = resetShippingData(productList.shipping);
         }
 
         //결제정보
         if(productList.paymentMethod) {
             if(Object.keys(productList.paymentMethod).length){
                 var orderReceiptAbleYn = listData[dataId].orderReceiptAbleYn;
-                var paymentdata = resetPaymentData(productList.paymentMethod, orderReceiptAbleYn);
+                paymentdata = resetPaymentData(productList.paymentMethod, orderReceiptAbleYn);
             }
         }
         
-        orderInfoRender($('#popup-orderDetailView'), shipping, paymentdata);
+        orderInfoRender($('#popup-orderDetailView'), shipping, paymentdata, productList.orderShipping);
 
         $('#popup-orderDetailView').vcModal();
     }
