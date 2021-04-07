@@ -566,6 +566,40 @@
     }
 }
 
+.btm-box {
+    position:relative;
+    margin-top:48px;
+    padding:27px 48px;
+    border-radius:8px;
+    background-color:#f4f4f4;
+    > p {
+        font-size:16px;
+        line-height:26px;
+        font-weight:700;
+    }
+    .btn {
+        position:absolute;
+        top:50%;
+        right:40px;
+        transform:translateY(-50%);
+    }
+    @include mobile {
+        margin-top:40px;
+        padding:16px 24px;
+        border-radius:4px;
+        text-align:center;
+        > p {
+            font-size:14px;
+            line-height:22px;
+        }
+        .btn {
+            position:static;
+            margin-top:16px;
+            transform:translateY(0);
+        }
+    }
+}
+
 
 // ./support/product-support.scss 가져옴
 // 다운로드/SW 팝업
