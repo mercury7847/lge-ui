@@ -541,7 +541,7 @@
                         }
                     }
 
-                    self.$awardPopup.vcModal({ opener: this});
+                    self.$awardPopup.vcModal({opener: this});
 
                 });
 
@@ -832,7 +832,7 @@
                             lgkorUI.requestAjaxData(ajaxUrl,{"siblingCode":siblingCode.join(","),"siblingGroupCode":siblingGroupCode.join(","),"groupCount":siblingGroupCode.length}, function (result) {
                                 var data = result.data;
                                 if(data.modelUrlPath) {
-                                    location.href = url;
+                                    location.href = data.modelUrlPath;
                                 }
                             });
                         }
