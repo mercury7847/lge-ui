@@ -23,6 +23,10 @@
                 .item {
                     overflow: hidden;
                     padding: 0;
+                    a {
+                        display:block;
+                        height:100%;
+                    }
                 }
             }
         }
@@ -89,6 +93,15 @@
 
         @include mobile {
             padding: 37px 40px 32px;
+            a {
+                display:block;
+                height:100%;
+                .product-image {
+                    img {
+                        width:100%;
+                    }
+                }
+            }
         }
 
         .badge {
