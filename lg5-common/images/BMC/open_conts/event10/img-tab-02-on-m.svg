@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="224" height="160" viewBox="0 0 224 160">
+    <defs>
+        <linearGradient id="hxvowro9ea" x1="5.076%" x2="81.043%" y1="-7.498%" y2="50%">
+            <stop offset="0%" stop-color="#FFD1D3"/>
+            <stop offset="72.729%" stop-color="#FFA4A5"/>
+            <stop offset="100%" stop-color="#FFA2A2"/>
+        </linearGradient>
+        <linearGradient id="dh6odej4kb" x1="63.211%" x2="36.789%" y1="-22.919%" y2="34.369%">
+            <stop offset="0%" stop-color="#FFD1D3"/>
+            <stop offset="100%" stop-color="#FFA1A1"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#hxvowro9ea)" d="M0 36.882L109.577 0 224 36.882 224 160 0 160z" transform="translate(-248 -2428) translate(20 2428) translate(228)"/>
+                        <path fill="url(#dh6odej4kb)" d="M169 0L224 0 224 107 169 107z" transform="translate(-248 -2428) translate(20 2428) translate(228)"/>
+                        <text fill="#543938" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="20" font-weight="400" transform="translate(-248 -2428) translate(20 2428) translate(228)">
+                            <tspan x="27" y="81">집콕러의 생활공간을</tspan>
+                        </text>
+                        <text fill="#543938" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="32" font-weight="bold" letter-spacing="-2" transform="translate(-248 -2428) translate(20 2428) translate(228)">
+                            <tspan x="13" y="125">조금은 색다르게</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

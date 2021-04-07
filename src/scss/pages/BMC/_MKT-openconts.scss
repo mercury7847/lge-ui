@@ -373,7 +373,13 @@
     .event10{
         .remd_prd{
             width:100%;
+            padding:71px 0 99px;
+            background-color:#fff7e2;
             .tabs{
+                width:100%;
+                @include tablet {
+                    padding:0 24px;
+                }
                 li{
                     width:423px;
                     height:199px;
@@ -434,6 +440,14 @@
                             }
                         }
                     }
+                }
+            }
+            .tabs-cont{
+                width:1260px;
+                margin: 0 56px 0 48px;
+                @include tablet {
+                    width:940px;
+                    margin:0 23px;
                 }
             }
         }

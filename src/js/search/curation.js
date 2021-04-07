@@ -131,7 +131,7 @@ var Curation = (function() {
                     "filterValueName": this.name
                 }
                 if(checked) {
-                    var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                    var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                     if($findLi.length < 1) {
                         self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
@@ -258,12 +258,12 @@ var Curation = (function() {
         removeSelectSmartFilterResult: function(filterValueId) {
             if(filterValueId) {
                 var self = this;
-                var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+filterValueId+'"]');
+                var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+filterValueId+"']");
                 if($findLi.length > 0) {
                     $findLi.remove();
                     self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
 
-                    self.$smartFilterList.find('input[value="'+filterValueId+'"]').prop('checked',false);
+                    self.$smartFilterList.find("input[value='"+filterValueId+"']").prop('checked',false);
                     
                     if(self.$smartFilterResult.find('ul.rounded-list > li').length < 1) {
                         self.$smartFilterResult.hide();
@@ -277,7 +277,7 @@ var Curation = (function() {
                 "filterId" : filterId,
                 "filterValueId" : filterValueId
             }
-            var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+            var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
             if($findLi.length < 1) {
                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                 self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
@@ -322,7 +322,7 @@ var Curation = (function() {
             var self = this;
 
             self.$curation.find('ul.curation-list > li').removeClass('on');
-            var $a = self.$curation.find('ul.curation-list > li a[data-curation="' + data + '"]');
+            var $a = self.$curation.find("ul.curation-list > li a[data-curation='" + data + "']");
             $a.parents('li').addClass('on select-curation');
         },
 
@@ -336,7 +336,7 @@ var Curation = (function() {
                     var arr = filterData[key].split('||');
                     if(arr instanceof Array) {
                         arr.forEach(function(item,index) {
-                            var $input = self.$smartFilterList.find('input[value="'+item+'"]');
+                            var $input = self.$smartFilterList.find("input[value='"+item+"']");
                             if($input.length > 0) {
                                 $input.prop('checked',true);
     
@@ -346,7 +346,7 @@ var Curation = (function() {
                                     "filterValueName": $input.attr('name')
                                 }
     
-                                var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                                var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                                 if($findLi.length < 1) {
                                     self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                                     self.$smartFilterResult.show();
@@ -356,7 +356,7 @@ var Curation = (function() {
     
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                     } else if(typeof arr === 'string' || arr instanceof String){
-                        var $input = self.$smartFilterList.find('input[value="'+arr+'"]');
+                        var $input = self.$smartFilterList.find("input[value='"+arr+"']");
                         if($input.length > 0) {
                             $input.prop('checked',true);
     
@@ -366,7 +366,7 @@ var Curation = (function() {
                                 "filterValueName": $input.attr('name')
                             }
     
-                            var $findLi = self.$smartFilterResult.find('li[data-filter-value-id="'+param.filterValueId+'"]');
+                            var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                             if($findLi.length < 1) {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                                 self.$smartFilterResult.show();
