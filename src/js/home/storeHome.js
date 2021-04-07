@@ -274,10 +274,11 @@ $(function(){
                     if(breakpoint.name == 'mobile'){    
 
                         $('.ui_new_product_carousel').vcCarousel({
-                            infinite: true,
+                            infinite: false,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            variableWidth: true
+                            variableWidth: true,
+                            lastFix: true
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
