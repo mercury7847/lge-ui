@@ -1501,26 +1501,24 @@
                 }
                 
                 //2021-04-06 할인계산 제거
-                /*
                 rtFreePeriod.forEach(function(item, index){
                     if(item <= 12 && selectInfoData.years1TotAmt) {
-                        infoTotal -= selectInfoData.years1TotAmt;
+                        //infoTotal -= selectInfoData.years1TotAmt;
                         popupData["1"].free.push(item);
                     } else if(item <= 24 && selectInfoData.years2TotAmt) {
-                        infoTotal -= selectInfoData.years2TotAmt;
+                        //infoTotal -= selectInfoData.years2TotAmt;
                         popupData["2"].free.push(item);
                     } else if(item <= 36 && selectInfoData.years3TotAmt) {
-                        infoTotal -= selectInfoData.years3TotAmt;
+                        //infoTotal -= selectInfoData.years3TotAmt;
                         popupData["3"].free.push(item);
                     } else if(item <= 48 && selectInfoData.years4TotAmt) {
-                        infoTotal -= selectInfoData.years4TotAmt;
+                        //infoTotal -= selectInfoData.years4TotAmt;
                         popupData["4"].free.push(item);
                     } else if(item <= 60 && selectInfoData.years5TotAmt) {
-                        infoTotal -= selectInfoData.years5TotAmt;
+                        //infoTotal -= selectInfoData.years5TotAmt;
                         popupData["5"].free.push(item);
                     }
                 });
-                */
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
                 $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 방문 기준)') : '원(대표요금제 기준)'));
