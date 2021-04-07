@@ -35,9 +35,9 @@
                         </div>
                         <!--// 좌측 모델 시뮬 영역 -->
                         <!-- 모델 시뮬 영역 (상황에 따라 위치 이동) -->
-                        <div class="simul_wrap">
+                        <div class="simul_wrap swiper-container">
                             <button type="button" class="model_reset"><span>제품 다시 선택</span></button>
-                            <div class="simul_body" data-add-active="N">
+                            <div class="simul_body swiper-wrapper" data-add-active="N">
 
                                 <!-- model_set_wrap -->
                                 <!-- data-model-cate:제품군, data-model-code:상품코드, data-model-completed:선택완료여부(y,n)  -->
@@ -66,6 +66,8 @@
                                 </div> -->
                                 <!--// model_set_wrap -->
                             </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
                         </div>
                         <!--// 모델 시뮬 영역 -->
                         <!-- 우측 스텝 영역 -->
@@ -83,14 +85,20 @@
                                         <div class="model_choice_tab swiper-container">
                                             <div class="swiper-wrapper">
                                             </div>
+                                            <!-- <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div> -->
                                         </div>
 
                                         <div class="model_sub_tab_wrap">
                                             <div class="model_sub_tab_head swiper-container">
                                                 <div class="swiper-wrapper"></div>
+                                                <!-- <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div> -->
                                             </div>
                                             <div class="model_sub_tab_cont swiper-container">
                                                 <div class="swiper-wrapper"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
                                             </div>
                                         </div>
                                         <!-- <div class="slide-controls">
@@ -126,17 +134,23 @@
                                             <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                             <div class="color_best_body swiper-container">
                                                 <div class="swiper-wrapper"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
                                             </div>
                                         </div>
                                         <div class="color_my_pick">
                                             <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                             <div class="color_my_pick_body swiper-container">
                                                 <div class="swiper-wrapper"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
                                             </div>
                                         </div>
                                         <div class="color_sel_wrap">
                                             <div class="color_sel_body swiper-container">
                                                 <div class="swiper-wrapper"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +169,7 @@
                                 <dt>
                                 <div class="simul_tit">
                                     <span class="step">STEP 3.</span>
-                                    <span class="tit">기능과 가격을 비교하여 모델 정하기</span>
+                                    <span class="tit">가격을 비교하여 모델 정하기</span>
                                 </div>
                             </dt>
                                 <dd>
@@ -164,7 +178,7 @@
                                     </div>
                                     <div class="etc_area">
                                         <div class="btn_wrap">
-                                            <button type="button" class="btn"><span>견적 확인하기</span></button>
+                                            <button type="button" class="btn btn_check_price"><span>견적 확인하기</span></button>
                                         </div>
                                     </div>
 
@@ -177,7 +191,61 @@
                     <!--// 모델 체험하기 영역 -->
                 </div>
                 <!-- 합계 -->
-                <div class="total_price_info_wrap"></div>
+                <div data-sum-active="N" class="total_price_info_wrap">
+                    <div class="total_price_info_body">
+                        <button type="button" class="btn_price_close"><span class="blind">닫기</span></button>
+                        <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <!-- <div class="swiper-slide">
+                                    <dl data-cate="" data-door-default-code="">
+                                        <dt>노크온 그래프트 아이스</dt>
+                                        <dd>
+                                            <div class="price_info">
+                                                <ul class="product_list">
+                                                    <li data-default-code="">
+                                                        <span class="product_name">M870FBS451</span>
+                                                        <span class="product_price"><em>2,990,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 보타닉 (상좌)</span>
+                                                        <span class="product_price"><em>150,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 샌드 (하좌)</span>
+                                                        <span class="product_price"><em>100,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 샌드 (하우)</span>
+                                                        <span class="product_price"><em>100,000</em>원</span>
+                                                    </li>
+                                                    <li class="sum">
+                                                        <span class="product_name">합계</span>
+                                                        <span class="product_price"><em>4,900,000</em>원</span>
+                                                    </li>
+                                                </ul>
+                                                <button class="btn btn_purchase"><span>구매하기</span></button>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div> -->
+
+
+                            </div>
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                    <div class="total_result_price">
+                        <div class="cont">
+                            <span class="sum_tit">합계</span>
+                            <span class="price"><em>0</em>원</span>
+                            <button type="button" class="btn_price_open"><span class="blind">펼치기</span></button>
+                        </div>
+                    </div>
+                </div>
                 <!--// 합계 -->
             </div>
             <!-- // 오브제 콜렉션 모델 체험하기 -->
@@ -185,7 +253,13 @@
         @@include('./common/footer.html')
     </div>
 
+    <script type="text/javascript">
+        //<![CDATA[
+        function purchaseFn() {
 
+        }
+        //]]>
+    </script>
 </body>
 
 </html>
