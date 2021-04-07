@@ -219,7 +219,10 @@ $(function () {
         });
 
         $('.scene').css({'overflow':'hidden'});
-        $('html').css({'overflow':'hidden'});
+
+        /* 메인테스트
+        // $('html').css({'overflow':'hidden'});
+        */
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){
@@ -366,7 +369,20 @@ $(function () {
         lgkorUI.showAppBottomMenuOver(true);
         lgkorUI.setEnableAppScrollBottomMenu(false);
 
-        
+
+        $(window).on('scrollend', function(e) {
+            
+            var idx = _findIdx($('html,body').scrollTop());
+
+            console.log(posArr[idx]);
+            // $('html,body').scrollTop(posArr[idx]);
+                
+            
+        });
+
+
+
+        /* 메인테스트
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -403,6 +419,28 @@ $(function () {
                 
             }
         });
+
+        var wrapTouchSy = 0;
+        
+        $contentWrap.on('touchstart touchend touchcancel', function(e) {
+            
+            var data = _getEventPoint(e);
+            if (e.type == 'touchstart') {
+                wrapTouchSy = data.y;
+            } else {
+
+                if (wrapTouchSy - data.y > 80) {
+                    // console.log('down');
+                    lgkorUI.showAppBottomMenu(false);
+
+                } else if (wrapTouchSy - data.y < -80) {
+                    // console.log('up');
+                    lgkorUI.showAppBottomMenu(true);
+                }
+
+            }
+        });
+        */
 
         
 
@@ -587,16 +625,13 @@ $(function () {
                 $(this).find('.img > .video').each(function() {
                     updateVideo(this);
                 });
-
                             
             });  
 
-            
-            $contentWrap.css({'overflow':'auto','height':winHeight});
-            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-
-            // console.log(idx);
-
+            /* 메인 테스트 
+            // $contentWrap.css({'overflow':'auto','height':winHeight});
+            // $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            */
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
@@ -615,9 +650,6 @@ $(function () {
 
                 }, 100);
             }
-
-            
-
             
         }
 
@@ -643,7 +675,7 @@ $(function () {
             var scrollTop = $contentWrap.scrollTop();
             if(window.sessionStorage) window.sessionStorage.setItem('lgeMainScrollTop', scrollTop);
         });
-        
+
 
         $window.trigger('breakpointchange');
         window.resizeScene = render;      
