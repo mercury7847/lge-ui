@@ -1074,7 +1074,7 @@ function moveDetail(el, detailUrl, windowHeight) {
         _resize: function(){
             var self = this;
 
-            self.windowWidth = $(window).width();
+            self.windowWidth = self.$container.width();
             self.windowHeight = $(window).height();
 
             var mapwidth, mapheight, mapmargin;
