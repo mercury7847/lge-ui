@@ -177,9 +177,9 @@ $(function(){
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "<sup>딱! 찾던 LG전자 가전 혜택</sup>2021 아카데미<br>앵콜 Festival",
+                "title" : "PC아카데미 페스티벌<br>앵콜 기획전",
                 "imageAlt" : "",
-                "date" : "2021.04.01~2021.04.30",
+                "date" : "",
                 "modelUrlPath" : "/notebook/16z90p-ga79k",
                 "textClass":"fc-black"  
             },

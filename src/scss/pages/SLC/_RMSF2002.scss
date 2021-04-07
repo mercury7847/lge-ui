@@ -81,7 +81,7 @@ br.m {
     // }
     @include mobile {
         //padding:32px 16px 0;
-        padding:4px 16px 0;
+        padding:0 16px;
         &:before {
             right: 0;
             left: 0;
@@ -171,6 +171,7 @@ br.m {
                 border-top:12px solid #f4f4f4;
                 &:first-child,
                 &.type2 {
+                    padding-top: 48px;
                     border-top:none;
                 }
             }
