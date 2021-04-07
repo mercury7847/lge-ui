@@ -106,12 +106,15 @@
 
             bindEvent();
 
-            loadStoryList('user_story', 1, 'UserStory');
+            loadStoryList('new_story', 1, 'NewStory');
     
-            $('.new_story').hide();
+            $('.user_story').hide();
+
+            console.log("IS_LOGIN:",IS_LOGIN)
+
             if(IS_LOGIN == "Y"){
                 firstLoadLength = 2;
-                loadStoryList('new_story', 1, 'NewStory');
+                loadStoryList('user_story', 1, 'UserStory');
             } 
         });
     }
