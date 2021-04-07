@@ -202,7 +202,7 @@ $(function () {
         var isApplication = isApp();
         var $window  = $(window);
         var $contentWrap = $('.section-cover');
-        var aniSpeed = vcui.detect.isMobile? 500 : 800;
+        var aniSpeed = vcui.detect.isMobile? 200 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -220,9 +220,9 @@ $(function () {
 
         $('.scene').css({'overflow':'hidden'});
 
-        /* 메인테스트
-        // $('html').css({'overflow':'hidden'});
-        */
+        /* 메인테스트*/
+        $('html').css({'overflow':'hidden'});
+        
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){
@@ -304,7 +304,7 @@ $(function () {
                     return false;
                 }
 
-                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed);
                 speedTime = Math.max(0,speedTime);
 
                 $('html, body').stop(true).animate({
@@ -368,21 +368,27 @@ $(function () {
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
         lgkorUI.setEnableAppScrollBottomMenu(false);
+        /*
 
+        function scrollendfn(){
+            var idx = _findIdx($('html,body').scrollTop());            
+            $(window).off('scrollend');
 
-        $(window).on('scrollend', function(e) {
-            
-            var idx = _findIdx($('html,body').scrollTop());
-
-            console.log(posArr[idx]);
-            // $('html,body').scrollTop(posArr[idx]);
+            $('html, body').stop(true).animate({
+                scrollTop: posArr[idx]
+            }, 600, 'easeInOutQuart',  function() {
+                $(window).on('scrollend', scrollendfn);
                 
-            
-        });
+            });
+        }
+
+
+        $(window).on('scrollend', scrollendfn);
+        */
 
 
 
-        /* 메인테스트
+        /* 메인테스트*/
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -440,7 +446,6 @@ $(function () {
 
             }
         });
-        */
 
         
 
@@ -628,10 +633,10 @@ $(function () {
                             
             });  
 
-            /* 메인 테스트 
-            // $contentWrap.css({'overflow':'auto','height':winHeight});
-            // $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-            */
+            /* 메인 테스트 */
+            $contentWrap.css({'overflow':'auto','height':winHeight});
+            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
