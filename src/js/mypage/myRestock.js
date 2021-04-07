@@ -79,6 +79,7 @@
             requestData: function(param, isMore) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     var param = result.param;

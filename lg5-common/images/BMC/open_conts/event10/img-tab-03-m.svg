@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="225" height="119" viewBox="0 0 225 119">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path fill="#EEE" d="M0 0L225 0 225 119 0 119z" transform="translate(-475 -2379) translate(20 2348) translate(455 31)"/>
+                    <g>
+                        <text fill="#C9C9C9" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="20" font-weight="400" letter-spacing="-.5" transform="translate(-475 -2379) translate(20 2348) translate(455 31) translate(21 23)">
+                            <tspan x="0" y="26">패피의 의류관리는</tspan>
+                        </text>
+                        <g>
+                            <path fill="#D3D3D3" d="M9.87 4.884c-1.495 1.034-4.45 3.573-8.867 7.618-.583.534-.706 1.406-.293 2.08l1.633 2.662c.476.777 1.492 1.021 2.269.545.132-.081.252-.18.357-.295 2.344-2.57 3.644-3.518 3.9-2.844.277.728-.176 5.002-1.36 12.82-.181 1.202.645 2.323 1.847 2.505.109.017.219.025.329.025H25.68c1.215 0 2.2-.985 2.2-2.2 0-.124-.01-.248-.032-.37-1.304-7.636-1.784-11.943-1.44-12.922.32-.914 1.513.044 3.577 2.877.537.736 1.57.898 2.306.361.114-.083.217-.18.307-.29l1.483-1.82c.525-.645.489-1.58-.085-2.182-4.889-5.121-7.751-7.978-8.588-8.57-1.34-.948-3.225-.702-4.008 0-.783.701-2.817 4.283-3.713 4.283-.574 0-1.876-2.509-3.451-4.067-.84-.831-1.96-1.883-4.367-.216z" transform="translate(-475 -2379) translate(20 2348) translate(455 31) translate(21 23) translate(149)"/>
+                        </g>
+                    </g>
+                    <text fill="#C9C9C9" font-family="NanumBarunpen-Bold, NanumBarunpen" font-size="32" font-weight="bold" letter-spacing="-1.143" transform="translate(-475 -2379) translate(20 2348) translate(455 31)">
+                        <tspan x="34" y="88">남보다 빠르게</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

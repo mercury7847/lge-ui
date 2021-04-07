@@ -192,8 +192,7 @@
 
         $('.mypage').on('click', '.contract-btn', function(e){
             e.preventDefault();
-
-            console.log("userInfo.userEmail:", userInfo.userEmail);
+            
             if(userInfo.userEmail){
                 $('#popup-contractIssue').find('.pop-conts .gray-txt-box p em').text(userInfo.userEmail);
     
@@ -307,7 +306,6 @@
             sendata = {confirmType: MODE_PAYMENT}
         }
         sendata["contractID"] = $('select[name=contractInfo]').find('option:selected').val();
-        console.log("### sendChangeConfirm ###", sendata);
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(INFO_MODIFY_CONFIRM, sendata, function(result){
             lgkorUI.confirm(alertmsg, {
                 title: alertitle,
@@ -375,7 +373,6 @@
         var sendata = userInfoValidation.getAllValues();
         sendata.confirmType = MODE_USER;
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val();
-        console.log("saveUserInfo : [sendata] ", sendata);
         lgkorUI.requestAjaxData(INFO_MODIFY_SAVE, sendata, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 changeContractInfo();
@@ -440,10 +437,7 @@
             contractID: $('select[name=contractInfo]').find('option:selected').val(),
             selectCardValue: val
         }
-        console.log("requestCardIssue(); [sendata] :", sendata);
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
-            console.log("### requestCardIssue() [complete] ###", result);
-
             $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
@@ -475,7 +469,6 @@
     //납부정보 확인 유무...
     function paymentConfirmYN(){
         var paymentMethodAbled = getHiddenData("paymentMethodConfirm");
-        console.log("paymentMethodAbled:",paymentMethodAbled)
         if(paymentMethodAbled == "N"){
             paymentErrorAlert();
             return false;
@@ -509,9 +502,7 @@
             sendata.confirmType = METHOD_BANK;
         }
         sendata.contractID = $('select[name=contractInfo]').find('option:selected').val()
-        console.log("paymentMethodAbled(); sendata :", sendata);
         lgkorUI.requestAjaxData(PAYMENT_METHOD_CONFIRM, sendata, function(result){
-            console.log("### requestAjaxData ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -550,10 +541,8 @@
         sendata.confirmType = sendPaymentMethod;
 
         setHiddenData('arsAgree', "N");
-
-        console.log("### setArsAgreeConfirm ###", sendata);
+        
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
-            console.log("### setArsAgreeConfirm [complete] ###", result)
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
@@ -598,8 +587,7 @@
                 CTI_REQUEST_KEY: CTI_REQUEST_KEY
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
-
-            console.log("savePaymentInfo : [sendata] ", sendata);
+            
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     changeContractInfo();
@@ -666,7 +654,7 @@
             deductPoint: $('.mempoint-info').data('deductPoint'),
             contractID: $('select[name=contractInfo]').find('option:selected').val()
         }
-        console.log("### okMempointModify ###", sendata.isAgree);
+        
         if(sendata.isAgree){
             var chk = $('.mempoint-info').find('input[name=point-cancel]').prop('checked');
             sendata.isAgree = !chk;
@@ -679,7 +667,7 @@
             }
             sendata.isAgree = true;
         }
-        console.log("### okMempointModify ###", sendata);
+        
         lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(MEMPOINT_DEDUCT_URL, sendata, function(result){
@@ -733,7 +721,7 @@
                 info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
             }
             changeFieldValue('payment-info', info);
-            if(data.paymentInfo.isGrouping){
+            if(data.paymentInfo.isGrouping || data.contractInfo.contStatus != "S"){
                 $('.payment-info .requestCard-btn, .changePayment-btn').hide();
             } else{
                 $('.payment-info .requestCard-btn, .changePayment-btn').show();
@@ -840,7 +828,7 @@
         var sendata = {
             contractInfo: info
         }
-        console.log("sendata:", sendata);
+        
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
             setContractInfo(result.data);
 

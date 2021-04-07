@@ -15,41 +15,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
      * @extends vcui.ui.View
      */
 
-    function infoContentSet(item, id){
-        var $target = $(item.infoWindow.contentElement);
-        var $targetFocus = $target.find('a, button, input');
-
-        $target.focus();
-        $target.on('keydown', function(e){
-            if( e.shiftKey && e.keyCode == 9 ) {
-                
-                if( $(e.target).hasClass('info-overlaybox')) {
-                    $targetFocus.last().focus();
-                    e.preventDefault();
-                }
-            }
-        });
-        $targetFocus.first().on('keydown', function(e){
-            if( e.shiftKey && e.keyCode == 9 ) {
-                $targetFocus.last().focus();
-                e.preventDefault();
-            }
-        });
-        $targetFocus.last().on('keydown', function(e){
-            if( !e.shiftKey && e.keyCode == 9 ) {
-                $targetFocus.first().focus();
-                e.preventDefault();
-            }
-        });
-        $target.off('click').on('click', '.btn-overlay-close', function(e){
-            e.preventDefault();
-            if( item.infoWindow.getMap() ) {
-                $('[data-id="' + id + '"]').find('.store-info-list').focus();
-                item.infoWindow.close();
-            }
-        })
-    }
-
     var CenterMap = core.ui('CenterMap', /** @lends vcui.ui.CenterMap# */{
         bindjQuery: 'centerMap',
         defaults: { 
@@ -73,22 +38,24 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     '</div>',
 
                 infoWindow: 
-                    '<div class="info-overlaybox">'+
+                    '<div class="info-overlaybox" tabindex="0">'+
                     '   <div class="inner">'+
-                    '       <p class="name">{{shopName}}</p>'+
-                    '       <p class="adress">{{shopAdress}}</p>'+
-                    '       <div class="store-info">'+
-                    '           <dl>'+
-                    '               <dt>전화</dt>'+
-                    '               <dd>{{shopTelphone}}</dd>'+
-                    '           </dl>'+
-                    '           {{#if shopFax != null}}'+
-                    '           <dl>'+
-                    '               <dt>팩스</dt>'+
-                    '               <dd>{{shopFax}}</dd>'+
-                    '           </dl>'+
-                    '           {{/if}}'+
+                    '       <div class="tit-wrap">'+
+                    '           <p class="name">'+
+                    '               <span class="blind">매장명</span>'+
+                    '               {{shopName}}'+
+                    '           </p>'+
+                    '           {{# if(typeof bizStatus != "undefined") { #}}'+
+                    '           {{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
+                    '           <div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                    '           {{# } else { #}}'+
+                    '           <div class="status-icon">'+
+                    '           {{# } #}}'+
+                    '               <strong class="status">{{bizStatus.bizStatusText}}</strong>'+
+                    '           </div>'+
+                    '           {{# } #}}'+
                     '       </div>'+
+                    '       <p class="adress">{{shopAdress}}</p>'+
                     '       <div class="hour-info">'+
                     '           <dl>'+
                     '               <dt>평&nbsp;&nbsp;일</dt>'+
@@ -98,16 +65,33 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     '               <dt>토요일</dt>'+
                     '               <dd>{{bizHours.saturday}}</dd>'+
                     '           </dl>'+
-                    '           <dl>'+
-                    '               <dt>일요일</dt>'+
-                    '               <dd>{{bizHours.subday}}</dd>'+
-                    '           </dl>'+
                     '       </div>'+
+                    '       {{# if(typeof serviceProduct != "undefined") { #}}' +
+                    '       <div class="useable-service">' + 
+                    '           <strong class="useable-tit">서비스가능 제품 :</strong>' + 
+                    '           {{#each (item, index) in serviceProduct}}' +
+                    '               {{# if(index > 0) { #}}' +
+                                    ', '+
+                                    '{{# } #}}' +    
+                                    '<span class="name">{{item.name}}</span>'+
+                                '{{/each}}' +
+                            '</div>' + 
+                    '       <ul class="opt-list">'+
+                    '           {{#each item in serviceProduct}}' +
+                    '           <li class="{{item.class}}">'+
+                    '               <span class="name">{{item.name}}</span>'+
+                    '           </li>' +
+                    '           {{/each}}' +
+                    '       </ul>'+
+                    '       {{# } #}}' +
                     '       <div class="btn-group">'+
-                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=bestshop&orgcode={{shopID}}" class="btn border size storeConsult-btn">매장 방문 예약</a>'+
-                    '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
+                    '           {{#if typeof consultUrl != "undefined"}}'+
+                    '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                    '           {{/if}}'+
+                    '           <a href="#{{shopID}}" class="btn dark-gray size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
                     '       </div>'+
                     '   </div>'+
+                    '   <button class="btn-overlay-close"><span class="blind">닫기</span></button>'+
                     '</div>'
             }
         },
@@ -168,17 +152,14 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
         _bindEvent: function _bindEvent() {
             var self = this;
 
-            if(!self.map) return;
-
-            naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
-                // if(self.searchMode) return;
-
-                // self._changeMarkersState();             
+            if(!self.map) return;  
+            
+            naver.maps.Event.addListener(self.map, 'idle', function() {
+                var obj = vcui.array.filterOne(self.itemArr, function(item, idx){
+                    return item.info.selected == true;
+                });
+                if (obj) self.infoContentSet(obj.id);
             });
-
-            naver.maps.Event.addListener(self.map, 'dragend', function() {
-                // self._changeMarkersState();
-            });               
         },  
 
         _setItemInfo : function _setItemInfo(arr){
@@ -348,21 +329,62 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 })
                 naver.maps.Event.addListener(marker, 'click', function(e){
                     var id = $(e.overlay.icon.content).data('id');                    
-                    var items = vcui.array.filter(self.itemArr, function(item, idx){
-                        return item.id == id;
-                    });
-                    if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
-                    else {
-                        items[0].infoWindow.open(self.map, e.overlay);
-                        infoContentSet(items[0], id);
-                    }
+                    // var items = vcui.array.filter(self.itemArr, function(item, idx){
+                    //     return item.id == id;
+                    // });
+                    // if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
+                    // else {
+                    //     items[0].infoWindow.open(self.map, e.overlay);
+                    //     // infoContentSet(items[0], id);
+                    // }
 
-                    self.selectedMarker(items[0].id);
-                    
+                    // self.selectedMarker(items[0].id);
+                    self.selectInfoWindow(id);
                 });
             };   
         },
+        infoContentSet: function(id){
+            var self = this;
+            var items = self.itemArr.filter(function(item, index){
+                return item.id == id;
+            });
 
+            if (items[0].infoWindow.getMap()) {
+                var $target = $(items[0].infoWindow.contentElement);
+                var $targetFocus = $target.find('a, button, input');
+
+                $target.focus();
+                $target.off('keydown').on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
+                        
+                        if( $(e.target).hasClass('info-overlaybox')) {
+                            $targetFocus.last().focus();
+                            e.preventDefault();
+                        }
+                    }
+                });
+                $targetFocus.first().off('keydown').on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
+                        $targetFocus.last().focus();
+                        e.preventDefault();
+                    }
+                });
+                $targetFocus.last().off('keydown').on('keydown', function(e){
+                    if( !e.shiftKey && e.keyCode == 9 ) {
+                        $targetFocus.first().focus();
+                        e.preventDefault();
+                    }
+                });
+                $target.off('click').on('click', '.btn-overlay-close', function(e){
+                    e.preventDefault();
+                    if( items[0].infoWindow.getMap() ) {
+                        $('[data-id="' + id + '"]').find('.store-info-list').focus();
+                        items[0].infoWindow.close();
+                        items[0].info.selected = false;
+                    }
+                });
+            }
+        },
         selectInfoWindow: function(id) {
             var self = this;
             var items;
@@ -375,9 +397,6 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 items[0].infoWindow.close();
             } else {
                 items[0].infoWindow.open(self.map, items[0].item)
-
-                infoContentSet(items[0], id);
-                
             };
             
             
@@ -399,8 +418,8 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
 
             centerPoint = {x: marker.info.gpsInfo.gpsx, y: marker.info.gpsInfo.gpsy}
             
-            self._changeMarkersState();
             self._setCenter(centerPoint, -(marker.infoWindow.contentSize.height+marker.infoWindow.anchorSize.height+20+36)/2, 0);
+            self._changeMarkersState();
         },
 
         _setCenter: function _setCenter(point, offsetX, offsetY) {

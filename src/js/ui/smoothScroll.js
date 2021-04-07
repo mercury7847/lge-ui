@@ -726,7 +726,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._handle($doc, 'touchend');
             self._handle($doc, 'mouseup');
             self._handle($doc, 'mousecancel');
-            self._handle($doc, 'tocuchcancel');
+            self._handle($doc, 'touchcancel');
 
 
             self.initiated = eventType[e.type];
@@ -1051,7 +1051,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._handle($doc, 'touchend', false);
             self._handle($doc, 'mouseup', false);
             self._handle($doc, 'mousecancel', false);
-            self._handle($doc, 'tocuchcancel', false);
+            self._handle($doc, 'touchcancel', false);
             self._handle(self.$wrapper, 'mousedown', false);
             self._handle(self.$wrapper, 'touchstart', false);
             self._handle(self.$wrapper, 'selectstart', false);

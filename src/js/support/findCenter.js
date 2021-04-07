@@ -4,8 +4,6 @@ function moveDetail(el, detailUrl, windowHeight) {
 }
 
 (function(){
-
-
     var searchResultText = {
         search: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
         localSearch: '\"{{keyword}}"\ 가까운 <strong>{{total}}개</strong>의 센터를 찾았습니다.',
@@ -76,6 +74,8 @@ function moveDetail(el, detailUrl, windowHeight) {
             '<a href="#{{shopID}}" class="btn-link" title="새창으로 열림 - {{shopName}}">상세보기</a>'+
         '</li>';
     var addressFinder;
+    var detectUtil = vcui.detect;
+    var isMobile = detectUtil.isMobile; 
     var cookie = lgkorUI.cookie;
 
     var searchShop = {
@@ -83,7 +83,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             var self = this;
             
             self._setting();
-            // self._setOptData();
         },
 
         _setting: function(){
@@ -122,9 +121,6 @@ function moveDetail(el, detailUrl, windowHeight) {
 
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
-            
-            //self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
-            //self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
             self.searchKeyword = "";
@@ -152,80 +148,16 @@ function moveDetail(el, detailUrl, windowHeight) {
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
-                        zoom:14,
-                        templates: {
-                            infoWindow: 
-                            '<div class="info-overlaybox" tabindex="0">'+
-                            '   <div class="inner">'+
-                            '       <div class="tit-wrap">'+
-                            '           <p class="name">'+
-                            '               <span class="blind">매장명</span>'+
-                            '               {{shopName}}'+
-                            '           </p>'+
-                            '           {{# if(typeof bizStatus != "undefined") { #}}'+
-                            '           {{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
-                            '           <div class="status-icon {{bizStatus.bizStatusClass}}">'+
-                            '           {{# } else { #}}'+
-                            '           <div class="status-icon">'+
-                            '           {{# } #}}'+
-                            '               <strong class="status">{{bizStatus.bizStatusText}}</strong>'+
-                            '           </div>'+
-                            '           {{# } #}}'+
-                            '       </div>'+
-                            '       <p class="adress">{{shopAdress}}</p>'+
-                            '       <div class="hour-info">'+
-                            '           <dl>'+
-                            '               <dt>평&nbsp;&nbsp;일</dt>'+
-                            '               <dd>{{bizHours.week}}</dd>'+
-                            '           </dl>'+
-                            '           <dl>'+
-                            '               <dt>토요일</dt>'+
-                            '               <dd>{{bizHours.saturday}}</dd>'+
-                            '           </dl>'+
-                            '       </div>'+
-                            '       {{# if(typeof serviceProduct != "undefined") { #}}' +
-                                    '<div class="useable-service">' + 
-                                        '<strong class="useable-tit">서비스가능 제품 :</strong>' + 
-                                        '{{#each (item, index) in serviceProduct}}' +
-                                            '{{# if(index > 0) { #}}' +
-                                            ', '+
-                                            '{{# } #}}' +    
-                                            '<span class="name">{{item.name}}</span>'+
-                                        '{{/each}}' +
-                                    '</div>' + 
-                            '       <ul class="opt-list">'+
-                            '           {{#each item in serviceProduct}}' +
-                            '           <li class="{{item.class}}">'+
-                            '               <span class="name">{{item.name}}</span>'+
-                            '           </li>' +
-                            '           {{/each}}' +
-                            '       </ul>'+
-                            '       {{# } #}}' +
-                            '       <div class="btn-group">'+
-                            '           {{#if typeof consultUrl != "undefined"}}'+
-                            '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창 열림">방문 예약</a>'+
-                            '           {{/if}}'+
-                            '           <a href="#{{shopID}}" class="btn dark-gray size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');">상세 보기</a>'+
-                            '       </div>'+
-                            '   </div>'+
-                            '   <button class="btn-overlay-close" ><span class="blind">닫기</span></button>'+
-                            '</div>'
-                        }
-                    }).on('mapinit', function(e,data){
-                        var params = location.search.substr(location.search.indexOf("?") + 1);
-                        var sval = "", temp;
-                        params = params.split("&");
-                        for (var i = 0; i < params.length; i++) {
-                            temp = params[i].split("=");
-                            if ([temp[0]] == 'seq') { sval = temp[1]; }
-                        }
+                        zoom:14
+                    }).on('mapinit', function(e, data){
+                        var centerSeq = lgkorUI.searchParamsToObject('seq');
 
                         self.$map = self.$mapContainer.vcCenterMap('instance');
 
-                        if (sval) {
-                            self._loadStoreData(sval);
+                        if (centerSeq) {
+                            self._loadStoreData(centerSeq);
                         } else {
-                            if (!vcui.detect.isMobile) { // pc device
+                            if (!isMobile) { // pc device
                                 if (!self.isLogin) { // 비로그인
                                     self._loadStoreData();
                                 } else { // 로그인
@@ -245,11 +177,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                         self._setItemList(data);
                         self._setItemPosition();      
 
-                        if(self.searchResultMode){
-                            self._setSearchResultMode();
-                        }
-                    }).on('mapsearchnodata', function(e){
-                        alert("검색 결과가 없습니다.");
+                        if(self.searchResultMode) self._setSearchResultMode();
                     }).on('maperror', function(e, error){
                         console.log(error);
                     });
@@ -328,6 +256,8 @@ function moveDetail(el, detailUrl, windowHeight) {
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
+                e.preventDefault();
+                
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
                 
@@ -338,12 +268,12 @@ function moveDetail(el, detailUrl, windowHeight) {
                     self._showMap(true);
 
                     if (!$(window).data('breakpoint').isMobile) {
-                        $('html, body').animate({scrollTop:self.$container.offset().top});
+                        $('html, body').stop().animate({scrollTop:self.$container.offset().top});
                     } else {
                         if (!self.$container.hasClass('result-map')) {
-                            $('html, body').animate({scrollTop:self.$container.offset().top});
+                            $('html, body').stop().animate({scrollTop:self.$container.offset().top});
                         } else {
-                            $('html, body').animate({scrollTop:0})
+                            $('html, body').stop().animate({scrollTop:0})
                         }
                     }
                 }
@@ -558,6 +488,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self.$boroughSelect.vcSelectbox('update');
             });
         },
+
         _setSubwayOption: function(result, select, firstdata, valuekey){
             var self = this;
             var lines = vcui.array.map(result, function(item, idx){
@@ -581,78 +512,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 select.append($(opt).get(0));
             }
         },
-
-        // _setOptData: function(){
-        //     var self = this;
-
-        //     self.optionData = {
-        //         serviceProduct: []
-        //     }
-        //     self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
-        //         if($(item).prop('checked')) self.optionData.serviceProduct.push($(item).val());
-        //     });
-        // },
-
-        // _setOptINIT: function(){
-        //     var self = this;
-
-        //     self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
-        //     self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
-        //     self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
-        //     self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
-        // },
-
-        // _setOptApply: function(){
-        //     var self = this;
-
-        //     self._setOptData();
-        // },
-
-        // _optToggleAllChecked: function(){
-        //     var self = this;
-
-        //     var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
-        //     self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', chked);
-        // },
-
-        // _optAllChecked: function(){
-        //     var self = this;
-
-        //     var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
-        //     var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
-            
-        //     var chked = total == chktotal ? true : false;
-        //     self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
-        // },
-
-        // _toggleOptContainer: function(){
-        //     var self = this;
-
-        //     if(!self.isTransion){
-        //         self.isTransion = true;
-
-        //         var optop;
-        //         var isOpen = self.$optionContainer.hasClass('open');
-        //         if(isOpen){
-        //             optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
-        //             self.$optionContainer.stop().transition({y:'calc(100% - 80px)'}, 350, "easeInOutCubic", function(){
-        //                 self.isTransion = false;
-        //                 // self.$leftContainer.find('.dim').remove();
-        //                 self.$optionContainer.removeAttr('style').removeClass('open');
-        //             });
-        //         } else{
-        //             optop = self.$optionContainer.position().top;
-
-        //             self.$optionContainer.addClass('open');
-        //             // self.$leftContainer.prepend('<div class="dim"></div>');
-        //             self.$optionContainer.stop().css({y:'calc(100% - 80px)'}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
-        //             if(window.innerWidth < 768) {
-        //                 $('html,body').scrollTop($('.store-list-wrap').offset().top)
-        //             }
-                    
-        //         }
-        //     }
-        // },
 
         _toggleLeftContainer: function(){
             var self = this;
@@ -791,15 +650,12 @@ function moveDetail(el, detailUrl, windowHeight) {
                                 cancelBtnName: '아니요',
                                 ok: function() {
                                     location.href = result.data.location;
-                                },
-                                cancel: function() {
-                                    
                                 }
-                            });
+                            }, self.$searchUserAdressButton[0]);
                         } else{
                             lgkorUI.alert("", {
                                 title: result.data.alert.title
-                            });
+                            }, self.$searchUserAdressButton[0]);
                         }
                     }
                 }
@@ -884,23 +740,40 @@ function moveDetail(el, detailUrl, windowHeight) {
                 	obj.callback ="setAppLocation";
                 	var jsonString= JSON.stringify(obj);
                 	webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                }
-                else
-                {
-    	        	try 
-    	        	{
+                } else {
+    	        	try {
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
     	        			searchCurrentSearch();
+    	        		} else {
+                            if (!init) {
+                                lgkorUI.alert('', {
+                                    title: '설정 > 앱권한에서 위치정보 이용동의를 하셔야 이용 가능합니다.'
+                                }, self.$searchCurrentButton[0]);
+                            } else {
+                                self.searchResultMode = false;
+
+                                self.latitude = self.defaultLatitude;
+                                self.longitude = self.defaultLongitude;
+                                
+                                self._loadStoreData();
+                            }	
+                            //setAppLocation('37.55401,126.97486');	    	        			
     	        		}
-    	        		else
-    	        		{
-        	        		setAppLocation('37.55401,126.97486');		    	        			
-    	        		}
-            		} 
-    	        	catch (e) 
-    	        	{
-    	        		setAppLocation('37.55401,126.97486');
+            		} catch (e) {
+                        if (!init) {
+                            lgkorUI.alert('', {
+                                title: '설정 > 앱권한에서 위치정보 이용동의를 하셔야 이용 가능합니다.'
+                            }, self.$searchCurrentButton[0]);
+                        } else {
+                            self.searchResultMode = false;
+
+                            self.latitude = self.defaultLatitude;
+                            self.longitude = self.defaultLongitude;
+                            
+                            self._loadStoreData();
+                        }	
+                        //setAppLocation('37.55401,126.97486');
             		}
                 }	
             };
@@ -939,7 +812,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                     });
                 }};
             
-            if (!isApp()){ //앱에서 접근하는 경우 위치정보 조회 UI 생략
+            if (!isApp()) {
                 var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
 
 	            if (!cookie.getCookie('geoAgree')) {
@@ -1059,27 +932,23 @@ function moveDetail(el, detailUrl, windowHeight) {
 
         _setItemPosition: function(){
             var self = this;
+            var $selectItem = self.$defaultListLayer.find('> li .point.on');
 
-            var selectItem = self.$defaultListLayer.find('> li .point.on');
-            if(selectItem.length){
-                var parent = selectItem.closest('li');
-                var scrollwrap = self.$defaultListContainer.find('.scroll-wrap');
-                var scrolltop = scrollwrap.scrollTop();
-                var itemtop = parent.position().top;
-                var itembottom = -scrolltop + itemtop + parent.height();
+            if ($selectItem.length) {
+                var $parent = $selectItem.closest('li');
+                var $scrollwrap = self.$defaultListContainer.find('.scroll-wrap');
+                var itemtop = $parent.position().top;
 
                 if (!vcui.detect.isMobile) {
-                    self.$defaultListContainer.find('.scroll-wrap').mCustomScrollbar("scrollTo", parent, {timeout: 220});
+                    $scrollwrap.mCustomScrollbar("scrollTo", $parent, {timeout: 220});
                 } else {
-                    self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: itemtop}, 220);
+                    $scrollwrap.stop().animate({scrollTop: itemtop}, 220);
                 }
 
-                if( window.innerWidth < 1025) {
-                    if( self.$container.hasClass('show-map') && !self.$container.hasClass('result-map') ) {
-                        $('html, body').stop().animate({
-                            scrollTop :self.$container.offset().top 
-                        })
-                    }
+                if (window.innerWidth < 1025 && self.$container.hasClass('show-map') && !self.$container.hasClass('result-map')) {
+                    $('html, body').stop().animate({
+                        scrollTop :self.$container.offset().top 
+                    })
                 }
             }
         },

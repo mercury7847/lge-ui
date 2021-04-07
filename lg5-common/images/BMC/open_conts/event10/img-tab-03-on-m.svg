@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="225" height="150" viewBox="0 0 225 150">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path fill="#FFF" d="M0 31L111.025 0 225 31 225 150 0 150z" transform="translate(-475 -2348) translate(20 2348) translate(455)"/>
+                    <g>
+                        <g>
+                            <text fill="#B4B4B4" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="20" font-weight="400" letter-spacing="-.5" transform="translate(-475 -2348) translate(20 2348) translate(455) translate(21 54)">
+                                <tspan x="0" y="26">패피의 의류관리는</tspan>
+                            </text>
+                            <g>
+                                <path stroke="#2C2C2C" stroke-width="2.4" d="M9.587 4.85c-1.45.994-4.321 3.435-8.61 7.323C.41 12.686.29 13.53.694 14.18l1.598 2.58c.46.745 1.437.974 2.18.514.123-.076.235-.168.332-.274 2.291-2.49 3.562-3.41 3.812-2.76.27.7-.171 4.81-1.321 12.329-.176 1.153.615 2.23 1.768 2.407.106.016.213.024.32.024H24.97c1.167 0 2.112-.946 2.112-2.112 0-.12-.01-.24-.03-.36-1.267-7.34-1.734-11.482-1.4-12.424.313-.882 1.477.048 3.494 2.79.518.705 1.51.856 2.214.338.106-.077.201-.168.285-.269l1.457-1.77c.512-.62.476-1.527-.082-2.106-4.747-4.922-7.526-7.668-8.34-8.237-1.3-.912-3.132-.675-3.893 0-.76.675-2.736 4.118-3.606 4.118-.558 0-1.823-2.412-3.353-3.91-.816-.8-1.903-1.81-4.242-.208z" transform="translate(-475 -2348) translate(20 2348) translate(455) translate(21 54) translate(149)"/>
+                            </g>
+                        </g>
+                        <text fill="#2C2C2C" font-family="NanumBarunpen-Bold, NanumBarunpen" font-size="32" font-weight="bold" letter-spacing="-1.143" transform="translate(-475 -2348) translate(20 2348) translate(455) translate(21 54)">
+                            <tspan x="13" y="65">남보다 빠르게</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

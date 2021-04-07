@@ -1128,3 +1128,60 @@
         }
     }
 }
+
+// 매장상담신청완료
+.complete-wrap {
+    position: relative;
+    text-align: center;
+    padding-bottom: 80px;
+    &:before {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+        background: url('/lg5-common/images/icons/icon-complete-64.svg') no-repeat 0 0;
+        vertical-align: -6px;
+        content: '';
+    }
+    .text {
+        display: block;
+        font-weight: 700;
+        @include font($font-large-4,52px);
+    }
+    .small-text {
+        margin-top: 12px;
+        @include font($font-medium,26px);
+        word-break: keep-all;
+    }
+    .btn-link {
+        margin-top: 24px;
+    }
+    .btn-group {
+        margin-top:64px;
+        @include mobile {
+            .btn {
+                padding:15px 16px;
+            }
+        }
+    }
+
+    @include mobile {
+        margin-top: -24px;
+        padding:0;
+        &:before {
+            margin-bottom: 12px;
+        }
+        .text {
+            font-size:16px;
+            line-height:24px;
+        }
+        .small-text {
+            margin-top: 12px;
+            font-size:14px;
+            line-height:22px;
+        }
+        .btn-link {
+            margin-top: 16px;
+        }
+    }
+}

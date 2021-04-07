@@ -79,6 +79,7 @@
             requestMoreData: function(page) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-more-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {'page':page}, function(result){
                     var data = result.data;
                     var param = result.param;

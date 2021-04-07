@@ -221,7 +221,7 @@ $(document).ready(function() {
                             }
                         } else {
                             if(LGEAPPcomfirmAPPOpen()) {
-                                $(".app-exec span").append("a");
+                                
                             } else {
                                 var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
 
