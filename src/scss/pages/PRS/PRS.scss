@@ -1363,7 +1363,7 @@
 			.new-product-list {
 				padding:0 0 24px;
 				.slide-content {
-					padding: 0 10px;
+					padding: 0 22px 0 10px;
 				}
 				.slide-track {
 					// display:inherit;
@@ -1371,8 +1371,11 @@
 						max-width: none;
 						width:auto;
 						padding:6px;
+						&:last-child {
+							//padding-right: 16px;
+						}
 						.slide-box {
-							width: 70.556vw;
+							width: 234px;
 						}
 						.img {
 							a {
