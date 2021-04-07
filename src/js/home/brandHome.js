@@ -63,7 +63,7 @@
         });
 
         $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
-            
+            infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,   
             dots:false,   
@@ -122,13 +122,6 @@
         var posArr = [];
         var wheelArr = [];      
         var regex = /^data-step-(-?\d*)/;
-
-        // $scenes.eq(0).height(winHeight-100);
-
-        // if (history.scrollRestoration) {
-        //     window.history.scrollRestoration = 'manual';
-        // }
-
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
@@ -620,7 +613,7 @@
         $('.thinq-section.smart-thinq-wrap .ui_tab').on('tabchange', function(e,data){
 
             if(data.content.find('.ui_carousel_slider').length>0) {                                
-                data.content.find('.ui_carousel_slider').vcCarousel('update');
+                data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0, true);
             } 
 
         });
@@ -647,7 +640,7 @@
                     data.content.find('.ui_tab').vcTab('update');
                 } 
 
-                if(data.content.find('.ui_carousel_slider').length>0) {                                
+                if(data.content.find('.ui_carousel_slider').length>0) {                           
                     data.content.find('.ui_carousel_slider').vcCarousel('update');
                 } 
 
