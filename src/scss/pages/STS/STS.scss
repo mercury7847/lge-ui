@@ -125,6 +125,56 @@
                 text-align: center;
             }
         }
+        &.link-story {
+            padding-bottom:80px;
+            @include mobile {
+                padding-bottom:40px;
+            }
+            .inner {
+                padding-top:0;
+            }
+        }
+        .story-link {
+            margin-top:-24px;
+            text-align:center;
+            @include mobile {
+                margin-top:-4px;
+            }
+            ul {
+                font-size:0;
+                @include mobile {
+                    margin-top:-12px;
+                }
+                li {
+                    display:inline-block;
+                    @include mobile {
+                        margin-top:12px;
+                    }
+                    a {
+                        position:relative;
+                        font-size:16px;
+                        line-height:26px;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
+                        }
+                        &:after {
+                            content:' ';
+                            display:inline-block;
+                            margin:0 8px;
+                            width:1px;
+                            height:10px;
+                            background-color:#ddd;
+                        }
+                    }
+                    &:last-child {
+                        a:after {
+                            display:none;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .story-count {
