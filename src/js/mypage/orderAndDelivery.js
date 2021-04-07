@@ -1,30 +1,5 @@
 
 (function() {
-    var ORDER_INQUIRY_LIST_URL;
-    var ORDER_DETAIL_URL;
-    var PRODUCT_STATUS_URL;
-    var ORDER_CANCEL_POP_URL;
-    var ORDER_SAILS_URL;
-    var ORDER_REQUEST_URL;
-    var ORDER_BENEFIT_URL;
-
-
-    var PAYMENT_METHOD_CONFIRM;
-    var INFO_MODIFY_CONFIRM;
-    var ARS_AGREE_URL;
-    var PAYMENT_SAVE_URL;
-
-    var PAGE_TYPE_LIST = "orderListPage";
-    var PAGE_TYPE_DETAIL = "orderDetailPage";
-    var PAGE_TYPE_NONMEM_DETAIL = "orderNoneMemberPage";
-    var PAGE_TYPE_CAREDETAIL = "careOrderDetailPage";
-
-    var TAB_FLAG_ORDER = "ORDER";
-    var TAB_FLAG_CARE = "CARE";
-
-    var METHOD_CARD = "CARD";
-    var METHOD_BANK = "BANK";
-
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
@@ -82,7 +57,7 @@
         
 
         var prodListTemplate = 
-            '<div class="row {{listData.orderStatus.disabled}}">'+
+            '<div class="row {{disabled}}">'+
                 '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
                     '<div class="col col1">'+
                         '<span class="blind">제품정보</span>'+
@@ -129,7 +104,7 @@
                 '</div>'+
                 '{{#if isCheck}}'+
                 '<span class="chk-wrap cancel-select">'+
-                    '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{listData.orderStatus.disabled}}>'+
+                    '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{disabled}}>'+
                     '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
                 '</span>'+
                 '{{/if}}'+
@@ -137,7 +112,7 @@
         
 
             var careProdListTemplate = 
-                '<div class="row {{listData.orderStatus.disabled}}">'+
+                '<div class="row {{disabled}}">'+
                     '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
                         '<div class="col col1">'+
                             '<span class="blind">제품정보</span>'+
@@ -190,7 +165,7 @@
                     '</div>'+
                     '{{#if isCheck}}'+
                     '<span class="chk-wrap cancel-select">'+
-                        '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{listData.orderStatus.disabled}}>'+
+                        '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{disabled}}>'+
                         '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
                     '</span>'+
                     '{{/if}}'+
@@ -373,7 +348,33 @@
 
     var productOrderInfoTemplate =     
         '<li><dl><dt>배송 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
-        '<li><dl><dt>배송 희망일</dt><dd>{{instReqDate}}</dd></dl></li>';
+        '<li><dl><dt>배송 희망일</dt><dd>{{delivWish}}</dd></dl></li>';
+
+    
+    var ORDER_INQUIRY_LIST_URL;     //리스트 조회 연동 json
+    var ORDER_DETAIL_URL;               //상세 페이지 경로
+    var PRODUCT_STATUS_URL;          //제품 상태 체크
+    var ORDER_CANCEL_POP_URL;
+    var ORDER_SAILS_URL;
+    var ORDER_REQUEST_URL;
+    var ORDER_BENEFIT_URL;
+
+
+    var PAYMENT_METHOD_CONFIRM;
+    var INFO_MODIFY_CONFIRM;
+    var ARS_AGREE_URL;
+    var PAYMENT_SAVE_URL;
+
+    var PAGE_TYPE_LIST = "orderListPage";
+    var PAGE_TYPE_DETAIL = "orderDetailPage";
+    var PAGE_TYPE_NONMEM_DETAIL = "orderNoneMemberPage";
+    var PAGE_TYPE_CAREDETAIL = "careOrderDetailPage";
+
+    var TAB_FLAG_ORDER = "ORDER";
+    var TAB_FLAG_CARE = "CARE";
+
+    var METHOD_CARD = "CARD";
+    var METHOD_BANK = "BANK";
 
     var START_INDEX;
 
@@ -1123,7 +1124,7 @@
                         return chk;
                     });
                     
-                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
+                    $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
             }
 
@@ -1682,7 +1683,7 @@
         //배송정보
         var $listBox = wrap.find('.inner-box.shipping');
         if($listBox.length > 0) {
-            var leng = Object.keys(shippingData).length;
+            var leng = shippingData ? Object.keys(shippingData).length : 0;
             if(leng){
                 template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
 
@@ -1699,8 +1700,8 @@
         $listBox = wrap.find('.inner-box.payment');
         if($listBox.length > 0) {
             var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
-                
-            leng = Object.keys(paymentData).length;
+            
+            leng = paymentData ? Object.keys(paymentData).length : 0;
             
             var isRender = false;
             if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL){
@@ -1720,7 +1721,7 @@
         //제품 주문 정보
         $listBox = wrap.find('.inner-box.prodOrderInfo');
         if(prodorderinfo && TAB_FLAG == TAB_FLAG_CARE && $listBox.length > 0) {                
-            leng = Object.keys(prodorderinfo).length;
+            leng = prodorderinfo ? Object.keys(prodorderinfo).length : 0;
 
             if(leng){
                 $listBox.show().find('ul').html(vcui.template(productOrderInfoTemplate, prodorderinfo));
@@ -2066,8 +2067,6 @@
             var discountPrice = listdata.discountPrice ? parseInt(listdata.discountPrice) : 0;
             var mempointPrice = listdata.memberShipPoint ? parseInt(listdata.memberShipPoint) : 0;
             var productTotalPrice = listdata.productTotalPrice ? parseInt(listdata.productTotalPrice) : 0;
-
-            if(listdata.itemCancelAbleYn == "N") listdata.orderStatus.disabled = "disabled";
         
             PRICE_INFO_DATA.push({
                 originalTotalPrice: originalTotalPrice,
@@ -2088,7 +2087,9 @@
                 return chk;
             });
 
-            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
+            var disabled = listdata.orderCancelAbleYn == "N" ? "disabled" : "";
+console.log(listdata.orderCancelAbleYn, disabled)
+            prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
     //반품 정보 요청...후 팝업 열기.
@@ -2269,7 +2270,7 @@
             prodlist.statusButtonList = [];
             var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
             prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
-            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, isCheck:false, isMonthlyPrice:false, isBtnSet:false, isQuantity:isQuantity}));
+            $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:false, isQuantity:isQuantity}));
         }
         
         $('#popup-receipt-list').vcModal();
