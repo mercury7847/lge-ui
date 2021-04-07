@@ -202,7 +202,7 @@ $(function () {
         var isApplication = isApp();
         var $window  = $(window);
         var $contentWrap = $('.section-cover');
-        var aniSpeed = vcui.detect.isMobile? 500 : 800;
+        var aniSpeed = vcui.detect.isMobile? 200 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -219,7 +219,10 @@ $(function () {
         });
 
         $('.scene').css({'overflow':'hidden'});
+
+        /* 메인테스트*/
         $('html').css({'overflow':'hidden'});
+        
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){
@@ -301,7 +304,7 @@ $(function () {
                     return false;
                 }
 
-                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed);
                 speedTime = Math.max(0,speedTime);
 
                 $('html, body').stop(true).animate({
@@ -365,8 +368,27 @@ $(function () {
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
         lgkorUI.setEnableAppScrollBottomMenu(false);
+        /*
 
-        
+        function scrollendfn(){
+            var idx = _findIdx($('html,body').scrollTop());            
+            $(window).off('scrollend');
+
+            $('html, body').stop(true).animate({
+                scrollTop: posArr[idx]
+            }, 600, 'easeInOutQuart',  function() {
+                $(window).on('scrollend', scrollendfn);
+                
+            });
+        }
+
+
+        $(window).on('scrollend', scrollendfn);
+        */
+
+
+
+        /* 메인테스트*/
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -401,6 +423,27 @@ $(function () {
                     }
                 }    
                 
+            }
+        });
+
+        var wrapTouchSy = 0;
+        
+        $contentWrap.on('touchstart touchend touchcancel', function(e) {
+            
+            var data = _getEventPoint(e);
+            if (e.type == 'touchstart') {
+                wrapTouchSy = data.y;
+            } else {
+
+                if (wrapTouchSy - data.y > 80) {
+                    // console.log('down');
+                    lgkorUI.showAppBottomMenu(false);
+
+                } else if (wrapTouchSy - data.y < -80) {
+                    // console.log('up');
+                    lgkorUI.showAppBottomMenu(true);
+                }
+
             }
         });
 
@@ -587,16 +630,13 @@ $(function () {
                 $(this).find('.img > .video').each(function() {
                     updateVideo(this);
                 });
-
                             
             });  
 
-            
+            /* 메인 테스트 */
             $contentWrap.css({'overflow':'auto','height':winHeight});
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-
-            // console.log(idx);
-
+            
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
@@ -615,9 +655,6 @@ $(function () {
 
                 }, 100);
             }
-
-            
-
             
         }
 
@@ -643,7 +680,7 @@ $(function () {
             var scrollTop = $contentWrap.scrollTop();
             if(window.sessionStorage) window.sessionStorage.setItem('lgeMainScrollTop', scrollTop);
         });
-        
+
 
         $window.trigger('breakpointchange');
         window.resizeScene = render;      
