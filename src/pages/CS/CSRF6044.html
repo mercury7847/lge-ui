@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["CS/CS"],
+        pageJS: ["customer/searchShop"],
+        pageTitle: "매장 찾기 | LG전자 고객지원",
+        pageDesc: "고객님과 가장 가까운 지역의 LG전자 매장을 찾아보실 수 있습니다. 각 매장 운영 시간이 상이 할 수 있으니, 매장별 상세정보를 꼭 확인하시기 바랍니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "매장 찾기" 
+        })
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "매장 상담 신청"
+            })
+            <div class="contents">
+				<div class="cont-wrap">
+                    <div class="section">
+                        <div class="complete-wrap">
+                            <span class="text">매장 상담 신청이 완료되었습니다.</span>
+                            <p class="small-text">[매장 상담 신청 조회]는 베스트샵에서 하실 수 있습니다.</p>
+							<div class="btn-group">
+								<a href="#n" class="btn gray"><span>매장 상담 신청 조회</span></a>
+								<a href="#n" class="btn"><span>홈으로 가기</span></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		@@include('./common/footer.html')
+    </div>     
+</body>
+</html>
