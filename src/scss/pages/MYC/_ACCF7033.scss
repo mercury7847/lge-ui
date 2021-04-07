@@ -382,6 +382,19 @@
       border-radius: 100px;
     }
     &.enroll {
+        .recommend-text {
+            @include font(14px,24px);
+            @include mobile {
+                @include font(13px,21px);
+            }
+        }
+        .enroll-list {
+            position: relative;
+            margin-top: 56px;
+            .recommend-text {
+                margin-bottom: 12px;
+            }
+        }
         > ul {
             display:flex;
             flex-wrap:wrap;
@@ -473,17 +486,18 @@
     .no-data-case {
         position: relative;
         @include mobile {
-            margin:-40px 0;
-            padding:60px 16px;
+            //padding:60px 16px;
+            .no-data {
+                padding-top: 71px;
+            }
         }
         .recommend-text {
             position: absolute;
             top: 8px;
             left: 0;
-            @include font(14px,24px);
+            z-index: 1;
             @include mobile {
                 top: 10px;
-                @include font(13px,21px);
             }
         }
         p {
@@ -503,8 +517,14 @@
             padding: 24px 48px;
             border: 1px solid $color-border;
             border-radius: 8px;
-            .btn {
-
+            @include mobile {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 40px;
+                padding: 24px;
+                p {
+                    margin-bottom: 24px;
+                }
             }
         }
     }
@@ -542,6 +562,40 @@
                 font-size: 20px;
                 line-height: 28px;
             }
+        }
+    }
+}
+
+.btm-box {
+    position:relative;
+    margin-top:48px;
+    padding:27px 48px;
+    border-radius:8px;
+    background-color:#f4f4f4;
+    > p {
+        font-size:16px;
+        line-height:26px;
+        font-weight:700;
+    }
+    .btn {
+        position:absolute;
+        top:50%;
+        right:40px;
+        transform:translateY(-50%);
+    }
+    @include mobile {
+        margin-top:40px;
+        padding:16px 24px;
+        border-radius:4px;
+        text-align:center;
+        > p {
+            font-size:14px;
+            line-height:22px;
+        }
+        .btn {
+            position:static;
+            margin-top:16px;
+            transform:translateY(0);
         }
     }
 }
