@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="656" height="112" viewBox="0 0 656 112">
+    <defs>
+        <linearGradient id="6db9wqpb0a" x1="100%" x2="0%" y1="51.457%" y2="48.543%">
+            <stop offset="0%" stop-color="#FB5A72"/>
+            <stop offset="100%" stop-color="#FA263E"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-631 -4137) translate(269 205) translate(0 152) translate(0 2641) translate(362 1139)">
+                            <rect width="656" height="112" fill="url(#6db9wqpb0a)" rx="56"/>
+                            <text fill="#FFF" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="32" font-weight="400" letter-spacing="-.444">
+                                <tspan x="252" y="76">앱 다운로드</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

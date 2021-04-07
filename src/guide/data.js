@@ -333,7 +333,11 @@ var res = {
 					"카드혜택 팝업" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
 				},
 				"오픈이벤트/기획전" : {
-					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","",""],
+					"응원댓글이벤트" : {
+						"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","",""],
+						"이벤트참여" : ["/html/BMC/MKT4009_02.html","_blank:width=912,height=760,scrollbars=yes",""],
+						"이벤트당첨(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","",""]
+					},
 					"오픈기획전" : ["/html/BMC/OBS4002_06.html","",""],
 					"오브제컬렉션기획전" : ["/html/BMC/OBS4002_09.html","",""],
 					"라이프스타일기획전" : ["/html/BMC/OBS4002_10.html","",""],
@@ -407,7 +411,8 @@ var res = {
 					"매장 상세(NS)" : ["/html/CS/CSRF6041.html","","검수완료"],
 					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
 					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
-					"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
+					"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"],
+					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""]
 				},
 				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]

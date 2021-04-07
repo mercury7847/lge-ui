@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="720px" height="705px" viewBox="0 0 720 705" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 720 0 720 1242 0 1242"></polygon>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#F75584" offset="0%"></stop>
+            <stop stop-color="#8D71EC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01">
+            <g id="Group">
+                <g id="txiexwceda-link" fill="#FFF4EE" fill-rule="nonzero">
+                    <polygon id="txiexwceda" points="0 0 720 0 720 1242 0 1242"></polygon>
+                </g>
+                <g id="Clipped">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="txiexwceda"></g>
+                    <g id="Group" opacity="0.7" mask="url(#mask-2)">
+                        <g transform="translate(-14.000000, 47.000000)">
+                            <g>
+                                <path d="M665.96,55 L638.04,55 C636.36,55 635,53.659 635,52 C635,50.342 636.36,49 638.04,49 L665.96,49 C667.64,49 669,50.342 669,52 C669,53.659 667.64,55 665.96,55 Z M628.968,44.147 C628.4,44.716 627.655,45 626.91,45 C626.166,45 625.421,44.716 624.853,44.147 C623.716,43.01 623.716,41.167 624.853,40.031 L636.031,28.853 C637.168,27.716 639.011,27.716 640.147,28.853 C641.284,29.99 641.284,31.832 640.147,32.969 L628.968,44.147 L628.968,44.147 Z M621,100 C619.344,100 618,98.64 618,96.96 L618,69.04 C618,67.36 619.344,66 621,66 C622.657,66 624,67.36 624,69.04 L624,96.96 C624,98.64 622.657,100 621,100 L621,100 Z M621,34 C619.344,34 618,32.64 618,30.96 L618,3.04 C618,1.359 619.344,0 621,0 C622.657,0 624,1.359 624,3.04 L624,30.96 C624,32.64 622.657,34 621,34 Z M611.089,45 C610.344,45 609.599,44.716 609.031,44.148 L597.853,32.968 C596.716,31.831 596.716,29.989 597.853,28.853 C598.99,27.716 600.832,27.716 601.969,28.853 L613.147,40.032 C614.284,41.169 614.284,43.01 613.147,44.148 C612.579,44.716 611.834,45 611.089,45 Z M603,52 C603,53.659 601.639,55 599.96,55 L572.04,55 C570.361,55 569,53.659 569,52 C569,50.342 570.361,49 572.04,49 L599.96,49 C601.639,49 603,50.342 603,52 Z M609.031,55.853 C610.168,54.716 612.011,54.716 613.147,55.853 C614.284,56.99 614.284,58.833 613.147,59.969 L601.97,71.147 C601.401,71.716 600.657,72 599.912,72 C599.167,72 598.422,71.716 597.854,71.147 C596.717,70.01 596.717,68.168 597.854,67.031 L609.032,55.853 L609.031,55.853 Z M628.968,55.853 L640.148,67.031 C641.284,68.168 641.284,70.011 640.148,71.147 C639.578,71.716 638.834,72 638.089,72 C637.345,72 636.599,71.716 636.031,71.147 L624.853,59.97 C623.716,58.833 623.716,56.991 624.853,55.854 C625.99,54.717 627.831,54.717 628.968,55.854 L628.968,55.853 Z" id="Shape" fill="#FAE1D5" fill-rule="nonzero"></path>
+                                <circle id="Oval" stroke="#FCEBE2" stroke-width="5" style="mix-blend-mode: multiply;" cx="687" cy="104" r="9.5"></circle>
+                                <path d="M121.156,132 L85.844,132 C83.721,132 82,130.211 82,128 C82,125.79 83.721,124 85.844,124 L121.156,124 C123.279,124 125,125.79 125,128 C125,130.211 123.279,132 121.156,132 L121.156,132 Z M76.137,115.947 C75.435,116.649 74.515,117 73.595,117 C72.675,117 71.755,116.649 71.053,115.947 C69.649,114.542 69.649,112.267 71.053,110.861 L84.863,97.053 C86.267,95.649 88.543,95.649 89.947,97.053 C91.351,98.458 91.351,100.733 89.947,102.139 L76.137,115.947 Z M66,187 C63.791,187 62,185.28 62,183.156 L62,147.844 C62,145.719 63.791,144 66,144 C68.209,144 70,145.72 70,147.844 L70,183.156 C70,185.281 68.209,187 66,187 Z M66,105 C63.791,105 62,103.28 62,101.156 L62,65.844 C62,63.719 63.791,62 66,62 C68.209,62 70,63.719 70,65.844 L70,101.156 C70,103.281 68.209,105 66,105 L66,105 Z M51.404,117 C50.484,117 49.564,116.65 48.862,115.947 L35.053,102.137 C33.649,100.733 33.649,98.457 35.053,97.053 C36.458,95.649 38.733,95.649 40.138,97.053 L53.947,110.863 C55.351,112.267 55.351,114.543 53.947,115.947 C53.244,116.649 52.324,117 51.404,117 Z M43,128 C43,130.211 41.279,132 39.156,132 L3.844,132 C1.721,132 0,130.211 0,128 C0,125.79 1.721,124 3.844,124 L39.156,124 C41.279,124 43,125.79 43,128 Z M48.862,133.054 C50.267,131.649 52.542,131.649 53.947,133.054 C55.351,134.458 55.351,136.734 53.947,138.138 L40.138,151.946 C39.435,152.649 38.516,153 37.595,153 C36.675,153 35.755,152.649 35.053,151.946 C33.649,150.542 33.649,148.266 35.053,146.862 L48.862,133.054 Z M76.137,133.054 L89.947,146.862 C91.351,148.266 91.351,150.542 89.947,151.947 C89.244,152.649 88.324,153 87.404,153 C86.484,153 85.564,152.649 84.862,151.947 L71.053,138.138 C69.649,136.734 69.649,134.458 71.053,133.054 C72.458,131.649 74.733,131.649 76.137,133.054 Z" id="Shape" fill="#FAE1D5" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group" transform="translate(40.000000, 553.000000)">
+                <g transform="translate(0.000000, 14.700000)">
+                    <circle id="Oval" fill="#8167A8" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="61.25" cy="61.25" r="61.25"></circle>
+                    <circle id="Oval" fill="#E75B9A" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="161.35" cy="61.25" r="61.25"></circle>
+                    <circle id="Oval" fill="#EF8C87" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="260.75" cy="61.25" r="61.25"></circle>
+                    <circle id="Oval" fill="#F6AF6F" fill-rule="nonzero" opacity="0.716" style="mix-blend-mode: multiply;" cx="360.85" cy="61.25" r="61.25"></circle>
+                    <g transform="translate(27.000000, 36.000000)" fill="#FFFFFF" font-size="18" font-weight="normal">
+                        <text id="LG전자" font-family="Helvetica">
+                            <tspan x="5.931" y="18">LG</tspan>
+                            <tspan x="29.9427187" y="18" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">전자</tspan>
+                        </text>
+                        <text id="홈페이지" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">
+                            <tspan x="0.864" y="37">홈페이지</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(129.000000, 48.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="18" font-weight="normal" id="온라인몰">
+                        <text>
+                            <tspan x="0.864" y="16">온라인몰</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(236.000000, 39.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="18" font-weight="normal">
+                        <text id="케어">
+                            <tspan x="8.682" y="16">케어</tspan>
+                        </text>
+                        <text id="솔루션">
+                            <tspan x="0.773" y="35">솔루션</tspan>
+                        </text>
+                    </g>
+                    <g transform="translate(336.000000, 39.000000)" fill="#FFFFFF" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="18" font-weight="normal">
+                        <text id="고객">
+                            <tspan x="8.682" y="16">고객</tspan>
+                        </text>
+                        <text id="서비스">
+                            <tspan x="0.773" y="35">서비스</tspan>
+                        </text>
+                    </g>
+                </g>
+                <polygon id="Path" fill="#D7D7D7" fill-rule="nonzero" style="mix-blend-mode: multiply;" points="459.15 66.95 477.15 75.95 459.15 84.95 459.149 77.349 432.75 77.35 432.75 74.55 459.149 74.549"></polygon>
+                <circle id="Oval" fill="url(#linearGradient-3)" fill-rule="nonzero" cx="564.95" cy="75.95" r="75.95"></circle>
+                <g transform="translate(510.000000, 62.000000)" fill="#FFFFFF" font-family="Helvetica" font-size="24" font-weight="normal" id="LGE.COM">
+                    <text>
+                        <tspan x="0.5" y="23">LGE.COM</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="Group" transform="translate(176.000000, 113.000000)" fill="#111111" font-family="Helvetica" font-size="60" font-weight="normal">
+                <text id="LGE.COM-소개">
+                    <tspan x="0.49" y="58">LGE.COM </tspan>
+                    <tspan x="293.868906" y="58" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo">소개</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(32.000000, 225.000000)" fill="#111111" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="32" font-weight="bold">
+                <text id="기존-각각-운영-되던-LG전자-홈페이지,">
+                    <tspan x="52.153" y="37">기존 각각 운영 되던 LG전자 홈페이지,</tspan>
+                </text>
+                <text id="온라인-몰,-케어솔루션,-고객서비스-사이트를">
+                    <tspan x="19.065" y="79">온라인 몰, 케어솔루션, 고객서비스 사이트를</tspan>
+                </text>
+                <text id="1개의-사이트로-통합한-웹-&amp;앱을-만들었습니다.">
+                    <tspan x="0" y="121">1개의 사이트로 통합한 웹 &amp;앱을 만들었습니다.</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(77.000000, 371.000000)" fill="#111111" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="26" font-weight="normal">
+                <text id="LGE.COM은-고객-경험-여정의-주요-과정(인지,-검색,">
+                    <tspan x="15.582" y="30">LGE.COM은 고객 경험 여정의 주요 과정(인지, 검색,</tspan>
+                </text>
+                <text id="결정,-구매,-사후관리)에서-자사만의-Only&amp;BEST">
+                    <tspan x="31.436" y="68">결정, 구매, 사후관리)에서 자사만의 Only&amp;BEST</tspan>
+                </text>
+                <text id="서비스를-제공하여-고객에게-긍정적-경험(가치)을-제공,">
+                    <tspan x="0.418" y="106">서비스를 제공하여 고객에게 긍정적 경험(가치)을 제공,</tspan>
+                </text>
+                <text id="LG전자-포탈-서비스를-지향하고자-합니다.">
+                    <tspan x="66.502" y="144">LG전자 포탈 서비스를 지향하고자 합니다.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

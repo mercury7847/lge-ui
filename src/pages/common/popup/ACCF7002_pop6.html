@@ -35,6 +35,18 @@
                         })
                     </div>
                     <!-- // 결제 정보 -->
+
+                    <!-- 2021-04-06 제품 주문 정보 추가 -->
+                    <div class="inner-box prodOrderInfo">
+                        <p class="inner-tit">제품 주문 정보</p>
+                        @@include('./common/modules/dl-infolist.html', {
+                            "list" : [
+                                { "dt" : "배송 요청사항", "dd" : "이*수" },
+                                { "dt" : "배송 희망일", "dd" : "010-****-1234" }
+                            ]
+                        })
+                    </div>
+                    <!-- // 제품 주문 정보 -->
                 </div>
             </div>
         </div>

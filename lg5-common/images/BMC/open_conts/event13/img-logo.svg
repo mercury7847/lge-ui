@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="47" viewBox="0 0 300 47">
+    <defs>
+        <path id="rissxpz2ka" d="M0 0.108L46.335 0.108 46.335 46.44 0 46.44z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <text fill="#000" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="27" font-weight="bold" transform="translate(-812 -3971) translate(269 205) translate(0 151) translate(0 2620) translate(543 995)">
+                                <tspan x="54" y="34.6">LG전자주식회사 귀중 </tspan>
+                            </text>
+                            <g>
+                                <g transform="translate(-812 -3971) translate(269 205) translate(0 151) translate(0 2620) translate(543 995)">
+                                    <mask id="fdzgabi8nb" fill="#fff">
+                                        <use xlink:href="#rissxpz2ka"/>
+                                    </mask>
+                                    <path fill="#A51C37" d="M23.168 46.44c12.794 0 23.167-10.377 23.167-23.169C46.335 10.476 35.962.108 23.168.108 10.373.108 0 10.476 0 23.271 0 36.063 10.373 46.44 23.168 46.44" mask="url(#fdzgabi8nb)"/>
+                                </g>
+                                <path fill="#FEFEFE" d="M22.32 12.96L22.32 33.12 28.8 33.12 28.8 31.323 24.169 31.323 24.169 12.96zM15.656 18.36c1.494 0 2.704-1.213 2.704-2.698 0-1.49-1.21-2.702-2.704-2.702-1.485 0-2.696 1.211-2.696 2.702 0 1.485 1.211 2.698 2.696 2.698" transform="translate(-812 -3971) translate(269 205) translate(0 151) translate(0 2620) translate(543 995)"/>
+                                <path fill="#FEFEFE" d="M23.963 3.616c-.236-.01-.699-.016-.924-.016C12.324 3.6 3.6 12.323 3.6 23.041c0 5.192 2.015 10.074 5.683 13.743 3.683 3.676 8.568 5.696 13.756 5.696 5.19 0 10.075-2.02 13.755-5.696 3.671-3.669 5.686-8.55 5.686-13.743v-.885l-.777.004H28.6v1.806h12.035v.26c-.62 9.168-8.274 16.438-17.596 16.438-4.704 0-9.127-1.833-12.46-5.16S5.412 27.75 5.412 23.04c0-4.706 1.834-9.132 5.167-12.46 3.333-3.332 7.756-5.166 12.46-5.166.213 0 .71.006.924.012v-1.81z" transform="translate(-812 -3971) translate(269 205) translate(0 151) translate(0 2620) translate(543 995)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

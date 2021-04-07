@@ -8,7 +8,7 @@
                 '</div>' +
                 '<p class="tit">{{topic}}{{#if (subTopic)}} &gt; {{subTopic}}{{/if}}</p>' +
                 '<ul class="options">' +
-                    '<li>{{category}}{{#if (modelCode)}} &gt; {{subCategory}} : {{modelCode}} {{/if}}</li>' +
+                    '<li>{{category}}{{#if (subCategory)}} &gt; {{subCategory}}{{/if}}{{#if (modelCode)}} : {{modelCode}} {{/if}}</li>' +
                     '<li>접수번호 {{registNumber}}</li>' +
                     '<li>접수일 {{registDate}}</li>' +
                 '</ul>' +

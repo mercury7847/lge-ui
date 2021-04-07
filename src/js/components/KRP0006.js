@@ -43,78 +43,75 @@
             var self = this;
             self.component.on('click', '.inner button', function(e){
                 e.preventDefault();
-                $(this).closest('.inner').slideUp(200);
-            });
-
-            /*
-            self.component.on('click', '.inner a', function(e){
-                e.preventDefault();
-                var url = $(this).attr('href');
-                if(url) {
-                    var form = $('<form action="' + url + '" method="post"></form>');
-                    $('body').append(form);
-                    form.submit();
+                var $this = $(this);
+                var modelID = $this.attr('data-model-id');
+                var uiType = $this.attr('data-ui-type');
+                //쿠키저장 (1달)
+                if(modelID && uiType) {
+                    lgkorUI.addCookieArrayValue("_responseUI_"+modelID,uiType,10,30);
                 }
+                $this.closest('.inner').slideUp(200);
             });
-            */
+        },
+
+        checkSuccess: function name(data) {
+            return lgkorUI.stringToBool(data.success);
         },
 
         reloadData: function(data) {
             var self = this;
             self.component.each(function(idx, item){
                 var $item = $(item);
-                var _type = $item.attr('data-type');
+                var modelID = $item.attr('data-model-id');
 
+                //저장된 쿠키 가져오기
+                var _cookies = lgkorUI.getCookie("_responseUI_"+modelID);
+                var cookies = _cookies ? _cookies : "";
+                console.log('cookie',cookies);
+
+                var _type = $item.attr('data-type');
                 if(_type == "r-top") {
                     //상단 영역
-                    var check = lgkorUI.stringToBool(data.ResponseUITop.success);
-                    if(check) {
-                        self.reloadComponent($item, data.ResponseUITop);              
-                    } else {
-                        //PDP페이지를 5번 이상 방문 시(최근 본 제품이 5개 이상일때)
-                        var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
-                        var array = cookieValue.split('|');
-                        var count = $item.attr('data-top-cookie-count');
-                        var checkCookieCount = !count ? 5 : count; 
-                        if(array.length >= checkCookieCount) {
-                            self.reloadComponent($item, data.productCurationProposal);
-                        }
+                    if(self.checkSuccess(data.purchaseoffer) && cookies.indexOf("1") > -1) {
+                        //1.구매제안 : 현재 제품이 장바구니에 담겨 있는 경우
+                        self.reloadComponent($item, "1", modelID, data.purchaseoffer);             
+                    } else if(self.checkSuccess(data.proposalExtend) && cookies.indexOf("2") > -1){
+                        //2.케어솔루션제안 : 보유한 케어솔루션 제품 중 계약 만료 기간이 60일 미만으로 남은 시점에 모든 (일반제품, 소모품, 케어솔루션 등) 제품의 PDP 진입 시.
+                        self.reloadComponent($item, "2", modelID, data.proposalExtend);
+                    } else if(self.checkSuccess(data.newProduct) && cookies.indexOf("3") > -1){
+                        //3.신제품추천 : 현재보고 있는 제품과 동일 카테고리 內 출시 1개월 이내 제품이 있을 시.
+                        self.reloadComponent($item, "3", modelID, data.newProduct); 
+                    } else if(self.checkSuccess(data.categoryExhibition) && cookies.indexOf("4") > -1){
+                        //4.카테고리 기획전 추천 : 해당 제품이 포함된 기획전이 현재 진행 중일 시.
+                        self.reloadComponent($item, "4", modelID, data.categoryExhibition); 
                     }
                 } else if(_type == "r-btm") {
-                    //하단영역
-                    var check = lgkorUI.stringToBool(data.categoryBestProduct.success);
-                    //제품 비교하기 페이지에서 제품 페이지 진입 시
-                    var referrer = document.referrer;
-                    var currentUrl = location.href.split("//")[1].split('/')[0];
-                    var compareUrl = currentUrl + $item.attr('data-bottom-compare-url');
-                    
-                    if(compareUrl && referrer && (referrer.indexOf(compareUrl) != -1)) {
-                        //제품 비교하기 페이지에서 제품 페이지 진입 시
-                        self.reloadComponent($item, data.storeConsultation);
-                    } else {
-                        //최근 본 제품이 4개 이하인 경우
+                    //하단 영역
+                    if(self.checkSuccess(data.storeConsultation) && cookies.indexOf("5") > -1) {
+                        //1.매장 상담 신청 : 제품 비교하기 페이지에서 제품 페이지 진입 시
+
+                        self.reloadComponent($item, "5", modelID, data.storeConsultation);             
+                    } else if(cookies.indexOf("6") > -1){
+                        //2. 카테고리 베스트 제품 추천 : 최근 본 제품이 4개 이하인 경우
                         var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
                         var array = cookieValue.split('|');
-                        var checkCookieCount = 5; 
-                        if(check && array.length < checkCookieCount) {
-                            self.reloadComponent($item, data.categoryBestProduct);
+                        if(array.length < 5) {
+                            self.reloadComponent($item, "6", modelID, data.categoryBestProduct);
                         }
                     }
                 }
             });
         },
 
-        reloadComponent: function($dm, data) {
+        reloadComponent: function($dm, uiType, modelID, data) {
             var resTemplate = '<div class="inner">' +
-                '<a href="{{uiInfo}}"><p class="txt">{{uiMessage}}</p></a>' +
-                '<button type="button" class="btn-close"><span class="blind">닫기</span></button>' +
+                '<a href="{{uiUrlPath}}"><p class="txt">{{uiMessage}}</p></a>' +
+                '<button type="button" class="btn-close" data-model-id="{{modelID}}" data-ui-type="{{uiType}}"><span class="blind">닫기</span></button>' +
             '</div>';
-            var url = data.uiInfo || data.uiUrlPath;
-            data.uiInfo = url;
-            if(url && data.uiMessage && data.uiMessage.length > 0) {
+            data.modelID = modelID;
+            data.uiType = uiType;
+            if(data.uiUrlPath && data.uiMessage && data.uiMessage.length > 0) {
                 $dm.append(vcui.template(resTemplate, data));
-                //$dm.find('.inner p.txt').text(data.uiMessage);
-                //$dm.find('.inner a').attr("href",data.uiInfo);
                 $dm.show();
             } else {
                 $dm.hide();

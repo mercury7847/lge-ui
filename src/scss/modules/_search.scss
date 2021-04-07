@@ -59,7 +59,7 @@
             input.txt {
                 width: 100%;
                 height: 62px;
-                padding: 0 72px 0 0;
+                padding: 0 78px 0 0;
                 border-bottom: 2px solid $color-default;
                 //border-radius: 28px;
                 background-color: #fff;
@@ -96,11 +96,11 @@
             .btn-delete {
                 position: absolute;
                 top: 50%;
-                right: 36px;
-                width: 16px;
-                height: 16px;
-                margin-top: -8px;
-                background: url('/lg5-common/images/icons/btn-clear-16-gray.svg') no-repeat 0 0;
+                right: 44px;
+                width: 24px;
+                height: 24px;
+                margin-top: -12px;
+                background: url('/lg5-common/images/icons/btn-clear-24.svg') no-repeat 0 0;
             }
 
             .btn-search {
@@ -108,7 +108,7 @@
                 top: 50%;
                 right: 0;
                 transform: translateY(-50%);
-                width: 30px;
+                width: 38px;
                 height: 100%;
                 background:none;
 
@@ -116,9 +116,9 @@
                     content: '';
                     display: block;
                     margin-left: 6px;
-                    width: 24px;
-                    height: 24px;
-                    background: url('/lg5-common/images/icons/icon-search.svg') no-repeat;
+                    width: 32px;
+                    height: 32px;
+                    background: url('/lg5-common/images/icons/icon-search-32.svg') no-repeat;
                 }
             }
         }
@@ -128,9 +128,21 @@
             .input-sch {
                 input.txt {
                     height: 46px;
-                    padding-right: 52px;
+                    padding-right: 72px;
                     font-weight: 500;
                     @include font(20px,28px);
+                }
+                .btn-delete {
+                    right: 40px;
+                }
+                .btn-search {
+                    width: 32px;
+                    &::after {
+                        margin-left: 8px;
+                        width: 24px;
+                        height: 24px;
+                        background-size: 100%;
+                    }
                 }
             }
         }
@@ -140,12 +152,8 @@
         .sch-input-wrap {
             .input-sch {
                 z-index: 3;
-
                 input.txt {
                     border-bottom: 0;
-                }
-                .btn-search:after {
-
                 }
             }
         }
@@ -157,12 +165,12 @@
     @include pc {
         max-width: 678px;
         margin: 16px auto 0;
+        text-align: center;
     }
     .inner {
         position: relative;
         display: inline-block;
         padding-left: 81px;
-
     }
 
     .title {
