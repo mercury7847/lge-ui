@@ -1,21 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="423" height="199" viewBox="0 0 423 199">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="425" height="166" viewBox="0 0 425 166">
     <defs>
-        <linearGradient id="maydfszgza" x1="24.187%" x2="24.187%" y1="112.018%" y2="50%">
-            <stop offset="0%" stop-color="#F5F5F5"/>
-            <stop offset="100%" stop-color="#FFF"/>
-        </linearGradient>
+        <path id="44qq55e2va" d="M0 0L37.369 0 37.369 37.369 0 37.369z"/>
     </defs>
     <g fill="none" fill-rule="evenodd">
         <g>
             <g>
                 <g>
                     <g>
-                        <path fill="url(#maydfszgza)" d="M0 49.719L206.925 0 423 49.719 423 199 0 199z" transform="translate(-316 -2328) translate(270 1657) translate(46 671)"/>
-                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="32" font-weight="400" transform="translate(-316 -2328) translate(270 1657) translate(46 671)">
-                            <tspan x="89.5" y="113">반려동물의 흔적을</tspan>
-                        </text>
-                        <text fill="#B2B2B2" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="44" font-weight="bold" transform="translate(-316 -2328) translate(270 1657) translate(46 671)">
-                            <tspan x="84.5" y="168">아무도 모르게</tspan>
+                        <path fill="#EEE" d="M0 0L425 0 425 166 0 166z" transform="translate(-316 -2897) translate(270 2807) translate(46 39) translate(0 51)"/>
+                        <g>
+                            <text fill="#C9C9C9" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="32" font-weight="400" transform="translate(-316 -2897) translate(270 2807) translate(46 39) translate(0 51) translate(78.5 28.618)">
+                                <tspan x="0" y="48">반려동물의 흔적을</tspan>
+                            </text>
+                            <g>
+                                <g transform="translate(-316 -2897) translate(270 2807) translate(46 39) translate(0 51) translate(78.5 28.618) translate(243) rotate(23 7.3 35.884)">
+                                    <mask id="q6bfqrzfib" fill="#fff">
+                                        <use xlink:href="#44qq55e2va"/>
+                                    </mask>
+                                    <path fill="#D3D3D3" d="M34.066 11.463c-2.283-.486-4.697 1.667-5.395 4.81-.694 3.146.592 6.091 2.875 6.581 2.283.49 4.701-1.663 5.395-4.81.695-3.146-.592-6.09-2.875-6.581M29.77 27c-4.408-2.776-2.116-10.947-10.43-10.93-8.31.02-5.985 8.183-10.385 10.976-3.474 2.207-3.7 7.452 1.19 10.112 3.013 1.637 5.39-1.048 9.24-1.056 3.848-.008 6.236 2.669 9.241 1.014 4.878-2.68 4.63-7.921 1.144-10.116m-5.352-13.539c2.346.342 4.608-2.267 5.055-5.83.444-3.564-1.096-6.734-3.443-7.08-2.342-.345-4.604 2.264-5.052 5.827-.443 3.568 1.097 6.738 3.44 7.083m-11.23-.803c2.345-.355 3.873-3.534 3.413-7.098-.46-3.565-2.732-6.166-5.074-5.807-2.346.355-3.87 3.534-3.41 7.098.46 3.565 2.729 6.162 5.07 5.807m-7.482 9.717c-2.281.499-4.7-1.648-5.411-4.792-.71-3.144.563-6.095 2.844-6.593 2.278-.499 4.702 1.644 5.412 4.788.706 3.144-.568 6.095-2.845 6.597" mask="url(#q6bfqrzfib)"/>
+                                </g>
+                            </g>
+                        </g>
+                        <text fill="#C9C9C9" font-family="NanumBarunpen-Bold, NanumBarunpen" font-size="50" font-weight="bold" transform="translate(-316 -2897) translate(270 2807) translate(46 39) translate(0 51)">
+                            <tspan x="87" y="135">아무도 모르게</tspan>
                         </text>
                     </g>
                 </g>

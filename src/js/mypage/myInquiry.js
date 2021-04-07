@@ -148,6 +148,7 @@
             requestData: function(param) {
                 var self = this;
                 var ajaxUrl = self.$lnbContents.attr('data-list-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     var param = result.param;

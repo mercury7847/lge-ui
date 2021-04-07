@@ -168,6 +168,7 @@
             requestSelectData: function() {
                 var self = this;
                 var ajaxUrl = self.$formWrap.attr('data-select-url');
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                     var data = result.data;
                     areaData = data.area;

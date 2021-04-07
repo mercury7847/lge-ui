@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="225" height="150" viewBox="0 0 225 150">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path fill="#FFF" d="M0 31L111.025 0 225 31 225 150 0 150z" transform="translate(-248 -2348) translate(20 2348) translate(228)"/>
+                    <g>
+                        <g>
+                            <g fill="#B4B4B4" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-size="20" font-weight="400" letter-spacing="-.5">
+                                <text transform="translate(-248 -2348) translate(20 2348) translate(228) translate(19 57)">
+                                    <tspan x="0" y="23">집콕러의 생활공간을</tspan>
+                                </text>
+                            </g>
+                            <g stroke="#2C2C2C" stroke-width="2.25">
+                                <path d="M12.468.16l11.453 10.573c.246.226.261.609.034.854-.114.124-.275.195-.444.195l-2.454-.001v10.307c0 .351-.303.641-.698.687l-.11.007H4.867c-.447 0-1.81-.311-1.81-.694h0V11.78H.605c-.334 0-.605-.27-.605-.604 0-.169.07-.33.195-.444L11.648.16c.231-.213.588-.213.82 0z" transform="translate(-248 -2348) translate(20 2348) translate(228) translate(19 57) translate(169.942 1.218)"/>
+                                <path d="M9.558 22.782h5v-6.136c0-.477-.387-.864-.864-.864h-3.272c-.477 0-.864.387-.864.864v6.136h0z" transform="translate(-248 -2348) translate(20 2348) translate(228) translate(19 57) translate(169.942 1.218)"/>
+                            </g>
+                        </g>
+                        <text fill="#2C2C2C" font-family="NanumBarunpen-Bold, NanumBarunpen" font-size="32" font-weight="bold" letter-spacing="-1.143" transform="translate(-248 -2348) translate(20 2348) translate(228) translate(19 57)">
+                            <tspan x="6" y="62">조금은 색다르게</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
