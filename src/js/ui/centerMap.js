@@ -340,39 +340,41 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                 return item.id == id;
             });
 
-            var $target = $(items[0].infoWindow.contentElement);
-            var $targetFocus = $target.find('a, button, input');
+            if (items[0].infoWindow.getMap()) {
+                var $target = $(items[0].infoWindow.contentElement);
+                var $targetFocus = $target.find('a, button, input');
 
-            $target.focus();
-            $target.off('keydown').on('keydown', function(e){
-                if( e.shiftKey && e.keyCode == 9 ) {
-                    
-                    if( $(e.target).hasClass('info-overlaybox')) {
+                $target.focus();
+                $target.off('keydown').on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
+                        
+                        if( $(e.target).hasClass('info-overlaybox')) {
+                            $targetFocus.last().focus();
+                            e.preventDefault();
+                        }
+                    }
+                });
+                $targetFocus.first().off('keydown').on('keydown', function(e){
+                    if( e.shiftKey && e.keyCode == 9 ) {
                         $targetFocus.last().focus();
                         e.preventDefault();
                     }
-                }
-            });
-            $targetFocus.first().off('keydown').on('keydown', function(e){
-                if( e.shiftKey && e.keyCode == 9 ) {
-                    $targetFocus.last().focus();
+                });
+                $targetFocus.last().off('keydown').on('keydown', function(e){
+                    if( !e.shiftKey && e.keyCode == 9 ) {
+                        $targetFocus.first().focus();
+                        e.preventDefault();
+                    }
+                });
+                $target.off('click').on('click', '.btn-overlay-close', function(e){
                     e.preventDefault();
-                }
-            });
-            $targetFocus.last().off('keydown').on('keydown', function(e){
-                if( !e.shiftKey && e.keyCode == 9 ) {
-                    $targetFocus.first().focus();
-                    e.preventDefault();
-                }
-            });
-            $target.off('click').on('click', '.btn-overlay-close', function(e){
-                e.preventDefault();
-                if( items[0].infoWindow.getMap() ) {
-                    $('[data-id="' + id + '"]').find('.store-info-list').focus();
-                    items[0].infoWindow.close();
-                    items[0].info.selected = false;
-                }
-            })
+                    if( items[0].infoWindow.getMap() ) {
+                        $('[data-id="' + id + '"]').find('.store-info-list').focus();
+                        items[0].infoWindow.close();
+                        items[0].info.selected = false;
+                    }
+                });
+            }
         },
         selectInfoWindow: function(id) {
             var self = this;
