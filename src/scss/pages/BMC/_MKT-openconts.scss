@@ -652,25 +652,26 @@
                 position:absolute;
                 bottom:27.5%;
                 &.aos {
-                    left:25%;
-                    width:16%;
-                    height:4.2%;
+                    left:25.3%;
+                    width:24%;
+                    height:6%;
                 }
                 &.ios {
-                    right:25%;
-                    width:16%;
-                    height:4.2%;
-                    opacity: .4;
+                    right:25.3%;
+                    width:24%;
+                    height:6%;
                 }
                 @include mobile {
-                    bottom:35.5%;
+                    bottom:36.4%;
                     &.aos {
-                        left:12%;
-                        width:32%;
+                        left:8%;
+                        width:40%;
+                        height:5%;
                     }
                     &.ios {
-                        right:12%;
-                        width:32%;
+                        right:8%;
+                        width:40%;
+                        height:5%;
                     }
                 }
             }
