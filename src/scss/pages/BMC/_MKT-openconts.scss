@@ -20,6 +20,36 @@
     /* //클래스별이미지분기 */
 
     .event02{
+        .btn-wrap{
+            .btns{
+                margin:-16% 0 16%;
+                img{
+                    width:100%;
+                }
+                .write{
+                    width:36%;
+                    display:inline-block;
+                    margin-right:6%;
+                }
+                .result{
+                    width:36%;
+                    display:inline-block;
+                    &.dis{
+                        display:none;
+                    }
+                }
+                &.dis{
+                    .result{
+                        display:none;
+                        width:36%;
+                        &.dis{
+                            display:inline-block;
+                        }
+                    }
+                }
+            }
+
+        }
         .reply-wrap{
             .list-sorting{
                 padding:68px 0 12px;
@@ -295,19 +325,15 @@
             }
         }
         .objet-slide {
+            max-width: 1380px;
             padding:80px 100px 100px;
-            max-width:1380px;
             @include mobile {
+                max-width: 768px;
                 padding:30px 0px 60px;
             }
             .slide-content {
-                max-width:1380px;
                 .slide-track{
-                    display:inline-flex;
-                    justify-content: space-between;
-                    max-width:100%;
                     .slide-conts {
-                        max-width:100%;
                         padding-top:50px;
                         @include mobile {
                             display:none;
@@ -316,7 +342,6 @@
                         .slide-box {
                             .img {
                                 display:inline-block;
-                                max-width:100%;
                                 height:auto;
                                 img{
                                     text-align:center;
@@ -355,7 +380,6 @@
                 }
             }
             .slide-controls {
-                max-width:1460px;
                 margin-top:-30px;
                 .prev {
                     left:-12px;
@@ -368,20 +392,37 @@
                 }
             }
         }
+        .more_btn{
+            display:inline-block;
+            margin:-12% auto 12%;
+            @include mobile {
+                margin: -26% auto 26%;
+                width: 70%;
+            }
+        }
     }
 
     .event10{
         .remd_prd{
             width:100%;
+            padding:71px 0 99px;
+            background-color:#2c2c2c;
+            @include mobile {
+                padding:28px 0 45px;
+            }
             .tabs{
+                width:100%;
+                padding: 0 46px;
+                @include mobile {
+                    padding: 0 22px;
+                }
                 li{
-                    width:423px;
+                    width:33.3%;
                     height:199px;
                     margin-left:0;
-                    @include tablet {
-                        width: 310px;
-                        height:150px;
-                        margin-left:4px;
+                    @include mobile {
+                        width:33.3%;
+                        height:176px;
                     }
                     &:first-child{
                         margin-left:0;
@@ -390,6 +431,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &:nth-child(2){
@@ -398,6 +445,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &:nth-child(3){
@@ -406,6 +459,12 @@
                             height:100%;
                             background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03.svg') no-repeat;
                             background-size:contain;
+                            background-position-y: bottom;
+                            @include mobile {
+                                background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-m.svg') no-repeat;
+                                background-size:contain;
+                                background-position-y: bottom;
+                            }
                         }
                     }
                     &.on{
@@ -415,6 +474,12 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-01-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                         &:nth-child(2){
@@ -423,6 +488,12 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-02-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                         &:nth-child(3){
@@ -431,9 +502,24 @@
                                 height:100%;
                                 background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-on.svg') no-repeat;
                                 background-size:contain;
+                                background-position-y: bottom;
+                                @include mobile {
+                                    background:url('/lg5-common/images/BMC/open_conts/event10/img-tab-03-on-m.svg') no-repeat;
+                                    background-size:contain;
+                                    background-position-y: bottom;
+                                }
                             }
                         }
                     }
+                }
+            }
+            .tabs-cont{
+                width:100%;
+                margin:0;
+                padding:0 46px;
+                @include mobile {
+                    width:100%;
+                    padding:0 22px;
                 }
             }
         }
@@ -448,6 +534,8 @@
                 background-color:#fff4ee;
                 video {
                     width:100%;
+                    // border-radius:14px;
+                    // border:12px solid #F3DCD0;
                 }
                 @include mobile {
                     padding:32px 13.8% 60px;
@@ -638,25 +726,26 @@
                 position:absolute;
                 bottom:27.5%;
                 &.aos {
-                    left:25%;
-                    width:16%;
-                    height:4.2%;
+                    left:25.3%;
+                    width:24%;
+                    height:6%;
                 }
                 &.ios {
-                    right:25%;
-                    width:16%;
-                    height:4.2%;
-                    opacity: .4;
+                    right:25.3%;
+                    width:24%;
+                    height:6%;
                 }
                 @include mobile {
-                    bottom:35.5%;
+                    bottom:36.4%;
                     &.aos {
-                        left:12%;
-                        width:32%;
+                        left:8%;
+                        width:40%;
+                        height:5%;
                     }
                     &.ios {
-                        right:12%;
-                        width:32%;
+                        right:8%;
+                        width:40%;
+                        height:5%;
                     }
                 }
             }

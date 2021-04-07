@@ -1770,14 +1770,9 @@
         }
 
         //결제정보
-        if(productList.paymentMethod) {
-            if(Object.keys(productList.paymentMethod).length){
-                var orderReceiptAbleYn = listData[dataId].orderReceiptAbleYn;
-                paymentdata = resetPaymentData(productList.paymentMethod, orderReceiptAbleYn);
-            }
-        }
+        if(listData[dataId].orderReceiptAbleYn != "Y") productList.paymentMethod.receiptUrl = "";
         
-        orderInfoRender($('#popup-orderDetailView'), shipping, paymentdata, productList.orderShipping);
+        orderInfoRender($('#popup-orderDetailView'), shipping, productList.paymentMethod, productList.orderShipping);
 
         $('#popup-orderDetailView').vcModal();
     }
@@ -2087,8 +2082,8 @@
                 return chk;
             });
 
-            var disabled = listdata.orderCancelAbleYn == "N" ? "disabled" : "";
-console.log(listdata.orderCancelAbleYn, disabled)
+            var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
+console.log(listdata.itemCancelAbleYn, disabled)
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
