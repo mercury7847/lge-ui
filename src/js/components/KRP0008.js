@@ -541,7 +541,7 @@
                         }
                     }
 
-                    self.$awardPopup.vcModal({ opener: this});
+                    self.$awardPopup.vcModal({opener: this});
 
                 });
 
