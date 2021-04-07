@@ -629,7 +629,12 @@
                 self.$pdpInfo.find('div.purchase-button a.cart').on('click', function(e) {
                     e.preventDefault();
 
-                    var param = JSON.parse(JSON.stringify(sendData));
+                    var param = {
+                        "id":sendData.id,
+                        "sku":sendData.sku,
+                        "rtSeq":sendData.rtSeq,
+                    }
+
                     var $paymentAmount = $(this).parents('.payment-amount');
 
                     //렌탈케어 제품인가(일반구매의 케어십과 틀림)
