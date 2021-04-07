@@ -159,13 +159,17 @@
                     padding:0 36px;
                 }
                 .slide-content{
+                    overflow:hidden;
                     .slide-conts {
                         padding:12px;
+                        max-width:25%;
+                        float:left;
                         .slide-box {
                             display:block;
                             position:relative;
                             height:auto;
-                            padding:60px;
+                            // padding:60px;
+                            padding:25px;
                             border-radius:8px;
                             background-color:#fff;
                             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -181,8 +185,9 @@
                                 // width:425px;
                                 // height:425px;
                                 // margin-top:-190px;
-                                display:inline-block;
-                                width:41%;
+                                // display:inline-block;
+                                // width:41%;
+                                width:100%;
                                 img {
                                     width:100%;
                                 }
@@ -194,11 +199,15 @@
                                 }
                             }
                             .info {
-                                display:inline-block;
+                                // display:inline-block;
+                                display:block;
                                 text-align:left;
                                 vertical-align: top;
-                                width: 50%;
-                                margin: 4% 0 0 5%;
+                                // width: 50%;
+                                width: auto;
+                                // margin: 4% 0 0 5%;
+                                margin: 0;
+                                padding-top:50px;
                                 @include mobile {
                                     display:block;
                                     padding:26px 0 0 0;
@@ -210,7 +219,8 @@
                                     -webkit-line-clamp:2;
                                     -webkit-box-orient: vertical;
                                     max-height:56px;
-                                    font-size:42px;
+                                    // font-size:42px;
+                                    font-size:16px;
                                     font-weight:700;
                                     line-height:1.24;
                                     overflow: hidden;
@@ -220,9 +230,11 @@
                                     }
                                 }
                                 .code {
-                                    font-size:36px;
+                                    // font-size:36px;
+                                    font-size:14px;
                                     font-weight:500;
                                     line-height:1.28;
+                                    padding-top:8px;
                                     @include mobile {
                                         padding-top:8px;
                                         font-size:14px;
@@ -230,8 +242,10 @@
                                 }
                                 .price-area {
                                     width:100%;
-                                    margin:40px 0 0;
-                                    padding:50px 0 0;
+                                    // margin:40px 0 0;
+                                    // padding:50px 0 0;
+                                    margin:20px 0 0;
+                                    padding:20px 0 0;
                                     border-top:2px solid #e4e4e4;
                                     @include mobile {
                                         margin:20px 0 0;
@@ -244,13 +258,15 @@
                                         text-align:right;
                                         margin-right: 8px;
                                         font-weight: 700;
-                                        font-size: 48px;
+                                        // font-size: 48px;
+                                        font-size: 20px;
                                         line-height: 1.21;
                                         color:#e34465;
                                         em{
                                             display:inline-block;
                                             font-weight: 700;
-                                            font-size: 30px;
+                                            // font-size: 30px;
+                                            font-size: 14px;
                                             line-height: 1.93;
                                             text-align:left;
                                             @include mobile {
@@ -270,7 +286,8 @@
                                         display:inline-block;
                                         width:100%;
                                         margin-right: 4px;
-                                        font-size: 30px;
+                                        // font-size: 30px;
+                                        font-size: 14px;
                                         line-height: 1.4;
                                         color: #666666;
                                         text-decoration:line-through;
@@ -526,8 +543,11 @@
             }
             .tabs-cont{
                 width:100%;
-                margin: -3px 0px 0px 0px;
+                margin: -3px 0px 0px 0px;    
                 padding: 0px 44px 0 46px;
+                @include tablet {
+                    padding: 0px 43px 0 46px;
+                }
                 @include mobile {
                     width:100%;
                     padding: 0 20px 0 22px;
