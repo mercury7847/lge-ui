@@ -70,6 +70,7 @@ var FilterLayer = (function() {
 
     function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc) {
         var self = this;
+        self.cid = vcui.getUniqId(8);
         self.filterData = null;
         self.resetData = null;
         self.firstLoadTrigger = false;
@@ -137,6 +138,10 @@ var FilterLayer = (function() {
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
+                lgkorUI.addHistoryBack(self.cid, function(){    
+                    $('.plp-filter-wrap .filter-close button').trigger('click'); 
+                });
+
                 $('html, body').css({
                     overflow:"hidden"
                 });
@@ -146,6 +151,9 @@ var FilterLayer = (function() {
             $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
                 e.preventDefault();
                 self.$layFilter.removeClass('open');
+                
+                lgkorUI.removeHistoryBack(self.cid);
+
                 $('html, body').css({
                     overflow:"visible"
                 });
