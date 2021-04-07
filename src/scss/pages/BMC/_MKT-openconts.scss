@@ -502,6 +502,8 @@
                 background-color:#fff4ee;
                 video {
                     width:100%;
+                    // border-radius:14px;
+                    // border:12px solid #F3DCD0;
                 }
                 @include mobile {
                     padding:32px 13.8% 60px;
