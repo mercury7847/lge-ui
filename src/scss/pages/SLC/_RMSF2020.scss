@@ -1,7 +1,6 @@
 .info-txt {
     margin-top:-40px;
     @include font-small;
-    font-weight:500;
     @include mobile {
         margin-top:-24px;
     }
@@ -9,38 +8,32 @@
 
 .tit-wrap {
     @include clearfix;
-    margin:48px 0 8px;
+    margin:48px 0 16px;
     @include mobile {
-        margin-top:40px;
+        margin:40px 0 12px;
     }
     .h2-tit, .leng {
         display:inline-block;
         @include font-medium;
         font-weight:700;
         vertical-align:middle;
-        @include mobile {
-            font-size:18px;
-            line-height:26px;
-        }
     }
     .leng {
-        margin-left:8px;
+        margin-left:4px;
         strong {
-            color:#EC455A;
+            color:$color-primary;
         }
     }
 }
 
 .estimate-list {
+    border-top:1px solid #000;
     .item {
         display:table;
-        padding:32px 0;
+        padding:24px 0;
         width:100%;
         table-layout:fixed;
-        border-top:1px solid #ddd;
-        &:first-child {
-            border-color:#222;
-        }
+        border-bottom:1px solid #ddd;
         .img-wrap {
             display:table-cell;
             width:120px;
@@ -78,7 +71,7 @@
             .tit-info {
                 @include clearfix;
                 width:100%;
-                margin-top:4px;
+                margin-top:2px;
                 @include mobile {
                     margin-top:4px;
                 }
@@ -104,6 +97,10 @@
                 }
                 .etc-info {
                     margin-top:0;
+                    .txt {
+                        font-weight:500;
+                        color: #000;
+                    }
                 }
             }
             .price-info {
@@ -138,9 +135,8 @@
                 }
                 .txt {
                     position:relative;
-                    color:#767676;
+                    color:#666;
                     @include font-small;
-                    font-weight:500;
                     &:before {
                         content:'';
                         display:inline-block;
@@ -166,8 +162,25 @@
     }
 }
 
+.total-price-wrap {
+    .tit-wrap {
+        margin: 80px 0 24px;
+        .h2-tit {
+            font-size: 24px;
+            line-height: 34px;
+        }
+        @include mobile {
+            margin-top: 60px;
+            .h2-tit {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
+    }
+}
+
 .estimate-price {
-    padding:32px 32px;
+    padding: 24px 32px 32px;
     border-radius:8px;
     background:#f4f4f4;
     @include mobile {
@@ -179,7 +192,7 @@
         margin-top:8px;
         table-layout:fixed;
         @include mobile {
-            margin-top:8px;
+            margin-top:20px;
         }
         &:first-child {
             margin-top:0;
@@ -189,10 +202,6 @@
             vertical-align:middle;
             @include font-small;
             font-weight:500;
-            @include mobile {
-                font-size:14px;
-                line-height:22px;
-            }
         }
         dt {
             color:#000;
@@ -204,21 +213,17 @@
                 color:#da0f47;
                 .alliance-card {
                     height:74px;
-                    padding:14px 0 12px;
+                    padding:16px 0 12px;
                     color:#000;
                     text-align:left;
                     @include mobile {
-                        height:68px;
-                        padding-top:9px;
+                        height:auto;
+                        padding:8px 0 0;
                     }
                 }
             }
         }
         &.sel {
-            dt {
-                position:relative;
-                top:-12px;
-            }
             dd {
                 width:65%;
             }
@@ -239,23 +244,23 @@
             padding-top:16px;
             border-top:1px solid #ddd;
             @include mobile {
-                padding-top:12px;
-            }
-            dt {
-                vertical-align:bottom;
+                margin-top:20px;
             }
             dd {
                 @include font-large-2;
                 font-weight:700;
                 @include mobile {
-                    font-size:24px;
-                    line-height:32px;
+                    font-size:18px;
+                    line-height:26px;
                 }
             }
         }
     }
     .btn {
-        margin-top:32px;
+        margin-top:24px;
+        @include mobile {
+            margin-top: 20px;
+        }
     }
     .tooltip-wrap {
         .title {
