@@ -202,7 +202,7 @@ $(function () {
         var isApplication = isApp();
         var $window  = $(window);
         var $contentWrap = $('.section-cover');
-        var aniSpeed = vcui.detect.isMobile? 500 : 800;
+        var aniSpeed = vcui.detect.isMobile? 200 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -304,7 +304,7 @@ $(function () {
                     return false;
                 }
 
-                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed);
                 speedTime = Math.max(0,speedTime);
 
                 $('html, body').stop(true).animate({
