@@ -561,6 +561,14 @@
                         self.filterLayer.enableFilterList(data.filterEnableList);
                     }
 
+                    //nodata 체크
+                    if(self.$productList.find('>li').length > 0) {
+                        self.$productList.siblings('.no-data').hide();
+                    } else {
+                        self.$productList.siblings('.no-data').show();
+                        self.setTotalCount(0);
+                        self.$btnMore.hide();
+                    }
                 });
             },
 
