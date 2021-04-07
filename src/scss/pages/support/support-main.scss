@@ -620,8 +620,10 @@
                     padding-right:70px;
 
                     .list-tit {
-                        color:rgba(255,255,255,0.5);
+                        //color:rgba(255,255,255,0.5);
+                        color:#fff;
                         transition:.6s color;
+                        text-shadow: #666 0px 2px 5px;
 
                         .txt-highlight {
                             color:#fff;
@@ -643,10 +645,10 @@
                 &.siblings {
                     .list-header {
                         .list-tit {
-                            color:rgba(255,255,255,0.4);
+                            //color:rgba(255,255,255,0.4);
 
                             .txt-highlight {
-                                color:rgba(255,255,255,0.4);
+                                //color:rgba(255,255,255,0.4);
                             }
                         }
                     }
@@ -1441,7 +1443,7 @@
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
-            // background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
 
             &:before {
                 content:"";

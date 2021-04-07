@@ -278,7 +278,7 @@ $(function(){
                 })
                 
 
-                $(window).on('breakpointchange', function(e){
+                $(window).on('breakpointchange.newrecommend', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
@@ -295,7 +295,7 @@ $(function(){
                     }    
                 })
 
-                $(window).trigger('breakpointchange');
+                $(window).trigger('breakpointchange.newrecommend');
                 
             }
 
@@ -305,7 +305,7 @@ $(function(){
         // 제품 추천 렌더링
         function buildRecommend(){
 
-            $(window).on('breakpointchange', function(e){
+            $(window).on('breakpointchange.recommend', function(e){
 
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){    
@@ -322,7 +322,7 @@ $(function(){
                 }    
             })
 
-            $(window).trigger('breakpointchange');
+            $(window).trigger('breakpointchange.recommend');
             
         }
         
@@ -386,7 +386,7 @@ $(function(){
 
         function buildSubCatagoryTab(result, categoryId){
 
-            $(window).trigger('breakpointchange');
+            $(window).trigger('breakpointchange.category');
             var data = result.data;
             if(data && data.data){
 
@@ -480,7 +480,7 @@ $(function(){
                 $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
 
-                $(window).on('breakpointchange', function(e){
+                $(window).on('breakpointchange.category', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
@@ -498,7 +498,7 @@ $(function(){
                     }    
                 })
 
-                $(window).trigger('breakpointchange');
+                $(window).trigger('breakpointchange.category');
 
                 
 
