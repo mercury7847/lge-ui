@@ -4,30 +4,20 @@ var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   </li>\n'+
 '{{/each}}';
 
+
+
+
 var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   <div class="tabs-contents" id="{{obj.categoryId}}">\n'+
-    '   <div class="slide-wrap category-list-slide ui_category_carousel">\n'+
-    '        <div class="indi-wrap">\n'+
-    '            <ul class="indi-conts ui_carousel_dots" style="display:none;">\n'+
-    '                <li><button type="button" class="btn-indi"><span class="blind">{{obj.dotLabel}}</span></button></li>\n'+
-    '            </ul>\n'+
-    '        </div>\n'+
     '        <div class="category-list">\n'+
-    '            <div class="slide-content ui_carousel_list">\n'+
-    '                <ul class="slide-track ui_carousel_track">\n'+                  
-    '                </ul>\n'+
-    '            </div>\n'+
+    '           <ul class="ui_sub_category">\n'+                  
+    '           </ul>\n'+
     '        </div>\n'+
-    '        <div class="slide-controls" style="display:none;">\n'+
-    '            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>\n'+
-    '            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>\n'+
-    '        </div>\n'+
-    '   </div>\n'+
     '   </div>\n'+
     '{{/each}}';
 
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
-    '                       <li class="slide-conts ui_carousel_slide" data-category-id="{{obj.categoryId}}">\n'+
+    '                       <li data-category-id="{{obj.categoryId}}">\n'+
     '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
     '                               <i><img src="{{obj.iconPath}}" alt={{obj.iconAlt}}"></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
@@ -386,7 +376,6 @@ $(function(){
 
         function buildSubCatagoryTab(result, categoryId){
 
-            $(window).trigger('breakpointchange.category');
             var data = result.data;
             if(data && data.data){
 
@@ -404,19 +393,7 @@ $(function(){
                 });
 
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
-                $('#'+categoryId).find('.ui_carousel_track').html(tabContentStr);
-
-                var breakpoint = window.breakpoint;    
-                if(breakpoint.name == 'mobile'){    
-
-                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel({
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }).vcCarousel('reinit');
-                    
-                }else if(breakpoint.name == 'pc'){    
-                    $('#'+categoryId).find('.ui_category_carousel').vcCarousel('destroy');                      
-                }  
+                $('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
 
             }
 
@@ -429,11 +406,6 @@ $(function(){
 
             if(data && data.data){
                 var arr = data.data;
-
-                arr = vcui.array.map(arr, function(item,index){
-                    item['dotLabel'] = '{{no}}번 내용 보기';
-                    return item;
-                });
 
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
                 var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});

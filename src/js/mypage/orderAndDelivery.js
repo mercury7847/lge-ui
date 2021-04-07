@@ -2082,8 +2082,8 @@
                 return chk;
             });
 
-            var disabled = listdata.orderCancelAbleYn == "N" ? "disabled" : "";
-console.log(listdata.orderCancelAbleYn, disabled)
+            var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
+console.log(listdata.itemCancelAbleYn, disabled)
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }
