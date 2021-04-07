@@ -159,7 +159,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'smoothScroll',
         defaults: {
             startX: 0,
-            startY: 0,
+            startY: null,
             scrollX: true,
             scrollY: true,
             directionLockThreshold: 5,
@@ -225,7 +225,10 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             if (opts.autoCenterScroll) {
                 self.scrollToActive(true, false, 0);
             } else {
-                self.scrollTo(opts.startX, opts.startY);
+                if(opts.startX || opts.startY){
+                    self.scrollTo(opts.startX? opts.startX : 0, opts.startY?opts.startY:0);
+                }
+                
             }
             self.refresh();
         },
@@ -296,7 +299,6 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
                 self.on('smoothscrollend', function (e, data) {
                     self._activateButtons();
-
                 });
             //}
 
@@ -952,8 +954,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         refresh: function refresh() {
             //var rf = this.$wrapper[0].offsetHeight;           // Force reflow
             var self = this;
+            var opts = self.options;
             self.update();
-            self.scrollTo(self.options.startX, self.options.startY);
+
+            if(opts.startX || opts.startY){
+                self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
+            }
             self.triggerHandler('smoothscrollrefresh', self);
 
         },
@@ -1063,6 +1069,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._handle(self.$wrapper, 'wheel', false);
             self._handle(self.$wrapper, 'mousewheel', false);
             self._handle(self.$wrapper, 'DOMMouseScroll', false);
+            
+
             this.supr();
         }
     });
