@@ -220,9 +220,8 @@ $(document).ready(function() {
                                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
                             }
                         } else {
-                            /*
                             if(LGEAPPcomfirmAPPOpen()) {
-                                $(".app-exec span").append("a");
+                                
                             } else {
                                 var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
 
@@ -231,8 +230,6 @@ $(document).ready(function() {
 
                                 lgkorUI.confirm(desc, obj);
                             }
-                            */
-                            LGEAPPcomfirmAPPOpen();
                         }
                     }
                 });
@@ -272,99 +269,11 @@ $(document).ready(function() {
             var agent = navigator.userAgent;
 
             if (agent.indexOf("Android") != -1) {
-                //location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                if (agent.match(/Chrome/)) {
-                    // 안드로이드의 크롬에서는 intent만 동작하기 때문에 intent로 호출해야함
-                    /*
-                    setTimeout(function() {
-                        location.href = "intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                    }, 1000);
-                    */
-
-                    function clearTimers() {
-                        clearInterval(interval);
-                        clearTimeout(timer);
-                    }
-
-                    function andAPPInterval(){
-                        if(document.webkitHidden || document.hidden){
-                            clearTimers();
-                            location.href = "intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                        }
-                    }
-                    interval = setInterval(andAPPInterval, 200);
-
-                    timer = setTimeout(function() { 
-                        var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-
-                        obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                        var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-
-                        lgkorUI.confirm(desc, obj);
-                    }, 500);
-               } else {
-                    // 크롬 이외의 브라우저들
-                    /*
-                    setTimeout(function() {
-                        if ((new Date()).getTime() - visitedAt < 2000) {
-                            location.href = "{마켓 주소}";
-                        }
-                    }, 500);
-                    var iframe = document.createElement('iframe');
-                    iframe.style.visibility = 'hidden';
-                    iframe.src = '{커스텀 스킴 주소}';
-                    document.body.appendChild(iframe);
-                    document.body.removeChild(iframe); // back 호출시 캐싱될 수 있으므로 제거
-                    */
-                    function clearTimers() {
-                        clearInterval(interval);
-                        clearTimeout(timer);
-                    }
-
-                    function andAPPInterval(){
-                        if(document.webkitHidden || document.hidden){
-                            clearTimers();
-                            var iframe = document.createElement('iframe');
-                            iframe.style.visibility = 'hidden';
-                            iframe.src = 'intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end';
-                            document.body.appendChild(iframe);
-                            document.body.removeChild(iframe); // back 호출시 캐싱될 수 있으므로 제거
-                        }
-                    }
-                    interval = setInterval(andAPPInterval, 200);
-
-                    timer = setTimeout(function() { 
-                        var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-
-                        obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                        var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-
-                        lgkorUI.confirm(desc, obj);
-                    }, 500);
-                }
+                //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
+                location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
             } else if (agent.indexOf("iPhone") != -1) {
-                //location.href = "lgeapp://";
-                function clearTimers() {
-                    clearInterval(interval);
-                    clearTimeout(timer);
-                }
-
-                function iOSAPPInterval(){
-                    if(document.webkitHidden || document.hidden){
-                        clearTimers();
-                        location.href = "lgeapp://";
-                    }
-                }
-                interval = setInterval(iOSAPPInterval, 200);
-
-                timer = setTimeout(function() { 
-                    var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-
-                    obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                    var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
-
-                    lgkorUI.confirm(desc, obj);
-                }, 500);
+                //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
+                location.href = "lgeapp://";
             }
         }
 
