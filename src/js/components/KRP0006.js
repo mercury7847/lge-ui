@@ -65,7 +65,8 @@
                 var modelID = $item.attr('data-model-id');
 
                 //저장된 쿠키 가져오기
-                var cookies = lgkorUI.getCookie("_responseUI_"+modelID);
+                var _cookies = lgkorUI.getCookie("_responseUI_"+modelID);
+                var cookies = _cookies ? _cookies : "";
                 console.log('cookie',cookies);
 
                 var _type = $item.attr('data-type');
