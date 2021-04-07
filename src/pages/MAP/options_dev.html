@@ -245,6 +245,7 @@
                 }
             });
             //옵션창 열기
+            /*
             $("#btn-opt-open").off("click").on({
                 click : function(){
                     $(".lyr-opt-panel").stop().animate({"left":"0"}, 250);
@@ -257,12 +258,28 @@
                         }else{
                             $(this).find("h1").focus();
                         }
-                        */
+                        *\/
                         //설정 화면 [설정] 타이틀 포커스
                         $(this).find("h1").attr("tabindex", 0).focus();
                     });
                 }
             });
+            */
+            $(".lyr-opt-panel").stop().animate({"left":"0"}, 250);
+            $(".main-panel").stop().animate({"left":"0"}, 250, function(){
+    		    //접근성
+    		    /*
+    		    $(this).attr("aria-hidden", false);
+    		    $(this).attr("tabindex", 0).focus();
+    		    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    		    }else{
+    		    	$(this).find("h1").focus();
+    		    }
+    		    */
+    		  	//설정 화면 [설정] 타이틀 포커스
+    		  	$(this).find("h1").attr("tabindex", 0).focus();
+    		});
+            $("#main-panel-title").attr("tabindex", 0).focus();
             //옵션창 닫기
             $(".btn-opt-close").off("click").on({
                 click : function(){
@@ -334,6 +351,7 @@
     <!-- End Google Tag Manager -->
 </head>
 <body>
+    <!--
     <button type="button" class="btn-opt-login" id="btn-opt-open"><span>옵션 열기</span></button>
     <br>
     <br>
@@ -341,9 +359,9 @@
     <br>
     <br>
     <button type="button" class="btn-opt-login" id="btn-barcode"><span>바코드로 제품등록</span></button>
-
+    -->
     <div class="lyr-opt-panel">
-        <div class="main-panel" aria-hidden="true" aria-labelledby="main-panel-title" tabindex="0">
+        <div class="main-panel">
             <!-- <div class="gap"></div> -->
             <div class="opt-header">
                 <h1 id="main-panel-title">설정</h1>
@@ -427,7 +445,7 @@
         </div>
         <!-- //설정 메인 -->
 
-        <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
+        <div class="sub-panel alarm-setting" aria-hidden="true">
             <div class="opt-header type-sub">
                 <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전</span></button>
                 <h1>알림설정</h1>
@@ -474,7 +492,7 @@
         </div>
         <!-- //알림성정 -->
 
-        <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
+        <div class="sub-panel source-license" aria-hidden="true">
             <div class="opt-header type-sub">
                 <button type="button" data-panel=".source-license" id="sub-panel-title02" class="btn-opt-prev"><span>이전</span></button>
                 <h1>오픈소스 라이선스</h1>
