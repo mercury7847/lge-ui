@@ -254,7 +254,8 @@ $(document).ready(function() {
                     location.href = "https://play.google.com/store/apps/";
                     //window.open("https://play.google.com/store/apps/", "_blank");
                 }, 500);
-            } else if (agent.indexOf("iPhone") != -1) {
+            //} else if (agent.indexOf("iPhone") != -1) {
+            } else if (/iPhone|iPad|iPod/i.test(agent)) {
                 setTimeout(function() {
                     if (!document.webkitHidden) {
                         //location.href = "http://itunes.apple.com/kr/app/id702653088?mt=8";
@@ -271,7 +272,7 @@ $(document).ready(function() {
             if (agent.indexOf("Android") != -1) {
                 //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-            } else if (agent.indexOf("iPhone") != -1) {
+            } else if (/iPhone|iPad|iPod/i.test(agent)) {
                 //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
                 location.href = "lgeapp://";
             }
