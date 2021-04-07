@@ -56,6 +56,7 @@
             '</li>'+
             '{{/each}}'+
         '</ul>',
+        noDataTemplate:'<div class="no-data"><span>{{#raw msg}}</span></div>',
         init: function() {
             //크레마
             lgkorUI.cremaLogin();
@@ -131,12 +132,14 @@
                             if(parseInt(num) <= 0) numwrap.addClass('zero');
                         }
                     } else{
-
+                        $orderProcess.find('.box-title').text("주문 조회");
+                        $orderProcess.find('.process-wrap').empty().append(vcui.template(self.noDataTemplate, {msg:orderList.data.message}));
                     }
 
                     //찜한제품...
                     var wishList = result.wishList;
                     var $likeInfo = $('.my-management.shopping .like-info');
+                    $likeInfo.find('.list-wrap').empty();
                     if(wishList.dataFlag == "Y"){                  
                         cnt = wishList.data.wishCnt;
                         cntxt = parseInt(cnt) > 0 ? "(" + cnt + ")" : "";
@@ -149,9 +152,10 @@
                             return item;
                         });
 
-                        $likeInfo.find('.list-wrap').empty().append(vcui.template(self.likeProdTemplate, {list:newlist}));
+                        $likeInfo.find('.list-wrap').append(vcui.template(self.likeProdTemplate, {list:newlist}));
                     } else{
-
+                        $likeInfo.find('.box-title .title').text("찜한 제품");
+                        $likeInfo.find('.list-wrap').append(vcui.template(self.noDataTemplate, {msg:wishList.data.message}));
                     }
                 }          
             });   
@@ -159,7 +163,7 @@
     }
 
     $(document).ready(function() {
-        myHome.init();
+        //myHome.init();
 
         myHome.setting();
     });
