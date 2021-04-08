@@ -1196,7 +1196,1058 @@
             }
         ]
     }
+    var proposeSet = {
+        proposeConfig: [{
+                defaultCode: "M620AAA351",
+                modelCode: "M620FBB351S",
+                door1: "D620TT-FBT",
+                door2: "D620BB-FBT",
+                door3: "D620BB-FBT",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620FSS351S",
+                door1: "D620TT-FSD",
+                door2: "D620BB-FSD",
+                door3: "D620BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620FTT351S",
+                door1: "D620TT-FST",
+                door2: "D620BB-FST",
+                door3: "D620BB-FST",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620FBS351",
+                door1: "D620TT-FBT",
+                door2: "D620BB-FSD",
+                door3: "D620BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620FBT351S",
+                door1: "D620TT-FBT",
+                door2: "D620BB-FST",
+                door3: "D620BB-FST",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620FTS351S",
+                door1: "D620TT-FST",
+                door2: "D620BB-FSD",
+                door3: "D620BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SGG351S",
+                door1: "D620TT-SGR",
+                door2: "D620BB-SGR",
+                door3: "D620BB-SGR",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SSS351S",
+                door1: "D620TT-SSV",
+                door2: "D620BB-SSV",
+                door3: "D620BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SMM351S",
+                door1: "D620TT-SMT",
+                door2: "D620BB-SMT",
+                door3: "D620BB-SMT",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SGS351",
+                door1: "D620TT-SGR",
+                door2: "D620BB-SSV",
+                door3: "D620BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SSG351S",
+                door1: "D620TT-SSV",
+                door2: "D620BB-SGR",
+                door3: "D620BB-SGR",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620SMS351",
+                door1: "D620TT-SMT",
+                door2: "D620BB-SSV",
+                door3: "D620BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MBB351S",
+                door1: "D620TT-MBK",
+                door2: "D620BB-MBK",
+                door3: "D620BB-MBK",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MGG351S",
+                door1: "D620TT-MGY",
+                door2: "D620BB-MGY",
+                door3: "D620BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MWW351",
+                door1: "D870TT-MWH",
+                door2: "D870BB-MWH",
+                door3: "D870BB-MWH",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MBG351S",
+                door1: "D620TT-MBK",
+                door2: "D620BB-MGY",
+                door3: "D620BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MWG351S",
+                door1: "D620TT-MWH",
+                door2: "D620BB-MGY",
+                door3: "D620BB-MGY",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620MGB351S",
+                door1: "D620TT-MGY",
+                door2: "D620BB-MBK",
+                door3: "D620BB-MBK",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GBB351",
+                door1: "D620TT-GBE",
+                door2: "D620BB-GBE",
+                door3: "D620BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GBMB351S",
+                door1: "D620TT-GBE",
+                door2: "D620BB-GMN",
+                door3: "D620BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GBP351S",
+                door1: "D620TT-GBE",
+                door2: "D620BB-GPK",
+                door3: "D620BB-GPK",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GBS351S",
+                door1: "D620TT-GBE",
+                door2: "D620BB-GSV",
+                door3: "D620BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GSS351S",
+                door1: "D620TT-GSV",
+                door2: "D620BB-GSV",
+                door3: "D620BB-GSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GSB351S",
+                door1: "D620TT-GSV",
+                door2: "D620BB-GBE",
+                door3: "D620BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GSM351S",
+                door1: "D620TT-GSV",
+                door2: "D620BB-GMN",
+                door3: "D620BB-GMN",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GSP351S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GPK",
+                door3: "D870BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GMB351S",
+                door1: "D870TT-GMN",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M620AAA351",
+                modelCode: "M620GPB351",
+                door1: "D620TT-GPK",
+                door2: "D620BB-GBE",
+                door3: "D620BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FBB451S",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FBT",
+                door3: "D870BB-FBT",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FSS451S",
+                door1: "D870TT-FSD",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FTT451S",
+                door1: "D870TT-FST",
+                door2: "D870BB-FST",
+                door3: "D870BB-FST",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FBS451",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FBT451S",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FST",
+                door3: "D870BB-FST",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870FTS451S",
+                door1: "D870TT-FST",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SGG451S",
+                door1: "D870TT-SGR",
+                door2: "D870BB-SGR",
+                door3: "D870BB-SGR",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SSS451S",
+                door1: "D870TT-SSV",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SMM451S",
+                door1: "D870TT-SMT",
+                door2: "D870BB-SMT",
+                door3: "D870BB-SMT",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SGS451",
+                door1: "D870TT-SGR",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SSG451S",
+                door1: "D870TT-SSV",
+                door2: "D870BB-SGR",
+                door3: "D870BB-SGR",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SMS451S",
+                door1: "D870TT-SMT",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MBB451S",
+                door1: "D870TT-MBK",
+                door2: "D870BB-MBK",
+                door3: "D870BB-MBK",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MGG451",
+                door1: "D870TT-MGY",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MWW451S",
+                door1: "D870TT-MWH",
+                door2: "D870BB-MWH",
+                door3: "D870BB-MWH",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MBG451S",
+                door1: "D870TT-MBK",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MWG451S",
+                door1: "D870TT-MWH",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870MGB451S",
+                door1: "D870TT-MGY",
+                door2: "D870BB-MBK",
+                door3: "D870BB-MBK",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GBB451",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GBMB451S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GMN",
+                door3: "D870BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GBP451S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GPK",
+                door3: "D870BB-GPK",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GBS451S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GSV",
+                door3: "D870BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GSS451S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GSV",
+                door3: "D870BB-GSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GSB451S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GSM451S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GMN",
+                door3: "D870BB-GMN",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GSP451S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GPK",
+                door3: "D870BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GMB451S",
+                door1: "D870TT-GMN",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GPB451",
+                door1: "D870TT-GPK",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FBB551S",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FBT",
+                door3: "D870BB-FBT",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FSS551S",
+                door1: "D870TT-FSD",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FTT551S",
+                door1: "D870TT-FST",
+                door2: "D870BB-FST",
+                door3: "D870BB-FST",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FBS551S",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FBT551S",
+                door1: "D870TT-FBT",
+                door2: "D870BB-FST",
+                door3: "D870BB-FST",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871FTS551S",
+                door1: "D870TT-FST",
+                door2: "D870BB-FSD",
+                door3: "D870BB-FSD",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SGG551S",
+                door1: "D870TT-SGR",
+                door2: "D870BB-SGR",
+                door3: "D870BB-SGR",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SSS551S",
+                door1: "D870TT-SSV",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SMM551S",
+                door1: "D870TT-SMT",
+                door2: "D870BB-SMT",
+                door3: "D870BB-SMT",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SGS551",
+                door1: "D870TT-SGR",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SSG551S",
+                door1: "D870TT-SSV",
+                door2: "D870BB-SGR",
+                door3: "D870BB-SGR",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871SMS551S",
+                door1: "D870TT-SMT",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MBB551S",
+                door1: "D870TT-MBK",
+                door2: "D870BB-MBK",
+                door3: "D870BB-MBK",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MGG551S",
+                door1: "D870TT-MGY",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MWW551S",
+                door1: "D870TT-MWH",
+                door2: "D870BB-MWH",
+                door3: "D870BB-MWH",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MBG551S",
+                door1: "D870TT-MBK",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MWG551S",
+                door1: "D870TT-MWH",
+                door2: "D870BB-MGY",
+                door3: "D870BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871MGB551S",
+                door1: "D870TT-MGY",
+                door2: "D870BB-MBK",
+                door3: "D870BB-MBK",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GBB551",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GBM551S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GMN",
+                door3: "D870BB-GMN",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GBP551S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GPK",
+                door3: "D870BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GBS551S",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GSV",
+                door3: "D870BB-GSV",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GSS551S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GSV",
+                door3: "D870BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GSB551S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GSM551S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GMN",
+                door3: "D870BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GSP551S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GPK",
+                door3: "D870BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GMB551S",
+                door1: "D870TT-GMN",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "M871AAA551",
+                modelCode: "M871GPB551",
+                door1: "D870TT-GPK",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
 
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320SGS",
+                door1: "B320TT-SGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320GB",
+                door1: "B320TT-GBE",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320GSS",
+                door1: "B320TT-GSV",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320GPS",
+                door1: "B320TT-GPK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320GMS",
+                door1: "B320TT-GMN",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320MWS",
+                door1: "B320TT-MWH",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "X320AA",
+                modelCode: "X320MBS",
+                door1: "B320TT-MBK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320SGS",
+                door1: "B320TT-SGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320GB",
+                door1: "B320TT-GBE",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320GS",
+                door1: "B320TT-GSV",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320GP",
+                door1: "B320TT-GPK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320GM",
+                door1: "B320TT-GMN",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MWS",
+                door1: "B320TT-MWH",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MBS",
+                door1: "B320TT-MBK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320SGS",
+                door1: "B320TT-SGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320GB",
+                door1: "B320TT-GBE",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320GS",
+                door1: "B320TT-GSV",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320GPS",
+                door1: "B320TT-GPK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320GMS",
+                door1: "B320TT-GMN",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MWS",
+                door1: "B320TT-MWH",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MBS",
+                door1: "B320TT-MBK",
+                door2: "",
+                door3: "",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FSS151S",
+                door1: "K330TT-FSD",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FBB151S",
+                door1: "K330TT-FBT",
+                door2: "K330MM-FBT",
+                door3: "K330BB-FBT",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FTT151S",
+                door1: "K330TT-FST",
+                door2: "K330MM-FST",
+                door3: "K330BB-FST",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FTS151",
+                door1: "K330TT-FST",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FBS151S",
+                door1: "K330TT-FBT",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FBT151S",
+                door1: "K330TT-FBT",
+                door2: "K330MM-FST",
+                door3: "K330BB-FST",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SSS151S",
+                door1: "K330TT-SSV",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SGG151S",
+                door1: "K330TT-SGR",
+                door2: "K330MM-SGR",
+                door3: "K330BB-SGR",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SMM151S",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SMT",
+                door3: "K330BB-SMT",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SSG151S",
+                door1: "K330TT-SSV",
+                door2: "K330MM-SGR",
+                door3: "K330BB-SGR",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SMS151",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330SGS151",
+                door1: "K330TT-SGR",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GBB151",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GSS151S",
+                door1: "K330TT-GSV",
+                door2: "K330MM-GSV",
+                door3: "K330BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GPP151S",
+                door1: "K330TT-GPK",
+                door2: "K330MM-GPK",
+                door3: "K330BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GMM151S",
+                door1: "K330TT-GMN",
+                door2: "K330MM-GMN",
+                door3: "K330BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GPB151",
+                door1: "K330TT-GPK",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GPS151S",
+                door1: "K330TT-GPK",
+                door2: "K330MM-GSV",
+                door3: "K330BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GMS151",
+                door1: "K330TT-GMN",
+                door2: "K330MM-GSV",
+                door3: "K330BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GMB151S",
+                door1: "K330TT-GMN",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GSP151S",
+                door1: "K330TT-GSV",
+                door2: "K330MM-GPK",
+                door3: "K330BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GSM151S",
+                door1: "K330TT-GSV",
+                door2: "K330MM-GMN",
+                door3: "K330BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GSB151S",
+                door1: "K330TT-GSV",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GBS151S",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GSV",
+                door3: "K330BB-GSV",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GBP151S",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GPK",
+                door3: "K330BB-GPK",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GBM151S",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GMN",
+                door3: "K330BB-GMN",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330MWW151S",
+                door1: "K330TT-MWH",
+                door2: "K330MM-MWH",
+                door3: "K330BB-MWH",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330MGG151S",
+                door1: "K330TT-MGY",
+                door2: "K330MM-MGY",
+                door3: "K330BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330MBB151S",
+                door1: "K330TT-MBK",
+                door2: "K330MM-MBK",
+                door3: "K330BB-MBK",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330MBG151",
+                door1: "K330TT-MBK",
+                door2: "K330MM-MGY",
+                door3: "K330BB-MGY",
+                door4: "",
+            }
+        ]
+    }
 
 
 
@@ -1217,6 +2268,36 @@
             simulPositionAutoMove();
         });
 
+        //추천조합
+        $("#proposeModel").on("click", function() {
+            let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
+            let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
+            if ($(this).hasClass("border")) {
+                $(this).removeClass("border");
+                modelSimulator.openProposeModel(modelCode, modelcate);
+            } else {
+                $(this).addClass("border");
+                modelSimulator.closeProposeModel();
+            }
+        });
+        $(".color_best .btn-close").on("click", function() {
+            $("#proposeModel").addClass("border");
+            modelSimulator.closeProposeModel();
+        });
+        $(document).on("click", ".color_best .btn_propose_model_sel", function() {
+            let modelName = $(this).find(">span").text();
+            $(this).find(".mini_model_wrap .mini_model").each(function() {
+                let idx = $(this).index();
+                let idxImg = $(this).html();
+
+                console.log("idx", idx);
+                console.log("idxImg", idxImg);
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ "data-door-model_spec_material": $(this).attr("data-material"), "data-door-model_spec_color": $(this).attr("data-color-code"), "data-door-code": $(this).attr("data-front-code"), "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color") });
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
+            });
+            completedCheck();
+        });
 
         //제품 다시선택하기
         $(".model_reset").on("click", function() {
@@ -1249,6 +2330,7 @@
                         $(".simul_wrap").removeClass("is_active");
                     }
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
+                    modelSimulator.closeProposeModel();
                 }
             };
             var desc = '';
@@ -1298,6 +2380,9 @@
         $(document).on("click", ".model_set_wrap .btn_model_sel", function(e) {
             $(this).closest(".model_set_wrap").siblings().attr("data-model-editing", 'N');
             $(this).closest(".model_set_wrap").attr("data-model-editing", 'Y');
+            //     
+
+
         });
 
         //시뮬모델 삭제
@@ -1379,7 +2464,7 @@
             let doorImgUrl = doorImgUrl1 + doorImgUrl2;
             let doorImg = '<img src="' + doorImgUrl + '" alt="" />'
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y'] .door_img").html(doorImg);
-
+            $(".model_set_wrap[data-model-editing='Y']").attr("data-best", "N");
             completedCheck();
         });
 
@@ -1387,6 +2472,10 @@
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
+            let modelCode = $(this).find("td:first-child span").text();
+            let modelPrice = $(this).find("td:last-child span").text();
+            $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code", modelCode);
+            $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
         });
 
         //제품 추가하기
@@ -1474,6 +2563,18 @@
             purchaseFn(purchaseData);
 
         });
+        //툴팁
+        $(".obj_tooltip_wrap .tooltip-icon").on("click", function() {
+            if ($(this).closest(".obj_tooltip_wrap").hasClass("active")) {
+                $(this).closest(".obj_tooltip_wrap").removeClass("active");
+            } else {
+                $(this).closest(".obj_tooltip_wrap").addClass("active");
+                materiaModal.update();
+            }
+        });
+        $(".obj_tooltip_wrap .btn-close").on("click", function() {
+            $(this).closest(".obj_tooltip_wrap").removeClass("active");
+        });
 
 
 
@@ -1510,10 +2611,23 @@
                 prevEl: '.total_price_info_body .swiper-button-prev',
             },
         });
+        materiaModal = new Swiper(".obj_tooltip_wrap .material_modal", {
+            //slidesPerView: 1,
+            centeredSlides: true,
+            //slidesPerView: 'auto',
+            //spaceBetween: 40,
+            // preventClicks: false,
+            // preventClicksPropagation: false,
+            navigation: {
+                nextEl: '.material_modal .swiper-button-next',
+                prevEl: '.material_modal .swiper-button-prev',
+            },
+        });
 
     });
     var simulBodySwiper;
     var priceSumList;
+    var materiaModal;
 
     function simulPositionAutoMove() { //화면 넓이에 따른 시뮬레이션 위치 변경 및 위치 따라다니기
         let simulLand;
@@ -1658,6 +2772,7 @@
             $(".model_choice_area .model_choice_tab .btn_model_pick").removeClass("is_noActive");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
             modelSimulator.maxCountCheck();
+            modelSimulator.closeProposeModel();
         },
         childModel: function(_target) { //하위 카테고리가 있는지 여부 판단
             let _this = _target;
@@ -1719,7 +2834,7 @@
         stepOneNext: function(idx, _name, name, code, leadName) { //2단계로 넘어간다
             $(".model_simul_area").addClass("is_active");
             $(".simul_wrap").addClass("is_active");
-            let simulBodyHtml = '<div data-model-cate="" data-model_code="" data-del="N" data-model-add="Y" data-model-editing="Y" data-model-completed="N" class="swiper-slide model_set_wrap">';
+            let simulBodyHtml = '<div data-model-cate="" data-model_code="" data-best="N" data-best-code="" data-del="N" data-model-add="Y" data-model-editing="Y" data-model-completed="N" class="swiper-slide model_set_wrap">';
             simulBodyHtml += '  <div class="model_set">';
             simulBodyHtml += '      <button type="button" class="btn_model_del"><span class="blind">선택 제품 삭제</span></button>';
             simulBodyHtml += '      <button type="button" class="btn_model_sel"><span class="blind">제품 선택</span></button>';
@@ -1789,6 +2904,8 @@
             let modelPrice;
             let defaultImg = '';
             let doorHtml = '';
+            let doorPrice = '';
+            let doorKLocation = '';
             if (idx == 0) { //냉장고
                 modelWrap.attr({ "data-model-cate": _name, "data-model_code": code });
                 let forLeng = configData.modelConfig[idx].refrigeratorType.length;
@@ -1812,14 +2929,20 @@
                                                 doorDirection = "LT";
                                                 doorLocation = "JT";
                                             }
+                                            doorKLocation = "상단(좌)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                         } else if (k == 1) {
                                             doorDirection = "LB";
                                             doorLocation = "BB";
+                                            doorKLocation = "하단(좌)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
                                         } else if (k == 2) {
                                             doorDirection = "RB";
                                             doorLocation = "BB";
+                                            doorKLocation = "하단(우)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
                                         }
-                                        doorHtml += '<button type="button" data-edit="N" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                        doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                         doorHtml += '   <span class="blind">도어 선택</span>';
                                         doorHtml += '   <span class="door_img"></span>';
                                         doorHtml += '</button>';
@@ -1831,17 +2954,25 @@
                                         if (k == 0) {
                                             doorDirection = "LT";
                                             doorLocation = "TT";
+                                            doorKLocation = "상단(좌)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                         } else if (k == 1) {
                                             doorDirection = "RT";
                                             doorLocation = "TT";
+                                            doorKLocation = "상단(우)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
                                         } else if (k == 2) {
                                             doorDirection = "LB";
                                             doorLocation = "BB";
+                                            doorKLocation = "하단(좌)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
                                         } else if (k == 3) {
                                             doorDirection = "RB";
                                             doorLocation = "BB";
+                                            doorKLocation = "하단(우)";
+                                            doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door4.defaultPrice;
                                         }
-                                        doorHtml += '<button type="button" data-edit="N" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                        doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                         doorHtml += '   <span class="blind">도어 선택</span>';
                                         doorHtml += '   <span class="door_img"></span>';
                                         doorHtml += '</button>';
@@ -1866,14 +2997,20 @@
                         if (k == 0) {
                             doorDirection = "TT";
                             doorLocation = "TT";
+                            doorKLocation = "상";
+                            doorPrice = configData.modelConfig[idx].door.door1.defaultPrice;
                         } else if (k == 1) {
                             doorDirection = "MM";
                             doorLocation = "MM";
+                            doorKLocation = "중";
+                            doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
                         } else if (k == 2) {
                             doorDirection = "BB";
                             doorLocation = "BB";
+                            doorKLocation = "하";
+                            doorPrice = configData.modelConfig[idx].door.door3.defaultPrice;
                         }
-                        doorHtml += '<button type="button" data-edit="N" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                        doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-klocation="' + doorKLocation + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                         doorHtml += '   <span class="blind">도어 선택</span>';
                         doorHtml += '   <span class="door_img"></span>';
                         doorHtml += '</button>';
@@ -1889,11 +3026,12 @@
                         defaultImg = configData.modelConfig[idx].typModel[i].simulImg;
                         modelPrice = configData.modelConfig[idx].typModel[i].defaultPrice;
                         doorLeng = configData.modelConfig[idx].typModel[i].door.count;
+                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
                         $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
                         if (doorLeng == 1) {
                             let doorDirection = "TT";
                             let doorLocation = "TT";
-                            doorHtml += '<button type="button" data-edit="N" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                            doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                             doorHtml += '   <span class="blind">도어 선택</span>';
                             doorHtml += '   <span class="door_img"></span>';
                             doorHtml += '</button>';
@@ -1927,6 +3065,10 @@
             let doorDirection = $("[data-model-editing='Y']").find("[data-edit='Y']").attr("data-door-direction");
             let doorLocation = $("[data-model-editing='Y']").find("[data-edit='Y']").attr("data-door-model_location");
             let modelCateChild = $(".model_choice_area .model_choice_tab .btn_model_pick.is_active").attr("data-childcate");
+            let modalTitle = [];
+            let modalTitle2 = [];
+            let modalTxt = [];
+            let modalImg = [];
             if (modelCate == "refrigerator") {
                 let refrigeratorTypeLeng = configData.modelConfig[0].refrigeratorType.length;
                 for (let i = 0; i < refrigeratorTypeLeng; i++) {
@@ -1958,8 +3100,13 @@
                                     let doorColorLeng = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.doorColor.length;
                                     let doorMaterialName = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.name;
                                     let doorMaterialEnName = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.enName;
-                                    let doorMaterialCode = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.code;
                                     let doorMaterialDesc = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.desc;
+                                    let doorMaterialDescImg = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.descImg;
+                                    let doorMaterialCode = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData[k].doorMaterial.code;
+                                    modalTitle.push(doorMaterialName);
+                                    modalTitle2.push(doorMaterialEnName);
+                                    modalTxt.push(doorMaterialDesc);
+                                    modalImg.push(doorMaterialDescImg);
                                     colorSelBodyHtml += '<div class="swiper-slide">';
                                     colorSelBodyHtml += '   <dl>';
                                     colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
@@ -2019,6 +3166,11 @@
                     let doorMaterialEnName = configData.modelConfig[1].doorColorData[k].doorMaterial.enName;
                     let doorMaterialCode = configData.modelConfig[1].doorColorData[k].doorMaterial.code;
                     let doorMaterialDesc = configData.modelConfig[1].doorColorData[k].doorMaterial.desc;
+                    let doorMaterialDescImg = configData.modelConfig[1].doorColorData[k].doorMaterial.descImg;
+                    modalTitle.push(doorMaterialName);
+                    modalTitle2.push(doorMaterialEnName);
+                    modalTxt.push(doorMaterialDesc);
+                    modalImg.push(doorMaterialDescImg);
                     colorSelBodyHtml += '<div class="swiper-slide">';
                     colorSelBodyHtml += '   <dl>';
                     colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
@@ -2060,6 +3212,7 @@
                             let doorMaterialEnName = configData.modelConfig[2].typModel[j].doorColorData[k].doorMaterial.enName;
                             let doorMaterialCode = configData.modelConfig[2].typModel[j].doorColorData[k].doorMaterial.code;
                             let doorMaterialDesc = configData.modelConfig[2].typModel[j].doorColorData[k].doorMaterial.desc;
+                            let doorMaterialDescImg = configData.modelConfig[2].typModel[j].doorColorData[k].doorMaterial.descImg;
                             let _door;
                             let _doorFrontCode;
                             let _doorLocation;
@@ -2076,6 +3229,10 @@
                             doorPrice = _door.defaultPrice;
                             _doorLocation = _door.name;
                             _doorFrontCode = _door.code;
+                            modalTitle.push(doorMaterialName);
+                            modalTitle2.push(doorMaterialEnName);
+                            modalTxt.push(doorMaterialDesc);
+                            modalImg.push(doorMaterialDescImg);
                             colorSelBodyHtml += '<div class="swiper-slide">';
                             colorSelBodyHtml += '   <dl>';
                             colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
@@ -2110,6 +3267,27 @@
             $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+
+            var modalHtml = '';
+            for (let i = 0; i < modalTitle.length; i++) {
+                modalHtml += '<div class="swiper-slide">';
+                modalHtml += '  <dl>';
+                modalHtml += '      <dt>' + modalTitle2[i] + ' (' + modalTitle[i] + ')</dt>';
+                modalHtml += '      <dd>';
+                modalHtml += '          <p>' + modalTxt[i] + '</p>';
+                modalHtml += '          <span><img src="' + modalImg[i] + '" alt="" /></span>';
+                modalHtml += '      </dd>';
+                modalHtml += '  </dl>';
+                modalHtml += '</div>';
+                //materiaModal.removeSlide(i);
+
+                $(".obj_tooltip_wrap .material_modal .swiper-wrapper").html(modalHtml);
+
+
+
+            }
+            //
+            //$(".simul_step2 .material_modal")
         },
         stepThree: function() {
             let modelCate1 = $(".model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
@@ -2151,7 +3329,7 @@
                                 tblHtml += '    <td><span>' + modelCode + '</span></td>';
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
-                                tblHtml += '    <td>' + mainPrice + '원</td>';
+                                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
                                 tblHtml += '</tr>';
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -2165,7 +3343,7 @@
                                         tblHtml += '    <td><span>' + subCode + '</span></td>';
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
-                                        tblHtml += '    <td>' + subPrice + '원</td>';
+                                        tblHtml += '    <td><span>' + subPrice + '</span>원</td>';
                                         tblHtml += '</tr>';
                                     }
                                 }
@@ -2194,7 +3372,7 @@
                 tblHtml += '        </thead>';
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td>' + mainPrice + '원</td>';
+                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
                 tblHtml += '</tr>';
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
@@ -2219,7 +3397,7 @@
                         tblHtml += '        </thead>';
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
-                        tblHtml += '    <td>' + mainPrice + '원</td>';
+                        tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
                         tblHtml += '</tr>';
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
@@ -2238,6 +3416,9 @@
             console.log("doorInfo", doorInfo);
             let priceHtml = '';
             let sumPrice = 0;
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            }
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
@@ -2249,13 +3430,16 @@
             priceHtml += '                      <span class="product_price"><em>' + defaultPrice + '</em>원</span>';
             priceHtml += '                  </li>';
             sumPrice += parseInt(minusComma(defaultPrice));
-            for (let i = 0; i < doorInfo.length; i++) {
-                priceHtml += '                  <li data-default-code="' + doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3] + '">';
-                priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
-                priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
-                priceHtml += '                  </li>';
-                sumPrice += parseInt(minusComma(doorInfo[i][4]));
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
+                for (let i = 0; i < doorInfo.length; i++) {
+                    priceHtml += '                  <li data-default-code="' + doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3] + '">';
+                    priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
+                    priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
+                    priceHtml += '                  </li>';
+                    sumPrice += parseInt(minusComma(doorInfo[i][4]));
+                }
             }
+
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';
             priceHtml += '                                            <span class="product_name">합계</span>';
@@ -2293,8 +3477,259 @@
                 $(".total_result_price .price em").text(addComma(totalSumPrice));
             }, 100);
 
+        },
+        openProposeModel: function(modelCode, modelcate) {
+            let _thisModel = [];
+            for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
+                if (modelCode == proposeSet.proposeConfig[i].defaultCode) {
+                    _thisModel.push(proposeSet.proposeConfig[i]);
+                }
+            }
+            if (_thisModel.length > 0) {
+                let imgCate;
+
+                let imgCate2;
+                if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
+                    imgCate = "rf";
+                    imgCate2 = "refrigerator";
+                } else if (modelcate == "refrigerator_kimchi") {
+                    imgCate = "rf_kim";
+                    imgCate2 = "refrigerator_kimchi";
+                } else if (modelcate == "refrigerator_convertible") {
+                    imgCate = "rf_con";
+                    imgCate2 = "refrigerator_convertible";
+                }
+                let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
+                let contFHtml = '';
+                contFHtml += '<div class="swiper-slide">';
+                contFHtml += '   <dl>';
+                contFHtml += '       <dt>페닉스</dt>';
+                contFHtml += '       <dd>';
+                contFHtml += '           <ul>';
+                let contSHtml = '';
+                contSHtml += '<div class="swiper-slide">';
+                contSHtml += '   <dl>';
+                contSHtml += '       <dt>솔리드</dt>';
+                contSHtml += '       <dd>';
+                contSHtml += '           <ul>';
+                let contMHtml = '';
+                contMHtml += '<div class="swiper-slide">';
+                contMHtml += '   <dl>';
+                contMHtml += '       <dt>미스트</dt>';
+                contMHtml += '       <dd>';
+                contMHtml += '           <ul>';
+                let contGHtml = '';
+                contGHtml += '<div class="swiper-slide">';
+                contGHtml += '   <dl>';
+                contGHtml += '       <dt>네이쳐</dt>';
+                contGHtml += '       <dd>';
+                contGHtml += '           <ul>';
+                for (let i = 0; i < _thisModel.length; i++) {
+                    let _modelDefaultCode = _thisModel[i].defaultCode;
+                    let _modelCode = _thisModel[i].modelCode;
+
+                    let _doorCode1 = _thisModel[i].door1;
+                    let _doorCode2 = _thisModel[i].door2;
+                    let _doorCode3 = _thisModel[i].door3;
+                    let _doorCode4 = _thisModel[i].door4;
+                    let _doorInfo1 = _doorCode1.slice(-3);
+                    let _doorInfo2 = _doorCode2.slice(-3);
+                    let _doorInfo3 = _doorCode3.slice(-3);
+                    let _doorInfo4 = _doorCode4.slice(-3);
+                    let _doorFrontInfo1 = _doorCode1.split('-');
+                    let _doorFrontInfo2 = _doorCode2.split('-');
+                    let _doorFrontInfo3 = _doorCode3.split('-');
+                    let _doorFrontInfo4 = _doorCode4.split('-');
+                    let _doorInfoMaterial = [];
+                    let _doorInfoColor = [];
+                    let _doorInfoLocation = [];
+                    let _doorFrontInfo = [];
+                    let _doorInfoKMaterial = [];
+                    let _doorInfoKColor = [];
+                    _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
+                    _doorInfoColor.push(_doorInfo1.substring(1, 3));
+                    _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
+                    _doorInfoColor.push(_doorInfo2.substring(1, 3));
+                    _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
+                    _doorInfoColor.push(_doorInfo3.substring(1, 3));
+                    _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
+                    _doorInfoColor.push(_doorInfo4.substring(1, 3));
+                    _doorInfoLocation.push(_doorCode1.slice(-6, -4));
+                    _doorInfoLocation.push(_doorCode2.slice(-6, -4));
+                    _doorInfoLocation.push(_doorCode3.slice(-6, -4));
+                    _doorInfoLocation.push(_doorCode4.slice(-6, -4));
+                    _doorFrontInfo.push(_doorFrontInfo1[0]);
+                    _doorFrontInfo.push(_doorFrontInfo2[0]);
+                    _doorFrontInfo.push(_doorFrontInfo3[0]);
+                    _doorFrontInfo.push(_doorFrontInfo4[0]);
+                    for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                        if (_doorInfoMaterial[j] == "F") {
+                            _doorInfoKMaterial[j] = "페닉스"
+                        } else if (_doorInfoMaterial[j] == "S") {
+                            _doorInfoKMaterial[j] = "솔리드"
+                        } else if (_doorInfoMaterial[j] == "M") {
+                            _doorInfoKMaterial[j] = "미스트"
+                        } else if (_doorInfoMaterial[j] == "G") {
+                            _doorInfoKMaterial[j] = "네이쳐"
+                        }
+                    }
+                    for (let j = 0; j < _doorInfoColor.length; j++) {
+                        if (_doorInfoColor[j] == "BT") {
+                            _doorInfoKColor[j] = "보타닉"
+                        } else if (_doorInfoColor[j] == "SD") {
+                            _doorInfoKColor[j] = "샌드"
+                        } else if (_doorInfoColor[j] == "ST") {
+                            _doorInfoKColor[j] = "스톤"
+                        } else if (_doorInfoColor[j] == "SV") {
+                            _doorInfoKColor[j] = "실버"
+                        } else if (_doorInfoColor[j] == "GR") {
+                            _doorInfoKColor[j] = "그린"
+                        } else if (_doorInfoColor[j] == "MT") {
+                            _doorInfoKColor[j] = "맨해튼 미드나잇"
+                        } else if (_doorInfoColor[j] == "BE") {
+                            _doorInfoKColor[j] = "베이지"
+                        } else if (_doorInfoColor[j] == "MN") {
+                            _doorInfoKColor[j] = "민트"
+                        } else if (_doorInfoColor[j] == "PK") {
+                            _doorInfoKColor[j] = "핑크"
+                        } else if (_doorInfoColor[j] == "SV") {
+                            _doorInfoKColor[j] = "실버"
+                        } else if (_doorInfoColor[j] == "WH") {
+                            _doorInfoKColor[j] = "화이트"
+                        } else if (_doorInfoColor[j] == "GY") {
+                            _doorInfoKColor[j] = "그레이"
+                        } else if (_doorInfoColor[j] == "BK") {
+                            _doorInfoKColor[j] = "블랙"
+                        }
+                    }
+
+                    if (_doorInfoMaterial[0] == "F") {
+                        contFHtml += '<li>';
+                        contFHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                        contFHtml += '      <div class="mini_model_wrap">';
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] != "") {
+                                contFHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            }
+                        }
+                        contFHtml += '      </div>';
+                        contFHtml += '      <span>' + _modelCode + '</span>';
+                        contFHtml += '  </button>';
+                        contFHtml += '</li>';
+                    } else if (_doorInfoMaterial[0] == "S") {
+                        contSHtml += '<li>';
+                        contSHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                        contSHtml += '      <div class="mini_model_wrap">';
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] != "") {
+                                contSHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            }
+                        }
+                        contSHtml += '      </div>';
+                        contSHtml += '      <span>' + _modelCode + '</span>';
+                        contSHtml += '  </button>';
+                        contSHtml += '</li>';
+                    } else if (_doorInfoMaterial[0] == "M") {
+                        contMHtml += '<li>';
+                        contMHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                        contMHtml += '      <div class="mini_model_wrap">';
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] != "") {
+                                contMHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            }
+                        }
+                        contMHtml += '      </div>';
+                        contMHtml += '      <span>' + _modelCode + '</span>';
+                        contMHtml += '  </button>';
+                        contMHtml += '</li>';
+                    } else if (_doorInfoMaterial[0] == "G") {
+                        contGHtml += '<li>';
+                        contGHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                        contGHtml += '      <div class="mini_model_wrap">';
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] != "") {
+                                contGHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            }
+                        }
+                        contGHtml += '      </div>';
+                        contGHtml += '      <span>' + _modelCode + '</span>';
+                        contGHtml += '  </button>';
+                        contGHtml += '</li>';
+                    }
+
+
+                }
+                contFHtml += '           </ul>';
+                contFHtml += '       </dd>';
+                contFHtml += '   </dl>';
+                contFHtml += '</div>';
+                contSHtml += '           </ul>';
+                contSHtml += '       </dd>';
+                contSHtml += '   </dl>';
+                contSHtml += '</div>';
+                contMHtml += '           </ul>';
+                contMHtml += '       </dd>';
+                contMHtml += '   </dl>';
+                contMHtml += '</div>';
+                contGHtml += '           </ul>';
+                contGHtml += '       </dd>';
+                contGHtml += '   </dl>';
+                contGHtml += '</div>';
+                $(".color_best .color_best_body .swiper-wrapper").html(contFHtml + contSHtml + contMHtml + contGHtml);
+                $(".color_best").slideDown() //.addClass("is_active");
+                slideWrapAutoSize(".color_best .color_best_body");
+            }
+
+
+        },
+        closeProposeModel: function() {
+            //$(".color_best").aremoveClass("is_active");
+            $(".color_best").slideUp() //.addClass("is_active");
+        },
+        pdpProductStep: function(modelCode) {
+            let _defaultModelCode;
+            let _doorInfo = [];
+            for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
+                if (modelCode == proposeSet.proposeConfig[i].modelCode) {
+                    if (proposeSet.proposeConfig[i].defaultCode != "") {
+                        _defaultModelCode = proposeSet.proposeConfig[i].defaultCode
+                    }
+                    if (proposeSet.proposeConfig[i].door1 != "") {
+                        _doorInfo.push(proposeSet.proposeConfig[i].door1);
+                    }
+                    if (proposeSet.proposeConfig[i].door2 != "") {
+                        _doorInfo.push(proposeSet.proposeConfig[i].door2);
+                    }
+                    if (proposeSet.proposeConfig[i].door3 != "") {
+                        _doorInfo.push(proposeSet.proposeConfig[i].door3);
+                    }
+                    if (proposeSet.proposeConfig[i].door4 != "") {
+                        _doorInfo.push(proposeSet.proposeConfig[i].door4);
+                    }
+                    console.log("proposeSet.proposeConfig[i]", proposeSet.proposeConfig[i]);
+                }
+            }
+            let resultFilter;
+            let filter1 = rfModelFilter(_defaultModelCode);
+            let filter2 = kimModelFilter(_defaultModelCode);
+            let filter3 = conModelFilter(_defaultModelCode);
+            if (filter1 != []) {
+                resultFilter = filter1;
+            } else if (filter2 != []) {
+                resultFilter = filter2;
+            } else if (filter3 != []) {
+                resultFilter = filter3;
+            }
+            let _modelCate;
+            let _modelCate2;
+            let _leaderImg;
+            let _simulImg;
+            let _defaultPrice;
+            configData.modelConfig[0]
+            console.log("resultFilter", resultFilter);
         }
     }
+    modelSimulator.pdpProductStep("M870GSB451S");
 
     function addComma(value) {
         value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -2304,5 +3739,44 @@
     function minusComma(value) {
         value = value.replace(/[^\d]+/g, "");
         return value;
+    }
+
+    function rfModelFilter(code) {
+        let returnIdx = [];
+        let _refrigeratorType = configData.modelConfig[0].refrigeratorType;
+        for (let i = 0; i < _refrigeratorType.length; i++) {
+            let _typModel = _refrigeratorType[i].typModel;
+            for (let j = 0; j < _typModel.length; j++) {
+                if (_typModel[j].defaultCode == code) {
+
+                    returnIdx.push(0);
+                    returnIdx.push(i);
+                    returnIdx.push(j);
+
+                }
+            }
+        }
+        return returnIdx;
+    }
+
+    function kimModelFilter(code) {
+        let returnIdx = [];
+        let _defaultModel = configData.modelConfig[1].defaultModel;
+        if (_defaultModel == code) {
+            returnIdx.push(1);
+        }
+        return returnIdx;
+    }
+
+    function conModelFilter(code) {
+        let returnIdx = [];
+        let _typModel = configData.modelConfig[2].typModel;
+        for (let i = 0; i < _typModel.length; i++) {
+            if (_typModel[i].defaultCode == code) {
+                returnIdx.push(2);
+                returnIdx.push(i);
+            }
+        }
+        return returnIdx;
     }
 })();;
