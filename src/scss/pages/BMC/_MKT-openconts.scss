@@ -773,6 +773,15 @@
                     font-size:16px;
                     font-weight:700;
                     line-height:26px;
+                    span {
+                        &:after {
+                            content:'*';
+                            display:inline-block;
+                            margin-left:1px;
+                            color:#ec455a;
+                            vertical-align:top;
+                        }
+                    }
                 }
                 dd {
                     float:left;
