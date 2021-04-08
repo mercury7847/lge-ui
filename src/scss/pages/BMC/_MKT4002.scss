@@ -7,16 +7,22 @@
         //padding-top:32px;
     }
     .ev-detail-top {
-        @include mobile {
-            // padding:0 16px;
-            padding-bottom: 32px;
-        }
         .tit-wrap {
             position:relative;
-            padding:24px 20px 32px;
+            margin-bottom: 24px;
+            padding:24px 20px 33px;
             border-bottom: 1px solid #ddd;
             @include mobile {
-                padding:32px 16px;
+                padding:24px 16px 33px;
+            }
+            &.is-bg {
+                margin-bottom: -1px;
+                border-color: transparent;
+                & ~ .info-wrap {
+                    .info-list {
+                        margin-top: 0;
+                    }
+                }
             }
             .flag-wrap {
                 padding-bottom:2px;
@@ -111,15 +117,15 @@
         // }
         .info-wrap {
             position:relative;
-            padding: 0 20px 24px;
+            padding: 0 20px;
             background-color: $color-white;
 
             @include mobile {
                 padding:0 16px;
             }
             .info-list {
-                margin-top: -1px;
-                padding-top: 16px;
+                margin-top: -25px;
+                padding: 16px 0 24px;
                 border-top: 1px solid rgba($color-default,.5);
                 //border-bottom:1px solid #ddd;
                 @include mobile {
@@ -149,18 +155,15 @@
                         vertical-align:top;
                     }
                 }
-                & + .finish-txt {
-                    margin-top: 24px;
-                }
             }
         }
         .finish-txt {
-            margin: 0 -20px -24px;
+            margin: 0 -20px;
             padding:17px 20px;
             background-color:#555;
             text-align:center;
             @include mobile {
-                margin: 32px -16px -32px;
+                margin: 0 -16px;
                 padding:20px 34px;
             }
             p {
@@ -198,11 +201,8 @@
         }
         .ev-cont {
             position:relative;
-            display:inline-block;
-            @include mobile {
-                width: 100%;
-            }
             .conts {
+                display: inline-block;
                 padding-bottom:80px;
                 @include mobile {
                     padding:0;

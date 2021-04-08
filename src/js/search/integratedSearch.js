@@ -30,12 +30,8 @@
         setting: function() {
             var self = this;
 
-            //최소 검색어 글자수
-            self.minLength = 2;
             //타이머
             self.searchTimer = null;
-            //타이머 검색 딜레이
-            self.searchDelay = 1000;
 
             //통합검색 레이어
             self.$searchLayer = $('#layerSearch');
@@ -133,7 +129,7 @@
                 clearTimeout(self.searchTimer);
                 
                 var searchVal = this.value;
-                if (searchVal.length < self.minLength) {
+                if (searchVal.length < lgkorUI.SEARCH_AUTOCOMPLETE_MIN_LENGTH) {
                     self.openSearchInputLayer(true);
                     //self.hideAnimation(self.$searchResultArea);
                     self.hideSearchResultArea();
@@ -142,7 +138,7 @@
                 
                 self.searchTimer = setTimeout(function() {
                     self.requestSearchAutoComplete(searchVal);
-                }, self.searchDelay);
+                }, lgkorUI.SEARCH_AUTOCOMPLETE_TIMER);
             });
 
             //자동완성 리스트 클릭

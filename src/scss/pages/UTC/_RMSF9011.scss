@@ -14,8 +14,12 @@
 }
 .complete-wrap {
     position: relative;
-    text-align: center;
+    margin-top:16px;
     padding-bottom: 80px;
+    text-align: center;
+    @include mobile {
+        margin-top:0;
+    }
     &:before {
         display: inline-block;
         width: 64px;
