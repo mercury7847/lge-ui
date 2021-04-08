@@ -237,6 +237,7 @@
 
             .benefit-slide{
                 padding:0 100px;
+                max-width:1380px;
                 @include mobile{
                     padding:0 36px;
                 }
@@ -244,7 +245,7 @@
                     overflow:hidden;
                     .slide-conts {
                         padding:12px;
-                        max-width:25%;
+                        max-width:250px;
                         float:left;
                         .slide-box {
                             display:block;
@@ -440,8 +441,14 @@
             }
             .slide-content {
                 .slide-track{
+                    max-width:2000px;
+                    @include mobile {
+                      width:100%;
+                    }
                     .slide-conts {
-                        padding-top:50px;
+                        width:28%;
+                        padding-top:6%;
+                        float:left;
                         @include mobile {
                             display:none;
                             padding-top:25px;
@@ -466,8 +473,9 @@
                             }
                         }
                         &.on {
+                            width:38%;
                             padding-top:0;
-                            margin:0 24px;
+                            margin:0 3%;
                             @include mobile {
                                 display:inline-block;
                                 margin:0 15px;
