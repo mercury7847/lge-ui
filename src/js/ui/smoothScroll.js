@@ -159,7 +159,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'smoothScroll',
         defaults: {
             startX: 0,
-            startY: null,
+            startY: 0,
             scrollX: true,
             scrollY: true,
             directionLockThreshold: 5,
@@ -214,23 +214,20 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.directionX = 0;
             self.directionY = 0;
 
-            self.$el.css('overflow', 'hidden');
+            self.$el.css('overflow', 'hidden');            
+
+            self._initEvents();    
             self.scrollerStyle = self.$scroller[0].style;
-
-            self._initEvents();            
-            
-
-            //self.scrollTo(self.options.startX, self.options.startY);
+            self.scrollTo(0,0,0);
             self.enable();
 
             if (opts.autoCenterScroll) {
                 self.scrollToActive(true, false, 0);
             } else {
-                if(opts.startX || opts.startY){
-                    self.scrollTo(opts.startX? opts.startX : 0, opts.startY?opts.startY:0);
-                }
-                
+                self.scrollTo(opts.startX, opts.startY, 0);
+                        
             }
+
             self.refresh();
             self._activateButtons();
             
@@ -959,9 +956,9 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var opts = self.options;
             self.update();
 
-            if(opts.startX || opts.startY){
-                self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
-            }
+            // if(opts.startX || opts.startY){
+            //     self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
+            // }
             self.triggerHandler('smoothscrollrefresh', self);
 
         },
