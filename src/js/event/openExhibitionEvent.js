@@ -18,6 +18,8 @@
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 dots: false,
+                lastFix:false,
+                variableWidth : false,
                 
                 responsive: [
                     {
@@ -25,7 +27,9 @@
                         settings: {
                             variableWidth : false,
                             slidesToShow: 4,
-                            slidesToScroll: 1
+                            slidesToScroll: 1,
+                            lastFix:false
+
                         }
                     },
                     {
