@@ -1,61 +1,54 @@
 (function() {
-    var KRP0008 = {
+    var OpenExhibitionEvent = {
         init: function() {
             var self = this;
-            //처음 로그인 체크를 하는 ajax 호출 여부
-            self.processProductBuy = null;
-            self.loginCheckEnd = false;
-
-            self.isDragging = false;
-
-            self.setting();
-            self.popUpDataSetting();
-
-            if(self.$component.data('consumables')) {
-                vcui.require(['support/consumables.min'], function (consumables) {
-                    self.prepare();
-                    self.consumables = consumables;
-                });
-            } else {
-                self.prepare();
-            }
+            vcui.require([/*'ui/tab', */'ui/carousel'], function () {
+                self.setting();
+            });
         },
+
+        setting: function() {
+            var self = this;
+
+            self.$wrap = $('.ev-detail-wrap');
+            self.$wrap.find('.ui_recom_carousel').vcCarousel({
+                infinite: false,            
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                dots: false,
+                //dots: false,
+                //variableWidth : false,
+                /*
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            variableWidth : true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            dots: true
+                            //lastFix:true
+                        }
+                    }
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            variableWidth : false,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            dots: false
+                            //lastFix:false
+
+                        }
+                    }
+                ]
+                */
+                
+            });
+        }
     }
+
+    $(document).ready(function() {
+        OpenExhibitionEvent.init();
+    }); 
 })();
-
-$(document).ready(function() {    
-
-    var $wrap = $('.ev-detail-wrap');
-    vcui.require(['ui/tab', 'ui/carousel'], function () {
-
-        console.log($wrap.find('.ui_recom_carousel'));
-        $wrap.find('.ui_recom_carousel').vcCarousel({
-            infinite: true,            
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth : true,
-            dots: false,
-            /*
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        variableWidth : true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        variableWidth : false,
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-            */
-        });
-
-    })
-});

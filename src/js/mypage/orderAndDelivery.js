@@ -967,7 +967,7 @@
             }
         }
 
-        lgkorUI.confirm("주문 취소 신청시 제품을<br>다시 처음부터 구매하셔야 합니다.<br>주문하신 제품을 취소신청 하시겠어요?", {
+        lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
             title: "",
             cancelBtnName: "아니오",
             okBtnName: "네",

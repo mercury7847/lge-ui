@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- 
+    data-login=""
+    로그인 시 "Y" 
+    비로그인 시  "N"
+-->
 <html lang="ko" data-login="Y">
     @@include('./common/head.html', {
         "pageCSS": [
@@ -18,52 +23,35 @@
 
             <div class="contents support solutions">
                 <!-- 선택 제품 플로팅바 -->
-                @@include('./common/support/selected-model-bar.html', {
-                    "show": true
-                })
+                @@include('./common/support/selected-model-bar.html')
 
                 <!-- 회원 - 제품 없을 시 -->
-                @@include('./common/support/select-my-model.html', {
-                    "noItem": true,
-                    "show": true
-                })
+                <!-- @@include('./common/support/select-my-model.html', {
+                    "noItem": true
+                }) -->
 
                 <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html', {
-                    "show": true
-                })
+                @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
-
                     <div class="step-area">
                         <input type="hidden" name="category" id="category" value="">
-                        <input type="hidden" name="categoryNm" id="category" value="">
+                        <input type="hidden" name="categoryNm" id="categoryNm" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
-                        <input type="hidden" name="subCategoryNm" id="subCategory" value="">
+                        <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
+                        <input type="hidden" name="modelCode" id="modelCode" value="">
+                        <input type="hidden" name="productCode" id="productCode" value="">
+                        <input type="hidden" name="menuCd" id="menuCd" value="B00013">
 
                         <div class="step-box active" id="stepModel">
                             @@include('./common/support/select-model.html', {
-                                "url": "/lg5-common/data-ajax/support/solutions/selectModel.json",
-                                "category": [
-                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
-                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
-                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
-                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
-                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
-                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
-                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
-                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
-                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
-                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
-                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
-                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
-                                ]
+                                "url": "/lg5-common/data-ajax/support/solutions/selectModel.json"
                             })
                         </div>
 
                         <div class="step-box " id="stepInput">
                             <div class="section">
-                                <div class="solutions-wrap" data-solutions-url="/lg5-common/data-ajax/support/solutions/solutionsList.json" data-filter-solutions-url="/lg5-common/data-ajax/support/solutions/filterSolutionsList.json" data-filter-url="/lg5-common/data-ajax/support/solutions/filterList.json">
+                                <div class="solutions-wrap" data-solutions-url="/lg5-common/data-ajax/support/solutions/solutionsList.json">
                                     <div class="search-wrap">
                                         @@include('./common/support/search-keyword.html', {
                                             'url': '/lg5-common/data-ajax/support/solutions/searchAutoComplete.json',
@@ -123,7 +111,7 @@
                                     </div>
                                     <div class="result-box">
                                         <div class="title">
-                                            <h3 class="tit">“<span class="point">All</span>” 검색 결과</h3>
+                                            <h3 class="tit">“<span class="point">전체</span>” 검색 결과</h3>
                                         </div>
                                         <div class="sorting-wrap">
                                             <div class="total">전체 <em id="solutionsCount" class="count">122</em>건</div>
@@ -177,7 +165,6 @@
                         <!-- 2021-01-29 위치 변경 -->
                         @@include('./common/support/recommand-product.html')
                         @@include('./common/support/service-menu.html')
-                        @@include('./common/support/center-find.html')
                         <!-- // 2021-01-29 위치 변경 -->
                     </div>
                 </div>

@@ -288,10 +288,11 @@ gulp.task("jsCompile:homebrew", () => gulp
 );
 gulp.task("jsCompile:event", () => gulp
     .src(src + "/js/event/**/*")
-    //.pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
+    .pipe(terser())
     //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
-    //.pipe(sourcemaps.write('./maps'))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/event/"))
 );
 gulp.task("jsCompile:home", () => gulp
