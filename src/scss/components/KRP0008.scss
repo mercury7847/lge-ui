@@ -778,6 +778,7 @@
                         background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
                         color:#fff;
                         font-size:16px;
+                        font-weight:700;
                         line-height:26px;
                         text-align:center;
                         span {
@@ -793,6 +794,12 @@
                                 background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
                                 background-size:16px;
                             }
+                        }
+                    }
+                    @include mobile {
+                        margin:24px -16px 0;
+                        a {
+                            border-radius:0;
                         }
                     }
                 }
