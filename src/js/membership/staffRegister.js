@@ -39,7 +39,6 @@
 
             if(!isJoin){
                 var result = joinValidation.validate();
-                console.log(result)
                 if(!result.success){
                     lgkorUI.alert("", {
                         title: result.validArray[0].errmsg,
@@ -56,13 +55,38 @@
                     var sendurl = $('.show1').data('joinUrl');
                     var sendata = joinValidation.getValues();
                     console.log(sendata);
-                    lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendurl, sendata);
+                    lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendurl, sendata, function(result){ 
+                        if(result.status == "fail"){
+                            lgkorUI.alert("", {
+                                title: result.message
+                            })
+                        } else{
+                            if(lgkorUI.stringToBool(result.data.success)){
+                                $('.show2').show();
+                                $('html, body').animate({scrollTop: $('.show2').offset().top}, 220)
+                            } else{
+                                if(result.data.alert){
+                                    lgkorUI.alert("", {
+                                        title: result.data.alert.title
+                                    });
+                                }
+                            }
+                        }
 
-                    $('.show2').show();
-                    $('html, body').animate({scrollTop: $('.show2').offset().top}, 220)
+                    });
                 }
             }
-        })
+        });
+
+        $('.show2 > a').on('click', function(e){
+            if(!vcui.detect.isMobile){
+                e.preventDefault();
+
+                lgkorUI.alert("", {
+                    title: "모바일 환경에서 이용해주세요."
+                })
+            }
+        });
     }
 
     $(document).ready(function(){
