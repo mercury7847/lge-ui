@@ -1,5 +1,51 @@
 @charset "euc-kr";
 
+/* 210408 pb start */
+@font-face {
+  font-family:'RedVelvet' ;font-style:normal;font-weight:200;
+src:	url('/lg5-common/fonts//RedVelvet.woff2') format('woff2'),
+    url('/lg5-common/fonts/RedVelvet.woff') format('woff'),
+    url('/lg5-common/fonts/RedVelvet.ttf') format('truetype');
+}
+@font-face {
+  font-family:'LGSmHaR';font-style:normal;font-weight:400;
+  src:	url('/lg5-common/fonts/LGSmHaR.woff2') format('woff2'),
+    url('/lg5-common/fonts/LGSmHaR.woff') format('woff'),
+    url('/lg5-common/fonts/LGSmHaR.ttf') format('truetype');
+}
+
+    /*input radio,checkbox*/
+    .radio  li label {font-size:16px}
+    input[type="radio"] + label {line-height:20px}
+    input[type="radio"] + label:before {width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/mobile/common/spliteCommon.png') -120px -30px no-repeat;background-size:300px 300px}
+    input[type="radio"] + label.topbtn:before {top:0;margin-top:0}
+    input[type="radio"]:checked + label:before {background-position:-150px -30px}
+    input[type="checkbox"] + label {line-height:20px}
+    input[type="checkbox"] + label:before {width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/mobile/common/spliteCommon.png') -120px 0 no-repeat;background-size:300px 300px}
+    input[type="checkbox"] + label.topbtn:before {top:0;margin-top:0}
+    input[type="checkbox"]:checked + label:before {background-position:-150px 0}
+
+/* radio, checkbox */
+.radio  li label {font-size:18px}
+label {display:inline-block;vertical-align:middle;line-height:1.4}
+input[type="radio"] {display:inline-block;vertical-align:middle;position:fixed;left:-9999px;top:0}
+input[type="radio"] + label {position:relative;padding-left:25px;margin:1px}
+input[type="radio"] + label:before {content:'';display:inline-block;position:absolute;top:50%;left:0;width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/web/common/spliteCommon.png') 0 -150px no-repeat}
+input[type="radio"] + label.topbtn:before {top:0;margin-top:0}
+input[type="radio"]:checked + label:before {background-position:-50px -150px}
+
+input[type="checkbox"] {display:inline-block;vertical-align:middle;position:fixed;left:-9999px;top:0}
+input[type="checkbox"] + label {position:relative;padding-left:25px;margin:1px}
+input[type="checkbox"] + label:before {content:'';display:inline-block;position:absolute;top:50%;left:0;width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/web/common/spliteCommon.png') 0 -100px no-repeat}
+input[type="checkbox"] + label.topbtn:before {top:0;margin-top:0}
+input[type="checkbox"]:checked + label:before {background-position:-50px -100px}
+
+input[type="radio"]:focus + label {border:1px dotted #666;margin:0}
+input[type="checkbox"]:focus + label {border:1px dotted #666;margin:0}
+input[type="button"]:focus + label {border:1px dotted #666;margin:0}
+
+
+/* 210408 pb end */
 /* popup */
 .event-template,
 .summary-visual {position: relative;}
@@ -18,7 +64,7 @@
 .pop_body h2 {margin: 20px 0 10px 0; font-size: 18px; font-weight: normal;}
 .pop_body h2 strong {color: #c30754; font-weight: bold;}
 
-.pop_close_btn {position: absolute; right: 15px; top: 15px;}
+.pop_close_btn {display:none; position: absolute; right: 15px; top: 15px;}
 
 .event-template {position:relative;max-width:1200px;margin:0 auto;}
 .event-template .summary-visual {position:relative}
@@ -153,7 +199,7 @@
     background: #f4f4f4;
 }
 
-/* Ã·ºÎÆÄÀÏ style */
+/* Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ style */
 .file_box{position :relative;}
 .file_box #ptUpload1{position:absolute; width:70%; height:100%; top:0; left:0; opacity:0;}
 .file_box #ptUpload2{position:absolute; width:70%; height:100%; top:0; left:0; opacity:0;}
@@ -189,7 +235,9 @@
     .pop_body h3 {font-size: 13px;}
     .event_popup .btn_page > button {min-width: 100px;font-size: 16px;text-align: center; margin: 0 6px; padding: 5px 15px 5px 15px; line-height:1.5; vertical-align: middle; border-radius: 6px;}
     .event_popup td button.btn_survey {min-width: 95px;font-size: 13px;text-align: center; margin: 5px 0; padding: 5px 10px 5px 10px; line-height:1.5; vertical-align: middle; border-radius: 6px;}
-    .pop_close_btn {position: absolute; right: 10px; top: 0.25%;}
+    /* 210408 pub st */
+    .pop_close_btn {display:none; position: absolute; right: 10px; top: 0.25%;}
+    /* 210408 pub end */
     .rankList .reset_rank {position: absolute; right: 0; top: -9px; transition: all 1s;}
     .event_popup .popup_serialNo {left: 0; top:69%; margin-left: 0;}
 	.event_popup .popup_serialNo2 {left: 50%; top:70%; margin-left: -173px;}
