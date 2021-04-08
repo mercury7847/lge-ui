@@ -343,6 +343,15 @@ CS.MD.search = function() {
                 $popularKeyword.find('.no-keyword').show();
             }
         },
+        reset: function() {
+            var self = this;
+
+            self.$el.find('input[type=text]').val('');
+            self.$el.find('input[type=text]').trigger('update');
+            self.$el.find('.search-more').hide();
+            self.$el.find('.search-error').hide();
+            self.$el.find('input[type=checkbox]').prop('checked', false);
+        },
         _setAutoComplete: function(data) {
             var self = this;
             var tmpl = self.options.template,
@@ -448,7 +457,7 @@ CS.MD.search = function() {
             });
 
             self.$el.find('.btn-list-all').on('click', function() {
-                self.$el.find('.btn-search').trigger('click');
+                self._search();
             }); 
 
             $('body').on('click', function (e) {
@@ -1053,9 +1062,6 @@ CS.MD.timeCalendar = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
-/*
-* pagination
-* */
 CS.MD.pagination = function() {
     var pluginName = 'pagination';
 
@@ -1351,25 +1357,6 @@ var AuthManager = function() {
 
     return AuthManager;
 }();
-
-$.fn.serializeObject = function() {
-    var result = {}
-    var extend = function(i, element) {
-        var node = result[element.name]
-        if ("undefined" !== typeof node && node !== null) {
-            if ($.isArray(node)) {
-                node.push(element.value)
-            } else {
-                result[element.name] = [node, element.value]
-            }
-        } else {
-            result[element.name] = element.value
-        }
-    }
-  
-    $.each($(this).serializeArray(), extend)
-    return result;
-};
 
 // 휴대폰 유효성 검사
 function validatePhone(value){

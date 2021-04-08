@@ -2569,7 +2569,8 @@
                 $(this).closest(".obj_tooltip_wrap").removeClass("active");
             } else {
                 $(this).closest(".obj_tooltip_wrap").addClass("active");
-                materiaModal.update();
+                //materiaModal.update();
+                materiaModal.updateSlides();
             }
         });
         $(".obj_tooltip_wrap .btn-close").on("click", function() {
@@ -2832,6 +2833,12 @@
 
         },
         stepOneNext: function(idx, _name, name, code, leadName) { //2단계로 넘어간다
+            idx = parseInt(idx);
+            console.log("idx", idx);
+            console.log("_name", _name);
+            console.log("name", name);
+            console.log("code", code);
+            console.log("leadName", leadName);
             $(".model_simul_area").addClass("is_active");
             $(".simul_wrap").addClass("is_active");
             let simulBodyHtml = '<div data-model-cate="" data-model_code="" data-best="N" data-best-code="" data-del="N" data-model-add="Y" data-model-editing="Y" data-model-completed="N" class="swiper-slide model_set_wrap">';
@@ -2860,14 +2867,15 @@
             if (modelAdd == "Y" && addActive == "Y") {
                 //simulBodySwiper.appendSlide(simulBodyHtml);
                 $(".simul_body").append(simulBodyHtml);
-                simulBodySwiper.update();
+                //simulBodySwiper.update();
                 $(".simul_wrap").attr("data-add-active", "N");
-                //simulBodySwiper.updateSlides();
+                simulBodySwiper.updateSlides();
             } else {
                 if ($(".model_set_wrap").length == 0) {
                     //simulBodySwiper.appendSlide(simulBodyHtml);
                     $(".simul_body").html(simulBodyHtml);
-                    simulBodySwiper.update();
+                    //simulBodySwiper.update();
+                    simulBodySwiper.updateSlides();
                     //제품 스와이프 슬라이드
 
                 } else {
@@ -2888,7 +2896,8 @@
                     });
                     //simulBodySwiper.appendSlide(simulBodyHtml);
                     $(".simul_body").append(simulBodyHtml);
-                    simulBodySwiper.update();
+                    //simulBodySwiper.update();
+                    simulBodySwiper.updateSlides();
                 }
                 let selDoorLeng = "Y";
                 $(".model_set_wrap[data-model-editing='Y']").find(".door_wrap .model_door").each(function() {
@@ -3460,16 +3469,19 @@
                     //priceSumList.removeSlide(idx);
                     $(".total_price_info_body .swiper-wrapper").append(priceHtml);
                     //priceSumList.addSlide(idx, priceHtml);
-                    priceSumList.update();
+                    //priceSumList.update();
+                    priceSumList.updateSlides();
                 } else {
                     $(".total_price_info_body .swiper-wrapper").append(priceHtml);
-                    priceSumList.update();
+                    //priceSumList.update();
+                    priceSumList.updateSlides();
                     //priceSumList.appendSlide(priceHtml);
                 }
             } else {
                 //priceSumList.appendSlide(priceHtml);
                 $(".total_price_info_body .swiper-wrapper").append(priceHtml);
-                priceSumList.update();
+                //priceSumList.update();
+                priceSumList.updateSlides();
             }
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             $(".total_price_info_wrap").addClass("is_active");
