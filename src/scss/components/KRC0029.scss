@@ -20,6 +20,11 @@
 	// 	}
 	// }
 
+    .component-box {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+
     .video-link {
         display: inline-block;
         margin-left: 32px;
@@ -205,18 +210,24 @@
         position: relative;
         height:480px;
         overflow: hidden;
-        @include mobile {
-            height:0;
-            padding-top:133.334%;
-        }
+        text-align:center;
+        // @include mobile {
+        //     height:0;
+        //     padding-top:133.334%;
+        // }
         img {
-            position: absolute;
-            top:0;
-            left:50%;
+            // position: absolute;
+            // top:0;
+            // left:50%;
+            // width:auto;
+            // height: 100%;
+            // transform:translateX(-50%);
+            // width:100%;
+            position: relative;
             width:auto;
-            height: 100%;
-            transform:translateX(-50%);
-            width:100%;
+            max-width:100%;
+            height:auto;
+            vertical-align:top;
              /* 클래스별이미지분기 */
              &.pc{
                 display:inline-block;

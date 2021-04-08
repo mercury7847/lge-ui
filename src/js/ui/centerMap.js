@@ -58,11 +58,11 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     '       <p class="adress">{{shopAdress}}</p>'+
                     '       <div class="hour-info">'+
                     '           <dl>'+
-                    '               <dt>평&nbsp;&nbsp;일</dt>'+
+                    '               <dt>평일 : </dt>'+
                     '               <dd>{{bizHours.week}}</dd>'+
                     '           </dl>'+
                     '           <dl>'+
-                    '               <dt>토요일</dt>'+
+                    '               <dt>토요일 : </dt>'+
                     '               <dd>{{bizHours.saturday}}</dd>'+
                     '           </dl>'+
                     '       </div>'+
@@ -86,9 +86,9 @@ vcui.define('ui/centerMap', ['jquery', 'vcui', 'helper/naverMapApi'], function (
                     '       {{# } #}}' +
                     '       <div class="btn-group">'+
                     '           {{#if typeof consultUrl != "undefined"}}'+
-                    '           <a href="{{consultUrl}}" class="btn dark-gray size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                    '           <a href="{{consultUrl}}" class="btn size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
                     '           {{/if}}'+
-                    '           <a href="#{{shopID}}" class="btn dark-gray size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
+                    '           <a href="#{{shopID}}" class="btn size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
                     '       </div>'+
                     '   </div>'+
                     '   <button class="btn-overlay-close"><span class="blind">닫기</span></button>'+
