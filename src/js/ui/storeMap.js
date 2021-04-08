@@ -170,7 +170,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             });
 
             if(marker && marker.item){
-                console.log(nextFocusTarget);
                 self.$nextFocusTarget = nextFocusTarget instanceof $ ? nextFocusTarget : $(nextFocusTarget);
                 new naver.maps.Event.trigger(marker.item,'click');
             }
@@ -356,7 +355,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         marker.setIcon(self._getMarkerIcon(obj.info, obj.num)); 
                         self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);
                         self.docOff('focusin');
-                        if(self.$nextFocusTarget[0]) self.$nextFocusTarget.focus();
+                        if(self.$nextFocusTarget && self.$nextFocusTarget[0]) self.$nextFocusTarget.focus();
                     }
                 });
                 

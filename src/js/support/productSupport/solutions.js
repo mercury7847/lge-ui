@@ -145,7 +145,6 @@
                 self.$keywordInput = self.$solutionsWrap.find('#keyword');
                 self.$keywordBtn = self.$solutionsWrap.find('.keyword-search .btn-search');
 
-                //self.$bannerCenter = self.$cont.find('#centerFind');
                 self.$bannerProduct = self.$cont.find('#recommProduct');
                 self.$bannerMenu = self.$cont.find('#serviceMenu');
 
@@ -205,37 +204,24 @@
                         if (key == 'sort') self.$solutionsSort.val(searchObj.sort).vcSelectbox('update');
                         if (key == 'research') self.$solutionsWrap.find('#research').prop('checked', searchObj.research);
                     }
-                    data.category = $('#category').val();
-                    data.categoryNm = $('#categoryNm').val();
-                    data.subCategory = $('#subCategory').val();
-                    data.subCategoryNm = $('#subCategoryNm').val();
-                    data.productCode = $('#productCode').val();
-                } else {
-                    if (!self.isPSP) {
-                        data.category = $('#category').val();
-                        data.categoryNm = $('#categoryNm').val();
-                        data.subCategory = $('#subCategory').val();
-                        data.subCategoryNm = $('#subCategoryNm').val();
-                        data.modelCode = $('#modelCode').val();
-                        data.productCode = $('#productCode').val();
-                    }
                 }
 
-                if (self.isPSP) {
-                    data.category = $('#category').val();
-                    data.categoryNm = $('#categoryNm').val();
-                    data.subCategory = $('#subCategory').val();
-                    data.subCategoryNm = $('#subCategoryNm').val();
-                    data.modelCode = $('#modelCode').val();
-                    data.productCode = $('#productCode').val();
-                }
+                data.category = $('#category').val();
+                data.categoryNm = $('#categoryNm').val();
+                data.subCategory = $('#subCategory').val();
+                data.subCategoryNm = $('#subCategoryNm').val();
+                data.modelCode = $('#modelCode').val();
+                data.productCode = $('#productCode').val();
 
                 self.param = data;
             },
             completeModel: function() {
                 var self = this;
                 var model = self.param;
-                console.log(self.param)
+
+                console.log('parameter : ');
+                console.log(self.param);
+                
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(self.resultUrl, model, function(result) {
                     var data = result.data,
@@ -297,8 +283,6 @@
                     html = vcui.template(updateBannerTemplate, data);
                     self.$solutionsWrap.prepend(html);
                 }
-
-                // self.$bannerCenter.show();
             },
             setPopularKeyword: function(data) {
                 var arr = data.popularKeyword instanceof Array ? data.popularKeyword : [];
@@ -313,7 +297,6 @@
                     subTopic: self.param.subTopicNm,
                     keyword: self.param.keywords[0]
                 });
-
                 html += ' 검색 결과';
                 self.$solutionsResult.find('.title .tit').html(html);
             },
@@ -328,11 +311,7 @@
                     self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {}));
 
                     filterArr.forEach(function(item) {
-                        if (item.name == param.topicNm) {
-                            item.active = true;
-                        } else {
-                            item.active = false;
-                        }
+                        item.active = item.name == param.topicNm ? true : false; 
                         htmlPC += vcui.template(filterTemplate, item);
                         htmlM += vcui.template(filterOptionTemplate, item);
                     });
@@ -356,11 +335,7 @@
 
                     subFilterArr.forEach(function(item) {
                         item.subType = true;
-                        if (item.name == param.subTopicNm) {
-                            item.active = true;
-                        } else {
-                            item.active = false;
-                        }
+                        item.active = item.name == param.subTopicNm ? true : false; 
                         htmlPC += vcui.template(filterTemplate, item);
                         htmlM += vcui.template(filterOptionTemplate, item);
                     });
@@ -373,31 +348,34 @@
             },
             setSolutionsList: function(data) {
                 var self = this;
+                var $listWrap = self.$solutionsResult.find('.list-wrap'),
+                    $pagination = self.$solutionsResult.find('.pagination'),
+                    $noData = self.$solutionsResult.find('.no-data'),
+                    $searchMore = self.$keywordWrap.find('.search-more');
                 var arr = data.listData instanceof Array ? data.listData : [],
                     html = '';
                 
-                self.$solutionsResult.find('.list-wrap .list').empty();
+                $listWrap.find('.list').empty();
 
                 if (arr.length) {
                     arr.forEach(function(item) {
                         item.title = item.title.replace(/¶HS¶/g, '<span class="keyword">');
                         item.title = item.title.replace(/¶HE¶/g, '</span>');
-
                         html += vcui.template(solutionsTemplate, item);
                     });
 
-                    self.$solutionsResult.find('.list-wrap .list').html(html);
-                    self.$solutionsResult.find('.pagination').pagination('update', data.listPage);
+                    $listWrap.find('.list').html(html);
+                    $pagination.pagination('update', data.listPage);
                 
-                    self.$solutionsResult.find('.list-wrap').show();
-                    self.$solutionsResult.find('.pagination').show();
-                    self.$solutionsResult.find('.no-data').hide();
+                    $listWrap.show();
+                    $pagination.show();
+                    $noData.hide();
                 } else {
-                    self.$solutionsResult.find('.list-wrap').hide();
-                    self.$solutionsResult.find('.pagination').hide();
-                    self.$solutionsResult.find('.no-data').show();
-                    self.$keywordWrap.find('.search-more').hide();
-                    self.$keywordWrap.find('.search-more').find('input[type=checkbox]').prop('checked', false);
+                    $listWrap.hide();
+                    $pagination.hide();
+                    $noData.show();
+                    $searchMore.hide();
+                    $searchMore.find('input[type=checkbox]').prop('checked', false);
                 }
 
                 self.$solutionsResult.find('#solutionsCount').html(data.listPage.totalCount);
@@ -405,7 +383,6 @@
             selectFilterMobile: function(code) {
                 var self = this;
 
-                // mobile
                 self.$selectTopic.val(code);
                 self.$selectSubTopic.find('option:not(.placeholder)').remove();
                 self.$selectSubTopic.prop('disabled', false);
@@ -418,25 +395,14 @@
                 self.$selectSubTopic.val(code);
                 self.$selectSubTopic.vcSelectbox('update');
             },
-            requestData: function(temp) {
+            requestData: function() {
                 var self = this;
 
-                // 임시 스크립트 start
-                var url;
-
-                if (temp == 'click') {
-                    if (self.param.research) {
-                        url = self.solutionsUrl
-                    } else {
-                        url = self.$solutionsWrap.data('filterSolutionsUrl') || self.solutionsUrl;
-                    }
-                } else {
-                    url = self.solutionsUrl
-                }
-                // 임시 스크립트 end
+                console.log('parameter : ');
+                console.log(self.param);
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, self.param, function(result) {
+                lgkorUI.requestAjaxDataPost(self.solutionsUrl, self.param, function(result) {
                     var data = result.data;
 
                     self.setFilter(data);
@@ -473,22 +439,16 @@
 
                 self.param = data;
 
+                console.log('parameter : ');
+                console.log(self.param);
+
                 self.$solutionsFilter.empty();
-                self.$selectTopic.find('option:first-child').prop('selected', true);
-                self.$selectSubTopic.find('option:first-child').prop('selected', true);
-                self.$selectTopic.vcSelectbox('update');
-                self.$selectSubTopic.vcSelectbox('update');
-                self.$keywordInput.val('');
-                self.$keywordInput.trigger('update');
-                self.$solutionsWrap.find('.search-more').hide();
-                self.$solutionsWrap.find('.search-error').hide();
-                self.$solutionsWrap.find('#research').prop('checked', false);
+                self.$solutionsFilterM.find('select').val('').vcSelectbox('update');
                 self.$solutionsSort.val(data.sort).vcSelectbox('update');
-                
+                self.$keywordWrap.search('reset');
+
                 $('#recommProduct').hide();
                 $('#serviceMenu').hide();
-                // $('#centerFind').hide();
-
                 $('.info-banner').remove();
             },
             bindEvent: function() {
@@ -499,32 +459,21 @@
                 });
 
                 self.$cont.on('complete', function(e, data) { 
-                    var param = {
-                        category: data.category,
-                        categoryNm: data.categoryNm,
-                        subCategory: data.subCategory,
-                        subCategoryNm: data.subCategoryNm,
-                        modelCode: data.modelCode,
-                        productCode: data.productCode,
-                        page: data.page || 1
-                    };
-
-                    if (data.cstFlag) param['cstFlag'] = data.cstFlag;
-                    
-                    self.param = $.extend(self.param, param); 
+                    $.extend(self.param, data); 
                     self.completeModel();
                 }).on('reset', function(e) {
                     self.reset();
                 });
 
+                // 키워드 삭제
                 self.$solutionsResult.find('.title .tit').on('click', '.btn-delete', function() {
-                    self.$keywordInput.val('');
-                    self.$keywordInput.trigger('update');
+                    self.$keywordInput.val('').trigger('update');
                     self.param.keywords = [];
-                    self.requestData('click');
+                    self.param.keyword = '';
+                    self.requestData();
                 });
 
-                // filter
+                // 증상 선택 (pc)
                 self.$solutionsFilter.on('click', '.filter-link', function() {
                     var $this = $(this),
                         code = $this.data('code'), name = $this.data('name'),
@@ -536,13 +485,13 @@
                             subTopicNm: '전체'
                         };
 
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
     
                     self.requestData();
                     self.selectFilterMobile(code);
                 });
 
-                // sub filter
+                // 세부 증상 선택 (pc)
                 self.$solutionsFilter.on('click', '.sub-filter-link', function() {
                     var code = $(this).data('code'), name = $(this).data('name'),
                         param = {
@@ -551,13 +500,13 @@
                             subTopicNm: name
                         };
                     
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
 
                     self.requestData();
                     self.selectSubFilterMobile(code);
                 });
 
-                // 증상선택 돌아가기
+                // 증상 선택 돌아가기
                 self.$solutionsFilter.on('click', '.btn-back', function() {
                     var data = self.param;
                     var param = {
@@ -570,11 +519,8 @@
                         productCode: data.productCode
                     };
 
-                    // 임시 스크립트
-                    var url = self.$solutionsWrap.data('filterUrl') || self.solutionsUrl;
-
                     lgkorUI.showLoading();
-                    lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    lgkorUI.requestAjaxDataPost(self.solutionsUrl, param, function(result) {
                         var data = result.data;
 
                         self.setFilter(data);
@@ -582,7 +528,7 @@
                     });
                 });
 
-                // mobile filter
+                // 증상 선택 (mo)
                 self.$selectTopic.on('change', function() {
                     var code = $(this).val(), name = $(this).find('option:selected').text(),
                         param = {
@@ -593,13 +539,13 @@
                             subTopicNm: '전체'
                         };
 
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
 
                     self.resetSubFilter();
                     self.requestData();
                 });
 
-                // mobile sub filter
+                // 세부 증상 선택 (mo)
                 self.$selectSubTopic.on('change', function() {
                     var code = $(this).val(), name = $(this).find('option:selected').text(),
                         param = {
@@ -608,7 +554,7 @@
                             subTopicNm: name
                         };
 
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
                     
                     self.requestData();
                     self.selectSubFilter(code);
@@ -622,7 +568,7 @@
                             sort: value
                         };
                         
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
                     self.requestData();
                 });
 
@@ -632,13 +578,13 @@
                         page: e.page
                     }
 
-                    self.param = $.extend(self.param, param);
+                    $.extend(self.param, param);
                     self.requestData();
                 });
 
                 self.$keywordWrap.on('autocomplete', function(e, param, url, callback) {
-                    var param =  $.extend(self.param, param);
-                    lgkorUI.requestAjaxData(url, param, function(result) {
+                    $.extend(self.param, param);
+                    lgkorUI.requestAjaxData(url, self.param, function(result) {
                         callback(result.data);
                     });
                 });
@@ -681,7 +627,7 @@
 
                         self.param = data;
                         self.$keywordWrap.find('.search-more').show();
-                        self.requestData('click');
+                        self.requestData();
                     }
                 });
 
