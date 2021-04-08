@@ -1274,9 +1274,13 @@
                     var isNew = $(this).attr('data-open-new');
                     if(buttonLinkUrl) {
                         if(isNew == "Y") {
-                            window.open(buttonLinkUrl);
+                            setTimeout(function () {
+                                window.open(buttonLinkUrl);
+                            },250);
                         } else {
-                            location.href = buttonLinkUrl;
+                            setTimeout(function () {
+                                location.href = buttonLinkUrl;
+                            },250);
                         }
                     }
                 });

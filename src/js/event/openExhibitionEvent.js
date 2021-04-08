@@ -2,7 +2,7 @@
     var OpenExhibitionEvent = {
         init: function() {
             var self = this;
-            vcui.require(['ui/tab', 'ui/carousel'], function () {
+            vcui.require([/*'ui/tab', */'ui/carousel'], function () {
                 self.setting();
             });
         },
@@ -11,7 +11,6 @@
             var self = this;
 
             self.$wrap = $('.ev-detail-wrap');
-            console.log(self.$wrap.find('.ui_recom_carousel'));
             
             self.$wrap.find('.ui_recom_carousel').vcCarousel({
                 infinite: false,            
