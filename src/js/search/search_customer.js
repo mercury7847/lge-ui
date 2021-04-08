@@ -808,7 +808,7 @@
                                     item.hash = [];
                                 }
                                 if(item.techSpecs) {
-                                    item.techSpecs.forEach(function(index, obj) {
+                                    item.techSpecs.forEach(function(obj, index) {
                                         obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                     });
                                 }

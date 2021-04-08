@@ -636,12 +636,12 @@
                 isThinqApp = true;                
                 $contentWrap.on('scroll.app', scrollEvent);  
 
-                if(data.content.find('.ui_tab').length>0) {                                
+                if(data.content.find('.ui_tab').length>0) {                     
                     data.content.find('.ui_tab').vcTab('update');
                 } 
 
-                if(data.content.find('.ui_carousel_slider').length>0) {                           
-                    data.content.find('.ui_carousel_slider').vcCarousel('update');
+                if(data.content.find('.ui_carousel_slider').length>0) {  
+                    data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0);
                 } 
 
             }else{

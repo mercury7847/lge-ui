@@ -2,11 +2,49 @@
 
 /* font */
 @font-face {
-    font-family:'RedVelvet' ;font-style:normal;font-weight:200;
-	src:	url('/lgekor/asset/font/RedVelvet.woff2') format('woff2'),
-			url('/lgekor/asset/font/RedVelvet.woff') format('woff'),
-			url('/lgekor/asset/font/RedVelvet.ttf') format('truetype');
+  font-family:'RedVelvet' ;font-style:normal;font-weight:200;
+src:	url('/lg5-common/fonts/RedVelvet.woff2') format('woff2'),
+    url('/lg5-common/fonts/RedVelvet.woff') format('woff'),
+    url('/lg5-common/fonts/RedVelvet.ttf') format('truetype');
 }
+@font-face {
+  font-family:'LGSmHaR';font-style:normal;font-weight:400;
+  src:	url('/lg5-common/fonts/LGSmHaR.woff2') format('woff2'),
+    url('/lg5-common/fonts/LGSmHaR.woff') format('woff'),
+    url('/lg5-common/fonts/LGSmHaR.ttf') format('truetype');
+}
+
+    /*input radio,checkbox*/
+    .radio  li label {font-size:16px}
+    input[type="radio"] + label {line-height:20px}
+    input[type="radio"] + label:before {width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/mobile/common/spliteCommon.png') -120px -30px no-repeat;background-size:300px 300px}
+    input[type="radio"] + label.topbtn:before {top:0;margin-top:0}
+    input[type="radio"]:checked + label:before {background-position:-150px -30px}
+    input[type="checkbox"] + label {line-height:20px}
+    input[type="checkbox"] + label:before {width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/mobile/common/spliteCommon.png') -120px 0 no-repeat;background-size:300px 300px}
+    input[type="checkbox"] + label.topbtn:before {top:0;margin-top:0}
+    input[type="checkbox"]:checked + label:before {background-position:-150px 0}
+
+/* radio, checkbox */
+.radio  li label {font-size:18px}
+label {display:inline-block;vertical-align:middle;line-height:1.4}
+input[type="radio"] {display:inline-block;vertical-align:middle;position:fixed;left:-9999px;top:0}
+input[type="radio"] + label {position:relative;padding-left:25px;margin:1px}
+input[type="radio"] + label:before {content:'';display:inline-block;position:absolute;top:50%;left:0;width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/web/common/spliteCommon.png') 0 -150px no-repeat}
+input[type="radio"] + label.topbtn:before {top:0;margin-top:0}
+input[type="radio"]:checked + label:before {background-position:-50px -150px}
+
+input[type="checkbox"] {display:inline-block;vertical-align:middle;position:fixed;left:-9999px;top:0}
+input[type="checkbox"] + label {position:relative;padding-left:25px;margin:1px}
+input[type="checkbox"] + label:before {content:'';display:inline-block;position:absolute;top:50%;left:0;width:20px;height:20px;margin-top:-10px;background:url('https://www.lge.co.kr/lgekor/asset/images/web/common/spliteCommon.png') 0 -100px no-repeat}
+input[type="checkbox"] + label.topbtn:before {top:0;margin-top:0}
+input[type="checkbox"]:checked + label:before {background-position:-50px -100px}
+
+input[type="radio"]:focus + label {border:1px dotted #666;margin:0}
+input[type="checkbox"]:focus + label {border:1px dotted #666;margin:0}
+input[type="button"]:focus + label {border:1px dotted #666;margin:0}
+
+/* 210408 pb end */
 
 /* popup */
 .event-template,
@@ -25,11 +63,11 @@
 .pop_body {padding: 15px; box-sizing: border-box; background: #ebebeb;}
 .pop_body h2 {margin: 20px 0 10px 0; font-size: 18px; font-weight: normal;}
 .pop_body h2 strong {color: #c30754; font-weight: bold;}
-
-.pop_close_btn {position: absolute; right: 15px; top: 15px;}
-
+/* 210408 pb start */
+.pop_close_btn {display:none; position: absolute; right: 15px; top: 15px;}
 .event-template {position:relative;max-width:1200px;margin:0 auto;}
-.event-template .summary-visual {position:relative}
+.event-template .summary-visual {position:relative; background:#202020;}
+/* 210408 pb end */
 .event-template .summary-visual img {width:100%;}
 .event-template .visual a {display:block;position:absolute;background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;/*background-color:red;opacity:0.5;*/}
 .event-template  a.btn_detail {display:block;position:absolute;top: 69.5%;width:22%;height: 6%; left: 39%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
@@ -135,7 +173,7 @@
 .event_popup .agree_notice li.importColor,
 .event_popup .import_txt {color: #c62859;}
 
-/* Ã·ºÎÆÄÀÏ style */
+/* Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ style */
 .file_box{position :relative;}
 .file_box #ptUpload{position:absolute; width:70%; height:100%; top:0; left:0; opacity:0;}
 #postBtn,
@@ -144,7 +182,9 @@
 .mobile .file_box #ptUpload{width:85%;}
 
 input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
-.cont01 .marking {background: #202020 url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking.gif') repeat-y 0 0; background-size: contain; padding: 0 80px 40px 80px; box-sizing: border-box;}
+/* 210408 pb start */
+.cont01 .marking {border-right:80px solid #202020; border-left:80px solid #202020; background: #fff url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking.gif') repeat-y 0 0; background-size: contain; padding-bottom:40px; box-sizing: border-box;}
+/* 210408 pb end */
 .cont01 .marking .tab {max-width: 882px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between;}
 .cont01 .marking .tab a {position: relative; display: inline-block; width: 32%; font-size: 18px; padding: 20px 0; text-align: center; box-sizing: border-box; border: 1px solid #f4f4f4; background: #f4f4f4; text-decoration: none;}
 .cont01 .marking .tab a.active {background: #fff; color: #af1947;}
@@ -153,13 +193,18 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 .event_popup .marking > input[type="text"] {padding: 10px; width: 75%; height: 43px; margin: 0 auto; line-height: 0;}
 .marking h3 {font-size: 16px; font-weight: normal; margin: 0 0 5px 0;}
 .marking .photo {margin: 10px 0 0 0; text-align: center;}
-.marking .photo .view {display: inline-block; position: relative; width: 100%;}
+/* 210408 pb start */
+.marking .photo .view {display: flex; justify-content:center; position: relative; width: 100%;}
+
+
+/* 210408 pb end */
 .marking .photo img {max-width: 100%; width: auto;}
 .marking .tip {text-align: center; margin: 40px 0 10px 0; font-size: 16px;}
 .event_popup .marking .tip {margin: 20px 0 10px 0;}
-.marking .photo .text {color: #383838; position: absolute; z-index: 10; top: 0; left: 0; font-family:'RedVelvet'; font-size: 24px; display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;}
-.marking.top .photo .text {justify-content: flex-start; width: auto; left: 34%}
-
+.marking .photo .text {color: #383838; position: absolute; z-index: 10; top: 0; left: 0; font-family:'RedVelvet' !important; font-size: 24px; display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;}
+/* 210408 pb start */
+.marking.top .photo .text {font-family: 'RedVelvet' !important; justify-content: flex-start; width: auto; left: 34%}
+/* 210408 pb end */
 .mobile .cont01 .marking {background: #202020 url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking_m.gif') repeat-y 0 0; background-size: contain; padding: 0 30px 20px 30px;}
 .mobile .cont01 .marking .tab a {padding: 10px 0; font-size: 12px;}
 .mobile .marking .tip {margin: 20px 0 10px 0; font-size: 12px;}
@@ -185,7 +230,9 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
     .pop_body h3 {font-size: 13px;}
     .event_popup .btn_page > button {min-width: 100px;font-size: 16px;text-align: center; margin: 0 6px; padding: 5px 15px 5px 15px; line-height:1.5; vertical-align: middle; border-radius: 6px;}
     .event_popup td button.btn_survey {min-width: 95px;font-size: 13px;text-align: center; margin: 5px 0; padding: 5px 10px 5px 10px; line-height:1.5; vertical-align: middle; border-radius: 6px;}
-    .pop_close_btn {position: absolute; right: 10px; top: 0.25%;}
+    /* 210408 pb start */
+    .pop_close_btn {display:none; position: absolute; right: 10px; top: 0.25%;}
+    /* 210408 pb end */
     .rankList .reset_rank {position: absolute; right: 0; top: -9px; transition: all 1s;}
     .event_popup .popup_serialNo {left: 0; top: 35%; margin-left: 0;}
 	.event_popup .popup_couponNo {left: 0; top:50%; margin-left: 0;}
