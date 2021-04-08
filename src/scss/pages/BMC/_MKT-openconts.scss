@@ -121,7 +121,7 @@
                         text-align:left;
                         .tit{
                             padding-bottom:8px;
-                            max-height: calc(24px * 2);
+                            max-height: calc(20px * 2);
                             overflow: hidden;
                             text-overflow: ellipsis;
                             display: -webkit-box;
@@ -169,6 +169,33 @@
                             @include mobile{
                                 font-size:10px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+        .app_down{
+            position:relative;
+            & .btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    top: 62%;
+                    width:17%;
+                    height:12%;
+                    @include mobile{
+                        width:32%;
+                    }
+                    &.android{
+                        left: 20%;
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        left: 63%;
+                        @include mobile{
+                            left: 56%;
                         }
                     }
                 }
