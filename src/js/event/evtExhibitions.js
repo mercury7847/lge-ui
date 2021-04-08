@@ -6,14 +6,14 @@ $(document).ready(function() {
         $wrap.find('.ui_objet_carousel').vcCarousel({         
             slidesToShow: 3,
             // slidesToScroll: 1,
-            centerMode:true,
-            centerPadding:'60px',
+            // centerPadding:'60px',
             dots: false,
             responsive: [
                 {
                     breakpoint: 10000,
                     settings: {
                         slidesToShow: 3,
+                        centerMode:true,
                         slidesToScroll: 1
                     }
                 },

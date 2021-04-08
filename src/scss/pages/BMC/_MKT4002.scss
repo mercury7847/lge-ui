@@ -202,6 +202,9 @@
         .ev-cont {
             position:relative;
             .conts {
+                &.dis-block {
+                    display:block;
+                }
                 display: inline-block;
                 padding-bottom:80px;
                 @include mobile {
