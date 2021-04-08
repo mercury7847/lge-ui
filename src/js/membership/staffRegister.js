@@ -39,7 +39,6 @@
 
             if(!isJoin){
                 var result = joinValidation.validate();
-                console.log(result)
                 if(!result.success){
                     lgkorUI.alert("", {
                         title: result.validArray[0].errmsg,
