@@ -17,7 +17,7 @@
                     <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <!-- 210408 자동완성 수정 -->
-                        <div class="input-layer-wrap"> <!-- 입력박스 선택시 on클래스 추가 -->
+                        <div class="input-layer-wrap on"> <!-- 입력박스 선택시 on클래스 추가 -->
                             <div class="box">
                                 <div class="input-wrap">
                                     <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력">
@@ -50,6 +50,10 @@
                                         <a href="#"><span class="search-word">MP-40</span>PA10</a>
                                     </li>
                                 </ul>
+                                <!-- 검색결과가 없는 경우 -->
+                                <div class="no-data">
+                                    <p>입력하신 키워드와 일치하는<br>모델명이 없습니다.</p>
+                                </div>
                             </div>
                         </div>
                         <!-- //210408 자동완성 수정 -->
