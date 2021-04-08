@@ -421,14 +421,14 @@
             }
             .slide-content {
                 .slide-track{
-                    max-width:2000px;
+                    // max-width:2000px;
                     @include mobile {
                       width:100%;
                     }
                     .slide-conts {
-                        width:28%;
+                        // width:28%;
                         padding-top:6%;
-                        float:left;
+                        // float:left;
                         @include mobile {
                             display:none;
                             padding-top:25px;
@@ -453,7 +453,7 @@
                             }
                         }
                         &.on {
-                            width:38%;
+                            // width:38%;
                             padding-top:0;
                             margin:0 3%;
                             @include mobile {
