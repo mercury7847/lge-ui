@@ -299,4 +299,7 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
     .mobile .event_popup #oldModelName {width: 90% !important;}
     .mobile .event_popup #oldProduct {width: 49%;}
 	.mobile .view-type-table > tbody > tr > td .btn_serial img {max-width: 100%; width: auto; margin-top: 5px;}
+  /* 210408 pb st */
+  .table_type01 .btn_serial{display:flex;}
+  /* 210408 pb end */
 }
