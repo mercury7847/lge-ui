@@ -244,7 +244,7 @@ var Curation = (function() {
                 self.$smartFilterList.hide();
             }
 
-            self.resetSmartFilterMoreButton();
+            self.resetSmartFilterMoreButton(self.$smartFilterMore.data('open'));
         },
 
         removeSelectSmartFilter: function() {
@@ -300,10 +300,10 @@ var Curation = (function() {
             });
         },
 
-        resetSmartFilterMoreButton: function() {
+        resetSmartFilterMoreButton: function(open) {
             var self = this;
-            var isOpen = self.$smartFilterMore.data('open');
-            if(isOpen) {
+            self.$smartFilterMore.data('open',open);
+            if(open) {
                 self.$smartFilterMore.addClass('unfold');
                 self.$smartFilterMore.find('span').text('필터 접기');
             } else {
@@ -315,6 +315,11 @@ var Curation = (function() {
                 self.$smartFilterMore.css('display','block');
             } else {
                 self.$smartFilterMore.css('display','none');
+            }
+
+            $li = self.$smartFilterList.find('li.row:gt(2)');
+            if(open && $li.length > 0) {
+                $li.stop().slideDown();
             }
         },
 
@@ -332,6 +337,7 @@ var Curation = (function() {
             var filterData = JSON.parse(data);
             if(filterData) {
 
+                var maxIndex = 0;
                 for(key in filterData) {
                     var arr = filterData[key].split('||');
                     if(arr instanceof Array) {
@@ -350,6 +356,11 @@ var Curation = (function() {
                                 if($findLi.length < 1) {
                                     self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                                     self.$smartFilterResult.show();
+                                }
+
+                                var parent = $input.parents('li.row');
+                                if(parent.index() > maxIndex) {
+                                    maxIndex = parent.index();
                                 }
                             }
                         });
@@ -371,11 +382,19 @@ var Curation = (function() {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                                 self.$smartFilterResult.show();
                             }
+
+                            var parent = $input.parents('li.row');
+                            if(parent.index() > maxIndex) {
+                                maxIndex = parent.index();
+                            }
                         }
-    
+
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                     }
 
+                    if(maxIndex > 2) {
+                        this.resetSmartFilterMoreButton(true);
+                    }
                 }
 
                 if(triggerFilterChangeEvent) {
