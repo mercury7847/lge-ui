@@ -26,16 +26,14 @@
                             slidesToScroll: 1,
                             slidesToShow: 1
                         }
-                    }
-                    /*,
+                    },
                     {
-                        breakpoint: 1000,
+                        breakpoint: 20000,
                         settings: {
                             slidesToScroll: 4,
                             slidesToShow: 1
                         }
                     }
-                    */
                 ]
             });
 
