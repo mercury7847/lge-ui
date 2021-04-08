@@ -180,7 +180,7 @@ $(function(){
                 "title" : "PC아카데미 페스티벌<br>앵콜 기획전",
                 "imageAlt" : "",
                 "date" : "",
-                "modelUrlPath" : "/notebook/16z90p-ga79k",
+                "modelUrlPath" : "/benefits/exhibitions/detail-PE00007002",
                 "textClass":"fc-black"  
             },
             {

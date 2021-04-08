@@ -2525,20 +2525,18 @@ var go_shop_model = "";
 
                     if (selectedObjectComplete) {
                         //소재가 서로 다를 경우 안내 팝업 노출
-                        if (selectedObjectDifferentColorGroup) {
-                            link = 'onclick="showShopLinkAlert();"';
+
+                        if (configData.object[i].id == 'refrigerator') {
+                            //link = 'onclick="showSelectVolume();"';
+                            link = 'data-href="#objModal2" data-control="modal"';
+                        } else if (configData.object[i].id == 'refrigerator_convertible') {
+                            //link = 'onclick="showSelectFunction();"';
+                            link = 'data-href="#objModal3" data-control="modal"';
                         } else {
-                            if (configData.object[i].id == 'refrigerator') {
-                                //link = 'onclick="showSelectVolume();"';
-                                link = 'data-href="#objModal2" data-control="modal"';
-                            } else if (configData.object[i].id == 'refrigerator_convertible') {
-                                //link = 'onclick="showSelectFunction();"';
-                                link = 'data-href="#objModal3" data-control="modal"';
-                            } else {
-                                go_shop_model = configData.object[i].id;
-                                link = 'onclick="goshop(' + i + ');"';
-                            }
+                            go_shop_model = configData.object[i].id;
+                            link = 'onclick="goshop(' + i + ');"';
                         }
+
 
                         outputHtml += '<li>' +
                             '<input type="checkbox" name="selected-objet-list" value="' + configData.object[i].id + '" checked disabled>' +
