@@ -2065,13 +2065,13 @@ var isApp = function(){
             var self = this;
             if (vcui.detect.isAndroid || vcui.detect.isIOS) {
                 self.heartbeat = setInterval(function () {
-                    console.log('interval');
+                    console.log('interval',document.webkitHidden , document.hidden);
                     if(document.webkitHidden || document.hidden){
                         clearInterval(self.heartbeat);
                         clearTimeout(self.appCheckTimer);
                         console.log('앱이 설치 되어 있습니다.');
                     }
-                }, 1);
+                }, 2);
             }
 
             if (vcui.detect.isAndroid) {
@@ -2080,14 +2080,14 @@ var isApp = function(){
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
-                    console.log('앱이 없습니다.');
-                }, 1000);
+                    console.log('안드로이드 앱이 없습니다.');
+                }, 2000);
             } else if (vcui.detect.isIOS) {
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
-                    console.log('앱이 없습니다.');
-                }, 1000);
+                    console.log('ios 앱이 없습니다.');
+                }, 2000);
                 location.href = appScheme + "://";
             }
         },
