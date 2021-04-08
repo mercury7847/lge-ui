@@ -64,6 +64,11 @@
                 self.setting();
                 self.popUpDataSetting();
 
+                //최근본 제품 쿠키에 넣기
+                if(typeof sendData !== 'undefined' && sendData.modelId) {
+                    lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,sendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);   
+                }
+
                 if(self.$component.data('consumables')) {
                     vcui.require(['support/consumables.min'], function (consumables) {
                         self.prepare();
