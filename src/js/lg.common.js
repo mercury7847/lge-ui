@@ -2074,7 +2074,8 @@ var isApp = function(){
             }
 
             if (vcui.detect.isAndroid) {
-                location.href = "Intent://goto#Intent;scheme=" + appScheme + ";package=kr.co.lge.android;end";
+                //location.href = "intent://goto#Intent;scheme=" + appScheme + ";package=kr.co.lge.android;end";
+                location.href = "intent://goto#Intent;scheme=" + appScheme + ";end";
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
