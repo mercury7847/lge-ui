@@ -328,7 +328,9 @@ br.pc {
                 }
                 @include pc {
                     &:hover {
-                        display: block;
+                        &:after {
+                            display: block;
+                        }
                     }
                 }
                 @media screen and (max-width: 1024px){
