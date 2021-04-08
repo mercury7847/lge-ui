@@ -2,7 +2,7 @@
     var OpenExhibitionEvent = {
         init: function() {
             var self = this;
-            vcui.require(['ui/tab', 'ui/carousel'], function () {
+            vcui.require([/*'ui/tab', */'ui/carousel'], function () {
                 self.setting();
             });
         },
