@@ -729,12 +729,9 @@
             width:300px;
             margin:81px auto 0;
             padding:0;
-            font-size:30px;
-            font-weight:700;
-            line-height:44px;
             text-align:center;
             @include mobile {
-                width:164px;
+                width:175px;
                 margin:32px auto 0;
             }
         }
