@@ -5,7 +5,9 @@ $(document).ready(function() {
 
         $wrap.find('.ui_objet_carousel').vcCarousel({         
             slidesToShow: 3,
-            slidesToScroll: 1,
+            // slidesToScroll: 1,
+            centerMode:true,
+            centerPadding:'60px',
             dots: false,
             responsive: [
                 {
