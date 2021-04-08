@@ -1465,6 +1465,17 @@
             }
         }
 
+        @include tablet {
+            .hero-container {
+                height:480px;
+            }
+            &.member-type {
+                .hero-container {
+                    height:600px;
+                }
+            }
+        }
+
         @include mobile {
             border-bottom:12px solid #f4f4f4;
 
