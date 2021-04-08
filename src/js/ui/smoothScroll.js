@@ -159,7 +159,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'smoothScroll',
         defaults: {
             startX: 0,
-            startY: null,
+            startY: 0,
             scrollX: true,
             scrollY: true,
             directionLockThreshold: 5,
@@ -224,9 +224,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             if (opts.autoCenterScroll) {
                 self.scrollToActive(true, false, 0);
             } else {
-                if(opts.startX || opts.startY){
-                    self.scrollTo(opts.startX? opts.startX : 0, opts.startY?opts.startY:0, 0);
-                }           
+                self.scrollTo(opts.startX, opts.startY, 0);
+                        
             }
 
             self.refresh();
@@ -957,9 +956,9 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var opts = self.options;
             self.update();
 
-            if(opts.startX || opts.startY){
-                self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
-            }
+            // if(opts.startX || opts.startY){
+            //     self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
+            // }
             self.triggerHandler('smoothscrollrefresh', self);
 
         },
