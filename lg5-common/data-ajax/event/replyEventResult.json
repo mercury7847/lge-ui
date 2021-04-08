@@ -1,0 +1,11 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "win":"Y",
+        "event":"배달의 민족 즉석당첨 이벤트",
+        "prizeWin":"배달의 민족 <em>3,000원 쿠폰</em><br>즉석당첨 이벤트에 <em>당첨</em>되셨습니다.",
+        "prizeLose":"배달의 민족 즉석당첨 이벤트에<br><em>당첨되지 않으셨습니다.</em>",
+        "date":"2021.06"
+    }
+}
