@@ -485,6 +485,7 @@
 
     .no-data-case {
         position: relative;
+        text-align:center;
         @include mobile {
             //padding:60px 16px;
             .no-data {
@@ -508,6 +509,10 @@
                 font-size:14px;
                 line-height:22px;
             }
+            &.tit {
+                margin-bottom:12px;
+                font-weight:700;
+            }
         }
         .info-box {
             display: flex;
@@ -517,6 +522,7 @@
             padding: 24px 48px;
             border: 1px solid $color-border;
             border-radius: 8px;
+            text-align: left;
             @include mobile {
                 flex-direction: column;
                 align-items: flex-start;

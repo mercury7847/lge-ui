@@ -1712,6 +1712,9 @@
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
                 else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
+
+                console.log("paymentData:",paymentData)
+
                 $listBox.show().find('ul').html(vcui.template(template, paymentData));
             } else{
                 $listBox.hide();
@@ -1762,7 +1765,7 @@
     function openOrderInfoPop(dataId, prodId){
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productList = listData[dataId].productList[prodId];
-        var shipping, paymentdata;
+        var shipping;
 
         //배송정보
         if(productList.shipping) {
@@ -1770,7 +1773,8 @@
         }
 
         //결제정보
-        if(listData[dataId].orderReceiptAbleYn != "Y") productList.paymentMethod.receiptUrl = "";
+        var leng = Object.keys(productList.paymentMethod).length;
+        if(leng && listData[dataId].orderReceiptAbleYn != "Y") productList.paymentMethod.receiptUrl = "";
         
         orderInfoRender($('#popup-orderDetailView'), shipping, productList.paymentMethod, productList.orderShipping);
 
