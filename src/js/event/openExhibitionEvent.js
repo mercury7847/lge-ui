@@ -31,10 +31,10 @@
             console.log(self.$wrap.find('.ui_recom_carousel'));
             
             self.$wrap.find('.ui_recom_carousel').vcCarousel({
-                infinite: true,            
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                variableWidth : true,
+                infinite: false,            
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                //variableWidth : true,
                 dots: false,
                 /*
                 responsive: [
