@@ -2056,9 +2056,39 @@ var isApp = function(){
                 window.history.back();
             }
             $(window).off('popstate'+uid);
-        }
+        },
 
-        
+        //앱 설치 여부 체크
+
+        //iOS, Android 앱 설치 여부 확인
+        isAPPInstall:function(appScheme) {
+            var self = this;
+            if (vcui.detect.isAndroid || vcui.detect.isIOS) {
+                self.heartbeat = setInterval(function () {
+                    if(document.webkitHidden || document.hidden){
+                        clearInterval(self.heartbeat);
+                        clearTimeout(self.appCheckTimer);
+                        console.log('앱이 설치 되어 있습니다.');
+                    }
+                }, 25);
+            }
+
+            if (vcui.detect.isAndroid) {
+                location.href = "Intent://goto#Intent;scheme=" + appScheme + ";package=kr.co.lge.android;end";
+                self.appCheckTimer = setTimeout(function() {
+                    clearInterval(self.heartbeat);
+                    clearTimeout(self.appCheckTimer);
+                    console.log('앱이 없습니다.');
+                }, 500);
+            } else if (vcui.detect.isIOS) {
+                self.appCheckTimer = setTimeout(function() {
+                    clearInterval(self.heartbeat);
+                    clearTimeout(self.appCheckTimer);
+                    console.log('앱이 없습니다.');
+                }, 500);
+                location.href = appScheme + "://";
+            }
+        },
     }
 
     window.historyBack = lgkorUI._historyBack;
