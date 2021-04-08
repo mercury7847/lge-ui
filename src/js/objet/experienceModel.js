@@ -2317,7 +2317,21 @@
                     $(".simul_step3 .etc_area").removeClass("is_active");
                     $(".simul_step3 .compare_sel_model_area").removeClass("is_active");
                     let idx = $(".model_set_wrap[data-model-editing='Y']").index();
-                    priceSumList.removeSlide(idx);
+                    //priceSumList.removeSlide(idx);
+                    $(".total_price_info_wrap .total_price_info_body .swiper-slide:eq(" + idx + ")").remove();
+                    priceSumList.destroy();
+                    priceSumList = new Swiper(".total_price_info_body .swiper-container", {
+                        slidesPerView: 3,
+                        //slidesPerView: 'auto',
+                        spaceBetween: 40,
+                        // preventClicks: false,
+                        // preventClicksPropagation: false,
+                        navigation: {
+                            nextEl: '.total_price_info_body .swiper-button-next',
+                            prevEl: '.total_price_info_body .swiper-button-prev',
+                        },
+                    });
+                    simulPositionAutoMove();
                     $(".model_set_wrap[data-model-editing='Y']").remove();
                     $(".model_set_wrap:last-child").attr("data-model-add", 'Y');
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", false);
@@ -2404,7 +2418,21 @@
                         $(".model_set_wrap").attr("data-del", "N");
                     }
                     modelSimulator.maxCountCheck();
-                    priceSumList.removeSlide(idx);
+                    //priceSumList.removeSlide(idx);
+                    $(".total_price_info_wrap .total_price_info_body .swiper-slide:eq(" + idx + ")").remove();
+                    priceSumList.destroy();
+                    priceSumList = new Swiper(".total_price_info_body .swiper-container", {
+                        slidesPerView: 3,
+                        //slidesPerView: 'auto',
+                        spaceBetween: 40,
+                        // preventClicks: false,
+                        // preventClicksPropagation: false,
+                        navigation: {
+                            nextEl: '.total_price_info_body .swiper-button-next',
+                            prevEl: '.total_price_info_body .swiper-button-prev',
+                        },
+                    });
+                    simulPositionAutoMove();
                 }
             };
             var desc = '';
@@ -2937,8 +2965,24 @@
                         });
                         if (selDoorLeng == "Y") {
                             let delIdx = $(this).index();
-                            simulBodySwiper.removeSlide(delIdx)
-                                //$(this).remove();
+                            //simulBodySwiper.removeSlide(delIdx);
+                            $(".simul_wrap.swiper-container .swiper-slide:eq(" + delIdx + ")").remove();
+                            simulBodySwiper.destroy();
+                            simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
+                                //slidesPerView: 3,
+                                slidesPerView: 'auto',
+                                spaceBetween: 0,
+                                // centeredSlides: true,
+                                // centeredSlidesBounds: true,
+                                freeMode: true,
+                                navigation: {
+                                    nextEl: '.simul_wrap .swiper-button-next',
+                                    prevEl: '.simul_wrap .swiper-button-prev',
+                                },
+
+                            });
+                            simulPositionAutoMove();
+                            //$(this).remove();
                         }
                     });
                     //simulBodySwiper.appendSlide(simulBodyHtml);

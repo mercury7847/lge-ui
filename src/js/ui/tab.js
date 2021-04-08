@@ -35,9 +35,9 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
         },
 
         selectors: {
-            prevButton : '',
-            nextButton : '',
-            smoothScroll : ''
+            prevButton : null,
+            nextButton : null,
+            smoothScroll : null
         },
         /**
          * 생성자
@@ -57,21 +57,23 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             self.$srText = $hide.length ? $hide : $('<em class="blind">' + self.options.selectedText + '</em>');
 
             var $child = self.$el.children().eq(0);
+
             if (!$child.is('ul')) {
 
                 self.options.tabsSelector = '>' + $child[0].tagName.toLowerCase() + self.options.tabsSelector;
                 if ($child.css('overflow') === 'hidden') {
                     self.$smoothScroll = $child;
-                    self.$smoothScroll.vcSmoothScroll();   
+                    self.$smoothScroll.vcSmoothScroll(); 
 
                 }
             }
-
             if(self.$smoothScroll[0]){
+
                 self.$smoothScroll.vcSmoothScroll({
                     center: true, 
                     autoCenterScroll:false, 
                     selectors:{ 
+                        smoothScroll:self.$smoothScroll,
                         prevButton:self.$prevButton, 
                         nextButton:self.$nextButton
                     }
@@ -103,7 +105,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             self._findControls();
             self._buildARIA();                 
 
-            if(self.$smoothScroll[0]) self.$smoothScroll.vcSmoothScroll('refresh');  
+            if(self.$smoothScroll && self.$smoothScroll[0]) self.$smoothScroll.vcSmoothScroll('refresh');  
 
         },
         getSelectIdx:function getSelectIdx(){
