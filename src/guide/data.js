@@ -331,17 +331,6 @@ var res = {
 					"멤버십 가입안내" : ["/html/BMC/ACC4004.html","","검수완료"],
 					"카드혜택" : ["/html/BMC/ACC4005.html","","검수완료"],
 					"카드혜택 팝업" : ["/html/BMC/ACC4005_popup.html","","검수완료"]
-				},
-				"오픈이벤트/기획전" : {
-					"응원댓글이벤트" : {
-						"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","",""],
-						"이벤트참여" : ["/html/BMC/MKT4009_02.html","_blank:width=912,height=760,scrollbars=yes",""],
-						"이벤트당첨(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","",""]
-					},
-					"오픈기획전" : ["/html/BMC/OBS4002_06.html","",""],
-					"오브제컬렉션기획전" : ["/html/BMC/OBS4002_09.html","",""],
-					"라이프스타일기획전" : ["/html/BMC/OBS4002_10.html","",""],
-					"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","",""]
 				}
 			},
 			"마이페이지(MYS)" : {
@@ -441,6 +430,22 @@ var res = {
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
 			// "페이지3" : ["./html/gr/M.GR-7.html","","검수완료"]
+		},
+		"Contents" : {
+			"Event" : {
+				"응원댓글이벤트" : {
+					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","",""],
+					"이벤트참여" : ["/html/BMC/MKT4009_02.html","_blank:width=912,height=760,scrollbars=yes",""],
+					"이벤트당첨(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","",""]
+				}					
+			},
+			"Exhibitions" : {
+				"오픈기획전" : ["/html/BMC/OBS4002_06.html","",""],
+				"오브제컬렉션기획전" : ["/html/BMC/OBS4002_09.html","",""],
+				"라이프스타일기획전" : ["/html/BMC/OBS4002_10.html","",""]
+				
+			},
+			"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","",""]
 		}
 	}
 }
