@@ -2570,7 +2570,21 @@
             } else {
                 $(this).closest(".obj_tooltip_wrap").addClass("active");
                 //materiaModal.update();
-                materiaModal.updateSlides();
+                materiaModal.destroy();
+                //materiaModal.updateSlides();
+                materiaModal = new Swiper(".obj_tooltip_wrap .material_modal", {
+                    //slidesPerView: 1,
+                    centeredSlides: true,
+                    //slidesPerView: 'auto',
+                    //spaceBetween: 40,
+                    // preventClicks: false,
+                    // preventClicksPropagation: false,
+                    navigation: {
+                        nextEl: '.material_modal .swiper-button-next',
+                        prevEl: '.material_modal .swiper-button-prev',
+                    },
+                });
+                simulPositionAutoMove();
             }
         });
         $(".obj_tooltip_wrap .btn-close").on("click", function() {
@@ -2592,6 +2606,7 @@
             },
 
         });
+        //simulPositionAutoMove();
         // var swiper = new Swiper('.swiper-container', {
         //     slidesPerView: 3,
         //     slidesPerColumn: 2,
@@ -2674,6 +2689,7 @@
                 prevEl: slideTarget + ' .swiper-button-prev',
             },
         });
+        simulPositionAutoMove();
     }
 
     function completedCheck() {
@@ -2728,6 +2744,7 @@
                         prevEl: '.model_choice_area .model_choice_tab .swiper-button-prev',
                     },
                 });
+                simulPositionAutoMove();
             }
 
 
@@ -2869,13 +2886,43 @@
                 $(".simul_body").append(simulBodyHtml);
                 //simulBodySwiper.update();
                 $(".simul_wrap").attr("data-add-active", "N");
-                simulBodySwiper.updateSlides();
+                //simulBodySwiper.updateSlides();
+                simulBodySwiper.destroy();
+                simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
+                    //slidesPerView: 3,
+                    slidesPerView: 'auto',
+                    spaceBetween: 0,
+                    // centeredSlides: true,
+                    // centeredSlidesBounds: true,
+                    freeMode: true,
+                    navigation: {
+                        nextEl: '.simul_wrap .swiper-button-next',
+                        prevEl: '.simul_wrap .swiper-button-prev',
+                    },
+
+                });
+                simulPositionAutoMove();
             } else {
                 if ($(".model_set_wrap").length == 0) {
                     //simulBodySwiper.appendSlide(simulBodyHtml);
                     $(".simul_body").html(simulBodyHtml);
                     //simulBodySwiper.update();
-                    simulBodySwiper.updateSlides();
+                    //simulBodySwiper.updateSlides();
+                    simulBodySwiper.destroy();
+                    simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
+                        //slidesPerView: 3,
+                        slidesPerView: 'auto',
+                        spaceBetween: 0,
+                        // centeredSlides: true,
+                        // centeredSlidesBounds: true,
+                        freeMode: true,
+                        navigation: {
+                            nextEl: '.simul_wrap .swiper-button-next',
+                            prevEl: '.simul_wrap .swiper-button-prev',
+                        },
+
+                    });
+                    simulPositionAutoMove();
                     //제품 스와이프 슬라이드
 
                 } else {
@@ -2897,7 +2944,22 @@
                     //simulBodySwiper.appendSlide(simulBodyHtml);
                     $(".simul_body").append(simulBodyHtml);
                     //simulBodySwiper.update();
-                    simulBodySwiper.updateSlides();
+                    //simulBodySwiper.updateSlides();
+                    simulBodySwiper.destroy();
+                    simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
+                        //slidesPerView: 3,
+                        slidesPerView: 'auto',
+                        spaceBetween: 0,
+                        // centeredSlides: true,
+                        // centeredSlidesBounds: true,
+                        freeMode: true,
+                        navigation: {
+                            nextEl: '.simul_wrap .swiper-button-next',
+                            prevEl: '.simul_wrap .swiper-button-prev',
+                        },
+
+                    });
+                    simulPositionAutoMove();
                 }
                 let selDoorLeng = "Y";
                 $(".model_set_wrap[data-model-editing='Y']").find(".door_wrap .model_door").each(function() {
@@ -3470,18 +3532,56 @@
                     $(".total_price_info_body .swiper-wrapper").append(priceHtml);
                     //priceSumList.addSlide(idx, priceHtml);
                     //priceSumList.update();
-                    priceSumList.updateSlides();
+                    //priceSumList.updateSlides();
+                    priceSumList.destroy();
+                    priceSumList = new Swiper(".total_price_info_body .swiper-container", {
+                        slidesPerView: 3,
+                        //slidesPerView: 'auto',
+                        spaceBetween: 40,
+                        // preventClicks: false,
+                        // preventClicksPropagation: false,
+                        navigation: {
+                            nextEl: '.total_price_info_body .swiper-button-next',
+                            prevEl: '.total_price_info_body .swiper-button-prev',
+                        },
+                    });
+                    simulPositionAutoMove();
                 } else {
                     $(".total_price_info_body .swiper-wrapper").append(priceHtml);
                     //priceSumList.update();
-                    priceSumList.updateSlides();
+                    //priceSumList.updateSlides();
+                    priceSumList.destroy();
+                    priceSumList = new Swiper(".total_price_info_body .swiper-container", {
+                        slidesPerView: 3,
+                        //slidesPerView: 'auto',
+                        spaceBetween: 40,
+                        // preventClicks: false,
+                        // preventClicksPropagation: false,
+                        navigation: {
+                            nextEl: '.total_price_info_body .swiper-button-next',
+                            prevEl: '.total_price_info_body .swiper-button-prev',
+                        },
+                    });
                     //priceSumList.appendSlide(priceHtml);
                 }
             } else {
                 //priceSumList.appendSlide(priceHtml);
                 $(".total_price_info_body .swiper-wrapper").append(priceHtml);
                 //priceSumList.update();
-                priceSumList.updateSlides();
+                //priceSumList.updateSlides();
+                priceSumList.destroy();
+                priceSumList = new Swiper(".total_price_info_body .swiper-container", {
+                    slidesPerView: 3,
+                    //slidesPerView: 'auto',
+                    spaceBetween: 40,
+                    // preventClicks: false,
+                    // preventClicksPropagation: false,
+                    navigation: {
+                        nextEl: '.total_price_info_body .swiper-button-next',
+                        prevEl: '.total_price_info_body .swiper-button-prev',
+                    },
+                });
+                simulPositionAutoMove();
             }
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             $(".total_price_info_wrap").addClass("is_active");
