@@ -433,7 +433,7 @@
                     }
                     .slide-conts {
                         // width:28%;
-                        padding-top:6%;
+                        // padding-top:6%;
                         // float:left;
                         @include mobile {
                             display:none;
@@ -445,10 +445,12 @@
                                 height:auto;
                                 img{
                                     text-align:center;
+                                    opacity:.4;
+                                    transform:scale(.8);
                                 }
                             }
                             .prd_name {
-                                padding:32px 0 0;
+                                padding:0;
                                 text-align:center;
                                 font-size:16px;
                                 font-weight:700;
@@ -458,10 +460,10 @@
                                 }
                             }
                         }
-                        &.on {
+                        &.on.ui_carousel_center {
                             // width:38%;
                             padding-top:0;
-                            margin:0 3%;
+                            // margin:0 3%;
                             @include mobile {
                                 display:inline-block;
                                 margin:0 15px;
@@ -469,6 +471,10 @@
                             .slide-box {
                                 .img {
                                     height:auto;
+                                    img {
+                                        opacity:1;
+                                        transform:scale(1);
+                                    }
                                 }
                                 .prd_name {
                                     padding:30px 0 0;
