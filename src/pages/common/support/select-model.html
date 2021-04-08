@@ -9,7 +9,6 @@
     <div class="prod-search-wrap" data-model-url="/lg5-common/data-ajax/support/commonModelList.json" data-result-url="/lg5-common/data-ajax/support/commonModelSelected.json" data-sub-category-url="/lg5-common/data-ajax/support/subCategoryOption.json?menuCode=A00030">   
  }
     <!-- 활성화 시 active 추가 -->
-    
     <!-- 키워드 검색 -->
     <div class="keyword-box active">
         @@include('./common/support/search-keyword.html', {
@@ -33,274 +32,470 @@
                     <div class="box">
                         <div class="category">
                             <a href="#">
-                                <p class="category-tit">모바일</p>
+                                <p class="category-tit">TV / 프로젝터</p>
                                 <div class="category-thumb">
-                                    <!-- 2021.03.30 alt 빈값으로 수정 -->
-                                    <img src="/lg5-common/images/CS/img-category01.jpg" alt="">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/tv-projector.jpg" alt="">
                                 </div>
                             </a>
                         </div>
                         <div class="sub-category">
-                            <div class="sub-category-box ui_common_scroll">
+                            <div class="sub-category ui_common_scroll">
                                 <ul class="sub-category-list">
                                     <li>
-                                        <button type="button" data-category="1018" data-sub-category="C000136" data-category-name="모바일" data-sub-category-name="스마트폰">스마트폰</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019021" data-sub-category="CT50019037" data-category-name="TV / 프로젝터" data-sub-category-name="올레드">올레드</button>
                                     </li>
                                     <li>
-                                        <button type="button" data-category="1018" data-sub-category="C000136" data-category-name="모바일" data-sub-category-name="스마트폰">스마트폰</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019021" data-sub-category="CT50019082" data-category-name="TV / 프로젝터" data-sub-category-name="울트라 HD">울트라 HD</button>
                                     </li>
                                     <li>
-                                        <button type="button" data-category="1018" data-sub-category="C000136" data-category-name="모바일" data-sub-category-name="스마트폰">스마트폰</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019021" data-sub-category="CT50019052" data-category-name="TV / 프로젝터" data-sub-category-name="LED / LCD">LED / LCD</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019021" data-sub-category="CT50019067" data-category-name="TV / 프로젝터" data-sub-category-name="PDP">PDP</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019021" data-sub-category="CT50019022" data-category-name="TV / 프로젝터" data-sub-category-name="빔프로젝터">빔프로젝터</button>
                                     </li>
                                 </ul>
                             </div>
-                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
                         </div>
                     </div>
                 </li>
-                @@for (var i = 0; i < category.length; i++) {
                 <li>
                     <div class="box">
                         <div class="category">
                             <a href="#">
-                                <p class="category-tit">`+category[i].name+`</p>
+                                <p class="category-tit">모바일</p>
                                 <div class="category-thumb">
-                                    <!-- 2021.03.30 alt 빈값으로 수정 -->
-                                    <img src="`+category[i].imgSrc+`" alt="">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/mobile.jpg" alt="">
                                 </div>
                             </a>
                         </div>
                         <div class="sub-category">
-                            <div class="sub-category-box ui_common_scroll">
+                            <div class="sub-category ui_common_scroll">
                                 <ul class="sub-category-list">
-                                    <!-- 모바일 -->
                                     <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C000136" data-category-name="`+category[i].name+`" data-sub-category-name="스마트폰">스마트폰</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019096" data-sub-category="CT50019117" data-category-name="모바일" data-sub-category-name="스마트폰">스마트폰</button>
                                     </li>
                                     <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="D002667" data-category-name="`+category[i].name+`" data-sub-category-name="태블릿">태블릿</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019096" data-sub-category="CT50019141" data-category-name="모바일" data-sub-category-name="태블릿">태블릿</button>
                                     </li>
                                     <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C000135" data-category-name="`+category[i].name+`" data-sub-category-name="일반폰">일반폰</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019096" data-sub-category="CT50019163" data-category-name="모바일" data-sub-category-name="G 워치">G 워치</button>
                                     </li>
                                     <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="D002742" data-category-name="`+category[i].name+`" data-sub-category-name="G워치">G워치</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="S010000" data-category-name="`+category[i].name+`" data-sub-category-name="프렌즈">프렌즈</button>
-                                    </li>
-                                    
-                                    <!-- TV/프로젝터 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1040" data-category-name="`+category[i].name+`" data-sub-category-name="올레드">올레드</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="D002795" data-category-name="`+category[i].name+`" data-sub-category-name="울트라 HD">울트라 HD</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1041" data-category-name="`+category[i].name+`" data-sub-category-name="LED/LCD">LED/LCD</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1008" data-category-name="`+category[i].name+`" data-sub-category-name="빔프로젝터">빔프로젝터</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1043" data-category-name="`+category[i].name+`" data-sub-category-name="PDP">PDP</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1044" data-category-name="`+category[i].name+`" data-sub-category-name="일반/슬림">일반/슬림</button>
-                                    </li>
-                                    
-                                    <!-- IT/모니터 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1011" data-category-name="`+category[i].name+`" data-sub-category-name="노트북/탭북">노트북/탭북</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1012" data-category-name="`+category[i].name+`" data-sub-category-name="데스크톱/일체형">데스크톱/일체형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1013" data-category-name="`+category[i].name+`" data-sub-category-name="모니터">모니터</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1068" data-category-name="`+category[i].name+`" data-sub-category-name="잉크젯프린터">잉크젯프린터</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1069" data-category-name="`+category[i].name+`" data-sub-category-name="레이저프린터">레이저프린터</button>
-                                    </li>
-                                    
-                                    <!-- 에어컨 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1076" data-category-name="`+category[i].name+`" data-sub-category-name="3in1/2in1">3in1/2in1</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1078" data-category-name="`+category[i].name+`" data-sub-category-name="가정용 스탠드형">가정용 스탠드형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1084" data-category-name="`+category[i].name+`" data-sub-category-name="업소용 스탠드형">업소용 스탠드형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1079" data-category-name="`+category[i].name+`" data-sub-category-name="벽걸이형">벽걸이형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1083" data-category-name="`+category[i].name+`" data-sub-category-name="창문형/이동식">창문형/이동식</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1129" data-category-name="`+category[i].name+`" data-sub-category-name="시스템에어컨">시스템에어컨</button>
-                                    </li>
-                                    
-                                    <!-- 냉장/냉동고 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1098" data-category-name="`+category[i].name+`" data-sub-category-name="양문형">양문형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1099" data-category-name="`+category[i].name+`" data-sub-category-name="일반형">일반형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1100" data-category-name="`+category[i].name+`" data-sub-category-name="업소용">업소용</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1026" data-category-name="`+category[i].name+`" data-sub-category-name="김치 냉장고">김치 냉장고</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1027" data-category-name="`+category[i].name+`" data-sub-category-name="와인셀러">와인셀러</button>
-                                    </li>
-                                    
-                                    <!-- 세탁기/스타일러 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1086" data-category-name="`+category[i].name+`" data-sub-category-name="드럼 세탁기">드럼 세탁기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1087" data-category-name="`+category[i].name+`" data-sub-category-name="일반 세탁기">일반 세탁기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1022" data-category-name="`+category[i].name+`" data-sub-category-name="스타일러">스타일러</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1021" data-category-name="`+category[i].name+`" data-sub-category-name="의류 건조기">의류 건조기</button>
-                                    </li>
-                                    
-                                    <!-- 청소기 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1092" data-category-name="`+category[i].name+`" data-sub-category-name="로봇">로봇</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1093" data-category-name="`+category[i].name+`" data-sub-category-name="스팀">스팀</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1094" data-category-name="`+category[i].name+`" data-sub-category-name="싸이킹">싸이킹</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1095" data-category-name="`+category[i].name+`" data-sub-category-name="일반/핸디형">일반/핸디형</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1097" data-category-name="`+category[i].name+`" data-sub-category-name="업소용">업소용</button>
-                                    </li>
-                                    
-                                    <!-- 조리/세척기기 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1029" data-category-name="`+category[i].name+`" data-sub-category-name="광파오븐">광파오븐</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1030" data-category-name="`+category[i].name+`" data-sub-category-name="전자레인지">전자레인지</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1031" data-category-name="`+category[i].name+`" data-sub-category-name="가스오븐">가스오븐</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="B002722" data-category-name="`+category[i].name+`" data-sub-category-name="가스레인지">가스레인지</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C002835" data-category-name="`+category[i].name+`" data-sub-category-name="전기레인지">전기레인지</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1032" data-category-name="`+category[i].name+`" data-sub-category-name="식기세척기">식기세척기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C002992" data-category-name="`+category[i].name+`" data-sub-category-name="맥주제조기">맥주제조기</button>
-                                    </li>
-                                    
-                                    <!-- 건강/소형기기 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1034" data-category-name="`+category[i].name+`" data-sub-category-name="정수기">정수기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1035" data-category-name="`+category[i].name+`" data-sub-category-name="이온수기">이온수기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1036" data-category-name="`+category[i].name+`" data-sub-category-name="안마의자">안마의자</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1037" data-category-name="`+category[i].name+`" data-sub-category-name="공기청정기">공기청정기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1038" data-category-name="`+category[i].name+`" data-sub-category-name="가습기">가습기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1024" data-category-name="`+category[i].name+`" data-sub-category-name="제습기">제습기</button>
-                                    </li>
-                                    
-                                    <!-- AV/음향기기 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1006" data-category-name="`+category[i].name+`" data-sub-category-name="사운드바/홈씨어터">사운드바/홈씨어터</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1009" data-category-name="`+category[i].name+`" data-sub-category-name="오디오">오디오</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1048" data-category-name="`+category[i].name+`" data-sub-category-name="블루레이">블루레이</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1049" data-category-name="`+category[i].name+`" data-sub-category-name="DVD">DVD</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="B000132" data-category-name="`+category[i].name+`" data-sub-category-name="비디오">비디오</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="B000134" data-category-name="`+category[i].name+`" data-sub-category-name="셋톱박스">셋톱박스</button>
-                                    </li>
-                                    
-                                    <!-- 기타 -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C002945" data-category-name="`+category[i].name+`" data-sub-category-name="뷰티/헤어 케어">뷰티/헤어 케어</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="B002910" data-category-name="`+category[i].name+`" data-sub-category-name="IoT 기기">IoT 기기</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C002804" data-category-name="`+category[i].name+`" data-sub-category-name="블루투스헤드셋">블루투스헤드셋</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1014" data-category-name="`+category[i].name+`" data-sub-category-name="넷하드">넷하드</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="C002815" data-category-name="`+category[i].name+`" data-sub-category-name="키즈패드">키즈패드</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1074" data-category-name="`+category[i].name+`" data-sub-category-name="외장하드/메모리">외장하드/메모리</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="D002623" data-category-name="`+category[i].name+`" data-sub-category-name="포켓포토">포켓포토</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1016" data-category-name="`+category[i].name+`" data-sub-category-name="광스토리지">광스토리지</button>
-                                    </li>
-
-                                    <!-- B2B -->
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1134" data-category-name="`+category[i].name+`" data-sub-category-name="홈네트워크">홈네트워크</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1132" data-category-name="`+category[i].name+`" data-sub-category-name="태양광솔루션">태양광솔루션</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-category="`+category[i].code+`" data-sub-category="1133" data-category-name="`+category[i].name+`" data-sub-category-name="보안솔루션">보안솔루션</button>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019096" data-sub-category="CT50019097" data-category-name="모바일" data-sub-category-name="일반폰">일반폰</button>
                                     </li>
                                 </ul>
                             </div>
-                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
                         </div>
                     </div>
                 </li>
-                }
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">IT / 모니터</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/it-monitors.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019563" data-sub-category="CT50019564" data-category-name="IT / 모니터" data-sub-category-name="노트북/탭북">노트북/탭북</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019563" data-sub-category="CT50019585" data-category-name="IT / 모니터" data-sub-category-name="데스크톱/일체형">데스크톱/일체형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019563" data-sub-category="CT50019602" data-category-name="IT / 모니터" data-sub-category-name="모니터">모니터</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019563" data-sub-category="CT50019616" data-category-name="IT / 모니터" data-sub-category-name="잉크젯프린터">잉크젯프린터</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019563" data-sub-category="CT50019631" data-category-name="IT / 모니터" data-sub-category-name="레이저프린터">레이저프린터</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">냉장/냉동고</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/refrigerator.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019441" data-sub-category="CT50019468" data-category-name="냉장/냉동고" data-sub-category-name="양문형">양문형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019441" data-sub-category="CT50019483" data-category-name="냉장/냉동고" data-sub-category-name="일반형">일반형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019441" data-sub-category="CT50019442" data-category-name="냉장/냉동고" data-sub-category-name="김치 냉장고">김치 냉장고</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019441" data-sub-category="CT50019455" data-category-name="냉장/냉동고" data-sub-category-name="와인셀러">와인셀러</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019441" data-sub-category="CT50019497" data-category-name="냉장/냉동고" data-sub-category-name="업소용">업소용</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">세탁기/스타일러</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/washers-dryers.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019274" data-sub-category="CT50019309" data-category-name="세탁기/스타일러" data-sub-category-name="드럼 세탁기">드럼 세탁기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019274" data-sub-category="CT50019275" data-category-name="세탁기/스타일러" data-sub-category-name="의류 건조기">의류 건조기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019274" data-sub-category="CT50019292" data-category-name="세탁기/스타일러" data-sub-category-name="스타일러">스타일러</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019274" data-sub-category="CT50019324" data-category-name="세탁기/스타일러" data-sub-category-name="일반 세탁기">일반 세탁기</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">에어컨</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/air-conditioners.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019184" data-category-name="에어컨" data-sub-category-name="3in1/ 2in1">3in1/ 2in1</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019199" data-category-name="에어컨" data-sub-category-name="가정용 스탠드형">가정용 스탠드형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019214" data-category-name="에어컨" data-sub-category-name="벽걸이형">벽걸이형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019229" data-category-name="에어컨" data-sub-category-name="창문형/이동식">창문형/이동식</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019244" data-category-name="에어컨" data-sub-category-name="업소용 스탠드형">업소용 스탠드형</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019183" data-sub-category="CT50019259" data-category-name="에어컨" data-sub-category-name="시스템에어컨">시스템에어컨</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">청소기</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/vacuum-cleaners.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019339" data-sub-category="CT50019340" data-category-name="청소기" data-sub-category-name="로봇청소기">로봇청소기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019339" data-sub-category="CT50019400" data-category-name="청소기" data-sub-category-name="무선[A9]/일반">무선[A9]/일반</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019339" data-sub-category="CT50019380" data-category-name="청소기" data-sub-category-name="싸이킹">싸이킹</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019339" data-sub-category="CT50019421" data-category-name="청소기" data-sub-category-name="업소용">업소용</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">AV/음향기기</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/av-audio.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019511" data-sub-category="CT50019512" data-category-name="AV/음향기기" data-sub-category-name="사운드바/홈씨어터">사운드바/홈씨어터</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019511" data-sub-category="CT50019527" data-category-name="AV/음향기기" data-sub-category-name="오디오/스피커">오디오/스피커</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019511" data-sub-category="CT50019543" data-category-name="AV/음향기기" data-sub-category-name="블루레이/DVD">블루레이/DVD</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019511" data-sub-category="CT50019558" data-category-name="AV/음향기기" data-sub-category-name="셋톱박스">셋톱박스</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">헬스케어</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/health-care.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019647" data-sub-category="CT50019648" data-category-name="헬스케어" data-sub-category-name="정수기">정수기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019647" data-sub-category="CT50019680" data-category-name="헬스케어" data-sub-category-name="안마의자">안마의자</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019647" data-sub-category="CT50019664" data-category-name="헬스케어" data-sub-category-name="이온수기">이온수기</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">조리 / 세척기기</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/cooking-dishwasher.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019696" data-category-name="조리 / 세척기기" data-sub-category-name="광파오븐">광파오븐</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019709" data-category-name="조리 / 세척기기" data-sub-category-name="전자레인지">전자레인지</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019722" data-category-name="조리 / 세척기기" data-sub-category-name="가스오븐">가스오븐</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019735" data-category-name="조리 / 세척기기" data-sub-category-name="식기세척기">식기세척기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019748" data-category-name="조리 / 세척기기" data-sub-category-name="가스레인지">가스레인지</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019761" data-category-name="조리 / 세척기기" data-sub-category-name="전기레인지">전기레인지</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019695" data-sub-category="CT50019774" data-category-name="조리 / 세척기기" data-sub-category-name="맥주제조기">맥주제조기</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">기타</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/etc-products.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019784" data-sub-category="CT50019836" data-category-name="기타" data-sub-category-name="블루투스헤드셋">블루투스헤드셋</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019784" data-sub-category="CT50019828" data-category-name="기타" data-sub-category-name="IoT 기기">IoT 기기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019784" data-sub-category="CT50019860" data-category-name="기타" data-sub-category-name="포켓포토">포켓포토</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">에어케어</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/air-care-solutions.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019872" data-sub-category="CT50019873" data-category-name="에어케어" data-sub-category-name="공기청정기">공기청정기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019872" data-sub-category="CT50019888" data-category-name="에어케어" data-sub-category-name="휴대용 공기청정기">휴대용 공기청정기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019872" data-sub-category="CT50019889" data-category-name="에어케어" data-sub-category-name="실링팬">실링팬</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019872" data-sub-category="CT50019890" data-category-name="에어케어" data-sub-category-name="제습기">제습기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019872" data-sub-category="CT50019904" data-category-name="에어케어" data-sub-category-name="가습기">가습기</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">뷰티/헤어케어</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/beauty.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019920" data-sub-category="CT50019921" data-category-name="뷰티/헤어케어" data-sub-category-name="뷰티기기">뷰티기기</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019920" data-sub-category="CT50019932" data-category-name="뷰티/헤어케어" data-sub-category-name="메디헤어">메디헤어</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <div class="category">
+                            <a href="#">
+                                <p class="category-tit">비즈니스</p>
+                                <div class="category-thumb">
+                                    <img src="https://wwwstg.lge.co.kr/kr/support/images/category-images/b2b-products.jpg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sub-category">
+                            <div class="sub-category ui_common_scroll">
+                                <ul class="sub-category-list">
+                                    <li>
+                                        <button type="button" data-cst-flag="Y" data-category="CT50019943" data-sub-category="CT50019944" data-category-name="비즈니스" data-sub-category-name="디지털 사이니지">디지털 사이니지</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn-close">
+                                <span class="blind">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

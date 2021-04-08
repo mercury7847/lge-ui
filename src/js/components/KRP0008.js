@@ -1060,7 +1060,7 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
-                        find = $btmInfo.find('a.btn');
+                        find = $btmInfo.find('a.btn-link');
                         var $btn = null;
                         if(find.length > 0) {
                             var $btn = find.clone();
@@ -1144,7 +1144,7 @@
                         if(find.length > 0) {
                             $bulletList = find.clone();
                         }
-                        find = $btmInfo.find('a.btn');
+                        find = $btmInfo.find('a.btn-link');
                         var $btn = null;
                         if(find.length > 0) {
                             var $btn = find.clone();
