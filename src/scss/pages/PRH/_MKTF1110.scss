@@ -1988,7 +1988,7 @@
                 @include mobile {
                     margin-bottom: 14px;
                     .tabs {
-                        padding: 0;
+                        padding: 0 2px;
                         > li {
                             margin-left: 20px;
                             &:first-child {

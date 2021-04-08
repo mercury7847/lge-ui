@@ -153,7 +153,7 @@
             '</div>' +
             '{{#if arFlag=="Y"}}' +
             '<div class="product-ar">' +
-			    '<a href="#" data-ar-model-id="{{modelId}}"><span>AR 체험</span></a>' +
+			    '<a href="#" data-ar-model-id="{{modelName}}"><span>AR 체험</span></a>' +
 			'</div>' +
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
