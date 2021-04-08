@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- 
+    data-login=""
+    로그인 시 "Y" 
+    비로그인 시  "N"
+-->
 <html lang="ko" data-login="Y">
     @@include('./common/head.html', {
         "pageCSS": [
@@ -6,28 +11,7 @@
             "support/product-support"
         ]
     })
-    
-<body>
-    
-    <!-- 2021.02.04 추가 -->
-    <!-- This script is for AceCounter START -->
-    <script language='javascript'>
-        var _ag   = 0 ;         // 로그인사용자 나이
-        var _id   = '';    		// 로그인사용자 아이디
-        var _mr   = '';        	// 로그인사용자 결혼여부 ('single' , 'married' )
-        var _gd   = '';         // 로그인사용자 성별 ('man' , 'woman')
-        var _skey = '' ;        // 내부검색어
-        
-        var _jn = '' ;          //  가입탈퇴 ( 'join','withdraw' ) 
-        var _jid = '' ;			// 가입시입력한 ID
-        
-        var _ud1 = '' ;			// 사용자 정의변수 1 ( 1 ~ 10 정수값)
-        var _ud2 = '' ;			// 사용자 정의변수 2 ( 1 ~ 10 정수값)
-        var _ud3 = '' ;			// 사용자 정의변수 3 ( 1 ~ 10 정수값)
-    </script>
-    <!-- AceCounter END --> 
-    <!-- //2021.02.04 추가 -->
-                                        
+<body>                                     
     <div class="wrap">
         @@include('./common/header.html')
 
@@ -38,22 +22,16 @@
             })
 
             <div class="contents support download">
-
                 <!-- 선택 제품 플로팅바 -->
-                @@include('./common/support/selected-model-bar.html', {
-                    "show": true
-                })
+                @@include('./common/support/selected-model-bar.html')
 
                 <!-- 회원 - 제품 없을 시 -->
-                @@include('./common/support/select-my-model.html', {
-                    "noItem": true,
-                    "show": true
-                })
+                <!-- @@include('./common/support/select-my-model.html', {
+                    "noItem": true
+                }) -->
 
                 <!-- 회원 - 보유제품 펼침 -->
-                @@include('./common/support/select-my-model.html', {
-                    "show": true
-                })
+                @@include('./common/support/select-my-model.html')
 
                 <div class="cont-wrap">
                     <div class="step-area">
@@ -61,25 +39,14 @@
                         <input type="hidden" name="categoryNm" id="category" value="">
                         <input type="hidden" name="subCategory" id="subCategory" value="">
                         <input type="hidden" name="subCategoryNm" id="subCategory" value="">
+                        <input type="hidden" name="modelCode" id="modelCode" value="">
+                        <input type="hidden" name="productCode" id="productCode" value="">
+                        <input type="hidden" id="menuCd" name="menuCd" value="A00030">
 
                         <!-- 제품 선택 -->
                         <div class="step-box active" id="stepModel">
                             @@include('./common/support/select-model.html', {
-                                "url": "/lg5-common/data-ajax/support/downloadResources/selectModel.json",
-                                "category": [
-                                    { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
-                                    { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
-                                    { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
-                                    { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
-                                    { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
-                                    { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
-                                    { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
-                                    { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
-                                    { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
-                                    { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
-                                    { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
-                                    { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
-                                ]
+                                "url": "/lg5-common/data-ajax/support/downloadResources/selectModel.json"
                             })
                         </div>
                         <!-- // 제품 선택 -->
@@ -116,10 +83,6 @@
                                                 <ul class="options">
                                                     <li>2020.11.03</li>
                                                     <li>한국어</li>
-                                                    <!-- 모바일 기기 선택 노출 -->
-                                                    <!-- <li>펫네임</li>
-                                                    <li>OS</li> -->
-                                                    <!-- // 모바일 기기 선택 노출 -->
                                                 </ul>
                                                 <div class="btn-wrap">
                                                     <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download"><span>PDF</span></a>
@@ -258,39 +221,13 @@
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
     @@include('./CS/modal/file-detail-popup.html')
 
-
     <!-- 2021.03.02 추가 -->
     <!-- 파일 이메일 전송 팝업 -->
     @@include('./CS/modal/file-send-to-email.html')
     <!-- //2021.03.02 추가 -->
 
-    
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/productSupport/downloadResources.min.js"></script>
-
-    <!-- 2021.02.04 추가 -->
-    <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
-    <script language='javascript'>
-        var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
-        var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
-
-
-        // test code
-        (function(){
-
-            $(window).on('load', function(){
-
-                $('[data-trk-count]').on('click', function(){
-                    var $this = $(this);
-                    var countUrl = $this.data('trkCount');
-
-                    try{_PL(location.hostname + countUrl)}catch(e){}
-                })
-            });
-        })();
-    </script>
-    <!-- AceCounter Log Gathering Script End -->
-    <!-- //2021.02.04 추가 -->
 </body>
 </html> 
