@@ -155,7 +155,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.page = opts.page;
             self.totalCount = opts.totalCount;
             self.hasModel = opts.model.subCategory ? true : false;
-            self.model = opts.model;
+            self.model = $.extend(true, {}, opts.model);
             self.param = $.extend(true, opts.model, {
                 keyword: ''
             });

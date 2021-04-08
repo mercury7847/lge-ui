@@ -21,9 +21,6 @@ $(function () {
 
 
 
-    //혁신이 만들어낸<br>TV이상의, 作
-    // <span class="opac">차원이 다른</span><br>LG 올레드 TV
-
     var sceneTmpl = '<div class="scene">\n'+
         '   <div class="img">\n'+
         '       {{#if isImage}} <img src="{{imagePath}}" alt="{{imageAlt}}">\n'+
@@ -220,9 +217,9 @@ $(function () {
 
         $('.scene').css({'overflow':'hidden'});
 
-        /* 메인테스트
-        // $('html').css({'overflow':'hidden'});
-        */
+        /* 메인테스트*/
+        $('html').css({'overflow':'hidden'});
+        
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){
@@ -279,7 +276,7 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            //if(!canScroll) return; 
             var nextIndex = (delta < 0) ? -1 : 1;
             nextIndex = nextIndex + currentPage;
             nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -289,8 +286,8 @@ $(function () {
 
         function moveScene(idx, speed){
 
-            if(!canScroll) return;  
-            canScroll = false;   
+            //if(!canScroll) return;  
+            //canScroll = false;   
             $contentWrap.scrollTop(0);                
             $('html').addClass('sceneMoving');
             
@@ -300,11 +297,11 @@ $(function () {
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-                if(! $('html').hasClass('sceneMoving')){
-                    return false;
-                }
+                // if(! $('html').hasClass('sceneMoving')){
+                //     return false;
+                // }
 
-                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
 
                 $('html, body').stop(true).animate({
@@ -312,7 +309,10 @@ $(function () {
                 }, speedTime, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
 
                     canScroll = true
-                    currentPage = idx;                        
+                    currentPage = idx;   
+                    
+                    // console.log(currentPage);
+
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
@@ -368,21 +368,27 @@ $(function () {
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
         lgkorUI.setEnableAppScrollBottomMenu(false);
+        /*
 
+        function scrollendfn(){
+            var idx = _findIdx($('html,body').scrollTop());            
+            $(window).off('scrollend');
 
-        $(window).on('scrollend', function(e) {
-            
-            var idx = _findIdx($('html,body').scrollTop());
-
-            console.log(posArr[idx]);
-            // $('html,body').scrollTop(posArr[idx]);
+            $('html, body').stop(true).animate({
+                scrollTop: posArr[idx]
+            }, 600, 'easeInOutQuart',  function() {
+                $(window).on('scrollend', scrollendfn);
                 
-            
-        });
+            });
+        }
+
+
+        $(window).on('scrollend', scrollendfn);
+        */
 
 
 
-        /* 메인테스트
+        /* 메인테스트*/
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -440,7 +446,6 @@ $(function () {
 
             }
         });
-        */
 
         
 
@@ -628,10 +633,10 @@ $(function () {
                             
             });  
 
-            /* 메인 테스트 
-            // $contentWrap.css({'overflow':'auto','height':winHeight});
-            // $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-            */
+            /* 메인 테스트 */
+            $contentWrap.css({'overflow':'auto','height':winHeight});
+            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
