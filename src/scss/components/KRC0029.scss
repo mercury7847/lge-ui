@@ -211,10 +211,10 @@
         height:480px;
         overflow: hidden;
         text-align:center;
-        @include mobile {
-            height:0;
-            padding-top:133.334%;
-        }
+        // @include mobile {
+        //     height:0;
+        //     padding-top:133.334%;
+        // }
         img {
             // position: absolute;
             // top:0;

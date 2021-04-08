@@ -892,6 +892,10 @@
             }
 
             .info-accordion-wrap {
+                margin-top:24px;
+                @include mobile {
+                    margin-top:0;
+                }
                 .lists {
                     padding: 0 24px;
                     @include mobile {

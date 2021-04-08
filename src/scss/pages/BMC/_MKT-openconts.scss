@@ -244,16 +244,17 @@
                 }
                 .slide-content{
                     overflow:hidden;
-                    padding-right:17px; //맨끝 아이템 여백
+                    padding-right:17px; //맨 끝 아이템 여백
                     .slide-conts {
                         padding:12px;
-                        max-width:250px;
-                        float:left;
+                        // float:left;
+                        @include mobile{
+                            max-width:250px;
+                        }
                         .slide-box {
                             display:block;
                             position:relative;
                             height:auto;
-                            // padding:60px;
                             padding:25px;
                             border-radius:8px;
                             background-color:#fff;
@@ -264,18 +265,6 @@
                                 padding:25px;
                             }
                             .img {
-                                // position:absolute;
-                                // top:50%;
-                                // left:60px;
-                                // width:425px;
-                                // height:425px;
-                                // margin-top:-190px;
-                                // display:inline-block;
-                                // width:41%;
-                                width:100%;
-                                img {
-                                    width:100%;
-                                }
                                 @include mobile {
                                     position:static;
                                     width:100%;
@@ -284,13 +273,10 @@
                                 }
                             }
                             .info {
-                                // display:inline-block;
                                 display:block;
                                 text-align:left;
                                 vertical-align: top;
-                                // width: 50%;
                                 width: auto;
-                                // margin: 4% 0 0 5%;
                                 margin: 0;
                                 padding-top:50px;
                                 @include mobile {
@@ -304,7 +290,6 @@
                                     -webkit-line-clamp:2;
                                     -webkit-box-orient: vertical;
                                     max-height:56px;
-                                    // font-size:42px;
                                     font-size:16px;
                                     font-weight:700;
                                     line-height:1.24;
@@ -315,7 +300,6 @@
                                     }
                                 }
                                 .code {
-                                    // font-size:36px;
                                     font-size:14px;
                                     font-weight:500;
                                     line-height:1.28;
@@ -327,8 +311,6 @@
                                 }
                                 .price-area {
                                     width:100%;
-                                    // margin:40px 0 0;
-                                    // padding:50px 0 0;
                                     margin:20px 0 0;
                                     padding:20px 0 0;
                                     border-top:2px solid #e4e4e4;
@@ -343,14 +325,12 @@
                                         text-align:right;
                                         margin-right: 8px;
                                         font-weight: 700;
-                                        // font-size: 48px;
                                         font-size: 20px;
                                         line-height: 1.21;
                                         color:#e34465;
                                         em{
                                             display:inline-block;
                                             font-weight: 700;
-                                            // font-size: 30px;
                                             font-size: 14px;
                                             line-height: 1.93;
                                             text-align:left;
@@ -371,7 +351,6 @@
                                         display:inline-block;
                                         width:100%;
                                         margin-right: 4px;
-                                        // font-size: 30px;
                                         font-size: 14px;
                                         line-height: 1.4;
                                         color: #666666;
@@ -387,7 +366,6 @@
                     }
                 }
                 .slide-controls{
-                    max-width:1460px;
                     margin-top:-30px;
                     .prev {
                         left:-12px;
@@ -443,14 +421,14 @@
             }
             .slide-content {
                 .slide-track{
-                    max-width:2000px;
+                    // max-width:2000px;
                     @include mobile {
                       width:100%;
                     }
                     .slide-conts {
-                        width:28%;
+                        // width:28%;
                         padding-top:6%;
-                        float:left;
+                        // float:left;
                         @include mobile {
                             display:none;
                             padding-top:25px;
@@ -475,7 +453,7 @@
                             }
                         }
                         &.on {
-                            width:38%;
+                            // width:38%;
                             padding-top:0;
                             margin:0 3%;
                             @include mobile {
@@ -795,6 +773,15 @@
                     font-size:16px;
                     font-weight:700;
                     line-height:26px;
+                    span {
+                        &:after {
+                            content:'*';
+                            display:inline-block;
+                            margin-left:1px;
+                            color:#ec455a;
+                            vertical-align:top;
+                        }
+                    }
                 }
                 dd {
                     float:left;
