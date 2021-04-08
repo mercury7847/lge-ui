@@ -25,7 +25,8 @@
                     '<div class="slide-track ui_carousel_track">' +
                         '{{#each (image, idx) in sliderImages}}'+
                             '<div class="slide-conts ui_carousel_slide">' +
-                                '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지" style="opacity:0;"></a>' +
+                            '<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{categoryName}} {{modelDisplayAltName}} {{sku}} 썸네일" style="opacity:0;"></a>' +
+                            //'<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지" style="opacity:0;"></a>' +
                             '</div>' +
                         '{{/each}}'+
                     '</div>' +
@@ -773,6 +774,9 @@
                 if(!item.sku) item.sku = item.modelName;
 
                 if(!item.obsSellingPrice) item.obsSellingPrice = "";
+
+                item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
+                console.log("item.modelDisplayAltName:", item.modelDisplayAltName)
 
                 //console.log("### item.siblingType ###", item.siblingType);
 
