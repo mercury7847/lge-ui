@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.contents.event .ev-detail-wrap .ev-detail-con .ev-cont .conts {
+    &.dis-block {
+        display:block;
+    }
+}
+
 .ev-detail-con{
 
     /* 클래스별이미지분기 */
@@ -437,7 +443,8 @@
                         // float:left;
                         @include mobile {
                             display:none;
-                            padding-top:25px;
+                            // padding-top:25px;
+                            padding:0 16px;
                         }
                         .slide-box {
                             .img {
@@ -480,6 +487,17 @@
                                     padding:30px 0 0;
                                     font-size:18px;
                                     color:#000000;
+                                }
+                            }
+                        }
+                        &.on.ui_carousel_current {
+                            @include mobile {
+                                .img {
+                                    img {
+                                        transform:scale(1);
+                                        opacity:1;
+                                        transition:all .4s;
+                                    }
                                 }
                             }
                         }
