@@ -349,32 +349,28 @@
                 padding-top: 36px;
             }
             .read-more-area {
-                margin-top: 20px;
+                margin-top: 36px;
                 text-align: center;
                 .read-more {
                     display: none;  //기본 display:none
-                    padding: 6px 16px;
+                    padding: 7px 16px;
                     border: 1px solid $color-default;
-                    border-radius: 18px;
+                    border-radius: 100px;
                     font-weight: 500;
                     @include font-small;
                     &:before {
                         display: inline-block;
-                        width: 20px;
-                        height: 20px;
+                        width: 16px;
+                        height: 16px;
                         margin-right: 4px;
-                        background: url("/lg5-common/images/icons/btn-more-20.svg") no-repeat 0 0;
-                        vertical-align: -4px;
+                        background: url("/lg5-common/images/icons/btn-plus-16.svg") no-repeat 0 0;
+                        vertical-align: -2px;
                         content: '';
-                    }
-
-                    em {
-                        @include blind;
                     }
                 }
 
                 @include mobile {
-                    margin-top: 18px;
+                    margin-top: 20px;
                 }
             }
         }
