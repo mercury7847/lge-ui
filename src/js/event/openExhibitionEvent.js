@@ -1,21 +1,4 @@
 (function() {
-    var openEventItemTemplate = '<li class="slide-conts ui_carousel_slide">' +
-        '<a href="{{pdpUrl}}" class="slide-box">' +
-            '<div class="img">' +
-                '<img src="{{imagePC}}" class="pc data-lazy" alt="{{imageAlt}}">' +
-                '<img src="{{imageMobile}}" class="mobile data-lazy" alt="{{imageAlt}}">' +
-            '</div>' +
-            '<div class="info">' +
-                '<div class="model">{{modelName}}</div>' +
-                '<div class="code">{{sku}}</div>' +
-                '<div class="price-area">' +
-                    '{{#if originalPrice}}<div class="original"><em class="blind">기존가격</em><span class="price">{{originalPrice}}<em>원</em></span></div>{{/if}}' +
-                    '{{#if salePrice}}<div class="total"><em class="tit">혜택가</em><span class="price">{{salePrice}}<em>원</em></span></div>{{/if}}' +
-                '</div>' +
-            '</div>' +
-        '</a>' +
-    '</li>'
-
     var OpenExhibitionEvent = {
         init: function() {
             var self = this;
@@ -34,7 +17,6 @@
                 infinite: false,            
                 slidesToShow: 4,
                 slidesToScroll: 4,
-                //variableWidth : true,
                 dots: false,
                 /*
                 responsive: [
