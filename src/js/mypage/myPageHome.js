@@ -57,7 +57,10 @@
             '{{/each}}'+
         '</ul>',
         noDataTemplate:'<div class="no-data"><span>{{#raw msg}}</span></div>',
+
         init: function() {
+            var self = this;
+
             //크레마
             lgkorUI.cremaLogin();
             
@@ -65,7 +68,7 @@
             var cremaReviewTemplate =
                 (vcui.detect.isMobile) ? '<a href="#" class="crema-new-review-link btn border size" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>':'<a href="#" class="crema-new-review-link btn border size" data-product-code="{{enModelName}}">리뷰작성</a>';
 
-            var $li = $('li.review-here[data-model-code]');
+            var $li = $('li.review-here[data-model-code]');            
             $li.each(function(index, item){
                 if(item.dataset.reviewFlag.toLowerCase() == "s") {
                     var enModelName = item.dataset.modelCode;
@@ -82,6 +85,8 @@
 
             //크레마 리로드
             lgkorUI.cremaReload();
+
+            self.setting();
         },
 
         setting: function(){
@@ -163,8 +168,7 @@
     }
 
     $(document).ready(function() {
-        //myHome.init();
-
-        myHome.setting();
+        myHome.init();
+        //myHome.setting();
     });
 })();
