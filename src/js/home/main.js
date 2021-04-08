@@ -209,6 +209,7 @@ $(function () {
         var $scenes = $('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
+        var isMobileDevice = vcui.detect.isMobileDevice;
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
@@ -271,12 +272,14 @@ $(function () {
                 }
             }
 
-        });
-               
+        });               
 
         function wheelScene(delta) {
 
-            //if(!canScroll) return; 
+            if(!isMobileDevice){
+                if(!canScroll) return; 
+            }           
+            
             var nextIndex = (delta < 0) ? -1 : 1;
             nextIndex = nextIndex + currentPage;
             nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -286,8 +289,11 @@ $(function () {
 
         function moveScene(idx, speed){
 
-            //if(!canScroll) return;  
-            //canScroll = false;   
+            if(!isMobileDevice){
+                if(!canScroll) return;  
+                canScroll = false;   
+            }
+            
             $contentWrap.scrollTop(0);                
             $('html').addClass('sceneMoving');
             
@@ -297,9 +303,12 @@ $(function () {
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-                // if(! $('html').hasClass('sceneMoving')){
-                //     return false;
-                // }
+
+                if(!isMobileDevice){
+                    if(! $('html').hasClass('sceneMoving')){
+                        return false;
+                    }
+                }
 
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
@@ -311,8 +320,6 @@ $(function () {
                     canScroll = true
                     currentPage = idx;   
                     
-                    // console.log(currentPage);
-
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
@@ -335,7 +342,7 @@ $(function () {
 
         // 휠 이벤트 처리
 
-        if(!vcui.detect.isMobileDevice){
+        if(!isMobileDevice){
 
             document.addEventListener('wheel', function(e){
 
@@ -500,7 +507,7 @@ $(function () {
         function updateVideo(video) {
 
             var isAndroid = vcui.detect.isAndroid;
-            var isMobileDevice = vcui.detect.isMobileDevice;
+            //var isMobileDevice = vcui.detect.isMobileDevice;
 
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
