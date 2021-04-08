@@ -8,14 +8,14 @@
         .floating-menu.more-plus {
             bottom:120px !important;
             @include mobile {
-                bottom:90px !important;
+                bottom:74px !important;
             }
         }
         &.scroll {
             .floating-menu.more-plus {
                 bottom:190px !important;
                 @include mobile {
-                    bottom:160px !important;
+                    bottom:124px !important;
                 }
             }    
         }
@@ -26,7 +26,7 @@
                 top:auto;
                 bottom:-72px;
                 @include mobile {
-                    bottom:-68px;
+                    bottom:-50px;
                 }
             }
             &.scroll {
@@ -39,14 +39,14 @@
     .floating-menu.floating-list {
         bottom:192px;
         @include mobile {
-            bottom:162px !important;
+            bottom:124px !important;
         }
     }
     .btn-floating-wrap.scroll {
         .floating-menu.floating-list {
             bottom:262px !important;
             @include mobile {
-                bottom:232px !important;
+                bottom:174px !important;
             }
         }
     }
@@ -205,6 +205,12 @@
             @include mobile {
                 max-width: 100%;
                 padding: 0 16px;
+            }
+            &:first-child {
+                padding-top: 0;
+                @include mobile {
+                    padding-top: 0;
+                }
             }
         }
     }
