@@ -219,7 +219,7 @@ $(function () {
         $('.scene').css({'overflow':'hidden'});
 
         /* 메인테스트*/
-        $('html').css({'overflow':'hidden'});
+        //$('html').css({'overflow':'hidden'});
         
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
@@ -344,6 +344,8 @@ $(function () {
 
         if(!isMobileDevice){
 
+            /* 메인테스트*/
+            /*
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -368,6 +370,7 @@ $(function () {
                 }       
     
             });
+            */
 
         }
         
@@ -396,6 +399,7 @@ $(function () {
 
 
         /* 메인테스트*/
+        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -453,6 +457,7 @@ $(function () {
 
             }
         });
+        */
 
         
 
@@ -641,8 +646,9 @@ $(function () {
             });  
 
             /* 메인 테스트 */
-            $contentWrap.css({'overflow':'auto','height':winHeight});
-            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+
+            //$contentWrap.css({'overflow':'auto','height':winHeight});
+            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
             
             if(idx!==undefined){
                 currentPage = idx;
@@ -677,10 +683,13 @@ $(function () {
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
-                render();
+                //render();
             });
             $window.trigger('resizeend');
             // 앱 대응시 주석처리 end
+
+            render();
+
         }
 
         $(document).on('click', 'a', function(e){
