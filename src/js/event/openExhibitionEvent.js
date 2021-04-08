@@ -16,28 +16,29 @@
             self.$wrap.find('.ui_recom_carousel').vcCarousel({
                 infinite: false,            
                 slidesToShow: 4,
-                slidesToScroll: 4,
+                slidesToScroll: 1,
                 dots: false,
-                /*
+                
                 responsive: [
                     {
                         breakpoint: 10000,
                         settings: {
-                            variableWidth : true,
-                            slidesToShow: 3,
+                            variableWidth : false,
+                            slidesToShow: 4,
                             slidesToScroll: 1
                         }
                     },
                     {
                         breakpoint: 768,
                         settings: {
-                            variableWidth : false,
+                            variableWidth : true,
                             slidesToShow: 1,
-                            slidesToScroll: 1
+                            slidesToScroll: 1,
+                            lastFix:true
                         }
                     }
                 ]
-                */
+                
             });
         }
     }
