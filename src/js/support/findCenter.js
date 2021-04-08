@@ -148,7 +148,65 @@ function moveDetail(el, detailUrl, windowHeight) {
                         appKey: result.data.appKey,
                         longitude : result.data.basicPosition.longitude,
                         latitude: result.data.basicPosition.latitude,
-                        zoom:14
+                        zoom:14,
+                        templates: {
+                            infoWindow:
+                            '<div class="info-overlaybox" tabindex="0">'+
+                            '   <div class="inner">'+
+                            '       <div class="tit-wrap">'+
+                            '           <p class="name">'+
+                            '               <span class="blind">매장명</span>'+
+                            '               {{shopName}}'+
+                            '           </p>'+
+                            '           {{# if(typeof bizStatus != "undefined") { #}}'+
+                            '           {{# if(typeof bizStatus.bizStatusClass != "undefined") { #}}'+
+                            '           <div class="status-icon {{bizStatus.bizStatusClass}}">'+
+                            '           {{# } else { #}}'+
+                            '           <div class="status-icon">'+
+                            '           {{# } #}}'+
+                            '               <strong class="status">{{bizStatus.bizStatusText}}</strong>'+
+                            '           </div>'+
+                            '           {{# } #}}'+
+                            '       </div>'+
+                            '       <p class="adress">{{shopAdress}}</p>'+
+                            '       <div class="hour-info">'+
+                            '           <dl>'+
+                            '               <dt>평일 : </dt>'+
+                            '               <dd>{{bizHours.week}}</dd>'+
+                            '           </dl>'+
+                            '           <dl>'+
+                            '               <dt>토요일 : </dt>'+
+                            '               <dd>{{bizHours.saturday}}</dd>'+
+                            '           </dl>'+
+                            '       </div>'+
+                            '       {{# if(typeof serviceProduct != "undefined") { #}}' +
+                            '       <div class="useable-service">' + 
+                            '           <strong class="useable-tit">서비스가능 제품 :</strong>' + 
+                            '           {{#each (item, index) in serviceProduct}}' +
+                            '               {{# if(index > 0) { #}}' +
+                                            ', '+
+                                            '{{# } #}}' +    
+                                            '<span class="name">{{item.name}}</span>'+
+                                        '{{/each}}' +
+                                    '</div>' + 
+                            '       <ul class="opt-list">'+
+                            '           {{#each item in serviceProduct}}' +
+                            '           <li class="{{item.class}}">'+
+                            '               <span class="name">{{item.name}}</span>'+
+                            '           </li>' +
+                            '           {{/each}}' +
+                            '       </ul>'+
+                            '       {{# } #}}' +
+                            '       <div class="btn-group">'+
+                            '           {{#if typeof consultUrl != "undefined"}}'+
+                            '           <a href="{{consultUrl}}" class="btn size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                            '           {{/if}}'+
+                            '           <a href="#{{shopID}}" class="btn size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
+                            '       </div>'+
+                            '   </div>'+
+                            '   <button class="btn-overlay-close"><span class="blind">닫기</span></button>'+
+                            '</div>'
+                        }
                     }).on('mapinit', function(e, data){
                         var centerSeq = lgkorUI.searchParamsToObject('seq');
 
