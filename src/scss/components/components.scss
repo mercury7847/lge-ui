@@ -154,7 +154,7 @@
 }
 .component-wrap {
     .fc-white,
-    .fc-lightgray {
+    .fc-light-gray {
         .logo {
             filter:brightness(0) invert(1);
         }
@@ -751,12 +751,12 @@
     background-color:#767676 !important;
 }
 
-.fc-lightgray,
-.fc-lightgray * {
+.fc-light-gray,
+.fc-light-gray * {
     color:#aaa !important;
 }
-.fc-lightgray:before,
-.fc-lightgray *:before {
+.fc-light-gray:before,
+.fc-light-gray *:before {
     background-color:#aaa !important;
 }
 
@@ -999,12 +999,12 @@
                     background-color:#aaa !important;
                 }
 
-                .fc-lightgray,
-                .fc-lightgray * {
+                .fc-light-gray,
+                .fc-light-gray * {
                     color:#ccc !important;
                 }
-                .fc-lightgray:before,
-                .fc-lightgray *:before {
+                .fc-light-gray:before,
+                .fc-light-gray *:before {
                     background-color:#ccc !important;
                 }
 
