@@ -2,6 +2,13 @@
 .responsive.event { margin-top: 30px; padding-bottom: 50px; }
 .responsive.event h4 { margin-top: 16px; font-size: 22px; font-weight: normal; color: #333; }
 
+@font-face {
+  font-family:'LGSmHaR';font-style:normal;font-weight:400;
+  src:	url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.woff2') format('woff2'),
+    url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.woff') format('woff'),
+    url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.ttf') format('truetype');
+}
+
 /* under 4.0 */
 #version-under4 .responsive.event .view-type-table tbody td .contents { width: auto; }
 #version-under4 .responsive.event.winner .view-type-table tbody td .contents > img { display: block; margin: 0 auto; }
@@ -66,7 +73,7 @@
 	.event-monthly-template .summary-info strong { font-weight: normal; }
 	.event-monthly-template .summary-info .detail-info { display: table; table-layout: fixed; width: 100%; margin-top: 35px; }
 	.event-monthly-template .summary-info .detail-info > p { display: table-cell; position: relative; font-size: 24px; line-height: 1.417; border-left: 1px solid #c3abb5; }
-	.event-monthly-template .summary-info .detail-info > p:before { content: ''; display: block; margin: 0 auto 23px auto; height: 130px; width: 190px; background-image: url('/lgekor/asset/images/web/event/bg_event_info.png'); }
+	.event-monthly-template .summary-info .detail-info > p:before { content: ''; display: block; margin: 0 auto 23px auto; height: 130px; width: 190px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/web/event/bg_event_info.png'); }
 	.event-monthly-template .summary-info .detail-info > p:first-child { border-left: 0px none; }
 	.event-monthly-template .summary-info .detail-info > p.period:before { background-position: 0px 0px; }
 	.event-monthly-template .summary-info .detail-info > p.announcement:before { background-position: -190px 0px; }
@@ -86,13 +93,13 @@
 		input[type=text], input[type=password] {
 		    box-sizing: border-box; height: 40px; padding-left: 5px; font-size: 18px; line-height: 2.111; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background-color: #f6f7f9;
 		}
-		select { display: inline-block; height: 40px; min-width: 100px; padding: 10px 13px 8px 15px; font-size: 18px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('/lgekor/asset/images/web/common/bg_select01.png') right center no-repeat; }
+		select { display: inline-block; height: 40px; min-width: 100px; padding: 10px 13px 8px 15px; font-size: 18px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('https://www.lge.co.kr/lgekor/asset/images/web/common/bg_select01.png') right center no-repeat; }
 		input[type="checkbox"] + label { position: relative; padding-left: 25px; }
  		input[type="checkbox"] + label:before {content:''; display: block; position: absolute; top: 50%; left: 0; margin-top: -12px; }
 
 
 		/* title */
-		.event-monthly-template > .title {  background: url('/lgekor/asset/images/web/event/monthly01.jpg') left top no-repeat; background-size: 100%; }
+		.event-monthly-template > .title {  background: url('https://www.lge.co.kr/lgekor/asset/images/web/event/monthly01.jpg') left top no-repeat; background-size: 100%; }
 		.event-monthly-template > .title:before { content: ''; display: block; padding-top: 27.5%; }
 		.event-monthly-template > .title > .content { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; }
 		.event-monthly-template > .title h1,
@@ -176,7 +183,7 @@
 	.event-benefit-template .summary-visual .info .desc > em:after { content: '|'; font-size: 20px; color: #9ca2a3; margin-right: 10px; margin-left: 20px; }
 
 	.event-benefit-template .event-benefit { position: relative; padding: 0 50px 30px 50px; }
-	.event-benefit-template .event-benefit:before { content: ''; display: block; position: absolute; top: 11px; left: 50px; height: 129px; width: 118px; background-image: url('/lgekor/asset/images/web/event/bg_event_benefit01.png'); background-repeat: no-repeat; }
+	.event-benefit-template .event-benefit:before { content: ''; display: block; position: absolute; top: 11px; left: 50px; height: 129px; width: 118px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/web/event/bg_event_benefit01.png'); background-repeat: no-repeat; }
 	.event-benefit-template .event-benefit.benefit01 { background-color: #f55d65; }
 	.event-benefit-template .event-benefit.benefit01:before { background-position: 0px 0px; }
 	.event-benefit-template .event-benefit.benefit02 { background-color: #1cb8b6; }
@@ -214,7 +221,7 @@
 	.event-sns-template .summary-info strong { font-weight: normal; }
 	.event-sns-template .summary-info .detail-info { display: table; table-layout: fixed; width: 100%; }
 	.event-sns-template .summary-info .detail-info > p { display: table-cell; position: relative; font-size: 24px; line-height: 1.417; border-left: 1px solid #c3abb5; }
-	.event-sns-template .summary-info .detail-info > p:before { content: ''; display: block; margin: 0 auto 23px auto; height: 130px; width: 190px; background-image: url('/lgekor/asset/images/web/event/bg_event_info.png'); }
+	.event-sns-template .summary-info .detail-info > p:before { content: ''; display: block; margin: 0 auto 23px auto; height: 130px; width: 190px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/web/event/bg_event_info.png'); }
 	.event-sns-template .summary-info .detail-info > p:first-child { border-left: 0px none; }
 	.event-sns-template .summary-info .detail-info > p.period:before { background-position: 0px 0px; }
 	.event-sns-template .summary-info .detail-info > p.announcement:before { background-position: -190px 0px; }
@@ -224,23 +231,23 @@
 	.event-sns-template .summary-info .btn-submit { display: inline-block; margin: 35px auto 0 auto; padding: 0 60px; font-size: 24px; font-weight: normal; color: #fff; text-align: center; text-decoration: none; line-height: 2.667; border-radius: 5px; background-color: #a50034; }
 
 	.event-sns-template .event-sns { position: relative; padding: 37px 50px 50px 50px; text-align: center; border-top: 1px solid #cdcdcd; }
-	.event-sns-template .event-sns .badge { display: block; position: absolute; top: 0; left: 0; height: 94px; width: 94px; text-indent: -9999px; background: url('/lgekor/asset/images/web/event/badge_quiz.png') left top no-repeat; }
+	.event-sns-template .event-sns .badge { display: block; position: absolute; top: 0; left: 0; height: 94px; width: 94px; text-indent: -9999px; background: url('https://www.lge.co.kr/lgekor/asset/images/web/event/badge_quiz.png') left top no-repeat; }
 	.event-sns-template .event-sns .question { font-size: 24px; color: #333; }
 	.event-sns-template .event-sns .title { margin-top: 8px; font-size: 36px; font-weight: normal; color: #333; }
 	.event-sns-template .event-sns .choose-answer { position: relative; overflow: hidden; margin-top: 34px; padding: 30px 0; border: 2px solid #de296b; }
 	.event-sns-template .event-sns .choose-answer input[type=radio] { position: absolute; top: -30px; left: -30px; }
 	.event-sns-template .event-sns .choose-answer input[type=radio] + label { display: inline-block; position: relative; margin: 0 5%; padding-left: 40px; font-size: 30px; font-weight: normal; color: #222; text-align: left; }
-	.event-sns-template .event-sns .choose-answer input[type=radio] + label:before { content: ''; display: block; position: absolute; top: 50%; left: 0; height: 28px; width: 28px; margin-top: -14px; background: url('/lgekor/asset/images/web/event/template_radio.png') left top no-repeat; }
+	.event-sns-template .event-sns .choose-answer input[type=radio] + label:before { content: ''; display: block; position: absolute; top: 50%; left: 0; height: 28px; width: 28px; margin-top: -14px; background: url('https://www.lge.co.kr/lgekor/asset/images/web/event/template_radio.png') left top no-repeat; }
 	.event-sns-template .event-sns .choose-answer input[type=radio]:checked + label:before { background-position: -28px 0; }
 	.event-sns-template .event-sns .tip { margin-top: 30px; font-size: 18px; color: #333; }
 	.event-sns-template .event-sns .ttalk-container { margin-top: 47px; border: 40px solid #e0e0e0; border-right: 50px solid #e0e0e0; border-left: 50px solid #e0e0e0; background-color: #fff; }
 
 
-	/* ÀÀ¸ð ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ */
 	.sns-template .poptit em { color: #e24841; }
 	.sns-template .forms { border-top: 2px solid #333; }
 	.sns-template .forms input[type=text], input[type=password] { box-sizing: border-box; height: 40px; width: 88px; padding-left: 10px; font-size: 18px; line-height: 2.111; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background-color: #f6f7f9; }
-	.sns-template .forms select { display: inline-block; height: 40px; min-width: 138px; padding: 10px 12px 8px 15px; font-size: 18px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('/lgekor/asset/images/web/common/bg_select01.png') right center no-repeat; }
+	.sns-template .forms select { display: inline-block; height: 40px; min-width: 138px; padding: 10px 12px 8px 15px; font-size: 18px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('https://www.lge.co.kr/lgekor/asset/images/web/common/bg_select01.png') right center no-repeat; }
 	.sns-template .forms { overflow: hidden; padding: 0px 0px 20px 0px; }
 	.sns-template .forms label { min-width: 80px; font-size: 18px; }
 	.sns-template .forms .controls { float: left; padding: 13px 0; }
@@ -297,7 +304,7 @@
 	.entry_popup .experience_event .apply_agreement .tbl_agreement th {font-size: 13px; border: 1px solid #d1dfe6; background-color: #d1dfe6; color: #000;}
 	.entry_popup .experience_event .apply_agreement .tbl_agreement td {font-size: 13px; border: 1px solid #e7e7e7;}
 	.entry_popup .experience_event .apply_agreement .box_item .txt_info li {font-size: 13px; text-align: left; line-height: 1.5; text-indent: -14px; margin-left: 14px;}
-	.entry_popup .experience_event .apply_agreement .box_item .txt_info li:before {content:"¡Ø"; padding-right: 3px;}
+	.entry_popup .experience_event .apply_agreement .box_item .txt_info li:before {content:"ï¿½ï¿½"; padding-right: 3px;}
 	.entry_popup .experience_event .apply_agreement .box_item .item_agree label {margin-left: 10px;}
 	.entry_popup .table_list > li {display: table; width: 100%; table-layout: fixed; border-top: 1px solid #ccc; padding: 8px 0;}
 	.entry_popup .table_list > li:first-child {border-width: 0;}
@@ -307,7 +314,7 @@
 	.entry_popup .table_list > li .td {display: table-cell; word-break: break-all; font-size: 13px; vertical-align: middle;}
 	.entry_popup .table_list > li .td .tip {margin: 10px 0 0 0;}
 	.entry_popup .table_list > li .td .tip li {line-height: 1.5; text-indent: -14px; margin-left: 14px;}
-	.entry_popup .table_list > li .td .tip li:before {content:"¡Ø"; padding-right: 3px;}
+	.entry_popup .table_list > li .td .tip li:before {content:"ï¿½ï¿½"; padding-right: 3px;}
 	.entry_popup .table_list > li .td input,
 	.entry_popup .table_list > li .td a {vertical-align: middle;}
 	.entry_popup .table_list > li .td select {margin: 2px 0;}
@@ -316,12 +323,12 @@
 	.entry_popup .table_list > li .th:first-child + .td + .th + .td {width: 28%;}
 	#adress_popup.entry_popup {display: none;}
 
-	/* ÀÀ¸ð ¿Ï·á ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ë¾ï¿½ */
 	.entry_popup_cfm {display:none;position:absolute;left:50%;top:50%;width:100%;z-index:25; max-width: 485px; margin-left: -242px;}
 	.entry_popup_cfm .entry_popup_cfm_in {position:relative;margin:0 auto;}
 	.entry_popup_cfm .pop_close_btn {position:absolute;right:10px;top:10px;}
 
-	/*ÀÀ¸ðÇÏ±âÆË¾÷ skin */
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½Ë¾ï¿½ skin */
 	.entry_popup.green .event_popup_in {background: #e5f4ee;}
 	.entry_popup.green .experience_event .apply_agreement .tbl_agreement th {background: #e5f4ee; border-color: #e5f4ee;}
 	.entry_popup.green h5 span.num,
@@ -357,7 +364,7 @@
 	.event-sns-template {max-width:1200px;margin:0 auto;}
 	.event-sns-template .sbj {text-align: center; margin: 5px 0 0 0;}
 	.event-sns-template .summary-visual {position:relative;}
-	.event-sns-template .summary-visual a {display:block;background:url('/lgekor/asset/event/common/blank.gif') 0 0 repeat;/*background-color:red;opacity:0.5;*/}
+	.event-sns-template .summary-visual a {display:block;background:url('https://www.lge.co.kr/lgekor/asset/event/common/blank.gif') 0 0 repeat;/*background-color:red;opacity:0.5;*/}
 	.event-sns-template .event-sns {position:relative;margin:0 auto;padding: 0;text-align:left;border-top:0;}
 	.event-sns-template .event-sns .ttalk-container {padding:30px 50px;margin-top:0;border:0;background-color:#fff;}
 	.event-sns-template .event-sns .evt_pop {display:none;position:absolute;top:0;left:0;width:100%;z-index:1000;}
@@ -366,7 +373,7 @@
 	.event-sns-template .event-sns .evt_pop .pop_cont {margin-top:30px;}
 	.event-sns-template .event-sns .evt_pop .pop_tit {padding:0;font-size:24px;font-weight:600;text-align:center;}
 	.event-sns-template .event-sns .evt_pop .info_input {padding-top:20px;}
-	.event-sns-template .event-sns .evt_pop .info_input .info_input_tit {padding:0 0 11px 5px;font-size:16px;font-weight:400;background:url('/lgekor/asset/ttalk/common/images/info_input_titbg.gif') 0 bottom repeat-x;}
+	.event-sns-template .event-sns .evt_pop .info_input .info_input_tit {padding:0 0 11px 5px;font-size:16px;font-weight:400;background:url('https://www.lge.co.kr/lgekor/asset/ttalk/common/images/info_input_titbg.gif') 0 bottom repeat-x;}
 	.event-sns-template .event-sns .evt_pop .info_input .info_input_cont {margin:5px 0 0 0;padding-left:1%;overflow:hidden;}
 	.event-sns-template .event-sns .evt_pop .info_input .info_input_cont li {font-size:14px;color:#777;line-height:30px;font-weight:200;margin:10px 0;display: table; width:100%;}
 	.event-sns-template .event-sns .evt_pop .info_input .info_input_cont li > label {position:relative;display:table-cell;width:90px;margin-top: 6px;padding:5px 0 0 7px;font-size:14px;vertical-align: top;}
@@ -404,7 +411,7 @@
 	.event-sns-template .event-sns .evt_pop .pop_notice_list li:first {margin-top:0;}
 	.event-sns-template .event-sns .evt_pop .pop_notice_list li:before {position:absolute;left:0;top:0;content:'-';}
 
-	/* Ã¼Çè´Ü popup */
+	/* Ã¼ï¿½ï¿½ï¿½ popup */
 	.experience_event .layer_apply{border:5px solid #cecece; position: relative;z-index: 10;  width: 900px;margin: 0 auto;  padding: 0 0;  background-color: #fff;  text-align: left;  -webkit-box-sizing: border-box;  box-sizing: border-box;}
 	.experience_event .layer_head{padding: 40px 0 30px; margin:0;}
 	.experience_event .layer_head .txt_add {margin-top: 0; font-size:25px; color:#000; font-weight: bold;}
@@ -477,7 +484,7 @@
 	.experience_event .layer_body.on:after {display: block;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;opacity: 0.5;content: '';}
 	.experience_event .layer_body.on .loading {position: fixed; top: 50%; left: 50%; z-index: 10; transform: translate(-50%, -50%);}
 	
-	/* º»ÀÎ ÀÎÁõ  ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ë¾ï¿½ */
 	.eventEntryPop:before {position: fixed; top: 0; left: 0; content:''; z-index: 10; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);}
 	.eventEntryPopIn {
 		display: block; position: absolute; bottom: 0; left: 50%; border: 1px solid #ebebeb; padding: 40px; background: #fff; 
@@ -487,8 +494,8 @@
 	.eventEntryPop .sbjInfo {color: #666; margin: 5px 0 0 0;}
 	.entryBox {overflow: hidden; margin: 15px 0 0 -4%;}
 	.entryBox .sellEntry, .entryBox .ipinEntry {float: left; width: 46%; box-sizing: border-box; cursor: pointer; text-decoration: none; margin-left: 4%;}
-	.entryBox .sellEntry {background: #f1f1f1 url('/lgekor/asset/images/web/event/phone_entry.png') no-repeat 20px 50% !important; padding: 20px 20px 20px 65px;}
-	.entryBox .ipinEntry {background: #f1f1f1 url('/lgekor/asset/images/web/event/ipin_entry.png') no-repeat 20px 50% !important; padding: 20px 20px 20px 55px;}
+	.entryBox .sellEntry {background: #f1f1f1 url('https://www.lge.co.kr/lgekor/asset/images/web/event/phone_entry.png') no-repeat 20px 50% !important; padding: 20px 20px 20px 65px;}
+	.entryBox .ipinEntry {background: #f1f1f1 url('https://www.lge.co.kr/lgekor/asset/images/web/event/ipin_entry.png') no-repeat 20px 50% !important; padding: 20px 20px 20px 55px;}
 	.entryBox .sellEntry .tit, .entryBox .ipinEntry .tit {font-size: 20px; color: #000; font-weight: bold;}
 	.entryBox .sellEntry .txt, .entryBox .ipinEntry .txt {color: #666; margin: 5px 0 0 0; word-break: keep-all;}
 
@@ -503,24 +510,24 @@
 .event_list_top .swiper-container .swiper-slide .txt_con.caresolution{position:absolute;top:75%;left:12.6%;width:100%;}
 .event_list_top .swiper-container .swiper-slide .txt_con.caresolution a{text-indent:-9999px;width: 11%; border:none;}
 
-.event_list_top .swiper-container .swiper_prev{background-image:url(/lgekor/asset/images/web/theme/lgdualscreen/ico_prev.png);left:0;}
-.event_list_top .swiper-container .swiper_next{background-image:url(/lgekor/asset/images/web/theme/lgdualscreen/ico_next.png);right:0;}
+.event_list_top .swiper-container .swiper_prev{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/theme/lgdualscreen/ico_prev.png);left:0;}
+.event_list_top .swiper-container .swiper_next{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/theme/lgdualscreen/ico_next.png);right:0;}
 .event_list_top .swiper-pagination-wrap{position:absolute;bottom:36px;width:100%;text-align:center;z-index: 10;}
 .event_list_top .swiper-container-horizontal .swiper-pagination-bullets{display:inline-block;position:relative;width:auto;}
 .event_list_top .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet{position:relative;top:0;left:0;width:14px;height:14px;background:#fff !important;border:1px solid #c7c7c7;border-radius:14px;margin:0 3px;}
 .event_list_top .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active{width:25px;background:#dc1e58 !important;border:1px solid #dc1e58;}
 .event_list_top .swiper-pagination-wrap .swiper-pagination-control{display:inline-block;}
-.event_list_top .swiper-pagination-wrap .swiper_start{background-image:url(/lgekor/asset/images/web/newmain/common/bx-start.png);background-repeat:no-repeat;background-position:50% 50%; width:16px; height:18px;text-indent: -9999px;outline: 0;}
+.event_list_top .swiper-pagination-wrap .swiper_start{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/newmain/common/bx-start.png);background-repeat:no-repeat;background-position:50% 50%; width:16px; height:18px;text-indent: -9999px;outline: 0;}
 .event_list_top .swiper-pagination-wrap .swiper_start:hover,
-.event_list_top .swiper-pagination-wrap .swiper_start.active{background-image:url(/lgekor/asset/images/web/newmain/common/bx-start-active.png);}
-.event_list_top .swiper-pagination-wrap .swiper_stop{background-image:url(/lgekor/asset/images/web/newmain/common/bx-stop.png);background-repeat:no-repeat;background-position:50% 50%; width:14px; height:18px;text-indent: -9999px;outline: 0;}
+.event_list_top .swiper-pagination-wrap .swiper_start.active{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/newmain/common/bx-start-active.png);}
+.event_list_top .swiper-pagination-wrap .swiper_stop{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/newmain/common/bx-stop.png);background-repeat:no-repeat;background-position:50% 50%; width:14px; height:18px;text-indent: -9999px;outline: 0;}
 .event_list_top .swiper-pagination-wrap .swiper_stop:hover,
-.event_list_top .swiper-pagination-wrap .swiper_stop.active{background-image:url(/lgekor/asset/images/web/newmain/common/bx-stop-active.png);}
+.event_list_top .swiper-pagination-wrap .swiper_stop.active{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/newmain/common/bx-stop-active.png);}
 .event_list_top .txt_con{text-align:left;}
 .event_list_top .txt_con .tit{display:block;font-size:38px;font-weight:bold;}	
 .event_list_top .txt_con .s_txt{display:block;font-size:18px;margin-top:20px;}
 .event_list_top .txt_con .date{display:block;font-size:18px;font-weight:bold;}
-.event_list_top .go_detail{ display: inline-block; margin-top: 10px; padding: 0 30px; font-size: 16px; color: #000; line-height: 34px; border: 1px solid #000;font-family: 'LGSmHaR','inherit';background:url(/lgekor/asset/images/mobile/event/transparent.png);}
+.event_list_top .go_detail{ display: inline-block; margin-top: 10px; padding: 0 30px; font-size: 16px; color: #000; line-height: 34px; border: 1px solid #000;font-family: 'LGSmHaR','inherit';background:url(https://www.lge.co.kr/lgekor/asset/images/mobile/event/transparent.png);}
 .event_list_top .txt_con.supporters .tit{height:1px;color:transparent;overflow:hidden;text-indent:-9999px;}
 .event_list_top .txt_con.supporters .s_txt{height:1px;color:transparent;overflow:hidden;text-indent:-9999px;}
 .event_list_top .txt_con.supporters .date{height:1px;color:transparent;overflow:hidden;text-indent:-9999px;}
@@ -555,8 +562,8 @@
 .search-contents.type2 .array > li>a{display:block;color:#333;padding:14px 20px;}	
 .search-contents.type2 .array > li.on>a,.search-contents.type2 .array > li>a:hover, .search-contents.type2 .array > li.on>button{color:#e42f66;padding:14px 20px;}
 .search-contents.type2 .array > li.has_list>a{display:block;width:100%;box-sizing:border-box;font-family: 'LGSmHaR';font-size:16px;padding:14px 20px;}
-.search-contents.type2 .array > li.has_list>a>span{display:inline-block;padding-right:20px;background-image:url(/lgekor/asset/images/web/event/ico_down.png);background-repeat:no-repeat;background-position:right 50%;}
-.search-contents.type2 .array > li.has_list.on>a>span{background-image:url(/lgekor/asset/images/web/event/ico_up.png);}
+.search-contents.type2 .array > li.has_list>a>span{display:inline-block;padding-right:20px;background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/event/ico_down.png);background-repeat:no-repeat;background-position:right 50%;}
+.search-contents.type2 .array > li.has_list.on>a>span{background-image:url(https://www.lge.co.kr/lgekor/asset/images/web/event/ico_up.png);}
 .search-contents.type2 .array > li .product_list{display:none;position:absolute;top:45px;left:0;z-index:3;}
 .search-contents.type2 .array > li.on .product_list{display:block;}
 .search-contents.type2 .product_list ul{background:#fff;padding:23px 8px;border:1px solid #bbbbbb;border-top:1px solid #e42f66;min-width:115px;box-sizing:border-box;}
@@ -796,11 +803,11 @@ only screen and (max-device-width: 767px) {
 	/* list-type-event */
 	.responsive.event h4 + .list-type-event { margin-top: 0px; }
 	.responsive.event .search-contents + .list-type-event { margin-top: 0px; }
-	.list-type-event { overflow: hidden; margin: 0; /* background-color: #f3f3f3; 2019-12-10 »èÁ¦ */ }
+	.list-type-event { overflow: hidden; margin: 0; /* background-color: #f3f3f3; 2019-12-10 ï¿½ï¿½ï¿½ï¿½ */ }
 	.list-type-event > li { float: none; box-sizing: border-box; width: 100%; margin: 0; padding: 20px 20px 0 20px; }
 	.list-type-event > li.none { font-size: 16px; }
 	.list-type-event > li:nth-child(4n+4) { margin-right: 0px; }
-	.list-type-event .event-item { display: block; /* border: 0px none; 2019-12-10 »èÁ¦ */ background-color: #fff;}
+	.list-type-event .event-item { display: block; /* border: 0px none; 2019-12-10 ï¿½ï¿½ï¿½ï¿½ */ background-color: #fff;}
 	.list-type-event .event-item > .thumb { position: relative; height: auto; line-height: auto; background-color: #fff; }
 	.list-type-event .event-item > .thumb img { display: block; width: 100%; }
 	.list-type-event .event-item > .info { padding: 15px 15px 16px 15px; }
@@ -821,7 +828,7 @@ only screen and (max-device-width: 767px) {
 	    input[type=text], input[type=password] {
 	        height: 32px; width: auto; padding: 0 0 0 10px; font-size: 12px; color: #333; line-height: 30px; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 4px; background-color: #f6f7f9;
 	    }
-	    select { display: inline-block; height: 32px; min-width: 80px; padding: 7px 20px 6px 8px; font-size: 12px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('/lgekor/asset/images/web/common/bg_select01.png') right top no-repeat; }
+	    select { display: inline-block; height: 32px; min-width: 80px; padding: 7px 20px 6px 8px; font-size: 12px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('https://www.lge.co.kr/lgekor/asset/images/web/common/bg_select01.png') right top no-repeat; }
 
 		.event-monthly-template img { width: 100%; }
 
@@ -830,7 +837,7 @@ only screen and (max-device-width: 767px) {
 		.event-monthly-template .summary-info strong { font-weight: normal; }
 		.event-monthly-template .summary-info .detail-info { display: block; width: 100%; margin-top: 18px; }
 		.event-monthly-template .summary-info .detail-info > p { display: block; position: relative; box-sizing: border-box; height: 80px; padding: 12px 0 0 140px; font-size: 12px; line-height: 1.417; text-align: left; border-top: 1px solid #c3abb5; border-left: 0px none; }
-		.event-monthly-template .summary-info .detail-info > p:before { content: ''; display: block; position: absolute; top: 50%; left: 18px; margin: -33px 0 0 0; height: 65px; width: 95px; background-image: url('/lgekor/asset/images/mobile/event/bg_event_info.png'); background-size: 285px 65px; }
+		.event-monthly-template .summary-info .detail-info > p:before { content: ''; display: block; position: absolute; top: 50%; left: 18px; margin: -33px 0 0 0; height: 65px; width: 95px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/mobile/event/bg_event_info.png'); background-size: 285px 65px; }
 		.event-monthly-template .summary-info .detail-info > p.period { padding-top: 19px; }
 		.event-monthly-template .summary-info .detail-info > p.period:before { background-position: 0px 0px; }
 		.event-monthly-template .summary-info .detail-info > p.announcement:before { background-position: -95px 0px; }
@@ -924,7 +931,7 @@ only screen and (max-device-width: 767px) {
 
 			.event-benefit-template .event-benefit { position: relative; padding: 0 20px 20px 20px; }
 			.event-benefit-template .event-benefit:before { content: none; }
-			.event-benefit-template .event-benefit:before { content: ''; display: block; position: absolute; top: 5px; left: 20px; height: 65px; width: 59px; background-image: url('/lgekor/asset/images/mobile/event/bg_event_benefit01.png'); background-repeat: no-repeat; background-size: 177px 65px; }
+			.event-benefit-template .event-benefit:before { content: ''; display: block; position: absolute; top: 5px; left: 20px; height: 65px; width: 59px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/mobile/event/bg_event_benefit01.png'); background-repeat: no-repeat; background-size: 177px 65px; }
 			.event-benefit-template .event-benefit.benefit01 { background-color: #f55d65; }
 			.event-benefit-template .event-benefit.benefit01:before { background-position: 0px 0px; }
 			.event-benefit-template .event-benefit.benefit02 { background-color: #1cb8b6; }
@@ -960,7 +967,7 @@ only screen and (max-device-width: 767px) {
 		.event-sns-template .summary-info strong { font-weight: normal; }
 		.event-sns-template .summary-info .detail-info { display: block; width: 100%; }
 		.event-sns-template .summary-info .detail-info > p { display: block; position: relative; box-sizing: border-box; height: 80px; padding: 12px 0 0 140px; font-size: 12px; line-height: 1.417; text-align: left; border-top: 1px solid #c3abb5; border-left: 0px none; }
-		.event-sns-template .summary-info .detail-info > p:before { content: ''; display: block; position: absolute; top: 50%; left: 18px; margin: -33px 0 0 0; height: 65px; width: 95px; background-image: url('/lgekor/asset/images/mobile/event/bg_event_info.png'); background-size: 285px 65px; }
+		.event-sns-template .summary-info .detail-info > p:before { content: ''; display: block; position: absolute; top: 50%; left: 18px; margin: -33px 0 0 0; height: 65px; width: 95px; background-image: url('https://www.lge.co.kr/lgekor/asset/images/mobile/event/bg_event_info.png'); background-size: 285px 65px; }
 		.event-sns-template .summary-info .detail-info > p:first-child { border-top: 0px none; }
 		.event-sns-template .summary-info .detail-info > p.period { padding-top: 19px; }
 		.event-sns-template .summary-info .detail-info > p.period:before { background-position: 0px 0px; }
@@ -970,13 +977,13 @@ only screen and (max-device-width: 767px) {
 		.event-sns-template .summary-info .detail-info small { display: block; font-size: 9px; }
 
 		.event-sns-template .event-sns { position: relative; padding: 19px 0px 25px 0px; text-align: center; border-top: 1px solid #cdcdcd; }
-		.event-sns-template .event-sns .badge { display: block; position: absolute; top: 0; left: 0; height: 47px; width: 47px; text-indent: -9999px; background: url('/lgekor/asset/images/mobile/event/badge_quiz.png') left top no-repeat; background-size: 100%; }
+		.event-sns-template .event-sns .badge { display: block; position: absolute; top: 0; left: 0; height: 47px; width: 47px; text-indent: -9999px; background: url('https://www.lge.co.kr/lgekor/asset/images/mobile/event/badge_quiz.png') left top no-repeat; background-size: 100%; }
 		.event-sns-template .event-sns .question { font-size: 12px; color: #333; }
 		.event-sns-template .event-sns .title { margin-top: 4px; font-size: 18px; font-weight: normal; color: #333; }
 		.event-sns-template .event-sns .choose-answer { position: relative; overflow: hidden; margin: 17px 20px 0 20px; padding: 20px 0; border: 1px solid #de296b; }
 		.event-sns-template .event-sns .choose-answer input[type=radio] { position: absolute; top: -30px; left: -30px; }
 		.event-sns-template .event-sns .choose-answer input[type=radio] + label { display: inline-block; position: relative; margin: 0 3%; padding-left: 20px; font-size: 16px; font-weight: normal; color: #222; text-align: left; }
-		.event-sns-template .event-sns .choose-answer input[type=radio] + label:before { content: ''; display: block; position: absolute; top: 50%; left: 0; height: 14px; width: 14px; margin-top: -7px; background: url('/lgekor/asset/images/mobile/event/template_radio.png') left top no-repeat; background-size: 28px 14px; }
+		.event-sns-template .event-sns .choose-answer input[type=radio] + label:before { content: ''; display: block; position: absolute; top: 50%; left: 0; height: 14px; width: 14px; margin-top: -7px; background: url('https://www.lge.co.kr/lgekor/asset/images/mobile/event/template_radio.png') left top no-repeat; background-size: 28px 14px; }
 		.event-sns-template .event-sns .choose-answer input[type=radio]:checked + label:before { background-position: -14px 0; }
 		.event-sns-template .event-sns .tip { margin-top: 15px; font-size: 16px; color: #333; }
 		.event-sns-template .event-sns .ttalk-container { margin-top: 24px; padding: 15px; border: 0px none; border-top: 1px solid #ccc; background-color: #fff; }
@@ -1001,7 +1008,7 @@ only screen and (max-device-width: 767px) {
 		.event-sns-template .event-sns .evt_pop .info_input .info_input_cont input[type=tel]  {max-width: 90%;}
 
 
-	/* ÀÀ¸ð ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ */
 	.sns-template { }
     .sns-template { top:0 !important; width: 100%; }
     .sns-template .close { top: 8px; right: 20px; color: #fff }
@@ -1011,7 +1018,7 @@ only screen and (max-device-width: 767px) {
 	.sns-template .poptit em { color: #e24841; }
 	.sns-template .forms { padding: 0px; }
     .sns-template .forms input[type=text], input[type=password] { height: 32px; width: auto; padding: 0 0 0 10px; font-size: 12px; color: #333; line-height: 30px; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 4px; background-color: #f6f7f9; }
-    .sns-template .forms select { display: inline-block; height: 32px; min-width: 80px; padding: 7px 20px 6px 8px; font-size: 12px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('/lgekor/asset/images/web/common/bg_select01.png') right top no-repeat; }
+    .sns-template .forms select { display: inline-block; height: 32px; min-width: 80px; padding: 7px 20px 6px 8px; font-size: 12px; color: #333; vertical-align: middle; border: 1px solid #b4bec8; border-radius: 5px; background: #f6f7f9 url('https://www.lge.co.kr/lgekor/asset/images/web/common/bg_select01.png') right top no-repeat; }
 	.sns-template .forms { overflow: hidden; padding: 0px 0px 20px 0px; }
 	.sns-template .forms label { min-width: 90px; text-align: left; font-size: 12px; }
 	.sns-template .forms .controls { padding: 7px 0 8px 0; border-top: 0px; }
@@ -1063,7 +1070,7 @@ only screen and (max-device-width: 767px) {
 		/* search winner */
 		.search-winner { width: 100%; }
 	
-	/* Ã¼Çè´Ü popup */
+	/* Ã¼ï¿½ï¿½ï¿½ popup */
 	.experience_event .layer_body {padding: 30px 0 0 0;}
 	.experience_event .layer_body .tit_layer {font-size: 18px;}
 	.experience_event .info_volunteer {width: 92%;}
@@ -1093,7 +1100,7 @@ only screen and (max-device-width: 767px) {
 	.experience_event .wrap_btn .btn_cfm {padding: 12px; font-size: 16px;}
 	.experience_event .apply_agreement .lab_agree {font-size: 14px;}
 
-	/* º»ÀÎ ÀÎÁõ  ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ë¾ï¿½ */
 	.eventEntryPopIn {min-width: 100%; box-sizing:border-box; padding: 20px;}
 	.eventEntryPopIn h2 {font-size: 1.2em;}
 	.eventEntryPopIn .sbjInfo {font-size: 14px;}
@@ -1112,7 +1119,7 @@ only screen and (max-device-width: 767px) {
 	.event-benefit-template .event-benefit .list-models { }
 	.event-benefit-template .event-benefit .list-models > li { font-size: 12px; }
 
-	/* ÀÀ¸ð ÆË¾÷ */
+	/* ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ */
 	.sns-template .forms label { min-width: 60px; }
 	.sns-template .forms select.domain { margin-left: 185px; }
 
