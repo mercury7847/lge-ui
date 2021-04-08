@@ -617,27 +617,17 @@
                     }
                     .tit-wrap {
                         .name {
-                            font-size:18px;
-                            line-height:24px;
+                            @include font-large;
                             font-weight:700;
                         }
                     }
                     .adress {
                         margin-top:8px;
-                        font-size:14px;
-                        line-height:20px;
-                        @include csmobile {
-                            margin-top:16px;
-                            font-size:13px;
-                            line-height:16px;
-                        }
+                        @include font-medium;
                     }
                     .store-info {
                         margin-top:4px;
                         font-size:0;
-                        @include csmobile {
-                            margin-top:2px;
-                        }
                         dl {
                             display:inline-block;
                             margin-left:8px;
@@ -667,12 +657,8 @@
                     .hour-info {
                         margin-top:4px;
                         font-size:0;
-                        @include csmobile {
-                            margin-top:12px;
-                        }
                         dl {
                             display:inline-block;
-                            width:50%;
                             vertical-align:middle;
                             font-size:0;
                             dt, dd {
@@ -681,33 +667,33 @@
                                 @include font-small;
                                 font-weight: $font-weight-medium;
                             }
-                            dt {
-                                &:after {
-                                    display: inline-block;
-                                    content: ':';
-                                    padding: 0 4px;
-                                }
-                            }
                             dd {
                                 color: $color-gray-1;
-                                @include csmobile {
-
+                            }
+                            & + {
+                                dl {
+                                    margin-left:24px;
                                 }
                             }
                         }
+                        @include mobile {
+                            margin-top:8px;
+                        }
                     }
                     .btn-group {
-                        margin-top:12px;
+                        margin-top:24px;
                         .btn {
                             width:152px;
-                            //padding:8px 0;
-                            @include csmobile {
+                            border-radius:16px;
+                            border-color:#666;
+                            background:#666;
+                        }
+                        @include csmobile {
+                            margin-top:20px;
+                            .btn {
                                 width:138px;
                                 margin-left:4px;
-                                padding:10px 0;
-                                font-size:14px;
-                                border-radius:4px;
-                                border-color:#666;
+                                border-radius:34px;
                                 &:first-child {
                                     margin-left:0;
                                 }
@@ -1407,11 +1393,12 @@
                     .status-icon {
                         position:absolute;
                         right:0;
-                        top:3px;
+                        top:1px;
                     }
                 }
                 .useable-service {
                     display: none;
+                    margin-top:8px;
                     font-size:14px;
                     line-height:1.4;
         
