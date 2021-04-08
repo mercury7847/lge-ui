@@ -12,6 +12,7 @@
 
             self.$wrap = $('.ev-detail-wrap');
 
+            console.log(self.$wrap, self.$wrap.find('.ui_recom_carousel'));
             self.$wrap.find('.ui_recom_carousel').vcCarousel({
                 infinite: false,
                 autoplay: false,
@@ -21,18 +22,20 @@
                     {
                         breakpoint: 768,
                         settings: {
-                            variableWidth: true,
+                            //variableWidth: true,
                             slidesToScroll: 1,
                             slidesToShow: 1
                         }
-                    },
+                    }
+                    /*,
                     {
-                        breakpoint: 769,
+                        breakpoint: 1000,
                         settings: {
                             slidesToScroll: 4,
                             slidesToShow: 1
                         }
                     }
+                    */
                 ]
             });
 
