@@ -1197,6 +1197,32 @@
             }
         ]
     }
+    var bestSeller = {
+        bestConfig: [{
+                defaultCode: "M870AAA451",
+                modelCode: "M870GBB451",
+                door1: "D870TT-GBE",
+                door2: "D870BB-GBE",
+                door3: "D870BB-GBE",
+                door4: "",
+            },
+            {
+                defaultCode: "M870AAA451",
+                modelCode: "M870SGS451",
+                door1: "D870TT-SGR",
+                door2: "D870BB-SSV",
+                door3: "D870BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "M870AAA451",
+                modelCode: "M870GSM451S",
+                door1: "D870TT-GSV",
+                door2: "D870BB-GMN",
+                door3: "D870BB-GMN",
+                door4: "",
+            }
+        ]
+    }
     var proposeSet = {
         proposeConfig: [{
                 defaultCode: "M620AAA351",
@@ -4464,203 +4490,347 @@
                         _thisModel.push(proposeSet.proposeConfig[i]);
                     }
                 }
-                if (_thisModel.length > 0) {
-                    let imgCate;
-
-                    let imgCate2;
-                    if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
-                        imgCate = "rf";
-                        imgCate2 = "refrigerator";
-                    } else if (modelcate == "refrigerator_kimchi") {
-                        imgCate = "rf_kim";
-                        imgCate2 = "refrigerator_kimchi";
-                    } else if (modelcate == "refrigerator_convertible") {
-                        imgCate = "rf_con";
-                        imgCate2 = "refrigerator_convertible";
+                let _bestModel = [];
+                for (let i = 0; i < bestSeller.bestConfig.length; i++) {
+                    if (modelCode == bestSeller.bestConfig[i].defaultCode) {
+                        _bestModel.push(bestSeller.bestConfig[i]);
                     }
-                    let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
-                    let contFHtml = '';
-                    contFHtml += '<div class="swiper-slide">';
-                    contFHtml += '   <dl>';
-                    contFHtml += '       <dt>페닉스</dt>';
-                    contFHtml += '       <dd>';
-                    contFHtml += '           <ul>';
-                    let contSHtml = '';
-                    contSHtml += '<div class="swiper-slide">';
-                    contSHtml += '   <dl>';
-                    contSHtml += '       <dt>솔리드</dt>';
-                    contSHtml += '       <dd>';
-                    contSHtml += '           <ul>';
-                    let contMHtml = '';
-                    contMHtml += '<div class="swiper-slide">';
-                    contMHtml += '   <dl>';
-                    contMHtml += '       <dt>미스트</dt>';
-                    contMHtml += '       <dd>';
-                    contMHtml += '           <ul>';
-                    let contGHtml = '';
-                    contGHtml += '<div class="swiper-slide">';
-                    contGHtml += '   <dl>';
-                    contGHtml += '       <dt>네이쳐</dt>';
-                    contGHtml += '       <dd>';
-                    contGHtml += '           <ul>';
-                    for (let i = 0; i < _thisModel.length; i++) {
-                        let _modelDefaultCode = _thisModel[i].defaultCode;
-                        let _modelCode = _thisModel[i].modelCode;
+                }
+                let contFHtml = '';
+                let contSHtml = '';
+                let contMHtml = '';
+                let contGHtml = '';
+                let contHtml = '';
+                if (_thisModel.length > 0 || _bestModel.length > 0) {
+                    if (_thisModel.length > 0) {
+                        let imgCate;
 
-                        let _doorCode1 = _thisModel[i].door1;
-                        let _doorCode2 = _thisModel[i].door2;
-                        let _doorCode3 = _thisModel[i].door3;
-                        let _doorCode4 = _thisModel[i].door4;
-                        let _doorInfo1 = _doorCode1.slice(-3);
-                        let _doorInfo2 = _doorCode2.slice(-3);
-                        let _doorInfo3 = _doorCode3.slice(-3);
-                        let _doorInfo4 = _doorCode4.slice(-3);
-                        let _doorFrontInfo1 = _doorCode1.split('-');
-                        let _doorFrontInfo2 = _doorCode2.split('-');
-                        let _doorFrontInfo3 = _doorCode3.split('-');
-                        let _doorFrontInfo4 = _doorCode4.split('-');
-                        let _doorInfoMaterial = [];
-                        let _doorInfoColor = [];
-                        let _doorInfoLocation = [];
-                        let _doorFrontInfo = [];
-                        let _doorInfoKMaterial = [];
-                        let _doorInfoKColor = [];
-                        _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
-                        _doorInfoColor.push(_doorInfo1.substring(1, 3));
-                        _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
-                        _doorInfoColor.push(_doorInfo2.substring(1, 3));
-                        _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
-                        _doorInfoColor.push(_doorInfo3.substring(1, 3));
-                        _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
-                        _doorInfoColor.push(_doorInfo4.substring(1, 3));
-                        _doorInfoLocation.push(_doorCode1.slice(-6, -4));
-                        _doorInfoLocation.push(_doorCode2.slice(-6, -4));
-                        _doorInfoLocation.push(_doorCode3.slice(-6, -4));
-                        _doorInfoLocation.push(_doorCode4.slice(-6, -4));
-                        _doorFrontInfo.push(_doorFrontInfo1[0]);
-                        _doorFrontInfo.push(_doorFrontInfo2[0]);
-                        _doorFrontInfo.push(_doorFrontInfo3[0]);
-                        _doorFrontInfo.push(_doorFrontInfo4[0]);
-                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                            if (_doorInfoMaterial[j] == "F") {
-                                _doorInfoKMaterial[j] = "페닉스"
-                            } else if (_doorInfoMaterial[j] == "S") {
-                                _doorInfoKMaterial[j] = "솔리드"
-                            } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
-                                _doorInfoKMaterial[j] = "네이쳐"
-                            }
+                        let imgCate2;
+                        if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
+                            imgCate = "rf";
+                            imgCate2 = "refrigerator";
+                        } else if (modelcate == "refrigerator_kimchi") {
+                            imgCate = "rf_kim";
+                            imgCate2 = "refrigerator_kimchi";
+                        } else if (modelcate == "refrigerator_convertible") {
+                            imgCate = "rf_con";
+                            imgCate2 = "refrigerator_convertible";
                         }
-                        for (let j = 0; j < _doorInfoColor.length; j++) {
-                            if (_doorInfoColor[j] == "BT") {
-                                _doorInfoKColor[j] = "보타닉"
-                            } else if (_doorInfoColor[j] == "SD") {
-                                _doorInfoKColor[j] = "샌드"
-                            } else if (_doorInfoColor[j] == "ST") {
-                                _doorInfoKColor[j] = "스톤"
-                            } else if (_doorInfoColor[j] == "SV") {
-                                _doorInfoKColor[j] = "실버"
-                            } else if (_doorInfoColor[j] == "GR") {
-                                _doorInfoKColor[j] = "그린"
-                            } else if (_doorInfoColor[j] == "MT") {
-                                _doorInfoKColor[j] = "맨해튼 미드나잇"
-                            } else if (_doorInfoColor[j] == "BE") {
-                                _doorInfoKColor[j] = "베이지"
-                            } else if (_doorInfoColor[j] == "MN") {
-                                _doorInfoKColor[j] = "민트"
-                            } else if (_doorInfoColor[j] == "PK") {
-                                _doorInfoKColor[j] = "핑크"
-                            } else if (_doorInfoColor[j] == "SV") {
-                                _doorInfoKColor[j] = "실버"
-                            } else if (_doorInfoColor[j] == "WH") {
-                                _doorInfoKColor[j] = "화이트"
-                            } else if (_doorInfoColor[j] == "GY") {
-                                _doorInfoKColor[j] = "그레이"
-                            } else if (_doorInfoColor[j] == "BK") {
-                                _doorInfoKColor[j] = "블랙"
-                            }
-                        }
+                        let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
+                        contFHtml = '';
+                        contFHtml += '<div class="swiper-slide">';
+                        contFHtml += '   <dl>';
+                        contFHtml += '       <dt>페닉스</dt>';
+                        contFHtml += '       <dd>';
+                        contFHtml += '           <ul>';
+                        contSHtml = '';
+                        contSHtml += '<div class="swiper-slide">';
+                        contSHtml += '   <dl>';
+                        contSHtml += '       <dt>솔리드</dt>';
+                        contSHtml += '       <dd>';
+                        contSHtml += '           <ul>';
+                        contMHtml = '';
+                        contMHtml += '<div class="swiper-slide">';
+                        contMHtml += '   <dl>';
+                        contMHtml += '       <dt>미스트</dt>';
+                        contMHtml += '       <dd>';
+                        contMHtml += '           <ul>';
+                        contGHtml = '';
+                        contGHtml += '<div class="swiper-slide">';
+                        contGHtml += '   <dl>';
+                        contGHtml += '       <dt>네이쳐</dt>';
+                        contGHtml += '       <dd>';
+                        contGHtml += '           <ul>';
+                        for (let i = 0; i < _thisModel.length; i++) {
+                            let _modelDefaultCode = _thisModel[i].defaultCode;
+                            let _modelCode = _thisModel[i].modelCode;
 
-                        if (_doorInfoMaterial[0] == "F") {
-                            contFHtml += '<li>';
-                            contFHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
-                            contFHtml += '      <div class="mini_model_wrap">';
+                            let _doorCode1 = _thisModel[i].door1;
+                            let _doorCode2 = _thisModel[i].door2;
+                            let _doorCode3 = _thisModel[i].door3;
+                            let _doorCode4 = _thisModel[i].door4;
+                            let _doorInfo1 = _doorCode1.slice(-3);
+                            let _doorInfo2 = _doorCode2.slice(-3);
+                            let _doorInfo3 = _doorCode3.slice(-3);
+                            let _doorInfo4 = _doorCode4.slice(-3);
+                            let _doorFrontInfo1 = _doorCode1.split('-');
+                            let _doorFrontInfo2 = _doorCode2.split('-');
+                            let _doorFrontInfo3 = _doorCode3.split('-');
+                            let _doorFrontInfo4 = _doorCode4.split('-');
+                            let _doorInfoMaterial = [];
+                            let _doorInfoColor = [];
+                            let _doorInfoLocation = [];
+                            let _doorFrontInfo = [];
+                            let _doorInfoKMaterial = [];
+                            let _doorInfoKColor = [];
+                            _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo1.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo2.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo3.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo4.substring(1, 3));
+                            _doorInfoLocation.push(_doorCode1.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode2.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode3.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode4.slice(-6, -4));
+                            _doorFrontInfo.push(_doorFrontInfo1[0]);
+                            _doorFrontInfo.push(_doorFrontInfo2[0]);
+                            _doorFrontInfo.push(_doorFrontInfo3[0]);
+                            _doorFrontInfo.push(_doorFrontInfo4[0]);
                             for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                                if (_doorInfoMaterial[j] != "") {
-                                    contFHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                if (_doorInfoMaterial[j] == "F") {
+                                    _doorInfoKMaterial[j] = "페닉스"
+                                } else if (_doorInfoMaterial[j] == "S") {
+                                    _doorInfoKMaterial[j] = "솔리드"
+                                } else if (_doorInfoMaterial[j] == "M") {
+                                    _doorInfoKMaterial[j] = "미스트"
+                                } else if (_doorInfoMaterial[j] == "G") {
+                                    _doorInfoKMaterial[j] = "네이쳐"
                                 }
                             }
-                            contFHtml += '      </div>';
-                            contFHtml += '      <span>' + _modelCode + '</span>';
-                            contFHtml += '  </button>';
-                            contFHtml += '</li>';
-                        } else if (_doorInfoMaterial[0] == "S") {
-                            contSHtml += '<li>';
-                            contSHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
-                            contSHtml += '      <div class="mini_model_wrap">';
-                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                                if (_doorInfoMaterial[j] != "") {
-                                    contSHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            for (let j = 0; j < _doorInfoColor.length; j++) {
+                                if (_doorInfoColor[j] == "BT") {
+                                    _doorInfoKColor[j] = "보타닉"
+                                } else if (_doorInfoColor[j] == "SD") {
+                                    _doorInfoKColor[j] = "샌드"
+                                } else if (_doorInfoColor[j] == "ST") {
+                                    _doorInfoKColor[j] = "스톤"
+                                } else if (_doorInfoColor[j] == "SV") {
+                                    _doorInfoKColor[j] = "실버"
+                                } else if (_doorInfoColor[j] == "GR") {
+                                    _doorInfoKColor[j] = "그린"
+                                } else if (_doorInfoColor[j] == "MT") {
+                                    _doorInfoKColor[j] = "맨해튼 미드나잇"
+                                } else if (_doorInfoColor[j] == "BE") {
+                                    _doorInfoKColor[j] = "베이지"
+                                } else if (_doorInfoColor[j] == "MN") {
+                                    _doorInfoKColor[j] = "민트"
+                                } else if (_doorInfoColor[j] == "PK") {
+                                    _doorInfoKColor[j] = "핑크"
+                                } else if (_doorInfoColor[j] == "SV") {
+                                    _doorInfoKColor[j] = "실버"
+                                } else if (_doorInfoColor[j] == "WH") {
+                                    _doorInfoKColor[j] = "화이트"
+                                } else if (_doorInfoColor[j] == "GY") {
+                                    _doorInfoKColor[j] = "그레이"
+                                } else if (_doorInfoColor[j] == "BK") {
+                                    _doorInfoKColor[j] = "블랙"
                                 }
                             }
-                            contSHtml += '      </div>';
-                            contSHtml += '      <span>' + _modelCode + '</span>';
-                            contSHtml += '  </button>';
-                            contSHtml += '</li>';
-                        } else if (_doorInfoMaterial[0] == "M") {
-                            contMHtml += '<li>';
-                            contMHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
-                            contMHtml += '      <div class="mini_model_wrap">';
-                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                                if (_doorInfoMaterial[j] != "") {
-                                    contMHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+
+                            if (_doorInfoMaterial[0] == "F") {
+                                contFHtml += '<li>';
+                                contFHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                                contFHtml += '      <div class="mini_model_wrap">';
+                                for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                    if (_doorInfoMaterial[j] != "") {
+                                        contFHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                    }
                                 }
-                            }
-                            contMHtml += '      </div>';
-                            contMHtml += '      <span>' + _modelCode + '</span>';
-                            contMHtml += '  </button>';
-                            contMHtml += '</li>';
-                        } else if (_doorInfoMaterial[0] == "G") {
-                            contGHtml += '<li>';
-                            contGHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
-                            contGHtml += '      <div class="mini_model_wrap">';
-                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                                if (_doorInfoMaterial[j] != "") {
-                                    contGHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                contFHtml += '      </div>';
+                                contFHtml += '      <span>' + _modelCode + '</span>';
+                                contFHtml += '  </button>';
+                                contFHtml += '</li>';
+                            } else if (_doorInfoMaterial[0] == "S") {
+                                contSHtml += '<li>';
+                                contSHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                                contSHtml += '      <div class="mini_model_wrap">';
+                                for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                    if (_doorInfoMaterial[j] != "") {
+                                        contSHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                    }
                                 }
+                                contSHtml += '      </div>';
+                                contSHtml += '      <span>' + _modelCode + '</span>';
+                                contSHtml += '  </button>';
+                                contSHtml += '</li>';
+                            } else if (_doorInfoMaterial[0] == "M") {
+                                contMHtml += '<li>';
+                                contMHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                                contMHtml += '      <div class="mini_model_wrap">';
+                                for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                    if (_doorInfoMaterial[j] != "") {
+                                        contMHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                    }
+                                }
+                                contMHtml += '      </div>';
+                                contMHtml += '      <span>' + _modelCode + '</span>';
+                                contMHtml += '  </button>';
+                                contMHtml += '</li>';
+                            } else if (_doorInfoMaterial[0] == "G") {
+                                contGHtml += '<li>';
+                                contGHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                                contGHtml += '      <div class="mini_model_wrap">';
+                                for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                    if (_doorInfoMaterial[j] != "") {
+                                        contGHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                    }
+                                }
+                                contGHtml += '      </div>';
+                                contGHtml += '      <span>' + _modelCode + '</span>';
+                                contGHtml += '  </button>';
+                                contGHtml += '</li>';
                             }
-                            contGHtml += '      </div>';
-                            contGHtml += '      <span>' + _modelCode + '</span>';
-                            contGHtml += '  </button>';
-                            contGHtml += '</li>';
+
+
                         }
+                        contFHtml += '           </ul>';
+                        contFHtml += '       </dd>';
+                        contFHtml += '   </dl>';
+                        contFHtml += '</div>';
+                        contSHtml += '           </ul>';
+                        contSHtml += '       </dd>';
+                        contSHtml += '   </dl>';
+                        contSHtml += '</div>';
+                        contMHtml += '           </ul>';
+                        contMHtml += '       </dd>';
+                        contMHtml += '   </dl>';
+                        contMHtml += '</div>';
+                        contGHtml += '           </ul>';
+                        contGHtml += '       </dd>';
+                        contGHtml += '   </dl>';
+                        contGHtml += '</div>';
 
 
                     }
-                    contFHtml += '           </ul>';
-                    contFHtml += '       </dd>';
-                    contFHtml += '   </dl>';
-                    contFHtml += '</div>';
-                    contSHtml += '           </ul>';
-                    contSHtml += '       </dd>';
-                    contSHtml += '   </dl>';
-                    contSHtml += '</div>';
-                    contMHtml += '           </ul>';
-                    contMHtml += '       </dd>';
-                    contMHtml += '   </dl>';
-                    contMHtml += '</div>';
-                    contGHtml += '           </ul>';
-                    contGHtml += '       </dd>';
-                    contGHtml += '   </dl>';
-                    contGHtml += '</div>';
-                    $(".color_best .color_best_body .swiper-wrapper").html(contFHtml + contSHtml + contMHtml + contGHtml);
+                    if (_bestModel.length > 0) {
+                        let imgCate;
+
+                        let imgCate2;
+                        if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
+                            imgCate = "rf";
+                            imgCate2 = "refrigerator";
+                        } else if (modelcate == "refrigerator_kimchi") {
+                            imgCate = "rf_kim";
+                            imgCate2 = "refrigerator_kimchi";
+                        } else if (modelcate == "refrigerator_convertible") {
+                            imgCate = "rf_con";
+                            imgCate2 = "refrigerator_convertible";
+                        }
+                        let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
+                        contHtml = '';
+                        contHtml += '<div class="swiper-slide">';
+                        contHtml += '   <dl>';
+                        contHtml += '       <dt>베스트</dt>';
+                        contHtml += '       <dd>';
+                        contHtml += '           <ul>';
+
+                        for (let i = 0; i < _bestModel.length; i++) {
+                            let _modelDefaultCode = _bestModel[i].defaultCode;
+                            let _modelCode = _bestModel[i].modelCode;
+
+                            let _doorCode1 = _bestModel[i].door1;
+                            let _doorCode2 = _bestModel[i].door2;
+                            let _doorCode3 = _bestModel[i].door3;
+                            let _doorCode4 = _bestModel[i].door4;
+                            let _doorInfo1 = _doorCode1.slice(-3);
+                            let _doorInfo2 = _doorCode2.slice(-3);
+                            let _doorInfo3 = _doorCode3.slice(-3);
+                            let _doorInfo4 = _doorCode4.slice(-3);
+                            let _doorFrontInfo1 = _doorCode1.split('-');
+                            let _doorFrontInfo2 = _doorCode2.split('-');
+                            let _doorFrontInfo3 = _doorCode3.split('-');
+                            let _doorFrontInfo4 = _doorCode4.split('-');
+                            let _doorInfoMaterial = [];
+                            let _doorInfoColor = [];
+                            let _doorInfoLocation = [];
+                            let _doorFrontInfo = [];
+                            let _doorInfoKMaterial = [];
+                            let _doorInfoKColor = [];
+                            _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo1.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo2.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo3.substring(1, 3));
+                            _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
+                            _doorInfoColor.push(_doorInfo4.substring(1, 3));
+                            _doorInfoLocation.push(_doorCode1.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode2.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode3.slice(-6, -4));
+                            _doorInfoLocation.push(_doorCode4.slice(-6, -4));
+                            _doorFrontInfo.push(_doorFrontInfo1[0]);
+                            _doorFrontInfo.push(_doorFrontInfo2[0]);
+                            _doorFrontInfo.push(_doorFrontInfo3[0]);
+                            _doorFrontInfo.push(_doorFrontInfo4[0]);
+                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                if (_doorInfoMaterial[j] == "F") {
+                                    _doorInfoKMaterial[j] = "페닉스"
+                                } else if (_doorInfoMaterial[j] == "S") {
+                                    _doorInfoKMaterial[j] = "솔리드"
+                                } else if (_doorInfoMaterial[j] == "M") {
+                                    _doorInfoKMaterial[j] = "미스트"
+                                } else if (_doorInfoMaterial[j] == "G") {
+                                    _doorInfoKMaterial[j] = "네이쳐"
+                                }
+                            }
+                            for (let j = 0; j < _doorInfoColor.length; j++) {
+                                if (_doorInfoColor[j] == "BT") {
+                                    _doorInfoKColor[j] = "보타닉"
+                                } else if (_doorInfoColor[j] == "SD") {
+                                    _doorInfoKColor[j] = "샌드"
+                                } else if (_doorInfoColor[j] == "ST") {
+                                    _doorInfoKColor[j] = "스톤"
+                                } else if (_doorInfoColor[j] == "SV") {
+                                    _doorInfoKColor[j] = "실버"
+                                } else if (_doorInfoColor[j] == "GR") {
+                                    _doorInfoKColor[j] = "그린"
+                                } else if (_doorInfoColor[j] == "MT") {
+                                    _doorInfoKColor[j] = "맨해튼 미드나잇"
+                                } else if (_doorInfoColor[j] == "BE") {
+                                    _doorInfoKColor[j] = "베이지"
+                                } else if (_doorInfoColor[j] == "MN") {
+                                    _doorInfoKColor[j] = "민트"
+                                } else if (_doorInfoColor[j] == "PK") {
+                                    _doorInfoKColor[j] = "핑크"
+                                } else if (_doorInfoColor[j] == "SV") {
+                                    _doorInfoKColor[j] = "실버"
+                                } else if (_doorInfoColor[j] == "WH") {
+                                    _doorInfoKColor[j] = "화이트"
+                                } else if (_doorInfoColor[j] == "GY") {
+                                    _doorInfoKColor[j] = "그레이"
+                                } else if (_doorInfoColor[j] == "BK") {
+                                    _doorInfoKColor[j] = "블랙"
+                                }
+                            }
+
+                            contHtml += '<li>';
+                            contHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                            contHtml += '      <div class="mini_model_wrap">';
+                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                if (_doorInfoMaterial[j] != "") {
+                                    contHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                }
+                            }
+                            contHtml += '      </div>';
+                            contHtml += '      <span>' + _modelCode + '</span>';
+                            contHtml += '  </button>';
+                            contHtml += '</li>';
+
+
+                        }
+                        contHtml += '           </ul>';
+                        contHtml += '       </dd>';
+                        contHtml += '   </dl>';
+                        contHtml += '</div>';
+                    }
+                    console.log("contHtml", contHtml);
+                    console.log("contFHtml", contFHtml);
+                    console.log("contSHtml", contSHtml);
+                    console.log("contMHtml", contMHtml);
+                    console.log("contGHtml", contGHtml);
+                    $(".color_best .color_best_body .swiper-wrapper").html(contHtml + contFHtml + contSHtml + contMHtml + contGHtml);
                     $(".color_best").slideDown() //.addClass("is_active");
                     setTimeout(function() {
                         slideWrapAutoSize(".color_best .color_best_body");
                     }, 10);
-
+                } else {
+                    $("#proposeModel").addClass("border");
+                    modelSimulator.closeProposeModel();
                 }
+
 
 
             },
