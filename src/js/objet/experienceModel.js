@@ -2569,7 +2569,8 @@
                 $(this).closest(".obj_tooltip_wrap").removeClass("active");
             } else {
                 $(this).closest(".obj_tooltip_wrap").addClass("active");
-                materiaModal.update();
+                //materiaModal.update();
+                materiaModal.updateSlides();
             }
         });
         $(".obj_tooltip_wrap .btn-close").on("click", function() {
@@ -2832,6 +2833,12 @@
 
         },
         stepOneNext: function(idx, _name, name, code, leadName) { //2단계로 넘어간다
+            idx = parseInt(idx);
+            console.log("idx", idx);
+            console.log("_name", _name);
+            console.log("name", name);
+            console.log("code", code);
+            console.log("leadName", leadName);
             $(".model_simul_area").addClass("is_active");
             $(".simul_wrap").addClass("is_active");
             let simulBodyHtml = '<div data-model-cate="" data-model_code="" data-best="N" data-best-code="" data-del="N" data-model-add="Y" data-model-editing="Y" data-model-completed="N" class="swiper-slide model_set_wrap">';
@@ -2858,15 +2865,16 @@
             });
             let addActive = $(".simul_wrap").attr("data-add-active");
             if (modelAdd == "Y" && addActive == "Y") {
-                simulBodySwiper.appendSlide(simulBodyHtml);
-                // $(".simul_body").append(simulBodyHtml);
-                // simulBodySwiper.updateSlides();
+                //simulBodySwiper.appendSlide(simulBodyHtml);
+                $(".simul_body").append(simulBodyHtml);
+                //simulBodySwiper.update();
                 $(".simul_wrap").attr("data-add-active", "N");
                 simulBodySwiper.updateSlides();
             } else {
                 if ($(".model_set_wrap").length == 0) {
-                    simulBodySwiper.appendSlide(simulBodyHtml);
-                    // $(".simul_body").html(simulBodyHtml);
+                    //simulBodySwiper.appendSlide(simulBodyHtml);
+                    $(".simul_body").html(simulBodyHtml);
+                    //simulBodySwiper.update();
                     simulBodySwiper.updateSlides();
                     //제품 스와이프 슬라이드
 
@@ -2886,8 +2894,9 @@
                                 //$(this).remove();
                         }
                     });
-                    simulBodySwiper.appendSlide(simulBodyHtml);
-                    // $(".simul_body").append(simulBodyHtml);
+                    //simulBodySwiper.appendSlide(simulBodyHtml);
+                    $(".simul_body").append(simulBodyHtml);
+                    //simulBodySwiper.update();
                     simulBodySwiper.updateSlides();
                 }
                 let selDoorLeng = "Y";
@@ -3456,13 +3465,23 @@
             console.log('sumSlide.length', sumSlide.length);
             if (sumSlide.length > 0) {
                 if (sumSlide.length > idx) {
-                    priceSumList.removeSlide(idx);
-                    priceSumList.addSlide(idx, priceHtml);
+                    sumSlide.eq(idx).remove();
+                    //priceSumList.removeSlide(idx);
+                    $(".total_price_info_body .swiper-wrapper").append(priceHtml);
+                    //priceSumList.addSlide(idx, priceHtml);
+                    //priceSumList.update();
+                    priceSumList.updateSlides();
                 } else {
-                    priceSumList.appendSlide(priceHtml);
+                    $(".total_price_info_body .swiper-wrapper").append(priceHtml);
+                    //priceSumList.update();
+                    priceSumList.updateSlides();
+                    //priceSumList.appendSlide(priceHtml);
                 }
             } else {
-                priceSumList.appendSlide(priceHtml);
+                //priceSumList.appendSlide(priceHtml);
+                $(".total_price_info_body .swiper-wrapper").append(priceHtml);
+                //priceSumList.update();
+                priceSumList.updateSlides();
             }
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             $(".total_price_info_wrap").addClass("is_active");
@@ -3709,23 +3728,124 @@
                     console.log("proposeSet.proposeConfig[i]", proposeSet.proposeConfig[i]);
                 }
             }
-            let resultFilter;
-            let filter1 = rfModelFilter(_defaultModelCode);
-            let filter2 = kimModelFilter(_defaultModelCode);
-            let filter3 = conModelFilter(_defaultModelCode);
-            if (filter1 != []) {
-                resultFilter = filter1;
-            } else if (filter2 != []) {
-                resultFilter = filter2;
-            } else if (filter3 != []) {
-                resultFilter = filter3;
-            }
+            console.log("_doorInfo", _doorInfo);
             let _modelCate;
+            let _modelMiniCate;
             let _modelCate2;
             let _leaderImg;
             let _simulImg;
             let _defaultPrice;
-            configData.modelConfig[0]
+            let _doorPrice = [];
+            let _doorKName = [];
+            let _doorLocation = [];
+            let _doorKLocation = [];
+            let _doorMaterial = [];
+            let _doorKMaterial = [];
+            let _doorColor = [];
+            let _doorKColor = [];
+            let resultFilter;
+            for (let i = 0; i < _doorInfo.length; i++) {
+                _doorColor.push(_doorInfo[i].slice(-2));
+                _doorMaterial.push(_doorInfo[i].slice(-3, -2));
+                _doorLocation.push(_doorInfo[i].slice(-6, -4));
+                for (let j = 0; j < _doorMaterial.length; j++) {
+                    if (_doorMaterial[j] == "F") {
+                        _doorKMaterial[j] = "페닉스"
+                    } else if (_doorMaterial[j] == "S") {
+                        _doorKMaterial[j] = "솔리드"
+                    } else if (_doorMaterial[j] == "M") {
+                        _doorKMaterial[j] = "미스트"
+                    } else if (_doorMaterial[j] == "G") {
+                        _doorKMaterial[j] = "네이쳐"
+                    }
+                }
+                for (let j = 0; j < _doorColor.length; j++) {
+                    if (_doorColor[j] == "BT") {
+                        _doorKColor[j] = "보타닉"
+                    } else if (_doorColor[j] == "SD") {
+                        _doorKColor[j] = "샌드"
+                    } else if (_doorColor[j] == "ST") {
+                        _doorKColor[j] = "스톤"
+                    } else if (_doorColor[j] == "SV") {
+                        _doorKColor[j] = "실버"
+                    } else if (_doorColor[j] == "GR") {
+                        _doorKColor[j] = "그린"
+                    } else if (_doorColor[j] == "MT") {
+                        _doorKColor[j] = "맨해튼 미드나잇"
+                    } else if (_doorColor[j] == "BE") {
+                        _doorKColor[j] = "베이지"
+                    } else if (_doorColor[j] == "MN") {
+                        _doorKColor[j] = "민트"
+                    } else if (_doorColor[j] == "PK") {
+                        _doorKColor[j] = "핑크"
+                    } else if (_doorColor[j] == "SV") {
+                        _doorKColor[j] = "실버"
+                    } else if (_doorColor[j] == "WH") {
+                        _doorKColor[j] = "화이트"
+                    } else if (_doorColor[j] == "GY") {
+                        _doorKColor[j] = "그레이"
+                    } else if (_doorColor[j] == "BK") {
+                        _doorKColor[j] = "블랙"
+                    }
+                }
+                _doorKName.push(_doorKMaterial[i] + " " + _doorKColor[i]);
+            }
+
+            if (rfModelFilter(_defaultModelCode) != []) {
+                resultFilter = rfModelFilter(_defaultModelCode);
+                _modelCate = configData.modelConfig[resultFilter[0]].id;
+                _modelMiniCate = "rf";
+                _modelCate2 = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typ;
+                _leaderImg = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].leaderImg;
+                _simulImg = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].simulImg;
+                _defaultPrice = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].defaultPrice;
+                _count = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.count;
+                if (_count == 3) {
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door2.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door2.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door3.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door3.defaultPrice);
+                } else if (_count == 4) {
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door2.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door2.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door3.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door3.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door4.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door4.defaultPrice);
+                }
+            } else if (kimModelFilter(_defaultModelCode) != []) {
+                resultFilter = kimModelFilter(_defaultModelCode);
+                _modelCate = configData.modelConfig[resultFilter[0]].id;
+                _modelMiniCate = "rf_kim";
+                _leaderImg = configData.modelConfig[resultFilter[0]].leaderImg;
+                _simulImg = configData.modelConfig[resultFilter[0]].simulImg;
+                _defaultPrice = configData.modelConfig[resultFilter[0]].defaultPrice;
+                _count = configData.modelConfig[resultFilter[0]].door.count;
+                if (_count == 3) {
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].door.door1.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door1.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].door.door2.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door2.defaultPrice);
+                    _doorKLocation.push(configData.modelConfig[resultFilter[0]].door.door3.name);
+                    _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door3.defaultPrice);
+                }
+            } else if (conModelFilter(_defaultModelCode) != []) {
+                resultFilter = conModelFilter(_defaultModelCode);
+                _modelCate = configData.modelConfig[resultFilter[0]].id;
+                _modelMiniCate = "rf";
+                _modelCate2 = configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].typ;
+                _leaderImg = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].leaderImg;
+                _simulImg = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].simulImg;
+                _defaultPrice = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].defaultPrice;
+                _count = configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.count;
+                _doorKLocation.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.name);
+                _doorPrice.push(configData.modelConfig[resultFilter[0]].refrigeratorType[resultFilter[1]].typModel[resultFilter[2]].door.door1.defaultPrice);
+            }
+
             console.log("resultFilter", resultFilter);
         }
     }
