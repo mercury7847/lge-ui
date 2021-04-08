@@ -2832,6 +2832,12 @@
 
         },
         stepOneNext: function(idx, _name, name, code, leadName) { //2단계로 넘어간다
+            idx = parseInt(idx);
+            console.log("idx", idx);
+            console.log("_name", _name);
+            console.log("name", name);
+            console.log("code", code);
+            console.log("leadName", leadName);
             $(".model_simul_area").addClass("is_active");
             $(".simul_wrap").addClass("is_active");
             let simulBodyHtml = '<div data-model-cate="" data-model_code="" data-best="N" data-best-code="" data-del="N" data-model-add="Y" data-model-editing="Y" data-model-completed="N" class="swiper-slide model_set_wrap">';
