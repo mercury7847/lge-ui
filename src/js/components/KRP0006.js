@@ -2,8 +2,11 @@
     var KRP0006 = {
         init: function() {
             var self = this;
+            //0407 임시로 막음
+            /*
             self.setting();
             self.bindEvents();
+            */
         },
 
         setting: function() {

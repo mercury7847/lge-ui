@@ -21,9 +21,6 @@ $(function () {
 
 
 
-    //혁신이 만들어낸<br>TV이상의, 作
-    // <span class="opac">차원이 다른</span><br>LG 올레드 TV
-
     var sceneTmpl = '<div class="scene">\n'+
         '   <div class="img">\n'+
         '       {{#if isImage}} <img src="{{imagePath}}" alt="{{imageAlt}}">\n'+
@@ -202,7 +199,7 @@ $(function () {
         var isApplication = isApp();
         var $window  = $(window);
         var $contentWrap = $('.section-cover');
-        var aniSpeed = vcui.detect.isMobile? 200 : 800;
+        var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
         var canScroll = true;
@@ -279,7 +276,7 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            //if(!canScroll) return; 
             var nextIndex = (delta < 0) ? -1 : 1;
             nextIndex = nextIndex + currentPage;
             nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -289,8 +286,8 @@ $(function () {
 
         function moveScene(idx, speed){
 
-            if(!canScroll) return;  
-            canScroll = false;   
+            //if(!canScroll) return;  
+            //canScroll = false;   
             $contentWrap.scrollTop(0);                
             $('html').addClass('sceneMoving');
             
@@ -300,11 +297,11 @@ $(function () {
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-                if(! $('html').hasClass('sceneMoving')){
-                    return false;
-                }
+                // if(! $('html').hasClass('sceneMoving')){
+                //     return false;
+                // }
 
-                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed);
+                var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
 
                 $('html, body').stop(true).animate({
@@ -312,7 +309,10 @@ $(function () {
                 }, speedTime, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
 
                     canScroll = true
-                    currentPage = idx;                        
+                    currentPage = idx;   
+                    
+                    // console.log(currentPage);
+
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 

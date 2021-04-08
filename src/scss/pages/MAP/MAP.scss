@@ -40,8 +40,10 @@ body {
     position: relative;
     right: 0;
     top: 0;
-    width: 39px;
-    height: 39px;
+    //width: 39px;
+    //height: 39px;
+    width: 33px;
+    height: 33px;
     span {
         display: block;
         overflow: hidden;
@@ -167,9 +169,11 @@ body {
         }
         .btn-opt-close {
             position: absolute;
-            right: 8px;
+            //right: 8px;
+            right:12px;
             //top: 6px;
-            @include app-cal(top, $main-hd-height, -54px);
+            //@include app-cal(top, $main-hd-height, -54px);
+            @include app-cal(top, $main-hd-height, -51px);
         }
         &.type-sub {
             height: $sub-hd-height;
