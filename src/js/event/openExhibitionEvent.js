@@ -17,12 +17,13 @@
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 dots: false,
+                variableWidth : false,
                 
                 responsive: [
                     {
                         breakpoint: 10000,
                         settings: {
-                            variableWidth : false,
+                            //variableWidth : false,
                             slidesToShow: 4,
                             slidesToScroll: 1
                         }
@@ -30,10 +31,10 @@
                     {
                         breakpoint: 768,
                         settings: {
-                            variableWidth : true,
+                            //variableWidth : true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            lastFix:true
+                            //lastFix:true
                         }
                     }
                 ]
