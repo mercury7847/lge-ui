@@ -2,7 +2,7 @@
     position:fixed;
     right:48px;
     bottom:48px;
-    z-index:100;
+    z-index:10;
     @include mobile {
         right:14px;
         bottom:24px;
@@ -313,14 +313,20 @@
                 border: 1px solid $color-primary;
             }
             @include mobile {
-                min-width: 140px;
-                padding: 12px 52px 12px 24px;
-                background-size: 32px;
+                min-width: 112px;
+                padding: 8px 36px 9px 16px;
+                background-position: right 10px center;
+                background-size: 24px;
             }
         }
         .text {
             font-weight: 500;
-            @include font-medium;
+            font-size: 16px;
+            line-height: 26px;
+            @include mobile {
+                font-size: 13px;
+                line-height: 21px;
+            }
         }
         &.cs-cst {
             a {

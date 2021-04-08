@@ -2,24 +2,16 @@
 
 /* font */
 @font-face {
-    font-family:'RedVelvet' ;font-style:normal;font-weight:200;
-	src:	url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.woff2') format('woff2'),
-			url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.woff') format('woff'),
-			url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.ttf') format('truetype');
-}
-
-/* 210408 pb start */
-@font-face {
   font-family:'RedVelvet' ;font-style:normal;font-weight:200;
-src:	url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.woff2') format('woff2'),
-    url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.woff') format('woff'),
-    url('https://www.lge.co.kr/lgekor/asset/font/RedVelvet.ttf') format('truetype');
+src:	url('/lg5-common/fonts/RedVelvet.woff2') format('woff2'),
+    url('/lg5-common/fonts/RedVelvet.woff') format('woff'),
+    url('/lg5-common/fonts/RedVelvet.ttf') format('truetype');
 }
 @font-face {
   font-family:'LGSmHaR';font-style:normal;font-weight:400;
-  src:	url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.woff2') format('woff2'),
-    url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.woff') format('woff'),
-    url('https://www.lge.co.kr/lgekor/asset/font/LGSmHaR.ttf') format('truetype');
+  src:	url('/lg5-common/fonts/LGSmHaR.woff2') format('woff2'),
+    url('/lg5-common/fonts/LGSmHaR.woff') format('woff'),
+    url('/lg5-common/fonts/LGSmHaR.ttf') format('truetype');
 }
 
     /*input radio,checkbox*/
@@ -77,12 +69,12 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 .event-template .summary-visual {position:relative; background:#202020;}
 /* 210408 pb end */
 .event-template .summary-visual img {width:100%;}
-.event-template .visual a {display:block;position:absolute;background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;/*background-color:red;opacity:0.5;*/}
-.event-template  a.btn_detail {display:block;position:absolute;top: 69.5%;width:22%;height: 6%; left: 39%; background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
-.event-template  a.btn_evtGo {display:block;position:absolute;bottom: 2%;width:34%;height: 4%; left: 15%; background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
-.event-template  a.btn_cfm {display:block;position:absolute;bottom: 2%;width:34%;height: 4%; left: 51%; background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
-.event-template a.btn_custom {display:block;position:absolute;top: 5%;width: 19%;height: 9.5%; left: 56%; background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
-.event-template a.btn_shop {display:block;position:absolute;top: 5%;width: 19%;height: 9.5%; left: 75%; background:url('https://www.lge.co.kr/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
+.event-template .visual a {display:block;position:absolute;background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;/*background-color:red;opacity:0.5;*/}
+.event-template  a.btn_detail {display:block;position:absolute;top: 69.5%;width:22%;height: 6%; left: 39%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
+.event-template  a.btn_evtGo {display:block;position:absolute;bottom: 2%;width:34%;height: 4%; left: 15%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
+.event-template  a.btn_cfm {display:block;position:absolute;bottom: 2%;width:34%;height: 4%; left: 51%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
+.event-template a.btn_custom {display:block;position:absolute;top: 5%;width: 19%;height: 9.5%; left: 56%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
+.event-template a.btn_shop {display:block;position:absolute;top: 5%;width: 19%;height: 9.5%; left: 75%; background:url('/lgekor/asset/event/common/images/blank.gif') 0 0 repeat;}
 .event-template .dimmed {display:none;position:absolute;left:0;top:0;width:100%;height:100%;background-color:#000;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=60)"; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);opacity:0.6;}
 
 .mobile .event-template  a.btn_detail {height: 6%;top: 64%;left: 29%;width: 42%;}
@@ -191,7 +183,7 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 
 input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 /* 210408 pb start */
-.cont01 .marking {background: #fff url('https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking.gif') repeat-y 0 0; background-size: contain; margin: 0 80px 0px 80px; padding-bottom:40px; box-sizing: border-box;}
+.cont01 .marking {border-right:80px solid #202020; border-left:80px solid #202020; background: #fff url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking.gif') repeat-y 0 0; background-size: contain; padding-bottom:40px; box-sizing: border-box;}
 /* 210408 pb end */
 .cont01 .marking .tab {max-width: 882px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between;}
 .cont01 .marking .tab a {position: relative; display: inline-block; width: 32%; font-size: 18px; padding: 20px 0; text-align: center; box-sizing: border-box; border: 1px solid #f4f4f4; background: #f4f4f4; text-decoration: none;}
@@ -203,9 +195,8 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 .marking .photo {margin: 10px 0 0 0; text-align: center;}
 /* 210408 pb start */
 .marking .photo .view {display: flex; justify-content:center; position: relative; width: 100%;}
-@media (max-width:1300px){
-  .cont01 .marking{margin:0 6.1vw;}
-}
+
+
 /* 210408 pb end */
 .marking .photo img {max-width: 100%; width: auto;}
 .marking .tip {text-align: center; margin: 40px 0 10px 0; font-size: 16px;}
@@ -214,7 +205,7 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 /* 210408 pb start */
 .marking.top .photo .text {font-family: 'RedVelvet' !important; justify-content: flex-start; width: auto; left: 34%}
 /* 210408 pb end */
-.mobile .cont01 .marking {background: #202020 url('https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking_m.gif') repeat-y 0 0; background-size: contain; padding: 0 30px 20px 30px;}
+.mobile .cont01 .marking {background: #202020 url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking_m.gif') repeat-y 0 0; background-size: contain; padding: 0 30px 20px 30px;}
 .mobile .cont01 .marking .tab a {padding: 10px 0; font-size: 12px;}
 .mobile .marking .tip {margin: 20px 0 10px 0; font-size: 12px;}
 .mobile .marking > input[type="text"] {height: 43px; width: 100%;}
