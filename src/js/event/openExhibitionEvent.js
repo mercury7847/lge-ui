@@ -14,7 +14,7 @@
             self.$wrap.find('.ui_recom_carousel').vcCarousel({
                 infinite: false,            
                 slidesToShow: 4,
-                slidesToScroll: 1,
+                slidesToScroll: 4,
                 responsive: [
                     {
                         breakpoint: 768,
@@ -28,7 +28,7 @@
                         breakpoint: 10000,
                         settings: {
                             slidesToShow: 4,
-                            slidesToScroll: 1,
+                            slidesToScroll: 4,
                             lastFix:false
 
                         }
