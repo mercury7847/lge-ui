@@ -31,7 +31,14 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector +"img[data-pc-src][data-m-src],.ui_bg_switch");
+            self.$items = $(self.options.selector +":not(.ignore-lazyload)img[data-pc-src][data-m-src],.ui_bg_switch");
+
+            self.$imgSwitch = $(self.options.selector +"img[data-pc-src][data-m-src],.ui_bg_switch").filter('.ignore-lazyload');
+            
+            self.$imgSwitch.each(function(idx, item){
+                self._loadImage($(item),null);
+            });
+
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
@@ -109,6 +116,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
         reload: function($dm){
             var self = this;
+
             var $items = $dm.find("img[data-pc-src][data-m-src],.ui_bg_switch");
             $items.each(function(idx, item){
                 self._loadImage($(item),null);
