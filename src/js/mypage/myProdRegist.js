@@ -130,7 +130,7 @@
 
             self.loadingCount = 0;
             //크레마
-            //lgkorUI.cremaLogin();
+            lgkorUI.cremaLogin();
             
             self.isMobileNow = false;
             if(vcui.detect.isMobile){
@@ -819,7 +819,7 @@
                 self.checkNoData();
 
                 //크레마 리로드
-                //lgkorUI.cremaReload();
+                lgkorUI.cremaReload();
 
                 if(addNewItem) {
                     $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
