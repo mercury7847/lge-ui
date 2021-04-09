@@ -434,9 +434,9 @@ var res = {
 		"Contents" : {
 			"Event" : {
 				"응원댓글이벤트" : {
-					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","",""],
+					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","","검수완료"],
 					//"이벤트참여" : ["/html/BMC/MKT4009_02.html","_blank:width=912,height=760,scrollbars=yes",""],
-					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","",""]
+					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","","검수완료"]
 				}					
 			},
 			"Exhibitions" : {

@@ -67,6 +67,13 @@
                 @@include('./common/modules/info-tbl-wrap-bottom.html')
                 <!-- // loop -->
             </div>
+            <!-- 210409 수정 [소모품 전용 안내 텍스트 추가] -->
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "소모품의 경우 배송 준비 중인 상태에서도 택배사로 물건이 발송된 경우 취소가 불가합니다"
+                ]
+            })
+            <!-- // 210409 수정 [소모품 전용 안내 텍스트 추가] -->
         </div>
         <!-- // 주문정보 -->
 
