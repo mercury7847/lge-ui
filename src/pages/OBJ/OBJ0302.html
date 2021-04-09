@@ -17,7 +17,17 @@
 
     <div class="wrap">
         @@include('./common/header.html')
-
+        <div class="brand-wrap objet-wrap">
+            <div class="objetcollection-tabs">
+                <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                    <ul class="tabs">
+                        <li><a href="/html/OBJ/OBJ0100.html">LG Objet Collection</a></li>
+                        <li><a href="/html/OBJ/OBJ0101.html">제품</a></li>
+                        <li class="on"><a href="/html/OBJ/OBJ0102.html">체험<em class="blind">선택됨</em></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <!-- @@include('./common/modules/page-header.html', { "hiddenTitle": "제품체험" }) -->
             <!-- 오브제 콜렉션 모델 체험하기 -->
@@ -133,7 +143,7 @@
                             <dl>
                                 <dt>Solid Metal (솔리드)</dt>
                                 <dd>
-                                    <p>메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.</p>
+                                    <p>메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.</p>
                                     <span><img src="/lg5-common/images/OBJ/simulator/img/img-Solid.jpg" alt=""></span>
                                 </dd>
                             </dl>
@@ -142,7 +152,7 @@
                             <dl>
                                 <dt>Mist Glass (미스트)</dt>
                                 <dd>
-                                    <p>고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.</p>
+                                    <p>고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.</p>
                                     <span><img src="/lg5-common/images/OBJ/simulator/img/img-Mist.jpg" alt=""></span>
                                 </dd>
                             </dl>
@@ -151,7 +161,7 @@
                             <dl>
                                 <dt>Nature Metal (네이쳐)</dt>
                                 <dd>
-                                    <p>자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.</p>
+                                    <p>자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.</p>
                                     <span><img src="/lg5-common/images/OBJ/simulator/img/img-Mist.jpg" alt=""></span>
                                 </dd>
                             </dl>
@@ -312,11 +322,44 @@
         function purchaseFn() { //구매하기
 
         }
-        $(window).load(function() { //pdp에서 넘어올때
-            //modelSimulator.pdpProductStep("M870GSB451S");
-            //modelSimulator.pdpProductStep("M870FBB451S");
-            //modelSimulator.pdpProductStep("Z330FSS151S");
-            //modelSimulator.pdpProductStep("Y320MWS");
+        $(document).ready(function() {
+            $(window).load(function() { //pdp유입 제품
+                //modelSimulator.pdpProductStep("M870GSB451S");
+                //modelSimulator.pdpProductStep("M870FBB451S");
+                //modelSimulator.pdpProductStep("Z330FSS151S");
+                //modelSimulator.pdpProductStep("Y320MWS");
+            });
+        });
+        //]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+                $(window).on("scroll", function() {
+                    autoFixedLinkTab()
+                });
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
         });
         //]]>
     </script>

@@ -165,11 +165,8 @@
                 } else if (!authFlag) {
                     lgkorUI.alert('', {
                         title:'휴대전화 인증이 필요합니다.',
-                        okBtnName: '확인',
-                        ok: function() {
-                            $('.btn-open').focus();
-                        }
-                    });
+                        okBtnName: '확인'
+                    }, $('.btn-open')[0]);
                 }
             });
             self.$form.find('.btn-cancel').on('click', function() {

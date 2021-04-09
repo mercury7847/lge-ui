@@ -426,8 +426,12 @@
                     e.preventDefault();
                     var modelId = this.dataset.arModelId;
                     if(!lgkorUI.openAR(modelId)) {
-                        $('#arPlayPop').vcModal();
+                        $('#arPlayPop').vcModal({opener: this});
                     }
+                });
+
+                $(window).on('appNotInstall', function(e){
+                    $('#arPlayPop').vcModal();
                 });
 
                 //모바일 카테고리 풀다운메뉴
@@ -565,10 +569,11 @@
                     //nodata 체크
                     if(self.$productList.find('>li').length > 0) {
                         self.$productList.siblings('.no-data').hide();
+                        self.$listSorting.show();
                     } else {
                         self.$productList.siblings('.no-data').show();
-                        self.setTotalCount(0);
                         self.$btnMore.hide();
+                        self.$listSorting.hide();
                     }
                 });
             },

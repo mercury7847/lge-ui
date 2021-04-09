@@ -14,6 +14,7 @@ h2.title {
         vertical-align: middle;
         margin-right: 18px;
         @include mobile {
+            height: 20px;
             margin-right: 5px;
         }
     }
@@ -88,6 +89,10 @@ h2.title {
             right: 18px;
             top: 20px;
             padding-left: 25px;
+            @include mobile {
+                top: 0;
+                padding-left: 18px;
+            }
             &:before {
                 position: absolute;
                 content: '';
@@ -98,6 +103,11 @@ h2.title {
                 background: url('/lg5-common/images/OBJ/experience/ico_btn_reset.png') center center no-repeat;
                 transform: translateY(-50%) rotate(0deg);
                 transition-duration: .5s;
+                @include mobile {
+                    width: 14px;
+                    height: 14px;
+                    background-size: 100% 100%;
+                }
             }
             &:active:before {
                 transform: translateY(-50%) rotate(-360deg);
@@ -107,6 +117,9 @@ h2.title {
                 font-size: 16px;
                 color: #da0f47;
                 text-decoration: underline;
+                @include mobile {
+                    font-size: 13px;
+                }
             }
         }
         .simul_body {
@@ -114,6 +127,9 @@ h2.title {
             margin-top: 130px;
             text-align: center;
             font-size: 0;
+            @include mobile {
+                margin-top: 50px;
+            }
             .model_set_wrap {
                 position: relative;
                 //display: inline-block;
@@ -150,6 +166,9 @@ h2.title {
                     position: relative;
                     height: 505px;
                     //opacity: .9;
+                    @include mobile {
+                        height: 245px;
+                    }
                     .btn_model_sel {
                         position: absolute;
                         left: 0;
@@ -168,6 +187,11 @@ h2.title {
                         background: url('/lg5-common/images/OBJ/experience/bg_model_del.png') center center no-repeat;
                         background-size: 100% 100%;
                         transform: translateX(-50%);
+                        @include mobile {
+                            top: -25px;
+                            width: 22px;
+                            height: 22px;
+                        }
                     }
                     .sel_model_set {
                         position: relative;
@@ -184,6 +208,9 @@ h2.title {
                                 &[data-edit="Y"] {
                                     box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, .14);
                                 }
+                                @include mobile {
+                                    background-size: 21px 21px;
+                                }
                                 .door_img {
                                     img {
                                         width: 100%;
@@ -194,6 +221,9 @@ h2.title {
                         }
                         .default_img {
                             height: 428px;
+                            @include mobile {
+                                height: 215px;
+                            }
                             img {
                                 height: 100%;
                             }
@@ -206,6 +236,10 @@ h2.title {
                         color: #000000;
                         font-weight: 700;
                         letter-spacing: -2px;
+                        @include mobile {
+                            margin-top: 15px;
+                            font-size: 15px;
+                        }
                     }
                 }
                 &[data-model_code="W821AAA453"] {
@@ -408,6 +442,11 @@ h2.title {
                     width: 80px;
                     height: 428px;
                     margin-left: 20px;
+                    @include mobile {
+                        width: 35px;
+                        height: 215px;
+                        margin-left: 5px;
+                    }
                     .btn_model_add {
                         position: absolute;
                         right: 0;
@@ -415,6 +454,9 @@ h2.title {
                         width: 100%;
                         height: 100%;
                         background: url('/lg5-common/images/OBJ/experience/bg_model_add.png') #dedede center center no-repeat;
+                        @include mobile {
+                            background-size: 22px 22px;
+                        }
                     }
                 }
             }
@@ -430,9 +472,16 @@ h2.title {
         overflow-y: auto;
         @include mobile {
             width: 100%;
+            flex: 0 0 100%;
             height: auto;
+            border: none;
         }
         dl.simul_step {
+            &+.simul_step {
+                @include mobile {
+                    border-top: 12px solid #f4f4f4;
+                }
+            }
             >dt {
                 padding: 40px 0 25px;
                 .simul_tit {
@@ -443,18 +492,30 @@ h2.title {
                         color: #da0f47;
                         font-weight: 700;
                         vertical-align: middle;
+                        @include mobile {
+                            display: block;
+                            margin-bottom: 10px;
+                            text-align: center;
+                            font-size: 12px;
+                        }
                     }
                     .tit {
                         font-size: 28px;
                         color: #000000;
                         font-weight: 700;
                         vertical-align: middle;
+                        @include mobile {
+                            font-size: 22px;
+                        }
                     }
                 }
                 .comment {
                     margin-top: 18px;
                     font-size: 18px;
                     color: #000000;
+                    @include mobile {
+                        font-size: 14px;
+                    }
                 }
             }
             >dd {}
@@ -464,6 +525,9 @@ h2.title {
             &.simul_step1 {
                 >dd {
                     min-height: 280px;
+                    @include mobile {
+                        min-height: 200px;
+                    }
                     .model_choice_area {
                         .model_choice_tab {
                             margin-bottom: 30px;
@@ -481,6 +545,10 @@ h2.title {
                                             width: 168px;
                                             height: 170px;
                                             text-align: center;
+                                            @include mobile {
+                                                width: 110px;
+                                                height: 111px;
+                                            }
                                             img {
                                                 height: 100%;
                                             }
@@ -515,12 +583,25 @@ h2.title {
                             .model_sub_tab_head {
                                 display: none;
                                 text-align: left;
+                                &:before {
+                                    position: absolute;
+                                    display: block;
+                                    content: '';
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    height: 1px;
+                                    background: #dddddd;
+                                }
                                 &.is_active {
                                     display: block;
                                 }
                                 .swiper-wrapper {
                                     width: auto;
                                     padding: 0 40px;
+                                    @include mobile {
+                                        padding: 0 17px;
+                                    }
                                     .swiper-slide {
                                         display: inline-block;
                                         width: auto;
@@ -535,20 +616,22 @@ h2.title {
                                                 /*2021-01-04 edit*/
                                             }
                                         }
+                                        &+.swiper-slide {
+                                            @include mobile {
+                                                margin-left: 25px;
+                                            }
+                                        }
                                         button {
                                             display: block;
                                             padding: 5px 0;
                                             background-color: transparent;
                                             font-size: 18px;
                                             // line-height: 28px;
-                                            line-height: 32px;
+                                            line-height: 1.7;
                                             font-weight: 700;
                                             @include mobile {
-                                                // font-size: 15px;
-                                                // line-height: 23px;
-                                                padding: 8px 12px;
-                                                font-size: 18px;
-                                                line-height: 26px;
+                                                padding: 10px 0px;
+                                                font-size: 14px;
                                             }
                                         }
                                         @include mobile {
@@ -583,6 +666,10 @@ h2.title {
                                             height: 190px;
                                             border: 1px solid transparent;
                                             overflow: hidden;
+                                            @include mobile {
+                                                width: 85px;
+                                                height: 124px;
+                                            }
                                             &.is_selected {
                                                 border: 1px solid #da0f47;
                                                 border-radius: 7px;
@@ -596,6 +683,10 @@ h2.title {
                                                 width: 130px;
                                                 height: 130px;
                                                 text-align: center;
+                                                @include mobile {
+                                                    width: 85px;
+                                                    height: 85px;
+                                                }
                                                 img {
                                                     height: 100%;
                                                 }
@@ -608,6 +699,9 @@ h2.title {
                                                 white-space: normal;
                                                 color: #222222;
                                                 text-align: center;
+                                                @include mobile {
+                                                    font-size: 11px;
+                                                }
                                             }
                                             &.is_active {
                                                 border: 1px solid #da0f47;
@@ -631,6 +725,16 @@ h2.title {
                     }
                 }
                 >dd {
+                    .model_simul_area {
+                        &.area2 {
+                            &.is_active {
+                                @include mobile {
+                                    width: 100vw;
+                                    height: 90vw;
+                                }
+                            }
+                        }
+                    }
                     .color_mixing_area {
                         .color_best {
                             display: none;
@@ -660,6 +764,10 @@ h2.title {
                                     right: 40px;
                                     height: 1px;
                                     background: #dddddd;
+                                    @include mobile {
+                                        left: 15px;
+                                        right: 15px;
+                                    }
                                 }
                                 &:after {
                                     position: absolute;
@@ -669,6 +777,10 @@ h2.title {
                                     right: 40px;
                                     height: 1px;
                                     background: #dddddd;
+                                    @include mobile {
+                                        left: 15px;
+                                        right: 15px;
+                                    }
                                 }
                                 .swiper-wrapper {
                                     .swiper-slide {
@@ -682,6 +794,9 @@ h2.title {
                                                 font-size: 18px;
                                                 color: #000000;
                                                 font-weight: 700;
+                                                @include mobile {
+                                                    font-size: 14px;
+                                                }
                                             }
                                             dd {
                                                 margin-top: 18px;
@@ -689,12 +804,20 @@ h2.title {
                                                     display: flex;
                                                     li {
                                                         width: 72px;
+                                                        @include mobile {
+                                                            width: 67px;
+                                                        }
                                                         .btn_door_color_sel {
                                                             text-align: center;
+                                                            overflow: hidden;
                                                             .color_img {
                                                                 display: inline-block;
                                                                 width: 48px;
                                                                 height: 48px;
+                                                                @include mobile {
+                                                                    width: 50px;
+                                                                    height: 50px;
+                                                                }
                                                                 img {
                                                                     width: 100%;
                                                                     height: 100%;
@@ -708,6 +831,9 @@ h2.title {
                                                                 color: #000000;
                                                                 font-weight: 500;
                                                                 line-height: 1.4;
+                                                                @include mobile {
+                                                                    font-size: 12px;
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -727,14 +853,27 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
-                            .btn+.btn {
-                                margin-left: 7px;
+                            @include mobile {
+                                padding: 20px 15px;
+                                display: flex;
+                            }
+                            .btn {
+                                @include mobile {
+                                    flex: 1;
+                                    padding: 10px 5px;
+                                }
+                                &+.btn {
+                                    margin-left: 7px;
+                                }
                             }
                         }
                         .err-msg {
                             margin-bottom: 20px;
                             text-align: center;
                             color: #000000;
+                            @include mobile {
+                                padding: 0 30px;
+                            }
                         }
                     }
                 }
@@ -744,6 +883,9 @@ h2.title {
                     .compare_sel_model_area {
                         display: none;
                         padding: 0 40px;
+                        @include mobile {
+                            padding: 0 15px;
+                        }
                         &.is_active {
                             display: block;
                         }
@@ -762,6 +904,9 @@ h2.title {
                                         text-align: center;
                                         line-height: 2.375;
                                         background: #f4f4f4;
+                                        @include mobile {
+                                            font-size: 11px;
+                                        }
                                     }
                                 }
                                 tbody {
@@ -803,6 +948,14 @@ h2.title {
                                             font-weight: 700;
                                             text-align: center;
                                             line-height: 2.89;
+                                            &:last-child {
+                                                span {
+                                                    padding: 0;
+                                                }
+                                            }
+                                            @include mobile {
+                                                font-size: 13px;
+                                            }
                                             span {
                                                 position: relative;
                                                 display: inline-block;
@@ -850,9 +1003,15 @@ h2.title {
             top: calc(100% - 80px);
             box-shadow: none;
             transition-duration: 0s;
+            @include mobile {
+                top: calc(100% - 60px);
+            }
             .cont {
                 .btn_price_open {
                     visibility: hidden;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -862,6 +1021,9 @@ h2.title {
             .cont {
                 .btn_price_open {
                     visibility: hidden;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -872,12 +1034,24 @@ h2.title {
         padding-bottom: 110px;
         margin: 0 auto;
         text-align: center;
+        @include mobile {
+            padding-bottom: 60px;
+        }
         .btn_price_close {
             width: 24px;
             height: 24px;
             margin: 10px 0 15px 0;
             background: url('/lg5-common/images/OBJ/experience/btn_toogle_arrow.png') center center no-repeat;
             vertical-align: middle;
+            @include mobile {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 50px;
+                height: 50px;
+                margin: 0;
+                z-index: 5;
+            }
         }
         .swiper-container {
             .swiper-wrapper {
@@ -891,6 +1065,11 @@ h2.title {
                             font-size: 18px;
                             color: #222222;
                             font-weight: 700;
+                            @include mobile {
+                                height: 50px;
+                                padding: 18px 0 18px 20px;
+                                font-size: 14px;
+                            }
                         }
                         dd {
                             position: relative;
@@ -899,10 +1078,17 @@ h2.title {
                             margin-top: 20px;
                             border-radius: 7px;
                             background: #f4f4f4;
+                            @include mobile {
+                                margin-top: 0px;
+                                padding: 25px 15px 80px 15px;
+                            }
                             .price_info {
                                 .product_list {
                                     position: relative;
                                     padding-bottom: 30px;
+                                    @include mobile {
+                                        padding: 0 25px 30px 25px;
+                                    }
                                     li {
                                         display: flex;
                                         justify-content: space-between;
@@ -913,11 +1099,17 @@ h2.title {
                                             font-size: 16px;
                                             color: #666666;
                                             font-weight: 500;
+                                            @include mobile {
+                                                font-size: 13px;
+                                            }
                                         }
                                         .product_price {
                                             font-size: 16px;
                                             color: #222222;
                                             font-weight: 700;
+                                            @include mobile {
+                                                font-size: 13px;
+                                            }
                                             em {}
                                         }
                                         &.sum {
@@ -925,6 +1117,10 @@ h2.title {
                                             bottom: 0;
                                             left: 0;
                                             right: 0;
+                                            @include mobile {
+                                                left: 25px;
+                                                right: 25px;
+                                            }
                                             .product_name {
                                                 color: #000000;
                                             }
@@ -960,24 +1156,46 @@ h2.title {
         background: #f4f4f4;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
         z-index: 5;
+        @include mobile {
+            top: -60px;
+            height: 60px;
+        }
         .cont {
             padding: 28px 0;
             text-align: center;
+            @include mobile {
+                position: relative;
+                width: 100%;
+                padding: 22px 15px;
+                text-align: right;
+            }
             .sum_tit {
                 font-size: 18px;
                 color: #000000;
                 font-weight: 700;
                 vertical-align: middle;
+                @include mobile {
+                    position: absolute;
+                    left: 15px;
+                    top: 22px;
+                    font-size: 16px;
+                }
             }
             .price {
                 font-size: 24px;
                 color: #000000;
                 font-weight: 700;
                 vertical-align: middle;
+                @include mobile {
+                    font-size: 18px;
+                }
                 em {
                     display: inline-block;
                     min-width: 250px;
                     text-align: right;
+                    @include mobile {
+                        min-width: auto;
+                    }
                 }
             }
             .btn_price_open {
@@ -1121,6 +1339,9 @@ h2.title {
                         font-size: 18px;
                         color: #000000;
                         font-weight: 700;
+                        @include mobile {
+                            font-size: 14px;
+                        }
                     }
                     dd {
                         padding: 10px 0 30px;
@@ -1198,6 +1419,9 @@ h2.title {
                         font-size: 18px;
                         color: #000000;
                         font-weight: 700;
+                        @include mobile {
+                            font-size: 14px;
+                        }
                     }
                     dd {
                         padding: 10px 0 30px;
@@ -1220,6 +1444,9 @@ h2.title {
 .btn_propose_model_sel,
 .btn_myPick_model_sel {
     width: 100px;
+    @include mobile {
+        width: 70px;
+    }
     &[data-cate="refrigerator"] {
         .mini_model_wrap {
             background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
@@ -1290,6 +1517,10 @@ h2.title {
         position: relative;
         width: 100px;
         height: 100px;
+        @include mobile {
+            width: 70px;
+            height: 70px;
+        }
         .mini_model {
             position: absolute;
             img {
@@ -1305,6 +1536,9 @@ h2.title {
         text-align: center;
         font-size: 16px;
         color: #727272;
+        @include mobile {
+            font-size: 12px;
+        }
     }
 }
 
@@ -1370,16 +1604,31 @@ h2.title {
 }
 
 @media screen and (max-width: 767px) {
-    .obj_tooltip_wrap .tooltip_box {
-        position: absolute;
-        left: 16px;
-        right: 16px;
-        top: initial;
-        bottom: initial;
-        min-width: initial;
-        margin-top: 8px;
-        padding: 24px 60px 24px 24px;
-        box-shadow: 2px 4px 20px 0 rgba(0, 0, 0, 0.22);
+    .obj_tooltip_wrap {
+        .tooltip_box {
+            position: fixed;
+            top: 50%;
+            left: 15px;
+            right: 15px;
+            bottom: initial;
+            min-width: initial;
+            width: auto;
+            margin-top: 8px;
+            padding: 24px 24px 24px 24px;
+            box-shadow: 2px 4px 20px 0 rgba(0, 0, 0, 0.22);
+            transform: translateY(-50%);
+            .material_modal {
+                .swiper-slide {
+                    dl {
+                        dd {
+                            p {
+                                height: 80px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
