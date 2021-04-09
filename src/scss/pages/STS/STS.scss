@@ -71,7 +71,7 @@
             border-top: 0;
             .inner {
                 > .title {
-                    margin-top: 64px;
+                    margin-top: 80px;
                     word-break: keep-all;
                 }
             }
@@ -82,7 +82,7 @@
             &:first-child {
                 .inner {
                     > .title {
-                        margin-top: 40px;
+                        margin-top: 60px;
                     }
                 }
             }
@@ -110,7 +110,7 @@
             line-height: 42px;
             text-align: center;
             @include mobile {
-                margin: 44px 0 24px;
+                margin: 44px 0 0;
                 font-size: $font-large-2;
                 line-height: 33px;
             }
@@ -144,7 +144,7 @@
             margin-top:-24px;
             text-align:center;
             @include mobile {
-                margin-top:-4px;
+                margin-top:20px;
             }
             ul {
                 font-size:0;
