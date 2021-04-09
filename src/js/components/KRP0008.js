@@ -560,8 +560,12 @@
                     e.preventDefault();
                     var modelId = this.dataset.arModelId;
                     if(!lgkorUI.openAR(modelId)) {
-                        $('#arPlayPop').vcModal();
+                        $('#arPlayPop').vcModal({opener: this});
                     }
+                });
+
+                $(window).on('appNotInstall', function(e){
+                    $('#arPlayPop').vcModal();
                 });
             },
 

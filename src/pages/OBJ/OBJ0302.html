@@ -17,7 +17,17 @@
 
     <div class="wrap">
         @@include('./common/header.html')
-
+        <div class="brand-wrap objet-wrap">
+            <div class="objetcollection-tabs">
+                <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                    <ul class="tabs">
+                        <li><a href="/html/OBJ/OBJ0100.html">LG Objet Collection</a></li>
+                        <li><a href="/html/OBJ/OBJ0101.html">제품</a></li>
+                        <li class="on"><a href="/html/OBJ/OBJ0102.html">체험<em class="blind">선택됨</em></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <!-- @@include('./common/modules/page-header.html', { "hiddenTitle": "제품체험" }) -->
             <!-- 오브제 콜렉션 모델 체험하기 -->
@@ -319,6 +329,37 @@
                 //modelSimulator.pdpProductStep("Z330FSS151S");
                 //modelSimulator.pdpProductStep("Y320MWS");
             });
+        });
+        //]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+                $(window).on("scroll", function() {
+                    autoFixedLinkTab()
+                });
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
         });
         //]]>
     </script>
