@@ -5,9 +5,17 @@ h2.title {
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
+    @include mobile {
+        margin: 30px 0 5px;
+        font-size: 16px;
+        line-height: 19px;
+    }
     img {
         vertical-align: middle;
         margin-right: 18px;
+        @include mobile {
+            margin-right: 5px;
+        }
     }
 }
 
@@ -17,6 +25,9 @@ h2.title {
         flex: 0 0 44.67%;
         margin-right: 3.33%;
         position: relative;
+        @include mobile {
+            display: none;
+        }
         &.is_active {
             .model_simul_body {
                 display: none;
@@ -417,6 +428,10 @@ h2.title {
         border: 1px solid #dddddd;
         border-radius: 7px;
         overflow-y: auto;
+        @include mobile {
+            width: 100%;
+            height: auto;
+        }
         dl.simul_step {
             >dt {
                 padding: 40px 0 25px;
@@ -761,22 +776,22 @@ h2.title {
                                                 &:first-child {
                                                     border-left: 1px solid #da0f47;
                                                     border-radius: 7px 0 0 7px;
+                                                    span {
+                                                        &:before {
+                                                            position: absolute;
+                                                            content: '';
+                                                            left: 0;
+                                                            top: 50%;
+                                                            width: 20px;
+                                                            height: 20px;
+                                                            background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                                            transform: translateY(-50%);
+                                                        }
+                                                    }
                                                 }
                                                 &:last-child {
                                                     border-right: 1px solid #da0f47;
                                                     border-radius: 0 7px 7px 0;
-                                                }
-                                                span {
-                                                    &:before {
-                                                        position: absolute;
-                                                        content: '';
-                                                        left: 0;
-                                                        top: 50%;
-                                                        width: 20px;
-                                                        height: 20px;
-                                                        background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
-                                                        transform: translateY(-50%);
-                                                    }
                                                 }
                                             }
                                         }
@@ -842,6 +857,15 @@ h2.title {
             }
         }
     }
+    &[data-sum-active="N"] {
+        .total_result_price {
+            .cont {
+                .btn_price_open {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
     .total_price_info_body {
         position: relative;
         max-width: 1380px;
@@ -858,7 +882,9 @@ h2.title {
         .swiper-container {
             .swiper-wrapper {
                 .swiper-slide {
+                    height: auto;
                     dl {
+                        height: 100%;
                         text-align: center;
                         dt {
                             text-align: left;
@@ -867,7 +893,9 @@ h2.title {
                             font-weight: 700;
                         }
                         dd {
-                            padding: 20px 7.5%;
+                            position: relative;
+                            height: calc(100% - 38px);
+                            padding: 20px 7.5% 90px 7.5%;
                             margin-top: 20px;
                             border-radius: 7px;
                             background: #f4f4f4;
@@ -909,8 +937,11 @@ h2.title {
                                     }
                                 }
                                 .btn_purchase {
-                                    width: 100%;
-                                    margin-top: 20px;
+                                    position: absolute;
+                                    bottom: 20px;
+                                    left: 7.5%;
+                                    right: 7.5%;
+                                    width: 85%;
                                 }
                             }
                         }
@@ -1108,7 +1139,86 @@ h2.title {
     }
 }
 
-.btn_propose_model_sel {
+.color_my_pick {
+    position: relative;
+    .btn-close {
+        position: absolute;
+        top: 15px;
+        right: 40px;
+        width: 24px;
+        height: 24px;
+        z-index: 5;
+        @include mobile {
+            top: 12px;
+            right: 12px;
+        }
+        &:before,
+        &:after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 20px;
+            margin-top: -10px;
+            //margin-left: 1px;
+            border-radius: 1px;
+            background: #000;
+        }
+        &:before {
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+    .color_my_pick_body {
+        position: relative;
+        padding: 40px 40px 20px 40px;
+        &:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 40px;
+            right: 40px;
+            height: 1px;
+            background: #dddddd;
+        }
+        .swiper-wrapper {
+            .swiper-slide {
+                width: auto;
+                &+.swiper-slide {
+                    dl {
+                        padding-left: 40px;
+                    }
+                }
+                dl {
+                    dt {
+                        font-size: 18px;
+                        color: #000000;
+                        font-weight: 700;
+                    }
+                    dd {
+                        padding: 10px 0 30px;
+                        ul {
+                            display: flex;
+                            li {
+                                &+li {
+                                    margin-left: 10px;
+                                    padding-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn_propose_model_sel,
+.btn_myPick_model_sel {
     width: 100px;
     &[data-cate="refrigerator"] {
         .mini_model_wrap {
