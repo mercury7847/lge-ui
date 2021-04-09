@@ -39,8 +39,6 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 self._loadImage($(item),null);
             });
 
-            console.log(self.$imgSwitch);
-
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
