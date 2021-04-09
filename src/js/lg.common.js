@@ -292,9 +292,6 @@ var isApp = function(){
 
             $('body').find('.container').attr('id', 'content');
 
-
-
-
         },
 
         _addImgOnloadEvent: function(){
