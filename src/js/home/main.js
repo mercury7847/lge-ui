@@ -493,9 +493,17 @@ $(function () {
                 oVideo;
 
             var src = $target.data('src');
+            var posterSrc = $target.data('posterSrc');
+
             if(isMobileDevice){
+                posterSrc = $target.data('posterMSrc') || $target.data('posterSrc');
                 src = $target.data('mSrc') || $target.data('src');
             }
+
+            if(posterSrc){
+                videoAttr += " poster='"+posterSrc+"'";
+            }
+
 
             // 비디오 요소 생성.
             var createVideoObject = function() {
