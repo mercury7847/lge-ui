@@ -22,7 +22,7 @@
         '</div>';
 
             var storyListTemplate = 
-                '<div class="flexbox">'+
+                '<div class="flexbox" data-contents-type="{{contentsType}}">'+
                     //'<div class="box-wrap">'+
                         '<div class="box {{contentsType}}">'+
                             '<a href="{{storyUrl}}" class="visual-area">'+
@@ -80,6 +80,9 @@
 
     var firstLoadCnt = 0;
     var firstLoadLength = 1;
+
+    var imgScale = 1.25;    //640 * 800
+    var videoScale = 0.56;  //240 * 136
 
     function init(){      
         STORY_LIST_URL = $('.contents.story-main').data("storyList");
@@ -266,7 +269,7 @@
     }
 
     function loadStoryList(sectioname, page, type, selectTag){
-        lgkorUI.showLoading();
+        //lgkorUI.showLoading();
 
         var sendata = {
             page: page,
@@ -321,13 +324,15 @@
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
+                setRepositionTagBox(sectionItem);
+
                 // console.log("page:", page);
                 // console.log("result.data.recommendTags:", result.data.recommendTags);
-                if(page == 1 && result.data.recommendTags){
-                    var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
-                    list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
-                    sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
-                }
+                // if(page == 1 && result.data.recommendTags){
+                //     var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
+                //     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
+                //     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
+                // }
 
             } else{
                 sectionItem.hide();
@@ -357,14 +362,14 @@
 
                     var delay = parseInt(Math.random()*10)*15;
                     $(child).data('appearAnim', true);
-                    $(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
+                    //$(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
                 }
             });
 
             var page = sectionItem.data("page");
             if(page > 1){
                 var status = getAlignStatusValues(sectionItem);
-                $('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
+                //$('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
             } else{
                 scrolltop = 0;
                 if(firstLoadCnt >= firstLoadLength){
@@ -372,12 +377,12 @@
                         scrolltop = sectionItem.offset().top;
                     }
                 }
-                $('html, body').animate({scrollTop: scrolltop}, 200);
+                //$('html, body').animate({scrollTop: scrolltop}, 200);
             }
 
             if(firstLoadCnt < firstLoadLength) firstLoadCnt++;
 
-            lgkorUI.hideLoading();
+            //lgkorUI.hideLoading();
         }
     }
     window.onImgLoadEvent = imgLoadEvent;
@@ -392,13 +397,21 @@
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
         item.find('.flexbox').each(function(idx, box){
-            var boxtop = 0, raw = idx, lastbox, leng, lasty, lastbottom;
+            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight;
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
                     leng = boxmap[i].length;
                     lastbox = boxmap[i][leng-1];
-                    lasty = lastbox.position().top + lastbox.outerHeight(true) + status.distance;
+
+                    contype = lastbox.data('contentsType');
+                    if(contype == 'image') boxheight = status.imgheight;
+                    else{
+                        txtheight = lastbox.find('.text-area').outerHeight(true);
+                        boxheight = status.videoheight + txtheight;
+                    }
+
+                    lasty = lastbox.position().top + boxheight + status.distance;
                     if(lasty < boxtop - 40){
                         raw = i;
                         col = leng-1;
@@ -406,23 +419,30 @@
                     }
                 }
             }
+
+            contype = $(box).data('contentsType');
+            if(contype == 'image') boxheight = status.imgheight;
+            else{
+                txtheight = $(box).find('.text-area').outerHeight(true);
+                boxheight = status.videoheight + txtheight;
+            }
             var boxleft = raw * (status.boxwidth + status.distance);
-            // console.log("status.boxwidth:", status.boxwidth)
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
+                height: boxheight,
                 left: boxleft,
                 top: boxtop
             });
             boxmap[raw][col] = $(box);
 
-            var bottom = $(box).position().top + $(box).outerHeight(true);
+            var bottom = $(box).position().top + boxheight;
             maxBottom = Math.max(maxBottom, bottom);
         });
 
         item.find('.flexbox-wrap').height(maxBottom);
     }
-
+    
     function getAlignStatusValues(item){
         var rawnum = 4;
         var distance = 24;
@@ -446,7 +466,9 @@
         return {
             rawnum: rawnum,
             boxwidth: boxwidth,
-            distance: distance
+            distance: distance,
+            imgheight: boxwidth * imgScale,
+            videoheight: boxwidth * videoScale
         }
     }
 

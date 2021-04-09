@@ -1991,6 +1991,12 @@
                 //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
 
+            var modeltypes = vcui.array.filterOne(productList, function(item){
+                return item.modelType == "소모품(A)";
+            });
+            if(modeltypes) $('.supplies-notify').show();
+            else $('.supplies-notify').hide();            
+
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();
 
