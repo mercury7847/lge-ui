@@ -3,17 +3,12 @@
     "message":null,
     "param":{
         "pagination":{
-            "page":"1",
-            "totalCount":"1"
+            "page":"2",
+            "totalCount":"22"
         }
     },
     "data":{
         "loginUrl":"",
-        "selectTags": {
-            "isSubscription": true,
-            "tagName": "가을",
-            "tagCode": "tagCode"
-        },
         "recommendTags": [
             {
                 "tagCode": "가전은역시LG",
