@@ -101,13 +101,12 @@
                     })
                 } else{
                     //주문조회...
+                    var cntxt;
                     var orderList = result.orderList;
                     var $orderProcess = $('.my-management.shopping .order-process');
+                    var cnt = orderList.data.myShoppingCnt;
+                    $orderProcess.find('.box-title .title').text("주문 조회(" + cnt + ")");
                     if(orderList.dataFlag == "Y"){                        
-                        var cnt = orderList.data.myShoppingCnt;
-                        var cntxt = parseInt(cnt) > 0 ? "(" + cnt + ")" : "";
-                        $orderProcess.find('.box-title').html("<span class='title'>주문 조회" + cntxt + "</span>");
-
                         var num, key, numwrap;
                         var numberData = orderList.data.normalData;
                         var listwrap = $orderProcess.find('.process-wrap > ul > li:nth-child(1) .process-list');
@@ -137,7 +136,6 @@
                             if(parseInt(num) <= 0) numwrap.addClass('zero');
                         }
                     } else{
-                        $orderProcess.find('.box-title').html("<span class='title'>주문 조회</span>");
                         $orderProcess.find('.process-wrap').empty().append(vcui.template(self.noDataTemplate, {msg:orderList.data.message}));
                     }
 

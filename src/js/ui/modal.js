@@ -113,22 +113,15 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
         },
         _handleFocusin: function _handleFocusin(e) {
-            var self = this;
+            var self = this;            
             if (!self.active) {
                 return;
-            }
-            
+            }            
+
             if (self.active.$el[0] !== e.target && !$.contains(self.active.$el[0], e.target)) {
 
                 var $first = self.active.$el.find(':visible:focusable').first(); 
-
-                if($first.is('input')){
-                    setTimeout(function(){
-                        $first.focus(); 
-                    },100)
-                }else{
-                    $first.focus(); 
-                }
+                $first.focus(); 
                     
                 e.stopPropagation();
             }
@@ -229,7 +222,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             variableWidth: true, 
             variableHeight: true,
             removeModalCss: false,
-            isHash : true
+            isHash : true,
+            webAccessibility : false, // 웹접근성 대응 유무 true로 변경시 닫기버튼이 모달 header 태그 위쪽을 이동함.
         },
 
         events: {
@@ -308,6 +302,15 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     });
                 });
             }
+
+            // 210409 하단에 있는 닫기버튼을 강제로 위로 올려서 웹접근성에 대응.
+            if(self.options.webAccessibility){
+                var $closeBtn = self.$el.find('header').siblings('.ui_modal_close');
+                if($closeBtn && $closeBtn[0]){
+                    self.$el.find('header').before($closeBtn);
+                }
+            }
+
 
             self._bindAria(); // aria 셋팅
 
@@ -434,14 +437,29 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     $focusEl.eq(0).focus();
                 } else {
                     // 레이어에 포커싱
-                    self.$el.attr('tabindex', 0).focus();
+                    
+
+                    if(opts.webAccessibility){
+                        var $first = self.$el.find(':visible:focusable').first(); 
+                        $first.focus(); 
+                    }else{
+                        self.$el.attr('tabindex', 0).focus();
+                    }
+
                 }
 
                 var $focusEl = self.$('[data-autofocus=true]');
                 if ($focusEl.length > 0) {
                     $focusEl.eq(0).focus();
                 } else {
-                    self.$el.attr('tabindex', 0).focus();
+
+                    if(opts.webAccessibility){
+                        var $first = self.$el.find(':visible:focusable').first(); 
+                        $first.focus(); 
+                    }else{
+                        self.$el.attr('tabindex', 0).focus();
+                    }
+
                 }
 
 
@@ -678,10 +696,14 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 $focusEl.eq(0).focus();
             } else {
                 // 레이어에 포커싱
-                //var $first = self.$el.find(':visible:focusable').first(); 
-                //$first.focus(); 
 
-                self.$el.attr('tabindex', 0).focus();
+                if(self.options.webAccessibility){
+                    var $first = self.$el.find(':visible:focusable').first(); 
+                    $first.focus(); 
+                }else{
+                    self.$el.attr('tabindex', 0).focus();
+                }
+                
             }
 
             

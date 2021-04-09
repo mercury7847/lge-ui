@@ -5,7 +5,7 @@
     .page-header {
         max-width:1380px + 80px;
         margin:0 auto;
-        padding:16px 40px 32px;
+        padding:16px 40px 64px;
         text-align:center;
         @include mobile {
             padding:4px 16px 32px;
@@ -14,9 +14,13 @@
             padding-bottom: 24px;
         }
         .title {
-            @include font-large-2;
             font-weight:700;
+            font-size: 24px;
+            line-height: 34px;
             color: #000;
+            @include mobile {
+                line-height: 33px;
+            }
         }
         .desc {
             margin-top:12px;
@@ -39,7 +43,7 @@
             }
         }
         .link-desc {
-            margin-top: 8px;
+            margin-top: 12px;
             .btn-link {
                 color: $color-default;
                 font-size:14px;

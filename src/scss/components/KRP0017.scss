@@ -15,9 +15,12 @@
             color:#000;
             @include font-large-3;
             font-weight:700;
+            font-size: 24px;
+            line-height: 34px;
             text-align:center;
             @include mobile {
-                padding:8px 0 32px;
+                padding:4px 0 32px;
+                line-height: 33px;
             }
             // @include mobile {
             //     display:none;

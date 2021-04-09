@@ -4,13 +4,14 @@
             '<p class="tit">{{title}}</p>' +
             '<span class="writter">{{name}}</span>' +
             '<span class="date">{{date}}</span>' +
-            '{{#if isApp}}<span class="app">APP<span class="blind">에서 작성</span></span>{{/if}}' +
+            '{{#if isApp}} <span class="app">APP<span class="blind">에서 작성</span></span>{{/if}}' +
         '</div>' +
     '</li>'
     var ReplyEvent = {
         init: function() {
             var self = this;
-            vcui.require(['ui/pagination'], function () {
+            vcui.require(['ui/pagination','helper/textMasking'], function () {
+                self.txtMasking = new vcui.helper.TextMasking();
                 self.setting();
                 self.bindEvent();
                 self.requestData(1);
@@ -23,6 +24,7 @@
             self.$pagination = self.$wrap.find('.pagination');
             self.$pagination.vcPagination({"scrollTarget":self.$wrap});
             self.btnWrap = $('.btn-wrap:eq(0)');
+            self.$replyPopup = $('#popupReply');
         },
 
         bindEvent: function() {
@@ -33,6 +35,9 @@
 
             self.btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
+                self.$replyPopup.find('#reply').val("");
+                self.$replyPopup.find('input[type="checkbox"]').prop('checked',false);
+                self.$replyPopup.vcModal({opener: this});
             });
 
             self.btnWrap.on('click','a.result',function (e) {
@@ -41,7 +46,7 @@
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl,null,function(result) {
                     var data = result.data;
-                    if(!lgkorUI.stringToBool(data.win)) {
+                    if(lgkorUI.stringToBool(data.win)) {
                         var template = '<strong class="tit">축하드립니다!</strong>' +
                             '<span class="txt">{{#raw prizeWin}}</span>' +
                             '<span class="txt">사은품은 {{date}} 이후 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
@@ -53,6 +58,63 @@
                             '<span class="txt">다음 이벤트에 참여하여 다시 한번 도전해보세요!</span>';
                         $('#popupEventLose').find('p.desc').html(vcui.template(template, data));
                         $('#popupEventLose').vcModal({opener: this});
+                    }
+                });
+            });
+
+            //댓글쓰기
+            self.$replyPopup.on('click','button[data-reply-url]',function (e) {
+                 e.preventDefault();
+                 //체크
+                 var param = {};
+                 var $chk = self.$replyPopup.find('#chk1-1');
+                 if($chk.length) {
+                    if(!$chk.is(':checked')) {
+                        lgkorUI.alert("", {title: '개인정보 수집 이용 동의는 필수입니다.'});
+                        $chk.focus();
+                        return;
+                    } else {
+                        param.chk1 = "Y"
+                    }
+                }
+
+                 $chk = self.$replyPopup.find('#chk2-1');
+                 if($chk.length) {
+                    if(!$chk.is(':checked')) {
+                        lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
+                        $chk.focus();
+                        return;
+                    } else {
+                        param.chk2 = "Y"
+                    }
+                }
+
+                 $chk = self.$replyPopup.find('#chk3-1');
+                 if($chk.length) {
+                    if(!$chk.is(':checked')) {
+                        lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
+                        $chk.focus();
+                        return;
+                    } else {
+                        param.chk3 = "Y"
+                    }
+                }
+
+                var reply = self.$replyPopup.find('#reply').val();
+                var checkReply = vcui.string.replaceAll(reply," ","");
+                if(checkReply > 0) {
+                    param.reply = reply;
+                } else {
+                    lgkorUI.alert("", {title: '댓글을 입력해주세요.'});
+                    return;
+                }
+                var ajaxUrl = $(this).attr('data-reply-url');
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(ajaxUrl,{},function(result) {
+                    var data = result.data;
+                    if(lgkorUI.stringToBool(data.success)) {
+                        self.$replyPopup.vcModal('close');
+                        self.requestData(1);
                     }
                 });
             });
@@ -71,6 +133,7 @@
                 var arr = (data.listData && data.listData instanceof Array) ? data.listData : [];
                 arr.forEach(function(item, index) {
                     item.isApp = lgkorUI.stringToBool(item.isApp);
+                    item.name = self.txtMasking.name(item.name);
                     $ul.append(vcui.template(replayEventItemTemplate, item));
                 });
             });
