@@ -73,7 +73,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -94,7 +94,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -119,7 +119,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -203,7 +203,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -224,7 +224,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -249,7 +249,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -339,7 +339,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -360,7 +360,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -385,7 +385,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -465,7 +465,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -486,7 +486,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -511,7 +511,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -607,7 +607,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -628,7 +628,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -653,7 +653,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -738,7 +738,7 @@
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                 doorColor: [{
                                     name: "맨해튼 미드나잇",
@@ -759,7 +759,7 @@
                                 name: "미스트",
                                 enName: "Mist Glass",
                                 code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "베이지",
@@ -784,7 +784,7 @@
                                 name: "네이쳐",
                                 enName: "Nature Metal",
                                 code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                                 descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                                 doorColor: [{
                                     name: "그레이",
@@ -866,7 +866,7 @@
                         name: "솔리드",
                         enName: "Solid Metal",
                         code: "S",
-                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                         doorColor: [{
                             name: "맨해튼 미드나잇",
@@ -887,7 +887,7 @@
                         name: "미스트",
                         enName: "Mist Glass",
                         code: "G",
-                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                         doorColor: [{
                             name: "베이지",
@@ -912,7 +912,7 @@
                         name: "네이쳐",
                         enName: "Nature Metal",
                         code: "M",
-                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                         doorColor: [{
                             name: "그레이",
@@ -958,7 +958,7 @@
                             name: "솔리드",
                             enName: "Solid Metal",
                             code: "S",
-                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                             doorColor: [{
                                 name: "맨해튼 미드나잇",
@@ -979,7 +979,7 @@
                             name: "미스트",
                             enName: "Mist Glass",
                             code: "G",
-                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "베이지",
@@ -1004,7 +1004,7 @@
                             name: "네이쳐",
                             enName: "Nature Metal",
                             code: "M",
-                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "그레이",
@@ -1044,7 +1044,7 @@
                             name: "솔리드",
                             enName: "Solid Metal",
                             code: "S",
-                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                             doorColor: [{
                                 name: "맨해튼 미드나잇",
@@ -1065,7 +1065,7 @@
                             name: "미스트",
                             enName: "Mist Glass",
                             code: "G",
-                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "베이지",
@@ -1090,7 +1090,7 @@
                             name: "네이쳐",
                             enName: "Nature Metal",
                             code: "M",
-                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "그레이",
@@ -1130,7 +1130,7 @@
                             name: "솔리드",
                             enName: "Solid Metal",
                             code: "S",
-                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. <br>매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                             doorColor: [{
                                 name: "맨해튼 미드나잇",
@@ -1151,7 +1151,7 @@
                             name: "미스트",
                             enName: "Mist Glass",
                             code: "G",
-                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 <br>매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "베이지",
@@ -1176,7 +1176,7 @@
                             name: "네이쳐",
                             enName: "Nature Metal",
                             code: "M",
-                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 <br>편안한 감각을 표현해주는 소재입니다.",
+                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
                             descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
                             doorColor: [{
                                 name: "그레이",
@@ -3304,6 +3304,7 @@
                     modelSimulator.closeMyPickModel();
                     $("#proposeModel").addClass("border");
                     $("#myPick").addClass("border");
+                    modelSimulator.mobileStep(".simul_step1");
                 }
             };
             var desc = '';
@@ -3350,12 +3351,14 @@
             let idx = $(".btn_model_pick.is_active").attr("data-index");
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
             modelSimulator.maxCountCheck();
+            modelSimulator.mobileStep(".simul_step2");
         });
 
         //문선택을 위한 제품 선택
         $(document).on("click", ".model_set_wrap .btn_model_sel", function(e) {
             $(this).closest(".model_set_wrap").siblings().attr("data-model-editing", 'N');
             $(this).closest(".model_set_wrap").attr("data-model-editing", 'Y');
+            modelSimulator.mobileStep(".simul_step2");
             //     
 
 
@@ -3465,6 +3468,7 @@
             if (complet == "Y") {
                 $(".simul_wrap").attr("data-add-active", "Y");
                 modelSimulator.addSetting();
+                modelSimulator.mobileStep(".simul_step1");
             } else {
                 let desc = "";
                 let obj = {
@@ -3526,6 +3530,7 @@
                 };
                 lgkorUI.alert(desc, obj);
             }
+            modelSimulator.mobileStep(".simul_step3");
 
         });
         //구매하기
@@ -3587,6 +3592,27 @@
                 nextEl: '.total_price_info_body .swiper-button-next',
                 prevEl: '.total_price_info_body .swiper-button-prev',
             },
+            breakpoints: {
+                // when window width is >= 320px
+                280: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                // when window width is >= 480px
+                767: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                // when window width is >= 640px
+                900: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                }
+            }
         });
         materiaModal = new Swiper(".obj_tooltip_wrap .material_modal", {
             //slidesPerView: 1,
@@ -3753,6 +3779,7 @@
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
             modelSimulator.maxCountCheck();
             modelSimulator.closeProposeModel();
+
         },
         childModel: function(_target) { //하위 카테고리가 있는지 여부 판단
             let _this = _target;
@@ -3764,6 +3791,7 @@
                 modelSimulator.makeModelTab(idx, _name);
             } else {
                 modelSimulator.stepOneNext(idx, _name, name);
+                modelSimulator.mobileStep(".simul_step2");
             }
         },
         makeModelTab: function(idx, _name) { //하위 카테고리가 있을경우 탭을 생성
@@ -4057,7 +4085,19 @@
 
 
         },
+        mobileStep: function(target) {
+            if ($(window).width() > 767) {
+                //pc버전
+            } else {
+                //모바일버전
+                console.log("target", target);
+                let goTop = $(target).offset().top;
+                console.log("goTop", goTop);
+                $("html, body").animate({ scrollTop: goTop }, 500);
+            }
+        },
         stepTwo: function(idx) {
+
             let modelCate = $(".model_choice_tab .btn_model_pick.is_active").attr("data-lead-name");
             let modelCate2 = $("[data-model-editing='Y']").attr("data-model-cate");
             let modelCode = $("[data-model-editing='Y']").attr("data-model_code");
