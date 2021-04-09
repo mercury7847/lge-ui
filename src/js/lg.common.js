@@ -2024,6 +2024,12 @@ var isApp = function(){
                 if(modelId) {
                     var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
                     var androidScheme = "Intent://goto?type=AR&product=" + modelId;
+                    if(location.hostname == "www.lge.co.kr") {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                    } else {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
+                    }
+                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
                     lgkorUI.isAPPInstall(iosScheme, androidScheme);
                     return true;
                 } else {
@@ -2088,14 +2094,14 @@ var isApp = function(){
                     clearTimeout(self.appCheckTimer);
                     console.log('안드로이드 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
-                }, 2000);
+                }, 3000);
             } else if (vcui.detect.isIOS) {
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
                     console.log('ios 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
-                }, 2000);
+                }, 3000);
                 //location.href = appScheme + "://";
                 location.href = iosScheme;
             }
