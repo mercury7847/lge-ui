@@ -14,9 +14,13 @@
             padding-bottom: 24px;
         }
         .title {
-            @include font-large-2;
             font-weight:700;
+            font-size: 24px;
+            line-height: 34px;
             color: #000;
+            @include mobile {
+                line-height: 33px;
+            }
         }
         .desc {
             margin-top:12px;
