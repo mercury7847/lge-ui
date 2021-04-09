@@ -7,20 +7,12 @@
             '{{#if isApp}}<span class="app">APP<span class="blind">에서 작성</span></span>{{/if}}' +
         '</div>' +
     '</li>'
-    var validation = null;
     var ReplyEvent = {
         init: function() {
             var self = this;
-            vcui.require(['ui/validation','ui/modal','ui/pagination'], function () {
+            vcui.require(['ui/pagination'], function () {
                 self.setting();
                 self.bindEvent();
-                var vaildObj = {
-                    modelName:{
-                        required: true,
-                        errorMsg: "모델명을 입력해 주세요.",
-                    },
-                }
-                validation = new Validation('.uiForm',{register:$.extend(buyerInfo, vaildObj)});
                 self.requestData(1);
             });
         },
@@ -74,7 +66,7 @@
                  e.preventDefault();
                  //체크
                  var param = {};
-                 var $chk = self.$replyPopup.find('chk1-1');
+                 var $chk = self.$replyPopup.find('#chk1-1');
                  if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 수집 이용 동의는 필수입니다.'});
@@ -85,7 +77,7 @@
                     }
                 }
 
-                 $chk = self.$replyPopup.find('chk2-1');
+                 $chk = self.$replyPopup.find('#chk2-1');
                  if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
@@ -96,7 +88,7 @@
                     }
                 }
 
-                 $chk = self.$replyPopup.find('chk3-1');
+                 $chk = self.$replyPopup.find('#chk3-1');
                  if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
