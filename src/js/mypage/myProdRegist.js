@@ -118,44 +118,16 @@
         '</div>' +
     '</li>';
 
-    var downloadListItemTemplate2 = '<li class="lists ui_dropdown">' +
-        '<div class="inner titles">' +
-            '<a href="#"><div class="info-cell">' +
-                '<p class="file-name">{{title}}</p>' +
-                '<ul class="info-list">' +
-                    '<li><span class="blind">버전</span>{{version}}</li>' +
-                    '<li><span class="blind">카테고리</span>{{category}}</li>' +
-                    '<li><span class="blind">등록일</span>{{date}}</li>' +
-                '</ul>' +
-            '</div></a>' +
-            '<div class="btn-cell">' +
-                '<span class="col"><button type="button" class="btn size border" data-file-url="{{url}}"><span>다운로드 {{fileSize}}</span></button></span>' +
-                '{{#if list}}<span class="col"><button type="button" class="more-view-btn ui_dropdown_toggle">이전 버전 <span>보기</span></button></span>{{/if}}' +
-            '</div>' +
-        '</div>' +
-        '{{#if list}}<ul class="prev-ver-list ui_dropdown_list">' +
-            '{{#each item in list}}<li class="inner">' +
-                '<a href="#"><div class="info-cell">' +
-                    '<p class="file-name">{{item.title}}</p>' +
-                    '<ul class="info-list">' +
-                        '<li><span class="blind">버전</span>{{item.version}}</li>' +
-                        '<li><span class="blind">카테고리</span>{{item.category}}</li>' +
-                        '<li><span class="blind">등록일</span>{{item.date}}</li>' +
-                    '</ul>' +
-                '</div></a>' +
-                '<div class="btn-cell">' +
-                    '<span class="col"><button type="button" class="btn size border" data-file-url="{{item.url}}"><span>다운로드 {{item.fileSize}}</span></button></span>' +
-                '</div>' +
-            '</li>{{/each}}' +
-        '</ul>{{/if}}' +
-    '</li>'
-
     var checkModelSuccess = false;
     var checkSerialSuccess = false;
 
     var myProductRegistration = {
         init: function() {
             var self = this;
+            
+            //타이머
+            self.searchTimer = null;
+
             self.loadingCount = 0;
             //크레마
             lgkorUI.cremaLogin();
@@ -228,6 +200,9 @@
 
             //보유제품 등록 팝업
             self.$registMyProductPopup = $('#registMyProductPopup');
+            self.$registMyProductPopup.find('input').attr('autocomplete','off');
+            self.$myProductinputLayerAutoComplete = self.$registMyProductPopup.find('.input-layer-wrap .input-layer');
+
             //보유제품 등록 페이지
             self.$registMyProductMainPage = self.$registMyProductPopup.find('div.page-change:eq(0)');
             self.$modelCheckHelpPage = self.$registMyProductPopup.find('div.page-change:eq(1)');
@@ -362,7 +337,7 @@
             });
 
             //보유제품 직접 등록
-            self.$registProductList.on('click','div.btm-box button' ,function(e) {
+            self.$contents.on('click','div.enroll-info button' ,function(e) {
                 self.registMyProductPopupClear();    
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
@@ -460,18 +435,57 @@
 
         },
 
+        //검색어 입력중 검색 jsw
+        requestSearchAutoComplete:function(value) {
+            var self = this;
+            var ajaxUrl = self.$registMyProductPopup.data('autocompleteUrl');
+            lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                var data = result.data;
+
+                var arr = (data && data.listData instanceof Array) ? data.listData : [];
+                var $list_ul = self.$myProductinputLayerAutoComplete.find('ul');
+                $list_ul.empty();
+                if(arr.length > 0) {
+                    var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{text}}</a></li>'
+                    var replaceText = '<span class="search-word">' + value + '</span>';
+                    arr.forEach(function(item, index) {
+                        $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, value, replaceText)}));
+                    });
+                    self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').addClass('on');
+                    self.$myProductinputLayerAutoComplete.find('.no-data').hide();
+                } else {
+                    self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').addClass('on');
+                    self.$myProductinputLayerAutoComplete.find('.no-data').show();
+                }
+                self.$myProductinputLayerAutoComplete.show()
+            });
+        },
+
         bindPopupEvents: function() {
             var self = this;
 
-            //모델명 확인
+            //모델명 입력 체크
             self.$modelInput.on('input', function(e){
                 checkModelSuccess = false;
                 self.$modelCheckOk.hide();
                 if(e.target.value.length > 20){
                     e.target.value = e.target.value.slice(0, 20);
                 }
-            })
 
+                clearTimeout(self.searchTimer);
+                
+                var searchVal = e.target.value;
+                if (searchVal.length < 4) {
+                    self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').removeClass('on');
+                    self.$myProductinputLayerAutoComplete.hide();
+                } else {
+                    self.searchTimer = setTimeout(function() {
+                        self.requestSearchAutoComplete(searchVal);
+                    }, 300);
+                }
+            });
+
+            //모델명 확인 버튼
             self.$modelCheckButton.on('click', function(e){
                 var ajaxUrl = self.$registMyProductPopup.attr('data-sku-url');
                 lgkorUI.requestAjaxData(ajaxUrl, {"sku":self.$modelInput.val()}, function(result) {
@@ -487,7 +501,17 @@
                 });
             });
 
+            //모델명 자동완성 클릭
+            self.$myProductinputLayerAutoComplete.on('click', 'a', function (e) {
+                e.preventDefault();
+                var modelName = $(this).attr(href).replace('#', '');
+                if(modelName && modelName.length > 0) {
+                    self.$modelInput.val(modelName);
+                    self.$modelCheckButton.trigger('click');
+                }
+            });
 
+            //제조번호 길이 체크
             self.$snInput.on('input', function(e){
                 checkSerialSuccess = false;
                 if(e.target.value.length > 14){
@@ -496,7 +520,6 @@
             })
 
             //제조번호 확인
-
             self.$snCheckButton.on('click', function(e){
                 var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());
@@ -894,6 +917,9 @@
             }
             self.$registMyProductMainPage.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
             self.$registMyProductMainPage.find('.err-block').hide();
+
+            self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').removeClass('on');
+            self.$myProductinputLayerAutoComplete.hide();
         },
 
         requestManualData: function(_id, sku, page, isMore) {
