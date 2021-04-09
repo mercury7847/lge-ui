@@ -397,11 +397,12 @@
                                 top:0;
                                 right:0;
                                 z-index:5;
+                                max-width:56px;
                                 img{
                                     display:block;
-                                    max-width:56px;
                                     &.discount{
-                                            margin-bottom:-12px;
+                                        position:relative;
+                                        margin-bottom:-12px;
                                     }                                    
                                 }
                             }
