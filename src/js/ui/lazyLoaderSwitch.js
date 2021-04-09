@@ -31,7 +31,13 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector +"img[data-pc-src][data-m-src],.ui_bg_switch");
+            self.$items = $(self.options.selector +":not(.ignore-lazyload)img[data-pc-src][data-m-src],.ui_bg_switch");
+
+            self.$imgSwitch = $(self.options.selector +"img[data-pc-src][data-m-src],.ui_bg_switch").filter('.ignore-lazyload');
+            //self.$imgSwitch.vcImageSwitch('reload');
+
+            console.log(self.$imgSwitch);
+
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             self._bindEvents();
@@ -109,7 +115,8 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
 
         reload: function($dm){
             var self = this;
-            var $items = $dm.find("img[data-pc-src][data-m-src],.ui_bg_switch");
+
+            var $items = $dm.find(":not(.ignore-lazyload)img[data-pc-src][data-m-src],.ui_bg_switch");
             $items.each(function(idx, item){
                 self._loadImage($(item),null);
             });
@@ -124,7 +131,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             else mode = self.options.mobile_prefix;
             if(self.mode != mode) {
                 self.mode = mode;
-                var $items = $(self.options.selector +"img[data-pc-src][data-m-src][data-current-image],.ui_bg_switch[data-current-image]");
+                var $items = $(self.options.selector +":not(.ignore-lazyload)img[data-pc-src][data-m-src][data-current-image],.ui_bg_switch[data-current-image]");
                 $items.each(function(idx,item){
                     var $img = $(item);
                     var src = $img.attr('data-' + mode + '-src');
