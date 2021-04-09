@@ -38,7 +38,7 @@ img{
 .main-wrap {
 	// max-width:1920px;
 	margin:0 auto;
-	background-color:#f4f4f4;
+	//background-color:#f4f4f4;
 	// padding-bottom:120px;
 	@include mobile {
 		// padding-bottom:171px;
@@ -988,7 +988,10 @@ img{
 					}
 				}
 			}
-		   .slide-content {
+			.slide-controls {
+				display: none !important;
+			}
+			.slide-content {
 			   //@at-root: hidden;
 			//    margin-left: -12px;
 			//    margin-right: -12px;

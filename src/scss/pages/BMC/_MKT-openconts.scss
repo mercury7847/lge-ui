@@ -10,7 +10,7 @@
 
     /* 클래스별이미지분기 */
     .pc{
-        display:block !important;
+        display:inline-block !important;
     }
     .mobile{
         display:none !important;
@@ -182,24 +182,30 @@
         }
         .app_down{
             position:relative;
+            margin-top: 110px;
+            @include mobile{
+                margin-top: 60px;
+            }
             & .btns{
                 a{
                     display:inline-block;
                     position:absolute;
-                    top: 62%;
-                    width:17%;
-                    height:12%;
+                    top: 72%;
+                    width: 14%;
+                    height: 7%;
                     @include mobile{
+                        top: 82%;
                         width:32%;
+                        height: 6%;
                     }
                     &.android{
-                        left: 20%;
+                        left: 54%;
                         @include mobile{
                             left: 12%;
                         }
                     }
                     &.ios{
-                        left: 63%;
+                        left: 75%;
                         @include mobile{
                             left: 56%;
                         }
@@ -301,7 +307,8 @@
                                     display: -webkit-box;
                                     -webkit-line-clamp:2;
                                     -webkit-box-orient: vertical;
-                                    max-height:56px;
+                                    // max-height:56px;
+                                    min-height:38px;
                                     font-size:16px;
                                     font-weight:700;
                                     line-height:1.24;
@@ -340,6 +347,9 @@
                                         font-size: 20px;
                                         line-height: 1.21;
                                         color:#e34465;
+                                        @include tablet {
+                                            font-size:12px;
+                                        }
                                         em{
                                             display:inline-block;
                                             font-weight: 700;
@@ -372,6 +382,34 @@
                                             font-size:14px;
                                         }
                                     }
+                                }
+                            }
+                            .dim-soldout{
+                                position:absolute;
+                                top:0;
+                                left:0;
+                                width:100%;
+                                height:100%;
+                                background-color:rgba(146, 146, 146, 0.7);
+                                z-index:10;
+                                border-radius: 8px;
+                                background-image: url('/lg5-common/images/BMC/open_conts/event06/img-soldout.png');
+                                background-size: 50%;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                            }
+                            .flag{
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                z-index:5;
+                                max-width:56px;
+                                img{
+                                    display:block;
+                                    &.discount{
+                                        position:relative;
+                                        margin-bottom:-12px;
+                                    }                                    
                                 }
                             }
                         }
@@ -481,6 +519,7 @@
                                     img {
                                         opacity:1;
                                         transform:scale(1);
+                                        transition:all .4s;
                                     }
                                 }
                                 .prd_name {
@@ -518,7 +557,7 @@
             }
         }
         .more_btn{
-            display:inline-block;
+            display:block;
             margin:-12% auto 12%;
             @include mobile {
                 margin: -26% auto 26%;

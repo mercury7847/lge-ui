@@ -12,7 +12,7 @@
     var faq = {
         init: function() {
             var self = this;
-            vcui.require(['ui/pagination'], function () {
+            vcui.require(['ui/pagination', 'support/common/quickMenu.min'], function () {
                 self.setting();
                 self.bindEvents();
                 self.params = {};
@@ -30,6 +30,7 @@
             self.$faqList = result_wrap.find('div.ui_accordion');
             self.$pagination = result_wrap.find('div.pagination').vcPagination();
             self.$nodata = result_wrap.find('div.no-data');
+            $('#quickMenu').vcQuickMenu();
         },
 
         bindEvents: function() {

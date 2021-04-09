@@ -195,7 +195,7 @@
         position: relative;
         height:480px;
         @include mobile {
-            height:480px;
+            height:530px;
         }
     }
 
@@ -211,23 +211,31 @@
         height:480px;
         overflow: hidden;
         text-align:center;
+        @include mobile {
+            height:100%;
+        }
         // @include mobile {
         //     height:0;
         //     padding-top:133.334%;
         // }
         img {
-            // position: absolute;
-            // top:0;
-            // left:50%;
+            position: absolute;
+            top:0;
+            left:50%;
             // width:auto;
-            // height: 100%;
-            // transform:translateX(-50%);
+            height: 100%;
+            transform:translateX(-50%);
             // width:100%;
-            position: relative;
-            width:auto;
-            max-width:100%;
-            height:auto;
-            vertical-align:top;
+            @include mobile {
+                position:absolute;
+                width:auto;
+                max-width:none;
+                height:auto;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+                vertical-align:top;
+            }
              /* 클래스별이미지분기 */
              &.pc{
                 display:inline-block;

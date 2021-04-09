@@ -15,7 +15,7 @@
         var register = {
             agreeChecker:{
                 required: true,
-                errorMsg: "보완유지 확인서에 동의해 주세요."
+                errorMsg: "보안유지 확인서에 동의해 주세요."
             },
             groupName: {
                 required: true,
@@ -23,7 +23,7 @@
             },
             userEmail: {
                 required: true,
-                errorMsg: "이메일을 입력해 주세요.",
+                errorMsg: "이메일을 형식이 아닙니다.",
                 pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             },
             userName: {
@@ -41,8 +41,20 @@
             if(!isJoin){
                 var result = joinValidation.validate();
                 if(!result.success){
+                    var errMsg = "";
+                    if(result.validArray[0].key == "userEmail"){
+                        var emailValue = joinValidation.getValues("userEmail");
+                        if(emailValue == ""){
+                            errMsg = "이메일을 입력해 주세요.";
+                        }else{
+                            errMsg = result.validArray[0].errmsg;
+                        }
+                    } else{
+                        errMsg = result.validArray[0].errmsg;
+                    }
+
                     lgkorUI.alert("", {
-                        title: result.validArray[0].errmsg,
+                        title: errMsg,
                         ok: function(){
                             setTimeout(function(){
                                 $('.show1').find('input[name='+result.validArray[0].key+']').focus();
@@ -55,7 +67,6 @@
 
                     var sendurl = $('.show1').data('joinUrl');
                     var sendata = joinValidation.getValues();
-                    console.log(sendata);
                     lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendurl, sendata, function(result){ 
                         if(result.status == "fail"){
                             lgkorUI.alert("", {
