@@ -219,7 +219,7 @@ $(function () {
         $('.scene').css({'overflow':'hidden'});
 
         /* 메인테스트*/
-        //$('html').css({'overflow':'hidden'});
+        $('html').css({'overflow':'hidden'});
         
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
@@ -315,8 +315,7 @@ $(function () {
 
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
-                }, speedTime, 'easeInOutQuart',  function() { // easeInOutQuad, easeInOutQuart, easeInOutCubic
-
+                }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true
                     currentPage = idx;   
                     
@@ -345,7 +344,7 @@ $(function () {
         if(!isMobileDevice){
 
             /* 메인테스트*/
-            /*
+            
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -370,36 +369,16 @@ $(function () {
                 }       
     
             });
-            */
 
         }
         
         
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
-        /*
-
-        function scrollendfn(){
-            var idx = _findIdx($('html,body').scrollTop());            
-            $(window).off('scrollend');
-
-            $('html, body').stop(true).animate({
-                scrollTop: posArr[idx]
-            }, 600, 'easeInOutQuart',  function() {
-                $(window).on('scrollend', scrollendfn);
-                
-            });
-        }
-
-
-        $(window).on('scrollend', scrollendfn);
-        */
-
+        lgkorUI.setEnableAppScrollBottomMenu(false);        
 
 
         /* 메인테스트*/
-        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -457,7 +436,6 @@ $(function () {
 
             }
         });
-        */
 
         
 
@@ -501,18 +479,10 @@ $(function () {
 
 
         // 비디오 태그 처리
-        /*
-        <div class="img">
-            <img src="/lg5-common/images/MA/img-main-00.jpg"  data-pc-src="/lg5-common/images/MA/img-main-00.jpg" data-m-src="/lg5-common/images/MA/img-main-00-m.jpg" alt="">
-            <!-- 동영상 가이드 -->
-            <!-- <div class="video" data-src="/lg5-common/videos/signature_rain_view" data-ext="mp4" data-alt="signature_rain_view"></div> -->
-        </div>
-        */
 
         function updateVideo(video) {
 
             var isAndroid = vcui.detect.isAndroid;
-            //var isMobileDevice = vcui.detect.isMobileDevice;
 
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
@@ -647,8 +617,8 @@ $(function () {
 
             /* 메인 테스트 */
 
-            //$contentWrap.css({'overflow':'auto','height':winHeight});
-            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            $contentWrap.css({'overflow':'auto','height':winHeight});
+            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
             
             if(idx!==undefined){
                 currentPage = idx;
@@ -683,12 +653,12 @@ $(function () {
         } else{
             // 앱 대응시 주석처리
             $window.on('resizeend', function(e){
-                //render();
+                render();
             });
             $window.trigger('resizeend');
             // 앱 대응시 주석처리 end
 
-            render();
+            //render();
 
         }
 
