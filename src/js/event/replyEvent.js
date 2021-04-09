@@ -4,13 +4,14 @@
             '<p class="tit">{{title}}</p>' +
             '<span class="writter">{{name}}</span>' +
             '<span class="date">{{date}}</span>' +
-            '{{#if isApp}}<span class="app">APP<span class="blind">에서 작성</span></span>{{/if}}' +
+            '{{#if isApp}} <span class="app">APP<span class="blind">에서 작성</span></span>{{/if}}' +
         '</div>' +
     '</li>'
     var ReplyEvent = {
         init: function() {
             var self = this;
-            vcui.require(['ui/pagination'], function () {
+            vcui.require(['ui/pagination','helper/textMasking'], function () {
+                self.txtMasking = new vcui.helper.TextMasking();
                 self.setting();
                 self.bindEvent();
                 self.requestData(1);
@@ -132,6 +133,7 @@
                 var arr = (data.listData && data.listData instanceof Array) ? data.listData : [];
                 arr.forEach(function(item, index) {
                     item.isApp = lgkorUI.stringToBool(item.isApp);
+                    item.name = self.txtMasking.name(item.name);
                     $ul.append(vcui.template(replayEventItemTemplate, item));
                 });
             });
