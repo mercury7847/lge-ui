@@ -299,27 +299,18 @@
                     if (!self.isModelCheck) {
                         lgkorUI.alert('', {
                             title: '모델명 입력 후 검색 버튼을 선택하여 주세요.',
-                            ok: function() {
-                                $('#modelCode').focus();
-                            }
-                        });
+                        }, $('#modelCode')[0]);
                         return false;
                     } else if (!self.isSerialCheck) {
                         lgkorUI.alert('', {
                             title: '제조 번호 입력 후 검색 버튼을 선택하여 주세요.',
-                            ok: function() {
-                                $('#serialNumber').focus();
-                            }
-                        });
+                        }, $('#serialNumber')[0]);
                         return false;
                     } else if (!authFlag) {
                         lgkorUI.alert('', {
                             title:'휴대전화 인증이 필요합니다.',
                             okBtnName: '확인',
-                            ok: function() {
-                                $('.btn-open').focus();
-                            }
-                        });
+                        }, $('.btn-open')[0]);
                         return false;
                     }
 
