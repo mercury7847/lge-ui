@@ -115,8 +115,17 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             var caption = self.$el.find('article.cap-section');
             if(caption.length) $(self.$videoLayer).find('.modal-video-asset').append(caption.clone().show());
 
-            if(isModal) $('body').addClass('modal-open').append(self.$videoLayer);
-            else self.$el.append(self.$videoLayer);
+            if(isModal){ 
+                $('body').addClass('modal-open').append(self.$videoLayer);
+                var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"hidden"
+                    });
+                }
+            }else{
+                self.$el.append(self.$videoLayer);
+            };
 
             var baseVideos = self.$el.find("div.video-asset");
             if(baseVideos.length > 1) {
@@ -161,6 +170,13 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             self.$videoLayer = null;
 
             $('body').removeClass('modal-open');
+
+            var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                if(!ignoreOverflow){
+                    $('html, body').css({
+                        overflow:"visible"
+                    });
+                }
         },
 
         close: function(){
