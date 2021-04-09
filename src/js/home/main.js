@@ -129,13 +129,13 @@ $(function () {
                 {
                     breakpoint: 768,
                     settings: {
-                        infinite: true,
+                        infinite: false,
                         variableWidth : false,
                         dots: true,
-                        slidesToShow: 1, 
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                         centerMode: true,
-                        centerPadding: '25%',
+                        centerPadding: '19%',
                     }
                 }
             ]
