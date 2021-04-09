@@ -1710,7 +1710,7 @@
 
             if(isRender && leng){
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = noneMemPaymentTemplate;
-                else if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) template = carePaymentListTemplate;
+                else if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL) template = carePaymentListTemplate;
                 else template = paymentListTemplate;
 
                 console.log("paymentData:",paymentData)
