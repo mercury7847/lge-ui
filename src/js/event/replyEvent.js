@@ -17,7 +17,7 @@
                 self.requestData(1);
             });
         },
-        
+
         setting: function() {
             var self = this;
             self.$wrap = $('.reply-wrap');
@@ -46,7 +46,7 @@
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl,null,function(result) {
                     var data = result.data;
-                    if(!lgkorUI.stringToBool(data.win)) {
+                    if(lgkorUI.stringToBool(data.win)) {
                         var template = '<strong class="tit">축하드립니다!</strong>' +
                             '<span class="txt">{{#raw prizeWin}}</span>' +
                             '<span class="txt">사은품은 {{date}} 이후 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
