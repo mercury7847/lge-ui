@@ -14,7 +14,7 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
     };
 
     var defaultOption = {
-        appKey : '5dddbd78e7c3f80dd289ec188acf536c',
+        appKey : 'ba072a14b79cfe820b96a13b10e9bb27',
         selector: '.ui-sharer',
         attr: 'data-service',
         metas: {
