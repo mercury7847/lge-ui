@@ -216,18 +216,21 @@
         //     padding-top:133.334%;
         // }
         img {
-            // position: absolute;
-            // top:0;
-            // left:50%;
+            position: absolute;
+            top:0;
+            left:50%;
             // width:auto;
-            // height: 100%;
-            // transform:translateX(-50%);
+            height: 100%;
+            transform:translateX(-50%);
             // width:100%;
-            position: relative;
-            width:auto;
-            max-width:100%;
-            height:auto;
-            vertical-align:top;
+            @include mobile {
+                position: static;
+                width:auto;
+                max-width:100%;
+                height:auto;
+                transform:translateX(0);
+                vertical-align:top;
+            }
              /* 클래스별이미지분기 */
              &.pc{
                 display:inline-block;
