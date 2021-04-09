@@ -41,12 +41,6 @@
             
             self.listSetting();
             self.detailSetting();
-
-            self.$boardSurvey.find('#rating').on('starRatingChange', function(e, value){
-                var $curScore = self.$boardSurvey.find('.current_rating_score');
-
-                $curScore.html('(' + value.value + '점)');
-            })
         },
         listSetting: function() {
             var self = this;
@@ -109,6 +103,11 @@
                             }
                         }
                     });
+
+                    self.$boardSurvey.find('#rating').on('starRatingChange', function(e, value){
+                        var $curScore = self.$boardSurvey.find('.current_rating_score');
+                        $curScore.html('(' + value.value + '점)');
+                    })
     
                     self.$boardSurveyBtn.on('click', function(e) {
                         var result = surveyValidation.validate();
