@@ -10,7 +10,7 @@
 
     /* 클래스별이미지분기 */
     .pc{
-        display:block !important;
+        display:inline-block !important;
     }
     .mobile{
         display:none !important;
@@ -383,7 +383,10 @@
                                 background-color:rgba(146, 146, 146, 0.7);
                                 z-index:10;
                                 border-radius: 8px;
-                                background-image:url('/lg5-common/images/BMC/open_conts/event06/img-soldout.png');
+                                background-image: url('/lg5-common/images/BMC/open_conts/event06/img-soldout.png');
+                                background-size: 50%;
+                                background-position: center;
+                                background-repeat: no-repeat;
                             }
                         }
                     }
