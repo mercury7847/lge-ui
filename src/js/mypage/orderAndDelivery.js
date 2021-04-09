@@ -21,7 +21,7 @@
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
                 '{{/if}}'+
-                '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
@@ -52,7 +52,7 @@
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
                 '{{/if}}'+
-                '<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
@@ -1113,6 +1113,7 @@
 
             for(var idx=start;idx<end;idx++){
                 var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
+                list[idx].isDetailViewBtn
                 var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
 
