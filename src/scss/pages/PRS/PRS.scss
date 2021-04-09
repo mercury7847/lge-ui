@@ -229,7 +229,50 @@
 		margin:120px auto 0;
 		padding:0 40px;
 		&.cnt01 {
+			position: relative;
 			margin-top:80px;
+			padding: 0;
+			&:before,
+			&:after {
+				position: absolute;
+				top: 0;
+				z-index: 1;
+				width: 40px;
+				height: 43px;
+				content: '';
+			}
+			&:before {
+				left: 0;
+				background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+			}
+			&:after {
+				right: 0;
+				background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+			}
+			@include pc {
+				.tabs-wrap {
+					max-width: (1380px + 80px);
+					margin: 0 auto;
+					padding: 0 40px;
+					text-align: left;
+					@media screen and (min-width:(1380px + 80px)) {
+						&:before {
+							right: 40px;
+							left: 40px;
+						}
+					}
+				}
+				.ui_category_tab_contents {
+					padding: 0 40px;
+				}
+			}
+			@include mobile {
+				&:before,
+				&:after {
+					width: 16px;
+					height: 71px;
+				}
+			}
 		}
 		&.wide {
 			max-width:100%;
