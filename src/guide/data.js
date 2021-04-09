@@ -440,7 +440,7 @@ var res = {
 				}					
 			},
 			"Exhibitions" : {
-				"오픈기획전" : ["/html/BMC/OBS4002_06.html","",""],
+				"오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],
 				"오브제컬렉션기획전" : ["/html/BMC/OBS4002_09.html","","검수완료"],
 				"라이프스타일기획전" : ["/html/BMC/OBS4002_10.html","","검수완료"]
 				
