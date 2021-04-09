@@ -599,12 +599,9 @@
             //var wrapper = $this.closest(".contents");
             var dataID = $this.closest('.box').data("id");
             var prodID = $this.closest('.col-table').data('prodId');
-            if(PAGE_TYPE == PAGE_TYPE_LIST){     
-                sendDetailPage(dataID);   
-            } else{
-                if(pdpUrl) {
-                    setProductStatus(dataID, prodID, pdpUrl);
-                }
+
+            if(pdpUrl) {
+                setProductStatus(dataID, prodID, pdpUrl);
             }
         }).on('click', '.lnb-contents > .btn-group button', function(e){
             e.preventDefault();
