@@ -991,7 +991,7 @@ br.pc {
 .care-benefit {
     margin-top: 80px;
     padding: 80px 0;
-    background-color: #f4f4f4;
+    // background-color: #f4f4f4;
     @include mobile {
         margin-top: 40px;
         padding: 40px 0;
@@ -1001,7 +1001,74 @@ br.pc {
         margin: 0 auto;
         padding: 0 28px;
         @include mobile {
-            padding: 0;
+            padding:0 16px;
+        }
+        .benefit-list {
+            border-top:1px solid #000;
+            ul {
+                li {
+                    position:relative;
+                    padding:24px 16px 24px 152px;
+                    border-bottom:1px solid #ddd;
+                    .thumb {
+                        position:absolute;
+                        top:24px;
+                        left:0;
+                        width:120px;
+                        height:88px;
+                        border-radius:8px;
+                        overflow:hidden;
+                        img {
+                            width:100%;
+                        }
+                    }
+                    .cont {
+                        padding:11px 0;
+                        dl {
+                            dt {
+                                font-size:20px;
+                                font-weight:700;
+                                line-height:30px;
+                            }
+                            dd {
+                                margin-top:8px;
+                                font-size:18px;
+                                line-height:28px;
+                            }
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                ul {
+                    li {
+                        padding:20px 0 20px 120px;
+                        .thumb {
+                            width:90px;
+                            height:66px;
+                        }
+                        .cont {
+                            padding:4px 0 0;
+                            dl {
+                                dt {
+                                    font-size:14px;
+                                    line-height:24px;
+                                }
+                                dd {
+                                    margin-top:2px;
+                                    font-size:14px;
+                                    line-height:24px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        @include mobile {
+            // padding: 0;
             .slide-wrap .indi-wrap {
                 bottom: 0;
             }

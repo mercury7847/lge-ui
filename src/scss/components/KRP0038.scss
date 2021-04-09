@@ -30,6 +30,12 @@
 		background-color: #fff;
 	}
 	.component-inner {
+		.heading-box {
+			padding:16px 0 32px;
+			@include mobile {
+				padding:4px 0 32px;
+			}
+		}
 		.align-left {
 			text-align:left;
 		}
@@ -42,6 +48,7 @@
 	}
 
 	.head-copy {
+		margin-bottom:8px;
 		font-size:24px;
 		font-weight:700;
 		line-height:34px;
@@ -51,7 +58,6 @@
 		}
 	}
 	.title {
-		margin-top:8px;
 		font-size:48px;
 		font-weight:700;
 		line-height:66px;
@@ -72,12 +78,24 @@
 		&.title-h4 {
 			@include title-h4;
 		}
+		// 타이틀만 쓴다고 해서 여기만 title 사이즈 따로 작성
 		&.title-h5 {
-			@include title-h5;
+			font-weight:700;
+			font-size:24px;
+			line-height:34px;
+			@include mobile{
+				line-height:33px;
+			}
 		}
 		&.title-h6 {
-			@include title-h6;
+			font-weight:700;
+			font-size:24px;
+			line-height:34px;
+			@include mobile{
+				line-height:33px;
+			}
 		}
+		// 타이틀만 쓴다고 해서 여기만 title 사이즈 따로 작성 END
 	}
 	.body-copy {
 		margin-top:12px;
