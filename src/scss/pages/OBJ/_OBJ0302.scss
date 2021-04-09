@@ -1003,9 +1003,15 @@ h2.title {
             top: calc(100% - 80px);
             box-shadow: none;
             transition-duration: 0s;
+            @include mobile {
+                top: calc(100% - 60px);
+            }
             .cont {
                 .btn_price_open {
                     visibility: hidden;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -1015,6 +1021,9 @@ h2.title {
             .cont {
                 .btn_price_open {
                     visibility: hidden;
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -1025,12 +1034,24 @@ h2.title {
         padding-bottom: 110px;
         margin: 0 auto;
         text-align: center;
+        @include mobile {
+            padding-bottom: 60px;
+        }
         .btn_price_close {
             width: 24px;
             height: 24px;
             margin: 10px 0 15px 0;
             background: url('/lg5-common/images/OBJ/experience/btn_toogle_arrow.png') center center no-repeat;
             vertical-align: middle;
+            @include mobile {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 50px;
+                height: 50px;
+                margin: 0;
+                z-index: 5;
+            }
         }
         .swiper-container {
             .swiper-wrapper {
@@ -1045,7 +1066,8 @@ h2.title {
                             color: #222222;
                             font-weight: 700;
                             @include mobile {
-                                padding-left: 20px;
+                                height: 50px;
+                                padding: 18px 0 18px 20px;
                                 font-size: 14px;
                             }
                         }
@@ -1056,10 +1078,17 @@ h2.title {
                             margin-top: 20px;
                             border-radius: 7px;
                             background: #f4f4f4;
+                            @include mobile {
+                                margin-top: 0px;
+                                padding: 25px 15px 80px 15px;
+                            }
                             .price_info {
                                 .product_list {
                                     position: relative;
                                     padding-bottom: 30px;
+                                    @include mobile {
+                                        padding: 0 25px 30px 25px;
+                                    }
                                     li {
                                         display: flex;
                                         justify-content: space-between;
@@ -1088,6 +1117,10 @@ h2.title {
                                             bottom: 0;
                                             left: 0;
                                             right: 0;
+                                            @include mobile {
+                                                left: 25px;
+                                                right: 25px;
+                                            }
                                             .product_name {
                                                 color: #000000;
                                             }
@@ -1131,8 +1164,10 @@ h2.title {
             padding: 28px 0;
             text-align: center;
             @include mobile {
+                position: relative;
                 width: 100%;
                 padding: 22px 15px;
+                text-align: right;
             }
             .sum_tit {
                 font-size: 18px;
@@ -1140,6 +1175,9 @@ h2.title {
                 font-weight: 700;
                 vertical-align: middle;
                 @include mobile {
+                    position: absolute;
+                    left: 15px;
+                    top: 22px;
                     font-size: 16px;
                 }
             }
@@ -1155,6 +1193,9 @@ h2.title {
                     display: inline-block;
                     min-width: 250px;
                     text-align: right;
+                    @include mobile {
+                        min-width: auto;
+                    }
                 }
             }
             .btn_price_open {
