@@ -282,7 +282,7 @@
             var self = this;
             
             //등록가능제품 등록하기
-            self.$registProductList.on('click','>ul li div.btn-group a', function(e) {
+            self.$registProductList.on('click','div.enroll-list ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
                 /*
@@ -435,21 +435,22 @@
 
         },
 
-        //검색어 입력중 검색 jsw
+        //검색어 입력중 검색
         requestSearchAutoComplete:function(value) {
             var self = this;
             var ajaxUrl = self.$registMyProductPopup.data('autocompleteUrl');
-            lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+            var modelName = value.toUpperCase();
+            lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                 var data = result.data;
 
                 var arr = (data && data.listData instanceof Array) ? data.listData : [];
                 var $list_ul = self.$myProductinputLayerAutoComplete.find('ul');
                 $list_ul.empty();
                 if(arr.length > 0) {
-                    var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{text}}</a></li>'
-                    var replaceText = '<span class="search-word">' + value + '</span>';
+                    var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>'
+                    var replaceText = '<span class="search-word">' + modelName + '</span>';
                     arr.forEach(function(item, index) {
-                        $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, value, replaceText)}));
+                        $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, modelName, replaceText)}));
                     });
                     self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').addClass('on');
                     self.$myProductinputLayerAutoComplete.find('.no-data').hide();
@@ -485,10 +486,19 @@
                 }
             });
 
+            self.$modelInput.on("focusout",function(e){
+                e.preventDefault();
+                setTimeout(function () {
+                    self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').removeClass('on');
+                    self.$myProductinputLayerAutoComplete.hide();
+                },300);
+            });
+
             //모델명 확인 버튼
             self.$modelCheckButton.on('click', function(e){
                 var ajaxUrl = self.$registMyProductPopup.attr('data-sku-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"sku":self.$modelInput.val()}, function(result) {
+                var modelName = self.$modelInput.val().toUpperCase();
+                lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
                         checkModelSuccess = true;
@@ -504,7 +514,7 @@
             //모델명 자동완성 클릭
             self.$myProductinputLayerAutoComplete.on('click', 'a', function (e) {
                 e.preventDefault();
-                var modelName = $(this).attr(href).replace('#', '');
+                var modelName = $(this).attr('href').replace('#', '');
                 if(modelName && modelName.length > 0) {
                     self.$modelInput.val(modelName);
                     self.$modelCheckButton.trigger('click');
@@ -837,7 +847,7 @@
 
                 self.setPageData(param.pagination);
                 var arr = data.listData instanceof Array ? data.listData : [];
-                var $list = self.$registProductList.find('>ul');
+                var $list = self.$registProductList.find('div.enroll-list ul');
                 $list.empty();
                 arr.forEach(function(item, index) {
                     item.jsonModel = JSON.stringify(item);
@@ -870,7 +880,7 @@
 
         checkNoData: function() {
             var self = this;
-            var $list = self.$registProductList.find('>ul>li');
+            var $list = self.$registProductList.find('div.enroll-list ul>li');
             if($list.length > 0) {
                 var param = lgkorUI.getHiddenInputData();
                 var page = parseInt(param.page);
@@ -882,11 +892,11 @@
                     self.$registProductMoreBtn.css('display','none');
                 }
                 self.$registProductNoData.hide();
-                self.$registProductList.find('>ul').show();
+                self.$registProductList.find('div.enroll-list ul').show();
             } else {
                 self.$registProductMoreBtn.css('display','none');
                 self.$registProductNoData.show();
-                self.$registProductList.find('>ul').hide();
+                self.$registProductList.find('div.enroll-list ul').hide();
             }
 
             $list = self.$myProductList.find('>ul>li');
