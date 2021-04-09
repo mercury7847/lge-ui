@@ -17,9 +17,12 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if orderCancelAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-            '{{/if}}'+
+            '<div class="btn-link-area">'+
+                '{{#if orderCancelAbleYn == "Y"}}'+
+                '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+                '{{/if}}'+
+                '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
+            '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
@@ -45,9 +48,12 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if orderCancelAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-            '{{/if}}'+
+            '<div class="btn-link-area">'+
+                '{{#if orderCancelAbleYn == "Y"}}'+
+                '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+                '{{/if}}'+
+                '<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>'+
+            '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>'+
