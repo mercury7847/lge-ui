@@ -17,7 +17,7 @@
                 self.requestData(1);
             });
         },
-
+        
         setting: function() {
             var self = this;
             self.$wrap = $('.reply-wrap');
