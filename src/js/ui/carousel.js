@@ -1301,27 +1301,17 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                     }else{
                         
-                        var offsetLeft = targetSlide[0]? targetSlide[0].offsetLeft : 0;
-
-                        if(vcui.detect.isSafari){
-                            offsetLeft = targetSlide[0]? targetSlide.offset().left : 0;
-                        }
-
                         if(opt.lastFix===true){
                             var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
-                            if(lastTarget[0]){
-
-                                var lastLeft = lastTarget[0].offsetLeft;
-                                if(targetSlide[0] && (lastLeft - offsetLeft + lastTarget.width() < self.listWidth)){  
-                                    var dt = self.listWidth - (lastLeft - offsetLeft + lastTarget.width());
-                                    targetLeft = targetSlide[0]? (offsetLeft * -1) + dt : 0;
-                                }else{
-                                    targetLeft = targetSlide[0]? offsetLeft * -1 : 0;
-                                }
+                            if(targetSlide[0] && lastTarget[0] && (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width() < self.listWidth)){  
+                                var dt = self.listWidth - (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width());
+                                targetLeft = targetSlide[0]? (targetSlide[0].offsetLeft * -1) + dt : 0;
+                            }else{
+                                targetLeft = targetSlide[0]? targetSlide[0].offsetLeft * -1 : 0;
                             }
                             
                         }else{
-                            targetLeft = targetSlide[0] ? offsetLeft * -1 : 0;
+                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                         }
                     }
                     // 추가 end
