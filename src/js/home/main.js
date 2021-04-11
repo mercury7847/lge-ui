@@ -73,6 +73,9 @@ $(function () {
         // 플로우배너
 
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+
+        // 화면 100% 채우기
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});        
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -217,9 +220,6 @@ $(function () {
         });
 
         $('.scene').css({'overflow':'hidden'});
-
-        /* 메인테스트*/
-        $('html').css({'overflow':'hidden'});
         
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
