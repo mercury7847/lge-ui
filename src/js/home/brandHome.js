@@ -128,12 +128,14 @@
             $('html,body').scrollTop(pageLens*winHeight);
         });
 
+        // 화면 100% 채우기
+        $('html,body').css({'overflow':'hidden', 'height':'100%'}); 
+
         // 모달이후 overflow :visible 문제 해결
         $('body').addClass('ignore-overflow-hidden');
 
 
         $('#fixed-wrap').children().css({'overflow':'hidden'});
-        $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){
@@ -242,6 +244,21 @@
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
+
+
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+                    if(currentPage==0){
+                        if(!hasTop){
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    }else{
+                        if(hasTop){
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').removeClass('call-yet');
+                        }                        
+                    }
+                    
                     currentPage = idx;  
                     moveStep(step);    
                     $('html').removeClass('sceneMoving');
