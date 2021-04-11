@@ -1004,7 +1004,7 @@ img{
 					   position: relative;
 					   padding: 0 12px;
 					   @include mobile {
-						   padding: 0 2px;
+						   padding: 0 6px;
 					   }
 					   .thumb {
 							position:relative;
@@ -1023,6 +1023,9 @@ img{
 							img {
 								width: 100%;
 								border-radius: 8px;
+							}
+							@include mobile {
+								box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 							}
 					   }
 					   .text-area {
@@ -1057,8 +1060,10 @@ img{
 								@include mobile {
 									//font-size: 15px;
 									//line-height: 23px;
+									display:none;
 									font-size:16px;
 									line-height:24px;
+									text-align:left;
 								}
 							}
 							.btn-area {
@@ -1066,6 +1071,15 @@ img{
 								margin-top: 12px;
 							}
 					   }
+						&.ui_carousel_current {
+							@include mobile {
+								.text-area {
+									.tit {
+										display:block;
+									}
+								}
+							}
+						}
 						&.on {
 							// &::after {
 							// 	display: block;
@@ -1095,7 +1109,6 @@ img{
 									@include font-large-2;
 									text-align: left;
 									@include mobile {
-										text-align: left;
 										font-size:16px;
 										line-height:24px;
 									}
