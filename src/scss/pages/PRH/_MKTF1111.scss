@@ -172,13 +172,16 @@
         .slide-content {
             padding-bottom: 20px;
         }
-        .slide-controls button {
-            top: 72px;
-            &.prev {
-                left: -24px;
-            }
-            &.next {
-                right: -24px;
+        .slide-controls{
+            display:none;
+            button {
+                top: 72px;
+                &.prev {
+                    left: -24px;
+                }
+                &.next {
+                    right: -24px;
+                }
             }
         }
         @include mobile {
