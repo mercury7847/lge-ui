@@ -90,7 +90,7 @@
             }
         });
 
-        $('.show2 > a').on('click', function(e){
+        $('.show2 a.app-btn').on('click', function(e){
             if(!vcui.detect.isMobile){
                 e.preventDefault();
 
