@@ -1585,12 +1585,13 @@ function validatePhone(value){
 
     document.addEventListener('DOMContentLoaded', commonInit);
 
-    $('[data-control="modal"]').on('click', function(){
-        var $this= $(this);
-        var $popup = $($this.data('href'));
-
-        $popup.removeAttr('style');
-    })
+    $('[data-control="modal"]').each(function() {
+        var target = $(this).data('href') || $(this).attr('href');
+        
+        $(target).on('modalshow', function(e, modal) {
+            $(target).removeAttr('style');
+        });
+    });
 })(jQuery);
 
 var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
