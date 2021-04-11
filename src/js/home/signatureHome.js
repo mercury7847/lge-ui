@@ -63,9 +63,10 @@ $(function() {
             $('html,body').scrollTop(pageLens*winHeight);
         });
 
+        console.log('asdfasf');
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});   
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -82,7 +83,17 @@ $(function() {
         
 
         $window.on('floatingTop', function(){
-            render(0);
+            // currentPage = 0;
+            // currentStep = 1;
+            // setBeforeCss(currentStep, wheelArr);
+            // moveScene(currentPage,currentStep,0);
+
+            currentPage = 0;
+            currentStep = 1;
+            setBeforeCss(currentStep);
+            moveScene(currentPage,currentStep,0);
+
+
         });     
 
         // element 애니메이션 스탭
@@ -449,8 +460,6 @@ $(function() {
             canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
-
-            console.log(winHeight);
 
             posArr = [];
             wheelArr = [];
