@@ -1588,7 +1588,6 @@ html {
                 position:relative;
                 transition:transform .5s ease-out;
                 box-shadow:none;
-                font-weight:bold;
             }
             .app-ar-txt {
                 display:block;
@@ -1631,7 +1630,7 @@ html {
                     display: flex;
                     width: 100%;
                     height: 100%;
-                    //font-weight: bold;
+                    font-weight: bold;
                     //font-size: 25px;
                     font-size: 18px;
                     line-height: 1.3;
