@@ -92,8 +92,17 @@
         setting: function(){
             var self = this;
 
-            var sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
+            //
+            var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+                console.log(result)
+                for(var key in result){
+                    console.log(key)
+                    $('.my-info').find('.' + key).text(result[key]);
+                }  
+            });   
 
+            sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
                 if(result.status == "fail"){
                     lgkorUI.alert("", {
@@ -166,7 +175,7 @@
     }
 
     $(document).ready(function() {
-        myHome.init();
-        //myHome.setting();
+        //myHome.init();
+        myHome.setting();
     });
 })();
