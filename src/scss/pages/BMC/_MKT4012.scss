@@ -36,6 +36,9 @@
         }
         .input-info-wrap {
             margin-top: 48px;
+            &:first-child {
+                margin-top:0;
+            }
         }
         .tit-wrap {
             .chk-input {
