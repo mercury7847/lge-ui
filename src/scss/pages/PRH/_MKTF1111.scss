@@ -173,7 +173,6 @@
             padding-bottom: 20px;
         }
         .slide-controls{
-            display:none;
             button {
                 top: 72px;
                 &.prev {
@@ -196,13 +195,16 @@
                     }
                 }
             }
-            .slide-controls button {
-                top: 47px;
-                &.prev {
-                    left: 8px;
-                }
-                &.next {
-                    right: 8px;
+            .slide-controls{
+                display:none;
+                button {
+                    top: 47px;
+                    &.prev {
+                        left: 8px;
+                    }
+                    &.next {
+                        right: 8px;
+                    }
                 }
             }
         }
