@@ -227,7 +227,6 @@
                                 if (i == listLeng-1) {
                                     
                                     tid = setTimeout(function(){
-                                        console.log('scroll bar init')
                                         $backContList.mCustomScrollbar();
                                     }, 200)
                                     
@@ -240,12 +239,10 @@
                         var curSize = window.innerWidth;
 
                         if( curSize <= 1024 &&  prevSize > 1024 ) {
-                            console.log('mobile size!')
                             //cardMcustomScrollReinit();
                         }
 
                         if( curSize > 1024 &&  prevSize <= 1024 ) {
-                            console.log('pc size!')
                             //cardMcustomScrollReinit();
                         }
                         prevSize = window.innerWidth;
