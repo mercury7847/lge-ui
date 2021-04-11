@@ -250,8 +250,6 @@
                 }
 
                 validation.reset(['cRcptNo']);
-
-                lgkorUI.scrollTo(self.$inquiryBox.next(), $('.prod-selected-wrap').outerHeight());
             });
 
             // 상담/서비스 이력 선택 시
