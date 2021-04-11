@@ -4380,7 +4380,7 @@
                                     tblHtml += '    <td>' + mainEnergy + '등급</td>';
                                     tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
                                     tblHtml += '</tr>';
-                                }, 500);
+                                }, 1000);
 
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -4397,7 +4397,7 @@
                                             tblHtml += '    <td>' + subEnergy + '등급</td>';
                                             tblHtml += '    <td><span>' + subPrice + '</span>원</td>';
                                             tblHtml += '</tr>';
-                                        }, 550);
+                                        }, 1050);
 
                                     }
                                 }
@@ -4405,7 +4405,7 @@
                                     tblHtml += '        </tbody>';
                                     tblHtml += '    </table>';
                                     tblHtml += '</div>';
-                                }, 580);
+                                }, 1100);
 
                             }
                         }
@@ -4435,7 +4435,7 @@
                     tblHtml += '        </tbody>';
                     tblHtml += '    </table>';
                     tblHtml += '</div>';
-                }, 500);
+                }, 1000);
 
             } else if (modelCate1 == "refrigerator_convertible") {
                 let _typModel = configData.modelConfig[2].typModel;
@@ -4463,7 +4463,7 @@
                             tblHtml += '        </tbody>';
                             tblHtml += '    </table>';
                             tblHtml += '</div>';
-                        }, 500);
+                        }, 1000);
 
                     }
                 }
@@ -4472,7 +4472,7 @@
                 $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
                 $(".simul_step3 .etc_area").addClass("is_active");
                 $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-            }, 600);
+            }, 1100);
 
         },
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
@@ -4498,7 +4498,7 @@
                 priceHtml += '                      <span class="product_price"><em>' + modelPrice + '</em>원</span>';
                 priceHtml += '                  </li>';
                 sumPrice += parseInt(minusComma(modelPrice));
-            }, 500);
+            }, 1000);
 
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
@@ -4510,7 +4510,7 @@
                         priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
                         priceHtml += '                  </li>';
                         sumPrice += parseInt(minusComma(doorInfo[i][4]));
-                    }, 550);
+                    }, 1050);
 
                 }
             }
@@ -4551,7 +4551,7 @@
                     console.log(addComma(totalSumPrice));
                     $(".total_result_price .price em").text(addComma(totalSumPrice));
                 }, 100);
-            }, 600);
+            }, 1200);
 
 
         },
