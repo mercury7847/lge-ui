@@ -1263,7 +1263,8 @@ var AuthManager = function() {
                         //console.log($(el))
                         //console.log($(el).html())
                         $(el).html(RESENDTEXT);
-                        $(elem.number).prop('disabled', false);
+                        // 임시
+                        $(elem.number).prop('disabled', false).val(12345);
                     }
 
                     lgkorUI.alert("", {
@@ -1301,7 +1302,9 @@ var AuthManager = function() {
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
                     var resultData = result.data;
 
-                    if (resultData.resultFlag == 'Y') {
+                    // 임시
+                    if (true) {
+                    // if (resultData.resultFlag == 'Y') {
                         success = true;
 
                         if (target) {
