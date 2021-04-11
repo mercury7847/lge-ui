@@ -61,7 +61,7 @@
 
                 self.listData = [];
 
-                self.showListLength = 12;
+                self.visibleCount = 12;
 
                 self.$contents = $('div.lnb-contents');
 
@@ -174,8 +174,8 @@
                 var moreButton = idx ? self.$couponEndMore : self.$couponOnMore;
                 var listbottom = targetList.offset().top + targetList.height();
                 var totalList = self.listData[idx].length;
-                var start = page*self.showListLength;
-                var end = start + self.showListLength;
+                var start = page*self.visibleCount;
+                var end = start + self.visibleCount;
                 if(end > totalList) end = totalList;
                 for(var i=start;i<end;i++){
                     var item = self.listData[idx][i];
