@@ -99,9 +99,9 @@
                 '</div>' +
             '</div>' +
             '<div class="product-bottom">' +
-                '{{#if bizType != "CARESOLUTION"}}'+
-                '<div class="flag-wrap bar-type">' +
-                    '{{#if cashbackBadgeFlag}}<span class="flag">{{cashbackBadgeName}}</span>{{/if}}' +
+                '{{#if bizType != "CARESOLUTION" && obsBtnRule == "enable"}}'+
+                '<div class="flag-wrap icon-type">' +
+                    '{{#if cashbackBadgeFlag}}<span class="flag cash">{{cashbackBadgeName}}</span>{{/if}}' +
                 '</div>' +
                 '{{/if}}'+
                 '{{#if checkPriceFlag}}'+

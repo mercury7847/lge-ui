@@ -3508,19 +3508,19 @@
                 doorInfo.push(info);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        console.log("저장");
-                    }
-                };
-                var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-                lgkorUI.confirm(desc, obj);
+                // var obj = {
+                //     title: '',
+                //     typeClass: '',
+                //     cancelBtnName: '',
+                //     okBtnName: '',
+                //     ok: function() {
+                //         console.log("저장");
+                //     }
+                // };
+                // var desc = '';
+                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                // desc = '';
+                // lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
@@ -5381,8 +5381,8 @@ function resultDoorPrice(idx, price) {
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
-        sumPrice += parseInt(minusComma(price[i]));
-        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(price[i]);
+        sumPrice += price[i];
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(addComma(price[i]));
     }
     setTimeout(function() {
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
@@ -5394,20 +5394,31 @@ function resultDoorPrice(idx, price) {
 function resultModelPrice(price) {
     console.log("price", price);
     let priceLeng = price.length;
-    for (let i = 0; i < priceLeng; i++) {
-        $(".simul_step3 .etc_area .tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
-    }
+    setTimeout(function() {
+        for (let i = 0; i < priceLeng; i++) {
+            if (price[i] == "nodata") {
+                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+            } else {
+                $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
+            }
+
+        }
+    }, 100);
+
 }
 
 function totalResulPrice() {
-    let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
-    let totalPrice = 0;
-    for (let i = 0; i < resultLeng; i++) {
-        let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
-        totalPrice += parseInt(minusComma(sumPrice));
-    }
     setTimeout(function() {
-        $(".total_result_price .cont .price em").text(addComma(totalPrice));
-    }, 100);
+        let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
+        let totalPrice = 0;
+        for (let i = 0; i < resultLeng; i++) {
+            let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
+            totalPrice += parseInt(minusComma(sumPrice));
+        }
+        setTimeout(function() {
+            $(".total_result_price .cont .price em").text(addComma(totalPrice));
+        }, 200);
+    }, 200);
+
 
 }
