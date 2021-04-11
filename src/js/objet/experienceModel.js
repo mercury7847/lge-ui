@@ -5382,7 +5382,7 @@ function resultDoorPrice(idx, price) {
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
         sumPrice += parseInt(minusComma(price[i]));
-        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(price[i]);
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(addComma(price[i]));
     }
     setTimeout(function() {
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
@@ -5417,7 +5417,7 @@ function totalResulPrice() {
         }
         setTimeout(function() {
             $(".total_result_price .cont .price em").text(addComma(totalPrice));
-        }, 100);
+        }, 200);
     }, 200);
 
 
