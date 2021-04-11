@@ -768,9 +768,15 @@
                         .bank-input-box {
                             .select-wrap {
                                 width: 39.2%;
+                                @include mobile {
+                                    width:100%;
+                                }
                             }
                             .box {
                                 width: calc(100% - (39.2% + 8px));
+                                @include mobile {
+                                    width:100%;
+                                }
                             }
                         }
                     }
