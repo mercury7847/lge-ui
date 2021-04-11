@@ -373,6 +373,7 @@
                             self.checkNoData();
                         }
                         self.hideLoading();
+                        self.requestOwnData(false);
                     }, "POST", null, null, null, true, function(err){
                         self.hideLoading(true);
                     });

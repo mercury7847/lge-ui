@@ -75,8 +75,7 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});
-
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -655,7 +654,9 @@ $(function () {
         }
 
         $window.on('floatingTop', function(){
-            render(0);
+            //render(0);
+            currentPage = 0;
+            moveScene(currentPage,0);
         });          
 
         if(isApplication){
