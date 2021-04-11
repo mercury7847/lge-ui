@@ -776,16 +776,14 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false, opener:opener}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true, isHash:false, alertType:true, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
-                modal.on('modalhidden modalok modalcancel', function (e) {
-    
+                modal.on('modalhidden modalok modalcancel', function (e) {    
                     if(e.type =='modalok'){
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
-                    }
-    
+                    }    
                     $('html').removeClass('dim');
                     el = null;
                     modal = null;
@@ -833,7 +831,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false, opener:opener}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false, alertType:true, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     

@@ -246,7 +246,61 @@
 
     .event03{
         .terms{
-            
+            text-align:left;
+            @include mobile {
+                padding:0 12px;
+            }
+            .input-info{
+                @include mobile {
+                    padding:60px 0 0;
+                }
+            }
+            .tit-wrap{
+                @include mobile {
+                    font-size:20px;
+                    font-weight:700;
+                }
+            }
+            .tb-tit{
+                @include mobile {
+                    font-size:14px;
+                    font-weight:700;
+                    padding:40px 0 12px;
+                }
+                &.req{
+                    &::after {
+                        content: '*';
+                        display: inline-block;
+                        margin-left: 1px;
+                        color: #EC455A;
+                        font-size: inherit;
+                        line-height: inherit;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .tb_row{
+                &.tb-bor{
+                    tr{
+                        th,td {
+                            border-left: 1px solid #ddd;
+                            &:first-child{
+                                border-left:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .agree-input{
+                @include mobile {
+                    padding-top:16px
+                }
+            }
+        }
+        .btns{
+            @include mobile {
+                padding:32px 0 60px;
+            }
         }
     }
 
@@ -555,7 +609,7 @@
     }
 
     .event13 {
-        margin-top:57px;
+        // margin-top:57px;
         .cont-box-wrap {
             position:relative;
             .movie {

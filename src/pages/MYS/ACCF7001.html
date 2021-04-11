@@ -13,7 +13,10 @@
                 "pageTitle": "마이페이지"
             })
             <!-- mypage -->
-            <div class="contents mypage mypage-main" data-mypage-info="/lg5-common/data-ajax/mypage/mypageInfo.json">
+            <div class="contents mypage mypage-main" 
+                data-member-info="/lg5-common/data-ajax/mypage/mypageMemberInfo.json"
+                data-mypage-info="/lg5-common/data-ajax/mypage/mypageInfo.json"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html')
@@ -61,7 +64,9 @@
                                     <li>
                                         <dl class="coupon">
                                             <dt class="title">쿠폰</dt>
-                                            <dd class="number">8</dd>
+                                            <dd class="number">
+                                                <a href="#" class="couponeCnt">0</a>
+                                            </dd>
                                         </dl>
                                     </li>
                                     <li>

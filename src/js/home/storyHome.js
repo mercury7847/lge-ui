@@ -162,11 +162,7 @@
             requestTagMngPop(this);
         });
 
-        $('#popup-tagMnger').on('click', '.btn-group button:nth-child(1)', function(e){
-            e.preventDefault();
-
-            setTagMngINIT();
-        }).on('click', '.btn-group button:nth-child(2)', function(e){
+        $('#popup-tagMnger').on('click', '.btn-group button', function(e){
             e.preventDefault();
 
             var ajaxurl = $(this).data("submitUrl");
@@ -193,7 +189,7 @@
     function setTagMngCount(count){
         var leng = count ? count : $('#popup-tagMnger').find('input[type=checkbox]:checked').length;
         var total = leng ? ' (' + leng + ')' : "";
-        $('#popup-tagMnger .btn-group button:nth-child(2)').empty().html('<span>완료' + total + '</span>');
+        $('#popup-tagMnger .btn-group button').empty().html('<span>저장' + total + '</span>');
     }
 
     function setTagMngINIT(){
