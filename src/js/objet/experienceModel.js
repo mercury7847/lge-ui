@@ -4480,7 +4480,9 @@
             sumPrice += parseInt(minusComma(defaultPrice));
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
-                    priceHtml += '                  <li data-default-code="' + doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3] + '">';
+                    let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
+
+                    priceHtml += '                  <li data-default-code="' + doorPriceCheck(defaultModel, doorModelCode) + '">';
                     priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
                     priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
                     priceHtml += '                  </li>';
