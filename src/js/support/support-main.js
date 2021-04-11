@@ -165,6 +165,12 @@
                     var $btnBackClose = $container.find('.btn-goto-front');
 
 
+                    // if( !vcui.detect.isMobileDevice ) {
+                    //     $backContList.mCustomScrollbar()
+                    // }
+
+
+
                     $(document).on('click', self.el.front, function(e){
                         var $this = $(this);
                         var $card = $this.closest('.item-card');
@@ -177,6 +183,7 @@
                             }
                             $backCard.stop().animate({opacity:1}, function(){
                                 $(this).addClass('active').removeAttr('style');
+                                
                             })
                                                     }
                         
@@ -191,12 +198,58 @@
                             
                             $backCard.stop().fadeOut(function(){
                                 $(this).removeClass('active').removeAttr('style');
-                                $(this).find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
+                                $backCard.find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
                             })
                         }
                         
                         e.preventDefault();
                     })
+
+                    var prevSize = window.innerWidth;
+
+                    function cardMcustomScrollReinit(){
+
+                        var tid = 0;
+                        if( !vcui.detect.isMobileDevice ) {
+                            var listLeng = $backContList.length;
+                            $backContList.find('.pd-info-list').prependTo();
+                            $backContList.each(function(i){
+                                var $this = $(this);
+                                var $pdList = $this.find('.pd-info-list');
+                                $pdList.prependTo($this);
+    
+                                $this.find('.mCustomScrollBox').remove();
+                                $this.attr('class', 'card-back-cont');
+                                
+                                clearTimeout(tid);
+                                
+                                
+                                if (i == listLeng-1) {
+                                    
+                                    tid = setTimeout(function(){
+                                        console.log('scroll bar init')
+                                        $backContList.mCustomScrollbar();
+                                    }, 200)
+                                    
+                                }
+                            });
+                        }
+                    }
+
+                    $(window).on('resize', function(){
+                        var curSize = window.innerWidth;
+
+                        if( curSize <= 1024 &&  prevSize > 1024 ) {
+                            console.log('mobile size!')
+                            //cardMcustomScrollReinit();
+                        }
+
+                        if( curSize > 1024 &&  prevSize <= 1024 ) {
+                            console.log('pc size!')
+                            //cardMcustomScrollReinit();
+                        }
+                        prevSize = window.innerWidth;
+                    });
                 }
             },
             supportList : {
@@ -744,7 +797,20 @@
                 var $container = $(self.el.container);
                 var $pdCont = $container.find(self.el.pdCont);
                 var ajaxUrl = $container.data('ajax');
-                
+                var modelCnt = $('[name="modelCnt"]').val();
+                var memberContentsCnt = $('[name="memberContentsCnt"]').val();
+                var alertMsgArry = [
+                    '등록된 제품이 없습니다. <br>보유제품을 등록하시겠습니까?',
+                    '보유하신 제품으로 검색된 결과가 없습니다.'
+                ];
+                var alertMsg = alertMsgArry[0];
+                // if( modelCnt == 0) {
+                //     alertMsg = alertMsgArry[0];
+                // }
+
+                // if ( modelCnt > 0 && memberContentsCnt == 0) {
+                //     alertMsg = alertMsgArry[1]
+                // }
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
@@ -761,7 +827,7 @@
                             lgkorUI.hideLoading();
                         } else {
                             lgkorUI.hideLoading();
-                            lgkorUI.confirm('등록된 제품이 없습니다. <br>보유제품을 등록하시겠습니까?',{
+                            lgkorUI.confirm(alertMsg,{
                                 typeClass:'type2',
                                 title:'',
                                 okBtnName: '네',
@@ -780,7 +846,12 @@
                 var self = this;
                 var $container = $(self.el.container);
                 var $pdCont = $container.find(self.el.pdCont);
+                var modelCnt = $('[name="modelCnt"]').val();
+                var memberContentsCnt = $('[name="memberContentsCnt"]').val();
 
+                // if( memberContentsCnt > 0 && modelCnt > 0) {
+                //     self.getProduct();
+                // }
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
                     var $this = $(this);
