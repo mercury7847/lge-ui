@@ -123,7 +123,7 @@
             init: function() {
                 var self = this;
                 self.listData = {};
-                self.visibleCount = 8;
+                self.visibleCount = 12;
                 self.setting();
                 self.bindEvents();
             },
