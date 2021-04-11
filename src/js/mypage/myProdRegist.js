@@ -900,10 +900,12 @@
                     self.$registProductMoreBtn.css('display','none');
                 }
                 self.$registProductNoData.hide();
+                self.$registProductList.find('div.enroll-list .recommend-text').show();
                 self.$registProductList.find('div.enroll-list ul').show();
             } else {
                 self.$registProductMoreBtn.css('display','none');
-                self.$registProductNoData.show();
+                self.$registProductNoData.hide();
+                self.$registProductList.find('div.enroll-list .recommend-text').hide();
                 self.$registProductList.find('div.enroll-list ul').hide();
             }
 
@@ -911,7 +913,7 @@
             if($list.length > 0) {
                 self.$myProductNoData.hide();
             } else {
-                self.$myProductNoData.show();
+                self.$myProductNoData.hide();
             }
         },
 
