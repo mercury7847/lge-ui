@@ -230,7 +230,7 @@
                     if(url) {
                         window.open(url, '_blank', 'width=800, height=800');
                     }
-                }).on('a.comfirm-open', function(e){
+                }).on('click.modal-link-event','a.comfirm-open', function(e){
                     e.preventDefault();
                     var title = $(this).text();
                     var url = $(this).data('src');
