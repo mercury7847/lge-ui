@@ -175,7 +175,7 @@
     }
 
     $(document).ready(function() {
-        //myHome.init();
-        myHome.setting();
+        myHome.init();
+        //myHome.setting();
     });
 })();
