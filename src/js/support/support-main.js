@@ -198,7 +198,7 @@
                             
                             $backCard.stop().fadeOut(function(){
                                 $(this).removeClass('active').removeAttr('style');
-                                $backCard.find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
+                                $(this).find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
                             })
                         }
                         
