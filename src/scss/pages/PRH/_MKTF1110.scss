@@ -286,7 +286,7 @@
         &[class*="02"] {
             .image {
                 &.blur {
-                    transition: opacity 0.3s ease-in-out;
+                    opacity: 0;
                 }
             }
             .content {
@@ -306,14 +306,16 @@
                 }
 
                 .cont1 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(100px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     color: #fff;
                     font-weight: 700;
                     @include font(52px, 70px);
                 }
 
                 .cont2 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(150px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     margin-top: 24px;
                     color: #fff;
                     font-weight: 700;
@@ -334,6 +336,7 @@
 
                     .cont2 {
                         margin-top: 60px;
+                        font-weight: 400;
                         line-height: 28px;
 
                         span {
@@ -352,6 +355,7 @@
                 .image {
                     &.blur {
                         opacity: 0;
+                        transition: opacity 0.3s ease-in-out 0.7s;
                     }
                 }
 
@@ -388,7 +392,7 @@
         &[class*="03"] {
             .image {
                 &.blur {
-                    transition: opacity 0.3s ease-in-out;
+                    opacity: 0;
                 }
             }
 
@@ -409,14 +413,16 @@
                 }
 
                 .cont1 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(100px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     color: #fff;
                     font-weight: 700;
                     @include font(52px, 70px);
                 }
 
                 .cont2 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(150px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     margin-top: 24px;
                     color: #fff;
                     font-weight: 700;
@@ -437,6 +443,7 @@
 
                     .cont2 {
                         margin-top: 60px;
+                        font-weight: 400;
                         line-height: 28px;
 
                         span {
@@ -455,6 +462,7 @@
                 .image {
                     &.blur {
                         opacity: 0;
+                        transition: opacity 0.3s ease-in-out 0.7s;
                     }
                 }
 
@@ -491,7 +499,7 @@
         &[class*="04"] {
             .image {
                 &.blur {
-                    transition: opacity 0.3s ease-in-out;
+                    opacity: 0;
                 }
             }
 
@@ -512,7 +520,8 @@
                 }
 
                 .cont1 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(100px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     color: #fff;
                     font-weight: 700;
                     @include font(52px, 70px);
@@ -525,7 +534,8 @@
                 }
 
                 .cont2 {
-                    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+                    transform: translateY(150px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
                     margin-top: 24px;
                     color: #fff;
                     font-weight: 700;
@@ -546,6 +556,7 @@
 
                     .cont2 {
                         margin-top: 60px;
+                        font-weight: 400;
                         line-height: 28px;
 
                         span {
@@ -564,6 +575,7 @@
                 .image {
                     &.blur {
                         opacity: 0;
+                        transition: opacity 0.3s ease-in-out 0.7s;
                     }
                 }
 

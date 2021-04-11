@@ -277,7 +277,7 @@ var isApp = function(){
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
-        SEARCH_AUTOCOMPLETE_MIN_LENGTH: 2, // 검색 자동 완성 기능 실행 최소 글자수
+        SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
         init: function(){
@@ -291,9 +291,6 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
-
-
-
 
         },
 
@@ -2027,6 +2024,12 @@ var isApp = function(){
                 if(modelId) {
                     var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
                     var androidScheme = "Intent://goto?type=AR&product=" + modelId;
+                    if(location.hostname == "www.lge.co.kr") {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                    } else {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
+                    }
+                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
                     lgkorUI.isAPPInstall(iosScheme, androidScheme);
                     return true;
                 } else {
@@ -2091,14 +2094,14 @@ var isApp = function(){
                     clearTimeout(self.appCheckTimer);
                     console.log('안드로이드 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
-                }, 2000);
+                }, 3000);
             } else if (vcui.detect.isIOS) {
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
                     console.log('ios 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
-                }, 2000);
+                }, 3000);
                 //location.href = appScheme + "://";
                 location.href = iosScheme;
             }
