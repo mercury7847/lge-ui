@@ -2805,3 +2805,7 @@ strong.selected-objet-list-title {
 .selected-objet-list-container ul>li.active .btn08 {
     background: url("/lg5-common/images/OBJ/simulator/mobile/ico/ico-wash-tower_2.png") no-repeat center top;
 }
+
+&.space_experience .opacity-mask {
+    display: none;
+}
