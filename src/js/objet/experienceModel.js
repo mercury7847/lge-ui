@@ -5396,7 +5396,12 @@ function resultModelPrice(price) {
     let priceLeng = price.length;
     setTimeout(function() {
         for (let i = 0; i < priceLeng; i++) {
-            $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
+            if (price[i] == "nodata") {
+                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+            } else {
+                $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
+            }
+
         }
     }, 100);
 
