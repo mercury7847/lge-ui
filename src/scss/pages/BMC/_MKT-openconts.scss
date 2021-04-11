@@ -302,6 +302,30 @@
                 padding:32px 0 60px;
             }
         }
+        .app-down{
+            position:relative;
+            & .app-btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.android{
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .event06{
