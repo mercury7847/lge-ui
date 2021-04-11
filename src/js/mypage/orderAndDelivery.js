@@ -17,9 +17,12 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if orderCancelAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-            '{{/if}}'+
+            '<div class="btn-link-area">'+
+                '{{#if orderCancelAbleYn == "Y"}}'+
+                '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+                '{{/if}}'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>{{/if}}'+
+            '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
@@ -45,9 +48,12 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if orderCancelAbleYn == "Y"}}'+
-            '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-            '{{/if}}'+
+            '<div class="btn-link-area">'+
+                '{{#if orderCancelAbleYn == "Y"}}'+
+                '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+                '{{/if}}'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>{{/if}}'+
+            '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
                 '<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>'+
@@ -593,12 +599,9 @@
             //var wrapper = $this.closest(".contents");
             var dataID = $this.closest('.box').data("id");
             var prodID = $this.closest('.col-table').data('prodId');
-            if(PAGE_TYPE == PAGE_TYPE_LIST){     
-                sendDetailPage(dataID);   
-            } else{
-                if(pdpUrl) {
-                    setProductStatus(dataID, prodID, pdpUrl);
-                }
+
+            if(pdpUrl) {
+                setProductStatus(dataID, prodID, pdpUrl);
             }
         }).on('click', '.lnb-contents > .btn-group button', function(e){
             e.preventDefault();
@@ -1028,7 +1031,7 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var orderStatus = listData[dataID].productList[prodID].orderStatus;
         
-        void(window.open(orderStatus.deliveryUrl, "_blank"));
+        void(window.open(orderStatus.deliveryUrl, "_blank", "width=360, height=600, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
     }
 
     function setDeliveryRequest(dataID, prodID){
@@ -1110,6 +1113,7 @@
 
             for(var idx=start;idx<end;idx++){
                 var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
+                list[idx].isDetailViewBtn
                 var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
 
@@ -1990,6 +1994,12 @@
 
                 //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
+
+            var modeltypes = vcui.array.filterOne(productList, function(item){
+                return item.modelType == "소모품(A)";
+            });
+            if(modeltypes) $('.supplies-notify').show();
+            else $('.supplies-notify').hide();            
 
             //취소/반품 정보...
             popup.find('.sect-wrap.cnt01').empty().eq(1).remove();

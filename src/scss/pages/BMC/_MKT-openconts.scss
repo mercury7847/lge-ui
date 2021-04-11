@@ -244,6 +244,100 @@
         }
     }
 
+    .event03{
+        .terms{
+            text-align:left;
+            @include mobile {
+                padding:0 12px;
+            }
+            .input-info{
+                @include mobile {
+                    padding:60px 0 0;
+                }
+            }
+            .tit-wrap{
+                @include mobile {
+                    font-size:20px;
+                    font-weight:700;
+                }
+            }
+            .tb-tit{
+                @include mobile {
+                    font-size:14px;
+                    font-weight:700;
+                    padding:40px 0 12px;
+                }
+                &.req{
+                    &::after {
+                        content: '*';
+                        display: inline-block;
+                        margin-left: 1px;
+                        color: #EC455A;
+                        font-size: inherit;
+                        line-height: inherit;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .tb_row{
+                &.tb-bor{
+                    tr{
+                        th,td {
+                            border-left: 1px solid #ddd;
+                            &:first-child{
+                                border-left:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .agree-input{
+                @include mobile {
+                    padding-top:16px
+                }
+            }
+            .txt-terms{
+                @include mobile {
+                    padding:19px 12px;
+                    border-top:1px solid #666666;
+                    border-bottom:1px solid #dddddd;
+                    font-size:13px;
+                    color:#000000;
+                    line-height:1.62;
+                }
+            }
+        }
+        .btns{
+            @include mobile {
+                padding:32px 0 60px;
+            }
+        }
+        .app-down{
+            position:relative;
+            & .app-btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.android{
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .event06{
         .benefit01{
             padding:0 0 140px;
@@ -252,7 +346,6 @@
                 display:inline-block;
                 padding:0;
             }
-
             .benefit-slide{
                 padding:0 100px;
                 max-width:1380px;
@@ -415,6 +508,7 @@
                         }
                     }
                 }
+                
                 .slide-controls{
                     margin-top:-30px;
                     .prev {
@@ -427,11 +521,11 @@
                         width: 64px;
                         height: 64px;
                         .next{
-                            &::before{
-                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                            &:before{
+                             background-image: url('/lg5-common/images/icons/btn-arr-64-black.svg');
                             }
                         }
-                        &::before {
+                        &:before {
                             width: 64px;
                             height: 64px;
                             box-shadow: none;
@@ -471,17 +565,12 @@
             }
             .slide-content {
                 .slide-track{
-                    // max-width:2000px;
                     @include mobile {
                       width:100%;
                     }
                     .slide-conts {
-                        // width:28%;
-                        // padding-top:6%;
-                        // float:left;
                         @include mobile {
                             display:none;
-                            // padding-top:25px;
                             padding:0 16px;
                         }
                         .slide-box {
@@ -506,9 +595,7 @@
                             }
                         }
                         &.on.ui_carousel_center {
-                            // width:38%;
                             padding-top:0;
-                            // margin:0 3%;
                             @include mobile {
                                 display:inline-block;
                                 margin:0 15px;
@@ -551,9 +638,23 @@
                 .next {
                     right:-12px;
                 }
+                .btn-arrow{
+                    width: 64px;
+                    height: 64px;
+                    .next{
+                        &:before{
+                            background-image: url('/lg5-common/images/icons/btn-arr-64-black.svg');
+                        }
+                    }
+                    &:before {
+                        width: 64px;
+                        height: 64px;
+                        box-shadow: none;
+                    }
                 @include mobile {
                     display:none;
                 }
+            }
             }
         }
         .more_btn{
@@ -571,21 +672,21 @@
             width:100%;
             padding:71px 0 99px;
             background-color:#2c2c2c;
-            @include mobile {
+            @include mobile{
                 padding:28px 0 45px;
             }
             .tabs{
                 width:100%;
                 padding: 0 46px;
                 overflow-x:hidden;
-                @include mobile {
+                @include mobile{
                     padding: 0 22px;
                 }
                 li{
                     width:33%;
                     height:223px;
                     margin-left:6px;
-                    @include mobile {
+                    @include mobile{
                         width:33.3%;
                         margin-left:1px;
                         height:164px;
@@ -697,7 +798,7 @@
     }
 
     .event13 {
-        margin-top:57px;
+        // margin-top:57px;
         .cont-box-wrap {
             position:relative;
             .movie {
@@ -929,4 +1030,6 @@
         }
     }
 
+    .event14{
+    }
 }

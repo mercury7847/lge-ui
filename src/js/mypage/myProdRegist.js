@@ -188,6 +188,10 @@
         setting: function() {
             var self = this;  
             self.$contents = $('div.lnb-contents');
+            var $tab = $('.tabs-wrap.ui_tab');
+            self.$registProductTab = $tab.find('li:eq(0) a');
+            self.$myProductTab = $tab.find('li:eq(1) a');
+
             //등록가능제품
             self.$registProductList = self.$contents.find('div.my-product-lists:eq(0)');
             self.$registProductMoreBtn = self.$registProductList.find('button.btn-moreview');
@@ -794,11 +798,13 @@
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                 var data = result.data;
                 var totalListCount = data.totalListCount ? data.totalListCount : 0;
-                var $title = self.$myProductList.siblings('.tit-wrap');
+                //var $title = self.$myProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
-                    $title.find('.tit').text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
+                    //$title.find('.tit').text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
+                    self.$myProductTab.text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
                 } else {
-                    $title.find('.tit').text('보유 제품 목록');
+                    //$title.find('.tit').text('보유 제품 목록');
+                    self.$myProductTab.text('보유 제품 목록');
                 }
 
                 var arr = data.listData instanceof Array ? data.listData : [];
@@ -838,11 +844,13 @@
                 var data = result.data;
                 var param = result.param;
                 var totalListCount = data.totalListCount ? data.totalListCount : 0;
-                var $title = self.$registProductList.siblings('.tit-wrap');
+                //var $title = self.$registProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
-                    $title.find('.tit').text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
+                    //$title.find('.tit').text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
+                    self.$registProductTab.text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
                 } else {
-                    $title.find('.tit').text('등록 가능 제품');
+                    //$title.find('.tit').text('등록 가능 제품');
+                    self.$registProductTab.text('등록 가능 제품');
                 }
 
                 self.setPageData(param.pagination);
@@ -892,10 +900,12 @@
                     self.$registProductMoreBtn.css('display','none');
                 }
                 self.$registProductNoData.hide();
+                self.$registProductList.find('div.enroll-list .recommend-text').show();
                 self.$registProductList.find('div.enroll-list ul').show();
             } else {
                 self.$registProductMoreBtn.css('display','none');
-                self.$registProductNoData.show();
+                self.$registProductNoData.hide();
+                self.$registProductList.find('div.enroll-list .recommend-text').hide();
                 self.$registProductList.find('div.enroll-list ul').hide();
             }
 
@@ -903,7 +913,7 @@
             if($list.length > 0) {
                 self.$myProductNoData.hide();
             } else {
-                self.$myProductNoData.show();
+                self.$myProductNoData.hide();
             }
         },
 

@@ -2859,3 +2859,13 @@
         }
     }
 }
+
+.mobile .support-home .had-pd-container .had-pd-slider .item-card .card-back-cont {
+    &::-webkit-scrollbar {
+        width: 3px;
+        }
+        
+    &::-webkit-scrollbar-thumb {
+        background: #a9a9a9;
+    }
+}

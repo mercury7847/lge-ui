@@ -4343,6 +4343,7 @@
             let modelCateChild = $(".model_choice_area .model_choice_tab .btn_model_pick.is_active").attr("data-childcate");
             let modelCode = $("[data-model-editing='Y']").attr("data-model_code");
             let tblHtml = '';
+            let modelPriceArry = [];
             if (modelCate1 == "refrigerator1" || modelCate1 == "refrigerator2") {
                 let refrigeratorType = configData.modelConfig[0].refrigeratorType;
                 for (let i = 0; i < refrigeratorType.length; i++) {
@@ -4371,13 +4372,14 @@
                                 tblHtml += '                <th scope="col">가격</th>';
                                 tblHtml += '            </tr>';
                                 tblHtml += '        </thead>';
+                                tblHtml += '        <tbody>';
 
-
+                                modelPriceArry.push(modelCode);
                                 tblHtml += '<tr class="is_active">';
                                 tblHtml += '    <td><span>' + modelCode + '</span></td>';
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
-                                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                                tblHtml += '    <td><span></span>원</td>';
                                 tblHtml += '</tr>';
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -4387,11 +4389,12 @@
                                         let subEnergy = _subModel[k].energy;
                                         let subKnockOn = _subModel[k].knockOn;
                                         let subPrice = _subModel[k].defaultPrice;
+                                        modelPriceArry.push(subCode);
                                         tblHtml += '<tr>';
                                         tblHtml += '    <td><span>' + subCode + '</span></td>';
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
-                                        tblHtml += '    <td><span>' + subPrice + '</span>원</td>';
+                                        tblHtml += '    <td><span></span>원</td>';
                                         tblHtml += '</tr>';
                                     }
                                 }
@@ -4405,6 +4408,7 @@
             } else if (modelCate1 == "refrigerator_kimchi") {
                 let refrigeratorType = configData.modelConfig[1].defaultCode;
                 let mainPrice = configData.modelConfig[1].defaultPrice;
+                modelPriceArry.push(refrigeratorType);
                 tblHtml += '<div class="tb_row tb_compare">';
                 tblHtml += '    <table>';
                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4418,9 +4422,10 @@
                 tblHtml += '                <th scope="col">가격</th>';
                 tblHtml += '            </tr>';
                 tblHtml += '        </thead>';
+                tblHtml += '        <tbody>';
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                tblHtml += '    <td><span></span>원</td>';
                 tblHtml += '</tr>';
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
@@ -4430,6 +4435,7 @@
                 for (let i = 0; i < _typModel.length; i++) {
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = _typModel[i].defaultPrice;
+                        modelPriceArry.push(modelCode);
                         tblHtml += '<div class="tb_row tb_compare">';
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4443,9 +4449,10 @@
                         tblHtml += '                <th scope="col">가격</th>';
                         tblHtml += '            </tr>';
                         tblHtml += '        </thead>';
+                        tblHtml += '        <tbody>';
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
-                        tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                        tblHtml += '    <td><span></span>원</td>';
                         tblHtml += '</tr>';
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
@@ -4453,9 +4460,16 @@
                     }
                 }
             }
+            resultModelPriceCheck(modelPriceArry);
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+        },
+        resultModelPrice: function(price) {
+            let priceLeng = price.length;
+            for (let i = 0; i < priceLeng; i++) {
+                $(".simul_step3 .etc_area .tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
+            }
         },
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
             console.log("idx", idx);
@@ -4464,6 +4478,8 @@
             console.log("doorInfo", doorInfo);
             let priceHtml = '';
             let sumPrice = 0;
+            let priceArry = [];
+            priceArry.push(defaultModel);
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
                 defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
             }
@@ -4475,14 +4491,16 @@
             priceHtml += '              <ul class="product_list">';
             priceHtml += '                  <li data-default-code="' + defaultModel + '">';
             priceHtml += '                      <span class="product_name">' + defaultModel + '</span>';
-            priceHtml += '                      <span class="product_price"><em>' + defaultPrice + '</em>원</span>';
+            priceHtml += '                      <span class="product_price"><em></em>원</span>';
             priceHtml += '                  </li>';
             sumPrice += parseInt(minusComma(defaultPrice));
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
-                    priceHtml += '                  <li data-default-code="' + doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3] + '">';
+                    let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
+                    priceArry.push(doorModelCode);
+                    priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
                     priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
-                    priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
+                    priceHtml += '                      <span class="product_price"><em></em>원</span>';
                     priceHtml += '                  </li>';
                     sumPrice += parseInt(minusComma(doorInfo[i][4]));
                 }
@@ -4491,7 +4509,7 @@
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';
             priceHtml += '                                            <span class="product_name">합계</span>';
-            priceHtml += '                                            <span class="product_price"><em>' + sumPrice + '</em>원</span>';
+            priceHtml += '                                            <span class="product_price"><em></em>원</span>';
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
@@ -4514,6 +4532,7 @@
             }
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             $(".total_price_info_wrap").addClass("is_active");
+            resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
                 let totalSumPrice = 0;
@@ -4523,6 +4542,32 @@
                 });
                 console.log(addComma(totalSumPrice));
                 $(".total_result_price .price em").text(addComma(totalSumPrice));
+            }, 100);
+
+        },
+        resultDoorPrice: function(idx, price) {
+            console.log("resultDoorPrice", price);
+            let priceLeng = price.length;
+            let sumPrice = 0;
+            for (let i = 0; i < priceLeng; i++) {
+                sumPrice += parseInt(minusComma(price[i]));
+                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(price[i]);
+            }
+            setTimeout(function() {
+                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
+                modelSimulator.totalResulPrice();
+            }, 100);
+
+        },
+        totalResulPrice: function() {
+            let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
+            let totalPrice = 0;
+            for (let i = 0; i < resultLeng; i++) {
+                let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
+                totalPrice += parseInt(minusComma(sumPrice));
+            }
+            setTimeout(function() {
+                $(".total_result_price .cont .price em").text(addComma(totalPrice));
             }, 100);
 
         },

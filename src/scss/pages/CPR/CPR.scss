@@ -139,6 +139,7 @@
                         margin-top: 16px;
                         .btn {
                             max-width: 140px;
+                            height: auto;
                             padding: 4px 0;
                             font-size: $font-small;
                             line-height: 22px;
@@ -155,7 +156,7 @@
             padding:18px 0;
             @include mobile {
                 height:100%;
-                margin-top:24px;
+                margin:24px -16px 0;
                 padding:14px 0;
             }
             .tabs-scroll-wrap {
@@ -208,8 +209,18 @@
                     }
                 }
                 @include mobile {
+                    &:before {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        width: 16px;
+                        height: 36px;
+                        background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+                        content: '';
+                    }
                     .tabs {
-                        padding: 0;
+                        padding: 0 96px 0 16px;
                     }
                 }
                 .scroll-controls {
@@ -242,13 +253,14 @@
                 }
                 @include mobile {
                     bottom:10px;
+                    right: 16px;
                     padding: 11px 0;
                     background-color: $color-bg-wt;
                     &:before {
                         position: absolute;
                         top: 0;
                         bottom: 0;
-                        left: -40px;
+                        left: -30px;
                         width: 40px;
                         background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $color-bg-wt);
                         content: '';
@@ -319,8 +331,8 @@
             .result-tabs {
                 margin-top: 24px;
                 @include mobile {
-                    margin-top: 10px;
-                    padding-right:80px;
+                    margin: 10px -16px 0;
+                    //padding-right:85px;
                 }
             }
         }

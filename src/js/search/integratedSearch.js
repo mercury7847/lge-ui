@@ -340,7 +340,7 @@
                 var searchedValue = param.search;
                 var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
-                if(data.searchCount) {
+                if(data.searchCount && data.category && data.category.length > 0) {
                     self.$resultPreview.find('span.title-line em.count').text("(" + vcui.number.addComma(data.searchCount) + ")");
                 } else {
                     self.$resultPreview.find('span.title-line em.count').text("");
@@ -368,6 +368,8 @@
                 }
                 
                 //검색 미리보기 리스트 갱신
+                //210409 제거요청으로 제거
+                /*
                 arr = (data.preview && data.preview) instanceof Array ? data.preview : [];
                 var $list_ul = self.$resultPreviewList.find('ul');
                 $list_ul.empty();
@@ -383,6 +385,7 @@
                 } else {
                     self.$resultPreviewList.hide();
                 }
+                */
 
                 if(showSearchResultArea) {
                     //검색결과가 있는 경우.

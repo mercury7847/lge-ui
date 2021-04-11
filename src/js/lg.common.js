@@ -277,7 +277,7 @@ var isApp = function(){
         INTERGRATED_SEARCH_VALUE: "intergratedSearchValue",
         MAX_SAVE_RECENT_KEYWORD: 5, //최근 검색어 저장 최대수
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
-        SEARCH_AUTOCOMPLETE_MIN_LENGTH: 2, // 검색 자동 완성 기능 실행 최소 글자수
+        SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
         init: function(){
@@ -291,9 +291,6 @@ var isApp = function(){
             self._switchLinker();
 
             $('body').find('.container').attr('id', 'content');
-
-
-
 
         },
 
@@ -779,16 +776,14 @@ var isApp = function(){
                 else $(el).find('.lay-conts h6.ui-alert-msg').html(msg), $(el).find('.lay-conts.ui-alert-msg').remove();
                 
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true , isHash:false, opener:opener}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true, isHash:false, alertType:true, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
-                modal.on('modalhidden modalok modalcancel', function (e) {
-    
+                modal.on('modalhidden modalok modalcancel', function (e) {    
                     if(e.type =='modalok'){
                         if(callbackOk) callbackOk.call(this, e);
                     }else if(e.type == 'modalcancel'){
                         if(callbackCancel) callbackCancel.call(this, e);
-                    }
-    
+                    }    
                     $('html').removeClass('dim');
                     el = null;
                     modal = null;
@@ -836,7 +831,7 @@ var isApp = function(){
                 })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
-                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false, opener:opener}, options)).vcModal('instance');
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true ,isHash:false, alertType:true, opener:opener}, options)).vcModal('instance');
                 modal.getElement().buildCommonUI();
                 modal.on('modalhidden modalok', function (e) {
     
@@ -2023,7 +2018,21 @@ var isApp = function(){
                 }
                 return true;
             }else{
-                return false;
+                //return false;
+                if(modelId) {
+                    var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
+                    var androidScheme = "Intent://goto?type=AR&product=" + modelId;
+                    if(location.hostname == "www.lge.co.kr") {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                    } else {
+                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
+                    }
+                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
+                    lgkorUI.isAPPInstall(iosScheme, androidScheme);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         },
         
@@ -2061,11 +2070,11 @@ var isApp = function(){
         //앱 설치 여부 체크
 
         //iOS, Android 앱 설치 여부 확인
-        isAPPInstall:function(appScheme) {
+        isAPPInstall:function(iosScheme, androidScheme) {
             var self = this;
             if (vcui.detect.isAndroid || vcui.detect.isIOS) {
                 self.heartbeat = setInterval(function () {
-                    console.log('interval',document.webkitHidden , document.hidden);
+                    //console.log('interval',document.webkitHidden , document.hidden);
                     if(document.webkitHidden || document.hidden){
                         clearInterval(self.heartbeat);
                         clearTimeout(self.appCheckTimer);
@@ -2076,19 +2085,23 @@ var isApp = function(){
 
             if (vcui.detect.isAndroid) {
                 //location.href = "intent://goto#Intent;scheme=" + appScheme + ";package=kr.co.lge.android;end";
-                location.href = "intent://goto#Intent;scheme=" + appScheme + ";end";
+                //location.href = "intent://goto#Intent;scheme=" + appScheme + ";end";
+                location.href = androidScheme;
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
                     console.log('안드로이드 앱이 없습니다.');
-                }, 2000);
+                    $(window).trigger("appNotInstall");
+                }, 3000);
             } else if (vcui.detect.isIOS) {
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
                     clearTimeout(self.appCheckTimer);
                     console.log('ios 앱이 없습니다.');
-                }, 2000);
-                location.href = appScheme + "://";
+                    $(window).trigger("appNotInstall");
+                }, 3000);
+                //location.href = appScheme + "://";
+                location.href = iosScheme;
             }
         },
     }

@@ -426,8 +426,12 @@
                     e.preventDefault();
                     var modelId = this.dataset.arModelId;
                     if(!lgkorUI.openAR(modelId)) {
-                        $('#arPlayPop').vcModal();
+                        $('#arPlayPop').vcModal({opener: this});
                     }
+                });
+
+                $(window).on('appNotInstall', function(e){
+                    $('#arPlayPop').vcModal();
                 });
 
                 //모바일 카테고리 풀다운메뉴

@@ -635,16 +635,30 @@ input[type=radio] {
                     font-weight: 500;
                     line-height: 2.375;
                     text-align: center;
+                    white-space: nowrap;
+                    @include mobile {}
                     &.tit1 {
-                        width: 200px;
+                        width: 108px;
                         @include mobile {
-                            width: 150px;
+                            width: 78px;
                         }
                     }
                     &.tit2 {
-                        width: 160px;
+                        width: 72px;
                         @include mobile {
-                            width: 110px;
+                            width: 52px;
+                        }
+                    }
+                    &.tit3 {
+                        width: 72px;
+                        @include mobile {
+                            width: 52px;
+                        }
+                    }
+                    &.tit4 {
+                        width: 108px;
+                        @include mobile {
+                            width: 78px;
                         }
                     }
                     @include mobile {
@@ -677,13 +691,16 @@ input[type=radio] {
                                     top: 50%;
                                     background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
                                     transform: translateY(-50%);
+                                    @include mobile {
+                                        left: 15px;
+                                    }
                                 }
                             }
                         }
                     }
                     label {
                         display: flex;
-                        justify-content: space-between;
+                        //justify-content: space-between;
                         width: 100%;
                         border: 1px solid transparent;
                         border-bottom: 1px solid #dddddd;
@@ -691,27 +708,63 @@ input[type=radio] {
                         cursor: pointer;
                         .radio_txt1 {
                             position: relative;
-                            width: 200px;
-                            padding-left: 50px;
+                            // width: 130px;
+                            flex: 0 0 150px;
+                            padding-left: 40px;
+                            font-size: 18px;
+                            line-height: 2.88;
+                            color: #000000;
+                            font-weight: 700;
+                            white-space: nowrap;
+                            @include mobile {
+                                flex: 0 0 100px;
+                                //width: 80px;
+                                padding-left: 25px;
+                                font-size: 13px;
+                            }
+                        }
+                        .radio_txt2 {
+                            //width: 40px;
+                            flex: 0 0 70px;
+                            padding-right: 10px;
+                            text-align: center;
                             font-size: 18px;
                             line-height: 2.88;
                             color: #000000;
                             font-weight: 700;
                             @include mobile {
-                                width: 150px;
+                                flex: 0 0 70px;
+                                //width: 50px;
                                 font-size: 13px;
                             }
                         }
-                        .radio_txt2 {
-                            width: 160px;
-                            padding-right: 30px;
+                        .radio_txt3 {
+                            flex: 0 0 110px;
+                            padding-right: 0px;
+                            text-align: center;
+                            font-size: 18px;
+                            line-height: 2.88;
+                            color: #000000;
+                            font-weight: 700;
+                            @include mobile {
+                                flex: 0 0 70px;
+                                padding-right: 0px;
+                                //width: 50px;
+                                font-size: 13px;
+                            }
+                        }
+                        .radio_txt4 {
+                            flex: 0 0 125px;
+                            padding-right: 10px;
                             text-align: right;
                             font-size: 18px;
                             line-height: 2.88;
                             color: #000000;
                             font-weight: 700;
                             @include mobile {
-                                width: 110px;
+                                flex: 0 0 100px;
+                                padding-right: 10px;
+                                //width: 80px;
                                 font-size: 13px;
                             }
                         }

@@ -263,8 +263,6 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
-
-                lgkorUI.scrollTo(self.$subTopicBox, $('.prod-selected-wrap').outerHeight());
             });
         },
         reqeustSolutions: function(url, param) {

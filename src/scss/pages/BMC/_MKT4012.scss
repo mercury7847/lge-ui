@@ -26,6 +26,11 @@
     }
 }
 .academy-pop {
+    form {
+        input + .input-info {
+            margin-top:-24px;
+        }
+    }
     .input-info  {
         margin-top: 80px;
         @include mobile {
@@ -36,6 +41,9 @@
         }
         .input-info-wrap {
             margin-top: 48px;
+            &:first-child {
+                margin-top:0;
+            }
         }
         .tit-wrap {
             .chk-input {

@@ -274,6 +274,8 @@
 
                     .link-btn-wrap {
                         position:fixed;
+                        display: flex;
+                        flex-direction: row;
                         bottom:0;
                         left:0;
                         width:100%;
@@ -282,7 +284,7 @@
                         z-index:110;
             
                         a {
-                            width:50%;
+                            flex:1;
                             margin:0;
                             padding:0;
                             border-radius:0;
@@ -290,7 +292,7 @@
                             height:56px;
                             font-size:16px;
                             font-weight: 500;
-                            line-height:50px;
+                            line-height:56px;
                             text-align: center;
 
                             &.btn-toggle-sms {

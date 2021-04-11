@@ -17,6 +17,7 @@
         .info-wrap {
             position:relative;
             margin-bottom:12px;
+            padding-right: 250px;
             font-size:0;
             .infos {
                 display:inline-block;
@@ -447,7 +448,7 @@
         }
 
         // 취소신청 버튼
-        > .btn-link {
+        > .btn-link-area {
             position:absolute;
             top:2px;
             right:0;
@@ -455,6 +456,20 @@
             @include mobile {
                 top:16px;
                 right:16px;
+            }
+            .btn-link {
+                margin-right: 20px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            @include mobile {
+                .btn-link {
+                    margin-right: 0;
+                }
+                .orderDetail-btn {
+                    display: none;
+                }
             }
         }
 
