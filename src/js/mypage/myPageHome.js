@@ -95,9 +95,7 @@
             //
             var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
-                console.log(result)
                 for(var key in result){
-                    console.log(key)
                     $('.my-info').find('.' + key).text(result[key]);
                 }  
             });   
