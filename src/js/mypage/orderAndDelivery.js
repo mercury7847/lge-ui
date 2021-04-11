@@ -1031,7 +1031,7 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var orderStatus = listData[dataID].productList[prodID].orderStatus;
         
-        void(window.open(orderStatus.deliveryUrl, "_blank"));
+        void(window.open(orderStatus.deliveryUrl, "_blank", "width=360, height=600, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
     }
 
     function setDeliveryRequest(dataID, prodID){
