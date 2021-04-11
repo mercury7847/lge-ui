@@ -65,7 +65,7 @@ $(function() {
 
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'});   
+        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -449,6 +449,9 @@ $(function() {
             canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
+
+            console.log(winHeight);
+
             posArr = [];
             wheelArr = [];
                         
