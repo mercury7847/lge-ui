@@ -931,6 +931,7 @@
                     $li.data('quantity',quantity);
                     var $total = $li.find('span.price').contents()[1];
                     var price = $li.data('price');
+                    price = price ? vcui.string.replaceAll(price,",","") : "0"; 
                     $total.textContent = (vcui.number.addComma(price*quantity) + '원');
 
                     var $paymentAmount = self.$pdpInfoAdditionalPurchase.siblings('.payment-amount');
@@ -1547,6 +1548,8 @@
             //케어십 계약기간 선택에 따른 가격정보 변경
             updateCareshipInfoPrice: function(selectCareshipInfoData) {
                 var self = this;
+                console.log(selectCareshipInfoData);
+                if(!selectCareshipInfoData) return;
                 self.selectCareshipInfoData = selectCareshipInfoData;
                 var carePrice = parseInt(selectCareshipInfoData.years1TotAmt);
                 var $paymentAmount = self.$pdpInfoCareshipService.siblings('.payment-amount');

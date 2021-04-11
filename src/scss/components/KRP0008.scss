@@ -699,12 +699,16 @@
                     }
                 }
                 .select-option {
+                    .option-list {
+                        margin-top:-8px;
+                    }
                     &.color {
                         flex: auto;
                         .chk-wrap-colorchip {
                             width: 24px;
                             height: 24px;
                             &:not(:last-child) {
+                                margin-top:8px;
                                 margin-right: 8px;
                             }
                             input {

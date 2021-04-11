@@ -4354,7 +4354,9 @@
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
                                 let mainPrice = modelPriceCheck(modelCode);
+                                console.log("mainPrice1111", mainPrice);
                                 setTimeout(function() {
+                                    console.log("mainPrice", mainPrice);
                                     tblHtml += '<div class="tb_row tb_compare">';
                                     tblHtml += '    <table>';
                                     tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4380,7 +4382,7 @@
                                     tblHtml += '    <td>' + mainEnergy + '등급</td>';
                                     tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
                                     tblHtml += '</tr>';
-                                }, 500);
+                                }, 1000);
 
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -4390,14 +4392,16 @@
                                         let subEnergy = _subModel[k].energy;
                                         let subKnockOn = _subModel[k].knockOn;
                                         let subPrice = modelPriceCheck(_subModel[k].modelCode);
+                                        console.log("subPrice1111", subPrice);
                                         setTimeout(function() {
+                                            console.log("subPrice", subPrice);
                                             tblHtml += '<tr>';
                                             tblHtml += '    <td><span>' + subCode + '</span></td>';
                                             tblHtml += '    <td>' + subMagicSpace + '개</td>';
                                             tblHtml += '    <td>' + subEnergy + '등급</td>';
                                             tblHtml += '    <td><span>' + subPrice + '</span>원</td>';
                                             tblHtml += '</tr>';
-                                        }, 550);
+                                        }, 1050);
 
                                     }
                                 }
@@ -4405,7 +4409,7 @@
                                     tblHtml += '        </tbody>';
                                     tblHtml += '    </table>';
                                     tblHtml += '</div>';
-                                }, 580);
+                                }, 1100);
 
                             }
                         }
@@ -4414,7 +4418,9 @@
             } else if (modelCate1 == "refrigerator_kimchi") {
                 let refrigeratorType = configData.modelConfig[1].defaultCode;
                 let mainPrice = modelPriceCheck(modelCode);
+                console.log("mainPrice1111", mainPrice);
                 setTimeout(function() {
+                    console.log("mainPrice", mainPrice);
                     tblHtml += '<div class="tb_row tb_compare">';
                     tblHtml += '    <table>';
                     tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4435,14 +4441,16 @@
                     tblHtml += '        </tbody>';
                     tblHtml += '    </table>';
                     tblHtml += '</div>';
-                }, 500);
+                }, 1000);
 
             } else if (modelCate1 == "refrigerator_convertible") {
                 let _typModel = configData.modelConfig[2].typModel;
                 for (let i = 0; i < _typModel.length; i++) {
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = modelPriceCheck(modelCode);
+                        console.log("mainPrice1111", mainPrice);
                         setTimeout(function() {
+                            console.log("mainPrice", mainPrice);
                             tblHtml += '<div class="tb_row tb_compare">';
                             tblHtml += '    <table>';
                             tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4463,7 +4471,7 @@
                             tblHtml += '        </tbody>';
                             tblHtml += '    </table>';
                             tblHtml += '</div>';
-                        }, 500);
+                        }, 1000);
 
                     }
                 }
@@ -4472,7 +4480,7 @@
                 $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
                 $(".simul_step3 .etc_area").addClass("is_active");
                 $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-            }, 600);
+            }, 1100);
 
         },
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
@@ -4486,7 +4494,9 @@
                 defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
             }
             let modelPrice = modelPriceCheck(defaultModel);
+            console.log("modelPrice11111", modelPrice);
             setTimeout(function() {
+                console.log("modelPrice", modelPrice);
                 priceHtml += '<div class="swiper-slide">';
                 priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
                 priceHtml += '      <dt>' + modelName + '</dt>';
@@ -4498,19 +4508,21 @@
                 priceHtml += '                      <span class="product_price"><em>' + modelPrice + '</em>원</span>';
                 priceHtml += '                  </li>';
                 sumPrice += parseInt(minusComma(modelPrice));
-            }, 500);
+            }, 1000);
 
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     doorModelCode = doorPriceCheck(defaultModel, doorModelCode);
+                    console.log("doorModelCode", doorModelCode);
                     setTimeout(function() {
+                        console.log("doorModelCode1111", doorModelCode);
                         priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
                         priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
-                        priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
+                        priceHtml += '                      <span class="product_price"><em>' + doorModelCode + '</em>원</span>';
                         priceHtml += '                  </li>';
                         sumPrice += parseInt(minusComma(doorInfo[i][4]));
-                    }, 550);
+                    }, 1050);
 
                 }
             }
@@ -4551,7 +4563,7 @@
                     console.log(addComma(totalSumPrice));
                     $(".total_result_price .price em").text(addComma(totalSumPrice));
                 }, 100);
-            }, 600);
+            }, 1200);
 
 
         },
