@@ -4354,7 +4354,9 @@
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
                                 let mainPrice = modelPriceCheck(modelCode);
+                                console.log("mainPrice1111", mainPrice);
                                 setTimeout(function() {
+                                    console.log("mainPrice", mainPrice);
                                     tblHtml += '<div class="tb_row tb_compare">';
                                     tblHtml += '    <table>';
                                     tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4390,7 +4392,9 @@
                                         let subEnergy = _subModel[k].energy;
                                         let subKnockOn = _subModel[k].knockOn;
                                         let subPrice = modelPriceCheck(_subModel[k].modelCode);
+                                        console.log("subPrice1111", subPrice);
                                         setTimeout(function() {
+                                            console.log("subPrice", subPrice);
                                             tblHtml += '<tr>';
                                             tblHtml += '    <td><span>' + subCode + '</span></td>';
                                             tblHtml += '    <td>' + subMagicSpace + '개</td>';
@@ -4414,7 +4418,9 @@
             } else if (modelCate1 == "refrigerator_kimchi") {
                 let refrigeratorType = configData.modelConfig[1].defaultCode;
                 let mainPrice = modelPriceCheck(modelCode);
+                console.log("mainPrice1111", mainPrice);
                 setTimeout(function() {
+                    console.log("mainPrice", mainPrice);
                     tblHtml += '<div class="tb_row tb_compare">';
                     tblHtml += '    <table>';
                     tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4442,7 +4448,9 @@
                 for (let i = 0; i < _typModel.length; i++) {
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = modelPriceCheck(modelCode);
+                        console.log("mainPrice1111", mainPrice);
                         setTimeout(function() {
+                            console.log("mainPrice", mainPrice);
                             tblHtml += '<div class="tb_row tb_compare">';
                             tblHtml += '    <table>';
                             tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -4486,7 +4494,9 @@
                 defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
             }
             let modelPrice = modelPriceCheck(defaultModel);
+            console.log("modelPrice11111", modelPrice);
             setTimeout(function() {
+                console.log("modelPrice", modelPrice);
                 priceHtml += '<div class="swiper-slide">';
                 priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
                 priceHtml += '      <dt>' + modelName + '</dt>';
@@ -4504,10 +4514,12 @@
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     doorModelCode = doorPriceCheck(defaultModel, doorModelCode);
+                    console.log("doorModelCode", doorModelCode);
                     setTimeout(function() {
+                        console.log("doorModelCode1111", doorModelCode);
                         priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
                         priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
-                        priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
+                        priceHtml += '                      <span class="product_price"><em>' + doorModelCode + '</em>원</span>';
                         priceHtml += '                  </li>';
                         sumPrice += parseInt(minusComma(doorInfo[i][4]));
                     }, 1050);
