@@ -5392,6 +5392,7 @@ function resultDoorPrice(idx, price) {
 }
 
 function resultModelPrice(price) {
+    console.log("price", price);
     let priceLeng = price.length;
     for (let i = 0; i < priceLeng; i++) {
         $(".simul_step3 .etc_area .tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
