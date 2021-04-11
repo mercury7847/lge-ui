@@ -25,8 +25,8 @@
                                     <span class="flag">매장</span>
                                     <span class="flag">사은품</span>
                                 </div>
-                                <p class="tit"><span class="blind">제목</span>LGE.COM 오픈 기념 응원 댓글 이벤트</p>
-                                <span class="sub-tit"><span class="blind">서브 제목</span>LGE.COM홈페이지가 오픈 되었습니다! 함께 응원해주세요!</span>
+                                <p class="tit"><span class="blind">제목</span>가전은 역시 LG! 상품 리뷰 쓰고, 경품 받고 !</p>
+                                <span class="sub-tit"><span class="blind">서브 제목</span>상품평 등록하고 이벤트에  참여하세요!</span>
                             </div>
 
                             <!-- 210105 소셜수정 -->
@@ -64,10 +64,98 @@
                                 <div class="conts dis-block">
                                     <!-- 이벤트 상세내용 자리 -->
                                     <div class="event03">
-                                       
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-01.png" class="pc" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-01-m.png" class="mobile" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-02.png" class="pc" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-02-m.png" class="mobile" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-03.png" class="pc" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-03-m.png" class="mobile" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-04.png" class="pc" alt="이벤트내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event03/img-04-m.png" class="mobile" alt="이벤트내용">
+                                        <div class="terms">
+                                            <div class="input-info">
+                                                <div class="input-info-wrap">
+                                                    <div class="tit-wrap">
+                                                        <h2 class="h2-tit">개인정보 수집 이용 및 처리 위탁 동의</h2>
+                                                    </div>
+                                                    <p class="tb-tit req">개인정보 수집 이용 동의(필수)<span class="blind">필수</span></p>
+                                                    <div class="tb_row tb-bor">
+                                                        <table>
+                                                            <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
+                                                            <colgroup>
+                                                                <col style="width:25%">
+                                                                <col style="width:25%">
+                                                                <col style="width:25%">
+                                                                <col>
+                                                            </colgroup>
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">수집항목</th>
+                                                                <th scope="col">목적</th>
+                                                                <th scope="col">보유기간</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="al-left">참여자 이름, 참여자 연락처</td>
+                                                                <td class="al-left">경품배송 시 본인 확인</td>
+                                                                <td class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                                                            "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                                                        ]
+                                                    })
+                                                    <div class="agree-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk1-1" name="agreechk-1" data-required="true" >
+                                                                <label for="chk1-1">동의합니다</label>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                                <div class="input-info-wrap">
+                                                    <p class="tb-tit req">개인정보 처리 위탁 동의<span class="blind">필수</span></p>
+                                                    <div class="tb_row tb-bor">
+                                                        <table>
+                                                            <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
+                                                            <colgroup>
+                                                                <col style="width:50%">
+                                                                <col style="">
+                                                            </colgroup>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">수탁자</th>
+                                                                    <th scope="col">목적</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>㈜LG CNS, 원은, CJ대한통운</td>
+                                                                    <td>사은품 제공 등 이벤트와 관련한 업무</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                                                        ]
+                                                    })
+                                                    <div class="agree-input">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk2-1" name="agreechk-2" data-required="true" >
+                                                            <label for="chk2-1">동의합니다</label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- //이벤트 상세내용 자리 -->
-                                    
+                                    <!-- //이벤트 상세내용 자리 -->                                    
                                 </div>
                             </div>
                         </div>
