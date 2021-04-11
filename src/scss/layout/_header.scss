@@ -64,6 +64,7 @@
     margin: 0 auto;
     padding-bottom: 16px;
     @include mobile {
+        position:relative;
         max-width: 100%;
         padding: 0 16px;
     }
@@ -187,7 +188,7 @@
                 top: 34px;
                 right: 0;
                 left: 0;
-                z-index: 103;
+                z-index: 100;
                 padding: 4px 0 6px;
                 background-color: #fff;
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
