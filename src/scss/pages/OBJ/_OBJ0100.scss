@@ -840,7 +840,7 @@
                         transition-duration: 0.4s;
                         @include mobile {
                             //padding-left: 20px;
-                            padding: 50px 20px 20px 20px;
+                            padding: 45px 20px 20px 20px;
                         }
                         .name {
                             position: relative;
@@ -852,6 +852,7 @@
                             color: #222222;
                             @include mobile {
                                 font-size: 16px;
+                                white-space: nowrap;
                             }
                         }
                         .btn {

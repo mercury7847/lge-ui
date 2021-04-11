@@ -214,10 +214,10 @@
         @include mobile {
             height:100%;
         }
-        // @include mobile {
-        //     height:0;
-        //     padding-top:133.334%;
-        // }
+        @include mobile {
+            height:0;
+            padding-top:147.224%;
+        }
         img {
             position: absolute;
             top:0;
@@ -227,14 +227,13 @@
             transform:translateX(-50%);
             // width:100%;
             @include mobile {
-                position:absolute;
-                width:auto;
-                max-width:none;
-                height:auto;
-                top:50%;
+                position: absolute;
+                top:0;
                 left:50%;
-                transform:translate(-50%, -50%);
-                vertical-align:top;
+                width:auto;
+                height: 100%;
+                transform:translateX(-50%);
+
             }
              /* 클래스별이미지분기 */
              &.pc{

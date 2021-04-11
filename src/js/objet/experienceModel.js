@@ -4377,7 +4377,7 @@
                                 tblHtml += '    <td><span>' + modelCode + '</span></td>';
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
-                                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                                tblHtml += '    <td><span>' + modelPriceCheck(modelCode) + '</span>원</td>';
                                 tblHtml += '</tr>';
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -4386,7 +4386,7 @@
                                         let subMagicSpace = _subModel[k].magicSpace;
                                         let subEnergy = _subModel[k].energy;
                                         let subKnockOn = _subModel[k].knockOn;
-                                        let subPrice = _subModel[k].defaultPrice;
+                                        let subPrice = modelPriceCheck(_subModel[k].modelCode)
                                         tblHtml += '<tr>';
                                         tblHtml += '    <td><span>' + subCode + '</span></td>';
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
@@ -4467,6 +4467,7 @@
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
                 defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
             }
+            let modelPrice = modelPriceCheck(defaultModel);
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
@@ -4475,12 +4476,14 @@
             priceHtml += '              <ul class="product_list">';
             priceHtml += '                  <li data-default-code="' + defaultModel + '">';
             priceHtml += '                      <span class="product_name">' + defaultModel + '</span>';
-            priceHtml += '                      <span class="product_price"><em>' + defaultPrice + '</em>원</span>';
+            priceHtml += '                      <span class="product_price"><em>' + modelPrice + '</em>원</span>';
             priceHtml += '                  </li>';
-            sumPrice += parseInt(minusComma(defaultPrice));
+            sumPrice += parseInt(minusComma(modelPrice));
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
-                    priceHtml += '                  <li data-default-code="' + doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3] + '">';
+                    let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
+
+                    priceHtml += '                  <li data-default-code="' + doorPriceCheck(defaultModel, doorModelCode) + '">';
                     priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
                     priceHtml += '                      <span class="product_price"><em>' + doorInfo[i][4] + '</em>원</span>';
                     priceHtml += '                  </li>';
