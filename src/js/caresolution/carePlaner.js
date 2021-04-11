@@ -240,6 +240,7 @@
             '</ul>'+
             '</div>';
             
+    var noData = '<div class="no-data"><p>해당 카테고리의 제품이 없습니다.</p></div>';
 
     var _showItemLength = 8;
 
@@ -602,7 +603,12 @@
 
             $prodListContainer.find('> ul.inner').empty();
 
-            addProdItemList();
+            if(leng){
+                addProdItemList();
+            } else{
+                $prodListContainer.find('> ul.inner').append(noData);
+            }
+            
 
             if(!_isDirectCare && _careCateId && _careCateId.tabModelId) {
                 var findArr = vcui.array.filter(result.data.productList, function(item, index) {

@@ -230,10 +230,10 @@
                     if(url) {
                         window.open(url, '_blank', 'width=800, height=800');
                     }
-                }).on('click.modal-link-event','a.comfirm-open', function(e){
+                }).on('click.modal-link-event','a.confirm-open', function(e){
                     e.preventDefault();
                     var title = $(this).text();
-                    var url = $(this).data('src');
+                    var url = $(this).attr('href');
                     if(url) {
                         var obj = {title:title +'<br>화면으로 이동합니다.', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
                             var form = $('<form action="' + url + '" method="post"></form>');
