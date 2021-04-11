@@ -2378,9 +2378,11 @@ var go_shop_model = "";
                                 this.translateTo(gotoCenter(target), 500);
                                 this.slides[navindex].classList.add('active-background');
                                 this.update();
+                                let _this = this;
 
                                 _self.selectNavIndicator(navindex);
                                 navGotoCenter(el.id);
+                                return setTimeout(function() { _this.translateTo(gotoCenter(target), 500); }, 100);
                             }
                         }
 
@@ -2408,6 +2410,7 @@ var go_shop_model = "";
                                 _self.selectNavIndicator(navindex);
                                 navGotoCenter(el.value);
                             }
+                            return;
                         }
 
                         var objet = document.querySelectorAll('.objet-selected');
@@ -2446,9 +2449,9 @@ var go_shop_model = "";
                         }
                     }
                 }
-            }).slideTo(activeIndex, 0, false);
+            }); //.slideTo(activeIndex, 0, false);
 
-            return objSwiper;
+            //return objSwiper;
         },
         selectNavIndicator: function(index) {
             var selectIndex = 0;

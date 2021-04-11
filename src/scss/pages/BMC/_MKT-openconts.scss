@@ -244,6 +244,90 @@
         }
     }
 
+    .event03{
+        .terms{
+            text-align:left;
+            @include mobile {
+                padding:0 12px;
+            }
+            .input-info{
+                @include mobile {
+                    padding:60px 0 0;
+                }
+            }
+            .tit-wrap{
+                @include mobile {
+                    font-size:20px;
+                    font-weight:700;
+                }
+            }
+            .tb-tit{
+                @include mobile {
+                    font-size:14px;
+                    font-weight:700;
+                    padding:40px 0 12px;
+                }
+                &.req{
+                    &::after {
+                        content: '*';
+                        display: inline-block;
+                        margin-left: 1px;
+                        color: #EC455A;
+                        font-size: inherit;
+                        line-height: inherit;
+                        vertical-align: top;
+                    }
+                }
+            }
+            .tb_row{
+                &.tb-bor{
+                    tr{
+                        th,td {
+                            border-left: 1px solid #ddd;
+                            &:first-child{
+                                border-left:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .agree-input{
+                @include mobile {
+                    padding-top:16px
+                }
+            }
+        }
+        .btns{
+            @include mobile {
+                padding:32px 0 60px;
+            }
+        }
+        .app-down{
+            position:relative;
+            & .app-btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.android{
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .event06{
         .benefit01{
             padding:0 0 140px;
@@ -252,7 +336,6 @@
                 display:inline-block;
                 padding:0;
             }
-
             .benefit-slide{
                 padding:0 100px;
                 max-width:1380px;
@@ -260,161 +343,7 @@
                     padding:0 36px;
                     max-width:100vw;
                 }
-                .slide-content{
-                    overflow:hidden;
-                    padding-right:17px; //맨 끝 아이템 여백
-                    .slide-conts {
-                        padding:12px;
-                        // float:left;
-                        @include mobile{
-                            max-width:250px;
-                        }
-                        .slide-box {
-                            display:block;
-                            position:relative;
-                            height:auto;
-                            padding:25px;
-                            border-radius:8px;
-                            background-color:#fff;
-                            box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
-                            @include mobile {
-                                height:auto;
-                                box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
-                                padding:25px;
-                            }
-                            .img {
-                                @include mobile {
-                                    position:static;
-                                    width:100%;
-                                    height:auto;
-                                    margin:0;
-                                }
-                            }
-                            .info {
-                                display:block;
-                                text-align:left;
-                                vertical-align: top;
-                                width: auto;
-                                margin: 0;
-                                padding-top:50px;
-                                @include mobile {
-                                    display:block;
-                                    padding:26px 0 0 0;
-                                    width: auto;
-                                    margin: 0;
-                                }
-                                .model {
-                                    display: -webkit-box;
-                                    -webkit-line-clamp:2;
-                                    -webkit-box-orient: vertical;
-                                    // max-height:56px;
-                                    min-height:38px;
-                                    font-size:16px;
-                                    font-weight:700;
-                                    line-height:1.24;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    @include mobile {
-                                        font-size:16px;
-                                    }
-                                }
-                                .code {
-                                    font-size:14px;
-                                    font-weight:500;
-                                    line-height:1.28;
-                                    padding-top:8px;
-                                    @include mobile {
-                                        padding-top:8px;
-                                        font-size:14px;
-                                    }
-                                }
-                                .price-area {
-                                    width:100%;
-                                    margin:20px 0 0;
-                                    padding:20px 0 0;
-                                    border-top:2px solid #e4e4e4;
-                                    @include mobile {
-                                        margin:20px 0 0;
-                                        padding:20px 0 0;
-                                    }
-                                    .total {
-                                        position: relative;
-                                        display:inline-block;
-                                        width:100%;
-                                        text-align:right;
-                                        margin-right: 8px;
-                                        font-weight: 700;
-                                        font-size: 20px;
-                                        line-height: 1.21;
-                                        color:#e34465;
-                                        @include tablet {
-                                            font-size:12px;
-                                        }
-                                        em{
-                                            display:inline-block;
-                                            font-weight: 700;
-                                            font-size: 14px;
-                                            line-height: 1.93;
-                                            text-align:left;
-                                            @include mobile {
-                                                font-size:14px;
-                                            }
-                                        }
-                                        .tit{
-                                            position:absolute;
-                                            left:0;
-                                        }
-                                        @include mobile {
-                                            font-size:20px;
-                                        }
-                                    }
-                                    .original {
-                                        position: relative;
-                                        display:inline-block;
-                                        width:100%;
-                                        margin-right: 4px;
-                                        font-size: 14px;
-                                        line-height: 1.4;
-                                        color: #666666;
-                                        text-decoration:line-through;
-                                        text-align:right;
-                                        @include mobile {
-                                            font-size:14px;
-                                        }
-                                    }
-                                }
-                            }
-                            .dim-soldout{
-                                position:absolute;
-                                top:0;
-                                left:0;
-                                width:100%;
-                                height:100%;
-                                background-color:rgba(146, 146, 146, 0.7);
-                                z-index:10;
-                                border-radius: 8px;
-                                background-image: url('/lg5-common/images/BMC/open_conts/event06/img-soldout.png');
-                                background-size: 50%;
-                                background-position: center;
-                                background-repeat: no-repeat;
-                            }
-                            .flag{
-                                position:absolute;
-                                top:0;
-                                right:0;
-                                z-index:5;
-                                max-width:56px;
-                                img{
-                                    display:block;
-                                    &.discount{
-                                        position:relative;
-                                        margin-bottom:-12px;
-                                    }                                    
-                                }
-                            }
-                        }
-                    }
-                }
+                
                 .slide-controls{
                     margin-top:-30px;
                     .prev {
@@ -427,11 +356,11 @@
                         width: 64px;
                         height: 64px;
                         .next{
-                            &::before{
-                             background-image: url(/lg5-common/images/icons/btn-arr-64-black.svg);
+                            &:before{
+                             background-image: url('/lg5-common/images/icons/btn-arr-64-black.svg');
                             }
                         }
-                        &::before {
+                        &:before {
                             width: 64px;
                             height: 64px;
                             box-shadow: none;
@@ -471,17 +400,12 @@
             }
             .slide-content {
                 .slide-track{
-                    // max-width:2000px;
                     @include mobile {
                       width:100%;
                     }
                     .slide-conts {
-                        // width:28%;
-                        // padding-top:6%;
-                        // float:left;
                         @include mobile {
                             display:none;
-                            // padding-top:25px;
                             padding:0 16px;
                         }
                         .slide-box {
@@ -506,9 +430,7 @@
                             }
                         }
                         &.on.ui_carousel_center {
-                            // width:38%;
                             padding-top:0;
-                            // margin:0 3%;
                             @include mobile {
                                 display:inline-block;
                                 margin:0 15px;
@@ -551,9 +473,23 @@
                 .next {
                     right:-12px;
                 }
+                .btn-arrow{
+                    width: 64px;
+                    height: 64px;
+                    .next{
+                        &:before{
+                            background-image: url('/lg5-common/images/icons/btn-arr-64-black.svg');
+                        }
+                    }
+                    &:before {
+                        width: 64px;
+                        height: 64px;
+                        box-shadow: none;
+                    }
                 @include mobile {
                     display:none;
                 }
+            }
             }
         }
         .more_btn{
@@ -571,21 +507,21 @@
             width:100%;
             padding:71px 0 99px;
             background-color:#2c2c2c;
-            @include mobile {
+            @include mobile{
                 padding:28px 0 45px;
             }
             .tabs{
                 width:100%;
                 padding: 0 46px;
                 overflow-x:hidden;
-                @include mobile {
+                @include mobile{
                     padding: 0 22px;
                 }
                 li{
                     width:33%;
                     height:223px;
                     margin-left:6px;
-                    @include mobile {
+                    @include mobile{
                         width:33.3%;
                         margin-left:1px;
                         height:164px;
@@ -697,7 +633,7 @@
     }
 
     .event13 {
-        margin-top:57px;
+        // margin-top:57px;
         .cont-box-wrap {
             position:relative;
             .movie {
@@ -929,4 +865,6 @@
         }
     }
 
+    .event14{
+    }
 }

@@ -5,14 +5,10 @@
 		pageJS: ["membership/staffRegister"]
     })
 <body>
+<!-- 210411_헤더푸터삭제 -->
     <div class="wrap">
-        <!-- 210311_H1추가 -->
-        @@include('./common/header.html', {
-            hiddenTitle: "이벤트" 
-        })
-        <!-- //210311_H1추가 -->
 
-        <main class="container">
+		<main class="container">
             <!-- event -->
             <div class="contents event">
                 <div class="cont-wrap">
@@ -33,7 +29,9 @@
 											</div>
 										</div>
 										<div class="movie">
+											<!-- 영상 영역 -->
 											<video autoplay="" playsinline="" muted=""><source src="/lg5-common/images/BMC/open_conts/event13/event13-video.mp4" type="video/mp4"><p>LG Objet Collection</p></video>
+											<!-- //영상 영역 -->
 										</div>
 									</div>
 									<div class="pos-rel">
@@ -181,7 +179,7 @@
             <!-- // event -->
         </main>
         
-        @@include('./common/footer.html')
     </div>     
+<!-- //210411_헤더푸터삭제 -->
 </body>
 </html>

@@ -92,8 +92,16 @@
         setting: function(){
             var self = this;
 
-            var sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
+            //
+            var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+                for(var key in result){
+                    var addCommaNum = vcui.number.addComma(result[key]);
+                    $('.my-info').find('.' + key).text(addCommaNum);
+                }  
+            });   
 
+            sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
                 if(result.status == "fail"){
                     lgkorUI.alert("", {

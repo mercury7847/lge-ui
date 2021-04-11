@@ -560,13 +560,14 @@
                     if(showAutoComplete) {
                         //검색결과가 있는 경우.
                         self.$autoComplete.show();
-                        self.$notResult.hide();
+                        //self.$notResult.hide();
+                        self.openSearchInputLayer(true);
                     } else {
                         //검색결과를 표시할것이 없을경우
                         self.$autoComplete.hide();
-                        self.$notResult.show();
+                        //self.$notResult.show();
+                        self.openSearchInputLayer(false);
                     }
-                    self.openSearchInputLayer(true);
                 });
             },
 

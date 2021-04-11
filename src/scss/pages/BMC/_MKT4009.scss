@@ -16,3 +16,191 @@
         }
     }
 }
+.form-wrap .forms .conts {
+    .sn-number-wrap {
+        padding:24px;
+        border-radius:8px;
+        background-color:#f4f4f4;
+        @include mobile {
+            padding:24px 20px;
+        }
+        .inner {
+            font-size:0;
+            .img {
+                display:inline-block;
+                max-width:280px;
+                height:112px;
+                vertical-align:top;
+                img {
+                    width:100%;
+                }
+                @include mobile {
+                    display:block;
+                    max-width:288px;
+                    margin:0 auto;
+                }
+            }
+            .sn-info {
+                display:inline-block;
+                padding:6px 0 0 24px;
+                @include mobile {
+                    padding:6px 0 0;
+                }
+                dl {
+                    dt,
+                    dd {
+                        font-size:14px;
+                        line-height:24px;
+                    }
+                    dt {
+                        font-weight:700;
+                    }
+                    & + dl {
+                        margin-top:4px;
+                    }
+                }
+            }
+        }
+        .tit {
+            width:100%;
+            padding:0;
+            font-size:16px;
+            font-weight:700;
+            line-height:26px;
+        }
+        .bullet-list.type2 {
+            margin-top:16px;
+            font-size:16px;
+            line-height:26px;
+            @include mobile {
+                margin-top:12px;
+                li + li {
+                    margin-top:8px;
+                }
+            }
+        }
+        .add-img {
+            margin-top:24px;
+            .img {
+                margin-top:16px;
+                img {
+                    width:100%;
+                }
+            }
+        }
+    }
+    .bullet-list + .sn-number-wrap {
+        margin-top:24px;
+    }
+    .conts-inner {
+        padding:11px 24px 11px 0;
+        @include mobile {
+            padding-right:0;
+        }
+        .rdo-wrap {
+            & + .rdo-wrap {
+                margin-left:32px;
+            }
+            @include mobile {
+                width:50%;
+                & + .rdo-wrap {
+                    margin-left:0;
+                }
+            }
+        }
+        .txt {
+            font-size:16px;
+            line-height:26px;
+            & + .sn-number-wrap {
+                margin-top:16px;
+            }
+        }
+    }
+    .image-file-wrap {
+        @include clearfix;
+        .file-item {
+            float:left;
+            width:93px;
+            .file-image {
+                position:relative;
+                margin-bottom:10px;
+                .file-preview {
+                    overflow:hidden;
+                    width:93px;
+                    height:93px;
+                    text-align:center;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    background:url('/lg5-common/images/icons/icon-no-image.svg') no-repeat;
+                    background-size:100%;
+                    &:before {
+                        content:'';
+                        display:inline-block;
+                        width:0;
+                        height:100%;
+                        vertical-align:middle;
+                    }
+                    img {
+                        max-width:100%;
+                        max-height:100%;
+                    }
+                }
+                .file-btns {
+                    position:absolute;
+                    bottom:-8px;
+                    right:-8px;
+                    .btn-upload {
+                        display:block;
+                        width:24px;
+                        height:24px;
+                        border-radius:50%;
+                        background:url('/lg5-common/images/icons/btn-imgadd-24.svg') no-repeat;
+                    }
+                    input[type="file"]:focus + .btn-upload {
+                        outline:1px solid #000;
+                    }
+                    .btn-del {
+                        display:none;
+                        width:24px;
+                        height:24px;
+                        border-radius:50%;
+                        background:url('/lg5-common/images/icons/btn-imgdelet-24.svg') no-repeat;
+                    }
+                    input[type="file"] {
+                        @include blind;
+                    }
+                }
+            }
+            .file-name{
+                .name {
+                    display:block;
+                    width:100%;
+                    text-align:center;
+                    color:#000;
+                    font-size:14px;
+                    line-height:24px;
+                    background:transparent;
+                    &::placeholder{
+                        color:#000;
+                    }
+                }
+            }
+            &.on{
+                .file-preview {
+                    background:none;
+                }
+                .file-btns {
+                    .btn-upload {
+                        display:none;
+                    }
+                    .btn-del {
+                        display:block;
+                    }
+                }
+            }
+            & + .file-item {
+                margin-left:24px;
+            }
+        }
+    }
+}

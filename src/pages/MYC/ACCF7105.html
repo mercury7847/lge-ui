@@ -13,10 +13,12 @@
             <div class="tb-col th-center">
                 <table>
                     <caption>거래 영수증 내역을 주문번호, 거래일시, 상품명, 총 거래금액, 결제수단, 서명 순으로 안내</caption>
+                    <!-- 210411 넓이값 수정 -->
                     <colgroup>
-                        <col style="width:30%">
+                        <col style="width:40%">
                         <col>
                     </colgroup>
+                    <!-- //210411 넓이값 수정 -->
                     <tbody>
                         <tr>
                             <th scope="row">주문번호</th>
@@ -67,7 +69,9 @@
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>인쇄</span></button>
+                <!-- 210411 onclick 추가 -->
+                <button type="button" class="btn pink" onclick="window.print()"><span>인쇄</span></button>
+                <!-- //210411 onclick 추가 -->
             </div>
         </footer>
         <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>

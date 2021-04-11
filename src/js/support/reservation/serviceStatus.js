@@ -100,7 +100,8 @@
                             phone: '#phoneNo',
                             number: '#authNo'
                         },
-                        register: authRegister
+                        register: authRegister,
+                        pass: false
                     });
     
                 }

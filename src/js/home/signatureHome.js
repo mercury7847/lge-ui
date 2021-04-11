@@ -64,12 +64,13 @@ $(function() {
         });
 
 
+        // 화면 100% 채우기
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
 
         $('.signature-hero').children().css({'overflow':'hidden'});
-        $('html').css({'overflow':'hidden'});
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         $('.next-arr').on('click', 'a', function(e){

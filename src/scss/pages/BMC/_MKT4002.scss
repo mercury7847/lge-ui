@@ -9,7 +9,7 @@
     .ev-detail-top {
         .tit-wrap {
             position:relative;
-            margin-bottom: 24px;
+            // margin-bottom: 24px;
             padding:24px 20px 33px;
             border-bottom: 1px solid #ddd;
             @include mobile {
@@ -202,7 +202,8 @@
         .ev-cont {
             position:relative;
             .conts {
-                display: inline-block;
+                // display: inline-block;
+                display:block;
                 padding-bottom:80px;
                 @include mobile {
                     padding:0;
@@ -286,6 +287,12 @@
                             }
                         }
                     }
+                }
+                .event_wr {
+                    display:inline-block;
+                }
+                .indexVisual {
+                    display:inline-block;
                 }
             }
             .btn-group {
