@@ -4420,7 +4420,7 @@
                 tblHtml += '        </thead>';
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                tblHtml += '    <td><span>' + modelPriceCheck(modelCode) + '</span>원</td>';
                 tblHtml += '</tr>';
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
@@ -4445,7 +4445,7 @@
                         tblHtml += '        </thead>';
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
-                        tblHtml += '    <td><span>' + mainPrice + '</span>원</td>';
+                        tblHtml += '    <td><span>' + modelPriceCheck(modelCode) + '</span>원</td>';
                         tblHtml += '</tr>';
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
