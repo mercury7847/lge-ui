@@ -96,7 +96,8 @@
             var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
                 for(var key in result){
-                    $('.my-info').find('.' + key).text(result[key]);
+                    var addCommaNum = vcui.number.addComma(result[key]);
+                    $('.my-info').find('.' + key).text(addCommaNum);
                 }  
             });   
 
