@@ -26,6 +26,11 @@
     }
 }
 .academy-pop {
+    form {
+        input + .input-info {
+            margin-top:-24px;
+        }
+    }
     .input-info  {
         margin-top: 80px;
         @include mobile {
