@@ -92,8 +92,15 @@
         setting: function(){
             var self = this;
 
-            var sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
+            //
+            var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
+            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+                for(var key in result){
+                    $('.my-info').find('.' + key).text(result[key]);
+                }  
+            });   
 
+            sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
             lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
                 if(result.status == "fail"){
                     lgkorUI.alert("", {
