@@ -5381,7 +5381,7 @@ function resultDoorPrice(idx, price) {
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
-        sumPrice += parseInt(minusComma(price[i]));
+        sumPrice += price[i];
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(addComma(price[i]));
     }
     setTimeout(function() {
