@@ -5394,20 +5394,26 @@ function resultDoorPrice(idx, price) {
 function resultModelPrice(price) {
     console.log("price", price);
     let priceLeng = price.length;
-    for (let i = 0; i < priceLeng; i++) {
-        $(".simul_step3 .etc_area .tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
-    }
+    setTimeout(function() {
+        for (let i = 0; i < priceLeng; i++) {
+            $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
+        }
+    }, 100);
+
 }
 
 function totalResulPrice() {
-    let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
-    let totalPrice = 0;
-    for (let i = 0; i < resultLeng; i++) {
-        let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
-        totalPrice += parseInt(minusComma(sumPrice));
-    }
     setTimeout(function() {
-        $(".total_result_price .cont .price em").text(addComma(totalPrice));
-    }, 100);
+        let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
+        let totalPrice = 0;
+        for (let i = 0; i < resultLeng; i++) {
+            let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
+            totalPrice += parseInt(minusComma(sumPrice));
+        }
+        setTimeout(function() {
+            $(".total_result_price .cont .price em").text(addComma(totalPrice));
+        }, 100);
+    }, 200);
+
 
 }
