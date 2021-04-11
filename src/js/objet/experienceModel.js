@@ -3508,19 +3508,19 @@
                 doorInfo.push(info);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        console.log("저장");
-                    }
-                };
-                var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-                lgkorUI.confirm(desc, obj);
+                // var obj = {
+                //     title: '',
+                //     typeClass: '',
+                //     cancelBtnName: '',
+                //     okBtnName: '',
+                //     ok: function() {
+                //         console.log("저장");
+                //     }
+                // };
+                // var desc = '';
+                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                // desc = '';
+                // lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
