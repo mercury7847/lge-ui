@@ -185,7 +185,22 @@ $(function() {
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
-                    canScroll = true
+                    canScroll = true;
+
+
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+                    if(currentPage==0){
+                        if(!hasTop){
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    }else{
+                        if(hasTop){
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').removeClass('call-yet');
+                        }                        
+                    }
+
                     currentPage = idx;     
                     moveStep(step);          
                     $('html').removeClass('sceneMoving');
