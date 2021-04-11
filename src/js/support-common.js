@@ -1317,7 +1317,8 @@ var AuthManager = function() {
 
                         if (resultData.resultMessage) {
                             lgkorUI.alert("", {
-                                title: resultData.resultMessage,
+                                title: '휴대전화 인증이 완료되었습니다.',
+                                //title: resultData.resultMessage,
                                 ok: function(el) {
                                     if (resultData.url) {
                                         $(self.options.elem.form).attr('action', resultData.url);
