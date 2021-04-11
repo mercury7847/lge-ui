@@ -680,7 +680,8 @@
                                     msgTarget: '.err-block',
                                     errorMsg: '인증번호를 입력해주세요.',
                                 }
-                            }
+                            },
+                            pass: false
                         };
 
                         if( self.el.container.find('.form-wrap').length) {
