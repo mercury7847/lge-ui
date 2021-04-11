@@ -652,6 +652,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                             slidesPerRow: 4,
                             slidesToShow: 1,
                             slidesToScroll: 1,
+                            infinite: false,
                             responsive: [
                                 {
                                     breakpoint: 10000,

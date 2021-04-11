@@ -12896,7 +12896,7 @@
         min-height: 700px;
     }
     .collec_info04.conv.wp {
-        padding-top: 80px;
+        padding-top: 120px;
         height: 130vh;
         min-height: 1050px;
     }
@@ -17965,6 +17965,13 @@
     .fenix-clean .fenix-list .fenix-bo .caption {
         margin-left: 0;
     }
+    .fenix-clean .fenix-list .fenix-st {
+        position: relative;
+        top: 0;
+    }
+    .fenix-clean .fenix-list .fenix-bo {
+        position: relative;
+    }
     .clean-function .row.video .video-v {
         z-index: 0;
         height: 100%;
@@ -18861,10 +18868,10 @@
     }
     .clean-function .clean_sub_07_cover .desc-container .row .design-function-section-13 {
         position: relative;
-        min-height: 787px;
+        min-height: 800px;
         height: 100%;
-        background: url(/lg5-common/images/OBJ/detail/clean/images-detail-clean-function-12.png) no-repeat center bottom;
-        background-size: cover;
+        background: url(/lg5-common/images/OBJ/detail/clean/images-detail-clean-function-12.png) #bdb9b6 no-repeat center bottom;
+        background-size: 100%;
     }
     .clean-function .clean_sub_07_cover .desc-container .row .design-function-section-13 p {
         text-align: left;
@@ -18900,7 +18907,7 @@
         width: 100%;
     }
     .clean-function .clean_sub_07_cover .desc-container .row .design-function-section-13 .section-desc-container .subject-clean-upper-heading {
-        margin: 140px 0 20px 0;
+        margin: 100px 0 20px 0;
         font-size: 16px;
         font-weight: 500;
         font-stretch: normal;

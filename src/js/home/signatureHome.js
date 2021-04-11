@@ -65,7 +65,7 @@ $(function() {
 
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'});   
+        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -185,7 +185,22 @@ $(function() {
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
-                    canScroll = true
+                    canScroll = true;
+
+
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+                    if(currentPage==0){
+                        if(!hasTop){
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    }else{
+                        if(hasTop){
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').removeClass('call-yet');
+                        }                        
+                    }
+
                     currentPage = idx;     
                     moveStep(step);          
                     $('html').removeClass('sceneMoving');
@@ -434,6 +449,9 @@ $(function() {
             canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
+
+            console.log(winHeight);
+
             posArr = [];
             wheelArr = [];
                         
