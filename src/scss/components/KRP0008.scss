@@ -658,6 +658,15 @@
                         .text {
                             padding-top: 0;
                         }
+                        @include mobile {
+                            position:relative;
+                            .color-text {
+                                position:absolute;
+                                top:0;
+                                left:32px;
+                                margin-top:0 !important;
+                            }
+                        }
                     }
                     &[class*="text"] {
                         margin-top: 24px;
@@ -684,7 +693,7 @@
                         justify-content: left;
                         .text {
                             width: auto;
-                            margin-bottom: 12px;
+                            margin-bottom: 8px;
                             padding-right: 0;
                         }
                     }
@@ -733,7 +742,9 @@
                         }
                         .color-text {
                             margin-top: 8px;
+                            color:#da0f47;
                             @include font-x-small;
+                            font-weight:700;
                         }
                     }
                     &.select {
