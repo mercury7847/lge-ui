@@ -21,7 +21,7 @@
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
                 '{{/if}}'+
-                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>{{/if}}'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
@@ -52,7 +52,7 @@
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
                 '{{/if}}'+
-                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link detailView-btn">청약 상세보기</a>{{/if}}'+
+                '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">청약 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
             '<div class="btns">'+
@@ -607,7 +607,7 @@
             e.preventDefault();
 
             sendListPage();
-        }).on('click', '.detailView-btn', function(e){
+        }).on('click', '.detailView-btn, .orderDetail-btn', function(e){
             e.preventDefault();
             
             var dataID = $(this).closest('.box').data("id");

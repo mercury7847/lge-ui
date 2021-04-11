@@ -235,6 +235,7 @@
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
                     slidesToScroll: 4,
+                    infinite: false,
                     responsive: [
                         {
                             breakpoint: 10000,
@@ -287,11 +288,6 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
-                $('html,body').animate({
-                    scrollTop: self.$subTopicBox.offset().top - $('.prod-selected-wrap').outerHeight()
-                }, function() {
-                    self.$subTopicBox.attr('tabindex', '0').focus().removeAttr('tabindex');
-                });
             });
         },
         reqeustSolutions: function(url, param) {
