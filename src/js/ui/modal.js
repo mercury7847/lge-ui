@@ -444,11 +444,8 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                     if(opts.webAccessibility){
                         var $first = self.$el.find(':visible:focusable').first(); 
                         $first.focus(); 
-                        console.log($first);
                     }else{
                         self.$el.attr('tabindex', 0).focus();
-
-                        console.log(self.$el);
                     }
 
                 }
