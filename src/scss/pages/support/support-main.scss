@@ -1034,11 +1034,13 @@
 
                     &-cont {
                         position:relative;
-                        overflow:auto;
+                        overflow:hidden;
+                        overflow-y:scroll;
                         padding:0 32px;
                         height:152px;
 
                         &.mCustomScrollbar {
+                            overflow-y:hidden;
                             padding:0;
                             .mCSB_container {
                                 padding:0 32px;
@@ -1073,6 +1075,7 @@
                                 color:#000;
                                 font-weight:500;
                                 transition:opacity .3s;
+                                word-break: break-word;
                             }
                         }
                     }
