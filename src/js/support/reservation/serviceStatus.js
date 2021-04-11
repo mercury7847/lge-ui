@@ -495,6 +495,7 @@
             slideConfig : {
                 slidesToShow: 4,
                 slidesToScroll: 4,
+                infinite: false,
                 responsive: [
                     {
                         breakpoint: 10000,

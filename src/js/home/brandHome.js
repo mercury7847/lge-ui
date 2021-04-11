@@ -129,7 +129,7 @@
         });
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'}); 
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});
 
         // 모달이후 overflow :visible 문제 해결
         $('body').addClass('ignore-overflow-hidden');
@@ -258,7 +258,7 @@
                             $('.floating-menu.top').removeClass('call-yet');
                         }                        
                     }
-                    
+
                     currentPage = idx;  
                     moveStep(step);    
                     $('html').removeClass('sceneMoving');
@@ -823,7 +823,11 @@
 
 
         $window.on('floatingTop', function(){
-            render(0);
+            currentPage = 0;
+            currentStep = 0;
+            setBeforeCss(currentStep);
+            moveScene(currentPage,currentStep,0);
+
         });     
 
         if(isApplication){

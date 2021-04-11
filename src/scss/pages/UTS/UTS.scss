@@ -261,9 +261,9 @@
             .content {
                 position: relative;
                 display: table-cell;
-                padding: 15px 30px 15px 24px;
+                padding: 14px 30px 14px 16px;
                 @include mobile {
-                    padding: 15px 0 15px 8px;
+                    padding: 9px 0;
                     .ui_smooth_scrolltab {
                         &:before,
                         &:after {
@@ -274,7 +274,7 @@
                             content: '';
                         }
                         &:before {
-                            left: 8px;
+                            left: 0;
                             width: 8px;
                             background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
                         }
@@ -296,24 +296,27 @@
                 }
                 @include mobile {
                     margin-top: 0;
-                    padding-right: 40px;
+                    padding: 3px 40px 3px 0;
                     white-space: nowrap;
                 }
             }
             .chk-wrap {
                 @include pc {
-                    margin: 12px 32px 0 0;
+                    margin: 8px 16px 0 0;
                 }
                 @include mobile {
-                    margin-right: 24px;
+                    margin-right: 4px;
                 }
                 input {
                     & + label {
-                        padding-left: 0;
+                        padding: 2px 8px;
                         @include font-small;
                         &:before,
                         &:after {
                             display: none;
+                        }
+                        @include mobile {
+                            padding: 4px 8px;
                         }
                     }
                 }
@@ -325,7 +328,7 @@
                 @include pc {
                     overflow: hidden;
                     max-height: 72px;
-                    margin-top: -12px;
+                    margin-top: -8px;
                     &.unfold {
                         max-height: none;
                         .btn-fold {
@@ -351,12 +354,12 @@
                 &.selected {
                     .chk-wrap input {
                         & + label {
-                            color: $color-gray-5;
+                            color: $color-gray-1;
                         }
                         &:checked {
                             & + label {
-                                font-weight: 700;
-                                color: $color-default;
+                                border-radius: 50px;
+                                background-color: #e4e4e4;
                             }
                         }
                     }
