@@ -107,11 +107,9 @@ $(function () {
 
         }).vcCarousel({
             infinite: true,
-            //autoplay: true,
-            //autoplaySpeed: 2000,
             slidesToShow: 3,
             slidesToScroll: 1,
-            variableWidth : true,
+            variableWidth : false,
             centerMode: true,
             centerPadding: '13.3%',
             dots: false,
@@ -119,25 +117,16 @@ $(function () {
                 {
                     breakpoint: 10000,
                     settings: {
-                        infinite: true,
-                        //autoplay: true,
-                        variableWidth : false,
-                        dots: true,
                         slidesToShow: 3,
                         slidesToScroll: 1, 
-                        centerMode: true,
-                        // centerPadding: '13.5%',
+                        centerPadding: '13.3%',
                     }
                 },
                 {
                     breakpoint: 768,
                     settings: {
-                        infinite: true,
-                        variableWidth : false,
-                        dots: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        centerMode: true,
                         centerPadding: '19%',
                     }
                 }
@@ -316,7 +305,22 @@ $(function () {
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
-                    canScroll = true
+                    canScroll = true;
+
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+                    if(currentPage==0){
+                        if(!hasTop){
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    }else{
+                        if(hasTop){
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').removeClass('call-yet');
+                        }                        
+                    }
+
+
                     currentPage = idx;   
                     
                     $('html').removeClass('sceneMoving');
