@@ -1224,7 +1224,7 @@
 
                 //제휴카드 할인 드롭다운 선택
                 //div.option-contents
-                self.$pdpInfo.on('click','div.ui_dropdown_list li a', function(e){
+                self.$pdpInfo.on('click','.rental-card-list div.ui_dropdown_list li a, .careship-card-list div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
                     var $dropDown = $this.parents('.ui_dropdown');
@@ -1268,10 +1268,10 @@
                 });
 
                 //div.option-contents
-                var cardDropdown = self.$pdpInfo.find('div.ui_dropdown_list');
+                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list, .careship-card-list div.ui_dropdown_list');
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
-                    firstRow.trigger('click');
+                    firstRow.trigger('click',firstRow);
                 }
             },
 
@@ -1548,7 +1548,6 @@
             //케어십 계약기간 선택에 따른 가격정보 변경
             updateCareshipInfoPrice: function(selectCareshipInfoData) {
                 var self = this;
-                console.log(selectCareshipInfoData);
                 if(!selectCareshipInfoData) return;
                 self.selectCareshipInfoData = selectCareshipInfoData;
                 var carePrice = parseInt(selectCareshipInfoData.years1TotAmt);
@@ -1655,6 +1654,7 @@
                 var price = parseInt($paymentAmount.data('price'));
                 var carePrice = parseInt($paymentAmount.data('carePrice'));
                 var cardData = $paymentAmount.data('cardData');
+                //cardData = cardData ? cardData : {};
                 var prefix = $paymentAmount.data('prefix');
                 prefix = !prefix ? "" : prefix + " ";
 
@@ -1705,21 +1705,22 @@
                 }
 
                 //소모품이 있는가
+                var totalAdditional = 0;
                 var $additionalPurchase = $paymentAmount.siblings('.additional-purchase');
                 if($additionalPurchase.length > 0) {
-                    var totalAdditional = 0;
                     $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
                         var quantity = $(item).data('quantity');
                         var price = $(item).data('price');
+                        price = price ? vcui.string.replaceAll(price,",","") : "0"; 
                         if(quantity && price) {
                             totalAdditional += (quantity * price);
                         }
                     });
-                    totalPrice += totalAdditional;
+                    //totalPrice += totalAdditional;
                 }
 
                 var $total = $paymentAmount.find('dl.total-payment span.price');
-                $total.text(prefix + vcui.number.addComma(totalPrice * quantity) + '원');
+                $total.text(prefix + vcui.number.addComma((totalPrice * quantity) + totalAdditional) + '원');
             },
 
             //케어솔루션 선택 여부에 따른 구매수량 버튼 활성/비활성
