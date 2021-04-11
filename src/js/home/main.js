@@ -132,7 +132,7 @@ $(function () {
                 {
                     breakpoint: 768,
                     settings: {
-                        infinite: false,
+                        infinite: true,
                         variableWidth : false,
                         dots: true,
                         slidesToShow: 1,
