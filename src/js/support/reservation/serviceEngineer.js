@@ -377,8 +377,6 @@
                             self.$stepDate.addClass('active');
                             self.$stepEngineer.removeClass('active');
                             self.$completeBtns.hide();
-
-                            lgkorUI.scrollTo(self.$stepDate, $('.prod-selected-wrap').outerHeight());
                         }
                     } else {
                         if (data.resultMessage) {
@@ -900,7 +898,7 @@
                             ok: function() {
                                 self.requestComplete();
                             }
-                        });       
+                        }, this);       
                     } else {
                         authManager.open(function() {
                             $('#authName').val($('#userNm').val()).prop('readonly', true);
