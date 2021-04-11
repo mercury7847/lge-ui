@@ -409,11 +409,13 @@
                         self.$modelCheckHelpPage.show();
                     });
                 } else {
+                    /*
                     var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)');
                     selectbox.vcSelectbox('selectedIndex', 0, true);
-
+                    */
                     self.$registMyProductMainPage.hide();
                     self.$modelCheckHelpPage.show();
+                    self.$modelCheckHelpPage.find('section').scrollTop(0);
                 }
             });
 
@@ -437,7 +439,6 @@
                 self.$downloadSearch.data('search',null);
                 self.requestDownloadData({"page":1}, true, true);
             });
-
         },
 
         //검색어 입력중 검색
@@ -762,8 +763,15 @@
                 var index = this.selectedIndex;
                 var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(1)');
                 var option = selectbox.find('option').eq(index);
-                self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
-                self.$modelCheckHelpPage.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')});
+
+                var imageUrl = option.attr('data-image-url');
+                var desc = option.attr('data-text');
+                if(desc) {
+                    self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
+                }
+                if(imageUrl) {
+                    self.$modelCheckHelpPage.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')}).css('opacity',1);
+                }
             });
 
             //보유제품 직접 등록 팝업 뒤로가기
@@ -941,6 +949,11 @@
 
             self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').removeClass('on');
             self.$myProductinputLayerAutoComplete.hide();
+
+            self.$modelCheckHelpPage.find('div.example-result p.txt').text('제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.');
+            self.$modelCheckHelpPage.find('div.example-result img').css('opacity',0);
+            var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)');
+            selectbox.vcSelectbox('selectedIndex', 0, true);
         },
 
         requestManualData: function(_id, sku, page, isMore) {
