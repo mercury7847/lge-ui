@@ -13,166 +13,7 @@
             <h1 class="tit"><span>이벤트 참여하기</span></h1>
         </header>
         <section class="pop-conts academy-pop">
-            <div class="input-info">
-                <div class="tit-wrap">
-                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
-                    <h2 class="h2-tit">구매정보</h2>
-                </div>
-                <div class="form-wrap">
-                    <dl class="forms">
-                        <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
-                        <dd class="conts">
-                            <span class="input-wrap">
-                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly>
-                            </span>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="buyerPhone">휴대폰</label>
-                            <!-- 210126 수정 - 툴팁 삭제
-                            <div class="tooltip-wrap"> !-- 활성화시 active --
-                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
-                                <span class="tooltip-box">
-                                    <p>LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다.</p>
-                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                </span>
-                            </div> -->
-                        </dt>
-                        <dd class="conts">
-                            <div class="input-wrap">
-                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly>
-                            </div>
-                            <!-- 210126 수정 - 돔 추가 -->
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다."
-                                ]
-                            })
-                            <!-- // 210126 수정 -->
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="input-wrap">
-                                <input type="text" name="modelName" data-required="true" id="modelName" placeholder="모델명을 입력해 주세요.">
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="serialNum" class="req">제조번호(S/N)<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="box">
-                                <div class="input-wrap">
-                                    <input type="text" name="serialNum" data-required="true" id="serialNum" placeholder="S/N을 입력해 주세요.">
-                                    <p class="link"><a href="#" data-control="modal" id="serialPopupBtn" class="btn-link">제품 제조번호 확인방법</a></p>
-                                </div>
-                                <div class="cell">
-                                    <button type="button" class="btn" id="serialCheckBtn"><span>제조번호 확인</span></button>
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="address-box">
-                                <div class="box">
-                                    <div class="input-wrap zip-code">
-                                        <input type="text" class="disabled" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" readonly>
-                                    </div>
-                                    <div class="cell">
-                                        <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
-                                    </div>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" class="disabled" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
-                                </div>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" name="buyerAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
-                            </div>
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-
-            <div class="input-info">
-                <div class="tit-wrap">
-                    <!-- 210126 수정 - 타이틀 번호 삭제 / 체크박스 돔 이동  -->
-                    <h2 class="h2-tit">사은품 배송 정보</h2>
-                    <div class="chk-input">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="info" name="info">
-                            <label for="info">구매자 정보와 같음</label>
-                        </span>
-                    </div>
-                    <!-- // 210126 수정  -->
-                </div>
-                <div class="form-wrap">
-                    <dl class="forms">
-                        <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="input-wrap">
-                                <input type="text" name="recipientName" data-required="true" id="recipientName" placeholder="이름을 입력해 주세요." value="">
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="recipientPhone" class="req">휴대폰<span class="blind">필수입력</span></label>
-                        </dt>
-                        <dd class="conts">
-                            <div class="input-wrap">
-                                <input type="text" name="recipientPhone" data-required="true" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label>
-                            <!-- 210126 수정 - 툴팁 삭제
-                            <div class="tooltip-wrap"> !-- 활성화시 active --
-                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
-                                <span class="tooltip-box">
-                                    <p>입력한 정보로 배송되니 정확한 배송지를 확인해주세요.<br>
-                                    주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다.</p>
-                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                                </span>
-                            </div>
-                             -->
-                        </dt>
-                        <dd class="conts">
-                            <div class="address-box">
-                                <div class="box">
-                                    <div class="input-wrap zip-code">
-                                        <input type="text" class="disabled" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" readonly>
-                                    </div>
-                                    <div class="cell">
-                                        <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
-                                    </div>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" class="disabled" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
-                                </div>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" name="recipientAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
-                            </div>
-                            <!-- 210126 수정 - 돔 추가 -->
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "입력한 정보로 배송되니 정확한 배송지를 확인해주세요.",
-                                    "주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다."
-                                ]
-                            })
-                            <!-- // 210126 수정 -->
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-
+            <!-- 210411 위치상단으로이동 -->
             <div class="input-info"><!-- 210126 수정 - .input-info 영역 내 돔 변경이 있음 -->
                 <div class="input-info-wrap"><!-- 210126 수정 - .input-info-wrap 돔 추가 -->
                     <div class="tit-wrap">
@@ -301,6 +142,250 @@
                             <label for="chk3-1">동의합니다</label>
                         </span>
                     </div>
+                </div>
+            </div>
+            <!-- //210411 위치상단으로이동 -->
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
+                    <h2 class="h2-tit">구매정보</h2>
+                </div>
+                <!-- 210411 내용수정(위치변경및내용추가) -->
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label>PC 모델명, 시리얼 위치 확인</label></dt>
+                        <dd class="conts">
+                            <div class="conts-inner">
+                                <p class="txt">소지하고 계신 PC 밑면 또는 측면 바코드 부근에 모델명과 시리얼 번호가 기재되어 있습니다.</p>
+                                <div class="sn-number-wrap">
+                                    <p>소지하고 계신 PC 밑면 또는 측면 바코드 부근에 모델명과 시리얼 번호가 기재되어 있습니다.</p>
+                                    <div class="inner">
+                                        <div class="img">
+                                            <img src="/lg5-common/images/BMC/img-modelnumber-info.png" data-pc-src="/lg5-common/images/BMC/img-modelnumber-info.png" data-m-src="/lg5-common/images/BMC/img-modelnumber-info-m.png" alt="시리얼번호/일렬번호 위치 확인(상단)">
+                                        </div>
+                                        <div class="sn-info">
+                                            <dl>
+                                                <dt>S/N (시리얼번호/일련번호)</dt>
+                                                <dd>예)701ABCD123456</dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>모델명</dt>
+                                                <dd>예)PC모델명 : 15Z980-GA870A</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label class="req">구매일자<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="conts-inner">
+                                <span class="rdo-wrap">
+                                    <input type="radio" id="day-sn3" name="day-sn" checked>
+                                    <label for="day-sn3">3월 구매</label>
+                                </span>
+                                <span class="rdo-wrap">
+                                    <input type="radio" id="day-sn4" name="day-sn">
+                                    <label for="day-sn4">4월 구매</label>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label class="req">영수증 이미지<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="conts-inner">
+                                <div class="image-file-wrap">
+                                    <div class="file-item"> <!-- 파일 선택시 on클래스 추가 -->
+                                        <div class="file-image">
+                                            <div class="file-preview"></div>
+                                            <div class="file-btns">
+                                                <input type="file" name="imageFile1" id="imageFile1">
+                                                <label for="imageFile1" class="btn-upload"><span class="blind">업로드</span></label>
+                                                <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="file-name">
+                                            <input type="text" class="name" placeholder="파일선택" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">구매 내역을 확인할 수 있는 영수증 이미지를 등록해 주세요.<br>(jpg, jpge, png, gif의 이미지 파일만 업로드 가능합니다.)</li>
+                                </ul>
+                                <div class="sn-number-wrap">
+                                    <p class="tit">반드시 제품모델명, 결제완료일이 확인가능한<br>영수증 이미지를 첨부해 주세요.</p>
+                                    <ul class="bullet-list type2">
+                                        <li>- 영수증만으로 구매 내역 확인이 불가능한 경우, 모델명이 포함된 구매내역서를 함께 촬영하여 업로드해 주세요.</li>
+                                        <li>- 영수증에서 정확한 내역 확인이 불가능한 경우 발송대상에서 제외될 수 있습니다.</li>
+                                        <li>- 구매내역서(주문내역서)는 제품구매처에 문의해 주세요.</li>
+                                    </ul>
+                                    <div class="add-img">
+                                        <p class="tit">첨부이미지 예시</p>
+                                        <div class="img"><img src="/lg5-common/images/BMC/img-recipt-example.jpg" alt=""></div>
+                                        <ul class="bullet-list">
+                                            <li class="b-txt">실제 결제 금액은 첨부 이미지 예시와 상이할 수 있음</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>                    
+                    <dl class="forms">
+                        <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" name="modelName" data-required="true" id="modelName" placeholder="모델명을 입력해 주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="serialNum" class="req">제조번호(S/N)<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="box">
+                                <div class="input-wrap">
+                                    <input type="text" name="serialNum" data-required="true" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                                    <p class="link"><a href="#" data-control="modal" id="serialPopupBtn" class="btn-link">제품 제조번호 확인방법</a></p>
+                                </div>
+                                <div class="cell">
+                                    <button type="button" class="btn" id="serialCheckBtn"><span>제조번호 확인</span></button>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label>구매자 이름</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap">
+                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly>
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="buyerPhone">휴대폰</label>
+                            <!-- 210126 수정 - 툴팁 삭제
+                            <div class="tooltip-wrap"> !-- 활성화시 active --
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </span>
+                            </div> -->
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly>
+                            </div>
+                            <!-- 210126 수정 - 돔 추가 -->
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다."
+                                ]
+                            })
+                            <!-- // 210126 수정 -->
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" class="disabled" name="buyerZipCode" data-required="true" id="buyerAddr" placeholder="우편번호" readonly>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn" id="buyerAddrBtn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" class="disabled" name="buyerAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="buyerAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- //210411 내용수정(위치변경및내용추가) -->
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <!-- 210126 수정 - 타이틀 번호 삭제 / 체크박스 돔 이동  -->
+                    <h2 class="h2-tit">사은품 배송 정보</h2>
+                    <div class="chk-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="info" name="info">
+                            <label for="info">구매자 정보와 같음</label>
+                        </span>
+                    </div>
+                    <!-- // 210126 수정  -->
+                </div>
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" name="recipientName" data-required="true" id="recipientName" placeholder="이름을 입력해 주세요." value="">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="recipientPhone" class="req">휴대폰<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" name="recipientPhone" data-required="true" id="recipientPhone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label>
+                            <!-- 210126 수정 - 툴팁 삭제
+                            <div class="tooltip-wrap"> !-- 활성화시 active --
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>입력한 정보로 배송되니 정확한 배송지를 확인해주세요.<br>
+                                    주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </span>
+                            </div>
+                             -->
+                        </dt>
+                        <dd class="conts">
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" class="disabled" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" readonly>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" class="disabled" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="recipientAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
+                            </div>
+                            <!-- 210126 수정 - 돔 추가 -->
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "입력한 정보로 배송되니 정확한 배송지를 확인해주세요.",
+                                    "주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다."
+                                ]
+                            })
+                            <!-- // 210126 수정 -->
+                        </dd>
+                    </dl>
                 </div>
             </div>
 

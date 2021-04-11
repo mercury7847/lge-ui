@@ -135,11 +135,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
+
         },
 
         _bindEvents: function(){
             var self = this;
 
+            //장바구니, 마이페이지홈 클릭시 로딩바 노출
+            self.$el.find('div.utility').on('click','li.cart, li.mypage.after-login a', function (e) {
+                lgkorUI.showLoading();
+            });
+
+            //
             self.$mypage.on('mouseover', function(e){
                 e.preventDefault();
 
