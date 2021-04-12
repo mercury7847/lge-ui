@@ -2,21 +2,39 @@
     var MyProductEvent = {
         init: function() {
             var self = this;
-            //vcui.require(['ui/pagination','helper/textMasking'], function () {
-                //self.txtMasking = new vcui.helper.TextMasking();
-                self.setting();
-                self.bindEvent();
-                //self.requestData(1);
-            //});
+
+            self.setting();
+            self.bindEvent();
         },
 
         setting: function() {
             var self = this;
-            self.$contents = $('.contents.event');
+            
+            $('.myProductRegister').on('click', function(e){
+                e.preventDefault();
+
+                self.setMyProductRegiste();
+            })
         },
 
-        bindEvent: function() {
+        setMyProductRegiste: function() {
+            var self = this;
 
+            var chk = $('.agreechk-1').prop('checked');
+            if(!chk){
+                lgkorUI.alert("", {
+                    title: "개인정보 수집 이용에 동의해 주세요."
+                });
+                return;
+            }
+
+            chk = $('.agreechk-2').prop('checked');
+            if(!chk){
+                lgkorUI.alert("", {
+                    title: "개인정보 처리 위탁에 동의해 주세요."
+                });
+                return;
+            }
         }
     }
 
