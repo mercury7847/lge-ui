@@ -69,7 +69,8 @@ $(document).ready(function() {
                     }
                 });
 
-                $(window).scroll(function(){
+                //$(window).scroll(function(){
+                $("body").scroll(function(){
                     if ($(this).scrollTop() > 100) {
                         $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
@@ -82,7 +83,8 @@ $(document).ready(function() {
                     }
                 });
 
-                if ($(window).scrollTop() > 100) {
+                //if ($(window).scrollTop() > 100) {
+                if ($("body").scrollTop() > 100) {
                     //$('.floating-menu.top').show();
                     $('.floating-menu.top').css({
                         "position" : "static",
@@ -99,7 +101,8 @@ $(document).ready(function() {
                         //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                     });
                 }
-                $(window).scroll(function(){
+                //$(window).scroll(function(){
+                $("body").scroll(function(){
                     if ($(this).scrollTop() > 100) {
                         //$('.floating-menu.top').show();
                         $('.floating-menu.top').css({
