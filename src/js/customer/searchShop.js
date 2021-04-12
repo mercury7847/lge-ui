@@ -291,7 +291,7 @@
     	        	{
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
-    	        			android.getLocation('getLocation');
+    	        			android.getLocation('setAppLocation');
     	        		}
     	        		else
     	        		{
