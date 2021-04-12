@@ -66,6 +66,7 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 /* 210408 pb start */
 .pop_close_btn {display:none; position: absolute; right: 15px; top: 15px;}
 .event-template {position:relative;max-width:1200px;margin:0 auto;}
+
 .event-template .summary-visual {position:relative; background:#202020;}
 /* 210408 pb end */
 .event-template .summary-visual img {width:100%;}
@@ -83,7 +84,7 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 .mobile .event-template a.btn_custom {top: 10.5%;width: 41%;height: 10%;left: 8%;}
 .mobile .event-template a.btn_shop {top: 10.5%;width: 41%;height: 10%;left: 51%;}
 
-.event_popup {position:absolute;left:15%;top:100px;width:70%;z-index:30;background: #fff;font-family: 'LGSmHaR'; transition: all 1s;}
+.event_popup {position:absolute;left:0;top:0;width:100%;z-index:30;background: #fff;font-family: 'LGSmHaR'; transition: all 1s;}
 .event_popup input,
 .event_popup select {
     border-radius: 0;background-color: #f9f9f9;height:30px;
@@ -130,6 +131,10 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
  .event_popup .popup_serialNo {display: none; position: absolute;left: 50%;top: 40%;margin-left:-420px;z-index: 25;}
  .event_popup .couponClose,
  .event_popup .serialClose {position: absolute;top: 3%;right: 10px;}
+ /* 210412 pb st  */
+ .event_popup .serialClose {content: ""; width: 23px; height: 23px; background: url(https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/btn_layer_close2.png);}
+ .event_popup .serialClose img{display:none;}
+ /* 210412 pb ed  */
  .event_popup .popup_couponNo h1,
  .event_popup .popup_serialNo h1{background:#2d2e32; padding:2% 3%; color:#fff; font-size:18px}
  #serialNo {width: 40%;}
@@ -157,6 +162,9 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
  .event_popup .btn_page > button {min-width: 200px;font-size: 22px;text-align: center; margin: 0 18px; padding: 7px 15px 5px 15px; line-height:1.5; vertical-align: middle; border-radius: 6px;letter-spacing: -2px;}
  .event_popup td > button {min-width: 105px;font-size: 14px;text-align: center; padding: 4px 15px 3px 15px; line-height:1.5; vertical-align: middle; border-radius: 6px;letter-spacing: -2px;}
  .event_popup .btn_page .btn_survey {color:#fff;background: #c62859;border: 1px solid #c62859; border-radius: 0;}
+ /* 210408 pub st */
+ .event_popup .btn_page .btn_survey:hover{cursor:pointer;}
+ /* 210408 pub ed */
  .event_popup .btn_survey {min-width: 105px;font-size: 14px;text-align: center; padding: 4px 15px 3px 15px; line-height:1.5; vertical-align: middle; border-radius: 6px; color:#000;background: #f4f4f4;border: 1px solid #b4bec8; border-radius: 0;}
  .event_popup .btn_page .btn_next {color:#fff;background: #a50034;border: 1px solid #a50034;}
  .event_popup .btn_page .btn_prev {color:#666;background: #fff;border: 1px solid #999;}
@@ -184,6 +192,13 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 /* 210408 pb start */
 .cont01 .marking {border-right:80px solid #202020; border-left:80px solid #202020; background: #fff url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking.gif') repeat-y 0 0; background-size: contain; padding-bottom:40px; box-sizing: border-box;}
+@media (max-width:1300px){
+  .cont01 .marking{border-right:6.1vw solid #202020; border-left:6.1vw solid #202020;}
+}
+@media (max-width:767px){
+  .cont01 .marking{border-right:3.9vw solid #202020; border-left:3.9vw solid #202020;}
+}
+
 /* 210408 pb end */
 .cont01 .marking .tab {max-width: 882px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between;}
 .cont01 .marking .tab a {position: relative; display: inline-block; width: 32%; font-size: 18px; padding: 20px 0; text-align: center; box-sizing: border-box; border: 1px solid #f4f4f4; background: #f4f4f4; text-decoration: none;}
@@ -205,7 +220,7 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 /* 210408 pb start */
 .marking.top .photo .text {font-family: 'RedVelvet' !important; justify-content: flex-start; width: auto; left: 34%}
 /* 210408 pb end */
-.mobile .cont01 .marking {background: #202020 url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking_m.gif') repeat-y 0 0; background-size: contain; padding: 0 30px 20px 30px;}
+.mobile .cont01 .marking {background: #0D0E10 url('/lgekor/asset/event/tv/2020/10/14_signature/_include/images/bg_marking_m.gif') repeat-y 0 0; background-size: contain; padding: 0 30px 20px 30px;}
 .mobile .cont01 .marking .tab a {padding: 10px 0; font-size: 12px;}
 .mobile .marking .tip {margin: 20px 0 10px 0; font-size: 12px;}
 .mobile .marking > input[type="text"] {height: 43px; width: 100%;}
