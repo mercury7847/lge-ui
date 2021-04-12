@@ -122,6 +122,8 @@
         var posArr = [];
         var wheelArr = [];      
         var regex = /^data-step-(-?\d*)/;
+        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
+
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
@@ -240,14 +242,14 @@
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
                 speedTime = Math.max(0,speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
-
+                    
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if(currentPage==0){
+                    if(idx==0){
                         if(!hasTop){
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');
@@ -615,6 +617,8 @@
         var isThinqApp = false;
         var isMobile = false;
 
+        
+
         $('.thinq-app').find('.app-wrap').css('position','relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
 
         
@@ -642,7 +646,7 @@
             $contentWrap.off('scroll.app');  
             $contentWrap.off('scroll.lifestyle');
 
-            $('html,body').scrollTop(pageLens*winHeight);
+            $('html, body').scrollTop(pageLens*winHeight);
 
 
             $device.css('top', '');

@@ -306,6 +306,84 @@
                     line-height:1.62;
                 }
             }
+            .input-layer-wrap {
+                .input-layer {
+                    display:none;
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    left:0;
+                    z-index:1;
+                    width:calc(100% - 76px);
+                    padding:48px 0 0;
+                    border-radius:8px;
+                    background-color:#fff;
+                    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+                    overflow:hidden;
+                    @include mobile {
+                        width:calc(100% - 94px);
+                    }
+                    ul {
+                        max-height:192px;
+                        overflow:hidden;
+                        overflow-y:auto;
+                        @include mobile {
+                            max-height:138px;
+                        }
+                        li {
+                            height:48px;
+                            padding:11px 16px;
+                            a {
+                                display:block;
+                                font-size:16px;
+                                line-height:26px;
+                                .search-word {
+                                    color:#da0f47;
+                                }
+                            }
+                            @include mobile {
+                                height:46px;
+                                padding:12px;
+                                a {
+                                    font-size:14px;
+                                    line-height:22px;
+                                }
+                            }
+                        }
+                    }
+                    .no-data {
+                        padding:16px 16px 32px;
+                        text-align:center;
+                        p {
+                            font-size:16px;
+                            line-height:26px;
+                        }
+                        @include mobile {
+                            padding:12px 12px 24px;
+                            p {
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                    }
+                }
+                &.on {
+                    .box {
+                        .input-wrap {
+                            input {
+                                position:relative;
+                                z-index:2;
+                                &:focus {
+                                    border-color:transparent;
+                                }
+                            }
+                        }
+                    }
+                    .input-layer {
+                        display:block;
+                    }
+                }
+            }
         }
         .btns{
             @include mobile {
@@ -810,7 +888,8 @@
                     // border:12px solid #F3DCD0;
                 }
                 @include mobile {
-                    padding:32px 13.8% 60px;
+                    // padding:32px 13.8% 60px;
+                    padding:32px 0 60px;
                 }
             }
         }

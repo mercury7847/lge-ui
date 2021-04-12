@@ -63,8 +63,6 @@ $(function() {
             $('html,body').scrollTop(pageLens*winHeight);
         });
 
-        console.log('asdfasf');
-
         // 화면 100% 채우기
         $('html,body').css({'overflow':'hidden', 'height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
@@ -172,6 +170,8 @@ $(function() {
         }
 
 
+        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
+
         // 씬으로 이동
         function moveScene(idx, step, speed){
 
@@ -193,14 +193,14 @@ $(function() {
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
                 speedTime = Math.max(0,speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
 
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if(currentPage==0){
+                    if(idx==0){
                         if(!hasTop){
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');

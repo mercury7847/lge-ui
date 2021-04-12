@@ -260,7 +260,8 @@
         _dataLoaded : function(){
             var self = this;
             setAppLocation = function(currentLocation){
-            	if (currentLocation == '') currentLocation = '37.55401,126.97486'
+            	if (currentLocation == '') currentLocation = '37.5235644,127.0395764';//
+
         		var arrLocation = currentLocation.split(',');
 
                 self.userLatitude = arrLocation[0];
@@ -270,6 +271,7 @@
                     self.$map.setUserLocation(self.userLatitude, self.userLongitude);
                     self.$map.start(self.userLatitude, self.userLongitude)
                 }
+            	
             };
             var getAppCurrentLocation = function() {
                 if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -289,19 +291,17 @@
     	        	{
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
-    	                    setTimeout(function(){
-    	                        self._getCurrentLocation();
-    	                    },300);
+    	        			android.getLocation('setAppLocation');
     	        		}
     	        		else
     	        		{
-        	        		setAppLocation('37.55401,126.97486');		    	        			
+        	        		setAppLocation('37.5235644,127.0395764');		    	        			
     	        		}
             		} 
     	        	catch (e) 
     	        	{
     	                
-    	        		setAppLocation('37.55401,126.97486');
+    	        		setAppLocation('37.5235644,127.0395764');
             		}
                 }	
             };
