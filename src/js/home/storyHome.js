@@ -91,8 +91,8 @@
         STORY_URL = $('.contents.story-main').data("storyUrl");
 
         vcui.require(['ui/carousel', "ui/sticky"], function () {
-            $('.story-review .slide-controls button').hide();
-            $('.story-review .indi-wrap').hide();
+            $('.story-review .slide-controls').hide();
+            // $('.story-review .indi-wrap').hide();
             $(window).on('breakpointchange', function(e){
 
                 var breakpoint = window.breakpoint;    
