@@ -38,6 +38,10 @@
         border-radius:28px;
         box-shadow:0px 4px 11px 0 rgba(0, 0, 0, 0.15);
         background:#fff;
+
+        &:active {
+            border:1px solid #da0f47;
+        }
         .icon {
             transform:translateY(-50%);
             position:absolute;
@@ -142,6 +146,10 @@
         .btn-option {
             background-image:linear-gradient(to top, #fb5a72, #fa263e);
             box-shadow:0px 4px 11px 0 rgba(0, 0, 0, 0.15);
+
+            &:hover {
+                background: #da0f47;
+            }
             &:before {
                 content:'';
                 position:absolute;
