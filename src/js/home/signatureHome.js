@@ -170,7 +170,8 @@ $(function() {
         }
 
 
-        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+
 
         // 씬으로 이동
         function moveScene(idx, step, speed){
