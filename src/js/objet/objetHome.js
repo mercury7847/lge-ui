@@ -465,7 +465,14 @@ $(function() {
             posArr.push(10000);
 
             stepLens = wheelArr.length - 1;
-            let sceneH = winHeight - $(".header").height() - $(".mobile-nav-wrap").height();
+            let fixH;
+            if ($(window).width() < 768) {
+                fixH = 0;
+            } else {
+                fixH = 16;
+            }
+
+            let sceneH = winHeight - $(".header").height() - $(".mobile-nav-wrap").height() + fixH;
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
