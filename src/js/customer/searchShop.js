@@ -954,11 +954,11 @@
                     'position':'relative',
                     'visibility':'visible',
                     'left':'0',
-                    'height':'400'
+                    'height':'320'
                 });                   
     
                 toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                self.$map.resize(self.windowWidth, 400);
+                self.$map.resize(self.windowWidth, 320);
 
             }else{
 
@@ -968,11 +968,11 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'400'
+                        'height':'320'
                     });                   
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                    self.$map.resize(self.windowWidth, 400);
+                    self.$map.resize(self.windowWidth, 320);
     
                 } else{                    
     
