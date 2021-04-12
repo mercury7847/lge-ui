@@ -203,8 +203,11 @@ var Curation = (function() {
                     $list_ul.append(vcui.template(curationTemplate, item));
                 });
                 var scrillTab = self.$curation.find('.ui_smooth_scrolltab');
-                scrillTab.vcSmoothScrollTab('refresh');
-                scrillTab.vcSmoothScrollTab('setTabIndex',-999);
+
+                setTimeout(function(){
+                    scrillTab.vcSmoothScrollTab('refresh');
+                    scrillTab.vcSmoothScrollTab('setTabIndex',-999);
+                },10);
                 
                 self.$curation.show();
             } else {
@@ -224,9 +227,11 @@ var Curation = (function() {
                     $list_ul.append(vcui.template(sFilterTemplate, item));
                 });
 
-                $list_ul.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+                setTimeout(function(){
+                    $list_ul.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
+                },10);
+                
                 self.removeSelectSmartFilter();
-
                 self.resizeCalcSmartFilter();
 
                 self.$smartFilterList.off('.fold').on('click.fold','button.btn-fold',function(e){
@@ -388,7 +393,6 @@ var Curation = (function() {
                                 maxIndex = parent.index();
                             }
                         }
-
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                     }
 

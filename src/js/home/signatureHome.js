@@ -63,9 +63,8 @@ $(function() {
             $('html,body').scrollTop(pageLens*winHeight);
         });
 
-
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});   
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});   
         // 모달창 닫기시 overflow:hidden 무시함.
         $('body').addClass('ignore-overflow-hidden');
 
@@ -82,7 +81,17 @@ $(function() {
         
 
         $window.on('floatingTop', function(){
-            render(0);
+            // currentPage = 0;
+            // currentStep = 1;
+            // setBeforeCss(currentStep, wheelArr);
+            // moveScene(currentPage,currentStep,0);
+
+            currentPage = 0;
+            currentStep = 1;
+            setBeforeCss(currentStep);
+            moveScene(currentPage,currentStep,0);
+
+
         });     
 
         // element 애니메이션 스탭
@@ -161,6 +170,9 @@ $(function() {
         }
 
 
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+
+
         // 씬으로 이동
         function moveScene(idx, step, speed){
 
@@ -182,14 +194,14 @@ $(function() {
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-300;
                 speedTime = Math.max(0,speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
 
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if(currentPage==0){
+                    if(idx==0){
                         if(!hasTop){
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');
@@ -449,8 +461,6 @@ $(function() {
             canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
-
-            console.log(winHeight);
 
             posArr = [];
             wheelArr = [];

@@ -120,7 +120,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -250,7 +250,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -386,7 +386,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -512,7 +512,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -654,7 +654,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -785,7 +785,7 @@
                                 enName: "Nature Metal",
                                 code: "M",
                                 desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                                 doorColor: [{
                                     name: "그레이",
                                     code: "GY",
@@ -913,7 +913,7 @@
                         enName: "Nature Metal",
                         code: "M",
                         desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                         doorColor: [{
                             name: "그레이",
                             code: "GY",
@@ -1005,7 +1005,7 @@
                             enName: "Nature Metal",
                             code: "M",
                             desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                             doorColor: [{
                                 name: "그레이",
                                 code: "GY",
@@ -1091,7 +1091,7 @@
                             enName: "Nature Metal",
                             code: "M",
                             desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                             doorColor: [{
                                 name: "그레이",
                                 code: "GY",
@@ -1177,7 +1177,7 @@
                             enName: "Nature Metal",
                             code: "M",
                             desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
                             doorColor: [{
                                 name: "그레이",
                                 code: "GY",
@@ -1197,7 +1197,7 @@
             }
         ]
     }
-    var bestSeller = {
+    bestSeller = {
         bestConfig: [{
                 defaultCode: "M870AAA451",
                 modelCode: "M870GBB451",
@@ -1851,29 +1851,33 @@
                 door2: "D870BB-GBE",
                 door3: "D870BB-GBE",
                 door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320SSS",
-                door1: "B320TT-SSR",
-                door2: "",
-                door3: "",
-                door4: "",
+            },
+            /*{
+                           defaultCode: "X320AA",
+                           modelCode: "X320SSS",
+                           door1: "B320TT-SSR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
 
-            }, {
+                       },*/
+            {
                 defaultCode: "X320AA",
                 modelCode: "X320SGS",
                 door1: "B320TT-SGR",
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320MMS",
-                door1: "B320TT-MMT",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "X320AA",
+                           modelCode: "X320MMS",
+                           door1: "B320TT-MMT",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       }, */
+            {
                 defaultCode: "X320AA",
                 modelCode: "X320GB",
                 door1: "B320TT-GBE",
@@ -1908,42 +1912,48 @@
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320MGS",
-                door1: "B320TT-MGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "X320AA",
+                           modelCode: "X320MGS",
+                           door1: "B320TT-MGR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       }, */
+            {
                 defaultCode: "X320AA",
                 modelCode: "X320MBS",
                 door1: "B320TT-MBK",
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Y320AA",
-                modelCode: "Y320SSS",
-                door1: "B320TT-SSR",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Y320AA",
+                           modelCode: "Y320SSS",
+                           door1: "B320TT-SSR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Y320AA",
                 modelCode: "Y320SGS",
                 door1: "B320TT-SGR",
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Y320AA",
-                modelCode: "Y320MMS",
-                door1: "B320TT-MMT",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Y320AA",
+                           modelCode: "Y320MMS",
+                           door1: "B320TT-MMT",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Y320AA",
                 modelCode: "Y320GB",
                 door1: "B320TT-GBE",
@@ -1978,42 +1988,48 @@
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Y320AA",
-                modelCode: "Y320MGS",
-                door1: "B320TT-MGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Y320AA",
+                           modelCode: "Y320MGS",
+                           door1: "B320TT-MGR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Y320AA",
                 modelCode: "Y320MBS",
                 door1: "B320TT-MBK",
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Z320AA",
-                modelCode: "Z320SSS",
-                door1: "B320TT-SSR",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Z320AA",
+                           modelCode: "Z320SSS",
+                           door1: "B320TT-SSR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Z320AA",
                 modelCode: "Z320SGS",
                 door1: "B320TT-SGR",
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Z320AA",
-                modelCode: "Z320MMS",
-                door1: "B320TT-MMT",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Z320AA",
+                           modelCode: "Z320MMS",
+                           door1: "B320TT-MMT",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Z320AA",
                 modelCode: "Z320GB",
                 door1: "B320TT-GBE",
@@ -2048,14 +2064,16 @@
                 door2: "",
                 door3: "",
                 door4: "",
-            }, {
-                defaultCode: "Z320AA",
-                modelCode: "Z320MGS",
-                door1: "B320TT-MGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
+            },
+            /*{
+                           defaultCode: "Z320AA",
+                           modelCode: "Z320MGS",
+                           door1: "B320TT-MGR",
+                           door2: "",
+                           door3: "",
+                           door4: "",
+                       },*/
+            {
                 defaultCode: "Z320AA",
                 modelCode: "Z320MBS",
                 door1: "B320TT-MBK",
@@ -3495,6 +3513,8 @@
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
+            let saveInfo = [];
+            saveInfo.push(defaultModel);
             $this.find(".door_wrap .model_door").each(function() {
                 let info = [];
                 info.push($(this).attr("data-door-direction"));
@@ -3506,21 +3526,24 @@
                 info.push($(this).attr("data-door-text"));
                 info.push($(this).attr("data-door-klocation"));
                 doorInfo.push(info);
+                let doorMix = $(this).attr("data-door-code") + "-" + $(this).attr("data-door-model_spec_material") + $(this).attr("data-door-model_spec_color");
+                saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        console.log("저장");
-                    }
-                };
-                var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-                lgkorUI.confirm(desc, obj);
+                // var obj = {
+                //     title: '',
+                //     typeClass: '',
+                //     cancelBtnName: '',
+                //     okBtnName: '',
+                //     ok: function() {
+                //         console.log("saveInfo", saveInfo);
+                //         //myPickSave(saveInfo);
+                //     }
+                // };
+                // var desc = '';
+                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                // desc = '';
+                // lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
@@ -3701,7 +3724,9 @@
         }
     }
 
-    var modelSimulator = {
+
+
+    modelSimulator = {
         init: function() {
             let simulModelLeng = configData.modelConfig.length;
             let modelChoiceHtml = "";
@@ -3878,8 +3903,9 @@
                 } else {
                     if ($(".model_set_wrap").length == 0) {
                         //simulBodySwiper.addSlide(simulBodyHtml);
+                        simulBodySwiper.destroy();
                         $(".simul_body").html(simulBodyHtml);
-                        //simulBodySwiper.update();
+
                         simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
                             //slidesPerView: 3,
                             slidesPerView: 'auto',
@@ -3894,7 +3920,7 @@
 
                         });
                         //제품 스와이프 슬라이드
-
+                        simulPositionAutoMove();
                     } else {
                         let selDoorLeng = "Y";
                         let editingModel = $(".model_set_wrap");
@@ -4314,7 +4340,10 @@
             }
             $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
-            $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+            setTimeout(function() {
+                $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+            }, 100);
+
 
             var modalHtml = '';
             for (let i = 0; i < modalTitle.length; i++) {
@@ -4465,12 +4494,7 @@
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
         },
-        resultModelPrice: function(price) {
-            let priceLeng = price.length;
-            for (let i = 0; i < priceLeng; i++) {
-                $(".simul_step3 .etc_area .tb_compare tbody tr:eq(" + i + ") td:last-child span").text(price[i]);
-            }
-        },
+
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
             console.log("idx", idx);
             console.log("modelTyp", modelCate);
@@ -4545,32 +4569,8 @@
             }, 100);
 
         },
-        resultDoorPrice: function(idx, price) {
-            console.log("resultDoorPrice", price);
-            let priceLeng = price.length;
-            let sumPrice = 0;
-            for (let i = 0; i < priceLeng; i++) {
-                sumPrice += parseInt(minusComma(price[i]));
-                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(price[i]);
-            }
-            setTimeout(function() {
-                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
-                modelSimulator.totalResulPrice();
-            }, 100);
 
-        },
-        totalResulPrice: function() {
-            let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
-            let totalPrice = 0;
-            for (let i = 0; i < resultLeng; i++) {
-                let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
-                totalPrice += parseInt(minusComma(sumPrice));
-            }
-            setTimeout(function() {
-                $(".total_result_price .cont .price em").text(addComma(totalPrice));
-            }, 100);
 
-        },
         openProposeModel: function(modelCode, modelcate) {
             let _thisModel = [];
             for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
@@ -5351,15 +5351,7 @@
 
 
 
-    function addComma(value) {
-        value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return value;
-    }
 
-    function minusComma(value) {
-        value = value.replace(/[^\d]+/g, "");
-        return value;
-    }
 
     function rfModelFilter(code) {
         let returnIdx = [];
@@ -5400,3 +5392,63 @@
         return returnIdx;
     }
 })();;
+var modelSimulator;
+var bestSeller;
+
+function addComma(value) {
+    value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value;
+}
+
+function minusComma(value) {
+    value = value.replace(/[^\d]+/g, "");
+    return value;
+}
+
+function resultDoorPrice(idx, price) {
+    console.log("resultDoorPrice", price);
+    let priceLeng = price.length;
+    let sumPrice = 0;
+    for (let i = 0; i < priceLeng; i++) {
+        sumPrice += price[i];
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
+        if (i == (priceLeng - 1)) {
+            $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
+            totalResulPrice();
+        }
+    }
+
+
+}
+
+function resultModelPrice(price) {
+    console.log("price", price);
+    let priceLeng = price.length;
+    setTimeout(function() {
+        for (let i = 0; i < priceLeng; i++) {
+            if (price[i] == "nodata") {
+                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+            } else {
+                $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(addComma(price[i]));
+            }
+
+        }
+    }, 500);
+
+}
+
+function totalResulPrice() {
+    setTimeout(function() {
+        let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
+        let totalPrice = 0;
+        for (let i = 0; i < resultLeng; i++) {
+            let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
+            totalPrice += parseInt(minusComma(sumPrice));
+            if (i == (resultLeng - 1)) {
+                $(".total_result_price .cont .price em").text(addComma(totalPrice));
+            }
+        }
+    }, 200);
+
+
+}

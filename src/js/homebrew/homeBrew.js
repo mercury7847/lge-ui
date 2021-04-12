@@ -26,10 +26,12 @@
                     }
                 } else {
                     //NO 홈이동
-                    var url = self.$contents.data('data-cencel-url');
-                    if(url) {
+                    var url = self.$contents.data('cancelUrl');
+                    if(url && url != "null") {
                         location.href = url;
                     } else {
+                        history.back();
+                        /*
                         var referrer = document.referrer;
                         var index = referrer.indexOf('lge.co.kr');
                         if(index > 0) {
@@ -37,6 +39,7 @@
                         } else {
                             location.href = "/";
                         }
+                        */
                     }
                 }
             });

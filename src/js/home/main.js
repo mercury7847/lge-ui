@@ -75,8 +75,7 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'min-height':'100%'});
-
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -264,6 +263,9 @@ $(function () {
 
         });               
 
+
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+
         function wheelScene(delta) {
 
             if(!isMobileDevice){
@@ -303,13 +305,13 @@ $(function () {
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if(currentPage==0){
+                    if(idx==0){
                         if(!hasTop){
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');
@@ -320,7 +322,6 @@ $(function () {
                             $('.floating-menu.top').removeClass('call-yet');
                         }                        
                     }
-
 
                     currentPage = idx;   
                     
@@ -655,7 +656,9 @@ $(function () {
         }
 
         $window.on('floatingTop', function(){
-            render(0);
+            //render(0);
+            currentPage = 0;
+            moveScene(currentPage,0);
         });          
 
         if(isApplication){

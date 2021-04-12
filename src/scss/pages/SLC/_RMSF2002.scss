@@ -178,6 +178,13 @@ br.m {
             &:first-child {
                 margin-top:0;
             }
+            &.type2 {//기업고객을 위한 상담문의는 B2B상담센터 전화번호 전달전까지
+                .gray-block-wrap {
+                    .blocks:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
             .section-inner {
                 margin-top:120px;
                 @include mobile {

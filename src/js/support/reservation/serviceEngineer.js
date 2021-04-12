@@ -235,10 +235,12 @@
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
                     slidesToScroll: 4,
+                    infinite: false,
                     responsive: [
                         {
                             breakpoint: 10000,
                             settings: {
+                                infinite: false,
                                 slidesToShow: 4,
                                 slidesToScroll: 4,
                             }
@@ -246,6 +248,7 @@
                         {
                             breakpoint: 1024,
                             settings: {
+                                infinite: false,
                                 slidesToShow: 3,
                                 slidesToScroll: 3,
                             }
@@ -253,6 +256,7 @@
                         {
                             breakpoint:767,
                             settings: {
+                                infinite: false,
                                 variableWidth : true,
                                 slidesToShow: 1,
                                 slidesToScroll: 1
@@ -287,11 +291,6 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
-                $('html,body').animate({
-                    scrollTop: self.$subTopicBox.offset().top - $('.prod-selected-wrap').outerHeight()
-                }, function() {
-                    self.$subTopicBox.attr('tabindex', '0').focus().removeAttr('tabindex');
-                });
             });
         },
         reqeustSolutions: function(url, param) {
@@ -504,7 +503,7 @@
 
             self.$stepEngineer.find('.engineer-img img').attr({
                 'src': data.image,
-                'alt': data.engineerName
+                'alt': data.engineerName + ' 엔지니어 사진'
             });                             
             $engineerBox.find('.name').html(data.engineerName);
             $engineerBox.find('.center').html(data.centerName);

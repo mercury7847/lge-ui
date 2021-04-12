@@ -19,6 +19,18 @@
                     }
                 }
             }
+            .input-mix-wrap {
+                .btn-link:before {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 6px;
+                    width: 14px;
+                    height: 14px;
+                    background: url('/lg5-common/images/icons/btn-arr-16-black.svg') center no-repeat;
+                    background-size: 14px;
+                }
+            }
         }
     }
     @media screen and (min-width: 1284px) {

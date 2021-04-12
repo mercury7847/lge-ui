@@ -329,9 +329,12 @@
                     "제품관리팁"
                 ]
             })
+            <!-- 210412 수정 [피시,모바일 이미지 소스 분리] -->
             <div class="product-image">
-                <img @@banner.visual alt="" class="lazyload">
+                <img src="@@banner.pcVisual" class="pc-only" alt="">
+                <img src="@@banner.moVisual" class="mo-only" alt="">
             </div>
+            <!-- 210412 수정 [피시,모바일 이미지 소스 분리] -->
             <div class="banner-contents">
                 <div class="inner">
                     <div class="banner-info">

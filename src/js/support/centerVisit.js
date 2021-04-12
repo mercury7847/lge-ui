@@ -252,10 +252,12 @@
                 self.$engineerSlider.vcCarousel({
                     slidesToShow: 4,
                     slidesToScroll: 4,
+                    infinite: false,
                     responsive: [
                         {
                             breakpoint: 10000,
                             settings: {
+                                infinite: false,
                                 slidesToShow: 4,
                                 slidesToScroll: 4,
                             }
@@ -263,6 +265,7 @@
                         {
                             breakpoint: 1024,
                             settings: {
+                                infinite: false,
                                 slidesToShow: 3,
                                 slidesToScroll: 3,
                             }
@@ -270,6 +273,7 @@
                         {
                             breakpoint:767,
                             settings: {
+                                infinite: false,
                                 variableWidth : true,
                                 slidesToShow: 1,
                                 slidesToScroll: 1
@@ -563,10 +567,8 @@
                             });
                         }
                     }
-
-                    $('html, body').stop().animate({
-                        scrollTop: self.$stepInput.offset().top - 74
-                    }, 400);
+                    
+                    lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                 });
             });
 
@@ -971,10 +973,6 @@
 
                 self.$subTopicList.html(html);
                 self.$subTopicBox.show();
-
-                $('html, body').stop().animate({
-                    scrollTop: self.$subTopicBox.offset().top - 74
-                }, 400);
             });
         },
         reqeustSolutions: function(url, param) {
@@ -1059,12 +1057,7 @@
                         }
 
                         lgkorUI.alert("", {
-                            title: data.resultMessage,
-                            ok: function() {
-                                $('html, body').stop().animate({
-                                    scrollTop: self.$stepCenter.find('.tabs-wrap').offset().top - 40
-                                }, 400);
-                            }
+                            title: data.resultMessage
                         });
                     }
 
@@ -1180,9 +1173,7 @@
                         self.$stepInput.addClass('active');
                         self.$completeBtns.show();
 
-                        $('html, body').stop().animate({
-                            scrollTop: self.$stepInput.offset().top - 74
-                        }, 400);
+                        lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                     }
                 }
                 lgkorUI.hideLoading();

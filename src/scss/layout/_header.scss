@@ -60,11 +60,11 @@
 }
 
 .header-wrap {
+    position:relative;
     max-width: (1680px + 80px);
     margin: 0 auto;
     padding-bottom: 16px;
     @include mobile {
-        position:relative;
         max-width: 100%;
         padding: 0 16px;
     }
