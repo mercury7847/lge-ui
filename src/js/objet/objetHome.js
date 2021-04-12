@@ -465,7 +465,7 @@ $(function() {
             posArr.push(10000);
 
             stepLens = wheelArr.length - 1;
-            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
+            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height() - $(".mobile-nav-wrap").height();
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
