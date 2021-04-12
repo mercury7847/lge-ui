@@ -309,8 +309,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 obj.infoWindow.close();
                 obj.info.selected = false;     
                 marker.setIcon(self._getMarkerIcon(obj.info, obj.num)); 
-                self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);
-                self.docOff('focusin');
+                self.triggerHandler('changemarkerstatus', [{id:id, isOff:true}]);                
+                self.$el.off('focusin.storemap');
+
 
             }else {
 
@@ -332,15 +333,16 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 var long = obj.info.gpsInfo.gpsx;
 
                 self.map.setZoom(15);
-                self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.005, long));
+                self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.0052, long));
 
 
                 var $focusTarget = $(obj.infoWindow.contentElement);
                 var $first = $focusTarget.find(':visible:focusable').first();
                 if($first[0]) $first.focus();
 
-                self.docOff('focusin');
-                self.docOn('focusin', function (e) {
+                self.$el.off('focusin.storemap');
+                self.$el.on('focusin.storemap', function (e) {
+
                     if ($focusTarget[0] !== e.target && !$.contains($focusTarget[0], e.target)) {                         
                         if($first[0]) $first.focus();
                         e.stopPropagation();

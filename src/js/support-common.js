@@ -910,7 +910,7 @@ CS.MD.timeCalendar = function() {
             self._remove();
             self.$calendar = $(tmpl);
             
-            self.$el.find('>*:not(.box-desc)').remove()
+            self.$el.find('>*').remove()
             self.$el.append(self.$calendar);
             
             self.$calendar.off('.timecalendar').on('click.timecalendar', 'button:not(.disabled)', function (e) {
@@ -992,11 +992,6 @@ CS.MD.timeCalendar = function() {
 
             self.$el.find('.box-table').html(html);
 
-            if (self.timeArr.length) {
-                self.$el.find('.box-desc').hide();
-                self.$el.find('.box-table').show();
-            }
-
             return self;
         },
         /**
@@ -1047,8 +1042,6 @@ CS.MD.timeCalendar = function() {
             var self = this;
 
             self.timeArr = [];
-            self.$el.find('.box-desc').show();
-            self.$el.find('.box-table').hide();
             self.$el.find('.choice').removeClass('choice');
 
             if (self.options.inputTarget) {
