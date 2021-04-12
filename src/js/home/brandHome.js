@@ -122,8 +122,7 @@
         var posArr = [];
         var wheelArr = [];      
         var regex = /^data-step-(-?\d*)/;
-        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
-
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
@@ -246,7 +245,7 @@
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
-                    
+
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
                     if(idx==0){
