@@ -757,11 +757,11 @@
 				transform:translateY(-50%);
 				&.type-l {
 					//left:310px;
-					left:5%;
+					left:15%;
 				}
 				&.type-r {
 					//right:310px;
-					right:5%;
+					right:15%;
 				}
 				> a {
 					display:block;
@@ -973,6 +973,12 @@
 							right:52px;
 							bottom:52px;
 							left:52px;
+							@include mobile {
+								right:0;
+								bottom:29px;
+								left:0;
+								padding:0 38px;
+							}
 						}
 						.img {
 							// position:absolute;

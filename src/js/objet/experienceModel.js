@@ -1197,7 +1197,7 @@
             }
         ]
     }
-    var bestSeller = {
+    bestSeller = {
         bestConfig: [{
                 defaultCode: "M870AAA451",
                 modelCode: "M870GBB451",
@@ -5393,6 +5393,7 @@
     }
 })();;
 var modelSimulator;
+var bestSeller;
 
 function addComma(value) {
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

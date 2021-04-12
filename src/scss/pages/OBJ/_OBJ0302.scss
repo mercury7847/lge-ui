@@ -236,6 +236,9 @@ h2.title {
                         color: #000000;
                         font-weight: 700;
                         letter-spacing: -2px;
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
                         @include mobile {
                             margin-top: 15px;
                             font-size: 15px;
@@ -1664,4 +1667,8 @@ h2.title {
         width: 24px;
         height: 24px;
     }
+}
+
+.mCSB_scrollTools {
+    width: 4px !important;
 }
