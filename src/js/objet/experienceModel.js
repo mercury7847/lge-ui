@@ -3508,19 +3508,19 @@
                 doorInfo.push(info);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        console.log("저장");
-                    }
-                };
-                var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-                lgkorUI.confirm(desc, obj);
+                // var obj = {
+                //     title: '',
+                //     typeClass: '',
+                //     cancelBtnName: '',
+                //     okBtnName: '',
+                //     ok: function() {
+                //         console.log("저장");
+                //     }
+                // };
+                // var desc = '';
+                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                // desc = '';
+                // lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
@@ -3880,8 +3880,9 @@
                 } else {
                     if ($(".model_set_wrap").length == 0) {
                         //simulBodySwiper.addSlide(simulBodyHtml);
+                        simulBodySwiper.destroy();
                         $(".simul_body").html(simulBodyHtml);
-                        //simulBodySwiper.update();
+
                         simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
                             //slidesPerView: 3,
                             slidesPerView: 'auto',
@@ -3896,7 +3897,7 @@
 
                         });
                         //제품 스와이프 슬라이드
-
+                        simulPositionAutoMove();
                     } else {
                         let selDoorLeng = "Y";
                         let editingModel = $(".model_set_wrap");
@@ -5381,8 +5382,8 @@ function resultDoorPrice(idx, price) {
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
-        sumPrice += parseInt(minusComma(price[i]));
-        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(price[i]);
+        sumPrice += price[i];
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(addComma(price[i]));
     }
     setTimeout(function() {
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
@@ -5417,7 +5418,7 @@ function totalResulPrice() {
         }
         setTimeout(function() {
             $(".total_result_price .cont .price em").text(addComma(totalPrice));
-        }, 100);
+        }, 200);
     }, 200);
 
 
