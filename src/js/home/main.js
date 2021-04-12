@@ -264,8 +264,7 @@ $(function () {
         });               
 
 
-        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
-        
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
         function wheelScene(delta) {
 
