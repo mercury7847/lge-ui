@@ -82,7 +82,17 @@ $(function() {
 
 
         $window.on('floatingTop', function() {
-            render(0);
+            // currentPage = 0;
+            // currentStep = 1;
+            // setBeforeCss(currentStep, wheelArr);
+            // moveScene(currentPage,currentStep,0);
+
+            currentPage = 0;
+            currentStep = 1;
+            setBeforeCss(currentStep);
+            moveScene(currentPage, currentStep, 0);
+
+
         });
 
         // element 애니메이션 스탭
@@ -159,6 +169,8 @@ $(function() {
 
         }
 
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+
 
         // 씬으로 이동
         function moveScene(idx, step, speed) {
@@ -169,7 +181,8 @@ $(function() {
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
-            var scrollTopData = winHeight * idx;
+            //var scrollTopData = winHeight * idx;
+            var scrollTopData = $(window).height() * idx;
             $scenes.removeClass('active').eq(idx).addClass('active');
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -323,24 +336,23 @@ $(function() {
         }
 
         function _findIdx(py) {
-            var idx = 0;
             for (var i = 0; i < posArr.length; i++) {
                 if (posArr[i] > py) {
-                    idx = i;
-                    break;
+                    return i;
                 }
             }
-            return idx;
+            return 0;
         }
 
         function _findStep(page) {
+
             for (var i = 0; i < wheelArr.length; i++) {
                 var arr = wheelArr[i];
                 if (vcui.isArray(arr)) {
                     var pageId = arr[0]['pageId'];
                     if (pageId == page) return i;
                 } else {
-                    return i;
+                    if (arr == page) return i;
                 }
             }
             return 0;
@@ -470,8 +482,10 @@ $(function() {
         }
 
         // 탭이동 이벤트 처리
-        $('.objetcollection-tabs .ui_tab').on('tabchange', function(e, data) {
-            moveScene(1, 2, 100)
+        // 탭이동 이벤트 처리
+        $('.signature-tabs .ui_tab').on('tabchange', function(e, data) {
+            //오류 처리
+            $('html,body').scrollTop(pageLens * winHeight);
             $contentWrap.scrollTop(0);
         });
 
