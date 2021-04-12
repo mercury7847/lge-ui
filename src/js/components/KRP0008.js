@@ -699,7 +699,7 @@
 
                     if(param.typeFlag == "C") {
                         if(typeof careshipOnlyFlag !== 'undefined') {
-                            param.requireCare = careshipOnlyFlag;
+                            param.requireCare = lgkorUI.stringToBool(careshipOnlyFlag) ? true : false;
                         }
 
                         var careData = $paymentAmount.data('careData');
