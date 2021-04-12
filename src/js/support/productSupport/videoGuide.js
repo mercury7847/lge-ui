@@ -57,7 +57,7 @@
 
             self.$searchWarp = self.$cont.find('.search-wrap');
             self.$keywordWrap = self.$cont.find('.ui_search');
-            self.$searchKeyword = self.$searchWarp.find('#keyword');
+            self.$searchKeyword = self.$searchWarp.find('#searchKeyword');
             self.$searchBtn = self.$searchWarp.find('.btn-search');
             self.$searchTopic = self.$searchWarp.find('#topic');
             self.$searchSubTopic = self.$searchWarp.find('#subTopic');
@@ -262,7 +262,7 @@
                 self.$searchSubTopic.find('option.placeholder').prop('selected', true);
                 self.$searchTopic.prop('disabled', true).vcSelectbox('update');
                 self.$searchSubTopic.prop('disabled', true).vcSelectbox('update');
-                self.$stepInput.find('#keyword').val('');   
+                self.$stepInput.find('#searchKeyword').val('');   
             });
             self.$cont.on('complete', function(e, data) {
                 var param = {

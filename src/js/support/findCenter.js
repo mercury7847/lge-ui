@@ -802,7 +802,8 @@ function moveDetail(el, detailUrl, windowHeight) {
     	        	try {
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
-    	        			searchCurrentSearch();
+    	        			//searchCurrentSearch();
+        	        		setAppLocation(android.getLocation());	
     	        		} else {
                             if (!init) {
                                 lgkorUI.alert('', {
