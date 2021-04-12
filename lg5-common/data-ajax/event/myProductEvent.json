@@ -1,0 +1,8 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "success": "Y",
+        "sendUrl": "https://wwwstg.lge.co.kr"
+    }
+}
