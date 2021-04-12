@@ -804,9 +804,17 @@
                 var alertMsg = alertMsgArry[0];
                 if( modelCnt == 0) {
                     alertMsg = alertMsgArry[0];
-                    lgkorUI.alert(alertMsg,{
+                    lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
-                        title:''
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = "/my-page/manage-products";
+                        },
+                        cancel: function() {
+                            
+                        }
                     });
                 } else if ( modelCnt > 0 && memberContentsCnt == 0) {
                     alertMsg = alertMsgArry[1];
