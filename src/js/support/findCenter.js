@@ -779,23 +779,19 @@ function moveDetail(el, detailUrl, windowHeight) {
                 }
             };
             setAppLocation = function(currentLocation){
-            	//if (currentLocation == '') currentLocation = '37.55401,126.97486';//
-            	if (currentLocation == '') {
-                	searchCurrentSearch();
-            	}
-            	else 
-            	{
-	            	searchCurrentSearch();
-	        		var arrLocation = currentLocation.split(',');
-	                self.latitude = arrLocation[0];
-	                self.longitude = arrLocation[1];
-	
-	                self.searchResultMode = init ? false : true;
-	                self.schReaultTmplID = "currentSearch";
-	
-	                self._loadStoreData();    
-	                !init && self._showResultLayer();
-            	}
+            	if (currentLocation == '') currentLocation = '37.55401,126.97486';//
+            	
+            	searchCurrentSearch();
+        		var arrLocation = currentLocation.split(',');
+                self.latitude = arrLocation[0];
+                self.longitude = arrLocation[1];
+
+                self.searchResultMode = init ? false : true;
+                self.schReaultTmplID = "currentSearch";
+
+                self._loadStoreData();    
+                !init && self._showResultLayer();
+        	
     
             };
             var getAppCurrentLocation = function() {
@@ -809,8 +805,9 @@ function moveDetail(el, detailUrl, windowHeight) {
     	        	try {
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
+    	        			android.getLocation('getLocation');
     	        			//searchCurrentSearch();
-        	        		setAppLocation(android.getLocation());	
+        	        		//setAppLocation(android.getLocation());	
     	        		} else {
                             if (!init) {
                                 lgkorUI.alert('', {
