@@ -1852,15 +1852,15 @@
                 door3: "D870BB-GBE",
                 door4: "",
             },
-            /*{
-                           defaultCode: "X320AA",
-                           modelCode: "X320SSS",
-                           door1: "B320TT-SSR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
+            {
+                defaultCode: "X320AA",
+                modelCode: "X320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
 
-                       },*/
+            },
             {
                 defaultCode: "X320AA",
                 modelCode: "X320SGS",
@@ -1869,14 +1869,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "X320AA",
-                           modelCode: "X320MMS",
-                           door1: "B320TT-MMT",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       }, */
+            {
+                defaultCode: "X320AA",
+                modelCode: "X320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "X320AA",
                 modelCode: "X320GB",
@@ -1913,14 +1913,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "X320AA",
-                           modelCode: "X320MGS",
-                           door1: "B320TT-MGR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       }, */
+            {
+                defaultCode: "X320AA",
+                modelCode: "X320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "X320AA",
                 modelCode: "X320MBS",
@@ -1929,14 +1929,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Y320AA",
-                           modelCode: "Y320SSS",
-                           door1: "B320TT-SSR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Y320AA",
+                modelCode: "Y320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Y320AA",
                 modelCode: "Y320SGS",
@@ -1945,14 +1945,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Y320AA",
-                           modelCode: "Y320MMS",
-                           door1: "B320TT-MMT",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Y320AA",
                 modelCode: "Y320GB",
@@ -1989,14 +1989,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Y320AA",
-                           modelCode: "Y320MGS",
-                           door1: "B320TT-MGR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Y320AA",
+                modelCode: "Y320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Y320AA",
                 modelCode: "Y320MBS",
@@ -2005,14 +2005,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Z320AA",
-                           modelCode: "Z320SSS",
-                           door1: "B320TT-SSR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Z320AA",
+                modelCode: "Z320SSS",
+                door1: "B320TT-SSR",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Z320AA",
                 modelCode: "Z320SGS",
@@ -2021,14 +2021,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Z320AA",
-                           modelCode: "Z320MMS",
-                           door1: "B320TT-MMT",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MMS",
+                door1: "B320TT-MMT",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Z320AA",
                 modelCode: "Z320GB",
@@ -2065,14 +2065,14 @@
                 door3: "",
                 door4: "",
             },
-            /*{
-                           defaultCode: "Z320AA",
-                           modelCode: "Z320MGS",
-                           door1: "B320TT-MGR",
-                           door2: "",
-                           door3: "",
-                           door4: "",
-                       },*/
+            {
+                defaultCode: "Z320AA",
+                modelCode: "Z320MGS",
+                door1: "B320TT-MGR",
+                door2: "",
+                door3: "",
+                door4: "",
+            },
             {
                 defaultCode: "Z320AA",
                 modelCode: "Z320MBS",
@@ -4048,17 +4048,17 @@
                             if (k == 0) {
                                 doorDirection = "TT";
                                 doorLocation = "TT";
-                                doorKLocation = "상";
+                                doorKLocation = "상칸";
                                 doorPrice = configData.modelConfig[idx].door.door1.defaultPrice;
                             } else if (k == 1) {
                                 doorDirection = "MM";
                                 doorLocation = "MM";
-                                doorKLocation = "중";
+                                doorKLocation = "중칸";
                                 doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
                             } else if (k == 2) {
                                 doorDirection = "BB";
                                 doorLocation = "BB";
-                                doorKLocation = "하";
+                                doorKLocation = "하칸";
                                 doorPrice = configData.modelConfig[idx].door.door3.defaultPrice;
                             }
                             doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-klocation="' + doorKLocation + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
@@ -4266,6 +4266,7 @@
                 $(".color_sel_wrap").addClass("is_active");
                 $(".simul_step2 .etc_area").addClass("is_active");
                 $(".color_sel_wrap .color_sel_body .swiper-wrapper").html(colorSelBodyHtml);
+                $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
                 setTimeout(function() {
                     slideWrapAutoSize(".color_sel_wrap .color_sel_body");
                 }, 10);
@@ -4338,8 +4339,8 @@
                     }
                 }
             }
-            $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
-            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
+            $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
             setTimeout(function() {
                 $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
             }, 100);
@@ -5211,8 +5212,8 @@
                 }
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
-                    $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
-                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                 }, 100);
                 //$(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                 let tabLeng = configData.modelConfig[0].refrigeratorType.length;
@@ -5241,12 +5242,14 @@
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='0']").css("display", "inline-block");
                 setTimeout(function() {
                     slideWrapAutoSize(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont");
-                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").siblings().removeClass("on").find("button").attr("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").siblings().removeClass("on");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").addClass("on");
                     let subIdx = $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper .swiper-slide.on").index();
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='" + subIdx + "']").siblings().css("display", "none");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='" + subIdx + "']").css("display", "inline-block");
-                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "']").closest(".swiper-slide").siblings().removeClass("is_active").find("button").attr("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "']").attr("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "']").closest(".swiper-slide").siblings().removeClass("is_active");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "']").addClass("is_active").attr("disabled", false);
                     let _modelName = $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "'] .model_name").text();
                     modelSimulator.stepOneNext(0, _modelCate2, _modelName, _defaultModelCode, _modelCate);
@@ -5270,8 +5273,8 @@
                 console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
-                    $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
-                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                 }, 100);
                 //$(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                 _modelName = $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").attr("data-name");
@@ -5294,8 +5297,8 @@
                 console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
-                    $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
-                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                 }, 100);
 
                 let tabSubLeng = configData.modelConfig[2].typModel.length;
@@ -5315,8 +5318,8 @@
                 setTimeout(function() {
                     slideWrapAutoSize(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide [data-default-code='" + _defaultModelCode + "']").addClass("is_active");
-                    $(".model_choice_area .model_choice_tab .btn_model_pick").not(".is_active").prop("disabled", true);
-                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").not(".is_selected").prop("disabled", true);
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+                    $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                     modelSimulator.stepOneNext(2, _modelCate2, _modelName, _defaultModelCode, _modelCate);
                 }, 100);
 
@@ -5427,7 +5430,10 @@ function resultModelPrice(price) {
     setTimeout(function() {
         for (let i = 0; i < priceLeng; i++) {
             if (price[i] == "nodata") {
-                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+                setTimeout(function() {
+                    $(".tb_compare tbody tr:eq(" + i + ")").remove();
+                }, 100);
+
             } else {
                 $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(addComma(price[i]));
             }
