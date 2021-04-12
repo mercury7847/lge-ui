@@ -1279,6 +1279,12 @@
             bindPopupEvents: function() {
                 var self = this;
                 
+                $('#careRequireBuyPopup').on('click','.btn-group button',function(e){
+                    setTimeout(function(e){
+                        location.href = $('#careRequireBuyPopup').data('sendUrl');
+                    },30);
+                });
+
                 $('article').on('click', 'button[data-link-url]', function(e) {
                     var buttonLinkUrl = $(this).attr('data-link-url');
                     var isNew = $(this).attr('data-open-new');
@@ -1893,10 +1899,14 @@
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
                                     if(isDirectBuy) {
+                                        $('#careRequireBuyPopup').data('sendUrl',url);
+                                        /*jsw
                                         $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
                                         $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
-                                            location.href = url;
+                                            console.log($('#careRequireBuyPopup').data('sendUrl'));
+                                            location.href = $('#careRequireBuyPopup').data('sendUrl');
                                         });
+                                        */
                                         $('#careRequireBuyPopup').vcModal();
                                     } else {
                                         location.href = url;
