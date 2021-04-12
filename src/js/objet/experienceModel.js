@@ -5430,9 +5430,7 @@ function resultModelPrice(price) {
     setTimeout(function() {
         for (let i = 0; i < priceLeng; i++) {
             if (price[i] == "nodata") {
-                setTimeout(function() {
-                    $(".tb_compare tbody tr:eq(" + i + ")").remove();
-                }, 100);
+                $(".tb_compare tbody tr:eq(" + i + ")").remove();
 
             } else {
                 $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(addComma(price[i]));
