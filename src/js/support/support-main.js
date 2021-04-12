@@ -802,13 +802,13 @@
                     '보유하신 제품으로 검색된 결과가 없습니다.'
                 ];
                 var alertMsg = alertMsgArry[0];
-                // if( modelCnt == 0) {
-                //     alertMsg = alertMsgArry[0];
-                // }
+                if( modelCnt == 0) {
+                    alertMsg = alertMsgArry[0];
+                }
 
-                // if ( modelCnt > 0 && memberContentsCnt == 0) {
-                //     alertMsg = alertMsgArry[1]
-                // }
+                if ( modelCnt > 0 && memberContentsCnt == 0) {
+                    alertMsg = alertMsgArry[1]
+                }
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
@@ -847,9 +847,9 @@
                 var modelCnt = $('[name="modelCnt"]').val();
                 var memberContentsCnt = $('[name="memberContentsCnt"]').val();
 
-                // if( memberContentsCnt > 0 && modelCnt > 0) {
-                //     self.getProduct();
-                // }
+                if( memberContentsCnt > 0 && modelCnt > 0) {
+                    self.getProduct();
+                }
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
                     var $this = $(this);

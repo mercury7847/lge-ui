@@ -301,7 +301,9 @@
         width: ((100% / 10) * 3);
         padding-right: 32px;
         @include mobile {
-            display: none !important;
+            //display: none !important;
+            width: 100%;
+            padding-right: 0;
         }
     }
 
