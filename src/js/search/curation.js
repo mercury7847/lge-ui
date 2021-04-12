@@ -393,7 +393,6 @@ var Curation = (function() {
                                 maxIndex = parent.index();
                             }
                         }
-                        console.log('asdfsf');
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
                     }
 

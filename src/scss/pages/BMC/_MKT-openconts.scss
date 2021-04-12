@@ -810,7 +810,8 @@
                     // border:12px solid #F3DCD0;
                 }
                 @include mobile {
-                    padding:32px 13.8% 60px;
+                    // padding:32px 13.8% 60px;
+                    padding:32px 0 60px;
                 }
             }
         }
