@@ -263,6 +263,10 @@ $(function () {
 
         });               
 
+
+        var $html = vcui.detect.isSafari ? $('body') : $('html, body');
+        
+
         function wheelScene(delta) {
 
             if(!isMobileDevice){
@@ -302,7 +306,7 @@ $(function () {
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
