@@ -614,7 +614,7 @@
     
                 $stepEngineer.find('.engineer-img img').attr({
                     'src': data.image,
-                    'alt': data.engineerName
+                    'alt': data.engineerName + ' 엔지니어 사진'
                 });                             
                 $engineerBox.find('.name').html(data.engineerName);
                 $engineerBox.find('.center').html(data.centerName);
