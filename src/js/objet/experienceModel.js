@@ -3880,8 +3880,9 @@
                 } else {
                     if ($(".model_set_wrap").length == 0) {
                         //simulBodySwiper.addSlide(simulBodyHtml);
+                        simulBodySwiper.destroy();
                         $(".simul_body").html(simulBodyHtml);
-                        //simulBodySwiper.update();
+
                         simulBodySwiper = new Swiper('.simul_wrap.swiper-container', {
                             //slidesPerView: 3,
                             slidesPerView: 'auto',
@@ -3896,7 +3897,7 @@
 
                         });
                         //제품 스와이프 슬라이드
-
+                        simulPositionAutoMove();
                     } else {
                         let selDoorLeng = "Y";
                         let editingModel = $(".model_set_wrap");
