@@ -3726,7 +3726,7 @@
 
 
 
-    var modelSimulator = {
+    modelSimulator = {
         init: function() {
             let simulModelLeng = configData.modelConfig.length;
             let modelChoiceHtml = "";
@@ -5392,6 +5392,7 @@
         return returnIdx;
     }
 })();;
+var modelSimulator;
 
 function addComma(value) {
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
