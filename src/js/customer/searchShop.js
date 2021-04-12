@@ -260,7 +260,7 @@
         _dataLoaded : function(){
             var self = this;
             setAppLocation = function(currentLocation){
-            	if (currentLocation == '') currentLocation = '37.55401,126.97486'
+            	if (currentLocation == '') currentLocation = '37.5235644,127.0395764'
         		var arrLocation = currentLocation.split(',');
 
                 self.userLatitude = arrLocation[0];
@@ -281,27 +281,21 @@
                 }
                 else
                 {
-
-                    setTimeout(function(){
-                        if(self.$map) self.$map.start();
-                    },300);
     	        	try 
     	        	{
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
-    	                    setTimeout(function(){
-    	                        self._getCurrentLocation();
-    	                    },300);
+        	        		setAppLocation(android.getLocation());	
     	        		}
     	        		else
     	        		{
-        	        		setAppLocation('37.55401,126.97486');		    	        			
+        	        		setAppLocation('37.5235644,127.0395764');		    	        			
     	        		}
             		} 
     	        	catch (e) 
     	        	{
     	                
-    	        		setAppLocation('37.55401,126.97486');
+    	        		setAppLocation('37.5235644,127.0395764');
             		}
                 }	
             };
@@ -954,11 +948,11 @@
                     'position':'relative',
                     'visibility':'visible',
                     'left':'0',
-                    'height':'400'
+                    'height':'320'
                 });                   
     
                 toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                self.$map.resize(self.windowWidth, 400);
+                self.$map.resize(self.windowWidth, 320);
 
             }else{
 
@@ -968,11 +962,11 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'400'
+                        'height':'320'
                     });                   
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                    self.$map.resize(self.windowWidth, 400);
+                    self.$map.resize(self.windowWidth, 320);
     
                 } else{                    
     
