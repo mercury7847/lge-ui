@@ -4,7 +4,7 @@
             '<span class="thumb">' +
                 '<img src="{{eventListThumbnailPath}}" alt="{{eventListThumbnailAltText}}" aria-hidden="true">' +
                 '{{#if eventEndFlag != "N"}}<span class="event-end"><em>종료된 이벤트</em></span>{{/if}}' +
-                '<span class="flag-wrap bg-type"><span class="flag"><span class="blind">제품 카테고리</span>{{categoryName}}</span></span>' +
+                // '<span class="flag-wrap bg-type"><span class="flag"><span class="blind">제품 카테고리</span>{{categoryName}}</span></span>' +
             '</span>' +
             '<div class="info">' +
                 '<div class="flag-wrap bar-type"><span class="flag"><span class="blind">이벤트 구분</span>{{eventGubun}}</span><span class="flag"><span class="blind">이벤트 유형</span>{{eventType}}</span></div>' +
@@ -82,6 +82,7 @@
                 eventList.forEach(function(item, index) {
                     //item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                     //item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                    item.eventType = item.eventType ? item.eventType : ""; 
                     self.$list.append(vcui.template(eventItemList, item));
                 });
                 _self.checkNoData();
