@@ -2019,7 +2019,7 @@ var isApp = function(){
                 return true;
             }else{
                 //return false;
-                if(modelId) {
+                if(modelId && vcui.detect.isMobile) {
                     var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
                     var androidScheme = "Intent://goto?type=AR&product=" + modelId;
                     if(location.hostname == "www.lge.co.kr") {
@@ -2074,33 +2074,28 @@ var isApp = function(){
             var self = this;
             if (vcui.detect.isAndroid || vcui.detect.isIOS) {
                 self.heartbeat = setInterval(function () {
-                    //console.log('interval',document.webkitHidden , document.hidden);
-                    if(document.webkitHidden || document.hidden){
-                        clearInterval(self.heartbeat);
+                    console.log('interval', document.webkitHidden, document.hidden, document.mozHidden);
+                    if(document.webkitHidden || document.hidden || document.mozHidden){
                         clearTimeout(self.appCheckTimer);
+                        clearInterval(self.heartbeat);
                         console.log('앱이 설치 되어 있습니다.');
                     }
                 }, 2);
             }
 
             if (vcui.detect.isAndroid) {
-                //location.href = "intent://goto#Intent;scheme=" + appScheme + ";package=kr.co.lge.android;end";
-                //location.href = "intent://goto#Intent;scheme=" + appScheme + ";end";
-                location.href = androidScheme;
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
-                    clearTimeout(self.appCheckTimer);
                     console.log('안드로이드 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
                 }, 3000);
+                location.href = androidScheme;
             } else if (vcui.detect.isIOS) {
                 self.appCheckTimer = setTimeout(function() {
                     clearInterval(self.heartbeat);
-                    clearTimeout(self.appCheckTimer);
                     console.log('ios 앱이 없습니다.');
                     $(window).trigger("appNotInstall");
                 }, 3000);
-                //location.href = appScheme + "://";
                 location.href = iosScheme;
             }
         },

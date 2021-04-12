@@ -495,10 +495,12 @@
             slideConfig : {
                 slidesToShow: 4,
                 slidesToScroll: 4,
+                infinite: false,
                 responsive: [
                     {
                         breakpoint: 10000,
                         settings: {
+                            infinite: false,
                             slidesToShow: 4,
                             slidesToScroll: 4,
                         }
@@ -506,6 +508,7 @@
                     {
                         breakpoint: 1024,
                         settings: {
+                            infinite: false,
                             slidesToShow: 3,
                             slidesToScroll: 3,
                         }
@@ -513,6 +516,7 @@
                     {
                         breakpoint:767,
                         settings: {
+                            infinite: false,
                             variableWidth : true,
                             slidesToShow: 1,
                             slidesToScroll: 1
