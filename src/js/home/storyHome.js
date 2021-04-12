@@ -47,7 +47,8 @@
                                 '<div class="tag-wrap">'+
                                     '<ul class="tags">'+
                                         '{{#each item in tagList}}'+           
-                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
+                                        // '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
+                                        '<li class="tag" style="text-decoration:none;">#{{item.tagName}}</li>'+ // 210412_임시_링크제거
                                         '{{/each}}'+
                                     '</ul>'+
                                 '</div>'+
@@ -113,11 +114,12 @@
     
             $('.user_story').hide();
 
-            console.log("IS_LOGIN:",IS_LOGIN)
+            // console.log("IS_LOGIN:",IS_LOGIN)
 
             if(IS_LOGIN == "Y"){
                 firstLoadLength = 2;
-                loadStoryList('user_story', 1, 'UserStory');
+                //loadStoryList('user_story', 1, 'UserStory');
+                //210412_임시_막음.
             } 
         });
     }
