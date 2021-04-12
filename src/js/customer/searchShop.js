@@ -260,16 +260,22 @@
         _dataLoaded : function(){
             var self = this;
             setAppLocation = function(currentLocation){
-            	if (currentLocation == '') currentLocation = '37.5235644,127.0395764'
-        		var arrLocation = currentLocation.split(',');
-
-                self.userLatitude = arrLocation[0];
-                self.userLongitude = arrLocation[1];
-
-                if(self.$map) {
-                    self.$map.setUserLocation(self.userLatitude, self.userLongitude);
-                    self.$map.start(self.userLatitude, self.userLongitude)
-                }
+            	//if (currentLocation == '') currentLocation = '37.5235644,127.0395764';//
+            	if (currentLocation == '') {
+                    self._getCurrentLocation();
+            	}
+            	else 
+            	{
+	        		var arrLocation = currentLocation.split(',');
+	
+	                self.userLatitude = arrLocation[0];
+	                self.userLongitude = arrLocation[1];
+	
+	                if(self.$map) {
+	                    self.$map.setUserLocation(self.userLatitude, self.userLongitude);
+	                    self.$map.start(self.userLatitude, self.userLongitude)
+	                }
+            	}
             };
             var getAppCurrentLocation = function() {
                 if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -281,6 +287,10 @@
                 }
                 else
                 {
+
+                    setTimeout(function(){
+                        if(self.$map) self.$map.start();
+                    },300);
     	        	try 
     	        	{
     	        		var appGeoAgree = android.getLocationActive();
@@ -948,11 +958,11 @@
                     'position':'relative',
                     'visibility':'visible',
                     'left':'0',
-                    'height':'320'
+                    'height':'400'
                 });                   
     
                 toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                self.$map.resize(self.windowWidth, 320);
+                self.$map.resize(self.windowWidth, 400);
 
             }else{
 
@@ -962,11 +972,11 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'320'
+                        'height':'400'
                     });                   
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                    self.$map.resize(self.windowWidth, 320);
+                    self.$map.resize(self.windowWidth, 400);
     
                 } else{                    
     
