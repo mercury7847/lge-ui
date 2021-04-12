@@ -2,8 +2,39 @@
     position: relative;
     z-index: 10;
     .content {
-        >div {
-            opacity: 0;
+        [class*="cont"] {
+            position: absolute;
+            right: 0;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 2;
+            text-align: center;
+            img {
+                @include mobile {
+                    height: 35px;
+                }
+            }
+            &[class*="1"] {
+                top: 40%;
+                @include mobile {
+                    top: 20%;
+                }
+            }
+            &[class*="2"] {
+                top: 40%;
+                @include mobile {
+                    top: 20%;
+                    p:nth-child(2) {
+                        margin-top: 24px;
+                    }
+                }
+            }
+            &[class*="3"] {
+                top: 40%;
+                @include mobile {
+                    top: 20%;
+                }
+            }
         }
     }
     /* // 2021.03.03 추가 */
@@ -140,18 +171,25 @@
                 z-index: 2;
                 text-align: center;
                 &[class*="1"] {
-                    top: 50%;
+                    top: 35%;
+                    @include mobile {
+                        top: 20%;
+                    }
                 }
                 &[class*="2"] {
-                    top: 50%;
+                    top: 35%;
                     @include mobile {
+                        top: 20%;
                         p:nth-child(2) {
                             margin-top: 24px;
                         }
                     }
                 }
                 &[class*="3"] {
-                    top: 50%;
+                    top: 35%;
+                    @include mobile {
+                        top: 20%;
+                    }
                 }
             }
         }
