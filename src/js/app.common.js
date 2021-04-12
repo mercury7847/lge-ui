@@ -69,7 +69,8 @@ $(document).ready(function() {
                     }
                 });
 
-                $(window).scroll(function(){
+                //$(window).scroll(function(){
+                $("body").scroll(function(){
                     if ($(this).scrollTop() > 100) {
                         $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
@@ -82,64 +83,62 @@ $(document).ready(function() {
                     }
                 });
 
-                if ($(window).scrollTop() > 100) {
-                    //$('.floating-menu.top').show();
+                $(".floating-menu.btn-app-ar .app-ar").css({
+                    "z-index" : "101"
+                });
+                //if ($(window).scrollTop() > 100) {
+                if ($("body").scrollTop() > 100) {
+                    $(".floating-menu.btn-app-ar").css({
+                        "margin-bottom" : 0
+                    });
+                    $(".floating-menu.btn-app-ar .app-ar").css({
+                        "z-index" : "101"
+                    });
+                    /*
                     $('.floating-menu.top').css({
                         "position" : "static",
                         "right" : "20px",
                         "bottom" : "24px"
-                        //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                     });
+                    */
                 } else {
-                    //$('.floating-menu.top').hide();
+                    $(".floating-menu.btn-app-ar").css({
+                        "margin-bottom" : "-50px"
+                    });
+                    /*
                     $('.floating-menu.top').css({
                         "position" : "absolute",
                         "right" : 0,
                         "bottom" : 0
-                        //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                     });
+                    */
                 }
-                $(window).scroll(function(){
+                //$(window).scroll(function(){
+                $("body").scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        //$('.floating-menu.top').show();
+                        $(".floating-menu.btn-app-ar").css({
+                            "margin-bottom" : 0
+                        });
+                        /*
                         $('.floating-menu.top').css({
                             "position" : "static",
                             "right" : "20px",
                             "bottom" : "24px"
-                            //"transition" : "opacity 0.8s ease-out, transform 0.5s ease-out"
                         });
+                        */
                     } else {
-                        //$('.floating-menu.top').hide();
+                        $(".floating-menu.btn-app-ar").css({
+                            "margin-bottom" : "-50px"
+                        });
+                        /*
                         $('.floating-menu.top').css({
                             "position" : "absolute",
                             "right" : 0,
                             "bottom" : 0
-                            //"transition" : "opacity 0s ease-out, transform 0s ease-out"
                         });
+                        */
                     }
                 });
-
-                /*
-                $(window).scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $('.floating-menu.btn-app-ar .app-ar').css("transform", "translateY(0)");
-                    }else{
-                        $('.floating-menu.btn-app-ar .app-ar').css("transform", "translateY(68px)");
-                    }
-                });
-
-                $(window).scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $('.floating-wrap').css({
-                            "height" : "136px"
-                        });
-                    }else{
-                        $('.floating-wrap').css({
-                            "height" : "68px"
-                        });
-                    }
-                });
-                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {

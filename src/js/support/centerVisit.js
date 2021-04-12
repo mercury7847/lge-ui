@@ -567,10 +567,8 @@
                             });
                         }
                     }
-
-                    $('html, body').stop().animate({
-                        scrollTop: self.$stepInput.offset().top - 74
-                    }, 400);
+                    
+                    lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                 });
             });
 
@@ -1175,9 +1173,7 @@
                         self.$stepInput.addClass('active');
                         self.$completeBtns.show();
 
-                        $('html, body').stop().animate({
-                            scrollTop: self.$stepInput.offset().top - 74
-                        }, 400);
+                        lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                     }
                 }
                 lgkorUI.hideLoading();
