@@ -194,10 +194,15 @@
                 var ajaxUrl = self.$formWrap.attr('data-receipt-url');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                    if(result.data.alert) {
+                        self.openAlert(result.data.alert);
+
+                        self.$categorySelect.vcSelectbox('selectedIndex',0,true);
+                        self.$inputReceipt.val('');
+                    }
                 });
             },
 
-            /*
             openAlert: function(alert) {
                 //알림
                 var obj ={title: alert.title,
@@ -206,13 +211,12 @@
                     okBtnName: alert.okBtnName,
                     ok: function (){}
                 };
-                var desc = alert.desc;
+                var desc = alert.desc ? alert.desc : null;
                 if(desc) {
                     obj.typeClass = 'type2'
                 }
                 lgkorUI.alert(desc, obj);
             },
-            */
         };
 
         receiptRegist.init();                

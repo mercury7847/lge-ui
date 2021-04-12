@@ -1393,12 +1393,14 @@
                         padding:24px 0 49px;
     
                         &-cont {
-                            padding:0 24px;
+                            padding:0 20px;
                             height:127px;
+                            margin-right:3px;
 
                             &.mCustomScrollbar {
+                                margin-right:0;
                                 .mCSB_container {
-                                    padding:0 24px;
+                                    padding:0 20px;
                                 }
                             }
     

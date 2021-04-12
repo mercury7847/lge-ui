@@ -131,6 +131,7 @@
                 var searchVal = this.value;
                 if (searchVal.length < lgkorUI.SEARCH_AUTOCOMPLETE_MIN_LENGTH) {
                     self.openSearchInputLayer(true);
+                    self.$searchSimilar.hide();
                     //self.hideAnimation(self.$searchResultArea);
                     self.hideSearchResultArea();
                     return;

@@ -802,43 +802,59 @@
                     '보유하신 제품으로 검색된 결과가 없습니다.'
                 ];
                 var alertMsg = alertMsgArry[0];
-                // if( modelCnt == 0) {
-                //     alertMsg = alertMsgArry[0];
-                // }
-
-                // if ( modelCnt > 0 && memberContentsCnt == 0) {
-                //     alertMsg = alertMsgArry[1]
-                // }
-
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
-                    var data = result.data,
-                        listData = data.listData,
-                        html;
-                      
-                        if( listData.length ) {
-                            html = vcui.template(self.template, data);
-                            $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
-                            $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
-                            $(self.el.toggleBtn).addClass('active');
-                            supportHome.moreShow.btnShow();
-                            lgkorUI.hideLoading();
-                        } else {
-                            lgkorUI.hideLoading();
-                            lgkorUI.confirm(alertMsg,{
-                                typeClass:'type2',
-                                title:'',
-                                okBtnName: '네',
-                                cancelBtnName: '아니요',
-                                ok: function() {
-                                    location.href = data.url;
-                                },
-                                cancel: function() {
-                                    
-                                }
-                            });
+                if( modelCnt == 0) {
+                    alertMsg = alertMsgArry[0];
+                    lgkorUI.confirm(alertMsg,{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = "/my-page/manage-products";
+                        },
+                        cancel: function() {
+                            
                         }
-                });
+                    });
+                } else if ( modelCnt > 0 && memberContentsCnt == 0) {
+                    alertMsg = alertMsgArry[1];
+                    lgkorUI.alert(alertMsg,{
+                        typeClass:'type2',
+                        title:''
+                    });
+                } else { 
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
+                        var data = result.data,
+                            listData = data.listData,
+                            html;
+                          
+                            if( listData.length ) {
+                                html = vcui.template(self.template, data);
+                                $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
+                                $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
+                                $(self.el.toggleBtn).addClass('active');
+                                supportHome.moreShow.btnShow();
+                                lgkorUI.hideLoading();
+                            } else {
+                                lgkorUI.hideLoading();
+                                lgkorUI.confirm(alertMsg,{
+                                    typeClass:'type2',
+                                    title:'',
+                                    okBtnName: '네',
+                                    cancelBtnName: '아니요',
+                                    ok: function() {
+                                        location.href = data.url;
+                                    },
+                                    cancel: function() {
+                                        
+                                    }
+                                });
+                            }
+                    });
+                }
+                    
+
             },
             init : function(){
                 var self = this;
@@ -847,9 +863,9 @@
                 var modelCnt = $('[name="modelCnt"]').val();
                 var memberContentsCnt = $('[name="memberContentsCnt"]').val();
 
-                // if( memberContentsCnt > 0 && modelCnt > 0) {
-                //     self.getProduct();
-                // }
+                if( memberContentsCnt > 0 && modelCnt > 0) {
+                    self.getProduct();
+                }
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
                     var $this = $(this);
