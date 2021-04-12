@@ -805,7 +805,7 @@ function moveDetail(el, detailUrl, windowHeight) {
     	        	try {
     	        		var appGeoAgree = android.getLocationActive();
     	        		if (appGeoAgree=='Y'){
-    	        			android.getLocation('getLocation');
+    	        			android.getLocation('setAppLocation');
     	        			//searchCurrentSearch();
         	        		//setAppLocation(android.getLocation());	
     	        		} else {
