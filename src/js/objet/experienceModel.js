@@ -3212,6 +3212,12 @@
     $(document).ready(function() {
         modelSimulator.init();
 
+        $(document).on("click", function(e) {
+            if (!$(e.target).closest(".total_price_info_wrap").hasClass("is_active")) {
+                $(".total_price_info_wrap").removeClass("is_active");
+            }
+        });
+
         $(".model_simul_step_wrap").mCustomScrollbar();
         simulPositionAutoMove();
         $(window).on("resize", function() {
@@ -4556,7 +4562,10 @@
                 priceSumList.appendSlide(priceHtml);
             }
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
-            $(".total_price_info_wrap").addClass("is_active");
+            setTimeout(function() {
+                $(".total_price_info_wrap").addClass("is_active");
+            }, 100);
+
             resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
