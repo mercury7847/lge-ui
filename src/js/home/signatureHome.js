@@ -200,7 +200,7 @@ $(function() {
 
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if(currentPage==0){
+                    if(idx==0){
                         if(!hasTop){
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');
