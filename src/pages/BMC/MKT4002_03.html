@@ -211,12 +211,38 @@
                                                     <dl class="forms">
                                                         <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
                                                         <dd class="conts">
-                                                            <div class="box">
-                                                                <div class="input-wrap">
-                                                                    <input type="text" name="modelName" data-required="true" id="modelName" placeholder="모델명을 입력해 주세요.">
+                                                            <div class="input-layer-wrap"> <!-- 입력박스 선택시 on클래스 추가 -->
+                                                                <div class="box">
+                                                                    <div class="input-wrap">
+                                                                        <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력">
+                                                                        <p class="comp">제품 모델명 확인이 완료되었습니다.</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
+                                                                    </div>
+                                                                    <div class="cell">
+                                                                        <button type="button" class="btn"><span>모델명 확인</span></button>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="cell">
-                                                                    <button type="button" class="btn" id="serialCheckBtn"><span>모델명 확인</span></button>
+                                                                <div class="input-layer">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a href="#"><span class="search-word">MP-40</span>PA10</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#"><span class="search-word">MP-40</span>PA10</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#"><span class="search-word">MP-40</span>PA10</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#"><span class="search-word">MP-40</span>PA10</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#"><span class="search-word">MP-40</span>PA10</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <!-- 검색결과가 없는 경우 -->
+                                                                    <div class="no-data">
+                                                                        <p>입력하신 키워드와 일치하는<br>모델명이 없습니다.</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </dd>
