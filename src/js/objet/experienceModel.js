@@ -3513,6 +3513,8 @@
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
+            let saveInfo = [];
+            saveInfo.push(defaultModel);
             $this.find(".door_wrap .model_door").each(function() {
                 let info = [];
                 info.push($(this).attr("data-door-direction"));
@@ -3524,6 +3526,8 @@
                 info.push($(this).attr("data-door-text"));
                 info.push($(this).attr("data-door-klocation"));
                 doorInfo.push(info);
+                let doorMix = $(this).attr("data-door-code") + "-" + $(this).attr("data-door-model_spec_material") + $(this).attr("data-door-model_spec_color");
+                saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
                 // var obj = {
@@ -3532,7 +3536,8 @@
                 //     cancelBtnName: '',
                 //     okBtnName: '',
                 //     ok: function() {
-                //         console.log("저장");
+                //         console.log("saveInfo", saveInfo);
+                //         //myPickSave(saveInfo);
                 //     }
                 // };
                 // var desc = '';
@@ -5404,7 +5409,7 @@ function resultDoorPrice(idx, price) {
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
         sumPrice += price[i];
-        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .product_price em").text(addComma(price[i]));
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         if (i == (priceLeng - 1)) {
             $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
             totalResulPrice();
