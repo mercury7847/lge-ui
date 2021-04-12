@@ -35,7 +35,8 @@ var bestRankBuyProductTmpl =
     '       aria-hidden="hidden">\n'+
     '   </span>\n'+
     '   <div class="product-info">\n'+
-    '       <p class="tit">{{modelDisplayName}}</p>\n'+
+    '       <p class="tit">{{#raw modelDisplayName}}</p>\n'+
+    // '       <p class="tit">{{modelName}}</p>\n'+
     '       {{#if isPrice}}'+
     '       {{#if totalPrice}}'+
     '           <div class="price">{{#raw totalPrice}}</div>\n'+
@@ -50,7 +51,8 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
-    '           <p class="tit">{{obj.modelDisplayName}}</p>\n'+
+    '           <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
+    // '           <p class="tit">{{obj.modelName}}</p>\n'+
     '           {{#if obj.isPrice}}'+
     '               {{#if obj.totalPrice}}'+
     '                   <div class="price">{{#raw obj.totalPrice}}</div>\n'+
@@ -89,7 +91,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '       <a href="{{obj.modelUrlPath}}">\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
-    '               <div class="model">{{obj.modelDisplayName}}</div>\n'+
+    '               <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
     '               <div class="code">{{obj.modelName}}</div>\n'+
     '               {{#if obj.isPrice}}'+
     '                   <div class="price-area">\n'+
@@ -123,7 +125,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                       <span class="flag"><span class="blind">제품 상태</span>{{title}}</span>\n'+
     '                   {{/each}}\n'+
     '               </div>\n'+
-    '               <p class="tit"><a href="{{modelUrlPath}}"><span class="blind">모델명</span>{{modelDisplayName}}</a></p>\n'+
+    '               <p class="tit"><a href="{{modelUrlPath}}"><span class="blind">모델명</span>{{#raw modelDisplayName}}</a></p>\n'+
     '               <p class="product-sku"><span class="blind">모델넘버</span>{{modelName}}</p>\n'+
     '               {{#if isReview}}'+
     '                   <div class="review-info">\n'+
@@ -246,7 +248,7 @@ $(function(){
                     item['fullImagePath'] = obj && obj['fullImagePath'];
                     item['isReview'] = parseInt(item['reviewsCount']) > 0 ? true : false;
                     item['reviewLinkPath'] = item['modelUrlPath']? item['modelUrlPath'] + "#pdp_review" : null;
-                    item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+                    // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
                     if(parseInt(item['reviewsCount']) > 0 ){
                         item['reviewsCount'] = vcui.number.addComma(parseInt(item['reviewsCount']));
@@ -352,7 +354,7 @@ $(function(){
                         }
 
                         item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
-                        item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+                        // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
                         return item;
                     });
@@ -500,7 +502,8 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
-                    item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+                    // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
+
                     item['num'] = index+1;
                     return item;
                 });
