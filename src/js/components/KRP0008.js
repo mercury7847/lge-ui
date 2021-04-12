@@ -1894,7 +1894,7 @@
                                 if(ajaxUrl) {
                                     if(isDirectBuy) {
                                         $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
-                                        $('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
+                                        $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
                                             location.href = url;
                                         });
                                         $('#careRequireBuyPopup').vcModal();

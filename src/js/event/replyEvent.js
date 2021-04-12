@@ -78,8 +78,8 @@
                     }
                 }
 
-                 $chk = self.$replyPopup.find('#chk2-1');
-                 if($chk.length) {
+                $chk = self.$replyPopup.find('#chk2-1');
+                if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
                         $chk.focus();
@@ -89,8 +89,8 @@
                     }
                 }
 
-                 $chk = self.$replyPopup.find('#chk3-1');
-                 if($chk.length) {
+                $chk = self.$replyPopup.find('#chk3-1');
+                if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
                         $chk.focus();
