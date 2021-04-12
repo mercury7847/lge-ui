@@ -8709,7 +8709,7 @@ if (!window.JSON) {
                     try {
                         methodValue = instance[options].apply(instance, args);
                     } catch (e) {
-                        console.error('[' + name + '.' + options + ' error] ' + e);
+                        //console.error('[' + name + '.' + options + ' error] ' + e);
                     }
 
                     if (methodValue !== instance && methodValue !== undefined) {

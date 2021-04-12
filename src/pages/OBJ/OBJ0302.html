@@ -321,12 +321,20 @@
         //<![CDATA[
 
         function resultDoorPriceCheck(idx, priceArry) {
-            let ddd = [4000000, 100000, 100000, 100000]
-            return resultDoorPrice(0, ddd);
+            let ddd = [];
+            let Aarry = priceArry.length;
+            for (let i = 0; i < priceArry.length; i++) {
+                ddd.push(400000);
+            }
+            return resultDoorPrice(idx, ddd);
         };
 
         function resultModelPriceCheck(modelPriceArry) {
-            let aaa = [4000000]
+            let aaa = [];
+            let Barry = modelPriceArry.length;
+            for (let i = 0; i < priceArry.length; i++) {
+                aaa.push(4000000);
+            }
             return resultModelPrice(aaa);
         };
         $(document).ready(function() {
