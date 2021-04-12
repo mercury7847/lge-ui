@@ -1229,7 +1229,7 @@
                         'position':'absolute',
                         'visibility':'hidden',
                         'left':'0',
-                        'height':'400'
+                        'height':'320'
                     });
                 }
             }
@@ -1264,7 +1264,7 @@
                     'position':'relative',
                     'visibility':'visible',
                     'left':'0',
-                    'height':'400'
+                    'height':'320'
                 });
                 $('body,html').scrollTop(0);
             }
@@ -1350,7 +1350,7 @@
                 self.isMobile = true;
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
-                mapheight = 400;
+                mapheight = 320;
 
                 if(!$('.store-map-con').hasClass('isMobile')){
 
