@@ -95,7 +95,10 @@
                 //로그인을 해야 하는가
                 var login = self.$event3.data('loginUrl');
                 if(login && login.length > 0) {
-                    location.href = login;
+                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                        location.href = login;
+                    }};
+                    lgkorUI.confirm(null, obj);
                     return;
                 }
 
