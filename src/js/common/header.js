@@ -187,18 +187,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(this).toggleClass('on')
                 $(this).parent().find('.nav-category-container').toggle();
             });
-
-            // header focus out 시 닫기
-            $(document).on('focusin.header',function(e){                
-                if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) { 
-                    self._setOut();                    
-                    e.stopPropagation();
-                }
-            });
-
-
+            
             self._pcSetting();
             self._mobileSetting();
+        },
+
+        _focusFn:function(e){
+            var self = this;
+            if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) { 
+                self._setOut();                    
+                e.stopPropagation();
+                $(document).off('focusin.header');
+            }
         },
 
         _resize: function(){
@@ -448,6 +448,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(two < 0) self.$dimmed.hide();
                 else self.$dimmed.show();
             }
+
+            $(document).off('focusin.header').on('focusin.header', self._focusFn.bind(self));
         },
 
         _removeOutTimeout: function(){
