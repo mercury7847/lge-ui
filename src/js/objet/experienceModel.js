@@ -5876,6 +5876,13 @@ function resultModelPrice(price) {
             }
 
         }
+        setTimeout(function() {
+            if ($(".tb_compare tbody tr").length > 0) {
+                $(".simul_step3 .etc_area").addClass("is_active");
+            } else {
+                $(".simul_step3 .etc_area").removeClass("is_active");
+            }
+        });
     }, 500);
 
 }
