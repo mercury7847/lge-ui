@@ -4613,7 +4613,7 @@
             } else {
                 //모바일버전
                 console.log("target", target);
-                let goTop = $(target).offset().top;
+                let goTop = $(target).offset().top - $(".objetcollection-tabs").height();
                 console.log("goTop", goTop);
                 $("html, body").animate({ scrollTop: goTop }, 500);
             }
@@ -4881,7 +4881,7 @@
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
                                 let mainPrice = _typModel[j].defaultPrice;
-                                tblHtml += '<div class="tb_row tb_compare">';
+                                tblHtml += '<div class="tb_row tb_compare" style="display:none;">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                                 tblHtml += '        <colgroup>';
@@ -4935,7 +4935,7 @@
                 let refrigeratorType = configData.modelConfig[1].defaultCode;
                 let mainPrice = configData.modelConfig[1].defaultPrice;
                 modelPriceArry.push(refrigeratorType);
-                tblHtml += '<div class="tb_row tb_compare">';
+                tblHtml += '<div class="tb_row tb_compare" style="display:none;">';
                 tblHtml += '    <table>';
                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                 tblHtml += '        <colgroup>';
@@ -4962,7 +4962,7 @@
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = _typModel[i].defaultPrice;
                         modelPriceArry.push(modelCode);
-                        tblHtml += '<div class="tb_row tb_compare">';
+                        tblHtml += '<div class="tb_row tb_compare" style="display:none;">';
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                         tblHtml += '        <colgroup>';
@@ -5927,6 +5927,7 @@ function resultModelPrice(price) {
     console.log("price", price);
     let priceLeng = price.length;
     setTimeout(function() {
+        $(".tb_compare").css("display", "block");
         for (let i = 0; i < priceLeng; i++) {
             if (price[i] == "nodata" || price[i] == "undefined" || price[i] === undefined || price[i] == '') {
                 $(".tb_compare tbody tr:eq(" + i + ")").css("display", "none");
