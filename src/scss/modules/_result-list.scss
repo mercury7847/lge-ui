@@ -3,6 +3,9 @@
     > li {
         position: relative;
         margin-bottom: 24px;
+        @include mobile {
+            margin-bottom: 12px;
+        }
         .item {
             display: flex;
             flex-wrap: wrap;
@@ -153,7 +156,7 @@
                 }
             }
             .detail-wrap {
-                flex: 1;
+                //flex: 1;
                 @include mobile {
                     min-height: 110px;
                 }
@@ -377,6 +380,8 @@
                     }
                     &.date {
                         display: inline-block;
+                        font-size: 13px;
+                        line-height: 21px;
                     }
                     &.date + .hashtag-wrap {
                         display: inline-block;
@@ -388,7 +393,11 @@
                     }
                 }
                 &.model {
+                    max-height: 24px;
                     @include textEllipsisClamp(1);
+                    @include mobile {
+                        max-height: 20px;
+                    }
                 }
             }
         }
@@ -661,6 +670,8 @@
                     display: inline-block;
                     margin-right: 6px;
                     padding-right: 6px;
+                    font-size: 13px;
+                    line-height: 21px;
                     &:not(:last-child):before {
                         display: inline-block;
                     }
@@ -729,6 +740,11 @@
                     
                }
            } 
+        }
+    }
+    &.care-list {
+        > li .result-info .info-text {
+            display: block;
         }
     }
 }
