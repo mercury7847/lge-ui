@@ -46,7 +46,7 @@
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(sendurl,sendData,function(result) {
                 var data = result.data;
-                if(lgkorUI.stringToBool(data.success) && data.sendUr) {
+                if(lgkorUI.stringToBool(data.success) && data.sendUrl) {
                     location.href = result.data.sendUrl;
                 }
             });

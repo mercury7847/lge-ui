@@ -14,6 +14,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                 return;
             };
 
+
             self.$mobileLinks = null;
             // self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
             self.$pcLinkes = self.$el.find('.cont-area .pc-dropdown-wrap');
@@ -35,13 +36,13 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
         _addMobileLinks: function(){
             var self = this;
 
+
             if(self.$mobileLinks == null){
                 var toggleList = [];
                 var itemList = {};
                 self.$el.find('.link-wrap .link-section div.dep1').each(function(idx, item){
                     if(!$(item).hasClass('hidden')){
                         toggleList.push($(item).clone());
-
                         var id = $(item).attr("id");
                         itemList[id] = [];
                     }
@@ -71,6 +72,8 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 $('.cont-area').prepend(elements);
 
+                                
+
                 $('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
                     $(toggleList[idx]).addClass('ui_accord_toggle');
                     $(item).prepend($(toggleList[idx]));
@@ -83,8 +86,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                     for(var cdx in itemList[id]){
                         if(itemlistleng){
-                            $(itemListId[cdx]).find('> .dep2').addClass('ui_accord_toggle');
-                            $(itemListId[cdx]).find('> ul').addClass('ui_accord_content');
+                            var twoDep = $(itemListId[cdx]).find('> ul').length;
+                            if(twoDep > 0){
+                                $(itemListId[cdx]).find('> .dep2').addClass('ui_accord_toggle');
+                                $(itemListId[cdx]).find('> ul').addClass('ui_accord_content');
+                            }                            
                         }
 
                         $(item).find('> ul').append($(itemListId[cdx]));
