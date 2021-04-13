@@ -249,16 +249,12 @@ $(document).ready(function() {
             if (agent.indexOf("Android") != -1) {
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
                 setTimeout(function() {
-                    //location.href = "https://play.google.com/store/apps/details?id=com.hyundaicard.appcard";
-                    location.href = "https://play.google.com/store/apps/";
-                    //window.open("https://play.google.com/store/apps/", "_blank");
+                    location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
                 }, 500);
-            //} else if (agent.indexOf("iPhone") != -1) {
             } else if (/iPhone|iPad|iPod/i.test(agent)) {
                 setTimeout(function() {
                     if (!document.webkitHidden) {
-                        //location.href = "http://itunes.apple.com/kr/app/id702653088?mt=8";
-                        window.open("https://www.apple.com/kr/app-store/", "_blank");
+                        location.href = "https://itunes.apple.com/app/id1561079401?mt=8";
                     }
                 }, 25);
                 location.href = "lgeapp://";
@@ -269,10 +265,8 @@ $(document).ready(function() {
             var agent = navigator.userAgent;
 
             if (agent.indexOf("Android") != -1) {
-                //location.href = "intent://mybenefit/main?cate1=001&caller=mobileweb&acctid=#Intent;scheme=hyundaicardappcard;package=com.hyundaicard.appcard;end";
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
             } else if (/iPhone|iPad|iPod/i.test(agent)) {
-                //location.href = "hyundaicardappcard://mybenefit/main?cate1=001&caller=mobileweb";
                 location.href = "lgeapp://";
             }
         }
