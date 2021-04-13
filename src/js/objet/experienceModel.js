@@ -4551,6 +4551,7 @@
                     });
                 }
                 setTimeout(function() {
+                    simulPositionAutoMove();
                     simulBodySwiper.update();
                 }, 100);
 
