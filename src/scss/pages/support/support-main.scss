@@ -1431,47 +1431,12 @@
                 background: url("/lg5-common/images/CS/img-support-main-hero-pc-new.jpg") no-repeat center top;
                 background-size: cover;
             }
-
-            // .support-toggle-list-wrap {
-            //     &.only-desktop {
-            //         .reservation {
-            //             .list-header {
-            //                 .list-tit {
-            //                     position: relative;
-
-            //                     &:before {
-            //                         content:"";
-            //                         display: block;
-            //                         position: absolute;
-            //                         top:0;
-            //                         left:0;
-            //                         width:100%;
-            //                         height:100%;
-            //                         background: url("/lg5-common/images/CS/bg_dim.svg") no-repeat 0 0;
-            //                         background-size: 100% 100%;
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
         }
-
-        // &.member-type {
-        //     .hero-container {
-        //         height:700px;
-        //     }
-        // }
 
         @include tablet {
             .hero-container {
                 height:480px;
             }
-            // &.member-type {
-            //     .hero-container {
-            //         height:600px;
-            //     }
-            // }
         }
 
         @include mobile {
@@ -1488,12 +1453,6 @@
                     background-position:bottom center;
                 }
             }
-
-            // &.member-type {
-            //     .hero-container {
-            //         height:602px;
-            //     }
-            // }
 
             .support-nav-container {
                 .support-list-slider {
