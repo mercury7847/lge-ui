@@ -17,7 +17,43 @@
         </header>
         <section class="pop-conts no-footer">
             <div class="device-wrap">
-                <div class="product-list-wrap">
+                <!-- 210413 테이블추가 -->
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
+                        <colgroup>
+                            <col style="width:25%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">시리즈</th>
+                            <th scope="col">모델명</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>프리미엄 시리즈</td>
+                            <td>LG WING, LG VELVET, V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+, G8 ThinQ, G7 ThinQ, G7+ ThinQ, G6+, G6, G6 32GB</td>
+                        </tr>
+                        <tr>
+                            <td>Q 시리즈</td>
+                            <td>Q52, Q92, Q61, Q51, Q70, Q9, Q7 BTS EDITION, Q8(2018), Q7, Q7+</td>
+                        </tr>
+                        <tr>
+                            <td>X 시리즈</td>
+                            <td>X6(2019), X4(2019), X5, X4+, X4</td>
+                        </tr>
+                        <tr>
+                            <td>LG SIGNATURE<br>EDITION</td>
+                            <td>LG SIGNATURE EDITION</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //210413 테이블추가 -->
+                <!-- 210413 내용삭제 -->
+                <!-- <div class="product-list-wrap">
                     <ul class="product-lists ui_flexible_height">
                         @@loop('./common/modules/product-list-loop.html', [
                             {
@@ -47,14 +83,15 @@
                             }
                         ])
                     </ul>
-                </div>
-
+                </div> -->
+                <!-- //210413 내용삭제 -->
+                <!-- 210413 보더라인제거 -->
                 @@include('./common/modules/bullet-list.html', {
-                    "topBorder" : true,
                     "bulletTxt" : [
                         "생산일자에 따라, 일부 단말은 펌웨어 업그레이드 후 사용 가능합니다."
                     ]
                 })
+                <!-- //210413 보더라인제거 -->
             </div>
         </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
