@@ -5928,7 +5928,7 @@ function resultModelPrice(price) {
     let priceLeng = price.length;
     setTimeout(function() {
         for (let i = 0; i < priceLeng; i++) {
-            if (price[i] == "nodata" || price[i] == "undefined" || price[i] === undefined || price[i] === empty) {
+            if (price[i] == "nodata" || price[i] == "undefined" || price[i] === undefined || price[i] == '') {
                 $(".tb_compare tbody tr:eq(" + i + ")").css("display", "none");
 
             } else {
