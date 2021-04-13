@@ -1367,6 +1367,23 @@
                         height:auto;
                         vertical-align:top;
                     }
+                    .btn-img-view {
+                        display:block;
+                        position:relative;
+                        &:after {
+                            content:'';
+                            position:absolute;
+                            top:12px;
+                            right:12px;
+                            width:32px;
+                            height:32px;
+                            background:rgba(0, 0, 0, 0.5);
+                            background-image:url(/kr/support/images/icon/icon_viewer.svg);
+                            background-repeat:no-repeat;
+                            background-size:24px;
+                            background-position:center;
+                        }
+                    }
                 }
             }
             
