@@ -777,7 +777,7 @@
         }
         .result-list-wrap {
             @include mobile {
-                padding-bottom: 45px;
+                padding-bottom: 21px;
             }
         }
     }
@@ -805,6 +805,13 @@
                 margin-top: 40px;
             }
         }
+        .list-wrap.care-list {
+            .result-list {
+                > li .result-info .info-text {
+                    display: block;
+                }
+            }
+        }
     }
 
     .list-head {
@@ -830,7 +837,7 @@
             padding: 0 0 16px;
             .btn-area {
                 position: absolute;
-                bottom: 12px;
+                bottom: 0;
                 right: 0;
                 .btn-link {
                     margin-top: 0;
