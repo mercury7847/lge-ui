@@ -228,20 +228,20 @@
                             margin-top:10px;
                         }
                         li {
-                            display:inline-block;
+                            // display:inline-block;
                             vertical-align:top;
-                            &::after {
-                                content:' ';
-                                display:inline-block;
-                                width:1px;
-                                height:10px;
-                                margin:9px 8px 0;
-                                background:#ddd;
-                                vertical-align:top;
-                            }
-                            &:last-child::after {
-                                display:none;
-                            }
+                            // &::after {
+                            //     content:' ';
+                            //     display:inline-block;
+                            //     width:1px;
+                            //     height:10px;
+                            //     margin:9px 8px 0;
+                            //     background:#ddd;
+                            //     vertical-align:top;
+                            // }
+                            // &:last-child::after {
+                            //     display:none;
+                            // }
                             dl {
                                 display:inline-block;
                                 font-size:0;
