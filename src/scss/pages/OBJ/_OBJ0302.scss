@@ -999,9 +999,11 @@ h2.title {
                         }
                     }
                     .etc_area {
-                        display: none;
+                        opacity: 0;
+                        visibility: hidden;
                         &.is_active {
-                            display: block;
+                            opacity: 1;
+                            visibility: visible;
                         }
                         .btn_wrap {
                             padding: 20px 0;
