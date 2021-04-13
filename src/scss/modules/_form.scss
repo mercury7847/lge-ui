@@ -1524,6 +1524,9 @@ $input: (chk, rdo);
                         background-image: url("/lg5-common/images/icons/btn-radio-off-48.svg");
                     }
                 }
+                strong {
+                    display: block;
+                }
             }
             &:checked+label {
                 @if ( $type == chk ) {
