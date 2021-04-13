@@ -443,7 +443,7 @@
                 //히어로 영역 제품 지원
                 if( window.innerWidth < 1025) {
                     self.supportList.el.slider.not(self.activeClass).slick(self.supportList.config);
-                    self.supportList.el.slider.not(self.activeClass).slick('refresh');
+                    self.supportList.el.slider.not(self.activeClass).slick('reinit');
                 }
 
                 // 주요 서비스 
@@ -454,6 +454,9 @@
                 
                 //로그인 후 화면 조회 슬라이드
                 self.inquiry.el.slider.not(self.activeClass).slick(self.inquiry.config);
+            },
+            refresh : function(){
+                $('.slick-initialized').slick('refresh');
             }
         },
         reservation : {
@@ -1027,5 +1030,8 @@
             }
             prevSize = window.innerWidth;
         })
+        $(window).on('load', function(){
+            supportHome.slide.refresh();
+        });
     })
 })();
