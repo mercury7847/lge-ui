@@ -63,25 +63,12 @@
                             <input type="hidden" name="serviceType" id="serviceType" value="B">
                             <input type="hidden" name="lockUserId" id="lockUserId" value="113851867205">
                             <input type="hidden" name="pageCode" id="pageCode" value="B00055">
+                            <input type="hidden" name="menuCd" id="menuCd" value="B00055">
 
                             <!-- 제품 선택 -->
                             <div class="step-box active" id="stepModel">
                                 @@include('./common/support/select-model.html', {
-                                    "url": "/lg5-common/data-ajax/support/visitCenter/selectModel.json",
-                                    "category": [
-                                        { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
-                                        { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
-                                        { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
-                                        { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
-                                        { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
-                                        { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
-                                        { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
-                                        { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
-                                        { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
-                                        { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
-                                        { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
-                                        { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
-                                    ]
+                                    "url": "/lg5-common/data-ajax/support/visitCenter/selectModel.json"
                                 })
                             </div>
                             <!-- // 제품 선택 -->
@@ -291,16 +278,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <div class="rdo-wrap">
-                                                                <input type="radio" name="center" id="center1" value="123" required>
-                                                                <label for="center1"></label>
-                                                            </div>
+                                                            <button type="button" class="btn-center" data-shop-id="123" data-dept-code="PH0124" title="강남역 휴대폰서비스센터"><span>선택</span></button>
                                                         </td>
                                                         <td class="info">
-                                                            <label for="center1">
-                                                                <p class="name">강남역 휴대폰서비스센터</p>
-                                                                <p class="address">서울특별시 강남구 강남대로 406(역삼동) LG BEST SHOP 강남점 1층</p>
-                                                            </label>
+                                                            <p class="name">강남역 휴대폰서비스센터</p>
+                                                            <p class="address">서울특별시 강남구 강남대로 406(역삼동) LG BEST SHOP 강남점 1층</p>
                                                         </td>
                                                         <td>
                                                             <a href="#" class="btn-detail"><span class="blind">상세보기</span></a>
