@@ -157,6 +157,25 @@ $(function(){
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
+
+        $(window).on('breakpointchange.lifestyle', function(e){
+
+            var breakpoint = window.breakpoint;    
+            if(breakpoint.name == 'mobile'){                    
+                $('.ui_product_lifestyle').vcCarousel({
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1                        
+                });
+                
+            }else if(breakpoint.name == 'pc'){    
+                $('.ui_product_lifestyle').vcCarousel('destroy');                            
+            }    
+        })
+
+        $(window).trigger('breakpointchange.lifestyle');
+
+
         // 직접관리하는 영역                
         // 많이 구매하는 제품 -> Best 이미지관리
 
@@ -455,7 +474,6 @@ $(function(){
 
                 $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
-
                 $(window).on('breakpointchange.category', function(e){
 
                     var breakpoint = window.breakpoint;    
@@ -475,10 +493,6 @@ $(function(){
                 })
 
                 $(window).trigger('breakpointchange.category');
-
-                
-
-
             }
         }
 
@@ -550,27 +564,7 @@ $(function(){
         // 새로운 제품, 놓치지 마세요
         lgkorUI.requestAjaxDataFailCheck(storeNewRecommendProductUrl, {}, buildNewRecommend, errorRequest);
         
-        buildRecommend();
-
-        $('.ui_lifestyle_list').vcCarousel({
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            responsive: [{
-                breakpoint: 100000,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                }
-            },{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
-                
-        });
+        buildRecommend();       
 
     });
 
