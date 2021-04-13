@@ -5852,7 +5852,7 @@ function resultDoorPrice(idx, price) {
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
-        sumPrice += price[i];
+        sumPrice += parseInt(price[i]);
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         if (i == (priceLeng - 1)) {
             $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price em").text(addComma(sumPrice));
@@ -5876,6 +5876,13 @@ function resultModelPrice(price) {
             }
 
         }
+        setTimeout(function() {
+            if ($(".tb_compare tbody tr").length > 0) {
+                $(".simul_step3 .etc_area").addClass("is_active");
+            } else {
+                $(".simul_step3 .etc_area").removeClass("is_active");
+            }
+        });
     }, 500);
 
 }
