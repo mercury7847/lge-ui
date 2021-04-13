@@ -166,7 +166,8 @@
     .history {
         position:relative;
         &-list {
-            display:flex;
+            display:table;
+            table-layout:fixed
             visibility:hidden;
             position:absolute;
             right:64px;
@@ -181,7 +182,7 @@
                     }
                 }
                 & + li {
-                    margin-left:8px;
+                    padding-left:8px;
                 }
                 a {
                     display:block;
@@ -254,6 +255,7 @@
         }
         .btn-expand {
             display:block;
+            overflow:visible;
             z-index:10;
             width:56px;
             height:56px;
@@ -319,7 +321,7 @@
                         }
                     }
                     & + li {
-                        margin-left:10px;
+                        padding-left:10px;
                     }
                     a {
                         width:40px;
