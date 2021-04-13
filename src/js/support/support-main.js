@@ -399,21 +399,17 @@
                     if(slick.$slides.length > slick.options.slidesToScroll) {
                         $container.find('.btn-play').show();
                     } else {
-                        console.log('hide')
                         $container.find('.btn-play').hide();
                     }
                 });
 
                 $('[data-auto-type]').on('breakpoint', function(event, slick, breakpoint){
-                    // console.log(slick.$slides.length)
-
                     var $this = $(this);
                     var $container = $this.closest('[data-role="slide-container"]');
 
                     if(slick.$slides.length > slick.options.slidesToScroll) {
                         $container.find('.btn-play').show();
                     } else {
-                        console.log('hide')
                         $container.find('.btn-play').hide();
                     }
                 });
