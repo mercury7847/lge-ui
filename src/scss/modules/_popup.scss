@@ -2022,6 +2022,9 @@
 // AR 체험 안내
 .ar-info-wrap {
     .info-area {
+        padding-left: 96px;
+        background: url('/lg5-common/images/icons/icon-app-logo.svg') no-repeat 0 center;
+        background-size: 64px;
         .info {
             margin-bottom: 8px;
             font-weight: 700;
@@ -2036,6 +2039,8 @@
             line-height: 24px;
         }
         @include mobile {
+            padding: 80px 0 0;
+            background-position: center top;
             text-align: center;
             .info {
                 font-size: 15px;
