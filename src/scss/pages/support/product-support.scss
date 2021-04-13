@@ -258,6 +258,10 @@
                 &:first-child {
                     margin-left:0;
                 }
+
+                @include mobile {
+                    margin-top:4px;
+                }
             }
         }
         .search-wrap { 
