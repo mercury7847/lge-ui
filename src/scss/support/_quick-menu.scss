@@ -173,6 +173,8 @@
             right:64px;
             top:0;
             li {
+                display:table-cell;
+                vertical-align:top;
                 opacity:0;
                 transition:all ease 0.5s;
                 @for $i from 0 through 3 {

@@ -3636,6 +3636,21 @@
             if (!$(e.target).closest(".total_price_info_wrap").hasClass("is_active")) {
                 $(".total_price_info_wrap").removeClass("is_active");
             }
+            if (!$(e.target).closest(".model_door").length > 0) {
+                let targetNone = "Y";
+                $(".model_set_wrap[data-model-editing='Y'] .model_door").each(function() {
+                    if (!$(this).find(".door_img img").length > 0) {
+                        targetNone = "N"
+                    }
+                });
+                setTimeout(function() {
+                    if (targetNone == "Y") {
+                        $(".model_door").attr("data-edit", "N");
+                    }
+                }, 100);
+
+
+            }
         });
 
         $(".model_simul_step_wrap").mCustomScrollbar();
@@ -5876,6 +5891,13 @@ function resultModelPrice(price) {
             }
 
         }
+        setTimeout(function() {
+            if ($(".tb_compare tbody tr").length > 0) {
+                $(".simul_step3 .etc_area").addClass("is_active");
+            } else {
+                $(".simul_step3 .etc_area").removeClass("is_active");
+            }
+        });
     }, 500);
 
 }
