@@ -175,9 +175,9 @@
                 opacity:0;
                 transition:all ease 0.5s;
                 @for $i from 0 through 3 {
-                    &:nth-child(#{$i}) {
-                      z-index:10-$i;
-                      transform:translateX(64px*(4-$i));
+                    &:nth-last-child(#{$i}) {
+                      z-index:$i;
+                      transform:translateX(64px*$i);
                     }
                 }
                 & + li {
@@ -314,8 +314,8 @@
                 right:50px;
                 li {
                     @for $i from 0 through 3 {
-                        &:nth-child(#{$i}) {
-                            transform:translateX(50px*(4-$i));
+                        &:nth-last-child(#{$i}) {
+                            transform:translateX(50px*$i);
                         }
                     }
                     & + li {
