@@ -352,7 +352,7 @@
                     var $this = $(this);
                     for (var key in listArr[i]) {
                         if (key == 'file') {
-                            $this.data('os', listArr[i][key].os);    
+                            if (listArr[i][key].os) $this.data('os', listArr[i][key].os);    
                             continue;
                         }
                         $this.data(key.toString(), listArr[i][key]);
