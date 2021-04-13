@@ -274,6 +274,7 @@
                     & .forms{
                         .conts{
                             display:inline-block;
+                            padding-bottom:0;
                         }
                     }
                 }
@@ -409,6 +410,7 @@
             }
         }
         .btns{
+            padding:70px 0 138px;
             @include mobile {
                 padding:32px 0 60px;
             }
@@ -419,17 +421,22 @@
                 a{
                     display:inline-block;
                     position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
                     @include mobile{
                         top: 82%;
                         width:32%;
                         height: 6%;
                     }
                     &.android{
+                        left: 53%;
                         @include mobile{
                             left: 12%;
                         }
                     }
                     &.ios{
+                        left: 74%;
                         @include mobile{
                             left: 56%;
                         }
