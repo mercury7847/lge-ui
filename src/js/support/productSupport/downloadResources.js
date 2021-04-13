@@ -346,14 +346,15 @@
             self.$driverCount.html(page.totalCount);
         
             if (listArr.length) {
-                //listArr.forEach(function(item) {
-                    html = vcui.template(driverListTemplate, data);
-                //});
+                html = vcui.template(driverListTemplate, data);
                 $list.html(html).show();
                 $list.find('>li').each(function(i) {
                     var $this = $(this);
                     for (var key in listArr[i]) {
-                        if (key == 'file') continue;
+                        if (key == 'file') {
+                            $this.data('os', listArr[i][key].os);    
+                            continue;
+                        }
                         $this.data(key.toString(), listArr[i][key]);
                     }
                 });
@@ -667,7 +668,7 @@
                         modelCode: self.param.modelCode,
                         title: $popup.data('title'),
                         os: $popup.data('os') || '',
-                        date: $popup.data('date') || ''
+                        date: $popup.data('date') || $popup.data('issue_date') || ''
                     };
 
                     lgkorUI.requestAjaxDataPost(_url, param, function(result){
