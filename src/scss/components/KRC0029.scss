@@ -196,7 +196,7 @@
         position: relative;
         height:480px;
         @include mobile {
-            height:530px;
+            height:400px;
         }
     }
 
@@ -217,7 +217,7 @@
         }
         @include mobile {
             height:0;
-            padding-top:147.224%;
+            padding-top:111.115%;
         }
         img {
             position: absolute;
@@ -349,11 +349,11 @@
                 right: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                padding-top: 80px;
+                padding-top: 96px;
                 @include mobile {
                     left: 0;
                     transform: translateX(0);
-                    padding-top: 32px;
+                    padding-top: 36px;
                 }
                 .inner {
                     vertical-align:top;

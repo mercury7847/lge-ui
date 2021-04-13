@@ -116,21 +116,21 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{#if obsFlag=="Y"}}' +
+            '{{#if obsFlag=="Y" && hasPrice}}' +
             '<div class="info-price">' +
                 '{{#if carePrice}}' +
                 '<div class="price-info rental">' +
-                    '{{#if carePrice}}<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                    '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                 '</div>' +
                 '{{/if}}' +
                 '<div class="price-info sales">' +
-                '<div class="original">' +
-                    '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '<div class="original">' +
+                        '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                    '<div class="price-in">' +
+                        '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
                 '</div>' +
-                '<div class="price-in">' +
-                    '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                '</div>' +
-            '</div>' +
             '</div>' +
             '{{/if}}' +
         '</div>' +
@@ -894,6 +894,7 @@
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            item.hasPrice = (item.price || item.carePrice);
                             $list_ul.append(vcui.template(additionalItemTemplate, item));
                         });
                         $resultListWrap.show();

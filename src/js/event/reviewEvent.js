@@ -36,7 +36,7 @@
             self.$modelCheckButton.on('click',function(e){
                 e.preventDefault();
 
-                var ajaxUrl = self.$contents.attr('data-sku-url');
+                var ajaxUrl = self.$event3.attr('data-sku-url');
                 var modelName = self.$modelInput.val().toUpperCase();
                 lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                     var data = result.data;
@@ -92,6 +92,16 @@
             
             self.$reviewButton.on('click',function(e){
                 e.preventDefault();
+                //로그인을 해야 하는가
+                var login = self.$event3.data('loginUrl');
+                if(login && login.length > 0) {
+                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                        location.href = login;
+                    }};
+                    lgkorUI.confirm(null, obj);
+                    return;
+                }
+
                 //체크
                 var param = {};
                 var $chk = self.$event3.find('#chk1-1');
@@ -128,8 +138,10 @@
                 }
 
                 var modelName = self.$modelInput.val().toUpperCase();
+                var eventId = self.$event3.data('eventId');
                 if(checkModelSuccess && modelName) {
                     param.sku = modelName;
+                    param.eventId = eventId;
                     self.requestData(param);
                 } else {
                     lgkorUI.alert("", {title: '제품 모델명을 확인해 주세요.'});
@@ -141,7 +153,7 @@
         //검색어 입력중 검색
         requestSearchAutoComplete:function(value) {
             var self = this;
-            var ajaxUrl = self.$contents.data('autocompleteUrl');
+            var ajaxUrl = self.$event3.data('autocompleteUrl');
             var modelName = value.toUpperCase();
             lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                 var data = result.data;
@@ -167,7 +179,7 @@
 
         requestData:function(param) {
             var self = this;
-            var ajaxUrl = self.$contents.data('reviewUrl');
+            var ajaxUrl = self.$event3.data('reviewUrl');
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 var data = result.data;

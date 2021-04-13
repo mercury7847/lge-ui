@@ -781,6 +781,25 @@
                         }
                     }
                 }
+                .input-wrap.count {
+                    position: relative;
+                    textarea {
+                        padding-right: 100px;
+                    }
+                    .total {
+                        position: absolute;
+                        bottom: 16px;
+                        right: 24px;
+                        margin-top: 0;
+                    }
+                }
+                .cancel-agree-box {
+                    margin-top: 16px;
+                    padding-left: 17.52%;
+                    @include mobile {
+                        padding-left: 0;
+                    }
+                }
             }
             // 팝업 내 forms dt 영역이 넓은 케이스
             &.pop-wide {
