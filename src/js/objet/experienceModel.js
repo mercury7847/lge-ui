@@ -5943,7 +5943,7 @@ function resultModelPrice(price) {
                 $(".simul_step3 .etc_area").removeClass("is_active");
             }
         });
-    }, 500);
+    }, 100);
 
 }
 
