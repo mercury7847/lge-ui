@@ -331,14 +331,22 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
                 var lat = obj.info.gpsInfo.gpsy;
                 var long = obj.info.gpsInfo.gpsx;
+                var zoom = self.map.getZoom();
+                if(zoom !== 15){
+                    self.map.setZoom(15);
+                }
 
-                self.map.setZoom(15);
-                self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.0052, long));
-
+                self.map.panTo(new naver.maps.LatLng(parseFloat(lat)+0.0053, long));
 
                 var $focusTarget = $(obj.infoWindow.contentElement);
                 var $first = $focusTarget.find(':visible:focusable').first();
-                if($first[0]) $first.focus();
+
+
+                setTimeout(function(){
+                    if($first[0]) $first.focus();
+                },500);
+
+                
 
                 self.$el.off('focusin.storemap');
                 self.$el.on('focusin.storemap', function (e) {
