@@ -166,7 +166,8 @@
     .history {
         position:relative;
         &-list {
-            display:flex;
+            display:table;
+            table-layout:fixed
             visibility:hidden;
             position:absolute;
             right:64px;
@@ -175,13 +176,13 @@
                 opacity:0;
                 transition:all ease 0.5s;
                 @for $i from 0 through 3 {
-                    &:nth-child(#{$i}) {
-                      z-index:10-$i;
-                      transform:translateX(64px*(4-$i));
+                    &:nth-last-child(#{$i}) {
+                      z-index:$i;
+                      transform:translateX(64px*$i);
                     }
                 }
                 & + li {
-                    margin-left:8px;
+                    padding-left:8px;
                 }
                 a {
                     display:block;
@@ -254,6 +255,7 @@
         }
         .btn-expand {
             display:block;
+            overflow:visible;
             z-index:10;
             width:56px;
             height:56px;
@@ -314,12 +316,12 @@
                 right:50px;
                 li {
                     @for $i from 0 through 3 {
-                        &:nth-child(#{$i}) {
-                            transform:translateX(50px*(4-$i));
+                        &:nth-last-child(#{$i}) {
+                            transform:translateX(50px*$i);
                         }
                     }
                     & + li {
-                        margin-left:10px;
+                        padding-left:10px;
                     }
                     a {
                         width:40px;
