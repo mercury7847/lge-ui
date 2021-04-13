@@ -382,25 +382,33 @@
             init : function(){
                 var self = this;
 
-                $('[data-auto-type]').on('init', function(event, slick){
-                    var $this = $(this);
-                    var _type = $this.data('autoType');
-                    var $container = $this.closest('[data-role="slide-container"]');
-                    var _button = '<button class="btn-play"><span class="blind">멈춤</span></button>';
+                $('[data-auto-type]').each(function(){
+                    $(this).on('init', function(event, slick){
+                        var $this = $(this);
+                        var _type = $this.data('autoType');
+                        var $container = $this.closest('[data-role="slide-container"]');
+                        var _button = $('<button class="btn-play"><span class="blind">멈춤</span></button>');
+    
+                        if( _type == "button") {
+                            console.log('button')
+                            console.log($this.attr('class'))
+                            console.log($this.find('.slick-next').length)
+                            _button.insertAfter($this)
+                            //$this.insertAfter(_button);
+                            //$this.append(_button);
+                        }
+                        if( _type == "dot") {
+                            var $dotCont = $this.next('.slick-controls');
+                            $dotCont.append(_button);
+                        }
+    
+                        if(slick.$slides.length > slick.options.slidesToScroll) {
+                            $container.find('.btn-play').show();
+                        } else {
+                            $container.find('.btn-play').hide();
+                        }
+                    });
 
-                    if( _type == "button") {
-                        $this.append(_button);
-                    }
-                    if( _type == "dot") {
-                        var $dotCont = $this.next('.slick-controls');
-                        $dotCont.append(_button);
-                    }
-
-                    if(slick.$slides.length > slick.options.slidesToScroll) {
-                        $container.find('.btn-play').show();
-                    } else {
-                        $container.find('.btn-play').hide();
-                    }
                 });
 
                 $('[data-auto-type]').on('breakpoint', function(event, slick, breakpoint){
