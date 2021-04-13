@@ -248,24 +248,45 @@
         .terms{
             text-align:left;
             @include mobile {
-                padding:0 12px;
+                padding:0 16px;
             }
             .input-info{
-                @include mobile {
-                    padding:60px 0 0;
+                .input-info-wrap{
+                    padding:80px 0 0;
+                    @include mobile {
+                        padding:60px 0 0;
+                    }
                 }
-            }
-            .tit-wrap{
-                @include mobile {
-                    font-size:20px;
+                .tit-wrap{
                     font-weight:700;
+                    line-height:1.4;
+                    letter-spacing: -1px;
+                    @include mobile {
+                        font-size:20px;
+                        &.m-uline{
+                            border-bottom:2px solid #222222;
+                            padding-bottom:12px;
+                            margin-bottom:40px;
+                        }
+                    }
+                }
+                .form-wrap{
+                    & .forms{
+                        .conts{
+                            display:inline-block;
+                            padding-bottom:0;
+                        }
+                    }
                 }
             }
             .tb-tit{
+                padding-bottom:15px;
+                line-height:1.62;
+                font-weight:700;
                 @include mobile {
                     font-size:14px;
                     font-weight:700;
-                    padding:40px 0 12px;
+                    padding-bottom:13px;
                 }
                 &.req{
                     &::after {
@@ -292,18 +313,21 @@
                 }
             }
             .agree-input{
+                padding-top:28px;
                 @include mobile {
                     padding-top:16px
                 }
             }
             .txt-terms{
+                padding:24px;
+                font-size:16px;
+                line-height:1.62;
+                border-top:1px solid #666666;
+                border-bottom:1px solid #dddddd;
+                color:#000000;
                 @include mobile {
                     padding:19px 12px;
-                    border-top:1px solid #666666;
-                    border-bottom:1px solid #dddddd;
                     font-size:13px;
-                    color:#000000;
-                    line-height:1.62;
                 }
             }
             .input-layer-wrap {
@@ -386,6 +410,7 @@
             }
         }
         .btns{
+            padding:70px 0 138px;
             @include mobile {
                 padding:32px 0 60px;
             }
@@ -396,17 +421,22 @@
                 a{
                     display:inline-block;
                     position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
                     @include mobile{
                         top: 82%;
                         width:32%;
                         height: 6%;
                     }
                     &.android{
+                        left: 53%;
                         @include mobile{
                             left: 12%;
                         }
                     }
                     &.ios{
+                        left: 74%;
                         @include mobile{
                             left: 56%;
                         }
@@ -1158,25 +1188,24 @@
 
     .event14{
         .terms{
-            padding-top:55px;
             text-align:left;
             @include mobile {
-                padding:0 12px;
+                padding:0 16px;
             }
             .input-info{
-                @include mobile {
-                    padding:60px 0 0;
-                }
                 .input-info-wrap{
-                    padding:25px 0 0;
+                    padding:80px 0 0;
+                    @include mobile {
+                        padding:45px 0 0;
+                    }
                 }
             }
             .tit-wrap{
-                // font-size:40px;
-                line-height:1.41;
+                font-weight:700;
+                line-height:1.4;
+                letter-spacing: -1px;
                 @include mobile {
-                    font-size:20px;
-                    font-weight:700;
+                    font-size:25px;
                 }
             }
             .tb-tit{
@@ -1186,7 +1215,7 @@
                 @include mobile {
                     font-size:14px;
                     font-weight:700;
-                    padding:40px 0 12px;
+                    padding-bottom:13px;
                 }
                 &.req{
                     &::after {
@@ -1232,7 +1261,12 @@
         .btns{
             padding:50px 0;
             @include mobile {
-                padding:32px 0 60px;
+                padding:45px 53px;
+            }
+            img{
+                @include mobile {
+                    width:50%;
+                }
             }
         }
         .app-down{
@@ -1241,17 +1275,22 @@
                 a{
                     display:inline-block;
                     position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
                     @include mobile{
                         top: 82%;
                         width:32%;
                         height: 6%;
                     }
                     &.android{
+                        left: 53%;
                         @include mobile{
                             left: 12%;
                         }
                     }
                     &.ios{
+                        left: 74%;
                         @include mobile{
                             left: 56%;
                         }

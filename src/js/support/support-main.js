@@ -443,6 +443,7 @@
                 //히어로 영역 제품 지원
                 if( window.innerWidth < 1025) {
                     self.supportList.el.slider.not(self.activeClass).slick(self.supportList.config);
+                    self.supportList.el.slider.not(self.activeClass).slick('refresh');
                 }
 
                 // 주요 서비스 
