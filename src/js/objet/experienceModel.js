@@ -816,21 +816,21 @@
                 door: {
                     count: 3,
                     door1: {
-                        name: "상",
+                        name: "상칸",
                         code: "K330TT",
                         defaultPrice: "0",
                         memberDiscount: "0",
                         directDiscount: "0",
                     },
                     door2: {
-                        name: "중",
+                        name: "중칸",
                         code: "K330MM",
                         defaultPrice: "0",
                         memberDiscount: "0",
                         directDiscount: "0",
                     },
                     door3: {
-                        name: "하",
+                        name: "하칸",
                         code: "K330BB",
                         defaultPrice: "0",
                         memberDiscount: "0",
@@ -2493,6 +2493,223 @@
                 door2: "D870BB-GBE",
                 door3: "D870BB-GBE",
                 door4: "",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FBB151S",
+                door1: "D870TT-FBT",
+                door2: "D870TT-FBT",
+                door3: "D870BB-FBT",
+                door4: "D870BB-FBT",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FSS151S",
+                door1: "D870TT-FSD",
+                door2: "D870TT-FSD",
+                door3: "D870BB-FSD",
+                door4: "D870BB-FSD",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FTT151S",
+                door1: "D870TT-FST",
+                door2: "D870TT-FST",
+                door3: "D870BB-FST",
+                door4: "D870BB-FST",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FBS151S",
+                door1: "D870TT-FBT",
+                door2: "D870TT-FBT",
+                door3: "D870BB-FSD",
+                door4: "D870BB-FSD",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FBT151S",
+                door1: "D870TT-FBT",
+                door2: "D870TT-FBT",
+                door3: "D870BB-FST",
+                door4: "D870BB-FST",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871FTS151S",
+                door1: "D870TT-FST",
+                door2: "D870TT-FST",
+                door3: "D870BB-FSD",
+                door4: "D870BB-FSD",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SGG151S",
+                door1: "D870TT-SGR",
+                door2: "D870TT-SGR",
+                door3: "D870BB-SGR",
+                door4: "D870BB-SGR",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SSS151S",
+                door1: "D870TT-SSV",
+                door2: "D870TT-SSV",
+                door3: "D870BB-SSV",
+                door4: "D870BB-SSV",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SMM151S",
+                door1: "D870TT-SMT",
+                door2: "D870TT-SMT",
+                door3: "D870BB-SMT",
+                door4: "D870BB-SMT",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SGS151",
+                door1: "D870TT-SGR",
+                door2: "D870TT-SGR",
+                door3: "D870BB-SSV",
+                door4: "D870BB-SSV",
+            }, {
+                defaultCode: "M871AAA041",
+                modelCode: "M871SGS041",
+                door1: "D870TT-SGR",
+                door2: "D870TT-SGR",
+                door3: "D870BB-SSV",
+                door4: "D870BB-SSV",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SSG151S",
+                door1: "D870TT-SSV",
+                door2: "D870TT-SSV",
+                door3: "D870BB-SGR",
+                door4: "D870BB-SGR",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871SMS151S",
+                door1: "D870TT-SSV",
+                door2: "D870TT-SSV",
+                door3: "D870BB-SMT",
+                door4: "D870BB-SMT",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MBB151S",
+                door1: "D870TT-MBK",
+                door2: "D870TT-MBK",
+                door3: "D870BB-MBK",
+                door4: "D870BB-MBK",
+            }, {
+                defaultCode: "M871AAA041",
+                modelCode: "M871MBB041S",
+                door1: "D870TT-MBK",
+                door2: "D870TT-MBK",
+                door3: "D870BB-MBK",
+                door4: "D870BB-MBK",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MGG151S",
+                door1: "D870TT-MGY",
+                door2: "D870TT-MGY",
+                door3: "D870BB-MGY",
+                door4: "D870BB-MGY",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MWW151S",
+                door1: "D870TT-MWH",
+                door2: "D870TT-MWH",
+                door3: "D870BB-MWH",
+                door4: "D870BB-MWH",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MBG151S",
+                door1: "D870TT-MBK",
+                door2: "D870TT-MBK",
+                door3: "D870BB-MGY",
+                door4: "D870BB-MGY",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MWG151S",
+                door1: "D870TT-MWH",
+                door2: "D870TT-MWH",
+                door3: "D870BB-MGY",
+                door4: "D870BB-MGY",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871MGB151S",
+                door1: "D870TT-MGY",
+                door2: "D870TT-MGY",
+                door3: "D870BB-MBK",
+                door4: "D870BB-MBK",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GBB151",
+                door1: "D870TT-GBE",
+                door2: "D870TT-GBE",
+                door3: "D870BB-GBE",
+                door4: "D870BB-GBE",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GBM151S",
+                door1: "D870TT-GBE",
+                door2: "D870TT-GBE",
+                door3: "D870BB-GMN",
+                door4: "D870BB-GMN",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GBP151S",
+                door1: "D870TT-GBE",
+                door2: "D870TT-GBE",
+                door3: "D870BB-GPK",
+                door4: "D870BB-GPK",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GBS151S",
+                door1: "D870TT-GBE",
+                door2: "D870TT-GBE",
+                door3: "D870BB-GSV",
+                door4: "D870BB-GSV",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GSS151S",
+                door1: "D870TT-GSV",
+                door2: "D870TT-GSV",
+                door3: "D870BB-GSV",
+                door4: "D870BB-GSV",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GSB151S",
+                door1: "D870TT-GSV",
+                door2: "D870TT-GSV",
+                door3: "D870BB-GBE",
+                door4: "D870BB-GBE",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GSM151S",
+                door1: "D870TT-GSV",
+                door2: "D870TT-GSV",
+                door3: "D870BB-GMN",
+                door4: "D870BB-GMN",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GSP151S",
+                door1: "D870TT-GSV",
+                door2: "D870TT-GSV",
+                door3: "D870BB-GPK",
+                door4: "D870BB-GPK",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GMB151S",
+                door1: "D870TT-GMN",
+                door2: "D870TT-GMN",
+                door3: "D870BB-GBE",
+                door4: "D870BB-GBE",
+            }, {
+                defaultCode: "M871AAA151",
+                modelCode: "M871GPB151",
+                door1: "D870TT-GPK",
+                door2: "D870TT-GPK",
+                door3: "D870BB-GBE",
+                door4: "D870BB-GBE",
+            }, {
+                defaultCode: "M871AAA041",
+                modelCode: "M871GPB041",
+                door1: "D870TT-GPK",
+                door2: "D870TT-GPK",
+                door3: "D870BB-GBE",
+                door4: "D870BB-GBE",
             }
         ]
     }
@@ -3971,34 +4188,37 @@
         maxCountCheck: function() {
             let maxSetting = 5;
             let maxCount = 0;
-            $(".simul_wrap .simul_body .model_set_wrap").each(function() {
-                console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
-                if ($(this).attr("data-model-cate") == "refrigerator1") {
-                    maxCount += 2;
-                } else if ($(this).attr("data-model-cate") == "refrigerator2") {
-                    maxCount += 2;
-                } else if ($(this).attr("data-model-cate") == "refrigerator_kimchi") {
-                    maxCount += 1;
-                } else if ($(this).attr("data-model-cate") == "refrigerator_convertible") {
-                    maxCount += 1;
+            setTimeout(function() {
+                $(".simul_wrap .simul_body .model_set_wrap").each(function() {
+                    console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
+                    if ($(this).attr("data-model-cate") == "refrigerator1") {
+                        maxCount += 2;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator2") {
+                        maxCount += 2;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator_kimchi") {
+                        maxCount += 1;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator_convertible") {
+                        maxCount += 1;
+                    }
+                });
+                //$(".model_set_wrap").attr("data-model-add", "N");
+                if (maxCount == (maxSetting - 1)) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "Y");
+                    $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='refrigerator']").prop("disabled", true);
+                } else if (maxCount == maxSetting) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "N");
+                } else if (maxCount > maxSetting) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "N");
+                } else {
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", false);
                 }
-            });
-            //$(".model_set_wrap").attr("data-model-add", "N");
-            if (maxCount == (maxSetting - 1)) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "Y");
-                $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='refrigerator']").prop("disabled", true);
-            } else if (maxCount == maxSetting) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "N");
-            } else if (maxCount > maxSetting) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "N");
-            } else {
-                $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", false);
-            }
-            if (!$(".total_price_info_wrap .total_price_info_body .swiper-slide").length > 0) {
-                $(".total_price_info_wrap").attr("data-sum-active", "N");
-            } else {
-                $(".total_price_info_wrap").attr("data-sum-active", "Y");
-            }
+                if (!$(".total_price_info_wrap .total_price_info_body .swiper-slide").length > 0) {
+                    $(".total_price_info_wrap").attr("data-sum-active", "N");
+                } else {
+                    $(".total_price_info_wrap").attr("data-sum-active", "Y");
+                }
+            }, 200);
+
         },
         addSetting: function() {
             modelSimulator.init();
@@ -4315,6 +4535,10 @@
                         $(this).attr("data-del", "Y");
                     });
                 }
+                setTimeout(function() {
+                    simulBodySwiper.update();
+                }, 100);
+
             }, 100);
 
 

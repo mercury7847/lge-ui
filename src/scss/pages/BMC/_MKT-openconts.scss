@@ -1089,7 +1089,7 @@
             }
             .mail-addr{
                 display:inline-block;
-                text-align: left;
+                text-align:center;
                 width:100%;
                 margin-top:8px;
                 @include mobile {
@@ -1128,7 +1128,7 @@
             }
             .app-btn {
                 position:absolute;
-                bottom:27.5%;
+                bottom:30.5%;
                 &.aos {
                     left:25.3%;
                     width:24%;
@@ -1140,7 +1140,7 @@
                     height:6%;
                 }
                 @include mobile {
-                    bottom:36.4%;
+                    bottom:41.4%;
                     &.aos {
                         left:8%;
                         width:40%;
