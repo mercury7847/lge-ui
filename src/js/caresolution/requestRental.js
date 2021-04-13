@@ -842,10 +842,12 @@
                     }
                     
                     var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
+                    var maxdate = vcui.date.add(vcui.date.parse(mindate), "d", 14);
                     var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
                         return vcui.date.format(item, "yyyy-MM-dd");
                     });
                     $('.ui_calendar').vcCalendar("setMinDate", mindate);
+                    $('.ui_calendar').vcCalendar("setMaxDate", maxdate);
                     $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
                     $('.ui_calendar').vcCalendar('update');
                 }

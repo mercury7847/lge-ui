@@ -135,7 +135,7 @@
 
             if(IS_LOGIN == "Y"){
                 firstLoadLength = 2;
-                //loadStoryList('user_story', 1, 'UserStory');
+                loadStoryList('user_story', 1, 'UserStory');
                 //210412_임시_막음.
             } 
         });
