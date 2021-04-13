@@ -1945,7 +1945,8 @@
                     var self = this;
                     var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
                     var param = {
-                        modelId: lgePdpSendData.modelId
+                        modelId: lgePdpSendData.modelId,
+                        modelUrlPath: location.pathname
                     }
                     /*
                     if(!ajaxUrl) {

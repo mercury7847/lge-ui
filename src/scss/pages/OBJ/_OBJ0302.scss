@@ -229,6 +229,18 @@ h2.title {
                             .model_door {
                                 position: absolute;
                                 background: url('/lg5-common/images/OBJ/experience/bg_door_default.png') #ffffff center center no-repeat;
+                                &[data-door-direction="RB"],
+                                &[data-door-direction="RT"] {
+                                    &:before {
+                                        position: absolute;
+                                        content: '';
+                                        left: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        width: 1px;
+                                        background: #000000;
+                                    }
+                                }
                                 @include mobile {
                                     background-size: 21px 21px;
                                 }
@@ -999,9 +1011,11 @@ h2.title {
                         }
                     }
                     .etc_area {
-                        display: none;
+                        opacity: 0;
+                        visibility: hidden;
                         &.is_active {
-                            display: block;
+                            opacity: 1;
+                            visibility: visible;
                         }
                         .btn_wrap {
                             padding: 20px 0;
