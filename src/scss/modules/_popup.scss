@@ -781,6 +781,25 @@
                         }
                     }
                 }
+                .input-wrap.count {
+                    position: relative;
+                    textarea {
+                        padding-right: 100px;
+                    }
+                    .total {
+                        position: absolute;
+                        bottom: 16px;
+                        right: 24px;
+                        margin-top: 0;
+                    }
+                }
+                .cancel-agree-box {
+                    margin-top: 16px;
+                    padding-left: 17.52%;
+                    @include mobile {
+                        padding-left: 0;
+                    }
+                }
             }
             // 팝업 내 forms dt 영역이 넓은 케이스
             &.pop-wide {
@@ -1126,6 +1145,7 @@
         .btn-link {
             margin-top: 24px;
         }
+        .btn-link-area,
         .link {
             .btn-link {
                 margin-top:0;
@@ -1366,6 +1386,19 @@
                         width:100%;
                         height:auto;
                         vertical-align:top;
+                    }
+                    .btn-img-view {
+                        display:block;
+                        position:relative;
+                        &:after {
+                            content:'';
+                            position:absolute;
+                            top:12px;
+                            right:12px;
+                            width:32px;
+                            height:32px;
+                            background:center / 24px rgba(0, 0, 0, 0.5)  url(/kr/support/images/icon/icon_viewer.svg) no-repeat;
+                        }
                     }
                 }
             }
@@ -2009,6 +2042,9 @@
 // AR 체험 안내
 .ar-info-wrap {
     .info-area {
+        padding-left: 96px;
+        background: url('/lg5-common/images/icons/icon-app-logo.svg') no-repeat 0 center;
+        background-size: 64px;
         .info {
             margin-bottom: 8px;
             font-weight: 700;
@@ -2023,6 +2059,8 @@
             line-height: 24px;
         }
         @include mobile {
+            padding: 80px 0 0;
+            background-position: center top;
             text-align: center;
             .info {
                 font-size: 15px;

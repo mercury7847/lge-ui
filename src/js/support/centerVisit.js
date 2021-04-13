@@ -4,16 +4,11 @@
         '{{#each (item, index) in listData}}' +
         '<tr>' +
             '<td>' +
-                '<div class="rdo-wrap">' +
-                    '<input type="radio" name="center" id="rdo{{index+1}}" value="{{item.shopID}}" data-dept-code="{{item.deptCode}}">' +
-                    '<label for="rdo{{index+1}}"></label>' +
-                '</div>' +
+                '<button type="button" class="btn size border btn-center" data-shop-id="{{item.shopID}}" data-dept-code="{{item.deptCode}}" title="{{item.shopName}}"><span>선택</span></button>' +
             '</td>' +
             '<td class="info">' +
-                '<label for="rdo{{index+1}}">' +
-                    '<p class="name">{{item.shopName}}</p>' +
-                    '<p class="address">{{item.shopAdress}}</p>' +
-                '</label>' +
+                '<p class="name">{{item.shopName}}</p>' +
+                '<p class="address">{{item.shopAdress}}</p>' +
             '</td>' + 
             '<td>' +
                 '<a href="#{{item.shopID}}" class="btn-detail"><span class="blind">상세보기</span></a>' +
@@ -451,17 +446,18 @@
                 $('#choiceEngineerPopup').vcModal();
             });
 
-            self.$stepCenter.on('change', '[name=center]', function() {
-                var value = $(this).val(),
+            self.$stepCenter.on('click', '.btn-center', function() {
+                var shopId = $(this).data('shopId'),
                     deptCode = $(this).data('deptCode');
                 
-                self.$cont.find('#seq').val(value);
+                self.$cont.find('#seq').val(shopId);
 
                 self.data = $.extend(self.data, {
-                    seq: value,
+                    seq: shopId,
                     deptCode: deptCode
                 });
-
+                $('.btn-center').removeClass('active');
+                $(this).addClass('active');
                 self.requestDate();
             });
 
@@ -950,6 +946,13 @@
                 }
 
                 self.setTopic(data);
+
+                self.$stepDate.removeClass('active');
+                self.$stepInput.removeClass('active');
+                self.$completeBtns.hide();
+
+                self.$dateWrap.calendar('reset');
+                self.$timeWrap.timeCalendar('reset');
 
                 lgkorUI.hideLoading();
             });

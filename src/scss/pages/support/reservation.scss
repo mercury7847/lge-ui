@@ -396,13 +396,8 @@
                 .col01 {width:90px;}
                 .col02 {width:auto;}
                 .col03 {width:115px;}
-
-
                 .info {
                     text-align:left;
-                    label {
-                        cursor:pointer;
-                    }
                     .name {
                         margin-bottom:4px;
                         font-weight:500;
@@ -412,6 +407,11 @@
                         color: #666;
                         @include font-small;
                     }
+                }
+                .btn-center.active {
+                    color:$color-white;
+                    border-color:#da0f47 !important;
+                    background:#da0f47;
                 }
                 .btn-detail {
                     display:inline-block;

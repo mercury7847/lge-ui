@@ -528,6 +528,7 @@
                     color:#fff;
                     font-weight:bold;
                     line-height:1.6;
+                    text-shadow: #000 1px 1px 18px;
                 }
                 .btn-list-toggle {
                     display: inline-block;
@@ -1427,26 +1428,15 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc-new.jpg") no-repeat center top;
+                background: url("/lg5-common/images/CS/img-support-main-hero-pc.jpg") no-repeat center top;
                 background-size: cover;
             }
         }
-
-        // &.member-type {
-        //     .hero-container {
-        //         height:700px;
-        //     }
-        // }
 
         @include tablet {
             .hero-container {
                 height:480px;
             }
-            // &.member-type {
-            //     .hero-container {
-            //         height:600px;
-            //     }
-            // }
         }
 
         @include mobile {
@@ -1463,12 +1453,6 @@
                     background-position:bottom center;
                 }
             }
-
-            // &.member-type {
-            //     .hero-container {
-            //         height:602px;
-            //     }
-            // }
 
             .support-nav-container {
                 .support-list-slider {
@@ -1588,7 +1572,7 @@
             width:24px;
             height:24px;
             top:50%;
-            right:-5px;
+            right:40px;
             transform:translateY(-50%);
             background-size: 16px 16px;
             background-position: center center;
@@ -1639,8 +1623,13 @@
                 }
             }
 
-            .slick-arrow, .btn-play {
+            .slick-arrow {
                 top:-22px;
+                transform:none;
+            }
+            .btn-play {
+                top:30px;
+                right:15px;
                 transform:none;
             }
         }
@@ -1974,7 +1963,7 @@
                 a {
                     display: block;
                     padding:32px;
-                    border-radius:5px;
+                    border-radius:8px;
                     box-shadow:  2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 }
 
@@ -2002,6 +1991,7 @@
                 }
 
                 .item-tit {
+                    display: block;
                     @include textEllipsisClamp(2);
                     height:2.84em;
                     font-size:24px;
@@ -2115,7 +2105,7 @@
             height:100%;
             padding:55px 55px 140px;
             background: #f4f4f4;
-            border-radius:5px;
+            border-radius:8px;
             box-sizing:border-box;
 
             .headline {
@@ -2129,6 +2119,7 @@
                     font-size:32px;
                     color:#000;
                     font-weight:bold;
+                    
                 }
             }
 
@@ -2252,7 +2243,7 @@
                         padding:24px;
                         height:168px;
                         box-sizing:border-box;
-                        border-radius:10px;
+                        border-radius:8px;
                         background: #fff;
                     }
 
@@ -2663,13 +2654,62 @@
     //제품지원
     .support-solution {
         position: relative;
-        height:536px;
+        height:432px;
         box-sizing: border-box;
-        background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
+
+        &:before {
+            content:"";
+            display: block;
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
+            opacity:0.4;
+        }
 
         .support-toggle-list-wrap {
-            .support-list ul > li a:hover {
-                color:#8d71ec;
+            &.only-desktop {
+                .support-list {
+                    &.active {
+                        .list-header {
+                            .list-tit {
+                                color:#000;
+                            }
+                        }
+                    }
+                    .list-header {
+                        .list-tit {
+                            color:rgba(0, 0, 0, 0.75);
+                        }
+                    }
+                }
+            }
+            .support-list {
+                .list-header {
+                    .list-tit {
+                        color:#000;
+                        text-shadow: none;
+                        .txt-highlight {
+                            color:#000;
+                        }
+                    }
+
+                    .btn-list-toggle {
+                        background-image: url("/lg5-common/images/CS/btn-arr-down-56-black.svg");
+                    }
+                }
+                ul > li a {
+                    color:#000;
+                    border-color:#000;
+                    &:hover {
+                        color:#fff;
+                        border-color:#fa263e;
+                        background-color:#fa263e;
+
+                    }
+                } 
             } 
         }
 

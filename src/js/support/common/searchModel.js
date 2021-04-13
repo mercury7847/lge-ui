@@ -168,10 +168,11 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 lgkorUI.searchModelName();
                 
                 if (opts.useCookie && self.hasModel) {
-                    if (self.model.mktModelCd) {
+                    if (self.model.mktModelCd || !self.model.modelCode) {
                         self.complete();
                     } else {
-                        lgkorUI.alert(self.model.categoryNm + ' &gt; ' +self.model.subCategoryNm + '<br><span style="font-weight:700">"' +self.model.modelCode+ '"</span><br>제품이 선택되어 있습니다.<br><br>다른 제품으로 변경하시려면<br>화면 상단 <span style="font-weight:700">"제품 재선택"</span> 버튼을 선택해주세요.', {
+                        lgkorUI.alert(
+                            self.model.categoryNm + ' &gt; ' +self.model.subCategoryNm + (self.model.modelCode ? '<br><span style="font-weight:700">"' +self.model.modelCode+ '"</span>' : '' ) +'<br>제품이 선택되어 있습니다.<br><br>다른 제품으로 변경하시려면<br>화면 상단 <span style="font-weight:700">"제품 재선택"</span> 버튼을 선택해주세요.', {
                             okBtnName: '닫기',
                             ok: function() {
                                 self.complete();

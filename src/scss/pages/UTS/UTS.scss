@@ -3,6 +3,18 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+.pc-only {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+.mo-only {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
 
 // 통합검색
 .contents.search {
@@ -19,7 +31,7 @@
     //    opacity: .2;
     //}
     .search-tabs-wrap {
-        margin-bottom: 32px;
+        margin-bottom: 48px;
         //border-bottom: 8px solid $color-bg;
         .tabs-wrap {
             max-width: (1380px + 80px);
@@ -69,9 +81,6 @@
     }
 
     .recommended-curation {
-        @include mobile {
-            margin-top: 40px;
-        }
         .inner {
             max-width: 1380 + 80px;
             margin: 0 auto;
@@ -82,6 +91,7 @@
             }
         }
         .title {
+            @include blind;
             margin-bottom: 24px;
             font-weight: 700;
             @include font($font-large-2,34px);
@@ -219,14 +229,14 @@
     }
 
     .smart-filter {
-        margin-top: 48px;
+        margin-top: 32px;
         .inner {
             max-width: 1380 + 80px;
             margin: 0 auto;
             padding: 0 40px;
         }
         @include mobile {
-            margin-top: 32px;
+            margin-top: 24px;
             .inner {
                 max-width: 100%;
                 padding: 0;
@@ -627,15 +637,22 @@
         .text-area {
             position: absolute;
             top: 50%;
-            left: 0;
+            left: 120px;
             transform: translateY(-50%);
             width: 100%;
-            padding: 0 80px;
+            max-width: 640px;
+            text-align: center;
+            @media screen and (max-width: 1300px) {
+                left: 0;
+                padding: 0 80px;
+            }
             .title {
                 display: block;
                 margin-bottom: 8px;
-                @include textEllipsis;
                 @include font($font-large-1,30px);
+                @include pc {
+                    @include textEllipsis;
+                }
             }
             .sub-copy {
                 display: block;
@@ -652,13 +669,25 @@
             margin: 32px 0 0;
             padding: 0 16px;
             a {
-                height: 96px;
+                height: auto;
+            }
+            img {
+                position: static;
+                width: 100%;
+                height: auto;
             }
             .text-area {
-                padding: 0 24px;
+                top: 12px;
+                transform: translateY(0);
+                max-width: calc(50% + 32px);
+                padding: 0 16px;
+                text-align: left;
                 .title {
                     margin-bottom: 0;
                     @include font(13px,21px);
+                    br {
+                        display: block;
+                    }
                 }
                 .sub-copy {
                     @include font($font-x-small,20px);
@@ -777,7 +806,7 @@
         }
         .result-list-wrap {
             @include mobile {
-                padding-bottom: 45px;
+                padding-bottom: 21px;
             }
         }
     }
@@ -805,6 +834,13 @@
                 margin-top: 40px;
             }
         }
+        .list-wrap.care-list {
+            .result-list {
+                > li .result-info .info-text {
+                    display: block;
+                }
+            }
+        }
     }
 
     .list-head {
@@ -830,7 +866,7 @@
             padding: 0 0 16px;
             .btn-area {
                 position: absolute;
-                bottom: 12px;
+                bottom: 0;
                 right: 0;
                 .btn-link {
                     margin-top: 0;
