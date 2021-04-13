@@ -193,14 +193,20 @@
                 var self = this;
                 var ajaxUrl = self.$formWrap.attr('data-receipt-url');
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                    if(result.data.alert) {
-                        self.openAlert(result.data.alert);
-
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, param, function(result) {
+                    var data = result.data;
+                    if(lgkorUI.stringToBool(data.success)) {
+                        if(data.alert) {
+                            self.openAlert(result.data.alert);
+                        }
                         self.$categorySelect.vcSelectbox('selectedIndex',0,true);
                         self.$inputReceipt.val('');
+                    } else {
+                        if(data.alert) {
+                            self.openAlert(result.data.alert);
+                        }
                     }
-                });
+                },"POST",null);
             },
 
             openAlert: function(alert) {

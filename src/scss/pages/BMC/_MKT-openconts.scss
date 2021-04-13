@@ -1089,7 +1089,7 @@
             }
             .mail-addr{
                 display:inline-block;
-                text-align: left;
+                text-align:center;
                 width:100%;
                 margin-top:8px;
                 @include mobile {
@@ -1128,7 +1128,7 @@
             }
             .app-btn {
                 position:absolute;
-                bottom:27.5%;
+                bottom:30.5%;
                 &.aos {
                     left:25.3%;
                     width:24%;
@@ -1140,7 +1140,7 @@
                     height:6%;
                 }
                 @include mobile {
-                    bottom:36.4%;
+                    bottom:41.4%;
                     &.aos {
                         left:8%;
                         width:40%;
@@ -1158,6 +1158,7 @@
 
     .event14{
         .terms{
+            padding-top:55px;
             text-align:left;
             @include mobile {
                 padding:0 12px;
@@ -1166,14 +1167,22 @@
                 @include mobile {
                     padding:60px 0 0;
                 }
+                .input-info-wrap{
+                    padding:25px 0 0;
+                }
             }
             .tit-wrap{
+                // font-size:40px;
+                line-height:1.41;
                 @include mobile {
                     font-size:20px;
                     font-weight:700;
                 }
             }
             .tb-tit{
+                padding-bottom:15px;
+                line-height:1.62;
+                font-weight:700;
                 @include mobile {
                     font-size:14px;
                     font-weight:700;
@@ -1204,6 +1213,7 @@
                 }
             }
             .agree-input{
+                padding-top:28px;
                 @include mobile {
                     padding-top:16px
                 }
@@ -1220,6 +1230,7 @@
             }
         }
         .btns{
+            padding:50px 0;
             @include mobile {
                 padding:32px 0 60px;
             }
