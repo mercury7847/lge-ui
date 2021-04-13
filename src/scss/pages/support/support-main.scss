@@ -2002,6 +2002,7 @@
                 }
 
                 .item-tit {
+                    display: block;
                     @include textEllipsisClamp(2);
                     height:2.84em;
                     font-size:24px;
