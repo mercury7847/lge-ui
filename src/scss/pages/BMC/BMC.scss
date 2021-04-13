@@ -30,6 +30,19 @@
         }
     }
 
+    &.home {
+        .visual-wrap {
+            display: block;
+            .slide-content .slide-conts .slide-info-area .inner .slide-btn,
+            .custom-indi-wrap {
+                display: none;
+            }
+        }
+        .page-tabs {
+            padding-top:32px;
+        }
+    }
+
     // MAIN
     @import "ACC4001";
 

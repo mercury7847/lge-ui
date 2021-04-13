@@ -55,13 +55,15 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
         _changeHistory: function(flag) {
             var self = this;
 
-            if (flag) {
-                self.$service.removeClass('on');
-                self.$history.addClass('on');
-                self.$el.addClass('dim');
-            } else {
-                self.$history.removeClass('on');
-                self.$el.removeClass('dim');
+            if (self.$history.find('.history-list').length) {
+                if (flag) {
+                    self.$service.removeClass('on');
+                    self.$history.addClass('on');
+                    self.$el.addClass('dim');
+                } else {
+                    self.$history.removeClass('on');
+                    self.$el.removeClass('dim');
+                }
             }
         },
         _bindEvent: function _bindEvent() {
