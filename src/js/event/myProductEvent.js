@@ -12,14 +12,18 @@
             $('.myProductRegister').on('click', function(e){
                 e.preventDefault();
 
-                var url = $(this).data("sendUrl");
-                if(url) {
-                    self.setMyProductRegiste(url);
+                var loginUrl = $(this).data('loginUrl');
+                if(loginUrl != ""){
+                    location.href = loginUrl;
+                } else{
+                    var url = $(this).data("sendUrl");
+                    var eventId = $(this).data("eventId");
+                    self.setMyProductRegiste(url, eventId);
                 }
             })
         },
 
-        setMyProductRegiste: function(sendurl) {
+        setMyProductRegiste: function(sendurl, eventId) {
             var self = this;
 
             var chk = $('#chk1-1').prop('checked');
@@ -40,14 +44,15 @@
 
             var sendData = {
                 chk1: "Y",
-                chk2: "Y"
+                chk2: "Y",
+                eventId: eventId
             }
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(sendurl,sendData,function(result) {
                 var data = result.data;
                 if(lgkorUI.stringToBool(data.success) && data.sendUrl) {
-                    location.href = result.data.sendUrl;
+                    location.href = data.sendUrl;
                 }
             });
         }
