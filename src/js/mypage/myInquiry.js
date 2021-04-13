@@ -52,6 +52,7 @@
                 self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
 
+                /*
                 var register = {
                     selectReason:{
                         required: true,
@@ -62,6 +63,7 @@
 
                 self.serviceCancelValidation = new vcui.ui.Validation('article[id="popupServiceDetail"] .section-wrap',{register:register});
                 self.serviceCancelProductionValidation = new vcui.ui.Validation('article[id="popupServiceProductDetail"] .section-wrap',{register:register});
+                */
             },
 
             bindEvents: function() {
@@ -206,6 +208,7 @@
             requestModal: function(dm) {
                 var self = this;
                 var ajaxUrl =  encodeURI($(dm).attr('href'));
+                lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                     self.openModalFromHtml(result);
                 }, null, "html");
