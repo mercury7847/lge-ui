@@ -8,11 +8,6 @@ $(function() {
         }
     });
 
-    // setTimeout(function() {
-    //     $("html").scrollTop(0);
-    //     $(".brand-wrap.objet-wrap").removeClass("active on");
-    //     console.log($("html").scrollTop());
-    // }, 1000);
 
     vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
 
@@ -61,9 +56,21 @@ $(function() {
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
 
+        // 웨일 결합처리
+        $('.foot-cont').find('.menu-opener').on('click', function(e) {
+            $('html,body').scrollTop(pageLens * winHeight);
+        });
+
+
+        // 화면 100% 채우기
+        $('html,body').css({ 'overflow': 'hidden', 'height': '100%' });
+        // 모달창 닫기시 overflow:hidden 무시함.
+        $('body').addClass('ignore-overflow-hidden');
+
+
 
         $('.objet-hero').children().css({ 'overflow': 'hidden' });
-        $('html').css({ 'overflow': 'hidden' });
+        //$('html').css({ 'overflow': 'hidden' });
         $('.container').css({ 'overflow': 'visible', 'height': 'auto' });
 
         $('.next-arr').on('click', 'a', function(e) {
@@ -75,7 +82,17 @@ $(function() {
 
 
         $window.on('floatingTop', function() {
-            render(0);
+            // currentPage = 0;
+            // currentStep = 1;
+            // setBeforeCss(currentStep, wheelArr);
+            // moveScene(currentPage,currentStep,0);
+
+            currentPage = 0;
+            currentStep = 1;
+            setBeforeCss(currentStep);
+            moveScene(currentPage, currentStep, 0);
+
+
         });
 
         // element 애니메이션 스탭
@@ -152,6 +169,8 @@ $(function() {
 
         }
 
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+
 
         // 씬으로 이동
         function moveScene(idx, step, speed) {
@@ -162,10 +181,8 @@ $(function() {
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
-            //console.log("idx", idx);
-            var scrollTopData = $(window).height() * idx; //winHeight * idx;
-            //console.log("$(window).height()", $(window).height());
-            //console.log("scrollTopData", scrollTopData);
+            //var scrollTopData = winHeight * idx;
+            var scrollTopData = $(window).height() * idx;
             $scenes.removeClass('active').eq(idx).addClass('active');
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -174,71 +191,81 @@ $(function() {
                     return false;
                 }
 
+                var speedTime = currentPage < idx ? parseInt(speed) : parseInt(speed) - 300;
+                speedTime = Math.max(0, speedTime);
+
                 $('html, body').stop(true).animate({
                     scrollTop: scrollTopData
-                        //scrollTop: winHeight
-                }, speed, 'easeInOutQuart', function() {
-                    canScroll = true
+                }, speedTime, 'easeInOutQuart', function() {
+                    canScroll = true;
+
+
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+                    if (currentPage == 0) {
+                        if (!hasTop) {
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    } else {
+                        if (hasTop) {
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').removeClass('call-yet');
+                        }
+                    }
+
                     currentPage = idx;
                     moveStep(step);
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
                     $("html,body").scrollTop(scrollTopData);
-                    //console.log("$('html,body').scrollTop(0)", $("html,body").scrollTop());
-                    //console.log("scrollTopData", scrollTopData);
-                    // $scenes.each(function() {
-                    //     if ($(this).find('video').length != 0) {
-                    //         if ($(this).hasClass('on')) {
-                    //             $(this).find('video')[0].play();
-                    //         } else {
-                    //             $(this).find('video')[0].pause();
-                    //             $(this).find('video')[0].currentTime = 0;
-                    //         }
-                    //     }
-                    // });
+                    $scenes.each(function() {
+                        if ($(this).find('video').length != 0) {
+                            if ($(this).hasClass('on')) {
+                                $(this).find('video')[0].play();
+                            } else {
+                                $(this).find('video')[0].pause();
+                                $(this).find('video')[0].currentTime = 0;
+                            }
+                        }
+                    });
                 });
             }, 100);
 
-
-
-
-            //오브제 수정
-            // if ($(".brand-wrap.objet-wrap").hasClass("active")) {
-            //     $("html").scrollTop(0);
-            // } else {
-            //     let objetH = $(window).height();
-            //     $("html").scrollTop(objetH);
-            // }
-
-
         }
+
 
 
 
         var prevTime = new Date().getTime();
 
         // 휠 이벤트 처리
-        document.addEventListener('wheel', function(e) {
+        if (!vcui.detect.isMobileDevice) {
 
-            var curTime = new Date().getTime();
-            if (typeof prevTime !== 'undefined') {
-                var timeDiff = curTime - prevTime;
-                if (timeDiff > 35) {
-                    if (currentStep == stepLens) {
-                        var st = $contentWrap.scrollTop();
-                        if (st <= 0 && e.deltaY < 0) {
-                            wheelScene(-1);
-                        }
-                    } else {
-                        if (e.deltaY > 0 || e.deltaY < 0) {
-                            wheelScene(e.deltaY);
+            document.addEventListener('wheel', function(e) {
+
+                var open = $('#layerSearch').hasClass('open');
+                if (!open) {
+                    var curTime = new Date().getTime();
+                    if (typeof prevTime !== 'undefined') {
+                        var timeDiff = curTime - prevTime;
+                        if (timeDiff > 35) {
+                            if (currentStep == stepLens) {
+                                var st = $contentWrap.scrollTop();
+                                if (st <= 0 && e.deltaY < 0) {
+                                    wheelScene(-1);
+                                }
+                            } else {
+                                if (e.deltaY > 0 || e.deltaY < 0) {
+                                    wheelScene(e.deltaY);
+                                }
+                            }
                         }
                     }
+                    prevTime = curTime;
                 }
-            }
-            prevTime = curTime;
 
-        });
+            });
+        }
 
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
@@ -309,24 +336,23 @@ $(function() {
         }
 
         function _findIdx(py) {
-            var idx = 0;
             for (var i = 0; i < posArr.length; i++) {
                 if (posArr[i] > py) {
-                    idx = i;
-                    break;
+                    return i;
                 }
             }
-            return idx;
+            return 0;
         }
 
         function _findStep(page) {
+
             for (var i = 0; i < wheelArr.length; i++) {
                 var arr = wheelArr[i];
                 if (vcui.isArray(arr)) {
                     var pageId = arr[0]['pageId'];
                     if (pageId == page) return i;
                 } else {
-                    return i;
+                    if (arr == page) return i;
                 }
             }
             return 0;
@@ -424,8 +450,10 @@ $(function() {
                     itemHeight = winHeight;
                 }
                 allHeight += itemHeight;
+
                 posArr.push(allHeight);
                 $(this).height(itemHeight);
+
                 totalHeight += itemHeight;
 
                 $(this).find('.img > .video').each(function() {
@@ -434,10 +462,17 @@ $(function() {
 
             });
 
+            posArr.push(10000);
+
             stepLens = wheelArr.length - 1;
-            // console.log("winHeight", winHeight);
-            // console.log("totalHeight", totalHeight);
-            let sceneH = winHeight - $(".header").height() - $(".breadcrumb").height();
+            let fixH;
+            if ($(window).width() < 768) {
+                fixH = 0;
+            } else {
+                fixH = 16;
+            }
+
+            let sceneH = winHeight - $(".header").height() - $(".mobile-nav-wrap").height() + fixH;
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
@@ -445,21 +480,21 @@ $(function() {
             if (page !== undefined) {
                 currentPage = page;
                 currentStep = _findStep(currentPage);
-                setBeforeCss(currentStep);
+                setBeforeCss(currentStep, wheelArr);
                 moveScene(currentPage, currentStep, 0);
             } else {
-                setTimeout(function() {
-                    currentPage = currentPage > 0 ? currentPage : _findIdx($('html, body').scrollTop());
-                    currentStep = _findStep(currentPage);
-                    setBeforeCss(currentStep);
-                    moveScene(currentPage, currentStep, 0);
-                }, 100);
+                currentPage = _findIdx($('html, body').scrollTop());
+                currentStep = _findStep(currentPage);
+                setBeforeCss(currentStep);
+                moveScene(currentPage, currentStep, 0);
             }
         }
 
         // 탭이동 이벤트 처리
+        // 탭이동 이벤트 처리
         $('.objetcollection-tabs .ui_tab').on('tabchange', function(e, data) {
-            moveScene(1, 2, 100)
+            //오류 처리
+            $('html,body').scrollTop(pageLens * winHeight);
             $contentWrap.scrollTop(0);
         });
 
