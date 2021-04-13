@@ -4028,6 +4028,30 @@
                 }
             });
             console.log(purchaseData);
+
+
+
+            for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
+                if (purchaseData[0] == proposeSet.proposeConfig[i].modelCode) {
+                    purchaseData = [];
+                    if (proposeSet.proposeConfig[i].defaultCode != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].defaultCode);
+                    }
+                    if (proposeSet.proposeConfig[i].door1 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door1);
+                    }
+                    if (proposeSet.proposeConfig[i].door2 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door2);
+                    }
+                    if (proposeSet.proposeConfig[i].door3 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door3);
+                    }
+                    if (proposeSet.proposeConfig[i].door4 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door4);
+                    }
+                }
+            }
+            console.log(purchaseData);
             purchaseFn(purchaseData);
 
         });
