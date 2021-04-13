@@ -1,7 +1,11 @@
 .chk-wrap-colorchip {
+	// & input + label:before {
+	// 	background-image:url('/lg5-common/images/colorchip.jpg');
+	// 	background-size:400px;
+	// }
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip.jpg');
-		background-size:400px;
+		background-image:url('/lg5-common/images/colorchip/colorchip.png');
+		background-size:144px auto;
 	}
 	&.large{
 		& input + label:before {
@@ -1747,9 +1751,9 @@
 			background:#393b3f;
 		}
 	}
-	&.kimchi_objet-sand {
+	&.sand {
 		& input + label:before {
-			background:#d8c4ae;
+			background:#D4BEA6;
 		}
 	}
 	&.kimchi_objet-stone {
@@ -2349,7 +2353,7 @@
 	/* 오브제컬렉션 */
 	&.objet_green {
 		& input + label:before {
-			background:#243328;
+			background:#293C2E;
 		}
 	}
 	&.objet_silver {
@@ -2409,7 +2413,7 @@
 	}
 	&.objet_mint {
 		& input + label:before {
-			background:#b7c7b6;
+			background:#b8c9b7;
 		}
 	}
 	&.objet_pink {
@@ -2434,12 +2438,22 @@
 	}
 	&.objet_black {
 		& input + label:before {
+			background:#4B4D50;
+		}
+	}
+	&.objet_pcm_black {
+		& input + label:before {
 			background:#3a3a3f;
 		}
 	}
 	&.objet_botanic {
 		& input + label:before {
 			background:#737d7d;
+		}
+	}
+	&.sts_silver {
+		& input + label:before {
+			background:#DFDFE1;
 		}
 	}
 	&.objet_solid-silver {
@@ -2455,6 +2469,153 @@
 	&.objet_stone {
 		& input + label:before {
 			background:#554d44;
+		}
+	}
+	&.fenix-stone {
+		& input + label:before {
+			background:#554d44;
+		}
+	}
+
+	/* 210413 추가 */
+	&.botanic_botanic {
+		& input + label:before {
+			background-position:0 0;
+		}
+	}
+	&.stone_stone {
+		& input + label:before {
+			background-position:-24px 0;
+		}
+	}
+	&.mint_mint {
+		& input + label:before {
+			background-position:-48px 0;
+		}
+	}
+	&.pink_silver {
+		& input + label:before {
+			background-position:-72px 0;
+		}
+	}
+	&.black_black {
+		& input + label:before {
+			background-position:-96px 0;
+		}
+	}
+	&.green_silver {
+		& input + label:before {
+			background-position:-120px 0;
+		}
+	}
+	&.botanic_sand {
+		& input + label:before {
+			background-position:0 -24px;
+		}
+	}
+	&.beige_beige {
+		& input + label:before {
+			background-position:-24px -24px;
+		}
+	}
+	&.pink_beige {
+		& input + label:before {
+			background-position:-48px -24px;
+		}
+	}
+	&.silver_beige {
+		& input + label:before {
+			background-position:-72px -24px;
+		}
+	}
+	&.black_grey {
+		& input + label:before {
+			background-position:-96px -24px;
+		}
+	}
+	&.black_silver {
+		& input + label:before {
+			background-position:-120px -24px;
+		}
+	}
+	&.botanic_stone {
+		& input + label:before {
+			background-position:0 -48px;
+		}
+	}
+	&.beige_mint {
+		& input + label:before {
+			background-position:-24px -48px;
+		}
+	}
+	&.pink_pink {
+		& input + label:before {
+			background-position:-48px -48px;
+		}
+	}
+	&.silver_mint {
+		& input + label:before {
+			background-position:-72px -48px;
+		}
+	}
+	&.grey_grey {
+		& input + label:before {
+			background-position:-96px -48px;
+		}
+	}
+	&.silver_green {
+		& input + label:before {
+			background-position:-96px -48px;
+		}
+	}
+	&.sand_sand {
+		& input + label:before {
+			background-position:0 -72px;
+		}
+	}
+	&.beige_pink {
+		& input + label:before {
+			background-position:-24px -72px;
+		}
+	}
+	&.beige_silver {
+		& input + label:before {
+			background-position:-48px -72px;
+		}
+	}
+	&.silver_pink {
+		& input + label:before {
+			background-position:-72px -72px;
+		}
+	}
+	&.white_white {
+		& input + label:before {
+			background-position:-96px -72px;
+		}
+	}
+	&.stone_sand {
+		& input + label:before {
+			background-position:0 -96px;
+		}
+	}
+	&.mint_beige {
+		& input + label:before {
+			background-position:-24px -96px;
+		}
+	}
+	&.mint_silver {
+		& input + label:before {
+			background-position:-48px -96px;
+		}
+	}
+	&.silver_silver {
+		& input + label:before {
+			background-position:-72px -96px;
+		}
+	}
+	&.green_green {
+		& input + label:before {
+			background-position:-96px -96px;
 		}
 	}
 }
