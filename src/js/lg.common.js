@@ -1645,9 +1645,7 @@ var isApp = function(){
                 options: {
                     text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
                     imgPath: '/kr/support/images/find-model/model-smart-phone.jpg',
-                    imageAlt: '모델명 및 제조번호 확인 예시 이미지',
-                    categoryPlaceholder: '카테고리 선택',
-                    subCategoryPlaceholder: '세부 카테고리 선택'
+                    imgAlt: '모델명 및 제조번호 확인 예시 사진'
                 },
                 init: function() {
                     var self = this;
@@ -1676,6 +1674,23 @@ var isApp = function(){
                         if (self.subCategory) {
                             self.searchModelName(self.category, self.subCategory);
                         }
+                    } else {
+                        var $resultTxt = self.$result.find('.txt'),
+                            $resultImg = self.$result.find('.img img'),
+                            $viewBtn = self.$result.find('.img .btn-img-view');
+                        var options = self.options;
+
+                        $resultTxt.html(options.text);
+                        $resultImg.attr('src', options.imgPath);
+                        $resultImg.attr('alt', options.imgAlt);
+                        $viewBtn.attr('href', options.imgPath);
+
+                        self.$category.find('option.placeholder').prop('selected', true);
+                        self.$subCategory.prop('disabled', true);
+                        self.$subCategory.find('option:not(.placeholder)').remove();
+
+                        self.$category.vcSelectbox('update');
+                        self.$subCategory.vcSelectbox('update');
                     }
                 },
                 searchSubCategory: function(category, subCategory) {
@@ -1710,12 +1725,14 @@ var isApp = function(){
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxData(self.searchModelNameUrl, param, function(result) {
                         var $resultTxt = self.$result.find('.txt'),
-                            $resultImg = self.$result.find('.img img');
+                            $resultImg = self.$result.find('.img img'),
+                            $viewBtn = self.$result.find('.img .btn-img-view');
                         var data = result.data;
                         
                         $resultTxt.html(data.text);
                         $resultImg.attr('src', data.imgPath);
-                        $resultImg.attr('alt', data.imageAlt);
+                        $resultImg.attr('alt', data.imgAlt);
+                        $viewBtn.attr('href', data.imgPath);
                     }, 'POST');
                 },
                 bindEvent: function() {
@@ -1732,23 +1749,6 @@ var isApp = function(){
 
                     self.$subCategory.on('change', function() {
                         self.searchModelName();
-                    });
-
-                    self.$modelPopup.on('modalhidden', function() {
-                        var $resultTxt = self.$result.find('.txt'),
-                            $resultImg = self.$result.find('.img img');
-                        var options = self.options;
-
-                        $resultTxt.html(options.text);
-                        $resultImg.attr('src', options.imgPath);
-                        $resultImg.attr('alt', options.imageAlt);
-
-                        self.$category.find('option.placeholder').prop('selected', true);
-                        self.$subCategory.prop('disabled', true);
-                        self.$subCategory.find('option:not(.placeholder)').remove();
-
-                        self.$category.vcSelectbox('update');
-                        self.$subCategory.vcSelectbox('update');
                     });
                 }
             }
