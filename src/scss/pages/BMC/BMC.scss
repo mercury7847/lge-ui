@@ -18,7 +18,7 @@
         background-color:#fff;
         @include mobile {
             margin-bottom:32px;
-            padding:0;
+            padding: 32px 0 0;
         }
         &.type2 {
             margin-bottom:0;
