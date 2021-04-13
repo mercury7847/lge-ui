@@ -65,8 +65,8 @@
                 self.popUpDataSetting();
 
                 //최근본 제품 쿠키에 넣기
-                if(typeof sendData !== 'undefined' && sendData.modelId) {
-                    lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,sendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);   
+                if(typeof lgePdpSendData !== 'undefined' && lgePdpSendData.modelId) {
+                    lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,lgePdpSendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);
                 }
 
                 if(self.$component.data('consumables')) {
@@ -587,7 +587,7 @@
                         $(this).removeClass('compare-select');
                     }
                     //$(this).prop('checked',!checked);
-                    self.requestCompareItem(sendData, checked, $(this));
+                    self.requestCompareItem(lgePdpSendData, checked, $(this));
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -598,8 +598,8 @@
                 //찜하기
                 self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]').on('click', function(e) {
                     var $this = $(this);
-                    var _id = sendData.modelId;
-                    var sku = sendData.sku;
+                    var _id = lgePdpSendData.modelId;
+                    var sku = lgePdpSendData.sku;
                     var wishListId = $this.data("wishListId");
                     var wishItemId = $this.data("wishItemId");
                     var wish = $this.is(':checked');
@@ -639,9 +639,9 @@
                     e.preventDefault();
 
                     var param = {
-                        "id":sendData.id,
-                        "sku":sendData.sku,
-                        "rtSeq":sendData.rtSeq,
+                        "id":lgePdpSendData.id,
+                        "sku":lgePdpSendData.sku,
+                        "rtSeq":lgePdpSendData.rtSeq,
                     }
 
                     var $paymentAmount = $(this).parents('.payment-amount');
@@ -661,9 +661,9 @@
                     //선택 수량
                     var quantity = $paymentAmount.find('div.select-quantity input.quantity');
                     if(quantity.length > 0) {
-                        cart.push(sendData.sku+"|"+quantity.val());
+                        cart.push(lgePdpSendData.sku+"|"+quantity.val());
                     } else {
-                        cart.push(sendData.sku+"|1");
+                        cart.push(lgePdpSendData.sku+"|1");
                     }
 
                     param.sku = cart.join(',');
@@ -1768,7 +1768,7 @@
 
                 self.processProductBuy = null;
 
-                var tempSendData = JSON.parse(JSON.stringify(sendData));
+                var tempSendData = JSON.parse(JSON.stringify(lgePdpSendData));
                 var $paymentAmount = $dm.parents('.payment-amount');
 
                 //렌탈케어 제품인가(일반구매의 케어십과 틀림)
@@ -1898,21 +1898,20 @@
                             if(sendParam.easyRequestCard) {
                                 sendParam.easyRequestCard = param.easyRequestCard
                             }
+
+                            sendParam.modelUrlPath = location.pathname + location.search;
+                            /*
                             if(typeof modelUrlPath !== 'undefined') {
                                 var queryString = location.search;
                                 sendParam.modelUrlPath = modelUrlPath + queryString;
                             }
+                            */
 
                             if(isDirectBuy) {
-                                //2021-03-17 정승우 로그인 안되있을 경우 일단 로그인 창 먼저 뛰우고 케어십 안내 페이지 뜨게 하기 위해서 제거
-                                //$('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
-                                //$('#careRequireBuyPopup').off('goto').on('click.goto','.btn-group button',function(e){
-                                    lgkorUI.showLoading();
-                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                        //console.log(result);
-                                    });
-                                //});
-                                //$('#careRequireBuyPopup').vcModal();
+                                lgkorUI.showLoading();
+                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                    //console.log(result);
+                                });
                             } else {
                                 lgkorUI.showLoading();
                                 lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
@@ -1942,11 +1941,11 @@
 
             //로그인 데이타 정보 가져오기
             getRewardInfo: function() {
-                if(typeof sendData !== 'undefined') {
+                if(typeof lgePdpSendData !== 'undefined') {
                     var self = this;
                     var ajaxUrl = self.$pdpInfo.attr('data-reward-url');
                     var param = {
-                        modelId: sendData.modelId
+                        modelId: lgePdpSendData.modelId
                     }
                     /*
                     if(!ajaxUrl) {
@@ -2242,10 +2241,8 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
 
                 if(!isCompare){
-                    //if(vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
-                        //console.log(sendData['id'], i);
-                        if(sendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
+                        if(lgePdpSendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
                     }
                 }
                 

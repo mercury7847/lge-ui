@@ -4535,6 +4535,10 @@
                         $(this).attr("data-del", "Y");
                     });
                 }
+                setTimeout(function() {
+                    simulBodySwiper.update();
+                }, 100);
+
             }, 100);
 
 

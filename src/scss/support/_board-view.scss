@@ -156,9 +156,14 @@
             }
             #viewContent {
                 padding:0 24px;
-                p, strong {
+                p {
                     color:#000;
                     @include font-medium;
+                }
+                strong {
+                    color:inherit;
+                    font-size:inherit;
+                    line-height:inherit;
                 }
                 .point {
                     color: #da0f47;
