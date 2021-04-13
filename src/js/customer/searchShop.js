@@ -660,10 +660,23 @@
                 var storeFormTypeArr = keywords.storeFormType.split('|');
                 var storeTypeArr = keywords.storeType.split('|');
 
-                var centerType = ckServiceCenterType? vcui.array.include(serviceCenterTypeArr, item.serviceCenterType) : false;
-                var shopType = ckStoreCompanyCodee? vcui.array.include(storeCompanyCodeArr, item.shopType) : false;
-                var storeFormType = ckStoreFormType? vcui.array.include(storeFormTypeArr, item.storeFormType) : false;
-                var storeType = ckStoreType? vcui.array.include(storeTypeArr, item.storeType) : false;
+                // 수정 bestshop 으로 들어오면 bestshopHiplaza 을 추가해서 검색함.
+                if(vcui.array.include(storeCompanyCodeArr, 'bestshop')){
+                    storeCompanyCodeArr.push('bestshopHiplaza');
+                }
+
+
+                var shopArr = item.shopType.split(',');
+                var storeArr = item.storeType.split(',');
+
+                var shopFilter = vcui.array.filter(storeCompanyCodeArr, function(x){ return vcui.array.include(shopArr, x)});
+                var storeFilter = vcui.array.filter(storeTypeArr, function(x){ return vcui.array.include(storeArr, x)});
+
+                var storeType = ckStoreType? storeFilter.length>0 : false;
+                var shopType = ckStoreCompanyCodee? shopFilter.length>0 : false;
+
+                var centerType = ckServiceCenterType? vcui.array.include(serviceCenterTypeArr, item.serviceCenterType) : false;               
+                var storeFormType = ckStoreFormType? vcui.array.include(storeFormTypeArr, item.storeFormType) : false;                
                 
 
                 return shopType || centerType || storeFormType || storeType || newStoreType;
@@ -954,11 +967,11 @@
                     'position':'relative',
                     'visibility':'visible',
                     'left':'0',
-                    'height':'400'
+                    'height':'320'
                 });                   
     
                 toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                self.$map.resize(self.windowWidth, 400);
+                self.$map.resize(self.windowWidth, 320);
 
             }else{
 
@@ -968,11 +981,11 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'400'
+                        'height':'320'
                     });                   
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');        
-                    self.$map.resize(self.windowWidth, 400);
+                    self.$map.resize(self.windowWidth, 320);
     
                 } else{                    
     
