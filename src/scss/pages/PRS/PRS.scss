@@ -733,6 +733,23 @@
 				}
 			}
 		}
+		.slide-wrap.product-slide {
+			.slide-content {
+				.slide-track {
+					// width:100% !important;
+					.slide-conts {
+						// width:100% !important;
+						margin-top:24px;
+						&:first-child {
+							margin-top:0;
+						}
+						@include mobile {
+							padding:0 6px;
+						}
+					}
+				}
+			}
+		}
 		.product-banner {
 			position:relative;
 			max-width:1848px;
@@ -1162,6 +1179,7 @@
 									font-size:15px;
 									line-height:23px;
 									white-space:initial;
+									word-break:break-all;
 								}
 							}
 						}
