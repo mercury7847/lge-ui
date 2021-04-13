@@ -155,13 +155,11 @@
                 //padding-top:0;
             }
         }
-        &.subscribe-story {
-            .tag-subscribe-link {
-                margin-top: -24px;
-                text-align: center;
-                @include mobile {
-                    margin-top: -16px;
-                }
+        .tag-subscribe-link {
+            margin: -24px 0 48px;
+            text-align: center;
+            @include mobile {
+                margin: -16px 0 32px;
             }
         }
         .story-link {
