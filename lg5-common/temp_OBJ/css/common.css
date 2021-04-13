@@ -14796,11 +14796,11 @@
     .ct_h04 .cct.collec-ct03 {
         top: 1202px;
     }
-    #material {
+    #materialM {
         padding-top: 88px;
         padding-bottom: 108px;
         height: 365px;
-        background: url("/lg5-common/images/OBJ/material_img/bg_matertial01.jpg") no-repeat center center;
+        background: url("/lg5-common/images/OBJ/material_m/bg_matertial01.jpg") no-repeat center center;
         background-size: cover;
     }
     .material2 {
@@ -14808,26 +14808,26 @@
         background: url("/lg5-common/images/OBJ/mobi_img/bg-material02.jpg") no-repeat center center;
         background-size: cover;
     }
-    #material-scroll {
+    #material-scrollM {
         position: relative;
     }
-    #material-info {
+    #material-infoM {
         position: relative;
         background: #e9e8e3;
     }
-    #material-div {
+    #material-divM {
         background: url("/lg5-common/images/OBJ/mobi_img/bg-maiterial03.jpg") no-repeat center center;
         background-size: cover;
     }
-    #material-div2 {
+    #material-div2M {
         padding: 80px 24px;
     }
-    #material-div2>div>div {
+    #material-div2M>div>div {
         position: relative;
         margin-top: 80px;
         padding-top: 392px;
     }
-    #material-div2>div>div:first-child {
+    #material-div2M>div>div:first-child {
         margin-top: 0px;
     }
     .mat-bx {
@@ -14891,19 +14891,19 @@
         margin-top: 0px;
     }
     .mat-list>ul>li.list01 {
-        background: url("/lg5-common/images/OBJ/material_img/icon-fenix-01.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/icon-fenix-01.png") no-repeat;
         background-size: 64px 64px;
     }
     .mat-list>ul>li.list02 {
-        background: url("/lg5-common/images/OBJ/material_img/icon-fenix-02.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/icon-fenix-02.png") no-repeat;
         background-size: 64px 64px;
     }
     .mat-list>ul>li.list03 {
-        background: url("/lg5-common/images/OBJ/material_img/icon-fenix-03.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/icon-fenix-03.png") no-repeat;
         background-size: 64px 64px;
     }
     .mat-list>ul>li.list04 {
-        background: url("/lg5-common/images/OBJ/material_img/icon-fenix-04.png") no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/icon-fenix-04.png") no-repeat;
         background-size: 64px 64px;
     }
     .material-bx {
@@ -14923,13 +14923,13 @@
         min-width: 271px;
         text-align: left;
     }
-    #material-div2 .img01 {
+    #material-div2M .img01 {
         position: absolute;
         z-index: 9;
         top: 0px;
         left: 0px;
     }
-    #material-div2 .img02 {
+    #material-div2M .img02 {
         position: absolute;
         width: 247px;
         height: 328px;
@@ -14939,13 +14939,13 @@
         background-image: linear-gradient(to bottom, #434343, #313131 100%);
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img03 {
+    #material-div2M .img03 {
         position: absolute;
         z-index: 9;
         top: 0px;
         right: 24px;
     }
-    #material-div2 .img04 {
+    #material-div2M .img04 {
         position: absolute;
         width: 247px;
         height: 328px;
@@ -14955,13 +14955,13 @@
         background: #b8c9b7;
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img05 {
+    #material-div2M .img05 {
         position: absolute;
         z-index: 9;
         top: 0px;
         left: 0px;
     }
-    #material-div2 .img06 {
+    #material-div2M .img06 {
         position: absolute;
         width: 247px;
         height: 328px;
@@ -14971,13 +14971,13 @@
         background: #ede8e4;
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img07 {
+    #material-div2M .img07 {
         position: absolute;
         z-index: 9;
         top: 0px;
         right: 24px;
     }
-    #material-div2 .img08 {
+    #material-div2M .img08 {
         position: absolute;
         width: 247px;
         height: 328px;
@@ -14987,22 +14987,22 @@
         background-image: linear-gradient(to bottom, #4e5d3e, #263a29 100%);
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img01 .img-overflow {
+    #material-div2M .img01 .img-overflow {
         width: 247px;
         height: 328px;
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img03 .img-overflow {
+    #material-div2M .img03 .img-overflow {
         width: 247px;
         height: 328px;
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img05 .img-overflow {
+    #material-div2M .img05 .img-overflow {
         width: 247px;
         height: 328px;
         box-shadow: 0 24px 56px 0 #00000028;
     }
-    #material-div2 .img07 .img-overflow {
+    #material-div2M .img07 .img-overflow {
         width: 247px;
         height: 328px;
         box-shadow: 0 24px 56px 0 #00000028;
@@ -15189,18 +15189,18 @@
     }
     .matList01 {
         margin-top: 100px;
-        background: url("/lg5-common/images/OBJ/material_img/img-material-scroll03.png") top right no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/img-material-scroll03.png") top right no-repeat;
         background-size: 350px 220px;
     }
     .matList02 {
         margin-top: 80px;
-        background: url("/lg5-common/images/OBJ/material_img/img-material-scroll08.png") top left no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/img-material-scroll08.png") top left no-repeat;
         background-size: 350px 220px;
     }
     .matList03 {
         margin-top: 80px;
         margin-bottom: 80px;
-        background: url("/lg5-common/images/OBJ/material_img/img-material-scroll10.png") top right no-repeat;
+        background: url("/lg5-common/images/OBJ/material_m/img-material-scroll10.png") top right no-repeat;
         background-size: 350px 220px;
     }
     .matList02>.ct_width {

@@ -188,7 +188,8 @@ h2.title {
                     height: 505px;
                     //opacity: .9;
                     @include mobile {
-                        height: 245px;
+                        //height: 245px;
+                        height: 320px;
                     }
                     .btn_model_sel {
                         position: absolute;
@@ -255,7 +256,8 @@ h2.title {
                         .default_img {
                             height: 428px;
                             @include mobile {
-                                height: 215px;
+                                //height: 215px;
+                                height: 290px;
                             }
                             img {
                                 height: 100%;
@@ -773,7 +775,8 @@ h2.title {
                             &.is_active {
                                 @include mobile {
                                     width: 100vw;
-                                    height: 90vw;
+                                    //height: 90vw;
+                                    height: 400px;
                                 }
                             }
                         }

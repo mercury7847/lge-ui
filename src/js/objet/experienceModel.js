@@ -5905,7 +5905,7 @@ function resultModelPrice(price) {
     setTimeout(function() {
         for (let i = 0; i < priceLeng; i++) {
             if (price[i] == "nodata") {
-                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+                $(".tb_compare tbody tr:eq(" + i + ")").css("display", "none");
 
             } else {
                 $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(addComma(price[i]));

@@ -1,5 +1,5 @@
 if (!navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/)) {
-    document.location.href = "/lg-objet-collection/simulator";
+    //document.location.href = "/lg-objet-collection/simulator";
 }
 
 
@@ -2091,8 +2091,10 @@ var go_shop_model = "";
                     // @pck 2020-10-19 로직 변경 (e)
                     */
                     return true;
+                    //return false;
                 }
-                return false;
+                //return false;
+                return true;
             }
 
             var tmpObject = document.querySelectorAll('.btn-objet');
