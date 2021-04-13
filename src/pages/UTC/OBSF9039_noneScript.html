@@ -29,16 +29,17 @@
                     <div class="section-wrap">
                         <div class="sects">
                             <!-- 주문정보 -->
-                            <div class="info-tbl-wrap">
+                            <div class="info-tbl-wrap inquiry-list-wrap">
                                 <!-- loop -->
                                 @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                    "sizeType3" : true,
                                     "infos" : [
                                         { "dt" : "주문일", "dd" : "2020.08.29" },
                                         { "dt" : "주문번호", "dd" : "20200912497207" },
                                     ],
                                     "total" : "총 2건", 
                                     "th" : [
-                                        "제품정보", "진행상태"
+                                        "제품정보", "결제금액<!-- 210411 추가 -->", "진행상태"
                                     ]
                                 })
                                 @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -53,9 +54,12 @@
                                                     "주요스펙1",
                                                     "주요스펙2"
                                                 ],
-                                                "count" : true,
-                                                "price" : "1,760,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "1,760,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -72,9 +76,12 @@
                                                 "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "name" : "LG 디오스 냉장고 일반형 정수 필터",
                                                 "name2" : "OLED55BXPUA",
-                                                "count" : true,
-                                                "price" : "50,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "50,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -87,23 +94,25 @@
                                     }
                                 ])
                                 @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                    "cancel" : true
+                                    "cancel" : true,
+                                    "nonMembers" : true
                                 })
                                 <!-- // loop -->
                             </div>
                             <!-- // 주문정보 -->
 
                             <!-- 주문정보 -->
-                            <div class="info-tbl-wrap">
+                            <div class="info-tbl-wrap inquiry-list-wrap">
                                 <!-- loop -->
                                 @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                    "sizeType3" : true,
                                     "infos" : [
                                         { "dt" : "주문일", "dd" : "2020.08.29" },
                                         { "dt" : "주문번호", "dd" : "20200912497207" },
                                     ],
                                     "total" : "총 2건", 
                                     "th" : [
-                                        "제품정보", "진행상태"
+                                        "제품정보", "결제금액<!-- 210411 추가 -->", "진행상태"
                                     ]
                                 })
                                 @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -118,9 +127,12 @@
                                                     "주요스펙1",
                                                     "주요스펙2"
                                                 ],
-                                                "count" : true,
-                                                "price" : "1,760,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "1,760,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -138,9 +150,12 @@
                                                 "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "name" : "LG 디오스 냉장고 일반형 정수 필터",
                                                 "name2" : "OLED55BXPUA",
-                                                "count" : true,
-                                                "price" : "50,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "50,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -153,22 +168,25 @@
                                         }
                                     }
                                 ])
-                                @@include('./common/modules/info-tbl-wrap-bottom.html')
+                                @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                    "nonMembers" : true
+                                })
                                 <!-- // loop -->
                             </div>
                             <!-- // 주문정보 -->
 
                             <!-- 주문정보 : 취소신청 완료 후 상세 -->
-                            <div class="info-tbl-wrap">
+                            <div class="info-tbl-wrap inquiry-list-wrap">
                                 <!-- loop -->
                                 @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                    "sizeType3" : true,
                                     "infos" : [
                                         { "dt" : "주문일", "dd" : "2020.08.29" },
                                         { "dt" : "주문번호", "dd" : "20200912497207" },
                                     ],
                                     "total" : "총 2건", 
                                     "th" : [
-                                        "제품정보", "진행상태"
+                                        "제품정보", "결제금액<!-- 210411 추가 -->", "진행상태"
                                     ]
                                 })
                                 @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -183,9 +201,12 @@
                                                     "주요스펙1",
                                                     "주요스펙2"
                                                 ],
-                                                "count" : true,
-                                                "price" : "1,760,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "1,760,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -201,9 +222,12 @@
                                                 "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "name" : "LG 디오스 냉장고 일반형 정수 필터",
                                                 "name2" : "OLED55BXPUA",
-                                                "count" : true,
-                                                "price" : "50,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "50,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -215,23 +239,24 @@
                                     }
                                 ])
                                 @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                    "cancel" : true
+                                    "nonMembers" : true
                                 })
                                 <!-- // loop -->
                             </div>
                             <!-- // 주문정보 : 취소신청 완료 후 상세 -->
 
                             <!-- 주문정보 : 부분취소 완료 후 -->
-                            <div class="info-tbl-wrap">
+                            <div class="info-tbl-wrap inquiry-list-wrap">
                                 <!-- loop -->
                                 @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                    "sizeType3" : true,
                                     "infos" : [
                                         { "dt" : "주문일", "dd" : "2020.08.29" },
                                         { "dt" : "주문번호", "dd" : "20200912497207" },
                                     ],
                                     "total" : "총 2건", 
                                     "th" : [
-                                        "제품정보", "진행상태"
+                                        "제품정보", "결제금액<!-- 210411 추가 -->", "진행상태"
                                     ]
                                 })
                                 @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -247,9 +272,12 @@
                                                     "주요스펙1",
                                                     "주요스펙2"
                                                 ],
-                                                "count" : true,
-                                                "price" : "1,760,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "1,760,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -265,9 +293,12 @@
                                                 "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "name" : "LG 디오스 냉장고 일반형 정수 필터",
                                                 "name2" : "OLED55BXPUA",
-                                                "count" : true,
-                                                "price" : "50,000원"
+                                                "count" : true
                                             }
+                                        },
+                                        "paymentPrice" : {
+                                            "blind" : "결제금액",
+                                            "price" : "50,000원"
                                         },
                                         "col2" : {
                                             "blind" : "진행상태",
@@ -280,7 +311,9 @@
                                         }
                                     }
                                 ])
-                                @@include('./common/modules/info-tbl-wrap-bottom.html')
+                                @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                    "nonMembers" : true
+                                })
                                 <!-- // loop -->
                             </div>
                             <!-- // 주문정보 : 부분취소 완료 후 -->

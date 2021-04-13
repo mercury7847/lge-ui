@@ -781,7 +781,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             setAppLocation = function(currentLocation){
             	if (currentLocation == '') currentLocation = '37.55401,126.97486';//
             	
-            	searchCurrentSearch();
         		var arrLocation = currentLocation.split(',');
                 self.latitude = arrLocation[0];
                 self.longitude = arrLocation[1];

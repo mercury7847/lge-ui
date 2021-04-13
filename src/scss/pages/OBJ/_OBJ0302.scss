@@ -145,6 +145,27 @@ h2.title {
                         .btn_model_sel {
                             z-index: -1;
                         }
+                        .door_wrap {
+                            .model_door {
+                                &[data-edit="Y"] {
+                                    box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, .14);
+                                    &:after {
+                                        position: absolute;
+                                        content: '';
+                                        left: 0;
+                                        right: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        border: 3px solid rgb(218, 15, 71);
+                                        z-index: 5;
+                                        //box-shadow: inset 0px 0px 10px 10px rgba(218, 15, 71, .5);
+                                    }
+                                }
+                            }
+                        }
+                        .default_img {
+                            outline: 3px solid #000000;
+                        }
                     }
                 }
                 &[data-model-add="N"] {
@@ -176,6 +197,9 @@ h2.title {
                         width: 100%;
                         height: 100%;
                         z-index: 5;
+                        &:focus {
+                            outline: none;
+                        }
                     }
                     .btn_model_del {
                         display: none;
@@ -205,8 +229,17 @@ h2.title {
                             .model_door {
                                 position: absolute;
                                 background: url('/lg5-common/images/OBJ/experience/bg_door_default.png') #ffffff center center no-repeat;
-                                &[data-edit="Y"] {
-                                    box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, .14);
+                                &[data-door-direction="RB"],
+                                &[data-door-direction="RT"] {
+                                    &:before {
+                                        position: absolute;
+                                        content: '';
+                                        left: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        width: 1px;
+                                        background: #000000;
+                                    }
                                 }
                                 @include mobile {
                                     background-size: 21px 21px;
@@ -570,6 +603,9 @@ h2.title {
                                         }
                                         &.is_active {
                                             opacity: 1;
+                                            &:disabled {
+                                                opacity: 1;
+                                            }
                                         }
                                         &:disabled {
                                             opacity: .1;
@@ -677,6 +713,9 @@ h2.title {
                                                 border: 1px solid #da0f47;
                                                 border-radius: 7px;
                                                 overflow: hidden;
+                                                &:disabled {
+                                                    opacity: 1;
+                                                }
                                             }
                                             &:disabled {
                                                 opacity: .3;
@@ -952,6 +991,7 @@ h2.title {
                                             text-align: center;
                                             line-height: 2.89;
                                             &:last-child {
+                                                text-align: right;
                                                 span {
                                                     padding: 0;
                                                 }
@@ -971,9 +1011,11 @@ h2.title {
                         }
                     }
                     .etc_area {
-                        display: none;
+                        opacity: 0;
+                        visibility: hidden;
                         &.is_active {
-                            display: block;
+                            opacity: 1;
+                            visibility: visible;
                         }
                         .btn_wrap {
                             padding: 20px 0;

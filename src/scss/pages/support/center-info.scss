@@ -100,6 +100,24 @@
         .detail-info-wrap {
             .right-box {
                 .info-list {
+                    .h3-tit {
+                        padding-top:6px;
+                        padding-bottom:14px;
+                        font-size:24px;
+                        border-bottom:1px solid #000;
+
+                        @include mobile {
+                            font-size:20px;
+                            padding-bottom:12px;
+                        }
+                    }
+
+                    .info-tit-wrap {
+                        border-bottom:1px solid #000;
+                        .h3-tit {
+                            border-bottom:0;
+                        }
+                    }
                     dl {
                         dd {
                             .item {

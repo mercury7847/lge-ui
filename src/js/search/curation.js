@@ -204,9 +204,10 @@ var Curation = (function() {
                 });
                 var scrillTab = self.$curation.find('.ui_smooth_scrolltab');
 
+                scrillTab.vcSmoothScrollTab('setTabIndex',-999);
+                
                 setTimeout(function(){
                     scrillTab.vcSmoothScrollTab('refresh');
-                    scrillTab.vcSmoothScrollTab('setTabIndex',-999);
                 },10);
                 
                 self.$curation.show();

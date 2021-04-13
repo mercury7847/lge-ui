@@ -19,8 +19,6 @@
             toggle : function(){
                 var self = this;
 
-                
-    
                 $(document).on('click', self.el.btn, function(e){
                     var $this = $(this);
                     var $listWrap = $this.closest(self.el.wrap);
@@ -110,7 +108,7 @@
             }
         },
         slide : {
-            slideActiveClass : "is-active",
+            activeClass : ".slick-initialized",
             controls : {
                 play : $('.btn-play')
             },
@@ -164,13 +162,6 @@
                     var $btnBackOpen = $container.find('.btn-goto-back');
                     var $btnBackClose = $container.find('.btn-goto-front');
 
-
-                    // if( !vcui.detect.isMobileDevice ) {
-                    //     $backContList.mCustomScrollbar()
-                    // }
-
-
-
                     $(document).on('click', self.el.front, function(e){
                         var $this = $(this);
                         var $card = $this.closest('.item-card');
@@ -183,10 +174,8 @@
                             }
                             $backCard.stop().animate({opacity:1}, function(){
                                 $(this).addClass('active').removeAttr('style');
-                                
                             })
-                                                    }
-                        
+                        }
                         e.preventDefault();
                     })
 
@@ -195,85 +184,27 @@
                         var $backCard = $this.closest('.card-back');
 
                         if($backCard.hasClass('active')) {
-                            
                             $backCard.stop().fadeOut(function(){
                                 $(this).removeClass('active').removeAttr('style');
                                 $(this).find('.card-back-cont.mCustomScrollbar').mCustomScrollbar('destroy');
                             })
                         }
-                        
                         e.preventDefault();
                     })
-
-                    var prevSize = window.innerWidth;
-
-                    function cardMcustomScrollReinit(){
-
-                        var tid = 0;
-                        if( !vcui.detect.isMobileDevice ) {
-                            var listLeng = $backContList.length;
-                            $backContList.find('.pd-info-list').prependTo();
-                            $backContList.each(function(i){
-                                var $this = $(this);
-                                var $pdList = $this.find('.pd-info-list');
-                                $pdList.prependTo($this);
-    
-                                $this.find('.mCustomScrollBox').remove();
-                                $this.attr('class', 'card-back-cont');
-                                
-                                clearTimeout(tid);
-                                
-                                
-                                if (i == listLeng-1) {
-                                    
-                                    tid = setTimeout(function(){
-                                        $backContList.mCustomScrollbar();
-                                    }, 200)
-                                    
-                                }
-                            });
-                        }
-                    }
-
-                    $(window).on('resize', function(){
-                        var curSize = window.innerWidth;
-
-                        if( curSize <= 1024 &&  prevSize > 1024 ) {
-                            //cardMcustomScrollReinit();
-                        }
-
-                        if( curSize > 1024 &&  prevSize <= 1024 ) {
-                            //cardMcustomScrollReinit();
-                        }
-                        prevSize = window.innerWidth;
-                    });
                 }
             },
             supportList : {
                 el : {
-                    slider : $('.support-list-slider')
+                    slider : $('.support-toggle-list-wrap')
                 },
                 config : {
                     infinite: false,
                     autoplay: false,
-                    dots : false,
+                    dots : true,
+                    swipe : true,
                     arrows : false,
                     slidesToScroll: 1,
-                    slidesToShow: 3,
-                    variableWidth : true,
-                    responsive: [
-                        {
-                            breakpoint: 1025,
-                            settings: {
-                                dots : true,
-                                arrows : true,
-                                swipe : true,
-                                slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth : false
-                            }
-                        }
-                    ]
+                    slidesToShow: 1
                 }
             },
             notice : {
@@ -291,7 +222,7 @@
             },
             main_service : {
                 el : {
-                    slider : $('.main-service-slider'),
+                    slider : $('.main-service-slider .main-list-wrap'),
                 },
                 config : {
                     infinite: false,
@@ -309,7 +240,6 @@
                                 arrows : false,
                                 draggable : false, 
                                 slidesToScroll: 1,
-                                arrowsUpdate: 'disabled',
                                 slidesToShow: 4,
                             }
                         },
@@ -320,7 +250,6 @@
                                 arrows : false,
                                 draggable : false, 
                                 slidesToScroll: 1,
-                                arrowsUpdate: 'disabled',
                                 slidesToShow: 4,
                             }
                         },
@@ -364,6 +293,8 @@
                 },
                 config : {
                     infinite: false,
+                    arrows : false,
+                    dots : true,
                     autoplay: false,
                     slidesToScroll: 1,
                     slidesToShow: 2,
@@ -394,15 +325,16 @@
             },
             award : {
                 el : {
-                    slider : $('.award-slider'),
-                },
-                slideActiveClass : "is-active",
+                    slider : $('.award-slider .award-list'),
+                },                
                 config : {
                     infinite: true,
                     autoplay: true,
+                    dots : true,
                     autoplaySpeed : 5000,
                     slidesToScroll: 4,
                     slidesToShow: 4,
+                    appendDots : '.awards .slick-dot-container',
                     responsive: [
                         {
                             breakpoint: 1460,
@@ -425,24 +357,18 @@
                                 slidesToScroll: 1,
                                 slidesToShow: 1,
                             }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                slidesToScroll: 4,
-                                slidesToShow: 4
-                            }
                         }
-                    ]
+                    ],
                 },
             },
             resize : function(){
                 var self = this;
-
                 if( window.innerWidth > 1024) {
                     $('.support-toggle-list-wrap').not('.only-desktop').addClass('only-desktop');
+                    self.supportList.el.slider.filter('.slick-initialized').slick('unslick');
                 } else {
                     $('.support-toggle-list-wrap').removeClass('only-desktop');
+                    self.supportList.el.slider.not(self.activeClass).slick(self.supportList.config);
                 }
                 
             },
@@ -455,59 +381,82 @@
             },
             init : function(){
                 var self = this;
-                
-                vcui.require(['ui/carousel'], function () {    
-                    //히어로 보유제품 슬라이드
-                    if( $(self.heroPd.el.slider).find('.item-list').length >= 2) {
-                        $(self.heroPd.el.slider).not('.' + self.slideActiveClass).vcCarousel(self.heroPd.config);
-                        $(self.heroPd.el.slider).addClass(self.slideActiveClass);
+
+                $('[data-auto-type]').on('init', function(event, slick){
+                    var $this = $(this);
+                    var _type = $this.data('autoType');
+                    var $container = $this.closest('[data-role="slide-container"]');
+                    var _button = '<button class="btn-play"><span class="blind">멈춤</span></button>';
+
+                    if( _type == "button") {
+                        $this.append(_button);
                     }
-                    
-                    //히어로 보유제품 슬라이드 관련 이벤트 초기 실행
-                    self.heroPd.init();
+                    if( _type == "dot") {
+                        var $dotCont = $this.next('.slick-controls');
+                        $dotCont.append(_button);
+                    }
 
-                    //공지사항 슬라이드
-                    self.notice.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.notice.config);
-                    self.notice.el.slider.addClass(self.slideActiveClass);
-                    
-                    //히어로 영역 제품 지원
-                    self.supportList.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.supportList.config);
-                    self.supportList.el.slider.addClass(self.slideActiveClass);
-                    // if( window.innerWidth <= 768) {
-                    // } else {
-                    //     //self.supportList.el.slider.filter('.' + self.slideActiveClass).vcCarousel('destroy').removeClass(self.slideActiveClass);
-                    // }
-
-                    // 주요 서비스 
-                    self.main_service.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.main_service.config);
-                    self.main_service.el.slider.addClass(self.slideActiveClass);
-                    self.inquiry.el.slider.vcCarousel('resize');
-
-                    //수상목록
-                    self.award.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.award.config);
-                    self.award.el.slider.addClass(self.slideActiveClass);
-                    
-                    //로그인 후 화면 조회 슬라이드
-                    self.inquiry.el.slider.not('.' + self.slideActiveClass).vcCarousel(self.inquiry.config);
-                    self.inquiry.el.slider.addClass(self.slideActiveClass);
-                    self.inquiry.el.slider.vcCarousel('resize');
-
-
-                    //재생/정지 버튼
-                    self.controls.play.on('click', function(e){
-                        var $this = $(this);
-                        var $slider = $this.closest('.slide-wrap.is-active');
-                        e.preventDefault();
-                        
-                        if( $this.hasClass('pause') ) {
-                            $slider.vcCarousel('play');
-                            $this.removeClass('pause');
-                        } else {
-                            $slider.vcCarousel('pause');
-                            $this.addClass('pause');
-                        }
-                    })
+                    if(slick.$slides.length > slick.options.slidesToScroll) {
+                        $container.find('.btn-play').show();
+                    } else {
+                        $container.find('.btn-play').hide();
+                    }
                 });
+
+                $('[data-auto-type]').on('breakpoint', function(event, slick, breakpoint){
+                    var $this = $(this);
+                    var $container = $this.closest('[data-role="slide-container"]');
+
+                    if(slick.$slides.length > slick.options.slidesToScroll) {
+                        $container.find('.btn-play').show();
+                    } else {
+                        $container.find('.btn-play').hide();
+                    }
+                });
+                //재생/정지 버튼
+                $('[data-role="slide-container"]').on('click', '.btn-play', function(e){
+                    var $this = $(this);
+                    var $container = $this.closest('[data-role="slide-container"]');
+                    var $slider = $container.find('.slick-initialized');
+                    e.preventDefault();
+                    
+                    if( $this.hasClass('pause') ) {
+                        $slider.slick('slickPlay');
+                        $this.removeClass('pause');
+                        $this.find('.blind').text('멈춤');
+                    } else {
+                        $slider.slick('slickPause');
+                        $this.addClass('pause');
+                        $this.find('.blind').text('재생');
+                    }
+                })
+
+                //히어로 보유제품 슬라이드
+                $(self.heroPd.el.slider).not(self.activeClass).slick(self.heroPd.config);
+                
+                //히어로 보유제품 슬라이드 관련 이벤트 초기 실행
+                self.heroPd.init();
+
+                //공지사항 슬라이드
+                self.notice.el.slider.not(self.activeClass).slick(self.notice.config);
+                
+                //히어로 영역 제품 지원
+                if( window.innerWidth < 1025) {
+                    self.supportList.el.slider.not(self.activeClass).slick(self.supportList.config);
+                    self.supportList.el.slider.not(self.activeClass).slick('reinit');
+                }
+
+                // 주요 서비스 
+                self.main_service.el.slider.not(self.activeClass).slick(self.main_service.config);
+
+                //수상목록
+                self.award.el.slider.not(self.activeClass).slick(self.award.config);
+                
+                //로그인 후 화면 조회 슬라이드
+                self.inquiry.el.slider.not(self.activeClass).slick(self.inquiry.config);
+            },
+            refresh : function(){
+                $('.slick-initialized').slick('refresh');
             }
         },
         reservation : {
@@ -1064,9 +1013,25 @@
 
     $(window).ready(function(){
         supportHome.initialize();    
-    })
 
-    $(window).on('resize', function(){
-        supportHome.slide.resize();
+        var prevSize = window.innerWidth;
+    
+        $(window).on('resize', function(){
+            
+
+            var curSize = window.innerWidth;
+
+            if( curSize <= 1024 &&  prevSize > 1024 ) {
+                supportHome.slide.resize();
+            }
+
+            if( curSize > 1024 &&  prevSize <= 1024 ) {
+                supportHome.slide.resize();
+            }
+            prevSize = window.innerWidth;
+        })
+        $(window).on('load', function(){
+            supportHome.slide.refresh();
+        });
     })
 })();

@@ -16,41 +16,30 @@
 
         <div class="container">
             <!-- 210405 수정 [타이틀 추가] -->
+            <!-- 210413 수정 [서브텍스트 삭제] -->
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "LG전자 멤버십",
-                "pageDesc" : "LG전자 고객만을 위해 준비한 특별한 서비스 및 혜택을 드립니다"
+                "pageTitle": "LG전자 멤버십"
             })
+            <!-- // 210413 수정 [서브텍스트 삭제] -->
             <!-- // 210405 수정 [타이틀 추가] -->
             <!-- membership -->
             <div class="contents membership">
                 <!-- visual slider -->
+                <!-- 210413 수정 [히어로배너 수정] -->
                 <div class="visual-wrap">
                     @@include('./common/modules/main_carousel.html', {
                         "slides" : [
                             {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트",
-                                "btn" : "자세히 보기"
-                            },
-                            {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
-                                "btn" : "자세히 보기"
-                            },
-                            {
-                                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                                "eyebrow" : "LG전자 멤버십 앱",
-                                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
+                                "pcImg" : "/lg5-common/images/BMC/img-membership-hero.jpg",
+                                "mImg" : "/lg5-common/images/BMC/img-membership-hero-m.jpg",
+                                "eyebrow" : "LG전자 멤버십",
+                                "title" : "LG전자 고객만을 위해 <br>준비한 특별한 서비스 및 <br>혜택을 드립니다",
                                 "btn" : "자세히 보기"
                             }
                         ]
                     })
                 </div>
+                <!-- // 210413 수정 [히어로배너 수정] -->
                 <!-- // visual slider -->
 
                 <!-- 210215 수정 -->
@@ -58,6 +47,7 @@
                     <div class="page-tabs">
                         <div class="tabs-wrap border-type left">
                             <ul class="tabs">
+                                <li><a href="#n">LG전자 멤버십</a></li><!-- 210413 수정 [추가] -->
                                 <li><a href="#n">멤버십 소개</a></li>
                                 <li><a href="#n">VIP 멤버십 혜택</a></li>
                                 <li class="on"><a href="#n"><em class="blind">현재 화면</em>가입 안내</a></li>

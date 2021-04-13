@@ -1644,7 +1644,7 @@ var isApp = function(){
             var modelName = {
                 options: {
                     text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
-                    imgPath: '/lg5-common/images/CS/img-model-name-example.jpg',
+                    imgPath: '/kr/support/images/find-model/model-smart-phone.jpg',
                     imageAlt: '모델명 및 제조번호 확인 예시 이미지',
                     categoryPlaceholder: '카테고리 선택',
                     subCategoryPlaceholder: '세부 카테고리 선택'

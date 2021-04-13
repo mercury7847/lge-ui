@@ -1,48 +1,56 @@
-<div id="quickMenu" class="quick-menu">
+<!-- 
+    서비스 메뉴
+    - 최초 진입시 펼침 상태 (dim) 클래스 추가)
+    - 재진입시 닫힘 상태 (dim 클래스 삭제) 
+-->
+<div id="quickMenu" class="quick-menu dim">
     <ul class="quick-menu-list">
-        <!-- Case A. 옵션이 2개 이상 있을 때. 최초 진입엔 펼침 상태. 재진입시 접힘 상태 유지(.on 삭제)-->
+        <!-- 
+            서비스 메뉴
+            - 최초 진입시 펼침 상태 (on 클래스 추가)
+            - 재진입시 닫힘 상태 (on 클래스 삭제) 
+        -->
         <li class="service-menu on">
-            <!-- 2021.04.01 버튼 문구 수정 -->
-            <button type="button" class="btn-option btn-expand"><span class="blind">제품문제해결 목록 열기</span></button>
+            <button type="button" class="btn-expand" aria-expanded="false"><span class="blind">서비스 메뉴 열기</span></button>
             <ul class="service-menu-list">
                 <li>
-                    <a href="#" class="btn-fold">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_solutions.svg" alt=""><!-- 2021.03.30 alt 빈값으로 수정 -->
+                    <a href="https://wwwstg.lge.co.kr/support/solutions">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_solutions.svg" alt="">
                         </span>
                         <span class="txt">제품 문제 해결</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="btn-fold">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_product-drivers.svg" alt=""><!-- 2021.03.30 alt 빈값으로 수정 -->
+                    <a href="https://wwwstg.lge.co.kr/support/product-manuals">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_product-drivers.svg" alt="">
                         </span>
                         <span class="txt">사용설명서/드라이버/SW</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="btn-fold">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_find-center.svg" alt=""><!-- 2021.03.30 alt 빈값으로 수정 -->
+                    <a href="https://wwwstg.lge.co.kr/support/find-service-center">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_find-center.svg" alt="">
                         </span>
                         <span class="txt">서비스 센터 찾기</span>
                     </a>
                 </li>
                 <!-- mobile device 노출 영역-->
                 <li>
-                    <a href="tel:15447777"" class="btn-fold">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_service-center.svg" alt=""><!-- 2021.03.30 alt 빈값으로 수정 -->
+                    <a href="tel:15447777">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_service-center.svg" alt="">
                         </span>
                         <span class="txt">고객센터 전화하기</span>
                     </a>
                 </li>
                 <!-- // mobile device 노출 영역-->
                 <li>
-                    <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="btn-fold js-popup" title="Opens in a new window" data-width="360" data-height="620" data-link-area="sticky_chat-chatbot_button" data-link-name="">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg" alt=""> <!-- 2021.03.30 alt 빈값으로 수정 -->
+                    <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="js-popup" title="새 창으로 열림" data-width="360" data-height="620" data-link-area="sticky_chat-chatbot_button" data-link-name="">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg" alt="">
                         </span>
                         <span class="txt">상담챗</span>
                     </a>
@@ -51,128 +59,95 @@
         </li>
 
         <!-- 검색 기록 0건 -->
+        <!-- 
         <li class="history">
-            <span class="blind">고객지원 제품 검색 기록</span>
-            <span class="count">0<span class="blind">건</span></span>
+            <button type="button" class="btn-expand" aria-expanded="false">
+                <span class="blind">고객지원 제품 검색 기록 열기</span>
+                <span class="count">0<span class="blind">건</span></span>
+                <span class="img">
+                    <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="">
+                </span>
+            </button>
+        </li> 
+        -->
+
+        <!-- 검색 기록 
+            - 최초 진입시 펼침 상태 (on 클래스 추가)
+            - 재진입시 닫힘 상태 (on 클래스 삭제) 
+        -->
+        <li class="history on">
+            <button type="button" class="btn-expand" aria-expanded="false">
+                <span class="blind">고객지원 제품 검색 기록 열기</span>
+                <span class="count">5<span class="blind">건</span></span>
+                <span class="img">
+                    <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="">
+                </span>
+            </button>
             <ul class="history-list">
                 <li>
-                    <button type="button">
-                        <span class="icon">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="제품 검색 기록 없음"><!-- 2021.03.11. 이미지 경로 수정 -->
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
                         </span>
-                    </button>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                        </span>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                        </span>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li> -->
+                <li>
+                    <a href="#history-popup" class="btn-more" data-control="modal"><span class="count">5<span class="blind">건</span></span>더보기</a>
                 </li>
             </ul>
-        </li>
-
-        <!-- 검색 기록 1건 -->
-        <li class="history">
-            <span class="blind">고객지원 제품 검색 기록</span>
-            <span class="count">1<span class="blind">건</span></span>
-            <ul class="history-list">
-                <li>
-                    <figure class="img">
-                        <a href="" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-            </ul>
-        </li>
-
-        <!-- 검색 기록 3건 최초 진입엔 펼침 상태. 재진입시 접힘 상태 유지(.on 삭제) -->
-        <li class="history on">
-            <span class="blind">고객지원 제품 검색 기록</span>
-            <span class="count">3<span class="blind">건</span></span>
-            <!-- 2021.04.01 버튼 문구 수정 -->
-            <button type="button" class="btn-expand"><span class="blind">제품 검색 기록 열기</span></button>
-            <ul class="history-list">
-                <li>
-                    <figure class="img">
-                        <a href="#" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="img">
-                        <a href="#" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="img">
-                        <a href="#" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-            </ul>
-        </li>
-
-        <!-- 검색 기록 4건 이상 최초 진입엔 펼침 상태. 재진입시 접힘 상태 유지(.on 삭제) -->
-        <li class="history on">
-            <span class="blind">고객지원 제품 검색 기록</span>
-            <span class="count">4<span class="blind">건</span></span>
-            <button type="button" class="btn-expand"><span class="blind">제품 검색 기록 닫기</span></button>
-            <ul class="history-list">
-                <li>
-                    <a href="#history-popup" class="btn-history-more" data-control="modal">더보기</a>
-                    <article id="history-popup" class="popup-wrap lately-popup close" data-list-url="/lg5-common/data-ajax/KRP0032/productData.json">
-                        <header class="pop-header">
-                            <h1 class="tit"><span>최근 본 고객지원 제품</span></h1>
-                        </header>
-                        <section class="pop-conts support">
-                            <div class="lately-list">
-                                <ul>
-                                    @@for (var i = 0; i < 10; i++) {
-                                    <li>
-                                        <div class="img"><a href="#n"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg" alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></a></div>
-                                        <dl>
-                                            <a href="#n">
-                                                <dt>CS모델명 full CS모델명 full (suffix 제외)</dt>
-                                                <dd class="category">카테고리 1dth > 카테고리 2dth</dd>
-                                            </a>
-                                        </dl>
-                                    </li>
-                                    }
-                                </ul>
-                            </div>
-                        </section>
-                        <!-- 2021.03.12 추가 -->
-                        <div class="pop-footer center">
-                            <div class="btn-group">
-                                <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
-                            </div>
-                        </div>
-                        <!-- //2021.03.12 추가 -->
-
-                        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-                    </article>
-                </li>
-                <li>
-                    <figure class="img">
-                        <a href="#" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="img">
-                        <a href="#" class="history-btn">
-                            <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="제품 이미지">
-                        </a>
-                        <figcaption class="name">OLED65RXKNA</figcaption>
-                    </figure>
-                </li>
-            </ul>
+            <button type="button" class="btn-close">
+                <span class="blind">고객지원 제품 검색 기록 닫기</span>
+            </button>
         </li>
     </ul>
+
     <button type="button" class="btn-top off"><span class="blind">맨 위로 이동</span></button>
+
+    <article id="history-popup" class="popup-wrap lately-popup">
+        <header class="pop-header">
+            <h1 class="tit"><span>최근 본 고객지원 제품</span></h1>
+        </header>
+        <section class="pop-conts support">
+            <div class="lately-list">
+                <ul>
+                    @@for (var i = 0; i < 10; i++) {
+                    <li>
+                        <a href="#" target="_blank" title="새창으로 열림">
+                            <div class="img">
+                                <img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg" alt="">
+                            </div>
+                            <dl>
+                                <dt>OLED65C1KNB (suffix 제외)</dt>
+                                <dd class="category">TV / 프로젝터 &gt; 울트라 HD</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </section>
+        <div class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+            </div>
+        </div>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
 </div>

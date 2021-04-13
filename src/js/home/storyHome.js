@@ -90,6 +90,8 @@
         IS_LOGIN = $('.contents.story-main').data("loginflag");
         STORY_URL = $('.contents.story-main').data("storyUrl");
 
+        history.scrollRestoration = 'manual';
+
         vcui.require(['ui/carousel', "ui/sticky"], function () {
             $('.story-review .slide-controls').hide();
             // $('.story-review .indi-wrap').hide();
@@ -107,22 +109,40 @@
                 }    
             });
             $(window).trigger('breakpointchange');
-
             bindEvent();
 
-            loadStoryList('new_story', 1, 'NewStory');
-    
-            $('.user_story').hide();
+            if(window.sessionStorage){                
+                var storyUserHeight = sessionStorage.getItem('storyUserHeight');
+                var storyNewHeight = sessionStorage.getItem('storyNewHeight');
+                var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
+                if(storyUserHeight){
+                    $('#content').find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
+                }
+                if(storyNewHeight){
+                    $('#content').find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
+                }
 
-            // console.log("IS_LOGIN:",IS_LOGIN)
+                if(storyHomeScrollTop) {
+                    setTimeout(function(){
+                        $('html,body').scrollTop(storyHomeScrollTop);
+                    },10);                    
+                }
+
+            }
+
+            loadStoryList('new_story', 1, 'NewStory');
+            $('.user_story').hide();
 
             if(IS_LOGIN == "Y"){
                 firstLoadLength = 2;
-                //loadStoryList('user_story', 1, 'UserStory');
+                loadStoryList('user_story', 1, 'UserStory');
                 //210412_임시_막음.
             } 
         });
     }
+
+    var userHeight = 0;
+    var newsHeight = 0;
 
     function bindEvent(){
         $(window).on('resize', function(){
@@ -134,9 +154,16 @@
 
             var section = $(this).closest('.story-section');
             var page = section.data("page");
+
             if(section.hasClass('user_story')){
+                if(page == 1){
+                    userHeight = $('#content').find('.user_story > .inner > .flexbox-wrap').height();
+                }
                 loadStoryList('user_story', page+1, "UserStory");
             } else{
+                if(page == 1){
+                    newsHeight = $('#content').find('.new_story > .inner > .flexbox-wrap').height();
+                }
                 loadStoryList('new_story', page+1, 'NewStory');
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
@@ -180,6 +207,33 @@
         $(window).on('floatingTopShow', function(e){
             $('.floating-wrap .easy-path').addClass('scroll');
         }); 
+
+        $(document).on('click', 'a', function(e){
+
+            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+            if(href == '#' || href == '#n'){
+                e.preventDefault();
+            }else{
+                if (href && /^(#|\.)\w+/.test(href)) {    
+                    e.preventDefault();
+                }else{
+
+                    if(window.sessionStorage){  
+                        var user = userHeight>0? userHeight : $('#content').find('.user_story > .inner > .flexbox-wrap').height();
+                        var news = newsHeight>0? newsHeight : $('#content').find('.new_story > .inner > .flexbox-wrap').height();
+                        var scrollTop = $('html,body').scrollTop();
+
+                        if(scrollTop > parseInt(user)+parseInt(news)){
+                            scrollTop =  parseInt(user)+parseInt(news);
+                        }
+
+                        sessionStorage.setItem('storyUserHeight', user);
+                        sessionStorage.setItem('storyNewHeight', news);                        
+                        sessionStorage.setItem('storyHomeScrollTop', scrollTop);                        
+                    }
+                }
+            }
+        });
     }
 
     function setTagMngChecked(){
@@ -265,6 +319,8 @@
             loadStoryList('new_story', 1, 'NewStory', selectTags);
         }
     }
+
+    var firstPageHeight = 0;
 
     function loadStoryList(sectioname, page, type, selectTag){
         //lgkorUI.showLoading();
@@ -459,8 +515,6 @@
             boxwidth = wrapwidth;
         }
         
-        // console.log(wrapwidth, boxwidth)
-
         return {
             rawnum: rawnum,
             boxwidth: boxwidth,
@@ -475,7 +529,7 @@
         setRepositionTagBox($('.new_story'));
     }
 
-    $(window).load(function(){
+    $(document).ready(function(){
         init();
     })
 })();

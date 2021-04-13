@@ -55,15 +55,16 @@
                         </div>
                     </div>
                     }
-                    @@if ( context.monthlyPrice ) {
+                    @@if ( context.paymentPrice ) {
                     <!-- 210308 수정 [추가] -->
+
                     <div class="col col1-2">
-                        <div class="monthly-price">
-                            @@if ( context.monthlyPrice.price ) {
-                            <p class="price"><span class="blind">@@monthlyPrice.blind</span>@@monthlyPrice.price</p>
+                        <div class="payment-price"><!-- 210412 수정 [.monthly-price -> .payment-price 클래스 수정] -->
+                            @@if ( context.paymentPrice.price ) {
+                            <p class="price"><span class="blind">@@paymentPrice.blind</span>@@paymentPrice.price</p>
                             }
-                            @@if ( context.monthlyPrice.details ) {
-                            <a href="#n" class="btn-link monthlyPrice-btn">@@monthlyPrice.details</a>
+                            @@if ( context.paymentPrice.btn ) {
+                            <a href="#n" class="btn-link paymentPrice-btn">@@paymentPrice.btn</a><!-- 210412 수정 [.monthlyPrice-btn -> .paymentPrice-btn 클래스 수정] -->
                             }
                         </div>
                     </div>
