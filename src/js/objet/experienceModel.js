@@ -816,21 +816,21 @@
                 door: {
                     count: 3,
                     door1: {
-                        name: "상",
+                        name: "상칸",
                         code: "K330TT",
                         defaultPrice: "0",
                         memberDiscount: "0",
                         directDiscount: "0",
                     },
                     door2: {
-                        name: "중",
+                        name: "중칸",
                         code: "K330MM",
                         defaultPrice: "0",
                         memberDiscount: "0",
                         directDiscount: "0",
                     },
                     door3: {
-                        name: "하",
+                        name: "하칸",
                         code: "K330BB",
                         defaultPrice: "0",
                         memberDiscount: "0",
@@ -4188,34 +4188,37 @@
         maxCountCheck: function() {
             let maxSetting = 5;
             let maxCount = 0;
-            $(".simul_wrap .simul_body .model_set_wrap").each(function() {
-                console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
-                if ($(this).attr("data-model-cate") == "refrigerator1") {
-                    maxCount += 2;
-                } else if ($(this).attr("data-model-cate") == "refrigerator2") {
-                    maxCount += 2;
-                } else if ($(this).attr("data-model-cate") == "refrigerator_kimchi") {
-                    maxCount += 1;
-                } else if ($(this).attr("data-model-cate") == "refrigerator_convertible") {
-                    maxCount += 1;
+            setTimeout(function() {
+                $(".simul_wrap .simul_body .model_set_wrap").each(function() {
+                    console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
+                    if ($(this).attr("data-model-cate") == "refrigerator1") {
+                        maxCount += 2;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator2") {
+                        maxCount += 2;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator_kimchi") {
+                        maxCount += 1;
+                    } else if ($(this).attr("data-model-cate") == "refrigerator_convertible") {
+                        maxCount += 1;
+                    }
+                });
+                //$(".model_set_wrap").attr("data-model-add", "N");
+                if (maxCount == (maxSetting - 1)) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "Y");
+                    $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='refrigerator']").prop("disabled", true);
+                } else if (maxCount == maxSetting) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "N");
+                } else if (maxCount > maxSetting) {
+                    $(".model_set_wrap:last-child").attr("data-model-add", "N");
+                } else {
+                    $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", false);
                 }
-            });
-            //$(".model_set_wrap").attr("data-model-add", "N");
-            if (maxCount == (maxSetting - 1)) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "Y");
-                $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='refrigerator']").prop("disabled", true);
-            } else if (maxCount == maxSetting) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "N");
-            } else if (maxCount > maxSetting) {
-                $(".model_set_wrap:last-child").attr("data-model-add", "N");
-            } else {
-                $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", false);
-            }
-            if (!$(".total_price_info_wrap .total_price_info_body .swiper-slide").length > 0) {
-                $(".total_price_info_wrap").attr("data-sum-active", "N");
-            } else {
-                $(".total_price_info_wrap").attr("data-sum-active", "Y");
-            }
+                if (!$(".total_price_info_wrap .total_price_info_body .swiper-slide").length > 0) {
+                    $(".total_price_info_wrap").attr("data-sum-active", "N");
+                } else {
+                    $(".total_price_info_wrap").attr("data-sum-active", "Y");
+                }
+            }, 200);
+
         },
         addSetting: function() {
             modelSimulator.init();
