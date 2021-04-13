@@ -66,7 +66,7 @@
 
                 //최근본 제품 쿠키에 넣기
                 if(typeof lgePdpSendData !== 'undefined' && lgePdpSendData.modelId) {
-                    lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,lgePdpSendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);   
+                    lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,lgePdpSendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);
                 }
 
                 if(self.$component.data('consumables')) {
