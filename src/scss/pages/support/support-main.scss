@@ -1428,26 +1428,15 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc-new.jpg") no-repeat center top;
+                background: url("/lg5-common/images/CS/img-support-main-hero-pc.jpg") no-repeat center top;
                 background-size: cover;
             }
         }
-
-        // &.member-type {
-        //     .hero-container {
-        //         height:700px;
-        //     }
-        // }
 
         @include tablet {
             .hero-container {
                 height:480px;
             }
-            // &.member-type {
-            //     .hero-container {
-            //         height:600px;
-            //     }
-            // }
         }
 
         @include mobile {
@@ -1464,12 +1453,6 @@
                     background-position:bottom center;
                 }
             }
-
-            // &.member-type {
-            //     .hero-container {
-            //         height:602px;
-            //     }
-            // }
 
             .support-nav-container {
                 .support-list-slider {
@@ -1589,7 +1572,7 @@
             width:24px;
             height:24px;
             top:50%;
-            right:-5px;
+            right:40px;
             transform:translateY(-50%);
             background-size: 16px 16px;
             background-position: center center;
@@ -1640,8 +1623,13 @@
                 }
             }
 
-            .slick-arrow, .btn-play {
+            .slick-arrow {
                 top:-22px;
+                transform:none;
+            }
+            .btn-play {
+                top:30px;
+                right:15px;
                 transform:none;
             }
         }
@@ -1975,7 +1963,7 @@
                 a {
                     display: block;
                     padding:32px;
-                    border-radius:5px;
+                    border-radius:8px;
                     box-shadow:  2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 }
 
@@ -2117,7 +2105,7 @@
             height:100%;
             padding:55px 55px 140px;
             background: #f4f4f4;
-            border-radius:5px;
+            border-radius:8px;
             box-sizing:border-box;
 
             .headline {
@@ -2255,7 +2243,7 @@
                         padding:24px;
                         height:168px;
                         box-sizing:border-box;
-                        border-radius:10px;
+                        border-radius:8px;
                         background: #fff;
                     }
 

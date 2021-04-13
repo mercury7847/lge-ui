@@ -832,10 +832,15 @@
                 vertical-align:middle;
             }
             &.black:before {
-                background:#222;
+                border:1px solid #000;
+                background:#fff;
             }
             &.red:before {
                 background:#ec455a;
+            }
+            &.white:before {
+                border:1px solid #000;
+                background:#fff;
             }
         }
     }
@@ -859,9 +864,10 @@
                 margin-left:24px;
             }
             .box-tit {
-                margin-bottom: 12px;
+                margin-bottom:16px;
                 .tit {
                     @include font-small;
+                    font-weight:$font-weight-bold;
                 }
             }
             table {
@@ -876,18 +882,21 @@
                         display:inline-block;
                         font-weight:bold;
                         @include font-small;
+                        border:1px solid #000;
                     }
                     &.disabled {
                         button {
                             font-weight:normal;
-                            cursor:default;
                             color:#aaa;
+                            border:0 none;
+                            cursor:default;
                         }
                     }
                     &.choice {
                         button {
-                            background:#da0f47;
                             color: #fff;
+                            border:0 none;
+                            background:#da0f47;
                         }
                     }
                 }
@@ -993,7 +1002,7 @@
                 & > li {
                     display:inline-block;
                     & + li {
-                        margin-left:4px;
+                        margin-left:16px;
                     }
                 }
             }
@@ -1016,13 +1025,6 @@
         }
 	}
     @include mobile {
-        .calendar-info {
-            margin-bottom: 18px;
-            .info {
-                margin-top: 24px;
-            }
-        }
-
         .calendar-box {
             .box-inner {
                 &.date {
@@ -1034,7 +1036,7 @@
                     padding-left:0;
                 }
                 .box-tit {
-                    margin-bottom: 8px;
+                    margin-bottom:8px;
                 }
             }
         }
