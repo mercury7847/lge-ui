@@ -5823,7 +5823,7 @@
                 }, 100);
 
             }
-            setTimeout(function() {
+            /*setTimeout(function() {
                 let doorLeng = _doorKName.length;
                 for (let i = 0; i < doorLeng; i++) {
                     $(".model_set_wrap[data-model-editing='Y'] .model_door:eq(" + i + ")").attr("data-door-model_spec_material", _doorMaterial[i]);
@@ -5840,7 +5840,7 @@
                     $(".model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode, "data-model-completed": "N" });
                     modelSimulator.stepThree();
                 }
-            }, 500);
+            }, 500);*/
 
         }
     }
@@ -5848,7 +5848,7 @@
         //modelSimulator.pdpProductStep("M870GSB451S");
         //modelSimulator.pdpProductStep("M870FBB451S");
         //modelSimulator.pdpProductStep("Z330FSS151S");
-        //modelSimulator.pdpProductStep("Y320MWS");
+        modelSimulator.pdpProductStep("Y320MWS");
     });
 
 
