@@ -528,6 +528,7 @@
                     color:#fff;
                     font-weight:bold;
                     line-height:1.6;
+                    text-shadow: #000 1px 1px 18px;
                 }
                 .btn-list-toggle {
                     display: inline-block;
@@ -2130,6 +2131,7 @@
                     font-size:32px;
                     color:#000;
                     font-weight:bold;
+                    
                 }
             }
 
@@ -2664,13 +2666,62 @@
     //제품지원
     .support-solution {
         position: relative;
-        height:536px;
+        height:432px;
         box-sizing: border-box;
-        background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
+
+        &:before {
+            content:"";
+            display: block;
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-image: linear-gradient(106deg, #8d71ec, #ff537c 99%);
+            opacity:0.4;
+        }
 
         .support-toggle-list-wrap {
-            .support-list ul > li a:hover {
-                color:#8d71ec;
+            &.only-desktop {
+                .support-list {
+                    &.active {
+                        .list-header {
+                            .list-tit {
+                                color:#000;
+                            }
+                        }
+                    }
+                    .list-header {
+                        .list-tit {
+                            color:rgba(0, 0, 0, 0.75);
+                        }
+                    }
+                }
+            }
+            .support-list {
+                .list-header {
+                    .list-tit {
+                        color:#000;
+                        text-shadow: none;
+                        .txt-highlight {
+                            color:#000;
+                        }
+                    }
+
+                    .btn-list-toggle {
+                        background-image: url("/lg5-common/images/CS/btn-arr-down-56-black.svg");
+                    }
+                }
+                ul > li a {
+                    color:#000;
+                    border-color:#000;
+                    &:hover {
+                        color:#fff;
+                        border-color:#fa263e;
+                        background-color:#fa263e;
+
+                    }
+                } 
             } 
         }
 
