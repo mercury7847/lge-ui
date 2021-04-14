@@ -14,7 +14,7 @@ $(function() {
         var firWM = resizefirWM + 3000;
         var firW2M = resizefirWM + (530 * 7);
 
-        console.log(resizefirWM);
+        //console.log(resizefirWM);
 
         $(".only_mobile .slider00").css("width", resizefirWM);
         $(".only_mobile .ref-slider").css("width", firWM);
@@ -26,7 +26,7 @@ $(function() {
         var firWM = 3000;
         var firW2M = 530 * 7;
 
-        console.log(resizefirWM);
+        //console.log(resizefirWM);
 
         $(".only_mobile .slider00").css("width", resizefirWM);
         $(".only_mobile .ref-slider").css("width", firWM);
@@ -49,7 +49,7 @@ $(function() {
             var firWM = resizefirWM + 3000;
             var firW2M = resizefirWM + (530 * 7);
 
-            console.log(resizefirWM);
+            //console.log(resizefirWM);
 
             $(".only_mobile .slider00").css("width", resizefirWM);
             $(".only_mobile .ref-slider").css("width", firWM);
@@ -61,7 +61,7 @@ $(function() {
             var firWM = 3000;
             var firW2M = 530 * 7;
 
-            console.log(resizefirWM);
+            //console.log(resizefirWM);
 
             $(".only_mobile .slider00").css("width", resizefirWM);
             $(".only_mobile .ref-slider").css("width", firWM);
@@ -81,7 +81,7 @@ $(function() {
 
     function scrollEventM() {
         var scrollEM = $(window).scrollTop();
-        console.log(scrollEM);
+        //console.log(scrollEM);
 
 
 
@@ -225,7 +225,7 @@ $(function() {
             $(".only_mobile .fenix-bg").css({
                 transform: scaleaM
             });
-            //console.log(scraa, scalea);
+            ////console.log(scraa, scalea);
         } else if (scrollEM < divFeboM) {
             $(".only_mobile .fenix-bg").css({
                 transform: "scale(1)"
@@ -433,11 +433,11 @@ $(function() {
     function updatePositionM() {
 
         var x = this.x >> 0;
-        console.log(x);
+        //console.log(x);
 
 
         var resWM = -1 * $(".only_mobile .ref-slider").width() + $(window).width();
-        console.log(resWM);
+        //console.log(resWM);
         if (x <= resWM) {
             $("#reFscrollM").css("z-index", "2");
         } else if (x == 0) {
