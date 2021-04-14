@@ -25,35 +25,24 @@
         max-width:1380 + 80px;
         margin:0 auto;
         padding:64px 40px;
-        &.open {
-            .title {
-                .tit {
-                    left:50%;
-                    transform:translateX(-50%);
-                }
-                .btn-toggle:after {
-                    transform:rotate(-180deg);
-                }
-            }
-        }
         .title {
             position:relative;
             height:52px;
             .tit {
                 position:absolute;
-                left:0;
                 top:0;
+                left:0;
                 font-size:32px;
                 font-weight:700;
                 line-height:52px;
-                transform:translateX(0);
-                transition:0.4s;
                 white-space:nowrap;
+                transform:translateX(0);
+                transition:transform 0.4s, left 0.4s;
             }
             .btn-toggle {
                 position:absolute; 
                 right:0;
-                bottom:0;
+                bottom:3px;
                 padding-right:20px;
                 @include font-small;
                 font-weight:500;
@@ -68,6 +57,17 @@
                     background-size:16px;
                     transform:rotate(0);
                     transition:transform 0.3s;
+                }
+            }
+        }
+        &.open {
+            .title {
+                .tit {
+                    left:50%;
+                    transform:translateX(-50%);
+                }
+                .btn-toggle:after {
+                    transform:rotate(-180deg);
                 }
             }
         }
@@ -203,6 +203,7 @@
                 .title {
                     .tit {
                         transform:translateX(0);
+                        transition:none;
                     }
                 }
             }
@@ -213,12 +214,14 @@
                     position:static;
                     white-space:normal;
                     font-size:20px;
-                    line-height:1.4;
+                    line-height:28px;
                     transform:translateX(0);
-
                     strong {
                         display: block;
                     }
+                }
+                .btn-toggle {
+                    bottom:0;
                 }
             }
         }
