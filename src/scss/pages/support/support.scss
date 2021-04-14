@@ -82,17 +82,17 @@ label img {
         background-size: cover;
         .txt {
             margin:0 auto 16px;
-            color:#000;
-            font-weight:$font-weight-bold;
+            line-height:34px;
             font-size:24px;
-            line-height:1.63;
+            font-weight:$font-weight-bold;
             word-break:keep-all;
         }
         @include mobile {
             padding:16px;
             .txt {
+                margin-bottom:16px;
+                line-height:28px;
                 font-size:20px;
-                margin-bottom:12px;
             }
         }
     }
