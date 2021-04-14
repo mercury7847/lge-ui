@@ -250,7 +250,8 @@ $(document).ready(function() {
             if (agent.indexOf("Android") != -1) {
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
                 setTimeout(function() {
-                    location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
+                    //location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
+                    window.open("https://play.google.com/store/apps/details?id=kr.co.lge.android", "_blank");
                 }, 500);
             } else if (/iPhone|iPad|iPod/i.test(agent)) {
                 setTimeout(function() {
