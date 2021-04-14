@@ -459,12 +459,15 @@
                 if(sectioname == "new_story"){
                     if(IS_LOGIN == "Y"){
                         var userlistbox = $('.user_story').find('.flexbox-wrap');
-                        if(userlistbox.children().length > 0) sectionItem.find('.inner h2.title').show();
-                        else sectionItem.find('.inner h2.title').hide();
+                        if(userlistbox.children().length > 0){
+                            if(viewMode == "selectTagMode") sectionItem.find('.inner h2.title').hide();
+                            else sectionItem.find('.inner h2.title').show();
+                        }else sectionItem.find('.inner h2.title').hide();
                     } else{
                         sectionItem.find('.inner h2.title').hide();
                     }
                 } else{
+
                     $('.new_story').find('.inner h2.title').show();
                 }
                 
