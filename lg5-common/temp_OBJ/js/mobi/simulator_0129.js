@@ -1,5 +1,5 @@
 if (!navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/)) {
-    //document.location.href = "/lg-objet-collection/simulator";
+    document.location.href = "/lg-objet-collection/simulator";
 }
 
 
@@ -2091,7 +2091,7 @@ var go_shop_model = "";
                     // @pck 2020-10-19 로직 변경 (e)
                     */
                     //console.log("ddd");
-                    //return setTimeout(function() { _this.translateTo(gotoCenter(_this.dataset.targetObject), 500); }, 200);
+                    //return setTimeout(function() { _this.translateTo(Simulator.objSwiperInit.gotoCenter(_this.dataset.targetObject), 500); }, 200);
                     return true;
                     //return false;
                 }
@@ -2387,7 +2387,7 @@ var go_shop_model = "";
 
                                 _self.selectNavIndicator(navindex);
                                 navGotoCenter(el.id);
-                                return setTimeout(function() { _this.translateTo(gotoCenter(target), 500); }, 200);
+                                //return setTimeout(function() { _this.translateTo(gotoCenter(target), 500); }, 200);
                             }
                         }
 

@@ -9,7 +9,7 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
         initialize: function initialize(el, options) {
             var self = this;
             
-            if (self.supr(el, options) === false || isApp()) {
+            if (self.supr(el, options) === false) {
                 return;
             }
             

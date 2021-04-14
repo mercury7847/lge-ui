@@ -128,6 +128,9 @@
                 }
             }
         }
+        td:not(.board-tit) {
+            @include font-small;
+        }
         @include pc {
             .board-tit {
                 & > a {
