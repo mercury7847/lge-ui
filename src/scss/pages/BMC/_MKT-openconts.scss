@@ -306,6 +306,27 @@
                         }
                     }
                 }
+                .tb-tit{
+                    padding-bottom:15px;
+                    line-height:1.62;
+                    font-weight:700;
+                    @include mobile {
+                        font-size:14px;
+                        font-weight:700;
+                        padding-bottom:13px;
+                    }
+                    &.req{
+                        &::after {
+                            content: '*';
+                            display: inline-block;
+                            margin-left: 1px;
+                            color: #EC455A;
+                            font-size: inherit;
+                            line-height: inherit;
+                            vertical-align: top;
+                        }
+                    }
+                }
             }
             
             .tb_row{
