@@ -350,6 +350,10 @@ gulp.task("static:event", () => gulp
     .src("./lg5-common/event/**")
     .pipe(gulp.dest(dist + sourceFolder + "/event/"))
 );
+gulp.task("static:front", () => gulp
+    .src("./lg5-common/front/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/front/"))
+);
 
 
 

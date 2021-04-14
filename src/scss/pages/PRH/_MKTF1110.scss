@@ -284,6 +284,10 @@
             }
         }
         &[class*="02"] {
+            height: calc(100vh - 149px);
+            @include mobile {
+                height: calc(100vh - 86px);
+            }
             .image {
                 &.blur {
                     opacity: 0;
