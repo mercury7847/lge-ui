@@ -87,6 +87,14 @@
                     }
                 }
                 .slide-info-area {
+                    top: 96px;
+                    transform: translateY(0);
+                    @include mobile {
+                        top: 36px;
+                        .inner {
+                            padding: 0 20px;
+                        }
+                    }
                     .text-wrap {
                         .eyebrow {
                             @include eyebrow;
