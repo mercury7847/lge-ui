@@ -112,6 +112,7 @@
             }
             &-conts {
                 display:inline-block;
+                float:none !important;
                 width:calc(100% / 3);
                 vertical-align:top; 
                 &:nth-child(3n+1) {
@@ -191,7 +192,7 @@
         .my-product-slider {
             .slide {
                 &-conts {
-                    width:50%;
+                    width:calc((100vw - 80px) / 2);
                 }
             }
         }
