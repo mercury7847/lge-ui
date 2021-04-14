@@ -39,16 +39,6 @@
             }
         }
         .tb_row {
-            &.board-type {
-                tbody {
-                    td {
-                        &:not(.board-tit) {
-                            color: #666;
-                            font-size: 12px;
-                        }
-                    }
-                }
-            }
             @include mobile {
                 td {
                     &:not(.board-tit) {
