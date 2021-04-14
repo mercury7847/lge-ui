@@ -15220,9 +15220,12 @@
         left: 0px;
         height: calc(100vh - 80px);
         z-index: 9;
-        background: url("/lg5-common/images/OBJ/mobi_img/images-mo-brand-01.jpg") no-repeat center center;
-        background-size: cover;
-        background-size: cover;
+        background: none;
+        .signature-story[aria-hidden="false"] & {
+            background: url("/lg5-common/images/OBJ/mobi_img/images-mo-brand-01.jpg") no-repeat center center;
+            background-size: cover;
+            background-size: cover;
+        }
     }
     .refrs-bg {
         width: 100%;
