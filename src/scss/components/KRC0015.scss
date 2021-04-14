@@ -27,7 +27,7 @@
     }
     
     .title * {
-        @include title-h2;
+        @include title-h1;
     }
 
     .slide-wrap {
