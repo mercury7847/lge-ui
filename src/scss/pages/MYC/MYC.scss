@@ -267,6 +267,31 @@
                 margin-bottom:60px;
             }
         }
+
+        .open-before-order-history {
+            margin: -32px 0 48px;
+            padding: 24px 48px;
+            border: 1px solid $color-border;
+            border-radius: 8px;
+            .inner {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: -12px;
+            }
+            .text {
+                margin-top: 12px;
+                @include font-medium;
+            }
+            .btn {
+                margin-top: 12px;
+            }
+            @include mobile {
+                margin: -16px 0 40px;
+                padding: 24px;
+            }
+        }
     }
 
     //멤버십 포인트 조회

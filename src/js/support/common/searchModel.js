@@ -550,15 +550,20 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 myModel.push(modelCode);
             });
 
+            self.$myModelArea.find('.btn-toggle').attr('aria-expanded', true);
+
             self.$myModelSlider.vcCarousel({
+
                 slidesToScroll: 3,
                 slidesToShow: 3,
+                infinite: false,
                 responsive: [
                     {
                         breakpoint: 10000,
                         settings: {
                             slidesToScroll: 3,
-                            slidesToShow: 3
+                            slidesToShow: 3,
+                            infinite: false
                         }
                     },
                     {
@@ -566,6 +571,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         settings: {
                             slidesToScroll: 2,
                             slidesToShow: 2,
+                            infinite: false
                         }
                     },
                     {
@@ -575,6 +581,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                             variableWidth: true,
                             slidesToScroll: 1,
                             slidesToShow: 1,
+                            infinite: false
                         }
                     }
                 ]
@@ -598,13 +605,15 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     $toggleBox = $this.closest('.box');
 
                 if ($toggleBox.hasClass('open')) {
-                    self.$myModelSlider.stop().slideUp();
                     $toggleBox.removeClass('open');
+                    $this.attr('aria-expanded', false);
                     $this.html('보유제품 펼치기');
+                    self.$myModelSlider.stop().slideUp();
                 } else {
-                    self.$myModelSlider.stop().slideDown();
                     $toggleBox.addClass('open');
+                    $this.attr('aria-expanded', true);
                     $this.html('보유제품 접기');
+                    self.$myModelSlider.stop().slideDown();
                 }
             });
         },

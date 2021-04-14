@@ -53,6 +53,13 @@
         max-width: 1380px + 80px;
         margin:0 auto;
         padding:0 40px;
+        @at-root {
+            .cont-wrap {
+                .common-banner .banner {
+                    padding:0;
+                }        
+            }
+        }
         .banner-inner {
             padding:48px 0;
         }

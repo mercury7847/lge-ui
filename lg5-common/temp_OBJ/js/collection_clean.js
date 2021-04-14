@@ -72,7 +72,7 @@ $(function() {
         }
 
         $('.detail.fixed').each(function() {
-            //console.log( onScreen($(this)) + ' / ' + $(this).attr("data-scroll-index"));
+            ////console.log( onScreen($(this)) + ' / ' + $(this).attr("data-scroll-index"));
             var value = onScreen($(this));
             if (value > 0) {
                 $(this).addClass('active');

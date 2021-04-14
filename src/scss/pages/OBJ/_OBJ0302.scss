@@ -531,6 +531,7 @@ h2.title {
                     text-align: center;
                     .simul_comment {
                         padding: 0 40px;
+                        margin-bottom: 30px;
                         @include mobile {
                             margin-top: -20px;
                         }
@@ -544,16 +545,16 @@ h2.title {
                                 font-size: 14px;
                             }
                         }
-                        .txt {
-                            display: block;
-                            margin-bottom: 30px;
-                            font-size: 16px;
-                            line-height: 1.5;
-                            color: #666666;
-                            @include mobile {
-                                font-size: 13px;
-                            }
-                        }
+                        // .txt {
+                        //     display: block;
+                        //     margin-bottom: 30px;
+                        //     font-size: 16px;
+                        //     line-height: 1.5;
+                        //     color: #666666;
+                        //     @include mobile {
+                        //         font-size: 13px;
+                        //     }
+                        // }
                     }
                     .step {
                         margin-right: 10px;
@@ -781,6 +782,9 @@ h2.title {
                                             &.is_active {
                                                 border: 1px solid #da0f47;
                                                 border-radius: 7px;
+                                                &:disabled {
+                                                    opacity: 1;
+                                                }
                                                 .model_name {
                                                     font-weight: 500;
                                                 }
@@ -1372,8 +1376,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {
@@ -1455,8 +1459,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {

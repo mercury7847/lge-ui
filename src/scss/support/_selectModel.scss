@@ -1,18 +1,33 @@
 @charset "UTF-8";
 
 .service-guide-wrap {
-    background:#e4e4e4;
+    margin-bottom:48px;
+    padding:0 40px;
     .box {
-        max-width:1380 + 80px;
+        max-width:1300px + 80px;
         margin:0 auto;
         padding:16px 40px;
+        border-radius:8px;
+        background:#f4f4f4;
         .bullet-list {
             margin:0;
+            text-align:center;
+            .b-txt {
+                display:inline-block;
+            }
         }
     }
     @include mobile {
+        margin-bottom:32px;
+        padding:0 16px;
         .box {
             padding:16px;
+            .bullet-list {
+                text-align:left;
+                .b-txt {
+                    display:block;
+                }
+            }
         }
     }
 }
@@ -25,35 +40,24 @@
         max-width:1380 + 80px;
         margin:0 auto;
         padding:64px 40px;
-        &.open {
-            .title {
-                .tit {
-                    left:50%;
-                    transform:translateX(-50%);
-                }
-                .btn-toggle:after {
-                    transform:rotate(-180deg);
-                }
-            }
-        }
         .title {
             position:relative;
             height:52px;
             .tit {
                 position:absolute;
-                left:0;
                 top:0;
+                left:0;
                 font-size:32px;
                 font-weight:700;
                 line-height:52px;
-                transform:translateX(0);
-                transition:0.4s;
                 white-space:nowrap;
+                transform:translateX(0);
+                transition:transform 0.4s, left 0.4s;
             }
             .btn-toggle {
                 position:absolute; 
                 right:0;
-                bottom:0;
+                bottom:3px;
                 padding-right:20px;
                 @include font-small;
                 font-weight:500;
@@ -71,6 +75,17 @@
                 }
             }
         }
+        &.open {
+            .title {
+                .tit {
+                    left:50%;
+                    transform:translateX(-50%);
+                }
+                .btn-toggle:after {
+                    transform:rotate(-180deg);
+                }
+            }
+        }
     }
     &.no-item {
         .box {
@@ -85,7 +100,7 @@
     .my-product-slider {
         margin-top:32px;
         .slide-controls {
-            margin-top:-18px;
+            margin-top:-22px;
             button {
                 &.prev {
                     left:-20px;
@@ -105,13 +120,14 @@
                 margin:0 -12px;
             }
             &-track {
-                padding-bottom:36px;
+                padding-bottom:44px;
                 white-space:nowrap;
                 transform: translate3d(0px, 0px, 0px);
                 @include clearfix;
             }
             &-conts {
                 display:inline-block;
+                float:none !important;
                 width:calc(100% / 3);
                 vertical-align:top; 
                 &:nth-child(3n+1) {
@@ -180,18 +196,11 @@
             }
         }
     }
-    @include pc {
-        .box .title .tit {
-            br {
-                display:none;
-            }
-        }
-    }
     @include tablet {
         .my-product-slider {
             .slide {
                 &-conts {
-                    width:50%;
+                    width:calc((100vw - 80px) / 2);
                 }
             }
         }
@@ -203,6 +212,7 @@
                 .title {
                     .tit {
                         transform:translateX(0);
+                        transition:none;
                     }
                 }
             }
@@ -213,12 +223,14 @@
                     position:static;
                     white-space:normal;
                     font-size:20px;
-                    line-height:1.4;
+                    line-height:28px;
                     transform:translateX(0);
-
-                    strong {
-                        display: block;
+                    .user-name {
+                        display:block;
                     }
+                }
+                .btn-toggle {
+                    bottom:0;
                 }
             }
         }
@@ -236,20 +248,25 @@
             }
             .slide {
                 &-content {
-                    margin:0 -16px 0 -12px;
+                    margin:0 -16px 0 -6px;
                 }
                 &-track {
-                    padding-bottom:36px;
+                    padding-bottom:32px;
                 }
                 &-conts {
                     width:calc((100vw - 16px) / 3 * 2);
                 }
                 &-box {
-                    margin:0 12px;
+                    margin:0 6px;
                     padding:34px 20px 30px;
                     .category {
-                        height:24px;
+                        min-height:28px;
                         margin-bottom:12px;
+                        .thumb {
+                            width:28px;
+                            height:28px;
+                            margin-right:6px;
+                        }
                     }   
                     .status {
                         top:12px;

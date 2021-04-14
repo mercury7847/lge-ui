@@ -167,7 +167,7 @@ $(function() {
             $(".only_mobile .fenix-bg").css({
                 //transform: scalea
             });
-            //console.log(scraa, scalea);
+            ////console.log(scraa, scalea);
         } else if (scrollEM < divFeboM) {
             $(".only_mobile .fenix-bg").css({
                 transform: "scale(1)"
@@ -282,7 +282,7 @@ $(function() {
     function updatePositionM() {
 
         var x = this.x >> 0;
-        console.log(x);
+        //console.log(x);
     }
 
 
