@@ -553,14 +553,17 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$myModelArea.find('.btn-toggle').attr('aria-expanded', true);
 
             self.$myModelSlider.vcCarousel({
+
                 slidesToScroll: 3,
                 slidesToShow: 3,
+                infinite: false,
                 responsive: [
                     {
                         breakpoint: 10000,
                         settings: {
                             slidesToScroll: 3,
-                            slidesToShow: 3
+                            slidesToShow: 3,
+                            infinite: false
                         }
                     },
                     {
@@ -568,6 +571,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         settings: {
                             slidesToScroll: 2,
                             slidesToShow: 2,
+                            infinite: false
                         }
                     },
                     {
@@ -577,6 +581,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                             variableWidth: true,
                             slidesToScroll: 1,
                             slidesToShow: 1,
+                            infinite: false
                         }
                     }
                 ]
