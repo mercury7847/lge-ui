@@ -47,8 +47,8 @@
     line-height:34px;
     @include mobile {
         margin-bottom:6px;
-        font-size:14px;
-        line-height:26px;
+        font-size:16px;
+        line-height:24px;
     }
     &:only-child {
         margin-bottom:0;
@@ -73,8 +73,8 @@
     line-height:70px;
     font-weight:700;
     @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:34px;
-        line-height:46px;
+        font-size:32px;
+        line-height:42px;
     }
 }
 @mixin title-h2 {

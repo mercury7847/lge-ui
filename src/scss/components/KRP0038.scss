@@ -32,14 +32,14 @@
 	.component-inner {
 		.heading-box {
 			padding:16px 0 64px;
+			@include mobile {
+				padding:4px 0 32px;
+			}
 			&.sm-pb {
 				padding-bottom:24px;
 				@include mobile {
-					padding-bottom:32px;
+					padding-bottom:24px;
 				}
-			}
-			@include mobile {
-				padding:4px 0 32px;
 			}
 		}
 		.align-left {
