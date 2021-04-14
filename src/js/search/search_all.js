@@ -204,7 +204,7 @@
 
     var searchBnrTemplate = 
         '<a href="{{url}}" target="{{target}}">'+
-            '<img src="{{pcImage}}" alt="{{title}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+
                 '<span class="sub-copy">{{#raw desc}}</span>'+
@@ -775,6 +775,7 @@
 
                     //센터 배너
                     if(data.searchBanner && !vcui.isEmpty(data.searchBanner)) {
+                        data.searchBanner.mobileImage = data.searchBanner.mobileImage ? data.searchBanner.mobileImage : data.searchBanner.pcImage;
                         self.$searchBanner.html(vcui.template(searchBnrTemplate, data.searchBanner));
                         self.$searchBanner.show();
                     } else {
