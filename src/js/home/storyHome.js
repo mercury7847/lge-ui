@@ -79,7 +79,7 @@
                     '<span class="title">취향에 맞는 <em>#태그</em>를 <br class="mo-only ">구독해보세요</span>'+
                     '<a href="#" class="btn-link tagmnger-btn"><span>다른 태그도 구독</span></a>'+
                 '</div>'+
-                '<div class="tag-lists-wrap ui_smooth_scrolltab">'+
+                '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
                     '<div class="ui_smooth_tab">'+
                         '<ul class="tag-lists">'+
                             '{{#each item in tagList}}'+                
@@ -312,7 +312,6 @@
     function requestTagMngPop(dm){
         if(IS_LOGIN == "Y"){
             lgkorUI.requestAjaxData(TAG_MANAGER_URL, null, function(result){
-                console.log(result)
                 $('#popup-tagMnger').empty().html(result).vcModal();
     
                 addTagMngInitData();
@@ -323,24 +322,24 @@
     }
 
     function sendTagList(item){
-        if(IS_LOGIN == "Y"){
-            var selectTags = {
-                mode: $(item).data('mode'),
-                tagCode: $(item).data('code'),
-                tagName: $(item).data('name')
-            }
-            var section = $(item).closest('.story-section');
-    
-            if(section.hasClass('new_story')){
-                loadStoryList('new_story', 1, 'NewStory', selectTags);
-            } else{
+        var section = $(item).closest('.story-section');
+        var selectTags = {
+            mode: $(item).data('mode'),
+            tagCode: $(item).data('code'),
+            tagName: $(item).data('name')
+        }
+
+        if(section.hasClass('new_story')){
+            loadStoryList('new_story', 1, 'NewStory', selectTags);
+        } else{
+            if(IS_LOGIN == "Y"){
                 if(selectTags.mode == "search"){
                     $('.new_story').hide();
                 }
                 loadStoryList('user_story', 1, "UserStory", selectTags);
+            } else{
+                location.href = LOGIN_URL;
             }
-        } else{
-            location.href = LOGIN_URL;
         }
     }
 
@@ -376,7 +375,10 @@
             else sectionItem.find('.btn-moreview').css('display','block');
             
             // console.log("result.data.selectTags:", result.data.selectTags);
+            var viewMode;
             if(result.data.selectTags){
+                viewMode = "selectTagMode";
+                
                 sectionItem.find('.inner h2.title').hide();
                 
                 var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
@@ -384,6 +386,8 @@
 
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
             } else{
+                viewMode = "listMode";
+
                 sectionItem.find('.inner h2.title').show();
             }
             
@@ -406,7 +410,7 @@
                     if(IS_LOGIN == "Y"){
                         $('.tag-subscribe-story').empty().hide();
 
-                        if(sectioname == "user_story"){
+                        if(viewMode == "listMode" && sectioname == "user_story"){
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                             sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
@@ -422,6 +426,7 @@
                 setRepositionTagBox(sectionItem);
             } else{
                 if(sectioname == "user_story"){
+                    console.log("sectioname:", sectioname)
                     $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                     $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                 }
