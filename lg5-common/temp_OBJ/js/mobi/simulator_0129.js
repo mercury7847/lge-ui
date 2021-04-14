@@ -2094,6 +2094,7 @@ var go_shop_model = "";
                     //return false;
                 }
                 //return false;
+                console.log("ddddd");
                 return true;
             }
 
