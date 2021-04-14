@@ -1234,6 +1234,11 @@
                     padding-bottom: 12px;
                     @include font-small;
                     text-align: right;
+                    @include mobile {
+                        max-height:166px;
+                        overflow:hidden;
+                        overflow-y:auto;
+                    }
                     a {
                         display: block;
                         padding: 13px 40px 13px 16px;
