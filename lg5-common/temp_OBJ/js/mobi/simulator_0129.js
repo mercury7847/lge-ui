@@ -2387,7 +2387,7 @@ var go_shop_model = "";
 
                                 _self.selectNavIndicator(navindex);
                                 navGotoCenter(el.id);
-                                return setTimeout(function() { _this.translateTo(gotoCenter(target), 500); }, 200);
+                                //return setTimeout(function() { _this.translateTo(gotoCenter(target), 500); }, 200);
                             }
                         }
 

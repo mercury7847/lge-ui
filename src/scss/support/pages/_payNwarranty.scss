@@ -1,21 +1,10 @@
 @charset "UTF-8";
 
 .pay-warranty {
-    .tab-wrap {
-        // max-width: 1178px;
-        margin: 0 auto;
-        position: relative;
-        padding: 0;;
+    .tabs-wrap {
+        margin-bottom:48px;
         @include mobile {
-            padding: 34px 0 ;
-        }
-    }
-    .tabs-contents {
-        // border-top: 8px solid #f4f4f4;
-    }
-    .tbl {
-        &-list {
-            max-width: 953px;
+            margin-bottom:50px;
         }
     }
     .scroll-x {
@@ -65,9 +54,6 @@
             }
         }
     }
-    .dl-list {
-        
-    }
     .paragraph {
         &-1 {
             margin-top: 12px;
@@ -91,16 +77,6 @@
         &-7 {
             font-size: 14px;
             color: #666;
-        }
-    }
-
-    .ui_tab-notice {
-        position: relative;
-        margin: 0 auto;
-        margin-bottom: 48px;
-        @include mobile {
-            margin-bottom: 16px;
-            // margin-top: 68px;
         }
     }
 
