@@ -529,6 +529,29 @@ h2.title {
                 }
                 .simul_tit {
                     text-align: center;
+                    .simul_comment {
+                        padding: 0 40px;
+                        .tit {
+                            display: block;
+                            margin-bottom: 10px;
+                            font-size: 20px;
+                            color: #222222;
+                            font-weight: 500;
+                            @include mobile {
+                                font-size: 16px;
+                            }
+                        }
+                        .txt {
+                            display: block;
+                            margin-bottom: 30px;
+                            font-size: 18px;
+                            line-height: 1.5;
+                            color: #666666;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                    }
                     .step {
                         margin-right: 10px;
                         font-size: 18px;
