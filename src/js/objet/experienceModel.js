@@ -8,7 +8,7 @@
                 id: "refrigerator",
                 leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator.png",
                 refrigeratorType: [{
-                    typeName: "얼음정수기형",
+                    typeName: "얼음정수기",
                     typ: "refrigerator1",
                     typModel: [{
                         name: "얼음정수기냉장고",
@@ -140,7 +140,8 @@
                 }, {
                     typeName: "상냉장/하냉동",
                     typ: "refrigerator2",
-                    typModel: [{
+                    typModel: [
+                        /*{
                         name: "노크온 더블 매직스페이스",
                         defaultCode: "M871AAA551",
                         leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA551.png",
@@ -266,542 +267,561 @@
                                 }]
                             }
                         }]
-                    }, {
-                        name: "노크온 매직스페이스",
-                        defaultCode: "M870AAA451",
-                        subModel: [{
-                            modelCode: "M870AAA452",
+                    },*/
+                        {
+                            name: "노크온 매직스페이스",
+                            defaultCode: "M870AAA451",
+                            subModel: [{
+                                modelCode: "M871AAA551",
+                                magicSpace: 2,
+                                energy: 1,
+                                knockOn: true,
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }, {
+                                modelCode: "M870AAA452",
+                                magicSpace: 1,
+                                energy: 2,
+                                knockOn: true,
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }],
+                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M870AAA451.png",
+                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M870AAA451.png",
+                            defaultPrice: "0",
+                            memberDiscount: "0",
+                            directDiscount: "0",
                             magicSpace: 1,
-                            energy: 2,
+                            energy: 1,
                             knockOn: true,
+                            door: {
+                                count: 3,
+                                door1: {
+                                    name: "상단(좌)",
+                                    code: "D870TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door2: {
+                                    name: "하단(좌)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door3: {
+                                    name: "하단(우)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                }
+
+                            },
+                            doorColorData: [{
+                                doorMaterial: {
+                                    name: "페닉스",
+                                    enName: "FENIX",
+                                    code: "F",
+                                    desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                    doorColor: [{
+                                        name: "보타닉",
+                                        code: "BT",
+                                        mixingCode: "FBT"
+
+                                    }, {
+                                        name: "샌드",
+                                        code: "SD",
+                                        mixingCode: "FSD"
+                                    }, {
+                                        name: "스톤",
+                                        code: "ST",
+                                        mixingCode: "FST"
+                                    }]
+                                }
+
+                            }, {
+                                doorMaterial: {
+                                    name: "솔리드",
+                                    enName: "Solid Metal",
+                                    code: "S",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "맨해튼 미드나잇",
+                                        code: "MT",
+                                        mixingCode: "SMT"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "SSV"
+                                    }, {
+                                        name: "그린",
+                                        code: "GR",
+                                        mixingCode: "SGR"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "미스트",
+                                    enName: "Mist Glass",
+                                    code: "G",
+                                    desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                    doorColor: [{
+                                        name: "베이지",
+                                        code: "BE",
+                                        mixingCode: "GBE"
+                                    }, {
+                                        name: "핑크",
+                                        code: "PK",
+                                        mixingCode: "GPK"
+                                    }, {
+                                        name: "민트",
+                                        code: "MN",
+                                        mixingCode: "GMN"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "GSV"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "네이쳐",
+                                    enName: "Nature Metal",
+                                    code: "M",
+                                    desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                    doorColor: [{
+                                        name: "그레이",
+                                        code: "GY",
+                                        mixingCode: "MGY"
+                                    }, {
+                                        name: "블랙",
+                                        code: "BK",
+                                        mixingCode: "MBK"
+                                    }, {
+                                        name: "화이트",
+                                        code: "WH",
+                                        mixingCode: "MWH"
+                                    }]
+                                }
+                            }]
+                        }, {
+                            name: "빌트인 타입",
+                            defaultCode: "M620AAA351",
+                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
+                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M620AAA351.png",
                             defaultPrice: "0",
                             memberDiscount: "0",
                             directDiscount: "0",
-                        }],
-                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M870AAA451.png",
-                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M870AAA451.png",
-                        defaultPrice: "0",
-                        memberDiscount: "0",
-                        directDiscount: "0",
-                        magicSpace: 1,
-                        energy: 1,
-                        knockOn: true,
-                        door: {
-                            count: 3,
-                            door1: {
-                                name: "상단(좌)",
-                                code: "D870TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
+                            magicSpace: 0,
+                            energy: 1,
+                            knockOn: true,
+                            door: {
+                                count: 3,
+                                door1: {
+                                    name: "상단(좌)",
+                                    code: "D620TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door2: {
+                                    name: "하단(좌)",
+                                    code: "D620BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door3: {
+                                    name: "하단(우)",
+                                    code: "D620BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                }
                             },
-                            door2: {
-                                name: "하단(좌)",
-                                code: "D870BB",
+                            doorColorData: [{
+                                doorMaterial: {
+                                    name: "페닉스",
+                                    enName: "FENIX",
+                                    code: "F",
+                                    desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                    doorColor: [{
+                                        name: "보타닉",
+                                        code: "BT",
+                                        mixingCode: "FBT"
+
+                                    }, {
+                                        name: "샌드",
+                                        code: "SD",
+                                        mixingCode: "FSD"
+                                    }, {
+                                        name: "스톤",
+                                        code: "ST",
+                                        mixingCode: "FST"
+                                    }]
+                                }
+
+                            }, {
+                                doorMaterial: {
+                                    name: "솔리드",
+                                    enName: "Solid Metal",
+                                    code: "S",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "맨해튼 미드나잇",
+                                        code: "MT",
+                                        mixingCode: "SMT"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "SSV"
+                                    }, {
+                                        name: "그린",
+                                        code: "GR",
+                                        mixingCode: "SGR"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "미스트",
+                                    enName: "Mist Glass",
+                                    code: "G",
+                                    desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                    doorColor: [{
+                                        name: "베이지",
+                                        code: "BE",
+                                        mixingCode: "GBE"
+                                    }, {
+                                        name: "핑크",
+                                        code: "PK",
+                                        mixingCode: "GPK"
+                                    }, {
+                                        name: "민트",
+                                        code: "MN",
+                                        mixingCode: "GMN"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "GSV"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "네이쳐",
+                                    enName: "Nature Metal",
+                                    code: "M",
+                                    desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                    doorColor: [{
+                                        name: "그레이",
+                                        code: "GY",
+                                        mixingCode: "MGY"
+                                    }, {
+                                        name: "블랙",
+                                        code: "BK",
+                                        mixingCode: "MBK"
+                                    }, {
+                                        name: "화이트",
+                                        code: "WH",
+                                        mixingCode: "MWH"
+                                    }]
+                                }
+                            }]
+                        }, {
+                            name: "매직 스페이스",
+                            defaultCode: "M871AAA151",
+                            subModel: [{
+                                modelCode: "M871AAA041",
+                                magicSpace: 2,
+                                energy: 1,
+                                knockOn: false,
                                 defaultPrice: "0",
                                 memberDiscount: "0",
                                 directDiscount: "0",
-                            },
-                            door3: {
-                                name: "하단(우)",
-                                code: "D870BB",
+                            }, {
+                                modelCode: "M871AAA252",
+                                magicSpace: 2,
+                                energy: 2,
+                                knockOn: false,
                                 defaultPrice: "0",
                                 memberDiscount: "0",
                                 directDiscount: "0",
-                            }
-
-                        },
-                        doorColorData: [{
-                            doorMaterial: {
-                                name: "페닉스",
-                                enName: "FENIX",
-                                code: "F",
-                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                doorColor: [{
-                                    name: "보타닉",
-                                    code: "BT",
-                                    mixingCode: "FBT"
-
-                                }, {
-                                    name: "샌드",
-                                    code: "SD",
-                                    mixingCode: "FSD"
-                                }, {
-                                    name: "스톤",
-                                    code: "ST",
-                                    mixingCode: "FST"
-                                }]
-                            }
-
-                        }, {
-                            doorMaterial: {
-                                name: "솔리드",
-                                enName: "Solid Metal",
-                                code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                doorColor: [{
-                                    name: "맨해튼 미드나잇",
-                                    code: "MT",
-                                    mixingCode: "SMT"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "SSV"
-                                }, {
-                                    name: "그린",
-                                    code: "GR",
-                                    mixingCode: "SGR"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "미스트",
-                                enName: "Mist Glass",
-                                code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                doorColor: [{
-                                    name: "베이지",
-                                    code: "BE",
-                                    mixingCode: "GBE"
-                                }, {
-                                    name: "핑크",
-                                    code: "PK",
-                                    mixingCode: "GPK"
-                                }, {
-                                    name: "민트",
-                                    code: "MN",
-                                    mixingCode: "GMN"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "GSV"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "네이쳐",
-                                enName: "Nature Metal",
-                                code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                doorColor: [{
-                                    name: "그레이",
-                                    code: "GY",
-                                    mixingCode: "MGY"
-                                }, {
-                                    name: "블랙",
-                                    code: "BK",
-                                    mixingCode: "MBK"
-                                }, {
-                                    name: "화이트",
-                                    code: "WH",
-                                    mixingCode: "MWH"
-                                }]
-                            }
-                        }]
-                    }, {
-                        name: "빌트인 타입",
-                        defaultCode: "M620AAA351",
-                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
-                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M620AAA351.png",
-                        defaultPrice: "0",
-                        memberDiscount: "0",
-                        directDiscount: "0",
-                        magicSpace: 0,
-                        energy: 1,
-                        knockOn: true,
-                        door: {
-                            count: 3,
-                            door1: {
-                                name: "상단(좌)",
-                                code: "D620TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door2: {
-                                name: "하단(좌)",
-                                code: "D620BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door3: {
-                                name: "하단(우)",
-                                code: "D620BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            }
-                        },
-                        doorColorData: [{
-                            doorMaterial: {
-                                name: "페닉스",
-                                enName: "FENIX",
-                                code: "F",
-                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                doorColor: [{
-                                    name: "보타닉",
-                                    code: "BT",
-                                    mixingCode: "FBT"
-
-                                }, {
-                                    name: "샌드",
-                                    code: "SD",
-                                    mixingCode: "FSD"
-                                }, {
-                                    name: "스톤",
-                                    code: "ST",
-                                    mixingCode: "FST"
-                                }]
-                            }
-
-                        }, {
-                            doorMaterial: {
-                                name: "솔리드",
-                                enName: "Solid Metal",
-                                code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                doorColor: [{
-                                    name: "맨해튼 미드나잇",
-                                    code: "MT",
-                                    mixingCode: "SMT"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "SSV"
-                                }, {
-                                    name: "그린",
-                                    code: "GR",
-                                    mixingCode: "SGR"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "미스트",
-                                enName: "Mist Glass",
-                                code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                doorColor: [{
-                                    name: "베이지",
-                                    code: "BE",
-                                    mixingCode: "GBE"
-                                }, {
-                                    name: "핑크",
-                                    code: "PK",
-                                    mixingCode: "GPK"
-                                }, {
-                                    name: "민트",
-                                    code: "MN",
-                                    mixingCode: "GMN"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "GSV"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "네이쳐",
-                                enName: "Nature Metal",
-                                code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                doorColor: [{
-                                    name: "그레이",
-                                    code: "GY",
-                                    mixingCode: "MGY"
-                                }, {
-                                    name: "블랙",
-                                    code: "BK",
-                                    mixingCode: "MBK"
-                                }, {
-                                    name: "화이트",
-                                    code: "WH",
-                                    mixingCode: "MWH"
-                                }]
-                            }
-                        }]
-                    }, {
-                        name: "매직 스페이스",
-                        defaultCode: "M871AAA151",
-                        subModel: [{
-                            modelCode: "M871AAA252",
-                            magicSpace: 2,
-                            energy: 2,
+                            }],
+                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
+                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
+                            defaultPrice: "0",
+                            memberDiscount: "0",
+                            directDiscount: "0",
+                            magicSpace: 1,
+                            energy: 1,
                             knockOn: false,
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                        }],
-                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
-                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
-                        defaultPrice: "0",
-                        memberDiscount: "0",
-                        directDiscount: "0",
-                        magicSpace: 1,
-                        energy: 1,
-                        knockOn: false,
-                        door: {
-                            count: 4,
-                            door1: {
-                                name: "상단(좌)",
-                                code: "D870TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
+                            door: {
+                                count: 4,
+                                door1: {
+                                    name: "상단(좌)",
+                                    code: "D870TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door2: {
+                                    name: "상단(우)",
+                                    code: "D870TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door3: {
+                                    name: "하단(좌)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door4: {
+                                    name: "하단(우)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                }
                             },
-                            door2: {
-                                name: "상단(우)",
-                                code: "D870TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door3: {
-                                name: "하단(좌)",
-                                code: "D870BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door4: {
-                                name: "하단(우)",
-                                code: "D870BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            }
-                        },
-                        doorColorData: [{
-                            doorMaterial: {
-                                name: "페닉스",
-                                enName: "FENIX",
-                                code: "F",
-                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                doorColor: [{
-                                    name: "보타닉",
-                                    code: "BT",
-                                    mixingCode: "FBT"
+                            doorColorData: [{
+                                doorMaterial: {
+                                    name: "페닉스",
+                                    enName: "FENIX",
+                                    code: "F",
+                                    desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                    doorColor: [{
+                                        name: "보타닉",
+                                        code: "BT",
+                                        mixingCode: "FBT"
 
-                                }, {
-                                    name: "샌드",
-                                    code: "SD",
-                                    mixingCode: "FSD"
-                                }, {
-                                    name: "스톤",
-                                    code: "ST",
-                                    mixingCode: "FST"
-                                }]
-                            }
+                                    }, {
+                                        name: "샌드",
+                                        code: "SD",
+                                        mixingCode: "FSD"
+                                    }, {
+                                        name: "스톤",
+                                        code: "ST",
+                                        mixingCode: "FST"
+                                    }]
+                                }
 
-                        }, {
-                            doorMaterial: {
-                                name: "솔리드",
-                                enName: "Solid Metal",
-                                code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                doorColor: [{
-                                    name: "맨해튼 미드나잇",
-                                    code: "MT",
-                                    mixingCode: "SMT"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "SSV"
-                                }, {
-                                    name: "그린",
-                                    code: "GR",
-                                    mixingCode: "SGR"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "미스트",
-                                enName: "Mist Glass",
-                                code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                doorColor: [{
-                                    name: "베이지",
-                                    code: "BE",
-                                    mixingCode: "GBE"
-                                }, {
-                                    name: "핑크",
-                                    code: "PK",
-                                    mixingCode: "GPK"
-                                }, {
-                                    name: "민트",
-                                    code: "MN",
-                                    mixingCode: "GMN"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "GSV"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "네이쳐",
-                                enName: "Nature Metal",
-                                code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                doorColor: [{
-                                    name: "그레이",
-                                    code: "GY",
-                                    mixingCode: "MGY"
-                                }, {
-                                    name: "블랙",
-                                    code: "BK",
-                                    mixingCode: "MBK"
-                                }, {
-                                    name: "화이트",
-                                    code: "WH",
-                                    mixingCode: "MWH"
-                                }]
-                            }
-                        }]
-                    }, {
-                        name: "베이직",
-                        defaultCode: "M871AAA041",
-                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
-                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
-                        defaultPrice: "0",
-                        memberDiscount: "0",
-                        directDiscount: "0",
-                        door: {
-                            count: 4,
-                            door1: {
-                                name: "상단(좌)",
-                                code: "D870TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door2: {
-                                name: "상단(우)",
-                                code: "D870TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door3: {
-                                name: "하단(좌)",
-                                code: "D870BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },
-                            door4: {
-                                name: "하단(우)",
-                                code: "D870BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            }
+                            }, {
+                                doorMaterial: {
+                                    name: "솔리드",
+                                    enName: "Solid Metal",
+                                    code: "S",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "맨해튼 미드나잇",
+                                        code: "MT",
+                                        mixingCode: "SMT"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "SSV"
+                                    }, {
+                                        name: "그린",
+                                        code: "GR",
+                                        mixingCode: "SGR"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "미스트",
+                                    enName: "Mist Glass",
+                                    code: "G",
+                                    desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                    doorColor: [{
+                                        name: "베이지",
+                                        code: "BE",
+                                        mixingCode: "GBE"
+                                    }, {
+                                        name: "핑크",
+                                        code: "PK",
+                                        mixingCode: "GPK"
+                                    }, {
+                                        name: "민트",
+                                        code: "MN",
+                                        mixingCode: "GMN"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "GSV"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "네이쳐",
+                                    enName: "Nature Metal",
+                                    code: "M",
+                                    desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                    doorColor: [{
+                                        name: "그레이",
+                                        code: "GY",
+                                        mixingCode: "MGY"
+                                    }, {
+                                        name: "블랙",
+                                        code: "BK",
+                                        mixingCode: "MBK"
+                                    }, {
+                                        name: "화이트",
+                                        code: "WH",
+                                        mixingCode: "MWH"
+                                    }]
+                                }
+                            }]
+                        }
+                        /*, {
+                                                name: "베이직",
+                                                defaultCode: "M871AAA041",
+                                                leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
+                                                simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
+                                                defaultPrice: "0",
+                                                memberDiscount: "0",
+                                                directDiscount: "0",
+                                                door: {
+                                                    count: 4,
+                                                    door1: {
+                                                        name: "상단(좌)",
+                                                        code: "D870TT",
+                                                        defaultPrice: "0",
+                                                        memberDiscount: "0",
+                                                        directDiscount: "0",
+                                                    },
+                                                    door2: {
+                                                        name: "상단(우)",
+                                                        code: "D870TT",
+                                                        defaultPrice: "0",
+                                                        memberDiscount: "0",
+                                                        directDiscount: "0",
+                                                    },
+                                                    door3: {
+                                                        name: "하단(좌)",
+                                                        code: "D870BB",
+                                                        defaultPrice: "0",
+                                                        memberDiscount: "0",
+                                                        directDiscount: "0",
+                                                    },
+                                                    door4: {
+                                                        name: "하단(우)",
+                                                        code: "D870BB",
+                                                        defaultPrice: "0",
+                                                        memberDiscount: "0",
+                                                        directDiscount: "0",
+                                                    }
 
-                        },
-                        doorColorData: [{
-                            doorMaterial: {
-                                name: "페닉스",
-                                enName: "FENIX",
-                                code: "F",
-                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                doorColor: [{
-                                    name: "보타닉",
-                                    code: "BT",
-                                    mixingCode: "FBT"
+                                                },
+                                                doorColorData: [{
+                                                    doorMaterial: {
+                                                        name: "페닉스",
+                                                        enName: "FENIX",
+                                                        code: "F",
+                                                        desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                                        doorColor: [{
+                                                            name: "보타닉",
+                                                            code: "BT",
+                                                            mixingCode: "FBT"
 
-                                }, {
-                                    name: "샌드",
-                                    code: "SD",
-                                    mixingCode: "FSD"
-                                }, {
-                                    name: "스톤",
-                                    code: "ST",
-                                    mixingCode: "FST"
-                                }]
-                            }
+                                                        }, {
+                                                            name: "샌드",
+                                                            code: "SD",
+                                                            mixingCode: "FSD"
+                                                        }, {
+                                                            name: "스톤",
+                                                            code: "ST",
+                                                            mixingCode: "FST"
+                                                        }]
+                                                    }
 
-                        }, {
-                            doorMaterial: {
-                                name: "솔리드",
-                                enName: "Solid Metal",
-                                code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                doorColor: [{
-                                    name: "맨해튼 미드나잇",
-                                    code: "MT",
-                                    mixingCode: "SMT"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "SSV"
-                                }, {
-                                    name: "그린",
-                                    code: "GR",
-                                    mixingCode: "SGR"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "미스트",
-                                enName: "Mist Glass",
-                                code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                doorColor: [{
-                                    name: "베이지",
-                                    code: "BE",
-                                    mixingCode: "GBE"
-                                }, {
-                                    name: "핑크",
-                                    code: "PK",
-                                    mixingCode: "GPK"
-                                }, {
-                                    name: "민트",
-                                    code: "MN",
-                                    mixingCode: "GMN"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "GSV"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "네이쳐",
-                                enName: "Nature Metal",
-                                code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                doorColor: [{
-                                    name: "그레이",
-                                    code: "GY",
-                                    mixingCode: "MGY"
-                                }, {
-                                    name: "블랙",
-                                    code: "BK",
-                                    mixingCode: "MBK"
-                                }, {
-                                    name: "화이트",
-                                    code: "WH",
-                                    mixingCode: "MWH"
-                                }]
-                            }
-                        }]
-                    }]
+                                                }, {
+                                                    doorMaterial: {
+                                                        name: "솔리드",
+                                                        enName: "Solid Metal",
+                                                        code: "S",
+                                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                                        doorColor: [{
+                                                            name: "맨해튼 미드나잇",
+                                                            code: "MT",
+                                                            mixingCode: "SMT"
+                                                        }, {
+                                                            name: "실버",
+                                                            code: "SV",
+                                                            mixingCode: "SSV"
+                                                        }, {
+                                                            name: "그린",
+                                                            code: "GR",
+                                                            mixingCode: "SGR"
+                                                        }]
+                                                    }
+                                                }, {
+                                                    doorMaterial: {
+                                                        name: "미스트",
+                                                        enName: "Mist Glass",
+                                                        code: "G",
+                                                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                                        doorColor: [{
+                                                            name: "베이지",
+                                                            code: "BE",
+                                                            mixingCode: "GBE"
+                                                        }, {
+                                                            name: "핑크",
+                                                            code: "PK",
+                                                            mixingCode: "GPK"
+                                                        }, {
+                                                            name: "민트",
+                                                            code: "MN",
+                                                            mixingCode: "GMN"
+                                                        }, {
+                                                            name: "실버",
+                                                            code: "SV",
+                                                            mixingCode: "GSV"
+                                                        }]
+                                                    }
+                                                }, {
+                                                    doorMaterial: {
+                                                        name: "네이쳐",
+                                                        enName: "Nature Metal",
+                                                        code: "M",
+                                                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                                        doorColor: [{
+                                                            name: "그레이",
+                                                            code: "GY",
+                                                            mixingCode: "MGY"
+                                                        }, {
+                                                            name: "블랙",
+                                                            code: "BK",
+                                                            mixingCode: "MBK"
+                                                        }, {
+                                                            name: "화이트",
+                                                            code: "WH",
+                                                            mixingCode: "MWH"
+                                                        }]
+                                                    }
+                                                }]
+                                            }*/
+                    ]
                 }]
             },
             {
@@ -3765,6 +3785,7 @@
                     $("#proposeModel").addClass("border");
                     $("#myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
+                    totalResulPrice();
                 }
             };
             var desc = '';
@@ -3845,6 +3866,7 @@
                     }
                     modelSimulator.maxCountCheck();
                     priceSumList.removeSlide(idx);
+                    totalResulPrice();
                 }
             };
             var desc = '';
@@ -3996,7 +4018,7 @@
                 };
                 lgkorUI.alert(desc, obj);
             }
-            modelSimulator.mobileStep(".simul_step3");
+            //modelSimulator.mobileStep(".simul_step3");
 
         });
         //구매하기
@@ -4007,6 +4029,30 @@
                     purchaseData.push($(this).attr("data-default-code"));
                 }
             });
+            console.log(purchaseData);
+
+
+
+            for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
+                if (purchaseData[0] == proposeSet.proposeConfig[i].modelCode) {
+                    purchaseData = [];
+                    if (proposeSet.proposeConfig[i].defaultCode != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].defaultCode);
+                    }
+                    if (proposeSet.proposeConfig[i].door1 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door1);
+                    }
+                    if (proposeSet.proposeConfig[i].door2 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door2);
+                    }
+                    if (proposeSet.proposeConfig[i].door3 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door3);
+                    }
+                    if (proposeSet.proposeConfig[i].door4 != "") {
+                        purchaseData.push(proposeSet.proposeConfig[i].door4);
+                    }
+                }
+            }
             console.log(purchaseData);
             purchaseFn(purchaseData);
 
@@ -4569,7 +4615,7 @@
             } else {
                 //모바일버전
                 console.log("target", target);
-                let goTop = $(target).offset().top;
+                let goTop = $(target).offset().top - $(".objetcollection-tabs").height();
                 console.log("goTop", goTop);
                 $("html, body").animate({ scrollTop: goTop }, 500);
             }
@@ -4837,7 +4883,7 @@
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
                                 let mainPrice = _typModel[j].defaultPrice;
-                                tblHtml += '<div class="tb_row tb_compare">';
+                                tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                                 tblHtml += '        <colgroup>';
@@ -4891,7 +4937,7 @@
                 let refrigeratorType = configData.modelConfig[1].defaultCode;
                 let mainPrice = configData.modelConfig[1].defaultPrice;
                 modelPriceArry.push(refrigeratorType);
-                tblHtml += '<div class="tb_row tb_compare">';
+                tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                 tblHtml += '    <table>';
                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                 tblHtml += '        <colgroup>';
@@ -4918,7 +4964,7 @@
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = _typModel[i].defaultPrice;
                         modelPriceArry.push(modelCode);
-                        tblHtml += '<div class="tb_row tb_compare">';
+                        tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                         tblHtml += '        <colgroup>';
@@ -5779,7 +5825,7 @@
                 }, 100);
 
             }
-            setTimeout(function() {
+            /*setTimeout(function() {
                 let doorLeng = _doorKName.length;
                 for (let i = 0; i < doorLeng; i++) {
                     $(".model_set_wrap[data-model-editing='Y'] .model_door:eq(" + i + ")").attr("data-door-model_spec_material", _doorMaterial[i]);
@@ -5796,7 +5842,7 @@
                     $(".model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode, "data-model-completed": "N" });
                     modelSimulator.stepThree();
                 }
-            }, 500);
+            }, 500);*/
 
         }
     }
@@ -5883,9 +5929,10 @@ function resultModelPrice(price) {
     console.log("price", price);
     let priceLeng = price.length;
     setTimeout(function() {
+        $(".tb_compare").css("visibility", "visible");
         for (let i = 0; i < priceLeng; i++) {
-            if (price[i] == "nodata") {
-                $(".tb_compare tbody tr:eq(" + i + ")").remove();
+            if (price[i] == "nodata" || price[i] == "undefined" || price[i] === undefined || price[i] == '') {
+                $(".tb_compare tbody tr:eq(" + i + ")").css("display", "none");
 
             } else {
                 $(".tb_compare tbody tr:eq(" + i + ") td:last-child span").text(addComma(price[i]));
@@ -5899,7 +5946,7 @@ function resultModelPrice(price) {
                 $(".simul_step3 .etc_area").removeClass("is_active");
             }
         });
-    }, 500);
+    }, 100);
 
 }
 
@@ -5907,6 +5954,9 @@ function totalResulPrice() {
     setTimeout(function() {
         let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
         let totalPrice = 0;
+        if (resultLeng == 0) {
+            $(".total_result_price .cont .price em").text(0);
+        }
         for (let i = 0; i < resultLeng; i++) {
             let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
             totalPrice += parseInt(minusComma(sumPrice));
