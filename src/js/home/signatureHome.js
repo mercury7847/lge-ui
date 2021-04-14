@@ -120,7 +120,7 @@ $(function() {
                     isDisplay = obj['display'];
                     delete obj['display'];
                 }
-                
+
                 if(isDisplay!==undefined && isDisplay!=='none'){
                     $target.css('display',isDisplay);
                 }
@@ -651,10 +651,14 @@ $(function() {
             // 앱 대응시 주석처리 end
         }
 
-        // 시작시 한 스탭 이동시킴.
-        setTimeout(function(){
-            if(currentStep<1) wheelScene(1);
-        }, 1000);
+
+        $(window).load(function(){
+            // 시작시 한 스탭 이동시킴.
+            setTimeout(function(){
+                if(currentStep<1) wheelScene(1);
+            }, 200);
+
+        });
 
         
         window.resizeScene = render;

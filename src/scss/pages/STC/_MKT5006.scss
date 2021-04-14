@@ -20,6 +20,11 @@
         display:block;
     }
 }
+.br {
+    @include mobile {
+        display:block;
+    }
+}
 
 .visual-wrap {
     position:relative;

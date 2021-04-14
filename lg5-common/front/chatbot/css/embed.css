@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Declare web fonts :: LGFont, LGIcon */
+@font-face {
+    font-style:normal;
+    font-weight:200;
+    font-family:'LGSmHan';
+    src:url('./embed/LGSmHanL.eot');
+    src:local('?'),
+        url('./embed/LGSmHanL.eot?#classicFixed') format('embedded-opentype'),
+        url('./embed/LGSmHanL.woff') format('woff'),
+        url('./embed/LGSmHanL.ttf') format('truetype');
+}
+@font-face {
+    font-style:normal;
+    font-weight:400;
+    font-family:'LGSmHan';
+    src:url('./embed/LGSmHanR.eot');
+    src:local('?'),
+        url('./embed/LGSmHanR.eot?#classicFixed') format('embedded-opentype'),
+        url('./embed/LGSmHanR.woff') format('woff'),
+        url('./embed/LGSmHanR.ttf') format('truetype');
+}
+@font-face {
+    font-style:normal;
+    font-weight:600;
+    font-family:'LGSmHan';
+    src:url('./embed/LGSmHanB.eot');
+    src:local('?'),
+        url('./embed/LGSmHanB.eot?#classicFixed') format('embedded-opentype'),
+        url('./embed/LGSmHanB.woff') format('woff'),
+        url('./embed/LGSmHanB.ttf') format('truetype');
+}
+@font-face {
+    font-style:normal;
+    font-weight:200;
+    font-family:'LGEIcons';
+    src:url('./embed/LGEIcons.eot');
+    src:local('?'),
+        url('./embed/LGEIcons.eot?#classicFixed') format('embedded-opentype'),
+        url('./embed/LGEIcons.woff') format('woff'),
+        url('./embed/LGEIcons.ttf') format('truetype');
+}

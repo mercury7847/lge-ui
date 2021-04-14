@@ -164,7 +164,7 @@ h2.title {
                             }
                         }
                         .default_img {
-                            outline: 3px solid #000000;
+                            //outline: 3px solid rgba(0, 0, 0, .5);//복수개 시뮬 가능할 때 살려야 함
                         }
                     }
                 }
@@ -174,7 +174,7 @@ h2.title {
                     }
                 }
                 &+[data-model-add="Y"] {
-                    margin-right: 80px;
+                    //margin-right: 80px;//추후 기능 살릴때 살림
                 }
                 &[data-del="Y"] {
                     .model_set {
@@ -188,7 +188,8 @@ h2.title {
                     height: 505px;
                     //opacity: .9;
                     @include mobile {
-                        height: 245px;
+                        //height: 245px;
+                        height: 320px;
                     }
                     .btn_model_sel {
                         position: absolute;
@@ -255,7 +256,8 @@ h2.title {
                         .default_img {
                             height: 428px;
                             @include mobile {
-                                height: 215px;
+                                //height: 215px;
+                                height: 290px;
                             }
                             img {
                                 height: 100%;
@@ -373,6 +375,7 @@ h2.title {
                         }
                     }
                 }
+                &[data-model_code="M871AAA252"],
                 &[data-model_code="M871AAA151"],
                 &[data-model_code="M871AAA152"] {
                     //매직 스페이스
@@ -471,13 +474,14 @@ h2.title {
                     }
                 }
                 .model_next {
+                    display: none; //추후 기능 살릴때 제거
                     position: relative;
                     // position: absolute;
                     // right: -90px;
                     // top: 0;
                     width: 80px;
                     height: 428px;
-                    margin-left: 20px;
+                    //margin-left: 20px;//추후 기능 살릴때 살림
                     @include mobile {
                         width: 35px;
                         height: 215px;
@@ -520,8 +524,38 @@ h2.title {
             }
             >dt {
                 padding: 40px 0 25px;
+                @include mobile {
+                    padding: 30px 0 25px;
+                }
                 .simul_tit {
                     text-align: center;
+                    .simul_comment {
+                        padding: 0 40px;
+                        margin-bottom: 30px;
+                        @include mobile {
+                            margin-top: -20px;
+                        }
+                        .tit {
+                            display: block;
+                            margin-bottom: 10px;
+                            font-size: 18px;
+                            color: #222222;
+                            font-weight: 500;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                        // .txt {
+                        //     display: block;
+                        //     margin-bottom: 30px;
+                        //     font-size: 16px;
+                        //     line-height: 1.5;
+                        //     color: #666666;
+                        //     @include mobile {
+                        //         font-size: 13px;
+                        //     }
+                        // }
+                    }
                     .step {
                         margin-right: 10px;
                         font-size: 18px;
@@ -748,6 +782,9 @@ h2.title {
                                             &.is_active {
                                                 border: 1px solid #da0f47;
                                                 border-radius: 7px;
+                                                &:disabled {
+                                                    opacity: 1;
+                                                }
                                                 .model_name {
                                                     font-weight: 500;
                                                 }
@@ -772,7 +809,8 @@ h2.title {
                             &.is_active {
                                 @include mobile {
                                     width: 100vw;
-                                    height: 90vw;
+                                    //height: 90vw;
+                                    height: 400px;
                                 }
                             }
                         }
@@ -798,6 +836,9 @@ h2.title {
                             .color_sel_body {
                                 position: relative;
                                 padding: 30px 40px 20px 40px;
+                                @include mobile {
+                                    padding: 20px 40px 10px 40px;
+                                }
                                 &:before {
                                     position: absolute;
                                     content: '';
@@ -1335,8 +1376,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {
@@ -1362,6 +1403,9 @@ h2.title {
     .color_best_body {
         position: relative;
         padding: 40px 40px 20px 40px;
+        @include mobile {
+            padding: 30px 40px 10px 40px;
+        }
         &:before {
             position: absolute;
             content: '';
@@ -1376,7 +1420,7 @@ h2.title {
                 width: auto;
                 &+.swiper-slide {
                     dl {
-                        padding-left: 40px;
+                        padding-left: 60px;
                     }
                 }
                 dl {
@@ -1394,7 +1438,7 @@ h2.title {
                             display: flex;
                             li {
                                 &+li {
-                                    margin-left: 10px;
+                                    margin-left: 30px;
                                 }
                             }
                         }
@@ -1415,8 +1459,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {
@@ -1442,6 +1486,9 @@ h2.title {
     .color_my_pick_body {
         position: relative;
         padding: 40px 40px 20px 40px;
+        @include mobile {
+            padding: 30px 40px 10px 40px;
+        }
         &:before {
             position: absolute;
             content: '';
@@ -1474,7 +1521,7 @@ h2.title {
                             display: flex;
                             li {
                                 &+li {
-                                    margin-left: 10px;
+                                    margin-left: 30px;
                                     padding-left: 10px;
                                 }
                             }
@@ -1488,6 +1535,7 @@ h2.title {
 
 .btn_propose_model_sel,
 .btn_myPick_model_sel {
+    position: relative;
     width: 100px;
     @include mobile {
         width: 70px;
@@ -1499,9 +1547,13 @@ h2.title {
             .mini_model {
                 &:nth-child(1) {
                     left: 30.3%;
-                    top: 10.3%;
+                    top: 10.8%;
                     width: 18.6%;
                     height: 43.1%;
+                    @include mobile {
+                        top: 11.3%;
+                        height: 42.6%;
+                    }
                 }
                 &:nth-child(2) {
                     left: 30.3%;
@@ -1514,6 +1566,44 @@ h2.title {
                     top: 55.1%;
                     width: 19.5%;
                     height: 34%;
+                }
+            }
+        }
+        &[data-model-default-code="M871AAA151"] {
+            .mini_model_wrap {
+                .mini_model {
+                    &:nth-child(1) {
+                        left: 30.3%;
+                        top: 10.8%;
+                        width: 18.6%;
+                        height: 43.1%;
+                        @include mobile {
+                            top: 11.3%;
+                            height: 42.6%;
+                        }
+                    }
+                    &:nth-child(2) {
+                        left: 49.6%;
+                        top: 10.8%;
+                        width: 19.5%;
+                        height: 43.1%;
+                        @include mobile {
+                            top: 11.3%;
+                            height: 42.6%;
+                        }
+                    }
+                    &:nth-child(3) {
+                        left: 30.3%;
+                        top: 55.1%;
+                        width: 18.6%;
+                        height: 34%;
+                    }
+                    &:nth-child(4) {
+                        left: 49.6%;
+                        top: 55.1%;
+                        width: 19.5%;
+                        height: 34%;
+                    }
                 }
             }
         }
@@ -1576,11 +1666,14 @@ h2.title {
         }
     }
     >span {
+        position: absolute;
+        left: 50%;
         display: block;
         margin-top: 10px;
         text-align: center;
         font-size: 16px;
         color: #727272;
+        transform: translateX(-50%);
         @include mobile {
             font-size: 12px;
         }
@@ -1687,6 +1780,7 @@ h2.title {
     right: 32px;
     width: 32px;
     height: 32px;
+    z-index: 5;
 }
 
 .obj_tooltip_wrap .btn-close:after {

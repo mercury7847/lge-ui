@@ -18,7 +18,7 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 (function(){
     var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
@@ -285,7 +285,7 @@
         bindEvents: function() {
             var self = this;
             
-            //등록가능제품 등록하기
+            //등록가능제품 보유제품으로 등록하기
             self.$registProductList.on('click','div.enroll-list ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
@@ -306,6 +306,9 @@
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     $li.remove();
+
+                    //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                    self.requestMoreData(1);
                     self.requestOwnData(true);
                     self.hideLoading();
                     /*
@@ -373,6 +376,8 @@
                             self.checkNoData();
                         }
                         self.hideLoading();
+                        //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                        self.requestMoreData(1);
                         self.requestOwnData(false);
                     }, "POST", null, null, null, true, function(err){
                         self.hideLoading(true);
@@ -581,7 +586,11 @@
                             self.showLoading();
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
+
+                                //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                                self.requestMoreData(1);
                                 self.requestOwnData(true);
+
                                 self.hideLoading();
                             }, "POST", null, null, null, true, function(err){
                                 self.hideLoading(true);

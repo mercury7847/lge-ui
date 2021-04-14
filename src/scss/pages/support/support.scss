@@ -622,51 +622,53 @@ label img {
         margin-bottom: 32px;
         .item {
             border-radius: 8px;
-            padding: 16px 0;
-            color: #fff;
-            text-align: center;
-            flex: 1;
+            padding:16px 0;
+            color:#fff;
+            text-align:center;
+            flex:1;
             &:nth-child(1) {
-                background-image: linear-gradient(135deg, #8d71ec, #f75584);;
+                background-image:linear-gradient(to right, #a58bee, #f86791);
             }
             &:nth-child(2) {
-                background-image: linear-gradient(135deg, #fe3f6d, #f2c37c);;
+                background-image:linear-gradient(to right, #a58bee, #f86791);
             }
             &:nth-child(3) {
-                background-image: linear-gradient(135deg, #f47a48, #f1c246);;
+                background-image:linear-gradient(to right, #a58bee, #f86791);
             }
             .title {
-                font-size: 20px;
-                font-weight: bold;
+                line-height:30px;
+                font-size:20px;
+                font-weight:$font-weight-bold;
             }
             .text {
-                font-size: 14px;
+                line-height:24px;
+                font-size:14px;
+                font-weight:$font-weight-medium;
             }
         }
         @include pc {
-            display: flex;
-            justify-content: center;
+            display:flex;
+            justify-content:center;
             .item {
-                margin-left: 16px;
+                margin-left:16px;
                 &:first-child {
-                    margin-left: 0;
+                    margin-left:0;
                 }
             }
         }
         @include mobile {
             .item {
-                margin-top: 12px;
+                margin-top:12px;
                 &:first-child {
-                    margin-top: 0;
+                    margin-top:0;
                 }
                 .title {
-                    font-size: 18px;
-                    line-height:26px;
+                    line-height:23px;
+                    font-size:15px;
                 }
                 .text {
-                    font-size: 13px;
                     line-height:21px;
-                    font-weight:500;
+                    font-size:13px;
                 }
             }
         }

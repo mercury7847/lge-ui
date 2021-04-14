@@ -35,6 +35,16 @@
 
             self.btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
+                //로그인을 해야 하는가
+                var login = self.$wrap.data('loginUrl');
+                if(login && login.length > 0) {
+                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                        location.href = login;
+                    }};
+                    lgkorUI.confirm(null, obj);
+                    return;
+                }
+
                 self.$replyPopup.find('#reply').val("");
                 self.$replyPopup.find('input[type="checkbox"]').prop('checked',false);
                 self.$replyPopup.vcModal({opener: this});
@@ -42,9 +52,22 @@
 
             self.btnWrap.on('click','a.result',function (e) {
                 e.preventDefault();
+                //로그인을 해야 하는가
+                var login = self.$wrap.data('loginUrl');
+                if(login && login.length > 0) {
+                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                        location.href = login;
+                    }};
+                    lgkorUI.confirm(null, obj);
+                    return;
+                }
+
+                var eventId = self.$wrap.data('eventId');
+                param.eventId = eventId;
+
                 var ajaxUrl = self.$wrap.attr('data-check-url');
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl,null,function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl,param,function(result) {
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.win)) {
                         var template = '<strong class="tit">축하드립니다!</strong>' +
@@ -63,12 +86,22 @@
             });
 
             //댓글쓰기
-            self.$replyPopup.on('click','button[data-reply-url]',function (e) {
-                 e.preventDefault();
+            self.$replyPopup.on('click','.pop-footer .btn-group button',function (e) {
+                e.preventDefault();
+                //로그인을 해야 하는가
+                var login = self.$wrap.data('loginUrl');
+                if(login && login.length > 0) {
+                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                        location.href = login;
+                    }};
+                    lgkorUI.confirm(null, obj);
+                    return;
+                }
+
                  //체크
-                 var param = {};
-                 var $chk = self.$replyPopup.find('#chk1-1');
-                 if($chk.length) {
+                var param = {};
+                var $chk = self.$replyPopup.find('#chk1-1');
+                if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 수집 이용 동의는 필수입니다.'});
                         $chk.focus();
@@ -102,17 +135,22 @@
 
                 var reply = self.$replyPopup.find('#reply').val();
                 var checkReply = vcui.string.replaceAll(reply," ","");
-                if(checkReply > 0) {
+                if(checkReply.length > 0) {
                     param.reply = reply;
                 } else {
                     lgkorUI.alert("", {title: '댓글을 입력해주세요.'});
                     return;
                 }
-                var ajaxUrl = $(this).attr('data-reply-url');
+
+                var eventId = self.$wrap.data('eventId');
+                param.eventId = eventId;
+
+                var ajaxUrl = self.$wrap.data('replyUrl');
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(ajaxUrl,{},function(result) {
+                lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result) {
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
+                        lgkorUI.alert("", {title: '이벤트에 참여되었습니다.'});
                         self.$replyPopup.vcModal('close');
                         self.requestData(1);
                     }

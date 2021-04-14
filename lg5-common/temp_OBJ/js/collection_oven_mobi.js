@@ -15,7 +15,7 @@ $(function() {
         var firWM = resizefirWM + 3000;
         var firW2M = resizefirWM + (530 * 7);
 
-        console.log(resizefirWM);
+        //console.log(resizefirWM);
 
         $(".only_mobile .slider00").css("width", resizefirWM);
         $(".only_mobile .ref-slider").css("width", firWM);
@@ -29,7 +29,7 @@ $(function() {
         var firWM = 3000;
         var firW2M = 530 * 7;
 
-        console.log(resizefirWM);
+        //console.log(resizefirWM);
 
         $(".only_mobile .slider00").css("width", resizefirWM);
         $(".only_mobile .ref-slider").css("width", firWM);
@@ -53,7 +53,7 @@ $(function() {
             var firWM = resizefirWM + 3000;
             var firW2M = resizefirWM + (530 * 7);
 
-            console.log(resizefirWM);
+            //console.log(resizefirWM);
 
             $(".only_mobile .slider00").css("width", resizefirWM);
             $(".only_mobile .ref-slider").css("width", firWM);
@@ -66,7 +66,7 @@ $(function() {
             var firWM = 3000;
             var firW2M = 530 * 7;
 
-            console.log(resizefirWM);
+            //console.log(resizefirWM);
 
             $(".only_mobile .slider00").css("width", resizefirWM);
             $(".only_mobile .ref-slider").css("width", firWM);
@@ -86,7 +86,7 @@ $(function() {
 
     function scrollEventM() {
         var scrollEM = $(window).scrollTop();
-        console.log(scrollEM);
+        //console.log(scrollEM);
 
 
         if (scrollEM >= 100) {
@@ -228,7 +228,7 @@ $(function() {
             $(".only_mobile .fenix-bg").css({
                 transform: scaleaM
             });
-            //console.log(scraa, scalea);
+            ////console.log(scraa, scalea);
         } else if (scrollEM < divFeboM) {
             $(".only_mobile .fenix-bg").css({
                 transform: "scale(1)"
@@ -281,7 +281,7 @@ $(function() {
     function updatePositionM() {
 
         var x = this.x >> 0;
-        console.log(x);
+        //console.log(x);
     }
 
     $(".only_mobile .style-button > ul > li > button").click(function() {

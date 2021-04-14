@@ -28,11 +28,11 @@
                             '<a href="{{storyUrl}}" class="visual-area">'+
                                 '{{#if contentsType == "image"}}'+
                                 '<span class="image">'+
-                                    '<img onload="onImgLoadEvent(this)" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
+                                    '<img onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '{{#elsif contentsType == "video"}}'+
                                 '<span class="image">'+
-                                    '<img onload="onImgLoadEvent(this)" onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
+                                    '<img onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
                                 '{{/if}}'+
@@ -47,8 +47,7 @@
                                 '<div class="tag-wrap">'+
                                     '<ul class="tags">'+
                                         '{{#each item in tagList}}'+           
-                                        // '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
-                                        '<li class="tag" style="text-decoration:none;">#{{item.tagName}}</li>'+ // 210412_임시_링크제거
+                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
                                         '{{/each}}'+
                                     '</ul>'+
                                 '</div>'+
@@ -73,24 +72,53 @@
             '</ul>'+
         '</div>';
 
+    var recommendTagTemplate = 
+        '<div class="flexbox-wrap">'+
+            '<div class="flexbox tag-area">'+
+                '<div class="title-area">'+
+                    '<span class="title">취향에 맞는 <em>#태그</em>를 <br class="mo-only ">구독해보세요</span>'+
+                    '<a href="#" class="btn-link tagmnger-btn"><span>다른 태그도 구독</span></a>'+
+                '</div>'+
+                '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
+                    '<div class="ui_smooth_tab">'+
+                        '<ul class="tag-lists">'+
+                            '{{#each item in tagList}}'+                
+                            '<li>'+
+                                '<div class="tag">'+
+                                    '<span class="text">#{{item.tagName}}</span>'+
+                                    '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}"><span>구독</span></button>'+
+                                '</div>'+
+                            '</li>'+  
+                            '{{/each}}'+                      
+                        '</ul>'+
+                    '</div>'+
+                    '<div class="scroll-controls ui_smooth_controls">'+
+                        '<button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>'+
+                        '<button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</div>';
+
     var STORY_LIST_URL;
     var IS_LOGIN;
     var STORY_URL;
+    var TAG_MANAGER_URL;
+    var LOGIN_URL;
 
     var tagMngChkList;
 
-    var firstLoadCnt = 0;
-    var firstLoadLength = 1;
-
     var imgScale = 1.25;    //640 * 800
     var videoScale = 0.56;  //240 * 136
+
+    history.scrollRestoration = 'manual';
 
     function init(){      
         STORY_LIST_URL = $('.contents.story-main').data("storyList");
         IS_LOGIN = $('.contents.story-main').data("loginflag");
         STORY_URL = $('.contents.story-main').data("storyUrl");
-
-        history.scrollRestoration = 'manual';
+        TAG_MANAGER_URL = $('.contents.story-main').data("tagMngUrl");
+        LOGIN_URL = $('.contents.story-main').data("loginUrl");
 
         vcui.require(['ui/carousel', "ui/sticky"], function () {
             $('.story-review .slide-controls').hide();
@@ -127,16 +155,13 @@
                         $('html,body').scrollTop(storyHomeScrollTop);
                     },10);                    
                 }
-
             }
 
             loadStoryList('new_story', 1, 'NewStory');
             $('.user_story').hide();
 
             if(IS_LOGIN == "Y"){
-                firstLoadLength = 2;
                 loadStoryList('user_story', 1, 'UserStory');
-                //210412_임시_막음.
             } 
         });
     }
@@ -181,11 +206,9 @@
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
-
+            
             sendTagList(this);
-        });
-
-        $('.floating-wrap .easy-path a').on('click', function(e){
+        }).on('click', '.tagmnger-btn', function(e){
             e.preventDefault();
             
             requestTagMngPop(this);
@@ -287,36 +310,36 @@
     }
 
     function requestTagMngPop(dm){
-        var href = $(dm).attr('href');
-        var isLogin = $(dm).data('isLogin');
-        if(isLogin == "Y"){
-            lgkorUI.requestAjaxData(href, null, function(result){
+        if(IS_LOGIN == "Y"){
+            lgkorUI.requestAjaxData(TAG_MANAGER_URL, null, function(result){
                 $('#popup-tagMnger').empty().html(result).vcModal();
     
                 addTagMngInitData();
             }, null, "html");
         } else{
-            location.href = href;
+            location.href = LOGIN_URL;
         }
     }
 
     function sendTagList(item){
+        var section = $(item).closest('.story-section');
         var selectTags = {
             mode: $(item).data('mode'),
             tagCode: $(item).data('code'),
             tagName: $(item).data('name')
         }
-        var section = $(item).closest('.story-section');
 
-        // console.log(section.attr('class'), " [selectTags:", selectTags, ']');
-
-        if(section.hasClass('user_story')){
-            if(selectTags.mode == "search"){
-                $('.new_story').hide();
-            }
-            loadStoryList('user_story', 1, "UserStory", selectTags);
-        } else{
+        if(section.hasClass('new_story')){
             loadStoryList('new_story', 1, 'NewStory', selectTags);
+        } else{
+            if(IS_LOGIN == "Y"){
+                if(selectTags.mode == "search"){
+                    $('.new_story').hide();
+                }
+                loadStoryList('user_story', 1, "UserStory", selectTags);
+            } else{
+                location.href = LOGIN_URL;
+            }
         }
     }
 
@@ -352,7 +375,10 @@
             else sectionItem.find('.btn-moreview').css('display','block');
             
             // console.log("result.data.selectTags:", result.data.selectTags);
+            var viewMode;
             if(result.data.selectTags){
+                viewMode = "selectTagMode";
+                
                 sectionItem.find('.inner h2.title').hide();
                 
                 var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
@@ -360,6 +386,8 @@
 
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
             } else{
+                viewMode = "listMode";
+
                 sectionItem.find('.inner h2.title').show();
             }
             
@@ -378,68 +406,34 @@
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
+                if(page == 1){
+                    if(IS_LOGIN == "Y"){
+                        $('.tag-subscribe-story').empty().hide();
+
+                        if(viewMode == "listMode" && sectioname == "user_story"){
+                            var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
+                            list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
+                            sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
+                        }
+                    } else{
+                        if(sectioname == "new_story"){
+                            $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                        }
+                    }
+                }
+                
                 setRepositionTagBox(sectionItem);
-
-                // console.log("page:", page);
-                // console.log("result.data.recommendTags:", result.data.recommendTags);
-                // if(page == 1 && result.data.recommendTags){
-                //     var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
-                //     list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
-                //     sectionItem.find('.flexbox-wrap').children().eq(putIdx).after(list);
-                // }
-
             } else{
+                if(sectioname == "user_story"){
+                    console.log("sectioname:", sectioname)
+                    $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                    $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                }
                 sectionItem.hide();
-                lgkorUI.hideLoading();
             }
         });
     }
-
-    function imgLoadEvent(img){
-        var sectionItem = $(img).closest('.story-section');
-        var imgLoadId = sectionItem.data("imgLoadId");
-        var imgLoadTotal = sectionItem.data("imgLoadTotal");
-
-        imgLoadId++;
-
-        sectionItem.data("imgLoadId", imgLoadId);
-
-        if(imgLoadId == imgLoadTotal){
-            // console.log("### img load complete ###");
-
-            setRepositionTagBox(sectionItem);
-            
-            var scrolltop = 999999999999999;
-            sectionItem.find('.flexbox-wrap .flexbox').each(function(cdx, child){
-                if(!$(child).data('appearAnim')){
-                    scrolltop = Math.min(scrolltop, $(child).offset().top);
-
-                    var delay = parseInt(Math.random()*10)*15;
-                    $(child).data('appearAnim', true);
-                    //$(child).find('.box-wrap').css({opacity:0, y:100}).delay(delay).transition({opacity:1, y:0}, 500, "easeInOutCubic");
-                }
-            });
-
-            var page = sectionItem.data("page");
-            if(page > 1){
-                var status = getAlignStatusValues(sectionItem);
-                //$('html, body').animate({scrollTop: scrolltop - status.distance}, 500);
-            } else{
-                scrolltop = 0;
-                if(firstLoadCnt >= firstLoadLength){
-                    if(sectionItem.hasClass('new_story')){
-                        scrolltop = sectionItem.offset().top;
-                    }
-                }
-                //$('html, body').animate({scrollTop: scrolltop}, 200);
-            }
-
-            if(firstLoadCnt < firstLoadLength) firstLoadCnt++;
-
-            //lgkorUI.hideLoading();
-        }
-    }
-    window.onImgLoadEvent = imgLoadEvent;
 
     function setRepositionTagBox(item){
         var maxBottom = 0;
@@ -451,7 +445,7 @@
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
         item.find('.flexbox').each(function(idx, box){
-            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight;
+            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight;
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
@@ -460,9 +454,14 @@
 
                     contype = lastbox.data('contentsType');
                     if(contype == 'image') boxheight = status.imgheight;
-                    else{
+                    else if(contype == "video"){
                         txtheight = lastbox.find('.text-area').outerHeight(true);
                         boxheight = status.videoheight + txtheight;
+                    } else{
+                        titleheight = lastbox.find('.title').outerHeight(true);
+                        tagheight = lastbox.find('.tag-lists').outerHeight(true);
+                        boxheight = titleheight + tagheight;
+                        console.log('lastbox:', titleheight, tagheight);
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
@@ -476,9 +475,15 @@
 
             contype = $(box).data('contentsType');
             if(contype == 'image') boxheight = status.imgheight;
-            else{
+            else if(contype == "video"){
                 txtheight = $(box).find('.text-area').outerHeight(true);
                 boxheight = status.videoheight + txtheight;
+            } else{
+                titleheight = $(box).find('.title').outerHeight(true);
+                tagheight = $(box).find('.tag-lists').outerHeight(true);
+                boxheight = titleheight + tagheight;
+                console.log(titleheight, tagheight);
+
             }
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({

@@ -73,10 +73,10 @@
                     text-align: center;
                     &:before {
                         display: inline-block;
-                        width: 32px;
-                        height: 32px;
-                        background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat 0 0;
-                        transform: translateY(calc(50% - 8px));
+                        width: 48px;
+                        height: 48px;
+                        background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat center center;
+                        background-size: 32px;
                         content: '';
                     }
                 }
@@ -94,7 +94,8 @@
                         height: 40px;
                         line-height: 40px;
                         &:before {
-                            transform: translateY(calc(50% - 12px));
+                            width: 40px;
+                            height: 40px;
                         }
                     }
                     .tooltip-box {
@@ -288,7 +289,7 @@
                     }
                 }
                 .event_wr {
-                    display:inline-block;
+                    display:block;
                 }
                 .indexVisual {
                     display:inline-block;

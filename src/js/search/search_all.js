@@ -116,21 +116,21 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{#if obsFlag=="Y"}}' +
+            '{{#if obsFlag=="Y" && hasPrice}}' +
             '<div class="info-price">' +
                 '{{#if carePrice}}' +
                 '<div class="price-info rental">' +
-                    '{{#if carePrice}}<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                    '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                 '</div>' +
                 '{{/if}}' +
                 '<div class="price-info sales">' +
-                '<div class="original">' +
-                    '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '<div class="original">' +
+                        '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                    '<div class="price-in">' +
+                        '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
                 '</div>' +
-                '<div class="price-in">' +
-                    '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                '</div>' +
-            '</div>' +
             '</div>' +
             '{{/if}}' +
         '</div>' +
@@ -204,7 +204,7 @@
 
     var searchBnrTemplate = 
         '<a href="{{url}}" target="{{target}}">'+
-            '<img src="{{pcImage}}" alt="{{title}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}">'+
             '<div class="text-area">'+
                 '<strong class="title">{{#raw title}}</strong>'+
                 '<span class="sub-copy">{{#raw desc}}</span>'+
@@ -775,6 +775,7 @@
 
                     //센터 배너
                     if(data.searchBanner && !vcui.isEmpty(data.searchBanner)) {
+                        data.searchBanner.mobileImage = data.searchBanner.mobileImage ? data.searchBanner.mobileImage : data.searchBanner.pcImage;
                         self.$searchBanner.html(vcui.template(searchBnrTemplate, data.searchBanner));
                         self.$searchBanner.show();
                     } else {
@@ -894,6 +895,7 @@
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            item.hasPrice = (item.price || item.carePrice);
                             $list_ul.append(vcui.template(additionalItemTemplate, item));
                         });
                         $resultListWrap.show();

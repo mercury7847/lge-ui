@@ -75,7 +75,7 @@
 	        var firW = resizefirW + 3000;
 	        var firW2 = resizefirW + (530 * 7);
 
-	        //console.log( resizefirW );
+	        ////console.log( resizefirW );
 
 	        $(".only_pc .slider00").css("width", resizefirW);
 	        $(".only_pc .ref-slider").css("width", firW);
@@ -87,7 +87,7 @@
 	        var firW = 3000;
 	        var firW2 = 530 * 7;
 
-	        //console.log( resizefirW );
+	        ////console.log( resizefirW );
 
 	        $(".only_pc .slider00").css("width", resizefirW);
 	        $(".only_pc .ref-slider").css("width", firW);
@@ -107,7 +107,7 @@
 	            var firW = resizefirW + 3000;
 	            var firW2 = resizefirW + (530 * 7);
 
-	            ///console.log( resizefirW );
+	            /////console.log( resizefirW );
 
 	            $(".only_pc .slider00").css("width", resizefirW);
 	            $(".only_pc .ref-slider").css("width", firW);
@@ -119,7 +119,7 @@
 	            var firW = 3000;
 	            var firW2 = 530 * 7;
 
-	            //console.log( resizefirW );
+	            ////console.log( resizefirW );
 
 	            $(".only_pc .slider00").css("width", resizefirW);
 	            $(".only_pc .ref-slider").css("width", firW);
@@ -135,7 +135,7 @@
 
 	    function scrollEvent() {
 	        var scrollE = $(window).scrollTop();
-	        // console.log(scrollE);
+	        // //console.log(scrollE);
 
 	        if (scrollE > 300) {
 	            $(".only_pc .collect_tab").addClass("active");
@@ -271,7 +271,7 @@
 	            $(".only_pc .fenix-bg").css({
 	                transform: scalea
 	            });
-	            //console.log(scraa, scalea);
+	            ////console.log(scraa, scalea);
 	        } else if (scrollE < divFebo) {
 	            $(".only_pc .fenix-bg").css({
 	                transform: "scale(1)"
@@ -508,7 +508,7 @@
 	            }
 	        }
 	        fadingDiv.css({ 'opacity': opacity4 });
-	        //console.log(divY, scrollE, fadeStartDiv , fadeUntilDiv);
+	        ////console.log(divY, scrollE, fadeStartDiv , fadeUntilDiv);
 
 	    }
 
@@ -559,10 +559,10 @@
 	    function updatePosition() {
 
 	        var x = this.x >> 0;
-	        // console.log(x);
+	        // //console.log(x);
 
 	        var resW = -1 * $(".only_pc .ref-slider").width() + $(window).width();
-	        // console.log(resW);
+	        // //console.log(resW);
 	        if (x <= resW) {
 	            $(".only_pc #reFscroll").css("z-index", "2");
 	        } else if (x == 0) {

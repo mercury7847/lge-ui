@@ -219,16 +219,17 @@ $(document).ready(function() {
                                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
                             }
                         } else {
-                            if(LGEAPPcomfirmAPPOpen()) {
+                            //if(LGEAPPcomfirmAPPOpen()) {
                                 
-                            } else {
+                            //} else {
                                 var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
 
-                                obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'설치', ok: LGEcomfirmAPPInstall});
-                                var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+                                obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: LGEcomfirmAPPInstall});
+                                //var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+                                var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 실행하시겠습니까?';
 
                                 lgkorUI.confirm(desc, obj);
-                            }
+                            //}
                         }
                     }
                 });
@@ -249,7 +250,8 @@ $(document).ready(function() {
             if (agent.indexOf("Android") != -1) {
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
                 setTimeout(function() {
-                    location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
+                    //location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
+                    window.open("https://play.google.com/store/apps/details?id=kr.co.lge.android", "_blank");
                 }, 500);
             } else if (/iPhone|iPad|iPod/i.test(agent)) {
                 setTimeout(function() {
@@ -261,15 +263,23 @@ $(document).ready(function() {
             }
         }
 
+        /*
         LGEAPPcomfirmAPPOpen = function(){
             var agent = navigator.userAgent;
 
             if (agent.indexOf("Android") != -1) {
                 location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                setTimeout(function(){
+                    
+                }, 500);
             } else if (/iPhone|iPad|iPod/i.test(agent)) {
+                setTimeout(function(){
+
+                }, 500);
                 location.href = "lgeapp://";
             }
         }
+        */
 
         LGEAPPsetArBarcode();
         $(window).on({
