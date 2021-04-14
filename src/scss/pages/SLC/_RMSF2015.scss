@@ -7,6 +7,7 @@ br.m {
 }
 // visual title
 .contents.benefit {
+    margin-top: -32px;
 	.visual-tit-wrap {
         display: none;
 		position:relative;
@@ -30,37 +31,69 @@ br.m {
 			}
 		}
     }
-    //.csn-tabs {
-    //    padding-top: 40px;
-    //    @include mobile {
-    //        padding-top: 32px;
-    //    }
-    //}
-    .csn-tab-contents .cont-wrap .section .tit-wrap .tit {
-        border-bottom:none;
-        font-size:32px;
-        line-height:52px;
-        text-align:center;
+    .csn-tabs {
+        padding: 32px 40px 0;
         @include mobile {
-            font-size:24px;
-            line-height:32px;
+            padding: 32px 0 0;
+        }
+    }
+    .csn-tab-contents .cont-wrap .section {
+        .tit-wrap {
+            margin-bottom: 0;
+            .tit {
+                padding-bottom: 0;
+                border-bottom:none;
+                font-size:32px;
+                line-height:52px;
+                text-align:center;
+                @include mobile {
+                    font-size:24px;
+                    line-height:33px;
+                }
+            }
+        }
+        @include mobile {
+            padding: 48px 16px 60px;
         }
     }
     .csn-tab-contents .gray-block-wrap {
-        max-width:1194px;
+        max-width:1380px;
         width:100%;
-        margin-top:0;
+        margin-top:64px;
         & + .gray-block-wrap {
-            margin-top:24px;
-            @include mobile {
+            margin-top:80px;
+        }
+        @include mobile {
+            padding: 0;
+            & + .gray-block-wrap {
                 margin-top:12px;
             }
-        }
-        & + .bullet-list {
-            max-width:1146px;
-            margin:48px auto 0;
-            @include mobile {
+            & + .bullet-list {
                 margin:40px 0 0;
+            }
+        }
+        &.border-type {
+            display: flex;
+            width: auto;
+            max-width: none;
+            margin: 64px -12px 0;
+            .blocks {
+                width: calc(33.33% - 24px);
+                margin: 0 12px;
+                border-radius: 8px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            @include mobile {
+                flex-direction: column;
+                margin: 20px 0 0;
+                .blocks {
+                    width: 100%;
+                    margin: 12px 0 0;
+                    dl {
+                        padding-top: 0;
+                    }
+                }
             }
         }
         &.big {
@@ -70,49 +103,159 @@ br.m {
                 @include mobile {
                     padding:32px 16px;
                 }
-                > dl {
-                    margin-top:32px;
-                    @include mobile {
-                        margin-top:0;
-                    }
-                    dd {
-                        margin-top:4px;
+            }
+            .benefit4,
+            .benefit5 {
+                .info {
+                    margin-top: 0;
+                    > li {
+                        width: 100%;
+                        @include pc {
+                            display: flex;
+                            align-items: center;
+                            margin: 48px 0 0;
+                            .img {
+                                img {
+                                    max-width: 562px;
+                                    border-radius: 8px;
+                                }
+                            }
+                            .text-area {
+                                padding-left: 64px;
+                                dl {
+                                    margin-top: 0;
+                                }
+                            }
+                            &:nth-child(2) {
+                                flex-direction: row-reverse;
+                                .text-area {
+                                    padding: 0 64px 0 0;
+                                }
+                            }
+                            .bullet-list {
+                                text-align: left;
+                            }
+                        }
+                        @include mobile {
+                            margin: 40px 0 0;
+                            dl {
+                                margin-top: 0;
+                                padding-top: 24px;
+                            }
+                            .bullet-list {
+                                text-align: left;
+                                .b-txt {
+                                    padding-left: 11px;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
         &.twin {
-            width:65%;
+            margin-top: 24px;
             @include mobile {
-                width:100%;
+                margin-top: 0;
             }
         }
         .blocks {
             width:auto;
-            padding:36px 32px;
-            border-radius:8px;
-            // border:1px solid #ddd;
             background:none;
+            border-radius: 0;
             @include mobile {
                 width:100%;
+                margin-top: 40px;
                 padding:32px 16px;
             }
+            &[class*="benefit"] {
+                padding: 0;
+                border: 0;
+                dl:before {
+                    display: inline-block;
+                    width: 64px;
+                    height: 64px;
+                    margin-bottom: 24px;
+                    background: no-repeat center center;
+                    background-size: 100%;
+                    content: '';
+                }
+                @include mobile {
+                    .num {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                    }
+                }
+                &[class*="1"] {
+                    dl:before {
+                        background-image: url('/lg5-common/images/SLC/icon-care-benefit-06.svg');
+                    }
+                }
+                &[class*="2"] {
+                    dl:before {
+                        background-image: url('/lg5-common/images/SLC/icon-care-benefit-07.svg');
+                    }
+                }
+                &[class*="3"] {
+                    dl:before {
+                        background-image: url('/lg5-common/images/SLC/icon-care-benefit-08.svg');
+                    }
+                }
+                &[class*="4"],
+                &[class*="5"] {
+                    dl:before {
+                        display: none;
+                    }
+                }
+            }
             dl {
+                em {
+                    color: $color-primary;
+                }
+                dt .num {
+                    display: block;
+                    margin-bottom: 4px;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 18px;
+                }
                 dt .tit {
-                    font-size:20px;
-                    line-height:30px;
+                    font-size:24px;
+                    line-height:36px;
                 }
                 dd {
                     margin-top:12px;
                 }
                 @include mobile {
-                    text-align:center;
+                    padding-top: 23px;
+                    dt .num {
+                        display: block;
+                        margin-bottom: 4px;
+                        font-weight: 700;
+                        font-size: 11px;
+                    }
+                    dt .tit {
+                        font-size:20px;
+                        line-height:28px;
+                        br {
+                            display: none;
+                        }
+                    }
                 }
             }
             .bullet-list {
-                margin-top:16px;
+                margin-top:8px;
+                text-align: center;
                 .bullet-list {
                     margin-top:0;
+                }
+                @include mobile {
+                    margin-top: 12px;
+                    .b-txt {
+                        padding-left: 0;
+                    }
                 }
             }
             .info {
@@ -154,59 +297,55 @@ br.m {
                             line-height:28px;
                         }
                     }
-                    @include mobile {
-                        width:100%;
-                        margin:32px 0 0;
-                        &:first-child {
-                            margin-top:0;
-                        }
-                        dl {
-                            margin-top:20px;
-                            dd {
-                                margin-top:8px;
-                            }
-                        }
-                    }
+                    //@include mobile {
+                    //    width:100%;
+                    //    margin:32px 0 0;
+                    //    dl {
+                    //        margin-top:20px;
+                    //        dd {
+                    //            margin-top:8px;
+                    //        }
+                    //    }
+                    //}
                 }
             }
         }
     }
     .csn-tab-contents .csn-ars-bottom {
         position:relative;
-        max-width:1380px + 80px;
-        margin:-40px auto 120px;
-        padding:48px 117px;
-        text-align:left;
+        max-width:1380px;
+        margin:0 auto 120px;
+        padding:48px 40px;
+        text-align:center;
+        .inner .txt-cell {
+            padding-top: 104px;
+            background: url('/lg5-common/images/icons/icon-location-64.svg') no-repeat center top;
+            background-size: 80px;
+            .tit {
+                font-size:24px;
+                line-height:32px;
+                @include mobile {
+                    font-size:20px;
+                    line-height:28px;
+                }
+            }
+            .desc {
+                margin-top: 12px;
+            }
+        }
         @include mobile {
-            margin:60px 16px;
+            margin:0 16px 60px;
             padding:40px 16px;
             border-radius:8px;
-        }
-        .inner .txt-cell .tit {
-            font-size:24px;
-            line-height:32px;
-            @include mobile {
-                font-size:20px;
-                line-height:28px;
+            .inner .txt-cell {
+                .tit {
+                    font-size:20px;
+                    line-height:28px;
+                }
+                .bullet-list {
+                    margin-top: 12px;
+                }
             }
-        }
-        .inner .img-cell {
-            position:absolute;
-            top:50%;
-            right:117px;
-            margin-top:-64px;
-            @include mobile {
-                position:static;
-                margin-top:24px;
-                text-align:center;
-            }
-        }
-        .inner .img-cell img {
-            max-width:128px;
-            @include mobile {
-                max-width:80px;
-            }
-            
         }
     }
 }
