@@ -44,19 +44,19 @@ header {
         display: none;
     }
     .only_pc {
-        display: block;
+        display: block !important;
     }
     .only_mobile {
-        display: none;
+        display: none !important;
     }
 }
 
 @media (max-width:767px) {
     .only_pc {
-        display: none;
+        display: none !important;
     }
     .only_mobile {
-        display: block;
+        display: block !important;
     }
 }
 
