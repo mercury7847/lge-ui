@@ -11,8 +11,7 @@
 
     @include mobile {
         max-width: 100%;
-        padding-right: 16px;
-        padding-left: 16px;
+        padding: 0 16px 40px;
     }
 
     .pdp-wrap {
