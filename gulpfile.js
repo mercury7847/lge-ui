@@ -350,6 +350,10 @@ gulp.task("static:event", () => gulp
     .src("./lg5-common/event/**")
     .pipe(gulp.dest(dist + sourceFolder + "/event/"))
 );
+gulp.task("static:front", () => gulp
+    .src("./lg5-common/front/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/front/"))
+);
 
 
 
@@ -395,6 +399,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/membership/**", ["jsCompile:membership"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/homebrew/**", ["jsCompile:homebrew"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/event/**", ["jsCompile:event"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/front/**", ["jsCompile:front"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
 
