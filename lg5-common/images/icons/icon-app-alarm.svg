@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-2{fill:#fff;stroke:#000}
+        </style>
+    </defs>
+    <g id="icon_alram" transform="translate(-311 -63)">
+        <g id="icon_02" transform="translate(101.595 -426.609)">
+            <circle id="타원_90" cx="2.633" cy="2.633" r="2.633" class="cls-2" transform="translate(218.772 505.409)"/>
+            <circle id="타원_91" cx="1.316" cy="1.316" r="1.316" class="cls-2" transform="translate(220.088 492.029)"/>
+            <path id="패스_205" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M216.528 509.279l.623-1.549a5.7 5.7 0 0 0 .727-2.77v-4.483a5.731 5.731 0 0 1 5.149-5.461 6.625 6.625 0 0 1 1.548-.06c.172.013.344.033.516.06a5.746 5.746 0 0 1 5.145 5.461v4.482a5.718 5.718 0 0 0 .728 2.77l.621 1.548z" transform="translate(-2.72 -1.237)"/>
+        </g>
+    </g>
+</svg>

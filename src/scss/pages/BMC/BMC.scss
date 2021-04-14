@@ -4,10 +4,34 @@
 @import "../../utilities/mixins";
 
 .contents.membership {
+    @at-root .page-header + & {
+        margin-top: -40px;
+        @include mobile {
+            margin-top: -8px;
+        }
+        > .page-tabs.type3 {
+            padding-top: 40px;
+            @include mobile {
+                padding-top: 10px;
+            }
+        }
+    }
     .visual-wrap {
         .slide-content .slide-conts .slide-info-area .inner .slide-btn,
         .custom-indi-wrap {
             display: none;
+        }
+        .slide-content .slide-conts {
+            .slide-info-area {
+                top:96px;
+                transform:translateY(0);
+                @include mobile {
+                    top:36px;
+                    .inner {
+                        padding:0 20px;
+                    }
+                }
+            }
         }
         @import "ACC4002";
     }
