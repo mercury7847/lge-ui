@@ -28,7 +28,8 @@ var res = {
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
 			"Filter" : ["./wsg/guide_filter.html","","검수완료"],
-			"breadcrumb" : ["./wsg/guide_breadcrumb.html","","검수완료"]
+			"breadcrumb" : ["./wsg/guide_breadcrumb.html","","검수완료"],
+			"QRCode 생성" : ["./wsg/guide_qrcode.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -244,7 +245,8 @@ var res = {
 				}
 			},
 			"B2C메인(MA)" : {
-				"B2C메인" : ["/html/MA/MKTF1000.html","",""]
+				"B2C메인" : ["/html/MA/MKTF1000.html","",""],
+				"모바일 사업 종료 팝업" : ["/html/MA/MKTF1000_popup.html","",""]
 			},
 			"스토어(PRS)" : {
 				"홈(서브메인)" : ["/html/PRS/MKTF1001.html","",""]

@@ -18,7 +18,7 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
 
 
 (function() {

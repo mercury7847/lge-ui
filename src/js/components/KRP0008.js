@@ -19,7 +19,7 @@
     a.async=1;
     a.src=r;
     m.parentNode.insertBefore(a,m);
-})(window,document,'script','cremajssdk','//widgets.cre.ma/lge.co.kr/init.js');
+})(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
 */
 
 (function() {
@@ -212,6 +212,9 @@
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
                 self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
                 
+                //PDP 제품구매/렌탈 선택 탭
+                self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
+
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
@@ -571,6 +574,27 @@
 
             bindSideEvents: function() {
                 var self = this;
+
+                //구매/렌탈 탭 변경에 따른 url 변경
+                self.$pdpInfoTab.on("tabbeforechange", function(e, data){
+                    var index = data.selectedIndex;
+                    var url = location.pathname;
+                    var param = vcui.uri.parseQuery(location.search);
+                    var n = 0;
+                    for(key in param) {
+                        if(key != "dpType") {
+                            url += (n==0) ? ("?"+key+"="+param[key]) : ("&"+key+"="+param[key]);
+                            n++;
+                        }
+                    }
+                    if(index == 0) {
+                        //구매
+                    } else {
+                        //렌탈 dpType=careTab추가
+                        url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
+                    }
+                    history.replaceState({},"",url);
+                });
 
                 //모바일 수상내역 버튼
                 self.$mobilePdpInfo.on('click','div.inner a.btn-link.popup', function (e) {
