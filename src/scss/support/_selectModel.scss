@@ -1,18 +1,33 @@
 @charset "UTF-8";
 
 .service-guide-wrap {
-    background:#e4e4e4;
+    margin-bottom:48px;
+    padding:0 40px;
     .box {
-        max-width:1380 + 80px;
+        max-width:1300px + 80px;
         margin:0 auto;
         padding:16px 40px;
+        border-radius:8px;
+        background:#f4f4f4;
         .bullet-list {
             margin:0;
+            text-align:center;
+            .b-txt {
+                display:inline-block;
+            }
         }
     }
     @include mobile {
+        margin-bottom:32px;
+        padding:0 16px;
         .box {
             padding:16px;
+            .bullet-list {
+                text-align:left;
+                .b-txt {
+                    display:block;
+                }
+            }
         }
     }
 }
