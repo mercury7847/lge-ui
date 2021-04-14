@@ -20,19 +20,6 @@
 label img {
     pointer-events: none;
 }
-
-.dummy {
-    background-color:rgba(255, 70, 70, 0.2);
-    p {
-        color:#fff;
-        font-size:20px;
-        line-height:30px;
-        text-align:center;
-        & + p {
-            border-top:1px solid #fff;
-        }
-    }
-}
 /* //삭제 예정 */
 
 .container {
@@ -83,32 +70,6 @@ label img {
             .btn-close {
                 top:8px;
                 right:10px;
-            }
-        }
-    }
-
-    .tb_row {
-        &.tb-row-bl {
-            table {
-                th,
-                td {
-                    border-left:1px solid #d8d8d8;
-                    &:first-child {
-                        border-left:none;
-                    }
-                }
-               
-            }
-        }
-
-        table {
-            td {
-                font-size:14px;
-                
-                &.board-tit {
-                    font-weight:bold;
-                    font-size:16px;
-                }
             }
         }
     }
