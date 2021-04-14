@@ -48,7 +48,6 @@
 
 .common-banner {
     margin-top:120px;
-    padding:0;
     .banner {
         max-width: 1380px + 80px;
         margin:0 auto;
@@ -77,8 +76,12 @@
     + .board-navi {
         margin-top: 120px;
     }
-    @include tablet {
-        padding:0;
+    @include pc {
+        @at-root {
+            .cont-wrap & .banner {
+                padding:0;        
+            }
+        }
     }
     @include mobile {
         margin-top:60px;
@@ -101,10 +104,10 @@
             }
         }
         &.gray {
-            padding: 40px 16px;
-            margin-left: 16px;
-            margin-right: 16px;
-            border-top: none;
+            padding:40px 0;
+            margin-left:16px;
+            margin-right:16px;
+            border-top:none;
             .btn-wrap {
                 .btn {
                     width:auto;

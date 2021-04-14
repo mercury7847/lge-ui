@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>QRCode maker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<script type="text/javascript" src="/guide/guide/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/guide/guide/js/qrcode.min.js"></script>
+
+</head>
+<body>
+<input id="text" type="text" value="https://www.lge.co.kr" style="width:500px; height:30px; font-size:20px; margin: 10px;" /><br />
+
+<input id="qrSize" type="text" value="300" style="width:500px; height:30px; font-size:20px; margin: 10px;" /><br />
+<button style="padding: 10px; margin: 10px;" id="qrMakerBtn">생성하기</button>
+<div id="qrcode" style="width:100px; height:100px; margin: 10px; "></div>
+
+<script type="text/javascript">
+
+    $('#qrMakerBtn').on('click', function(e){
+        e.preventDefault();
+        makeCode();
+    })
+
+
+    function makeCode () {	
+
+        var elText = document.getElementById("text");
+        var qrSize = document.getElementById("qrSize");
+        var target = document.getElementById("qrcode");
+        target.innerHTML ='';
+        
+        if (elText.value && qrSize.value) {
+            var qrcode = new QRCode(target, {
+                width : qrSize.value,
+                height : qrSize.value
+            });	
+            qrcode.makeCode(elText.value);
+        }    
+    }
+
+</script>
+</body>
