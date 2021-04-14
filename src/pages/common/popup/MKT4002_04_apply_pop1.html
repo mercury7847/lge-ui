@@ -27,9 +27,17 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="al-left">참여자 이름, 참여자 연락처</td>
+                            <td class="al-left">이름, 연락처</td>
+                            <td class="al-left">이벤트 응모내역 확인 시 본인 확인</td>
+                            <td class="al-left" rowspan="3">이벤이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                        </tr>
+                        <tr>
+                            <td class="al-left">수령자 이름, 수령자 연락처</td>
                             <td class="al-left">경품배송 시 본인 확인</td>
-                            <td class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                        </tr>
+                        <tr>
+                            <td class="al-left">수령자 주소</td>
+                            <td class="al-left">경품배송</td>
                         </tr>
                         </tbody>
                     </table>
@@ -82,6 +90,23 @@
                     </span>
                 </div>
             </div>
+            <div class="input-info-wrap">
+                <p class="tb-tit req">콘텐츠 저작권 양도 동의(필수)</p>
+                <div class="txt-terms">
+                    LG전자 리뷰 등록 이벤트를 진행하여 생성한 콘텐츠와 그 안에 포함되어있는 결과물(이미지/글 등)에 대해 LG전자 마케팅 용도로의 활용을 위해 LG전자로 저작권을 양도합니다. 또한 LG전자에서 요청 시, 이미지 등의 결과물을 반드시 원본 파일로 제출해야 합니다.
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "귀하께서는 본 동의를 거절하실 수 있습니다. 단 거절하신 경우 이벤트 참여가 제한 될 수 있습니다."
+                    ]
+                })
+                <div class="agree-input">
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="chk3-1" name="agreechk-3" data-required="true" >
+                        <label for="chk3-1">동의합니다</label>
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="input-info">
@@ -108,10 +133,10 @@
                     </dd>
                 </dl>
                 <dl class="forms">
-                    <dt class="tit"><label for="reply" class="req">댓글<span class="blind">필수입력</span></label></dt>
+                    <dt class="tit"><label for="reply" class="req">URL 주소<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <div class="input-wrap">
-                           <textarea id="reply" placeholder="댓글 입력"></textarea>
+                           <textarea id="reply" placeholder="URL 주소 입력"></textarea>
                         </div>
                     </dd>
                 </dl>
