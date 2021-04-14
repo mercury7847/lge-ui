@@ -6,7 +6,7 @@
         color: $color-white;
         text-align: center;
         &[class*="01"] {
-            height: calc(100vh - 149px);
+            height: calc(100vh - 110px);
             @include mobile {
                 height: calc(100vh - 86px);
             }
