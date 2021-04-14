@@ -25,6 +25,8 @@
                 top: 40%;
                 @include mobile {
                     top: 20%;
+                    animation-duration: 1s;
+                    animation-name: homeFirstMove;
                     p:nth-child(2) {
                         margin-top: 24px;
                     }
@@ -1319,5 +1321,16 @@
 @include mobile {
     .btn {
         padding: 10px 20px;
+    }
+}
+
+@keyframes homeFirstMove {
+    from {
+        transform: translateY(30%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-50%);
+        opacity: 1;
     }
 }
