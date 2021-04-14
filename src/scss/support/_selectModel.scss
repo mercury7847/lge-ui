@@ -1,18 +1,33 @@
 @charset "UTF-8";
 
 .service-guide-wrap {
-    background:#e4e4e4;
+    margin-bottom:48px;
+    padding:0 40px;
     .box {
-        max-width:1380 + 80px;
+        max-width:1300px + 80px;
         margin:0 auto;
         padding:16px 40px;
+        border-radius:8px;
+        background:#f4f4f4;
         .bullet-list {
             margin:0;
+            text-align:center;
+            .b-txt {
+                display:inline-block;
+            }
         }
     }
     @include mobile {
+        margin-bottom:32px;
+        padding:0 16px;
         .box {
             padding:16px;
+            .bullet-list {
+                text-align:left;
+                .b-txt {
+                    display:block;
+                }
+            }
         }
     }
 }
@@ -85,7 +100,7 @@
     .my-product-slider {
         margin-top:32px;
         .slide-controls {
-            margin-top:-18px;
+            margin-top:-22px;
             button {
                 &.prev {
                     left:-20px;
@@ -105,7 +120,7 @@
                 margin:0 -12px;
             }
             &-track {
-                padding-bottom:36px;
+                padding-bottom:44px;
                 white-space:nowrap;
                 transform: translate3d(0px, 0px, 0px);
                 @include clearfix;
@@ -240,20 +255,25 @@
             }
             .slide {
                 &-content {
-                    margin:0 -16px 0 -12px;
+                    margin:0 -16px 0 -6px;
                 }
                 &-track {
-                    padding-bottom:36px;
+                    padding-bottom:32px;
                 }
                 &-conts {
                     width:calc((100vw - 16px) / 3 * 2);
                 }
                 &-box {
-                    margin:0 12px;
+                    margin:0 6px;
                     padding:34px 20px 30px;
                     .category {
-                        height:24px;
+                        min-height:28px;
                         margin-bottom:12px;
+                        .thumb {
+                            width:28px;
+                            height:28px;
+                            margin-right:6px;
+                        }
                     }   
                     .status {
                         top:12px;
