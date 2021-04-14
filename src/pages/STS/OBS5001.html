@@ -23,7 +23,12 @@
 
         <div class="container">
             <!-- 스토리홈 -->
-            <div class="contents story-main" data-story-list="/lg5-common/data-ajax/home/storyList.json">
+            <div class="contents story-main" 
+                data-story-list="/lg5-common/data-ajax/home/storyList.json"
+                data-tag-mng-url="/lg5-common/data-ajax/home/tag_mnger.html"
+                data-login-url="https://wwwstg.lge.co.kr/sso/api/Login"
+                data-loginflag="Y"    
+            >
                 <div class="cont-wrap">
                     <!-- 210407 퀵링크추가 -->
                     <div class="story-section link-story">
@@ -54,33 +59,13 @@
                         </div>
                     </div>
                     <!-- //210407 퀵링크추가 -->
-                    <div class="story-section tag-subscribe-story">
-                        <div class="flexbox-wrap">
-                            @@loop('./common/modules/story-list.html', [
-                                {
-                                    "slideTagList" : true,
-                                    "tags" : ["가전은역시LG","웰빙","코로나싱글라이프싱글","미세먼지","반려동물"]
-                                }
-                            ])
-                        </div>
-                    </div>
-                    <div class="story-section subscribe-story">
-                        <div class="inner">
-                            <!-- 210412 수정 [문구 수정 / 버튼 추가] -->
-                            <h2 class="title">구독하고 있는 스토리를 확인해보세요</h2>
-                            <div class="tag-subscribe-link">
-                                <a href="#" class="btn-link">구독 중 태그 관리</a>
-                            </div>
-                            <!-- 210412 수정 [문구 수정 / 버튼 추가] -->
-                            <!--  [D] height 체크해주세요 -->
-                            <div class="flexbox-wrap">
-                            </div>
-                            <button type="button" class="btn-moreview block"><span>스토리 더보기</span></button>
-                        </div>
-                    </div>
+                    <div class="story-section tag-subscribe-story" style="display:none;"></div>
                     <div class="story-section user_story">
                         <div class="inner">
-                            <h2 class="title">LG가전의 다양한 스토리를 만나보세요.</h2><!-- 210325 수정 [문구 수정] -->
+                            <h2 class="title">구독하고 있는 스토리를 확인해보세요</h2><!-- 210325 수정 [문구 수정] -->
+                            <div class="tag-subscribe-link">
+                                <a href="#" class="btn-link tagmnger-btn">구독 중 태그 관리</a>
+                            </div>
                             <!--  [D] height 체크해주세요 -->
                             <div class="flexbox-wrap">
                             </div>
@@ -205,5 +190,6 @@
             <!-- // component / Scroll to the top -->
         </div>
     </div>
+    <article id="popup-tagMnger" class="popup-wrap"></article>
 </body>
 </html>

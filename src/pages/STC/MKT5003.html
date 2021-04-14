@@ -19,6 +19,7 @@
     <div class="container">
 
         <div class="contents lgpay-wrap">
+            <!-- 210413 전체수정 -->
             <div class="cont-wrap">
                 <div class="visual-wrap">
                     <img data-pc-src="/lg5-common/images/STC/img-visual-pay01.jpg" data-m-src="/lg5-common/images/STC/img-visual-pay01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual-pay01.jpg">
@@ -26,7 +27,9 @@
                         <p class="tit">LG 페이</p>
                         <span class="txt">LG 페이로 더 손쉽게 결제하세요</span>
                         <div class="btn-area">
-                            <button class="btn border"><span>설치 및 등록 영상 보기</span></button>
+                            <!-- 210414 팝업버튼수정 -->
+                            <button class="btn border" data-href="#popup01" data-control="modal"><span>설치 및 등록 영상 보기</span></button>
+                            <!-- 210414 //팝업버튼수정 -->
                         </div>
                     </div>
                 </div>
@@ -57,7 +60,9 @@
                                         ]
                                     })
                                     <div class="btn-area">
-                                        <a href="#n" class="btn border size-m">제휴카드 안내</a><!-- 210329 수정 [.size-m 추가] -->
+                                        <!-- 210414 팝업버튼수정 -->
+                                        <button class="btn border size-m" data-href="#popup02" data-control="modal"><span>제휴카드 안내</span></button>
+                                        <!-- 210414 //팝업버튼수정 -->
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +82,9 @@
                                         ]
                                     })
                                     <div class="btn-area">
-                                        <a href="#n" class="btn border size-m">퀵페이 활용 영상 보기</a><!-- 210329 수정 [.size-m 추가] -->
+                                        <!-- 210414 팝업버튼수정 -->
+                                        <button class="btn border size-m" data-href="#popup03" data-control="modal"><span>퀵페이 활용 영상 보기</span></button>
+                                        <!-- 210414 //팝업버튼수정 -->
                                     </div>
                                 </div>
                             </div>
@@ -247,8 +254,10 @@
                                                     ]
                                                 })
                                                 <!-- // 210329 수정 [텍스트, 돔 수정] -->
-                                                <div class='btn-area'>
-                                                    <a href='#n' class='btn border size-m'>LG 페이 사용 가능 단말기 보기</a><!-- 210329 수정 [.size-m 추가] -->
+                                                <div class="btn-area">
+                                                    <!-- 210414 팝업버튼수정 -->
+                                                    <button class="btn border size-m" data-href="#popup04" data-control="modal"><span>LG 페이 사용 가능 단말기 보기</span></button>
+                                                    <!-- 210414 //팝업버튼수정 -->
                                                 </div>
                                             </div>
                                         </div>
@@ -348,10 +357,11 @@
                 <div class="btm-link">
                     <p class="tit">LG 페이에 궁금하신 점이 있다면 자주 묻는 질문에서 확인해보세요!</p><!-- 210329 수정 [텍스트 수정] -->
                     <div class="btn-area">
-                        <a href="#n" class="btn border size-m"><span>자주 묻는 질문 보기</span></a><!-- 210329 수정 [.size -> .size-m 으로 수정] -->
+                        <a href="/search/result/support?search=LG페이" class="btn border size-m"><span>자주 묻는 질문 보기</span></a><!-- 210329 수정 [.size -> .size-m 으로 수정] -->
                     </div>    
                 </div>
             </div>
+            <!-- //210413 전체수정 -->
         </div>
     </div>
 
@@ -370,5 +380,222 @@
     </div>
     <!-- //210226 플로팅버튼 추가 -->
 </div>
+<!-- 210414 팝업 추가 -->
+<article id="popup01" class="popup-wrap video">
+    <section class="pop-conts no-footer">
+        <div class="video-asset youtube-box">
+            <div class="video-box">
+                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/Nr-0TtrVb7s"></iframe>
+            </div>
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+
+<article id="popup02" class="popup-wrap wide">
+    <header class="pop-header">
+        <h1 class="tit"><span>제휴카드 안내</span></h1>
+    </header>
+    <section class="pop-conts no-footer">
+        <div class="card-wrap">
+            <p class="info-txt">더 나은 서비스를 위해 지속적으로 카드가 추가될 예정입니다.</p>
+            <div class="card-lists">
+                <ul class="card-list">
+                    <li class="sh-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-sh.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>신한카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="kb-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-kb.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>국민카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="hd-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-hd.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>현대카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="hn-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-hn.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>하나카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="kko-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-kko.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>카카오뱅크</dt>
+                            <dd>개인 체크카드 가능</dd>
+                        </dl>
+                    </li>
+                </ul>
+                <ul class="card-list">
+                    <li class="lt-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-lt.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>롯데카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="bc-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-bc.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>BC카드</dt>
+                            <!-- 210413 문구추가 -->
+                            <dd>BC자체, 우리, IBK기업, SC제일, NH농협, 대구은행, 경남은행, 부산은행, 전북은행, 수협, 광주은행, 제주은행, 씨티은행 등 가능</dd>
+                            <!-- //210413 문구추가 -->
+                        </dl>
+                    </li>
+                    <li class="nh-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-nh.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>NH 농협카드</dt>
+                            <dd>개인, 법인 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="ss-card">
+                        <div class="image-box">
+                            <img src="/lg5-common/images/STC/logo-ss.png" alt="">
+                        </div>
+                        <dl class="text-box">
+                            <dt>삼성카드</dt>
+                            <dd>개인, 법인 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "topBorder" : true,
+                "bulletTxt" : [
+                    "카드사 상품에 따라 지원 여부가 상이하므로, 카드사 고객센터에 문의하시기 바랍니다."
+                ]
+            })
+
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+
+<article id="popup03" class="popup-wrap video">
+    <section class="pop-conts no-footer">
+        <div class="video-asset youtube-box">
+            <div class="video-box">
+                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/czkUgPOPOIs"></iframe>
+            </div>
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+
+<article id="popup04" class="popup-wrap full">
+    <header class="pop-header">
+        <h1 class="tit"><span>LG 페이 사용 가능 단말기</span></h1>
+    </header>
+    <section class="pop-conts no-footer">
+        <div class="device-wrap">
+            <!-- 210413 테이블추가 -->
+            <div class="tb_row tb-row-bl">
+                <table>
+                    <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
+                    <colgroup>
+                        <col style="width:25%">
+                        <col style="">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">시리즈</th>
+                        <th scope="col">모델명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>프리미엄 시리즈</td>
+                        <td>LG WING, LG VELVET, V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+, G8 ThinQ, G7 ThinQ, G7+ ThinQ, G6+, G6, G6 32GB</td>
+                    </tr>
+                    <tr>
+                        <td>Q 시리즈</td>
+                        <td>Q52, Q92, Q61, Q51, Q70, Q9, Q7 BTS EDITION, Q8(2018), Q7, Q7+</td>
+                    </tr>
+                    <tr>
+                        <td>X 시리즈</td>
+                        <td>X6(2019), X4(2019), X5, X4+, X4</td>
+                    </tr>
+                    <tr>
+                        <td>LG SIGNATURE<br>EDITION</td>
+                        <td>LG SIGNATURE EDITION</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- //210413 테이블추가 -->
+            <!-- 210413 내용삭제 -->
+            <!-- <div class="product-list-wrap">
+                <ul class="product-lists ui_flexible_height">
+                    @@loop('./common/modules/product-list-loop.html', [
+                        {
+                            "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                            "name" : "LG VELVET",
+                            "info" : ["LG VELVET"]
+                        }, {
+                            "img" : "/lg5-common/images/STC/img-prod02.jpg",
+                            "name" : "V 시리즈",
+                            "info" : ["V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+"]
+                        }, {
+                            "img" : "/lg5-common/images/STC/img-prod03.jpg",
+                            "name" : "G 시리즈",
+                            "info" : ["G8 ThinQ, G7 ThinQ, G7+ ThinQ, G6+, G6, G6 32GB"]
+                        }, {
+                            "img" : "/lg5-common/images/STC/img-prod02.jpg",
+                            "name" : "Q 시리즈",
+                            "info" : ["Q61, Q51, Q70, Q9, Q7 BTS EDITION, Q8(2018), Q7, Q7+"]
+                        }, {
+                            "img" : "/lg5-common/images/STC/img-prod03.jpg",
+                            "name" : "X 시리즈",
+                            "info" : ["X6(2019), X4(2019), X5, X4+, X4"]
+                        }, {
+                            "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                            "name" : "V 시리즈",
+                            "info" : ["V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+"]
+                        }
+                    ])
+                </ul>
+            </div> -->
+            <!-- //210413 내용삭제 -->
+            <!-- 210413 보더라인제거 -->
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "생산일자에 따라, 일부 단말은 펌웨어 업그레이드 후 사용 가능합니다."
+                ]
+            })
+            <!-- //210413 보더라인제거 -->
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- //210414 팝업 추가 -->
 </body>
 </html>

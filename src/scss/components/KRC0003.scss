@@ -6,7 +6,7 @@
     max-width:1920px;
     margin:0 auto;
     .title * {
-        @include title-h2;
+        @include title-h1;
     }
     .slide-wrap.hero-banner {
         .custom-indi-wrap {
@@ -87,6 +87,14 @@
                     }
                 }
                 .slide-info-area {
+                    top: 96px;
+                    transform: translateY(0);
+                    @include mobile {
+                        top: 36px;
+                        .inner {
+                            padding: 0 20px;
+                        }
+                    }
                     .text-wrap {
                         .eyebrow {
                             @include eyebrow;

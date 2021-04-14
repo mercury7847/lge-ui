@@ -143,7 +143,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             //장바구니, 마이페이지홈 클릭시 로딩바 노출
             self.$el.find('div.utility').on('click','li.cart, li.mypage.after-login a', function (e) {
-                lgkorUI.showLoading();
+                setTimeout(function(e){
+                    lgkorUI.showLoading();
+                },20);
             });
 
             //
@@ -187,18 +189,18 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(this).toggleClass('on')
                 $(this).parent().find('.nav-category-container').toggle();
             });
-
-            // header focus out 시 닫기
-            $(document).on('focusin.header',function(e){                
-                if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) { 
-                    self._setOut();                    
-                    e.stopPropagation();
-                }
-            });
-
-
+            
             self._pcSetting();
             self._mobileSetting();
+        },
+
+        _focusFn:function(e){
+            var self = this;
+            if (self.$el[0] !== e.target && !$.contains(self.$el[0], e.target)) { 
+                self._setOut();                    
+                e.stopPropagation();
+                $(document).off('focusin.header');
+            }
         },
 
         _resize: function(){
@@ -448,6 +450,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(two < 0) self.$dimmed.hide();
                 else self.$dimmed.show();
             }
+
+            $(document).off('focusin.header').on('focusin.header', self._focusFn.bind(self));
         },
 
         _removeOutTimeout: function(){

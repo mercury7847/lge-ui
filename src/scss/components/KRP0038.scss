@@ -35,6 +35,12 @@
 			@include mobile {
 				padding:4px 0 32px;
 			}
+			&.sm-pb {
+				padding-bottom:24px;
+				@include mobile {
+					padding-bottom:24px;
+				}
+			}
 		}
 		.align-left {
 			text-align:left;

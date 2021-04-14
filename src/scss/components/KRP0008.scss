@@ -11,8 +11,7 @@
 
     @include mobile {
         max-width: 100%;
-        padding-right: 16px;
-        padding-left: 16px;
+        padding: 0 16px 40px;
     }
 
     .pdp-wrap {
@@ -1235,6 +1234,11 @@
                     padding-bottom: 12px;
                     @include font-small;
                     text-align: right;
+                    @include mobile {
+                        max-height:166px;
+                        overflow:hidden;
+                        overflow-y:auto;
+                    }
                     a {
                         display: block;
                         padding: 13px 40px 13px 16px;
@@ -1381,7 +1385,11 @@
                     > li {
                         display: inline-block;
                         padding-left: 28px;
-                        @include font-small;
+                        font-size: 14px;
+                        line-height: 24px;
+                        @include mobile {
+                            font-size: 13px;
+                        }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
                         }
@@ -1403,6 +1411,9 @@
                             width: 24px;
                             height: 24px;
                             background-image: url('/lg5-common/images/icons/btn-compare-off-24.svg');
+                        }
+                        @include mobile {
+                            line-height: 24px;
                         }
                     }
                     &:checked {

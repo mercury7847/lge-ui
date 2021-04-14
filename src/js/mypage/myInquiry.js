@@ -177,8 +177,13 @@
                                 break;
                         }
                         if(data) {
-                            $obj.find('strong em').text(data.count);
+                            $obj.find('strong em').text(vcui.number.addComma(data.count));
                             data.listData.forEach(function(item){
+                                if(item.data) {
+                                    item.data.forEach(function(item, index){
+                                        item.count = vcui.number.addComma(item.count);
+                                    });
+                                }
                                 $obj.append(vcui.template(serviceCountItemTemplate, item));
                             });
                         }
