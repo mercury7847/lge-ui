@@ -3706,8 +3706,8 @@
                 let idx = $(this).index();
                 let idxImg = $(this).html();
 
-                console.log("idx", idx);
-                console.log("idxImg", idxImg);
+                //console.log("idx", idx);
+                //console.log("idxImg", idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ "data-door-model_spec_material": $(this).attr("data-material"), "data-door-model_spec_color": $(this).attr("data-color-code"), "data-door-code": $(this).attr("data-front-code"), "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color") });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
@@ -3739,8 +3739,8 @@
                 let idx = $(this).index();
                 let idxImg = $(this).html();
 
-                console.log("idx", idx);
-                console.log("idxImg", idxImg);
+                //console.log("idx", idx);
+                //console.log("idxImg", idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ "data-door-model_spec_material": $(this).attr("data-material"), "data-door-model_spec_color": $(this).attr("data-color-code"), "data-door-code": $(this).attr("data-front-code"), "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color") });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
@@ -3809,7 +3809,7 @@
         //제품선택 탭이벤트
         $(document).on("click", ".model_choice_area .model_sub_tab_wrap .model_sub_tab_head button", function(e) {
             let idx = $(this).closest(".swiper-slide").index();
-            console.log("idx", idx);
+            //console.log("idx", idx);
             $(this).closest(".swiper-slide").addClass("on");
             $(this).closest(".swiper-slide").siblings(".swiper-slide").removeClass("on");
             $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper .swiper-slide:eq(" + idx + ")").addClass("on");
@@ -3907,13 +3907,13 @@
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-code", doorCode);
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-klocation", doorKlocation);
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-text", textColor);
-            console.log("modelCate", modelCate);
+            //console.log("modelCate", modelCate);
             if (modelCate == "refrigerator1") {
                 modelCate = "refrigerator";
             } else if (modelCate == "refrigerator2") {
                 modelCate = "refrigerator";
             }
-            console.log("modelCate", modelCate);
+            //console.log("modelCate", modelCate);
             if (modelCate == "refrigerator") {
                 littleCate = "rf";
             } else if (modelCate == "refrigerator_kimchi") {
@@ -4001,7 +4001,7 @@
                 //     cancelBtnName: '',
                 //     okBtnName: '',
                 //     ok: function() {
-                //         console.log("saveInfo", saveInfo);
+                //         //console.log("saveInfo", saveInfo);
                 //         //myPickSave(saveInfo);
                 //     }
                 // };
@@ -4029,7 +4029,7 @@
                     purchaseData.push($(this).attr("data-default-code"));
                 }
             });
-            console.log(purchaseData);
+            //console.log(purchaseData);
 
 
 
@@ -4053,7 +4053,7 @@
                     }
                 }
             }
-            console.log(purchaseData);
+            //console.log(purchaseData);
             purchaseFn(purchaseData);
 
         });
@@ -4251,7 +4251,7 @@
             let maxCount = 0;
             setTimeout(function() {
                 $(".simul_wrap .simul_body .model_set_wrap").each(function() {
-                    console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
+                    //console.log('$(this).attr("data-model-cate")', $(this).attr("data-model-cate"));
                     if ($(this).attr("data-model-cate") == "refrigerator1") {
                         maxCount += 2;
                     } else if ($(this).attr("data-model-cate") == "refrigerator2") {
@@ -4560,7 +4560,7 @@
                             doorHtml += '</button>';
                         }
                     }
-                    //console.log("code", code);
+                    ////console.log("code", code);
                 } else if (idx == 2) { //컨버터블
                     //code = configData.modelConfig[idx].typModel[i].defaultCode;
                     modelWrap.attr({ "data-model-cate": leadName, "data-model_code": code });
@@ -4614,9 +4614,9 @@
                 //pc버전
             } else {
                 //모바일버전
-                console.log("target", target);
+                //console.log("target", target);
                 let goTop = $(target).offset().top - $(".objetcollection-tabs").height();
-                console.log("goTop", goTop);
+                //console.log("goTop", goTop);
                 $("html, body").animate({ scrollTop: goTop }, 500);
             }
         },
@@ -4653,9 +4653,9 @@
                                 } else if (idx == 3) {
                                     _door = configData.modelConfig[0].refrigeratorType[i].typModel[j].door.door4;
                                 }
-                                console.log("_door", _door);
+                                //console.log("_door", _door);
                                 doorPrice = _door.defaultPrice;
-                                console.log("doorPrice", doorPrice);
+                                //console.log("doorPrice", doorPrice);
                                 _doorLocation = _door.name;
                                 _doorFrontCode = _door.code;
                                 let colorSelBodyHtml = '';
@@ -4995,10 +4995,10 @@
         },
 
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
-            console.log("idx", idx);
-            console.log("modelTyp", modelCate);
-            console.log("defaultModel", defaultModel);
-            console.log("doorInfo", doorInfo);
+            //console.log("idx", idx);
+            //console.log("modelTyp", modelCate);
+            //console.log("defaultModel", defaultModel);
+            //console.log("doorInfo", doorInfo);
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
@@ -5041,8 +5041,8 @@
             priceHtml += '                        </dl>';
             priceHtml += '                    </div>';
             let sumSlide = $(".total_price_info_body .swiper-wrapper .swiper-slide");
-            console.log('idx', idx);
-            console.log('sumSlide.length', sumSlide.length);
+            //console.log('idx', idx);
+            //console.log('sumSlide.length', sumSlide.length);
             if (sumSlide.length > 0) {
                 if (sumSlide.length > idx) {
                     priceSumList.removeSlide(idx);
@@ -5063,10 +5063,10 @@
             setTimeout(function() {
                 let totalSumPrice = 0;
                 $(".total_price_info_body .swiper-wrapper .swiper-slide").each(function() {
-                    console.log('$(this).find(".sum .product_price em").text()', $(this).find(".sum .product_price em").text());
+                    //console.log('$(this).find(".sum .product_price em").text()', $(this).find(".sum .product_price em").text());
                     totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price em").text()));
                 });
-                console.log(addComma(totalSumPrice));
+                //console.log(addComma(totalSumPrice));
                 $(".total_result_price .price em").text(addComma(totalSumPrice));
             }, 100);
 
@@ -5682,7 +5682,7 @@
                 _doorKName.push(_doorKMaterial[i] + " " + _doorKColor[i]);
             }
             if (rfModelFilter(_defaultModelCode).length > 0) {
-                console.log("aaaa");
+                //console.log("aaaa");
                 resultFilter = rfModelFilter(_defaultModelCode);
                 let tabHeadHtml = '';
                 let tabBodyHtml = '';
@@ -5757,7 +5757,7 @@
                 }, 100);
 
             } else if (kimModelFilter(_defaultModelCode).length > 0) {
-                console.log("bbb");
+                //console.log("bbb");
                 resultFilter = kimModelFilter(_defaultModelCode);
                 _modelCate = configData.modelConfig[resultFilter[0]].id;
                 _modelMiniCate = "rf_kim";
@@ -5771,7 +5771,7 @@
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door2.defaultPrice);
                 _doorKLocation.push(configData.modelConfig[resultFilter[0]].door.door3.name);
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door3.defaultPrice);
-                console.log("_modelCate", _modelCate);
+                //console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
@@ -5783,7 +5783,7 @@
                     modelSimulator.stepOneNext(1, _modelCate, _modelName);
                 }, 100);
             } else if (conModelFilter(_defaultModelCode).length > 0) {
-                console.log("ccc");
+                //console.log("ccc");
                 let tabBodyHtml = '';
                 resultFilter = conModelFilter(_defaultModelCode);
                 _modelCate = configData.modelConfig[resultFilter[0]].id;
@@ -5795,7 +5795,7 @@
                 _count = configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.count;
                 _doorKLocation.push(configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.door1.name);
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.door1.defaultPrice);
-                console.log("_modelCate", _modelCate);
+                //console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
@@ -5843,6 +5843,13 @@
                     modelSimulator.stepThree();
                 }
             }, 500);*/
+            setTimeout(function() {
+                if ($(window).width() > 767) {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                } else {
+                    modelSimulator.mobileStep(".simul_step2");
+                }
+            }, 500);
 
         }
     }
@@ -5910,7 +5917,7 @@ function minusComma(value) {
 }
 
 function resultDoorPrice(idx, price) {
-    console.log("resultDoorPrice", price);
+    //console.log("resultDoorPrice", price);
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
@@ -5926,7 +5933,7 @@ function resultDoorPrice(idx, price) {
 }
 
 function resultModelPrice(price) {
-    console.log("price", price);
+    //console.log("price", price);
     let priceLeng = price.length;
     setTimeout(function() {
         $(".tb_compare").css("visibility", "visible");

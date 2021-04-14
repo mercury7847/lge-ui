@@ -29,7 +29,7 @@ $(function() {
 
     function scrollEventM() {
         var scrollEM = $(window).scrollTop();
-        console.log(scrollEM);
+        //console.log(scrollEM);
 
         if (scrollEM >= 100) {
             $(".only_mobile .collect_tab").addClass("active");
@@ -164,7 +164,7 @@ $(function() {
             $(".only_mobile .fenix-bg").css({
                 transform: scaleaM
             });
-            //console.log(scraa, scalea);
+            ////console.log(scraa, scalea);
         } else if (scrollEM < divFeboM) {
             $(".only_mobile .fenix-bg").css({
                 transform: "scale(1)"
@@ -287,7 +287,7 @@ $(function() {
             amultiStart4M = amultiStart3M + ($(window).height()),
             amultiOpaticyM = 0;
         var wHM = $(window).height();
-        //console.log(amultiStart1, amultiStart2, amultiStart3);
+        ////console.log(amultiStart1, amultiStart2, amultiStart3);
         if (scrollEM < amultiStart1M) {
             $(".only_mobile .washTower_step > div").css({
                 position: "absolute",
@@ -308,22 +308,22 @@ $(function() {
             });
         }
 
-        //console.log(amultiStart4);
+        ////console.log(amultiStart4);
         if (scrollEM >= (amultiStart2M - (wHM / 2)) && scrollEM < amultiStart2M) {
             amultiOpaticyM = (scrollEM - (amultiStart2M - (wHM / 2))) / (amultiStart2M - (amultiStart2M - (wHM / 2)));
-            console.log("1");
+            //console.log("1");
             $(".only_mobile .step01 > div").css({ 'opacity': 1 - amultiOpaticyM });
             $(".only_mobile .step03 > div").css({ 'opacity': 0 });
             $(".only_mobile .step02 > div").css({ 'opacity': amultiOpaticyM });
         } else if (scrollEM >= (amultiStart3M - (wHM / 2)) && scrollEM < amultiStart3M) {
             amultiOpaticyM = (scrollEM - (amultiStart3M - (wHM / 2))) / (amultiStart3M - (amultiStart3M - (wHM / 2)));
-            console.log("2");
+            //console.log("2");
             $(".only_mobile .step01 > div").css({ 'opacity': 0 });
             $(".only_mobile .step02 > div").css({ 'opacity': 1 - amultiOpaticyM });
             $(".only_mobile .step03 > div").css({ 'opacity': amultiOpaticyM });
         }
         if (scrollEM >= amultiStart3M) {
-            console.log("3");
+            //console.log("3");
             $(".only_mobile .step01 > div").css({ 'opacity': 0 });
             $(".only_mobile .step02 > div").css({ 'opacity': 0 });
             $(".only_mobile .step03 > div").css({ 'opacity': 1 });
@@ -337,7 +337,7 @@ $(function() {
         	var scrollDiv = $(this).offset().top - $(window).height();
         	if ( scrollE >= scrollDiv ) {
         		var scrollDV = ( scrollE - scrollDiv) / (  scrollDiv - scrollDiv + $(window).height());
-        		//console.log(scrollDV);
+        		////console.log(scrollDV);
 
         		var rellaxScroll = -1 * ( $(this).height() / 4 ) + ( $(this).height() / 4 * scrollDV) ;
         		var matrixH = "matrix(1, 0, 0, 1, 0, " + rellaxScroll +")";
@@ -384,7 +384,7 @@ $(function() {
     function updatePositionM() {
 
         var x = this.x >> 0;
-        console.log(x);
+        //console.log(x);
     }
 
     $(".only_mobile .style-button > ul > li > button").click(function() {

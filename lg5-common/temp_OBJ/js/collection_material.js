@@ -25,7 +25,7 @@ $(function() {
             var scrollDiv = $(this).offset().top - $(window).height();
             if (scrollE >= scrollDiv) {
                 var scrollDV = (scrollE - scrollDiv) / (scrollDiv - scrollDiv + $(window).height());
-                console.log(scrollDV);
+                //console.log(scrollDV);
 
                 var rellaxScroll = -1 * ($(this).height() / 4) + ($(this).height() / 4 * scrollDV);
                 var matrixH = "matrix(1, 0, 0, 1, 0, " + rellaxScroll + ")";
