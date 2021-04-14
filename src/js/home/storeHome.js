@@ -71,7 +71,7 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '                   <img src=""'+
     '                   alt="{{obj.imageAlt}}"'+
     '                   data-pc-src="{{obj.pcImagePath}}"'+ 
-    '                   data-m-src="{{obj.mobileImagePath}}" onError="lgkorUI.addImgErrorEvent(this)">'+
+    '                   data-m-src="{{obj.mobileImagePath}}">'+
     '               </div>\n'+
     '               <div class="product-info {{obj.textClass}}">\n'+
     '                   <p class="tit">{{#raw obj.title}}</p>\n'+
