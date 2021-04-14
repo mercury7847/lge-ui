@@ -39,21 +39,21 @@ $(function() {
         //     var bgOffset = parseInt($backgroundObj.offset().top - backgroundObj2);
         //     var yPos;
         //     var coords;
-        //     console.log("$backgroundObj", $backgroundObj);
-        //     console.log("$backgroundObj.offset().top", $backgroundObj.offset().top);
+        //     //console.log("$backgroundObj", $backgroundObj);
+        //     //console.log("$backgroundObj.offset().top", $backgroundObj.offset().top);
         //     $fwindow.on('resize', function() {
         //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
         //         coords = '50% ' + yPos + 'px';
 
         //         $backgroundObj.css({ backgroundPosition: coords });
-        //         console.log("3333");
+        //         //console.log("3333");
         //     });
         //     $(".objet-wrap").on('scroll', function() {
         //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
         //         coords = '50% ' + yPos + 'px';
 
         //         $backgroundObj.css({ backgroundPosition: coords });
-        //         console.log("4444");
+        //         //console.log("4444");
         //     });
         // });
 
@@ -69,7 +69,7 @@ $(function() {
 
 
     // $(window).on("scroll", function() {
-    //     console.log("ddd");
+    //     //console.log("ddd");
     //     scrollEvent();
     // });
     $(".objet-wrap").on("scroll", function(e) {

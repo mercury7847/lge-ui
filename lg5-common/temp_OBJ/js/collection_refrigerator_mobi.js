@@ -72,7 +72,7 @@ $(function() {
 
     function scrollEventM() {
         var scrollEM = $(window).scrollTop();
-        //console.log(scrollEM);
+        ////console.log(scrollEM);
 
 
         if (scrollEM >= 100) {
@@ -212,7 +212,7 @@ $(function() {
             $(".only_mobile .fenix-bg").css({
                 //transform: scalea
             });
-            //console.log(scraa, scalea);
+            ////console.log(scraa, scalea);
         } else if (scrollEM < divFeboM) {
             $(".only_mobile .fenix-bg").css({
                 "transform": "scale(1)"
@@ -386,10 +386,10 @@ $(function() {
 
     function updatePositionM() {
         var xM = this.x >> 0;
-        //console.log( x );
+        ////console.log( x );
 
         var resWM = -1 * $(".only_mobile .ref-slider").width() + $(window).width();
-        //console.log(resWM);
+        ////console.log(resWM);
         if (xM <= resWM) {
             $(".only_mobile #reFscrollM").css("z-index", "2");
         } else if (xM == 0) {

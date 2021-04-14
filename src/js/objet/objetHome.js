@@ -11,32 +11,32 @@ $(function() {
 
     vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
 
-        var $sigTheme = $('.objet-theme .ui_carousel_slider');
-        $sigTheme.vcCarousel({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            lazyLoad: 'progressive'
-        });
+        // var $sigTheme = $('.objet-theme .ui_carousel_slider');
+        // $sigTheme.vcCarousel({
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1,
+        //     lazyLoad: 'progressive'
+        // });
 
-        var $sigShowRoom = $('.objet-showroom .ui_carousel_slider');
-        $sigShowRoom.vcCarousel({
-            settings: "unslick",
-            lazyLoad: 'progressive',
-            responsive: [{
-                    breakpoint: 10000,
-                    settings: "unslick"
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-        $('body').vcLazyLoaderSwitch('reload', $sigTheme);
-        $('body').vcLazyLoaderSwitch('reload', $sigShowRoom);
+        // var $sigShowRoom = $('.objet-showroom .ui_carousel_slider');
+        // $sigShowRoom.vcCarousel({
+        //     settings: "unslick",
+        //     lazyLoad: 'progressive',
+        //     responsive: [{
+        //             breakpoint: 10000,
+        //             settings: "unslick"
+        //         },
+        //         {
+        //             breakpoint: 768,
+        //             settings: {
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
+        // $('body').vcLazyLoaderSwitch('reload', $sigTheme);
+        //$('body').vcLazyLoaderSwitch('reload', $sigShowRoom);
 
         var isApplication = isApp();
         var $window = $(window);
@@ -105,7 +105,7 @@ $(function() {
             var arr = wheelArr[step];
             if (!vcui.isArray(arr)) {
                 currentStep = step;
-                //console.log(currentStep);
+                ////console.log(currentStep);
                 canScroll = true;
                 return;
             }
@@ -280,10 +280,10 @@ $(function() {
             } else {
 
                 if (touchSy - data.y > 80) {
-                    // console.log('down');
+                    // //console.log('down');
                     lgkorUI.showAppBottomMenu(false);
                 } else if (touchSy - data.y < -80) {
-                    // console.log('up');
+                    // //console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
 
@@ -477,7 +477,7 @@ $(function() {
             //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
-            if (page !== undefined) {
+            /*if (page !== undefined) {
                 currentPage = page;
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep, wheelArr);
@@ -487,7 +487,7 @@ $(function() {
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep);
                 moveScene(currentPage, currentStep, 0);
-            }
+            }*/
         }
 
         // 탭이동 이벤트 처리
@@ -578,10 +578,10 @@ $(function() {
             // 앱 대응시 주석처리 end
         }
 
-        // 시작시 한 스탭 이동시킴.
-        // setTimeout(function() {
-        //     if (currentStep < 1) wheelScene(1);
-        // }, 1000);
+        //시작시 한 스탭 이동시킴.
+        setTimeout(function() {
+            if (currentStep < 1) wheelScene(1);
+        }, 1000);
         $(window).load(function() {
             $(".floating-menu.top button").trigger("click");
 
@@ -590,7 +590,7 @@ $(function() {
             var arSplitUrl = sOriginImgUrl.split("?"); //   "#" 로 전체 url 을 나눈다
             var nArLength = arSplitUrl.length;
             var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
-            console.log("targetName", targetName);
+            //console.log("targetName", targetName);
             if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
 
                 setTimeout(function() {
