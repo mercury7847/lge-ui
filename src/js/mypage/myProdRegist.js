@@ -285,7 +285,7 @@
         bindEvents: function() {
             var self = this;
             
-            //등록가능제품 등록하기
+            //등록가능제품 보유제품으로 등록하기
             self.$registProductList.on('click','div.enroll-list ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
@@ -306,6 +306,9 @@
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     $li.remove();
+
+                    //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                    self.requestMoreData(1);
                     self.requestOwnData(true);
                     self.hideLoading();
                     /*
@@ -373,6 +376,8 @@
                             self.checkNoData();
                         }
                         self.hideLoading();
+                        //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                        self.requestMoreData(1);
                         self.requestOwnData(false);
                     }, "POST", null, null, null, true, function(err){
                         self.hideLoading(true);
@@ -581,7 +586,11 @@
                             self.showLoading();
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                                 self.$registMyProductPopup.vcModal('close');
+
+                                //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
+                                self.requestMoreData(1);
                                 self.requestOwnData(true);
+
                                 self.hideLoading();
                             }, "POST", null, null, null, true, function(err){
                                 self.hideLoading(true);
