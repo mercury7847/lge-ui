@@ -3785,6 +3785,7 @@
                     $("#proposeModel").addClass("border");
                     $("#myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
+                    totalResulPrice();
                 }
             };
             var desc = '';
@@ -3865,6 +3866,7 @@
                     }
                     modelSimulator.maxCountCheck();
                     priceSumList.removeSlide(idx);
+                    totalResulPrice();
                 }
             };
             var desc = '';
@@ -5952,6 +5954,9 @@ function totalResulPrice() {
     setTimeout(function() {
         let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
         let totalPrice = 0;
+        if (resultLeng == 0) {
+            $(".total_result_price .cont .price em").text(0);
+        }
         for (let i = 0; i < resultLeng; i++) {
             let sumPrice = $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + i + ") .product_list .sum .product_price em").text();
             totalPrice += parseInt(minusComma(sumPrice));
