@@ -3,7 +3,7 @@
     "message":null,
     "param":{
         "pagination":{
-            "page":"2",
+            "page":"1",
             "totalCount":"22"
         }
     },
@@ -16,7 +16,7 @@
             },
             {
                 "tagCode": "웰빙",
-                "tagName": "웰빙"
+                "tagName": "코로나싱글라이프싱글"
             },
             {
                 "tagCode": "코로나싱글라이프싱글",
@@ -24,270 +24,13 @@
             },
             {
                 "tagCode": "미세먼지",
-                "tagName": "미세먼지"
+                "tagName": "코로나싱글라이프싱글"
             },
             {
                 "tagCode": "",
-                "tagName": "반려동물"
+                "tagName": "코로나싱글라이프싱글"
             }
         ],
-        "storyList": [
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "가전은역시LG",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "반려동물",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "가전은역시LG",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "웰빙",
-                        "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "코로나싱글라이프싱글",
-                        "tagName": "코로나싱글라이프싱글"
-                    },
-                    {
-                        "tagCode": "미세먼지",
-                        "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-02.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-03.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-04.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-04.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-05.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-06.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-06.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            },
-            {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-story-07.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
-            }
-        ]
+        "storyList": []
     }
 }

@@ -3,9 +3,6 @@
     <!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
         pageCSS: ["STS/STS"],
-        pageJS: [
-            "home/storyHome","components/KRP0005"
-        ],
         pageTitle: "스토리 | LG전자",
         pageDesc: "LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다."
     })
@@ -25,8 +22,6 @@
             <!-- 스토리홈 -->
             <div class="contents story-main" 
                 data-story-list="/lg5-common/data-ajax/home/storyList.json"
-                data-tag-mng-url="/lg5-common/data-ajax/home/tag_mnger.html"
-                data-login-url="https://wwwstg.lge.co.kr/sso/api/Login"
                 data-loginflag="Y"    
             >
                 <div class="cont-wrap">
@@ -59,12 +54,21 @@
                         </div>
                     </div>
                     <!-- //210407 퀵링크추가 -->
-                    <div class="story-section tag-subscribe-story" style="display:none;"></div>
+                    <div class="story-section tag-subscribe-story">
+                        <div class="flexbox-wrap">
+                            @@loop('./common/modules/story-list.html', [
+                                {
+                                    "slideTagList" : true,
+                                    "tags" : ["가전은역시LG","웰빙","코로나싱글라이프싱글","미세먼지","반려동물"]
+                                }
+                            ])
+                        </div>
+                    </div>
                     <div class="story-section user_story">
                         <div class="inner">
                             <h2 class="title">구독하고 있는 스토리를 확인해보세요</h2><!-- 210325 수정 [문구 수정] -->
                             <div class="tag-subscribe-link">
-                                <a href="#" class="btn-link tagmnger-btn">구독 중 태그 관리</a>
+                                <a href="#" class="btn-link">구독 중 태그 관리</a>
                             </div>
                             <!--  [D] height 체크해주세요 -->
                             <div class="flexbox-wrap">
@@ -190,6 +194,5 @@
             <!-- // component / Scroll to the top -->
         </div>
     </div>
-    <article id="popup-tagMnger" class="popup-wrap"></article>
 </body>
 </html>
