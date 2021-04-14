@@ -140,6 +140,9 @@
         .pop-conts {
             padding-top:48px;
         }
+        .pop-footer.check-type {
+            padding: 20px 40px 40px;
+        }
         @include mobile {
             height:auto;
             width:87.5%;
@@ -158,6 +161,9 @@
             }
             .pop-conts {
                 padding:32px 16px 40px;
+            }
+            .pop-footer.check-type {
+                padding: 10px 16px;
             }
             .btn-close {
                 top:21px;
@@ -2151,6 +2157,69 @@
                     max-width: 160px;
                 }
             }
+        }
+    }
+}
+
+.app-popup-init {
+    .headline {
+        margin-bottom:24px;
+        line-height:1.63;
+    }
+    .pop-conts {
+        font-size: 16px;
+        line-height: 1.63;
+    }
+    .btn-wrap {
+        font-size:0;
+        margin-top:24px;
+        text-align: center;
+
+        .btn {
+            margin:0 4px;
+        }
+    }
+
+    .btn {
+        &.full {
+            width:100%;
+            max-width:none;
+        }
+    }
+    .pop-footer {
+        &.check-type {
+            input {
+                &+label {
+                    padding-left: 30px;
+                    font-size: 16px;
+                    line-height: 26px;
+
+                    @include mobile {
+                        font-size:13px;
+                    }
+                    &::before {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    &::after {
+                        top: 2px;
+                        left: 0;
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+            .btn {
+                padding: 15px 25px;
+                border-radius: 100px;
+                font-size: 16px;
+            }
+        }
+        &.align-between {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 }
