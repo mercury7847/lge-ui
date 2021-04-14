@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#apply" data-control="modal" class="btn pink"><span>이벤트참여</span></button>
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>당첨결과(당첨)</span></button>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>당첨결과(실패)</span></button>
+    </div>
+
+    @@include('./common/popup/MKT4009_02_winner_pop1.html', {
+        popupID: 'popup1'
+    })
+    
+    @@include('./common/popup/MKT4009_02_winner_pop2.html', {
+        popupID: 'popup2'
+    })
+
+    @@include('./common/popup/MKT4009_02_apply_pop1.html', {
+        popupID: 'apply'
+    })
+</body>
+</html>
