@@ -284,7 +284,7 @@
             }
         }
         &[class*="02"] {
-            height: calc(100vh - 149px);
+            height: calc(100vh - 110px);
             @include mobile {
                 height: calc(100vh - 86px);
             }
