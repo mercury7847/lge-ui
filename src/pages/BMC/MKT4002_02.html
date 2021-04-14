@@ -117,7 +117,13 @@
                                             <p>전체 응원 댓글</p>
                                             <p>LGE.COM이 오픈되었습니다!</p>
                                         </div>
-                                        <div class="reply-wrap" data-list-url="/lg5-common/data-ajax/event/replyEvent.json" data-check-url="/lg5-common/data-ajax/event/replyEventResult.json">
+                                        <div class="reply-wrap"
+                                            data-list-url="/lg5-common/data-ajax/event/replyEvent.json"
+                                            data-reply-url="/lg5-common/data-ajax/event/replyEventSend.json"
+                                            data-check-url="/lg5-common/data-ajax/event/replyEventResult.json"
+                                            data-login-url=""
+                                            data-event-id="eventID002"
+                                        >
                                             <div class="list-sorting">
                                                 <div class="list-count" id="totalCount">총 <em>99</em>개</div>
                                                 <div class="list-noti">1일 1회 중복참여 가능, ID당 1회</div>
@@ -431,7 +437,7 @@
         </section>
         <footer class="pop-footer center" ui-modules="Footer">
             <div class="btn-group">
-                <button type="button" class="btn pink" data-reply-url="/lg5-common/data-ajax/event/replyEventSend.json"><span>참여하기</span></button>
+                <button type="button" class="btn pink"><span>참여하기</span></button>
             </div>
         </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
