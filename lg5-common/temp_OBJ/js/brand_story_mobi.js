@@ -40,13 +40,13 @@ $(function() {
         //     $fwindow.on('resize', function() {
         //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
         //         coords = '50% ' + yPos + 'px';
-        //         console.log("ffff");
+        //         //console.log("ffff");
         //         $backgroundObj.css({ backgroundPosition: coords });
         //     });
         //     $(".objet-wrap").on('scroll', function() {
         //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
         //         coords = '50% ' + yPos + 'px';
-        //         console.log("gggg");
+        //         //console.log("gggg");
         //         $backgroundObj.css({ backgroundPosition: coords });
         //     });
         // });
@@ -75,7 +75,7 @@ $(function() {
 
     function scrollEvent() {
         var scrollE = $(window).scrollTop();
-        console.log(scrollE);
+        //console.log(scrollE);
 
         var fixbG = $("#brand-areaM").offset().top;
         if (scrollE >= fixbG) {
@@ -211,7 +211,7 @@ $(function() {
 
     // function parallaxItM() {
     //     'use strict';
-    //     console.log("1111");
+    //     //console.log("1111");
     //     var $fwindowM = $(window);
     //     var scrollTopM = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -226,16 +226,16 @@ $(function() {
     //     //     var $contentObjM = $(this);
     //     //     var fgOffsetM = parseInt($contentObjM.offset().top);
     //     //     var yPosM;
-    //     //     console.log("2222");
+    //     //     //console.log("2222");
 
     //     //     $fwindowM.on('resize', function() {
     //     //         yPosM = (fgOffsetM - scrollTopM) / ($contentObjM.data('speed'));
-    //     //         console.log("3333");
+    //     //         //console.log("3333");
     //     //         $contentObjM.css('top', yPosM);
     //     //     });
     //     //     $(".objet-wrap").on('scroll', function() {
     //     //         yPosM = (fgOffsetM - scrollTopM) / ($contentObjM.data('speed'));
-    //     //         console.log("4444");
+    //     //         //console.log("4444");
     //     //         $contentObjM.css('top', yPosM);
     //     //     });
     //     // });
@@ -246,17 +246,17 @@ $(function() {
     //         var yPosM;
     //         var coordsM;
     //         var windowH = $(window).height();
-    //         console.log("5555");
+    //         //console.log("5555");
     //         $fwindowM.on('resize', function() {
     //             yPosM = -((scrollTopM - bgOffsetM) / ($backgroundObjM.data('speed') || 0));
     //             coordsM = '50% ' + yPosM + 'px';
-    //             console.log("6666");
+    //             //console.log("6666");
     //             $backgroundObjM.css({ backgroundPosition: coordsM });
     //         });
     //         $(".objet-wrap").on('scroll', function() {
     //             yPosM = -((scrollTopM - bgOffsetM) / ($backgroundObjM.data('speed') || 0));
     //             coordsM = '50% ' + yPosM + 'px';
-    //             console.log("coordsM", coordsM);
+    //             //console.log("coordsM", coordsM);
     //             $backgroundObjM.css({ backgroundPosition: coordsM });
     //         });
     //     });
@@ -276,12 +276,12 @@ $(function() {
 
     // $("*").on("scroll", function(e) {
     //     scrollEventM();
-    //     console.log("e", e);
+    //     //console.log("e", e);
     // });
 
     // function scrollEventM() {
     //     var scrollEM = $(".objet-wrap").scrollTop();
-    //     console.log(scrollEM);
+    //     //console.log(scrollEM);
 
     //     var fixbGM = $("#brand-areaM").offset().top;
     //     if (scrollEM >= fixbGM) {
@@ -289,7 +289,7 @@ $(function() {
     //     } else {
     //         $(".only_mobile .fix-bg-brand").show();
     //     }
-    //     console.log("9999");
+    //     //console.log("9999");
 
     //     var fixGB2M = $("#brand-area2M").offset().top,
     //         fixGB3M = $("#brand-area2M").offset().top + $(window).height();

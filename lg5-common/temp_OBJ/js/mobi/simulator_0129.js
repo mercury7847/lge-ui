@@ -1383,7 +1383,7 @@ var go_shop_model = "";
                     configData = xhr.response;
                 } else {
                     //오류 발생 시 json 대신 내부 변수 사용
-                    console.log(status, xhr.response); //err status 발생
+                    //console.log(status, xhr.response); //err status 발생
                 }
             };
             xhr.send();
@@ -1427,7 +1427,7 @@ var go_shop_model = "";
                         },
                         click : function(swiper, event) {
                             this.update(); //간혹 swiper 내부 세팅값이 반영안되는 케이스가 존재함
-                            console.log(this.activeIndex);
+                            //console.log(this.activeIndex);
 
                             var clickedEl = this.clickedSlide;
                             if(clickedEl.classList.contains('swiper-slide-active')) {
@@ -1449,7 +1449,7 @@ var go_shop_model = "";
             );
              */
 
-            console.log('objSimulator loaded');
+            //console.log('objSimulator loaded');
         },
         setBackground: function(styleName) {
             var selectedStyleName = styleName;
@@ -1568,7 +1568,7 @@ var go_shop_model = "";
                 if (tmpObject !== null) {
                     for (var i = 0; i < tmpObject.length; i++) {
                         tmpObject[i].addEventListener('click', function() {
-                            //console.log('clicked objet sub selection : ' + this.dataset.objectSelector);
+                            ////console.log('clicked objet sub selection : ' + this.dataset.objectSelector);
 
                             if (this.classList.contains('selected'))
                                 this.classList.remove('selected');
@@ -2022,7 +2022,7 @@ var go_shop_model = "";
                     window.Scrollbar.get(targetSideBarArea).destroy();
                     targetSideBarArea.innerHTML = outputHtml;
                     var scrollbar = window.Scrollbar.init(targetSideBarArea);
-                    //console.log(targetSideBarArea);
+                    ////console.log(targetSideBarArea);
 
                     var left = 0;
                     if (targetSideBarArea.querySelector('.active') !== null) {
@@ -2090,11 +2090,13 @@ var go_shop_model = "";
                     }
                     // @pck 2020-10-19 로직 변경 (e)
                     */
+                    //console.log("ddd");
+                    //return setTimeout(function() { _this.translateTo(gotoCenter(_this.dataset.targetObject), 500); }, 200);
                     return true;
                     //return false;
                 }
                 //return false;
-                console.log("ddddd");
+
                 return true;
             }
 
@@ -2129,10 +2131,10 @@ var go_shop_model = "";
             var outputHtml = '';
 
             for (var i = 0; i < arrayProposeSetObjetSelections.length; i++) {
-                //console.log(arrayProposeSetObjetSelections[i].name);
+                ////console.log(arrayProposeSetObjetSelections[i].name);
                 outputHtml += '<li class="subtitle"><h4>' + arrayProposeSetObjetSelections[i].name + '</h4></li>'
                 for (var j = 0; j < arrayProposeSetObjetSelections[i].sets.length; j++) {
-                    //console.log(arrayProposeSetObjetSelections[i].sets[j].setName);
+                    ////console.log(arrayProposeSetObjetSelections[i].sets[j].setName);
                     outputHtml += '<li><button type="button" class="btn-favo" data-object-id="' + ID + '" data-objet-index="' + targetObjetIndex + '" data-objet-sets-index="' + i + '" ' + '" data-objet-set-index="' + j + '" ' +
                         'style="background-image:url(' + objectImageURL + arrayProposeSetObjetSelections[i].sets[j].setCoverImage + ');" ' +
                         '>' + arrayProposeSetObjetSelections[i].sets[j].setName + '</button></li>';
