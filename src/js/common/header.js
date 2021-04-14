@@ -142,7 +142,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             //장바구니, 마이페이지홈 클릭시 로딩바 노출
-            self.$el.find('div.utility').on('click','li.cart, li.mypage.after-login a', function (e) {
+            self.$el.find('div.utility').on('click','li.cart a, li.mypage.after-login a', function (e) {
                 setTimeout(function(e){
                     lgkorUI.showLoading();
                 },20);

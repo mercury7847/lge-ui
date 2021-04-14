@@ -884,7 +884,7 @@ function checkFile(obj,target){
     thumbext = thumbext.slice(thumbext.lastIndexOf(".") + 1);
 	
 	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "gif" &&  thumbext != "jpeg"){
-          alert('이미지 파일(jpg, png, gif, jpeg)만 등록 가능합니다.(소문자 확장자만 허용)');
+          alert('이미지 파일(jpg, png, gif, jpeg)만 등록 가능합니다.\n(소문자 확장자만 허용)');
           $id.val("");
           $id.focus();
           return false;

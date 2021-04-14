@@ -577,6 +577,17 @@
                         .sub-category {
                             display:block;
                             animation-name:delayedFadeIn;
+                            @at-root {
+                                .mobile &-list {
+                                    position: relative; height:100%; overflow:auto;
+                                    &::-webkit-scrollbar {
+                                        width:3px;
+                                    }
+                                    &::-webkit-scrollbar-thumb {
+                                        background:#a9a9a9;
+                                    } 
+                                }
+                            }
                         }
                     }
                 }
@@ -858,16 +869,6 @@
     }
 }
 
-//모바일 디바이스 스크롤 오토
-.mobile .prod-search-wrap .category-box .category-list-wrap>.category-list>li .box.on .sub-category-list {
-    position: relative; height:100%; overflow:auto;
-    &::-webkit-scrollbar {
-        width:3px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background:#a9a9a9;
-    } 
-}
 
 
 @keyframes btnExpand {

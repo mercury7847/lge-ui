@@ -1376,8 +1376,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {
@@ -1459,8 +1459,8 @@ h2.title {
         height: 24px;
         z-index: 5;
         @include mobile {
-            top: 12px;
-            right: 12px;
+            top: 7px;
+            right: 7px;
         }
         &:before,
         &:after {
@@ -1780,6 +1780,7 @@ h2.title {
     right: 32px;
     width: 32px;
     height: 32px;
+    z-index: 5;
 }
 
 .obj_tooltip_wrap .btn-close:after {
