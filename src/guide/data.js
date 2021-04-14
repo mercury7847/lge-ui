@@ -28,7 +28,8 @@ var res = {
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
 			"Filter" : ["./wsg/guide_filter.html","","검수완료"],
-			"breadcrumb" : ["./wsg/guide_breadcrumb.html","","검수완료"]
+			"breadcrumb" : ["./wsg/guide_breadcrumb.html","","검수완료"],
+			"QRCode 생성" : ["./wsg/guide_qrcode.html","","검수완료"]
 		}
 	},
 	"Front" : {
