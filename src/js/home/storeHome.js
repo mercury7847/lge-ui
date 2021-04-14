@@ -216,7 +216,7 @@ $(function(){
             {
                 "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
                 "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "PC아카데미 페스티벌<br>앵콜 기획전",
+                "title" : "PC 아카데미 페스티벌<br>앵콜 기획전",
                 "imageAlt" : "",
                 "date" : "",
                 "modelUrlPath" : "/benefits/exhibitions/detail-PE00007002",
