@@ -5843,6 +5843,13 @@
                     modelSimulator.stepThree();
                 }
             }, 500);*/
+            setTimeout(function() {
+                if ($(window).width() > 767) {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                } else {
+                    modelSimulator.mobileStep(".simul_step2");
+                }
+            }, 500);
 
         }
     }
