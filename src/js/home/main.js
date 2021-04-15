@@ -697,7 +697,7 @@ $(function () {
         //메인일경우와 어차피 앱일 경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             $(window).trigger('floatingTopShow');
-            $('.floating-menu.top').removeClass('call-yet');
+            //$('.floating-menu.top').removeClass('call-yet');
         }
     });
 });
