@@ -158,8 +158,8 @@
             }
 
             loadStoryList('new_story', 1, 'NewStory');
-            $('.user_story').hide();
 
+            $('.user_story').hide();
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, 'UserStory');
             } 
@@ -194,15 +194,25 @@
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
 
-            var section = $(this).closest('.story-section');
-            if(section.hasClass('user_story')){
-                if(IS_LOGIN == "Y"){
-                    $(".new_story").show();
-                    setRepositionTagBox($('.new_story'));
+            if(IS_LOGIN == "Y"){
+                var userlistbox = $('.user_story').find('.flexbox-wrap');
+                if(userlistbox.children().length > 0){
+                    $('.user_story').find('.story-title-area').show();
+                    $('.user_story').show();
+                    setRepositionTagBox($('.user_story'));
+                } else{
+                    $('.tag-subscribe-story').show();
                 }
-                loadStoryList('user_story', 1, "UserStory");
-            } else{
+            }
+            
+            var section = $(this).closest('.story-section');
+            if(section.hasClass('new_story')){
                 loadStoryList('new_story', 1, 'NewStory');
+            } else{
+                loadStoryList('user_story', 1, 'UserStory');
+
+                $('.new_story').show();
+                setRepositionTagBox($('.new_story'));
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -328,17 +338,26 @@
             tagCode: $(item).data('code'),
             tagName: $(item).data('name')
         }
-
-        if(section.hasClass('new_story')){
-            loadStoryList('new_story', 1, 'NewStory', selectTags);
-        } else{
+        
+        if(selectTags.mode == "add" || selectTags.mode == "remove"){
             if(IS_LOGIN == "Y"){
-                if(selectTags.mode == "search"){
-                    $('.new_story').hide();
-                }
                 loadStoryList('user_story', 1, "UserStory", selectTags);
+                loadStoryList('new_story', 1, 'NewStory');
             } else{
                 location.href = LOGIN_URL;
+            }
+        } else{
+            if(section.hasClass('new_story')){
+                loadStoryList('new_story', 1, 'NewStory', selectTags);
+            } else{
+                if(IS_LOGIN == "Y"){
+                    if(selectTags.mode == "search"){
+                        $('.new_story').hide();
+                    }
+                    loadStoryList('user_story', 1, "UserStory", selectTags);
+                } else{
+                    location.href = LOGIN_URL;
+                }
             }
         }
     }
@@ -354,6 +373,8 @@
             selectTags: selectTag ? selectTag : ""
         }
         // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
+        // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
+        // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
             if(result.data.loginUrl){
                 location.href = result.data.loginUrl;
@@ -385,10 +406,14 @@
                 sectionItem.prepend(stickyTag);
 
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
+
+                $('.user_story').find('.story-title-area').hide();
             } else{
                 viewMode = "listMode";
 
                 sectionItem.find('.inner h2.title').show();
+
+                $('.user_story').find('.story-title-area').show();
             }
             
             if(result.data.storyList && result.data.storyList.length > 0){
@@ -408,9 +433,9 @@
 
                 if(page == 1){
                     if(IS_LOGIN == "Y"){
-                        $('.tag-subscribe-story').empty().hide();
-
                         if(viewMode == "listMode" && sectioname == "user_story"){
+                            $('.tag-subscribe-story').empty().hide();
+
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                             sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
@@ -421,14 +446,38 @@
                             $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                         }
                     }
+
+                    if(viewMode == "selectTagMode"){
+                        if(sectioname == "new_story"){
+                            $('.user_story').hide();
+                        } else $('.new_story').hide();
+
+                        $('.tag-subscribe-story').hide();
+                    }
+                }
+
+                if(sectioname == "new_story"){
+                    if(IS_LOGIN == "Y"){
+                        var userlistbox = $('.user_story').find('.flexbox-wrap');
+                        if(userlistbox.children().length > 0){
+                            if(viewMode == "selectTagMode") sectionItem.find('.inner h2.title').hide();
+                            else sectionItem.find('.inner h2.title').show();
+                        }else sectionItem.find('.inner h2.title').hide();
+                    } else{
+                        sectionItem.find('.inner h2.title').hide();
+                    }
+                } else{
+
+                    $('.new_story').find('.inner h2.title').show();
                 }
                 
                 setRepositionTagBox(sectionItem);
             } else{
                 if(sectioname == "user_story"){
-                    console.log("sectioname:", sectioname)
                     $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                     $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+
+                    $('.new_story').find('.inner h2.title').hide();
                 }
                 sectionItem.hide();
             }
