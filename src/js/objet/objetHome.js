@@ -490,7 +490,7 @@ $(function() {
             let sceneH = winHeight - $(".header").height() - $(".mobile-nav-wrap").height() + fixH;
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
             $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
-            //$('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
+            $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
             if (page !== undefined) {
                 currentPage = page;
