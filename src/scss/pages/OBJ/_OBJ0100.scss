@@ -1,9 +1,9 @@
 .brand-hero {
-    position: relative;
-    z-index: 10;
+    // position: relative;
+    // z-index: 10;
     .content {
         [class*="cont"] {
-            position: absolute;
+            position: relative;
             right: 0;
             left: 0;
             transform: translateY(-50%);
@@ -15,29 +15,29 @@
                     height: 35px;
                 }
             }
-            &[class*="1"] {
-                top: 40%;
-                @include mobile {
-                    top: 20%;
-                }
-            }
-            &[class*="2"] {
-                top: 40%;
-                @include mobile {
-                    top: 20%;
-                    animation-duration: 1s;
-                    animation-name: homeFirstMove;
-                    p:nth-child(2) {
-                        margin-top: 24px;
-                    }
-                }
-            }
-            &[class*="3"] {
-                top: 40%;
-                @include mobile {
-                    top: 20%;
-                }
-            }
+            // &[class*="1"] {
+            //     top: 40%;
+            //     @include mobile {
+            //         top: 20%;
+            //     }
+            // }
+            // &[class*="2"] {
+            //     top: 40%;
+            //     @include mobile {
+            //         top: 20%;
+            //         animation-duration: 1s;
+            //         animation-name: homeFirstMove;
+            //         p:nth-child(2) {
+            //             margin-top: 24px;
+            //         }
+            //     }
+            // }
+            // &[class*="3"] {
+            //     top: 40%;
+            //     @include mobile {
+            //         top: 20%;
+            //     }
+            // }
         }
     }
     /* // 2021.03.03 추가 */
@@ -166,8 +166,15 @@
             }
         }
         .content {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            // max-width: 554px;
+            white-space: nowrap;
+            text-align: left;
+            transform: translateX(-50%);
             [class*="cont"] {
-                position: absolute;
+                position: relative;
                 right: 0;
                 left: 0;
                 transform: translateY(-50%);
@@ -193,6 +200,184 @@
                     @include mobile {
                         top: 20%;
                     }
+                }
+            }
+        }
+        &[class*="02"] {
+            height: calc(100vh - 149px);
+            @include mobile {
+                height: calc(100vh - 86px);
+            }
+            .image {
+                &.blur {
+                    opacity: 0;
+                }
+            }
+            .content {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                // max-width: 554px;
+                white-space: nowrap;
+                text-align: left;
+                transform: translateX(-50%);
+                @media screen and (max-width: (1600px + 320px)) {}
+                .cont1 {
+                    transform: translateY(100px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                    color: #fff;
+                    font-weight: 700;
+                    @include font(52px,
+                    70px);
+                }
+                .cont2 {
+                    transform: translateY(150px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                    margin-top: 24px;
+                    color: #fff;
+                    font-weight: 700;
+                    @include font($font-large-1,
+                    30px);
+                }
+                @include mobile {
+                    max-width: none;
+                    margin-left: 0;
+                    //padding: 80px 32px;
+                    color: $color-white;
+                    .cont1 {
+                        @include font(30px,
+                        40px);
+                    }
+                    .cont2 {
+                        margin-top: 60px;
+                        font-weight: 400;
+                        line-height: 28px;
+                        span {
+                            display: block;
+                            margin-top: 40px;
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &.active {
+                .image {
+                    &.blur {
+                        opacity: 0;
+                        transition: opacity 0.3s ease-in-out 0.7s;
+                    }
+                }
+                .cont1 {
+                    opacity: 0;
+                    transform: translateY(100px);
+                }
+                .cont2 {
+                    opacity: 0;
+                    transform: translateY(150px);
+                }
+            }
+            &.on {
+                .image {
+                    &.blur {
+                        opacity: 1;
+                    }
+                }
+                .cont1 {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+                .cont2 {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+        }
+        &[class*="03"] {
+            .image {
+                &.blur {
+                    opacity: 0;
+                }
+            }
+            .content {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                // max-width: 554px;
+                white-space: nowrap;
+                transform: translateX(-50%);
+                text-align: left;
+                @media screen and (max-width: (1600px + 320px)) {}
+                .cont1 {
+                    transform: translateY(100px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                    color: #fff;
+                    font-weight: 700;
+                    @include font(52px,
+                    70px);
+                }
+                .cont2 {
+                    transform: translateY(150px);
+                    transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                    margin-top: 24px;
+                    color: #fff;
+                    font-weight: 700;
+                    @include font($font-large-1,
+                    30px);
+                }
+                @include mobile {
+                    max-width: none;
+                    margin-left: 0;
+                    //padding: 80px 32px;
+                    color: $color-white;
+                    .cont1 {
+                        @include font(30px,
+                        40px);
+                    }
+                    .cont2 {
+                        margin-top: 60px;
+                        font-weight: 400;
+                        line-height: 28px;
+                        span {
+                            display: block;
+                            margin-top: 40px;
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &.active {
+                .image {
+                    &.blur {
+                        opacity: 0;
+                        transition: opacity 0.3s ease-in-out 0.7s;
+                    }
+                }
+                .cont1 {
+                    opacity: 0;
+                    transform: translateY(100px);
+                }
+                .cont2 {
+                    opacity: 0;
+                    transform: translateY(150px);
+                }
+            }
+            &.on {
+                .image {
+                    &.blur {
+                        opacity: 1;
+                    }
+                }
+                .cont1 {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+                .cont2 {
+                    opacity: 1;
+                    transform: translateY(0px);
                 }
             }
         }
@@ -849,6 +1034,7 @@
                 position: relative;
                 margin-top: 20px;
                 margin-left: 20px;
+                //width: calc((100% - 40px)/3);
                 width: calc((100% - 41px)/3);
                 height: 560px;
                 background: #eae9e7;
