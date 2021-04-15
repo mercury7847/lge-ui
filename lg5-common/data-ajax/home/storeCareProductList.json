@@ -4,105 +4,32 @@
     "data": {
         "success": "Y",
         "data" : [
-            {   
-                "modelId":"75NANO99KNA",
-                "saleModelCode":"FQ2",
-                "saleSuffixCode":"AKOR",
-                "modelName":"프라엘 메디헤어2",
-                "modelDisplayName":"프라엘 메디헤어2",
-                "obsOriginalPrice":"20000",
-                "obsMemberPrice":"0",
-                "obsDiscountPrice":"0",
-                "obsSellFlag":"",
-                "obsInventoryFlag":"",
-                "obsInventoryQty":"",
-                "modelStatusCode":"ACTIVE",
-                "categoryId":"",
-                "categoryName":"",
-                "modelUrlPath":"/medical-devices/hgn1",
-                "samllImgAddr":"/lg5-common/images/dummy/temp/img-care-01.jpg",
-                "mediumImgAddr":"/lg5-common/images/dummy/temp/img-care-01.jpg",
-                "largeImgAddr":"/lg5-common/images/dummy/temp/img-care-01.jpg"
+            {
+                "categoryType":"A1",
+                "categoryName":"신제품",
+                "models":[
+                    
+                ]
             },
             {
-                "modelId":"55NANO99KNA",
-                "saleModelCode":"FQ2",
-                "saleSuffixCode":"AKOR",
-                "modelName":"오브제컬렉션 A9S",
-                "modelDisplayName":"오브제컬렉션 A9S",
-                "obsOriginalPrice":"21000",
-                "obsMemberPrice":"0",
-                "obsDiscountPrice":"0",
-                "obsSellFlag":"",
-                "obsInventoryFlag":"",
-                "obsInventoryQty":"",
-                "modelStatusCode":"ACTIVE",
-                "categoryId":"",
-                "categoryName":"",
-                "modelUrlPath":"/medical-devices/hgn1",
-                "samllImgAddr":"/lg5-common/images/dummy/temp/img-care-02.jpg",
-                "mediumImgAddr":"/lg5-common/images/dummy/temp/img-care-02.jpg",
-                "largeImgAddr":"/lg5-common/images/dummy/temp/img-care-02.jpg"
+                "categoryType":"A2",
+                "categoryName":"베스트",
+                "models":[
+                   
+                ]
             },
             {
-                "modelId":"65NANO99KNA",
-                "saleModelCode":"FQ2",
-                "saleSuffixCode":"AKOR",
-                "modelName":"울트라기어 모니터",
-                "modelDisplayName":"울트라기어 모니터",
-                "obsOriginalPrice":"15000",
-                "obsMemberPrice":"0",
-                "obsDiscountPrice":"0",
-                "obsSellFlag":"",
-                "obsInventoryFlag":"",
-                "obsInventoryQty":"",
-                "modelStatusCode":"ACTIVE",
-                "categoryId":"",
-                "categoryName":"",
-                "modelUrlPath":"/medical-devices/hgn1",
-                "samllImgAddr":"/lg5-common/images/dummy/temp/img-care-03.jpg",
-                "mediumImgAddr":"/lg5-common/images/dummy/temp/img-care-03.jpg",
-                "largeImgAddr":"/lg5-common/images/dummy/temp/img-care-04.jpg"
-            },  
+                "categoryType":"A3",
+                "categoryName":"신혼부부 추천",
+                "models":[                    
+                ]
+            },
             {
-                "modelId":"45NANO99KNA",
-                "saleModelCode":"FQ2",
-                "saleSuffixCode":"AKOR",
-                "modelName":"그램16",
-                "modelDisplayName":"그램16",
-                "obsOriginalPrice":"20000",
-                "obsMemberPrice":"",
-                "obsDiscountPrice":"",
-                "obsSellFlag":"",
-                "obsInventoryFlag":"",
-                "obsInventoryQty":"",
-                "modelStatusCode":"ACTIVE",
-                "categoryId":"",
-                "categoryName":"",
-                "modelUrlPath":"/medical-devices/hgn1",
-                "samllImgAddr":"/lg5-common/images/dummy/temp/img-care-04.jpg",
-                "mediumImgAddr":"/lg5-common/images/dummy/temp/img-care-04.jpg",
-                "largeImgAddr":"/lg5-common/images/dummy/temp/img-care-04.jpg"
-            },   
-            {
-                "modelId":"35NANO99KNA",
-                "saleModelCode":"FQ2",
-                "saleSuffixCode":"AKOR",
-                "modelName":"톤프리",
-                "modelDisplayName":"톤프리",
-                "obsOriginalPrice":"5000",
-                "obsMemberPrice":"",
-                "obsDiscountPrice":"",
-                "obsSellFlag":"",
-                "obsInventoryFlag":"",
-                "obsInventoryQty":"",
-                "modelStatusCode":"ACTIVE",
-                "categoryId":"",
-                "categoryName":"",
-                "modelUrlPath":"/medical-devices/hgn1",
-                "samllImgAddr":"/lg5-common/images/dummy/temp/img-care-05.jpg",
-                "mediumImgAddr":"/lg5-common/images/dummy/temp/img-care-05.jpg",
-                "largeImgAddr":"/lg5-common/images/dummy/temp/img-care-05.jpg"
+                "categoryType":"A4",
+                "categoryName":"반려동물",
+                "models":[
+                    
+                ]
             }
         ]    
     }
