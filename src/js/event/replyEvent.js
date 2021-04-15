@@ -150,7 +150,17 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result) {
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
-                        lgkorUI.alert("", {title: '이벤트에 참여되었습니다.'});
+                        lgkorUI.alert("", {title: "이벤트에 참여되었습니다.", ok: function(){
+                            if(typeof dataLayer !== 'undefined' && dataLayer) {
+                                dataLayer.push({				
+                                'event': 'customEvent',				
+                                'customEventCategory': '이벤트',				
+                                'customEventAction': '이벤트 - 신청 완료',				
+                                'customEventLabel': '컨텐츠 : ' + eventId
+                                });
+                            }
+                        }});
+
                         self.$replyPopup.vcModal('close');
                         self.requestData(1);
                     }
