@@ -841,10 +841,16 @@ function goProc() {
 				success: function(json) {
 					var result = json.data.alert.title;
 					alert(result);
+					dataLayer.push({				
+        			  'event': 'customEvent',				
+        			  'customEventCategory': '이벤트',				
+        			  'customEventAction': '이벤트 - 신청 완료',				
+        			  'customEventLabel': '컨텐츠 : '+'${eventTitle}'
+					});		
 					self.close();
 				},
 				error: function(request, status, error) {
-					alert(error);
+					alert("오류가 발생했습니다.<br/>관리자에게 문의하세요.");
 					return;
 				}
 			});

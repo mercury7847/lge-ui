@@ -306,7 +306,7 @@
     .pdp-visual-area.visible-sm {
         overflow: hidden;
         //margin-bottom: 28px;
-        padding-bottom: 25px;
+        padding-bottom: 44px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -364,7 +364,7 @@
             }
             .slide-number {
                 position: absolute;
-                bottom: 0;
+                bottom: -20px;
                 right: 0;
                 left: 0;
                 font-weight: 500;
