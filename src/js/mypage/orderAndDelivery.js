@@ -905,9 +905,20 @@
                 return;
             }
     
-            if(!$("#popup-takeback").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            // if(!$("#popup-takeback").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            //     lgkorUI.alert("", {
+            //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+            //     });
+    
+            //     return;
+            // }
+        }
+
+        var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
+        if(isAgreeChk){
+            if(!$('#popup-takeback').find('input[name=cancelPopAgree]').prop('checked')){
                 lgkorUI.alert("", {
-                    title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
                 });
     
                 return;
@@ -966,9 +977,20 @@
                 return;
             }
     
-            if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            // if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            //     lgkorUI.alert("", {
+            //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+            //     });
+    
+            //     return;
+            // }
+        }
+
+        var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
+        if(isAgreeChk){
+            if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
                 lgkorUI.alert("", {
-                    title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
                 });
     
                 return;
@@ -2000,6 +2022,11 @@
                 //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
 
+            var thname = TAB_FLAG == TAB_FLAG_CARE ? "요금정보" : "결제금액";
+            popup.find(".tbl-layout.sizeType3 .thead .th.col2").text(thname);
+            
+            popup.find('input[name=cancelPopAgree]').prop('checked', false);
+
             var modeltypes = vcui.array.filterOne(productList, function(item){
                 return item.modelType == "소모품(A)";
             });
@@ -2025,8 +2052,14 @@
                     mempointPrices: discountComma == "0" ? "0" : discountComma,
                     productTotalPrices: vcui.number.addComma(productTotalPrices)
                 }));
+
+                popup.data('isAgreeChk', true);
+                popup.find('.cancel-agree-box').show();
             } else{
                 popup.find('.sect-wrap.cnt01').hide();
+
+                popup.data('isAgreeChk', false);
+                popup.find('.cancel-agree-box').hide();
             }
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
