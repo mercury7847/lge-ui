@@ -861,13 +861,15 @@ $(function() {
         var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
         //console.log("targetName", targetName);
         if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
-
             setTimeout(function() {
                 $('.next-arr').trigger("click"); //wheelScene(1);
                 setTimeout(function() {
-                    $("[aria-controls='" + targetName + "']").trigger("click");
-                }, 1000);
-            }, 500);
+                    $('.next-arr').trigger("click"); //wheelScene(1);
+                    setTimeout(function() {
+                        $("[aria-controls='" + targetName + "']").trigger("click");
+                    }, 300);
+                }, 100);
+            }, 100);
 
 
         }
