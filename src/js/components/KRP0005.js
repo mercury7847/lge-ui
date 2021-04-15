@@ -120,21 +120,10 @@
 
             self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
             if(!self.ignoreOverflowForce && vcui.detect.isMobile){
-                self.bodyOvewflow = $('body').css('overflow').toLowerCase();
                 $('html, body').css({
                     overflow:"hidden"
                 });
-            } else {
-                self.bodyOvewflow = $('body').css('overflow').toLowerCase();
-                self.ignoreOverflow = (self.bodyOvewflow != "hidden");
-                if(vcui.detect.isMobile) { 
-                    if(self.ignoreOverflow){
-                        $('html, body').css({
-                            overflow:"hidden"
-                        });
-                    }
-                }
-            }
+            } 
         },
 
         //리스트 닫기
@@ -143,30 +132,15 @@
             self.$popup.addClass('close');
             self.$popup.removeClass('open');
             self.$popup.hide();
-            //
+
+            self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
             if(!self.ignoreOverflowForce && vcui.detect.isMobile) {
-                if(self.bodyOvewflow) {
-                    $('html, body').css({
-                        overflow:self.bodyOvewflow
-                    });
-                } else {
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
-                }
-            } else if(vcui.detect.isMobile){
-                if(self.ignoreOverflow) {
-                    if(self.bodyOvewflow) {
-                        $('html, body').css({
-                            overflow:self.bodyOvewflow
-                        });
-                    } else {
-                        $('html, body').css({
-                            overflow:"visible"
-                        });
-                    }
-                }
-            }
+                
+                $('html, body').css({
+                    overflow:"visible"
+                });
+
+            } 
         },
 
         resetImage: function() {

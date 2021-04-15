@@ -1,4 +1,20 @@
+;
 $(function() {
+
+    $.fn.inViewport = function(wrapClass, tabHeight, offsetVh) {
+
+        var marginTop = ~~Math.round(parseFloat(tabHeight)) || 0;
+        var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
+        var ty = $(this).position().top + marginTop;
+        var tb = ty + $(this).outerHeight();
+        var sy = $(wrapClass).scrollTop();
+        var vh = $(wrapClass).height() + sy + elOffsetVh;
+
+        if ($(wrapClass).height() < $(this).outerHeight()) {
+            return Math.abs(ty - sy) < 100;
+        }
+        return ty > sy && vh > tb;
+    };
 
     $.extend($.easing, {
         def: 'easeOutQuad',
@@ -8,23 +24,33 @@ $(function() {
         }
     });
 
+    vcui.require(['ui/carousel', 'libs/jquery.transit.min'], function() {
 
-    vcui.require(['ui/carousel', 'ui/lazyLoaderSwitch', 'libs/jquery.transit.min'], function() {
+        // $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx) {
 
-        // var $sigTheme = $('.objet-theme .ui_carousel_slider');
-        // $sigTheme.vcCarousel({
+        //     var $items = $device.find('.screen-slider > li');
+        //     var xp = -428;
+        //     if (nextIdx < index) xp = 428;
+        //     $items.eq(index).css({ x: 0, opacity: 1 }).transit({ x: xp });
+        //     $items.eq(nextIdx).css({ x: -xp, opacity: 1 }).transit({ x: 0 });
+
+
+        // }).vcCarousel({
+        //     infinite: false,
         //     slidesToShow: 1,
-        //     slidesToScroll: 1,
-        //     lazyLoad: 'progressive'
+        //     slidesToScroll: 1
         // });
 
-        // var $sigShowRoom = $('.objet-showroom .ui_carousel_slider');
-        // $sigShowRoom.vcCarousel({
-        //     settings: "unslick",
-        //     lazyLoad: 'progressive',
+        // $('.app-use-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: false,
+        //     slidesToShow: 3,
+        //     slidesToScroll: 3,
         //     responsive: [{
         //             breakpoint: 10000,
-        //             settings: "unslick"
+        //             settings: {
+        //                 slidesToShow: 3,
+        //                 slidesToScroll: 3
+        //             }
         //         },
         //         {
         //             breakpoint: 768,
@@ -35,8 +61,46 @@ $(function() {
         //         }
         //     ]
         // });
-        // $('body').vcLazyLoaderSwitch('reload', $sigTheme);
-        //$('body').vcLazyLoaderSwitch('reload', $sigShowRoom);
+
+        // $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: true,
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1,
+        //     dots: false,
+        //     fade: true,
+        //     responsive: [{
+        //             breakpoint: 10000,
+        //             settings: {
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1,
+        //                 dots: false,
+        //                 fade: true,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 1024,
+        //             settings: {
+        //                 dots: true,
+        //                 fade: false,
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
+
+        // $('.magazine-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: false,
+        //     slidesToShow: 5,
+        //     slidesToScroll: 5,
+        //     responsive: [{
+        //         breakpoint: 768,
+        //         settings: {
+        //             slidesToShow: 2,
+        //             slidesToScroll: 2
+        //         }
+        //     }]
+        // });
 
         var isApplication = isApp();
         var $window = $(window);
@@ -49,28 +113,27 @@ $(function() {
         var currentStep = 0;
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.objet-hero').children().add('.objet-wrap');
+        var $scenes = $('#fixed-wrap').children().add('.objet-wrap');
         var stepLens = 0;
         var pageLens = $scenes.length - 1;
         var posArr = [];
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e) {
             $('html,body').scrollTop(pageLens * winHeight);
         });
 
-
         // 화면 100% 채우기
         $('html,body').css({ 'overflow': 'hidden', 'height': '100%' });
-        // 모달창 닫기시 overflow:hidden 무시함.
+
+        // 모달이후 overflow :visible 문제 해결
         $('body').addClass('ignore-overflow-hidden');
 
 
-
-        $('.objet-hero').children().css({ 'overflow': 'hidden' });
-        //$('html').css({ 'overflow': 'hidden' });
+        $('#fixed-wrap').children().css({ 'overflow': 'hidden' });
         $('.container').css({ 'overflow': 'visible', 'height': 'auto' });
 
         $('.next-arr').on('click', 'a', function(e) {
@@ -81,31 +144,14 @@ $(function() {
         });
 
 
-        $window.on('floatingTop', function() {
-            // currentPage = 0;
-            // currentStep = 1;
-            // setBeforeCss(currentStep, wheelArr);
-            // moveScene(currentPage,currentStep,0);
-
-            currentPage = 0;
-            currentStep = 1;
-            setBeforeCss(currentStep);
-            moveScene(currentPage, currentStep, 0);
-
-
-        });
-
-        // element 애니메이션 스탭
         function moveStep(step) {
 
             if (!canScroll) return;
-            if (currentStep == step) return;
             canScroll = false;
 
             var arr = wheelArr[step];
             if (!vcui.isArray(arr)) {
                 currentStep = step;
-                ////console.log(currentStep);
                 canScroll = true;
                 return;
             }
@@ -127,7 +173,7 @@ $(function() {
                 }
 
                 if (i == 0) {
-                    $target.transit(obj, aniSpeed, function() {
+                    $target.transit(obj, function() {
                         if (isDisplay === 'none') {
                             $target.css('display', isDisplay);
                         }
@@ -136,7 +182,7 @@ $(function() {
 
                     });
                 } else {
-                    $target.transit(obj, aniSpeed, function() {
+                    $target.transit(obj, function() {
                         if (isDisplay === 'none') {
                             $target.css('display', isDisplay);
                         }
@@ -145,8 +191,9 @@ $(function() {
             }
         }
 
-        // 휠 애니메이션 스탭
+
         function wheelScene(delta) {
+
             if (!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
@@ -169,20 +216,17 @@ $(function() {
 
         }
 
-        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
-
-        // 씬으로 이동
         function moveScene(idx, step, speed) {
 
             if (!canScroll) return;
             canScroll = false;
             $contentWrap.scrollTop(0);
+            //appMotion(0);
 
             $('html').addClass('sceneMoving');
             if (speed == undefined) speed = aniSpeed;
-            //var scrollTopData = winHeight * idx;
-            var scrollTopData = $(window).height() * idx;
+            var scrollTopData = winHeight * idx;
             $scenes.removeClass('active').eq(idx).addClass('active');
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -194,14 +238,14 @@ $(function() {
                 var speedTime = currentPage < idx ? parseInt(speed) : parseInt(speed) - 300;
                 speedTime = Math.max(0, speedTime);
 
-                $('html, body').stop(true).animate({
+                $html.stop(true).animate({
                     scrollTop: scrollTopData
                 }, speedTime, 'easeInOutQuart', function() {
                     canScroll = true;
 
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
-                    if (currentPage == 0) {
+                    if (idx == 0) {
                         if (!hasTop) {
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').addClass('call-yet');
@@ -217,7 +261,7 @@ $(function() {
                     moveStep(step);
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
-                    $("html,body").scrollTop(scrollTopData);
+
                     $scenes.each(function() {
                         if ($(this).find('video').length != 0) {
                             if ($(this).hasClass('on')) {
@@ -234,11 +278,10 @@ $(function() {
         }
 
 
-
-
         var prevTime = new Date().getTime();
 
         // 휠 이벤트 처리
+
         if (!vcui.detect.isMobileDevice) {
 
             document.addEventListener('wheel', function(e) {
@@ -280,10 +323,10 @@ $(function() {
             } else {
 
                 if (touchSy - data.y > 80) {
-                    // //console.log('down');
+                    // console.log('down');
                     lgkorUI.showAppBottomMenu(false);
                 } else if (touchSy - data.y < -80) {
-                    // //console.log('up');
+                    // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
 
@@ -309,21 +352,6 @@ $(function() {
         });
 
 
-        function _stringToObj(str) {
-
-            var regex = /(.*)\:(.*)/;
-            var arr = str.replace(/ /gi, "").split(',');
-            var obj = {};
-
-            for (var i = 0; i < arr.length; i++) {
-                var match = arr[i].match(regex);
-                if (match !== null) {
-                    obj[match[1]] = match[2] == "''" ? '' : match[2];
-                }
-            }
-
-            return obj;
-        }
 
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
@@ -335,9 +363,25 @@ $(function() {
             };
         }
 
+        function _stringToObj(str) {
+
+            var regex = /(.*)\:(.*)/;
+            var arr = str.replace(/ /gi, "").split(',');
+            var obj = {};
+
+            for (var i = 0; i < arr.length; i++) {
+                var match = arr[i].match(regex);
+                if (match !== null) {
+                    obj[match[1]] = match[2];
+                }
+            }
+            return obj;
+        }
+
+
         function _findIdx(py) {
             for (var i = 0; i < posArr.length; i++) {
-                if (posArr[i] > py) {
+                if (posArr[i] >= py) {
                     return i;
                 }
             }
@@ -345,7 +389,6 @@ $(function() {
         }
 
         function _findStep(page) {
-
             for (var i = 0; i < wheelArr.length; i++) {
                 var arr = wheelArr[i];
                 if (vcui.isArray(arr)) {
@@ -358,7 +401,6 @@ $(function() {
             return 0;
         }
 
-        // 스탭 이전 스타일 적용
         function setBeforeCss(step) {
             for (var k = 0; k < step; k++) {
                 var arr = wheelArr[k];
@@ -373,10 +415,80 @@ $(function() {
             }
         }
 
+        function updateVideo(video) {
+
+            var isAndroid = vcui.detect.isAndroid;
+            var isMobileDevice = vcui.detect.isMobileDevice;
+
+            var $target = $(video || this),
+                $wrap = $target.closest('.img'),
+                // $image    = $wrap.find('img'),
+                // loaded    = $target.data('loaded'),                  
+                videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
+                $sources = $target.find('source'),
+                oVideo;
+
+            var src = $target.data('src');
+            if (isMobileDevice) {
+                src = $target.data('mSrc') || $target.data('src');
+            }
+
+            // 비디오 요소 생성.
+            var createVideoObject = function() {
+
+                var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
+                if (!extArr.length) return false;
+
+                var $video = $('<video ' + videoAttr + '></video>');
+
+                for (var i = extArr.length - 1; i >= 0; i--) {
+                    if (extArr[i] == 'mp4') {
+                        $('<source>', { src: src + '.mp4', type: 'video/mp4', prependTo: $video });
+                    } else if (extArr[i] == 'webm') {
+                        $('<source>', { src: src + '.webm', type: 'video/webm', appendTo: $video });
+                    } else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
+                        $('<source>', { src: src + '.ogv', type: 'video/ogg', appendTo: $video });
+                    }
+                }
+
+                if ($target.data('alt') != null) {
+                    $('<p>').text($target.data('alt')).appendTo($video);
+                }
+                $video.data($target.data());
+                $target.replaceWith($video);
+                $video = $wrap.find('video');
+                $sources = $video.find('source');
+
+                $video.css({
+                    'position': 'absolute',
+                    'width': 'auto !important',
+                    'height': 'auto !important',
+                    'min-width': '100%',
+                    'min-height': '100%',
+                    'top': '50%',
+                    'left': '50%',
+                    'transform': 'translate(-50%,-50%)'
+                })
+                oVideo = $video[0];
+
+                if (isAndroid) {
+                    $(document).one('touchstart.videoPlay', function() {
+                        oVideo.play();
+                    });
+                }
+                $wrap.addClass('video');
+
+                $video.on('loadeddata', function(e) {
+                    $video.data('loaded', true);
+                    $wrap.trigger('videoLoaded');
+                    oVideo.play();
+                }).trigger('load');
+            }
+
+            createVideoObject();
+        }
 
 
-
-        // 렌더링
         var render = function(page) {
 
             if (wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -391,7 +503,8 @@ $(function() {
             posArr = [];
             wheelArr = [];
 
-            var $prevTarget = $('.container').prevAll(':visible:first');
+
+            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
             var prevAllHeight = $prevTarget.offset().top + $prevTarget.height();
             var totalHeight = winHeight;
             var itemHeight = winHeight;
@@ -409,6 +522,7 @@ $(function() {
                         var match = attr.name.match(regex);
                         if (match === null) continue;
                         if (attributeIndex == 1) cssVal = _stringToObj(attr.value);
+
                         arr.push({
                             sort: match[1],
                             target: this,
@@ -444,16 +558,15 @@ $(function() {
                     wheelArr.push(i);
                 }
 
+
                 if (i == 0) {
                     itemHeight = winHeight - prevAllHeight;
                 } else {
                     itemHeight = winHeight;
                 }
                 allHeight += itemHeight;
-
                 posArr.push(allHeight);
                 $(this).height(itemHeight);
-
                 totalHeight += itemHeight;
 
                 $(this).find('.img > .video').each(function() {
@@ -464,61 +577,214 @@ $(function() {
 
             posArr.push(10000);
 
+
             stepLens = wheelArr.length - 1;
-            let fixH;
-            if ($(window).width() < 768) {
-                fixH = 0;
-            } else {
-                fixH = 16;
-            }
-
-            let sceneH = winHeight - $(".header").height() - $(".mobile-nav-wrap").height() + fixH;
             $contentWrap.css({ 'overflow': 'auto', 'height': winHeight });
-            //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
-            $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
+            $('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
 
-            /*if (page !== undefined) {
+            if (page !== undefined) {
                 currentPage = page;
                 currentStep = _findStep(currentPage);
-                setBeforeCss(currentStep, wheelArr);
+                setBeforeCss(currentStep);
                 moveScene(currentPage, currentStep, 0);
+
             } else {
+                //setTimeout(function(){
                 currentPage = _findIdx($('html, body').scrollTop());
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep);
                 moveScene(currentPage, currentStep, 0);
-            }*/
+
+                //}, 100);
+            }
+
         }
 
-        // 탭이동 이벤트 처리
-        // 탭이동 이벤트 처리
-        $('.objetcollection-tabs .ui_tab').on('tabchange', function(e, data) {
-            //오류 처리
-            $('html,body').scrollTop(pageLens * winHeight);
-            $contentWrap.scrollTop(0);
-        });
+
+        ////////////////////////////////////
+        // 탭 내부 스크립트
+
+
+        var $device = $('.thinq-app').find('.ui_device'); // app 탭내 핸드폰
+        var $typography = $('.thinq-app').find('.typography');
+        var deviceY = 0;
+        var deviceH = 612; // 핸드폰 사이즈
+        var isLifeWrap = false;
+        var isThinqApp = false;
+        var isMobile = false;
+
+
+
+        // $('.thinq-app').find('.app-wrap').css('position', 'relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
+
+
+        // $('.thinq-section.smart-thinq-wrap .app-smart-tabs').on('tabchange', function(e, data) {
+
+        //     if ($(e.currentTarget).siblings('.ui_carousel_slider').length > 0) {
+        //         var idx = data.selectedIndex;
+        //         $(e.currentTarget).siblings('.ui_carousel_slider').vcCarousel('goTo', idx);
+        //     }
+
+        // });
+
+        // $('.thinq-section.smart-thinq-wrap .ui_tab').on('tabchange', function(e, data) {
+
+        //     if (data.content.find('.ui_carousel_slider').length > 0) {
+        //         data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0, true);
+        //     }
+
+        // });
+
+
+        // $('.thinq-tabs .ui_tab').on('tabchange', function(e, data) {
+
+        //     $contentWrap.scrollTop(0);
+        //     $contentWrap.off('scroll.app');
+        //     $contentWrap.off('scroll.lifestyle');
+
+        //     $('html, body').scrollTop(pageLens * winHeight);
+
+
+        //     $device.css('top', '');
+        //     //appMotion(0);
+
+        //     if (data.content[0] == $('.thinq-app')[0]) {
+        //         deviceY = $device.position().top;
+        //         isThinqApp = true;
+        //         $contentWrap.on('scroll.app', scrollEvent);
+
+        //         if (data.content.find('.ui_tab').length > 0) {
+        //             data.content.find('.ui_tab').vcTab('update');
+        //         }
+
+        //         if (data.content.find('.ui_carousel_slider').length > 0) {
+        //             data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0);
+        //         }
+
+        //     } else {
+        //         isThinqApp = false;
+        //     }
+
+        //     if (data.content[0] == $('.thinq-lifestyle')[0]) {
+        //         isLifeWrap = true;
+        //         $contentWrap.on('scroll.lifestyle', scrollEvent);
+        //     } else {
+        //         isLifeWrap = false;
+        //     }
+
+        // })
+
+        $device.find('.frame').css({ 'transition': 'transform 0.1s' })
+        $device.find('.screen').css({ 'transition': 'opacity 0.1s' })
+        $typography.css({ 'transition': 'opacity 0.1s' });
+
+        function transFunc(distance, start, end, scroll, sy) {
+            var progress = sy ? ((sy - scroll) - distance) / distance : (scroll - distance) / distance;
+            if (progress <= 0.001) progress = 0;
+            if (progress >= 0.999) progress = 1;
+            var cal = (end - start) * progress;
+            var val = start + cal;
+            return val;
+        }
+
+
+        $window.on('breakpointchange', function(e) {
+
+            var data = window.breakpoint;
+            if (data.name == 'mobile') {
+                isMobile = true;
+            } else if (data.name == 'pc') {
+                isMobile = false;
+            }
+        })
+
+        // function //appMotion(strollTop) {
+
+        //     var st = strollTop - 88;
+        //     var val = transFunc(110, 1, isMobile ? 0.78 : 0.63, st, 0);
+        //     var val2 = transFunc(300, 1, 0.0, st, 0);
+        //     var val3 = transFunc(300, 1, 0.0, st, 1000);
+        //     var val4 = transFunc(300, 1, 0.0, st, 2000);
+
+        //     $device.find('.frame').css({ 'scale': val });
+        //     $typography.css({ 'opacity': val2 });
+        //     $device.find('.intro').css({ 'opacity': val3 });
+        //     $device.find('.ui_last').css({ 'opacity': val4 });
+
+        //     var useWrap = $('.app-use-wrap').position().top;
+
+        //     if (st + deviceH * 2 - 188 > useWrap) {
+        //         var ny = st + deviceH * 2 - 188 - useWrap;
+        //         $device.css('top', -ny);
+        //     }
+
+        //     if (!isMobile) {
+
+        //         if (st > deviceY + 15) {
+        //             $device.addClass('fixed');
+
+        //         } else {
+        //             $device.css({ 'top': '' }).removeClass('fixed');
+        //         }
+        //     }
+
+        //     if (strollTop == 0) {
+        //         $device.css({ 'top': '' }).removeClass('fixed');
+        //     }
+
+        // }
+
+        function scrollEvent() {
+
+            if (isThinqApp) {
+                // console.log($contentWrap.scrollTop());
+                //appMotion($contentWrap.scrollTop());
+            }
+            if (isLifeWrap) {
+                $('.free-life-wrap').find('.animate-target').each(function() {
+                    if ($(this).inViewport('.brand-wrap', 88)) {
+                        if (!$(this).hasClass('animated')) {
+                            $(this).addClass('animated');
+                        }
+                    }
+                });
+            }
+        }
+
+
+        // function setMagazineVideo() {
+
+        //     var videoTmpl = '<iframe src={{link}} ' +
+        //         'id="videoPlayerCode" frameborder="0" allowfullscreen="1" ' +
+        //         'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" ' +
+        //         'title="YouTube video player"></iframe>';
+
+        //     $('#thinq-cont4').off('click', '.video-thumb a');
+
+        //     $('#thinq-cont4').on('click', '.video-thumb a', function(e) {
+        //         var href = $(e.currentTarget).attr('data-url').replace(/ /gi, "");
+        //         $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl, { link: href }));
+        //         var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+        //         $videoBtns.removeClass('slide_on');
+        //         $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on');
+        //     });
+
+        //     var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+        //     var $videoOnBtn = $videoBtns.siblings('.slide_on').find('a[data-url]');
+        //     $videoOnBtn.trigger('click');
+        // }
+
 
 
         $(document).on('click', 'a', function(e) {
-
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
-
             if (href == '#' || href == '#n') {
                 e.preventDefault();
             } else {
                 if (href && /^(#|\.)\w+/.test(href)) {
-
-                    e.preventDefault();
-
-                    var $compareTarget = $('.objetcollection-tabs .ui_tab').find('a[href="' + href + '"]');
+                    var $compareTarget = $('.thinq-tabs .ui_tab').find('a[href="' + href + '"]');
                     if ($compareTarget[0] != e.currentTarget) {
-                        if (currentPage !== pageLens) {
-                            moveScene(pageLens, stepLens, 0);
-                        }
-                        $('.objetcollection-tabs .ui_tab').vcTab('selectByName', href);
-                        if (href == '#content') {
-                            $('.objetcollection-tabs .ui_tab').find('a').eq(0).focus();
-                        }
+                        $('.thinq-tabs .ui_tab').vcTab('selectByName', href);
                     }
                 }
             }
@@ -527,44 +793,42 @@ $(function() {
         // 접근성 탭 이동시 화면처리
         // $(document).on('focusin', function(e) {
 
-        //     if ($.contains($('.Objet-wrap')[0], e.target)) {
+        //     if ($.contains($('.thinq-wrap')[0], e.target)) {
         //         currentPage = pageLens;
         //         currentStep = stepLens;
-        //     } else if ($.contains($('.Objet-hero')[0], e.target)) {
+        //     } else if ($.contains($('.thinq-hero')[0], e.target)) {
         //         // currentPage = 0;
         //         // currentStep = 0;
         //     }
 
         // });
 
-        //전시기록 더보기...
-        // var $artGuide = $('.Objet-section.art-guide');
-        // var $artMoreBtn = $artGuide.find('button.btn-moreview');
-        // $artGuide.find('.art-guide-list > li:gt(5)').hide();
 
-        // var artGuideLen = $artGuide.find('.art-guide-list > li').length;
-        // if (artGuideLen < 6) $artMoreBtn.hide();
+        function doWheelfixedElement(selector) {
+            function fixedScrolled(e) {
+                var evt = e || window.event;
+                var delta = evt.detail ? evt.detail * (-120) : evt.wheelDelta;
+                $contentWrap.scrollTop($contentWrap.scrollTop() - delta);
+            }
+            var mousewheelevt = (/Gecko\//i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+            var nodes = document.querySelectorAll(selector);
+            Array.prototype.forEach.call(nodes, function(item) {
+                if (item.attachEvent) item.attachEvent("on" + mousewheelevt, fixedScrolled);
+                else if (item.addEventListener) item.addEventListener(mousewheelevt, fixedScrolled, false);
+            });
+        }
+
+        doWheelfixedElement('.ui_device');
+        //setMagazineVideo();
 
 
-        // $artMoreBtn.on('click', function(e) {
-        //     e.preventDefault();
+        $window.on('floatingTop', function() {
+            currentPage = 0;
+            currentStep = 0;
+            setBeforeCss(currentStep);
+            moveScene(currentPage, currentStep, 0);
 
-        //     var $span = $(this).find('span').eq(0);
-        //     var toggleTxt = $(this).data('toggleTxt');
-        //     var txt = $span.text();
-        //     $(this).data('toggleTxt', txt);
-
-        //     if ($(this).hasClass('fold')) {
-        //         $(this).removeClass('fold');
-        //         $span.text(toggleTxt);
-        //         $artGuide.find('.art-guide-list > li:gt(5)').hide();
-        //     } else {
-        //         $(this).addClass('fold');
-        //         $span.text(toggleTxt);
-        //         $artGuide.find('.art-guide-list > li').show();
-        //     }
-        // });
-
+        });
 
         if (isApplication) {
             render();
@@ -578,10 +842,9 @@ $(function() {
             // 앱 대응시 주석처리 end
         }
 
-        //시작시 한 스탭 이동시킴.
-        setTimeout(function() {
-            if (currentStep < 1) wheelScene(1);
-        }, 1000);
+        $window.trigger('breakpointchange');
+        window.resizeScene = render;
+
         $(window).load(function() {
             $(".floating-menu.top button").trigger("click");
 
@@ -592,13 +855,15 @@ $(function() {
             var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
             //console.log("targetName", targetName);
             if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
-
                 setTimeout(function() {
-                    $('.next-arr').trigger("click"); //wheelScene(1);
+                    $('.next-arr a').trigger("click"); //wheelScene(1);
                     setTimeout(function() {
-                        $("[aria-controls='" + targetName + "']").trigger("click");
+                        $('.next-arr a').trigger("click"); //wheelScene(1);
+                        setTimeout(function() {
+                            $("[aria-controls='" + targetName + "']").trigger("click");
+                        }, 500);
                     }, 1000);
-                }, 500);
+                }, 100);
 
 
             }
@@ -631,8 +896,9 @@ $(function() {
 
         });
 
-
-        window.resizeScene = render;
-
     });
+
+
+
+
 });

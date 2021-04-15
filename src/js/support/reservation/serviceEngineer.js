@@ -593,6 +593,7 @@
                     }
                 }
 
+                self.$stepInput.find('input[type=radio]').prop('checked', false);
                 self.$stepInput.find('input[type=text], input[type=number], textarea').not(notInput).val('');
                 self.$stepInput.find('#fanEtc').prop('disabled', true);
                 self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
@@ -601,7 +602,6 @@
                 self.$stepEngineer.find('#engineerCode').val('');
                 self.$stepEngineer.find('#centerNm').val('');
                 self.$stepEngineer.find('#centerCode').val('');
-                self.$stepInput.find('input[type=radio]').prop('checked', false);
 
                 validation.reset();
                 self.$dateWrap.calendar('reset');
