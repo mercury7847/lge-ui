@@ -271,6 +271,50 @@
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
 
+                //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
+                var pathName = location.pathname.toLowerCase();
+                if(pathName.indexOf("smartphones") > -1) {
+                    //모바일 카테고리
+                    var $mobileClosePopup = $('#mobile-close-popup');
+                    if($mobileClosePopup.length > 0) {
+                        //모바일 종료 안내 팝업이 존재하는가
+                        var closeCookie = lgkorUI.getCookie('mobileClosePopup');
+                        if(!closeCookie || closeCookie != "Y") {
+                            //모바일 종료 안내 팝업 다시보지 않기 선택 여부 확인
+                            
+                            //모바일 종료 안내 팝업 자세히 보기 이동
+                            $mobileClosePopup.on('click', 'button[data-link-url]', function(e) {
+                                e.preventDefault();
+                                var buttonLinkUrl = $(this).attr('data-link-url');
+                                var isNew = $(this).attr('data-open-new');
+                                if(buttonLinkUrl) {
+                                    if(isNew == "Y") {
+                                        setTimeout(function () {
+                                            window.open(buttonLinkUrl);
+                                        },250);
+                                    } else {
+                                        setTimeout(function () {
+                                            location.href = buttonLinkUrl;
+                                        },250);
+                                    }
+                                }
+                            });
+
+                            //모바일 종료 안내 팝업 푸터 닫기 버튼
+                            $mobileClosePopup.on('click','.pop-footer button',function(e){
+                                e.preventDefault();
+                                //다시보지 않기 선택에 따른 쿠키 처리
+                                var check = $mobileClosePopup.find('#check-today').is(':checked');
+                                if(check) {
+                                    lgkorUI.setCookie('mobileClosePopup', "Y", false, 1);
+                                }
+                                $mobileClosePopup.vcModal('close');
+                            });
+                            $mobileClosePopup.vcModal();
+                        }
+                    }
+                }
+
                 /*
                 var hash = location.hash.replace("#","");
                 if(hash) {
@@ -781,7 +825,6 @@
                 if(!item.obsSellingPrice) item.obsSellingPrice = "";
 
                 item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
-                console.log("item.modelDisplayAltName:", item.modelDisplayAltName)
 
                 //console.log("### item.siblingType ###", item.siblingType);
 

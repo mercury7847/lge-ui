@@ -1,27 +1,3 @@
-/*
-(function(i,s,o,g,r,a,m){
-    var isMobile = false;
-    if(vcui.detect.isMobile){
-        isMobile = true;
-    }
-    
-    if(location.hostname == "www.lge.co.kr") {
-        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
-    } else {
-        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
-    }
-
-    if(s.getElementById(g)){
-        return
-    };
-    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
-    a.id=g;
-    a.async=1;
-    a.src=r;
-    m.parentNode.insertBefore(a,m);
-})(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
-*/
-
 (function() {
 
     var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
@@ -130,11 +106,6 @@
                     self.bindPopupEvents();
                     self.bindSideEvents();
                 });
-                /*
-                self.bindProductEvents();
-                self.bindPopupEvents();
-                self.bindSideEvents();
-                */
 
                 //로그인,찜하기 관련 데이타 가져오기
                 self.getRewardInfo();
@@ -144,9 +115,6 @@
                 //찜하기 체크
                 var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
-
-                //크레마
-                //lgkorUI.cremaLogin();
 
                 //전달받은 리뷰카운트를 krp0009 컴퍼넌트에 넘김
                 if(typeof reviewsCount !== 'undefined' && reviewsCount != "") {
