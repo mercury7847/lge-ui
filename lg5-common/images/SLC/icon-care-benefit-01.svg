@@ -1,20 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
     <g fill="none" fill-rule="evenodd">
         <g>
-            <path d="M0 0H80V80H0z"/>
             <g>
-                <g fill="#FFF" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" transform="translate(4 10) translate(20)">
-                    <path d="M0 31h52v10c0 4.97-11.64 9-26 9S0 45.97 0 41h0V31z"/>
-                    <path d="M0 23h52v10c0 4.97-11.64 9-26 9S0 37.97 0 33h0V23z"/>
-                    <path d="M0 15h52v10c0 4.97-11.64 9-26 9S0 29.97 0 25h0V15z"/>
-                    <path d="M0 10h9.655C14.12 8.75 19.807 8 26 8s11.88.75 16.345 2H52v7c0 4.97-11.64 9-26 9S0 21.97 0 17h0v-7z"/>
-                    <ellipse cx="26" cy="9" rx="26" ry="9"/>
-                </g>
-                <g transform="translate(4 10) translate(0 20)">
-                    <circle cx="20" cy="20" r="20" fill="#FFF" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-                    <text fill="#DA0F47" font-family="Roboto-Medium, Roboto" font-size="26" font-weight="400">
-                        <tspan x="12" y="31">$</tspan>
-                    </text>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H80V80H0z" transform="translate(-352 -1214) translate(43 79) translate(0 1134) translate(188) translate(121 1)"/>
+                                <g>
+                                    <g fill="#FFF" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" transform="translate(-352 -1214) translate(43 79) translate(0 1134) translate(188) translate(121 1) translate(9 15) translate(18)">
+                                        <path d="M45 26v9.563h-.05C44.18 39.716 34.444 43 23.024 43 10.6 43 .823 39.716.05 35.563H0V26h45z"/>
+                                        <path d="M45 20v9.563h-.05C44.18 33.716 34.444 37 23.024 37 10.6 37 .823 33.716.05 29.563H0V20h45z"/>
+                                        <path d="M45 14v9.563h-.05C44.18 27.716 34.444 31 23.024 31 10.6 31 .823 27.716.05 23.563H0V14h45z"/>
+                                        <path d="M0 9.5h14.897c2.514-.323 5.25-.5 8.126-.5 2.646 0 5.201.177 7.576.5H45V17c0 4.418-10.074 8-21.977 8C10.073 25 0 21.418 0 17h0V9.5z"/>
+                                        <ellipse cx="22.5" cy="9.5" rx="22.5" ry="9.5"/>
+                                    </g>
+                                    <g transform="translate(-352 -1214) translate(43 79) translate(0 1134) translate(188) translate(121 1) translate(9 15) translate(0 20)">
+                                        <circle cx="17" cy="17" r="17" fill="#FFF" stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+                                        <circle cx="17" cy="17" r="17" fill="#FFF" stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+                                        <path fill="#DA0F47" fill-rule="nonzero" d="M17.86 27.46v-2.28c2.2-.38 3.48-1.9 3.48-4.04 0-4.66-6.18-3.98-6.18-6.9 0-1.22.8-1.94 2.08-1.94 1.14 0 1.82.44 2.64 1.22l1.2-1.34c-.82-.86-1.78-1.56-3.22-1.74V8.2h-1.6v2.26c-2.02.34-3.32 1.8-3.32 3.88 0 4.28 6.18 3.72 6.18 6.96 0 1.3-.76 2.08-2.32 2.08-1.26 0-2.36-.6-3.38-1.44l-1.04 1.58c1 .9 2.48 1.58 3.88 1.72v2.22h1.6z"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </g>
             </g>
         </g>

@@ -4,23 +4,17 @@
             <g>
                 <g>
                     <g>
+                        <path d="M0 0H64V64H0z" transform="translate(-331 -829) translate(203 828) translate(120 1) translate(8)"/>
                         <g>
-                            <g>
-                                <path d="M0 0H64V64H0z" transform="translate(-753 -931) translate(0 695) translate(270 120) translate(0 84) translate(351) translate(132 32)"/>
-                                <g>
-                                    <g stroke="#000" stroke-linecap="round" stroke-width="2" transform="translate(-753 -931) translate(0 695) translate(270 120) translate(0 84) translate(351) translate(132 32) translate(10 2) translate(0 10)">
-                                        <path d="M6.992 13.521h33.935c1.989 0 3.6 1.612 3.6 3.6v5.586H34.24c-.994 0-1.8.805-1.8 1.8v8.74c0 .994.806 1.8 1.8 1.8h10.407v5.309c0 1.988-1.611 3.6-3.6 3.6H5.4c-2.982 0-5.4-2.418-5.4-5.4V15.589c0-2.29 1.444-4.33 3.603-5.093l6.03-1.795m21.094-7.594l1.893-.85c2.343-.826 4.914.403 5.74 2.747.17.48.257.987.257 1.497v8.127"/>
-                                        <circle cx="39" cy="29" r="2"/>
-                                    </g>
-                                    <g>
-                                        <path stroke="#DA0F47" stroke-linecap="round" stroke-width="2" d="M24.786 22.56c3.222-4.258 2.85-10.392-1.085-14.328C19.405 3.936 12.49 3.886 8.255 8.12c-3.873 3.874-4.162 9.99-.978 14.55" transform="translate(-753 -931) translate(0 695) translate(270 120) translate(0 84) translate(351) translate(132 32) translate(10 2) translate(5.077 .946)"/>
-                                        <text fill="#DA0F47" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="12" font-weight="bold" transform="translate(-753 -931) translate(0 695) translate(270 120) translate(0 84) translate(351) translate(132 32) translate(10 2) translate(5.077 .946)">
-                                            <tspan x="11.923" y="23.054">P</tspan>
-                                        </text>
-                                    </g>
-                                    <path stroke="#000" stroke-linecap="round" stroke-width="2" d="M6.5 23.5L32.5 23.5" transform="translate(-753 -931) translate(0 695) translate(270 120) translate(0 84) translate(351) translate(132 32) translate(10 2)"/>
-                                </g>
+                            <g stroke="#000" stroke-linecap="round" stroke-width="2" transform="translate(-331 -829) translate(203 828) translate(120 1) translate(8) translate(10 2) translate(0 10)">
+                                <path d="M6.992 13.521h33.935c1.989 0 3.6 1.612 3.6 3.6v5.586H34.24c-.994 0-1.8.805-1.8 1.8v8.74c0 .994.806 1.8 1.8 1.8h10.407v5.309c0 1.988-1.611 3.6-3.6 3.6H5.4c-2.982 0-5.4-2.418-5.4-5.4V15.589c0-2.29 1.444-4.33 3.603-5.093l6.03-1.795m21.094-7.594l1.893-.85c2.343-.826 4.914.403 5.74 2.747.17.48.257.987.257 1.497v8.127"/>
+                                <circle cx="39" cy="29" r="2"/>
                             </g>
+                            <g>
+                                <path stroke="#DA0F47" stroke-linecap="round" stroke-width="2" d="M24.786 22.56c3.222-4.258 2.85-10.392-1.085-14.328C19.405 3.936 12.49 3.886 8.255 8.12c-3.873 3.874-4.162 9.99-.978 14.55" transform="translate(-331 -829) translate(203 828) translate(120 1) translate(8) translate(10 2) translate(5.077 .946)"/>
+                                <path fill="#DA0F47" fill-rule="nonzero" d="M14.79 20.054v-3.156h1.189c1.908 0 3.432-.912 3.432-2.94 0-2.1-1.512-2.784-3.48-2.784h-2.916v8.88h1.776zm1.069-4.56H14.79v-2.916h1.008c1.224 0 1.872.348 1.872 1.38 0 1.02-.588 1.536-1.812 1.536z" transform="translate(-331 -829) translate(203 828) translate(120 1) translate(8) translate(10 2) translate(5.077 .946)"/>
+                            </g>
+                            <path stroke="#000" stroke-linecap="round" stroke-width="2" d="M6.5 23.5L32.5 23.5" transform="translate(-331 -829) translate(203 828) translate(120 1) translate(8) translate(10 2)"/>
                         </g>
                     </g>
                 </g>
