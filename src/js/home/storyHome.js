@@ -122,17 +122,18 @@
 
         vcui.require(['ui/carousel', "ui/sticky"], function () {
             $('.story-review .slide-controls').hide();
-            // $('.story-review .indi-wrap').hide();
+            console.log($('.story-review .indi-wrap'))
             $(window).on('breakpointchange', function(e){
-
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){ 
+                    $('.story-review').find('.indi-wrap').show();
                     $('.story-review').vcCarousel({
                         variableWidth: true,
                         slidesToShow: 1,
                         slidesToScroll: 1
                     });
                 }else if(breakpoint.name == 'pc'){   
+                    $('.story-review').find('.indi-wrap').hide();
                     $('.story-review').vcCarousel('destroy');
                 }    
             });
@@ -494,7 +495,7 @@
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
         item.find('.flexbox').each(function(idx, box){
-            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight;
+            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
@@ -510,7 +511,6 @@
                         titleheight = lastbox.find('.title').outerHeight(true);
                         tagheight = lastbox.find('.tag-lists').outerHeight(true);
                         boxheight = titleheight + tagheight;
-                        console.log('lastbox:', titleheight, tagheight);
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
@@ -522,6 +522,7 @@
                 }
             }
 
+            overflow = "auto";
             contype = $(box).data('contentsType');
             if(contype == 'image') boxheight = status.imgheight;
             else if(contype == "video"){
@@ -530,9 +531,8 @@
             } else{
                 titleheight = $(box).find('.title').outerHeight(true);
                 tagheight = $(box).find('.tag-lists').outerHeight(true);
-                boxheight = titleheight + tagheight;
-                console.log(titleheight, tagheight);
-
+                boxheight = titleheight + tagheight;       
+                overflow = "visible";         
             }
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({

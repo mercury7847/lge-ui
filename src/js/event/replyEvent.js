@@ -15,6 +15,11 @@
                 self.setting();
                 self.bindEvent();
                 self.requestData(1);
+
+                var apply = self.$wrap.data('isApply');
+                if(lgkorUI.stringToBool(apply)) {
+                    self.$btns.addClass('apply');
+                }
             });
         },
 
@@ -23,7 +28,8 @@
             self.$wrap = $('.reply-wrap');
             self.$pagination = self.$wrap.find('.pagination');
             self.$pagination.vcPagination({"scrollTarget":self.$wrap});
-            self.btnWrap = $('.btn-wrap:eq(0)');
+            self.$btnWrap = $('.btn-wrap:eq(0)');
+            self.$btns = self.$btnWrap.find('.btns');
             self.$replyPopup = $('#popupReply');
         },
 
@@ -33,7 +39,7 @@
                 self.requestData(data);
             });
 
-            self.btnWrap.on('click','a.write',function (e) {
+            self.$btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
                 //로그인을 해야 하는가
                 var login = self.$wrap.data('loginUrl');
@@ -50,7 +56,7 @@
                 self.$replyPopup.vcModal({opener: this});
             });
 
-            self.btnWrap.on('click','a.result',function (e) {
+            self.$btnWrap.on('click','a.result',function (e) {
                 e.preventDefault();
                 //로그인을 해야 하는가
                 var login = self.$wrap.data('loginUrl');
@@ -62,6 +68,7 @@
                     return;
                 }
 
+                var param = {};
                 var eventId = self.$wrap.data('eventId');
                 param.eventId = eventId;
 
@@ -145,6 +152,9 @@
                 var eventId = self.$wrap.data('eventId');
                 param.eventId = eventId;
 
+                var isApplication = isApp();
+                param.isApp = isApplication ? "Y" : "N";
+
                 var ajaxUrl = self.$wrap.data('replyUrl');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result) {
@@ -170,9 +180,15 @@
 
         requestData: function (page) {
             var self = this;
+
+            var param = {};
+            var eventId = self.$wrap.data('eventId');
+            param.eventId = eventId;
+            param.page = page;
+
             var ajaxUrl = self.$wrap.attr('data-list-url');
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(ajaxUrl, {"page":page}, function(result) {
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var data = result.data;
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
                 $('#totalCount em').text(vcui.number.addComma(data.totalCnt));
@@ -184,6 +200,12 @@
                     item.name = self.txtMasking.name(item.name);
                     $ul.append(vcui.template(replayEventItemTemplate, item));
                 });
+
+                if(lgkorUI.stringToBool(data.isApply)) {
+                    self.$btns.addClass('apply');
+                } else {
+                    self.$btns.removeClass('apply');
+                }
             });
         }
     }

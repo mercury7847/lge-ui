@@ -2,7 +2,7 @@
     position:fixed;
     right:48px;
     bottom:48px;
-    z-index:10;
+    z-index:110;
     @include mobile {
         right:14px;
         bottom:24px;
@@ -161,8 +161,9 @@
 	position:fixed;
 	opacity:1;
 	transition:opacity 0.8s ease-out, transform 0.5s ease-out;
-	z-index:100;
+	z-index:110;
 	&.call-yet {
+        position:fixed;
 		opacity:0;
 		z-index:-100;
         transform: translateX(171px);
@@ -260,7 +261,7 @@
     &.lately {
         right:48px;
         bottom:255px;
-        z-index:101;
+        z-index:111;
         & + .easy-path {
             margin-top:14px;
         }

@@ -119,7 +119,7 @@
             self.$popup.addClass('open');
 
             self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
-            if(!self.ignoreOverflowForce){
+            if(!self.ignoreOverflowForce && vcui.detect.isMobile){
                 self.bodyOvewflow = $('body').css('overflow').toLowerCase();
                 $('html, body').css({
                     overflow:"hidden"
@@ -144,7 +144,7 @@
             self.$popup.removeClass('open');
             self.$popup.hide();
             //
-            if(!self.ignoreOverflowForce) {
+            if(!self.ignoreOverflowForce && vcui.detect.isMobile) {
                 if(self.bodyOvewflow) {
                     $('html, body').css({
                         overflow:self.bodyOvewflow

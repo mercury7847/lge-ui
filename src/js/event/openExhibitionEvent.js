@@ -25,6 +25,22 @@
                         }
                     },
                     {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                            lastFix:false
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            lastFix:false
+                        }
+                    },
+                    {
                         breakpoint: 10000,
                         settings: {
                             slidesToShow: 4,
