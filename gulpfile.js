@@ -316,7 +316,7 @@ gulp.task("jsCompile:objet", () => gulp
 
 // fonts, images
 gulp.task("static", () => {
-    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ", "static:event"]);
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ", "static:event", "static:front"]);
 });
 gulp.task("static:data-ajax", () => gulp
     .src("./lg5-common/data-ajax/**")

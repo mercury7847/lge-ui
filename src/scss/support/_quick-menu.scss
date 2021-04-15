@@ -385,7 +385,7 @@
     }
 }
 
-.mobile {
+.mobile:not(.app) {
     .quick-menu {
         &:before {
             content:"";
@@ -410,3 +410,4 @@
         }
     }
 }
+

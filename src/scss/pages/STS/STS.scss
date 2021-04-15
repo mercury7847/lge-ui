@@ -125,6 +125,47 @@
                 line-height: 33px;
             }
         }
+        .story-title-area {
+            margin: -16px 0 48px;
+            padding: 32px 0;
+            background-color: $color-bg;
+            .title-inner {
+                display: flex;
+                justify-content: space-between;
+                max-width: 1460px;
+                margin: 0 auto;
+                padding: 0 40px;
+            }
+            .title {
+                margin: 0;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: left;
+                @include pc {
+                    br {
+                        display: none;
+                    }
+                }
+            }
+            @include mobile {
+                margin: -12px 0 40px;
+                padding: 24px 0;
+                font-size: $font-large-2;
+                line-height: 33px;
+                .title-inner {
+                    padding: 0 20px;
+                }
+                .title {
+                    margin: 0;
+                    font-size: 14px;
+                    line-height: 23px;
+                }
+            }
+            & + .inner {
+                padding-top: 0;
+            }
+        }
+
         .btn-more {
             position: absolute;
             @include pc {
@@ -153,13 +194,6 @@
             }
             .inner {
                 //padding-top:0;
-            }
-        }
-        .tag-subscribe-link {
-            margin: -24px 0 48px;
-            text-align: center;
-            @include mobile {
-                margin: -16px 0 32px;
             }
         }
         .story-link {
@@ -419,7 +453,6 @@
             margin: 0;
             .flexbox {
                 width: 100%;
-                padding: 0 0 16px;
                 &.tag-area {
                     padding-bottom: 40px;
                 }

@@ -25,6 +25,63 @@
     }
     /* //클래스별이미지분기 */
 
+    /* 이벤트 레이어팝업 공통 */
+    &.pop-conts{
+        .tb-tit{
+            &.req{
+                &::after {
+                    content: '*';
+                    display: inline-block;
+                    margin-left: 1px;
+                    color: #EC455A;
+                    font-size: inherit;
+                    line-height: inherit;
+                    vertical-align: top;
+                }
+            }
+        }
+        .desc{
+            text-align:center;
+            line-height:1.2;
+            font-size:16px;
+            strong{
+                display:block;
+                &.tit{
+                    font-size:20px;
+                }
+            }
+            em{
+                color:#da0f47;
+            }
+            .txt{
+                display:block;
+                padding:12px 0;
+            }
+        }
+        .top-brd{
+            border-top:1px solid #000000;
+        }
+        .agree-input{
+            padding:16px 0 48px;
+        }
+        .input-info{
+            margin-top:0;
+        }
+        .txt-terms{
+            padding:24px;
+            font-size:16px;
+            line-height:1.62;
+            border-top:1px solid #666666;
+            border-bottom:1px solid #dddddd;
+            color:#000000;
+            @include mobile {
+                padding:19px 12px;
+                font-size:13px;
+            }
+        }
+    }
+    /* //이벤트 레이어팝업 공통 */
+
     .event02{
         .btn-wrap{
             @include mobile{
@@ -213,36 +270,7 @@
                 }
             }
         }
-    }
-    &.pop-conts{
-        .desc{
-            text-align:center;
-            line-height:1.2;
-            font-size:16px;
-            strong{
-                display:block;
-                &.tit{
-                    font-size:20px;
-                }
-            }
-            em{
-                color:#da0f47;
-            }
-            .txt{
-                display:block;
-                padding:12px 0;
-            }
-        }
-        .top-brd{
-            border-top:1px solid #000000;
-        }
-        .agree-input{
-            padding:16px 0 48px;
-        }
-        .input-info{
-            margin-top:0;
-        }
-    }
+    }   
 
     .event03{
         .terms{
@@ -278,28 +306,29 @@
                         }
                     }
                 }
-            }
-            .tb-tit{
-                padding-bottom:15px;
-                line-height:1.62;
-                font-weight:700;
-                @include mobile {
-                    font-size:14px;
+                .tb-tit{
+                    padding-bottom:15px;
+                    line-height:1.62;
                     font-weight:700;
-                    padding-bottom:13px;
-                }
-                &.req{
-                    &::after {
-                        content: '*';
-                        display: inline-block;
-                        margin-left: 1px;
-                        color: #EC455A;
-                        font-size: inherit;
-                        line-height: inherit;
-                        vertical-align: top;
+                    @include mobile {
+                        font-size:14px;
+                        font-weight:700;
+                        padding-bottom:13px;
+                    }
+                    &.req{
+                        &::after {
+                            content: '*';
+                            display: inline-block;
+                            margin-left: 1px;
+                            color: #EC455A;
+                            font-size: inherit;
+                            line-height: inherit;
+                            vertical-align: top;
+                        }
                     }
                 }
             }
+            
             .tb_row{
                 &.tb-bor{
                     tr{
@@ -446,6 +475,9 @@
         }
     }
 
+    .event04{  
+    }
+
     .event06{
         .benefit01{
             padding:0 0 140px;
@@ -525,7 +557,6 @@
                                     line-height:1.28;
                                     padding-top:8px;
                                     @include mobile {
-                                        padding-top:8px;
                                         font-size:14px;
                                     }
                                 }
@@ -549,7 +580,7 @@
                                         line-height: 1.21;
                                         color:#e34465;
                                         @include tablet {
-                                            font-size:12px;
+                                            // font-size:12px;
                                         }
                                         em{
                                             display:inline-block;
@@ -686,6 +717,7 @@
                                 display:inline-block;
                                 height:auto;
                                 img{
+                                    width:100%;
                                     text-align:center;
                                     opacity:.4;
                                     transform:scale(.8);

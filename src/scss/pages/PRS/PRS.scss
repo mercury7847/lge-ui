@@ -584,6 +584,9 @@
 				.img {
 					border-radius:8px;
 					overflow:hidden;
+					img {
+						min-height:496px;
+					}
 				}
 				.product-info {
 					position:absolute;

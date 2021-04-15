@@ -70,6 +70,22 @@
 					}
 					a {
 						display:block;
+						border-radius:8px;
+						overflow:hidden;
+						&:after {
+							position: absolute;
+							top: 0;
+							bottom: 0;
+							right: 12px;
+							left: 12px;
+							border-radius: 8px;
+							background-color: rgba(0,0,0,.2);
+							content: '';
+							@include mobile {
+								right: 6px;
+								left: 6px;
+							}
+						}
 						> img {
 							// width:100%;
 							max-height:590px;
@@ -86,6 +102,7 @@
 						left:44px;
 						right:44px;
 						bottom:64px;
+						z-index: 1;
 						padding:0 8px;
 						@include mobile {
 							left:26px;

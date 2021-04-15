@@ -151,8 +151,7 @@ function markigImageChange(item) {
 	if (val !== "") {
 		$marking.removeClass("top");
 		(val === "top" || val === "Top Cover") ? $marking.addClass("top") : $marking.removeClass("top");
-
-		$marking.find(".photo .view > img").attr("src","https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_" + (index + 1) + ".jpg");
+		$marking.find(".photo .view > img").attr("src","/kr/upload/admin/eventMgt/marking_" + (index + 1) + ".jpg");
 	}
 }
 
@@ -161,9 +160,7 @@ function markingReset(item) {
 	$(item).find(".marking .text").text("");
 	$(item).find(".marking .marking-test").val("");
 	$(item).find(".marking").addClass("top");
-	//$(item).find(".photo .view > img").attr("src","/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_1.jpg");
-	// [SI] 
-	$(item).find(".photo .view > img").attr("src","https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_1.jpg");
+	$(item).find(".photo .view > img").attr("src","/kr/upload/admin/eventMgt/marking_1.jpg");
 	$(item).find(".marking .tab a").removeClass("active").eq(0).addClass("active");
 }
 
@@ -343,6 +340,10 @@ function goProc() {
 		frmCheck = false;
 	} //완료
 	
+	/*if (submitCnt > 0) {
+		alert(" 처리중입니다. ");
+		frmCheck = false;
+	}*/
 	
 	//개인정보 수집이용 동의
 	if(frmCheck && ($("#agree01").val() != "1" || $("#agree01_01").is(":checked") == false)){
@@ -417,16 +418,28 @@ function goProc() {
 		
 		//마지막 체크 안하고
 		submitCnt++;
+		//frm.target = "hid_frmame";
+		//frm.action = submitUrl;
+		//frm.submit();
 		
 		 var param = $("#frm").serialize();
+         //param += '&eventId='+'<c:out value="${eventId }"/>';
+         //param += '&uid='+ '<c:out value="${memberInformation.unifyId}"/>'
+         //param += '&userId='+ '<c:out value="${memberInformation.userId}"/>'
          $.ajax({
          	type: 'POST',
          	url: '/evt/EV00016071_event_update.lgajax',
              data : param,
              success:function(data){
              	if(data.status == "success" && data.data.success == "Y"){
-                 	alert("신청되었습니다.");
-                 	self.close();
+             		alert("신청되었습니다.");
+					dataLayer.push({				
+        			  'event': 'customEvent',				
+        			  'customEventCategory': '이벤트',				
+        			  'customEventAction': '이벤트 - 신청 완료',				
+        			  'customEventLabel': '컨텐츠 : '+'${eventTitle}'
+					});
+					self.close();
              	}else{
              		alert(data.data.alert.title);
              	}

@@ -437,11 +437,14 @@ var res = {
 			"Event" : {
 				"02. 응원댓글이벤트" : {
 					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","","검수완료"],
-					//"이벤트참여" : ["/html/BMC/MKT4009_02.html","_blank:width=912,height=760,scrollbars=yes",""],
 					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","","검수완료"]
 				},
-				"03. 리뷰이벤트" : ["/html/BMC/MKT4002_03.html","",""],
-				"14. 보유제품이벤트" : ["/html/BMC/MKT4002_14.html","",""]
+				"03. 리뷰이벤트" : ["/html/BMC/MKT4002_03.html","","검수완료"],
+				"04. 오픈소문내기이벤트" : {
+					"오픈소문내기이벤트" : ["/html/BMC/MKT4002_04.html","",""],
+					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4002_04_pop.html","",""]
+				},
+				"14. 보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"]
 			},
 			"Exhibitions" : {
 				"06. 오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],

@@ -9,10 +9,11 @@
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
             '</div>'+
-            '<div class="tbl-layout ">'+
+            '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
-                    '<span class="th col1">제품정보(주문/배송 상세보기)</span>'+
-                    '<span class="th col2">진행상태</span>'+
+                    '<span class="th col1">제품정보</span>'+
+                    '<span class="th col2">결제금액</span>'+
+                    '<span class="th col3">진행상태</span>'+
                 '</div>'+
                 '<div class="tbody">'+
                 '</div>'+
@@ -87,6 +88,10 @@
                                 '{{/if}}'+
                                 '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col col1-2">'+
+                        '<div class="payment-price">'+
                             //'{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
                                 '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
@@ -900,9 +905,20 @@
                 return;
             }
     
-            if(!$("#popup-takeback").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            // if(!$("#popup-takeback").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            //     lgkorUI.alert("", {
+            //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+            //     });
+    
+            //     return;
+            // }
+        }
+
+        var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
+        if(isAgreeChk){
+            if(!$('#popup-takeback').find('input[name=cancelPopAgree]').prop('checked')){
                 lgkorUI.alert("", {
-                    title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
                 });
     
                 return;
@@ -961,9 +977,20 @@
                 return;
             }
     
-            if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            // if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            //     lgkorUI.alert("", {
+            //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+            //     });
+    
+            //     return;
+            // }
+        }
+
+        var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
+        if(isAgreeChk){
+            if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
                 lgkorUI.alert("", {
-                    title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
                 });
     
                 return;
@@ -1995,6 +2022,11 @@
                 //$('#popup-takeback').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
             }
 
+            var thname = TAB_FLAG == TAB_FLAG_CARE ? "요금정보" : "결제금액";
+            popup.find(".tbl-layout.sizeType3 .thead .th.col2").text(thname);
+            
+            popup.find('input[name=cancelPopAgree]').prop('checked', false);
+
             var modeltypes = vcui.array.filterOne(productList, function(item){
                 return item.modelType == "소모품(A)";
             });
@@ -2020,8 +2052,14 @@
                     mempointPrices: discountComma == "0" ? "0" : discountComma,
                     productTotalPrices: vcui.number.addComma(productTotalPrices)
                 }));
+
+                popup.data('isAgreeChk', true);
+                popup.find('.cancel-agree-box').show();
             } else{
                 popup.find('.sect-wrap.cnt01').hide();
+
+                popup.data('isAgreeChk', false);
+                popup.find('.cancel-agree-box').hide();
             }
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
@@ -2097,7 +2135,6 @@
             });
 
             var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
-console.log(listdata.itemCancelAbleYn, disabled)
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }

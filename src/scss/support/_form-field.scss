@@ -1062,3 +1062,130 @@
         font-size:14px;
     }
 }
+
+// board add file list
+.addfile-wrap{
+    line-height:32px;
+    .addfile-button{
+        @include font-small;
+        background:url("/lg5-common/images/icons/icon-download-32.svg") no-repeat 100% center;
+        padding-right:36px;
+    }
+    .addfilebox-list{
+        display:none;
+        z-index:100;
+        position:absolute;
+        margin: 12px 0 0 0;
+        padding: 4px 0 10px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        text-align:left;
+        li {
+            padding:17px 24px;
+            a {
+                color:#808080;
+                @include font-medium;
+                font-weight:$font-weight-medium;
+            }
+            &:hover a {
+                color:#000;
+            }
+        }
+    }
+    &.open {
+        .addfilebox-list{
+            display:block;
+        }
+    }
+}
+
+//add file new
+.image-file-wrap {
+    @include clearfix;
+    .file-item {
+        float:left;
+        width:93px;
+        .file-image {
+            position:relative;
+            margin-bottom:10px;
+            .file-preview {
+                overflow:hidden;
+                width:93px;
+                height:93px;
+                text-align:center;
+                border:1px solid #ddd;
+                border-radius:8px;
+                background:url(/lg5-common/images/icons/icon-no-image.svg) no-repeat;
+                background-size:100%;
+                &:before {
+                    content:'';
+                    display:inline-block;
+                    width:0;
+                    height:100%;
+                    vertical-align:middle;
+                }
+                img {
+                    max-width:100%;
+                    max-height:100%;
+                }
+            }
+            .file-btns {
+                position:absolute;
+                bottom:-8px;
+                right:-8px;
+                .btn-upload {
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat;
+                    cursor:pointer;
+                }
+                input[type="file"]:focus + .btn-upload {
+                    outline:1px solid #000;
+                }
+                .btn-del {
+                    display:none;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgdelet-24.svg) no-repeat;
+                }
+                input[type="file"] {
+                    @include blind;
+                }
+            }
+        }
+        .file-name{
+            .name {
+                display:block;
+                width:100%;
+                text-align:center;
+                color:#000;
+                font-size:14px;
+                line-height:24px;
+                background:transparent;
+                &::placeholder{
+                    color:#000;
+                }
+            }
+        }
+        &.on{
+            .file-preview {
+                background:none;
+            }
+            .file-btns {
+                .btn-upload {
+                    display:none;
+                }
+                .btn-del {
+                    display:block;
+                }
+            }
+        }
+        & + .file-item {
+            margin-left:24px;
+        }
+    }
+}
