@@ -204,11 +204,11 @@
 
     var searchBnrTemplate = 
         '<a href="{{url}}" target="{{target}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{title}}">'+
-            '<div class="text-area">'+
-                '<strong class="title">{{#raw title}}</strong>'+
-                '<span class="sub-copy">{{#raw desc}}</span>'+
-            '</div>'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{desc}}">'+
+            // '<div class="text-area">'+
+            //     '<strong class="title">{{#raw title}}</strong>'+
+            //     '<span class="sub-copy">{{#raw desc}}</span>'+
+            // '</div>'+
         '</a>';
 
     $(window).ready(function() {
