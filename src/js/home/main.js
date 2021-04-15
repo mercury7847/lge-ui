@@ -690,6 +690,10 @@ $(function () {
         $window.trigger('breakpointchange');
         window.resizeScene = render;      
 
-        moveScene(0,0);
+        //어차피 앱일 경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
+        if(isApplication) {
+            $(window).trigger('floatingTopShow');
+            $('.floating-menu.top').removeClass('call-yet');
+        }
     });
 });
