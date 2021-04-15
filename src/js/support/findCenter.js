@@ -526,8 +526,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                 });
                 self.$map.applyMapData(self.storeData);
                 self._setResultText();
-                if (seq) self.$map.selectInfoWindow(self.storeData[0].id);
-
+                if (seq) {
+                    self._showMap(true);
+                    self.$map.selectInfoWindow(self.storeData[0].id);
+                }
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
                 lgkorUI.hideLoading();
