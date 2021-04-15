@@ -314,9 +314,9 @@ $(function () {
                     if(idx==0){
                         if(!hasTop){
                             //임시 수정
+                            $('.floating-menu.top').css('opacity', 1);
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
-                                $('.floating-menu.top').css('opacity', 1);
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                         }
