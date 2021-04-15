@@ -615,64 +615,64 @@ $(function() {
 
 
 
-        $('.thinq-app').find('.app-wrap').css('position', 'relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
+        // $('.thinq-app').find('.app-wrap').css('position', 'relative'); //$device.position().top 값을 구하기 위해 position 값이 필요 
 
 
-        $('.thinq-section.smart-thinq-wrap .app-smart-tabs').on('tabchange', function(e, data) {
+        // $('.thinq-section.smart-thinq-wrap .app-smart-tabs').on('tabchange', function(e, data) {
 
-            if ($(e.currentTarget).siblings('.ui_carousel_slider').length > 0) {
-                var idx = data.selectedIndex;
-                $(e.currentTarget).siblings('.ui_carousel_slider').vcCarousel('goTo', idx);
-            }
+        //     if ($(e.currentTarget).siblings('.ui_carousel_slider').length > 0) {
+        //         var idx = data.selectedIndex;
+        //         $(e.currentTarget).siblings('.ui_carousel_slider').vcCarousel('goTo', idx);
+        //     }
 
-        });
+        // });
 
-        $('.thinq-section.smart-thinq-wrap .ui_tab').on('tabchange', function(e, data) {
+        // $('.thinq-section.smart-thinq-wrap .ui_tab').on('tabchange', function(e, data) {
 
-            if (data.content.find('.ui_carousel_slider').length > 0) {
-                data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0, true);
-            }
+        //     if (data.content.find('.ui_carousel_slider').length > 0) {
+        //         data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0, true);
+        //     }
 
-        });
-
-
-        $('.thinq-tabs .ui_tab').on('tabchange', function(e, data) {
-
-            $contentWrap.scrollTop(0);
-            $contentWrap.off('scroll.app');
-            $contentWrap.off('scroll.lifestyle');
-
-            $('html, body').scrollTop(pageLens * winHeight);
+        // });
 
 
-            $device.css('top', '');
-            //appMotion(0);
+        // $('.thinq-tabs .ui_tab').on('tabchange', function(e, data) {
 
-            if (data.content[0] == $('.thinq-app')[0]) {
-                deviceY = $device.position().top;
-                isThinqApp = true;
-                $contentWrap.on('scroll.app', scrollEvent);
+        //     $contentWrap.scrollTop(0);
+        //     $contentWrap.off('scroll.app');
+        //     $contentWrap.off('scroll.lifestyle');
 
-                if (data.content.find('.ui_tab').length > 0) {
-                    data.content.find('.ui_tab').vcTab('update');
-                }
+        //     $('html, body').scrollTop(pageLens * winHeight);
 
-                if (data.content.find('.ui_carousel_slider').length > 0) {
-                    data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0);
-                }
 
-            } else {
-                isThinqApp = false;
-            }
+        //     $device.css('top', '');
+        //     //appMotion(0);
 
-            if (data.content[0] == $('.thinq-lifestyle')[0]) {
-                isLifeWrap = true;
-                $contentWrap.on('scroll.lifestyle', scrollEvent);
-            } else {
-                isLifeWrap = false;
-            }
+        //     if (data.content[0] == $('.thinq-app')[0]) {
+        //         deviceY = $device.position().top;
+        //         isThinqApp = true;
+        //         $contentWrap.on('scroll.app', scrollEvent);
 
-        })
+        //         if (data.content.find('.ui_tab').length > 0) {
+        //             data.content.find('.ui_tab').vcTab('update');
+        //         }
+
+        //         if (data.content.find('.ui_carousel_slider').length > 0) {
+        //             data.content.find('.ui_carousel_slider').vcCarousel('update').vcCarousel('goTo', 0);
+        //         }
+
+        //     } else {
+        //         isThinqApp = false;
+        //     }
+
+        //     if (data.content[0] == $('.thinq-lifestyle')[0]) {
+        //         isLifeWrap = true;
+        //         $contentWrap.on('scroll.lifestyle', scrollEvent);
+        //     } else {
+        //         isLifeWrap = false;
+        //     }
+
+        // })
 
         $device.find('.frame').css({ 'transition': 'transform 0.1s' })
         $device.find('.screen').css({ 'transition': 'opacity 0.1s' })
@@ -752,27 +752,27 @@ $(function() {
         }
 
 
-        function setMagazineVideo() {
+        // function setMagazineVideo() {
 
-            var videoTmpl = '<iframe src={{link}} ' +
-                'id="videoPlayerCode" frameborder="0" allowfullscreen="1" ' +
-                'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" ' +
-                'title="YouTube video player"></iframe>';
+        //     var videoTmpl = '<iframe src={{link}} ' +
+        //         'id="videoPlayerCode" frameborder="0" allowfullscreen="1" ' +
+        //         'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" ' +
+        //         'title="YouTube video player"></iframe>';
 
-            $('#thinq-cont4').off('click', '.video-thumb a');
+        //     $('#thinq-cont4').off('click', '.video-thumb a');
 
-            $('#thinq-cont4').on('click', '.video-thumb a', function(e) {
-                var href = $(e.currentTarget).attr('data-url').replace(/ /gi, "");
-                $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl, { link: href }));
-                var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
-                $videoBtns.removeClass('slide_on');
-                $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on');
-            });
+        //     $('#thinq-cont4').on('click', '.video-thumb a', function(e) {
+        //         var href = $(e.currentTarget).attr('data-url').replace(/ /gi, "");
+        //         $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl, { link: href }));
+        //         var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+        //         $videoBtns.removeClass('slide_on');
+        //         $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on');
+        //     });
 
-            var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
-            var $videoOnBtn = $videoBtns.siblings('.slide_on').find('a[data-url]');
-            $videoOnBtn.trigger('click');
-        }
+        //     var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
+        //     var $videoOnBtn = $videoBtns.siblings('.slide_on').find('a[data-url]');
+        //     $videoOnBtn.trigger('click');
+        // }
 
 
 
@@ -819,7 +819,7 @@ $(function() {
         }
 
         doWheelfixedElement('.ui_device');
-        setMagazineVideo();
+        //setMagazineVideo();
 
 
         $window.on('floatingTop', function() {
@@ -845,60 +845,60 @@ $(function() {
         $window.trigger('breakpointchange');
         window.resizeScene = render;
 
+        $(window).load(function() {
+            $(".floating-menu.top button").trigger("click");
 
 
-    });
-
-
-
-    $(window).load(function() {
-        $(".floating-menu.top button").trigger("click");
-
-
-        var sOriginImgUrl = window.location.href;
-        var arSplitUrl = sOriginImgUrl.split("?"); //   "#" 로 전체 url 을 나눈다
-        var nArLength = arSplitUrl.length;
-        var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
-        //console.log("targetName", targetName);
-        if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
-            setTimeout(function() {
-                $('.next-arr').trigger("click"); //wheelScene(1);
+            var sOriginImgUrl = window.location.href;
+            var arSplitUrl = sOriginImgUrl.split("?"); //   "#" 로 전체 url 을 나눈다
+            var nArLength = arSplitUrl.length;
+            var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
+            //console.log("targetName", targetName);
+            if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
                 setTimeout(function() {
-                    $('.next-arr').trigger("click"); //wheelScene(1);
+                    $('.next-arr a').trigger("click"); //wheelScene(1);
                     setTimeout(function() {
-                        $("[aria-controls='" + targetName + "']").trigger("click");
-                    }, 100);
-                }, 500);
-            }, 500);
+                        $('.next-arr a').trigger("click"); //wheelScene(1);
+                        setTimeout(function() {
+                            $("[aria-controls='" + targetName + "']").trigger("click");
+                        }, 500);
+                    }, 1000);
+                }, 100);
 
 
-        }
-        $("[aria-controls='objet-cont4']").on("click", function() {
-            setTimeout(function() {
-                var swiper = new Swiper('.gallery_top_list', {
-                    //autoHeight: true, //enable auto height
-                    spaceBetween: 0,
-                    autoplay: {
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    },
-                    loop: true,
+            }
+            $("[aria-controls='objet-cont4']").on("click", function() {
+                setTimeout(function() {
+                    var swiper = new Swiper('.gallery_top_list', {
+                        //autoHeight: true, //enable auto height
+                        spaceBetween: 0,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        },
+                        loop: true,
 
-                    pagination: {
-                        el: '.gallery_top_list .swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                });
-            }, 100);
+                        pagination: {
+                            el: '.gallery_top_list .swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                }, 100);
 
-        })
+            })
 
 
 
+
+        });
 
     });
+
+
+
+
 });
