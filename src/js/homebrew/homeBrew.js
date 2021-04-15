@@ -21,7 +21,8 @@
                     //YES
                     var url = self.$contents.data('gotoUrl');
                     if(url) {
-                        lgkorUI.setCookie(lgkorUI.HOMEBREW_CHECK_COOKIE_NAME, "Y");
+                        //하루만 저장
+                        lgkorUI.setCookie(lgkorUI.HOMEBREW_CHECK_COOKIE_NAME, "Y", false, 1);
                         location.href = url;
                     }
                 } else {
