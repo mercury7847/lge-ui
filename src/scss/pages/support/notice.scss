@@ -624,6 +624,9 @@
     //이용가이드
     .user-guide {
         padding:0 16px;
+        .point {
+            color:$color-primary;
+        }
         .img {
             img {
                 width:100%;
@@ -651,45 +654,42 @@
                 @include font-medium;
             }
         }
-        .guide-step {
+        .guide-cont {
             max-width:1146px;
             width:100%;
             margin:48px auto 0;
-            &-list {
-                & > li + li {
-                    margin-top:80px;
+            .guide-step {
+                &-list {
+                    & > li + li {
+                        margin-top:80px;
+                    }
                 }
-            }
-            .step-tit {
-                position:relative;
-                margin-bottom:24px;
-                padding-left:82px;
-                @include font-large;
-                font-weight:$font-weight-regular;
-                .num {
-                    position:absolute;
-                    left:0;
-                    top:0;
+                .step-tit {
+                    position:relative;
+                    margin-bottom:24px;
+                    padding-left:82px;
+                    @include font-large;
+                    font-weight:$font-weight-regular;
+                    .num {
+                        position:absolute;
+                        left:0;
+                        top:0;
+                        font-weight:$font-weight-bold;
+                    }
+                    &-desc {
+                        @include font-medium;
+                    }
+                }
+                .step-desc {
+                    margin-bottom:8px;
+                    @include font-medium;
                     font-weight:$font-weight-bold;
                 }
-                &-desc {
-                    @include font-medium;
-                }
-                .point {
-                    color:$color-primary;
-                }
             }
-            .step-desc {
-                margin-bottom:8px;
-                @include font-medium;
-                font-weight:$font-weight-bold;
-                .point {
-                    color:$color-primary;
-                }
-            }
-            &-tip {
+
+            .guide-tip {
                 margin-top:80px;
-                .tip-list {
+                &-list {
                     display:flex;
                     flex-flow:row wrap;
                     margin:-12px -12px 0;
@@ -728,23 +728,25 @@
             .guide-header {
                 padding:16px;
             }
-            .guide-step {
+            .guide-cont {
                 margin:24px auto 0;
-                &-list {
-                    & > li + li {
-                        margin-top:60px;
+                .guide-step {
+                    &-list {
+                        & > li + li {
+                            margin-top:60px;
+                        }
+                    }
+                    .step-tit {
+                        padding-left:0;
+                        .num {
+                            display:block;
+                            position:static;
+                        }
                     }
                 }
-                .step-tit {
-                    padding-left:0;
-                    .num {
-                        display:block;
-                        position:static;
-                    }
-                }
-                &-tip {
+                .guide-tip {
                     margin-top:60px;
-                    .tip-list {
+                    &-list {
                         display:block;
                         margin:12px 0 0;
                         & > li {

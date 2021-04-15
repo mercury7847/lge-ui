@@ -619,13 +619,16 @@ $(function () {
 
                 $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
-                _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
+                if(!$(this).hasClass('section-cover')){
+                    _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
+                    $(this).find('.img > .video').each(function() {
+                        updateVideo(this);
+                    });
+                }
+                
                 totalHeight += itemHeight;
 
-
-                $(this).find('.img > .video').each(function() {
-                    updateVideo(this);
-                });
+                
                             
             });  
 

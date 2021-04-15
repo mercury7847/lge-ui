@@ -122,17 +122,18 @@
 
         vcui.require(['ui/carousel', "ui/sticky"], function () {
             $('.story-review .slide-controls').hide();
-            // $('.story-review .indi-wrap').hide();
+            console.log($('.story-review .indi-wrap'))
             $(window).on('breakpointchange', function(e){
-
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){ 
+                    $('.story-review').find('.indi-wrap').show();
                     $('.story-review').vcCarousel({
                         variableWidth: true,
                         slidesToShow: 1,
                         slidesToScroll: 1
                     });
                 }else if(breakpoint.name == 'pc'){   
+                    $('.story-review').find('.indi-wrap').hide();
                     $('.story-review').vcCarousel('destroy');
                 }    
             });
@@ -539,8 +540,7 @@
                 width: status.boxwidth,
                 height: boxheight,
                 left: boxleft,
-                top: boxtop,
-                overflow: overflow
+                top: boxtop
             });
             boxmap[raw][col] = $(box);
 
