@@ -1,5 +1,18 @@
 $(function() {
+    $.fn.inViewport = function(wrapClass, tabHeight, offsetVh) {
 
+        var marginTop = ~~Math.round(parseFloat(tabHeight)) || 0;
+        var elOffsetVh = ~~Math.round(parseFloat(offsetVh)) || 0;
+        var ty = $(this).position().top + marginTop;
+        var tb = ty + $(this).outerHeight();
+        var sy = $(wrapClass).scrollTop();
+        var vh = $(wrapClass).height() + sy + elOffsetVh;
+
+        if ($(wrapClass).height() < $(this).outerHeight()) {
+            return Math.abs(ty - sy) < 100;
+        }
+        return ty > sy && vh > tb;
+    };
     $.extend($.easing, {
         def: 'easeOutQuad',
         easeInOutQuart: function(x, t, b, c, d) {
@@ -49,12 +62,13 @@ $(function() {
         var currentStep = 0;
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.objet-hero').children().add('.objet-wrap');
+        var $scenes = $('#fixed-wrap').children().add('.objet-wrap');
         var stepLens = 0;
         var pageLens = $scenes.length - 1;
         var posArr = [];
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
+        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e) {
@@ -69,7 +83,8 @@ $(function() {
 
 
 
-        $('.objet-hero').children().css({ 'overflow': 'hidden' });
+        //$('.objet-hero').children().css({ 'overflow': 'hidden' });
+        $('#fixed-wrap').children().css({ 'overflow': 'hidden' });
         //$('html').css({ 'overflow': 'hidden' });
         $('.container').css({ 'overflow': 'visible', 'height': 'auto' });
 
@@ -81,19 +96,19 @@ $(function() {
         });
 
 
-        $window.on('floatingTop', function() {
-            // currentPage = 0;
-            // currentStep = 1;
-            // setBeforeCss(currentStep, wheelArr);
-            // moveScene(currentPage,currentStep,0);
+        // $window.on('floatingTop', function() {
+        //     // currentPage = 0;
+        //     // currentStep = 1;
+        //     // setBeforeCss(currentStep, wheelArr);
+        //     // moveScene(currentPage,currentStep,0);
 
-            currentPage = 0;
-            currentStep = 1;
-            setBeforeCss(currentStep);
-            moveScene(currentPage, currentStep, 0);
+        //     currentPage = 0;
+        //     currentStep = 1;
+        //     setBeforeCss(currentStep);
+        //     moveScene(currentPage, currentStep, 0);
 
 
-        });
+        // });
 
         // element 애니메이션 스탭
         function moveStep(step) {
@@ -169,7 +184,7 @@ $(function() {
 
         }
 
-        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+        //var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
 
         // 씬으로 이동
@@ -477,7 +492,7 @@ $(function() {
             //$('.contents').css({ 'overflow': 'hidden', 'height': totalHeight });
             $('.scene01').css({ 'overflow': 'hidden', 'height': sceneH });
 
-            /*if (page !== undefined) {
+            if (page !== undefined) {
                 currentPage = page;
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep, wheelArr);
@@ -487,8 +502,10 @@ $(function() {
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep);
                 moveScene(currentPage, currentStep, 0);
-            }*/
+            }
         }
+
+
 
         // 탭이동 이벤트 처리
         // 탭이동 이벤트 처리
@@ -497,6 +514,7 @@ $(function() {
             $('html,body').scrollTop(pageLens * winHeight);
             $contentWrap.scrollTop(0);
         });
+
 
 
         $(document).on('click', 'a', function(e) {
@@ -579,9 +597,9 @@ $(function() {
         }
 
         //시작시 한 스탭 이동시킴.
-        setTimeout(function() {
-            if (currentStep < 1) wheelScene(1);
-        }, 1000);
+        // setTimeout(function() {
+        //     if (currentStep < 1) wheelScene(1);
+        // }, 1000);
         $(window).load(function() {
             $(".floating-menu.top button").trigger("click");
 
