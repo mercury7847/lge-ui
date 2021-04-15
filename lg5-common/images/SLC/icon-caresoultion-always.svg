@@ -1,13 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
     <g fill="none" fill-rule="evenodd">
         <g>
-            <path d="M0 0H80V80H0z"/>
             <g>
-                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M58.843 38.278C59.597 35.648 60 32.87 60 30 60 13.431 46.569 0 30 0 13.431 0 0 13.431 0 30c0 16.569 13.431 30 30 30" transform="translate(7 7)"/>
-                <text fill="#000" font-family="Roboto-Medium, Roboto" font-size="24" font-weight="400" transform="translate(7 7)">
-                    <tspan x="38" y="65">24</tspan>
-                </text>
-                <path stroke="#DA0F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M42 33L30 33 30 15" transform="translate(7 7)"/>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H80V80H0z" transform="translate(-232 -1214) translate(43 79) translate(0 1134) translate(188) translate(1 1)"/>
+                                <g>
+                                    <path fill="#DA0F47" fill-rule="nonzero" d="M39 40v-2.48h-3.22c-.68 0-1.66.08-2.4.16 2.7-2.64 4.92-5.52 4.92-8.2 0-2.76-1.86-4.56-4.66-4.56-2.02 0-3.34.8-4.7 2.24l1.6 1.6c.74-.82 1.64-1.52 2.72-1.52 1.4 0 2.22.9 2.22 2.4 0 2.28-2.38 5.06-6.4 8.66V40H39zm10.46 0v-3.84h1.76v-2.24h-1.76V25.2h-3.52l-5.52 8.96v2h6.3V40h2.74zm-2.74-6.08h-3.44l2.3-3.68c.42-.8.82-1.62 1.18-2.4h.08c-.04.86-.12 2.2-.12 3.06v3.02zM55.86 40v-4.62c.504-.492.852-.756 1.404-.756.66 0 .948.372.948 1.404V40h1.764v-4.188c0-1.692-.624-2.7-2.076-2.7-.912 0-1.572.48-2.112.984l.072-1.26v-2.412h-1.752V40h1.752z" transform="translate(-232 -1214) translate(43 79) translate(0 1134) translate(188) translate(1 1) translate(10 10)"/>
+                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M58 9L58 17 50 17" transform="translate(-232 -1214) translate(43 79) translate(0 1134) translate(188) translate(1 1) translate(10 10)"/>
+                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M45.016 55.976c-14.352 8.283-32.704 3.368-40.99-10.979-8.287-14.346-3.37-32.69 10.983-40.973C29.36-4.26 47.714.656 56 15.003M30.5 5L30.5 10M5.5 29.5L10.5 29.5M30.5 50L30.5 55" transform="translate(-232 -1214) translate(43 79) translate(0 1134) translate(188) translate(1 1) translate(10 10)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

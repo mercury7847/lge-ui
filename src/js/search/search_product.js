@@ -122,12 +122,15 @@
                         //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
                         if(vcui.isEmpty(data)) {
                             self.$sortListCurationHidden.show();
+                            self.$listSorting.removeClass('selected');
+                            //selected
                             var filterData  = self.filterLayer.getDataFromFilter();
                             filterData.curation = data;
                             self.requestSearch(self.makeFilterData(filterData));
                         } else {
                             var filterData  = {};
                             self.$sortListCurationHidden.hide();
+                            self.$listSorting.addClass('selected');
                             filterData.curation = data;
                             self.requestSearch(filterData);
                         }
@@ -677,8 +680,10 @@
                 //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
                 if(vcui.isEmpty(filterQueryData.curation)) {
                     self.$sortListCurationHidden.show();
+                    self.$listSorting.removeClass('selected');
                 } else {
                     self.$sortListCurationHidden.hide();
+                    self.$listSorting.addClass('selected');
                 }
 
                 lgkorUI.showLoading();
