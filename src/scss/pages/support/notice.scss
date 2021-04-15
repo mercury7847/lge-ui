@@ -670,6 +670,9 @@
                     padding-left:82px;
                     @include font-large;
                     font-weight:$font-weight-regular;
+                    &.type2 {
+                        padding-left:106px;
+                    }
                     .num {
                         position:absolute;
                         left:0;
@@ -748,6 +751,9 @@
                     }
                     .step-tit {
                         padding-left:0;
+                        &.type2 {
+                            padding-left:0;
+                        }
                         .num {
                             display:block;
                             position:static;
