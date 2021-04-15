@@ -1243,7 +1243,7 @@
             }
         ]
     }
-    var proposeSet = {
+    proposeSet = {
         proposeConfig: [{
                 defaultCode: "M620AAA351",
                 modelCode: "M620FBB351S",
@@ -5905,6 +5905,7 @@
 })();;
 var modelSimulator;
 var bestSeller;
+var proposeSet;
 
 function addComma(value) {
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
