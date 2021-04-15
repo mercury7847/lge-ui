@@ -173,7 +173,6 @@
 
                         self.$replyPopup.vcModal('close');
                         self.requestData(1);
-                        self.$btns.addClass('apply');
                     }
                 });
             });
@@ -201,6 +200,12 @@
                     item.name = self.txtMasking.name(item.name);
                     $ul.append(vcui.template(replayEventItemTemplate, item));
                 });
+
+                if(lgkorUI.stringToBool(data.isApply)) {
+                    self.$btns.addClass('apply');
+                } else {
+                    self.$btns.removeClass('apply');
+                }
             });
         }
     }
