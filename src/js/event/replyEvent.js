@@ -41,6 +41,13 @@
 
             self.$btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
+
+                if(lgkorUI.stringToBool($(this).data('isToday'))) {
+                    //금일 이미 참여한 이벤트
+                    lgkorUI.alert("", {title: '하루에 한번만 참여 가능합니다.'});
+                    return;
+                }
+
                 //로그인을 해야 하는가
                 var login = self.$wrap.data('loginUrl');
                 if(login && login.length > 0) {
@@ -173,7 +180,6 @@
 
                         self.$replyPopup.vcModal('close');
                         self.requestData(1);
-                        self.$btns.addClass('apply');
                     }
                 });
             });
@@ -201,6 +207,16 @@
                     item.name = self.txtMasking.name(item.name);
                     $ul.append(vcui.template(replayEventItemTemplate, item));
                 });
+
+                if(lgkorUI.stringToBool(data.isApply)) {
+                    self.$btns.addClass('apply');
+                } else {
+                    self.$btns.removeClass('apply');
+                }
+
+                if(lgkorUI.stringToBool(data.isToday)) {
+                    self.$btnWrap.find('a.write').data('isToday','Y');
+                }
             });
         }
     }
