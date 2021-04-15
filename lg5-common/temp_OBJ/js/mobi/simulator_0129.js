@@ -2091,7 +2091,20 @@ var go_shop_model = "";
                     // @pck 2020-10-19 로직 변경 (e)
                     */
                     //console.log("ddd");
+                    errorEx = $("#objet_select_slider .swiper-wrapper").css("transform");
+                    //console.log("errorEx", errorEx);
+                    if (errorYN == "Y") {
+                        setTimeout(function() {
+                            $("#objet_select_slider .swiper-wrapper").css("transform", errorEx);
+                        }, 200);
+
+                        errorYN = "N";
+                        //console.log("errorEx", errorEx);
+                    }
+                    //$("#objet_select_slider .swiper-wrapper").css({ "transform": "translate3d(-" + _targetLocation + "px, 0px, 0px)", "transition-duration": "500ms" });
+                    //objSwiperInit.objSwiper.translateTo(_targetLocation);
                     //return setTimeout(function() { _this.translateTo(Simulator.objSwiperInit.gotoCenter(_this.dataset.targetObject), 500); }, 200);
+
                     return true;
                     //return false;
                 }
@@ -2615,3 +2628,5 @@ var go_shop_model = "";
 
     return Simulator;
 });
+var errorEx = 0;
+var errorYN = "Y";
