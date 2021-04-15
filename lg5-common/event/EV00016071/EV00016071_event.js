@@ -151,7 +151,6 @@ function markigImageChange(item) {
 	if (val !== "") {
 		$marking.removeClass("top");
 		(val === "top" || val === "Top Cover") ? $marking.addClass("top") : $marking.removeClass("top");
-
 		$marking.find(".photo .view > img").attr("src","/kr/upload/admin/eventMgt/marking_" + (index + 1) + ".jpg");
 	}
 }
@@ -161,7 +160,6 @@ function markingReset(item) {
 	$(item).find(".marking .text").text("");
 	$(item).find(".marking .marking-test").val("");
 	$(item).find(".marking").addClass("top");
-	//$(item).find(".photo .view > img").attr("src","/lgekor/asset/event/tv/2020/10/14_signature/_include/images/marking_1.jpg");
 	$(item).find(".photo .view > img").attr("src","/kr/upload/admin/eventMgt/marking_1.jpg");
 	$(item).find(".marking .tab a").removeClass("active").eq(0).addClass("active");
 }
@@ -434,8 +432,14 @@ function goProc() {
              data : param,
              success:function(data){
              	if(data.status == "success" && data.data.success == "Y"){
-                 	alert("신청되었습니다.");
-                 	self.close();
+             		alert("신청되었습니다.");
+					dataLayer.push({				
+        			  'event': 'customEvent',				
+        			  'customEventCategory': '이벤트',				
+        			  'customEventAction': '이벤트 - 신청 완료',				
+        			  'customEventLabel': '컨텐츠 : '+'${eventTitle}'
+					});
+					self.close();
              	}else{
              		alert(data.data.alert.title);
              	}
