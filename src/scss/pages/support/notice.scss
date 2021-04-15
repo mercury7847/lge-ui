@@ -672,6 +672,12 @@
                     top:0;
                     font-weight:$font-weight-bold;
                 }
+                &-desc {
+                    @include font-medium;
+                }
+                .point {
+                    color:$color-primary;
+                }
             }
             .step-desc {
                 margin-bottom:8px;
@@ -682,7 +688,7 @@
                 }
             }
             &-tip {
-                margin-top:40px;
+                margin-top:80px;
                 .tip-list {
                     display:flex;
                     flex-flow:row wrap;
@@ -711,6 +717,48 @@
                 }
                 .img {
                     margin-top:8px;
+                }
+            }
+        }
+        @include mobile {
+            padding:0;
+            .guide-summary {
+                margin-bottom:8px;
+            }
+            .guide-header {
+                padding:16px;
+            }
+            .guide-step {
+                margin:24px auto 0;
+                &-list {
+                    & > li + li {
+                        margin-top:60px;
+                    }
+                }
+                .step-tit {
+                    padding-left:0;
+                    .num {
+                        display:block;
+                        position:static;
+                    }
+                }
+                &-tip {
+                    margin-top:60px;
+                    .tip-list {
+                        display:block;
+                        margin:12px 0 0;
+                        & > li {
+                            display:block;
+                            width:100%;
+                            padding:0;
+                            & + li {
+                                margin-top:40px;
+                            }
+                        }
+                    }
+                    .tip-cont {
+                        display:block;
+                    }
                 }
             }
         }
