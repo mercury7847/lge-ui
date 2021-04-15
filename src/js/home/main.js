@@ -381,7 +381,7 @@ $(function () {
         
         // 앱 하단 메뉴 컨트롤
         lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);        
+        lgkorUI.setEnableAppScrollBottomMenu(false);
 
 
         /* 메인테스트*/
@@ -690,5 +690,6 @@ $(function () {
         $window.trigger('breakpointchange');
         window.resizeScene = render;      
 
+        moveScene(0,0);
     });
 });
