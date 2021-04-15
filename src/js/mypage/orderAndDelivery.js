@@ -9,10 +9,11 @@
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
             '</div>'+
-            '<div class="tbl-layout ">'+
+            '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
-                    '<span class="th col1">제품정보(주문/배송 상세보기)</span>'+
-                    '<span class="th col2">진행상태</span>'+
+                    '<span class="th col1">제품정보</span>'+
+                    '<span class="th col2">결제금액</span>'+
+                    '<span class="th col3">진행상태</span>'+
                 '</div>'+
                 '<div class="tbody">'+
                 '</div>'+
@@ -87,6 +88,10 @@
                                 '{{/if}}'+
                                 '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
                             '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col col1-2">'+
+                        '<div class="payment-price">'+
                             //'{{#if listData.contDtlType != "C09"}}'+
                             '<p class="price">'+
                                 '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
@@ -2097,7 +2102,6 @@
             });
 
             var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
-console.log(listdata.itemCancelAbleYn, disabled)
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
     }

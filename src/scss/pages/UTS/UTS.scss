@@ -1493,7 +1493,10 @@
 .list-sorting {
     //display: none;
     @include tablet {
-        padding: 44px 0 16px 0;
+        padding: 44px 0 16px;
+        &.selected {
+            padding-top: 0;
+        }
     }
     .input-keyword-wrap {
         display: none;

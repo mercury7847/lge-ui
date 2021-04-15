@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-img02-64</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon">
-            <rect id="Mask-Copy-8" x="0" y="0" width="64" height="64"></rect>
-            <g id="Group-6" transform="translate(5.000000, 6.000000)" stroke-width="2">
-                <polygon id="Path-44" stroke="#222222" fill="#FFFFFF" stroke-linejoin="round" points="0 21.4523658 15.9054457 10 32 21.4523658 32 52 0 52"></polygon>
-                <polygon id="Path-44" stroke="#222222" fill="#FFFFFF" stroke-linejoin="round" points="32.5 30.9075859 43.4349939 23 54.5 30.9075859 54.5 52 32.5 52"></polygon>
-                <path d="M43.4202198,1 C40.9398725,1 38.6919454,2.02250458 37.0635798,3.6712247 C35.4307418,5.32447318 34.4202198,7.60735052 34.4202198,10.125 C34.4202198,16.5251447 42.2880805,24.7680892 43.420085,25.927088 C44.5513459,24.7691507 52.4202198,16.5255568 52.4202198,10.125 C52.4202198,7.60735052 51.4096978,5.32447318 49.7768598,3.6712247 C48.1484942,2.02250458 45.9005671,1 43.4202198,1 Z" id="Path" stroke="#EC455A" fill="#FFFFFF"></path>
-                <rect id="Rectangle" stroke="#222222" fill="#F4F4F4" x="6" y="26" width="20" height="6" rx="2"></rect>
-                <rect id="Rectangle" stroke="#222222" fill="#F4F4F4" x="6" y="38" width="20" height="6" rx="2"></rect>
-                <rect id="Rectangle" stroke="#EC455A" fill="#FFFFFF" x="39.4202198" y="5" width="8" height="8" rx="4"></rect>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <path d="M0 0H40V40H0z" transform="translate(-247 -1632) translate(247 1632)"/>
+                <g stroke-width="1.25" transform="translate(-247 -1632) translate(247 1632) translate(4.375 5)">
+                    <path stroke="#000" stroke-linejoin="round" d="M.483 12.635l7.475-5.812c.437-.34 1.045-.352 1.495-.03l8.15 5.843c.328.235.522.613.522 1.016v15.723h0-17.5c-.345 0-.625-.28-.625-.625V13.622c0-.386.178-.75.483-.987zM25 0c3.447 0 6.25 2.952 6.25 6.581 0 2.915-2.303 5.883-4.029 7.713l3.494 2.434c.335.234.535.617.535 1.026v11.621H18.125v-11.95c0-.203.099-.393.265-.51l4.121-2.909c-1.686-1.843-3.761-4.658-3.761-7.425C18.75 2.951 21.553 0 25 0z"/>
+                    <rect width="10" height="3.125" x="4.063" y="22.5" stroke="#000" rx="1.25"/>
+                    <rect width="10" height="3.125" x="4.063" y="16.875" stroke="#000" rx="1.25"/>
+                    <rect width="5" height="5" x="22.5" y="3.75" stroke="#DA0F47" rx="2.5"/>
+                    <path stroke="#DA0F47" d="M25 0c-3.447 0-6.25 2.952-6.25 6.581 0 4.562 5.642 9.255 5.881 9.509.102.106.236.16.369.16s.267-.054.369-.16c.24-.254 5.881-4.947 5.881-9.509C31.25 2.951 28.447 0 25 0z"/>
+                </g>
             </g>
         </g>
     </g>
