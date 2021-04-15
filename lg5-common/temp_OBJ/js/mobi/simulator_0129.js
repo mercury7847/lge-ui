@@ -2098,7 +2098,7 @@ var go_shop_model = "";
                             let errorTmme = 30
                             setTimeout(function() {
                                 $("#objet_select_slider .swiper-wrapper").css("transform", errorEx);
-                            }, errorTmme + i);
+                            }, errorTmme * i);
                         }
 
 
