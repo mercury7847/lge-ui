@@ -14,9 +14,17 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
-            self.$video = self.$el.find("video").get(0);
-            self.$video.setAttribute('playsinline', true);
-            self.$video.style.backgroundColor="#000000";
+            self.$videos = self.$el.find("video");
+            var leng = self.$videos.length;
+            for(var i=0; i<leng;i++){
+                var video = self.$videos.get(i);
+                video.setAttribute('playsinline', true);
+                video.style.backgroundColor="#000000";
+            }
+
+            //self.$video = self.$el.find("video").get(0);
+            //self.$video.setAttribute('playsinline', true);
+            //self.$video.style.backgroundColor="#000000";
             //self.$defaultVname = self.$el.find("video").find('source').attr('src');
             self.$ctrler = self.$el.find('.controller-wrap button');
             self.$acctrler = self.$el.find(".play-animaion-btn");
@@ -31,10 +39,32 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             self._addEvent();
         },
 
+        _getCurrentVideo: function(){
+            var self = this;
+
+            var leng = self.$videos.length;
+            if(leng < 2){
+                return self.$videos.get(0);
+            } else{
+                var video;
+                for(var i=0;i<leng;i++){
+                    var video = self.$videos.get(i);
+                    if($(video).css('display') == "block"){
+                        break;
+                    }
+                }
+
+                return video;
+            }
+        },
+
         _addEvent: function(){
             var self = this;
             self.$ctrler.on("click", function(e){
                 e.preventDefault();
+
+                self.$video = self._getCurrentVideo();
+                console.log(self.$video);
                 
                 var name = $(this).attr('name');
                 if(name == "pause"){
@@ -46,6 +76,8 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
 
             self.$acctrler.on('click', function(e){
                 e.preventDefault();
+
+                self.$video = self._getCurrentVideo();
                 
                 if($(this).hasClass('acc-btn')){
                     var aniText = $(this).data('ani-text');					    
@@ -69,7 +101,8 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                 }
             });
 
-            $(self.$video).on("play playing pause ended", function(e){
+            self.$video = self._getCurrentVideo();
+            $(self.$videos).on("play playing pause ended", function(e){
                 switch(e.type){
                     case "ended":
                     case "pause":
@@ -128,11 +161,15 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
 
         pause: function(){
             var self = this;
+
+            self.$video = self._getCurrentVideo();
             self.$video.pause();
         },
 
         play: function(){
             var self = this;
+
+            self.$video = self._getCurrentVideo();
             self.$video.play();
         },
 
