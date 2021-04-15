@@ -9,7 +9,7 @@
         setting: function() {
             var self = this;
             
-            $('.myProductRegister').on('click', function(e){
+            $('.event14 .btns a').on('click', function(e){
                 e.preventDefault();
 
                 var loginUrl = $(this).data('loginUrl');
