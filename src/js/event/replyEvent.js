@@ -181,9 +181,15 @@
 
         requestData: function (page) {
             var self = this;
+
+            var param = {};
+            var eventId = self.$wrap.data('eventId');
+            param.eventId = eventId;
+            param.page = page;
+
             var ajaxUrl = self.$wrap.attr('data-list-url');
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(ajaxUrl, {"page":page}, function(result) {
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var data = result.data;
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
                 $('#totalCount em').text(vcui.number.addComma(data.totalCnt));

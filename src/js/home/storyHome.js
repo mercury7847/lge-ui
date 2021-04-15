@@ -494,7 +494,7 @@
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
         item.find('.flexbox').each(function(idx, box){
-            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight;
+            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
@@ -510,7 +510,6 @@
                         titleheight = lastbox.find('.title').outerHeight(true);
                         tagheight = lastbox.find('.tag-lists').outerHeight(true);
                         boxheight = titleheight + tagheight;
-                        console.log('lastbox:', titleheight, tagheight);
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
@@ -522,6 +521,7 @@
                 }
             }
 
+            overflow = "auto";
             contype = $(box).data('contentsType');
             if(contype == 'image') boxheight = status.imgheight;
             else if(contype == "video"){
@@ -530,9 +530,8 @@
             } else{
                 titleheight = $(box).find('.title').outerHeight(true);
                 tagheight = $(box).find('.tag-lists').outerHeight(true);
-                boxheight = titleheight + tagheight;
-                console.log(titleheight, tagheight);
-
+                boxheight = titleheight + tagheight;       
+                overflow = "visible";         
             }
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
@@ -540,7 +539,8 @@
                 width: status.boxwidth,
                 height: boxheight,
                 left: boxleft,
-                top: boxtop
+                top: boxtop,
+                overflow: overflow
             });
             boxmap[raw][col] = $(box);
 
