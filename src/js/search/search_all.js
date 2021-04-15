@@ -204,7 +204,7 @@
 
     var searchBnrTemplate = 
         '<a href="{{url}}" target="{{target}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{desc}}">'+
+            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{#elsif title}}{{title}}{{/if}}">'+
             // '<div class="text-area">'+
             //     '<strong class="title">{{#raw title}}</strong>'+
             //     '<span class="sub-copy">{{#raw desc}}</span>'+
