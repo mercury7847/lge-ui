@@ -79,7 +79,7 @@
                     breakpoint: 768,
                     settings: {
                         infinite: false,
-                        variableWidth : true,
+                        variableWidth : false,
                         dots: true,
                         slidesToShow: 1, 
                         slidesToScroll: 1
