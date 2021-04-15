@@ -3,20 +3,10 @@
         <g>
             <g>
                 <g>
-                    <g>
-                        <g>
-                            <g>
-                                <g>
-                                    <path d="M0 0H24V24H0z" transform="translate(-609 -353) translate(269 257) translate(235) translate(52 96) translate(53)"/>
-                                    <g fill="#FFF" transform="translate(-609 -353) translate(269 257) translate(235) translate(52 96) translate(53) translate(4 6)">
-                                        <rect width="17" height="13" x="-.5" y="-.5" fill-opacity="0" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" rx="1"/>
-                                        <text font-family="Roboto-Bold, Roboto" font-size="8" font-weight="bold">
-                                            <tspan x="5" y="9">P</tspan>
-                                        </text>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
+                    <path d="M0 0H24V24H0z" transform="translate(-353 -299) translate(325 299) translate(28)"/>
+                    <g fill="#FFF" transform="translate(-353 -299) translate(325 299) translate(28) translate(4 6)">
+                        <rect width="17" height="13" x="-.5" y="-.5" fill-opacity="0" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" rx="1"/>
+                        <path fill-rule="nonzero" d="M7.1 9V6.996h1.046c.336 0 .637-.042.9-.127.265-.084.49-.205.673-.361.183-.156.323-.345.42-.567.096-.22.144-.47.144-.746 0-.27-.048-.521-.144-.752-.097-.23-.237-.43-.42-.597-.184-.168-.408-.3-.672-.393-.264-.094-.565-.14-.9-.14h-2.22V9H7.1zm1.046-2.953H7.1V4.262h1.046c.167 0 .311.026.432.078.121.052.22.122.297.209.077.087.133.187.17.3.036.114.055.232.055.354 0 .123-.019.236-.055.34-.037.104-.093.193-.17.268-.077.074-.176.132-.297.173-.121.042-.265.063-.432.063z"/>
                     </g>
                 </g>
             </g>
