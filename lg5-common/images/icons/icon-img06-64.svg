@@ -4,13 +4,11 @@
             <g>
                 <g>
                     <g>
-                        <g transform="translate(-270 -4896) translate(270 4801) translate(0 95) translate(16.7 6.6)">
-                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.3.4h26c1.105 0 2 .895 2 2v46c0 1.105-.895 2-2 2h-26c-1.105 0-2-.895-2-2v-46c0-1.105.895-2 2-2z"/>
-                            <rect width="8" height="2" x="11.3" y="4.4" fill="#000" rx="1"/>
-                            <g fill="#DA0F47" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="10" font-weight="bold">
-                                <text transform="translate(6.3 18.4)">
-                                    <tspan x="0" y="12">ARS</tspan>
-                                </text>
+                        <g transform="translate(-211 -581) translate(203 581) translate(8) translate(16.2 6.6)">
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.8.4h26c1.105 0 2 .895 2 2v46c0 1.105-.895 2-2 2h-26c-1.105 0-2-.895-2-2v-46c0-1.105.895-2 2-2z"/>
+                            <rect width="8" height="2" x="11.8" y="4.4" fill="#000" rx="1"/>
+                            <g fill="#DA0F47" fill-rule="nonzero">
+                                <path d="M2.46 8l.52-1.9h2.4L5.9 8h1.55L5.07.6H3.33L.96 8h1.5zm2.6-3.05H3.3l.22-.81c.22-.77.44-1.61.63-2.42h.04c.22.8.42 1.65.65 2.42l.22.81zM9.8 8V5.2h1.03L12.35 8H14l-1.73-3.03c.85-.33 1.41-1.02 1.41-2.13 0-1.7-1.23-2.24-2.78-2.24H8.32V8H9.8zm.96-3.97H9.8V1.77h.96c.95 0 1.47.27 1.47 1.07 0 .79-.52 1.19-1.47 1.19zm6.59 4.11c1.71 0 2.72-1.03 2.72-2.24 0-1.07-.59-1.64-1.49-2.01l-.97-.41c-.63-.25-1.16-.44-1.16-.97 0-.49.42-.78 1.07-.78.61 0 1.1.22 1.57.61l.75-.93c-.6-.61-1.46-.95-2.32-.95-1.5 0-2.56.93-2.56 2.14 0 1.08.75 1.68 1.5 1.99l.99.42c.66.28 1.11.45 1.11 1 0 .52-.41.85-1.18.85-.65 0-1.35-.33-1.88-.82l-.85 1.02c.72.69 1.71 1.08 2.7 1.08z" transform="translate(5.8 22.4)"/>
                             </g>
                         </g>
                     </g>

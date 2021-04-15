@@ -1369,8 +1369,12 @@ br.pc {
                 }    
             }
         }
-    } 
-
+    }
+    .br {
+        @include mobile {
+            display:block;
+        }
+    }
 }
 // 내삶을바꾸는케솔
 .care-banner {
