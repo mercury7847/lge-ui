@@ -557,7 +557,6 @@
                                     line-height:1.28;
                                     padding-top:8px;
                                     @include mobile {
-                                        padding-top:8px;
                                         font-size:14px;
                                     }
                                 }
@@ -581,7 +580,7 @@
                                         line-height: 1.21;
                                         color:#e34465;
                                         @include tablet {
-                                            font-size:12px;
+                                            // font-size:12px;
                                         }
                                         em{
                                             display:inline-block;
