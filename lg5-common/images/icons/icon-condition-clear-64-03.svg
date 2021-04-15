@@ -4,19 +4,13 @@
             <g>
                 <g>
                     <g>
+                        <path d="M0 0H64V64H0z" transform="translate(-691 -829) translate(203 828) translate(480) translate(8 1)"/>
                         <g>
-                            <g>
-                                <path d="M0 0H64V64H0z" transform="translate(-1395 -931) translate(0 695) translate(270 120) translate(0 84) translate(936) translate(189 32)"/>
-                                <g>
-                                    <text fill="#DA0F47" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="14" font-weight="bold" transform="translate(-1395 -931) translate(0 695) translate(270 120) translate(0 84) translate(936) translate(189 32) translate(7 8)">
-                                        <tspan x="27.195" y="33.2">VIP</tspan>
-                                    </text>
-                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M46.4 7.2L46.4 13.6 40 13.6" transform="translate(-1395 -931) translate(0 695) translate(270 120) translate(0 84) translate(936) translate(189 32) translate(7 8)"/>
-                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M36.174 44.781c-11.533 6.626-26.28 2.694-32.94-8.783C-3.423 24.521.528 9.845 12.062 3.218 23.594-3.406 38.34.526 45 12.003" transform="translate(-1395 -931) translate(0 695) translate(270 120) translate(0 84) translate(936) translate(189 32) translate(7 8)"/>
-                                    <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                        <path d="M20 0L20 4M0 19.6L4 19.6M20 36L20 40" transform="translate(-1395 -931) translate(0 695) translate(270 120) translate(0 84) translate(936) translate(189 32) translate(7 8) translate(4.4 4)"/>
-                                    </g>
-                                </g>
+                            <path fill="#DA0F47" fill-rule="nonzero" d="M32.753 33.2l3.178-10.36h-2.1l-1.344 5.04c-.322 1.148-.56 2.184-.882 3.346h-.07c-.336-1.162-.546-2.198-.868-3.346l-1.372-5.04h-2.17l3.164 10.36h2.464zm6.44 0V22.84h-2.072V33.2h2.072zm4.62 0v-3.682h1.386c2.226 0 4.004-1.064 4.004-3.43 0-2.45-1.764-3.248-4.06-3.248h-3.402V33.2h2.072zm1.246-5.32h-1.246v-3.402h1.176c1.428 0 2.184.406 2.184 1.61 0 1.19-.686 1.792-2.114 1.792z" transform="translate(-691 -829) translate(203 828) translate(480) translate(8 1) translate(7 8)"/>
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M46.4 7.2L46.4 13.6 40 13.6" transform="translate(-691 -829) translate(203 828) translate(480) translate(8 1) translate(7 8)"/>
+                            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M36.174 44.781c-11.533 6.626-26.28 2.694-32.94-8.783C-3.423 24.521.528 9.845 12.062 3.218 23.594-3.406 38.34.526 45 12.003" transform="translate(-691 -829) translate(203 828) translate(480) translate(8 1) translate(7 8)"/>
+                            <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M20 0L20 4M0 19.6L4 19.6M20 36L20 40" transform="translate(-691 -829) translate(203 828) translate(480) translate(8 1) translate(7 8) translate(4.4 4)"/>
                             </g>
                         </g>
                     </g>
