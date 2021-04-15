@@ -314,15 +314,16 @@ $(function () {
                     if(idx==0){
                         if(!hasTop){
                             //임시 수정
-                            if(!isApplication && location.pathname == "/") {
-                                console.log('test code. this is remove nextday.');
+                            if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
+                                $('.floating-menu.top').css('opacity', 1);
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                         }
                     }else{
                         if(hasTop){
                             $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').css('opacity', 1);
                             $('.floating-menu.top').removeClass('call-yet');
                         }                        
                     }
@@ -697,7 +698,8 @@ $(function () {
         //메인일경우와 어차피 앱일 경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             $(window).trigger('floatingTopShow');
-            //$('.floating-menu.top').removeClass('call-yet');
+            $('.floating-menu.top').css('opacity', 0);
+            $('.floating-menu.top').removeClass('call-yet');
         }
     });
 });
