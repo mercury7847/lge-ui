@@ -679,6 +679,16 @@
                     &-desc {
                         @include font-medium;
                     }
+                    .link-list {
+                        @include clearfix;
+                        & > li {
+                            float:left;
+                            margin-right:16px;
+                            &:last-child {
+                                margin-right:0;
+                            }
+                        }
+                    }
                 }
                 .step-desc {
                     margin-bottom:8px;
