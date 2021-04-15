@@ -867,9 +867,9 @@ $(function() {
                     $('.next-arr').trigger("click"); //wheelScene(1);
                     setTimeout(function() {
                         $("[aria-controls='" + targetName + "']").trigger("click");
-                    }, 300);
-                }, 100);
-            }, 100);
+                    }, 100);
+                }, 500);
+            }, 500);
 
 
         }
