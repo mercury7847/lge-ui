@@ -26,81 +26,81 @@ $(function() {
 
     vcui.require(['ui/carousel', 'libs/jquery.transit.min'], function() {
 
-        $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx) {
+        // $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx) {
 
-            var $items = $device.find('.screen-slider > li');
-            var xp = -428;
-            if (nextIdx < index) xp = 428;
-            $items.eq(index).css({ x: 0, opacity: 1 }).transit({ x: xp });
-            $items.eq(nextIdx).css({ x: -xp, opacity: 1 }).transit({ x: 0 });
+        //     var $items = $device.find('.screen-slider > li');
+        //     var xp = -428;
+        //     if (nextIdx < index) xp = 428;
+        //     $items.eq(index).css({ x: 0, opacity: 1 }).transit({ x: xp });
+        //     $items.eq(nextIdx).css({ x: -xp, opacity: 1 }).transit({ x: 0 });
 
 
-        }).vcCarousel({
-            infinite: false,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        });
+        // }).vcCarousel({
+        //     infinite: false,
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1
+        // });
 
-        $('.app-use-wrap .ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            responsive: [{
-                    breakpoint: 10000,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+        // $('.app-use-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: false,
+        //     slidesToShow: 3,
+        //     slidesToScroll: 3,
+        //     responsive: [{
+        //             breakpoint: 10000,
+        //             settings: {
+        //                 slidesToShow: 3,
+        //                 slidesToScroll: 3
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 768,
+        //             settings: {
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
 
-        $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false,
-            fade: true,
-            responsive: [{
-                    breakpoint: 10000,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: false,
-                        fade: true,
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        dots: true,
-                        fade: false,
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+        // $('.app-smart-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: true,
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1,
+        //     dots: false,
+        //     fade: true,
+        //     responsive: [{
+        //             breakpoint: 10000,
+        //             settings: {
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1,
+        //                 dots: false,
+        //                 fade: true,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 1024,
+        //             settings: {
+        //                 dots: true,
+        //                 fade: false,
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
 
-        $('.magazine-wrap .ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 5,
-            slidesToScroll: 5,
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            }]
-        });
+        // $('.magazine-wrap .ui_carousel_slider').vcCarousel({
+        //     infinite: false,
+        //     slidesToShow: 5,
+        //     slidesToScroll: 5,
+        //     responsive: [{
+        //         breakpoint: 768,
+        //         settings: {
+        //             slidesToShow: 2,
+        //             slidesToScroll: 2
+        //         }
+        //     }]
+        // });
 
         var isApplication = isApp();
         var $window = $(window);
@@ -791,17 +791,17 @@ $(function() {
         });
 
         // 접근성 탭 이동시 화면처리
-        $(document).on('focusin', function(e) {
+        // $(document).on('focusin', function(e) {
 
-            if ($.contains($('.thinq-wrap')[0], e.target)) {
-                currentPage = pageLens;
-                currentStep = stepLens;
-            } else if ($.contains($('.thinq-hero')[0], e.target)) {
-                // currentPage = 0;
-                // currentStep = 0;
-            }
+        //     if ($.contains($('.thinq-wrap')[0], e.target)) {
+        //         currentPage = pageLens;
+        //         currentStep = stepLens;
+        //     } else if ($.contains($('.thinq-hero')[0], e.target)) {
+        //         // currentPage = 0;
+        //         // currentStep = 0;
+        //     }
 
-        });
+        // });
 
 
         function doWheelfixedElement(selector) {
