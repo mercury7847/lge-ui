@@ -713,7 +713,7 @@ $(function () {
             //??$('.floating-menu.top').removeClass('call-yet');
 
             //만약 시작부터 내려야 할 일이 있으면 알아서 조작
-            $('.floating-menu.btn-app-ar').css('margin-bottom', '-50px');
+            //$('.floating-menu.btn-app-ar').css('margin-bottom', '-50px');
         }
         //임시 추가 끝
 
