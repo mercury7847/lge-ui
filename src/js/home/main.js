@@ -328,6 +328,8 @@ $(function () {
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
+                        } else {
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
                         }
                     }else{
                         if(hasTop){
@@ -706,8 +708,9 @@ $(function () {
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             //$(window).trigger('floatingTopShow');
-            $('.floating-menu.top').css('opacity', 0);
-            $('.floating-menu.top').removeClass('call-yet');
+            
+            //??$('.floating-menu.top').css('opacity', 0);
+            //??$('.floating-menu.top').removeClass('call-yet');
 
             //만약 시작부터 내려야 할 일이 있으면 알아서 조작
             $('.floating-menu.btn-app-ar').css('margin-bottom', '-50px');
