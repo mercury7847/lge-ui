@@ -1253,14 +1253,11 @@ var AuthManager = function() {
 
                     if (resultData.resultFlag == 'Y') {
                         //$(el).find('span').html(RESENDTEXT);
-                        
-                        //console.log($(el))
-                        //console.log($(el).html())
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
 
                         // 임시
-                        if (self.options.pass) $(elem.number).val(12345);
+                        // if (self.options.pass) $(elem.number).val(12345);
                     }
 
                     lgkorUI.alert("", {
@@ -1299,7 +1296,7 @@ var AuthManager = function() {
                     var resultData = result.data;
 
                     // 임시
-                    if (self.options.pass) resultData.resultFlag = 'Y';
+                    // if (self.options.pass) resultData.resultFlag = 'Y';
 
                     if (resultData.resultFlag == 'Y') {
                         success = true;
@@ -1314,8 +1311,8 @@ var AuthManager = function() {
 
                         if (resultData.resultMessage) {
                             lgkorUI.alert("", {
-                                title: '휴대전화 인증이 완료되었습니다.',
-                                //title: resultData.resultMessage,
+                                //title: '휴대전화 인증이 완료되었습니다.',
+                                title: resultData.resultMessage,
                                 ok: function(el) {
                                     if (resultData.url) {
                                         $(self.options.elem.form).attr('action', resultData.url);

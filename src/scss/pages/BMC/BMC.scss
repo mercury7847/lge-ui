@@ -36,6 +36,7 @@
         @import "ACC4002";
     }
     .page-tabs {
+        position:relative;
         max-width:1460px;
         margin:0 auto;
         padding:32px 40px 0;
@@ -43,6 +44,23 @@
         @include mobile {
             margin-bottom:32px;
             padding: 32px 0 0;
+            &:before,
+            &:after {
+                position: absolute;
+                top: 0;
+                bottom: 1px;
+                z-index: 1;
+                width: 20px;
+                content: '';
+            }
+            &:before {
+                left: 0;
+                background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+            }
+            &:after {
+                right: 0;
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+            }
         }
         &.type2 {
             margin-bottom:0;

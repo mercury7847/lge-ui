@@ -1502,7 +1502,7 @@
             display:table-cell;
             position: relative;
             width:100%;
-            padding:0 75px 0 16px;
+            padding:0 84px 0 16px;
             font-size:16px;
             box-sizing:border-box;
             vertical-align: middle;
@@ -1543,8 +1543,9 @@
         }
         .slick-arrow {
             position: absolute;
-            width:24px;
-            height:24px;
+            width:28px;
+            height:28px;
+            padding:6px;
             top:50%;
             transform:translateY(-50%);
             background-size: 16px 16px;
@@ -1557,11 +1558,11 @@
 
             &.slick-prev {
                 left:auto;
-                right:48px;
+                right:56px;
                 background-image: url('/lg5-common/images/CS/icon-notice-up.svg');
             }
             &.slick-next {
-                right:24px;
+                right:28px;
                 background-image: url('/lg5-common/images/CS/icon-notice-down.svg');
             }
         }
@@ -1569,8 +1570,8 @@
         .btn-play {
             display: block;
             position: absolute;
-            width:24px;
-            height:24px;
+            width:28px;
+            height:28px;
             top:50%;
             right:40px;
             transform:translateY(-50%);
@@ -2564,6 +2565,11 @@
                     padding:5px 20px;
                     font-size:13px;
                     border-radius:50px;
+                }
+            }
+            @at-root {
+                .mobile & .slick-arrow {
+                    opacity:1;
                 }
             }
         }

@@ -127,7 +127,17 @@
                     }
                 }
             });
-        })
+        });
+
+        //매장 상담신청 부모창으로
+        $('.link-btn-wrap a').on('click', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href');
+            if(url) {
+                window.opener.location.href = url;
+                window.close();
+            }
+        });
     }
 
     $(window).load(function(){

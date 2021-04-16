@@ -622,160 +622,162 @@
         }
     }
     //이용가이드
-    .user-guide {
+    #viewContent {
         padding:0 16px;
-        .point {
-            color:$color-primary;
-        }
-        .img {
-            img {
-                width:100%;
-                vertical-align:top;
+        .user-guide {
+            .point {
+                color:$color-primary;
             }
-        }
-        .guide-summary {
-            margin-bottom:16px;
-            @include font-medium;
-            font-weight:$font-weight-bold;
-            text-align:center;
-        }
-        .guide-header {
-            padding:16px;
-            text-align:center;
-            background-image: linear-gradient(to right, #a58bee, #f86791);
-            .tit {
-                color:$color-white;
-                @include font-large-2;
-                font-weight:$font-weight-bold;
-            }
-            .desc {
-                margin-top:8px;
-                color:$color-white;
-                @include font-medium;
-            }
-        }
-        .guide-cont {
-            max-width:1146px;
-            width:100%;
-            margin:48px auto 0;
-            .guide-step {
-                &-list {
-                    & > li + li {
-                        margin-top:80px;
-                    }
-                }
-                .step-tit {
-                    position:relative;
-                    margin-bottom:24px;
-                    padding-left:82px;
-                    @include font-large;
-                    font-weight:$font-weight-regular;
-                    &.type2 {
-                        padding-left:106px;
-                    }
-                    .num {
-                        position:absolute;
-                        left:0;
-                        top:0;
-                        font-weight:$font-weight-bold;
-                    }
-                    &-desc {
-                        @include font-medium;
-                    }
-                    .link-list {
-                        @include clearfix;
-                        & > li {
-                            float:left;
-                            margin-right:16px;
-                            &:last-child {
-                                margin-right:0;
-                            }
-                        }
-                    }
-                }
-                .step-desc {
-                    margin-bottom:8px;
-                    @include font-medium;
-                    font-weight:$font-weight-bold;
+            .img {
+                img {
+                    width:100%;
+                    vertical-align:top;
                 }
             }
-
-            .guide-tip {
-                margin-top:80px;
-                &-list {
-                    display:flex;
-                    flex-flow:row wrap;
-                    margin:-12px -12px 0;
-                    font-size:0;
-                    & > li {
-                        display:inline-block;
-                        width:50%;
-                        vertical-align:top;
-                        padding:12px 12px 0;
-                    }
-                }
-                .tip-cont {
-                    display:flex;
-                    flex-direction:column;
-                    justify-content:space-between;
-                    height:100%;
-                }
-                .tip-desc {
-                    @include font-medium;
-                    .num {
-                        display:block;
-                        color:$color-primary;
-                        @include font-large;
-                    }
-                }
-                .img {
-                    margin-top:8px;
-                }
-            }
-        }
-        @include mobile {
-            padding:0;
             .guide-summary {
-                margin-bottom:8px;
+                margin-bottom:16px;
+                @include font-medium;
+                font-weight:$font-weight-bold;
+                text-align:center;
             }
             .guide-header {
                 padding:16px;
+                text-align:center;
+                background-image: linear-gradient(to right, #a58bee, #f86791);
+                .tit {
+                    color:$color-white;
+                    @include font-large-2;
+                    font-weight:$font-weight-bold;
+                }
+                .desc {
+                    margin-top:8px;
+                    color:$color-white !important;
+                    @include font-medium;
+                }
             }
             .guide-cont {
-                margin:24px auto 0;
+                max-width:1146px;
+                width:100%;
+                margin:48px auto 0;
                 .guide-step {
                     &-list {
                         & > li + li {
-                            margin-top:60px;
+                            margin-top:80px;
                         }
                     }
                     .step-tit {
-                        padding-left:0;
+                        position:relative;
+                        margin-bottom:24px;
+                        padding-left:82px;
+                        @include font-large;
+                        font-weight:$font-weight-regular;
                         &.type2 {
-                            padding-left:0;
+                            padding-left:106px;
                         }
                         .num {
-                            display:block;
-                            position:static;
+                            position:absolute;
+                            left:0;
+                            top:0;
+                            font-weight:$font-weight-bold;
                         }
-                    }
-                }
-                .guide-tip {
-                    margin-top:60px;
-                    &-list {
-                        display:block;
-                        margin:12px 0 0;
-                        & > li {
-                            display:block;
-                            width:100%;
-                            padding:0;
-                            & + li {
-                                margin-top:40px;
+                        &-desc {
+                            @include font-medium;
+                        }
+                        .link-list {
+                            @include clearfix;
+                            & > li {
+                                float:left;
+                                margin-right:16px;
+                                &:last-child {
+                                    margin-right:0;
+                                }
                             }
                         }
                     }
+                    .step-desc {
+                        margin-bottom:8px;
+                        @include font-medium;
+                        font-weight:$font-weight-bold;
+                    }
+                }
+    
+                .guide-tip {
+                    margin-top:80px;
+                    &-list {
+                        display:flex;
+                        flex-flow:row wrap;
+                        margin:-12px -12px 0;
+                        font-size:0;
+                        & > li {
+                            display:inline-block;
+                            width:50%;
+                            vertical-align:top;
+                            padding:12px 12px 0;
+                        }
+                    }
                     .tip-cont {
-                        display:block;
+                        display:flex;
+                        flex-direction:column;
+                        justify-content:space-between;
+                        height:100%;
+                    }
+                    .tip-desc {
+                        @include font-medium;
+                        .num {
+                            display:block;
+                            color:$color-primary;
+                            @include font-large;
+                        }
+                    }
+                    .img {
+                        margin-top:8px;
+                    }
+                }
+            }
+            @include mobile {
+                padding:0;
+                .guide-summary {
+                    margin-bottom:8px;
+                }
+                .guide-header {
+                    padding:16px;
+                }
+                .guide-cont {
+                    margin:24px auto 0;
+                    .guide-step {
+                        &-list {
+                            & > li + li {
+                                margin-top:60px;
+                            }
+                        }
+                        .step-tit {
+                            padding-left:0;
+                            &.type2 {
+                                padding-left:0;
+                            }
+                            .num {
+                                display:block;
+                                position:static;
+                            }
+                        }
+                    }
+                    .guide-tip {
+                        margin-top:60px;
+                        &-list {
+                            display:block;
+                            margin:12px 0 0;
+                            & > li {
+                                display:block;
+                                width:100%;
+                                padding:0;
+                                & + li {
+                                    margin-top:40px;
+                                }
+                            }
+                        }
+                        .tip-cont {
+                            display:block;
+                        }
                     }
                 }
             }
