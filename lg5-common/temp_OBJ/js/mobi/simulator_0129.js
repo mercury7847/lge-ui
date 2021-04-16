@@ -2094,11 +2094,12 @@ var go_shop_model = "";
                     errorEx = $("#objet_select_slider .swiper-wrapper").css("transform");
                     //console.log("errorEx", errorEx);
                     if (errorYN == "Y") {
+                        let errorTmme = [];
                         for (let i = 0; i < 10; i++) {
-                            let errorTmme = 30
+                            errorTmme.push(30 * i);
                             setTimeout(function() {
                                 $("#objet_select_slider .swiper-wrapper").css("transform", errorEx);
-                            }, errorTmme * i);
+                            }, errorTmme[i]);
                         }
 
 
