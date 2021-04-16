@@ -70,9 +70,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '       </div>'+
                     '       <div class="btn-group">'+
                     '           {{#if consultFlag == "Y"}}'+
-                    '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=lgekor" class="btn border size storeConsult-btn" target="_blank">매장 상담 신청</a>'+
+                    // '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=lgekor" class="btn border size storeConsult-btn" target="_blank">매장 상담 신청</a>'+
                     //210411 임시로 새창 뛰우기 바꿈. 개발에서 작업이 완료되면 교체
-                    // '           <a href="/support/visit-store-reservation?orgCode={{orgCode}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
+                    '           <a href="/support/visit-store-reservation?orgCode={{orgCode}}" class="btn border size storeConsult-btn">매장 상담 신청</a>'+
                     '           {{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
