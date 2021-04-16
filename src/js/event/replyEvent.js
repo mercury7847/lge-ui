@@ -31,6 +31,8 @@
             self.$btnWrap = $('.btn-wrap:eq(0)');
             self.$btns = self.$btnWrap.find('.btns');
             self.$replyPopup = $('#popupReply');
+            self.$name = $('#popupReply').find('#name');
+            self.$phone = $('#popupReply').find('#phone');
         },
 
         bindEvent: function() {
@@ -63,6 +65,7 @@
                 self.$replyPopup.vcModal({opener: this});
             });
 
+            //당첨확인
             self.$btnWrap.on('click','a.result',function (e) {
                 e.preventDefault();
                 //로그인을 해야 하는가
@@ -78,6 +81,7 @@
                 var param = {};
                 var eventId = self.$wrap.data('eventId');
                 param.eventId = eventId;
+                param.userPhone = self.$phone.val();
 
                 var ajaxUrl = self.$wrap.attr('data-check-url');
                 lgkorUI.showLoading();
@@ -217,6 +221,19 @@
                 if(lgkorUI.stringToBool(data.isToday)) {
                     self.$btnWrap.find('a.write').data('isToday','Y');
                 }
+
+                if(data.userName) {
+                    self.$name.val(data.userName);
+                } else {
+                    self.$name.val('');
+                }
+
+                if(data.userPhone) {
+                    self.$phone.val(data.userPhone);
+                } else {
+                    self.$phone.val('');
+                }
+
             });
         }
     }

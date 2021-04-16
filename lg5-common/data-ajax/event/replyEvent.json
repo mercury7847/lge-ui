@@ -3,6 +3,10 @@
     "message":null,
     "data": {
         "totalCnt":"24",
+        "isApply":"Y",
+        "isToday":"N",
+        "userName":"빙그레",
+        "userPhone":"0101231234",
         "pagination":{
             "page":"3",
             "visibleCount":"5",
