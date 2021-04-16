@@ -706,7 +706,7 @@ $(function () {
         //임시 추가
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
-            $(window).trigger('floatingTopShow');
+            //$(window).trigger('floatingTopShow');
             $('.floating-menu.top').css('opacity', 0);
             $('.floating-menu.top').removeClass('call-yet');
         }
