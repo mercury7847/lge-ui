@@ -1238,8 +1238,8 @@ h2.title {
                                     font-size: 14px;
                                     text-align: center;
                                     @include mobile {
-                                        left: 15px;
-                                        right: 15px;
+                                        // left: 15px;
+                                        // right: 15px;
                                     }
                                 }
                                 .btn_purchase {
