@@ -329,6 +329,7 @@ $(function () {
                             }
                             //임시 추가 끝
                         } else {
+                            $('.floating-menu.top').css('opacity', 0);
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                         }
                     }else{
