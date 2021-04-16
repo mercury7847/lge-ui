@@ -3,7 +3,6 @@
 
     function init(){
 
-        console.log('test');
         // 210324  title tag remove 추가
         var manageInfoStr = $('.manager-info .txt p').text();        
         manageInfoStr = vcui.string.stripTags(manageInfoStr);
