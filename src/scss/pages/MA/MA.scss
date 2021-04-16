@@ -50,6 +50,10 @@ img{
 		left: 0;
 		width: 100%;
 		height: calc(100vh - 149px);
+		@include mobile {
+			top: 84px;
+			height: calc(100vh - 84px);
+		}
 		img {
 			position: absolute;
 			top: 50%;
