@@ -566,7 +566,7 @@ $(function () {
                 oVideo   = $video[0];
 
                 if ( isAndroid ) {
-                    $(document).one('touchstart.videoPlay', function() {
+                    $(document).on('touchstart.videoPlay', function() {
                         oVideo.play();
                     });
                 }
@@ -699,10 +699,6 @@ $(function () {
             if(window.sessionStorage) window.sessionStorage.setItem('lgeMainScrollTop', scrollTop);
         });
 
-
-        $window.trigger('breakpointchange');
-        window.resizeScene = render;      
-
         //임시 추가
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
@@ -711,5 +707,8 @@ $(function () {
             $('.floating-menu.top').removeClass('call-yet');
         }
         //임시 추가 끝
+
+        $window.trigger('breakpointchange');
+        window.resizeScene = render;
     });
 });
