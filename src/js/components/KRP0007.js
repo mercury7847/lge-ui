@@ -266,12 +266,17 @@
                     } else {
                         self.filterLayer.resetFilter(filterData, change);
                     }
+
+                    //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
+                    self.showMobileClosePopup();
                 });
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+            },
 
-                //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
+            //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
+            showMobileClosePopup: function() {
                 var pathName = location.pathname.toLowerCase();
                 if(pathName.indexOf("smartphones") > -1) {
                     //모바일 카테고리
@@ -310,27 +315,13 @@
                                 }
                                 $mobileClosePopup.vcModal('close');
                             });
-                            $mobileClosePopup.vcModal();
+
+                            setTimeout(function(e){
+                                $mobileClosePopup.vcModal();
+                            },100);
                         }
                     }
                 }
-
-                /*
-                var hash = location.hash.replace("#","");
-                if(hash) {
-                    var data = JSON.parse(decodeURIComponent(hash));
-                    console.log(data);
-                    if(!vcui.isEmpty(data)) {
-                        self.requestSearch(data, true, true);
-                    } else {
-                        var ajaxUrl = self.$section.attr('data-wish-url');
-                        lgkorUI.checkWishItem(ajaxUrl);
-                    }
-                } else {
-                    var ajaxUrl = self.$section.attr('data-wish-url');
-                    lgkorUI.checkWishItem(ajaxUrl);
-                }
-                */
             },
 
             setting: function() {
