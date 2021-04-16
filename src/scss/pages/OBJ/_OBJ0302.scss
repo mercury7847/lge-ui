@@ -1058,6 +1058,17 @@ h2.title {
                             opacity: 1;
                             visibility: visible;
                         }
+                        .err-msg {
+                            margin-top: 15px;
+                            color: #000000;
+                            font-size: 14px;
+                            text-align: center;
+                            padding: 0 40px;
+                            @include mobile {
+                                font-size: 13px;
+                                padding: 0 15px;
+                            }
+                        }
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
@@ -1160,13 +1171,13 @@ h2.title {
                         dd {
                             position: relative;
                             height: calc(100% - 38px);
-                            padding: 20px 7.5% 90px 7.5%;
+                            padding: 20px 7.5% 150px 7.5%;
                             margin-top: 20px;
                             border-radius: 7px;
                             background: #f4f4f4;
                             @include mobile {
                                 margin-top: 0px;
-                                padding: 25px 15px 80px 15px;
+                                padding: 25px 15px 150px 15px;
                             }
                             .price_info {
                                 .product_list {
@@ -1218,9 +1229,22 @@ h2.title {
                                         }
                                     }
                                 }
+                                .err-msg {
+                                    position: absolute;
+                                    left: 7.5%;
+                                    right: 7.5%;
+                                    bottom: 20px;
+                                    color: #000000;
+                                    font-size: 14px;
+                                    text-align: center;
+                                    @include mobile {
+                                        left: 15px;
+                                        right: 15px;
+                                    }
+                                }
                                 .btn_purchase {
                                     position: absolute;
-                                    bottom: 20px;
+                                    bottom: 80px;
                                     left: 7.5%;
                                     right: 7.5%;
                                     width: 85%;

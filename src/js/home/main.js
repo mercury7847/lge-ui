@@ -313,6 +313,7 @@ $(function () {
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
                     if(idx==0){
                         if(!hasTop){
+                            console.log('o, no hastop');
                             /*
                             // 원본 소스
                             $(window).trigger('floatingTopHide');
@@ -328,14 +329,22 @@ $(function () {
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
+                        } else {
+                            console.log('o, hastop');
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').css('opacity', 0);
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
                         }
                     }else{
                         if(hasTop){
+                            console.log('1, hastop');
                             $(window).trigger('floatingTopShow');
                             $('.floating-menu.top').css('opacity', 1); //임시추가 1줄
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                             $('.floating-menu.top').removeClass('call-yet');
-                        }                        
+                        } else {
+                            console.log('1, no hastop');
+                        }                       
                     }
 
                     currentPage = idx;   
@@ -706,11 +715,12 @@ $(function () {
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             //$(window).trigger('floatingTopShow');
-            $('.floating-menu.top').css('opacity', 0);
-            $('.floating-menu.top').removeClass('call-yet');
+            
+            //??$('.floating-menu.top').css('opacity', 0);
+            //??$('.floating-menu.top').removeClass('call-yet');
 
             //만약 시작부터 내려야 할 일이 있으면 알아서 조작
-            $('.floating-menu.btn-app-ar').css('margin-bottom', '-50px');
+            //$('.floating-menu.btn-app-ar').css('margin-bottom', '-50px');
         }
         //임시 추가 끝
 
