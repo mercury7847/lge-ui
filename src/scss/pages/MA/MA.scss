@@ -384,6 +384,13 @@ img{
 				margin-top:60px;
 			}
 		}
+		.floating-wrap {
+			.floating-menu.top {
+				&.top-hidden {
+					opacity:0 !important;
+				}
+			}
+		}
 	}
 	.section {
 		max-width:1460px;
