@@ -46,10 +46,10 @@ img{
 	.video-poster {
 		overflow: hidden;
 		position: absolute;
-		top: 149px;
+		top: 110px;
 		left: 0;
 		width: 100%;
-		height: calc(100vh - 149px);
+		height: calc(100vh - 110px);
 		@include mobile {
 			top: 84px;
 			height: calc(100vh - 84px);
