@@ -100,6 +100,7 @@
                         $('#popupEventLose').find('p.desc').html(vcui.template(template, data));
                         $('#popupEventLose').vcModal({opener: this});
                     }
+                    self.$btns.removeClass('apply');
                 });
             });
 
