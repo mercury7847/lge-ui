@@ -140,6 +140,7 @@
             $(window).trigger('breakpointchange');
             bindEvent();
 
+            var moveScrollTop = 0;
             if(window.sessionStorage){                
                 var storyUserHeight = sessionStorage.getItem('storyUserHeight');
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
@@ -152,9 +153,7 @@
                 }
 
                 if(storyHomeScrollTop) {
-                    setTimeout(function(){
-                        $('html,body').scrollTop(storyHomeScrollTop);
-                    },10);                    
+                    moveScrollTop = storyHomeScrollTop;        
                 }
             }
 
@@ -164,6 +163,10 @@
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, 'UserStory');
             } 
+
+            setTimeout(function(){
+                $('html, body').animate({scrollTop:moveScrollTop}, 120);
+            }, 10);
         });
     }
 
@@ -361,6 +364,8 @@
                 }
             }
         }
+
+        $('html, body').animate({scrollTop:0}, 180);
     }
 
     var firstPageHeight = 0;

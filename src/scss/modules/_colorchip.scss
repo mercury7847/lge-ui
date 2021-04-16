@@ -2476,6 +2476,11 @@
 			background:#554d44;
 		}
 	}
+	&.obsidian_black {
+		& input + label:before {
+			background:#333438;
+		}
+	}
 
 	/* 210413 추가 */
 	&.botanic_botanic {
