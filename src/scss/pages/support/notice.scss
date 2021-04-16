@@ -650,7 +650,7 @@
             }
             .desc {
                 margin-top:8px;
-                color:$color-white;
+                color:$color-white !important;
                 @include font-medium;
             }
         }
