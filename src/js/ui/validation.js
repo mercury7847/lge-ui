@@ -802,7 +802,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     }
                 }
             }
-            
+            console.log(obj)
             for(var prop in obj){
                 if (targetArr && !vcui.array.include(targetArr, prop)) continue;
 
@@ -953,6 +953,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
             var firstName = vcui.object.keys(rObj)[0];
 
+            self.validItemObj = rObj;
             self._swicthErrorMsg(self.validItemObj, targetArr);
 
             if(firstName){
@@ -994,8 +995,6 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                 }
             }
-
-            self.validItemObj = rObj;
 
             var isSuccess = false;
             if(vcui.isEmpty(rObj)){
