@@ -802,7 +802,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     }
                 }
             }
-            console.log(obj)
+
             for(var prop in obj){
                 if (targetArr && !vcui.array.include(targetArr, prop)) continue;
 
