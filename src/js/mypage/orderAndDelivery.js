@@ -155,7 +155,7 @@
                             '</div>'+
                         '</div>'+
                         '<div class="col col1-2">'+
-                            '<div class="monthly-price">'+                            
+                            '<div class="payment-price">'+                            
                                 '<p class="price"><span class="blind">월 요금</span>월 {{listData.addCommaMonthlyPrice}}원</p>'+
                                 '{{#if isMonthlyPrice}}<a href="#" class="btn-link monthlyPrice-btn">할인 내역알아보기<a>{{/if}}'+
                             '</div>'+
@@ -2038,6 +2038,8 @@
 
             var isPriceBlock = true;
             if(TAB_FLAG == TAB_FLAG_CARE && productList[0].contDtlType != "C01") isPriceBlock = false;
+
+            console.log("isPriceBlock:", isPriceBlock, TAB_FLAG)
 
             if(isPriceBlock){
                 popup.find('.sect-wrap.cnt01').show();

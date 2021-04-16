@@ -141,24 +141,24 @@
             table-layout:fixed;
             width:100%;
             margin-top:24px;
-            padding:0 48px 24px;
+            padding:0 40px 24px;
             @include mobile {
                 display:block;
                 margin:0;
-                padding:0 20px 100px;
+                padding:0 16px 100px;
             }
             
             .left-box {
                 display:table-cell;
                 vertical-align:top;
-                width:255px;
+                width:230px;
                 @include mobile {
                     display:block;
                     width:100%;
                 }
                 
                 .manager-info {
-                    padding:24px 32px 40px;
+                    padding:24px 20px;
                     border:1px solid #ddd;
                     border-radius:8px;
                     text-align:center;
@@ -265,7 +265,7 @@
             .right-box {
                 display:table-cell;
                 width:100%;
-                padding-left:48px;
+                padding-left:72px;
                 vertical-align:middle;
                 // width:657px;
                 @include mobile {
@@ -450,6 +450,27 @@
                         //     }
                         // }
                     }
+                    &.photo {
+                        @include mobile {
+                            margin-right:-16px;
+                        }
+                        .slide-wrap .slide-content .slide-conts .cont-wrap {
+                            @include mobile {
+                                width:92.224vw;
+                            }
+                        }
+                    }
+                    &.event {
+                        .slide-wrap .slide-content .slide-conts {
+                            .cont-wrap {
+                                width:100%;
+                                .img {
+                                    height:246px;
+                                    margin:0 6px
+                                }
+                            }
+                        }
+                    }
                 }
 
                 .notice-info {
@@ -528,10 +549,10 @@
                     bottom:0;
                 }
                 .slide-content {
-                    margin:0 -8px;
-                    @include mobile {
-                        margin:0 -8px;
-                    }
+                    margin:0 -6px;
+                    // @include mobile {
+                    //     margin:0;
+                    // }
                     .slide-track {
                         @include mobile {
                             overflow:auto;
@@ -547,8 +568,8 @@
                         .img {
                             position:relative;
                             border-radius:8px;
-                            height:276px;
-                            margin:0 8px;
+                            height:282px;
+                            margin:0 6px;
                             overflow:hidden;
                             img {
                                 display:block;
@@ -559,7 +580,7 @@
                                 transform:translate(-50%, -50%);
                             }
                             @include mobile {
-                                height:161px;
+                                height:240px;
                             }
                         }
                         .desc {

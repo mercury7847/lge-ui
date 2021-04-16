@@ -33,8 +33,8 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
             var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
 
             $popup.find('#rating').on('starRatingChange', function(e, data) {
-                var $content = $popupCont.find('#content');
-                var $contentLabel = $popupCont.find('[for="content"]');
+                var $content = $popupCont.find('#surveyContent');
+                var $contentLabel = $popupCont.find('[for="surveyContent"]');
                 var value = parseInt(data.value);
 
                 if (value < 4) {

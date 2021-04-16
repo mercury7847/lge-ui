@@ -650,7 +650,7 @@
             }
             .desc {
                 margin-top:8px;
-                color:$color-white;
+                color:$color-white !important;
                 @include font-medium;
             }
         }
@@ -670,6 +670,9 @@
                     padding-left:82px;
                     @include font-large;
                     font-weight:$font-weight-regular;
+                    &.type2 {
+                        padding-left:106px;
+                    }
                     .num {
                         position:absolute;
                         left:0;
@@ -678,6 +681,16 @@
                     }
                     &-desc {
                         @include font-medium;
+                    }
+                    .link-list {
+                        @include clearfix;
+                        & > li {
+                            float:left;
+                            margin-right:16px;
+                            &:last-child {
+                                margin-right:0;
+                            }
+                        }
                     }
                 }
                 .step-desc {
@@ -738,6 +751,9 @@
                     }
                     .step-tit {
                         padding-left:0;
+                        &.type2 {
+                            padding-left:0;
+                        }
                         .num {
                             display:block;
                             position:static;

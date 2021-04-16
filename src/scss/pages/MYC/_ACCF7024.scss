@@ -851,6 +851,7 @@
             //     border-top:none;
             // }
             @include mobile {
+                min-height:169px;
                 padding:54px 0 24px;
                 border-radius:0;
                 box-shadow:none;
