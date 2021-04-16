@@ -76,7 +76,7 @@ $(function () {
 
         // 화면 100% 채우기
         //$('html,body').css({'overflow':'hidden', 'height':'100%'});
-        $('html,body').css({'overflow':'hidden', 'height':'100vh', 'max-height':'-webkit-fill-available'});
+        $('html,body').css({'overflow':'hidden', 'height':'calc(100vh - calc(100vh - 100%))'});
 
         $('body').addClass('ignore-overflow-hidden');
 
