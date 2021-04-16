@@ -1243,7 +1243,7 @@
             }
         ]
     }
-    var proposeSet = {
+    proposeSet = {
         proposeConfig: [{
                 defaultCode: "M620AAA351",
                 modelCode: "M620FBB351S",
@@ -3884,6 +3884,7 @@
             modelSimulator.stepTwo(idx);
             $(".color_sel_wrap").addClass("is_active");
             $(".simul_step2 .etc_area").addClass("is_active");
+            pickerPosition = $(".color_sel_wrap .swiper-wrapper").css("transform");
         });
 
         //문짝 색상 선택
@@ -4858,7 +4859,10 @@
                 //materiaModal.removeSlide(i);
 
                 $(".obj_tooltip_wrap .material_modal .swiper-wrapper").html(modalHtml);
-
+                /*
+                setTimeout(function() {
+                    $(".color_sel_wrap .swiper-wrapper").css("transform", pickerPosition);
+                }, 200);*/
 
 
             }
@@ -5036,6 +5040,7 @@
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
+            priceHtml += '                                    <p class="err-msg">회원혜택가는 결제 단계 (주문 단계/ 주문 시)에서 확인하실 수 있습니다.</p>';
             priceHtml += '                                </div>';
             priceHtml += '                            </dd>';
             priceHtml += '                        </dl>';
@@ -5905,6 +5910,8 @@
 })();;
 var modelSimulator;
 var bestSeller;
+var proposeSet;
+var pickerPosition = 0;
 
 function addComma(value) {
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

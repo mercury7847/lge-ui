@@ -198,9 +198,9 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '       </ul>'+
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
-                            // '           {{#if typeof consultUrl != "undefined"}}'+
-                            // '           <a href="{{consultUrl}}" class="btn size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
-                            // '           {{/if}}'+
+                            '           {{#if typeof consultUrl != "undefined"}}'+
+                            '           <a href="{{consultUrl}}" class="btn size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                            '           {{/if}}'+
                             '           <a href="#{{shopID}}" class="btn size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
                             '       </div>'+
                             '   </div>'+
@@ -526,8 +526,10 @@ function moveDetail(el, detailUrl, windowHeight) {
                 });
                 self.$map.applyMapData(self.storeData);
                 self._setResultText();
-                if (seq) self.$map.selectInfoWindow(self.storeData[0].id);
-
+                if (seq) {
+                    self._showMap(true);
+                    self.$map.selectInfoWindow(self.storeData[0].id);
+                }
                 self.userCityName = self.userBoroughName = "";
                 if (self.searchType == 'current' || self.searchType == 'user') self.searchType = 'local';
                 lgkorUI.hideLoading();

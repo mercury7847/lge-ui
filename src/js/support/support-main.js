@@ -277,7 +277,7 @@
                             breakpoint: 768,
                             settings: {
                                 dots : true,
-                                arrows : false,
+                                arrows : true,
                                 draggable : true, 
                                 slidesToScroll: 1,
                                 slidesToShow: 1,

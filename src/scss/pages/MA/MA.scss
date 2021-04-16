@@ -43,6 +43,25 @@ img{
 	@include mobile {
 		// padding-bottom:171px;
 	}
+	.video-poster {
+		overflow: hidden;
+		position: absolute;
+		top: 110px;
+		left: 0;
+		width: 100%;
+		height: calc(100vh - 110px);
+		@include mobile {
+			top: 84px;
+			height: calc(100vh - 84px);
+		}
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			transform: translate(-50%, -50%);
+		}
+	}
 	.scene {
 		position:relative;
 		width:100%;
@@ -367,6 +386,13 @@ img{
 			margin-top:120px;
 			@include mobile {
 				margin-top:60px;
+			}
+		}
+		.floating-wrap {
+			.floating-menu.top {
+				&.top-hidden {
+					opacity:0 !important;
+				}
 			}
 		}
 	}

@@ -78,8 +78,10 @@
                                 careCartInfo.setEmptyData();
                             }
                             self.requestCartCount();
+
+                            $('.product-recommend-wrap .ui_carousel_slider').vcCarousel('update');
                         });
-                    }
+                    } else $('.product-recommend-wrap .ui_carousel_slider').vcCarousel('update');
                 //});
             },
 

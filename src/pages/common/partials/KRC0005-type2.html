@@ -72,12 +72,16 @@
                     <!-- [KR수정_201216] DOM 추가 -->
                     <div class="thumbs">
                         <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                        <!-- 210416 수정 [피시, 모바일 이미지 분리] -->
                         @@if ( context.imgSizeType == "standard" ) {
-                        <img src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-pc-src="/lg5-common/images/KRC0005/@thumb_420.jpg" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                        <img src="/lg5-common/images/KRC0005/@thumb_420.jpg" alt="" class="pc-only">
+                        <img src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="" class="mo-only">
                         }
                         @@if ( context.imgSizeType == "large" ) {
-                        <img src="/lg5-common/images/KRC0005/@thumb_372.png" data-pc-src="/lg5-common/images/KRC0005/@thumb_372.png" data-m-src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="">
+                        <img src="/lg5-common/images/KRC0005/@thumb_372.png" alt="" class="pc-only">
+                        <img src="/lg5-common/images/KRC0005/@thumb_1312.jpg" alt="" class="mo-only">
                         }
+                        <!-- // 210416 수정 [피시, 모바일 이미지 분리] -->
                         <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
                         <p class="hidden">graphic description : </p>
                     </div>
@@ -103,12 +107,16 @@
                         <!-- 링크가 있는 경우 예제 -->
                         <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}">
                             <!-- [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
+                            <!-- 210416 수정 [피시, 모바일 이미지 분리] -->
                             @@if ( context.imgSizeType == "standard" ) {
-                            <img src="/lg5-common/images/KRC0005/@img_678.jpg" data-pc-src="/lg5-common/images/KRC0005/@img_678.jpg" data-m-src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="">
+                            <img src="/lg5-common/images/KRC0005/@img_678.jpg" alt="" class="pc-only">
+                            <img src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="" class="mo-only">
                             }
                             @@if ( context.imgSizeType == "large" ) {
-                            <img src="/lg5-common/images/KRC0005/@img_912.jpg" data-pc-src="/lg5-common/images/KRC0005/@img_912.jpg" data-m-src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="">
+                            <img src="/lg5-common/images/KRC0005/@img_912.jpg" alt="" class="pc-only">
+                            <img src="/lg5-common/images/KRC0005/@img_1440.jpg" alt="" class="mo-only">
                             }
+                            <!-- // 210416 수정 [피시, 모바일 이미지 분리] -->
                             <!-- // [KR수정_210104] 이미지 피씨/모바일 별도등록 DOM 대응 -->
                         </a>
                         <p class="hidden">graphic description : </p>

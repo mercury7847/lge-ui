@@ -26,10 +26,10 @@
         '{{#each (item, index) in listData}}' +
         '<li>' +
             '{{# if (typeof item.detailUrl != "undefined" && item.detailUrl) { #}}' +
-            '<p class="tit"><button type="button" class="btn-info" data-href="{{item.detailUrl}}" data-file-id="{{item.fileId}}" data-cseq="{{item.cSeq}}" data-os="{{item.os}}" title="상세내용 보기">{{#if item.os}}{{item.os}} {{/if}}{{item.title}}</button></p>' +
+            '<p class="tit"><button type="button" class="btn-info" data-href="{{item.detailUrl}}" data-file-id="{{item.fileId}}" data-cseq="{{item.cSeq}}" data-os="{{item.os}}" title="상세내용 보기">{{#if item.os}}[{{item.os}}] {{/if}}{{item.title}}</button></p>' +
             '{{# } else { #}}' +
                 '{{# if (typeof item.os == "string" && item.os) { #}}' +
-                '<p class="tit">{{item.os}} {{item.title}}</p>' +
+                '<p class="tit">[{{item.os}}] {{item.title}}</p>' +
                 '{{# } else { #}}' +
                 '<p class="tit">{{item.title}}</p>' +
                 '{{# } #}}' +
