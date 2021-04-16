@@ -83,6 +83,7 @@ $(document).ready(function() {
                     }
                 });
 
+                /*
                 $(".floating-menu.btn-app-ar .app-ar").css({
                     "z-index" : "101"
                 });
@@ -91,27 +92,10 @@ $(document).ready(function() {
                     $(".floating-menu.btn-app-ar").css({
                         "margin-bottom" : 0
                     });
-                    $(".floating-menu.btn-app-ar .app-ar").css({
-                        "z-index" : "101"
-                    });
-                    /*
-                    $('.floating-menu.top').css({
-                        "position" : "static",
-                        "right" : "20px",
-                        "bottom" : "24px"
-                    });
-                    */
                 } else {
                     $(".floating-menu.btn-app-ar").css({
                         "margin-bottom" : "-50px"
                     });
-                    /*
-                    $('.floating-menu.top').css({
-                        "position" : "absolute",
-                        "right" : 0,
-                        "bottom" : 0
-                    });
-                    */
                 }
                 //$(window).scroll(function(){
                 $("body").scroll(function(){
@@ -119,26 +103,13 @@ $(document).ready(function() {
                         $(".floating-menu.btn-app-ar").css({
                             "margin-bottom" : 0
                         });
-                        /*
-                        $('.floating-menu.top').css({
-                            "position" : "static",
-                            "right" : "20px",
-                            "bottom" : "24px"
-                        });
-                        */
                     } else {
                         $(".floating-menu.btn-app-ar").css({
                             "margin-bottom" : "-50px"
                         });
-                        /*
-                        $('.floating-menu.top').css({
-                            "position" : "absolute",
-                            "right" : 0,
-                            "bottom" : 0
-                        });
-                        */
                     }
                 });
+                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
