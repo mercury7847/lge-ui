@@ -2566,6 +2566,11 @@
                     border-radius:50px;
                 }
             }
+            @at-root {
+                .mobile & .slick-arrow {
+                    opacity:1;
+                }
+            }
         }
     }
 
