@@ -356,6 +356,7 @@ $(function () {
                 });
             }, 100);
 
+            if(idx > 1 && $('.video-poster').length) $('.video-poster').remove();
         } 
 
         var prevTime = new Date().getTime();
