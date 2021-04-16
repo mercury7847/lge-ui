@@ -455,7 +455,9 @@
                             margin-right:-16px;
                         }
                         .slide-wrap .slide-content .slide-conts .cont-wrap {
-                            width:92.224vw;
+                            @include mobile {
+                                width:92.224vw;
+                            }
                         }
                     }
                     &.event {
