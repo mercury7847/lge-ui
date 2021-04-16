@@ -2528,7 +2528,7 @@
 
         @include pc-size-m {
             .banner {
-                padding-bottom:42px;
+                padding-bottom:32px;
             }
             .slide-item {
                 .item-cont {
@@ -2551,7 +2551,7 @@
             }
 
             .slide-item {
-                width:88.88vw;
+                width:calc(100vw - 16px);
                 padding:0 8px;
 
                 .item-cont {
@@ -2566,6 +2566,17 @@
                     font-size:13px;
                     border-radius:50px;
                 }
+            }
+            .slick-arrow {
+                &.slick-prev {
+                    left:-12px;
+                }
+                &.slick-next {
+                    right:-12px;
+                }
+            }
+            .slick-dots {
+                bottom:-32px;
             }
             @at-root {
                 .mobile & .slick-arrow {
