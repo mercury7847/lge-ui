@@ -322,6 +322,7 @@ $(function () {
                             //임시 추가
                             //앱인데 메인이 아닐경우에만 실행
                             $('.floating-menu.top').css('opacity', 1);
+                            $('.floating-menu.btn-app-ar').css('opacity', 1);
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
                                 $('.floating-menu.top').addClass('call-yet');
@@ -332,6 +333,7 @@ $(function () {
                         if(hasTop){
                             $(window).trigger('floatingTopShow');
                             $('.floating-menu.top').css('opacity', 1); //임시추가 1줄
+                            $('.floating-menu.btn-app-ar').css('opacity', 1);
                             $('.floating-menu.top').removeClass('call-yet');
                         }                        
                     }
@@ -699,17 +701,17 @@ $(function () {
             if(window.sessionStorage) window.sessionStorage.setItem('lgeMainScrollTop', scrollTop);
         });
 
-
-        $window.trigger('breakpointchange');
-        window.resizeScene = render;      
-
         //임시 추가
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             //$(window).trigger('floatingTopShow');
+            $('.floating-menu.btn-app-ar').css('opacity', 0);
             $('.floating-menu.top').css('opacity', 0);
             $('.floating-menu.top').removeClass('call-yet');
         }
         //임시 추가 끝
+
+        $window.trigger('breakpointchange');
+        window.resizeScene = render;
     });
 });
