@@ -312,7 +312,18 @@ $(function () {
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
                     if(idx==0){
-                        if(!hasTop){
+                        if(hasTop){
+                            console.log('o, hastop');
+                            //$('.floating-menu.top').css('opacity', 0);
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').hide();
+                            if(!(isApplication && location.pathname == "/")) {
+                                console.log('tana?');
+                                $(window).trigger('floatingTopHide');
+                                $('.floating-menu.top').addClass('call-yet');
+                            }
+                        } else {
                             console.log('o, no hastop');
                             /*
                             // 원본 소스
@@ -332,12 +343,6 @@ $(function () {
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
-                        } else {
-                            console.log('o, hastop');
-                            //$('.floating-menu.top').css('opacity', 0);
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                            $(window).trigger('floatingTopHide');
-                            $('.floating-menu.top').hide();
                         }
                     }else{
                         if(hasTop){
@@ -350,6 +355,10 @@ $(function () {
 
                         } else {
                             console.log('1, no hastop');
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $('.floating-menu.top').removeClass('call-yet');
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').show();
                         }                       
                     }
 
