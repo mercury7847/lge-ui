@@ -322,26 +322,32 @@ $(function () {
 
                             //임시 추가
                             //앱인데 메인이 아닐경우에만 실행
-                            $('.floating-menu.top').css('opacity', 1);
+                            //$('.floating-menu.top').css('opacity', 1);
                             $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
+                                console.log('tana?');
                                 $(window).trigger('floatingTopHide');
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
                         } else {
                             console.log('o, hastop');
-                            $(window).trigger('floatingTopHide');
-                            $('.floating-menu.top').css('opacity', 0);
+                            //$('.floating-menu.top').css('opacity', 0);
                             $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').hide();
                         }
                     }else{
                         if(hasTop){
                             console.log('1, hastop');
-                            $(window).trigger('floatingTopShow');
-                            $('.floating-menu.top').css('opacity', 1); //임시추가 1줄
+                            //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                             $('.floating-menu.top').removeClass('call-yet');
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').show();
+
                         } else {
                             console.log('1, no hastop');
                         }                       
