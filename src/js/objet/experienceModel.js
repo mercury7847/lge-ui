@@ -5480,7 +5480,7 @@
                 let contHtml = '';
                 contHtml += '<div class="swiper-slide">';
                 contHtml += '   <dl>';
-                contHtml += '       <dt>내가 만든 오브제 컬렉션</dt>';
+                contHtml += '       <dt>내가 만든 오브제컬렉션</dt>';
                 contHtml += '       <dd>';
                 contHtml += '           <ul>';
 
