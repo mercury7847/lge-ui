@@ -2733,7 +2733,7 @@
             }
         ]
     }
-    var myPickSet = {
+    myPickSet = {
         myPickConfig: [{
                 defaultCode: "M620AAA351",
                 door1: "D620TT-FBT",
@@ -5913,6 +5913,7 @@
 var modelSimulator;
 var bestSeller;
 var proposeSet;
+var myPickSet;
 var pickerPosition = 0;
 
 function addComma(value) {
