@@ -2486,6 +2486,11 @@
 			background:#efeef0;
 		}
 	}
+	&.dark_silver {
+		& input + label:before {
+			background:#555557;
+		}
+	}
 
 	/* 210413 추가 */
 	&.botanic_botanic {
