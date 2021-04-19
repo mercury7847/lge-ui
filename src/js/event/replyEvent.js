@@ -41,6 +41,7 @@
                 self.requestData(data);
             });
 
+            //댓글쓰기 버튼
             self.$btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
 
@@ -104,7 +105,7 @@
                 });
             });
 
-            //댓글쓰기
+            //팝업 댓글쓰기
             self.$replyPopup.on('click','.pop-footer .btn-group button',function (e) {
                 e.preventDefault();
                 //로그인을 해야 하는가
@@ -235,6 +236,12 @@
                     self.$phone.val('');
                 }
 
+                var loginUrl = result.loginUrl;
+                if(loginUrl) {
+                    self.$wrap.data('loginUrl', loginUrl);
+                } else {
+                    self.$wrap.data('loginUrl', "");
+                }
             });
         }
     }

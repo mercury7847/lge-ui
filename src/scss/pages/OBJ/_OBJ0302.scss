@@ -1171,13 +1171,13 @@ h2.title {
                         dd {
                             position: relative;
                             height: calc(100% - 38px);
-                            padding: 20px 7.5% 150px 7.5%;
+                            padding: 20px 7.5% 120px 7.5%;
                             margin-top: 20px;
                             border-radius: 7px;
                             background: #f4f4f4;
                             @include mobile {
                                 margin-top: 0px;
-                                padding: 25px 15px 150px 15px;
+                                padding: 25px 15px 120px 15px;
                             }
                             .price_info {
                                 .product_list {
@@ -1244,7 +1244,7 @@ h2.title {
                                 }
                                 .btn_purchase {
                                     position: absolute;
-                                    bottom: 80px;
+                                    bottom: 50px;
                                     left: 7.5%;
                                     right: 7.5%;
                                     width: 85%;

@@ -280,8 +280,7 @@
                                 arrows : true,
                                 draggable : true, 
                                 slidesToScroll: 1,
-                                slidesToShow: 1,
-                                variableWidth : true
+                                slidesToShow: 1
                             }
                         }
                     ]
