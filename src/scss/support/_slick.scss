@@ -209,4 +209,22 @@
     &.slick-disabled {
         display: none !important;
     }
+    @include mobile {
+        width:36px;
+        height:36px;
+        &::before {
+            width:28px;
+            height:28px;
+        }
+        &.prev {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt-m.svg');
+            }
+        }
+        &.next {
+            &::before {
+                background-image:url('/lg5-common/images/icons/btn-arr-40x40-rt-m.svg');
+            }
+        }
+    }
 }
