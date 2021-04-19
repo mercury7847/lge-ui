@@ -227,6 +227,11 @@ br.m {
                 }
                 dd {
                     margin-top:12px;
+                    .tooltip-wrap {
+                        .bullet-list {
+                            text-align:left;
+                        }
+                    }
                 }
                 @include mobile {
                     padding-top: 23px;
