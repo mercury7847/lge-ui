@@ -5461,9 +5461,9 @@
         },
         openMyPickModel: function(modelCode, modelcate) {
             let _thisModel = [];
-            for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
-                if (modelCode == proposeSet.proposeConfig[i].defaultCode) {
-                    _thisModel.push(proposeSet.proposeConfig[i]);
+            for (let i = 0; i < myPickSet.myPickConfig.length; i++) {
+                if (modelCode == myPickSet.myPickConfig[i].defaultCode) {
+                    _thisModel.push(myPickSet.myPickConfig[i]);
                 }
             }
             if (_thisModel.length > 0) {
