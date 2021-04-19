@@ -4859,10 +4859,10 @@
                 //materiaModal.removeSlide(i);
 
                 $(".obj_tooltip_wrap .material_modal .swiper-wrapper").html(modalHtml);
-                /*
+
                 setTimeout(function() {
                     $(".color_sel_wrap .swiper-wrapper").css("transform", pickerPosition);
-                }, 200);*/
+                }, 200);
 
 
             }
