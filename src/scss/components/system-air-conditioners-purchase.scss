@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC9999 {
+	.html-tel {
+        position:relative;
+        max-width:1380px + 80px;
+        margin:0 auto;
+        padding:31px 24px;
+		background-color:#f4f4f4;
+        text-align:center;
+		@include mobile {
+			padding-left:80px;
+		}
+		p {
+			display:inline-block;
+			position:relative;
+			font-size:16px;
+			font-weight:700;
+			line-height:26px;
+			.br {
+				@include mobile {
+					display:block;
+				}
+			}
+			&:before {
+				content:' ';
+				position:absolute;
+				top:-3px;
+				left:-64px;
+				width:32px;
+				height:32px;
+				background:url('/lg5-common/images/icons/img-phone-32.svg') no-repeat 0 0;
+				vertical-align:middle;
+				@include mobile {
+					left:-56px;
+				}
+			}
+			a {
+				color:#da0f47;
+			}
+		}
+		.btn-area {
+			display:none;
+			@include mobile {
+				display:block;
+				margin:16px 0 0 -56px;
+			}
+		}
+    }
+}
