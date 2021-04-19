@@ -52,10 +52,13 @@
 							top:96px;
 							left:0;
 							bottom:120px;
-							max-width:1614px;
+							width:1614px;
 							margin:0 auto;
 							padding: 0 40px;
 							transform:translateX(0);
+							@media screen and (max-width: 1614px) {
+								width:100%;
+							}
 							.boxs {
 								display:inline-block;
 								.txt {
@@ -170,10 +173,10 @@
 							}
 							.slide-info-area {
 								top:36px;
-								right:8px;
+								right:0;
 								bottom:50px;
-								left:16px;
-								padding: 0;
+								left:0;
+								padding: 0 8px 0 16px;
 								.boxs {
 									.txt {
 										font-size:32px;
