@@ -5462,7 +5462,7 @@
         openMyPickModel: function(modelCode, modelcate) {
             let _thisModel = [];
             for (let i = 0; i < myPickSet.myPickConfig.length; i++) {
-                if (modelCode == myPickSet.myPickConfig[i].defaultCode) {
+                if (modelCode == myPickSet.myPickConfig[i].defaultcode) {
                     _thisModel.push(myPickSet.myPickConfig[i]);
                 }
             }
@@ -5489,7 +5489,7 @@
                 contHtml += '           <ul>';
 
                 for (let i = 0; i < _thisModel.length; i++) {
-                    let _modelDefaultCode = _thisModel[i].defaultCode;
+                    let _modelDefaultCode = _thisModel[i].defaultcode;
                     let _modelCode = _thisModel[i].modelCode;
 
                     let _doorCode1 = _thisModel[i].door1;
