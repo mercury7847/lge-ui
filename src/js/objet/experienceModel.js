@@ -5574,7 +5574,7 @@
                         }
                     }
                     contHtml += '      </div>';
-                    contHtml += '      <span>' + _modelCode + '</span>';
+                    contHtml += '      <span>' + _modelDefaultCode + '</span>';
                     contHtml += '  </button>';
                     contHtml += '</li>';
 
