@@ -2,7 +2,7 @@
     var subTabItemTemplate = '<li><a href="#{{categoryId}}">{{categoryName}}</a></li>';
     var storyListItemTemplate = '<li class="items"><a href="{{storyUrl}}" class="item-inner">' +
         '<div class="thumb">' +
-            '<img src="{{storyListThumbnailPath}}{{storyListThumbnailServerName}}" alt="{{storyListThumbnailAltText}}">' +
+            '<img src="{{storyListThumbnailPath}}{{storyListThumbnailServerName}}" alt="{{storyListThumbnailAltText}}" aria-hidden="true">' +
             '<p class="hidden pc">{{storyListThumbnailAltText}}</p>' +
             '<p class="hidden mobile">{{storyListThumbnailAltText}}</p>' +
         '</div>' +
