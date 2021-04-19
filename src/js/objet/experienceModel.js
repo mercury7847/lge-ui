@@ -24,7 +24,7 @@
                         door: {
                             count: 3,
                             door1: {
-                                name: "얼정냉 상단(좌)",
+                                name: "얼음정수기 상단(좌)",
                                 code: "D870JT",
                                 defaultPrice: "100,000",
                                 memberDiscount: "0",
@@ -2733,7 +2733,7 @@
             }
         ]
     }
-    var myPickSet = {
+    myPickSet = {
         myPickConfig: [{
                 defaultCode: "M620AAA351",
                 door1: "D620TT-FBT",
@@ -4470,11 +4470,13 @@
                                             if (k == 0) {
                                                 doorDirection = "LT";
                                                 doorLocation = "TT";
+                                                doorKLocation = "상단(좌)";
                                                 if (code == "W821AAA453") {
                                                     doorDirection = "LT";
                                                     doorLocation = "JT";
+                                                    doorKLocation = "얼음정수기 상단(좌)";
                                                 }
-                                                doorKLocation = "상단(좌)";
+
                                                 doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                             } else if (k == 1) {
                                                 doorDirection = "LB";
@@ -5480,7 +5482,7 @@
                 let contHtml = '';
                 contHtml += '<div class="swiper-slide">';
                 contHtml += '   <dl>';
-                contHtml += '       <dt>내가 만든 오브제 컬렉션</dt>';
+                contHtml += '       <dt>내가 만든 오브제컬렉션</dt>';
                 contHtml += '       <dd>';
                 contHtml += '           <ul>';
 
@@ -5911,6 +5913,7 @@
 var modelSimulator;
 var bestSeller;
 var proposeSet;
+var myPickSet;
 var pickerPosition = 0;
 
 function addComma(value) {

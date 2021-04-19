@@ -110,7 +110,7 @@ $(window).ready(function(){
             '<li>'+
 				'<a href="#n" data-story-id="{{storyId}}">'+
 					'<span class="thumb">'+
-						'<img src="{{storyListThumbnailPath}}{{storyListThumbnailServerName}}" alt="{{storyListThumbnailAltText}}">'+
+						'<img src="{{storyListThumbnailPath}}{{storyListThumbnailServerName}}" alt="{{storyListThumbnailAltText}}" aria-hidden=“true”>'+
 					'</span>'+
 					'<span class="tit"><span>{{storyTitle}}</span></span>'+
 				'</a>'+
