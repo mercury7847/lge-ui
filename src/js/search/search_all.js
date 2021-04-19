@@ -202,14 +202,14 @@
         '</div>' +
     '</div></li>';
 
-    var searchBnrTemplate = 
-        '<a href="{{url}}" target="{{target}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{/if}}">'+
-            // '<div class="text-area">'+
-            //     '<strong class="title">{{#raw title}}</strong>'+
-            //     '<span class="sub-copy">{{#raw desc}}</span>'+
-            // '</div>'+
-        '</a>';
+    var searchBnrTemplate = '<a href="{{url}}" target="{{target}}">'+
+        '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="pc-only">' +
+        '<img src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="mo-only">' +
+        // '<div class="text-area">'+
+        //     '<strong class="title">{{#raw title}}</strong>'+
+        //     '<span class="sub-copy">{{#raw desc}}</span>'+
+        // '</div>'+
+    '</a>'
 
     $(window).ready(function() {
         var search = {
