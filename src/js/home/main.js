@@ -75,9 +75,8 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-        //$('html,body').css({'overflow':'hidden', 'height':'100%'});
-        $('html,body').css({'overflow':'hidden', 'height':'100vh', 'max-height':'-webkit-fill-available'});
-
+        $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        
         $('body').addClass('ignore-overflow-hidden');
 
         $('.ui_carousel_slider_banner1').find('.flow-bar').css({
