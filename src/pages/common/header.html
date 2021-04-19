@@ -1909,12 +1909,14 @@
 <!-- // 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
 }
 
+@@if (context.pageCase === undefined) {
 <!-- Breadcrumb -->
 @@include('./common/modules/breadcrumb.html', {
     "breadcrumb": ["1Depth", "2Depth"],
     "nonLink" : "3Depth"
 })
 <!-- // Breadcrumb -->
+}
 
 <div id="content"></div> <!-- 컴포넌트의 경우 id="" 값 동일하게 적용 필요  -->
 
