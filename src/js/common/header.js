@@ -142,10 +142,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             //장바구니, 마이페이지홈 클릭시 로딩바 노출
-            self.$el.find('div.utility').on('click','li.cart a, li.mypage.after-login a', function (e) {
-                //setTimeout(function(e){
+            var $headerUtility = self.$el.find('div.utility');
+            $headerUtility.find('li.cart a, li.mypage.after-login a').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if(url) {
                     lgkorUI.showLoading();
-                //},20);
+                    location.href = url;
+                }
             });
 
             //
