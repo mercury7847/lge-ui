@@ -24,7 +24,7 @@
                         door: {
                             count: 3,
                             door1: {
-                                name: "얼정냉 상단(좌)",
+                                name: "얼음정수기 상단(좌)",
                                 code: "D870JT",
                                 defaultPrice: "100,000",
                                 memberDiscount: "0",
@@ -4470,11 +4470,13 @@
                                             if (k == 0) {
                                                 doorDirection = "LT";
                                                 doorLocation = "TT";
+                                                doorKLocation = "상단(좌)";
                                                 if (code == "W821AAA453") {
                                                     doorDirection = "LT";
                                                     doorLocation = "JT";
+                                                    doorKLocation = "얼음정수기 상단(좌)";
                                                 }
-                                                doorKLocation = "상단(좌)";
+
                                                 doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                             } else if (k == 1) {
                                                 doorDirection = "LB";
