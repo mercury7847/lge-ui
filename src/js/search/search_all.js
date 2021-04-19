@@ -44,16 +44,16 @@
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
-            '{{#if obsFlag=="Y"}}' +
+            '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
-                    '{{#if hasCare && carePrice != "0"}}' +
+                    '{{#if rentalTabFlag=="Y" && carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
-                    '{{#if !rentalFlag}}' +
+                    '{{#if obsFlag=="Y"}}' +
                         '<div class="original">' +
                             '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
