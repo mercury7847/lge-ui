@@ -11617,17 +11617,41 @@ $(function() {
     });
 
     //마스킹 처리
-    $(".gallery_thumb_wrap .gallery_thumb_body .gallery_thumb_list li").each(function() {
-        var unitName = $(this).find("a .unit_name").text();
-        if (unitName.length > 3) {
-            unitName = unitName.replace(/(?<=.{3})./gi, "*");
-        } else if (unitName.length == 3) {
-            unitName = unitName.replace(/(?<=.{2})./gi, "*");
-        } else if (unitName.length == 2) {
-            unitName = unitName.replace(/(?<=.{1})./gi, "*");
-        }
+    // $(".gallery_thumb_wrap .gallery_thumb_body .gallery_thumb_list li").each(function() {
+    //     var unitName = $(this).find("a .unit_name").text();
+    //     if (unitName.length > 3) {
+    //         unitName = unitName.replace(/\d(?=\d{3})/g, "*");
+    //     } else if (unitName.length == 3) {
+    //         unitName = unitName.replace(/\d(?=\d{2})/g, "*");
+    //     } else if (unitName.length == 2) {
+    //         unitName = unitName.replace(/\d(?=\d{1})/g, "*");
+    //     }
 
-        $(this).find("a .unit_name").text(unitName);
+    //     $(this).find("a .unit_name").text(unitName);
+    // });
+    $(".gallery_thumb_list li").each(function() {
+        var unitName = $(this).find("a .unit_name").text();
+        let _unitName = "";
+        if (unitName.length > 3) {
+            //unitName = unitName.replace(/(?<=.{3})./gi, "*");
+            _unitName = unitName.substring(0, 3);
+            for (let i = 3; i < unitName.length; i++) {
+                _unitName += '*';
+            }
+        } else if (unitName.length == 3) {
+            //unitName = unitName.replace(/(?<=.{2})./gi, "*");
+            _unitName = unitName.substring(0, 2);
+            for (let i = 2; i < unitName.length; i++) {
+                _unitName += '*';
+            }
+        } else if (unitName.length == 2) {
+            //unitName = unitName.replace(/(?<=.{1})./gi, "*");
+            _unitName = unitName.substring(0, 1);
+            for (let i = 1; i < unitName.length; i++) {
+                _unitName += '*';
+            }
+        }
+        $(this).find("a .unit_name").text(_unitName);
     });
 
 });
