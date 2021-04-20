@@ -94,7 +94,7 @@
                     }
                 }
 
-                var reply = self.$replyPopup.find('#reply').val();
+                var reply = self.$snsPopup.find('#reply').val();
                 var checkReply = vcui.string.replaceAll(reply," ","");
                 if(checkReply.length > 0) {
                     param.reply = reply;
