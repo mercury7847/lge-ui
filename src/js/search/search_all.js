@@ -203,8 +203,8 @@
     '</div></li>';
 
     var searchBnrTemplate = '<a href="{{url}}" target="{{target}}">'+
-        '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="pc-only">' +
-        '<img src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="mo-only">' +
+        '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{#else}}광고배너{{/if}}" class="pc-only">' +
+        '<img src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{#else}}광고배너{{/if}}" class="mo-only">' +
         // '<div class="text-area">'+
         //     '<strong class="title">{{#raw title}}</strong>'+
         //     '<span class="sub-copy">{{#raw desc}}</span>'+

@@ -77,15 +77,27 @@
                                             <span class="num">혜택 <em>3</em></span>
                                             <p class="tit">LG베스트샵 <br>가전 구매 <em>할인</em></p>
                                         </dt>
-										<dd>전국 베스트샵에서 가전 구매 시 3%멤버십 포인트 적립</dd>
+                                        <!-- 210419 문구수정 -->
+										<dd>
+                                            전국 베스트샵에서 가전 구매 시 3%멤버십 포인트 적립
+                                            @@include('./common/modules/tooltip.html', {
+                                                "type" : "includeType",
+                                                "page" : "tooltip-RMSF2015",
+                                                "pageType" : "type4",
+                                                "fixed" : "fixed-right",
+                                            })
+                                        </dd>
+                                        <!-- //210419 문구수정 -->
 									</dl>
+                                    <!-- 210419 문구수정 -->
 									@@include('./common/modules/bullet-list.html', {
 										"size2" : true,
 										"topBorder" : false,
 										"bulletTxt" : [
-											"자세한 사항은 담당 케어솔루션 매니저 또는 가까운 LG 베스트샵에 문의하세요!"
+											"21년 4월12일부터 렌탈 또는 케어십을 신규 계약한 고객은 케어솔루션매니저를 통해서만 해당 혜택을 받으실 수 있습니다"
 										]
 									})
+                                    <!-- //210419 문구수정 -->
 								</div>
 							</div>
 							<div class="gray-block-wrap big">
@@ -234,6 +246,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            <!-- 210419 문구수정 -->
                             @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,
                                 "bulletTxt" : [
@@ -243,10 +256,12 @@
                                     "수혜조건 충족한 익월 말 상품권 증정 및 포인트 적립",
                                     "1년 사용 혜택은, 추가 결합 계약 1건당 보유 중인 여러 계정 중 하나의 계정과의 결합만 인정함",
                                     "하이마트/전자랜드/대형마트(이마트 등) 계약 고객은 베스트샵 구매 혜택 적용 불가(결합할인은 가능)",
+                                    "21년 4월12일부터 렌탈 또는 케어십을 신규 계약한 고객은 케어솔루션매니저를 통해서만 해당 혜택을 받으실 수 있습니다",
                                     "모든 대상자는 유효기간 내 멤버십 앱 &gt; 케어솔루션 &gt; 나의 케어솔루션 &gt; 연차별 혜택 에서 혜택 메시지 확인 가능",
                                     "위 혜택은 2021년 1월부터 운영하며 당사 사정으로 내용이 변경될 수 있음"
                                 ]
                             })
+                            <!-- //210419 문구수정 -->
                         </div>
                     </div>
                     <div class="csn-ars-bottom">

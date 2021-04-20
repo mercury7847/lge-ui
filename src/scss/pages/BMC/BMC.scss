@@ -71,6 +71,10 @@
             margin-bottom:0;
             @include mobile {
                 padding:10px 0;
+                &:before,
+                &:after {
+                    bottom: 11px;
+                }
             }
         }
     }

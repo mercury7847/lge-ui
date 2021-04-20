@@ -652,6 +652,11 @@
                     &[class*="select"],
                     &[class*="color"] {
                         margin-top: 24px;
+                        @include pc {
+                            .text {
+                                margin-top: -8px;
+                            }
+                        }
                     }
                     &[class*="color"] {
                         .text {
@@ -1951,20 +1956,47 @@
             }
             .review-info {
                 display: inline-block;
+                height:21px;
                 font-size: 0;
+                line-height:21px;
                 vertical-align: top;
-                .crema-product-reviews-score {
-                    display:inline-block;
-                    height: 21px;
-                    font-size:13px;
-                    line-height: 21px;
+                .star-rating-wrap {
                     &:before {
-                        display: inline-block;
-                        width: 1px;
-                        height: 12px;
+                        content:' ';
+                        display:inline-block;
+                        width:1px;
+                        height:12px;
                         margin: 0 8px;
                         background-color: $color-border;
-                        content: '';
+                        vertical-align:middle;
+                    }
+                    a {
+                        display:inline-block;
+                        .star-inner {
+                            display:inline-block;
+                            vertical-align:middle;
+                        }
+                        .star-inner,
+                        .star-rating {
+                            position:relative;
+                            width:80px;
+                            height:16px;
+                            background-image: url('/lg5-common/images/KRP0008/img-star-pdp-off.svg');
+                            background-repeat:no-repeat;
+                            background-size:80px 16px;
+                            .star-rating {
+                                position:absolute;
+                                top:0;
+                                left:0;
+                                background-image: url('/lg5-common/images/KRP0008/img-star-pdp-on.svg');
+                            }
+                        }
+                    }
+                    .scope {
+                        margin-left:4px;
+                        font-size:13px;
+                        line-height: 21px;
+                        vertical-align:top;
                     }
                 }
             }

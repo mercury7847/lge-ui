@@ -11,12 +11,13 @@
         <div class="application-btn">
             <a href="#n" class="btn size-m border"><span>간편 신청하기</span></a>
         </div>
-        @@include('./common/modules/bullet-list.html', {
-            "topBorder" : true,
-            "bulletTxt" : [
-                "카드 신청에서 납부정보 변경까지 자동으로 연결되는 간편 신청은 카드 발급을 위해서 제휴카드사에서 고객님에게 전화를 드릴 예정이니 전화를 꼭 받아주세요.<br>(☎1800-1264)",
-            ]
-        })
+        @@if ( context.cardInfo ) {
+        <ul class="bullet-list top-border">
+            @@for (var i=0; i < context.cardInfo.length; i++) {
+            <li class="b-txt">`+cardInfo[i]+`</li>
+            }
+        </ul>
+        }
         <a href="@@url" class="btn-link" target="_blank" title="새창열림">카드 정보 자세히 보기</a><!-- 20210324 수정 [target,title,링크 추가] -->
     </div>
     }
@@ -77,8 +78,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>7,000원</td>
-                                <td>10,000원</td>
+                                <td>12,000원</td>
+                                <td>15,000원</td>
                             </tr>
                         </tbody>
                     </table>
@@ -116,11 +117,11 @@
                 </div>
             </div>
             @@if ( context.col2Tbl.bullet ) {
-            @@include('./common/modules/bullet-list.html', {
-                "bulletTxt" : [
-                    "@@col2Tbl.bullet"
-                ]
-            })
+            <ul class="bullet-list">
+            @@for (var i=0; i < context.col2Tbl.bullet.length; i++) {
+                <li class="b-txt">`+col2Tbl.bullet[i]+`</li>
+            }
+            </ul>
             }
         </div>
         }
