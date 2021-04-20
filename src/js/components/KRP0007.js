@@ -278,7 +278,7 @@
             //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
             showMobileClosePopup: function() {
                 var pathName = location.pathname.toLowerCase();
-                if(pathName.indexOf("smartphones") > -1) {
+                if(pathName.indexOf("smartphones") > -1 || pathName.indexOf("feature-phones") > -1) {
                     //모바일 카테고리
                     var $mobileClosePopup = $('#mobile-close-popup');
                     if($mobileClosePopup.length > 0) {
