@@ -624,7 +624,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     var errblock = self._getMsgBlock($target, msg);
                     errblock.show();
                     var errfield = self._getMsgField(errblock);
-                    errfield.text(nobj.errorMsg);
+                    errfield.html(nobj.errorMsg);
                 }
             }
         },
