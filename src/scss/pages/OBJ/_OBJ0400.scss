@@ -7905,6 +7905,11 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     display: none;
 }
 
+.gallery_thumb_wrap .gallery_thumb_body .btn-moreview {
+    display: block;
+    margin-bottom: 30px;
+}
+
 .mask {
     display: none;
     position: fixed;

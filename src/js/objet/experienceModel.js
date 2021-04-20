@@ -3685,21 +3685,25 @@
         });
 
         //추천조합
-        $("#proposeModel").on("click", function() {
+        $(".proposeModel").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
             if ($(this).hasClass("border")) {
                 $(this).removeClass("border");
-                $("#myPick").addClass("border");
+                $(".myPick").addClass("border");
                 modelSimulator.openProposeModel(modelCode, modelcate);
                 modelSimulator.closeMyPickModel();
+                //modelSimulator.mobileStep(".simul_step2");
+                setTimeout(function() {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeProposeModel();
             }
         });
         $(".color_best .btn-close").on("click", function() {
-            $("#proposeModel").addClass("border");
+            $(".proposeModel").addClass("border");
             modelSimulator.closeProposeModel();
         });
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
@@ -3718,21 +3722,25 @@
         });
 
         //내가만든 오브제
-        $("#myPick").on("click", function() {
+        $(".myPick").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
             if ($(this).hasClass("border")) {
                 $(this).removeClass("border");
-                $("#proposeModel").addClass("border");
+                $(".proposeModel").addClass("border");
                 modelSimulator.openMyPickModel(modelCode, modelcate);
                 modelSimulator.closeProposeModel();
+                //modelSimulator.mobileStep(".simul_step2");
+                setTimeout(function() {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeMyPickModel();
             }
         });
         $(".color_my_pick .btn-close").on("click", function() {
-            $("#myPick").addClass("border");
+            $(".myPick").addClass("border");
             modelSimulator.closeMyPickModel();
         });
         $(document).on("click", ".color_my_pick .btn_myPick_model_sel", function() {
@@ -3765,6 +3773,8 @@
                     $(".color_mixing_area .color_my_pick").removeClass("is_active");
                     $(".color_mixing_area .color_best").removeClass("is_active");
                     $(".simul_step2 .etc_area").removeClass("is_active");
+                    $(".etc_area_top").removeClass("is_active");
+                    $(".etc_area_bottom").removeClass("is_active");
                     $(".simul_step3 .etc_area").removeClass("is_active");
                     $(".simul_step3 .compare_sel_model_area").removeClass("is_active");
                     let idx = $(".model_set_wrap[data-model-editing='Y']").index();
@@ -3784,8 +3794,8 @@
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
                     modelSimulator.closeProposeModel();
                     modelSimulator.closeMyPickModel();
-                    $("#proposeModel").addClass("border");
-                    $("#myPick").addClass("border");
+                    $(".proposeModel").addClass("border");
+                    $(".myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
                     totalResulPrice();
                 }
@@ -3835,6 +3845,8 @@
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
             modelSimulator.maxCountCheck();
             modelSimulator.mobileStep(".simul_step2");
+            $(".etc_area_top").addClass("is_active");
+            $(".etc_area_bottom").addClass("is_active");
         });
 
         //문선택을 위한 제품 선택
@@ -3998,20 +4010,20 @@
                 saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                // var obj = {
-                //     title: '',
-                //     typeClass: '',
-                //     cancelBtnName: '',
-                //     okBtnName: '',
-                //     ok: function() {
-                //         //console.log("saveInfo", saveInfo);
-                //         //myPickSave(saveInfo);
-                //     }
-                // };
-                // var desc = '';
-                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                // desc = '';
-                // lgkorUI.confirm(desc, obj);
+                var obj = {
+                    title: '',
+                    typeClass: '',
+                    cancelBtnName: '',
+                    okBtnName: '',
+                    ok: function() {
+                        console.log("saveInfo", saveInfo);
+                        myPickSave(saveInfo);
+                    }
+                };
+                var desc = '';
+                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                desc = '';
+                lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
@@ -4313,6 +4325,8 @@
             } else {
                 modelSimulator.stepOneNext(idx, _name, name);
                 modelSimulator.mobileStep(".simul_step2");
+                $(".etc_area_bottom").addClass("is_active");
+                $(".etc_area_top").addClass("is_active");
             }
         },
         makeModelTab: function(idx, _name) { //하위 카테고리가 있을경우 탭을 생성
@@ -5452,7 +5466,7 @@
                     slideWrapAutoSize(".color_best .color_best_body");
                 }, 10);
             } else {
-                $("#proposeModel").addClass("border");
+                $(".proposeModel").addClass("border");
                 modelSimulator.closeProposeModel();
             }
 

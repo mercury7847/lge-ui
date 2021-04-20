@@ -122,6 +122,36 @@ h2.title {
                 }
             }
         }
+        .etc_area_bottom {
+            position: absolute;
+            top: 650px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            @include mobile {
+                display: none;
+            }
+            &.is_active {
+                display: block;
+            }
+            .btn_wrap {
+                padding: 20px 0;
+                text-align: center;
+                @include mobile {
+                    padding: 20px 15px;
+                    display: flex;
+                }
+                .btn {
+                    @include mobile {
+                        flex: 1;
+                        padding: 10px 5px;
+                    }
+                    &+.btn {
+                        margin-left: 7px;
+                    }
+                }
+            }
+        }
         .simul_body {
             position: relative;
             margin-top: 130px;
@@ -956,6 +986,31 @@ h2.title {
                             color: #000000;
                             @include mobile {
                                 padding: 0 30px;
+                            }
+                        }
+                    }
+                    .etc_area_top {
+                        display: none;
+                        @include mobile {
+                            &.is_active {
+                                display: block;
+                            }
+                            .btn_wrap {
+                                padding: 20px 0;
+                                text-align: center;
+                                @include mobile {
+                                    padding: 0px 15px 20px 15px;
+                                    display: flex;
+                                }
+                                .btn {
+                                    @include mobile {
+                                        flex: 1;
+                                        padding: 10px 5px;
+                                    }
+                                    &+.btn {
+                                        margin-left: 7px;
+                                    }
+                                }
                             }
                         }
                     }
