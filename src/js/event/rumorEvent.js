@@ -3,7 +3,11 @@
         init: function() {
             var self = this;
             self.setting();
-            self.bindEvent();
+            if(self.$event4.data('eventRestrictFlag') == "Y") {
+                lgkorUI.alert("", {title: "서버 점검중입니다."});
+            } else {
+                self.bindEvent();
+            }
         },
 
         setting: function() {
