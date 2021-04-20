@@ -658,6 +658,16 @@
 
 // 공통 팝업
 .popup-wrap {
+    .pc-only {
+        @include mobile {
+            display: none;
+        }
+    }
+    .mo-only {
+        @include pc {
+            display: none;
+        }
+    }
     .common-pop {
         // 팝업 기본
         .info-req {
