@@ -75,41 +75,27 @@
                                                 <dd>기간: 5.03 - 5.31</dd> <!-- 210414_기간수정 -->
                                             </dl>
                                         </div>
-                                        <div class="btn-wrap">
-                                            <img src="/lg5-common/images/BMC/open_conts/event04/img-02.png" class="pc" alt="">
-                                            <img src="/lg5-common/images/BMC/open_conts/event04/img-02-m.png" class="mobile" alt="">
-                                            <div class="blind">
-                                                <ol>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>App 설치 후 응원 댓글을 작성하면 경품 당첨 기회!</dt>
-                                                            <dd>이벤트 기간 중 LGE.COM APP에서 작성한 고객의 경우
-                                                                추첨을 통해 한정판 뉴트로 굿즈 선물을 드립니다.</dd>
-                                                            <dd>
-                                                                추첨경품: 골드스타 텀블러(100명), 골드스타 유리컵(100명), 골드스타 치약(100명)
-                                                            </dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>응원 댓글만 달아도 즉석 당첨 기회!</dt>
-                                                            <dd>이벤트 기간 중 APP 설치없이 응원 댓글 작성 시
-                                                                즉석 당첨의 행운을 드립니다.</dd>
-                                                            <dd>
-                                                                즉석 경품: 5000명에게 배달의 민족 3,000원 쿠폰 (1일 1회 응모가능 / 당첨 시 응모불가)
-                                                            </dd>
-                                                        </dl>
-                                                    </li>
-                                                </ol>
+                                        <div class="cheer-reply">
+                                            <dl>
+                                                <dt>
+                                                    응모현황
+                                                </dt>
+                                                <dd>
+                                                    <em>1979</em> / 1000명
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <img src="/lg5-common/images/BMC/open_conts/event04/img-02.png" class="pc" alt="">
+                                        <img src="/lg5-common/images/BMC/open_conts/event04/img-02-m.png" class="mobile" alt="">
+                                        <div class="apply-wrap">
+                                            <img src="/lg5-common/images/BMC/open_conts/event04/img-03.png" class="pc" alt="">
+                                            <img src="/lg5-common/images/BMC/open_conts/event04/img-03-m.png" class="mobile" alt="">
+                                            <div class="btns">
+                                                <a href="#" class="hash"><span class="blind">해시태그 복사하기</span></a>
+                                                <a href="#" class="event"><span class="blind">이벤트 응모하기</span></a>
                                             </div>
-                                        </div>
-                                        <img src="/lg5-common/images/BMC/open_conts/event04/img-03.png" class="pc" alt="">
-                                        <img src="/lg5-common/images/BMC/open_conts/event04/img-03-m.png" class="mobile" alt="">
-                                        <div class="blind">
-                                            <p>전체 응원 댓글</p>
-                                            <p>LGE.COM이 오픈되었습니다!</p>
-                                        </div>
-                                        <div class="app_down">
+                                        </div>                          
+                                        <div class="app-down">
                                             <img src="/lg5-common/images/BMC/open_conts/event02/img-04.png" class="pc" alt="">
                                             <img src="/lg5-common/images/BMC/open_conts/event02/img-04-m.png" class="mobile" alt="">
                                             <div class="btns">
@@ -168,19 +154,16 @@
         @@include('./common/footer.html')
     </div>
 
-
-    <article id="popupReply" class="popup-wrap full">   
+    <article id="apply" class="popup-wrap full">
         <header class="pop-header">
             <h1 class="tit"><span>이벤트 참여하기</span></h1>
         </header>
         <section class="pop-conts academy-pop ev-detail-con">
-            <div class="input-info"><!-- 210126 수정 - .input-info 영역 내 돔 변경이 있음 -->
-                <div class="input-info-wrap"><!-- 210126 수정 - .input-info-wrap 돔 추가 -->
+            <div class="input-info">
+                <div class="input-info-wrap">
                     <div class="tit-wrap">
-                        <!-- 210126 수정 - 타이틀 번호 삭제  -->
                         <h2 class="h2-tit">개인정보 수집 이용 및 처리 위탁 동의</h2>
                     </div>
-                    <!-- 210126 수정 - 필수 표시 변경 -->
                     <p class="tb-tit req">개인정보 수집 이용 동의(필수)<span class="blind">필수</span></p>
                     <div class="tb_row tb-bor">
                         <table>
@@ -200,15 +183,23 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="al-left">참여자 이름, 참여자 연락처</td>
+                                <td class="al-left">이름, 연락처</td>
+                                <td class="al-left">이벤트 응모내역 확인 시 본인 확인</td>
+                                <td class="al-left" rowspan="3">이벤이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                            </tr>
+                            <tr>
+                                <td class="al-left">수령자 이름, 수령자 연락처</td>
                                 <td class="al-left">경품배송 시 본인 확인</td>
-                                <td class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                            </tr>
+                            <tr>
+                                <td class="al-left">수령자 주소</td>
+                                <td class="al-left">경품배송</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <ul class="bullet-list">
-                        <li class="b-txt">귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.</li>
+                        <li class="b-txt">귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.</li>            
                         <li class="b-txt">14세 미만 고객의 경우, 이벤트 참여가 제한됩니다.</li>
                     </ul>
                     <div class="agree-input">
@@ -217,9 +208,8 @@
                             <label for="chk1-1">동의합니다</label>
                         </span>
                     </div>
-                </div><!-- 210126 수정 - .input-info-wrap 돔 추가 -->
-                <div class="input-info-wrap"><!-- 210126 수정 - 클래스 수정 -->
-                    <!-- 210126 수정 - 필수 표시 변경 -->
+                </div>
+                <div class="input-info-wrap">
                     <p class="tb-tit req">개인정보 처리 위탁 동의<span class="blind">필수</span></p>
                     <div class="tb_row tb-bor">
                         <table>
@@ -236,14 +226,14 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>㈜LG CNS, CJ대한통운</td> <!-- 210412_수탁자 삭제 -->
+                                    <td>㈜LG CNS, CJ대한통운</td>
                                     <td>사은품 제공 등 이벤트와 관련한 업무</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <ul class="bullet-list">
-                        <li class="b-txt">경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다.</li>
+                        <li class="b-txt">경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다.</li>    
                     </ul>
                     <div class="agree-input">
                         <span class="chk-wrap">
@@ -251,12 +241,25 @@
                             <label for="chk2-1">동의합니다</label>
                         </span>
                     </div>
-                </div>  
+                </div>
+                <div class="input-info-wrap">
+                    <p class="tb-tit req">콘텐츠 저작권 양도 동의(필수)</p>
+                    <div class="txt-terms">
+                        LG전자 리뷰 등록 이벤트를 진행하여 생성한 콘텐츠와 그 안에 포함되어있는 결과물(이미지/글 등)에 대해 LG전자 마케팅 용도로의 활용을 위해 LG전자로 저작권을 양도합니다. 또한 LG전자에서 요청 시, 이미지 등의 결과물을 반드시 원본 파일로 제출해야 합니다.
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="b-txt">귀하께서는 본 동의를 거절하실 수 있습니다. 단 거절하신 경우 이벤트 참여가 제한 될 수 있습니다.</li>
+                    </ul>
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk3-1" name="agreechk-3" data-required="true">
+                            <label for="chk3-1">동의합니다</label>
+                        </span>
+                    </div>
+                </div>
             </div>
-    
             <div class="input-info">
                 <div class="tit-wrap">
-                    <!-- 210126 수정 - 타이틀 번호 삭제  -->
                     <h2 class="h2-tit">응모자 정보</h2>
                 </div>
                 <div class="form-wrap">
@@ -264,7 +267,7 @@
                         <dt class="tit"><label for="buyerName">이름</label></dt>
                         <dd class="conts">
                             <span class="input-wrap">
-                                <input type="text" class="disabled" name="name" value="" data-required="true" id="name" placeholder="이름을 입력해 주세요." readonly="">
+                                <input type="text" class="disabled" name="buyerName" value="" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly="">
                             </span>
                         </dd>
                     </dl>
@@ -274,15 +277,15 @@
                         </dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="number" class="disabled" name="phone" data-required="true" id="phone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly="">
+                                <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="" placeholder="‘-’없이 번호만 입력해 주세요." readonly="">
                             </div>
                         </dd>
                     </dl>
                     <dl class="forms">
-                        <dt class="tit"><label for="reply" class="req">댓글<span class="blind">필수입력</span></label></dt>
+                        <dt class="tit"><label for="reply" class="req">URL 주소<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                               <textarea id="reply" placeholder="댓글 입력"></textarea>
+                               <textarea id="reply" placeholder="URL 주소 입력"></textarea>
                             </div>
                         </dd>
                     </dl>
@@ -291,7 +294,7 @@
         </section>
         <footer class="pop-footer center" ui-modules="Footer">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>참여하기</span></button>
+                <button type="button" class="btn pink ui_modal_close"><span>참여하기</span></button>
             </div>
         </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

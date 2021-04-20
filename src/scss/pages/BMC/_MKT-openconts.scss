@@ -475,7 +475,107 @@
         }
     }
 
-    .event04{  
+    .event04{
+        .cheer-reply{
+            background-color:#f2f2f2;
+            dl{
+                display:inline-block;
+                padding:26px 10% 33px;
+                border:16px solid #e7e7e7;
+                border-radius: 81px;
+                background-color:#ffffff;
+                color:#000000;
+                justify-content:center;
+                @include mobile {
+                    padding:10px 10% 11px;
+                    border:5px solid #e7e7e7;
+                    border-radius: 32px;
+                }
+                dt{
+                    display:inline-block;
+                    margin-right:40px;
+                    font-size:42px;
+                    line-height:1.64;
+                    font-weight: 500;
+                    @include mobile {
+                        margin-right:20px;
+                        font-size:14px;
+                        line-height:23px;
+                        font-weight: 700;
+                    }
+                }
+                dd{
+                    display:inline-block;
+                    font-size:52px;
+                    line-height:69px;
+                    @include mobile {
+                        font-size:17px;
+                        line-height:23px;
+                    }
+                    em{
+                        color:#1dae95;
+                    }
+                }
+            }
+        }
+        .apply-wrap{
+            position:relative;
+            & .btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.hash{
+                        left: 53%;
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.event{
+                        left: 74%;
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
+        .app-down{
+            position:relative;
+            & .btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.android{
+                        left: 53%;
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        left: 74%;
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .event06{

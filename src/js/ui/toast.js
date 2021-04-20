@@ -34,9 +34,9 @@ vcui.define('ui/toast', ['jquery', 'vcui'], function ($, core) {
         _bindEvent: function(){
             var self = this;
 
-            self.$el.on('click', '.btn-area a', function(e){
+            self.$el.on('click', '.btn-area', function(e){
                 e.preventDefault();
-
+                
                 self.close();
             });
 
