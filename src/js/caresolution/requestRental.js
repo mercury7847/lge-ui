@@ -168,7 +168,7 @@
             },
             inatallDate: {
                 required: true,
-                errorMsg: "설치희망일을 선택해주세요.",
+                errorMsg: "설치희망일을 선택해주세요.<br>2주 내의 일정으로 선택하실 수 있습니다",
                 msgTarget: '.err-block'
             },
             preVisitAgree:{
