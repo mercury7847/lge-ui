@@ -139,7 +139,8 @@
                                 }
                                 dd {
                                     width:79.6%;
-                                    word-break: keep-all;
+                                    // word-break: keep-all;
+                                    word-break: break-all;
                                     .line {
                                         white-space: pre-line;
                                     }

@@ -24,9 +24,10 @@
             <!-- //210405 문구수정 -->
             <!-- //210329 문구수정 -->
             <!-- membership -->
+            <!-- 210419 수정 [전체 수정] -->
             <div class="contents membership">
                 <div class="page-tabs type3">
-                    <div class="tabs-wrap btn-type ui_tab">
+                    <div class="tabs-wrap border-type left ui_tab">
                         <ul class="tabs">
                             <li class="on"><a href="#benefit1">제품 구매 카드 혜택<em class="blind">선택됨</em></a></li>
                             <li><a href="#benefit2">케어솔루션 카드 혜택</a></li>
@@ -34,9 +35,9 @@
                     </div>
                 </div>
 
-                <div class="cont-wrap narrow">
+                <div class="cont-wrap">
                     <!-- 제품 구매 카드 혜택-->
-                    <div id="benefit1" class="section-wrap card-benefit-contents">
+                    <div id="benefit1" class="section-wrap card-benefit-contents buy-card">
                         <!-- 카드 종류 -->
                         <div class="sects">
                             <div class="tit-wrap type3">
@@ -47,7 +48,7 @@
                             </div>
     
                             <div class="cardinfo-tab-wrap">
-                                <div class="tabs-wrap border-type ui_tab ui_smooth_scroll left">
+                                <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
                                     <ul class="tabs">
                                         <li class="on"><a href="#card1">베스트샵 신한카드<em class="blind">선택됨</em></a></li>
                                         <li><a href="#card2">LG라서 즐거운 우리카드</a></li>
@@ -452,7 +453,7 @@
                     <!-- // 제품 구매 카드 혜택-->
 
                     <!-- 케어솔루션 카드 혜택-->
-                    <div id="benefit2" class="section-wrap card-benefit-contents">
+                    <div id="benefit2" class="section-wrap card-benefit-contents caresolution-card">
                         <!-- 카드 종류 -->
                         <div class="sects">
                             <div class="tit-wrap type3">
@@ -461,7 +462,7 @@
                             </div>
     
                             <div class="cardinfo-tab-wrap">
-                                <div class="tabs-wrap border-type ui_tab ui_smooth_scroll left">
+                                <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
                                     <ul class="tabs">
                                         <li class="on"><a href="#card2-1">[하나]LG전자 렌탈 플러스<em class="blind">선택됨</em></a></li>
                                         <li><a href="#card2-2">[신한]LG전자 렌탈 愛</a></li>
@@ -474,13 +475,16 @@
                                     @@include('./common/modules/benefit-card-infos.html', {
                                         "caresolutionType" : true,
                                         "cardImg" : "img-cards05",
+                                        "cardInfo" : [
+                                            "카드 신청에서 납부정보 변경까지 자동으로 연결되는 간편 신청은 카드 발급을 위해서 제휴카드사에서 고객님에게 전화를 드릴 예정이니 전화를 꼭 받아주세요.<br>(☎1800-1264)"
+                                        ],
                                         "url" : "https://www.hanacard.co.kr/OPI41000000D.web?schID=pcd&amp;mID=PI41009003P&amp;CD_PD_SEQ=9003&amp;",
 
                                         "basic" : {
                                             "title" : "특장점",
                                             "benefits" : [
-                                                "카드 신청에서 납부 정보 변경까지 한번에 되는 편리한 카드",
-                                                "아파트 관리비도 실적으로 인정되는 혜택 받기 편한 카드<!-- 210406 수정 [오타 수정] -->"
+                                                "카드신청에서 렌탈요금 자동이체 변경신청까지 한번에 되는 &ldquo;편리한 카드&rdquo;",
+                                                "&lsquo;아파트관리비&rsquo;도 실적으로 인정되는 실적 혜택 받기 편한 카드"
                                             ]
                                         },
 
@@ -504,8 +508,29 @@
                                                 { "td1" : "30만원 이상", "td2" : "13,000원" },
                                                 { "td1" : "120만원 이상", "td2" : "23,000원" },
                                             ],
-                                            "bullet" : "전월 실적 제외항목 : 각종 세금, 공과금, 수도/전기/도시가스, 대학(원)등록금, 학교납입금, 고용/산재/건강보험료납부금액, 국민연금, 상품권, 선불카드, 기프트카드 구매"
+                                            "bullet" : [
+                                                "전월 실적 제외항목 : 국세, 지방세, 공과금(인터넷/모바일앱을 통한 공과금 납부금액 포함), 국민연금/고용보험료/산재보험료/건강보험료 납부금액, 상품권 및 기프트카드 구매, 선불카드 및 선불전자지급수단(하나머니 등) 충전금액, 수도/전기요금, 도시가스 대학등록금, 초·중·고 학교납입금",
+                                                "상세조건 : 연체이자율(약정이율 + 최대 3%)은 회원별, 이용상품별로 차등 적용되며, 법정 최고금리(24%)를 초과하지 않습니다."
+                                            ]
                                         }
+                                    })
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTit" : "유의사항",
+                                        "bulletTxt" : [
+                                            "카드신청은 카드신청은 제품 설치 후 가능합니다.",
+                                            "간편신청이 가능한  제휴카드는 발급 후 납부정보가 해당카드로 자동 변경됩니다.",
+                                            "&lsquo;청구할인&rsquo;은 LG전자가 아닌 카드사에서 할인해주는 방식입니다. (청구할인 여부 내용은 해당 카드사에 문의바랍니다.)<br>따라서 요금 출금일에는 정상요금이 출금되고, 카드 대금 청구시점에 사용실적 기준이 충족되면 할인됩니다.",
+                                            "카드 발급 신청 시 상품설명서 및 상품약관을 반드시 확인하시기 바랍니다.",
+                                            "연체이자율(약정이율 + 최대 3%)은 회원별·이용상품별로 차등 적용되며, 법정 최고금리(24%)를 초과하지 않습니다. 단, 연체 발생 시점에 약정이율이 없는 경우는 아래와 같이 적용함",
+                                            "일시불 거래 연체 시 : 거래발생 시점의 최소기간(2개월)유이자 할부금리",
+                                            "무이자 할부 거래 연체 시 : 거래발생 시점의 동일한 할부계약기간의 유이자 할부금리",
+                                            "그 외의 경우 : 약정이율은 상법상 상사법정이율과 상호금융 가계대출금리* 중 높은 금리 적용",
+                                            "한국은행에서 매월 발표하는 가장 최근의 비은행 금융기관 가중평균대출금리(신규대출 기준)",
+                                            "<strong>신용카드 남용은 가계 경제에 위협이 됩니다.</strong>",
+                                            "<strong>여신금융상품 이용 시 귀하의 신용등급 또는 개인신용 평점이 하락할 수 있습니다.</strong>",
+                                            "여신금융협회 심의필 제 2021-C1h-00789호(2021.01.25~2022.01.24)",
+                                            "준법심의 A-21-0082 (2021.01.25~2022.01.24)"
+                                        ]
                                     })
                                 </div>
                                 <!-- // 하나 렌탈 카드 -->
@@ -515,6 +540,9 @@
                                     @@include('./common/modules/benefit-card-infos.html', {
                                         "caresolutionType" : true,
                                         "cardImg" : "img-cards06",
+                                        "cardInfo" : [
+                                            "카드 신청에서 납부정보 변경까지 자동으로 연결되는 간편 신청은 카드 발급을 위해서 제휴카드사에서 고객님에게 전화를 드릴 예정이니 전화를 꼭 받아주세요.<br>(☎1544-7118)"
+                                        ],
                                         "url" : "https://www.shinhancard.com/conts/person/card_info/dream/credit/life/1517350_46588.jsp",
 
                                         "basic" : {
@@ -546,8 +574,16 @@
                                                 { "td1" : "무실적기간 (카드 사용등록월~익월말일까지)", "td2" : "10,000원" },
                                                 { "td1" : "30만원 이상(3개월 후)", "td2" : "10,000원" },
                                             ],
-                                            "bullet" : "전월 실적 제외항목 : 각종 세금, 현금서비스, 카드론, 수수료, 이자, 연회비"
+                                            "bullet" : ["전월 실적 제외항목 : 각종 세금, 현금서비스, 카드론, 수수료, 이자, 연회비"]
                                         }
+                                    })
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTit" : "유의사항",
+                                        "bulletTxt" : [
+                                            "카드신청은 카드신청은 제품 설치 후 가능합니다.",
+                                            "간편신청이 가능한  제휴카드는 발급 후 납부정보가 해당카드로 자동 변경됩니다.",
+                                            "&lsquo;청구할인&rsquo;은 LG전자가 아닌 카드사에서 할인해주는 방식입니다. (청구할인 여부 내용은 해당 카드사에 문의바랍니다.)<br>따라서 요금 출금일에는 정상요금이 출금되고, 카드 대금 청구시점에 사용실적 기준이 충족되면 할인됩니다."
+                                        ]
                                     })
                                 </div>
                                 <!-- // 신한 렌탈 카드 -->
@@ -558,6 +594,9 @@
                                         "caresolutionType" : true,
                                         "cardImg" : "img-cards07",
                                         "imgV" : true,
+                                        "cardInfo" : [
+                                            "카드 신청에서 납부정보 변경까지 자동으로 연결되는 간편 신청은 카드 발급을 위해서 제휴카드사에서 고객님에게 전화를 드릴 예정이니 전화를 꼭 받아주세요.<br>(☎1577-9469)"
+                                        ],
                                         "url" : "https://www.lottecard.co.kr/app/LPCDADB_V100.lc?vtCdKndC=P12217-A12217",
 
                                         "basic" : {
@@ -583,29 +622,40 @@
                                                 { "td1" : "70만원 이상", "td2" : "17,000원" },
                                                 { "td1" : "120만원 이상", "td2" : "23,000원" },
                                             ],
-                                            "bullet" : "전월 실적 제외항목 : LG전자 장기할부 납부금, 취소매출, 렌탈료 전액, 단기카드대출(현금서비스), 장기카드대출(카드론), 연회비, 이자, 수수료, 국세, 지방세, 아파트관리비"
+                                            "bullet" : [
+                                                "전월 실적 제외항목 : 현금서비스, 카드론, 수수료, 이자, 연회비, 케어솔루션 요금 자동이체, 아파트관리비, 국세, 지방세, 취소매출 등 자세한 내용은 홈페이지 상품공시실 및 상품안내장 참조"
+                                            ]
                                         }
+                                    })
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTit" : "유의사항",
+                                        "bulletTxt" : [
+                                            "카드신청은 카드신청은 제품 설치 후 가능합니다.",
+                                            "간편신청이 가능한  제휴카드는 발급 후 납부정보가 해당카드로 자동 변경됩니다.",
+                                            "&lsquo;청구할인&rsquo;은 LG전자가 아닌 카드사에서 할인해주는 방식입니다. (청구할인 여부 내용은 해당 카드사에 문의바랍니다.)<br>따라서 요금 출금일에는 정상요금이 출금되고, 카드 대금 청구시점에 사용실적 기준이 충족되면 할인됩니다.",
+                                            "카드 발급 신청 시 상품설명서 및 상품약관을 반드시 확인하시기 바랍니다.",
+                                            "연체이자율 : 회원별 이용상품별 약정이율+최대 3%, 법정 최고금리(연 24%)이내",
+                                            "단, 연체 발생 시점에 약정이율이 없는 경우 아래와 같이 약정이율을 적용",
+                                            "일시불 거래 연체 시 : 거래 발생 시점의 최소기간(2개월) 유이자 할부 금리",
+                                            "무이자 할부 거래연체 시 : 거래 발생 시점의 동일한 할부 계약기간의 유이자 할부 금리",
+                                            "카드 신청 전 혜택 및 이용조건은 홈페이지 또는 상품설명서, 약관의 내용을 확인 하시기 바랍니다.",
+                                            "업종을 기준으로 제공되는 혜택은 롯데카드에 등록된 가맹점 업종을 기준으로 제공됩니다.",
+                                            "<strong>신용카드 남용은 가계 경제에 위협이 됩니다.</strong>",
+                                            "<strong>여신금융상품 이용 시 귀하의 신용등급 또는 개인신용 평점이 하락할 수 있습니다.</strong>",
+                                            "여신협회 여신금융협회 심의필 제2021-C1h-01221호(2021.02.17)",
+                                            "준법감시인 심의필 제2021-E00626호(2021.02.02)"
+                                        ]
                                     })
                                 </div>
                                 <!-- // 롯데 렌탈 카드 -->
                             </div>
-
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "유의사항",
-                                "bulletTxt" : [
-                                    "카드신청은 카드신청은 제품 설치 후 가능합니다.",
-                                    "간편신청이 가능한  제휴카드는 발급 후 납부정보가 해당카드로 자동 변경됩니다.",
-                                    "‘청구할인’은 LG전자가 아닌 카드사에서 할인해주는 방식입니다. (청구할인 여부 내용은 해당 카드사에 문의바랍니다)<br>따라서 요금 출금일에는 정상요금이 출금되고, 카드 대금 청구시점에 사용실적 기준이 충족되면 할인됩니다."
-                                ]
-                            })
                         </div>
                         <!-- // 카드 종류 -->
 
                         <!-- 케어솔루션 이용료 할인 받는 카드 혜택 -->
                         <div class="sects">
                             <div class="tit-wrap">
-                                <h3 class="tit">케어솔루션 이용료 할인 받는 카드 혜택</h3>
+                                <h3 class="tit">케어솔루션 이용료 할인 <br class="mo-only">받는 카드 혜택</h3>
                             </div>
                             <p class="accord-desc">카드혜택정보를 확인하고 월이용료를 할인 받아 보세요.</p>
                             <div class="card-benefit-accordion ui_accordion" data-single-open="false">
@@ -629,14 +679,14 @@
                                                     <div class="info-sect">
                                                         <p class="tit">특장점</p>
                                                         <ul class="desc">
-                                                            <li>무실적 기간에도 월 15,000원 혜택</li>
-                                                            <li>월 30만원 이상 사용시 월 15,000원 할인(캐시백)</li>
+                                                            <li>무실적 기간에도 월 13,000원 혜택</li>
+                                                            <li>월 30만원 이상 사용시 월 13,000원 할인(캐시백)</li>
                                                         </ul>
                                                     </div>
                                                     <div class="info-sect">
                                                         <p class="tit">연회비</p>
                                                         <ul class="desc">
-                                                            <li>국내전용 7,000원, Master 10,000원</li>
+                                                            <li>국내전용 14,000원, 해외 15,000원</li>
                                                         </ul>
                                                     </div>
                                                     <div class="info-sect">
@@ -657,11 +707,11 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>무실적기간 (카드 사용등록월)</td>
-                                                                        <td>15,000원</td>
+                                                                        <td>13,000원</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>30만원 이상</td>
-                                                                        <td>15,000원</td>
+                                                                        <td>13,000원</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>100만원 이상</td>
@@ -672,7 +722,76 @@
                                                         </div>
                                                         @@include('./common/modules/bullet-list.html', {
                                                             "bulletTxt" : [
-                                                                "전월 실적 제외항목 : 아파트관리비, 대중교통 이용대금, 현금 서비스, 카드론, 연회비, 각종 수수료, 이자 납부액, 무이자 할부 이용금액, 혜택 받은 이용액 제외, 기프트 카드 구입 및 충전 금액, 각종 상품권 구입 금액, 대학(원)등록금, 각종 세금"
+                                                                "전월 실적 제외항목 : 무이자할부, 단기카드대출(현금서비스), 장기카드대촐(카드론), 제세공과금, 국세, 지방세, 관세, 과태료, 건강보험, 국민연금, 고용보험,장애인 고용부담금, 아파트관리비, 대학교(대학원) 등록금, 이자, 기프트/선불카드(전자지급수단포함) 구매 및 충전금액, 상품권(모바일상품권 포함) 구매, 거래 취소 건, 연회비, 제수수료(SMS수수료,할부수수료,단기카드대출(현금서비스)수수료, 해외사용수수료 등)"
+                                                            ]
+                                                        })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="lists">
+                                        <div class="head">
+                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
+                                                <span class="title">[전북] 베스트케어</span>
+                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
+                                            </a>
+                                        </div>
+                                        <div class="accord-cont ui_accord_content">
+                                            <p class="card-name">[전북] 베스트케어</p>
+                                            <div class="accord-inner">
+                                                <div class="cell cards">
+                                                    <span class="image"><img src="/lg5-common/images/BMC/img-cards05-6.png" alt="[전북] 베스트케어 카드"></span>
+                                                    <a href="#n" class="btn size-m border"><span>카드 신청하기</span></a>
+                                                    <p class="num">대표번호 : 1588-4477</p>
+                                                </div>
+                                                <div class="cell infos-wrap">
+                                                    <div class="info-sect">
+                                                        <p class="tit">특장점</p>
+                                                        <ul class="desc">
+                                                            <li>LG전자 케어솔루션/케어십 이용시, 월 최대 20,000원 청구할인 혜택</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="info-sect">
+                                                        <p class="tit">연회비</p>
+                                                        <ul class="desc">
+                                                            <li>국내전용 14,000원, Master 15,000원</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="info-sect">
+                                                        <p class="tit">할인혜택</p>
+                                                        <div class="tb_row tb-row-bl">
+                                                            <table>
+                                                                <caption>전월실적에 따른 월요금 청구할인 금액 안내</caption>
+                                                                <colgroup>
+                                                                    <col style="width:50%">
+                                                                    <col>
+                                                                </colgroup>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">전월실적</th>
+                                                                        <th scope="col">월요금 청구할인</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>무실적기간 (카드 사용등록월)</td>
+                                                                        <td>8,000원</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>30만원 이상</td>
+                                                                        <td>8,000원</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>100만원 이상</td>
+                                                                        <td>20,000원</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "전월 실적 제외항목 : 무이자할부, 장/단기카드대출(카드론,현금서비스), 제세공과금, 국세, 지방세, 관세, 과태료, 건강보험, 국민연금, 고용보험, 장애인 고용부담금, 아파트관리비, 대학교(대학원)등록금, 이자, 기프트/선불카드(전자지급수단포함) 구매 및 충전금액, 상품권(모바일상품권) 구매, 거래 취소 건, 연회비, 제수수료(SMS수수료, 할부수수료, 단기카드대출(현금서비스 수수료), 해외사용 수수료 등)"
                                                             ]
                                                         })
                                                     </div>
@@ -699,7 +818,7 @@
                                                     <div class="info-sect">
                                                         <p class="tit">특장점</p>
                                                         <ul class="desc">
-                                                            <li>추가 청구할인 프로모션 진행중!</li>
+                                                            <li>케어솔루션 월 자동이체 요금 1~60개월 할인 적용</li>
                                                         </ul>
                                                     </div>
                                                     <div class="info-sect">
@@ -726,11 +845,11 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>무실적기간 (카드 사용등록월)</td>
-                                                                        <td>13,000원</td>
+                                                                        <td>15,000원</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>30만원 이상</td>
-                                                                        <td>13,000원</td>
+                                                                        <td>13,000원/15,000원*</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>100만원 이상</td>
@@ -741,7 +860,8 @@
                                                         </div>
                                                         @@include('./common/modules/bullet-list.html', {
                                                             "bulletTxt" : [
-                                                                "전월 실적 제외항목 : 아파트관리비, 무이자 할부, 해외매출, 각종 세금, 현금서비스, 카드론, 수수료, 이자, 연회비"
+                                                                "전월 실적 제외항목 : 아파트관리비, 무이자 할부, 해외매출, 각종 세금, 현금서비스, 카드론, 수수료, 이자, 연회비",
+                                                                "상기 할인혜택은 해당카드 신규 발급고객 대상 2,000원 추가 할인 (5개월 차부터 12개월 동안)"
                                                             ]
                                                         })
                                                     </div>
@@ -762,7 +882,19 @@
                                                 <div class="cell cards">
                                                     <span class="image type2"><img src="/lg5-common/images/BMC/img-cards05-3.jpg" alt="[현대] LG전자 현대카드 M Edition3 카드"></span>
                                                     <a href="#n" class="btn size-m border"><span>카드 신청하기</span></a>
-                                                    <p class="num">대표번호 : 02-2655-6035</p>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "topBorder" : true,
+                                                        "bulletTxt" : [
+                                                            "연체이자율: 회원별·이용상품별 정상이자율 + 3% (최고 연 24.0%)<br>- 연체 발생시점에 정상이자율이 없는 경우 아래와 같이 적용<br>① 일시불: 거래 발생시점의 최소 기간(2개월)의 유이자할부 약정금리<br>② 무이자할부: 거래 발생시점 기준 동일한 할부 계약 기간의 유이자할부 약정금리",
+                                                            "<strong>여신금융상품 이용 시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다.</strong>",
+                                                            "<strong>신용카드 남용은 가계경제에 위협이 됩니다.</strong>",
+                                                            "상품의 자세한 혜택 및 이용 조건에 대한 내용은 카드 신청 전 현대카드 홈페이지 및 상품설명서, 약관 참고",
+                                                            "여신금융협회심의필 제2021-C1h-00312호(2021.01.15)",
+                                                        ]
+                                                    })
+                                                    <div class="detail-view-btn">
+                                                        <a href="@@url" class="btn-link" target="_blank" title="새창열림">카드 정보 자세히 보기</a>
+                                                    </div>
                                                 </div>
                                                 <div class="cell infos-wrap">
                                                     <div class="info-sect">
@@ -917,13 +1049,13 @@
                                                     <div class="info-sect">
                                                         <p class="tit">특장점</p>
                                                         <ul class="desc">
-                                                            <li>무실적 기간에도 월 120,000원 청구할인 혜택</li>
+                                                            <li>무실적 기간에도 월 10,000원 청구할인 혜택</li>
                                                         </ul>
                                                     </div>
                                                     <div class="info-sect">
                                                         <p class="tit">연회비</p>
                                                         <ul class="desc">
-                                                            <li>국내전용 15,000원, 해외 17,000원</li>
+                                                            <li>국내전용 15,000원, 해외 15,000원</li>
                                                         </ul>
                                                     </div>
                                                     <div class="info-sect">
@@ -986,6 +1118,7 @@
                     <!-- // 케어솔루션 카드 혜택-->
                 </div>
             </div>
+            <!-- // 210419 수정 [전체 수정] -->
             <!-- // membership -->
         </div>
         
