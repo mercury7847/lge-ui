@@ -31,6 +31,15 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             });
             self._resize();
             //$(window).trigger('addResizeCallback', self._resize.bind(self));
+
+            if(!vcui.detect.isMobileDevice){
+                self.$el.on('click', 'a', function(e){
+                    var exist = $(this).attr('href').indexOf("tel");
+                    if(exist > -1){
+                        e.preventDefault();
+                    }
+                });
+            }
         },
 
         _addMobileLinks: function(){
