@@ -652,6 +652,11 @@
                     &[class*="select"],
                     &[class*="color"] {
                         margin-top: 24px;
+                        @include pc {
+                            .text {
+                                margin-top: -8px;
+                            }
+                        }
                     }
                     &[class*="color"] {
                         .text {
