@@ -153,11 +153,22 @@
 				vertical-align:top;
 			}
 			img {
-				display: inline-block;
 				width:auto;
 				max-width:100%;
 				height:auto;
 				vertical-align:top;
+				&.pc-only {
+					display: inline-block;
+					@include mobile {
+						display: none;
+					}
+				}
+				&.mo-only {
+					display: inline-block;
+					@include pc {
+						display: none;
+					}
+				}
 			}
 			.bullet-list {
 				max-width:1380px;
