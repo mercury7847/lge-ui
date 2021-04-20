@@ -540,7 +540,7 @@
                 }
                 dt {
                     color: #767676;
-                    max-width: 112px;
+                    max-width: 115px;
                     width: 100%;
                 }
                 dd {
@@ -615,6 +615,9 @@
                 }
                 &-list {
                     margin-top: 12px;
+                    dt {
+                        max-width:100px;
+                    }
                 }
             }
         }

@@ -1414,16 +1414,14 @@
     }
 
     .pc-only {
-        display:block;
         @include mobile {
             display:none;
         }
     }
 
     .mo-only {
-        display:none;
-        @include mobile {
-            display:block;
+        @include pc {
+            display:none;
         }
     }
 
