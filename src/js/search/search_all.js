@@ -44,16 +44,16 @@
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
-            '{{#if obsFlag=="Y"}}' +
+            '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
             '<div class="info-price">' +
                 '<a href="{{url}}">' +
-                    '{{#if hasCare && carePrice != "0"}}' +
+                    '{{#if rentalTabFlag=="Y" && carePrice != "0"}}' +
                     '<div class="price-info rental">' +
                         '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
-                    '{{#if !rentalFlag}}' +
+                    '{{#if obsFlag=="Y"}}' +
                         '<div class="original">' +
                             '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
@@ -202,14 +202,14 @@
         '</div>' +
     '</div></li>';
 
-    var searchBnrTemplate = 
-        '<a href="{{url}}" target="{{target}}">'+
-            '<img data-pc-src="{{pcImage}}" data-m-src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{/if}}">'+
-            // '<div class="text-area">'+
-            //     '<strong class="title">{{#raw title}}</strong>'+
-            //     '<span class="sub-copy">{{#raw desc}}</span>'+
-            // '</div>'+
-        '</a>';
+    var searchBnrTemplate = '<a href="{{url}}" target="{{target}}">'+
+        '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="pc-only">' +
+        '<img src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{/if}}" class="mo-only">' +
+        // '<div class="text-area">'+
+        //     '<strong class="title">{{#raw title}}</strong>'+
+        //     '<span class="sub-copy">{{#raw desc}}</span>'+
+        // '</div>'+
+    '</a>'
 
     $(window).ready(function() {
         var search = {

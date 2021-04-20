@@ -49,10 +49,10 @@ img{
 		top: 110px;
 		left: 0;
 		width: 100%;
-		height: calc(100vh - 110px);
+		height: calc(100% - 110px);
 		@include mobile {
 			top: 84px;
-			height: calc(100vh - 84px);
+			height: calc(100% - 84px);
 		}
 		img {
 			position: absolute;

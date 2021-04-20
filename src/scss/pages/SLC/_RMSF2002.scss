@@ -664,6 +664,11 @@ br.m {
                                         background-image:url('/lg5-common/images/SLC/icon-service.png');
                                     }
                                 }
+                                &[class*="7-7"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-06.png');
+                                    }
+                                }
                                 // 안마의자
                                 &[class*="8-1"] {
                                     &::before {
