@@ -10,15 +10,19 @@
     var ReplyEvent = {
         init: function() {
             var self = this;
+
             vcui.require(['ui/pagination','helper/textMasking'], function () {
                 self.txtMasking = new vcui.helper.TextMasking();
                 self.setting();
-                self.bindEvent();
-                self.requestData(1);
-
-                var apply = self.$wrap.data('isApply');
-                if(lgkorUI.stringToBool(apply)) {
-                    self.$btns.addClass('apply');
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                } else {
+                    self.bindEvent();
+                    self.requestData(1);
+                    var apply = self.$wrap.data('isApply');
+                    if(lgkorUI.stringToBool(apply)) {
+                        self.$btns.addClass('apply');
+                    }   
                 }
             });
         },
