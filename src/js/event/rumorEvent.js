@@ -60,7 +60,7 @@
 
                  //체크
                 var param = {};
-                var $chk = self.$replyPopup.find('#chk1-1');
+                var $chk = self.$snsPopup.find('#chk1-1');
                 if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 수집 이용 동의는 필수입니다.'});
@@ -71,7 +71,7 @@
                     }
                 }
 
-                $chk = self.$replyPopup.find('#chk2-1');
+                $chk = self.$snsPopup.find('#chk2-1');
                 if($chk.length) {
                     if(!$chk.is(':checked')) {
                         lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
@@ -82,10 +82,10 @@
                     }
                 }
 
-                $chk = self.$replyPopup.find('#chk3-1');
+                $chk = self.$snsPopup.find('#chk3-1');
                 if($chk.length) {
                     if(!$chk.is(':checked')) {
-                        lgkorUI.alert("", {title: '개인정보 처리 위탁 동의는 필수입니다.'});
+                        lgkorUI.alert("", {title: '콘텐츠 저작권 양도 동의는 필수입니다.'});
                         $chk.focus();
                         return;
                     } else {
@@ -98,17 +98,17 @@
                 if(checkReply.length > 0) {
                     param.reply = reply;
                 } else {
-                    lgkorUI.alert("", {title: '댓글을 입력해주세요.'});
+                    lgkorUI.alert("", {title: 'URL주소를 입력해주세요.'});
                     return;
                 }
 
-                var eventId = self.$wrap.data('eventId');
+                var eventId = self.$event4.data('eventId');
                 param.eventId = eventId;
 
                 var isApplication = isApp();
                 param.isApp = isApplication ? "Y" : "N";
 
-                var ajaxUrl = self.$wrap.data('replyUrl');
+                var ajaxUrl = self.$event4.data('sendUrl');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result) {
                     var data = result.data;
@@ -124,64 +124,9 @@
                             }
                         }});
 
-                        self.$replyPopup.vcModal('close');
-                        self.requestData(1);
+                        self.$event4.vcModal('close');
                     }
                 });
-            });
-        },
-
-        requestData: function (page) {
-            var self = this;
-
-            var param = {};
-            var eventId = self.$wrap.data('eventId');
-            param.eventId = eventId;
-            param.page = page;
-
-            var ajaxUrl = self.$wrap.attr('data-list-url');
-            lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                var data = result.data;
-                self.$pagination.vcPagination('setPageInfo',data.pagination);
-                $('#totalCount em').text(vcui.number.addComma(data.totalCnt));
-                var $ul = self.$wrap.find('ul');
-                $ul.empty();
-                var arr = (data.listData && data.listData instanceof Array) ? data.listData : [];
-                arr.forEach(function(item, index) {
-                    item.isApp = lgkorUI.stringToBool(item.isApp);
-                    item.name = self.txtMasking.name(item.name);
-                    $ul.append(vcui.template(replayEventItemTemplate, item));
-                });
-
-                if(lgkorUI.stringToBool(data.isApply)) {
-                    self.$btns.addClass('apply');
-                } else {
-                    self.$btns.removeClass('apply');
-                }
-
-                if(lgkorUI.stringToBool(data.isToday)) {
-                    self.$btnWrap.find('a.write').data('isToday','Y');
-                }
-
-                if(data.userName) {
-                    self.$name.val(data.userName);
-                } else {
-                    self.$name.val('');
-                }
-
-                if(data.userPhone) {
-                    self.$phone.val(data.userPhone);
-                } else {
-                    self.$phone.val('');
-                }
-
-                var loginUrl = result.loginUrl;
-                if(loginUrl) {
-                    self.$wrap.data('loginUrl', loginUrl);
-                } else {
-                    self.$wrap.data('loginUrl', "");
-                }
             });
         }
     }
