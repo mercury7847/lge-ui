@@ -42,14 +42,15 @@
                     return;
                 }
 
-                self.$snsPopup.vcModal();
+                self.$snsPopup.vcModal({opener: this});
             });
 
             //팝업 참여하기
             self.$snsPopup.on('click','.pop-footer .btn-group button',function (e) {
+                console.log('222?');
                 e.preventDefault();
                 //로그인을 해야 하는가
-                var login = self.$wrap.data('loginUrl');
+                var login = self.$event4.data('loginUrl');
                 if(login && login.length > 0) {
                     var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
                         location.href = login;
@@ -124,7 +125,8 @@
                             }
                         }});
 
-                        self.$event4.vcModal('close');
+                        console.log('clise?');
+                        self.$snsPopup.vcModal('close');
                     }
                 });
             });
