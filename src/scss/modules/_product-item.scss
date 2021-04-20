@@ -780,6 +780,8 @@
                         @include mobile {
                             font-size:24px;
                             line-height:33px;
+                            word-break:keep-all;
+                            word-wrap:break-word;
                         }
                     }
 
