@@ -90,7 +90,6 @@
 
         $('.cont-wrap > .btn-close').on('click', function(e){
             e.preventDefault();
-
             window.close();
         });
 
@@ -140,7 +139,7 @@
         });
     }
 
-    $(window).load(function(){
+    $(document).ready(function() {
         init();
-    })
+    });
 })();
