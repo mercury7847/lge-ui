@@ -518,9 +518,38 @@
                 }
             }
         }
+        .apply-wrap{
+            position:relative;
+            & .btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.hash{
+                        left: 53%;
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.event{
+                        left: 74%;
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
         .app-down{
             position:relative;
-            & .app-btns{
+            & .btns{
                 a{
                     display:inline-block;
                     position:absolute;
