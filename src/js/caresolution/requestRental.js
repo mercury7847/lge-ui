@@ -477,7 +477,7 @@
         });
 
         $(window).on('beforeunload', function(e){
-            if(isBeforeUnload) return '변경사항이 저장되지 않을 수 있습니다.'
+            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
         });
     }
 

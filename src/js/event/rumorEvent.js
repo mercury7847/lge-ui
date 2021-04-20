@@ -23,6 +23,7 @@
             //해쉬태그 복사
             self.$btns.on('click','a.hash',function (e) {
                 e.preventDefault();
+
                 var hash = self.$event4.data('hash');
                 if(hash) {
                     vcui.dom.copyToClipboard(hash, {
@@ -36,6 +37,12 @@
             //이벤트 응모
             self.$btns.on('click','a.event',function (e) {
                 e.preventDefault();
+
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+
                 //로그인을 해야 하는가
                 var login = self.$event4.data('loginUrl');
                 if(login && login.length > 0) {
@@ -51,8 +58,13 @@
 
             //팝업 참여하기
             self.$snsPopup.on('click','.pop-footer .btn-group button',function (e) {
-                console.log('222?');
                 e.preventDefault();
+
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+
                 //로그인을 해야 하는가
                 var login = self.$event4.data('loginUrl');
                 if(login && login.length > 0) {
@@ -129,7 +141,6 @@
                             }
                         }});
 
-                        console.log('clise?');
                         self.$snsPopup.vcModal('close');
                     }
                 });
