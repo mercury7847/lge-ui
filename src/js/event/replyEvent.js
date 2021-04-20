@@ -14,15 +14,12 @@
             vcui.require(['ui/pagination','helper/textMasking'], function () {
                 self.txtMasking = new vcui.helper.TextMasking();
                 self.setting();
-                if(self.$wrap.data('eventRestrictFlag') == "Y") {
-                    lgkorUI.alert("", {title: "서버 점검중입니다."});
-                } else {
-                    self.bindEvent();
-                    self.requestData(1);
-                    var apply = self.$wrap.data('isApply');
-                    if(lgkorUI.stringToBool(apply)) {
-                        self.$btns.addClass('apply');
-                    }   
+                self.bindEvent();
+                self.requestData(1);
+                
+                var apply = self.$wrap.data('isApply');
+                if(lgkorUI.stringToBool(apply)) {
+                    self.$btns.addClass('apply');
                 }
             });
         },
@@ -49,6 +46,11 @@
             self.$btnWrap.on('click','a.write',function (e) {
                 e.preventDefault();
 
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+
                 if(lgkorUI.stringToBool($(this).data('isToday'))) {
                     //금일 이미 참여한 이벤트
                     lgkorUI.alert("", {title: '하루에 한번만 참여 가능합니다.'});
@@ -73,6 +75,12 @@
             //당첨확인
             self.$btnWrap.on('click','a.result',function (e) {
                 e.preventDefault();
+
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+
                 //로그인을 해야 하는가
                 var login = self.$wrap.data('loginUrl');
                 if(login && login.length > 0) {
@@ -112,6 +120,12 @@
             //팝업 댓글쓰기
             self.$replyPopup.on('click','.pop-footer .btn-group button',function (e) {
                 e.preventDefault();
+
+                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+                
                 //로그인을 해야 하는가
                 var login = self.$wrap.data('loginUrl');
                 if(login && login.length > 0) {
