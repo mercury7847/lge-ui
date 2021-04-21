@@ -843,7 +843,7 @@
                         directDiscount: "0",
                     },
                     door2: {
-                        name: "중간",
+                        name: "중칸",
                         code: "K330MM",
                         defaultPrice: "0",
                         memberDiscount: "0",
@@ -3731,6 +3731,7 @@
                 modelSimulator.openMyPickModel(modelCode, modelcate);
                 modelSimulator.closeProposeModel();
                 //modelSimulator.mobileStep(".simul_step2");
+                myPickBtnFn();
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                 }, 500);
@@ -4565,7 +4566,7 @@
                             } else if (k == 1) {
                                 doorDirection = "MM";
                                 doorLocation = "MM";
-                                doorKLocation = "중간";
+                                doorKLocation = "중칸";
                                 doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
                             } else if (k == 2) {
                                 doorDirection = "BB";
