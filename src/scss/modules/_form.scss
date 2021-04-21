@@ -1938,9 +1938,22 @@ $input: (chk, rdo);
     }
 }
 
+.bookmark-wrap {
+    .txt {
+        font-size:16px;
+        line-height:24px;
+        vertical-align:middle;
+        @include mobile {
+            font-size:14px;
+            line-height:26px;
+        }
+    }
+}
+
 .chk-bookmark-wrap {
     display: inline-block;
     position: relative;
+    vertical-align:middle;
     input {
         position: absolute;
         width: 100%;
