@@ -45,8 +45,8 @@
                     @include mobile {
                         margin-top:4px;
                         span {
-                            float:left;
-                            width:50%;
+                            // float:left;
+                            // width:50%;
                             .pc_txt {
                                 display:none;
                             }
@@ -55,7 +55,7 @@
                     .mo_txt {
                         display:none;
                         @include mobile {
-                            display:block;
+                            // display:block;
                             color:#767676;
                             text-align:left;
                         }

@@ -35,12 +35,12 @@ $(window).ready(function(){
 					'<p class="hidden pc">{{storyTitle}}</p>'+
 					'<p class="hidden mobile">{{storyTitle}}</p>'+
 					'<div class="animation-area">'+
-						'<video autoplay muted loop style="background:#333333;">'+
+						'<video controls autoplay muted loop style="background:#333333;">'+
 							'<source src="{{storyMovieUrl}}" type="video/mp4">'+
 						'</video>'+
-						'<div class="controller-wrap wa-btn">'+
-							'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>'+
-						'</div>'+
+						// '<div class="controller-wrap wa-btn">'+
+						// 	'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>'+
+						// '</div>'+
 					'</div>'+
 				'</div>'+
 				'{{/if}}'+
