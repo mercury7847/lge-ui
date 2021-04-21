@@ -93,6 +93,7 @@
             margin-top:48px;
             padding:0 48px;
             @include mobile {
+                align-items:start;
                 margin:0;
                 padding:0 16px;
             }
@@ -108,7 +109,7 @@
                     font-weight:$font-weight-bold;
                     vertical-align:middle;
                     @include mobile {
-
+                        max-width:150px;
                     }
                 }
                 .flag-wrap {
@@ -132,6 +133,9 @@
                 }
                 .link-btn-wrap {
                     margin-left: 24px;
+                }
+                @include mobile {
+                    padding-top:17px;
                 }
             }
         }
