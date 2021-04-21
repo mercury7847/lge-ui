@@ -75,7 +75,10 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 .pop_body h2 {margin: 20px 0 10px 0; font-size: 18px; font-weight: normal;}
 .pop_body h2 strong {color: #c30754; font-weight: bold;}
 /* 210408 pb start */
-.pop_close_btn {position: absolute; right: 15px; top: 35px;}/* 210421 수정 */
+/* 210421 수정 */
+.pop_close_btn {position: absolute; right: 15px; top: 35px;}
+.pop_close_btn button {background: none; cursor: pointer;}
+/* //210421 수정 */
 .event-template {position:relative;max-width:1200px;margin:0 auto;}
 
 .event-template .summary-visual {position:relative; background:#202020;}
