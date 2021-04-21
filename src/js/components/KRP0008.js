@@ -1346,7 +1346,7 @@
                 //간편 신청 카드
                 if(simpleCardData.length > 0) {
                     arr.push({
-                        "groupTitle":"----------------------------------- 간편 신청 가능 카드",
+                        "groupTitle":"간편 신청 가능 카드",
                         "listItem":simpleCardData
                     });
                 }
@@ -1354,7 +1354,7 @@
                 //개별 신청 카드
                 if(individualCardData.length > 0) {
                     arr.push({
-                        "groupTitle":"----------------------------------- 개별 신청 필요 카드",
+                        "groupTitle":"개별 신청 필요 카드",
                         "listItem":individualCardData
                     });
                 }
@@ -1379,6 +1379,7 @@
                                 if(!item.cardNameCode) {
                                     item.label = "선택취소"
                                 }
+                                //item.maxSaleString = item.maxSalePrice ? vcui.number.addComma(item.maxSalePrice) : null;
                                 selectList.append(vcui.template(cardItemTemplate, item));
                             });
                         }
