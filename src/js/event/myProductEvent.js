@@ -12,6 +12,11 @@
             $('.event14 .btns a').on('click', function(e){
                 e.preventDefault();
 
+                if($(this).data('eventRestrictFlag') == "Y") {
+                    lgkorUI.alert("", {title: "서버 점검중입니다."});
+                    return;
+                }
+
                 var loginUrl = $(this).data('loginUrl');
                 if(loginUrl && loginUrl.length > 0){
                     var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
