@@ -270,8 +270,8 @@
             padding-bottom:48px;
             text-align:left;
             @include mobile {
-                height:calc(100% - 82px);
-                max-height:calc(100% - 82px);
+                height:calc(100% - 62px);
+                max-height:calc(100% - 62px);
             }
         }
         &.support {
@@ -658,6 +658,16 @@
 
 // 공통 팝업
 .popup-wrap {
+    .pc-only {
+        @include mobile {
+            display: none;
+        }
+    }
+    .mo-only {
+        @include pc {
+            display: none;
+        }
+    }
     .common-pop {
         // 팝업 기본
         .info-req {

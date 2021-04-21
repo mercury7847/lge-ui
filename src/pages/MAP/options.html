@@ -343,11 +343,10 @@
     <button type="button" class="btn-opt-login" id="btn-barcode"><span>바코드로 제품등록</span></button>
 
     <div class="lyr-opt-panel">
-        <div class="main-panel" aria-hidden="true" aria-labelledby="main-panel-title" tabindex="0">
-            <!-- <div class="gap"></div> -->
+        <div class="main-panel">
             <div class="opt-header">
+            	<button type="button" class="btn-opt-close"><span>닫기</span></button>
                 <h1 id="main-panel-title">설정</h1>
-                <button type="button" class="btn-opt-close"><span>닫기</span></button>
             </div>
 
             <div class="opt-container">
@@ -406,7 +405,7 @@
                     <div class="type03">
                         <div>
                             <label for="locInfo">위치정보 이용동의</label>
-                            <a href="/location/agreement" class="btn-text">위치정보 서비스 이용약관 전문보기 &gt;</a>
+                            <a href="javascript:void(0);" class="btn-text">위치정보 서비스 이용약관 전문보기 &gt;</a>
                         </div>
                         <label for="locInfo">
                             <div class="opt-switch">
@@ -427,8 +426,8 @@
                     <h2>버전정보</h2>
                     <div class="v-align">
                         <p>
-                            <span>설치 버전 v_00.00</span>
-                            <span>최신버전 <em>v_00.00</em></span>
+                            <span>현재 버전 v_<span id="thisVersion">00.00</span></span>
+                            <span>최신 버전 <em>v_<span id="lastVersion">00.00</span></em></span>
                         </p>
                         <!-- 비활성화 -->
                         <button type="button" class="btn-opt-update" disabled><span>업데이트</span></button>
@@ -445,32 +444,32 @@
         </div>
         <!-- //설정 메인 -->
 
-        <div class="sub-panel alarm-setting" aria-hidden="true" aria-labelledby="sub-panel-title01" tabindex="0">
+        <div class="sub-panel alarm-setting" aria-hidden="true">
             <div class="opt-header type-sub">
-                <button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전</span></button>
+            	<button type="button" data-panel=".alarm-setting" id="sub-panel-title01" class="btn-opt-prev"><span>이전</span></button>
                 <h1>알림설정</h1>
             </div>
 
             <div class="opt-container">
                 <div class="opt-controls">
                     <div class="type02">
-                        <label for="pushAlarm">
-                            푸시 알림 받기
-                            <div class="opt-switch">
+                    	<label for="pushAlarm">
+                        	푸시 알림 받기
+                        	<div class="opt-switch">
                                 <input type="checkbox" id="pushAlarm" aria-controls="ctrlArea" aria-expanded="false">
                                 <span></span>
-                            </div>
+                        	</div>
                         </label>
                     </div>
 
                     <!-- 안드로이드 인 경우에만 사용 -->
-                    <div class="type02 disabled">
-                        <label for="badgeAlarm">
-                            배지 알림 받기
-                            <div class="opt-switch">
-                                <input type="checkbox" id="badgeAlarm" disabled>
+                    <div class="type02 disabled androidExclusive">
+                    	<label for="badgeAlarm">
+                    		배지 알림 받기
+    	                    <div class="opt-switch">
+                                <input type="checkbox" id="badgeAlarm"  disabled>
                                 <span></span>
-                            </div>
+                        	</div>
                         </label>
                     </div>
                     <!-- //안드로이드 인 경우에만 사용 -->
@@ -478,12 +477,12 @@
 
                 <div class="opt-controls">
                     <div class="type02">
-                        <label for="mktPushAlarmChk">
-                            마케팅 푸시 알림 받기
-                            <div class="opt-switch">
-                                <input type="checkbox" id="mktPushAlarmChk">
+                    	<label for="mktPushAlarmChk">
+                    		마케팅 푸시 알림 받기
+                        	<div class="opt-switch">
+                                <input type="checkbox" id="mktPushAlarmChk" >
                                 <span></span>
-                            </div>
+                        	</div>
                         </label>
                     </div>
                     <p class="txt-guide">광고성 알림은 <span><span aria-hidden="true">21:00~08:00</span><span class="hide">오후 9시 부터 오전 8시</span></span>에는 발송되지 않습니다.</p>
@@ -492,10 +491,10 @@
         </div>
         <!-- //알림성정 -->
 
-        <div class="sub-panel source-license" aria-hidden="true" aria-labelledby="sub-panel-title02" tabindex="0">
+        <div class="sub-panel source-license" aria-hidden="true">
             <div class="opt-header type-sub">
-                <button type="button" data-panel=".source-license" id="sub-panel-title02" class="btn-opt-prev"><span>이전</span></button>
-                <h1>오픈소스 라이선스</h1>
+                <h1 id="sub-panel-title02">오픈소스 라이선스</h1>
+                <button type="button" data-panel=".source-license" class="btn-opt-prev"><span>이전</span></button>
             </div>
             <div class="opt-container">
                 <div class="opt-controls">

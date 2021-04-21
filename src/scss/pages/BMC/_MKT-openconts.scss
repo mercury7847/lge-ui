@@ -10,10 +10,12 @@
 
     /* 클래스별이미지분기 */
     .pc{
-        display:inline-block !important;
+        // display:inline-block !important;
+        display:inline-block;
     }
     .mobile{
-        display:none !important;
+        // display:none !important;
+        display:none;
     }
     @include mobile {
         .pc{
@@ -81,6 +83,173 @@
         }
     }
     /* //이벤트 레이어팝업 공통 */
+
+    .event01{
+        .tab_event{
+            margin-top:-15%;
+            .tabs-wrap {
+                .tabs{
+                    & > li{
+                        margin:-2px 0 0 -2px;
+                        width: calc(50% + 3px);
+                            &{
+                                .on{
+                                    display:none;
+                                }
+                                .off{
+                                    display:block;
+                                }
+                            }
+                            &.on{
+                                .on{
+                                    display:block;
+                                }
+                                .off{
+                                    display:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .tabs-cont{
+                position:relative;
+                a{
+                    position:absolute;
+                    top: 89%;
+                    left: 28%;
+                    width: 44%;
+                    height: 6%;
+                    z-index:5;
+                }
+                .dim-complete{
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background-color:rgba(146, 146, 146, 0.7);
+                    z-index:10;
+                    border-radius: 8px;
+                    background-image: url('/lg5-common/images/BMC/open_conts/event01/dim-complete.png');
+                    background-size: 50%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    z-index:10;
+                }
+            }
+        }
+        .benefit-slide{
+            padding:80px 0 166px;
+            max-width:1380px;
+            background-color:#f2f1f1;
+            @include mobile{
+                padding:0 36px;
+                max-width:100vw;
+            }
+            .slide-content{
+                overflow:hidden;
+                padding-right:17px; //맨 끝 아이템 여백
+                .slide-conts {
+                    padding:12px;
+                    @include mobile{
+                        max-width:250px;
+                    }
+                    .slide-box {
+                        display:block;
+                        position:relative;
+                        height:auto;
+                        padding:25px;
+                        border-radius:8px;
+                        background-color:#fff;
+                        box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                        @include mobile {
+                            height:auto;
+                            box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                            padding:25px;
+                        }
+                        .img {
+                            @include mobile {
+                                position:static;
+                                width:100%;
+                                height:auto;
+                                margin:0;
+                            }
+                        }
+                        .info {
+                            display:block;
+                            text-align:left;
+                            vertical-align: top;
+                            width: auto;
+                            margin: 0;
+                            padding-top:50px;
+                            @include mobile {
+                                display:block;
+                                padding:26px 0 0 0;
+                                width: auto;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .slide-controls{
+                margin-top:-30px;
+                .prev {
+                    left:-12px;
+                }
+                .next {
+                    right:-12px;
+                }
+                .btn-arrow{
+                    width: 64px;
+                    height: 64px;
+                    .next{
+                        &:before{
+                         background-image: url('/lg5-common/images/icons/btn-arr-64-black.svg');
+                        }
+                    }
+                    &:before {
+                        width: 64px;
+                        height: 64px;
+                        box-shadow: none;
+                    }
+                }
+                @include mobile {
+                    display:none;
+                }
+            }
+        }
+        .app-down{
+            position:relative;
+            & .btns{
+                a{
+                    display:inline-block;
+                    position:absolute;
+                    top: 72%;
+                    width: 15%;
+                    height: 7%;
+                    @include mobile{
+                        top: 82%;
+                        width:32%;
+                        height: 6%;
+                    }
+                    &.android{
+                        left: 53%;
+                        @include mobile{
+                            left: 12%;
+                        }
+                    }
+                    &.ios{
+                        left: 74%;
+                        @include mobile{
+                            left: 56%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     .event02{
         .btn-wrap{

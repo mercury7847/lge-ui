@@ -428,9 +428,9 @@
             var addCommaSum = vcui.number.addComma(sum);
             $('#pop-estimate').find(".estimate-usedPrice").text("월 " + addCommaSum + "원");
 
-            $('#pop-estimate').find('.pop-conts .bullet-list').hide();
+            $('#pop-estimate').find('.pop-conts > .bullet-list').hide();
             var descId = $this.data('descId');
-            if(descId != "") $('#pop-estimate').find('.pop-conts .bullet-list').eq(parseInt(descId)).show();            
+            if(descId != "") $('#pop-estimate').find('.pop-conts > .bullet-list').eq(parseInt(descId)-1).show();            
 
         }).on('click', '.estimate-price > button', function(e){
             e.preventDefault();
@@ -1106,7 +1106,7 @@
             listwrap.after($(estimateProdList).get(0));
             listwrap.remove();
 
-            $('#pop-estimate').find('.pop-conts .bullet-list').hide();
+            $('#pop-estimate').find('.pop-conts > .bullet-list').hide();
 
             $('#pop-estimate').vcModal();
                 

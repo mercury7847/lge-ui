@@ -168,7 +168,7 @@
             },
             inatallDate: {
                 required: true,
-                errorMsg: "설치희망일을 선택해주세요.",
+                errorMsg: "설치희망일을 선택해주세요.<br>2주 내의 일정으로 선택하실 수 있습니다",
                 msgTarget: '.err-block'
             },
             preVisitAgree:{
@@ -233,16 +233,17 @@
             }
         });
 
-        $('.nextStep-btn').on('click', function(e){
-            e.preventDefault();
+        // $('.nextStep-btn').on('click', function(e){
+        //     e.preventDefault();
 
-            if(setNextStep()){
-                stepAccordion.expand(step, true);
-                var activeValue = stepAccordion.getActivate();
-                var contop = $(activeValue.header[step]).offset().top;
-                $('html, body').stop().animate({scrollTop:contop}, 350);
-            }
-        })
+        //     if(setNextStep()){
+        //         stepAccordion.expand(step, true);
+        //         var activeValue = stepAccordion.getActivate();
+        //         var contop = $(activeValue.header[step]).offset().top;
+        //         $('html, body').stop().animate({scrollTop:contop}, 350);
+        //     }
+        // });
+        $('.nextStep-btn').parent().hide();
 
         requestButton.on('click', function(e){
             rentalRequest();
@@ -477,7 +478,7 @@
         });
 
         $(window).on('beforeunload', function(e){
-            if(isBeforeUnload) return '변경사항이 저장되지 않을 수 있습니다.'
+            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
         });
     }
 
