@@ -11,9 +11,9 @@
     var listItemTemplate = '<li class="item">' +
         '{{#if (pdpUrl && pdpUrl.length > 0)}}<a href="{{pdpUrl}}">{{/if}}' +
             '<div class="inner">' +
-                '<div class="product-image">' +
-                    '<span class="img"><img src="{{imageUrl}}" alt="{{imageAlt}}"></span>' +
-                '</div>' +
+                // '<div class="product-image">' +
+                //     '<span class="img"><img src="{{imageUrl}}" alt="{{imageAlt}}"></span>' +
+                // '</div>' +
                 '<div class="product-info">' +
                     '<div class="product-name">' +
                         '<strong>{{#raw produncName}}</strong><span class="model-num">{{sku}}</span>' +
