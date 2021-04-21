@@ -302,6 +302,8 @@
 			.tabs-wrap {
 				text-align:left;
 				.tabs {
+					margin:0;
+					padding:0;
 					li {
 						display:block;
 						margin:23px 0;
@@ -687,6 +689,8 @@
 						margin-top:16px;
 						font-size:16px;
 						line-height:26px;
+						word-break:keep-all;
+						word-wrap:break-word;
 					}
 				}
 			}

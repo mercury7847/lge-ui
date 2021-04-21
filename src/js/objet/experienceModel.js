@@ -3718,6 +3718,8 @@
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
+            $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
             completedCheck();
         });
 
@@ -3756,6 +3758,8 @@
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
+            $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
             completedCheck();
         });
 
@@ -3802,7 +3806,7 @@
                 }
             };
             var desc = '';
-            obj = $.extend(obj, { title: '체험할 제품을 다시 선택하시겠습니까??', cancelBtnName: '아니오', okBtnName: '예', });
+            obj = $.extend(obj, { title: '체험할 제품을 다시 선택하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
             desc = '';
             lgkorUI.confirm(desc, obj);
         });
@@ -4011,20 +4015,20 @@
                 saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        console.log("saveInfo", saveInfo);
-                        myPickSave(saveInfo);
-                    }
-                };
-                var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-                lgkorUI.confirm(desc, obj);
+                // var obj = {
+                //     title: '',
+                //     typeClass: '',
+                //     cancelBtnName: '',
+                //     okBtnName: '',
+                //     ok: function() {
+                //         console.log("saveInfo", saveInfo);
+                //         myPickSave(saveInfo);
+                //     }
+                // };
+                // var desc = '';
+                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                // desc = '';
+                // lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
