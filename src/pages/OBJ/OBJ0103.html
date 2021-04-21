@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"], pageTitle: "LG Objet Collection | LG전자", pageDesc: "처음 만나는 공간인테리어 가전 LG Objet Collection" })
+
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', { hiddenTitle : "LG Objet Collection" })
+        <!-- //210311_H1추가 -->
+
+        <div class="container">
+            <!-- LG SIGNATURE -->
+            <div class="contents objet-main">
+                <div class="sub-main">
+
+                    <div class="brand-wrap objet-wrap">
+                        <div class="objetcollection-tabs">
+                            <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                                <ul class="tabs">
+                                    <li><a href="/lg-objet-collection">LG Objet Collection<em class="blind">선택됨</em></a></li>
+                                    <li><a href="/lg-objet-collection/product">제품</a></li>
+                                    <li class="on"><a href="/lg-objet-collection/experience">체험</a></li>
+                                    <li><a href="/lg-objet-collection/gallery">갤러리</a></li>
+                                    <li><a href="/lg-objet-collection/brand-story">브랜드 스토리</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 체험 -->
+                    <div class="signature-experience">
+                        <h2 class="blind"><span>체험</span></h2>
+                        <div class="objet-section">
+                            <div class="textExp">
+                                Experience
+                            </div>
+                            <div class="mtbi_start">
+                                <div class="mtbi-test mtbi-bx">
+                                    <a href="/lg-objet-collection/product-experience" id="tempAlert">
+                                        <p class="sub-title">Objet Collcetion</p>
+                                        <p class="title">제품 체험하기</p>
+                                        <p class="btn border">Start</p>
+                                    </a>
+                                    <div class="mtbi-bx-image"></div>
+                                </div>
+                                <div class="mtbi-pass mtbi-bx">
+                                    <a href="/lg-objet-collection/space-experience">
+                                        <p class="sub-title">Objet Collcetion</p>
+                                        <p class="title">공간 체험하기</p>
+                                        <p class="btn border">Start</p>
+                                    </a>
+                                    <div class="mtbi-bx-image"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- // 체험 -->
+
+
+                    @@include('./common/footer.html')
+
+                </div>
+            </div>
+            <!-- // LG SIGNATURE -->
+        </div>
+
+        <!-- @@include('./common/footer.html') -->
+        <!-- 210226 플로팅버튼 추가 -->
+        <!-- @@include('./common/footer.html') -->
+        <div class="floating-wrap">
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+        </div>
+        <!-- //210226 플로팅버튼 추가 -->
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+                $(window).on("scroll", function() {
+                    autoFixedLinkTab()
+                });
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
+        });
+        //]]>
+    </script>
+</body>
+
+</html>

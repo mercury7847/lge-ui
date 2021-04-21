@@ -3685,21 +3685,25 @@
         });
 
         //추천조합
-        $("#proposeModel").on("click", function() {
+        $(".proposeModel").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
             if ($(this).hasClass("border")) {
                 $(this).removeClass("border");
-                $("#myPick").addClass("border");
+                $(".myPick").addClass("border");
                 modelSimulator.openProposeModel(modelCode, modelcate);
                 modelSimulator.closeMyPickModel();
+                //modelSimulator.mobileStep(".simul_step2");
+                setTimeout(function() {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeProposeModel();
             }
         });
         $(".color_best .btn-close").on("click", function() {
-            $("#proposeModel").addClass("border");
+            $(".proposeModel").addClass("border");
             modelSimulator.closeProposeModel();
         });
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
@@ -3718,21 +3722,26 @@
         });
 
         //내가만든 오브제
-        $("#myPick").on("click", function() {
+        $(".myPick").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
             if ($(this).hasClass("border")) {
                 $(this).removeClass("border");
-                $("#proposeModel").addClass("border");
+                $(".proposeModel").addClass("border");
                 modelSimulator.openMyPickModel(modelCode, modelcate);
                 modelSimulator.closeProposeModel();
+                //modelSimulator.mobileStep(".simul_step2");
+                myPickBtnFn();
+                setTimeout(function() {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeMyPickModel();
             }
         });
         $(".color_my_pick .btn-close").on("click", function() {
-            $("#myPick").addClass("border");
+            $(".myPick").addClass("border");
             modelSimulator.closeMyPickModel();
         });
         $(document).on("click", ".color_my_pick .btn_myPick_model_sel", function() {
@@ -3765,6 +3774,8 @@
                     $(".color_mixing_area .color_my_pick").removeClass("is_active");
                     $(".color_mixing_area .color_best").removeClass("is_active");
                     $(".simul_step2 .etc_area").removeClass("is_active");
+                    $(".etc_area_top").removeClass("is_active");
+                    $(".etc_area_bottom").removeClass("is_active");
                     $(".simul_step3 .etc_area").removeClass("is_active");
                     $(".simul_step3 .compare_sel_model_area").removeClass("is_active");
                     let idx = $(".model_set_wrap[data-model-editing='Y']").index();
@@ -3784,8 +3795,8 @@
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
                     modelSimulator.closeProposeModel();
                     modelSimulator.closeMyPickModel();
-                    $("#proposeModel").addClass("border");
-                    $("#myPick").addClass("border");
+                    $(".proposeModel").addClass("border");
+                    $(".myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
                     totalResulPrice();
                 }
@@ -3835,6 +3846,8 @@
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
             modelSimulator.maxCountCheck();
             modelSimulator.mobileStep(".simul_step2");
+            $(".etc_area_top").addClass("is_active");
+            $(".etc_area_bottom").addClass("is_active");
         });
 
         //문선택을 위한 제품 선택
@@ -3998,20 +4011,20 @@
                 saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                // var obj = {
-                //     title: '',
-                //     typeClass: '',
-                //     cancelBtnName: '',
-                //     okBtnName: '',
-                //     ok: function() {
-                //         //console.log("saveInfo", saveInfo);
-                //         //myPickSave(saveInfo);
-                //     }
-                // };
-                // var desc = '';
-                // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                // desc = '';
-                // lgkorUI.confirm(desc, obj);
+                var obj = {
+                    title: '',
+                    typeClass: '',
+                    cancelBtnName: '',
+                    okBtnName: '',
+                    ok: function() {
+                        console.log("saveInfo", saveInfo);
+                        myPickSave(saveInfo);
+                    }
+                };
+                var desc = '';
+                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                desc = '';
+                lgkorUI.confirm(desc, obj);
 
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
             } else {
@@ -4313,6 +4326,8 @@
             } else {
                 modelSimulator.stepOneNext(idx, _name, name);
                 modelSimulator.mobileStep(".simul_step2");
+                $(".etc_area_bottom").addClass("is_active");
+                $(".etc_area_top").addClass("is_active");
             }
         },
         makeModelTab: function(idx, _name) { //하위 카테고리가 있을경우 탭을 생성
@@ -5452,7 +5467,7 @@
                     slideWrapAutoSize(".color_best .color_best_body");
                 }, 10);
             } else {
-                $("#proposeModel").addClass("border");
+                $(".proposeModel").addClass("border");
                 modelSimulator.closeProposeModel();
             }
 
@@ -5461,139 +5476,142 @@
         },
         openMyPickModel: function(modelCode, modelcate) {
             let _thisModel = [];
-            for (let i = 0; i < myPickSet.myPickConfig.length; i++) {
-                if (modelCode == myPickSet.myPickConfig[i].defaultcode) {
-                    _thisModel.push(myPickSet.myPickConfig[i]);
+            if (myPickSet.myPickConfig.length > 0) {
+                for (let i = 0; i < myPickSet.myPickConfig.length; i++) {
+                    if (modelCode == myPickSet.myPickConfig[i].defaultcode) {
+                        _thisModel.push(myPickSet.myPickConfig[i]);
+                    }
+                }
+                if (_thisModel.length > 0) {
+                    let imgCate;
+
+                    let imgCate2;
+                    if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
+                        imgCate = "rf";
+                        imgCate2 = "refrigerator";
+                    } else if (modelcate == "refrigerator_kimchi") {
+                        imgCate = "rf_kim";
+                        imgCate2 = "refrigerator_kimchi";
+                    } else if (modelcate == "refrigerator_convertible") {
+                        imgCate = "rf_con";
+                        imgCate2 = "refrigerator_convertible";
+                    }
+                    let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
+                    let contHtml = '';
+                    contHtml += '<div class="swiper-slide">';
+                    contHtml += '   <dl>';
+                    contHtml += '       <dt>내가 만든 오브제컬렉션</dt>';
+                    contHtml += '       <dd>';
+                    contHtml += '           <ul>';
+
+                    for (let i = 0; i < _thisModel.length; i++) {
+                        let _modelDefaultCode = _thisModel[i].defaultcode;
+                        let _modelCode = _thisModel[i].modelCode;
+
+                        let _doorCode1 = _thisModel[i].door1;
+                        let _doorCode2 = _thisModel[i].door2;
+                        let _doorCode3 = _thisModel[i].door3;
+                        let _doorCode4 = _thisModel[i].door4;
+                        let _doorInfo1 = _doorCode1.slice(-3);
+                        let _doorInfo2 = _doorCode2.slice(-3);
+                        let _doorInfo3 = _doorCode3.slice(-3);
+                        let _doorInfo4 = _doorCode4.slice(-3);
+                        let _doorFrontInfo1 = _doorCode1.split('-');
+                        let _doorFrontInfo2 = _doorCode2.split('-');
+                        let _doorFrontInfo3 = _doorCode3.split('-');
+                        let _doorFrontInfo4 = _doorCode4.split('-');
+                        let _doorInfoMaterial = [];
+                        let _doorInfoColor = [];
+                        let _doorInfoLocation = [];
+                        let _doorFrontInfo = [];
+                        let _doorInfoKMaterial = [];
+                        let _doorInfoKColor = [];
+                        _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
+                        _doorInfoColor.push(_doorInfo1.substring(1, 3));
+                        _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
+                        _doorInfoColor.push(_doorInfo2.substring(1, 3));
+                        _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
+                        _doorInfoColor.push(_doorInfo3.substring(1, 3));
+                        _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
+                        _doorInfoColor.push(_doorInfo4.substring(1, 3));
+                        _doorInfoLocation.push(_doorCode1.slice(-6, -4));
+                        _doorInfoLocation.push(_doorCode2.slice(-6, -4));
+                        _doorInfoLocation.push(_doorCode3.slice(-6, -4));
+                        _doorInfoLocation.push(_doorCode4.slice(-6, -4));
+                        _doorFrontInfo.push(_doorFrontInfo1[0]);
+                        _doorFrontInfo.push(_doorFrontInfo2[0]);
+                        _doorFrontInfo.push(_doorFrontInfo3[0]);
+                        _doorFrontInfo.push(_doorFrontInfo4[0]);
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] == "F") {
+                                _doorInfoKMaterial[j] = "페닉스"
+                            } else if (_doorInfoMaterial[j] == "S") {
+                                _doorInfoKMaterial[j] = "솔리드"
+                            } else if (_doorInfoMaterial[j] == "M") {
+                                _doorInfoKMaterial[j] = "미스트"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "네이쳐"
+                            }
+                        }
+                        for (let j = 0; j < _doorInfoColor.length; j++) {
+                            if (_doorInfoColor[j] == "BT") {
+                                _doorInfoKColor[j] = "보타닉"
+                            } else if (_doorInfoColor[j] == "SD") {
+                                _doorInfoKColor[j] = "샌드"
+                            } else if (_doorInfoColor[j] == "ST") {
+                                _doorInfoKColor[j] = "스톤"
+                            } else if (_doorInfoColor[j] == "SV") {
+                                _doorInfoKColor[j] = "실버"
+                            } else if (_doorInfoColor[j] == "GR") {
+                                _doorInfoKColor[j] = "그린"
+                            } else if (_doorInfoColor[j] == "MT") {
+                                _doorInfoKColor[j] = "맨해튼 미드나잇"
+                            } else if (_doorInfoColor[j] == "BE") {
+                                _doorInfoKColor[j] = "베이지"
+                            } else if (_doorInfoColor[j] == "MN") {
+                                _doorInfoKColor[j] = "민트"
+                            } else if (_doorInfoColor[j] == "PK") {
+                                _doorInfoKColor[j] = "핑크"
+                            } else if (_doorInfoColor[j] == "SV") {
+                                _doorInfoKColor[j] = "실버"
+                            } else if (_doorInfoColor[j] == "WH") {
+                                _doorInfoKColor[j] = "화이트"
+                            } else if (_doorInfoColor[j] == "GY") {
+                                _doorInfoKColor[j] = "그레이"
+                            } else if (_doorInfoColor[j] == "BK") {
+                                _doorInfoKColor[j] = "블랙"
+                            }
+                        }
+
+                        contHtml += '<li>';
+                        contHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_myPick_model_sel">';
+                        contHtml += '      <div class="mini_model_wrap">';
+                        for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                            if (_doorInfoMaterial[j] != "") {
+                                contHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                            }
+                        }
+                        contHtml += '      </div>';
+                        contHtml += '      <span>' + _modelDefaultCode + '</span>';
+                        contHtml += '  </button>';
+                        contHtml += '</li>';
+
+
+                    }
+                    contHtml += '           </ul>';
+                    contHtml += '       </dd>';
+                    contHtml += '   </dl>';
+                    contHtml += '</div>';
+
+                    $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(contHtml);
+                    $(".color_my_pick").slideDown() //.addClass("is_active");
+                    setTimeout(function() {
+                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
+                    }, 10);
+
                 }
             }
-            if (_thisModel.length > 0) {
-                let imgCate;
 
-                let imgCate2;
-                if (modelcate == "refrigerator1" || modelcate == "refrigerator2") {
-                    imgCate = "rf";
-                    imgCate2 = "refrigerator";
-                } else if (modelcate == "refrigerator_kimchi") {
-                    imgCate = "rf_kim";
-                    imgCate2 = "refrigerator_kimchi";
-                } else if (modelcate == "refrigerator_convertible") {
-                    imgCate = "rf_con";
-                    imgCate2 = "refrigerator_convertible";
-                }
-                let imgDefaultUrl = "/lg5-common/images/OBJ/experience/" + imgCate2 + "/";
-                let contHtml = '';
-                contHtml += '<div class="swiper-slide">';
-                contHtml += '   <dl>';
-                contHtml += '       <dt>내가 만든 오브제컬렉션</dt>';
-                contHtml += '       <dd>';
-                contHtml += '           <ul>';
-
-                for (let i = 0; i < _thisModel.length; i++) {
-                    let _modelDefaultCode = _thisModel[i].defaultcode;
-                    let _modelCode = _thisModel[i].modelCode;
-
-                    let _doorCode1 = _thisModel[i].door1;
-                    let _doorCode2 = _thisModel[i].door2;
-                    let _doorCode3 = _thisModel[i].door3;
-                    let _doorCode4 = _thisModel[i].door4;
-                    let _doorInfo1 = _doorCode1.slice(-3);
-                    let _doorInfo2 = _doorCode2.slice(-3);
-                    let _doorInfo3 = _doorCode3.slice(-3);
-                    let _doorInfo4 = _doorCode4.slice(-3);
-                    let _doorFrontInfo1 = _doorCode1.split('-');
-                    let _doorFrontInfo2 = _doorCode2.split('-');
-                    let _doorFrontInfo3 = _doorCode3.split('-');
-                    let _doorFrontInfo4 = _doorCode4.split('-');
-                    let _doorInfoMaterial = [];
-                    let _doorInfoColor = [];
-                    let _doorInfoLocation = [];
-                    let _doorFrontInfo = [];
-                    let _doorInfoKMaterial = [];
-                    let _doorInfoKColor = [];
-                    _doorInfoMaterial.push(_doorInfo1.substring(0, 1));
-                    _doorInfoColor.push(_doorInfo1.substring(1, 3));
-                    _doorInfoMaterial.push(_doorInfo2.substring(0, 1));
-                    _doorInfoColor.push(_doorInfo2.substring(1, 3));
-                    _doorInfoMaterial.push(_doorInfo3.substring(0, 1));
-                    _doorInfoColor.push(_doorInfo3.substring(1, 3));
-                    _doorInfoMaterial.push(_doorInfo4.substring(0, 1));
-                    _doorInfoColor.push(_doorInfo4.substring(1, 3));
-                    _doorInfoLocation.push(_doorCode1.slice(-6, -4));
-                    _doorInfoLocation.push(_doorCode2.slice(-6, -4));
-                    _doorInfoLocation.push(_doorCode3.slice(-6, -4));
-                    _doorInfoLocation.push(_doorCode4.slice(-6, -4));
-                    _doorFrontInfo.push(_doorFrontInfo1[0]);
-                    _doorFrontInfo.push(_doorFrontInfo2[0]);
-                    _doorFrontInfo.push(_doorFrontInfo3[0]);
-                    _doorFrontInfo.push(_doorFrontInfo4[0]);
-                    for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                        if (_doorInfoMaterial[j] == "F") {
-                            _doorInfoKMaterial[j] = "페닉스"
-                        } else if (_doorInfoMaterial[j] == "S") {
-                            _doorInfoKMaterial[j] = "솔리드"
-                        } else if (_doorInfoMaterial[j] == "M") {
-                            _doorInfoKMaterial[j] = "미스트"
-                        } else if (_doorInfoMaterial[j] == "G") {
-                            _doorInfoKMaterial[j] = "네이쳐"
-                        }
-                    }
-                    for (let j = 0; j < _doorInfoColor.length; j++) {
-                        if (_doorInfoColor[j] == "BT") {
-                            _doorInfoKColor[j] = "보타닉"
-                        } else if (_doorInfoColor[j] == "SD") {
-                            _doorInfoKColor[j] = "샌드"
-                        } else if (_doorInfoColor[j] == "ST") {
-                            _doorInfoKColor[j] = "스톤"
-                        } else if (_doorInfoColor[j] == "SV") {
-                            _doorInfoKColor[j] = "실버"
-                        } else if (_doorInfoColor[j] == "GR") {
-                            _doorInfoKColor[j] = "그린"
-                        } else if (_doorInfoColor[j] == "MT") {
-                            _doorInfoKColor[j] = "맨해튼 미드나잇"
-                        } else if (_doorInfoColor[j] == "BE") {
-                            _doorInfoKColor[j] = "베이지"
-                        } else if (_doorInfoColor[j] == "MN") {
-                            _doorInfoKColor[j] = "민트"
-                        } else if (_doorInfoColor[j] == "PK") {
-                            _doorInfoKColor[j] = "핑크"
-                        } else if (_doorInfoColor[j] == "SV") {
-                            _doorInfoKColor[j] = "실버"
-                        } else if (_doorInfoColor[j] == "WH") {
-                            _doorInfoKColor[j] = "화이트"
-                        } else if (_doorInfoColor[j] == "GY") {
-                            _doorInfoKColor[j] = "그레이"
-                        } else if (_doorInfoColor[j] == "BK") {
-                            _doorInfoKColor[j] = "블랙"
-                        }
-                    }
-
-                    contHtml += '<li>';
-                    contHtml += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_myPick_model_sel">';
-                    contHtml += '      <div class="mini_model_wrap">';
-                    for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                        if (_doorInfoMaterial[j] != "") {
-                            contHtml += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
-                        }
-                    }
-                    contHtml += '      </div>';
-                    contHtml += '      <span>' + _modelDefaultCode + '</span>';
-                    contHtml += '  </button>';
-                    contHtml += '</li>';
-
-
-                }
-                contHtml += '           </ul>';
-                contHtml += '       </dd>';
-                contHtml += '   </dl>';
-                contHtml += '</div>';
-
-                $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(contHtml);
-                $(".color_my_pick").slideDown() //.addClass("is_active");
-                setTimeout(function() {
-                    slideWrapAutoSize(".color_my_pick .color_my_pick_body");
-                }, 10);
-
-            }
 
 
         },
@@ -5831,6 +5849,7 @@
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
                     $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                     modelSimulator.stepOneNext(2, _modelCate2, _modelName, _defaultModelCode, _modelCate);
+
                 }, 100);
 
             }
@@ -5858,6 +5877,11 @@
                 } else {
                     modelSimulator.mobileStep(".simul_step2");
                 }
+                $(".model_set_wrap[data-model-editing='Y'] .model_door:eq(0)").attr("data-edit", "Y");
+                modelSimulator.stepTwo(0);
+                $(".color_sel_wrap").addClass("is_active");
+                $(".simul_step2 .etc_area").addClass("is_active");
+                pickerPosition = $(".color_sel_wrap .swiper-wrapper").css("transform");
             }, 500);
 
         }
