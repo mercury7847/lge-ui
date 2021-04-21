@@ -135,6 +135,12 @@ br.pc {
                                     line-height:34px;
                                     opacity:.6;
                                 }
+                                &.fc-black {
+                                    color:#000;
+                                }
+                                &.fc-white {
+                                    color:#fff;
+                                }
                             }
                         }
                     }
@@ -156,6 +162,15 @@ br.pc {
                             width:56px;
                             height:56px;
                             background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
+                        }
+                        &.fc-black {
+                            color:#000;
+                            &:after {
+                                background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+                            }
+                        }
+                        &.fc-white {
+                            color:#fff;
                         }
                     }
                 }

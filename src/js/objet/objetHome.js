@@ -776,19 +776,19 @@ $(function() {
 
 
 
-        $(document).on('click', 'a', function(e) {
-            var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
-            if (href == '#' || href == '#n') {
-                e.preventDefault();
-            } else {
-                if (href && /^(#|\.)\w+/.test(href)) {
-                    var $compareTarget = $('.thinq-tabs .ui_tab').find('a[href="' + href + '"]');
-                    if ($compareTarget[0] != e.currentTarget) {
-                        $('.thinq-tabs .ui_tab').vcTab('selectByName', href);
-                    }
-                }
-            }
-        });
+        // $(document).on('click', 'a', function(e) {
+        //     var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
+        //     if (href == '#' || href == '#n') {
+        //         e.preventDefault();
+        //     } else {
+        //         if (href && /^(#|\.)\w+/.test(href)) {
+        //             var $compareTarget = $('.thinq-tabs .ui_tab').find('a[href="' + href + '"]');
+        //             if ($compareTarget[0] != e.currentTarget) {
+        //                 $('.thinq-tabs .ui_tab').vcTab('selectByName', href);
+        //             }
+        //         }
+        //     }
+        // });
 
         // 접근성 탭 이동시 화면처리
         // $(document).on('focusin', function(e) {
@@ -846,50 +846,50 @@ $(function() {
         window.resizeScene = render;
 
         $(window).load(function() {
-            $(".floating-menu.top button").trigger("click");
+            // $(".floating-menu.top button").trigger("click");
 
 
-            var sOriginImgUrl = window.location.href;
-            var arSplitUrl = sOriginImgUrl.split("?"); //   "#" 로 전체 url 을 나눈다
-            var nArLength = arSplitUrl.length;
-            var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
-            //console.log("targetName", targetName);
-            if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
-                setTimeout(function() {
-                    $('.next-arr a').trigger("click"); //wheelScene(1);
-                    setTimeout(function() {
-                        $('.next-arr a').trigger("click"); //wheelScene(1);
-                        setTimeout(function() {
-                            $("[aria-controls='" + targetName + "']").trigger("click");
-                        }, 500);
-                    }, 1000);
-                }, 100);
+            // var sOriginImgUrl = window.location.href;
+            // var arSplitUrl = sOriginImgUrl.split("?"); //   "#" 로 전체 url 을 나눈다
+            // var nArLength = arSplitUrl.length;
+            // var targetName = arSplitUrl[nArLength - 1]; // 나누어진 배열의 맨 끝이 타겟
+            // //console.log("targetName", targetName);
+            // if (targetName == "objet-cont1" || targetName == "objet-cont2" || targetName == "objet-cont3" || targetName == "objet-cont4" || targetName == "objet-cont5") {
+            //     setTimeout(function() {
+            //         $('.next-arr a').trigger("click"); //wheelScene(1);
+            //         setTimeout(function() {
+            //             $('.next-arr a').trigger("click"); //wheelScene(1);
+            //             setTimeout(function() {
+            //                 $("[aria-controls='" + targetName + "']").trigger("click");
+            //             }, 500);
+            //         }, 1000);
+            //     }, 100);
 
 
-            }
-            $("[aria-controls='objet-cont4']").on("click", function() {
-                setTimeout(function() {
-                    var swiper = new Swiper('.gallery_top_list', {
-                        //autoHeight: true, //enable auto height
-                        spaceBetween: 0,
-                        autoplay: {
-                            delay: 2500,
-                            disableOnInteraction: false,
-                        },
-                        loop: true,
+            // }
+            // $("[aria-controls='objet-cont4']").on("click", function() {
+            //     setTimeout(function() {
+            //         var swiper = new Swiper('.gallery_top_list', {
+            //             //autoHeight: true, //enable auto height
+            //             spaceBetween: 0,
+            //             autoplay: {
+            //                 delay: 2500,
+            //                 disableOnInteraction: false,
+            //             },
+            //             loop: true,
 
-                        pagination: {
-                            el: '.gallery_top_list .swiper-pagination',
-                            clickable: true,
-                        },
-                        navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        },
-                    });
-                }, 100);
+            //             pagination: {
+            //                 el: '.gallery_top_list .swiper-pagination',
+            //                 clickable: true,
+            //             },
+            //             navigation: {
+            //                 nextEl: '.swiper-button-next',
+            //                 prevEl: '.swiper-button-prev',
+            //             },
+            //         });
+            //     }, 500);
 
-            })
+            // })
 
 
 

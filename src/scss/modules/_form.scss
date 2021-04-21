@@ -1171,8 +1171,10 @@
 
 // input error text
 .err-msg {
+    padding-left:24px;
     color:#f00;
     @include font-small;
+    text-indent:-24px;
     vertical-align:top;
     &::before {
         content:' ';
@@ -1932,6 +1934,18 @@ $input: (chk, rdo);
                     background-size: 32px 32px;
                 }
             }
+        }
+    }
+}
+
+.bookmark-wrap {
+    .txt {
+        font-size:16px;
+        line-height:24px;
+        vertical-align:middle;
+        @include mobile {
+            font-size:14px;
+            line-height:26px;
         }
     }
 }
