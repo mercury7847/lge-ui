@@ -286,13 +286,14 @@ function eventSsoCheck(){
 	return loginStatus;
 }
 
-// 이벤트 참여하기 레이어팝업 닫기
+// 이벤트 참여하기 레이어팝업 닫기-210421 수정
 function eventEntryClose() {
 	if(confirm("이벤트 응모를 취소하시겠습니까?") == true){
 		layerClose(".event_popup");
 		init();
 		layerInit();
-		$(".dim1").hide();
+		// $(".dim1").hide();
+		self.close();
 
 		//각인 값 삭제
 		markingReset(".event_popup");
