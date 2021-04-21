@@ -1,5 +1,5 @@
 if (!navigator.userAgent.match(/Mobile|iP(hone|od)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/)) {
-    document.location.href = "/lg-objet-collection/simulator";
+    document.location.href = "/lg-objet-collection/space-experience";
 }
 
 
@@ -2316,7 +2316,7 @@ var go_shop_model = "";
             if (selectedIndex !== null)
                 activeIndex = selectedIndex;
 
-
+            console.log("activeIndex", activeIndex);
             this.objSwiper = new Swiper('.obj-swiper-container', {
                 preventClicks: true,
                 preventClicksPropagation: false,
