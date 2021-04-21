@@ -41,13 +41,16 @@
         strong,
         span {
             display: inline-block;
-            width: 20px;
-            margin:0 2px;
+            // width: 20px;
+            // margin:0 2px;
+            padding:0 8px;
             @include font-small;
             color: #aaa;
             vertical-align: middle;
             cursor: pointer;
-
+            @include mobile {
+                padding:0 10px;
+            }
         }
         strong {
             font-weight: 500;

@@ -2254,4 +2254,15 @@
         $('.KRP0008').buildCommonUI();
         KRP0008.init();
     });
+
+    $(window).load(function(){
+        var hash = location.hash;
+        if(hash) {
+            var findEl = $(hash);
+            if(findEl.length > 0) {
+                var target_top = findEl.offset().top;
+                $('html, body').animate({scrollTop:target_top}, 0);
+            }
+        }
+    });
 })();
