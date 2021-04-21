@@ -211,7 +211,7 @@
                 text-align:center;
                 @include mobile {
                     display:block;
-                    margin:0;
+                    margin: 32px 0 0;
                 }
                 // @include mobile {
                 //     margin-left:24px;
@@ -247,10 +247,9 @@
                 }
                 a {
                     display:block;
-                    width:190px;
+                    max-width: 201px;
                     margin-top:24px;
-                    padding:12px 0;
-                    padding-left:15px;
+                    padding:12px 20px;
                     border:1px solid #ddd;
                     border-radius:26px;
                     background:#fff;
@@ -259,6 +258,7 @@
                     font-size:16px;
                     line-height:28px;
                     @include mobile {
+                        max-width: 190px;
                         margin:24px auto 0;
                         font-size:14px;
                     }

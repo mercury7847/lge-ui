@@ -435,6 +435,7 @@ var res = {
 		},
 		"Contents" : {
 			"Event" : {
+				"01. 통합오픈전" : ["/html/BMC/MKT4002_01.html","",""],
 				"02. 응원댓글이벤트" : {
 					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","","검수완료"],
 					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","","검수완료"]

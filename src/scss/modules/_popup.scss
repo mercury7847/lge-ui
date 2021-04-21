@@ -270,8 +270,8 @@
             padding-bottom:48px;
             text-align:left;
             @include mobile {
-                height:calc(100% - 82px);
-                max-height:calc(100% - 82px);
+                height:calc(100% - 62px);
+                max-height:calc(100% - 62px);
             }
         }
         &.support {
