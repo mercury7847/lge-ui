@@ -643,6 +643,27 @@
     }
 
     .event04{
+        .top-ani{
+            position: relative;
+            .ani-layer{
+                position:absolute;
+                top:0;
+                left:0;
+                opacity:0;
+                animation: flicker 1.5s linear infinite;
+            }
+            @keyframes flicker {
+                0%,
+                50%,
+                100% {
+                  opacity: 1;
+                }
+                25%,
+                75% {
+                  opacity: 0;
+                }
+            }
+        }
         .cheer-reply{
             background-color:#f2f2f2;
             dl{
@@ -748,6 +769,8 @@
             }
         }
     }
+
+    
 
     .event06{
         .benefit01{
