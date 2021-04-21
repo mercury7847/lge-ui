@@ -10,10 +10,12 @@
 
     /* 클래스별이미지분기 */
     .pc{
-        display:inline-block !important;
+        // display:inline-block !important;
+        display:inline-block;
     }
     .mobile{
-        display:none !important;
+        // display:none !important;
+        display:none;
     }
     @include mobile {
         .pc{
@@ -83,9 +85,63 @@
     /* //이벤트 레이어팝업 공통 */
 
     .event01{
+        .tab_event{
+            margin-top:-15%;
+            .tabs-wrap {
+                .tabs{
+                    & > li{
+                        margin:-2px 0 0 -2px;
+                        width: calc(50% + 3px);
+                            &{
+                                .on{
+                                    display:none;
+                                }
+                                .off{
+                                    display:block;
+                                }
+                            }
+                            &.on{
+                                .on{
+                                    display:block;
+                                }
+                                .off{
+                                    display:none;
+                            }
+                        }
+                    }
+                }
+            }
+            .tabs-cont{
+                position:relative;
+                a{
+                    position:absolute;
+                    top: 89%;
+                    left: 28%;
+                    width: 44%;
+                    height: 6%;
+                    z-index:5;
+                }
+                .dim-complete{
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background-color:rgba(146, 146, 146, 0.7);
+                    z-index:10;
+                    border-radius: 8px;
+                    background-image: url('/lg5-common/images/BMC/open_conts/event01/dim-complete.png');
+                    background-size: 50%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    z-index:10;
+                }
+            }
+        }
         .benefit-slide{
-            padding:0 100px;
+            padding:80px 0 166px;
             max-width:1380px;
+            background-color:#f2f1f1;
             @include mobile{
                 padding:0 36px;
                 max-width:100vw;

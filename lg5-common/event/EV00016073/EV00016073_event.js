@@ -850,7 +850,7 @@ function goProc() {
 					self.close();
 				},
 				error: function(request, status, error) {
-					alert("오류가 발생했습니다 .\n관리자에게 문의하세요.");
+					alert("오류가 발생했습니다.\n관리자에게 문의하세요.");
 					return;
 				}
 			});
@@ -930,4 +930,19 @@ function scroll_move( id ){
     $( "#"+id ).focus();
     var objscrollTop = $("label[for='"+id+"']").offset();
     parent.$('html, body').stop().animate({scrollTop: objscrollTop.top}, 0);
+}
+
+// 이벤트 참여하기 레이어팝업 닫기
+function eventEntryClose() {
+	if(confirm("이벤트 응모를 취소하시겠습니까?") == true){
+		layerClose(".event_popup");
+		init();
+		layerInit();
+		self.close();
+
+		//각인 값 삭제
+		markingReset(".event_popup");
+	}else{
+		return; 
+	}
 }
