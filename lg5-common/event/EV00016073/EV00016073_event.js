@@ -850,7 +850,7 @@ function goProc() {
 					self.close();
 				},
 				error: function(request, status, error) {
-					alert("오류가 발생했습니다.\n관리자에게 문의하세요.");
+					alert("오류가 발생했습니다 .\n관리자에게 문의하세요.");
 					return;
 				}
 			});
