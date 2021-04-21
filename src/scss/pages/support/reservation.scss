@@ -527,7 +527,8 @@
             &-title {
                 display:block;
                 margin-bottom:24px;
-                @include font-large-2;
+                line-height:34px;
+                font-size:24px;
                 font-weight:$font-weight-bold;
             }
             &-list {
@@ -599,6 +600,10 @@
                     &:first-child {
                         margin-top:0;
                     }
+                }
+                &-title {
+                    line-height:26px;
+                    font-size:18px;
                 }
                 &-list {
                     dt {
