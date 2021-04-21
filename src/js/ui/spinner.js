@@ -124,7 +124,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             corners: 0.8,       // Corner roundness (0..1)
             color: '#ffffff',   // CSS color or array of colors
             fadeColor: 'transparent', // CSS color or array of colors
-            animation: 'ui-spinner-line-fade-default', //ui-spinner-line-fade-more, ui-spinner-line-fade-quick
+            animation: 'ui-spinner-line-fade-quick', //'ui-spinner-line-fade-default', //ui-spinner-line-fade-more, ui-spinner-line-fade-quick
             rotate: 0,      // The rotation offset
             direction: 1,   // 1: clockwise, -1: counterclockwise
             speed: 1.3,     // Rounds per second

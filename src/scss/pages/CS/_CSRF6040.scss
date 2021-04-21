@@ -310,7 +310,7 @@
                     border-bottom: 1px solid $color-default;
                     @include font-medium;
                     color: $color-default;
-                    font-weight: $font-weight-bold;
+                    // font-weight: $font-weight-bold;
 
                     @include csmobile {
                         position:relative;

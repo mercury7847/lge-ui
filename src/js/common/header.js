@@ -148,7 +148,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 var url = $(this).attr('href');
                 if(url) {
                     lgkorUI.showLoading();
-                    location.href = url;
+                    setTimeout(function(){
+                        location.href = url;
+                    },500);
                 }
             });
 

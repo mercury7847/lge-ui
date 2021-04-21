@@ -3718,6 +3718,8 @@
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
+            $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
             completedCheck();
         });
 
@@ -3756,6 +3758,8 @@
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
+            $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
+            $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
             completedCheck();
         });
 
