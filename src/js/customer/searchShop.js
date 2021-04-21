@@ -312,7 +312,12 @@
                 if(bestShopMapAgree && bestShopMapAgree=="Y"){
                     self._getCurrentLocation();
                 }else{
-                    lgkorUI.confirm("고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 매장 안내를 위해서만 이용 됩니다.<br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?", {
+                    var msg = 'G전자 주식회사(이하 "회사"라 합니다)는 고객님께서 현재 계신 위치에서 직선 거리 기준으로 가장 가까운 매장을 안내하기 위하여 위치정보를 수집하고 있습니다.<br>';
+                    msg += '또한 상기 서비스 제공 후 즉시 폐기되며, 별도 저장되지 않습니다.<br>';
+                    msg += '위치정보 수집이용 관련하여 보다 상세한 내용은 ';
+                    msg += '‘<a href="https://qt-kr.m.lgaccount.com/customer/terms_detail?terms_type=A_ITG_LBS&amp;terms_svcCode=SVC709&amp;country=KR&amp;terms_publish=N&amp;division=noticeterms" target="_blank" title="새창열림">LG전자 위치기반서비스 이용약관</a>’';
+                    msg += '을 참고해주시기 바랍니다.<br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?';
+                    lgkorUI.confirm(msg, {
                         typeClass: "type2",
                         title: "위치 정보 제공 동의",
                         cancelBtnName: "아니요",
