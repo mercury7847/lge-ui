@@ -1953,6 +1953,7 @@ $input: (chk, rdo);
 .chk-bookmark-wrap {
     display: inline-block;
     position: relative;
+    vertical-align:middle;
     input {
         position: absolute;
         width: 100%;
