@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: [
+            "event/replyEvent"
+        ]
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "이벤트" 
+        })
+        <!-- //210311_H1추가 -->
+
+        <main class="container">
+            <!-- event -->
+            <div class="contents event">
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+                        <div class="ev-detail-top">
+                            <div class="tit-wrap">
+                                <div class="flag-wrap bar-type">
+                                    <span class="flag">매장</span>
+                                    <span class="flag">사은품</span>
+                                </div>
+                                <p class="tit"><span class="blind">제목</span>LGE.COM 오픈 기념 응원 댓글 이벤트</p>
+                                <span class="sub-tit"><span class="blind">서브 제목</span>LGE.COM홈페이지가 오픈 되었습니다! 함께 응원해주세요!</span>
+                            </div>
+                            @@include('./common/partials/KRP0016.html')
+                            <div class="info-wrap">
+                                <div class="info-list">
+                                    <div class="group">
+                                        <dl>
+                                            <dt>행사기간</dt>
+                                            <dd>2020.09.04 ~2020.09.30</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>신청기간</dt>
+                                            <dd>2020.09.04 ~2020.09.30</dd>
+                                        </dl>
+                                    </div>
+                                    <dl>
+                                        <dt>대상고객</dt>
+                                        <dd>LG PC를 구매한 고객 중 사은품을 신청한 고객</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>배송일정</dt>
+                                        <dd>사은품 신청 후 1주 이내 (사은품 신청 및 배송 관련 문의 : 1588-7964)</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>참여방법</dt>
+                                        <dd>LG전자 회원 로그인 및 시리얼 번호 입력 후 사은품 신청이 가능합니다.</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ev-detail-con">
+                            <div class="ev-cont">
+                                <div class="conts">
+                                    <!-- 이벤트 상세내용 자리 -->
+                                    <div class="event01">
+                                    </div>
+                                    <!-- //이벤트 상세내용 자리 -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-bottom">
+                            <div class="notice-wrap">
+                                <!-- 210203 수정 -->
+                                <span class="b-tit">유의사항</span>
+                                <p class="bullet-text">본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.</p>
+                                <p class="bullet-text">LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.</p>
+                                <a href="#n" class="btn-link">텍스트 링크 버튼</a>
+                                <p class="bullet-text">상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 양도가 불가능합니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.</p>
+                                <p class="bullet-text">이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다.</p>
+                                <a href="#n" class="btn-link">개인정보처리방침</a>
+                            </div>
+
+                            <div class="btn-wrap">
+                                <!-- 210126 수정 - 버튼 위치 및 클래스 변경 -->
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                                <a href="#n" class="btn"><span>이메일 문의</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>
+
+
+</body>
+</html>
