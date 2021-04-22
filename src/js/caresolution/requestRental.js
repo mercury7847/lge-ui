@@ -533,7 +533,7 @@
         }
         
         if(isComplete) step++;
-        isComplete = true;
+        
         return isComplete;
     }
 
