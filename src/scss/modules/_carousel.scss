@@ -137,7 +137,7 @@
             &:before {
                 width: 28px;
                 border-radius:6px;
-                background:#ec455a;
+                background:$color-primary;
             }
             @include mobile {
                 &:before {
