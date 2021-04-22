@@ -352,6 +352,7 @@
     var receiptPopInfoTemplate =     
         '<tr><th scope="row">주문번호</th><td>{{orderNumber}}</td>'+
         '<tr><th scope="row">거래일시</th><td>{{orderDate}}</td>'+
+        '{{#if progressState}}<tr><th scope="row">진행상태</th><td>{{progressState}}</td>{{/if}}'+
         '<tr><th scope="row">상품명</th><td>{{productName}}</td>'+
         '<tr><th scope="row">총 거래금액</th><td>{{totalPrice}}</td>'+
         '<tr><th scope="row">결제수단</th><td>{{paymentMethod}}</td>'+
@@ -1309,180 +1310,196 @@
             sendPhoneNumber: memInfos.sendPhoneNumber,
             purPathCode: vcui.detect.isMobile ? 3 : 2
         }
-        lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
 
-            var data = result.data;
-
-            if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) data.listData = [data.listData];
-
-            START_INDEX = 0;
-            ORDER_LIST = [];
-            CARE_LIST = [];
-            SHIPPING_DATA = {};
-            PAYMENT_DATA = {};
-            ORDER_USER_DATA = {};
-            MONTHLY_PAYMENT_DATA = {};
-
-            //구매목록 리스트...PAGE_TYPE_LIST, PAGE_TYPE_DETAIL, PAGE_TYPE_NONMEM_DETAIL
-            if(data.listData && data.listData.length){
-                var leng, cdx, idx;
-                var list = data.listData;
-                for(idx in list){
-                    leng = ORDER_LIST.length;
-                    list[idx]['dataID'] = leng.toString();
-
-                    list[idx].dateTitle = "주문일";
-                    list[idx].orderNumberTitle = "주문번호";
-                    list[idx].groupNumber = list[idx].orderNumber;
-
-                    var chk = 0;
-                    for(cdx in list[idx].productList){
-                        list[idx].productList[cdx]["prodID"] = cdx;
-                        list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
-
-                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
-                    }
-
-                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
-                    else list[idx].orderCancelAbleYn = "N";
-
-                    if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
-                        list[idx].apiType = "OBS";
-                        list[idx].requestNo = "";
-                    }
-
-                    list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
-
-                    ORDER_LIST.push(list[idx]);
-                }
-            }
-
-            
-            //구매목록 리스트...PAGE_TYPE_CAREDETAIL
-            if(data.careListData && data.careListData.length){
-                list = data.careListData;
-                for(idx in list){
-                    leng = CARE_LIST.length;
-                    list[idx]['dataID'] = leng.toString();
-
-                    list[idx].dateTitle = "신청일";
-                    list[idx].orderNumberTitle = "계약 요청 번호";
-                    list[idx].groupNumber = list[idx].requestNo ? list[idx].requestNo : list[idx].orderNumber;
-
-                    var chk = 0;
-                    for(cdx in list[idx].productList){
-                        list[idx].productList[cdx]["prodID"] = cdx;
-                        var rowTotal = list[idx].productList[cdx]["rowTotal"];
-                        list[idx].productList[cdx]["addCommaProdPrice"] = rowTotal ? vcui.number.addComma(rowTotal) : "0";
-
-                        if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
-                    }
-
-                    if(chk > 0) list[idx].orderCancelAbleYn = "Y";
-                    else list[idx].orderCancelAbleYn = "N";
-
-                    list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
-
-                    CARE_LIST.push(list[idx]);
-                }
-            }
-
-            //배송정보
-            if(data.shipping) {
-                SHIPPING_DATA = resetShippingData(data.shipping);
-            }
-
-            //결제정보
-            if(data.payment) {
-                if(Object.keys(data.payment).length){
-                    var orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
-                    PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
-                }
-            }
-
-            //주문자 정보
-            if(data.orderUser) {
-                var orderusers = data.orderUser;
-                orderusers.nameTitle = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? "성명" : "주문하는 분";
-                orderusers.userName = orderusers.userName;
-                orderusers.phoneNumber = orderusers.phoneNumber;
-                orderusers.email = orderusers.email;
-
-                ORDER_USER_DATA = vcui.clone(orderusers);
-            }
-
-            //월 납부 정보...
-            if(data.monthlyPayment){
-                var monthpayment = data.monthlyPayment;
-                if(monthpayment.cardReqYn == "N") monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
-                else{
-                    monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
-                    var suffix = " - ";
-                    if(monthpayment.cardCorpName != ''){
-                        suffix = " ";
-                        monthpayment.requsetCardInfo += " - " + monthpayment.cardCorpName;
-                     }
-                     
-                     if(monthpayment.cardTypeName != ""){
-                         monthpayment.requsetCardInfo += suffix + monthpayment.cardTypeName;                         
-                     }
-                }
-
-                monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
-                if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
-
-
-                if(monthpayment.transType == METHOD_BANK){
-                    paymentMethod = "bank";
-                    bankInfo = {
-                        paymentBank: monthpayment.transCorpCode,
-                        paymentBankNumber: monthpayment.transAccountNum,
-                        paymentUserName: monthpayment.transMemName
-                    }
-                    cardInfo = {
-                        paymentCard: "",
-                        paymentCardNumber: "",
-                        paymentCardPeriod: "",
-                    }
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+            if(result.status == "fail"){
+                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL){
+                    lgkorUI.alert("", {
+                        title: result.message,
+                        ok: function(){
+                            location.href = "/my-page/order-status";
+                        }
+                    })
                 } else{
-                    paymentMethod = "card";
-                    cardInfo = {
-                        paymentCard: monthpayment.transCorpCode,
-                        paymentCardNumber: monthpayment.transAccountNum,
-                        paymentCardPeriod: monthpayment.transCardExpiry
-                    }
-                    bankInfo = {
-                        paymentBank: "",
-                        paymentBankNumber: "",
-                        paymentUserName: monthpayment.transMemName,
+                    lgkorUI.alert("", {
+                        title: result.message
+                    })
+                }
+            } else{
+
+                var data = result.data;
+    
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL) data.listData = [data.listData];
+    
+                START_INDEX = 0;
+                ORDER_LIST = [];
+                CARE_LIST = [];
+                SHIPPING_DATA = {};
+                PAYMENT_DATA = {};
+                ORDER_USER_DATA = {};
+                MONTHLY_PAYMENT_DATA = {};
+    
+                //구매목록 리스트...PAGE_TYPE_LIST, PAGE_TYPE_DETAIL, PAGE_TYPE_NONMEM_DETAIL
+                if(data.listData && data.listData.length){
+                    var leng, cdx, idx;
+                    var list = data.listData;
+                    for(idx in list){
+                        leng = ORDER_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+    
+                        list[idx].dateTitle = "주문일";
+                        list[idx].orderNumberTitle = "주문번호";
+                        list[idx].groupNumber = list[idx].orderNumber;
+    
+                        var chk = 0;
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+    
+                            if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
+                        }
+    
+                        if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+                        else list[idx].orderCancelAbleYn = "N";
+    
+                        if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+                            list[idx].apiType = "OBS";
+                            list[idx].requestNo = "";
+                        }
+    
+                        list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
+    
+                        ORDER_LIST.push(list[idx]);
                     }
                 }
-                cardValidation.setValues(cardInfo);
-                bankValidation.setValues(bankInfo);        
-
-                setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
-                setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
-
-                monthpayment.maskingTransAccountNum = monthpayment.transType == METHOD_BANK ? txtMasking.substr(monthpayment.transAccountNum, 6) : txtMasking.card(monthpayment.transAccountNum);
-
-                //납부정보 변경 버튼 유무..
-                if(monthpayment.cancelFlag == "Y") monthpayment.isChangePayment = false;
-                else{
-                    var listData = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? CARE_LIST[0] : ORDER_LIST[0];
-                    var cancelProdList = vcui.array.filter(listData.productList, function(item){
-                        return item.itemStatus != "Cancel Refunded";
-                    });
-
-                    if(cancelProdList.length) monthpayment.isChangePayment = true;
-                    else monthpayment.isChangePayment = false;
+    
+                
+                //구매목록 리스트...PAGE_TYPE_CAREDETAIL
+                if(data.careListData && data.careListData.length){
+                    list = data.careListData;
+                    for(idx in list){
+                        leng = CARE_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+    
+                        list[idx].dateTitle = "신청일";
+                        list[idx].orderNumberTitle = "계약 요청 번호";
+                        list[idx].groupNumber = list[idx].requestNo ? list[idx].requestNo : list[idx].orderNumber;
+    
+                        var chk = 0;
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                            var rowTotal = list[idx].productList[cdx]["rowTotal"];
+                            list[idx].productList[cdx]["addCommaProdPrice"] = rowTotal ? vcui.number.addComma(rowTotal) : "0";
+    
+                            if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
+                        }
+    
+                        if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+                        else list[idx].orderCancelAbleYn = "N";
+    
+                        list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
+    
+                        CARE_LIST.push(list[idx]);
+                    }
                 }
-
-                MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
-
-                paymentBlockInit();
+    
+                //배송정보
+                if(data.shipping) {
+                    SHIPPING_DATA = resetShippingData(data.shipping);
+                }
+    
+                //결제정보
+                if(data.payment) {
+                    if(Object.keys(data.payment).length){
+                        var orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
+                        PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
+                    }
+                }
+    
+                //주문자 정보
+                if(data.orderUser) {
+                    var orderusers = data.orderUser;
+                    orderusers.nameTitle = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? "성명" : "주문하는 분";
+                    orderusers.userName = orderusers.userName;
+                    orderusers.phoneNumber = orderusers.phoneNumber;
+                    orderusers.email = orderusers.email;
+    
+                    ORDER_USER_DATA = vcui.clone(orderusers);
+                }
+    
+                //월 납부 정보...
+                if(data.monthlyPayment){
+                    var monthpayment = data.monthlyPayment;
+                    if(monthpayment.cardReqYn == "N") monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
+                    else{
+                        monthpayment.requsetCardInfo = monthpayment.cardReqYnName;
+                        var suffix = " - ";
+                        if(monthpayment.cardCorpName != ''){
+                            suffix = " ";
+                            monthpayment.requsetCardInfo += " - " + monthpayment.cardCorpName;
+                         }
+                         
+                         if(monthpayment.cardTypeName != ""){
+                             monthpayment.requsetCardInfo += suffix + monthpayment.cardTypeName;                         
+                         }
+                    }
+    
+                    monthpayment.monthlyPriceInfo = monthpayment.prepayFlagNm;
+                    if(monthpayment.pointUseYnName) monthpayment.monthlyPriceInfo += " / " + monthpayment.pointUseYnName;
+    
+    
+                    if(monthpayment.transType == METHOD_BANK){
+                        paymentMethod = "bank";
+                        bankInfo = {
+                            paymentBank: monthpayment.transCorpCode,
+                            paymentBankNumber: monthpayment.transAccountNum,
+                            paymentUserName: monthpayment.transMemName
+                        }
+                        cardInfo = {
+                            paymentCard: "",
+                            paymentCardNumber: "",
+                            paymentCardPeriod: "",
+                        }
+                    } else{
+                        paymentMethod = "card";
+                        cardInfo = {
+                            paymentCard: monthpayment.transCorpCode,
+                            paymentCardNumber: monthpayment.transAccountNum,
+                            paymentCardPeriod: monthpayment.transCardExpiry
+                        }
+                        bankInfo = {
+                            paymentBank: "",
+                            paymentBankNumber: "",
+                            paymentUserName: monthpayment.transMemName,
+                        }
+                    }
+                    cardValidation.setValues(cardInfo);
+                    bankValidation.setValues(bankInfo);        
+    
+                    setDelectData($('.monthly-payment-modify').find('select[name=paymentCard]'), data.cardList, cardInfo.paymentCard);
+                    setDelectData($('.monthly-payment-modify').find('select[name=paymentBank]'), data.bankList, bankInfo.paymentBank);
+    
+                    monthpayment.maskingTransAccountNum = monthpayment.transType == METHOD_BANK ? txtMasking.substr(monthpayment.transAccountNum, 6) : txtMasking.card(monthpayment.transAccountNum);
+    
+                    //납부정보 변경 버튼 유무..
+                    if(monthpayment.cancelFlag == "Y") monthpayment.isChangePayment = false;
+                    else{
+                        var listData = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? CARE_LIST[0] : ORDER_LIST[0];
+                        var cancelProdList = vcui.array.filter(listData.productList, function(item){
+                            return item.itemStatus != "Cancel Refunded";
+                        });
+    
+                        if(cancelProdList.length) monthpayment.isChangePayment = true;
+                        else monthpayment.isChangePayment = false;
+                    }
+    
+                    MONTHLY_PAYMENT_DATA = vcui.clone(monthpayment);
+    
+                    paymentBlockInit();
+                }
+    
+                renderPage();
             }
-
-            renderPage();
         });
     }
 
@@ -2335,6 +2352,8 @@
         receiptdata.totalPrice = PAYMENT_DATA.totalPrice + "원";
         receiptdata.paymentMethod = PAYMENT_DATA.paymentMethodName;
         receiptdata.orderUser = SHIPPING_DATA.maskingName;
+
+        receiptdata.progressState = listData.productList[0].itemStatus == "Cancel Refunded" ? "취소 완료" : "";
 
         $('#popup-salesReceipt').find('.tb-col table tbody').empty().append(vcui.template(receiptPopInfoTemplate, receiptdata));
         $('#popup-salesReceipt').vcModal();

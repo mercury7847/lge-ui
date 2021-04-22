@@ -195,8 +195,12 @@
                     }
                 }
                 .rdo-check {
-                    float:right;
-                    margin-top:10px;
+                    // float:right;
+                    // margin-top:10px;
+                    position:absolute;
+                    top:-40px;
+                    right:0;
+                    margin-top:0 !important;
                     .select-list-wrap {
                         ul {
                             li {
@@ -208,6 +212,9 @@
                                 }
                             }
                         }
+                    }
+                    @include mobile {
+                        top:-35px;
                     }
                 }
             }
