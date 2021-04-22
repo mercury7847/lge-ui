@@ -306,7 +306,7 @@
     .pdp-visual-area.visible-sm {
         overflow: hidden;
         //margin-bottom: 28px;
-        padding-bottom: 44px;
+        padding-bottom: 42px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -318,6 +318,10 @@
                 width: 100%;
                 text-align: center;
                 height: auto;
+                padding: 2px;
+                a {
+                    padding: 0 28px;
+                }
             }
         }
         .indi-wrap {
