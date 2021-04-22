@@ -2316,7 +2316,7 @@ var go_shop_model = "";
             if (selectedIndex !== null)
                 activeIndex = selectedIndex;
 
-            console.log("activeIndex", activeIndex);
+            //console.log("activeIndex", activeIndex);
             this.objSwiper = new Swiper('.obj-swiper-container', {
                 preventClicks: true,
                 preventClicksPropagation: false,
@@ -2472,7 +2472,7 @@ var go_shop_model = "";
                         }
                     }
                 }
-            }); //.slideTo(activeIndex, 0, false);
+            }).slideTo(activeIndex, 0, false);
 
             //return objSwiper;
         },

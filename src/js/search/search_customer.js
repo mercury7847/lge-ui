@@ -160,6 +160,7 @@
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
                         if(savedData.href) self.scrollHref = savedData.href;
+                        if(savedData.search) self.$inputSearch.val(savedData.search);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
@@ -329,7 +330,10 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearchInput(searchVal);
+                    var check = vcui.string.replaceAll(searchVal," ","");
+                    if(check.length > 0) {
+                        self.requestSearchInput(searchVal);
+                    }
                 });
 
                 self.$inputSearch.keydown(function(key) {

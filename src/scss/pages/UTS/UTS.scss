@@ -1714,6 +1714,10 @@
                 font-weight: 700;
                 @include font($font-large-4,52px);
                 color: $color-default;
+                word-break: break-all;
+                em {
+                    word-break: break-all;
+                }
             }
         }
 
