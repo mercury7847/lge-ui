@@ -884,6 +884,16 @@ img{
 				}
 			}
 		}
+		@include mobile {
+			.benefit-list-slide {
+				&.slide-wrap .slide-content {
+					margin: -2px -8px;
+					ul > li {
+						padding: 2px;
+					}
+				}
+			}
+		}
 	}
 
 	.flow-banner {
