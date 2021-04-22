@@ -6,6 +6,7 @@
 
             $btnClose.on('click', function(e){
                 $tooltip.hide();
+                
                 e.preventDefault();
             });
         },
