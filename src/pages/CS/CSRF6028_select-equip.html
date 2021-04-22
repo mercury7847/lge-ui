@@ -11,13 +11,15 @@
         @@include('./common/header.html')
         <div class="container">
             <div class="contents support error-page-cs">
-                <!-- 2021.02.23 class 변경 : error-page → error-page-cs -->
                 <div class="cont-wrap">
                     <div class="error-inner">
                         <p class="tit">제품 설치/철거 서비스 예약은<br> 전문 설치/철거 서비스를 제공하는<br> <strong>㈜판토스 홈페이지를 통해 예약하시기 바랍니다.</strong></p>
                         <div class="btns">
                             <a href="#n" class="btn gray"><span>고객지원 메인으로 이동</span></a>
-                            <a href="https://move.pantos.com/mvinst/order.jsp" class="btn" target="_blank" title="새 창에서 열림"><span>㈜판토스로 이동</span></a>
+                            <!-- pc device -->
+                            <a href="https://move.pantos.com/mvinst/order.jsp" class="btn" onclick="_PL('www.lge.co.kr/acecount/installationPantosLinkClick.do');" target="_blank" title="새 창에서 열림"><span>㈜판토스로 이동</span></a>
+                            <!-- mobile device -->
+                            <!-- <a href="https://move.pantos.com/mvinst/order.jsp" class="btn" onclick="AM_PL('www.lge.co.kr/acecount/installationPantosLinkClickm.do');" target="_blank" title="새 창에서 열림"><span>㈜판토스로 이동</span></a> -->
                         </div>
                     </div>
                 </div>
@@ -26,5 +28,8 @@
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 
