@@ -553,7 +553,7 @@
             }
             .content {
                 .title {
-                    margin-bottom: 6px;
+                    margin-bottom: 8px;
                 }
                 @include mobile {
                     .title {
@@ -651,7 +651,7 @@
     .process-wrap {
         > ul > li {
             position: relative;
-            margin-top: 48px;
+            margin-top: 40px;
             &:first-child {
                 margin-top: 32px;
             }
@@ -682,19 +682,22 @@
         .process-list {
             font-size: 0;
             @include pc {
-                padding: 0 6px;
+                // padding: 0 6px;
+            }
+            @include mobile {
+                margin:0 -11px;
             }
             > li {
                 position: relative;
                 display: inline-block;
-                padding-top: 12px;
+                // padding-top: 12px;
                 padding-bottom: 26px;
                 &:not(:last-child) {
-                    padding-right: 80px;
+                    padding-right: 48px;
                     &:after {
                         position: absolute;
-                        @include calc(top,50%,10px);
-                        right: 24px;
+                        @include calc(top,50%,16px);
+                        right: 8px;
                         width: 32px;
                         height: 32px;
                         background: url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
@@ -705,13 +708,13 @@
                     padding-top: 16px;
                     padding-bottom: 23px;
                     &:not(:last-child) {
-                        padding-right: 54px;
+                        padding-right: 16px;
                         &:after {
                             @include calc(top,50%,4px);
-                            right: 15px;
-                            width: 24px;
-                            height: 24px;
-                            background-size: 24px;
+                            right: 0;
+                            width: 16px;
+                            height: 16px;
+                            background-size: 16px;
                         }
                     }
                 }
@@ -722,9 +725,9 @@
                 flex-direction: column;
                 justify-content: center;
                 width: 64px;
-                height: 64px;
-                border-radius: 50%;
-                background-color: $color-bg;
+                height: 52px;
+                // border-radius: 50%;
+                // background-color: $color-bg;
                 text-align: center;
 
                 dt {
@@ -746,12 +749,13 @@
                     }
                 }
                 @include mobile {
-                    width: 60px;
-                    height: 60px;
+                    width: 49px;
+                    height: 33px;
                     dt {
                         bottom: -23px;
                         font-size: 11px;
                         line-height: 19px;
+                        letter-spacing:-1px;
                     }
                     dd {
                         font-size: 24px;

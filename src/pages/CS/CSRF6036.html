@@ -301,63 +301,6 @@
                                     -->
                                 </div>
                                 <!-- // list -->
-
-                                <!-- option -->
-                                <!-- 열렸을 때 높이값 계산 : .opt-cont [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
-                                <!-- .btn-sel 클릭시 .opt-cont에 open클래스 추가 -->
-                                <!-- <div class="opt-cont">
-                                    <button type="button" class="btn-sel" id="opt-label"><span>옵션 선택 <span class="blind">열기</span></span></button>
-                                    <div class="opt-layer" aria-labelledby="opt-label">
-                                        <div class="scroll-wrap">
-                                            <div class="list-item">
-                                                <dl class="all-chk">
-                                                    <dt>
-                                                        <span class="chk-wrap">
-                                                            <input type="checkbox" id="all-chk" name="allChk">
-                                                            <label for="all-chk">전체 선택</label>
-                                                        </span>
-                                                    </dt>
-                                                    <dd>
-                                                        <dl class="item">
-                                                            <dt class="tit">서비스 가능 제품</dt>
-                                                            <dd>
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-1" name="chk1">
-                                                                    <label for="chk1-1">휴대전화</label>
-                                                                </span>
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-2" name="chk1">
-                                                                    <label for="chk1-2">PC/모니터</label>
-                                                                </span>
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-3" name="chk1">
-                                                                    <label for="chk1-3">소형 가전</label>
-                                                                </span>
-                                                                <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk1-4" name="chk1">
-                                                                    <label for="chk1-3">소모품 구매</label>
-                                                                </span>
-                                                            </dd>
-                                                        </dl>
-                                                    </dd>
-                                                </dl>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "topBorder" : true,
-                                                    "bulletTxt" : [
-                                                        "분점은 휴대폰 간단 수리만 가능합니다."
-                                                    ]
-                                                })
-                                            </div>
-                                        </div>
-                                        <div class="opt-btn-wrap">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn gray"><span>초기화</span></button>
-                                                <button type="button" class="btn"><span>적용</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- //option -->
                             </div>
                             <!-- //filter -->
                         </div>
@@ -373,8 +316,8 @@
             <!-- // 센터찾기 -->
         </div>
         
+        @@include('./common/support/quick-menu.html')
         @@include('./common/footer.html')
-
     </div>
 
     <!-- support script -->
