@@ -176,6 +176,7 @@
 
                 self.modelCode = lgkorUI.getParameterByName('modelCode');
                 self.serialNumber = lgkorUI.getParameterByName('serialNumber');
+                self.factoryModel = lgkorUI.getParameterByName('factoryModel');
                 if(self.modelCode || self.serialNumber) {
                     self.registMyProductPopupClear();
                     self.$registMyProductMainPage.show();
@@ -582,6 +583,11 @@
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
                             var param = self.registMyProductValidation.getAllValues();
+                            //factoryModel
+                            var factoryModel = self.$registMyProductMainPage.data('factoryModel');
+                            if(factoryModel) {
+                                param.factoryModel = factoryModel;
+                            }
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                             self.showLoading();
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
@@ -952,6 +958,12 @@
                 //시리얼
                 self.$registMyProductMainPage.find('input[name=sn]').val(self.serialNumber);
                 self.serialNumber = null;
+            }
+            if(self.factoryModel) {
+                self.$registMyProductMainPage.data('factoryModel',self.factoryModel);
+                self.factoryModel = null;
+            } else {
+                self.$registMyProductMainPage.data('factoryModel',null);
             }
             self.$registMyProductMainPage.find('.ui_selectbox').vcSelectbox('selectedIndex',0);
             self.$registMyProductMainPage.find('.err-block').hide();

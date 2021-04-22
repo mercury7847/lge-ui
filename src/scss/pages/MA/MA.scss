@@ -75,23 +75,23 @@ img{
 			.text-link {
 				//top:280px;
 				//right:auto;
-				left:140px;
+				// left:140px;
 			}
 		}
-		&:nth-child(3) {
-			.text-link {
-				top:280px;
-				right:auto;
-				left:140px;
-				transform:translateY(5%) !important;
-				@include mobile {
-					top: 164px;
-					right: auto;
-					left: 16px;
-					transform:translateY(1%) !important;
-				}
-			}
-		}
+		// &:nth-child(3) {
+		// 	.text-link {
+		// 		top:280px;
+		// 		right:auto;
+		// 		left:140px;
+		// 		transform:translateY(5%) !important;
+		// 		@include mobile {
+		// 			top: 164px;
+		// 			right: auto;
+		// 			left: 16px;
+		// 			transform:translateY(1%) !important;
+		// 		}
+		// 	}
+		// }
 		> a {
 			display:block;
 		}
@@ -373,11 +373,11 @@ img{
 				
 			}
 
-			&:nth-child(3) {
-				.text-link {
-					transform:translateY(0) !important;
-				}
-			}
+			// &:nth-child(3) {
+			// 	.text-link {
+			// 		transform:translateY(0) !important;
+			// 	}
+			// }
 		}
 	}
 	.section-cover {
@@ -880,6 +880,16 @@ img{
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		@include mobile {
+			.benefit-list-slide {
+				&.slide-wrap .slide-content {
+					margin: -2px -8px;
+					ul > li {
+						padding: 2px;
 					}
 				}
 			}

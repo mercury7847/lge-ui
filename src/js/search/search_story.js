@@ -75,16 +75,17 @@
                 '<div class="result-detail">' +
                     '<div class="desc"><span>{{#raw desc}}</span></div>' +
                     '<div class="info-btm">' +
+                        '{{#if hash && hash.length>0}}' +
+                            '<div class="text hashtag-wrap">' +
+                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                            '</div>' +
+                        '{{/if}}' +
                         '<span class="text date"><span>{{date}}</span>' +
-                        '<div class="text hashtag-wrap">' +
-                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                        '</div>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +
     '</a></li>';
-
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
@@ -137,6 +138,7 @@
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
                         if(savedData.href) self.scrollHref = savedData.href;
+                        if(savedData.search) self.$inputSearch.val(savedData.search);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
