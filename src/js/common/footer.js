@@ -121,10 +121,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 $('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
                     $(item).find('> a').on('click', function(e){
-                        if(!$(e.currentTarget).closest('.btn_open').length){
-                            var href = $(e.currentTarget).attr('href');
-                            location.href =href;
-                        }
+                        e.preventDefault();
+                        // if(!$(e.currentTarget).closest('.btn_open').length){
+                        //     var href = $(e.currentTarget).attr('href');
+                        //     location.href =href;
+                        // }
                     })
                 });
             }
