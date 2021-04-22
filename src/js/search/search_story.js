@@ -1,5 +1,4 @@
 (function() {
-    console.log('???');
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
     //최근검색어
@@ -308,7 +307,10 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearchInput(searchVal);
+                    var check = vcui.string.replaceAll(searchVal," ","");
+                    if(check.length > 0) {
+                        self.requestSearchInput(searchVal);
+                    }
                 });
 
                 self.$inputSearch.keydown(function(key) {

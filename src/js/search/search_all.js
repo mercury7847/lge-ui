@@ -374,7 +374,10 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearchInput(searchVal);
+                    var check = vcui.string.replaceAll(searchVal," ","");
+                    if(check.length > 0) {
+                        self.requestSearchInput(searchVal);
+                    }
                 });
 
                 self.$inputSearch.keydown(function(key) {
