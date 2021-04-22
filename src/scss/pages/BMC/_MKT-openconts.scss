@@ -101,6 +101,8 @@
                                 }
                             }
                             &.on{
+                                position:relative;
+                                z-index:1;
                                 .on{
                                     display:block;
                                 }
