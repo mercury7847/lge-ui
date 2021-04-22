@@ -170,7 +170,7 @@
                 '</li>'
 
 				arr.forEach(function(item, index) {
-                    item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
+                    item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 					self.$list.append(vcui.template(popuplistItemTemplate, item));
                 });
 
