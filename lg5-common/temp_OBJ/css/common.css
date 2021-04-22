@@ -11558,6 +11558,9 @@
     #collection_simulM .collect-bt {
         width: 100%;
     }
+    #collection_simulM .collect-bt .btn.border.w {
+        margin-top: 20px;
+    }
     #collection_simulM .collect-bt .exp {
         font-family: Inter;
         font-size: 14px;
