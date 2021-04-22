@@ -38,7 +38,7 @@
             self.$btns.on('click','a.event',function (e) {
                 e.preventDefault();
 
-                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                if(self.$event4.data('eventRestrictFlag') == "Y") {
                     lgkorUI.alert("", {title: "서버 점검중입니다."});
                     return;
                 }
@@ -60,7 +60,7 @@
             self.$snsPopup.on('click','.pop-footer .btn-group button',function (e) {
                 e.preventDefault();
 
-                if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                if(self.$event4.data('eventRestrictFlag') == "Y") {
                     lgkorUI.alert("", {title: "서버 점검중입니다."});
                     return;
                 }
