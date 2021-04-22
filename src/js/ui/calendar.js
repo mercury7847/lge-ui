@@ -840,8 +840,8 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 currDate = core.date.calcDate(currDate, '1M');
             });
 
-            $second.find('.ui-calendar-prev').css({ outline: 'none' }).toggleClass('disabled', isFirst).attr('tabindex', isFirst ? '-1' : '0');
-            $second.find('.ui-calendar-next').css({ outline: 'none' }).toggleClass('disabled', isLast).attr('tabindex', isLast ? '-1' : '0');
+            $second.find('.ui-calendar-prev').toggleClass('disabled', isFirst).attr('tabindex', isFirst ? '-1' : '0');
+            $second.find('.ui-calendar-next').toggleClass('disabled', isLast).attr('tabindex', isLast ? '-1' : '0');
         },
 
         /**
