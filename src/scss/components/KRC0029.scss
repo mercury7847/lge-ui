@@ -181,7 +181,14 @@
     }
 
     .ui_carousel_list {
+        margin:-1px 0;
+        padding:1px 0;
         overflow: hidden;
+    }
+    .ui_carousel_slide {
+        a {
+            display:block;
+        }
     }
     /* 첫번째 display none */
     .ui_carousel_track {
