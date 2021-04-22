@@ -248,6 +248,7 @@
                 height: 26px;
                 @include textEllipsisClamp(1);
                 @include font-medium;
+                word-break: normal;
                 &.rounded {
                     height: auto;
                 }

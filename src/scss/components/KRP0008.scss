@@ -470,8 +470,8 @@
 
         @include mobile {
             position: absolute;
-            top: -4px;
-            right: 36px;
+            top: 0;
+            right: 0;
             z-index: 2;
             width: auto;
             margin-top: 0;
@@ -487,18 +487,24 @@
                     padding-left: 0;
                 }
                 .btn-link {
-                    float: none;
-                    width: 32px;
-                    height: 32px;
-                    padding: 4px;
-                    background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat center center;
-                    background-size: 24px;
-                    font-size: 0;
-                    text-align: left;
+                    padding:0;
                     &:after {
-                        display: none;
+                        display:none;
                     }
                 }
+                // .btn-link {
+                //     float: none;
+                //     width: 32px;
+                //     height: 32px;
+                //     padding: 4px;
+                //     background: url('/lg5-common/images/KRP0008/img-ncsi-m.png') no-repeat center center;
+                //     background-size: 24px;
+                //     font-size: 0;
+                //     text-align: left;
+                //     &:after {
+                //         display: none;
+                //     }
+                // }
             }
         }
     }
@@ -1238,7 +1244,8 @@
                     margin-top: 48px;
                     padding-bottom: 12px;
                     @include font-small;
-                    text-align: right;
+                    // text-align: right;
+                    text-align:left;
                     @include mobile {
                         max-height:166px;
                         overflow:hidden;
@@ -1260,12 +1267,24 @@
                             overflow: hidden;
                             display: block;
                             height: 22px;
+                            &:before {
+                                content:'';
+                                display:block;
+                                position:absolute;
+                                top:12px;
+                                right:0;
+                                left:0;
+                                width:100%;
+                                border:1px dashed #A1A1A1;
+                            }
                         }
                         em {
                             position: absolute;
                             top: 50%;
-                            right: 0;
-                            transform: translateY(-50%);
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            padding:0 4px;
+                            background-color:#fff;
                             @include font-small;
                             color: $color-gray-1;
                             white-space: nowrap;
@@ -1937,10 +1956,21 @@
         padding: 16px 0 8px;
         .product-detail-info {
             position: relative;
+            @include mobile {
+                .flag-wrap {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                }
+                .product-cover {
+                    padding-top:22px;
+                }
+            }
             .flag-wrap.bar-type .flag {
                 font-size: 11px;
             }
             .product-name {
+                position:relative;
                 margin: 8px 0 6px;
                 .name {
                     padding-right: 80px;
@@ -2005,6 +2035,9 @@
             position: absolute;
             top: -4px;
             right: 0;
+            @include mobile {
+                top:0;
+            }
             .tooltip-box {
                 .title {
                     font-size: 16px;

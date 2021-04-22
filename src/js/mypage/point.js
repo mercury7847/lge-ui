@@ -4,8 +4,9 @@
         '   <p class="date">{{date}}</p>'+
         '   <p class="desc">{{place}}</p>'+
         '   <p class="point">'+
-        '       <span class="mo_txt">포인트{{pointUseType}}</span>'+
-        '       <span class="num">{{pointSign}}{{point}}P <em class="pc_txt">{{pointUseType}}</em></span>' +
+        // '       <span class="mo_txt">포인트{{pointUseType}}</span>'+
+        // '       <span class="num">{{pointSign}}{{point}}P <em class="pc_txt">{{pointUseType}}</em></span>' +
+        '       <span class="num">{{pointSign}}{{point}}P</span>' +
         '   </p>'+
         '</li>';
 

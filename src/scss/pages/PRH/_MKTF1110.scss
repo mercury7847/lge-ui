@@ -283,6 +283,26 @@
                 display: block;
             }
         }
+        .cont1 {
+            .logo {
+                float:none;
+                width:245px;
+                padding:0;
+                @include mobile {
+                    width:149px;
+                }
+            }
+        }
+        .cont2 {
+            .logo {
+                float:none;
+                width:90px;
+                padding:0;
+                @include mobile {
+                    width:85px;
+                }
+            }
+        }
         &[class*="02"] {
             height: calc(100vh - 110px);
             @include mobile {
