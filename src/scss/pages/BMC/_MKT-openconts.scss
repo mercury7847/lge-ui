@@ -14,8 +14,8 @@
         display:inline-block;
     }
     .mobile{
-        // display:none !important;
-        display:none;
+        display:none !important;
+        // display:none;
     }
     @include mobile {
         .pc{
@@ -101,6 +101,8 @@
                                 }
                             }
                             &.on{
+                                position:relative;
+                                z-index:1;
                                 .on{
                                     display:block;
                                 }

@@ -332,49 +332,55 @@
                                 barType: true,
                                 flags: ["베스트","신제품","캐시백"]
                                 })
-                                <div class="product-name">
-                                    <h2 class="name">LG 올레드 갤러리 TV</h2>
-                                    <!-- 공유하기 -->
-                                    <div class="product-share">
-                                        @@include('./common/modules/tooltip.html', {
-                                        "share" : true,
-                                        "fixed" : "fixed-right",
-                                        "type" : "include",
-                                        "page" : "tooltip-share"
-                                        })
+                                <!-- 210421 <div class="product-cover"> 감싸기 -->
+                                <div class="product-cover">
+                                    <div class="product-name">
+                                        <h2 class="name">LG 올레드 갤러리 TV</h2>
+                                        <!-- 공유하기 -->
+                                        <div class="product-share">
+                                            @@include('./common/modules/tooltip.html', {
+                                            "share" : true,
+                                            "fixed" : "fixed-right",
+                                            "type" : "include",
+                                            "page" : "tooltip-share"
+                                            })
+                                        </div>
+                                        <!-- // 공유하기 -->
                                     </div>
-                                    <!-- // 공유하기 -->
-                                </div>
-                                <div class="sku">OLED77GXKNA</div>
-                                <!-- 리뷰 별점 영역 -->
-                                <div class="review-info">
-                                    <div class="star-rating-wrap">
-                                        <a href="#pdp_review">
-                                            <div class="star-inner">
-                                                <div class="star-rating" style="width:60%;">
-                                                    <span class="blind">현재 별점 : 4.4</span>
+                                    <div class="sku">OLED77GXKNA</div>
+                                    <!-- 리뷰 별점 영역 -->
+                                    <div class="review-info">
+                                        <div class="star-rating-wrap">
+                                            <a href="#pdp_review">
+                                                <div class="star-inner">
+                                                    <div class="star-rating" style="width:60%;">
+                                                        <span class="blind">현재 별점 : 4.4</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                        <span class="scope">4.4(리뷰 8)</span>
+                                            </a>
+                                            <span class="scope">4.4(리뷰 8)</span>
+                                        </div>
+                                        <!-- 2021-02-25 크레마 리뷰 -->
+                                        <div class="crema-product-reviews-score"
+                                            data-product-code="75NANO99KNB"
+                                            data-format="{{{stars}}} {{{score}}}(리뷰 {{{reviews_count}}})"
+                                            data-star-style="multiple"
+                                        >
+                                        </div>
+                                        <!-- //2021-02-25 크레마 리뷰 -->
                                     </div>
-                                    <!-- 2021-02-25 크레마 리뷰 -->
-                                    <div class="crema-product-reviews-score"
-                                         data-product-code="75NANO99KNB"
-                                         data-format="{{{stars}}} {{{score}}}(리뷰 {{{reviews_count}}})"
-                                         data-star-style="multiple"
-                                    >
+                                    <!-- // 리뷰 별점 영역 -->
+                                    <div class="pdp-more-info">
+                                        <div class="inner">
+                                            <!-- 210421 문구수정 -->
+                                            <a href="#" class="btn-link popup" role="button">
+                                                수상내역 보기 <span class="blind">수상내역 팝업 열림</span>
+                                            </a>
+                                            <!-- //210421 문구수정 -->
+                                        </div>
                                     </div>
-                                    <!-- //2021-02-25 크레마 리뷰 -->
                                 </div>
-                                <!-- // 리뷰 별점 영역 -->
-                                <div class="pdp-more-info">
-                                    <div class="inner">
-                                        <a href="#" class="btn-link popup" role="button">
-                                            수상내역 더 보기 <span class="blind">수상내역 팝업 열림</span>
-                                        </a>
-                                    </div>
-                                </div>
+                                <!-- //210421 <div class="product-cover"> 감싸기 -->
                             </div>
                         </div>
                         <!-- // 210331 수정 [모바일 타이틀 영역 추가] -->
