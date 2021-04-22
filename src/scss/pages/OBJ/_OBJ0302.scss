@@ -1284,7 +1284,20 @@ h2.title {
                                             .product_price {
                                                 font-size: 18px;
                                                 color: #000000;
-                                                em {}
+                                                .before_price {
+                                                    margin-right: 20px;
+                                                    color: #767676;
+                                                    text-decoration: line-through;
+                                                    font-size: 16px;
+                                                    font-weight: 400;
+                                                    @include mobile {
+                                                        margin-right: 10px;
+                                                    }
+                                                    em {}
+                                                }
+                                                .after_price {
+                                                    em {}
+                                                }
                                             }
                                         }
                                     }
@@ -1610,6 +1623,21 @@ h2.title {
                                     padding-left: 10px;
                                 }
                             }
+                        }
+                    }
+                }
+                &.nodata {
+                    margin: 0 auto;
+                    .comment {
+                        display: block;
+                        padding-top: 50px;
+                        font-size: 16px;
+                        color: #999999;
+                        background: url('/lg5-common/images/OBJ/experience/ico_noMyPick.png') center top no-repeat;
+                        @include mobile {
+                            padding-top: 35px;
+                            font-size: 13px;
+                            background-size: 23px 22px;
                         }
                     }
                 }

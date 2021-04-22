@@ -78,12 +78,7 @@
                             </div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                            <div class="etc_area_bottom">
-                                <div class="btn_wrap">
-                                    <button type="button" class="btn border size-m proposeModel"><span>추천조합</span></button>
-                                    <button type="button" class="btn border size-m myPick" disabled><span>내가 만든 오브제컬렉션</span></button>
-                                </div>
-                            </div>
+
                         </div>
                         <!--// 모델 시뮬 영역 -->
                         <!-- 우측 스텝 영역 -->
@@ -202,12 +197,7 @@
     <dd>
 
         <div class="model_simul_area area2"></div>
-        <div class="etc_area_top">
-            <div class="btn_wrap">
-                <button type="button" class="btn border size-m proposeModel"><span>추천조합</span></button>
-                <button type="button" class="btn border size-m myPick" disabled><span>내가 만든 오브제컬렉션</span></button>
-            </div>
-        </div>
+
         <div class="color_mixing_area">
             <div class="color_best">
                 <button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -233,7 +223,12 @@
                 </div>
             </div>
         </div>
+
         <div class="etc_area">
+            <div class="btn_wrap">
+                <button type="button" class="btn border size-m proposeModel"><span>추천조합</span></button>
+                <button type="button" class="btn border size-m myPick"><span>내가 만든 오브제컬렉션</span></button>
+            </div>
             <p class="err-msg">각 소재에 따라 재질감이 달라 같은 소재끼리의 조합을 권장합니다.<br>얼음정수기 냉장고는 추천조합만 구매 가능합니다.</p>
         </div>
     </dd>
@@ -263,11 +258,6 @@
         </dd>
     </dl>
     <!--// STEP 3 -->
-    </div>
-    <!--// 우측 스텝 영역 -->
-    </div>
-    <!--// 모델 체험하기 영역 -->
-    </div>
     <!-- 합계 -->
     <div data-sum-active="N" class="total_price_info_wrap">
         <div class="total_price_info_body">
@@ -326,6 +316,12 @@
     </div>
     <!--// 합계 -->
     </div>
+    <!--// 우측 스텝 영역 -->
+    </div>
+    <!--// 모델 체험하기 영역 -->
+    </div>
+
+    </div>
     <!-- // 오브제 콜렉션 모델 체험하기 -->
     </div>
     @@include('./common/footer.html')
@@ -335,12 +331,16 @@
         //<![CDATA[
 
         function resultDoorPriceCheck(idx, priceArry) {
-            let ddd = [];
+            let price = [];
+            let memberDiscount = [];
+            let directDiscount = [];
             let Aarry = priceArry.length;
             for (let i = 0; i < priceArry.length; i++) {
-                ddd.push(400000);
+                price.push(400000 - i);
+                memberDiscount.push((i * 1000));
+                directDiscount.push((i * 100));
             }
-            return resultDoorPrice(idx, ddd);
+            return resultDoorPrice(idx, price, memberDiscount, directDiscount);
         };
 
         function resultModelPriceCheck(modelPriceArry) {
@@ -355,6 +355,8 @@
         function myPickSave(saveInfo) {
             console.log("saveInfo", saveInfo);
         }
+
+        function myPickBtnFn() {}
         $(document).ready(function() {
 
             $(window).load(function() { //pdp유입 제품
