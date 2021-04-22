@@ -91,6 +91,7 @@ vcui.define('ui/datePeriodFilter', ['jquery', 'vcui', 'ui/calendar', 'ui/validat
 
             if(self.options.minDate) {
                 self.$dateFilterStartDate.vcCalendar('setMinDate',self.options.minDate);
+                self.$dateFilterEndDate.vcCalendar('setMinDate',self.options.minDate);
             }
 
             if(self.options.maxDate) {
