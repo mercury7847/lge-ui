@@ -5087,7 +5087,7 @@
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
-            priceHtml += '                                    <p class="err-msg">회원혜택가는 주문단계에서 확인하실 수 있습니다.</p>';
+            //priceHtml += '                                    <p class="err-msg">회원혜택가는 주문단계에서 확인하실 수 있습니다.</p>';
             priceHtml += '                                </div>';
             priceHtml += '                            </dd>';
             priceHtml += '                        </dl>';
@@ -5109,7 +5109,7 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            console.log("priceArry", priceArry);
+            //console.log("priceArry", priceArry);
             resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
@@ -5990,29 +5990,43 @@ function minusComma(value) {
 
 function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     //console.log("resultDoorPrice", price);
-    console.log("price", price);
-    console.log("memberDiscount", memberDiscount);
-    console.log("directDiscount", directDiscount);
+    // console.log("price", price);
+    // console.log("memberDiscount", memberDiscount);
+    // console.log("directDiscount", directDiscount);
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
         sumPrice += parseInt(price[i]);
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         if (i == (priceLeng - 1)) {
-            //memberDiscount.reduce();
-            // const memberDiscountSum = memberDiscount.reduce((stack, el) => {
-            //     return stack + el;
-            // }, 0);
-            // const directDiscountSum = directDiscount.reduce((stack, el) => {
-            //     return stack + el;
-            // }, 0);
-            // let resultDuiscount = memberDiscountSum + directDiscountSum;
-            // let resultSum = sumPrice - resultDuiscount;
-            // $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .before_price em").text(addComma(sumPrice));
-            // $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .after_price em").text(addComma(resultSum));
-            // //totalResulPrice();
+            let memberDiscountSum = 0;
+            let directDiscountSum = 0;
+            for (let j = 0; j < memberDiscount.length; j++) {
+                memberDiscountSum += memberDiscount[j];
+            }
+            for (let j = 0; j < directDiscount.length; j++) {
+                directDiscountSum += directDiscount[j];
+            }
+            setTimeout(function() {
+                let resultDuiscount = memberDiscountSum + directDiscountSum;
+                let resultSum = sumPrice - resultDuiscount;
+
+                if (resultDuiscount == 0) {
+                    $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .before_price").remove();
+                } else {
+                    $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .before_price em").text(addComma(sumPrice));
+                }
+
+                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .after_price em").text(addComma(resultSum));
+            }, 10);
+
+            //totalResulPrice();
         }
     }
+    setTimeout(function() {
+        $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+    }, 200);
+
 
 
 }
