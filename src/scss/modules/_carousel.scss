@@ -104,30 +104,46 @@
     }
     li {
         display:inline-block;
-        padding:0 6px;
+        //padding:0 6px;
         vertical-align:top;
         @include mobile {
-            padding:0 4px;
+            //padding:0 4px;
         }
         .btn-indi {
             display:inline-block;
-            width:12px;
-            height:12px;
-            border-radius:50%;
-            background:#aaa;
+            width:24px;
+            height:24px;
             font-size:0;
+            text-align: center;
+            &:before {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border-radius:50%;
+                background:#aaa;
+                content: '';
+            }
             @include mobile {
-                width:8px;
-                height:8px;
+                width:16px;
+                height:16px;
+                &:before {
+                    width: 8px;
+                    height: 8px;
+                }
             }
         }
         &.on .btn-indi {
-            width:28px;
-            border-radius:6px;
-            background:#ec455a;
+            width:40px;
+            &:before {
+                width: 28px;
+                border-radius:6px;
+                background:$color-primary;
+            }
             @include mobile {
-                width:18px;
-                border-radius:4px;
+                &:before {
+                    width:22px;
+                    border-radius:4px;
+                }
             }
         }
     }

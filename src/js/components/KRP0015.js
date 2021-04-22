@@ -14,7 +14,7 @@ $(window).ready(function(){
             '       <p class="modal-name">{{productID}}</p>'+
             '   </div>'+
             '</div>'+
-            '<button type="button" class="btn-close"><span class="blind">닫기</span></button>';
+            '<button type="button" class="btn-close"><span class="blind">제품 비교하기에서 제거</span></button>';
 
         var isInitChecked = false;
 

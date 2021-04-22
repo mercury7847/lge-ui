@@ -75,16 +75,17 @@
                 '<div class="result-detail">' +
                     '<div class="desc"><span>{{#raw desc}}</span></div>' +
                     '<div class="info-btm">' +
+                        '{{#if hash && hash.length>0}}' +
+                            '<div class="text hashtag-wrap">' +
+                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                            '</div>' +
+                        '{{/if}}' +
                         '<span class="text date"><span>{{date}}</span>' +
-                        '<div class="text hashtag-wrap">' +
-                            '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                        '</div>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +
     '</a></li>';
-
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
@@ -306,7 +307,10 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearchInput(searchVal);
+                    var check = vcui.string.replaceAll(searchVal," ","");
+                    if(check.length > 0) {
+                        self.requestSearchInput(searchVal);
+                    }
                 });
 
                 self.$inputSearch.keydown(function(key) {
