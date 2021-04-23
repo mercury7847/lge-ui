@@ -19,7 +19,7 @@
         '{{#if modelInfo&&modelInfo.length > 0}}' +
             '<div class="btn-wrap">' +
                 '{{#if modelInfo.length == 1}}' +
-                    '<a href="{{modelInfo[0].url}}" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
+                    '<a href="{{#if modelInfo[0].url}}{{modelInfo[0].url}}{{/if}}" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
                 '{{/if}}' +
                 '{{#if modelInfo.length > 1}}' +
                     '<a href="#more" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
@@ -159,10 +159,11 @@
                     if(modelInfo) {
                         modelInfo.forEach(function(item, index) {
                             var tempArr = item.split('|');
-                            if(tempArr.length > 2) {
+                            if(tempArr.length > 3) {
+                                var url = (tempArr[3] == "SUSPENDED") ? null : tempArr[2]; 
                                 array.push({
                                     "name":tempArr[1],
-                                    "url":tempArr[2]
+                                    "url":url
                                 });
                             }
                         });
