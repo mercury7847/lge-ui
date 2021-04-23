@@ -1115,9 +1115,10 @@
             });
             $(window).on("load", function() {
                 autoFixedLinkTab()
-                $(window).on("scroll", function() {
-                    autoFixedLinkTab()
-                });
+
+            });
+            $(window).on("scroll", function() {
+                autoFixedLinkTab()
             });
 
             function autoFixedLinkTab() {
@@ -1158,6 +1159,9 @@
                 var scrollE = $(window).scrollTop();
 
             }
+            $(".gallery_thumb_wrap .gallery_thumb_body .btn_more").on("click", function() { //더보기 클릭시에 내용 추가
+                $(this).closest(".gallery_thumb_body").addClass("is_active");
+            });
             $(".carousel-item a").on("click", function(e) {
                 e.preventDefault();
                 $(".carousel-item").removeClass("active");
