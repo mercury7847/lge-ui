@@ -1488,7 +1488,10 @@
                 //결제정보
                 if(data.payment) {
                     if(Object.keys(data.payment).length){
-                        var orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
+                        var orderReceiptAbleYn;
+                        if(TAB_FLAG == TAB_FLAG_RECORD) orderReceiptAbleYn = "N";
+                        else orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
+                        
                         PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
                     }
                 }
