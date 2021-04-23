@@ -292,13 +292,13 @@
             // bottom:80px + 24px + 56px;
         }
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .floating-linker {
         width:100% !important;
         height:100% !important;
-        &:not(:last-child) {
+        &:not(:first-child) {
             margin-top: 10px;
         }
         a {
@@ -543,6 +543,24 @@
                             font-size:14px;
                             font-weight:500;
                             line-height:24px;
+                        }
+                    }
+                    &.disabled {
+                        dl {
+                            dd {
+                                color: #F04E3E;
+                                font-weight: 500;
+                                @include font-small;
+                                &:before {
+                                    content: '';
+                                    display: inline-block;
+                                    width: 20px;
+                                    height: 20px;
+                                    margin: 2px 4px 0 0;
+                                    background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
+                                    vertical-align: top;
+                                }
+                            }
                         }
                     }
                 }

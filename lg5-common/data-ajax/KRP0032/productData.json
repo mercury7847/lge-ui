@@ -18,7 +18,8 @@
             "imageAltText":"LG 올레드 AI ThinQ",
             "modelDisplayName":"LG 올레드 AI ThinQ",
             "sku":"OLED78943",
-            "price":"3867552"
+            "price":"3867552",
+            "disabledReason":"품절"
         },
         {
             "id":"pid00003",

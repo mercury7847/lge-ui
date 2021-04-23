@@ -75,11 +75,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             total: 0,
             useCookie: true,
             onlyMyModel: false,
+            reset: false,
             model: {
                 category: '',
-                categoryNm: '',
+                categoryNm: '전체',
                 subCategory: '',
-                subCategoryNm: '',
+                subCategoryNm: '전체',
                 modelCode: '',
                 productCode: '',
             },
@@ -166,18 +167,33 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 self._bindEvent();
                 
                 lgkorUI.searchModelName();
-                
-                if (opts.useCookie && self.hasModel) {
-                    if (self.model.mktModelCd || !self.model.modelCode) {
-                        self.complete();
+
+                if (opts.reset) {
+                    self.reset();
+                    return;
+                }
+
+                if (lgkorUI.searchParamsToObject('mktModelCd')) {
+                    opts.useCookie = false;
+                    self.model.modelCode = self.model.mktModelCd = lgkorUI.searchParamsToObject('mktModelCd');
+                    self.hasModel = true;
+                }
+
+                if (self.hasModel) {
+                    if (opts.useCookie) {
+                        if (self.hasModel) {
+                            lgkorUI.alert(
+                                self.model.categoryNm + ' &gt; ' +self.model.subCategoryNm + (self.model.modelCode ? '<br><span style="font-weight:700">"' +self.model.modelCode+ '"</span>' : '' ) +'<br>제품이 선택되어 있습니다.<br><br>다른 제품으로 변경하시려면<br>화면 상단 <span style="font-weight:700">"제품 재선택"</span> 버튼을 선택해주세요.', {
+                                okBtnName: '닫기',
+                                ok: function() {
+                                    self.complete();
+                                }
+                            });
+                        }
                     } else {
-                        lgkorUI.alert(
-                            self.model.categoryNm + ' &gt; ' +self.model.subCategoryNm + (self.model.modelCode ? '<br><span style="font-weight:700">"' +self.model.modelCode+ '"</span>' : '' ) +'<br>제품이 선택되어 있습니다.<br><br>다른 제품으로 변경하시려면<br>화면 상단 <span style="font-weight:700">"제품 재선택"</span> 버튼을 선택해주세요.', {
-                            okBtnName: '닫기',
-                            ok: function() {
-                                self.complete();
-                            }
-                        });
+                        if (self.model.mktModelCd || !self.model.modelCode) {
+                            self.complete();
+                        }
                     }
                 }
             }
@@ -189,11 +205,13 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$selectedModelBar.on('click', '.btn-add-product', function(e) {
                 e.preventDefault();
                 var href = $(this).attr('href');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectProductRegClick.do', 'www.lge.co.kr/acecount/modelselectProductRegClickm.do');
                 location.href = href + '?modelCode=' + self.model.salesModelCode;
             });
 
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectReselectClick.do', 'www.lge.co.kr/acecount/modelselectReselectClickm.do');
                 self.reset();
             });
 
@@ -423,18 +441,20 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         arr = data instanceof Array ? data : [],
                         html = '';
 
+                    $subCategory.find('option:not(.default)').remove();
+
                     if (arr.length) {
                         arr.forEach(function(item) {
                             html += vcui.template('<option value={{value}}>{{name}}</option>', item);
                         });
             
-                        $subCategory.find('option:not(.default)').remove();
                         $subCategory
                             .append(html)
                             .val(value)
-                            .prop('disabled', false)
-                            .vcSelectbox('update');
+                            .prop('disabled', false);
                     }
+
+                    $subCategory.vcSelectbox('update');
 
                     self.$modelPopup.data('category', $this.val());
                     self.$modelPopup.data('subCategory', value);

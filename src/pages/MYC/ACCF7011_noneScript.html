@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "최근 본 제품",
+                "pageDesc" : "최근에 확인하신 제품을 최대 10개까지 확인 가능하며 해당 내용은 6개월 동안 유지된 후 가장 오래된 제품부터 삭제됩니다."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "", "page": "찜한 제품" },
+                                { "on": "on", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "", "page": "단골매장" },
+                                { "on": "", "page": "재입고 알림" },
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="info-tbl-wrap type2">
+                                <ul>
+                                    @@loop('./common/modules/bdcard-list.html', [
+                                        {
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            more : true,
+                                            price : "5,141,000원",
+                                            oriPrice : "5,300,000원",
+                                            likeBtn : "chk-like1",
+                                            likeChecked : true
+                                        },
+                                        {
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            more : true,
+                                            price : "5,141,000원",
+                                            oriPrice : "5,300,000원",
+                                            likeBtn : "chk-like4"
+                                        },
+                                        {
+                                            disabled : true,
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            price : "5,141,000원",
+                                            oriPrice : "5,300,000원",
+                                            likeBtn : "chk-like9",
+                                            soldout : "일시 품절된 상품입니다.<!-- 210422 수정 [문구 수정] -->"
+                                        },
+                                        {
+                                            disabled : true,
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            soldout : "판매가 종료된 상품입니다.<!-- 210422 수정 [문구 수정] -->",
+                                        },
+                                        {
+                                            disabled : true,
+                                            thumb : "/lg5-common/images/dummy/@img-product.jpg",
+                                            name : "LG 디오스 상냉장하냉동",
+                                            name2 : "OLED55BXPUA",
+                                            soldout : "본 상품은 LGE.COM에서 판매하지 않는 상품입니다.<!-- 210422 수정 [문구 수정] -->",
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="no-data">
+                                <p>최근 본 제품이 없습니다.</p>
+                            </div>
+                            <!-- 210325 수정 [주의사항 문구 추가] -->
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "최근에 확인하신 제품을 최대 10개까지 확인 가능하며 해당 내용은 6개월 동안 유지된 후 가장 오래된 제품부터 삭제됩니다."
+                                ]
+                            })
+                            <!-- // 210325 수정 [주의사항 문구 추가] -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "찜하기 되었습니다."}
+                    ]
+                })
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

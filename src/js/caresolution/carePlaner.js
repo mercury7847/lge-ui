@@ -417,7 +417,7 @@
             $dropDown.vcDropdown("close");
 
             var maxCardSale = $this.attr('data-card-sale');
-            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
+            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("이용시 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
             else $('#pop-estimate').find('.discount-price').hide();
 
             $('#pop-estimate').data("selectId", $this.data('cardId'));

@@ -23,7 +23,8 @@
             @include textEllipsisClamp(2);
             word-break:keep-all;
             @include mobile {
-                padding:0 40px 0 0;
+                margin-right: 40px;
+                padding:0;
             }
         }
         .btn-close {

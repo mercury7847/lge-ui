@@ -14,8 +14,8 @@
         display:inline-block;
     }
     .mobile{
-        // display:none !important;
-        display:none;
+        display:none !important;
+        // display:none;
     }
     @include mobile {
         .pc{

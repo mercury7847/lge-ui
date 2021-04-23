@@ -306,7 +306,7 @@
     .pdp-visual-area.visible-sm {
         overflow: hidden;
         //margin-bottom: 28px;
-        padding-bottom: 44px;
+        padding-bottom: 42px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -318,6 +318,10 @@
                 width: 100%;
                 text-align: center;
                 height: auto;
+                padding: 2px;
+                a {
+                    padding: 0 28px;
+                }
             }
         }
         .indi-wrap {
@@ -470,7 +474,7 @@
 
         @include mobile {
             position: absolute;
-            top: 0;
+            top: -30px;
             right: 0;
             z-index: 2;
             width: auto;
@@ -532,8 +536,9 @@
             float: none;
             width: auto;
             margin: 0 -16px;
-            padding: 24px 16px 0;
-            border-top: 12px solid $color-bg;
+            padding: 5px 16px 0;
+            // padding: 24px 16px 0;
+            // border-top: 12px solid $color-bg;
         }
         .product-detail-info {
             //position: relative;
@@ -825,7 +830,8 @@
                         }
                     }
                     @include mobile {
-                        margin:24px -16px 0;
+                        margin:0 -16px;
+                        // margin:24px -16px 0;
                         a {
                             border-radius:0;
                         }
@@ -1960,11 +1966,11 @@
             @include mobile {
                 .flag-wrap {
                     position:absolute;
-                    top:0;
+                    top:-30px;
                     left:0;
                 }
                 .product-cover {
-                    padding-top:22px;
+                    margin-top:30px;
                 }
             }
             .flag-wrap.bar-type .flag {

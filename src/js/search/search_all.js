@@ -257,7 +257,8 @@
                         self.setinputSearchValue(value);
                         self.requestSearchData(value, force);
                     } else {
-                        //self.requestSearchData("",false);
+                        self.setinputSearchValue("");
+                        self.requestSearchData("", force);
                     }
 
                     self.updateBasicData();
@@ -374,10 +375,7 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    var check = vcui.string.replaceAll(searchVal," ","");
-                    if(check.length > 0) {
-                        self.requestSearchInput(searchVal);
-                    }
+                    self.requestSearchInput(searchVal);
                 });
 
                 self.$inputSearch.keydown(function(key) {
@@ -629,6 +627,7 @@
                 if(count > 0) {
                     $tab_li.find('span').text("("+vcui.number.addComma(count)+")");
                     $tab_li.show();
+                    self.$tab.parents('.search-tabs-wrap').show();
                 } else {
                     $tab_li.hide();
                 }
@@ -1017,8 +1016,8 @@
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
-                        self.$tab.parents('.search-tabs-wrap').show();
-                        self.$tab.vcSmoothScroll('refresh');
+                        //self.$tab.parents('.search-tabs-wrap').show();
+                        //self.$tab.vcSmoothScroll('refresh');
                         //self.$tab.show();
                         //self.$contWrap.show();
                         self.$resultListNoData.hide();

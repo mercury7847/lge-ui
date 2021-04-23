@@ -315,10 +315,7 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    var check = vcui.string.replaceAll(searchVal," ","");
-                    if(check.length > 0) {
-                        self.requestSearchInput(searchVal);
-                    }
+                    self.requestSearchInput(searchVal);
                 });
 
                 self.$inputSearch.keydown(function(key) {
@@ -537,6 +534,7 @@
                 if(count > 0) {
                     $tab_li.find('span').text("("+vcui.number.addComma(count)+")");
                     $tab_li.show();
+                    self.$tab.parents('.search-tabs-wrap').show();
                 } else {
                     $tab_li.hide();
                 }
@@ -806,8 +804,8 @@
                         //정렬 셀렉트 박스
                         self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
-                        self.$tab.parents('.search-tabs-wrap').show();
-                        self.$tab.vcSmoothScroll('refresh');
+                        //self.$tab.parents('.search-tabs-wrap').show();
+                        //self.$tab.vcSmoothScroll('refresh');
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
 
