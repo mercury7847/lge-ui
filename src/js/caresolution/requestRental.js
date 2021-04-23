@@ -367,11 +367,11 @@
             var chk = $(this).prop('checked');
             if(chk) {
                 $(this).prop('checked', false);
-                $('#popup-previsit').vcModal();
+                $('#popup-previsit').vcModal({opener:$(this)});
             }
         }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
             e.preventDefault();
-            $('#popup-previsit').vcModal();
+            $('#popup-previsit').vcModal({opener:$(this)});
         }).on('click', '.installAbledConfirm', function(e){
             e.preventDefault();
             setInstallAbledConfirm();
@@ -413,11 +413,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-cardApply').vcModal();
+                $('#popup-cardApply').vcModal({opener:$(this)});
             }
         }).on('click', '.cardApplyaAgree', function(e){
             e.preventDefault();
-            $('#popup-cardApply').vcModal();
+            $('#popup-cardApply').vcModal({opener:$(this)});
         }).on('change', 'select[name=paymentCard], input[name=paymentCardNumber], input[name=paymentCardPeriod]', function(e){
             var chk = 0;
             if(step3Block.find('select[name=paymentCard]').val() != "") chk++;
@@ -435,11 +435,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-selfClearing').vcModal();
+                $('#popup-selfClearing').vcModal({opener:$(this)});
             }
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
-            $('#popup-selfClearing').vcModal();
+            $('#popup-selfClearing').vcModal({opener:$(this)});
         }).on('click', '.paymentCardConfirm', function(e){
             e.preventDefault();
             setCardAbledConfirm();
@@ -1004,7 +1004,7 @@
     function getRealBankData(){
         return{
             bankUserName: bankValidation.getValues('bankUserName'),
-            paymentBank: values.paymentBank,
+            paymentBank: bankValidation.getValues('paymentBank'),
             paymentBankNumber: step3Block.find('input[name=paymentBankNumber]').data('realData')
         }
     }
@@ -1153,7 +1153,7 @@
     }
 
     function openRentalAgreePopup(){
-        $('#popup-rentalAgree').vcModal()
+        $('#popup-rentalAgree').vcModal({opener:rentalAgreeChker})
         .on('modalhide', function(e){
             var chk = getRentalAgreeAllChecked();
             rentalAgreeChker.prop('checked', chk);
@@ -1182,7 +1182,7 @@
     }
 
     function openPrivacyPopup(){
-        $('#popup-privacy').vcModal()
+        $('#popup-privacy').vcModal({opener:step1Block.find('.input-mix-wrap .cell .btn-link')})
         .on('modalhide', function(e){
             var chk = privacyAgreeAllChker.getAllChecked();
             privacyAgreeChker.prop('checked', chk);
