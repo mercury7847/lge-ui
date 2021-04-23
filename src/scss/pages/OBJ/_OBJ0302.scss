@@ -1303,14 +1303,15 @@ h2.title {
                                     }
                                 }
                                 .err-msg {
-                                    position: absolute;
-                                    left: 7.5%;
-                                    right: 7.5%;
+                                    // position: absolute;
+                                    // left: 7.5%;
+                                    // right: 7.5%;
                                     //bottom: 20px;
-                                    bottom: 10px;
+                                    // bottom: 10px;
+                                    margin-top: 15px;
                                     color: #000000;
                                     font-size: 14px;
-                                    text-align: center;
+                                    text-align: left;
                                     @include mobile {
                                         // left: 15px;
                                         // right: 15px;
