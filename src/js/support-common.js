@@ -1533,6 +1533,24 @@ function validatePhone(value){
         });
 
         $('.agree-wrap .agree-cont-box').attr('tabindex', 0);
+
+        if ($('.pay-warranty').length) {
+            $('.ui_tab-notice').on('tabchange', function(e, info) {
+                var index = info.selectedIndex;
+                console.log(index);
+                switch(index) {
+                    case 0:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo1.do', 'www.lge.co.kr/acecount/ratesInfo1m.do');
+                        break;
+                    case 1:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo3.do', 'www.lge.co.kr/acecount/ratesInfo3m.do');
+                        break;
+                    case 2:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo4.do', 'www.lge.co.kr/acecount/ratesInfo4m.do');
+                        break;
+                }
+            });
+        }
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
