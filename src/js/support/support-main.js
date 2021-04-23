@@ -1,8 +1,15 @@
 (function(){
+    var detect = vcui.detect;
+    var isMobileDevice = detect.isMobileDevice;
+
     var supportHome = {
         loginTooltip : function(){
             var $tooltip = $('.tooltip-login');
             var $btnClose = $tooltip.find('.btn-tooltip-close');
+
+            $tooltip.on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainLoginClick.do', 'www.lge.co.kr/acecount/mainLoginClickm.do');
+            });
 
             $btnClose.on('click', function(e){
                 $tooltip.hide();
@@ -389,9 +396,6 @@
                         var _button = $('<button class="btn-play"><span class="blind">멈춤</span></button>');
     
                         if( _type == "button") {
-                            console.log('button')
-                            console.log($this.attr('class'))
-                            console.log($this.find('.slick-next').length)
                             _button.insertAfter($this)
                             //$this.insertAfter(_button);
                             //$this.append(_button);
@@ -557,7 +561,8 @@
                             $('#userZipCode').val($('#serviceZipCode').val())
                             $('#userAddress').val($('#serviceUserAddress').val())
                             $('#userDetailAddress').val($('#serviceDetailAddress').val())
-
+                            
+                            lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainEngineerClick.do', 'www.lge.co.kr/acecount/mainEngineerClickm.do');
                             self.el.container.find('#serviceReservationForm').submit();
                         }
                     });
@@ -650,7 +655,8 @@
                             });
     
                             self.el.container.find('.btn-inquiry').on('click', function(){
-    
+                                var _self = this;
+
                                 if( self.el.container.find('.auth-type-no.active').length ) {
 
                                     self.validation.validate();
@@ -658,6 +664,7 @@
                                     var resultData = self.validation.getAllValues();
 
                                     if( validationResult ) {
+                                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', 'www.lge.co.kr/acecount/mainStatusClickm.do');
                                         lgkorUI.showLoading();
                                         lgkorUI.requestAjaxDataPost($('#authDataForm1').data('ajax'), resultData, function(result) {
                                             if (result.data.resultFlag == 'Y') {
@@ -672,7 +679,7 @@
                                                             $(el).vcModal('hide');
                                                         }
                                                     }
-                                                });
+                                                }, _self);
                                             }
                     
                                             lgkorUI.hideLoading();
@@ -681,7 +688,7 @@
                                 }
                                 
                                 if( self.el.container.find('.auth-type-phone.active').length ) {
-                                    self.authManager.confirm('.btn-auth-confirm')
+                                    self.authManager.confirm('.btn-auth-confirm', function(), _self)
                                 }
     
                             })
@@ -815,6 +822,7 @@
             init : function(){
                 var self = this;
                 var $container = $(self.el.container);
+                var $listWrap = $container.find(self.el.listWrap);
                 var $pdCont = $container.find(self.el.pdCont);
                 var modelCnt = $('[name="modelCnt"]').val();
                 var memberContentsCnt = $('[name="memberContentsCnt"]').val();
@@ -822,6 +830,10 @@
                 if( memberContentsCnt > 0 && modelCnt > 0) {
                     self.getProduct();
                 }
+
+                $listWrap.on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainKeywordResetClick.do', 'www.lge.co.kr/acecount/mainKeywordResetClickm.do');
+                });
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
                     var $this = $(this);
@@ -961,7 +973,10 @@
         keyword: {
             el: {
                 searchWrap: '.ui_search',
-                searchInput: '#search'
+                searchInput: '#search',
+                recentlyWrap: '.recently-keyword',
+                popularWrap: '.popular-keyword',
+                autocompleteWrap: '.autocomplete-box'
             },
             init: function() {
                 if (!$('.ui_search').length) return;
@@ -969,24 +984,41 @@
                 var self = this;
                 var $searchWrap = $(self.el.searchWrap);
                 var $searchInput = $(self.el.searchInput);
+                var $recentlyWrap = $(self.el.recentlyWrap);
+                var $popularWrap = $(self.el.popularWrap);
+                var $autocompleteWrap = $(self.el.autocompleteWrap);
                 var url = $searchWrap.data('searchUrl');
 
                 $searchInput.on('keyup', function(e) {
                     if (e.keyCode == 13) {
                         e.preventDefault();
                         var _value = $searchInput.val();
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', 'www.lge.co.kr/acecount/mainSearchClickm.do');
                         location.href = url + encodeURI(_value)
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', 'www.lge.co.kr/acecount/mainSearchClickm.do');
                     location.href = url + encodeURI(_value)
                 });
 
                 $searchWrap.on('keywordClick', function() {
                     var _value = $searchInput.val();
                     location.href = url + encodeURI(_value)
+                });
+
+                $autocompleteWrap.on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainModelClick.do', 'www.lge.co.kr/acecount/mainModelClickm.do');
+                });
+
+                $recentlyWrap.on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainRecentClick.do', 'www.lge.co.kr/acecount/mainRecentClickm.do');
+                });
+
+                $popularWrap.on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainPopularClick.do', 'www.lge.co.kr/acecount/mainPopularClickm.do');
                 });
 
                 $searchWrap.search({
@@ -1013,6 +1045,10 @@
             this.getRegisterdProduct.init();
             this.modal.init();
             this.keyword.init();
+
+            if (lgkorUI.searchParamsToObject('smq') == 'Y') {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainThinqView.do', 'www.lge.co.kr/acecount/mainThinqViewm.do');
+            }
         }
     }
     
@@ -1024,8 +1060,6 @@
         var prevSize = window.innerWidth;
     
         $(window).on('resize', function(){
-            
-
             var curSize = window.innerWidth;
 
             if( curSize <= 1024 &&  prevSize > 1024 ) {

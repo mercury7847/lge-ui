@@ -1,807 +1,1184 @@
 {
-    "data": {
-      "listData": [
-        {
-          "orderNumber": "000006666",
-          "orderDate": "2021.03.24",
-          "orderType": "NS",
-          "status": "Wait for Authorization",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "26900",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "LG 울트라HD 모니터",
-              "productNameEN": "32UN500.BKR",
-              "modelID": "MD08748493",
-              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "VA",
-                "80 cm"
-              ],
-              "itemStatus": "Invoiced",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "결제 완료",
-                "statusClass": "",
-                "statusDate": "배송희망일 2021.03.31",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
+  "data": {
+    "listData": [
+      {
+        "orderNumber": "000010600",
+        "orderDate": "2021.04.08",
+        "orderType": "SM",
+        "status": "Fail",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "105900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 2,
+        "productList": [
+          {
+            "productNameKR": "실밥 거름망",
+            "productNameEN": "ADQ72933301",
+            "modelID": "MD08918846",
+            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
+            "modelType": "소모품(A)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "10900",
+            "productTotalPrice": 10900,
+            "rowTotal": 10900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "",
+              ""
+            ],
+            "itemStatus": "Fail",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문접수중",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "펫 흡입구",
-              "productNameEN": "AGB74612304",
-              "modelID": "MD08920313",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "114000",
-              "productTotalPrice": 114000,
-              "rowTotal": 114000,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Picking",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송준비중",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                {
-                  "className": "requestOrder",
-                  "buttonName": "주문접수"
-                }
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "Y",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006639",
-          "orderDate": "2021.03.24",
-          "orderType": "NS",
-          "status": "Wait for Authorization",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "26900",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "펫 흡입구",
-              "productNameEN": "AGB74612304",
-              "modelID": "MD08920313",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/agb74612304",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08920313/md08920313-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "114000",
-              "productTotalPrice": 114000,
-              "rowTotal": 114000,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Picking",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송준비중",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
-                }
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "Y",
+            "orderRetuenAbleYn": "N"
+          },
+          {
+            "productNameKR": "A9S 배터리",
+            "productNameEN": "EAC63382204",
+            "modelID": "MD08919869",
+            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
+            "modelType": "소모품(A)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "95000",
+            "productTotalPrice": 95000,
+            "rowTotal": 95000,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "",
+              ""
+            ],
+            "itemStatus": "Fail",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문접수중",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "LG TONE Free",
-              "productNameEN": "HBS-TFN7.AGKRWH",
-              "modelID": "MD08534009",
-              "productPDPurl": "https://wwwstg.lge.co.kr/home-audio/hbs-tfn7-white",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/home-audio/md08534009/md08534009-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Picking",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송준비중",
-                "statusClass": "",
-                "statusDate": "배송희망일 2021.03.31",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
-                }
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "Y",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006435",
-          "orderDate": "2021.03.23",
-          "orderType": "SM",
-          "status": "Picking",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "141900",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "토탈케어플러스 H13 필터",
-              "productNameEN": "ADQ74834312",
-              "modelID": "MD08918843",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "2",
-              "productPrice": "65500",
-              "productTotalPrice": 131000,
-              "rowTotal": 131000,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Wait for Authorization",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송준비중",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
-                }
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "Y",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "Y",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000010177",
+        "orderDate": "2021.04.07",
+        "orderType": "NS",
+        "status": "Wait for Authorization",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "107900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 2,
+        "productList": [
+          {
+            "productNameKR": "LG DIOS 인덕션 전기레인지",
+            "productNameEN": "BEI3MST.AKOR",
+            "modelID": "MD08751090",
+            "productPDPurl": "https://wwwstg.lge.co.kr/electric-ranges/bei3mst",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/electric-ranges/md08751090/md08751090-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "인덕션 3구",
+              "블랙"
+            ],
+            "itemStatus": "Cancel Pending",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 접수",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "Y",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006426",
-          "orderDate": "2021.03.23",
-          "orderType": "SM",
-          "status": "Closed",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "65500",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 1,
-          "productList": [
-            {
-              "productNameKR": "토탈케어플러스 H13 필터",
-              "productNameEN": "ADQ74834312",
-              "modelID": "MD08918843",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "65500",
-              "productTotalPrice": 65500,
-              "rowTotal": 65500,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006234",
-          "orderDate": "2021.03.22",
-          "orderType": "NS",
-          "status": "Closed",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "0",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          },
+          {
+            "productNameKR": "A9S 배터리",
+            "productNameEN": "EAC63382204",
+            "modelID": "MD08919869",
+            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
+            "modelType": "소모품(A)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "95000",
+            "productTotalPrice": 95000,
+            "rowTotal": 95000,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "",
+              ""
+            ],
+            "itemStatus": "Cancel Approved",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 승인",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "LG 울트라HD 모니터",
-              "productNameEN": "32UN500.BKR",
-              "modelID": "MD08748493",
-              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "VA",
-                "80 cm"
-              ],
-              "itemStatus": "Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "refunded",
-                "statusClass": "",
-                "statusDate": "배송희망일 2021.03.24",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006228",
-          "orderDate": "2021.03.22",
-          "orderType": "NS",
-          "status": "Closed",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "8800",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "LG TROMM",
-              "productNameEN": "F18VDP.AKOR",
-              "modelID": "MD08045851",
-              "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "18kg",
-                "모던 스테인리스"
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000009505",
+        "orderDate": "2021.04.01",
+        "orderType": "NB",
+        "status": "Closed",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "LG 트롬<sup>ThinQ</sup>",
+            "productNameEN": "F12VV.AKOR",
+            "modelID": "MD08534001",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f12vv",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08534001/md08534001-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "12kg",
+              "모던 스테인리스"
+            ],
+            "itemStatus": "Cancel Refunded",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006225",
-          "orderDate": "2021.03.22",
-          "orderType": "SM",
-          "status": "Closed",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "0",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "토탈케어플러스 H13 필터",
-              "productNameEN": "ADQ74834312",
-              "modelID": "MD08918843",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/360-air-purifier/adq74834312",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/360-air-purifier/md08918843/md08918843-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "65500",
-              "productTotalPrice": 65500,
-              "rowTotal": 65500,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000008662",
+        "orderDate": "2021.03.29",
+        "orderType": "NB",
+        "status": "Canceled",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "1189300",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 2,
+        "productList": [
+          {
+            "productNameKR": "LG 트롬<sup>ThinQ</sup>",
+            "productNameEN": "F12VV.AKOR",
+            "modelID": "MD08534001",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f12vv",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08534001/md08534001-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "12kg",
+              "모던 스테인리스"
+            ],
+            "itemStatus": "Canceled",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "refunded",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006216",
-          "orderDate": "2021.03.22",
-          "orderType": "SM",
-          "status": "Picking",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "5900",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 1,
-          "productList": [
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Cancel Approved",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 승인",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006207",
-          "orderDate": "2021.03.22",
-          "orderType": "NS",
-          "status": "Closed",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "24700",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "LG TROMM",
-              "productNameEN": "F18VDP.AKOR",
-              "modelID": "MD08045851",
-              "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "18kg",
-                "모던 스테인리스"
-              ],
-              "itemStatus": "Cancel Refunded",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "취소 완료",
-                "statusClass": "",
-                "statusDate": "",
-                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/TEST123456"
-              },
-              "statusButtonList": [
-                
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          },
+          {
+            "productNameKR": "LG 퓨리케어 360˚ 공기청정기 펫 플러스",
+            "productNameEN": "AS301DNPA.AKOR",
+            "modelID": "MD08917838",
+            "productPDPurl": "https://wwwstg.lge.co.kr/air-purifier/as301dnpa",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/air-purifier/md08917838/md08917838-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "1176400",
+            "productTotalPrice": 1176400,
+            "rowTotal": 1176400,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "뉴메탈 샤인",
+              "376X1,073X376mm"
+            ],
+            "itemStatus": "Canceled",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "2",
-              "productPrice": "10900",
-              "productTotalPrice": 21800,
-              "rowTotal": 21800,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Delivered",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송완료",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/TEST123456"
-              },
-              "statusButtonList": [
-                {
-                  "className": "productReview",
-                  "buttonName": "제품리뷰"
-                },
-                {
-                  "className": "deliveryInquiry",
-                  "buttonName": "배송조회"
-                },
-                {
-                  "className": "takeBackInner",
-                  "buttonName": "반품신청"
-                }
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "Y",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000006201",
-          "orderDate": "2021.03.22",
-          "orderType": "NS",
-          "status": "Complete",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "4700",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 2,
-          "productList": [
-            {
-              "productNameKR": "LG 울트라HD 모니터",
-              "productNameEN": "32UN500.BKR",
-              "modelID": "MD08748493",
-              "productPDPurl": "https://wwwstg.lge.co.kr/monitors/32un500",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/monitors/md08748493/md08748493-350x350.jpg",
-              "modelType": "일반(G)",
-              "orderedQuantity": "1",
-              "productPrice": "12900",
-              "productTotalPrice": 12900,
-              "rowTotal": 12900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "VA",
-                "80 cm"
-              ],
-              "itemStatus": "Shipped",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송중",
-                "statusClass": "",
-                "statusDate": "배송희망일 2021.03.24",
-                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/on_delivery"
-              },
-              "statusButtonList": [
-                {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
-                }
-              ]
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000007939",
+        "orderDate": "2021.03.28",
+        "orderType": "NS",
+        "status": "Wait for Authorization",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "120800",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 3,
+        "productList": [
+          {
+            "productNameKR": "듀얼 정수기",
+            "productNameEN": "WU900AS.AKOR",
+            "modelID": "MD08747120",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기+세척수",
+              "언더싱크형"
+            ],
+            "itemStatus": "Cancel Pending",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 접수",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
             },
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "2",
-              "productPrice": "10900",
-              "productTotalPrice": 21800,
-              "rowTotal": 21800,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Delivered",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송완료",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/on_delivery"
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          },
+          {
+            "productNameKR": "LG 코드제로 로보킹 ",
+            "productNameEN": "R76ITM.AKOR",
+            "modelID": "MD08045145",
+            "productPDPurl": "https://wwwstg.lge.co.kr/vacuum-cleaners/r76itm",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md08045145/md08045145-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "340 x 340 x 89 mm",
+              "3.0kg"
+            ],
+            "itemStatus": "Cancel Pending",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 접수",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          },
+          {
+            "productNameKR": "A9S 배터리",
+            "productNameEN": "EAC63382204",
+            "modelID": "MD08919869",
+            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
+            "modelType": "소모품(A)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "95000",
+            "productTotalPrice": 95000,
+            "rowTotal": 95000,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "",
+              ""
+            ],
+            "itemStatus": "Cancel Approved",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 승인",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000007924",
+        "orderDate": "2021.03.28",
+        "orderType": "NB",
+        "status": "Wait for Authorization",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "듀얼 정수기",
+            "productNameEN": "WU900AS.AKOR",
+            "modelID": "MD08747120",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기+세척수",
+              "언더싱크형"
+            ],
+            "itemStatus": "Picking",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "배송준비중",
+              "statusClass": "",
+              "statusDate": "배송희망일 2021.03.31",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              {
+                "className": "deliveryRequest",
+                "buttonName": "배송문의"
+              }
+            ],
+            "orderCancelAbleYn": "Y",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "Y",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000006753",
+        "orderDate": "2021.03.24",
+        "orderType": "NB",
+        "status": "Delivered",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "LG 트롬",
+            "productNameEN": "F18VDP.AKOR",
+            "modelID": "MD08045851",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "18kg",
+              "모던 스테인리스"
+            ],
+            "itemStatus": "Delivered",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "배송완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": "https://b2c.goodsflow.com/zkm/v1/whereis/smilelgetest/epost/on_delivery"
+            },
+            "statusButtonList": [
+              {
+                "className": "productReview",
+                "buttonName": "제품리뷰"
               },
-              "statusButtonList": [
-                {
-                  "className": "productReview",
-                  "buttonName": "제품리뷰"
-                },
-                {
-                  "className": "deliveryInquiry",
-                  "buttonName": "배송조회"
-                },
-                {
-                  "className": "takeBackInner",
-                  "buttonName": "반품신청"
-                }
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "N",
-          "orderRetuenAbleYn": "Y",
-          "requestOrderAbleYn": "N"
-        },
-        {
-          "orderNumber": "000005967",
-          "orderDate": "2021.03.22",
-          "orderType": "SM",
-          "status": "Picking",
-          "apiType": "OBS",
-          "requestNo": "",
-          "grandTotalValue": "10900",
-          "grandTotalCurrency": "KRW",
-          "contDtlType": "",
-          "email": "",
-          "orderTotal": 1,
-          "productList": [
-            {
-              "productNameKR": "실밥 거름망",
-              "productNameEN": "ADQ72933301",
-              "modelID": "MD08918846",
-              "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-              "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-              "modelType": "소모품(A)",
-              "orderedQuantity": "1",
-              "productPrice": "10900",
-              "productTotalPrice": 10900,
-              "rowTotal": 10900,
-              "productSalePriceCurrency": "KRW",
-              "specList": [
-                "",
-                ""
-              ],
-              "itemStatus": "Wait for Authorization",
-              "requestNo": "",
-              "orderStatus": {
-                "disabled": "",
-                "statusText": "배송준비중",
-                "statusClass": "",
-                "statusDate": "배송희망일 ",
-                "deliveryUrl": ""
-              },
-              "statusButtonList": [
-                {
-                  "className": "deliveryRequest",
-                  "buttonName": "배송문의"
-                }
-              ]
-            }
-          ],
-          "orderCancelAbleYn": "Y",
-          "orderRetuenAbleYn": "N",
-          "requestOrderAbleYn": "N"
-        }
-      ],
-      "careListData": [
-        
-      ]
-    },
-    "param": {
-      "pagination": {
-        "careTotalCount": 0,
-        "page": null,
-        "totalCount": 2
+              {
+                "className": "takeBackInner",
+                "buttonName": "반품신청"
+              }
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "Y"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "Y",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000006750",
+        "orderDate": "2021.03.24",
+        "orderType": "NB",
+        "status": "Picking",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "LG 트롬",
+            "productNameEN": "F18VDP.AKOR",
+            "modelID": "MD08045851",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "18kg",
+              "모던 스테인리스"
+            ],
+            "itemStatus": "Picking",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "배송준비중",
+              "statusClass": "",
+              "statusDate": "배송희망일 2021.03.31",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              {
+                "className": "deliveryRequest",
+                "buttonName": "배송문의"
+              }
+            ],
+            "orderCancelAbleYn": "Y",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "Y",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000006747",
+        "orderDate": "2021.03.24",
+        "orderType": "NB",
+        "status": "Canceled",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "LG 트롬",
+            "productNameEN": "F18VDP.AKOR",
+            "modelID": "MD08045851",
+            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "18kg",
+              "모던 스테인리스"
+            ],
+            "itemStatus": "Canceled",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000006540",
+        "orderDate": "2021.03.23",
+        "orderType": "NB",
+        "status": "Canceled",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "듀얼 정수기",
+            "productNameEN": "WU900AS.AKOR",
+            "modelID": "MD08747120",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기+세척수",
+              "언더싱크형"
+            ],
+            "itemStatus": "Canceled",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000004146",
+        "orderDate": "2021.03.17",
+        "orderType": "NB",
+        "status": "Canceled",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "듀얼 정수기",
+            "productNameEN": "WU900AS.AKOR",
+            "modelID": "MD08747120",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기+세척수",
+              "언더싱크형"
+            ],
+            "itemStatus": "Canceled",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000004104",
+        "orderDate": "2021.03.17",
+        "orderType": "NB",
+        "status": "Closed",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "1605100",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "상하좌우 정수기",
+            "productNameEN": "WD503AP.AKOR",
+            "modelID": "MD08750473",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wd503ap",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "1605100",
+            "productTotalPrice": 1605100,
+            "rowTotal": 1605100,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기",
+              "데스크형"
+            ],
+            "itemStatus": "Cancel Refunded",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
+      },
+      {
+        "orderNumber": "000004101",
+        "orderDate": "2021.03.17",
+        "orderType": "NB",
+        "status": "Wait for Authorization",
+        "apiType": "OBS",
+        "requestNo": "",
+        "grandTotalValue": "12900",
+        "grandTotalCurrency": "KRW",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productNameKR": "듀얼 정수기",
+            "productNameEN": "WU900AS.AKOR",
+            "modelID": "MD08747120",
+            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
+            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+            "modelType": "일반(G)",
+            "orderedQuantity": "1",
+            "discountAmount": "0.0000",
+            "productPrice": "12900",
+            "productTotalPrice": 12900,
+            "rowTotal": 12900,
+            "productSalePriceCurrency": "KRW",
+            "specList": [
+              "냉온정수기+세척수",
+              "언더싱크형"
+            ],
+            "itemStatus": "Cancel Pending",
+            "requestNo": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 접수",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "orderCancelAbleYn": "N",
+            "orderRetuenAbleYn": "N"
+          }
+        ],
+        "orderCancelAbleYn": "N",
+        "orderRetuenAbleYn": "N",
+        "bundleCancelYn": "N",
+        "requestOrderAbleYn": "N"
       }
-    },
-    "message": "success",
-    "status": "success"
-  }
+    ],
+    "careListData": [
+      {
+        "requestNo": "OR21040600694",
+        "orderDate": "2021.04.06",
+        "apiType": "OBS",
+        "status": "A",
+        "statusNm": "승인",
+        "grandTotalValue": 3140000,
+        "grandTotalCurrency": "",
+        "contDtlType": "R00",
+        "orderNumber": "000010108",
+        "orderCancelAbleYn": "N",
+        "requestOrderAbleYn": "N",
+        "email": "angel400412@cnspartner.com",
+        "productList": [
+          {
+            "productFlag": "케어솔루션",
+            "productNameKR": "LG DIOS 식기세척기 스팀",
+            "productNameEN": "DFB22SAR.AKOR",
+            "modelID": "MD08045871",
+            "productImage": "/kr/images/dishwashers/md08045871/md08045871-350x350.jpg",
+            "productPDPurl": "/care-solutions/dishwashers/dfb22sar",
+            "productPrice": "1540000",
+            "productSalePriceCurrency": "",
+            "discountPrice": "5000",
+            "years1TotAmt": 34900,
+            "memberShipPoint": "0",
+            "rtModelSeq": "1543208",
+            "reqLineSeq": "14104881",
+            "orderedQuantity": "1",
+            "contDtlType": "R00",
+            "cardCorpCode": "",
+            "cardType": "",
+            "itemStatus": "A",
+            "productTotalPrice": "",
+            "modelType": "일반(G)",
+            "orderStatus": {
+              "statusText": "청약신청 완료",
+              "statusDate": "설치희망일 2021.04.07",
+              "disabled": "",
+              "statusClass": ""
+            },
+            "statusButtonList": [
+              {
+                "className": "requestOrder",
+                "buttonName": "주문접수"
+              }
+            ],
+            "specList": [
+              "3~5인 가구용 (12인용)",
+              "샤이니퓨어"
+            ],
+            "orderCancelAbleYn": "N"
+          },
+          {
+            "productFlag": "케어솔루션",
+            "productNameKR": "상하좌우 정수기",
+            "productNameEN": "WD503AP.AKOR",
+            "modelID": "MD08750473",
+            "productImage": "/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg",
+            "productPDPurl": "/care-solutions/water-purifiers/wd503ap",
+            "productPrice": "1600000",
+            "productSalePriceCurrency": "",
+            "discountPrice": "3000",
+            "years1TotAmt": 33900,
+            "memberShipPoint": "0",
+            "rtModelSeq": "1543733",
+            "reqLineSeq": "14104882",
+            "orderedQuantity": "1",
+            "contDtlType": "R00",
+            "cardCorpCode": "",
+            "cardType": "",
+            "itemStatus": "Cancel Refunded",
+            "productTotalPrice": "",
+            "modelType": "일반(G)",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": ""
+            },
+            "statusButtonList": [
+              
+            ],
+            "specList": [
+              "냉온정수기",
+              "데스크형"
+            ],
+            "orderCancelAbleYn": "N",
+            "orderNumber": "000010108"
+          }
+        ],
+        "orderTotal": 2
+      },
+      {
+        "requestNo": "OR21040600692",
+        "orderDate": "2021.04.06",
+        "apiType": "CSMS",
+        "status": "A",
+        "statusNm": "승인",
+        "grandTotalValue": 1540000,
+        "grandTotalCurrency": "",
+        "contDtlType": "R00",
+        "orderNumber": "",
+        "orderCancelAbleYn": "N",
+        "requestOrderAbleYn": "Y",
+        "email": "angel400412@cnspartner.com",
+        "productList": [
+          {
+            "productFlag": "케어솔루션",
+            "productNameKR": "LG DIOS 식기세척기 스팀",
+            "productNameEN": "DFB22SAR.AKOR",
+            "modelID": "MD08045871",
+            "productImage": "/kr/images/dishwashers/md08045871/md08045871-350x350.jpg",
+            "productPDPurl": "/care-solutions/dishwashers/dfb22sar",
+            "productPrice": "1540000",
+            "productSalePriceCurrency": "",
+            "discountPrice": "0",
+            "years1TotAmt": 39900,
+            "memberShipPoint": "0",
+            "rtModelSeq": "1543207",
+            "reqLineSeq": "14104876",
+            "orderedQuantity": "1",
+            "contDtlType": "R00",
+            "cardCorpCode": "",
+            "cardType": "",
+            "itemStatus": "A",
+            "productTotalPrice": "",
+            "modelType": "일반(G)",
+            "orderStatus": {
+              "statusText": "청약신청 완료",
+              "statusDate": "설치희망일 2021.04.07",
+              "disabled": "",
+              "statusClass": ""
+            },
+            "statusButtonList": [
+              {
+                "className": "requestOrder",
+                "buttonName": "주문접수"
+              }
+            ],
+            "specList": [
+              "3~5인 가구용 (12인용)",
+              "샤이니퓨어"
+            ],
+            "orderCancelAbleYn": "N"
+          }
+        ],
+        "orderTotal": 1
+      }
+    ],
+    "recordsListData": [
+      {
+        "orderNumber": "6380094",
+        "orderDate": "2021.03.29",
+        "status": "주문취소",
+        "apiType": "RECORD",
+        "requestNo": "",
+        "grandTotalValue": "",
+        "grandTotalCurrency": "",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 6,
+        "productList": [
+          {
+            "productNameKR": "LG 휘센 타워 스페셜",
+            "productNameEN": "FQ18SBNWG2.AKOR",
+            "modelID": "",
+            "productImage": "https://img.lgmall.com/ProductImage/915/20210127092643_a71e_B.jpg",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": "",
+              "statusDate": "배송희망일 2021.03.30"
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_I/D",
+            "productNameEN": "FQ18SBNWGN.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_O/D",
+            "productNameEN": "FQ25BNBU.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_lst",
+            "productNameEN": "PQ060907A11.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_lst",
+            "productNameEN": "PQ061208C11.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "Inverter Single Split Frame_Gift(Domestic)",
+            "productNameEN": "SQ07PBJWAJ.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문취소",
+              "statusClass": ""
+            }
+          }
+        ]
+      },
+      {
+        "orderNumber": "6381918",
+        "orderDate": "2021.03.30",
+        "status": "주문완료",
+        "apiType": "RECORD",
+        "requestNo": "",
+        "grandTotalValue": "",
+        "grandTotalCurrency": "",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 4,
+        "productList": [
+          {
+            "productNameKR": "LG 휘센 타워 스페셜",
+            "productNameEN": "FQ18SBNWG1.AKOR",
+            "modelID": "",
+            "productImage": "https://img.lgmall.com/ProductImage/915/20210127093734_-bdf_B.jpg",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": "",
+              "statusDate": "배송희망일 2021.03.30"
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_I/D",
+            "productNameEN": "FQ18SBNWGN.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_O/D",
+            "productNameEN": "FQ25BNBU.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_lst",
+            "productNameEN": "PQ061208C11.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "param": {
+    "pagination": {
+      "careTotalCount": 1,
+      "page": null,
+      "totalCount": 2
+    }
+  },
+  "message": "success",
+  "status": "success"
+}
