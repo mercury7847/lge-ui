@@ -168,7 +168,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
                 lgkorUI.searchModelName();
 
-                if (self.reset) {
+                if (opts.reset) {
                     self.reset();
                 }
 
