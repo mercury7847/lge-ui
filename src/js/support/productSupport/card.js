@@ -59,7 +59,7 @@
             };
 
             self.$resultWrap.find('.card-list').on('click', 'a', function() {
-                lgkorUI.backHistory(this);
+                lgkorUI.historyBack(this);
             });
 
             self.$resultPagination.pagination({

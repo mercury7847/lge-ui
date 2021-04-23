@@ -109,7 +109,7 @@
                     font-weight:$font-weight-bold;
                     vertical-align:middle;
                     @include mobile {
-                        max-width:150px;
+                        max-width:175px;
                     }
                 }
                 .flag-wrap {
@@ -128,7 +128,7 @@
                 .tooltip-wrap {
                     margin-left: 24px;
                     @include mobile {
-                        margin-left: 16px;
+                        margin-left: 5px;
                     }
                 }
                 .link-btn-wrap {

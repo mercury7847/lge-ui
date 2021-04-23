@@ -77,9 +77,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             onlyMyModel: false,
             model: {
                 category: '',
-                categoryNm: '',
+                categoryNm: '전체',
                 subCategory: '',
-                subCategoryNm: '',
+                subCategoryNm: '전체',
                 modelCode: '',
                 productCode: '',
             },
@@ -189,11 +189,13 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$selectedModelBar.on('click', '.btn-add-product', function(e) {
                 e.preventDefault();
                 var href = $(this).attr('href');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectProductRegClick.do', 'www.lge.co.kr/acecount/modelselectProductRegClickm.do');
                 location.href = href + '?modelCode=' + self.model.salesModelCode;
             });
 
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectReselectClick.do', 'www.lge.co.kr/acecount/modelselectReselectClickm.do');
                 self.reset();
             });
 
@@ -423,18 +425,20 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         arr = data instanceof Array ? data : [],
                         html = '';
 
+                    $subCategory.find('option:not(.default)').remove();
+
                     if (arr.length) {
                         arr.forEach(function(item) {
                             html += vcui.template('<option value={{value}}>{{name}}</option>', item);
                         });
             
-                        $subCategory.find('option:not(.default)').remove();
                         $subCategory
                             .append(html)
                             .val(value)
-                            .prop('disabled', false)
-                            .vcSelectbox('update');
+                            .prop('disabled', false);
                     }
+
+                    $subCategory.vcSelectbox('update');
 
                     self.$modelPopup.data('category', $this.val());
                     self.$modelPopup.data('subCategory', value);

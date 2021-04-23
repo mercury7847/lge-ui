@@ -15,6 +15,7 @@
 
     var validation;
     var isLogin = lgkorUI.isLogin;
+    var detect = vcui.detect;
 
     var reservation = {
         init: function() {
@@ -113,9 +114,13 @@
                     var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 
                     if (searchObj.parts) {
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/emailPartsView.do', 'www.lge.co.kr/acecount/emailPartsViewm.do');
                         $('#stepInquiryType').find('[data-sub-category-name="케어용품/소모품"]').trigger('click');
                     } else if (searchObj.simple) {
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/emailMemberView.do', 'www.lge.co.kr/acecount/emailMemberViewm.do');
                         $('#stepInquiryType').find('[data-sub-category-name="LG전자 회원"]').trigger('click');
+                    } else if (searchObj.mktModelCd) {
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/emailMktView.do', 'www.lge.co.kr/acecount/emailMktViewm.do');
                     }
                 }
             });
