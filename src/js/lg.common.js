@@ -1751,6 +1751,10 @@ var isApp = function(){
                     self.$subCategory.on('change', function() {
                         self.searchModelName();
                     });
+
+                    self.$modelPopup.on('modalhidden', function() {
+                        self.$modelButton.focus();
+                    });
                 }
             }
 

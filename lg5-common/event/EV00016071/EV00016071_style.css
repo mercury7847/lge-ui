@@ -146,7 +146,8 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
  .event_popup .couponClose,
  .event_popup .serialClose {position: absolute;top: 3%;right: 10px;}
  /* 210412 pb st  */
- .event_popup .serialClose {content: ""; width: 23px; height: 23px; background: url(https://www.lge.co.kr/lgekor/asset/event/tv/2020/10/14_signature/_include/images/btn_layer_close2.png);}
+ /* 210423 bg url 변경 */
+ .event_popup .serialClose {content: ""; width: 23px; height: 23px; background: url('/lg5-common/images/icons/btn-close-24-white.svg');}
  .event_popup .serialClose img{display:none;}
  /* 210412 pb ed  */
  .event_popup .popup_couponNo h1,
@@ -209,9 +210,11 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 @media (max-width:1300px){
   .cont01 .marking{border-right:6.1vw solid #202020; border-left:6.1vw solid #202020;}
 }
+/* 210423 수정 */
 @media (max-width:767px){
-  .cont01 .marking{border-right:3.9vw solid #202020; border-left:3.9vw solid #202020;}
+  .cont01 .marking{border-right:6.7vw solid #202020; border-left:6.7vw solid #202020;}
 }
+/* //210423 수정 */
 
 /* 210408 pb end */
 .cont01 .marking .tab {max-width: 882px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between;}
@@ -307,4 +310,7 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 	.marking > input[type="text"] {width: 100%; font-size: 12px; }
 	
 	.mobile #manager {width: 95%;}
+    
+    /* 210423 */
+    .cont01 .marking .tab a {font-size: 10%;}
 }
