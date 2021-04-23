@@ -77,7 +77,7 @@
                 var self = this;
 
                 self.$listWrap.on('click', '.board-tit a', function() {
-                    lgkorUI.backHistory(this);
+                    lgkorUI.historyBack(this);
                 });
 
                 self.$searchWrap.find('input[type="text"]').on('input', function() {

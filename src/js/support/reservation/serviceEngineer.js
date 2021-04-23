@@ -569,6 +569,11 @@
         },
         bindEvent: function() {
             var self = this;
+
+            $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerInfoClick.do', 'www.lge.co.kr/acecount/engineerInfoClickm.do');
+            });
+
             self.$cont.on('reset', function(e) {
                 self.$topicList.empty();
                 self.$subTopicList.empty();
@@ -719,7 +724,7 @@
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
-
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerSolutionsClick.do', 'www.lge.co.kr/acecount/engineerSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 

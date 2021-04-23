@@ -1,6 +1,6 @@
 (function() {
     var map;
-
+    var detect = vcui.detect;
 
     //.link-btn-wrap
 
@@ -170,6 +170,14 @@
                     });
 
                 marker.setMap(map.map);
+            });
+
+            $('.searchRoad-btn').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailFindClick.do', 'www.lge.co.kr/acecount/centerDetailFindClickm.do');
+            });
+
+            $('.btn-store-consult').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/CenterDetailVisitClick.do', 'www.lge.co.kr/acecount/CenterDetailVisitClickm.do');
             });
             
             $('.photo .ui_carousel_slider').vcCarousel({
