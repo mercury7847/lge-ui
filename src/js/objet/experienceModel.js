@@ -5082,7 +5082,7 @@
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';
-            priceHtml += '                                            <span class="product_name">합계</span>';
+            priceHtml += '                                            <span class="product_name">총 할인 적용가</span>';
             priceHtml += '                                            <span class="product_price"><span class="before_price"><em></em>원</span><span class="after_price"><em></em>원</span></span>';
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
@@ -6002,14 +6002,14 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
             let memberDiscountSum = 0;
             let directDiscountSum = 0;
             for (let j = 0; j < memberDiscount.length; j++) {
-                memberDiscountSum += memberDiscount[j];
+                memberDiscountSum += parseInt(memberDiscount[j]);
             }
             for (let j = 0; j < directDiscount.length; j++) {
-                directDiscountSum += directDiscount[j];
+                directDiscountSum += parseInt(directDiscount[j]);
             }
             setTimeout(function() {
-                let resultDuiscount = memberDiscountSum + directDiscountSum;
-                let resultSum = sumPrice - resultDuiscount;
+                let resultDuiscount = parseInt(memberDiscountSum) + parseInt(directDiscountSum);
+                let resultSum = parseInt(sumPrice) - parseInt(resultDuiscount);
 
                 if (resultDuiscount == 0) {
                     $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list .sum .product_price .before_price").remove();

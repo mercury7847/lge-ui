@@ -6,21 +6,21 @@
 }*/
 $(function() {
 
-    $(".logo a").attr("href", "/html/index.html");
+    // $(".logo a").attr("href", "/html/index.html");
 
-    if ($("div").hasClass("priv-popup") === false) {
-        if (navigator.userAgent.match(/Trident\/7\./)) {
-            $('body').on("mousewheel", function() {
-                //remove default behavior
-                event.preventDefault();
+    // if ($("div").hasClass("priv-popup") === false) {
+    //     if (navigator.userAgent.match(/Trident\/7\./)) {
+    //         $('body').on("mousewheel", function() {
+    //             //remove default behavior
+    //             event.preventDefault();
 
-                //scroll without smoothing
-                var wheelDelta = event.wheelDelta;
-                var currentScrollPosition = window.pageYOffset;
-                window.scrollTo(2000, currentScrollPosition - wheelDelta);
-            });
-        }
-    }
+    //             //scroll without smoothing
+    //             var wheelDelta = event.wheelDelta;
+    //             var currentScrollPosition = window.pageYOffset;
+    //             window.scrollTo(2000, currentScrollPosition - wheelDelta);
+    //         });
+    //     }
+    // }
 
     $('.only_pc .collect_tab').find("button").click(function() {
         var positionT = "#" + $(this).attr("class");
@@ -37,9 +37,10 @@ $(function() {
         return false;
     });
 
-    if ($("div").hasClass("collect_tab")) {
 
-        $(window).scroll(function() {
+
+    $(window).scroll(function() {
+        if ($("div").hasClass("collect_tab")) {
             //var headH = $(".objetcollection-tabs").height();
             var scrollTopa = $(window).scrollTop();
             var co_design = $("#co_design").offset().top;
@@ -61,8 +62,9 @@ $(function() {
                 $(".only_pc .collect_tab span").removeClass("active");
                 $(".only_pc .collect_tab .co_gallery span").addClass("active");
             }
-        });
-    }
+        }
+    });
+
 
     if ($("div").hasClass("st_function")) {
         var st = $(".st_function").offset().top + 1,
@@ -138,18 +140,18 @@ $(function() {
     */
 
     //sns 공유 팝업
-    $(".share .btn-share").on("click", function() {
-        $(".sns_popup, .mask").fadeIn();
-    });
+    // $(".share .btn-share").on("click", function() {
+    //     $(".sns_popup, .mask").fadeIn();
+    // });
 
-    $(".btn-site").click(function() {
-        if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-            $("#ft .family-site > li > ul").slideUp();
-        } else {
-            $(this).addClass("active");
-            $("#ft .family-site > li > ul").slideDown();
-        }
-    });
+    // $(".btn-site").click(function() {
+    //     if ($(this).hasClass("active")) {
+    //         $(this).removeClass("active");
+    //         $("#ft .family-site > li > ul").slideUp();
+    //     } else {
+    //         $(this).addClass("active");
+    //         $("#ft .family-site > li > ul").slideDown();
+    //     }
+    // });
 
 });
