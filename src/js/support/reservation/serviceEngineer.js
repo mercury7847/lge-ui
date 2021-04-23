@@ -97,7 +97,8 @@
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             isLogin = lgkorUI.isLogin;
             self.isOneView = 'N';
-            self.autoFlag = false; 
+            self.hirun = false;
+            self.autoFlag = false;
 
             if ($('#appCall').length) {
                 isLogin = true;
@@ -266,11 +267,26 @@
                 });
 
                 self.bindEvent();
+                self.checkHirun();
 
                 self.$dateWrap.calendar({inputTarget:'#date'});
                 self.$timeWrap.timeCalendar({inputTarget:'#time'});
-                self.$cont.vcSearchModel();
+                self.$cont.vcSearchModel({
+                    useCookie: !self.hirun,
+                    reset: self.hirun
+                });
             });
+        },
+        checkHirun: function() {
+            var self = this;
+            var subCategory = self.$cont.find('#subCategory').val()
+
+            if ((subCategory == 'CT50019259' || subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
+                lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
+                    title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
+                });
+                self.hirun = true;
+            }
         },
         setTopicList: function(data) {
             var self = this;
@@ -621,12 +637,11 @@
             self.$cont.on('complete', function(e, data) {    
                 var param = data;
 
-                if ((data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
-                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
-                        title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
-                    });
+                self.checkHirun();
+
+                if (self.hirun) {
                     self.$cont.vcSearchModel('reset');
-                    return;
+                    return false;
                 }
 
                 lgkorUI.showLoading();
