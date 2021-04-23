@@ -94,7 +94,7 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             });
 
             self.$historyBtn.on('click', function() {
-                self.$history.find('.history-list li').one('transitionend', function() {
+                self.$history.find('.history-list li').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
                     self.$history.find('.history-list li:first-child a')[0].focus();
                 });
                 self._changeHistory(true);
