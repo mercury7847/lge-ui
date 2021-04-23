@@ -100,6 +100,7 @@
             '<a href="{{item.url}}" class="btn dark-gray size" target="_blank"><span>{{item.name}}</span></a>' +
             '{{/each}}' +
         '</div>';
+    var detect = vcui.detect;
         
 
     $(window).ready(function() {
@@ -278,7 +279,7 @@
                     self.$bannerMenu.show();
                 }
 
-                if (updateArr.length && !vcui.detect.isMobile) {
+                if (updateArr.length && !detect.isMobile) {
                     var html = '';
                     html = vcui.template(updateBannerTemplate, data);
                     self.$solutionsWrap.prepend(html);
@@ -327,23 +328,29 @@
                     htmlPC = htmlM = '';
                 
                 if (subFilterArr.length) {
-                    self.$solutionsFilter.empty();  
-                    self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {
-                        back: true,
-                        name: param.topicNm
-                    }));
+                    if (self.param.topicNm != '전체') {
+                        self.$solutionsFilter.empty();  
+                        self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {
+                            back: true,
+                            name: param.topicNm
+                        }));
 
-                    subFilterArr.forEach(function(item) {
-                        item.subType = true;
-                        item.active = item.name == param.subTopicNm ? true : false; 
-                        htmlPC += vcui.template(filterTemplate, item);
-                        htmlM += vcui.template(filterOptionTemplate, item);
-                    });
+                        subFilterArr.forEach(function(item) {
+                            item.subType = true;
+                            item.active = item.name == param.subTopicNm ? true : false; 
+                            htmlPC += vcui.template(filterTemplate, item);
+                            htmlM += vcui.template(filterOptionTemplate, item);
+                        });
 
-                    self.$solutionsFilter.find('.filter-list').html(htmlPC);
-                    self.$selectSubTopic.html(htmlM);
-                    self.$selectSubTopic.prop('disabled', false);
-                    self.$selectSubTopic.vcSelectbox('update');
+                        self.$solutionsFilter.find('.filter-list').html(htmlPC);
+                        self.$selectSubTopic.html(htmlM);
+                        self.$selectSubTopic.prop('disabled', false);
+                        self.$selectSubTopic.vcSelectbox('update');
+                    } else {
+                        self.$selectSubTopic.html('<option value="" class="placeholder">세부증상 선택</option>');
+                        self.$selectSubTopic.prop('disabled', true);
+                        self.$selectSubTopic.vcSelectbox('update');
+                    }
                 }
             },
             setSolutionsList: function(data) {
@@ -406,11 +413,7 @@
                     var data = result.data;
 
                     self.setFilter(data);
-                    
-                    if (self.param.topicNm != '전체') {
-                        self.setSubFilter(data);
-                    }
-
+                    self.setSubFilter(data);
                     self.setSolutionsList(data);
                     self.setKeyword();
 
@@ -454,8 +457,13 @@
             bindEvent: function() {
                 var self = this;
 
+                self.$bannerProduct.on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPartsClick.do', 'www.lge.co.kr/acecount/solutionsPartsClickm.do');
+                });
+
                 self.$cont.find('.result-box').on('click', '.item', function() {
-                    lgkorUI.backHistory(this);
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsListClick.do', 'www.lge.co.kr/acecount/solutionsListClickm.do');
+                    lgkorUI.historyBack(this);
                 });
 
                 self.$cont.on('complete', function(e, data) { 
@@ -589,6 +597,10 @@
                     });
                 });
 
+                self.$keywordWrap.find('.btn-list-all').on('click', function() {
+                    self.$keywordBtn.trigger('click');
+                });
+
                 self.$solutionsWrap.find('#research').on('change', function() {
                     self.param.research = self.$solutionsWrap.find('#research').is(':checked');
                 });
@@ -624,7 +636,8 @@
                             }
                             data['keywords'].unshift(value);
                         }
-
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsSearchClick.do', 'www.lge.co.kr/acecount/solutionsSearchClickm.do');
+                        
                         self.param = data;
                         self.$keywordWrap.find('.search-more').show();
                         self.requestData();
@@ -633,6 +646,18 @@
 
                 self.$keywordWrap.on('keywordClick', function() {
                     self.$keywordBtn.trigger('click', [self.$keywordInput.val().trim()]);
+                });
+
+                self.$keywordWrap.find('.autocomplete-box').on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsAutoClick.do', 'www.lge.co.kr/acecount/solutionsAutoClickm.do');
+                });
+
+                self.$keywordWrap.find('.recently-keyword').on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsRecentClick.do', 'www.lge.co.kr/acecount/solutionsRecentClickm.do');
+                });
+
+                self.$keywordWrap.find('.popular-keyword').on('click', 'a', function() {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPopularClick.do', 'www.lge.co.kr/acecount/solutionsPopularClickm.do');
                 });
             }
         }
