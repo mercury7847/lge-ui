@@ -170,6 +170,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
                 if (opts.reset) {
                     self.reset();
+                    return;
                 }
 
                 if (lgkorUI.searchParamsToObject('mktModelCd')) {
