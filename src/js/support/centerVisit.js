@@ -291,6 +291,10 @@
         bindEvent: function() {
             var self = this;
 
+            $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/visitInfoClick.do', 'www.lge.co.kr/acecount/visitInfoClickm.do');
+            });
+
             // 모델 재선택 하기 후 이벤트
             self.$cont.on('reset', function(e) {
                 self.reset();
@@ -495,8 +499,8 @@
                     subToic : $('input[name=subTopic]:checked').val(),
                     productCode : $('#productCode').val(),
                     page: 1
-                };   
-
+                };
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/visitSolutionsClick.do', 'www.lge.co.kr/acecount/visitSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 

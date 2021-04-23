@@ -26,6 +26,7 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             self.$history = self.$el.find('.history');
             self.$historyBtn = self.$history.find('.btn-expand');
             self.$closeBtn = self.$el.find('.btn-close');
+            self.$historyPopup = $('#history-popup');
         },
         _altChange : function($target, boolean){
             var $altText = $target.find('.blind');
@@ -68,6 +69,25 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
         },
         _bindEvent: function _bindEvent() {
             var self = this;
+
+            self.$service.find('.solutions-btn').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingSolutionsClick.do', 'www.lge.co.kr/acecount/floatingSolutionsClickm.do');
+            });
+            self.$service.find('.manuals-btn').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingDriverClick.do', 'www.lge.co.kr/acecount/floatingDriverClickm.do');
+            });
+            self.$service.find('.center-btn').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingCenterClick.do', 'www.lge.co.kr/acecount/floatingCenterClickm.do');
+            });
+            self.$service.find('.chatbot-btn').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingChatClick.do', 'www.lge.co.kr/acecount/floatingChatClickm.do');
+            });
+            self.$history.find('.history-list a').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', 'www.lge.co.kr/acecount/floatingModelClickm.do');
+            }); 
+            self.$historyPopup.find('.lately-list a').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', 'www.lge.co.kr/acecount/floatingModelClickm.do');
+            });
 
             self.$serviceBtn.on('click', function() {
                 self._changeService($(this).parent().hasClass('on') ? false : true);
