@@ -296,9 +296,9 @@
                         } else if (pageValue.indexOf('counsel') > -1) {
                             lgkorUI.setAcecounter('www.lge.co.kr/acecount/callCompleteSolutionsClick.do', 'www.lge.co.kr/acecount/callCompleteSolutionsClickm.do');
                         } else if (pageValue.indexOf('visit') > -1) {
-                            lgkorUI.setAcecounter('www.lge.co.kr/acecount/statusSolutionsClick.do', 'www.lge.co.kr/acecount/statusSolutionsClickm.do');
-                        } else if (pageValue.indexOf('remote') > -1) {
                             lgkorUI.setAcecounter('www.lge.co.kr/acecount/visitCompleteSolutionsClick.do', 'www.lge.co.kr/acecount/visitCompleteSolutionsClickm.do');
+                        } else if (pageValue.indexOf('remote') > -1) {
+                            lgkorUI.setAcecounter('www.lge.co.kr/acecount/remoteCompleteSolutionsClick.do', 'www.lge.co.kr/acecount/remoteCompleteSolutionsClickm.do');
                         }
                     }
                 }
