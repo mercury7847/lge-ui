@@ -912,6 +912,10 @@
                 });
             });
 
+            self.$engineerPopup.on('modalhidden', function() {
+                self.$engineerOpener.focus();
+            });
+
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();

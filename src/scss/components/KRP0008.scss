@@ -306,7 +306,7 @@
     .pdp-visual-area.visible-sm {
         overflow: hidden;
         //margin-bottom: 28px;
-        padding-bottom: 42px;
+        padding-bottom: 39px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -435,7 +435,7 @@
         @include mobile {
             position: absolute;
             top: auto;
-            bottom: 24px;
+            bottom: 21px;
             right: 24px;
         }
     }
@@ -536,7 +536,7 @@
             float: none;
             width: auto;
             margin: 0 -16px;
-            padding: 5px 16px 0;
+            padding: 0 16px;
             // padding: 24px 16px 0;
             // border-top: 12px solid $color-bg;
         }
