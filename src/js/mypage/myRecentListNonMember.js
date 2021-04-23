@@ -12,7 +12,7 @@
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
-                    '{{#if obsSellFlag=="Y"}}' +
+                    '{{#if priceFlag=="Y"}}' +
                     '{{#if obsOriginalPrice}}<small><span class="blind">할인전 가격</span>{{obsOriginalPrice}}원</small>{{/if}}' +
                     '{{#if obsSellingPrice}}<span class="blind">구매가격</span>{{obsSellingPrice}}원{{/if}}' +
                     '{{/if}}' +
@@ -71,11 +71,14 @@
                         item.obsOriginalPrice = item.obsOriginalPrice ? vcui.number.addComma(item.obsOriginalPrice) : null;
                         item.obsSellingPrice = item.obsSellingPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
                         item.spec = item.specInfo ? item.specInfo.split(",") : [];
+                        item.priceFlag = item.obsSellFlag;
                         item.disabledReason = null;
                         if(item.extinction == "Y") {
                             item.disabledReason = "단종되었습니다.";
+                            item.priceFlag = "N";
                         } else if(item.soludOut == "Y") {
                             item.disabledReason = "품절되었습니다.";
+                            item.priceFlag = "Y";
                         }
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
