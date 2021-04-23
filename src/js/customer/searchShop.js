@@ -312,7 +312,7 @@
                 if(bestShopMapAgree && bestShopMapAgree=="Y"){
                     self._getCurrentLocation();
                 }else{
-                    var msg = 'G전자 주식회사(이하 "회사"라 합니다)는 고객님께서 현재 계신 위치에서 직선 거리 기준으로 가장 가까운 매장을 안내하기 위하여 위치정보를 수집하고 있습니다.<br>';
+                    var msg = 'LG전자 주식회사(이하 "회사"라 합니다)는 고객님께서 현재 계신 위치에서 직선 거리 기준으로 가장 가까운 매장을 안내하기 위하여 위치정보를 수집하고 있습니다.<br>';
                     msg += '또한 상기 서비스 제공 후 즉시 폐기되며, 별도 저장되지 않습니다.<br>';
                     msg += '위치정보 수집이용 관련하여 보다 상세한 내용은 ';
                     msg += '‘<a href="https://qt-kr.m.lgaccount.com/customer/terms_detail?terms_type=A_ITG_LBS&amp;terms_svcCode=SVC709&amp;country=KR&amp;terms_publish=N&amp;division=noticeterms" target="_blank" title="새창열림">LG전자 위치기반서비스 이용약관</a>’';

@@ -51,10 +51,8 @@
 
     var isBeforeUnload = true;
 
-    var txtMasking;
-
     function init(){    
-        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar', 'helper/textMasking'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
             setting();
             bindEvents();
         });
@@ -77,8 +75,6 @@
         contractUserPhone = getInputData("contractUserDefaultPhone");
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
-
-        txtMasking = new vcui.helper.TextMasking();
 
         $('.agree-box').vcCheckboxAllChecker();
         requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
@@ -226,27 +222,19 @@
     function bindEvents(){
         stepAccordion.on('accordionbeforeexpand', function(e, data){
             if(data.index > step){
-
-                if(!setNextStep()){
+                
+                if(!setNextStep(data.index)){
                     e.preventDefault();
                     return;
                 }
+
+                step++;
                 
                 var contop = $(data.header).offset().top;
                 $('html, body').stop().animate({scrollTop:contop}, 350);
             }
         });
 
-        // $('.nextStep-btn').on('click', function(e){
-        //     e.preventDefault();
-
-        //     if(setNextStep()){
-        //         stepAccordion.expand(step, true);
-        //         var activeValue = stepAccordion.getActivate();
-        //         var contop = $(activeValue.header[step]).offset().top;
-        //         $('html, body').stop().animate({scrollTop:contop}, 350);
-        //     }
-        // });
         $('.nextStep-btn').parent().hide();
 
         requestButton.on('click', function(e){
@@ -423,14 +411,18 @@
             if(step3Block.find('select[name=paymentCard]').val() != "") chk++;
             if(step3Block.find('input[name=paymentCardNumber]').val() != "") chk++;
             if(step3Block.find('input[name=paymentCardPeriod]').val() != "") chk++;
+
+            var disabled = chk < 3 ? true : false;
             
-            step3Block.find('.paymentCardConfirm').prop('disabled', chk < 3);
+            step3Block.find('.paymentCardConfirm').prop('disabled', disabled);
         }).on('change', 'select[name=paymentBank], input[name=paymentBankNumber]', function(e){
             var chk = 0;
             if(step3Block.find('select[name=paymentBank]').val() != "") chk++;
             if(step3Block.find('input[name=paymentBankNumber]').val() != "") chk++;
+
+            var disabled = chk < 2 ? true : false;
             
-            step3Block.find('.paymentBankConfirm').prop('disabled', chk < 2);
+            step3Block.find('.paymentBankConfirm').prop('disabled', disabled);
         }).on('change', 'input[name=selfClearingAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -455,41 +447,28 @@
             if(chk == "Y"){
                 setPrepaymentChecked();
             }
+        }).on('focusin', 'input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]', function(e){
+            $(this).val($(this).data('realData'));
+        }).on('focusout', 'input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]', function(e){
+            changeMaskingText($(this));
         }).on('propertychange keyup paste input change', 'input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]', function(e){
-            var attrName = $(this).attr('name');
-            var value = $(this).val().replace(/ /gi, '').replace(/[^0-9.;\*]/g,'');
-            var maskingStr = "";
-            var leng, i, str;
-            switch(attrName){
-                case 'paymentCardNumber':
-                    leng = value.length < 16 ? value.length : 16;
-                    for(i=0;i<leng;i++){
-                        str = i > 3 && i < 12 ? "*" : value.substr(i, 1);
-                        maskingStr += str;
-                    }                    
-                    break;
-
-                case 'paymentCardPeriod':
-                    leng = value.length < 4 ? value.length : 4;
-                    for(i=0;i<leng;i++){
-                        str = i > 1 ? "*" : value.substr(i, 1);
-                        maskingStr += str;
-                    }
-                    break;
-
-                case 'paymentBankNumber':
-                    leng = value.length;
-                    for(i=0;i<leng;i++){
-                        str = i > 5 ? "*" : value.substr(i, 1);
-                        maskingStr += str;
-                    }
-                    break;
-            }
-
-            $(this).val(maskingStr);
-            $(this).data('realData', value);
+            var value = $(this).val().replace(/ /gi, '').replace(/[^0-9]/g,'');
+            $(this).val(value);
         });
-        $('input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]').trigger('input');
+        var ipt = $('input[name=paymentCardNumber]');
+        ipt.data('realData', ipt.val());
+        changeMaskingText(ipt);
+
+        ipt = $('input[name=paymentCardPeriod]');
+        ipt.data('realData', ipt.val());
+        changeMaskingText(ipt);
+
+        ipt = $('input[name=paymentBankNumber]');
+        ipt.data('realData', ipt.val());
+        changeMaskingText(ipt);
+
+        step3Block.find('.paymentCardConfirm').prop('disabled', true);
+        step3Block.find('.paymentBankConfirm').prop('disabled', true);
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
             e.preventDefault();
@@ -520,19 +499,49 @@
         });
     }
 
-    function setNextStep(){
-        var isComplete = false;
-        switch(step){
-            case 0:
-                isComplete = setStep1Validation();
+    function changeMaskingText(ipt){
+        var leng, i, str;
+        var attrName = $(ipt).attr('name');
+        var value = $(ipt).val().replace(/ /gi, '').replace(/[^0-9.;\*]/g,'');
+        var maskingStr = "";
+        switch(attrName){
+            case 'paymentCardNumber':
+                leng = value.length < 16 ? value.length : 16;
+                for(i=0;i<leng;i++){
+                    str = i > 3 && i < 12 ? "*" : value.substr(i, 1);
+                    maskingStr += str;
+                }                    
                 break;
 
-            case 1:
-                isComplete = setStep2Validation();
+            case 'paymentCardPeriod':
+                leng = value.length < 4 ? value.length : 4;
+                for(i=0;i<leng;i++){
+                    str = i > 1 ? "*" : value.substr(i, 1);
+                    maskingStr += str;
+                }
+                break;
+
+            case 'paymentBankNumber':
+                leng = value.length;
+                for(i=0;i<leng;i++){
+                    str = i > 5 ? "*" : value.substr(i, 1);
+                    maskingStr += str;
+                }
                 break;
         }
         
-        if(isComplete) step++;
+        $(ipt).data('realData', value);
+        $(ipt).val(maskingStr);
+    }
+
+    function setNextStep(selectidx){
+        var isComplete = false;
+
+        isComplete = setStep1Validation();        
+        if(selectidx < 2) return isComplete;
+
+        isComplete = setStep2Validation();   
+        if(selectidx < 3) return isComplete;
         
         return isComplete;
     }
@@ -640,6 +649,9 @@
             }
             completed = chk;
         } 
+
+
+        console.log("setStep2Validation:", completed)
 
         return completed;
     }
@@ -1029,7 +1041,7 @@
             cardNumber: step3Block.find('input[name=paymentCardNumber]').data('realData'),
             cardPeriod: step3Block.find('input[name=paymentCardPeriod]').data('realData')
         }
-
+console.log(sendata)
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
