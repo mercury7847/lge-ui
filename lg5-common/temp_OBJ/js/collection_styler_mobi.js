@@ -321,8 +321,10 @@ $(function() {
 
         if (scrollEM >= st6M && scrollEM < st5M) {
             opaM = (scrollEM - st6M) / (stM - st6M);
+            //console.log("opaM1", opaM);
         } else if (scrollEM >= st5M) {
-            opaM = 1 - (scrollEM - st5M) / ((st5M + 300) - st5M);
+            opaM = 1 - ((scrollEM - st5M) / ((st5M + 300) - st5M));
+            //console.log("opaM2", opaM);
         }
         $(".only_mobile .sf-nav").css("opacity", opaM);
 
@@ -336,6 +338,9 @@ $(function() {
 
             if ($(".only_mobile .sfVidoe01").css("display") == "none") {
                 $(".only_mobile .sfVidoe01").fadeIn(1000);
+                $(".only_mobile .sfVidoe02").fadeOut(1000);
+                $(".only_mobile .sfVidoe03").fadeOut(1000);
+                $(".only_mobile .sfVidoe04").fadeOut(1000);
                 $(".only_mobile .sfVidoe01").css("position", "fixed");
                 $(".only_mobile .sfVidoe01").find("video").get(0).play();
             } else {
@@ -351,7 +356,10 @@ $(function() {
 
             if ($(".only_mobile .sfVidoe02").css("display") == "none") {
                 $(".only_mobile .sfVidoe02").css("position", "fixed");
+                $(".only_mobile .sfVidoe01").fadeOut(1000);
                 $(".only_mobile .sfVidoe02").fadeIn(1000);
+                $(".only_mobile .sfVidoe03").fadeOut(1000);
+                $(".only_mobile .sfVidoe04").fadeOut(1000);
                 $(".only_mobile .sfVidoe02").find("video").get(0).play();
             }
         } else if (scrollEM >= st3M && scrollEM < st4M) {
@@ -363,7 +371,10 @@ $(function() {
 
             if ($(".only_mobile .sfVidoe03").css("display") == "none") {
                 $(".only_mobile .sfVidoe03").css("position", "fixed");
+                $(".only_mobile .sfVidoe01").fadeOut(1000);
+                $(".only_mobile .sfVidoe02").fadeOut(1000);
                 $(".only_mobile .sfVidoe03").fadeIn(1000);
+                $(".only_mobile .sfVidoe04").fadeOut(1000);
                 $(".only_mobile .sfVidoe03").find("video").get(0).play();
             }
         } else if (scrollEM >= st4M && scrollEM < st5M) {
@@ -374,6 +385,9 @@ $(function() {
             $("#sfVidoe04M").addClass("active");
 
             if ($(".only_mobile .sfVidoe04").css("display") == "none") {
+                $(".only_mobile .sfVidoe01").fadeOut(1000);
+                $(".only_mobile .sfVidoe02").fadeOut(1000);
+                $(".only_mobile .sfVidoe03").fadeOut(1000);
                 $(".only_mobile .sfVidoe04").fadeIn(1000);
                 $(".only_mobile .sfVidoe04").css({
                     "position": "fixed",

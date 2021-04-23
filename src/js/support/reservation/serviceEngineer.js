@@ -631,6 +631,7 @@
                 self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
 
                 self.autoFlag = false;
+                self.hirun = false;
             });
 
             // 모델 선택 후 이벤트
