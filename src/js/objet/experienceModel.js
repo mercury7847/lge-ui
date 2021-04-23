@@ -5100,7 +5100,7 @@
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
-            priceHtml += '                                    <p class="err-msg">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>';
+            priceHtml += '                                    <p class="err-msg">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용됩니다.</p>';
             priceHtml += '                                </div>';
             priceHtml += '                            </dd>';
             priceHtml += '                        </dl>';
