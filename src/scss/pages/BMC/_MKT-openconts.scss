@@ -157,13 +157,13 @@
                         display:block;
                         position:relative;
                         height:auto;
-                        padding:25px;
-                        border-radius:8px;
-                        background-color:#fff;
-                        box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                        padding:0;
+                        border-radius:32px;
+                        // background-color:#fff;
+                        // box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
                         @include mobile {
                             height:auto;
-                            box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                            // box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                             padding:25px;
                         }
                         .img {
