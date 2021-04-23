@@ -627,6 +627,7 @@
                 if(count > 0) {
                     $tab_li.find('span').text("("+vcui.number.addComma(count)+")");
                     $tab_li.show();
+                    self.$tab.parents('.search-tabs-wrap').show();
                 } else {
                     $tab_li.hide();
                 }
@@ -1015,8 +1016,8 @@
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
-                        self.$tab.parents('.search-tabs-wrap').show();
-                        self.$tab.vcSmoothScroll('refresh');
+                        //self.$tab.parents('.search-tabs-wrap').show();
+                        //self.$tab.vcSmoothScroll('refresh');
                         //self.$tab.show();
                         //self.$contWrap.show();
                         self.$resultListNoData.hide();
