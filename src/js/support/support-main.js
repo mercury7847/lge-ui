@@ -688,7 +688,9 @@
                                 }
                                 
                                 if( self.el.container.find('.auth-type-phone.active').length ) {
-                                    self.authManager.confirm('.btn-auth-confirm');
+                                    self.authManager.confirm('.btn-auth-confirm', function(success) {
+                                        success && lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', 'www.lge.co.kr/acecount/mainStatusClickm.do');
+                                    });
                                 }
     
                             })
