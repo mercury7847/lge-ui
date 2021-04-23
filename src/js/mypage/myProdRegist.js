@@ -587,6 +587,8 @@
                             var factoryModel = self.$registMyProductMainPage.data('factoryModel');
                             if(factoryModel) {
                                 param.factoryModel = factoryModel;
+                            } else {
+                                param.factoryModel = null;
                             }
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                             self.showLoading();
