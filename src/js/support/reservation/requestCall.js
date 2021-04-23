@@ -142,6 +142,16 @@
                     }
                 }
             };
+
+            if(!vcui.detect.isMobileDevice){
+                self.$cont.find('.directCall-wrap').on('click', 'a', function(e){
+                    var exist = $(this).attr('href').indexOf("tel");
+                    if(exist > -1){
+                        e.preventDefault();
+                    }
+                });
+            }
+
             vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
 
