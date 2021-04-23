@@ -29,7 +29,7 @@
         '{{/if}}' +
         '</div>' + 
     '</div></li>';
-    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{#raw item.name}}</a></li>{{/each}}';
+    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{#if item.url}}{{item.url}}{{/if}}">{{#raw item.name}}</a></li>{{/each}}';
 
     var KRP0028 = {         
         init: function() {
@@ -60,6 +60,14 @@
         bindEvents: function() {
             var self = this;
             
+            $('#awardsPopup').on('click','.com-pop-list a',function(e){
+                e.preventDefault();
+                var url = $(this).attr('href').replace("#","");
+                if(url) {
+                    location.href = url;
+                }
+            });
+
             self.$mainTab.on('click','li a',function(e){
                 var category1 = $(this).attr('href').replace("#","");
                 self.requestData({"superCategoryId":category1,"categoryId":"","sort":self.$selectOrder.vcSelectbox('value')}, true);
@@ -217,10 +225,11 @@
             if(modelInfo) {
                 modelInfo.forEach(function(item, index) {
                     var tempArr = item.split('|');
-                    if(tempArr.length > 2) {
+                    if(tempArr.length > 3) {
+                        var url = (tempArr[3] == "SUSPENDED") ? null : tempArr[2]; 
                         array.push({
                             "name":tempArr[1],
-                            "url":tempArr[2]
+                            "url":url
                         });
                     }
                 });
