@@ -66,9 +66,10 @@ $(function() {
         return false;
     });
 
-    if ($("div").hasClass("collect_tab")) {
 
-        $(window).scroll(function() {
+
+    $(window).scroll(function() {
+        if ($("div").hasClass("collect_tab")) {
             //var headHM = $(".objetcollection-tabs").height();
             var scrollTopaM = $(window).scrollTop();
             var co_designM = $("#co_designM").offset().top;
@@ -88,8 +89,9 @@ $(function() {
                 $(".only_mobile .collect_tab span").removeClass("active");
                 $(".only_mobile .collect_tab .co_galleryM span").addClass("active");
             }
-        });
-    }
+        }
+    });
+
     $(".btnMobi").on("click", function() {
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");

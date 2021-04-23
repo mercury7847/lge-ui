@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-login="N">
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
@@ -128,7 +128,7 @@
                         <div class="download-list-wrap">
                             <ul class="download-list">
                                 @@for (var i = 0; i < 5; i++) {
-                                <li>
+                                <li data-seq="0" data-language="한글" data-date="2021.02.09" data-file-id="K2yjeGP0KCxrerTlXIEIA">
                                     <p class="tit">제품 사용설명서</p>
                                     <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
                                     <div class="info-wrap">
@@ -137,11 +137,11 @@
                                             <li>한국어</li>
                                         </ul>
                                         <div class="btn-wrap">
-                                            <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download"><span>PDF</span></a>
+                                            <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testPDF.pdf&fileRealName=testPDF.pdf" class="btn border size btn-download" data-type="PDF"><span>PDF</span></a>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <li data-seq="1" data-language="한글" data-date="2021.02.09" data-file-id="K2yjeGP0KCxrerTlXIEIA">
                                     <p class="tit">제품 사용설명서</p>
                                     <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
                                     <div class="info-wrap">
@@ -150,8 +150,8 @@
                                             <li>English</li>
                                         </ul>
                                         <div class="btn-wrap">
-                                            <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testZIP.zip&fileRealName=testZIP.zip" class="btn border size btn-download"><span>ZIP</span></a>
-                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size" target="_blank"><span>HTML</span></a>
+                                            <a href="/lg5-common/data-ajax/support/fileDownloadTest.html?filePath=/lg5-common/data-ajax/support&fileName=testZIP.zip&fileRealName=testZIP.zip" class="btn border size btn-download" data-type="ZIP"><span>ZIP</span></a>
+                                            <a href="http://kr.eguide.lgappstv.com/manual/w16_mr/userguide_w16_mr_k03.html" class="btn border size" target="_blank" data-type="HTML"><span>HTML</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -499,6 +499,7 @@
             </div>
         </div>
              
+        @@include('./common/support/quick-menu.html')
         @@include('./common/footer.html')
     </div>   
     

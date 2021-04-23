@@ -362,6 +362,10 @@
         },
         bindEvent: function() {
             var self = this;
+
+            $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videoconsultingInfoClick.do', 'www.lge.co.kr/acecount/videoconsultingInfoClickm.do');
+            });
             
             // 모델 선택 & 문의 재선택
             self.$cont.on('complete', function(e, data) {
@@ -405,7 +409,7 @@
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
-
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videoconsultingSolutionsClick.do', 'www.lge.co.kr/acecount/videoconsultingSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 

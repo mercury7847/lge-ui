@@ -843,3 +843,13 @@ input[type=radio] {
         }
     }
 }
+
+.err-msg.save_alert {
+    color: #000000;
+    text-align: left;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
+}

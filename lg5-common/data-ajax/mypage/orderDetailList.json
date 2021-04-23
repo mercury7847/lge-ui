@@ -1,260 +1,110 @@
 {
   "data": {
-    "bankList": [
-      {
-        "commonCodeName": "산업은행",
-        "sortNo": 1,
-        "commonCodeId": "02"
-      },
-      {
-        "commonCodeName": "기업은행",
-        "sortNo": 2,
-        "commonCodeId": "03"
-      },
-      {
-        "commonCodeName": "국민은행",
-        "sortNo": 3,
-        "commonCodeId": "04"
-      },
-      {
-        "commonCodeName": "수협중앙",
-        "sortNo": 5,
-        "commonCodeId": "07"
-      },
-      {
-        "commonCodeName": "농협중앙회",
-        "sortNo": 6,
-        "commonCodeId": "11"
-      },
-      {
-        "commonCodeName": "단위농협",
-        "sortNo": 7,
-        "commonCodeId": "12"
-      },
-      {
-        "commonCodeName": "우리은행",
-        "sortNo": 8,
-        "commonCodeId": "20"
-      },
-      {
-        "commonCodeName": "신한은행",
-        "sortNo": 9,
-        "commonCodeId": "21"
-      },
-      {
-        "commonCodeName": "SC제일",
-        "sortNo": 10,
-        "commonCodeId": "23"
-      },
-      {
-        "commonCodeName": "KEB하나은행(구하나,구외환)",
-        "sortNo": 11,
-        "commonCodeId": "25"
-      },
-      {
-        "commonCodeName": "씨티은행",
-        "sortNo": 12,
-        "commonCodeId": "27"
-      },
-      {
-        "commonCodeName": "대구은행",
-        "sortNo": 13,
-        "commonCodeId": "31"
-      },
-      {
-        "commonCodeName": "부산은행",
-        "sortNo": 14,
-        "commonCodeId": "32"
-      },
-      {
-        "commonCodeName": "광주은행",
-        "sortNo": 15,
-        "commonCodeId": "34"
-      },
-      {
-        "commonCodeName": "제주은행",
-        "sortNo": 16,
-        "commonCodeId": "35"
-      },
-      {
-        "commonCodeName": "전북은행",
-        "sortNo": 17,
-        "commonCodeId": "37"
-      },
-      {
-        "commonCodeName": "경남은행",
-        "sortNo": 18,
-        "commonCodeId": "39"
-      },
-      {
-        "commonCodeName": "마을금고",
-        "sortNo": 19,
-        "commonCodeId": "45"
-      },
-      {
-        "commonCodeName": "신용협동",
-        "sortNo": 20,
-        "commonCodeId": "48"
-      },
-      {
-        "commonCodeName": "상호저축",
-        "sortNo": 21,
-        "commonCodeId": "50"
-      },
-      {
-        "commonCodeName": "HSBC은행",
-        "sortNo": 22,
-        "commonCodeId": "54"
-      },
-      {
-        "commonCodeName": "도이치",
-        "sortNo": 23,
-        "commonCodeId": "55"
-      },
-      {
-        "commonCodeName": "우체국",
-        "sortNo": 24,
-        "commonCodeId": "71"
-      },
-      {
-        "commonCodeName": "K뱅크",
-        "sortNo": 25,
-        "commonCodeId": "89"
-      },
-      {
-        "commonCodeName": "카카오뱅크",
-        "sortNo": 26,
-        "commonCodeId": "90"
-      }
-    ],
     "listData": [
       {
-        "orderNumber": "000006207",
-        "orderType": "NS",
-        "orderDate": "2021.03.22",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "orderTotal": 2,
+        "orderNumber": "6381918",
+        "orderDate": "2021.03.30",
+        "status": "주문완료",
+        "apiType": "RECORD",
+        "requestNo": "",
+        "grandTotalValue": "",
+        "grandTotalCurrency": "",
+        "contDtlType": "",
+        "email": "",
+        "orderTotal": 4,
         "productList": [
           {
-            "productNameKR": "LG TROMM",
-            "productNameEN": "F18VDP.AKOR",
-            "modelID": "MD08045851",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/washing-machines/md08045851/md08045851-350x350.jpg",
-            "productPDPurl": "https://wwwstg.lge.co.kr/washing-machines/f18vdp",
+            "productNameKR": "LG 휘센 타워 스페셜",
+            "productNameEN": "FQ18SBNWG1.AKOR",
+            "modelID": "",
+            "productImage": "https://img.lgmall.com/ProductImage/915/20210127093734_-bdf_B.jpg",
+            "modelType": "",
             "orderedQuantity": "1",
-            "itemStatus": "Invoiced",
-            "originalPrice": "14300",
             "discountAmount": "0",
-            "rowTotal": 12900,
-            "originalTotalPrice": 14300,
-            "productPrice": "12900",
-            "discountPrice": 1400,
-            "memberShipPoint": "3717",
-            "productTotalPrice": 9183,
-            "specList": [
-              "18kg",
-              "모던 스테인리스"
-            ],
+            "rowTotal": "0",
             "orderStatus": {
               "disabled": "",
-              "statusText": "결제 완료",
+              "statusText": "주문완료",
               "statusClass": "",
-              "statusDate": "배송희망일 2021.03.25",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              
-            ],
-            "itemCancelAbleYn": ""
+              "statusDate": "배송희망일 2021.03.30"
+            }
           },
           {
-            "productNameKR": "실밥 거름망",
-            "productNameEN": "ADQ72933301",
-            "modelID": "MD08918846",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "orderedQuantity": "2",
-            "itemStatus": "Delivered",
-            "originalPrice": "11500",
+            "productNameKR": "PAC_Slim Inverter_I/D",
+            "productNameEN": "FQ18SBNWGN.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
             "discountAmount": "0",
-            "rowTotal": 21800,
-            "originalTotalPrice": 23000,
-            "productPrice": "10900",
-            "discountPrice": 1200,
-            "memberShipPoint": "6283",
-            "productTotalPrice": 15517,
-            "specList": [
-              "",
-              ""
-            ],
+            "rowTotal": "0",
             "orderStatus": {
               "disabled": "",
-              "statusText": "배송완료",
-              "statusClass": "",
-              "statusDate": "배송희망일 ",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              {
-                "className": "productReview",
-                "buttonName": "제품리뷰"
-              },
-              {
-                "className": "deliveryInquiry",
-                "buttonName": "배송조회"
-              },
-              {
-                "className": "takeBackInner",
-                "buttonName": "반품신청"
-              }
-            ],
-            "itemCancelAbleYn": "N"
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_O/D",
+            "productNameEN": "FQ25BNBU.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
+          },
+          {
+            "productNameKR": "PAC_Slim Inverter_lst",
+            "productNameEN": "PQ061208C11.AKOR",
+            "modelID": "",
+            "productImage": "NULL",
+            "modelType": "",
+            "orderedQuantity": "1",
+            "discountAmount": "0",
+            "rowTotal": "0",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "주문완료",
+              "statusClass": ""
+            }
           }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderReturnAbleYn": "Y",
-        "orderReceiptAbleYn": "Y"
+        ]
       }
     ],
     "payment": {
-      "creditCard": "신한",
-      "installment": "0",
-      "installmentName": "0개월",
-      "paymentDate": "2021-03-21 15:00:00",
+      "creditCard": "현대VISA",
+      "installment": "7",
+      "installmentName": "7개월",
+      "paymentDate": "2021-03-30 09:49:13",
       "bankName": "",
       "bankAccountNo": "",
-      "bankAccountNm": "임현주",
-      "depositExpectedDate": "2021-03-23 15:40:38",
-      "membershipPoint": "10000",
-      "paymentApprovalNumber": "7202103222559831",
-      "originalTotalPrice": "37300",
-      "grandTotal": "24,700",
-      "discount": 2600,
-      "paymentMethodName": "네이버페이",
-      "transType": "NAVER",
-      "paymentType": "42",
-      "paymentTypeName": "네이버페이",
-      "receiptUrl": ""
+      "bankAccountNm": "",
+      "depositExpectedDate": "0000-00-00",
+      "membershipPoint": "300000",
+      "paymentApprovalNumber": "",
+      "paymentMethodName": "신용카드(현대VISA카드, 할부 7개월)",
+      "paymentTypeName": "신용카드"
     },
     "shipping": {
-      "name": "임현주",
-      "email": "kdy9307@lgcns.com",
-      "street": "서울 구로구 신도림로 78 (신도림동, 신도림3차동아아파트)\n304-1901",
-      "city": "-",
-      "countryId": "KR",
-      "postcode": "08207",
-      "telephone": "01020047593",
-      "telephonenumber": "01020047593",
-      "company": "",
-      "recyclingPickup": "",
-      "shippingNoteTxt": "경비실",
-      "inspectionVisit": ""
+      "name": "이수진",
+      "email": "zini0007@naver.com",
+      "street": " 851동1601호",
+      "city": "",
+      "countryId": "",
+      "postcode": "18430 ",
+      "telephone": "010-5892-9692 ",
+      "shippingMethod": "가정배달"
     }
   },
   "param": {
     "pagination": {
-      "page": "1"
+      "page": null
     }
   },
   "message": "success",

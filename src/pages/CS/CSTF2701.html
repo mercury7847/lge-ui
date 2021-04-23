@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-login="N">
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
@@ -9,21 +9,13 @@
 <body>
     <div class="wrap">
         <div class="container">
-            <!-- 2021.03.15 삭제 -->
-            <!-- @@include('./common/modules/page-header.html', {
-                'pageTitle': 'S/W 업데이트 소식',
-                'pageDesc': 'LG전자 제품의 SW 신규 개선내용이나 OS 업그레이드, 보안 패치 내용을 알려드립니다.'
-            }) -->
-            <!-- //2021.03.15 삭제 -->
-
-
             <div class="contents support notice software">
                 <div class="cont-wrap">
 
                     <div class="board-view-wrap">
                         <div class="board-view">
                             <div class="board-view-head">
-                                <h2 class="head-title">고객지원의 시스템 점검에 따른 서비스 이용안내 공지사항</h2>
+                                <h1 class="head-title">고객지원의 시스템 점검에 따른 서비스 이용안내 공지사항</h1>
                                 <ul class="head-infos">
                                     <li>스마트폰</li> <!-- 2021.02.02 항목 추가 -->
                                     <li>2020.07.20</li>
@@ -128,6 +120,7 @@
             </div>
         </div>
              
+        @@include('./common/support/quick-menu.html')
         @@include('./common/footer.html')
     </div>
 

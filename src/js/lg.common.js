@@ -290,8 +290,9 @@ var isApp = function(){
             self._createMainWrapper();
             self._switchLinker();
 
-            $('body').find('.container').attr('id', 'content');
-
+            var lnbContents = $('.contents .lnb-contents');
+            if(lnbContents.length) lnbContents.attr('id', 'content');
+            else $('body').find('.container').attr('id', 'content');
         },
 
         _addImgOnloadEvent: function(){

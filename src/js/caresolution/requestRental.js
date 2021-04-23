@@ -51,8 +51,10 @@
 
     var isBeforeUnload = true;
 
+    var txtMasking;
+
     function init(){    
-        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
         });
@@ -75,6 +77,8 @@
         contractUserPhone = getInputData("contractUserDefaultPhone");
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
+
+        txtMasking = new vcui.helper.TextMasking();
 
         $('.agree-box').vcCheckboxAllChecker();
         requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
@@ -363,11 +367,11 @@
             var chk = $(this).prop('checked');
             if(chk) {
                 $(this).prop('checked', false);
-                $('#popup-previsit').vcModal();
+                $('#popup-previsit').vcModal({opener:$(this)});
             }
         }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
             e.preventDefault();
-            $('#popup-previsit').vcModal();
+            $('#popup-previsit').vcModal({opener:$(this)});
         }).on('click', '.installAbledConfirm', function(e){
             e.preventDefault();
             setInstallAbledConfirm();
@@ -409,11 +413,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-cardApply').vcModal();
+                $('#popup-cardApply').vcModal({opener:$(this)});
             }
         }).on('click', '.cardApplyaAgree', function(e){
             e.preventDefault();
-            $('#popup-cardApply').vcModal();
+            $('#popup-cardApply').vcModal({opener:$(this)});
         }).on('change', 'select[name=paymentCard], input[name=paymentCardNumber], input[name=paymentCardPeriod]', function(e){
             var chk = 0;
             if(step3Block.find('select[name=paymentCard]').val() != "") chk++;
@@ -431,11 +435,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-selfClearing').vcModal();
+                $('#popup-selfClearing').vcModal({opener:$(this)});
             }
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
-            $('#popup-selfClearing').vcModal();
+            $('#popup-selfClearing').vcModal({opener:$(this)});
         }).on('click', '.paymentCardConfirm', function(e){
             e.preventDefault();
             setCardAbledConfirm();
@@ -451,7 +455,41 @@
             if(chk == "Y"){
                 setPrepaymentChecked();
             }
+        }).on('propertychange keyup paste input change', 'input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]', function(e){
+            var attrName = $(this).attr('name');
+            var value = $(this).val().replace(/ /gi, '').replace(/[^0-9.;\*]/g,'');
+            var maskingStr = "";
+            var leng, i, str;
+            switch(attrName){
+                case 'paymentCardNumber':
+                    leng = value.length < 16 ? value.length : 16;
+                    for(i=0;i<leng;i++){
+                        str = i > 3 && i < 12 ? "*" : value.substr(i, 1);
+                        maskingStr += str;
+                    }                    
+                    break;
+
+                case 'paymentCardPeriod':
+                    leng = value.length < 4 ? value.length : 4;
+                    for(i=0;i<leng;i++){
+                        str = i > 1 ? "*" : value.substr(i, 1);
+                        maskingStr += str;
+                    }
+                    break;
+
+                case 'paymentBankNumber':
+                    leng = value.length;
+                    for(i=0;i<leng;i++){
+                        str = i > 5 ? "*" : value.substr(i, 1);
+                        maskingStr += str;
+                    }
+                    break;
+            }
+
+            $(this).val(maskingStr);
+            $(this).data('realData', value);
         });
+        $('input[name=paymentCardNumber], input[name=paymentCardPeriod], input[name=paymentBankNumber]').trigger('input');
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
             e.preventDefault();
@@ -495,7 +533,7 @@
         }
         
         if(isComplete) step++;
-
+        
         return isComplete;
     }
 
@@ -641,7 +679,7 @@
             return false;
         }
 
-        var chk = paymethod == "bank" ? compareInputData(bankInputData, bankValidation.getValues()) : compareInputData(cardInputData, cardValidation.getValues());
+        var chk = paymethod == "bank" ? compareInputData(bankInputData, getRealBankData()) : compareInputData(cardInputData, getRealCardData());
         if(!chk){
             var msg = paymethod == "bank" ? "납부 계좌 확인을 통해 납부 가능 여부를 확인해주세요." : "납부 카드 확인을 통해 납부 가능 여부를 확인해주세요.";
             lgkorUI.alert("",{title:msg});
@@ -962,6 +1000,23 @@
         step2Block.find('input[name=installInpuType]').prop('checked', false);
     }
 
+    //마스킹 처리 안된 실제 데이터...
+    function getRealBankData(){
+        return{
+            bankUserName: bankValidation.getValues('bankUserName'),
+            paymentBank: bankValidation.getValues('paymentBank'),
+            paymentBankNumber: step3Block.find('input[name=paymentBankNumber]').data('realData')
+        }
+    }
+    //마스킹 처리 안된 실제 데이터...
+    function getRealCardData(){
+        return{
+            paymentCard: cardValidation.getValues('paymentCard'),
+            paymentCardNumber: step3Block.find('input[name=paymentCardNumber]').data('realData'),
+            paymentCardPeriod: step3Block.find('input[name=paymentCardPeriod]').data('realData')
+        }
+    }
+
     //납부카드확인...
     function setCardAbledConfirm(){
         var paymethod = paymentFiledValidation();
@@ -971,9 +1026,10 @@
         var sendata = {
             confirmType: "card",
             cardCompany: values.paymentCard,
-            cardNumber: values.paymentCardNumber,
-            cardPeriod: values.paymentCardPeriod
+            cardNumber: step3Block.find('input[name=paymentCardNumber]').data('realData'),
+            cardPeriod: step3Block.find('input[name=paymentCardPeriod]').data('realData')
         }
+
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -986,8 +1042,8 @@
             if(chk){
                 cardInputData = {
                     paymentCard: values.paymentCard,
-                    paymentCardNumber: values.paymentCardNumber,
-                    paymentCardPeriod: values.paymentCardPeriod
+                    paymentCardNumber: step3Block.find('input[name=paymentCardNumber]').data('realData'),
+                    paymentCardPeriod: step3Block.find('input[name=paymentCardPeriod]').data('realData')
                 }
                 selectPaymentMethod = "card";
             } else{
@@ -1005,7 +1061,7 @@
             confirmType: "bank",
             bankUser: bankValidation.getValues('bankUserName'),
             bankName: values.paymentBank,
-            bankNumber: values.paymentBankNumber
+            bankNumber: step3Block.find('input[name=paymentBankNumber]').data('realData')
         }
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
@@ -1020,7 +1076,7 @@
                 bankInputData = {
                     bankUserName: bankValidation.getValues('bankUserName'),
                     paymentBank: values.paymentBank,
-                    paymentBankNumber: values.paymentBankNumber
+                    paymentBankNumber: step3Block.find('input[name=paymentBankNumber]').data('realData')
                 }
                 selectPaymentMethod = "bank";
             } else{
@@ -1097,7 +1153,7 @@
     }
 
     function openRentalAgreePopup(){
-        $('#popup-rentalAgree').vcModal()
+        $('#popup-rentalAgree').vcModal({opener:rentalAgreeChker})
         .on('modalhide', function(e){
             var chk = getRentalAgreeAllChecked();
             rentalAgreeChker.prop('checked', chk);
@@ -1126,7 +1182,7 @@
     }
 
     function openPrivacyPopup(){
-        $('#popup-privacy').vcModal()
+        $('#popup-privacy').vcModal({opener:step1Block.find('.input-mix-wrap .cell .btn-link')})
         .on('modalhide', function(e){
             var chk = privacyAgreeAllChker.getAllChecked();
             privacyAgreeChker.prop('checked', chk);
@@ -1276,8 +1332,8 @@
             TRANS_TYPE: payment ? "B" : "C",
             TRANS_MEM_NAME: bankValidation.getValues('bankUserName'),
             TRANS_CORP_NAME: payment ? bankValue.paymentBank : cardValue.paymentCard,
-            TRANS_ACCOUNT_NUM: payment ? bankValue.paymentBankNumber : cardValue.paymentCardNumber,
-            TRANS_CARD_EXPIRY: cardValue.paymentCardPeriod,
+            TRANS_ACCOUNT_NUM: payment ? step3Block.find('input[name=paymentBankNumber]').data('realData') : step3Block.find('input[name=paymentCardNumber]').data('realData'),
+            TRANS_CARD_EXPIRY: step3Block.find('input[name=paymentCardPeriod]').data('realData'),
             CARD_REQ_YN: step3Block.find('input[name=cardApplication]:checked').val(),
             CARD_CORP_TYPE: step3Block.find('select[name=associatedCard] option:selected').val(),
             RCV_NAME: step2Value.userName,

@@ -632,7 +632,7 @@
                                                                                 <dt class="tit"><label for="ipt-card1" class="req">카드번호<span class="blind">필수입력</span></label></dt>
                                                                                 <dd class="conts">
                                                                                     <div class="input-wrap">
-                                                                                        <input type="number" id="ipt-card1" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
+                                                                                        <input type="text" maxlength="16" id="ipt-card1" placeholder="&lsquo;-&rsquo; 없이 숫자만 입력" value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
                                                                                     </div>
                                                                                     <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                                 </dd>
@@ -642,7 +642,7 @@
                                                                                 <dd class="conts">
                                                                                     <div class="box">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="number" id="ipt-card2" value="0322" placeholder="MMYY" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
+                                                                                            <input type="text" id="ipt-card2" value="0322" placeholder="MMYY" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true"><!-- 210317 수정 [placeholder 수정] -->
                                                                                         </div>
                                                                                         <div class="cell">
                                                                                             <button type="button" class="btn paymentCardConfirm"><span>납부 카드 확인</span></button>
@@ -697,7 +697,7 @@
                                                                                 <dd class="conts">
                                                                                     <div class="box">
                                                                                         <div class="input-wrap">
-                                                                                            <input type="number" id="ipt-bank2" value="123456789123" placeholder="&lsquo;-&lsquo;없이 숫자만 입력" name="paymentBankNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
+                                                                                            <input type="text" id="ipt-bank2" value="123456789123" placeholder="&lsquo;-&lsquo;없이 숫자만 입력" name="paymentBankNumber" data-required="true"><!-- 210305 수정 [input type 수정] --><!-- 210317 수정 [placeholder 수정] -->
                                                                                         </div>
                                                                                         <div class="cell">
                                                                                             <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>

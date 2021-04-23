@@ -143,7 +143,7 @@
 
                 //모바일용 갤러리
                 self.$pdpMobileVisual = $('#mobile_summary_gallery');
-                self.$pdpMobileVisual.hide();
+                //self.$pdpMobileVisual.hide();
                 //모바일용 갤러리 슬라이더
                 self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider');
                 //모바일용 갤러리 썸네일 슬라이더
@@ -395,7 +395,7 @@
                     dots: false,
                     buildDots: false
                 });
-                self.$pdpMobileVisual.show();
+                //self.$pdpMobileVisual.show();
             },
 
             popUpDataSetting: function() {
@@ -501,11 +501,12 @@
                 //PDP 갤러리 더보기(수상내역등)
                 self.$pdpMoreInfo.on('click','a.btn-link.popup', function(e) {
                     e.preventDefault();
+                    var arr = [];
                     var loaded = self.$awardPopup.data('loaded');
                     if(!loaded) {
                         self.$awardPopup.data('loaded', true);
                         if(typeof awards !== 'undefined' && awards.length > 0) {
-                            var arr = awards instanceof Array ? awards.slice(0,4) : [];
+                            arr = awards instanceof Array ? awards.slice(0,4) : [];
                             var $list_ul = self.$awardPopup.find('ul.awards-list');
                             $list_ul.empty();
 
@@ -517,8 +518,11 @@
                         }
                     }
 
-                    self.$awardPopup.vcModal({opener: this});
-
+                    if(arr.length == 1) {
+                        self.$awardPopup.find('.btn-group button[data-link-url]').trigger('click');
+                    } else {
+                        self.$awardPopup.vcModal({opener: this});
+                    }
                 });
 
                 //수상내역 아이템 클릭

@@ -49,7 +49,7 @@
     var authManager;
     var addressFinder;
     var dateUtil = vcui.date;
-    var detect = vcui.detect;
+    var detectUtil = vcui.detect;
     var isLogin = lgkorUI.isLogin;
 
     var reservation = {
@@ -58,14 +58,15 @@
             
             self.$cont = $('.contents');
             self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
-            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
-            self.$myModelArea = self.$cont.find('.my-product-wrap');
+            self.$myModelWrap = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
             self.$stepArea = self.$cont.find('.step-area');
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
+            self.$stepDate = self.$cont.find('#stepDate');
+            self.$stepEngineer = self.$cont.find('#stepEngineer');
 
             self.$topicBox = self.$stepInput.find('#topicBox');
             self.$topicListWrap = self.$stepInput.find('#topicList');
@@ -83,21 +84,20 @@
             self.$tvPositionBox = self.$stepInput.find('#tvPositionBox');
             self.$installTypeBox = self.$stepInput.find('#installTypeBox');
             self.$addFanBox = self.$stepInput.find('#addFanBox');
-
-            self.$stepDate = self.$cont.find('#stepDate');
+            
             self.$dateWrap = self.$stepDate.find('.date-wrap');
             self.$timeWrap = self.$stepDate.find('.time-wrap');
 
-            self.$stepEngineer = self.$cont.find('#stepEngineer');
+            self.$engineerOpener = $('[data-href="#choiceEngineerPopup"]');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
             self.$authPopup = $('#certificationPopup');
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
-            isLogin = lgkorUI.isLogin;
             self.isOneView = 'N';
-            self.autoFlag = false; 
+            self.hirun = false;
+            self.autoFlag = false;
 
             if ($('#appCall').length) {
                 isLogin = true;
@@ -266,11 +266,26 @@
                 });
 
                 self.bindEvent();
+                self.checkHirun();
 
                 self.$dateWrap.calendar({inputTarget:'#date'});
                 self.$timeWrap.timeCalendar({inputTarget:'#time'});
-                self.$cont.vcSearchModel();
+                self.$cont.vcSearchModel({
+                    useCookie: !self.hirun,
+                    reset: self.hirun
+                });
             });
+        },
+        checkHirun: function() {
+            var self = this;
+            var subCategory = self.$cont.find('#subCategory').val()
+
+            if ((subCategory == 'CT50019259' || subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
+                lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
+                    title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
+                });
+                self.hirun = true;
+            }
         },
         setTopicList: function(data) {
             var self = this;
@@ -569,6 +584,11 @@
         },
         bindEvent: function() {
             var self = this;
+
+            $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerInfoClick.do', 'www.lge.co.kr/acecount/engineerInfoClickm.do');
+            });
+
             self.$cont.on('reset', function(e) {
                 self.$topicList.empty();
                 self.$subTopicList.empty();
@@ -581,7 +601,6 @@
                 self.$addFanBox.hide();
                 self.$completeBtns.hide();
                 self.$stepInput.find('.step-btn-wrap').show();
-                self.$myModelArea.show();
 
                 if (isLogin) {
                     var notInput = '#userNm, #phoneNo';
@@ -596,8 +615,8 @@
                 self.$stepInput.find('input[type=radio]').prop('checked', false);
                 self.$stepInput.find('input[type=text], input[type=number], textarea').not(notInput).val('');
                 self.$stepInput.find('#fanEtc').prop('disabled', true);
-                self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
                 self.$stepInput.find('#rentalN').prop('checked', true);
+                self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
                 self.$stepEngineer.find('#engineerNm').val('');
                 self.$stepEngineer.find('#engineerCode').val('');
                 self.$stepEngineer.find('#centerNm').val('');
@@ -610,18 +629,18 @@
                 self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
 
                 self.autoFlag = false;
+                self.hirun = false;
             });
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
                 var param = data;
 
-                if ((data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
-                    lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
-                        title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
-                    });
+                self.checkHirun();
+
+                if (self.hirun) {
                     self.$cont.vcSearchModel('reset');
-                    return;
+                    return false;
                 }
 
                 lgkorUI.showLoading();
@@ -673,7 +692,7 @@
                     }
 
                     
-                    self.$myModelArea.hide();
+                    self.$myModelWrap.hide();
 
                     lgkorUI.hideLoading();
                 });
@@ -694,6 +713,16 @@
                 
                 self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
+
+                if (self.autoFlag) {
+                    self.$stepInput.find('.step-btn-wrap').show();
+                    self.$stepDate.removeClass('active');
+                    self.$stepEngineer.removeClass('active');
+                    self.$completeBtns.hide();
+                    self.$dateWrap.calendar('reset');
+                    self.$timeWrap.timeCalendar('reset');  
+                    self.autoFlag = false;
+                }
             });
 
             // 세부 증상 선택
@@ -719,7 +748,7 @@
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
-
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerSolutionsClick.do', 'www.lge.co.kr/acecount/engineerSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 
@@ -732,15 +761,13 @@
                     self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
 
-                    // self.$cont.find('.btm-more.both .chk-wrap').show();
-
                     if (self.autoFlag) {
                         self.$stepInput.find('.step-btn-wrap').show();
                         self.$stepDate.removeClass('active');
                         self.$stepEngineer.removeClass('active');
                         self.$completeBtns.hide();
-                        $('.date-wrap').calendar('reset');
-                        $('.time-wrap').timeCalendar('reset');  
+                        self.$dateWrap.calendar('reset');
+                        self.$timeWrap.timeCalendar('reset');  
                         self.autoFlag = false;
                     }
                 }); 
@@ -755,12 +782,12 @@
             });
 
             // 날짜 선택
-            $('.date-wrap').on('dateselected', function() {
+            self.$dateWrap.on('dateselected', function() {
                 self.requestTime();
             });
 
             // 시간 선택
-            $('.time-wrap').on('timeselected', function() {
+            self.$timeWrap.on('timeselected', function() {
                 var url = self.$stepDate.data('ajax'),
                     param;
 
@@ -787,7 +814,8 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+            self.$engineerOpener.on('click', function() {
+                var $this = $(this);
                 var url = self.$engineerPopup.data('engineerListUrl'),
                     param;
 
@@ -824,13 +852,13 @@
                         } else {
                             lgkorUI.alert('', {
                                 title: '방문 가능한 다른 엔지니어가 없습니다.'
-                            });
+                            }, $this[0]);
                         }
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
                                 title: data.resultMessage
-                            });
+                            }, $this[0]);
                         }
                     }
 
@@ -839,7 +867,7 @@
             });
 
             self.$engineerSlider.on('carouselreinit', function() {
-                $('#choiceEngineerPopup').vcModal();
+                self.$engineerPopup.vcModal();
             });
 
             // 엔지니어 선택
@@ -884,6 +912,10 @@
                 });
             });
 
+            self.$engineerPopup.on('modalhidden', function() {
+                self.$engineerOpener.focus();
+            });
+
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
@@ -916,8 +948,6 @@
                     success && self.requestComplete();
                 });
             });
-
-
 
             $('[name=fan]').on('change', function() {
                 if ($(this).attr('id') == 'fan09') {
