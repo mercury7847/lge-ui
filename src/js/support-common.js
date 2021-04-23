@@ -1531,6 +1531,8 @@ function validatePhone(value){
                 lgkorUI.addModelNameImgErrorEvent(this);
             });
         });
+
+        $('.agree-wrap .agree-cont-box').attr('tabindex', 0);
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

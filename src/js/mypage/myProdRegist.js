@@ -782,7 +782,7 @@
                 var imageUrl = option.attr('data-image-url');
                 var desc = option.attr('data-text');
                 if(desc) {
-                    self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
+                    self.$modelCheckHelpPage.find('div.example-result p.txt').html(vcui.string.replaceAll(option.attr('data-text'),"\n","<br>"));
                 }
                 if(imageUrl) {
                     self.$modelCheckHelpPage.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')}).css('opacity',1);
