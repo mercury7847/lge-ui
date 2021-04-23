@@ -310,4 +310,7 @@ input[type="checkbox"] + .text_agree:before {content:""; margin-top: -10px;}
 	.marking > input[type="text"] {width: 100%; font-size: 12px; }
 	
 	.mobile #manager {width: 95%;}
+    
+    /* 210423 */
+    .cont01 .marking .tab a {font-size: 10%;}
 }
