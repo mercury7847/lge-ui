@@ -292,13 +292,13 @@
             // bottom:80px + 24px + 56px;
         }
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .floating-linker {
         width:100% !important;
         height:100% !important;
-        &:not(:first-child) {
+        &:not(:last-child) {
             margin-top: 10px;
         }
         a {
