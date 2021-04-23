@@ -3654,6 +3654,7 @@
 
 
     $(document).ready(function() {
+        $("html, body").scrollTop(0);
         modelSimulator.init();
 
         $(document).on("click", function(e) {
