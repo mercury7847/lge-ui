@@ -817,37 +817,8 @@
 
                 item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
 
+                item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
-
-            //     '{{#if checkPriceFlag}}'+
-            //     '{{#if bizType == "CARESOLUTION"}}' +
-            //         '<div class="price-area care">' +
-            //             '<div class="total-price">' +
-            //                 '<em class="text">기본 월 요금</em>' +
-            //                 '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
-            //             '</div>' +
-            //             '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
-            //         '</div>' +
-            //     '{{#else}}' +
-            //         '<div class="price-area">' +
-            //             '{{#if obsTotalDiscountPrice}}'+
-            //                 '{{#if obsOriginalPrice}}<div class="original">' +
-            //                     '<em class="blind">판매가격</em>' +
-            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //                 '{{#if obsSellingPrice}}<div class="total">' +
-            //                     '<em class="blind">총 판매가격</em>' +
-            //                     '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //             '{{#else}}'+
-            //                 '{{#if obsOriginalPrice}}<div class="total">' +
-            //                     '<em class="blind">총 판매가격</em>' +
-            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //             '{{/if}}'+
-            //         '</div>' +
-            //     '{{/if}}' +
-            // '{{/if}}'+
 
                 return vcui.template(productItemTemplate, item);
             },
