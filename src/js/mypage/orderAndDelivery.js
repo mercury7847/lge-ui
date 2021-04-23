@@ -477,7 +477,8 @@
         if(isOrderdetail) PAGE_TYPE = PAGE_TYPE_DETAIL;
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM_DETAIL;
 
-        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y", minDate:new Date('2021-04-16')});
+        //$('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y", minDate:new Date('2021-04-16')});
+        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y"});
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
@@ -924,7 +925,7 @@
 
         var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
         if(isAgreeChk){
-            if(!$('#popup-takeback').find('input[name=cancelPopAgree]').prop('checked')){
+            if(!$('#popup-takeback').find('input[name=takebackPopAgree]').prop('checked')){
                 lgkorUI.alert("", {
                     title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
                 });
@@ -1491,7 +1492,7 @@
                         var orderReceiptAbleYn;
                         if(TAB_FLAG == TAB_FLAG_RECORD) orderReceiptAbleYn = "N";
                         else orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
-                        
+
                         PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
                     }
                 }
@@ -2123,6 +2124,7 @@
             popup.find(".tbl-layout.sizeType3 .thead .th.col2").text(thname);
             
             popup.find('input[name=cancelPopAgree]').prop('checked', false);
+            popup.find('input[name=takebackPopAgree]').prop('checked', false);
 
             var modeltypes = vcui.array.filterOne(productList, function(item){
                 return item.modelType == "소모품(A)";
@@ -2135,8 +2137,6 @@
 
             var isPriceBlock = true;
             if(TAB_FLAG == TAB_FLAG_CARE && productList[0].contDtlType != "C01") isPriceBlock = false;
-
-            console.log("isPriceBlock:", isPriceBlock, TAB_FLAG)
 
             if(isPriceBlock){
                 popup.find('.sect-wrap.cnt01').show();
