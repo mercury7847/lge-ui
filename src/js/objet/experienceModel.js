@@ -5084,6 +5084,9 @@
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
+                    if (doorModelCode == "B320TT-SMT") {
+                        doorModelCode = "B320TT-MMT";
+                    }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
                     priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
