@@ -4048,6 +4048,10 @@
                     ok: function() {
                         console.log("saveInfo", saveInfo);
                         myPickSave(saveInfo);
+                        modelSimulator.mobileStep(".simul_step3");
+                        setTimeout(function() {
+                            $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                        }, 500);
                     }
                 };
                 var desc = '';
@@ -4060,8 +4064,11 @@
                     desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                 }
                 lgkorUI.confirm(desc, obj);
-
+                modelSimulator.mobileStep(".simul_step3");
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
+                setTimeout(function() {
+                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                }, 500);
             } else {
                 let desc = "";
                 let obj = {
@@ -5093,7 +5100,7 @@
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
-            //priceHtml += '                                    <p class="err-msg">회원혜택가는 주문단계에서 확인하실 수 있습니다.</p>';
+            priceHtml += '                                    <p class="err-msg">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>';
             priceHtml += '                                </div>';
             priceHtml += '                            </dd>';
             priceHtml += '                        </dl>';
