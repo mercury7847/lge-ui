@@ -3922,6 +3922,7 @@
             let defaultModelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let doorLocation = $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_location");
             let littleCate;
+            $(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "N";
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_material", mCode);
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_color", cCode);
             $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-price", doorPrice);
