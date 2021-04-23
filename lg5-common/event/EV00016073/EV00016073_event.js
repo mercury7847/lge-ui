@@ -1,12 +1,13 @@
 var submitCnt = 0;
 var serial_btn_cnt = 0; 
 var num = "{}[]()<>?|`~'!@#$%^&*-+=,.;:\"'\\/ ";
-var eventPath = "/WEB-INF/jsp/event/EV00016073/";
+var eventPath = "/YYYY_2021/MM_04/airCompensatorySale/";
 var mainUrl = eventPath + "event_main.jsp";
+var submitUrl = eventPath + "event_proc.jsp";
 
 $(document).ready(function() {
-	
-	//í–‰ì‚¬ ëª¨ë¸ ìì„¸íˆ ë³´ê¸°
+
+	//Çà»ç ¸ğµ¨ ÀÚ¼¼È÷ º¸±â
     $('.eventModel').on('click', function(){
     	//if( $.trim( $("#myName").val() ) != "" ){
 	        $('.popup_eventModel').fadeIn(200);
@@ -21,7 +22,7 @@ $(document).ready(function() {
     	//}
     });
 	
-	//ì œì¡°ë²ˆí˜¸
+	//Á¦Á¶¹øÈ£
     $('.serialOpen').on('click', function(){
     	//if( $.trim( $("#myName").val() ) != "" ){
 	        $('.popup_serialNo').fadeIn(200);
@@ -36,7 +37,7 @@ $(document).ready(function() {
     	//}
     });
 
-	//ê±°ë˜ë‚´ì—­ì„œ
+	//°Å·¡³»¿ª¼­
     $('.receiptOpen').on('click', function(){
     	//if( $.trim( $("#myName").val() ) != "" ){
 	        $('.popup_serialNo2').fadeIn(200);
@@ -51,7 +52,7 @@ $(document).ready(function() {
     	//}
     });
 
-	// ì´ë©”ì¼ ì£¼ì†Œ ë³€ê²½ ì‹œ 
+	// ÀÌ¸ŞÀÏ ÁÖ¼Ò º¯°æ ½Ã 
     $("#email3").change(function() {
         var email =  $("#email3").val(); 
         var email1 = $("#email1").val();
@@ -60,7 +61,7 @@ $(document).ready(function() {
         	$("#email2").attr("readonly", true);
         		if(email1 != "") {
 				setTimeout(function() {
-					alert("ì´ë©”ì¼ ì£¼ì†Œë¥¼  ì •í™•í•˜ê²Œ ì…ë ¥í•˜ì˜€ëŠ”ì§€ ë‹¤ì‹œ í•œë²ˆ  í™•ì¸í•´ì£¼ì„¸ìš”.");
+					alert("ÀÌ¸ŞÀÏ ÁÖ¼Ò¸¦  Á¤È®ÇÏ°Ô ÀÔ·ÂÇÏ¿´´ÂÁö ´Ù½Ã ÇÑ¹ø  È®ÀÎÇØÁÖ¼¼¿ä.");
 				}, 300);
         	}
         }else{
@@ -69,16 +70,16 @@ $(document).ready(function() {
         }
     });
 
-    //ì´ë©”ì¼ ì‘ì„± í™•ì¸ íŒì—…
+    //ÀÌ¸ŞÀÏ ÀÛ¼º È®ÀÎ ÆË¾÷
 	$("#email2").on("blur", function() {
-		alert("ì´ë©”ì¼ ì£¼ì†Œë¥¼  ì •í™•í•˜ê²Œ ì…ë ¥í•˜ì˜€ëŠ”ì§€ ë‹¤ì‹œ í•œë²ˆ  í™•ì¸í•´ì£¼ì„¸ìš”.");
+		alert("ÀÌ¸ŞÀÏ ÁÖ¼Ò¸¦  Á¤È®ÇÏ°Ô ÀÔ·ÂÇÏ¿´´ÂÁö ´Ù½Ã ÇÑ¹ø  È®ÀÎÇØÁÖ¼¼¿ä.");
 	});
     
-	//êµ¬ì œí’ˆëª¨ë¸ëª…,ì‹ ì œí’ˆì œì¡°ë²ˆí˜¸ ì˜ë¬¸/ìˆ«ìë§Œ ê°€ëŠ¥
+	//±¸Á¦Ç°¸ğµ¨¸í,½ÅÁ¦Ç°Á¦Á¶¹øÈ£ ¿µ¹®/¼ıÀÚ¸¸ °¡´É
     $("#oldModelName, #serialNo").keyup(function(event){
 		if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
 			var inputVal = $(this).val();
-			$(this).val(inputVal.replace(/[ã„±-ã…ã…-ã…£ê°€-í]/gi,''));
+			$(this).val(inputVal.replace(/[¤¡-¤¾¤¿-¤Ó°¡-Èş]/gi,''));
 		}
     });
      
@@ -89,15 +90,17 @@ $(document).ready(function() {
             if (num.indexOf(str.charAt(i)) != -1) bFlag = false;
 
             if (!bFlag) {
-                alert("íŠ¹ìˆ˜ë¬¸ì ë° ê³µë°±ëŠ” ì…ë ¥í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                alert("Æ¯¼ö¹®ÀÚ ¹× °ø¹é´Â ÀÔ·ÂÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
                 $(this).val("");
                 $(this).focus();
                 return false;
             }
         }
     });
+		
+	
     
-    //ì‹œë¦¬ì–¼ë²ˆí˜¸ ëŒ€ë¬¸ìë¡œ ì „í™˜
+    //½Ã¸®¾ó¹øÈ£ ´ë¹®ÀÚ·Î ÀüÈ¯
     $("#serialNo").bind('keyup', function() {
         $(this).val($(this).val().toUpperCase());   
         if ($("#serialNo").val().length > 12)  {
@@ -105,43 +108,54 @@ $(document).ready(function() {
         }
     });
     
-       //êµ¬ì œí’ˆëª¨ë¸ëª… ëŒ€ë¬¸ìë¡œ ì „í™˜
+       //±¸Á¦Ç°¸ğµ¨¸í ´ë¹®ÀÚ·Î ÀüÈ¯
     $("#oldModelName").bind('keyup', function() {
         $(this).val($(this).val().toUpperCase());   
+
     });
+  
+  
 	
-	// êµ¬ë§¤ ì—°
+	// ±¸¸Å ¿¬
     $("#purchaseYear").change(function() {
         var sel_year =  $("#purchaseYear").val();
         
-        /*ë‚ ì§œ êµ¬í•˜ê¸°*/
+        /*³¯Â¥ ±¸ÇÏ±â*/
 		var date = new Date();
 		var year = date.getFullYear();
 		var month = date.getMonth()+1.
 		var day = date.getDate();
-		/*ë‚ ì§œ êµ¬í•˜ê¸°*/
+		/*³¯Â¥ ±¸ÇÏ±â*/
         
         var startM = 1;
-        var endM   = 3;
-        var mOptionStr = "<option value=''>ì„ íƒ</option>";
+        var endM   = 4;
+        
+        
+        
+        var mOptionStr = "<option value=''>¼±ÅÃ</option>";
 
         if(sel_year!=""){
+
             for (var i=startM;i<=endM;i++) {
                 var tmp = "";
                 if (i < 10) tmp = "0"+i; else tmp = ""+i;
                  mOptionStr += "<option value='"+tmp+"'>"+tmp+"</option>";
             }
         }
+
         $("#purchaseMonth").html(mOptionStr);
-        $("#purchaseDate").html("<option value=''>ì„ íƒ</option>");
+        $("#purchaseDate").html("<option value=''>¼±ÅÃ</option>");
+
     });
 
-    // êµ¬ë§¤ ì›”
+
+    // ±¸¸Å ¿ù
     $("#purchaseMonth").change(function() {
-        var sm =  $("#purchaseMonth").val(); //ì›” êµ¬ë¶„ í• ë•Œ ì‚¬ìš©
+        var sm =  $("#purchaseMonth").val(); //¿ù ±¸ºĞ ÇÒ¶§ »ç¿ë
         var startday= 1;
         var endday= 31;
-        var dOptionStr = "<option value=''>ì„ íƒ</option>";
+
+        var dOptionStr = "<option value=''>¼±ÅÃ</option>";
 
         if(sm!=""){
             if( sm == "04" || sm == "06" || sm == "09" || sm == "11" ){
@@ -162,20 +176,23 @@ $(document).ready(function() {
         $("#purchaseDate").html(dOptionStr);
     });
 
-    // ì„¤ì¹˜ ì—°
+    // ¼³Ä¡ ¿¬
     $("#producInstallYear").change(function() {
         var sel_year =  $("#producInstallYear").val();
         
-        /*ë‚ ì§œ êµ¬í•˜ê¸°*/
+        /*³¯Â¥ ±¸ÇÏ±â*/
 		var date = new Date();
 		var year = date.getFullYear();
 		var month = date.getMonth()+1.
 		var day = date.getDate();
-		/*ë‚ ì§œ êµ¬í•˜ê¸°*/
+		/*³¯Â¥ ±¸ÇÏ±â*/
         
         var startM = 1;
         var endM   = 4;
-        var mOptionStr = "<option value=''>ì„ íƒ</option>";
+        
+        
+        
+        var mOptionStr = "<option value=''>¼±ÅÃ</option>";
 
         if(sel_year!=""){
 
@@ -187,15 +204,18 @@ $(document).ready(function() {
         }
 
         $("#producInstallMonth").html(mOptionStr);
-        $("#producInstallDate").html("<option value=''>ì„ íƒ</option>");
+        $("#producInstallDate").html("<option value=''>¼±ÅÃ</option>");
+
     });
 
-    // ì„¤ì¹˜ ì›”
+
+    // ¼³Ä¡ ¿ù
     $("#producInstallMonth").change(function() {
-        var sm =  $("#producInstallMonth").val(); //ì›” êµ¬ë¶„ í• ë•Œ ì‚¬ìš©
+        var sm =  $("#producInstallMonth").val(); //¿ù ±¸ºĞ ÇÒ¶§ »ç¿ë
         var startday= 1;
         var endday= 31;
-        var dOptionStr = "<option value=''>ì„ íƒ</option>";
+
+        var dOptionStr = "<option value=''>¼±ÅÃ</option>";
 
         if(sm!=""){
             if( sm == "04" || sm == "06" || sm == "09" || sm == "11" ){
@@ -218,55 +238,58 @@ $(document).ready(function() {
 
     
       $("#place").change(function() {
-        var dOptionStr = "<option value=''>ì„ íƒ</option>";
+        var dOptionStr = "<option value=''>¼±ÅÃ</option>";
 
-        if( $(this).val() == "ì˜¤í”„ë¼ì¸" ){
-			dOptionStr += "<option value='LGë² ìŠ¤íŠ¸ìƒµ'>LGë² ìŠ¤íŠ¸ìƒµ</option>";
-			dOptionStr += "<option value='í•˜ì´ë§ˆíŠ¸'>í•˜ì´ë§ˆíŠ¸</option>";
-			dOptionStr += "<option value='ì „ìëœë“œ'>ì „ìëœë“œ</option>";
-			dOptionStr += "<option value='ì´ë§ˆíŠ¸ íŠ¸ë ˆì´ë”ìŠ¤'>ì´ë§ˆíŠ¸ íŠ¸ë ˆì´ë”ìŠ¤</option>";
-			dOptionStr += "<option value='ì´ë§ˆíŠ¸'>ì´ë§ˆíŠ¸</option>";
-			dOptionStr += "<option value='í™ˆí”ŒëŸ¬ìŠ¤'>í™ˆí”ŒëŸ¬ìŠ¤</option>";
-			dOptionStr += "<option value='ì½”ìŠ¤íŠ¸ì½”'>ì½”ìŠ¤íŠ¸ì½”</option>";			
-			dOptionStr += "<option value='ë°±í™”ì _ë¡¯ë°'>ë°±í™”ì _ë¡¯ë°</option>";
-			dOptionStr += "<option value='ë°±í™”ì _ì‹ ì„¸ê³„'>ë°±í™”ì _ì‹ ì„¸ê³„</option>";
-			dOptionStr += "<option value='ë°±í™”ì _í˜„ëŒ€'>ë°±í™”ì _í˜„ëŒ€</option>";
-			dOptionStr += "<option value='ë°±í™”ì _AK'>ë°±í™”ì _AK</option>";
-			dOptionStr += "<option value='ë°±í™”ì _ê°¤ëŸ¬ë¦¬ì•„'>ë°±í™”ì _ê°¤ëŸ¬ë¦¬ì•„</option>";
-			dOptionStr += "<option value='ë°±í™”ì _ëŒ€êµ¬'>ë°±í™”ì _ëŒ€êµ¬</option>";
-			dOptionStr += "<option value='ê¸°íƒ€'>ê¸°íƒ€</option>";
-        }else if( $(this).val() == "ì˜¨ë¼ì¸" ){
-        	dOptionStr += "<option value='í•˜ì´ë§ˆíŠ¸ëª°'>í•˜ì´ë§ˆíŠ¸ëª°</option>";
-			dOptionStr += "<option value='11ë²ˆê°€'>11ë²ˆê°€</option>";
-			dOptionStr += "<option value='Gë§ˆì¼“'>Gë§ˆì¼“</option>";
-			dOptionStr += "<option value='ì˜¥ì…˜'>ì˜¥ì…˜</option>";
-			dOptionStr += "<option value='ìœ„ë©”í”„'>ìœ„ë©”í”„</option>";
-			dOptionStr += "<option value='ì¿ íŒ¡'>ì¿ íŒ¡</option>";
+        if( $(this).val() == "¿ÀÇÁ¶óÀÎ" ){
+			dOptionStr += "<option value='LGº£½ºÆ®¼¥'>LGº£½ºÆ®¼¥</option>";
+			dOptionStr += "<option value='ÇÏÀÌ¸¶Æ®'>ÇÏÀÌ¸¶Æ®</option>";
+			dOptionStr += "<option value='ÀüÀÚ·£µå'>ÀüÀÚ·£µå</option>";
+			dOptionStr += "<option value='ÀÌ¸¶Æ® Æ®·¹ÀÌ´õ½º'>ÀÌ¸¶Æ® Æ®·¹ÀÌ´õ½º</option>";
+			dOptionStr += "<option value='ÀÌ¸¶Æ®'>ÀÌ¸¶Æ®</option>";
+			dOptionStr += "<option value='È¨ÇÃ·¯½º'>È¨ÇÃ·¯½º</option>";
+			dOptionStr += "<option value='ÄÚ½ºÆ®ÄÚ'>ÄÚ½ºÆ®ÄÚ</option>";			
+			dOptionStr += "<option value='¹éÈ­Á¡_·Ôµ¥'>¹éÈ­Á¡_·Ôµ¥</option>";
+			dOptionStr += "<option value='¹éÈ­Á¡_½Å¼¼°è'>¹éÈ­Á¡_½Å¼¼°è</option>";
+			dOptionStr += "<option value='¹éÈ­Á¡_Çö´ë'>¹éÈ­Á¡_Çö´ë</option>";
+			dOptionStr += "<option value='¹éÈ­Á¡_AK'>¹éÈ­Á¡_AK</option>";
+			dOptionStr += "<option value='¹éÈ­Á¡_°¶·¯¸®¾Æ'>¹éÈ­Á¡_°¶·¯¸®¾Æ</option>";
+			dOptionStr += "<option value='¹éÈ­Á¡_´ë±¸'>¹éÈ­Á¡_´ë±¸</option>";
+			dOptionStr += "<option value='±âÅ¸'>±âÅ¸</option>";
+        }else if( $(this).val() == "¿Â¶óÀÎ" ){
+        	dOptionStr += "<option value='ÇÏÀÌ¸¶Æ®¸ô'>ÇÏÀÌ¸¶Æ®¸ô</option>";
+			dOptionStr += "<option value='11¹ø°¡'>11¹ø°¡</option>";
+			dOptionStr += "<option value='G¸¶ÄÏ'>G¸¶ÄÏ</option>";
+			dOptionStr += "<option value='¿Á¼Ç'>¿Á¼Ç</option>";
+			dOptionStr += "<option value='À§¸ŞÇÁ'>À§¸ŞÇÁ</option>";
+			dOptionStr += "<option value='ÄíÆÎ'>ÄíÆÎ</option>";
 			dOptionStr += "<option value='G9'>G9</option>";
-			dOptionStr += "<option value='ãˆœì—˜ì§€ì”¨ì—”ì—ìŠ¤'>ãˆœì—˜ì§€ì”¨ì—”ì—ìŠ¤</option>";
-			dOptionStr += "<option value='ì¸í„°íŒŒí¬'>ì¸í„°íŒŒí¬</option>";
+			dOptionStr += "<option value='¢ß¿¤Áö¾¾¿£¿¡½º'>¢ß¿¤Áö¾¾¿£¿¡½º</option>";
+			dOptionStr += "<option value='ÀÎÅÍÆÄÅ©'>ÀÎÅÍÆÄÅ©</option>";
 			dOptionStr += "<option value='CJ Mall'>CJ Mall</option>";
-			dOptionStr += "<option value='ì‹ ì„¸ê³„ëª°'>ì‹ ì„¸ê³„ëª°</option>";
-			dOptionStr += "<option value='ë¡¯ë°ëª°'>ë¡¯ë°ëª°</option>";
+			dOptionStr += "<option value='½Å¼¼°è¸ô'>½Å¼¼°è¸ô</option>";
+			dOptionStr += "<option value='·Ôµ¥¸ô'>·Ôµ¥¸ô</option>";
 			dOptionStr += "<option value='GS SHOP'>GS SHOP</option>";
-			dOptionStr += "<option value='ì „ìëœë“œëª°'>ì „ìëœë“œëª°</option>";
-			dOptionStr += "<option value='ê¸°íƒ€'>ê¸°íƒ€</option>";
-        }else if( $(this).val() == "í™ˆì‡¼í•‘" ){
-        	dOptionStr += "<option value='CJí™ˆì‡¼í•‘'>CJí™ˆì‡¼í•‘</option>";
-			dOptionStr += "<option value='Hëª°'>Hëª°</option>";
-			dOptionStr += "<option value='ë¡¯ë°í™ˆì‡¼í•‘'>ë¡¯ë°í™ˆì‡¼í•‘</option>";
-			dOptionStr += "<option value='í˜„ëŒ€í™ˆì‡¼í•‘'>í˜„ëŒ€í™ˆì‡¼í•‘</option>";
-			dOptionStr += "<option value='GSí™ˆì‡¼í•‘'>GSí™ˆì‡¼í•‘</option>";
-			dOptionStr += "<option value='NHí™ˆì‡¼í•‘'>NHí™ˆì‡¼í•‘</option>";
-			dOptionStr += "<option value='ê¸°íƒ€'>ê¸°íƒ€</option>";
+			dOptionStr += "<option value='ÀüÀÚ·£µå¸ô'>ÀüÀÚ·£µå¸ô</option>";
+			dOptionStr += "<option value='±âÅ¸'>±âÅ¸</option>";
+        }else if( $(this).val() == "È¨¼îÇÎ" ){
+        	dOptionStr += "<option value='CJÈ¨¼îÇÎ'>CJÈ¨¼îÇÎ</option>";
+			dOptionStr += "<option value='H¸ô'>H¸ô</option>";
+			dOptionStr += "<option value='·Ôµ¥È¨¼îÇÎ'>·Ôµ¥È¨¼îÇÎ</option>";
+			dOptionStr += "<option value='Çö´ëÈ¨¼îÇÎ'>Çö´ëÈ¨¼îÇÎ</option>";
+			dOptionStr += "<option value='GSÈ¨¼îÇÎ'>GSÈ¨¼îÇÎ</option>";
+			dOptionStr += "<option value='NHÈ¨¼îÇÎ'>NHÈ¨¼îÇÎ</option>";
+			dOptionStr += "<option value='±âÅ¸'>±âÅ¸</option>";
         }
 
          $("#channel").html(dOptionStr);
     });
+      
     
 	 $('#model1').on('change', function(e){
-    	var dOptionStr = "<option value=''>ì„ íƒ</option>";
-        if( $(this).val() == "LGíœ˜ì„¼ë“€ì–¼ì—ì–´ì»¨" ){
+    	
+    	var dOptionStr = "<option value=''>¼±ÅÃ</option>";
+    	    	
+        if( $(this).val() == "LGÈÖ¼¾µà¾ó¿¡¾îÄÁ" ){
 			dOptionStr += "<option value='FQ23LADRBZ.AKOR'>FQ23LADRBZ.AKOR</option>";
 			dOptionStr += "<option value='FQ23LADRBN.AKOR'>FQ23LADRBN.AKOR</option>";
 			dOptionStr += "<option value='FQ23LADRAZ.AKOR'>FQ23LADRAZ.AKOR</option>";
@@ -325,12 +348,12 @@ $(document).ready(function() {
 			dOptionStr += "<option value='FQ17SADWFN.AKOR'>FQ17SADWFN.AKOR</option>";
 			dOptionStr += "<option value='FQ17SADWEZ.AKOR'>FQ17SADWEZ.AKOR</option>";
 			dOptionStr += "<option value='FQ17SADWEN.AKOR'>FQ17SADWEN.AKOR</option>";
-			//20210118ì¶”ê°€ì‹œì‘ FQ17SADWEN.AKOR ì•„ë˜
+			//20210118Ãß°¡½ÃÀÛ FQ17SADWEN.AKOR ¾Æ·¡
 			dOptionStr += "<option value='FQ20SADWRN.AKOR'>FQ20SADWRN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SADWRZ.AKOR'>FQ20SADWRZ.AKOR</option>";
 			dOptionStr += "<option value='FQ20SADWSN.AKOR'>FQ20SADWSN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SADWSZ.AKOR'>FQ20SADWSZ.AKOR</option>";
-			//20210118ì¶”ê°€ë
+			//20210118Ãß°¡³¡
 			dOptionStr += "<option value='FW17DADWAN.AKOR'>FW17DADWAN.AKOR</option>";
 			dOptionStr += "<option value='FQ23DADWLN.AKOR'>FQ23DADWLN.AKOR</option>";
 			dOptionStr += "<option value='FQ23DADWBZ.AKOR'>FQ23DADWBZ.AKOR</option>";
@@ -361,87 +384,96 @@ $(document).ready(function() {
 			dOptionStr += "<option value='FQ18HADWBN.AKOR'>FQ18HADWBN.AKOR</option>";
 			dOptionStr += "<option value='FQ18HADWAZ.AKOR'>FQ18HADWAZ.AKOR</option>";
 			dOptionStr += "<option value='FQ18HADWAN.AKOR'>FQ18HADWAN.AKOR</option>";
-			//2021ì‹ ëª¨ë¸ì¶”ê°€ 20210122ë°˜ì˜
-			dOptionStr += "<option value='FQ18SBDWGN.AKOR'>FQ18SBDWGN.AKOR</option>";	//ë“€ì–¼ ìŠ¤í˜ì…œ
-			dOptionStr += "<option value='FQ18SBDWHN.AKOR'>FQ18SBDWHN.AKOR</option>";	//ë“€ì–¼ ìŠ¤í˜ì…œ
-			dOptionStr += "<option value='FQ17SBDWCN.AKOR'>FQ17SBDWCN.AKOR</option>";	//ë“€ì–¼ ìŠ¤í˜ì…œ
-			dOptionStr += "<option value='FQ18SBDWAN.AKOR'>FQ18SBDWAN.AKOR</option>";	//ë“€ì–¼ ìŠ¤í˜ì…œ
-			dOptionStr += "<option value='FQ18SBDWBN.AKOR'>FQ18SBDWBN.AKOR</option>";	//ë“€ì–¼ ìŠ¤í˜ì…œ
-			dOptionStr += "<option value='FQ18HBDWAN.AKOR'>FQ18HBDWAN.AKOR</option>";	//ë“€ì–¼ íˆíŠ¸
-			dOptionStr += "<option value='FQ18HBDWBN.AKOR'>FQ18HBDWBN.AKOR</option>";	//ë“€ì–¼ íˆíŠ¸
-			//20210210ë°˜ì˜ì˜ˆì •
-			/* 
-			dOptionStr += "<option value='FQ20DBDWAN.AKOR'>FQ20DBDWAN.AKOR</option>";//ë“€ì–¼ ë””ëŸ­ìŠ¤
-			dOptionStr += "<option value='FQ18DBDWAN.AKOR'>FQ18DBDWAN.AKOR</option>";//ë“€ì–¼ ë””ëŸ­ìŠ¤
-			dOptionStr += "<option value='FQ17DBDWCN.AKOR'>FQ17DBDWCN.AKOR</option>";//ë“€ì–¼ ë””ëŸ­ìŠ¤
-			dOptionStr += "<option value='FQ18VBDWEN.AKOR'>FQ18VBDWEN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ18VBDWFN.AKOR'>FQ18VBDWFN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ23VBDWAN.AKOR'>FQ23VBDWAN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ18VBDWAN.AKOR'>FQ18VBDWAN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ23VBDWBN.AKOR'>FQ23VBDWBN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ18VBDWBN.AKOR'>FQ18VBDWBN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ19VBDWCN.AKOR'>FQ19VBDWCN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			dOptionStr += "<option value='FQ17VBDWCN.AKOR'>FQ17VBDWCN.AKOR</option>";//ë“€ì–¼ ë¹…í† ë¦¬
-			*/
-        } else if( $(this).val() == "ê¸°íƒ€" ){
-        	dOptionStr += "<option value='FQ27GASMAZ.AKOR'>FQ27GASMAZ.AKOR</option>";// ì‹œê·¸ë‹ˆì²˜
-			dOptionStr += "<option value='FQ27GASMAN.AKOR'>FQ27GASMAN.AKOR</option>";// ì‹œê·¸ë‹ˆì²˜
-			dOptionStr += "<option value='FW23GASMAZ.AKOR'>FW23GASMAZ.AKOR</option>";// ì‹œê·¸ë‹ˆì²˜
-			dOptionStr += "<option value='FW23GASMAN.AKOR'>FW23GASMAN.AKOR</option>";// ì‹œê·¸ë‹ˆì²˜
-			dOptionStr += "<option value='FQ27SACCAN.AKOR'>FQ27SACCAN.AKOR</option>";//í¬ë¼ìš´
-			dOptionStr += "<option value='FQ25SACCAN.AKOR'>FQ25SACCAN.AKOR</option>";//í¬ë¼ìš´
-			dOptionStr += "<option value='FQ27SACCAZ.AKOR'>FQ27SACCAZ.AKOR</option>";//í¬ë¼ìš´
-			dOptionStr += "<option value='FQ20VAWWTN.AKOR'>FQ20VAWWTN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ20VAWWAN.AKOR'>FQ20VAWWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ20VAKWUN.AKOR'>FQ20VAKWUN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ20VAKWAN.AKOR'>FQ20VAKWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAWWTN.AKOR'>FQ18VAWWTN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAWWAZ.AKOR'>FQ18VAWWAZ.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAWWAN.AKOR'>FQ18VAWWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAKWUN.AKOR'>FQ18VAKWUN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAKWLN.AKOR'>FQ18VAKWLN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAKWAZ.AKOR'>FQ18VAKWAZ.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VAKWAN.AKOR'>FQ18VAKWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17VAWWCN.AKOR'>FQ17VAWWCN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17VAKWCN.AKOR'>FQ17VAKWCN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17V9WWCN.AKOR'>FQ17V9WWCN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17V9KWCN.AKOR'>FQ17V9KWCN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17V9KWAN.AKOR'>FQ17V9KWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			//2021ì‹ ëª¨ë¸ì¶”ê°€ 20210210ë°˜ì˜ì˜ˆì •
-			/*
-			dOptionStr += "<option value='FQ20VBWWAN.AKOR'>FQ20VBWWAN.AKOR</option>";//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VBWWAN.AKOR'>FQ18VBWWAN.AKOR</option>";	//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ20VBKWAN.AKOR'>FQ20VBKWAN.AKOR</option>";	//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ18VBKWAN.AKOR'>FQ18VBKWAN.AKOR</option>";	//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17VBWWCN.AKOR'>FQ17VBWWCN.AKOR</option>";	//ìœ„ë„ˆ/ì¹¸
-			dOptionStr += "<option value='FQ17VBKWCN.AKOR'>FQ17VBKWCN.AKOR</option>";	//ìœ„ë„ˆ/ì¹¸
-			*/
-        }else if( $(this).val() == "LGíœ˜ì„¼íƒ€ì›Œì—ì–´ì»¨" ){ //2021 ì‹ ëª¨ë¸ì¶”ê°€
+			//2021½Å¸ğµ¨Ãß°¡ 20210122¹İ¿µ
+			dOptionStr += "<option value='FQ18SBDWGN.AKOR'>FQ18SBDWGN.AKOR</option>";	//µà¾ó ½ºÆä¼È
+			dOptionStr += "<option value='FQ18SBDWHN.AKOR'>FQ18SBDWHN.AKOR</option>";	//µà¾ó ½ºÆä¼È
+			dOptionStr += "<option value='FQ17SBDWCN.AKOR'>FQ17SBDWCN.AKOR</option>";	//µà¾ó ½ºÆä¼È
+			dOptionStr += "<option value='FQ18SBDWAN.AKOR'>FQ18SBDWAN.AKOR</option>";	//µà¾ó ½ºÆä¼È
+			dOptionStr += "<option value='FQ18SBDWBN.AKOR'>FQ18SBDWBN.AKOR</option>";	//µà¾ó ½ºÆä¼È
+			dOptionStr += "<option value='FQ18SBDWGZ.AKOR'>FQ18SBDWGZ.AKOR</option>";	//µà¾ó ½ºÆä¼È(2021.04.12 ½Å¸ğµ¨ Ãß°¡)
+			dOptionStr += "<option value='FQ18HBDWAN.AKOR'>FQ18HBDWAN.AKOR</option>";	//µà¾ó È÷Æ®
+			dOptionStr += "<option value='FQ18HBDWBN.AKOR'>FQ18HBDWBN.AKOR</option>";	//µà¾ó È÷Æ®
+			// 2021½Å¸ğµ¨Ãß°¡ 20210322 Ãß°¡ ¿äÃ»			 
+			dOptionStr += "<option value='FQ20DBDWAN.AKOR'>FQ20DBDWAN.AKOR</option>";//µà¾ó µğ·°½º
+			dOptionStr += "<option value='FQ18DBDWAN.AKOR'>FQ18DBDWAN.AKOR</option>";//µà¾ó µğ·°½º
+			dOptionStr += "<option value='FQ17DBDWCN.AKOR'>FQ17DBDWCN.AKOR</option>";//µà¾ó µğ·°½º
+			dOptionStr += "<option value='FQ18VBDWEN.AKOR'>FQ18VBDWEN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ18VBDWFN.AKOR'>FQ18VBDWFN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ23VBDWAN.AKOR'>FQ23VBDWAN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ18VBDWAN.AKOR'>FQ18VBDWAN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ23VBDWBN.AKOR'>FQ23VBDWBN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ18VBDWBN.AKOR'>FQ18VBDWBN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ19VBDWCN.AKOR'>FQ19VBDWCN.AKOR</option>";//µà¾ó ºòÅä¸®
+			dOptionStr += "<option value='FQ17VBDWCN.AKOR'>FQ17VBDWCN.AKOR</option>";//µà¾ó ºòÅä¸®
+			
+        } else if( $(this).val() == "±âÅ¸" ){
+        	dOptionStr += "<option value='FQ27GASMAZ.AKOR'>FQ27GASMAZ.AKOR</option>";// ½Ã±×´ÏÃ³
+			dOptionStr += "<option value='FQ27GASMAN.AKOR'>FQ27GASMAN.AKOR</option>";// ½Ã±×´ÏÃ³
+			dOptionStr += "<option value='FW23GASMAZ.AKOR'>FW23GASMAZ.AKOR</option>";// ½Ã±×´ÏÃ³
+			dOptionStr += "<option value='FW23GASMAN.AKOR'>FW23GASMAN.AKOR</option>";// ½Ã±×´ÏÃ³
+			dOptionStr += "<option value='FQ27SACCAN.AKOR'>FQ27SACCAN.AKOR</option>";//Å©¶ó¿î
+			dOptionStr += "<option value='FQ25SACCAN.AKOR'>FQ25SACCAN.AKOR</option>";//Å©¶ó¿î
+			dOptionStr += "<option value='FQ27SACCAZ.AKOR'>FQ27SACCAZ.AKOR</option>";//Å©¶ó¿î
+			dOptionStr += "<option value='FQ20VAWWTN.AKOR'>FQ20VAWWTN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ20VAWWAN.AKOR'>FQ20VAWWAN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ20VAKWUN.AKOR'>FQ20VAKWUN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ20VAKWAN.AKOR'>FQ20VAKWAN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAWWTN.AKOR'>FQ18VAWWTN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAWWAZ.AKOR'>FQ18VAWWAZ.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAWWAN.AKOR'>FQ18VAWWAN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAKWUN.AKOR'>FQ18VAKWUN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAKWLN.AKOR'>FQ18VAKWLN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAKWAZ.AKOR'>FQ18VAKWAZ.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VAKWAN.AKOR'>FQ18VAKWAN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17VAWWCN.AKOR'>FQ17VAWWCN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17VAKWCN.AKOR'>FQ17VAKWCN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17V9WWCN.AKOR'>FQ17V9WWCN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17V9KWCN.AKOR'>FQ17V9KWCN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17V9KWAN.AKOR'>FQ17V9KWAN.AKOR</option>";//À§³Ê/Ä­
+			//2021½Å¸ğµ¨Ãß°¡ 20210322 Ãß°¡ ¿äÃ»
+			dOptionStr += "<option value='FQ20VBWWAN.AKOR'>FQ20VBWWAN.AKOR</option>";//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VBWWAN.AKOR'>FQ18VBWWAN.AKOR</option>";	//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ20VBKWAN.AKOR'>FQ20VBKWAN.AKOR</option>";	//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ18VBKWAN.AKOR'>FQ18VBKWAN.AKOR</option>";	//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17VBWWCN.AKOR'>FQ17VBWWCN.AKOR</option>";	//À§³Ê/Ä­
+			dOptionStr += "<option value='FQ17VBKWCN.AKOR'>FQ17VBKWCN.AKOR</option>";	//À§³Ê/Ä­
+        }else if( $(this).val() == "LGÈÖ¼¾Å¸¿ö¿¡¾îÄÁ" ){ //2021 ½Å¸ğµ¨Ãß°¡
         	dOptionStr += "<option value='FQ25LBNRAN.AKOR'>FQ25LBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20LBNRAN.AKOR'>FQ20LBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ25LBNBPN.AKOR'>FQ25LBNBPN.AKOR</option>";
+			dOptionStr += "<option value='FQ25LBNRAZ.AKOR'>FQ25LBNRAZ.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ·°¼Å¸®(2021.04.12 ½Å¸ğµ¨ Ãß°¡)
 			dOptionStr += "<option value='FQ25SBNWGN.AKOR'>FQ25SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SBNWGN.AKOR'>FQ20SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ18SBNWGN.AKOR'>FQ18SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ25SBNWHN.AKOR'>FQ25SBNWHN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SBNWHN.AKOR'>FQ20SBNWHN.AKOR</option>";
 			dOptionStr += "<option value='FQ18SBNWHN.AKOR'>FQ18SBNWHN.AKOR</option>";
+			dOptionStr += "<option value='FQ18SBNWGZ.AKOR'>FQ18SBNWGZ.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ½ºÆä¼È(2021.04.12 ½Å¸ğµ¨ Ãß°¡)
+			dOptionStr += "<option value='FQ18SBNWAN.AKOR'>FQ18SBNWAN.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ½ºÆä¼È(2021.04.23 ½Å¸ğµ¨ Ãß°¡)
+			dOptionStr += "<option value='FQ18SBNWBN.AKOR'>FQ18SBNWBN.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ½ºÆä¼È(2021.04.23 ½Å¸ğµ¨ Ãß°¡)
+			dOptionStr += "<option value='FQ18SBNWAZ.AKOR'>FQ18SBNWAZ.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ½ºÆä¼È(2021.04.23 ½Å¸ğµ¨ Ãß°¡)
+			dOptionStr += "<option value='FQ18SBNWBZ.AKOR'>FQ18SBNWBZ.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ½ºÆä¼È(2021.04.23 ½Å¸ğµ¨ Ãß°¡)
 			dOptionStr += "<option value='FQ25PBNRAN.AKOR'>FQ25PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20PBNRAN.AKOR'>FQ20PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ18PBNRAN.AKOR'>FQ18PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20PBNBPN.AKOR'>FQ20PBNBPN.AKOR</option>";
 			dOptionStr += "<option value='FQ18PBNBPN.AKOR'>FQ18PBNBPN.AKOR</option>";
-        }else if( $(this).val() == "LGì˜¤ë¸Œì œì»¬ë ‰ì…˜ì—ì–´ì»¨" ){ //2021 ì‹ ëª¨ë¸ì¶”ê°€
+			dOptionStr += "<option value='FQ18PBNRAZ.AKOR'>FQ18PBNRAZ.AKOR</option>";//ÈÖ¼¾ Å¸¿ö ÇÁ¸®¹Ì¾ö(2021.04.12 ½Å¸ğµ¨ Ãß°¡)
+        }else if( $(this).val() == "LG¿ÀºêÁ¦ÄÃ·º¼Ç¿¡¾îÄÁ" ){ //2021 ½Å¸ğµ¨Ãß°¡
         	dOptionStr += "<option value='FQ25LBNBAN.AKOR'>FQ25LBNBAN.AKOR</option>";
+        	dOptionStr += "<option value='FQ25LBNBAZ.AKOR'>FQ25LBNBAZ.AKOR</option>";// ¿ÀºêÁ¦ ·°¼Å¸® (2021.04.12 ½Å¸ğµ¨ Ãß°¡)
         	dOptionStr += "<option value='FQ20PBNBAN.AKOR'>FQ20PBNBAN.AKOR</option>";
         	dOptionStr += "<option value='FQ18PBNBAN.AKOR'>FQ18PBNBAN.AKOR</option>";
+			dOptionStr += "<option value='FQ18PBNBAZ.AKOR'>FQ18PBNBAZ.AKOR</option>";// ¿ÀºêÁ¦ ÇÁ¸®¹Ì¾ö(2021.04.12 ½Å¸ğµ¨ Ãß°¡)
         }
         
         $("#model2").html(dOptionStr);
     });
     
+    
     $('#model2').on('change', function(e){
     	$(".price").show();
+    	
     	if( 
     		$(this).val() == "FQ20VAWWTN.AKOR" ||
 			$(this).val() == "FQ20VAWWAN.AKOR" ||
@@ -459,28 +491,29 @@ $(document).ready(function() {
 			$(this).val() == "FQ17V9WWCN.AKOR" ||
 			$(this).val() == "FQ17V9KWCN.AKOR" ||
 			$(this).val() == "FQ17V9KWAN.AKOR" ||
-			$(this).val() == "FQ20VBWWAN.AKOR" ||  //2021ì‹ ëª¨ë¸ì¶”ê°€
+			$(this).val() == "FQ20VBWWAN.AKOR" ||  //2021½Å¸ğµ¨Ãß°¡ 20210322 Ãß°¡ ¿äÃ»
 			$(this).val() == "FQ18VBWWAN.AKOR" ||
 			$(this).val() == "FQ20VBKWAN.AKOR" ||
 			$(this).val() == "FQ18VBKWAN.AKOR" ||
 			$(this).val() == "FQ17VBWWCN.AKOR" ||
 			$(this).val() == "FQ17VBKWCN.AKOR"	
 		){
-    		$("#priceVal").html(" 50,000ì›");
-    		$("#giftVal").val("50,000ì›");
+    		$("#priceVal").html(" 50,000¿ø");
+    		$("#giftVal").val("50,000¿ø");
     		
     	} else if( $(this).val() == "" ) {
     		$(".price").hide();
-    		$("#priceVal").html(" 0ì›");
-    		$("#giftVal").val("0ì›");
+    		$("#priceVal").html(" 0¿ø");
+    		$("#giftVal").val("0¿ø");
     	}  else {
-    		$("#priceVal").html(" 100,000ì›");
-    		$("#giftVal").val("100,000ì›");
+    		$("#priceVal").html(" 100,000¿ø");
+    		$("#giftVal").val("100,000¿ø");
     	}
-
+    	
+        
     });
     
-    //ì œì¡°ë²ˆí˜¸í™•ì¸-ìˆ˜ì •í•„ìš” (ì œì¡°ë²ˆí˜¸ ìœ íš¨ì„±, ì¤‘ë³µ ì²´í¬)
+    //Á¦Á¶¹øÈ£È®ÀÎ-¼öÁ¤ÇÊ¿ä (Á¦Á¶¹øÈ£ À¯È¿¼º, Áßº¹ Ã¼Å©)
 	$("#btn_product").click(function() {
 		
 		var snCnt = 0;
@@ -489,7 +522,7 @@ $(document).ready(function() {
 		if ( !validatePrd() ) {
 			$("#prdChk").val('N');
 		}else{			
-			eventModelChk(); //ì œì¡°ë²ˆí˜¸ ìœ íš¨ì„±, ì¤‘ë³µ ì²´í¬
+			eventModelChk(); //Á¦Á¶¹øÈ£ À¯È¿¼º, Áßº¹ Ã¼Å©
 		}
 	});	
 	
@@ -497,13 +530,14 @@ $(document).ready(function() {
 	initEventHandlers();
 });
 
-//ì •ë³´ë™ì˜, ì·¨ê¸‰ë™ì˜, ìˆ˜ì§‘ë™ì˜, ì„¤ë¬¸ì‘ë‹µ ê°’
+//Á¤º¸µ¿ÀÇ, Ãë±Şµ¿ÀÇ, ¼öÁıµ¿ÀÇ, ¼³¹®ÀÀ´ä °ª
 function gocheck(str1,str2){
     $("#"+str1).val(str2);
 }
 
-//ì‹œë¦¬ì–¼ë²ˆí˜¸ ìœ íš¨ì„± ë° ì¤‘ë³µ ì²´í¬
+//½Ã¸®¾ó¹øÈ£ À¯È¿¼º ¹× Áßº¹ Ã¼Å©
 function eventModelChk(){
+
 	$.ajax({
 		type: "POST",
 		url: "/evt/ManufactureChk.lgajax",
@@ -527,35 +561,36 @@ function eventModelChk(){
 			return;
 		}
 	});
-	
 }
 
-//ëª¨ë¸, ì‹œë¦¬ì–¼ ë²ˆí˜¸ ê¸¸ì´ ì²´í¬
+//¸ğµ¨, ½Ã¸®¾ó ¹øÈ£ ±æÀÌ Ã¼Å©
 function validatePrd(){
      var prdCheck = true;
      
 	  if (prdCheck && $.trim($("#model1").val()) === "") {
-        alert("êµ¬ë§¤ ì œí’ˆëª…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        alert("±¸¸Å Á¦Ç°¸íÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
         $("#model1").focus();
         prdCheck = false;
     }
     
     if (prdCheck && $.trim($("#model2").val()) === "") {
-        alert("êµ¬ë§¤ ëª¨ë¸ëª…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        alert("±¸¸Å ¸ğµ¨¸íÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
         $("#model2").focus();
         prdCheck = false;
     }
 
     if (prdCheck && $.trim($("#serialNo").val()).length != 12 ) {
-        alert("ì œì¡°ë²ˆí˜¸ í™•ì¸ì„ í•´ì£¼ì„¸ìš”.");
+        alert("Á¦Á¶¹øÈ£ È®ÀÎÀ» ÇØÁÖ¼¼¿ä.");
         $("#serialNo").focus();
         prdCheck = false;
     }
     return prdCheck;
 }
 
+
+
 function initEventHandlers() {
-	//ì°¸ì—¬ì ì´ë¦„ íŠ¹ìˆ˜ë¬¸ì ì œì–´
+	//Âü¿©ÀÚ ÀÌ¸§ Æ¯¼ö¹®ÀÚ Á¦¾î
 	$("#firstName").on("keyup", function() {
 		var str = $.trim(this.value);
 		var bFlag = true;
@@ -564,7 +599,7 @@ function initEventHandlers() {
 			if (num.indexOf(str.charAt(i)) != -1) bFlag = false;
 
 			if (!bFlag) {
-				alert("íŠ¹ìˆ˜ë¬¸ìëŠ” ì…ë ¥í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				alert("Æ¯¼ö¹®ÀÚ´Â ÀÔ·ÂÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
 				$("#firstName").val("");
 				$("#firstName").focus();
 				return false;
@@ -572,10 +607,10 @@ function initEventHandlers() {
 		}
 	});
 	
-	// ì°¸ì—¬ì íœ´ëŒ€ì „í™”ë²ˆí˜¸ëŠ” ìˆ«ìë§Œ
+	// Âü¿©ÀÚ ÈŞ´ëÀüÈ­¹øÈ£´Â ¼ıÀÚ¸¸
 	$("#hp1").css('imeMode', 'disabled').keypress(function(event){
 		if (event.which && (event.which < 48 || event.which > 57)) {
-			event.preventDefault();  //ì§„í–‰ì¤‘ì§€
+			event.preventDefault();  //ÁøÇàÁßÁö
 			
 		}
 		
@@ -589,18 +624,19 @@ function initEventHandlers() {
 
 	$("#hp2").css('imeMode', 'disabled').keypress(function(event){
 		if (event.which && (event.which < 48 || event.which > 57)) {
-			event.preventDefault(); //ì§„í–‰ì¤‘ì§€
+			event.preventDefault(); //ÁøÇàÁßÁö
 			
 		}
 		
 	}).keyup(function() {
 		if ($(this).val() != null && $(this).val() != '') {
 			$(this).val($(this).val().replace(/[^0-9]/g, ''));
+			
 		}
 		
 	});
 	
-	//ê°œì¸ì •ë³´ ë™ì˜ í•­ëª©
+	//°³ÀÎÁ¤º¸ µ¿ÀÇ Ç×¸ñ
 	$("#agree01_01").click(function() {
 		$("#agree01").val("1");
 	});
@@ -614,9 +650,10 @@ function initEventHandlers() {
 	$("#agree02_02").click(function() {
 		$("#agree02").val("0");
 	});	
+
 }
 
-//  ë ˆì´ì–´íŒì—… ë…¸ì¶œ/ë¹„ë…¸ì¶œ ì œì–´
+//  ·¹ÀÌ¾îÆË¾÷ ³ëÃâ/ºñ³ëÃâ Á¦¾î
 var layerPop = function(obj){
 	$(obj).show();
 }
@@ -624,23 +661,102 @@ var layerClose = function(obj){
 	$(obj).hide();
 }
 
-function init(){//ì…ë ¥ ê°’ ì´ˆê¸°í™”
+//loginStatus À¯È¿¼º Ã¼Å© 
+
+function eventSsoCheck(){
+	var loginStatus = '';
+
+	$.ajax({
+		type: "POST",
+		async : false,
+		url:  "/lgekor/event/common/event_sso_check.jsp",
+		dataType:"json",
+		success: function(json) {
+			mainLoginYn = json.mainLoginYn;
+			loginStatus = json.loginStatus;
+			//´Ù½Ã ·Î±×ÀÎ ¿äÃ» unifyId°ªÀÌ ´Ù¸¦°æ¿ì ´Ù½Ã ·Î±×ÀÎ ¿äÃ»
+			if($('#unifyId').val() != json.unifyId){
+				loginStatus = "forcelogin";
+			}
+		},
+		error: function(request, status, error) {
+			alert("¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+			return;
+		}
+	});	
+	return loginStatus;
+}
+
+
+// ÀÌº¥Æ® Âü¿©ÇÏ±â ·¹ÀÌ¾îÆË¾÷ ¿­±â
+function eventEntry1() {
+	var loginStatus = eventSsoCheck();
+	/* ÅëÇÕÈ¸¿ø Å×½ºÆ®±â°£ À¸·Î ¿ì¼± ¿­¸²À¸·Î ¹Ù²ãµÒ ¹İ¿µ½Ã »èÁ¦ 
+	isOpen = "Y" ;//Å×½ºÆ®
+	mainLoginYn = "Y" ;//Å×½ºÆ®
+	loginStatus = "active";//Å×½ºÆ®
+	*/
+	/* ÅëÇÕÈ¸¿ø Å×½ºÆ®±â°£ À¸·Î ¿ì¼± ¿­¸²À¸·Î ¹Ù²ãµÒ ¹İ¿µ½Ã »èÁ¦ */
+	
+	if(isOpen==="Y"){
+		//var fnLoginEventUrl = fnLoginEvent(serverType);
+		
+		if(mainLoginYn == "Y" && loginStatus == "active"){
+			layerPop(".event_popup");
+			$(".dim1").show();
+			document.getElementById("event_popup").scrollIntoView();
+		}else{
+			var fnLoginEventUrl = "";
+			if(loginStatus == "forcelogin"){
+				fnLoginEventUrl = fnForceLoginEvent(serverType);
+			}else{
+				fnLoginEventUrl = fnLoginEvent(serverType);
+			}
+			
+			alert("º» ÀÌº¥Æ®´Â LGÀüÀÚ È¸¿ø ·Î±×ÀÎ ÈÄ Âü¿© °¡´ÉÇÕ´Ï´Ù.");
+			top.location.href = fnLoginEventUrl;
+		}
+	}else{
+		alert("ÀÌº¥Æ® ±â°£ÀÌ ¾Æ´Õ´Ï´Ù.");
+	}
+}
+
+// ÀÌº¥Æ® Âü¿©ÇÏ±â ·¹ÀÌ¾îÆË¾÷ ´İ±â
+function eventEntryClose() {
+	if(confirm("ÀÌº¥Æ® ÀÀ¸ğ¸¦ Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?") == true){
+		layerClose(".event_popup");
+		init();
+		layerInit();
+		self.close();
+		
+	}else{
+		
+		return; 
+		
+	}
+	
+}
+function init(){//ÀÔ·Â °ª ÃÊ±âÈ­
+
 	document.frm.reset();
 	$("#agree01").val("");
 	$("#agree02").val("");
+	
 	$("#serialNo").attr("readonly",false);
+
 }
 
-// ì´ë²¤íŠ¸ ì‘ëª¨ì‹¤íŒ¨
+// ÀÌº¥Æ® ÀÀ¸ğ½ÇÆĞ
 function eventCmpltfail() {
 	layerClose(".event_popup");
 	$(".dim1").hide();
 	init();
 	layerInit();
 	location.reload();
+	
 }
 
-// ì´ë²¤íŠ¸ ì‘ëª¨ì™„ë£Œ íŒì—… ë‹«ê¸°
+// ÀÌº¥Æ® ÀÀ¸ğ¿Ï·á ÆË¾÷ ´İ±â
 function eventSucClose() {
 	layerClose(".popup_eventCmplt");
 	$(".dim1").hide();
@@ -650,7 +766,7 @@ function eventSucClose() {
 	
 }
 
-function layerInit(){//ì…ë ¥ ê°’ ì´ˆê¸°í™”
+function layerInit(){//ÀÔ·Â °ª ÃÊ±âÈ­
 	document.frm.reset();
 	$("#agree01").val("");
 	$("#agree02").val("");
@@ -659,120 +775,129 @@ function layerInit(){//ì…ë ¥ ê°’ ì´ˆê¸°í™”
 }
 
 
-//ì°¸ì—¬í•˜ê¸° í”„ë¡œì„¸ìŠ¤
+//Âü¿©ÇÏ±â ÇÁ·Î¼¼½º
 function goProc() {
 	var frmCheck = true;
 	var frm = document.frm;
 	
 	if (frmCheck && isOpen === "N") {
-		alert("ì´ë²¤íŠ¸ê°€ ì¢…ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("ÀÌº¥Æ®°¡ Á¾·á µÇ¾ú½À´Ï´Ù.");
 		frmCheck = false;
+		
 	}
+	
 	if (submitCnt > 0) {
-		alert(" ì²˜ë¦¬ì¤‘ì…ë‹ˆë‹¤. ");
+		alert(" Ã³¸®ÁßÀÔ´Ï´Ù. ");
 		frmCheck = false;
+		
 	}
+    
     if (frmCheck && !$("input[id='agree01_01']").is(":checked")) {
-        alert("[í•„ìˆ˜]ê°œì¸ì •ë³´ ìˆ˜ì§‘ ì´ìš© ë™ì˜ë¥¼ ì²´í¬í•´ ì£¼ì‹­ì‹œì˜¤.");
-        //ì²´í¬,ë¼ë””ì˜¤ í¬ì»¤ìŠ¤ ì´ë™
+        alert("[ÇÊ¼ö]°³ÀÎÁ¤º¸ ¼öÁı ÀÌ¿ë µ¿ÀÇ¸¦ Ã¼Å©ÇØ ÁÖ½Ê½Ã¿À.");
+        //Ã¼Å©,¶óµğ¿À Æ÷Ä¿½º ÀÌµ¿
         scroll_move( "agree01_01" );
         frmCheck = false;
     }
+
     if (frmCheck && !$("input[id='agree02_01']").is(":checked")) {
-        alert("[í•„ìˆ˜]ê°œì¸ì •ë³´ ì²˜ë¦¬ ìœ„íƒ ë™ì˜ë¥¼ ì²´í¬í•´ ì£¼ì‹­ì‹œì˜¤.");
-        //ì²´í¬,ë¼ë””ì˜¤ í¬ì»¤ìŠ¤ ì´ë™
+        alert("[ÇÊ¼ö]°³ÀÎÁ¤º¸ Ã³¸® À§Å¹ µ¿ÀÇ¸¦ Ã¼Å©ÇØ ÁÖ½Ê½Ã¿À.");
+        //Ã¼Å©,¶óµğ¿À Æ÷Ä¿½º ÀÌµ¿
         scroll_move( "agree02_01" );
         frmCheck = false;
     }
     if (frmCheck && submitCnt > 0) {
-        alert("ì²˜ë¦¬ì¤‘ ì…ë‹ˆë‹¤.");
+        alert("Ã³¸®Áß ÀÔ´Ï´Ù.");
         frmCheck = false;
     }
     
-    //1.ê³ ê°ì •ë³´
+    //1.°í°´Á¤º¸
     if(frmCheck && $.trim($("#email1").val()) === ""){
-		alert("ì´ë©”ì¼ ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("ÀÌ¸ŞÀÏ ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#email1").focus();
 		frmCheck = false;
 	}
+	
 	if(frmCheck && $.trim($("#email2").val()) === ""){
-		alert("ì´ë©”ì¼ ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("ÀÌ¸ŞÀÏ ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#email3").focus();
 		frmCheck = false;
 	}
+	
 	var fullEmail = $("#email1").val() + "@" + $("#email2").val(); 
 	
-	if(frmCheck && !chkEmail(fullEmail)){//ì´ë©”ì¼ ì²´í¬
-		alert("ìœ íš¨í•˜ì§€ ì•Šì€ ì´ë©”ì¼ ì…ë‹ˆë‹¤.");
+	if(frmCheck && !chkEmail(fullEmail)){//ÀÌ¸ŞÀÏ Ã¼Å©
+		alert("À¯È¿ÇÏÁö ¾ÊÀº ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù.");
 		$("#email3").focus();
 		frmCheck = false;
 	}
-	//2. êµ¬ëª¨ë¸ì œí’ˆì •ë³´
+	//2. ±¸¸ğµ¨Á¦Ç°Á¤º¸
 	 if (frmCheck && $.trim($("#productType").val()) === "") {
-		alert("ì œí’ˆ íƒ€ì…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("Á¦Ç° Å¸ÀÔÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#productType").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#manufactureYear").val()) === "") {
-		alert("ì œì¡° ë…„ë„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("Á¦Á¶ ³âµµ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#manufactureYear").focus();
 		frmCheck = false;
 	}
 	
 	if (frmCheck && $.trim($("#manufactureCompany").val()) === "") {
-		alert("ì œì¡°ì‚¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("Á¦Á¶»ç¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#manufactureCompany").focus();
 		frmCheck = false;
 	}
 	
 	if (frmCheck && $.trim($("#oldModelName").val()) === "") {
-		alert("ëª¨ë¸ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		alert("¸ğµ¨¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#oldModelName").focus();
 		frmCheck = false;
 	}
 	if ( frmCheck && $.trim($("#ptUpload1").val()) === "") {
-		alert("ì œí’ˆì‚¬ì§„ì„ ë“±ë¡í•´ ì£¼ì‹­ì‹œì˜¤.");
+		alert("Á¦Ç°»çÁøÀ» µî·ÏÇØ ÁÖ½Ê½Ã¿À.");
 		$("#ptUpload1").val("");
 		$("#oldProduct").val("");
 		$("#oldProduct").focus();
 		frmCheck = false;
 	}
+	
 	 
-	//3.ì‹ ëª¨ë¸ì •ë³´
+	 
+	//3.½Å¸ğµ¨Á¤º¸
 	if (frmCheck && $.trim($("#purchaseYear").val()) === "") {
-		alert("êµ¬ë§¤ë…„ë„ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("±¸¸Å³âµµ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#purchaseYear").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#purchaseMonth").val()) === "") {
-		alert("êµ¬ë§¤ì›”ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("±¸¸Å¿ùÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#purchaseMonth").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#purchaseDate").val()) === "") {
-		alert("êµ¬ë§¤ì¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("±¸¸ÅÀÏÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#purchaseDate").focus();
 		frmCheck = false;
 	}
     if (frmCheck && $("#place").val() === "") {
-        alert("êµ¬ë§¤ ì¥ì†Œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        alert("±¸¸Å Àå¼Ò¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
         $("#place").focus();
         frmCheck = false;
     }
      if (frmCheck && $("#channel").val() === "") {
-        alert("ìœ í†µì±„ë„ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        alert("À¯ÅëÃ¤³ÎÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
         $("#channel").focus();
         frmCheck = false;
     }
     
     if (frmCheck && $.trim($("#branch").val()) === "") {
-        alert("ì§€ì ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+        alert("ÁöÁ¡¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
         $("#branch").focus();
         frmCheck = false;
     }
-    
-    if (frmCheck && $.trim($("#newProductType").val()) === "") {
-		alert("ì œí’ˆ íƒ€ì…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+
+     if (frmCheck && $.trim($("#newProductType").val()) === "") {
+		alert("Á¦Ç° Å¸ÀÔÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		$("#newProductType").focus();
 		frmCheck = false;
 	}
@@ -781,54 +906,58 @@ function goProc() {
         frmCheck = false;
     }
    	
-   	//ì²´í¬ ëœ ì œí’ˆë§Œ
+   	//Ã¼Å© µÈ Á¦Ç°¸¸
 	if (frmCheck && $("#prdChk").val() != "Y"  ) {
-		alert("ì œì¡°ë²ˆí˜¸ í™•ì¸ì„ í•´ì£¼ì„¸ìš”.");
+		alert("Á¦Á¶¹øÈ£ È®ÀÎÀ» ÇØÁÖ¼¼¿ä.");
 		$("#btn_product").focus();
 		frmCheck = false;
 	}
+    
     if ( frmCheck && $.trim($("#ptUpload2").val()) === "") {
-		alert("ì œì¡°ë²ˆí˜¸ì‚¬ì§„ì„ ë“±ë¡í•´ ì£¼ì‹­ì‹œì˜¤.");
+		alert("Á¦Á¶¹øÈ£»çÁøÀ» µî·ÏÇØ ÁÖ½Ê½Ã¿À.");
 		$("#ptUpload2").val("");
 		$("#productPic").val("");
 		$("#productPic").focus();
 		frmCheck = false;
 	}
+    
 	if ( frmCheck && $.trim($("#ptUpload3").val()) === "") {
-		alert("ê±°ë˜ë‚´ì—­ì„œ ë“±ë¡í•´ ì£¼ì‹­ì‹œì˜¤.");
+		alert("°Å·¡³»¿ª¼­ µî·ÏÇØ ÁÖ½Ê½Ã¿À.");
 		$("#ptUpload3").val("");
 		$("#receipt").val("");
 		$("#receipt").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#producInstallYear").val()) === "") {
-		alert("ì œí’ˆì„¤ì¹˜ ë…„ë„ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("Á¦Ç°¼³Ä¡ ³âµµ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#producInstallYear").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#producInstallMonth").val()) === "") {
-		alert("ì œí’ˆì„¤ì¹˜ì›”ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("Á¦Ç°¼³Ä¡¿ùÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#producInstallMonth").focus();
 		frmCheck = false;
 	}
 	if (frmCheck && $.trim($("#producInstallDate").val()) === "") {
-		alert("ì œí’ˆì„¤ì¹˜ì¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+		alert("Á¦Ç°¼³Ä¡ÀÏÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 		$("#producInstallDate").focus();
 		frmCheck = false;
 	}
 	
-	//4.ìƒí’ˆê¶Œì •ë³´
+	//4.»óÇ°±ÇÁ¤º¸
 	if (frmCheck && $.trim($("#giftCard").val()) === "") {
-        alert("ëª¨ë°”ì¼ ìƒí’ˆê¶Œì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+        alert("¸ğ¹ÙÀÏ »óÇ°±ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
         $("#giftCard").focus();
         frmCheck = false;
     }
+    
+	   
 	if (frmCheck) {
-		var confirmTxt = "ì •ë³´ ìˆ˜ì •ì´ ë¶ˆê°€í•©ë‹ˆë‹¤. ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”!\n"
-						+ "ì…ë ¥í•˜ì‹  ë‚´ìš©ìœ¼ë¡œ ì‘ëª¨í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n"
+		var confirmTxt = "Á¤º¸ ¼öÁ¤ÀÌ ºÒ°¡ÇÕ´Ï´Ù. ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØÁÖ¼¼¿ä!\n"
+						+ "ÀÔ·ÂÇÏ½Å ³»¿ëÀ¸·Î ÀÀ¸ğÇÏ½Ã°Ú½À´Ï±î?\n"
 		var ck = confirm(confirmTxt);
 
-		if(ck == true){//í™•ì¸
+		if(ck == true){//È®ÀÎ
 
 			var formData = new FormData(document.getElementById('frm'));
 			
@@ -843,21 +972,82 @@ function goProc() {
 					alert(result);
 					dataLayer.push({				
         			  'event': 'customEvent',				
-        			  'customEventCategory': 'ì´ë²¤íŠ¸',				
-        			  'customEventAction': 'ì´ë²¤íŠ¸ - ì‹ ì²­ ì™„ë£Œ',				
-        			  'customEventLabel': 'ì»¨í…ì¸  : '+'${eventTitle}'
+        			  'customEventCategory': 'ÀÌº¥Æ®',				
+        			  'customEventAction': 'ÀÌº¥Æ® - ½ÅÃ» ¿Ï·á',				
+        			  'customEventLabel': 'ÄÁÅÙÃ÷ : '+'${eventTitle}'
 					});		
 					self.close();
 				},
 				error: function(request, status, error) {
-					alert("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.\nê´€ë¦¬ìì—ê²Œ ë¬¸ì˜í•˜ì„¸ìš”.");
+					alert("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.\n°ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇÏ¼¼¿ä.");
 					return;
 				}
 			});
 	    }
+	    
 	} else {
 		return false; 
+		
 	}
+	
+}
+
+function proc_result(resultCode){
+
+    if (resultCode == "1") {
+        alert("Á¾·á µÈ ÀÌº¥Æ® ÀÔ´Ï´Ù.");
+        submitCnt = 0;//Áßº¹Å¬¸¯ ¸®¼Â
+        eventCmpltfail();
+        goUrl();
+    } else if (resultCode == "2") {
+        alert("Àß¸øµÈ Á¢±Ù ÀÔ´Ï´Ù.\n»õ·Î°íÄ§ ÈÄ ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.("+resultCode+")");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if(resultCode == "14" || resultCode == "15") {
+		//È¸¿ø ·Î±×ÀÎ¿©ºÎ Ã¼Å© - È¸¿øÁ¤º¸ ¾øÀ½
+		alert("·Î±×ÀÎ Á¤º¸°¡ ¾ø½À´Ï´Ù. ´Ù½Ã ·Î±×ÀÎÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+		goUrl();
+    } else if (resultCode == "3") {
+        alert("ÀÌ¹Ì Âü¿©ÇÑ ÀüÈ­¹øÈ£ ÀÔ´Ï´Ù.");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "4") {
+        alert("ÀÌ¹Ì Âü¿©ÇÑ ½Ã¸®¾ó¹øÈ£ ÀÔ´Ï´Ù.");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "5" || resultCode == "6" || resultCode == "7"|| resultCode == "8"|| resultCode == "9"|| resultCode == "10") {
+        alert("ÀÌº¥Æ® Âü¿© Áß ¿À·ù°¡ ¹ß»ı ÇÏ¿´½À´Ï´Ù.\nÀá½Ã ÈÄ ´Ù½Ã ½ÃµµÇØ ÁÖ½Ê½Ã¿À.("+resultCode+")");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "13-1" || resultCode == "13-2" || resultCode == "13-3"|| resultCode == "13-4"|| resultCode == "13-5"|| resultCode == "13-6") {
+        alert("ÀÌº¥Æ® Âü¿© Áß ÆÄÀÏµî·Ï ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.\n ÆÄÀÏÀ» È®ÀÎÇÏ½Ã¾î ½ÃµµÇØ ÁÖ½Ê½Ã¿À.("+resultCode+")");
+        submitCnt = 0;
+        return false;
+        //eventCmpltfail();
+        //goUrl();
+
+    } else {
+        submitCnt = 0;
+        document.frm.target = "";
+        document.frm.action = "";
+        //eventCmpltfail();
+        $('.mobile body').css({'height':'auto'});
+
+        alert("Âü¿©ÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.");
+        goUrl();
+    }
+}
+
+function goUrl(){
+	top.location.href = location.href;
 }
 
 function fnChgFile(obj,target){
@@ -865,20 +1055,21 @@ function fnChgFile(obj,target){
 	var fileValue = $(obj).val().split("\\");
 	var fileName = fileValue[fileValue.length-1];
 	$target.val(fileName);
-
+	
 	checkFile(obj,target);
+	
 }
-
-//íŒŒì¼ì—…ë¡œë“œ ì²´í¬
+//ÆÄÀÏ¾÷·Îµå Ã¼Å©
 function checkFile(obj,target){
 	var $id = $(target);
-	//ie10 ê¹Œì§€ ì§€ì›ê°€ëŠ¥í•˜ë©° ie9ëŠ” ì—ëŸ¬ê°€ ë°œìƒí•œë‹¤.
+	//ie10 ±îÁö Áö¿ø°¡´ÉÇÏ¸ç ie9´Â ¿¡·¯°¡ ¹ß»ıÇÑ´Ù.
 	if ($(obj).get(0).files[0].size > 1024 * 1024 * 5 ) {
-		alert('5MB ì´í•˜ íŒŒì¼ë§Œ ë“±ë¡í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n\n' + 'í˜„ì¬íŒŒì¼ ìš©ëŸ‰ : ' + ( Math.round($(obj).get(0).files[0].size / 1024 / 1024 * 100) / 100) + 'MB');
+		alert('5MB ÀÌÇÏ ÆÄÀÏ¸¸ µî·ÏÇÒ ¼ö ÀÖ½À´Ï´Ù.\n\n' + 'ÇöÀçÆÄÀÏ ¿ë·® : ' + ( Math.round($(obj).get(0).files[0].size / 1024 / 1024 * 100) / 100) + 'MB');
 		$id.val("");
 		obj.outerHTML = obj.outerHTML;
 		$id.focus();
 		return false;
+
     }
 	
 	var thumbext = "";
@@ -890,21 +1081,21 @@ function checkFile(obj,target){
     thumbext = thumbext.slice(thumbext.lastIndexOf(".") + 1);
 	
 	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "gif" &&  thumbext != "jpeg"){
-          alert('ì´ë¯¸ì§€ íŒŒì¼(jpg, png, gif, jpeg)ë§Œ ë“±ë¡ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n(ì†Œë¬¸ì í™•ì¥ìë§Œ í—ˆìš©)');
+          alert('ÀÌ¹ÌÁö ÆÄÀÏ(jpg, png, gif, jpeg)¸¸ µî·Ï °¡´ÉÇÕ´Ï´Ù.\n(¼Ò¹®ÀÚ È®ÀåÀÚ¸¸ Çã¿ë)');
           $id.val("");
           $id.focus();
           return false;
     }
 	
 	if( $id.attr("id") == "receipt" ) {
-		var confirmTxt = "êµ¬ë§¤ì ì„±ëª…, ëª¨ë¸ëª…, í’ˆëª©, ìƒí˜¸, ì§ì¸(ì„œëª…)ì´ í¬í•¨ëœ ê±°ë˜ë‚´ì—­ì„œ ì‚¬ì§„ì„ ì²¨ë¶€ í•˜ì…¨ìŠµë‹ˆê¹Œ?\n"
-							+ "ê±°ë˜ë‚´ì—­ì„œì—ì„œ ì •í™•í•œ ë‚´ì—­ í™•ì¸ì´ ë¶ˆê°€ëŠ¥í•œ ê²½ìš° , \n"
-							+ "ë‹¹ì²¨ ëŒ€ìƒì—ì„œ ì œì™¸ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n"
-							+ "ì´ë¯¸ì§€ ì—…ë¡œë“œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
+		var confirmTxt = "±¸¸ÅÀÚ ¼º¸í, ¸ğµ¨¸í, Ç°¸ñ, »óÈ£, Á÷ÀÎ(¼­¸í)ÀÌ Æ÷ÇÔµÈ °Å·¡³»¿ª¼­ »çÁøÀ» Ã·ºÎ ÇÏ¼Ì½À´Ï±î?\n"
+							+ "°Å·¡³»¿ª¼­¿¡¼­ Á¤È®ÇÑ ³»¿ª È®ÀÎÀÌ ºÒ°¡´ÉÇÑ °æ¿ì , \n"
+							+ "´çÃ· ´ë»ó¿¡¼­ Á¦¿ÜµÉ ¼ö ÀÖ½À´Ï´Ù.\n"
+							+ "ÀÌ¹ÌÁö ¾÷·Îµå ÇÏ½Ã°Ú½À´Ï±î?";
 		
 		var ck = confirm(confirmTxt);
 	
-		if(ck != true){//í™•ì¸
+		if(ck != true){//È®ÀÎ
 	    	$("#receipt").val("");
 	        $("#ptUpload3").val("");
 	        return false;
@@ -913,8 +1104,7 @@ function checkFile(obj,target){
 	
 	return true;
 }
-
-//ì´ë©”ì¼ ì²´í¬ ì •ê·œì‹
+//ÀÌ¸ŞÀÏ Ã¼Å© Á¤±Ô½Ä
 function chkEmail(str)
 {
 	var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -925,24 +1115,9 @@ function chkEmail(str)
 	return true;
 }
 
-//ì²´í¬ë°•ìŠ¤ ë¼ë””ì˜¤ë²„íŠ¼ í¬ì»¤ìŠ¤ì´ë™
+//Ã¼Å©¹Ú½º ¶óµğ¿À¹öÆ° Æ÷Ä¿½ºÀÌµ¿
 function scroll_move( id ){
     $( "#"+id ).focus();
     var objscrollTop = $("label[for='"+id+"']").offset();
     parent.$('html, body').stop().animate({scrollTop: objscrollTop.top}, 0);
-}
-
-// ì´ë²¤íŠ¸ ì°¸ì—¬í•˜ê¸° ë ˆì´ì–´íŒì—… ë‹«ê¸°
-function eventEntryClose() {
-	if(confirm("ì´ë²¤íŠ¸ ì‘ëª¨ë¥¼ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == true){
-		layerClose(".event_popup");
-		init();
-		layerInit();
-		self.close();
-
-		//ê°ì¸ ê°’ ì‚­ì œ
-		markingReset(".event_popup");
-	}else{
-		return; 
-	}
 }

@@ -12,7 +12,7 @@
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
-                    '{{#if obsBtnFlag=="enable"}}' +
+                    '{{#if priceFlag=="Y"}}' +
                     '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
                     '{{#if price}}<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원{{/if}}' +
                     '{{/if}}' +
@@ -109,6 +109,7 @@
                         item.index = index;
                         item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                         item.price = item.price ? vcui.number.addComma(item.price) : null;
+                        item.priceFlag = item.priceFlag ? item.priceFlag : ((item.obsBtnFlag=="enable") ? "Y" : "N"); 
                         self.$list.append(vcui.template(listItemTemplate, item));
                     });
                     self.checkNoData();

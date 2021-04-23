@@ -1745,6 +1745,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     image.on('load', function (e) {
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
+                        image.css('display','block');
                     });
                 });
 
@@ -1906,6 +1907,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     image.on('load', function (e) {
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
+                        image.css('display','block');
                     });
                 });
                 ////임시 response 이미지 체크 루틴
