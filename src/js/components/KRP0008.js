@@ -143,7 +143,7 @@
 
                 //모바일용 갤러리
                 self.$pdpMobileVisual = $('#mobile_summary_gallery');
-                self.$pdpMobileVisual.hide();
+                //self.$pdpMobileVisual.hide();
                 //모바일용 갤러리 슬라이더
                 self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider');
                 //모바일용 갤러리 썸네일 슬라이더
@@ -395,7 +395,7 @@
                     dots: false,
                     buildDots: false
                 });
-                self.$pdpMobileVisual.show();
+                //self.$pdpMobileVisual.show();
             },
 
             popUpDataSetting: function() {

@@ -688,7 +688,7 @@
                                 }
                                 
                                 if( self.el.container.find('.auth-type-phone.active').length ) {
-                                    self.authManager.confirm('.btn-auth-confirm', function(), _self)
+                                    self.authManager.confirm('.btn-auth-confirm');
                                 }
     
                             })

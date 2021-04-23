@@ -1836,9 +1836,10 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (rangeStart > 0) rangeStart--;
                     if (rangeEnd <= self.slideCount) rangeEnd++;
                 }
-                //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
-                if (rangeEnd <= self.slideCount) rangeEnd++;
             }
+
+            //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
+            if (rangeEnd <= self.slideCount) rangeEnd++;
 
             loadRange = self.$slider.find('.' + _V.SLIDE).slice(rangeStart, rangeEnd);
 
