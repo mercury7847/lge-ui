@@ -66,12 +66,12 @@ $(function() {
     $(window).on("scroll", function() {
         scrollEvent();
     });
-    $(".objet-wrap").on("scroll", function() {
-        scrollEvent();
-    });
-    $("*").on("scroll", function() {
-        scrollEvent();
-    });
+    // $(".objet-wrap").on("scroll", function() {
+    //     scrollEvent();
+    // });
+    // $("*").on("scroll", function() {
+    //     scrollEvent();
+    // });
 
     function scrollEvent() {
         var scrollE = $(window).scrollTop();

@@ -834,15 +834,54 @@
     <script type="text/javascript">
         //<![CDATA[
         $(document).ready(function() {
+            var agent = navigator.userAgent.toLowerCase();
+            if ((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)) {
+                $("html").attr("data-b-typ", "ie");
+
+                //console.log("인터넷 익스플로러 브라우저 입니다.");
+                window.addEventListener("DOMMouseScroll", handleScroll);
+                window.addEventListener("mousewheel", handleScroll);
+
+                function wheelDistance(e) {
+                    console.log(e);
+                    if (!e) {
+                        e = window.event;
+                    }
+                    var w = e.wheelDelta,
+                        d = e.detail;
+                    if (d) {
+                        return -d / 3; // Firefox;
+                    }
+
+                    // IE, Safari, Chrome & other browsers
+                    return w / 120;
+                }
+
+                function handleScroll(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var delta = wheelDistance(e);
+                    console.log(delta);
+                    var time = 500;
+                    var distance = 700;
+
+                    $('html, body').stop().animate({
+                        scrollTop: $(window).scrollTop() -
+                            (distance * delta)
+                    }, time);
+                }
+
+            }
             $('.objetcollection-tabs .ui_tab a').on("click", function() {
                 let linkTarget = $(this).attr("href");
                 document.location.href = linkTarget;
             });
             $(window).on("load", function() {
                 autoFixedLinkTab()
-                $(window).on("scroll", function() {
-                    autoFixedLinkTab()
-                });
+
+            });
+            $(window).on("scroll", function() {
+                autoFixedLinkTab()
             });
 
             function autoFixedLinkTab() {
