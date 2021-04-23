@@ -381,9 +381,11 @@
     var PAGE_TYPE_DETAIL = "orderDetailPage";
     var PAGE_TYPE_NONMEM_DETAIL = "orderNoneMemberPage";
     var PAGE_TYPE_CAREDETAIL = "careOrderDetailPage";
+    var PAGE_TYPE_RECORD_DETAIL = "recordDetailPage";
 
     var TAB_FLAG_ORDER = "ORDER";
     var TAB_FLAG_CARE = "CARE";
+    var TAB_FLAG_RECORD = "RECORD";
 
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
@@ -392,6 +394,7 @@
 
     var ORDER_LIST;
     var CARE_LIST;
+    var RECORD_LIST;
 
     var SHIPPING_DATA;
     var PAYMENT_DATA;
@@ -474,7 +477,7 @@
         if(isOrderdetail) PAGE_TYPE = PAGE_TYPE_DETAIL;
         if(isNonemem) PAGE_TYPE = PAGE_TYPE_NONMEM_DETAIL;
 
-        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y"});
+        $('.inquiryPeriodFilter').vcDatePeriodFilter({dateBetweenCheckValue:"2y", minDate:new Date('2021-04-16')});
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
@@ -618,6 +621,10 @@
             
             var dataID = $(this).closest('.box').data("id");
             sendDetailPage(dataID);
+        }).on('click', '.recordList-btn', function(e){
+            e.preventDefault();
+
+            showRecordList();
         });
 
         cancelAllChecker = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('instance');
@@ -736,7 +743,7 @@
 
     function sendDetailPage(dataID){
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
-        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : TAB_FLAG == TAB_FLAG_CARE ? CARE_LIST : RECORD_LIST;
 
         var prodlist = listdata[dataID].productList;
         var orderNumbers = [];
@@ -1121,9 +1128,12 @@
 
     function setMoreOrderList(){
         START_INDEX += LIST_VIEW_TOTAL;
-        setOrderListContents();
+
+        if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
+        else setOrderListContents();
     }
 
+    //리스트 랜더...
     function setOrderListContents(){
         var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var leng = list.length;
@@ -1157,6 +1167,48 @@
                     });
                     
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
+                }
+            }
+
+            if(end < leng) $('.btn-moreview').css('display','block');
+            else $('.btn-moreview').css('display','none');
+        } else{
+            setNoData();
+        }
+    }
+
+    //서비스 이번 내역 스타트...
+    function showRecordList(){
+        START_INDEX = 0;
+        TAB_FLAG = TAB_FLAG_RECORD;
+
+        setRecordContents();
+    }
+
+    //서비스 이전 내역 조회...
+    function setRecordContents(){
+        var leng = RECORD_LIST.length;        
+        if(leng){
+            $('.inquiry-list-notify').hide();
+
+            var start = START_INDEX;
+            var end = start + LIST_VIEW_TOTAL;
+            if(end > leng) end = leng;
+
+            if(start == 0) $('.inquiry-list-wrap').empty();            
+
+            for(var idx=start;idx<end;idx++){
+                var templateList = $(vcui.template(inquiryListTemplate, RECORD_LIST[idx])).get(0);
+                $('.inquiry-list-wrap').append(templateList);
+
+                for(var cdx in RECORD_LIST[idx].productList){
+                    var prodlist = RECORD_LIST[idx].productList[cdx];                    
+                    prodlist.specList = vcui.array.filter(prodlist.specList, function(item){
+                        var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
+                        return chk;
+                    });
+                    
+                    $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:true, isQuantity:true}));
                 }
             }
 
@@ -1334,6 +1386,7 @@
                 START_INDEX = 0;
                 ORDER_LIST = [];
                 CARE_LIST = [];
+                RECORD_LIST = [];
                 SHIPPING_DATA = {};
                 PAYMENT_DATA = {};
                 ORDER_USER_DATA = {};
@@ -1400,6 +1453,30 @@
                         list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
     
                         CARE_LIST.push(list[idx]);
+                    }
+                }
+
+                //서비스 개편 이전 내역 리스트...
+                if(data.recordsListData && data.recordsListData.length){
+                    list = data.recordsListData;
+                    for(idx in list){
+                        leng = RECORD_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+    
+                        list[idx].dateTitle = "주문일";
+                        list[idx].orderNumberTitle = "주문번호";
+                        list[idx].groupNumber = list[idx].orderNumber;
+    
+                        var chk = 0;
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+                        }
+                        list[idx].orderCancelAbleYn = "N";
+    
+                        list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
+    
+                        RECORD_LIST.push(list[idx]);
                     }
                 }
     
