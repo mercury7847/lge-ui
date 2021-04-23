@@ -4055,9 +4055,9 @@
                 let popLoginCheck = $("meta[name='login']").attr("content");
                 console.log("popLoginCheck", popLoginCheck);
                 if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
-                    desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 현재 체험한 제품은 초기화됩니다. 저장하신 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                 } else {
-                    desc = '<p class="err-msg save_alert">저장하신 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                 }
                 lgkorUI.confirm(desc, obj);
 
