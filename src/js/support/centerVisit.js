@@ -110,6 +110,7 @@
 
             // 엔지니어
             self.$engineerResult = self.$cont.find('.engineer-to-visit');
+            self.$engineerOpener = $('[data-href="#choiceEngineerPopup"]');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
@@ -404,7 +405,8 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+            self.$engineerOpener.on('click', function() {
+                var $this = $(this);
                 var url = self.$engineerPopup.data('engineerListUrl');
                 var data = $.extend(true, {}, self.data),
                     param = {
@@ -433,13 +435,13 @@
                         } else {
                             lgkorUI.alert('', {
                                 title: '방문 가능한 다른 엔지니어가 없습니다.'
-                            });
+                            }, $this[0]);
                         }
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
                                 title: data.resultMessage
-                            });
+                            }, $this[0]);
                         }
                     }
                     lgkorUI.hideLoading();
@@ -447,7 +449,11 @@
             });
 
             self.$engineerSlider.on('carouselreinit', function() {
-                $('#choiceEngineerPopup').vcModal();
+                self.$engineerPopup.vcModal();
+            });
+
+            self.$engineerPopup.on('modalhidden', function() {
+                self.$engineerOpener.focus();
             });
 
             self.$stepCenter.on('click', '.btn-center', function() {
@@ -567,8 +573,6 @@
                             });
                         }
                     }
-                    
-                    lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                 });
             });
 
