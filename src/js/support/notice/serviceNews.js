@@ -91,7 +91,7 @@
                 var self = this;
                 
                 self.$listWrap.on('click', 'a.item', function() {
-                    lgkorUI.backHistory(this);
+                    lgkorUI.historyBack(this);
                 });
 
                 self.$searchWrap.find('input[type="text"]').on('input', function() {

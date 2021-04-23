@@ -3,59 +3,6 @@
     
     var csUI = {
         isLogin: $('html').data('login') == 'Y' ? true : false,
-        initProductSlider: function() {
-            // 관련 소모품이 필요하신가요?
-            $('.product-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 4,
-                slidesToShow: 4,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 4,
-                            slidesToShow: 4
-                        }
-                    }
-                ]
-            });
-        },
-        addPlugin: function(pluginName, Plugin) {
-            $.fn[pluginName] = function(options) {
-                var arg = arguments; 
-        
-                return this.each(function() {
-                    var _this = this,
-                        $this = $(_this),
-                        plugin = $this.data('plugin_' + pluginName);
-        
-                    if (!plugin) {
-                        $this.data('plugin_' + pluginName, new Plugin(this, options));
-                    } else {
-                        if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                            plugin[options].apply(plugin, [].slice.call(arg, 1));
-                        }
-                    }
-                });
-            }
-        },
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
@@ -174,28 +121,39 @@
                 }
             }
         },
-        isMobile: function() {
-            var userAgent = navigator.userAgent.toLowerCase();
-            var mobile = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce', 'nokia', 'webos', 'opera mini', 'samsung', 'sonyericsson', 'opera mobi', 'iemobile', 'mot');
-            var isMobile = 0;
-
-            for(var count=0; count < mobile.length; count++) {
-                if(userAgent.indexOf(mobile[count]) != -1) {
-                    isMobile = true;
-                    break;
-                }
-            }
-
-            var platform = navigator.platform.toLowerCase();
-            var platform_filter = new Array('win16', 'win32', 'win64', 'mac', 'macintel');
-
-            for(var count=0; count < platform_filter.length; count++) {
-                if(platform.indexOf(platform_filter[count]) != -1) {
-                    isMobile = false;
-                }
-            }
-
-            return isMobile;
+        initProductSlider: function() {
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
         },
         searchParamsToObject: function(key) {
             var params = location.search.substr(location.search.indexOf("?") + 1);
@@ -214,7 +172,7 @@
                 return valueObject;
             }
         },
-        backHistory: function(item) {
+        historyBack: function(item) {
             var url;
             if (item.constructor == Object) {
                 url = $.param(item);
@@ -232,6 +190,15 @@
                 }
                 return false;
             });
+        },
+        setAcecounter: function(pcUrl, moUrl) {
+            try {
+                if (vcui.detect.isMobile) {
+                    AM_PL(moUrl);
+                } else {
+                    _PL(pcUrl);
+                }
+            } catch(e) {}
         }
     }
 
@@ -1252,17 +1219,13 @@ var AuthManager = function() {
                     var resultData = result.data;
 
                     if (resultData.resultFlag == 'Y') {
-                        //$(el).find('span').html(RESENDTEXT);
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
-
-                        // 임시
-                        // if (self.options.pass) $(elem.number).val(12345);
                     }
 
                     lgkorUI.alert("", {
                         title: resultData.resultMessage
-                    });
+                    }, el);
                 });
             }
         },
@@ -1287,16 +1250,13 @@ var AuthManager = function() {
                 data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
 
                 if ($(elem.number).prop('disabled')) {
-                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
+                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'}, el);
                     return false;
                 }
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
                     var resultData = result.data;
-
-                    // 임시
-                    // if (self.options.pass) resultData.resultFlag = 'Y';
 
                     if (resultData.resultFlag == 'Y') {
                         success = true;
@@ -1323,7 +1283,7 @@ var AuthManager = function() {
                                         callback && callback(success, result);
                                     }
                                 }
-                            });
+                            }, el);
                         } else if (resultData.url) {
                             $(self.options.elem.form).attr('action', resultData.url);
                             $(self.options.elem.form).submit();
@@ -1344,7 +1304,7 @@ var AuthManager = function() {
                                     callback && callback(success, result);
                                 }
                             }
-                        });
+                        }, el);
                     }
 
                     lgkorUI.hideLoading();
