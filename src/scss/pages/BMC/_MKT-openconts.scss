@@ -10,12 +10,10 @@
 
     /* 클래스별이미지분기 */
     .pc{
-        // display:inline-block !important;
-        display:inline-block;
+        display:inline-block !important;
     }
     .mobile{
         display:none !important;
-        // display:none;
     }
     @include mobile {
         .pc{
@@ -88,25 +86,32 @@
         .tab_event{
             .tabs-wrap {
                 .tabs{
+                    @include mobile{
+                     padding:0;
+                    }
                     & > li{
                         margin:-2px 0 0 -3px;
                         width: calc(33.3% + 4px);
-                            &{
-                                .on{
-                                    display:none;
-                                }
-                                .off{
-                                    display:block;
-                                }
+                        @include mobile{
+                            margin:-2px -5px 0 1px;
+                            width: calc(33.3% + 3px);
+                        }
+                        &{
+                            .tab-on{
+                                display:none !important;
                             }
-                            &.on{
-                                position:relative;
-                                z-index:1;
-                                .on{
-                                    display:block;
-                                }
-                                .off{
-                                    display:none;
+                            .tab-off{
+                                display:inline-block !important;
+                            }
+                        }
+                        &.on{
+                            position:relative;
+                            z-index:1;
+                            .tab-on{
+                                display:inline-block !important;
+                            }
+                            .tab-off{
+                                display:none !important;
                             }
                         }
                     }
