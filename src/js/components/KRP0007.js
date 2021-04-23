@@ -185,6 +185,7 @@
                 self.savedPLPData = {};
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
+                self.savedPLPData.isNew = false;
                 
                 self.setting();
                 self.bindEvents();
@@ -243,7 +244,9 @@
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
-                            self.$productList.empty();
+                            if(self.savedPLPData.isNew) {
+                                self.$productList.empty();
+                            }
                             //ajax로 요청했던 리스트 데이타 복구
                             self.updateProductList(self.savedPLPData.listData, true);
                             //페이지 정보 복구
@@ -571,6 +574,7 @@
                         self.$productList.empty();
                         self.savedPLPData.listData = [];
                         self.savedPLPData.pagination = {page:0, totalCount:0};
+                        self.savedPLPData.isNew = true;
                     }
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
