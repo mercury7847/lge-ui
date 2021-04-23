@@ -1,6 +1,6 @@
 $(function() {
     new WOW().init();
-    var rellax = new Rellax('.rellax');
+    var rellax = new Rellax('.only_pc .rellax');
 
     scrollEvent();
 
@@ -11,54 +11,37 @@ $(function() {
         var $fwindow = $(window);
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        $fwindow.on('resize', function() {
+        $fwindow.on('scroll resize', function() {
             scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         });
-        $(".objet-wrap").on('scroll', function() {
-            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        });
+
         $('.only_pc [data-type="content"]').each(function(index, e) {
             var $contentObj = $(this);
             var fgOffset = parseInt($contentObj.offset().top);
             var yPos;
 
-            $fwindow.on('resize', function() {
-                yPos = (fgOffset - scrollTop) / ($contentObj.data('speed'));
-
-                $contentObj.css('top', yPos);
-            });
-            $(".objet-wrap").on('scroll', function() {
+            $fwindow.on('scroll resize', function() {
                 yPos = (fgOffset - scrollTop) / ($contentObj.data('speed'));
 
                 $contentObj.css('top', yPos);
             });
         });
-        // $('.only_pc [data-type="background"]').each(function() {
-        //     var $backgroundObj = $(this);
-        //     var backgroundObj2 = $(this).height() * 2;
-        //     var bgOffset = parseInt($backgroundObj.offset().top - backgroundObj2);
-        //     var yPos;
-        //     var coords;
-        //     //console.log("$backgroundObj", $backgroundObj);
-        //     //console.log("$backgroundObj.offset().top", $backgroundObj.offset().top);
-        //     $fwindow.on('resize', function() {
-        //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
-        //         coords = '50% ' + yPos + 'px';
+        $('.only_pc [data-type="background"]').each(function() {
+            var $backgroundObj = $(this);
+            var backgroundObj2 = $(this).height() * 2;
+            var bgOffset = parseInt($backgroundObj.offset().top - backgroundObj2);
+            var yPos;
+            var coords;
 
-        //         $backgroundObj.css({ backgroundPosition: coords });
-        //         //console.log("3333");
-        //     });
-        //     $(".objet-wrap").on('scroll', function() {
-        //         yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
-        //         coords = '50% ' + yPos + 'px';
+            $fwindow.on('scroll resize', function() {
+                yPos = -((scrollTop - bgOffset) / ($backgroundObj.data('speed') || 0));
+                coords = '50% ' + yPos + 'px';
 
-        //         $backgroundObj.css({ backgroundPosition: coords });
-        //         //console.log("4444");
-        //     });
-        // });
+                $backgroundObj.css({ backgroundPosition: coords });
+            });
+        });
 
         $fwindow.trigger('scroll');
-        $(".objet-wrap").trigger('scroll');
     };
 
     parallaxIt();
@@ -68,17 +51,12 @@ $(function() {
     });
 
 
-    // $(window).on("scroll", function() {
-    //     //console.log("ddd");
-    //     scrollEvent();
-    // });
-    $(".objet-wrap").on("scroll", function(e) {
+    $(window).scroll(function() {
         scrollEvent();
-        //parallaxIt();
     });
 
     function scrollEvent() {
-        var scrollE = $(".objet-wrap").scrollTop();
+        var scrollE = $(window).scrollTop();
 
         var div = $(window).height(),
             div2 = $(window).height() * 2,
@@ -91,7 +69,7 @@ $(function() {
             opcity = 1 - (scrollE / div);
         }
 
-        $(".only_pc .brand-logo").css("opacity", opcity);
+        $(".brand-logo").css("opacity", opcity);
 
         if (scrollE >= div && scrollE < div2) {
             opcity2 = (scrollE - div) / (div2 - div);
@@ -132,4 +110,5 @@ $(function() {
             });
         }
     }
+
 });
