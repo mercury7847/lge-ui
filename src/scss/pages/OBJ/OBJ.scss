@@ -692,7 +692,7 @@ input[type=radio] {
                                     background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
                                     transform: translateY(-50%);
                                     @include mobile {
-                                        left: 15px;
+                                        left: 5px;
                                     }
                                 }
                             }
@@ -844,9 +844,15 @@ input[type=radio] {
     }
 }
 
-.err-msg.save_alert {
-    color: #000000;
-    text-align: left;
+.err-msg {
+    &.save_alert {
+        color: #000000;
+        text-align: left;
+    }
+    &.save_alert2 {
+        color: #000000;
+        text-align: center;
+    }
 }
 
 body,
