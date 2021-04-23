@@ -49,7 +49,7 @@
     var authManager;
     var addressFinder;
     var dateUtil = vcui.date;
-    var detect = vcui.detect;
+    var detectUtil = vcui.detect;
     var isLogin = lgkorUI.isLogin;
 
     var reservation = {
@@ -58,14 +58,15 @@
             
             self.$cont = $('.contents');
             self.$searchModelWrap = self.$cont.find('.prod-search-wrap');
-            self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
-            self.$myModelArea = self.$cont.find('.my-product-wrap');
+            self.$myModelWrap = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#submitForm');
             self.$completeBtns = self.$cont.find('.btn-group');
 
             self.$stepArea = self.$cont.find('.step-area');
             self.$stepModel = self.$cont.find('#stepModel');
             self.$stepInput = self.$cont.find('#stepInput');
+            self.$stepDate = self.$cont.find('#stepDate');
+            self.$stepEngineer = self.$cont.find('#stepEngineer');
 
             self.$topicBox = self.$stepInput.find('#topicBox');
             self.$topicListWrap = self.$stepInput.find('#topicList');
@@ -83,19 +84,17 @@
             self.$tvPositionBox = self.$stepInput.find('#tvPositionBox');
             self.$installTypeBox = self.$stepInput.find('#installTypeBox');
             self.$addFanBox = self.$stepInput.find('#addFanBox');
-
-            self.$stepDate = self.$cont.find('#stepDate');
+            
             self.$dateWrap = self.$stepDate.find('.date-wrap');
             self.$timeWrap = self.$stepDate.find('.time-wrap');
 
-            self.$stepEngineer = self.$cont.find('#stepEngineer');
+            self.$engineerOpener = $('[data-href="#choiceEngineerPopup"]');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
             self.$authPopup = $('#certificationPopup');
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
-            isLogin = lgkorUI.isLogin;
             self.isOneView = 'N';
             self.hirun = false;
             self.autoFlag = false;
@@ -602,7 +601,6 @@
                 self.$addFanBox.hide();
                 self.$completeBtns.hide();
                 self.$stepInput.find('.step-btn-wrap').show();
-                self.$myModelArea.show();
 
                 if (isLogin) {
                     var notInput = '#userNm, #phoneNo';
@@ -617,8 +615,8 @@
                 self.$stepInput.find('input[type=radio]').prop('checked', false);
                 self.$stepInput.find('input[type=text], input[type=number], textarea').not(notInput).val('');
                 self.$stepInput.find('#fanEtc').prop('disabled', true);
-                self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
                 self.$stepInput.find('#rentalN').prop('checked', true);
+                self.$stepInput.find('[name=buyingdate]').closest('.conts').find('.form-text').remove();
                 self.$stepEngineer.find('#engineerNm').val('');
                 self.$stepEngineer.find('#engineerCode').val('');
                 self.$stepEngineer.find('#centerNm').val('');
@@ -694,7 +692,7 @@
                     }
 
                     
-                    self.$myModelArea.hide();
+                    self.$myModelWrap.hide();
 
                     lgkorUI.hideLoading();
                 });
@@ -715,6 +713,16 @@
                 
                 self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
+
+                if (self.autoFlag) {
+                    self.$stepInput.find('.step-btn-wrap').show();
+                    self.$stepDate.removeClass('active');
+                    self.$stepEngineer.removeClass('active');
+                    self.$completeBtns.hide();
+                    self.$dateWrap.calendar('reset');
+                    self.$timeWrap.timeCalendar('reset');  
+                    self.autoFlag = false;
+                }
             });
 
             // 세부 증상 선택
@@ -753,15 +761,13 @@
                     self.$cont.find('#userAddress').val(address);
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
 
-                    // self.$cont.find('.btm-more.both .chk-wrap').show();
-
                     if (self.autoFlag) {
                         self.$stepInput.find('.step-btn-wrap').show();
                         self.$stepDate.removeClass('active');
                         self.$stepEngineer.removeClass('active');
                         self.$completeBtns.hide();
-                        $('.date-wrap').calendar('reset');
-                        $('.time-wrap').timeCalendar('reset');  
+                        self.$dateWrap.calendar('reset');
+                        self.$timeWrap.timeCalendar('reset');  
                         self.autoFlag = false;
                     }
                 }); 
@@ -776,12 +782,12 @@
             });
 
             // 날짜 선택
-            $('.date-wrap').on('dateselected', function() {
+            self.$dateWrap.on('dateselected', function() {
                 self.requestTime();
             });
 
             // 시간 선택
-            $('.time-wrap').on('timeselected', function() {
+            self.$timeWrap.on('timeselected', function() {
                 var url = self.$stepDate.data('ajax'),
                     param;
 
@@ -808,7 +814,8 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+            self.$engineerOpener.on('click', function() {
+                var $this = $(this);
                 var url = self.$engineerPopup.data('engineerListUrl'),
                     param;
 
@@ -845,13 +852,13 @@
                         } else {
                             lgkorUI.alert('', {
                                 title: '방문 가능한 다른 엔지니어가 없습니다.'
-                            });
+                            }, $this[0]);
                         }
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
                                 title: data.resultMessage
-                            });
+                            }, $this[0]);
                         }
                     }
 
@@ -860,7 +867,7 @@
             });
 
             self.$engineerSlider.on('carouselreinit', function() {
-                $('#choiceEngineerPopup').vcModal();
+                self.$engineerPopup.vcModal();
             });
 
             // 엔지니어 선택
@@ -937,8 +944,6 @@
                     success && self.requestComplete();
                 });
             });
-
-
 
             $('[name=fan]').on('change', function() {
                 if ($(this).attr('id') == 'fan09') {
