@@ -1108,7 +1108,7 @@
 
             $('#pop-estimate').find('.pop-conts > .bullet-list').hide();
 
-            $('#pop-estimate').vcModal();
+            $('#pop-estimate').vcModal({opener:$putItemContainer.find('.total-info .btn')});
                 
             $('#pop-estimate').find('.estimate-list').vcCarousel({
                 settings: "unslick",
