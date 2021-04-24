@@ -309,7 +309,8 @@
         },
         setManualList: function(data) {
             var self = this;
-            var $list = self.$manualSec.find('.download-list'),
+            var $listWrap  = self.$manualSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$manualSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [];
                 page = data.listPage,
@@ -321,10 +322,12 @@
                 listArr.forEach(function(item) {
                     html += vcui.template(manualListTemplate, item);
                 });
-                $list.append(html).show();
+                $list.append(html);
+                $listWrap.show();
                 $noData.hide();
             } else {
-                $list.hide().empty();
+                $listWrap.hide();
+                $list.empty();
                 $noData.show();
             }
 
@@ -339,7 +342,8 @@
         },
         setDriverList: function(data) {
             var self = this;
-            var $list = self.$driverSec.find('.download-list'),
+            var $listWrap = self.$driverSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$driverSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [],
                 page = data.listPage,
@@ -349,7 +353,8 @@
         
             if (listArr.length) {
                 html = vcui.template(driverListTemplate, data);
-                $list.html(html).show();
+                $list.html(html);
+                $listWrap.show();
                 $list.find('>li').each(function(i) {
                     var $this = $(this);
                     for (var key in listArr[i]) {
@@ -364,7 +369,8 @@
                 self.$driverPagination.show();
                 self.$driverPagination.pagination('update', page);
             } else {
-                $list.html('').hide();
+                $listWrap.hide();
+                $list.html('');
                 $noData.show();
                 self.$driverPagination.hide();
             }
