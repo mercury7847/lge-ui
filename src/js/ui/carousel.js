@@ -1744,7 +1744,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     var image = $(this);
                     image.on('load', function (e) {
                         if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
-                            image.css('display','block');
+                            image.css('display','inline-block');
                         }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
@@ -1908,7 +1908,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     var image = $(this);
                     image.on('load', function (e) {
                         if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
-                            image.css('display','block');
+                            image.css('display','inline-block');
                         }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
