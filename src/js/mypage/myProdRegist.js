@@ -349,7 +349,7 @@
                 self.registMyProductPopupClear();    
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
-                self.$registMyProductPopup.vcModal();
+                self.$registMyProductPopup.vcModal({opener:$(this)});
             });
 
             //보유제품 삭제
@@ -1007,7 +1007,7 @@
                 });
 
                 if(!isMore) {
-                    self.$manualPopup.vcModal();
+                    self.$manualPopup.vcModal({opener:self.$manualMoreButton});
                 }
 
                 lgkorUI.resetFlexibleBox();
