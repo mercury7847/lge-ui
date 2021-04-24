@@ -1743,9 +1743,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 $('img', imagesScope).each(function () {
                     var image = $(this);
                     image.on('load', function (e) {
+                        if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
+                            image.css('display','block');
+                        }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
-                        image.css('display','block');
                     });
                 });
 
@@ -1905,9 +1907,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 $imgsToLoad.each(function () {
                     var image = $(this);
                     image.on('load', function (e) {
+                        if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
+                            image.css('display','block');
+                        }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
-                        image.css('display','block');
                     });
                 });
                 ////임시 response 이미지 체크 루틴
