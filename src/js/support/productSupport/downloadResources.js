@@ -413,11 +413,13 @@
             var self = this;
             var model = self.param.modelCode;
             
-            self.$surveyWrap.find('.point').html(model);
-            self.$surveyPopup.find('.model').html(model);
-        
-            for (var key in data) {
-                self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+            if (data) {
+                self.$surveyWrap.find('.point').html(model);
+                self.$surveyPopup.find('.model').html(model);
+            
+                for (var key in data) {
+                    self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+                }
             }
         },
         searchAllList: function() {
