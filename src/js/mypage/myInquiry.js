@@ -215,11 +215,11 @@
                 var ajaxUrl =  encodeURI($(dm).attr('href'));
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-                    self.openModalFromHtml(result);
+                    self.openModalFromHtml(result, dm);
                 }, null, "html");
             },
 
-            openModalFromHtml: function(html) {
+            openModalFromHtml: function(html, opener) {
                 $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
                     var title = $(this).data('title');
                     var url = $(this).data('src');
@@ -251,7 +251,7 @@
                         lgkorUI.confirm(null, obj);
                     }
                 });
-                $('#event-modal').html(html).vcModal();
+                $('#event-modal').html(html).vcModal({opener:$(opener)});
             },
 
             /*

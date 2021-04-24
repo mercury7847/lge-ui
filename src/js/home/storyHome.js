@@ -326,7 +326,7 @@
     function requestTagMngPop(dm){
         if(IS_LOGIN == "Y"){
             lgkorUI.requestAjaxData(TAG_MANAGER_URL, null, function(result){
-                $('#popup-tagMnger').empty().html(result).vcModal();
+                $('#popup-tagMnger').empty().html(result).vcModal({opener:$(dm)});
     
                 addTagMngInitData();
             }, null, "html");

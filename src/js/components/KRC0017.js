@@ -18,7 +18,7 @@ $(document).ready(function() {
 						e.preventDefault();
 		
 						var modalID = $(this).attr('href');
-						$(modalID).vcModal()
+						$(modalID).vcModal({opener:$(item)})
 						.off('modalshown')
 						.on('modalshown', function(e, data){
 							self.modalShown(data.module);
