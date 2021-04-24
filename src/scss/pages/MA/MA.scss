@@ -798,12 +798,28 @@ img{
 								transform:translateY(-50%);
 								padding:0 12px;
 								text-align:center;
+								.br-a {
+									display:block;
+								}
+								.br {
+									@include mobile {
+										display:block;
+									}
+								}
+								&.type-r {
+									right:118px;
+									left:auto;
+								}
 								@include mobile {
 									top:32px;
 									right:16px;
 									left:16px;
 									transform:translateY(0);
 									padding:0;
+									&.type-r {
+										right:16px;
+										left:16px;
+									}
 								}
 								&.fc-white {
 									color:#fff;
