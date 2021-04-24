@@ -21,7 +21,7 @@
             '</div></div>' +
             '<div class="col btn-col">' +
                 '{{#if !disabled && obsBtnFlag=="enable"}}<button type="button" class="btn size border buycart"><span>장바구니</span></button>{{/if}}' +
-                '<button type="button" class="btn size border"><span>자세히 보기</span></button>' +
+                // '<button type="button" class="btn size border"><span>자세히 보기</span></button>' +
             '</div>' +
         '</div>' +
         '<button type="button" class="btn-delete"><span class="blind">삭제</span></button>' +
