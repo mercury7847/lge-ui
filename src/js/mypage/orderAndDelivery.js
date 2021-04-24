@@ -525,6 +525,9 @@
             START_DATE = data.startDate;
             END_DATE = data.endDate;
 
+            var tab = tabMenu.find('li[class=on]');
+            TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
+
             requestOrderInquiry();
         });
 
@@ -1182,6 +1185,10 @@
     function showRecordList(){
         START_INDEX = 0;
         TAB_FLAG = TAB_FLAG_RECORD;
+
+        $('.inquiryPeriodFilter').vcDatePeriodFilter("setStartDate", "20200413");
+        $('.inquiryPeriodFilter').vcDatePeriodFilter("setEndDate", "20210426");
+        $('.inquiryPeriodFilter').find("input[name=periodSelect]").prop('checked', false)
 
         setRecordContents();
     }
