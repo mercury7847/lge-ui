@@ -98,7 +98,7 @@
                     var $li = $(this).parent();
                     var obj = JSON.parse($li.attr('data-json'));
                     self.$couponPopup.html(vcui.template(couponPopupTemplate, obj));
-                    self.$couponPopup.vcModal();
+                    self.$couponPopup.vcModal({opener:$(this)});
                 });
 
                 self.$contents.find('button.btn-moreview').on('click',function(e){

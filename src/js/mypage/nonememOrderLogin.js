@@ -127,7 +127,7 @@
                         title: result.data.alert.title
                     });
                 } else{
-                    $('#popup-nodata').vcModal();
+                    $('#popup-nodata').vcModal({opener:$('.non-members .confirm-btn')});
                 }
             }
             lgkorUI.hideLoading();

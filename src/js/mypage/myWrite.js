@@ -145,7 +145,7 @@
                     }
                 });
                 */
-                $('#event-modal').html(html).vcModal();
+                $('#event-modal').html(html).vcModal({opener:self.$myLists.find("a")});
             },
 
             openDetailPopup: function(id) {
