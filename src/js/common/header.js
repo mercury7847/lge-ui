@@ -72,7 +72,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                             var poptemplate = vcui.template(noneMemPopTemplate, {orderurl: cancelurl, loginurl:gotourl});
                             $('body').append(poptemplate);
                         }                        
-                        $('#popup-beforeNoneMemOrder').vcModal();
+                        $('#popup-beforeNoneMemOrder').vcModal({opener:$(this)});
                     });
                 }
             });
