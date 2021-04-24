@@ -901,6 +901,9 @@ img{
 			}
 		}
 		@include mobile {
+			.recom-list-slide {
+				padding-bottom:0;
+			}
 			.benefit-list-slide {
 				&.slide-wrap .slide-content {
 					margin: -2px -8px;
