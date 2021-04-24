@@ -674,11 +674,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-selfClearing').vcModal();
+                $('#popup-selfClearing').vcModal({opener:$(this)});
             }
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
-            $('#popup-selfClearing').vcModal();
+            $('#popup-selfClearing').vcModal({opener:$(this)});
         }).on('click', '.cancel-btn', function(e){
             e.preventDefault();
 
@@ -1818,6 +1818,7 @@
 
                 if(!shippingData.installPlaceNm) shippingData.installPlaceNm = "";
                 if(!shippingData.instReqDate) shippingData.instReqDate = "";
+                if(!shippingData.shippingNoteTxt) shippingData.shippingNoteTxt = "";
 
                 $listBox.show().find('ul').html(vcui.template(template, shippingData));
             } else{
