@@ -175,11 +175,11 @@
             var chk = $(this).prop('checked');
             if(chk){
                 $(this).prop('checked', false);
-                $('#popup-selfClearing').vcModal();
+                $('#popup-selfClearing').vcModal({opener:$(this)});
             }
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
-            $('#popup-selfClearing').vcModal();
+            $('#popup-selfClearing').vcModal({opener:$(this)});
         }).on('click', '.cancel-btn', function(e){
             e.preventDefault();
 
@@ -196,7 +196,7 @@
             if(userInfo.userEmail){
                 $('#popup-contractIssue').find('.pop-conts .gray-txt-box p em').text(userInfo.userEmail);
     
-                $('#popup-contractIssue').vcModal();
+                $('#popup-contractIssue').vcModal({opener:$(this)});
             } else{
                 lgkorUI.alert("", {
                     title: "계약서를 받을 이메일 정보가 없습니다.<br>계약자 정보를 수정해주세요.",
@@ -389,7 +389,7 @@
         } else{
             var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
-            $('#popup-cardIssue').vcModal();
+            $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
         }
     }
 
