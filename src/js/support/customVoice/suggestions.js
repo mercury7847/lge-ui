@@ -127,11 +127,11 @@
             self.$cont.on('reset', function() {
                 self.$completeBtns.hide();
 
-                validation.reset();
+                // validation.reset();
 
-                self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
-                self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
-                self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
+                // self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
+                // self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
+                // self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
             });
 
             self.$cont.on('complete', function(e, data) {
