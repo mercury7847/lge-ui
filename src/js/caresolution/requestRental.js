@@ -49,8 +49,6 @@
 
     var contractUserPhone = "";
 
-    var isBeforeUnload = true;
-
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
             setting();
@@ -492,10 +490,6 @@
             step3Block.find('input[name=selfClearingAgree]').prop('checked', chk);
 
             if(chk) $('#popup-selfClearing').vcModal('close');
-        });
-
-        $(window).on('beforeunload', function(e){
-            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
         });
     }
 
@@ -1369,8 +1363,6 @@ console.log(sendata)
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
-                isBeforeUnload = false;
-
                 var endtitle = "";
                 var endesc = "";
                 var endbntname = "";

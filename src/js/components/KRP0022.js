@@ -12,7 +12,7 @@
                 '<p class="date"><span class="blind">이벤트 기간</span>{{eventFromDate}}~{{eventToDate}}</p>' +
             '</div>' +
         '</a>' +
-        '{{#if winAnnouncementFlag != "N"}}<a href="{{eventUrl}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
+        '{{#if winAnnouncementFlag != "N"}}<a href="{{#if eventId}}/benefits/event/eventWin-{{eventId}}{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
     '</div></li>'
 
     $(window).ready(function() {
@@ -82,7 +82,8 @@
                 eventList.forEach(function(item, index) {
                     //item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                     //item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
-                    item.eventType = item.eventType ? item.eventType : ""; 
+                    item.eventType = item.eventType ? item.eventType : "";
+                    item.eventId = item.eventId ? item.eventId : null;
                     self.$list.append(vcui.template(eventItemList, item));
                 });
                 _self.checkNoData();

@@ -10,7 +10,7 @@
     //추천카테고리
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
 
-    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
+    var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -265,6 +265,20 @@
                 //});
             },
 
+            makeProductGAData: function(item) {
+                var param = {
+                    "model_name":item.modelDisplayName,
+                    "model_id":item.modelId,
+                    "model_sku":item.salesModelCode + '.' + item.salesSuffixCode,
+                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "price":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? item.carePrice : item.price,
+                    "discounted_price":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "" : item.obsDiscountPrice + item.obsMemberPrice,
+                    "brand":"LG",
+                    "category":item.superCategoryName + "/" + item.categoryName
+                }
+                return JSON.stringify(param);
+            },
+            
             setting: function() {
                 var self = this;
 
@@ -804,6 +818,7 @@
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
+                            item.ga = self.makeProductGAData(item);
                             //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
@@ -997,6 +1012,7 @@
                                         obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                     });
                                 }
+                                item.ga = self.makeProductGAData(item);
                                 item.price = item.price ? vcui.number.addComma(item.price) : null;
                                 item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                                 item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
