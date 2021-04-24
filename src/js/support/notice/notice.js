@@ -186,6 +186,8 @@
 
                 self.$sortSelect.filter('#category').on('change', function() {
                     self.$searchWrap.find('input[type="text"]').val('');
+                    self.$searchWrap.find('input[type="text"]').trigger('update'); 
+
                    
                     self.params = $.extend({}, self.params, {
                         'keyword': '',
