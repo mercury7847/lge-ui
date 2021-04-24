@@ -186,7 +186,7 @@ $(window).ready(function(){
             $('.video-wrap').on('click', '.btn-modelName, .btn-moreModel', function(e){
                 e.preventDefault();
 
-                $('#match-models').vcModal();
+                $('#match-models').vcModal({opener:$(this)});
             }).on('click', 'button.more-btn', function(e){
                 e.preventDefault();
 

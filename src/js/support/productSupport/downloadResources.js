@@ -309,7 +309,8 @@
         },
         setManualList: function(data) {
             var self = this;
-            var $list = self.$manualSec.find('.download-list'),
+            var $listWrap  = self.$manualSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$manualSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [];
                 page = data.listPage,
@@ -321,10 +322,12 @@
                 listArr.forEach(function(item) {
                     html += vcui.template(manualListTemplate, item);
                 });
-                $list.append(html).show();
+                $list.append(html);
+                $listWrap.show();
                 $noData.hide();
             } else {
-                $list.hide().empty();
+                $listWrap.hide();
+                $list.empty();
                 $noData.show();
             }
 
@@ -339,7 +342,8 @@
         },
         setDriverList: function(data) {
             var self = this;
-            var $list = self.$driverSec.find('.download-list'),
+            var $listWrap = self.$driverSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$driverSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [],
                 page = data.listPage,
@@ -349,7 +353,8 @@
         
             if (listArr.length) {
                 html = vcui.template(driverListTemplate, data);
-                $list.html(html).show();
+                $list.html(html);
+                $listWrap.show();
                 $list.find('>li').each(function(i) {
                     var $this = $(this);
                     for (var key in listArr[i]) {
@@ -364,7 +369,8 @@
                 self.$driverPagination.show();
                 self.$driverPagination.pagination('update', page);
             } else {
-                $list.html('').hide();
+                $listWrap.hide();
+                $list.html('');
                 $noData.show();
                 self.$driverPagination.hide();
             }
@@ -413,20 +419,42 @@
             var self = this;
             var model = self.param.modelCode;
             
-            self.$surveyWrap.find('.point').html(model);
-            self.$surveyPopup.find('.model').html(model);
-        
-            for (var key in data) {
-                self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+            if (data) {
+                self.$surveyWrap.find('.point').html(model);
+                self.$surveyPopup.find('.model').html(model);
+            
+                for (var key in data) {
+                    self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+                }
             }
         },
         searchAllList: function() {
             var self = this;
             var param = $.extend({}, self.param);
-            lgkorUI.setAcecounter('www.lge.co.kr/acecount/driverList.do', 'www.lge.co.kr/acecount/driverListm.do');            
+            lgkorUI.setAcecounter('www.lge.co.kr/acecount/driverList.do', '/acecount/driverListm.do');            
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(self.resultUrl, param, function(result){
+            lgkorUI.requestAjaxData(self.resultUrl, param, function(result){
                 var data = result.data;
+
+                if (result.status == 'fail') {
+                    var data = {
+                        manual: {
+                            listPage: {
+                                totalCount: 0
+                            }
+                        },
+                        driver: {
+                            osOption: '',
+                            listPage: {
+                                totalCount: 0
+                            }
+                        },
+                        satisfy: ''
+                    }
+                    self.$surveyWrap.hide();
+                } else {
+                    self.$surveyWrap.show();
+                }
 
                 self.setManualList(data.manual);
                 self.setDriverList(data.driver);
@@ -452,7 +480,7 @@
                 self.setSurvey(data.satisfy);
 
                 lgkorUI.hideLoading();
-            });
+            }, 'POST', 'json' ,true);
         },
         searchManualList: function() {
             var self = this;
@@ -624,20 +652,20 @@
             });
 
             self.$fileDetailPopup.on('click', '.btn-download', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', 'www.lge.co.kr/acecount/driveDownloadClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', '/acecount/driveDownloadClickm.do');
             });
 
             self.$manualSec.on('click', '.btn-download', function() {
                 var fileType = $(this).data('type').toLowerCase();
                 
                 if (fileType == 'pdf') {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualPDF.do', 'www.lge.co.kr/acecount/driveManualPDFm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualPDF.do', '/acecount/driveManualPDFm.do');
                 } else  if (fileType == 'zip') {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualZIP.do', 'www.lge.co.kr/acecount/driveManualZIPm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualZIP.do', '/acecount/driveManualZIPm.do');
                 } else if (fileType == 'html') {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualHTML.do', 'www.lge.co.kr/acecount/driveManualHTMLm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualHTML.do', '/acecount/driveManualHTMLm.do');
                 } else if (fileType == 'chm') {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualCHM.do', 'www.lge.co.kr/acecount/driveManualCHMm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualCHM.do', '/acecount/driveManualCHMm.do');
                 }
             });
 
@@ -655,7 +683,7 @@
                     }
                     $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
                 } else {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', 'www.lge.co.kr/acecount/driveDownloadClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', '/acecount/driveDownloadClickm.do');
                 }
             })
 

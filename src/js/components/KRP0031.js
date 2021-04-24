@@ -79,7 +79,7 @@ $(window).ready(function(){
                     self.$cateSelect.append(html);
                     self.$cateSelect.vcSelectbox('update');
 
-                    self.$modelPopup.vcModal();
+                    self.$modelPopup.vcModal({opener:self.$modelButton});
                     lgkorUI.hideLoading();
                 }, 'POST');
             });

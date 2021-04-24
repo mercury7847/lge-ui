@@ -132,7 +132,7 @@
                     city: ""
                 }
             }
-            openeditAddressPop(pops)
+            openeditAddressPop(pops, $(this))
         });
 
         $('.addressListWrap').on('click', '>li .edit-btn', function(e){
@@ -148,7 +148,7 @@
                     btnName: "주소 저장",
                     addressInfo: addressListData[dataId]
                 }
-                openeditAddressPop(pops);
+                openeditAddressPop(pops, $(this));
             } else{
                 deleteAddressData(dataId);
             }
@@ -204,7 +204,7 @@
         });
     }
 
-    function openeditAddressPop(pops){
+    function openeditAddressPop(pops, opener){
         $('#popup-editAddress').find('.pop-title span').text(pops.popName);
         $('#popup-editAddress').find('.send-btn span').text(pops.btnName);
         $('#popup-editAddress').find('.err-block').hide();
@@ -215,7 +215,7 @@
         $('#popup-editAddress').data("type", pops.editMode);
         $('#popup-editAddress').data("addressId", pops.addressInfo.addressID);
         $('#popup-editAddress').data("city", pops.addressInfo.city);
-        $('#popup-editAddress').vcModal();
+        $('#popup-editAddress').vcModal({opener:opener});
     }
 
     function loadaddressList(type, formdata){
