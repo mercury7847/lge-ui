@@ -856,6 +856,11 @@ input[type=radio] {
     }
 }
 
+.share_simulator_img {
+    width: 100%;
+    overflow: auto;
+}
+
 body,
 html {
     scroll-behavior: smooth;
