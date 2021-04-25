@@ -1221,7 +1221,6 @@ var isApp = function(){
             ], function (Sharer) {
                 // 공유하기 헬퍼 빌드
                 Sharer.init({
-                    appKey: "ded59364395778ecf9b0c8d952eaf16b",
                     selector: '.sns-list > li >  a',
                     attr: 'data-link-name' // sns서비스명을 가져올 속성
                 });

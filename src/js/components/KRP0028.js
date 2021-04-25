@@ -212,6 +212,8 @@
         */
 
         openAwardsPopup: function(categoryName, categotyUrl, awardList) {
+            var self = this;
+            
             var $popup = $('#awardsPopup');
             //$popup.find('h1.tit span').text(data.title);
             $popup.find('p.com-pop-tit').text(categoryName);
@@ -236,7 +238,7 @@
             }
 
             $popup.find('ul.com-pop-list').html(vcui.template(awardsPopupListItemTemplage, {"list":array}));
-            $popup.vcModal();
+            $popup.vcModal({opener:self.$list.find('li div.btn-area button')});
         }
     };
         

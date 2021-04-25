@@ -120,7 +120,7 @@
             },
 
             openModalFromHtml: function(html) {
-                $('#event-modal').html(html).vcModal();
+                $('#event-modal').html(html).vcModal($(dm));
             },
         };
 

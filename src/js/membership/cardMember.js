@@ -20,7 +20,7 @@
                 //카테고리탭
                 self.$contents.on('click', 'div.application-btn a', function(e){
                     e.preventDefault();
-                    self.$cardInfoPopup.vcModal();
+                    self.$cardInfoPopup.vcModal({opener:$(this)});
                 });
 
                 self.$cardInfoPopup.on('click', 'footer.pop-footer button:not(.ui_modal_close)', function(e) {

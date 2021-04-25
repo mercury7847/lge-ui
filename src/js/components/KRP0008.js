@@ -43,6 +43,12 @@
                 //최근본 제품 쿠키에 넣기
                 if(typeof lgePdpSendData !== 'undefined' && lgePdpSendData.modelId) {
                     lgkorUI.addCookieArrayValue(lgkorUI.RECENT_PROD_COOKIE_NAME,lgePdpSendData.modelId,lgkorUI.MAX_SAVE_RECENT_PRODUCT);
+
+                    //최근본 제품 서버에 등록
+                    var ajaxUrl = self.$pdpInfo.attr('data-recent-url');
+                    if(ajaxUrl) {
+                        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, {"requestId":lgePdpSendData.modelId}, null);
+                    }
                 }
 
                 if(self.$component.data('consumables')) {
@@ -460,7 +466,7 @@
                 self.$pdpImage.find('a').first().on('click',function(e){
                     e.preventDefault();
                     var index = $(this).attr("data-idx"); 
-                    self.openVisualModal(index);
+                    self.openVisualModal(index, this);
                 });
 
                 //데스크탑용 썸네일리스트 클릭
@@ -470,10 +476,10 @@
                     var index = $(this).parents('li').index();
                     if($li.hasClass('more')) {
                         //더보기 버튼은 바로 pdp모달 뛰움
-                        self.openVisualModal(index);
+                        self.openVisualModal(index, this);
                     } else {
                         //썸네일 클릭
-                        self.clickThumbnailSlide(index);
+                        self.clickThumbnailSlide(index, this);
                     }
                 });
 
@@ -481,7 +487,7 @@
                 self.$pdpMobileSlider.on('click', 'a', function(e){
                     e.preventDefault();
                     var index = $(this).parents(".ui_carousel_current").attr("data-ui_carousel_index");
-                    self.openVisualModal(index); 
+                    self.openVisualModal(index, this); 
                 });
 
                 //pdp모달 썸네일 리스트 클릭
@@ -540,7 +546,7 @@
                 });
 
                 $(window).on('appNotInstall', function(e){
-                    $('#arPlayPop').vcModal();
+                    $('#arPlayPop').vcModal({opener: e.currentTarget});
                 });
             },
 
@@ -765,16 +771,16 @@
                             //사전예약 안내창 뛰우고 구매진행
                             $('#preOrderPopup').find('div.btn-group button').off('click');
                             $('#preOrderPopup').find('div.btn-group button').on('click',function(e){
-                                self.productBuy($this);
+                                self.productBuy($this, this);
                             });
-                            $('#preOrderPopup').vcModal();
+                            $('#preOrderPopup').vcModal({opener: this});
                         } else {
                             //로그인 체크후 로그인 안내창 뛰움
-                            $('#loginPopup').vcModal();
+                            $('#loginPopup').vcModal({opener: this});
                         }
                     } else {
                         //사전예약 구매진행
-                        self.productBuy($this);
+                        self.productBuy($this, this);
                     }
                 });
 
@@ -822,7 +828,7 @@
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
-                    self.$benefitInfoPopup.vcModal();
+                    self.$benefitInfoPopup.vcModal({opener: this});
                 });
 
                 //인포 옵션 변경 (링크로 바뀜)
@@ -987,10 +993,10 @@
                     if(!lgkorUI.stringToBool(val)) {
                         if(waterCareRequire) {
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
-                            $('#waterCareRequirePopup').vcModal();
+                            $('#waterCareRequirePopup').vcModal({opener: this});
                         } else if(careRequire) {
                             $(this).parents('ul').find('input[type=radio][value="Y"]').trigger('click');
-                            $('#careRequirePopup').vcModal();
+                            $('#careRequirePopup').vcModal({opener: this});
                         } else {
                             //제품 가격 정보에 케어십 관련 숨김
                             if($careshipService.length > 0) {
@@ -1096,7 +1102,7 @@
                         });
                     }
 
-                    self.$careshipInfoPopup.vcModal();
+                    self.$careshipInfoPopup.vcModal({opener: this});
                 });
 
                 //케어솔루션 이용요금 
@@ -1180,7 +1186,7 @@
                         });
                     }
 
-                    self.$caresolutionInfoPopup.vcModal();
+                    self.$caresolutionInfoPopup.vcModal({opener: this});
                 });
 
                 //렌탈 케어솔루션 계약기간
@@ -1754,12 +1760,16 @@
             },
 
             //구매진행
-            productBuy: function($dm) {
+            productBuy: function($dm, eventTarget) {
                 var self = this;
 
                 //홈브류 제품 로그인 안내 뛰우기
                 if (location.href.indexOf("lg-homebrew") > -1 && !lgkorUI.stringToBool(loginFlag)) {
-                    $('#memberBuyGuide').vcModal();
+                    if(eventTarget) {
+                        $('#memberBuyGuide').vcModal({opener: eventTarget});
+                    } else {
+                        $('#memberBuyGuide').vcModal();
+                    }
                     return;
                 };
 
@@ -1880,7 +1890,11 @@
                                         location.href = $('#careRequireBuyPopup').data('sendUrl');
                                     });
                                     */
-                                    $('#careRequireBuyPopup').vcModal();
+                                    if(eventTarget) {
+                                        $('#careRequireBuyPopup').vcModal({opener: eventTarget});
+                                    } else {
+                                        $('#careRequireBuyPopup').vcModal();
+                                    }
                                 } else {
                                     location.href = url;
                                 }
@@ -2018,7 +2032,7 @@
             },
 
             //썸네일 리스트 클릭
-            clickThumbnailSlide: function(index) {
+            clickThumbnailSlide: function(index, eventTarget) {
                 var self = this;
                 var item = self.findPdpData(index);
                 switch(item.type) {
@@ -2038,7 +2052,7 @@
                         break;
                     case "video":
                     case "animation":
-                        self.openVisualModal(index);
+                        self.openVisualModal(index, eventTarget);
                         break;
                     default:
                         break;
@@ -2046,13 +2060,17 @@
             },
 
             //PDP모달 오픈
-            openVisualModal: function(index) {
+            openVisualModal: function(index, eventTarget) {
                 var self = this;
                 //self.clickModalThumbnail(index);
                 var popPdp = $('#pop-pdp-visual');
                 popPdp.data('selectIndex',index);
                 self.$popPdpVisualImage.hide();
-                $('#pop-pdp-visual').vcModal();
+                if(eventTarget) {
+                    $('#pop-pdp-visual').vcModal({opener: eventTarget});
+                } else {
+                    $('#pop-pdp-visual').vcModal();
+                }
             },
 
             clickModalThumbnail: function(index) {
