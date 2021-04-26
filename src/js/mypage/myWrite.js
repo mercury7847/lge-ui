@@ -64,7 +64,7 @@
                     var _id = $(this).attr('href').replace("#","");
                     if(ajaxUrl) {
                         var url = ajaxUrl + "?id=" + _id;
-                        self.requestModal(url);
+                        self.requestModal(url, this);
                     }
                     /*
                     var _id = $(this).attr('href').replace("#","");
@@ -114,16 +114,16 @@
                 }
             },
 
-            requestModal: function(url) {
+            requestModal: function(url, eventTarget) {
                 var self = this;
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
-                        self.openModalFromHtml(result);
+                        self.openModalFromHtml(result, eventTarget);
                     }, null, "html");
                 }
             },
 
-            openModalFromHtml: function(html) {
+            openModalFromHtml: function(html, eventTarget) {
                 /*
                 $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
                     var title = $(this).data('title');
@@ -145,7 +145,7 @@
                     }
                 });
                 */
-                $('#event-modal').html(html).vcModal({opener:self.$myLists.find("a")});
+                $('#event-modal').html(html).vcModal({opener:eventTarget});
             },
 
             openDetailPopup: function(id) {
