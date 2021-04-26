@@ -3656,6 +3656,11 @@
 
     $(document).ready(function() {
         $("html, body").scrollTop(0);
+        window.onpageshow = function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                location.reload();
+            }
+        }
         modelSimulator.init();
 
         $(document).on("click", function(e) {
