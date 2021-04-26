@@ -8,7 +8,7 @@
             var $btnClose = $tooltip.find('.btn-tooltip-close');
 
             $tooltip.on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainLoginClick.do', 'www.lge.co.kr/acecount/mainLoginClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainLoginClick.do', '/acecount/mainLoginClickm.do');
             });
 
             $btnClose.on('click', function(e){
@@ -562,7 +562,7 @@
                             $('#userAddress').val($('#serviceUserAddress').val())
                             $('#userDetailAddress').val($('#serviceDetailAddress').val())
                             
-                            lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainEngineerClick.do', 'www.lge.co.kr/acecount/mainEngineerClickm.do');
+                            lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainEngineerClick.do', '/acecount/mainEngineerClickm.do');
                             self.el.container.find('#serviceReservationForm').submit();
                         }
                     });
@@ -664,7 +664,7 @@
                                     var resultData = self.validation.getAllValues();
 
                                     if( validationResult ) {
-                                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', 'www.lge.co.kr/acecount/mainStatusClickm.do');
+                                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', '/acecount/mainStatusClickm.do');
                                         lgkorUI.showLoading();
                                         lgkorUI.requestAjaxDataPost($('#authDataForm1').data('ajax'), resultData, function(result) {
                                             if (result.data.resultFlag == 'Y') {
@@ -689,7 +689,7 @@
                                 
                                 if( self.el.container.find('.auth-type-phone.active').length ) {
                                     self.authManager.confirm('.btn-auth-confirm', function(success) {
-                                        success && lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', 'www.lge.co.kr/acecount/mainStatusClickm.do');
+                                        success && lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', '/acecount/mainStatusClickm.do');
                                     });
                                 }
     
@@ -834,7 +834,7 @@
                 }
 
                 $listWrap.on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainKeywordResetClick.do', 'www.lge.co.kr/acecount/mainKeywordResetClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainKeywordResetClick.do', '/acecount/mainKeywordResetClickm.do');
                 });
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
@@ -995,14 +995,14 @@
                     if (e.keyCode == 13) {
                         e.preventDefault();
                         var _value = $searchInput.val();
-                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', 'www.lge.co.kr/acecount/mainSearchClickm.do');
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', '/acecount/mainSearchClickm.do');
                         location.href = url + encodeURI(_value)
                     }
                 });
 
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', 'www.lge.co.kr/acecount/mainSearchClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', '/acecount/mainSearchClickm.do');
                     location.href = url + encodeURI(_value)
                 });
 
@@ -1012,15 +1012,15 @@
                 });
 
                 $autocompleteWrap.on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainModelClick.do', 'www.lge.co.kr/acecount/mainModelClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainModelClick.do', '/acecount/mainModelClickm.do');
                 });
 
                 $recentlyWrap.on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainRecentClick.do', 'www.lge.co.kr/acecount/mainRecentClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainRecentClick.do', '/acecount/mainRecentClickm.do');
                 });
 
                 $popularWrap.on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainPopularClick.do', 'www.lge.co.kr/acecount/mainPopularClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainPopularClick.do', '/acecount/mainPopularClickm.do');
                 });
 
                 $searchWrap.search({
@@ -1049,7 +1049,7 @@
             this.keyword.init();
 
             if (lgkorUI.searchParamsToObject('smq') == 'Y') {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainThinqView.do', 'www.lge.co.kr/acecount/mainThinqViewm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainThinqView.do', '/acecount/mainThinqViewm.do');
             }
         }
     }

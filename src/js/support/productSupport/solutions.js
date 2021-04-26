@@ -458,11 +458,11 @@
                 var self = this;
 
                 self.$bannerProduct.on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPartsClick.do', 'www.lge.co.kr/acecount/solutionsPartsClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPartsClick.do', '/acecount/solutionsPartsClickm.do');
                 });
 
                 self.$cont.find('.result-box').on('click', '.item', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsListClick.do', 'www.lge.co.kr/acecount/solutionsListClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsListClick.do', '/acecount/solutionsListClickm.do');
                     lgkorUI.historyBack(this);
                 });
 
@@ -636,7 +636,7 @@
                             }
                             data['keywords'].unshift(value);
                         }
-                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsSearchClick.do', 'www.lge.co.kr/acecount/solutionsSearchClickm.do');
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsSearchClick.do', '/acecount/solutionsSearchClickm.do');
                         
                         self.param = data;
                         self.$keywordWrap.find('.search-more').show();
@@ -649,15 +649,15 @@
                 });
 
                 self.$keywordWrap.find('.autocomplete-box').on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsAutoClick.do', 'www.lge.co.kr/acecount/solutionsAutoClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsAutoClick.do', '/acecount/solutionsAutoClickm.do');
                 });
 
                 self.$keywordWrap.find('.recently-keyword').on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsRecentClick.do', 'www.lge.co.kr/acecount/solutionsRecentClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsRecentClick.do', '/acecount/solutionsRecentClickm.do');
                 });
 
                 self.$keywordWrap.find('.popular-keyword').on('click', 'a', function() {
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPopularClick.do', 'www.lge.co.kr/acecount/solutionsPopularClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/solutionsPopularClick.do', '/acecount/solutionsPopularClickm.do');
                 });
             }
         }
