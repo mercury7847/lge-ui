@@ -1,11 +1,11 @@
 function moveDetail(el, detailUrl, windowHeight) {
     var id = $(el).attr("href").replace("#", "");
-    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', 'www.lge.co.kr/acecount/centerDetailClickm.do');
+    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
     window.open(detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
 }
 
 function moveConsultPage() {
-    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerMapVisitClick.do', 'www.lge.co.kr/acecount/centerMapVisitClickm.do');
+    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerMapVisitClick.do', '/acecount/centerMapVisitClickm.do');
 }
 
 (function(){
@@ -279,7 +279,7 @@ function moveConsultPage() {
         _openWindowPop : function(target){
             var self = this;
             var id = $(target).attr("href").replace("#", "");
-            lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', 'www.lge.co.kr/acecount/centerDetailClickm.do');
+            lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
             window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
         },
 
