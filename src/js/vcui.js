@@ -2365,7 +2365,9 @@ if (!window.JSON) {
         skipDataMain: true,
         waitSeconds: 15,
         paths: {
-            'dependency':'empty'
+            'jquey':'/lg5-common/js/libs/jquery-2.2.4.min.js',
+            'vcui':'/lg5-common/js/vcui.min.js'
+//            'dependency':'empty'
         },
         shim: {
             jquery: {
