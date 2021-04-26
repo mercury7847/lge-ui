@@ -2364,6 +2364,9 @@ if (!window.JSON) {
         baseUrl: _configs.importBasePath,
         skipDataMain: true,
         waitSeconds: 15,
+        paths: {
+            'dependency':'empty'
+        },
         shim: {
             jquery: {
                 exports: 'jQuery'
