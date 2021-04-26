@@ -88,7 +88,7 @@
                     //
                     e.preventDefault();
                     var href = $(this).attr('href');
-                    if(href) {
+                    if(href && href.replace("#", "").length > 0) {
                         location.href = href;
                     }
                 }
