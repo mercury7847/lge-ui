@@ -289,11 +289,16 @@
         },
         setTopicList: function(data) {
             var self = this;
-
             var html;
+            var success = (data.topicList instanceof Array && data.topicList.length) ? true : false;
 
-            html = vcui.template(topicTmpl, data);
-            self.$topicList.html(html); 
+            if (success) {
+                html = vcui.template(topicTmpl, data);
+                self.$topicList.html(html); 
+                self.$topicBox.show();
+            } else {
+                self.$topicBox.hide();
+            }
         },
         requestSubTopic: function(url, param) {
             var self = this;
@@ -586,7 +591,7 @@
             var self = this;
 
             $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerInfoClick.do', 'www.lge.co.kr/acecount/engineerInfoClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerInfoClick.do', '/acecount/engineerInfoClickm.do');
             });
 
             self.$cont.on('reset', function(e) {
@@ -748,7 +753,7 @@
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerSolutionsClick.do', 'www.lge.co.kr/acecount/engineerSolutionsClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/engineerSolutionsClick.do', '/acecount/engineerSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 

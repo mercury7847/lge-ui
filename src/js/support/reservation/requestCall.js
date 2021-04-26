@@ -204,6 +204,9 @@
             
             if (success) {
                 self.$topicList.html(vcui.template(topicTmpl, data));
+                self.$topicBox.show();
+            } else {
+                self.$topicBox.hide();
             }
         },
         setCalendar: function(data) {
@@ -371,7 +374,7 @@
             var self = this;
 
             $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/callInfoClick.do', 'www.lge.co.kr/acecount/callInfoClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/callInfoClick.do', '/acecount/callInfoClickm.do');
             });
             
             // 모델 선택 & 문의 재선택
@@ -416,7 +419,7 @@
                     productCode : $('#productCode').val(),
                     page: 1
                 };   
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/callSolutionsClick.do', 'www.lge.co.kr/acecount/callSolutionsClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/callSolutionsClick.do', '/acecount/callSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 

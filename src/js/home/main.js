@@ -203,6 +203,8 @@ $(function () {
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
 
+        var visualAnimInterval;
+
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(maxLens*winHeight);
@@ -241,7 +243,14 @@ $(function () {
                 }
 
                 if(!isBenefit){
-                    $('.benefit-list-slide').vcCarousel({                        
+                    $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
+                        clearInterval(animCtrlers[3]);
+                        animCtrlers[1] = null;
+                    }).on("carouselafterchange", function(e, carousel, index){
+                        var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
+                        icons.data("isReady", true);
+                        setIconAnimCtrler(icons);
+                    }).vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1                                
@@ -266,6 +275,34 @@ $(function () {
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
+        var maxScale = 110;
+
+        $scenes.find('.img img').css({
+            width: maxScale + '%'
+        });
+
+        function stopVisualAnim(){
+            clearInterval(visualAnimInterval);
+        }
+
+        function playVisualAnim(){
+            if(currentPage > 0 && currentPage < 5){
+                clearInterval(visualAnimInterval);
+
+                var newwidth = maxScale;
+                var currentImage = $scenes.eq(currentPage).find('.img img');
+                visualAnimInterval = setInterval(function(){
+                    newwidth -= 0.5;
+                    if(newwidth < 100) newwidth = 100;
+                    currentImage.css({
+                        width: newwidth + "%"
+                    });
+
+                    if(newwidth == 100) clearInterval(visualAnimInterval);
+                }, 18);
+            }
+        }
+
         function wheelScene(delta) {
 
             if(!isMobileDevice){
@@ -280,6 +317,8 @@ $(function () {
         }
 
         function moveScene(idx, speed){
+
+            stopVisualAnim();
 
             if(!isMobileDevice){
                 if(!canScroll) return;  
@@ -313,18 +352,15 @@ $(function () {
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
                     if(idx==0){
                         if(hasTop){
-                            console.log('o, hastop');
                             //$('.floating-menu.top').css('opacity', 0);
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
-                                console.log('tana?');
                                 $(window).trigger('floatingTopHide');
                                 $('.floating-menu.top').addClass('call-yet');
                             }
                         } else {
-                            console.log('o, no hastop');
                             /*
                             // 원본 소스
                             $(window).trigger('floatingTopHide');
@@ -338,7 +374,6 @@ $(function () {
                             $(window).trigger('floatingTopHide');
                             $('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
-                                console.log('tana?');
                                 $(window).trigger('floatingTopHide');
                                 $('.floating-menu.top').addClass('call-yet');
                             }
@@ -346,7 +381,6 @@ $(function () {
                         }
                     }else{
                         if(hasTop){
-                            console.log('1, hastop');
                             //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                             $('.floating-menu.top').removeClass('call-yet');
@@ -354,7 +388,6 @@ $(function () {
                             $('.floating-menu.top').show();
 
                         } else {
-                            console.log('1, no hastop');
                             $('.floating-menu.btn-app-ar').css('display', 'block');
                             $('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
@@ -362,7 +395,13 @@ $(function () {
                         }                       
                     }
 
+                    $scenes.eq(currentPage).find('.img img').css({
+                        width: maxScale + '%'
+                    });
                     currentPage = idx;   
+
+                    if(currentPage == 5) startIconAnim();
+                    else stopIconAnim();
                     
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
@@ -377,6 +416,8 @@ $(function () {
                             }
                         }
                     });
+
+                    playVisualAnim();
                 });
             }, 100);
 
@@ -742,4 +783,68 @@ $(function () {
         $window.trigger('breakpointchange');
         window.resizeScene = render;
     });
+
+    //메인 아이콘 애니매이션...
+    var animCtrlers = [];
+    var startIconAnim = function(){
+        $('.ui_ico_anim').each(function(idx, item){
+            setIconAnimCtrler($(item));
+        });
+    }
+
+    var stopIconAnim = function(){
+        for(var idx in animCtrlers){
+            if(animCtrlers[idx] != null){
+                clearInterval(animCtrlers[idx]);
+                animCtrlers[idx] = null;
+            }
+        }
+    }
+
+    var setIconAnimCtrler = function(icons){
+        if(icons.data('isReady')){
+            var ctrlerIdx = icons.data('ctrlerIdx');
+            if(animCtrlers[ctrlerIdx] == null){
+                animCtrlers[ctrlerIdx] = setInterval(function(){
+                    var animIdx;
+                    var currentIdx = icons.data('animIdx');
+                    var total = icons.data('length');
+                    if(currentIdx == total-1) animIdx = 0;
+                    else animIdx = currentIdx+1;
+        
+                    icons.find('img').eq(currentIdx).hide();
+                    icons.find('img').eq(animIdx).show();
+                    icons.data('animIdx', animIdx);
+                }, 30);
+            }
+        }
+    }
+
+    var loadAnimSourceComplete = function(img){
+        var icons = $(img).parent();
+        var idx = icons.data("loadIdx") + 1;
+        icons.data("loadIdx", idx);
+
+        if(icons.data("loadIdx") == icons.data("loadTotal")) icons.data('isReady', true);
+    }
+    window.loadAnimSourceComplete = loadAnimSourceComplete;
+
+    $('.ui_ico_anim').each(function(idx, item){
+        var leng = $(item).data('length');
+        var path = $(item).find('img').attr('src').split("i00")[0];
+
+        animCtrlers[idx] = null;
+        $(item).data("ctrlerIdx", idx);
+        $(item).data("animIdx", 0);
+        $(item).data("loadIdx", 1);
+        $(item).data("loadTotal", leng);
+        $(item).data("isReady", false);
+
+        for(var i=1;i<leng;i++){
+            var num = i < 10 ? "0" + i : i;
+            $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + 'i' + num + '.png" alt="">');
+        }
+    });
+    $('.ui_ico_anim img').css({position:'absolute', display:'none'});
+    $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 });
