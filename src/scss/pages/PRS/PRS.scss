@@ -1338,6 +1338,9 @@
 			}
 			.plan-exhib-slide {
 				padding-bottom:24px;
+				&.slide-solo {
+					padding-bottom:0;
+				}
 				.inner {
 					> .img {
 						height:600px;
