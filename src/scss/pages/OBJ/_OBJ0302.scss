@@ -1651,6 +1651,7 @@ h2.title {
 .btn_myPick_model_sel {
     position: relative;
     width: 100px;
+    overflow: visible;
     @include mobile {
         width: 70px;
     }

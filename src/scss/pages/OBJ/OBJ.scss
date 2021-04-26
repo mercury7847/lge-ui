@@ -678,6 +678,7 @@ input[type=radio] {
                         top: 0;
                         border: none;
                         background: transparent;
+                        opacity: 0;
                         &:checked+label {
                             border: 1px solid #da0f47;
                             border-radius: 6px;
@@ -854,6 +855,11 @@ input[type=radio] {
         color: #000000;
         text-align: center;
     }
+}
+
+.share_simulator_img {
+    width: 100%;
+    overflow: auto;
 }
 
 body,
