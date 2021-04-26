@@ -160,8 +160,10 @@ input[type="button"]:focus + label {border:1px dotted #666;margin:0}
 .popup_eventModel {display: none; position: absolute;left: 50%;top: 26%;margin-left:-393px;z-index: 25;}
  /* //210423 수정 */
  .eventModelClose {position: absolute;top: 0;right: 0; width: 10%; height: 3.5%;}
- .mobile .eventModel {position: absolute; top: 37.5%; left: 5%; width: 37%; height: 2%;}
- .mobile  .popup_eventModel {display: none; position: absolute;left: 0;top: 30%;margin-left:0;z-index: 25;}
+/* 210426 삭제 */
+/* .mobile .eventModel {position: absolute; top: 37.5%; left: 5%; width: 37%; height: 2%;}
+.mobile  .popup_eventModel {display: none; position: absolute;left: 0;top: 30%;margin-left:0;z-index: 25;} */
+/* //210426 삭제 */
 
  .event_popup .pop_agree_sec {padding: 0 0 20px 0; background: #fff;}
  .event_popup .pop_agree_sec .agree_tit {position:relative; font-size: 18px;margin:35px 0 15px 0;}
