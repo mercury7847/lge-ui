@@ -106,6 +106,7 @@ br.m {
     }
     &.type2 {
         // padding-top:80px;
+        padding-top:0;
         @include mobile {
             padding-top:0;
             .cont-wrap .csn-section:first-child {
