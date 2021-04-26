@@ -2381,12 +2381,13 @@ if (!window.JSON) {
     core.requirejs = vcuirequirejs;
     core.define = vcuidefine;
 
-    core.define('jquery', function () {        
+    core.define('jquery', function () {
         return window.$;
     });
     core.define('vcui', function () {
         return core;
     });
+    
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,
