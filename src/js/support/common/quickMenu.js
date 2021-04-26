@@ -71,22 +71,22 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             var self = this;
 
             self.$service.find('.solutions-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingSolutionsClick.do', 'www.lge.co.kr/acecount/floatingSolutionsClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingSolutionsClick.do', '/acecount/floatingSolutionsClickm.do');
             });
             self.$service.find('.manuals-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingDriverClick.do', 'www.lge.co.kr/acecount/floatingDriverClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingDriverClick.do', '/acecount/floatingDriverClickm.do');
             });
             self.$service.find('.center-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingCenterClick.do', 'www.lge.co.kr/acecount/floatingCenterClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingCenterClick.do', '/acecount/floatingCenterClickm.do');
             });
             self.$service.find('.chatbot-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingChatClick.do', 'www.lge.co.kr/acecount/floatingChatClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingChatClick.do', '/acecount/floatingChatClickm.do');
             });
             self.$history.find('.history-list a').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', 'www.lge.co.kr/acecount/floatingModelClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', '/acecount/floatingModelClickm.do');
             }); 
             self.$historyPopup.find('.lately-list a').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', 'www.lge.co.kr/acecount/floatingModelClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', '/acecount/floatingModelClickm.do');
             });
 
             self.$serviceBtn.on('click', function() {
