@@ -245,7 +245,7 @@ $(function () {
                 if(!isBenefit){
                     $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
-                        animCtrlers[3] = null;
+                        animCtrlers[1] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
                         var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
                         icons.data("isReady", true);
