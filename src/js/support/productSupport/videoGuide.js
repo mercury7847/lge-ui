@@ -253,7 +253,7 @@
             var self = this;
 
             self.$resultCont.find('.video-list').on('click', 'a', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsListClick.do', 'www.lge.co.kr/acecount/videotutorialsListClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsListClick.do', '/acecount/videotutorialsListClickm.do');
             });
 
             self.$cont.on('reset', function(e) {
@@ -324,7 +324,7 @@
                         keyword: value,
                         page:1 
                     };
-                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsSearchClick.do', 'www.lge.co.kr/acecount/videotutorialsSearchClickm.do');
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsSearchClick.do', '/acecount/videotutorialsSearchClickm.do');
 
                     $.extend(self.param, param);
                     self.requestData();
@@ -354,13 +354,13 @@
             });
 
             self.$keywordWrap.find('.autocomplete-box').on('click', 'a', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsAutoClick.do', 'www.lge.co.kr/acecount/videotutorialsAutoClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsAutoClick.do', '/acecount/videotutorialsAutoClickm.do');
             });
             self.$keywordWrap.find('.recently-keyword').on('click', 'a', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsRecentClick.do', 'www.lge.co.kr/acecount/videotutorialsRecentClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsRecentClick.do', '/acecount/videotutorialsRecentClickm.do');
             });
             self.$keywordWrap.find('.popular-keyword').on('click', 'a', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsPopularClick.do', 'www.lge.co.kr/acecount/videotutorialsPopularClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/videotutorialsPopularClick.do', '/acecount/videotutorialsPopularClickm.do');
             });
 
             self.$resultPagination.on('pageClick', function(e) {

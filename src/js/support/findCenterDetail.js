@@ -173,11 +173,11 @@
             });
 
             $('.searchRoad-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailFindClick.do', 'www.lge.co.kr/acecount/centerDetailFindClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailFindClick.do', '/acecount/centerDetailFindClickm.do');
             });
 
             $('.btn-store-consult').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/CenterDetailVisitClick.do', 'www.lge.co.kr/acecount/CenterDetailVisitClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/CenterDetailVisitClick.do', '/acecount/CenterDetailVisitClickm.do');
             });
             
             $('.photo .ui_carousel_slider').vcCarousel({
