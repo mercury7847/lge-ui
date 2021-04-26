@@ -601,6 +601,9 @@
 		}
 		.plan-exhib-slide {
 			padding-bottom:32px;
+			&.slide-solo {
+				padding-bottom:0;
+			}
 			.inner {
 				.img {
 					border-radius:8px;
@@ -1335,6 +1338,9 @@
 			}
 			.plan-exhib-slide {
 				padding-bottom:24px;
+				&.slide-solo {
+					padding-bottom:0;
+				}
 				.inner {
 					> .img {
 						height:600px;
