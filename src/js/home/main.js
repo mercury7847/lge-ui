@@ -243,7 +243,17 @@ $(function () {
                 }
 
                 if(!isBenefit){
-                    $('.benefit-list-slide').vcCarousel({                        
+                    $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
+                        clearInterval(animCtrlers[2]);
+                        clearInterval(animCtrlers[3]);
+                        clearInterval(animCtrlers[4]);
+                    }).on("carouselafterchange", function(e, carousel, index){
+                        var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
+                        icons.css({opacity:.2})
+                        console.log(icons)
+                        icons.data("isReady", true)
+                        setIconAnimCtrler(icons);
+                    }).vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1                                
@@ -269,11 +279,9 @@ $(function () {
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
         var maxScale = 110;
-        var maxBlur = 4;
 
         $scenes.find('.img img').css({
-            width: maxScale + '%',
-            filter: 'blur(' + maxBlur + 'px)'
+            width: maxScale + '%'
         });
 
         function stopVisualAnim(){
@@ -285,19 +293,15 @@ $(function () {
                 clearInterval(visualAnimInterval);
 
                 var newwidth = maxScale;
-                var blur = maxBlur;
                 var currentImage = $scenes.eq(currentPage).find('.img img');
                 visualAnimInterval = setInterval(function(){
                     newwidth -= 0.5;
                     if(newwidth < 100) newwidth = 100;
-                    blur -= .2;
-                    if(blur < 0) blur = 0;
                     currentImage.css({
-                        width: newwidth + "%",
-                        filter: 'blur(' + blur + 'px)'
+                        width: newwidth + "%"
                     });
 
-                    if(newwidth == 100 && blur == 0) clearInterval(visualAnimInterval);
+                    if(newwidth == 100) clearInterval(visualAnimInterval);
                 }, 18);
             }
         }
@@ -395,8 +399,7 @@ $(function () {
                     }
 
                     $scenes.eq(currentPage).find('.img img').css({
-                        width: maxScale + '%',
-                        filter: 'blur(' + maxBlur + 'px)'
+                        width: maxScale + '%'
                     });
                     currentPage = idx;   
 

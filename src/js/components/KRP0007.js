@@ -677,7 +677,7 @@
             checkBtnFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
                     var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
-                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable") {
+                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable" && item.careshipOnlyFlag != "Y") {
                         return true
                     } else {
                         return false;
