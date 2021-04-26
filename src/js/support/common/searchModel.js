@@ -176,7 +176,11 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 if (lgkorUI.searchParamsToObject('mktModelCd')) {
                     opts.useCookie = false;
                     self.model.modelCode = self.model.mktModelCd = lgkorUI.searchParamsToObject('mktModelCd');
-                    self.hasModel = true;
+                    if (self.model.subCategory) {
+                        self.hasModel = true;   
+                    } else {
+                        self.hasModel = false;
+                    }
                 }
 
                 if (self.hasModel) {
@@ -205,13 +209,13 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$selectedModelBar.on('click', '.btn-add-product', function(e) {
                 e.preventDefault();
                 var href = $(this).attr('href');
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectProductRegClick.do', 'www.lge.co.kr/acecount/modelselectProductRegClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectProductRegClick.do', '/acecount/modelselectProductRegClickm.do');
                 location.href = href + '?modelCode=' + self.model.salesModelCode;
             });
 
             // 제품 재선택
             self.$selectedModelBar.on('click', '.btn-reset', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectReselectClick.do', 'www.lge.co.kr/acecount/modelselectReselectClickm.do');
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/modelselectReselectClick.do', '/acecount/modelselectReselectClickm.do');
                 self.reset();
             });
 
