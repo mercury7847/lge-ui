@@ -3738,9 +3738,9 @@
                 modelSimulator.closeProposeModel();
                 //modelSimulator.mobileStep(".simul_step2");
                 myPickBtnFn();
-                setTimeout(function() {
-                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-                }, 500);
+                // setTimeout(function() {
+                //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                // }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeMyPickModel();
