@@ -2359,14 +2359,15 @@ if (!window.JSON) {
         })();
     }
 
+    console.log('test',_configs.importBasePath);
     ///// require js setting //////////////////////////////////////
     var requireConfig = {
         baseUrl: _configs.importBasePath,
         skipDataMain: true,
         waitSeconds: 15,
         paths: {
-            'jquey':'/lg5-common/js/libs/jquery-2.2.4.min.js',
-            'vcui':'/lg5-common/js/vcui.min.js'
+            'jquery':'/lg5-common/js/libs/jquery-2.2.4.min',
+            'vcui':'/lg5-common/js/vcui.min'
 //            'dependency':'empty'
         },
         shim: {
@@ -2387,7 +2388,7 @@ if (!window.JSON) {
     core.define('vcui', function () {
         return core;
     });
-    
+
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,
