@@ -678,6 +678,7 @@ input[type=radio] {
                         top: 0;
                         border: none;
                         background: transparent;
+                        opacity: 0;
                         &:checked+label {
                             border: 1px solid #da0f47;
                             border-radius: 6px;
