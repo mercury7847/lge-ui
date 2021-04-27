@@ -51,6 +51,8 @@
 
     var isProgress = true;
 
+    var isBeforeUnload = true;
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
 
@@ -517,6 +519,11 @@
 
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
+
+        $(window).on('beforeunload', function(e){
+            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
+        });
+
     }
 
     function changeMaskingText(ipt){
@@ -1389,6 +1396,8 @@ console.log(sendata)
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
+                isBeforeUnload = false;
+                
                 var endtitle = "";
                 var endesc = "";
                 var endbntname = "";
