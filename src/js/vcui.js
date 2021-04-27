@@ -2363,12 +2363,7 @@ if (!window.JSON) {
     var requireConfig = {
         baseUrl: _configs.importBasePath,
         skipDataMain: true,
-        waitSeconds: 15,
-        paths: {
-            'jquey':'/lg5-common/js/libs/jquery-2.2.4.min.js',
-            'vcui':'/lg5-common/js/vcui.min.js'
-//            'dependency':'empty'
-        },
+        waitSeconds: 100,
         shim: {
             jquery: {
                 exports: 'jQuery'
@@ -2387,7 +2382,7 @@ if (!window.JSON) {
     core.define('vcui', function () {
         return core;
     });
-    
+
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,
