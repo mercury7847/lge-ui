@@ -1430,11 +1430,6 @@ function validatePhone(value){
             }
         });
 
-        ///퀵메뉴 쿠키 생성
-        if( lgkorUI.cookie.getCookie('accessPageFirst') != "done") {
-            lgkorUI.cookie.setCookie("accessPageFirst", "done", 365);
-        }
-
         if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
         }
