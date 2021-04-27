@@ -2363,7 +2363,7 @@ if (!window.JSON) {
     var requireConfig = {
         baseUrl: _configs.importBasePath,
         skipDataMain: true,
-        waitSeconds: 15,
+        waitSeconds: 100,
         shim: {
             jquery: {
                 exports: 'jQuery'
