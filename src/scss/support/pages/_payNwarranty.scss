@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
 .pay-warranty {
-    .tabs-wrap {
-        margin-bottom:48px;
+    @at-root &.pop-conts .tabs-contents,
+    .tabs-contents {
+        padding-top:48px;
         @include mobile {
-            margin-bottom:50px;
+            padding-top:40px;
         }
     }
     .scroll-x {
@@ -44,6 +45,9 @@
             @include mobile {
                 padding:0 16px;
                 border-radius:0;
+                @at-root .pay-warranty.pop-conts & {
+                    padding:0;
+                }
             }
             & + .section {
                 margin-top:80px;
@@ -157,6 +161,7 @@
         }
         img {
             max-width: 100%;
+            width:100%;
         }
     }
     
@@ -249,12 +254,6 @@
         align-items: center;
         .btn-link {
             margin-left: 24px;
-        }
-    }
-
-    &.pop-conts {
-        .tabs-contents {
-            padding-top: 0;
         }
     }
 
