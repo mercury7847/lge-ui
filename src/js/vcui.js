@@ -2359,17 +2359,11 @@ if (!window.JSON) {
         })();
     }
 
-    console.log('test',_configs.importBasePath);
     ///// require js setting //////////////////////////////////////
     var requireConfig = {
         baseUrl: _configs.importBasePath,
         skipDataMain: true,
         waitSeconds: 15,
-        paths: {
-            'jquery':'/lg5-common/js/libs/jquery-2.2.4.min',
-            'vcui':'/lg5-common/js/vcui.min'
-//            'dependency':'empty'
-        },
         shim: {
             jquery: {
                 exports: 'jQuery'
