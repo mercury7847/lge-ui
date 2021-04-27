@@ -29,7 +29,14 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 self.$el.prop('readonly', true);
             }
 
-
+            //접근성 관련 수정
+            self.$el.parents('.select-wrap').on('keydown', function (e) {
+                switch (e.keyCode) {
+                    case core.keyCode.ENTER:
+                        self.show();
+                        break;
+                }
+            });
         },
         _options: function _options(cb) {
             core.each(core.toArray(this.el.options), cb);
