@@ -1427,6 +1427,38 @@
                 display: block;
             }
         }
+        .app-alarm-button{
+            display:none;
+            position:absolute;
+            right:33px;
+            top:-2px;
+            width:29px;
+            height:36px;
+            background:url('/lg5-common/images/icons/icon-app-alarm.svg') no-repeat center center;
+            background-size:24px;
+            &.active{
+                display:block;
+            }
+            .app-alarm-count{
+                display:none;
+                position:absolute;
+                left:13px;
+                top:3px;
+                padding:2px 4px;
+                min-width:14px;
+                height:14px;
+                border-radius:7px;
+                background-color:#da0f47;
+                text-align:center;
+                line-height:10px;
+                font-weight:700;
+                font-size:10px;
+                color:#fff;
+                &.active{
+                    display:block;
+                }
+            }
+        }
         &.after-login {
             .btn-mypage {
                 &:after {
@@ -1577,7 +1609,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                right: 30px;
+                //right: 30px;
+                right: 66px;
             }
         }
         .KRP0005,
