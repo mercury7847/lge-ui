@@ -27,6 +27,11 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             self.$historyBtn = self.$history.find('.btn-expand');
             self.$closeBtn = self.$el.find('.btn-close');
             self.$historyPopup = $('#history-popup');
+
+            ///퀵메뉴 쿠키 생성
+            if( lgkorUI.getCookie('accessPageFirst') != "done") {
+                lgkorUI.setCookie("accessPageFirst", "done", false, 365);
+            }
         },
         _altChange : function($target, boolean){
             var $altText = $target.find('.blind');
