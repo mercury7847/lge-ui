@@ -45,9 +45,6 @@
             @include mobile {
                 padding:0 16px;
                 border-radius:0;
-                @at-root .pay-warranty.pop-conts & {
-                    padding:0;
-                }
             }
             & + .section {
                 margin-top:80px;
@@ -309,18 +306,27 @@
 
 #ratesWarrantyGuidePopup {
     max-width: 912px;
-    .img_box {
-        &.pc-only {
-            display: none;
-        }
-        &.pc-pop-only {
-            display: block;
+    .pay-warranty {
+        .img_box {
+            &.pc-only {
+                display: none;
+            }
+            &.pc-pop-only {
+                display: block;
+            }
         }
     }
     @include mobile {
-        .img_box {
-            &.pc-pop-only {
-                display: none;
+        .pay-warranty {
+            .section-area {
+                .section {
+                    padding:0;
+                }
+            }
+            .img_box {
+                &.pc-pop-only {
+                    display: none;
+                }
             }
         }
     }
