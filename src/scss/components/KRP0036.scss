@@ -9,6 +9,20 @@
 		@include mobile {
 			padding:0;
 		}
+
+		.title {
+			margin-bottom:24px;
+			font-size:32px;
+			font-weight:700;
+			line-height:52px;
+			text-align:center;
+			@include mobile {
+				margin-bottom:16px;
+				padding:0 20px;
+				font-size:24px;
+				line-height:33px;
+			}
+		}
 		
 		.csn-itr-cont {
 			.csn-itr-head {

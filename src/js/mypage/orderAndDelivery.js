@@ -418,7 +418,7 @@
     var paymentMethodConfirm;
     var arsAgree;
 
-    var START_DATE, END_DATE;
+    var START_DATE, END_DATE, SELECT_PERIOD;
 
     var CERTI_ID, BATCH_KEY;
 
@@ -482,6 +482,7 @@
         var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
+        SELECT_PERIOD = dateData.periodSelect;
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
@@ -524,6 +525,7 @@
         $('.inquiryPeriodFilter').on('dateFilter_submit', function(e, data){
             START_DATE = data.startDate;
             END_DATE = data.endDate;
+            SELECT_PERIOD = data.periodSelect;
 
             var tab = tabMenu.find('li[class=on]');
             TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
@@ -746,7 +748,6 @@
     }
 
     function sendDetailPage(dataID){
-        var dateData = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
         var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : TAB_FLAG == TAB_FLAG_CARE ? CARE_LIST : RECORD_LIST;
 
         var prodlist = listdata[dataID].productList;
@@ -758,9 +759,9 @@
             orderNumber: listdata[dataID].orderNumber,
             requestNo: listdata[dataID].requestNo,
             tabFlag: TAB_FLAG,
-            startDate: dateData.startDate,
-            endDate: dateData.endDate,
-            periodSelect: dateData.periodSelect,
+            startDate: START_DATE,
+            endDate: END_DATE,
+            periodSelect: SELECT_PERIOD,
             orderNumberList: orderNumberList
         }
 

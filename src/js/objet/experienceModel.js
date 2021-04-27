@@ -3656,6 +3656,11 @@
 
     $(document).ready(function() {
         $("html, body").scrollTop(0);
+        window.onpageshow = function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                location.reload();
+            }
+        }
         modelSimulator.init();
 
         $(document).on("click", function(e) {
@@ -3738,9 +3743,9 @@
                 modelSimulator.closeProposeModel();
                 //modelSimulator.mobileStep(".simul_step2");
                 myPickBtnFn();
-                setTimeout(function() {
-                    $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-                }, 500);
+                // setTimeout(function() {
+                //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                // }, 500);
             } else {
                 $(this).addClass("border");
                 modelSimulator.closeMyPickModel();
