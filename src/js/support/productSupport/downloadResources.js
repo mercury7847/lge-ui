@@ -251,7 +251,6 @@
         },
         setting: function() {
             var self = this;
-            var url = location.search;
             var data = $.extend({}, self.options);
 
             // 옵션
@@ -259,44 +258,6 @@
             self.manualUrl = self.$manualSec.data('manualUrl');
             self.driverUrl = self.$driverSec.data('driverUrl');
             self.isPSP = self.$cont.hasClass('psp');
-            
-            if (url.indexOf("?") > -1) {
-                var search = url.substring(1);
-                var searchObj = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-
-                for (var key in searchObj) {
-                    data[key] = decodeURIComponent(searchObj[key]);
-                    if (key == 'mktModelCd') data['modelCode'] = searchObj.mktModelCd;
-                }
-
-                data.category = $('#category').val();
-                data.categoryNm = $('#categoryNm').val();
-                data.subCategory = $('#subCategory').val();
-                data.subCategoryNm = $('#subCategoryNm').val();
-                if (!data.modelCode) {
-                    data.modelCode = $('#modelCode').val();
-                    data.productCode = $('#productCode').val();
-                }
-            } else {
-                if (!self.isPSP) {
-                    data.category = $('#category').val();
-                    data.categoryNm = $('#categoryNm').val();
-                    data.subCategory = $('#subCategory').val();
-                    data.subCategoryNm = $('#subCategoryNm').val();
-                    data.modelCode = $('#modelCode').val();
-                    data.productCode = $('#productCode').val();
-                }
-            }
-
-            if (self.isPSP) {
-                data.category = $('#category').val();
-                data.categoryNm = $('#categoryNm').val();
-                data.subCategory = $('#subCategory').val();
-                data.subCategoryNm = $('#subCategoryNm').val();
-                data.modelCode = $('#modelCode').val();
-                data.productCode = $('#productCode').val();
-            }
-
             self.isLogin = lgkorUI.isLogin;
             self.param = $.extend({}, data);
             self.manualParam = $.extend({}, data, {
@@ -531,18 +492,9 @@
 
             // 모델 선택 후 이벤트
             self.$cont.on('complete', function(e, data) {    
-                var param = {
-                    category: data.category,
-                    categoryNm: data.categoryNm,
-                    subCategory: data.subCategory,
-                    subCategoryNm: data.subCategoryNm,
-                    modelCode: data.modelCode,
-                    productCode: data.productCode
-                };
-
-                self.param = $.extend(self.param, param);
-                self.manualParam = $.extend(self.manualParam, param);
-                self.driverParam = $.extend(self.driverParam, param);
+                $.extend(self.param, data);
+                $.extend(self.manualParam, data);
+                $.extend(self.driverParam, data);
 
                 self.searchAllList();
             });
