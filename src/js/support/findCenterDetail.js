@@ -213,12 +213,7 @@
             $('.cont-wrap > .btn-close').on('click', function(e){
                 e.preventDefault();
     
-                var agent = window.navigator.userAgent || window.navigator.vendor || window.opera;
-                if (agent.toLocaleLowerCase().indexOf("kakaotalk")) {
-                    window.location.href = (/iPad|iPhone|iPod/.test(agent)) ? "kakaoweb://closeBrowser" : "kakaotalk://inappbrowser/close";
-                } else {
-                    window.close();
-                }
+                window.close();
             });
         });
 
@@ -241,12 +236,7 @@
         })
 
         $(document).on('click', '.btn-page-close', function(e){
-            var agent = window.navigator.userAgent || window.navigator.vendor || window.opera;
-            if (agent.toLocaleLowerCase().indexOf("kakaotalk")) {
-                window.location.href = (/iPad|iPhone|iPod/.test(agent)) ? "kakaoweb://closeBrowser" : "kakaotalk://inappbrowser/close";
-            } else {
-                window.close();
-            }
+            window.close();
             return false;
         })
     });
