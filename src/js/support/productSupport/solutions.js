@@ -207,13 +207,6 @@
                     }
                 }
 
-                data.category = $('#category').val();
-                data.categoryNm = $('#categoryNm').val();
-                data.subCategory = $('#subCategory').val();
-                data.subCategoryNm = $('#subCategoryNm').val();
-                data.modelCode = $('#modelCode').val();
-                data.productCode = $('#productCode').val();
-
                 self.param = data;
             },
             completeModel: function() {
