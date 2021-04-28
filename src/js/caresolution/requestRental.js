@@ -520,7 +520,7 @@
         });
 
         $(window).on('beforeunload', function(e){
-            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
+            if(isBeforeUnload) return '페이지를 벗어날 경우, 지금까지 작성한 내용이 사라집니다.';
         });
 
     }
