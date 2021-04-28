@@ -136,6 +136,7 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
 
             self._bindEventsByOpen();
             self.$el.addClass('open');
+            self.$el.find(prefixClass + 'toggle').attr('aria-expanded',true);
         },
         close: function close() {
             var self = this;
@@ -146,6 +147,7 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
             }
 
             self.$el.removeClass('open');
+            self.$el.find(prefixClass + 'toggle').attr('aria-expanded',false);
             clearTimeout(self.focusTimer);
             self._unbindEventsByClose();
         },
