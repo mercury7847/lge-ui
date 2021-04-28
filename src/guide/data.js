@@ -454,6 +454,11 @@ var res = {
 				
 			},
 			"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","","검수완료"]
+		},
+		"LGD" : {
+			"Event1" : {
+				"기획전1" : ["/html/BMC/smcpage.html","",""]
+			}
 		}
 	}
 }
