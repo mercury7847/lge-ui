@@ -110,7 +110,11 @@ $(document).ready(function() {
 
             //알림함 Count 표시
             if (/iPhone|iPad|iPod/i.test(agent)) {
-
+                var obj = new Object();
+                obj.command = "getUncheckedPushCount";
+                obj.callback ="LGEAPPalarmCount";
+                var jsonString= JSON.stringify(obj);
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             }else if(/Android/i.test(agent)) {
                 android.getUncheckedPushCount("LGEAPPalarmCount");
             }else{
