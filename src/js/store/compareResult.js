@@ -25,7 +25,7 @@
             else setAllView();
         });
 
-        $('div.compare-result').on('click','div.product-button a.btn',function(e){
+        $('div.compare-result').on('click','div.product-button a.buycart',function(e){
             e.preventDefault();
             var $li = $(this).parents('li');
             if($(this).hasClass("buycart")) {
