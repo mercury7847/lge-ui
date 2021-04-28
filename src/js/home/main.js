@@ -418,6 +418,14 @@ $(function () {
                     });
 
                     playVisualAnim();
+
+                    if(vcui.detect.isIOS) {
+                        if($contentWrap.hasClass('active')) {
+                            $contentWrap.css({'overflow':'auto'});
+                        } else {
+                            $contentWrap.css({'overflow':''});
+                        }
+                    }
                 });
             }, 100);
 
@@ -714,8 +722,15 @@ $(function () {
             });  
 
             /* 메인 테스트 */
-
-            $contentWrap.css({'overflow':'auto','height':winHeight});
+            if(vcui.detect.isIOS) {
+                if($contentWrap.hasClass('active')) {
+                    $contentWrap.css({'overflow':'auto','height':winHeight});
+                } else {
+                    $contentWrap.css({'overflow':'','height':winHeight});
+                }
+            } else {
+                $contentWrap.css({'overflow':'auto','height':winHeight});
+            }
             $('.contents').css({'overflow':'hidden', 'height':totalHeight});
             
             if(idx!==undefined){
