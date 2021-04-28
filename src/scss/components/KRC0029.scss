@@ -181,8 +181,8 @@
     }
 
     .ui_carousel_list {
-        margin:-1px 0;
-        padding:1px 0;
+        // margin:-1px 0;
+        // padding:1px 0;
         overflow: hidden;
     }
     .ui_carousel_slide {
@@ -194,6 +194,7 @@
     .ui_carousel_track {
         .ui_carousel_slide {
             display:none;
+            margin:2px 0;
             &:first-child {
                 display:block;
             }
