@@ -1347,7 +1347,7 @@
                             "cardNameCode":null,
                             "simpleReqFlag":null,
                             "cardSubName":null,
-                            "title":"이용시 월 최대 " + vcui.number.addComma(max) + "원 할인",
+                            "title":"월 최대 " + vcui.number.addComma(max) + "원 할인",
                             "maxSalePrice":0
                         }
                     ]
