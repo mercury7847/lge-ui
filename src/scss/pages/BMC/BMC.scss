@@ -500,6 +500,17 @@
         }
     }
 
+    .btn-dim {
+        display:none;
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:100;
+        background-color:rgba(#000, .7);
+    }
+
     // 당첨자 발표
     @import "MKT4007";
 
