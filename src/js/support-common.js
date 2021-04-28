@@ -183,13 +183,15 @@
             history.replaceState(null, '', '?'+url);
         },
         scrollTo: function($target, margin) {
-            $('html,body').stop().animate({scrollTop:$target.offset().top - (margin ? margin : 0)}, function() {
-                $target.focus();
-                if (!$target.is(':focus')) {
-                    $target.attr('tabindex', -1).focus().removeAttr('tabindex');
-                }
-                return false;
-            });
+            if ($target.length) {
+                $('html,body').stop().animate({scrollTop:$target.offset().top - (margin ? margin : 0)}, function() {
+                    $target.focus();
+                    if (!$target.is(':focus')) {
+                        $target.attr('tabindex', -1).focus().removeAttr('tabindex');
+                    }
+                    return false;
+                });
+            }
         },
         setAcecounter: function(pcUrl, moUrl) {
             try {
@@ -1514,7 +1516,7 @@ function validatePhone(value){
             if ($wrap.find('input:checkbox').filter(':checked').length == $wrap.find('input:checkbox').length) {
                 var $this = $(this);
                 var $curSection = $this.closest('.section').nextAll('.section:visible').eq(0);
-        
+                
                 lgkorUI.scrollTo($curSection, $('.prod-selected-wrap').outerHeight());
             }
         });
