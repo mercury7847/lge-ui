@@ -231,6 +231,13 @@
 }
 
 .search-keyword-area {
+    .recent-keyword {
+        .keyword-list {
+            li {
+                max-height:23px;
+            }
+        }
+    }
     .keyword-list {
         .no-data {
             padding: 0;
