@@ -1157,6 +1157,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             });
 
+            self.$el.on('focusin','.ui_carousel_slide',function(e){
+                var index = this.dataset.ui_carousel_index;
+                self.slideHandler(index, null, true);
+            });
+
             /*var self = this,
                 opt = self.options;
 
@@ -1544,10 +1549,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }),
                 $cloned = self.$slideTrack.find('.' + _V.CLONED);
 
+                //접근성 관련 수정
             self.$slides.add($cloned).attr({
                 'aria-hidden': 'true'
             }).find('a, input, button, select').attr({
-                'tabindex': '-1'
+                //'tabindex': '-1'
+                'tabindex': ''
             });
 
             if (self.$dots !== null) {
