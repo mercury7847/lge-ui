@@ -1437,7 +1437,7 @@
             background:url('/lg5-common/images/icons/icon-app-alarm.svg') no-repeat center center;
             background-size:24px;
             &.active{
-                display:block;
+                display:none;
             }
             .app-alarm-count{
                 display:none;
@@ -1609,8 +1609,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                //right: 30px;
-                right: 66px;
+                right: 30px;
+                //right: 66px;
             }
         }
         .KRP0005,
