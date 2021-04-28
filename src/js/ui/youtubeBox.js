@@ -123,6 +123,9 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                         overflow:"hidden"
                     });
                 }
+                setTimeout(function(){
+                    $(self.$videoLayer).find('iframe').focus();
+                }, 300);
             }else{
                 self.$el.append(self.$videoLayer);
             };
@@ -172,16 +175,24 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             $('body').removeClass('modal-open');
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
-                if(!ignoreOverflow){
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
+            if(!ignoreOverflow){
+                $('html, body').css({
+                    overflow:"visible"
+                });
+            }
+
+            if(self.$el.attr('data-type') == "youtube") {
+                self.$el.focus();
+            } else {
+                var t = self.$el.find('[data-type="youtube"]:eq(0)');
+                if(t.length > 0) {
+                    t.focus();
                 }
+            }
         },
 
         close: function(){
             var self = this;
-            
             self._removeVideoLayer();
         }
     });
