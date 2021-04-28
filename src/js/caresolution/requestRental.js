@@ -49,8 +49,25 @@
 
     var contractUserPhone = "";
 
+    var isProgress = true;
+
+    var isBeforeUnload = true;
+
     function init(){    
-        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {             
+        vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
+            if(vcui.detect.isIOS){
+                isProgress = false;
+
+                $('input[name=chkPrivacy], input[name=rentalAgree]').prop('disabled', true);
+
+                lgkorUI.alert("", {
+                    title: "죄송합니다.<br>현재 iOS에서는 케어솔루션/케어십 청약 서비스를 제공하지 않습니다. <br>케어솔루션 고객센터로 연락주시면<br>친절하게 안내 드리겠습니다.<br>케어솔루션 고객센터 전화하기<br>(전화)<a href='tel:1544-6351'>1544-6351</a>",
+                    ok: function(){
+                        location.href = "/";
+                    }
+                });
+            }
+
             setting();
             bindEvents();
         });
@@ -219,6 +236,12 @@
     //이벤트 등록...
     function bindEvents(){
         stepAccordion.on('accordionbeforeexpand', function(e, data){
+
+            if(!isProgress){
+                e.preventDefault();
+                return;
+            }
+
             if(data.index > step){
                 
                 if(!setNextStep(data.index)){
@@ -232,8 +255,12 @@
                 $('html, body').stop().animate({scrollTop:contop}, 350);
             }
         });
-
         $('.nextStep-btn').parent().hide();
+
+        if(!isProgress){
+            requestButton.prop("disabled", true)
+            return;
+        }
 
         requestButton.on('click', function(e){
             rentalRequest();
@@ -491,6 +518,11 @@
 
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
+
+        $(window).on('beforeunload', function(e){
+            if(isBeforeUnload) return '페이지를 벗어날 경우, 지금까지 작성한 내용이 사라집니다.';
+        });
+
     }
 
     function changeMaskingText(ipt){
@@ -1363,6 +1395,8 @@ console.log(sendata)
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
+                isBeforeUnload = false;
+                
                 var endtitle = "";
                 var endesc = "";
                 var endbntname = "";

@@ -98,7 +98,7 @@
             li {
                 width:calc((100% - 144px) / 4);
                 @include mobile {
-                    width:280px;
+                    width:100%;
                 }
             }
         }
@@ -115,10 +115,15 @@
             margin-right:52px;
             vertical-align:top;
             @include mobile {
+                display:block;
                 width:280px;
+                margin-top:16px;
                 margin-right:48px;
+                &:first-child {
+                    margin-top:0;
+                }
             }
-            &::after {
+            &:after {
                 content:' ';
                 position:absolute;
                 top:50%;
@@ -129,6 +134,7 @@
                 background:url('/lg5-common/images/icons/icon-arrow-left-b-56.svg') center no-repeat;
                 background-size:100%;
                 @include mobile {
+                    display:none;
                     // top:16px;
                     right:-40px;
                     width:32px;

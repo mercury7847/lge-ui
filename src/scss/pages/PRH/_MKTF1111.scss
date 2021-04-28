@@ -253,11 +253,11 @@
                     max-width: 1146px;
                     margin: 0 auto;
                     transform: translateY(calc(50% - 232px));
-                    .video-area {
-                        .btn-video {
-                            transform: translate(-50%,-50%);
-                        }
-                    }
+                    // .video-area {
+                    //     .btn-video {
+                    //         transform: translate(-50%,-50%);
+                    //     }
+                    // }
                 }
             }
             @include mobile {

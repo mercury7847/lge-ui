@@ -64,7 +64,6 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
 
                 self.$video = self._getCurrentVideo();
-                console.log(self.$video);
                 
                 var name = $(this).attr('name');
                 if(name == "pause"){

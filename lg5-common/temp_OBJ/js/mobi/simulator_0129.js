@@ -2096,7 +2096,7 @@ var go_shop_model = "";
                     if (errorYN == "Y") {
                         let errorTmme = [];
                         for (let i = 0; i < 10; i++) {
-                            errorTmme.push(30 * i);
+                            errorTmme.push(50 * i);
                             setTimeout(function() {
                                 $("#objet_select_slider .swiper-wrapper").css("transform", errorEx);
                             }, errorTmme[i]);

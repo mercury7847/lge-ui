@@ -67,8 +67,14 @@
                         self.closePopup();
                     }
                     self.$floatingWrap.removeClass('open');
+                    //닫기
+                    self.moreButton.attr('aria-expanded',false);
+                    self.moreButton.find('span').text('더보기 열기');
                 } else {
                     self.$floatingWrap.addClass('open');
+                    //열기
+                    self.moreButton.attr('aria-expanded',true);
+                    self.moreButton.find('span').text('더보기 닫기');
                 }
             });
 
@@ -88,7 +94,7 @@
                     //
                     e.preventDefault();
                     var href = $(this).attr('href');
-                    if(href) {
+                    if(href && href.replace("#", "").length > 0) {
                         location.href = href;
                     }
                 }

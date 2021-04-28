@@ -80,6 +80,12 @@ $(function() {
         });
         
 
+        $('.signature-hero').focusout(function(e){
+            setTimeout(function(){
+                $('.next-arr a:eq(0)').trigger('click');
+            },300);
+        });
+
         $window.on('floatingTop', function(){
             // currentPage = 0;
             // currentStep = 1;
@@ -442,7 +448,7 @@ $(function() {
                     $video.data('loaded', true);
                     $wrap.trigger('videoLoaded');
                     oVideo.play();
-                }).trigger('load');                        
+                }).trigger('load');
             }
 
             createVideoObject();

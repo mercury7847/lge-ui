@@ -14,8 +14,8 @@
                 self.$contents = $('div.lnb-contents');
                 self.$tagLists = self.$contents.find('ul.tag-lists');
                 var $btnGroup = self.$contents.find('div.btn-group');
-                self.$resetButton = $btnGroup.find('button:eq(0)');
-                self.$submitButton = $btnGroup.find('button:eq(1)'); 
+                //self.$resetButton = $btnGroup.find('button:eq(0)');
+                self.$submitButton = $btnGroup.find('button'); 
             },
 
             bindEvents: function() {
@@ -25,9 +25,9 @@
                     self.changedSelectTagCheck();
                 });
 
-                self.$resetButton.on('click', function(e) {
-                    self.resetSelectTag();
-                });
+                // self.$resetButton.on('click', function(e) {
+                //     self.resetSelectTag();
+                // });
 
                 self.$submitButton.on('click', function(e) {
                     self.requestData();
@@ -115,10 +115,10 @@
             buttonDisableBySelectedTag: function(selectCount, isChangeSelectedTag) {
                 var self = this;
                 if(isChangeSelectedTag) {
-                    self.$resetButton.removeAttr('disabled');
+                    // self.$resetButton.removeAttr('disabled');
                     self.$submitButton.removeAttr('disabled');
                 } else {
-                    self.$resetButton.attr('disabled',true);
+                    // self.$resetButton.attr('disabled',true);
                     self.$submitButton.attr('disabled',true);
                 }
                 self.$submitButton.find('em.count').text('('+selectCount+')');
