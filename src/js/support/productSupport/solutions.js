@@ -519,7 +519,9 @@
                         subCategory: data.subCategory,
                         subCategoryNm: data.subCategoryNm,
                         modelCode: data.modelCode,
-                        productCode: data.productCode
+                        productCode: data.productCode,
+                        keywords: self.param.keywords,
+                        keyword: self.param.keyword
                     };
 
                     lgkorUI.showLoading();
