@@ -109,6 +109,7 @@ $(document).ready(function() {
             }
 
             //알림함 Count 표시
+            /*
             if (/iPhone|iPad|iPod/i.test(agent)) {
                 var obj = new Object();
                 obj.command = "getUncheckedPushCount";
@@ -120,6 +121,7 @@ $(document).ready(function() {
             }else{
                 //console.log("Count Update");
             }
+            */
 
             //알림함 버튼 이벤트
             $(".app-alarm-button").on({

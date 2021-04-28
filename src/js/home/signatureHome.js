@@ -442,9 +442,9 @@ $(function() {
                     $video.data('loaded', true);
                     $wrap.trigger('videoLoaded');
                     oVideo.play();
-                }).trigger('load');                        
+                }).trigger('load');
             }
-
+            
             createVideoObject();
         }
 
