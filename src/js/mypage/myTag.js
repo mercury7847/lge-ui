@@ -14,8 +14,8 @@
                 self.$contents = $('div.lnb-contents');
                 self.$tagLists = self.$contents.find('ul.tag-lists');
                 var $btnGroup = self.$contents.find('div.btn-group');
-                //self.$resetButton = $btnGroup.find('button:eq(0)');
-                self.$submitButton = $btnGroup.find('button'); 
+                self.$resetButton = $btnGroup.find('button:eq(0)');
+                self.$submitButton = $btnGroup.find('button:eq(1)'); 
             },
 
             bindEvents: function() {
