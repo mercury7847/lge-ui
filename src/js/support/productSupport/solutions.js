@@ -229,9 +229,7 @@
                     self.setBanner(data);
                     self.setPopularKeyword(data);
                     self.setFilter(data);
-                    if (self.param.topicNm != '전체') {
-                        self.setSubFilter(data);
-                    }
+                    self.setSubFilter(data);
                     self.setSolutionsList(data);
                     self.setKeyword(param);
 
@@ -311,6 +309,12 @@
                     });
                     self.$solutionsFilter.find('.filter-list').html(htmlPC);
                     self.$selectTopic.html(htmlM);
+                    self.$selectTopic.prop('disabled', false);
+                    self.$selectTopic.vcSelectbox('update');
+                } else {
+                    self.$solutionsFilter.empty();
+                    self.$selectTopic.html('<option value="" class="placeholder">증상 선택</option>');
+                    self.$selectTopic.prop('disabled', true);
                     self.$selectTopic.vcSelectbox('update');
                 }
             },
@@ -320,30 +324,28 @@
                 var subFilterArr = data.subFilterList instanceof Array ? data.subFilterList : [],
                     htmlPC = htmlM = '';
                 
-                if (subFilterArr.length) {
-                    if (self.param.topicNm != '전체') {
-                        self.$solutionsFilter.empty();  
-                        self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {
-                            back: true,
-                            name: param.topicNm
-                        }));
+                if (subFilterArr.length && self.param.topicNm != '전체') {
+                    self.$solutionsFilter.empty();  
+                    self.$solutionsFilter.html(vcui.template(filterHeadTemplate, {
+                        back: true,
+                        name: param.topicNm
+                    }));
 
-                        subFilterArr.forEach(function(item) {
-                            item.subType = true;
-                            item.active = item.name == param.subTopicNm ? true : false; 
-                            htmlPC += vcui.template(filterTemplate, item);
-                            htmlM += vcui.template(filterOptionTemplate, item);
-                        });
+                    subFilterArr.forEach(function(item) {
+                        item.subType = true;
+                        item.active = item.name == param.subTopicNm ? true : false; 
+                        htmlPC += vcui.template(filterTemplate, item);
+                        htmlM += vcui.template(filterOptionTemplate, item);
+                    });
 
-                        self.$solutionsFilter.find('.filter-list').html(htmlPC);
-                        self.$selectSubTopic.html(htmlM);
-                        self.$selectSubTopic.prop('disabled', false);
-                        self.$selectSubTopic.vcSelectbox('update');
-                    } else {
-                        self.$selectSubTopic.html('<option value="" class="placeholder">세부증상 선택</option>');
-                        self.$selectSubTopic.prop('disabled', true);
-                        self.$selectSubTopic.vcSelectbox('update');
-                    }
+                    self.$solutionsFilter.find('.filter-list').html(htmlPC);
+                    self.$selectSubTopic.html(htmlM);
+                    self.$selectSubTopic.prop('disabled', false);
+                    self.$selectSubTopic.vcSelectbox('update');
+                } else {
+                    self.$selectSubTopic.html('<option value="" class="placeholder">세부증상 선택</option>');
+                    self.$selectSubTopic.prop('disabled', true);
+                    self.$selectSubTopic.vcSelectbox('update');
                 }
             },
             setSolutionsList: function(data) {
