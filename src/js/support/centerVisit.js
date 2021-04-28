@@ -110,6 +110,7 @@
 
             // 엔지니어
             self.$engineerResult = self.$cont.find('.engineer-to-visit');
+            self.$engineerOpener = $('[data-href="#choiceEngineerPopup"]');
             self.$engineerPopup = $('#choiceEngineerPopup');
             self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
 
@@ -291,6 +292,10 @@
         bindEvent: function() {
             var self = this;
 
+            $('[data-href="#ratesWarrantyGuidePopup"]').on('click', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/visitInfoClick.do', '/acecount/visitInfoClickm.do');
+            });
+
             // 모델 재선택 하기 후 이벤트
             self.$cont.on('reset', function(e) {
                 self.reset();
@@ -400,7 +405,8 @@
             });
 
             // 엔지니어 선택 팝업 오픈
-            $('[data-href="#choiceEngineerPopup"]').on('click', function() {
+            self.$engineerOpener.on('click', function() {
+                var $this = $(this);
                 var url = self.$engineerPopup.data('engineerListUrl');
                 var data = $.extend(true, {}, self.data),
                     param = {
@@ -429,13 +435,13 @@
                         } else {
                             lgkorUI.alert('', {
                                 title: '방문 가능한 다른 엔지니어가 없습니다.'
-                            });
+                            }, $this[0]);
                         }
                     } else {
                         if (data.resultMessage) {
                             lgkorUI.alert("", {
                                 title: data.resultMessage
-                            });
+                            }, $this[0]);
                         }
                     }
                     lgkorUI.hideLoading();
@@ -443,7 +449,11 @@
             });
 
             self.$engineerSlider.on('carouselreinit', function() {
-                $('#choiceEngineerPopup').vcModal();
+                self.$engineerPopup.vcModal();
+            });
+
+            self.$engineerPopup.on('modalhidden', function() {
+                self.$engineerOpener.focus();
             });
 
             self.$stepCenter.on('click', '.btn-center', function() {
@@ -495,8 +505,8 @@
                     subToic : $('input[name=subTopic]:checked').val(),
                     productCode : $('#productCode').val(),
                     page: 1
-                };   
-
+                };
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/visitSolutionsClick.do', '/acecount/visitSolutionsClickm.do');
                 self.setSolutions(param, false);
             });
 
@@ -563,8 +573,6 @@
                             });
                         }
                     }
-                    
-                    lgkorUI.scrollTo(self.$stepInput, $('.prod-selected-wrap').outerHeight());
                 });
             });
 
@@ -790,11 +798,11 @@
                             ok: function() {
                                 location.href = data.location;
                             }
-                        });
+                        }, self.$searchUserAdressButton[0]);
                     } else{
                         lgkorUI.alert("", {
                             title: data.alert.title
-                        });
+                        }, self.$searchUserAdressButton[0]);
                     }
                 }
             });
@@ -803,6 +811,7 @@
         // 현재 위치 검색
         _setCurrentSearch: function() {
             var self = this;
+            var opener = self.$searchCurrentButton[0];
             var searchCurrentSearch = function() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -819,13 +828,13 @@
                         lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                             title: '현재 위치 정보',
                             typeClass: 'type2'
-                        });
+                        }, opener);
                     }); 
                 } else {
                     lgkorUI.alert('위치 기반 서비스를 제공하지 않습니다.', {
                         title: '현재 위치 정보',
                         typeClass: 'type2'
-                    });
+                    }, opener);
                 }
             };
             var obj ={
@@ -840,12 +849,12 @@
                     lgkorUI.alert('현재 위치를 찾을 수 없습니다.', {
                         title: '현재 위치 정보',
                         typeClass: 'type2'
-                    });
+                    }, opener);
                 }};
             var desc = '<p>고객님께서 제공하시는 위치 정보는 현재 계신 위치에서 직선 거리 기준으로 가까운 센터 안내를 위해서만 이용 됩니다. <br><br>또한 상기 서비스 제공  후 즉시 폐기되며, 별도 저장되지 않습니다. <br><br>고객님의 현재 계신 위치 정보 제공에 동의하시겠습니까?</p>';
                 
             if (!cookie.getCookie('geoAgree')) {
-                lgkorUI.confirm(desc, obj);
+                lgkorUI.confirm(desc, obj, opener);
             } else {
                 searchCurrentSearch();
             }

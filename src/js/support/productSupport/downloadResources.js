@@ -1,7 +1,7 @@
 (function() {
     
     var manualListTemplate = 
-        '<li>' +
+        '<li {{#if typeof seq != "undefined"}}data-seq="{{seq}}"{{/if}} {{#if typeof language_list != "undefined"}}data-language="{{language_list}}"{{/if}} {{#if typeof date != "undefined"}}data-date="{{date}}"{{/if}} {{#if typeof fileId != "undefined"}}data-file-id="{{fileId}}"{{/if}}>' +
             '<p class="tit">{{type}}</p>' +
             '<p class="desc">{{title}}</p>' +
             '<div class="info-wrap">' +
@@ -17,7 +17,7 @@
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
                     '{{# for (var i = 0; i < file.length; i++) { #}}' +
-                    '<a href="{{file[i].src}}" class="btn border size btn-download"><span>{{file[i].type}}</span></a>' +
+                    '<a href="{{file[i].src}}" class="btn border size btn-download" data-type="{{file[i].type}}"><span>{{file[i].type}}</span></a>' +
                     '{{# } #}}' +
                 '</div>' +
             '</div>' +
@@ -168,6 +168,8 @@
             $banner.removeClass('is-active');
         }
     }
+
+    var detect = vcui.detect;
     
     var download = {
         options: {
@@ -207,7 +209,7 @@
             self.$fileDetailPopup = $('#fileDetailPopup');
 
             vcui.require(['ui/validation', 'support/common/searchModel.min'], function () {
-                if (vcui.detect.isMobileDevice) {
+                if (detect.isMobileDevice) {
                     var emailRegister = {
                         userEmail : {
                             required: true,
@@ -307,7 +309,8 @@
         },
         setManualList: function(data) {
             var self = this;
-            var $list = self.$manualSec.find('.download-list'),
+            var $listWrap  = self.$manualSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$manualSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [];
                 page = data.listPage,
@@ -319,10 +322,12 @@
                 listArr.forEach(function(item) {
                     html += vcui.template(manualListTemplate, item);
                 });
-                $list.append(html).show();
+                $list.append(html);
+                $listWrap.show();
                 $noData.hide();
             } else {
-                $list.hide().empty();
+                $listWrap.hide();
+                $list.empty();
                 $noData.show();
             }
 
@@ -337,7 +342,8 @@
         },
         setDriverList: function(data) {
             var self = this;
-            var $list = self.$driverSec.find('.download-list'),
+            var $listWrap = self.$driverSec.find('.download-list-wrap'),
+                $list = $listWrap.find('.download-list'),
                 $noData = self.$driverSec.find('.no-data');
             var listArr = data.listData instanceof Array ? data.listData : [],
                 page = data.listPage,
@@ -347,7 +353,8 @@
         
             if (listArr.length) {
                 html = vcui.template(driverListTemplate, data);
-                $list.html(html).show();
+                $list.html(html);
+                $listWrap.show();
                 $list.find('>li').each(function(i) {
                     var $this = $(this);
                     for (var key in listArr[i]) {
@@ -362,7 +369,8 @@
                 self.$driverPagination.show();
                 self.$driverPagination.pagination('update', page);
             } else {
-                $list.html('').hide();
+                $listWrap.hide();
+                $list.html('');
                 $noData.show();
                 self.$driverPagination.hide();
             }
@@ -411,20 +419,42 @@
             var self = this;
             var model = self.param.modelCode;
             
-            self.$surveyWrap.find('.point').html(model);
-            self.$surveyPopup.find('.model').html(model);
-        
-            for (var key in data) {
-                self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+            if (data) {
+                self.$surveyWrap.find('.point').html(model);
+                self.$surveyPopup.find('.model').html(model);
+            
+                for (var key in data) {
+                    self.$surveyPopup.find('[name='+key+']').length && self.$surveyPopup.find('[name='+key+']').val(data[key]);
+                }
             }
         },
         searchAllList: function() {
             var self = this;
             var param = $.extend({}, self.param);
-
+            lgkorUI.setAcecounter('www.lge.co.kr/acecount/driverList.do', '/acecount/driverListm.do');            
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxDataPost(self.resultUrl, param, function(result){
+            lgkorUI.requestAjaxData(self.resultUrl, param, function(result){
                 var data = result.data;
+
+                if (result.status == 'fail') {
+                    var data = {
+                        manual: {
+                            listPage: {
+                                totalCount: 0
+                            }
+                        },
+                        driver: {
+                            osOption: '',
+                            listPage: {
+                                totalCount: 0
+                            }
+                        },
+                        satisfy: ''
+                    }
+                    self.$surveyWrap.hide();
+                } else {
+                    self.$surveyWrap.show();
+                }
 
                 self.setManualList(data.manual);
                 self.setDriverList(data.driver);
@@ -450,7 +480,7 @@
                 self.setSurvey(data.satisfy);
 
                 lgkorUI.hideLoading();
-            });
+            }, 'POST', 'json' ,true);
         },
         searchManualList: function() {
             var self = this;
@@ -621,6 +651,24 @@
                 }
             });
 
+            self.$fileDetailPopup.on('click', '.btn-download', function() {
+                lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', '/acecount/driveDownloadClickm.do');
+            });
+
+            self.$manualSec.on('click', '.btn-download', function() {
+                var fileType = $(this).data('type').toLowerCase();
+                
+                if (fileType == 'pdf') {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualPDF.do', '/acecount/driveManualPDFm.do');
+                } else  if (fileType == 'zip') {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualZIP.do', '/acecount/driveManualZIPm.do');
+                } else if (fileType == 'html') {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualHTML.do', '/acecount/driveManualHTMLm.do');
+                } else if (fileType == 'chm') {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveManualCHM.do', '/acecount/driveManualCHMm.do');
+                }
+            });
+
             // 다운로드 버튼 클릭
             self.$driverSec.on('click', '.btn-download', function(e){
                 var $this = $(this);
@@ -628,26 +676,15 @@
                 var $item = $this.closest('li');
                 var data = $item.data();
 
-                if( vcui.detect.isMobileDevice) {
+                if (detect.isMobileDevice) {
                     e.preventDefault();
                     for(var key in data) {
                         $('#fileSendToEmail').data(key, data[key]);
                     }
                     $('#fileSendToEmail').data('fileUrl', fileUrl).vcModal();
+                } else {
+                    lgkorUI.setAcecounter('www.lge.co.kr/acecount/driveDownloadClick.do', '/acecount/driveDownloadClickm.do');
                 }
-
-                // 테스트 
-                // e.preventDefault();
-                // $.ajax({
-                //     type : "GET",
-                //     url : fileUrl,
-                //     dataType : 'json',
-                //     timeout : 180000
-                // }).done(function (result) {
-                //     console.log(result)
-                // }).fail(function(err){
-                //     console.log('ajaxFail', err);
-                // });
             })
 
             //이메일 주소 입력팝업 보내기 버튼 클릭시 

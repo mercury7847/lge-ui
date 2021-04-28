@@ -83,6 +83,12 @@
         .on('tabchange', function(e, data){
             $('.err-block').hide();
         });
+
+        if(!vcui.detect.isMobileDevice){
+            $('#popup-nodata').find('.pop-conts a').on('click', function(e){
+                e.preventDefault();
+            })
+        }
     }
 
     function loginChecked(){
@@ -121,7 +127,7 @@
                         title: result.data.alert.title
                     });
                 } else{
-                    $('#popup-nodata').vcModal();
+                    $('#popup-nodata').vcModal({opener:$('.non-members .confirm-btn')});
                 }
             }
             lgkorUI.hideLoading();

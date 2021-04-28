@@ -110,7 +110,7 @@
                 position:relative;
                 width:59%;
                 padding-left:68px;
-                padding-right:56px;
+                // padding-right:56px;
                 word-break:keep-all;
                 &::before {
                     position:absolute;
@@ -278,11 +278,20 @@
     // 주문조회 로그인 안내 팝업
     .non-members-login {
         text-align: center;
+        &.align-left {
+            text-align:left;
+        }
         .hello-msg {
-            margin-bottom:20px;
+            // margin-bottom:20px;
             @include font-medium;
+            & + .hello-desc {
+                margin-top:20px;
+            }
         }
         .hello-desc {
+            & + .hello-desc {
+                margin-top:20px;
+            }
             @include font-medium;
             word-break:keep-all;
             em {

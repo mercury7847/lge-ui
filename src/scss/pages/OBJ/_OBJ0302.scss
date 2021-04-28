@@ -985,7 +985,7 @@ h2.title {
                             text-align: center;
                             color: #000000;
                             @include mobile {
-                                padding: 0 30px;
+                                padding: 0 30px 0 54px;
                             }
                         }
                     }
@@ -1118,10 +1118,10 @@ h2.title {
                             color: #000000;
                             font-size: 14px;
                             text-align: center;
-                            padding: 0 40px;
+                            padding: 0 40px 0 64px;
                             @include mobile {
                                 font-size: 13px;
-                                padding: 0 15px;
+                                padding: 0 15px 0 39px;
                             }
                         }
                         .btn_wrap {
@@ -1139,18 +1139,19 @@ h2.title {
 }
 
 .total_price_info_wrap {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 202;
-    background: #ffffff;
-    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
-    transform: translateY(100%);
-    transition-duration: .5s;
+    // position: fixed;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // z-index: 202;
+    // background: #ffffff;
+    // box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
+    // transform: translateY(100%);
+    // transition-duration: .5s;
     &.is_active {
-        transform: translateY(0%);
+        // transform: translateY(0%);
         .total_result_price {
+            display: none;
             position: absolute;
             top: calc(100% - 80px);
             box-shadow: none;
@@ -1183,13 +1184,16 @@ h2.title {
     .total_price_info_body {
         position: relative;
         max-width: 1380px;
-        padding-bottom: 110px;
+        //padding-bottom: 110px;
+        padding: 40px;
         margin: 0 auto;
         text-align: center;
         @include mobile {
-            padding-bottom: 60px;
+            //padding-bottom: 60px;
+            padding: 15px;
         }
         .btn_price_close {
+            display: none;
             width: 24px;
             height: 24px;
             margin: 10px 0 15px 0;
@@ -1239,7 +1243,8 @@ h2.title {
                                     position: relative;
                                     padding-bottom: 30px;
                                     @include mobile {
-                                        padding: 0 25px 30px 25px;
+                                        //padding: 0 25px 30px 25px;
+                                        padding: 0 10px 30px 10px;
                                     }
                                     li {
                                         display: flex;
@@ -1270,8 +1275,8 @@ h2.title {
                                             left: 0;
                                             right: 0;
                                             @include mobile {
-                                                left: 25px;
-                                                right: 25px;
+                                                left: 10px;
+                                                right: 10px;
                                             }
                                             .product_name {
                                                 color: #000000;
@@ -1279,19 +1284,34 @@ h2.title {
                                             .product_price {
                                                 font-size: 18px;
                                                 color: #000000;
-                                                em {}
+                                                .before_price {
+                                                    margin-right: 20px;
+                                                    color: #767676;
+                                                    text-decoration: line-through;
+                                                    font-size: 16px;
+                                                    font-weight: 400;
+                                                    @include mobile {
+                                                        margin-right: 10px;
+                                                    }
+                                                    em {}
+                                                }
+                                                .after_price {
+                                                    em {}
+                                                }
                                             }
                                         }
                                     }
                                 }
                                 .err-msg {
-                                    position: absolute;
-                                    left: 7.5%;
-                                    right: 7.5%;
-                                    bottom: 20px;
+                                    // position: absolute;
+                                    // left: 7.5%;
+                                    // right: 7.5%;
+                                    //bottom: 20px;
+                                    // bottom: 10px;
+                                    margin-top: 15px;
                                     color: #000000;
                                     font-size: 14px;
-                                    text-align: center;
+                                    text-align: left;
                                     @include mobile {
                                         // left: 15px;
                                         // right: 15px;
@@ -1319,7 +1339,7 @@ h2.title {
         height: 80px;
         transition-duration: 1s;
         background: #f4f4f4;
-        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
+        //box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
         z-index: 5;
         @include mobile {
             top: -60px;
@@ -1607,6 +1627,21 @@ h2.title {
                         }
                     }
                 }
+                &.nodata {
+                    margin: 0 auto;
+                    .comment {
+                        display: block;
+                        padding-top: 50px;
+                        font-size: 16px;
+                        color: #999999;
+                        background: url('/lg5-common/images/OBJ/experience/ico_noMyPick.png') center top no-repeat;
+                        @include mobile {
+                            padding-top: 35px;
+                            font-size: 13px;
+                            background-size: 23px 22px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -1616,6 +1651,7 @@ h2.title {
 .btn_myPick_model_sel {
     position: relative;
     width: 100px;
+    overflow: visible;
     @include mobile {
         width: 70px;
     }

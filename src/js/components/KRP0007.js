@@ -185,6 +185,7 @@
                 self.savedPLPData = {};
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
+                self.savedPLPData.isNew = false;
                 
                 self.setting();
                 self.bindEvents();
@@ -217,8 +218,8 @@
                     self.filterLayer.updateFilter(savedFilterArr);
     
                     //스토리지에 저장된 필터 체크
-                    //페이지에 선언된 필터와 비교해서 합침
-                    var storageFilters = lgkorUI.getStorage(storageName);
+                    //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
+                    var storageFilters = {};//lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
 
                     var change = false;
@@ -243,7 +244,9 @@
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
-                            self.$productList.empty();
+                            if(self.savedPLPData.isNew) {
+                                self.$productList.empty();
+                            }
                             //ajax로 요청했던 리스트 데이타 복구
                             self.updateProductList(self.savedPLPData.listData, true);
                             //페이지 정보 복구
@@ -571,6 +574,7 @@
                         self.$productList.empty();
                         self.savedPLPData.listData = [];
                         self.savedPLPData.pagination = {page:0, totalCount:0};
+                        self.savedPLPData.isNew = true;
                     }
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
@@ -673,7 +677,7 @@
             checkBtnFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
                     var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
-                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable") {
+                    if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable" && item.careshipOnlyFlag != "Y") {
                         return true
                     } else {
                         return false;
@@ -817,37 +821,8 @@
 
                 item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
 
+                item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
-
-            //     '{{#if checkPriceFlag}}'+
-            //     '{{#if bizType == "CARESOLUTION"}}' +
-            //         '<div class="price-area care">' +
-            //             '<div class="total-price">' +
-            //                 '<em class="text">기본 월 요금</em>' +
-            //                 '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
-            //             '</div>' +
-            //             '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
-            //         '</div>' +
-            //     '{{#else}}' +
-            //         '<div class="price-area">' +
-            //             '{{#if obsTotalDiscountPrice}}'+
-            //                 '{{#if obsOriginalPrice}}<div class="original">' +
-            //                     '<em class="blind">판매가격</em>' +
-            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //                 '{{#if obsSellingPrice}}<div class="total">' +
-            //                     '<em class="blind">총 판매가격</em>' +
-            //                     '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //             '{{#else}}'+
-            //                 '{{#if obsOriginalPrice}}<div class="total">' +
-            //                     '<em class="blind">총 판매가격</em>' +
-            //                     '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-            //                 '</div>{{/if}}' +
-            //             '{{/if}}'+
-            //         '</div>' +
-            //     '{{/if}}' +
-            // '{{/if}}'+
 
                 return vcui.template(productItemTemplate, item);
             },

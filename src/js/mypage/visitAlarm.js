@@ -154,7 +154,7 @@
 
                     var date = $(this).attr('data-date');
                     var time = $(this).attr('data-time');
-                    self.requestEnableVisitDay($li, date, time);
+                    self.requestEnableVisitDay($li, date, time, $(this));
 
                     /*
                     //선택되었던 날짜 초기화
@@ -285,7 +285,7 @@
                 });
             },
 
-            requestEnableVisitDay: function ($dm, date, time) {
+            requestEnableVisitDay: function ($dm, date, time, opener) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-day-url');
                 var $list = self.$calendarTable.find('tbody');
@@ -359,7 +359,7 @@
                     self.$timeTableWrap.hide();
                     self.$timeTableWrapFirst.show();
                     self.$timeTableWrapNoData.hide();
-                    self.$popupChangeVisitDate.vcModal();
+                    self.$popupChangeVisitDate.vcModal({opener:opener});
                 }); 
             },
 

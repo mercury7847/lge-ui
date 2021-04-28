@@ -67,8 +67,14 @@
                         self.closePopup();
                     }
                     self.$floatingWrap.removeClass('open');
+                    //닫기
+                    self.moreButton.attr('aria-expanded',false);
+                    self.moreButton.find('span').text('더보기 열기');
                 } else {
                     self.$floatingWrap.addClass('open');
+                    //열기
+                    self.moreButton.attr('aria-expanded',true);
+                    self.moreButton.find('span').text('더보기 닫기');
                 }
             });
 
@@ -88,7 +94,7 @@
                     //
                     e.preventDefault();
                     var href = $(this).attr('href');
-                    if(href) {
+                    if(href && href.replace("#", "").length > 0) {
                         location.href = href;
                     }
                 }
@@ -164,13 +170,15 @@
                 self.listData = arr;
 				self.$list.empty();
 
-                var popuplistItemTemplate = '<li>' +
+                var popuplistItemTemplate = '<li{{#if disabledReason}} class="disabled"{{/if}}>' +
                     '<div class="img"><a href="{{modelUrlPath}}"><img data-temp-src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
-                    '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if price}}{{price}}원{{/if}}</dd></a></dl>' +
+                    '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if disabledReason}}{{disabledReason}}{{#else}}{{#if price}}{{price}}원{{/if}}{{/if}}</dd></a></dl>' +
                 '</li>'
 
 				arr.forEach(function(item, index) {
-                    item.price = item.obsTotalDiscountPrice ? vcui.number.addComma(item.obsSellingPrice) : null;
+                    var price = item.obsSellingPrice ? (item.obsSellingPrice > 0 ? item.obsSellingPrice : null) : null;
+                    item.price = price ? vcui.number.addComma(price) : null;
+                    item.disabledReason = item.disabledReason && item.disabledReason.length > 0 ? item.disabledReason : null;
 					self.$list.append(vcui.template(popuplistItemTemplate, item));
                 });
 

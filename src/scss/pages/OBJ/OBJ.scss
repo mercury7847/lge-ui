@@ -571,6 +571,7 @@ input[type=radio] {
                         top: 0;
                         border: none;
                         background: transparent;
+                        opacity: 0;
                         &:checked+label {
                             border: 1px solid #da0f47;
                             .radio_txt {
@@ -677,6 +678,7 @@ input[type=radio] {
                         top: 0;
                         border: none;
                         background: transparent;
+                        opacity: 0;
                         &:checked+label {
                             border: 1px solid #da0f47;
                             border-radius: 6px;
@@ -692,7 +694,7 @@ input[type=radio] {
                                     background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
                                     transform: translateY(-50%);
                                     @include mobile {
-                                        left: 15px;
+                                        left: 5px;
                                     }
                                 }
                             }
@@ -842,4 +844,25 @@ input[type=radio] {
             }
         }
     }
+}
+
+.err-msg {
+    &.save_alert {
+        color: #000000;
+        text-align: left;
+    }
+    &.save_alert2 {
+        color: #000000;
+        text-align: center;
+    }
+}
+
+.share_simulator_img {
+    width: 100%;
+    overflow: auto;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
 }

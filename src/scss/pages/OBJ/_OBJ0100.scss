@@ -404,7 +404,7 @@
                 position: absolute;
                 left: 5%;
                 top: 30%;
-                z-index: 10;
+                z-index: 15;
                 @include mobile {
                     left: 15px;
                     top: 5%;
@@ -1050,6 +1050,7 @@
                     width: calc((100% - 8px)/2);
                     height: 58vw;
                     margin-top: 8px;
+                    overflow: hidden;
                     &:nth-child(even) {
                         margin-left: 8px;
                     }
@@ -1083,16 +1084,18 @@
                             letter-spacing: -0.34px;
                             color: #222222;
                             @include mobile {
+                                position: absolute;
+                                bottom: 20px;
                                 font-size: 16px;
                                 white-space: nowrap;
+                                color: #797979;
+                                font-weight: 400;
                             }
                         }
                         .btn {
                             margin-top: 25px;
                             @include mobile {
-                                margin-top: 60px;
-                                padding: 10px 5px;
-                                z-index: 10;
+                                display: none;
                             }
                         }
                         .fenix {
@@ -1107,10 +1110,10 @@
                             letter-spacing: -0.74px;
                             color: #fefefe;
                             @include mobile {
-                                top: 90px;
+                                top: 70px;
                                 right: auto;
-                                left: 20px;
-                                font-size: 50px;
+                                left: 40px;
+                                font-size: 33px;
                             }
                         }
                         .img {
@@ -1122,7 +1125,7 @@
                             @include mobile {
                                 right: 25px;
                                 top: 25px;
-                                width: 80px;
+                                width: 70px;
                                 z-index: 7;
                                 img {
                                     width: 100%
@@ -1137,8 +1140,8 @@
                             box-shadow: 0 20px 40px 0 #00000028;
                             @include mobile {
                                 right: 85px;
-                                top: 80px;
-                                width: 80px;
+                                top: 50px;
+                                width: 70px;
                                 z-index: 8;
                                 img {
                                     width: 100%
@@ -1174,6 +1177,9 @@
                     &:hover {
                         .bgList {
                             opacity: 1;
+                            @include mobile {
+                                opacity: 0;
+                            }
                         }
                     }
                 }
@@ -1381,7 +1387,7 @@
                 top: auto;
                 flex-direction: column;
                 padding: 0 15px;
-                margin-top: 115px;
+                margin-top: 28px;
                 transform: translate(0%, 0%);
             }
         }

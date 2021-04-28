@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
 .pay-warranty {
-    .tabs-wrap {
-        margin-bottom:48px;
+    @at-root &.pop-conts .tabs-contents,
+    .tabs-contents {
+        padding-top:48px;
         @include mobile {
-            margin-bottom:50px;
+            padding-top:40px;
         }
     }
     .scroll-x {
@@ -157,6 +158,7 @@
         }
         img {
             max-width: 100%;
+            width:100%;
         }
     }
     
@@ -252,12 +254,6 @@
         }
     }
 
-    &.pop-conts {
-        .tabs-contents {
-            padding-top: 0;
-        }
-    }
-
     .bullet-list {
         font-size: 16px;
         margin-top: 0;
@@ -310,18 +306,27 @@
 
 #ratesWarrantyGuidePopup {
     max-width: 912px;
-    .img_box {
-        &.pc-only {
-            display: none;
-        }
-        &.pc-pop-only {
-            display: block;
+    .pay-warranty {
+        .img_box {
+            &.pc-only {
+                display: none;
+            }
+            &.pc-pop-only {
+                display: block;
+            }
         }
     }
     @include mobile {
-        .img_box {
-            &.pc-pop-only {
-                display: none;
+        .pay-warranty {
+            .section-area {
+                .section {
+                    padding:0;
+                }
+            }
+            .img_box {
+                &.pc-pop-only {
+                    display: none;
+                }
             }
         }
     }

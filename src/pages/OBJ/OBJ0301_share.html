@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"], componentID: "KRP0016", isJScompile: true })
+
+<body>
+
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents objet-main">
+                <div class="sub-main">
+
+                    <div class="brand-wrap objet-wrap">
+                        <div class="objetcollection-tabs">
+                            <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                                <ul class="tabs">
+                                    <li class="on"><a href="/lg-objet-collection">LG Objet Collection<em class="blind">선택됨</em></a></li>
+                                    <li><a href="/lg-objet-collection/product">제품</a></li>
+                                    <li><a href="/lg-objet-collection/experience">체험</a></li>
+                                    <li><a href="/lg-objet-collection/gallery">갤러리</a></li>
+                                    <li><a href="/lg-objet-collection/brand-story">브랜드 스토리</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="share_simulator_img">
+                            <img src="https://www.lgobjetcollection.co.kr/nfsimg/20210425/canvas_img_0425_1710220210425030203.jpg" alt="" id="final_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @@include('./common/footer.html')
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+
+            });
+            $(window).on("scroll", function() {
+                autoFixedLinkTab()
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
+        });
+        //]]>
+    </script>
+</body>
+
+</html>

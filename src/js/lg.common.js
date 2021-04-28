@@ -290,8 +290,9 @@ var isApp = function(){
             self._createMainWrapper();
             self._switchLinker();
 
-            $('body').find('.container').attr('id', 'content');
-
+            var lnbContents = $('.contents .lnb-contents');
+            if(lnbContents.length) lnbContents.attr('id', 'content');
+            else $('body').find('.container').attr('id', 'content');
         },
 
         _addImgOnloadEvent: function(){
@@ -1220,7 +1221,6 @@ var isApp = function(){
             ], function (Sharer) {
                 // 공유하기 헬퍼 빌드
                 Sharer.init({
-                    appKey: "ded59364395778ecf9b0c8d952eaf16b",
                     selector: '.sns-list > li >  a',
                     attr: 'data-link-name' // sns서비스명을 가져올 속성
                 });
@@ -1749,6 +1749,10 @@ var isApp = function(){
 
                     self.$subCategory.on('change', function() {
                         self.searchModelName();
+                    });
+
+                    self.$modelPopup.on('modalhidden', function() {
+                        self.$modelButton.focus();
                     });
                 }
             }

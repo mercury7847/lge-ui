@@ -1743,6 +1743,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 $('img', imagesScope).each(function () {
                     var image = $(this);
                     image.on('load', function (e) {
+                        if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
+                            image.css('display','inline-block');
+                        }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
                     });
@@ -1836,9 +1839,10 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (rangeStart > 0) rangeStart--;
                     if (rangeEnd <= self.slideCount) rangeEnd++;
                 }
-                //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
-                if (rangeEnd <= self.slideCount) rangeEnd++;
             }
+
+            //임시 : 추가로 한개 더 가져오기 위함 화면사이즈가 이상한 폰
+            if (rangeEnd <= self.slideCount) rangeEnd++;
 
             loadRange = self.$slider.find('.' + _V.SLIDE).slice(rangeStart, rangeEnd);
 
@@ -1903,6 +1907,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 $imgsToLoad.each(function () {
                     var image = $(this);
                     image.on('load', function (e) {
+                        if(!(image.hasClass('pc-only') || image.hasClass('mo-only') || image.hasClass('pc') || image.hasClass('mobile'))) {
+                            image.css('display','inline-block');
+                        }
                         self.setPosition();
                         self.triggerHandler(_N + 'lazyloaded', [self, image, image.attr('src')]);
                     });

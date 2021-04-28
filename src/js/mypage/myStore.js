@@ -53,7 +53,7 @@
                 self.$contents = $('div.lnb-contents');
                 //매장리스트
                 self.$storeList = self.$contents.find('ul.bookmark-store-list');
-                self.$customerInfo = self.$contents.find('div.my-contract-info p');
+                self.$customerInfo = self.$contents.find('div.my-contract-info p.tit');
                 //self.$totalCount = self.$contents.find('div.my-contract-info p em');
                 self.$pagination = self.$contents.find('.pagination').vcPagination();                
                 self.$noData = self.$contents.find('div.no-data');

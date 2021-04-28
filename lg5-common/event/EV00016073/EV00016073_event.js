@@ -1,11 +1,12 @@
 var submitCnt = 0;
 var serial_btn_cnt = 0; 
 var num = "{}[]()<>?|`~'!@#$%^&*-+=,.;:\"'\\/ ";
-var eventPath = "/WEB-INF/jsp/event/EV00016073/";
+var eventPath = "/YYYY_2021/MM_04/airCompensatorySale/";
 var mainUrl = eventPath + "event_main.jsp";
+var submitUrl = eventPath + "event_proc.jsp";
 
 $(document).ready(function() {
-	
+
 	//행사 모델 자세히 보기
     $('.eventModel').on('click', function(){
     	//if( $.trim( $("#myName").val() ) != "" ){
@@ -96,6 +97,8 @@ $(document).ready(function() {
             }
         }
     });
+		
+	
     
     //시리얼번호 대문자로 전환
     $("#serialNo").bind('keyup', function() {
@@ -108,7 +111,10 @@ $(document).ready(function() {
        //구제품모델명 대문자로 전환
     $("#oldModelName").bind('keyup', function() {
         $(this).val($(this).val().toUpperCase());   
+
     });
+  
+  
 	
 	// 구매 연
     $("#purchaseYear").change(function() {
@@ -122,25 +128,33 @@ $(document).ready(function() {
 		/*날짜 구하기*/
         
         var startM = 1;
-        var endM   = 3;
+        var endM   = 4;
+        
+        
+        
         var mOptionStr = "<option value=''>선택</option>";
 
         if(sel_year!=""){
+
             for (var i=startM;i<=endM;i++) {
                 var tmp = "";
                 if (i < 10) tmp = "0"+i; else tmp = ""+i;
                  mOptionStr += "<option value='"+tmp+"'>"+tmp+"</option>";
             }
         }
+
         $("#purchaseMonth").html(mOptionStr);
         $("#purchaseDate").html("<option value=''>선택</option>");
+
     });
+
 
     // 구매 월
     $("#purchaseMonth").change(function() {
         var sm =  $("#purchaseMonth").val(); //월 구분 할때 사용
         var startday= 1;
         var endday= 31;
+
         var dOptionStr = "<option value=''>선택</option>";
 
         if(sm!=""){
@@ -175,6 +189,9 @@ $(document).ready(function() {
         
         var startM = 1;
         var endM   = 4;
+        
+        
+        
         var mOptionStr = "<option value=''>선택</option>";
 
         if(sel_year!=""){
@@ -188,13 +205,16 @@ $(document).ready(function() {
 
         $("#producInstallMonth").html(mOptionStr);
         $("#producInstallDate").html("<option value=''>선택</option>");
+
     });
+
 
     // 설치 월
     $("#producInstallMonth").change(function() {
         var sm =  $("#producInstallMonth").val(); //월 구분 할때 사용
         var startday= 1;
         var endday= 31;
+
         var dOptionStr = "<option value=''>선택</option>";
 
         if(sm!=""){
@@ -263,9 +283,12 @@ $(document).ready(function() {
 
          $("#channel").html(dOptionStr);
     });
+      
     
 	 $('#model1').on('change', function(e){
+    	
     	var dOptionStr = "<option value=''>선택</option>";
+    	    	
         if( $(this).val() == "LG휘센듀얼에어컨" ){
 			dOptionStr += "<option value='FQ23LADRBZ.AKOR'>FQ23LADRBZ.AKOR</option>";
 			dOptionStr += "<option value='FQ23LADRBN.AKOR'>FQ23LADRBN.AKOR</option>";
@@ -367,10 +390,10 @@ $(document).ready(function() {
 			dOptionStr += "<option value='FQ17SBDWCN.AKOR'>FQ17SBDWCN.AKOR</option>";	//듀얼 스페셜
 			dOptionStr += "<option value='FQ18SBDWAN.AKOR'>FQ18SBDWAN.AKOR</option>";	//듀얼 스페셜
 			dOptionStr += "<option value='FQ18SBDWBN.AKOR'>FQ18SBDWBN.AKOR</option>";	//듀얼 스페셜
+			dOptionStr += "<option value='FQ18SBDWGZ.AKOR'>FQ18SBDWGZ.AKOR</option>";	//듀얼 스페셜(2021.04.12 신모델 추가)
 			dOptionStr += "<option value='FQ18HBDWAN.AKOR'>FQ18HBDWAN.AKOR</option>";	//듀얼 히트
 			dOptionStr += "<option value='FQ18HBDWBN.AKOR'>FQ18HBDWBN.AKOR</option>";	//듀얼 히트
-			//20210210반영예정
-			/* 
+			// 2021신모델추가 20210322 추가 요청			 
 			dOptionStr += "<option value='FQ20DBDWAN.AKOR'>FQ20DBDWAN.AKOR</option>";//듀얼 디럭스
 			dOptionStr += "<option value='FQ18DBDWAN.AKOR'>FQ18DBDWAN.AKOR</option>";//듀얼 디럭스
 			dOptionStr += "<option value='FQ17DBDWCN.AKOR'>FQ17DBDWCN.AKOR</option>";//듀얼 디럭스
@@ -382,7 +405,10 @@ $(document).ready(function() {
 			dOptionStr += "<option value='FQ18VBDWBN.AKOR'>FQ18VBDWBN.AKOR</option>";//듀얼 빅토리
 			dOptionStr += "<option value='FQ19VBDWCN.AKOR'>FQ19VBDWCN.AKOR</option>";//듀얼 빅토리
 			dOptionStr += "<option value='FQ17VBDWCN.AKOR'>FQ17VBDWCN.AKOR</option>";//듀얼 빅토리
-			*/
+			// 2021신모델추가 20210426 추가 요청			 
+			dOptionStr += "<option value='FQ18DBDNAN.AKOR'>FQ18DBDNAN.AKOR</option>";//듀얼 디럭스
+			dOptionStr += "<option value='FQ18DBDRAN.AKOR'>FQ18DBDRAN.AKOR</option>";//듀얼 디럭스
+		
         } else if( $(this).val() == "기타" ){
         	dOptionStr += "<option value='FQ27GASMAZ.AKOR'>FQ27GASMAZ.AKOR</option>";// 시그니처
 			dOptionStr += "<option value='FQ27GASMAN.AKOR'>FQ27GASMAN.AKOR</option>";// 시그니처
@@ -407,41 +433,50 @@ $(document).ready(function() {
 			dOptionStr += "<option value='FQ17V9WWCN.AKOR'>FQ17V9WWCN.AKOR</option>";//위너/칸
 			dOptionStr += "<option value='FQ17V9KWCN.AKOR'>FQ17V9KWCN.AKOR</option>";//위너/칸
 			dOptionStr += "<option value='FQ17V9KWAN.AKOR'>FQ17V9KWAN.AKOR</option>";//위너/칸
-			//2021신모델추가 20210210반영예정
-			/*
+			//2021신모델추가 20210322 추가 요청
 			dOptionStr += "<option value='FQ20VBWWAN.AKOR'>FQ20VBWWAN.AKOR</option>";//위너/칸
 			dOptionStr += "<option value='FQ18VBWWAN.AKOR'>FQ18VBWWAN.AKOR</option>";	//위너/칸
 			dOptionStr += "<option value='FQ20VBKWAN.AKOR'>FQ20VBKWAN.AKOR</option>";	//위너/칸
 			dOptionStr += "<option value='FQ18VBKWAN.AKOR'>FQ18VBKWAN.AKOR</option>";	//위너/칸
 			dOptionStr += "<option value='FQ17VBWWCN.AKOR'>FQ17VBWWCN.AKOR</option>";	//위너/칸
 			dOptionStr += "<option value='FQ17VBKWCN.AKOR'>FQ17VBKWCN.AKOR</option>";	//위너/칸
-			*/
         }else if( $(this).val() == "LG휘센타워에어컨" ){ //2021 신모델추가
         	dOptionStr += "<option value='FQ25LBNRAN.AKOR'>FQ25LBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20LBNRAN.AKOR'>FQ20LBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ25LBNBPN.AKOR'>FQ25LBNBPN.AKOR</option>";
+			dOptionStr += "<option value='FQ25LBNRAZ.AKOR'>FQ25LBNRAZ.AKOR</option>";//휘센 타워 럭셔리(2021.04.12 신모델 추가)
 			dOptionStr += "<option value='FQ25SBNWGN.AKOR'>FQ25SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SBNWGN.AKOR'>FQ20SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ18SBNWGN.AKOR'>FQ18SBNWGN.AKOR</option>";
 			dOptionStr += "<option value='FQ25SBNWHN.AKOR'>FQ25SBNWHN.AKOR</option>";
 			dOptionStr += "<option value='FQ20SBNWHN.AKOR'>FQ20SBNWHN.AKOR</option>";
 			dOptionStr += "<option value='FQ18SBNWHN.AKOR'>FQ18SBNWHN.AKOR</option>";
+			dOptionStr += "<option value='FQ18SBNWGZ.AKOR'>FQ18SBNWGZ.AKOR</option>";//휘센 타워 스페셜(2021.04.12 신모델 추가)
+			dOptionStr += "<option value='FQ18SBNWAN.AKOR'>FQ18SBNWAN.AKOR</option>";//휘센 타워 스페셜(2021.04.23 신모델 추가)
+			dOptionStr += "<option value='FQ18SBNWBN.AKOR'>FQ18SBNWBN.AKOR</option>";//휘센 타워 스페셜(2021.04.23 신모델 추가)
+			dOptionStr += "<option value='FQ18SBNWAZ.AKOR'>FQ18SBNWAZ.AKOR</option>";//휘센 타워 스페셜(2021.04.23 신모델 추가)
+			dOptionStr += "<option value='FQ18SBNWBZ.AKOR'>FQ18SBNWBZ.AKOR</option>";//휘센 타워 스페셜(2021.04.23 신모델 추가)
 			dOptionStr += "<option value='FQ25PBNRAN.AKOR'>FQ25PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20PBNRAN.AKOR'>FQ20PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ18PBNRAN.AKOR'>FQ18PBNRAN.AKOR</option>";
 			dOptionStr += "<option value='FQ20PBNBPN.AKOR'>FQ20PBNBPN.AKOR</option>";
 			dOptionStr += "<option value='FQ18PBNBPN.AKOR'>FQ18PBNBPN.AKOR</option>";
+			dOptionStr += "<option value='FQ18PBNRAZ.AKOR'>FQ18PBNRAZ.AKOR</option>";//휘센 타워 프리미엄(2021.04.12 신모델 추가)
         }else if( $(this).val() == "LG오브제컬렉션에어컨" ){ //2021 신모델추가
         	dOptionStr += "<option value='FQ25LBNBAN.AKOR'>FQ25LBNBAN.AKOR</option>";
+        	dOptionStr += "<option value='FQ25LBNBAZ.AKOR'>FQ25LBNBAZ.AKOR</option>";// 오브제 럭셔리 (2021.04.12 신모델 추가)
         	dOptionStr += "<option value='FQ20PBNBAN.AKOR'>FQ20PBNBAN.AKOR</option>";
         	dOptionStr += "<option value='FQ18PBNBAN.AKOR'>FQ18PBNBAN.AKOR</option>";
+			dOptionStr += "<option value='FQ18PBNBAZ.AKOR'>FQ18PBNBAZ.AKOR</option>";// 오브제 프리미엄(2021.04.12 신모델 추가)
         }
         
         $("#model2").html(dOptionStr);
     });
     
+    
     $('#model2').on('change', function(e){
     	$(".price").show();
+    	
     	if( 
     		$(this).val() == "FQ20VAWWTN.AKOR" ||
 			$(this).val() == "FQ20VAWWAN.AKOR" ||
@@ -459,7 +494,7 @@ $(document).ready(function() {
 			$(this).val() == "FQ17V9WWCN.AKOR" ||
 			$(this).val() == "FQ17V9KWCN.AKOR" ||
 			$(this).val() == "FQ17V9KWAN.AKOR" ||
-			$(this).val() == "FQ20VBWWAN.AKOR" ||  //2021신모델추가
+			$(this).val() == "FQ20VBWWAN.AKOR" ||  //2021신모델추가 20210322 추가 요청
 			$(this).val() == "FQ18VBWWAN.AKOR" ||
 			$(this).val() == "FQ20VBKWAN.AKOR" ||
 			$(this).val() == "FQ18VBKWAN.AKOR" ||
@@ -477,7 +512,8 @@ $(document).ready(function() {
     		$("#priceVal").html(" 100,000원");
     		$("#giftVal").val("100,000원");
     	}
-
+    	
+        
     });
     
     //제조번호확인-수정필요 (제조번호 유효성, 중복 체크)
@@ -504,6 +540,7 @@ function gocheck(str1,str2){
 
 //시리얼번호 유효성 및 중복 체크
 function eventModelChk(){
+
 	$.ajax({
 		type: "POST",
 		url: "/evt/ManufactureChk.lgajax",
@@ -527,7 +564,6 @@ function eventModelChk(){
 			return;
 		}
 	});
-	
 }
 
 //모델, 시리얼 번호 길이 체크
@@ -553,6 +589,8 @@ function validatePrd(){
     }
     return prdCheck;
 }
+
+
 
 function initEventHandlers() {
 	//참여자 이름 특수문자 제어
@@ -596,6 +634,7 @@ function initEventHandlers() {
 	}).keyup(function() {
 		if ($(this).val() != null && $(this).val() != '') {
 			$(this).val($(this).val().replace(/[^0-9]/g, ''));
+			
 		}
 		
 	});
@@ -614,6 +653,7 @@ function initEventHandlers() {
 	$("#agree02_02").click(function() {
 		$("#agree02").val("0");
 	});	
+
 }
 
 //  레이어팝업 노출/비노출 제어
@@ -624,11 +664,89 @@ var layerClose = function(obj){
 	$(obj).hide();
 }
 
+//loginStatus 유효성 체크 
+
+function eventSsoCheck(){
+	var loginStatus = '';
+
+	$.ajax({
+		type: "POST",
+		async : false,
+		url:  "/lgekor/event/common/event_sso_check.jsp",
+		dataType:"json",
+		success: function(json) {
+			mainLoginYn = json.mainLoginYn;
+			loginStatus = json.loginStatus;
+			//다시 로그인 요청 unifyId값이 다를경우 다시 로그인 요청
+			if($('#unifyId').val() != json.unifyId){
+				loginStatus = "forcelogin";
+			}
+		},
+		error: function(request, status, error) {
+			alert("오류가 발생하였습니다.");
+			return;
+		}
+	});	
+	return loginStatus;
+}
+
+
+// 이벤트 참여하기 레이어팝업 열기
+function eventEntry1() {
+	var loginStatus = eventSsoCheck();
+	/* 통합회원 테스트기간 으로 우선 열림으로 바꿔둠 반영시 삭제 
+	isOpen = "Y" ;//테스트
+	mainLoginYn = "Y" ;//테스트
+	loginStatus = "active";//테스트
+	*/
+	/* 통합회원 테스트기간 으로 우선 열림으로 바꿔둠 반영시 삭제 */
+	
+	if(isOpen==="Y"){
+		//var fnLoginEventUrl = fnLoginEvent(serverType);
+		
+		if(mainLoginYn == "Y" && loginStatus == "active"){
+			layerPop(".event_popup");
+			$(".dim1").show();
+			document.getElementById("event_popup").scrollIntoView();
+		}else{
+			var fnLoginEventUrl = "";
+			if(loginStatus == "forcelogin"){
+				fnLoginEventUrl = fnForceLoginEvent(serverType);
+			}else{
+				fnLoginEventUrl = fnLoginEvent(serverType);
+			}
+			
+			alert("본 이벤트는 LG전자 회원 로그인 후 참여 가능합니다.");
+			top.location.href = fnLoginEventUrl;
+		}
+	}else{
+		alert("이벤트 기간이 아닙니다.");
+	}
+}
+
+// 이벤트 참여하기 레이어팝업 닫기
+function eventEntryClose() {
+	if(confirm("이벤트 응모를 취소하시겠습니까?") == true){
+		layerClose(".event_popup");
+		init();
+		layerInit();
+		self.close();
+		
+	}else{
+		
+		return; 
+		
+	}
+	
+}
 function init(){//입력 값 초기화
+
 	document.frm.reset();
 	$("#agree01").val("");
 	$("#agree02").val("");
+	
 	$("#serialNo").attr("readonly",false);
+
 }
 
 // 이벤트 응모실패
@@ -638,6 +756,7 @@ function eventCmpltfail() {
 	init();
 	layerInit();
 	location.reload();
+	
 }
 
 // 이벤트 응모완료 팝업 닫기
@@ -667,17 +786,22 @@ function goProc() {
 	if (frmCheck && isOpen === "N") {
 		alert("이벤트가 종료 되었습니다.");
 		frmCheck = false;
+		
 	}
+	
 	if (submitCnt > 0) {
 		alert(" 처리중입니다. ");
 		frmCheck = false;
+		
 	}
+    
     if (frmCheck && !$("input[id='agree01_01']").is(":checked")) {
         alert("[필수]개인정보 수집 이용 동의를 체크해 주십시오.");
         //체크,라디오 포커스 이동
         scroll_move( "agree01_01" );
         frmCheck = false;
     }
+
     if (frmCheck && !$("input[id='agree02_01']").is(":checked")) {
         alert("[필수]개인정보 처리 위탁 동의를 체크해 주십시오.");
         //체크,라디오 포커스 이동
@@ -695,11 +819,13 @@ function goProc() {
 		$("#email1").focus();
 		frmCheck = false;
 	}
+	
 	if(frmCheck && $.trim($("#email2").val()) === ""){
 		alert("이메일 주소를 입력해주세요.");
 		$("#email3").focus();
 		frmCheck = false;
 	}
+	
 	var fullEmail = $("#email1").val() + "@" + $("#email2").val(); 
 	
 	if(frmCheck && !chkEmail(fullEmail)){//이메일 체크
@@ -737,6 +863,8 @@ function goProc() {
 		$("#oldProduct").focus();
 		frmCheck = false;
 	}
+	
+	 
 	 
 	//3.신모델정보
 	if (frmCheck && $.trim($("#purchaseYear").val()) === "") {
@@ -770,8 +898,8 @@ function goProc() {
         $("#branch").focus();
         frmCheck = false;
     }
-    
-    if (frmCheck && $.trim($("#newProductType").val()) === "") {
+
+     if (frmCheck && $.trim($("#newProductType").val()) === "") {
 		alert("제품 타입을 입력해주세요.");
 		$("#newProductType").focus();
 		frmCheck = false;
@@ -787,6 +915,7 @@ function goProc() {
 		$("#btn_product").focus();
 		frmCheck = false;
 	}
+    
     if ( frmCheck && $.trim($("#ptUpload2").val()) === "") {
 		alert("제조번호사진을 등록해 주십시오.");
 		$("#ptUpload2").val("");
@@ -794,6 +923,7 @@ function goProc() {
 		$("#productPic").focus();
 		frmCheck = false;
 	}
+    
 	if ( frmCheck && $.trim($("#ptUpload3").val()) === "") {
 		alert("거래내역서 등록해 주십시오.");
 		$("#ptUpload3").val("");
@@ -823,6 +953,8 @@ function goProc() {
         $("#giftCard").focus();
         frmCheck = false;
     }
+    
+	   
 	if (frmCheck) {
 		var confirmTxt = "정보 수정이 불가합니다. 다시 한 번 확인해주세요!\n"
 						+ "입력하신 내용으로 응모하시겠습니까?\n"
@@ -855,9 +987,70 @@ function goProc() {
 				}
 			});
 	    }
+	    
 	} else {
 		return false; 
+		
 	}
+	
+}
+
+function proc_result(resultCode){
+
+    if (resultCode == "1") {
+        alert("종료 된 이벤트 입니다.");
+        submitCnt = 0;//중복클릭 리셋
+        eventCmpltfail();
+        goUrl();
+    } else if (resultCode == "2") {
+        alert("잘못된 접근 입니다.\n새로고침 후 다시 시도해 주세요.("+resultCode+")");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if(resultCode == "14" || resultCode == "15") {
+		//회원 로그인여부 체크 - 회원정보 없음
+		alert("로그인 정보가 없습니다. 다시 로그인해주시기 바랍니다.");
+		goUrl();
+    } else if (resultCode == "3") {
+        alert("이미 참여한 전화번호 입니다.");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "4") {
+        alert("이미 참여한 시리얼번호 입니다.");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "5" || resultCode == "6" || resultCode == "7"|| resultCode == "8"|| resultCode == "9"|| resultCode == "10") {
+        alert("이벤트 참여 중 오류가 발생 하였습니다.\n잠시 후 다시 시도해 주십시오.("+resultCode+")");
+        submitCnt = 0;
+        eventCmpltfail();
+        goUrl();
+
+    } else if (resultCode == "13-1" || resultCode == "13-2" || resultCode == "13-3"|| resultCode == "13-4"|| resultCode == "13-5"|| resultCode == "13-6") {
+        alert("이벤트 참여 중 파일등록 오류가 발생하였습니다.\n 파일을 확인하시어 시도해 주십시오.("+resultCode+")");
+        submitCnt = 0;
+        return false;
+        //eventCmpltfail();
+        //goUrl();
+
+    } else {
+        submitCnt = 0;
+        document.frm.target = "";
+        document.frm.action = "";
+        //eventCmpltfail();
+        $('.mobile body').css({'height':'auto'});
+
+        alert("참여해 주셔서 감사합니다.");
+        goUrl();
+    }
+}
+
+function goUrl(){
+	top.location.href = location.href;
 }
 
 function fnChgFile(obj,target){
@@ -865,10 +1058,10 @@ function fnChgFile(obj,target){
 	var fileValue = $(obj).val().split("\\");
 	var fileName = fileValue[fileValue.length-1];
 	$target.val(fileName);
-
+	
 	checkFile(obj,target);
+	
 }
-
 //파일업로드 체크
 function checkFile(obj,target){
 	var $id = $(target);
@@ -879,6 +1072,7 @@ function checkFile(obj,target){
 		obj.outerHTML = obj.outerHTML;
 		$id.focus();
 		return false;
+
     }
 	
 	var thumbext = "";
@@ -913,7 +1107,6 @@ function checkFile(obj,target){
 	
 	return true;
 }
-
 //이메일 체크 정규식
 function chkEmail(str)
 {
@@ -930,19 +1123,4 @@ function scroll_move( id ){
     $( "#"+id ).focus();
     var objscrollTop = $("label[for='"+id+"']").offset();
     parent.$('html, body').stop().animate({scrollTop: objscrollTop.top}, 0);
-}
-
-// 이벤트 참여하기 레이어팝업 닫기
-function eventEntryClose() {
-	if(confirm("이벤트 응모를 취소하시겠습니까?") == true){
-		layerClose(".event_popup");
-		init();
-		layerInit();
-		self.close();
-
-		//각인 값 삭제
-		markingReset(".event_popup");
-	}else{
-		return; 
-	}
 }

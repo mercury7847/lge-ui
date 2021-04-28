@@ -349,7 +349,7 @@
                 self.registMyProductPopupClear();    
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
-                self.$registMyProductPopup.vcModal();
+                self.$registMyProductPopup.vcModal({opener:$(this)});
             });
 
             //보유제품 삭제
@@ -587,6 +587,8 @@
                             var factoryModel = self.$registMyProductMainPage.data('factoryModel');
                             if(factoryModel) {
                                 param.factoryModel = factoryModel;
+                            } else {
+                                param.factoryModel = null;
                             }
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
                             self.showLoading();
@@ -782,7 +784,7 @@
                 var imageUrl = option.attr('data-image-url');
                 var desc = option.attr('data-text');
                 if(desc) {
-                    self.$modelCheckHelpPage.find('div.example-result p.txt').text(option.attr('data-text'));
+                    self.$modelCheckHelpPage.find('div.example-result p.txt').html(vcui.string.replaceAll(option.attr('data-text'),"\n","<br>"));
                 }
                 if(imageUrl) {
                     self.$modelCheckHelpPage.find('div.example-result img').attr({'src':option.attr('data-image-url'),'alt':option.attr('data-image-alt')}).css('opacity',1);
@@ -1005,7 +1007,7 @@
                 });
 
                 if(!isMore) {
-                    self.$manualPopup.vcModal();
+                    self.$manualPopup.vcModal({opener:self.$manualMoreButton});
                 }
 
                 lgkorUI.resetFlexibleBox();

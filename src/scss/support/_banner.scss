@@ -264,6 +264,11 @@
 
     .info-slider {
         position:relative;
+        &.slide-solo {
+            .slide-controls {
+                display:none;
+            }    
+        }
         .slide-controls {
             .prev {
                 position:absolute;

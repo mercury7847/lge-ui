@@ -6,7 +6,12 @@
 }
 @@if(context.share){
 <div class="tooltip-wrap share"><!-- 활성화시 active -->
+    @@if(!context.videoShare) {
     <a href="#n" class="tooltip-icon ui_tooltip-target" @@if(context.fixed){data-fixed="@@fixed"}><span class="blind">제품 공유하기</span></a>
+    }
+    @@if(context.videoShare) {
+    <a href="#n" class="tooltip-icon ui_tooltip-target" @@if(context.fixed){data-fixed="@@fixed"}><span class="blind">동영상 공유하기</span><!-- 210423 웹접근성 수정 [텍스트 수정] --></a>
+    }
 }
     <div class="tooltip-box">
         @@if ( type == "text" ) {

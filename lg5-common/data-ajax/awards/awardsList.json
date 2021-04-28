@@ -32,8 +32,8 @@
                 "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
                 "superCategoryId": "CT50000174",
                 "modelInfo": [
-                    "MD08587613|슬림 스윙 정수기1|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW",
-                    "MD08587608|슬림 스윙 정수기2|https://wwwdev50.lge.co.kr/water-purifiers/WD502AS"
+                    "MD08587613|슬림 스윙 정수기1|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW|SUSPENDED",
+                    "MD08587608|슬림 스윙 정수기2|https://wwwdev50.lge.co.kr/water-purifiers/WD502AS|DIS"
                 ],
                 "storyTitle": "수상내역2",
                 "storyUrl": "#",
@@ -48,7 +48,38 @@
                 "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
                 "superCategoryId": "CT50000174",
                 "modelInfo": [
-                    "MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW"
+                    "MD08587613|슬림 스윙 정수기1|https://wwwdev50.lge.co.kr/water-purifiers/WD302AS|DIS",
+                    "MD08587608|슬림 스윙 정수기2|https://wwwdev50.lge.co.kr/water-purifiers/WD502AW|SUSPENDED"
+                ],
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전",
+                "sitemapLinkPath":"#"
+            },
+            {
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW|DIS"
+                ],
+                "storyTitle": "수상내역2",
+                "storyUrl": "#",
+                "modelCnt": 2,
+                "storyDesc": "DescriptionDescriptionDescriptionDescriptionDescription",
+                "categoryName": "주방가전",
+                "sitemapLinkPath":"#"
+            },
+            {
+                "storyId": "ST00003004",
+                "storyListThumbnailAltText": "1",
+                "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/my-directory/upload/storyThumbnail/",
+                "superCategoryId": "CT50000174",
+                "modelInfo": [
+                    "MD08587613|슬림 스윙 정수기|https://wwwdev50.lge.co.kr/water-purifiers/WD302AW|SUSPENDED"
                 ],
                 "storyTitle": "수상내역2",
                 "storyUrl": "#",

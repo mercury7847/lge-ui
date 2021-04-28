@@ -19,7 +19,7 @@
         '{{#if modelInfo&&modelInfo.length > 0}}' +
             '<div class="btn-wrap">' +
                 '{{#if modelInfo.length == 1}}' +
-                    '<a href="{{modelInfo[0].url}}" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
+                    '<a href="{{#if modelInfo[0].url}}{{modelInfo[0].url}}{{/if}}" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
                 '{{/if}}' +
                 '{{#if modelInfo.length > 1}}' +
                     '<a href="#more" class="btn-text">{{#raw modelInfo[0].name}}</a>' +
@@ -29,7 +29,7 @@
         '{{/if}}' +
         '</div>' + 
     '</div></li>';
-    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{item.url}}">{{#raw item.name}}</a></li>{{/each}}';
+    var awardsPopupListItemTemplage = '{{#each item in list}}<li><a href="{{#if item.url}}{{item.url}}{{/if}}">{{#raw item.name}}</a></li>{{/each}}';
 
     var KRP0028 = {         
         init: function() {
@@ -60,6 +60,14 @@
         bindEvents: function() {
             var self = this;
             
+            $('#awardsPopup').on('click','.com-pop-list a',function(e){
+                e.preventDefault();
+                var url = $(this).attr('href').replace("#","");
+                if(url) {
+                    location.href = url;
+                }
+            });
+
             self.$mainTab.on('click','li a',function(e){
                 var category1 = $(this).attr('href').replace("#","");
                 self.requestData({"superCategoryId":category1,"categoryId":"","sort":self.$selectOrder.vcSelectbox('value')}, true);
@@ -159,10 +167,11 @@
                     if(modelInfo) {
                         modelInfo.forEach(function(item, index) {
                             var tempArr = item.split('|');
-                            if(tempArr.length > 2) {
+                            if(tempArr.length > 3) {
+                                var url = (tempArr[3] == "SUSPENDED") ? null : tempArr[2]; 
                                 array.push({
                                     "name":tempArr[1],
-                                    "url":tempArr[2]
+                                    "url":url
                                 });
                             }
                         });
@@ -203,6 +212,8 @@
         */
 
         openAwardsPopup: function(categoryName, categotyUrl, awardList) {
+            var self = this;
+            
             var $popup = $('#awardsPopup');
             //$popup.find('h1.tit span').text(data.title);
             $popup.find('p.com-pop-tit').text(categoryName);
@@ -216,17 +227,18 @@
             if(modelInfo) {
                 modelInfo.forEach(function(item, index) {
                     var tempArr = item.split('|');
-                    if(tempArr.length > 2) {
+                    if(tempArr.length > 3) {
+                        var url = (tempArr[3] == "SUSPENDED") ? null : tempArr[2]; 
                         array.push({
                             "name":tempArr[1],
-                            "url":tempArr[2]
+                            "url":url
                         });
                     }
                 });
             }
 
             $popup.find('ul.com-pop-list').html(vcui.template(awardsPopupListItemTemplage, {"list":array}));
-            $popup.vcModal();
+            $popup.vcModal({opener:self.$list.find('li div.btn-area button')});
         }
     };
         

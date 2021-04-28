@@ -3,59 +3,6 @@
     
     var csUI = {
         isLogin: $('html').data('login') == 'Y' ? true : false,
-        initProductSlider: function() {
-            // 관련 소모품이 필요하신가요?
-            $('.product-slider').vcCarousel({
-                infinite: false,
-                autoplay: false,
-                slidesToScroll: 4,
-                slidesToShow: 4,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToScroll: 3,
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            slidesToScroll: 1,
-                            slidesToShow: 1,
-                            variableWidth: true
-                        }
-                    },
-                    {
-                        breakpoint: 20000,
-                        settings: {
-                            slidesToScroll: 4,
-                            slidesToShow: 4
-                        }
-                    }
-                ]
-            });
-        },
-        addPlugin: function(pluginName, Plugin) {
-            $.fn[pluginName] = function(options) {
-                var arg = arguments; 
-        
-                return this.each(function() {
-                    var _this = this,
-                        $this = $(_this),
-                        plugin = $this.data('plugin_' + pluginName);
-        
-                    if (!plugin) {
-                        $this.data('plugin_' + pluginName, new Plugin(this, options));
-                    } else {
-                        if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                            plugin[options].apply(plugin, [].slice.call(arg, 1));
-                        }
-                    }
-                });
-            }
-        },
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
@@ -174,28 +121,39 @@
                 }
             }
         },
-        isMobile: function() {
-            var userAgent = navigator.userAgent.toLowerCase();
-            var mobile = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce', 'nokia', 'webos', 'opera mini', 'samsung', 'sonyericsson', 'opera mobi', 'iemobile', 'mot');
-            var isMobile = 0;
-
-            for(var count=0; count < mobile.length; count++) {
-                if(userAgent.indexOf(mobile[count]) != -1) {
-                    isMobile = true;
-                    break;
-                }
-            }
-
-            var platform = navigator.platform.toLowerCase();
-            var platform_filter = new Array('win16', 'win32', 'win64', 'mac', 'macintel');
-
-            for(var count=0; count < platform_filter.length; count++) {
-                if(platform.indexOf(platform_filter[count]) != -1) {
-                    isMobile = false;
-                }
-            }
-
-            return isMobile;
+        initProductSlider: function() {
+            // 관련 소모품이 필요하신가요?
+            $('.product-slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToScroll: 1,
+                            slidesToShow: 1,
+                            variableWidth: true
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
         },
         searchParamsToObject: function(key) {
             var params = location.search.substr(location.search.indexOf("?") + 1);
@@ -214,7 +172,7 @@
                 return valueObject;
             }
         },
-        backHistory: function(item) {
+        historyBack: function(item) {
             var url;
             if (item.constructor == Object) {
                 url = $.param(item);
@@ -232,6 +190,15 @@
                 }
                 return false;
             });
+        },
+        setAcecounter: function(pcUrl, moUrl) {
+            try {
+                if (vcui.detect.isMobileDevice) {
+                    AM_PL(moUrl);
+                } else {
+                    _PL(pcUrl);
+                }
+            } catch(e) {}
         }
     }
 
@@ -1252,17 +1219,13 @@ var AuthManager = function() {
                     var resultData = result.data;
 
                     if (resultData.resultFlag == 'Y') {
-                        //$(el).find('span').html(RESENDTEXT);
                         $(el).html(RESENDTEXT);
                         $(elem.number).prop('disabled', false);
-
-                        // 임시
-                        // if (self.options.pass) $(elem.number).val(12345);
                     }
 
                     lgkorUI.alert("", {
                         title: resultData.resultMessage
-                    });
+                    }, el);
                 });
             }
         },
@@ -1287,16 +1250,13 @@ var AuthManager = function() {
                 data = self.validation.getValues([self.nameName, self.phoneName, self.numberName]);
 
                 if ($(elem.number).prop('disabled')) {
-                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'});
+                    lgkorUI.alert("", {title: '인증번호 발송 버튼을 선택해 주세요.'}, el);
                     return false;
                 }
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, data, function(result) {
                     var resultData = result.data;
-
-                    // 임시
-                    // if (self.options.pass) resultData.resultFlag = 'Y';
 
                     if (resultData.resultFlag == 'Y') {
                         success = true;
@@ -1317,17 +1277,17 @@ var AuthManager = function() {
                                     if (resultData.url) {
                                         $(self.options.elem.form).attr('action', resultData.url);
                                         $(self.options.elem.form).submit();
-                                        // location.href = resultData.url;
                                     } else {
                                         $(el).vcModal('hide');
                                         callback && callback(success, result);
                                     }
                                 }
-                            });
+                            }, el);
                         } else if (resultData.url) {
+                            callback && callback(success, result);
+
                             $(self.options.elem.form).attr('action', resultData.url);
                             $(self.options.elem.form).submit();
-                            // location.href = resultData.url;
                         } else {
                             callback && callback(success, result);
                         }
@@ -1344,7 +1304,7 @@ var AuthManager = function() {
                                     callback && callback(success, result);
                                 }
                             }
-                        });
+                        }, el);
                     }
 
                     lgkorUI.hideLoading();
@@ -1470,10 +1430,6 @@ function validatePhone(value){
             }
         });
 
-        ///퀵메뉴 쿠키 생성
-        if( lgkorUI.cookie.getCookie('accessPageFirst') != "done") {
-            lgkorUI.cookie.setCookie("accessPageFirst", "done", 365);
-        }
 
         if( $('#surveyPopup').length) {
             vcui.require(['ui/selectbox', 'ui/satisfactionModal']);
@@ -1571,6 +1527,25 @@ function validatePhone(value){
                 lgkorUI.addModelNameImgErrorEvent(this);
             });
         });
+
+        $('.agree-wrap .agree-cont-box').attr('tabindex', 0);
+
+        if ($('.pay-warranty').length) {
+            $('.ui_tab-notice').on('tabchange', function(e, info) {
+                var index = info.selectedIndex;
+                switch(index) {
+                    case 0:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo1.do', '/acecount/ratesInfo1m.do');
+                        break;
+                    case 1:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo3.do', '/acecount/ratesInfo3m.do');
+                        break;
+                    case 2:
+                        lgkorUI.setAcecounter('www.lge.co.kr/acecount/ratesInfo4.do', '/acecount/ratesInfo4m.do');
+                        break;
+                }
+            });
+        }
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
@@ -1584,5 +1559,10 @@ function validatePhone(value){
     });
 })(jQuery);
 
-var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
-var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+if (!vcui.detect.isMobileDevice) {
+    var _AceGID=(function(){var Inf=['gtp20.acecounter.com','8080','AH5A40639666759','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+    var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+} else {
+    var _AceGID=(function(){var Inf=['co.kr','www.lgservice.co.kr,lgservice.co.kr,m.lgservice.co.kr,lge.co.kr,m.lge.co.kr,www.lge.co.kr','AZ3A66760','AM','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;if(_CI.join('.').indexOf(Inf[3])<0){ _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+    var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Mobile/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();    
+}

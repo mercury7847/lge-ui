@@ -1,6 +1,11 @@
 function moveDetail(el, detailUrl, windowHeight) {
     var id = $(el).attr("href").replace("#", "");
+    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
     window.open(detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+}
+
+function moveConsultPage() {
+    lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerMapVisitClick.do', '/acecount/centerMapVisitClickm.do');
 }
 
 (function(){
@@ -199,7 +204,7 @@ function moveDetail(el, detailUrl, windowHeight) {
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
                             '           {{#if typeof consultUrl != "undefined"}}'+
-                            '           <a href="{{consultUrl}}" class="btn size" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                            '           <a href="{{consultUrl}}" class="btn size" onclick="moveConsultPage();" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
                             '           {{/if}}'+
                             '           <a href="#{{shopID}}" class="btn size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
                             '       </div>'+
@@ -274,6 +279,7 @@ function moveDetail(el, detailUrl, windowHeight) {
         _openWindowPop : function(target){
             var self = this;
             var id = $(target).attr("href").replace("#", "");
+            lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
             window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
         },
 
@@ -342,12 +348,6 @@ function moveDetail(el, detailUrl, windowHeight) {
                 self._openWindowPop(this)
             });
 
-            self.$mapContainer.on('click', '.detail-view', function(e) {
-                e.preventDefault();
-                self._openWindowPop(this)
-            });
-
-
             self.$searchResultContainer.on('click', '.btn-back', function(e){
                 self.$leftContainer.removeClass('active');
                 $('.store-list-box').hide().stop().fadeIn(function(){
@@ -366,14 +366,6 @@ function moveDetail(el, detailUrl, windowHeight) {
             self.$leftContainer.on('click', '.btn-view', function(e){
                 e.preventDefault();
                 self._showMap();
-            });
-
-            self.$searchContainer.on('click', '.btn-view', function(e){
-               
-            });
-
-            self.$searchResultContainer.on('click', '.btn-view', function(e){
-              
             });
 
             self.$leftContainer.on('click', '.btn-fold', function(e){

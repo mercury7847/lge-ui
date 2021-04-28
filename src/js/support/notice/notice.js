@@ -141,7 +141,7 @@
                 var self = this;
 
                 self.$listWrap.on('click', '.board-tit a', function() {
-                    lgkorUI.backHistory(this);
+                    lgkorUI.historyBack(this);
                 });
                 
                 self.$searchWrap.find('input[type="text"]').on('input', function() {
@@ -186,6 +186,8 @@
 
                 self.$sortSelect.filter('#category').on('change', function() {
                     self.$searchWrap.find('input[type="text"]').val('');
+                    self.$searchWrap.find('input[type="text"]').trigger('update'); 
+
                    
                     self.params = $.extend({}, self.params, {
                         'keyword': '',

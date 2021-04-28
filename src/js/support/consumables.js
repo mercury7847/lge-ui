@@ -55,7 +55,7 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var param = {
                 unifyId: pageData.unifyId,
-                partNo: sendData.seq,
+                partNo: pageData.modelName,
                 divCode: pageData.hqAccountingUnitCode,
                 modelId: pageData.modelId,
                 reqQty: self.$pushApplyPopup.data('quantity'),
