@@ -741,6 +741,7 @@ var isApp = function(){
              * @function
              * @param {string} msg 얼럿 메세지
              * @param {Object} options 모달 옵션
+             * @param {Element} opener 포커스 타겟
              * @example
              * lgkorUI.confirm('받은 알림을 전체삭제<br>하시겠습니까?', {                        
                 ok:function(){},
@@ -1465,7 +1466,8 @@ var isApp = function(){
             }, true);
         },
 
-        requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl) {
+        requestWish: function(param, wish, callbackSuccess, callbackFail, postUrl, opener) {
+            console.log("opener:", opener)
             lgkorUI.showLoading();
             var self = this;
             param.wish = wish;
@@ -1488,7 +1490,7 @@ var isApp = function(){
                         if(data.alert.isConfirm && data.alert.okUrl) {
                             data.alert.okUrl = data.alert.okUrl + location.href;
                         }
-                        self.commonAlertHandler(data.alert);
+                        self.commonAlertHandler(data.alert, opener);
                         /*
                         lgkorUI.alert("", {
                             title: data.alert.title
@@ -1498,14 +1500,14 @@ var isApp = function(){
                         if(result.message) {
                             lgkorUI.alert("", {
                                 title: result.message
-                            });
+                            }, opener);
                         }
                     }
                 }
             }, true);
         },
 
-        commonAlertHandler: function(alert){
+        commonAlertHandler: function(alert, opener){
             if(!alert) {
                 return;
             }
@@ -1528,7 +1530,7 @@ var isApp = function(){
                 if(alert.title && alert.desc) {
                     obj.typeClass = 'type2'
                 }
-                lgkorUI.confirm(desc, obj);
+                lgkorUI.confirm(desc, obj, opener);
             } else {
                 //알림
                 var obj ={title: alert.title,
@@ -1541,7 +1543,7 @@ var isApp = function(){
                 if(desc) {
                     obj.typeClass = 'type2'
                 }
-                lgkorUI.alert(desc, obj);
+                lgkorUI.alert(desc, obj, opener);
             }
         },
 
