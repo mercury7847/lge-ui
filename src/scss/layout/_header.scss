@@ -1437,6 +1437,7 @@
             background:url('/lg5-common/images/icons/icon-app-alarm.svg') no-repeat center center;
             background-size:24px;
             &.active{
+                //display:block;
                 display:none;
             }
             .app-alarm-count{
@@ -1455,7 +1456,8 @@
                 font-size:10px;
                 color:#fff;
                 &.active{
-                    display:block;
+                    //display:block;
+                    display:none;
                 }
             }
         }
