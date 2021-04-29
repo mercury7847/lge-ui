@@ -245,7 +245,7 @@ $(function () {
                 if(!isBenefit){
                     $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
-                        animCtrlers[1] = null;
+                        animCtrlers[3] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
                         var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
                         icons.data("isReady", true);
@@ -716,9 +716,6 @@ $(function () {
                 }
                 
                 totalHeight += itemHeight;
-
-                
-                            
             });  
 
             /* 메인 테스트 */
@@ -846,19 +843,43 @@ $(function () {
 
     $('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
-        var path = $(item).find('img').attr('src').split("i00")[0];
+        var patharr = $(item).find('img').attr('src').split("/");
+        var pleng = patharr.length;
+        var path = "";
+        for(var j=0;j<pleng-1;j++){
+            path += patharr[j] + "/"
+        }
+        var fn = patharr[pleng-1].substr(0, 1);
 
         animCtrlers[idx] = null;
         $(item).data("ctrlerIdx", idx);
         $(item).data("animIdx", 0);
         $(item).data("loadIdx", 1);
-        $(item).data("loadTotal", leng);
         $(item).data("isReady", false);
+        
+        var i, num;
+        var total = 0;
+        if(idx < 2){
+            for(i=1;i<leng;i+=2){
+                if(i < leng){
+                    total++;
 
-        for(var i=1;i<leng;i++){
-            var num = i < 10 ? "0" + i : i;
-            $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + 'i' + num + '.png" alt="">');
+                    if(i < 10) var num = "00" + i;
+                    else if(i>9 && i < 100) num = "0" + i;
+                    else num = i;
+                    $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
+                }
+            }
+        } else{
+            for(i=1;i<leng;i++){
+                total++;
+                
+                num = i < 10 ? "0" + i : i;
+                $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
+            }
         }
+        $(item).data("loadTotal", total);
+        $(item).data('length', total+1);
     });
     $('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});

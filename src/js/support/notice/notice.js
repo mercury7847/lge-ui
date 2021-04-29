@@ -275,4 +275,15 @@
                 });
             }
     });
+    // 공지사항 탭 2021.04.29
+    $(window).ready(function() {
+        $(".tab_title_wrap li").on("click", function() {
+            $(this).siblings("li").removeClass("on");
+            $(this).addClass("on");
+            $(".tab_content_wrap > div").hide();
+
+            var activeTab = $(this).attr("rel");
+            $("#viewContent #"+activeTab).show();
+        });
+    });
 })();
