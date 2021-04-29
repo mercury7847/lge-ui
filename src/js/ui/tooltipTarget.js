@@ -139,7 +139,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             if(!self.options.tooltip) return;
 
             self.showTimer = setTimeout(function () {
-                self.$el.parent(".tooltip-wrap").addClass('active');
+                self.$el.parent("." + self.options.offsetParentClass).addClass('active');
 
                 self.$tooltip.attr('aria-hidden', 'false');
                 self.isShow = true;
@@ -147,11 +147,13 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
 
                 if (effect) {
                     self.$tooltip.fadeIn('fast', function(){
-                        self.$tooltip.focus();
+                        self.$tooltip.attr('tabindex', -1).focus();
+                        self.$tooltip.removeAttr('tabindex');
                     });
                 } else {
                     self.$tooltip.show();
-                    self.$tooltip.focus();
+                    self.$tooltip.attr('tabindex', -1).focus();
+                    self.$tooltip.removeAttr('tabindex');
                 }
                 
                 /*
@@ -174,13 +176,19 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             }
             self.isShow = false;
 
+            var $parent = self.$el.parent("." + self.options.offsetParentClass);
             if (effect) {
-                self.$tooltip.fadeOut('fast');
+                self.$tooltip.fadeOut('fast', function(){
+                    $parent.attr('tabindex', -1).focus();
+                    $parent.removeAttr('tabindex');
+                });
             } else {
                 self.$tooltip.hide();
+                $parent.attr('tabindex', -1).focus();
+                $parent.removeAttr('tabindex');
             }
             self.$tooltip.attr('aria-hidden', 'true');
-            self.$el.parent(".tooltip-wrap").removeClass('active');
+            $parent.removeClass('active');
             self.setOuterTouchEvent(false);
         },
 
