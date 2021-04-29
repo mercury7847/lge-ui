@@ -378,7 +378,7 @@
                     if(isLogin == "N"){
                         lgkorUI.alert("", {
                             title: "로그인이 필요합니다."
-                        });
+                        }, this);
 
                         $(this).prop('checked', false);
                     } else{
@@ -415,7 +415,8 @@
                             wish,
                             success,
                             fail,
-                            ajaxUrl
+                            ajaxUrl,
+                            this
                         );
                     }
                 });
@@ -886,7 +887,10 @@
             setCompares:function(){
                 var self = this;
 
-                self.$productList.find('li .product-compare a').removeClass('on');
+                var compare = self.$productList.find('li .product-compare a');
+                compare.removeClass('on');
+                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
@@ -895,7 +899,9 @@
                     //if(!vcui.isEmpty(storageCompare[categoryId]))
                     for(var i in storageCompare[categoryId]){
                         var modelID = storageCompare[categoryId][i]['id'];
-                        self.$productList.find('li .product-compare a[data-id=' + modelID + ']').addClass('on');
+                        compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
+                        compare.addClass('on');
+                        compare.find('.blind').text('선택됨');
                     }
                 }
             },
