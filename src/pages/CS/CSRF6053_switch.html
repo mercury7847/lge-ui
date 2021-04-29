@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="N">
+@@include('./common/head.html', {
+"pageCSS": [
+"support/support",
+"support/notice"
+]
+})
+
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support notice">
+                <div class="cont-wrap">
+
+                    <div class="board-view-wrap">
+                        <div class="board-view">
+                            <div class="board-view-head">
+                                <div class="flag-wrap bar-type">
+                                    <span class="flag"><span class="blind">제품 상태</span>NEW</span>
+                                    <span class="flag"><span class="blind">제품 상태</span>BEST</span>
+                                </div>
+                                <h1 class="head-title">시스템 점검에 따른 서비스 이용안내 공지사항</h1>
+                                <ul class="head-infos">
+                                    <li>2020.07.20</li>
+                                    <li>조회 4,129</li>
+                                </ul>
+                            </div>
+                            <div class="board-view-sub">
+                                <div class="addfile-wrap ui_dropdown">
+                                    <a href="#" class="addfile-button ui_dropdown_toggle">첨부파일</a>
+                                    <div class="addfilebox-list ui_dropdown_list">
+                                        <ul class="addfile-list">
+                                            <li>
+                                                <a href="#" class="all download">전체</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="download">@img_manager.jpg</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="download">@img_manager2.jpg</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tooltip-wrap share">
+                                    <a href="#n" class="tooltip-icon ui_tooltip-target"><span class="blind">제품
+                                            공유하기</span></a>
+                                    <div class="tooltip-box fixed-right">
+                                        <span class="title">공유하기</span>
+                                        <div class="sns-wrap">
+                                            <!-- 
+                                                data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                                data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                                data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                                data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                        
+                                                각 sns 버튼에 적용.
+                                            -->
+                                            <ul class="sns-list">
+                                                <li><a href="#none"
+                                                        data-url="https://www.lg.com/html/components/blog-share.html"
+                                                        class="ico-btn fb" title="페이스북에 공유하기, 새창열림"
+                                                        data-link-name="facebook">페이스북<span class="blind">으로 페이지
+                                                            공유하기</span></a></li>
+                                                <li><a href="#none"
+                                                        data-url="https://www.lg.com/html/components/blog-share.html"
+                                                        class="ico-btn tw" title="트위터에 공유하기, 새창열림"
+                                                        data-link-name="twitter">트위터<span class="blind">로 페이지
+                                                            공유하기</span></a></li>
+                                                <li><a href="#none"
+                                                        data-url="https://www.lg.com/html/components/blog-share.html"
+                                                        class="ico-btn kk" title="카카오톡에 공유하기, 새창열림"
+                                                        data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지
+                                                            공유하기</span></a></li>
+                                                <li><a href="#none"
+                                                        data-url="https://www.lg.com/html/components/blog-share.html"
+                                                        class="ico-btn url" data-link-name="copy_url">URL복사<span
+                                                            class="blind">하기</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-view-body">
+                                <!-- admin editor 등록 시 id="viewContent" 추가 -->
+                                <!-- <div class="view-content" id="viewContent"> -->
+                                <div class="view-content" id="viewContent">
+                                    <div style="margin: 0px auto; width: 320px; position: relative;">
+                                        <div class="section_part3 switch_wrap">
+                                            <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/01.jpg" alt="LG 모바일 스위치 나의 소중한 데이터, LG 모바일 스위치로 이어가세요"> 
+                                            <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/02.jpg" alt="하단설명참조">
+                                            <div class="hidden">
+                                                <h3>01 쉽고 빠르게 데이터 이동하기</h3>
+                                                <p>이전에 사용 중이던 제품 속 주소록, 메시지, 사진, 동영상 등의 데이터를 쉽고 빠르게 새 제품으로 옮길 수 있습니다.</p>
+                                                <strong>아래 해당하는 경우를 선택해주세요.</strong>
+                                                <p>쉽고 빠르게 데이터를 이동할 수 있는 가이드를 제공해드립니다.</p>
+                                            </div>
+                                            <div class="tab_title_wrap">
+                                                <ul class="fn-switch item-size3">
+                                                    <li class="tab1" rel="tab1"><a class="not" href="#branch_search1">타사 안드로이드 스마트폰에서 LG 스마트폰으로 이동하기</a></li>
+                                                    <li class="tab2" rel="tab2"><a class="not" href="#branch_search2">LG 스마트폰에서 LG 스마트폰으로 이동하기</a></li>
+                                                    <li class="tab3" rel="tab3"><a class="not" href="#branch_search3">iOS 스마트폰에서 LG 스마트폰으로 이동하기</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="fn-switch-wrap tab_content_wrap">
+                                                <div id="tab1" class="" style="display: none">
+                                                    <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/03_01.jpg" alt="하단설명참조" class="no-img">
+                                                    <div class="hidden">
+                                                        <h3>타사 안드로이드 스마트폰에서 LG 스마트폰으로 데이터 이동하는 방법</h3>
+                                                        <div>
+                                                            <dl>
+                                                                <dt>Step1 : LG 모바일 스위치 앱 설치 및 실행하기</dt>
+                                                                <dd>기존 사용하시던 제품의 Play 스토어에 들어가셔서 LG 모바일 스위치 앱을 다운로드하여 설치하세요.
+                                                                    기존에 사용하시던 제품과 새 제품에서 LG 모바일 스위치 앱을 실행하세요.</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>Step1 : 데이터 이동하는 방법 선택하기</dt>
+                                                                <dd>기존 제품과 새 제품에서 LG 모바일 스위치 앱을 실행한 후 데이터를 이동할 방법을 선택하세요.
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>Step3 : USB 케이블/무선/ SD카드 중 선택하신 방법으로 데이터 이동하기</dt>
+                                                                <dd>
+                                                                    <h4>USB 케이블로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 기존 제품에서 LG 모바일 스위치 앱을 실행한 후 USB 케이블을 누르세요.
+                                                                        </li>
+                                                                        <li>2. 기존 제품과 새 제품을 USB 케이블로 연결하세요.
+                                                                            <ul>
+                                                                                <li>*제품의 USB 연결 방식을 파일 전송 (또는 MTP)로 선택하세요.
+                                                                                </li>
+                                                                                <li>*제품에 따라 포트 타입이 다를 수 있으므로 각 제품에 적합한 OTG
+                                                                                    젠더를 사용하세요.</li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li>3. 연결이 완료되면 USB 케이블 받기 안내 창이 양쪽 제품 화면에 나타납니다.
+                                                                            <p>* 일부 제품의 경우 USB 케이블 연결 후에 기존 제품에서 접근 허용 또는
+                                                                                신뢰를 눌러주세요.</p>
+                                                                        </li>
+                                                                        <li>4. 기존 제품에서 보낼 데이터를 선택한 후 다음 버튼을 누르세요.</li>
+                                                                        <li>5. 받기가 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                            <p>*정책에 따라 OTG 젠더는 기본 구성품으로 제공되지 않을 수 있습니다.</p>
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                                <dd>
+                                                                    <h4>무선으로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 새 제품에서 LG 모바일 스위치 앱을 실행한 후 무선 받기 시작을 누르세요.
+                                                                        </li>
+                                                                        <li>2. 기존 제품에서 LG 모바일 스위치 앱을 실행한 후 무선 시작을 누르세요.</li>
+                                                                        <li>3. 기존 제품에서 데이터를 받을 새 제품의 기기 명칭을 선택하세요.</li>
+                                                                        <li>4. 새 제품에서 받기를 선택하세요.</li>
+                                                                        <li>5. 기존 제품에서 보낼 데이터를 선택한 후 다음 버튼을 누르세요.</li>
+                                                                        <li>6. 받기가 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                            <p>* 무선으로 데이터를 이동하는 경우 기존 제품과 새 제품을 가까이에 위치시키세요.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                                <dd>
+                                                                    <h4>SD 카드로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 기존 제품에서 LG 모바일 스위치 앱을 실행하세요.</li>
+                                                                        <li>2. SD 카드를 눌러 보낼 데이터를 선택하고 시작을 눌러 데이터를 이동한 후, 저장이
+                                                                            완료되면 완료 버튼을 누르세요.
+                                                                            <p>* 기존 제품에 장착된 SD 카드에 데이터가 저장됩니다.</p>
+                                                                        </li>
+                                                                        <li>3. 기존 제품에서 마운트 해제 버튼을 누른 후 SD 카드를 빼내어 새 제품에
+                                                                            끼우세요.</li>
+                                                                        <li>4. 새 제품에서 LG 모바일 스위치 앱을 실행한 후 SD 카드를 누르세요.</li>
+                                                                        <li>5. 복원을 눌러 새 제품에 복원할 데이터를 선택한 후 다음 복원을 누르세요. 코멘트
+                                                                            : 해당 이미지</li>
+                                                                        <li>6. 복원이 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                            <p>* 사용하는 제품에 따라 SD 카드의 마운트 해제 방법 또는 경로가 다를 수
+                                                                                있습니다.</p>
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="tab2" class="tab_content_wrap" style="display: none;">
+                                                    <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/03_02.jpg" alt="하단설명참조" class="no-img">
+                                                    <div class="hidden">
+                                                        <h3>LG 스마트폰에서 LG 스마트폰으로 데이터 이동하는 방법</h3>
+                                                        <div>
+                                                            <dl>
+                                                                <dt>Step1 : LG 모바일 스위치 앱 업데이트 및 실행하기</dt>
+                                                                <dd>기존 사용하시던 제품의 설정에 들어가셔서 일반 &gt; 휴대폰 정보 &gt; 앱 업데이트 로
+                                                                    진입하셔서 LG 모바일 스위치 메뉴가 최신인지 확인하시고 업데이트 안내가 있을 경우 업데이트 하셔서
+                                                                    최신 버전으로 업그레이드 해주세요. 기존에 사용하던 제품과 새 제품에서 LG 모바일 스위치 앱을
+                                                                    실행하세요.</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>Step2 : 데이터 이동하는 방법 선택하기</dt>
+                                                                <dd>기존 제품과 새 제품에서 LG 모바일 스위치 앱을 실행한 후 데이터를 이동할 방법을 선택하세요.
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>USB 케이블/무선/ SD카드 중 선택하신 방법으로 데이터 이동하기</dt>
+                                                                <dd>
+                                                                    <h4>USB 케이블로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 기존 제품에서 LG 모바일 스위치 앱을 실행한 후 USB 케이블을 누르세요.
+                                                                        </li>
+                                                                        <li>2. 기존 제품과 새 제품을 USB 케이블로 연결하세요.
+                                                                            <div>
+                                                                                <ul>
+                                                                                    <li>*제품의 USB 연결 방식을 파일 전송 (또는 MTP)로
+                                                                                        선택하세요.</li>
+                                                                                    <li>*제품에 따라 포트 타입이 다를 수 있으므로 각 제품에 적합한
+                                                                                        OTG 젠더를 사용하세요.</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>3. 연결이 완료되면 USB 케이블 받기 안내 창이 양쪽 제품 화면에 나타납니다.
+                                                                            <p>* 일부 제품의 경우 USB 케이블 연결 후에 기존 제품에서 접근 허용 또는
+                                                                                신뢰를 눌러주세요.</p>
+                                                                        </li>
+                                                                        <li>4. 기존 제품에서 보낼 데이터를 선택한 후 다음 버튼을 누르세요.</li>
+                                                                        <li>5. 받기가 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                            <p>*정책에 따라 OTG 젠더는 기본 구성품으로 제공되지 않을 수 있습니다.</p>
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                                <dd>
+                                                                    <h4>무선으로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 새 제품에서 LG 모바일 스위치 앱을 실행한 후 무선 받기 시작을 누르세요.
+                                                                        </li>
+                                                                        <li>2. 기존 제품에서 LG 모바일 스위치 앱을 실행한 후 무선 시작을 누르세요.</li>
+                                                                        <li>3. 기존 제품에서 데이터를 받을 새 제품의 기기 명칭을 선택하세요.</li>
+                                                                        <li>4. 새 제품에서 받기를 선택하세요.</li>
+                                                                        <li>5. 기존 제품에서 보낼 데이터를 선택한 후 다음 버튼을 누르세요.</li>
+                                                                        <li>6. 받기가 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                                <dd>
+                                                                    <h4>SD 카드로 데이터 이동하기</h4>
+                                                                    <ol>
+                                                                        <li>1. 기존 제품에서 LG 모바일 스위치 앱을 실행하세요.</li>
+                                                                        <li>2. SD 카드를 눌러 보낼 데이터를 선택하고 시작을 눌러 데이터를 이동한 후, 저장이
+                                                                            완료되면 완료 버튼을 누르세요.
+                                                                            <p>* 기존 제품에 장착된 SD 카드에 데이터가 저장됩니다.</p>
+                                                                        </li>
+                                                                        <li>3. 기존 제품에서 마운트 해제 버튼을 누른 후 SD 카드를 빼내어 새 제품에
+                                                                            끼우세요.</li>
+                                                                        <li>4. 새 제품에서 LG 모바일 스위치 앱을 실행한 후 SD 카드를 누르세요.</li>
+                                                                        <li>5. 복원을 눌러 새 제품에 복원할 데이터를 선택한 후 다음 복원을 누르세요. 코멘트
+                                                                            : 해당 이미지</li>
+                                                                        <li>6. 복원이 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요.
+                                                                            <p>* 사용하는 제품에 따라 SD 카드의 마운트 해제 방법 또는 경로가 다를 수
+                                                                                있습니다.</p>
+                                                                        </li>
+                                                                    </ol>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="tab3" class="tab_content_wrap" style="display: none;">
+                                                    <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/03_03.jpg" alt="하단설명참조" class="no-img">
+                                                    <div class="hidden">
+                                                        <h3>iOS 스마트폰에서 LG 스마트폰으로 데이터 이동하는 방법</h3>
+                                                        <div>
+                                                            <dl>
+                                                                <dt>Step1 : USB 케이블로 연결하기</dt>
+                                                                <dd>1. 기존 사용하시던 iOS 제품과 새 제품을 USB 케이블로 연결하세요.</dd>
+                                                                <dd>2. 연결이 완료되면 USB 케이블 받기 안내 창이 양쪽 제품 화면에 나타납니다.
+                                                                    <p>* USB 케이블 연결 후에 기존 제품에서 신뢰를 눌러주세요.</p>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>Step2 : 데이터 다운받기</dt>
+                                                                <dd>1. 새 제품에서 받을 데이터를 선택한 후 다음 버튼을 누르세요. .</dd>
+                                                                <dd>2. 받기가 완료되면 새 제품에서 휴대폰 다시 시작을 눌러 새 제품을 다시 시작하세요
+                                                                    <p>* 정책에 따라 OTG 젠더는 기본 구성품으로 제공되지 않을 수 있습니다.</p>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="info_wrap">[안내]
+                                                <ul>
+                                                    <li>데이터 이동은 스마트폰의 LG mobile switch 앱으로 실행할 수 있습니다.</li>
+                                                    <li>단, 일부 제품의 경우 LG 백업 앱으로 실행되며, 화면 구성에 차이가 있을 수 있습니다.</li>
+                                                </ul>
+                                            </div>
+                                            <div style="width: 100%; display: block;">
+                                                <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/04.png" alt="하단설명참조">
+                                                <div class="hidden">
+                                                    <h3>02 이동 가능한 데이터 종류</h3>
+                                                    <p>주소록, 메시지, 통화기록, 캘린더, 음성녹음, 사진, 동영상, 음악, 문서, 메모, 다운로드앱,공인인증서, 기타 설정 항목
+                                                        등을 새로운 LG 스마트폰으로 옮길 수 있습니다.</p>
+                                                </div>
+                                            </div>
+                                            <div style="width: 100%; display: block; text-align: center;">
+                                                <img width="320" src="https://wwwstg.lge.co.kr/kr/support/images/notice/mobileswitch_ect_02_2.gif">
+                                            </div>
+                                            <ul class="ect_notice" style="text-align: left; padding: 1.3rem 0rem;">
+                                                <li>* LG전자 제품 간, 또는 LG전자 제품과 타사 제품 간의 이동 가능한 데이터 종류는 제조사, SW 버전, OS 종류 및 앱이나 콘텐츠 특성에 따라 제한되거나 달라질 수 있습니다.</li>
+                                                <li>* 각 제품의 SW 버전이나 앱 업데이트, OS 업그레이드, 제조사의 정책 등에 따라 본 설명서의 내용과 그림은 일부 달라질 수 있습니다.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-navi">
+                            <a href="#" class="navi">
+                                <span class="navi-label">이전 글</span>
+                                <span class="navi-desc">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내</span>
+                            </a>
+                            <a href="#" class="navi">
+                                <span class="navi-label">다음 글</span>
+                                <span class="navi-desc">LG전자 챗봇 개인정보 처리 방침 개정안내</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="btn-group center">
+                        <a href="/html/CS/CSRF6052.html" class="btn"><span>목록</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        @@include('./common/support/quick-menu.html')
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/notice/notice.min.js"></script>
+</body>
+
+</html>

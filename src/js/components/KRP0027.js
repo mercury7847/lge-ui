@@ -66,10 +66,10 @@ $(window).ready(function(){
 								'<span class="title">공유</span>'+
 								'<div class="sns-wrap">'+
 									'<ul class="sns-list">'+
-										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>'+
-										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>'+
+										'<li><a href="#" data-url="{{shareUrl}}" class="ico-btn url" data-link-name="copy_url">URL 복사<span class="blind">하기</span></a></li>'+
 									'</ul>'+
 								'</div>'+
 								'<button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
