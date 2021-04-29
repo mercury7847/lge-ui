@@ -41,13 +41,13 @@
                     '<div class="price-area">'+
                         '{{#if item.addCommaOriginalPrice != "0"}}'+
                         '<div class="original">'+
-                            '<em class="blind">판매가격</em>'+
+                            '<em class="blind">할인 전 정가</em>'+
                             '<span class="price">{{item.addCommaOriginalPrice}}<em>원</em></span>'+
                         '</div>'+
                         '{{/if}}'+
                         '{{#if item.addCommaPrice != "0"}}'+
                         '<div class="total">'+
-                            '<em class="blind">총 판매가격</em>'+
+                            '<em class="blind">할인 후 판매가</em>'+
                             '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
                         '</div>'+
                         '{{/if}}'+
