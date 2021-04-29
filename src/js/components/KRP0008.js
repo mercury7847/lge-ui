@@ -144,8 +144,10 @@
                 self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
                 //데스크탑용 갤러리 썸네일리스트
                 self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
+                self.$pdpThumbnail.find('li > a').append('<span class="blind">선택안됨</span>');
                 //선택된 데스크탑 썸네일
                 self.$selectItemTarget = self.$pdpThumbnail.find('li.active');
+                self.$selectItemTarget.find('.blind').text("선택됨");
 
                 //모바일용 갤러리
                 self.$pdpMobileVisual = $('#mobile_summary_gallery');
@@ -2043,9 +2045,11 @@
                         var thumbItem = self.$pdpThumbnail.find('li:eq('+index+')');
                         if(self.$selectItemTarget) {
                             self.$selectItemTarget.removeClass('active');
+                            self.$selectItemTarget.find('.blind').text("선택안됨");
                         }
                         self.$selectItemTarget = thumbItem;
                         self.$selectItemTarget.addClass('active');
+                        self.$selectItemTarget.find('.blind').text("선택됨");
 
                         self.$pdpImage.find('a').attr({'data-link-name':item.linkName,'data-idx':(""+index)});
                         self.$pdpImage.find('a img').attr({'src':item.imagePdp,'alt':item.alt});

@@ -362,6 +362,8 @@
         '<li><dl><dt>배송 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
         '<li><dl><dt>배송 희망일</dt><dd>{{delivWish}}</dd></dl></li>';
 
+    var pastListNotyfyVerPC = '<ul class="bullet-list pastlist-notyfy" style="margin-top:10px"><li class="b-txt">2020.04.13~2021.04.26 주문 건에 대한  주문취소/배송정보/반품/기타 사항에 대해서는 1661-2471로  문의 주세요. </li></ul>';
+    var pastListNotyfyVerMobile = '<ul class="bullet-list pastlist-notyfy" style="margin-top:10px"><li class="b-txt">2020.04.13~2021.04.26 주문 건에 대한  주문취소/배송정보/반품/기타 사항에 대해서는 <a href="tel:1661-2471">1661-2471</a>로  문의 주세요. </li></ul>';
     
     var ORDER_INQUIRY_LIST_URL;     //리스트 조회 연동 json
     var ORDER_DETAIL_URL;               //상세 페이지 경로
@@ -1142,6 +1144,8 @@
     function setOrderListContents(){
         var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var leng = list.length;
+
+        $('.pastlist-notyfy').remove();
         
         if(leng){
             $('.inquiry-list-notify').show();
@@ -1182,7 +1186,7 @@
         }
     }
 
-    //서비스 이번 내역 스타트...
+    //서비스 이전 내역 스타트...
     function showRecordList(){
         START_INDEX = 0;
         TAB_FLAG = TAB_FLAG_RECORD;
@@ -1197,6 +1201,9 @@
     //서비스 이전 내역 조회...
     function setRecordContents(){
         var leng = RECORD_LIST.length;        
+
+        $('.pastlist-notyfy').remove();
+
         if(leng){
             $('.inquiry-list-notify').hide();
 
@@ -1204,7 +1211,7 @@
             var end = start + LIST_VIEW_TOTAL;
             if(end > leng) end = leng;
 
-            if(start == 0) $('.inquiry-list-wrap').empty();            
+            $('.inquiry-list-wrap').empty();            
 
             for(var idx=start;idx<end;idx++){
                 var templateList = $(vcui.template(inquiryListTemplate, RECORD_LIST[idx])).get(0);
@@ -1221,8 +1228,11 @@
                 }
             }
 
-            if(end < leng) $('.btn-moreview').css('display','block');
-            else $('.btn-moreview').css('display','none');
+            var notify = vcui.detect.isMobileDevice ? pastListNotyfyVerMobile : pastListNotyfyVerPC;
+            if($('.open-before-order-history').length) $('.open-before-order-history .inner').append(notify);
+            else $('.info-tbl-wrap.inquiry-list-wrap').after(notify);
+
+            $('.btn-moreview').css('display','none');
         } else{
             setNoData();
         }
