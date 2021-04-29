@@ -808,6 +808,12 @@
             }
         }
     }
+    //휴무 안내 테이블
+    .ac {text-align:center !important;}
+    .ar {text-align:right !important;}
+    .al {text-align:left !important;}
+    .point_txt {font-weight:bold !important;color:#a50034 !important;}
+    .link_txt {display:block; color:#a50034 !important; text-decoration: underline !important}
 }
 
 @import "../../support/pages/payNwarranty";
