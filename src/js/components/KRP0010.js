@@ -30,6 +30,8 @@
         
         var $KRP0010 = $('.KRP0010');
 
+        $KRP0010.find('.btn_collapse_more a').eq(0).attr('title', '제품스펙 상세정보 펼치기');
+        $KRP0010.find('.btn_collapse_more a').eq(1).attr('title', '제품스펙 상세정보 접기');
         $KRP0010.on('click', '.btn_collapse_more a', function(e){
             e.preventDefault();
 

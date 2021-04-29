@@ -140,14 +140,25 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
 
             self.showTimer = setTimeout(function () {
                 self.$el.parent(".tooltip-wrap").addClass('active');
-                if (effect) {
-                    self.$tooltip.fadeIn('fast');
-                } else {
-                    self.$tooltip.show();
-                }
+
                 self.$tooltip.attr('aria-hidden', 'false');
                 self.isShow = true;
                 self._positionCheck();
+
+                if (effect) {
+                    self.$tooltip.fadeIn('fast', function(){
+                        self.$tooltip.focus();
+                    });
+                } else {
+                    self.$tooltip.show();
+                    self.$tooltip.focus();
+                }
+                
+                /*
+                self.$tooltip.attr('aria-hidden', 'false');
+                self.isShow = true;
+                self._positionCheck();
+                */
                 self.setOuterTouchEvent(true);
             }, self.options.interval);
         },

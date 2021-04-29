@@ -28,11 +28,11 @@
                             '<a href="{{storyUrl}}" class="visual-area">'+
                                 '{{#if contentsType == "image"}}'+
                                 '<span class="image">'+
-                                    '<img onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
+                                    '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '{{#elsif contentsType == "video"}}'+
                                 '<span class="image">'+
-                                    '<img onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
+                                    '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
                                 '</span>'+
                                 '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
                                 '{{/if}}'+

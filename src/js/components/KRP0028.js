@@ -103,7 +103,7 @@
                 var awardList = $li.data('awardList');
                 var categoryName = $li.find('div.flag-wrap span.flag').text();
                 var categoryUrl = $li.data('categoryUrl');
-                self.openAwardsPopup(categoryName,categoryUrl,awardList);
+                self.openAwardsPopup(categoryName,categoryUrl,awardList,this);
             });
 
             self.$pagination.on('page_click', function(e, data) {
@@ -198,20 +198,7 @@
             }
         },
 
-        /*
-        requestAwardPopupData: function(_id) {
-            var self = this;
-            var ajaxUrl = self.$section.attr('data-popup-url');
-            lgkorUI.requestAjaxData(ajaxUrl, {"id":_id}, function(result) {
-                var popupData = result.data;
-                if(popupData) {
-                    self.openAwardsPopup(popupData);
-                }
-            });
-        },
-        */
-
-        openAwardsPopup: function(categoryName, categotyUrl, awardList) {
+        openAwardsPopup: function(categoryName, categotyUrl, awardList, eventTarget) {
             var self = this;
             
             var $popup = $('#awardsPopup');
@@ -238,7 +225,11 @@
             }
 
             $popup.find('ul.com-pop-list').html(vcui.template(awardsPopupListItemTemplage, {"list":array}));
-            $popup.vcModal({opener:self.$list.find('li div.btn-area button')});
+            if(eventTarget) {
+                $popup.vcModal({opener:eventTarget});
+            } else {
+                $popup.vcModal();
+            }
         }
     };
         

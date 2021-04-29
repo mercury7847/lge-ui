@@ -80,10 +80,17 @@ $(function() {
         });
         
 
-        $('.signature-hero').focusout(function(e){
+        $('.next-arr a:eq(0)').focusin(function(e){
+            $window.trigger('floatingTop');
+            setTimeout(function(){
+                wheelScene(2);
+            }, 250);
+        });
+
+        $('.signature-wrap .signature-tabs').focusin(function(e){
             setTimeout(function(){
                 $('.next-arr a:eq(0)').trigger('click');
-            },300);
+            },250);
         });
 
         $window.on('floatingTop', function(){
