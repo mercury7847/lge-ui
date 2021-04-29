@@ -28,6 +28,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             nextname: 'ui_smooth_next',
             tabItem: "li",
             selectclass: "on",
+            selectedText: '선택됨',
             tabIndex:0,
             scrollOption:{
                 autoCenterScroll: false,
@@ -79,11 +80,18 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             });
 
             if(self.options.usedTabLink){
-                self.$el.on('click', self.options.tabItem, function(e){         
-                    var cid = $(this).find('a').attr('href');
-                    if(cid){
-                        if($(cid).length) e.preventDefault();
-                    }               
+                self.$el.on('click', self.options.tabItem, function(e){
+                    self.$el.find('a > em.blind').remove();
+
+                    var $aT = $(this).find('a');
+                    if($aT.length > 0) {
+                        var cid = $aT.attr('href');
+                        if(cid){
+                            if($(cid).length) e.preventDefault();
+                        }
+
+                        $aT.append('<em class="blind">' + self.options.selectedText + '</em>');
+                    }
 
                     var idx = $(this).index();
                     if(idx != self.tabIndex){
