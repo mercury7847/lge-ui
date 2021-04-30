@@ -19,7 +19,7 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                       <li data-category-id="{{obj.categoryId}}">\n'+
     '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
-    '                               <i><img src="{{obj.iconPath}}" alt={{obj.iconAlt}}"></i>\n'+
+    '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
     '                           </a>\n'+
     '                       </li>\n'+

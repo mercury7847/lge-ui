@@ -139,15 +139,28 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             if(!self.options.tooltip) return;
 
             self.showTimer = setTimeout(function () {
-                self.$el.parent(".tooltip-wrap").addClass('active');
-                if (effect) {
-                    self.$tooltip.fadeIn('fast');
-                } else {
-                    self.$tooltip.show();
-                }
+                self.$el.parent("." + self.options.offsetParentClass).addClass('active');
+
                 self.$tooltip.attr('aria-hidden', 'false');
                 self.isShow = true;
                 self._positionCheck();
+
+                if (effect) {
+                    self.$tooltip.fadeIn('fast', function(){
+                        self.$tooltip.attr('tabindex', -1).focus();
+                        self.$tooltip.removeAttr('tabindex');
+                    });
+                } else {
+                    self.$tooltip.show();
+                    self.$tooltip.attr('tabindex', -1).focus();
+                    self.$tooltip.removeAttr('tabindex');
+                }
+                
+                /*
+                self.$tooltip.attr('aria-hidden', 'false');
+                self.isShow = true;
+                self._positionCheck();
+                */
                 self.setOuterTouchEvent(true);
             }, self.options.interval);
         },
@@ -163,13 +176,19 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             }
             self.isShow = false;
 
+            var $parent = self.$el.parent("." + self.options.offsetParentClass);
             if (effect) {
-                self.$tooltip.fadeOut('fast');
+                self.$tooltip.fadeOut('fast', function(){
+                    $parent.attr('tabindex', -1).focus();
+                    $parent.removeAttr('tabindex');
+                });
             } else {
                 self.$tooltip.hide();
+                $parent.attr('tabindex', -1).focus();
+                $parent.removeAttr('tabindex');
             }
             self.$tooltip.attr('aria-hidden', 'true');
-            self.$el.parent(".tooltip-wrap").removeClass('active');
+            $parent.removeClass('active');
             self.setOuterTouchEvent(false);
         },
 

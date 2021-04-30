@@ -55,14 +55,13 @@
 
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
-
             if(vcui.detect.isIOS){
                 isProgress = false;
 
                 $('input[name=chkPrivacy], input[name=rentalAgree]').prop('disabled', true);
 
                 lgkorUI.alert("", {
-                    title: "죄송합니다.<br>현재 iOS에서는 케어솔루션/케어십 청약 서비스를 제공하지 않습니다. <br>케어솔루션 고객센터로 연락주시면 친절하게<br>안내 드리겠습니다.<br>케어솔루션 고객센터 전화하기<br>(전화)<a href='tel:1544-6351'>1544-6351</a>",
+                    title: "죄송합니다.<br>현재 iOS에서는 케어솔루션/케어십 청약 서비스를 제공하지 않습니다. <br>케어솔루션 고객센터로 연락주시면<br>친절하게 안내 드리겠습니다.<br>케어솔루션 고객센터 전화하기<br>(전화)<a href='tel:1544-6351'>1544-6351</a>",
                     ok: function(){
                         location.href = "/";
                     }
@@ -521,7 +520,7 @@
         });
 
         $(window).on('beforeunload', function(e){
-            if(isBeforeUnload) return '다른 페이지로 이동시, 작성하신 내용이 초기화 됩니다.';
+            if(isBeforeUnload) return '페이지를 벗어날 경우, 지금까지 작성한 내용이 사라집니다.';
         });
 
     }

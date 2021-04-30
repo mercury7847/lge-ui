@@ -151,12 +151,17 @@ $(window).ready(function(){
 
         function openCompareBox(){
             $('.right-cont .more-arrow').removeClass('close').addClass('open');
+            $('.right-cont .more-arrow').attr('aira-expanded', true);
+            $('.right-cont .more-arrow span.blind').text('제품 비교하기 닫기');
+
 
             _$('.KRP0015').stop().transition({y:0}, 550, "easeInOutCubic");
         }
 
         function closeCompareBox(){
             $('.right-cont .more-arrow').removeClass('open').addClass('close');
+            $('.right-cont .more-arrow').attr('aira-expanded', false);
+            $('.right-cont .more-arrow span.blind').text('제품 비교하기 펼치기');
 
             var height = _$('.KRP0015').outerHeight(true) - $('.sticy-compare .compare-title').outerHeight(true);
             _$('.KRP0015').stop().transition({y:height}, 350, "easeInOutCubic");
@@ -165,6 +170,8 @@ $(window).ready(function(){
 
         function hideCompareBox(){
             $('.right-cont .more-arrow').removeClass('open').addClass('close');
+            $('.right-cont .more-arrow').attr('aira-expanded', false);
+            $('.right-cont .more-arrow span.blind').text('제품 비교하기 펼치기');
 
             var height = _$('.KRP0015').outerHeight(true);
             _$('.KRP0015').stop().transition({y:height}, 350, "easeInOutCubic", function(){

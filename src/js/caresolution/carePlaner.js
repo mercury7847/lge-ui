@@ -417,7 +417,7 @@
             $dropDown.vcDropdown("close");
 
             var maxCardSale = $this.attr('data-card-sale');
-            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("이용시 월 최대 " + vcui.number.addComma(maxCardSale) + "원 청구할인");
+            if(maxCardSale > 0) $('#pop-estimate').find('.discount-price').show().text("월 최대 " + vcui.number.addComma(maxCardSale) + "원 할인");
             else $('#pop-estimate').find('.discount-price').hide();
 
             $('#pop-estimate').data("selectId", $this.data('cardId'));
@@ -659,6 +659,7 @@
         var optionData = getOptionData(item);
 
         var siblingType = $(item).data('siblingType');
+        console.log("siblingType:",siblingType)
         if(siblingType == "siblingColors"){
             setChangeColorChip(idx, optionData.optdata);
         } else{
@@ -674,12 +675,13 @@
             tabID: getTabID(),
             modelID: _currentItemList[idx]['modelId'],
             rtModelSeq: _currentItemList[idx]['rtModelSeq'],
-            feeCd: optdata['siblingFee'].value,
-            usePeriodCd: optdata['siblingUsePeriod'].value,
-            visitCycleCd: optdata['siblingVisitCycle'].value,
             comboFlag: comboId,
             blockID: idx
         }
+
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
+        if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
+        if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -748,7 +750,9 @@
             var deleteItem = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
 
             if(!_currentItemList[blockID].modelUrlPath) _currentItemList[blockID].modelUrlPath = "";
-            else _currentItemList[blockID].modelUrlPath += "?dpType=careTab";
+            else{
+               if(getTabID() == 0) _currentItemList[blockID].modelUrlPath += "?dpType=careTab";
+            }
 
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[blockID]);
             var addItem = $(prodlist).get(0);
@@ -783,7 +787,9 @@
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
             if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
-            else _currentItemList[i].modelUrlPath += "?dpType=careTab";
+            else{
+                if(getTabID() == 0) _currentItemList[i].modelUrlPath += "?dpType=careTab";
+            }
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
@@ -979,6 +985,8 @@
                     }
                 }
             }
+
+            $putItemContainer.attr("tabindex", -1).focus();
         } else{
             hidePutItemBox();
         }

@@ -98,7 +98,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 return;
             }
             
-            var opts = $.extend(true, self.options, {
+            var opts = $.extend(true, {}, self.options, {
                 model: {
                     category: self.$el.find('#category').val(),
                     categoryNm: self.$el.find('#categoryNm').val(),
@@ -108,6 +108,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     productCode: self.$el.find('#productCode').val()
                 }
             });
+            console.log(self.options);
 
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -172,13 +173,13 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     self.reset();
                 } else {
                     if (lgkorUI.searchParamsToObject('mktModelCd')) {
-                        opts.useCookie = false;
+                        self.options.useCookie = false;
                         self.model.modelCode = self.model.mktModelCd = lgkorUI.searchParamsToObject('mktModelCd');
                         self.hasModel = self.model.subCategory ? true : false;
                     }
                     
                     if (self.hasModel) {
-                        if (opts.useCookie) {
+                        if (self.options.useCookie) {
                             if (self.hasModel) {
                                 lgkorUI.alert(
                                     self.model.categoryNm + ' &gt; ' +self.model.subCategoryNm + (self.model.modelCode ? '<br><span style="font-weight:700">"' +self.model.modelCode+ '"</span>' : '' ) +'<br>제품이 선택되어 있습니다.<br><br>다른 제품으로 변경하시려면<br>화면 상단 <span style="font-weight:700">"제품 재선택"</span> 버튼을 선택해주세요.', {
@@ -770,12 +771,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.hasModel = false;
             self.page = defaults.page;
             self.totalCount = defaults.totalCount;
-            self.model = $.extend(true, defaults.model, {
+            self.model = $.extend(true, {}, defaults.model, {
                 pageCode: self.$el.find('#pageCode').val(),
                 serviceType: self.$el.find('#serviceType').val(),
                 salesModelCode: self.$el.find('#salesModelCode').val()
             });
-            self.param = $.extend(true, defaults.model, {
+            self.param = $.extend(true, {}, defaults.model, {
                 keyword: ''
             });
 

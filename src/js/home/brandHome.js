@@ -769,8 +769,12 @@
                 $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl,{link:href}));   
                 var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
                 $videoBtns.removeClass('slide_on');
-                $videoBtns.children('span.blind').remove();
-                $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on').append('<span class="blind">선택됨</span>');
+                $videoBtns.find('span.blind.bh-add').remove();
+                $(e.currentTarget).closest('.ui_carousel_slide').addClass('slide_on').append('<span class="blind bh-add">선택됨</span>');
+                var aT = $(e.currentTarget).closest('.ui_carousel_slide').find('a:eq(0)');
+                if(aT.length > 0) {
+                    aT.append('<span class="blind bh-add">선택됨</span>');
+                }
             });
             
             var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');

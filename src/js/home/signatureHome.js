@@ -80,6 +80,19 @@ $(function() {
         });
         
 
+        $('.next-arr a:eq(0)').focusin(function(e){
+            $window.trigger('floatingTop');
+            setTimeout(function(){
+                wheelScene(2);
+            }, 250);
+        });
+
+        $('.signature-wrap .signature-tabs').focusin(function(e){
+            setTimeout(function(){
+                $('.next-arr a:eq(0)').trigger('click');
+            },250);
+        });
+
         $window.on('floatingTop', function(){
             // currentPage = 0;
             // currentStep = 1;
@@ -442,7 +455,7 @@ $(function() {
                     $video.data('loaded', true);
                     $wrap.trigger('videoLoaded');
                     oVideo.play();
-                }).trigger('load');                        
+                }).trigger('load');
             }
 
             createVideoObject();

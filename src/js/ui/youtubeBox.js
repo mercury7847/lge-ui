@@ -95,6 +95,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 videoType = "mp4";
                 params = urlsplit.length > 1 ? urlsplit[1].split("&").join(" ") : "";
             }
+            self.$el.data('boxCloseType', videoType);
             // console.log("videoType:",videoType);
             // console.log("video_url:",urlsplit[0]);                
             // console.log("params:",params);
@@ -123,6 +124,13 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                         overflow:"hidden"
                     });
                 }
+                setTimeout(function(){
+                    if(videoType == 'youtube') {
+                        $(self.$videoLayer).find('iframe').focus();
+                    } else {
+                        $(self.$videoLayer).find('video').focus();
+                    }
+                }, 300);
             }else{
                 self.$el.append(self.$videoLayer);
             };
@@ -172,16 +180,26 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             $('body').removeClass('modal-open');
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
-                if(!ignoreOverflow){
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
+            if(!ignoreOverflow){
+                $('html, body').css({
+                    overflow:"visible"
+                });
+            }
+
+            var closeType = self.$el.data('boxCloseType');
+            var elType = self.$el.attr('data-type');
+            if(elType && closeType && elType == closeType) {
+                self.$el.focus();
+            } else if(closeType) {
+                var t = self.$el.find('[data-type="' + closeType +'"]:eq(0)');
+                if(t.length > 0) {
+                    t.focus();
                 }
+            }
         },
 
         close: function(){
             var self = this;
-            
             self._removeVideoLayer();
         }
     });
