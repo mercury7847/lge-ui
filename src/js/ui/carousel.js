@@ -1157,11 +1157,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             });
 
-            self.$el.on('focusin','.ui_carousel_slide',function(e){
-                var index = this.dataset.ui_carousel_index;
-                self.slideHandler(index, null, true);
-            });
-
             /*var self = this,
                 opt = self.options;
 
