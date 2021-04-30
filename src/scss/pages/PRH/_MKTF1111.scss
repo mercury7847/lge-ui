@@ -302,6 +302,11 @@
                     background: url('/lg5-common/images/icons/btn-play-80.svg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
+                @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+                    .btn-video {
+                        margin-left:-42px;
+                    }
+                }
                 @include mobile {
                     flex: 1;
                     &:after {
@@ -328,8 +333,10 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%,calc(-50% - 46px));
+                // transform: translate(-50%,calc(-50% - 46px));
+                transform: translate(-50%,-50%);
                 z-index: 2;
+                margin-top:-46px;
                 .text {
                     font-weight: 700;
                     font-size: $font-large-2;
