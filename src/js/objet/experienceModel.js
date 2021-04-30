@@ -5223,13 +5223,13 @@
                     contMHtml = '';
                     contMHtml += '<div class="swiper-slide">';
                     contMHtml += '   <dl>';
-                    contMHtml += '       <dt>미스트</dt>';
+                    contMHtml += '       <dt>네이쳐</dt>';
                     contMHtml += '       <dd>';
                     contMHtml += '           <ul>';
                     contGHtml = '';
                     contGHtml += '<div class="swiper-slide">';
                     contGHtml += '   <dl>';
-                    contGHtml += '       <dt>네이쳐</dt>';
+                    contGHtml += '       <dt>미스트</dt>';
                     contGHtml += '       <dd>';
                     contGHtml += '           <ul>';
                     for (let i = 0; i < _thisModel.length; i++) {
