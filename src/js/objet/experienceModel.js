@@ -1897,8 +1897,8 @@
                 },
                 {
                     defaultCode: "X320AA",
-                    modelCode: "X320MMS",
-                    door1: "B320TT-MMT",
+                    modelCode: "X320SMS",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -1973,8 +1973,8 @@
                 },
                 {
                     defaultCode: "Y320AA",
-                    modelCode: "Y320MMS",
-                    door1: "B320TT-MMT",
+                    modelCode: "Y320SMS",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -2049,8 +2049,8 @@
                 },
                 {
                     defaultCode: "Z320AA",
-                    modelCode: "Z320MMS",
-                    door1: "B320TT-MMT",
+                    modelCode: "Z320SMS",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -3301,7 +3301,7 @@
                 door4: "",
             }, {
                 defaultCode: "X320AA",
-                door1: "B320TT-MMT",
+                door1: "B320TT-SMT",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -3361,7 +3361,7 @@
                 door4: "",
             }, {
                 defaultCode: "Y320AA",
-                door1: "B320TT-MMT",
+                door1: "B320TT-SMT",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -3421,7 +3421,7 @@
                 door4: "",
             }, {
                 defaultCode: "Z320AA",
-                door1: "B320TT-MMT",
+                door1: "B320TT-SMT",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -5113,7 +5113,7 @@
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     if (doorModelCode == "B320TT-SMT") {
-                        doorModelCode = "B320TT-MMT";
+                        doorModelCode = "B320TT-SMT";
                     }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
@@ -5223,13 +5223,13 @@
                     contMHtml = '';
                     contMHtml += '<div class="swiper-slide">';
                     contMHtml += '   <dl>';
-                    contMHtml += '       <dt>미스트</dt>';
+                    contMHtml += '       <dt>네이쳐</dt>';
                     contMHtml += '       <dd>';
                     contMHtml += '           <ul>';
                     contGHtml = '';
                     contGHtml += '<div class="swiper-slide">';
                     contGHtml += '   <dl>';
-                    contGHtml += '       <dt>네이쳐</dt>';
+                    contGHtml += '       <dt>미스트</dt>';
                     contGHtml += '       <dd>';
                     contGHtml += '           <ul>';
                     for (let i = 0; i < _thisModel.length; i++) {
@@ -5276,9 +5276,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
@@ -5471,9 +5471,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
@@ -5625,9 +5625,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {

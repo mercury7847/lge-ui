@@ -1787,7 +1787,7 @@
                 var isRental = false;
                 var param = {};
                 if(typeof modelGubun !== 'undefined') {
-                    if(modelGubun == "1") {
+                    if(modelGubun == "1" || modelGubun == "2") {
                         param.order_type = "NB";
                     } else if(modelGubun == "3") {
                         param.order_type = "SM";

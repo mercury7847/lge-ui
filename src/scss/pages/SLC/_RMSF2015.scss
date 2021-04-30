@@ -84,6 +84,11 @@ br.m {
                 text-align: center;
                 vertical-align: middle;
             }
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                .blocks {
+                    display:block;
+                }
+            }
             @include mobile {
                 flex-direction: column;
                 margin: 20px 0 0;
