@@ -5276,9 +5276,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
