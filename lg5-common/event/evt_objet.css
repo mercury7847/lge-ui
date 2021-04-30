@@ -18,6 +18,7 @@ color: #fff;}
     .forms .imageFile1 {width: 100%;} 
     .forms button.btn.border.size-m {right: 0; top: -30px;}
 }
+.certification img {margin-top: 15px; max-width: 100%;}
 
 /* 상세페이지 */
 .tabs-wrap.ui_tab {background: #ededed;}
