@@ -5223,13 +5223,13 @@
                     contMHtml = '';
                     contMHtml += '<div class="swiper-slide">';
                     contMHtml += '   <dl>';
-                    contMHtml += '       <dt>미스트</dt>';
+                    contMHtml += '       <dt>네이쳐</dt>';
                     contMHtml += '       <dd>';
                     contMHtml += '           <ul>';
                     contGHtml = '';
                     contGHtml += '<div class="swiper-slide">';
                     contGHtml += '   <dl>';
-                    contGHtml += '       <dt>네이쳐</dt>';
+                    contGHtml += '       <dt>미스트</dt>';
                     contGHtml += '       <dd>';
                     contGHtml += '           <ul>';
                     for (let i = 0; i < _thisModel.length; i++) {
@@ -5471,9 +5471,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
@@ -5625,9 +5625,9 @@
                             } else if (_doorInfoMaterial[j] == "S") {
                                 _doorInfoKMaterial[j] = "솔리드"
                             } else if (_doorInfoMaterial[j] == "M") {
-                                _doorInfoKMaterial[j] = "미스트"
-                            } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "네이쳐"
+                            } else if (_doorInfoMaterial[j] == "G") {
+                                _doorInfoKMaterial[j] = "미스트"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
