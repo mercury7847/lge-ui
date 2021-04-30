@@ -883,4 +883,40 @@ $(function () {
     });
     $('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
+
+    /* 20210430 : 모바일앱 다운로드 팝업 */
+    if (vcui.detect.isMobileDevice) {
+        var layer_id = '#mobile-close-popup';
+        var el = $(layer_id);
+        if (el.size() === 0) { return false; }
+        var cookie_name = '__LGAPP_DLOG__';
+        var app = {
+            ios: {
+                link: 'https://itunes.apple.com/app/id1561079401?mt=8'
+            },
+            android: {
+                link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
+            }
+        };
+        if (vcui.Cookie.get(cookie_name) === '') {
+            vcui.modal(layer_id, open);
+            var checkbox = $('#check-today');
+            var download_btn = $('#lg__app-download');
+            download_btn.on('click', function () {
+                var link = vcui.detect.isIOS ? ios.link : android.link;
+                window.open(link, '_blank');
+                return;
+            });
+            el.find('.pink.btn-close').one('click', function () {
+                var close_btn = el.find('.ui_modal_close');
+                if (checkbox.is(':checked')) {
+                    vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                }
+                close_btn.trigger('click');
+                return;
+            });
+        }
+    }
+    /* //20210430 : 모바일앱 다운로드 팝업 */
+    
 });

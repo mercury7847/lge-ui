@@ -3158,9 +3158,10 @@
         top: -40px;
         width: 100%;
         left: 0px;
-        z-index: 4499;
+        z-index: 0;
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
+        opacity: 0;
     }
     .detail .ref-width .ref-img.scroll img {}
     .collect_tab .c_tab_bg {
@@ -3169,6 +3170,8 @@
     .collect_tab.active {
         /*top: 56px; */
         top: 91px;
+        opacity: 1;
+        z-index: 4499;
     }
     .collect_tab.active .c_tab_bg {
         display: block;
@@ -12553,8 +12556,9 @@
         bottom: 0px;
         width: 100%;
         left: 0px;
-        z-index: 3000;
+        z-index: 0;
         height: 40px;
+        opacity: 0;
     }
     .detail .ref-width .ref-img.scroll img {}
     .collect_tab .c_tab_bg {
@@ -12565,6 +12569,8 @@
         display: block !important;
         top: 74px !important;
         bottom: inherit;
+        opacity: 1;
+        z-index: 3000;
     }
     .collect_tab.active .c_tab_bg {
         display: block;
