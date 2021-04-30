@@ -144,6 +144,11 @@ br.pc {
                             }
                         }
                     }
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                        .slide-info-area {
+                            width:100%;
+                        }
+                    }
                     .link {
                         position:absolute;
                         right:0;
