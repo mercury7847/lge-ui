@@ -18,3 +18,13 @@ color: #fff;}
     .forms .imageFile1 {width: 100%;} 
     .forms button.btn.border.size-m {right: 0; top: -30px;}
 }
+
+/* 상세페이지 */
+.tabs-wrap.ui_tab {background: #ededed;}
+.tabs-wrap .tabs {display: inline-flex; justify-content: center; align-items: flex-end; margin: 0 auto; padding: 0; overflow-x: hidden; width: calc(100% - 7%);}
+.tabs-wrap .tabs>li {margin-left: 0; padding: 0; width: 100%; margin-right: 7px;}
+.tabs-wrap .tabs>li:last-child {margin-right: 0;}
+@media screen and (max-width: 767px) {
+    .tabs-wrap .tabs {padding: 0; width: 100%;}
+    .tabs-wrap .tabs>li {margin-right: 3px;}
+}
