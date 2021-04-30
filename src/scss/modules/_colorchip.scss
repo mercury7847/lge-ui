@@ -2608,6 +2608,11 @@
 			background-position:-96px -72px;
 		}
 	}
+	&.manhattan_silver {
+		& input + label:before {
+			background-position:-120px -72px;
+		}
+	}
 	&.stone_sand {
 		& input + label:before {
 			background-position:0 -96px;

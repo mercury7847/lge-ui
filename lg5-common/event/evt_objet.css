@@ -1,0 +1,20 @@
+@charset "euc-kr";
+
+.select-wrap .ui-selectbox-wrap .ui-select-button:focus {border-color: #222;}
+.form-half {margin-top: 50px;}
+.form-half .forms .box .cell {width: 50%; display: inline-block;}
+.select-list-wrap.w-auto.rdo-type3 li {width: 33.3%;}
+.forms .guide_txt_wrap.input-wrap input {visibility: hidden;}
+.forms button.btn.border.size-m {display: inline-block; min-width: 64px; padding: 3px 11px; border-radius: 16px; font-size: 14px; line-height: 24px; border-color: #000 !important; background: transparent; color: #000; text-align: center; vertical-align: top; font-weight: 500; height: auto;}
+.forms button.btn.border.size-m:hover, .forms button.btn.border.size-m:focus, .forms button.btn.border.size-m:active {border-color: #da0f47 !important; background: #da0f47;
+color: #fff;}
+.forms .imageFile1 {width: 70%;}
+.form-half dl.forms {display: none;}
+.forms .posi-rel {position: relative;}
+.forms button.btn.border.size-m {position: absolute; right: 27px;; top: 8px;}
+
+@media screen and (max-width: 767px) {
+    .select-list-wrap.w-auto.rdo-type3 li {width: 100%;}
+    .forms .imageFile1 {width: 100%;} 
+    .forms button.btn.border.size-m {right: 0; top: -30px;}
+}

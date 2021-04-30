@@ -511,6 +511,31 @@
             }
         }
     }
+    // 스마트폰 데이터 이동하기 (LG 모바일 스위치) 2021.04.27
+    .switch_wrap .tab_content_wrap > div {border-top:1px solid #000}    
+    .switch_wrap .tab_title_wrap {width: 100%;border-top: 1px solid #000;border-right: 1px solid #000;}    
+    .switch_wrap .tab_title_wrap ul:after {display: block;clear: both;content: ''}    
+    .switch_wrap .tab_title_wrap ul li {float:left; width: 33.3333%; line-height: 1.2; position: relative; text-align: center; border-left: 1px solid #000}  
+    .switch_wrap .tab_title_wrap ul li a {display:block;width:100%; min-height:170px; padding: 80px 0 0;color: #000;font-size: 18px;}
+    .switch_wrap .tab_title_wrap ul li a > span {display:block}
+    .switch_wrap .tab_title_wrap .tab1 a {background: url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_01_off.png') no-repeat center 20%; background-size: 50%;}
+    .switch_wrap .tab_title_wrap .tab2 a {background: url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_02_off.png') no-repeat center 20%; background-size: 50%;}
+    .switch_wrap .tab_title_wrap .tab3 a {background: url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_03_off.png') no-repeat center 20%; background-size: 50%;}
+    .switch_wrap .tab_title_wrap .tab1.on a,
+    .switch_wrap .tab_title_wrap .tab1:hover a {color: #fff77c;background:#d80546 url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_01_on.png') no-repeat center 20%; background-size: 50%}    
+    .switch_wrap .tab_title_wrap .tab2.on a,  
+    .switch_wrap .tab_title_wrap .tab2:hover a {color: #fff77c;background:#d80546 url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_02_on.png') no-repeat center 20%; background-size: 50%}    
+    .switch_wrap .tab_title_wrap .tab3.on a, 
+    .switch_wrap .tab_title_wrap .tab3:hover a {color: #fff77c;background:#d80546 url('https://wwwstg.lge.co.kr/kr/support/images/notice/tab_03_on.png') no-repeat center 20%; background-size: 50%}  
+    .switch_wrap .info_wrap {padding: 1rem 0.5rem 1rem 20%;border-top: 1px solid #000;border-bottom: 1px solid #000;background: #f2f2f2 url('https://wwwstg.lge.co.kr/kr/support/images/notice/mobileswitch.png') no-repeat center left;background-size: 20%; line-height:1.4}    
+    .switch_wrap .info_wrap span {display: block;margin-bottom: 0.5rem}
+     @media screen and (max-width: 600px) {
+        .switch_wrap .tab_title_wrap ul li a {min-height:140px; padding: 60px 10px 0;font-size: 14px} 
+        .switch_wrap .info_wrap {font-size: 14px;} 
+    }
+    @media screen and (max-width: 400px) {
+        .switch_wrap .tab_title_wrap ul li a {padding: 60px 5px 0;font-size: 12px} 
+    }
     // 겨울철 세탁기/건조기 동결 및 에어컨 난방 기능 관련 주요 문제 해결 방법 2020.11.20
     .notice20201120-1 {
         .links {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
@@ -783,6 +808,12 @@
             }
         }
     }
+    //휴무 안내 테이블
+    .ac {text-align:center !important;}
+    .ar {text-align:right !important;}
+    .al {text-align:left !important;}
+    .point_txt {font-weight:bold !important;color:#a50034 !important;}
+    .link_txt {display:block; color:#a50034 !important; text-decoration: underline !important}
 }
 
 @import "../../support/pages/payNwarranty";
