@@ -1866,7 +1866,9 @@
                 top: 50%;
                 left: 50%;
                 width: 100%;
-                transform: translateX(-50%);
+                // transform: translateX(-50%);
+                transform: translateX(0);
+                margin-left:-50%;
                 z-index: 10;
                 .btn-arrow {
                     position: absolute;
@@ -1947,6 +1949,7 @@
         }
 
         .app-use-wrap {
+            overflow-x:hidden;
             background-color: $color-bg;
             .slide-wrap {
                 padding-bottom: 44px;
