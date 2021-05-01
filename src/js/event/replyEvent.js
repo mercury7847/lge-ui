@@ -43,11 +43,11 @@
             });
 
 
-            if($('html').hasClass('app')) {
-                //댓글쓰기 버튼
-                self.$btnWrap.on('click','a.write',function (e) {
-                    e.preventDefault();
-    
+            //댓글쓰기 버튼
+            self.$btnWrap.on('click','a.write',function (e) {
+                e.preventDefault();
+
+                if($('html').hasClass('app')) {
                     if(self.$wrap.data('eventRestrictFlag') == "Y") {
                         lgkorUI.alert("", {title: "서버 점검중입니다."});
                         return;
@@ -58,7 +58,6 @@
                         lgkorUI.alert("", {title: '하루에 한번만 참여 가능합니다.'});
                         return;
                     }
-    
                     //로그인을 해야 하는가
                     var login = self.$wrap.data('loginUrl');
                     if(login && login.length > 0) {
@@ -68,25 +67,26 @@
                         lgkorUI.confirm(null, obj);
                         return;
                     }
-    
+
                     self.$replyPopup.find('#reply').val("");
                     self.$replyPopup.find('input[type="checkbox"]').prop('checked',false);
                     self.$replyPopup.vcModal({opener: this});
-                });
-            } else {
-                lgkorUI.alert("", {title: "이벤트 참여는 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
-            }
+                } else {
+                    lgkorUI.alert("", {title: "이벤트 참여는 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
+                }
+            });
+            
 
             //당첨확인
-            if($('html').hasClass('app')) {
-                self.$btnWrap.on('click','a.result',function (e) {
-                    e.preventDefault();
+            self.$btnWrap.on('click','a.result',function (e) {
+                e.preventDefault();
 
+                if($('html').hasClass('app')) {
                     if(self.$wrap.data('eventRestrictFlag') == "Y") {
                         lgkorUI.alert("", {title: "서버 점검중입니다."});
                         return;
                     }
-
+    
                     //로그인을 해야 하는가
                     var login = self.$wrap.data('loginUrl');
                     if(login && login.length > 0) {
@@ -96,12 +96,12 @@
                         lgkorUI.confirm(null, obj);
                         return;
                     }
-
+    
                     var param = {};
                     var eventId = self.$wrap.data('eventId');
                     param.eventId = eventId;
                     param.userPhone = self.$phone.val();
-
+    
                     var ajaxUrl = self.$wrap.attr('data-check-url');
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxData(ajaxUrl,param,function(result) {
@@ -121,10 +121,10 @@
                         }
                         self.$btns.removeClass('apply');
                     });
-                });
-            } else {
-                lgkorUI.alert("", {title: "당첨 확인은 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
-            };
+                } else {
+                    lgkorUI.alert("", {title: "당첨 확인은 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
+                };
+            });
 
             //팝업 댓글쓰기
             self.$replyPopup.on('click','.pop-footer .btn-group button',function (e) {
