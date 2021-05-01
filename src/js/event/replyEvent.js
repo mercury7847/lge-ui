@@ -74,53 +74,57 @@
                     self.$replyPopup.vcModal({opener: this});
                 });
             } else {
-                lgkorUI.alert("", {title: "이벤트 참여는 모바일앱 에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
+                lgkorUI.alert("", {title: "이벤트 참여는 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
             }
 
             //당첨확인
-            self.$btnWrap.on('click','a.result',function (e) {
-                e.preventDefault();
+            if($('html').hasClass('app')) {
+                self.$btnWrap.on('click','a.result',function (e) {
+                    e.preventDefault();
 
-                if(self.$wrap.data('eventRestrictFlag') == "Y") {
-                    lgkorUI.alert("", {title: "서버 점검중입니다."});
-                    return;
-                }
-
-                //로그인을 해야 하는가
-                var login = self.$wrap.data('loginUrl');
-                if(login && login.length > 0) {
-                    var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
-                        location.href = login;
-                    }};
-                    lgkorUI.confirm(null, obj);
-                    return;
-                }
-
-                var param = {};
-                var eventId = self.$wrap.data('eventId');
-                param.eventId = eventId;
-                param.userPhone = self.$phone.val();
-
-                var ajaxUrl = self.$wrap.attr('data-check-url');
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl,param,function(result) {
-                    var data = result.data;
-                    if(lgkorUI.stringToBool(data.win)) {
-                        var template = '<strong class="tit">축하드립니다!</strong>' +
-                            '<span class="txt">{{#raw prizeWin}}</span>' +
-                            '<span class="txt">사은품은 {{date}} 이후 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
-                        $('#popupEventWin').find('p.desc').html(vcui.template(template, data));
-                        $('#popupEventWin').vcModal({opener: this});
-                    } else {
-                        var template = '<strong class="tit">아쉽습니다.</strong>' +
-                            '<span class="txt">{{#raw prizeLose}}</span>' +
-                            '<span class="txt">다음 이벤트에 참여하여 다시 한번 도전해보세요!</span>';
-                        $('#popupEventLose').find('p.desc').html(vcui.template(template, data));
-                        $('#popupEventLose').vcModal({opener: this});
+                    if(self.$wrap.data('eventRestrictFlag') == "Y") {
+                        lgkorUI.alert("", {title: "서버 점검중입니다."});
+                        return;
                     }
-                    self.$btns.removeClass('apply');
+
+                    //로그인을 해야 하는가
+                    var login = self.$wrap.data('loginUrl');
+                    if(login && login.length > 0) {
+                        var obj = {title:'로그인이 필요합니다.<br>이동하시겠습니까', cancelBtnName:'아니오', okBtnName:'네', ok: function (){
+                            location.href = login;
+                        }};
+                        lgkorUI.confirm(null, obj);
+                        return;
+                    }
+
+                    var param = {};
+                    var eventId = self.$wrap.data('eventId');
+                    param.eventId = eventId;
+                    param.userPhone = self.$phone.val();
+
+                    var ajaxUrl = self.$wrap.attr('data-check-url');
+                    lgkorUI.showLoading();
+                    lgkorUI.requestAjaxData(ajaxUrl,param,function(result) {
+                        var data = result.data;
+                        if(lgkorUI.stringToBool(data.win)) {
+                            var template = '<strong class="tit">축하드립니다!</strong>' +
+                                '<span class="txt">{{#raw prizeWin}}</span>' +
+                                '<span class="txt">사은품은 {{date}} 이후 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
+                            $('#popupEventWin').find('p.desc').html(vcui.template(template, data));
+                            $('#popupEventWin').vcModal({opener: this});
+                        } else {
+                            var template = '<strong class="tit">아쉽습니다.</strong>' +
+                                '<span class="txt">{{#raw prizeLose}}</span>' +
+                                '<span class="txt">다음 이벤트에 참여하여 다시 한번 도전해보세요!</span>';
+                            $('#popupEventLose').find('p.desc').html(vcui.template(template, data));
+                            $('#popupEventLose').vcModal({opener: this});
+                        }
+                        self.$btns.removeClass('apply');
+                    });
                 });
-            });
+            } else {
+                lgkorUI.alert("", {title: "당첨 확인은 모바일앱에서만 가능합니다. <br>앱 다운로드 후 참여해주세요"});
+            };
 
             //팝업 댓글쓰기
             self.$replyPopup.on('click','.pop-footer .btn-group button',function (e) {
