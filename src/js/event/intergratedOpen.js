@@ -7,7 +7,7 @@ $(document).ready(function() {
             slidesToShow: 3,
             // slidesToScroll: 1,
             // centerPadding:'60px',
-            dots: false,
+            dots: true,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -21,6 +21,7 @@ $(document).ready(function() {
                     breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
+                        centerMode:true,
                         slidesToScroll: 1
                     }
                 }
