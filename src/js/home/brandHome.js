@@ -591,6 +591,11 @@
                 setBeforeCss(currentStep);
                 moveScene(currentPage,currentStep,0);
 
+                // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
+                setTimeout(function(){
+                    $(window).trigger('thinQScroll');
+                },100);
+
             }else{
                 //setTimeout(function(){
                     currentPage = _findIdx($('html, body').scrollTop());    
@@ -598,11 +603,51 @@
                     setBeforeCss(currentStep);
                     moveScene(currentPage,currentStep,0);
 
+                    // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
+                    setTimeout(function(){
+                        $(window).trigger('thinQScroll');
+                    },100);
+
                 //}, 100);
             }
             
         }    
         
+        // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
+        $window.on('thinQScroll', function(){
+            var hash = location.hash;
+            switch (hash){
+                case '#intro':
+                    setTimeout(function(){
+                        $('.thinq-tabs a[href="#thinq-cont1"]').trigger('click');
+                    },100);
+                    break;
+                case '#life-style':
+                    setTimeout(function(){
+                        $('.thinq-tabs a[href="#thinq-cont2"]').trigger('click');
+                    },100);
+                    break;
+                case '#app':
+                    setTimeout(function(){
+                        $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                    },100);
+                    break;
+                case '#magazine':
+                    setTimeout(function(){
+                        $('.thinq-tabs a[href="#thinq-cont4"]').trigger('click');
+                    },100);
+                    break;
+                default:
+
+            }
+            
+            currentPage = pageLens;
+            currentStep = _findStep(currentPage);
+
+            setBeforeCss(currentStep);
+            moveScene(currentPage,currentPage,0);            
+            
+        });
         
         ////////////////////////////////////
         // 탭 내부 스크립트
