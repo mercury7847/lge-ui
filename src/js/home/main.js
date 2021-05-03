@@ -755,8 +755,8 @@ $(function () {
             //render(0);
             currentPage = 0;
             moveScene(currentPage,0);
-        });          
-
+        });
+        
         if(isApplication){
 
             render();
