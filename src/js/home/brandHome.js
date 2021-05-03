@@ -616,36 +616,41 @@
         // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
         $window.on('thinQScroll', function(){
             var hash = location.hash;
+            var hasHash = false;
             switch (hash){
                 case '#intro':
                     setTimeout(function(){
                         $('.thinq-tabs a[href="#thinq-cont1"]').trigger('click');
                     },100);
+                    hasHash = true;
                     break;
                 case '#life-style':
                     setTimeout(function(){
                         $('.thinq-tabs a[href="#thinq-cont2"]').trigger('click');
                     },100);
+                    hasHash = true;
                     break;
                 case '#app':
                     setTimeout(function(){
                         $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
                     },100);
+                    hasHash = true;
                     break;
                 case '#magazine':
                     setTimeout(function(){
                         $('.thinq-tabs a[href="#thinq-cont4"]').trigger('click');
                     },100);
+                    hasHash = true;
                     break;
                 default:
 
             }
-            
-            currentPage = pageLens;
-            currentStep = _findStep(currentPage);
-
-            setBeforeCss(currentStep);
-            moveScene(currentPage,currentPage,0);            
+            if (hasHash){
+                currentPage = pageLens;
+                currentStep = _findStep(currentPage);
+                setBeforeCss(currentStep);
+                moveScene(currentPage,currentPage,0);
+            }
             
         });
         
