@@ -72,7 +72,7 @@
                     self.$replyPopup.find('input[type="checkbox"]').prop('checked',false);
                     self.$replyPopup.vcModal({opener: this});
                 } else {
-                    lgkorUI.alert("", {title: "본 이벤트 참여는 모바일 앱에서만 가능합니다.<br>구글 플레이/앱 스토어에서 'LGE.COM'을 검색하여<br>앱 다운로드 후 참여해주시기 바랍니다.<br>감사합니다."});
+                    lgkorUI.alert("", {title:"본 이벤트 참여는 모바일 앱에서만 가능합니다.<br>구글 플레이/앱 스토어에서<br>'LGE.COM'을 검색하여<br>앱 다운로드 후 참여해주시기 바랍니다.<br>감사합니다."});
                 }
             });
             
@@ -122,7 +122,7 @@
                         self.$btns.removeClass('apply');
                     });
                 } else {
-                    lgkorUI.alert("", {title: "본 이벤트 당첨 확인은 모바일 앱에서만 가능합니다.<br>구글 플레이/앱 스토어에서 'LGE.COM'을 검색하여<br>앱 다운로드 후 참여해주시기 바랍니다.<br>감사합니다."});
+                    lgkorUI.alert("", {title:"본 이벤트 참여는 모바일 앱에서만 가능합니다.<br>구글 플레이/앱 스토어에서<br>'LGE.COM'을 검색하여<br>앱 다운로드 후 참여해주시기 바랍니다.<br>감사합니다."});
                 };
             });
 
