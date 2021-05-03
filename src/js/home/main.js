@@ -203,8 +203,6 @@ $(function () {
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
 
-        var isThinQPage = !!$('.contents.thinq-main').length; // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-
         var visualAnimInterval;
 
         // 웨일 결합처리
@@ -247,7 +245,7 @@ $(function () {
                 if(!isBenefit){
                     $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
-                        animCtrlers[3] = null;
+                        animCtrlers[1] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
                         var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
                         icons.data("isReady", true);
@@ -718,6 +716,9 @@ $(function () {
                 }
                 
                 totalHeight += itemHeight;
+
+                
+                            
             });  
 
             /* 메인 테스트 */
@@ -735,9 +736,6 @@ $(function () {
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
-
-                // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-                $(window).trigger('thinQScroll');
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
@@ -751,9 +749,6 @@ $(function () {
                         window.sessionStorage.removeItem('lgeMainScrollTop');
                     }
 
-                    // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-                    $(window).trigger('thinQScroll');
-
                 }, 100);
             }
             
@@ -763,33 +758,7 @@ $(function () {
             //render(0);
             currentPage = 0;
             moveScene(currentPage,0);
-        });
-
-        // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-        $window.on('thinQScroll', function(){
-            var hash = location.hash;
-            switch (hash){
-                case '#intro':
-                    $('.thinq-tabs a[href="#thinq-cont1"]').trigger('click');
-                    break;
-                case '#life-style':
-                    $('.thinq-tabs a[href="#thinq-cont2"]').trigger('click');
-                    break;
-                case '#app':
-                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
-                    break;
-                case '#magazine':
-                    $('.thinq-tabs a[href="#thinq-cont4"]').trigger('click');
-                    break;
-                default:
-
-            }
-            currentPage = maxLens;
-            moveScene(currentPage,0);
-            //console.log('scenes length', maxLens);
-        });
-
-
+        });          
 
         if(isApplication){
 
@@ -877,43 +846,19 @@ $(function () {
 
     $('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
-        var patharr = $(item).find('img').attr('src').split("/");
-        var pleng = patharr.length;
-        var path = "";
-        for(var j=0;j<pleng-1;j++){
-            path += patharr[j] + "/"
-        }
-        var fn = patharr[pleng-1].substr(0, 1);
+        var path = $(item).find('img').attr('src').split("i00")[0];
 
         animCtrlers[idx] = null;
         $(item).data("ctrlerIdx", idx);
         $(item).data("animIdx", 0);
         $(item).data("loadIdx", 1);
+        $(item).data("loadTotal", leng);
         $(item).data("isReady", false);
-        
-        var i, num;
-        var total = 0;
-        if(idx < 2){
-            for(i=1;i<leng;i+=2){
-                if(i < leng){
-                    total++;
 
-                    if(i < 10) var num = "00" + i;
-                    else if(i>9 && i < 100) num = "0" + i;
-                    else num = i;
-                    $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
-                }
-            }
-        } else{
-            for(i=1;i<leng;i++){
-                total++;
-                
-                num = i < 10 ? "0" + i : i;
-                $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
-            }
+        for(var i=1;i<leng;i++){
+            var num = i < 10 ? "0" + i : i;
+            $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + 'i' + num + '.png" alt="">');
         }
-        $(item).data("loadTotal", total);
-        $(item).data('length', total+1);
     });
     $('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
