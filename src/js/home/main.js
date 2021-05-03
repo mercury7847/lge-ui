@@ -203,8 +203,6 @@ $(function () {
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
 
-        var isThinQPage = !!$('.contents.thinq-main').length; // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-
         var visualAnimInterval;
 
         // 웨일 결합처리
@@ -735,9 +733,6 @@ $(function () {
             if(idx!==undefined){
                 currentPage = idx;
                 moveScene(currentPage,0);
-
-                // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-                $(window).trigger('thinQScroll');
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
@@ -751,9 +746,6 @@ $(function () {
                         window.sessionStorage.removeItem('lgeMainScrollTop');
                     }
 
-                    // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-                    $(window).trigger('thinQScroll');
-
                 }, 100);
             }
             
@@ -764,33 +756,7 @@ $(function () {
             currentPage = 0;
             moveScene(currentPage,0);
         });
-
-        // 2021-05-03 add 김우람 :: thinq 외부 링크 기능 추가.
-        $window.on('thinQScroll', function(){
-            var hash = location.hash;
-            switch (hash){
-                case '#intro':
-                    $('.thinq-tabs a[href="#thinq-cont1"]').trigger('click');
-                    break;
-                case '#life-style':
-                    $('.thinq-tabs a[href="#thinq-cont2"]').trigger('click');
-                    break;
-                case '#app':
-                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
-                    break;
-                case '#magazine':
-                    $('.thinq-tabs a[href="#thinq-cont4"]').trigger('click');
-                    break;
-                default:
-
-            }
-            currentPage = maxLens;
-            moveScene(currentPage,0);
-            //console.log('scenes length', maxLens);
-        });
-
-
-
+        
         if(isApplication){
 
             render();
