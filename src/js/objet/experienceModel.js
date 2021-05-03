@@ -3838,6 +3838,10 @@
             $(".model_choice_area .model_sub_tab_wrap").removeClass("is_active");
             $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head").removeClass("is_active");
             $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont").removeClass("is_active");
+            $(".myPick").addClass("border");
+            $(".proposeModel").addClass("border");
+            modelSimulator.closeMyPickModel();
+            modelSimulator.closeProposeModel();
             modelSimulator.childModel($(this));
             modelSimulator.maxCountCheck();
         });
@@ -3866,6 +3870,10 @@
             let leadName = $(this).attr("data-lead-name");
             let code = $(this).attr("data-default-code");
             let idx = $(".btn_model_pick.is_active").attr("data-index");
+            $(".myPick").addClass("border");
+            $(".proposeModel").addClass("border");
+            modelSimulator.closeMyPickModel();
+            modelSimulator.closeProposeModel();
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
             modelSimulator.maxCountCheck();
             modelSimulator.mobileStep(".simul_step2");
