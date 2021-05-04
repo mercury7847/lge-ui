@@ -88,9 +88,7 @@
                                             //Stop
                                             window.scrollTo(0, 0);
                                             html2canvas(t, {
-                                                width:760,
-                                                height:760,
-                                                scale: 1
+                                                scale: 2
                                             })
                                             .then(function (canvas) {
                                                 //로딩바
@@ -100,7 +98,15 @@
                                                     window.navigator.msSaveBlob(blob, "capture.png");
                                                 } else {
                                                     //document.querySelector("body").appendChild(canvas);
-                                                    saveAs(canvas.toDataURL('image/png'),"capture.png");
+                                                    //카카오인앱
+                                                    let userAgent = navigator.userAgent;
+                                                    if (userAgent.indexOf('NAVER(inapp') !== -1 && userAgent.indexOf('KAKAOTALK') !== -1) {
+                                                        window.open(canvas.toDataURL('image/png'));                                                
+                                                    } else {
+                                                        saveAs(canvas.toDataURL('image/png'),"capture.png");
+                                                    }
+
+                                                   
                                                 }
                                             }).catch(function (err) {
                                                 console.log(err);
@@ -161,8 +167,8 @@
                                          .event_wrap .btn_app {position:absolute; left: 36.44927536231884%; top:77.05510388437218%; width: 27.10144927536232%; height:8.762420957542909%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .btn_post {position:absolute; left: 36.44927536231884%; top:81.26159554730983%; width: 27.10144927536232%; height:8.998144712430427%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .section03 .sampleSlider {position:relative; }
-                                         .event_wrap .section03 .sampleSlider .w {position:relative; position: relative; left: 50%; top: 20.42723631508678%; width: 190%; transform: translateX(-50%);}
-                                         .event_wrap .section03 .custom_2{display: block; width: 65%; position: absolute; top: 25.42723631508678%; overflow: hidden; left: 50%; transform: translateX(-50%);}
+                                         .event_wrap .section03 .sampleSlider .w {position:relative; position: relative; left: 50%; top: 20.42723631508678%; width: 100%; transform: translateX(-50%);}
+                                         .event_wrap .section03 .custom_2{display: block; width: 90%; position: absolute; top: 40%; overflow: hidden; left: 50%; transform: translateX(-50%);}
                                          .event_wrap .sampleSlider .bg_l {width: 18.05555555555556%; height:62%; position:absolute; left: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_left.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .sampleSlider .bg_r {width: 18.05555555555556%; height:62%; position:absolute; right: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_right.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .section04 {position:relative;}
@@ -182,7 +188,8 @@
                                          @media screen and (max-width: 767px) {  
                                              .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {height:auto;}
                                              /* .event_wrap .section03 .sampleSlider .w {position: absolute;  left: 50%; top: 20.42723631508678%; width: 70%; transform: translateX(-50%);} */
-                                             .event_wrap .section03 .custom_2{width:100%;}
+                                             .event_wrap .section03 .sampleSlider .w {width:190%;}
+                                             .event_wrap .section03 .custom_2{width:100%;top: 25.42723631508678%;}
                                              .event_wrap .section03 .swiper-slide {width: 60.13VW !important; height: 61.38vw !important;}
                                              .event_wrap .section03 .swiper-slide div {padding:0 3.61VW 4.86VW 0; }
                                              .event_wrap .section03 .swiper-slide div img {width: 56.52VW; height: 56.52VW;}
@@ -204,8 +211,7 @@
                                          }
 
                                          @media screen and (max-width: 410px){
-                                            .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {max-height: 12.5rem;}
-                                            .slide-wrap.poster-slide .slide-conts {max-width: 12.5rem;}
+                                            .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {max-height: 15.5rem;}
                                         }
  
                                          .dimmed {z-index:9999;background: #000; opacity: 0.3;display: none;}
@@ -319,6 +325,12 @@
                                              .poopup01 .btn_close {right: 10px; top: 10px;}
                                              
                                          }
+                                         @media screen and (max-width: 320px) {  
+                                            .poopup01 .tb {padding: 0 2px;}
+                                         }
+
+
+
                                          .poopup_post {position: absolute; left: 0; margin-left:0; top: 0;  z-index: 99999; width: 600px; display:none;} 
                                          .poopup_post * {font-family: 'Noto Sans KR';}
                                          .poopup_post .loading{display: none;width: 100%; height: 100%; position: absolute; top: 0;  left: 0; z-index: 2; background-color: #fff; opacity: 0.5;}
@@ -360,16 +372,16 @@
                                             .ev-detail-con .poopup_post .mobile{display:inline-block !important;}
                                             .poopup_post .ePoupTit {font-size: 3.555556VW; padding: 6.111111VW 0 2.555556VW;}
                                             .poopup_post .btn_close {right: 10px; top: 10px;}
-                                            .poopup_post .setp_01 {width: 54.5VW;}
+                                            .poopup_post .setp_01 {width: 62.5VW;}
                                             .poopup_post .swiper-container {padding-bottom:15.277777777777779VW;}
                                             .poopup_post .swiper-pagination-bullets { left: 0 ; width: 100%;top: 63.05555555555556VW;}
                                             .poopup_post .swiper-pagination-bullet {  width: 2.2222222222222223VW; height: 2.2222222222222223VW;   }
                                             .poopup_post .swiper-pagination-bullet-active { width: 5VW; height: 2.2222222222222223VW; }  
                                             .poopup_post .swiper-button-next {width:  7.5VW; height: 7.5VW;margin-top: -10.416666666666668VW;margin-right: 13.88888888888889VW; }
                                             .poopup_post .swiper-button-prev {width:  7.5VW; height: 7.5VW;margin-top: -10.416666666666668VW;margin-left: 13.88888888888889VW;}
-                                            .poopup_post .btn_w { padding-bottom: 6.944444444444445VW;}
+                                            .poopup_post .btn_w { padding-bottom:11.944444444444445VW;}
                                             .poopup_post .btn_w > div > img{width:40%;}
-                                            .poopup_post .imgBox {width: 54.5VW; margin: 0 auto; height: 54.5VW;}
+                                            .poopup_post .imgBox {width: 70.5VW; margin: 0 auto; height: 67.5VW;}
                                             .poopup_post .imgBox .txt01 {left: 5.555555555555555VW;top: 3.4722222222222223VW; font-size: 2.8VW;}
                                             .poopup_post .imgBox  input { width: 34.166666666666664VW; height: 5.833333333333333VW;  font-size: 3.6111111111111107VW;}
                                             .poopup_post .imgBox .txt02 { left: 5.555555555555555VW; top: 9.722222222222223VW; font-size:4.555555555555555VW; }
@@ -517,7 +529,7 @@
                                                     <p class="txt01"><span style="color:#000;" id='result'></span><span>님을 위한</span></p>
                                                     <p class="txt02">LGE 닷컴 기획전</p>
                                                 </div>
-                                                <div class="caution">※ IOS사용자는 이미지를 눌러 저장해주세요.</div>
+                                                <!-- <div class="caution">※ IOS사용자는 이미지를 눌러 저장해주세요.</div>-->
                                                 <div class="btn_w">
                                                     <div>
                                                         <img src="/lg5-common/images/BMC/EVENT_210428/btn_save_pc_01.png" class="pc imgDownload" alt="이미지 저장" /><img src="/lg5-common/images/BMC/EVENT_210428/btn_save_m_01.png" class="mobile imgDownload" alt="이미지 저장" />
@@ -822,25 +834,19 @@
                                                                      <td><input id="ipt02" type="text" class="ipt01" placeholder="010-1234-5678"  /></td>
                                                                  </tr>
                                                                  <tr>
-                                                                     <th><label for="ipt03">새출발과 관련된 사연<br /><span>가지고 싶은 워너비형  or <br class="pc" />직접 사용해 본 추천 가전</span></label></th>
-                                                                     <td><textarea id="ipt03" rows="10" cols="100" class="txt_area" placeholder="EX. 워너비 가전
- 대학교 신입생이 된 지금!
- 부모님과 처음으로 떨어져 자취를 시작하게 되었어요
- 저희 새로운 출발에 맞는 저의 워너비 제품들로 기획전을 구성합니다.
- 
- EX. 추천 가전
- 첫 자취를 시작한 이시연 이라고 합니다!
- 소형 가전 제품들을 Lg 제품들로 채우기 시작했는데
- 세상 사람들 LG 좋은거 다 알게해주세요 ㅠㅠ"></textarea></td>
+                                                                     <th><label for="ipt03">새출발과 관련된 사연<br /><span>가지고 싶은 가전  or <br class="pc" />직접 사용해 본 추천 가전</span></label></th>
+                                                                     <td><textarea id="ipt03" rows="10" cols="100" class="txt_area" placeholder="Ex. 워너비 가전
+대학교 신입생이 된 지금! 부모님과 처음으로 떨어져 자취를 시작하게 되었어요. 저의 새로운 출발에 맞는 워너비 제품들로 기획전 구성합니다.
+
+Ex. 추천 가전
+첫 자취를 시작하는 이시연 이라고 합니다! 가전 제품들을 LG제품들로 채우기 시작했는데 세상 사람들 LG 좋은거 다 알게해주세요 ㅠㅠ"></textarea></td>
                                                                  </tr>
                                                                  <tr>
                                                                      <th><label for="ipt04">필요한 가전  or 추천 가전<br /><span>여러개 입력 가능</span></label></th>
-                                                                     <td><textarea id="ipt04" rows="10" cols="100" class="txt_area2" placeholder="EX. 웨딩 준비에 늘 생각하시는 냉장고,세탁기,올레드 TV도 필요하지만 스타일러와
- 식기세척기는 정말 필수에요. 친구들 말이 LG 스타일러, 식기세척기만 있어도 부부싸움이
- 확 줄어든다하네요."></textarea></td>
+                                                                     <td><textarea id="ipt04" rows="10" cols="100" class="txt_area2" placeholder="EX. 웨딩 준비에 늘 생각하시는 냉장고, 세탁기, 올레드TV도 필요하지만 스타일러와 식기세척기는 정말 필수에요. 친구들 말이 LG 스타일러, 식기세척기만 있어도 부부싸움이 확 줄어든다고 하네요"></textarea></td>
                                                                  </tr>
                                                                  <tr>
-                                                                    <th>추천가전 사용 이미지<br /><span>*선택사항 (최대 10컷)</span></th>
+                                                                    <th>추천가전 사용 이미지<br /><span>*선택사항<br>(최대 10컷 / png, gif, jpg, jpeg 파일만 가능합니다.)</span></th>
                                                                     <!-- <td><input type="file" accept="image/*" multiple="multiple"><button class="btn_upload">UPLOAD</button></td> -->
                                                                     <td>
                                                                         <label class="input-file-button" for="file_text1">UPLOAD</label>
