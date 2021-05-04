@@ -141,8 +141,52 @@
             padding-top:48px;
         }
         .pop-footer.check-type {
-            padding: 20px 40px 40px;
+            padding: 20px 40px 40px; 
         }
+
+        //20210503 : 768 이상 모바일앱 다운로드 팝업
+        &.appMobile-pop {
+            max-width: 549px;
+            background-color: rgba(255, 255, 255, 0);
+            color: #fff;
+            .pop-conts {
+                padding: 0;
+                font-size: 36px;
+                max-height: none;
+                .pop-img {
+                    width: 100%;
+                    max-width: 549px;
+                }
+                .text-cont {
+                    text-align: center;
+                }
+                .btn-wrap {
+                    margin-bottom: 30px;
+                    .btn { 
+                        border: 0;
+                        color: #fff;
+                        background-image: url("/lg5-common/images/MA/appPop_btn.png"); 
+                        background-repeat: no-repeat; 
+                        background-size: 100% 100%;
+                        height: 120px;
+                        font-size: 32px;
+                        &:hover {
+                            background-color: transparent;
+                            border: 0;
+                        }
+                    }
+                    
+                }
+            }
+            .ui_modal_close {
+                text-align: center;
+                font-size: 32px;
+                width: 100%;
+                text-decoration: underline;
+                color: #fff;
+            }
+        }
+        //20210503 : 768 이상 모바일앱 다운로드 팝업
         @include mobile {
             height:auto;
             width:87.5%;
@@ -168,6 +212,24 @@
             .btn-close {
                 top:21px;
             }
+
+            //20210503 : 767 이하 모바일앱 다운로드 팝업
+            &.appMobile-pop {
+                .pop-conts {
+                    font-size: 4.69361147327249vw;
+                    .btn-wrap {
+                        margin-bottom: 3.911342894393742vw;
+                        .btn {
+                            height: 15.645371577574968vw;
+                            font-size: 4.172099087353325vw;
+                        }
+                    }
+                }
+                .ui_modal_close {
+                    font-size: 4.172099087353325vw;
+                }
+            }
+            //20210503 : 767 이하 모바일앱 다운로드 팝업
         }
     }
     @include mobile {
