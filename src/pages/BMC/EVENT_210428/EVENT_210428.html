@@ -80,16 +80,21 @@
                                         });
 
                                         $('.imgDownload').click(function(){
+                                            //로딩바
+                                            $('#loading').show();
+
                                             var target = $("#imgdownloadDiv");
                                             var t = target[0];
                                             //Stop
                                             window.scrollTo(0, 0);
                                             html2canvas(t, {
-                                                width:500,
-                                                height:500,
+                                                width:760,
+                                                height:760,
                                                 scale: 1
                                             })
                                             .then(function (canvas) {
+                                                //로딩바
+                                                $('#loading').hide();
                                                 if (canvas.msToBlob) { //for IE 10, 11
                                                     var blob = canvas.msToBlob();
                                                     window.navigator.msSaveBlob(blob, "capture.png");
@@ -156,7 +161,8 @@
                                          .event_wrap .btn_app {position:absolute; left: 36.44927536231884%; top:77.05510388437218%; width: 27.10144927536232%; height:8.762420957542909%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .btn_post {position:absolute; left: 36.44927536231884%; top:81.26159554730983%; width: 27.10144927536232%; height:8.998144712430427%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .section03 .sampleSlider {position:relative; }
-                                         .event_wrap .section03 .sampleSlider .w {position:absolute; left: 6%; top: 30.64327485380117%; width: 88%;}
+                                         .event_wrap .section03 .sampleSlider .w {position:relative; position: relative; left: 50%; top: 20.42723631508678%; width: 190%; transform: translateX(-50%);}
+                                         .event_wrap .section03 .custom_2{display: block; width: 65%; position: absolute; top: 25.42723631508678%; overflow: hidden; left: 50%; transform: translateX(-50%);}
                                          .event_wrap .sampleSlider .bg_l {width: 18.05555555555556%; height:62%; position:absolute; left: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_left.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .sampleSlider .bg_r {width: 18.05555555555556%; height:62%; position:absolute; right: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_right.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .section04 {position:relative;}
@@ -175,7 +181,8 @@
  
                                          @media screen and (max-width: 767px) {  
                                              .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {height:auto;}
-                                             .event_wrap .section03 .sampleSlider .w {position: absolute;  left: 50%; top: 20.42723631508678%; width: 70%; transform: translateX(-50%);}
+                                             /* .event_wrap .section03 .sampleSlider .w {position: absolute;  left: 50%; top: 20.42723631508678%; width: 70%; transform: translateX(-50%);} */
+                                             .event_wrap .section03 .custom_2{width:100%;}
                                              .event_wrap .section03 .swiper-slide {width: 60.13VW !important; height: 61.38vw !important;}
                                              .event_wrap .section03 .swiper-slide div {padding:0 3.61VW 4.86VW 0; }
                                              .event_wrap .section03 .swiper-slide div img {width: 56.52VW; height: 56.52VW;}
@@ -314,6 +321,8 @@
                                          }
                                          .poopup_post {position: absolute; left: 0; margin-left:0; top: 0;  z-index: 99999; width: 600px; display:none;} 
                                          .poopup_post * {font-family: 'Noto Sans KR';}
+                                         .poopup_post .loading{display: none;width: 100%; height: 100%; position: absolute; top: 0;  left: 0; z-index: 2; background-color: #fff; opacity: 0.5;}
+                                         .poopup_post .loading > img{position: absolute;  top: 40%; left: 50%;  transform: translate(-50%); width: 5rem;}
                                          .poopup_post .popInner {border-radius: 10px;-webkit-box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); text-align: left;background: #f2f1ee; position:relative;}
                                          .poopup_post .ePoupTit {text-align: center; font-size: 30px;font-weight: 900;padding: 40px 0 20px}
                                          .poopup_post .btn_close {position:absolute; right: 18px; top: 23px; width:2rem; height:2rem;}
@@ -380,6 +389,9 @@
                                      </style>
                                      <!-- s: 내가 만든 기획전 포스터 만들기-->
                                     <div class="poopup_post" id="poopup_post"style="left:50%; top:0; transform:translateX(-50%);">
+                                        <div class="loading" id="loading">
+                                            <img src="/lg5-common/images/BMC/EVENT_210428/loading.png" alt="loading">
+                                        </div>
                                         <div class="popInner">
                                         <h4 class="ePoupTit">내가 만든 기획전 포스터 만들기</h4>
                                             <div class="setp_01">
@@ -634,15 +646,19 @@
                                                      <div><img src="/lg5-common/images/BMC/EVENT_210428/img_event_pc_06.jpg" width="100%" class="pc"  alt="응모 현황" /><img src="/lg5-common/images/BMC/EVENT_210428/img_event_m_06.jpg" width="100%" class="mobile" alt="응모 현황" /></div>
                                                      <!-- <div class="bg_l mobile"></div>
                                                      <div class="bg_r mobile"></div> -->
-                                                     <div class="w taglive_custom">
-                                                        <script src="https://hosting.taglive.net/taglive4/894/taglive.min.js"></script>
+                                                     <div class="custom_2">
+                                                        <div class="w taglive_custom">
+                                                            <script src="https://hosting.taglive.net/taglive4/894/taglive.min.js"></script>
+    
+                                                             <ul id='carousel-custom-dots' class='owl-dots'>
+                                                                 <li class='owl-dot'><!-- Anything in here --></li>
+                                                                 <li class='owl-dot'></li>
+                                                                 <li class='owl-dot'></li>
+                                                               </ul>
+                                                         </div>
 
-                                                         <ul id='carousel-custom-dots' class='owl-dots'>
-                                                             <li class='owl-dot'><!-- Anything in here --></li>
-                                                             <li class='owl-dot'></li>
-                                                             <li class='owl-dot'></li>
-                                                           </ul>
                                                      </div>
+                                                     
                                                  </div>
                                                  
                                              </div>
