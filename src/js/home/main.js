@@ -907,14 +907,10 @@ $(function () {
                 window.open(link, '_blank');
                 return;
             });
-            // el.find('.pink.btn-close').one('click', function () {
-            //     var close_btn = el.find('.ui_modal_close');
-            //     if (checkbox.is(':checked')) {
-            //         vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
-            //     }
-            //     close_btn.trigger('click');
-            //     return;
-            // });
+            el.find('.ui_modal_close').one('click', function () {
+                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                return;
+            });
         }
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
