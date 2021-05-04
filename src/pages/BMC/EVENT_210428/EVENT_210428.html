@@ -80,12 +80,21 @@
                                         });
 
                                         $('.imgDownload').click(function(){
+                                            //로딩바
+                                            $('#loading').show();
+
                                             var target = $("#imgdownloadDiv");
                                             var t = target[0];
                                             //Stop
                                             window.scrollTo(0, 0);
-                                            html2canvas(t)
+                                            html2canvas(t, {
+                                                width:760,
+                                                height:760,
+                                                scale: 1
+                                            })
                                             .then(function (canvas) {
+                                                //로딩바
+                                                $('#loading').hide();
                                                 if (canvas.msToBlob) { //for IE 10, 11
                                                     var blob = canvas.msToBlob();
                                                     window.navigator.msSaveBlob(blob, "capture.png");
@@ -140,9 +149,9 @@
                                     </script>
                                      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
                                      <style type="text/css">  
-                                        .slide-wrap.poster-slide .slide-track{margin-top: -50px;}
-                                        .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {height:600px; max-height:600px;}
-                                        .slide-wrap.poster-slide .slide-conts{width:600px;}
+                                        .slide-wrap.poster-slide .slide-track{margin-top: 0;}
+                                        .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {height:400px; max-height:400px;}
+                                        .slide-wrap.poster-slide .slide-conts{width:400px;}
                                          .event_wrap .por {position:relative;}
                                          .event_wrap .sampleSlider .swiper-slide img {box-shadow: 10px 11px 11px -2px rgba(0,0,0,0.2);-webkit-box-shadow: 10px 11px 11px -2px rgba(0,0,0,0.2);-moz-box-shadow: 10px 11px 11px -2px rgba(0,0,0,0.2);}
                                          .event_wrap .sampleSlider .swiper-slide div {padding:0 20px 35px  0 ;}
@@ -152,7 +161,8 @@
                                          .event_wrap .btn_app {position:absolute; left: 36.44927536231884%; top:77.05510388437218%; width: 27.10144927536232%; height:8.762420957542909%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .btn_post {position:absolute; left: 36.44927536231884%; top:81.26159554730983%; width: 27.10144927536232%; height:8.998144712430427%; text-indent:-99999px;overflow: hidden; z-index:10;}
                                          .event_wrap .section03 .sampleSlider {position:relative; }
-                                         .event_wrap .section03 .sampleSlider .w {position:absolute; left: 6%; top: 30.64327485380117%; width: 88%;}
+                                         .event_wrap .section03 .sampleSlider .w {position:relative; position: relative; left: 50%; top: 20.42723631508678%; width: 190%; transform: translateX(-50%);}
+                                         .event_wrap .section03 .custom_2{display: block; width: 65%; position: absolute; top: 25.42723631508678%; overflow: hidden; left: 50%; transform: translateX(-50%);}
                                          .event_wrap .sampleSlider .bg_l {width: 18.05555555555556%; height:62%; position:absolute; left: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_left.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .sampleSlider .bg_r {width: 18.05555555555556%; height:62%; position:absolute; right: 0; top: 20.42723631508678%;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_right.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .event_wrap .section04 {position:relative;}
@@ -171,7 +181,8 @@
  
                                          @media screen and (max-width: 767px) {  
                                              .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {height:auto;}
-                                             .event_wrap .section03 .sampleSlider .w {position:absolute; left: 4%; top: 20.42723631508678%; width: 92%;}
+                                             /* .event_wrap .section03 .sampleSlider .w {position: absolute;  left: 50%; top: 20.42723631508678%; width: 70%; transform: translateX(-50%);} */
+                                             .event_wrap .section03 .custom_2{width:100%;}
                                              .event_wrap .section03 .swiper-slide {width: 60.13VW !important; height: 61.38vw !important;}
                                              .event_wrap .section03 .swiper-slide div {padding:0 3.61VW 4.86VW 0; }
                                              .event_wrap .section03 .swiper-slide div img {width: 56.52VW; height: 56.52VW;}
@@ -187,11 +198,17 @@
                                              .event_wrap .section04 .swiper-pagination-bullet-active {width: 5VW !important; height: 2.2222222222222223VW !important;}
                                              .event_wrap .section04 .swiper-button-next, .event_wrap .section04 .swiper-button-prev {margin-top: -2vw}
                                          }
-                                         @media screen and (max-width: 450px) {  
-                                            .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {max-height:21.6rem;}
+                                         @media screen and (max-width: 520px) {  
+                                            .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {max-height:17.5rem;}
+                                            .slide-wrap.poster-slide .slide-conts {max-width: 17.5rem;}
                                          }
+
+                                         @media screen and (max-width: 410px){
+                                            .slide-wrap.poster-slide .slide-track, .slide-wrap.poster-slide .slide-conts {max-height: 12.5rem;}
+                                            .slide-wrap.poster-slide .slide-conts {max-width: 12.5rem;}
+                                        }
  
-                                         .dimmed {position: fixed; left: 0; top:0; right: 0 ; bottom: 0; z-index:9999;background: #000; opacity: 0.3;display: none;}
+                                         .dimmed {z-index:9999;background: #000; opacity: 0.3;display: none;}
                                          .poopup01 {position: absolute; left: 0; top: 47.47304144471872%; z-index: 99999; width: 100%;padding: 0 80px ; display:none;}
                                          .poopup01 * {font-family: 'Noto Sans KR';}
                                          .poopup01 .popInner {border-radius: 10px;-webkit-box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); text-align: left;background: #f2f1ee; position:relative;}
@@ -262,7 +279,7 @@
                                          }
  
                                          @media screen and (max-width: 767px) {  
-                                             .poopup01 {padding: 0 4.166666666666666VW;top: 40%;}
+                                             .poopup01 {padding: 0 4.166666666666666VW;top: 40%; overflow-x: hidden;}
                                              .poopup01 .ePoupTit {padding: 11.11111111111111VW 0 5.555555555555555VW;color:#000; font-weight: 900;font-size: 5.555555555555555VW;text-align: center;}
                                              .poopup01 .ePoupTit_sub {   font-size: 3.888888888888889VW;  margin-bottom: 4.166666666666666VW;}
                                              .poopup01 .ePoupTit_sub2 { font-size:3.6111111111111107VW;}
@@ -302,12 +319,14 @@
                                              .poopup01 .btn_close {right: 10px; top: 10px;}
                                              
                                          }
-                                         .poopup_post {position: absolute; left: 0; margin-left:0; top: 0;  z-index: 99999; width: 660px; display:none;} 
+                                         .poopup_post {position: absolute; left: 0; margin-left:0; top: 0;  z-index: 99999; width: 600px; display:none;} 
                                          .poopup_post * {font-family: 'Noto Sans KR';}
+                                         .poopup_post .loading{display: none;width: 100%; height: 100%; position: absolute; top: 0;  left: 0; z-index: 2; background-color: #fff; opacity: 0.5;}
+                                         .poopup_post .loading > img{position: absolute;  top: 40%; left: 50%;  transform: translate(-50%); width: 5rem;}
                                          .poopup_post .popInner {border-radius: 10px;-webkit-box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); box-shadow: 10px 9px 19px 5px rgba(0,0,0,0.1); text-align: left;background: #f2f1ee; position:relative;}
-                                         .poopup_post .ePoupTit {text-align: center; font-size: 40px;font-weight: 900;padding: 80px 0 40px}
+                                         .poopup_post .ePoupTit {text-align: center; font-size: 30px;font-weight: 900;padding: 40px 0 20px}
                                          .poopup_post .btn_close {position:absolute; right: 18px; top: 23px; width:2rem; height:2rem;}
-                                         .poopup_post .setp_01 {width: 600px; margin: 0 auto; position:relative;}
+                                         .poopup_post .setp_01 {width: 400px; margin: 0 auto; position:relative;}
                                          .poopup_post .swiper-container {padding-bottom:110px;}
                                          .poopup_post .swiper-slide img {width: 100%; height: auto;}
                                          .poopup_post .swiper-pagination-bullets { text-align: center; left: 0 ; width: 100%;top: 456px;}
@@ -318,11 +337,11 @@
                                          .poopup_post .swiper-button-prev {width:  54px; border:0 !important; height: 54px;margin-top: -75px; margin-left: 100px;background:url('/lg5-common/images/BMC/EVENT_210428/btn_prev.png') 0 0 no-repeat; background-size: 100%;}
                                          .poopup_post .swiper-button-prev:after {display:none;}
                                          .poopup_post .btn_w {text-align: center; padding-top:20px; padding-bottom: 50px;}
-                                         .poopup_post .btn_w div img{cursor:pointer;
+                                         .poopup_post .btn_w div img{cursor:pointer; width:40%;
                                         }
                                          .poopup_post .setp_02,
                                          .poopup_post .setp_03 {display:none;}
-                                         .poopup_post .imgBox {width: 486px; margin: 0 auto 50px; position:relative; height: 486px;}
+                                         .poopup_post .imgBox {width: 400px; margin: 0 auto; position: relative; height: 400px;}
                                          .poopup_post .imgBox .txt01 {position:absolute; left: 40px; top: 25px; font-size:28px;color:#fff;text-shadow: 4px 4px 6px rgba(0,0,0,0.19);}
                                          .poopup_post .imgBox  input {border: 1px solid #000101; background:#e0dfe1; color:#000; width: 246px; height: 42px; text-align: center;font-size: 26px;}
                                          .poopup_post .imgBox .txt02 {position:absolute; left: 40px; top: 70px; font-size:40px;color:#fff;font-weight: 500;letter-spacing:-1px;text-shadow: 4px 4px 6px rgba(0,0,0,0.19);}
@@ -335,12 +354,13 @@
                                          .poopup_post .swiper-slide img {width: 409px; height: 409px;}
                                          .poopup_post .bg_l {width: 18.05555555555556%; height:100%; position:absolute; left: 0; top: 0;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_left.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
                                          .poopup_post .bg_r {width: 18.05555555555556%; height:100%; position:absolute; right: -5px; top:0;background:url('/lg5-common/images/BMC/EVENT_210428/bg_m_right.png') 0 0 no-repeat; background-size: 100% 100%;z-index:999;}
+                                         .poopup_post .caution{font-size: 0.8em;display: block;text-align: center;line-height: 1;position: absolute;left: 50%; transform: translateX(-50%); width: 100%; bottom: 2%;}
                                          @media screen and (max-width: 767px) {  
                                             .poopup_post {width: 91.66666666666666VW;  }
                                             .ev-detail-con .poopup_post .mobile{display:inline-block !important;}
-                                            .poopup_post .ePoupTit {font-size: 5.555555555555555VW;padding: 11.11111111111111VW 0 5.555555555555555VW}
+                                            .poopup_post .ePoupTit {font-size: 3.555556VW; padding: 6.111111VW 0 2.555556VW;}
                                             .poopup_post .btn_close {right: 10px; top: 10px;}
-                                            .poopup_post .setp_01 {width: 83.33333333333334VW;}
+                                            .poopup_post .setp_01 {width: 54.5VW;}
                                             .poopup_post .swiper-container {padding-bottom:15.277777777777779VW;}
                                             .poopup_post .swiper-pagination-bullets { left: 0 ; width: 100%;top: 63.05555555555556VW;}
                                             .poopup_post .swiper-pagination-bullet {  width: 2.2222222222222223VW; height: 2.2222222222222223VW;   }
@@ -348,14 +368,15 @@
                                             .poopup_post .swiper-button-next {width:  7.5VW; height: 7.5VW;margin-top: -10.416666666666668VW;margin-right: 13.88888888888889VW; }
                                             .poopup_post .swiper-button-prev {width:  7.5VW; height: 7.5VW;margin-top: -10.416666666666668VW;margin-left: 13.88888888888889VW;}
                                             .poopup_post .btn_w { padding-bottom: 6.944444444444445VW;}
-                                            .poopup_post .imgBox {width: 67.5VW; margin: 0 auto 6.944444444444445VW; height: 67.5VW;}
-                                            .poopup_post .imgBox .txt01 {left: 5.555555555555555VW; top: 3.4722222222222223VW; font-size:3.888888888888889VW; }
+                                            .poopup_post .btn_w > div > img{width:40%;}
+                                            .poopup_post .imgBox {width: 54.5VW; margin: 0 auto; height: 54.5VW;}
+                                            .poopup_post .imgBox .txt01 {left: 5.555555555555555VW;top: 3.4722222222222223VW; font-size: 2.8VW;}
                                             .poopup_post .imgBox  input { width: 34.166666666666664VW; height: 5.833333333333333VW;  font-size: 3.6111111111111107VW;}
-                                            .poopup_post .imgBox .txt02 { left: 5.555555555555555VW; top: 9.722222222222223VW; font-size:5.555555555555555VW; }
+                                            .poopup_post .imgBox .txt02 { left: 5.555555555555555VW; top: 9.722222222222223VW; font-size:4.555555555555555VW; }
                                             .poopup_post .setp_03 .btn_w > div:first-child {margin-bottom: 1.3888888888888888VW;}
                                             .poopup_post .setp_01 .btn_w img {width: 38.75VW; height: auto;}
                                             .poopup_post .setp_02 .btn_w img {width: 38.75VW; height: auto;}
-                                            .poopup_post .setp_03 .btn_w img {width: 39.02777777777778VW; height: auto;}
+                                            .poopup_post .setp_03 .btn_w img {width: 35.02777777777778VW; height: auto;}
                                             .poopup_post .swiper-slide {width: 56.80555555555556VW; height: 56.80555555555556VW;}
                                             .poopup_post .swiper-slide img {width: 56.80555555555556VW; height: 56.80555555555556VW;}  
                                          }
@@ -367,7 +388,10 @@
                                          }
                                      </style>
                                      <!-- s: 내가 만든 기획전 포스터 만들기-->
-                                    <div class="poopup_post" id="poopup_post"style="left:0; top:0;">
+                                    <div class="poopup_post" id="poopup_post"style="left:50%; top:0; transform:translateX(-50%);">
+                                        <div class="loading" id="loading">
+                                            <img src="/lg5-common/images/BMC/EVENT_210428/loading.png" alt="loading">
+                                        </div>
                                         <div class="popInner">
                                         <h4 class="ePoupTit">내가 만든 기획전 포스터 만들기</h4>
                                             <div class="setp_01">
@@ -493,6 +517,7 @@
                                                     <p class="txt01"><span style="color:#000;" id='result'></span><span>님을 위한</span></p>
                                                     <p class="txt02">LGE 닷컴 기획전</p>
                                                 </div>
+                                                <div class="caution">※ IOS사용자는 이미지를 눌러 저장해주세요.</div>
                                                 <div class="btn_w">
                                                     <div>
                                                         <img src="/lg5-common/images/BMC/EVENT_210428/btn_save_pc_01.png" class="pc imgDownload" alt="이미지 저장" /><img src="/lg5-common/images/BMC/EVENT_210428/btn_save_m_01.png" class="mobile imgDownload" alt="이미지 저장" />
@@ -615,21 +640,25 @@
                                                              </ul>
                                                          </div>
                                                      </div>
-                                                     <a href="#poopup_post" onclick="$('#poopup_post, .dimmed.popup0001_dim').show(); " class="btn_post">포스터 만들기</a>
+                                                     <a href="#" onclick="window.scrollTo(0, 0);$('#poopup_post, .dimmed.popup0001_dim').show(); return false; " class="btn_post">포스터 만들기</a>
                                                  </div>
                                                  <div class="sampleSlider">
                                                      <div><img src="/lg5-common/images/BMC/EVENT_210428/img_event_pc_06.jpg" width="100%" class="pc"  alt="응모 현황" /><img src="/lg5-common/images/BMC/EVENT_210428/img_event_m_06.jpg" width="100%" class="mobile" alt="응모 현황" /></div>
-                                                     <div class="bg_l mobile"></div>
-                                                     <div class="bg_r mobile"></div>
-                                                     <div class="w taglive_custom">
-                                                        <script src="https://hosting.taglive.net/taglive4/894/taglive.min.js"></script>
+                                                     <!-- <div class="bg_l mobile"></div>
+                                                     <div class="bg_r mobile"></div> -->
+                                                     <div class="custom_2">
+                                                        <div class="w taglive_custom">
+                                                            <script src="https://hosting.taglive.net/taglive4/894/taglive.min.js"></script>
+    
+                                                             <ul id='carousel-custom-dots' class='owl-dots'>
+                                                                 <li class='owl-dot'><!-- Anything in here --></li>
+                                                                 <li class='owl-dot'></li>
+                                                                 <li class='owl-dot'></li>
+                                                               </ul>
+                                                         </div>
 
-                                                         <ul id='carousel-custom-dots' class='owl-dots'>
-                                                             <li class='owl-dot'><!-- Anything in here --></li>
-                                                             <li class='owl-dot'></li>
-                                                             <li class='owl-dot'></li>
-                                                           </ul>
                                                      </div>
+                                                     
                                                  </div>
                                                  
                                              </div>
