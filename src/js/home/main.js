@@ -755,8 +755,8 @@ $(function () {
             //render(0);
             currentPage = 0;
             moveScene(currentPage,0);
-        });          
-
+        });
+        
         if(isApplication){
 
             render();
@@ -884,7 +884,7 @@ $(function () {
     $('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
-    /* 20210430 : 모바일앱 다운로드 팝업 */
+    /* 20210503 : 모바일앱 다운로드 팝업 */
     if (vcui.detect.isMobileDevice) {
         var layer_id = '#mobile-close-popup';
         var el = $(layer_id);
@@ -903,20 +903,16 @@ $(function () {
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                var link = vcui.detect.isIOS ? ios.link : android.link;
+                var link = vcui.detect.isIOS ? app.ios.link : app.android.link;
                 window.open(link, '_blank');
                 return;
             });
-            el.find('.pink.btn-close').one('click', function () {
-                var close_btn = el.find('.ui_modal_close');
-                if (checkbox.is(':checked')) {
-                    vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
-                }
-                close_btn.trigger('click');
+            el.find('.ui_modal_close').one('click', function () {
+                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
                 return;
             });
         }
     }
-    /* //20210430 : 모바일앱 다운로드 팝업 */
+    /* //20210503 : 모바일앱 다운로드 팝업 */
     
 });
