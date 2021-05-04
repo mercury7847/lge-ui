@@ -144,11 +144,12 @@
             padding: 20px 40px 40px; 
         }
 
-        //20210503 : 768 이상 모바일앱 다운로드 팝업
+        /* 20210503 : 768 이상 모바일앱 다운로드 팝업 */
         &.appMobile-pop {
             max-width: 549px;
             background-color: rgba(255, 255, 255, 0);
             color: #fff;
+            outline: 0;
             .pop-conts {
                 padding: 0;
                 font-size: 36px;
@@ -186,7 +187,7 @@
                 color: #fff;
             }
         }
-        //20210503 : 768 이상 모바일앱 다운로드 팝업
+        /* //20210503 : 768 이상 모바일앱 다운로드 팝업 */
         @include mobile {
             height:auto;
             width:87.5%;
@@ -213,7 +214,7 @@
                 top:21px;
             }
 
-            //20210503 : 767 이하 모바일앱 다운로드 팝업
+            /* 20210503 : 767 이하 모바일앱 다운로드 팝업 */
             &.appMobile-pop {
                 .pop-conts {
                     font-size: 4.69361147327249vw;
@@ -229,7 +230,7 @@
                     font-size: 4.172099087353325vw;
                 }
             }
-            //20210503 : 767 이하 모바일앱 다운로드 팝업
+            /* //20210503 : 767 이하 모바일앱 다운로드 팝업 */
         }
     }
     @include mobile {
