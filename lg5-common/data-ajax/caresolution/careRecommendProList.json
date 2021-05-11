@@ -1,0 +1,161 @@
+{
+    "data": {
+        "data": [
+            {
+                "categoryType": "new",
+                "models": [
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/refrigerators/md08747051/md08747051-350x350.jpg",
+                        "modelId": "MD08747051",
+                        "modelUrlPath": "/care-solutions/ice-water-purifiers-refrigerator/j813s35er?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/refrigerators/md08747051/md08747051-280x280.jpg",
+                        "salesModelCode": "J813S35E-F1",
+                        "years1TotAmt": 57900,
+                        "categoryName": "정수기형",
+                        "salesSuffixCode": "CKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/refrigerators/md08747051/md08747051-450x450.jpg",
+                        "modelName": "J813S35E",
+                        "rtModelSeq": "1555606",
+                        "modelDisplayName": "LG DIOS 얼음정수기냉장고(양문형)",
+                        "categoryId": "CT50000070"
+                    },
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/lg-homebrew/md08747121/md08747121-350x350.jpg",
+                        "modelId": "MD08747121",
+                        "modelUrlPath": "/care-solutions/lg-homebrew/bb052s?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/lg-homebrew/md08747121/md08747121-280x280.jpg",
+                        "salesModelCode": "BB052S",
+                        "years1TotAmt": 49900,
+                        "categoryName": "맥주제조기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/lg-homebrew/md08747121/md08747121-450x450.jpg",
+                        "modelName": "BB052S",
+                        "rtModelSeq": "1551549",
+                        "modelDisplayName": "LG 홈브루",
+                        "categoryId": "CT50000087"
+                    }
+                ],
+                "categoryName": "신제품"
+            },
+            {
+                "categoryType": "best",
+                "models": [
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
+                        "modelId": "MD08747120",
+                        "modelUrlPath": "/care-solutions/water-purifiers/wu900as?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-280x280.jpg",
+                        "salesModelCode": "WU900AS",
+                        "years1TotAmt": 41900,
+                        "categoryName": "냉온정수기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-450x450.jpg",
+                        "modelName": "WU900AS",
+                        "rtModelSeq": "1556160",
+                        "modelDisplayName": "듀얼 정수기",
+                        "categoryId": "CT50000095"
+                    },
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg",
+                        "modelId": "MD08750473",
+                        "modelUrlPath": "/care-solutions/water-purifiers/wd503ap?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08750473/md08750473-280x280.jpg",
+                        "salesModelCode": "WD503AP",
+                        "years1TotAmt": 36900,
+                        "categoryName": "냉온정수기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/water-purifiers/md08750473/md08750473-450x450.jpg",
+                        "modelName": "WD503AP",
+                        "rtModelSeq": "1556141",
+                        "modelDisplayName": "상하좌우 정수기",
+                        "categoryId": "CT50000095"
+                    }
+                ],
+                "categoryName": "베스트"
+            },
+            {
+                "categoryType": "couple",
+                "models": [
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/electric-ranges/md08751090/md08751090-350x350.jpg",
+                        "modelId": "MD08751090",
+                        "modelUrlPath": "/care-solutions/electric-stoves/bei3mstr?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/electric-ranges/md08751090/md08751090-280x280.jpg",
+                        "salesModelCode": "BEI3MST",
+                        "years1TotAmt": 37900,
+                        "categoryName": "인덕션",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/electric-ranges/md08751090/md08751090-450x450.jpg",
+                        "modelName": "BEI3MST",
+                        "rtModelSeq": "1552749",
+                        "modelDisplayName": "LG DIOS 인덕션 전기레인지",
+                        "categoryId": "CT50000077"
+                    },
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/dishwashers/md08045863/md08045863-350x350.jpg",
+                        "modelId": "MD08045863",
+                        "modelUrlPath": "/care-solutions/dishwashers/dfb22mar?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/dishwashers/md08045863/md08045863-280x280.jpg",
+                        "salesModelCode": "DFB22MA",
+                        "years1TotAmt": 35900,
+                        "categoryName": "식기세척기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/dishwashers/md08045863/md08045863-450x450.jpg",
+                        "modelName": "DFB22MA",
+                        "rtModelSeq": "1557082",
+                        "modelDisplayName": "LG DIOS 식기세척기 스팀",
+                        "categoryId": "CT50000086"
+                    }
+                ],
+                "categoryName": "신혼부부 추천"
+            },
+            {
+                "categoryType": "pet",
+                "models": [
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917838/md08917838-350x350.jpg",
+                        "modelId": "MD08917838",
+                        "modelUrlPath": "/care-solutions/air-purifiers/as301dnpr?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917838/md08917838-280x280.jpg",
+                        "salesModelCode": "AS301DNPA",
+                        "years1TotAmt": 55900,
+                        "categoryName": "공기청정기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917838/md08917838-450x450.jpg",
+                        "modelName": "AS301DNPA",
+                        "rtModelSeq": "1544750",
+                        "modelDisplayName": "LG 퓨리케어 360˚ 공기청정기 펫 플러스",
+                        "categoryId": "CT50000144"
+                    },
+                    {
+                        "modelStatusCode": "ACTIVE",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917835/md08917835-350x350.jpg",
+                        "modelId": "MD08917835",
+                        "modelUrlPath": "/care-solutions/air-purifiers/as191dnpr?dpType=careTab",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917835/md08917835-280x280.jpg",
+                        "salesModelCode": "AS191DNPA",
+                        "years1TotAmt": 38900,
+                        "categoryName": "공기청정기",
+                        "salesSuffixCode": "AKOR",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/air-purifier/md08917835/md08917835-450x450.jpg",
+                        "modelName": "AS191DNPA",
+                        "rtModelSeq": "1544747",
+                        "modelDisplayName": "LG 퓨리케어 360˚ 공기청정기 펫 플러스",
+                        "categoryId": "CT50000144"
+                    }
+                ],
+                "categoryName": "반려동물"
+            }
+        ],
+        "success": "Y"
+    },
+    "message": null,
+    "status": "success"
+}
