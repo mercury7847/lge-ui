@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', {
-    pageCSS: ["BMC/BMC"],
-    pageJS: ["caresolution/addressManagement"]
+pageCSS: ["BMC/BMC"],
+pageJS: ["caresolution/addressManagement"]
 })
 
 <body>
@@ -54,10 +54,10 @@
                         </table>
                     </div>
                     @@include('./common/modules/bullet-list.html', {
-                        "bulletTxt" : [
-                            "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
-                            "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
-                        ]
+                    "bulletTxt" : [
+                    "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                    "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                    ]
                     })
                     <div class="agree-input">
                         <span class="chk-wrap">
@@ -89,9 +89,9 @@
                             </table>
                         </div>
                         @@include('./common/modules/bullet-list.html', {
-                            "bulletTxt" : [
-                                "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
-                            ]
+                        "bulletTxt" : [
+                        "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                        ]
                         })
                         <div class="agree-input">
                             <span class="chk-wrap">
@@ -148,7 +148,7 @@
                                         <div class="box">
                                             <div class="select-wrap">
                                                 <select class="ui_selectbox" name="purDateM" id="purDateM" title="월 선택">
-                                                    <option value="" class="placeholder">선택</option>
+                                                    <option value="" class="placeholder">구매월</option>
                                                     <option value="5">5</option>
                                                     <option value="6">6</option>
                                                     <option value="7">7</option>
@@ -161,38 +161,38 @@
                                         <div class="box">
                                             <div class="select-wrap">
                                                 <select class="ui_selectbox" name="purDateD" id="purDateD" title="일 선택">
-                                                    <option value="" class="placeholder">선택</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
-                                                    <option value="">11</option>
-                                                    <option value="">12</option>
-                                                    <option value="">13</option>
-                                                    <option value="">14</option>
-                                                    <option value="">15</option>
-                                                    <option value="">16</option>
-                                                    <option value="">17</option>
-                                                    <option value="">18</option>
-                                                    <option value="">19</option>
-                                                    <option value="">20</option>
-                                                    <option value="">21</option>
-                                                    <option value="">22</option>
-                                                    <option value="">23</option>
-                                                    <option value="">24</option>
-                                                    <option value="">25</option>
-                                                    <option value="">26</option>
-                                                    <option value="">27</option>
-                                                    <option value="">28</option>
-                                                    <option value="">29</option>
-                                                    <option value="">30</option>
-                                                    <option value="">31</option>
+                                                    <option value="" class="placeholder">구매일</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
                                                 </select>
                                             </div>
                                             <div class="text"><span>일</span></div>
@@ -231,12 +231,8 @@
                         <dl class="forms">
                             <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
-                                <div class="select-wrap">
-                                    <select class="ui_selectbox" name="modelName" id="modelName" title="모델명" style="width: 40%;">
-                                        <option value="">선택</option>
-                                        <option value="HU85LA">HU85LA</option>
-                                        <option value="HU810PW">HU810PW</option>
-                                    </select>
+                                <div class="input-wrap">
+                                    <input type="text" class="disabled" name="modelName" data-required="true" id="modelName" value="27TN600S" readonly>
                                 </div>
                             </dd>
                         </dl>
@@ -317,8 +313,32 @@
                                 <label for="recipientPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label>
                             </dt>
                             <dd class="conts">
-                                <div class="input-wrap">
-                                    <input type="number" name="recipientPhone" data-required="true" id="recipientPhone" maxlength="12" oninput="maxLengthCheck(this)" placeholder="‘-’없이 번호만 입력해 주세요." value="">
+                                <div class="box">
+                                    <div class="cell wide">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="recipientPhone1" id="recipientPhone1" title="국번 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="010">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="cell text-middle">-</div>
+                                    <div class="cell wide">
+                                        <div class="input-wrap">
+                                            <input type="number" name="recipientPhone2" data-required="true" id="recipientPhone2" maxlength="4" oninput="maxLengthCheck(this)" value="">
+                                        </div>
+                                    </div>
+                                    <div class="cell text-middle">-</div>
+                                    <div class="cell wide">
+                                        <div class="input-wrap">
+                                            <input type="number" name="recipientPhone3" data-required="true" id="recipientPhone3" maxlength="4" oninput="maxLengthCheck(this)" value="">
+                                        </div>
+                                    </div>
                                 </div>
                             </dd>
                         </dl>
@@ -412,6 +432,35 @@
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!--// Serial Popup -->
+
+    <script>
+        $(function () {
+            $("#purDateM").on('change', function (e) {
+                var selBuyMonth = $("#purDateM").val();
+                var endday;
+                var dOptionStr = "<option value=''>구매일</option>";
+
+                if (selBuyMonth == "5") {
+                    endday = 31;
+                }
+                else if (selBuyMonth == "6") {
+                    endday = 30;
+                }
+                else if (selBuyMonth == "7") {
+                    endday = 31;
+                }
+
+                for (var i = 1; i <= endday; i++) {
+                    var tmp;
+                    if (i < 10) tmp = "0" + i;
+                    else tmp = i;
+                    dOptionStr += "<option value='" + tmp + "'>" + i + "</option>";
+                }
+                $("#purDateD").html(dOptionStr);
+                $('.ui_selectbox').vcSelectbox('update');
+            });
+        });
+    </script>
 
 </body>
 
