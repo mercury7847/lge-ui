@@ -242,11 +242,31 @@ pageJS: ["caresolution/addressManagement"]
                             <dt class="tit"><label for="serialNum" class="req">시리얼번호<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
                                 <div class="box">
+                                    <div class="cell">
+                                        <button type="button" class="btn" style="width: 100%;" id=""><span>보유제품 조회</span></button>
+                                    </div>
+                                    <div class="cell wide">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="place" id="place" title="시리얼 선택">
+                                                <option value="">선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="cell middle wide">
+                                        <div class="chk-input">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="selfTyping" name="selfTyping">
+                                                <label for="selfTyping">직접 입력</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
                                     <div class="input-wrap">
-                                        <input type="text" name="serialNum" data-required="true" id="serialNum" maxlength="12" placeholder="S/N을 입력해 주세요.">
+                                        <input type="text" class="disabled" name="serialNum" data-required="true" id="serialNum" maxlength="12" placeholder="S/N을 입력해 주세요." readonly>
                                     </div>
                                     <div class="cell">
-                                        <button type="button" class="btn" id="serialCheckBtn"><span>시리얼번호 확인</span></button>
+                                        <button type="button" class="btn disabled" id="serialCheckBtn"><span>시리얼번호 확인</span></button>
                                     </div>
                                 </div>
                             </dd>
@@ -459,6 +479,17 @@ pageJS: ["caresolution/addressManagement"]
                 $("#purDateD").html(dOptionStr);
                 $('.ui_selectbox').vcSelectbox('update');
             });
+
+            $("#selfTyping").on('change', function() {
+                var chk = $(this).is(":checked");
+                if(chk) {
+                    $("#serialNum").removeClass('disabled').removeAttr('readonly');
+                    $("#serialCheckBtn").removeClass('disabled');
+                } else {
+                    $("#serialNum").addClass('disabled').attr('readonly');
+                    $("#serialCheckBtn").addClass('disabled');
+                }
+            })
         });
     </script>
 
