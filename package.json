@@ -4,10 +4,13 @@
   "description": "Starter \"pack\" to get basic HTML / CSS / JS sit up and running with a pattern library",
   "main": "index.html",
   "scripts": {
-    "test": "test"
+    "preinstall": "npx npm-force-resolutions"
   },
   "author": "Tina van Schelt",
   "license": "ISC",
+  "resolutions": {
+    "graceful-fs": "4.2.3"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.12",
     "gulp": "^3.9.1",
