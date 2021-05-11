@@ -1267,6 +1267,34 @@
                             background-color: $color-bg;
                         }
                     }
+                    /* 20210511 수정,추가 */
+                    &.card-discountSelect {
+                        li {
+                            &.divide {}
+                            a {
+                                display: flex;
+                                justify-content: space-between;
+                                .card-name {}
+                                .card-discount {
+                                    color:#da0f47;
+                                    font-weight: 500;
+                                    span {}
+                                }
+                            }
+                            @include mobile {
+                                position: relative;
+                                a {
+                                    flex-wrap: wrap;
+                                    justify-content: flex-start;
+                                    p {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    /* //20210511 수정,추가 */
+
                     .divide {
                         padding: 13px 40px 13px 16px;
                         .inner {
