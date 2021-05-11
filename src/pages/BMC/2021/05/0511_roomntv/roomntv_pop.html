@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+pageCSS: ["BMC/BMC"],
+pageJS: ["caresolution/addressManagement"]
+})
+
+<body>
+    <!-- Popup -->
+    <article id="popup" class="win-popup-wrap uiForm" data-event-id="eventID_TEST" data-sku-url="">
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 참여하기</span></h1>
+        </header>
+        <!-- Popup Contents -->
+        <section class="pop-conts academy-pop">
+            <div class="input-info">
+                <!-- 개인정보 수집 동의 -->
+                <div class="input-info-wrap">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">개인정보 수집 이용 및 처리 위탁 동의</h2>
+                    </div>
+                    <p class="tb-tit req">개인정보 수집 이용 동의<span class="blind">필수</span></p>
+                    <div class="tb_row tb-bor">
+                        <table>
+                            <caption>개인정보 수집 이용 동의 항목, 목적, 보유기간 안내</caption>
+                            <colgroup>
+                                <col width="25%">
+                                <col width="25%">
+                                <col width="25%">
+                                <col width="">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수집항목</th>
+                                    <th scope="col">목적</th>
+                                    <th scope="col">보유기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="al-left">구매자 이름, 구매자 연락처</td>
+                                    <td class="al-left">이벤트 응모내역 확인 시 본인 확인</td>
+                                    <td rowspan="3" class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                                </tr>
+                                <tr>
+                                    <td class="al-left">수령자 이름, 수령자 연락처</td>
+                                    <td class="al-left">경품배송 시 본인 확인</td>
+                                </tr>
+                                <tr>
+                                    <td class="al-left">수령자 주소</td>
+                                    <td class="al-left">경품배송</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                    "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                    "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                    ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="agreechk-1" data-required="true">
+                            <label for="chk1-1">동의합니다</label>
+                        </span>
+                    </div>
+                    <div class="input-info-wrap">
+                        <p class="tb-tit req">개인정보 처리 위탁 동의<span class="blind">필수</span></p>
+                        <div class="tb_row tb-bor">
+                            <table>
+                                <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
+                                <colgroup>
+                                    <col width="33.3%">
+                                    <col width="">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">수탁자</th>
+                                        <th scope="col">목적</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>(주)LG CNS, 원은, CJ대한통운</td>
+                                        <td>경품 제공 등 이벤트와 관련한 업무</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                        "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                        ]
+                        })
+                        <div class="agree-input">
+                            <span class="chk-wrap">
+                                <input type="checkbox" id="chk2-1" name="agreechk-2" data-required="true">
+                                <label for="chk2-1">동의합니다</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--// 개인정보 수집 동의 -->
+
+                <!-- 구매자 정보 -->
+                <div class="input-info">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">구매정보</h2>
+                    </div>
+                    <div class="form-wrap">
+                        <!-- 구매자명 -->
+                        <dl class="forms">
+                            <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
+                            <dd class="conts">
+                                <span class="input-wrap">
+                                    <input type="text" class="disabled" name="buyerName" value="<c:out value=" ${memberInformation.name}" />" data-required="true" id="buyerName" placeholder="이름을 입력해 주세요." readonly >
+                                </span>
+                            </dd>
+                        </dl>
+                        <!--// 구매자명 -->
+                        <!-- 휴대폰 -->
+                        <dl class="forms">
+                            <dt class="tit">
+                                <label for="buyerPhone">휴대폰</label>
+                            </dt>
+                            <dd class="conts">
+                                <div class="input-wrap">
+                                    <input type="number" class="disabled" name="buyerPhone" data-required="true" id="buyerPhone" value="<c:out value=" ${memberInformation.mobileNo}" />" placeholder="‘-’없이 번호만 입력해 주세요." readonly >
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <!--// 휴대폰 -->
+                        <!-- 구매날짜-->
+                        <dl class="forms">
+                            <dt class="tit"><label for="purDateY">구매날짜</label></dt>
+                            <dd class="conts">
+                                <div class="box date-select-box">
+                                    <div class="cell" style="width: 1%; vertical-align: middle;">
+                                        <div class="box">
+                                            <div class="text"><span>2021년</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="cell" style="width: 2%;">
+                                        <div class="box">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="purDateM" id="purDateM" title="월 선택">
+                                                    <option value="" class="placeholder">구매월</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                </select>
+                                            </div>
+                                            <div class="text"><span>월</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="cell" style="width: 2%;">
+                                        <div class="box">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="purDateD" id="purDateD" title="일 선택">
+                                                    <option value="" class="placeholder">구매일</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="text"><span>일</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <!--// 구매날짜-->
+                        <!-- 구매장소 -->
+                        <dl class="forms">
+                            <dt class="tit"><label for="place" class="req">구매장소<span class="blind">필수입력</span></label>
+                            </dt>
+                            <dd class="conts">
+                                <div class="box">
+                                    <div class="select-wrap" style="width:50%">
+                                        <select class="ui_selectbox" name="place" id="place" title="구매장소 선택">
+                                            <option value="">선택</option>
+                                            <option value="LG베스트샵">LG베스트샵</option>
+                                            <option value="백화점">백화점</option>
+                                            <option value="면세점">면세점</option>
+                                            <option value="온라인">온라인</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell" style="width:50%;">
+                                        <span class="input-wrap">
+                                            <input type="text" style="visibility:hidden;" name="placeEtc" id="placeEtc" title="기타 구매장소" maxlength="15" />
+                                        </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <!--// 구매장소 -->
+                        <!-- 모델명 입력 -->
+                        <dl class="forms">
+                            <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="input-wrap">
+                                    <input type="text" class="disabled" name="modelName" data-required="true" id="modelName" value="27TN600S" readonly>
+                                </div>
+                            </dd>
+                        </dl>
+                        <!--// 모델명 입력 -->
+                        <!-- 시리얼번호 입력 -->
+                        <dl class="forms">
+                            <dt class="tit"><label for="serialNum" class="req">시리얼번호<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="box">
+                                    <div class="input-wrap">
+                                        <input type="text" name="serialNum" data-required="true" id="serialNum" maxlength="12" placeholder="S/N을 입력해 주세요.">
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn" id="serialCheckBtn"><span>시리얼번호 확인</span></button>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <!--// 시리얼번호 입력 -->
+                        <!-- 영수증 입력 -->
+                        <dl id="receiptForm" class="forms">
+                            <dt class="tit"><label for="time" class="req">영수증 이미지<span class="blind">필수입력</span></label>
+                            </dt>
+                            <dd class="conts">
+                                <div class="conts-inner">
+                                    <input type="hidden" name="ptUpload_hidden1" id="ptUpload_hidden1" title="파일명" readonly="readonly">
+                                    <input type="file" class="imageFile1" name="ptUpload1" id="ptUpload1" onchange="javascript:fnChgFile(this,'#ptUpload_hidden1');" maxlength="12">
+                                    <ul class="bullet-list">
+                                        <li class="b-txt">구매 내역을 확인할 수 있는 영수증 이미지를 등록해 주세요.<br>(jpg, jpeg, png, gif의 이미지
+                                            파일만 업로드 가능합니다.)</li>
+                                    </ul>
+                                    <div class="sn-number-wrap">
+                                        <p class="tit">반드시 제품모델명, 결제완료일이 확인가능한<br>영수증 이미지를 첨부해 주세요.</p>
+                                        <ul class="bullet-list type2">
+                                            <li>- 영수증만으로 구매 내역 확인이 불가능한 경우, 모델명이 포함된 구매내역서를 함께 촬영하여 업로드해 주세요.</li>
+                                            <li>- 영수증에서 정확한 내역 확인이 불가능한 경우 발송대상에서 제외될 수 있습니다.</li>
+                                            <li>- 구매내역서(주문내역서)는 제품구매처에 문의해 주세요.</li>
+                                        </ul>
+                                        <div class="add-img">
+                                            <p class="tit">첨부이미지 예시</p>
+                                            <div class="img"><img src="/kr/upload/admin/eventMgt/minibeam_receipt_basic.jpg" alt="">
+                                            </div>
+                                            <ul class="bullet-list">
+                                                <li class="b-txt">실제 결제 금액은 첨부 이미지 예시와 상이할 수 있음</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <!--// 영수증 입력 -->
+                    </div>
+                </div>
+                <!--// 구매자 정보 -->
+
+                <!-- 사은품  -->
+                <div class="input-info">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">사은품 배송 정보</h2>
+                        <div class="chk-input">
+                            <span class="chk-wrap">
+                                <input type="checkbox" id="info" name="info">
+                                <label for="info">구매자 정보와 같음</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <dl class="forms">
+                            <dt class="tit"><label for="recipientName" class="req">이름<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="input-wrap">
+                                    <input type="text" name="recipientName" data-required="true" id="recipientName" maxlength="15" placeholder="이름을 입력해 주세요." value="">
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit">
+                                <label for="recipientPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label>
+                            </dt>
+                            <dd class="conts">
+                                <div class="box">
+                                    <div class="cell wide">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="recipientPhone1" id="recipientPhone1" title="국번 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="010">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="cell text-middle">-</div>
+                                    <div class="cell wide">
+                                        <div class="input-wrap">
+                                            <input type="number" name="recipientPhone2" data-required="true" id="recipientPhone2" maxlength="4" oninput="maxLengthCheck(this)" value="">
+                                        </div>
+                                    </div>
+                                    <div class="cell text-middle">-</div>
+                                    <div class="cell wide">
+                                        <div class="input-wrap">
+                                            <input type="number" name="recipientPhone3" data-required="true" id="recipientPhone3" maxlength="4" oninput="maxLengthCheck(this)" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit">
+                                <label for="recipientAddr" class="req">주소<span class="blind">필수입력</span></label>
+                            </dt>
+                            <dd class="conts">
+                                <div class="address-box">
+                                    <div class="box">
+                                        <div class="input-wrap zip-code">
+                                            <input type="text" class="disabled" name="recipientZipCode" data-required="true" id="recipientAddr" placeholder="우편번호" readonly>
+                                        </div>
+                                        <div class="cell">
+                                            <button type="button" class="btn" id="recipientAddrBtn"><span>주소 찾기</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" class="disabled" id="recipientAddrInfo" name="recipientAddrInfo" data-required="true" value="" placeholder="주소 찾기를 선택해 주세요." readonly>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="recipientAddrDetail" name="recipientAddrDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">사은품은 입력한 주소로 배송되오니 정확한 배송지를 확인해주세요.</li>
+                                    <li class="b-txt">주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다.</li>
+                                    <li class="b-txt">잘못 등록된 정보로 인해 경품 발송 대상에서 제외되었을 경우 당사가 책임을 지지 않습니다.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <!--// 사은품  -->
+            </div>
+        </section>
+        <!--// Popup Contents -->
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink" id="uiSubmit"><span>신청하기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+        <div class="btn-dim"></div>
+    </article>
+    <!--// Popup -->
+
+    <!-- Serial Popup -->
+    <article id="serialPopup" class="popup-wrap" data-list-url="/lg5-common/data-ajax/support/searchModelName.json">
+        <header class="pop-header">
+            <h1 class="tit"><span>모델명 확인 방법</span></h1>
+        </header>
+        <section class="pop-conts common-pop academy-pop no-footer">
+            <p class="noti-txt">사용하시는 제품의 <em>모델명</em>과 <em>제조번호</em>를 확인해주세요.</p>
+            <div class="example-list">
+                <dl>
+                    <dt>모델명</dt>
+                    <dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
+                </dl>
+                <dl>
+                    <dt>제조번호</dt>
+                    <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
+                </dl>
+                <dl class="sel-category">
+                    <dt>카테고리 선택</dt>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select1" title="카테고리 선택">
+                                <option value="" class="placeholder">TV/AV</option>
+                                <option value="">카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select2" title="세부 카테고리 선택" disabled>
+                                <option value="" class="placeholder">세부 카테고리 선택</option>
+                                <option value="">세부 카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="example-result">
+                    <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+                    <div class="img" aria-hidden="true">
+                        <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!--// Serial Popup -->
+
+    <script>
+        $(function () {
+            $("#purDateM").on('change', function (e) {
+                var selBuyMonth = $("#purDateM").val();
+                var endday;
+                var dOptionStr = "<option value=''>구매일</option>";
+
+                if (selBuyMonth == "5") {
+                    endday = 31;
+                }
+                else if (selBuyMonth == "6") {
+                    endday = 30;
+                }
+                else if (selBuyMonth == "7") {
+                    endday = 31;
+                }
+
+                for (var i = 1; i <= endday; i++) {
+                    var tmp;
+                    if (i < 10) tmp = "0" + i;
+                    else tmp = i;
+                    dOptionStr += "<option value='" + tmp + "'>" + i + "</option>";
+                }
+                $("#purDateD").html(dOptionStr);
+                $('.ui_selectbox').vcSelectbox('update');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
