@@ -464,6 +464,12 @@
                     width: 10%;
                     padding-left: 0;
                     padding-right: 0;
+                    & + .wide {
+                        padding-left: 8px;
+                    }
+                }
+                &.middle {
+                    vertical-align: middle;
                 }
                 @include mobile {
                     padding-left:6px;
