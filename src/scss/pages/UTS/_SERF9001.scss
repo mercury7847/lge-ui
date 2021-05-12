@@ -238,6 +238,7 @@
             }
         }
     }
+
     .keyword-list {
         .no-data {
             padding: 0;
@@ -252,7 +253,7 @@
             }
             a {
                 display: block;
-                height: 26px;
+                height: 23px;
                 @include textEllipsisClamp(1);
                 @include font-medium;
                 word-break: break-all;
