@@ -307,10 +307,8 @@ $(function(){
                     };
                     care_cecommended.vcGesture({
                         direction: 'horizontal'
-                    }, { passive: true }).on('gestureend', function (e, data) {
+                    }, { passive: false }).on('gestureend', function (e, data) {
                         // gesturestart gesturemove gestureend gesturecancel
-                        // console.log(e.type, data.direction);
-                        e.preventDefault();
                         /* 탭 방향 전환 */
                         if (data.direction === 'left') {
                             tab.nav.next();
@@ -353,14 +351,8 @@ $(function(){
                                     slidesToScroll: 2,
                                     
                                 }
-                            },
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 2, 
-                                    slidesToScroll: 2
-                                }
                             }
+                            /* , { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } } */
                         ]
                     });
 
