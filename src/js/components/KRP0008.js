@@ -1380,7 +1380,7 @@
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
                     var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 {{maxSalePrice}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
                         if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));

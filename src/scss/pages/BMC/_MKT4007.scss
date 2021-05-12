@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
 &.event-popup {
     max-width: 1066px;
@@ -25,14 +26,15 @@
 }
 */
 .hidden {
-    position: absolute;
-    width: 0;
-    height: 0;
-    line-height: 1px;
-    left: -9999px;
-    top: auto;
-    overflow: hidden;
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 1px;
+	left: -9999px;
+	top: auto;
+	overflow: hidden;
 }
+
 /*
 .tit-area {
     position: relative;
@@ -89,171 +91,210 @@
 }
 */
 .tit-area {
-    position: relative;
-    height:214px;
-    margin:-48px -48px 48px;
-    padding:48px;
-    background:url('/lg5-common/images/BMC/bg-win-announc.svg') no-repeat center center;
-    background-size:cover;
-    @include mobile {
-        margin-top:-40px;
-        margin-bottom: 32px;
-        background-image:url('/lg5-common/images/BMC/bg-win-announc-m.svg');
-    }
-    .content-block {
-        .text-block {
-            .flag-wrap {
-                margin-bottom: 4px;
-            }
-            .sub-tit {
-                font-weight: 700;
-                @include font($font-large-4,52px);
-            }
-            .date {
-                margin-top: 12px;
-                color: $color-default;
-                @include font-large;
-            }
-            @include mobile {
-                .flag-wrap {
-                    margin-bottom: 12px;
-                }
-                .sub-tit {
-                    @include font($font-large-2,33px);
-                }
-                .date {
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
+	position: relative;
+	height: 214px;
+	margin: -48px -48px 48px;
+	padding: 48px;
+	background: url("/lg5-common/images/BMC/bg-win-announc.svg") no-repeat center center;
+	background-size: cover;
+
+	@include mobile {
+		margin-top: -40px;
+		margin-bottom: 32px;
+		background-image: url("/lg5-common/images/BMC/bg-win-announc-m.svg");
+	}
+
+	.content-block {
+		.text-block {
+			.flag-wrap {
+				margin-bottom: 4px;
+			}
+
+			.sub-tit {
+				font-weight: 700;
+				@include font($font-large-4, 52px);
+			}
+
+			.date {
+				margin-top: 12px;
+				color: $color-default;
+				@include font-large;
+			}
+
+			@include mobile {
+				.flag-wrap {
+					margin-bottom: 12px;
+				}
+
+				.sub-tit {
+					@include font($font-large-2, 33px);
+				}
+
+				.date {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
 }
 
 .form-wrap.search-box {
-    width: 100%;
-    padding-right: 229px;
-    @include mobile {
-        padding-right: 0;
-    }
-    .forms {
-        display: flex;
-        flex-direction: column;
-        @include mobile {
-            display: block;
-        }
-        .tit {
-            width: auto;
-            padding: 0 0 24px;
-            label,
-            .label {
-                @include font($font-large-2,30px);
-                @include mobile {
-                    @include font($font-large-1,28px);
-                }
-            }
-        }
-        .conts {
-            width: auto;
-            .input-box {
-                display: flex;
-                .input-wrap {
-                    flex: 1;
-                    min-width: 338px;
-                    margin-right: 8px;
-                    @include mobile {
-                        min-width: auto;
-                    }
-                }
-            }
-        }
-    }
+	width: 100%;
+	padding-right: 229px;
 
-    & + .bullet-list {
-        margin-top: 48px;
-        padding-top: 24px;
-        border-top: 1px solid $color-border;
-        @include mobile {
-            margin-top: 40px;
-        }
-    }
+	@include mobile {
+		padding-right: 0;
+	}
+
+	.forms {
+		display: flex;
+		flex-direction: column;
+
+		@include mobile {
+			display: block;
+		}
+
+		.tit {
+			width: auto;
+			padding: 0 0 24px;
+
+			label,
+			.label {
+				@include font($font-large-2, 30px);
+
+				@include mobile {
+					@include font($font-large-1, 28px);
+				}
+			}
+		}
+
+		.conts {
+			width: auto;
+
+			.input-box {
+				display: flex;
+
+				.input-wrap {
+					flex: 1;
+					min-width: 338px;
+					margin-right: 8px;
+
+					@include mobile {
+						min-width: auto;
+					}
+				}
+			}
+		}
+	}
+
+	& + .bullet-list {
+		margin-top: 48px;
+		padding-top: 24px;
+		border-top: 1px solid $color-border;
+
+		@include mobile {
+			margin-top: 40px;
+		}
+	}
 }
 
 .inner-contents {
-    margin-top: 80px;
-    @include mobile {
-        margin-top: 60px;
-    }
-    .table-cont {
-        .tb-tit {
-            margin-bottom: 16px;
-            @include font-medium;
-        }
-        .tb_row {
-            &.tb-left {
-                text-align: left;
-            }
-            thead tr th,
-            tbody tr td {
-                border-left: 1px solid #ddd;  
-            }
-            thead tr th:nth-child(1),
-            tbody tr td:nth-child(1){
-                border-left: none;  
-            }
+	margin-top: 80px;
 
-            tbody tr td.winner.on {
-                border: 2px solid $color-primary;
-                border-right: none;
-            }
-            tbody tr td.phone.on {
-                border: 2px solid $color-primary;
-                border-left: 1px solid #ddd;
-            }
-            @include mobile {
-                thead tr th:nth-child(2n+1),
-                tbody tr td:nth-child(2n+1){
-                    border-left: none;  
-                }
-            }
-        }
-    }
-    @include mobile {
-        .table-cont {
-            table {
-                tr {
-                    display: flex;
-                    width: 100%;
-                    flex-wrap: wrap;
-                    th:nth-child(3),
-                    th:nth-child(4) {
-                        display: none;
-                    }
-                    .winner-tt,
-                    .winner{
-                        display: inline-flex;
-                        width: 34.4%;
-                        justify-content: center;
-                    }
-                    .phone-tt,
-                    .phone {
-                        display: inline-flex;
-                        width: 65.6%;
-                        justify-content: center;
-                    }
-                    .empty {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
-    
-    .table-cont + .table-cont {
-        margin-top: 48px;
-    }
+	@include mobile {
+		margin-top: 60px;
+	}
+
+	.table-cont {
+		.tb-tit {
+			margin-bottom: 16px;
+			@include font-medium;
+		}
+
+		.tb_row {
+			&.tb-left {
+				text-align: left;
+			}
+
+			thead tr th,
+			tbody tr td {
+				border-left: 1px solid #ddd;
+			}
+
+			thead tr th:nth-child(1),
+			tbody tr td:nth-child(1) {
+				border-left: none;
+			}
+
+			tbody tr td.winner {
+				white-space: nowrap;
+
+				&.on {
+					background-color: rgba($color-primary, .3);
+				}
+			}
+
+			tbody tr td.phone {
+				white-space: nowrap;
+
+				&.on {
+					background-color: rgba($color-primary, .3);
+				}
+			}
+
+			// @include mobile {
+			// 	thead tr th:nth-child(2n+1),
+			// 	tbody tr td:nth-child(2n+1) {
+			// 		border-left: none;
+			// 	}
+			// }
+		}
+	}
+
+	@include mobile {
+		.table-cont {
+			table {
+				tr {
+					display: flex;
+					width: 100%;
+
+					// flex-wrap: wrap;
+					// th:nth-child(3),
+					// th:nth-child(4) {
+					// 	display: none;
+					// }
+					th,
+					td {
+						font-size: 12px;
+						padding: 15px 5px;
+					}
+
+					.winner-tt,
+					.winner {
+						display: inline-flex;
+						width: 34.4%;
+						max-width: 34.4%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						justify-content: center;
+					}
+
+					.phone-tt,
+					.phone {
+						display: inline-flex;
+						width: 65.6%;
+						justify-content: center;
+					}
+
+					.empty {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.table-cont + .table-cont {
+		margin-top: 48px;
+	}
 }
-
-
-
-
-

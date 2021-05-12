@@ -253,6 +253,9 @@
             a {
                 display: block;
                 height: 26px;
+                @include mobile{
+                    height: 23px;
+                }
                 @include textEllipsisClamp(1);
                 @include font-medium;
                 word-break: break-all;
