@@ -145,24 +145,27 @@
         }
 
         /* 20210512 : 모바일앱 다운로드 팝업 */
-        &.appMobile-pop {
-            max-width: 260px;
-            margin-top: -102px;
+        &.appMobile-pop { 
+            max-width: 300px;
             background-color: rgba(255, 255, 255, 0);
             color: #fff;
             outline: 0;
             .pop-conts {
-                padding: 0;
+                padding: 20px 20px 0 20px;
                 font-size: 36px;
                 max-height: none;
                 .appMobile-pop-content {
                     display: flex;
                     justify-content: space-between;
                     padding: 0 6px;
-                    .pop-img {
-                        width: 100%;
-                        max-width: 87px;
-                        height: 87px;
+                    .appMobile-popImg {
+                        box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
+                        border-radius: 20px;
+                        .pop-img {
+                            width: 100%;
+                            max-width: 87px;
+                            height: 87px;
+                        }
                     }
                     .text-cont {
                         text-align: left;
