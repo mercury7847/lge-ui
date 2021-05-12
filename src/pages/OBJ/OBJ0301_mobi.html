@@ -250,13 +250,18 @@
                                 <ul data-appliances-list="">
                                     <!-- simulator.js 동적 DATA 부 -->
                                 </ul>
-                                <div class="simul-info tool-tip">
-                                    제품을 선택하고<br />나만의 오브제를 만들어보세요.
-                                </div>
-                                <div class="simul-info rf-con">
-                                    1도어 컨버터블 제품은 구매 시, <br /> 보관 목적에 따라 냉동고, 냉장고, 김치냉장고 <br /> 선택이 가능합니다.
-                                </div>
                             </div>
+
+                            <!-- 20210511 BTOCSITE-105 오브제컬렉션 브랜드관 체험 수정 START -->
+                            <div class="simul-info tool-tip">
+                                제품을 선택하고<br />나만의 오브제를 만들어보세요.
+                            </div>
+                            <div class="simul-info rf-con">
+                                1도어 컨버터블 제품은 구매 시, <br /> 보관 목적에 따라 냉동고, 냉장고, 김치냉장고 <br /> 선택이 가능합니다.
+                            </div>
+                            <!-- 20210511 BTOCSITE-105 오브제컬렉션 브랜드관 체험 수정 END -->
+
+
 
                             <!-- 2020-09-24 삭제요청 > 기존 저장하기 버튼에서 체험하기 버튼으로 변경
                             <div class="share">
@@ -684,7 +689,15 @@
         $(".lg-appliances input[type=checkbox]").on("click", function() {
             if (this.checked) {
                 if (this.value == "refrigerator_convertible") {
-                    $('.rf-con').show();
+                    //  20210511 BTOCSITE-105 오브제컬렉션 브랜드관 체험 수정 START 
+                    let el = this;
+                    setTimeout(function() {
+                        let left = $(el).parent().offset().left  - $('.rf-con').width() / 2 
+                        $('.rf-con').css('left',left+'px')
+                        $('.rf-con').show();
+
+                    }, 150);
+                    // 20210511 BTOCSITE-105 오브제컬렉션 브랜드관 체험 수정 END
                 } //컨버터블 냉장고일 때 툴팁 노출
                 else {
                     $('.rf-con').hide();
