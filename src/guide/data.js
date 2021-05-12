@@ -435,19 +435,21 @@ var res = {
 		},
 		"Contents" : {
 			"Event" : {
-				"통합오픈이벤트" : ["/html/BMC/MKT4002_01.html","",""],
-				"응원댓글이벤트" : {
-					"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","","검수완료"],
-					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","","검수완료"]
-				},
-				"리뷰이벤트" : ["/html/BMC/MKT4002_03.html","","검수완료"],
-				"오픈소문내기이벤트" : {
-					"오픈소문내기이벤트" : ["/html/BMC/MKT4002_04.html","",""],
-					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4002_04_pop.html","",""]
-				},
-				"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"],
-				"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-				"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"]
+				"05" : {
+					"통합오픈이벤트" : ["/html/BMC/MKT4002_01.html","",""],
+					"응원댓글이벤트" : {
+						"응원댓글이벤트" : ["/html/BMC/MKT4002_02.html","","검수완료"],
+						"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4009_02_winner.html","","검수완료"]
+					},
+					"리뷰이벤트" : ["/html/BMC/MKT4002_03.html","","검수완료"],
+					"오픈소문내기이벤트" : {
+						"오픈소문내기이벤트" : ["/html/BMC/MKT4002_04.html","",""],
+						"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4002_04_pop.html","",""]
+					},
+					"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"],
+					"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+					"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"]
+				}
 			},
 			"Exhibitions" : {
 				"06. 오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],
