@@ -109,7 +109,7 @@
                         if(lgkorUI.stringToBool(data.win)) {
                             var template = '<strong class="tit">축하드립니다!</strong>' +
                                 '<span class="txt">{{#raw prizeWin}}</span>' +
-                                '<span class="txt">사은품은 {{date}} 이후 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
+                                '<span class="txt">사은품은 2021년 6월초에 참여하신<br>휴대폰 번호로 모바일 쿠폰 지급 예정입니다.</span>';
                             $('#popupEventWin').find('p.desc').html(vcui.template(template, data));
                             $('#popupEventWin').vcModal({opener: this});
                         } else {
