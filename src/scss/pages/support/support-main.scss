@@ -1023,6 +1023,18 @@
                         display: block;
                         font-size:14px;
                     }
+                    .btn-goto-more {
+                        display: block;
+                        position: absolute;
+                        bottom: 13px;
+                        right: 13px;
+                        padding-right: 20px;
+                        background: url(/lg5-common/images/icons/btn-arr-16-white.svg) no-repeat right 50%;
+                        font-size: 16px;
+                        line-height: 26px;
+                        text-decoration: underline;
+                        color: #fff;
+                    } // 05.10
                 }
 
                 .card-back {
@@ -1358,6 +1370,14 @@
                         }
                         .pd-code {
                             font-size:13px;
+                        }
+                        .btn-goto-more {
+                            bottom: 12px;
+                            right: 12px;
+                            font-size: 13px;
+                            line-height: 22px;
+                            padding-right: 16px;
+                            background: url(/lg5-common/images/icons/btn-arr-16-white-sm.svg) no-repeat right 50%;
                         }
                     }
     

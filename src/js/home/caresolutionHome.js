@@ -276,7 +276,61 @@ $(function(){
                         nextButton:".ui_smooth_next",
                         smoothScroll:'.ui_smooth_tab'
                     }});
+                    /* 케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
 
+                    var care_cecommended = $('.care-recommended');
+                    var care_slider = care_cecommended.find('.ui_product_carousel_slider');
+                    var care_tabs = care_cecommended.find('.ui_smooth_tab .tabs');
+                    var tab = {
+                        totalSize: function () {
+                            return care_tabs.find('li').size();
+                        },
+                        currentTab: function () {
+                            return care_tabs.find('li.on').index() + 1;
+                        },
+                        triggerTab: function (idx) {
+
+                            care_tabs.find('li').eq(idx).find('a').trigger('click');
+                        },
+                        nav: {
+                            prev: function () {
+
+                                var idx = (1 === tab.currentTab()) ? tab.totalSize() - 1 : tab.currentTab() - 2;
+                                tab.triggerTab(idx);
+                            },
+                            next: function () {
+
+                                var idx = (tab.totalSize() === tab.currentTab()) ? 0 : tab.currentTab();
+                                tab.triggerTab(idx);
+                            }
+                        }
+                    };
+                    care_cecommended.vcGesture({
+                        direction: 'horizontal'
+                    }, { passive: false }).on('gestureend', function (e, data) {
+                        // gesturestart gesturemove gestureend gesturecancel
+                        /* 탭 방향 전환 */
+                        if (data.direction === 'left') {
+                            tab.nav.next();
+                        } else {
+                            tab.nav.prev();
+                        }
+                    });
+
+                    /* 탭 클릭시 인덱스를 세션스토리지에 기록 */
+                    var store = window.sessionStorage;
+                    var session_name = 'care_cecommended_tabindex';
+                    care_tabs.find('a').on('click', function () {
+                        var idx = $(this).parent().index();
+                        store.setItem(session_name, idx);
+                    });
+
+                    /* 리로드시 탭 인덱스 세션이 있을 경우 트리거 */
+                    if (store.getItem(session_name)) {
+                        care_tabs.find('a').eq(store.getItem(session_name)).trigger('click');
+                    }
+
+                    /* //케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
                     $('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
                         infinite: false,
                         slidesToShow: 4,
@@ -297,14 +351,8 @@ $(function(){
                                     slidesToScroll: 2,
                                     
                                 }
-                            },
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 1, 
-                                    slidesToScroll: 1
-                                }
                             }
+                            /* , { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } } */
                         ]
                     });
 
