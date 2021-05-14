@@ -182,7 +182,6 @@
                         .info {
                             display:block;
                             text-align:left;
-                            vertical-align: top;
                             width: auto;
                             margin: 0;
                             padding-top:50px;
@@ -600,7 +599,7 @@
                                 position:relative;
                                 z-index:2;
                                 &:focus {
-                                    border-color:transparent;
+                                    border-color:transparent !important;
                                 }
                             }
                         }
@@ -826,7 +825,6 @@
                             .info {
                                 display:block;
                                 text-align:left;
-                                vertical-align: top;
                                 width: auto;
                                 margin: 0;
                                 padding-top:50px;
