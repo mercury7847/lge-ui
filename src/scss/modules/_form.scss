@@ -918,8 +918,8 @@
         &:disabled,
         &.disabled,
         &:read-only {
-            background:#ededed;
-            border-color:#ededed;
+            background:#ededed !important;
+            border-color:#ededed !important;
             &::placeholder {
                 color:#aaa;
             }
