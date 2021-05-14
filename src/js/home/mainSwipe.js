@@ -4,6 +4,7 @@ function MainSwiper( ID ){
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
+    this.swiper = null;
 
     this.init();
     
@@ -11,14 +12,57 @@ function MainSwiper( ID ){
 
 MainSwiper.prototype = {
     init : function(){       
-        this.setEvent();
+        this.setContent();
+        this.setSwipe();
     },
-    setEvent : function(){
+    setSwipe : function(){
+        this.swiper = new Swiper('#sw_con', {
+            hashNavigation : {
+                watchState: true
+            },
+            on : {
+                'beforeInit' : function(){
+
+                },
+                'slideChange' : function(swiper){
+                    console.log('active page', swiper.slides[swiper.activeIndex] );
+                    var currentSlide = swiper.slides[swiper.activeIndex];
+                    var href = $(currentSlide).data().href;
+
+                    if (!href) return;
+
+                    $.ajax({
+                        url : href,
+                        dataType : 'html',
+                        success : function( res ){
+                            $(swiper.slides[swiper.activeIndex]).html( res );
+                        },
+                        error : function(error){
+                            console.log('mainSwiper cant get HTML', error);
+                        },
+                        complete: function(){                    
+                            lgkorUI.init();                            
+                        }
+                    });
+                }
+            }
+        });
+
+    },
+    setContent : function(){
         var $tabs = this.tabs;
         $tabs.on('click', function( e ){
-            e.preventDefault();
-            var href = $(this).data().href;
+            //e.preventDefault();
+            //var href = $(this).data().href;
             var idx = $tabs.index(this);
+
+            $tabs.removeClass('on').eq(idx).addClass('on');
+
+            window.location.href = this.href;
+
+            //if (!href) return;
+            /*
+            
 
             if (!href) return;
 
@@ -34,8 +78,9 @@ MainSwiper.prototype = {
                     'overflow' : '',
                     'height' : ''
                 });
-            }
-
+            } 
+            */       
+            /*
             $.ajax({
                 url : href,
                 dataType : 'html',
@@ -45,16 +90,12 @@ MainSwiper.prototype = {
                 error : function(error){
                     console.log('mainSwiper cant get HTML', error);
                 },
-                complete: function(){
-                    /*
-                    vcui.require(['common/footer'], function(){
-                        $('footer').vcFooter();
-                    });
-                    */
+                complete: function(){                    
                     lgkorUI.init();
                     $tabs.removeClass('on').eq(idx).addClass('on');
                 }
             });
+            */
         });
     }
 }

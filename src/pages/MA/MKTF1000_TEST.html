@@ -24,10 +24,9 @@
             "mobileCase": "main",
             hiddenTitle: "엘지이닷컴"
         })
-		<div class="container">
-            
-             <!-- 20210503 : 모바일앱 다운로드 팝업 -->
-             <article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">
+		<div class="container">            
+            <!-- 20210503 : 모바일앱 다운로드 팝업 -->
+            <article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">
                 <section class="pop-conts align-center">
                     <section class="section">
                         <img src="/lg5-common/images/MA/appPop_img.png" alt="" class="pop-img">
@@ -43,18 +42,17 @@
                 </section>
                 <button type="button" class="ui_modal_close">모바일 웹에서볼게요</button>
             </article>
-            <!-- // 20210503 : 모바일앱 다운로드 팝업  -->
-
-			<div id="sw_con">
-
+            <!-- // 20210503 : 모바일앱 다운로드 팝업  -->            
+            <div class="swiper-container" id="sw_con">                
+                <div class="swiper-wrapper">        
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1000_content.html" data-hash="home"></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1001_content.html" data-hash="store" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/OBS5001_content.html" data-hash="story" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/CSRF6001_content.html" data-hash="cs" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF2001_content.html" data-hash="care"></div>
+                </div>
             </div>
-           
 		</div>
-        <!-- @@include('./common/footer.html') -->
-        
     </div>
-
-    
-
 </body>
 </html>
