@@ -610,6 +610,35 @@ footer {
                         }
                     }
                 }
+                /* 20210513 운영시간 추가 */
+                //운영시간
+                .time-to {
+                    margin-top: 8px;
+                    font-size: 0;
+                    li {
+                        display: inline-block;
+                        font-size: 12px;
+                        line-height: 16px;
+                        color: $color-gray-1;
+                        p {
+                            span {
+                                color: #000;
+                            }
+                        }
+                    }
+                    @include mobile {
+                        margin-top: 0px;
+                        li {
+                            &:not(:last-child) {
+                                margin-right: 12px;
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                /* //20210513 운영시간 추가 */
                 .comp-info {
                     margin-top:16px;
                     padding-right:220px;
