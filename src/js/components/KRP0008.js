@@ -1364,23 +1364,26 @@
                 }
 
                 //개별 신청 카드
+                /* 20210513 텍스트 수정 */
                 if(individualCardData.length > 0) {
                     arr.push({
-                        "groupTitle":"개별 신청 필요 카드",
+                        "groupTitle":"개별 신청 가능 카드",
                         "listItem":individualCardData
                     });
                 }
+                /* //20210513 수정 */
                 return arr;
             },
 
             //제휴카드리스트 갱신
+            /* 20210513 수정 */
             updateAssociatedCardList: function ($cardInfo, cardData) {
                 if(cardData && cardData.length > 0) {
                     //카드데이타
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
                     var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 {{maxSalePrice}}원</p></a></li>';
+                    var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
                         if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
@@ -1388,8 +1391,12 @@
                         if(obj.listItem) {
                             obj.listItem.forEach(function(item, index) {
                                 item.label = item.title;
+                                item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
                                 if(!item.cardNameCode) {
                                     item.label = "선택취소"
+                                    //cardItemTemplate = '<li><a href="#" ><p class="card-name">{{label}}</p></a></li>';
+                                }else{
+                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                                 }
                                 //item.maxSaleString = item.maxSalePrice ? vcui.number.addComma(item.maxSalePrice) : null;
                                 selectList.append(vcui.template(cardItemTemplate, item));
@@ -1401,6 +1408,7 @@
                     $cardInfo.hide();
                 }
             },
+            /* //20210513 수정 */
 
             //케어십 계약기간 셀렉트박스 갱신 펑션
             careshipInfoSelectBoxUpdate: function($selectBox, selectData, selectIndex, changeEvent) {
