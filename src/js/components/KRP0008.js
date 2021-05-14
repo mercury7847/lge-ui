@@ -1394,7 +1394,7 @@
                                 item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
                                 if(!item.cardNameCode) {
                                     item.label = "선택취소"
-                                    cardItemTemplate = '<li><a href="#" ><p class="card-name">{{label}}</p></a></li>';
+                                    //cardItemTemplate = '<li><a href="#" ><p class="card-name">{{label}}</p></a></li>';
                                 }else{
                                     cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                                 }
