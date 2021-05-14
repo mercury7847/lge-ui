@@ -885,7 +885,8 @@ $(function () {
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
     /* 20210503 : 모바일앱 다운로드 팝업 */
-    if (vcui.detect.isMobileDevice && !isApp()) {
+   /* if (vcui.detect.isMobileDevice && !isApp()) {*/
+   if (false) {
         var layer_id = '#mobile-close-popup';
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
