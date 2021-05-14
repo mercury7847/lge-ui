@@ -320,9 +320,13 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isMobileDevice){
+            if(!isMobileDevice){                
                 if(!canScroll) return;  
                 canScroll = false;   
+            }
+
+            if ( $('html').attr('canscroll') == 'false' ){
+                return;
             }
             
             $contentWrap.scrollTop(0);                
