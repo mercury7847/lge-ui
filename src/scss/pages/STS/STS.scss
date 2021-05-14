@@ -206,6 +206,9 @@
                 font-size:0;
                 @include mobile {
                     margin-top:-12px;
+                    width: 45%;
+                    min-width: 270px;
+                    margin: 0 auto;
                 }
                 li {
                     display:inline-block;
