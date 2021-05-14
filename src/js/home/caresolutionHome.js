@@ -309,7 +309,6 @@ $(function(){
                         direction: 'horizontal'
                     }, { passive: false }).on('gestureend', function (e, data) {
                         // gesturestart gesturemove gestureend gesturecancel
-                        // console.log(e.type, data.direction);
                         /* 탭 방향 전환 */
                         if (data.direction === 'left') {
                             tab.nav.next();
@@ -323,7 +322,6 @@ $(function(){
                     var session_name = 'care_cecommended_tabindex';
                     care_tabs.find('a').on('click', function () {
                         var idx = $(this).parent().index();
-                        console.log(idx);
                         store.setItem(session_name, idx);
                     });
 
@@ -353,14 +351,8 @@ $(function(){
                                     slidesToScroll: 2,
                                     
                                 }
-                            },
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 2, 
-                                    slidesToScroll: 2
-                                }
                             }
+                            /* , { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } } */
                         ]
                     });
 
