@@ -76,7 +76,6 @@
 
     .story-section {
         padding-bottom: 120px;
-        // border-top: 16px solid $color-bg;
         &:first-child {
             border-top: 0;
             .inner {
@@ -184,17 +183,21 @@
                 text-align: center;
             }
         }
-        &.link-story {
-            padding-bottom:48px;
+        /* 20210517 수정 */
+        &.link-story { 
+            // padding-bottom:48px;
+            padding-bottom: 0;
             .title {
                 margin-bottom: 0;
             }
             @include mobile {
-                padding-bottom:40px;
+                // padding-bottom:40px;
+                padding-bottom: 0;
             }
             .inner {
                 //padding-top:0;
             }
+            /* //20210517 수정 */
         }
         .story-link {
             margin-top:24px;
