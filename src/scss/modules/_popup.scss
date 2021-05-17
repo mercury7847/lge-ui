@@ -109,6 +109,11 @@
         margin:0;
     }
 }
+// BTOCSITE-372 마이페이지-참여이벤트 리스트 노출 오류
+#event-modal {
+    max-width:912px;
+    max-height:760px;
+}
 .popup-wrap {
     display:none;
     position:absolute;
