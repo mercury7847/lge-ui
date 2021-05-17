@@ -115,11 +115,11 @@
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-                    self.openModalFromHtml(result);
+                    self.openModalFromHtml(result,dm);
                 }, null, "html");
             },
 
-            openModalFromHtml: function(html) {
+            openModalFromHtml: function(html,dm) {
                 $('#event-modal').html(html).vcModal($(dm));
             },
         };
