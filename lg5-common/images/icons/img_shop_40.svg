@@ -1,0 +1,21 @@
+<svg id="img_shop_40" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="Rectangle" width="40" height="40" fill="none"/>
+  <g id="ic" transform="translate(6.25 6.25)">
+    <path id="Path" d="M20.063,22H2.307A2.344,2.344,0,0,1,0,19.622V1.189A1.172,1.172,0,0,1,1.154,0H24.225a1.172,1.172,0,0,1,1.154,1.189V9.346" transform="translate(0.444 3.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Line" d="M.5,3V0" transform="translate(21.705 0.375)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Line-2" data-name="Line" d="M.5,3V0" transform="translate(4.188 0.375)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Line-3" data-name="Line" d="M0,.5H25.379" transform="translate(0.444 7.625)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g id="Group_17" data-name="Group 17" transform="translate(5.875 12.125)">
+      <rect id="Rectangle-2" data-name="Rectangle" width="2.5" height="2.5" rx="1.25"/>
+      <rect id="Rectangle-3" data-name="Rectangle" width="2.5" height="2.5" rx="1.25" transform="translate(0 5.625)"/>
+      <rect id="Rectangle-4" data-name="Rectangle" width="2.5" height="2.5" rx="1.25" transform="translate(5.625)"/>
+      <rect id="Rectangle-5" data-name="Rectangle" width="2.5" height="2.5" rx="1.25" transform="translate(5.625 5.625)"/>
+      <rect id="Rectangle-6" data-name="Rectangle" width="2.5" height="2.5" rx="1.25" transform="translate(11.25)"/>
+    </g>
+    <g id="Rectangle-7" data-name="Rectangle" transform="translate(22 16.875)" fill="none" stroke="#da0f47" stroke-miterlimit="10" stroke-width="1.5">
+      <rect width="6.5" height="6.5" rx="3.25" stroke="none"/>
+      <rect x="0.75" y="0.75" width="5" height="5" rx="2.5" fill="none"/>
+    </g>
+    <path id="Path-2" data-name="Path" d="M6.25,0A6.429,6.429,0,0,0,0,6.581c0,4.562,5.642,9.255,5.881,9.509a.5.5,0,0,0,.738,0c.24-.253,5.881-4.947,5.881-9.509A6.429,6.429,0,0,0,6.25,0Z" transform="translate(18.875 13.75)" fill="none" stroke="#da0f47" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>
