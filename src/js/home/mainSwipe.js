@@ -5,6 +5,7 @@ function MainSwiper( ID ){
     this.contentHTMLArray = [];
     this.canScroll = false;
     this.swiper = null;
+    this.currentHash = window.location.hash;
 
     this.init();
     
@@ -14,22 +15,33 @@ MainSwiper.prototype = {
     init : function(){       
         this.setContent();
         this.setSwipe();
+        
     },
     setSwipe : function(){
+        var currentHash = this.currentHash;
+
         this.swiper = new Swiper('#sw_con', {
             hashNavigation : {
                 watchState: true
             },
             on : {
                 'beforeInit' : function(){
-
+                    $('#sw_con .swiper-slide').data('isLoaded', false);
+                },
+                'init' : function(){
+                    
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     var href = $(currentSlide).data().href;
+                    var isLoaded = $(currentSlide).data().isLoaded;
+
+                    console.log('currentSlide', $(currentSlide).data());
 
                     if (!href) return;
+
+                    if (isLoaded) return;
 
                     $.ajax({
                         url : href,
@@ -40,8 +52,9 @@ MainSwiper.prototype = {
                         error : function(error){
                             console.log('mainSwiper cant get HTML', error);
                         },
-                        complete: function(){                    
-                            lgkorUI.init();                            
+                        complete: function(){                 
+                            lgkorUI.init();
+                            $(currentSlide).data().isLoaded = true;                          
                         }
                     });
                 }
