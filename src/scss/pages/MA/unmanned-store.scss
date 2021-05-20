@@ -121,13 +121,13 @@
     }
 }
 
-.lgpay-content {
+.unmanned-store-content {
     width: 100%;
     margin-top: 80px;
     @include mobile {
         margin-top: 48px;
     }
-    .lgpay-intro-wrap {
+    .unmanned-store-intro-wrap {
         max-width: 1380px + 80px;
         margin: 0 auto;
         padding: 0 40px;
@@ -136,7 +136,7 @@
                 padding: 0 16px;
             }
     }
-    .lgpay-introdution {
+    .unmanned-store-introdution {
         display: flex;
         justify-content: space-between;
         margin-bottom: 120px;
@@ -145,7 +145,7 @@
             margin-bottom: 60px;
             text-align: center;
         }
-        .lgpay-text {
+        .unmanned-store-text {
             width: 436px;
             padding-top: 56px;
             padding-right: 40px;
@@ -197,7 +197,7 @@
                 }
             }
         }
-        .lgpay-visual {
+        .unmanned-store-visual {
             max-width: 678px;
             //flex: 1;
             img {
@@ -208,7 +208,7 @@
         }
         &.center {
             align-items: center;
-            .lgpay-text {
+            .unmanned-store-text {
                 padding-top: 0;
                 @include mobile {
                     width: 100%;
@@ -217,7 +217,7 @@
             }
         }
         &.right {
-            .lgpay-text {
+            .unmanned-store-text {
                 order: 2;
                 padding-right: 0;
                 padding-left: 40px;
@@ -226,13 +226,13 @@
                     padding: 0 20px 32px;
                 }
             }
-            .lgpay-visual {
+            .unmanned-store-visual {
                 order: 1;
             }
         }
     }
 }
-.lgpay-service {
+.unmanned-store-service {
     margin-bottom: 100px;
     padding: 120px 0;
     background-color: $color-bg;
