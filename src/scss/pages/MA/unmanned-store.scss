@@ -232,6 +232,54 @@
         }
     }
 }
+.unmanned-store-map{
+   .inner {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+        .service-title {
+            margin-bottom: 64px;
+            @include font(40px,56px);
+            text-align: center;
+        }
+        @include mobile {
+            max-width: 100%;
+            padding: 0 16px;
+            .service-title {
+                margin-bottom: 32px;
+                @include font(27px,38px);
+            }
+        }
+        > ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -24px 0 0 -24px;
+            > li {
+                position: relative;
+                width: 50%;
+                padding: 24px 0 0 24px;
+                &:nth-child(1) {
+                    width: 100%;
+                    .img-area {
+                        max-width: 678px;
+                    }
+                    .text-area {
+                        align-self: center;
+                    }
+                }
+            }
+            @include mobile {
+                margin: -12px 0 0;
+                > li {
+                    width: 100%;
+                    padding: 12px 0 0;
+                }
+            }
+        }
+    }
+
+}
+
 .unmanned-store-service {
     margin-bottom: 100px;
     padding: 120px 0;
