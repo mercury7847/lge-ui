@@ -244,7 +244,7 @@
         }
         @include mobile {
             max-width: 100%;
-            padding: 0 16px;
+            padding: 0 0px;
             .service-title {
                 margin-bottom: 32px;
                 @include font(27px,38px);
