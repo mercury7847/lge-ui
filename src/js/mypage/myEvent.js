@@ -115,12 +115,12 @@
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-                    self.openModalFromHtml(result,dm);
+                    self.openModalFromHtml(result,dm); //BTOCSITE-372 마이페이지-참여이벤트 리스트 노출 오류
                 }, null, "html");
             },
 
             openModalFromHtml: function(html,dm) {
-                $('#event-modal').html(html).vcModal($(dm));
+                $('#event-modal').html(html).vcModal($(dm)); //BTOCSITE-372 마이페이지-참여이벤트 리스트 노출 오류
             },
         };
 
