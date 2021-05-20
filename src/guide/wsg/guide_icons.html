@@ -1,1589 +1,1648 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('../include/head_wsg.html', {
-        "title": "Icon 가이드"
-    })
+@@include('../include/head_wsg.html', {
+"title": "Icon 가이드"
+})
 
-    <style>
-        section {margin-top:50px; padding-top:50px; border-top:2px solid #222;}
-        section:first-child {margin-top:0; padding-top:0; border-top:none;}
-        section .tit {margin-bottom:10px; font-size:18px; line-height:30px;}
-        .icon-tbl {width:100%; border-collapse:collapse;}
-        .icon-tbl thead th {border-top:2px solid #ddd; border-bottom:1px solid #ddd; background:#f4f4f4; color:#222; font-size:16px; line-height:26px; padding:10px 0; text-align:center;}
-        .icon-tbl tbody td {border:1px solid #ddd; border-right:none; padding:10px; color:#222; font-size:16px; line-height:26px; text-align:center; vertical-align:middle;}
-        .icon-tbl tbody td:first-child {border-left:none;}
-    </style>
+<style>
+    section {
+        margin-top: 50px;
+        padding-top: 50px;
+        border-top: 2px solid #222;
+    }
+
+    section:first-child {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    section .tit {
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .icon-tbl {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .icon-tbl thead th {
+        border-top: 2px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        background: #f4f4f4;
+        color: #222;
+        font-size: 16px;
+        line-height: 26px;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .icon-tbl tbody td {
+        border: 1px solid #ddd;
+        border-right: none;
+        padding: 10px;
+        color: #222;
+        font-size: 16px;
+        line-height: 26px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .icon-tbl tbody td:first-child {
+        border-left: none;
+    }
+</style>
+
 <body>
-<div id="wrap" class="coding_guide">
-    
-<h1 class="h1_guide">사용중인 아이콘, bg 이미지 정리</h1>
+    <div id="wrap" class="coding_guide">
 
-<!-- 주의사항 -->
-<dl class="notice">
-    <dt><strong class="t_modify">주의사항</strong></dt>
-    <dd>
-        <ol>
-            <li>새 아이콘 저장 전 기존 잘린게 있는지 확인 한번씩 해주세요.</li>
-            <li>새 아이콘 추가한 경우 사이즈별 가이드 추가 해주세요.</li>
-            <li>2차디자인 적용 후 안쓰게된 아이콘 삭제하신 경우 하단 리스트에서도 삭제 해주세요.</li>
-        </ol>
-    </dd>
-</dl>
-<!-- //주의사항 -->
+        <h1 class="h1_guide">사용중인 아이콘, bg 이미지 정리</h1>
 
-<!-- 가이드 내용 -->
-<div class="guide_wrap">
-    <section>
-        <h3 class="tit">16px X 16px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-plus-16-round.svg"></td>
-                    <td>btn-plus-16-round.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / gnb 2뎁스</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus-16-round.svg"></td>
-                    <td>btn-minus-16-round.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / gnb 2뎁스</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-plus-16.svg"></td>
-                    <td>btn-plus-16.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 수량 선택 / #000 / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-plus-16-gray.svg"></td>
-                    <td>btn-plus-16-gray.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 수량 선택 / #aaa / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus-16.svg"></td>
-                    <td>btn-minus-16.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 수량 선택 / #000 / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus-16-gray.svg"></td>
-                    <td>btn-minus-16-gray.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 수량 선택 / #aaa / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-clear-16.svg"></td>
-                    <td>btn-clear-16.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / PDP</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-clear-16-gray.svg"></td>
-                    <td>btn-clear-16-gray.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / filter</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-down-16-black.svg"></td>
-                    <td>btn-down-16-black.svg</td>
-                    <td>O</td>
-                    <td>드롭다운 / #000 / 1px / 4px x 10px / Design Guide 2.0_v0.1</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-down-16-gray.svg"></td>
-                    <td>btn-down-16-gray.svg</td>
-                    <td>O</td>
-                    <td>드롭다운 disabled / #aaa / 1px / 4px x 10px / Design Guide 2.0_v0.1</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn_arrow_right_16.svg"></td>
-                    <td>btn_arrow_right_16.svg</td>
-                    <td>-</td>
-                    <td>#222 / 1.5px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-16-black.svg"></td>
-                    <td>btn-arr-16-black.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / .btn-link (font-size:16px) / #000 / 1px / 6x12</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-16-white.svg"></td>
-                    <td>btn-arr-16-white.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / .btn-link (font-size:16px) / #fff / 1px / 6x12</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-16-black-sm.svg"></td>
-                    <td>btn-arr-16-black-sm.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / .btn-link (font-size:14px) / #000 / 1px / 5x10</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-16-white-sm.svg"></td>
-                    <td>btn-arr-16-white-sm.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / .btn-link (font-size:14px) / #fff / 1px / 5x10</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-arr-16-bk.svg"></td>
-                    <td>icon-arr-16-bk.svg</td>
-                    <td>O</td>
-                    <td>컴포넌트 text link 버튼 arrow</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-arr-16-wt.svg"></td>
-                    <td>icon-arr-16-wt.svg</td>
-                    <td>O</td>
-                    <td>컴포넌트 text link 버튼 arrow White</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-error.svg"></td>
-                    <td>icon-error.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / input error메시지 / #ff3723 / 12x12</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-heart-off-sm.svg"></td>
-                    <td>icon-heart-off-sm.svg</td>
-                    <td>-</td>
-                    <td>안쓸듯..</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-view-sm.svg"></td>
-                    <td>icon-view-sm.svg</td>
-                    <td>-</td>
-                    <td>carousel에 적용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-outlink-16.svg"></td>
-                    <td>btn-outlink-16.svg</td>
-                    <td>O</td>
-                    <td>#000 / 1px / 10x10</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-play-16-gray.svg"></td>
-                    <td>btn-play-16-gray.svg</td>
-                    <td>O</td>
-                    <td>header slide</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-pause-16-gray.svg"></td>
-                    <td>btn-pause-16-gray.svg</td>
-                    <td>O</td>
-                    <td>header slide</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-arr-16-gray.svg"></td>
-                    <td>icon-arr-16-gray.svg</td>
-                    <td>O</td>
-                    <td>footer 드롭다운 arrow</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">20px X 20px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-20x20-dgray.svg"></td>
-                    <td>btn-arr-20x20-dgray.svg</td>
-                    <td>O</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-20x20-gray.svg"></td>
-                    <td>btn-arr-20x20-gray.svg</td>
-                    <td>O</td>
-                    <td>.btn-link 공통 / #767676 / 1.5px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-20x20-black.svg"></td>
-                    <td>btn-arr-20x20-black.svg</td>
-                    <td>O</td>
-                    <td>.btn-link / #222 / 1.5px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-20x20-white.svg"></td>
-                    <td>btn-arr-20x20-white.svg</td>
-                    <td>O</td>
-                    <td>.btn-link / #fff / 1.5px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-ars-call.svg"></td>
-                    <td>icon-ars-call.svg</td>
-                    <td>O</td>
-                    <td>form 내부 버튼 아이콘 / #fff</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cal.svg"></td>
-                    <td>icon-cal.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / datepicker 아이콘</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cal-selected.svg"></td>
-                    <td>icon-cal-selected.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / datepicker 아이콘</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-comp.svg"></td>
-                    <td>icon-comp.svg</td>
-                    <td>O</td>
-                    <td>input 내부 완료 아이콘</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-proc.svg"></td>
-                    <td>icon-proc.svg</td>
-                    <td>O</td>
-                    <td>처리중 아이콘</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sale.svg"></td>
-                    <td>icon-sale.svg</td>
-                    <td>O</td>
-                    <td>form 내부 카드선택 하단 카드할인 메시지</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-tooltip.svg"></td>
-                    <td>icon-tooltip.svg</td>
-                    <td>O</td>
-                    <td>tooltip 아이콘</td>
-                </tr>
-                <tr>
-                    <td style="background:#666;"><img src="/lg5-common/images/icons/icon-tooltip-white.svg"></td>
-                    <td>icon-tooltip-white.svg</td>
-                    <td>O</td>
-                    <td>tooltip 아이콘 / #fff</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star-on-20.svg"></td>
-                    <td>icon-star-on-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star-off-20.svg"></td>
-                    <td>icon-star-off-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-reset-20.svg"></td>
-                    <td>icon-reset-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-copy-20.svg"></td>
-                    <td>icon-copy-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-search-20.svg"></td>
-                    <td>icon-search-20.svg</td>
-                    <td>O</td>
-                    <td>#222 / 1.5px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-delete-20.svg"></td>
-                    <td>icon-delete-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-delete-20.svg"></td>
-                    <td>btn-delete-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-more-20.svg"></td>
-                    <td>icon-more-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-blank-20.svg"></td>
-                    <td>icon-blank-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-my-20.svg"></td>
-                    <td>icon-my-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-more-pk-20.svg"></td>
-                    <td>icon-more-pk-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-more-pk2-20.svg"></td>
-                    <td>icon-more-pk2-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-tel-20.svg"></td>
-                    <td>icon-tel-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-more-20.svg"></td>
-                    <td>btn-more-20.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-more-20-gray.svg"></td>
-                    <td>btn-more-20-gray.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus.svg"></td>
-                    <td>btn-minus.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus-20-pink.svg"></td>
-                    <td>btn-minus-20-pink.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-delete-20-pink.svg"></td>
-                    <td>icon-delete-20-pink.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-notice-20.svg"></td>
-                    <td>icon-notice-20.svg</td>
-                    <td>O</td>
-                    <td>header</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">24px X 24px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-search.svg"></td>
-                    <td>icon-search.svg</td>
-                    <td>-</td>
-                    <td>header / #000 / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-person.svg"></td>
-                    <td>icon-person.svg</td>
-                    <td>-</td>
-                    <td>header / #000 / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cart.svg"></td>
-                    <td>icon-cart.svg</td>
-                    <td>O</td>
-                    <td>header / #000 / 1px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-close-24-black.svg"></td>
-                    <td>btn-close-24-black.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / #000 / 1px / 14x14</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-close-24.svg"></td>
-                    <td>btn-close-24.svg</td>
-                    <td>O</td>
-                    <td>모달팝업 닫기버튼 모바일사이즈 / #222 / 2px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-24-white.svg"></td>
-                    <td>btn-close-24-white.svg</td>
-                    <td>O</td>
-                    <td>토스트팝업 닫기버튼 피씨사이즈 / #fff / 2px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-close-24-gray.svg"></td>
-                    <td>btn-close-24-gray.svg</td>
-                    <td>O</td>
-                    <td>검색 레이어 닫기버튼 피씨사이즈 / #767676 / 2px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-arrow-right-red.svg"></td>
-                    <td>icon-arrow-right-red.svg</td>
-                    <td>-</td>
-                    <td>CS화면 주로 사용. 없어질수도..? / #EC455A / 1.5px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-driver.svg"></td>
-                    <td>icon-driver.svg</td>
-                    <td>-</td>
-                    <td>CS화면 주로 사용. 없어질수도..? / #EC455A</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-plus.svg"></td>
-                    <td>icon-plus.svg</td>
-                    <td>-</td>
-                    <td>CS화면 주로 사용. 주소추가팝업 / #EC455A</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-file.svg"></td>
-                    <td>icon-file.svg</td>
-                    <td>-</td>
-                    <td>?...</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-heart-off.svg"></td>
-                    <td>icon-heart-off.svg</td>
-                    <td>-</td>
-                    <td>plp 아이콘 변경 (내부 사용X) / product-support.scss 에서 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-heart-on.svg"></td>
-                    <td>icon-heart-on.svg</td>
-                    <td>-</td>
-                    <td>plp 아이콘 변경 (내부 사용X) / product-support.scss 에서 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-like-off-24.svg"></td>
-                    <td>btn-like-off-24.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 장바구니,주문결제 / #000 / 16x14</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-like-on-24.svg"></td>
-                    <td>btn-like-on-24.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 장바구니,주문결제 / #da0f47 / 16x14</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-search2-on.svg"></td>
-                    <td>icon-search2-on.svg</td>
-                    <td>-</td>
-                    <td>_form.scss에 적용되어있는데...</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns1.svg"></td>
-                    <td>icon-sns1.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns2.svg"></td>
-                    <td>icon-sns2.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns3.svg"></td>
-                    <td>icon-sns3.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns4.svg"></td>
-                    <td>icon-sns4.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns5.svg"></td>
-                    <td>icon-sns5.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns6.svg"></td>
-                    <td>icon-sns6.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-sns7.svg"></td>
-                    <td>icon-sns7.svg</td>
-                    <td>O</td>
-                    <td>footer SNS icons</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star2-on.svg"></td>
-                    <td>icon-star2-on.svg</td>
-                    <td>O</td>
-                    <td>_form.scss 내부 별점에 적용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star2-off.svg"></td>
-                    <td>icon-star2-off.svg</td>
-                    <td>O</td>
-                    <td>_form.scss 내부 별점에 적용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-see-24.svg"></td>
-                    <td>icon-see-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-grobal-24.svg"></td>
-                    <td>icon-grobal-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-24x24-black.svg"></td>
-                    <td>btn-arr-24x24-black.svg</td>
-                    <td>O</td>
-                    <td>- / #222 / 2px / Arrow사이즈 16px X 8px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-24x24-black2.svg"></td>
-                    <td>btn-arr-24x24-black2.svg</td>
-                    <td>O</td>
-                    <td>마이페이지 홈 / #fff / 2px / Arrow사이즈 12px X 7px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-24x24-white.svg"></td>
-                    <td>btn-arr-24x24-white.svg</td>
-                    <td>O</td>
-                    <td>- / #fff / 2px / Arrow사이즈 16px X 8px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-24x24-white2.svg"></td>
-                    <td>btn-arr-24x24-white2.svg</td>
-                    <td>O</td>
-                    <td>마이페이지 홈 / #fff / 2px / Arrow사이즈 12px X 7px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-g01-24.svg"></td>
-                    <td>icon-g01-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-location-24.svg"></td>
-                    <td>icon-location-24.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / pdp</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-store-24.svg"></td>
-                    <td>icon-store-24.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / pdp</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-g02-24.svg"></td>
-                    <td>icon-g02-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-share-24.svg"></td>
-                    <td>icon-share-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arrow_right_24.svg"></td>
-                    <td>btn-arrow_right_24.svg</td>
-                    <td>O</td>
-                    <td>#222 / 1.5px / Arrow사이즈 10px X 6px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-triangle-24.svg"></td>
-                    <td>icon-triangle-24.svg</td>
-                    <td>O</td>
-                    <td>#222 / Arrow사이즈 10px X 6px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-triangle-dis-24.svg"></td>
-                    <td>icon-triangle-dis-24.svg</td>
-                    <td>O</td>
-                    <td>#aaa / Arrow사이즈 10px X 6px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-compare-off-24.svg"></td>
-                    <td>btn-compare-off-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-compare-on-24.svg"></td>
-                    <td>btn-compare-on-24.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-instagram-24.svg"></td>
-                    <td>icon-instagram-24.svg</td>
-                    <td>O</td>
-                    <td>스토리홈</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-naver-blog-24.svg"></td>
-                    <td>icon-naver-blog-24.svg</td>
-                    <td>O</td>
-                    <td>스토리홈</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-naver-post-24.svg"></td>
-                    <td>icon-naver-post-24.svg</td>
-                    <td>O</td>
-                    <td>스토리홈</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-play-24-white.svg"></td>
-                    <td>btn-play-24-white.svg</td>
-                    <td>O</td>
-                    <td>pdp thumbnail</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">26px X 26px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-hero-play.svg"></td>
-                    <td>btn-carousel-hero-play.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / #fff</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-hero-pause.svg"></td>
-                    <td>btn-carousel-hero-pause.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / #fff</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">32px X 32px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-32-black.svg"></td>
-                    <td>btn-arr-32-black.svg</td>
-                    <td>O</td>
-                    <td>mobile header / #000 / 2px / 12x24</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-32.svg"></td>
-                    <td>btn-arr-32.svg</td>
-                    <td>O</td>
-                    <td>v2.5 / #000 / 1.5px / 10x20</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-32x32-black.svg"></td>
-                    <td>btn-arr-32x32-black.svg</td>
-                    <td>O</td>
-                    <td>캘린더, datepicker 버튼 / #222 / 2px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-close-32.svg"></td>
-                    <td>btn-close-32.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 모달팝업 닫기버튼 PC사이즈 / #000 / 1.5px / 15x15</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-addr-search.svg"></td>
-                    <td>icon-addr-search.svg</td>
-                    <td>-</td>
-                    <td>아이콘 vertical align 이상하게 짤림. 확인필요.</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-arrow-accor.svg"></td>
-                    <td>icon-arrow-accor.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 페이지 아코디언 / #000 / 2px / 9x20</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-more.svg"></td>
-                    <td>icon-more.svg</td>
-                    <td>-</td>
-                    <td>버튼</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-filter-32.svg"></td>
-                    <td>icon-filter-32.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-download-32.svg"></td>
-                    <td>icon-download-32.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-share-32.svg"></td>
-                    <td>icon-share-32.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-32x32.svg"></td>
-                    <td>btn-arr-32x32.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-32.svg"></td>
-                    <td>btn-carousel-32.svg</td>
-                    <td>O</td>
-                    <td>plp option / Carousel Arrow / 1.5px / #222 / round 28x28 / arrow 9x4</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr2-32x32.svg"></td>
-                    <td>btn-arr2-32x32.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-play-32-white.svg"></td>
-                    <td>btn-play-32-white.svg</td>
-                    <td>O</td>
-                    <td>arrow - color #222 / size 10px X 14px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-play-32-black.svg"></td>
-                    <td>btn-play-32-black.svg</td>
-                    <td>O</td>
-                    <td>arrow - color #fff / size 10X14</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-like-off-32.svg"></td>
-                    <td>btn-like-off-32.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / plp, pdp / #aaa</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-like-on-32.svg"></td>
-                    <td>btn-like-on-32.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / plp, pdp / #222</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-cart-32.svg"></td>
-                    <td>btn-cart-32.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / pdp / #aaa</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-cart-off-32.svg"></td>
-                    <td>btn-cart-off-32.svg</td>
-                    <td>O</td>
-                    <td>plp / #aaa</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-cart-on-32.svg"></td>
-                    <td>btn-cart-on-32.svg</td>
-                    <td>O</td>
-                    <td>plp / #ec455a</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/icon-phone-32-white.svg"></td>
-                    <td>icon-phone-32-white.svg</td>
-                    <td>O</td>
-                    <td>ARS 버튼 / #fff</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-phone-32-gray.svg"></td>
-                    <td>icon-phone-32-gray.svg</td>
-                    <td>O</td>
-                    <td>ARS 버튼 / #aaa / disabled</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">40px X 40px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th> 
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-hamburger-40.svg"></td>
-                    <td>btn-hamburger-40.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-40-black.svg"></td>
-                    <td>btn-arr-40-black.svg</td>
-                    <td>O</td>
-                    <td>#222 / 2px / 20px X 10px</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">48px X 48px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-48-black.svg"></td>
-                    <td>btn-arr-48-black.svg</td>
-                    <td>O</td>
-                    <td>#222 / 4.5px / 24px X 12px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-plus-48.svg"></td>
-                    <td>btn-plus-48.svg</td>
-                    <td>O</td>
-                    <td>#000 / 2px / 20px X 20px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-minus-48.svg"></td>
-                    <td>btn-minus-48.svg</td>
-                    <td>O</td>
-                    <td>#000 / 2px / 20px X 20px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon_filter.svg"></td>
-                    <td>icon_filter.svg</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-email.svg"></td>
-                    <td>icon-email.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-email-on.svg"></td>
-                    <td>icon-email-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-live-chat.svg"></td>
-                    <td>icon-live-chat.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-live-chat-on.svg"></td>
-                    <td>icon-live-chat-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-location.svg"></td>
-                    <td>icon-location.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-location-on.svg"></td>
-                    <td>icon-location-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-manual.svg"></td>
-                    <td>icon-manual.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-manual-on.svg"></td>
-                    <td>icon-manual-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-save.svg"></td>
-                    <td>icon-save.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-save-on.svg"></td>
-                    <td>icon-save-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-telephone.svg"></td>
-                    <td>icon-telephone.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-telephone-on.svg"></td>
-                    <td>icon-telephone-on.svg</td>
-                    <td>-</td>
-                    <td>KRP0016 사용중</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-filter.svg"></td>
-                    <td>icon-filter.svg</td>
-                    <td>-</td>
-                    <td>mixin에 있지만 vinylC 내부 미사용</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-search2.svg"></td>
-                    <td>icon-search2.svg</td>
-                    <td>-</td>
-                    <td>KRP0042, KRP0043 사용</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-upload.svg"></td>
-                    <td>icon-upload.svg</td>
-                    <td>-</td>
-                    <td>_form.scss</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-01-48.svg"></td>
-                    <td>icon-01-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-02-48.svg"></td>
-                    <td>icon-02-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-03-48.svg"></td>
-                    <td>icon-03-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-04-48.svg"></td>
-                    <td>icon-04-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-05-48.svg"></td>
-                    <td>icon-05-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-nodata-pk-48.svg"></td>
-                    <td>icon-nodata-pk-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-refresh-48.svg"></td>
-                    <td>icon-refresh-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-reset-48.svg"></td>
-                    <td>icon-reset-48.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / filter</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-error-48.svg"></td>
-                    <td>icon-error-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-login-48.svg"></td>
-                    <td>icon-login-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cart-48.svg"></td>
-                    <td>icon-cart-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cart-on-48.svg"></td>
-                    <td>icon-cart-on-48.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-48.svg"></td>
-                    <td>btn-close-48.svg</td>
-                    <td>O</td>
-                    <td>모달팝업 닫기버튼 PC사이즈 / #767676 / 2px</td>
-                </tr>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-48-white.svg"></td>
-                    <td>btn-close-48-white.svg</td>
-                    <td>O</td>
-                    <td>모달팝업 닫기버튼 PC사이즈 / #fff / 2px / 17px X 17px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-call-svc-48.svg"></td>
-                    <td>icon-call-svc-48.svg</td>
-                    <td>O</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">56px X 56px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-56x56.svg"></td>
-                    <td>btn-arr-56x56.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">60px X 60px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product01-60.svg"></td>
-                    <td>icon-product01-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product02-60.svg"></td>
-                    <td>icon-product02-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product03-60.svg"></td>
-                    <td>icon-product03-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product04-60.svg"></td>
-                    <td>icon-product04-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product05-60.svg"></td>
-                    <td>icon-product05-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product06-60.svg"></td>
-                    <td>icon-product06-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-product07-60.svg"></td>
-                    <td>icon-product07-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-nodata-60.svg"></td>
-                    <td>icon-nodata-60.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">62px X 62px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-360-62.svg"></td>
-                    <td>icon-360-62.svg</td>
-                    <td>O</td>
-                    <td>pdp thumbnail</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-play-62.svg"></td>
-                    <td>icon-play-62.svg</td>
-                    <td>O</td>
-                    <td>pdp thumbnail</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-youtube-62.svg"></td>
-                    <td>icon-youtube-62.svg</td>
-                    <td>O</td>
-                    <td>pdp thumbnail</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">64px X 64px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-arr-64-black.svg"></td>
-                    <td>btn-arr-64-black.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / mobild / #000 / 3px / 17x40</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-complete-64.svg"></td>
-                    <td>icon-complete-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / 주문결제 완료 / #000 / 2px / 50x50</td>
-                </tr>
-                <tr>
-                    <td style="background:#666;"><img src="/lg5-common/images/icons/icon-scrollTop-off-64.svg"></td>
-                    <td>icon-scrollTop-off-64.svg</td>
-                    <td>O</td>
-                    <td>- / background, box-shadow는 제외하고 컷팅</td>
-                </tr>
-                <tr>
-                    <td style="background:#666;"><img src="/lg5-common/images/icons/icon-scrollTop-on-64.svg"></td>
-                    <td>icon-scrollTop-on-64.svg</td>
-                    <td>O</td>
-                    <td>- / background, box-shadow는 제외하고 컷팅</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-facebook.svg"></td>
-                    <td>icon-facebook.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / SNS공유</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-kakao.svg"></td>
-                    <td>icon-kakao.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / SNS공유</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-twitter.svg"></td>
-                    <td>icon-twitter.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / SNS공유</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-url.svg"></td>
-                    <td>icon-url.svg</td>
-                    <td>-</td>
-                    <td>디자인 v2.5 / SNS공유</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-img01-64.svg"></td>
-                    <td>icon-img01-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-img02-64.svg"></td>
-                    <td>icon-img02-64.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-img03-64.svg"></td>
-                    <td>icon-img03-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-img04-64.svg"></td>
-                    <td>icon-img04-64.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-phone-64.svg"></td>
-                    <td>icon-phone-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-chat-64.svg"></td>
-                    <td>icon-chat-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-email-64.svg"></td>
-                    <td>icon-email-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-manual-64.svg"></td>
-                    <td>icon-manual-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-archive-64.svg"></td>
-                    <td>icon-archive-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-location-64.svg"></td>
-                    <td>icon-location-64.svg</td>
-                    <td>O</td>
-                    <td>디자인 v2.5 / KRP0013</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">80px X 80px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/btn-play-80.svg"></td>
-                    <td>btn-play-80.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-11-80.svg"></td>
-                    <td>icon-11-80.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-12-80.svg"></td>
-                    <td>icon-12-80.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-13-80.svg"></td>
-                    <td>icon-13-80.svg</td>
-                    <td>O</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-fixed-80.svg"></td>
-                    <td>icon-fixed-80.svg</td>
-                    <td>O</td>
-                    <td>에러페이지</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">100px X 100px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-01-100.svg"></td>
-                    <td>icon-01-100.svg</td>
-                    <td>-</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">120px X 120px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-nodata.svg"></td>
-                    <td>icon-nodata.svg</td>
-                    <td>-</td>
-                    <td>No data 공통</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">160px X 160px ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-01-160.svg"></td>
-                    <td>icon-01-160.svg</td>
-                    <td>O</td>
-                    <td>검색결과 아이콘으로 사용될듯</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">타 ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-                <th>2차디자인 산출물 사용여부</th>
-                <th>비고</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-alarm.svg"></td>
-                    <td>icon-alarm.svg</td>
-                    <td>-</td>
-                    <td>26px X 34px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-alarm2.svg"></td>
-                    <td>icon-alarm2.svg</td>
-                    <td>-</td>
-                    <td>26px X 34px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-battery.png"></td>
-                    <td>icon-battery.png</td>
-                    <td>-</td>
-                    <td>dummy아이콘. 삭제예정 / 50px X 50px(100px X 100px)</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-camera.png"></td>
-                    <td>icon-camera.png</td>
-                    <td>-</td>
-                    <td>dummy아이콘. 삭제예정 / 50px X 50px(100px X 100px)</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-blank-arr.svg"></td>
-                    <td>icon-blank-arr.svg</td>
-                    <td>-</td>
-                    <td>footer blank / 14px X 14px / #222</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-blank-arr2.svg"></td>
-                    <td>icon-blank-arr2.svg</td>
-                    <td>-</td>
-                    <td>footer blank / 12px X 12px / #222</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-blank-arr3.svg"></td>
-                    <td>icon-blank-arr3.svg</td>
-                    <td>-</td>
-                    <td>footer blank / 12px X 12px / #616161</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-cart2.svg"></td>
-                    <td>icon-cart2.svg</td>
-                    <td>-</td>
-                    <td>33px X 33px / #979797</td>
-                </tr>
-                <tr>
-                    <td style="background:#666;"><img src="/lg5-common/images/icons/icon-chatbot.svg"></td>
-                    <td>icon-top.svg</td>
-                    <td>-</td>
-                    <td>floating to top / 107px X 108px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-top.svg"></td>
-                    <td>icon-chatbot.svg</td>
-                    <td>-</td>
-                    <td>floating 챗봇 / 71px X 72px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-notice.svg"></td>
-                    <td>icon-notice.svg</td>
-                    <td>-</td>
-                    <td>'알림' 화면 / 25px X 31px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-point-on.svg"></td>
-                    <td>icon-point-on.svg</td>
-                    <td>-</td>
-                    <td>매장찾기 / 62px X 88px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-point-off.svg"></td>
-                    <td>icon-point-off.svg</td>
-                    <td>-</td>
-                    <td>매장찾기 / 62px X 88px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-share.svg"></td>
-                    <td>icon-share.svg</td>
-                    <td>-</td>
-                    <td>KRP0010 사용중 / 18px X 22px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star-on.svg"></td>
-                    <td>icon-star-on.svg</td>
-                    <td>-</td>
-                    <td>컴포넌트 별점 사용중 / 28px X 27px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-star-off.svg"></td>
-                    <td>icon-star-off.svg</td>
-                    <td>-</td>
-                    <td>컴포넌트 별점 사용중 / 28px X 27px</td>
-                </tr>
-                <tr>
-                    <td><img src="/lg5-common/images/icons/icon-playbtn-68.png"></td>
-                    <td>icon-playbtn-68.png</td>
-                    <td>O</td>
-                    <td>동영상 썸네일 play 아이콘 / 68px X 68px (2x size)</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3 class="tit">vinylC 미사용 ICONS</h3>
-        <table class="icon-tbl">
-            <thead>
-                <th>미리보기</th>
-                <th>아이콘명(/lg5-common/images/icons/~)</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="/lg5-common/images/icons/icon-btn-arrow-left.svg">
-                        <img src="/lg5-common/images/icons/icon-btn-arrow-right.svg">
-                        <img src="/lg5-common/images/icons/icon-btn-arrow-right2.svg">
-                        <img src="/lg5-common/images/icons/icon-delete.svg">
-                        <img src="/lg5-common/images/icons/icon-download.svg">
-                        <img src="/lg5-common/images/icons/icon-download-red.svg">
-                        <img src="/lg5-common/images/icons/icon-mail-status-board-down.png">
-                        <img src="/lg5-common/images/icons/icon-mail-status-board-up.png">
-                        <img src="/lg5-common/images/icons/icon-map-bubble.svg">
-                        <img src="/lg5-common/images/icons/icon-movie.svg">
-                        <img src="/lg5-common/images/icons/icon-new-window.svg">
-                        <img src="/lg5-common/images/icons/icon-view.svg">
-                    </td>
-                    <td>
-                        icon-btn-arrow-left.svg<br>
-                        icon-btn-arrow-right.svg<br>
-                        icon-btn-arrow-right2.svg<br>
-                        icon-delete.svg<br>
-                        icon-download.svg<br>
-                        icon-download-red.svg<br>
-                        icon-mail-status-board-down.png<br>
-                        icon-mail-status-board-up.png<br>
-                        icon-map-bubble.svg<br>
-                        icon-movie.svg<br>
-                        icon-new-window.svg<br>
-                        icon-view.svg
-                    </td>
-                </tr>
-                <tr>
-                    <td>                                    
-                        <img src="/lg5-common/images/icons/icon-solution.svg">                        
-                    </td>
-                    <td>
-                        icon-solution.svg<br>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-</div>
-<!-- //가이드 내용 -->
+        <!-- 주의사항 -->
+        <dl class="notice">
+            <dt><strong class="t_modify">주의사항</strong></dt>
+            <dd>
+                <ol>
+                    <li>새 아이콘 저장 전 기존 잘린게 있는지 확인 한번씩 해주세요.</li>
+                    <li>새 아이콘 추가한 경우 사이즈별 가이드 추가 해주세요.</li>
+                    <li>2차디자인 적용 후 안쓰게된 아이콘 삭제하신 경우 하단 리스트에서도 삭제 해주세요.</li>
+                </ol>
+            </dd>
+        </dl>
+        <!-- //주의사항 -->
 
-</div> 
-@@include('../include/loadscript_wsg.html')
+        <!-- 가이드 내용 -->
+        <div class="guide_wrap">
+            <section>
+                <h3 class="tit">16px X 16px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-plus-16-round.svg"></td>
+                            <td>btn-plus-16-round.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / gnb 2뎁스</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus-16-round.svg"></td>
+                            <td>btn-minus-16-round.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / gnb 2뎁스</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-plus-16.svg"></td>
+                            <td>btn-plus-16.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 수량 선택 / #000 / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-plus-16-gray.svg"></td>
+                            <td>btn-plus-16-gray.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 수량 선택 / #aaa / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus-16.svg"></td>
+                            <td>btn-minus-16.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 수량 선택 / #000 / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus-16-gray.svg"></td>
+                            <td>btn-minus-16-gray.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 수량 선택 / #aaa / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-clear-16.svg"></td>
+                            <td>btn-clear-16.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / PDP</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-clear-16-gray.svg"></td>
+                            <td>btn-clear-16-gray.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / filter</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-down-16-black.svg"></td>
+                            <td>btn-down-16-black.svg</td>
+                            <td>O</td>
+                            <td>드롭다운 / #000 / 1px / 4px x 10px / Design Guide 2.0_v0.1</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-down-16-gray.svg"></td>
+                            <td>btn-down-16-gray.svg</td>
+                            <td>O</td>
+                            <td>드롭다운 disabled / #aaa / 1px / 4px x 10px / Design Guide 2.0_v0.1</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn_arrow_right_16.svg"></td>
+                            <td>btn_arrow_right_16.svg</td>
+                            <td>-</td>
+                            <td>#222 / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-16-black.svg"></td>
+                            <td>btn-arr-16-black.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / .btn-link (font-size:16px) / #000 / 1px / 6x12</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-16-white.svg"></td>
+                            <td>btn-arr-16-white.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / .btn-link (font-size:16px) / #fff / 1px / 6x12</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-16-black-sm.svg"></td>
+                            <td>btn-arr-16-black-sm.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / .btn-link (font-size:14px) / #000 / 1px / 5x10</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-16-white-sm.svg">
+                            </td>
+                            <td>btn-arr-16-white-sm.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / .btn-link (font-size:14px) / #fff / 1px / 5x10</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-arr-16-bk.svg"></td>
+                            <td>icon-arr-16-bk.svg</td>
+                            <td>O</td>
+                            <td>컴포넌트 text link 버튼 arrow</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-arr-16-wt.svg"></td>
+                            <td>icon-arr-16-wt.svg</td>
+                            <td>O</td>
+                            <td>컴포넌트 text link 버튼 arrow White</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-error.svg"></td>
+                            <td>icon-error.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / input error메시지 / #ff3723 / 12x12</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-heart-off-sm.svg"></td>
+                            <td>icon-heart-off-sm.svg</td>
+                            <td>-</td>
+                            <td>안쓸듯..</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-view-sm.svg"></td>
+                            <td>icon-view-sm.svg</td>
+                            <td>-</td>
+                            <td>carousel에 적용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-outlink-16.svg"></td>
+                            <td>btn-outlink-16.svg</td>
+                            <td>O</td>
+                            <td>#000 / 1px / 10x10</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-play-16-gray.svg"></td>
+                            <td>btn-play-16-gray.svg</td>
+                            <td>O</td>
+                            <td>header slide</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-pause-16-gray.svg"></td>
+                            <td>btn-pause-16-gray.svg</td>
+                            <td>O</td>
+                            <td>header slide</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-arr-16-gray.svg"></td>
+                            <td>icon-arr-16-gray.svg</td>
+                            <td>O</td>
+                            <td>footer 드롭다운 arrow</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">20px X 20px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-20x20-dgray.svg"></td>
+                            <td>btn-arr-20x20-dgray.svg</td>
+                            <td>O</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-20x20-gray.svg"></td>
+                            <td>btn-arr-20x20-gray.svg</td>
+                            <td>O</td>
+                            <td>.btn-link 공통 / #767676 / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-20x20-black.svg"></td>
+                            <td>btn-arr-20x20-black.svg</td>
+                            <td>O</td>
+                            <td>.btn-link / #222 / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-20x20-white.svg">
+                            </td>
+                            <td>btn-arr-20x20-white.svg</td>
+                            <td>O</td>
+                            <td>.btn-link / #fff / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-ars-call.svg"></td>
+                            <td>icon-ars-call.svg</td>
+                            <td>O</td>
+                            <td>form 내부 버튼 아이콘 / #fff</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cal.svg"></td>
+                            <td>icon-cal.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / datepicker 아이콘</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cal-selected.svg"></td>
+                            <td>icon-cal-selected.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / datepicker 아이콘</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-comp.svg"></td>
+                            <td>icon-comp.svg</td>
+                            <td>O</td>
+                            <td>input 내부 완료 아이콘</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-proc.svg"></td>
+                            <td>icon-proc.svg</td>
+                            <td>O</td>
+                            <td>처리중 아이콘</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sale.svg"></td>
+                            <td>icon-sale.svg</td>
+                            <td>O</td>
+                            <td>form 내부 카드선택 하단 카드할인 메시지</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-tooltip.svg"></td>
+                            <td>icon-tooltip.svg</td>
+                            <td>O</td>
+                            <td>tooltip 아이콘</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666;"><img src="/lg5-common/images/icons/icon-tooltip-white.svg">
+                            </td>
+                            <td>icon-tooltip-white.svg</td>
+                            <td>O</td>
+                            <td>tooltip 아이콘 / #fff</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star-on-20.svg"></td>
+                            <td>icon-star-on-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star-off-20.svg"></td>
+                            <td>icon-star-off-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-reset-20.svg"></td>
+                            <td>icon-reset-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-copy-20.svg"></td>
+                            <td>icon-copy-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-search-20.svg"></td>
+                            <td>icon-search-20.svg</td>
+                            <td>O</td>
+                            <td>#222 / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-delete-20.svg"></td>
+                            <td>icon-delete-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-delete-20.svg"></td>
+                            <td>btn-delete-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-more-20.svg"></td>
+                            <td>icon-more-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-blank-20.svg"></td>
+                            <td>icon-blank-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-my-20.svg"></td>
+                            <td>icon-my-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-more-pk-20.svg"></td>
+                            <td>icon-more-pk-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-more-pk2-20.svg"></td>
+                            <td>icon-more-pk2-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-tel-20.svg"></td>
+                            <td>icon-tel-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-more-20.svg"></td>
+                            <td>btn-more-20.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-more-20-gray.svg"></td>
+                            <td>btn-more-20-gray.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus.svg"></td>
+                            <td>btn-minus.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus-20-pink.svg"></td>
+                            <td>btn-minus-20-pink.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-delete-20-pink.svg"></td>
+                            <td>icon-delete-20-pink.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-notice-20.svg"></td>
+                            <td>icon-notice-20.svg</td>
+                            <td>O</td>
+                            <td>header</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">24px X 24px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-search.svg"></td>
+                            <td>icon-search.svg</td>
+                            <td>-</td>
+                            <td>header / #000 / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-person.svg"></td>
+                            <td>icon-person.svg</td>
+                            <td>-</td>
+                            <td>header / #000 / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cart.svg"></td>
+                            <td>icon-cart.svg</td>
+                            <td>O</td>
+                            <td>header / #000 / 1px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-close-24-black.svg"></td>
+                            <td>btn-close-24-black.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / #000 / 1px / 14x14</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-close-24.svg"></td>
+                            <td>btn-close-24.svg</td>
+                            <td>O</td>
+                            <td>모달팝업 닫기버튼 모바일사이즈 / #222 / 2px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-24-white.svg"></td>
+                            <td>btn-close-24-white.svg</td>
+                            <td>O</td>
+                            <td>토스트팝업 닫기버튼 피씨사이즈 / #fff / 2px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-close-24-gray.svg"></td>
+                            <td>btn-close-24-gray.svg</td>
+                            <td>O</td>
+                            <td>검색 레이어 닫기버튼 피씨사이즈 / #767676 / 2px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-arrow-right-red.svg"></td>
+                            <td>icon-arrow-right-red.svg</td>
+                            <td>-</td>
+                            <td>CS화면 주로 사용. 없어질수도..? / #EC455A / 1.5px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-driver.svg"></td>
+                            <td>icon-driver.svg</td>
+                            <td>-</td>
+                            <td>CS화면 주로 사용. 없어질수도..? / #EC455A</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-plus.svg"></td>
+                            <td>icon-plus.svg</td>
+                            <td>-</td>
+                            <td>CS화면 주로 사용. 주소추가팝업 / #EC455A</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-file.svg"></td>
+                            <td>icon-file.svg</td>
+                            <td>-</td>
+                            <td>?...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-heart-off.svg"></td>
+                            <td>icon-heart-off.svg</td>
+                            <td>-</td>
+                            <td>plp 아이콘 변경 (내부 사용X) / product-support.scss 에서 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-heart-on.svg"></td>
+                            <td>icon-heart-on.svg</td>
+                            <td>-</td>
+                            <td>plp 아이콘 변경 (내부 사용X) / product-support.scss 에서 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-like-off-24.svg"></td>
+                            <td>btn-like-off-24.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 장바구니,주문결제 / #000 / 16x14</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-like-on-24.svg"></td>
+                            <td>btn-like-on-24.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 장바구니,주문결제 / #da0f47 / 16x14</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-search2-on.svg"></td>
+                            <td>icon-search2-on.svg</td>
+                            <td>-</td>
+                            <td>_form.scss에 적용되어있는데...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns1.svg"></td>
+                            <td>icon-sns1.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns2.svg"></td>
+                            <td>icon-sns2.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns3.svg"></td>
+                            <td>icon-sns3.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns4.svg"></td>
+                            <td>icon-sns4.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns5.svg"></td>
+                            <td>icon-sns5.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns6.svg"></td>
+                            <td>icon-sns6.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-sns7.svg"></td>
+                            <td>icon-sns7.svg</td>
+                            <td>O</td>
+                            <td>footer SNS icons</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star2-on.svg"></td>
+                            <td>icon-star2-on.svg</td>
+                            <td>O</td>
+                            <td>_form.scss 내부 별점에 적용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star2-off.svg"></td>
+                            <td>icon-star2-off.svg</td>
+                            <td>O</td>
+                            <td>_form.scss 내부 별점에 적용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-see-24.svg"></td>
+                            <td>icon-see-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-grobal-24.svg"></td>
+                            <td>icon-grobal-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-24x24-black.svg"></td>
+                            <td>btn-arr-24x24-black.svg</td>
+                            <td>O</td>
+                            <td>- / #222 / 2px / Arrow사이즈 16px X 8px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-24x24-black2.svg"></td>
+                            <td>btn-arr-24x24-black2.svg</td>
+                            <td>O</td>
+                            <td>마이페이지 홈 / #fff / 2px / Arrow사이즈 12px X 7px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-24x24-white.svg">
+                            </td>
+                            <td>btn-arr-24x24-white.svg</td>
+                            <td>O</td>
+                            <td>- / #fff / 2px / Arrow사이즈 16px X 8px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-24x24-white2.svg">
+                            </td>
+                            <td>btn-arr-24x24-white2.svg</td>
+                            <td>O</td>
+                            <td>마이페이지 홈 / #fff / 2px / Arrow사이즈 12px X 7px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-g01-24.svg"></td>
+                            <td>icon-g01-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-location-24.svg"></td>
+                            <td>icon-location-24.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / pdp</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-store-24.svg"></td>
+                            <td>icon-store-24.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / pdp</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-g02-24.svg"></td>
+                            <td>icon-g02-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-share-24.svg"></td>
+                            <td>icon-share-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arrow_right_24.svg"></td>
+                            <td>btn-arrow_right_24.svg</td>
+                            <td>O</td>
+                            <td>#222 / 1.5px / Arrow사이즈 10px X 6px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-triangle-24.svg"></td>
+                            <td>icon-triangle-24.svg</td>
+                            <td>O</td>
+                            <td>#222 / Arrow사이즈 10px X 6px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-triangle-dis-24.svg"></td>
+                            <td>icon-triangle-dis-24.svg</td>
+                            <td>O</td>
+                            <td>#aaa / Arrow사이즈 10px X 6px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-compare-off-24.svg"></td>
+                            <td>btn-compare-off-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-compare-on-24.svg"></td>
+                            <td>btn-compare-on-24.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-instagram-24.svg"></td>
+                            <td>icon-instagram-24.svg</td>
+                            <td>O</td>
+                            <td>스토리홈</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-naver-blog-24.svg"></td>
+                            <td>icon-naver-blog-24.svg</td>
+                            <td>O</td>
+                            <td>스토리홈</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-naver-post-24.svg"></td>
+                            <td>icon-naver-post-24.svg</td>
+                            <td>O</td>
+                            <td>스토리홈</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-play-24-white.svg"></td>
+                            <td>btn-play-24-white.svg</td>
+                            <td>O</td>
+                            <td>pdp thumbnail</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">26px X 26px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-hero-play.svg">
+                            </td>
+                            <td>btn-carousel-hero-play.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / #fff</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-hero-pause.svg">
+                            </td>
+                            <td>btn-carousel-hero-pause.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / #fff</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">32px X 32px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-32-black.svg"></td>
+                            <td>btn-arr-32-black.svg</td>
+                            <td>O</td>
+                            <td>mobile header / #000 / 2px / 12x24</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-32.svg"></td>
+                            <td>btn-arr-32.svg</td>
+                            <td>O</td>
+                            <td>v2.5 / #000 / 1.5px / 10x20</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-32x32-black.svg"></td>
+                            <td>btn-arr-32x32-black.svg</td>
+                            <td>O</td>
+                            <td>캘린더, datepicker 버튼 / #222 / 2px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-close-32.svg"></td>
+                            <td>btn-close-32.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 모달팝업 닫기버튼 PC사이즈 / #000 / 1.5px / 15x15</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-addr-search.svg"></td>
+                            <td>icon-addr-search.svg</td>
+                            <td>-</td>
+                            <td>아이콘 vertical align 이상하게 짤림. 확인필요.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-arrow-accor.svg"></td>
+                            <td>icon-arrow-accor.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 페이지 아코디언 / #000 / 2px / 9x20</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-more.svg"></td>
+                            <td>icon-more.svg</td>
+                            <td>-</td>
+                            <td>버튼</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-filter-32.svg"></td>
+                            <td>icon-filter-32.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-download-32.svg"></td>
+                            <td>icon-download-32.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-share-32.svg"></td>
+                            <td>icon-share-32.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-32x32.svg"></td>
+                            <td>btn-arr-32x32.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-carousel-32.svg"></td>
+                            <td>btn-carousel-32.svg</td>
+                            <td>O</td>
+                            <td>plp option / Carousel Arrow / 1.5px / #222 / round 28x28 / arrow 9x4</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr2-32x32.svg"></td>
+                            <td>btn-arr2-32x32.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-play-32-white.svg"></td>
+                            <td>btn-play-32-white.svg</td>
+                            <td>O</td>
+                            <td>arrow - color #222 / size 10px X 14px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-play-32-black.svg"></td>
+                            <td>btn-play-32-black.svg</td>
+                            <td>O</td>
+                            <td>arrow - color #fff / size 10X14</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-like-off-32.svg"></td>
+                            <td>btn-like-off-32.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / plp, pdp / #aaa</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-like-on-32.svg"></td>
+                            <td>btn-like-on-32.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / plp, pdp / #222</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-cart-32.svg"></td>
+                            <td>btn-cart-32.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / pdp / #aaa</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-cart-off-32.svg"></td>
+                            <td>btn-cart-off-32.svg</td>
+                            <td>O</td>
+                            <td>plp / #aaa</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-cart-on-32.svg"></td>
+                            <td>btn-cart-on-32.svg</td>
+                            <td>O</td>
+                            <td>plp / #ec455a</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/icon-phone-32-white.svg">
+                            </td>
+                            <td>icon-phone-32-white.svg</td>
+                            <td>O</td>
+                            <td>ARS 버튼 / #fff</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-phone-32-gray.svg"></td>
+                            <td>icon-phone-32-gray.svg</td>
+                            <td>O</td>
+                            <td>ARS 버튼 / #aaa / disabled</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">40px X 40px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-hamburger-40.svg"></td>
+                            <td>btn-hamburger-40.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-40-black.svg"></td>
+                            <td>btn-arr-40-black.svg</td>
+                            <td>O</td>
+                            <td>#222 / 2px / 20px X 10px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/img_shop_40.svg"></td>
+                            <td>img_shop_40.svg</td>
+                            <td>O</td>
+                            <td>KRP000005 사용중</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">48px X 48px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-48-black.svg"></td>
+                            <td>btn-arr-48-black.svg</td>
+                            <td>O</td>
+                            <td>#222 / 4.5px / 24px X 12px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-plus-48.svg"></td>
+                            <td>btn-plus-48.svg</td>
+                            <td>O</td>
+                            <td>#000 / 2px / 20px X 20px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-minus-48.svg"></td>
+                            <td>btn-minus-48.svg</td>
+                            <td>O</td>
+                            <td>#000 / 2px / 20px X 20px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon_filter.svg"></td>
+                            <td>icon_filter.svg</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-email.svg"></td>
+                            <td>icon-email.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-email-on.svg"></td>
+                            <td>icon-email-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-live-chat.svg"></td>
+                            <td>icon-live-chat.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-live-chat-on.svg"></td>
+                            <td>icon-live-chat-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-location.svg"></td>
+                            <td>icon-location.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-location-on.svg"></td>
+                            <td>icon-location-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-manual.svg"></td>
+                            <td>icon-manual.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-manual-on.svg"></td>
+                            <td>icon-manual-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-save.svg"></td>
+                            <td>icon-save.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-save-on.svg"></td>
+                            <td>icon-save-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-telephone.svg"></td>
+                            <td>icon-telephone.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-telephone-on.svg"></td>
+                            <td>icon-telephone-on.svg</td>
+                            <td>-</td>
+                            <td>KRP0016 사용중</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-filter.svg"></td>
+                            <td>icon-filter.svg</td>
+                            <td>-</td>
+                            <td>mixin에 있지만 vinylC 내부 미사용</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-search2.svg"></td>
+                            <td>icon-search2.svg</td>
+                            <td>-</td>
+                            <td>KRP0042, KRP0043 사용</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-upload.svg"></td>
+                            <td>icon-upload.svg</td>
+                            <td>-</td>
+                            <td>_form.scss</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-01-48.svg"></td>
+                            <td>icon-01-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-02-48.svg"></td>
+                            <td>icon-02-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-03-48.svg"></td>
+                            <td>icon-03-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-04-48.svg"></td>
+                            <td>icon-04-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-05-48.svg"></td>
+                            <td>icon-05-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-nodata-pk-48.svg"></td>
+                            <td>icon-nodata-pk-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-refresh-48.svg"></td>
+                            <td>icon-refresh-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-reset-48.svg"></td>
+                            <td>icon-reset-48.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / filter</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-error-48.svg"></td>
+                            <td>icon-error-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-login-48.svg"></td>
+                            <td>icon-login-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cart-48.svg"></td>
+                            <td>icon-cart-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cart-on-48.svg"></td>
+                            <td>icon-cart-on-48.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-48.svg"></td>
+                            <td>btn-close-48.svg</td>
+                            <td>O</td>
+                            <td>모달팝업 닫기버튼 PC사이즈 / #767676 / 2px</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-close-48-white.svg"></td>
+                            <td>btn-close-48-white.svg</td>
+                            <td>O</td>
+                            <td>모달팝업 닫기버튼 PC사이즈 / #fff / 2px / 17px X 17px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-call-svc-48.svg"></td>
+                            <td>icon-call-svc-48.svg</td>
+                            <td>O</td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">56px X 56px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="background:#666"><img src="/lg5-common/images/icons/btn-arr-56x56.svg"></td>
+                            <td>btn-arr-56x56.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">60px X 60px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product01-60.svg"></td>
+                            <td>icon-product01-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product02-60.svg"></td>
+                            <td>icon-product02-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product03-60.svg"></td>
+                            <td>icon-product03-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product04-60.svg"></td>
+                            <td>icon-product04-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product05-60.svg"></td>
+                            <td>icon-product05-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product06-60.svg"></td>
+                            <td>icon-product06-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-product07-60.svg"></td>
+                            <td>icon-product07-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-nodata-60.svg"></td>
+                            <td>icon-nodata-60.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">62px X 62px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-360-62.svg"></td>
+                            <td>icon-360-62.svg</td>
+                            <td>O</td>
+                            <td>pdp thumbnail</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-play-62.svg"></td>
+                            <td>icon-play-62.svg</td>
+                            <td>O</td>
+                            <td>pdp thumbnail</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-youtube-62.svg"></td>
+                            <td>icon-youtube-62.svg</td>
+                            <td>O</td>
+                            <td>pdp thumbnail</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">64px X 64px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-arr-64-black.svg"></td>
+                            <td>btn-arr-64-black.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / mobild / #000 / 3px / 17x40</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-complete-64.svg"></td>
+                            <td>icon-complete-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / 주문결제 완료 / #000 / 2px / 50x50</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666;"><img src="/lg5-common/images/icons/icon-scrollTop-off-64.svg">
+                            </td>
+                            <td>icon-scrollTop-off-64.svg</td>
+                            <td>O</td>
+                            <td>- / background, box-shadow는 제외하고 컷팅</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666;"><img src="/lg5-common/images/icons/icon-scrollTop-on-64.svg">
+                            </td>
+                            <td>icon-scrollTop-on-64.svg</td>
+                            <td>O</td>
+                            <td>- / background, box-shadow는 제외하고 컷팅</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-facebook.svg"></td>
+                            <td>icon-facebook.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / SNS공유</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-kakao.svg"></td>
+                            <td>icon-kakao.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / SNS공유</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-twitter.svg"></td>
+                            <td>icon-twitter.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / SNS공유</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-url.svg"></td>
+                            <td>icon-url.svg</td>
+                            <td>-</td>
+                            <td>디자인 v2.5 / SNS공유</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-img01-64.svg"></td>
+                            <td>icon-img01-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-img02-64.svg"></td>
+                            <td>icon-img02-64.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-img03-64.svg"></td>
+                            <td>icon-img03-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-img04-64.svg"></td>
+                            <td>icon-img04-64.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-phone-64.svg"></td>
+                            <td>icon-phone-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-chat-64.svg"></td>
+                            <td>icon-chat-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-email-64.svg"></td>
+                            <td>icon-email-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-manual-64.svg"></td>
+                            <td>icon-manual-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-archive-64.svg"></td>
+                            <td>icon-archive-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-location-64.svg"></td>
+                            <td>icon-location-64.svg</td>
+                            <td>O</td>
+                            <td>디자인 v2.5 / KRP0013</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">80px X 80px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/btn-play-80.svg"></td>
+                            <td>btn-play-80.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-11-80.svg"></td>
+                            <td>icon-11-80.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-12-80.svg"></td>
+                            <td>icon-12-80.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-13-80.svg"></td>
+                            <td>icon-13-80.svg</td>
+                            <td>O</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-fixed-80.svg"></td>
+                            <td>icon-fixed-80.svg</td>
+                            <td>O</td>
+                            <td>에러페이지</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">100px X 100px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-01-100.svg"></td>
+                            <td>icon-01-100.svg</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">120px X 120px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-nodata.svg"></td>
+                            <td>icon-nodata.svg</td>
+                            <td>-</td>
+                            <td>No data 공통</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">160px X 160px ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-01-160.svg"></td>
+                            <td>icon-01-160.svg</td>
+                            <td>O</td>
+                            <td>검색결과 아이콘으로 사용될듯</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">타 ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                        <th>2차디자인 산출물 사용여부</th>
+                        <th>비고</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-alarm.svg"></td>
+                            <td>icon-alarm.svg</td>
+                            <td>-</td>
+                            <td>26px X 34px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-alarm2.svg"></td>
+                            <td>icon-alarm2.svg</td>
+                            <td>-</td>
+                            <td>26px X 34px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-battery.png"></td>
+                            <td>icon-battery.png</td>
+                            <td>-</td>
+                            <td>dummy아이콘. 삭제예정 / 50px X 50px(100px X 100px)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-camera.png"></td>
+                            <td>icon-camera.png</td>
+                            <td>-</td>
+                            <td>dummy아이콘. 삭제예정 / 50px X 50px(100px X 100px)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-blank-arr.svg"></td>
+                            <td>icon-blank-arr.svg</td>
+                            <td>-</td>
+                            <td>footer blank / 14px X 14px / #222</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-blank-arr2.svg"></td>
+                            <td>icon-blank-arr2.svg</td>
+                            <td>-</td>
+                            <td>footer blank / 12px X 12px / #222</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-blank-arr3.svg"></td>
+                            <td>icon-blank-arr3.svg</td>
+                            <td>-</td>
+                            <td>footer blank / 12px X 12px / #616161</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-cart2.svg"></td>
+                            <td>icon-cart2.svg</td>
+                            <td>-</td>
+                            <td>33px X 33px / #979797</td>
+                        </tr>
+                        <tr>
+                            <td style="background:#666;"><img src="/lg5-common/images/icons/icon-chatbot.svg"></td>
+                            <td>icon-top.svg</td>
+                            <td>-</td>
+                            <td>floating to top / 107px X 108px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-top.svg"></td>
+                            <td>icon-chatbot.svg</td>
+                            <td>-</td>
+                            <td>floating 챗봇 / 71px X 72px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-notice.svg"></td>
+                            <td>icon-notice.svg</td>
+                            <td>-</td>
+                            <td>'알림' 화면 / 25px X 31px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-point-on.svg"></td>
+                            <td>icon-point-on.svg</td>
+                            <td>-</td>
+                            <td>매장찾기 / 62px X 88px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-point-off.svg"></td>
+                            <td>icon-point-off.svg</td>
+                            <td>-</td>
+                            <td>매장찾기 / 62px X 88px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-share.svg"></td>
+                            <td>icon-share.svg</td>
+                            <td>-</td>
+                            <td>KRP0010 사용중 / 18px X 22px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star-on.svg"></td>
+                            <td>icon-star-on.svg</td>
+                            <td>-</td>
+                            <td>컴포넌트 별점 사용중 / 28px X 27px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-star-off.svg"></td>
+                            <td>icon-star-off.svg</td>
+                            <td>-</td>
+                            <td>컴포넌트 별점 사용중 / 28px X 27px</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/lg5-common/images/icons/icon-playbtn-68.png"></td>
+                            <td>icon-playbtn-68.png</td>
+                            <td>O</td>
+                            <td>동영상 썸네일 play 아이콘 / 68px X 68px (2x size)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3 class="tit">vinylC 미사용 ICONS</h3>
+                <table class="icon-tbl">
+                    <thead>
+                        <th>미리보기</th>
+                        <th>아이콘명(/lg5-common/images/icons/~)</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="/lg5-common/images/icons/icon-btn-arrow-left.svg">
+                                <img src="/lg5-common/images/icons/icon-btn-arrow-right.svg">
+                                <img src="/lg5-common/images/icons/icon-btn-arrow-right2.svg">
+                                <img src="/lg5-common/images/icons/icon-delete.svg">
+                                <img src="/lg5-common/images/icons/icon-download.svg">
+                                <img src="/lg5-common/images/icons/icon-download-red.svg">
+                                <img src="/lg5-common/images/icons/icon-mail-status-board-down.png">
+                                <img src="/lg5-common/images/icons/icon-mail-status-board-up.png">
+                                <img src="/lg5-common/images/icons/icon-map-bubble.svg">
+                                <img src="/lg5-common/images/icons/icon-movie.svg">
+                                <img src="/lg5-common/images/icons/icon-new-window.svg">
+                                <img src="/lg5-common/images/icons/icon-view.svg">
+                            </td>
+                            <td>
+                                icon-btn-arrow-left.svg<br>
+                                icon-btn-arrow-right.svg<br>
+                                icon-btn-arrow-right2.svg<br>
+                                icon-delete.svg<br>
+                                icon-download.svg<br>
+                                icon-download-red.svg<br>
+                                icon-mail-status-board-down.png<br>
+                                icon-mail-status-board-up.png<br>
+                                icon-map-bubble.svg<br>
+                                icon-movie.svg<br>
+                                icon-new-window.svg<br>
+                                icon-view.svg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/lg5-common/images/icons/icon-solution.svg">
+                            </td>
+                            <td>
+                                icon-solution.svg<br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <!-- //가이드 내용 -->
+
+    </div>
+    @@include('../include/loadscript_wsg.html')
 </body>
-</html> 
+
+</html>

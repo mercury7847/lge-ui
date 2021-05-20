@@ -326,7 +326,7 @@
             line-height: 26px;
             @include mobile {
                 font-size: 13px;
-                line-height: 21px; 
+                line-height: 21px;
             }
         }
         &.cs-cst {
@@ -347,6 +347,11 @@
         &.recently {
             a {
                 background-image:url('/lg5-common/images/icons/icon-recently-40.svg');
+            }
+        }
+        &.store-reservation {
+            a {
+                background-image:url('/lg5-common/images/icons/img_shop_40.svg');
             }
         }
     }
