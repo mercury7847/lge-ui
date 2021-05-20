@@ -13,14 +13,19 @@ function MainSwiper( ID ){
 
 MainSwiper.prototype = {
     init : function(){       
-        this.setContent();
+        this.setMobileNav();
         this.setSwipe();
         
     },
     setSwipe : function(){
+        var mainSwiper =  this;
         var currentHash = this.currentHash;
 
         this.swiper = new Swiper('#sw_con', {
+            autoHeight : true,
+            observer : true,
+            slidesPerView : 1,
+            //threshold : 1,
             hashNavigation : {
                 watchState: true
             },
@@ -28,41 +33,70 @@ MainSwiper.prototype = {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
                 },
-                'init' : function(){
-                    
+                'init' : function(swiper){
+                    console.log('window.location.hash', window.location.hash);
+                    if (!!window.location.hash == false){
+                        window.location.hash = '#home';
+                    }
+                    var currentSlide = swiper.slides[ mainSwiper.currentIdx ];
+                    mainSwiper.loadContent( currentSlide );
+                    //swiper.slideChange();
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
                     var currentSlide = swiper.slides[swiper.activeIndex];
-                    var href = $(currentSlide).data().href;
-                    var isLoaded = $(currentSlide).data().isLoaded;
 
-                    console.log('currentSlide', $(currentSlide).data());
+                    mainSwiper.loadContent( currentSlide );
+                    mainSwiper.currentIdx = swiper.activeIndex;
 
-                    if (!href) return;
+                    mainSwiper.tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
-                    if (isLoaded) return;
-
-                    $.ajax({
-                        url : href,
-                        dataType : 'html',
-                        success : function( res ){
-                            $(swiper.slides[swiper.activeIndex]).html( res );
-                        },
-                        error : function(error){
-                            console.log('mainSwiper cant get HTML', error);
-                        },
-                        complete: function(){                 
-                            lgkorUI.init();
-                            $(currentSlide).data().isLoaded = true;                          
-                        }
-                    });
-                }
+                    // 메인 -> 홈 일때 스크롤 제어
+                    if (mainSwiper.currentIdx == 0){
+                        $('html').attr('canscroll', 'true');
+                        $('html').css({
+                            'overflow' : 'hidden',
+                            'height' : '100%'
+                        });
+                    } else {
+                        $('html').attr('canscroll', 'false');
+                        $('html').css({
+                            'overflow' : '',
+                            'height' : ''
+                        });
+                    } 
+                }   
             }
         });
 
     },
-    setContent : function(){
+    loadContent: function( currentSlide ){
+        var href = $(currentSlide).data().href;
+        var isLoaded = $(currentSlide).data().isLoaded;
+
+        console.log('currentSlide', $(currentSlide).data());
+
+        if (!href) return;
+
+        if (isLoaded) return;
+
+        $.ajax({
+            method: 'POST',
+            url : href,
+            dataType : 'html',
+            success : function( res ){
+                $(currentSlide).html( res );
+            },
+            error : function(error){
+                console.log('mainSwiper cant get HTML', error);
+            },
+            complete: function(){                 
+                lgkorUI.init();
+                $(currentSlide).data().isLoaded = true;                          
+            }
+        });
+    },
+    setMobileNav : function(){
         var $tabs = this.tabs;
         $tabs.on('click', function( e ){
             //e.preventDefault();
