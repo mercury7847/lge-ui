@@ -1,0 +1,25 @@
+<svg id="img_pin_hover" xmlns="http://www.w3.org/2000/svg" width="97" height="38.386" viewBox="0 0 97 38.386">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #da0f47;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <rect id="Rectangle_24" data-name="Rectangle 24" class="cls-1" width="97" height="32" rx="16"/>
+  <path id="Path_91" data-name="Path 91" class="cls-1" d="M384.359,179l3.464,6,3.91,6.773,3.91-6.773,3.464-6Z" transform="translate(-343.359 -153.386)"/>
+  <path id="Path_92" data-name="Path 92" class="cls-2" d="M327.665,159.665a10,10,0,1,1,10,10A10,10,0,0,1,327.665,159.665Z" transform="translate(-321.665 -143.665)"/>
+  <rect id="Rectangle_25" data-name="Rectangle 25" class="cls-3" width="16" height="16" transform="translate(8 8)"/>
+  <g id="icon" transform="translate(12 10.667)">
+    <path id="Rectangle" class="cls-1" d="M341.234,155.738a5.068,5.068,0,0,1,5.054,5.082q0,2.807-5.054,9.268-5.054-6.46-5.055-9.268A5.068,5.068,0,0,1,341.234,155.738Z" transform="translate(-337.353 -157.405)"/>
+    <path id="Rectangle-2" data-name="Rectangle" class="cls-2" d="M2.5,0h0a2.5,2.5,0,0,1,2.5,2.5v0a2.5,2.5,0,0,1-2.5,2.5h0A2.5,2.5,0,0,1,0,2.5v0A2.5,2.5,0,0,1,2.5,0Z" transform="translate(1.377 0.377)"/>
+  </g>
+</svg>
