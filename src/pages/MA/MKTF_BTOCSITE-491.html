@@ -13,7 +13,7 @@
 <div class="wrap">
     <!-- 210311_H1추가 -->
     @@include('./common/header.html', {
-        hiddenTitle: "LG페이" 
+        hiddenTitle: "야간무인매장안내" 
     })
     <!-- //210311_H1추가 -->
 
@@ -95,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- 야간무인매장 이용 방법 -->
                 <div class="unmanned-store-service">
                     <h2 class="title">야간무인매장 이용 방법</h2>
@@ -145,6 +146,7 @@
                                             입장해주세요.
                                         </p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -155,12 +157,67 @@
                     </div>
                 </div>
                 <!-- //야간무인매장 이용 방법 -->
-                
+                <!-- 무인 매장 구경가기 -->
+                <div class="unmanned-store-map">
+                    <div class="inner">
+                        <div class="title-wrap">
+                            <h3 class="service-title"><span>야간무인매장 구경가기</span></h3>
+                        </div>
+                        <div class="tabs-wrap left border-type ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">서울 · 수도권<span class="pc-only"> 무인매장</span><em class="blind">선택됨</em></a></li>
+                                <li><a href="#tab2">경상권<span class="pc-only"> 무인매장</span></a></li>
+                            </ul>
+                        </div>
+                        <div id="tab1" class="map-area">
+                            <div class="box">
+                                <div class="map seoul">
+                                    <a href="javascript:;" class="pin idx01">서초 본점</a>
+                                    <a href="javascript:;" class="pin idx02">강서 본점</a>
+                                    <a href="javascript:;" class="pin idx03">금천 본점</a>
+                                    <a href="javascript:;" class="pin idx04">봉천 본점</a>
+                                    <a href="javascript:;" class="pin idx05">쌍문 본점</a>
+                                    <a href="javascript:;" class="pin idx06">불광 본점</a>
+                                    <a href="javascript:;" class="pin idx07 wide">부평구청점</a>
+                                    <a href="javascript:;" class="pin idx08">일산 본점</a>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li><a href="javascript:;">서초 본점</a></li>
+                                        <li><a href="javascript:;">강서 본점</a></li>
+                                        <li><a href="javascript:;">금천 본점</a></li>
+                                        <li><a href="javascript:;">봉천 본점</a></li>
+                                        <li><a href="javascript:;">쌍문 본점</a></li>
+                                        <li><a href="javascript:;">불광 본점</a></li>
+                                        <li><a href="javascript:;">부평구청점</a></li>
+                                        <li><a href="javascript:;">일산 본점</a></li>
+                                    </ul>
+                                    <p class="bullet-text">각 매장명을 클릭하여 위치를 확인해 보세요.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="map-area">
+                            <div class="box">
+                                <div class="map gyeongsang">
+                                    <a href="javascript:;" class="pin idx01">사상 본점</a>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li><a href="javascript:;">사상 본점</a></li>
+                                    </ul>
+                                    <p class="bullet-text">각 매장명을 클릭하여 위치를 확인해 보세요.</p>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //무인 매장 구경가기 -->
             </div>
             <!-- //210413 전체수정 -->
         </div>
     </div>
-
     @@include('./common/footer.html')
     <!-- 210226 플로팅버튼 추가 -->
     <!-- @@include('./common/footer.html') -->
