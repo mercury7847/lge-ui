@@ -51,6 +51,7 @@ MainSwiper.prototype = {
                     mainSwiper.tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
                     // 메인 -> 홈 일때 스크롤 제어
+                    /*
                     if (mainSwiper.currentIdx == 0){
                         $('html').attr('canscroll', 'true');
                         $('html').css({
@@ -63,8 +64,43 @@ MainSwiper.prototype = {
                             'overflow' : '',
                             'height' : ''
                         });
-                    } 
-                }   
+                    }
+                    */
+                }
+            }
+        });
+
+        $('#sw_con .swiper-slide').on('touchstart', function( e ){
+            console.log('touchstart event', e);
+            //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
+
+            var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
+            var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
+            var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
+            var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
+            var isSlick = !!$(e.target).closest('.slick-track').length;
+            
+            
+            
+
+            if (isCategoryTab || isCarouselList || isCategoryTabContent || isTagScrollTab || isSlick){
+                e.stopPropagation();
+            }
+            
+        });
+
+        $('#sw_con .swiper-slide').on('touchmove', function( e ){
+            console.log('touchmove event', e);
+            //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
+
+            var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
+            var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
+            var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
+            var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
+            var isSlick = !!$(e.target).closest('.slick-track').length;
+
+            if (isCategoryTab || isCarouselList || isCategoryTabContent || isTagScrollTab || isSlick){
+                e.stopPropagation();
             }
         });
 

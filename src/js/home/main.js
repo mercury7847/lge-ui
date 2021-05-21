@@ -218,11 +218,12 @@ $(function () {
         //$('.scene').css({'overflow':'hidden'});
         
         //$('.container').css({'overflow':'visible', 'height':'auto'});     
-        
+        /*
         $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
             wheelScene(1);
         });
+        */
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -688,7 +689,7 @@ $(function () {
             $('html, body').stop(true);
             $('html').removeClass('sceneMoving');   
 
-            canScroll = true;    
+            //canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
             posArr = [];
