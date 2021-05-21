@@ -21,6 +21,64 @@
     }
 }
 
+.unmanned-store-head {
+    position: relative;
+    .inner {
+        &.head {
+            position: relative;
+            max-width: 1380px;
+            display: flex;
+            margin: 23px auto 64px auto;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            .headTitle {
+                margin: 0 auto;
+                font-size: 24px;
+            }
+            .shareBox {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                right: 0;
+                top: -5px;
+                .shareTitle {
+                    font-size: 14px;
+                }
+                .component-wrap {
+                    position: relative;
+                }
+            }
+        }
+    }
+    @include mobile {
+        .inner {
+            &.head {
+                margin-bottom: 33px;
+                .headTitle {
+                    width: 216px;
+                    line-height: 34px;
+                }
+                .shareBox {
+                    right: 16px;
+                    top: 0px;
+                    .shareTitle {
+                        display: none;
+                    }
+                    .component-wrap {
+                        position: relative;
+                    }
+                    .title {
+                        font-size: 16px;
+                        line-height: 24px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .visual-wrap {
     position:relative;
     img {
@@ -62,6 +120,7 @@
             @include mobile {
                 font-size:26px;
                 line-height:35px;
+                font-weight: 700;
             }
         }
         .txt {
@@ -69,11 +128,12 @@
             padding-top:20px;
             font-size:24px;
             line-height:34px;
-            font-weight:700;
+            font-weight:400;
             @include mobile {
-                padding-top:6px;
+                padding-top:10px;
                 font-size:16px;
                 line-height:24px;
+                font-weight: 400;
             }
         }
         .btn-area {
@@ -123,14 +183,13 @@
 
 .unmanned-store-content {
     width: 100%;
-    margin-top: 80px;
+    margin-top: 90px;
     @include mobile {
-        margin-top: 48px;
+        margin-top: 55px;
     }
     .unmanned-store-intro-wrap {
-        max-width: 1380px + 80px;
+        max-width: 1380px;
         margin: 0 auto;
-        padding: 0 40px;
             @include mobile {
                 max-width: 100%;
                 padding: 0 16px;
@@ -139,14 +198,14 @@
     .unmanned-store-introdution {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 120px;
+        margin-bottom: 80px;
         @include mobile {
             display: block;
             margin-bottom: 60px;
             text-align: center;
         }
         .unmanned-store-text {
-            width: 436px;
+            width: 560px;
             padding-top: 56px;
             padding-right: 40px;
 
@@ -172,6 +231,9 @@
                     @include font-small;
                     color: $color-gray-1;
                 }
+            }
+            .bullet-list {
+                margin-top: 12px;
             }
             .btn-area {
                 margin-top: 32px;
@@ -234,111 +296,111 @@
 }
 .unmanned-store-service {
     margin-bottom: 100px;
-    padding: 120px 0;
+    padding: 80px 0;
     background-color: $color-bg;
     @include mobile {
         margin: 60px 0;
         padding: 60px 0;
+        overflow: hidden;
     }
-    .inner {
-        max-width: 1380px + 80px;
-        margin: 0 auto;
-        padding: 0 40px;
-        .service-title {
-            margin-bottom: 64px;
-            @include font(40px,56px);
-            text-align: center;
-        }
+    .title {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 50px;
         @include mobile {
-            max-width: 100%;
-            padding: 0 16px;
-            .service-title {
-                margin-bottom: 32px;
-                @include font(27px,38px);
-            }
+            font-size: 27px;
+            margin-bottom: 24px;
         }
-        > ul {
-            display: flex;
-            flex-wrap: wrap;
-            margin: -24px 0 0 -24px;
-            > li {
-                position: relative;
-                width: 50%;
-                padding: 24px 0 0 24px;
-                &:nth-child(1) {
-                    width: 100%;
-                    .img-area {
-                        max-width: 678px;
+    }
+    .slide-wrap {
+        &.carousel-type {
+            &.carousel-4 {
+                max-width: 1380px;
+                @include mobile {
+                    max-width: none;
+                }
+                .slide-conts {
+                    position: relative;
+                    &::before {
+                        position: absolute;
+                        top: 90px;
+                        right: -20px;
+                        content: '';
+                        width: 32px;
+                        height: 32px;
+                        background-image: url('/lg5-common/images/MA/unmanned-store/ic_calender_next.png');
+                        background-position: 0 0;
+                        background-repeat: no-repeat;
+                        @include mobile {
+                            display: none;
+                        }
                     }
-                    .text-area {
-                        align-self: center;
+                    &:last-child {
+                        &::before {
+                            display: none;
+                        }
+                    }
+                    .slide-box {
+                        text-align: center;
+                        .icon {
+                            width: 200px;
+                            height: 200px;
+                            margin: 0 auto 30px auto;
+                            background-color: #fff;
+                            border-radius: 100%;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: center;
+                            @include mobile {
+                                width: 180px;
+                                height: 180px;
+                                margin: 0 auto 25px auto;
+                            }
+                            img {
+                                align-self: center;
+                            }
+                        }
+                        .SlideNum {
+                            font-size: 24px;
+                            font-weight: 700;
+                            margin-bottom: 10px;
+                            display: block;
+                            @include mobile {
+                                font-size: 18px;
+                                margin-bottom: 7px;
+                            }
+                        }
+                        .SlideText {
+                            font-size: 18px;
+                            line-height: 28px;
+                            @include mobile {
+                                font-size: 14px;
+                                line-height: 22px;
+                            }
+                            span {
+                                color: #da0f47;
+                            }
+                        }
+                    }
+                }
+                .btn-arrow {
+                    &.prev {
+                        @include mobile {
+                            left: 30px;
+                        }
+                    }
+                    &.next {
+                        @include mobile {
+                            right: 30px;
+                        }
                     }
                 }
             }
-            @include mobile {
-                margin: -12px 0 0;
-                > li {
-                    width: 100%;
-                    padding: 12px 0 0;
-                }
-            }
         }
     }
-    .box {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        height: 100%;
-        border-radius: 8px;
-        background-color: $color-white;
-    }
-    .img-area {
-        align-self: flex-end;
-        max-width: 300px;
-        img {
-            width: 100%;
-            border-radius: 0 8px 8px 0;
-        }
-    }
-    .text-area {
-        padding: 48px 40px 48px 48px;
-        .tit {
-            margin-bottom: 16px;
-            font-weight: 700;
-            @include font-large-2;
-        }
-        .desc {
-            @include font-medium;
-        }
-        .bullet-list {
-            margin-top: 8px;
-        }
-    }
-    @include mobile {
-        .box {
-            flex-direction: column-reverse;
-        }
-        .img-area {
-            max-width: 100%;
-            img {
-                border-radius: 0 0 8px 8px;
-            }
-        }
-        .text-area {
-            padding: 32px 12px 40px;
-            .tit {
-                margin-bottom: 16px;
-                font-weight: 700;
-                @include font-large-2;
-            }
-            .desc {
-                @include font-medium;
-            }
-            .bullet-list {
-                margin-top: 8px;
-            }
-        }
-    }
+        
+            
+    
 }
 .btm-link {
     margin: 80px 0 120px;

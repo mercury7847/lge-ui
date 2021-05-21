@@ -22,237 +22,83 @@
         <div class="contents unmanned-store-wrap">
             <!-- 210413 전체수정 -->
             <div class="cont-wrap">
+                <div class="unmanned-store-head">
+                    <div class="inner head">
+                        <h2 class="headTitle">LG전자 BEST SHOP 야간무인매장 오픈</h2>
+                        <div class="shareBox">
+                            <span class="shareTitle">공유하기</span>
+                            @@include('./common/partials/KRP0016.html')
+                        </div>
+                    </div>
+                </div>
                 <div class="visual-wrap">
                     <img data-pc-src="/lg5-common/images/STC/img-visual-pay01.jpg" data-m-src="/lg5-common/images/STC/img-visual-pay01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual-pay01.jpg">
                     <div class="tit-wrap">
-                        <p class="tit">LG 페이</p>
-                        <span class="txt">LG 페이로 더 손쉽게 결제하세요</span>
-                        <div class="btn-area">
-                            <!-- 210414 팝업버튼수정 -->
-                            <button class="btn border" data-href="#popup01" data-control="modal"><span>설치 및 등록 영상 보기</span></button>
-                            <!-- 210414 //팝업버튼수정 -->
-                        </div>
+                        <p class="tit">오픈일 <br class="mo-only">2021년 5월 26일</p>
+                        <span class="txt">영업 종료 시점인 20시30분 부터 24시 자정까지<br/>야간무인매장을 운영합니다.</span>
                     </div>
                 </div>
-
-                <!-- 210219 삭제 -->
-                <!-- <div class="page-header wide border ui_sticky" data-used-anchor="true">
-                    <div class="tabs-wrap btn-type">
-                        <ul class="tabs">
-                            <li class="active"><a href="#tab-cont1">카메라로 간편 등록<em class="blind">선택됨</em></a></li>
-                            <li><a href="#tab-cont2">퀵페이로 빠른 결제</a></li>
-                            <li><a href="#tab-cont3">전국 어디에서나 편리한 사용</a></li>
-                        </ul>
-                    </div>
-                </div> -->
-                <!-- //210219 삭제 -->
-
                 <div class="unmanned-store-content">
-                    <div class="unmanned-store-intro-wrap"><!-- 210329 수정 [div.unmanned-store-intro-wrap 돔 추가] -->
-                        <div id="tab-cont1" class="unmanned-store-introdution center">
+                    <div class="unmanned-store-intro-wrap">
+                        <div id="tab-cont1" class="unmanned-store-introdution center right">
                             <div class="unmanned-store-text">
                                 <div class="inner">
-                                    <span class="num">01</span>
-                                    <h3 class="tit">카메라로 간편하게 등록하세요 </h3>
-                                    <p class="desc">카메라를 비추면 자동으로 카드정보가 인식되어 간편하게 등록 가능합니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "카드 번호 직접 입력으로도 등록 가능합니다."
-                                        ]
-                                    })
-                                    <div class="btn-area">
-                                        <!-- 210414 팝업버튼수정 -->
-                                        <button class="btn border size-m" data-href="#popup02" data-control="modal"><span>제휴카드 안내</span></button>
-                                        <!-- 210414 //팝업버튼수정 -->
-                                    </div>
+                                    <h3 class="tit">빠르고 편리하게<br/>탐색하세요</h3>
+                                    <p class="desc">코너별 비치된 키오스크와 고객님의 모바일을 통해<br class="pc-only">제품정보를 탐색할 수 있어요.</p>
                                 </div>
                             </div>
-                            <div class="unmanned-store-visual">
-                                <img data-src="/lg5-common/images/STC/img-pay01.jpg" alt="">
+                            <div class="unmanned-store-visual" style="width: 100%;">
+                                <!-- <img data-src="/lg5-common/images/STC/img-pay01.jpg" alt=""> -->
+                                <p style="background-color: #ccc; width: 100%; height: 405px;"></p>
                             </div>
                         </div>
-                        <div id="tab-cont2" class="unmanned-store-introdution center right"><!-- 210329 수정 [.right 클래스 추가] -->
+                        <div id="tab-cont2" class="unmanned-store-introdution center">
                             <div class="unmanned-store-text">
                                 <div class="inner">
-                                    <span class="num">02</span>
-                                    <h3 class="tit">퀵페이로 빠르게 결제하세요</h3>
-                                    <p class="desc">보고 있는 어느 화면에서도 화면 하단을 위로 밀어올리면 퀵페이가 실행되어 빠르게 결제할 수 있습니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "지문 및 핀번호 입력으로 결제가 가능합니다."
-                                        ]
-                                    })
-                                    <div class="btn-area">
-                                        <!-- 210414 팝업버튼수정 -->
-                                        <button class="btn border size-m" data-href="#popup03" data-control="modal"><span>퀵페이 활용 영상 보기</span></button>
-                                        <!-- 210414 //팝업버튼수정 -->
-                                    </div>
+                                    <h3 class="tit">원하는 날짜에<br/>상담 예약할 수 있어요</h3>
+                                    <p class="desc">프로모션 등 자세한 내용은 키오스크에서 '상담 예약' 버튼을 통해<br class="pc-only">원하는 날짜에 전문 매니저 상담이 가능합니다.</p>
                                 </div>
                             </div>
-                            <div class="unmanned-store-visual">
-                                <img data-src="/lg5-common/images/STC/img-pay02.jpg" alt="">
+                            <div class="unmanned-store-visual" style="width: 100%;">
+                                <!-- <img data-src="/lg5-common/images/STC/img-pay02.jpg" alt=""> -->
+                                <p style="background-color: #ccc; width: 100%; height: 405px;"></p>
                             </div>
                         </div>
-                        <div id="tab-cont3" class="unmanned-store-introdution center"><!-- 210329 수정 [.right 클래스 삭제] -->
+                        <div id="tab-cont3" class="unmanned-store-introdution center right">
                             <div class="unmanned-store-text">
                                 <div class="inner">
-                                    <span class="num">03</span>
-                                    <h3 class="tit">어느 매장에서든 손쉽게 사용하세요</h3>
-                                    <p class="desc">신용/체크/멤버십 카드 사용이 가능한 전국 어느 매장에서든 사용이 가능합니다.</p><!-- 210329 수정 [텍스트 수정] -->
+                                    <h3 class="tit">쉽고 빠르게<br class="pc-only">질문하세요</h3>
+                                    <p class="desc">카카오톡 1:1 상담을 운영하여<br class="pc-only">간단한 문의에 대한 응대를 받으실 수 있습니다.</p><!-- 210329 수정 [텍스트 수정] -->
+                                </div>
+                            </div>
+                            <div class="unmanned-store-visual" style="width: 100%;">
+                                <!-- <img data-src="/lg5-common/images/STC/img-pay03.jpg" alt=""> -->
+                                <p style="background-color: #ccc; width: 100%; height: 405px;"></p>
+                            </div>
+                        </div>
+                        <div id="tab-cont4" class="unmanned-store-introdution center">
+                            <div class="unmanned-store-text">
+                                <div class="inner">
+                                    <h3 class="tit">서빙봇이<br class="pc-only">간식을 대접해요</h3>
+                                    <p class="desc">LG클로이 서빙봇이 늦은 밤 간식을 대접합니다.</p>
                                     @@include('./common/modules/bullet-list.html', {
                                         "bulletTxt" : [
-                                            "LG 페이로 결제 가능한 가맹점은 지속적으로 확대할 예정입니다."
+                                            "서초본점, 금청본점에 한함."
                                         ]
                                     })
                                 </div>
                             </div>
-                            <div class="unmanned-store-visual">
-                                <img data-src="/lg5-common/images/STC/img-pay03.jpg" alt="">
-                                @@include('./common/modules/bullet-list.html', {
-                                    "bulletTxt" : [
-                                        "일부 주유소, AK플라자, 그 외 일부 택시의 미터 결제기, 키오스크, 자동판매기, 티켓 발매기 등 일부 가맹점의 정책 및 단말 상황에 따라 사용이 제한될 수 있습니다."
-                                    ]
-                                })
+                            <div class="unmanned-store-visual" style="width: 100%;">
+                                <!-- <img data-src="/lg5-common/images/STC/img-pay02.jpg" alt=""> -->
+                                <p style="background-color: #ccc; width: 100%; height: 405px;"></p>
                             </div>
-                        </div>
-                    </div><!-- 210329 수정 [div 돔 추가] -->
-                    <!-- <div class="unmanned-store-introdution center">
-                        <div class="unmanned-store-text">
-                            <div class="inner">
-                                <span class="num">04</span>
-                                <h3 class="tit">ATM 입출금 서비스</h3>
-                                <p class="desc">LG페이에 은행 계좌를 등록하여 ATM에서 현금 입출금 및 이체를 할 수 있습니다.</p>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "bulletTxt" : [
-                                        "신한은행, IBK 기업은행만 가능합니다."
-                                    ]
-                                })
-                            </div>    
-                        </div>
-                        <div class="unmanned-store-visual">
-                            <img data-src="/lg5-common/images/STC/img-pay04.jpg" alt="">
-                        </div>
-                    </div> 210329 수정 [삭제] -->
-                    <!-- 210329 수정 [컨텐츠 추가, 돔 수정] -->
-                    <div class="unmanned-store-service">
-                        <div class="inner">
-                            <h3 class="service-title"><span>LG 페이 서비스 혜택</span></h3>
-                            <ul>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay04.jpg" data-m-src="/lg5-common/images/STC/img-pay04-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">ATM 입출금 서비스</p>
-                                            <p class="desc">LG페이에 은행 계좌를 등록하여 ATM에서 현금 입출금 및 이체를 할 수 있습니다.</p>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "신한은행, IBK 기업은행만 가능합니다."
-                                                ]
-                                            })
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay05.jpg" data-m-src="/lg5-common/images/STC/img-pay05-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">온라인 결제 서비스</p>
-                                            <p class="desc">LG 페이에 등록된 카드로 온라인 결제도OK! <br>온·오프라인 어디서나 빠르게 결제하세요.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay06.jpg" data-m-src="/lg5-common/images/STC/img-pay06-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">지출관리 서비스</p>
-                                            <p class="desc">예산 설정부터 지출 내역 검색까지! <br>똑똑하게 분석하여 소비 유형을 계획 관리 할 수 있습니다.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay07.jpg" data-m-src="/lg5-common/images/STC/img-pay07-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">교통카드 등록 서비스</p>
-                                            <p class="desc">LG 페이로 교통카드도 편리하게 이용하세요.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay08.jpg" data-m-src="/lg5-common/images/STC/img-pay08-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">멤버십카드 통합관리 서비스</p>
-                                            <p class="desc">발급된 멤버십 카드를 모두 LG 페이에 등록하여 편하게 통합관리하세요.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay09.jpg" data-m-src="/lg5-common/images/STC/img-pay09-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">리워드 제공</p>
-                                            <p class="desc">LG 페이로 결제하고 리워드 포인트를 받아 보세요. 리워드 포인트를 쿠폰으로 교환할 수 있습니다.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box">
-                                        <div class="img-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-pay10.jpg" data-m-src="/lg5-common/images/STC/img-pay10-m.jpg" alt="">
-                                        </div>
-                                        <div class="text-area">
-                                            <p class="tit">휴대폰 결제 서비스</p>
-                                            <p class="desc">신용/체크 카드가 없어도 휴대폰으로 간편하게 결제하세요.</p>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "결제되는 금액이 휴대폰 요금에 합산되어 청구되는 서비스입니다."
-                                                ]
-                                            })
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                    <!-- // 210329 수정 [컨텐츠 추가, 돔 수정] -->
                 </div>
-
-        
-                <!-- 무인 매장 구경가기 -->
-                <div class="unmanned-store-wrap">
-                    <div class="unmanned-store-map inner">
-                            <div class="title-wrap">
-                                <h3 class="service-title"><span>야간무인매장 구경가기</span></h3>
-                            </div>
-                            <div class="tabs-wrap border-type ui_tab">
-                                <ul class="tabs">
-                                    <li class="on"><a href="#tab1">서울 · 수도권 무인매장<em class="blind">선택됨</em></a></li>
-                                    <li><a href="#tab2">경상권 무인매장</a></li>
-                                </ul>
-                            </div>
-                            <div id="tab1"> 11 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit assumenda aut ducimus dicta! Ipsam asperiores animi esse soluta dicta aliquid et pariatur cupiditate quaerat tempora! Corrupti, voluptatum modi. Ex, officiis? </div>
-                            <div id="tab2"> 22 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit assumenda aut ducimus dicta! Ipsam asperiores animi esse soluta dicta aliquid et pariatur cupiditate quaerat tempora! Corrupti, voluptatum modi. Ex, officiis? </div>
-                    </div>
-                </div>
-                <!-- //무인 매장 구경가기 -->
-
-
-                <div class="slide-cont">
-                    <div class="slide-wrap carousel-type carousel-1 ui_carousel_1_slider lg-pay">
+                <!-- 야간무인매장 이용 방법 -->
+                <div class="unmanned-store-service">
+                    <h2 class="title">야간무인매장 이용 방법</h2>
+                    <div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider">
                         <div class="indi-wrap">
                             <ul class="indi-conts ui_carousel_dots">
                                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -260,112 +106,46 @@
                         </div>
                         <div class="slide-content ui_carousel_list">
                             <div class="slide-track ui_carousel_track">
-                                <!--  slide -->
                                 <div class="slide-conts ui_carousel_slide">
-                                    <div class="inner">
-                                        <div class="slide-info-area">
-                                            <div class="boxs">
-                                                <span class="step">STEP 01</span>
-                                                <p class="title">LG 페이 앱 실행</p>
-                                                <!-- 210329 수정 [텍스트, 돔 수정] -->
-                                                <p class="desc">홈 화면에서 LG 페이 앱을 실행해주세요.</p>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "LG 페이로 결제 가능한 가맹점은 지속적으로 확대할 예정입니다."
-                                                    ]
-                                                })
-                                                <!-- // 210329 수정 [텍스트, 돔 수정] -->
-                                                <div class="btn-area">
-                                                    <!-- 210414 팝업버튼수정 -->
-                                                    <button class="btn border size-m" data-href="#popup04" data-control="modal"><span>LG 페이 사용 가능 단말기 보기</span></button>
-                                                    <!-- 210414 //팝업버튼수정 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="visual-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-slide-pay01.jpg" data-m-src="/lg5-common/images/STC/img-slide-pay01-m.jpg" alt=""><!-- 210329 수정 [모바일 이미지 추가] -->
-                                        </div>
+                                    <div class="slide-box">
+                                        <p class="icon"><img src="/lg5-common/images/MA/unmanned-store/ic_step_01.png" alt="qr코드 아이콘"></p>
+                                        <span class="SlideNum">01</span>
+                                        <p class="SlideText">
+                                            입구에서 안내된<br/>
+                                            <span>QR코드를 스캔</span>해주세요.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- // slide -->
-                                <!--  slide -->
                                 <div class="slide-conts ui_carousel_slide">
-                                    <div class="inner">
-                                        <div class="slide-info-area">
-                                            <div class="boxs">
-                                                <span class="step">STEP 02</span>
-                                                <p class="title">본인인증</p>
-                                                <!-- 210329 수정 [텍스트, 돔 수정] -->
-                                                <p class="desc">안전한 LG 페이 서비스 이용을 위해 본인인증을 <br class='pc-only'>진행해주세요.</p>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "별도의 회원가입 절차 없이, 본인인증 후 바로 이용 가능합니다."
-                                                    ]
-                                                })
-                                                <!-- // 210329 수정 [텍스트, 돔 수정] -->
-                                            </div>
-                                        </div>
-                                        <div class="visual-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-slide-pay02.jpg" data-m-src="/lg5-common/images/STC/img-slide-pay02-m.jpg" alt=""><!-- 210329 수정 [모바일 이미지 추가] -->
-                                        </div>
+                                    <div class="slide-box">
+                                        <p class="icon"><img src="/lg5-common/images/MA/unmanned-store/ic_step_02.png" alt="본인인증 아이콘"></p>
+                                        <span class="SlideNum">02</span>
+                                        <p class="SlideText">
+                                            <span>본인인증</span>을<br/>
+                                            해주세요
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- // slide -->
-                                <!--  slide -->
                                 <div class="slide-conts ui_carousel_slide">
-                                    <div class="inner">
-                                        <div class="slide-info-area">
-                                            <div class="boxs">
-                                                <span class="step">STEP 03</span>
-                                                <p class="title">카드 정보 자동 등록</p>
-                                                <!-- 210329 수정 [텍스트, 돔 수정] -->
-                                                <p class="desc">등록하실 카드 앞면에 카메라를 비추면 자동으로 카드정보가 인식되어 간편하게 등록 가능합니다.</p>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "카드 번호 직접 입력으로도 등록 가능합니다."
-                                                    ]
-                                                })
-                                                <!-- // 210329 수정 [텍스트, 돔 수정] -->
-                                            </div>
-                                        </div>
-                                        <div class="visual-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-slide-pay03.jpg" data-m-src="/lg5-common/images/STC/img-slide-pay03-m.jpg" alt=""><!-- 210329 수정 [모바일 이미지 추가] -->
-                                        </div>
+                                    <div class="slide-box">
+                                        <p class="icon"><img src="/lg5-common/images/MA/unmanned-store/ic_step_03.png" alt="본인인증 완료 아이콘"></p>
+                                        <span class="SlideNum">03</span>
+                                        <p class="SlideText">
+                                            본인인증이 완료되면<br/>
+                                            출입문이 열립니다.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- // slide -->
-                                <!--  slide -->
                                 <div class="slide-conts ui_carousel_slide">
-                                    <div class="inner">
-                                        <div class="slide-info-area">
-                                            <div class="boxs">
-                                                <span class="step">STEP 04</span>
-                                                <p class="title">지문 및 결제 비밀번호 등록</p>
-                                                <p class="desc">결제 시 활용될 지문과 <br class='pc-only'>결제 비밀번호 6자리를 입력해주세요.</p>
-                                            </div>
-                                        </div>
-                                        <div class="visual-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-slide-pay04.jpg" data-m-src="/lg5-common/images/STC/img-slide-pay04-m.jpg" alt=""><!-- 210329 수정 [모바일 이미지 추가] -->
-                                        </div>
+                                    <div class="slide-box">
+                                        <p class="icon"><img src="/lg5-common/images/MA/unmanned-store/ic_step_04.png" alt="출입 입장 아이콘"></p>
+                                        <span class="SlideNum">04</span>
+                                        <p class="SlideText">
+                                            출입문이 열리면<br/>
+                                            입장해주세요.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- // slide -->
-                                <!--  slide -->
-                                <div class="slide-conts ui_carousel_slide">
-                                    <div class="inner">
-                                        <div class="slide-info-area">
-                                            <div class="boxs">
-                                                <span class="step">STEP 05</span>
-                                                <p class="title">등록 완료</p>
-                                                <p class="desc">카드 등록이 완료되었습니다.<br>LG 페이와 더 쉬워진 스마트 라이프를 즐기세요!</p>
-                                            </div>
-                                        </div>
-                                        <div class="visual-area">
-                                            <img data-pc-src="/lg5-common/images/STC/img-slide-pay05.jpg" data-m-src="/lg5-common/images/STC/img-slide-pay05-m.jpg" alt=""><!-- 210329 수정 [모바일 이미지 추가] -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- // slide -->
                             </div>
                         </div>
                         <div class="slide-controls">
@@ -374,13 +154,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="btm-link">
-                    <p class="tit">LG 페이에 궁금하신 점이 있다면 자주 묻는 질문에서 확인해보세요!</p><!-- 210329 수정 [텍스트 수정] -->
-                    <div class="btn-area">
-                        <a href="/search/result/support?search=LG페이" class="btn border size-m"><span>자주 묻는 질문 보기</span></a><!-- 210329 수정 [.size -> .size-m 으로 수정] -->
-                    </div>    
-                </div>
+                <!-- //야간무인매장 이용 방법 -->
+                
             </div>
             <!-- //210413 전체수정 -->
         </div>
