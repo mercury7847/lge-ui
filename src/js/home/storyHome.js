@@ -414,6 +414,9 @@
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
 
                 $('.user_story').find('.story-title-area').hide();
+                /* 20210518 추가 */
+                $('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                /* //20210518 추가 */
             } else{
                 viewMode = "listMode";
 
@@ -448,7 +451,10 @@
                         }
                     } else{
                         if(sectioname == "new_story"){
-                            $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            //$('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            /* 20210518 추가 */
+                            $('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            /* //20210518 추가 */
                             $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                         }
                     }
