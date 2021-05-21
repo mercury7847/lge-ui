@@ -24,8 +24,7 @@ MainSwiper.prototype = {
         this.swiper = new Swiper('#sw_con', {
             autoHeight : true,
             observer : true,
-            slidesPerView : 1,
-            //threshold : 1,
+            slidesPerView : 1,           
             hashNavigation : {
                 watchState: true
             },
