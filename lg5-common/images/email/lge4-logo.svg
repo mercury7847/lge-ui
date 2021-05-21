@@ -26,7 +26,7 @@
 	<path fill="url(#SVGID_2_)" d="M11.391,11.427C-0.245,23.063-1.42,40.8,8.792,51.02c10.224,10.212,27.945,9.044,39.584-2.6
 		C60.035,36.757,61.21,19.024,50.999,8.808c-4.662-4.666-10.896-6.961-17.409-6.961C25.849,1.847,17.724,5.094,11.391,11.427"/>
 	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="11.7319" y1="17.1509" x2="53.8759" y2="59.2949">
-		<stop  offset="0" style="stop-color:#CC435C"/>
+		<stop   offset="0" style="stop-color:#CC435C"/>
 		<stop  offset="0.0842" style="stop-color:#BE3953"/>
 		<stop  offset="0.2452" style="stop-color:#AA2A45"/>
 		<stop  offset="0.4273" style="stop-color:#9B203B"/>
