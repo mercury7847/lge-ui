@@ -356,6 +356,7 @@
                         selectedData.date = getBasicDate;
                     }
                     self.setVisitDateText(selectedData);
+                    self.requestEnableVisitTime(selectedData);
                     
                     self.$timeTableWrap.hide();
                     self.$timeTableWrapFirst.show();
