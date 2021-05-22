@@ -115,9 +115,8 @@
     .win-popup-wrap {
         .pop-header { position:absolute; width:90%; padding-left:0; }
         .pop-header:after { display:none; }
-        .win-btn-close { position:absolute; }
+        .win-btn-close { position:absolute; top: 35px;  }
     }
-
 }
 .popup-wrap {
     display:none;
