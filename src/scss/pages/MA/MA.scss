@@ -110,20 +110,14 @@ img{
 				height:auto;
 				transform:translate(-50%,-50%);
 				-webkit-transform:translate(-50%,-50%);
-
-				top:0px;
-				left:0px;
-				height:100vh;
-				transform:none;
-				-webkit-transform:none;
-				// height:100vh;
+				
 				@include mobile {
 					// width:auto;
-					top:0px;
-					left:0px;
-					height:100vh;
-					transform:none;
-					-webkit-transform:none;
+					top:50%;
+					left:50%;
+					height:auto;
+					transform:translate(-50%,-50%);
+					-webkit-transform:translate(-50%,-50%);
 				}
 			}
 

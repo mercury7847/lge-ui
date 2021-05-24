@@ -207,6 +207,8 @@ $(function () {
 
         if (vcui.detect.isMobileDevice){
             $scenes.eq(0).css('height', 'calc(100vh - 84px)');
+        } else {
+            $scenes.eq(0).css('height', 'calc(100vh - 110px)');
         }
         
 
@@ -280,12 +282,13 @@ $(function () {
 
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
-
+        /*
         var maxScale = 110;
 
         $scenes.find('.img img').css({
             width: maxScale + '%'
         });
+        */
 
         function stopVisualAnim(){
             clearInterval(visualAnimInterval);
@@ -404,10 +407,11 @@ $(function () {
                             $('.floating-menu.top').show();
                         }                       
                     }
-
+                    /*
                     $scenes.eq(currentPage).find('.img img').css({
                         width: maxScale + '%'
                     });
+                    */
                     currentPage = idx;   
 
                     if(currentPage == 5) startIconAnim();
@@ -427,7 +431,7 @@ $(function () {
                         }
                     });
 
-                    playVisualAnim();
+                    //playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {
@@ -901,7 +905,7 @@ $(function () {
     $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
     /* 20210503 : 모바일앱 다운로드 팝업 */
-    if (vcui.detect.isMobileDevice && !isApp()) {
+   if (vcui.detect.isMobileDevice && !isApp()) {
         var layer_id = '#mobile-close-popup';
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
