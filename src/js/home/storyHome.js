@@ -402,9 +402,6 @@
             
             // console.log("result.data.selectTags:", result.data.selectTags);
             var viewMode;
-            console.log( '=======================================')
-            console.log( result.data.selectTags)
-            console.log( '=======================================')
             if(result.data.selectTags){
 
                 viewMode = "selectTagMode";
@@ -417,9 +414,6 @@
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
 
                 $('.user_story').find('.story-title-area').hide();
-                /* 20210518 추가 */
-                $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
-                /* //20210518 추가 */
             } else{
                 viewMode = "listMode";
 
