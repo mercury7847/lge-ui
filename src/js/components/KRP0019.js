@@ -1,26 +1,3 @@
-(function(i,s,o,g,r,a,m){
-    var isMobile = false;
-    if(vcui.detect.isMobile){
-        isMobile = true;
-    }
-    
-    if(location.hostname == "www.lge.co.kr") {
-        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
-    } else {
-        r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
-    }
-
-    if(s.getElementById(g)){
-        return
-    };
-    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
-    a.id=g;
-    a.async=1;
-    a.src=r;
-    m.parentNode.insertBefore(a,m);
-})(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
-
-
 (function() {
     var KRP0019 = {
         init: function() {
