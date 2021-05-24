@@ -18,10 +18,7 @@
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
                 '</div>{{/if}}' +
-                //03-31
-                //방문 알리미 > 다음방문 서비스 상세 영역에 [방문일정 변경 요청] 버튼은 하이케어의 요청으로 파일럿 운영에 대한 추가 요구사항 분석 및 반영 이후 적용되어야 한다고 합니다.
-                //때문에 현재 시점에서는 해당 버튼을 숨김 처리 해주십시오. 개발/STG/운영에 모두 숨김처리 요청드립니다.
-                //'{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
+                '{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
             '</div>' +
         '</div>' +
     '</li>'
@@ -256,6 +253,7 @@
             requestData: function(contract) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
+                var _id = self.getSelectedContractID();   // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
                 location.hash = contract;
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
@@ -274,11 +272,14 @@
                         var thisMonth = new Date().getMonth() + 1;
                         var thisYear = new Date().getFullYear();
                         item.changeEnable = false;
-                        if(itemYear < thisYear) {
-                            item.changeEnable = true;
-                        } else if(itemYear == thisYear && itemMonth <= thisMonth) {
-                            item.changeEnable = true;
-                        }
+                       if(_id !== 'all') { // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
+                            if(itemYear < thisYear) {
+                                item.changeEnable = true;
+                            } else if(itemYear == thisYear && itemMonth <= thisMonth) {
+                                item.changeEnable = true;
+                            }
+                       }
+
 
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
@@ -355,6 +356,7 @@
                         selectedData.date = getBasicDate;
                     }
                     self.setVisitDateText(selectedData);
+                    self.requestEnableVisitTime(selectedData);
                     
                     self.$timeTableWrap.hide();
                     self.$timeTableWrapFirst.show();
