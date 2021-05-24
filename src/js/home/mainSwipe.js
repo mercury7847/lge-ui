@@ -71,7 +71,7 @@ MainSwiper.prototype = {
         });
 
         $('#sw_con .swiper-slide').on('touchstart', function( e ){
-            console.log('touchstart event', e);
+            //console.log('touchstart event', e);
             //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
@@ -90,7 +90,7 @@ MainSwiper.prototype = {
         });
 
         $('#sw_con .swiper-slide').on('touchmove', function( e ){
-            console.log('touchmove event', e);
+            //console.log('touchmove event', e);
             //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
