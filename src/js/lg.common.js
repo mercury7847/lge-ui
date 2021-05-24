@@ -279,13 +279,19 @@ var isApp = function(){
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        init: function(){
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],        
+        init: function( $context ){            
             var self = this;
 
             self._bindErrBackEvent();
             self._addImgOnloadEvent();
-            self._preloadComponents();
+
+            if (!!$context){
+                self._preloadComponents($context);
+            } else {
+                self._preloadComponents();
+            }
+
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
@@ -336,7 +342,7 @@ var isApp = function(){
         },
     
         // 주요 컴포넌트를 미리 로드
-        _preloadComponents: function () {
+        _preloadComponents: function ($context) {
             var self = this;
 
             vcui.require([  
@@ -365,7 +371,7 @@ var isApp = function(){
                 "ui/smoothScrollTab",
                 'ui/imageFileInput',
                 'common/header', 
-                'common/footer',  
+                'common/footer',
             ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
                 // new BreakpointDispatcher({
@@ -420,7 +426,7 @@ var isApp = function(){
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resizeend', function(e){
+                $(window).off('resizeend').on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -531,11 +537,19 @@ var isApp = function(){
                         }
                     }
                 });
-    
-                $('header.header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
+                
+                if (!!$context){                    
+                    $context.find('footer').vcFooter(); //푸터모듈 적용...
 
-                $('body').buildCommonUI();
+                    $context.buildCommonUI();
+
+                } else {
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    $('footer').vcFooter(); //푸터모듈 적용...
+
+                    $('body').buildCommonUI();
+                }
+                
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     

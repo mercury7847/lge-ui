@@ -125,8 +125,8 @@ MainSwiper.prototype = {
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
             },
-            complete: function(){                 
-                lgkorUI.init();
+            complete: function(){         
+                lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;                          
             }
         });
