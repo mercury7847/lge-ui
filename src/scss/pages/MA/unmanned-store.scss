@@ -109,6 +109,7 @@
             right:20px;
             left: 20px;
             transform:translateY(0);
+            color: $color-white;
         }
         @include pc {
             color: $color-white;
@@ -117,6 +118,13 @@
             font-size:48px;
             line-height:64px;
             font-weight:700;
+            @media screen and (max-width: 1411px) and (min-width: 768px) {
+                 font-size:48px;
+                line-height:64px;
+                 font-size: 4.20684vw;
+                line-height: 5.60911vw;
+
+            }
             @include mobile {
                 font-size:26px;
                 line-height:35px;
@@ -129,6 +137,17 @@
             font-size:24px;
             line-height:34px;
             font-weight:400;
+            @media screen and (max-width: 1411px) and (min-width: 768px) {
+                padding-top: 1.75285vw;
+                font-size: 2.10342vw;
+                line-height: 2.97984vw;
+            }
+            
+            sub{
+                @include font-small;
+                margin-top: 12px;
+            }
+
             @include mobile {
                 padding-top:10px;
                 font-size:16px;
@@ -260,7 +279,10 @@
             }
         }
         .unmanned-store-visual {
-            max-width: 678px;
+            @include pc{
+                max-width: 678px;
+            }
+            
             //flex: 1;
             img {
                 max-width: 100%;
