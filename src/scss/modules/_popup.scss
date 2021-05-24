@@ -109,6 +109,15 @@
         margin:0;
     }
 }
+// BTOCSITE-372 마이페이지-참여이벤트 리스트 노출 오류 
+#event-modal {
+    max-width:912px;
+    .win-popup-wrap {
+        .pop-header { position:absolute; width:90%; padding-left:0; }
+        .pop-header:after { display:none; }
+        .win-btn-close { position:absolute; top: 35px;  }
+    }
+}
 .popup-wrap {
     display:none;
     position:absolute;
@@ -585,6 +594,17 @@
     .dl-txt-cont {
         & + .bullet-list {
             margin-top: 32px;
+        }
+        dd{
+            &.bold{ 
+                
+                font-size: 20px;
+                @include mobile{
+                    font-size: 18px;
+                }
+                font-weight: bold;
+             }
+           
         }
     }
     .btn-wrap {
@@ -2293,3 +2313,8 @@
         }
     }
 }
+
+/* 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 */
+
+/* //제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 */
+

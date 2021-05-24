@@ -684,11 +684,13 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if (item.years1TotAmt && item.years1TotAmt != "" && item.obsBtnRule=="enable") {
+                    /* BTOCSITE-520 */
+                    if (item.years1TotAmt && item.years1TotAmt != "") {
                         return true;
                     } else {
                         return false;
                     }
+                    /* //BTOCSITE-520 */
                 } else {
                     //소모품 DISPOSABLE
                     if (item.obsInventoryQty > 0) {
