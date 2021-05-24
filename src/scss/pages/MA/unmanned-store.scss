@@ -142,7 +142,7 @@
                 font-size: 2.10342vw;
                 line-height: 2.97984vw;
             }
-            
+
             sub{
                 @include font-small;
                 margin-top: 12px;
@@ -512,7 +512,7 @@
                 }
                 
                 
-                > ul{
+                > ol{
 
                     @include mobile{
                         display: flex;
@@ -559,16 +559,36 @@
                         
                     }
                 }
-                .bullet-text{
-                    @include mobile{
-                        margin-top: 40px;
+
+                    .bullet-list{
+                        // margin-top: 10px;
+
+                        @include mobile{
+                            margin-top: 40px;
+                        }
+                        > li{
+                            margin-top: 0;
+                            @include font-small;
+
+                             @media all and (max-width: 1200px) and (min-width: 768px) {
+                                    margin-top: 0.16667vw;
+                                    padding-left: 0.91667vw;
+                                    font-size: 1.16667vw;
+                                    line-height: 2.00000vw
+                            }
+                        }
                     }
-                    @media all and (max-width: 1200px) and (min-width: 768px) {
-                            margin-top: 0.16667vw;
-                            padding-left: 0.91667vw;
-                            font-size: 1.16667vw;
-                            line-height: 2.00000vw
-                    }
+                    .bullet-text{
+                    
+                        @include mobile{
+                            margin-top: 40px;
+                        }
+                        @media all and (max-width: 1200px) and (min-width: 768px) {
+                                margin-top: 0.16667vw;
+                                padding-left: 0.91667vw;
+                                font-size: 1.16667vw;
+                                line-height: 2.00000vw
+                        }
                 }
                 
             }
@@ -576,7 +596,7 @@
         }
 
 
-        > ul {
+        > ol {
             display: flex;
             flex-wrap: wrap;
             margin: -24px 0 0 -24px;
