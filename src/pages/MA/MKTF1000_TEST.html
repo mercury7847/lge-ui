@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
+    <!-- 210423 페이지타이틀 수정 -->
+    <!-- BTOCSITE-27 head -->
+    @@include('./common/head.html', {
+		pageCSS: ["MA/MA"],
+        pageJS: ["components/KRP0005"],
+        pageTitle: "LGE.COM | LG전자",
+        pageDesc: "차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다."
+    })
+    <!-- //BTOCSITE-27 head -->
+    <!-- //210423 페이지타이틀 수정 -->
+    <!-- //210330 스키티챗JS 추가 -->
+
+
+    
+    <!-- BTOCSITE-27 서브메인 css preload -->   
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/PRS/PRS.min.css">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/STS/STS.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support-main.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/SLS/SLS.min.css" />
+    <!-- //BTOCSITE-27 서브메인 css preload -->   
+
+    <!-- BTOCSITE-27 스와이프 스크립트 -->   
+    <link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
+    <script src="/lg5-common/js/libs/swiper-bundle.min.js"></script>
+    <script src="/lg5-common/js/home/mainSwipe.min.js"></script>
+    <!-- //BTOCSITE-27 스와이프 스크립트 -->
+    
+<body>
+	<div class="wrap">
+        @@include('./common/header.html', {
+            "pageCase": "main",
+            "mobileCase": "main",
+            hiddenTitle: "엘지이닷컴"
+        })
+		<div class="container">            
+            <!-- 20210503 : 모바일앱 다운로드 팝업 -->
+            <article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">
+                <section class="pop-conts align-center">
+                    <section class="section">
+                        <img src="/lg5-common/images/MA/appPop_img.png" alt="" class="pop-img">
+
+                        <div class="text-cont">
+                           LG전자 <b>LGE.COM</b> 앱으로<br/>
+                           더 편리하게 이용하실 수 있습니다.
+                        </div>
+                        <div class="btn-wrap">
+                            <button type="button" class="btn full border size-m" id="lg__app-download"><span>지금 앱으로 보기</span></button>
+                        </div>
+                    </section>
+                </section>
+                <button type="button" class="ui_modal_close">모바일 웹에서볼게요</button>
+            </article>
+            <!-- // 20210503 : 모바일앱 다운로드 팝업  -->            
+            <!-- BTOCSITE-27 상단 퀵메뉴 스와이프 처리 --> 
+            <div class="swiper-container" id="sw_con">                
+                <div class="swiper-wrapper">        
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1000_content.html" data-hash="home"></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1001_content.html" data-hash="store" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/OBS5001_content.html" data-hash="story" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/CSRF6001_content.html" data-hash="cs" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF2001_content.html" data-hash="care"></div>
+                </div>
+            </div>
+            <!-- //BTOCSITE-27 상단 퀵메뉴 스와이프 처리 -->
+		</div>
+    </div>
+</body>
+</html>

@@ -206,6 +206,9 @@ var res = {
 		// 	"KRP0045_PDP Return Replacement" : ["/html/components/KRP0045.html","","진행중"],
 		// },
 		"Page" : {
+			"B2C메인(MA)(swipe test)" : {
+				"B2C메인" : ["/html/MA/MKTF1000_TEST.html","",""]				
+			},
 			"공통(UTS)" : {
 				"통합검색" : {
 					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
