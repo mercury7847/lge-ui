@@ -279,7 +279,8 @@ var isApp = function(){
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],        
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
+        CONTEXT_AREA: null,      
         init: function( $context ){            
             var self = this;
 
@@ -287,8 +288,10 @@ var isApp = function(){
             self._addImgOnloadEvent();
 
             if (!!$context){
-                self._preloadComponents($context);
+                self.CONTEXT_AREA = $context;
+                self._preloadComponents();
             } else {
+                self.CONTEXT_AREA = null;
                 self._preloadComponents();
             }
 
@@ -342,7 +345,7 @@ var isApp = function(){
         },
     
         // 주요 컴포넌트를 미리 로드
-        _preloadComponents: function ($context) {
+        _preloadComponents: function () {
             var self = this;
 
             vcui.require([  
@@ -538,10 +541,10 @@ var isApp = function(){
                     }
                 });
                 
-                if (!!$context){                    
-                    $context.find('footer').vcFooter(); //푸터모듈 적용...
+                if (!!lgkorUI.CONTEXT_AREA){                 
+                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
-                    $context.buildCommonUI();
+                    lgkorUI.CONTEXT_AREA.buildCommonUI();
 
                 } else {
                     $('header.header').vcHeader(); //헤더 모듈 적용...

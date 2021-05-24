@@ -50,22 +50,7 @@ MainSwiper.prototype = {
 
                     mainSwiper.tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
-                    // 메인 -> 홈 일때 스크롤 제어
-                    /*
-                    if (mainSwiper.currentIdx == 0){
-                        $('html').attr('canscroll', 'true');
-                        $('html').css({
-                            'overflow' : 'hidden',
-                            'height' : '100%'
-                        });
-                    } else {
-                        $('html').attr('canscroll', 'false');
-                        $('html').css({
-                            'overflow' : '',
-                            'height' : ''
-                        });
-                    }
-                    */
+                   
                 }
             }
         });
@@ -125,9 +110,9 @@ MainSwiper.prototype = {
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
             },
-            complete: function(){         
+            complete: function(){
                 lgkorUI.init( $(currentSlide) );
-                $(currentSlide).data().isLoaded = true;                          
+                $(currentSlide).data().isLoaded = true;       
             }
         });
     },
