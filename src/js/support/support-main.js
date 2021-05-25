@@ -928,7 +928,7 @@
                     
                     if( $modalWrap.find('.popup-init.active').length == 1) {
                         $modalWrap.stop().fadeOut(function(){
-                            $popup.unwrap();
+                            //$popup.unwrap();
                             $curModal.hide().removeClass('active');
                             $('html').css('overflow', 'visible');
                         });

@@ -1,6 +1,7 @@
 // jquery.event.move
 //
-// 1.3.6
+//
+// 1.3.6  
 //
 // Stephen Band
 //
@@ -20,6 +21,8 @@
 // deltaY:  Distance the finger has moved since last event.
 // velocityX:
 // velocityY:  Average velocity over last few events.
+
+
 
 
 (function (module) {

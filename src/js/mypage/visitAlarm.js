@@ -17,7 +17,7 @@
                 '</ul></div>' +
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
-                '</div>{{/if}}' +                
+                '</div>{{/if}}' +
                 '{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
             '</div>' +
         '</div>' +
@@ -253,6 +253,7 @@
             requestData: function(contract) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
+                var _id = self.getSelectedContractID();   // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
                 location.hash = contract;
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
@@ -271,11 +272,14 @@
                         var thisMonth = new Date().getMonth() + 1;
                         var thisYear = new Date().getFullYear();
                         item.changeEnable = false;
-                        if(itemYear < thisYear) {
-                            item.changeEnable = true;
-                        } else if(itemYear == thisYear && itemMonth <= thisMonth) {
-                            item.changeEnable = true;
-                        }
+                       if(_id !== 'all') { // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
+                            if(itemYear < thisYear) {
+                                item.changeEnable = true;
+                            } else if(itemYear == thisYear && itemMonth <= thisMonth) {
+                                item.changeEnable = true;
+                            }
+                       }
+
 
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
@@ -352,6 +356,7 @@
                         selectedData.date = getBasicDate;
                     }
                     self.setVisitDateText(selectedData);
+                    self.requestEnableVisitTime(selectedData);
                     
                     self.$timeTableWrap.hide();
                     self.$timeTableWrapFirst.show();
