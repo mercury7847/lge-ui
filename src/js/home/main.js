@@ -75,7 +75,7 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'});
+       // $('html,body').css({'overflow':'hidden', 'height':'100%'});
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -91,7 +91,7 @@ $(function () {
             
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
-                $slider.addClass('on');  
+                $slider.addClass('on');
                 $(this).find('.flow-bar-wrap').hide();
             }else{
                 $(this).find('.flow-bar-wrap').show();
@@ -205,19 +205,27 @@ $(function () {
 
         var visualAnimInterval;
 
+        if (vcui.detect.isMobileDevice){
+            $scenes.eq(0).css('height', 'calc(100vh - 84px)');
+        } else {
+            $scenes.eq(0).css('height', 'calc(100vh - 110px)');
+        }
+        
+
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
-        $('.scene').css({'overflow':'hidden'});
+        //$('.scene').css({'overflow':'hidden'});
         
-        $('.container').css({'overflow':'visible', 'height':'auto'});     
-        
+        //$('.container').css({'overflow':'visible', 'height':'auto'});     
+        /*
         $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
             wheelScene(1);
         });
+        */
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -274,12 +282,13 @@ $(function () {
 
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
-
+        /*
         var maxScale = 110;
 
         $scenes.find('.img img').css({
             width: maxScale + '%'
         });
+        */
 
         function stopVisualAnim(){
             clearInterval(visualAnimInterval);
@@ -320,9 +329,13 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isMobileDevice){
+            if(!isMobileDevice){                
                 if(!canScroll) return;  
                 canScroll = false;   
+            }
+
+            if ( $('html').attr('canscroll') == 'false' ){
+                return;
             }
             
             $contentWrap.scrollTop(0);                
@@ -394,10 +407,11 @@ $(function () {
                             $('.floating-menu.top').show();
                         }                       
                     }
-
+                    /*
                     $scenes.eq(currentPage).find('.img img').css({
                         width: maxScale + '%'
                     });
+                    */
                     currentPage = idx;   
 
                     if(currentPage == 5) startIconAnim();
@@ -417,7 +431,7 @@ $(function () {
                         }
                     });
 
-                    playVisualAnim();
+                    //playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {
@@ -439,7 +453,7 @@ $(function () {
         if(!isMobileDevice){
 
             /* 메인테스트*/
-            
+            /* BTOCSITE-27
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -464,6 +478,8 @@ $(function () {
                 }       
     
             });
+            
+            //BTOCSITE-27  */
 
         }
         
@@ -474,6 +490,8 @@ $(function () {
 
 
         /* 메인테스트*/
+        // BTOCSITE-27
+        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -510,6 +528,8 @@ $(function () {
                 
             }
         });
+        */
+        // BTOCSITE-27
 
         var wrapTouchSy = 0;
         
@@ -673,7 +693,7 @@ $(function () {
             $('html, body').stop(true);
             $('html').removeClass('sceneMoving');   
 
-            canScroll = true;    
+            //canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
             posArr = [];
@@ -692,7 +712,7 @@ $(function () {
                 }
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                $(this).height(itemHeight);
+                //$(this).height(itemHeight);
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
@@ -721,22 +741,22 @@ $(function () {
             /* 메인 테스트 */
             if(vcui.detect.isIOS) {
                 if($contentWrap.hasClass('active')) {
-                    $contentWrap.css({'overflow':'auto','height':winHeight});
+                    //$contentWrap.css({'overflow':'auto','height':winHeight});
                 } else {
-                    $contentWrap.css({'overflow':'','height':winHeight});
+                    //$contentWrap.css({'overflow':'','height':winHeight});
                 }
             } else {
-                $contentWrap.css({'overflow':'auto','height':winHeight});
+                //$contentWrap.css({'overflow':'auto','height':winHeight});
             }
-            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
             
             if(idx!==undefined){
                 currentPage = idx;
-                moveScene(currentPage,0);
+                //moveScene(currentPage,0);
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-                    moveScene(currentPage,0);
+                    //moveScene(currentPage,0);
 
                     if(window.sessionStorage){ 
                         var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
